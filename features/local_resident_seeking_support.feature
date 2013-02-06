@@ -5,3 +5,4 @@ Feature: Local Resident seeking Support
 
 Scenario: Find a bereavement counsellor
   When I search for "Bereavement Counselling"
+  Then I should see contact details for "Harrow Bereavement Counselling"
