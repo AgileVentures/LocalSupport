@@ -5,10 +5,12 @@ Feature: Local Resident seeking Support
 
 # starting within main site
 Scenario: Find a bereavement counsellor
+  Given I am on the home page
   When I search for "Bereavement Counselling"
   Then I should see contact details for "Harrow Bereavement Counselling"
 
 Scenario: Find help with care for elderly
+  Given I am on the home page
   When I search for "help for elderly relative"
   Then I should see contact details for "Indian Elders Associaton" and "Age UK"
 
