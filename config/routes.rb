@@ -1,4 +1,5 @@
 LocalSupport::Application.routes.draw do
+  match 'organizations/search' => 'organizations#search'
   resources :organizations
 
   # The priority is based upon order of creation:

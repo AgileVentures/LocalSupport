@@ -3,7 +3,8 @@ Given /^I am on the home page$/ do
 end
 
 When /^I search for "(.*?)"$/ do |text|
-  fill_in 'search', with: text
+  fill_in 'q', with: text
+  click_button 'Search'
 end
 
 Then /^I should see contact details for "(.*?)"$/ do |text|

@@ -1,4 +1,16 @@
 class OrganizationsController < ApplicationController
+  # GET /organizations/search
+  # GET /organizations/search.json
+  def search
+    # should this be a model method with a model spec around it ...?
+    @organizations = Organization.where("description LIKE ?","%#{params[:q]}%")
+
+    respond_to do |format|
+      format.html { render :template =>'organizations/index'}
+      format.json { render json: @organizations }
+    end
+  end
+
   # GET /organizations
   # GET /organizations.json
   def index

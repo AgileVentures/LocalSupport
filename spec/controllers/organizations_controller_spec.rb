@@ -8,6 +8,18 @@ describe OrganizationsController do
     end
   end
 
+
+  describe "GET search" do
+    it "searches all organizations as @organizations" do
+      Organization.should_receive(:where).with('description LIKE ?','test').and_return([mock_organization])
+      get :search, :q => 'test'
+      response.should render_template 'index'
+
+      assigns(:organizations).should eq([mock_organization])
+    end
+  end
+
+
   describe "GET index" do
     it "assigns all organizations as @organizations" do
       Organization.stub(:all) { [mock_organization] }
