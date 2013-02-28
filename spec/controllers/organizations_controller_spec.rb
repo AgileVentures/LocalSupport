@@ -11,7 +11,7 @@ describe OrganizationsController do
 
   describe "GET search" do
     it "searches all organizations as @organizations" do
-      Organization.should_receive(:where).with('description LIKE ?','test').and_return([mock_organization])
+      Organization.should_receive(:where).with('description LIKE ?','%test%').and_return([mock_organization])
       get :search, :q => 'test'
       response.should render_template 'index'
 

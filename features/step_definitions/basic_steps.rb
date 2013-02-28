@@ -1,3 +1,9 @@
+Given /the following organizations exist/ do |organizations_table|
+  organizations_table.hashes.each do |org|
+    Organization.create! org
+  end
+end
+
 Given /^I am on the home page$/ do
   visit "/"
 end
@@ -7,11 +13,11 @@ When /^I search for "(.*?)"$/ do |text|
   click_button 'Search'
 end
 
-Then /^I should see contact details for "(.*?)"$/ do |text|
+Then /^I should see contact details for "([^"]*?)"$/ do |text|
   page.should have_content text
 end
 
-Then /^I should see contact details for "(.*?)" and "(.*?)"$/ do |text1, text2|
+Then /^I should see contact details for "([^"]*?)" and "([^"]*?)"$/ do |text1, text2|
   page.should have_content text1
   page.should have_content text2
 end
