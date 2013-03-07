@@ -8,6 +8,11 @@ Given /^I am on the home page$/ do
   visit "/"
 end
 
+Then /^I should see "(.*?)"$/ do |text|
+  page.should have_content text
+end
+
+
 When /^I search for "(.*?)"$/ do |text|
   fill_in 'q', with: text
   click_button 'Search'

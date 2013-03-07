@@ -1,6 +1,10 @@
 <h1>Listing organizations</h1>
 
-
+<%= form_tag("/organizations/search", :method => "get") do %>
+  <%= label_tag(:q, "Search Organizations for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
 
 <table>
   <tr>
