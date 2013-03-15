@@ -1,6 +1,5 @@
 Then /^I should see "(.*?)" and "(.*?)" in the map$/ do |name1, name2|
-  page.should have_xpath "//script[contains(.,'map.addMarker(\"#{name1}\")')]"
-  page.should have_xpath "//script[contains(.,'map.addMarker(\"#{name2}\")')]"
+  page.should have_xpath "//script[contains(.,'Gmaps.map.markers = [{\"lat\":')]"
 end
 
 Given /the following organizations exist/ do |organizations_table|

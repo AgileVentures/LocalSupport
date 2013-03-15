@@ -22,9 +22,14 @@ describe OrganizationsController do
 
   describe "GET index" do
     it "assigns all organizations as @organizations" do
-      Organization.stub(:all) { [mock_organization] }
+      mock_array = []
+      mock_json = ""
+      #this array expectation doesn't work and I don't know why
+      #Array.should_receive(:to_gmaps4rails).and_return(mock_json)
+      Organization.stub(:all) { mock_array }
       get :index
-      assigns(:organizations).should eq([mock_organization])
+      assigns(:organizations).should eq(mock_array)
+      assigns(:json).should eq("[]")
     end
   end
 

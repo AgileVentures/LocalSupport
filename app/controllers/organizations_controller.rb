@@ -15,7 +15,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations.json
   def index
     @organizations = Organization.all
-
+    @json = @organizations.to_gmaps4rails
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @organizations }
