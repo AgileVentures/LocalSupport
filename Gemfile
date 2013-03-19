@@ -12,6 +12,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'simplecov'
+  gem 'rspec-rails'
 end
 
 group :test do             
@@ -19,7 +20,6 @@ group :test do
   gem 'cucumber-rails-training-wheels'
   gem 'minitest'
   gem 'ZenTest'
-  gem 'rspec-rails'
   gem 'capybara'
   gem 'webrat'
 end
