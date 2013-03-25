@@ -22,6 +22,7 @@ group :test do
   gem 'ZenTest'
   gem 'capybara'
   gem 'webrat'
+  gem 'factory_girl_rails', :require => false
 end
 group :production do
   gem 'pg'

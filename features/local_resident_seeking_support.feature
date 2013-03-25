@@ -7,9 +7,9 @@ Background: organizations have been added to database
   
   Given the following organizations exist:
   | name                            | description               | address        | postcode |
-  | Harrow Bereavement Counselling  | Bereavement Counselling   | 64 pinner road | HA1 4HZ  |
-  | Indian Elders Associaton        | Care for the elderly      | 64 pinner road | HA1 4HZ  |
-  | Age UK                          | Care for the elderly      | 64 pinner road | HA1 4HZ  |
+  | Harrow Bereavement Counselling  | Bereavement Counselling   | 34 pinner road | HA1 4HZ  |
+  | Indian Elders Associaton        | Care for the elderly      | 64 pinner road | HA1 4HA  |
+  | Age UK                          | Care for the elderly      | 84 pinner road | HA1 4HF  |
 
 Scenario: Show all charities on homepage map
   Given I am on the home page
