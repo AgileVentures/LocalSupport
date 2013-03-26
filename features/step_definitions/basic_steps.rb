@@ -6,7 +6,11 @@ Then /^I should see "(.*?)", "(.*?)" and "(.*?)" in the map$/ do |name1, name2, 
   org1 = Organization.find_by_name(name1)
   org2 = Organization.find_by_name(name2)
   org3 = Organization.find_by_name(name3)
-  page.should have_xpath "//script[contains(.,'Gmaps.map.markers = [{\"lat\":#{org3.latitude},\"lng\":#{org3.longitude}},{\"lat\":#{org1.latitude},\"lng\":#{org1.longitude}},{\"lat\":#{org2.latitude},\"lng\":#{org2.longitude}')]"
+  #page.should have_xpath "//script[contains(.,'Gmaps.map.markers = [{\"lat\":#{org3.latitude},\"lng\":#{org3.longitude}},{\"lat\":#{org1.latitude},\"lng\":#{org1.longitude}},{\"lat\":#{org2.latitude},\"lng\":#{org2.longitude}')]"
+  page.should have_xpath "//script[contains(.,'Gmaps.map.markers = #{Organization.all.to_gmaps4rails}')]"
+  Organization.all.to_gmaps4rails.should match(name1)
+  Organization.all.to_gmaps4rails.should match(name2)
+  Organization.all.to_gmaps4rails.should match(name3)
 end
 
 Given /the following organizations exist/ do |organizations_table|

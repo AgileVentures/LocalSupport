@@ -8,4 +8,8 @@ class Organization < ActiveRecord::Base
   def gmaps4rails_address
     "#{self.address}, #{self.postcode}"
   end
+
+  def gmaps4rails_infowindow
+    "#{self.name}"
+  end
 end
