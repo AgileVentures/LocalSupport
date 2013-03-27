@@ -13,6 +13,8 @@ group :development, :test do
   gem 'launchy'
   gem 'simplecov'
   gem 'rspec-rails'
+  gem 'therubyracer'
+  gem 'execjs'
 end
 
 group :test do             
