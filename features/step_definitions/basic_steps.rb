@@ -1,3 +1,7 @@
+Given /^I am on the charity page for "(.*?)"$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
 Then /^show me the page$/ do
   save_and_open_page
 end
