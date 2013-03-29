@@ -35,7 +35,7 @@ GEM
     archive-tar-minitar (0.5.2)
     arel (2.2.3)
     builder (3.0.4)
-    capybara (2.0.2)
+    capybara (2.0.3)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
@@ -50,11 +50,7 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-<<<<<<< HEAD
-    coffee-script-source (1.6.1)
-=======
     coffee-script-source (1.6.2)
->>>>>>> tansaku/master
     columnize (0.3.6)
     cucumber (1.2.1)
       builder (>= 2.1.2)
@@ -68,23 +64,17 @@ GEM
       rails (~> 3.0)
     cucumber-rails-training-wheels (1.0.0)
       cucumber-rails (>= 1.1.1)
-    daemons (1.0.10)
     database_cleaner (0.9.1)
     diff-lcs (1.2.1)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-<<<<<<< HEAD
-    ffi (1.4.0)
-    gem_plugin (0.2.3)
-=======
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
-    ffi (1.5.0)
->>>>>>> tansaku/master
+    ffi (1.6.0)
     gherkin (2.11.6)
       json (>= 1.7.6)
     gmaps4rails (1.5.6)
@@ -103,17 +93,10 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.21)
-<<<<<<< HEAD
-    minitest (4.6.2)
-    mongrel (1.2.0.pre2)
-      daemons (~> 1.0.10)
-      gem_plugin (~> 0.2.3)
-=======
     minitest (4.7.0)
->>>>>>> tansaku/master
     multi_json (1.2.0)
     nokogiri (1.5.9)
-    pg (0.14.1)
+    pg (0.15.0)
     polyglot (0.3.3)
     rack (1.3.10)
     rack-cache (1.2)
@@ -139,7 +122,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (~> 0.14.6)
-    rake (10.0.3)
+    rake (10.0.4)
     rdoc (3.12.2)
       json (~> 1.4)
     rspec-core (2.13.1)
@@ -185,11 +168,7 @@ GEM
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.7)
     thor (0.14.6)
-<<<<<<< HEAD
-    tilt (1.3.5)
-=======
     tilt (1.3.6)
->>>>>>> tansaku/master
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
@@ -217,15 +196,11 @@ DEPENDENCIES
   cucumber-rails
   cucumber-rails-training-wheels
   database_cleaner
-<<<<<<< HEAD
-=======
   factory_girl_rails
->>>>>>> tansaku/master
   gmaps4rails
   jquery-rails
   launchy
   minitest
-  mongrel
   pg
   rails (= 3.1.10)
   rspec-rails

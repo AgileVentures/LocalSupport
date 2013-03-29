@@ -54,8 +54,6 @@ group :test do
 end
 
 gem 'gmaps4rails'
-<<<<<<< HEAD
 
-gem 'mongrel'
-=======
->>>>>>> tansaku/master
+#gem 'mongrel'
+
