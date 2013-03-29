@@ -6,10 +6,16 @@ Feature: Local Resident seeking Support
 Background: organizations have been added to database
   
   Given the following organizations exist:
-  | name                            | description               |
-  | Harrow Bereavement Counselling  | Bereavement Counselling   | 
-  | Indian Elders Associaton        | Care for the elderly      | 
-  | Age UK                          | Care for the elderly      | 
+  | name                            | description               | address        | postcode |
+  | Harrow Bereavement Counselling  | Bereavement Counselling   | 34 pinner road | HA1 4HZ  |
+  | Indian Elders Associaton        | Care for the elderly      | 64 pinner road | HA1 4HA  |
+  | Age UK                          | Care for the elderly      | 84 pinner road | HA1 4HF  |
+
+Scenario: Show all charities on homepage map
+  Given I am on the home page
+  Then I should see contact details for "Indian Elders Associaton", "Age UK" and "Harrow Bereavement Counselling"
+  #And show me the page
+  And I should see "Indian Elders Associaton", "Age UK" and "Harrow Bereavement Counselling" in the map
 
 Scenario: Show all charities on homepage map
   Given I am on the home page

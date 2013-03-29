@@ -1,4 +1,4 @@
-<h1>Listing organizations</h1>
+<h2>Local organizations</h2>
 
 <%= form_tag("/organizations/search", :method => "get") do %>
   <%= label_tag(:q, "Search Organizations for:") %>
@@ -37,5 +37,6 @@
 </table>
 
 <br />
+<%= gmaps4rails(@jsson) %>
 
 <%= link_to 'New Organization', new_organization_path %>

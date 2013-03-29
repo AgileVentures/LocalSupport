@@ -12,6 +12,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'simplecov'
+  gem 'rspec-rails'
 end
 
 group :test do             
@@ -19,9 +20,9 @@ group :test do
   gem 'cucumber-rails-training-wheels'
   gem 'minitest'
   gem 'ZenTest'
-  gem 'rspec-rails'
   gem 'capybara'
   gem 'webrat'
+  gem 'factory_girl_rails', :require => false
 end
 group :production do
   gem 'pg'
@@ -53,5 +54,8 @@ group :test do
 end
 
 gem 'gmaps4rails'
+<<<<<<< HEAD
 
 gem 'mongrel'
+=======
+>>>>>>> tansaku/master
