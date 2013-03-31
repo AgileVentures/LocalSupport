@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require 'csv'
+
+csv_text = File.open('db/data.csv', 'r:ISO-8859-1')
+csv = CSV.parse(csv_text, :headers => true)
+csv.each do |row|
+  row = row.to_hash.with_indifferent_access
+  Organization.create!(row.to_hash.symbolize_keys)
+end
