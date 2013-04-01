@@ -6,7 +6,7 @@ end
 
 Then /^I should see the donation_info URL for "(.*?)"$/ do |name1|
   org1 = Organization.find_by_name(name1)
-  page.should have_content org1.donation_info
+  page.should have_link "Donate to #{org1.name} now!", :href => org1.donation_info
 end
 
 Then /^show me the page$/ do
