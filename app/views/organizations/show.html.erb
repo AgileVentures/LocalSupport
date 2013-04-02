@@ -36,7 +36,7 @@
 </p>
 
 <div>Donation Info
-<%= link_to "Donate to #{@organization.name} now!", @organization.donation_info %>
+<%= donation_info_msg %>
 </div>
 
 <%= link_to 'Edit', edit_organization_path(@organization) %> |
