@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "organizations/show.html.erb" do
   before(:each) do
-    @organization = assign(:organization, mock_model(Organization, :name => 'Friendly charity', :donation_info => 'http://www.friendly-charity.co.uk/donate'))
+    @organization = assign(:organization, stub_model(Organization, :name => 'Friendly charity', :donation_info => 'http://www.friendly-charity.co.uk/donate'))
   end
 
   it "renders attributes in <p>" do
