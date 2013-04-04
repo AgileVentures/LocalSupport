@@ -48,17 +48,11 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1/edit
   def edit
     @organization = Organization.find(params[:id])
-    #@organization.address = @organization.address + ", " + @organization.postcode
   end
 
   # POST /organizations
   # POST /organizations.json
   def create
-    #params[:organization][:address] =~ /(.+), (.+ .+)/
-    
-    #params[:organization][:address] = $1
-    #params[:organization][:postcode] = $2
-    
     @organization = Organization.new(params[:organization])
 
     respond_to do |format|
@@ -76,11 +70,6 @@ class OrganizationsController < ApplicationController
   # PUT /organizations/1.json
   def update
     @organization = Organization.find(params[:id])
-    
-    #params[:organization][:address] =~ /(.+), (.+ .+)/
-    
-    #params[:organization][:address] = $1
-    #params[:organization][:postcode] = $2
 
     respond_to do |format|
       if @organization.update_attributes(params[:organization])
