@@ -1,3 +1,19 @@
+Given /^I am on the charity page for "(.*?)"$/ do |name1|
+  org1 = Organization.find_by_name(name1)
+  visit organization_path org1.id
+end
+
+Then /^I should see the donation_info URL for "(.*?)"$/ do |name1|
+  org1 = Organization.find_by_name(name1)
+  page.should have_link "Donate to #{org1.name} now!", :href => org1.donation_info
+end
+
+Then /^I should not see the donation_info URL for "(.*?)"$/ do |name1|
+  org1 = Organization.find_by_name(name1)
+  page.should_not have_link "Donate to #{org1.name} now!"
+  page.should have_content "We don't yet have any donation link for them."
+end
+
 Then /^show me the page$/ do
   save_and_open_page
 end
