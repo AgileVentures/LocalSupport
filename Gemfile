@@ -54,5 +54,5 @@ group :test do
 end
 
 gem 'gmaps4rails'
-
 gem 'devise'
+#gem 'mongrel'

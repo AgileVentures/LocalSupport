@@ -1,7 +1,9 @@
 LocalSupport
 ============
 
-A directory of local support services.  
+A directory of local support services. 
+
+[Project Overview](https://sites.google.com/site/saasellsprojects/projects/local-support/getting-started---project-overview)
 
 Installation and other technical issues are being gathered in the github wiki:
 
