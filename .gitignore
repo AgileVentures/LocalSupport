@@ -13,7 +13,7 @@ capybara-*.html
 /spec/tmp/*
 **.orig
 rerun.txt
-.project
+*.project
 pickle-email-*.html
 *.*~
 *~
