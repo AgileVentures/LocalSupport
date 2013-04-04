@@ -8,9 +8,16 @@
 
 require 'csv'
 
+num = 10
+
+count = 0
 csv_text = File.open('db/data.csv', 'r:ISO-8859-1')
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
+  if count > num
+    break
+  end
+  count += 1
   row = row.to_hash.with_indifferent_access
   Organization.create!(row.to_hash.symbolize_keys)
 end

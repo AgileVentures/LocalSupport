@@ -6,7 +6,7 @@ class Organization < ActiveRecord::Base
   end
   
   def gmaps4rails_address
-    self.address
+    "#{self.address}, #{self.postcode}"
   end
 
   def gmaps4rails_infowindow
