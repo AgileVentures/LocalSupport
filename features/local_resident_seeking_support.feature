@@ -22,6 +22,8 @@ Scenario: Find help with care for elderly
   Given I am on the home page
   When I search for "elderly"
   Then I should see contact details for "Indian Elders Associaton" and "Age UK"
+  #And I should see "Indian Elders Associaton" and "Age UK" in the map
+  And I should see search results for "elderly" in the map
 
 # starting within main site
 Scenario: Find a bereavement counsellor

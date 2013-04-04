@@ -5,6 +5,7 @@ class OrganizationsController < ApplicationController
     # should this be a model method with a model spec around it ...?
 
     @organizations = Organization.search_by_keyword(params[:q])
+    @json = @organizations.to_gmaps4rails
     respond_to do |format|
       format.html { render :template =>'organizations/index'}
       format.json { render json: @organizations }
