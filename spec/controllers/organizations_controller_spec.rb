@@ -1,24 +1,21 @@
 require 'spec_helper'
 
 describe OrganizationsController do
-
+  
   def mock_organization(stubs={})
     (@mock_organization ||= mock_model(Organization).as_null_object).tap do |organization|
       organization.stub(stubs) unless stubs.empty?
     end
   end
 
-
   describe "GET search" do
     it "searches all organizations as @organizations" do
       result = [mock_organization]
       json='my markers'
       result.should_receive(:to_gmaps4rails).and_return(json)
-      Organization.should_receive(:search_by_keyword).with('test').and_return(result)
-      
+      Organization.should_receive(:search_by_keyword).with('test').and_return(result)      
       get :search, :q => 'test'
-      response.should render_template 'index'
-
+      response.should render_template 'index'      
       assigns(:organizations).should eq([mock_organization])
       assigns(:json).should eq(json)
     end

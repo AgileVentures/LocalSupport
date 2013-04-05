@@ -7,12 +7,17 @@ gem 'rails', '3.1.10'
 
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do
-  gem 'sqlite3'
-  gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'sqlite3'  
   gem 'database_cleaner'
   gem 'launchy'
   gem 'simplecov'
   gem 'rspec-rails'
+  gem 'execjs'
+  gem 'therubyracer'
+end
+
+group :development do
+  gem 'ruby-debug19', :require => 'ruby-debug'
 end
 
 group :test do             
