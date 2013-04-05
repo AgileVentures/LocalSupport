@@ -20,5 +20,9 @@ describe Organization do
   it 'find all orgs that have keyword anywhere in their name or description' do
     Organization.search_by_keyword("elderly").should == [@org2, @org3]
   end
+  
+  it 'should have gmaps4rails_option hash with :check_process set to false' do
+    @org1.gmaps4rails_options[:check_process].should == false
+  end
 
 end
