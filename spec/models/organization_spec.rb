@@ -20,13 +20,22 @@ describe Organization do
   it 'find all orgs that have keyword anywhere in their name or description' do
     Organization.search_by_keyword("elderly").should == [@org2, @org3]
   end
+  
+  it 'should have gmaps4rails_option hash with :check_process set to false' do
+    @org1.gmaps4rails_options[:check_process].should == false
+  end
 
+  it 'should geocode when address changes' do
+    new_address = '60 pinner road'
+    Gmaps4rails.should_receive(:geocode).with("#{new_address}, #{@org1.postcode}", "en", false,"http")
+    @org1.update_attributes :address => new_address
+  end
 
-  it 'should geocode when new object is created' do
+it 'should geocode when new object is created' do
     address = '60 pinner road'
     postcode = 'HA1 3RE'
     Gmaps4rails.should_receive(:geocode).with("#{address}, #{postcode}", "en", false, "http")
-    org = FactoryGirl.build(:organization,:address => address, :postcode => postcode, :name => 'Happy and Nice')
+    org = FactoryGirl.build(:organization,:address => address, :postcode => postcode, :name => 'Happy and Nice', :gmaps => true)
     org.save
   end
 end
