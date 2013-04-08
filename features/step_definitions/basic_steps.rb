@@ -90,12 +90,8 @@ Given /^I press "(.*?)"$/ do |button|
 end
 
 Then /^the coordinates for "(.*?)" and "(.*?)" should be the same/ do | org1_name, org2_name|
-  matches = page.html.match "{\\\"description\\\":\\\"#{org1_name}\\\",\\\"lat\\\":((?:-|)\\d+\.\\d+),\\\"lng\\\":((?:-|)\\d+\.\\d+)}"
+  matches = page.html.match %Q<{\\"description\\":\\"#{org1_name}\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
   org1_lat = matches[1]
   org1_lng = matches[2]
-  page.html.should have_content "{\"description\":\"#{org2_name}\",\"lat\":#{org1_lat},\"lng\":#{org1_lng}}"
+  page.html.should have_content  %Q<{"description":"#{org2_name}","lat":#{org1_lat},"lng":#{org1_lng}}>
 end
-
-
-
-
