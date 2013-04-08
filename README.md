@@ -13,6 +13,8 @@ If you encounter any issues or trouble, please search the issues tracker, and if
 
 [https://github.com/tansaku/LocalSupport/issues](https://github.com/tansaku/LocalSupport/issues)
 
+Many thanks to Pavel Osadchyi for Travis Continous Integration, and to Ingram Monk and David Corking for new cucumber features; and to Michael and Ingram for the Donation Info functionality.
+
 License
 =======
 
