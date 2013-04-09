@@ -204,6 +204,7 @@ DEPENDENCIES
   cucumber-rails-training-wheels
   database_cleaner
   devise
+  execjs
   factory_girl_rails
   gmaps4rails
   jquery-rails
