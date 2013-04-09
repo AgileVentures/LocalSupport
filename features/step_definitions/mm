@@ -66,13 +66,3 @@ Given /^I sign in as "(.*?)" with password "(.*?)"$/ do |email, password|
   click_button "Sign in"
 end
 
-Given /^the following users are registered:$/ do |charity_workers_table|
-  charity_workers_table.hashes.each do |charity_worker|
-    CharityWorker.create! charity_worker
-  end
-end
-
-Then /^I should be on the sign in page$/ do
-  current_path.should == new_charity_worker_session_path
-end
-
