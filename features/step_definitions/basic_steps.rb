@@ -55,6 +55,18 @@ Given /^I am on the home page$/ do
   visit "/"
 end
 
+Given /^I am on the sign in page$/ do
+  visit new_charity_worker_session_path
+end
+
+Given /^I am on the sign up page$/ do
+  visit new_charity_worker_registration_path
+end
+
+Then /^I should be on the new charity page$/ do
+ current_path.should == new_organization_path
+end
+
 Then /^I should see "(.*?)"$/ do |text|
   page.should have_content text
 end
@@ -80,6 +92,21 @@ Then /^I should see contact details for "([^"]*?)", "([^"]*?)" and "(.*?)"$/ do 
   page.should have_content text2
   page.should have_content text3
 end
+Given /^I sign in as "(.*?)" with password "(.*?)"$/ do |email, password|
+  fill_in "Email" , :with => email
+  fill_in "Password" , :with => password
+  click_button "Sign in"
+end
+
+Given /^the following users are registered:$/ do |charity_workers_table|
+  charity_workers_table.hashes.each do |charity_worker|
+    CharityWorker.create! charity_worker
+  end
+end
+
+Then /^I should be on the sign in page$/ do
+  current_path.should == new_charity_worker_session_path
+end
 
 When /^I edit the charity address to be "(.*?)"$/ do |address|
    fill_in('organization_address',:with => address)
@@ -95,3 +122,8 @@ Then /^the coordinates for "(.*?)" and "(.*?)" should be the same/ do | org1_nam
   org1_lng = matches[2]
   page.html.should have_content  %Q<{"description":"#{org2_name}","lat":#{org1_lat},"lng":#{org1_lng}}>
 end
+Given /^PENDING/ do
+  pending
+end
+
+
