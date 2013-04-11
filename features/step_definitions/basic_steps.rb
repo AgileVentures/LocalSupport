@@ -1,3 +1,5 @@
+require 'webmock/cucumber'
+
 Given /^I am on the charity page for "(.*?)"$/ do |name1|
   org1 = Organization.find_by_name(name1)
   visit organization_path org1.id
@@ -46,7 +48,10 @@ Then /^I should see search results for "(.*?)" in the map$/ do |search_terms|
 end
 
 Given /the following organizations exist/ do |organizations_table|
-  organizations_table.hashes.each do |org|
+  geocoding = File.read "test/fixtures/34_pinner_road.json"
+  stub_request(:get, %r{maps.googleapis.com/maps/api/geocode/json?.*}).
+  to_return(status => 200, :body => geocoding, :headers => {})
+  organizations_table.hashes.each do |org|    
     Organization.create! org
   end
 end

@@ -28,6 +28,7 @@ group :test do
   gem 'capybara'
   gem 'webrat'
   gem 'factory_girl_rails', :require => false
+  gem 'webmock'
 end
 group :production do
   gem 'pg'
