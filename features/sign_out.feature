@@ -3,8 +3,8 @@ Feature: Sign out
   So that noone else can use my account
   I want to sign out
 
-Scenario: Sign out
-  Given PENDING that I am logged in as any user
-  When I follow sign out
-  Then I should be on the public home page
+#Scenario: Sign out
+#  Given PENDING that I am logged in as any user
+#  When I follow sign out
+#  Then I should be on the public home page
 
