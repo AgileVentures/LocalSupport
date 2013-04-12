@@ -126,4 +126,22 @@ Given /^PENDING/ do
   pending
 end
 
+Given /^that I am logged in as any user$/ do
+  steps %Q{
+     Given the following users are registered:
+   | email             | password |
+   | jcodefx@gmail.com | pppppppp |
+  } 
+  steps %Q{
+    Given I am on the sign in page
+    And I sign in as "jcodefx@gmail.com" with password "pppppppp"
+  }
+end
 
+When /^I sign out$/ do
+  click_link 'Sign Out' 
+end
+
+Then /^I should be on the home page$/ do
+  current_path.should == root_path()
+end
