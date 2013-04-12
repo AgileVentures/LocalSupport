@@ -1,4 +1,6 @@
 LocalSupport::Application.routes.draw do
+  devise_for :charity_workers
+
   match 'organizations/search' => 'organizations#search'
   resources :organizations
 
