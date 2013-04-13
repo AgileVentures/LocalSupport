@@ -1,0 +1,64 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "64",
+               "short_name" : "64",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "Pinner Road",
+               "short_name" : "Pinner Rd",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Harrow",
+               "short_name" : "Harrow",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Middlesex",
+               "short_name" : "Middlesex",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "United Kingdom",
+               "short_name" : "GB",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "HA1 4HZ",
+               "short_name" : "HA1 4HZ",
+               "types" : [ "postal_code" ]
+            },
+            {
+               "long_name" : "Harrow",
+               "short_name" : "Harrow",
+               "types" : [ "postal_town" ]
+            }
+         ],
+         "formatted_address" : "64 Pinner Road, Harrow, Middlesex HA1 4HZ, UK",
+         "geometry" : {
+            "location" : {
+               "lat" : 51.58134110,
+               "lng" : -0.34680750
+            },
+            "location_type" : "ROOFTOP",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 51.58269008029150,
+                  "lng" : -0.3454585197084979
+               },
+               "southwest" : {
+                  "lat" : 51.57999211970850,
+                  "lng" : -0.3481564802915020
+               }
+            }
+         },
+         "partial_match" : true,
+         "types" : [ "street_address" ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -25,10 +25,11 @@ group :test do
   gem 'cucumber-rails-training-wheels'
   gem 'minitest'
   gem 'ZenTest'
-  gem 'capybara'
+  gem 'capybara', "~> 2.0.0"
   gem 'webrat'
   gem 'factory_girl_rails', :require => false
   gem 'webmock'
+  gem 'uri-handler'
 end
 group :production do
   gem 'pg'
@@ -62,4 +63,5 @@ end
 gem 'gmaps4rails'
 
 #gem 'mongrel'
+
 
