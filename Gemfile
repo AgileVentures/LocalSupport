@@ -26,7 +26,7 @@ group :test do
   gem 'cucumber-rails-training-wheels'
   gem 'minitest'
   gem 'ZenTest'
-  gem 'capybara', "~> 2.0.0"
+  gem 'capybara', '2.0.0'
   gem 'webrat'
   gem 'factory_girl_rails', :require => false
   gem 'webmock'
