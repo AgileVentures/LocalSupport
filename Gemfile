@@ -30,6 +30,7 @@ group :test do
   gem 'webrat'
   gem 'factory_girl_rails', :require => false
   gem 'webmock'
+  gem 'uri-handler'
 end
 group :production do
   gem 'pg'
@@ -63,4 +64,5 @@ end
 gem 'gmaps4rails'
 
 #gem 'mongrel'
+
 

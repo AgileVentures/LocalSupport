@@ -1,4 +1,5 @@
 require 'webmock/cucumber'
+require 'uri-handler'
 
 Given /^I am on the charity page for "(.*?)"$/ do |name1|
   org1 = Organization.find_by_name(name1)
@@ -47,11 +48,20 @@ Then /^I should see search results for "(.*?)" in the map$/ do |search_terms|
   page.should have_xpath "//script[contains(.,'Gmaps.map.markers = #{Organization.search_by_keyword(search_terms).to_gmaps4rails}')]"
 end
 
+def stub_request_with_address(address)
+  filename = "#{address.gsub(/\s/, '_')}.json"
+  filename = File.read "test/fixtures/#{filename}"
+  # Webmock shows URLs with '%20' standing for space, but uri_encode susbtitutes with '+'
+  # So let's fix
+  addr_in_uri = address.uri_encode.gsub(/\+/, "%20")
+  # Stub request, which URL matches Regex
+  stub_request(:get, /http:\/\/maps.googleapis.com\/maps\/api\/geocode\/json\?address=#{addr_in_uri}/).
+  to_return(status => 200, :body => filename, :headers => {})
+end
+
 Given /the following organizations exist/ do |organizations_table|
-  geocoding = File.read "test/fixtures/34_pinner_road.json"
-  stub_request(:get, %r{maps.googleapis.com/maps/api/geocode/json?.*}).
-  to_return(status => 200, :body => geocoding, :headers => {})
-  organizations_table.hashes.each do |org|    
+  organizations_table.hashes.each do |org|
+    stub_request_with_address(org['address'])
     Organization.create! org
   end
 end

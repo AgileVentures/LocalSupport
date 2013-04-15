@@ -1,0 +1,63 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "30",
+               "short_name" : "30",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "Pinner Road",
+               "short_name" : "Pinner Rd",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Harrow",
+               "short_name" : "Harrow",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Greater London",
+               "short_name" : "Gt Lon",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "United Kingdom",
+               "short_name" : "GB",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "HA1 4HZ",
+               "short_name" : "HA1 4HZ",
+               "types" : [ "postal_code" ]
+            },
+            {
+               "long_name" : "Harrow",
+               "short_name" : "Harrow",
+               "types" : [ "postal_town" ]
+            }
+         ],
+         "formatted_address" : "30 Pinner Road, Harrow, Greater London HA1 4HZ, UK",
+         "geometry" : {
+            "location" : {
+               "lat" : 51.58154320,
+               "lng" : -0.3450920
+            },
+            "location_type" : "ROOFTOP",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 51.58289218029150,
+                  "lng" : -0.3437430197084980
+               },
+               "southwest" : {
+                  "lat" : 51.58019421970850,
+                  "lng" : -0.3464409802915021
+               }
+            }
+         },
+         "types" : [ "street_address" ]
+      }
+   ],
+   "status" : "OK"
+}

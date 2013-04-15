@@ -191,6 +191,7 @@ GEM
     uglifier (2.0.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    uri-handler (1.0.2)
     warden (1.2.1)
       rack (>= 1.0)
     webmock (1.11.0)
@@ -231,5 +232,6 @@ DEPENDENCIES
   therubyracer
   turn
   uglifier
+  uri-handler
   webmock
   webrat
