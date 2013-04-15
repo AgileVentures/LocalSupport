@@ -6,8 +6,16 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
+<body>
+<% flash.each do |name, msg| %>
+<%= content_tag :div, msg, :class => "flash #{name}" %>
+<% end %>
+
+<% if charity_worker_signed_in? %>
+Signed in as <%= current_charity_worker.email %>. Not You?
+<%= link_to "Sign Out", destroy_charity_worker_session_path, :method => :delete%>
+<% end %>
 <h1>Harrow Local Support</h1>
 
 <%= yield %>
