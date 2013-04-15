@@ -74,6 +74,10 @@ Given /^I am on the sign in page$/ do
   visit new_charity_worker_session_path
 end
 
+Given /^I am on the new charity page$/ do
+  visit new_organization_path
+end
+
 Given /^I am on the sign up page$/ do
   visit new_charity_worker_registration_path
 end
@@ -82,6 +86,9 @@ Then /^I should be on the new charity page$/ do
  current_path.should == new_organization_path
 end
 
+Then /^I should not see "(.*?)"$/ do |text|
+  page.should_not have_content text
+end
 Then /^I should see "(.*?)"$/ do |text|
   page.should have_content text
 end
@@ -141,4 +148,29 @@ Given /^PENDING/ do
   pending
 end
 
+Given /^that I am logged in as any user$/ do
+  steps %Q{
+     Given the following users are registered:
+   | email             | password |
+   | jcodefx@gmail.com | pppppppp |
+  } 
+  steps %Q{
+    Given I am on the sign in page
+    And I sign in as "jcodefx@gmail.com" with password "pppppppp"
+  }
+end
 
+Then /^I should not be signed in as any user$/ do
+  steps %Q{
+    Given I am on the new charity page
+    Then I should not see "Signed in as"
+  }
+end
+
+When /^I sign out$/ do
+  click_link 'Sign Out' 
+end
+
+Then /^I should be on the home page$/ do
+  current_path.should == root_path()
+end
