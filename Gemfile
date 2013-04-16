@@ -1,6 +1,8 @@
 source 'http://rubygems.org'
 
-gem "rails"#,"3.1.10"
+gem 'rails', '3.1.10'
+gem 'devise'
+
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -25,9 +27,11 @@ group :test do
   gem 'cucumber-rails-training-wheels'
   gem 'minitest'
   gem 'ZenTest'
-  gem 'capybara'
+  gem 'capybara', '2.0.0'
   gem 'webrat'
   gem 'factory_girl_rails', :require => false
+  gem 'webmock'
+  gem 'uri-handler'
 end
 group :production do
   gem 'pg'
@@ -40,6 +44,8 @@ group :assets do
   gem 'sass-rails'#, "~> 3.1.0"
   gem 'coffee-rails'#, "~> 3.1.0"
   gem 'uglifier'
+  gem 'less-rails'
+  gem 'twitter-bootstrap-rails'
 end
 
 gem 'jquery-rails'
