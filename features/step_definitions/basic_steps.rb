@@ -131,6 +131,7 @@ Then /^I should be on the sign in page$/ do
 end
 
 When /^I edit the charity address to be "(.*?)"$/ do |address|
+   stub_request_with_address(address)
    fill_in('organization_address',:with => address)
 end
 
