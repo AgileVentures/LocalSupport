@@ -50,12 +50,6 @@ Given /the following organizations exist/ do |organizations_table|
   end
 end
 
-Given /^the following users are registered:$/ do |charity_workers_table|
-  charity_workers_table.hashes.each do |charity_worker|
-    CharityWorker.create! charity_worker
-  end
-end
-
 When /^I edit the charity address to be "(.*?)"$/ do |address|
    stub_request_with_address(address)
    fill_in('organization_address',:with => address)

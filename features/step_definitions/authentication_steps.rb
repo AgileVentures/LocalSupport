@@ -1,3 +1,16 @@
+Given /^I sign up as "(.*?)" with password "(.*?)" and password confirmation "(.*?)"$/ do |email, password,password_confirmation|
+  fill_in "Email" , :with => email
+  fill_in "charity_worker_password" , :with => password
+  fill_in "charity_worker_password_confirmation" , :with => password_confirmation
+  click_button "Sign up"
+end
+
+Given /^the following users are registered:$/ do |charity_workers_table|
+  charity_workers_table.hashes.each do |charity_worker|
+    CharityWorker.create! charity_worker
+  end
+end
+
 Given /^that I am logged in as any user$/ do
   steps %Q{
      Given the following users are registered:
