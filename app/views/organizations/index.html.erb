@@ -9,12 +9,10 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Address</th>
     <th>Postcode</th>
     <th>Email</th>
     <th>Description</th>
     <th>Website</th>
-    <th>Telephone</th>
     <th></th>
     <th></th>
     <th></th>
@@ -23,12 +21,10 @@
 <% @organizations.each do |organization| %>
   <tr>
     <td><%= organization.name %></td>
-    <td><%= organization.address %></td>
     <td><%= organization.postcode %></td>
     <td><%= organization.email %></td>
     <td><%= organization.description %></td>
     <td><%= organization.website %></td>
-    <td><%= organization.telephone %></td>
     <td><%= link_to 'Show', organization %></td>
     <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
     <td><%= link_to 'Destroy', organization, confirm: 'Are you sure?', method: :delete %></td>
