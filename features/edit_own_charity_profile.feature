@@ -19,6 +19,10 @@ Scenario: Change the address of a charity
   Given I am on the home page
   Then the coordinates for "Friendly Clone" and "Friendly" should be the same
 
-Scenario: By default, not display address and phone number
+Scenario: By default, not display organizations address and phone number on home page
   Given I am on the home page
   Then I should not see any address or telephone information for "Friendly Clone" and "Friendly"
+
+Scenario: By default, not display organizations address and phone number on details page
+  Given I am on the charity page for "Friendly"
+  Then I should not see any address or telephone information for "Friendly"

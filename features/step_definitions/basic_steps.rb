@@ -44,13 +44,19 @@ def check_map(names)
   end
 end
 
-Then /^I should not see any address or telephone information for "(.*?)" and "(.*?)"$/ do |name1, name2|
+Then /^I should not see any address or telephone information for "([^"]*?)" and "([^"]*?)"$/ do |name1, name2|
   org1 = Organization.find_by_name(name1)
   org2 = Organization.find_by_name(name2)
   page.should_not have_content org1.telephone
   page.should_not have_content org1.address
   page.should_not have_content org2.telephone
   page.should_not have_content org2.address
+end
+
+Then /^I should not see any address or telephone information for "([^"]*?)"$/ do |name1|
+  org1 = Organization.find_by_name(name1)
+  page.should_not have_content org1.telephone
+  page.should_not have_content org1.address
 end
 
 
