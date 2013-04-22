@@ -14,6 +14,12 @@ describe "organizations/show.html.erb" do
       rendered.should_not have_content @organization.telephone
     end
     
+    it "should not show edit link by default" do
+      @organization = assign(:organization, organization)
+      render
+      rendered.should_not have_link 'Edit'
+    end
+    
   end
 
   context "has donation info url" do
