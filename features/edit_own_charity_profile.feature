@@ -23,6 +23,10 @@ Scenario: By default, not display organizations address and phone number on home
   Given I am on the home page
   Then I should not see any address or telephone information for "Friendly Clone" and "Friendly"
 
+Scenario: By default, not display organizations edit and delete on home page
+  Given I am on the home page
+  Then I should not see any edit or delete links
+
 Scenario: By default, not display organizations address and phone number on details page
   Given I am on the charity page for "Friendly"
   Then I should not see any address or telephone information for "Friendly"

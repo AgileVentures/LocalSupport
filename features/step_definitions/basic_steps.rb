@@ -59,6 +59,11 @@ Then /^I should not see any address or telephone information for "([^"]*?)"$/ do
   page.should_not have_content org1.address
 end
 
+Then /^I should not see any edit or delete links$/ do
+  page.should_not have_link "Edit"
+  page.should_not have_link "Destroy"
+end
+
 
 Then /^I should see search results for "(.*?)" in the map$/ do |search_terms|
   page.should have_xpath "//script[contains(.,'Gmaps.map.markers = #{Organization.search_by_keyword(search_terms).to_gmaps4rails}')]"

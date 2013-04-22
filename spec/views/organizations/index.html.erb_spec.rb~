@@ -1,12 +1,16 @@
 require 'spec_helper'
 
 describe "organizations/index.html.erb" do
-  org1 = nil
-  org2 = nil
+
+  let(:org1) do
+    stub_model Organization,:name => 'test', :address => "12 pinner rd", :telephone => "1234"
+  end
+
+  let(:org2) do
+    stub_model Organization,:name => 'test', :address => "12 oxford rd", :telephone => "4534"
+  end
 
   before(:each) do
-    org1 = stub_model(Organization,{:name => 'test', :address => "12 pinner rd", :telephone => "1234"})
-    org2 = stub_model(Organization,{:name => 'test', :address => "12 oxford rd", :telephone => "3446"})
     assign(:organizations, [ 
       org1,
       org2
