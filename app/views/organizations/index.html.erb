@@ -5,7 +5,7 @@
   <%= text_field_tag(:q) %>
   <%= submit_tag("Search") %>
 <% end %>
-
+<div style="width:50%;float:right">
 <table>
   <tr>
     <th>Name</th>
@@ -29,8 +29,11 @@
   </tr>
 <% end %>
 </table>
-
+</div>
 <br />
+<div style="width:50%;float:left">
+
 <%= gmaps4rails(@json) %>
 
 <%= link_to 'New Organization', new_organization_path %>
+</div>

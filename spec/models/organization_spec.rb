@@ -16,6 +16,49 @@ describe Organization do
     @org3.save!
   end
 
+  it 'must be able to generate multiple Organizations from text file' do
+
+  end
+
+  it 'must be able to handle no postcode in text representation' do
+    Gmaps4rails.should_receive(:geocode)
+    text = 'HARROW BAPTIST CHURCH,NO INFORMATION RECORDED,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW",http://www.harrow-baptist.org.uk,020 8863 7837'
+    org = Organization.create_from_text(text)
+    expect(org.name).to eq('Harrow Baptist Church')
+    expect(org.description).to eq('No information recorded')
+    expect(org.address).to eq('Harrow Baptist Church, College Road, Harrow')
+    expect(org.postcode).to eq(nil)
+    expect(org.website).to eq('http://www.harrow-baptist.org.uk')
+    expect(org.telephone).to eq('020 8863 7837')
+    expect(org.donation_info).to eq(nil)
+  end
+
+  it 'must be able to handle no address in text representation' do
+    Gmaps4rails.should_receive(:geocode)
+    text = 'HARROW BAPTIST CHURCH,NO INFORMATION RECORDED,,http://www.harrow-baptist.org.uk,020 8863 7837'
+    org = Organization.create_from_text(text)
+    expect(org.name).to eq('Harrow Baptist Church')
+    expect(org.description).to eq('No information recorded')
+    expect(org.address).to eq('')
+    expect(org.postcode).to eq('')
+    expect(org.website).to eq('http://www.harrow-baptist.org.uk')
+    expect(org.telephone).to eq('020 8863 7837')
+    expect(org.donation_info).to eq(nil)
+  end
+
+  it 'must be able to generate Organization from text representation ensuring words in correct case and postcode is extracted from address' do
+    Gmaps4rails.should_receive(:geocode)
+    text = 'HARROW BAPTIST CHURCH,NO INFORMATION RECORDED,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA",http://www.harrow-baptist.org.uk,020 8863 7837'
+    org = Organization.create_from_text(text)
+    expect(org.name).to eq('Harrow Baptist Church')
+    expect(org.description).to eq('No information recorded')
+    expect(org.address).to eq('Harrow Baptist Church, College Road, Harrow')
+    expect(org.postcode).to eq('HA1 1BA')
+    expect(org.website).to eq('http://www.harrow-baptist.org.uk')
+    expect(org.telephone).to eq('020 8863 7837')
+    expect(org.donation_info).to eq(nil)
+  end
+
   it 'must have search by keyword' do
     Organization.should respond_to(:search_by_keyword)
   end

@@ -23,12 +23,18 @@ describe "organizations/index.html.erb" do
     rendered.should have_selector "form input[type='submit']"
   end
 
-  it "does not renders addresses and telephone numbers" do
+  it "does not render addresses and telephone numbers" do
     render
     rendered.should_not have_content org1.address
     rendered.should_not have_content org1.telephone
     rendered.should_not have_content org2.address
     rendered.should_not have_content org2.telephone
+  end
+
+  it "does not renders edit and destroy links" do
+    render
+    rendered.should_not have_link 'Edit'
+    rendered.should_not have_link 'Destroy'
   end
 
 

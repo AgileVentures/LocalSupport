@@ -35,6 +35,8 @@ describe "organizations/index.html.erb" do
     render
     rendered.should_not have_link 'Edit'
     rendered.should_not have_link 'Destroy'
+    rendered.should_not have_content org2.address
+    rendered.should_not have_content org2.telephone
   end
 
 
