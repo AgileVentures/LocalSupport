@@ -16,12 +16,24 @@ describe Organization do
     @org3.save!
   end
 
+  it 'must be able to humanize description' do
+    expect(Organization.humanize_description('THIS IS A GOVERNMENT STRING')).to eq('This is a government string')
+  end
+
+  it 'must be able to humanize nil description' do
+
+  end
+
   it 'must be able to extract postcode' do
     expect(Organization.extract_postcode('HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA')).to eq('HA1 1BA')
   end
 
   it 'must be able to handle postcode extraction when no postcode' do
     expect(Organization.extract_postcode('HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW')).to eq(nil)
+  end
+  
+  it 'must be able to handle postcode extraction when nil address' do
+     expect(Organization.extract_postcode(nil)).to eq(nil)
   end
 
   it 'must be able to generate multiple Organizations from text file' do
@@ -47,8 +59,8 @@ describe Organization do
     org = Organization.create_from_text(text)
     expect(org.name).to eq('Harrow Baptist Church')
     expect(org.description).to eq('No information recorded')
-    expect(org.address).to eq('')
-    expect(org.postcode).to eq('')
+    expect(org.address).to eq(nil)
+    expect(org.postcode).to eq(nil)
     expect(org.website).to eq('http://www.harrow-baptist.org.uk')
     expect(org.telephone).to eq('020 8863 7837')
     expect(org.donation_info).to eq(nil)

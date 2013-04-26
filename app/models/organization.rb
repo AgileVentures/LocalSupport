@@ -27,27 +27,32 @@ class Organization < ActiveRecord::Base
 #.take
   # end
 
-  def self.extract_postcode(address_with_trailing_postcode)
-    match = address_with_trailing_postcode.match(/\s*(\w\w\d\s* \d\w\w)/)
+  def self.humanize_description(unfriendly_description) 
+    unfriendly_description && unfriendly_description.humanize
+  end
+  def self.extract_postcode(address_with_trailing_postcode)  
+    match = address_with_trailing_postcode && address_with_trailing_postcode.match(/\s*(\w\w\d\s* \d\w\w)/)
     match && match[1]
   end
 
   def self.create_from_text(csv_string)
-    #debugger
     parsed = CSV.parse(csv_string)
 
     description = parsed[0][1]
     description = description.humanize if description
+
     name = parsed[0][0] 
     name = name.humanized_all_first_capitals if name
-    address = parsed[0][2].sub(/,\s*\w\w\d\s* \d\w\w/,"")
+
+    address = parsed[0][2] && parsed[0][2].sub(/,\s*\w\w\d\s* \d\w\w/,"")
     address = address.humanized_all_first_capitals if address
 
+    postcode = self.extract_postcode(parsed[0][2])
     #tokens = string.split(',')
     self.create :name => name,
 		:description => description,
 		:address => address,
-    :postcode => self.extract_postcode parsed[0][2],
+                :postcode => postcode,
 		:website => parsed[0][3],
 		:telephone => parsed[0][4]
 
