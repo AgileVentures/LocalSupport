@@ -16,6 +16,14 @@ describe Organization do
     @org3.save!
   end
 
+  it 'must be able to extract postcode' do
+    expect(Organization.extract_postcode('HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA')).to eq('HA1 1BA')
+  end
+
+  it 'must be able to handle postcode extraction when no postcode' do
+    expect(Organization.extract_postcode('HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW')).to eq(nil)
+  end
+
   it 'must be able to generate multiple Organizations from text file' do
 
   end
