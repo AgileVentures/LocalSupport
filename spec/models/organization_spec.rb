@@ -21,7 +21,7 @@ describe Organization do
   end
 
   it 'must be able to humanize nil description' do
-
+    expect(Organization.humanize_description(nil)).to eq(nil)
   end
 
   it 'must be able to extract postcode' do
