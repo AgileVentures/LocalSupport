@@ -39,7 +39,7 @@ class Organization < ActiveRecord::Base
     parsed = CSV.parse(csv_string)
 
     description = parsed[0][1]
-    description = description.humanize if description
+    description = self.humanize_description(description)
 
     name = parsed[0][0] 
     name = name.humanized_all_first_capitals if name
