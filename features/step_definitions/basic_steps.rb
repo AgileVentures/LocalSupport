@@ -160,6 +160,16 @@ When /^I edit the charity address to be "(.*?)"$/ do |address|
    fill_in('organization_address',:with => address)
 end
 
+Given /^I edit the charity address to be "(.*?)" when Google is indisposed$/ do |address|
+   body = %Q({
+   "results" : [],
+   "status" : "ZERO_RESULTS"
+   })
+   stub_request(:get, "http://maps.googleapis.com/maps/api/geocode/json?address=50%20pinner%20road,%20HA1%204HZ&language=en&sensor=false").
+   to_return(:status => 200, :body => body, :headers => {})
+   fill_in('organization_address', :with => address)
+end
+
 Given /^I press "(.*?)"$/ do |button|
   click_button(button)
 end

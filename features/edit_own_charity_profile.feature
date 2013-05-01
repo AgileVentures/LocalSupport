@@ -12,12 +12,19 @@ Background: organizations have been added to database
   | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 |
   | Friendly Clone | Quite Friendly!           | 30 pinner road | HA1 4HZ  | 020800010 |
 
-Scenario: Change the address of a charity
+Scenario: Successfuly change the address of a charity
   Given I am on the edit charity page for "Friendly"
   And I edit the charity address to be "30 pinner road"
   And I press "Update Organization"
   Given I am on the home page
   Then the coordinates for "Friendly Clone" and "Friendly" should be the same
+
+Scenario: Change the address of a charity when Google is indisposed
+  Given I am on the edit charity page for "Friendly"
+  And I edit the charity address to be "50 pinner road" when Google is indisposed
+  And I press "Update Organization"
+  And I am on the home page
+  Then show me the page
 
 Scenario: By default, not display organizations address and phone number on home page
   Given I am on the home page
