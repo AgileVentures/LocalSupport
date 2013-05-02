@@ -19,7 +19,7 @@ describe Organization do
   it 'must update attributes when google is indisposed' do
     Gmaps4rails.should_receive(:geocode).
       and_raise(Gmaps4rails::GeocodeStatus.new(%Q<The address you passed seems invalid, status was: 
-      #OVER_QUERY_LIMIT. Request was: 50 pinner road, HA1 3RE>))
+      OVER_QUERY_LIMIT. Request was: 50 pinner road, HA1 3RE>))
      @org1.update_attributes({:address => '50 pinner road', :postcode => 'HA1 3RE'}).should be_true
   end
   it 'must be able to humanize description' do
