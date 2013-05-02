@@ -59,7 +59,7 @@ describe Organization do
     org = Organization.create_from_text(text)
     expect(org.name).to eq('Harrow Baptist Church')
     expect(org.description).to eq('No information recorded')
-    expect(org.address).to eq(nil)
+    expect(org.address).to eq('')
     expect(org.postcode).to eq(nil)
     expect(org.website).to eq('http://www.harrow-baptist.org.uk')
     expect(org.telephone).to eq('020 8863 7837')

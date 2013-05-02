@@ -38,19 +38,16 @@ class Organization < ActiveRecord::Base
   def self.create_from_text(csv_string)
     parsed = CSV.parse(csv_string)
 
-    description = parsed[0][1]
-    description = self.humanize_description(description)
-
     name = parsed[0][0] 
     name = name.humanized_all_first_capitals if name
 
-    address = parsed[0][2] && parsed[0][2].sub(/,\s*\w\w\d\s* \d\w\w/,"")
+    address = parsed[0][2].to_s.sub(/,\s*\w\w\d\s* \d\w\w/,"")
     address = address.humanized_all_first_capitals if address
 
     postcode = self.extract_postcode(parsed[0][2])
     #tokens = string.split(',')
     self.create :name => name,
-		:description => description,
+		:description => self.humanize_description(parsed[0][1]),
 		:address => address,
                 :postcode => postcode,
 		:website => parsed[0][3],
