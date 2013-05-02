@@ -23,8 +23,7 @@ Scenario: Change the address of a charity when Google is indisposed
   Given I am on the edit charity page for "Friendly"
   And I edit the charity address to be "50 pinner road" when Google is indisposed
   And I press "Update Organization"
-  And I am on the home page
-  Then show me the page
+  Then I should not see the unable to save organization error
 
 Scenario: By default, not display organizations address and phone number on home page
   Given I am on the home page

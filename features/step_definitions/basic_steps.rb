@@ -1,6 +1,10 @@
 require 'webmock/cucumber'
 require 'uri-handler'
 
+Then /^I should not see the unable to save organization error$/ do
+  page.should_not have_content "1 error prohibited this organization from being saved:"
+end
+
 Given /^I am on the charity page for "(.*?)"$/ do |name1|
   org1 = Organization.find_by_name(name1)
   visit organization_path org1.id
@@ -163,7 +167,7 @@ end
 Given /^I edit the charity address to be "(.*?)" when Google is indisposed$/ do |address|
    body = %Q({
    "results" : [],
-   "status" : "ZERO_RESULTS"
+   "status" : "OVER_QUERY_LIMIT"
    })
    stub_request(:get, "http://maps.googleapis.com/maps/api/geocode/json?address=50%20pinner%20road,%20HA1%204HZ&language=en&sensor=false").
    to_return(:status => 200, :body => body, :headers => {})
