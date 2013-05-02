@@ -31,8 +31,8 @@ class Organization < ActiveRecord::Base
     unfriendly_description && unfriendly_description.humanize
   end
   def self.extract_postcode(address_with_trailing_postcode)  
-    match = address_with_trailing_postcode && address_with_trailing_postcode.match(/\s*(\w\w\d\s* \d\w\w)/)
-    match && match[1]
+     match = address_with_trailing_postcode.to_s.match(/\s*(\w\w\d\s* \d\w\w)/)
+     match && match[1]
   end
 
   def self.create_from_text(csv_string)
