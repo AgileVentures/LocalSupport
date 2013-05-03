@@ -1,5 +1,10 @@
 require 'webmock/cucumber'
 require 'uri-handler'
+require 'json'
+
+Then /^the address for "(.*?)" should be "(.*?)"$/ do |name, address|
+  Organization.find_by_name(name).address.should == address
+end
 
 Then /^I should not see the unable to save organization error$/ do
   page.should_not have_content "1 error prohibited this organization from being saved:"
@@ -77,7 +82,7 @@ Then /^I should see search results for "(.*?)" in the map$/ do |search_terms|
   page.should have_xpath "//script[contains(.,'Gmaps.map.markers = #{Organization.search_by_keyword(search_terms).to_gmaps4rails}')]"
 end
 
-def stub_request_with_address(address)
+def stub_request_with_address(address, body = nil)
   filename = "#{address.gsub(/\s/, '_')}.json"
   filename = File.read "test/fixtures/#{filename}"
   # Webmock shows URLs with '%20' standing for space, but uri_encode susbtitutes with '+'
@@ -85,7 +90,7 @@ def stub_request_with_address(address)
   addr_in_uri = address.uri_encode.gsub(/\+/, "%20")
   # Stub request, which URL matches Regex
   stub_request(:get, /http:\/\/maps.googleapis.com\/maps\/api\/geocode\/json\?address=#{addr_in_uri}/).
-  to_return(status => 200, :body => filename, :headers => {})
+  to_return(status => 200, :body => body || filename, :headers => {})
 end
 
 Given /the following organizations exist/ do |organizations_table|
@@ -94,6 +99,21 @@ Given /the following organizations exist/ do |organizations_table|
     Organization.create! org
   end
 end
+
+Given /^Google is no longer indisposed$/ do
+  Organization.find(:all).each {|org| stub_request_with_address(org.address)}
+end
+
+Given /^google is indisposed$/ do
+  body = %Q({
+   "results" : [],
+   "status" : "OVER_QUERY_LIMIT"
+   })
+  Organization.find(:all).each do |org| 
+    stub_request_with_address(org.address, body)
+  end
+end
+
 
 Given /^I am on the home page$/ do
   visit "/"
@@ -169,8 +189,7 @@ Given /^I edit the charity address to be "(.*?)" when Google is indisposed$/ do 
    "results" : [],
    "status" : "OVER_QUERY_LIMIT"
    })
-   stub_request(:get, "http://maps.googleapis.com/maps/api/geocode/json?address=50%20pinner%20road,%20HA1%204HZ&language=en&sensor=false").
-   to_return(:status => 200, :body => body, :headers => {})
+   stub_request_with_address(address, body)
    fill_in('organization_address', :with => address)
 end
 
@@ -184,6 +203,14 @@ Then /^the coordinates for "(.*?)" and "(.*?)" should be the same/ do | org1_nam
   org1_lng = matches[2]
   page.html.should have_content  %Q<{"description":"#{org2_name}","lat":#{org1_lat},"lng":#{org1_lng}}>
 end
+
+Then /^the coordinates for "(.*?)" should be correct$/ do |orgname|
+  filename = "#{Organization.find_by_name(orgname).address.gsub(/\s/, '_')}.json"
+  filename = File.read "test/fixtures/#{filename}"
+  coords = JSON.parse(filename)["results"][0]["geometry"]["location"]
+  page.html.should have_content %Q<{"description":"#{orgname}","lat":#{coords["lat"]},"lng":#{coords["lng"]}}>
+end
+
 Given /^PENDING/ do
   pending
 end

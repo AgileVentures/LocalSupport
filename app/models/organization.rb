@@ -1,5 +1,5 @@
 class Organization < ActiveRecord::Base
-  acts_as_gmappable :check_process => false
+  acts_as_gmappable :check_process => false, :validation => false
 
   def self.search_by_keyword(keyword)
     self.where("description LIKE ?","%#{keyword}%")
