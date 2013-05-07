@@ -12,7 +12,6 @@
     <th>Postcode</th>
     <th>Email</th>
     <th>Description</th>
-    <th></th>
   </tr>
 
 <% @organizations.each do |organization| %>
@@ -21,7 +20,7 @@
     <td><%= organization.postcode %></td>
     <td><%= organization.email %></td>
     <td><%= organization.description %></td>
-    <td><%= link_to 'Show', organization %></td>
+<!-- TODO truncate(organization.description, :length => 25, :omission => link_to '... (continued)', organization) --> 
   </tr>
 <% end %>
 </table>
