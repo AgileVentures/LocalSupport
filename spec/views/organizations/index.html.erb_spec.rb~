@@ -3,11 +3,11 @@ require 'spec_helper'
 describe "organizations/index.html.erb" do
 
   let(:org1) do
-    stub_model Organization,:name => 'test', :address => "12 pinner rd", :telephone => "1234"
+    stub_model Organization,:name => 'test', :address => "12 pinner rd", :telephone => "1234", :website => 'http://a.com'
   end
 
   let(:org2) do
-    stub_model Organization,:name => 'test', :address => "12 oxford rd", :telephone => "4534"
+    stub_model Organization,:name => 'test', :address => "12 oxford rd", :telephone => "4534", :website => 'http://b.com'
   end
 
   before(:each) do
@@ -23,6 +23,12 @@ describe "organizations/index.html.erb" do
     rendered.should have_selector "form input[type='submit']"
   end
 
+  it "render organization names with hyperlinks" do
+    render
+    rendered.should have_link org1.name, :href => org1.website
+    rendered.should have_link org2.name, :href => org2.website
+  end
+
   it "does not render addresses and telephone numbers" do
     render
     rendered.should_not have_content org1.address
@@ -35,6 +41,8 @@ describe "organizations/index.html.erb" do
     render
     rendered.should_not have_link 'Edit'
     rendered.should_not have_link 'Destroy'
+    rendered.should_not have_content org2.address
+    rendered.should_not have_content org2.telephone
   end
 
 
