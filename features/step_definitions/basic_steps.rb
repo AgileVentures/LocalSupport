@@ -80,6 +80,7 @@ end
 def check_contact_details(name)
   org = Organization.find_by_name(name)
   page.should have_link name, :href => organization_path(org.id)
+  page.should have_content org.description.truncate(24,:omission=>' ...')
 end
 
 

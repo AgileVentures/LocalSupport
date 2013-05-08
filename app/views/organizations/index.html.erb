@@ -19,7 +19,7 @@
     <td><%= link_to organization.name, organization %></td>
     <td><%= organization.postcode %></td>
     <td><%= organization.email %></td>
-    <td><%= organization.description %></td>
+    <td><%= truncate(organization.description, :length => 24, :omission => ' ...') %></td>
 <!-- TODO truncate(organization.description, :length => 25, :omission => link_to '... (continued)', organization) --> 
   </tr>
 <% end %>

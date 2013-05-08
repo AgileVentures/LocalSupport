@@ -6,10 +6,10 @@ Feature: Local Resident seeking Support
 Background: organizations have been added to database
   
   Given the following organizations exist:
-  | name                            | description               | address        | postcode | website       |
-  | Harrow Bereavement Counselling  | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | http://a.com/ |
-  | Indian Elders Association       | Care for the elderly      | 64 pinner road | HA1 4HA  | http://b.com/ |
-  | Age UK                          | Care for the elderly      | 84 pinner road | HA1 4HF  | http://c.com/ |
+  | name                            | description                      | address        | postcode | website       |
+  | Harrow Bereavement Counselling  | Harrow Bereavement Counselling   | 34 pinner road | HA1 4HZ  | http://a.com/ |
+  | Indian Elders Association       | Care for the elderly             | 64 pinner road | HA1 4HA  | http://b.com/ |
+  | Age UK                          | Care for the elderly             | 84 pinner road | HA1 4HF  | http://c.com/ |
 
 @show
 Scenario: Show all charities on homepage map
