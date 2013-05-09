@@ -30,15 +30,26 @@ class Organization < ActiveRecord::Base
     {:address => address, :postcode => postcode}
   end
 
-  def self.create_from_array(array)
-    address = self.parse_address(array[2])
+  #Title,Charity Number,Activities,Contact Name,Contact Address,website,Contact Telephone,date registered,date removed,accounts date,spending,income,company number,OpenlyLocalURL,twitter account name,facebook account name,youtube account name,feed url,Charity Classification,signed up for 1010,last checked,created at,updated at,Removed?
 
-    self.create :name => array[0].to_s.humanized_all_first_capitals,
-		:description => self.humanize_description(array[1]),
+  @@NAME_COLUMN = 0
+  @@DESCRIPTION_COLUMN = 2
+  @@ADDRESS_COLUMN = 4
+  @@WEBSITE_COLUMN = 5
+  @@TELEPHONE_COLUMN = 6
+  @@DATE_REMOVED_COLUMN = 8
+
+  def self.create_from_array(array)
+    return nil if array[@@DATE_REMOVED_COLUMN]
+
+    address = self.parse_address(array[@@ADDRESS_COLUMN])
+
+    self.create :name => array[@@NAME_COLUMN].to_s.humanized_all_first_capitals,
+		:description => self.humanize_description(array[@@DESCRIPTION_COLUMN]),
 		:address => address[:address].humanized_all_first_capitals,
                 :postcode => address[:postcode],
-		:website => array[3],
-		:telephone => array[4]
+		:website => array[@@WEBSITE_COLUMN],
+		:telephone => array[@@TELEPHONE_COLUMN]
   end
 
   def self.import_addresses(filename,limit)
