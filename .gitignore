@@ -17,3 +17,4 @@ rerun.txt
 pickle-email-*.html
 *.*~
 *~
+/.idea/*

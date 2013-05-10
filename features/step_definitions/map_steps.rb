@@ -32,7 +32,7 @@ Then /^I should see search results for "(.*?)" in the map$/ do |search_terms|
   page.should have_xpath "//script[contains(.,'Gmaps.map.markers = #{Organization.search_by_keyword(search_terms).to_gmaps4rails}')]"
 end
 
-def stub_request_with_address(address)
+def stub_request_with_address(address, body = nil)
   filename = "#{address.gsub(/\s/, '_')}.json"
   filename = File.read "test/fixtures/#{filename}"
   # Webmock shows URLs with '%20' standing for space, but uri_encode susbtitutes with '+'
@@ -40,7 +40,7 @@ def stub_request_with_address(address)
   addr_in_uri = address.uri_encode.gsub(/\+/, "%20")
   # Stub request, which URL matches Regex
   stub_request(:get, /http:\/\/maps.googleapis.com\/maps\/api\/geocode\/json\?address=#{addr_in_uri}/).
-  to_return(status => 200, :body => filename, :headers => {})
+      to_return(status => 200, :body => body || filename, :headers => {})
 end
 
 Given /the following organizations exist/ do |organizations_table|
