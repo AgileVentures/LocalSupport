@@ -103,11 +103,21 @@ describe Organization do
     @org1.update_attributes :address => new_address
   end
 
-it 'should geocode when new object is created' do
-    address = '60 pinner road'
-    postcode = 'HA1 3RE'
-    Gmaps4rails.should_receive(:geocode).with("#{address}, #{postcode}", "en", false, "http")
-    org = FactoryGirl.build(:organization,:address => address, :postcode => postcode, :name => 'Happy and Nice', :gmaps => true)
-    org.save
+  it 'should geocode when new object is created' do
+      address = '60 pinner road'
+      postcode = 'HA1 3RE'
+      Gmaps4rails.should_receive(:geocode).with("#{address}, #{postcode}", "en", false, "http")
+      org = FactoryGirl.build(:organization,:address => address, :postcode => postcode, :name => 'Happy and Nice', :gmaps => true)
+      org.save
+  end
+
+  it 'should delete geocoding errors and save organization' do
+    new_address = '777 pinner road'
+    Gmaps4rails.should_receive(:geocode).and_raise(Gmaps4rails::GeocodeInvalidQuery)
+    @org1.address = new_address
+    @org1.update_attributes :address => new_address
+    @org1.errors['gmaps4rails_address'].should be_empty
+    actual_address = Organization.find_by_name(@org1.name).address
+    actual_address.should eq new_address
   end
 end

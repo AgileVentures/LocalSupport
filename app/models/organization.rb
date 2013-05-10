@@ -1,5 +1,12 @@
 class Organization < ActiveRecord::Base
-  acts_as_gmappable :check_process => false, :validation => false
+  acts_as_gmappable :check_process => false
+
+  #This method is overridden to save organization if address was failed to geocode
+  def run_validations!
+    run_callbacks :validate
+    remove_errors_with_address
+    errors.empty?
+  end
 
   def self.search_by_keyword(keyword)
     self.where("description LIKE ?","%#{keyword}%")
@@ -56,6 +63,18 @@ class Organization < ActiveRecord::Base
 		:website => parsed[0][3],
 		:telephone => parsed[0][4]
 
+  end
+
+  private
+
+  def remove_errors_with_address
+    errors_hash = errors.to_hash
+    errors.clear
+    errors_hash.each do |key, value|
+      if key.to_s != 'gmaps4rails_address'
+        errors.add(key, value)
+      end
+    end
   end
 
   #def self.import_build_addresses(filename)

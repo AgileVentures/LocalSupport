@@ -26,9 +26,10 @@ Scenario: Change the address of a charity when Google is indisposed
   Then I should not see the unable to save organization error
   Then the address for "Friendly" should be "83 pinner road"
   And I am on the home page
-  Given Google is no longer indisposed
-  And I am on the home page
-  Then the coordinates for "Friendly" should be correct
+#  Given Google is no longer indisposed
+#  And I am on the home page
+#  Then the coordinates for "Friendly" should be correct
+#  Then show me the page
 
 Scenario: By default, not display organizations address and phone number on home page
   Given I am on the home page
