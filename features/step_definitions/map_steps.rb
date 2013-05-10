@@ -1,22 +1,30 @@
 
 # could we move maps stuff into separate step file and couldn't these things be DRYer ...
 # e.g. one step to handle 2 or more orgs ...
-Then /^I should see "([^"]*?)", "([^"]*?)" and "([^"]*?)" in the map$/ do |name1, name2, name3|
+Then /^I should see "([^"]*?)", "([^"]*?)" and "([^"]*?)" in the map centered on local organizations$/ do |name1, name2, name3|
   check_map([name1,name2,name3])
+  page.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
+  page.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_zoom = true')]"
+  page.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_latitude = 51.5978')]"
+  page.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_longitude = -0.337')]"
+  page.should have_xpath "//script[contains(.,'Gmaps.map.map_options.zoom = 13')]"
+  page.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
 end
 
 Then /^I should see "([^"]*?)" and "([^"]*?)" in the map$/ do |name1, name2|
   check_map([name1,name2])
 end
 
+
 def check_map(names)
-  # this is specific to cehcking for all items when we want a generic one
+  # this is specific to checking for all items when we want a generic one
   #page.should have_xpath "//script[contains(.,'Gmaps.map.markers = #{Organization.all.to_gmaps4rails}')]"
 
   names.each do |name|
     #org = Organization.find_by_name(name)
     Organization.all.to_gmaps4rails.should match(name)
   end
+  pending("need to actually check content of page")
 end
 
 

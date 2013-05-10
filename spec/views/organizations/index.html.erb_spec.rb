@@ -15,17 +15,16 @@ describe "organizations/index.html.erb" do
   end
 
   before(:each) do
+    render
     assign(:organizations, organizations)
   end
 
   it "renders a search form" do
-    render
     rendered.should have_selector "form input[name='q']"
     rendered.should have_selector "form input[type='submit']"
   end
 
   it "render organization names with hyperlinks" do
-    render
     organizations.each do |org|
       rendered.should have_link org.name, :href => organization_path(org.id)
       rendered.should have_content org.description.truncate(24,:omission=>' ...')
@@ -33,7 +32,6 @@ describe "organizations/index.html.erb" do
   end
 
   it "does not render addresses and telephone numbers" do
-    render
     rendered.should_not have_content org1.address
     rendered.should_not have_content org1.telephone
     rendered.should_not have_content org2.address
@@ -41,13 +39,19 @@ describe "organizations/index.html.erb" do
   end
 
   it "does not renders edit and destroy links" do
-    render
     rendered.should_not have_link 'Edit'
     rendered.should_not have_link 'Destroy'
     rendered.should_not have_content org2.address
     rendered.should_not have_content org2.telephone
   end
 
+  it "displays the javascript for a google map" do
+    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
+    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_zoom = true')]"
+    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_latitude = 51.5978')]"
+    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_longitude = -0.337')]"
+    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.zoom = 13')]"
+    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
+  end
 
-    
 end
