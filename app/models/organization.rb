@@ -79,6 +79,10 @@ class Organization < ActiveRecord::Base
     errors_hash.each do |key, value|
       if key.to_s != 'gmaps4rails_address'
         errors.add(key, value)
+      else
+        # nullify coordinates
+        self.latitude = nil
+        self.longitude = nil
       end
     end
   end
