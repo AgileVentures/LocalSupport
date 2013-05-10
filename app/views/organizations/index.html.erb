@@ -12,20 +12,15 @@
     <th>Postcode</th>
     <th>Email</th>
     <th>Description</th>
-    <th>Website</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @organizations.each do |organization| %>
   <tr>
-    <td><%= organization.name %></td>
+    <td><%= link_to organization.name, organization %></td>
     <td><%= organization.postcode %></td>
     <td><%= organization.email %></td>
-    <td><%= organization.description %></td>
-    <td><%= organization.website %></td>
-    <td><%= link_to 'Show', organization %></td>
+    <td><%= truncate(organization.description, :length => 24, :omission => ' ...') %></td>
+<!-- TODO truncate(organization.description, :length => 25, :omission => link_to '... (continued)', organization) --> 
   </tr>
 <% end %>
 </table>
@@ -33,7 +28,8 @@
 <br />
 <div style="width:50%;float:left">
 
-<%= gmaps4rails(@json) %>
+<%= gmaps("map_options" => { "auto_adjust" => false, "auto_zoom" => true, "center_latitude" => 51.5978,
+                               "center_longitude" => -0.3370, "zoom" => 13},"markers" => { "data" => @json }) %>
 
 <%= link_to 'New Organization', new_organization_path %>
 </div>
