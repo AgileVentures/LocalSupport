@@ -8,17 +8,4 @@
 
 require 'csv'
 
-num = 30
-
-count = 0
-#csv_text = File.open('db/data.csv', 'r:ISO-8859-1')
-#csv = CSV.parse(csv_text, :headers => true)
-File.open('db/data.csv', 'r:ISO-8859-1').each_line do |line|
-#csv.each do |row|
-  if count > num
-    break
-  end
-  count += 1
-  Organization.create_from_text(line)
-end
-#Organization.import_build_addresses 'db/data.csv'
+Organization.import_addresses 'db/data.csv', 1006

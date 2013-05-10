@@ -1,10 +1,11 @@
 require 'spec_helper'
+
 describe Organization do
 
   before do
     FactoryGirl.factories.clear
     FactoryGirl.find_definitions
-    #2 was chosen from error message of failed testcase
+
     @org1 = FactoryGirl.build(:organization, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate')
     Gmaps4rails.should_receive(:geocode)
     @org1.save!
@@ -16,12 +17,6 @@ describe Organization do
     @org3.save!
   end
 
-  it 'must update attributes when google is indisposed' do
-    Gmaps4rails.should_receive(:geocode).
-      and_raise(Gmaps4rails::GeocodeStatus.new(%Q<The address you passed seems invalid, status was: 
-      OVER_QUERY_LIMIT. Request was: 50 pinner road, HA1 3RE>))
-     @org1.update_attributes({:address => '50 pinner road', :postcode => 'HA1 3RE'}).should be_true
-  end
   it 'must be able to humanize description' do
     expect(Organization.humanize_description('THIS IS A GOVERNMENT STRING')).to eq('This is a government string')
   end
@@ -30,30 +25,45 @@ describe Organization do
     expect(Organization.humanize_description(nil)).to eq(nil)
   end
 
-  it 'must be able to extract postcode' do
-    expect(Organization.extract_postcode('HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA')).to eq('HA1 1BA')
+  it 'must be able to extract postcode and address' do
+    expect(Organization.parse_address('HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA')).to eq({:address => 'HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW', :postcode => 'HA1 1BA'})
   end
 
   it 'must be able to handle postcode extraction when no postcode' do
-    expect(Organization.extract_postcode('HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW')).to eq(nil)
+    expect(Organization.parse_address('HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW')).to eq({:address =>'HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW', :postcode => ''})
   end
   
   it 'must be able to handle postcode extraction when nil address' do
-     expect(Organization.extract_postcode(nil)).to eq(nil)
+     expect(Organization.parse_address(nil)).to eq({:address =>'', :postcode => ''})
+  end
+
+  it 'can humanize with all first capitals' do
+    expect("HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW".humanized_all_first_capitals).to eq("Harrow Baptist Church, College Road, Harrow")
+  end
+
+  it 'must not create org when date removed is not nil' do
+    text = 'HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,2009-05-28,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****'
+    org = Organization.create_from_array(CSV.parse(text)[0])
+    org.should be_nil
   end
 
   it 'must be able to generate multiple Organizations from text file' do
-
+    attempted_number_to_import = 1006
+    actual_number_to_import = 642
+    Gmaps4rails.should_receive(:geocode).exactly(actual_number_to_import)
+    lambda {
+      Organization.import_addresses 'db/data.csv', attempted_number_to_import
+    }.should change(Organization, :count).by(actual_number_to_import)
   end
 
   it 'must be able to handle no postcode in text representation' do
     Gmaps4rails.should_receive(:geocode)
-    text = 'HARROW BAPTIST CHURCH,NO INFORMATION RECORDED,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW",http://www.harrow-baptist.org.uk,020 8863 7837'
-    org = Organization.create_from_text(text)
+    text = 'HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****'
+    org = Organization.create_from_array(CSV.parse(text)[0])
     expect(org.name).to eq('Harrow Baptist Church')
     expect(org.description).to eq('No information recorded')
     expect(org.address).to eq('Harrow Baptist Church, College Road, Harrow')
-    expect(org.postcode).to eq(nil)
+    expect(org.postcode).to eq('')
     expect(org.website).to eq('http://www.harrow-baptist.org.uk')
     expect(org.telephone).to eq('020 8863 7837')
     expect(org.donation_info).to eq(nil)
@@ -61,12 +71,12 @@ describe Organization do
 
   it 'must be able to handle no address in text representation' do
     Gmaps4rails.should_receive(:geocode)
-    text = 'HARROW BAPTIST CHURCH,NO INFORMATION RECORDED,,http://www.harrow-baptist.org.uk,020 8863 7837'
-    org = Organization.create_from_text(text)
+    text = 'HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,,http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****'
+    org = Organization.create_from_array(CSV.parse(text)[0])
     expect(org.name).to eq('Harrow Baptist Church')
     expect(org.description).to eq('No information recorded')
-    expect(org.address).to eq(nil)
-    expect(org.postcode).to eq(nil)
+    expect(org.address).to eq('')
+    expect(org.postcode).to eq('')
     expect(org.website).to eq('http://www.harrow-baptist.org.uk')
     expect(org.telephone).to eq('020 8863 7837')
     expect(org.donation_info).to eq(nil)
@@ -74,8 +84,8 @@ describe Organization do
 
   it 'must be able to generate Organization from text representation ensuring words in correct case and postcode is extracted from address' do
     Gmaps4rails.should_receive(:geocode)
-    text = 'HARROW BAPTIST CHURCH,NO INFORMATION RECORDED,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA",http://www.harrow-baptist.org.uk,020 8863 7837'
-    org = Organization.create_from_text(text)
+    text = 'HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****'
+    org = Organization.create_from_array(CSV.parse(text)[0])
     expect(org.name).to eq('Harrow Baptist Church')
     expect(org.description).to eq('No information recorded')
     expect(org.address).to eq('Harrow Baptist Church, College Road, Harrow')
