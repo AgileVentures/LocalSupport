@@ -77,6 +77,23 @@ Then /^I should see contact details for "([^"]*?)", "([^"]*?)" and "(.*?)"$/ do 
   check_contact_details text3
 end
 
+Given /^I edit the charity address to be "(.*?)" when Google is indisposed$/ do |address|
+  body = %Q({
+"results" : [],
+"status" : "OVER_QUERY_LIMIT"
+})
+  stub_request_with_address(address, body)
+  fill_in('organization_address', :with => address)
+end
+
+Then /^I should not see the unable to save organization error$/ do
+  page.should_not have_content "1 error prohibited this organization from being saved:"
+end
+
+Then /^the address for "(.*?)" should be "(.*?)"$/ do |name, address|
+  Organization.find_by_name(name).address.should == address
+end
+
 def check_contact_details(name)
   org = Organization.find_by_name(name)
   page.should have_link name, :href => organization_path(org.id)
