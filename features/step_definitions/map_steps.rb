@@ -21,10 +21,10 @@ def check_map(names)
   #page.should have_xpath "//script[contains(.,'Gmaps.map.markers = #{Organization.all.to_gmaps4rails}')]"
 
   names.each do |name|
+    page.should have_xpath "//script[contains(.,'#{name}')]"
     #org = Organization.find_by_name(name)
     Organization.all.to_gmaps4rails.should match(name)
   end
-  pending("need to actually check content of page")
 end
 
 
