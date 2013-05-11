@@ -15,6 +15,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'rspec-rails'
   gem 'execjs'
+  gem 'therubyracer'
 end
 
 group :development do
@@ -34,6 +35,7 @@ group :test do
   gem 'uri-handler'
 end
 group :production do
+  gem 'therubyracer-heroku'
   gem 'pg'
 end
 
@@ -41,7 +43,6 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails'#, "~> 3.1.0"
   gem 'coffee-rails'#, "~> 3.1.0"
   gem 'uglifier'
   gem 'less-rails'
@@ -64,6 +65,5 @@ group :test do
   gem 'turn', :require => false
 end
 
-gem 'therubyracer'
 gem 'gmaps4rails'
 #gem 'mongrel'
