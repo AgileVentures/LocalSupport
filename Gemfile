@@ -15,7 +15,6 @@ group :development, :test do
   gem 'simplecov'
   gem 'rspec-rails'
   gem 'execjs'
-  gem 'therubyracer'
 end
 
 group :development do
@@ -65,5 +64,6 @@ group :test do
   gem 'turn', :require => false
 end
 
+gem 'therubyracer'
 gem 'gmaps4rails'
 #gem 'mongrel'
