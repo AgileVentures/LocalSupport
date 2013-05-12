@@ -5,6 +5,7 @@
  *= require_self
  *= require_tree . 
 */
+
 .flash {
 text-align: center;
 padding: .3em .4em;

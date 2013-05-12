@@ -35,7 +35,6 @@ group :test do
   gem 'uri-handler'
 end
 group :production do
-  gem 'therubyracer-heroku'
   gem 'pg'
 end
 
@@ -46,6 +45,7 @@ group :assets do
   gem 'coffee-rails'#, "~> 3.1.0"
   gem 'uglifier'
   gem 'less-rails'
+  gem 'sass-rails'
   gem 'twitter-bootstrap-rails'
 end
 
