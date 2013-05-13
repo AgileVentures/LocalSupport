@@ -21,10 +21,10 @@ def check_map(names)
   #page.should have_xpath "//script[contains(.,'Gmaps.map.markers = #{Organization.all.to_gmaps4rails}')]"
 
   names.each do |name|
+    page.should have_xpath "//script[contains(.,'#{name}')]"
     #org = Organization.find_by_name(name)
     Organization.all.to_gmaps4rails.should match(name)
   end
-  pending("need to actually check content of page")
 end
 
 
@@ -47,12 +47,6 @@ Given /the following organizations exist/ do |organizations_table|
   organizations_table.hashes.each do |org|
     stub_request_with_address(org['address'])
     Organization.create! org
-  end
-end
-
-Given /^the following users are registered:$/ do |charity_workers_table|
-  charity_workers_table.hashes.each do |charity_worker|
-    CharityWorker.create! charity_worker
   end
 end
 
