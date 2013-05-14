@@ -17,9 +17,14 @@ Signed in as <%= current_charity_worker.email %>. Not You?
 <%= link_to "Sign Out", destroy_charity_worker_session_path, :method => :delete%>
 <% end %>
 <h1>Harrow Local Support</h1>
-
-<%= yield %>
-
+<div class="row">
+  <div class="span4">
+    <%= yield :map %>
+  </div>
+  <div class="span8">
+    <%= yield %>
+  </div>
+</div>
 <%= yield :scripts %>
 </body>
 </html>
