@@ -29,4 +29,9 @@
 <%= donation_info_msg %>
 </div>
 
-<%= link_to 'Back', organizations_path %>
+<%= link_to 'Back', organizations_path, {:class => 'btn btn-large'} %>
+
+<% content_for :map do %>
+    <%= gmaps("map_options" => {"auto_adjust" => true, "auto_zoom" => false, "center_latitude" => 51.5978,
+                                "center_longitude" => -0.3370, "zoom" => 13}, "markers" => {"data" => @json}) %>
+<% end %>

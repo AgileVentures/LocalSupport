@@ -1,35 +1,37 @@
 <h2>Local organizations</h2>
 
 <%= form_tag("/organizations/search", :method => "get") do %>
-  <%= label_tag(:q, "Search Organizations for:") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Search") %>
+    <%= label_tag(:q, "Search Organizations for:") %>
+    <%= text_field_tag(:q) %>
+    <%= submit_tag "Search", :class => 'btn btn-info' %>
 <% end %>
-<div style="width:50%;float:right">
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Postcode</th>
-    <th>Email</th>
-    <th>Description</th>
-  </tr>
 
-<% @organizations.each do |organization| %>
-  <tr>
-    <td><%= link_to organization.name, organization %></td>
-    <td><%= organization.postcode %></td>
-    <td><%= organization.email %></td>
-    <td><%= truncate(organization.description, :length => 24, :omission => ' ...') %></td>
-<!-- TODO truncate(organization.description, :length => 25, :omission => link_to '... (continued)', organization) --> 
-  </tr>
-<% end %>
-</table>
+<div class="table table-bordered">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Postcode</th>
+      <th>Email</th>
+      <th>Description</th>
+    </tr>
+
+    <% @organizations.each do |organization| %>
+        <tr>
+          <td><%= link_to organization.name, organization %></td>
+          <td><%= organization.postcode %></td>
+          <td><%= organization.email %></td>
+          <td><%= truncate(organization.description, :length => 24, :omission => ' ...') %></td>
+          <!-- TODO truncate(organization.description, :length => 25, :omission => link_to '... (continued)', organization) -->
+        </tr>
+    <% end %>
+  </table>
 </div>
-<br />
+<br/>
 <div style="width:50%;float:left">
-
-<%= gmaps("map_options" => { "auto_adjust" => false, "auto_zoom" => true, "center_latitude" => 51.5978,
-                              "center_longitude" => -0.3370, "zoom" => 13},"markers" => { "data" => @json }) %>
-
-<%= link_to 'New Organization', new_organization_path %>
+  <%= link_to 'New Organization', new_organization_path %>
 </div>
+
+<% content_for :map do %>
+    <%= gmaps("map_options" => {"auto_adjust" => false, "auto_zoom" => true, "center_latitude" => 51.5978,
+                                "center_longitude" => -0.3370, "zoom" => 13}, "markers" => {"data" => @json}) %>
+<% end %>
