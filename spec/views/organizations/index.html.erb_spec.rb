@@ -56,7 +56,7 @@ describe "organizations/index.html.erb" do
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_zoom = true')]"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_latitude = 51.5978')]"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_longitude = -0.337')]"
-    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.zoom = 13')]"
+    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.zoom = 12')]"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
   end
 

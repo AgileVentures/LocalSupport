@@ -14,7 +14,6 @@ group :development, :test do
   gem 'simplecov'
   gem 'rspec-rails'
   gem 'execjs'
-  gem 'spork'
 end
 
 group :development do
@@ -26,7 +25,6 @@ end
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
-  gem 'minitest'
   gem 'ZenTest'
   gem 'capybara', '2.0.0'
   gem 'webrat'

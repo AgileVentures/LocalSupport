@@ -7,7 +7,7 @@ Then /^I should see "([^"]*?)", "([^"]*?)" and "([^"]*?)" in the map centered on
   page.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_zoom = true')]"
   page.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_latitude = 51.5978')]"
   page.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_longitude = -0.337')]"
-  page.should have_xpath "//script[contains(.,'Gmaps.map.map_options.zoom = 13')]"
+  page.should have_xpath "//script[contains(.,'Gmaps.map.map_options.zoom = 12')]"
   page.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
 end
 

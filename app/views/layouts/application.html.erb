@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>LocalSupport</title>
+  <title>Harrow Community Network</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -16,7 +16,7 @@
 Signed in as <%= current_charity_worker.email %>. Not You?
 <%= link_to "Sign Out", destroy_charity_worker_session_path, :method => :delete%>
 <% end %>
-<h1>Harrow Local Support</h1>
+<h1>Harrow Community Network</h1>
 <div class="row">
   <div class="span4">
     <%= yield :map %>

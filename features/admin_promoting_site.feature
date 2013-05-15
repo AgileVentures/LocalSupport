@@ -5,5 +5,5 @@ Feature: Admin promoting site
 
 Scenario: Be aware of site identity
   Given I am on the home page
-  Then I should see "Harrow Local Support"
+  Then I should see "Harrow Community Network"
 
