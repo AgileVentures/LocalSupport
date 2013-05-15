@@ -3,7 +3,6 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.10'
 gem 'devise'
 
-
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
@@ -15,10 +14,12 @@ group :development, :test do
   gem 'simplecov'
   gem 'rspec-rails'
   gem 'execjs'
+  gem 'spork'
 end
 
 group :development do
-  gem 'ruby-debug19', :require => 'ruby-debug'
+  #gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'debugger'
   gem 'railroady'
 end
 
