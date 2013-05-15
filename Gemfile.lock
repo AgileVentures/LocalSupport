@@ -110,7 +110,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.23)
-    minitest (5.0.1)
+    minitest (4.7.1)
     multi_json (1.2.0)
     nokogiri (1.5.9)
     orm_adapter (0.4.0)
@@ -171,7 +171,6 @@ GEM
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
-    spork (0.9.2)
     sprockets (2.0.4)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -234,7 +233,6 @@ DEPENDENCIES
   rspec-rails
   sass-rails
   simplecov
-  spork
   sqlite3
   therubyracer
   turn
