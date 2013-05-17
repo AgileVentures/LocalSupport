@@ -121,12 +121,31 @@ describe Organization do
       org.save
   end
 
+  #TODO: refactor with expect{} instead of should as Rspec 2 promotes
   it 'should delete geocoding errors and save organization' do
     new_address = '777 pinner road'
+    @org1.latitude = 77
+    @org1.longitude = 77
     Gmaps4rails.should_receive(:geocode).and_raise(Gmaps4rails::GeocodeInvalidQuery)
     @org1.address = new_address
     @org1.update_attributes :address => new_address
     @org1.errors['gmaps4rails_address'].should be_empty
+    actual_address = Organization.find_by_name(@org1.name).address
+    actual_address.should eq new_address
+    @org1.latitude.should eq nil
+    @org1.longitude.should eq nil
+  end
+
+  it 'should attempt to geocode after failed' do
+    Gmaps4rails.should_receive(:geocode).and_raise(Gmaps4rails::GeocodeInvalidQuery)
+    @org1.save!
+    new_address = '60 pinner road'
+    Gmaps4rails.should_receive(:geocode)
+    lambda{
+      @org1.address = new_address
+      # destructive save is called to raise exception if saving fails
+      @org1.save!
+    }.should_not raise_error
     actual_address = Organization.find_by_name(@org1.name).address
     actual_address.should eq new_address
   end
