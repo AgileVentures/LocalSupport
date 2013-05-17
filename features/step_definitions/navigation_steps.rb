@@ -5,6 +5,9 @@ end
 Then /^I should be on the home page$/ do
   current_path.should == root_path()
 end
+Given /^I am on the charity search page$/ do
+  visit organizations_search_path
+end
 
 Given /^I am on the new charity page$/ do
   visit new_organization_path
