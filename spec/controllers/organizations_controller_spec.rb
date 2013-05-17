@@ -102,6 +102,12 @@ describe OrganizationsController do
         mock_organization.should_receive(:update_attributes).with({'these' => 'params'})
         put :update, :id => "37", :organization => {'these' => 'params'}
       end
+      
+      it "updates donation_info url" do
+        Organization.should_receive(:find).with("37"){mock_organization}
+        mock_organization.should_receive(:update_attributes).with({'donation_info' => 'http://www.friendly.com/donate'})
+        put :update, :id => "37", :organization => {'donation_info' => 'http://www.friendly.com/donate'}
+      end
 
       it "assigns the requested organization as @organization" do
         Organization.stub(:find) { mock_organization(:update_attributes => true) }
