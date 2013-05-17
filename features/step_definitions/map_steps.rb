@@ -55,6 +55,10 @@ When /^I edit the charity address to be "(.*?)"$/ do |address|
    fill_in('organization_address',:with => address)
 end
 
+Given /^I edit the donation url to be "(.*?)"$/ do |url|
+  fill_in('organization_donation_info', :with => url)
+end
+
 Then /^the coordinates for "(.*?)" and "(.*?)" should be the same/ do | org1_name, org2_name|
   matches = page.html.match %Q<{\\"description\\":\\"#{org1_name}\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
   org1_lat = matches[1]

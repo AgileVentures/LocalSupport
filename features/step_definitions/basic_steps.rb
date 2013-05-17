@@ -29,6 +29,10 @@ Then /^I should not see the donation_info URL for "(.*?)"$/ do |name1|
   page.should have_content "We don't yet have any donation link for them."
 end
 
+Then /^the donation_info URL for "(.*?)" should refer to "(.*?)"$/ do |name, href|
+  expect(page).to have_link "Donate to #{name} now!", :href => href
+end
+
 Then /^I should not see any address or telephone information for "([^"]*?)" and "([^"]*?)"$/ do |name1, name2|
   org1 = Organization.find_by_name(name1)
   org2 = Organization.find_by_name(name2)
