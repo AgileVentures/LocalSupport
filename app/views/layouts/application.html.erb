@@ -16,13 +16,18 @@
 Signed in as <%= current_charity_worker.email %>. Not You?
 <%= link_to "Sign Out", destroy_charity_worker_session_path, :method => :delete%>
 <% end %>
-<h1>Harrow Community Network</h1>
+
+<h1>Harrow Community Network (Alpha)</h1>
 <div class="row">
   <div class="span4">
     <%= yield :map %>
   </div>
-  <div class="span8">
+  <div class="span5">
     <%= yield %>
+  </div>
+  <div class="span3">
+    <h2>Disclaimer</h2>
+    Whilst Voluntary Action Harrow has made effort to ensure the information here is accurate and up to date we are reliant on the information provided by the different organisations. No guarantees for the accuracy of the information is made.
   </div>
 </div>
 <%= yield :scripts %>

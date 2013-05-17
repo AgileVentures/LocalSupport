@@ -28,7 +28,7 @@ describe "organizations/index.html.erb" do
     render
     organizations.each do |org|
       rendered.should have_link org.name, :href => organization_path(org.id)
-      rendered.should have_content org.description.truncate(24,:omission=>' ...')
+      rendered.should have_content org.description.truncate(128,:omission=>' ...')
     end
   end
 

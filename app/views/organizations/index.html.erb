@@ -8,20 +8,12 @@
 
 <div class="table table-bordered">
   <table>
-    <tr>
-      <th>Name</th>
-      <th>Postcode</th>
-      <th>Email</th>
-      <th>Description</th>
-    </tr>
 
     <% @organizations.each do |organization| %>
         <tr>
-          <td><%= link_to organization.name, organization %></td>
-          <td><%= organization.postcode %></td>
-          <td><%= organization.email %></td>
-          <td><%= truncate(organization.description, :length => 24, :omission => ' ...') %></td>
-          <!-- TODO truncate(organization.description, :length => 25, :omission => link_to '... (continued)', organization) -->
+          <td><u><%= link_to organization.name, organization %></u><br/>
+            <%= truncate(organization.description, :length => 128, :omission => ' ...') %></td>
+          <!-- TODO truncate(organization.description.to_s, :length => 25, :omission => link_to '... (continued)', organization) -->
         </tr>
     <% end %>
   </table>
@@ -32,6 +24,7 @@
 </div>
 
 <% content_for :map do %>
+    <br/><br/>
     <%= gmaps("map_options" => {"auto_adjust" => false, "auto_zoom" => true, "center_latitude" => 51.5978,
                                 "center_longitude" => -0.3370, "zoom" => 12}, "markers" => {"data" => @json}) %>
 <% end %>
