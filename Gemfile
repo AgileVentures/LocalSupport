@@ -40,11 +40,12 @@ end
 
 # Gems used only for assets and not required
 # in production environments by default.
+
 group :assets do
   gem 'coffee-rails'#, "~> 3.1.0"
   gem 'uglifier'
-  gem 'less-rails'
   gem 'sass-rails'
+  gem 'less-rails'
   gem 'twitter-bootstrap-rails'
 end
 
