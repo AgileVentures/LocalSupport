@@ -60,6 +60,12 @@ describe OrganizationsController do
         assigns(:organization).should be(mock_organization)
       end
     end
+    context "while not signed in" do
+      it "redirects to sign-in" do
+        get :new
+        expect(response).to redirect_to new_charity_worker_session_path
+      end
+    end
   end
 
   describe "GET edit" do
