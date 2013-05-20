@@ -1,6 +1,7 @@
 class OrganizationsController < ApplicationController
   # GET /organizations/search
   # GET /organizations/search.json
+  before_filter :authenticate_charity_worker!, :except => [:search, :index, :show]
   def search
     # should this be a model method with a model spec around it ...?
 

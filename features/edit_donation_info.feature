@@ -11,7 +11,13 @@ Background: organizations have been added to database
   | name           | description               | address        | postcode | telephone |
   | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 |
 
+  Given the following users are registered:
+  | email             | password |
+  | jcodefx@gmail.com | pppppppp |
+
 Scenario: Successfully change the donation url for a charity
+  Given I am on the sign in page
+  And I sign in as "jcodefx@gmail.com" with password "pppppppp"
   Given I am on the edit charity page for "Friendly"
   And I edit the donation url to be "http://www.friendly.com/donate"
   And I press "Update Organization"

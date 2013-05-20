@@ -11,8 +11,14 @@ Background: organizations have been added to database
   | name           | description               | address        | postcode | telephone |
   | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 |
   | Friendly Clone | Quite Friendly!           | 30 pinner road | HA1 4HZ  | 020800010 |
+  
+  Given the following users are registered:
+  | email             | password |
+  | jcodefx@gmail.com | pppppppp |
 
-Scenario: Successfuly change the address of a charity
+Scenario: Successfully change the address of a charity
+  Given I am on the sign in page
+  And I sign in as "jcodefx@gmail.com" with password "pppppppp"
   Given I am on the edit charity page for "Friendly"
   And I edit the charity address to be "30 pinner road"
   And I press "Update Organization"
@@ -20,6 +26,8 @@ Scenario: Successfuly change the address of a charity
   Then the coordinates for "Friendly Clone" and "Friendly" should be the same
 
 Scenario: Change the address of a charity when Google is indisposed
+  Given I am on the sign in page
+  And I sign in as "jcodefx@gmail.com" with password "pppppppp"
   Given I am on the edit charity page for "Friendly"
   And I edit the charity address to be "83 pinner road" when Google is indisposed
   And I press "Update Organization"
@@ -30,6 +38,10 @@ Scenario: Change the address of a charity when Google is indisposed
 #  And I am on the home page
 #  Then the coordinates for "Friendly" should be correct
 #  Then show me the page
+
+Scenario: Redirected to sign-in when not signed-in and edit donation url
+  Given I am on the edit charity page for "Friendly"
+  Then I should be on the sign in page
 
 Scenario: By default, not display organizations address and phone number on home page
   Given I am on the home page

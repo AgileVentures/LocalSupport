@@ -18,6 +18,13 @@ When /^I search for "(.*?)"$/ do |text|
   click_button 'Search'
 end
 
+Given /^I fill in the new charity page validly$/ do
+  stub_request_with_address("64 pinner road")
+  fill_in 'organization_address', :with => '64 pinner road'
+  fill_in 'organization_name', :with => 'Friendly charity'
+end
+
+
 Then /^I should see the donation_info URL for "(.*?)"$/ do |name1|
   org1 = Organization.find_by_name(name1)
   page.should have_link "Donate to #{org1.name} now!", :href => org1.donation_info
