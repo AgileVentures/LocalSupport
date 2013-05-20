@@ -5,6 +5,9 @@ end
 Then /^I should be on the home page$/ do
   current_path.should == root_path()
 end
+Given /^I am on the charity search page$/ do
+  visit organizations_search_path
+end
 
 Then /^I should be on the charity page for "(.*?)"$/ do |charity_name|
   charity = Organization.find_by_name(charity_name)
