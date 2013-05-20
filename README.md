@@ -7,7 +7,7 @@ A directory of local support services.
 
 Installation and other technical issues are being gathered in the github wiki:
 
-[Installation notes](/wiki/installation)
+[Installation notes](../../wiki/installation)
 
 Travis C. I. [![Build Status](https://travis-ci.org/tansaku/LocalSupport.png)](https://travis-ci.org/tansaku/LocalSupport)
 
