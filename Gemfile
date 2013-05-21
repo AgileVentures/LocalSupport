@@ -26,7 +26,7 @@ end
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
-  gem 'minitest'
+  gem 'minitest', '~> 4.7.1'
   gem 'ZenTest'
   gem 'capybara', '2.0.0'
   gem 'webrat'
