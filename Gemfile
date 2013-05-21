@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.10'
 gem 'devise'
 
+
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
@@ -25,7 +26,7 @@ end
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
-  gem 'minitest'
+  gem 'minitest', '~> 4.7.1'
   gem 'ZenTest'
   gem 'capybara', '2.0.0'
   gem 'webrat'
