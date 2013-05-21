@@ -8,6 +8,7 @@ capybara-*.html
 /log/*
 /tmp/*
 /db/*.sqlite3
+/db/schema.rb
 /public/system/*
 /coverage/
 /spec/tmp/*
@@ -17,3 +18,4 @@ rerun.txt
 pickle-email-*.html
 *.*~
 *~
+/.idea/*

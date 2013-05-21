@@ -1,6 +1,7 @@
 class OrganizationsController < ApplicationController
   # GET /organizations/search
   # GET /organizations/search.json
+  before_filter :authenticate_charity_worker!, :except => [:search, :index, :show]
   def search
     # should this be a model method with a model spec around it ...?
 
@@ -27,7 +28,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1.json
   def show
     @organization = Organization.find(params[:id])
-
+    @json = @organization.to_gmaps4rails
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @organization }
