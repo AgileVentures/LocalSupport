@@ -12,8 +12,7 @@
     <% @organizations.each do |organization| %>
         <tr>
           <td><u><%= link_to organization.name, organization %></u><br/>
-            <%= truncate(organization.description, :length => 128, :omission => ' ...') %></td>
-          <!-- TODO truncate(organization.description.to_s, :length => 25, :omission => link_to '... (continued)', organization) -->
+            <%= smart_truncate(organization.description) %></td>
         </tr>
     <% end %>
   </table>
