@@ -123,7 +123,6 @@ Then /^I should be on the charity workers page$/ do
   current_path.should == charity_workers_path
 end
 
-
-
-
-
+When /^I fill in "(.*?)" with "(.*?)"$/ do |field, value|
+  fill_in(field, :with => value)
+end
