@@ -39,4 +39,6 @@ LocalSupport::Application.configure do
 
   # Allow pass debug_assets=true as a query parameter to load pages with unpackaged assets
   config.assets.allow_debugging = true
+
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' } 
 end
