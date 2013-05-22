@@ -24,6 +24,18 @@ Given /^I fill in the new charity page validly$/ do
   fill_in 'organization_name', :with => 'Friendly charity'
 end
 
+Given /^I update "(.*?)" charity address to be "(.*?)"$/ do |name, address|
+  steps %Q{
+    Given I am on the edit charity page for "#{name}"
+    And I edit the charity address to be "#{address}"
+    And I press "Update Organization"
+  }
+end
+
+And /^"(.*?)" charity address is "(.*?)"$/ do |name, address|
+  org = Organization.find_by_name(name)
+  expect(org.address).to eq(address)
+end
 
 Then /^I should see the donation_info URL for "(.*?)"$/ do |name1|
   org1 = Organization.find_by_name(name1)

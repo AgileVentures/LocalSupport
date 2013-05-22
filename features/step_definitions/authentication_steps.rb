@@ -5,6 +5,27 @@ Given /^I sign up as "(.*?)" with password "(.*?)" and password confirmation "(.
   click_button "Sign up"
 end
 
+Given /^I sign in as a charity worker with permission to edit "(.*?)"$/ do |name|
+  org = Organization.find_by_name name
+  org.charity_workers   # TODO we will want some habtm to support this eventually
+end
+
+And /^I am signed in as the admin$/ do
+  admin = CharityWorker.find_by_admin(true).first
+  steps %Q{
+    Given I am on the sign in page
+    And I sign in as "#{admin.email}" with password "#{admin.password}"
+  }
+end
+
+And /^I am not signed in as the admin$/ do
+  admin = CharityWorker.find_by_admin(false).first
+  steps %Q{
+    Given I am on the sign in page
+    And I sign in as "#{admin.email}" with password "#{admin.password}"
+  }end
+
+
 Given /^the following users are registered:$/ do |charity_workers_table|
   charity_workers_table.hashes.each do |charity_worker|
     CharityWorker.create! charity_worker
