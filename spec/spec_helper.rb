@@ -27,6 +27,10 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+  #TODO: Is this too hackish to clear something that smells fixture like?  Move to
+  #other testing framework?  See:
+  #https://github.com/rspec/rspec-rails/issues/661
+  config.before(:each) { ActionMailer::Base.deliveries.clear }
 
 end
 

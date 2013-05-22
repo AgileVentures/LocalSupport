@@ -9,8 +9,8 @@ describe Devise::RegistrationsController do
   describe "POST create" do
     it 'does not email upon registration' do
       request.env["devise.mapping"] = Devise.mappings[:charity_worker]
-      post :create, '0' => {charity_worker: {'email' => 'example@example.com', 'password' => 'pppppppp', 'password_confirmation' => 'pppppppp'}}
-      expect(response).to be_success
+      post :create, 'charity_worker' => {'email' => 'example@example.com', 'password' => 'pppppppp', 'password_confirmation' => 'pppppppp'}
+      expect(response).to redirect_to new_organization_path
       expect(ActionMailer::Base.deliveries).to be_empty
     end
   end
