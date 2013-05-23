@@ -16,7 +16,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
-    @organizations = Organization.all
+    @organizations = Organization.order("updated_at DESC")
     @json = @organizations.to_gmaps4rails
     respond_to do |format|
       format.html # index.html.erb

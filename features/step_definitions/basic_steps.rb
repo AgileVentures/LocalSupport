@@ -24,6 +24,10 @@ Given /^I fill in the new charity page validly$/ do
   fill_in 'organization_name', :with => 'Friendly charity'
 end
 
+Then /^I should see "(.*?)" before "(.*?)"$/ do |name1,name2|
+  str = page.body
+  assert str.index(name1) < str.index(name2)
+end
 
 Then /^I should see the donation_info URL for "(.*?)"$/ do |name1|
   org1 = Organization.find_by_name(name1)
@@ -49,6 +53,13 @@ Then /^I should not see any address or telephone information for "([^"]*?)" and 
   page.should_not have_content org2.address
 end
 
+Given /^I update the "(.*?)"$/ do |name|
+  org1 = Organization.find_by_name(name)
+  org1.address = "84 pinner road"
+  org1.save!
+end
+
+
 When /^(?:|I )follow "([^"]*)"$/ do |link|
     click_link(link)
 end
@@ -72,7 +83,7 @@ Then /^I should not see "(.*?)"$/ do |text|
   page.should_not have_content text
 end
 
-Then /^I should see "(.*?)"$/ do |text|
+Then /^I should see "((?:(?!before|").)+)"$/ do |text|
   page.should have_content text
 end
 
