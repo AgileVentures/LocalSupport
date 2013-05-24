@@ -1,10 +1,27 @@
 <h2>Local organizations</h2>
 
-<%= form_tag("/organizations/search", :method => "get") do %>
+<%= form_tag(organizations_search_path, :method => "get") do %>
     <%= label_tag(:q, "Search Organizations for:") %>
     <%= text_field_tag(:q) %>
     <%= submit_tag "Search", :class => 'btn btn-info' %>
 <% end %>
+<hr>
+<%= form_tag(new_organization_path, :method => "get") do %>
+    <%= label_tag("New Organization:") %>
+    <%= submit_tag "New", :class => 'btn btn-info' %>
+<% end %>
+
+<hr>
+<%= form_tag(organizations_path, :method => "get") do %>
+    <%= label_tag("Sorted by:") %>
+    Alphabetically <%=radio_button_tag('order',OrganizationsController::ALPHABETICALLY, @order==OrganizationsController::ALPHABETICALLY) %>
+    Update date <%=radio_button_tag('order',OrganizationsController::UPDATE_DATE, @order==OrganizationsController::UPDATE_DATE) %>
+    ASC <%=radio_button_tag('method',OrganizationsController::ASCENDING, @method==OrganizationsController::ASCENDING) %>
+    DSC <%=radio_button_tag('method',OrganizationsController::DESCENDING, @method==OrganizationsController::DESCENDING) %>
+
+    <%= submit_tag "Sort", :class => 'btn btn-info' %>
+<% end %>
+
 
 <div class="table table-bordered">
   <table>
@@ -18,9 +35,6 @@
   </table>
 </div>
 <br/>
-<div style="width:50%;float:left">
-  <%= link_to 'New Organization', new_organization_path %>
-</div>
 
 <% content_for :map do %>
     <br/><br/>
