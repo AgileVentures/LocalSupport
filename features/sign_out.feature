@@ -11,5 +11,5 @@ Feature: Sign out
 Scenario: Sign out
   Given that I am logged in as any user
   When I sign out
-  Then I should be on the home page
+  Then I should be on the organizations page
   Then I should not be signed in as any user
