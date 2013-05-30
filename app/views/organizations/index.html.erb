@@ -6,8 +6,8 @@
     <%= submit_tag "Search", :class => 'btn btn-info' %>
 <% end %>
 <hr>
-<%= form_tag(new_organization_path, :method => "get") do %>
-    <%= label_tag("New Organization:") %>
+<%= form_tag(new_organization_path, :method => "get", :class => "form-inline") do %>
+    <%= label_tag("New Organization") %>
     <%= submit_tag "New", :class => 'btn btn-info' %>
 <% end %>
 
@@ -22,9 +22,8 @@
     <%= submit_tag "Sort", :class => 'btn btn-info' %>
 <% end %>
 
-
 <div class="table table-bordered">
-  <table>
+  <table >
 
     <% @organizations.each do |organization| %>
         <tr>

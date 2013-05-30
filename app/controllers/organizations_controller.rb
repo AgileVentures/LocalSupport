@@ -27,11 +27,13 @@ class OrganizationsController < ApplicationController
   def index
     @order = nil
     @method = nil
+    redir = true
     if params[:method]&& params[:order] then
       @method=params[:method]
       session[:method]=params[:method]
       @order=params[:order]
       session[:order]=params[:order]
+      redir = false
     elsif params[:method]
       @method=params[:method]
       session[:method]=params[:method]
@@ -46,7 +48,12 @@ class OrganizationsController < ApplicationController
       params[:method]=load_params_method
       session[:method]=params[:method]
     end
-    @organizations = Organization.order("updated_at DESC")
+    if redir == true then
+      flash.keep
+      return redirect_to organizations_path(:order => params[:order],:method => params[:method])
+    end
+    @organizations = Organization.get_Organizations(@order,@method)
+# @organizations = Organization.order("updated_at DESC")
     @json = @organizations.to_gmaps4rails
     respond_to do |format|
       format.html # index.html.erb
