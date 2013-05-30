@@ -11,7 +11,7 @@ Given /^I sign in as a charity worker with permission to edit "(.*?)"$/ do |name
 end
 
 And /^I am signed in as the admin$/ do
-  admin = CharityWorker.find_by_admin(true).first
+  admin = CharityWorker.find_by_admin(true)
   steps %Q{
     Given I am on the sign in page
     And I sign in as "#{admin.email}" with password "#{admin.password}"
