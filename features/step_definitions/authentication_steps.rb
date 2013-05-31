@@ -25,10 +25,11 @@ And /^I am not signed in as the admin$/ do
     And I sign in as "#{admin.email}" with password "#{admin.password}"
   }end
 
-
+#TODO: Should we bypass mass assgiment in the creation via :without_protection?
 Given /^the following users are registered:$/ do |charity_workers_table|
   charity_workers_table.hashes.each do |charity_worker|
-    CharityWorker.create! charity_worker
+    charity_worker["admin"] = charity_worker["admin"] == "true"
+    worker = CharityWorker.create! charity_worker, :without_protection => true
   end
 end
 
