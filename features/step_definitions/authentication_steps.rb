@@ -10,19 +10,19 @@ Given /^I sign in as a charity worker with permission to edit "(.*?)"$/ do |name
   org.charity_workers   # TODO we will want some habtm to support this eventually
 end
 
-And /^I am signed in as the admin$/ do
+And /^I am signed in as the admin using password "(.*?)"$/ do |password|
   admin = CharityWorker.find_by_admin(true)
   steps %Q{
     Given I am on the sign in page
-    And I sign in as "#{admin.email}" with password "#{admin.password}"
+    And I sign in as "#{admin.email}" with password "#{password}"
   }
 end
 
-And /^I am not signed in as the admin$/ do
-  admin = CharityWorker.find_by_admin(false).first
+And /^I am not signed in as the admin using password "(.*?)"$/ do |password|
+  admin = CharityWorker.find_by_admin(false)
   steps %Q{
     Given I am on the sign in page
-    And I sign in as "#{admin.email}" with password "#{admin.password}"
+    And I sign in as "#{admin.email}" with password "#{password}"
   }end
 
 #TODO: Should we bypass mass assgiment in the creation via :without_protection?

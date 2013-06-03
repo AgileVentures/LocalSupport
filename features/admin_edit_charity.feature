@@ -15,13 +15,13 @@ Feature: Admin editing charity
       | tansaku@gmail.com | pppppppp | false |
 
   Scenario: Admin successfully changes the address of a charity
-    Given I am signed in as the admin
+    Given I am signed in as the admin using password "pppppppp"
     Given I update "Friendly" charity address to be "30 pinner road"
     Then I am on the home page
     And the coordinates for "Friendly Clone" and "Friendly" should be the same
 
   Scenario: Non-admin unsuccessfully attempts to change the address of a charity
-    Given I am not signed in as the admin
+    Given I am not signed in as the admin using password "pppppppp"
     And I update "Friendly" charity address to be "30 pinner road"
     Then I should see "You don't have permission"
     And "Friendly" charity address is "34 pinner road"
@@ -32,7 +32,7 @@ Feature: Admin editing charity
 
 # TODO establish if just anyone can create an organization
   Scenario: Successfully create charity while being signed-in
-    Given I am signed in as the admin
+    Given I am signed in as the admin using password "pppppppp"
     Given I am on the new charity page
     And I fill in the new charity page validly
     And I press "Create Organization"

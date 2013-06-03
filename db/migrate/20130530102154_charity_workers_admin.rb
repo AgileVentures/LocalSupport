@@ -4,5 +4,6 @@ class CharityWorkersAdmin < ActiveRecord::Migration
   end
 
   def down
+    remove_column :charity_workers, :admin
   end
 end

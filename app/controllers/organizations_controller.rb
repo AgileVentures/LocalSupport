@@ -70,6 +70,10 @@ class OrganizationsController < ApplicationController
   # PUT /organizations/1
   # PUT /organizations/1.json
   def update
+    unless current_charity_worker.try(:admin?)
+      flash[:notice] = "You don't have permission"
+      redirect_to organization_path(params[:id]) and return false
+    end
     @organization = Organization.find(params[:id])
 
     respond_to do |format|

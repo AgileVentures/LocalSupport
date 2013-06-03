@@ -3,8 +3,9 @@ FactoryGirl.define do
     name "friendly non profit"
     description "we are really really friendly"
   end
-  factory :charity_worker do
+  factory :charity_worker do ||
     email "jj@example.com"
     password "pppppppp"
+    admin false
   end
 end
