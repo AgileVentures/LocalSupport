@@ -146,7 +146,8 @@ describe OrganizationsController do
         end
 
         it "updates donation_info url" do
-          Organization.should_receive(:find).with("37"){mock_organization}
+          mock = mock_organization(:id => 37)
+          Organization.should_receive(:find).with("37"){mock}
           mock_organization.should_receive(:update_attributes).with({'donation_info' => 'http://www.friendly.com/donate'})
           put :update, :id => "37", :organization => {'donation_info' => 'http://www.friendly.com/donate'}
         end
@@ -179,22 +180,24 @@ describe OrganizationsController do
       end
     end
 
-    context "while signed in as normal user" do
+    context "while signed in as normal user belonging to organization" do
       before(:each) do
-        @user = FactoryGirl.create(:charity_worker)
+        @mock_org = mock_organization :id => 37
+        @user = FactoryGirl.build_stubbed(:charity_worker, :organization => @mock_org)
         sign_in :charity_worker, @user
       end
       describe "with valid params" do
         it "updates the requested organization" do
-          Organization.should_not_receive(:find).with("37") { mock_organization }
-          mock_organization.should_not_receive(:update_attributes).with({'these' => 'params'})
+          Organization.should_receive(:find).with("37") {@mock_org}
+          @mock_org.should_receive(:update_attributes).with({'these' => 'params'})
           put :update, :id => "37", :organization => {'these' => 'params'}
-          response.should redirect_to(organization_url("37"))
-          expect(flash[:notice]).to eq("You don't have permission")
+        end
+        it "updates donation_info url" do
+          Organization.should_receive(:find).with("37"){@mock_org}
+         @mock_org.should_receive(:update_attributes).with({'donation_info' => 'http://www.friendly.com/donate'})
+          put :update, :id => "37", :organization => {'donation_info' => 'http://www.friendly.com/donate'}
         end
       end
-
-
     end
     context "while not signed in" do
       it "redirects to sign-in" do
