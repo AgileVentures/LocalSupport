@@ -182,22 +182,42 @@ describe OrganizationsController do
 
     context "while signed in as normal user belonging to organization" do
       before(:each) do
-        @mock_org = mock_organization :id => 37
-        @user = FactoryGirl.build_stubbed(:charity_worker, :organization => @mock_org)
+        #TODO: Is this necessary to push into real database to get the association to take?
+        @user = FactoryGirl.create(:charity_worker_stubbed_organization)
+        @associated_org = @user.organization
         sign_in :charity_worker, @user
       end
       describe "with valid params" do
         it "updates the requested organization" do
-          Organization.should_receive(:find).with("37") {@mock_org}
-          @mock_org.should_receive(:update_attributes).with({'these' => 'params'})
-          put :update, :id => "37", :organization => {'these' => 'params'}
+          Organization.should_receive(:find).with("#{@associated_org.id}"){@associated_org}
+          @associated_org.should_receive(:update_attributes).with({'these' => 'params'})
+          put :update, :id => "#{@associated_org.id}", :organization => {'these' => 'params'}
         end
         it "updates donation_info url" do
-          Organization.should_receive(:find).with("37"){@mock_org}
-         @mock_org.should_receive(:update_attributes).with({'donation_info' => 'http://www.friendly.com/donate'})
-          put :update, :id => "37", :organization => {'donation_info' => 'http://www.friendly.com/donate'}
+          org = @user.organization
+          Organization.should_receive(:find).with("#{@associated_org.id}"){@associated_org}
+         @associated_org.should_receive(:update_attributes).with({'donation_info' => 'http://www.friendly.com/donate'})
+          put :update, :id => "#{@associated_org.id}", :organization => {'donation_info' => 'http://www.friendly.com/donate'}
         end
       end
+    end
+
+    context "while signed in as normal user belonging to no organization" do
+      before(:each) do
+        @user = FactoryGirl.create(:charity_worker)
+        @non_associated_org = mock_organization
+        sign_in :charity_worker, @user
+      end
+      describe "with valid params" do
+        it "does not update the requested organization" do
+          Organization.should_not_receive(:find).with("#{@non_associated_org.id}")
+          @non_associated_org.should_not_receive(:update_attributes)
+          put :update, :id => "#{@non_associated_org.id}", :organization => {'these' => 'params'}
+          response.should redirect_to(organization_url("#{@non_associated_org.id}"))
+          expect(flash[:notice]).to eq("You don't have permission")
+        end
+      end
+
     end
     context "while not signed in" do
       it "redirects to sign-in" do
