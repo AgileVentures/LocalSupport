@@ -86,22 +86,6 @@ class Organization < ActiveRecord::Base
       end
     end
   end
-
-  def self.get_Organizations(orderCrit,method)
-    if orderCrit == OrganizationsController::ALPHABETICALLY then
-       if method == OrganizationsController::DESCENDING then
-           Organization.order("name DESC")
-       else
-           Organization.order("name ASC")
-       end
-    else
-       if method == OrganizationsController::DESCENDING then
-           Organization.order("updated_at DESC")
-       else
-           Organization.order("updated_at ASC")
-       end
-    end
-  end
 end
 
 class String
