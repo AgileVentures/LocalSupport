@@ -19,3 +19,5 @@ pickle-email-*.html
 *.*~
 *~
 /.idea/*
+.DS_Store
+linecache19-0.5.13.gem

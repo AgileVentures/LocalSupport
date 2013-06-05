@@ -1,3 +1,5 @@
+require 'csv'
+
 class Organization < ActiveRecord::Base
   acts_as_gmappable :check_process => false
 
