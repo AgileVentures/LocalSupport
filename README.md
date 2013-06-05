@@ -22,6 +22,8 @@ Many thanks to Pavel Osadchyi for Travis Continous Integration, and to Ingram Mo
 License
 =======
 
-The authors and contributors have agreed to license this software
+The logo is copyright Alex, all rights reserved.
+
+The authors and contributors have agreed to license all other software
 under the MIT license, an open source free software license. See the
 file named COPYING which includes a disclaimer of warranty.
