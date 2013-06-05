@@ -1,14 +1,15 @@
 <header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-
-             <img src="images/HCN2.png" width="200px">
        <div class="row">
+        <div class="span6">
+          <img src="images/HCN2.png" width="200px">
+        </div>
+        <% if (charity_worker_signed_in?)%>
        <div class="span6">
-          <% if (charity_worker_signed_in?)%>
-           Signed in as <%= current_charity_worker.email %>.  <%=link_to "Not you?", destroy_charity_worker_session_path, :method => :delete%>
-          <% end %>
+         Signed in as <%= current_charity_worker.email %>.  <%=link_to "Not you?", destroy_charity_worker_session_path, :method => :delete%>  
        </div>
+       <% end %>
       <div class="span6">
       <nav>
         <ul class="nav pull-right">
