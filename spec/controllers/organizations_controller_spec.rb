@@ -50,8 +50,8 @@ describe OrganizationsController do
   describe "GET new" do
     context "while signed in" do
       before(:each) do
-        @admin = FactoryGirl.create(:charity_worker)
-        sign_in :charity_worker, @admin
+        @user = FactoryGirl.create(:charity_worker)
+        sign_in :charity_worker, @user
       end
       it "assigns a new organization as @organization" do
         Organization.stub(:new) { mock_organization }
@@ -70,8 +70,8 @@ describe OrganizationsController do
   describe "GET edit" do
     context "while signed in" do
       before(:each) do
-        @admin = FactoryGirl.create(:charity_worker)
-        sign_in :charity_worker, @admin
+        @user = FactoryGirl.create(:charity_worker)
+        sign_in :charity_worker, @user
       end
       it "assigns the requested organization as @organization" do
         Organization.stub(:find).with("37") { mock_organization }
@@ -91,8 +91,8 @@ describe OrganizationsController do
   describe "POST create" do
     context "while signed in" do
       before(:each) do
-        @admin = FactoryGirl.create(:charity_worker)
-        sign_in :charity_worker, @admin
+        @user = FactoryGirl.create(:charity_worker)
+        sign_in :charity_worker, @user
       end
       describe "with valid params" do
         it "assigns a newly created organization as @organization" do
@@ -132,20 +132,21 @@ describe OrganizationsController do
   end
 
   describe "PUT update" do
-    context "while signed in" do
+    context "while signed in as admin" do
       before(:each) do
-        @admin = FactoryGirl.create(:charity_worker)
+        @admin = FactoryGirl.create(:charity_worker, :admin => true)
         sign_in :charity_worker, @admin
-       end
+      end
       describe "with valid params" do
         it "updates the requested organization" do
           Organization.should_receive(:find).with("37") { mock_organization }
           mock_organization.should_receive(:update_attributes).with({'these' => 'params'})
           put :update, :id => "37", :organization => {'these' => 'params'}
         end
-      
+
         it "updates donation_info url" do
-          Organization.should_receive(:find).with("37"){mock_organization}
+          mock = mock_organization(:id => 37)
+          Organization.should_receive(:find).with("37"){mock}
           mock_organization.should_receive(:update_attributes).with({'donation_info' => 'http://www.friendly.com/donate'})
           put :update, :id => "37", :organization => {'donation_info' => 'http://www.friendly.com/donate'}
         end
@@ -177,6 +178,46 @@ describe OrganizationsController do
         end
       end
     end
+
+    context "while signed in as normal user belonging to organization" do
+      before(:each) do
+        #TODO: Is this necessary to push into real database to get the association to take?
+        @user = FactoryGirl.create(:charity_worker_stubbed_organization)
+        @associated_org = @user.organization
+        sign_in :charity_worker, @user
+      end
+      describe "with valid params" do
+        it "updates the requested organization" do
+          Organization.should_receive(:find).with("#{@associated_org.id}"){@associated_org}
+          @associated_org.should_receive(:update_attributes).with({'these' => 'params'})
+          put :update, :id => "#{@associated_org.id}", :organization => {'these' => 'params'}
+        end
+        it "updates donation_info url" do
+          org = @user.organization
+          Organization.should_receive(:find).with("#{@associated_org.id}"){@associated_org}
+         @associated_org.should_receive(:update_attributes).with({'donation_info' => 'http://www.friendly.com/donate'})
+          put :update, :id => "#{@associated_org.id}", :organization => {'donation_info' => 'http://www.friendly.com/donate'}
+        end
+      end
+    end
+
+    context "while signed in as normal user belonging to no organization" do
+      before(:each) do
+        @user = FactoryGirl.create(:charity_worker)
+        @non_associated_org = mock_organization
+        sign_in :charity_worker, @user
+      end
+      describe "with valid params" do
+        it "does not update the requested organization" do
+          Organization.should_not_receive(:find).with("#{@non_associated_org.id}")
+          @non_associated_org.should_not_receive(:update_attributes)
+          put :update, :id => "#{@non_associated_org.id}", :organization => {'these' => 'params'}
+          response.should redirect_to(organization_url("#{@non_associated_org.id}"))
+          expect(flash[:notice]).to eq("You don't have permission")
+        end
+      end
+
+    end
     context "while not signed in" do
       it "redirects to sign-in" do
         put :update, :id => "1", :organization => {'these' => 'params'}
@@ -188,8 +229,8 @@ describe OrganizationsController do
   describe "DELETE destroy" do
     context "while signed in" do
       before(:each) do
-        @admin = FactoryGirl.create(:charity_worker)
-        sign_in :charity_worker, @admin
+        @user = FactoryGirl.create(:charity_worker)
+        sign_in :charity_worker, @user
       end
       it "destroys the requested organization" do
         Organization.should_receive(:find).with("37") { mock_organization }
