@@ -6,7 +6,8 @@
   -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
   -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
   box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
-  width: 90%;
+  width: 40%;
+  position: fixed;
 }
 
 .gmaps4rails_map {
