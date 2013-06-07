@@ -1,3 +1,9 @@
+Given /^I am signed in as a charity worker unrelated to "(.*?)" with password "(.*?)"$/ do |organization_name, password|
+  #TODO: Not sure how to get devise session id to set
+  #page.set_rack_session(:charity_worker_id => CharityWorker.find_by_admin(false).id)
+  
+end
+
 Given /^I sign up as "(.*?)" with password "(.*?)" and password confirmation "(.*?)"$/ do |email, password,password_confirmation|
   fill_in "Email" , :with => email
   fill_in "charity_worker_password" , :with => password
@@ -29,6 +35,7 @@ And /^I am not signed in as the admin using password "(.*?)"$/ do |password|
 Given /^the following users are registered:$/ do |charity_workers_table|
   charity_workers_table.hashes.each do |charity_worker|
     charity_worker["admin"] = charity_worker["admin"] == "true"
+    charity_worker["organization"] = Organization.find_by_name(charity_worker["organization"])
     worker = CharityWorker.create! charity_worker, :without_protection => true
   end
 end
