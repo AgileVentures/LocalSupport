@@ -15,6 +15,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'rspec-rails'
   gem 'execjs'
+  gem 'rack_session_access'
 end
 
 group :development do
