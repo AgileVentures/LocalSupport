@@ -5,11 +5,13 @@ class OrganizationsController < ApplicationController
   def search
     # should this be a model method with a model spec around it ...?
 
-    @organizations = Organization.search_by_keyword(params[:q])
+    @organizations = Organization.search_by_keyword(params[:q]).page(params[:page]).per(5)
     @json = @organizations.to_gmaps4rails
     respond_to do |format|
+      format.js
       format.html { render :template =>'organizations/index'}
       format.json { render json: @organizations }
+      format.xml  { render :xml => @organizations }
     end
   end
 
@@ -20,8 +22,10 @@ class OrganizationsController < ApplicationController
     @organizations = Organization.order("updated_at DESC").page(params[:page]).per(5)
     @json = @organizations.to_gmaps4rails
     respond_to do |format|
+      format.js
       format.html # index.html.erb
       format.json { render json: @organizations }
+      format.xml  { render :xml => @organizations }
     end
   end
 

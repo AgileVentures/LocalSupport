@@ -6,18 +6,11 @@
     <%= submit_tag "Search", :class => 'btn btn-info' %>
 <% end %>
 
-<%= paginate @organizations %>
-
-<div style="height:300px;width:100%;border:1px solid #ccc;overflow:auto;">
+<div id="orgs_scroll" style="height:300px;width:100%;border:1px solid #ccc;overflow:auto;">
     <div class="table table-bordered">
       <table>
-
-        <% @organizations.each do |organization| %>
-            <tr>
-              <td><u><%= link_to organization.name, organization %></u><br/>
-                <%= smart_truncate(organization.description) %></td>
-            </tr>
-        <% end %>
+        <div id="organizations">
+        </div>
       </table>
     </div>
 </div>
@@ -32,3 +25,43 @@
     <%= gmaps("map_options" => {"auto_adjust" => false, "auto_zoom" => true, "center_latitude" => 51.5978,
                                 "center_longitude" => -0.3370, "zoom" => 12}, "markers" => {"data" => @json}) %>
 <% end %>
+
+<script type="text/javascript">
+    (function() {
+        var page = 1,
+        loading = false;
+        orgs = $('#orgs_scroll');
+
+        function nearBottomOfPage() {
+            return orgs.scrollTop() + orgs.innerHeight() >= orgs[0].scrollHeight;
+        }
+
+        $(orgs).scroll(function(){
+            if (loading) {
+                return;
+            }
+
+            if(nearBottomOfPage()) {
+                loading=true;
+                page++;
+                $.ajax({
+                    url: '/organizations?page=' + page,
+                    type: 'get',
+                    dataType: 'script',
+                    success: function() {
+                        $(window).sausage('draw');
+                        loading=false;
+                    }
+                });
+            }
+        });
+
+        $(window).sausage();
+    }());
+
+    $(document).ready(function() {
+        <% @organizations.each do |organization| %>
+            $("#organizations").append('<tr><td><u><%= link_to organization.name, organization %></u><br/><%= smart_truncate(organization.description) %></td></tr>');
+        <% end %>
+    });
+</script>
