@@ -10,7 +10,7 @@ class OrganizationsController < ApplicationController
     respond_to do |format|
       format.js
       format.html { render :template =>'organizations/index'}
-      format.json { render json: @organizations }
+      format.json { render json: Organization.search_by_keyword(params[:q]) }
       format.xml  { render :xml => @organizations }
     end
   end
@@ -24,7 +24,7 @@ class OrganizationsController < ApplicationController
     respond_to do |format|
       format.js
       format.html # index.html.erb
-      format.json { render json: @organizations }
+      format.json { render json: Organization.order("updated_at DESC") }
       format.xml  { render :xml => @organizations }
     end
   end
