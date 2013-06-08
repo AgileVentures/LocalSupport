@@ -126,7 +126,7 @@ describe Organization do
 
     def create_organization(fields)
       row = CSV::Row.new(@headers, fields.flatten)
-      Organization.create_from_array(row)
+      Organization.create_from_array(row, true)
     end
   end
 
