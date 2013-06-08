@@ -6,6 +6,8 @@
     <%= submit_tag "Search", :class => 'btn btn-info' %>
 <% end %>
 
+<%= paginate @organizations %>
+
 <div style="height:300px;width:100%;border:1px solid #ccc;overflow:auto;">
     <div class="table table-bordered">
       <table>
