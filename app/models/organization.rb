@@ -76,14 +76,18 @@ class Organization < ActiveRecord::Base
         break
       end
       count += 1
-      self.create_from_array(row)
+      begin
+        self.create_from_array(row)
+      rescue CSV::MalformedCSVError => e
+        logger.error(e.message)
+      end
     end
   end
 
   def self.check_columns_in(row)
     @@column_mappings.each_value do |column_name|
       unless row.header?(column_name)
-        raise CSV::MalformedCSVError, 'No expected columns in CSV file'
+        raise CSV::MalformedCSVError, "No expected column with name #{column_name} in CSV file"
       end
     end
   end
