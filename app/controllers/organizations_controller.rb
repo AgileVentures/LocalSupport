@@ -7,7 +7,7 @@ class OrganizationsController < ApplicationController
     @organizations = Organization.search_by_keyword(params[:q]).page(params[:page]).per(5)
     @json = Organization.search_by_keyword(params[:q]).to_gmaps4rails
     respond_to do |format|
-      format.js
+      format.js   { render :template =>'organizations/index'}
       format.html { render :template =>'organizations/index'}
       format.json { render json:  @organizations }
       format.xml  { render :xml => @organizations }
