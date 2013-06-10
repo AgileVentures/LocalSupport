@@ -12,6 +12,7 @@ Background: organizations have been added to database
   | Age UK                          | Care for the elderly             | 84 pinner road | HA1 4HF  | http://c.com/ |
 
 @show
+@selenium
 Scenario: Show all charities on homepage map
   Given I am on the home page
   Then I should see contact details for "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling"
@@ -19,6 +20,7 @@ Scenario: Show all charities on homepage map
   And I should see "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling" in the map centered on local organizations
 
 # particularly want to provide visibility to organizations with no existing web presence
+@selenium
 Scenario: Find help with care for elderly
   Given I am on the home page
   When I search for "elderly"
@@ -27,6 +29,7 @@ Scenario: Find help with care for elderly
   And I should see search results for "elderly" in the map
 
 # starting within main site
+@selenium
 Scenario: Find a bereavement counsellor
   Given I am on the home page
   When I search for "Bereavement Counselling"

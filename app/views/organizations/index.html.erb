@@ -6,7 +6,7 @@
     <%= submit_tag "Search", :class => 'btn btn-info' %>
 <% end %>
 
-<div id="orgs_scroll" style="height:300px;width:100%;border:1px solid #ccc;overflow:auto;">
+<div id="orgs_scroll" style="height:300px;width:100%;border:1px solid #ccc;overflow:scroll;">
     <div class="table table-bordered">
       <table>
         <div id="organizations">
@@ -33,10 +33,10 @@
         orgs = $('#orgs_scroll');
 
         function nearBottomOfPage() {
-            return orgs.scrollTop() + orgs.innerHeight() >= orgs[0].scrollHeight;
+            return orgs[0].scrollTop + orgs.innerHeight() >= orgs[0].scrollHeight;
         }
 
-        $(orgs).scroll(function(){
+        orgs.scroll(function(){
             if (loading) {
                 return;
             }
@@ -45,7 +45,7 @@
                 loading=true;
                 page++;
                 $.ajax({
-                    url: document.URL + '?page=' + page,
+                    url: document.URL + '?test=0&page=' + page,
                     type: 'get',
                     dataType: 'script',
                     success: function() {
@@ -60,7 +60,6 @@
     }());
 
     $(document).ready(function() {
-        orgs_scroll.scrollTop = 0;
         <% @organizations.each do |organization| %>
             $("#organizations").append('<tr><td><u><%= link_to organization.name, organization %></u><br/><%= smart_truncate(organization.description) %></td></tr>');
         <% end %>
