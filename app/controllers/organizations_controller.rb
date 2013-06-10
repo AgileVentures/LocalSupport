@@ -4,8 +4,9 @@ class OrganizationsController < ApplicationController
   before_filter :authenticate_charity_worker!, :except => [:search, :index, :show]
   def search
     # should this be a model method with a model spec around it ...?
-    @organizations = Organization.search_by_keyword(params[:q]).page(params[:page]).per(5)
-    @json = Organization.search_by_keyword(params[:q]).to_gmaps4rails
+    @results = Organization.search_by_keyword(params[:q])
+    @organizations = @results.page(params[:page]).per(5)
+    @json = @results.to_gmaps4rails
     respond_to do |format|
       format.js   { render :template =>'organizations/index'}
       format.html { render :template =>'organizations/index'}
@@ -17,9 +18,9 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
-#@organizations = Organization.all
-    @organizations = Organization.order("updated_at DESC").page(params[:page]).per(5)
-    @json = Organization.order("updated_at DESC").to_gmaps4rails
+    @results = Organization.order("updated_at DESC")
+    @organizations = @results.page(params[:page]).per(5)
+    @json = @results.to_gmaps4rails
     respond_to do |format|
       format.js
       format.html # index.html.erb
