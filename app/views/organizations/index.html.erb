@@ -10,10 +10,19 @@
     <div class="table table-bordered">
       <table>
         <div id="organizations">
+          <noscript>
+            <% @organizations.each do |organization| %>
+                <tr>
+                  <td><u><%= link_to organization.name, organization %></u><br/>
+                    <%= smart_truncate(organization.description) %></td>
+                </tr>
+            <% end %>
+          </noscript>
         </div>
       </table>
     </div>
 </div>
+<noscript><center><%= paginate @organizations %></center></noscript>
 <br/>
 <div style="width:50%;float:left">
   <%= link_to 'New Organization', new_organization_path %>
