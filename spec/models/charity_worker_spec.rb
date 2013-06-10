@@ -6,12 +6,14 @@ describe CharityWorker do
     FactoryGirl.find_definitions
   end
   before :each do
-    FactoryGirl.build(:charity_worker, :email => 'jj@example.com', 
-      :password => 'pppppppp', :admin => true).save!
+    @admin = FactoryGirl.build(:charity_worker, :email => 'jj@example.com', 
+      :password => 'pppppppp', :admin => true)  
+    @admin.save!
     FactoryGirl.build(:charity_worker, :email => 'jj1@example.com', 
       :password => 'pppppppp', :admin => true).save!
-    FactoryGirl.build(:charity_worker, :email => 'jj2@example.com', 
-      :password => 'pppppppp', :admin => false).save!
+    @nonadmin = FactoryGirl.build(:charity_worker, :email => 'jj2@example.com', 
+      :password => 'pppppppp', :admin => false)
+    @nonadmin.save!
   end
   it 'must find an admin in find_by_admin with true argument' do
     @result = CharityWorker.find_by_admin(true)
@@ -20,5 +22,25 @@ describe CharityWorker do
   it 'must find a non-admin in find_by_admin with false argument' do
     @result = CharityWorker.find_by_admin(false)
     expect(@result.admin?).to be_false
+  end
+  it 'lets admin edit any organization' do
+    model = mock_model("Organization")
+    expect(@admin.can_edit?(model)).to be_true 
+  end
+  it 'lets non-admin edit associated organization' do
+    model = mock_model("Organization")
+    @nonadmin.should_receive(:organization).and_return model
+    expect(@nonadmin.can_edit?(model)).to be_true 
+  end
+  it 'does not let non-admin edit non-associated organization' do
+    non_associated_model = mock_model("Organization")
+    associated_model = mock_model("Organization")
+    @nonadmin.should_receive(:organization).and_return associated_model
+    expect(@nonadmin.can_edit?(non_associated_model)).to be_false
+  end
+  it 'does not let non-admin edit when associated with no org' do
+    non_associated_model = mock_model("Organization")
+    @nonadmin.should_receive(:organization).and_return nil
+    expect(@nonadmin.can_edit?(non_associated_model)).to be_false
   end
 end

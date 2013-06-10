@@ -22,7 +22,7 @@ Feature: Admin editing charity
 
   Scenario: Non-admin unsuccessfully attempts to change the address of a charity
     Given I am not signed in as the admin using password "pppppppp"
-    And I update "Friendly" charity address to be "30 pinner road"
+    And I furtively update "Friendly" charity address to be "30 pinner road"
     Then I should see "You don't have permission"
     And "Friendly" charity address is "34 pinner road"
 
