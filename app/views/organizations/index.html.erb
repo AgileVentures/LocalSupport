@@ -8,6 +8,7 @@
 
 <div class="table table-bordered">
   <table>
+
     <% @organizations.each do |organization| %>
         <tr>
           <td><u><%= link_to organization.name, organization %></u><br/>
@@ -19,8 +20,8 @@
 <br/>
 <div style="width:50%;float:left">
   <%= link_to 'New Organization', new_organization_path %>
-
 </div>
+
 <% content_for :map do %>
     <br/><br/>
     <%= gmaps("map_options" => {"auto_adjust" => false, "auto_zoom" => true, "center_latitude" => 51.5978,
