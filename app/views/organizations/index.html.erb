@@ -6,25 +6,21 @@
     <%= submit_tag "Search", :class => 'btn btn-info' %>
 <% end %>
 
-<div style="height:300px;width:100%;border:1px solid #ccc;overflow:auto;">
-    <div class="table table-bordered">
-      <table>
-
-        <% @organizations.each do |organization| %>
-            <tr>
-              <td><u><%= link_to organization.name, organization %></u><br/>
-                <%= smart_truncate(organization.description) %></td>
-            </tr>
-        <% end %>
-      </table>
-    </div>
+<div class="table table-bordered">
+  <table>
+    <% @organizations.each do |organization| %>
+        <tr>
+          <td><u><%= link_to organization.name, organization %></u><br/>
+            <%= smart_truncate(organization.description) %></td>
+        </tr>
+    <% end %>
+  </table>
 </div>
 <br/>
 <div style="width:50%;float:left">
   <%= link_to 'New Organization', new_organization_path %>
 
 </div>
-
 <% content_for :map do %>
     <br/><br/>
     <%= gmaps("map_options" => {"auto_adjust" => false, "auto_zoom" => true, "center_latitude" => 51.5978,
