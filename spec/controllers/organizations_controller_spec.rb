@@ -17,6 +17,8 @@ describe OrganizationsController do
       json='my markers'
       result.should_receive(:to_gmaps4rails).and_return(json)
       Organization.should_receive(:search_by_keyword).with('test').and_return(result)
+
+      result.stub_chain(:page, :per).and_return(result)
       
       get :search, :q => 'test'
       response.should render_template 'index'
@@ -33,6 +35,7 @@ describe OrganizationsController do
       json='my markers'
       result.should_receive(:to_gmaps4rails).and_return(json)
       Organization.should_receive(:order).with('updated_at DESC').and_return(result)
+      result.stub_chain(:page, :per).and_return(result)
       get :index
       assigns(:organizations).should eq(result)
       assigns(:json).should eq(json)
