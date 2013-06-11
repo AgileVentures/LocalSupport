@@ -26,10 +26,20 @@ Scenario: Successfully change the address of a charity
 Scenario: Unsuccessfully change the address of a charity
   Given I am on the sign in page
   And I sign in as "jcodefx@gmail.com" with password "pppppppp"
-  Given I update "Friendly" charity address to be "30 pinner road"
+  Given I furtively update "Friendly" charity address to be "30 pinner road"
   And I should see "You don't have permission"
   Then I am on the home page
   And the coordinates for "Friendly Clone" and "Friendly" should not be the same
+
+Scenario: Do not see edit button as non-admin not associated with Friendly
+  Given I am on the sign in page
+  And I sign in as "jcodefx@gmail.com" with password "pppppppp"
+  And I am on the charity page for "Friendly"
+  Then I should not see an edit button for "Friendly" charity
+
+Scenario: Non-logged in users do not see edit button either
+  Given I am on the charity page for "Friendly"
+  Then I should not see an edit button for "Friendly" charity
 
 Scenario: Change the address of a charity when Google is indisposed
   Given I am on the sign in page
@@ -46,7 +56,7 @@ Scenario: Change the address of a charity when Google is indisposed
 #  Then show me the page
 
 Scenario: Redirected to sign-in when not signed-in and edit donation url
-  Given I am on the edit charity page for "Friendly"
+  Given I am furtively on the edit charity page for "Friendly"
   Then I should be on the sign in page
 
 Scenario: By default, not display organizations address and phone number on home page

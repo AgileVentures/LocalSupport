@@ -1,6 +1,11 @@
 require 'webmock/cucumber'
 require 'uri-handler'
 
+Then /^I should not see an edit button for "(.*?)" charity$/ do |name|
+  org = Organization.find_by_name name
+  expect(page).not_to have_link :href => edit_organization_path(org.id)
+end
+
 Then /^show me the page$/ do
   save_and_open_page
 end
@@ -31,6 +36,15 @@ Given /^I update "(.*?)" charity address to be "(.*?)"$/ do |name, address|
     And I press "Update Organization"
   }
 end
+
+Given /^I furtively update "(.*?)" charity address to be "(.*?)"$/ do |name, address|
+  steps %Q{
+    Given I am furtively on the edit charity page for "#{name}"
+    And I edit the charity address to be "#{address}"
+    And I press "Update Organization"
+  }
+end
+
 
 And /^"(.*?)" charity address is "(.*?)"$/ do |name, address|
   org = Organization.find_by_name(name)

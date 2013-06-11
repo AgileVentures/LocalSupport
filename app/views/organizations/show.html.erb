@@ -29,6 +29,8 @@
 <%= donation_info_msg %>
 </div>
 
+<%= link_to_if(@editable, "Edit", {:controller => "organizations", :action => "edit", :id => @organization.id }){} %>
+
 <%= link_to 'Back', organizations_path, {:class => 'btn btn-large'} %>
 
 <% content_for :map do %>
