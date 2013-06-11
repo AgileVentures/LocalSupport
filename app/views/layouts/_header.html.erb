@@ -12,7 +12,7 @@
        <% end %>
       <div class="span6">
       <nav>
-        <ul class="nav pull-right" style="padding-top:10px;">
+        <ul class="nav pull-right">
           <li><% if (charity_worker_signed_in?)%>
           <%=link_to "Sign Out", destroy_charity_worker_session_path, :method => :delete%>
           <% end %></li>
