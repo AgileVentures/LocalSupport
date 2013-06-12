@@ -18,22 +18,22 @@ Background: organizations have been added to database
   | jcodefx@gmail.com | pppppppp |        |
 
 Scenario: Successfully change the address of a charity
-  Given I am on the sign in page
-  And I sign in as "jcodefx2@gmail.com" with password "pppppppp"
-  Given I update "Friendly" charity address to be "30 pinner road"
-  Then I am on the home page
-  And the coordinates for "Friendly Clone" and "Friendly" should be the same
+  Given I am signed in as a charity worker related to "Friendly"
+  And I update "Friendly" charity address to be "30 pinner road"
+  Then I should be on the charity page for "Friendly"
+  Given I am on the home page
+  Then the coordinates for "Friendly Clone" and "Friendly" should be the same
 
 Scenario: Unsuccessfully change the address of a charity
   Given I am signed in as a charity worker unrelated to "Friendly"
   Given I furtively update "Friendly" charity address to be "30 pinner road"
-  And I should see "You don't have permission"
-  Then I am on the home page
-  And the coordinates for "Friendly Clone" and "Friendly" should not be the same
+  Then I should see "You don't have permission"
+  And I should be on the charity page for "Friendly"
+  Given I am on the home page
+  Then the coordinates for "Friendly Clone" and "Friendly" should not be the same
 
 Scenario: Do not see edit button as non-admin not associated with Friendly
-  Given I am on the sign in page
-  And I sign in as "jcodefx@gmail.com" with password "pppppppp"
+  Given I am signed in as a charity worker unrelated to "Friendly"
   And I am on the charity page for "Friendly"
   Then I should not see an edit button for "Friendly" charity
 
@@ -42,14 +42,13 @@ Scenario: Non-logged in users do not see edit button either
   Then I should not see an edit button for "Friendly" charity
 
 Scenario: Change the address of a charity when Google is indisposed
-  Given I am on the sign in page
-  And I sign in as "jcodefx2@gmail.com" with password "pppppppp"
-  Given I am on the edit charity page for "Friendly"
-  And I edit the charity address to be "83 pinner road" when Google is indisposed
-  And I press "Update Organization"
+  Given I am signed in as a charity worker related to "Friendly"
+  And I update "Friendly" charity address to be "83 Pinner Road" when Google is indisposed
   Then I should not see the unable to save organization error
-  Then the address for "Friendly" should be "83 pinner road"
-  And I am on the home page
+  Then the address for "Friendly" should be "83 Pinner Road"
+  # TODO Then I should see "Failed to update map coordinates"
+  And I should be on the charity page for "Friendly"
+#  TODO possible follow on if we could have the request re-issued on next page load
 #  Given Google is no longer indisposed
 #  And I am on the home page
 #  Then the coordinates for "Friendly" should be correct
@@ -58,6 +57,7 @@ Scenario: Change the address of a charity when Google is indisposed
 Scenario: Redirected to sign-in when not signed-in and edit donation url
   Given I am furtively on the edit charity page for "Friendly"
   Then I should be on the sign in page
+# TODO after sign in is take the user back to the edit page
 
 Scenario: By default, not display organizations address and phone number on home page
   Given I am on the home page
