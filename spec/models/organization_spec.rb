@@ -41,58 +41,93 @@ describe Organization do
     expect("HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW".humanized_all_first_capitals).to eq("Harrow Baptist Church, College Road, Harrow")
   end
 
-  it 'must not create org when date removed is not nil' do
-    text = 'HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,2009-05-28,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****'
-    org = Organization.create_from_array(CSV.parse(text)[0])
-    org.should be_nil
-  end
+  describe 'Creating of Organizations from CSV file' do
 
-  it 'must be able to generate multiple Organizations from text file' do
-    attempted_number_to_import = 1006
-    actual_number_to_import = 642
-    Gmaps4rails.should_receive(:geocode).exactly(actual_number_to_import)
-    lambda {
-      Organization.import_addresses 'db/data.csv', attempted_number_to_import
-    }.should change(Organization, :count).by(actual_number_to_import)
-  end
+    before(:all){ @headers = 'Title,Charity Number,Activities,Contact Name,Contact Address,website,Contact Telephone,date registered,date removed,accounts date,spending,income,company number,OpenlyLocalURL,twitter account name,facebook account name,youtube account name,feed url,Charity Classification,signed up for 1010,last checked,created at,updated at,Removed?'.split(',')}
 
-  it 'must be able to handle no postcode in text representation' do
-    Gmaps4rails.should_receive(:geocode)
-    text = 'HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****'
-    org = Organization.create_from_array(CSV.parse(text)[0])
-    expect(org.name).to eq('Harrow Baptist Church')
-    expect(org.description).to eq('No information recorded')
-    expect(org.address).to eq('Harrow Baptist Church, College Road, Harrow')
-    expect(org.postcode).to eq('')
-    expect(org.website).to eq('http://www.harrow-baptist.org.uk')
-    expect(org.telephone).to eq('020 8863 7837')
-    expect(org.donation_info).to eq(nil)
-  end
+    it 'must not create org when date removed is not nil' do
+      fields = CSV.parse('HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,2009-05-28,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
+      org = create_organization(fields)
+      org.should be_nil
+    end
 
-  it 'must be able to handle no address in text representation' do
-    Gmaps4rails.should_receive(:geocode)
-    text = 'HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,,http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****'
-    org = Organization.create_from_array(CSV.parse(text)[0])
-    expect(org.name).to eq('Harrow Baptist Church')
-    expect(org.description).to eq('No information recorded')
-    expect(org.address).to eq('')
-    expect(org.postcode).to eq('')
-    expect(org.website).to eq('http://www.harrow-baptist.org.uk')
-    expect(org.telephone).to eq('020 8863 7837')
-    expect(org.donation_info).to eq(nil)
-  end
+    it 'must be able to generate multiple Organizations from text file' do
+      attempted_number_to_import = 1006
+      actual_number_to_import = 642
+      Gmaps4rails.should_receive(:geocode).exactly(actual_number_to_import)
+      lambda {
+        Organization.import_addresses 'db/data.csv', attempted_number_to_import
+      }.should change(Organization, :count).by(actual_number_to_import)
+    end
 
-  it 'must be able to generate Organization from text representation ensuring words in correct case and postcode is extracted from address' do
-    Gmaps4rails.should_receive(:geocode)
-    text = 'HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****'
-    org = Organization.create_from_array(CSV.parse(text)[0])
-    expect(org.name).to eq('Harrow Baptist Church')
-    expect(org.description).to eq('No information recorded')
-    expect(org.address).to eq('Harrow Baptist Church, College Road, Harrow')
-    expect(org.postcode).to eq('HA1 1BA')
-    expect(org.website).to eq('http://www.harrow-baptist.org.uk')
-    expect(org.telephone).to eq('020 8863 7837')
-    expect(org.donation_info).to eq(nil)
+    it 'must be able to handle no postcode in text representation' do
+      Gmaps4rails.should_receive(:geocode)
+      fields = CSV.parse('HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
+      org = create_organization(fields)
+      expect(org.name).to eq('Harrow Baptist Church')
+      expect(org.description).to eq('No information recorded')
+      expect(org.address).to eq('Harrow Baptist Church, College Road, Harrow')
+      expect(org.postcode).to eq('')
+      expect(org.website).to eq('http://www.harrow-baptist.org.uk')
+      expect(org.telephone).to eq('020 8863 7837')
+      expect(org.donation_info).to eq(nil)
+    end
+
+    it 'must be able to handle no address in text representation' do
+      Gmaps4rails.should_receive(:geocode)
+      fields = CSV.parse('HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,,http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
+      org = create_organization(fields)
+      expect(org.name).to eq('Harrow Baptist Church')
+      expect(org.description).to eq('No information recorded')
+      expect(org.address).to eq('')
+      expect(org.postcode).to eq('')
+      expect(org.website).to eq('http://www.harrow-baptist.org.uk')
+      expect(org.telephone).to eq('020 8863 7837')
+      expect(org.donation_info).to eq(nil)
+    end
+
+    it 'must be able to generate Organization from text representation ensuring words in correct case and postcode is extracted from address' do
+      Gmaps4rails.should_receive(:geocode)
+      fields = CSV.parse('HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
+      org = create_organization(fields)
+      expect(org.name).to eq('Harrow Baptist Church')
+      expect(org.description).to eq('No information recorded')
+      expect(org.address).to eq('Harrow Baptist Church, College Road, Harrow')
+      expect(org.postcode).to eq('HA1 1BA')
+      expect(org.website).to eq('http://www.harrow-baptist.org.uk')
+      expect(org.telephone).to eq('020 8863 7837')
+      expect(org.donation_info).to eq(nil)
+    end
+
+
+    it 'should raise error if no columns found' do
+      #Headers are without Title header
+      @headers = 'Charity Number,Activities,Contact Name,Contact Address,website,Contact Telephone,date registered,date removed,accounts date,spending,income,company number,OpenlyLocalURL,twitter account name,facebook account name,youtube account name,feed url,Charity Classification,signed up for 1010,last checked,created at,updated at,Removed?'.split(',')
+      fields = CSV.parse('HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
+      lambda{
+        org = create_organization(fields)
+      }.should raise_error
+    end
+
+    it 'should save Organization from file without running validations' do
+      #As validations are not going to run, calls to Gmaps API won't be performed too
+      Gmaps4rails.should_not_receive(:geocode)
+      fields = CSV.parse('HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
+      row = CSV::Row.new(@headers, fields.flatten)
+      org = Organization.create_from_array(row, false)
+      expect(org.name).to eq('Harrow Baptist Church')
+      expect(org.description).to eq('No information recorded')
+      expect(org.address).to eq('Harrow Baptist Church, College Road, Harrow')
+      expect(org.postcode).to eq('HA1 1BA')
+      expect(org.website).to eq('http://www.harrow-baptist.org.uk')
+      expect(org.telephone).to eq('020 8863 7837')
+      expect(org.donation_info).to eq(nil)
+    end
+
+    def create_organization(fields)
+      row = CSV::Row.new(@headers, fields.flatten)
+      Organization.create_from_array(row, true)
+    end
   end
 
   it 'must have search by keyword' do
