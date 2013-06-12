@@ -16,6 +16,7 @@ Feature: Admin editing charity
 
   Scenario: Admin successfully changes the address of a charity
     Given I am signed in as the admin using password "pppppppp"
+    #Given I am signed in as the admin
     Given I update "Friendly" charity address to be "30 pinner road"
     Then I am on the home page
     And the coordinates for "Friendly Clone" and "Friendly" should be the same
