@@ -29,5 +29,12 @@ end
 
 Given /^I am on the edit charity page for "(.*?)"$/ do |name1|
   org1 = Organization.find_by_name(name1)
-  visit edit_organization_path org1.id
+  visit organization_path org1.id
+  click_link 'Edit'
 end
+
+Given /^I am furtively on the edit charity page for "(.*?)"$/ do |name|
+  org = Organization.find_by_name(name)
+  visit edit_organization_path org.id
+end
+

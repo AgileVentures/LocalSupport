@@ -1,7 +1,7 @@
 class OrganizationsController < ApplicationController
   # GET /organizations/search
   # GET /organizations/search.json
-  before_filter :authenticate_charity_worker!, :except => [:search, :index, :show]
+  before_filter :authenticate_user!, :except => [:search, :index, :show]
   def search
     # should this be a model method with a model spec around it ...?
 
@@ -29,6 +29,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1.json
   def show
     @organization = Organization.find(params[:id])
+    @editable = current_user.can_edit?(@organization) if current_user
     @json = @organization.to_gmaps4rails
     respond_to do |format|
       format.html # show.html.erb
@@ -71,6 +72,11 @@ class OrganizationsController < ApplicationController
   # PUT /organizations/1
   # PUT /organizations/1.json
   def update
+    #TODO: Refactor flow and/or into seperate filter.  This is getting smelly and defensive
+    unless current_user.try(:admin?) ||(current_user.organization && current_user.organization.id.to_s == params[:id])
+      flash[:notice] = "You don't have permission"
+      redirect_to organization_path(params[:id]) and return false
+    end
     @organization = Organization.find(params[:id])
 
     respond_to do |format|

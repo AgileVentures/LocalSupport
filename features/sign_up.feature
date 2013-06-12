@@ -16,7 +16,7 @@ Scenario: Sign up for an existing user
 Scenario: Sign up for a non-existent user
   Given I am on the sign up page
   And I sign up as "marian.mosley@gmail.com" with password "pppppppp" and password confirmation "pppppppp"
-  Then I should be on the new charity page
+  Then I should be on the home page
   And I should see "Signed in as marian.mosley@gmail.com"
 
 Scenario: Sign up for an non-existent user with non-matching password confirmation

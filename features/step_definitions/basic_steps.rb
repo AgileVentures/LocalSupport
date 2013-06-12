@@ -1,6 +1,11 @@
 require 'webmock/cucumber'
 require 'uri-handler'
 
+Then /^I should not see an edit button for "(.*?)" charity$/ do |name|
+  org = Organization.find_by_name name
+  expect(page).not_to have_link :href => edit_organization_path(org.id)
+end
+
 Then /^show me the page$/ do
   save_and_open_page
 end
@@ -24,9 +29,32 @@ Given /^I fill in the new charity page validly$/ do
   fill_in 'organization_name', :with => 'Friendly charity'
 end
 
+Given /^I update "(.*?)" charity address to be "(.*?)"$/ do |name, address|
+  steps %Q{
+    Given I am on the edit charity page for "#{name}"
+    And I edit the charity address to be "#{address}"
+    And I press "Update Organization"
+  }
+end
+
+Given /^I furtively update "(.*?)" charity address to be "(.*?)"$/ do |name, address|
+  steps %Q{
+    Given I am furtively on the edit charity page for "#{name}"
+    And I edit the charity address to be "#{address}"
+    And I press "Update Organization"
+  }
+end
+
+
+And /^"(.*?)" charity address is "(.*?)"$/ do |name, address|
+  org = Organization.find_by_name(name)
+  expect(org.address).to eq(address)
+end
+
 Then /^I should see "(.*?)" before "(.*?)"$/ do |name1,name2|
   str = page.body
   assert str.index(name1) < str.index(name2)
+
 end
 
 Then /^I should see the donation_info URL for "(.*?)"$/ do |name1|
@@ -127,11 +155,11 @@ def check_contact_details(name)
 end
 
 Then /^I should be on the sign up page$/ do
-  current_path.should == new_charity_worker_registration_path
+  current_path.should == new_user_registration_path
 end
 
 Then /^I should be on the charity workers page$/ do
-  current_path.should == charity_workers_path
+  current_path.should == users_path
 end
 
 When /^I fill in "(.*?)" with "(.*?)"$/ do |field, value|

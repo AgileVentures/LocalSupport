@@ -1,5 +1,5 @@
 LocalSupport::Application.routes.draw do
-  devise_for :charity_workers
+  devise_for :users
 
   match 'organizations/search' => 'organizations#search'
   match 'disclaimer/show' => 'disclaimer#show'

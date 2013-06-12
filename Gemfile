@@ -15,6 +15,8 @@ group :development, :test do
   gem 'simplecov'
   gem 'rspec-rails'
   gem 'execjs'
+  gem 'rack_session_access'
+  gem 'simplecov', :require => false
 end
 
 group :development do

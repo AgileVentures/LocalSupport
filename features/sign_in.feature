@@ -4,16 +4,33 @@ Feature: Sign in
   I want to be able to login
 
 Background:
+Given the following organizations exist:
+  | name           | description               | address        | postcode | telephone |
+  | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 |
 Given the following users are registered:
-| email             | password |
-| jcodefx@gmail.com | pppppppp |
+| email             | password | admin | organization |
+| jcodefx@gmail.com | pppppppp |       |              |
+| jcodefx2@gmail.com| pppppppp | true  |              |
+| jcodefx3@gmail.com| pppppppp | false | Friendly     |
 
-Scenario: Sign in for an existing user
+Scenario: Sign in for an existing non-admin user unassociated with any organization
   Given I am on the sign in page
   And I sign in as "jcodefx@gmail.com" with password "pppppppp"
-  Then I should be on the new charity page
+  Then I should be on the home page
   And I should see "Signed in as jcodefx@gmail.com"
+
+Scenario: Sign in for an existing non-admin user associated with an organization
+  Given I am on the sign in page
+  And I sign in as "jcodefx3@gmail.com" with password "pppppppp"
+  Then I should be on the charity page for "Friendly"
+  And I should see "Signed in as jcodefx3@gmail.com"
   
+Scenario: Sign in for an existing admin user
+  Given I am on the sign in page
+  And I sign in as "jcodefx2@gmail.com" with password "pppppppp"
+  Then I should be on the home page
+  And I should see "Signed in as jcodefx2@gmail.com"
+
 Scenario: Sign in for a non-existent user
   Given I am on the sign in page
   And I sign in as "marian.mosley@gmail.com" with password "pppppppp"
