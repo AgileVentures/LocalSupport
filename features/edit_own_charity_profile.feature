@@ -27,7 +27,6 @@ Scenario: Successfully change the address of a charity
 Scenario: Unsuccessfully change the address of a charity
   Given I am signed in as a charity worker unrelated to "Friendly"
   Given I furtively update "Friendly" charity address to be "30 pinner road"
-  Then show me the page
   And I should see "You don't have permission"
   Then I am on the home page
   And the coordinates for "Friendly Clone" and "Friendly" should not be the same
