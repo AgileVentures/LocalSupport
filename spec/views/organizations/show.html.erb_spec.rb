@@ -49,4 +49,19 @@ describe "organizations/show.html.erb" do
       rendered.should have_content "We don't yet have any donation link for them."
     end
   end
+  context 'edit button' do
+    before :each do
+      @organization = assign(:organization, stub_model(Organization, :name => 'Charity with no donation URL', :id => 1))
+    end
+    it 'renders edit button if editable true' do
+      @editable = assign(:editable, true)
+      render  
+      rendered.should have_link "Edit", :href => edit_organization_path(@organization.id)
+    end
+    it 'does not render edit button if editable false' do
+      @editable = assign(:editable, false)
+      render  
+      rendered.should_not have_link :href => edit_organization_path(@organization.id)
+    end
+  end
 end

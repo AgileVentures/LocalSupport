@@ -74,9 +74,15 @@ Given /^I sign in as "(.*?)" with password "(.*?)"$/ do |email, password|
 end
 
 Given /^I am on the sign in page$/ do
-  visit new_charity_worker_session_path
+  steps %Q{ 
+    Given I am on the home page
+  }
+  click_link 'Org Login'
 end
 
 Given /^I am on the sign up page$/ do
-  visit new_charity_worker_registration_path
+  steps %Q{ 
+    Given I am on the home page
+  }
+  click_link 'New Org?'
 end

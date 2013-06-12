@@ -17,10 +17,10 @@
           <%=link_to "Sign Out", destroy_charity_worker_session_path, :method => :delete%>
           <% end %></li>
           <li><% if !(charity_worker_signed_in?)%>
-          <%= link_to "Sign In", charity_worker_session_path %>
+          <%= link_to "New Org?", new_charity_worker_registration_path %>
           <% end %></li>
           <li><% if !(charity_worker_signed_in?)%>
-          <%= link_to "New user?", new_charity_worker_registration_path %>
+          <%= link_to "Org Login", charity_worker_session_path %>
           <% end %></li>
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "Disclaimer", disclaimer_show_path %></li>

@@ -48,6 +48,49 @@ describe OrganizationsController do
       get :show, :id => "37"
       assigns(:organization).should be(mock_organization)
     end
+
+    context "while signed in as non-admin" do
+      before(:each) do
+        @org = mock_organization
+        Organization.stub(:find).with("37") { @org }
+        @nonadmin = mock_model("CharityWorker").stub(:admin?).with(false)
+        controller.stub!(:current_charity_worker).and_return(@nonadmin)
+      end
+      it "non-admin can edit organization" do
+        @nonadmin.should_receive(:can_edit?).with(@org).and_return(true)
+        get :show, :id => 37
+        assigns(:editable).should be(true)
+      end
+      it "non-admin cannot edit organization" do
+        @nonadmin.should_receive(:can_edit?).with(@org).and_return(false)
+        get :show, :id => 37
+        assigns(:editable).should be(false)
+      end
+    end
+    context "while signed in admin" do
+      before(:each) do
+        @org = mock_organization
+        Organization.stub(:find).with("37") { @org }
+        @admin = mock_model("CharityWorker").stub(:admin?).with(true)
+        controller.stub!(:current_charity_worker).and_return(@admin)
+      end
+      it "admin can edit organization" do
+        @admin.should_receive(:can_edit?).with(@org).and_return(true)
+        get :show, :id => 37
+        assigns(:editable).should be(true)
+      end
+    end
+    context "while not signed-in" do
+      before(:each) do
+        @org = mock_organization
+        Organization.stub(:find).with("37"){@org}
+        controller.stub!(:current_charity_worker).and_return(nil)
+      end
+      it 'non-signed in user cannot edit organization' do
+        get :show, :id => 37
+        expect(assigns(:editable)).to eq nil
+      end 
+    end
   end
 
   describe "GET new" do

@@ -33,6 +33,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1.json
   def show
     @organization = Organization.find(params[:id])
+    @editable = current_charity_worker.can_edit?(@organization) if current_charity_worker
     @json = @organization.to_gmaps4rails
     respond_to do |format|
       format.html # show.html.erb
