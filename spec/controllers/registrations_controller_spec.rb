@@ -14,8 +14,8 @@ describe Devise::RegistrationsController do
     it 'does not email upon registration' do
       expect(ActionMailer::Base.deliveries).to be_empty
     end
-    it 'redirects to create new org after registration form' do
-      expect(response).to redirect_to new_organization_path
+    it 'redirects to home page after registration form' do
+      expect(response).to redirect_to root_url
     end
   end
 end
