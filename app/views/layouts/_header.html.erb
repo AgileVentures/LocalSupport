@@ -3,7 +3,7 @@
     <div class="container">
        <div class="row">
         <div class="span6">
-          <%= image_tag "HCN2.png", :width => "200" %>
+          <%= image_tag "HCN2.png", :width => "200", :style => "padding: 7px;" %>
         </div>
         <% if (user_signed_in?)%>
        <div class="span6">
@@ -12,7 +12,8 @@
        <% end %>
       <div class="span6">
       <nav>
-        <ul class="nav pull-right">
+        <ul class="nav pull-right" style="padding-top:17px;">
+          <li><%= link_to "Home", root_path %></li>
           <li><% if (user_signed_in?)%>
           <%=link_to "Sign Out", destroy_user_session_path, :method => :delete%>
           <% end %></li>
@@ -22,7 +23,6 @@
           <li><% if !(user_signed_in?)%>
           <%= link_to "Org Login", user_session_path %>
           <% end %></li>
-          <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "Disclaimer", disclaimer_show_path %></li>
         </ul>
       </nav>
