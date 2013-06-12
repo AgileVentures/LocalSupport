@@ -1,0 +1,38 @@
+(function() {
+    var page = 1,
+    loading = false;
+    orgs = $('#orgs_scroll');
+
+    function nearBottomOfPage() {
+        return orgs[0].scrollTop + orgs.innerHeight() >= orgs[0].scrollHeight;
+    }
+
+    orgs.scroll(function(){
+        if (loading) {
+            return;
+        }
+
+        if(nearBottomOfPage()) {
+            loading=true;
+            page++;
+            $.ajax({
+                url: document.URL + '?test=0&page=' + page,
+                type: 'get',
+                dataType: 'script',
+                success: function() {
+                    $(window).sausage('draw');
+                    loading=false;
+                }
+            });
+        }
+    });
+
+    $(window).sausage();
+
+}());
+
+$(document).ready(function() {
+    <% @organizations.each do |organization| %>
+    $("#organizations").append('<tr><td><u><%= link_to organization.name, organization %></u><br/><%= smart_truncate(organization.description) %></td></tr>');
+    <% end %>
+});
