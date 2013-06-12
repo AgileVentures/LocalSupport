@@ -3,7 +3,7 @@
     <div class="container">
        <div class="row">
         <div class="span6">
-          <%= image_tag "HCN2.png", :width => "200", :style => "padding: 7px;" %>
+          <%= link_to(image_tag("HCN2.png", :width => "200" ), root_path) %>
         </div>
         <% if (user_signed_in?)%>
        <div class="span6">
