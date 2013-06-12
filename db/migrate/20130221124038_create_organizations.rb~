@@ -6,7 +6,7 @@ class CreateOrganizations < ActiveRecord::Migration
       t.string :postcode
       t.string :email
       t.string :description
-      t.url :website
+      t.string :website
       t.string :telephone
 
       t.timestamps

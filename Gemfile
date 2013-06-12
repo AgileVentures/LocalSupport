@@ -1,6 +1,8 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.10'
+gem 'devise'
+
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -13,21 +15,26 @@ group :development, :test do
   gem 'simplecov'
   gem 'rspec-rails'
   gem 'execjs'
-  gem 'therubyracer'
+  gem 'rack_session_access'
+  gem 'simplecov', :require => false
 end
 
 group :development do
-  gem 'ruby-debug19', :require => 'ruby-debug'
+  #gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'debugger'
+  gem 'railroady'
 end
 
-group :test do             
+group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
-  gem 'minitest'
+  gem 'minitest', '~> 4.7.1'
   gem 'ZenTest'
-  gem 'capybara'
+  gem 'capybara', '2.0.0'
   gem 'webrat'
   gem 'factory_girl_rails', :require => false
+  gem 'webmock'
+  gem 'uri-handler'
 end
 group :production do
   gem 'pg'
@@ -36,10 +43,13 @@ end
 
 # Gems used only for assets and not required
 # in production environments by default.
+
 group :assets do
-  gem 'sass-rails', "  ~> 3.1.0"
-  gem 'coffee-rails', "~> 3.1.0"
+  gem 'coffee-rails'#, "~> 3.1.0"
   gem 'uglifier'
+  gem 'sass-rails'
+  gem 'less-rails'
+  gem 'twitter-bootstrap-rails'
 end
 
 gem 'jquery-rails'
@@ -58,7 +68,6 @@ group :test do
   gem 'turn', :require => false
 end
 
+gem 'therubyracer'
 gem 'gmaps4rails'
-
 #gem 'mongrel'
-

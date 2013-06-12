@@ -8,12 +8,16 @@ capybara-*.html
 /log/*
 /tmp/*
 /db/*.sqlite3
+/db/schema.rb
 /public/system/*
 /coverage/
 /spec/tmp/*
 **.orig
 rerun.txt
+*.project
 pickle-email-*.html
 *.*~
 *~
-.idea/
+/.idea/*
+.DS_Store
+linecache19-0.5.13.gem
