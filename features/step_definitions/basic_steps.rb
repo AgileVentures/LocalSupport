@@ -29,10 +29,10 @@ Given /^I fill in the new charity page validly$/ do
   fill_in 'organization_name', :with => 'Friendly charity'
 end
 
-Given /^I update "(.*?)" charity address to be "(.*?)"$/ do |name, address|
+Given /^I update "(.*?)" charity address to be "(.*?)"( when Google is indisposed)?$/ do |name, address, indisposed|
   steps %Q{
     Given I am on the edit charity page for "#{name}"
-    And I edit the charity address to be "#{address}"
+    And I edit the charity address to be "#{address}" #{indisposed ? 'when Google is indisposed':''}
     And I press "Update Organization"
   }
 end

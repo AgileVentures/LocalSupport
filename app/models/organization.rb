@@ -2,6 +2,7 @@ require 'csv'
 
 class Organization < ActiveRecord::Base
   acts_as_gmappable :check_process => false
+  has_many :users
 
   #This method is overridden to save organization if address was failed to geocode
   def run_validations!

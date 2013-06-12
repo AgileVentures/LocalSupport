@@ -1,7 +1,12 @@
-Given /^I am signed in as a charity worker unrelated to "(.*?)" with password "(.*?)"$/ do |organization_name, password|
-  #TODO: Not sure how to get devise session id to set
-  #page.set_rack_session(:user_id => CharityWorker.find_by_admin(false).id)
-  
+Given /^I am signed in as a charity worker (un)?related to "(.*?)"$/ do |negate, organization_name|
+  organization = Organization.find_by_name(organization_name)
+  if negate
+    users = User.find_all_by_admin(false)
+    user = users.find{|user| user.organization != organization}
+  else
+    user = organization.users.find{|user| !user.admin?}
+  end
+  page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
 
 Given /^I sign up as "(.*?)" with password "(.*?)" and password confirmation "(.*?)"$/ do |email, password,password_confirmation|

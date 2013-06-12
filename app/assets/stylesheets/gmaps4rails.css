@@ -1,5 +1,6 @@
 .map_container {
   padding: 6px;
+  margin-top: 16px;
   border-width: 1px;
   border-style: solid;
   border-color: #ccc #ccc #999 #ccc;
