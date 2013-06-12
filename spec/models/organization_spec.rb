@@ -17,6 +17,10 @@ describe Organization do
     @org3.save!
   end
 
+  it 'has users' do
+    expect(@org1).to respond_to(:users)
+  end
+
   it 'must be able to humanize description' do
     expect(Organization.humanize_description('THIS IS A GOVERNMENT STRING')).to eq('This is a government string')
   end

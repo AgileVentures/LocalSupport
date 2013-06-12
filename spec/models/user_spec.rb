@@ -1,26 +1,26 @@
 require 'spec_helper'
  
-describe CharityWorker do
+describe User do
   before :suite do
     FactoryGirl.factories.clear
     FactoryGirl.find_definitions
   end
   before :each do
-    @admin = FactoryGirl.build(:charity_worker, :email => 'jj@example.com', 
+    @admin = FactoryGirl.build(:user, :email => 'jj@example.com',
       :password => 'pppppppp', :admin => true)  
     @admin.save!
-    FactoryGirl.build(:charity_worker, :email => 'jj1@example.com', 
+    FactoryGirl.build(:user, :email => 'jj1@example.com',
       :password => 'pppppppp', :admin => true).save!
-    @nonadmin = FactoryGirl.build(:charity_worker, :email => 'jj2@example.com', 
+    @nonadmin = FactoryGirl.build(:user, :email => 'jj2@example.com',
       :password => 'pppppppp', :admin => false)
     @nonadmin.save!
   end
   it 'must find an admin in find_by_admin with true argument' do
-    @result = CharityWorker.find_by_admin(true)
+    @result = User.find_by_admin(true)
     expect(@result.admin?).to be_true
   end
   it 'must find a non-admin in find_by_admin with false argument' do
-    @result = CharityWorker.find_by_admin(false)
+    @result = User.find_by_admin(false)
     expect(@result.admin?).to be_false
   end
   it 'lets admin edit any organization' do
