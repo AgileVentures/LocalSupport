@@ -43,9 +43,9 @@ Scenario: Non-logged in users do not see edit button either
 
 Scenario: Change the address of a charity when Google is indisposed
   Given I am signed in as a charity worker related to "Friendly"
-  And I update "Friendly" charity address to be "83 Pinner Road" when Google is indisposed
+  And I update "Friendly" charity address to be "83 pinner road" when Google is indisposed
   Then I should not see the unable to save organization error
-  Then the address for "Friendly" should be "83 Pinner Road"
+  Then the address for "Friendly" should be "83 pinner road"
   # TODO Then I should see "Failed to update map coordinates"
   And I should be on the charity page for "Friendly"
 #  TODO possible follow on if we could have the request re-issued on next page load
