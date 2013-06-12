@@ -155,11 +155,11 @@ def check_contact_details(name)
 end
 
 Then /^I should be on the sign up page$/ do
-  current_path.should == new_charity_worker_registration_path
+  current_path.should == new_user_registration_path
 end
 
 Then /^I should be on the charity workers page$/ do
-  current_path.should == charity_workers_path
+  current_path.should == users_path
 end
 
 When /^I fill in "(.*?)" with "(.*?)"$/ do |field, value|

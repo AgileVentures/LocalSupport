@@ -8,8 +8,8 @@ describe Devise::RegistrationsController do
 
   describe "POST create" do
     before :each do
-      request.env["devise.mapping"] = Devise.mappings[:charity_worker]
-      post :create, 'charity_worker' => {'email' => 'example@example.com', 'password' => 'pppppppp', 'password_confirmation' => 'pppppppp'}
+      request.env["devise.mapping"] = Devise.mappings[:user]
+      post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp', 'password_confirmation' => 'pppppppp'}
     end
     it 'does not email upon registration' do
       expect(ActionMailer::Base.deliveries).to be_empty
