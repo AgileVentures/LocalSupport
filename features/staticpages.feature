@@ -42,25 +42,24 @@ Scenario: the about us page is accesible from the charity page
 Scenario: the contact page is accesible from the charity search page
   Given I am on the charity search page
   When I follow "Contact"
-  Then I should see "Contact Info Contact us for support Email us:contact@voluntaryactionharrow.org.uk Phone Us:020 8861 5894 Write to Us:The Lodge, 64 Pinner Road, Harrow, Middlesex, HA1 4HZ Find Us:On Social Media (Click Here)"
+  Then I should see "Contact Info Email us: contact@voluntaryactionharrow.org.uk Phone Us: 020 8861 5894 Write to Us: The Lodge, 64 Pinner Road, Harrow, Middlesex, HA1 4HZ Find Us: On Social Media (Click Here)"
 
 Scenario: the contact page is accesible from the charities page
   Given I am on the home page
   When I follow "Contact"
-  Then I should see "Contact Info Contact us for support Email us:contact@voluntaryactionharrow.org.uk Phone Us:020 8861 5894 Write to Us:The Lodge, 64 Pinner Road, Harrow, Middlesex, HA1 4HZ Find Us:On Social Media (Click Here)"
+  Then I should see "Contact Info Email us: contact@voluntaryactionharrow.org.uk Phone Us: 020 8861 5894 Write to Us: The Lodge, 64 Pinner Road, Harrow, Middlesex, HA1 4HZ Find Us: On Social Media (Click Here)"
 
 Scenario: the contact page is accesible from the new charity page
   Given I am on the new charity page
   When I follow "Contact"
-  Then I should see "Contact Info Contact us for support Email us:contact@voluntaryactionharrow.org.uk Phone Us:020 8861 5894 Write to Us:The Lodge, 64 Pinner Road, Harrow, Middlesex, HA1 4HZ Find Us:On Social Media (Click Here)"
+  Then I should see "Contact Info Email us: contact@voluntaryactionharrow.org.uk Phone Us: 020 8861 5894 Write to Us: The Lodge, 64 Pinner Road, Harrow, Middlesex, HA1 4HZ Find Us: On Social Media (Click Here)"
 
  Scenario: the contact page is accesible from the edit charity page for "Friendly Charity"
   Given I am furtively on the edit charity page for "Friendly Charity"
   When I follow "Contact"
-  Then I should see "Contact Info Contact us for support Email us:contact@voluntaryactionharrow.org.uk Phone Us:020 8861 5894 Write to Us:The Lodge, 64 Pinner Road, Harrow, Middlesex, HA1 4HZ Find Us:On Social Media (Click Here)"
-
+  Then I should see "Contact Info Email us: contact@voluntaryactionharrow.org.uk Phone Us: 020 8861 5894 Write to Us: The Lodge, 64 Pinner Road, Harrow, Middlesex, HA1 4HZ Find Us: On Social Media (Click Here)"
 
 Scenario: the contact page is accesible from the charity page
   Given I am on the charity page for "Friendly Charity"
   When I follow "Contact"
-  Then I should see "Contact Info Contact us for support Email us:contact@voluntaryactionharrow.org.uk Phone Us:020 8861 5894 Write to Us:The Lodge, 64 Pinner Road, Harrow, Middlesex, HA1 4HZ Find Us:On Social Media (Click Here)"
+  Then I should see "Contact Info Email us: contact@voluntaryactionharrow.org.uk Phone Us: 020 8861 5894 Write to Us: The Lodge, 64 Pinner Road, Harrow, Middlesex, HA1 4HZ Find Us: On Social Media (Click Here)"

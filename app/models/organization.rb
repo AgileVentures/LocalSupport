@@ -12,7 +12,7 @@ class Organization < ActiveRecord::Base
   end
 
   def self.search_by_keyword(keyword)
-    self.where("description LIKE ?","%#{keyword}%")
+    self.where("description LIKE ? OR name LIKE ?","%#{keyword}%","%#{keyword}%")
   end
   
   def gmaps4rails_address
