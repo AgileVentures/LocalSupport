@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "organizations/index.html.erb" do
+describe "organizations/index.html.erb", :js => true do
 
   let(:org1) do
     stub_model Organization,:name => 'test', :address => "12 pinner rd", :postcode => "HA1 4HP",:telephone => "1234", :website => 'http://a.com', :description => 'I am test organization hahahahahhahaha'
@@ -16,6 +16,9 @@ describe "organizations/index.html.erb" do
 
   before(:each) do
     assign(:organizations, organizations)
+    organizations.stub!(:current_page).and_return(1)
+    organizations.stub!(:total_pages).and_return(1)
+    organizations.stub!(:limit_value).and_return(1)
   end
 
   it "renders a search form" do

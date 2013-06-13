@@ -6,17 +6,29 @@
     <%= submit_tag "Search", :class => 'btn btn-info' %>
 <% end %>
 
-<div class="table table-bordered">
-  <table>
-
-    <% @organizations.each do |organization| %>
-        <tr>
-          <td><u><%= link_to organization.name, organization %></u><br/>
-            <%= smart_truncate(organization.description) %></td>
-        </tr>
-    <% end %>
-  </table>
+<div id="orgs_scroll" style="height:300px;width:100%;border:1px solid #ccc;overflow:scroll;">
+    <div class="table table-bordered">
+      <table>
+        <div id="organizations">
+          <noscript>
+            <% @organizations.each do |organization| %>
+                <tr>
+                  <td><u><%= link_to organization.name, organization %></u><br/>
+                    <%= smart_truncate(organization.description) %></td>
+                </tr>
+            <% end %>
+          </noscript>
+        </div>
+        <div id="loading" style="text-align: center;display: none;">
+          <%= image_tag "loading.gif", :width => '50px' %>
+        </div>
+        <div id="floating_div" style="display: none;">
+          <div style="opacity: 1;">No more organizations</div>
+        </div>
+      </table>
+    </div>
 </div>
+<noscript><center><%= paginate @organizations %></center></noscript>
 <br/>
 <div style="width:50%;float:left">
   <%= link_to 'New Organization', new_organization_path %>
@@ -27,3 +39,6 @@
     <%= gmaps("map_options" => {"auto_adjust" => false, "auto_zoom" => true, "center_latitude" => 51.5978,
                                 "center_longitude" => -0.3370, "zoom" => 12}, "markers" => {"data" => @json}) %>
 <% end %>
+
+<script type="text/javascript"><%= render :partial => 'scrolling.js.erb' %></script>
+
