@@ -12,36 +12,36 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => "org_form" %>
   </div>
   <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
+    <%= f.label :address %>
+    <%= f.text_field :address, :class => "org_form" %>
   </div>
   <div class="field">
-    <%= f.label :postcode %><br />
-    <%= f.text_field :postcode %>
+    <%= f.label :postcode %>
+    <%= f.text_field :postcode, :class => "org_form" %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
+    <%= f.label :email %>
+    <%= f.text_field :email, :class => "org_form" %>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.label :description %>
+    <%= f.text_area :description, :class => "org_form", :cols => "10", :rows => "10" %>
   </div>
   <div class="field">
-    <%= f.label :website %><br />
-    <%= f.text_field :website %>
+    <%= f.label :website %>
+    <%= f.text_field :website, :class => "org_form" %>
   </div>
   <div class="field">
-    <%= f.label :telephone %><br />
-    <%= f.text_field :telephone %>
+    <%= f.label :telephone %>
+    <%= f.text_field :telephone, :class => "org_form" %>
   </div>
   <div>
-     <%= f.label :donation_info %><br />
-     <%= f.text_field :donation_info %>
+     <%= f.label :donation_info %>
+     <%= f.text_field :donation_info, :class => "org_form" %>
   </div>
   <div class="actions">
     <%= f.submit %>
