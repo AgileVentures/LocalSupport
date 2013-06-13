@@ -2,6 +2,7 @@
     var page = 1,
     loading = false;
     orgs = $('#orgs_scroll');
+    loader = $('#loading');
 
     function nearBottomOfPage() {
         return orgs[0].scrollTop + orgs.innerHeight() >= orgs[0].scrollHeight;
@@ -14,6 +15,7 @@
 
         if(nearBottomOfPage()) {
             loading=true;
+            loader.css('display', 'block');
             page++;
             $.ajax({
                 url: document.URL + '?test=0&page=' + page,
@@ -22,6 +24,7 @@
                 success: function() {
                     $(window).sausage('draw');
                     loading=false;
+                    loader.css('display', 'none');
                 }
             });
         }
