@@ -38,4 +38,11 @@ Feature: Admin editing charity
     And I fill in the new charity page validly
     And I press "Create Organization"
     Then I should see "Organization was successfully created."
+   
+  Scenario: Non-admin unsuccessfully attempts to delete a charity
+    Given I am not signed in as the admin using password "pppppppp"
+    And I delete "Friendly" charity
+    Then show me the page
+    Then I should be on the charity page for "Friendly"
+    And I should see "You don't have permission"
 

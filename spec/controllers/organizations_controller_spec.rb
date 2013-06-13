@@ -273,9 +273,9 @@ describe OrganizationsController do
   end
 
   describe "DELETE destroy" do
-    context "while signed in" do
+    context "while signed in as admin" do
       before(:each) do
-        @user = FactoryGirl.create(:user)
+        @user = FactoryGirl.create(:user, :admin => true)
         sign_in :user, @user
       end
       it "destroys the requested organization" do
@@ -288,6 +288,24 @@ describe OrganizationsController do
         Organization.stub(:find) { mock_organization }
         delete :destroy, :id => "1"
         response.should redirect_to(organizations_url)
+      end
+    end
+    context "while signed in as non-admin" do
+      before(:each) do
+        @user = FactoryGirl.create(:user)
+        sign_in :user, @user
+      end
+      it "does not destroy the requested organization" do
+        mock = mock_organization
+        Organization.should_not_receive(:find).with("37"){mock}
+        mock.should_not_receive(:destroy)
+        delete :destroy, :id => "37"
+      end
+
+      it "redirects to the organization home page" do
+        Organization.stub(:find) { mock_organization }
+        delete :destroy, :id => "1"
+        response.should redirect_to(organization_url(1))
       end
     end
     context "while not signed in" do
