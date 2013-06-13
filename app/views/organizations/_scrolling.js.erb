@@ -30,12 +30,12 @@
                 type: 'get',
                 dataType: 'script',
                 success: function() {
-                    $(window).sausage('draw');
                     loading=false;
                     loader.css('display', 'none');
                     if (last_elem === getLastElement(orgs, 'tr')) {
                         no_elem_div.css('display', 'block')
                         setTimeout(function() { no_elem_div.animate({opacity:0}) }, 3000)
+                        setTimeout(function() { no_elem_div.css('display', 'none') }, 3100)
                         last_page = true;
                     }
                     last_elem = getLastElement(orgs, 'tr');
@@ -43,8 +43,6 @@
             });
         }
     });
-
-    $(window).sausage();
 
 }());
 
