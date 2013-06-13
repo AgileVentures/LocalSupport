@@ -2,7 +2,7 @@
 
 <%= form_tag("/organizations/search", :method => "get") do %>
     <%= label_tag(:q, "Search Organizations for:") %>
-    <%= text_field_tag(:q) %>
+    <%= text_field_tag(:q, '', {:style => 'margin-bottom: 0px;'}) %>
     <%= submit_tag "Search", :class => 'btn btn-info' %>
 <% end %>
 
