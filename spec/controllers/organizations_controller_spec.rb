@@ -54,7 +54,7 @@ describe OrganizationsController do
         @org = mock_organization
         Organization.stub(:find).with("37") { @org }
         @nonadmin = mock_model("CharityWorker").stub(:admin?).with(false)
-        controller.stub!(:current_charity_worker).and_return(@nonadmin)
+        controller.stub!(:current_user).and_return(@nonadmin)
       end
       it "non-admin can edit organization" do
         @nonadmin.should_receive(:can_edit?).with(@org).and_return(true)
@@ -72,7 +72,7 @@ describe OrganizationsController do
         @org = mock_organization
         Organization.stub(:find).with("37") { @org }
         @admin = mock_model("CharityWorker").stub(:admin?).with(true)
-        controller.stub!(:current_charity_worker).and_return(@admin)
+        controller.stub!(:current_user).and_return(@admin)
       end
       it "admin can edit organization" do
         @admin.should_receive(:can_edit?).with(@org).and_return(true)
@@ -84,7 +84,7 @@ describe OrganizationsController do
       before(:each) do
         @org = mock_organization
         Organization.stub(:find).with("37"){@org}
-        controller.stub!(:current_charity_worker).and_return(nil)
+        controller.stub!(:current_user).and_return(nil)
       end
       it 'non-signed in user cannot edit organization' do
         get :show, :id => 37
@@ -96,8 +96,8 @@ describe OrganizationsController do
   describe "GET new" do
     context "while signed in" do
       before(:each) do
-        @user = FactoryGirl.create(:charity_worker)
-        sign_in :charity_worker, @user
+        @user = FactoryGirl.create(:user)
+        sign_in :user, @user
       end
       it "assigns a new organization as @organization" do
         Organization.stub(:new) { mock_organization }
@@ -108,7 +108,7 @@ describe OrganizationsController do
     context "while not signed in" do
       it "redirects to sign-in" do
         get :new
-        expect(response).to redirect_to new_charity_worker_session_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
   end
@@ -116,8 +116,8 @@ describe OrganizationsController do
   describe "GET edit" do
     context "while signed in" do
       before(:each) do
-        @user = FactoryGirl.create(:charity_worker)
-        sign_in :charity_worker, @user
+        @user = FactoryGirl.create(:user)
+        sign_in :user, @user
       end
       it "assigns the requested organization as @organization" do
         Organization.stub(:find).with("37") { mock_organization }
@@ -129,7 +129,7 @@ describe OrganizationsController do
     context "while not signed in" do
       it "redirects to sign-in" do
         get :edit, :id => 37
-        expect(response).to redirect_to new_charity_worker_session_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
   end
@@ -137,8 +137,8 @@ describe OrganizationsController do
   describe "POST create" do
     context "while signed in" do
       before(:each) do
-        @user = FactoryGirl.create(:charity_worker)
-        sign_in :charity_worker, @user
+        @user = FactoryGirl.create(:user)
+        sign_in :user, @user
       end
       describe "with valid params" do
         it "assigns a newly created organization as @organization" do
@@ -172,7 +172,7 @@ describe OrganizationsController do
       it "redirects to sign-in" do
         Organization.stub(:new).with({'these' => 'params'}) { mock_organization(:save => true) }
         post :create, :organization => {'these' => 'params'}
-        expect(response).to redirect_to new_charity_worker_session_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
   end
@@ -180,8 +180,8 @@ describe OrganizationsController do
   describe "PUT update" do
     context "while signed in as admin" do
       before(:each) do
-        @admin = FactoryGirl.create(:charity_worker, :admin => true)
-        sign_in :charity_worker, @admin
+        @admin = FactoryGirl.create(:user, :admin => true)
+        sign_in :user, @admin
       end
       describe "with valid params" do
         it "updates the requested organization" do
@@ -228,9 +228,9 @@ describe OrganizationsController do
     context "while signed in as normal user belonging to organization" do
       before(:each) do
         #TODO: Is this necessary to push into real database to get the association to take?
-        @user = FactoryGirl.create(:charity_worker_stubbed_organization)
+        @user = FactoryGirl.create(:user_stubbed_organization)
         @associated_org = @user.organization
-        sign_in :charity_worker, @user
+        sign_in :user, @user
       end
       describe "with valid params" do
         it "updates the requested organization" do
@@ -249,9 +249,9 @@ describe OrganizationsController do
 
     context "while signed in as normal user belonging to no organization" do
       before(:each) do
-        @user = FactoryGirl.create(:charity_worker)
+        @user = FactoryGirl.create(:user)
         @non_associated_org = mock_organization
-        sign_in :charity_worker, @user
+        sign_in :user, @user
       end
       describe "with valid params" do
         it "does not update the requested organization" do
@@ -267,7 +267,7 @@ describe OrganizationsController do
     context "while not signed in" do
       it "redirects to sign-in" do
         put :update, :id => "1", :organization => {'these' => 'params'}
-        expect(response).to redirect_to new_charity_worker_session_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
   end
@@ -275,8 +275,8 @@ describe OrganizationsController do
   describe "DELETE destroy" do
     context "while signed in" do
       before(:each) do
-        @user = FactoryGirl.create(:charity_worker)
-        sign_in :charity_worker, @user
+        @user = FactoryGirl.create(:user)
+        sign_in :user, @user
       end
       it "destroys the requested organization" do
         Organization.should_receive(:find).with("37") { mock_organization }
@@ -293,7 +293,7 @@ describe OrganizationsController do
     context "while not signed in" do
       it "redirects to sign-in" do
         delete :destroy, :id => "37"
-        expect(response).to redirect_to new_charity_worker_session_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
   end

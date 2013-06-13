@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= render 'layouts/shim' %>
 </head>
 
 <body>
@@ -15,10 +16,10 @@
 <%= render 'layouts/header' %>
 <div class="container">
 <div class="row">
-  <div class="span4">
+  <div class="span6">
     <%= yield :map %>
   </div>
-  <div class="span5">
+  <div class="span6">
     <%= yield %>
   </div>
 </div>

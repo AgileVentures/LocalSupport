@@ -29,10 +29,10 @@ Given /^I fill in the new charity page validly$/ do
   fill_in 'organization_name', :with => 'Friendly charity'
 end
 
-Given /^I update "(.*?)" charity address to be "(.*?)"$/ do |name, address|
+Given /^I update "(.*?)" charity address to be "(.*?)"( when Google is indisposed)?$/ do |name, address, indisposed|
   steps %Q{
     Given I am on the edit charity page for "#{name}"
-    And I edit the charity address to be "#{address}"
+    And I edit the charity address to be "#{address}" #{indisposed ? 'when Google is indisposed':''}
     And I press "Update Organization"
   }
 end
@@ -155,11 +155,11 @@ def check_contact_details(name)
 end
 
 Then /^I should be on the sign up page$/ do
-  current_path.should == new_charity_worker_registration_path
+  current_path.should == new_user_registration_path
 end
 
 Then /^I should be on the charity workers page$/ do
-  current_path.should == charity_workers_path
+  current_path.should == users_path
 end
 
 When /^I fill in "(.*?)" with "(.*?)"$/ do |field, value|
