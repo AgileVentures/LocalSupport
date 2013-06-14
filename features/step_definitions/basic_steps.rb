@@ -1,6 +1,11 @@
 require 'webmock/cucumber'
 require 'uri-handler'
 
+Given /^I delete "(.*?)" charity$/ do |name|
+  org = Organization.find_by_name name
+  page.driver.submit :delete, "/organizations/#{org.id}", {}
+end
+
 Then /^I should not see an edit button for "(.*?)" charity$/ do |name|
   org = Organization.find_by_name name
   expect(page).not_to have_link :href => edit_organization_path(org.id)

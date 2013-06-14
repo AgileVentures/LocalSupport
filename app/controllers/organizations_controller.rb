@@ -97,6 +97,10 @@ class OrganizationsController < ApplicationController
   # DELETE /organizations/1
   # DELETE /organizations/1.json
   def destroy
+    unless current_user.try(:admin?)
+      flash[:notice] = "You don't have permission"
+      redirect_to organization_path(params[:id]) and return false
+    end
     @organization = Organization.find(params[:id])
     @organization.destroy
 
