@@ -15,7 +15,7 @@ require 'selenium/webdriver'
 # steps to use the XPath syntax.
 Capybara.default_selector = :css
 
-#Capybara.default_driver = :selenium
+Capybara.javascript_driver = :webkit
 
 WebMock.allow_net_connect!
 
