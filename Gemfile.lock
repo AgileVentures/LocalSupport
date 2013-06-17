@@ -121,6 +121,7 @@ GEM
     mini_portile (0.5.0)
     minitest (4.7.1)
     multi_json (1.2.0)
+    newrelic_rpm (3.6.3.111)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     orm_adapter (0.4.0)
@@ -246,6 +247,7 @@ DEPENDENCIES
   launchy
   less-rails
   minitest (~> 4.7.1)
+  newrelic_rpm
   pg
   rack_session_access
   railroady
