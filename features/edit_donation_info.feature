@@ -12,9 +12,9 @@ Background: organizations have been added to database
   | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 |
 
   Given the following users are registered:
-  | email             | password | admin | organization |
-  | jcodefx@gmail.com | pppppppp | false | Friendly     |
-  | jcodefx2@gmail.com| pppppppp | false |              |
+  | email             | password | admin | organization | confirmed_at |
+  | jcodefx@gmail.com | pppppppp | false | Friendly     | 2007-01-01  10:00:00 |
+  | jcodefx2@gmail.com| pppppppp | false |              | 2007-01-01  10:00:00 |
 
 Scenario: Successfully change the donation url for a charity
   Given I am on the sign in page

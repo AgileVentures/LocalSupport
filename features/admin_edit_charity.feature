@@ -10,9 +10,9 @@ Feature: Admin editing charity
       | Friendly       | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 |
       | Friendly Clone | Quite Friendly!         | 30 pinner road | HA1 4HZ  | 020800010 |
     Given the following users are registered:
-      | email             | password | admin |
-      | jcodefx@gmail.com | pppppppp | true  |
-      | tansaku@gmail.com | pppppppp | false |
+      | email             | password | admin | confirmed_at |
+      | jcodefx@gmail.com | pppppppp | true  | 2007-01-01  10:00:00 |
+      | tansaku@gmail.com | pppppppp | false | 2007-01-01  10:00:00 |
 
   Scenario: Admin successfully changes the address of a charity
     Given I am signed in as the admin using password "pppppppp"

@@ -8,11 +8,12 @@ Background:
 Given the following organizations exist:
   | name           | description               | address        | postcode | telephone |
   | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 |
+
 Given the following users are registered:
-| email             | password | admin | organization |
-| jcodefx@gmail.com | pppppppp |       |              |
-| jcodefx2@gmail.com| pppppppp | true  |              |
-| jcodefx3@gmail.com| pppppppp | false | Friendly     |
+  | email             | password | admin | organization | confirmed_at         |
+  | jcodefx@gmail.com | pppppppp |       |              | 2007-01-01  10:00:00 |
+  | jcodefx2@gmail.com| pppppppp | true  |              | 2007-01-01  10:00:00 |
+  | jcodefx3@gmail.com| pppppppp | false | Friendly     | 2007-01-01  10:00:00 |
 
 Scenario: Sign in for an existing non-admin user unassociated with any organization
   Given I am on the sign in page

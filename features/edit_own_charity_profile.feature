@@ -13,9 +13,10 @@ Background: organizations have been added to database
   | Friendly Clone | Quite Friendly!           | 30 pinner road | HA1 4HZ  | 020800010 |
   
   Given the following users are registered:
-  | email             | password | organization|
-  | jcodefx2@gmail.com | pppppppp | Friendly    |
-  | jcodefx@gmail.com | pppppppp |        |
+  | email             | password | organization | confirmed_at |
+  | jcodefx2@gmail.com | pppppppp | Friendly    | 2007-01-01  10:00:00 |
+  | jcodefx@gmail.com | pppppppp |              | 2007-01-01  10:00:00 |
+
 
 Scenario: Successfully change the address of a charity
   Given I am signed in as a charity worker related to "Friendly"

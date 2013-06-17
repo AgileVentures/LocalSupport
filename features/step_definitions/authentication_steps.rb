@@ -48,8 +48,8 @@ end
 Given /^that I am logged in as any user$/ do
   steps %Q{
      Given the following users are registered:
-   | email             | password |
-   | jcodefx@gmail.com | pppppppp |
+   | email             | password | confirmed_at         |
+   | jcodefx@gmail.com | pppppppp | 2007-01-01  10:00:00 |
   } 
   steps %Q{
     Given I am on the sign in page
