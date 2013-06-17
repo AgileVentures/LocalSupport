@@ -2,7 +2,7 @@ Feature: I want to have a contact and about us link in all the app pages
   As the system owner
   So that I can be contected
   I want to show a contact page and a about us page
-  Tracker story ID: 45693625
+  Tracker story ID: https://www.pivotaltracker.com/story/show/45693625
 
 
 Background: organizations have been added to database

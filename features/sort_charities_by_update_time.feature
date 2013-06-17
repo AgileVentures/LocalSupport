@@ -2,7 +2,7 @@ Feature: Order organizations by most recently updated
   As any user
   So that I can see which charities have been updated most recently
   I want to be able to sort charities by update time
-  Tracker story ID: 50082619
+  TTracker story ID: https://www.pivotaltracker.com/story/show/50082619
 
 Background: organizations have been added to database
   

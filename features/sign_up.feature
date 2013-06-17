@@ -1,7 +1,8 @@
 Feature: Sign in
   As an new User
   So that I can add charities to the list and make a page for my own charity
-  I want to be able to icreate a login
+  I want to be able to create a login
+  Tracker story ID: https://www.pivotaltracker.com/story/show/47373595
 
 Background:
 Given the following users are registered:

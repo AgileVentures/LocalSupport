@@ -2,7 +2,7 @@ Feature: Disclaimer about not being able to guarantee accuracy of sites content 
   As the system owner
   So that I can avoid any liability
   I want to show a disclaimer page
-  Tracker story ID: 49757817
+  Tracker story ID: https://www.pivotaltracker.com/story/show/49757817
 
 Background: organizations have been added to database
 
