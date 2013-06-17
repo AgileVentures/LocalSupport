@@ -5,6 +5,7 @@ class ConfirmableEmail < ActiveRecord::Migration
       t.string   :confirmation_token
       t.datetime :confirmed_at
       t.datetime :confirmation_sent_at
+      t.string   :unconfirmed_email
     end
     User.all.each do |u|
       u.confirmed_at = Time.now
@@ -17,6 +18,7 @@ class ConfirmableEmail < ActiveRecord::Migration
       t.remove :confirmation_token
       t.remove :confirmed_at
       t.remove :confirmation_sent_at
+      t.remove :unconfirmed_email
     end
   end
 end
