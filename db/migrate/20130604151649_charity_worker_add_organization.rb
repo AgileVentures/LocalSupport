@@ -7,7 +7,7 @@ class CharityWorkerAddOrganization < ActiveRecord::Migration
 
   def down
     change_table :charity_workers do |t|
-      t.remove_column :organization_id
+      t.remove :organization_id
     end
   end
 end
