@@ -112,6 +112,10 @@ Then /^I should not see any edit link for "([^"]*?)"$/ do |name1|
   page.should_not have_link "Edit"
 end
 
+Then /^I should see a link with text "([^"]*?)"$/ do |link|
+  page.should have_link link
+end
+
 Then /^I should not see "(.*?)"$/ do |text|
   page.should_not have_content text
 end

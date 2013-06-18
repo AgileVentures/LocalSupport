@@ -52,6 +52,7 @@ describe "organizations/index.html.erb", :js => true do
   end
 
   # not sure if we can test generation of javascript here
+  # http://stackoverflow.com/questions/15235874/enabling-javascript-for-an-rspec-2-10-rails-3-1-view-spec-test
   xit "displays the javascript for a google map" do
     assign(:json, organizations.to_gmaps4rails)
     render

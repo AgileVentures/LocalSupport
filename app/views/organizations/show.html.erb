@@ -22,7 +22,7 @@
 
 <p>
   <b>Website:</b>
-  <%= @organization.website %>
+  <%= link_to_if(!@organization.website.blank?, @organization.website, @organization.website){"We don't yet have a website link for them."}  %>
 </p>
 
 <p><b>Donation Info:</b>
