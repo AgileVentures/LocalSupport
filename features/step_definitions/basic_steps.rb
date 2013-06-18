@@ -116,8 +116,22 @@ Then /^I should see a link with text "([^"]*?)"$/ do |link|
   page.should have_link link
 end
 
+Then /^I should not see a link with text "([^"]*?)"$/ do |link|
+  page.should_not have_link link
+end
+
 Then /^I should not see "(.*?)"$/ do |text|
   page.should_not have_content text
+end
+
+Then /^I should( not)? see a new organizations link/ do  |negate|
+  #page.should_not have_link "New Organization", :href => new_organization_path
+  #page.should_not have_selector('a').with_attribute href: new_organization_path
+  if negate
+    page.should_not have_xpath("//a[@href='#{new_organization_path}']")
+  else
+    page.should have_xpath("//a[@href='#{new_organization_path}']")
+  end
 end
 
 Then /^I should see "((?:(?!before|").)+)"$/ do |text|

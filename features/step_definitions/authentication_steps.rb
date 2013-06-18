@@ -9,6 +9,11 @@ Given /^I am signed in as a charity worker (un)?related to "(.*?)"$/ do |negate,
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
 
+Given /^I am signed in as a (non-)?admin$/ do |negate|
+  user = User.find_by_admin(negate ? false:true)
+  page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
+end
+
 Given /^I sign up as "(.*?)" with password "(.*?)" and password confirmation "(.*?)"$/ do |email, password,password_confirmation|
   fill_in "Email" , :with => email
   fill_in "user_password" , :with => password
