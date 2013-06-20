@@ -192,4 +192,7 @@ describe Organization do
     actual_address = Organization.find_by_name(@org1.name).address
     actual_address.should eq new_address
   end
+  # not sure if we need SQL injection security tests like this ...
+  # org = Organization.new(:address =>"blah", :gmaps=> ";DROP DATABASE;")
+  # org = Organization.new(:address =>"blah", :name=> ";DROP DATABASE;")
 end

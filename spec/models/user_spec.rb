@@ -43,4 +43,9 @@ describe User do
     @nonadmin.should_receive(:organization).and_return nil
     expect(@nonadmin.can_edit?(non_associated_model)).to be_false
   end
+  it 'does not allow mass assignment of admin for security' do
+    @nonadmin.update_attributes(:admin=> true)
+    @nonadmin.save!
+    expect(@nonadmin.admin).to be_false
+  end
 end

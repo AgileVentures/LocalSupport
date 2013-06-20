@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
+  # prevents mass assignment on other fields not in this list
   attr_accessible :email, :password, :password_confirmation, :remember_me
   belongs_to :organization
   

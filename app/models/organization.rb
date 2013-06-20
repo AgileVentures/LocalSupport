@@ -4,6 +4,10 @@ class Organization < ActiveRecord::Base
   acts_as_gmappable :check_process => false
   has_many :users
 
+  # Setup accessible (or protected) attributes for your model
+  # prevents mass assignment on other fields not in this list
+  attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info
+
   #This method is overridden to save organization if address was failed to geocode
   def run_validations!
     run_callbacks :validate
