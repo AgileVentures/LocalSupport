@@ -16,7 +16,7 @@ class Organization < ActiveRecord::Base
   end
 
   def self.search_by_keyword(keyword)
-    self.where("UPPER(description) LIKE ? OR name LIKE ?","%#{keyword.try(:upcase)}%","%#{keyword.try(:upcase)}%")
+    self.where("UPPER(description) LIKE ? OR UPPER(name) LIKE ?","%#{keyword.try(:upcase)}%","%#{keyword.try(:upcase)}%")
   end
   
   def gmaps4rails_address
