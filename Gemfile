@@ -42,7 +42,6 @@ end
 group :production do
   gem 'pg'
   gem 'newrelic_rpm'
-  gem 'unicorn'
 end
 
 
@@ -77,3 +76,4 @@ gem 'therubyracer'
 gem 'gmaps4rails'
 #gem 'mongrel'
 gem 'kaminari'
+gem 'unicorn'
