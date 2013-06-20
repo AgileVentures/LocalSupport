@@ -12,7 +12,7 @@ class Organization < ActiveRecord::Base
   end
 
   def self.search_by_keyword(keyword)
-    self.where("description LIKE ? OR name LIKE ?","%#{keyword}%","%#{keyword}%")
+    self.where("UPPER(description) LIKE ? OR name LIKE ?","%#{keyword.try(:upcase)}%","%#{keyword.try(:upcase)}%")
   end
   
   def gmaps4rails_address
@@ -99,6 +99,7 @@ class Organization < ActiveRecord::Base
     errors_hash = errors.to_hash
     errors.clear
     errors_hash.each do |key, value|
+      logger.warn "#{key} --> #{value}"
       if key.to_s != 'gmaps4rails_address'
         errors.add(key, value)
       else

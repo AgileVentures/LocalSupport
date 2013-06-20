@@ -59,7 +59,6 @@ end
 Then /^I should see "(.*?)" before "(.*?)"$/ do |name1,name2|
   str = page.body
   assert str.index(name1) < str.index(name2)
-
 end
 
 Then /^I should see the donation_info URL for "(.*?)"$/ do |name1|

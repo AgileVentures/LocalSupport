@@ -39,6 +39,7 @@ group :test do
   gem 'selenium'
   gem 'selenium-client'
 end
+
 group :production do
   gem 'pg'
   gem 'newrelic_rpm'
