@@ -1,8 +1,10 @@
 LocalSupport::Application.routes.draw do
-  devise_for :charity_workers
+  devise_for :users
 
   match 'organizations/search' => 'organizations#search'
   match 'disclaimer/show' => 'disclaimer#show'
+  match 'pages/aboutus' => 'pages#aboutus'
+  match 'pages/contact' => 'pages#contact'
   resources :organizations
 
   # The priority is based upon order of creation:

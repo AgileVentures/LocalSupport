@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= render 'layouts/shim' %>
 </head>
 
 <body>
@@ -13,22 +14,13 @@
 <% end %>
 
 <%= render 'layouts/header' %>
-<br>
-<br>
-<br>
-<br>
-<br>
 <div class="container">
 <div class="row">
-  <div class="span4">
+  <div class="span6">
     <%= yield :map %>
   </div>
-  <div class="span5">
+  <div class="span6">
     <%= yield %>
-  </div>
-  <div class="span3">
-    <h2>Disclaimer</h2>
-    Whilst Voluntary Action Harrow has made effort to ensure the information here is accurate and up to date we are reliant on the information provided by the different organisations. No guarantees for the accuracy of the information is made.
   </div>
 </div>
 <br>

@@ -2,6 +2,7 @@ Feature: Password retrieval
   As an existing User
   So that I can recover a lost password
   I want to be able to ask that system for a new password
+  Tracker story ID: https://www.pivotaltracker.com/story/show/47376361
 
 Background:
 Given the following users are registered:

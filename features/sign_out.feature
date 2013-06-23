@@ -2,6 +2,7 @@ Feature: Sign out
   As a logged-in User
   So that noone else can use my account
   I want to sign out
+  Tracker story ID: https://www.pivotaltracker.com/story/show/47373975
 
 #Scenario: Sign out
 #  Given PENDING that I am logged in as any user

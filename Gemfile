@@ -15,6 +15,8 @@ group :development, :test do
   gem 'simplecov'
   gem 'rspec-rails'
   gem 'execjs'
+  gem 'rack_session_access'
+  gem 'simplecov', :require => false
 end
 
 group :development do
@@ -28,14 +30,19 @@ group :test do
   gem 'cucumber-rails-training-wheels'
   gem 'minitest', '~> 4.7.1'
   gem 'ZenTest'
-  gem 'capybara', '2.0.0'
+  gem 'capybara', '2.0.2'
+  gem "capybara-webkit", "~> 1.0.0"
   gem 'webrat'
   gem 'factory_girl_rails', :require => false
   gem 'webmock'
   gem 'uri-handler'
+  gem 'selenium'
+  gem 'selenium-client'
 end
+
 group :production do
   gem 'pg'
+  gem 'newrelic_rpm'
 end
 
 
@@ -69,3 +76,5 @@ end
 gem 'therubyracer'
 gem 'gmaps4rails'
 #gem 'mongrel'
+gem 'kaminari'
+gem 'unicorn'

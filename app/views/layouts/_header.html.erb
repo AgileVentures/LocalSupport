@@ -1,26 +1,29 @@
 <header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <h1>Harrow Community Network (Alpha)</h1>
        <div class="row">
+        <div class="span6">
+          <%= link_to(image_tag("HCN2.png", :style => "width:200px;" ), root_path) %>
+          <%= image_tag("beta.jpg", :style => "width:75px;") %>
+        </div>
+        <% if (user_signed_in?)%>
        <div class="span6">
-          <% if (charity_worker_signed_in?)%>
-           Signed in as <%= current_charity_worker.email %>.  <%=link_to "Not you?", destroy_charity_worker_session_path, :method => :delete%>
-          <% end %>
+         Signed in as <%= current_user.email %>.  <%=link_to "Not you?", destroy_user_session_path, :method => :delete%>
        </div>
+       <% end %>
       <div class="span6">
       <nav>
-        <ul class="nav pull-right">
-          <li><% if (charity_worker_signed_in?)%>
-          <%=link_to "Sign Out", destroy_charity_worker_session_path, :method => :delete%>
-          <% end %></li>
-          <li><% if !(charity_worker_signed_in?)%>
-          <%= link_to "Sign In", charity_worker_session_path %>
-          <% end %></li>
-          <li><% if !(charity_worker_signed_in?)%>
-          <%= link_to "New user?", new_charity_worker_registration_path %>
-          <% end %></li>
+        <ul class="nav pull-right" style="padding-top:17px;">
           <li><%= link_to "Home", root_path %></li>
+          <li><% if (user_signed_in?)%>
+          <%=link_to "Sign Out", destroy_user_session_path, :method => :delete%>
+          <% end %></li>
+          <li><% if !(user_signed_in?)%>
+          <%= link_to "New Org?", new_user_registration_path %>
+          <% end %></li>
+          <li><% if !(user_signed_in?)%>
+          <%= link_to "Org Login", user_session_path %>
+          <% end %></li>
           <li><%= link_to "Disclaimer", disclaimer_show_path %></li>
         </ul>
       </nav>

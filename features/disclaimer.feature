@@ -2,7 +2,7 @@ Feature: Disclaimer about not being able to guarantee accuracy of sites content 
   As the system owner
   So that I can avoid any liability
   I want to show a disclaimer page
-  Tracker story ID: 49757817
+  Tracker story ID: https://www.pivotaltracker.com/story/show/49757817
 
 Background: organizations have been added to database
 
@@ -30,7 +30,7 @@ Scenario: the disclaimer page is accesible from the new charity page
   And I should see "Whilst Voluntary Action Harrow has made effort to ensure the information here is accurate and up to date we are reliant on the information provided by the different organisations. No guarantees for the accuracy of the information is made."
 
 Scenario: the disclaimer page is accesible from the edit charity page for "Friendly Charity"
-  Given I am on the edit charity page for "Friendly Charity"
+  Given I am furtively on the edit charity page for "Friendly Charity"
   When I follow "Disclaimer"
   Then I should see "Disclaimer"
   And I should see "Whilst Voluntary Action Harrow has made effort to ensure the information here is accurate and up to date we are reliant on the information provided by the different organisations. No guarantees for the accuracy of the information is made."

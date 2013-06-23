@@ -1,6 +1,16 @@
 require 'webmock/cucumber'
 require 'uri-handler'
 
+Given /^I delete "(.*?)" charity$/ do |name|
+  org = Organization.find_by_name name
+  page.driver.submit :delete, "/organizations/#{org.id}", {}
+end
+
+Then /^I should not see an edit button for "(.*?)" charity$/ do |name|
+  org = Organization.find_by_name name
+  expect(page).not_to have_link :href => edit_organization_path(org.id)
+end
+
 Then /^show me the page$/ do
   save_and_open_page
 end
@@ -22,6 +32,28 @@ Given /^I fill in the new charity page validly$/ do
   stub_request_with_address("64 pinner road")
   fill_in 'organization_address', :with => '64 pinner road'
   fill_in 'organization_name', :with => 'Friendly charity'
+end
+
+Given /^I update "(.*?)" charity address to be "(.*?)"( when Google is indisposed)?$/ do |name, address, indisposed|
+  steps %Q{
+    Given I am on the edit charity page for "#{name}"
+    And I edit the charity address to be "#{address}" #{indisposed ? 'when Google is indisposed':''}
+    And I press "Update Organization"
+  }
+end
+
+Given /^I furtively update "(.*?)" charity address to be "(.*?)"$/ do |name, address|
+  steps %Q{
+    Given I am furtively on the edit charity page for "#{name}"
+    And I edit the charity address to be "#{address}"
+    And I press "Update Organization"
+  }
+end
+
+
+And /^"(.*?)" charity address is "(.*?)"$/ do |name, address|
+  org = Organization.find_by_name(name)
+  expect(org.address).to eq(address)
 end
 
 Then /^I should see "(.*?)" before "(.*?)"$/ do |name1,name2|
@@ -79,8 +111,26 @@ Then /^I should not see any edit link for "([^"]*?)"$/ do |name1|
   page.should_not have_link "Edit"
 end
 
+Then /^I should see a link with text "([^"]*?)"$/ do |link|
+  page.should have_link link
+end
+
+Then /^I should not see a link with text "([^"]*?)"$/ do |link|
+  page.should_not have_link link
+end
+
 Then /^I should not see "(.*?)"$/ do |text|
   page.should_not have_content text
+end
+
+Then /^I should( not)? see a new organizations link/ do  |negate|
+  #page.should_not have_link "New Organization", :href => new_organization_path
+  #page.should_not have_selector('a').with_attribute href: new_organization_path
+  if negate
+    page.should_not have_xpath("//a[@href='#{new_organization_path}']")
+  else
+    page.should have_xpath("//a[@href='#{new_organization_path}']")
+  end
 end
 
 Then /^I should see "((?:(?!before|").)+)"$/ do |text|
@@ -127,11 +177,11 @@ def check_contact_details(name)
 end
 
 Then /^I should be on the sign up page$/ do
-  current_path.should == new_charity_worker_registration_path
+  current_path.should == new_user_registration_path
 end
 
 Then /^I should be on the charity workers page$/ do
-  current_path.should == charity_workers_path
+  current_path.should == users_path
 end
 
 When /^I fill in "(.*?)" with "(.*?)"$/ do |field, value|

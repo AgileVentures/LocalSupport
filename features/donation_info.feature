@@ -2,7 +2,7 @@ Feature: Local Resident looking to donate
   As a local resident
   So that I can help local charities
   I want to find out how I can donate
-  Tracker story ID: 45392735
+  Tracker story ID: https://www.pivotaltracker.com/story/show/45392735
 
 Background: organizations have been added to database
   

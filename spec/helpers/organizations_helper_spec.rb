@@ -13,7 +13,7 @@ require 'spec_helper'
 describe OrganizationsHelper do
   
   describe "donation_info_msg" do
-   
+
     context "organization donation_info is nil" do
       before(:each) do
         @organization = assign :organization,  stub_model(Organization, :name => 'Friendly charity', :donation_info => nil)
@@ -22,7 +22,16 @@ describe OrganizationsHelper do
         donation_info_msg.should == "We don't yet have any donation link for them."
       end
     end
-    
+
+    context "organization donation_info is empty string" do
+      before(:each) do
+        @organization = assign :organization,  stub_model(Organization, :name => 'Friendly charity', :donation_info => "")
+      end
+      it "should return no donation info message" do
+        donation_info_msg.should == "We don't yet have any donation link for them."
+      end
+    end
+
     context "organization donation_info is not nil" do
       before(:each) do
        @organization = assign :organization,  stub_model(Organization, :name => 'Friendly charity', :donation_info => 'http://www.friendly-charity.co.uk/donate')

@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<p></p>
 
 <p>
   <b>Name:</b>
@@ -22,14 +22,14 @@
 
 <p>
   <b>Website:</b>
-  <%= @organization.website %>
+  <%= link_to_if(!@organization.website.blank?, @organization.website, @organization.website){"We don't yet have a website link for them."}  %>
 </p>
 
-<div>Donation Info
+<p><b>Donation Info:</b>
 <%= donation_info_msg %>
-</div>
+</p>
 
-<%= link_to 'Back', organizations_path, {:class => 'btn btn-large'} %>
+<%= link_to_if(@editable, "Edit", edit_organization_path(@organization.id), {:class => 'btn btn-large'}){} %>
 
 <% content_for :map do %>
     <%= gmaps("map_options" => {"auto_adjust" => true, "auto_zoom" => false, "center_latitude" => 51.5978,
