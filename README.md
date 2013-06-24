@@ -3,7 +3,7 @@ LocalSupport
 
 A directory of local support services. 
 
-[Project Overview](https://sites.google.com/site/saasellsprojects/projects/local-support/getting-started---project-overview)
+[Project Overview on Google Site](https://sites.google.com/site/saasellsprojects/projects/local-support/getting-started---project-overview)
 
 Installation and other technical issues are being gathered in the github wiki:
 
@@ -15,7 +15,9 @@ If you encounter any issues or trouble, please search the issues tracker, and if
 
 [https://github.com/tansaku/LocalSupport/issues](https://github.com/tansaku/LocalSupport/issues)
 
-Many thanks to Pavel Osadchyi for Travis Continous Integration, and to Ingram Monk and David Corking for new cucumber features; and to Michael and Ingram for the Donation Info functionality.
+Many thanks to all the contributions from volunteers from all around the world.
+
+[Graph of Contributors](https://github.com/tansaku/LocalSupport/contributors)
 
 [![Pair program with me!](http://pairprogramwith.me/badge.png)](mailto:tansaku@gmail.com?subject=Pairing on LocalSupport)
 
