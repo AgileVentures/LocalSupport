@@ -64,6 +64,18 @@ describe Organization do
       }.should change(Organization, :count).by(actual_number_to_import)
     end
 
+    it 'must fail gracefully when encountering error in generating multiple Organizations from text file' do
+      attempted_number_to_import = 1006
+      actual_number_to_import = 642
+      Gmaps4rails.should_receive(:geocode).exactly(0)
+      Organization.stub(:create_from_array).and_raise(CSV::MalformedCSVError)
+      lambda {
+        Organization.import_addresses 'db/data.csv', attempted_number_to_import
+      }.should change(Organization, :count).by(0)
+
+
+    end
+
     it 'must be able to handle no postcode in text representation' do
       Gmaps4rails.should_receive(:geocode)
       fields = CSV.parse('HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
@@ -157,11 +169,11 @@ describe Organization do
   end
 
   it 'should geocode when new object is created' do
-      address = '60 pinner road'
-      postcode = 'HA1 3RE'
-      Gmaps4rails.should_receive(:geocode).with("#{address}, #{postcode}", "en", false, "http")
-      org = FactoryGirl.build(:organization,:address => address, :postcode => postcode, :name => 'Happy and Nice', :gmaps => true)
-      org.save
+    address = '60 pinner road'
+    postcode = 'HA1 3RE'
+    Gmaps4rails.should_receive(:geocode).with("#{address}, #{postcode}", "en", false, "http")
+    org = FactoryGirl.build(:organization,:address => address, :postcode => postcode, :name => 'Happy and Nice', :gmaps => true)
+    org.save
   end
 
   #TODO: refactor with expect{} instead of should as Rspec 2 promotes
@@ -177,6 +189,15 @@ describe Organization do
     actual_address.should eq new_address
     @org1.latitude.should eq nil
     @org1.longitude.should eq nil
+  end
+
+  it 'should not delete validation errors unrelated to gmap4rails address issues' do
+    Organization.class_eval do
+      validates :name, :presence => true
+    end
+    Gmaps4rails.should_receive(:geocode)
+    @org1.update_attributes :name => nil
+    @org1.errors['name'].should_not be_empty
   end
 
   it 'should attempt to geocode after failed' do
