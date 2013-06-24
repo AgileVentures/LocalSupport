@@ -72,8 +72,6 @@ describe Organization do
       lambda {
         Organization.import_addresses 'db/data.csv', attempted_number_to_import
       }.should change(Organization, :count).by(0)
-
-
     end
 
     it 'must be able to handle no postcode in text representation' do
