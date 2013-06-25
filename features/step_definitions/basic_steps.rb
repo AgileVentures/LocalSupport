@@ -36,7 +36,8 @@ end
 
 Given /^I update "(.*?)" charity address to be "(.*?)"( when Google is indisposed)?$/ do |name, address, indisposed|
   steps %Q{
-    Given I am on the edit charity page for "#{name}"
+    Given I am on the charity page for "#{name}"
+    And I follow "Edit"
     And I edit the charity address to be "#{address}" #{indisposed ? 'when Google is indisposed':''}
     And I press "Update Organization"
   }
@@ -48,6 +49,11 @@ Given /^I furtively update "(.*?)" charity address to be "(.*?)"$/ do |name, add
     And I edit the charity address to be "#{address}"
     And I press "Update Organization"
   }
+end
+
+When /^I edit the charity address to be "(.*?)"$/ do |address|
+  stub_request_with_address(address)
+  fill_in('organization_address',:with => address)
 end
 
 

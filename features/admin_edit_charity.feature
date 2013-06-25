@@ -17,29 +17,39 @@ Feature: Admin editing charity
   Scenario: Admin successfully changes the address of a charity
     Given I am signed in as a admin
     And I update "Friendly" charity address to be "30 pinner road"
-    Given I am on the home page
-    Then the coordinates for "Friendly Clone" and "Friendly" should be the same
+    Then the address for "Friendly" should be "30 pinner road"
 
   Scenario: Non-admin unsuccessfully attempts to change the address of a charity
-    Given I am not signed in as the admin using password "pppppppp"
+    Given I am signed in as a non-admin
     And I furtively update "Friendly" charity address to be "30 pinner road"
     Then I should see "You don't have permission"
     And "Friendly" charity address is "34 pinner road"
 
   Scenario: Unsuccessfully attempt to create charity without being signed-in
+    # should this be checking for absence of link to the new org page?
     Given I am on the new charity page
     Then I should be on the sign in page
 
-# TODO establish if just anyone can create an organization
+# beta version only allows admin to create new organization, currently
+# we only show link to admin, and are waiting on proper enforcement feature
+# TODO get scenario as following commented one
+
+  #Scenario: Unsuccessfully attempt to create charity when signed-in as non-admin
+    ## should this be checking for absence of link to the new org page?
+    #Given I am signed in as a non-admin
+    #Given I am on the new charity page
+    #Then I should be on the sign in page
+
   Scenario: Successfully create charity while being signed-in
-    Given I am signed in as the admin using password "pppppppp"
-    Given I am on the new charity page
+    Given I am signed in as a admin
+    And I am on the home page
+    And I follow "New Organization"
     And I fill in the new charity page validly
     And I press "Create Organization"
     Then I should see "Organization was successfully created."
    
   Scenario: Non-admin unsuccessfully attempts to delete a charity
-    Given I am not signed in as the admin using password "pppppppp"
+    Given I am signed in as a non-admin
     And I delete "Friendly" charity
     Then I should be on the charity page for "Friendly"
     And I should see "You don't have permission"
