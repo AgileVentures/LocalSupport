@@ -40,12 +40,9 @@ Feature: Admin editing charity
     #Given I am on the new charity page
     #Then I should be on the sign in page
 
-  Scenario: Successfully create charity while being signed-in
+  Scenario: Successfully create charity while being signed-in as admin
     Given I am signed in as a admin
-    And I am on the home page
-    And I follow "New Organization"
-    And I fill in the new charity page validly
-    And I press "Create Organization"
+    And I have created a new organization
     Then I should see "Organization was successfully created."
    
   Scenario: Non-admin unsuccessfully attempts to delete a charity

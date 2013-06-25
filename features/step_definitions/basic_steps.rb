@@ -43,6 +43,15 @@ Given /^I update "(.*?)" charity address to be "(.*?)"( when Google is indispose
   }
 end
 
+Given /^I have created a new organization$/ do
+  steps %Q{
+    Given I am on the home page
+    And I follow "New Organization"
+    And I fill in the new charity page validly
+    And I press "Create Organization"
+   }
+end
+
 Given /^I furtively update "(.*?)" charity address to be "(.*?)"$/ do |name, address|
   steps %Q{
     Given I am furtively on the edit charity page for "#{name}"
