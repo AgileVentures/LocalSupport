@@ -9,17 +9,16 @@ Feature: Admin editing charity
       | name           | description             | address        | postcode | telephone |
       | Friendly       | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 |
       | Friendly Clone | Quite Friendly!         | 30 pinner road | HA1 4HZ  | 020800010 |
-    Given the following users are registered:
+    And the following users are registered:
       | email             | password | admin | confirmed_at |
       | jcodefx@gmail.com | pppppppp | true  | 2007-01-01  10:00:00 |
       | tansaku@gmail.com | pppppppp | false | 2007-01-01  10:00:00 |
 
   Scenario: Admin successfully changes the address of a charity
-    Given I am signed in as the admin using password "pppppppp"
-    #Given I am signed in as the admin
-    Given I update "Friendly" charity address to be "30 pinner road"
-    Then I am on the home page
-    And the coordinates for "Friendly Clone" and "Friendly" should be the same
+    Given I am signed in as a admin
+    And I update "Friendly" charity address to be "30 pinner road"
+    Given I am on the home page
+    Then the coordinates for "Friendly Clone" and "Friendly" should be the same
 
   Scenario: Non-admin unsuccessfully attempts to change the address of a charity
     Given I am not signed in as the admin using password "pppppppp"
