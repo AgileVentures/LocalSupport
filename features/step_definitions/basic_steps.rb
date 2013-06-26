@@ -91,6 +91,10 @@ Then /^the donation_info URL for "(.*?)" should refer to "(.*?)"$/ do |name, hre
   expect(page).to have_link "Donate to #{name} now!", :href => href
 end
 
+And /^the search box should contain "(.*?)"$/ do |arg1|
+  expect(page).to have_xpath("//input[@id='q' and @value='#{arg1}']")
+end
+
 Then /^I should not see any address or telephone information for "([^"]*?)" and "([^"]*?)"$/ do |name1, name2|
   org1 = Organization.find_by_name(name1)
   org2 = Organization.find_by_name(name2)

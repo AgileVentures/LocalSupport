@@ -26,6 +26,10 @@ describe OrganizationsController do
       assigns(:organizations).should eq([mock_organization])
       assigns(:json).should eq(json)
     end
+    it "sets up query term on search" do
+      get :search , :q => 'search'
+      assigns(:query_term).should eq 'search'
+    end
   end
 
 

@@ -4,7 +4,8 @@ class OrganizationsController < ApplicationController
   before_filter :authenticate_user!, :except => [:search, :index, :show]
   def search
     # should this be a model method with a model spec around it ...?
-    @results = Organization.search_by_keyword(params[:q])
+    @query_term = params[:q]
+    @results = Organization.search_by_keyword(@query_term)
     @organizations = @results.page(params[:page]).per(5)
     @json = @results.to_gmaps4rails
     respond_to do |format|
