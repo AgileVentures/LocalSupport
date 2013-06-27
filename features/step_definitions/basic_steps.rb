@@ -95,6 +95,14 @@ And /^the search box should contain "(.*?)"$/ do |arg1|
   expect(page).to have_xpath("//input[@id='q' and @value='#{arg1}']")
 end
 
+Then /^I should( not)? see the no results message$/ do |negate| 
+  if negate
+    expect(page).not_to have_content ("Sorry, it seems we don't quite have what you are looking for.")
+  else 
+    expect(page).to have_content ("Sorry, it seems we don't quite have what you are looking for.")
+  end
+end
+
 Then /^I should not see any address or telephone information for "([^"]*?)" and "([^"]*?)"$/ do |name1, name2|
   org1 = Organization.find_by_name(name1)
   org2 = Organization.find_by_name(name2)

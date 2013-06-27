@@ -6,6 +6,7 @@ class OrganizationsController < ApplicationController
     # should this be a model method with a model spec around it ...?
     @query_term = params[:q]
     @results = Organization.search_by_keyword(@query_term)
+    flash[:notice] = "Sorry, it seems we don't quite have what you are looking for." if @results.empty?
     @organizations = @results.page(params[:page]).per(5)
     @json = @results.to_gmaps4rails
     respond_to do |format|

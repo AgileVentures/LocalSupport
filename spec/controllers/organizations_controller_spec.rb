@@ -30,6 +30,24 @@ describe OrganizationsController do
       get :search , :q => 'search'
       assigns(:query_term).should eq 'search'
     end
+    it "sets up flash when search returns no results" do
+      result = []
+      result.should_receive(:empty?).and_return(true)
+      result.stub_chain(:page, :per).and_return(result)
+      Organization.should_receive(:search_by_keyword).with('no results').and_return(result)
+      get :search , :q => 'no results'
+      expect(flash.notice).to eq("Sorry, it seems we don't quite have what you are looking for.")      
+    end
+    it "does not set up flash when search returns results" do
+      result = [mock_organization]
+      json='my markers'
+      result.should_receive(:to_gmaps4rails).and_return(json)
+      result.should_receive(:empty?).and_return(false)
+      result.stub_chain(:page, :per).and_return(result)
+      Organization.should_receive(:search_by_keyword).with('some results').and_return(result)
+      get :search , :q => 'some results'
+      expect(flash.notice).to be_nil
+    end
   end
 
 
