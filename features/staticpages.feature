@@ -8,8 +8,8 @@ Feature: I want to have a contact and about us link in all the app pages
 Background: organizations have been added to database
 
   Given the following organizations exist:
-  |name  | address |
-  |Friendly Charity | 83 pinner road|
+  | name             | address       |
+  | Friendly Charity | 83 pinner road|
 
 
 Scenario: the about us page is accesible from the charity search page
@@ -31,7 +31,6 @@ Scenario: the about us page is accesible from the new charity page
   Given I am furtively on the edit charity page for "Friendly Charity"
   When I follow "About Us"
   Then I should see "About Us Supporting groups in Harrow We are a not-for-profit workers co-operative who support people and not-for-profit organisations to make a difference in their local community by: Working with local people and groups to identify local needs and develop appropriate action. Providing a range of services that help organisations to succeed. Supporting and encouraging the growth of co-operative movement. How do we support? Find out here (VAH in a nutshell) What is a Workers Co-operative? A workers co-operative is a business owned and democratically controlled by their employee members using co-operative principles. They are an attractive and increasingly relevant alternative to traditional investor owned models of enterprise. (Click here for more details)"
-
 
 Scenario: the about us page is accessible from the charity page
   Given I am on the charity page for "Friendly Charity"
