@@ -8,6 +8,7 @@ FactoryGirl.define do
     password "pppppppp"
     confirmed_at "2007-01-01 10:00:00"
     admin false
+    organization nil
 
     factory :user_stubbed_organization do
       after(:build) do |user|

@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   belongs_to :organization
   
-  def can_edit? org 
-    admin? || organization == org
+  def can_edit? org
+    admin? || (!org.nil? && organization == org)
   end
 end

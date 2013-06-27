@@ -78,13 +78,11 @@ class OrganizationsController < ApplicationController
   # PUT /organizations/1
   # PUT /organizations/1.json
   def update
-    #TODO: Refactor flow and/or into seperate filter.  This is getting smelly and defensive
-    unless current_user.try(:admin?) ||(current_user.organization && current_user.organization.id.to_s == params[:id])
+    @organization = Organization.find(params[:id])
+    unless current_user.try(:can_edit?,@organization)
       flash[:notice] = "You don't have permission"
       redirect_to organization_path(params[:id]) and return false
     end
-    @organization = Organization.find(params[:id])
-
     respond_to do |format|
       if @organization.update_attributes(params[:organization])
         format.html { redirect_to @organization, notice: 'Organization was successfully updated.' }
