@@ -44,6 +44,15 @@ Feature: Admin editing charity
     Given I am signed in as a admin
     And I have created a new organization
     Then I should see "Organization was successfully created."
+
+  Scenario: non logged in user should not see new organization link
+    Given I am on the home page
+    Then I should not see a new organizations link
+
+  Scenario: logged in non-admin user should not see new organization link
+    Given I am signed in as a non-admin
+    Given I am on the home page
+    Then I should not see a new organizations link
    
   Scenario: Non-admin unsuccessfully attempts to delete a charity
     Given I am signed in as a non-admin
