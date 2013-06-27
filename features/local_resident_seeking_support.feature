@@ -37,8 +37,12 @@ Scenario: Find a bereavement counsellor
   Given I am on the home page
   When I search for "Bereavement Counselling"
   Then I should see contact details for "Harrow Bereavement Counselling"
+  Then I should not see the no results message
 
-
+Scenario: Find friendly no search results message
+  Given I am on the home page
+  When I search for "non-existent results"
+  Then I should see the no results message
 
 # starting with web search
 Scenario: Searching Google for "death of a relative"
