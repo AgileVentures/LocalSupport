@@ -36,7 +36,7 @@ describe OrganizationsController do
       result.stub_chain(:page, :per).and_return(result)
       Organization.should_receive(:search_by_keyword).with('no results').and_return(result)
       get :search , :q => 'no results'
-      expect(flash.notice).to eq("Sorry, it seems we don't quite have what you are looking for.")      
+      expect(flash.alert).to eq("Sorry, it seems we don't quite have what you are looking for.")      
     end
     it "does not set up flash when search returns results" do
       result = [mock_organization]
@@ -46,7 +46,7 @@ describe OrganizationsController do
       result.stub_chain(:page, :per).and_return(result)
       Organization.should_receive(:search_by_keyword).with('some results').and_return(result)
       get :search , :q => 'some results'
-      expect(flash.notice).to be_nil
+      expect(flash.alert).to be_nil
     end
   end
 
