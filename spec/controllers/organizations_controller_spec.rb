@@ -33,17 +33,20 @@ describe OrganizationsController do
       get :search , :q => 'search'
       assigns(:query_term).should eq 'search'
     end
-
-    it "sets up flash when search returns no results" do
+    #figure out how to make this less messy
+    it "assigns to flash.now but not flash when search returns no results" do
+      mock_now_flash = double("FlashHash")
       result = []
       result.should_receive(:empty?).and_return(true)
       result.stub_chain(:page, :per).and_return(result)
       Organization.should_receive(:search_by_keyword).with('no results').and_return(result)
+      ActionDispatch::Flash::FlashHash.any_instance.should_receive(:now).and_return mock_now_flash
+      ActionDispatch::Flash::FlashHash.any_instance.should_not_receive(:[]=)
+      mock_now_flash.should_receive(:[]=).with(:alert, "Sorry, it seems we don't quite have what you are looking for.")     
       get :search , :q => 'no results'
-      expect(flash.alert).to eq("Sorry, it seems we don't quite have what you are looking for.")      
     end
 
-    it "does not set up flash when search returns results" do
+    it "does not set up flash nor flash.now when search returns results" do
       result = [mock_organization]
       json='my markers'
       result.should_receive(:to_gmaps4rails).and_return(json)
@@ -51,7 +54,8 @@ describe OrganizationsController do
       result.stub_chain(:page, :per).and_return(result)
       Organization.should_receive(:search_by_keyword).with('some results').and_return(result)
       get :search , :q => 'some results'
-      expect(flash.alert).to be_nil
+      expect(flash.now[:alert]).to be_nil
+      expect(flash[:alert]).to be_nil
     end
   end
 
