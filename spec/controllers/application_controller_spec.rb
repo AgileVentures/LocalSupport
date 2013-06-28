@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ApplicationController do
-  #figure out how to test this properly unit test style
+  #Note this is tested by the sessions_controller_spec in order to take advantage of routing/post methods etc.
   describe 'after_sign_in_path' do
    
   end

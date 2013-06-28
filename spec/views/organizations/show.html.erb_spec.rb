@@ -80,5 +80,10 @@ describe "organizations/show.html.erb" do
       render
       rendered.should_not have_link :href => edit_organization_path(organization.id)
     end
+    it 'does not render edit button if editable nil' do
+      @editable = assign(:editable, nil)
+      render
+      rendered.should_not have_link :href => edit_organization_path(organization.id)
+    end
   end
 end

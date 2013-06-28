@@ -24,10 +24,10 @@ describe Devise::SessionsController do
     end
 
     it 'redirects to charity page after non-admin associated with org' do
-       org = FactoryGirl.build(:organization)
-       Gmaps4rails.should_receive(:geocode)
-       org.save!
-       FactoryGirl.build(:user, {:email => 'example@example.com', :password => 'pppppppp', :organization => org}).save!
+      org = FactoryGirl.build(:organization)
+      Gmaps4rails.should_receive(:geocode)
+      org.save!
+      FactoryGirl.build(:user, {:email => 'example@example.com', :password => 'pppppppp', :organization => org}).save!
       post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp'}
       expect(response).to redirect_to organization_path(org.id)
     end
