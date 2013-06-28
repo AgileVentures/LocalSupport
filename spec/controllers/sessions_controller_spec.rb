@@ -16,11 +16,13 @@ describe Devise::SessionsController do
       post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp'}
       expect(response).to redirect_to root_url
     end
+
     it 'redirects to home page after non-admin associated with nothing logs-in' do
       FactoryGirl.build(:user, {:email => 'example@example.com', :password => 'pppppppp'}).save!
       post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp'}
       expect(response).to redirect_to root_url
     end
+
     it 'redirects to charity page after non-admin associated with org' do
        org = FactoryGirl.build(:organization)
        Gmaps4rails.should_receive(:geocode)

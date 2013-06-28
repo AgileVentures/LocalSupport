@@ -71,58 +71,36 @@ describe OrganizationsController do
 
   describe "GET show" do
     it "assigns the requested organization as @organization" do
-      Organization.stub(:find).with("37") { mock_organization }
+      @org = mock_organization
+      Organization.should_receive(:find).with("37") { @org }
       get :show, :id => "37"
       assigns(:organization).should be(mock_organization)
     end
 
-    context "while signed in as non-admin" do
+    context "editable flag is assigned to match user permission" do
       before(:each) do
-        @org = mock_organization
-        Organization.should_receive(:find).with("37") { @org }
-        @nonadmin = mock_model("User")
-        controller.stub!(:current_user).and_return(@nonadmin)
+        Organization.stub(:find).with("37") { mock_organization }
+        @user = mock_model("User")
+        controller.stub!(:current_user).and_return(@user)
       end
 
-      it "non-admin can edit organization" do
-        @nonadmin.should_receive(:can_edit?).with(@org).and_return(true)
+      it "user with permission leads to editable flag true" do
+        @user.should_receive(:can_edit?).with(mock_organization).and_return(true)
         get :show, :id => 37
         assigns(:editable).should be(true)
       end
 
-      it "non-admin cannot edit organization" do
-        @nonadmin.should_receive(:can_edit?).with(@org).and_return(false)
-        get :show, :id => 37
-        assigns(:editable).should be(false)
-      end
-    end
-
-    context "while signed in admin" do
-      before(:each) do
-        @org = mock_organization
-        Organization.should_receive(:find).with("37") { @org }
-        @admin = mock_model("User")
-        controller.stub!(:current_user).and_return(@admin)
-      end
-
-      it "admin can edit organization" do
-        @admin.should_receive(:can_edit?).with(@org).and_return(true)
+      it "user without permission leads to editable flag false" do
+        @user.should_receive(:can_edit?).with(mock_organization).and_return(true)
         get :show, :id => 37
         assigns(:editable).should be(true)
       end
-    end
 
-    context "while not signed-in" do
-      before(:each) do
-        @org = mock_organization
-        Organization.should_receive(:find).with("37"){@org}
+      it 'when not signed in editable flag is nil' do
         controller.stub!(:current_user).and_return(nil)
-      end
-
-      it 'non-signed in user cannot edit organization' do
         get :show, :id => 37
         expect(assigns(:editable)).to eq nil
-      end 
+      end
     end
   end
 
