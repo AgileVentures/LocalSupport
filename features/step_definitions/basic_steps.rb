@@ -34,12 +34,34 @@ Given /^I fill in the new charity page validly$/ do
   fill_in 'organization_name', :with => 'Friendly charity'
 end
 
+Then /^the contact information should be available$/ do
+   steps %Q{
+    When I follow "Contact"
+    Then I should see "Contact Info Email us: contact@voluntaryactionharrow.org.uk Phone Us: 020 8861 5894 Write to Us: The Lodge, 64 Pinner Road, Harrow, Middlesex, HA1 4HZ Find Us: On Social Media (Click Here)"
+   }
+end
+Then /^the about us should be available$/ do
+  steps %Q{
+    When I follow "About Us"
+    Then I should see "About Us Supporting groups in Harrow We are a not-for-profit workers co-operative who support people and not-for-profit organisations to make a difference in their local community by: Working with local people and groups to identify local needs and develop appropriate action. Providing a range of services that help organisations to succeed. Supporting and encouraging the growth of co-operative movement. How do we support? Find out here (VAH in a nutshell) What is a Workers Co-operative? A workers co-operative is a business owned and democratically controlled by their employee members using co-operative principles. They are an attractive and increasingly relevant alternative to traditional investor owned models of enterprise. (Click here for more details)"
+  }
+end
 Given /^I update "(.*?)" charity address to be "(.*?)"( when Google is indisposed)?$/ do |name, address, indisposed|
   steps %Q{
-    Given I am on the edit charity page for "#{name}"
+    Given I am on the charity page for "#{name}"
+    And I follow "Edit"
     And I edit the charity address to be "#{address}" #{indisposed ? 'when Google is indisposed':''}
     And I press "Update Organization"
   }
+end
+
+Given /^I have created a new organization$/ do
+  steps %Q{
+    Given I am on the home page
+    And I follow "New Organization"
+    And I fill in the new charity page validly
+    And I press "Create Organization"
+   }
 end
 
 Given /^I furtively update "(.*?)" charity address to be "(.*?)"$/ do |name, address|
@@ -48,6 +70,11 @@ Given /^I furtively update "(.*?)" charity address to be "(.*?)"$/ do |name, add
     And I edit the charity address to be "#{address}"
     And I press "Update Organization"
   }
+end
+
+When /^I edit the charity address to be "(.*?)"$/ do |address|
+  stub_request_with_address(address)
+  fill_in('organization_address',:with => address)
 end
 
 
@@ -74,6 +101,18 @@ end
 
 Then /^the donation_info URL for "(.*?)" should refer to "(.*?)"$/ do |name, href|
   expect(page).to have_link "Donate to #{name} now!", :href => href
+end
+
+And /^the search box should contain "(.*?)"$/ do |arg1|
+  expect(page).to have_xpath("//input[@id='q' and @value='#{arg1}']")
+end
+
+Then /^I should( not)? see the no results message$/ do |negate| 
+  if negate
+    expect(page).not_to have_content ("Sorry, it seems we don't quite have what you are looking for.")
+  else 
+    expect(page).to have_content ("Sorry, it seems we don't quite have what you are looking for.")
+  end
 end
 
 Then /^I should not see any address or telephone information for "([^"]*?)" and "([^"]*?)"$/ do |name1, name2|

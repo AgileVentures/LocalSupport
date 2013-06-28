@@ -29,6 +29,7 @@ Scenario: Find help with care for elderly
   And I should see "Indian Elders Association"
   And I should see "Age UK"
   And I should see search results for "elderly" in the map
+  And the search box should contain "elderly"
 
 # starting within main site
 @javascript
@@ -36,8 +37,12 @@ Scenario: Find a bereavement counsellor
   Given I am on the home page
   When I search for "Bereavement Counselling"
   Then I should see contact details for "Harrow Bereavement Counselling"
+  Then I should not see the no results message
 
-
+Scenario: Find friendly no search results message
+  Given I am on the home page
+  When I search for "non-existent results"
+  Then I should see the no results message
 
 # starting with web search
 Scenario: Searching Google for "death of a relative"

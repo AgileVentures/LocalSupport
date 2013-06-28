@@ -15,10 +15,10 @@ Feature: Web page owned by each charity
       | jcodefx2@gmail.com | pppppppp | Friendly    | 2007-01-01  10:00:00 |
       | jcodefx@gmail.com | pppppppp |              | 2007-01-01  10:00:00 |
 
-  Scenario: be able to view charity webpage
+  Scenario: be able to view link to charity site on individual charity page
     Given I am on the charity page for "Friendly"
     Then I should see a link with text "http://friendly.org"
 
-  Scenario:  be able to view charity webpage when no charity website link is available
+  Scenario: get missing message when charity page has no charity website link available
     Given I am on the charity page for "Friendly Clone"
     Then I should see "We don't yet have a website link for them."

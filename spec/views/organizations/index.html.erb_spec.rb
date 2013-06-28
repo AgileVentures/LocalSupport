@@ -16,6 +16,7 @@ describe "organizations/index.html.erb", :js => true do
 
   before(:each) do
     assign(:organizations, organizations)
+    assign(:query_term,'search')
     organizations.stub!(:current_page).and_return(1)
     organizations.stub!(:total_pages).and_return(1)
     organizations.stub!(:limit_value).and_return(1)
@@ -25,6 +26,7 @@ describe "organizations/index.html.erb", :js => true do
   it "renders a search form" do
     rendered.should have_selector "form input[name='q']"
     rendered.should have_selector "form input[type='submit']"
+    rendered.should have_selector "form input[value='search']"
   end
 
   it "render organization names with hyperlinks" do

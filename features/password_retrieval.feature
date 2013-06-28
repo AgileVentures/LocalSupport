@@ -5,9 +5,9 @@ Feature: Password retrieval
   Tracker story ID: https://www.pivotaltracker.com/story/show/47376361
 
 Background:
-Given the following users are registered:
-| email             | password |
-| jcodefx@gmail.com | pppppppp |
+  Given the following users are registered:
+  | email             | password |
+  | jcodefx@gmail.com | pppppppp |
 
 Scenario: Retrieve password for an existing user
   Given I am on the sign in page

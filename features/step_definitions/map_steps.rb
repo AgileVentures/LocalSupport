@@ -50,11 +50,6 @@ Given /the following organizations exist/ do |organizations_table|
   end
 end
 
-When /^I edit the charity address to be "(.*?)"$/ do |address|
-   stub_request_with_address(address)
-   fill_in('organization_address',:with => address)
-end
-
 Given /^I edit the donation url to be "(.*?)"$/ do |url|
   fill_in('organization_donation_info', :with => url)
 end

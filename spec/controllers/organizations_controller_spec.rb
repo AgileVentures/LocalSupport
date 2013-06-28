@@ -1,10 +1,12 @@
 require 'spec_helper'
 
 describe OrganizationsController do
+
   before :suite do
     FactoryGirl.factories.clear
     FactoryGirl.find_definitions
   end
+
   def mock_organization(stubs={})
     (@mock_organization ||= mock_model(Organization).as_null_object).tap do |organization|
       organization.stub(stubs) unless stubs.empty?
@@ -25,6 +27,31 @@ describe OrganizationsController do
 
       assigns(:organizations).should eq([mock_organization])
       assigns(:json).should eq(json)
+    end
+
+    it "sets up query term on search" do
+      get :search , :q => 'search'
+      assigns(:query_term).should eq 'search'
+    end
+
+    it "sets up flash when search returns no results" do
+      result = []
+      result.should_receive(:empty?).and_return(true)
+      result.stub_chain(:page, :per).and_return(result)
+      Organization.should_receive(:search_by_keyword).with('no results').and_return(result)
+      get :search , :q => 'no results'
+      expect(flash.alert).to eq("Sorry, it seems we don't quite have what you are looking for.")      
+    end
+
+    it "does not set up flash when search returns results" do
+      result = [mock_organization]
+      json='my markers'
+      result.should_receive(:to_gmaps4rails).and_return(json)
+      result.should_receive(:empty?).and_return(false)
+      result.stub_chain(:page, :per).and_return(result)
+      Organization.should_receive(:search_by_keyword).with('some results').and_return(result)
+      get :search , :q => 'some results'
+      expect(flash.alert).to be_nil
     end
   end
 
@@ -52,40 +79,46 @@ describe OrganizationsController do
     context "while signed in as non-admin" do
       before(:each) do
         @org = mock_organization
-        Organization.stub(:find).with("37") { @org }
-        @nonadmin = mock_model("CharityWorker").stub(:admin?).with(false)
+        Organization.should_receive(:find).with("37") { @org }
+        @nonadmin = mock_model("User")
         controller.stub!(:current_user).and_return(@nonadmin)
       end
+
       it "non-admin can edit organization" do
         @nonadmin.should_receive(:can_edit?).with(@org).and_return(true)
         get :show, :id => 37
         assigns(:editable).should be(true)
       end
+
       it "non-admin cannot edit organization" do
         @nonadmin.should_receive(:can_edit?).with(@org).and_return(false)
         get :show, :id => 37
         assigns(:editable).should be(false)
       end
     end
+
     context "while signed in admin" do
       before(:each) do
         @org = mock_organization
-        Organization.stub(:find).with("37") { @org }
-        @admin = mock_model("CharityWorker").stub(:admin?).with(true)
+        Organization.should_receive(:find).with("37") { @org }
+        @admin = mock_model("User")
         controller.stub!(:current_user).and_return(@admin)
       end
+
       it "admin can edit organization" do
         @admin.should_receive(:can_edit?).with(@org).and_return(true)
         get :show, :id => 37
         assigns(:editable).should be(true)
       end
     end
+
     context "while not signed-in" do
       before(:each) do
         @org = mock_organization
-        Organization.stub(:find).with("37"){@org}
+        Organization.should_receive(:find).with("37"){@org}
         controller.stub!(:current_user).and_return(nil)
       end
+
       it 'non-signed in user cannot edit organization' do
         get :show, :id => 37
         expect(assigns(:editable)).to eq nil
@@ -99,12 +132,14 @@ describe OrganizationsController do
         @user = FactoryGirl.create(:user)
         sign_in :user, @user
       end
+
       it "assigns a new organization as @organization" do
         Organization.stub(:new) { mock_organization }
         get :new
         assigns(:organization).should be(mock_organization)
       end
     end
+
     context "while not signed in" do
       it "redirects to sign-in" do
         get :new
@@ -119,6 +154,7 @@ describe OrganizationsController do
         @user = FactoryGirl.create(:user)
         sign_in :user, @user
       end
+
       it "assigns the requested organization as @organization" do
         Organization.stub(:find).with("37") { mock_organization }
         get :edit, :id => "37"
@@ -140,6 +176,7 @@ describe OrganizationsController do
         @user = FactoryGirl.create(:user)
         sign_in :user, @user
       end
+
       describe "with valid params" do
         it "assigns a newly created organization as @organization" do
           Organization.stub(:new).with({'these' => 'params'}) { mock_organization(:save => true) }
@@ -168,6 +205,7 @@ describe OrganizationsController do
         end
       end
     end
+
     context "while not signed in" do
       it "redirects to sign-in" do
         Organization.stub(:new).with({'these' => 'params'}) { mock_organization(:save => true) }
@@ -183,6 +221,7 @@ describe OrganizationsController do
         @admin = FactoryGirl.create(:user, :admin => true)
         sign_in :user, @admin
       end
+
       describe "with valid params" do
         it "updates the requested organization" do
           Organization.should_receive(:find).with("37") { mock_organization }
@@ -229,9 +268,12 @@ describe OrganizationsController do
       before(:each) do
         #TODO: Is this necessary to push into real database to get the association to take?
         @user = FactoryGirl.create(:user_stubbed_organization)
+        #TODO ultimately the controller spec shouldn't need to care about whether a user is an admin
+        #TODO or the person responsible for a charity, that should be refactored into User spec
         @associated_org = @user.organization
         sign_in :user, @user
       end
+
       describe "with valid params" do
         it "updates the requested organization" do
           Organization.should_receive(:find).with("#{@associated_org.id}"){@associated_org}
@@ -252,13 +294,26 @@ describe OrganizationsController do
         @user = FactoryGirl.create(:user)
         @non_associated_org = mock_organization
         sign_in :user, @user
+        expect(@user.organization).to eq(nil)
+        expect(@user.admin?).to eq(false)
       end
+
       describe "with valid params" do
         it "does not update the requested organization" do
-          Organization.should_not_receive(:find).with("#{@non_associated_org.id}")
+          Organization.should_receive(:find).with("#{@non_associated_org.id}")  {@non_associated_org}
           @non_associated_org.should_not_receive(:update_attributes)
           put :update, :id => "#{@non_associated_org.id}", :organization => {'these' => 'params'}
           response.should redirect_to(organization_url("#{@non_associated_org.id}"))
+          expect(flash[:notice]).to eq("You don't have permission")
+        end
+      end
+
+      describe "with invalid params" do
+        it "does not update the requested organization" do
+          Organization.should_receive(:find).with("9999")  {nil}
+          @non_associated_org.should_not_receive(:update_attributes)
+          put :update, :id => "9999", :organization => {'these' => 'params'}
+          response.should redirect_to(organization_url("9999"))
           expect(flash[:notice]).to eq("You don't have permission")
         end
       end

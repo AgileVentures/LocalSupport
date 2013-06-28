@@ -5,5 +5,6 @@ class PagesController < ApplicationController
   end
   def contact
   end
-
+  def disclaimer
+  end
 end

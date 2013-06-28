@@ -68,7 +68,24 @@ class Organization < ActiveRecord::Base
     org.website = row[@@column_mappings[:website]]
     org.telephone = row[@@column_mappings[:telephone]]
 
-    org.save! validate: validate
+    # this commented throttling code might work well for db:seed, but
+    # relies of hard validation failures, which we must avoid
+    # in the normal operation of the app
+    #begin
+      org.save! validate: validate
+    #rescue ActiveRecord::RecordInvalid => e
+      #if e.message =~ /Gmaps4rails address Address invalid/
+        #begin
+          #Gmaps4rails.geocode(org.gmaps4rails_address)
+        #rescue Gmaps4rails::GeocodeStatus => e
+          #if e.message =~ /OVER_QUERY_LIMIT/
+            ## throttle the rate of saves
+            #sleep(2000)
+            #org.save! validate: validate
+          #end
+        #end
+      #end
+    #end
 
     org
   end
