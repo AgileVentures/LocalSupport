@@ -107,8 +107,9 @@ describe OrganizationsController do
   describe "GET new" do
     context "while signed in" do
       before(:each) do
-        @user = FactoryGirl.create(:user)
-        sign_in :user, @user
+        user = mock_model("User")
+        request.env['warden'].stub :authenticate! => user
+        controller.stub!(:current_user).and_return(user)
       end
 
       it "assigns a new organization as @organization" do
@@ -129,8 +130,9 @@ describe OrganizationsController do
   describe "GET edit" do
     context "while signed in" do
       before(:each) do
-        @user = FactoryGirl.create(:user)
-        sign_in :user, @user
+        user = mock_model("User")
+        request.env['warden'].stub :authenticate! => user
+        controller.stub!(:current_user).and_return(user)
       end
 
       it "assigns the requested organization as @organization" do
