@@ -43,6 +43,8 @@ Scenario: Find friendly no search results message
   Given I am on the home page
   When I search for "non-existent results"
   Then I should see the no results message
+  Given I am on the home page
+  Then I should not see the no results message
 
 # starting with web search
 Scenario: Searching Google for "death of a relative"
