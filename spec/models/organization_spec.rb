@@ -52,16 +52,16 @@ describe Organization do
     it 'must not create org when date removed is not nil' do
       fields = CSV.parse('HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,2009-05-28,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
       org = create_organization(fields)
-      org.should be_nil
+      expect(org).to be_nil
     end
 
     it 'must be able to generate multiple Organizations from text file' do
       attempted_number_to_import = 1006
       actual_number_to_import = 642
       Gmaps4rails.should_receive(:geocode).exactly(actual_number_to_import)
-      lambda {
+      expect(lambda {
         Organization.import_addresses 'db/data.csv', attempted_number_to_import
-      }.should change(Organization, :count).by(actual_number_to_import)
+      }).to change(Organization, :count).by(actual_number_to_import)
     end
 
     it 'must fail gracefully when encountering error in generating multiple Organizations from text file' do
@@ -69,9 +69,9 @@ describe Organization do
       actual_number_to_import = 642
       Gmaps4rails.should_receive(:geocode).exactly(0)
       Organization.stub(:create_from_array).and_raise(CSV::MalformedCSVError)
-      lambda {
+      expect(lambda {
         Organization.import_addresses 'db/data.csv', attempted_number_to_import
-      }.should change(Organization, :count).by(0)
+      }).to change(Organization, :count).by(0)
     end
 
     it 'must be able to handle no postcode in text representation' do
@@ -118,9 +118,9 @@ describe Organization do
       #Headers are without Title header
       @headers = 'Charity Number,Activities,Contact Name,Contact Address,website,Contact Telephone,date registered,date removed,accounts date,spending,income,company number,OpenlyLocalURL,twitter account name,facebook account name,youtube account name,feed url,Charity Classification,signed up for 1010,last checked,created at,updated at,Removed?'.split(',')
       fields = CSV.parse('HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
-      lambda{
+      expect(lambda{
         org = create_organization(fields)
-      }.should raise_error
+      }).to raise_error
     end
 
     it 'should save Organization from file without running validations' do
@@ -145,19 +145,19 @@ describe Organization do
   end
 
   it 'must have search by keyword' do
-    Organization.should respond_to(:search_by_keyword)
+    expect(Organization).to respond_to(:search_by_keyword)
   end
 
   it 'find all orgs that have keyword anywhere in their name or description' do
-    Organization.search_by_keyword("elderly").should == [@org2, @org3]
+    expect(Organization.search_by_keyword("elderly")).to eq([@org2, @org3])
   end
 
   it 'offers information for the gmap4rails info window' do
-    @org1.gmaps4rails_infowindow.should eq(@org1.name)
+    expect(@org1.gmaps4rails_infowindow).to eq(@org1.name)
   end
   
   it 'should have gmaps4rails_option hash with :check_process set to false' do
-    @org1.gmaps4rails_options[:check_process].should == false
+    expect(@org1.gmaps4rails_options[:check_process]).to be_false
   end
 
   it 'should geocode when address changes' do
@@ -184,9 +184,9 @@ describe Organization do
     @org1.update_attributes :address => new_address
     @org1.errors['gmaps4rails_address'].should be_empty
     actual_address = Organization.find_by_name(@org1.name).address
-    actual_address.should eq new_address
-    @org1.latitude.should eq nil
-    @org1.longitude.should eq nil
+    expect(actual_address).to eq(new_address)
+    expect(@org1.latitude).to be_nil
+    expect(@org1.longitude).to be_nil
   end
 
   it 'should not delete validation errors unrelated to gmap4rails address issues' do
@@ -195,7 +195,7 @@ describe Organization do
     end
     Gmaps4rails.should_receive(:geocode)
     @org1.update_attributes :name => nil
-    @org1.errors['name'].should_not be_empty
+    expect(@org1.errors['name']).not_to be_empty
   end
 
   it 'should attempt to geocode after failed' do
@@ -203,13 +203,13 @@ describe Organization do
     @org1.save!
     new_address = '60 pinner road'
     Gmaps4rails.should_receive(:geocode)
-    lambda{
+    expect(lambda{
       @org1.address = new_address
       # destructive save is called to raise exception if saving fails
       @org1.save!
-    }.should_not raise_error
+    }).not_to raise_error
     actual_address = Organization.find_by_name(@org1.name).address
-    actual_address.should eq new_address
+    expect(actual_address).to eq(new_address)
   end
   # not sure if we need SQL injection security tests like this ...
   # org = Organization.new(:address =>"blah", :gmaps=> ";DROP DATABASE;")
