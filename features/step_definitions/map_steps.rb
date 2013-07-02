@@ -1,3 +1,11 @@
+Then /^I should see hyperlinks for "(.*?)", "(.*?)" and "(.*?)" in the map$/ do |org1, org2, org3|
+  org1 = Organization.find_by_name(org1)
+  org2 = Organization.find_by_name(org2)
+  org3 = Organization.find_by_name(org3)
+  [org1,org2,org3].each do |org|
+    expect(page).to have_link org.name, :href => organization_path(org)
+  end
+end
 
 # could we move maps stuff into separate step file and couldn't these things be DRYer ...
 # e.g. one step to handle 2 or more orgs ...
