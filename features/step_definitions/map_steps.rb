@@ -3,7 +3,10 @@ Then /^I should see hyperlinks for "(.*?)", "(.*?)" and "(.*?)" in the map$/ do 
   org2 = Organization.find_by_name(org2)
   org3 = Organization.find_by_name(org3)
   [org1,org2,org3].each do |org|
-    expect(page).to have_link org.name, :href => organization_path(org)
+    #expect(page).to have_link org.name, :href => organization_path(org)
+    #debugger
+    #array = page.find('.map_container a').first
+    expect(page).to have_xpath("//div[@class='map_container']//a[@href='#{organization_path(org)}']")
   end
 end
 

@@ -22,7 +22,9 @@ class OrganizationsController < ApplicationController
   def index
     @results = Organization.order("updated_at DESC")
     @organizations = @results.page(params[:page]).per(5)
-    @json = @results.to_gmaps4rails
+    @json = @results.to_gmaps4rails do |org, marker|
+      marker.infowindow render_to_string(:partial => "popup", :locals => { :@org => org})
+    end
     respond_to do |format|
       format.js
       format.html # index.html.erb
