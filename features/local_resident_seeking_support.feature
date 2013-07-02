@@ -12,14 +12,6 @@ Background: organizations have been added to database
   | Indian Elders Association       | Care for the elderly             | 64 pinner road | HA1 4HA  | http://b.com/ |
   | Age UK                          | Care for the Elderly             | 84 pinner road | HA1 4HF  | http://c.com/ |
 
-@show
-@javascript
-Scenario: Show all charities on homepage map
-  Given I am on the home page
-  Then I should see contact details for "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling"
-  #And show me the page
-  And I should see "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling" in the map centered on local organizations
-
 # particularly want to provide visibility to organizations with no existing web presence
 @javascript
 Scenario: Find help with care for elderly
