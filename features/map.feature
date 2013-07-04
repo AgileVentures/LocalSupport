@@ -19,8 +19,8 @@ Scenario: Show all charities on homepage map
   #And show me the page
   And I should see "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling" in the map centered on local organizations
 
-@javascript
-Scenario: Clickable hyperlinks to charity homepage in map
-  Given I am on the home page
-  And show me the page
-  And I should see hyperlinks for "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling" in the map
+#@javascript
+# TODO work out how to do testing on gmap
+#Scenario: Clickable hyperlinks to charity homepage in map
+#  Given I am on the home page
+#  And I should see hyperlinks for "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling" in the map

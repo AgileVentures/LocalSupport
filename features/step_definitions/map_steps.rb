@@ -40,7 +40,11 @@ end
 
 
 Then /^I should see search results for "(.*?)" in the map$/ do |search_terms|
-  page.should have_xpath "//script[contains(.,'Gmaps.map.markers = #{Organization.search_by_keyword(search_terms).to_gmaps4rails}')]"
+  orgs = Organization.search_by_keyword(search_terms)
+  orgs.each do |org|
+    matches = page.html.match %Q<{\\"description\\":\\".*#{org.name}</a>\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
+    expect(matches).not_to be_nil
+  end
 end
 
 def stub_request_with_address(address, body = nil)
@@ -66,13 +70,20 @@ Given /^I edit the donation url to be "(.*?)"$/ do |url|
 end
 
 Then /^the coordinates for "(.*?)" and "(.*?)" should( not)? be the same/ do | org1_name, org2_name, negation|
-  matches = page.html.match %Q<{\\"description\\":\\"#{org1_name}\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
+  #Gmaps.map.markers = [{"description":"<a href=\"/organizations/1320\">test</a>","lat":50.3739788,"lng":-95.84172219999999}];
+
+  matches = page.html.match %Q<{\\"description\\":\\".*#{org1_name}</a>\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
   org1_lat = matches[1]
   org1_lng = matches[2]
+  matches = page.html.match %Q<{\\"description\\":\\".*#{org2_name}</a>\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
+  org2_lat = matches[1]
+  org2_lng = matches[2]
+  lat_same = org1_lat == org2_lat
+  lng_same = org1_lng == org2_lng
   if negation
-    page.html.should_not have_content %Q<{"description":"#{org2_name}","lat":#{org1_lat},"lng":#{org1_lng}}>
-  else 
-    page.html.should have_content %Q<{"description":"#{org2_name}","lat":#{org1_lat},"lng":#{org1_lng}}>
+    expect(lat_same && lng_same).to be_false
+  else
+    expect(lat_same && lng_same).to be_true
   end
 end
 
