@@ -220,3 +220,18 @@ end
 When /^I fill in "(.*?)" with "(.*?)"$/ do |field, value|
   fill_in(field, :with => value)
 end
+
+Given /^I create "(.*?)" org$/ do |name|
+  pending
+  # breakpoint
+  # page.driver.post "/organizations", {:params => { :name => name }}
+end
+
+Then /^"(.*?)" org should not exist$/ do |name|
+  expect(Organization.find_by_name name).to be_nil
+end
+
+Then /^I debug$/ do
+  breakpoint
+  0
+end
