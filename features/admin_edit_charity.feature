@@ -64,6 +64,7 @@ Feature: Admin editing charity
     Given I am signed in as a non-admin
     And I create "Unwanted" org
 #    Then I should see "You don't have permission"
-#    And I should see "Organization was successfully created."
+#    And I should not see "Organization was successfully created."
+#    And I should not be redirected to the organization page
     And "Unwanted" org should not exist
 

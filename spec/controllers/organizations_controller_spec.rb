@@ -155,11 +155,12 @@ describe OrganizationsController do
   end
 
   describe "POST create" do
-    context "while signed in" do
+    context "while signed in as admin" do
       before(:each) do
         user = mock_model("User")
         request.env['warden'].stub :authenticate! => user
         controller.stub!(:current_user).and_return(user)
+	user.should_receive(:admin?).and_return(true)
       end
 
       describe "with valid params" do
@@ -191,12 +192,23 @@ describe OrganizationsController do
       end
     end
 
-    context "while not signed in" do
-      it "redirects to sign-in" do
-        Organization.stub(:new).with({'these' => 'params'}) { mock_organization(:save => true) }
-        post :create, :organization => {'these' => 'params'}
-        expect(response).to redirect_to new_user_session_path
+    context "while signed in as non-admin" do
+      before(:each) do
+        user = mock_model("User")
+        request.env['warden'].stub :authenticate! => user
+        controller.stub!(:current_user).and_return(user)
+	user.should_receive(:admin?).and_return(false)
       end
+
+      describe "with valid params" do
+	pending
+#        it "assigns a newly created organization as @organization" do
+#          Organization.stub(:new).with({'these' => 'params'}) { mock_organization(:save => true) }
+#          post :create, :organization => {'these' => 'params'}
+#          assigns(:organization).should be(mock_organization)
+#         end
+      end
+# not interested in invalid params 
     end
   end
 
