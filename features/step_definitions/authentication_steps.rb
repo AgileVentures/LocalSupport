@@ -54,11 +54,11 @@ Given /^that I am logged in as any user$/ do
   steps %Q{
      Given the following users are registered:
    | email             | password | confirmed_at         |
-   | jcodefx@gmail.com | pppppppp | 2007-01-01  10:00:00 |
+   | registered_user@example.com | pppppppp | 2007-01-01  10:00:00 |
   } 
   steps %Q{
     Given I am on the sign in page
-    And I sign in as "jcodefx@gmail.com" with password "pppppppp"
+    And I sign in as "registered_user@example.com" with password "pppppppp"
   }
 end
 
