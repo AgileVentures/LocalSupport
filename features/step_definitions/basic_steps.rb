@@ -222,9 +222,10 @@ When /^I fill in "(.*?)" with "(.*?)"$/ do |field, value|
 end
 
 Given /^I create "(.*?)" org$/ do |name|
-  pending
-  # breakpoint
-  # page.driver.post "/organizations", {:params => { :name => name }}
+   #breakpoint
+   #page.driver.post "/organizations", {:params => { :organization_name => name }}
+   #page.driver.browser.process(:post, "/organizations", { params: {name: "user1",}})
+   page.driver.post "/organizations", :organization => {:name => name}
 end
 
 Then /^"(.*?)" org should not exist$/ do |name|
