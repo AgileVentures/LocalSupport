@@ -63,7 +63,7 @@ describe "organizations/index.html.erb", :js => true do
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
   end
 
-  it "should have hyperlinks in the popups"  do
+  xit "should have hyperlinks in the popups"  do
     @json = organizations.to_gmaps4rails do |org, marker|
       marker.infowindow render_to_string(:partial => "popup", :locals => { :@org => org})
     end

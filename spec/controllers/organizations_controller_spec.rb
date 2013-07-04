@@ -12,6 +12,16 @@ describe OrganizationsController do
       organization.stub(stubs) unless stubs.empty?
     end
   end
+
+  describe "popup partial" do
+    xit "should take some argument and call to_gmap4rails on it" do
+      result = [mock_organization]
+      #not sure if we are supposed to test private method on controller ...
+      #@controller.instance_eval{ gmaps4rails_with_popup_partial}
+      #OrganizationsController.gmap4rails_with_popup_partial(result)
+    end
+
+  end
   
   describe "GET search" do
     it "searches all organizations as @organizations" do
@@ -21,7 +31,7 @@ describe OrganizationsController do
       Organization.should_receive(:search_by_keyword).with('test').and_return(result)
 
       result.stub_chain(:page, :per).and_return(result)
-      
+
       get :search, :q => 'test'
       response.should render_template 'index'
 
@@ -74,11 +84,14 @@ describe OrganizationsController do
   end
 
   describe "GET show" do
-    it "assigns the requested organization as @organization" do
+    it "assigns the requested organization as @organization and appropriate json" do
+      json='my markers'
       @org = mock_organization
+      @org.should_receive(:to_gmaps4rails).and_return(json)
       Organization.should_receive(:find).with("37") { @org }
       get :show, :id => "37"
       assigns(:organization).should be(mock_organization)
+      assigns(:json).should eq(json)
     end
 
     context "editable flag is assigned to match user permission" do
