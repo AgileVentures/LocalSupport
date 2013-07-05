@@ -22,3 +22,5 @@ pickle-email-*.html
 .DS_Store
 linecache19-0.5.13.gem
 /bin/
+\#*#
+\.#*

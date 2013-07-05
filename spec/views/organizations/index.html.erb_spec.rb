@@ -51,7 +51,7 @@ describe "organizations/index.html.erb", :js => true do
   end
 
    # this gmaps stuff does get rendered in the browser even with javascript turned off
-   # but it doesn't appear in thie test and we don't know why
+   # but it doesn't appear in this test and we don't know why
   xit "displays the javascript for a google map" do
     assign(:json, organizations.to_gmaps4rails)
     render
@@ -61,6 +61,17 @@ describe "organizations/index.html.erb", :js => true do
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_longitude = -0.337')]"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.zoom = 12')]"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
+  end
+
+  xit "should have hyperlinks in the popups"  do
+    @json = organizations.to_gmaps4rails do |org, marker|
+      marker.infowindow render_to_string(:partial => "popup", :locals => { :@org => org})
+    end
+    assign(:json, @json)
+    render
+    organizations.each do |org|
+      expect(rendered).to have_xpath("//div[@class='map_container']//a[@href='#{organization_path(org)}']")
+    end
   end
 
   it "does not render a new organization link for non-logged in user"  do
