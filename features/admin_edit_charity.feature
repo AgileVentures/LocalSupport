@@ -61,13 +61,10 @@ Feature: Admin editing charity
     And I should see "You don't have permission"
 
   Scenario: Non-admin unsuccessfully attempts to create an organization
-    Given I am on the sign in page
-    And I sign in as "tansaku@gmail.com" with password "pppppppp"
+    Given I am signed in as a non-admin
     And I create "Unwanted" org
     Then I should be on the organizations index page
-    And show me the page
     Then I should see "You don't have permission"
-#    And I should not see "Organization was successfully created."
-#    And I should not be redirected to the organization page
+    And I should not see "Organization was successfully created."
     And "Unwanted" org should not exist
 
