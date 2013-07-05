@@ -201,12 +201,22 @@ describe OrganizationsController do
       end
 
       describe "with valid params" do
-	pending
-#        it "assigns a newly created organization as @organization" do
-#          Organization.stub(:new).with({'these' => 'params'}) { mock_organization(:save => true) }
-#          post :create, :organization => {'these' => 'params'}
-#          assigns(:organization).should be(mock_organization)
-#         end
+         it "refuses to create a new organization" do
+	   # stubbing out Organization to prevent new method from calling Gmaps APIs
+           Organization.stub(:new).with({'these' => 'params'}) { mock_organization(:save => true) }
+	   Organization.should_not_receive :new
+	   post :create, :organization => {'these' => 'params'}
+         end
+         it "redirects to the organizations index" do
+           Organization.stub(:new).with({'these' => 'params'}) { mock_organization(:save => true) }
+	   post :create, :organization => {'these' => 'params'}
+	   expect(response).to redirect_to organizations_path           
+	 end
+	 it "assigns a flash refusal" do
+           Organization.stub(:new).with({'these' => 'params'}) { mock_organization(:save => true) }
+	   post :create, :organization => {'these' => 'params'}
+	   expect(flash[:notice]).to eq("You don't have permission")
+	 end
       end
 # not interested in invalid params 
     end

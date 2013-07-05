@@ -213,6 +213,10 @@ Then /^I should be on the sign up page$/ do
   current_path.should == new_user_registration_path
 end
 
+Then /^I should be on the organizations index page$/ do
+  current_path.should == organizations_path
+end
+
 Then /^I should be on the charity workers page$/ do
   current_path.should == users_path
 end
