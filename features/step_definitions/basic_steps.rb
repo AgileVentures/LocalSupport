@@ -226,7 +226,7 @@ When /^I fill in "(.*?)" with "(.*?)"$/ do |field, value|
 end
 
 Given /^I create "(.*?)" org$/ do |name|
-  page.driver.post "/organizations", :organization => {:name => name}
+  page.driver.submit :post, "/organizations", :organization => {:name => name}
 end
 
 Then /^"(.*?)" org should not exist$/ do |name|
