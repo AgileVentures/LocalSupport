@@ -61,7 +61,8 @@ Feature: Admin editing charity
     And I should see "You don't have permission"
 
   Scenario: Non-admin unsuccessfully attempts to create an organization
-    Given I am signed in as a non-admin
+    Given I am on the sign in page
+    And I sign in as "tansaku@gmail.com" with password "pppppppp"
     And I create "Unwanted" org
     Then I should be on the organizations index page
     And show me the page
