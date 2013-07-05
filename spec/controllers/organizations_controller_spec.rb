@@ -168,11 +168,12 @@ describe OrganizationsController do
   end
 
   describe "POST create" do
-    context "while signed in" do
+    context "while signed in as admin" do
       before(:each) do
         user = mock_model("User")
         request.env['warden'].stub :authenticate! => user
         controller.stub!(:current_user).and_return(user)
+	user.should_receive(:admin?).and_return(true)
       end
 
       describe "with valid params" do
@@ -210,6 +211,35 @@ describe OrganizationsController do
         post :create, :organization => {'these' => 'params'}
         expect(response).to redirect_to new_user_session_path
       end
+    end
+
+    context "while signed in as non-admin" do
+      before(:each) do
+        user = mock_model("User")
+        request.env['warden'].stub :authenticate! => user
+        controller.stub!(:current_user).and_return(user)
+	user.should_receive(:admin?).and_return(false)
+      end
+
+      describe "with valid params" do
+         it "refuses to create a new organization" do
+	   # stubbing out Organization to prevent new method from calling Gmaps APIs
+           Organization.stub(:new).with({'these' => 'params'}) { mock_organization(:save => true) }
+	   Organization.should_not_receive :new
+	   post :create, :organization => {'these' => 'params'}
+         end
+         it "redirects to the organizations index" do
+           Organization.stub(:new).with({'these' => 'params'}) { mock_organization(:save => true) }
+	   post :create, :organization => {'these' => 'params'}
+	   expect(response).to redirect_to organizations_path           
+	 end
+	 it "assigns a flash refusal" do
+           Organization.stub(:new).with({'these' => 'params'}) { mock_organization(:save => true) }
+	   post :create, :organization => {'these' => 'params'}
+	   expect(flash[:notice]).to eq("You don't have permission")
+	 end
+      end
+# not interested in invalid params 
     end
   end
 

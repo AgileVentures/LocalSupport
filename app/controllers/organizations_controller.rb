@@ -62,6 +62,12 @@ class OrganizationsController < ApplicationController
   # POST /organizations
   # POST /organizations.json
   def create
+    # model filters for logged in users, but we check here if that user is an admin
+    # TODO refactor that to model responsibility?
+     unless current_user.try(:admin?)
+       flash[:notice] = "You don't have permission"
+       redirect_to organizations_path and return false
+     end
     @organization = Organization.new(params[:organization])
 
     respond_to do |format|

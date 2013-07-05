@@ -14,8 +14,8 @@ Background: organizations have been added to database
   
   Given the following users are registered:
   | email             | password | organization | confirmed_at |
-  | jcodefx2@gmail.com | pppppppp | Friendly    | 2007-01-01  10:00:00 |
-  | jcodefx@gmail.com | pppppppp |              | 2007-01-01  10:00:00 |
+  | registered_user-2@example.com | pppppppp | Friendly    | 2007-01-01  10:00:00 |
+  | registered_user-1@example.com | pppppppp |              | 2007-01-01  10:00:00 |
 
 
 Scenario: Successfully change the address of a charity
