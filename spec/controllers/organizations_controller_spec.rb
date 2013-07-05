@@ -205,6 +205,14 @@ describe OrganizationsController do
       end
     end
 
+    context "while not signed in" do
+      it "redirects to sign-in" do
+        Organization.stub(:new).with({'these' => 'params'}) { mock_organization(:save => true) }
+        post :create, :organization => {'these' => 'params'}
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+
     context "while signed in as non-admin" do
       before(:each) do
         user = mock_model("User")
