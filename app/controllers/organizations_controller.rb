@@ -8,7 +8,7 @@ class OrganizationsController < ApplicationController
     @results = Organization.search_by_keyword(@query_term)
     flash.now[:alert] = "Sorry, it seems we don't quite have what you are looking for." if @results.empty?
     @organizations = @results.page(params[:page]).per(5)
-    @json = @results.to_gmaps4rails
+    @json = gmap4rails_with_popup_partial(@results,'popup')
     respond_to do |format|
       format.js   { render :template =>'organizations/index'}
       format.html { render :template =>'organizations/index'}
@@ -22,7 +22,7 @@ class OrganizationsController < ApplicationController
   def index
     @results = Organization.order("updated_at DESC")
     @organizations = @results.page(params[:page]).per(5)
-    @json = @results.to_gmaps4rails
+    @json = gmap4rails_with_popup_partial(@results,'popup')
     respond_to do |format|
       format.js
       format.html # index.html.erb
@@ -36,7 +36,7 @@ class OrganizationsController < ApplicationController
   def show
     @organization = Organization.find(params[:id])
     @editable = current_user.can_edit?(@organization) if current_user
-    @json = @organization.to_gmaps4rails
+    @json = gmap4rails_with_popup_partial(@organization,'popup')
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @organization }
@@ -62,6 +62,12 @@ class OrganizationsController < ApplicationController
   # POST /organizations
   # POST /organizations.json
   def create
+    # model filters for logged in users, but we check here if that user is an admin
+    # TODO refactor that to model responsibility?
+     unless current_user.try(:admin?)
+       flash[:notice] = "You don't have permission"
+       redirect_to organizations_path and return false
+     end
     @organization = Organization.new(params[:organization])
 
     respond_to do |format|
@@ -107,6 +113,13 @@ class OrganizationsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to organizations_url }
       format.json { head :ok }
+    end
+  end
+
+  private
+  def gmap4rails_with_popup_partial(item, partial)
+    item.to_gmaps4rails  do |org, marker|
+      marker.infowindow render_to_string(:partial => partial, :locals => { :@org => org})
     end
   end
 end

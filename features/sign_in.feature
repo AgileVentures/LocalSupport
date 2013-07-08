@@ -11,31 +11,31 @@ Given the following organizations exist:
 
 Given the following users are registered:
   | email             | password | admin | organization | confirmed_at         |
-  | jcodefx@gmail.com | pppppppp |       |              | 2007-01-01  10:00:00 |
-  | jcodefx2@gmail.com| pppppppp | true  |              | 2007-01-01  10:00:00 |
-  | jcodefx3@gmail.com| pppppppp | false | Friendly     | 2007-01-01  10:00:00 |
+  | registered_user-1@example.com | pppppppp |       |              | 2007-01-01  10:00:00 |
+  | registered_user-2@example.com| pppppppp | true  |              | 2007-01-01  10:00:00 |
+  | registered_user-3@example.com| pppppppp | false | Friendly     | 2007-01-01  10:00:00 |
 
 Scenario: Sign in for an existing non-admin user unassociated with any organization
   Given I am on the sign in page
-  And I sign in as "jcodefx@gmail.com" with password "pppppppp"
+  And I sign in as "registered_user-1@example.com" with password "pppppppp"
   Then I should be on the home page
-  And I should see "Signed in as jcodefx@gmail.com"
+  And I should see "Signed in as registered_user-1@example.com"
 
 Scenario: Sign in for an existing non-admin user associated with an organization
   Given I am on the sign in page
-  And I sign in as "jcodefx3@gmail.com" with password "pppppppp"
+  And I sign in as "registered_user-3@example.com" with password "pppppppp"
   Then I should be on the charity page for "Friendly"
-  And I should see "Signed in as jcodefx3@gmail.com"
+  And I should see "Signed in as registered_user-3@example.com"
   
 Scenario: Sign in for an existing admin user
   Given I am on the sign in page
-  And I sign in as "jcodefx2@gmail.com" with password "pppppppp"
+  And I sign in as "registered_user-2@example.com" with password "pppppppp"
   Then I should be on the home page
-  And I should see "Signed in as jcodefx2@gmail.com"
+  And I should see "Signed in as registered_user-2@example.com"
 
 Scenario: Sign in for a non-existent user
   Given I am on the sign in page
-  And I sign in as "marian.mosley@gmail.com" with password "pppppppp"
+  And I sign in as "non-existent_user@example.com" with password "pppppppp"
   Then I should be on the sign in page
   And I should see "I'm sorry, you are not authorized to login to the system"
 

@@ -213,10 +213,27 @@ Then /^I should be on the sign up page$/ do
   current_path.should == new_user_registration_path
 end
 
+Then /^I should be on the organizations index page$/ do
+  current_path.should == organizations_path
+end
+
 Then /^I should be on the charity workers page$/ do
   current_path.should == users_path
 end
 
 When /^I fill in "(.*?)" with "(.*?)"$/ do |field, value|
   fill_in(field, :with => value)
+end
+
+Given /^I create "(.*?)" org$/ do |name|
+  page.driver.submit :post, "/organizations", :organization => {:name => name}
+end
+
+Then /^"(.*?)" org should not exist$/ do |name|
+  expect(Organization.find_by_name name).to be_nil
+end
+
+Then /^I debug$/ do
+  breakpoint
+  0
 end

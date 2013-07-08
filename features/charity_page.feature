@@ -12,8 +12,8 @@ Feature: Web page owned by each charity
 
     Given the following users are registered:
       | email             | password | organization | confirmed_at |
-      | jcodefx2@gmail.com | pppppppp | Friendly    | 2007-01-01  10:00:00 |
-      | jcodefx@gmail.com | pppppppp |              | 2007-01-01  10:00:00 |
+      | registered_user-1@example.com | pppppppp | Friendly    | 2007-01-01  10:00:00 |
+      | registered_user-2@example.com | pppppppp |              | 2007-01-01  10:00:00 |
 
   Scenario: be able to view link to charity site on individual charity page
     Given I am on the charity page for "Friendly"

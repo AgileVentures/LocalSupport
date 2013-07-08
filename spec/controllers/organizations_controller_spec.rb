@@ -12,6 +12,16 @@ describe OrganizationsController do
       organization.stub(stubs) unless stubs.empty?
     end
   end
+
+  describe "popup partial" do
+    xit "should take some argument and call to_gmap4rails on it" do
+      result = [mock_organization]
+      #not sure if we are supposed to test private method on controller ...
+      #@controller.instance_eval{ gmaps4rails_with_popup_partial}
+      #OrganizationsController.gmap4rails_with_popup_partial(result)
+    end
+
+  end
   
   describe "GET search" do
     it "searches all organizations as @organizations" do
@@ -21,7 +31,7 @@ describe OrganizationsController do
       Organization.should_receive(:search_by_keyword).with('test').and_return(result)
 
       result.stub_chain(:page, :per).and_return(result)
-      
+
       get :search, :q => 'test'
       response.should render_template 'index'
 
@@ -74,11 +84,14 @@ describe OrganizationsController do
   end
 
   describe "GET show" do
-    it "assigns the requested organization as @organization" do
+    it "assigns the requested organization as @organization and appropriate json" do
+      json='my markers'
       @org = mock_organization
+      @org.should_receive(:to_gmaps4rails).and_return(json)
       Organization.should_receive(:find).with("37") { @org }
       get :show, :id => "37"
       assigns(:organization).should be(mock_organization)
+      assigns(:json).should eq(json)
     end
 
     context "editable flag is assigned to match user permission" do
@@ -155,11 +168,12 @@ describe OrganizationsController do
   end
 
   describe "POST create" do
-    context "while signed in" do
+    context "while signed in as admin" do
       before(:each) do
         user = mock_model("User")
         request.env['warden'].stub :authenticate! => user
         controller.stub!(:current_user).and_return(user)
+	user.should_receive(:admin?).and_return(true)
       end
 
       describe "with valid params" do
@@ -197,6 +211,35 @@ describe OrganizationsController do
         post :create, :organization => {'these' => 'params'}
         expect(response).to redirect_to new_user_session_path
       end
+    end
+
+    context "while signed in as non-admin" do
+      before(:each) do
+        user = mock_model("User")
+        request.env['warden'].stub :authenticate! => user
+        controller.stub!(:current_user).and_return(user)
+	user.should_receive(:admin?).and_return(false)
+      end
+
+      describe "with valid params" do
+         it "refuses to create a new organization" do
+	   # stubbing out Organization to prevent new method from calling Gmaps APIs
+           Organization.stub(:new).with({'these' => 'params'}) { mock_organization(:save => true) }
+	   Organization.should_not_receive :new
+	   post :create, :organization => {'these' => 'params'}
+         end
+         it "redirects to the organizations index" do
+           Organization.stub(:new).with({'these' => 'params'}) { mock_organization(:save => true) }
+	   post :create, :organization => {'these' => 'params'}
+	   expect(response).to redirect_to organizations_path           
+	 end
+	 it "assigns a flash refusal" do
+           Organization.stub(:new).with({'these' => 'params'}) { mock_organization(:save => true) }
+	   post :create, :organization => {'these' => 'params'}
+	   expect(flash[:notice]).to eq("You don't have permission")
+	 end
+      end
+# not interested in invalid params 
     end
   end
 

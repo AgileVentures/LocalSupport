@@ -11,8 +11,8 @@ Feature: Admin editing charity
       | Friendly Clone | Quite Friendly!         | 30 pinner road | HA1 4HZ  | 020800010 |
     And the following users are registered:
       | email             | password | admin | confirmed_at |
-      | jcodefx@gmail.com | pppppppp | true  | 2007-01-01  10:00:00 |
-      | tansaku@gmail.com | pppppppp | false | 2007-01-01  10:00:00 |
+      | registered-user-1@example.com | pppppppp | true  | 2007-01-01  10:00:00 |
+      | registered-user-2@example.com | pppppppp | false | 2007-01-01  10:00:00 |
 
   Scenario: Admin successfully changes the address of a charity
     Given I am signed in as a admin
@@ -59,4 +59,12 @@ Feature: Admin editing charity
     And I delete "Friendly" charity
     Then I should be on the charity page for "Friendly"
     And I should see "You don't have permission"
+
+  Scenario: Non-admin unsuccessfully attempts to create an organization
+    Given I am signed in as a non-admin
+    And I create "Unwanted" org
+    Then I should be on the organizations index page
+    Then I should see "You don't have permission"
+    And I should not see "Organization was successfully created."
+    And "Unwanted" org should not exist
 
