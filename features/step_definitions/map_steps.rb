@@ -3,7 +3,7 @@ Then /^I should see hyperlinks for "(.*?)", "(.*?)" and "(.*?)" in the map$/ do 
   org2 = Organization.find_by_name(org2)
   org3 = Organization.find_by_name(org3)
   [org1,org2,org3].each do |org|
-    #expect(page).to have_link org.name, :href => organization_path(org)
+    #expect(page).to have_link org.name, :href => organization_path(org)http://madeye.io/edit/bd5be747-d660-4e15-8975-2f27b689ca03/features/step_definitions/map_steps.rb#
     #debugger
     #array = page.find('.map_container a').first
     expect(page).to have_xpath("//div[@class='map_container']//a[@href='#{organization_path(org)}']")
@@ -42,7 +42,7 @@ end
 Then /^I should see search results for "(.*?)" in the map$/ do |search_terms|
   orgs = Organization.search_by_keyword(search_terms)
   orgs.each do |org|
-    matches = page.html.match %Q<{\\"description\\":\\".*#{org.name}</a>\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
+    matches = page.html.match %Q<{\\"description\\":\\".*>#{org.name}</a>.*\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
     expect(matches).not_to be_nil
   end
 end
@@ -72,10 +72,10 @@ end
 Then /^the coordinates for "(.*?)" and "(.*?)" should( not)? be the same/ do | org1_name, org2_name, negation|
   #Gmaps.map.markers = [{"description":"<a href=\"/organizations/1320\">test</a>","lat":50.3739788,"lng":-95.84172219999999}];
 
-  matches = page.html.match %Q<{\\"description\\":\\".*#{org1_name}</a>\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
+  matches = page.html.match %Q<{\\"description\\":\\"[^}]*#{org1_name}[^}]*\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
   org1_lat = matches[1]
   org1_lng = matches[2]
-  matches = page.html.match %Q<{\\"description\\":\\".*#{org2_name}</a>\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
+  matches = page.html.match %Q<{\\"description\\":\\"[^}]*#{org2_name}[^}]*\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
   org2_lat = matches[1]
   org2_lng = matches[2]
   lat_same = org1_lat == org2_lat
