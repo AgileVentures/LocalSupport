@@ -14,11 +14,15 @@ describe OrganizationsController do
   end
 
   describe "popup partial" do
-    xit "should take some argument and call to_gmap4rails on it" do
+    it "should take some argument and call to_gmap4rails on it" do
       result = [mock_organization]
+      partial = mock("template")
+      marker = mock("marker")
+      marker.should_receive(:infowindow)
+      result.should_receive(:to_gmaps4rails).and_yield(mock_organization,marker)
+      @controller.should_receive(:render_to_string)
       #not sure if we are supposed to test private method on controller ...
-      #@controller.instance_eval{ gmaps4rails_with_popup_partial}
-      #OrganizationsController.gmap4rails_with_popup_partial(result)
+      @controller.send(:gmap4rails_with_popup_partial,result, partial)
     end
 
   end
