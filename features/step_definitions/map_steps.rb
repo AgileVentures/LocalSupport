@@ -3,10 +3,10 @@ Then /^I should see hyperlinks for "(.*?)", "(.*?)" and "(.*?)" in the map$/ do 
   org2 = Organization.find_by_name(org2)
   org3 = Organization.find_by_name(org3)
   [org1,org2,org3].each do |org|
-    #expect(page).to have_link org.name, :href => organization_path(org)http://madeye.io/edit/bd5be747-d660-4e15-8975-2f27b689ca03/features/step_definitions/map_steps.rb#
-    #debugger
-    #array = page.find('.map_container a').first
-    expect(page).to have_xpath("//div[@class='map_container']//a[@href='#{organization_path(org)}']")
+    match = page.html.match %Q<{\\"description\\":\\".*>#{org.name}</a>.*\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
+    expect(match).not_to be_nil
+    # the following might work if we were actually running all the gmaps js
+    #expect(page).to have_xpath("//div[@class='map_container']//a[@href='#{organization_path(org)}']")
   end
 end
 
