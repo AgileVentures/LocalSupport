@@ -32,6 +32,7 @@ describe "organizations/index.html.erb", :js => true do
     rendered.should have_selector "form input[name='q']"
     rendered.should have_selector "form input[type='submit']"
     rendered.should have_selector "form input[value='search']"
+    rendered.should have_selector "form select[name='category[id]']"
   end
 
   it "render organization names with hyperlinks" do
