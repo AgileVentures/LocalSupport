@@ -4,26 +4,25 @@ Feature: Charity worker can edit own charity profile
   I want to edit my charity's web page (description and contact details)
   Tracker story ID: https://www.pivotaltracker.com/story/show/45671099
 
-#address of friendly clone must be 30 pinner road because of change the address of charity scenario
+#address of nice must be 30 pinner road because of change the address of charity scenario
 #need to revisit this
 Background: organizations have been added to database 
   Given the following organizations exist:
   | name           | description               | address        | postcode | telephone |
   | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 |
-  | Friendly Clone | Quite Friendly!           | 30 pinner road | HA1 4HZ  | 020800010 |
+  | Nice           | Quite Pleasant!           | 30 pinner road | HA1 4HZ  | 020800010 |
   
   Given the following users are registered:
   | email             | password | organization | confirmed_at |
   | registered_user-2@example.com | pppppppp | Friendly    | 2007-01-01  10:00:00 |
   | registered_user-1@example.com | pppppppp |              | 2007-01-01  10:00:00 |
 
-
 Scenario: Successfully change the address of a charity
   Given I am signed in as a charity worker related to "Friendly"
   And I update "Friendly" charity address to be "30 pinner road"
   Then I should be on the charity page for "Friendly"
   Given I am on the home page
-  Then the coordinates for "Friendly Clone" and "Friendly" should be the same
+  Then the coordinates for "Nice" and "Friendly" should be the same
 
 Scenario: Unsuccessfully change the address of a charity
   Given I am signed in as a charity worker unrelated to "Friendly"
@@ -31,7 +30,7 @@ Scenario: Unsuccessfully change the address of a charity
   Then I should see "You don't have permission"
   And I should be on the charity page for "Friendly"
   Given I am on the home page
-  Then the coordinates for "Friendly Clone" and "Friendly" should not be the same
+  Then the coordinates for "Nice" and "Friendly" should not be the same
 
 Scenario: Do not see edit button as non-admin not associated with Friendly
   Given I am signed in as a charity worker unrelated to "Friendly"
@@ -62,7 +61,7 @@ Scenario: Redirected to sign-in when not signed-in and edit donation url
 
 Scenario: By default, not display organizations address and phone number on home page
   Given I am on the home page
-  Then I should not see any address or telephone information for "Friendly Clone" and "Friendly"
+  Then I should not see any address or telephone information for "Nice" and "Friendly"
 
 Scenario: By default, not display organizations edit and delete on home page
   Given I am on the home page
