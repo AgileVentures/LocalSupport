@@ -5,7 +5,7 @@ class OrganizationsController < ApplicationController
   def search
     # should this be a model method with a model spec around it ...?
     @query_term = params[:q]
-    @results = Organization.search_by_keyword(@query_term)
+    @results = Organization.search_by_keyword(@query_term).filter_by_category(params["category"]["id"])
     flash.now[:alert] = "Sorry, it seems we don't quite have what you are looking for." if @results.empty?
     @organizations = @results.page(params[:page]).per(5)
     @json = gmap4rails_with_popup_partial(@results,'popup')

@@ -28,24 +28,27 @@ describe OrganizationsController do
   end
   
   describe "GET search" do
-    it "searches all organizations as @organizations" do
-      result = [mock_organization]
-      json='my markers'
-      result.should_receive(:to_gmaps4rails).and_return(json)
-      Organization.should_receive(:search_by_keyword).with('test').and_return(result)
 
-      result.stub_chain(:page, :per).and_return(result)
+    context 'first two' do
+      let(:json) {'my markers'}
+      before(:each) do
+        result = [mock_organization]
+        result.should_receive(:to_gmaps4rails).and_return(json)
+        Organization.should_receive(:search_by_keyword).with('test').and_return(result)
+        result.should_receive(:filter_by_category).with('1').and_return(result)
+        result.stub_chain(:page, :per).and_return(result)
+      end
+      it "searches all organizations as @organizations" do
+        get :search, :q => 'test', "category" => {"id"=>"1"}
+        response.should render_template 'index'
+        assigns(:organizations).should eq([mock_organization])
+        assigns(:json).should eq(json)
+      end
 
-      get :search, :q => 'test'
-      response.should render_template 'index'
-
-      assigns(:organizations).should eq([mock_organization])
-      assigns(:json).should eq(json)
-    end
-
-    it "sets up query term on search" do
-      get :search , :q => 'search'
-      assigns(:query_term).should eq 'search'
+      it "sets up query term on search" do
+        get :search, :q => 'test', "category" => {"id"=>"1"}
+        assigns(:query_term).should eq 'test'
+      end
     end
     #figure out how to make this less messy
     it "assigns to flash.now but not flash when search returns no results" do
@@ -54,10 +57,11 @@ describe OrganizationsController do
       result.should_receive(:empty?).and_return(true)
       result.stub_chain(:page, :per).and_return(result)
       Organization.should_receive(:search_by_keyword).with('no results').and_return(result)
+      result.should_receive(:filter_by_category).with('1').and_return(result)
       ActionDispatch::Flash::FlashHash.any_instance.should_receive(:now).and_return mock_now_flash
       ActionDispatch::Flash::FlashHash.any_instance.should_not_receive(:[]=)
       mock_now_flash.should_receive(:[]=).with(:alert, "Sorry, it seems we don't quite have what you are looking for.")     
-      get :search , :q => 'no results'
+      get :search , :q => 'no results' , "category" => {"id"=>"1"}
     end
 
     it "does not set up flash nor flash.now when search returns results" do
@@ -67,7 +71,8 @@ describe OrganizationsController do
       result.should_receive(:empty?).and_return(false)
       result.stub_chain(:page, :per).and_return(result)
       Organization.should_receive(:search_by_keyword).with('some results').and_return(result)
-      get :search , :q => 'some results'
+      result.should_receive(:filter_by_category).with('1').and_return(result)
+      get :search , :q => 'some results'  , "category" => {"id"=>"1"}
       expect(flash.now[:alert]).to be_nil
       expect(flash[:alert]).to be_nil
     end
