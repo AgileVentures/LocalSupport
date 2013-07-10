@@ -143,7 +143,9 @@ describe Organization do
       Organization.create_from_array(row, true)
     end
   end
-
+  it 'responds to filter by category' do
+      expect(Organization).to respond_to(:filter_by_category)
+  end
   it 'must have search by keyword' do
     expect(Organization).to respond_to(:search_by_keyword)
   end
