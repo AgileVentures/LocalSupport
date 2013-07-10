@@ -65,6 +65,12 @@ Given /the following organizations exist/ do |organizations_table|
   end
 end
 
+Given /the following categories exist/ do |categories_table|
+  categories_table.hashes.each do |cat|
+    Category.create! cat
+  end
+end
+
 Given /^I edit the donation url to be "(.*?)"$/ do |url|
   fill_in('organization_donation_info', :with => url)
 end
