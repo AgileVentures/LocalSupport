@@ -15,6 +15,10 @@ describe Organization do
     @org3 = FactoryGirl.build(:organization, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.age-uk.co.uk/donate')
     Gmaps4rails.should_receive(:geocode)
     @org3.save!
+    @category1 = FactoryGirl.build(:category)
+    @category1.save!
+    @category2 = FactoryGirl.build(:category)
+    @category2.save!
   end
 
   it 'has users' do
@@ -146,6 +150,15 @@ describe Organization do
   it 'responds to filter by category' do
       expect(Organization).to respond_to(:filter_by_category)
   end
+
+  it 'finds all orgs in a particular category' do
+    expect(Organization.filter_by_category("1")).to eq([@org2, @org3])
+  end
+
+  it 'should have and belong to many categories' do
+    expect(@org2.categories).to eq([@category1, @category2])
+  end
+
   it 'must have search by keyword' do
     expect(Organization).to respond_to(:search_by_keyword)
   end

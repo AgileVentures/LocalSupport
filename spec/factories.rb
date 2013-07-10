@@ -3,6 +3,11 @@ FactoryGirl.define do
     name "friendly non profit"
     description "we are really really friendly"
   end
+  factory :category do
+    name "health"
+    charity_commission_id 1
+    charity_commission_name "weird!"
+  end
   factory :user do
     email "jj@example.com"
     password "pppppppp"

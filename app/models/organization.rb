@@ -18,6 +18,10 @@ class Organization < ActiveRecord::Base
   def self.search_by_keyword(keyword)
     self.where("UPPER(description) LIKE ? OR UPPER(name) LIKE ?","%#{keyword.try(:upcase)}%","%#{keyword.try(:upcase)}%")
   end
+
+  def self.filter_by_category(category_id)
+     self.all
+  end
   
   def gmaps4rails_address
     "#{self.address}, #{self.postcode}"
