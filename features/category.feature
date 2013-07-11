@@ -17,6 +17,11 @@ Feature: Categories of charities
       | Health            |
       | Education         |
 
+    And the following categories_organizations exist:
+      | category |  organization |
+      | Animal Welfare | I love dogs |
+      | Animal Welfare | I love cats |
+
   Scenario: Search for organizations in the "Animal Welfare" category
   #Given I have at least 3 organizations in the "Animal Welfare" category
   Given I am on the home page
