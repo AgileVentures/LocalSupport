@@ -20,7 +20,7 @@ class Organization < ActiveRecord::Base
   end
 
   def self.filter_by_category(category_id)
-     Category.find(category_id).organizations
+     category_id.nil? ? Organization.where('id > -1') : Category.find(category_id).organizations
   end
   
   def gmaps4rails_address

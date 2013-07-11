@@ -29,28 +29,61 @@ describe OrganizationsController do
   
   describe "GET search" do
 
-    context 'first two' do
+    context 'setting appropriate view vars for all combinations of input' do
       let(:json) {'my markers'}
+      let(:result) do
+        [mock_organization]
+      end
       before(:each) do
-        result = [mock_organization]
         result.should_receive(:to_gmaps4rails).and_return(json)
-        Organization.should_receive(:search_by_keyword).with('test').and_return(result)
-        result.should_receive(:filter_by_category).with('1').and_return(result)
         result.stub_chain(:page, :per).and_return(result)
       end
-      it "searches all organizations as @organizations" do
+
+      it "sets up appropriate values for view vars: query_term, organizations and json" do
+        category = mock('Category')
+        Organization.should_receive(:search_by_keyword).with('test').and_return(result)
+        result.should_receive(:filter_by_category).with('1').and_return(result)
+        Category.should_receive(:find).with("1").and_return(category)
         get :search, :q => 'test', "category" => {"id"=>"1"}
+        assigns(:query_term).should eq 'test'
+        assigns(:category).should eq category
+      end
+
+      it "handles lack of category gracefully" do
+        Organization.should_receive(:search_by_keyword).with('test').and_return(result)
+        result.should_receive(:filter_by_category).with(nil).and_return(result)
+        get :search, :q => 'test'
+        assigns(:query_term).should eq 'test'
+      end
+
+      it "handles lack of query term gracefully" do
+        Organization.should_receive(:search_by_keyword).with(nil).and_return(result)
+        result.should_receive(:filter_by_category).with(nil).and_return(result)
+        get :search
+        assigns(:query_term).should eq nil
+      end
+
+      it "handles lack of id gracefully" do
+        Organization.should_receive(:search_by_keyword).with('test').and_return(result)
+        result.should_receive(:filter_by_category).with(nil).and_return(result)
+        get :search, :q => 'test', "category" => nil
+        assigns(:query_term).should eq 'test'
+      end
+
+      it "handles empty string id gracefully" do
+        Organization.should_receive(:search_by_keyword).with('test').and_return(result)
+        result.should_receive(:filter_by_category).with(nil).and_return(result)
+        get :search, :q => 'test', "category" =>  {"id"=>""}
+        assigns(:query_term).should eq 'test'
+      end
+
+      after(:each) do
         response.should render_template 'index'
         assigns(:organizations).should eq([mock_organization])
         assigns(:json).should eq(json)
       end
-
-      it "sets up query term on search" do
-        get :search, :q => 'test', "category" => {"id"=>"1"}
-        assigns(:query_term).should eq 'test'
-      end
     end
-    #figure out how to make this less messy
+    # TODO figure out how to make this less messy
     it "assigns to flash.now but not flash when search returns no results" do
       mock_now_flash = double("FlashHash")
       result = []
@@ -58,6 +91,8 @@ describe OrganizationsController do
       result.stub_chain(:page, :per).and_return(result)
       Organization.should_receive(:search_by_keyword).with('no results').and_return(result)
       result.should_receive(:filter_by_category).with('1').and_return(result)
+      category = mock('Category')
+      Category.should_receive(:find).with("1").and_return(category)
       ActionDispatch::Flash::FlashHash.any_instance.should_receive(:now).and_return mock_now_flash
       ActionDispatch::Flash::FlashHash.any_instance.should_not_receive(:[]=)
       mock_now_flash.should_receive(:[]=).with(:alert, "Sorry, it seems we don't quite have what you are looking for.")     
@@ -72,6 +107,8 @@ describe OrganizationsController do
       result.stub_chain(:page, :per).and_return(result)
       Organization.should_receive(:search_by_keyword).with('some results').and_return(result)
       result.should_receive(:filter_by_category).with('1').and_return(result)
+      category = mock('Category')
+      Category.should_receive(:find).with("1").and_return(category)
       get :search , :q => 'some results'  , "category" => {"id"=>"1"}
       expect(flash.now[:alert]).to be_nil
       expect(flash[:alert]).to be_nil

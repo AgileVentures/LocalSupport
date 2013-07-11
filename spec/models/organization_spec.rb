@@ -156,7 +156,15 @@ describe Organization do
   end
 
   it 'finds all orgs in a particular category' do
-    expect(Organization.filter_by_category("1")).to eq([@org2,@org3])
+    expect(Organization.filter_by_category("1")).to include @org2
+    expect(Organization.filter_by_category("1")).to include @org3
+  end
+
+  it 'finds all orgs when category is nil, and returns ActiveRecord::Relation to keep kaminari happy' do
+    expect(Organization.filter_by_category(nil)).to include(@org1)
+    expect(Organization.filter_by_category(nil)).to include(@org2)
+    expect(Organization.filter_by_category(nil)).to include(@org3)
+    expect(Organization.filter_by_category(nil).class).to eq ActiveRecord::Relation
   end
 
   it 'should have and belong to many categories' do
