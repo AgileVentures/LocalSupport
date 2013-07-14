@@ -1,8 +1,15 @@
-Then /^it should send me a "(.*?)" email$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+And /^a "(.*?)" email should be sent to "(.*?)"$/ do |arg1, arg2|
+  debugger
+  @email = ActionMailer::Base.deliveries.last
+  @email.to.should include (arg2)
+  @email.subject.should include(arg1)
+  ActionMailer::Base.deliveries.size.should eq 1
+  ActionMailer::Base.deliveries.clear
 end
 
-When /^it should not send me an email$/ do
-  pending # express the regexp above with the code you wish you had
+And /^I should not receive an email$/ do
+  debugger
+  ActionMailer::Base.deliveries.size.should eq 0
+  ActionMailer::Base.deliveries.clear
 end
 
