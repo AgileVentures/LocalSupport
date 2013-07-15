@@ -24,7 +24,61 @@ describe Organization do
 
 
   end
+  it 'responds to filter by category' do
+    expect(Organization).to respond_to(:filter_by_category)
+  end
 
+  it 'finds all orgs in a particular category' do
+    expect(Organization.filter_by_category("1")).not_to include @org1
+    expect(Organization.filter_by_category("1")).to include @org2
+    expect(Organization.filter_by_category("1")).to include @org3
+  end
+
+  it 'finds all orgs when category is nil, and returns ActiveRecord::Relation to keep kaminari happy' do
+    expect(Organization.filter_by_category(nil)).to include(@org1)
+    expect(Organization.filter_by_category(nil)).to include(@org2)
+    expect(Organization.filter_by_category(nil)).to include(@org3)
+    expect(Organization.filter_by_category(nil).class).to eq ActiveRecord::Relation
+  end
+
+  it 'should have and belong to many categories' do
+    expect(@org2.categories).to include(@category1)
+    expect(@org2.categories).to include(@category2)
+  end
+
+  it 'must have search by keyword' do
+    expect(Organization).to respond_to(:search_by_keyword)
+  end
+
+  it 'find all orgs that have keyword anywhere in their name or description' do
+    expect(Organization.search_by_keyword("elderly")).to eq([@org2, @org3])
+  end
+  it 'searches by keyword and filters by category and has zero results' do
+    result = Organization.search_by_keyword("Harrow").filter_by_category("1")
+    expect(result).not_to include @org1, @org2, @org3
+  end
+
+  it 'searches by keyword and filters by category and has results' do
+    result = Organization.search_by_keyword("Indian").filter_by_category("1")
+    expect(result).to include @org2
+    expect(result).not_to include @org1, @org3
+  end
+
+  it 'searches by keyword when filter by category id is nil' do
+    result = Organization.search_by_keyword("Harrow").filter_by_category(nil)
+    expect(result).to include @org1
+    expect(result).not_to include @org2, @org3
+  end
+
+  it 'filters by category when searches by keyword is nil' do
+    result = Organization.search_by_keyword(nil).filter_by_category("1")
+    expect(result).to include @org2, @org3
+    expect(result).not_to include @org1
+  end
+  it 'returns all orgs when both filter by category and search by keyword are nil args' do
+    result = Organization.search_by_keyword(nil).filter_by_category(nil)
+    expect(result).to include @org1, @org2, @org3
+  end
   it 'has users' do
     expect(@org1).to respond_to(:users)
   end
@@ -151,34 +205,7 @@ describe Organization do
       Organization.create_from_array(row, true)
     end
   end
-  it 'responds to filter by category' do
-      expect(Organization).to respond_to(:filter_by_category)
-  end
 
-  it 'finds all orgs in a particular category' do
-    expect(Organization.filter_by_category("1")).to include @org2
-    expect(Organization.filter_by_category("1")).to include @org3
-  end
-
-  it 'finds all orgs when category is nil, and returns ActiveRecord::Relation to keep kaminari happy' do
-    expect(Organization.filter_by_category(nil)).to include(@org1)
-    expect(Organization.filter_by_category(nil)).to include(@org2)
-    expect(Organization.filter_by_category(nil)).to include(@org3)
-    expect(Organization.filter_by_category(nil).class).to eq ActiveRecord::Relation
-  end
-
-  it 'should have and belong to many categories' do
-    expect(@org2.categories).to include(@category1)
-    expect(@org2.categories).to include(@category2)
-  end
-
-  it 'must have search by keyword' do
-    expect(Organization).to respond_to(:search_by_keyword)
-  end
-
-  it 'find all orgs that have keyword anywhere in their name or description' do
-    expect(Organization.search_by_keyword("elderly")).to eq([@org2, @org3])
-  end
 
   it 'offers information for the gmap4rails info window' do
     expect(@org1.gmaps4rails_infowindow).to eq(@org1.name)
