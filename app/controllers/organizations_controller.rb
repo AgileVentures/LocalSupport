@@ -4,9 +4,14 @@ class OrganizationsController < ApplicationController
   before_filter :authenticate_user!, :except => [:search, :index, :show]
   def search
     # should this be a model method with a model spec around it ...?
+
     @query_term = params[:q]
     @category_id = params["category"]["id"] if !params["category"].nil? && !params["category"]["id"].blank?
-    @category = Category.find(@category_id) unless @category_id.blank?
+    begin
+      @category = Category.find(@category_id) unless @category_id.blank?
+    rescue
+      @category = nil
+    end
     @results = Organization.search_by_keyword(@query_term).filter_by_category(@category_id)
     flash.now[:alert] = "Sorry, it seems we don't quite have what you are looking for." if @results.empty?
     @organizations = @results.page(params[:page]).per(5)

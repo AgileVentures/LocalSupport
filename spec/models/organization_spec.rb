@@ -21,9 +21,8 @@ describe Organization do
     Gmaps4rails.should_receive(:geocode)
     @org3.categories << @category1
     @org3.save!
-
-
   end
+
   it 'responds to filter by category' do
     expect(Organization).to respond_to(:filter_by_category)
   end
@@ -53,6 +52,7 @@ describe Organization do
   it 'find all orgs that have keyword anywhere in their name or description' do
     expect(Organization.search_by_keyword("elderly")).to eq([@org2, @org3])
   end
+
   it 'searches by keyword and filters by category and has zero results' do
     result = Organization.search_by_keyword("Harrow").filter_by_category("1")
     expect(result).not_to include @org1, @org2, @org3
@@ -79,6 +79,12 @@ describe Organization do
     result = Organization.search_by_keyword(nil).filter_by_category(nil)
     expect(result).to include @org1, @org2, @org3
   end
+
+  it 'handles weird input (possibly from infinite scroll system)' do
+    # Couldn't find Category with id=?test=0
+    expect(lambda {Organization.filter_by_category("?test=0")} ).not_to raise_error
+  end
+
   it 'has users' do
     expect(@org1).to respond_to(:users)
   end

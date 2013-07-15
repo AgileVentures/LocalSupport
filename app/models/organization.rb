@@ -20,9 +20,15 @@ class Organization < ActiveRecord::Base
   end
 
   def self.filter_by_category(category_id)
-     category_id.nil? ? Organization.where('id > -1') : Category.find(category_id).organizations
+     return scoped unless category_id.present?
+     begin
+       orgs = Category.find(category_id).organizations.each {|org| org.id}
+     rescue
+       return scoped
+     end
+     where(:id => orgs)
   end
-  
+
   def gmaps4rails_address
     "#{self.address}, #{self.postcode}"
   end
