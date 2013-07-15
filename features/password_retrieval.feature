@@ -9,19 +9,21 @@ Background:
   | email             | password |
   | registered-user@example.com | pppppppp |
 
+@email
 Scenario: Retrieve password for an existing user
   Given I am on the sign in page
   When I follow "Forgot your password?"
   And I fill in "Email" with "registered-user@example.com"
   And I press "Send me reset password instructions"
   Then I should see "You will receive an email with instructions about how to reset your password in a few minutes."
-  And it should send me a "password retrieval" email
+  And I should receive a "Reset password instructions" email
 
+@email
 Scenario: Retrieve password for a non-existent user
   Given I am on the sign in page
   When I follow "Forgot your password?"
   And I fill in "Email" with "non-existent_user@example.com"
   And I press "Send me reset password instructions"
   And I should see "Email not found in our database. Sorry!"
-  And it should not send me an email
+  And I should not receive an email
   #And I should be on the sign up page 

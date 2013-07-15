@@ -9,23 +9,25 @@ Given the following users are registered:
 | email             | password |
 | existent-user1@example.com | pppppppp |
 | existent-user2@example.com | pppppppp |
-
+@email
 Scenario: Sign up for an existing user
   Given I am on the sign up page
   And I sign up as "existent-user1@example.com" with password "pppppppp" and password confirmation "pppppppp"
   Then I should see "Email has already been taken"
   And I should not receive an email
   
+@email
 Scenario: Sign up for an non-existent user with non-matching password confirmation
   Given I am on the sign up page
   And I sign up as "existent-user2@example.com" with password "pppppppp" and password confirmation "aaaaaaaa"
   Then I should see "Password doesn't match confirmation"
   And I should not receive an email
   
+@email
 Scenario: Sign up for a non-existent user
   Given I am on the sign up page
   And I sign up as "non-existent-user@example.com" with password "pppppppp" and password confirmation "pppppppp"
   Then I should be on the home page
   And I should see "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
-  And a "Confirmation instructions" email should be sent to "non-existent-user@example.com"
+  And I should receive a "Confirmation instructions" email
 
