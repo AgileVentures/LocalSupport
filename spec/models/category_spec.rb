@@ -35,4 +35,14 @@ describe 'Category' do
     expect(@category1.organizations).to include(@org3)
   end
 
+  it 'should have a seed method' do
+    expect(Category).to respond_to :seed
+  end
+
+  it 'must generate categories' do
+    num_of_categories = 15
+    expect(lambda {
+      Category.seed
+    }).to change(Category, :count).by(num_of_categories)
+  end
 end
