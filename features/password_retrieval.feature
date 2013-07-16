@@ -8,6 +8,7 @@ Background:
   Given the following users are registered:
   | email             | password |
   | registered-user@example.com | pppppppp |
+And the email queue is clear
 
 @email
 Scenario: Retrieve password for an existing user

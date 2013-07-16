@@ -9,6 +9,7 @@ Given the following users are registered:
 | email             | password |
 | existent-user1@example.com | pppppppp |
 | existent-user2@example.com | pppppppp |
+And the email queue is clear
 @email
 Scenario: Sign up for an existing user
   Given I am on the sign up page
