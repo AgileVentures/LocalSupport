@@ -71,6 +71,15 @@ class Organization < ActiveRecord::Base
 
     org = Organization.new
     org.name = row[@@column_mappings[:name]].to_s.humanized_all_first_capitals
+    #POSSIBLE APPPROACH BELOW ... OR COULD PUT ALL NEW STUFF IN SEPARATE METHOD CALLED UPDATE_CATEGORIES
+    # grab all classifications
+    if Organization.find_by_name(org.name)
+      # check for classifications and add as necessary
+      # add them to existing organization
+      return nil
+    end
+    # add them to new organization
+
     org.description = self.humanize_description(row[@@column_mappings[:description]])
     org.address = address[:address].humanized_all_first_capitals
     org.postcode = address[:postcode]
