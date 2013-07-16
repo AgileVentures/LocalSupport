@@ -20,13 +20,12 @@ class Organization < ActiveRecord::Base
   end
 
   def self.filter_by_category(category_id)
-     return scoped unless category_id.present?
-     begin
-       orgs = Category.find(category_id).organizations.each {|org| org.id}
-     rescue
-       return scoped
-     end
-     where(:id => orgs)
+    return scoped unless category_id.present?
+    # could use this but doesn't play well with search by keyqord since table names are remapped
+    #Organization.includes(:categories).where("categories_organizations.category_id" =>  category_id)
+    orgs = Category.find_by_id(category_id)
+    orgs = orgs.organizations.each {|org| org.id} if orgs
+    where(:id => orgs)
   end
 
   def gmaps4rails_address

@@ -7,12 +7,10 @@ class OrganizationsController < ApplicationController
 
     @query_term = params[:q]
     @category_id = params["category"]["id"] if !params["category"].nil? && !params["category"]["id"].blank?
-    begin
-      @category = Category.find(@category_id) unless @category_id.blank?
-    rescue
-      @category = nil
-    end
+    @category = Category.find_by_id(@category_id) unless @category_id.blank?
+
     @results = Organization.search_by_keyword(@query_term).filter_by_category(@category_id)
+
     flash.now[:alert] = "Sorry, it seems we don't quite have what you are looking for." if @results.empty?
     @organizations = @results.page(params[:page]).per(5)
     @json = gmap4rails_with_popup_partial(@results,'popup')

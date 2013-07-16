@@ -43,7 +43,7 @@ describe OrganizationsController do
         category = mock('Category')
         Organization.should_receive(:search_by_keyword).with('test').and_return(result)
         result.should_receive(:filter_by_category).with('1').and_return(result)
-        Category.should_receive(:find).with("1").and_return(category)
+        Category.should_receive(:find_by_id).with("1").and_return(category)
         get :search, :q => 'test', "category" => {"id"=>"1"}
         assigns(:query_term).should eq 'test'
         assigns(:category).should eq category
@@ -92,7 +92,7 @@ describe OrganizationsController do
       Organization.should_receive(:search_by_keyword).with('no results').and_return(result)
       result.should_receive(:filter_by_category).with('1').and_return(result)
       category = mock('Category')
-      Category.should_receive(:find).with("1").and_return(category)
+      Category.should_receive(:find_by_id).with("1").and_return(category)
       ActionDispatch::Flash::FlashHash.any_instance.should_receive(:now).and_return mock_now_flash
       ActionDispatch::Flash::FlashHash.any_instance.should_not_receive(:[]=)
       mock_now_flash.should_receive(:[]=).with(:alert, "Sorry, it seems we don't quite have what you are looking for.")     
@@ -108,7 +108,7 @@ describe OrganizationsController do
       Organization.should_receive(:search_by_keyword).with('some results').and_return(result)
       result.should_receive(:filter_by_category).with('1').and_return(result)
       category = mock('Category')
-      Category.should_receive(:find).with("1").and_return(category)
+      Category.should_receive(:find_by_id).with("1").and_return(category)
       get :search , :q => 'some results'  , "category" => {"id"=>"1"}
       expect(flash.now[:alert]).to be_nil
       expect(flash[:alert]).to be_nil

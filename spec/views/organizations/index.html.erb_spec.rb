@@ -25,6 +25,7 @@ describe "organizations/index.html.erb", :js => true do
     organizations.stub!(:current_page).and_return(1)
     organizations.stub!(:total_pages).and_return(1)
     organizations.stub!(:limit_value).and_return(1)
+    Category.stub_chain(:all,:collect).and_return([['Animal Welfare','1'],['Education','2']])
     render
   end
 
@@ -33,7 +34,9 @@ describe "organizations/index.html.erb", :js => true do
     rendered.should have_selector "form input[type='submit']"
     rendered.should have_selector "form input[value='search']"
     rendered.should have_selector "form select[name='category[id]']"
-    pending ("need to check that all categories in DB are reflected in form")
+    rendered.should have_selector "form select[name='category[id]'] option[value='']"
+    rendered.should have_selector "form select[name='category[id]'] option[value='1']"
+    rendered.should have_selector "form select[name='category[id]'] option[value='2']"
   end
 
   it "render organization names with hyperlinks" do

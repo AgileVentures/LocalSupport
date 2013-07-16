@@ -35,7 +35,4 @@ describe 'Category' do
     expect(@category1.organizations).to include(@org3)
   end
 
-  it 'should provide a safe way of calling find the returns nil if category id is nonsense or does not exist ' do
-    pending
-  end
 end
