@@ -45,4 +45,12 @@ describe 'Category' do
       Category.seed
     }).to change(Category, :count).by(num_of_categories)
   end
+
+  it 'must update each organization' do
+      now = Time.now
+      Category.seed
+      Organization.all.each do |org|
+        expect(org.updated_at).to be > now
+      end
+  end
 end
