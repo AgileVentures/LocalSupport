@@ -31,3 +31,10 @@ Feature: Categories of charities
   And I should not see "I hate animals"
 
     # TODO must ensure this also works with searching for text so we can search within a category
+  Scenario: Search for dogs in the Animal Welfare category
+    Given I am on the home page
+    And I select the "Animal Welfare" category
+    And I search for "dogs"
+    Then I should see "I love dogs"
+    And I should not see "I love cats"
+    And I should not see "I hate animals"

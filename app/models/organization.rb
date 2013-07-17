@@ -23,8 +23,8 @@ class Organization < ActiveRecord::Base
     return scoped unless category_id.present?
     # could use this but doesn't play well with search by keyqord since table names are remapped
     #Organization.includes(:categories).where("categories_organizations.category_id" =>  category_id)
-    orgs = Category.find_by_id(category_id)
-    orgs = orgs.organizations.each {|org| org.id} if orgs
+    category = Category.find_by_id(category_id)
+    orgs = category.organizations.each {|org| org.id} if category
     where(:id => orgs)
   end
 
