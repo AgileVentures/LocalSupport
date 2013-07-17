@@ -40,10 +40,17 @@ describe 'Category' do
   end
 
   it 'must generate categories' do
-    num_of_categories = 15
+    num_of_categories = 34
     expect(lambda {
-      Category.seed
+      Category.seed 'db/charity_classifications.csv'
     }).to change(Category, :count).by(num_of_categories)
+    Category.all.each do |cat|
+      expect(cat.charity_commission_id).not_to be_nil
+      expect(cat.charity_commission_name).not_to be_nil
+      expect(cat.name).not_to be_nil
+      expect(cat.charity_commission_name).to eq cat.charity_commission_name.strip
+      expect(cat.name).to eq cat.name.strip
+    end
   end
 
 end

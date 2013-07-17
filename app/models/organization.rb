@@ -64,6 +64,15 @@ class Organization < ActiveRecord::Base
       date_removed: 'date removed'
   }
 
+  #def self.import_categories_from_array
+
+    #org = Organization.find_by_name(row[@@column_mappings[:name]].to_s.humanized_all_first_capitals)
+    #if org
+     # # sort out the categories
+    #end
+
+  #end
+
   def self.create_from_array(row, validate)
     check_columns_in(row)
     return nil if row[@@column_mappings[:date_removed]]
