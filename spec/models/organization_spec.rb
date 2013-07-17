@@ -5,10 +5,16 @@ describe Organization do
   before do
     FactoryGirl.factories.clear
     FactoryGirl.find_definitions
-    @category1 = FactoryGirl.build(:category)
+    @category1 = FactoryGirl.build(:category, :charity_commission_id => 207)
     @category1.save!
-    @category2 = FactoryGirl.build(:category)
+    @category2 = FactoryGirl.build(:category, :charity_commission_id => 305)
     @category2.save!
+    @category3 = FactoryGirl.build(:category, :charity_commission_id => 108)
+    @category3.save!
+    @category4 = FactoryGirl.build(:category, :charity_commission_id => 302)
+    @category4.save!
+    @category5 = FactoryGirl.build(:category, :charity_commission_id => 306)
+    @category5.save!
     @org1 = FactoryGirl.build(:organization, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate')
     Gmaps4rails.should_receive(:geocode)
     @org1.save!
@@ -216,6 +222,53 @@ describe Organization do
     def create_organization(fields)
       row = CSV::Row.new(@headers, fields.flatten)
       Organization.create_from_array(row, true)
+    end
+
+    context "importing category relations" do
+      let(:fields) do
+        CSV.parse('HARROW BEREAVEMENT COUNSELLING,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
+      end
+      let(:row) do
+        CSV::Row.new(@headers, fields.flatten)
+      end
+
+      it "allows us to import categories" do
+        org = Organization.import_categories_from_array(row)
+        expect(org.categories.length).to eq 5
+        expect(org.categories).to include(Category.find_by_charity_commission_id(207))
+        expect(org.categories).to include(Category.find_by_charity_commission_id(305))
+        expect(org.categories).to include(Category.find_by_charity_commission_id(108))
+        expect(org.categories).to include(Category.find_by_charity_commission_id(302))
+        expect(org.categories).to include(Category.find_by_charity_commission_id(306))
+      end
+
+      it "should import categories when matching org is found" do
+        # TODO refactor to use loop
+        Organization.should_receive(:check_columns_in).with(row)
+        Organization.should_receive(:find_by_name).with('Harrow Bereavement Counselling').and_return @org1
+        Category.should_receive(:find_by_charity_commission_id).with(207).and_return(@cat1)
+        Category.should_receive(:find_by_charity_commission_id).with(305).and_return(@cat2)
+        Category.should_receive(:find_by_charity_commission_id).with(108).and_return(@cat3)
+        Category.should_receive(:find_by_charity_commission_id).with(302).and_return(@cat1)
+        Category.should_receive(:find_by_charity_commission_id).with(306).and_return(@cat1)
+        array = mock('Array')
+        array.should_receive(:<<).with(@cat1)
+        array.should_receive(:<<).with(@cat2)
+        array.should_receive(:<<).with(@cat3)
+        array.should_receive(:<<).with(@cat1)
+        array.should_receive(:<<).with(@cat1)
+        @org1.should_receive(:categories).exactly(5).times.and_return(array)
+        org = Organization.import_categories_from_array(row)
+        expect(org).not_to be_nil
+      end
+
+      it "should not import categories when no matching organization" do
+
+        Organization.should_receive(:check_columns_in).with(row)
+        Organization.should_receive(:find_by_name).with('Harrow Bereavement Counselling').and_return nil
+        org = Organization.import_categories_from_array(row)
+        expect(org).to be_nil
+      end
     end
   end
 

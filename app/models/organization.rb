@@ -61,17 +61,23 @@ class Organization < ActiveRecord::Base
       description: 'Activities',
       website: 'website',
       telephone: 'Contact Telephone',
-      date_removed: 'date removed'
+      date_removed: 'date removed',
+      cc_id: 'Charity Classification'
   }
 
-  #def self.import_categories_from_array
-
-    #org = Organization.find_by_name(row[@@column_mappings[:name]].to_s.humanized_all_first_capitals)
-    #if org
-     # # sort out the categories
-    #end
-
-  #end
+  def self.import_categories_from_array(row)
+    check_columns_in(row)
+   # return nil if row[@@column_mappings[:date_removed]]
+    org = Organization.find_by_name(row[@@column_mappings[:name]].to_s.humanized_all_first_capitals)
+    if org
+      #sort out the categories
+      row[@@column_mappings[:cc_id]].split(',').each do |id|
+        cat = Category.find_by_charity_commission_id(id.to_i)
+        org.categories << cat
+      end
+    end
+    org
+  end
 
   def self.create_from_array(row, validate)
     check_columns_in(row)
