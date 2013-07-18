@@ -14,6 +14,7 @@ class OrganizationsController < ApplicationController
     flash.now[:alert] = "Sorry, it seems we don't quite have what you are looking for." if @results.empty?
     @organizations = @results.page(params[:page]).per(5)
     @json = gmap4rails_with_popup_partial(@results,'popup')
+    @category_options = Category.where('charity_commission_id < 199').order('name ASC').collect {|c| [ c.name, c.id ] }
     respond_to do |format|
       format.js   { render :template =>'organizations/index'}
       format.html { render :template =>'organizations/index'}
@@ -28,6 +29,7 @@ class OrganizationsController < ApplicationController
     @results = Organization.order("updated_at DESC")
     @organizations = @results.page(params[:page]).per(5)
     @json = gmap4rails_with_popup_partial(@results,'popup')
+    @category_options = Category.where('charity_commission_id < 199').order('name ASC').collect {|c| [ c.name, c.id ] }
     respond_to do |format|
       format.js
       format.html # index.html.erb

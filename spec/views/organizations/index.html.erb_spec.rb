@@ -25,7 +25,7 @@ describe "organizations/index.html.erb", :js => true do
     organizations.stub!(:current_page).and_return(1)
     organizations.stub!(:total_pages).and_return(1)
     organizations.stub!(:limit_value).and_return(1)
-    Category.stub_chain(:all,:collect).and_return([['Animal Welfare','1'],['Education','2']])
+    assign(:category_options, [['Animal Welfare','1'],['Education','2']])
     render
   end
 

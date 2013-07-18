@@ -231,9 +231,21 @@ describe Organization do
       let(:row) do
         CSV::Row.new(@headers, fields.flatten)
       end
-      it 'must be able to generate multiple org category relations from text file' do
-        attempted_number_to_import = 1
-        number_cat_org_relations_generated = 5
+      let(:fields_cat_missing) do
+        CSV.parse('HARROW BEREAVEMENT COUNSELLING,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,,false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
+      end
+      let(:row_cat_missing) do
+        CSV::Row.new(@headers, fields_cat_missing.flatten)
+      end
+      it 'must be able to avoid org category relations from text file when org does not exist' do
+        @org4 = FactoryGirl.build(:organization, :name => 'Fellowship For Management In Food Distribution', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate')
+        Gmaps4rails.should_receive(:geocode)
+        @org4.save!
+        [102,206,302].each do |id|
+          FactoryGirl.build(:category, :charity_commission_id => id).save!
+        end
+        attempted_number_to_import = 2
+        number_cat_org_relations_generated = 3
         expect(lambda {
           Organization.import_category_mappings 'db/data.csv', attempted_number_to_import
         }).to change(CategoryOrganization, :count).by(number_cat_org_relations_generated)
@@ -266,6 +278,13 @@ describe Organization do
         Organization.should_receive(:find_by_name).with('Harrow Bereavement Counselling').and_return nil
         org = Organization.import_categories_from_array(row)
         expect(org).to be_nil
+      end
+
+      it "should not import categories when none are listed" do
+        Organization.should_receive(:check_columns_in).with(row_cat_missing)
+        Organization.should_receive(:find_by_name).with('Harrow Bereavement Counselling').and_return @org1
+        org = Organization.import_categories_from_array(row_cat_missing)
+        expect(org).not_to be_nil
       end
     end
   end

@@ -47,6 +47,7 @@ describe OrganizationsController do
         get :search, :q => 'test', "category" => {"id"=>"1"}
         assigns(:query_term).should eq 'test'
         assigns(:category).should eq category
+        assigns(:category_options).should_not be_nil
       end
 
       it "handles lack of category gracefully" do

@@ -67,17 +67,19 @@ class Organization < ActiveRecord::Base
 
   def self.import_categories_from_array(row)
     check_columns_in(row)
-   # return nil if row[@@column_mappings[:date_removed]]
     org = Organization.find_by_name(row[@@column_mappings[:name]].to_s.humanized_all_first_capitals)
     if org
-      #sort out the categories
-      row[@@column_mappings[:cc_id]].split(',').each do |id|
-        cat = Category.find_by_charity_commission_id(id.to_i)
-        org.categories << cat
+      category_ids = row[@@column_mappings[:cc_id]]
+      if category_ids
+        category_ids.split(',').each do |id|
+          cat = Category.find_by_charity_commission_id(id.to_i)
+          org.categories << cat
+        end
       end
     end
     org
   end
+
   def self.import_category_mappings(filename, limit)
     csv_text = File.open(filename, 'r:ISO-8859-1')
     count = 0

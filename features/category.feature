@@ -12,10 +12,10 @@ Feature: Categories of charities
       | I hate animals    | hates birds and beasts   | 84 pinner road | HA1 4HF  | http://c.com/ |
 
     And the following categories exist:
-      | name              |
-      | Animal Welfare    |
-      | Health            |
-      | Education         |
+      | name              | charity_commission_id |
+      | Animal Welfare    | 101                   |
+      | Health            | 102                   |
+      | Education         | 103                   |
 
     And the following categories_organizations exist:
       | category |  organization |
