@@ -78,7 +78,21 @@ class Organization < ActiveRecord::Base
     end
     org
   end
-
+  def self.import_category_mappings(filename, limit)
+    csv_text = File.open(filename, 'r:ISO-8859-1')
+    count = 0
+    CSV.parse(csv_text, :headers => true).each do |row|
+      if count >= limit
+        break
+      end
+      count += 1
+      begin
+        self.import_categories_from_array(row)
+      rescue CSV::MalformedCSVError => e
+        logger.error(e.message)
+      end
+    end
+  end
   def self.create_from_array(row, validate)
     check_columns_in(row)
     return nil if row[@@column_mappings[:date_removed]]

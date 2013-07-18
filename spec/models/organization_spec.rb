@@ -231,6 +231,13 @@ describe Organization do
       let(:row) do
         CSV::Row.new(@headers, fields.flatten)
       end
+      it 'must be able to generate multiple org category relations from text file' do
+        attempted_number_to_import = 1
+        number_cat_org_relations_generated = 5
+        expect(lambda {
+          Organization.import_category_mappings 'db/data.csv', attempted_number_to_import
+        }).to change(CategoryOrganization, :count).by(number_cat_org_relations_generated)
+      end
 
       it "allows us to import categories" do
         org = Organization.import_categories_from_array(row)
