@@ -235,35 +235,26 @@ describe Organization do
       it "allows us to import categories" do
         org = Organization.import_categories_from_array(row)
         expect(org.categories.length).to eq 5
-        expect(org.categories).to include(Category.find_by_charity_commission_id(207))
-        expect(org.categories).to include(Category.find_by_charity_commission_id(305))
-        expect(org.categories).to include(Category.find_by_charity_commission_id(108))
-        expect(org.categories).to include(Category.find_by_charity_commission_id(302))
-        expect(org.categories).to include(Category.find_by_charity_commission_id(306))
+        [207,305,108,302,306].each do |id|
+          expect(org.categories).to include(Category.find_by_charity_commission_id(id))
+        end
       end
 
       it "should import categories when matching org is found" do
-        # TODO refactor to use loop
         Organization.should_receive(:check_columns_in).with(row)
         Organization.should_receive(:find_by_name).with('Harrow Bereavement Counselling').and_return @org1
-        Category.should_receive(:find_by_charity_commission_id).with(207).and_return(@cat1)
-        Category.should_receive(:find_by_charity_commission_id).with(305).and_return(@cat2)
-        Category.should_receive(:find_by_charity_commission_id).with(108).and_return(@cat3)
-        Category.should_receive(:find_by_charity_commission_id).with(302).and_return(@cat1)
-        Category.should_receive(:find_by_charity_commission_id).with(306).and_return(@cat1)
         array = mock('Array')
-        array.should_receive(:<<).with(@cat1)
-        array.should_receive(:<<).with(@cat2)
-        array.should_receive(:<<).with(@cat3)
-        array.should_receive(:<<).with(@cat1)
-        array.should_receive(:<<).with(@cat1)
+        [{:cc_id => 207, :cat => @cat1}, {:cc_id => 305, :cat => @cat2}, {:cc_id => 108, :cat => @cat3},
+         {:cc_id => 302, :cat => @cat4}, {:cc_id => 306, :cat => @cat5}]. each do |cat_hash|
+          Category.should_receive(:find_by_charity_commission_id).with(cat_hash[:cc_id]).and_return(cat_hash[:cat])
+          array.should_receive(:<<).with(cat_hash[:cat])
+        end
         @org1.should_receive(:categories).exactly(5).times.and_return(array)
         org = Organization.import_categories_from_array(row)
         expect(org).not_to be_nil
       end
 
       it "should not import categories when no matching organization" do
-
         Organization.should_receive(:check_columns_in).with(row)
         Organization.should_receive(:find_by_name).with('Harrow Bereavement Counselling').and_return nil
         org = Organization.import_categories_from_array(row)
