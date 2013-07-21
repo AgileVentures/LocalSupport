@@ -49,12 +49,14 @@ describe User do
     it 'can not edit when associated with no org and attempting to access non-existent org' do
       subject.can_edit?(nil).should be_false
     end
-
-    it 'does not allow mass assignment of admin for security' do
-      subject.update_attributes(:admin=> true)
-      subject.save!
-      subject.admin.should be_false
-    end
-
+   
   end
+
+  it 'does not allow mass assignment of admin for security' do
+    user = create(:user, admin: false)
+    user.update_attributes(:admin=> true)
+    user.save!
+    user.admin.should be_false
+  end
+
 end
