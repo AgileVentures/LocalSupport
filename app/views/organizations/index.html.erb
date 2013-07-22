@@ -12,14 +12,12 @@
     <div class="table table-bordered">
       <table>
         <div id="organizations">
-          <noscript>
             <% @organizations.each do |organization| %>
                 <tr>
                   <td><u><%= link_to organization.name, organization %></u><br/>
                     <%= smart_truncate(organization.description) %></td>
                 </tr>
             <% end %>
-          </noscript>
         </div>
       </table>
     </div>
@@ -36,4 +34,3 @@
 <% end %>
 
 
-<script type="text/javascript"><%= render :partial => 'scrolling.js.erb' %></script>
