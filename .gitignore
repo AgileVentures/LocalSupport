@@ -1,3 +1,4 @@
+Vagrantfile
 *.rbc
 *.sassc
 .sass-cache
