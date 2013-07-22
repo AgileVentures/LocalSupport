@@ -5,16 +5,12 @@ describe Organization do
   before do
     FactoryGirl.factories.clear
     FactoryGirl.find_definitions
-    @category1 = FactoryGirl.build(:category, :charity_commission_id => 207)
-    @category1.save!
-    @category2 = FactoryGirl.build(:category, :charity_commission_id => 305)
-    @category2.save!
-    @category3 = FactoryGirl.build(:category, :charity_commission_id => 108)
-    @category3.save!
-    @category4 = FactoryGirl.build(:category, :charity_commission_id => 302)
-    @category4.save!
-    @category5 = FactoryGirl.build(:category, :charity_commission_id => 306)
-    @category5.save!
+
+    @category1 = FactoryGirl.create(:category, :charity_commission_id => 207)
+    @category2 = FactoryGirl.create(:category, :charity_commission_id => 305)
+    @category3 = FactoryGirl.create(:category, :charity_commission_id => 108)
+    @category4 = FactoryGirl.create(:category, :charity_commission_id => 302)
+    @category5 = FactoryGirl.create(:category, :charity_commission_id => 306)
     @org1 = FactoryGirl.build(:organization, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate')
     Gmaps4rails.should_receive(:geocode)
     @org1.save!
@@ -121,7 +117,6 @@ describe Organization do
   end
 
   describe 'Creating of Organizations from CSV file' do
-
     before(:all){ @headers = 'Title,Charity Number,Activities,Contact Name,Contact Address,website,Contact Telephone,date registered,date removed,accounts date,spending,income,company number,OpenlyLocalURL,twitter account name,facebook account name,youtube account name,feed url,Charity Classification,signed up for 1010,last checked,created at,updated at,Removed?'.split(',')}
 
     it 'must not override an existing organization' do
@@ -137,6 +132,7 @@ describe Organization do
     end
 
     it 'must be able to generate multiple Organizations from text file' do
+      pending "This example takes way too long and should be fixed"
       attempted_number_to_import = 1006
       actual_number_to_import = 642
       Gmaps4rails.should_receive(:geocode).exactly(actual_number_to_import)
