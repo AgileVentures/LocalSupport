@@ -21,16 +21,9 @@
             <% end %>
           </noscript>
         </div>
-        <div id="loading" style="text-align: center;display: none;">
-          <%= image_tag "loading.gif", :width => '50px' %>
-        </div>
-        <div id="floating_div" style="display: none;">
-          <div style="opacity: 1;">No more organizations</div>
-        </div>
       </table>
     </div>
 </div>
-<noscript><center><%= paginate @organizations %></center></noscript>
 <br/>
 <div style="width:50%;float:left">
   <%= link_to_if(current_user.try(:admin?), 'New Organization', new_organization_path){} %>
@@ -42,5 +35,5 @@
                                 "center_longitude" => -0.3370, "zoom" => 12}, "markers" => {"data" => @json}) %>
 <% end %>
 
-<script type="text/javascript"><%= render :partial => 'scrolling.js.erb' %></script>
 
+<script type="text/javascript"><%= render :partial => 'scrolling.js.erb' %></script>

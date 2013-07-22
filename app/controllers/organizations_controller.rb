@@ -26,9 +26,8 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
-    @results = Organization.order("updated_at DESC")
-    @organizations = @results.page(params[:page]).per(5)
-    @json = gmap4rails_with_popup_partial(@results,'popup')
+    @organizations = Organization.order("updated_at DESC")
+    @json = gmap4rails_with_popup_partial(@organizations,'popup')
     @category_options = Category.where('charity_commission_id < 199').order('name ASC').collect {|c| [ c.name, c.id ] }
     respond_to do |format|
       format.js
