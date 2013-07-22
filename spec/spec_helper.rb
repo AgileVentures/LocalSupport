@@ -36,6 +36,8 @@ RSpec.configure do |config|
   #other testing framework?  See:
   #https://github.com/rspec/rspec-rails/issues/661
   config.before(:each) { ActionMailer::Base.deliveries.clear }
+  
+  config.include FactoryGirl::Syntax::Methods
 
 end
 
