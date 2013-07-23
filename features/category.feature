@@ -26,7 +26,7 @@ Feature: Categories of charities
   #Given I have at least 3 organizations in the "Animal Welfare" category
   Given I am on the home page
   And I select the "Animal Welfare" category
-  And I press "Search"
+  And I press "Submit"
   Then I should see "I love dogs"
   And I should not see "I hate animals"
 

@@ -26,7 +26,7 @@ end
 
 When /^I search for "(.*?)"$/ do |text|
   fill_in 'q', with: text
-  click_button 'Search'
+  click_button 'Submit'
 end
 
 Given /^I fill in the new charity page validly$/ do
