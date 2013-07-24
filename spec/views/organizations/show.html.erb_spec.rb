@@ -28,7 +28,7 @@ describe "organizations/show.html.erb" do
     end
 
     it "renders donation info" do
-      rendered.should have_link "Donate to #{organization.name} now!", :href => organization.donation_info
+      rendered.should have_selector 'a', :content => "Donate to #{organization.name} now!", :href => organization.donation_info, :target => '_blank'
     end
   end
 
@@ -38,7 +38,7 @@ describe "organizations/show.html.erb" do
     end
 
     it "renders website link" do
-      rendered.should have_link "#{organization.website}", :href => organization.website
+      rendered.should have_selector 'a', :content => "#{organization.website}", :href => organization.website, :target => '_blank'
     end
   end
 
