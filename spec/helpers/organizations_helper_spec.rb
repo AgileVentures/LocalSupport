@@ -37,7 +37,7 @@ describe OrganizationsHelper do
        @organization = assign :organization,  stub_model(Organization, :name => 'Friendly charity', :donation_info => 'http://www.friendly-charity.co.uk/donate')
       end 
       it "should return the donation_info url" do
-        donation_info_msg.should == link_to("Donate to #{@organization.name} now!", @organization.donation_info)
+        donation_info_msg.should == link_to("Donate to #{@organization.name} now!", @organization.donation_info, {:target => '_blank'})
       end
     end
 
