@@ -12,11 +12,19 @@ Background: organizations have been added to database
   | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 |
 
   Given the following users are registered:
-  | email             | password | admin | organization | confirmed_at |
+  | email                       | password | admin | organization | confirmed_at |
   | registered_user@example.com | pppppppp | false | Friendly     | 2007-01-01  10:00:00 |
   | registered_user2@example.com| pppppppp | false |              | 2007-01-01  10:00:00 |
 
 Scenario: Successfully change the donation url for a charity
+  # TODO Refactor towards something like this
+  #Given I am signed in as a charity admin for "Friendly"
+  #And I update the "Friendly" donation url to be "http://www.friendly.com/donate"
+  #And the donation_info URL for "Friendly" should refer to "http://www.friendly.com/donate"
+
+  # TODO or ultimately even something like this
+  # Charity Admins can edit their charity's donation info url
+
   Given I am on the sign in page
   And I sign in as "registered_user@example.com" with password "pppppppp"
   Given I am on the edit charity page for "Friendly"

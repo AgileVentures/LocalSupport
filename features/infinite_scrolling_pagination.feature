@@ -10,7 +10,7 @@ Scenario: Only 4 organizations are visible on the first page
   And I am on the home page
   Then I should see a list of 4 organizations on the index page
   When I scroll down the organizations list
-  Then I should again see a list of 4 organizations on the index page
+  Then I should see a list of 4 organizations on the index page
 
 @javascript
 Scenario: Scrolling down gives more scenarios
@@ -27,6 +27,6 @@ Scenario: Searching gives results in a paginated form
   Given I have created 25 organizations
   And I am on the home page
   When I search for "e"
-  Then I should see a list of 5 organizations on the search page with query "public"
+  Then I should see a list of 5 organizations on the search page with query "e"
   When I scroll down the organizations list
-  Then I should see a list of 10 organizations on the search page with query "public"
+  Then I should see a list of 10 organizations on the search page with query "e"

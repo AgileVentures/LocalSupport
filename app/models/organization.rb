@@ -3,7 +3,7 @@ require 'csv'
 class Organization < ActiveRecord::Base
   acts_as_gmappable :check_process => false
   has_many :users
-
+  has_and_belongs_to_many :categories
   # Setup accessible (or protected) attributes for your model
   # prevents mass assignment on other fields not in this list
   attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info
@@ -18,7 +18,16 @@ class Organization < ActiveRecord::Base
   def self.search_by_keyword(keyword)
     self.where("UPPER(description) LIKE ? OR UPPER(name) LIKE ?","%#{keyword.try(:upcase)}%","%#{keyword.try(:upcase)}%")
   end
-  
+
+  def self.filter_by_category(category_id)
+    return scoped unless category_id.present?
+    # could use this but doesn't play well with search by keyqord since table names are remapped
+    #Organization.includes(:categories).where("categories_organizations.category_id" =>  category_id)
+    category = Category.find_by_id(category_id)
+    orgs = category.organizations.each {|org| org.id} if category
+    where(:id => orgs)
+  end
+
   def gmaps4rails_address
     "#{self.address}, #{self.postcode}"
   end
@@ -52,9 +61,40 @@ class Organization < ActiveRecord::Base
       description: 'Activities',
       website: 'website',
       telephone: 'Contact Telephone',
-      date_removed: 'date removed'
+      date_removed: 'date removed',
+      cc_id: 'Charity Classification'
   }
 
+  def self.import_categories_from_array(row)
+    check_columns_in(row)
+    org = Organization.find_by_name(row[@@column_mappings[:name]].to_s.humanized_all_first_capitals)
+    if org
+      category_ids = row[@@column_mappings[:cc_id]]
+      if category_ids
+        category_ids.split(',').each do |id|
+          cat = Category.find_by_charity_commission_id(id.to_i)
+          org.categories << cat
+        end
+      end
+    end
+    org
+  end
+
+  def self.import_category_mappings(filename, limit)
+    csv_text = File.open(filename, 'r:ISO-8859-1')
+    count = 0
+    CSV.parse(csv_text, :headers => true).each do |row|
+      if count >= limit
+        break
+      end
+      count += 1
+      begin
+        self.import_categories_from_array(row)
+      rescue CSV::MalformedCSVError => e
+        logger.error(e.message)
+      end
+    end
+  end
   def self.create_from_array(row, validate)
     check_columns_in(row)
     return nil if row[@@column_mappings[:date_removed]]
@@ -62,6 +102,15 @@ class Organization < ActiveRecord::Base
 
     org = Organization.new
     org.name = row[@@column_mappings[:name]].to_s.humanized_all_first_capitals
+    #POSSIBLE APPPROACH BELOW ... OR COULD PUT ALL NEW STUFF IN SEPARATE METHOD CALLED UPDATE_CATEGORIES
+    # grab all classifications
+    if Organization.find_by_name(org.name)
+      # check for classifications and add as necessary
+      # add them to existing organization
+      return nil
+    end
+    # add them to new organization
+
     org.description = self.humanize_description(row[@@column_mappings[:description]])
     org.address = address[:address].humanized_all_first_capitals
     org.postcode = address[:postcode]

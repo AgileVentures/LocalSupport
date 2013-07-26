@@ -3,23 +3,29 @@ require 'spec_helper'
 describe "organizations/index.html.erb", :js => true do
 
   let(:org1) do
-    stub_model Organization,:name => 'test', :address => "12 pinner rd", :postcode => "HA1 4HP",:telephone => "1234", :website => 'http://a.com', :description => 'I am test organization hahahahahhahaha'
+    stub_model Organization,:name => 'test', :address => "12 pinner rd", :postcode => "HA1 4HP",:telephone => "1234", :website => 'http://a.com', :description => 'I am test organization hahahahahhahaha', :lat => 1, :lng => -1
   end
 
   let(:org2) do
-    stub_model Organization,:name => 'test2', :address => "12 oxford rd", :postcode => "HA1 4HX", :telephone => "4534", :website => 'http://b.com', :description => 'I am '
+    stub_model Organization,:name => 'test2', :address => "12 oxford rd", :postcode => "HA1 4HX", :telephone => "4534", :website => 'http://b.com', :description => 'I am ', :lat => 1, :lng => -1
   end
 
   let(:organizations) do
     [org1,org2]
   end
 
+  let(:results) do
+    [org1,org2]
+  end
+
   before(:each) do
     assign(:organizations, organizations)
+    assign(:results, results)
     assign(:query_term,'search')
     organizations.stub!(:current_page).and_return(1)
     organizations.stub!(:total_pages).and_return(1)
     organizations.stub!(:limit_value).and_return(1)
+    assign(:category_options, [['Animal Welfare','1'],['Education','2']])
     render
   end
 
@@ -27,6 +33,13 @@ describe "organizations/index.html.erb", :js => true do
     rendered.should have_selector "form input[name='q']"
     rendered.should have_selector "form input[type='submit']"
     rendered.should have_selector "form input[value='search']"
+    rendered.should have_selector "form input[placeholder='optional search name/description']"
+    rendered.should have_selector "form select[name='category[id]']"
+    rendered.should have_selector "form select[name='category[id]'] option[value='']" do |all_select|
+      expect(all_select).to contain("All")
+    end
+    rendered.should have_selector "form select[name='category[id]'] option[value='1']"
+    rendered.should have_selector "form select[name='category[id]'] option[value='2']"
   end
 
   it "render organization names with hyperlinks" do
@@ -50,28 +63,15 @@ describe "organizations/index.html.erb", :js => true do
     rendered.should_not have_content org2.telephone
   end
 
-   # this gmaps stuff does get rendered in the browser even with javascript turned off
-   # but it doesn't appear in this test and we don't know why
-  xit "displays the javascript for a google map" do
+  it "displays the javascript for a google map" do
     assign(:json, organizations.to_gmaps4rails)
-    render
+    render template: "organizations/index", layout: "layouts/application"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_zoom = true')]"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_latitude = 51.5978')]"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_longitude = -0.337')]"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.zoom = 12')]"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
-  end
-
-  xit "should have hyperlinks in the popups"  do
-    @json = organizations.to_gmaps4rails do |org, marker|
-      marker.infowindow render_to_string(:partial => "popup", :locals => { :@org => org})
-    end
-    assign(:json, @json)
-    render
-    organizations.each do |org|
-      expect(rendered).to have_xpath("//div[@class='map_container']//a[@href='#{organization_path(org)}']")
-    end
   end
 
   it "does not render a new organization link for non-logged in user"  do

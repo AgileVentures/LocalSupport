@@ -1,7 +1,9 @@
 Given /^I am on the home page$/ do
   visit "/"
 end
-
+And /^I select the "(.*?)" category$/ do |category|
+  select(category, :from => "category[id]")
+end
 Then /^I should be on the home page$/ do
   current_path.should == root_path()
 end

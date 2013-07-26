@@ -8,6 +8,8 @@ require 'cucumber/rails'
 require "rack_session_access/capybara"
 require 'ruby-debug'
 require 'selenium/webdriver'
+require 'factory_girl_rails'
+Dir["../../spec/factories/*.rb"].each {|file| require_relative file }
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
@@ -64,3 +66,9 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
+#Around('@email') do |scenario, block|
+#  ActionMailer::Base.delivery_method = :test
+#  ActionMailer::Base.perform_deliveries = true
+#  ActionMailer::Base.deliveries.clear
+#  block.call
+#end
