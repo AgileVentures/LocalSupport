@@ -1,3 +1,0 @@
-<% @organizations.each do |organization| %>
-    $("#organizations").append('<tr><td><u><%= link_to organization.name, organization %></u><br/><%= smart_truncate(organization.description) %></td></tr>');
-<% end %>
