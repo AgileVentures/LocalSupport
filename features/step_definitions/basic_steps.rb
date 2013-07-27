@@ -92,7 +92,7 @@ end
 Then /^I should see the donation_info URL for "(.*?)"$/ do |name1|
   org1 = Organization.find_by_name(name1)
   content =  "Donate to #{org1.name} now!"
-  page.should have_xpath %Q<//a[@href = "#{org1.donation_info}" and @target = "_blank" and contains(.,'#{content}')]> #:content =>, :href => org1.donation_info, :target => '_blank'
+  page.should have_xpath %Q<//a[@href = "#{org1.donation_info}" and @target = "_blank" and contains(.,'#{content}')]>
 end
 
 Then /^I should not see the donation_info URL for "(.*?)"$/ do |name1|
@@ -150,7 +150,7 @@ Then /^I should not see any edit link for "([^"]*?)"$/ do |name1|
 end
 
 Then /^I should see a link with text "([^"]*?)"$/ do |link|
-  page.should have_link link
+  page.should have_xpath %Q<//a[@target = "_blank" and contains(.,'#{link}')]>
 end
 
 Then /^I should not see a link with text "([^"]*?)"$/ do |link|
