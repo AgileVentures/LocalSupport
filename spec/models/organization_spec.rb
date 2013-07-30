@@ -136,7 +136,7 @@ describe Organization do
       [:name, :name=, :description=, :address=, :postcode=, :website=, :telephone=].each do |method|
         mock_org.stub(method)
       end
-      stubbed_chain = Organization.stub(:find_by_name)
+      Organization.stub(:find_by_name).and_return nil
       attempted_number_to_import = 1006
       actual_number_to_import = 642
       time = Time.now
@@ -147,10 +147,7 @@ describe Organization do
           hash_to_return[Organization.column_mappings[:name]] = "Test org #{number}"
           hash_to_return[Organization.column_mappings[:address]] = "10 Downing St London SW1A 2AA, United Kingdom"
         if(actual_number_to_import < number)
-           stubbed_chain.and_return nil
            hash_to_return[Organization.column_mappings[:date_removed]] = time
-        else
-          stubbed_chain.and_return 1
         end
 
         hash_to_return
