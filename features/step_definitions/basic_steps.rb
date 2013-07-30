@@ -91,7 +91,8 @@ end
 
 Then /^I should see the donation_info URL for "(.*?)"$/ do |name1|
   org1 = Organization.find_by_name(name1)
-  page.should have_link "Donate to #{org1.name} now!", :href => org1.donation_info
+  content =  "Donate to #{org1.name} now!"
+  page.should have_xpath %Q<//a[@href = "#{org1.donation_info}" and @target = "_blank" and contains(.,'#{content}')]>
 end
 
 Then /^I should not see the donation_info URL for "(.*?)"$/ do |name1|
@@ -148,6 +149,10 @@ Then /^I should not see any edit link for "([^"]*?)"$/ do |name1|
   page.should_not have_link "Edit"
 end
 
+Then /^I should see the external website link for "(.*?)" charity$/ do |org_name|
+  org = Organization.find_by_name org_name
+  page.should have_xpath %Q<//a[@target = "_blank" and @href = "#{org.website}" and contains(.,'#{org.website}')]>
+end
 Then /^I should see a link with text "([^"]*?)"$/ do |link|
   page.should have_link link
 end
