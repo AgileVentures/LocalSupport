@@ -17,7 +17,7 @@ Feature: Web page owned by each charity
 
   Scenario: be able to view link to charity site on individual charity page
     Given I am on the charity page for "Friendly"
-    Then I should see a link with text "http://friendly.org"
+    Then I should see the external website link for "Friendly" charity
 
   Scenario: get missing message when charity page has no charity website link available
     Given I am on the charity page for "Friendly Clone"
