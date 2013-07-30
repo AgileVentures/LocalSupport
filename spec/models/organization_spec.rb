@@ -132,9 +132,22 @@ describe Organization do
     end
 
     it 'must be able to generate multiple Organizations from text file' do
-      pending "This example takes way too long and should be fixed"
+      #pending "This example takes way too long and should be fixed"
       attempted_number_to_import = 1006
       actual_number_to_import = 642
+      rows_to_parse = (1..attempted_number_to_import).collect do |number|
+          hash_to_return = {}
+          hash_to_return.stub(:header?){true}
+          hash_to_return[Organization.column_mappings[:name]] = "Test org #{number}"
+          hash_to_return[Organization.column_mappings[:address]] = "10 Downing St  London SW1A 2AA, United Kingdom"
+        if(actual_number_to_import < number)
+           hash_to_return[Organization.column_mappings[:date_removed]] = Time.now
+        end
+        hash_to_return
+      end
+      mock_file_handle = double("file")
+      File.should_receive(:open).and_return(mock_file_handle)
+      chain = CSV.should_receive(:parse).with(mock_file_handle, :headers => true).and_return rows_to_parse
       Gmaps4rails.should_receive(:geocode).exactly(actual_number_to_import)
       expect(lambda {
         Organization.import_addresses 'db/data.csv', attempted_number_to_import
