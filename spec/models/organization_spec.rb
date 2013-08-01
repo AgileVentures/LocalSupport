@@ -132,13 +132,32 @@ describe Organization do
     end
 
     it 'must be able to generate multiple Organizations from text file' do
-      pending "This example takes way too long and should be fixed"
+      mock_org = double("org")
+      [:name, :name=, :description=, :address=, :postcode=, :website=, :telephone=].each do |method|
+        mock_org.stub(method)
+      end
+      Organization.stub(:find_by_name).and_return nil
       attempted_number_to_import = 1006
       actual_number_to_import = 642
-      Gmaps4rails.should_receive(:geocode).exactly(actual_number_to_import)
-      expect(lambda {
-        Organization.import_addresses 'db/data.csv', attempted_number_to_import
-      }).to change(Organization, :count).by(actual_number_to_import)
+      time = Time.now
+      Organization.should_receive(:new).exactly(actual_number_to_import).and_return mock_org
+      rows_to_parse = (1..attempted_number_to_import).collect do |number|
+          hash_to_return = {}
+          hash_to_return.stub(:header?){true}
+          hash_to_return[Organization.column_mappings[:name]] = "Test org #{number}"
+          hash_to_return[Organization.column_mappings[:address]] = "10 Downing St London SW1A 2AA, United Kingdom"
+        if(actual_number_to_import < number)
+           hash_to_return[Organization.column_mappings[:date_removed]] = time
+        end
+
+        hash_to_return
+      end
+      mock_file_handle = double("file")
+      File.should_receive(:open).and_return(mock_file_handle)
+      CSV.should_receive(:parse).with(mock_file_handle, :headers => true).and_return rows_to_parse
+      mock_org.should_receive(:save!).exactly(actual_number_to_import)
+      Organization.import_addresses 'db/data.csv', attempted_number_to_import
+
     end
 
     it 'must fail gracefully when encountering error in generating multiple Organizations from text file' do
