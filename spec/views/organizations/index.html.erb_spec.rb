@@ -22,9 +22,9 @@ describe "organizations/index.html.erb", :js => true do
     assign(:organizations, organizations)
     assign(:results, results)
     assign(:query_term,'search')
-    organizations.stub!(:current_page).and_return(1)
-    organizations.stub!(:total_pages).and_return(1)
-    organizations.stub!(:limit_value).and_return(1)
+    organizations.stub(:current_page).and_return(1)
+    organizations.stub(:total_pages).and_return(1)
+    organizations.stub(:limit_value).and_return(1)
     assign(:category_options, [['Animal Welfare','1'],['Education','2']])
     render
   end

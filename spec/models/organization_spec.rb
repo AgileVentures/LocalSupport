@@ -258,7 +258,7 @@ describe Organization do
       it "should import categories when matching org is found" do
         Organization.should_receive(:check_columns_in).with(row)
         Organization.should_receive(:find_by_name).with('Harrow Bereavement Counselling').and_return @org1
-        array = mock('Array')
+        array = double('Array')
         [{:cc_id => 207, :cat => @cat1}, {:cc_id => 305, :cat => @cat2}, {:cc_id => 108, :cat => @cat3},
          {:cc_id => 302, :cat => @cat4}, {:cc_id => 306, :cat => @cat5}]. each do |cat_hash|
           Category.should_receive(:find_by_charity_commission_id).with(cat_hash[:cc_id]).and_return(cat_hash[:cat])
