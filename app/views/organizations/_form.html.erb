@@ -43,8 +43,8 @@
      <%= f.label :donation_info %>
      <%= f.text_field :donation_info, :class => "org_form" %>
   </div>
-  <div id = "organization_charity_admin_email">
-
+  <div> 
+    <%= @organization.users.first.email %>
   </div>
   <div class="actions">
     <%= f.submit %>

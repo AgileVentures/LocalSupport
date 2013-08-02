@@ -7,8 +7,13 @@ class Organization < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   # prevents mass assignment on other fields not in this list
   attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info
+  accepts_nested_attributes_for :users
 
-  #This method is overridden to save organization if address was failed to geocode
+  def organization_user_first_email
+    'registered-user-1@example.com'
+  end
+
+    #This method is overridden to save organization if address was failed to geocode
   def run_validations!
     run_callbacks :validate
     remove_errors_with_address

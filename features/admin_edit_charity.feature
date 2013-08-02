@@ -72,4 +72,5 @@ Feature: Admin editing charity
   Scenario: Existing charity admin appears in form when editing charity
     Given I am signed in as a admin
     And I am on the edit charity page for "Friendly"
+    Then show me the page
     Then I should see "registered-user-1@example.com" in the charity admin email
