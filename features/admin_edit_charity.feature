@@ -10,9 +10,10 @@ Feature: Admin editing charity
       | Friendly       | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 |
       | Friendly Clone | Quite Friendly!         | 30 pinner road | HA1 4HZ  | 020800010 |
     And the following users are registered:
-      | email             | password | admin | confirmed_at |
-      | registered-user-1@example.com | pppppppp | true  | 2007-01-01  10:00:00 |
-      | registered-user-2@example.com | pppppppp | false | 2007-01-01  10:00:00 |
+      | email             | password | admin | confirmed_at |  organization |
+      | registered-user-1@example.com | pppppppp | true  | 2007-01-01  10:00:00 |  Friendly |
+      | registered-user-2@example.com | pppppppp | false | 2007-01-01  10:00:00 |           |
+
 
   Scenario: Admin successfully changes the address of a charity
     Given I am signed in as a admin
@@ -68,3 +69,7 @@ Feature: Admin editing charity
     And I should not see "Organization was successfully created."
     And "Unwanted" org should not exist
 
+  Scenario: Existing charity admin appears in form when editing charity
+    Given I am signed in as a admin
+    And I am on the edit charity page for "Friendly"
+    Then I should see "registered-user-1@example.com" in the charity admin email
