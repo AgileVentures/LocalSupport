@@ -64,7 +64,9 @@ class Organization < ActiveRecord::Base
       date_removed: 'date removed',
       cc_id: 'Charity Classification'
   }
-
+  def self.column_mappings
+    @@column_mappings
+  end
   def self.import_categories_from_array(row)
     check_columns_in(row)
     org = Organization.find_by_name(row[@@column_mappings[:name]].to_s.humanized_all_first_capitals)

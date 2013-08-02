@@ -1,5 +1,5 @@
 module OrganizationsHelper
   def donation_info_msg 
-     @organization.donation_info.blank? ? "We don't yet have any donation link for them." : link_to("Donate to #{@organization.name} now!", @organization.donation_info)
+     @organization.donation_info.blank? ? "We don't yet have any donation link for them." : link_to("Donate to #{@organization.name} now!", @organization.donation_info, {:target => '_blank'})
   end
 end

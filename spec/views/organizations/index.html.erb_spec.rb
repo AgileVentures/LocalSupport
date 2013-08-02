@@ -22,9 +22,9 @@ describe "organizations/index.html.erb", :js => true do
     assign(:organizations, organizations)
     assign(:results, results)
     assign(:query_term,'search')
-    organizations.stub!(:current_page).and_return(1)
-    organizations.stub!(:total_pages).and_return(1)
-    organizations.stub!(:limit_value).and_return(1)
+    organizations.stub(:current_page).and_return(1)
+    organizations.stub(:total_pages).and_return(1)
+    organizations.stub(:limit_value).and_return(1)
     assign(:category_options, [['Animal Welfare','1'],['Education','2']])
     render
   end
@@ -33,9 +33,11 @@ describe "organizations/index.html.erb", :js => true do
     rendered.should have_selector "form input[name='q']"
     rendered.should have_selector "form input[type='submit']"
     rendered.should have_selector "form input[value='search']"
-    rendered.should have_selector "form input[placeholder='optional']"
+    rendered.should have_selector "form input[placeholder='optional search name/description']"
     rendered.should have_selector "form select[name='category[id]']"
-    rendered.should have_selector "form select[name='category[id]'] option[value='']"
+    rendered.should have_selector "form select[name='category[id]'] option[value='']" do |all_select|
+      expect(all_select).to contain("All")
+    end
     rendered.should have_selector "form select[name='category[id]'] option[value='1']"
     rendered.should have_selector "form select[name='category[id]'] option[value='2']"
   end
