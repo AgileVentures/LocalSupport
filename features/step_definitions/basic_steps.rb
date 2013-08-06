@@ -2,6 +2,9 @@ require 'webmock/cucumber'
 require 'uri-handler'
 include ApplicationHelper
 
+Then /^I should see the no charity admins message$/ do
+  expect(page).to have_content "This organization has no admins yet"
+end
 Given /^I delete "(.*?)" charity$/ do |name|
   org = Organization.find_by_name name
   page.driver.submit :delete, "/organizations/#{org.id}", {}

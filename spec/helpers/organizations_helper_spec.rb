@@ -48,7 +48,7 @@ describe OrganizationsHelper do
     context "organization has no admins" do
       before(:each) do
         @organization = assign :organization, stub_model(Organization)
-        @organization.stub :users => nil
+        @organization.stub :users => []
       end
       it 'should return a no current admins message' do
          expect(charity_admin_display_msg).to have_selector "div", :content => "This organization has no admins yet"

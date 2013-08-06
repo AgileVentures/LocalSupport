@@ -73,3 +73,9 @@ Feature: Admin editing charity
     Given I am signed in as a admin
     And I am on the edit charity page for "Friendly"
     Then I should see "registered-user-1@example.com" in the charity admin email
+
+  Scenario: No admin message displayed when charity has no admins
+    Given I am signed in as a admin
+    And I am on the edit charity page for "Friendly Clone"
+    Then show me the page
+    Then I should see the no charity admins message
