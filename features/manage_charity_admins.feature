@@ -18,8 +18,13 @@ Background: organizations have been added to database
      And I am on the edit charity page for "Friendly"
      Then I should see "registered-user-1@example.com" in the charity admin email
 
-   Scenario: No admin message displayed when charity has no admins
+ Scenario: No admin message displayed when charity has no admins
      Given I am signed in as a admin
      And I am on the edit charity page for "Friendly Clone"
      Then I should see the no charity admins message
+
+ Scenario: Cannot add non-existent user as charity admin
+   Given I am signed in as a admin
+   And I add "non-registered-user@example.com" as an admin for "Friendly" charity
+   Then I should see the cannot add non registered user as charity admin message
 
