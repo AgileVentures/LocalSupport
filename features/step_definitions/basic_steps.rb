@@ -12,8 +12,10 @@ Then /^I should not see an edit button for "(.*?)" charity$/ do |name|
   expect(page).not_to have_link :href => edit_organization_path(org.id)
 end
 
-Then /^I should see "(.*?)" in the charity admin email$/ do |name|
-  expect(page.find_by_id("organization_charity_admin_email").text).to include name
+Then /^I should see "(.*?)" in the charity admin email$/ do |email|
+  expect(page).to have_content "Organization administrator emails: "
+  expect(page).to have_selector "ol"
+  expect(page).to have_selector "li", :text => email
 end
 
 Then /^show me the page$/ do
