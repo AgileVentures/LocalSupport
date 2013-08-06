@@ -43,4 +43,30 @@ describe OrganizationsHelper do
 
 
   end
+
+  describe "charity admin display helper" do
+    context "organization has no admins" do
+      before(:each) do
+        @organization = assign :organization, stub_model(Organization)
+        @organization.stub :users => nil
+      end
+      it 'should return a no current admins message' do
+         expect(charity_admin_display_msg).to have_selector "div", :content => "This organization has no admins yet"
+      end
+    end
+    context "organization has one admin" do
+      before(:each) do
+        @organization = assign :organization, stub_model(Organization)
+        user = stub_model(User)
+        user.stub(:email => "blah@blah.com")
+        @organization.stub(:users => [user])
+      end
+      it 'should return the list of admins' do
+        result = charity_admin_display_msg
+        expect(result).to have_content "Organization administrator emails: "
+        expect(result).to have_selector "ol"
+        expect(result).to have_selector "li", :content => @organization.users.first.email
+      end
+    end
+  end
 end
