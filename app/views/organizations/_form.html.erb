@@ -45,7 +45,7 @@
   </div>
   <%= charity_admin_display_msg %>
   <div class="field">
-    <%= text_field_tag 'organization_admin_email', :size => 100, class: 'org_form' %>
+    <%= text_field_tag 'organization_admin_email', value = nil, {:size => 100, class: 'org_form'} %>
   </div>
   <div class="actions">
     <%= f.submit %>
