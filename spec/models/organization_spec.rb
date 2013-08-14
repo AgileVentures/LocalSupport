@@ -29,6 +29,10 @@ describe Organization do
       expect(@org1.update_attributes_with_admin({:admin_email_to_add => 'nonexistentuser@example.com'})).to be_false
       expect(@org1.errors[:administrator_email]).to eq ["The user email you entered,'nonexistentuser@example.com', does not exist in the system"]
     end
+    it 'does not update other attributes when there is a non-existent email' do
+      expect(@org1.update_attributes_with_admin({:name => 'New name',:admin_email_to_add => 'nonexistentuser@example.com'})).to be_false
+      expect(@org1.name).not_to eq 'New name'
+    end
     it 'handles a nil email' do
       expect(@org1.update_attributes_with_admin({:admin_email_to_add => nil})).to be_true
       expect(@org1.errors.any?).to be_false
@@ -41,6 +45,15 @@ describe Organization do
       usr = FactoryGirl.create(:user, :email => 'user@example.org')
       expect(@org1.update_attributes_with_admin({:admin_email_to_add => usr.email})).to be_true
       expect(@org1.users).to include usr
+    end
+    it 'updates other attributes with blank email' do
+      expect(@org1.update_attributes_with_admin({:name => 'New name',:admin_email_to_add => ''})).to be_true
+      expect(@org1.name).to eq 'New name'
+    end
+    it 'updates other attributes with valid email' do
+      usr = FactoryGirl.create(:user, :email => 'user@example.org')
+      expect(@org1.update_attributes_with_admin({:name => 'New name',:admin_email_to_add => usr.email})).to be_true
+      expect(@org1.name).to eq 'New name'
     end
   end
   it 'responds to filter by category' do
