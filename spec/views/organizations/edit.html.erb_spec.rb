@@ -23,6 +23,6 @@ describe "organizations/edit.html.erb" do
 
   it "renders a form field to add an administrator email" do
     render
-    rendered.should have_field :organization_admin_email
+    rendered.should have_field :organization_admin_email_to_add
   end
 end

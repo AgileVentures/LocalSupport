@@ -15,6 +15,26 @@ class Organization < ActiveRecord::Base
     remove_errors_with_address
     errors.empty?
   end
+  #TODO: Give this TLC and refactor the flow or refactor out responsibilities
+  def update_attributes_with_admin(params)
+    email = params[:admin_email_to_add]
+    result = false
+    if !email.blank?
+       result = ActiveRecord::Base.transaction do
+         usr = User.find_by_email(email)
+         if usr == nil
+           self.errors.add(:administrator_email, "The user email you entered,'#{email}', does not exist in the system")
+           raise ActiveRecord::Rollback
+         else
+           self.users << usr
+           self.update_attributes(params)
+         end
+       end
+    else
+      result = self.update_attributes(params)
+    end
+    return result
+  end
 
   def self.search_by_keyword(keyword)
     self.where("UPPER(description) LIKE ? OR UPPER(name) LIKE ?","%#{keyword.try(:upcase)}%","%#{keyword.try(:upcase)}%")

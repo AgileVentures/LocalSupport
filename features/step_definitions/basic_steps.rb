@@ -2,13 +2,20 @@ require 'webmock/cucumber'
 require 'uri-handler'
 include ApplicationHelper
 
-Then /^I should see the cannot add non registered user as charity admin message$/ do
-  page.should have_content "The user email you entered does not exist in the system"
+Then /^"(.*?)" should be a charity admin for "(.*?)" charity$/ do |email, org|
+  org = Organization.find_by_name org
+  usr = User.find_by_email(email)
+  expect(usr).not_to be_nil
+  expect(org.users).to include usr
+end
+
+Then /^I should see the cannot add non registered user "(.*?)" as charity admin message$/ do |email|
+  page.should have_content "The user email you entered,'#{email}', does not exist in the system"
 end
 And /^I add "(.*?)" as an admin for "(.*?)" charity$/ do |admin_email, charity|
   steps %Q{ And I am on the edit charity page for "#{charity}"}
   fill_in 'organization_admin_email_to_add', :with => admin_email
-  steps %Q{Then show me the page
+  steps %Q{
   And I press "Update Organization"}
 end
 Then /^I should see the no charity admins message$/ do

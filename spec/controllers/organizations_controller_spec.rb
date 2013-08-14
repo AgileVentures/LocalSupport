@@ -304,18 +304,18 @@ describe OrganizationsController do
         it "updates org for e.g. donation_info url" do
           double = double_organization(:id => 37, :model_name => 'Organization')
           Organization.should_receive(:find).with("37"){double}
-          double_organization.should_receive(:update_attributes).with({'donation_info' => 'http://www.friendly.com/donate'})
+          double_organization.should_receive(:update_attributes_with_admin).with({'donation_info' => 'http://www.friendly.com/donate', 'admin_email_to_add' => nil})
           put :update, :id => "37", :organization => {'donation_info' => 'http://www.friendly.com/donate'}
         end
 
         it "assigns the requested organization as @organization" do
-          Organization.stub(:find) { double_organization(:update_attributes => true) }
+          Organization.stub(:find) { double_organization(:update_attributes_with_admin => true) }
           put :update, :id => "1"
           assigns(:organization).should be(double_organization)
         end
 
         it "redirects to the organization" do
-          Organization.stub(:find) { double_organization(:update_attributes => true) }
+          Organization.stub(:find) { double_organization(:update_attributes_with_admin => true) }
           put :update, :id => "1"
           response.should redirect_to(organization_url(double_organization))
         end
@@ -323,13 +323,13 @@ describe OrganizationsController do
 
       describe "with invalid params" do
         it "assigns the organization as @organization" do
-          Organization.stub(:find) { double_organization(:update_attributes => false) }
+          Organization.stub(:find) { double_organization(:update_attributes_with_admin => false) }
           put :update, :id => "1"
           assigns(:organization).should be(double_organization)
         end
 
         it "re-renders the 'edit' template" do
-          Organization.stub(:find) { double_organization(:update_attributes => false) }
+          Organization.stub(:find) { double_organization(:update_attributes_with_admin => false) }
           put :update, :id => "1"
           response.should render_template("edit")
         end

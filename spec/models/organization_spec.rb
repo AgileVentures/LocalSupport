@@ -12,20 +12,37 @@ describe Organization do
     @category4 = FactoryGirl.create(:category, :charity_commission_id => 302)
     @category5 = FactoryGirl.create(:category, :charity_commission_id => 306)
     @org1 = FactoryGirl.build(:organization, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate')
-    Gmaps4rails.should_receive(:geocode)
+    Gmaps4rails.stub(:geocode => nil)
     @org1.save!
     @org2 = FactoryGirl.build(:organization, :name => 'Indian Elders Association',
                               :description => 'Care for the elderly', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.indian-elders.co.uk/donate')
-    Gmaps4rails.should_receive(:geocode)
     @org2.categories << @category1
     @org2.categories << @category2
     @org2.save!
     @org3 = FactoryGirl.build(:organization, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.age-uk.co.uk/donate')
-    Gmaps4rails.should_receive(:geocode)
     @org3.categories << @category1
     @org3.save!
   end
 
+  context 'adding charity admins by email' do
+    it 'handles a non-existent email with an error' do
+      expect(@org1.update_attributes_with_admin({:admin_email_to_add => 'nonexistentuser@example.com'})).to be_false
+      expect(@org1.errors[:administrator_email]).to eq ["The user email you entered,'nonexistentuser@example.com', does not exist in the system"]
+    end
+    it 'handles a nil email' do
+      expect(@org1.update_attributes_with_admin({:admin_email_to_add => nil})).to be_true
+      expect(@org1.errors.any?).to be_false
+    end
+    it 'handles a blank email' do
+      expect(@org1.update_attributes_with_admin({:admin_email_to_add => ''})).to be_true
+      expect(@org1.errors.any?).to be_false
+    end
+    it 'adds existent user as charity admin' do
+      usr = FactoryGirl.create(:user, :email => 'user@example.org')
+      expect(@org1.update_attributes_with_admin({:admin_email_to_add => usr.email})).to be_true
+      expect(@org1.users).to include usr
+    end
+  end
   it 'responds to filter by category' do
     expect(Organization).to respond_to(:filter_by_category)
   end

@@ -26,5 +26,10 @@ Background: organizations have been added to database
  Scenario: Cannot add non-existent user as charity admin
    Given I am signed in as a admin
    And I add "non-registered-user@example.com" as an admin for "Friendly" charity
-   Then I should see the cannot add non registered user as charity admin message
+   Then I should see the cannot add non registered user "non-registered-user@example.com" as charity admin message
+
+ Scenario: Successfully add existent user as charity admin
+   Given I am signed in as a admin
+   And I add "registered-user-2@example.com" as an admin for "Friendly" charity
+   Then "registered-user-2@example.com" should be a charity admin for "Friendly" charity
 
