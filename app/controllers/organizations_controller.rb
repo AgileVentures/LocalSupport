@@ -88,12 +88,13 @@ class OrganizationsController < ApplicationController
   # PUT /organizations/1.json
   def update
     @organization = Organization.find(params[:id])
+    params[:organization][:admin_email_to_add] = params[:organization_admin_email_to_add] if params[:organization]
     unless current_user.try(:can_edit?,@organization)
       flash[:notice] = "You don't have permission"
       redirect_to organization_path(params[:id]) and return false
     end
     respond_to do |format|
-      if @organization.update_attributes(params[:organization])
+      if @organization.update_attributes_with_admin(params[:organization])
         format.html { redirect_to @organization, notice: 'Organization was successfully updated.' }
         format.json { head :ok }
       else

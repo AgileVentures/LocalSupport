@@ -43,6 +43,11 @@
      <%= f.label :donation_info %>
      <%= f.text_field :donation_info, :class => "org_form" %>
   </div>
+  <%= charity_admin_display_msg %>
+  <div class="field">
+    <%= label_tag :organization_admin_email_to_add, "Charity Administrator Email" %>
+    <%= text_field_tag 'organization_admin_email_to_add', value = nil, {:size => 100, class: 'org_form'} %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

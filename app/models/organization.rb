@@ -7,12 +7,33 @@ class Organization < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   # prevents mass assignment on other fields not in this list
   attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info
+  accepts_nested_attributes_for :users
 
   #This method is overridden to save organization if address was failed to geocode
   def run_validations!
     run_callbacks :validate
     remove_errors_with_address
     errors.empty?
+  end
+  #TODO: Give this TLC and refactor the flow or refactor out responsibilities
+  def update_attributes_with_admin(params)
+    email = params[:admin_email_to_add]
+    result = false
+    if !email.blank?
+       result = ActiveRecord::Base.transaction do
+         usr = User.find_by_email(email)
+         if usr == nil
+           self.errors.add(:administrator_email, "The user email you entered,'#{email}', does not exist in the system")
+           raise ActiveRecord::Rollback
+         else
+           self.users << usr
+           self.update_attributes(params)
+         end
+       end
+    else
+      result = self.update_attributes(params)
+    end
+    return result
   end
 
   def self.search_by_keyword(keyword)
