@@ -51,7 +51,7 @@ describe OrganizationsHelper do
         @organization.stub :users => []
       end
       it 'should return a no current admins message' do
-         expect(charity_admin_display_msg).to have_selector "div", :content => "This organization has no admins yet"
+         expect(charity_admin_display_msg).to have_selector "div", :content => "This organisation has no admins yet"
       end
     end
     context "organization has one admin" do
@@ -63,7 +63,7 @@ describe OrganizationsHelper do
       end
       it 'should return the list of admins' do
         result = charity_admin_display_msg
-        expect(result).to have_content "Organization administrator emails: "
+        expect(result).to have_content "Organisation administrator emails: "
         expect(result).to have_selector "ol"
         expect(result).to have_selector "li", :content => @organization.users.first.email
       end
