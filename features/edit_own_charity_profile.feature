@@ -23,14 +23,14 @@ Scenario: Successfully change the address of a charity
   Then I should be on the charity page for "Friendly"
   Given I am on the home page
   Then the coordinates for "Nice" and "Friendly" should be the same
-
-Scenario: Unsuccessfully change the address of a charity
-  Given I am signed in as a charity worker unrelated to "Friendly"
-  Given I furtively update "Friendly" charity address to be "30 pinner road"
-  Then I should see "You don't have permission"
-  And I should be on the charity page for "Friendly"
-  Given I am on the home page
-  Then the coordinates for "Nice" and "Friendly" should not be the same
+#TODO refactor into integration test that posts to update method
+#Scenario: Unsuccessfully change the address of a charity
+#  Given I am signed in as a charity worker unrelated to "Friendly"
+#  Given I furtively update "Friendly" charity address to be "30 pinner road"
+#  Then I should see "You don't have permission"
+#  And I should be on the charity page for "Friendly"
+#  Given I am on the home page
+#  Then the coordinates for "Nice" and "Friendly" should not be the same
 
 Scenario: Do not see edit button as non-admin not associated with Friendly
   Given I am signed in as a charity worker unrelated to "Friendly"

@@ -192,9 +192,10 @@ describe OrganizationsController do
   end
 
   describe "GET edit" do
-    context "while signed in" do
+    context "while signed in as user who can edit" do
       before(:each) do
         user = double("User")
+        user.stub(:can_edit?){true}
         request.env['warden'].stub :authenticate! => user
         controller.stub(:current_user).and_return(user)
       end
@@ -203,6 +204,20 @@ describe OrganizationsController do
         Organization.stub(:find).with("37") { double_organization }
         get :edit, :id => "37"
         assigns(:organization).should be(double_organization)
+      end
+    end
+    context "while signed in as user who cannot edit" do
+      before(:each) do
+        user = double("User")
+        user.stub(:can_edit?){false}
+        request.env['warden'].stub :authenticate! => user
+        controller.stub(:current_user).and_return(user)
+      end
+
+      it "redirects to organization view" do
+        Organization.stub(:find).with("37") { double_organization }
+        get :edit, :id => "37"
+        response.should redirect_to organization_url(37)
       end
     end
     #TODO: way to dry out these redirect specs?
