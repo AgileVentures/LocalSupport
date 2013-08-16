@@ -19,7 +19,7 @@ And /^I add "(.*?)" as an admin for "(.*?)" charity$/ do |admin_email, charity|
   And I press "Update Organization"}
 end
 Then /^I should see the no charity admins message$/ do
-  expect(page).to have_content "This organization has no admins yet"
+  expect(page).to have_content "This organisation has no admins yet"
 end
 Given /^I delete "(.*?)" charity$/ do |name|
   org = Organization.find_by_name name
@@ -32,7 +32,7 @@ Then /^I should not see an edit button for "(.*?)" charity$/ do |name|
 end
 
 Then /^I should see "(.*?)" in the charity admin email$/ do |email|
-  expect(page).to have_content "Organization administrator emails: "
+  expect(page).to have_content "Organisation administrator emails: "
   expect(page).to have_selector "ol"
   expect(page).to have_selector "li", :text => email
 end

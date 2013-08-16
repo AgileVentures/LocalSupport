@@ -59,7 +59,12 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations/1/edit
   def edit
+    #TODO Eliminate code duplication for permissoins across methods
     @organization = Organization.find(params[:id])
+    unless current_user.try(:can_edit?,@organization)
+      flash[:notice] = "You don't have permission"
+      redirect_to organization_path(params[:id]) and return false
+    end
   end
 
   # POST /organizations
