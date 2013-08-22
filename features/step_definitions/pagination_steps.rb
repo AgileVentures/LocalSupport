@@ -3,6 +3,10 @@ require 'uri-handler'
 
 Given /^I have created (\d+) organizations$/ do |number|
   number.to_i.times do |n|
+    # TODO some way of stubbing geocode here (I think) to prevent hitting external service - I get
+    # getaddrinfo: nodename nor servname provided, or not known (SocketError)
+    # otherwise ...
+    #Gmaps4rails.stub(:geocode => nil)
     FactoryGirl.create(:organization, :name => "org#{n}", :description => "description#{n}")
   end
 end

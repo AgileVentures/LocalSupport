@@ -10,10 +10,12 @@ class OrganizationsController < ApplicationController
     @category = Category.find_by_id(@category_id) unless @category_id.blank?
 
     @organizations = Organization.search_by_keyword(@query_term).filter_by_category(@category_id)
-
-    flash.now[:alert] = "Sorry, it seems we don't quite have what you are looking for." if @organizations.empty?
+    # TODO work out where is a good place to store these strings
+    flash.now[:alert] = "Sorry, it seems we don't have quite what you are looking for." if @organizations.empty?
     @json = gmap4rails_with_popup_partial(@organizations,'popup')
-    @category_options = Category.where('charity_commission_id < 199').order('name ASC').collect {|c| [ c.name, c.id ] }
+    # TODO would it make sense to move the following to the view
+    # to avoid cluttering the controller?
+    @category_options = Category.html_drop_down_options
     respond_to do |format|
       format.html { render :template =>'organizations/index'}
       format.json { render json:  @organizations }
@@ -26,7 +28,7 @@ class OrganizationsController < ApplicationController
   def index
     @organizations = Organization.order("updated_at DESC")
     @json = gmap4rails_with_popup_partial(@organizations,'popup')
-    @category_options = Category.where('charity_commission_id < 199').order('name ASC').collect {|c| [ c.name, c.id ] }
+    @category_options = Category.html_drop_down_options
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @organizations }
@@ -59,7 +61,7 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations/1/edit
   def edit
-    #TODO Eliminate code duplication for permissoins across methods
+    #TODO Eliminate code duplication for permissions across methods
     @organization = Organization.find(params[:id])
     unless current_user.try(:can_edit?,@organization)
       flash[:notice] = "You don't have permission"
