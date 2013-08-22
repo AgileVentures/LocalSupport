@@ -304,6 +304,14 @@ describe Organization do
         end
       end
 
+      it 'must fail gracefully when encountering error in importing categories from text file' do
+        attempted_number_to_import = 2
+        Organization.stub(:import_categories_from_array).and_raise(CSV::MalformedCSVError)
+        expect(lambda {
+          Organization.import_category_mappings 'db/data.csv', attempted_number_to_import
+        }).to change(Organization, :count).by(0)
+      end
+
       it "should import categories when matching org is found" do
         Organization.should_receive(:check_columns_in).with(row)
         Organization.should_receive(:find_by_name).with('Harrow Bereavement Counselling').and_return @org1

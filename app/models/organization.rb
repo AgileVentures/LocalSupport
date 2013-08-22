@@ -118,6 +118,7 @@ class Organization < ActiveRecord::Base
       end
     end
   end
+
   def self.create_from_array(row, validate)
     check_columns_in(row)
     return nil if row[@@column_mappings[:date_removed]]
