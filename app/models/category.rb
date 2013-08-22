@@ -15,6 +15,7 @@ class Category < ActiveRecord::Base
                        :charity_commission_name => row[@@column_mappings[:cc_name]].strip
     end
   end
+
   def self.html_drop_down_options
     self.where('charity_commission_id < 199').order('name ASC').collect {|category| [ category.name, category.id ] }
   end

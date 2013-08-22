@@ -53,4 +53,8 @@ describe 'Category' do
     end
   end
 
+  it 'generated appropriate html drop down options' do
+     Category.html_drop_down_options.should eq [["health", 1], ["health", 2]]
+  end
+
 end
