@@ -108,6 +108,7 @@ describe Organization do
     expect(result).to include @org2, @org3
     expect(result).not_to include @org1
   end
+
   it 'returns all orgs when both filter by category and search by keyword are nil args' do
     result = Organization.search_by_keyword(nil).filter_by_category(nil)
     expect(result).to include @org1, @org2, @org3
@@ -130,18 +131,6 @@ describe Organization do
     expect(Organization.humanize_description(nil)).to eq(nil)
   end
 
-  it 'must be able to extract postcode and address' do
-    expect(Organization.parse_address('HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA')).to eq({:address => 'HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW', :postcode => 'HA1 1BA'})
-  end
-
-  it 'must be able to handle postcode extraction when no postcode' do
-    expect(Organization.parse_address('HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW')).to eq({:address =>'HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW', :postcode => ''})
-  end
-  
-  it 'must be able to handle postcode extraction when nil address' do
-     expect(Organization.parse_address(nil)).to eq({:address =>'', :postcode => ''})
-  end
-
   it 'can humanize with all first capitals' do
     expect("HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW".humanized_all_first_capitals).to eq("Harrow Baptist Church, College Road, Harrow")
   end
@@ -161,6 +150,8 @@ describe Organization do
       expect(org).to be_nil
     end
 
+    # the following 6 or so feel more like integration tests than unit tests
+    # TODO should they be moved into another file?
     it 'must be able to generate multiple Organizations from text file' do
       mock_org = double("org")
       [:name, :name=, :description=, :address=, :postcode=, :website=, :telephone=].each do |method|
