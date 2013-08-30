@@ -1,5 +1,11 @@
 require 'csv'
 
+class String
+  def humanized_all_first_capitals
+    self.humanize.split(' ').map{|w| w.capitalize}.join(' ')
+  end
+end
+
 class Organization < ActiveRecord::Base
   acts_as_gmappable :check_process => false
   has_many :users
@@ -57,12 +63,6 @@ class Organization < ActiveRecord::Base
     "#{self.name}"
   end
 
-  def self.humanize_description(unfriendly_description) 
-    unfriendly_description && unfriendly_description.humanize
-  end
-
-
-
   #Edit this if CSV 'schema' changes
   #value is the name of a column in csv file
   @@column_mappings = {
@@ -110,30 +110,8 @@ class Organization < ActiveRecord::Base
   end
 
   def self.create_from_array(row, validate)
-    check_columns_in(row)
-    organization_name = row[@@column_mappings[:name]].to_s.humanized_all_first_capitals
-    
-    return nil if row[@@column_mappings[:date_removed]]
-    return nil if Organization.find_by_name(organization_name)
-
-    org = build_organization_from_array(row, organization_name)
-
-    org.save! validate: validate
-    org
+    CreateOrganizationFromArray.new(row, @@column_mappings).call(validate)
   end
-
-  def self.build_organization_from_array(row, organization_name)
-    org = Organization.new
-    address = Address.parse_address(row[@@column_mappings[:address]])
-    org.name = organization_name
-    org.description = self.humanize_description(row[@@column_mappings[:description]])
-    org.address = address[:address].humanized_all_first_capitals
-    org.postcode = address[:postcode]
-    org.website = row[@@column_mappings[:website]]
-    org.telephone = row[@@column_mappings[:telephone]]
-    return org
-  end
-  private_class_method :build_organization_from_array
 
   def self.import_addresses(filename, limit, validation = true)
     csv_text = File.open(filename, 'r:ISO-8859-1')
@@ -174,11 +152,5 @@ class Organization < ActiveRecord::Base
         self.longitude = nil
       end
     end
-  end
-end
-
-class String
-  def humanized_all_first_capitals
-    self.humanize.split(' ').map{|w| w.capitalize}.join(' ')
   end
 end
