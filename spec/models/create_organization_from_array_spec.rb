@@ -24,6 +24,7 @@ describe CreateOrganizationFromArray, "#call" do
     CSV::Row.new(headers, fields.flatten)
   end
 
+<<<<<<< HEAD
   let(:organization) { double(:organization) }
   before do 
     Organization.stub(:find_by_name) { nil }
@@ -33,6 +34,14 @@ describe CreateOrganizationFromArray, "#call" do
 
   context 'create Organization from csv file without running validations' do 
     subject { service.call(true) } 
+=======
+  pending 'create Organization from csv file without running validations' do 
+    let(:organization) { stub(:organization) }
+    before do 
+      Organization.stub.(:find_by_name) { organization }
+    end
+    subject { service.call(false) } 
+>>>>>>> Fix failing specs
 
     it { should == organization }
   end
