@@ -23,9 +23,9 @@ describe CreateOrganizationFromArray, "#call" do
   end
 
   pending 'create Organization from csv file without running validations' do 
-    let(:organization) { double(:organization) }
+    let(:organization) { stub(:organization) }
     before do 
-      Organization.stub(:find_by_name) { organization }
+      Organization.stub.(:find_by_name) { organization }
     end
     subject { service.call(false) } 
 
