@@ -10,7 +10,7 @@ class CreateOrganizationFromArray
     return nil if @row[@mappings[:date_removed]]
     return nil if Organization.find_by_name(organization_name)
 
-    org = build_organization(organization_name)
+    org = build_organization
 
     org.save! validate: validate
     org
@@ -29,7 +29,7 @@ class CreateOrganizationFromArray
     end
   end
 
-  def build_organization(organization_name)
+  def build_organization_from_array
     address = Address.new(@row[@mappings[:address]]).parse
     org = Organization.new({
       name:organization_name, 
