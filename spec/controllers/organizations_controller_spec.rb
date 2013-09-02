@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe OrganizationsController do
+  let(:category_html_options){[['cat1',1],['cat2',2]]}
 
   before :suite do
     FactoryGirl.factories.clear
@@ -31,23 +32,21 @@ describe OrganizationsController do
 
     context 'setting appropriate view vars for all combinations of input' do
       let(:json) {'my markers'}
-      let(:result) do
-        [double_organization]
-      end
+      let(:result) {[double_organization]}
+      let(:category){double('Category')}
       before(:each) do
         result.should_receive(:to_gmaps4rails).and_return(json)
         result.stub_chain(:page, :per).and_return(result)
+        Category.should_receive(:html_drop_down_options).and_return(category_html_options)
       end
 
       it "sets up appropriate values for view vars: query_term, organizations and json" do
-        category = double('Category')
         Organization.should_receive(:search_by_keyword).with('test').and_return(result)
         result.should_receive(:filter_by_category).with('1').and_return(result)
         Category.should_receive(:find_by_id).with("1").and_return(category)
         get :search, :q => 'test', "category" => {"id"=>"1"}
         assigns(:query_term).should eq 'test'
         assigns(:category).should eq category
-        assigns(:category_options).should_not be_nil
       end
 
       it "handles lack of category gracefully" do
@@ -82,6 +81,7 @@ describe OrganizationsController do
         response.should render_template 'index'
         assigns(:organizations).should eq([double_organization])
         assigns(:json).should eq(json)
+        assigns(:category_options).should eq category_html_options
       end
     end
     # TODO figure out how to make this less messy
@@ -96,7 +96,7 @@ describe OrganizationsController do
       Category.should_receive(:find_by_id).with("1").and_return(category)
       ActionDispatch::Flash::FlashHash.any_instance.should_receive(:now).and_return double_now_flash
       ActionDispatch::Flash::FlashHash.any_instance.should_not_receive(:[]=)
-      double_now_flash.should_receive(:[]=).with(:alert, "Sorry, it seems we don't quite have what you are looking for.")
+      double_now_flash.should_receive(:[]=).with(:alert, "Sorry, it seems we don't have quite what you are looking for.")
       get :search , :q => 'no results' , "category" => {"id"=>"1"}
     end
 
@@ -122,6 +122,7 @@ describe OrganizationsController do
       result = [double_organization]
       json='my markers'
       result.should_receive(:to_gmaps4rails).and_return(json)
+      Category.should_receive(:html_drop_down_options).and_return(category_html_options)
       Organization.should_receive(:order).with('updated_at DESC').and_return(result)
       result.stub_chain(:page, :per).and_return(result)
       get :index

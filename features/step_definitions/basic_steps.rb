@@ -136,7 +136,7 @@ end
 
 Then /^I should( not)? see the no results message$/ do |negate| 
   expectation_method = negate ? :not_to : :to
-  expect(page).send(expectation_method, have_content("Sorry, it seems we don't quite have what you are looking for."))
+  expect(page).send(expectation_method, have_content("Sorry, it seems we don't have quite what you are looking for."))
 end
 
 Then /^I should not see any address or telephone information for "([^"]*?)" and "([^"]*?)"$/ do |name1, name2|
