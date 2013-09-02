@@ -45,7 +45,7 @@ class Organization < ActiveRecord::Base
     # could use this but doesn't play well with search by keyqord since table names are remapped
     #Organization.includes(:categories).where("categories_organizations.category_id" =>  category_id)
     category = Category.find_by_id(category_id)
-    orgs = category.organizations.each {|org| org.id} if category
+    orgs = category.organizations.select {|org| org.id} if category
     where(:id => orgs)
   end
 
@@ -79,17 +79,18 @@ class Organization < ActiveRecord::Base
   end
   def self.import_categories_from_array(row)
     check_columns_in(row)
-    org = Organization.find_by_name(row[@@column_mappings[:name]].to_s.humanized_all_first_capitals)
-    if org
-      category_ids = row[@@column_mappings[:cc_id]]
-      if category_ids
-        category_ids.split(',').each do |id|
-          cat = Category.find_by_charity_commission_id(id.to_i)
-          org.categories << cat
-        end
-      end
-    end
+    org_name = row[@@column_mappings[:name]].to_s.humanized_all_first_capitals
+    org = Organization.find_by_name(org_name)
+    check_categories_for_import(row, org)
     org
+  end
+
+  def self.check_categories_for_import(row, org)
+    category_ids = row[@@column_mappings[:cc_id]] if org
+    category_ids.split(',').each do |id|
+      cat = Category.find_by_charity_commission_id(id.to_i)
+      org.categories << cat
+    end if category_ids
   end
 
   def self.import_category_mappings(filename, limit)
@@ -110,47 +111,32 @@ class Organization < ActiveRecord::Base
 
   def self.create_from_array(row, validate)
     check_columns_in(row)
-    return nil if row[@@column_mappings[:date_removed]]
-    address = Address.parse_address(row[@@column_mappings[:address]])
+    organization_name = row[@@column_mappings[:name]].to_s.humanized_all_first_capitals
+    
+    return nil if row[@@column_mappings[:date_removed]]      # don't create org if deleted
+    return nil if Organization.find_by_name(organization_name)     # don't create existing org
 
+    #return nil if Organization.removed_from_register?(row)
+    #return nil if Organization.already_exists?(organization_name)
+
+    org = build_organization_from_array(row, organization_name)
+
+    org.save! validate: validate
+    org
+  end
+
+  def self.build_organization_from_array(row, organization_name)
     org = Organization.new
-    org.name = row[@@column_mappings[:name]].to_s.humanized_all_first_capitals
-    #POSSIBLE APPPROACH BELOW ... OR COULD PUT ALL NEW STUFF IN SEPARATE METHOD CALLED UPDATE_CATEGORIES
-    # grab all classifications
-    if Organization.find_by_name(org.name)
-      # check for classifications and add as necessary
-      # add them to existing organization
-      return nil
-    end
-    # add them to new organization
-
+    address = Address.parse_address(row[@@column_mappings[:address]])
+    org.name = organization_name
     org.description = self.humanize_description(row[@@column_mappings[:description]])
     org.address = address[:address].humanized_all_first_capitals
     org.postcode = address[:postcode]
     org.website = row[@@column_mappings[:website]]
     org.telephone = row[@@column_mappings[:telephone]]
-
-    # this commented throttling code might work well for db:seed, but
-    # relies of hard validation failures, which we must avoid
-    # in the normal operation of the app
-    #begin
-      org.save! validate: validate
-    #rescue ActiveRecord::RecordInvalid => e
-      #if e.message =~ /Gmaps4rails address Address invalid/
-        #begin
-          #Gmaps4rails.geocode(org.gmaps4rails_address)
-        #rescue Gmaps4rails::GeocodeStatus => e
-          #if e.message =~ /OVER_QUERY_LIMIT/
-            ## throttle the rate of saves
-            #sleep(2000)
-            #org.save! validate: validate
-          #end
-        #end
-      #end
-    #end
-
-    org
+    return org
   end
+  private_class_method :build_organization_from_array
 
   def self.import_addresses(filename, limit, validation = true)
     csv_text = File.open(filename, 'r:ISO-8859-1')
