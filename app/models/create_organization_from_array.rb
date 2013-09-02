@@ -27,8 +27,8 @@ class CreateOrganizationFromArray
   end
 
   def build_organization_from_array(organization_name)
-    org = Organization.new
     address = Address.new(@row[@mappings[:address]]).parse
+<<<<<<< HEAD
     org.name = organization_name
     org.description = DescriptionHumanizer.call(@row[@mappings[:description]])
     org.address = FirstCapitalsHumanizer.call(address[:address])
@@ -36,6 +36,16 @@ class CreateOrganizationFromArray
     org.website = @row[@mappings[:website]]
     org.telephone = @row[@mappings[:telephone]]
     return org
+=======
+    org = Organization.new({
+      name:organization_name, 
+      address: FirstCapitalsHumanizer.call(address[:address]),
+      description: DescriptionHumanizer.call((@row[@mappings[:description]])),
+      postcode: address[:postcode],
+      website: @row[@mappings[:website]],
+      telephone: @row[@mappings[:telephone]]
+    })
+>>>>>>> Add specs for CreateOrganizationFromArray service class
   end
 
 end

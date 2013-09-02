@@ -1,5 +1,7 @@
 require 'csv'
 require 'active_support/all'
+require_relative '../../app/models/address'
+require_relative '../../app/models/description_humanizer'
 require_relative '../../app/models/first_capitals_humanizer'
 require_relative '../../app/models/create_organization_from_array'
 
@@ -9,8 +11,8 @@ describe CreateOrganizationFromArray, "#call" do
   let(:service) { CreateOrganizationFromArray.new(row, mappings) }
   let(:mappings) do 
     {name: 'Title',
-      address: 'Contact Address',
-      description: 'Activities'}
+     address: 'Contact Address',
+     description: 'Activities'}
   end
   let(:headers) do 
     'Title,Charity Number,Activities,Contact Name,Contact Address,website,Contact Telephone,date registered,date removed,accounts date,spending,income,company number,OpenlyLocalURL,twitter account name,facebook account name,youtube account name,feed url,Charity Classification,signed up for 1010,last checked,created at,updated at,Removed?'.split(',')
@@ -22,26 +24,23 @@ describe CreateOrganizationFromArray, "#call" do
     CSV::Row.new(headers, fields.flatten)
   end
 
-  pending 'create Organization from csv file without running validations' do 
-    let(:organization) { stub(:organization) }
-    before do 
-      Organization.stub.(:find_by_name) { organization }
-    end
-    subject { service.call(false) } 
-
-    its(:name) { should == 'Harrow Baptist Church' }
+  let(:organization) { double(:organization) }
+  before do 
+    Organization.stub(:find_by_name) { nil }
+    Organization.stub(:new) { organization }
+    organization.should_receive(:save!) { true }
   end
 
-  pending 'should save Organization from file without running validations' do
-    Gmaps4rails.should_not_receive(:geocode)
-    org = Organization.create_from_array(row, false)
-    expect(org.name).to eq('Harrow Baptist Church')
-    expect(org.description).to eq('No information recorded')
-    expect(org.address).to eq('Harrow Baptist Church, College Road, Harrow')
-    expect(org.postcode).to eq('HA1 1BA')
-    expect(org.website).to eq('http://www.harrow-baptist.org.uk')
-    expect(org.telephone).to eq('020 8863 7837')
-    expect(org.donation_info).to eq(nil)
+  context 'create Organization from csv file without running validations' do 
+    subject { service.call(true) } 
+
+    it { should == organization }
+  end
+
+  context 'should save Organization from file without running validations' do
+    subject { service.call(false) } 
+
+    it { should == organization }
   end
 
 end
