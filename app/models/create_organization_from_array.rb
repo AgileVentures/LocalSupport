@@ -9,10 +9,7 @@ class CreateOrganizationFromArray
     check_columns_in
     organization_name = FirstCapitalsHumanizer.call(@row[@mappings[:name]])
     return nil if @row[@mappings[:date_removed]]
-if Organization.find_by_name(organization_name)
-  puts "here"
-    return nil 
-end
+    return nil if Organization.find_by_name(organization_name)
 
     org = build_organization_from_array(organization_name)
 
@@ -33,7 +30,7 @@ end
     org = Organization.new
     address = Address.new(@row[@mappings[:address]]).parse
     org.name = organization_name
-    org.description = humanize_description(@row[@mappings[:description]])
+    org.description = DescriptionHumanizer.call(@row[@mappings[:description]])
     org.address = FirstCapitalsHumanizer.call(address[:address])
     org.postcode = address[:postcode]
     org.website = @row[@mappings[:website]]
