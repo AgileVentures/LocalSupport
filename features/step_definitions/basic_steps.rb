@@ -16,7 +16,7 @@ And /^I add "(.*?)" as an admin for "(.*?)" charity$/ do |admin_email, charity|
   steps %Q{ And I am on the edit charity page for "#{charity}"}
   fill_in 'organization_admin_email_to_add', :with => admin_email
   steps %Q{
-  And I press "Update Organization"}
+  And I press "Update Organisation"}
 end
 Then /^I should see the no charity admins message$/ do
   expect(page).to have_content "This organisation has no admins yet"
@@ -77,7 +77,7 @@ Given /^I update "(.*?)" charity address to be "(.*?)"( when Google is indispose
     Given I am on the charity page for "#{name}"
     And I follow "Edit"
     And I edit the charity address to be "#{address}" #{indisposed ? 'when Google is indisposed':''}
-    And I press "Update Organization"
+    And I press "Update Organisation"
   }
 end
 
@@ -86,7 +86,7 @@ Given /^I have created a new organization$/ do
     Given I am on the home page
     And I follow "New Organization"
     And I fill in the new charity page validly
-    And I press "Create Organization"
+    And I press "Create Organisation"
    }
 end
 
@@ -94,7 +94,7 @@ Given /^I furtively update "(.*?)" charity address to be "(.*?)"$/ do |name, add
   steps %Q{
     Given I am furtively on the edit charity page for "#{name}"
     And I edit the charity address to be "#{address}"
-    And I press "Update Organization"
+    And I press "Update Organisation"
   }
 end
 

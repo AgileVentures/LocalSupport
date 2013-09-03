@@ -29,7 +29,7 @@ Scenario: Successfully change the donation url for a charity
   And I sign in as "registered_user@example.com" with password "pppppppp"
   Given I am on the edit charity page for "Friendly"
   And I edit the donation url to be "http://www.friendly.com/donate"
-  And I press "Update Organization"
+  And I press "Update Organisation"
   Then I should be on the charity page for "Friendly"
   And I should see "Organization was successfully updated"
   And the donation_info URL for "Friendly" should refer to "http://www.friendly.com/donate"
