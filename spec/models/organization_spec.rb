@@ -123,14 +123,6 @@ describe Organization do
     expect(@org1).to respond_to(:users)
   end
 
-  it 'must be able to humanize description' do
-    expect(Organization.humanize_description('THIS IS A GOVERNMENT STRING')).to eq('This is a government string')
-  end
-
-  it 'must be able to humanize nil description' do
-    expect(Organization.humanize_description(nil)).to eq(nil)
-  end
-
   it 'can humanize with all first capitals' do
     expect("HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW".humanized_all_first_capitals).to eq("Harrow Baptist Church, College Road, Harrow")
   end
@@ -240,20 +232,6 @@ describe Organization do
       }).to raise_error
     end
 
-    it 'should save Organization from file without running validations' do
-      #As validations are not going to run, calls to Gmaps API won't be performed too
-      Gmaps4rails.should_not_receive(:geocode)
-      fields = CSV.parse('HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
-      row = CSV::Row.new(@headers, fields.flatten)
-      org = Organization.create_from_array(row, false)
-      expect(org.name).to eq('Harrow Baptist Church')
-      expect(org.description).to eq('No information recorded')
-      expect(org.address).to eq('Harrow Baptist Church, College Road, Harrow')
-      expect(org.postcode).to eq('HA1 1BA')
-      expect(org.website).to eq('http://www.harrow-baptist.org.uk')
-      expect(org.telephone).to eq('020 8863 7837')
-      expect(org.donation_info).to eq(nil)
-    end
 
     def create_organization(fields)
       row = CSV::Row.new(@headers, fields.flatten)

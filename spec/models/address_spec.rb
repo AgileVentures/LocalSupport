@@ -1,17 +1,28 @@
-require 'spec_helper'
+require_relative '../../app/models/address'
 
-describe 'Address' do
+describe Address, "#parse" do 
+  let(:address) { Address.new(address_to_parse) }
+  subject { address.parse }
 
-  it 'can extract postcode and address' do
-    expect(Address.parse_address('HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA')).to eq({:address => 'HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW', :postcode => 'HA1 1BA'})
+  context 'must be able to extract postcode and address' do
+    let(:address_to_parse) do 
+      'HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA'
+    end
+
+    it { should eql(:address => 'HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW', :postcode => 'HA1 1BA') }
   end
 
-  it 'can handle postcode extraction when no postcode' do
-    expect(Address.parse_address('HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW')).to eq({:address =>'HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW', :postcode => ''})
+  context 'must be able to handle postcode extraction when no postcode' do
+    let(:address_to_parse) do 
+      'HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW'
+    end
+    it { should eql(:address =>'HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW', :postcode => '') }
   end
 
-  it 'can handle postcode extraction when nil address' do
-    expect(Address.parse_address(nil)).to eq({:address =>'', :postcode => ''})
+  context 'must be able to handle postcode extraction when nil address' do
+    let(:address_to_parse) { nil } 
+
+    it { should eql(:address =>'', :postcode => '') }
   end
 
 end
