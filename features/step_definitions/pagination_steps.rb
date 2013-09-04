@@ -7,6 +7,7 @@ Given /^I have created (\d+) organizations$/ do |number|
     # getaddrinfo: nodename nor servname provided, or not known (SocketError)
     # otherwise ...
     #Gmaps4rails.stub(:geocode => nil)
+    stub_request_with_address("64 pinner road")
     FactoryGirl.create(:organization, :name => "org#{n}", :description => "description#{n}")
   end
 end
