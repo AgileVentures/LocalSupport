@@ -30,7 +30,7 @@ Feature: Admin editing charity
     Given I am signed in as a non-admin
     And I am furtively on the edit charity page for "Friendly"
     Then I should be on the charity page for "Friendly"
-    And I should see "You don't have permission"
+    And I should see permission denied
 
   Scenario: Unsuccessfully attempt to create charity without being signed-in
     # should this be checking for absence of link to the new org page?
@@ -65,13 +65,13 @@ Feature: Admin editing charity
     Given I am signed in as a non-admin
     And I delete "Friendly" charity
     Then I should be on the charity page for "Friendly"
-    And I should see "You don't have permission"
+    And I should see permission denied
 
   Scenario: Non-admin unsuccessfully attempts to create an organization
     Given I am signed in as a non-admin
     And I create "Unwanted" org
     Then I should be on the organizations index page
-    Then I should see "You don't have permission"
+    Then I should see permission denied
     And I should not see "Organization was successfully created."
     And "Unwanted" org should not exist
 

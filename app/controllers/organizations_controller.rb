@@ -1,21 +1,15 @@
 class OrganizationsController < ApplicationController
   # GET /organizations/search
   # GET /organizations/search.json
-  @@SEARCH_NOT_FOUND = "Sorry, it seems we don't have quite what you are looking for."
   before_filter :authenticate_user!, :except => [:search, :index, :show]
+
   def search
-    # should this be a model method with a model spec around it ...?
-
     @query_term = params[:q]
-    @category_id = params["category"]["id"] if !params["category"].nil? && !params["category"]["id"].blank?
-    @category = Category.find_by_id(@category_id) unless @category_id.blank?
-
+    @category_id = params.try(:[],'category').try(:[],'id')
+    @category = Category.find_by_id(@category_id)
     @organizations = Organization.search_by_keyword(@query_term).filter_by_category(@category_id)
-    # TODO work out where is a good place to store these strings
-    flash.now[:alert] = @@SEARCH_NOT_FOUND if @organizations.empty?
+    flash.now[:alert] = SEARCH_NOT_FOUND if @organizations.empty?
     @json = gmap4rails_with_popup_partial(@organizations,'popup')
-    # TODO would it make sense to move the following to the view
-    # to avoid cluttering the controller?
     @category_options = Category.html_drop_down_options
     render :template =>'organizations/index'
   end
@@ -47,7 +41,7 @@ class OrganizationsController < ApplicationController
     #TODO Eliminate code duplication for permissions across methods
     @organization = Organization.find(params[:id])
     unless current_user.try(:can_edit?,@organization)
-      flash[:notice] = "You don't have permission"
+      flash[:notice] = PERMISSION_DENIED
       redirect_to organization_path(params[:id]) and return false
     end
   end
@@ -58,7 +52,7 @@ class OrganizationsController < ApplicationController
     # model filters for logged in users, but we check here if that user is an admin
     # TODO refactor that to model responsibility?
      unless current_user.try(:admin?)
-       flash[:notice] = "You don't have permission"
+       flash[:notice] = PERMISSION_DENIED
        redirect_to organizations_path and return false
      end
     @organization = Organization.new(params[:organization])
@@ -76,7 +70,7 @@ class OrganizationsController < ApplicationController
     @organization = Organization.find(params[:id])
     params[:organization][:admin_email_to_add] = params[:organization_admin_email_to_add] if params[:organization]
     unless current_user.try(:can_edit?,@organization)
-      flash[:notice] = "You don't have permission"
+      flash[:notice] = PERMISSION_DENIED
       redirect_to organization_path(params[:id]) and return false
     end
     if @organization.update_attributes_with_admin(params[:organization])
@@ -90,7 +84,7 @@ class OrganizationsController < ApplicationController
   # DELETE /organizations/1.json
   def destroy
     unless current_user.try(:admin?)
-      flash[:notice] = "You don't have permission"
+      flash[:notice] = PERMISSION_DENIED
       redirect_to organization_path(params[:id]) and return false
     end
     @organization = Organization.find(params[:id])
