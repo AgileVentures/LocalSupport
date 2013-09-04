@@ -97,12 +97,10 @@ class Organization < ActiveRecord::Base
     csv_text = File.open(filename, 'r:ISO-8859-1')
     count = 0
     CSV.parse(csv_text, :headers => true).each do |row|
-      if count >= limit
-        break
-      end
+      break if count >= limit
       count += 1
       begin
-        self.import_categories_from_array(row)
+        self.import_categories_from_array(row)  #  <--- yield
       rescue CSV::MalformedCSVError => e
         logger.error(e.message)
       end
@@ -117,12 +115,10 @@ class Organization < ActiveRecord::Base
     csv_text = File.open(filename, 'r:ISO-8859-1')
     count = 0
     CSV.parse(csv_text, :headers => true).each do |row|
-      if count >= limit
-        break
-      end
+      break if count >= limit
       count += 1
       begin
-        self.create_from_array(row, validation)
+        self.create_from_array(row, validation)  #  <--- yield
       rescue CSV::MalformedCSVError => e
         logger.error(e.message)
       end

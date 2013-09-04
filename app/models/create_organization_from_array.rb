@@ -6,8 +6,8 @@ class CreateOrganizationFromArray
   end
 
   def call(validate)
-    return nil if @row[@mappings[:date_removed]]
-    return nil if Organization.find_by_name(organization_name)
+    return nil if organization_is_removed?
+    return nil if organization_already_exists?
 
     org = build_organization
 
@@ -18,6 +18,14 @@ class CreateOrganizationFromArray
   private
   def organization_name
     @organization_name ||= FirstCapitalsHumanizer.call(@row[@mappings[:name]])
+  end
+
+  def organization_is_removed?
+    @row[@mappings[:date_removed]] != nil
+  end
+
+  def organization_already_exists?
+    Organization.find_by_name(organization_name) != nil
   end
 
   def normalize(mappings)
