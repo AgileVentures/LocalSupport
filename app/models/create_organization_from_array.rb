@@ -7,17 +7,20 @@ class CreateOrganizationFromArray
 
   def call(validate)
     check_columns_in
-    organization_name = FirstCapitalsHumanizer.call(@row[@mappings[:name]])
     return nil if @row[@mappings[:date_removed]]
     return nil if Organization.find_by_name(organization_name)
 
-    org = build_organization_from_array(organization_name)
+    org = build_organization(organization_name)
 
     org.save! validate: validate
     org
   end
 
   private
+  def organization_name
+    @organization_name ||= FirstCapitalsHumanizer.call(@row[@mappings[:name]])
+  end
+
   def check_columns_in
     @mappings.each_value do |column_name|
       unless @row.header?(column_name)
@@ -26,7 +29,7 @@ class CreateOrganizationFromArray
     end
   end
 
-  def build_organization_from_array(organization_name)
+  def build_organization(organization_name)
     address = Address.new(@row[@mappings[:address]]).parse
     org = Organization.new({
       name:organization_name, 

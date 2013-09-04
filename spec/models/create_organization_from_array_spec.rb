@@ -31,7 +31,7 @@ describe CreateOrganizationFromArray, "#call" do
     organization.should_receive(:save!) { true }
   end
 
-  context 'create Organization from csv file without running validations' do 
+  context 'create Organization from csv file running validations' do 
     subject { service.call(true) } 
 
     it { should == organization }
