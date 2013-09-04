@@ -16,9 +16,13 @@ class CSVHeader
     @header_names = header_names
   end
 
+  def names
+    @header_names
+  end
+
   def method_missing(name, *args)
-    return @header_names[name.to_s] if @header_names.key?(name.to_s)
-    return @header_names[name.to_sym] if @header_names.key?(name.to_sym)
+    return names[name.to_s] if names.key?(name.to_s)
+    return names[name.to_sym] if names.key?(name.to_sym)
     super
   end
 end
