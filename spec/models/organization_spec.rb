@@ -12,20 +12,50 @@ describe Organization do
     @category4 = FactoryGirl.create(:category, :charity_commission_id => 302)
     @category5 = FactoryGirl.create(:category, :charity_commission_id => 306)
     @org1 = FactoryGirl.build(:organization, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate')
-    Gmaps4rails.should_receive(:geocode)
+    Gmaps4rails.stub(:geocode => nil)
     @org1.save!
     @org2 = FactoryGirl.build(:organization, :name => 'Indian Elders Association',
                               :description => 'Care for the elderly', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.indian-elders.co.uk/donate')
-    Gmaps4rails.should_receive(:geocode)
     @org2.categories << @category1
     @org2.categories << @category2
     @org2.save!
     @org3 = FactoryGirl.build(:organization, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.age-uk.co.uk/donate')
-    Gmaps4rails.should_receive(:geocode)
     @org3.categories << @category1
     @org3.save!
   end
 
+  context 'adding charity admins by email' do
+    it 'handles a non-existent email with an error' do
+      expect(@org1.update_attributes_with_admin({:admin_email_to_add => 'nonexistentuser@example.com'})).to be_false
+      expect(@org1.errors[:administrator_email]).to eq ["The user email you entered,'nonexistentuser@example.com', does not exist in the system"]
+    end
+    it 'does not update other attributes when there is a non-existent email' do
+      expect(@org1.update_attributes_with_admin({:name => 'New name',:admin_email_to_add => 'nonexistentuser@example.com'})).to be_false
+      expect(@org1.name).not_to eq 'New name'
+    end
+    it 'handles a nil email' do
+      expect(@org1.update_attributes_with_admin({:admin_email_to_add => nil})).to be_true
+      expect(@org1.errors.any?).to be_false
+    end
+    it 'handles a blank email' do
+      expect(@org1.update_attributes_with_admin({:admin_email_to_add => ''})).to be_true
+      expect(@org1.errors.any?).to be_false
+    end
+    it 'adds existent user as charity admin' do
+      usr = FactoryGirl.create(:user, :email => 'user@example.org')
+      expect(@org1.update_attributes_with_admin({:admin_email_to_add => usr.email})).to be_true
+      expect(@org1.users).to include usr
+    end
+    it 'updates other attributes with blank email' do
+      expect(@org1.update_attributes_with_admin({:name => 'New name',:admin_email_to_add => ''})).to be_true
+      expect(@org1.name).to eq 'New name'
+    end
+    it 'updates other attributes with valid email' do
+      usr = FactoryGirl.create(:user, :email => 'user@example.org')
+      expect(@org1.update_attributes_with_admin({:name => 'New name',:admin_email_to_add => usr.email})).to be_true
+      expect(@org1.name).to eq 'New name'
+    end
+  end
   it 'responds to filter by category' do
     expect(Organization).to respond_to(:filter_by_category)
   end
@@ -78,6 +108,7 @@ describe Organization do
     expect(result).to include @org2, @org3
     expect(result).not_to include @org1
   end
+
   it 'returns all orgs when both filter by category and search by keyword are nil args' do
     result = Organization.search_by_keyword(nil).filter_by_category(nil)
     expect(result).to include @org1, @org2, @org3
@@ -90,26 +121,6 @@ describe Organization do
 
   it 'has users' do
     expect(@org1).to respond_to(:users)
-  end
-
-  it 'must be able to humanize description' do
-    expect(Organization.humanize_description('THIS IS A GOVERNMENT STRING')).to eq('This is a government string')
-  end
-
-  it 'must be able to humanize nil description' do
-    expect(Organization.humanize_description(nil)).to eq(nil)
-  end
-
-  it 'must be able to extract postcode and address' do
-    expect(Organization.parse_address('HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA')).to eq({:address => 'HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW', :postcode => 'HA1 1BA'})
-  end
-
-  it 'must be able to handle postcode extraction when no postcode' do
-    expect(Organization.parse_address('HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW')).to eq({:address =>'HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW', :postcode => ''})
-  end
-  
-  it 'must be able to handle postcode extraction when nil address' do
-     expect(Organization.parse_address(nil)).to eq({:address =>'', :postcode => ''})
   end
 
   it 'can humanize with all first capitals' do
@@ -131,6 +142,8 @@ describe Organization do
       expect(org).to be_nil
     end
 
+    # the following 6 or so feel more like integration tests than unit tests
+    # TODO should they be moved into another file?
     it 'must be able to generate multiple Organizations from text file' do
       mock_org = double("org")
       [:name, :name=, :description=, :address=, :postcode=, :website=, :telephone=].each do |method|
@@ -219,20 +232,6 @@ describe Organization do
       }).to raise_error
     end
 
-    it 'should save Organization from file without running validations' do
-      #As validations are not going to run, calls to Gmaps API won't be performed too
-      Gmaps4rails.should_not_receive(:geocode)
-      fields = CSV.parse('HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
-      row = CSV::Row.new(@headers, fields.flatten)
-      org = Organization.create_from_array(row, false)
-      expect(org.name).to eq('Harrow Baptist Church')
-      expect(org.description).to eq('No information recorded')
-      expect(org.address).to eq('Harrow Baptist Church, College Road, Harrow')
-      expect(org.postcode).to eq('HA1 1BA')
-      expect(org.website).to eq('http://www.harrow-baptist.org.uk')
-      expect(org.telephone).to eq('020 8863 7837')
-      expect(org.donation_info).to eq(nil)
-    end
 
     def create_organization(fields)
       row = CSV::Row.new(@headers, fields.flatten)
@@ -272,6 +271,14 @@ describe Organization do
         [207,305,108,302,306].each do |id|
           expect(org.categories).to include(Category.find_by_charity_commission_id(id))
         end
+      end
+
+      it 'must fail gracefully when encountering error in importing categories from text file' do
+        attempted_number_to_import = 2
+        Organization.stub(:import_categories_from_array).and_raise(CSV::MalformedCSVError)
+        expect(lambda {
+          Organization.import_category_mappings 'db/data.csv', attempted_number_to_import
+        }).to change(Organization, :count).by(0)
       end
 
       it "should import categories when matching org is found" do

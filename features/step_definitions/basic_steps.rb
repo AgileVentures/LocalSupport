@@ -2,6 +2,25 @@ require 'webmock/cucumber'
 require 'uri-handler'
 include ApplicationHelper
 
+Then /^"(.*?)" should be a charity admin for "(.*?)" charity$/ do |email, org|
+  org = Organization.find_by_name org
+  usr = User.find_by_email(email)
+  expect(usr).not_to be_nil
+  expect(org.users).to include usr
+end
+
+Then /^I should see the cannot add non registered user "(.*?)" as charity admin message$/ do |email|
+  page.should have_content "The user email you entered,'#{email}', does not exist in the system"
+end
+And /^I add "(.*?)" as an admin for "(.*?)" charity$/ do |admin_email, charity|
+  steps %Q{ And I am on the edit charity page for "#{charity}"}
+  fill_in 'organization_admin_email_to_add', :with => admin_email
+  steps %Q{
+  And I press "Update Organization"}
+end
+Then /^I should see the no charity admins message$/ do
+  expect(page).to have_content "This organisation has no admins yet"
+end
 Given /^I delete "(.*?)" charity$/ do |name|
   org = Organization.find_by_name name
   page.driver.submit :delete, "/organizations/#{org.id}", {}
@@ -10,6 +29,12 @@ end
 Then /^I should not see an edit button for "(.*?)" charity$/ do |name|
   org = Organization.find_by_name name
   expect(page).not_to have_link :href => edit_organization_path(org.id)
+end
+
+Then /^I should see "(.*?)" in the charity admin email$/ do |email|
+  expect(page).to have_content "Organisation administrator emails: "
+  expect(page).to have_selector "ol"
+  expect(page).to have_selector "li", :text => email
 end
 
 Then /^show me the page$/ do
@@ -111,7 +136,7 @@ end
 
 Then /^I should( not)? see the no results message$/ do |negate| 
   expectation_method = negate ? :not_to : :to
-  expect(page).send(expectation_method, have_content("Sorry, it seems we don't quite have what you are looking for."))
+  expect(page).send(expectation_method, have_content("Sorry, it seems we don't have quite what you are looking for."))
 end
 
 Then /^I should not see any address or telephone information for "([^"]*?)" and "([^"]*?)"$/ do |name1, name2|

@@ -20,4 +20,9 @@ describe "organizations/edit.html.erb" do
     rendered.should have_field :organization_donation_info, 
       :with => "http://www.friendly.com/donate"
   end
+
+  it "renders a form field to add an administrator email" do
+    render
+    rendered.should have_field :organization_admin_email_to_add
+  end
 end
