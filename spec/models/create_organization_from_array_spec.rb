@@ -1,5 +1,6 @@
 require 'csv'
 require 'active_support/all'
+require_relative '../../app/models/csv_header'
 require_relative '../../app/models/address'
 require_relative '../../app/models/description_humanizer'
 require_relative '../../app/models/first_capitals_humanizer'
@@ -8,7 +9,7 @@ require_relative '../../app/models/create_organization_from_array'
 class Organization; end
 
 describe CreateOrganizationFromArray, "#call" do 
-  let(:service) { CreateOrganizationFromArray.new(row, mappings) }
+  let(:service) { CreateOrganizationFromArray.new(row) }
   let(:mappings) do 
     {name: 'Title',
      address: 'Contact Address',
