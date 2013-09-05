@@ -108,7 +108,7 @@ class Organization < ActiveRecord::Base
   end
 
   def self.create_from_array(row, validate)
-    CreateOrganizationFromArray.new(row, @@column_mappings).call(validate)
+    CreateOrganizationFromArray.new(row).call(validate)
   end
 
   def self.import_addresses(filename, limit, validation = true)
