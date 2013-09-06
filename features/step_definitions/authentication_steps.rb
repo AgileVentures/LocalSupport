@@ -69,6 +69,10 @@ Then /^I should not be signed in as any user$/ do
   }
 end
 
+Given /^I am not signed in as any user$/ do
+  step "I should not be signed in as any user"
+end
+
 When /^I sign out$/ do
   click_link 'Sign Out' 
 end
