@@ -93,6 +93,12 @@ class OrganizationsController < ApplicationController
     redirect_to organizations_url
   end
 
+  def grab
+    if current_user.blank?
+      redirect_to user_session_path
+    end
+  end
+
   private
   def gmap4rails_with_popup_partial(item, partial)
     item.to_gmaps4rails  do |org, marker|

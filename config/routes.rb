@@ -5,7 +5,11 @@ LocalSupport::Application.routes.draw do
   match 'pages/disclaimer' => 'pages#disclaimer'
   match 'pages/aboutus' => 'pages#aboutus'
   match 'pages/contact' => 'pages#contact'
-  resources :organizations
+  resources :organizations do
+    member do
+      post 'grab'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

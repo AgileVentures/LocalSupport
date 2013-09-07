@@ -437,4 +437,14 @@ describe OrganizationsController do
     end
   end
 
+  describe "#grab" do
+    context "when user is not signed in" do
+      it "redirects to sign-in" do
+        subject.current_user.should be_nil
+        post :grab, id: 7
+        response.should redirect_to user_session_path
+      end
+    end
+  end
+
 end
