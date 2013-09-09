@@ -143,7 +143,7 @@ describe Organization do
     end
 
     # the following 6 or so feel more like integration tests than unit tests
-    # TODO should they be moved into another file?
+    # TODO should they be moved into another file?  OR MAYBE TO CUCUMBER???
     it 'must be able to generate multiple Organizations from text file' do
       mock_org = double("org")
       [:name, :name=, :description=, :address=, :postcode=, :website=, :telephone=].each do |method|
