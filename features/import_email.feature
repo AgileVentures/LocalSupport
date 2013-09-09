@@ -11,6 +11,7 @@ Background: organizations have been added to database
     | I hate animals    | hates birds and beasts   | 84 pinner road | HA1 4HF  | http://c.com/ |
   And a file exists:
     | name              | email               |
+    | name              | email               |
     | I love dogs       | admin@dogs.com      |
     | I love cats       | admin@cats.com      |
     | I hate animals    | admin@cruelty.com   |

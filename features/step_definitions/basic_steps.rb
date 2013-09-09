@@ -283,5 +283,5 @@ And(/^a file exists:$/) do |table|
 end
 
 Then(/^"(.*?)" should have email "(.*?)"$/) do |org, email|
-  org.email.should eq email
+  Organization.find_by_name(org).email.should eq email
 end
