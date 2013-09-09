@@ -72,7 +72,7 @@ describe OrganizationsController do
 
       it "handles empty string id gracefully" do
         Organization.should_receive(:search_by_keyword).with('test').and_return(result)
-        result.should_receive(:filter_by_category).with(nil).and_return(result)
+        result.should_receive(:filter_by_category).with("").and_return(result)
         get :search, :q => 'test', "category" =>  {"id"=>""}
         assigns(:query_term).should eq 'test'
       end
@@ -96,7 +96,7 @@ describe OrganizationsController do
       Category.should_receive(:find_by_id).with("1").and_return(category)
       ActionDispatch::Flash::FlashHash.any_instance.should_receive(:now).and_return double_now_flash
       ActionDispatch::Flash::FlashHash.any_instance.should_not_receive(:[]=)
-      double_now_flash.should_receive(:[]=).with(:alert, "Sorry, it seems we don't have quite what you are looking for.")
+      double_now_flash.should_receive(:[]=).with(:alert, SEARCH_NOT_FOUND)
       get :search , :q => 'no results' , "category" => {"id"=>"1"}
     end
 

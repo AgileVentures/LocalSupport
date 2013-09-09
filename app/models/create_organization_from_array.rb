@@ -1,8 +1,8 @@
 class CreateOrganizationFromArray
 
-  def initialize(row, mappings)
+  def initialize(row)
     @row = row
-    @mappings = normalize(mappings)
+    @mappings = normalize(CSVHeader.build.names)
   end
 
   def call(validate)

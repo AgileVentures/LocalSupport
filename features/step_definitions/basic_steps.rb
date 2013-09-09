@@ -2,6 +2,11 @@ require 'webmock/cucumber'
 require 'uri-handler'
 include ApplicationHelper
 
+Then /^I should see permission denied$/ do
+  page.should have_content PERMISSION_DENIED
+end
+
+
 Then /^"(.*?)" should be a charity admin for "(.*?)" charity$/ do |email, org|
   org = Organization.find_by_name org
   usr = User.find_by_email(email)
@@ -136,7 +141,7 @@ end
 
 Then /^I should( not)? see the no results message$/ do |negate| 
   expectation_method = negate ? :not_to : :to
-  expect(page).send(expectation_method, have_content("Sorry, it seems we don't have quite what you are looking for."))
+  expect(page).send(expectation_method, have_content(SEARCH_NOT_FOUND))
 end
 
 Then /^I should not see any address or telephone information for "([^"]*?)" and "([^"]*?)"$/ do |name1, name2|

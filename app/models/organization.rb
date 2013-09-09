@@ -94,31 +94,29 @@ class Organization < ActiveRecord::Base
   end
 
   def self.import_category_mappings(filename, limit)
-    csv_text = File.open(filename, 'r:ISO-8859-1')
-    count = 0
-    CSV.parse(csv_text, :headers => true).each do |row|
-      break if count >= limit
-      count += 1
-      begin
-        self.import_categories_from_array(row)  #  <--- yield
-      rescue CSV::MalformedCSVError => e
-        logger.error(e.message)
-      end
+    import(filename, limit, false) do |row, validation| 
+      import_categories_from_array(row) 
     end
   end
 
   def self.create_from_array(row, validate)
-    CreateOrganizationFromArray.new(row, @@column_mappings).call(validate)
+    CreateOrganizationFromArray.new(row).call(validate)
   end
 
   def self.import_addresses(filename, limit, validation = true)
+    import(filename, limit, validation) do |row, validation| 
+       create_from_array(row, validation) 
+    end
+  end
+
+  def self.import(filename, limit, validation, &block)
     csv_text = File.open(filename, 'r:ISO-8859-1')
     count = 0
     CSV.parse(csv_text, :headers => true).each do |row|
       break if count >= limit
       count += 1
       begin
-        self.create_from_array(row, validation)  #  <--- yield
+        yield(row, validation)
       rescue CSV::MalformedCSVError => e
         logger.error(e.message)
       end
