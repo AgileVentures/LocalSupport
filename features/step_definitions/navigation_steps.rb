@@ -48,3 +48,7 @@ Given /^I am furtively on the edit charity page for "(.*?)"$/ do |name|
   visit edit_organization_path org.id
 end
 
+Then(/^"(.+)" id is in the URL$/) do |organization_name|
+  organization = Organization.find_by_name organization_name
+  current_url.should eql "http://www.example.com/users/sign_in?organization_id=#{organization.id}"
+end
