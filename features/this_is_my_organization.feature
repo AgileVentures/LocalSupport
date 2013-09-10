@@ -12,14 +12,18 @@ Feature: This is my organization
     | name            | address        |
     | My Organization | 83 pinner road |
 
-  Scenario: User is not signed in and clicks on the "This is my organization" link
+  Scenario: I am a guest user who signs up to be admin of my organization
     Given I am not signed in as any user
     When I am on the charity page for "My Organization"
     And I press "This is my organization"
     Then I should be on the sign in page
+
+    #I can sign in or sign up from here
     
-  Scenario: I request to be admin of my organization
+  Scenario: I am a signed in user who requests to be admin of my organization
     Given I am signed in as a non-admin
     When I am on the charity page for "My Organization"
-    Then I should see "This is my organization"
+    And I press "This is my organization"
+    Then I should be on the charity page for "My Organization"
+    And I should see ""
     
