@@ -441,8 +441,8 @@ describe OrganizationsController do
     context "when user is not signed in" do
       it "redirects to sign-in" do
         subject.current_user.should be_nil
-        post :grab, id: 7
-        response.should redirect_to user_session_path
+        post :grab, id: "7"
+        response.should redirect_to user_session_path(organization_id: 7)
       end
     end
   end

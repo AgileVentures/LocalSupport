@@ -1,7 +1,7 @@
 class OrganizationsController < ApplicationController
   # GET /organizations/search
   # GET /organizations/search.json
-  before_filter :authenticate_user!, :except => [:search, :index, :show]
+  before_filter :authenticate_user!, :except => [:search, :index, :show, :grab]
 
   def search
     @query_term = params[:q]
@@ -95,7 +95,7 @@ class OrganizationsController < ApplicationController
 
   def grab
     if current_user.blank?
-      redirect_to user_session_path
+      redirect_to user_session_path(organization_id: params[:id])
     end
   end
 
