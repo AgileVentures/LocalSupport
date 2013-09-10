@@ -18,7 +18,7 @@ Feature: This is my organization
     And I press "This is my organization"
     Then I should be on the sign in page
     And "My Organization" id is in the URL
-    When I sign in
+    When I sign in as "nonadmin@myorg.com" with password "mypassword1234"
     Then I should see "you have requested admin status on My Organization"
     And an email should be sent to the site admin 
 
