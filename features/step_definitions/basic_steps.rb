@@ -276,8 +276,9 @@ end
 
 And(/^a file exists:$/) do |table|
   CSV.open("db/email_test.csv", "wb") do |csv|
+    csv << table.hashes[0].keys
     table.hashes.each do |org|
-      csv << [org['name'], org['email']]
+      csv << org.values
     end
   end
 end

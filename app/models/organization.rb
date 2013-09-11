@@ -131,7 +131,7 @@ class Organization < ActiveRecord::Base
 
   def self.add_email(row, validation)
     org = find_by_name(row[0])
-    org.email = row[1]
+    org.email = row[7]
     org.save
   end
 
