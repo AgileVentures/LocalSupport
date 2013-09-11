@@ -131,8 +131,12 @@ class Organization < ActiveRecord::Base
 
   def self.add_email(row, validation)
     org = find_by_name(row[0])
-    org.email = row[7]
-    org.save
+    if org
+      org.email = row[7]
+      org.save
+    else
+       puts "#{row[0]} was not found"
+    end
   end
 
   def self.check_columns_in(row)
