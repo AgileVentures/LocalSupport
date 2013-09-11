@@ -5,8 +5,8 @@ Feature: This is my organization
 
   Background:
     Given the following users are registered:
-    | email              | password       | admin | organization    | confirmed_at        |
-    | nonadmin@myorg.com | mypassword1234 | false | My Organization | 2008-01-01 00:00:00 |
+    | email              | password       | admin | confirmed_at         |
+    | nonadmin@myorg.com | mypassword1234 | false | 2008-01-01 00:00:00  |
 
     And the following organizations exist:
     | name            | address        |
