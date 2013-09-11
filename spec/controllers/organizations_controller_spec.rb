@@ -439,10 +439,11 @@ describe OrganizationsController do
 
   describe "#grab" do
     context "when user is not signed in" do
-      it "redirects to sign-in" do
+      it "redirects to sign-in and the organization id is in session" do
         subject.current_user.should be_nil
         post :grab, id: "7"
-        response.should redirect_to user_session_path(organization_id: 7)
+        session[:organization_id].should eql "7"
+        response.should redirect_to user_session_path
       end
     end
   end

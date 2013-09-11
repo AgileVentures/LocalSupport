@@ -95,7 +95,8 @@ class OrganizationsController < ApplicationController
 
   def grab
     if current_user.blank?
-      redirect_to user_session_path(organization_id: params[:id])
+      session[:organization_id] = params[:id]
+      redirect_to user_session_path
     end
   end
 
