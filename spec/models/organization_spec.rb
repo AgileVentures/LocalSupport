@@ -390,7 +390,7 @@ describe Organization do
       Organization.should_receive(:find_by_name).with('friendly').and_return(@org1)
       @org1.should_receive(:email=).with('test@example.org')
       @org1.should_receive(:save)
-      Organization.add_email(fields = CSV.parse('friendly,test@example.org')[0],true)
+      Organization.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0],true)
     end
   end
 
