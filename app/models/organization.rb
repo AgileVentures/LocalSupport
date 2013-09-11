@@ -123,6 +123,18 @@ class Organization < ActiveRecord::Base
     end
   end
 
+  def self.import_emails(filename, limit, validation = true)
+    import(filename, limit, validation) do |row, validation|
+      add_email(row, validation)
+    end
+  end
+
+  def self.add_email(row, validation)
+    org = find_by_name(row[0])
+    org.email = row[1]
+    org.save
+  end
+
   def self.check_columns_in(row)
     @@column_mappings.each_value do |column_name|
       unless row.header?(column_name)

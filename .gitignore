@@ -31,6 +31,7 @@ linecache19-0.5.13.gem
 /bin/
 \#*#
 \.#*
+db/email_test.csv
 
 # ignore ruby version management stuff
 .rvmrc

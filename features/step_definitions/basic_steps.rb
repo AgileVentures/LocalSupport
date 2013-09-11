@@ -273,3 +273,15 @@ Then /^I debug$/ do
   breakpoint
   0
 end
+
+And(/^a file exists:$/) do |table|
+  CSV.open("db/email_test.csv", "wb") do |csv|
+    table.hashes.each do |org|
+      csv << [org['name'], org['email']]
+    end
+  end
+end
+
+Then(/^"(.*?)" should have email "(.*?)"$/) do |org, email|
+  Organization.find_by_name(org).email.should eq email
+end

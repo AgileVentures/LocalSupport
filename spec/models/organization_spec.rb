@@ -143,7 +143,7 @@ describe Organization do
     end
 
     # the following 6 or so feel more like integration tests than unit tests
-    # TODO should they be moved into another file?
+    # TODO should they be moved into another file?  OR MAYBE TO CUCUMBER???
     it 'must be able to generate multiple Organizations from text file' do
       mock_org = double("org")
       [:name, :name=, :description=, :address=, :postcode=, :website=, :telephone=].each do |method|
@@ -374,4 +374,24 @@ describe Organization do
   # not sure if we need SQL injection security tests like this ...
   # org = Organization.new(:address =>"blah", :gmaps=> ";DROP DATABASE;")
   # org = Organization.new(:address =>"blah", :name=> ";DROP DATABASE;")
+
+  describe "importing emails" do
+    it "should have a method import_emails" do
+      Organization.should respond_to(:import_emails)
+    end
+    it "should have a method import_emails" do
+      Organization.should_receive(:add_email)
+      Organization.should_receive(:import).with(nil,2,false) do |&arg|
+        Organization.add_email(&arg)
+      end
+      Organization.import_emails(nil,2,false)
+    end
+    it "should add email to org" do
+      Organization.should_receive(:find_by_name).with('friendly').and_return(@org1)
+      @org1.should_receive(:email=).with('test@example.org')
+      @org1.should_receive(:save)
+      Organization.add_email(fields = CSV.parse('friendly,test@example.org')[0],true)
+    end
+  end
+
 end
