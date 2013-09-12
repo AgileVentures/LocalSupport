@@ -32,3 +32,5 @@ Scenario: Sign up for a non-existent user
   And I should see "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
   And I should receive a "Confirmation instructions" email
 
+
+
