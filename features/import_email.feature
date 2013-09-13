@@ -14,9 +14,11 @@ Background: organizations have been added to database
     | I love dogs       |             |           |           |          |       |            | admin@dogs.com      |
     | I love cats       |             |           |           |          |       |            | admin@cats.com      |
     | I hate animals    |             |           |           |          |       |            | admin@cruelty.com   |
+    | I love people     |             |           |           |          |       |            | people@humanity.org |
 
   Scenario: import email addresses
     Given that I import emails
     Then "I love dogs" should have email "admin@dogs.com"
     Then "I love cats" should have email "admin@cats.com"
     Then "I hate animals" should have email "admin@cruelty.com"
+

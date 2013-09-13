@@ -386,6 +386,14 @@ describe Organization do
       end
       Organization.import_emails(nil,2,false)
     end
+    it 'should handle absence of org gracefully' do
+      Organization.should_receive(:find_by_name).with('i love people').and_return nil
+      STDOUT.should_receive(:puts).with("i love people was not found")
+      expect(lambda{
+        Organization.add_email(fields = CSV.parse('i love people,,,,,,,test@example.org')[0],true)
+      }).not_to raise_error
+      
+    end
     it "should add email to org" do
       Organization.should_receive(:find_by_name).with('friendly').and_return(@org1)
       @org1.should_receive(:email=).with('test@example.org')
