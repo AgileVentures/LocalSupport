@@ -130,12 +130,12 @@ class Organization < ActiveRecord::Base
   end
 
   def self.add_email(row, validation)
-    org = find_by_name(row[0])
-    if org
-      org.email = row[7]
-      org.save
+    orgs = where("UPPER(name) LIKE ? ","%#{row[0].try(:upcase)}%")
+    if orgs && orgs[0]
+      orgs[0].email = row[7]
+      orgs[0].save
     else
-       puts "#{row[0]} was not found"
+      puts "#{row[0]} was not found"
     end
   end
 
