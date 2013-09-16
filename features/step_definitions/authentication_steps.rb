@@ -19,8 +19,6 @@ Given /^I sign up as "(.*?)" with password "(.*?)" and password confirmation "(.
   fill_in "user_password" , :with => password
   fill_in "user_password_confirmation" , :with => password_confirmation
   click_button "Sign up"
-  user = User.new(:email => email, :password => password)
-  user.save!
 end
 
 Given /^I sign in as a charity worker with permission to edit "(.*?)"$/ do |name|
