@@ -9,10 +9,17 @@ Feature: If new user's email matches an org's email, the new user with have edit
       | name           | description             | address        | postcode | telephone | email             |
       | Friendly       | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | info@friendly.org |
 
-  Scenario: Sign up and edit
+  Scenario: Sign up and CANNOT edit
     Given I am on the sign up page
-    And I sign up as "tester@friendly.com" with password "12345678" and password confirmation "12345678"
-    And I sign in as "tester@friendly.com" with password "12345678" via email confirmation
+    And I sign up as "tester@friendly.org" with password "12345678" and password confirmation "12345678"
+    And I sign in as "tester@friendly.org" with password "12345678" via email confirmation
+    And I am on the charity page for "Friendly"
+    Then I should not see an edit button for "Friendly" charity
+
+  Scenario: Sign up and can edit
+    Given I am on the sign up page
+    And I sign up as "info@friendly.org" with password "12345678" and password confirmation "12345678"
+    And I sign in as "info@friendly.org" with password "12345678" via email confirmation
     And I am on the charity page for "Friendly"
     Then I should see an edit button for "Friendly" charity
 

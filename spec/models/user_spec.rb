@@ -73,8 +73,8 @@ describe User do
     #end
 
     it 'method should proc on confirmation' do
-      usr.confirm!
       usr.should_receive(:promote_new_user)
+      usr.confirm!
     end
 
 
