@@ -96,3 +96,11 @@ Given /^I am on the sign up page$/ do
   }
   click_link 'New Org?'
 end
+When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |email, password|
+  user = User.find_by_email("#{email}")
+  user.confirm!
+  steps %Q{
+    Given I am on the sign in page
+    And I sign in as "#{email}" with password "#{password}"
+  }
+end
