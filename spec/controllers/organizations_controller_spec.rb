@@ -445,6 +445,11 @@ describe OrganizationsController do
         session[:organization_id].should eql "7"
         response.should redirect_to user_session_path
       end
+
+      it "sends an email to the site admin about the 'this is my organization' request" do
+        an_email = {recipient: 'siteadmin@myorg.com', subject: 'request', message: 'request'}
+        expect(EmailService).to_receive(:send).with(an_email)
+      end
     end
   end
 

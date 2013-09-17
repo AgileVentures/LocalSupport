@@ -11,3 +11,7 @@ end
 And /^the email queue is clear$/ do
   ActionMailer::Base.deliveries.clear
 end
+
+Then /^an email should be sent to "(.*?)"$/ do |email|
+  ActionMailer::Base.deliveries.size.should eq 1
+end

@@ -5,8 +5,9 @@ Feature: This is my organization
 
   Background:
     Given the following users are registered:
-    | email              | password       | admin | confirmed_at         |
-    | nonadmin@myorg.com | mypassword1234 | false | 2008-01-01 00:00:00  |
+    | email              | password       | admin | confirmed_at        | organization    |
+    | nonadmin@myorg.com | mypassword1234 | false | 2008-01-01 00:00:00 |                 |
+    | admin@myorg.com    | adminpass0987  | true  | 2008-01-01 00:00:00 | My Organization |
 
     And the following organizations exist:
     | name            | address        |
@@ -19,7 +20,7 @@ Feature: This is my organization
     Then I should be on the sign in page
     When I sign in as "nonadmin@myorg.com" with password "mypassword1234"
     Then I should see "you have requested admin status on My Organization"
-    And an email should be sent to the site admin
+    And an email should be sent to "admin@myorg.com"
 
     #I can sign in or sign up from here
     
