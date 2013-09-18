@@ -63,7 +63,7 @@ describe User do
   # http://stackoverflow.com/questions/12125038/where-do-i-confirm-user-created-with-factorygirl
   describe '#promote_new_user' do
 
-    let(:usr) { FactoryGirl.create(:user) }
+    let(:usr) { FactoryGirl.create(:user, ) }
     let(:mismatch_org) { FactoryGirl.create(:organization, email: 'info@other_charity.org') }
 
     #it 'does confirm! work?' do
@@ -72,9 +72,17 @@ describe User do
     #  expect(original_status).not_to eq(usr.confirmed_at)
     #end
 
-    it 'method should proc on confirmation' do
+    it 'should call promote_new_user after confirmation' do
       usr.should_receive(:promote_new_user)
       usr.confirm!
+    end
+
+    it 'user should not be promoted if org email does not match' do
+      #
+    end
+
+    it '' do
+      #
     end
 
 
