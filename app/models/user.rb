@@ -26,17 +26,9 @@ class User < ActiveRecord::Base
   end
 
   def promote_new_user
-    orgs = Organization.all
-    emails = orgs.collect {|org| org.email}
-    if emails.include? email
-      # users to orgs is many to one
-      # but org emails aren't required to be unique
-      # so if a site admin sets up multiple charities with the same email, we've got a problem
-      # for now, I will take only the first match
-      #TODO Let promoted user be promoted for all matching orgs
-      org = orgs.find {|o| o.email == email}
-      org.update_attributes_with_admin({:admin_email_to_add => email})
-    end
+    org = Organization.find_by_email self.email
+    self.organization = org if org
+    save!
   end
 
 
