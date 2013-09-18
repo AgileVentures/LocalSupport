@@ -34,7 +34,7 @@ end
 Then /^I should( not)? see an edit button for "(.*?)" charity$/ do |negate, name|
   expectation_method = negate ? :not_to : :to
   org = Organization.find_by_name name
-  expect(page).send(expectation_method, have_link(:href => edit_organization_path(org.id)))
+  expect(page).send(expectation_method, have_link('Edit',:href => edit_organization_path(org.id)))
 end
 
 Then /^I should see "(.*?)" in the charity admin email$/ do |email|

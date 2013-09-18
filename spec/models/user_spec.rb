@@ -64,46 +64,32 @@ describe User do
   describe '#promote_new_user' do
     before do
       Gmaps4rails.stub(:geocode => nil)
+      @user = FactoryGirl.create(:user, email: 'bert@charity.org')
+      @admin_user = FactoryGirl.create(:user, email: 'admin@charity.org')
+      @mismatch_org = FactoryGirl.create(:organization, email: 'admin@other_charity.org')
+      @match_org = FactoryGirl.create(:organization, email: 'admin@charity.org')
     end
-    let(:user) { FactoryGirl.create(:user, email: 'bert@charity.org') }
-    let(:admin_user) { FactoryGirl.create(:user, email: 'admin@charity.org') }
-    let(:mismatch_org) { FactoryGirl.create(:organization, email: 'admin@other_charity.org') }
-    let(:match_org) { FactoryGirl.create(:organization, email: 'admin@charity.org') }
-
-
-    #it 'does confirm! work?' do
-    #  original_status = usr.confirmed_at
-    #  usr.confirm!
-    #  expect(original_status).not_to eq(usr.confirmed_at)
-    #end
 
     it 'should call promote_new_user after confirmation' do
-      user.should_receive(:promote_new_user)
-      user.confirm!
+      @user.should_receive(:make_admin_of_org_with_matching_email)
+      @user.confirm!
     end
 
     it 'should not promote the user if org email does not match' do
-      user.promote_new_user
-      user.organization.should_not eq mismatch_org
-      user.organization.should_not eq match_org
+      @user.make_admin_of_org_with_matching_email
+      @user.organization.should_not eq @mismatch_org
+      @user.organization.should_not eq @match_org
     end
 
     it 'should not promote the admin user if org email does not match' do
-      admin_user.promote_new_user
-      admin_user.organization.should_not eq mismatch_org
+      @admin_user.make_admin_of_org_with_matching_email
+      @admin_user.organization.should_not eq @mismatch_org
     end
 
     it 'should promote the admin user if org email matches' do
-      admin_user.promote_new_user
-      admin_user.organization.should eq match_org
+      @admin_user.make_admin_of_org_with_matching_email
+      @admin_user.organization.should eq @match_org
     end
-
-
-   # let(:match_org) { FactoryGirl.create(:organization, email: 'info@friendly.org') }
-
-   # it 'promotion if mail match' do
-   #   expect(usr.organization_id).to eq(match_org.id)
-   # end
 
   end
 

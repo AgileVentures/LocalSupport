@@ -18,14 +18,14 @@ class User < ActiveRecord::Base
 
   def confirm!
     super
-    promote_new_user
+    make_admin_of_org_with_matching_email
   end
   
   def can_edit? org
     admin? || (!org.nil? && organization == org)
   end
 
-  def promote_new_user
+  def make_admin_of_org_with_matching_email
     org = Organization.find_by_email self.email
     self.organization = org if org
     save!
