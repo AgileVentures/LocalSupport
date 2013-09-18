@@ -62,9 +62,14 @@ describe User do
 
   # http://stackoverflow.com/questions/12125038/where-do-i-confirm-user-created-with-factorygirl
   describe '#promote_new_user' do
+    before do
+      Gmaps4rails.stub(:geocode => nil)
+    end
+    let(:user) { FactoryGirl.create(:user, email: 'bert@charity.org') }
+    let(:admin_user) { FactoryGirl.create(:user, email: 'admin@charity.org') }
+    let(:mismatch_org) { FactoryGirl.create(:organization, email: 'admin@other_charity.org') }
+    let(:match_org) { FactoryGirl.create(:organization, email: 'admin@charity.org') }
 
-    let(:usr) { FactoryGirl.create(:user, ) }
-    let(:mismatch_org) { FactoryGirl.create(:organization, email: 'info@other_charity.org') }
 
     #it 'does confirm! work?' do
     #  original_status = usr.confirmed_at
@@ -73,24 +78,32 @@ describe User do
     #end
 
     it 'should call promote_new_user after confirmation' do
-      usr.should_receive(:promote_new_user)
-      usr.confirm!
+      user.should_receive(:promote_new_user)
+      user.confirm!
     end
 
-    it 'user should not be promoted if org email does not match' do
-      #
+    it 'should not promote the user if org email does not match' do
+      user.promote_new_user
+      user.organization.should_not eq mismatch_org
+      user.organization.should_not eq match_org
     end
 
-    it '' do
-      #
+    it 'should not promote the admin user if org email does not match' do
+      admin_user.promote_new_user
+      admin_user.organization.should_not eq mismatch_org
+    end
+
+    it 'should promote the admin user if org email matches' do
+      admin_user.promote_new_user
+      admin_user.organization.should eq match_org
     end
 
 
-    let(:match_org) { FactoryGirl.create(:organization, email: 'info@friendly.org') }
+   # let(:match_org) { FactoryGirl.create(:organization, email: 'info@friendly.org') }
 
-    it 'promotion if mail match' do
-      expect(usr.organization_id).to eq(match_org.id)
-    end
+   # it 'promotion if mail match' do
+   #   expect(usr.organization_id).to eq(match_org.id)
+   # end
 
   end
 
