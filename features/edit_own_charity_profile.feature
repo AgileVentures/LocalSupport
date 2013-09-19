@@ -9,13 +9,11 @@ Feature: Charity worker can edit own charity profile
 Background: organizations have been added to database 
   Given the following organizations exist:
   | name           | description               | address        | postcode | telephone |
-  | Unfriendly     | No Counseling             | 34 pinner road | HA1 4HZ  | 020800001 |
   | Friendly       | Bereavement Counseling    | 34 pinner road | HA1 4HZ  | 020800000 |
   | Nice           | Quite Pleasant!           | 30 pinner road | HA1 4HZ  | 020800010 |
   
   Given the following users are registered:
   | email             | password | organization | confirmed_at |
-  | registered_user-3@example.com | pppppppp | Friendly    | 2007-01-01  10:00:00 |
   | registered_user-2@example.com | pppppppp | Friendly    | 2007-01-01  10:00:00 |
   | registered_user-1@example.com | pppppppp |             | 2007-01-01  10:00:00 |
 
