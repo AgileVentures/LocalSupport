@@ -9,7 +9,7 @@ Feature: Charity worker can edit own charity profile
 Background: organizations have been added to database 
   Given the following organizations exist:
   | name           | description               | address        | postcode | telephone |
-  | Friendly       | Bereavement Counseling    | 34 pinner road | HA1 4HZ  | 020800000 |
+  | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 |
   | Nice           | Quite Pleasant!           | 30 pinner road | HA1 4HZ  | 020800010 |
   
   Given the following users are registered:
