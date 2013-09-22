@@ -24,7 +24,7 @@
           <li><% if !(user_signed_in?)%>
           <%= link_to "Org Login", user_session_path %>
           <% end %></li>
-          <li><%= link_to "Disclaimer", pages_disclaimer_path %></li>
+          <li><%= link_to_unless_current 'Disclaimer', page_path('disclaimer') %></li>
         </ul>
       </nav>
       </div>
