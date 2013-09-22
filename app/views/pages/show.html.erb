@@ -1,0 +1,6 @@
+<h1><%= @page.name %></h1>
+
+<%= markdown(@page.content) %>
+
+
+<%= link_to 'Edit', edit_page_path(@page) if @editable %>
