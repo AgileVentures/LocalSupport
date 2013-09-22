@@ -79,6 +79,12 @@ Given /^the following categories_organizations exist:$/ do |join_table|
   end
 end
 
+Given /^the following pages exist:$/ do |pages_table|
+  pages_table.hashes.each do |page|
+    Page.create! page
+  end
+end
+
 Given /^I edit the donation url to be "(.*?)"$/ do |url|
   fill_in('organization_donation_info', :with => url)
 end
