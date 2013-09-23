@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def markdown(text)
-    red_carpet = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
+    red_carpet = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true)
     red_carpet.render(text).html_safe
   end
 end
