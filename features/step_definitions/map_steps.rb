@@ -85,6 +85,10 @@ Given /^the following pages exist:$/ do |pages_table|
   end
 end
 
+When(/^a static page named "(.*?)" with permalink "(.*?)" and markdown content:$/) do |name, permalink, content|
+  Page.create!({:name => name, :permalink => permalink, :content => content})
+end
+
 Given /^I edit the donation url to be "(.*?)"$/ do |url|
   fill_in('organization_donation_info', :with => url)
 end
@@ -106,4 +110,3 @@ Then /^the coordinates for "(.*?)" and "(.*?)" should( not)? be the same/ do | o
     expect(lat_same && lng_same).to be_true
   end
 end
-
