@@ -15,14 +15,12 @@ Background: organizations have been added to database
   Given the following users are registered:
   | email             | password | organization | confirmed_at |
   | registered_user-2@example.com | pppppppp | Friendly    | 2007-01-01  10:00:00 |
-  | registered_user-1@example.com | pppppppp |              | 2007-01-01  10:00:00 |
+  | registered_user-1@example.com | pppppppp |             | 2007-01-01  10:00:00 |
 
 Scenario: Successfully change the address of a charity
   Given I am signed in as a charity worker related to "Friendly"
   And I update "Friendly" charity address to be "30 pinner road"
   Then I should be on the charity page for "Friendly"
-  Given I am on the home page
-  Then the coordinates for "Nice" and "Friendly" should be the same
 #TODO refactor into integration test that posts to update method
 #Scenario: Unsuccessfully change the address of a charity
 #  Given I am signed in as a charity worker unrelated to "Friendly"
