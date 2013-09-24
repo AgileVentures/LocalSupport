@@ -13,4 +13,15 @@ class User < ActiveRecord::Base
   def can_edit? org
     admin? || (!org.nil? && organization == org)
   end
+  def active_for_authentication?
+      super && charity_admin?
+  end 
+
+  def inactive_message
+    if !charity_admin?
+      :not_approved
+    else
+      super # Use whatever other message
+    end
+  end
 end
