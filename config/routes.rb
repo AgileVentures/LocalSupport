@@ -1,6 +1,7 @@
 LocalSupport::Application.routes.draw do
   devise_for :users
 
+  match '/users' => 'users#index',as: :users, via: [:get]
   match 'organizations/search' => 'organizations#search'
   match 'pages/disclaimer' => 'pages#disclaimer'
   match 'pages/aboutus' => 'pages#aboutus'

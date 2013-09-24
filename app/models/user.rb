@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
     admin? || (!org.nil? && organization == org)
   end
   def active_for_authentication?
-      super && charity_admin?
+      super # && charity_admin?
   end 
 
   def inactive_message
