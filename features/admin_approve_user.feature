@@ -17,13 +17,13 @@ Feature: Admin approve user
     | My Organization | 83 pinner road |
 
   Scenario: Admin receives user request for edit priveleges for a charity
-    Given I am logged in as admin
+    Given I am signed in as admin
     And a user has requested edit privileges for "My Organization"
     Then I should receive a "A user has requested edit privileges for My Organization" email 
 
   Scenario: Admin approves user request for edit priveleges for a charity
     Given I am on the home page
-    And I am logged in as admin
+    And I am signed in as admin
     And a user has requested edit privileges for "My Organization"
     Then I should see "Users awaiting approval"
     And I should see "nonadmin@myorg.com"
@@ -34,7 +34,7 @@ Feature: Admin approve user
 
   Scenario: Admin does not approve user request for edit priveleges for a charity
     Given I am on the home page
-    And I am logged in as admin
+    And I am signed in as admin
     And a user has requested edit privileges for "My Organization"
     Then I should see "Users awaiting approval"
     And I should see "nonadmin@myorg.com"
@@ -44,7 +44,7 @@ Feature: Admin approve user
 
   Scenario: NonAdmin can not approve user request for edit priveleges for a charity
     Given I am on the home page
-    And I am logged in as nonadmin
+    And I am signed in as nonadmin
     And a user has requested edit privileges for "My Organization"
     Then I should not see "Users awaiting approval"
     And I should not see "nonadmin@myorg.com"

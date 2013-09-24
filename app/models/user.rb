@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   end 
 
   def inactive_message
-    if !charity_admin?
+    if charity_admin_pending?
       :not_approved
     else
       super # Use whatever other message

@@ -9,13 +9,9 @@ describe UsersController do
   end
 
   describe "index" do
-
-    it 'should display users' do
-      #User.should_receive(:find_all_by_charity_admin).with(false).and_return(@user)
-      User.should_receive(:all)
-      #debugger
-      #get :index, :charity_admin => false
-      get :index
+    it 'should display users awaiting admin approval' do
+      User.should_receive(:find_all_by_charity_admin_pending) #.with(true).and_return(@user)
+      get :index, :charity_admin_pending => true
     end
   end
 end
