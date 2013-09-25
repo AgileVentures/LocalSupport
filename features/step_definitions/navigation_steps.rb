@@ -47,4 +47,3 @@ Given /^I am furtively on the edit charity page for "(.*?)"$/ do |name|
   org = Organization.find_by_name(name)
   visit edit_organization_path org.id
 end
-

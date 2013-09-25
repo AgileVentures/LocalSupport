@@ -1,0 +1,14 @@
+<h1>Users</h1>
+
+<%= link_to "All Users", :action => "index" %>
+|
+<%= link_to "Users awaiting approval", :action => "index", :charity_admin_pending => "true" %>
+
+<table>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.charity_admin_pending %></td>
+    </tr>
+  <% end %>
+</table>

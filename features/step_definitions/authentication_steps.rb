@@ -9,7 +9,7 @@ Given /^I am signed in as a charity worker (un)?related to "(.*?)"$/ do |negate,
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
 
-Given /^I am signed in as a (non-)?admin$/ do |negate|
+Given /^I am signed in as [a\w]?(non-)?admin$/ do |negate|
   user = User.find_by_admin(negate ? false:true)
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
@@ -69,6 +69,10 @@ Then /^I should not be signed in as any user$/ do
   }
 end
 
+Given /^I am not signed in as any user$/ do
+  step "I should not be signed in as any user"
+end
+
 When /^I sign out$/ do
   click_link 'Sign Out' 
 end
@@ -96,3 +100,32 @@ Given /^I am on the sign up page$/ do
   }
   click_link 'New Org?'
 end
+
+Given(/^"(.*?)" has requested edit privileges for "(.*?)"$/) do |arg1, arg2|
+    pending
+end
+
+When(/^I follow edit_user_path\(nonadmin@myorg\.com\)$/) do
+    pending # express the regexp above with the code you wish you had
+end
+
+When(/^approve "(.*?)" to edit "(.*?)"$/) do |arg1, arg2|
+    pending # express the regexp above with the code you wish you had
+end
+
+Then(/^"(.*?)" can edit "(.*?)"$/) do |arg1, arg2|
+    pending # express the regexp above with the code you wish you had
+end
+
+When(/^do not approve "(.*?)" to edit "(.*?)"$/) do |arg1, arg2|
+    pending # express the regexp above with the code you wish you had
+end
+
+Then(/^"(.*?)" can not edit "(.*?)"$/) do |arg1, arg2|
+    pending # express the regexp above with the code you wish you had
+end
+
+Given(/^I am signed in as nonadmin$/) do
+    pending # express the regexp above with the code you wish you had
+end
+
