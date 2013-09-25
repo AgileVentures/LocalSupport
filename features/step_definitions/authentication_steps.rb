@@ -101,7 +101,7 @@ Given /^I am on the sign up page$/ do
   click_link 'New Org?'
 end
 
-Given(/^a user has requested edit privileges for "(.*?)"$/) do |arg1|
+Given(/^"(.*?)" has requested edit privileges for "(.*?)"$/) do |arg1|
     pending # express the regexp above with the code you wish you had
 end
 
@@ -129,4 +129,3 @@ Given(/^I am signed in as nonadmin$/) do
     pending # express the regexp above with the code you wish you had
 end
 
-end
