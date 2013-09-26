@@ -1,5 +1,8 @@
 class PagesController < ApplicationController
 
+  # Withholding this functionality until we decide how to implement an admin 'dashboard'
+  #include ApplicationHelper
+  #before_filter :authorize, :except => :show
 
   # GET /pages
   # GET /pages.json
