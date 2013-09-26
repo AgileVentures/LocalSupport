@@ -48,7 +48,6 @@ Feature: I want to be able to edit static pages
     And I fill in "page_permalink" with "new_link"
     And I fill in "page_content" with "xyz789"
     And I press "Update Page"
-    Then I should see "new name"
     And the URL should contain "new_link"
     And I should see "xyz789"
 

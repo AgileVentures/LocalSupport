@@ -1,29 +1,26 @@
-<%= form_for(@page) do |f| %>
-  <% if @page.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
-
-      <ul>
-      <% @page.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @page, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label :permalink, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :permalink, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :content, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :content, :class => 'text_area' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :permalink %><br />
-    <%= f.text_field :permalink %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                pages_path, :class => 'btn' %>
   </div>
 <% end %>

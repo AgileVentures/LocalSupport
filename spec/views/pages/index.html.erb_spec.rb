@@ -6,12 +6,16 @@ describe "pages/index" do
       stub_model(Page,
         :name => "Name",
         :permalink => "Permalink",
-        :content => "MyText"
+        :content => "MyText",
+        :created_at => "2007-01-01 10:00:00",
+        :updated_at => "2007-01-01 10:00:00"
       ),
       stub_model(Page,
         :name => "Name",
         :permalink => "Permalink",
-        :content => "MyText"
+        :content => "MyText",
+        :created_at => "2007-01-01 10:00:00",
+        :updated_at => "2007-01-01 10:00:00"
       )
     ])
   end

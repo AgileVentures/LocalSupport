@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+
+
   # GET /pages
   # GET /pages.json
   #TODO Hide all but show and edit
@@ -14,7 +16,7 @@ class PagesController < ApplicationController
   # GET /pages/:permalink
   # GET /pages/:permalink.json
   def show
-    @editable = current_user.admin? if current_user
+    @admin = current_user.admin? if current_user
     # find_by_permalink! returns 404 if no match
     @page = Page.find_by_permalink!(params[:id])
 
