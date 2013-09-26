@@ -19,4 +19,8 @@ describe ApplicationHelper do
       expect(smart_truncate(long_string)).to eq "TO PROVIDE SAFE AND SATISFYING PLAY FOR PRE-SCHOOL CHILDREN AND TO ENCOURAGE PARENTS TO PARTICIPATE FULLY. THE PRE-SCHOOL SHALL BE OPEN TO ALL WITHOUT ..."
     end
   end
+
+  describe 'markdown' do
+    # tested extensively in features/admin_edit_static_pages.feature
+  end
 end
