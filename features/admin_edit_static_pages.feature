@@ -9,9 +9,9 @@ Feature: I want to be able to edit static pages
       | name         | permalink  | content |
       | About Us     | about      | abc123  |
     And the following users are registered:
-      | email                         | password | admin | confirmed_at         | organization |
-      | registered-user-1@example.com | pppppppp | true  | 2007-01-01  10:00:00 | Friendly     |
-      | registered-user-2@example.com | pppppppp | false | 2007-01-01  10:00:00 |              |
+      | email                         | password | admin | confirmed_at         |  organization |
+      | registered-user-1@example.com | pppppppp | true  | 2007-01-01  10:00:00 |  Friendly     |
+      | registered-user-2@example.com | pppppppp | false | 2007-01-01  10:00:00 |               |
     And a static page named "Contact Info" with permalink "contact" and markdown content:
       """
       This is a *significant* word
