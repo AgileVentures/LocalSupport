@@ -17,8 +17,10 @@ Background: organizations have been added to database
     | I love people     |             |           |           |          |       |            | people@humanity.org |
 
   Scenario: import email addresses
-    Given that I import emails from "db/email_test.csv"
+    Given Google is indisposed for "64 pinner road"
+    And I import emails from "db/email_test.csv"
     Then "I love dogs" should have email "fred@dogs.com"
     Then "I love cats" should have email "admin@cats.com"
     Then "I hate animals" should have email "admin@cruelty.com"
+    And "I love cats" should not have nil coordinates
 
