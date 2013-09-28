@@ -15,6 +15,10 @@ class Organization < ActiveRecord::Base
   attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info
   accepts_nested_attributes_for :users
 
+  # if we removed check_process => false saving the model would not trigger
+  # a geocode
+  #after_commit :process_geocoding
+
   #This method is overridden to save organization if address was failed to geocode
   def run_validations!
     run_callbacks :validate
