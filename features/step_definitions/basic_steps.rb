@@ -287,3 +287,21 @@ end
 Then(/^"(.*?)" should have email "(.*?)"$/) do |org, email|
   Organization.find_by_name(org).email.should eq email
 end
+
+When(/^the URL should contain "(.*?)"$/) do |string|
+  URI.parse(current_url).path.should == '/' + string
+end
+
+Then(/^I should see "(.*?)" < (.*?) >$/) do |text, tag|
+  tags = {'emphasized' => 'em', 'stronged' => 'strong', 'number listed' => 'ol', 'bullet listed' => 'ul'}
+  collect_tag_contents(page.body, tags[tag]).should include(text)
+end
+
+Then(/^I should see "(.*?)" < tagged > with "(.*?)"$/) do |text, tag|
+  collect_tag_contents(page.body, tag).should include(text)
+end
+
+Then(/^I should see "(.*?)" < linked > to "(.*?)"$/) do |text, url|
+  links = collect_links(page.body)
+  links[text].should == url
+end

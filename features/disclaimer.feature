@@ -7,25 +7,33 @@ Feature: Disclaimer about not being able to guarantee accuracy of sites content 
 Background: organizations have been added to database
 
   Given the following organizations exist:
-  | name             | address        |
-  | Friendly Charity | 83 pinner road |
+    | name             | address        |
+    | Friendly Charity | 83 pinner road |
+  Given the following pages exist:
+    | name       | permalink  | content |
+    | Disclaimer | disclaimer | ghi789  |
 
 Scenario: the disclaimer page is accessible from the charity search page
   Given I am on the charity search page
-  Then following Disclaimer link should display Disclaimer
+  When I follow "Disclaimer"
+  Then I should see "ghi789"
 
 Scenario: the disclaimer page is accessible from the charities page
   Given I am on the home page
-  Then following Disclaimer link should display Disclaimer
+  When I follow "Disclaimer"
+  Then I should see "ghi789"
 
 Scenario: the disclaimer page is accessible from the new charity page
   Given I am on the new charity page
-  Then following Disclaimer link should display Disclaimer
+  When I follow "Disclaimer"
+  Then I should see "ghi789"
 
 Scenario: the disclaimer page is accessible from the edit charity page for "Friendly Charity"
   Given I am furtively on the edit charity page for "Friendly Charity"
-  Then following Disclaimer link should display Disclaimer
+  When I follow "Disclaimer"
+  Then I should see "ghi789"
 
 Scenario: the disclaimer page is accessible from the charity page
   Given I am on the charity page for "Friendly Charity"
-  Then following Disclaimer link should display Disclaimer
+  When I follow "Disclaimer"
+  Then I should see "ghi789"
