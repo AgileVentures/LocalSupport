@@ -8,7 +8,8 @@ end
 
 class Organization < ActiveRecord::Base
   # http://stackoverflow.com/questions/10738537/lazy-geocoding
-  acts_as_gmappable :check_process => false, :process_geocoding => lambda { |org| !org.address.blank? && org.latitude.blank? && org.longitude.blank? }
+  # lambda { |org| !org.address.blank? && org.latitude.blank? && org.longitude.blank? }
+  acts_as_gmappable :check_process => false, :process_geocoding => :run_geocode?
   has_many :users
   has_and_belongs_to_many :categories
   # Setup accessible (or protected) attributes for your model
@@ -19,6 +20,16 @@ class Organization < ActiveRecord::Base
   # if we removed check_process => false saving the model would not trigger
   # a geocode
   #after_commit :process_geocoding
+
+  def run_geocode?
+    if !address.blank? && latitude.blank? && longitude.blank?
+      return true
+    end
+    if address_changed?
+      return true
+    end
+    false
+  end
 
   #This method is overridden to save organization if address was failed to geocode
   def run_validations!
