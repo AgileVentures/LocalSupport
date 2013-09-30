@@ -32,13 +32,21 @@ describe Organization do
     @org1.longitude.should eq nil
   end
 
-  it 'should not try to geocode when saving if the org already has an address, longitude and latitude' do
+  it 'no geocoding allowed when saving if the org already has an address and coordinates' do
     Gmaps4rails.should_not_receive(:geocode)
     @org2.email = 'something@example.com'
     @org2.save!
   end
 
-  it 'should try to geocode when saving if the org has a new address' do
+  # it will try to rerun incomplete geocodes, but not valid ones, so no harm is done
+  it 'geocoding allowed when saving if the org has an address BUT NO coordinates' do
+    Gmaps4rails.should_receive(:geocode)
+    @org2.longitude = nil ; @org2.latitude = nil
+    @org2.email = 'something@example.com'
+    @org2.save!
+  end
+
+  it 'geocoding allowed when saving if the org address changed' do
     Gmaps4rails.should_receive(:geocode)
     @org2.address = '777 pinner road'
     @org2.save!

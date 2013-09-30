@@ -22,12 +22,9 @@ class Organization < ActiveRecord::Base
   #after_commit :process_geocoding
 
   def run_geocode?
-    if !address.blank? && latitude.blank? && longitude.blank?
-      return true
-    end
-    if address_changed?
-      return true
-    end
+    return true if address.present? && latitude.blank? && longitude.blank?
+    # http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
+    return true if address_changed?
     false
   end
 
