@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 ruby '1.9.3'
 gem 'rails', '3.2.14'
-gem 'devise'
+gem 'devise', '3.0.3'
 
 
 # Bundle edge Rails instead:
@@ -12,7 +12,7 @@ gem 'devise'
 group :development, :test do
   gem 'metric_fu'
   gem 'sqlite3'  
-  gem 'database_cleaner'
+  gem 'database_cleaner', '1.0.1'
   gem 'launchy'
   gem 'simplecov'
   gem 'rspec-rails'
@@ -80,3 +80,6 @@ gem 'gmaps4rails'
 #gem 'mongrel'
 gem 'kaminari'
 gem 'unicorn'
+
+# To use markdown in editing static pages
+gem 'redcarpet'
