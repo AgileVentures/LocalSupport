@@ -1,7 +1,7 @@
 <footer class="footer">
   <p class="text-right"><small>
-    <a href=<%= pages_contact_path %>>Contact  </a> /
-    <a href=<%= pages_aboutus_path %>> About Us</a>
+    <%= link_to_unless_current 'Contact', page_path('contact') %> |
+    <%= link_to_unless_current 'About Us', page_path('about') %>
   </small></p>
 
 </footer>

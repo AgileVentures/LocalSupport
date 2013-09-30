@@ -8,6 +8,27 @@ module ApplicationHelper
         size>char_limit
       end.join(" ")+(sentence.size()>char_limit ? " "+ "..." : "" )
   end
+
+  def markdown(text)
+    red_carpet = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true)
+    red_carpet.render(text).html_safe
+  end
+
+  # Withholding this functionality until we decide how to implement an admin 'dashboard'
+
+  ## http://railscasts.com/episodes/20-restricting-access
+  #def authorize
+  #  unless admin?
+  #    flash[:error] = 'unauthorized access'
+  #    redirect_to '/'
+  #    false
+  #  end
+  #end
+  #
+  ## Not to be confused with the activerecord admin? method
+  #def admin?
+  #  current_user.present? ? current_user.admin? : false
+  #end
 end
 
 

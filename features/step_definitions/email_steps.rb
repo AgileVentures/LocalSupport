@@ -12,7 +12,7 @@ And /^the email queue is clear$/ do
   ActionMailer::Base.deliveries.clear
 end
 
-Given(/^that I import emails from "(.*?)"$/) do |file|
+Given(/^I import emails from "(.*?)"$/) do |file|
   require "rake"
   @rake = Rake::Application.new
   Rake.application = @rake

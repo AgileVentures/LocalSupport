@@ -2,9 +2,8 @@ source 'http://rubygems.org'
 
 ruby '1.9.3'
 gem 'rails', '3.2.14'
-gem 'devise'
 gem 'pg'
-gem 'taps'
+gem 'devise', '3.0.3'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -12,7 +11,7 @@ gem 'taps'
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do
   gem 'metric_fu'
-  gem 'database_cleaner'
+  gem 'database_cleaner', '1.0.1'
   gem 'launchy'
   gem 'simplecov'
   gem 'rspec-rails'
@@ -79,3 +78,6 @@ gem 'gmaps4rails'
 #gem 'mongrel'
 gem 'kaminari'
 gem 'unicorn'
+
+# To use markdown in editing static pages
+gem 'redcarpet'

@@ -1,7 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    ZenTest (4.9.3)
+    ZenTest (4.9.4)
     actionmailer (3.2.14)
       actionpack (= 3.2.14)
       mail (~> 2.5.4)
@@ -33,8 +33,7 @@ GEM
     ansi (1.4.3)
     arel (3.0.2)
     arrayfields (4.9.0)
-    atomic (1.1.14)
-    awesome_print (1.1.0)
+    awesome_print (1.2.0)
     bcrypt-ruby (3.1.2)
     bluff (0.1.0)
     builder (3.0.4)
@@ -53,16 +52,16 @@ GEM
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
     chronic (0.10.2)
-    churn (0.0.33)
+    churn (0.0.34)
       chronic (>= 0.2.3)
       hirb
       json_pure
       main
       ruby_parser (~> 3.0)
       sexp_processor (~> 4.1)
-    code_analyzer (0.4.2)
+    code_analyzer (0.4.3)
       sexp_processor
-    code_metrics (0.1.0)
+    code_metrics (0.1.1)
     coderay (1.1.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -89,22 +88,21 @@ GEM
       rails (>= 3.0.0)
     cucumber-rails-training-wheels (1.0.0)
       cucumber-rails (>= 1.1.1)
-    database_cleaner (1.1.1)
-    debugger (1.6.1)
+    database_cleaner (1.0.1)
+    debugger (1.6.2)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
       debugger-ruby_core_source (~> 1.2.3)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.3)
-    devise (3.1.0)
+    devise (3.0.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
-      thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.4)
     erubis (2.7.0)
-    execjs (2.0.1)
+    execjs (2.0.2)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.2.1)
@@ -153,7 +151,7 @@ GEM
       fattr (>= 2.2.0)
       map (>= 5.1.0)
     map (6.5.1)
-    metric_fu (4.4.1)
+    metric_fu (4.4.4)
       bluff
       cane (~> 2.5, >= 2.5.2)
       churn (~> 0.0.28)
@@ -173,11 +171,11 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.0)
     multi_test (0.0.2)
-    newrelic_rpm (3.6.7.152)
+    newrelic_rpm (3.6.7.159)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     orm_adapter (0.4.0)
-    parallel (0.8.3)
+    parallel (0.8.4)
     pg (0.17.0)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -199,10 +197,10 @@ GEM
       activesupport (= 3.2.14)
       bundler (~> 1.0)
       railties (= 3.2.14)
-    rails_best_practices (1.14.3)
+    rails_best_practices (1.14.4)
       activesupport
       awesome_print
-      code_analyzer (>= 0.4.2)
+      code_analyzer (>= 0.4.3)
       colored
       erubis
       i18n
@@ -220,18 +218,17 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     redcard (1.1.0)
+    redcarpet (3.0.0)
     reek (1.3.3)
       ruby2ruby (~> 2.0.2)
       ruby_parser (~> 3.1, >= 3.1.1)
       sexp_processor
     ref (1.0.5)
     require_all (1.3.1)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
     roodi (3.1.1)
       ruby_parser (~> 3.2, >= 3.2.2)
     rspec-core (2.14.5)
-    rspec-expectations (2.14.2)
+    rspec-expectations (2.14.3)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.14.3)
     rspec-rails (2.14.0)
@@ -249,7 +246,7 @@ GEM
       sexp_processor (~> 4.1)
     rubyzip (0.9.9)
     safe_yaml (0.9.7)
-    sass (3.2.10)
+    sass (3.2.11)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -262,30 +259,20 @@ GEM
       multi_json (~> 1.0)
       rubyzip (< 1.0.0)
       websocket (~> 1.0.4)
-    sequel (3.20.0)
     sexp_processor (4.3.0)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
-    sinatra (1.0)
-      rack (>= 1.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    taps (0.3.24)
-      rack (>= 1.0.1)
-      rest-client (>= 1.4.0, < 1.7.0)
-      sequel (~> 3.20.0)
-      sinatra (~> 1.0.0)
     therubyracer (0.12.0)
       libv8 (~> 3.16.14.0)
       ref
     thor (0.18.1)
-    thread_safe (0.1.3)
-      atomic
     tilt (1.4.1)
     treetop (1.4.15)
       polyglot
@@ -330,9 +317,9 @@ DEPENDENCIES
   coffee-rails
   cucumber-rails
   cucumber-rails-training-wheels
-  database_cleaner
+  database_cleaner (= 1.0.1)
   debugger
-  devise
+  devise (= 3.0.3)
   execjs
   factory_girl_rails
   gmaps4rails
@@ -347,12 +334,12 @@ DEPENDENCIES
   rack_session_access
   railroady
   rails (= 3.2.14)
+  redcarpet
   rspec-rails
   sass-rails
   selenium
   selenium-client
   simplecov
-  taps
   therubyracer
   turn
   twitter-bootstrap-rails
