@@ -7,7 +7,7 @@ class String
 end
 
 class Organization < ActiveRecord::Base
-  acts_as_gmappable :check_process => false
+  acts_as_gmappable :check_process => false, :process_geocoding => lambda { |obj| !obj.address.blank? && obj.latitude.blank? && obj.longitude.blank? }
   has_many :users
   has_and_belongs_to_many :categories
   # Setup accessible (or protected) attributes for your model
@@ -25,6 +25,7 @@ class Organization < ActiveRecord::Base
     remove_errors_with_address
     errors.empty?
   end
+
   #TODO: Give this TLC and refactor the flow or refactor out responsibilities
   # This method both adds new editors and/or updates attributes
   def update_attributes_with_admin(params)

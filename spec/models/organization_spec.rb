@@ -414,6 +414,14 @@ describe Organization do
       Organization.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0],true)
     end
 
+    it 'should not try to geocode when saving an org with address, longitude and latitude' do
+      Gmaps4rails.should_not_receive(:geocode)
+      @org1.latitude = 77
+      @org1.longitude = 77
+      @org1.email = 'something@example.com'
+      @org1.save!
+    end
+
   end
 
 end
