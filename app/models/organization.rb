@@ -7,7 +7,8 @@ class String
 end
 
 class Organization < ActiveRecord::Base
-  acts_as_gmappable :check_process => false, :process_geocoding => lambda { |obj| !obj.address.blank? && obj.latitude.blank? && obj.longitude.blank? }
+  # http://stackoverflow.com/questions/10738537/lazy-geocoding
+  acts_as_gmappable :check_process => false, :process_geocoding => lambda { |org| !org.address.blank? && org.latitude.blank? && org.longitude.blank? }
   has_many :users
   has_and_belongs_to_many :categories
   # Setup accessible (or protected) attributes for your model
