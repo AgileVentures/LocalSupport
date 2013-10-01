@@ -49,5 +49,10 @@ Given /^I am furtively on the edit charity page for "(.*?)"$/ do |name|
 end
 
 Given(/^I am on the edit page with the "(.*?)" permalink$/) do |permalink|
-  visit("http://localhost:3000/pages/#{permalink}/edit")
+  pg = Page.find_by_permalink(permalink)
+  visit edit_page_path pg.permalink
+end
+
+When(/^I visit "(.*?)"$/) do |path|
+  visit path
 end
