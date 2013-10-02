@@ -9,7 +9,7 @@ describe Organization do
     @org1 = FactoryGirl.build(:organization, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate')
     Gmaps4rails.should_receive(:geocode)
     @org1.save!
-    @org2 = FactoryGirl.build(:organization, :name => 'Indian Elders Associaton', :description => 'Care for the elderly', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.indian-elders.co.uk/donate')
+    @org2 = FactoryGirl.build(:organization, :name => 'Indian Elders Associaton', :description => 'Care for the elderly', :address => '62 pinner road', :postcode => 'HA1 3RE', :latitude => 77, :longitude => 77, :donation_info => 'www.indian-elders.co.uk/donate')
     Gmaps4rails.should_receive(:geocode)
     @org2.save!
     @org3 = FactoryGirl.build(:organization, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.age-uk.co.uk/donate')
@@ -30,6 +30,26 @@ describe Organization do
     actual_address.should eq new_address
     @org1.latitude.should eq nil
     @org1.longitude.should eq nil
+  end
+
+  it 'no geocoding allowed when saving if the org already has an address and coordinates' do
+    Gmaps4rails.should_not_receive(:geocode)
+    @org2.email = 'something@example.com'
+    @org2.save!
+  end
+
+  # it will try to rerun incomplete geocodes, but not valid ones, so no harm is done
+  it 'geocoding allowed when saving if the org has an address BUT NO coordinates' do
+    Gmaps4rails.should_receive(:geocode)
+    @org2.longitude = nil ; @org2.latitude = nil
+    @org2.email = 'something@example.com'
+    @org2.save!
+  end
+
+  it 'geocoding allowed when saving if the org address changed' do
+    Gmaps4rails.should_receive(:geocode)
+    @org2.address = '777 pinner road'
+    @org2.save!
   end
 
 end

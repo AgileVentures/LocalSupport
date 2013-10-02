@@ -7,7 +7,9 @@ class String
 end
 
 class Organization < ActiveRecord::Base
-  acts_as_gmappable :check_process => false
+  # http://stackoverflow.com/questions/10738537/lazy-geocoding
+  # lambda { |org| !org.address.blank? && org.latitude.blank? && org.longitude.blank? }
+  acts_as_gmappable :check_process => false, :process_geocoding => :run_geocode?
   has_many :users
   has_and_belongs_to_many :categories
   # Setup accessible (or protected) attributes for your model
@@ -19,12 +21,20 @@ class Organization < ActiveRecord::Base
   # a geocode
   #after_commit :process_geocoding
 
+  def run_geocode?
+    return true if address.present? && latitude.blank? && longitude.blank?
+    # http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
+    return true if address_changed?
+    false
+  end
+
   #This method is overridden to save organization if address was failed to geocode
   def run_validations!
     run_callbacks :validate
     remove_errors_with_address
     errors.empty?
   end
+
   #TODO: Give this TLC and refactor the flow or refactor out responsibilities
   # This method both adds new editors and/or updates attributes
   def update_attributes_with_admin(params)
