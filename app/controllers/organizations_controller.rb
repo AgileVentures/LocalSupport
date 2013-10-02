@@ -96,6 +96,8 @@ class OrganizationsController < ApplicationController
   def grab
     if current_user.blank?
       session[:organization_id] = params[:id]
+      @organization = Organization.find(session[:organization_id])
+      @organization.send_admin_mail
       redirect_to user_session_path
     end
   end

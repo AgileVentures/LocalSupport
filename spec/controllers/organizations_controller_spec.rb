@@ -440,15 +440,27 @@ describe OrganizationsController do
   describe "#grab" do
     context "when user is not signed in" do
       it "redirects to sign-in and the organization id is in session" do
-        subject.current_user.should be_nil
-        post :grab, id: "7"
-        session[:organization_id].should eql "7"
+        user = FactoryGirl.create(:user_stubbed_organization)
+        org_id = user.organization_id
+        post :grab, id: org_id
+        session[:organization_id].should eql org_id.to_s
         response.should redirect_to user_session_path
       end
-
-      it "sends an email to the site admin about the 'this is my organization' request" do
-        an_email = {recipient: 'siteadmin@myorg.com', subject: 'request', message: 'request'}
-        expect(EmailService).to_receive(:send).with(an_email)
+    end
+    describe "sending admin email" do
+      it "sends an email to the site admin regarding the 'this is my organization' request" do
+        ActionMailer::Base.deliveries.clear
+        user = FactoryGirl.create(:user_stubbed_organization)
+        admin_user = FactoryGirl.create(:admin_user)
+        org_id = user.organization_id
+        org = Organization.find(org_id)
+        post :grab, id: org_id
+        #TODO why?
+        #AdminMailer.should_receive(:new_user_waiting_for_approval)#.with(org)
+        @email = ActionMailer::Base.deliveries.last
+        @email.to.should include admin_user.email
+        @email.subject.should include("New user waiting for approval")
+        @email.body.should include("A user has requested admin status for #{org.name}")
       end
     end
   end

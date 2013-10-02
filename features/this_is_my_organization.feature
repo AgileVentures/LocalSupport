@@ -19,7 +19,7 @@ Feature: This is my organization
     And I press "This is my organization"
     Then I should be on the sign in page
     When I sign in as "nonadmin@myorg.com" with password "mypassword1234"
-    Then I should see "you have requested admin status on My Organization"
+    Then I should see "You have requested admin status on My Organization"
     And an email should be sent to "admin@myorg.com"
     # And flags listed below must be set for user
     # user.charity_admin_pending will be set to true here
@@ -33,7 +33,7 @@ Feature: This is my organization
     When I am on the charity page for "My Organization"
     And I press "This is my organization"
     Then I should be on the charity page for "My Organization"
-    And I should see "you have requested admin status on My Organization"
+    And I should see "You have requested admin status on My Organization"
     And an email should be sent to "admin@myorg.com"
     # And flags listed below must be set for user
     # user.charity_admin_pending will be set to TRUE here

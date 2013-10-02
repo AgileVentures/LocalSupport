@@ -13,5 +13,6 @@ And /^the email queue is clear$/ do
 end
 
 Then /^an email should be sent to "(.*?)"$/ do |email|
-  ActionMailer::Base.deliveries.size.should eq 1
+  @email = ActionMailer::Base.deliveries.last
+  @email.to.should include email
 end

@@ -5,7 +5,9 @@
 #
 # @see config/initializers/devise.rb
 class AdminMailer < Devise::Mailer
-  default from: ENV['ACTION_MAILER_FROM']
+  #default from: ENV['ACTION_MAILER_FROM']
+  default from: 'no-reply@example.com',
+              return_path: 'system@example.com'
 
   def reset_password_instructions(record)
     I18n.with_locale(record.locale) do
@@ -26,6 +28,12 @@ class AdminMailer < Devise::Mailer
     end
   end
 
-  def new_user_waiting_for_approval(arg)
+  def new_user_waiting_for_approval(org)
+    @org_name = org.name
+    @admins=User.find_all_by_admin(true)
+    @admins.each do |admin|
+      mail(to: admin.email)
+      mail.deliver
+    end
   end
 end

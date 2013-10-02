@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
   belongs_to :organization
 
   # filters
-  after_create :send_admin_mail
   
   def can_edit? org
     admin? || (!org.nil? && organization == org)
@@ -28,7 +27,4 @@ class User < ActiveRecord::Base
     end
   end
 
-  def send_admin_mail
-    AdminMailer.new_user_waiting_for_approval(self).deliver
-  end
 end

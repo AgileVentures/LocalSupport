@@ -11,6 +11,15 @@ FactoryGirl.define do
     charity_commission_id 1
     charity_commission_name "weird!"
   end
+  factory :admin_user , class: User do
+    email "admin@example.com"
+    password "pppppppp"
+    confirmed_at "2007-01-01 10:00:00"
+    admin true
+    organization nil
+    charity_admin_pending false
+  end
+
   factory :user do
     email "jj@example.com"
     password "pppppppp"
