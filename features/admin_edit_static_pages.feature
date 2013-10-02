@@ -35,6 +35,8 @@ Feature: I want to be able to edit static pages
     And I am on the home page
     When I follow "About Us"
     Then I should see a link with text "Edit"
+    And I follow "Edit"
+    Then I should be on the edit page for "about"
 
   Scenario: Non-admin cannot edit
     Given I am signed in as a non-admin
