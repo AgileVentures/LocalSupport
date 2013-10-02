@@ -35,6 +35,8 @@ Feature: I want to be able to edit static pages
     And I am on the home page
     When I follow "About Us"
     Then I should see a link with text "Edit"
+    And I follow "Edit"
+    Then I should be on the edit page for "about"
 
   Scenario: Non-admin cannot edit
     Given I am signed in as a non-admin
@@ -42,8 +44,22 @@ Feature: I want to be able to edit static pages
     When I follow "About Us"
     Then I should not see a link with text "Edit"
 
+  Scenario: Admin can see pages index
+    Given I am signed in as a admin
+    And I am on the home page
+    When I follow "About Us"
+    And I follow "Pages"
+    Then the URL should contain "pages"
+
+  Scenario: Non-admin cannot see pages index
+    Given I am signed in as a non-admin
+    And I visit "/pages"
+    Then I should see "unauthorized access"
+    And I should be on the home page
+
   Scenario: Static pages are editable
-    Given I am on the edit page with the "about" permalink
+    Given I am signed in as a admin
+    And I am on the edit page with the "about" permalink
     And I fill in "page_name" with "new name"
     And I fill in "page_permalink" with "new_link"
     And I fill in "page_content" with "xyz789"

@@ -3,11 +3,14 @@ require 'spec_helper'
 describe OrganizationsController do
   let(:category_html_options){[['cat1',1],['cat2',2]]}
 
+  # shouldn't this be done in spec_helper.rb?
   before :suite do
     FactoryGirl.factories.clear
     FactoryGirl.find_definitions
   end
 
+  # http://stackoverflow.com/questions/10442159/rspec-as-null-object
+  # doesn't calling as_null_object on a mock negate the need to stub anything?
   def double_organization(stubs={})
     (@double_organization ||= mock_model(Organization).as_null_object).tap do |organization|
       organization.stub(stubs) unless stubs.empty?

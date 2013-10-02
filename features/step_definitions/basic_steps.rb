@@ -258,6 +258,11 @@ Then /^I should be on the charity workers page$/ do
   current_path.should == users_path
 end
 
+Then(/^I should be on the edit page for "(.*?)"$/) do |permalink|
+  pg = Page.find_by_permalink(permalink)
+  current_path.should eq( edit_page_path (pg.permalink ))
+end
+
 When /^I fill in "(.*?)" with "(.*?)"$/ do |field, value|
   fill_in(field, :with => value)
 end
