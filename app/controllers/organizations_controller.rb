@@ -94,11 +94,14 @@ class OrganizationsController < ApplicationController
   end
 
   def grab
-    if current_user.blank?
       session[:organization_id] = params[:id]
       @organization = Organization.find(session[:organization_id])
       @organization.send_admin_mail
+    if current_user.blank?
       redirect_to user_session_path
+    else
+      redirect_to organization_path(@organization.id)
+      flash[:notice] = "You have requested admin status on #{@organization.name}"
     end
   end
 

@@ -5,9 +5,10 @@ Feature: This is my organization
 
   Background:
     Given the following users are registered:
-    | email              | password       | admin | confirmed_at        | organization    |
-    | nonadmin@myorg.com | mypassword1234 | false | 2008-01-01 00:00:00 |                 |
-    | admin@myorg.com    | adminpass0987  | true  | 2008-01-01 00:00:00 | My Organization |
+    | email              | password       | admin | confirmed_at        | organization    | charity_admin_pending |
+    | nonadmin@myorg.com | mypassword1234 | false | 2008-01-01 00:00:00 |                 | false                 |
+    | admin@myorg.com    | adminpass0987  | true  | 2008-01-01 00:00:00 | My Organization | false                 |
+    | pending@myorg.com  | password123    | false | 2008-01-01 00:00:00 | My Organization | true                  |
 
     And the following organizations exist:
     | name            | address        |
@@ -21,12 +22,7 @@ Feature: This is my organization
     When I sign in as "nonadmin@myorg.com" with password "mypassword1234"
     Then I should see "You have requested admin status on My Organization"
     And an email should be sent to "admin@myorg.com"
-    # And flags listed below must be set for user
-    # user.charity_admin_pending will be set to true here
-    # user.can_edit must be FALSE
-    # user.organization is NIL or ""
 
-    #I can sign in or sign up from here
     
   Scenario: I am a signed in user who requests to be admin of my organization
     Given I am signed in as a non-admin
@@ -37,23 +33,26 @@ Feature: This is my organization
     And an email should be sent to "admin@myorg.com"
     # And flags listed below must be set for user
     # user.charity_admin_pending will be set to TRUE here
-    # user.can_edit must be FALSE
     # user.organization is set for their charity
-
-    # NEW SCENARIO
-    # user was approved by admin
-        # user.can_edit must be TRUE (which means they are charity admin for that org)
-        # user.charity_admin_pending will be FALSE (changed from true)
-        # user.organization is still set for their charity
-    # behavior-wise user should be able to see Edit button on their org
-    # user should not be able to see Edit button on other organizations
-  Scenario: I am now a charity admin
-    Given I am approved as a charity admin
-    # (port something like this to the admin_approve_user.feature for the background step?)
-    And I am on the charity page for "My Organization"
-    Then I should see an edit button for "My Organization" charity
-    When I am on the charity page for "Another organization"
-    Then I should not see an edit button for "Another organization" charity
-
     
-    
+    # when the admin signs in, they should see the users who want rights
+  Scenario: I am an admin checking out list of users who want edit privileges for an organization
+    Given I am signed in as an admin
+    When I am on the users page
+    And I should see "Users awaiting approval"
+    #And I should see "Organizations"
+    #TODO - add organization column
+    And I follow "Users awaiting approval"
+    Then I should see a list of users with pending privileges
+    And I should see a link to approve them
+    #(what about can_edit?)
+
+  Scenario: I am not an admin but I am sneaky and not signed in
+    Given I am not signed in as any user
+    When I go to the users page
+    Then I should be redirected to the sign in page
+
+  Scenario: I am not an admin but I am sneaky and signed in as non-admin
+    Given I am signed in as a non-admin
+    When I go to the users page
+    Then I should be redirected to sign in as admin

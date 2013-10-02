@@ -2,7 +2,7 @@
 
 <%= link_to "All Users", :action => "index" %>
 |
-<%= link_to "Users awaiting approval", :action => "index", :charity_admin_pending => "true" %>
+<%= link_to "Users awaiting approval", :action => "index", :charity_admin_pending => true %>
 
 <table>
   <% @users.each do |user| %>

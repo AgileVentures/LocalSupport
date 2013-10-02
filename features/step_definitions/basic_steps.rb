@@ -286,3 +286,8 @@ end
 Then(/^"(.*?)" should have email "(.*?)"$/) do |org, email|
   Organization.find_by_name(org).email.should eq email
 end
+
+Then(/^I should see a list of users with pending privileges$/) do
+  expect(page).to have_content("true")
+end
+
