@@ -415,15 +415,4 @@ describe Organization do
     end
   end
 
-  describe "run_geocode" do
-    it 'should return true if address is changed' do
-      @org1.address = "asjkdhas,ba,asda"
-      @org1.run_geocode?.should be_true
-    end
-    it 'should return false when no address is set' do
-      org = Organization.new
-      org.run_geocode?.should be_false
-    end
-  end
-
 end

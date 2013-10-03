@@ -32,24 +32,49 @@ describe Organization do
     @org1.longitude.should eq nil
   end
 
-  it 'no geocoding allowed when saving if the org already has an address and coordinates' do
-    Gmaps4rails.should_not_receive(:geocode)
-    @org2.email = 'something@example.com'
-    @org2.save!
+  describe 'run_geocode?' do
+    it 'should return true if address is changed' do
+      @org1.address = "asjkdhas,ba,asda"
+      @org1.run_geocode?.should be_true
+    end
+
+    it 'should return false if address is not changed' do
+      @org1.run_geocode?.should be_true
+    end
+
+    it 'should return false if org has no address' do
+      org = Organization.new
+      org.run_geocode?.should be_false
+    end
+
+    it 'should return true if org has an address but no coordinates' do
+      @org1.run_geocode?.should be_true
+    end
+
+    it 'should return false if org has an address and coordinates' do
+      @org2.run_geocode?.should be_false
+    end
   end
 
-  # it will try to rerun incomplete geocodes, but not valid ones, so no harm is done
-  it 'geocoding allowed when saving if the org has an address BUT NO coordinates' do
-    Gmaps4rails.should_receive(:geocode)
-    @org2.longitude = nil ; @org2.latitude = nil
-    @org2.email = 'something@example.com'
-    @org2.save!
-  end
+  describe "acts_as_gmappable's behavior is curtailed by the { :process_geocoding => :run_geocode? } option" do
+    it 'no geocoding allowed when saving if the org already has an address and coordinates' do
+      Gmaps4rails.should_not_receive(:geocode)
+      @org2.email = 'something@example.com'
+      @org2.save!
+    end
 
-  it 'geocoding allowed when saving if the org address changed' do
-    Gmaps4rails.should_receive(:geocode)
-    @org2.address = '777 pinner road'
-    @org2.save!
-  end
+    # it will try to rerun incomplete geocodes, but not valid ones, so no harm is done
+    it 'geocoding allowed when saving if the org has an address BUT NO coordinates' do
+      Gmaps4rails.should_receive(:geocode)
+      @org2.longitude = nil ; @org2.latitude = nil
+      @org2.email = 'something@example.com'
+      @org2.save!
+    end
 
+    it 'geocoding allowed when saving if the org address changed' do
+      Gmaps4rails.should_receive(:geocode)
+      @org2.address = '777 pinner road'
+      @org2.save!
+    end
+  end
 end
