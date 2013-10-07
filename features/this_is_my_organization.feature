@@ -40,8 +40,7 @@ Feature: This is my organization
     Given I am signed in as an admin
     When I am on the users page
     And I should see "Users awaiting approval"
-    #And I should see "Organizations"
-    #TODO - add organization column
+    And I should see "Organizations"
     And I follow "Users awaiting approval"
     Then I should see a list of users with pending privileges
     And I should see a link to approve them

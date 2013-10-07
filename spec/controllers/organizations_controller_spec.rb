@@ -440,25 +440,35 @@ describe OrganizationsController do
   describe "#grab" do
     context "when user is not signed in" do
       it "redirects to sign-in and the organization id is in session" do
-        user = FactoryGirl.create(:user_stubbed_organization)
-        org_id = user.organization_id
+        @user = FactoryGirl.create(:user_stubbed_organization)
+        controller.stub(:current_user).and_return(nil)
+        org_id = @user.organization_id
         post :grab, id: org_id
         session[:organization_id].should eql org_id.to_s
         response.should redirect_to user_session_path
       end
     end
-    describe "sending admin email" do
+    context "posts a request for a user to become admin of an organization" do
+      before :each do
+        @user = FactoryGirl.create(:user_stubbed_organization)
+        controller.stub(:current_user).and_return(@user)
+        org_id = @user.organization_id
+        post :grab, id: org_id
+        #TODO invoke grab
+      end
+      it "sets charity admin pending to true" do
+        @user.charity_admin_pending.should be_true
+      end
       it "sends an email to the site admin regarding the 'this is my organization' request" do
         ActionMailer::Base.deliveries.clear
-        user = FactoryGirl.create(:user_stubbed_organization)
-        admin_user = FactoryGirl.create(:admin_user)
-        org_id = user.organization_id
+        @admin_user = FactoryGirl.create(:admin_user)
+        org_id = @user.organization_id
         org = Organization.find(org_id)
         post :grab, id: org_id
         #TODO why?
         #AdminMailer.should_receive(:new_user_waiting_for_approval)#.with(org)
         @email = ActionMailer::Base.deliveries.last
-        @email.to.should include admin_user.email
+        @email.to.should include @admin_user.email
         @email.subject.should include("New user waiting for approval")
         @email.body.should include("A user has requested admin status for #{org.name}")
       end
