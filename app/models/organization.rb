@@ -20,10 +20,12 @@ class Organization < ActiveRecord::Base
   #after_commit :process_geocoding
 
   def run_geocode?
-    return true if address.present? && latitude.blank? && longitude.blank?
-    # http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
-    return true if address_changed?
-    false
+    ## http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
+    address_changed? or (address.present? and not_geocoded?)
+  end
+
+  def not_geocoded?
+    latitude.blank? and longitude.blank?
   end
 
   #This method is overridden to save organization if address was failed to geocode
