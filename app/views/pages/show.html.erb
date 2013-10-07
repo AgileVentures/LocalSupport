@@ -1,7 +1,5 @@
 <%- model_class = Page -%>
-<dl class="dl-horizontal">
-  <dd><%= markdown(@page.content) %></dd>
-</dl>
+<%= markdown(@page.content) %>
 <% if @admin %>
   <div class="form-actions">
     <%= link_to 'Pages', pages_path, :class => 'btn'  %>
