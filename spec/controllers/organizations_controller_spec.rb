@@ -452,19 +452,22 @@ describe OrganizationsController do
       before :each do
         @user = FactoryGirl.create(:user_stubbed_organization)
         controller.stub(:current_user).and_return(@user)
-        org_id = @user.organization_id
-        post :grab, id: org_id
-        #TODO invoke grab
+        @org_id = @user.organization_id
+        #TODO can we dry out post :grab without breaking "calls save!" block (ordering issue)
+      end
+      it "calls save!" do
+        @user.should_receive(:save!)
+        post :grab, id: @org_id
       end
       it "sets charity admin pending to true" do
+        post :grab, id: @org_id
         @user.charity_admin_pending.should be_true
       end
       it "sends an email to the site admin regarding the 'this is my organization' request" do
         ActionMailer::Base.deliveries.clear
         @admin_user = FactoryGirl.create(:admin_user)
-        org_id = @user.organization_id
-        org = Organization.find(org_id)
-        post :grab, id: org_id
+        org = Organization.find(@org_id)
+        post :grab, id: @org_id
         #TODO why?
         #AdminMailer.should_receive(:new_user_waiting_for_approval)#.with(org)
         @email = ActionMailer::Base.deliveries.last

@@ -101,6 +101,7 @@ class OrganizationsController < ApplicationController
       redirect_to user_session_path
     else
       current_user.charity_admin_pending = true
+      current_user.save!
       redirect_to organization_path(@organization.id)
       flash[:notice] = "You have requested admin status on #{@organization.name}"
     end
