@@ -287,3 +287,7 @@ Then(/^I should see "(.*?)" < linked > to "(.*?)"$/) do |text, url|
   links = collect_links(page.body)
   links[text].should == url
 end
+Then(/^I should see a list of users with pending privileges$/) do
+  expect(page).to have_content("true")
+end
+

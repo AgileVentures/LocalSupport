@@ -3,6 +3,7 @@ LocalSupport::Application.routes.draw do
 
   devise_for :users
 
+  match '/users' => 'users#index',as: :users, via: [:get]
   match 'organizations/search' => 'organizations#search'
   #match 'pages/disclaimer' => 'pages#disclaimer'
   #match 'pages/aboutus' => 'pages#aboutus'
@@ -10,6 +11,14 @@ LocalSupport::Application.routes.draw do
 
   resources :pages
   resources :organizations
+  match 'pages/disclaimer' => 'pages#disclaimer'
+  match 'pages/aboutus' => 'pages#aboutus'
+  match 'pages/contact' => 'pages#contact'
+  resources :organizations do
+    member do
+      post 'grab'
+    end
+  end
 
   # so that static pages are linked directly instead of via /pages/:id
   get ':id', to: 'pages#show', as: :page
@@ -21,7 +30,7 @@ LocalSupport::Application.routes.draw do
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
+  # Keep in mind you can assign values other than :controller and :action\1
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase

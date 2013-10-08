@@ -16,12 +16,23 @@ FactoryGirl.define do
     permalink 'about'
     content 'abc123'
   end
+
+  factory :admin_user , class: User do
+    email "admin@example.com"
+    password "pppppppp"
+    confirmed_at "2007-01-01 10:00:00"
+    admin true
+    organization nil
+    charity_admin_pending false
+  end
+
   factory :user do
     email "jj@example.com"
     password "pppppppp"
     confirmed_at "2007-01-01 10:00:00"
     admin false
     organization nil
+    charity_admin_pending false
 
     factory :user_stubbed_organization do
       after(:build) do |user|

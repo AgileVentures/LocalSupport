@@ -69,6 +69,10 @@ Then /^I should not be signed in as any user$/ do
   }
 end
 
+Given /^I am not signed in as any user$/ do
+  step "I should not be signed in as any user"
+end
+
 When /^I sign out$/ do
   click_link 'Sign Out' 
 end
@@ -97,3 +101,38 @@ When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |
     And I sign in as "#{email}" with password "#{password}"
   }
 end
+Given(/^"(.*?)" has requested edit privileges for "(.*?)"$/) do |arg1, arg2|
+    pending
+end
+
+When(/^I follow edit_user_path\(nonadmin@myorg\.com\)$/) do
+    pending # express the regexp above with the code you wish you had
+end
+
+When(/^approve "(.*?)" to edit "(.*?)"$/) do |arg1, arg2|
+    pending # express the regexp above with the code you wish you had
+end
+
+Then(/^"(.*?)" can edit "(.*?)"$/) do |arg1, arg2|
+    pending # express the regexp above with the code you wish you had
+end
+
+When(/^do not approve "(.*?)" to edit "(.*?)"$/) do |arg1, arg2|
+    pending # express the regexp above with the code you wish you had
+end
+
+Then(/^"(.*?)" can not edit "(.*?)"$/) do |arg1, arg2|
+    pending # express the regexp above with the code you wish you had
+end
+
+Given(/^I am signed in as nonadmin$/) do
+    pending # express the regexp above with the code you wish you had
+end
+Then(/^I should see a link to approve them$/) do
+  page.should have_link "Approve"
+end
+
+Then(/^I should not see a link to approve them$/) do
+  page.should_not have_link "Approve"
+end
+

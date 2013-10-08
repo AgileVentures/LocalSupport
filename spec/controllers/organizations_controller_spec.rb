@@ -440,4 +440,52 @@ describe OrganizationsController do
     end
   end
 
+  describe "#grab" do
+    context "when user is not signed in" do
+      before :each do
+        @user = FactoryGirl.create(:user_stubbed_organization)
+        controller.stub(:current_user).and_return(nil)
+        @org_id = @user.organization_id
+        #TODO can we dry out post :grab without breaking "calls save!" block (ordering issue)
+      end
+      it "redirects to sign-in and the organization id is in session" do
+        post :grab, id: @org_id
+        session[:organization_id].should eql @org_id.to_s
+        response.should redirect_to user_session_path
+      end
+    end
+    context "posts a request for a user to become admin of an organization" do
+      before :each do
+        @user = FactoryGirl.create(:user_stubbed_organization)
+        controller.stub(:current_user).and_return(@user)
+        @org_id = @user.organization_id
+        #TODO can we dry out post :grab without breaking "calls save!" block (ordering issue)
+      end
+      it "sends a message to the flash" do
+        post :grab, id: @org_id
+        expect(flash[:notice]).to eq("You have requested admin status for My Organization")
+      end
+      it "calls save!" do
+        @user.should_receive(:save!)
+        post :grab, id: @org_id
+      end
+      it "sets charity admin pending to true" do
+        post :grab, id: @org_id
+        @user.charity_admin_pending.should be_true
+      end
+      it "sends an email to the site admin regarding the 'this is my organization' request" do
+        ActionMailer::Base.deliveries.clear
+        @admin_user = FactoryGirl.create(:admin_user)
+        org = Organization.find(@org_id)
+        post :grab, id: @org_id
+        #TODO why?
+        #AdminMailer.should_receive(:new_user_waiting_for_approval)#.with(org)
+        @email = ActionMailer::Base.deliveries.last
+        @email.to.should include @admin_user.email
+        @email.subject.should include("New user waiting for approval")
+        @email.body.should include("A user has requested admin status for #{org.name}")
+      end
+    end
+  end
+
 end

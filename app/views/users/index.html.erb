@@ -1,0 +1,26 @@
+<h1>Users</h1>
+
+<%= link_to "All users", :action => "index" %>
+|
+<%= link_to "Users awaiting approval", :action => "index", :charity_admin_pending => true %>
+
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>User Email</th>
+      <th>Organization</th>
+      <th>Admin Pending?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+        <td><%= user.email %></td>
+        <td><%= user.organization.name unless user.organization.blank? %></td>
+        <td><%= user.charity_admin_pending %></td>
+        <td><%= link_to "Approve", "#" %></td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>

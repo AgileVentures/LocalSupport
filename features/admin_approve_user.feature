@@ -5,7 +5,3 @@ Feature: Admin approve user
      connected to the relevant charity, when someone contacts us saying that
      this is his charity or when a new charity wants to be included on the database)
   I want to be able to verify the organisation/user and give them access to their charity.
-
-
-
-

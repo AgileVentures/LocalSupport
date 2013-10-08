@@ -21,3 +21,7 @@ Given(/^I import emails from "(.*?)"$/) do |file|
   @rake['db:import:emails'].invoke(file)
 end
 
+Then /^an email should be sent to "(.*?)"$/ do |email|
+  @email = ActionMailer::Base.deliveries.last
+  @email.to.should include email
+end

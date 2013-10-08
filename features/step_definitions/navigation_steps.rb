@@ -81,3 +81,6 @@ end
 When(/^I visit "(.*?)"$/) do |path|
   visit path
 end
+Then /^I am on the users page$/ do
+  visit users_path
+end
