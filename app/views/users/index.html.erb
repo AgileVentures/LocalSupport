@@ -1,6 +1,6 @@
 <h1>Users</h1>
 
-<%= link_to "All Users", :action => "index" %>
+<%= link_to "All users", :action => "index" %>
 |
 <%= link_to "Users awaiting approval", :action => "index", :charity_admin_pending => true %>
 
@@ -20,7 +20,7 @@
         <td><%= user.charity_admin_pending %></td>
         <td><%= link_to "Approve", "#" %></td>
       </tr>
-    <% end %>:w
+    <% end %>
 
   </tbody>
 </table>

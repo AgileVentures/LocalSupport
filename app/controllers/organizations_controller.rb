@@ -96,14 +96,13 @@ class OrganizationsController < ApplicationController
   def grab
       session[:organization_id] = params[:id]
       @organization = Organization.find(session[:organization_id])
-      @organization.send_admin_mail
     if current_user.blank?
       redirect_to user_session_path
     else
-      current_user.charity_admin_pending = true
-      current_user.save!
+      #TODO feels wrong to be passing organization id around, but model doesn't know about session
+      flash[:notice] = "You have requested admin status for My Organization"
+      current_user.set_charity_admin_status_pending(session[:organization_id])
       redirect_to organization_path(@organization.id)
-      flash[:notice] = "You have requested admin status on #{@organization.name}"
     end
   end
 

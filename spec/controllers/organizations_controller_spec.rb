@@ -439,12 +439,15 @@ describe OrganizationsController do
 
   describe "#grab" do
     context "when user is not signed in" do
-      it "redirects to sign-in and the organization id is in session" do
+      before :each do
         @user = FactoryGirl.create(:user_stubbed_organization)
         controller.stub(:current_user).and_return(nil)
-        org_id = @user.organization_id
-        post :grab, id: org_id
-        session[:organization_id].should eql org_id.to_s
+        @org_id = @user.organization_id
+        #TODO can we dry out post :grab without breaking "calls save!" block (ordering issue)
+      end
+      it "redirects to sign-in and the organization id is in session" do
+        post :grab, id: @org_id
+        session[:organization_id].should eql @org_id.to_s
         response.should redirect_to user_session_path
       end
     end
@@ -454,6 +457,10 @@ describe OrganizationsController do
         controller.stub(:current_user).and_return(@user)
         @org_id = @user.organization_id
         #TODO can we dry out post :grab without breaking "calls save!" block (ordering issue)
+      end
+      it "sends a message to the flash" do
+        post :grab, id: @org_id
+        expect(flash[:notice]).to eq("You have requested admin status for My Organization")
       end
       it "calls save!" do
         @user.should_receive(:save!)

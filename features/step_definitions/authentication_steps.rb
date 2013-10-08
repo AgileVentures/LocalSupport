@@ -129,6 +129,10 @@ Given(/^I am signed in as nonadmin$/) do
     pending # express the regexp above with the code you wish you had
 end
 Then(/^I should see a link to approve them$/) do
-    pending # express the regexp above with the code you wish you had
+  page.should have_link "Approve"
+end
+
+Then(/^I should not see a link to approve them$/) do
+  page.should_not have_link "Approve"
 end
 
