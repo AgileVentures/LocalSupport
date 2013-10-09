@@ -18,5 +18,5 @@ Feature:  Tool tip instructions for fields on edit form
     Given I am signed in as a charity worker related to "Harrow Bereavement Counselling"
     And I am on the edit charity page for "Harrow Bereavement Counselling"
     #Then I should see "Name" < tagged > with "first tooltip"
-    Then the "Name" label should display a tooltip
+    Then the "Name" label should display "Enter a unique name" as a tooltip
 

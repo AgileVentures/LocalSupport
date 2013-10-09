@@ -9,11 +9,11 @@
     </div>
   <% end %>
 
-  <div class="field" data-toggle="tooltip" title="first tooltip">
+  <div class="field" data-toggle="tooltip" title="@tooltips['Name']" >
     <%= f.label :name %>
     <%= f.text_field :name, :class => "org_form" %>
   </div>
-  <div class="field">
+  <div class="field" data-toggle="tooltip" title="Enter a complete address">
     <%= f.label :address %>
     <%= f.text_field :address, :class => "org_form" %>
   </div>
