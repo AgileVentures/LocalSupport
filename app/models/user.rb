@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   def set_charity_admin_status_pending(organization_id)
     organization = Organization.find(organization_id)
     organization.send_admin_mail
-    self.organization = organization
+    self.pending_organization_id = organization_id
     self.charity_admin_pending = true
     self.save!
   end
