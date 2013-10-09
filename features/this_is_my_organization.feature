@@ -12,9 +12,9 @@ Feature: This is my organization
     | email              | password       | admin | confirmed_at        | organization    | charity_admin_pending |
     | nonadmin@myorg.com | mypassword1234 | false | 2008-01-01 00:00:00 |                 | false                 |
     | admin@myorg.com    | adminpass0987  | true  | 2008-01-01 00:00:00 | My Organization | false                 |
-    | pending@myorg.com  | password123    | false | 2008-01-01 00:00:00 | My Organization | true                  |
+    | pending@myorg.com  | password123    | false | 2008-01-01 00:00:00 |                 | true                  |
 
-  Scenario: I am a guest user who signs up to be admin of my organization
+  Scenario: I am an user who has not signed in and requests to be admin of my organization
     Given I am not signed in as any user
     When I am on the charity page for "My Organization"
     And I press "This is my organization"
@@ -26,7 +26,8 @@ Feature: This is my organization
 
     
   Scenario: I am a signed in user who requests to be admin for my organization
-    Given I am signed in as a non-admin
+    Given I am on the sign in page
+    And I sign in as "nonadmin@myorg.com" with password "mypassword1234"
     When I am on the charity page for "My Organization"
     And I press "This is my organization"
     Then I should be on the charity page for "My Organization"
@@ -34,11 +35,12 @@ Feature: This is my organization
     And an email should be sent to "admin@myorg.com"
     # And flags listed below must be set for user
     # user.charity_admin_pending will be set to TRUE here
-    # user.organization is set for their charity
+    # user.pending_organization_id is set for their charity
     
     # when the admin signs in, they should see the users who want rights
   Scenario: I am an admin checking out list of users who want edit privileges for an organization
     Given I am signed in as an admin
+    And "pending@myorg.com" has requested admin status for "My Organization"
     When I am on the users page
     Then I should see "Users awaiting approval"
     And I should see "Organization"
@@ -51,6 +53,7 @@ Feature: This is my organization
     
   Scenario: I am an admin checking out list of all users
     Given I am signed in as an admin
+    And "pending@myorg.com" has requested admin status for "My Organization"
     When I am on the users page
     And I follow "All users"
     Then I should see "pending@myorg.com"
