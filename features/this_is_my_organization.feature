@@ -16,13 +16,15 @@ Feature: This is my organization
 
   Scenario: I am an user who has not signed in and requests to be admin of my organization
     Given I am not signed in as any user
-    When I am on the charity page for "My Organization"
-    And I press "This is my organization"
+    And I am on the charity page for "My Organization"
+    Then I should see the "This is my organization" button for "My Organization"
+    When I press "This is my organization"
     Then I should be on the sign in page
     When I sign in as "nonadmin@myorg.com" with password "mypassword1234"
-    And an email should be sent to "admin@myorg.com"
-    Then I should see "You have requested admin status for My Organization"
+    Then an email should be sent to "admin@myorg.com"
+    And I should see "You have requested admin status for My Organization"
     And I should be on the charity page for "My Organization"
+    And I should not see the "This is my organization" button for "My Organization"
 
     
   Scenario: I am a signed in user who requests to be admin for my organization
@@ -48,7 +50,7 @@ Feature: This is my organization
     Then I should see "pending@myorg.com"
     And I should not see "nonadmin@myorg.com"
     And I should see "My Organization"
-    And I should see a link to approve them
+    And I should see a link to approve "pending@myorg.com"
     #(what about can_edit?)
     
   Scenario: I am an admin checking out list of all users
@@ -58,6 +60,8 @@ Feature: This is my organization
     And I follow "All users"
     Then I should see "pending@myorg.com"
     Then I should see "nonadmin@myorg.com"
+    And I should not see a link to approve "nonadmin@myorg.com"
+    And I should not see a link to approve "admin@myorg.com"
 
   Scenario: I am not an admin but I am sneaky and not signed in
     Given I am not signed in as any user

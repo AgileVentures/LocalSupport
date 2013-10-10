@@ -30,20 +30,24 @@ describe Devise::SessionsController do
         @user.save!
         session[:organization_id] = "@user.organization_id"
       end
-      
-      it 'sets the message in the flash scope about requesting for the user to be admin' do
-        post :create, 'user' => {email: "nonadmin@myorg.com", password: "password", organization_id: @user.organization_id}
-        flash[:notice].should eql "You have requested admin status for My Organization"
+
+      it 'redirects to charity page after user who has requested admin status for org logs in' do
+        org = FactoryGirl.build(:organization)
+        Gmaps4rails.should_receive(:geocode)
+        org.save!
+        FactoryGirl.build(:user, {:email => 'example@example.com', :password => 'pppppppp', :organization => org}).save!
+        post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp'}
+        expect(response).to redirect_to organization_path(org.id)
       end
     end
 
-    it 'redirects to charity page after non-admin associated with org' do
-      org = FactoryGirl.build(:organization)
-      Gmaps4rails.should_receive(:geocode)
-      org.save!
-      FactoryGirl.build(:user, {:email => 'example@example.com', :password => 'pppppppp', :organization => org}).save!
-      post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp'}
-      expect(response).to redirect_to organization_path(org.id)
-    end
+      it 'redirects to charity page after user associated with org logs in' do
+        org = FactoryGirl.build(:organization)
+        Gmaps4rails.should_receive(:geocode)
+        org.save!
+        FactoryGirl.build(:user, {:email => 'example@example.com', :password => 'pppppppp', :organization => org}).save!
+        post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp'}
+        expect(response).to redirect_to organization_path(org.id)
+      end
   end
 end
