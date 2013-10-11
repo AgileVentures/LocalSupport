@@ -99,9 +99,12 @@ class OrganizationsController < ApplicationController
     if current_user.blank?
       redirect_to user_session_path
     else
-      #TODO feels wrong to be passing organization id around, but model doesn't know about session
       flash[:notice] = "You have requested admin status for My Organization"
-      current_user.set_charity_admin_status_pending(session[:organization_id])
+      organization = Organization.find(params[:id])
+      organization.send_admin_mail
+      current_user.pending_organization_id = organization.id
+      current_user.charity_admin_pending = true
+      current_user.save!
       redirect_to organization_path(@organization.id)
     end
   end
