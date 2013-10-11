@@ -475,8 +475,6 @@ describe OrganizationsController do
         @admin_user = FactoryGirl.create(:admin_user)
         org = Organization.find(@org_id)
         post :grab, id: @org_id
-        #TODO why?
-        #AdminMailer.should_receive(:new_user_waiting_for_approval)#.with(org)
         @email = ActionMailer::Base.deliveries.last
         @email.to.should include @admin_user.email
         @email.subject.should include("New user waiting for approval")
