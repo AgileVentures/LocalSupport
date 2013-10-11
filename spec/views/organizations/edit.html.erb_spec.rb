@@ -18,14 +18,15 @@ describe "organizations/edit.html.erb" do
   it "renders the edit organization form with tooltips" do
     view.lookup_context.prefixes = %w[organizations application]
 
-    @tooltips = {'Name'=> 'Enter a strange name'}
-
     render
-    tooltip = @tooltips['Name']
-    debugger
-    label = 'Name'
+    #tooltip = 'Enter a unique name'
+    #debugger
+    #label = 'Name'
 
-    rendered.should have_css("div[title=\"#{tooltip}\"][data-toggle=\"tooltip\"]:contains('#{label}')")
+    #rendered.should have_css("div[title=\"#{tooltip}\"][data-toggle=\"tooltip\"]:contains('#{label}')")
+
+    # <div class="field"
+    rendered.should have_css("div.field[data-toggle=\"tooltip\"]")
   end
 
 
