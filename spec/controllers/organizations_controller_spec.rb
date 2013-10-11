@@ -440,9 +440,11 @@ describe OrganizationsController do
   describe "#grab" do
     context "when user is not signed in" do
       before :each do
-        @user = FactoryGirl.create(:user_stubbed_organization)
+        @user = FactoryGirl.create(:user)
+        Gmaps4rails.stub(:geocode)
+        @org = FactoryGirl.create(:organization)
         controller.stub(:current_user).and_return(nil)
-        @org_id = @user.organization_id
+        @org_id = @org.id
         #TODO can we dry out post :grab without breaking "calls save!" block (ordering issue)
       end
       it "redirects to sign-in and the organization id is in session" do
@@ -453,14 +455,16 @@ describe OrganizationsController do
     end
     context "posts a request for a user to become admin of an organization" do
       before :each do
-        @user = FactoryGirl.create(:user_stubbed_organization)
+        @user = FactoryGirl.create(:user)
+        Gmaps4rails.stub(:geocode)
+        @org = FactoryGirl.create(:organization)
+        @org_id = @org.id
         controller.stub(:current_user).and_return(@user)
-        @org_id = @user.organization_id
         #TODO can we dry out post :grab without breaking "calls save!" block (ordering issue)
       end
       it "sends a message to the flash" do
         post :grab, id: @org_id
-        expect(flash[:notice]).to eq("You have requested admin status for My Organization")
+        expect(flash[:notice]).to eq("You have requested admin status for #{Organization.find(@org_id).name}")
       end
       it "calls save!" do
         @user.should_receive(:save!)
@@ -469,6 +473,7 @@ describe OrganizationsController do
       it "sets charity admin pending to true" do
         post :grab, id: @org_id
         @user.charity_admin_pending.should be_true
+        @user.pending_organization_id.should eq @org.id
       end
       it "sends an email to the site admin regarding the 'this is my organization' request" do
         ActionMailer::Base.deliveries.clear

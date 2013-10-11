@@ -105,7 +105,6 @@ class OrganizationsController < ApplicationController
       current_user.pending_organization_id = organization.id
       current_user.charity_admin_pending = true
       current_user.save!
-      @pending = true
       redirect_to organization_path(@organization.id)
     end
   end
