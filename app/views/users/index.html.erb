@@ -13,12 +13,12 @@
     </tr>
   </thead>
   <tbody>
-    <% @users.each do |user| %>
-    <tr>
+  <% @users.each do |user| %>
+    <tr class="userrow " id= <%= user.id %>>
         <td><%= user.email %></td>
-        <td><%= user.organization.name unless user.organization.blank? %></td>
+        <td><%= Organization.find(user.pending_organization_id).name unless user.pending_organization_id.blank? %></td>
         <td><%= user.charity_admin_pending %></td>
-        <td><%= link_to "Approve", "#" %></td>
+        <td><%= link_to "Approve", "#" unless user.pending_organization_id.blank? %></td>
       </tr>
     <% end %>
 

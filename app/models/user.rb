@@ -33,9 +33,6 @@ class User < ActiveRecord::Base
   end
 
 
-  #def active_for_authentication?
-  #    super # && charity_admin?
-  #end 
 
   def inactive_message
     if charity_admin_pending?
@@ -43,13 +40,6 @@ class User < ActiveRecord::Base
     else
       super # Use whatever other message
     end
-  end
-  def set_charity_admin_status_pending(organization_id)
-    organization = Organization.find(organization_id)
-    organization.send_admin_mail
-    self.organization = organization
-    self.charity_admin_pending = true
-    self.save!
   end
 
 end

@@ -29,7 +29,7 @@
 <%= donation_info_msg %>
 </p>
 
-<%= button_to "This is my organization", {action: "grab", method: "post", id: @organization.id}, {class: "btn btn-large"} %>
+<%= button_to "This is my organization", {action: "grab", method: "post", id: @organization.id}, {class: "btn btn-large"} unless @pending %>
 
 <%= link_to_if(@editable, "Edit", edit_organization_path(@organization.id), {:class => 'btn btn-large'}){} %>
 

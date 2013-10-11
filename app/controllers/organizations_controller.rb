@@ -74,7 +74,6 @@ class OrganizationsController < ApplicationController
       redirect_to organization_path(params[:id]) and return false
     end
     if @organization.update_attributes_with_admin(params[:organization])
-
       redirect_to @organization, notice: 'Organization was successfully updated.'
     else
       render action: "edit"
@@ -100,9 +99,13 @@ class OrganizationsController < ApplicationController
     if current_user.blank?
       redirect_to user_session_path
     else
-      #TODO feels wrong to be passing organization id around, but model doesn't know about session
-      flash[:notice] = "You have requested admin status for My Organization"
-      current_user.set_charity_admin_status_pending(session[:organization_id])
+      organization = Organization.find(params[:id])
+      organization.send_admin_mail
+      flash[:notice] = "You have requested admin status for #{organization.name}"
+      current_user.pending_organization_id = organization.id
+      current_user.charity_admin_pending = true
+      current_user.save!
+      @pending = true
       redirect_to organization_path(@organization.id)
     end
   end

@@ -39,6 +39,12 @@ Then /^I should( not)? see an edit button for "(.*?)" charity$/ do |negate, name
   expect(page).send(expectation_method, have_link('Edit',:href => edit_organization_path(org.id)))
 end
 
+Then /^I should( not)? see the "(.*?)" button for "(.*?)"/ do |negate, button, charity|
+  expectation_method = negate ? :not_to : :to
+  org = Organization.find_by_name charity
+  expect(page).send(expectation_method, have_button("#{button}"))#,:href => grab_organization_path(org.id)))
+end
+
 Then /^I should see "(.*?)" in the charity admin email$/ do |email|
   expect(page).to have_content "Organisation administrator emails: "
   expect(page).to have_selector "ol"
@@ -291,3 +297,9 @@ Then(/^I should see a list of users with pending privileges$/) do
   expect(page).to have_content("true")
 end
 
+Then(/^I should (not )?see a link to approve "(.*?)"$/) do |negate, email|
+  expectation_method = negate ? :has_no_text? : :has_text?
+  id=User.find_by_email(email).id
+  expect(page.find("##{id}.userrow").send(expectation_method, "Approve"))
+  #page.find("##{id}.userrow").should have_text("Approve")
+end

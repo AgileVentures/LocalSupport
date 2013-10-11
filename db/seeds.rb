@@ -13,6 +13,11 @@ user = User.new({
     password: "asdf1234",
     password_confirmation: "asdf1234",
   })
+user = User.new({
+    email: "admin@harrowcn.org.uk",
+    password: "asdf1234",
+    password_confirmation: "asdf1234",
+  })
 
 user.confirmed_at = DateTime.now
 user.admin = true
