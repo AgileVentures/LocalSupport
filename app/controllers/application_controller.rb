@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
     if current_user.admin?
       return root_url 
     end
-    session[:previous_url] || root_path
+    return session[:previous_url] if session[:organization_id]
+    root_path
   end
 end

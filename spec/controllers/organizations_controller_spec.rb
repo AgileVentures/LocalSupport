@@ -437,8 +437,8 @@ describe OrganizationsController do
     end
   end
 
-  describe "#grab" do
-    context "when user is not signed in" do
+  describe "POST #grab" do
+    context "not signed in and requests to become admin of an organization" do
       before :each do
         @user = FactoryGirl.create(:user)
         Gmaps4rails.stub(:geocode)
@@ -453,7 +453,7 @@ describe OrganizationsController do
         response.should redirect_to user_session_path
       end
     end
-    context "posts a request for a user to become admin of an organization" do
+    context "signed in user requests to become admin of an organization" do
       before :each do
         @user = FactoryGirl.create(:user)
         Gmaps4rails.stub(:geocode)

@@ -67,8 +67,10 @@ Feature: This is my organization
     Given I am not signed in as any user
     When I am on the users page
     Then I should be on the sign in page
+    And I should see "You must be signed in as admin to perform that action!"
 
   Scenario: I am not an admin but I am sneaky and signed in as non-admin
     Given I am signed in as a non-admin
     When I am on the users page
-    Then I should be on the sign in page
+    Then I should be on the home page
+    And I should see "You must be signed in as admin to perform that action!"
