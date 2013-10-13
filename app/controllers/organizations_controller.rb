@@ -99,10 +99,10 @@ class OrganizationsController < ApplicationController
     if current_user.blank?
       redirect_to user_session_path
     else
-      organization = Organization.find(params[:id])
-      organization.send_admin_mail
-      flash[:notice] = "You have requested admin status for #{organization.name}"
-      current_user.pending_organization_id = organization.id
+      @organization.send_admin_mail
+      flash[:notice] = "You have requested admin status for #{@organization.name}"
+      current_user.pending_organization_id = @organization.id
+      @pending_org_id = @organization.id
       current_user.charity_admin_pending = true
       current_user.save!
       redirect_to organization_path(@organization.id)
