@@ -19,12 +19,12 @@ describe "organizations/edit.html.erb" do
     view.lookup_context.prefixes = %w[organizations application]
 
     render
-    #tooltip = 'Enter a unique name'
-    #debugger
-    #label = 'Name'
 
-    #rendered.should have_css("div[title=\"#{tooltip}\"][data-toggle=\"tooltip\"]:contains('#{label}')")
 
+    hash = {'Name' => 'Enter a unique name', 'Postcode' => 'Please enter postal code'}
+    hash.each do |label,tooltip|
+      rendered.should have_css("div[title=\"#{tooltip}\"][data-toggle=\"tooltip\"]:contains('#{label}')")
+    end
     # <div class="field"
 
     #rendered.should have_css("div.field[data-toggle=\"tooltip\"]")
@@ -32,8 +32,8 @@ describe "organizations/edit.html.erb" do
 
     #rendered.css_select('div.field').each({|z| puts z['data-toggle']})
 
-    x = Nokogiri::HTML(rendered)
-    x.css("div.field").each{|z| puts z['data-toggle']}
+    #x = Nokogiri::HTML(rendered)
+    #x.css("div.field").each{|z| puts z['data-toggle']}
   end
 
 
