@@ -26,7 +26,14 @@ describe "organizations/edit.html.erb" do
     #rendered.should have_css("div[title=\"#{tooltip}\"][data-toggle=\"tooltip\"]:contains('#{label}')")
 
     # <div class="field"
-    rendered.should have_css("div.field[data-toggle=\"tooltip\"]")
+
+    #rendered.should have_css("div.field[data-toggle=\"tooltip\"]")
+    #rendered.find ('div.field').each {|x| puts x}
+
+    #rendered.css_select('div.field').each({|z| puts z['data-toggle']})
+
+    x = Nokogiri::HTML(rendered)
+    x.css("div.field").each{|z| puts z['data-toggle']}
   end
 
 
