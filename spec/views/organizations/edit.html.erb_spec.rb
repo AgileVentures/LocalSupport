@@ -20,20 +20,18 @@ describe "organizations/edit.html.erb" do
 
     render
 
-
-    hash = {'Name' => 'Enter a unique name', 'Postcode' => 'Please enter postal code'}
+    hash = {'Name' => 'Enter a unique name',
+            'Address'  => 'Enter a complete address',
+            'Postcode' => 'Make sure post code is accurate',
+            'Email' => 'Make sure email is correct',
+            'Description' => 'Enter a detailed description',
+            'Website' => 'Make sure url is correct',
+            'Telephone' => 'Make sure phone number is correct',
+            'Add an additional organisation administrator email' => 'Administrator email'
+            }
     hash.each do |label,tooltip|
       rendered.should have_css("div[title=\"#{tooltip}\"][data-toggle=\"tooltip\"]:contains('#{label}')")
     end
-    # <div class="field"
-
-    #rendered.should have_css("div.field[data-toggle=\"tooltip\"]")
-    #rendered.find ('div.field').each {|x| puts x}
-
-    #rendered.css_select('div.field').each({|z| puts z['data-toggle']})
-
-    #x = Nokogiri::HTML(rendered)
-    #x.css("div.field").each{|z| puts z['data-toggle']}
   end
 
 

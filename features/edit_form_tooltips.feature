@@ -19,4 +19,13 @@ Feature:  Tool tip instructions for fields on edit form
     And I am on the edit charity page for "Harrow Bereavement Counselling"
     #Then I should see "Name" < tagged > with "first tooltip"
     Then the "Name" label should display "Enter a unique name" as a tooltip
-
+    Then the following tooltips should exist: 
+      | label         | tooltip        | 
+      | Name          | Enter a unique name |
+      |  Address  |  Enter a complete address  |
+      |  Postcode  |  Make sure post code is accurate  |
+      |  Email  |  Make sure email is correct  |
+      |  Description  |  Enter a detailed description  |
+      |  Website  |  Make sure url is correct  |
+      |  Telephone  |  Make sure phone number is correct  |
+      |  Add an additional organisation administrator email  |  Administrator email  |
