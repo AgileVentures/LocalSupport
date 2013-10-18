@@ -5,9 +5,7 @@
 #
 # @see config/initializers/devise.rb
 class AdminMailer < Devise::Mailer
-  #default from: ENV['ACTION_MAILER_FROM']
-  default from: 'no-reply@example.com',
-              return_path: 'system@example.com'
+  default from: ENV['ACTION_MAILER_FROM']
 
   def reset_password_instructions(record)
     I18n.with_locale(record.locale) do
