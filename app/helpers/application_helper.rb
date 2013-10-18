@@ -8,6 +8,11 @@ module ApplicationHelper
         size>char_limit
       end.join(" ")+(sentence.size()>char_limit ? " "+ "..." : "" )
   end
+
+  def markdown(text)
+    red_carpet = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true)
+    red_carpet.render(text).html_safe
+  end
 end
 
 

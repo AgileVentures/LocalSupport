@@ -60,4 +60,37 @@ describe User do
    
   end
 
+  # http://stackoverflow.com/questions/12125038/where-do-i-confirm-user-created-with-factorygirl
+  describe '#promote_new_user' do
+    before do
+      Gmaps4rails.stub(:geocode => nil)
+      @user = FactoryGirl.create(:user, email: 'bert@charity.org')
+      @admin_user = FactoryGirl.create(:user, email: 'admin@charity.org')
+      @mismatch_org = FactoryGirl.create(:organization, email: 'admin@other_charity.org')
+      @match_org = FactoryGirl.create(:organization, email: 'admin@charity.org')
+    end
+
+    it 'should call promote_new_user after confirmation' do
+      @user.should_receive(:make_admin_of_org_with_matching_email)
+      @user.confirm!
+    end
+
+    it 'should not promote the user if org email does not match' do
+      @user.make_admin_of_org_with_matching_email
+      @user.organization.should_not eq @mismatch_org
+      @user.organization.should_not eq @match_org
+    end
+
+    it 'should not promote the admin user if org email does not match' do
+      @admin_user.make_admin_of_org_with_matching_email
+      @admin_user.organization.should_not eq @mismatch_org
+    end
+
+    it 'should promote the admin user if org email matches' do
+      @admin_user.make_admin_of_org_with_matching_email
+      @admin_user.organization.should eq @match_org
+    end
+
+  end
+
 end

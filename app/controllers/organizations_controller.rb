@@ -1,7 +1,7 @@
 class OrganizationsController < ApplicationController
   # GET /organizations/search
   # GET /organizations/search.json
-  before_filter :authenticate_user!, :except => [:search, :index, :show]
+  before_filter :authenticate_user!, :except => [:search, :index, :show, :grab]
 
   def search
     @query_term = params[:q]
@@ -91,6 +91,22 @@ class OrganizationsController < ApplicationController
     @organization.destroy
 
     redirect_to organizations_url
+  end
+
+  def grab
+      session[:organization_id] = params[:id]
+      @organization = Organization.find(session[:organization_id])
+    if current_user.blank?
+      redirect_to user_session_path
+    else
+      @organization.send_admin_mail
+      flash[:notice] = "You have requested admin status for #{@organization.name}"
+      current_user.pending_organization_id = @organization.id
+      @pending_org_id = @organization.id
+      current_user.charity_admin_pending = true
+      current_user.save!
+      redirect_to organization_path(@organization.id)
+    end
   end
 
   private

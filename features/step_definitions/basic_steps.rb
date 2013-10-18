@@ -6,7 +6,6 @@ Then /^I should see permission denied$/ do
   page.should have_content PERMISSION_DENIED
 end
 
-
 Then /^"(.*?)" should be a charity admin for "(.*?)" charity$/ do |email, org|
   org = Organization.find_by_name org
   usr = User.find_by_email(email)
@@ -17,23 +16,33 @@ end
 Then /^I should see the cannot add non registered user "(.*?)" as charity admin message$/ do |email|
   page.should have_content "The user email you entered,'#{email}', does not exist in the system"
 end
+
 And /^I add "(.*?)" as an admin for "(.*?)" charity$/ do |admin_email, charity|
   steps %Q{ And I am on the edit charity page for "#{charity}"}
   fill_in 'organization_admin_email_to_add', :with => admin_email
   steps %Q{
   And I press "Update Organisation"}
 end
+
 Then /^I should see the no charity admins message$/ do
   expect(page).to have_content "This organisation has no admins yet"
 end
+
 Given /^I delete "(.*?)" charity$/ do |name|
   org = Organization.find_by_name name
   page.driver.submit :delete, "/organizations/#{org.id}", {}
 end
 
-Then /^I should not see an edit button for "(.*?)" charity$/ do |name|
+Then /^I should( not)? see an edit button for "(.*?)" charity$/ do |negate, name|
+  expectation_method = negate ? :not_to : :to
   org = Organization.find_by_name name
-  expect(page).not_to have_link :href => edit_organization_path(org.id)
+  expect(page).send(expectation_method, have_link('Edit',:href => edit_organization_path(org.id)))
+end
+
+Then /^I should( not)? see the "(.*?)" button for "(.*?)"/ do |negate, button, charity|
+  expectation_method = negate ? :not_to : :to
+  org = Organization.find_by_name charity
+  expect(page).send(expectation_method, have_button("#{button}"))#,:href => grab_organization_path(org.id)))
 end
 
 Then /^I should see "(.*?)" in the charity admin email$/ do |email|
@@ -48,10 +57,6 @@ end
 
 Given /^PENDING/ do
   pending
-end
-
-Given /^I press "(.*?)"$/ do |button|
-  click_button(button)
 end
 
 When /^I search for "(.*?)"$/ do |text|
@@ -159,11 +164,6 @@ Given /^I update the "(.*?)"$/ do |name|
   org1.save!
 end
 
-
-When /^(?:|I )follow "([^"]*)"$/ do |link|
-    click_link(link)
-end
-
 Then /^I should not see any address or telephone information for "([^"]*?)"$/ do |name1|
   org1 = Organization.find_by_name(name1)
   page.should_not have_content org1.telephone
@@ -183,12 +183,13 @@ Then /^I should see the external website link for "(.*?)" charity$/ do |org_name
   org = Organization.find_by_name org_name
   page.should have_xpath %Q<//a[@target = "_blank" and @href = "#{org.website}" and contains(.,'#{org.website}')]>
 end
-Then /^I should see a link with text "([^"]*?)"$/ do |link|
-  page.should have_link link
-end
 
-Then /^I should not see a link with text "([^"]*?)"$/ do |link|
-  page.should_not have_link link
+Then /^I should( not)? see a link with text "([^"]*?)"$/ do |negate, link|
+  if negate
+    page.should_not have_link link
+  else
+    page.should have_link link
+  end
 end
 
 Then /^I should not see "(.*?)"$/ do |text|
@@ -245,18 +246,6 @@ def check_contact_details(name)
   page.should have_content smart_truncate(org.description)
 end
 
-Then /^I should be on the sign up page$/ do
-  current_path.should == new_user_registration_path
-end
-
-Then /^I should be on the organizations index page$/ do
-  current_path.should == organizations_path
-end
-
-Then /^I should be on the charity workers page$/ do
-  current_path.should == users_path
-end
-
 When /^I fill in "(.*?)" with "(.*?)"$/ do |field, value|
   fill_in(field, :with => value)
 end
@@ -276,12 +265,41 @@ end
 
 And(/^a file exists:$/) do |table|
   CSV.open("db/email_test.csv", "wb") do |csv|
+    csv << table.hashes[0].keys
     table.hashes.each do |org|
-      csv << [org['name'], org['email']]
+      csv << org.values
     end
   end
 end
 
 Then(/^"(.*?)" should have email "(.*?)"$/) do |org, email|
   Organization.find_by_name(org).email.should eq email
+end
+
+When(/^the URL should contain "(.*?)"$/) do |string|
+  URI.parse(current_url).path.should == '/' + string
+end
+
+Then(/^I should see "(.*?)" < (.*?) >$/) do |text, tag|
+  tags = {'emphasized' => 'em', 'stronged' => 'strong', 'number listed' => 'ol', 'bullet listed' => 'ul'}
+  collect_tag_contents(page.body, tags[tag]).should include(text)
+end
+
+Then(/^I should see "(.*?)" < tagged > with "(.*?)"$/) do |text, tag|
+  collect_tag_contents(page.body, tag).should include(text)
+end
+
+Then(/^I should see "(.*?)" < linked > to "(.*?)"$/) do |text, url|
+  links = collect_links(page.body)
+  links[text].should == url
+end
+Then(/^I should see a list of users with pending privileges$/) do
+  expect(page).to have_content("true")
+end
+
+Then(/^I should (not )?see a link to approve "(.*?)"$/) do |negate, email|
+  expectation_method = negate ? :has_no_text? : :has_text?
+  id=User.find_by_email(email).id
+  expect(page.find("##{id}.userrow").send(expectation_method, "Approve"))
+  #page.find("##{id}.userrow").should have_text("Approve")
 end

@@ -1,0 +1,14 @@
+<%- model_class = Page -%>
+<%= markdown(@page.content) %>
+<% if @admin %>
+  <div class="form-actions">
+    <%= link_to 'Pages', pages_path, :class => 'btn'  %>
+    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                edit_page_path(@page), :class => 'btn' %>
+    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                page_path(@page),
+                :method => 'delete',
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                :class => 'btn btn-danger' %>
+  </div>
+<% end %>

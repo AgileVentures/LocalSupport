@@ -29,6 +29,8 @@
 <%= donation_info_msg %>
 </p>
 
+<%= button_to "This is my organization", {action: "grab", method: "post", id: @organization.id}, {class: "btn btn-large"} if current_user.nil? || current_user.pending_organization_id != @organization.id %>
+
 <%= link_to_if(@editable, "Edit", edit_organization_path(@organization.id), {:class => 'btn btn-large'}){} %>
 
 <% content_for :map do %>

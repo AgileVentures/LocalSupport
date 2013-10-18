@@ -377,20 +377,52 @@ describe Organization do
 
   describe "importing emails" do
     it "should have a method import_emails" do
-      Organization.should respond_to(:import_emails)
-    end
-    it "should have a method import_emails" do
       Organization.should_receive(:add_email)
       Organization.should_receive(:import).with(nil,2,false) do |&arg|
         Organization.add_email(&arg)
       end
       Organization.import_emails(nil,2,false)
     end
+    it 'should handle absence of org gracefully' do
+      Organization.should_receive(:where).with("UPPER(name) LIKE ? ", "%I LOVE PEOPLE%").and_return(nil)
+      STDOUT.should_receive(:puts).with("i love people was not found")
+      expect(lambda{
+        Organization.add_email(fields = CSV.parse('i love people,,,,,,,test@example.org')[0],true)
+      }).not_to raise_error
+      
+    end
     it "should add email to org" do
-      Organization.should_receive(:find_by_name).with('friendly').and_return(@org1)
+      Organization.should_receive(:where).with("UPPER(name) LIKE ? ", "%FRIENDLY%").and_return([@org1])
       @org1.should_receive(:email=).with('test@example.org')
       @org1.should_receive(:save)
-      Organization.add_email(fields = CSV.parse('friendly,test@example.org')[0],true)
+      Organization.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0],true)
+    end
+
+    it "should add email to org even with case mismatch" do
+      Organization.should_receive(:where).with("UPPER(name) LIKE ? ", "%FRIENDLY%").and_return([@org1])
+      @org1.should_receive(:email=).with('test@example.org')
+      @org1.should_receive(:save)
+      Organization.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0],true)
+    end
+
+    it 'should not add email to org when it has an existing email' do
+      @org1.email = 'something@example.com'
+      @org1.save!
+      Organization.should_receive(:where).with("UPPER(name) LIKE ? ", "%FRIENDLY%").and_return([@org1])
+      @org1.should_not_receive(:email=).with('test@example.org')
+      @org1.should_not_receive(:save)
+      Organization.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0],true)
+    end
+  end
+
+  describe "run_geocode" do
+    it 'should return true if address is changed' do
+      @org1.address = "asjkdhas,ba,asda"
+      @org1.run_geocode?.should be_true
+    end
+    it 'should return false when no address is set' do
+      org = Organization.new
+      org.run_geocode?.should be_false
     end
   end
 

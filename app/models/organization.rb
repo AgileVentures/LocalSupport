@@ -7,7 +7,9 @@ class String
 end
 
 class Organization < ActiveRecord::Base
-  acts_as_gmappable :check_process => false
+  # http://stackoverflow.com/questions/10738537/lazy-geocoding
+  # lambda { |org| !org.address.blank? && org.latitude.blank? && org.longitude.blank? }
+  acts_as_gmappable :check_process => false, :process_geocoding => :run_geocode?
   has_many :users
   has_and_belongs_to_many :categories
   # Setup accessible (or protected) attributes for your model
@@ -15,31 +17,42 @@ class Organization < ActiveRecord::Base
   attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info
   accepts_nested_attributes_for :users
 
+  # if we removed check_process => false saving the model would not trigger
+  # a geocode
+  #after_commit :process_geocoding
+
+  def run_geocode?
+    return true if address.present? && latitude.blank? && longitude.blank?
+    # http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
+    return true if address_changed?
+    false
+  end
+
   #This method is overridden to save organization if address was failed to geocode
   def run_validations!
     run_callbacks :validate
     remove_errors_with_address
     errors.empty?
   end
+
   #TODO: Give this TLC and refactor the flow or refactor out responsibilities
+  # This method both adds new editors and/or updates attributes
   def update_attributes_with_admin(params)
     email = params[:admin_email_to_add]
-    result = false
-    if !email.blank?
-       result = ActiveRecord::Base.transaction do
-         usr = User.find_by_email(email)
-         if usr == nil
-           self.errors.add(:administrator_email, "The user email you entered,'#{email}', does not exist in the system")
-           raise ActiveRecord::Rollback
-         else
-           self.users << usr
-           self.update_attributes(params)
-         end
-       end
-    else
-      result = self.update_attributes(params)
+    if email.blank?
+      return self.update_attributes(params)   # explicitly call with return to return boolean instead of nil
     end
-    return result
+    #Transactions are protective blocks where SQL statements are only permanent if they can all succeed as one atomic action.
+    ActiveRecord::Base.transaction do
+      usr = User.find_by_email(email)
+      if usr.present?
+        self.users << usr
+        return self.update_attributes(params)
+      else
+        self.errors.add(:administrator_email, "The user email you entered,'#{email}', does not exist in the system")
+        raise ActiveRecord::Rollback    # is this necessary? Doesn't the transaction block rollback the change with `usr` if update_attributes fails?
+      end
+    end
   end
 
   def self.search_by_keyword(keyword)
@@ -130,9 +143,13 @@ class Organization < ActiveRecord::Base
   end
 
   def self.add_email(row, validation)
-    org = find_by_name(row[0])
-    org.email = row[1]
-    org.save
+    orgs = where("UPPER(name) LIKE ? ","%#{row[0].try(:upcase)}%")
+    if orgs && orgs[0] && orgs[0].email.blank?
+      orgs[0].email = row[7]
+      orgs[0].save
+    else
+      puts "#{row[0]} was not found"
+    end
   end
 
   def self.check_columns_in(row)
@@ -141,6 +158,9 @@ class Organization < ActiveRecord::Base
         raise CSV::MalformedCSVError, "No expected column with name #{column_name} in CSV file"
       end
     end
+  end
+  def send_admin_mail
+    AdminMailer.new_user_waiting_for_approval(self)#.deliver
   end
 
   private

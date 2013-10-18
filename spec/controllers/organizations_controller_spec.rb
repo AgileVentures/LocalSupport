@@ -3,11 +3,14 @@ require 'spec_helper'
 describe OrganizationsController do
   let(:category_html_options){[['cat1',1],['cat2',2]]}
 
+  # shouldn't this be done in spec_helper.rb?
   before :suite do
     FactoryGirl.factories.clear
     FactoryGirl.find_definitions
   end
 
+  # http://stackoverflow.com/questions/10442159/rspec-as-null-object
+  # doesn't calling as_null_object on a mock negate the need to stub anything?
   def double_organization(stubs={})
     (@double_organization ||= mock_model(Organization).as_null_object).tap do |organization|
       organization.stub(stubs) unless stubs.empty?
@@ -433,6 +436,57 @@ describe OrganizationsController do
       it "redirects to sign-in" do
         delete :destroy, :id => "37"
         expect(response).to redirect_to new_user_session_path
+      end
+    end
+  end
+
+  describe "POST #grab" do
+    context "not signed in and requests to become admin of an organization" do
+      before :each do
+        @user = FactoryGirl.create(:user)
+        Gmaps4rails.stub(:geocode)
+        @org = FactoryGirl.create(:organization)
+        controller.stub(:current_user).and_return(nil)
+        @org_id = @org.id
+        #TODO can we dry out post :grab without breaking "calls save!" block (ordering issue)
+      end
+      it "redirects to sign-in and the organization id is in session" do
+        post :grab, id: @org_id
+        session[:organization_id].should eql @org_id.to_s
+        response.should redirect_to user_session_path
+      end
+    end
+    context "signed in user requests to become admin of an organization" do
+      before :each do
+        @user = FactoryGirl.create(:user)
+        Gmaps4rails.stub(:geocode)
+        @org = FactoryGirl.create(:organization)
+        @org_id = @org.id
+        controller.stub(:current_user).and_return(@user)
+        #TODO can we dry out post :grab without breaking "calls save!" block (ordering issue)
+      end
+      it "sends a message to the flash" do
+        post :grab, id: @org_id
+        expect(flash[:notice]).to eq("You have requested admin status for #{Organization.find(@org_id).name}")
+      end
+      it "calls save!" do
+        @user.should_receive(:save!)
+        post :grab, id: @org_id
+      end
+      it "sets charity admin pending to true" do
+        post :grab, id: @org_id
+        @user.charity_admin_pending.should be_true
+        @user.pending_organization_id.should eq @org.id
+      end
+      it "sends an email to the site admin regarding the 'this is my organization' request" do
+        ActionMailer::Base.deliveries.clear
+        @admin_user = FactoryGirl.create(:admin_user)
+        org = Organization.find(@org_id)
+        post :grab, id: @org_id
+        @email = ActionMailer::Base.deliveries.last
+        @email.to.should include @admin_user.email
+        @email.subject.should include("New user waiting for approval")
+        @email.body.should include("A user has requested admin status for #{org.name}")
       end
     end
   end

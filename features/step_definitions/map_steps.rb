@@ -65,6 +65,14 @@ Given /the following organizations exist/ do |organizations_table|
   end
 end
 
+Given /Google is indisposed for "(.*)"/ do  |address|
+  body = %Q({
+"results" : [],
+"status" : "OVER_QUERY_LIMIT"
+})
+  stub_request_with_address(address, body)
+end
+
 Given /the following categories exist/ do |categories_table|
   categories_table.hashes.each do |cat|
     Category.create! cat
@@ -79,8 +87,24 @@ Given /^the following categories_organizations exist:$/ do |join_table|
   end
 end
 
+Given /^the following pages exist:$/ do |pages_table|
+  pages_table.hashes.each do |page|
+    Page.create! page
+  end
+end
+
+When(/^a static page named "(.*?)" with permalink "(.*?)" and markdown content:$/) do |name, permalink, content|
+  Page.create!({:name => name, :permalink => permalink, :content => content})
+end
+
 Given /^I edit the donation url to be "(.*?)"$/ do |url|
   fill_in('organization_donation_info', :with => url)
+end
+
+And(/^"(.*?)" should not have nil coordinates$/) do |name|
+  org = Organization.find_by_name(name)
+  org.latitude.should_not be_nil
+  org.longitude.should_not be_nil
 end
 
 Then /^the coordinates for "(.*?)" and "(.*?)" should( not)? be the same/ do | org1_name, org2_name, negation|
@@ -100,4 +124,3 @@ Then /^the coordinates for "(.*?)" and "(.*?)" should( not)? be the same/ do | o
     expect(lat_same && lng_same).to be_true
   end
 end
-

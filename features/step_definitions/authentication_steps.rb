@@ -9,7 +9,7 @@ Given /^I am signed in as a charity worker (un)?related to "(.*?)"$/ do |negate,
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
 
-Given /^I am signed in as a (non-)?admin$/ do |negate|
+Given /^I am signed in as an? (non-)?admin$/ do |negate|
   user = User.find_by_admin(negate ? false:true)
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
@@ -69,12 +69,12 @@ Then /^I should not be signed in as any user$/ do
   }
 end
 
-When /^I sign out$/ do
-  click_link 'Sign Out' 
+Given /^I am not signed in as any user$/ do
+  step "I should not be signed in as any user"
 end
 
-Then /^I should be on the sign in page$/ do
-  current_path.should == new_user_session_path
+When /^I sign out$/ do
+  click_link 'Sign Out' 
 end
 
 Given /^I sign in as "(.*?)" with password "(.*?)"$/ do |email, password|
@@ -84,15 +84,60 @@ Given /^I sign in as "(.*?)" with password "(.*?)"$/ do |email, password|
 end
 
 Given /^I am on the sign in page$/ do
-  steps %Q{ 
-    Given I am on the home page
-  }
+  step "I am on the home page"
   click_link 'Org Login'
 end
 
 Given /^I am on the sign up page$/ do
-  steps %Q{ 
-    Given I am on the home page
-  }
+  step "I am on the home page"
   click_link 'New Org?'
+end
+
+When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |email, password|
+  user = User.find_by_email("#{email}")
+  user.confirm!
+  steps %Q{
+    Given I am on the sign in page
+    And I sign in as "#{email}" with password "#{password}"
+  }
+end
+Given(/^"(.*?)" has requested edit privileges for "(.*?)"$/) do |arg1, arg2|
+    pending
+end
+
+When(/^I follow edit_user_path\(nonadmin@myorg\.com\)$/) do
+    pending # express the regexp above with the code you wish you had
+end
+
+When(/^approve "(.*?)" to edit "(.*?)"$/) do |arg1, arg2|
+    pending # express the regexp above with the code you wish you had
+end
+
+Then(/^"(.*?)" can edit "(.*?)"$/) do |arg1, arg2|
+    pending # express the regexp above with the code you wish you had
+end
+
+When(/^do not approve "(.*?)" to edit "(.*?)"$/) do |arg1, arg2|
+    pending # express the regexp above with the code you wish you had
+end
+
+Then(/^"(.*?)" can not edit "(.*?)"$/) do |arg1, arg2|
+    pending # express the regexp above with the code you wish you had
+end
+
+Given(/^I am signed in as nonadmin$/) do
+    pending # express the regexp above with the code you wish you had
+end
+Then(/^I should see a link to approve them$/) do
+  page.should have_link "Approve"
+end
+
+Then(/^I should not see a link to approve them$/) do
+  page.should_not have_link "Approve"
+end
+Given(/^"(.*?)" has requested admin status for "(.*?)"$/) do |email, org_name|
+  organization = Organization.find_by_name(org_name)
+  user = User.find_by_email(email)
+  user.pending_organization_id = organization.id
+  user.save!
 end
