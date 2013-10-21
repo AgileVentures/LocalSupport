@@ -9,31 +9,31 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field" data-toggle="tooltip" title="Enter a unique name" >
     <%= f.label :name %>
     <%= f.text_field :name, :class => "org_form" %>
   </div>
-  <div class="field">
+  <div class="field" data-toggle="tooltip" title="Enter a complete address">
     <%= f.label :address %>
     <%= f.text_field :address, :class => "org_form" %>
   </div>
-  <div class="field">
+  <div class="field" data-toggle="tooltip" title="Make sure post code is accurate">
     <%= f.label :postcode %>
     <%= f.text_field :postcode, :class => "org_form" %>
   </div>
-  <div class="field">
+  <div class="field" data-toggle="tooltip" title="Make sure email is correct">
     <%= f.label :email %>
     <%= f.text_field :email, :class => "org_form" %>
   </div>
-  <div class="field">
+  <div class="field" data-toggle="tooltip" title="Enter a detailed description">
     <%= f.label :description %>
     <%= f.text_area :description, :class => "org_form", :cols => "10", :rows => "10" %>
   </div>
-  <div class="field">
+  <div class="field" data-toggle="tooltip" title="Make sure url is correct">
     <%= f.label :website %>
     <%= f.text_field :website, :class => "org_form" %>
   </div>
-  <div class="field">
+  <div class="field" data-toggle="tooltip" title="Make sure phone number is correct">
     <%= f.label :telephone %>
     <%= f.text_field :telephone, :class => "org_form" %>
   </div>
@@ -42,7 +42,7 @@
      <%= f.text_field :donation_info, :class => "org_form" %>
   </div>
   <%= charity_admin_display_msg %>
-  <div class="field">
+  <div class="field" data-toggle="tooltip" title="Administrator email">
     <%= label_tag :organization_admin_email_to_add, "Add an additional organisation administrator email" %>
     <%= text_field_tag 'organization_admin_email_to_add', value = nil, {:size => 100, class: 'org_form'} %>
   </div>
