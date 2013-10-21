@@ -8,7 +8,6 @@ end
 
 class Organization < ActiveRecord::Base
   # http://stackoverflow.com/questions/10738537/lazy-geocoding
-  # lambda { |org| !org.address.blank? && org.latitude.blank? && org.longitude.blank? }
   acts_as_gmappable :check_process => false, :process_geocoding => :run_geocode?
   has_many :users
   has_and_belongs_to_many :categories
@@ -17,15 +16,16 @@ class Organization < ActiveRecord::Base
   attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info
   accepts_nested_attributes_for :users
 
-  # if we removed check_process => false saving the model would not trigger
-  # a geocode
+  # if we removed check_process => false saving the model would not trigger a geocode
   #after_commit :process_geocoding
 
   def run_geocode?
-    return true if address.present? && latitude.blank? && longitude.blank?
-    # http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
-    return true if address_changed?
-    false
+    ## http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
+    address_changed? or (address.present? and not_geocoded?)
+  end
+
+  def not_geocoded?
+    latitude.blank? and longitude.blank?
   end
 
   #This method is overridden to save organization if address was failed to geocode
