@@ -1,4 +1,81 @@
-<header class="navbar navbar-fixed-top">
+<header>
+
+  <div class="navbar  navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <%= link_to(image_tag("HCN-long.png", :class => "img-responsive" ), root_path) %>
+
+      </div>
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a href="/" class="brand" title="Some SEO stuff....">LocalSupport</a>
+        <% if (user_signed_in?)%>
+            <ul class="nav navbar-nav">
+              <li>Signed in as <%= current_user.email %>.  <%=link_to "Not you?", destroy_user_session_path, :method => :delete%></li>
+            </ul>
+        <% end %>
+        <div class="nav-collapse collapse">
+
+          <ul class="nav nav-pills pull-right">
+            <% if !(user_signed_in?)%>
+                <li class="dropdown " id="menuLogin">
+                  <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
+                  <div class="dropdown-menu" style="padding:17px;">
+                    <label>Login:</label>
+                    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+                        <div> <%= f.email_field :email, :autofocus => true, :placeholder => "you@example.com" %></div>
+
+                        <div><%= f.password_field :password, :placeholder => "password" %></div>
+
+                        <% if devise_mapping.rememberable? -%>
+                            <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+                        <% end -%>
+
+                        <div><%= f.submit "Sign in", :class => "btn btn-primary" %></div>
+                    <% end %>
+                    <form><a href="#" title="Some SEO stuff..." data-toggle="collapse" data-target="#register">Sign-up..</a></form>
+                    <form id="register" class="form collapse">
+                      <input name="email" id="inputEmail" type="text" placeholder="Email">
+                      <input name="password" id="password" type="password" placeholder="Password">
+                      <input name="verify" id="verify" type="password" placeholder="Password (again)"><br>
+                      <!--button type="button" id="submit" class="btn">Sign Up</button-->
+                    </form>
+                  </div>
+                </li>
+            <% end %>
+            <% if (user_signed_in?)%>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Some SEO stuff....">
+                    <i class="icon-user icon-xxlarge"> </i> <span id="lblUsername"></span>
+                    <b class="caret"></b>
+                  </a>
+
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Kan be hidden if not logged in</a></li>
+                    <li><a href="#">My organization</a></li>
+                    <li class="divider"> </li>
+                    <li><a href="#">Edit profile</a></li>
+                    <li><a href="#">About</a></li>
+            <% end %>
+            </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <!--header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
        <div class="row">
@@ -28,7 +105,11 @@
         </ul>
       </nav>
       </div>
+
   </div>
   </div>
-  </div>
+  </div-->
+
+
+
 </header>

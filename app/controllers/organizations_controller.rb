@@ -2,7 +2,6 @@ class OrganizationsController < ApplicationController
   # GET /organizations/search
   # GET /organizations/search.json
   before_filter :authenticate_user!, :except => [:search, :index, :show]
-
   def search
     @query_term = params[:q]
     @category_id = params.try(:[],'category').try(:[],'id')

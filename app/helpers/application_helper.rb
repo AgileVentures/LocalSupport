@@ -13,6 +13,24 @@ module ApplicationHelper
     red_carpet = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true)
     red_carpet.render(text).html_safe
   end
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
+
+
+  def after_sign_in_path_for(resource)
+    redirect_to  root_url
+  end
+
+
 end
 
 
