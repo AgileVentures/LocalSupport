@@ -4,7 +4,8 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
  *= require bootstrap_and_overrides
- *= require_tree . 
+ *= require_tree .
+ *= require font-awesome
 */
 
 .flash {
@@ -30,4 +31,9 @@ background: #bce8f1;
 .flash.warning {
 border: thin solid #b8860b;
 background: #ff0;
+}
+
+#main .container {
+
+    margin-top: 50px;
 }

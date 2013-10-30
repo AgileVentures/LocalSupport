@@ -13,11 +13,7 @@
           <span class="icon-bar"></span>
         </a>
         <a href="/" class="brand" title="Some SEO stuff....">LocalSupport</a>
-        <% if (user_signed_in?)%>
-            <ul class="nav navbar-nav">
-              <li>Signed in as <%= current_user.email %>.  <%=link_to "Not you?", destroy_user_session_path, :method => :delete%></li>
-            </ul>
-        <% end %>
+
         <div class="nav-collapse collapse">
 
           <ul class="nav nav-pills pull-right">
@@ -37,7 +33,7 @@
 
                         <div><%= f.submit "Sign in", :class => "btn btn-primary" %></div>
                     <% end %>
-                    <form><a href="#" title="Some SEO stuff..." data-toggle="collapse" data-target="#register">Sign-up..</a></form>
+                    <form><a href="#" title="Some SEO stuff..." data-toggle="collapse" data-target="#registerForm">Sign-up..</a></form>
                     <form id="registerForm" class="form collapse">
                       <input name="email" id="inputEmail" type="text" placeholder="Email">
                       <input name="password" id="password" type="password" placeholder="Password">
@@ -50,7 +46,7 @@
             <% if (user_signed_in?)%>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Some SEO stuff....">
-                    <i class="icon-user icon-xxlarge"> </i> <span id="lblUsername"></span>
+                    <i class="icon-user icon-xxlarge"> </i> <%= current_user.email %><span id="lblUsername"></span>
                     <b class="caret"></b>
                   </a>
 
@@ -59,7 +55,8 @@
                     <li><a href="#">My organization</a></li>
                     <li class="divider"> </li>
                     <li><a href="#">Edit profile</a></li>
-                    <li><a href="#">About</a></li>
+                    <li class="divider"> </li>
+                    <li><a href="#"><%=link_to "Not you?", destroy_user_session_path, :method => :delete%></a></li>
             <% end %>
             </ul>
             </li>
