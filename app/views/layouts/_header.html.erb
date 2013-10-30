@@ -26,7 +26,7 @@
                   <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
                   <div class="dropdown-menu" style="padding:17px;">
                     <label>Login:</label>
-                    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+                    <%= form_for(resource, :html => { :id => "loginForm" }, :as => resource_name, :url => session_path(resource_name)) do |f| %>
                         <div> <%= f.email_field :email, :autofocus => true, :placeholder => "you@example.com" %></div>
 
                         <div><%= f.password_field :password, :placeholder => "password" %></div>
@@ -38,7 +38,7 @@
                         <div><%= f.submit "Sign in", :class => "btn btn-primary" %></div>
                     <% end %>
                     <form><a href="#" title="Some SEO stuff..." data-toggle="collapse" data-target="#register">Sign-up..</a></form>
-                    <form id="register" class="form collapse">
+                    <form id="registerForm" class="form collapse">
                       <input name="email" id="inputEmail" type="text" placeholder="Email">
                       <input name="password" id="password" type="password" placeholder="Password">
                       <input name="verify" id="verify" type="password" placeholder="Password (again)"><br>
