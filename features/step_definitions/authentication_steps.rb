@@ -76,12 +76,16 @@ end
 Given /^I sign in as "(.*?)" with password "(.*?)"$/ do |email, password|
   fill_in "Email" , :with => email
   fill_in "Password" , :with => password
-  click_button "Sign in"
+  click_link_or_button "Sign in"
 end
 
 Given /^I am on the sign in page$/ do
   step "I am on the home page"
-  click_link 'Org Login'
+  #expect(page).to have_form('loginForm')
+  expect(page).to have_field('email')
+  expect(page).to have_field('password')
+  expect(page).to have_button('signin')
+  #click_link 'Org Login'
 end
 
 Given /^I am on the sign up page$/ do

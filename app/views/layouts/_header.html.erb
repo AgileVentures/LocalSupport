@@ -31,7 +31,7 @@
                             <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
                         <% end -%>
 
-                        <div><%= f.submit "Sign in", :class => "btn btn-primary" %></div>
+                        <div><%= f.submit "Sign in", :id => 'signin', :class => "btn btn-primary" %></div>
                     <% end %>
                     <form><a href="#" title="Some SEO stuff..." data-toggle="collapse" data-target="#registerForm">Sign-up..</a></form>
                     <form id="registerForm" class="form collapse">
@@ -45,8 +45,8 @@
             <% end %>
             <% if (user_signed_in?)%>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Some SEO stuff....">
-                    <i class="icon-user icon-xxlarge"> </i> <%= current_user.email %><span id="lblUsername"></span>
+                  <a href="#" id="<%= current_user.email %>" class="dropdown-toggle" data-toggle="dropdown" title="Some SEO stuff....">
+                    <!--i class="icon-user icon-xxlarge"> </i--> <%= current_user.email %>
                     <b class="caret"></b>
                   </a>
 
