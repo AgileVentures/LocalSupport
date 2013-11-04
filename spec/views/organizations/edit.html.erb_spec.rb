@@ -24,11 +24,12 @@ describe "organizations/edit.html.erb" do
             'Address'  => 'Enter a complete address',
             'Postcode' => 'Make sure post code is accurate',
             'Email' => 'Make sure email is correct',
-            'Description' => 'Enter a detailed description',
+            'Description' => 'Enter a full description here. When an individual searching this database all words in this description will be searched.',
             'Website' => 'Make sure url is correct',
             'Telephone' => 'Make sure phone number is correct',
-            'Add an additional organisation administrator email' => 'Administrator email'
-            }
+            'Add an additional organisation administrator email' => 'Please enter the details of individuals from your organisation you would like to give permission to update your entry. E-mail addresses entered here will not be made public.',
+            'Donation info' => 'Please enter a website here either to the fundraising page on your website or to an online donation site.'
+    }
     hash.each do |label,tooltip|
       rendered.should have_css("div[title=\"#{tooltip}\"][data-toggle=\"tooltip\"]:contains('#{label}')")
     end
