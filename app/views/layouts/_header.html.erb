@@ -35,7 +35,7 @@
                     <% end %>
                     <form><a href="#" title="Some SEO stuff..." data-toggle="collapse" data-target="#registerForm">Sign-up..</a></form>
 
-                    <%= form_for(resource, :html => { :id => "signupForm" }, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+                    <%= form_for(resource, :html => { :id => "registerForm" }, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
                         <%= devise_error_messages! %>
                           <%= f.email_field :email, :autofocus => true, :id => 'signup_email', :name => 'user[email]', :placeholder => "you@example.com" %>
                           <%= f.password_field :password, :id => 'signup_password', :name => 'user[password]', :placeholder => "password" %>
