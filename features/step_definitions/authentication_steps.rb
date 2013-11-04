@@ -15,9 +15,9 @@ Given /^I am signed in as an? (non-)?admin$/ do |negate|
 end
 
 Given /^I sign up as "(.*?)" with password "(.*?)" and password confirmation "(.*?)"$/ do |email, password,password_confirmation|
-  fill_in "Email" , :with => email
-  fill_in "user_password" , :with => password
-  fill_in "user_password_confirmation" , :with => password_confirmation
+  fill_in "signup_email" , :with => email
+  fill_in "signup_password" , :with => password
+  fill_in "signup_password_confirmation" , :with => password_confirmation
   click_button "Sign up"
 end
 
@@ -82,15 +82,17 @@ end
 Given /^I am on the sign in page$/ do
   step "I am on the home page"
   #expect(page).to have_form('loginForm')
-  expect(page).to have_field('email')
-  expect(page).to have_field('password')
+  expect(page).to have_field('user_email')
+  expect(page).to have_field('user_password')
   expect(page).to have_button('signin')
   #click_link 'Org Login'
 end
 
 Given /^I am on the sign up page$/ do
   step "I am on the home page"
-  click_link 'New Org?'
+  expect(page).to have_field('user_email')
+  expect(page).to have_field('user_password')
+  #expect(page).to have_button('signup')
 end
 
 When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |email, password|
