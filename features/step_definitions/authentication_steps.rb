@@ -70,7 +70,7 @@ Then /^I should not be signed in as any user$/ do
 end
 
 When /^I sign out$/ do
-  click_link 'Sign Out' 
+  click_link 'Not you?'
 end
 
 Given /^I sign in as "(.*?)" with password "(.*?)"$/ do |email, password|
