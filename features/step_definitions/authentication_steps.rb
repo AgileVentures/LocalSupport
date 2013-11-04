@@ -74,8 +74,8 @@ When /^I sign out$/ do
 end
 
 Given /^I sign in as "(.*?)" with password "(.*?)"$/ do |email, password|
-  fill_in "Email" , :with => email
-  fill_in "Password" , :with => password
+  fill_in "user_email" , :with => email
+  fill_in "user_password" , :with => password
   click_link_or_button "Sign in"
 end
 

@@ -17,6 +17,7 @@ Given the following users are registered:
 
 Scenario: Sign in for an existing non-admin user unassociated with any organization
   Given I am on the sign in page
+  #Then show me the page
   And I sign in as "registered_user-1@example.com" with password "pppppppp"
   #Then I should be on the home page
   Then I should see a link or button "registered_user-1@example.com"
