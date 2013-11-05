@@ -31,8 +31,8 @@
                             <div><%= f.check_box :remember_me %> <%= f.label :remember_me, :style => "display: inline;" %></div>
                         <% end -%>
 
-                        <div><%= f.submit "Sign in", :id => 'signin', :class => "btn btn-primary" %></div>
-                        <br />
+                        <div style = "display: inline;"><%= f.submit "Sign in", :id => 'signin', :class => "btn btn-primary" %></div>
+
                         <%= link_to "Forgot your password?", new_password_path(resource_name) %>
                     <% end %>
                     <form><a href="#" title="Some SEO stuff..." data-toggle="collapse" data-target="#register">Sign-up..</a></form>
