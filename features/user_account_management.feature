@@ -13,7 +13,7 @@ Background:
 
 
 Scenario: Retrieve password
-  Given I am on the sign in page
+  Given I am on the home page
   And I click "Forgot your password?"
   Then I should be on the Forgot your password page
   And I should see "Please enter your email address below"
@@ -30,7 +30,7 @@ Scenario: Edit user profile
   And I should see "Cancel my account"
 
 Scenario: Update user email
-  Given I am on the sign in page
+  Given I am on the home page
   And I sign in as "registered_user-1@example.com" with password "pppppppp"
   And I click "Update account"
   And I fill in "user_email" with "new_email@example.com"
@@ -39,7 +39,7 @@ Scenario: Update user email
   Then I should see "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
 
 Scenario: Update user email - wrong current password
-  Given I am on the sign in page
+  Given I am on the home page
   And I sign in as "registered_user-1@example.com" with password "pppppppp"
   And I click "Update account"
   And I fill in "user_email" with "new_email@example.com"
@@ -48,7 +48,7 @@ Scenario: Update user email - wrong current password
   Then I should see "Current password is invalid"
 
 Scenario: Update user password
-  Given I am on the sign in page
+  Given I am on the home page
   And I sign in as "registered_user-1@example.com" with password "pppppppp"
   And I click "Update account"
   And I fill in "user_password" with "qqqqqqqq"
@@ -58,7 +58,7 @@ Scenario: Update user password
   Then I should see "You updated your account successfully."
 
   Scenario: Update user password - wrong current password
-    Given I am on the sign in page
+    Given I am on the home page
     And I sign in as "registered_user-1@example.com" with password "pppppppp"
     And I click "Update account"
     And I fill in "user_password" with "qqqqqqqq"
@@ -68,7 +68,7 @@ Scenario: Update user password
     Then I should see "Current password is invalid"
 
   Scenario: Update user password - wrong confirmation
-    Given I am on the sign in page
+    Given I am on the home page
     And I sign in as "registered_user-1@example.com" with password "pppppppp"
     And I click "Update account"
     And I fill in "user_password" with "qqqqqqqq"
@@ -78,7 +78,7 @@ Scenario: Update user password
     Then I should see "Password doesn't match confirmation"
 
   Scenario: Update user password - wrong confirmation and wrong current password
-    Given I am on the sign in page
+    Given I am on the home page
     And I sign in as "registered_user-1@example.com" with password "pppppppp"
     And I click "Update account"
     And I fill in "user_password" with "qqqqqqqq"

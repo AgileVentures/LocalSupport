@@ -12,7 +12,7 @@ And the email queue is clear
 
 @email
 Scenario: Retrieve password for an existing user
-  Given I am on the sign in page
+  Given I am on the home page
   When I follow "Forgot your password?"
   And I fill in "user_retrieval_email" with "registered-user@example.com"
   And I press "Send me reset password instructions"
@@ -21,7 +21,7 @@ Scenario: Retrieve password for an existing user
 
 @email
 Scenario: Retrieve password for a non-existent user
-  Given I am on the sign in page
+  Given I am on the home page
   When I follow "Forgot your password?"
   And I fill in "user_retrieval_email" with "non-existent_user@example.com"
   And I press "Send me reset password instructions"

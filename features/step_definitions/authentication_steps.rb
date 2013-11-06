@@ -57,7 +57,7 @@ Given /^that I am logged in as any user$/ do
    | registered_user@example.com | pppppppp | 2007-01-01  10:00:00 |
   } 
   steps %Q{
-    Given I am on the sign in page
+    Given I am on the home page
     And I sign in as "registered_user@example.com" with password "pppppppp"
   }
 end
@@ -98,7 +98,7 @@ When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |
   user = User.find_by_email("#{email}")
   user.confirm!
   steps %Q{
-    Given I am on the sign in page
+    Given I am on the home page
     And I sign in as "#{email}" with password "#{password}"
   }
 end
