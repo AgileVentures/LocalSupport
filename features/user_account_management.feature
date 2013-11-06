@@ -23,8 +23,8 @@ Scenario: Retrieve password
 
 Scenario: Edit user profile
   Given that I am logged in as any user
-  Then I should see "Edit account"
-  When I click "Edit account"
+  Then I should see "Update account"
+  When I click "Update account"
   Then I should be on the Edit account page
   And I should see "Edit User"
   And I should see "Cancel my account"
@@ -32,7 +32,7 @@ Scenario: Edit user profile
 Scenario: Update user email
   Given I am on the sign in page
   And I sign in as "registered_user-1@example.com" with password "pppppppp"
-  And I click "Edit account"
+  And I click "Update account"
   And I fill in "user_email" with "new_email@example.com"
   And I fill in "user_current_password" with "pppppppp"
   And I press "Update"
@@ -41,7 +41,7 @@ Scenario: Update user email
 Scenario: Update user email - wrong current password
   Given I am on the sign in page
   And I sign in as "registered_user-1@example.com" with password "pppppppp"
-  And I click "Edit account"
+  And I click "Update account"
   And I fill in "user_email" with "new_email@example.com"
   And I fill in "user_current_password" with "12345"
   And I press "Update"
@@ -50,7 +50,7 @@ Scenario: Update user email - wrong current password
 Scenario: Update user password
   Given I am on the sign in page
   And I sign in as "registered_user-1@example.com" with password "pppppppp"
-  And I click "Edit account"
+  And I click "Update account"
   And I fill in "user_password" with "qqqqqqqq"
   And I fill in "user_password_confirmation" with "qqqqqqqq"
   And I fill in "user_current_password" with "pppppppp"
@@ -60,7 +60,7 @@ Scenario: Update user password
   Scenario: Update user password - wrong current password
     Given I am on the sign in page
     And I sign in as "registered_user-1@example.com" with password "pppppppp"
-    And I click "Edit account"
+    And I click "Update account"
     And I fill in "user_password" with "qqqqqqqq"
     And I fill in "user_password_confirmation" with "qqqqqqqq"
     And I fill in "user_current_password" with "123456"
@@ -70,7 +70,7 @@ Scenario: Update user password
   Scenario: Update user password - wrong confirmation
     Given I am on the sign in page
     And I sign in as "registered_user-1@example.com" with password "pppppppp"
-    And I click "Edit account"
+    And I click "Update account"
     And I fill in "user_password" with "qqqqqqqq"
     And I fill in "user_password_confirmation" with "12345"
     And I fill in "user_current_password" with "pppppppp"
@@ -80,7 +80,7 @@ Scenario: Update user password
   Scenario: Update user password - wrong confirmation and wrong current password
     Given I am on the sign in page
     And I sign in as "registered_user-1@example.com" with password "pppppppp"
-    And I click "Edit account"
+    And I click "Update account"
     And I fill in "user_password" with "qqqqqqqq"
     And I fill in "user_password_confirmation" with "12345"
     And I fill in "user_current_password" with "12345"
