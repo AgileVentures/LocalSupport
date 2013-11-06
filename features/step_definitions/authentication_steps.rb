@@ -87,6 +87,10 @@ Given /^the sign in form is visible$/ do
   #click_link 'Org Login'
 end
 
+Given /^the dropdown menu is visible$/ do
+  expect(page).to have_css('#navLogin')
+end
+
 Given /^I am on the sign up page$/ do
   step "I am on the home page"
   expect(page).to have_field('user_email')
