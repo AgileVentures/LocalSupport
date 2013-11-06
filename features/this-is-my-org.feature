@@ -17,3 +17,7 @@ Feature: This is my organization
     And I press "This is my organization"
     Then I should be on the charity page for "My Organization"
     And "nonadmin@myorg.com"'s request status for "My Organization" should be updated appropriately
+
+  Scenario: I am not signed in and won't be offered "This is my organization" claim button
+    When I am on the charity page for "My Organization"
+    And I should not see "This is my organization"

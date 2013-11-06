@@ -289,7 +289,9 @@ Then(/^"(.*?)" should have email "(.*?)"$/) do |org, email|
 end
 Given /^"(.*)"'s request status for "(.*)" should be updated appropriately$/ do |email,org|
     steps %Q{
-    And "#{email}"'s request for "#{org}" should be persisted
+      And "#{email}"'s request for "#{org}" should be persisted
+      And I should see "You have requested admin status for My Organization"
+      And I should not see "This is my organization"
     }
 end
 
@@ -299,6 +301,5 @@ And /"(.*)"'s request for "(.*)" should be persisted/ do |email,org|
     user.pending_organization_id.should eq org.id
 end
 #Then an email should be sent to "admin@myorg.com"
-#And I should see "You have requested admin status for My Organization"
 #And I should be on the charity page for "#{org}"
-#And I should not see the "This is my organization" button for "#{org}"
+
