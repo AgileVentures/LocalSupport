@@ -79,8 +79,7 @@ Given /^I sign in as "(.*?)" with password "(.*?)"$/ do |email, password|
   click_link_or_button "Sign in"
 end
 
-Given /^I am on the sign in page$/ do
-  step "I am on the home page"
+Given /^the sign in form is visible$/ do
   #expect(page).to have_form('loginForm')
   expect(page).to have_field('user_email')
   expect(page).to have_field('user_password')

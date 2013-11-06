@@ -23,6 +23,12 @@ describe Devise::SessionsController do
       expect(response).to redirect_to root_url
     end
 
+    it 'redirects to sign in page after non-admin associated with nothing fails to log-in' do
+      FactoryGirl.build(:user, {:email => 'example@example.com', :password => 'pppppppp'}).save!
+      post :create, 'user' => {'email' => 'example@example.com', 'password' => '12345'}
+      expect(response).to redirect_to new_user_session
+    end
+
     it 'redirects to charity page after non-admin associated with org' do
       org = FactoryGirl.build(:organization)
       Gmaps4rails.should_receive(:geocode)
