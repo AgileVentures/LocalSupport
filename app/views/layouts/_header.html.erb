@@ -23,10 +23,20 @@
                   <div class="dropdown-menu" style="padding:17px;">
                     <label>Login:</label>
                     <%= form_for(resource, :html => { :id => "loginForm" }, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-                        <div> <%= f.email_field :email, :autofocus => true, :placeholder => "you@example.com" %></div>
-
-                        <div><%= f.password_field :password, :placeholder => "password" %></div>
-
+                        <span style="position: relative;">
+                        <div>
+                             <%= f.email_field :email, :autofocus => true, :placeholder => "you@example.com" %>
+                             <!--[if lt IE 8]>
+                             <label style="font: 0.75em/normal sans-serif; left: 5px; top: 3px; width: 147px; height: 15px; color: rgb(186, 186, 186); position: absolute; overflow-x: hidden; font-size-adjust: none; font-stretch: normal;" for="user_email">you@example.com</label>
+                             <![endif]-->
+                         </div>
+                         <div>
+                           <%= f.password_field :password, :placeholder => "password" %>
+                            <!--[if lt IE 8]>
+                            <label style="font: 0.75em/normal sans-serif; left: 5px; top: 3px; width: 147px; height: 15px; color: rgb(186, 186, 186); position: absolute; overflow-x: hidden; font-size-adjust: none; font-stretch: normal;" for="user_password">password</label>
+                            <![endif]-->
+                         </div>
+                        </span>
                         <% if devise_mapping.rememberable? -%>
                             <div><%= f.check_box :remember_me %> <%= f.label :remember_me, :style => "display: inline;" %></div>
                         <% end -%>
