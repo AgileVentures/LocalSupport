@@ -20,21 +20,40 @@ Scenario: Sign in for an existing non-admin user unassociated with any organizat
   And I sign in as "registered_user-1@example.com" with password "pppppppp"
   Then I should see a link or button "registered_user-1@example.com"
 
+Scenario: Sign in with wrong password for an existing non-admin user unassociated with any organization
+  Given I am on the sign in page
+  And I sign in as "registered_user-1@example.com" with password "12345"
+  Then I should be on the Sign in page
+  And I should see "I'm sorry, you are not authorized to login to the system."
+
 Scenario: Sign in for an existing non-admin user associated with an organization
   Given I am on the sign in page
   And I sign in as "registered_user-3@example.com" with password "pppppppp"
   Then I should be on the charity page for "Friendly"
   Then I should see a link or button "registered_user-3@example.com"
-  
+
+Scenario: Sign in with wrong password for an existing non-admin user associated with an organization
+  Given I am on the sign in page
+  And I sign in as "registered_user-3@example.com" with password "12345"
+  Then I should be on the Sign in page
+  And I should see "I'm sorry, you are not authorized to login to the system."
+
 Scenario: Sign in for an existing admin user
   Given I am on the sign in page
   And I sign in as "registered_user-2@example.com" with password "pppppppp"
   Then I should be on the home page
   Then I should see a link or button "registered_user-2@example.com"
 
+Scenario: Sign in with wrong password for an existing admin user
+  Given I am on the sign in page
+  And I sign in as "registered_user-2@example.com" with password "12345"
+  Then I should be on the Sign in page
+  And I should see "I'm sorry, you are not authorized to login to the system."
+
 Scenario: Sign in for a non-existent user
   Given I am on the sign in page
   And I sign in as "non-existent_user@example.com" with password "pppppppp"
   Then I should be on the sign in page
   And I should see "I'm sorry, you are not authorized to login to the system"
+
 
