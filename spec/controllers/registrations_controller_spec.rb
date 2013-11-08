@@ -39,5 +39,10 @@ describe Devise::RegistrationsController do
       post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp', 'password_confirmation' => 'pppppppp'}
       expect(assigns(:user).errors.full_messages).to include "Email has already been taken"
     end
+
+    it 'does not email when registration fails due to non-matching passwords' do
+      post :create, 'user' => {'email' => 'example2@example.com', 'password' => 'pppppppp', 'password_confirmation' => 'aaaaaaaaaa'}
+      expect(ActionMailer::Base.deliveries.size).to eq 0
+    end
   end
 end
