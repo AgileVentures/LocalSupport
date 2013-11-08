@@ -37,3 +37,65 @@ background: #ff0;
 
     margin-top: 50px;
 }
+
+
+/* Custom navbar  */
+
+
+#navbar .navbar-inner {
+
+    background-image:url('HCN-long.png') !important;
+    background-size: contain;
+    background-repeat: no-repeat !important;
+    background-position:center bottom;
+    padding-bottom: 15px;
+    margin-top: 5px;
+
+
+
+}
+
+.navbar-inner {
+
+
+}
+
+
+
+@media all and (max-width: 780px) {
+
+
+    #navbar .navbar-inner {
+
+        background-image:url('HCN-long.png') !important;
+        background-size: contain;
+        background-repeat: no-repeat !important;
+        background-position:center top;
+        padding-bottom: 0px;
+        padding-top: 20px;
+    }
+
+    #navbar .brand {
+        visibility: hidden;
+    }
+}
+@media all and (max-width: 420px)   {
+    #navbar .brand {
+        font-size: 14px;
+        visibility: visible;
+    }
+
+    #navbar .navbar-inner {
+
+        background-image:url('HCN-long.png') !important;
+        background-size: contain;
+        background-repeat: no-repeat !important;
+        background-position:center top;
+        padding-bottom: 0px;
+        padding-top: 20px;
+    }
+
+}
+
+/* Custom css */
+
