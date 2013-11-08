@@ -25,6 +25,10 @@ describe Devise::RegistrationsController do
     it 'redirects to home page after registration form' do
       expect(response).to redirect_to root_url
     end
+
+    it 'displays confirmation message upon registration' do
+      expect(flash[:notice]).to have_content('A message with a confirmation link has been sent to your email address. Please open the link to activate your account.')
+    end
   end
 
   describe "POST create that fails" do
