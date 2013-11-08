@@ -35,9 +35,9 @@ describe Devise::RegistrationsController do
       expect(ActionMailer::Base.deliveries.size).to eq 0
     end
 
-    it 'places a warning message in the flash upon failure to register due to email already being in db' do
+    it 'has an active record error message in the user instance variable when registration fails due to email already being in db' do
       post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp', 'password_confirmation' => 'pppppppp'}
-      expect(assigns(:user).errors.messages[:email]).to eq ["has already been taken"]
+      expect(assigns(:user).errors.full_messages).to include "Email has already been taken"
     end
   end
 end
