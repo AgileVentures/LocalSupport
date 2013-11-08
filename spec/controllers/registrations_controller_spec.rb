@@ -44,5 +44,10 @@ describe Devise::RegistrationsController do
       post :create, 'user' => {'email' => 'example2@example.com', 'password' => 'pppppppp', 'password_confirmation' => 'aaaaaaaaaa'}
       expect(ActionMailer::Base.deliveries.size).to eq 0
     end
+
+    it 'sets up a flash error when registration fails due to non-matching passwords' do
+      post :create, 'user' => {'email' => 'example2@example.com', 'password' => 'pppppppp', 'password_confirmation' => 'aaaaaaaaaa'}
+      expect(assigns(:user).errors.full_messages).to include("Password doesn't match confirmation")
+    end
   end
 end
