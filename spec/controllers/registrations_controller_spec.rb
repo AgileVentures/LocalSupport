@@ -12,8 +12,10 @@ describe Devise::RegistrationsController do
       post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp', 'password_confirmation' => 'pppppppp'}
     end
 
-    it 'does email upon registration' do
+    it 'does email confirmation upon registration' do
       expect(ActionMailer::Base.deliveries).to_not be_empty
+      email = ActionMailer::Base.deliveries.last
+      email.subject.should include('Confirmation instructions')
     end
 
     it 'does not authenticate user' do
@@ -45,7 +47,7 @@ describe Devise::RegistrationsController do
       expect(ActionMailer::Base.deliveries.size).to eq 0
     end
 
-    it 'sets up a flash error when registration fails due to non-matching passwords' do
+    it 'has an active record error message in the user instance variable when registration fails due to non matching passwords' do
       post :create, 'user' => {'email' => 'example2@example.com', 'password' => 'pppppppp', 'password_confirmation' => 'aaaaaaaaaa'}
       expect(assigns(:user).errors.full_messages).to include("Password doesn't match confirmation")
     end
