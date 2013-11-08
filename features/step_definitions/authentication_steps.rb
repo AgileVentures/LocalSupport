@@ -93,9 +93,9 @@ end
 
 Given /^I am on the sign up page$/ do
   step "I am on the home page"
-  expect(page).to have_field('user_email')
-  expect(page).to have_field('user_password')
-  #expect(page).to have_button('signup')
+  expect(page).to have_field('signup_email')
+  expect(page).to have_field('signup_password')
+  expect(page).to have_button('signup')
 end
 
 When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |email, password|

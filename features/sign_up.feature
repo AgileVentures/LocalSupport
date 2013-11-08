@@ -14,6 +14,7 @@ And the email queue is clear
 Scenario: Sign up for an existing user
   Given I am on the sign up page
   And I sign up as "existent-user1@example.com" with password "pppppppp" and password confirmation "pppppppp"
+  Then show me the page
   Then I should see "Email has already been taken"
   And I should not receive an email
   
