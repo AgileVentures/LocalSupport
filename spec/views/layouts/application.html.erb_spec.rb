@@ -23,6 +23,11 @@ describe "layouts/application.html.erb" do
        rendered.should have_css("#loginForm input#signin")
     end
 
+    it 'renders dropdown menu' do
+      render
+      rendered.should have_css("#navLogin")
+    end
+
     it "renders new Organization sign up form" do
       render
       rendered.should have_selector("form", :id => "registerForm")
@@ -34,6 +39,12 @@ describe "layouts/application.html.erb" do
       rendered.should have_css("#registerForm input#signup_email")
       rendered.should have_css("#registerForm input#signup_password_confirmation")
       rendered.should have_css("#registerForm div input[value=\"Sign up\"]")
+    end
+
+    it 'renders a password retrieval link' do
+      #<a href="/users/password/new">Forgot your password?</a>
+      render
+      rendered.should have_css("#menuLogin a[href=\"#{new_user_password_path}\"]")
     end
   end
   context "user signed-in" do
@@ -48,5 +59,12 @@ describe "layouts/application.html.erb" do
       render
       rendered.should have_link('normal_user@example.com')
     end
+
+    it 'contains log out link' do
+      render
+      rendered.should have_css("li.dropdown ul.dropdown-menu li a[href=\"#{destroy_user_session_path}\"]")
+    end
+
+
   end
 end
