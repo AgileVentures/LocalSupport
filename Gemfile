@@ -86,3 +86,5 @@ gem 'redcarpet'
 
 # Adding font awesome
 gem "font-awesome-rails"
+
+
