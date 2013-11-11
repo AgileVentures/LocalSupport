@@ -201,6 +201,11 @@ Then /^I should see "((?:(?!before|").)+)"$/ do |text|
   page.should have_content text
 end
 
+Then(/^I should see a link or button "(.*?)"$/) do |link|
+  #page.should have_link link, :href => '#'
+  page.should have_selector(:link_or_button, link)
+end
+
 # this could be DRYed out (next three methods)
 Then /^I should see contact details for "([^"]*?)"$/ do |text|
   check_contact_details text
