@@ -14,6 +14,7 @@
 <% end %>
 
 <%= render 'layouts/header' %>
+<section id="main">
 <div class="container">
 <div class="row">
   <div class="span6">
@@ -23,6 +24,7 @@
     <%= yield %>
   </div>
 </div>
+
 <br>
 <br>
 <div class="row">
@@ -37,6 +39,7 @@
   </div>
 </div>
 </div>
+</section>
 <!--this is where the gmaps scripts are added-->
 <%= yield :scripts %>
 </body>

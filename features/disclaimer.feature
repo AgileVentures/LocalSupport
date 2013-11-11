@@ -1,7 +1,7 @@
 Feature: Disclaimer about not being able to guarantee accuracy of sites content and notice about being beta site
   As the system owner
   So that I can avoid any liability
-  I want to show a disclaimer page
+  I want to show a link to a disclaimer on every page
   Tracker story ID: https://www.pivotaltracker.com/story/show/49757817
 
 Background: organizations have been added to database
@@ -11,29 +11,29 @@ Background: organizations have been added to database
     | Friendly Charity | 83 pinner road |
   Given the following pages exist:
     | name       | permalink  | content |
-    | Disclaimer | disclaimer | ghi789  |
+    | Disclaimer | disclaimer | We disclaim everything!  |
 
 Scenario: the disclaimer page is accessible from the charity search page
   Given I am on the charity search page
   When I follow "Disclaimer"
-  Then I should see "ghi789"
+  Then I should see "We disclaim everything!"
 
 Scenario: the disclaimer page is accessible from the charities page
   Given I am on the home page
   When I follow "Disclaimer"
-  Then I should see "ghi789"
+  Then I should see "We disclaim everything!"
 
 Scenario: the disclaimer page is accessible from the new charity page
   Given I am on the new charity page
   When I follow "Disclaimer"
-  Then I should see "ghi789"
+  Then I should see "We disclaim everything!"
 
 Scenario: the disclaimer page is accessible from the edit charity page for "Friendly Charity"
   Given I am furtively on the edit charity page for "Friendly Charity"
   When I follow "Disclaimer"
-  Then I should see "ghi789"
+  Then I should see "We disclaim everything!"
 
 Scenario: the disclaimer page is accessible from the charity page
   Given I am on the charity page for "Friendly Charity"
   When I follow "Disclaimer"
-  Then I should see "ghi789"
+  Then I should see "We disclaim everything!"
