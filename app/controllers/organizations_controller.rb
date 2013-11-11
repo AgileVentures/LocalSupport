@@ -75,6 +75,7 @@ class OrganizationsController < ApplicationController
       redirect_to organization_path(params[:id]) and return false
     end
     if @organization.update_attributes_with_admin(params[:organization])
+
       redirect_to @organization, notice: 'Organization was successfully updated.'
     else
       render action: "edit"

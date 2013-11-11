@@ -405,6 +405,14 @@ describe Organization do
       Organization.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0],true)
     end
 
+    it 'should not add email to org when it has an existing email' do
+      @org1.email = 'something@example.com'
+      @org1.save!
+      Organization.should_receive(:where).with("UPPER(name) LIKE ? ", "%FRIENDLY%").and_return([@org1])
+      @org1.should_not_receive(:email=).with('test@example.org')
+      @org1.should_not_receive(:save)
+      Organization.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0],true)
+    end
   end
 
 end

@@ -9,7 +9,7 @@ Given /^I am signed in as a charity worker (un)?related to "(.*?)"$/ do |negate,
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
 
-Given /^I am signed in as a (non-)?admin$/ do |negate|
+Given /^I am signed in as an? (non-)?admin$/ do |negate|
   user = User.find_by_admin(negate ? false:true)
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
@@ -73,10 +73,6 @@ When /^I sign out$/ do
   click_link 'Sign Out' 
 end
 
-Then /^I should be on the sign in page$/ do
-  current_path.should == new_user_session_path
-end
-
 Given /^I sign in as "(.*?)" with password "(.*?)"$/ do |email, password|
   fill_in "Email" , :with => email
   fill_in "Password" , :with => password
@@ -84,18 +80,15 @@ Given /^I sign in as "(.*?)" with password "(.*?)"$/ do |email, password|
 end
 
 Given /^I am on the sign in page$/ do
-  steps %Q{ 
-    Given I am on the home page
-  }
+  step "I am on the home page"
   click_link 'Org Login'
 end
 
 Given /^I am on the sign up page$/ do
-  steps %Q{ 
-    Given I am on the home page
-  }
+  step "I am on the home page"
   click_link 'New Org?'
 end
+
 When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |email, password|
   user = User.find_by_email("#{email}")
   user.confirm!

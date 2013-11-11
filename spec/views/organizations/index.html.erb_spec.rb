@@ -75,7 +75,6 @@ describe "organizations/index.html.erb", :js => true do
   end
 
   it "does not render a new organization link for non-logged in user"  do
-    #view.should_receive(:user_signed_in?).and_return(false)
     view.stub(:user_signed_in? => false)
     render
     rendered.should_not have_xpath("//a[@href='#{new_organization_path}']")
@@ -85,10 +84,8 @@ describe "organizations/index.html.erb", :js => true do
     @user = double('user')
     @user.stub(:id => 100)
     view.stub(:current_user) {@user}
+    view.stub(:user_signed_in? => true)
     @user.should_receive(:try).with(:admin?).and_return(false)
-    #view.should_receive(:user_signed_in?).and_return(true)
-    #view.stub(:user_signed_in? => true)
-    #view.stub(:user_signed_in?) { true }
     render
     rendered.should_not have_xpath("//a[@href='#{new_organization_path}']")
   end
@@ -98,9 +95,6 @@ describe "organizations/index.html.erb", :js => true do
     @user.stub(:id => 100)
     view.stub(:current_user) {@user}
     @user.should_receive(:try).with(:admin?).and_return(true)
-    #view.should_receive(:user_signed_in?).and_return(true)
-    #view.stub(:user_signed_in? => true)
-    #view.stub(:user_signed_in?) { true }
     render
     rendered.should have_xpath("//a[@href='#{new_organization_path}']")
   end
