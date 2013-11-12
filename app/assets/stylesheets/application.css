@@ -57,12 +57,7 @@ background: #ff0;
     z-index: 989;
 }
 
-#menuLogin .dropdown-toggle, ul, li {
-    background-color: white !important;
-    position:relative;
-    z-index: 999 !important;
 
-}
 
 
 
@@ -91,6 +86,12 @@ background: #ff0;
     #navbar .navbar-inner{
         height: 50px;
     }
+    #menuLogin .dropdown-toggle, ul, li {
+        background-color: white !important;
+        position:relative;
+        z-index: 999 !important;
+
+    }
 
 }
 
@@ -101,12 +102,24 @@ background: #ff0;
         height: 30px;
     }
 
+    #menuLogin .dropdown-toggle, ul, li {
+        background-color: white !important;
+        position:relative;
+        z-index: 999 !important;
+
+    }
 }
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
     #navbar .navbar-inner{
         height: 20px;
+    }
+    #menuLogin .dropdown-toggle, ul, li {
+        background-color: white !important;
+        position:relative;
+        z-index: 999 !important;
+
     }
 
 }
