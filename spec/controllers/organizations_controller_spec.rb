@@ -3,11 +3,14 @@ require 'spec_helper'
 describe OrganizationsController do
   let(:category_html_options){[['cat1',1],['cat2',2]]}
 
+  # shouldn't this be done in spec_helper.rb?
   before :suite do
     FactoryGirl.factories.clear
     FactoryGirl.find_definitions
   end
 
+  # http://stackoverflow.com/questions/10442159/rspec-as-null-object
+  # doesn't calling as_null_object on a mock negate the need to stub anything?
   def double_organization(stubs={})
     (@double_organization ||= mock_model(Organization).as_null_object).tap do |organization|
       organization.stub(stubs) unless stubs.empty?
@@ -165,6 +168,19 @@ describe OrganizationsController do
         controller.stub(:current_user).and_return(nil)
         get :show, :id => 37
         expect(assigns(:editable)).to eq nil
+      end
+    end
+    
+    context "grabbable flag is assigned to match user permission" do
+      before(:each) do
+        Organization.stub(:find).with("37") { double_organization }
+        @user = double("User")
+      end
+      it 'assigns grabbable to true when user is logged in' do
+        @user.stub(:can_edit?).with(double_organization).and_return(true)
+        controller.stub(:current_user).and_return(@user)
+        get :show, :id => 37
+        assigns(:grabbable).should be(true)
       end
     end
   end

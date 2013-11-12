@@ -81,3 +81,6 @@ gem 'unicorn'
 
 # To use markdown in editing static pages
 gem 'redcarpet'
+
+# Adding font awesome
+gem "font-awesome-rails"

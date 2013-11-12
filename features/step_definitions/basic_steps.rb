@@ -6,7 +6,6 @@ Then /^I should see permission denied$/ do
   page.should have_content PERMISSION_DENIED
 end
 
-
 Then /^"(.*?)" should be a charity admin for "(.*?)" charity$/ do |email, org|
   org = Organization.find_by_name org
   usr = User.find_by_email(email)
@@ -17,15 +16,18 @@ end
 Then /^I should see the cannot add non registered user "(.*?)" as charity admin message$/ do |email|
   page.should have_content "The user email you entered,'#{email}', does not exist in the system"
 end
+
 And /^I add "(.*?)" as an admin for "(.*?)" charity$/ do |admin_email, charity|
   steps %Q{ And I am on the edit charity page for "#{charity}"}
   fill_in 'organization_admin_email_to_add', :with => admin_email
   steps %Q{
   And I press "Update Organisation"}
 end
+
 Then /^I should see the no charity admins message$/ do
   expect(page).to have_content "This organisation has no admins yet"
 end
+
 Given /^I delete "(.*?)" charity$/ do |name|
   org = Organization.find_by_name name
   page.driver.submit :delete, "/organizations/#{org.id}", {}
@@ -49,10 +51,6 @@ end
 
 Given /^PENDING/ do
   pending
-end
-
-Given /^I press "(.*?)"$/ do |button|
-  click_button(button)
 end
 
 When /^I search for "(.*?)"$/ do |text|
@@ -160,11 +158,6 @@ Given /^I update the "(.*?)"$/ do |name|
   org1.save!
 end
 
-
-When /^(?:|I )follow "([^"]*)"$/ do |link|
-    click_link(link)
-end
-
 Then /^I should not see any address or telephone information for "([^"]*?)"$/ do |name1|
   org1 = Organization.find_by_name(name1)
   page.should_not have_content org1.telephone
@@ -184,12 +177,13 @@ Then /^I should see the external website link for "(.*?)" charity$/ do |org_name
   org = Organization.find_by_name org_name
   page.should have_xpath %Q<//a[@target = "_blank" and @href = "#{org.website}" and contains(.,'#{org.website}')]>
 end
-Then /^I should see a link with text "([^"]*?)"$/ do |link|
-  page.should have_link link
-end
 
-Then /^I should not see a link with text "([^"]*?)"$/ do |link|
-  page.should_not have_link link
+Then /^I should( not)? see a link with text "([^"]*?)"$/ do |negate, link|
+  if negate
+    page.should_not have_link link
+  else
+    page.should have_link link
+  end
 end
 
 Then /^I should not see "(.*?)"$/ do |text|
@@ -205,6 +199,11 @@ end
 
 Then /^I should see "((?:(?!before|").)+)"$/ do |text|
   page.should have_content text
+end
+
+Then(/^I should see a link or button "(.*?)"$/) do |link|
+  #page.should have_link link, :href => '#'
+  page.should have_selector(:link_or_button, link)
 end
 
 # this could be DRYed out (next three methods)
@@ -246,18 +245,6 @@ def check_contact_details(name)
   page.should have_content smart_truncate(org.description)
 end
 
-Then /^I should be on the sign up page$/ do
-  current_path.should == new_user_registration_path
-end
-
-Then /^I should be on the organizations index page$/ do
-  current_path.should == organizations_path
-end
-
-Then /^I should be on the charity workers page$/ do
-  current_path.should == users_path
-end
-
 When /^I fill in "(.*?)" with "(.*?)"$/ do |field, value|
   fill_in(field, :with => value)
 end
@@ -287,6 +274,22 @@ end
 Then(/^"(.*?)" should have email "(.*?)"$/) do |org, email|
   Organization.find_by_name(org).email.should eq email
 end
+Given /^"(.*)"'s request status for "(.*)" should be updated appropriately$/ do |email,org|
+    steps %Q{
+      And "#{email}"'s request for "#{org}" should be persisted
+      And I should see "You have requested admin status for My Organization"
+      And I should not see "This is my organization"
+    }
+end
+
+And /"(.*)"'s request for "(.*)" should be persisted/ do |email,org|
+    user = User.find_by_email(email)
+    org = Organization.find_by_name(org)
+    user.pending_organization_id.should eq org.id
+end
+#Then an email should be sent to "admin@myorg.com"
+#And I should be on the charity page for "#{org}"
+
 
 When(/^the URL should contain "(.*?)"$/) do |string|
   URI.parse(current_url).path.should == '/' + string

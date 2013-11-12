@@ -10,7 +10,7 @@ Background: organizations have been added to database
     | I love cats       | loves felines            | 64 pinner road | HA1 4HA  | http://b.com/ |               |
     | I hate animals    | hates birds and beasts   | 84 pinner road | HA1 4HF  | http://c.com/ |               |
   And a file exists:
-    |Organisation       | Charity no. | Address 1 | Address 2 | Postcode | Phone | crb phoned | e-mail              |
+    | Organisation      | Charity no. | Address 1 | Address 2 | Postcode | Phone | crb phoned | e-mail              |
     | I love dogs       |             |           |           |          |       |            | admin@dogs.com      |
     | I love Cats       |             |           |           |          |       |            | admin@cats.com      |
     | I hate animals    |             |           |           |          |       |            | admin@cruelty.com   |

@@ -13,22 +13,24 @@ module ApplicationHelper
     red_carpet = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true)
     red_carpet.render(text).html_safe
   end
+  def resource_name
+    :user
+  end
 
-  # Withholding this functionality until we decide how to implement an admin 'dashboard'
+  def resource
+    @resource ||= User.new
+  end
 
-  ## http://railscasts.com/episodes/20-restricting-access
-  #def authorize
-  #  unless admin?
-  #    flash[:error] = 'unauthorized access'
-  #    redirect_to '/'
-  #    false
-  #  end
-  #end
-  #
-  ## Not to be confused with the activerecord admin? method
-  #def admin?
-  #  current_user.present? ? current_user.admin? : false
-  #end
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
+
+
+  def after_sign_in_path_for(resource)
+    redirect_to  root_url
+  end
+
+
 end
 
 

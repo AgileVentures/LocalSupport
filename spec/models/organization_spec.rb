@@ -413,7 +413,6 @@ describe Organization do
       @org1.should_not_receive(:save)
       Organization.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0],true)
     end
-
   end
 
 end

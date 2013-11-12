@@ -2,7 +2,6 @@ class OrganizationsController < ApplicationController
   # GET /organizations/search
   # GET /organizations/search.json
   before_filter :authenticate_user!, :except => [:search, :index, :show]
-
   def search
     @query_term = params[:q]
     @category_id = params.try(:[],'category').try(:[],'id')
@@ -27,6 +26,7 @@ class OrganizationsController < ApplicationController
   def show
     @organization = Organization.find(params[:id])
     @editable = current_user.can_edit?(@organization) if current_user
+    @grabbable = true if current_user
     @json = gmap4rails_with_popup_partial(@organization,'popup')
   end
 
