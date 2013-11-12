@@ -54,7 +54,14 @@ background: #ff0;
 
 .btn-navbar {
     position:relative;
-    z-index: 100;
+    z-index: 989;
+}
+
+#menuLogin .dropdown-toggle, ul, li {
+    background-color: red !important;
+    position:relative;
+    z-index: 9999 !important;
+
 }
 
 
@@ -101,5 +108,6 @@ background: #ff0;
     #navbar .navbar-inner{
         height: 20px;
     }
+
 }
 
