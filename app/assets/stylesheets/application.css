@@ -39,63 +39,67 @@ background: #ff0;
 }
 
 
-/* Custom navbar  */
+/* Custom navbar   */
 
 
-#navbar .navbar-inner {
-
-    background-image:url('HCN-long.png') !important;
-    background-size: contain;
-    background-repeat: no-repeat !important;
-    background-position:center bottom;
-    padding-bottom: 15px;
-    margin-top: 5px;
-
-
+#banner {
+    position:relative;
+    top:0;
+    left:0;
+    height: 50px;
+    z-index: 0;
+    margin-bottom: -50px;
 
 }
 
-.navbar-inner {
-
-
+.btn-navbar {
+    position:relative;
+    z-index: 100;
 }
 
 
 
-@media all and (max-width: 780px) {
+/* Custom Media types */
 
+/* Large desktop */
+@media (min-width: 1200px) {
 
-    #navbar .navbar-inner {
-
-        background-image:url('HCN-long.png') !important;
-        background-size: contain;
-        background-repeat: no-repeat !important;
-        background-position:center top;
-        padding-bottom: 0px;
-        padding-top: 20px;
-    }
-
-    #navbar .brand {
-        visibility: hidden;
-    }
-}
-@media all and (max-width: 420px)   {
-    #navbar .brand {
-        font-size: 14px;
-        visibility: visible;
-    }
-
-    #navbar .navbar-inner {
-
-        background-image:url('HCN-long.png') !important;
-        background-size: contain;
-        background-repeat: no-repeat !important;
-        background-position:center top;
-        padding-bottom: 0px;
-        padding-top: 20px;
+    #navbar .navbar-inner{
+        height: 70px;
     }
 
 }
 
-/* Custom css */
+/*Desktop */
+@media (min-width: 979px) and (max-width: 1200px){
+    #navbar .navbar-inner{
+        height: 55px;
+    }
+
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+
+    #navbar .navbar-inner{
+        height: 50px;
+    }
+
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+
+    #navbar .navbar-inner{
+        height: 30px;
+    }
+
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+    #navbar .navbar-inner{
+        height: 20px;
+    }
+}
 
