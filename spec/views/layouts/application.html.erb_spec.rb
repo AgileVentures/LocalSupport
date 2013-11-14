@@ -46,6 +46,19 @@ describe "layouts/application.html.erb" do
       render
       rendered.should have_css("#menuLogin a[href=\"#{new_user_password_path}\"]")
     end
+
+    it 'renders a cookies choice message when cookies have not been accepted' do
+      view.stub(:cookies_accepted?).and_return(false)
+      render
+      rendered.should have_css(".alert")
+      rendered.should have_content("This site uses cookies.")
+      rendered.should have_xpath("//a[@id=\"accept_cookies\"]")
+      rendered.should have_xpath("//a[@href=\"#{cookies_allow_path}\"]")
+      rendered.should have_xpath("//a[@id=\"deny_cookies\"]")
+      rendered.should have_xpath("//a[@href=\"#{cookies_deny_path}\"]")
+    end
+
+
   end
   context "user signed-in" do
 

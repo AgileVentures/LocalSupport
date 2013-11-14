@@ -16,6 +16,16 @@
 <%= render 'layouts/header' %>
 <section id="main">
 <div class="container">
+  <% unless cookies_accepted? %>
+      <div class="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Cookies policy</strong> This site uses cookies. <br />
+        <%= link_to 'Allow cookies', cookies_allow_path, :method=>'POST', :id=>'accept_cookies', :class=>'btn btn-primary' %>
+        <%= link_to 'Deny cookies', cookies_deny_path, :method=>'POST', :id=>'deny_cookies', :class=>'btn btn-danger' %>
+      </div>
+  <% else %>
+
+  <% end %>
 <div class="row">
   <div class="span6">
     <%= yield :map %>

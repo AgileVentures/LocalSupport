@@ -85,4 +85,7 @@ gem 'unicorn'
 gem 'redcarpet'
 
 # Adding font awesome
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
+
+# Cookie policy gem
+gem 'rack-policy'

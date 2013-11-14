@@ -183,6 +183,8 @@ GEM
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-policy (0.4.1)
+      rack (~> 1.1)
     rack-ssl (1.3.3)
       rack
     rack-test (0.6.2)
@@ -335,6 +337,7 @@ DEPENDENCIES
   minitest (~> 4.7.1)
   newrelic_rpm
   pg
+  rack-policy
   rack_session_access
   railroady
   rails (= 3.2.14)
