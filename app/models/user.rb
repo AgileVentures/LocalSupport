@@ -20,9 +20,13 @@ class User < ActiveRecord::Base
     super
     make_admin_of_org_with_matching_email
   end
-  
+
   def can_edit? org
     admin? || (!org.nil? && organization == org)
+  end
+
+  def can_delete? org
+    admin? && !org.nil?
   end
 
   def make_admin_of_org_with_matching_email
@@ -30,8 +34,6 @@ class User < ActiveRecord::Base
     self.organization = org if org
     save!
   end
-
-
 
 end
 

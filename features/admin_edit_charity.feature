@@ -20,7 +20,7 @@ Feature: Admin editing charity
     And I am on the charity page for "Friendly Clone"
     And I press "Delete"
     Then I should not see "Friendly Clone"
-    But charity should be persisted for undo purposes
+    But "Friendly Clone" should be persisted for undo purposes
 
   Scenario: Admin successfully changes the address of a charity
     Given I am signed in as a admin

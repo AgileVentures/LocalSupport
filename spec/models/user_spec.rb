@@ -32,6 +32,7 @@ describe User do
 
     it 'can delete organizations' do
       user.can_delete?(model).should be_true
+      user.can_delete?(nil).should be_false
     end
 
   end

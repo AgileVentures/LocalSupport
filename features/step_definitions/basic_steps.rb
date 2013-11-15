@@ -292,3 +292,9 @@ Then(/^I should see "(.*?)" < linked > to "(.*?)"$/) do |text, url|
   links = collect_links(page.body)
   links[text].should == url
 end
+
+Then(/^"(.*?)" should be persisted for undo purposes$/) do |name|
+  org = Organization.find_by_name(name)
+  org.should_not be_nil
+  Organization.all.should not_include org
+end
