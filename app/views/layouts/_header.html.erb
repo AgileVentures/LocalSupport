@@ -44,8 +44,10 @@
                     <% end %>
                     <form><a href="#" title="Some SEO stuff..." data-toggle="collapse" data-target="#register">Sign-up..</a></form>
                     <div class="collapse" id="register">
-                    <%= form_for(resource, :class => "collapse", :html => { :id => "registerForm" }, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-                        <%= devise_error_messages! %>
+
+                      <%= form_for(resource, :class => "collapse", :html => { :id => "registerForm" }, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+                          <%= devise_error_messages! %>
+
                           <!--[if lt IE 9]>
                           <label for="user_password">Enter email</label>
                           <![endif]-->
@@ -59,8 +61,8 @@
                           <![endif]-->
                           <%= f.password_field :password_confirmation, :id => 'signup_password_confirmation', :placeholder => 'confirm password' %>
 
-                        <div><%= f.submit "Sign up", :id => 'signup', :class => "btn btn-primary" %></div>
-                    <% end %>
+                          <div><%= f.submit "Sign up", :id => 'signup', :class => "btn btn-primary" %></div>
+                      <% end %>
                     </div>
                   </div>
                 </li>
@@ -72,7 +74,6 @@
                   </a>
 
                   <ul class="dropdown-menu">
-                    <li><%= link_to 'Update account', edit_user_registration_path %></li>
                     <li><%=link_to "Log out", destroy_user_session_path, :method => :delete%></li>
             <% end %>
             </ul>

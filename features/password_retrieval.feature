@@ -8,22 +8,22 @@ Background:
   Given the following users are registered:
   | email             | password |
   | registered-user@example.com | pppppppp |
-And the email queue is clear
+
+  Given I am on the home page
+  And the dropdown menu is visible
+  And I follow "Forgot your password?"
+  And the email queue is clear
 
 @email
 Scenario: Retrieve password for an existing user
-  Given I am on the home page
-  When I follow "Forgot your password?"
-  And I fill in "user_retrieval_email" with "registered-user@example.com"
+  When I fill in "user_retrieval_email" with "registered-user@example.com"
   And I press "Send me reset password instructions"
   Then I should see "You will receive an email with instructions about how to reset your password in a few minutes."
   And I should receive a "Reset password instructions" email
 
 @email
 Scenario: Retrieve password for a non-existent user
-  Given I am on the home page
-  When I follow "Forgot your password?"
-  And I fill in "user_retrieval_email" with "non-existent_user@example.com"
+  When I fill in "user_retrieval_email" with "non-existent_user@example.com"
   And I press "Send me reset password instructions"
   And I should see "Email not found in our database. Sorry!"
   And I should not receive an email
