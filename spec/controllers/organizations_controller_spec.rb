@@ -170,6 +170,35 @@ describe OrganizationsController do
         expect(assigns(:editable)).to eq nil
       end
     end
+
+
+    context "deletable flag is assigned to match user permission" do
+      before(:each) do
+        Organization.stub(:find).with("37") { double_organization }
+        @user = double("User")
+        controller.stub(:current_user).and_return(@user)
+        @user.stub(:can_edit?).and_return(true)
+      end
+
+      it "user with permission leads to deletable flag true" do
+        @user.should_receive(:can_delete?).with(double_organization).and_return(true)
+        get :show, :id => 37
+        assigns(:deletable).should be(true)
+      end
+
+      it "user without permission leads to deletable flag false" do
+        @user.should_receive(:can_delete?).with(double_organization).and_return(true)
+        get :show, :id => 37
+        assigns(:deletable).should be(true)
+      end
+
+      it 'when not signed in deletable flag is nil' do
+        controller.stub(:current_user).and_return(nil)
+        get :show, :id => 37
+        expect(assigns(:deletable)).to eq nil
+      end
+    end
+
   end
 
   describe "GET new" do
@@ -405,7 +434,6 @@ describe OrganizationsController do
         double_organization.should_receive(:destroy)
         delete :destroy, :id => "37"
       end
-
       it "redirects to the organizations list" do
         Organization.stub(:find) { double_organization }
         delete :destroy, :id => "1"
@@ -425,7 +453,6 @@ describe OrganizationsController do
         double.should_not_receive(:destroy)
         delete :destroy, :id => "37"
       end
-
       it "redirects to the organization home page" do
         Organization.stub(:find) { double_organization }
         delete :destroy, :id => "1"

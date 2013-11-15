@@ -30,6 +30,7 @@
 </p>
 
 <%= link_to_if(@editable, "Edit", edit_organization_path(@organization.id), {:class => 'btn btn-large'}){} %>
+<%= button_to( "Delete", organization_path(@organization.id), {:class => 'btn btn-large', :method => :delete}) if @deletable %>
 
 <% content_for :map do %>
     <%= gmaps("map_options" => {"auto_adjust" => true, "auto_zoom" => false, "center_latitude" => 51.5978,
