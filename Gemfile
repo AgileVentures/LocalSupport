@@ -87,4 +87,6 @@ gem 'redcarpet'
 # Adding font awesome
 gem "font-awesome-rails"
 
+gem "acts_as_paranoid"
+
 

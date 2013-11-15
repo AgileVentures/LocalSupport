@@ -14,6 +14,13 @@ Feature: Admin editing charity
       | registered-user-1@example.com | pppppppp | true  | 2007-01-01  10:00:00 |  Friendly |
       | registered-user-2@example.com | pppppppp | false | 2007-01-01  10:00:00 |           |
 
+  # needs a migration ...
+  Scenario: Admin deletes a charity
+    Given I am signed in as an admin
+    And I am on the charity page for "Friendly Clone"
+    And I press "Delete"
+    Then I should not see "Friendly Clone"
+    But charity should be persisted for undo purposes
 
   Scenario: Admin successfully changes the address of a charity
     Given I am signed in as a admin
