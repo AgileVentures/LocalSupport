@@ -1,10 +1,9 @@
 <header>
 
-  <div class="navbar  navbar-fixed-top">
+  <div id="navbar" class="navbar  navbar-fixed-top">
     <div class="navbar-inner">
-      <div class="container">
+      <div id="banner" class="container">
         <%= link_to(image_tag("HCN-long.png", :class => "img-responsive" ), root_path) %>
-
       </div>
       <div class="container">
         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -12,7 +11,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a href="/" class="brand" title="Some SEO stuff....">LocalSupport</a>
+        <a href="/" class="brand" title="Some SEO stuff...."></a>
 
         <div class="nav-collapse collapse">
 
@@ -45,8 +44,10 @@
                     <% end %>
                     <form><a href="#" title="Some SEO stuff..." data-toggle="collapse" data-target="#register">Sign-up..</a></form>
                     <div class="collapse" id="register">
+
                       <%= form_for(resource, :class => "collapse", :html => { :id => "registerForm" }, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
                           <%= devise_error_messages! %>
+
                           <!--[if lt IE 9]>
                           <label for="user_password">Enter email</label>
                           <![endif]-->

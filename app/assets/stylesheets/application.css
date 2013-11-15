@@ -37,3 +37,77 @@ background: #ff0;
 
     margin-top: 50px;
 }
+
+
+/* Custom navbar   */
+#banner {
+    position:relative;
+    top:0;
+    left:0;
+    height: 50px;
+    z-index: 0;
+    margin-bottom: -50px;
+}
+
+.btn-navbar {
+    position:relative;
+    z-index: 989;
+}
+
+/* Custom Media types */
+
+/* Large desktop */
+@media (min-width: 1200px) {
+
+    #navbar .navbar-inner{
+        height: 70px;
+    }
+}
+
+/*Desktop */
+@media (min-width: 979px) and (max-width: 1200px){
+    #navbar .navbar-inner{
+        height: 55px;
+    }
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+
+    #navbar .navbar-inner{
+        height: 50px;
+    }
+    #menuLogin .dropdown-toggle, ul, li {
+        background-color: white !important;
+        position:relative;
+        z-index: 999 !important;
+    }
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+
+    #navbar .navbar-inner{
+        height: 30px;
+    }
+
+    #menuLogin .dropdown-toggle, ul, li {
+        background-color: white !important;
+        position:relative;
+        z-index: 999 !important;
+    }
+}
+
+/* Landscape phones and down */
+/* We are still facing issues with this resolution */
+@media (max-width: 480px) {
+    #navbar .navbar-inner{
+        height: 20px;
+    }
+    #menuLogin .dropdown-toggle, ul, li {
+        background-color: white !important;
+        position:relative;
+        z-index: 999 !important;
+    }
+}
+
