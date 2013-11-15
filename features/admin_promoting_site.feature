@@ -6,6 +6,13 @@ Feature: Admin promoting site
 
 Background: 
 
-Scenario: Be aware of site identity
-  Given I am on the home page
-  Then I should see "Harrow Community Network"
+  Scenario Outline: Be aware of site identity on all pages
+    Given I am on the <page>
+    Then I should see "Harrow Community Network"
+    And I should see "Search for local voluntary and community organisations"
+  Examples:
+    | page                 |
+    | home page            |
+    | charity search page  |
+    | new charity page     |
+
