@@ -24,6 +24,13 @@ describe Organization do
     @org3.save!
   end
 
+  it 'deletes in a paranoid fashion' do
+    id = @org1.id
+    @org1.destroy
+    Organization.search_by_keyword("Harrow").should_not include @org1
+    Organization.find_by_id(id).should_not be_nil
+  end
+
   context 'adding charity admins by email' do
     it 'handles a non-existent email with an error' do
       expect(@org1.update_attributes_with_admin({:admin_email_to_add => 'nonexistentuser@example.com'})).to be_false
