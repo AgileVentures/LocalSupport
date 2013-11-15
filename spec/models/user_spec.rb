@@ -30,6 +30,10 @@ describe User do
       user.can_edit?(model).should be_true 
     end
 
+    it 'can delete organizations' do
+      user.can_delete?(model).should be_true
+    end
+
   end
   
   context 'is not admin' do 
@@ -56,6 +60,12 @@ describe User do
 
     it 'can not edit when associated with no org and attempting to access non-existent org' do
       user.can_edit?(nil).should be_false
+    end
+
+    it 'cannot delete organization as non-admin' do
+       user.can_delete?(model).should be_false
+       user.can_delete?(non_associated_model).should be_false
+       user.can_delete?(nil).should be_false
     end
    
   end

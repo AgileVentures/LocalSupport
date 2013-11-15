@@ -150,6 +150,7 @@ describe OrganizationsController do
         Organization.stub(:find).with("37") { double_organization }
         @user = double("User")
         controller.stub(:current_user).and_return(@user)
+        @user.stub(:can_delete?).and_return(true)
       end
 
       it "user with permission leads to editable flag true" do
