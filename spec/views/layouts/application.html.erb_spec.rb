@@ -11,6 +11,11 @@ describe "layouts/application.html.erb" do
       rendered.should contain 'Harrow Community Network'
     end
 
+    it "renders site tag line" do
+      render
+      rendered.should contain 'Search for local voluntary and community organisations'
+    end
+
     it "renders Organization sign in form" do
       render
       rendered.should have_selector("form", :id => "loginForm")
