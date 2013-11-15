@@ -86,4 +86,25 @@ describe "organizations/show.html.erb" do
       rendered.should_not have_link :href => edit_organization_path(organization.id)
     end
   end
+
+  context 'delete button' do
+    let(:organization) do
+      stub_model Organization, :id => 1
+    end
+    it 'renders delete button if deletable true' do
+      @deletable = assign(:deletable, true)
+      render
+      rendered.should have_button "Delete"
+    end
+    it 'does not render delete button if deletable false' do
+      @deletable = assign(:deletable, false)
+      render
+      rendered.should_not have_button "Delete"
+    end
+    it 'does not render delete button if deletable nil' do
+      @deletable = assign(:deletable, nil)
+      render
+      rendered.should_not have_button "Delete"
+    end
+  end
 end
