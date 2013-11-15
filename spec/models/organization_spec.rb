@@ -28,7 +28,7 @@ describe Organization do
     id = @org1.id
     @org1.destroy
     Organization.search_by_keyword("Harrow").should_not include @org1
-    Organization.find_by_id(id).should_not be_nil
+    Organization.with_deleted.find_by_id(id).should_not be_nil
   end
 
   context 'adding charity admins by email' do

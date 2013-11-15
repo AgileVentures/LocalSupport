@@ -7,6 +7,7 @@ class String
 end
 
 class Organization < ActiveRecord::Base
+  acts_as_paranoid
   # http://stackoverflow.com/questions/10738537/lazy-geocoding
   acts_as_gmappable :check_process => false, :process_geocoding => :run_geocode?
   has_many :users

@@ -294,7 +294,7 @@ Then(/^I should see "(.*?)" < linked > to "(.*?)"$/) do |text, url|
 end
 
 Then(/^"(.*?)" should be persisted for undo purposes$/) do |name|
-  org = Organization.find_by_name(name)
+  org = Organization.with_deleted.find_by_name(name)
   org.should_not be_nil
-  Organization.all.should not_include org
+  Organization.all.should_not include org
 end
