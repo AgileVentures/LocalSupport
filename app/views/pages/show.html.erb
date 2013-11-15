@@ -1,11 +1,8 @@
 <%- model_class = Page -%>
-<dl class="dl-horizontal">
-  <dd><%= markdown(@page.content) %></dd>
-</dl>
+<%= markdown(@page.content) %>
 <% if @admin %>
   <div class="form-actions">
-    <%= link_to t('.back', :default => t("helpers.links.back")),
-                pages_path, :class => 'btn'  %>
+    <%= link_to 'Pages', pages_path, :class => 'btn'  %>
     <%= link_to t('.edit', :default => t("helpers.links.edit")),
                 edit_page_path(@page), :class => 'btn' %>
     <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

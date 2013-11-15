@@ -9,40 +9,40 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field" data-toggle="tooltip" title="Enter a unique name" >
     <%= f.label :name %>
     <%= f.text_field :name, :class => "org_form" %>
   </div>
-  <div class="field">
+  <div class="field" data-toggle="tooltip" title="Enter a complete address">
     <%= f.label :address %>
     <%= f.text_field :address, :class => "org_form" %>
   </div>
-  <div class="field">
+  <div class="field" data-toggle="tooltip" title="Make sure post code is accurate">
     <%= f.label :postcode %>
     <%= f.text_field :postcode, :class => "org_form" %>
   </div>
-  <div class="field">
+  <div class="field" data-toggle="tooltip" title="Make sure email is correct">
     <%= f.label :email %>
     <%= f.text_field :email, :class => "org_form" %>
   </div>
-  <div class="field">
+  <div class="field" data-toggle="tooltip" title="Enter a full description here. When an individual searching this database all words in this description will be searched.">
     <%= f.label :description %>
     <%= f.text_area :description, :class => "org_form", :cols => "10", :rows => "10" %>
   </div>
-  <div class="field">
+  <div class="field" data-toggle="tooltip" title="Make sure url is correct">
     <%= f.label :website %>
     <%= f.text_field :website, :class => "org_form" %>
   </div>
-  <div class="field">
+  <div class="field" data-toggle="tooltip" title="Make sure phone number is correct">
     <%= f.label :telephone %>
     <%= f.text_field :telephone, :class => "org_form" %>
   </div>
-  <div>
+  <div class="field" data-toggle="tooltip" title="Please enter a website here either to the fundraising page on your website or to an online donation site.">
      <%= f.label :donation_info %>
      <%= f.text_field :donation_info, :class => "org_form" %>
   </div>
   <%= charity_admin_display_msg %>
-  <div class="field">
+  <div class="field" data-toggle="tooltip" title="Please enter the details of individuals from your organisation you would like to give permission to update your entry. E-mail addresses entered here will not be made public.">
     <%= label_tag :organization_admin_email_to_add, "Add an additional organisation administrator email" %>
     <%= text_field_tag 'organization_admin_email_to_add', value = nil, {:size => 100, class: 'org_form'} %>
   </div>
