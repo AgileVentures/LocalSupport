@@ -54,7 +54,7 @@ describe 'Category' do
   end
 
   it 'generated appropriate html drop down options' do
-     Category.html_drop_down_options.should eq [["health", 1], ["health", 2]]
+     Category.html_drop_down_options.should eq [["health", @category1.id], ["health", @category2.id]]
   end
 
 end
