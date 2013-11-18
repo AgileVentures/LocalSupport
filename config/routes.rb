@@ -13,6 +13,7 @@ LocalSupport::Application.routes.draw do
   resources :organizations do
     resources :users
   end
+  match '/users' => 'users#index',as: :users, via: [:get]
 
   # so that static pages are linked directly instead of via /pages/:id
   get ':id', to: 'pages#show', as: :page
