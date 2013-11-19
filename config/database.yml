@@ -7,11 +7,12 @@ development: &dev
   password:
 
 test: &test
+  <<: *dev
   database: ls_test
-  <<: *dev
+
 production:
-  database: ls_production
   <<: *dev
+  database: ls_production
 
 cucumber:
   <<: *test

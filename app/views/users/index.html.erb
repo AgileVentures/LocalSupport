@@ -1,4 +1,5 @@
-<table>
+    <%= debug @users %>
+    <table>
     <% @users.each do |user| %>
         <tr>
           <td><%= user.email %></td>
@@ -6,4 +7,4 @@
           <td><%= link_to 'Approve', '#' %></td>
         </tr>
     <% end %>
-</table>
+  </table>
