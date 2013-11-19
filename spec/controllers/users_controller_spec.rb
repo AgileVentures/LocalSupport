@@ -27,4 +27,23 @@ describe UsersController do
       end
     end
   end
+  describe 'GET index' do
+    context 'When signed in as an admin' do
+      before(:each) do
+        user = double("User")
+        request.env['warden'].stub :authenticate! => user
+        user.stub(:admin?).and_return(true)
+        controller.stub(:current_user).and_return(user)
+        @requester1 = double("User")
+        @requester1.stub(:pending_organization_id=).with('5')
+        @requester2 = double("User")
+        @requester2.stub(:pending_organization_id=).with('6')
+      end
+      it 'assigns @users with all users' do
+        User.should_receive(:all).and_return([@requester1, @requester2])
+        get :index
+        assigns(:users).should == [@requester1, @requester2]
+      end
+    end
+  end
 end
