@@ -1,1 +1,9 @@
-<%= link_to 'Approve', '#' %>
+<table>
+    <% @users.each do |user| %>
+        <tr>
+          <td><%= user.email %></td>
+          <td><%= user.pending_organization.name %></td>
+          <td><%= link_to 'Approve', '#' %></td>
+        </tr>
+    <% end %>
+</table>
