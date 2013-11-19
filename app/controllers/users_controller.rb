@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   end
 
   def index
-    debugger
     @users = User.all
   end
 end
