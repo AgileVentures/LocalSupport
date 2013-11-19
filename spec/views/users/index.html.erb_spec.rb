@@ -17,6 +17,17 @@ describe "users/index.html.erb" do
     render
     rendered.should have_content 'pending@myorg.com'
   end
+  context 'organization shown' do
+    it 'shows organization if the user has one' do
+      user.stub(:organization).and_return(org1)
+      render
+      rendered.should have_content org1.name
+    end
+    it 'does not show organization if the user does not have one' do
+      render
+      rendered.should_not have_content org1.name
+    end
+  end
   context 'pending organization shown' do
     it 'shows a pending organization if the user has one' do
       user.stub(:pending_organization).and_return(org1)

@@ -1,12 +1,22 @@
-    <%= debug @users %>
+  <div class="table table-responsive">
     <table>
-    <% @users.each do |user| %>
+       <thead>
+          <tr>
+            <th>User Email</th>
+            <th>Organization</th>
+            <th>Pending Organization</th>
+            <th> </th>
+          </tr>
+        </thead>
+      <% @users.each do |user| %>
         <tr>
           <td><%= user.email %></td>
-          <td><%= user.pending_organization.name %></td>
-          <td><%= link_to 'Approve', '#' %></td>
+          <td><%= user.organization.name if user.organization %></td>
+          <td><%= user.pending_organization.name if user.pending_organization %></td>
+          <td><%= link_to('Approve', '#') if user.pending_organization %></td>
         </tr>
-    <% end %>
-  </table>
+      <% end %>
+    </table>
+  </div>
 
     <!--if user.pending_organization.present?-->
