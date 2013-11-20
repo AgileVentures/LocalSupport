@@ -16,7 +16,7 @@ describe "layouts/application.html.erb" do
       rendered.should contain 'Search for local voluntary and community organisations'
     end
 
-    it "renders Organization sign in form" do
+    it 'renders Organization sign in form' do
       render
       rendered.should have_selector("form", :id => "loginForm")
     end
@@ -51,6 +51,14 @@ describe "layouts/application.html.erb" do
       render
       rendered.should have_css("#menuLogin a[href=\"#{new_user_password_path}\"]")
     end
+
+    it 'login form should be visible', :js => true do
+      render
+      debugger
+      rendered.should have_selector("form#loginForm", visible: true)
+      #find(:css, "#loginForm").should be_visible
+    end
+
   end
   context "user signed-in" do
 
