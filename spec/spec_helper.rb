@@ -5,7 +5,9 @@ SimpleCov.start 'rails'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-#require 'capybara'
+#
+require 'capybara'
+require 'capybara-webkit'
 require 'capybara/rspec'
 require 'factory_girl_rails'
 require "rack_session_access/capybara"

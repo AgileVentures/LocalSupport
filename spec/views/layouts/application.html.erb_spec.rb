@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "layouts/application.html.erb" do
+describe "layouts/application.html.erb", :type => :feature do
   context "no user signed-in" do
 
     before :each do
@@ -54,9 +54,7 @@ describe "layouts/application.html.erb" do
 
     it 'login form should be visible', :js => true do
       render
-      debugger
-      rendered.should have_selector("form#loginForm", visible: true)
-      #find(:css, "#loginForm").should be_visible
+      rendered.should_not have_selector("form#loginForm", style: "height: 0px;")
     end
 
   end

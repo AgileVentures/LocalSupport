@@ -51,4 +51,12 @@ Scenario: Sign in for a non-existent user
   Then I should be on the sign in page
   And I should see "I'm sorry, you are not authorized to login to the system"
 
+@javascript
+Scenario: Check that signup toggle works
+  Given I am on the home page
+  And I click "Login"
+  Then I should see "Sign-up.."
+  Given I click "Sign-up.."
+  Then the login should be hidden
+
 

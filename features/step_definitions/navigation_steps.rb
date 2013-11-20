@@ -81,3 +81,7 @@ end
 When(/^I visit "(.*?)"$/) do |path|
   visit path
 end
+
+Then(/^the login should be hidden$/) do
+  page.should have_selector("form#loginForm", style: "height: 0px;")
+end
