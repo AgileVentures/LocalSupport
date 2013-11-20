@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
     save!
   end
 
-
+   #promote_to_org_admin
 
 end
 

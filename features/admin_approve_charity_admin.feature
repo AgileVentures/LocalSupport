@@ -20,3 +20,5 @@ Feature: Admin approve charity admin
     Given I am signed in as an admin
     When I approve "pending@myorg.com"
     Then "pending@myorg.com" is a charity admin of "My Organization"
+
+   #TODO scenarios to handle redirects?
