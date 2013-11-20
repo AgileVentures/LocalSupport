@@ -83,5 +83,5 @@ When(/^I visit "(.*?)"$/) do |path|
 end
 
 Then(/^the login should be hidden$/) do
-  page.should have_selector("form#loginForm", style: "height: 0px;")
+  page.should have_css("form#loginForm.collapse")
 end
