@@ -61,7 +61,7 @@ describe User do
   end
 
   # http://stackoverflow.com/questions/12125038/where-do-i-confirm-user-created-with-factorygirl
-  describe '#promote_new_user' do
+  describe '#make_admin_of_org_with_matching_email' do
     before do
       Gmaps4rails.stub(:geocode => nil)
       @user = FactoryGirl.create(:user, email: 'bert@charity.org')
@@ -91,6 +91,29 @@ describe User do
       @admin_user.organization.should eq @match_org
     end
 
+  end
+  describe '#promote_to_org_admin' do
+    subject(:user) { create(:user, admin: false) }  
+    it 'gets pending org id' do
+      user.should_receive(:pending_organization_id).and_return('4')
+      user.stub(:organization_id=)
+      user.stub(:pending_organization_id=)
+      user.promote_to_org_admin
+    end
+    it 'sets organization id to pending_organization id' do
+      user.stub(:pending_organization_id).and_return('4')
+      user.should_receive(:organization_id=).with('4')
+      user.stub(:pending_organization=)
+      user.promote_to_org_admin
+      user.organization_id.should eq 4
+    end
+    it 'sets pending organization id to nil' do
+      user.stub(:pending_organization_id).and_return('4')
+      user.stub(:organization_id=)
+      user.should_receive(:pending_organization_id=).with(nil)
+      user.promote_to_org_admin
+      user.pending_organization_id.should be_nil
+    end
   end
 
 end
