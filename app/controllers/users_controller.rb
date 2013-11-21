@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   end
 
   def index
+    redirect_to root_path and return unless current_user.admin?
     @users = User.all
   end
 end

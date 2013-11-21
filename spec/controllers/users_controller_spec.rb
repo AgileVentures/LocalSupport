@@ -57,7 +57,12 @@ describe UsersController do
       get :index
       response.should redirect_to root_path
     end
-
+    it 'shows a message in the flash when non-admin is redirected to root path' do
+      @user.stub(:admin?).and_return(false)
+      controller.stub(:current_user).and_return(@user)
+      get :index
+      expect(flash[:notice]).to have_content("You must be signed in as an admin to perform this action!")
+    end
     it 'assigns @users with all users' do
       @user.stub(:admin?).and_return(true)
       controller.stub(:current_user).and_return(@user)
