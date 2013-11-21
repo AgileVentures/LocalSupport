@@ -2,9 +2,10 @@ require 'spec_helper'
 describe UsersController do
   describe 'PUT update user-organization status' do
     before(:each) do
-      user = double("User")
-      request.env['warden'].stub :authenticate! => user
-      controller.stub(:current_user).and_return(user)
+      admin_user = double("User")
+      admin_user.stub(:admin?).and_return(true)
+      request.env['warden'].stub :authenticate! => admin_user
+      controller.stub(:current_user).and_return(admin_user)
       @nonadmin_user = double("User")
       User.stub(:find_by_id).with("4").and_return(@nonadmin_user)
       @nonadmin_user.stub(:pending_organization_id=).with('5')
@@ -27,8 +28,10 @@ describe UsersController do
       end
     end
     context 'admin promoting user to charity admin' do
+      before(:each) { @nonadmin_user.stub(:promote_to_org_admin) }
       it 'non-admins get refused' do
-        @nonadmin_user.stub(:promote_to_org_admin)
+        @non_admin_user.stub(:admin?).and_return(false)
+        controller.stub(:current_user).and_return(@non_admin_user)
         put :update, {:id => '4'}
         response.response_code.should == 404
       end
@@ -38,12 +41,13 @@ describe UsersController do
         put :update, {:id => '4'}
       end
       it 'redirect to index page after update succeeds' do
-        @nonadmin_user.stub(:promote_to_org_admin)
         put :update, {:id => '4'}
         response.should redirect_to users_path
       end
       it 'shows a flash telling which user got approved' do
-        pending
+        @non_admin_user.stub(:email).and_return('stuff@stuff.com')
+        put :update, {:id => '4'}
+        expect(flash[:notice]).to have_content("You have approved #{@non_admin_user.email}")
       end
     end
   end
