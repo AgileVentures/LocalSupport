@@ -47,23 +47,26 @@ describe UsersController do
   end
   describe 'GET index to view pending users' do
     before(:each) do
-      user = double("User")
-      request.env['warden'].stub :authenticate! => user
-      user.stub(:admin?).and_return(true)
-      controller.stub(:current_user).and_return(user)
-      @requester1 = double("User")
-      @requester1.stub(:pending_organization_id=).with('5')
-      @requester2 = double("User")
-      @requester2.stub(:pending_organization_id=).with('6')
+      @user = double("User")
+      request.env['warden'].stub :authenticate! => @user
     end
+
     it 'non-admins get redirected away' do
-      pending
-      #TODO redirect
-    end
-    it 'assigns @users with all users' do
-      User.should_receive(:all).and_return([@requester1, @requester2])
+      @user.stub(:admin?).and_return(false)
+      controller.stub(:current_user).and_return(@user)
       get :index
-      assigns(:users).should == [@requester1, @requester2]
+      response.should redirect_to root_path
+    end
+
+    it 'assigns @users with all users' do
+      @user.stub(:admin?).and_return(true)
+      controller.stub(:current_user).and_return(@user)
+      regular_user = double("User")
+      regular_user.stub(:pending_organization_id=).with('5')
+
+      User.should_receive(:all).and_return([regular_user])
+      get :index
+      assigns(:users).should == [regular_user]
     end
   end
 end
