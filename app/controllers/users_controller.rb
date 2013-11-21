@@ -13,7 +13,12 @@ class UsersController < ApplicationController
   end
 
   def index
-    redirect_to root_path and return unless current_user.admin?
-    @users = User.all
+    if !current_user.admin?
+      #flash[:notice] = "You must be signed in as an admin to perform this action!"
+      redirect_to root_path
+      flash[:notice] = "You must be signed in as an admin to perform this action!"
+    else
+      @users = User.all
+    end
   end
 end

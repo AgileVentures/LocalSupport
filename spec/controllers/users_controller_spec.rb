@@ -27,10 +27,12 @@ describe UsersController do
       end
     end
     context 'admin promoting user to charity admin' do
-      it 'non-admins get redirected away' do
-        pending
-        #TODO redirect
+      it 'non-admins get refused' do
+        @nonadmin_user.stub(:promote_to_org_admin)
+        put :update, {:id => '4'}
+        response.response_code.should == 404
       end
+
       it "calls a model method to add user's organziation and remove user's pending organization" do
         @nonadmin_user.should_receive(:promote_to_org_admin)
         put :update, {:id => '4'}
