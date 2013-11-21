@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     else
       if current_user.admin?
         user.promote_to_org_admin
+        flash[:notice] = "You have approved #{user.email}."
       else
         redirect_to :status => 404 and return
       end

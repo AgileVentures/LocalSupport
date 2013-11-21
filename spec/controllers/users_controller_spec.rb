@@ -28,10 +28,13 @@ describe UsersController do
       end
     end
     context 'admin promoting user to charity admin' do
-      before(:each) { @nonadmin_user.stub(:promote_to_org_admin) }
+      before(:each) do
+        @nonadmin_user.stub(:promote_to_org_admin)
+        @nonadmin_user.stub(:email).and_return('stuff@stuff.com')
+      end
       it 'non-admins get refused' do
-        @non_admin_user.stub(:admin?).and_return(false)
-        controller.stub(:current_user).and_return(@non_admin_user)
+        @nonadmin_user.stub(:admin?).and_return(false)
+        controller.stub(:current_user).and_return(@nonadmin_user)
         put :update, {:id => '4'}
         response.response_code.should == 404
       end
@@ -45,9 +48,8 @@ describe UsersController do
         response.should redirect_to users_path
       end
       it 'shows a flash telling which user got approved' do
-        @non_admin_user.stub(:email).and_return('stuff@stuff.com')
         put :update, {:id => '4'}
-        expect(flash[:notice]).to have_content("You have approved #{@non_admin_user.email}")
+        expect(flash[:notice]).to have_content("You have approved #{@nonadmin_user.email}.")
       end
     end
   end
