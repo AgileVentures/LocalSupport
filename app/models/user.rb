@@ -32,7 +32,12 @@ class User < ActiveRecord::Base
     save!
   end
 
-   #promote_to_org_admin
+  def promote_to_org_admin
+    # self required with setter method: http://stackoverflow.com/questions/5183664/why-isnt-self-always-needed-in-ruby-rails-activerecord/5183917#5183917
+    self.organization_id = pending_organization_id
+    self.pending_organization_id = nil
+    save!
+  end
 
 end
 

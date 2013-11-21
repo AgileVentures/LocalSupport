@@ -93,26 +93,35 @@ describe User do
 
   end
   describe '#promote_to_org_admin' do
-    subject(:user) { create(:user, admin: false) }  
+    subject(:user) { User.new }
+
     it 'gets pending org id' do
       user.should_receive(:pending_organization_id).and_return('4')
       user.stub(:organization_id=)
-      user.stub(:pending_organization_id=)
+      user.stub(:pending_organization=)
+      user.stub(:save!)
       user.promote_to_org_admin
     end
     it 'sets organization id to pending_organization id' do
       user.stub(:pending_organization_id).and_return('4')
       user.should_receive(:organization_id=).with('4')
       user.stub(:pending_organization=)
+      user.stub(:save!)
       user.promote_to_org_admin
-      user.organization_id.should eq 4
     end
     it 'sets pending organization id to nil' do
-      user.stub(:pending_organization_id).and_return('4')
+      user.stub(:pending_organization_id)
       user.stub(:organization_id=)
       user.should_receive(:pending_organization_id=).with(nil)
+      user.stub(:save!)
       user.promote_to_org_admin
-      user.pending_organization_id.should be_nil
+    end
+    it 'saves changes' do
+      user.stub(:pending_organization_id)
+      user.stub(:organization_id=)
+      user.stub(:pending_organization_id=)
+      user.should_receive(:save!)
+      user.promote_to_org_admin
     end
   end
 
