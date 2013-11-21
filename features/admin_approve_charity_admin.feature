@@ -21,4 +21,9 @@ Feature: Admin approve charity admin
     When I approve "pending@myorg.com"
     Then "pending@myorg.com" is a charity admin of "My Organization"
 
-   #TODO scenarios to handle redirects?
+  Scenario: As a non-admin trying to access users index
+    Given I am signed in as a non-admin
+    And I visit "/users"
+    Then I am on the home page
+    And I should see "You must be signed in as an admin to perform this action!"
+
