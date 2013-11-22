@@ -57,7 +57,9 @@ Scenario: Check that signup toggle works
   And I click "Login"
   Then the "menuLogin" should be "open"
   Then I should see "Sign-up.."
-  Given I click "Sign-up.."
+  Given I click "toggle_link"
   Then the "loginForm" should be "collapse"
-
+  Then I should see "Login"
+  Given I click "toggle_link"
+  Then the "register" should be "collapse"
 

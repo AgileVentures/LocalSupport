@@ -42,7 +42,7 @@
 
                         <%= link_to "Forgot your password?", new_password_path(resource_name) %>
                     <% end %>
-                    <form><a href="#" title="Click this link to Sign Up for an account" data-toggle="collapse" data-target="#register" id="signup_link">Sign-up..</a></form>
+                    <form><a href="#" title="Click this link to Sign Up for an account" data-toggle="collapse" data-target="#register" id="toggle_link">Sign-up..</a></form>
                     <div class="collapse" id="register">
 
                       <%= form_for(resource, :class => "collapse", :html => { :id => "registerForm" }, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -89,11 +89,11 @@
 </header>
 
 <script>
-    $('a#signup_link').on('click', function(e) {
+    $('a#toggle_link').on('click', function(e) {
         e.preventDefault();
         // Get all relevant elements
         var $this = $(this);
-        var $link = $('a#signup_link');
+        var $link = $('a#toggle_link');
         var $collapse1 = $this.closest('#login').find('#loginForm');
         var $collapse2 = $this.closest('#register').find('#registerForm');
         // Toggle the collapse of the forms
