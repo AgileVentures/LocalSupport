@@ -56,10 +56,10 @@ Scenario: Check that signup toggle works
   Given I am on the home page
   And I click "Login"
   Then the "menuLogin" should be "open"
-  Then I should see "Sign-up.."
+  Then I should see "New organization? Sign-up.."
   Given I click "toggle_link"
   Then the "loginForm" should be "collapse"
-  Then I should see "Login"
+  Then I should see "Already a member? Login"
   Given I click "toggle_link"
   Then the "register" should be "collapse"
 
