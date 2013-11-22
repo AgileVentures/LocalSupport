@@ -55,8 +55,9 @@ Scenario: Sign in for a non-existent user
 Scenario: Check that signup toggle works
   Given I am on the home page
   And I click "Login"
+  Then the "menuLogin" should be "open"
   Then I should see "Sign-up.."
   Given I click "Sign-up.."
-  Then the login should be hidden
+  Then the "loginForm" should be "collapse"
 
 

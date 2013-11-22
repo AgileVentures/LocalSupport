@@ -75,7 +75,5 @@ describe "layouts/application.html.erb", :type => :feature do
       render
       rendered.should have_css("li.dropdown ul.dropdown-menu li a[href=\"#{destroy_user_session_path}\"]")
     end
-
-
   end
 end
