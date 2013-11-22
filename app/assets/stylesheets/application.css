@@ -8,33 +8,8 @@
  *= require font-awesome
 */
 
-.flash {
-text-align: center;
-padding: .3em .4em;
-margin: 35px auto .5em;
-clear: both;
-       max-width: 46.923em;
-       *max-width: 45.750em;
-}
-
-.flash.error, .flash.alert {
-border: thin solid #8b0000;
-background: #ffc0cb;
-color: #000000;
-}
-
-.flash.notice, .flash.info {
-border: thin solid #ff0;
-background: #bce8f1;
-}
-
-.flash.warning {
-border: thin solid #b8860b;
-background: #ff0;
-}
 
 #main .container {
-
     margin-top: 45px;
 }
 
