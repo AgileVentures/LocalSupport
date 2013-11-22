@@ -86,4 +86,26 @@ describe "organizations/show.html.erb" do
       rendered.should_not have_link :href => edit_organization_path(organization.id)
     end
   end
+  context 'this is my organization button' do
+    let(:organization) do
+      stub_model Organization, :id => 1
+    end
+    let(:user) do
+      stub_model User, :id => 2
+    end
+    it 'renders grab button if grabbable true' do
+      @grabbable = assign(:grabbable, true)
+      view.stub(:current_user).and_return(user)
+      render
+      rendered.should have_button("This is my organization")
+      rendered.should have_selector(:form, {action: '/organizations/1/users/2', method: 'post'})
+      rendered.should have_css("form.button_to div input[value=\"put\"][type=\"hidden\"]")
+#TODO should check hidden value for put
+    end
+    it 'does not render grab button if grabbable false' do
+      @grabbable = assign(:grabbable, false)
+      render
+      rendered.should_not have_button("This is my organization")
+    end
+  end
 end
