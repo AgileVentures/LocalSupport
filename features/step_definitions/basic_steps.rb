@@ -201,10 +201,15 @@ Then /^I should see "((?:(?!before|").)+)"$/ do |text|
   page.should have_content text
 end
 
-Then(/^I should see a link or button "(.*?)"$/) do |link|
-  #page.should have_link link, :href => '#'
-  page.should have_selector(:link_or_button, link)
+Then(/^I should( not)? see a link or button "(.*?)"$/) do |negate, link|
+  expectation_method = negate ? :not_to : :to
+  expect(page).send(expectation_method, have_selector(:link_or_button, link))
 end
+
+#Then /^I should( not)? see a button saying "(.*?)"$/ do |negate, name|
+#  expectation_method = negate ? :not_to : :to
+#  expect(page).send(expectation_method, have_button("#{name}"))
+#end
 
 # this could be DRYed out (next three methods)
 Then /^I should see contact details for "([^"]*?)"$/ do |text|
@@ -278,7 +283,7 @@ Given /^"(.*)"'s request status for "(.*)" should be updated appropriately$/ do 
     steps %Q{
       And "#{email}"'s request for "#{org_name}" should be persisted
       And I should see "You have requested admin status for #{Organization.find_by_name(org_name).name}"
-      And I should not see "This is my organization"
+      And I should not see a link or button "This is my organization"
     }
 end
 
