@@ -274,10 +274,10 @@ end
 Then(/^"(.*?)" should have email "(.*?)"$/) do |org, email|
   Organization.find_by_name(org).email.should eq email
 end
-Given /^"(.*)"'s request status for "(.*)" should be updated appropriately$/ do |email,org|
+Given /^"(.*)"'s request status for "(.*)" should be updated appropriately$/ do |email,org_name|
     steps %Q{
-      And "#{email}"'s request for "#{org}" should be persisted
-      And I should see "You have requested admin status for My Organization"
+      And "#{email}"'s request for "#{org_name}" should be persisted
+      And I should see "You have requested admin status for #{Organization.find_by_name(org_name).name}"
       And I should not see "This is my organization"
     }
 end
