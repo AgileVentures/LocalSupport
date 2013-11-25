@@ -170,6 +170,19 @@ describe OrganizationsController do
         expect(assigns(:editable)).to eq nil
       end
     end
+    
+    context "grabbable flag is assigned to match user permission" do
+      before(:each) do
+        Organization.stub(:find).with("37") { double_organization }
+        @user = double("User")
+      end
+      it 'assigns grabbable to true when user is logged in' do
+        @user.stub(:can_edit?).with(double_organization).and_return(true)
+        controller.stub(:current_user).and_return(@user)
+        get :show, :id => 37
+        assigns(:grabbable).should be(true)
+      end
+    end
   end
 
   describe "GET new" do

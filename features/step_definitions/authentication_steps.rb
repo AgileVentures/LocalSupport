@@ -46,6 +46,7 @@ Given /^the following users are registered:$/ do |users_table|
   users_table.hashes.each do |user|
     user["admin"] = user["admin"] == "true"
     user["organization"] = Organization.find_by_name(user["organization"])
+    user["pending_organization"] = Organization.find_by_name(user["pending_organization"])
     worker = User.create! user, :without_protection => true
   end
 end
