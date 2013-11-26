@@ -137,7 +137,10 @@ describe OrganizationsController do
   describe "GET show" do
     before(:each) do
       @user = double("User")
+      Organization.stub(:find).with("37") { double_organization }
+      @user.stub(:can_edit?).and_return
       @user.stub(:can_request_org_admin?)
+      controller.stub(:current_user).and_return(@user)
     end
     it "assigns the requested organization as @organization and appropriate json" do
       json='my markers'
@@ -150,12 +153,6 @@ describe OrganizationsController do
     end
 
     context "editable flag is assigned to match user permission" do
-      before(:each) do
-        Organization.stub(:find).with("37") { double_organization }
-
-        controller.stub(:current_user).and_return(@user)
-      end
-
       it "user with permission leads to editable flag true" do
         @user.should_receive(:can_edit?).with(double_organization).and_return(true)
         get :show, :id => 37
