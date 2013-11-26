@@ -19,10 +19,10 @@
             <% unless user_signed_in?%>
                 <li class="dropdown " id="menuLogin">
                   <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
-                  <div class="dropdown-menu" style="padding:17px;">
-                    <label>Login:</label>
+                  <div class="dropdown-menu" id="login" style="padding:17px;">
                     <%= form_for(resource, :class => "collapse", :html => { :id => "loginForm" }, :as => resource_name, :url => session_path(resource_name)) do |f| %>
                         <div>
+                          <label>Login:</label>
                           <!--[if lt IE 9]>
                           <label for="user_email">Enter email</label>
                           <![endif]-->
@@ -42,7 +42,7 @@
 
                         <%= link_to "Forgot your password?", new_password_path(resource_name) %>
                     <% end %>
-                    <form><a href="#" title="Click this link to Sign Up for an account" data-toggle="collapse" data-target="#register">Sign-up..</a></form>
+                    <form><a href="#" title="Click this link to Sign Up for an account" data-toggle="collapse" data-target="#register" id="toggle_link">New organization? Sign-up..</a></form>
                     <div class="collapse" id="register">
 
                       <%= form_for(resource, :class => "collapse", :html => { :id => "registerForm" }, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -88,3 +88,23 @@
 
 </header>
 
+<script>
+    $('a#toggle_link').on('click', function(e) {
+        e.preventDefault();
+        // Get all relevant elements
+        var $this = $(this);
+        var $link = $('a#toggle_link');
+        var $collapse1 = $this.closest('#login').find('#loginForm');
+        var $collapse2 = $this.closest('#register').find('#registerForm');
+        // Toggle the collapse of the forms
+        $collapse1.collapse('toggle');
+        $collapse2.collapse('toggle');
+        // Change the link text
+        if  ($link.text() == 'New organization? Sign-up..') {
+            $link.text('Already a member? Login');
+        }
+        else {
+            $link.text('New organization? Sign-up..');
+        }
+    });
+</script>

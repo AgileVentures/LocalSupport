@@ -308,6 +308,7 @@ Then(/^I should see "(.*?)" < linked > to "(.*?)"$/) do |text, url|
   links = collect_links(page.body)
   links[text].should == url
 end
+
 When /^I approve "(.*?)"$/ do |email|
   visit users_path
   page.body.should have_content(email)
@@ -318,3 +319,4 @@ Then(/^"(.*?)" is a charity admin of "(.*?)"$/) do |user_email, org_name|
   org = Organization.find_by_name(org_name)
   user.organization.should == org
 end
+
