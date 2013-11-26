@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "layouts/application.html.erb" do
+describe "layouts/application.html.erb", :type => :feature do
   context "no user signed-in" do
 
     before :each do
@@ -16,7 +16,7 @@ describe "layouts/application.html.erb" do
       rendered.should contain 'Search for local voluntary and community organisations'
     end
 
-    it "renders Organization sign in form" do
+    it 'renders Organization sign in form' do
       render
       rendered.should have_selector("form", :id => "loginForm")
     end
@@ -51,6 +51,12 @@ describe "layouts/application.html.erb" do
       render
       rendered.should have_css("#menuLogin a[href=\"#{new_user_password_path}\"]")
     end
+
+    it 'login form should be visible', :js => true do
+      render
+      rendered.should_not have_selector("form#loginForm", style: "height: 0px;")
+    end
+
   end
   context "user signed-in" do
 
@@ -69,7 +75,5 @@ describe "layouts/application.html.erb" do
       render
       rendered.should have_css("li.dropdown ul.dropdown-menu li a[href=\"#{destroy_user_session_path}\"]")
     end
-
-
   end
 end
