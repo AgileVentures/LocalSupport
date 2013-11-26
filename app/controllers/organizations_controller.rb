@@ -26,7 +26,11 @@ class OrganizationsController < ApplicationController
   def show
     @organization = Organization.find(params[:id])
     @editable = current_user.can_edit?(@organization) if current_user
-    @grabbable = true if current_user
+    # "This is my organization" button visible only if not
+    # (site admin, charity admin of this charity, or pending charity admin of this charity)
+    #@grabbable = @editable ? false : current_user.pending_organization != @organization
+
+    @grabbable = current_user.can_request_org_admin?(@organization)
     @json = gmap4rails_with_popup_partial(@organization,'popup')
   end
 

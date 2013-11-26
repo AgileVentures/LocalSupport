@@ -135,6 +135,10 @@ describe OrganizationsController do
   end
 
   describe "GET show" do
+    before(:each) do
+      @user = double("User")
+      @user.stub(:can_request_org_admin?)
+    end
     it "assigns the requested organization as @organization and appropriate json" do
       json='my markers'
       @org = double_organization
@@ -148,7 +152,7 @@ describe OrganizationsController do
     context "editable flag is assigned to match user permission" do
       before(:each) do
         Organization.stub(:find).with("37") { double_organization }
-        @user = double("User")
+
         controller.stub(:current_user).and_return(@user)
       end
 
@@ -183,7 +187,7 @@ describe OrganizationsController do
         get :show, :id => 37
         assigns(:grabbable).should be(true)
       end
-      it 'assigns grabbable to false when user can not request org admin status' do
+      it 'assigns grabbable to false when user cannot request org admin status' do
         @user.stub(:can_edit?)
         @user.should_receive(:can_request_org_admin?).with(double_organization).and_return(true)
         controller.stub(:current_user).and_return(@user)
