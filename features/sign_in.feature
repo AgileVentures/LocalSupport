@@ -54,7 +54,6 @@ Scenario: Sign in for a non-existent user
 @javascript
 Scenario: Check that signup toggle works
   Given I am on the home page
-  Then show me the page
   And I click "Login"
   Then the "menuLogin" should be "open"
   Then I should see "New organization? Sign-up.."
