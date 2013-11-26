@@ -25,7 +25,10 @@ class User < ActiveRecord::Base
   def can_edit? org
     admin? || (!org.nil? && organization == org)
   end
-
+  def can_request_org_admin? org
+#    admin false, pending_organization  pending_organization!=organization org != organization
+    !admin? && organization != org && pending_organization != org
+  end
   def make_admin_of_org_with_matching_email
     org = Organization.find_by_email self.email
     self.organization = org if org

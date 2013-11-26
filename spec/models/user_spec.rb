@@ -132,7 +132,7 @@ describe User do
       user.stub(:organization).and_return(nil)
       user.stub(:pending_organization).and_return(nil)
       @organization = double('Organization')
-      @users_organization = double('Organization')
+      @other_organization = double('Organization')
     end
 
     it 'is false when user is site admin' do
@@ -141,13 +141,33 @@ describe User do
     end
 
     it 'is false when user is charity admin of this charity' do
-      user.should_receive(:organization).and_return(@users_organization)
+      user.should_receive(:organization).and_return(@organization)
       user.can_request_org_admin?(@organization).should be_false
     end
 
+    it 'is true when user is charity admin of another charity' do
+      user.should_receive(:organization).and_return(@other_organization)
+      user.can_request_org_admin?(@organization).should be_true
+    end
+
+    it 'is true when user is charity admin of no charity' do
+      user.should_receive(:organization).and_return(nil)
+      user.can_request_org_admin?(@organization).should be_true
+    end
+
     it 'is false when user is pending charity admin of this charity' do
-      user.should_receive(:pending_organization).and_return(@users_organization)
+      user.should_receive(:pending_organization).and_return(@organization)
       user.can_request_org_admin?(@organization).should be_false
+    end
+
+    it 'is true when user is pending charity admin of another charity' do
+      user.should_receive(:pending_organization).and_return(@other_organization)
+      user.can_request_org_admin?(@organization).should be_true
+    end
+
+    it 'is true when user is pending charity admin of no charity' do
+      user.should_receive(:pending_organization).and_return(nil)
+      user.can_request_org_admin?(@organization).should be_true
     end
 
     it 'is true when user is not (site admin || charity admin of this charity || pending charity admin of this charity)' do

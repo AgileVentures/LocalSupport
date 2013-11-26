@@ -28,9 +28,8 @@
 <p><b>Donation Info:</b>
 <%= donation_info_msg %>
 </p>
-
 <%= link_to_if(@editable, "Edit", edit_organization_path(@organization.id), {:class => 'btn btn-large'}){} %>
-<%= link_to "This is my organization", organization_user_path(current_user.id, @organization.id), {method: :put, class: "btn btn-large"} if @grabbable %>
+<%= link_to "This is my organization", organization_user_path(@organization.id, current_user.id), {method: :put, class: "btn btn-large"} if @grabbable %>
 
 <% content_for :map do %>
     <%= gmaps("map_options" => {"auto_adjust" => true, "auto_zoom" => false, "center_latitude" => 51.5978,
