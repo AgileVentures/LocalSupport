@@ -29,6 +29,7 @@
 <%= donation_info_msg %>
 </p>
 <%= link_to_if(@editable, "Edit", edit_organization_path(@organization.id), {:class => 'btn btn-large'}){} %>
+<!--make sure to pass params in order they appear in rake routes!-->
 <%= link_to "This is my organization", organization_user_path(@organization.id, current_user.id), {method: :put, class: "btn btn-large"} if @grabbable %>
 
 <% content_for :map do %>
