@@ -62,15 +62,15 @@ describe "layouts/application.html.erb", :type => :feature do
       rendered.should_not have_selector("div.alert")
     end
 
-    it 'should flash messages when successful' do
-      view.stub(:flash).and_return([[:success,"Yes, we have been successful!!!!!"]])
+    it 'should display flash messages when successful' do
+      view.stub(:flash).and_return([[:notice,"Yes, we have been successful!!!!!"]])
       render
       rendered.should have_selector("div.alert")
       rendered.should have_content("Yes, we have been successful!!!!!")
       rendered.should have_selector("div.alert-success")
     end
 
-    it 'should flash messages when failing' do
+    it 'should display flash messages when failing' do
       view.stub(:flash).and_return([[:error,"No, no, no!"]])
       render
       rendered.should have_selector("div.alert")
@@ -80,7 +80,6 @@ describe "layouts/application.html.erb", :type => :feature do
 
   end
   context "user signed-in" do
-
     before :each do
       view.stub(:user_signed_in?).and_return(true)
       user = double(User)
