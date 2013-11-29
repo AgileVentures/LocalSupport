@@ -135,6 +135,13 @@ describe OrganizationsController do
   end
 
   describe "GET show" do
+    before(:each) do
+      @user = double("User")
+      Organization.stub(:find).with("37") { double_organization }
+      @user.stub(:can_edit?).and_return
+      @user.stub(:can_request_org_admin?)
+      controller.stub(:current_user).and_return(@user)
+    end
     it "assigns the requested organization as @organization and appropriate json" do
       json='my markers'
       @org = double_organization
@@ -146,12 +153,6 @@ describe OrganizationsController do
     end
 
     context "editable flag is assigned to match user permission" do
-      before(:each) do
-        Organization.stub(:find).with("37") { double_organization }
-        @user = double("User")
-        controller.stub(:current_user).and_return(@user)
-      end
-
       it "user with permission leads to editable flag true" do
         @user.should_receive(:can_edit?).with(double_organization).and_return(true)
         get :show, :id => 37
@@ -167,20 +168,29 @@ describe OrganizationsController do
       it 'when not signed in editable flag is nil' do
         controller.stub(:current_user).and_return(nil)
         get :show, :id => 37
-        expect(assigns(:editable)).to eq nil
+        expect(assigns(:editable)).to be_false
       end
     end
     
     context "grabbable flag is assigned to match user permission" do
-      before(:each) do
-        Organization.stub(:find).with("37") { double_organization }
-        @user = double("User")
-      end
-      it 'assigns grabbable to true when user is logged in' do
-        @user.stub(:can_edit?).with(double_organization).and_return(true)
+      it 'assigns grabbable to true when user can request org admin status' do
+        @user.stub(:can_edit?)
+        @user.should_receive(:can_request_org_admin?).with(double_organization).and_return(true)
         controller.stub(:current_user).and_return(@user)
         get :show, :id => 37
         assigns(:grabbable).should be(true)
+      end
+      it 'assigns grabbable to false when user cannot request org admin status' do
+        @user.stub(:can_edit?)
+        @user.should_receive(:can_request_org_admin?).with(double_organization).and_return(false)
+        controller.stub(:current_user).and_return(@user)
+        get :show, :id => 37
+        assigns(:grabbable).should be(false)
+      end
+      it 'when not signed in grabbable flag is nil' do
+        controller.stub(:current_user).and_return(nil)
+        get :show, :id => 37
+        expect(assigns(:grabbable)).to be_false
       end
     end
   end
