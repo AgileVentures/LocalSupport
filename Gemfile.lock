@@ -89,12 +89,12 @@ GEM
     cucumber-rails-training-wheels (1.0.0)
       cucumber-rails (>= 1.1.1)
     database_cleaner (1.0.1)
-    debugger (1.6.2)
+    debugger (1.6.1)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
       debugger-ruby_core_source (~> 1.2.3)
     debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.2.3)
+    debugger-ruby_core_source (1.2.4)
     devise (3.0.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -320,7 +320,7 @@ DEPENDENCIES
   cucumber-rails
   cucumber-rails-training-wheels
   database_cleaner (= 1.0.1)
-  debugger
+  debugger (= 1.6.1)
   devise (= 3.0.3)
   execjs
   factory_girl_rails
