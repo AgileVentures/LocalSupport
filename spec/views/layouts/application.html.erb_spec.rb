@@ -57,6 +57,19 @@ describe "layouts/application.html.erb", :type => :feature do
       rendered.should_not have_selector("form#loginForm", style: "height: 0px;")
     end
 
+    it 'should not have any flash messages' do
+      render
+      rendered.should_not have_selector("div.alert")
+    end
+
+    it 'should flash messages when appropriate' do
+      view.stub(:flash).and_return([[:success,"Yes, we have been successful!!!!!"]])
+      render
+      rendered.should have_selector("div.alert")
+      rendered.should have_content("Yes, we have been successful!!!!!")
+      rendered.should have_selector("div.alert-success")
+    end
+
   end
   context "user signed-in" do
 
