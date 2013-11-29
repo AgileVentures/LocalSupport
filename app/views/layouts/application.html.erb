@@ -15,7 +15,7 @@
     <% flash.each do |name, msg| %>
         <div class="row">
           <div class="span8 offset2">
-            <div id="flash_<%= "#{name}" %>" class="alert alert-">
+            <div id="flash_<%= "#{name}" %>" class="alert alert-success">
               <!-- name == :notice ? "success" : "error"  -->
               <a class="close" data-dismiss="alert">&#215;</a>
               <%= content_tag :div, msg %>

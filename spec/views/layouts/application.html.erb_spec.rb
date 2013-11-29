@@ -62,12 +62,20 @@ describe "layouts/application.html.erb", :type => :feature do
       rendered.should_not have_selector("div.alert")
     end
 
-    it 'should flash messages when appropriate' do
+    it 'should flash messages when successful' do
       view.stub(:flash).and_return([[:success,"Yes, we have been successful!!!!!"]])
       render
       rendered.should have_selector("div.alert")
       rendered.should have_content("Yes, we have been successful!!!!!")
       rendered.should have_selector("div.alert-success")
+    end
+
+    it 'should flash messages when failing' do
+      view.stub(:flash).and_return([[:error,"No, no, no!"]])
+      render
+      rendered.should have_selector("div.alert")
+      rendered.should have_content("No, no, no!")
+      rendered.should have_selector("div.alert-error")
     end
 
   end
