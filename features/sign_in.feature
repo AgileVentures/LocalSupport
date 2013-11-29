@@ -63,3 +63,14 @@ Scenario: Check that signup toggle works
   Given I click "toggle_link"
   Then the "register" should be "collapse"
 
+
+Scenario: Check class of flash notice  - error
+  Given I sign in as "site_admin@example.com" with password "12345"
+  Then I should be on the Sign in page
+  And the "flash_alert" should be "alert-error"
+
+
+Scenario: Check class of flash notice  - success
+  Given I sign in as "site_admin@example.com" with password "pppppppp"
+  Then I should be on the Sign in page
+  And the "flash_notice" should be "alert-success"
