@@ -7,7 +7,7 @@ LocalSupport::Application.routes.draw do
   #match 'pages/disclaimer' => 'pages#disclaimer'
   #match 'pages/aboutus' => 'pages#aboutus'
   #match 'pages/contact' => 'pages#contact'
-
+  # TODO: set up this: match '/404' => ''...
   resources :pages
   resources :organizations
   resources :organizations do
