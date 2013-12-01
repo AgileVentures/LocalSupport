@@ -22,7 +22,7 @@ end
 
 group :development do
   #gem 'ruby-debug19', :require => 'ruby-debug'
-  gem 'debugger'
+  gem 'debugger', '1.6.1'
   gem 'railroady'
 end
 

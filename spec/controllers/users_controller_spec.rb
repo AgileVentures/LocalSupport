@@ -10,6 +10,9 @@ describe UsersController do
       User.stub(:find_by_id).with("4").and_return(@nonadmin_user)
       @nonadmin_user.stub(:pending_organization_id=).with('5')
       @nonadmin_user.stub(:save!)
+      @org = double("Organization")
+      @org.stub(:name).and_return('Red Cross')
+      Organization.stub(:find).and_return(@org)
     end
     context 'user requesting pending status to be admin of charity' do
       it 'should update the pending organization id to nested org id' do
@@ -24,7 +27,7 @@ describe UsersController do
       end
       it 'should display that a user has requested admin status for nested org' do
         put :update, id: 4, organization_id: 5
-        expect(flash[:notice]).to have_content("You have requested admin status for My Organization")
+        expect(flash[:notice]).to have_content("You have requested admin status for #{@org.name}")
       end
     end
     context 'admin promoting user to charity admin' do

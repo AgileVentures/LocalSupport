@@ -4,7 +4,9 @@ class UsersController < ApplicationController
     if params[:organization_id]
       user.pending_organization_id = params[:organization_id]
       user.save!
-      flash[:notice] = "You have requested admin status for My Organization"
+      org = Organization.find(params[:organization_id])
+      flash[:notice] = "You have requested admin status for #{org.name}"
+      #flash[:notice] = "You have requested admin status for My Organization"
       redirect_to(organization_path(params[:organization_id]))
     else
       redirect_to :status => 404 and return unless current_user.admin?
