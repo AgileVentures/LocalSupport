@@ -7,4 +7,6 @@ class Page < ActiveRecord::Base
   def to_param
     permalink
   end
+  #def find_page
+  #end
 end

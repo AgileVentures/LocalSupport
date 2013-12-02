@@ -18,16 +18,11 @@ class PagesController < ApplicationController
   # GET /pages/:permalink.json
   def show
     @admin = current_user.admin? if current_user
-    # find_by_permalink! returns 404 if no match
-    @page = Page.find_by_permalink(params[:id])
-    #redirect_to :status => 404 and return if @page.nil?
+    # find_by_permalink returns custom 404 page if no match
+    @page = Page.find_page(params[:id])
     respond_to do |format|
-      if @page.nil?
-        format.html { render template: 'pages/404', layout: 'layouts/application', status: 404 }
-      else
-        format.html # show.html.erb
-        format.json { render json: @page }
-      end
+      format.html # show.html.erb
+      format.json { render json: @page }
     end
   end
 

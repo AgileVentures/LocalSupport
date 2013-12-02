@@ -43,17 +43,13 @@ describe PagesController do
   end
 
   describe "GET show" do
-    it "assigns the requested page as @page" do
-      page = Page.create! valid_attributes
-      get :show, {:id => page.to_param}
-      assigns(:page).should eq(page)
-    end
+    #it "assigns the requested page as @page" do
+    #  page = Page.create! valid_attributes
+    #  get :show, {:id => page.to_param}
+    #  assigns(:page).should eq(page)
+    #end
 
-    it 'should redirect to custom 404 page if db has no results' do
-      Page.should_receive(:find_by_permalink).and_return(nil)
-      get :show, {:id => 'lalala'}
-      expect(response).to redirect_to(page_path('404'))
-    end
+
   end
 
   describe "GET new" do
