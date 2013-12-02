@@ -43,13 +43,17 @@ describe PagesController do
   end
 
   describe "GET show" do
-    #it "assigns the requested page as @page" do
-    #  page = Page.create! valid_attributes
-    #  get :show, {:id => page.to_param}
-    #  assigns(:page).should eq(page)
-    #end
+    #TODO need tests for @admin
 
+    let(:static_page) { double('Page') }
 
+    it 'assigns a valid page as @page' do
+      Page.should_receive(:find_page).and_return(static_page)
+      get :show, { :id => 'lalalala' }
+      assigns(:page).should eq static_page
+    end
+
+    #TODO needs tests for respond_to block
   end
 
   describe "GET new" do
