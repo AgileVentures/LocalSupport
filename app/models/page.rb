@@ -9,7 +9,6 @@ class Page < ActiveRecord::Base
   end
 
   def self.find_page id
-    debugger
     Page.find_by_permalink(id) || Page.find_by_name!('Custom 404')
   end
 end
