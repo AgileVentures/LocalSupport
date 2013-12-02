@@ -19,7 +19,7 @@ class PagesController < ApplicationController
   def show
     @admin = current_user.admin? if current_user
     # find_by_permalink returns custom 404 page if no match
-    #@page = Page.find_page(params[:id])
+    @page = Page.find_page(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @page }
