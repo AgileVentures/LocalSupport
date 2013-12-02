@@ -15,7 +15,7 @@ Then /^I should be on the (.*) page$/ do |location|
   end
 end
 
-Given(/^I am on the "(.*?)" page$/) do |page|
+Given(/^I try to access "(.*?)" page$/) do |page|
   visit("/#{page}")
 end
 

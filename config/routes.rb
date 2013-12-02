@@ -21,6 +21,11 @@ LocalSupport::Application.routes.draw do
   put ':id', to: 'pages#update', as: :page
   delete ':id', to: 'pages#destroy', as: :page
 
+  #get '/404', :to => 'errors#not_found'
+  #get '/422', :to => 'errors#unacceptable'
+  #get '/500', :to => 'errors#internal_error'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -77,4 +82,6 @@ LocalSupport::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+  match '22222' => 'errors#not_found'
+  match '*path' => 'errors#not_found'
 end
