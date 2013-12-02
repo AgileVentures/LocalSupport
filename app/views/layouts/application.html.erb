@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Harrow Community Network</title>
+  <title><%= content_for?(:title) ? yield(:title) : "Harrow Community Network" %> </title>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>

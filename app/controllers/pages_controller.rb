@@ -22,8 +22,12 @@ class PagesController < ApplicationController
     @page = Page.find_by_permalink(params[:id])
     #redirect_to :status => 404 and return if @page.nil?
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @page }
+      if @page.nil?
+        format.html { render template: 'pages/404', layout: 'layouts/application', status: 404 }
+      else
+        format.html # show.html.erb
+        format.json { render json: @page }
+      end
     end
   end
 
