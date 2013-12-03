@@ -43,17 +43,34 @@ describe PagesController do
   end
 
   describe "GET show" do
-    #TODO need tests for @admin
-
-    let(:static_page) { double('Page') }
-
-    it 'assigns a valid page as @page' do
-      Page.should_receive(:find_page).and_return(static_page)
-      get :show, { :id => 'lalalala' }
-      assigns(:page).should eq static_page
+    before :each do
+      admin_user = double('User')
+      admin_user.stub(:admin?).and_return(true)
+      controller.stub(:current_user).and_return(admin_user)
+      @valid_page = double('Page')
+      @error_page = double('Page')
     end
 
-    #TODO needs tests for respond_to block
+    it 'assigns @admin if current_user is admin' do
+      get :show, { :id => 'lalalala' }
+      assigns(:admin).should be_true
+    end
+
+    it 'assigns @page if params[id] is a valid permalink' do
+      Page.should_receive(:find_by_permalink!).with('lalala').and_return(@valid_page)
+      get :show, { :id => 'lalala'}
+      assigns(:page).should eq @valid_page
+    end
+
+    it 'assigns 404 page if params[id] is not a valid permalink' do
+      Page.should_receive(:find_by_permalink!).with('lalala').and_raise(ActiveRecord::RecordNotFound)
+      Page.should_receive(:find_by_permalink!).with('404').and_return(@error_page)
+      get :show, { :id => 'lalala'}
+      assigns(:page).should eq @error_page
+    end
+
+    #TODO  Test respond_to with correct status codes
+
   end
 
   describe "GET new" do

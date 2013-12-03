@@ -1,8 +1,7 @@
 namespace :db do
   task :pages => :environment do
-    if !Page.find_by_permalink('about')
-    Page.create!({
-                     name: 'About Us',
+    unless Page.find_by_permalink('about')
+      Page.create!({
                      permalink: 'about',
                      content:
 '# About Us
@@ -18,8 +17,9 @@ Find out [here (VAH in a nutshell)](http://www.voluntaryactionharrow.org.uk/vah-
 ### What is a Workers Co-operative?
 A workers co-operative is a business owned and democratically controlled by their employee members using co-operative principles. They are an attractive and increasingly relevant alternative to traditional investor owned models of enterprise.[ (Click here for more details)](http://www.uk.coop/sites/default/files/worker_co-operative_code_2nd_edition.pdf)'
                  })
-    elsif !Page.find_by_permalink('contact')
-    Page.create!({
+    end
+    unless Page.find_by_permalink('contact')
+      Page.create!({
                      name: 'Contact Info',
                      permalink: 'contact',
                      content:
@@ -29,22 +29,24 @@ A workers co-operative is a business owned and democratically controlled by thei
 * **Write to Us:** The Lodge, 64 Pinner Road, Harrow, Middlesex, HA1 4HZ
 * **Find Us:** On [ Social Media (Click Here)](http://www.voluntaryactionharrow.org.uk/social-circles/)'
                  })
-    elsif !Page.find_by_permalink('disclaimer')
-    Page.create!({
+    end
+    unless Page.find_by_permalink('disclaimer')
+      Page.create!({
                      name: 'Disclaimer',
                      permalink: 'disclaimer',
                      content:
 '# Disclaimer
 #### Whilst Voluntary Action Harrow has made effort to ensure the information here is accurate and up to date we are reliant on the information provided by the different organisations. No guarantees for the accuracy of the information is made.'
                  })
-    elsif !Page.find_by_permalink('404')
-    Page.create!({
+    end
+    unless Page.find_by_permalink('404')
+      Page.create!({
                      name: 'Custom 404',
                      permalink: '404',
                      content:
                          "# 404
 #### We're sorry, but we couldn't find the page you requested!"
                  })
-      end
+    end
   end
 end

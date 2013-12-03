@@ -7,8 +7,4 @@ class Page < ActiveRecord::Base
   def to_param
     permalink
   end
-
-  def self.find_page id
-    Page.find_by_permalink(id) || Page.find_by_name!('Custom 404')
-  end
 end
