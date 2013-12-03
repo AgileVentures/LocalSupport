@@ -47,18 +47,19 @@ describe PagesController do
       admin_user = double('User')
       admin_user.stub(:admin?).and_return(true)
       controller.stub(:current_user).and_return(admin_user)
-      @valid_page = double('Page')
+      @valid_page = double('Page', :name => 'About Us', :permalink => 'about', :content => 'blah blah')
       @error_page = double('Page')
     end
 
     it 'assigns @admin if current_user is admin' do
-      get :show, { :id => 'lalalala' }
+      Page.stub(:find_by_permalink!)
+      get :show, { :id => 'about' }
       assigns(:admin).should be_true
     end
 
     it 'assigns @page if params[id] is a valid permalink' do
-      Page.should_receive(:find_by_permalink!).with('lalala').and_return(@valid_page)
-      get :show, { :id => 'lalala'}
+      Page.should_receive(:find_by_permalink!).with('about').and_return(@valid_page)
+      get :show, { :id => 'about'}
       assigns(:page).should eq @valid_page
     end
 
@@ -69,12 +70,17 @@ describe PagesController do
       assigns(:page).should eq @error_page
     end
 
-    #TODO  Test respond_to with correct status codes
-    it 'respond code should be ' do
+    it '200: respond code should be appropriate for page' do
       Page.stub(:find_by_permalink!)
-      get :show, { :id => 'lalala' }, :format => :json
-      post :create, :my_model => {'these' => 'params'}, :format => :json
-      response.body.should == my_model.to_json
+      get :show, { :id => 'about' }
+      response.status.should eq 200
+    end
+
+    it '404: respond code should be appropriate for page' do
+      Page.should_receive(:find_by_permalink!).with('lalala').and_raise(ActiveRecord::RecordNotFound)
+      Page.should_receive(:find_by_permalink!).with('404').and_return(@error_page)
+      get :show, { :id => 'lalala'}
+      response.status.should eq 404
     end
 
   end

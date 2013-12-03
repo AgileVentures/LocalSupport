@@ -26,10 +26,7 @@ class PagesController < ApplicationController
       @page = Page.find_by_permalink!('404')
       status_code = 404
     end
-    #respond_to do |format|
-    #  format.html { render html: @page, status: status_code }
-    #  format.json { render json: @page, status: status_code }
-    #end
+    render :html => @page, :status => status_code
   end
 
   # GET /pages/new
