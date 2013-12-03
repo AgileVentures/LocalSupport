@@ -70,6 +70,12 @@ describe PagesController do
     end
 
     #TODO  Test respond_to with correct status codes
+    it 'respond code should be ' do
+      Page.stub(:find_by_permalink!)
+      get :show, { :id => 'lalala' }, :format => :json
+      post :create, :my_model => {'these' => 'params'}, :format => :json
+      response.body.should == my_model.to_json
+    end
 
   end
 

@@ -2,6 +2,7 @@ namespace :db do
   task :pages => :environment do
     unless Page.find_by_permalink('about')
       Page.create!({
+                     name: 'About Us',
                      permalink: 'about',
                      content:
 '# About Us
