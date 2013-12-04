@@ -42,9 +42,11 @@
 
                         <%= link_to "Forgot your password?", new_password_path(resource_name) %>
                     <% end %>
+
                     <form>
-                    <%= link_to('New organization? Sign-up..', '#', :id => 'toggle_link', :title =>'Click this link to Sign Up for an account', :data => {:toggle => :collapse, :target => '#register'})%>
+                    <%= link_to('New organisation? Sign-up..', '#', :id => 'toggle_link', :title =>'Click this link to Sign Up for an account', :data => {:toggle => :collapse, :target => '#register'})%>
                     </form>
+
                     <div class="collapse" id="register">
 
                       <%= form_for(resource, :class => "collapse", :html => { :id => "registerForm" }, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -102,11 +104,11 @@
         $collapse1.collapse('toggle');
         $collapse2.collapse('toggle');
         // Change the link text
-        if  ($link.text() == 'New organization? Sign-up..') {
+        if  ($link.text() == 'New organisation? Sign-up..') {
             $link.text('Already a member? Login');
         }
         else {
-            $link.text('New organization? Sign-up..');
+            $link.text('New organisation? Sign-up..');
         }
     });
 </script>

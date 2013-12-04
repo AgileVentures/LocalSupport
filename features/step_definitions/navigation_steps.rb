@@ -15,6 +15,19 @@ Then /^I should be on the (.*) page$/ do |location|
   end
 end
 
+Given(/^I try to access "(.*?)" page$/) do |page|
+  visit("/#{page}")
+end
+
+And(/^the page should be titled "(.*?)"$/) do |title|
+  page.should have_selector("title", title)
+end
+
+Then(/^the response status should be 404$/) do
+  page.status_code.should == 404
+  #page.response_code.should be 404
+end
+
 Then(/^I should be on the edit page for "(.*?)"$/) do |permalink|
   pg = Page.find_by_permalink(permalink)
   current_path.should eq( edit_page_path (pg.permalink ))

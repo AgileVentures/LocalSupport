@@ -7,7 +7,6 @@ LocalSupport::Application.routes.draw do
   #match 'pages/disclaimer' => 'pages#disclaimer'
   #match 'pages/aboutus' => 'pages#aboutus'
   #match 'pages/contact' => 'pages#contact'
-
   resources :pages
   resources :organizations
   resources :organizations do
@@ -20,6 +19,7 @@ LocalSupport::Application.routes.draw do
   get ':id', to: 'pages#show', as: :page
   put ':id', to: 'pages#update', as: :page
   delete ':id', to: 'pages#destroy', as: :page
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
