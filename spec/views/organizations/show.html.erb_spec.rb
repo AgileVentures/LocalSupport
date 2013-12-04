@@ -3,12 +3,18 @@ require 'spec_helper'
 describe "organizations/show.html.erb" do
 
   let(:organization) do
-    stub_model Organization, :address => "12 pinner rd", :telephone => "1234"
+    stub_model Organization, :name => 'Friendly', :address => "12 pinner rd", :telephone => "1234"
   end
 
   before(:each) do
     assign(:organization, organization)
     render
+  end
+
+  context 'page styling' do
+    it 'organization name should be wrapped in h1 tag' do
+      rendered.should have_css('h1', :text => organization.name)
+    end
   end
 
   context "some information is private" do
@@ -86,6 +92,7 @@ describe "organizations/show.html.erb" do
       rendered.should_not have_link :href => edit_organization_path(organization.id)
     end
   end
+
   context 'this is my organization button' do
     let(:organization) do
       stub_model Organization, :id => 1
@@ -98,7 +105,7 @@ describe "organizations/show.html.erb" do
       view.stub(:current_user).and_return(user)
       render
       rendered.should have_link 'This is my organization', :href => organization_user_path(organization.id, user.id)
-#TODO should check hidden value for put
+      #TODO should check hidden value for put
     end
     it 'does not render grab button if grabbable false' do
       @grabbable = assign(:grabbable, false)
