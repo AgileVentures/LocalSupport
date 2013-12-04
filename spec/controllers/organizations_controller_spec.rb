@@ -42,10 +42,10 @@ describe OrganizationsController do
         Category.should_receive(:html_drop_down_options).and_return(category_html_options)
       end
       it "orders search results by most recent" do
-        #Organization.should_receive(:search_by_keyword).with('test').and_return(result)
         Organization.should_receive(:order_by_most_recent).and_return(result)
-        result.stub(:filter_by_category).and_return(result)
+        result.stub_chain(:search_by_keyword, :filter_by_category).with('test').with(nil).and_return(result)
         get :search, :q => 'test'
+        assigns(:organizations).should eq([double_organization])
       end
     end
 
