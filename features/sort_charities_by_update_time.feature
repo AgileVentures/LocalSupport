@@ -20,8 +20,8 @@ Scenario: Most recently updated charity shows at the top of the list
  
 Scenario: Most recently updated charity shows at the top of the list 
   Given I am on the home page
-  Then I should see "Harrow Bereavement Counselling" before "Harrow Elders Association"
-  And I should see "Harrow Elders Association" before "Age UK"
+  Then I should see "Harrow Elders Association" before "Harrow Bereavement Counselling"
+  And I should see "Harrow Age UK" before "Harrow Elders Association"
   When I update the "Harrow Elders Association"
   And I search for "Harrow"
   Then I should see "Harrow Elders Association" before "Harrow Bereavement Counselling"
