@@ -25,4 +25,4 @@ Feature: Web page owned by each charity
 
   Scenario: display charity title in a visible way
     Given I am on the charity page for "Friendly"
-    Then I should see "Friendly" < tagged > with "h1"
+    Then I should see "Friendly" < tagged > with "h3"

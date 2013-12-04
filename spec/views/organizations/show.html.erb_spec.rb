@@ -12,8 +12,8 @@ describe "organizations/show.html.erb" do
   end
 
   context 'page styling' do
-    it 'organization name should be wrapped in h1 tag' do
-      rendered.should have_css('h1', :text => organization.name)
+    it 'organization name should be wrapped in h3 tag' do
+      rendered.should have_css('h3', :text => organization.name)
     end
   end
 
