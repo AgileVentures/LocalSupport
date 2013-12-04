@@ -43,6 +43,10 @@ describe OrganizationsController do
         Category.should_receive(:html_drop_down_options).and_return(category_html_options)
       end
 
+      it "orders search results by most recent"do
+        Organization.should_receive(:order_by_most_recent).and_return(result)
+        get :search, :q => 'test'
+      end
       it "sets up appropriate values for view vars: query_term, organizations and json" do
         Organization.should_receive(:search_by_keyword).with('test').and_return(result)
         result.should_receive(:filter_by_category).with('1').and_return(result)
@@ -126,7 +130,7 @@ describe OrganizationsController do
       json='my markers'
       result.should_receive(:to_gmaps4rails).and_return(json)
       Category.should_receive(:html_drop_down_options).and_return(category_html_options)
-      Organization.should_receive(:order).with('updated_at DESC').and_return(result)
+      Organization.should_receive(:order_by_most_recent).and_return(result)
       result.stub_chain(:page, :per).and_return(result)
       get :index
       assigns(:organizations).should eq(result)
