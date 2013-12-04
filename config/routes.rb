@@ -7,7 +7,6 @@ LocalSupport::Application.routes.draw do
   #match 'pages/disclaimer' => 'pages#disclaimer'
   #match 'pages/aboutus' => 'pages#aboutus'
   #match 'pages/contact' => 'pages#contact'
-  # TODO: set up this: match '/404' => ''...
   resources :pages
   resources :organizations
   resources :organizations do
@@ -20,10 +19,6 @@ LocalSupport::Application.routes.draw do
   get ':id', to: 'pages#show', as: :page
   put ':id', to: 'pages#update', as: :page
   delete ':id', to: 'pages#destroy', as: :page
-
-  #get '/404', :to => 'errors#not_found'
-  #get '/422', :to => 'errors#unacceptable'
-  #get '/500', :to => 'errors#internal_error'
 
 
   # The priority is based upon order of creation:
