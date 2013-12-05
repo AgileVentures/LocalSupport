@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "organizations/show.html.erb" do
 
   let(:organization) do
-    stub_model Organization, :name => 'Friendly', :address => "12 pinner rd", :telephone => "1234"
+    stub_model Organization, :name => 'Friendly', :address => "12 pinner rd", :telephone => "1234", :email => 'admin@friendly.org'
   end
 
   before(:each) do
@@ -14,6 +14,10 @@ describe "organizations/show.html.erb" do
   context 'page styling' do
     it 'organization name should be wrapped in h3 tag' do
       rendered.should have_css('h3', :text => organization.name)
+    end
+
+    it 'organization email should be a mailto hyperlink' do
+      rendered.should have_css("a[href='mailto:#{organization.email}']")
     end
   end
 

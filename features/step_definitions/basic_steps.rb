@@ -315,6 +315,10 @@ Then(/^I should see "(.*?)" < linked > to "(.*?)"$/) do |text, url|
   links[text].should == url
 end
 
+Then(/^I should see a mail-link to "([^"]*)"$/) do |email|
+  page.should have_css("a[href='mailto:#{email}']")
+end
+
 When /^I approve "(.*?)"$/ do |email|
   visit users_path
   page.body.should have_content(email)
