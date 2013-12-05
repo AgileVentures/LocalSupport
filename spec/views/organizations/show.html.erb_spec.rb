@@ -32,7 +32,6 @@ describe "organizations/show.html.erb" do
     end
 
     it 'labels for postcode/email should be missing' do
-      debugger
       rendered.should_not have_content('Postcode:')
       rendered.should_not have_content('Email:')
     end
