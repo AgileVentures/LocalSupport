@@ -29,5 +29,5 @@ Feature: Web page owned by each charity
 
   Scenario: show organization e-mail as link
     Given I am on the charity page for "Friendly"
-    Then I should see a maillink to "admin@friendly.xx"
+    Then I should see a mail-link to "admin@friendly.xx"
     #Then I should see "admin@friendly.xx" < tagged > with 'a href="mailto:admin@friendly.xx"'
