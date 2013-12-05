@@ -4,13 +4,13 @@
   <%= @organization.name %>
 </h3>
 
-<% if @organization.postcode %>
+<% unless @organization.postcode.blank? %>
     <p>
       <b>Postcode:</b>
       <%= @organization.postcode %>
     </p>
 <% end %>
-<% if @organization.email %>
+<% unless @organization.email.blank? %>
     <p>
       <b>Email:</b>
       <a href="mailto:<%= @organization.email %>"><%= @organization.email %></a>
