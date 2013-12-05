@@ -32,23 +32,6 @@ describe OrganizationsController do
   end
   
   describe "GET search" do
-    context 'temporary marian testing' do
-      let(:json) {'my markers'}
-      let(:result) {[double_organization]}
-      let(:category){double('Category')}
-      before(:each) do
-        result.stub(:to_gmaps4rails).and_return(json)
-        result.stub_chain(:page, :per).and_return(result)
-        Category.should_receive(:html_drop_down_options).and_return(category_html_options)
-      end
-      it "orders search results by most recent" do
-        Organization.should_receive(:order_by_most_recent).and_return(result)
-        result.stub_chain(:search_by_keyword, :filter_by_category).with('test').with(nil).and_return(result)
-        get :search, :q => 'test'
-        assigns(:organizations).should eq([double_organization])
-      end
-    end
-
 
     context 'setting appropriate view vars for all combinations of input' do
       let(:json) {'my markers'}
@@ -60,6 +43,12 @@ describe OrganizationsController do
         Category.should_receive(:html_drop_down_options).and_return(category_html_options)
       end
 
+      it "orders search results by most recent" do
+        Organization.should_receive(:order_by_most_recent).and_return(result)
+        result.stub_chain(:search_by_keyword, :filter_by_category).with('test').with(nil).and_return(result)
+        get :search, :q => 'test'
+        assigns(:organizations).should eq([double_organization])
+      end
 
       it "sets up appropriate values for view vars: query_term, organizations and json" do
         Organization.should_receive(:search_by_keyword).with('test').and_return(result)
