@@ -4,15 +4,18 @@
   <%= @organization.name %>
 </h3>
 
-<p>
-  <b>Postcode:</b>
-  <%= @organization.postcode %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <a href="mailto:<%= @organization.email %>"><%= @organization.email %></a>
-</p>
+<% if @organization.postcode %>
+    <p>
+      <b>Postcode:</b>
+      <%= @organization.postcode %>
+    </p>
+<% end %>
+<% if @organization.email %>
+    <p>
+      <b>Email:</b>
+      <a href="mailto:<%= @organization.email %>"><%= @organization.email %></a>
+    </p>
+<% end %>
 
 <p>
   <b>Description:</b>
