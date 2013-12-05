@@ -3,10 +3,7 @@ require 'spec_helper'
 describe "organizations/show.html.erb" do
 
   let(:organization) do
-    stub_model Organization, :name => 'Friendly', :address => "12 pinner rd", :telephone => "1234", :email => 'admin@friendly.org'
-  end
-  let(:organization2) do
-    stub_model Organization, :name => 'Friendly Clone', :address => "12 pinner rd", :telephone => "1234",
+    stub_model Organization, :name => 'Friendly', :address => "12 pinner rd", :telephone => "1234", :email => 'admin@friendly.org', :postcode => 'HA1 4HZ'
   end
 
   before(:each) do
@@ -14,7 +11,7 @@ describe "organizations/show.html.erb" do
     render
   end
 
-  context 'page styling' do
+  context 'page styling for organization with full info' do
     it 'organization name should be wrapped in h3 tag' do
       rendered.should have_css('h3', :text => organization.name)
     end
@@ -23,10 +20,22 @@ describe "organizations/show.html.erb" do
       rendered.should have_css("a[href='mailto:#{organization.email}']")
     end
 
-    it 'label should not show if field is empty' do
-      rendered.should_not have_content(organization2.postcode)
-      rendered.should_not have_content(organization2.postcode)
+    it 'labels for postcode/email should be present' do
+      rendered.should have_content('Postcode:')
+      rendered.should have_content('Email:')
     end
+  end
+
+  context 'page styling for organization with missing info' do
+    let(:organization) do
+      stub_model Organization, :name => 'Friendly Clone', :address => "12 pinner rd", :telephone => "1234"
+    end
+
+    it 'labels for postcode/email should be missing' do
+      rendered.should_not have_content('Postcode:')
+      rendered.should_not have_content('Email:')
+    end
+
   end
 
   context "some information is private" do
