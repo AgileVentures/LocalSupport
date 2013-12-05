@@ -306,7 +306,8 @@ Then(/^I should see "(.*?)" < (.*?) >$/) do |text, tag|
 end
 
 Then(/^I should see "(.*?)" < tagged > with "(.*?)"$/) do |text, tag|
-  collect_tag_contents(page.body, tag).should include(text)
+  page.should have_css(tag, :text => text)
+  #collect_tag_contents(page.body, tag).should include(text)
 end
 
 Then(/^I should see "(.*?)" < linked > to "(.*?)"$/) do |text, url|
