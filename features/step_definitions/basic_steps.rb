@@ -186,10 +186,6 @@ Then /^I should( not)? see a link with text "([^"]*?)"$/ do |negate, link|
   end
 end
 
-Then /^I should not see "(.*?)"$/ do |text|
-  page.should_not have_content text
-end
-
 Then /^I should( not)? see a new organizations link/ do  |negate|
   #page.should_not have_link "New Organization", :href => new_organization_path
   #page.should_not have_selector('a').with_attribute href: new_organization_path
@@ -197,9 +193,14 @@ Then /^I should( not)? see a new organizations link/ do  |negate|
   expect(page).send(expectation_method, have_xpath("//a[@href='#{new_organization_path}']"))
 end
 
-Then /^I should see "((?:(?!before|").)+)"$/ do |text|
-  page.should have_content text
+Then /^I should( not)? see "((?:(?!before|").)+)"$/ do |negate, text|
+  expectation_method = negate ? :not_to : :to
+  expect(page).send(expectation_method, have_content(text))
 end
+
+#Then /^I should not see "(.*?)"$/ do |text|
+#  page.should_not have_content text
+#end
 
 Then(/^I should( not)? see a link or button "(.*?)"$/) do |negate, link|
   expectation_method = negate ? :not_to : :to
