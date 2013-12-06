@@ -72,7 +72,7 @@
                 </li>
             <% else %>
                 <li class="dropdown">
-                  <a href="#" id="<%= current_user.email %>" class="dropdown-toggle" data-toggle="dropdown" title="Some SEO stuff....">
+                  <a href="#" id="<%= current_user.email %>" class="dropdown-toggle" data-toggle="dropdown" title="Logged in as: <%= current_user.email %>">
                     <i class="icon-user icon-xxlarge"> </i> <%= current_user.email %>
                     <b class="caret"></b>
                   </a>
