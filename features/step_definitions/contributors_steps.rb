@@ -1,9 +1,8 @@
 Given(/^the following contributors exist:$/) do |c_table|
   contributors = Array.new
   c_table.hashes.each do |contributor|
-    debugger
     contributors << contributor
-   #debugger
   end
-
+  stub_request(:get, 'https://api.github.com/repos/tansaku/LocalSupport/contributors')
+  .to_return(:body => contributors.to_json)
 end
