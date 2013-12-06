@@ -3,7 +3,7 @@ Feature: As a site administrator
 
 Background:
   Given the following contributors exist:
-  | login  | avatar_url                    |  html_url                | contributions |
+  | login  | avatar_url                    | html_url                 | contributions |
   | thomas | http://example.com/thomas.png | http://github.com/thomas | 10            |
   | john   | http://example.com/john.png   | http://github.com/john   | 10            |
 
