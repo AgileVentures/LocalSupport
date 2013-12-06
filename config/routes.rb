@@ -4,6 +4,7 @@ LocalSupport::Application.routes.draw do
   devise_for :users
 
   match 'organizations/search' => 'organizations#search'
+  get 'contributors' => 'contributors#show'
   #match 'pages/disclaimer' => 'pages#disclaimer'
   #match 'pages/aboutus' => 'pages#aboutus'
   #match 'pages/contact' => 'pages#contact'
