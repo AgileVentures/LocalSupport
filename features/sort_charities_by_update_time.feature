@@ -7,14 +7,21 @@ Feature: Order organizations by most recently updated
 Background: organizations have been added to database
   
   Given the following organizations exist:
-  | name                            | updated_at | address |
+  | name                            | updated_at            | address        |
   | Harrow Bereavement Counselling  | "2013-01-23 15:54:34" | 34 pinner road |
-  | Indian Elders Association       | "2013-02-23 15:54:34" | 64 pinner road |
-  | Age UK                          | "2013-03-23 15:54:34" | 84 pinner road |
+  | Harrow Elders Association       | "2013-02-23 15:54:34" | 64 pinner road |
+  | Harrow Age UK                   | "2013-03-23 15:54:34" | 84 pinner road |
 
-  Scenario: Most recently updated charity shows at the top of the list 
-  Given I update the "Indian Elders Association" 
+Scenario: Most recently updated charity shows at the top of the list 
+  Given I update the "Harrow Elders Association" 
   And I am on the home page
-  Then I should see "Indian Elders Association" before "Age UK"
-  And I should see "Age UK" before "Harrow Bereavement Counselling"
+  Then I should see "Harrow Elders Association" before "Age UK"
+  And I should see "Harrow Age UK" before "Harrow Bereavement Counselling"
  
+Scenario: Most recently updated charity shows at the top of the list 
+  Given I am on the home page
+  Then I should see "Harrow Elders Association" before "Harrow Bereavement Counselling"
+  And I should see "Harrow Age UK" before "Harrow Elders Association"
+  When I update the "Harrow Elders Association"
+  And I search for "Harrow"
+  Then I should see "Harrow Elders Association" before "Harrow Bereavement Counselling"

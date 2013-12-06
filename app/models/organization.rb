@@ -15,6 +15,7 @@ class Organization < ActiveRecord::Base
   # prevents mass assignment on other fields not in this list
   attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info
   accepts_nested_attributes_for :users
+  scope :order_by_most_recent, order('updated_at DESC')
 
   # if we removed check_process => false saving the model would not trigger a geocode
   #after_commit :process_geocoding
