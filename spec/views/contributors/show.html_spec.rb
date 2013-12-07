@@ -15,7 +15,6 @@ describe 'contributors/show.html.erb' do
     @contributors.each do |contributor|
        rendered.should have_content contributor['login']
        avatar = contributor['avatar_url']
-       debugger
        rendered.should have_css("img[src='#{avatar}']")
        rendered.should have_link("Github Profile", href: contributor['html_url'])
        rendered.should have_content("Project Contributions: #{contributor['contributions']}")
