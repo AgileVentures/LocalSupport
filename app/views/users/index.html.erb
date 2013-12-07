@@ -13,7 +13,7 @@
           <td><%= user.email %></td>
           <td><%= user.organization.name if user.organization %></td>
           <td><%= user.pending_organization.name if user.pending_organization %></td>
-          <td><%= link_to('Approve', update_user_path(user.id), :method => :put) if user.pending_organization %></td>
+          <td><%= link_to('Approve', user_path(user), :method => :put) if user.pending_organization %></td>
         </tr>
       <% end %>
     </table>
