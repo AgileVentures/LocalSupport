@@ -3,12 +3,12 @@
 <ul class="media-list">
 <% @contributors.each do | contributor |%>
     <li class="media">
-      <a class="pull-left" href="#">
+      <a class="pull-left" href="#" target="_blank">
       <img class="media-object img-rounded" src="<%= contributor['avatar_url'] %>" style="width:75px;height:75px">
       </a>
         <div class="media-body">
         <h4 class="media-heading"><%= contributor['login'] %></h4>
-        <a href="<%= contributor['html_url'] %>">Github Profile</a>
+        <a href="<%= contributor['html_url'] %>" target="_blank">Github Profile</a>
         <p class="media-heading">Project Contributions: <%= contributor['contributions'] %></p>
       </div>
     </li>
