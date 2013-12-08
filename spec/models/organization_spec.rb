@@ -32,9 +32,9 @@ describe Organization do
       no_http_org.donation_info.should include('http://')
     end
 
-    if 'a URL is left blank, no validation issuse arise' do
+    it 'a URL is left blank, no validation issues arise' do
+      expect { :save! }.to_not raise_error(ActiveRecord::RecordInvalid)
       no_http_org.save!
-      ActiveRecord.should_not raise(ActiveRecord::RecordInvalid)
     end
   end
 

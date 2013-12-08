@@ -7,6 +7,7 @@ class String
 end
 
 class Organization < ActiveRecord::Base
+  #validates_presence_of :website, :with => /http:\/\//
   validates_url :website, :prefferred_scheme => 'http://', :if => :website
   validates_url :donation_info, :prefferred_scheme => 'http://', :if => :donation_info
 
