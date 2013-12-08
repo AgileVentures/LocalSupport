@@ -295,6 +295,9 @@ GEM
       rack
       raindrops (~> 0.7)
     uri-handler (1.0.2)
+    url_validator (0.1.0)
+      addressable
+      rails
     warden (1.2.3)
       rack (>= 1.0)
     webmock (1.13.0)
@@ -349,5 +352,6 @@ DEPENDENCIES
   uglifier
   unicorn
   uri-handler
+  url_validator
   webmock
   webrat
