@@ -6,9 +6,9 @@ Feature: Web page owned by each charity
 
   Background: organizations have been added to database
     Given the following organizations exist:
-      | name           | description               | address        | postcode | telephone | website |
-      | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.org  |
-      | Friendly Clone | Quite Friendly!           | 30 pinner road | HA1 4HZ  | 020800010 |         |
+      | name           | description               | address        | postcode | telephone | website              | email             |
+      | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.org  | admin@friendly.xx  |
+      | Friendly Clone | Quite Friendly!           | 30 pinner road |          | 020800010 |                      |                    |
 
     Given the following users are registered:
       | email             | password | organization | confirmed_at |
@@ -22,3 +22,31 @@ Feature: Web page owned by each charity
   Scenario: get missing message when charity page has no charity website link available
     Given I am on the charity page for "Friendly Clone"
     Then I should see "We don't yet have a website link for them."
+
+  Scenario: display charity title in a visible way
+    Given I am on the charity page for "Friendly"
+    Then I should see "Friendly" < tagged > with "h3"
+
+  Scenario: show organization e-mail as link
+    Given I am on the charity page for "Friendly"
+    Then I should see a mail-link to "admin@friendly.xx"
+
+  Scenario Outline: show labels if field is present
+    Given I am on the charity page for "Friendly"
+    Then I should see "<label>"
+  Examples:
+    | label    |
+    |Postcode  |
+    |Email     |
+
+  Scenario Outline: hide labels if field is empty
+    Given I am on the charity page for "Friendly Clone"
+    Then I should not see "<label>"
+    Examples:
+    | label    |
+    |Postcode  |
+    |Email     |
+
+
+
+
