@@ -56,33 +56,63 @@ describe UsersController do
       end
     end
   end
+
   describe 'GET index to view pending users' do
     before(:each) do
       @user = double("User")
       request.env['warden'].stub :authenticate! => @user
     end
 
-    it 'non-admins get redirected away' do
-      @user.stub(:admin?).and_return(false)
-      controller.stub(:current_user).and_return(@user)
-      get :index
-      response.should redirect_to root_path
-    end
-    it 'shows a message in the flash when non-admin is redirected to root path' do
-      @user.stub(:admin?).and_return(false)
-      controller.stub(:current_user).and_return(@user)
-      get :index
-      expect(flash[:notice]).to have_content("You must be signed in as an admin to perform this action!")
-    end
-    it 'assigns @users with all users' do
-      @user.stub(:admin?).and_return(true)
-      controller.stub(:current_user).and_return(@user)
-      regular_user = double("User")
-      regular_user.stub(:pending_organization_id=).with('5')
+    context "user signed in" do
+      before(:each) do
+        controller.stub(:current_user).and_return(@user)
+      end
 
-      User.should_receive(:all).and_return([regular_user])
-      get :index
-      assigns(:users).should == [regular_user]
+      context "as admin" do
+        before(:each) do
+          @user.stub(:admin?).and_return(true)
+        end
+
+        it "assigns all users to @users" do
+          user_double = double("User")
+          User.stub(:all).and_return([user_double])
+          get :index
+          expect(assigns(:users)).to eql([user_double])
+        end
+
+        it "renders the index template" do
+          get :index
+          expect(response).to render_template("index")
+        end
+      end
+
+      context "as non-admin" do
+        before(:each) do
+          @user.stub(:admin?).and_return(false)
+        end
+
+        it "redirects user to root and flashes a notice" do
+          get :index
+          response.should redirect_to root_path
+        end
+
+        it "flashes a relevant notice" do
+          get :index
+          expect(flash[:notice]).to have_content("You must be signed in as an admin to perform this action!")
+        end
+      end
+    end
+
+    context "user not signed in" do
+      it "redirects user to root and flashes a notice" do
+        get :index
+        response.should redirect_to root_path
+      end
+
+      it "flashes the relevant notice" do
+        get :index
+        expect(flash[:notice]).to have_content("You must be signed in as an admin to perform this action!")
+      end
     end
   end
 end
