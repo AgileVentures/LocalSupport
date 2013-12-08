@@ -7,7 +7,8 @@ class String
 end
 
 class Organization < ActiveRecord::Base
-  validates_url :website, :prefferred_scheme => 'http://'
+  validates_url :website, :prefferred_scheme => 'http://', :if => :website
+  validates_url :donation_info, :prefferred_scheme => 'http://', :if => :donation_info
 
   # http://stackoverflow.com/questions/10738537/lazy-geocoding
   acts_as_gmappable :check_process => false, :process_geocoding => :run_geocode?

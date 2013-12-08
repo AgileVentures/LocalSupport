@@ -24,6 +24,20 @@ describe Organization do
     @org3.save!
   end
 
+  context 'validating URLs' do
+    subject(:no_http_org) { FactoryGirl.build(:organization, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate') }
+
+    it 'if lacking protocol, http is prefixed to URL when saved' do
+      no_http_org.save!
+      no_http_org.donation_info.should include('http://')
+    end
+
+    if 'a URL is left blank, no validation issuse arise' do
+      no_http_org.save!
+      ActiveRecord.should_not raise(ActiveRecord::RecordInvalid)
+    end
+  end
+
   context 'adding charity admins by email' do
     it 'handles a non-existent email with an error' do
       expect(@org1.update_attributes_with_admin({:admin_email_to_add => 'nonexistentuser@example.com'})).to be_false
