@@ -75,3 +75,8 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 #  ActionMailer::Base.deliveries.clear
 #  block.call
 #end
+
+# Aruba working directory (default: Aruba creates tmp/aruba)
+Before do
+  @dirs = ["#{Rails.root.to_s}"]
+end

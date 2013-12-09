@@ -17,8 +17,8 @@ Feature: targeted email addresses
   Scenario: Rake task is run
     Given I run the "db:target_emails" rake task located at "tasks/target_emails"
     Then a file named "db/target_emails.csv" should exist
-    And the file "db/target_emails.csv" should contain "admin@mars.com"
-    And the file "db/target_emails.csv" should contain "admin@dogs.com"
+    And the file "db/target_emails.csv" should contain "admin@cats.org"
+    And the file "db/target_emails.csv" should contain "admin@mars.gov"
     And the file "db/target_emails.csv" should not contain "freds_boss@dogs.com"
     
 
