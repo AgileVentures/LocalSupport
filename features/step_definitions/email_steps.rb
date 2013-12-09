@@ -21,3 +21,18 @@ Given(/^I import emails from "(.*?)"$/) do |file|
   @rake['db:import:emails'].invoke(file)
 end
 
+# attemping to copy https://github.com/mtc2013/LocalSupport/blob/targeted_invites/features/step_definitions/email_steps.rb
+require 'rake'
+Given(/^I run the "(.*?)" rake task located at "(.*?)"$/) do |task, loc|
+  @rake = Rake::Application.new
+  Rake.application = @rake
+  # HACK TO BE FIXED.
+  # This require fails second time around (usually in cucumber batch test)
+  # because file is added to loaded list, and then can't be re-required
+  # however this has side effect of not adding the files tasks to @rake
+  # by explicitly overriding the loaded list we force a reload and get the
+  # tasks pulled in - not sure what other side effects there might be
+  Rake.application.rake_require loc, ['lib/'], ''
+  Rake::Task.define_task(:environment)
+  @rake[task].invoke
+end
