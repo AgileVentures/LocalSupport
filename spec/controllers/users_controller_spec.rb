@@ -60,7 +60,6 @@ describe UsersController do
   describe 'GET index to view pending users' do
     before(:each) do
       @user = double("User")
-      request.env['warden'].stub :authenticate! => @user
     end
 
     context "user signed in" do
@@ -104,6 +103,10 @@ describe UsersController do
     end
 
     context "user not signed in" do
+      before(:each) do
+        controller.stub(:current_user).and_return(nil)
+      end
+
       it "redirects user to root and flashes a notice" do
         get :index
         response.should redirect_to root_path
