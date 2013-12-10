@@ -18,7 +18,7 @@ echo -n "Enter password to be used for sudo commands:"
 read -s password
 
 # Function to issue sudo command with password
-function sudo {
+function sudo-pw {
     echo $password | sudo -S $@
 }
 
