@@ -1,18 +1,14 @@
 #!/bin/bash
 # This script is designed for Ubuntu 12.04
-# Once you have forked and cloned the repo you can run this script to set it up
-# cd LocalSupport and
-# run with . <filename>.sh
 
 # OPTIONS: Useful if you have to rerun the script after an error
 # NOTE: Most things are ok to re-run except possibly DB create
 #       Db seed tasks and DB peer authentication fix
 #   no_rvm_ruby - Do not try to update RVM and Ruby
 #   no_package - Do not install aditional packages
-#   no_bundle - Do not run bundle and selenium installs
-#   no_peer_fix - Do not apply peer fix to postgre config
-#   no_db_create - Do not create database, useful if DB exists
-#   no_db_seed - Do not run seeding command, useful if already seeded
+#   remove_libreoffice - Removes LibreOffice from the VM
+#   install_vim - Installs VIM editor
+#   install_emacs - Installs EMACS editor
 
 # Get password to be used with sudo commands
 # Script still requires password entry during rvm and heroku installs
@@ -60,18 +56,18 @@ touch ~/.bash_profile
 echo "source ~/.profile" >> ~/.bash_profile
 
 # Install RVM and ruby 1.9.3 note: may take a while to compile ruby
-sudo-pw apt-get install -y curl
-set +v
-\curl -L https://get.rvm.io | bash -s stable --ruby=1.9.3
-source ~/.rvm/scripts/rvm
+if [[ $@ != *no_rvm_ruby* ]]; then
+  sudo-pw apt-get install -y curl
+  set +v
+  \curl -L https://get.rvm.io | bash -s stable --ruby=1.9.3
+  source ~/.rvm/scripts/rvm
 
-# Update RVM and Ruby
-#if [[ $@ != *no_rvm_ruby* ]]; then
-#  echo Y | rvm get stable || { error "update RVM"; return 1; }
-#  rvm reload || error "reload RVM first time"
-#  echo Y | rvm upgrade 1.9.3 || { error "upgrade Ruby"; return 1; }
-#  rvm reload || error "reload RVM second time"
-#fi
+  # Update RVM and Ruby
+  #  echo Y | rvm get stable || { error "update RVM"; return 1; }
+  #  rvm reload || error "reload RVM first time"
+  #  echo Y | rvm upgrade 1.9.3 || { error "upgrade Ruby"; return 1; }
+  #  rvm reload || error "reload RVM second time"
+fi
 
 # reload profile to set paths for gem and rvm commands
 source ~/.bash_profile
@@ -83,6 +79,13 @@ rvm rvmrc warning ignore allGemfiles
 # Install sqlite3 dev
 # TODO: Reporting already installed
 sudo-pw apt-get -y install sqlite3 libsqlite3-dev
+
+# Optionally remove LibreOffice
+if [[ $@ == *remove_libreoffice* ]]; then
+  sudo-pw apt-get remove --purge libreoffice*
+  sudo-pw apt-get clean
+  sudo-pw apt-get autoremove
+fi
 
 # Skipping typo specific installs
 # Install required libs and optional feedvalidator for typo homework
@@ -262,7 +265,6 @@ set +v
 # Display completion notice
 echo '**** NOTICE ****'
 echo 'VM environment is ready for application installation.'
-echo '- Reboot'
 echo '- Fork the http://github.com/tansaku/LocalSupport repo (fork button at top right of github web interface)'
 echo '- Clone your new forked repo here:'
 echo '    git clone https://github.com/<yourname>/LocalSupport.git'
