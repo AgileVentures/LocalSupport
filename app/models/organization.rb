@@ -8,8 +8,8 @@ end
 
 class Organization < ActiveRecord::Base
   #validates_presence_of :website, :with => /http:\/\//
-  validates_url :website, :prefferred_scheme => 'http://', :if => :website
-  validates_url :donation_info, :prefferred_scheme => 'http://', :if => :donation_info
+  validates_url :website, :prefferred_scheme => 'http://', :if => Proc.new{|website| website.present?}
+  validates_url :donation_info, :prefferred_scheme => 'http://', :if => Proc.new{|donation_info| donation_info.present?}
 
   # http://stackoverflow.com/questions/10738537/lazy-geocoding
   acts_as_gmappable :check_process => false, :process_geocoding => :run_geocode?
@@ -28,6 +28,8 @@ class Organization < ActiveRecord::Base
     ## http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
     address_changed? or (address.present? and not_geocoded?)
   end
+
+
 
   def not_geocoded?
     latitude.blank? and longitude.blank?
