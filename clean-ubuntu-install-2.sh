@@ -52,7 +52,7 @@ fi
 
 # Apply peer authentication fix
 if [[ $@ != *no_peer_fix* ]]; then
-  sudo sed -i 's/local[ ]*all[ ]*all[ ]*peer/local all all peer map=basic/' /etc/postgresql/9.1/main/pg_hba.conf || { error "apply peer fix part 1"; return 1; }
+  sudo sed -i 's/local[ ]*all[ ]*postgres[ ]*peer/local all postgres peer map=basic/' /etc/postgresql/9.1/main/pg_hba.conf || { error "apply peer fix part 1"; return 1; }
   sudo sed -i "$ a\basic $USER postgres" /etc/postgresql/9.1/main/pg_ident.conf || { error "apply peer fix part 2"; return 1; }
   # Restart postgresql to apply changes
   sudo /etc/init.d/postgresql restart
