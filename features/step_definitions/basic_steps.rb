@@ -85,6 +85,15 @@ Given /^I update "(.*?)" charity address to be "(.*?)"( when Google is indispose
   }
 end
 
+Given /^I update "(.*?)" charity website to be "(.*?)"$/ do |name, url|
+  steps %Q{
+    Given I am on the charity page for "#{name}"
+    And I follow "Edit"
+    And I edit the charity website to be "#{url}"
+    And I press "Update Organisation"
+  }
+end
+
 Given /^I have created a new organization$/ do
   steps %Q{
     Given I am on the home page
@@ -102,11 +111,23 @@ Given /^I furtively update "(.*?)" charity address to be "(.*?)"$/ do |name, add
   }
 end
 
+Given /^I edit the charity website to be "(.*?)"$/ do |url|
+  fill_in('organization_website',:with => url)
+end
+
 When /^I edit the charity address to be "(.*?)"$/ do |address|
   stub_request_with_address(address)
   fill_in('organization_address',:with => address)
 end
 
+Then /^the website link for "(.*?)" should have a protocol$/ do |name|
+  steps %{
+    Given I am on the charity page for "#{name}"
+  }
+   website = Organization.find_by_name(name).website
+   website.should =~ /^http\:\/\//
+   expect(page).to have_selector("a[href='#{website}']")
+end
 
 And /^"(.*?)" charity address is "(.*?)"$/ do |name, address|
   org = Organization.find_by_name(name)

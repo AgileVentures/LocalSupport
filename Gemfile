@@ -85,4 +85,7 @@ gem 'redcarpet'
 # Adding font awesome
 gem "font-awesome-rails"
 
+# validating organization website URLs
+gem "url_validator"
+
 
