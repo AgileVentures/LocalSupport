@@ -1,7 +1,7 @@
 Feature: Manage charity admins
-As a site admin
-So that users can keep their charity information up to date
-I want to manage the administrators associated with charities
+  As a site admin
+  So that users can keep their charity information up to date
+  I want to manage the administrators associated with charities
 
 Background: organizations have been added to database
     Given the following organizations exist:
@@ -14,14 +14,14 @@ Background: organizations have been added to database
       | registered-user-2@example.com | pppppppp | false | 2007-01-01  10:00:00 |           |
 
  Scenario: Existing charity admin appears in form when editing charity
-     Given I am signed in as a admin
-     And I am on the edit charity page for "Friendly"
-     Then I should see "registered-user-1@example.com" in the charity admin email
+   Given I am signed in as a admin
+   And I am on the edit charity page for "Friendly"
+   Then I should see "registered-user-1@example.com" in the charity admin email
 
  Scenario: No admin message displayed when charity has no admins
-     Given I am signed in as a admin
-     And I am on the edit charity page for "Friendly Clone"
-     Then I should see the no charity admins message
+   Given I am signed in as a admin
+   And I am on the edit charity page for "Friendly Clone"
+   Then I should see the no charity admins message
 
  Scenario: Cannot add non-existent user as charity admin
    Given I am signed in as a admin
