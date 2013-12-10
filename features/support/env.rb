@@ -3,7 +3,9 @@
 # newer version of cucumber-rails. Consider adding your own code to a new file 
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
-
+require 'capybara'
+require 'capybara-webkit'
+require 'capybara/cucumber'
 require 'cucumber/rails'
 require "rack_session_access/capybara"
 require 'ruby-debug'

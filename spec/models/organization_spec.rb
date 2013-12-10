@@ -61,9 +61,9 @@ describe Organization do
   end
 
   it 'finds all orgs in a particular category' do
-    expect(Organization.filter_by_category("1")).not_to include @org1
-    expect(Organization.filter_by_category("1")).to include @org2
-    expect(Organization.filter_by_category("1")).to include @org3
+    expect(Organization.filter_by_category(@category1.id)).not_to include @org1
+    expect(Organization.filter_by_category(@category1.id)).to include @org2
+    expect(Organization.filter_by_category(@category1.id)).to include @org3
   end
 
   it 'finds all orgs when category is nil, and returns ActiveRecord::Relation to keep kaminari happy' do
@@ -92,7 +92,7 @@ describe Organization do
   end
 
   it 'searches by keyword and filters by category and has results' do
-    result = Organization.search_by_keyword("Indian").filter_by_category("1")
+    result = Organization.search_by_keyword("Indian").filter_by_category(@category1.id)
     expect(result).to include @org2
     expect(result).not_to include @org1, @org3
   end
@@ -104,7 +104,7 @@ describe Organization do
   end
 
   it 'filters by category when searches by keyword is nil' do
-    result = Organization.search_by_keyword(nil).filter_by_category("1")
+    result = Organization.search_by_keyword(nil).filter_by_category(@category1.id)
     expect(result).to include @org2, @org3
     expect(result).not_to include @org1
   end

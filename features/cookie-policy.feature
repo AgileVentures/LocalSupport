@@ -10,7 +10,7 @@ Feature: Approve cookies
     Given I have not approved cookie policy
     Then I should see an approve cookie policy message
 
-  Scenario:
+  Scenario: Do not show the cookie policy alert
     Given I have approved cookie policy
     Then I should not see an approve cookie policy message
 

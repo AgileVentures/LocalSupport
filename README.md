@@ -9,7 +9,8 @@ Installation and other technical issues are being gathered in the github wiki:
 
 [Installation notes](https://github.com/tansaku/LocalSupport/wiki/installation)
 
-Travis C. I. [![Build Status](https://travis-ci.org/tansaku/LocalSupport.png)](https://travis-ci.org/tansaku/LocalSupport)
+* Travis C. I. [![Build Status](https://travis-ci.org/tansaku/LocalSupport.png)](https://travis-ci.org/tansaku/LocalSupport)
+* CodeClimate [![Code Climate](https://codeclimate.com/github/tansaku/LocalSupport.png)](https://codeclimate.com/github/tansaku/LocalSupport)
 
 If you encounter any issues or trouble, please search the issues tracker, and if necessary open a new issue describing the problem in detail including information about platforms, versions etc. 
 

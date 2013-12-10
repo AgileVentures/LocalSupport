@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "layouts/application.html.erb" do
+describe "layouts/application.html.erb", :type => :feature do
   context "no user signed-in" do
 
     before :each do
@@ -11,7 +11,12 @@ describe "layouts/application.html.erb" do
       rendered.should contain 'Harrow Community Network'
     end
 
-    it "renders Organization sign in form" do
+    it "renders site tag line" do
+      render
+      rendered.should contain 'Search for local voluntary and community organisations'
+    end
+
+    it 'renders Organization sign in form' do
       render
       rendered.should have_selector("form", :id => "loginForm")
     end
@@ -47,6 +52,7 @@ describe "layouts/application.html.erb" do
       rendered.should have_css("#menuLogin a[href=\"#{new_user_password_path}\"]")
     end
 
+<<<<<<< HEAD
     it 'renders a cookies choice message when cookies have not been accepted' do
       view.stub(:cookies_accepted?).and_return(false)
       render
@@ -58,10 +64,36 @@ describe "layouts/application.html.erb" do
       rendered.should have_xpath("//a[@href=\"#{cookies_deny_path}\"]")
     end
 
+=======
+    it 'login form should be visible', :js => true do
+      render
+      rendered.should_not have_selector("form#loginForm", style: "height: 0px;")
+    end
+
+    it 'should not have any flash messages' do
+      render
+      rendered.should_not have_selector("div.alert")
+    end
+
+    it 'should display flash messages when successful' do
+      view.stub(:flash).and_return([[:notice,"Yes, we have been successful!!!!!"]])
+      render
+      rendered.should have_selector("div.alert")
+      rendered.should have_content("Yes, we have been successful!!!!!")
+      rendered.should have_selector("div.alert-success")
+    end
+
+    it 'should display flash messages when failing' do
+      view.stub(:flash).and_return([[:error,"No, no, no!"]])
+      render
+      rendered.should have_selector("div.alert")
+      rendered.should have_content("No, no, no!")
+      rendered.should have_selector("div.alert-error")
+    end
+>>>>>>> 85397e9a63067040c0fc9277b8a0ddf5feed7dce
 
   end
   context "user signed-in" do
-
     before :each do
       view.stub(:user_signed_in?).and_return(true)
       user = double(User)
@@ -77,7 +109,5 @@ describe "layouts/application.html.erb" do
       render
       rendered.should have_css("li.dropdown ul.dropdown-menu li a[href=\"#{destroy_user_session_path}\"]")
     end
-
-
   end
 end

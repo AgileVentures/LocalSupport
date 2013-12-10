@@ -1,10 +1,9 @@
 <header>
 
-  <div class="navbar  navbar-fixed-top">
+  <div id="navbar" class="navbar  navbar-fixed-top">
     <div class="navbar-inner">
-      <div class="container">
+      <div id="banner" class="container">
         <%= link_to(image_tag("HCN-long.png", :class => "img-responsive" ), root_path) %>
-
       </div>
       <div class="container">
         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -12,7 +11,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a href="/" class="brand" title="Some SEO stuff....">LocalSupport</a>
+        <a href="/" class="brand" title="Search for local voluntary and community organisations">Search for local voluntary and community organisations</a>
 
         <div class="nav-collapse collapse">
 
@@ -20,13 +19,21 @@
             <% unless user_signed_in?%>
                 <li class="dropdown " id="menuLogin">
                   <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
-                  <div class="dropdown-menu" style="padding:17px;">
-                    <label>Login:</label>
-                    <%= form_for(resource, :html => { :id => "loginForm" }, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-                        <div> <%= f.email_field :email, :autofocus => true, :placeholder => "you@example.com" %></div>
-
-                        <div><%= f.password_field :password, :placeholder => "password" %></div>
-
+                  <div class="dropdown-menu" id="login" style="padding:17px;">
+                    <%= form_for(resource, :class => "collapse", :html => { :id => "loginForm" }, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+                        <div>
+                          <label>Login:</label>
+                          <!--[if lt IE 9]>
+                          <label for="user_email">Enter email</label>
+                          <![endif]-->
+                          <%= f.email_field :email, :autofocus => true, :placeholder => "you@example.com" %>
+                        </div>
+                        <div>
+                          <!--[if lt IE 9]>
+                          <label for="user_password">Enter password</label>
+                          <![endif]-->
+                          <%= f.password_field :password, :placeholder => "password" %>
+                        </div>
                         <% if devise_mapping.rememberable? -%>
                             <div><%= f.check_box :remember_me %> <%= f.label :remember_me, :style => "display: inline;" %></div>
                         <% end -%>
@@ -35,22 +42,37 @@
 
                         <%= link_to "Forgot your password?", new_password_path(resource_name) %>
                     <% end %>
-                    <form><a href="#" title="Some SEO stuff..." data-toggle="collapse" data-target="#register">Sign-up..</a></form>
+
+                    <form>
+                    <%= link_to('New organisation? Sign-up..', '#', :id => 'toggle_link', :title =>'Click this link to Sign Up for an account', :data => {:toggle => :collapse, :target => '#register'})%>
+                    </form>
+
                     <div class="collapse" id="register">
-                    <%= form_for(resource, :class => "collapse", :html => { :id => "registerForm" }, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-                        <%= devise_error_messages! %>
+
+                      <%= form_for(resource, :class => "collapse", :html => { :id => "registerForm" }, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+                          <%= devise_error_messages! %>
+
+                          <!--[if lt IE 9]>
+                          <label for="user_password">Enter email</label>
+                          <![endif]-->
                           <%= f.email_field :email, :autofocus => true, :id => 'signup_email', :name => 'user[email]', :placeholder => "you@example.com" %>
+                          <!--[if lt IE 9]>
+                          <label for="user_password">Enter password</label>
+                          <![endif]-->
                           <%= f.password_field :password, :id => 'signup_password', :name => 'user[password]', :placeholder => "password" %>
+                          <!--[if lt IE 9]>
+                          <label for="user_password">Confirm password</label>
+                          <![endif]-->
                           <%= f.password_field :password_confirmation, :id => 'signup_password_confirmation', :placeholder => 'confirm password' %>
 
-                        <div><%= f.submit "Sign up", :id => 'signup', :class => "btn btn-primary" %></div>
-                    <% end %>
+                          <div><%= f.submit "Sign up", :id => 'signup', :class => "btn btn-primary" %></div>
+                      <% end %>
                     </div>
                   </div>
                 </li>
             <% else %>
                 <li class="dropdown">
-                  <a href="#" id="<%= current_user.email %>" class="dropdown-toggle" data-toggle="dropdown" title="Some SEO stuff....">
+                  <a href="#" id="<%= current_user.email %>" class="dropdown-toggle" data-toggle="dropdown" title="Logged in as: <%= current_user.email %>">
                     <i class="icon-user icon-xxlarge"> </i> <%= current_user.email %>
                     <b class="caret"></b>
                   </a>
@@ -69,3 +91,24 @@
 
 
 </header>
+
+<script>
+    $('a#toggle_link').on('click', function(e) {
+        e.preventDefault();
+        // Get all relevant elements
+        var $this = $(this);
+        var $link = $('a#toggle_link');
+        var $collapse1 = $this.closest('#login').find('#loginForm');
+        var $collapse2 = $this.closest('#register').find('#registerForm');
+        // Toggle the collapse of the forms
+        $collapse1.collapse('toggle');
+        $collapse2.collapse('toggle');
+        // Change the link text
+        if  ($link.text() == 'New organisation? Sign-up..') {
+            $link.text('Already a member? Login');
+        }
+        else {
+            $link.text('New organisation? Sign-up..');
+        }
+    });
+</script>

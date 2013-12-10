@@ -10,30 +10,18 @@ Background: organizations have been added to database
     | name             | address        |
     | Friendly Charity | 83 pinner road |
   Given the following pages exist:
-    | name       | permalink  | content |
-    | Disclaimer | disclaimer | We disclaim everything!  |
+    | name       | permalink  | content                                                   |
+    | 404        | 404        | We're sorry, but we couldn't find the page you requested! |
+    | Disclaimer | disclaimer | We disclaim everything!                                   |
 
-Scenario: the disclaimer page is accessible from the charity search page
-  Given I am on the charity search page
-  When I follow "Disclaimer"
-  Then I should see "We disclaim everything!"
+  Scenario Outline: the disclaimer page is accessible on all pages
+    Given I am on the <page>
+    When I follow "Disclaimer"
+    Then I should see "We disclaim everything!"
+  Examples:
+    | page                                |
+    | home page                           |
+    | charity search page                 |
+    | new charity page                    |
+    | charity page for "Friendly Charity" |
 
-Scenario: the disclaimer page is accessible from the charities page
-  Given I am on the home page
-  When I follow "Disclaimer"
-  Then I should see "We disclaim everything!"
-
-Scenario: the disclaimer page is accessible from the new charity page
-  Given I am on the new charity page
-  When I follow "Disclaimer"
-  Then I should see "We disclaim everything!"
-
-Scenario: the disclaimer page is accessible from the edit charity page for "Friendly Charity"
-  Given I am furtively on the edit charity page for "Friendly Charity"
-  When I follow "Disclaimer"
-  Then I should see "We disclaim everything!"
-
-Scenario: the disclaimer page is accessible from the charity page
-  Given I am on the charity page for "Friendly Charity"
-  When I follow "Disclaimer"
-  Then I should see "We disclaim everything!"

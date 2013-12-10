@@ -2,8 +2,8 @@ source 'http://rubygems.org'
 
 ruby '1.9.3'
 gem 'rails', '3.2.14'
+gem 'pg'
 gem 'devise', '3.0.3'
-
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -11,7 +11,6 @@ gem 'devise', '3.0.3'
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do
   gem 'metric_fu'
-  gem 'sqlite3'  
   gem 'database_cleaner', '1.0.1'
   gem 'launchy'
   gem 'simplecov'
@@ -23,7 +22,7 @@ end
 
 group :development do
   #gem 'ruby-debug19', :require => 'ruby-debug'
-  gem 'debugger'
+  gem 'debugger', '1.6.1'
   gem 'railroady'
 end
 
@@ -43,7 +42,6 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
   gem 'newrelic_rpm'
 end
 
@@ -85,7 +83,12 @@ gem 'unicorn'
 gem 'redcarpet'
 
 # Adding font awesome
+
 gem 'font-awesome-rails'
 
 # Cookie policy gem
 gem 'rack-policy'
+
+gem "font-awesome-rails"
+
+

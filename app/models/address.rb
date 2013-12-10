@@ -5,7 +5,7 @@ class Address < Struct.new(:value)
     postcode = ''
     match = value.to_s.match(/(.*)(,\s*(\w\w\d\s* \d\w\w))/)
     if match
-      if match.length == 4 
+      if match.length == 4
         address = match[1]
         postcode = match[3].to_s
       end

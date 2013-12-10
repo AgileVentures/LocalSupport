@@ -43,11 +43,46 @@ describe PagesController do
   end
 
   describe "GET show" do
-    it "assigns the requested page as @page" do
-      page = Page.create! valid_attributes
-      get :show, {:id => page.to_param}
-      assigns(:page).should eq(page)
+    before :each do
+      admin_user = double('User')
+      admin_user.stub(:admin?).and_return(true)
+      controller.stub(:current_user).and_return(admin_user)
+      @valid_page = double('Page', :name => 'About Us', :permalink => 'about', :content => 'blah blah')
+      @error_page = double('Page')
     end
+
+    it 'assigns @admin if current_user is admin' do
+      Page.stub(:find_by_permalink!)
+      get :show, { :id => 'about' }
+      assigns(:admin).should be_true
+    end
+
+    it 'assigns @page if params[id] is a valid permalink' do
+      Page.should_receive(:find_by_permalink!).with('about').and_return(@valid_page)
+      get :show, { :id => 'about'}
+      assigns(:page).should eq @valid_page
+    end
+
+    it 'assigns 404 page if params[id] is not a valid permalink' do
+      Page.should_receive(:find_by_permalink!).with('lalala').and_raise(ActiveRecord::RecordNotFound)
+      Page.should_receive(:find_by_permalink!).with('404').and_return(@error_page)
+      get :show, { :id => 'lalala'}
+      assigns(:page).should eq @error_page
+    end
+
+    it '200: respond code should be appropriate for page' do
+      Page.stub(:find_by_permalink!)
+      get :show, { :id => 'about' }
+      response.status.should eq 200
+    end
+
+    it '404: respond code should be appropriate for page' do
+      Page.should_receive(:find_by_permalink!).with('lalala').and_raise(ActiveRecord::RecordNotFound)
+      Page.should_receive(:find_by_permalink!).with('404').and_return(@error_page)
+      get :show, { :id => 'lalala'}
+      response.status.should eq 404
+    end
+
   end
 
   describe "GET new" do

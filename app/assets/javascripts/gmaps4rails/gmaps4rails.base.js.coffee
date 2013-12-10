@@ -50,7 +50,8 @@ class @Gmaps4Rails
       #Marker config
       title: ""
       #MarkerImage config
-      picture : ""
+#      picture : "https://maps.gstatic.com/intl/en_us/mapfiles/markers2/measle_blue.png"
+      picture: ""
       width: 22
       length: 32
       draggable: false         # how to modify: <%= gmaps( "markers" => { "data" => @object.to_gmaps4rails, "options" => { "draggable" => true }}) %>

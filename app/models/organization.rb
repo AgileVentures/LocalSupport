@@ -15,6 +15,7 @@ class Organization < ActiveRecord::Base
   # prevents mass assignment on other fields not in this list
   attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info
   accepts_nested_attributes_for :users
+  scope :order_by_most_recent, order('updated_at DESC')
 
   # if we removed check_process => false saving the model would not trigger a geocode
   #after_commit :process_geocoding
@@ -87,9 +88,11 @@ class Organization < ActiveRecord::Base
       date_removed: 'date removed',
       cc_id: 'Charity Classification'
   }
+
   def self.column_mappings
     @@column_mappings
   end
+
   def self.import_categories_from_array(row)
     check_columns_in(row)
     org_name = row[@@column_mappings[:name]].to_s.humanized_all_first_capitals
@@ -107,8 +110,8 @@ class Organization < ActiveRecord::Base
   end
 
   def self.import_category_mappings(filename, limit)
-    import(filename, limit, false) do |row, validation| 
-      import_categories_from_array(row) 
+    import(filename, limit, false) do |row, validation|
+      import_categories_from_array(row)
     end
   end
 
@@ -117,8 +120,8 @@ class Organization < ActiveRecord::Base
   end
 
   def self.import_addresses(filename, limit, validation = true)
-    import(filename, limit, validation) do |row, validation| 
-       create_from_array(row, validation) 
+    import(filename, limit, validation) do |row, validation|
+       create_from_array(row, validation)
     end
   end
 

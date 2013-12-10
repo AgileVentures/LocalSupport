@@ -18,13 +18,15 @@ class PagesController < ApplicationController
   # GET /pages/:permalink.json
   def show
     @admin = current_user.admin? if current_user
-    # find_by_permalink! returns 404 if no match
-    @page = Page.find_by_permalink!(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @page }
+    begin
+      # find_by_permalink! returns exception if no match
+      @page = Page.find_by_permalink!(params[:id])
+      status_code = 200
+    rescue ActiveRecord::RecordNotFound
+      @page = Page.find_by_permalink!('404')
+      status_code = 404
     end
+    render :html => @page, :status => status_code
   end
 
   # GET /pages/new

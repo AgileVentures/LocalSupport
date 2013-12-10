@@ -4,6 +4,7 @@ end
 
 Given(/^I have not approved cookie policy$/) do
   #This is wrong... ;-)
+  debugger
   expect(cookies_accepted?).to eq false
 end
 
