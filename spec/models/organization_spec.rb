@@ -414,5 +414,31 @@ describe Organization do
       Organization.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0],true)
     end
   end
+  
+  describe "rake target emails" do
+    before :each do
+      user = double "User"
+      @org1.stub(:user).and_return([user])
+      @org2.stub(:user).and_return([])
+      @org3.stub(:user).and_return([])
+      @results = [@org1, @org2, @org3]
+    end
+    it "should select all organizations that have an unregistered email"  do
+      Organization.should_receive(:all).and_return @results
+      @results.should_receive(:select).and_return [@org2, @org3]
+      require "rake"
+      @rake = Rake::Application.new
+      Rake.application = @rake
+      Rake.application.rake_require "tasks/target_emails"
+      Rake::Task.define_task(:environment)
+      Rake::Task['db:target_emails'].invoke
+    end
+    it "should write the selected email addresses and organization names to the csv file" do
+      pending
+    end
+    it "should create a csv file" do
+      pending
+    end
+  end
 
 end
