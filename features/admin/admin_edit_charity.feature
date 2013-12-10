@@ -18,7 +18,6 @@ Feature: Admin editing charity
   Scenario: Admin successfully changes the address of a charity
     Given I am signed in as a admin
     And I update "Friendly" charity address to be "30 pinner road"
-    Then show me the page
     Then the address for "Friendly" should be "30 pinner road"
 #TODO Refactor into integration test that posts to update method
 #  Scenario: Non-admin unsuccessfully attempts to change the address of a charity

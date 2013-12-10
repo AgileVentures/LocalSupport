@@ -26,15 +26,18 @@ describe Organization do
 
   context 'validating URLs' do
     subject(:no_http_org) { FactoryGirl.build(:organization, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate') }
-
+    subject(:empty_website)  {FactoryGirl.build(:organization, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => '', :website => '')}
     it 'if lacking protocol, http is prefixed to URL when saved' do
       no_http_org.save!
       no_http_org.donation_info.should include('http://')
     end
 
     it 'a URL is left blank, no validation issues arise' do
-      expect { :save! }.to_not raise_error(ActiveRecord::RecordInvalid)
-      no_http_org.save!
+      expect {no_http_org.save! }.to_not raise_error
+    end
+
+    it 'does not raise validation issues when URLs are empty strings' do
+      expect {empty_website.save!}.to_not raise_error
     end
   end
 
