@@ -95,7 +95,7 @@ describe UsersController do
           response.should redirect_to root_path
         end
 
-        it "flashes a relevant notice" do
+        it "flashes the relevant notice" do
           get :index
           expect(flash[:notice]).to have_content("You must be signed in as an admin to perform this action!")
         end
