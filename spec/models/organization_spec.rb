@@ -416,29 +416,38 @@ describe Organization do
   end
   
   describe "rake target emails" do
+    # http://www.philsergi.com/2009/02/testing-rake-tasks-with-rspec.html
     before :each do
       user = double "User"
       @org1.stub(:user).and_return([user])
       @org2.stub(:user).and_return([])
       @org3.stub(:user).and_return([])
       @results = [@org1, @org2, @org3]
-    end
-    it "should select all organizations that have an unregistered email"  do
-      Organization.should_receive(:all).and_return @results
-      @results.should_receive(:select).and_return [@org2, @org3]
+
       require "rake"
       @rake = Rake::Application.new
       Rake.application = @rake
       Rake.application.rake_require "tasks/target_emails"
       Rake::Task.define_task(:environment)
-      Rake::Task['db:target_emails'].invoke
+      @rake_task = 'db:target_emails'
+    end
+    it "should select all organizations that have an unregistered email"  do
+      Organization.should_receive(:all).and_return @results
+      @results.should_receive(:select).and_return [@org2, @org3]
+      @rake[@rake_task].reenable
+      @rake[@rake_task].invoke
     end
     it "should write the selected email addresses and organization names to the csv file" do
-      pending
+      Organization.should_receive(:all).and_return @results
+      @results.should_receive(:select).and_return [@org2, @org3]
+
+      @rake[@rake_task].reenable
+      @rake[@rake_task].invoke
     end
     it "should create a csv file" do
       pending
     end
+    after(:each) { @rake[@task_name].clear }
   end
 
 end
