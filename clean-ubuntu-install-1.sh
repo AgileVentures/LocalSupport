@@ -261,6 +261,7 @@ exec 2>&4 4>&-
 
 # turn off echo
 set +v
+unset password
 
 # Display completion notice
 echo '**** NOTICE ****'
