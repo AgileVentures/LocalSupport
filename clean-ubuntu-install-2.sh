@@ -57,9 +57,8 @@ if [[ $@ != *no_bundle* ]]; then
   selenium install || { error "install selenium"; return 1; }
 fi
 
-# Apply peer authentication fix, assumes saasbook username
-# Change below if necessary and commit change before running script
-if [[ $@ != no_peer_fix ]]; then
+# Apply peer authentication fix
+if [[ $@ != *no_peer_fix* ]]; then
   sudo-pw sed -i 's/local[ ]*all[ ]*postgres[ ]*peer/local all postgres peer map=basic/' /etc/postgresql/9.1/main/pg_hba.conf || { error "apply peer fix part 1"; return 1; }
   sudo-pw sed -i "$ a\basic $USER postgres" /etc/postgresql/9.1/main/pg_ident.conf || { error "apply peer fix part 2"; return 1; }
 fi
