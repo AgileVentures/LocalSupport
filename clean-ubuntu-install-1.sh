@@ -49,18 +49,18 @@ function error {
 
 # Start configuration
 cd ~/
-sudo apt-get update
-sudo apt-get install -y dkms     # For installing VirtualBox guest additions
+sudo-pw apt-get update
+sudo-pw apt-get install -y dkms     # For installing VirtualBox guest additions
 
 # remove un-needed packages as recommended by above output
-sudo apt-get -y autoremove #TODO: move to bottom
+sudo-pw apt-get -y autoremove #TODO: move to bottom
 
 # add profile to bash_profile as recommended by rvm
 touch ~/.bash_profile
 echo "source ~/.profile" >> ~/.bash_profile
 
 # Install RVM and ruby 1.9.3 note: may take a while to compile ruby
-sudo apt-get install -y curl
+sudo-pw apt-get install -y curl
 set +v
 \curl -L https://get.rvm.io | bash -s stable --ruby=1.9.3
 source ~/.rvm/scripts/rvm
@@ -82,7 +82,7 @@ rvm rvmrc warning ignore allGemfiles
 
 # Install sqlite3 dev
 # TODO: Reporting already installed
-sudo apt-get -y install sqlite3 libsqlite3-dev
+sudo-pw apt-get -y install sqlite3 libsqlite3-dev
 
 # Skipping typo specific installs
 # Install required libs and optional feedvalidator for typo homework
@@ -236,17 +236,17 @@ fi
 # Install needed packages
 if [[ $@ != *no_package* ]]; then
   # Install Qt webkit headers
-  sudo apt-get install -y libqtwebkit-dev || { error "install webkit dev"; return 1; }
+  sudo-pw apt-get install -y libqtwebkit-dev || { error "install webkit dev"; return 1; }
 
   # Install postgreSQL
-  sudo apt-get install -y libpq-dev || { error "install pg dev"; return 1; }
-  sudo apt-get install -y postgresql || { error "install pg"; return 1; }
+  sudo-pw apt-get install -y libpq-dev || { error "install pg dev"; return 1; }
+  sudo-pw apt-get install -y postgresql || { error "install pg"; return 1; }
 
   # Install X virtual frame buffer
-  sudo apt-get install -y xvfb || { error "install xvfb"; return 1; }
+  sudo-pw apt-get install -y xvfb || { error "install xvfb"; return 1; }
 
   # Remove un-needed packages
-  sudo apt-get -y autoremove
+  sudo-pw apt-get -y autoremove
 fi
 
 # Heroku
