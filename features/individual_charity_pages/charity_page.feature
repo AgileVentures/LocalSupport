@@ -6,13 +6,13 @@ Feature: Web page owned by each charity
 
   Background: organizations have been added to database
     Given the following organizations exist:
-      | name           | description               | address        | postcode | telephone | website              | email             |
+      | name           | description               | address        | postcode | telephone | website              | email              |
       | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.org  | admin@friendly.xx  |
       | Friendly Clone | Quite Friendly!           | 30 pinner road |          | 020800010 |                      |                    |
 
     Given the following users are registered:
-      | email             | password | organization | confirmed_at |
-      | registered_user-1@example.com | pppppppp | Friendly    | 2007-01-01  10:00:00 |
+      | email                         | password | organization | confirmed_at         |
+      | registered_user-1@example.com | pppppppp | Friendly     | 2007-01-01  10:00:00 |
       | registered_user-2@example.com | pppppppp |              | 2007-01-01  10:00:00 |
 
   Scenario: be able to view link to charity site on individual charity page

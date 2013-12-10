@@ -40,3 +40,4 @@ db/email_test.csv
 .ruby-version
 .ruby-gemset
 .rbenv
+.rbenv-gemsets

@@ -7,14 +7,14 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Organization.import_addresses 'db/data.csv', 1006
+unless User.find_by_email("admin@harrowcn.org.uk")
+  user = User.new({
+      email: "admin@harrowcn.org.uk",
+      password: "asdf1234",
+      password_confirmation: "asdf1234",
+    })
+  user.confirmed_at = DateTime.now
+  user.admin = true
 
-user = User.new({
-    email: "admin@harrowcn.org.uk",
-    password: "asdf1234",
-    password_confirmation: "asdf1234",
-  })
-
-user.confirmed_at = DateTime.now
-user.admin = true
-
-user.save!
+  user.save!
+end
