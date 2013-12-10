@@ -2,18 +2,17 @@ LocalSupport::Application.routes.draw do
   devise_for :users
 
   match 'organizations/search' => 'organizations#search'
-<<<<<<< HEAD
+
   get 'contributors' => 'contributors#show'
   #match 'pages/disclaimer' => 'pages#disclaimer'
   #match 'pages/aboutus' => 'pages#aboutus'
   #match 'pages/contact' => 'pages#contact'
-=======
+
   resources :users, only: [:index, :update]
 
   #match '/users' => 'users#index', as: :users, via: [:get]
   #match '/users/:id' => 'users#update', as: :update_user, via: [:put]
 
->>>>>>> 85397e9a63067040c0fc9277b8a0ddf5feed7dce
   resources :pages
 
   resources :organizations do
