@@ -1,20 +1,23 @@
 require 'spec_helper'
 
-describe "Contributors" do
-  describe "GET /contributors" do
+describe ContributorsController do
+
+  describe "GET show" do
     before :each do
-      contributors = ([
+      @contributors = [
           {'login' => 'thomas', 'avatar_url' => 'http://example.com/thomas.png', 'html_url' => 'http://github.com/thomas', 'contributions' => 7},
           {'login' => 'john', 'avatar_url' => 'http://example.com/john.png', 'html_url' => 'http://github.com/john', 'contributions' => 9}
-      ]).to_json
+      ]
+      json_data = @contributors.to_json
 
       stub_request(:get, /api.github.com/).
           with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
-          to_return(:status => 200, :body => contributors, :headers => {})
+          to_return(:status => 200, :body => json_data, :headers => {})
     end
-    it "contributors path should return 200" do
-      get contributors_path
-      expect(response.code).to eq('200')
+
+    it "assigns the contributors appropriately" do
+      get :show
+      assigns(:contributors).should eq(@contributors)
     end
   end
 end

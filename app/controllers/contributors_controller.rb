@@ -9,8 +9,8 @@ class ContributorsController < ApplicationController
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     response = http.request(request)
-    data = response.body
-    @contributors = JSON.parse(data)
+    json_data = response.body
+    @contributors = JSON.parse(json_data)
   end
 
 end
