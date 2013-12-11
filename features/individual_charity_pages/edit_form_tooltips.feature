@@ -13,6 +13,7 @@ Feature:  Tool tip instructions for fields on edit form
     Given the following users are registered:
       | email                         | password | organization                    | confirmed_at |
       | registered_user-3@example.com | pppppppp | Harrow Bereavement Counselling  | 2007-01-01  10:00:00 |
+    And cookies are approved
 
   Scenario: Display tooltip for each label on the edit form
     Given I am signed in as a charity worker related to "Harrow Bereavement Counselling"

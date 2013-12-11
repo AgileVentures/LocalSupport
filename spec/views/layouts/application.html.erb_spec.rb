@@ -52,7 +52,6 @@ describe "layouts/application.html.erb", :type => :feature do
       rendered.should have_css("#menuLogin a[href=\"#{new_user_password_path}\"]")
     end
 
-<<<<<<< HEAD
     it 'renders a cookies choice message when cookies have not been accepted' do
       view.stub(:cookies_accepted?).and_return(false)
       render
@@ -64,7 +63,6 @@ describe "layouts/application.html.erb", :type => :feature do
       rendered.should have_xpath("//a[@href=\"#{cookies_deny_path}\"]")
     end
 
-=======
     it 'login form should be visible', :js => true do
       render
       rendered.should_not have_selector("form#loginForm", style: "height: 0px;")
@@ -90,7 +88,6 @@ describe "layouts/application.html.erb", :type => :feature do
       rendered.should have_content("No, no, no!")
       rendered.should have_selector("div.alert-error")
     end
->>>>>>> 85397e9a63067040c0fc9277b8a0ddf5feed7dce
 
   end
   context "user signed-in" do

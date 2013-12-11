@@ -13,8 +13,7 @@ Feature: Admin editing charity
       | email             | password | admin | confirmed_at |  organization |
       | registered-user-1@example.com | pppppppp | true  | 2007-01-01  10:00:00 |  Friendly |
       | registered-user-2@example.com | pppppppp | false | 2007-01-01  10:00:00 |           |
-
-    And I have a "rack.policy" cookie set to "true"
+    And cookies are approved
 
   Scenario: Admin successfully changes the address of a charity
     Given I am signed in as a admin

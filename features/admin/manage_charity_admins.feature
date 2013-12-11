@@ -12,6 +12,7 @@ Background: organizations have been added to database
       | email             | password | admin | confirmed_at |  organization |
       | registered-user-1@example.com | pppppppp | true  | 2007-01-01  10:00:00 |  Friendly |
       | registered-user-2@example.com | pppppppp | false | 2007-01-01  10:00:00 |           |
+    And cookies are approved
 
  Scenario: Existing charity admin appears in form when editing charity
    Given I am signed in as a admin

@@ -10,6 +10,7 @@ Feature: This is my organization
      And the following organizations exist:
        | name             | address        |
        | The Organization | 83 pinner road |
+    And cookies are approved
 
   Scenario: I am a signed in user who requests to be admin for my organization
     Given I am signed in as a non-admin 

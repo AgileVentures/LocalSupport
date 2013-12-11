@@ -16,6 +16,7 @@ Background:
     | charity_owner@example.com | pppppppp | false | Friendly     | 2007-01-01  10:00:00 |
   Given I am on the home page
   And the sign in form is visible
+  And cookies are approved
 
 Scenario: Sign in for an existing non-admin user unassociated with any organization
   Given I sign in as "normal_user@example.com" with password "pppppppp"

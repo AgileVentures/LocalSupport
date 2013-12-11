@@ -115,3 +115,9 @@ Given /^I have a "([^\"]+)" cookie set to "([^\"]+)"$/ do |key, value|
 
   Capybara.current_session.driver.browser.set_cookie(cookie_string)
 end
+
+And(/^cookies are approved$/) do
+  steps %Q{And I have a "rack.policy" cookie set to "true"}
+end
+
+
