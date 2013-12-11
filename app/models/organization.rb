@@ -138,19 +138,18 @@ class Organization < ActiveRecord::Base
   end
 
   def self.import_emails(filename, limit, validation = true)
+    str = ''
     import(filename, limit, validation) do |row, validation|
-      add_email(row, validation)
+      str << add_email(row, validation)
     end
+    str
   end
 
   def self.add_email(row, validation)
     orgs = where("UPPER(name) LIKE ? ","%#{row[0].try(:upcase)}%")
-    if orgs && orgs[0] && orgs[0].email.blank?
-      orgs[0].email = row[7]
-      orgs[0].save
-    else
-      puts "#{row[0]} was not found"
-    end
+    return "#{row[0]} was not found\n" unless orgs && orgs[0] && orgs[0].email.blank?
+    orgs[0].email = row[7]
+    orgs[0].save
   end
 
   def self.check_columns_in(row)
