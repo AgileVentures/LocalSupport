@@ -422,12 +422,8 @@ describe Organization do
     end
 
     it 'should ask the db for orgs where emails are present but users are blank' do
-      Organization.stub_chain(:where, :select).with("email <> ''").and_return([])
+      Organization.stub_chain(:where, :select).with("email <> ''").with().and_return([])
       Organization.export_orphan_organization_emails.should eq []
-    end
-
-    it "should write the selected email addresses and organization names to the csv file" do
-      pending
     end
     
   end

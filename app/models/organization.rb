@@ -138,7 +138,7 @@ class Organization < ActiveRecord::Base
   end
 
   def self.export_orphan_organization_emails
-    #
+    self.where("email <> ''").select {|o| o.users.blank?}
   end
 
   def self.import_emails(filename, limit, validation = true)
@@ -154,6 +154,7 @@ class Organization < ActiveRecord::Base
     return "#{row[0]} was not found\n" unless orgs && orgs[0] && orgs[0].email.blank?
     orgs[0].email = row[7]
     orgs[0].save
+    return "#{row[0]} was found\n"
   end
 
   def self.check_columns_in(row)
