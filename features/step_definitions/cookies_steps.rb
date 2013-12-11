@@ -1,13 +1,3 @@
-Given(/^I have approved cookie policy$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Given(/^I have not approved cookie policy$/) do
-  #This is wrong... ;-)
-  debugger
-  expect(cookies_accepted?).to eq false
-end
-
 Then(/^I should see an approve cookie policy message$/) do
   expect(page).to have_css(".alert")
   expect(page).to have_content("This site uses cookies.")
@@ -18,5 +8,10 @@ Then(/^I should see an approve cookie policy message$/) do
 end
 
 Then(/^I should not see an approve cookie policy message$/) do
-  pending # express the regexp above with the code you wish you had
+  page.should_not have_css(".alert")
+  page.should_not have_content("This site uses cookies.")
+  page.should_not have_xpath("//a[@id=\"accept_cookies\"]")
+  page.should_not have_xpath("//a[@href=\"#{cookies_allow_path}\"]")
+  page.should_not have_xpath("//a[@id=\"deny_cookies\"]")
+  page.should_not have_xpath("//a[@href=\"#{cookies_deny_path}\"]")
 end

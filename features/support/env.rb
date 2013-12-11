@@ -11,6 +11,8 @@ require "rack_session_access/capybara"
 require 'ruby-debug'
 require 'selenium/webdriver'
 require 'factory_girl_rails'
+require 'rack/test'
+require 'rack/policy'
 Dir["../../spec/factories/*.rb"].each {|file| require_relative file }
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
