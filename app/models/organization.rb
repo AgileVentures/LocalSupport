@@ -137,6 +137,10 @@ class Organization < ActiveRecord::Base
     end
   end
 
+  def self.export_orphan_organization_emails
+    #
+  end
+
   def self.import_emails(filename, limit, validation = true)
     str = ''
     import(filename, limit, validation) do |row, validation|
