@@ -400,14 +400,15 @@ describe Organization do
       end
       Organization.import_emails(nil,2,false)
     end
+
     it 'should handle absence of org gracefully' do
       Organization.should_receive(:where).with("UPPER(name) LIKE ? ", "%I LOVE PEOPLE%").and_return(nil)
-      STDOUT.should_receive(:puts).with("i love people was not found")
       expect(lambda{
-        Organization.add_email(fields = CSV.parse('i love people,,,,,,,test@example.org')[0],true)
+        response = Organization.add_email(fields = CSV.parse('i love people,,,,,,,test@example.org')[0],true)
+        response.should eq "i love people was not found\n"
       }).not_to raise_error
-      
     end
+
     it "should add email to org" do
       Organization.should_receive(:where).with("UPPER(name) LIKE ? ", "%FRIENDLY%").and_return([@org1])
       @org1.should_receive(:email=).with('test@example.org')
@@ -430,6 +431,18 @@ describe Organization do
       @org1.should_not_receive(:save)
       Organization.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0],true)
     end
+  end
+  
+  describe "rake target emails" do
+    it "should have a method export_orphan_organization_emails" do
+      Organization.should respond_to :export_orphan_organization_emails
+    end
+
+    it 'should ask the db for orgs where emails are present but users are blank' do
+      Organization.stub_chain(:where, :select).with("email <> ''").with().and_return([])
+      Organization.export_orphan_organization_emails.should eq []
+    end
+    
   end
 
 end

@@ -11,6 +11,7 @@ require "rack_session_access/capybara"
 require 'ruby-debug'
 require 'selenium/webdriver'
 require 'factory_girl_rails'
+require 'aruba/cucumber'
 Dir["../../spec/factories/*.rb"].each {|file| require_relative file }
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
@@ -74,3 +75,8 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 #  ActionMailer::Base.deliveries.clear
 #  block.call
 #end
+
+# Aruba working directory (default: Aruba creates tmp/aruba)
+Before do
+  @dirs = ["#{Rails.root.to_s}"]
+end
