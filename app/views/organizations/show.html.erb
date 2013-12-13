@@ -13,26 +13,30 @@
         <h4>
           Contact information
         </h4>
-        <% unless @organization.postcode.blank? %>
+        <% if @organization.postcode.present? %>
             <p>
               <b>Postcode:</b>
               <%= @organization.postcode %>
             </p>
         <% end %>
-        <% unless @organization.email.blank? %>
+        <% if @organization.email.present? %>
             <p>
               <b>Email:</b>
               <a href="mailto:<%= @organization.email %>"><%= @organization.email %></a>
             </p>
         <% end %>
-        <p>
-          <b>Website:</b>
-          <%= link_to_if(!@organization.website.blank?, @organization.website, @organization.website, {:target => '_blank'}) { "We don't yet have a website link for them." } %>
-        </p>
-
-        <p><b>Donation Info:</b>
-          <%= donation_info_msg %>
-        </p>
+        <% if @organization.website.present? %>
+            <p>
+              <b>Website:</b>
+              <%= link_to @organization.website, @organization.website, {:target => '_blank'} %>
+            </p>
+        <% end %>
+        <% if @organization.donation_info.present? %>
+            <p>
+              <b>Donation Info:</b>
+              <%= link_to "Donate to #{@organization.name} now!", @organization.donation_info, {:target => '_blank'} %>
+            </p>
+        <% end %>
       </div>
     </div>
   </div>
