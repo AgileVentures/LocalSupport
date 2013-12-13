@@ -30,7 +30,7 @@ describe OrganizationsController do
     end
 
   end
-  
+
   describe "GET search" do
 
     context 'setting appropriate view vars for all combinations of input' do
@@ -41,6 +41,13 @@ describe OrganizationsController do
         result.should_receive(:to_gmaps4rails).and_return(json)
         result.stub_chain(:page, :per).and_return(result)
         Category.should_receive(:html_drop_down_options).and_return(category_html_options)
+      end
+
+      it "orders search results by most recent" do
+        Organization.should_receive(:order_by_most_recent).and_return(result)
+        result.stub_chain(:search_by_keyword, :filter_by_category).with('test').with(nil).and_return(result)
+        get :search, :q => 'test'
+        assigns(:organizations).should eq([double_organization])
       end
 
       it "sets up appropriate values for view vars: query_term, organizations and json" do
@@ -119,14 +126,13 @@ describe OrganizationsController do
     end
   end
 
-
   describe "GET index" do
     it "assigns all organizations as @organizations" do
       result = [double_organization]
       json='my markers'
       result.should_receive(:to_gmaps4rails).and_return(json)
       Category.should_receive(:html_drop_down_options).and_return(category_html_options)
-      Organization.should_receive(:order).with('updated_at DESC').and_return(result)
+      Organization.should_receive(:order_by_most_recent).and_return(result)
       result.stub_chain(:page, :per).and_return(result)
       get :index
       assigns(:organizations).should eq(result)
@@ -142,6 +148,7 @@ describe OrganizationsController do
       @user.stub(:can_request_org_admin?)
       controller.stub(:current_user).and_return(@user)
     end
+
     it "assigns the requested organization as @organization and appropriate json" do
       json='my markers'
       @org = double_organization
@@ -171,7 +178,7 @@ describe OrganizationsController do
         expect(assigns(:editable)).to be_false
       end
     end
-    
+
     context "grabbable flag is assigned to match user permission" do
       it 'assigns grabbable to true when user can request org admin status' do
         @user.stub(:can_edit?)
@@ -262,7 +269,7 @@ describe OrganizationsController do
         user = double("User")
         request.env['warden'].stub :authenticate! => user
         controller.stub(:current_user).and_return(user)
-	user.should_receive(:admin?).and_return(true)
+        user.should_receive(:admin?).and_return(true)
       end
 
       describe "with valid params" do
@@ -307,28 +314,30 @@ describe OrganizationsController do
         user = double("User")
         request.env['warden'].stub :authenticate! => user
         controller.stub(:current_user).and_return(user)
-	user.should_receive(:admin?).and_return(false)
+        user.should_receive(:admin?).and_return(false)
       end
 
       describe "with valid params" do
-         it "refuses to create a new organization" do
-	   # stubbing out Organization to prevent new method from calling Gmaps APIs
-           Organization.stub(:new).with({'these' => 'params'}) { double_organization(:save => true) }
-	   Organization.should_not_receive :new
-	   post :create, :organization => {'these' => 'params'}
-         end
-         it "redirects to the organizations index" do
-           Organization.stub(:new).with({'these' => 'params'}) { double_organization(:save => true) }
-	   post :create, :organization => {'these' => 'params'}
-	   expect(response).to redirect_to organizations_path           
-	 end
-	 it "assigns a flash refusal" do
-           Organization.stub(:new).with({'these' => 'params'}) { double_organization(:save => true) }
-	   post :create, :organization => {'these' => 'params'}
-	   expect(flash[:notice]).to eq("You don't have permission")
-	 end
+        it "refuses to create a new organization" do
+          # stubbing out Organization to prevent new method from calling Gmaps APIs
+          Organization.stub(:new).with({'these' => 'params'}) { double_organization(:save => true) }
+          Organization.should_not_receive :new
+          post :create, :organization => {'these' => 'params'}
+        end
+
+        it "redirects to the organizations index" do
+          Organization.stub(:new).with({'these' => 'params'}) { double_organization(:save => true) }
+          post :create, :organization => {'these' => 'params'}
+          expect(response).to redirect_to organizations_path           
+        end
+
+        it "assigns a flash refusal" do
+          Organization.stub(:new).with({'these' => 'params'}) { double_organization(:save => true) }
+          post :create, :organization => {'these' => 'params'}
+          expect(flash[:notice]).to eq("You don't have permission")
+        end
       end
-# not interested in invalid params 
+      # not interested in invalid params
     end
   end
 
@@ -406,7 +415,7 @@ describe OrganizationsController do
         end
       end
     end
-    
+
     context "while not signed in" do
       it "redirects to sign-in" do
         put :update, :id => "1", :organization => {'these' => 'params'}
@@ -462,5 +471,4 @@ describe OrganizationsController do
       end
     end
   end
-
 end

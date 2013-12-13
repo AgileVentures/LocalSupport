@@ -17,6 +17,11 @@ Background: organizations have been added to database
   | registered_user-2@example.com | pppppppp | Friendly    | 2007-01-01  10:00:00 |
   | registered_user-1@example.com | pppppppp |             | 2007-01-01  10:00:00 |
 
+Scenario: Successfully add website url without protocol
+  Given I am signed in as a charity worker related to "Friendly"
+  And I update "Friendly" charity website to be "www.friendly.com"
+  Then the website link for "Friendly" should have a protocol
+
 Scenario: Successfully change the address of a charity
   Given I am signed in as a charity worker related to "Friendly"
   And I update "Friendly" charity address to be "30 pinner road"

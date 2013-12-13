@@ -1,0 +1,17 @@
+<h2>Project Contributors</h2>
+<p>The Local Support software that runs Harrow Community Network has been created through generous contributions of time by
+  developers from around the world.  The list below shows the contributions to the code base from those developers:</p>
+<ul class="media-list">
+<% @contributors.each do | contributor |%>
+    <li class="media">
+      <a class="pull-left" href="#" target="_blank">
+      <img class="media-object img-rounded" src="<%= contributor['avatar_url'] %>" style="width:75px;height:75px">
+      </a>
+        <div class="media-body">
+        <h4 class="media-heading"><%= contributor['login'] %></h4>
+        <a href="<%= contributor['html_url'] %>" target="_blank">Github Profile</a>
+        <p class="media-heading">Project Contributions: <%= contributor['contributions'] %></p>
+      </div>
+    </li>
+<% end %>
+</ul>

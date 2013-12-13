@@ -16,6 +16,7 @@ class CreateOrganizationFromArray
   end
 
   private
+
   def organization_name
     @organization_name ||= FirstCapitalsHumanizer.call(@row[@mappings[:name]])
   end
@@ -39,7 +40,7 @@ class CreateOrganizationFromArray
   def build_organization
     address = Address.new(@row[@mappings[:address]]).parse
     org = Organization.new({
-      name:organization_name, 
+      name:organization_name,
       address: FirstCapitalsHumanizer.call(address[:address]),
       description: DescriptionHumanizer.call((@row[@mappings[:description]])),
       postcode: address[:postcode],
@@ -47,6 +48,5 @@ class CreateOrganizationFromArray
       telephone: @row[@mappings[:telephone]]
     })
   end
-
 end
 

@@ -1,38 +1,56 @@
-<p></p>
+<div class="row">
+  <h3>
+    <%= @organization.name %>
+  </h3>
 
-<p>
-  <b>Name:</b>
-  <%= @organization.name %>
-</p>
+  <p>
+    <%= @organization.description %>
+  </p>
 
-<p>
-  <b>Postcode:</b>
-  <%= @organization.postcode %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @organization.email %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @organization.description %>
-</p>
-
-<p>
-  <b>Website:</b>
-  <%= link_to_if(!@organization.website.blank?, @organization.website, @organization.website, {:target => '_blank'}){"We don't yet have a website link for them."}  %>
-</p>
-
-<p><b>Donation Info:</b>
-<%= donation_info_msg %>
-</p>
-<%= link_to_if(@editable, "Edit", edit_organization_path(@organization.id), {:class => 'btn btn-large'}){} %>
-<!--make sure to pass params in order they appear in rake routes!-->
-<%= link_to "This is my organization", organization_user_path(@organization.id, current_user.id), {method: :put, class: "btn btn-large"} if @grabbable %>
-
-<% content_for :map do %>
-    <%= gmaps("map_options" => {"auto_adjust" => true, "auto_zoom" => false, "center_latitude" => 51.5978,
-                                "center_longitude" => -0.3370, "zoom" => 13}, "markers" => {"data" => @json}) %>
-<% end %>
+  <div class="container">
+    <div class="row">
+      <div class="span5">
+        <h4>
+          Contact information
+        </h4>
+        <% if @organization.postcode.present? %>
+            <p>
+              <b>Postcode:</b>
+              <%= @organization.postcode %>
+            </p>
+        <% end %>
+        <% if @organization.email.present? %>
+            <p>
+              <b>Email:</b>
+              <a href="mailto:<%= @organization.email %>"><%= @organization.email %></a>
+            </p>
+        <% end %>
+        <% if @organization.website.present? %>
+            <p>
+              <b>Website:</b>
+              <%= link_to @organization.website, @organization.website, {:target => '_blank'} %>
+            </p>
+        <% end %>
+        <% if @organization.donation_info.present? %>
+            <p>
+              <b>Donation Info:</b>
+              <%= link_to "Donate to #{@organization.name} now!", @organization.donation_info, {:target => '_blank'} %>
+            </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="position-bottom span2">
+        <%= link_to_if(@editable, "Edit", edit_organization_path(@organization.id), {:class => 'btn btn-primary'}) {} %>
+        <!--make sure to pass params in order they appear in rake routes!-->
+        <%= link_to "This is my organization", organization_user_path(@organization.id, current_user.id), {method: :put, class: 'btn btn-primary'} if @grabbable %>
+      </div>
+    </div>
+  </div>
+  <% content_for :map do %>
+      <%= gmaps("map_options" => {"auto_adjust" => true, "auto_zoom" => false, "center_latitude" => 51.5978,
+                                  "center_longitude" => -0.3370, "zoom" => 13}, "markers" => {"data" => @json}) %>
+  <% end %>
+</div>

@@ -2,11 +2,13 @@ class OrganizationsController < ApplicationController
   # GET /organizations/search
   # GET /organizations/search.json
   before_filter :authenticate_user!, :except => [:search, :index, :show]
+
   def search
     @query_term = params[:q]
     @category_id = params.try(:[],'category').try(:[],'id')
     @category = Category.find_by_id(@category_id)
-    @organizations = Organization.search_by_keyword(@query_term).filter_by_category(@category_id)
+    @organizations = Organization.order_by_most_recent
+    @organizations = @organizations.search_by_keyword(@query_term).filter_by_category(@category_id)
     flash.now[:alert] = SEARCH_NOT_FOUND if @organizations.empty?
     @json = gmap4rails_with_popup_partial(@organizations,'popup')
     @category_options = Category.html_drop_down_options
@@ -16,7 +18,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
-    @organizations = Organization.order("updated_at DESC")
+    @organizations = Organization.order_by_most_recent
     @json = gmap4rails_with_popup_partial(@organizations,'popup')
     @category_options = Category.html_drop_down_options
   end

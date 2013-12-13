@@ -16,6 +16,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'rspec-rails'
   gem 'execjs'
+  gem 'aruba'
   gem 'rack_session_access'
   gem 'simplecov', :require => false
 end
@@ -84,5 +85,8 @@ gem 'redcarpet'
 
 # Adding font awesome
 gem "font-awesome-rails"
+
+# validating organization website URLs
+gem "url_validator"
 
 

@@ -1,7 +1,7 @@
-Feature: Admin approve charity admin
-  As an Admin
+Feature: Site Admin approve charity admin
+  As a Site Admin
   So that I can approve someone to be able to make edits for a particular charity
-  (assumed charity admin has requested access to become charity admin and email has been sent)
+  (assuming charity admin has requested access to become charity admin and email has been sent)
   I want to be able to verify the organisation/user and give them access to their charity.
 
   Background:
@@ -24,7 +24,6 @@ Feature: Admin approve charity admin
   Scenario: As a non-admin trying to access users index
     Given I am signed in as a non-admin
     And I visit "/users"
-#    Then show me the page
     Then I should be on the home page
     And I should see "You must be signed in as an admin to perform this action!"
 

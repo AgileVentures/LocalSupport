@@ -7,11 +7,12 @@ end
 
 Then /^I should be on the (.*) page$/ do |location|
   case location
-  when "home" then current_path.should == root_path()
+  when "home" then current_path.should == root_path
   when "sign up" then current_path.should == new_user_registration_path
   when "sign in" then current_path.should == new_user_session_path
   when "organizations index" then current_path.should == organizations_path
   when "users" then current_path.should == users_path
+  when "contributors" then current_path.should == contributors_path
   end
 end
 
