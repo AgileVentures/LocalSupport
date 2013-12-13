@@ -13,6 +13,21 @@
     margin-top: 45px;
 }
 
+#git-container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#git-container .git-item {
+    width: 50%;
+    height: 120px;
+    margin-bottom: -40px!important;
+}
+
+#git-container h2, h4, p, a  {
+    padding-left: 8px;
+}
+
 
 
 
