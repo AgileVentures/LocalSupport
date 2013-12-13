@@ -23,13 +23,13 @@
                     <%= form_for(resource, :class => "collapse", :html => { :id => "loginForm" }, :as => resource_name, :url => session_path(resource_name)) do |f| %>
                         <div>
                           <label>Login:</label>
-                          <!--[if lt IE 9]>
+                          <!--[if lt IE 10]>
                           <label for="user_email">Enter email</label>
                           <![endif]-->
                           <%= f.email_field :email, :autofocus => true, :placeholder => "you@example.com" %>
                         </div>
                         <div>
-                          <!--[if lt IE 9]>
+                          <!--[if lt IE 10]>
                           <label for="user_password">Enter password</label>
                           <![endif]-->
                           <%= f.password_field :password, :placeholder => "password" %>
@@ -52,15 +52,15 @@
                       <%= form_for(resource, :class => "collapse", :html => { :id => "registerForm" }, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
                           <%= devise_error_messages! %>
 
-                          <!--[if lt IE 9]>
+                          <!--[if lt IE 10]>
                           <label for="user_password">Enter email</label>
                           <![endif]-->
                           <%= f.email_field :email, :autofocus => true, :id => 'signup_email', :name => 'user[email]', :placeholder => "you@example.com" %>
-                          <!--[if lt IE 9]>
+                          <!--[if lt IE 10]>
                           <label for="user_password">Enter password</label>
                           <![endif]-->
                           <%= f.password_field :password, :id => 'signup_password', :name => 'user[password]', :placeholder => "password" %>
-                          <!--[if lt IE 9]>
+                          <!--[if lt IE 10]>
                           <label for="user_password">Confirm password</label>
                           <![endif]-->
                           <%= f.password_field :password_confirmation, :id => 'signup_password_confirmation', :placeholder => 'confirm password' %>
