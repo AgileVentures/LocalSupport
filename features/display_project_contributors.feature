@@ -11,7 +11,6 @@ Scenario: Display project contributors
   Given I am on the home page
   And I click "Contributors"
   Then I should be on the contributors page
-  And I should see a full with layout
   And I should see "Project Contributors"
   And I should see "thomas"
   And I should see "john"
