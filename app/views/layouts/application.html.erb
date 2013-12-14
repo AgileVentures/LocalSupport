@@ -15,15 +15,16 @@
     <% flash.each do |name, msg| %>
         <div class="row">
           <div class="span8 offset2">
-            <div id="flash_<%= "#{name}" %>" class="alert alert-<%= name == :notice ? "success" : "error"%>">
+            <div id="flash_<%= "#{name}" %>" class="alert alert-<%= name == :notice ? "success" : "error" %>">
               <a class="close" data-dismiss="alert">&#215;</a>
               <%= content_tag :div, msg %>
             </div>
           </div>
         </div>
     <% end %>
-
-    <%= yield %>
+    <div id="content">
+      <%= yield %>
+    </div>
 
     <br>
     <br>

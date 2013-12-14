@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
-  layout 'span12', only: [:edit]
-  layout '2xSpan6', only: [:show]
+  layout 'full_width'
   # in a method use render layout: "layout"
   before_filter :authorize, :except => :show
 
@@ -45,6 +44,7 @@ class PagesController < ApplicationController
   # GET /pages/:permalink/edit
   def edit
     @page = Page.find_by_permalink!(params[:id])
+    render layout: 'two_columns'
   end
 
   # POST /pages
