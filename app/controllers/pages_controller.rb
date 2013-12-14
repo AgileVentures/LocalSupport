@@ -44,7 +44,6 @@ class PagesController < ApplicationController
   # GET /pages/:permalink/edit
   def edit
     @page = Page.find_by_permalink!(params[:id])
-    render layout: 'two_columns'
   end
 
   # POST /pages
