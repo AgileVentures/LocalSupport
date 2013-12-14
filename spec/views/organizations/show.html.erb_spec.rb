@@ -17,19 +17,6 @@ describe 'organizations/show.html.erb' do
   before(:each) { assign(:organization, organization) }
 
   context 'page styling' do
-
-    it 'should have a content div' do
-      render
-      rendered.should have_selector('div#content')
-    end
-    it 'should contain two columns' do
-      render
-      within '#content' do
-        rendered.should have_css('#column1.span6')
-        rendered.should have_css('#column2.span6')
-      end
-    end
-
     it 'name should be wrapped in h3 tag' do
       render
       rendered.should have_css('h3', :text => organization.name)
