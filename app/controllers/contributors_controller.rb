@@ -1,4 +1,5 @@
 class ContributorsController < ApplicationController
+  layout 'span12'
   require 'rubygems'
   require 'json'
 

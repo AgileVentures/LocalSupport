@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
-
+  layout 'span12', only: [:edit]
+  layout '2xSpan6', only: [:show]
+  # in a method use render layout: "layout"
   before_filter :authorize, :except => :show
 
   # GET /pages

@@ -1,4 +1,5 @@
 class OrganizationsController < ApplicationController
+  layout '2xSpan6'
   # GET /organizations/search
   # GET /organizations/search.json
   before_filter :authenticate_user!, :except => [:search, :index, :show]
