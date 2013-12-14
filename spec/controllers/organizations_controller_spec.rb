@@ -89,6 +89,7 @@ describe OrganizationsController do
 
       after(:each) do
         response.should render_template 'index'
+        response.should render_template 'layouts/two_columns'
         assigns(:organizations).should eq([double_organization])
         assigns(:json).should eq(json)
         assigns(:category_options).should eq category_html_options
@@ -143,18 +144,23 @@ describe OrganizationsController do
   describe "GET show" do
     before(:each) do
       @user = double("User")
-      Organization.stub(:find).with("37") { double_organization }
+      Organization.stub(:find).with('37') { double_organization }
       @user.stub(:can_edit?).and_return
       @user.stub(:can_request_org_admin?)
       controller.stub(:current_user).and_return(@user)
+    end
+
+    it 'should use a two_column layout' do
+      get :show, :id => '37'
+      response.should render_template 'layouts/two_columns'
     end
 
     it "assigns the requested organization as @organization and appropriate json" do
       json='my markers'
       @org = double_organization
       @org.should_receive(:to_gmaps4rails).and_return(json)
-      Organization.should_receive(:find).with("37") { @org }
-      get :show, :id => "37"
+      Organization.should_receive(:find).with('37') { @org }
+      get :show, :id => '37'
       assigns(:organization).should be(double_organization)
       assigns(:json).should eq(json)
     end
@@ -208,12 +214,17 @@ describe OrganizationsController do
         user = double("User")
         request.env['warden'].stub :authenticate! => user
         controller.stub(:current_user).and_return(user)
+        Organization.stub(:new) { double_organization }
       end
 
       it "assigns a new organization as @organization" do
-        Organization.stub(:new) { double_organization }
         get :new
         assigns(:organization).should be(double_organization)
+      end
+
+      it 'should use a two_column layout' do
+        get :new
+        response.should render_template 'layouts/two_columns'
       end
     end
 
@@ -235,9 +246,13 @@ describe OrganizationsController do
       end
 
       it "assigns the requested organization as @organization" do
-        Organization.stub(:find).with("37") { double_organization }
-        get :edit, :id => "37"
+        Organization.stub(:find).with('37') { double_organization }
+        get :edit, :id => '37'
         assigns(:organization).should be(double_organization)
+      end
+      it 'should use a two_column layout' do
+        get :edit, :id => '37'
+        response.should render_template 'layouts/two_columns'
       end
     end
     context "while signed in as user who cannot edit" do
@@ -249,15 +264,19 @@ describe OrganizationsController do
       end
 
       it "redirects to organization view" do
-        Organization.stub(:find).with("37") { double_organization }
-        get :edit, :id => "37"
+        Organization.stub(:find).with('37') { double_organization }
+        get :edit, :id => '37'
         response.should redirect_to organization_url(37)
+      end
+      it 'should use a two_column layout' do
+        get :edit, :id => '37'
+        response.should render_template 'layouts/two_columns'
       end
     end
     #TODO: way to dry out these redirect specs?
     context "while not signed in" do
       it "redirects to sign-in" do
-        get :edit, :id => 37
+        get :edit, :id => '37'
         expect(response).to redirect_to new_user_session_path
       end
     end
@@ -271,6 +290,8 @@ describe OrganizationsController do
         controller.stub(:current_user).and_return(user)
         user.should_receive(:admin?).and_return(true)
       end
+
+      after(:each) { response.should render_template 'layouts/two_columns' }
 
       describe "with valid params" do
         it "assigns a newly created organization as @organization" do
@@ -350,13 +371,15 @@ describe OrganizationsController do
         controller.stub(:current_user).and_return(user)
       end
 
+      after(:each) { response.should render_template 'layouts/two_columns' }
+
       describe "with valid params" do
 
         it "updates org for e.g. donation_info url" do
           double = double_organization(:id => 37, :model_name => 'Organization')
-          Organization.should_receive(:find).with("37"){double}
+          Organization.should_receive(:find).with('37'){double}
           double_organization.should_receive(:update_attributes_with_admin).with({'donation_info' => 'http://www.friendly.com/donate', 'admin_email_to_add' => nil})
-          put :update, :id => "37", :organization => {'donation_info' => 'http://www.friendly.com/donate'}
+          put :update, :id => '37', :organization => {'donation_info' => 'http://www.friendly.com/donate'}
         end
 
         it "assigns the requested organization as @organization" do
@@ -395,6 +418,8 @@ describe OrganizationsController do
         controller.stub(:current_user).and_return(user)
       end
 
+      after(:each) { response.should render_template 'layouts/two_columns' }
+
       describe "with existing organization" do
         it "does not update the requested organization" do
           org = double_organization(:id => 37)
@@ -432,16 +457,12 @@ describe OrganizationsController do
         request.env['warden'].stub :authenticate! => user
         controller.stub(:current_user).and_return(user)
       end
-      it "destroys the requested organization" do
-        Organization.should_receive(:find).with("37") { double_organization }
+      it "destroys the requested organization and redirect to organization list" do
+        Organization.should_receive(:find).with('37') { double_organization }
         double_organization.should_receive(:destroy)
-        delete :destroy, :id => "37"
-      end
-
-      it "redirects to the organizations list" do
-        Organization.stub(:find) { double_organization }
-        delete :destroy, :id => "1"
+        delete :destroy, :id => '37'
         response.should redirect_to(organizations_url)
+        response.should render_template 'layouts/two_columns'
       end
     end
     context "while signed in as non-admin" do
@@ -451,22 +472,18 @@ describe OrganizationsController do
         request.env['warden'].stub :authenticate! => user
         controller.stub(:current_user).and_return(user)
       end
-      it "does not destroy the requested organization" do
+      it "does not destroy the requested organization but redirects to organization home page" do
         double = double_organization
-        Organization.should_not_receive(:find).with("37"){double}
+        Organization.should_not_receive(:find).with('37'){double}
         double.should_not_receive(:destroy)
-        delete :destroy, :id => "37"
-      end
-
-      it "redirects to the organization home page" do
-        Organization.stub(:find) { double_organization }
-        delete :destroy, :id => "1"
-        response.should redirect_to(organization_url(1))
+        delete :destroy, :id => '37'
+        response.should redirect_to(organization_url('37'))
+        response.should render_template 'layouts/two_columns'
       end
     end
     context "while not signed in" do
       it "redirects to sign-in" do
-        delete :destroy, :id => "37"
+        delete :destroy, :id => '37'
         expect(response).to redirect_to new_user_session_path
       end
     end
