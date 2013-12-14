@@ -138,6 +138,7 @@ describe OrganizationsController do
       get :index
       assigns(:organizations).should eq(result)
       assigns(:json).should eq(json)
+      response.should render_template 'layouts/two_columns'
     end
   end
 
@@ -249,9 +250,6 @@ describe OrganizationsController do
         Organization.stub(:find).with('37') { double_organization }
         get :edit, :id => '37'
         assigns(:organization).should be(double_organization)
-      end
-      it 'should use a two_column layout' do
-        get :edit, :id => '37'
         response.should render_template 'layouts/two_columns'
       end
     end
@@ -267,10 +265,6 @@ describe OrganizationsController do
         Organization.stub(:find).with('37') { double_organization }
         get :edit, :id => '37'
         response.should redirect_to organization_url(37)
-      end
-      it 'should use a two_column layout' do
-        get :edit, :id => '37'
-        response.should render_template 'layouts/two_columns'
       end
     end
     #TODO: way to dry out these redirect specs?
@@ -291,8 +285,6 @@ describe OrganizationsController do
         user.should_receive(:admin?).and_return(true)
       end
 
-      after(:each) { response.should render_template 'layouts/two_columns' }
-
       describe "with valid params" do
         it "assigns a newly created organization as @organization" do
           Organization.stub(:new).with({'these' => 'params'}) { double_organization(:save => true, :name => 'org') }
@@ -308,6 +300,8 @@ describe OrganizationsController do
       end
 
       describe "with invalid params" do
+        after(:each) { response.should render_template 'layouts/two_columns' }
+
         it "assigns a newly created but unsaved organization as @organization" do
           Organization.stub(:new).with({'these' => 'params'}) { double_organization(:save => false) }
           post :create, :organization => {'these' => 'params'}
@@ -371,10 +365,7 @@ describe OrganizationsController do
         controller.stub(:current_user).and_return(user)
       end
 
-      after(:each) { response.should render_template 'layouts/two_columns' }
-
       describe "with valid params" do
-
         it "updates org for e.g. donation_info url" do
           double = double_organization(:id => 37, :model_name => 'Organization')
           Organization.should_receive(:find).with('37'){double}
@@ -396,6 +387,8 @@ describe OrganizationsController do
       end
 
       describe "with invalid params" do
+        after(:each) { response.should render_template 'layouts/two_columns' }
+
         it "assigns the organization as @organization" do
           Organization.stub(:find) { double_organization(:update_attributes_with_admin => false) }
           put :update, :id => "1"
@@ -417,8 +410,6 @@ describe OrganizationsController do
         request.env['warden'].stub :authenticate! => user
         controller.stub(:current_user).and_return(user)
       end
-
-      after(:each) { response.should render_template 'layouts/two_columns' }
 
       describe "with existing organization" do
         it "does not update the requested organization" do
@@ -462,7 +453,6 @@ describe OrganizationsController do
         double_organization.should_receive(:destroy)
         delete :destroy, :id => '37'
         response.should redirect_to(organizations_url)
-        response.should render_template 'layouts/two_columns'
       end
     end
     context "while signed in as non-admin" do
@@ -478,7 +468,6 @@ describe OrganizationsController do
         double.should_not_receive(:destroy)
         delete :destroy, :id => '37'
         response.should redirect_to(organization_url('37'))
-        response.should render_template 'layouts/two_columns'
       end
     end
     context "while not signed in" do
