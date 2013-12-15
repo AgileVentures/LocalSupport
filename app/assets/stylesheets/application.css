@@ -13,9 +13,9 @@ body, html {
 }
 
 body {
-    padding-top: 20px !important;
-    margin-top: -20px;
-    padding-bottom: 40px;
+    padding-top: 0px !important;
+    margin-top: 0px !important;
+    padding-bottom: 0px !important;
     background-color: whitesmoke !important;
 }
 
@@ -33,10 +33,17 @@ body {
     margin-left: auto;
     margin-right: auto;
     margin-top: -20px;
+    margin: 0 auto -60px;
 }
-
-#footer {
-   /*Some footer action here*/
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    /* Negative indent footer by it's height */
+    margin: 0 auto -60px;
+}
+#push, #footer {
+    height: 60px;
 }
 
 #main .container {
@@ -69,7 +76,7 @@ body {
 #cookie-message-inner .btn {
     border: none;
     background: #ed1b23 !important;
-    color: #fff;
+    color: white;
     cursor: pointer;
     display: block;
     float: right !important;
@@ -80,6 +87,7 @@ body {
 -------------------------------------------------- */
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-wrapper {
+
     position: absolute;
     top: 20;
     left: 0;
