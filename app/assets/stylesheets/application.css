@@ -8,16 +8,11 @@
  *= require font-awesome
 */
 
-#main .container {
-    background-color: white;
-}
-
 body, html {
     height: 100% !important;
 }
 
 body {
-
     padding-top: 20px !important;
     margin-top: -20px;
     padding-bottom: 40px;
@@ -26,7 +21,6 @@ body {
 
 /* GLOBAL STYLES
 -------------------------------------------------- */
-/* Padding below the footer and lighter body text */
 .page-frame {
     padding: 20px;
     max-width: 1200px;
@@ -39,6 +33,14 @@ body {
     margin-left: auto;
     margin-right: auto;
     margin-top: -20px;
+}
+
+#footer {
+   /*Some footer action here*/
+}
+
+#main .container {
+    background-color: white;
 }
 
 /* CUSTOMIZE THE COOKIE ALERT
@@ -74,11 +76,8 @@ body {
     padding: 4px 10px;
 }
 
-
-
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
-
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-wrapper {
     position: absolute;
