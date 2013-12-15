@@ -6,12 +6,16 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
+  <!--this is where the gmaps scripts are added-->
+  <%= yield :scripts %>
 </head>
 
 <body>
+<% unless cookies_accepted? %>
+<%= render 'layouts/cookie_alert'  %>
+<% end %>
 <div class="page-frame">
   <%= render 'layouts/header' %>
-
   <section id="main">   <!-- uniquify the child container to create the top margin -->
     <div class="container">  <!-- outermost twitter bootstrap container-->
       <% flash.each do |name, msg| %>
@@ -23,20 +27,6 @@
               </div>
             </div>
           </div>
-      <% end %>
-      <% unless cookies_accepted? %>
-          <div class="row">
-            <div class="span8 offset2">
-              <div class="alert">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>Cookies policy</strong> This site uses cookies. <br/>
-                <%= link_to 'Allow cookies', cookies_allow_path, :method => 'POST', :id => 'accept_cookies', :class => 'btn btn-primary' %>
-                <%= link_to 'Deny cookies', cookies_deny_path, :method => 'POST', :id => 'deny_cookies', :class => 'btn btn-danger' %>
-              </div>
-            </div>
-          </div>
-      <% else %>
-
       <% end %>
 
       <div class="row">
@@ -51,7 +41,7 @@
       <br>
       <br>
 
-      <div class="row">
+      <div class="row position-bottom">
         <div class="span4">
           <%= render 'layouts/footer' %>
         </div>
@@ -65,7 +55,6 @@
     </div>
   </section>
 </div>
-<!--this is where the gmaps scripts are added-->
-<%= yield :scripts %>
+
 </body>
 </html>

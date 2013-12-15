@@ -8,17 +8,20 @@
  *= require font-awesome
 */
 
-
 #main .container {
-    margin-top: 5px;
     background-color: white;
 }
 
+body, html {
+    height: 100% !important;
+}
+
 body {
+
     padding-top: 20px !important;
     margin-top: -20px;
     padding-bottom: 40px;
-    background-color: #d3d3d3 !important;
+    background-color: whitesmoke !important;
 }
 
 /* GLOBAL STYLES
@@ -27,6 +30,7 @@ body {
 .page-frame {
     padding: 20px;
     max-width: 1200px;
+    min-height: 100%;
     border-radius: 2px;
     background: white;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -37,8 +41,38 @@ body {
     margin-top: -20px;
 }
 
+/* CUSTOMIZE THE COOKIE ALERT
+-------------------------------------------------- */
 
+#cookie-message {
+    display: none;
+    text-align: left;
+    position: absolute;
+    z-index: 1001;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid #9B9E89;
+    padding-bottom: 20px;
+}
 
+#cookie-message-inner {
+    padding: 20px;
+    width: 800px;
+    margin: 0 auto;
+}
+
+#cookie-message-inner .btn {
+    border: none;
+    background: #ed1b23 !important;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    float: right !important;
+    padding: 4px 10px;
+}
 
 
 
@@ -59,6 +93,7 @@ body {
     padding-left: 0;
     padding-right: 0;
 }
+
 .navbar-wrapper .navbar {
     padding-left: 15px;
     padding-right: 15px;
