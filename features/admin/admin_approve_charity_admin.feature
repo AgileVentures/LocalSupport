@@ -26,7 +26,6 @@ Feature: Site Admin approve charity admin
   Scenario: As a non-admin trying to access users index
     Given I am signed in as a non-admin
     And I visit "/users"
-#    Then show me the page
     Then I should be on the home page
     And I should see "You must be signed in as an admin to perform this action!"
 

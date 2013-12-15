@@ -11,20 +11,28 @@
 
 #main .container {
     margin-top: 5px;
-
+    background-color: white;
 }
 
 body {
     padding-top: 20px !important;
     margin-top: -20px;
     padding-bottom: 40px;
-    color: #5a5a5a;
+    background-color: white !important;
 }
 
 /* GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
+.form-frame {
+    position: relative;
+    padding: 30px;
+    max-width: 100%;
+    border-radius: 2px;
+    background: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 
+}
 
 
 

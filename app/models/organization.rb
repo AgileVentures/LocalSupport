@@ -7,6 +7,10 @@ class String
 end
 
 class Organization < ActiveRecord::Base
+  #validates_presence_of :website, :with => /http:\/\//
+  validates_url :website, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.website.present?}
+  validates_url :donation_info, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.donation_info.present?}
+
   # http://stackoverflow.com/questions/10738537/lazy-geocoding
   acts_as_gmappable :check_process => false, :process_geocoding => :run_geocode?
   has_many :users
@@ -24,6 +28,8 @@ class Organization < ActiveRecord::Base
     ## http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
     address_changed? or (address.present? and not_geocoded?)
   end
+
+
 
   def not_geocoded?
     latitude.blank? and longitude.blank?
@@ -139,20 +145,24 @@ class Organization < ActiveRecord::Base
     end
   end
 
+  def self.export_orphan_organization_emails
+    self.where("email <> ''").select {|o| o.users.blank?}
+  end
+
   def self.import_emails(filename, limit, validation = true)
+    str = ''
     import(filename, limit, validation) do |row, validation|
-      add_email(row, validation)
+      str << add_email(row, validation)
     end
+    str
   end
 
   def self.add_email(row, validation)
     orgs = where("UPPER(name) LIKE ? ","%#{row[0].try(:upcase)}%")
-    if orgs && orgs[0] && orgs[0].email.blank?
-      orgs[0].email = row[7]
-      orgs[0].save
-    else
-      puts "#{row[0]} was not found"
-    end
+    return "#{row[0]} was not found\n" unless orgs && orgs[0] && orgs[0].email.blank?
+    orgs[0].email = row[7]
+    orgs[0].save
+    return "#{row[0]} was found\n"
   end
 
   def self.check_columns_in(row)

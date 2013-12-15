@@ -89,6 +89,10 @@ describe "layouts/application.html.erb", :type => :feature do
       rendered.should have_selector("div.alert-error")
     end
 
+     it 'should display a link to the contributors page' do
+       render
+       rendered.should have_link "Contributors"
+     end
   end
   context "user signed-in" do
     before :each do

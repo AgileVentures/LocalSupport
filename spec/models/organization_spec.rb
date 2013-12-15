@@ -24,6 +24,23 @@ describe Organization do
     @org3.save!
   end
 
+  context 'validating URLs' do
+    subject(:no_http_org) { FactoryGirl.build(:organization, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate') }
+    subject(:empty_website)  {FactoryGirl.build(:organization, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => '', :website => '')}
+    it 'if lacking protocol, http is prefixed to URL when saved' do
+      no_http_org.save!
+      no_http_org.donation_info.should include('http://')
+    end
+
+    it 'a URL is left blank, no validation issues arise' do
+      expect {no_http_org.save! }.to_not raise_error
+    end
+
+    it 'does not raise validation issues when URLs are empty strings' do
+      expect {empty_website.save!}.to_not raise_error
+    end
+  end
+
   context 'adding charity admins by email' do
     it 'handles a non-existent email with an error' do
       expect(@org1.update_attributes_with_admin({:admin_email_to_add => 'nonexistentuser@example.com'})).to be_false
@@ -383,14 +400,15 @@ describe Organization do
       end
       Organization.import_emails(nil,2,false)
     end
+
     it 'should handle absence of org gracefully' do
       Organization.should_receive(:where).with("UPPER(name) LIKE ? ", "%I LOVE PEOPLE%").and_return(nil)
-      STDOUT.should_receive(:puts).with("i love people was not found")
       expect(lambda{
-        Organization.add_email(fields = CSV.parse('i love people,,,,,,,test@example.org')[0],true)
+        response = Organization.add_email(fields = CSV.parse('i love people,,,,,,,test@example.org')[0],true)
+        response.should eq "i love people was not found\n"
       }).not_to raise_error
-      
     end
+
     it "should add email to org" do
       Organization.should_receive(:where).with("UPPER(name) LIKE ? ", "%FRIENDLY%").and_return([@org1])
       @org1.should_receive(:email=).with('test@example.org')
@@ -413,6 +431,18 @@ describe Organization do
       @org1.should_not_receive(:save)
       Organization.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0],true)
     end
+  end
+  
+  describe "rake target emails" do
+    it "should have a method export_orphan_organization_emails" do
+      Organization.should respond_to :export_orphan_organization_emails
+    end
+
+    it 'should ask the db for orgs where emails are present but users are blank' do
+      Organization.stub_chain(:where, :select).with("email <> ''").with().and_return([])
+      Organization.export_orphan_organization_emails.should eq []
+    end
+    
   end
 
 end

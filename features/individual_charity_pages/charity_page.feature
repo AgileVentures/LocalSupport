@@ -19,10 +19,6 @@ Feature: Web page owned by each charity
     Given I am on the charity page for "Friendly"
     Then I should see the external website link for "Friendly" charity
 
-  Scenario: get missing message when charity page has no charity website link available
-    Given I am on the charity page for "Friendly Clone"
-    Then I should see "We don't yet have a website link for them."
-
   Scenario: display charity title in a visible way
     Given I am on the charity page for "Friendly"
     Then I should see "Friendly" < tagged > with "h3"
