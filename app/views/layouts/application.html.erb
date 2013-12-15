@@ -9,60 +9,62 @@
 </head>
 
 <body>
-<%= render 'layouts/header' %>
+<div class="page-frame">
+  <%= render 'layouts/header' %>
 
-<section id="main">   <!-- uniquify the child container to create the top margin -->
-  <div class="container form-frame">  <!-- outermost twitter bootstrap container-->
-    <% flash.each do |name, msg| %>
-        <div class="row">
-          <div class="span8 offset2">
-            <div id="flash_<%= "#{name}" %>" class="alert alert-<%= name == :notice ? "success" : "error"%>">
-              <a class="close" data-dismiss="alert">&#215;</a>
-              <%= content_tag :div, msg %>
+  <section id="main">   <!-- uniquify the child container to create the top margin -->
+    <div class="container">  <!-- outermost twitter bootstrap container-->
+      <% flash.each do |name, msg| %>
+          <div class="row">
+            <div class="span8 offset2">
+              <div id="flash_<%= "#{name}" %>" class="alert alert-<%= name == :notice ? "success" : "error" %>">
+                <a class="close" data-dismiss="alert">&#215;</a>
+                <%= content_tag :div, msg %>
+              </div>
             </div>
           </div>
-        </div>
-    <% end %>
-    <% unless cookies_accepted? %>
-        <div class="row">
-          <div class="span8 offset2">
-            <div class="alert">
-              <button type="button" class="close" data-dismiss="alert">&times;</button>
-              <strong>Cookies policy</strong> This site uses cookies. <br />
-              <%= link_to 'Allow cookies', cookies_allow_path, :method=>'POST', :id=>'accept_cookies', :class=>'btn btn-primary' %>
-              <%= link_to 'Deny cookies', cookies_deny_path, :method=>'POST', :id=>'deny_cookies', :class=>'btn btn-danger' %>
+      <% end %>
+      <% unless cookies_accepted? %>
+          <div class="row">
+            <div class="span8 offset2">
+              <div class="alert">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Cookies policy</strong> This site uses cookies. <br/>
+                <%= link_to 'Allow cookies', cookies_allow_path, :method => 'POST', :id => 'accept_cookies', :class => 'btn btn-primary' %>
+                <%= link_to 'Deny cookies', cookies_deny_path, :method => 'POST', :id => 'deny_cookies', :class => 'btn btn-danger' %>
+              </div>
             </div>
           </div>
+      <% else %>
+
+      <% end %>
+
+      <div class="row">
+        <div class="span6">
+          <%= yield :map %>
         </div>
-    <% else %>
-
-    <% end %>
-
-    <div class="row">
-      <div class="span6">
-        <%= yield :map %>
+        <div class="span6">
+          <%= yield %>
+        </div>
       </div>
-      <div class="span6">
-        <%= yield %>
+
+      <br>
+      <br>
+
+      <div class="row">
+        <div class="span4">
+          <%= render 'layouts/footer' %>
+        </div>
+        <div class="span4">
+          <%= render 'layouts/footer2' %>
+        </div>
+        <div class="span4">
+          <%= render 'layouts/footer3' %>
+        </div>
       </div>
     </div>
-
-    <br>
-    <br>
-
-    <div class="row">
-      <div class="span4">
-        <%= render 'layouts/footer' %>
-      </div>
-      <div class="span4">
-        <%= render 'layouts/footer2' %>
-      </div>
-      <div class="span4">
-        <%= render 'layouts/footer3' %>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
+</div>
 <!--this is where the gmaps scripts are added-->
 <%= yield :scripts %>
 </body>
