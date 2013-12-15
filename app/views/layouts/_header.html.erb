@@ -1,112 +1,114 @@
 <header>
+  <div id="navbar-wrapper">
+    <div class="container">
+      <div id="navbar" class="navbar">
+        <div class="navbar-inner">
+          <div id="banner" class="container">
+            <%= link_to(image_tag("HCN-long.png", :class => "img-responsive"), root_path) %>
+          </div>
+          <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+            <a href="/" class="brand" title="Search for local voluntary and community organisations">Search for local
+              voluntary and community organisations</a>
 
-  <div id="navbar" class="navbar  navbar-fixed-top">
-    <div class="navbar-inner">
-      <div id="banner" class="container">
-        <%= link_to(image_tag("HCN-long.png", :class => "img-responsive"), root_path) %>
-      </div>
-      <div class="container">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <a href="/" class="brand" title="Search for local voluntary and community organisations">Search for local
-          voluntary and community organisations</a>
+            <div class="nav-collapse collapse">
 
-        <div class="nav-collapse collapse">
-
-          <ul class="nav nav-pills pull-right">
+              <ul class="nav nav-pills pull-right">
 
 
-            <% unless user_signed_in? %>
-                <li class="dropdown " id="menuLogin">
-                  <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
+                <% unless user_signed_in? %>
+                    <li class="dropdown " id="menuLogin">
+                      <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
 
-                  <div class="dropdown-menu" id="login" style="padding:17px; width: 300px;">
-                    <% unless cookies_accepted? %>
+                      <div class="dropdown-menu" id="login" style="padding:17px; width: 300px;">
+                        <% unless cookies_accepted? %>
 
-                        <div style="width: 100%;">
-                          <div class="alert alert-danger">
-                            <strong>Cookies policy</strong> This site uses cookies. <br/>
-                            <%= link_to 'Allow cookies', cookies_allow_path, :method => 'POST', :id => 'accept_cookies', :class => 'btn btn-primary' %>
+                            <div style="width: 100%;">
+                              <div class="alert alert-danger">
+                                <strong>Cookies policy</strong> This site uses cookies. <br/>
+                                <%= link_to 'Allow cookies', cookies_allow_path, :method => 'POST', :id => 'accept_cookies', :class => 'btn btn-primary' %>
+                              </div>
+                            </div>
+
+                        <% else %>
+                        <% end %>
+                        <div class="well">
+                          <%= form_for(resource, :class => "collapse", :html => {:id => "loginForm"}, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+
+                              <div>
+                                <label>Login:</label>
+                                <!--[if lt IE 9]>
+                                <label for="user_email">Enter email</label>
+                                <![endif]-->
+                                <%= f.email_field :email, :autofocus => true, :placeholder => "you@example.com" %>
+                              </div>
+                              <div>
+                                <!--[if lt IE 9]>
+                                <label for="user_password">Enter password</label>
+                                <![endif]-->
+                                <%= f.password_field :password, :placeholder => "password" %>
+                              </div>
+                              <% if devise_mapping.rememberable? -%>
+                                  <div><%= f.check_box :remember_me %> <%= f.label :remember_me, :style => "display: inline;" %></div>
+                              <% end -%>
+
+                              <div style="display: inline;"><%= f.submit "Sign in", :id => 'signin', :class => "btn btn-primary" %></div>
+
+                              <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+                          <% end %>
+
+                          <form>
+                            <%= link_to('New organisation? Sign-up..', '#', :id => 'toggle_link', :title => 'Click this link to Sign Up for an account', :data => {:toggle => :collapse, :target => '#register'}) %>
+                          </form>
+
+                          <div class="collapse" id="register">
+
+                            <%= form_for(resource, :class => "collapse", :html => {:id => "registerForm"}, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+                                <%= devise_error_messages! %>
+
+                                <!--[if lt IE 9]>
+                                <label for="user_password">Enter email</label>
+                                <![endif]-->
+                                <%= f.email_field :email, :autofocus => true, :id => 'signup_email', :name => 'user[email]', :placeholder => "you@example.com" %>
+                                <!--[if lt IE 9]>
+                                <label for="user_password">Enter password</label>
+                                <![endif]-->
+                                <%= f.password_field :password, :id => 'signup_password', :name => 'user[password]', :placeholder => "password" %>
+                                <!--[if lt IE 9]>
+                                <label for="user_password">Confirm password</label>
+                                <![endif]-->
+                                <%= f.password_field :password_confirmation, :id => 'signup_password_confirmation', :placeholder => 'confirm password' %>
+
+                                <div><%= f.submit "Sign up", :id => 'signup', :class => "btn btn-primary" %></div>
+                            <% end %>
                           </div>
                         </div>
-
-                    <% else %>
-                    <% end %>
-                    <div class="well">
-                      <%= form_for(resource, :class => "collapse", :html => {:id => "loginForm"}, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-
-                          <div>
-                            <label>Login:</label>
-                            <!--[if lt IE 9]>
-                            <label for="user_email">Enter email</label>
-                            <![endif]-->
-                            <%= f.email_field :email, :autofocus => true, :placeholder => "you@example.com" %>
-                          </div>
-                          <div>
-                            <!--[if lt IE 9]>
-                            <label for="user_password">Enter password</label>
-                            <![endif]-->
-                            <%= f.password_field :password, :placeholder => "password" %>
-                          </div>
-                          <% if devise_mapping.rememberable? -%>
-                              <div><%= f.check_box :remember_me %> <%= f.label :remember_me, :style => "display: inline;" %></div>
-                          <% end -%>
-
-                          <div style="display: inline;"><%= f.submit "Sign in", :id => 'signin', :class => "btn btn-primary" %></div>
-
-                          <%= link_to "Forgot your password?", new_password_path(resource_name) %>
-                      <% end %>
-
-                      <form>
-                        <%= link_to('New organisation? Sign-up..', '#', :id => 'toggle_link', :title => 'Click this link to Sign Up for an account', :data => {:toggle => :collapse, :target => '#register'}) %>
-                      </form>
-
-                      <div class="collapse" id="register">
-
-                        <%= form_for(resource, :class => "collapse", :html => {:id => "registerForm"}, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-                            <%= devise_error_messages! %>
-
-                            <!--[if lt IE 9]>
-                            <label for="user_password">Enter email</label>
-                            <![endif]-->
-                            <%= f.email_field :email, :autofocus => true, :id => 'signup_email', :name => 'user[email]', :placeholder => "you@example.com" %>
-                            <!--[if lt IE 9]>
-                            <label for="user_password">Enter password</label>
-                            <![endif]-->
-                            <%= f.password_field :password, :id => 'signup_password', :name => 'user[password]', :placeholder => "password" %>
-                            <!--[if lt IE 9]>
-                            <label for="user_password">Confirm password</label>
-                            <![endif]-->
-                            <%= f.password_field :password_confirmation, :id => 'signup_password_confirmation', :placeholder => 'confirm password' %>
-
-                            <div><%= f.submit "Sign up", :id => 'signup', :class => "btn btn-primary" %></div>
-                        <% end %>
                       </div>
-                    </div>
-                  </div>
+                    </li>
+                <% else %>
+                    <li class="dropdown">
+                      <a href="#" id="<%= current_user.email %>" class="dropdown-toggle" data-toggle="dropdown" title="Logged in as: <%= current_user.email %>">
+                        <i class="icon-user icon-xxlarge"> </i> <%= current_user.email %>
+                        <b class="caret"></b>
+                      </a>
+
+                      <ul class="dropdown-menu">
+                        <li><%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
+                <% end %>
+
+                </ul>
                 </li>
-            <% else %>
-                <li class="dropdown">
-                  <a href="#" id="<%= current_user.email %>" class="dropdown-toggle" data-toggle="dropdown" title="Logged in as: <%= current_user.email %>">
-                    <i class="icon-user icon-xxlarge"> </i> <%= current_user.email %>
-                    <b class="caret"></b>
-                  </a>
-
-                  <ul class="dropdown-menu">
-                    <li><%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
-            <% end %>
-
-            </ul>
-            </li>
-          </ul>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
 
 </header>
 
