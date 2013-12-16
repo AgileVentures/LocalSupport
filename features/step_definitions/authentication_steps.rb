@@ -120,4 +120,9 @@ And(/^cookies are approved$/) do
   steps %Q{And I have a "rack.policy" cookie set to "true"}
 end
 
+And(/^cookies are not approved$/) do
+  steps %Q{And I have a "rack.policy" cookie set to "false"}
+end
+
+
 

@@ -6,6 +6,7 @@ Feature: Approve cookies
 
   Background:
     Given I am on the home page
+    And cookies are not approved
     Then I should see an approve cookie policy message
 
   Scenario: User approving the cookies

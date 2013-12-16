@@ -279,7 +279,7 @@ Then /^"(.*?)" org should not exist$/ do |name|
 end
 
 Then /^I debug$/ do
-  breakpoint
+  debugger
   0
 end
 

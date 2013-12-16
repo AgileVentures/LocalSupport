@@ -24,17 +24,7 @@
                       <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
 
                       <div class="dropdown-menu" id="login" style="padding:17px; width: 300px; padding-bottom: 0px;">
-                        <% unless cookies_accepted? %>
 
-                            <div style="width: 100%;">
-                              <div class="alert alert-danger">
-                                <strong>Cookies policy</strong> This site uses cookies. <br/>
-                                <%= link_to 'Allow cookies', cookies_allow_path, :method => 'POST', :id => 'accept_cookies', :class => 'btn btn-primary' %>
-                              </div>
-                            </div>
-
-                        <% else %>
-                        <% end %>
                         <div class="well">
                           <%= form_for(resource, :class => "collapse", :html => {:id => "loginForm"}, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 

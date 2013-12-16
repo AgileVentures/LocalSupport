@@ -6,7 +6,6 @@ And /^I select the "(.*?)" category$/ do |category|
 end
 
 Then /^I should be on the (.*) page$/ do |location|
-  # set cookies_accepted? to 'true'
   case location
   when "home" then current_path.should == root_path
   when "sign up" then current_path.should == new_user_registration_path
@@ -117,4 +116,11 @@ end
 
 Then(/^the "([^"]*)" should be "([^"]*)"$/) do |id, css_class|
     page.should have_css("##{id}.#{css_class}")
+end
+
+When(/^I click link with id "([^"]*)"$/) do |id|
+  page.find("##{id}").click
+end
+When(/^javascript is enabled$/) do
+  Capybara.javascript_driver
 end
