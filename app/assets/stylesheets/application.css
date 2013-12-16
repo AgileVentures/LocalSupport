@@ -31,12 +31,12 @@ body {
     padding-right: 5px;
     margin-left: auto;
     margin-right: auto;
-    margin: 0 auto -60px;
+    margin: 0 auto -40px;
 }
 
 #push, #footer {
     clear: both;
-    height: 60px;
+    height: 40px;
 }
 
 #main .container {
@@ -55,11 +55,11 @@ body {
     text-align: left;
     position: absolute;
     z-index: 1001;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
-    background: rgb(255, 255, 255);
-    background: rgba(255, 255, 255, 0.8);
+    background: rgb(223, 240, 216);
+    background: rgba(223, 240, 216, 0.8);
     border-bottom: 1px solid #9B9E89;
     padding-bottom: 20px;
 }
@@ -76,9 +76,15 @@ body {
     background: #ed1b23 !important;
     color: white;
     cursor: pointer;
-    display: block;
+    margin-top: 17px;
+    margin-right: 10px;
+    /*height: 30px;*/
+    /*display: block;*/
     float: right !important;
     padding: 4px 10px;
+}
+#cookie-message-inner h2 {
+    display: inline-block;
 }
 
 /* CUSTOMIZE THE NAVBAR
