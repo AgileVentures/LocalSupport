@@ -16,6 +16,7 @@ Background: organizations have been added to database
 @javascript
 Scenario: Find help with care for elderly
   Given I am on the home page
+  And I click "Close"
   When I search for "elderly"
   Then I should see contact details for "Indian Elders Association" and "Age UK"
   And I should see "Indian Elders Association"
@@ -27,6 +28,7 @@ Scenario: Find help with care for elderly
 @javascript
 Scenario: Find a bereavement counsellor
   Given I am on the home page
+  And I click "Close"
   When I search for "Bereavement Counselling"
   Then I should see contact details for "Harrow Bereavement Counselling"
   Then I should not see the no results message
