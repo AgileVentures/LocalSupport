@@ -6,6 +6,7 @@ And /^I select the "(.*?)" category$/ do |category|
 end
 
 Then /^I should be on the (.*) page$/ do |location|
+  # set cookies_accepted? to 'true'
   case location
   when "home" then current_path.should == root_path
   when "sign up" then current_path.should == new_user_registration_path

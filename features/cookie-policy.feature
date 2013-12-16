@@ -9,11 +9,9 @@ Feature: Approve cookies
     Then I should see an approve cookie policy message
 
   Scenario: User approving the cookies
-    Then I click "Allow cookies"
+    Then I click "Close"
     Then I should not see an approve cookie policy message
 
-  Scenario: User approving the cookies
-    Then I click "Deny cookies"
-    Then I should not see an approve cookie policy message
+
 
 
