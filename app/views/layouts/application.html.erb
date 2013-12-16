@@ -28,23 +28,14 @@
               </div>
             </div>
         <% end %>
-
-        <div class="row">
-          <div class="span6">
-            <%= yield :map %>
-          </div>
-          <div class="span6">
-            <%= yield %>
-          </div>
+        <div id="content">
+          <%= yield %>
         </div>
       </div>
       <br>
       <br>
       <div id="push"></div>
   </section>
-
-
-
 
 </div>
 <div id="footer" class="container">

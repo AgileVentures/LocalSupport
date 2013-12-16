@@ -1,29 +1,35 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container">
+  <div class="row">
+    <div class="span4 form-frame">
+      <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put}) do |f| %>
+          <%= devise_error_messages! %>
 
-  <div><%= f.label :email %>
-  <%= f.email_field :email, :autofocus => true %></div>
+          <div><%= f.label :email %>
+            <%= f.email_field :email, :class => 'input-block-level', :autofocus => true %></div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i> </div>
-  <div><%= f.password_field :password, :autocomplete => "off" %></div>
+          <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i></div>
+          <div><%= f.password_field :password, :class => 'input-block-level', :autocomplete => "off" %></div>
 
-  <div><%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %></div>
+          <div><%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation, :class => 'input-block-level' %></div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i> </div>
-  <div><%= f.password_field :current_password %></div>
+          <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i></div>
+          <div><%= f.password_field :current_password, :class => 'input-block-level' %></div>
 
-  <div><%= f.submit "Update", :class => "btn btn-primary" %></div>
-<% end %>
+          <div><%= f.submit "Update", :class => 'btn btn-primary btn-block' %></div>
+      <% end %>
 
-<h3>Cancel my account</h3>
+      <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => "btn btn-primary" %></p>
+      <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => {:confirm => "Are you sure?"}, :method => :delete, :class => "btn btn-primary btn-block" %></p>
 
-<%= link_to "Back", :back %>
+      <%= link_to "Back", :back %>
+     </div>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 class ContributorsController < ApplicationController
+  layout 'full_width'
   require 'rubygems'
   require 'json'
 

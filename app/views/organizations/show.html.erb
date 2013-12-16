@@ -40,7 +40,6 @@
     <div class="row">
       <div class="position-bottom span2">
         <%= link_to_if(@editable, "Edit", edit_organization_path(@organization.id), {:class => 'btn btn-primary'}) {} %>
-        <!--make sure to pass params in order they appear in rake routes!-->
         <%= link_to "This is my organization", organization_user_path(@organization.id, current_user.id), {method: :put, class: 'btn btn-primary'} if @grabbable %>
       </div>
     </div>
