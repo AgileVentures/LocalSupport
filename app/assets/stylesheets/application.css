@@ -22,7 +22,6 @@ body {
 /* GLOBAL STYLES
 -------------------------------------------------- */
 .page-frame {
-    padding: 20px;
     max-width: 1200px;
     min-height: 100%;
     border-radius: 2px;
@@ -32,22 +31,21 @@ body {
     padding-right: 5px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: -20px;
     margin: 0 auto -60px;
 }
-#wrap {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    /* Negative indent footer by it's height */
-    margin: 0 auto -60px;
+
 }
 #push, #footer {
+    clear: both;
     height: 60px;
 }
 
 #main .container {
     background-color: white;
+}
+
+.position-bottom {
+    margin-bottom:0;
 }
 
 /* CUSTOMIZE THE COOKIE ALERT
@@ -87,9 +85,8 @@ body {
 -------------------------------------------------- */
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-wrapper {
-
-    position: absolute;
-    top: 20;
+    margin-top: 20px ;
+    top: 20px;
     left: 0;
     right: 0;
     z-index: 20;
@@ -97,6 +94,7 @@ body {
 
 /* Flip around the padding for proper display in narrow viewports */
 .navbar-wrapper .container {
+
     padding-left: 0;
     padding-right: 0;
 }

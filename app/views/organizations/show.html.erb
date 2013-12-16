@@ -36,7 +36,7 @@
             </p>
         <% end %>
 
-  <div class="container">
+
     <div class="row">
       <div class="position-bottom span2">
         <%= link_to_if(@editable, "Edit", edit_organization_path(@organization.id), {:class => 'btn btn-primary'}) {} %>
@@ -44,7 +44,7 @@
         <%= link_to "This is my organization", organization_user_path(@organization.id, current_user.id), {method: :put, class: 'btn btn-primary'} if @grabbable %>
       </div>
     </div>
-  </div>
+
   <% content_for :map do %>
       <%= gmaps("map_options" => {"auto_adjust" => true, "auto_zoom" => false, "center_latitude" => 51.5978,
                                   "center_longitude" => -0.3370, "zoom" => 13}, "markers" => {"data" => @json}) %>
