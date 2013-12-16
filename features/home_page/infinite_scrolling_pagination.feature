@@ -26,7 +26,6 @@ Scenario: Scrolling down gives more scenarios
 Scenario: Searching gives results in a paginated form
   Given I have created 25 organizations
   And I am on the home page
-  And I click "Close"
   When I search for "e"
   Then I should see a list of 5 organizations on the search page with query "e"
   When I scroll down the organizations list
