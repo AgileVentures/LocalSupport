@@ -10,7 +10,7 @@ require 'capybara'
 require 'capybara-webkit'
 require 'capybara/rspec'
 require 'factory_girl_rails'
-require "rack_session_access/capybara"
+require 'rack_session_access/capybara'
 require 'webmock/rspec'
 Capybara.javascript_driver = :webkit
 

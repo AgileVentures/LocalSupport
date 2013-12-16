@@ -83,6 +83,7 @@ describe UsersController do
       User.should_receive(:all).and_return([regular_user])
       get :index
       assigns(:users).should == [regular_user]
+      response.should render_template 'layouts/full_width'
     end
   end
 end

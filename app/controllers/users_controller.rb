@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  layout 'full_width'
+
+
+
   def update
     user = User.find_by_id(params[:id])
     if params[:organization_id]
