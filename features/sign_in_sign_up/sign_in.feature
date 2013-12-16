@@ -46,6 +46,7 @@ Scenario: Sign in with wrong password for an existing admin user
   Given I sign in as "site_admin@example.com" with password "12345"
   Then I should be on the Sign in page
   And I should see "I'm sorry, you are not authorized to login to the system."
+
 Scenario: Sign in for a non-existent user
   Given I sign in as "non-existent_user@example.com" with password "pppppppp"
   Then I should be on the sign in page
@@ -53,12 +54,11 @@ Scenario: Sign in for a non-existent user
 
 @javascript
 Scenario: Check that signup toggle works
-  #Given cookies are approved
-  And I am on the home page
-  #And javascript is enabled
-  #And I debug
-  #And I click link with id "navLogin"
-  #Then the "menuLogin" should be "open"
+  Given I am on the home page
+  And I click "Close"
+  Then I should not see an approve cookie policy message
+  And I click "Login"
+  Then the "menuLogin" should be "open"
   Then I should see "New organisation? Sign-up.."
   Given I click "toggle_link"
   Then the "loginForm" should be "collapse"

@@ -13,6 +13,9 @@ Feature: Approve cookies
     Then I click "Close"
     Then I should not see an approve cookie policy message
 
-
+  @javascript
+  Scenario: Check that cookies can be approved even with JavaScript
+    Then I click "Close"
+    Then I should not see an approve cookie policy message
 
 
