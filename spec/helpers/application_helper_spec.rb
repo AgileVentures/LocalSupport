@@ -25,6 +25,12 @@ describe ApplicationHelper do
   end
 
   describe 'cookie_policy_accepted' do
-    # more easily tested through cucumber / capybara
+    it 'true with the cookie' do
+      helper.cookies['cookie_policy_accepted'] = true
+      cookie_policy_accepted?.should be_true
+    end
+    it 'false without the cookie' do
+      cookie_policy_accepted?.should be_false
+    end
   end
 end
