@@ -117,3 +117,10 @@ end
 Then(/^the "([^"]*)" should be "([^"]*)"$/) do |id, css_class|
     page.should have_css("##{id}.#{css_class}")
 end
+
+When(/^I click link with id "([^"]*)"$/) do |id|
+  page.find("##{id}").click
+end
+When(/^javascript is enabled$/) do
+  Capybara.javascript_driver
+end

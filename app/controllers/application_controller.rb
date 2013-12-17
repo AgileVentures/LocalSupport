@@ -4,4 +4,13 @@ class ApplicationController < ActionController::Base
      return root_url if current_user.admin? || current_user.organization == nil
      organization_path(current_user.organization.id)
   end
+
+  def allow_cookie_policy
+    response.set_cookie 'cookie_policy_accepted', {
+        value: 'true',
+        path: '/',
+        expires: 1.year.from_now.utc
+    }
+    redirect_to root_path
+  end
 end

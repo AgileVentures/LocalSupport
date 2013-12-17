@@ -8,6 +8,7 @@ Background:
   Given the following users are registered:
   | email             | password |
   | registered-user@example.com | pppppppp |
+  And cookies are approved
 
   Given I am on the home page
   And the dropdown menu is visible

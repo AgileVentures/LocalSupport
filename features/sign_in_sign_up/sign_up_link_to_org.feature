@@ -8,6 +8,7 @@ Feature: If new user's email matches an org's email, the new user with have edit
     Given the following organizations exist:
       | name           | description             | address        | postcode | telephone | email             |
       | Friendly       | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | info@friendly.org |
+    And cookies are approved
 
   Scenario: Sign up and CANNOT edit
     Given I am on the sign up page

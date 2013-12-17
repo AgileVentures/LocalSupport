@@ -84,9 +84,9 @@ gem 'unicorn'
 gem 'redcarpet'
 
 # Adding font awesome
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 
 # validating organization website URLs
-gem "url_validator"
+gem 'url_validator'
 
 

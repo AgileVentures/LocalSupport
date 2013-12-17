@@ -16,6 +16,7 @@ Background:
     | charity_owner@example.com | pppppppp | false | Friendly     | 2007-01-01  10:00:00 |
   Given I am on the home page
   And the sign in form is visible
+  And cookies are approved
 
 Scenario: Sign in for an existing non-admin user unassociated with any organization
   Given I sign in as "normal_user@example.com" with password "pppppppp"
@@ -54,6 +55,8 @@ Scenario: Sign in for a non-existent user
 @javascript
 Scenario: Check that signup toggle works
   Given I am on the home page
+  And I click "Close"
+  Then I should not see an approve cookie policy message
   And I click "Login"
   Then the "menuLogin" should be "open"
   Then I should see "New organisation? Sign-up.."
