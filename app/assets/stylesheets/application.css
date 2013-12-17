@@ -39,6 +39,10 @@ body {
     height: 40px;
 }
 
+#footer a {
+    padding-left: 0px;
+}
+
 #main .container {
     background-color: white;
 }
