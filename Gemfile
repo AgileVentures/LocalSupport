@@ -84,15 +84,9 @@ gem 'unicorn'
 gem 'redcarpet'
 
 # Adding font awesome
-
 gem 'font-awesome-rails'
 
-# Cookie policy gem
-gem 'rack-policy'
-
-gem "font-awesome-rails"
-
 # validating organization website URLs
-gem "url_validator"
+gem 'url_validator'
 
 
