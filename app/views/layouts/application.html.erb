@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<% unless notice_shown? %>
+<% unless cookie_policy_accepted? %>
     <%= render 'layouts/cookie_alert' %>
 <% end %>
 <div class="page-frame">

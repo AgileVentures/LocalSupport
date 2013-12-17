@@ -34,11 +34,8 @@ module ApplicationHelper
     self.output_buffer = render(:file => "layouts/#{layout}")
   end
 
-  def notice_shown?
-    if cgi.cookies().key?("mycookie")
-    end
-
-
+  def cookie_policy_accepted?
+    cookies['cookie_policy_accepted'].present?
   end
 end
 
