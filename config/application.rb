@@ -49,8 +49,7 @@ module LocalSupport
     config.assets.version = '1.0'
 
     config.assets.initialize_on_precompile = false
-    config.middleware.insert_before ActionDispatch::Cookies, Rack::Policy::CookieLimiter, consent_token: 'rack.policy'
-
+    #config.middleware.insert_before ActionDispatch::Cookies, Rack::Policy::CookieLimiter, consent_token: 'rack.policy'
 
   end
 end

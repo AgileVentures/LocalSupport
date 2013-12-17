@@ -33,6 +33,13 @@ module ApplicationHelper
     @view_flow.set(:layout, output_buffer)
     self.output_buffer = render(:file => "layouts/#{layout}")
   end
+
+  def notice_shown?
+    if cgi.cookies().key?("mycookie")
+    end
+
+
+  end
 end
 
 
