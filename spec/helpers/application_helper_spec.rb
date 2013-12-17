@@ -25,6 +25,6 @@ describe ApplicationHelper do
   end
 
   describe 'cookie_policy_accepted' do
-    pending
+    # more easily tested through cucumber / capybara
   end
 end
