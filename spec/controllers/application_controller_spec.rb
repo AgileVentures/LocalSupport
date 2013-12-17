@@ -7,6 +7,11 @@ describe ApplicationController do
   end
 
   describe 'allow_cookie_policy' do
-    pending
+
+    it 'cookie is set and redirected to root' do
+      response.should_receive(:set_cookie)
+      get :allow_cookie_policy
+      response.should redirect_to root_path
+    end
   end
 end
