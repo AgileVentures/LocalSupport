@@ -23,4 +23,8 @@ describe ApplicationHelper do
   describe 'markdown' do
     # tested extensively in features/admin_edit_static_pages.feature
   end
+
+  describe 'cookie_policy_accepted' do
+    pending
+  end
 end

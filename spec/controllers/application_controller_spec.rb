@@ -5,4 +5,8 @@ describe ApplicationController do
   describe 'after_sign_in_path' do
    
   end
+
+  describe 'allow_cookie_policy' do
+    pending
+  end
 end
