@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ContributorsController do
 
-  describe "GET show" do
+  describe 'GET show' do
     before :each do
       @contributors = [
           {'login' => 'thomas', 'avatar_url' => 'http://example.com/thomas.png', 'html_url' => 'http://github.com/thomas', 'contributions' => 7},
@@ -15,9 +15,14 @@ describe ContributorsController do
           to_return(:status => 200, :body => json_data, :headers => {})
     end
 
-    it "assigns the contributors appropriately" do
+    it 'assigns the contributors appropriately' do
       get :show
       assigns(:contributors).should eq(@contributors)
+    end
+
+    it 'should use a full-width layout' do
+      get :show
+      response.should render_template 'layouts/full_width'
     end
   end
 end

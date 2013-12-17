@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
-
+  layout 'full_width'
+  # in a method use render layout: "layout"
   before_filter :authorize, :except => :show
 
   # GET /pages

@@ -19,11 +19,3 @@ Background: organizations have been added to database
 Scenario: Org page of an organization with donation info URL
   Given I am on the charity page for "Age UK"
   Then I should see the donation_info URL for "Age UK"
- 
-Scenario: Org page of an organization without donation info URL 
-  Given I am on the charity page for "Friendly Charity"
-  Then I should not see the donation_info URL for "Friendly Charity"
-  
-  
-
-

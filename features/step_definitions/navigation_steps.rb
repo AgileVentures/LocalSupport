@@ -24,6 +24,20 @@ And(/^the page should be titled "(.*?)"$/) do |title|
   page.should have_selector("title", title)
 end
 
+And (/^I should see a full width layout$/) do
+  within('#content') do
+    page.should have_css('#one_column.span12')
+  end
+end
+
+And (/^I should see a two column layout$/) do
+  within('#content') do
+    page.should have_css('#column1.span6')
+    page.should have_css('#column2.span6')
+  end
+end
+
+
 Then(/^the response status should be 404$/) do
   page.status_code.should == 404
   #page.response_code.should be 404
@@ -74,6 +88,10 @@ end
 Given /^I am on the charity page for "(.*?)"$/ do |name1|
   org1 = Organization.find_by_name(name1)
   visit organization_path org1.id
+  within('#content') do
+    page.should have_css('#column1.span6')
+    page.should have_css('#column2.span6')
+  end
 end
 
 Given /^I am on the edit charity page for "(.*?)"$/ do |name1|
