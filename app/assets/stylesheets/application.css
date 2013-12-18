@@ -47,6 +47,10 @@ body {
     background-color: white;
 }
 
+#main a {
+    padding-left: 0px;
+}
+
 .position-bottom {
     margin-bottom:0;
 }
@@ -138,8 +142,8 @@ body {
     margin-bottom: -40px!important;
 }
 
-#git-container h2, h4, p, a  {
-    padding-left: 8px;
+#git-container h2, h4, p, .git-item a  {
+    padding-left: 8px !important;
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
