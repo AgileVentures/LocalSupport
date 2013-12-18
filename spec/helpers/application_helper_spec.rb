@@ -23,4 +23,14 @@ describe ApplicationHelper do
   describe 'markdown' do
     # tested extensively in features/admin_edit_static_pages.feature
   end
+
+  describe 'cookie_policy_accepted' do
+    it 'true with the cookie' do
+      helper.cookies['cookie_policy_accepted'] = true
+      cookie_policy_accepted?.should be_true
+    end
+    it 'false without the cookie' do
+      cookie_policy_accepted?.should be_false
+    end
+  end
 end

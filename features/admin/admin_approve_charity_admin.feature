@@ -15,6 +15,8 @@ Feature: Site Admin approve charity admin
       | admin@myorg.com    | adminpass0987  | true  | 2008-01-01 00:00:00 | My Organization |                      |
       | pending@myorg.com  | password123    | false | 2008-01-01 00:00:00 |                 | My Organization      |
 
+    And cookies are approved
+
 
   Scenario: As an admin approving a pending user's request
     Given I am signed in as an admin

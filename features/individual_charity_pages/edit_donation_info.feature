@@ -15,6 +15,7 @@ Background: organizations have been added to database
   | email                       | password | admin | organization | confirmed_at |
   | registered_user@example.com | pppppppp | false | Friendly     | 2007-01-01  10:00:00 |
   | registered_user2@example.com| pppppppp | false |              | 2007-01-01  10:00:00 |
+  And cookies are approved
 
 Scenario: Successfully change the donation url for a charity
   # TODO Refactor towards something like this

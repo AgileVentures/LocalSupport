@@ -33,6 +33,7 @@ Scenario: Changing address on the map changes the map coordinates
     Given I am on the home page
     Then the coordinates for "Harrow Bereavement Counselling" and "Youth UK" should not be the same
     And the coordinates for "Age UK" and "Youth UK" should be the same
+    Given cookies are approved
     When I am signed in as a charity worker related to "Youth UK"
     And I update "Youth UK" charity address to be "34 pinner road"
     And I am on the home page

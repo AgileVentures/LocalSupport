@@ -33,6 +33,10 @@ module ApplicationHelper
     @view_flow.set(:layout, output_buffer)
     self.output_buffer = render(:file => "layouts/#{layout}")
   end
+
+  def cookie_policy_accepted?
+    cookies['cookie_policy_accepted'].present?
+  end
 end
 
 

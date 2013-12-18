@@ -5,11 +5,12 @@ Feature: Sign up
   Tracker story ID: https://www.pivotaltracker.com/story/show/47373595
 
 Background:
-Given the following users are registered:
-| email             | password |
-| existent-user1@example.com | pppppppp |
-| existent-user2@example.com | pppppppp |
-And the email queue is clear
+  Given the following users are registered:
+  | email             | password |
+  | existent-user1@example.com | pppppppp |
+  | existent-user2@example.com | pppppppp |
+  And the email queue is clear
+  And cookies are approved
 @email
 Scenario: Sign up for an existing user
   Given I am on the sign up page
