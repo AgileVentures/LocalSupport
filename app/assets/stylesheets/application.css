@@ -13,6 +13,53 @@
     margin-top: 45px;
 }
 
+
+/*Contributors list using Flex-boxes and media types */
+
+#git-container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#git-container .git-item {
+    width: 25%;
+    height: 120px;
+    margin-bottom: -40px!important;
+}
+
+#git-container h2, h4, p, a  {
+    padding-left: 8px;
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    #git-container .git-item {
+        width: 50%;
+        height: 120px;
+        margin-bottom: -20px!important;
+    }
+}
+
+@media (max-width: 767px) {
+
+    #git-container .git-item {
+        width: 50%;
+        height: 120px;
+        margin-bottom: -20px!important;
+    }
+}
+@media (max-width: 480px) {
+
+    #git-container .git-item {
+        width: 50%;
+        height: 120px;
+        margin-bottom: -10px!important;
+    }
+}
+
+
+
+/*End of CSS for contributors list*/
+
 .form-frame {
     position: relative;
     padding: 30px;
