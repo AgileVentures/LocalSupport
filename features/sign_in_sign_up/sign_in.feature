@@ -64,7 +64,7 @@ Scenario: Check that signup toggle works
   Then the "loginForm" should be "collapse"
   Then I should see "Already a member? Login"
   Given I click "toggle_link"
-  Then the "register" should be "collapse"
+  Then the "registerForm" should be "collapse"
 
 
 Scenario: Check class of flash notice  - error
