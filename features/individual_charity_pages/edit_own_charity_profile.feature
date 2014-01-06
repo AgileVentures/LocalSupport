@@ -30,9 +30,12 @@ Scenario: Successfully change the address of a charity
 
 Scenario: Successfully mark the address of a charity as public
   Given I am signed in as a charity worker related to "Friendly"
-  And I update "Friendly" charity address to be public
+  And I am on the edit charity page for "Friendly"
+  And I check "Make Address Public"
+  And I click "Update Organisation"
   Then I should be on the charity page for "Friendly"
-  And I should see address and telephone information for "Friendly"
+  And I should see "34 pinner road"
+
 #TODO refactor into integration test that posts to update method
 #Scenario: Unsuccessfully change the address of a charity
 #  Given I am signed in as a charity worker unrelated to "Friendly"
