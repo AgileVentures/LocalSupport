@@ -18,3 +18,4 @@ deploy:
   app:
       develop: harrowcn-develop
       staging: harrowcn-staging
+      master: harrowcn-production
