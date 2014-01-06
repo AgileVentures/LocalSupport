@@ -31,7 +31,7 @@ body {
     padding-right: 5px;
     margin-left: auto;
     margin-right: auto;
-    margin: 0 auto -40px;
+    margin: 0 auto -80px;
 }
 
 #push, #footer {
@@ -47,6 +47,13 @@ body {
     background-color: white;
 }
 
+#main p, a {
+    padding-left: 0px;
+}
+
+#main .btn {
+    padding-left: 8px !important;
+}
 .position-bottom {
     margin-bottom:0;
 }
@@ -138,8 +145,8 @@ body {
     margin-bottom: -40px!important;
 }
 
-#git-container h2, h4, p, a  {
-    padding-left: 8px;
+#git-container .git-item h2, .git-item h4, .git-item p, .git-item a  {
+    padding-left: 8px !important;
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
