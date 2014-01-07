@@ -67,6 +67,12 @@ describe 'organizations/show.html.erb' do
     rendered.should have_content organization.address
   end
   
+  it 'renders the actual phone if publish phone is true' do
+    organization.publish_phone = true
+    render
+    rendered.should have_content organization.telephone
+  end
+  
   context 'edit button' do
     it 'renders edit button if editable true' do
       @editable = assign(:editable, true)

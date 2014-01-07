@@ -35,6 +35,12 @@
               <%= link_to @organization.website, @organization.website, {:target => '_blank'} %>
             </p>
         <% end %>
+        <% if @organization.telephone.present? && @organization.publish_phone? %>
+            <p>
+              <b>Address:</b>
+              <%= @organization.telephone %>
+            </p>
+        <% end %>
         <% if @organization.donation_info.present? %>
             <p>
               <b>Donation Info:</b>

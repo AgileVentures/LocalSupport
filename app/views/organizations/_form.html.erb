@@ -37,7 +37,10 @@
     <%= f.label :website %>
     <%= f.text_field :website, :class => "org_form" %>
   </div>
-  <div style="float: right;"><label><input id="publish_phone" type="checkbox"><small> Make Public?</small></label></div>
+  <div>
+    <%= f.label :publish_phone, :class => "pull-right small" %>
+    <%= f.check_box :publish_phone, :class => "pull-right" %>
+  </div>
   <div class="field" data-toggle="tooltip" title="Make sure phone number is correct">
     <%= f.label :telephone %>
     <%= f.text_field :telephone, :class => "org_form" %>

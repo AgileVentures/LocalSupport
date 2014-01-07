@@ -54,7 +54,7 @@ end
 
 it "renders a checkbox to make phone number public" do
   render
-  rendered.should have_selector('input', :id => 'publish_phone', :type => 'checkbox')
+  rendered.should have_selector('input', :id => 'organization_publish_phone', :type => 'checkbox')
 end
 
 it 'renders an update button with Anglicized spelling of Organisation' do
