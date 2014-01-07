@@ -49,7 +49,8 @@ end
 
 it "renders a checkbox to make address public" do
   render
-  rendered.should should have_selector('publish_address', :type => 'checkbox')
+  debugger
+  rendered.should should have_selector('input', :id => 'publish_address', :type => 'checkbox')
 end
 
 it "renders a checkbox to make phone number public" do
