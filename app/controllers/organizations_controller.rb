@@ -76,7 +76,6 @@ class OrganizationsController < ApplicationController
       flash[:notice] = PERMISSION_DENIED
       redirect_to organization_path(params[:id]) and return false
     end
-    debugger
     if @organization.update_attributes_with_admin(params[:organization])
 
       redirect_to @organization, notice: 'Organization was successfully updated.'

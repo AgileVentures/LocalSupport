@@ -17,7 +17,7 @@ class Organization < ActiveRecord::Base
   has_and_belongs_to_many :categories
   # Setup accessible (or protected) attributes for your model
   # prevents mass assignment on other fields not in this list
-  attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info
+  attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info, :publish_address
   accepts_nested_attributes_for :users
   scope :order_by_most_recent, order('updated_at DESC')
 
