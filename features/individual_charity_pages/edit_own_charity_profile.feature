@@ -35,6 +35,7 @@ Scenario: Successfully mark the address of a charity as public
   And I press "Update Organisation"
   Then I should be on the charity page for "Friendly"
   And I should see "34 pinner road"
+  And I should see "Address"
 
   Scenario: Successfully mark the phone number of a charity as public
     Given I am signed in as a charity worker related to "Friendly"
@@ -43,6 +44,7 @@ Scenario: Successfully mark the address of a charity as public
     And I press "Update Organisation"
     Then I should be on the charity page for "Friendly"
     And I should see "020800000"
+    And I should see "Telephone"
 
 #TODO refactor into integration test that posts to update method
 #Scenario: Unsuccessfully change the address of a charity
