@@ -49,7 +49,7 @@ end
 
 it "renders a checkbox to make address public" do
   render
-  rendered.should have_selector('input', :id => 'publish_address', :type => 'checkbox')
+  rendered.should have_selector('input', :id => 'organization_publish_address', :type => 'checkbox')
 end
 
 it "renders a checkbox to make phone number public" do
