@@ -49,13 +49,12 @@ end
 
 it "renders a checkbox to make address public" do
   render
-  debugger
-  rendered.should should have_selector('input', :id => 'publish_address', :type => 'checkbox')
+  rendered.should have_selector('input', :id => 'publish_address', :type => 'checkbox')
 end
 
 it "renders a checkbox to make phone number public" do
   render
-  rendered.should should have_selector('publish_phone', :type => 'checkbox')
+  rendered.should have_selector('input', :id => 'publish_phone', :type => 'checkbox')
 end
 
 it 'renders an update button with Anglicized spelling of Organisation' do
