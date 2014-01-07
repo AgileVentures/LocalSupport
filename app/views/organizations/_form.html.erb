@@ -13,8 +13,11 @@
     <%= f.label :name %>
     <%= f.text_field :name, :class => "org_form" %>
   </div>
-    <div style="float: right;"><label><input id="publish_address" type="checkbox"><small> Make Public?</small></label></div>
-    <div class="field" data-toggle="tooltip" title="Enter a complete address">
+  <div>
+    <%= f.label :publish_address, :class => "pull-right small" %>
+    <%= f.check_box :publish_address, :class => "pull-right" %>
+  </div>
+  <div class="field" data-toggle="tooltip" title="Enter a complete address">
     <%= f.label :address %>
     <%= f.text_field :address, :class => "org_form" %>
   </div>
