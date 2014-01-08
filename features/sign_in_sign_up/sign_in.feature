@@ -15,7 +15,6 @@ Background:
     | site_admin@example.com    | pppppppp | true  |              | 2007-01-01  10:00:00 |
     | charity_owner@example.com | pppppppp | false | Friendly     | 2007-01-01  10:00:00 |
   Given I am on the home page
-  And the sign in form is visible
   And cookies are approved
 
 Scenario: Sign in for an existing non-admin user unassociated with any organization
@@ -53,18 +52,28 @@ Scenario: Sign in for a non-existent user
   And I should see "I'm sorry, you are not authorized to login to the system"
 
 @javascript
-Scenario: Check that signup toggle works
-  Given I am on the home page
-  And I click "Close"
-  Then I should not see an approve cookie policy message
-  And I click "Login"
-  Then the "menuLogin" should be "open"
-  Then I should see "New organisation? Sign-up.."
+Scenario: Check that login/register toggle works
+  # Homepage starts with everything closed
+  Then the "menuLogin" should be not visible
+  Then the "loginForm" should be not visible
+  Then the "registerForm" should be not visible
+  # when first opened
+  Given I click "Login"
+  Then the "menuLogin" should be visible
+  And the "loginForm" should be visible
+  And the "registerForm" should be not visible
+  And I should see "New organisation? Sign-up.."
+  # click one way
   Given I click "toggle_link"
-  Then the "loginForm" should be "collapse"
-  Then I should see "Already a member? Login"
+  Then the "loginForm" should be not visible
+  And the "registerForm" should be visible
+  And I should see "Already a member? Login"
+  # then click back the other way
   Given I click "toggle_link"
-  Then the "registerForm" should be "collapse"
+  Then the "menuLogin" should be visible
+  And the "loginForm" should be visible
+  And the "registerForm" should be not visible
+  And I should see "New organisation? Sign-up.."
 
 
 Scenario: Check class of flash notice  - error

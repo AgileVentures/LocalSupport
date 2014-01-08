@@ -11,7 +11,6 @@ Background:
   And cookies are approved
 
   Given I am on the home page
-  And the dropdown menu is visible
   And I follow "Forgot your password?"
   And the email queue is clear
 

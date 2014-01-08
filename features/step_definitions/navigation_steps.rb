@@ -114,6 +114,10 @@ When(/^I visit "(.*?)"$/) do |path|
   visit path
 end
 
+Then(/^the "([^"]*)" should be (not )?visible$/) do |id, negate|
+  page.should have_selector("##{id}", visible: !negate)
+end
+
 Then(/^the "([^"]*)" should be "([^"]*)"$/) do |id, css_class|
     page.should have_css("##{id}.#{css_class}")
 end
