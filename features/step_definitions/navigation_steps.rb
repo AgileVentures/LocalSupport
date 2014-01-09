@@ -115,7 +115,13 @@ When(/^I visit "(.*?)"$/) do |path|
 end
 
 Then(/^the "([^"]*)" should be (not )?visible$/) do |id, negate|
-  page.should have_selector("##{id}", visible: !negate)
+  # http://stackoverflow.com/a/15782921
+  # Capybara "visible?" method(s) are inaccurate!
+  regex = /height: 0/ # Assume style="height: 0px;" is the only means of invisibility
+  style = page.find("##{id}")['style']
+  sleep 0.25 if style   # need to give js a moment to modify the DOM
+  expectation = negate ? :should : :should_not
+  style ? style.send(expectation, have_text(regex)) : negate.nil?
 end
 
 Then(/^the "([^"]*)" should be "([^"]*)"$/) do |id, css_class|
