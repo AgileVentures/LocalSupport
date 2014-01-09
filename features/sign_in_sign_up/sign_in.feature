@@ -17,40 +17,40 @@ Background:
   Given I am on the home page
   And cookies are approved
 
-#Scenario: Sign in for an existing non-admin user unassociated with any organization
-#  Given I sign in as "normal_user@example.com" with password "pppppppp"
-#  Then I should see a link or button "normal_user@example.com"
-#
-#Scenario: Sign in with wrong password for an existing non-admin user unassociated with any organization
-#  Given I sign in as "normal_user@example.com" with password "12345"
-#  Then I should be on the Sign in page
-#  And I should see "I'm sorry, you are not authorized to login to the system."
-#
-#Scenario: Sign in for an existing non-admin user associated with an organization
-#  Given I sign in as "charity_owner@example.com" with password "pppppppp"
-#  Then I should be on the charity page for "Friendly"
-#  And I should see a link or button "charity_owner@example.com"
-#
-#Scenario: Sign in with wrong password for an existing non-admin user associated with an organization
-#  Given I sign in as "charity_owner@example.com" with password "12345"
-#  Then I should be on the Sign in page
-#  And I should see "I'm sorry, you are not authorized to login to the system."
-#
-#Scenario: Sign in for an existing admin user
-#  Given I sign in as "site_admin@example.com" with password "pppppppp"
-#  Then I should be on the home page
-#  And I should see a link or button "site_admin@example.com"
-#
-#Scenario: Sign in with wrong password for an existing admin user
-#  Given I sign in as "site_admin@example.com" with password "12345"
-#  Then I should be on the Sign in page
-#  And I should see "I'm sorry, you are not authorized to login to the system."
-#
-#Scenario: Sign in for a non-existent user
-#  Given I sign in as "non-existent_user@example.com" with password "pppppppp"
-#  Then I should be on the sign in page
-#  And I should see "I'm sorry, you are not authorized to login to the system"
-#
+Scenario: Sign in for an existing non-admin user unassociated with any organization
+  Given I sign in as "normal_user@example.com" with password "pppppppp"
+  Then I should see a link or button "normal_user@example.com"
+
+Scenario: Sign in with wrong password for an existing non-admin user unassociated with any organization
+  Given I sign in as "normal_user@example.com" with password "12345"
+  Then I should be on the Sign in page
+  And I should see "I'm sorry, you are not authorized to login to the system."
+
+Scenario: Sign in for an existing non-admin user associated with an organization
+  Given I sign in as "charity_owner@example.com" with password "pppppppp"
+  Then I should be on the charity page for "Friendly"
+  And I should see a link or button "charity_owner@example.com"
+
+Scenario: Sign in with wrong password for an existing non-admin user associated with an organization
+  Given I sign in as "charity_owner@example.com" with password "12345"
+  Then I should be on the Sign in page
+  And I should see "I'm sorry, you are not authorized to login to the system."
+
+Scenario: Sign in for an existing admin user
+  Given I sign in as "site_admin@example.com" with password "pppppppp"
+  Then I should be on the home page
+  And I should see a link or button "site_admin@example.com"
+
+Scenario: Sign in with wrong password for an existing admin user
+  Given I sign in as "site_admin@example.com" with password "12345"
+  Then I should be on the Sign in page
+  And I should see "I'm sorry, you are not authorized to login to the system."
+
+Scenario: Sign in for a non-existent user
+  Given I sign in as "non-existent_user@example.com" with password "pppppppp"
+  Then I should be on the sign in page
+  And I should see "I'm sorry, you are not authorized to login to the system"
+
 @javascript
 Scenario: Check that login/register toggle works
   # when first opened
