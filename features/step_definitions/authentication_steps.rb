@@ -80,18 +80,6 @@ Given /^I sign in as "(.*?)" with password "(.*?)"$/ do |email, password|
   click_link_or_button "Sign in"
 end
 
-Given /^the sign in form is visible$/ do
-  #expect(page).to have_form('loginForm')
-  expect(page).to have_field('user_email')
-  expect(page).to have_field('user_password')
-  expect(page).to have_button('signin')
-  #click_link 'Org Login'
-end
-
-Given /^the dropdown menu is visible$/ do
-  expect(page).to have_css('#navLogin')
-end
-
 Given /^I am on the sign up page$/ do
   step "I am on the home page"
   expect(page).to have_field('signup_email')
@@ -122,6 +110,3 @@ end
 And(/^cookies are not approved$/) do
   steps %Q{And I have a "cookie_policy_accepted" cookie set to "false"}
 end
-
-
-
