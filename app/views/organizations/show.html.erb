@@ -29,8 +29,8 @@
               <%= link_to @organization.website, @organization.website, {:target => '_blank'} %>
             </p>
         <% end %>
-        <% if @organization.donation_info.present? %>
-            <p>
+  users/sign_in(.:format)
+  <p>
               <b>Donation Info:</b>
               <%= link_to "Donate to #{@organization.name} now!", @organization.donation_info, {:target => '_blank'} %>
             </p>
@@ -39,15 +39,8 @@
 
     <div class="row">
       <div class="position-bottom span2">
-        <%= link_to_if(@editable, "Edit", edit_organization_path(@organization.id), {:class => 'btn btn-primary'}) {} %>
-        <!--<% if @grabbable %>-->
-            <!--<% if current_user %>-->
-                <!--link 1-->
-            <!--<% else %>-->
-                <!--link 2-->
-                <!--<% end %>-->
-            <!--<% end %>-->
-        <%= link_to "This is my organization", organization_user_path(@organization.id, current_user.id), {method: :put, class: 'btn btn-primary'} if @grabbable %>
+        <%= link_to_if(@editable, "Edit", edit_organization_path(@organization.id), {:class => 'btn btn-primary'}){} %>
+        <%= link_to "This is my organization", @next_path, {method: :put, class: 'btn btn-primary'} if @grabbable %>
       </div>
     </div>
 
