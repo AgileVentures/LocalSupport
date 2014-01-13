@@ -10,9 +10,6 @@ Feature: This is my organization
      And the following organizations exist:
        | name             | address        |
        | The Organization | 83 pinner road |
-    And the following users are registered:
-      | email                     | password | admin | organization | confirmed_at         |
-      | normal_user@example.com   | pppppppp |       |              | 2007-01-01  10:00:00 |
 #      | site_admin@example.com    | pppppppp | true  |              | 2007-01-01  10:00:00 |
 #      | charity_owner@example.com | pppppppp | false | Friendly     | 2007-01-01  10:00:00 |
 
@@ -29,11 +26,20 @@ Feature: This is my organization
   # Happiest path: user successfully logs in with a confirmed login
   Scenario: I am not signed in, I will be offered "This is my organization" claim button
     When I am on the charity page for "The Organization"
-    And I should see "This is my organization"
+    Then I should see "This is my organization"
     When I click "This is my organization"
     Then I should be on the Sign in page
-    When I sign in as "normal_user@example.com" with password "pppppppp"
+    When I sign in as "nonadmin@myorg.com" with password "pppppppp"
     Then I should be on the charity page for "The Organization"
+
+  Scenario: I am not a registered user, I will be offered "This is my organization" claim button
+    When I am on the charity page for "The Organization"
+    Then I should see "This is my organization"
+    When I click "This is my organization"
+    Then I should be on the Sign in page
+    When I sign up as "normal_user@myorg.com" with password "pppppppp" and password confirmation "pppppppp"
+    Then I should be on the charity page for "The Organization"
+    And "normal_user@myorg.com"'s request status for "The Organization" should be updated appropriately
 
   # User has a login, not confirmed
   # User has no login, signs up successfully
