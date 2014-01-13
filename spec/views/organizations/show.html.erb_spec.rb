@@ -80,21 +80,20 @@ describe 'organizations/show.html.erb' do
 
   describe 'this is my organization button' do
     context 'logged in user' do
-        let(:user) { stub_model User, :id => 2 }
-        it 'renders grab button if grabbable true' do
-          @grabbable = assign(:grabbable, true)
-          view.stub(:current_user).and_return(user)
-          render
-          rendered.should have_link 'This is my organization', :href => organization_user_path(organization.id, user.id)
-          #TODO should check hidden value for put
-        end
-        it 'does not render grab button if grabbable false' do
-          @grabbable = assign(:grabbable, false)
-          render
-          rendered.should_not have_button('This is my organization')
-        end
+      let(:user) { stub_model User, :id => 2 }
+      it 'renders grab button if grabbable true' do
+        @grabbable = assign(:grabbable, true)
+        view.stub(:current_user).and_return(user)
+        render
+        rendered.should have_link 'This is my organization', :href => organization_user_path(organization.id, user.id)
+        #TODO should check hidden value for put
+      end
+      it 'does not render grab button if grabbable false' do
+        @grabbable = assign(:grabbable, false)
+        render
+        rendered.should_not have_button('This is my organization')
+      end
     end
-
 
     context 'user not logged in' do
       #let(:user) { stub_model User, :id => nil }
