@@ -15,4 +15,10 @@ Scenario: Display project contributors
   And I should see "thomas"
   And I should see "john"
 
+Scenario: Display avatar and links
+  Given I am on the contributors page
+  Then I should see a link avatar for "thomas"
+  And I should see a link avatar for "john"
+
+
 
