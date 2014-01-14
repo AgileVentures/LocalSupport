@@ -14,11 +14,11 @@ end
 
 
 Then(/^I should see a link avatar for "([^"]*)"$/) do |name|
-  @contributors.select do |contributor|
-    contributor["login"] == name
-    avatar = contributor['avatar_url']
-    link = contributor['html_url']
-    page.should have_css("a[href='#{link}'] img[src='#{avatar}']")
-  end
+  @contributor = (@contributors.find do |contributor|
+    contributor['login'] == name
+  end)
+  avatar = @contributor['avatar_url']
+  link = @contributor['html_url']
+  page.should have_css("a[href='#{link}'] img[src='#{avatar}']")
 end
 
