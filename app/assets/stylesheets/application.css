@@ -64,7 +64,7 @@ body {
 #cookie-message {
     display: none;
     text-align: left;
-    position: absolute;
+    position: fixed;  /* changed from absolute to make sticky footer */
     z-index: 1001;
     bottom: 0;
     left: 0;
