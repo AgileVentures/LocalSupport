@@ -53,19 +53,3 @@
                                   "center_longitude" => -0.3370, "zoom" => 13}, "markers" => {"data" => @json}) %>
   <% end %>
 </div>
-
-<script>
-    $('#TIMO').on('click', function() {
-        if (this.attr('signed_in') === 'false') {
-            var nav  = $('.nav-collapse'),
-                menu = $('#menuLogin');
-            if ((nav.attr('style') === undefined) || (nav.attr('style') === "height: 0px;")) {
-                nav.collapse('show');
-            }
-            if (menu.attr('class') === "dropdown ") {
-                menu.attr('class', 'dropdown open')
-            }
-            return false
-        }
-    });
-</script>
