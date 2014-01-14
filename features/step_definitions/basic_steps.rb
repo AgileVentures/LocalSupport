@@ -350,3 +350,15 @@ And(/^I (un)?check "([^"]*)"$/) do |negate, css|
   box_state = negate ? :uncheck : :check
   page.send(box_state, css)
 end
+
+Given(/^the (.*?) for "(.*?)" has been marked (public|hidden)$/) do |field,name,mode|
+  org = Organization.find_by_name(name)
+  case mode
+  when "hidden"
+    org.send("publish_#{field}=", false)
+  when "public"
+    org.send("publish_#{field}=", true)
+  end
+  org.save!
+end
+

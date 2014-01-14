@@ -31,20 +31,42 @@ Scenario: Successfully change the address of a charity
 Scenario: Successfully mark the address of a charity as public
   Given I am signed in as a charity worker related to "Friendly"
   And I am on the edit charity page for "Friendly"
+  And the address for "Friendly" has been marked hidden
   And I check "organization_publish_address"
   And I press "Update Organisation"
   Then I should be on the charity page for "Friendly"
   And I should see "34 pinner road"
   And I should see "Address"
 
-  Scenario: Successfully mark the phone number of a charity as public
-    Given I am signed in as a charity worker related to "Friendly"
-    And I am on the edit charity page for "Friendly"
-    And I check "organization_publish_phone"
-    And I press "Update Organisation"
-    Then I should be on the charity page for "Friendly"
-    And I should see "020800000"
-    And I should see "Telephone"
+Scenario: Successfully mark the phone number of a charity as public
+  Given I am signed in as a charity worker related to "Friendly"
+  And I am on the edit charity page for "Friendly"
+  And the phone for "Friendly" has been marked hidden
+  And I check "organization_publish_phone"
+  And I press "Update Organisation"
+  Then I should be on the charity page for "Friendly"
+  And I should see "020800000"
+  And I should see "Telephone"
+
+Scenario: Successfully mark the address of a charity as private
+  Given I am signed in as a charity worker related to "Friendly"
+  And I am on the edit charity page for "Friendly"
+  And the address for "Friendly" has been marked public
+  And I uncheck "organization_publish_address"
+  And I press "Update Organisation"
+  Then I should be on the charity page for "Friendly"
+  And I should not see "34 pinner road"
+  And I should not see "Address"
+
+Scenario: Successfully mark the phone number of a charity as private
+  Given I am signed in as a charity worker related to "Friendly"
+  And I am on the edit charity page for "Friendly"
+  And the phone for "Friendly" has been marked public
+  And I uncheck "organization_publish_phone"
+  And I press "Update Organisation"
+  Then I should be on the charity page for "Friendly"
+  And I should not see "020800000"
+  And I should not see "Telephone"
 
 #TODO refactor into integration test that posts to update method
 #Scenario: Unsuccessfully change the address of a charity
