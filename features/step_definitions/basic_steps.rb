@@ -354,11 +354,10 @@ end
 Given(/^the (.*?) for "(.*?)" has been marked (public|hidden)$/) do |field,name,mode|
   org = Organization.find_by_name(name)
   case mode
-  when "hidden"
-    org.send("publish_#{field}=", false)
-  when "public"
-    org.send("publish_#{field}=", true)
+    when "hidden" then publish = false
+    when "public" then publish = true
   end
+  org.send("publish_#{field}=", publish)
   org.save!
 end
 
