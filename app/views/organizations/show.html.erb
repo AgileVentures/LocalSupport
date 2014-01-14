@@ -38,12 +38,12 @@
 
 
     <div class="row">
-      <div class="position-bottom span2">
+      <div class="position-bottom span6">
         <%= link_to_if(@editable, "Edit", edit_organization_path(@organization.id), {:class => 'btn btn-primary'}) {} %>
         <% if current_user %>
           <%= link_to "This is my organization", organization_user_path(@organization.id, current_user.id), {method: :put, class: 'btn btn-primary'} if @grabbable %>
         <% else %>
-          <%= link_to "This is my organization", new_user_session_path, {method: :put, class: 'btn btn-primary'} if @grabbable %>
+          <%= link_to "This is my organization", new_user_session_path, {method: :put, signed_in: current_user.present?, id: 'TIMO', class: 'btn btn-primary btn-large btn-block'} if @grabbable %>
         <% end %>
       </div>
     </div>
@@ -53,3 +53,19 @@
                                   "center_longitude" => -0.3370, "zoom" => 13}, "markers" => {"data" => @json}) %>
   <% end %>
 </div>
+
+<script>
+    $('#TIMO').on('click', function() {
+        if (this.attr('signed_in') === 'false') {
+            var nav  = $('.nav-collapse'),
+                menu = $('#menuLogin');
+            if ((nav.attr('style') === undefined) || (nav.attr('style') === "height: 0px;")) {
+                nav.collapse('show');
+            }
+            if (menu.attr('class') === "dropdown ") {
+                menu.attr('class', 'dropdown open')
+            }
+            return false
+        }
+    });
+</script>
