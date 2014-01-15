@@ -1,9 +1,10 @@
 (function($) {
     'use strict';
     $.fn.TIMO = function() {
+        var that = this;
         // do I use #TIMO or this?
-        $('#TIMO').on('click', function() {
-            if (this.attr('signed_in') === 'false') {
+        $(this).on('click', function() {
+            if (that.attr('signed_in') === 'false') {
                 var nav  = $('.nav-collapse'),
                     menu = $('#menuLogin');
                 if ((nav.attr('style') === undefined) || (nav.attr('style') === "height: 0px;")) {
