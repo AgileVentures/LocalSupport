@@ -1,3 +1,7 @@
+// Lesson: You can't spy on a $(css) jQuery DOM selector, it's not an object, it's a return value.
+// So instead of spying on $('.nav-collpase'), I spy on $.fn .
+// http://stackoverflow.com/a/6198122/2197402
+
 describe('Jasmine sanity check', function() {
     it('works', function() { expect(true).toBe(true); });
 });
@@ -6,9 +10,10 @@ describe('what am i doing', function() {
     var timo, nav, menu;
 
     beforeEach(function() {
-        jasmine.getFixtures().load('TIMO_body.html');
+
+//        loadFixtures('TIMO_full.html');
         jasmine.getFixtures().load('TIMO_header.html');
-//        jasmine.getFixtures().set('<div class="nav-collapse collapse" style="height: 0px;"><li id="menuLogin" class="dropdown"></li></div>');
+        jasmine.getFixtures().appendLoad('TIMO_body.html');
         timo = $('#TIMO');
         nav  = $('.nav-collapse');
         menu = $('#menuLogin');
