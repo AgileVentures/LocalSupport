@@ -7,12 +7,12 @@
             if (that.attr('data-signed_in') === 'false') {
                 var nav  = $('.nav-collapse'),
                     menu = $('#menuLogin');
-                // $('#menuLogin:hidden')
+                // first time: no style attr ...
                 if ((nav.attr('style') === undefined) || (nav.attr('style') === "height: 0px;")) {
                     nav.collapse('show');
                 }
-                if (menu.attr('class') === "dropdown ") {
-                    menu.attr('class', 'dropdown open')
+                if (menu.hasClass('dropDown')) {
+                    menu.addClass('open')
                 }
                 return false
             }
