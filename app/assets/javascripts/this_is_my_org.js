@@ -4,9 +4,10 @@
         var that = this;
         // do I use #TIMO or this?
         $(this).on('click', function() {
-            if (that.attr('signed_in') === 'false') {
+            if (that.attr('data-signed_in') === 'false') {
                 var nav  = $('.nav-collapse'),
                     menu = $('#menuLogin');
+                // $('#menuLogin:hidden')
                 if ((nav.attr('style') === undefined) || (nav.attr('style') === "height: 0px;")) {
                     nav.collapse('show');
                 }

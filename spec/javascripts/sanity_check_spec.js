@@ -16,7 +16,7 @@ describe('what am i doing', function() {
     it('I should spy on fn TIMO', function() {
         // https://github.com/velesin/jasmine-jquery#event-spies
         var spyEvent = spyOnEvent(timo, 'click');
-        $(timo).click();
+//        $(timo).click();
         expect('click').toHaveBeenTriggeredOn(timo);
         // WHY DOESN'T THIS WORK?? It's pure copy-pasta.
 //        expect(spyEvent).toHaveBeenTriggered()
