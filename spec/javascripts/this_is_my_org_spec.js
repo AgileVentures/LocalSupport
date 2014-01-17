@@ -7,32 +7,34 @@
 // https://github.com/seyhunak/twitter-bootstrap-rails/blob/master/app/assets/javascripts/twitter/bootstrap/bootstrap-collapse.js#L69
 
 describe('This is my Organization button', function() {
-    var timo, nav, menu, spy, spyEvent;
+    var timo, nav, menu, spyCollapse;
     beforeEach(function() {
-        jasmine.getFixtures().load('TIMO_button.html');
+        setFixtures('<a id="TIMO">This is my organization</a>');
+        appendSetFixtures(sandbox({class:'nav-collapse'}));
+        appendSetFixtures('<li id="menuLogin" class="dropdown"></li>');
         timo = $('#TIMO');
+        nav  = $('.nav-collapse');
+        menu = $('#menuLogin');
+        spyCollapse = spyOn($.fn, 'collapse').andCallThrough();
+        spyOnEvent(nav, 'show');
+        spyOnEvent(timo, 'click');
         timo.TIMO();
     });
-    it('TIMO button should be available', function() {
+    it('matchers should match', function() {
         expect(timo.length).not.toBe(0);
+        expect(nav.length).not.toBe(0);
+        expect(menu.length).not.toBe(0);
     });
     describe('when not logged in', function() {
-        beforeEach(function() {
-            jasmine.getFixtures().appendSet(sandbox({class:'nav-collapse'}));
-            jasmine.getFixtures().appendSet('<li id="menuLogin" class="dropdown"></li>');
-            nav  = $('.nav-collapse');
-            menu = $('#menuLogin');
-            spy = spyOn($.fn, 'collapse').andCallThrough();
-            spyEvent = spyOnEvent(nav, 'show');
-        });
-        it('nav bar and login menu should be available', function() {
-            expect(nav.length).not.toBe(0);
-            expect(menu.length).not.toBe(0);
+        beforeEach(function() { timo.attr('data-signed_in', 'false') });
+        it('click propagation should be stopped', function() {
+            timo.click();
+            expect('click').toHaveBeenStoppedOn(timo);
         });
         describe('when login menu is closed and TIMO is clicked', function() {
             beforeEach(function() { timo.click() });
             it('$.fn.TIMO will call collapse("show")', function() {
-                expect(spy).toHaveBeenCalledWith('show');
+                expect(spyCollapse).toHaveBeenCalledWith('show');
             });
             it('nav will have "show" event', function() {
                 expect('show').toHaveBeenTriggeredOn(nav)
@@ -51,7 +53,7 @@ describe('This is my Organization button', function() {
                 timo.click()
             });
             it('$.fn.TIMO will not call collapse("show")', function() {
-                expect(spy).not.toHaveBeenCalledWith('show');
+                expect(spyCollapse).not.toHaveBeenCalledWith('show');
             });
             it('nav will not have "show" event', function() {
                 expect('show').not.toHaveBeenTriggeredOn(nav)
@@ -62,6 +64,13 @@ describe('This is my Organization button', function() {
             it('menu does not change attributes', function() {
                 expect(menu).toHaveClass('open');
             });
+        });
+    });
+    describe('when logged in', function() {
+        it('should return true, allowing default behavior', function() {
+            timo.attr('data-signed_in', 'true');
+            timo.click();
+            expect('click').not.toHaveBeenStoppedOn(timo);
         });
     });
 });
