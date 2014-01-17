@@ -28,25 +28,20 @@ Scenario: Successfully change the address of a charity
   And I update "Friendly" charity address to be "30 pinner road"
   Then I should be on the charity page for "Friendly"
 
-Scenario: Successfully mark the address of a charity as public
+Scenario Outline: Successfully mark a field of a charity as public
   Given I am signed in as a charity worker related to "Friendly"
   And I am on the edit charity page for "Friendly"
-  And the address for "Friendly" has been marked hidden
-  And I check "organization_publish_address"
+  And the <field> for "Friendly" has been marked hidden
+  And I check "<field_checkbox>"
   And I press "Update Organisation"
   Then I should be on the charity page for "Friendly"
-  And I should see "34 pinner road"
-  And I should see "Address"
+  And I should see "<field_contents>"
+  And I should see "<field_label>"
+Examples:
+  | field     | field_checkbox               | field_contents  | field_label |
+  | phone     | organization_publish_phone   | 020800000       | Telephone   |
+  | address   | organization_publish_address | 34 pinner road  | Address     |
 
-Scenario: Successfully mark the phone number of a charity as public
-  Given I am signed in as a charity worker related to "Friendly"
-  And I am on the edit charity page for "Friendly"
-  And the phone for "Friendly" has been marked hidden
-  And I check "organization_publish_phone"
-  And I press "Update Organisation"
-  Then I should be on the charity page for "Friendly"
-  And I should see "020800000"
-  And I should see "Telephone"
 
 Scenario: Successfully mark the address of a charity as private
   Given I am signed in as a charity worker related to "Friendly"
