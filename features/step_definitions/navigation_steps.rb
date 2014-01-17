@@ -52,7 +52,7 @@ Given /^I press "(.*?)"$/ do |button|
   click_button(button)
 end
 
-When /^I click "(.*)"$/ do |link|
+When /^I click "(.*)"$/ |link|
   click_link(link)
 end
 
@@ -117,11 +117,15 @@ end
 Then(/^the "([^"]*)" should be (not )?visible$/) do |id, negate|
   # http://stackoverflow.com/a/15782921
   # Capybara "visible?" method(s) are inaccurate!
-  regex = /height: 0/ # Assume style="height: 0px;" is the only means of invisibility
-  style = page.find("##{id}")['style']
-  sleep 0.25 if style   # need to give js a moment to modify the DOM
-  expectation = negate ? :should : :should_not
-  style ? style.send(expectation, have_text(regex)) : negate.nil?
+
+  #regex = /height: 0/ # Assume style="height: 0px;" is the only means of invisibility
+  #style = page.find("##{id}")['style']
+  #sleep 0.25 if style   # need to give js a moment to modify the DOM
+  #expectation = negate ? :should : :should_not
+  #style ? style.send(expectation, have_text(regex)) : negate.nil?
+
+  elem = page.find("##{id}")
+  negate ? !elem.visible? : elem.visible?
 end
 
 Then(/^the "([^"]*)" should be "([^"]*)"$/) do |id, css_class|

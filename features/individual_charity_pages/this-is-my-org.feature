@@ -21,11 +21,15 @@ Feature: This is my organization
     And "nonadmin@myorg.com"'s request status for "The Organization" should be updated appropriately
 
   # Happiest path: user successfully logs in with a confirmed login
+#  @javascript
   Scenario: I am not signed in, I will be offered "This is my organization" claim button
     When I am on the charity page for "The Organization"
+    Then the "loginForm" should be not visible
     Then I should see "This is my organization"
     When I click "This is my organization"
+    Then the "loginForm" should be visible
     Then I should be on the Sign in page
+    Then I should be on the charity page for "The Organization"
     When I sign in as "nonadmin@myorg.com" with password "pppppppp"
     Then I should be on the charity page for "The Organization"
 

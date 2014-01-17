@@ -11,6 +11,11 @@ class ApplicationController < ActionController::Base
         path: '/',
         expires: 1.year.from_now.utc
     }
+    respond_to do |format|
+      format.html redirect_to root_path
+      format.json { render :nothing => true, :status => 200 }
+    end
+
     redirect_to root_path
   end
 end
