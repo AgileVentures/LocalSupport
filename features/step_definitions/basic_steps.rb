@@ -345,3 +345,19 @@ Then(/^"(.*?)" is a charity admin of "(.*?)"$/) do |user_email, org_name|
   org = Organization.find_by_name(org_name)
   user.organization.should == org
 end
+
+And(/^I (un)?check "([^"]*)"$/) do |negate, css|
+  box_state = negate ? :uncheck : :check
+  page.send(box_state, css)
+end
+
+Given(/^the (.*?) for "(.*?)" has been marked (public|hidden)$/) do |field,name,mode|
+  org = Organization.find_by_name(name)
+  case mode
+    when "hidden" then publish = false
+    when "public" then publish = true
+  end
+  org.send("publish_#{field}=", publish)
+  org.save!
+end
+

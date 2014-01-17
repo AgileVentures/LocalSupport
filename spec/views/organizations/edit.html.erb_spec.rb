@@ -47,6 +47,16 @@ it "renders a form field to add an administrator email" do
   rendered.should have_field :organization_admin_email_to_add
 end
 
+it "renders a checkbox to make address public" do
+  render
+  rendered.should have_selector('input', :id => 'organization_publish_address', :type => 'checkbox')
+end
+
+it "renders a checkbox to make phone number public" do
+  render
+  rendered.should have_selector('input', :id => 'organization_publish_phone', :type => 'checkbox')
+end
+
 it 'renders an update button with Anglicized spelling of Organisation' do
   render
   rendered.should have_selector("input", :type => "submit", :value => "Update Organisation")
