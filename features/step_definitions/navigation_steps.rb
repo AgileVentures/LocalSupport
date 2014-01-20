@@ -52,7 +52,7 @@ Given /^I press "(.*?)"$/ do |button|
   click_button(button)
 end
 
-When /^I click "(.*)"$/ |link|
+When /^I click "(.*)"$/ do |link|
   click_link(link)
 end
 
