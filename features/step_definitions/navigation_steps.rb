@@ -13,6 +13,7 @@ Then /^I should be on the (.*) page$/ do |location|
   when "organizations index" then current_path.should == organizations_path
   when "users" then current_path.should == users_path
   when "contributors" then current_path.should == contributors_path
+  else raise "No matching path found for #{location}!"
   end
 end
 
@@ -56,6 +57,10 @@ When /^I click "(.*)"$/ do |link|
   click_link(link)
 end
 
+When /^I click id "(.*)"$/ do |id|
+  find("##{id}").click
+end
+
 When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
@@ -66,7 +71,7 @@ end
 
 Then /^I should be on the charity page for "(.*?)"$/ do |charity_name|
   charity = Organization.find_by_name(charity_name)
-  expect(current_path).to eq(organization_path charity.id) 
+  expect(current_path).to eq(organization_path charity.id)
 end
 
 Then /^following Disclaimer link should display Disclaimer$/ do
