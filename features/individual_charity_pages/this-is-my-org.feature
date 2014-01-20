@@ -29,8 +29,8 @@ Feature: This is my organization
     When I click id "TIMO"
     Then the "loginForm" should be visible
     Then I should be on the charity page for "The Organization"
-    When I sign in as "nonadmin@myorg.com" with password "pppppppp"
-    Then I should be on the charity page for "The Organization"
+#    When I sign in as "nonadmin@myorg.com" with password "pppppppp"
+#    Then I should be on the charity page for "The Organization"
 
   Scenario: I am not a registered user, I will be offered "This is my organization" claim button
     When I am on the charity page for "The Organization"
