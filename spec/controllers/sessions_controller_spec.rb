@@ -14,6 +14,7 @@ describe Devise::SessionsController do
     it 'redirects to home page after admin logs-in' do
       FactoryGirl.build(:user, {:email => 'example@example.com', :password => 'pppppppp', :admin => true}).save!
       post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp'}
+      debugger
       expect(response).to redirect_to root_url
     end
 
