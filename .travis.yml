@@ -19,3 +19,4 @@ deploy:
       develop: harrowcn-develop
       staging: harrowcn-staging
       master: harrowcn-production
+  run: "rake db:migrate"

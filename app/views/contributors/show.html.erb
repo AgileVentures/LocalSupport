@@ -6,7 +6,7 @@
     <ul id="git-container" class="media-list">
         <% slice.each do |contributor| %>
             <li class="media-item git-item">
-              <a class="pull-left" href="#" target="_blank">
+              <a class="pull-left" href="<%= contributor['html_url'] %>" target="_blank">
                 <img class="media-object img-rounded" src="<%= contributor['avatar_url'] %>" style="width:75px;height:75px">
               </a>
               <div class="media-body">

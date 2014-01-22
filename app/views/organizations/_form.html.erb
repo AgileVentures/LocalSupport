@@ -13,6 +13,10 @@
     <%= f.label :name %>
     <%= f.text_field :name, :class => "org_form" %>
   </div>
+  <div>
+    <%= f.label :publish_address, :class => "pull-right small" %>
+    <%= f.check_box :publish_address, :class => "pull-right" %>
+  </div>
   <div class="field" data-toggle="tooltip" title="Enter a complete address">
     <%= f.label :address %>
     <%= f.text_field :address, :class => "org_form" %>
@@ -32,6 +36,10 @@
   <div class="field" data-toggle="tooltip" title="Make sure url is correct">
     <%= f.label :website %>
     <%= f.text_field :website, :class => "org_form" %>
+  </div>
+  <div>
+    <%= f.label :publish_phone, :class => "pull-right small" %>
+    <%= f.check_box :publish_phone, :class => "pull-right" %>
   </div>
   <div class="field" data-toggle="tooltip" title="Make sure phone number is correct">
     <%= f.label :telephone %>
