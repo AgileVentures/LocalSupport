@@ -24,20 +24,20 @@ Feature: This is my organization
   @javascript
   Scenario: I am not signed in, I will be offered "This is my organization" claim button
     When I am on the charity page for "The Organization"
-    Then the "loginForm" should be not visible
     Then I should see "This is my organization"
     When I click id "TIMO"
-    Then the "loginForm" should be visible
+    Then I should be on the charity page for "The Organization"
     When I sign in as "nonadmin@myorg.com" with password "mypassword1234"
     Then I should be on the charity page for "The Organization"
-    And "nonadmin@myorg.com"'s request status for "The Organization" should be updated appropriately
+    # And "nonadmin@myorg.com"'s request status for "The Organization" should be updated appropriately
 
+  @javascript
   Scenario: I am not a registered user, I will be offered "This is my organization" claim button
     When I am on the charity page for "The Organization"
     Then I should see "This is my organization"
-    When I click "This is my organization"
-    Then I should be on the Sign in page
-    When I sign up as "normal_user@myorg.com" with password "pppppppp" and password confirmation "pppppppp"
+    When I click id "TIMO"
+    When I click "toggle_link"
+    And I sign up as "normal_user@myorg.com" with password "pppppppp" and password confirmation "pppppppp"
     Then I should be on the charity page for "The Organization"
     And "normal_user@myorg.com"'s request status for "The Organization" should be updated appropriately
 

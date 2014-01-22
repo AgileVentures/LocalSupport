@@ -28,7 +28,7 @@ Scenario: Sign in with wrong password for an existing non-admin user unassociate
 
 Scenario: Sign in for an existing non-admin user associated with an organization
   Given I sign in as "charity_owner@example.com" with password "pppppppp"
-  Then I should be on the charity page for "Friendly"
+  Then I should be on the home page
   And I should see a link or button "charity_owner@example.com"
 
 Scenario: Sign in with wrong password for an existing non-admin user associated with an organization
