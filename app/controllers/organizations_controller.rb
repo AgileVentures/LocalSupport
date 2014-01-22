@@ -41,12 +41,8 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations/1/edit
   def edit
-    #TODO Eliminate code duplication for permissions across methods
     @organization = Organization.find(params[:id])
-    unless current_user.try(:can_edit?,@organization)
-      flash[:notice] = PERMISSION_DENIED
-      redirect_to organization_path(params[:id]) and return false
-    end
+    return false unless user_can_edit? @organization
   end
 
   # POST /organizations
@@ -72,12 +68,8 @@ class OrganizationsController < ApplicationController
   def update
     @organization = Organization.find(params[:id])
     params[:organization][:admin_email_to_add] = params[:organization_admin_email_to_add] if params[:organization]
-    unless current_user.try(:can_edit?,@organization)
-      flash[:notice] = PERMISSION_DENIED
-      redirect_to organization_path(params[:id]) and return false
-    end
+    return false unless user_can_edit? @organization
     if @organization.update_attributes_with_admin(params[:organization])
-
       redirect_to @organization, notice: 'Organization was successfully updated.'
     else
       render action: "edit"
@@ -102,5 +94,12 @@ class OrganizationsController < ApplicationController
     item.to_gmaps4rails  do |org, marker|
       marker.infowindow render_to_string(:partial => partial, :locals => { :@org => org})
     end
+  end
+  def user_can_edit?(org)
+    unless current_user.try(:can_edit?,org)
+      flash[:notice] = PERMISSION_DENIED
+      redirect_to organization_path(params[:id]) and return false
+    end
+    true
   end
 end
