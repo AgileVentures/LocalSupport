@@ -11,17 +11,17 @@ describe ApplicationController do
 
     describe 'unwanted previous URLS' do
       it 'when called from /users/sign_in' do
-        request.stub(:fullpath).and_return("/users/sign_in")
+        request.stub(:path_info).and_return("/users/sign_in")
         get :custom
         session[:previous_url].should be_nil
       end
       it 'when called from /users/sign_up' do
-        request.stub(:fullpath).and_return("/users/sign_up")
+        request.stub(:path_info).and_return("/users/sign_up")
         get :custom
         session[:previous_url].should be_nil
       end
       it 'when called from /users/password' do
-        request.stub(:fullpath).and_return("/users/password")
+        request.stub(:path_info).and_return("/users/password")
         get :custom
         session[:previous_url].should be_nil
       end
@@ -33,7 +33,7 @@ describe ApplicationController do
     end
     describe 'wanted previous urls' do
       it 'when called from /organizations/1' do
-        request.stub(:fullpath).and_return("/organizations/1")
+        request.stub(:path_info).and_return("/organizations/1")
         get :custom
         session[:previous_url].should eq "/organizations/1"
       end

@@ -11,10 +11,23 @@ describe Devise::SessionsController do
       request.env["devise.mapping"] = Devise.mappings[:user]
     end
 
+    it 'redirects to previous page after non-admin associated with nothing logs-in from charity page' do
+      request.stub(:path_info).and_return(organization_path(1))
+      FactoryGirl.build(:user, {:email => 'example@example.com', :password => 'pppppppp'}).save!
+      post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp'}
+      expect(response).to redirect_to organization_path(1)
+    end
+
+    it 'redirects to root after non-admin associated with nothing logs-in from sign in page' do
+      request.stub(:path_info).and_return(new_user_session_path)
+      FactoryGirl.build(:user, {:email => 'example@example.com', :password => 'pppppppp'}).save!
+      post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp'}
+      expect(response).to redirect_to root_url
+    end
+
     it 'redirects to home page after admin logs-in' do
       FactoryGirl.build(:user, {:email => 'example@example.com', :password => 'pppppppp', :admin => true}).save!
       post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp'}
-      debugger
       expect(response).to redirect_to root_url
     end
 
