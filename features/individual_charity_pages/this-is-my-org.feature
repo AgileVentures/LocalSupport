@@ -28,6 +28,7 @@ Feature: This is my organization
     Then I should see "This is my organization"
     When I click id "TIMO"
     Then the "loginForm" should be visible
+    When I sign in as "nonadmin@myorg.com" with password "mypassword1234"
     Then I should be on the charity page for "The Organization"
     And "nonadmin@myorg.com"'s request status for "The Organization" should be updated appropriately
 
