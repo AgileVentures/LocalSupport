@@ -52,6 +52,11 @@ it "renders a checkbox to make address public" do
   rendered.should have_selector('input', :id => 'organization_publish_address', :type => 'checkbox')
 end
 
+it "renders a checkbox to make email public" do
+  render
+  rendered.should have_selector('input', :id => 'organization_publish_email', :type => 'checkbox')
+end
+
 it "renders a checkbox to make phone number public" do
   render
   rendered.should have_selector('input', :id => 'organization_publish_phone', :type => 'checkbox')

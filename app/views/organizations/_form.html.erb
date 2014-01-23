@@ -29,6 +29,10 @@
     <%= f.label :email %>
     <%= f.text_field :email, :class => "org_form" %>
   </div>
+    <div>
+      <%= f.label :publish_email, :class => "pull-right small" %>
+      <%= f.check_box :publish_email, :class => "pull-right" %>
+    </div>
   <div class="field" data-toggle="tooltip" title="Enter a full description here. When an individual searching this database all words in this description will be searched.">
     <%= f.label :description %>
     <%= f.text_area :description, :class => "org_form", :cols => "10", :rows => "10" %>
