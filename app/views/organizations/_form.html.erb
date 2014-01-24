@@ -68,13 +68,13 @@
         <td> </td>
       </tr>
       <tr>
-        <td class="field" data-toggle="tooltip" title="To make your telephone number visible to the public check this box">
-          <%= f.label :publish_phone, :class => "pull-right small" %>
-          <%= f.check_box :publish_phone, :class => "pull-right" %>
-        </td>
         <td class="field" data-toggle="tooltip" title="Make sure phone number is correct">
           <%= f.label :telephone %>
           <%= f.text_field :telephone, :class => "org_form" %>
+        </td>
+        <td class="field" data-toggle="tooltip" title="To make your telephone number visible to the public check this box">
+          <%= f.label :publish_phone, :class => "pull-right small" %>
+          <%= f.check_box :publish_phone, :class => "pull-right" %>
         </td>
       </tr>
       <tr>
