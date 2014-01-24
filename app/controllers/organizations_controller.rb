@@ -43,9 +43,9 @@ class OrganizationsController < ApplicationController
   def edit
     @organization = Organization.find(params[:id])
     return false unless user_can_edit? @organization
-    respond_to do |format|
-      format.html {render :layout => 'full_width'}
-    end
+    #respond_to do |format|
+    #  format.html {render :layout => 'full_width'}
+    #end
   end
 
   # POST /organizations
