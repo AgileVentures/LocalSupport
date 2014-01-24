@@ -8,14 +8,14 @@ Feature: Charity worker can edit own charity profile
 #need to revisit this
 Background: organizations have been added to database 
   Given the following organizations exist:
-  | name           | description               | address        | postcode | telephone |
-  | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 |
-  | Nice           | Quite Pleasant!           | 30 pinner road | HA1 4HZ  | 020800010 |
+  | name           | description               | address        | postcode | telephone | email              |
+  | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 | admin@friendly.org |
+  | Nice           | Quite Pleasant!           | 30 pinner road | HA1 4HZ  | 020800010 | admin@nice.org     |
   
   Given the following users are registered:
-  | email             | password | organization | confirmed_at |
-  | registered_user-2@example.com | pppppppp | Friendly    | 2007-01-01  10:00:00 |
-  | registered_user-1@example.com | pppppppp |             | 2007-01-01  10:00:00 |
+  | email                         | password | organization | confirmed_at         |
+  | registered_user-2@example.com | pppppppp | Friendly     | 2007-01-01  10:00:00 |
+  | registered_user-1@example.com | pppppppp |              | 2007-01-01  10:00:00 |
   And cookies are approved
 
 Scenario: Successfully add website url without protocol
@@ -28,40 +28,24 @@ Scenario: Successfully change the address of a charity
   And I update "Friendly" charity address to be "30 pinner road"
   Then I should be on the charity page for "Friendly"
 
-Scenario Outline: Successfully mark a field of a charity as public
+Scenario Outline: Successfully mark a field of a charity as public or private
   Given I am signed in as a charity worker related to "Friendly"
   And I am on the edit charity page for "Friendly"
   And the <field> for "Friendly" has been marked hidden
-  And I check "<field_checkbox>"
+  And I <check_state> "<field_checkbox>"
   And I press "Update Organisation"
   Then I should be on the charity page for "Friendly"
-  And I should see "<field_contents>"
-  And I should see "<field_label>"
+  And I should <visibility> "<field_contents>"
+  And I should <visibility> "<field_label>"
 Examples:
-  | field     | field_checkbox               | field_contents  | field_label |
-  | phone     | organization_publish_phone   | 020800000       | Telephone   |
-  | address   | organization_publish_address | 34 pinner road  | Address     |
+  | field     | field_checkbox               | field_contents      | field_label | check_state | visibility |
+  | phone     | organization_publish_phone   | 020800000           | Telephone   | check       | see        |
+  | address   | organization_publish_address | 34 pinner road      | Address     | check       | see        |
+  | email     | organization_publish_email   | admin@friendly.org  | Email       | check       | see        |
+  | phone     | organization_publish_phone   | 020800000           | Telephone   | uncheck     | not see    |
+  | address   | organization_publish_address | 34 pinner road      | Address     | uncheck     | not see    |
+  | email     | organization_publish_email   | admin@friendly.org  | Email       | uncheck     | not see    |
 
-
-Scenario: Successfully mark the address of a charity as private
-  Given I am signed in as a charity worker related to "Friendly"
-  And I am on the edit charity page for "Friendly"
-  And the address for "Friendly" has been marked public
-  And I uncheck "organization_publish_address"
-  And I press "Update Organisation"
-  Then I should be on the charity page for "Friendly"
-  And I should not see "34 pinner road"
-  And I should not see "Address"
-
-Scenario: Successfully mark the phone number of a charity as private
-  Given I am signed in as a charity worker related to "Friendly"
-  And I am on the edit charity page for "Friendly"
-  And the phone for "Friendly" has been marked public
-  And I uncheck "organization_publish_phone"
-  And I press "Update Organisation"
-  Then I should be on the charity page for "Friendly"
-  And I should not see "020800000"
-  And I should not see "Telephone"
 
 #TODO refactor into integration test that posts to update method
 #Scenario: Unsuccessfully change the address of a charity
@@ -100,11 +84,11 @@ Scenario: Redirected to sign-in when not signed-in and edit donation url
 # TODO after sign in is take the user back to the edit page
 
 Scenario: By default, not display organizations address and phone number on home page
-  Given I am on the home page
+  Given I am on the charity page for "Friendly"
   Then I should not see any address or telephone information for "Nice" and "Friendly"
 
 Scenario: By default, not display organizations edit and delete on home page
-  Given I am on the home page
+  Given I am on the charity page for "Friendly"
   Then I should not see any edit or delete links
 
 Scenario: By default, not display organizations address and phone number on details page

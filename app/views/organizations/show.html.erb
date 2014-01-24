@@ -23,7 +23,7 @@
               <%= @organization.postcode %>
             </p>
         <% end %>
-        <% if @organization.email.present? %>
+        <% if @organization.email.present? && @organization.publish_email? %>
             <p>
               <b>Email:</b>
               <a href="mailto:<%= @organization.email %>"><%= @organization.email %></a>
