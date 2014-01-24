@@ -42,6 +42,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1/edit
   def edit
     @organization = Organization.find(params[:id])
+    @json = gmap4rails_with_popup_partial(@organization,'popup')
     return false unless user_can_edit? @organization
     #respond_to do |format|
     #  format.html {render :layout => 'full_width'}
