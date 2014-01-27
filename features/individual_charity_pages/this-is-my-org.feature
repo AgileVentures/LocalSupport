@@ -20,7 +20,6 @@ Feature: This is my organization
     Then I should be on the charity page for "The Organization"
     And "nonadmin@myorg.com"'s request status for "The Organization" should be updated appropriately
 
-  # Happiest path: user successfully logs in with a confirmed login
   @javascript
   Scenario: I am not signed in, I will be offered "This is my organization" claim button
     When I am on the charity page for "The Organization"
@@ -29,7 +28,6 @@ Feature: This is my organization
     Then I should be on the charity page for "The Organization"
     When I sign in as "nonadmin@myorg.com" with password "mypassword1234"
     Then I should be on the charity page for "The Organization"
-    # And "nonadmin@myorg.com"'s request status for "The Organization" should be updated appropriately
 
   @javascript
   Scenario: I am not a registered user, I will be offered "This is my organization" claim button
@@ -38,9 +36,5 @@ Feature: This is my organization
     When I click id "TIMO"
     When I click "toggle_link"
     And I sign up as "normal_user@myorg.com" with password "pppppppp" and password confirmation "pppppppp"
-    Then I should be on the charity page for "The Organization"
-    And "normal_user@myorg.com"'s request status for "The Organization" should be updated appropriately
-
-  # User has a login, not confirmed
-  # User has no login, signs up successfully
-  # User has no login, fails to sign up
+    Then I should be on the home page
+    And I should see "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
