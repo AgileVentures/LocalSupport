@@ -10,7 +10,10 @@ describe 'organizations/show.html.erb' do
         :email => 'admin@friendly.org',
         :postcode => 'HA1 4HZ',
         :website => 'http://www.friendly.org',
-        :donation_info => 'http://www.friendly.org/donate'
+        :donation_info => 'http://www.friendly.org/donate',
+        :publish_address => false,
+        :publish_email => true,
+        :publish_phone => false
     }
   end
 
@@ -49,22 +52,41 @@ describe 'organizations/show.html.erb' do
   end
 
   context 'some information is private' do
-    it 'should not show telephone and address by default' do
+    it 'should not show telephone and address by default but should show email by default' do
       render
       rendered.should_not have_content organization.address
       rendered.should_not have_content organization.telephone
+      rendered.should have_content organization.email
     end
-    it 'should not show telephone and address by default' do
+    it 'should not show edit button by default' do
       render
       rendered.should_not have_link 'Edit'
     end
   end
 
+  it 'renders the actual address if publish address if true' do
+    organization.publish_address = true
+    render
+    rendered.should have_content organization.address
+  end
+  
+  it 'renders the actual phone if publish phone is true' do
+    organization.publish_phone = true
+    render
+    rendered.should have_content organization.telephone
+  end
+
+  it 'does not render the actual email if publish email is false' do
+    organization.publish_email = false
+    render
+    rendered.should_not have_content organization.email
+  end
+  
   context 'edit button' do
     it 'renders edit button if editable true' do
       @editable = assign(:editable, true)
       render
-      rendered.should have_link 'Edit', :href => edit_organization_path(organization.id)
+      rendered.should have_link 'Edit', :href => edit_organization_path(organization.id)   
     end
     it 'does not render edit button if editable false' do
       @editable = assign(:editable, false)

@@ -11,13 +11,19 @@
         <h4>
           Contact information
         </h4>
+        <% if @organization.address.present? && @organization.publish_address? %>
+            <p>
+              <b>Address:</b>
+              <%= @organization.address %>
+            </p>
+        <% end %>
         <% if @organization.postcode.present? %>
             <p>
               <b>Postcode:</b>
               <%= @organization.postcode %>
             </p>
         <% end %>
-        <% if @organization.email.present? %>
+        <% if @organization.email.present? && @organization.publish_email? %>
             <p>
               <b>Email:</b>
               <a href="mailto:<%= @organization.email %>"><%= @organization.email %></a>
@@ -27,6 +33,12 @@
             <p>
               <b>Website:</b>
               <%= link_to @organization.website, @organization.website, {:target => '_blank'} %>
+            </p>
+        <% end %>
+        <% if @organization.telephone.present? && @organization.publish_phone? %>
+            <p>
+              <b>Telephone:</b>
+              <%= @organization.telephone %>
             </p>
         <% end %>
         <% if @organization.donation_info.present? %>
