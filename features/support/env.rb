@@ -23,7 +23,9 @@ Capybara.default_selector = :css
 Capybara.javascript_driver = :webkit
 
 # http://stackoverflow.com/questions/5980856/trying-to-get-selenium-working-in-rails-3-webmocknetconnectnotallowederror
-WebMock.disable_net_connect!(:allow_localhost => true)
+config.before(:each) do
+  WebMock.disable_net_connect!(:allow_localhost => true)
+end
 
 # By default, any exception happening in your Rails application will bubble up
 # to Cucumber so that your scenario will fail. This is a different from how 
