@@ -10,6 +10,7 @@ before_script:
 - bundle exec rake db:test:prepare
 script:
 - bundle exec rake cucumber
+- bundle exec rake jasmine:ci
 - bundle exec rake spec
 deploy:
   provider: heroku
