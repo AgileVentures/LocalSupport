@@ -8,3 +8,9 @@
 #   @config.boot_files = lambda { ['/absolute/path/to/boot_dir/file.js'] }
 #end
 #
+module Jasmine
+  class Config
+    require 'webmock'
+    WebMock.allow_net_connect!
+  end
+end
