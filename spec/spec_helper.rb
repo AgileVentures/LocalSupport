@@ -44,5 +44,8 @@ RSpec.configure do |config|
   
   config.include FactoryGirl::Syntax::Methods
 
+  # http://stackoverflow.com/questions/5980856/trying-to-get-selenium-working-in-rails-3-webmocknetconnectnotallowederror
+  WebMock.allow_net_connect!
+
 end
 

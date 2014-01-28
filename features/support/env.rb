@@ -22,7 +22,6 @@ Capybara.default_selector = :css
 
 Capybara.javascript_driver = :webkit
 
-# http://stackoverflow.com/questions/5980856/trying-to-get-selenium-working-in-rails-3-webmocknetconnectnotallowederror
 WebMock.allow_net_connect!
 
 # By default, any exception happening in your Rails application will bubble up
