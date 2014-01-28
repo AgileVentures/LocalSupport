@@ -8,6 +8,8 @@
 #   @config.boot_files = lambda { ['/absolute/path/to/boot_dir/file.js'] }
 #end
 #
+
+# Without this, WebMock blocks "rake jasmine:ci" for travis
 module Jasmine
   class Config
     require 'webmock'
