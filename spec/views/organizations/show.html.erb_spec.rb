@@ -100,19 +100,34 @@ describe 'organizations/show.html.erb' do
     end
   end
 
-  context 'this is my organization button' do
-    let(:user) { stub_model User, :id => 2 }
-    it 'renders grab button if grabbable true' do
-      @grabbable = assign(:grabbable, true)
-      view.stub(:current_user).and_return(user)
-      render
-      rendered.should have_link 'This is my organization', :href => organization_user_path(organization.id, user.id)
-      #TODO should check hidden value for put
+  describe 'this is my organization button' do
+    context 'logged in user' do
+      let(:user) { stub_model User, :id => 2 }
+      it 'renders grab button if grabbable true' do
+        @grabbable = assign(:grabbable, true)
+        view.stub(:current_user).and_return(user)
+        render
+        rendered.should have_link 'This is my organization', :href => organization_user_path(organization.id, user.id)
+        #TODO should check hidden value for put
+      end
+      it 'does not render grab button if grabbable false' do
+        @grabbable = assign(:grabbable, false)
+        render
+        rendered.should_not have_button('This is my organization')
+      end
     end
-    it 'does not render grab button if grabbable false' do
-      @grabbable = assign(:grabbable, false)
-      render
-      rendered.should_not have_button('This is my organization')
+
+    context 'user not logged in' do
+      #let(:user) { stub_model User, :id => nil }
+      it 'renders grab button' do
+        @grabbable = assign(:grabbable, true)
+        #view.stub(:current_user).and_return(user)
+        render
+        rendered.should have_link 'This is my organization', :href => new_user_session_path
+        #TODO should check hidden value for put
+      end
     end
   end
 end
+
+
