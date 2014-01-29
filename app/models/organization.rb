@@ -20,9 +20,12 @@ class Organization < ActiveRecord::Base
   attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info, :publish_address, :publish_phone, :publish_email
   accepts_nested_attributes_for :users
   scope :order_by_most_recent, order('updated_at DESC')
-
-  # if we removed check_process => false saving the model would not trigger a geocode
-  #after_commit :process_geocoding
+  scope :not_null_email, :conditions => "organizations.email <> ''"
+  # Should we not use :includes, which pulls in extra data? http://nlingutla.com/blog/2013/04/21/includes-vs-joins-in-rails/
+  # Alternative => :joins('LEFT OUTER JOIN users ON users.organization_id = organizations.id)
+  # Difference between inner and outer joins: http://stackoverflow.com/a/38578/2197402
+  scope :null_users, lambda { includes(:users).where("users.organization_id IS NULL") }
+  scope :generated_users, lambda { includes(:users).where('users.reset_password_token IS NOT NULL AND users.sign_in_count = ?', 0) }
 
   def run_geocode?
     ## http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
@@ -145,10 +148,6 @@ class Organization < ActiveRecord::Base
     end
   end
 
-  def self.export_orphan_organization_emails
-    self.where("email <> ''").select {|o| o.users.blank?}
-  end
-
   def self.import_emails(filename, limit, validation = true)
     str = ''
     import(filename, limit, validation) do |row, validation|
@@ -171,6 +170,21 @@ class Organization < ActiveRecord::Base
         raise CSV::MalformedCSVError, "No expected column with name #{column_name} in CSV file"
       end
     end
+  end
+
+  def generate_potential_user
+    password = Devise.friendly_token.first(8)
+    user = User.new(:email => self.email, :password => password)
+    unless user.valid?
+      user.save
+      return user # so that it can be inspected for errors
+    end
+    user.skip_confirmation_notification!
+    user.reset_password_token=(User.reset_password_token)
+    user.reset_password_sent_at=Time.now
+    user.save!
+    user.confirm!
+    user
   end
 
   private

@@ -1,0 +1,26 @@
+<div class="well table-responsive">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th style="text-align: center;">Generate User</th>
+      <th>Password Reset URL</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @families.each do |organization, user| %>
+        <% generate_user = user.reset_password_token ? 'btn btn-default disabled' : 'generate_user btn btn-default' %>
+        <tr id="<%= organization.id %>">
+          <td><%= link_to organization.name, organization_path(organization) %></td>
+          <td><%= organization.email %></td>
+          <td style="text-align: center;"><%= link_to('+', {controller: 'orphans', action: 'index', id: organization.id}, method: 'post', class: generate_user) %></td>
+          <td class="response">
+            <%= user.errors.full_messages.first if user.errors %>
+            <%= user.reset_password_token %>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
