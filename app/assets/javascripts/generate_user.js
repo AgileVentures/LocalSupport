@@ -6,7 +6,7 @@
             $(this).click(function() {
                 $.ajax({
                     type: 'POST',
-                    url: '/orphans/orphans_remote',
+                    url: '/orphans/create',
                     data: { id: org_id},
                     dataType: 'json',
                     success: function(data) {
