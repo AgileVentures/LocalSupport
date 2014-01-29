@@ -1,6 +1,6 @@
 class OrphansController < ApplicationController
   layout 'full_width'
-  #before_filter :authorize
+  before_filter :authorize
 
   def index
     @families = Organization.not_null_email.null_users + Organization.not_null_email.generated_users

@@ -15,11 +15,12 @@ Background:
     | nonadmin@myorg.com | mypassword1234 | false | 2008-01-01 00:00:00 |                 |                      |
     | admin@myorg.com    | adminpass0987  | true  | 2008-01-01 00:00:00 | My Organization |                      |
     | pending@myorg.com  | password123    | false | 2008-01-01 00:00:00 |                 | My Organization      |
-  And cookies are approve
+  And cookies are approved
 
   @javascript
   Scenario: Admin can generate link but only for unique email
-    Given I visit "/orphans"
+    Given I am signed in as an admin
+    And I visit "/orphans"
     When I click Generate User button for "The Organization"
     Then a token should be in the response field for "The Organization"
     When I click Generate User button for "The Same Email Org"
@@ -27,7 +28,8 @@ Background:
 
   @javascript
   Scenario: Admin should be notified when email is invalid
-    Given I visit "/orphans"
+    Given I am signed in as an admin
+    And I visit "/orphans"
     When I click Generate User button for "Crazy Email Org"
     Then I should see "Email is invalid" in the response field for "Crazy Email Org"
 
