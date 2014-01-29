@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   layout 'full_width'
-
+  # would like this to support generic updating of model with
+  # business logic pulled into a separate model or process
   def update
     user = User.find_by_id(params[:id])
     if params[:organization_id]
