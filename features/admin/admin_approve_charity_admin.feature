@@ -15,17 +15,20 @@ Feature: Site Admin approve charity admin
       | pending@myorg.com  | password123    | false | 2008-01-01 00:00:00 |                 | My Organization      |
     And cookies are approved
 
-  Scenario: As an admin approving a pending user's request
+  Scenario: As an admin approving a pending users request
     Given I am signed in as an admin
     When I approve "pending@myorg.com"
     Then "pending@myorg.com" is a charity admin of "My Organization"
 
-  Scenario: As an admin I should be able to see status of all users
+  Scenario Outline: As an admin I should be able to see status of all users
     Given I am signed in as an admin
     And I visit "/users"
-    Then I should see "nonadmin@myorg.com"
-    And I should see "admin@myorg.com"
-    And I should see "pending@myorg.com"
+    Then I should see "<email>"
+    Examples:
+      | email              |
+      | nonadmin@myorg.com |
+      | admin@myorg.com    |
+      | pending@myorg.com  |
 
   Scenario: As a non-admin trying to access users index
     Given I am signed in as a non-admin
