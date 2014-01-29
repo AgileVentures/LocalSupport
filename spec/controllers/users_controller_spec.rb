@@ -102,7 +102,7 @@ describe UsersController do
 
         it "flashes the relevant notice" do
           get :index
-          expect(flash[:notice]).to have_content("You must be signed in as an admin to perform this action!")
+          expect(flash[:error]).to have_content("You must be signed in as an admin to perform this action!")
         end
       end
     end
@@ -119,7 +119,7 @@ describe UsersController do
 
       it "flashes the relevant notice" do
         get :index
-        expect(flash[:notice]).to have_content("You must be signed in as an admin to perform this action!")
+        expect(flash[:error]).to have_content("You must be signed in as an admin to perform this action!")
       end
 
     end
