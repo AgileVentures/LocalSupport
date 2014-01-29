@@ -17,8 +17,7 @@
           <td><%= organization.email %></td>
           <td style="text-align: center;"><%= link_to('+', {controller: 'orphans', action: 'create', id: organization.id}, method: 'post', class: generate_user) %></td>
           <td class="response">
-            <%= user.errors.full_messages.first if user.errors %>
-            <%= user.reset_password_token %>
+            <%= msg %>
           </td>
         </tr>
     <% end %>
