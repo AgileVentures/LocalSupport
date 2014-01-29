@@ -8,7 +8,7 @@ begin
         require File.expand_path("../../config/environment", File.dirname(__FILE__))
         #this is needed because rake tasks load classes lazily; from the command line, the task will
         #otherwise fail because it takes the below intended monkeypatch as first definition
-        Organization.import_emails(args[:file],1000)
+        puts Organization.import_emails(args[:file],1000)
       end
     end
   end

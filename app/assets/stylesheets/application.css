@@ -8,10 +8,196 @@
  *= require font-awesome
 */
 
+body, html {
+    height: 100% !important;
+}
+
+body {
+    padding-top: 0px !important;
+    margin-top: 0px !important;
+    padding-bottom: 0px !important;
+    background-color: whitesmoke !important;
+}
+
+/* GLOBAL STYLES
+-------------------------------------------------- */
+.page-frame {
+    max-width: 1200px;
+    min-height: 100%;
+    border-radius: 2px;
+    background: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0 auto -80px;
+}
+
+#push, #footer {
+    clear: both;
+    height: 40px;
+}
+
+#footer a {
+    padding-left: 0px;
+}
 
 #main .container {
-    margin-top: 45px;
+    background-color: white;
 }
+
+#main p, a {
+    padding-left: 0px;
+}
+
+#main .btn {
+    padding-left: 8px !important;
+}
+.position-bottom {
+    margin-bottom:0;
+}
+
+/* CUSTOMIZE THE COOKIE ALERT
+-------------------------------------------------- */
+
+#cookie-message {
+    display: none;
+    text-align: left;
+    position: fixed;
+    z-index: 1001;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgb(223, 240, 216);
+    background: rgba(223, 240, 216, 0.8);
+    border-bottom: 1px solid #9B9E89;
+    padding-bottom: 20px;
+}
+
+#cookie-message-inner {
+    padding: 20px;
+    width: 800px;
+    margin: 0 auto;
+}
+
+
+#cookie-message-inner .btn {
+    border: none;
+    background: #ed1b23 !important;
+    color: white;
+    cursor: pointer;
+    margin-top: 17px;
+    margin-right: 10px;
+    /*height: 30px;*/
+    /*display: block;*/
+    float: right !important;
+    padding: 4px 10px;
+}
+#cookie-message-inner h2 {
+    display: inline-block;
+}
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+    margin-top: 20px ;
+    top: 20px;
+    left: 0;
+    right: 0;
+    z-index: 20;
+}
+
+/* Flip around the padding for proper display in narrow viewports */
+.navbar-wrapper .container {
+
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.navbar-wrapper .navbar {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.navbar-nav > li > a {
+    padding-top: 19px;
+    padding-bottom: 17px;
+}
+
+.nav input {
+    margin: 5px 5px 5px 5px;
+    padding: 0 5px 0 5px;
+}
+
+
+/*Contributors list using Flex-boxes and media types */
+
+#git-container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#git-container .git-item {
+    width: 25%;
+    height: 120px;
+    margin-bottom: -40px!important;
+}
+
+#git-container .git-item h2, .git-item h4, .git-item p, .git-item a  {
+    padding-left: 8px !important;
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    #git-container .git-item {
+        width: 50%;
+        height: 120px;
+        margin-bottom: -20px!important;
+    }
+}
+
+@media (max-width: 767px) {
+
+    #git-container .git-item {
+        width: 50%;
+        height: 120px;
+        margin-bottom: -20px!important;
+    }
+}
+@media (max-width: 480px) {
+
+    #git-container .git-item {
+        width: 50%;
+        height: 120px;
+        margin-bottom: -10px!important;
+    }
+}
+
+
+
+/*End of CSS for contributors list*/
+
+.form-frame {
+    position: relative;
+    padding: 30px;
+    max-width: 370px;
+    border-radius: 2px;
+    background: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+}
+
+.form-frame input[type=text],.form-frame input[type=email], .form-frame textarea {
+    background: rgb(235, 241, 245);
+    color: rgb(36, 39, 41);
+}
+.form-frame  input:focus, .form-frame  textarea:focus {
+    outline: 0;
+    background: #FFF;
+}
+
+
 
 
 

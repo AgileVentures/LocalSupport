@@ -13,6 +13,10 @@
     <%= f.label :name %>
     <%= f.text_field :name, :class => "org_form" %>
   </div>
+  <div class="field" data-toggle="tooltip" title="To make your full address visible to the public check this box">
+    <%= f.label :publish_address, :class => "pull-right small" %>
+    <%= f.check_box :publish_address, :class => "pull-right" %>
+  </div>
   <div class="field" data-toggle="tooltip" title="Enter a complete address">
     <%= f.label :address %>
     <%= f.text_field :address, :class => "org_form" %>
@@ -20,6 +24,10 @@
   <div class="field" data-toggle="tooltip" title="Make sure post code is accurate">
     <%= f.label :postcode %>
     <%= f.text_field :postcode, :class => "org_form" %>
+  </div>
+  <div class="field" data-toggle="tooltip" title="To make your email address visible to the public check this box">
+    <%= f.label :publish_email, :class => "pull-right small" %>
+    <%= f.check_box :publish_email, :class => "pull-right" %>
   </div>
   <div class="field" data-toggle="tooltip" title="Make sure email is correct">
     <%= f.label :email %>
@@ -32,6 +40,10 @@
   <div class="field" data-toggle="tooltip" title="Make sure url is correct">
     <%= f.label :website %>
     <%= f.text_field :website, :class => "org_form" %>
+  </div>
+  <div class="field" data-toggle="tooltip" title="To make your telephone number visible to the public check this box">
+    <%= f.label :publish_phone, :class => "pull-right small" %>
+    <%= f.check_box :publish_phone, :class => "pull-right" %>
   </div>
   <div class="field" data-toggle="tooltip" title="Make sure phone number is correct">
     <%= f.label :telephone %>

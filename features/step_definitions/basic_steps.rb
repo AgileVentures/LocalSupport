@@ -85,6 +85,15 @@ Given /^I update "(.*?)" charity address to be "(.*?)"( when Google is indispose
   }
 end
 
+Given /^I update "(.*?)" charity website to be "(.*?)"$/ do |name, url|
+  steps %Q{
+    Given I am on the charity page for "#{name}"
+    And I follow "Edit"
+    And I edit the charity website to be "#{url}"
+    And I press "Update Organisation"
+  }
+end
+
 Given /^I have created a new organization$/ do
   steps %Q{
     Given I am on the home page
@@ -102,11 +111,23 @@ Given /^I furtively update "(.*?)" charity address to be "(.*?)"$/ do |name, add
   }
 end
 
+Given /^I edit the charity website to be "(.*?)"$/ do |url|
+  fill_in('organization_website',:with => url)
+end
+
 When /^I edit the charity address to be "(.*?)"$/ do |address|
   stub_request_with_address(address)
   fill_in('organization_address',:with => address)
 end
 
+Then /^the website link for "(.*?)" should have a protocol$/ do |name|
+  steps %{
+    Given I am on the charity page for "#{name}"
+  }
+   website = Organization.find_by_name(name).website
+   website.should =~ /^http\:\/\//
+   expect(page).to have_selector("a[href='#{website}']")
+end
 
 And /^"(.*?)" charity address is "(.*?)"$/ do |name, address|
   org = Organization.find_by_name(name)
@@ -122,12 +143,6 @@ Then /^I should see the donation_info URL for "(.*?)"$/ do |name1|
   org1 = Organization.find_by_name(name1)
   content =  "Donate to #{org1.name} now!"
   page.should have_xpath %Q<//a[@href = "#{org1.donation_info}" and @target = "_blank" and contains(.,'#{content}')]>
-end
-
-Then /^I should not see the donation_info URL for "(.*?)"$/ do |name1|
-  org1 = Organization.find_by_name(name1)
-  page.should_not have_link "Donate to #{org1.name} now!"
-  page.should have_content "We don't yet have any donation link for them."
 end
 
 Then /^the donation_info URL for "(.*?)" should refer to "(.*?)"$/ do |name, href|
@@ -264,7 +279,7 @@ Then /^"(.*?)" org should not exist$/ do |name|
 end
 
 Then /^I debug$/ do
-  breakpoint
+  debugger
   0
 end
 
@@ -330,3 +345,19 @@ Then(/^"(.*?)" is a charity admin of "(.*?)"$/) do |user_email, org_name|
   org = Organization.find_by_name(org_name)
   user.organization.should == org
 end
+
+And(/^I (un)?check "([^"]*)"$/) do |negate, css|
+  box_state = negate ? :uncheck : :check
+  page.send(box_state, css)
+end
+
+Given(/^the (.*?) for "(.*?)" has been marked (public|hidden)$/) do |field,name,mode|
+  org = Organization.find_by_name(name)
+  case mode
+    when "hidden" then publish = false
+    when "public" then publish = true
+  end
+  org.send("publish_#{field}=", publish)
+  org.save!
+end
+

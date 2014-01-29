@@ -52,6 +52,16 @@ describe "layouts/application.html.erb", :type => :feature do
       rendered.should have_css("#menuLogin a[href=\"#{new_user_password_path}\"]")
     end
 
+    it 'renders a cookies choice message when cookies have not been accepted' do
+      view.stub(:cookies_accepted?).and_return(false)
+      render
+      rendered.should have_css("#cookie-message")
+      rendered.should have_css("#cookie-message-inner.content")
+      rendered.should have_content("We use cookies to give you the best experience on our website.")
+      rendered.should have_xpath("//a[@id=\"accept_cookies\"]")
+      rendered.should have_xpath("//a[@href=\"#{cookies_allow_path}\"]")
+    end
+
     it 'login form should be visible', :js => true do
       render
       rendered.should_not have_selector("form#loginForm", style: "height: 0px;")
@@ -78,6 +88,10 @@ describe "layouts/application.html.erb", :type => :feature do
       rendered.should have_selector("div.alert-error")
     end
 
+     it 'should display a link to the contributors page' do
+       render
+       rendered.should have_link "Contributors"
+     end
   end
   context "user signed-in" do
     before :each do

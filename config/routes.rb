@@ -1,25 +1,24 @@
 LocalSupport::Application.routes.draw do
 
-
   devise_for :users
 
+  get 'contributors' => 'contributors#show'
+
   match 'organizations/search' => 'organizations#search'
-  #match 'pages/disclaimer' => 'pages#disclaimer'
-  #match 'pages/aboutus' => 'pages#aboutus'
-  #match 'pages/contact' => 'pages#contact'
+  resources :users, only: [:index, :update]
+
   resources :pages
-  resources :organizations
+
   resources :organizations do
     resources :users
   end
-  match '/users' => 'users#index',as: :users, via: [:get]
-  match '/users/:id' => 'users#update',as: :update_user, via: [:put]
 
   # so that static pages are linked directly instead of via /pages/:id
   get ':id', to: 'pages#show', as: :page
   put ':id', to: 'pages#update', as: :page
   delete ':id', to: 'pages#destroy', as: :page
 
+  post 'cookies/allow', to: 'application#allow_cookie_policy'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

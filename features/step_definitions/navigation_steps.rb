@@ -7,11 +7,13 @@ end
 
 Then /^I should be on the (.*) page$/ do |location|
   case location
-  when "home" then current_path.should == root_path()
+  when "home" then current_path.should == root_path
   when "sign up" then current_path.should == new_user_registration_path
   when "sign in" then current_path.should == new_user_session_path
   when "organizations index" then current_path.should == organizations_path
   when "users" then current_path.should == users_path
+  when "contributors" then current_path.should == contributors_path
+  else raise "No matching path found for #{location}!"
   end
 end
 
@@ -22,6 +24,20 @@ end
 And(/^the page should be titled "(.*?)"$/) do |title|
   page.should have_selector("title", title)
 end
+
+And (/^I should see a full width layout$/) do
+  within('#content') do
+    page.should have_css('#one_column.span12')
+  end
+end
+
+And (/^I should see a two column layout$/) do
+  within('#content') do
+    page.should have_css('#column1.span6')
+    page.should have_css('#column2.span6')
+  end
+end
+
 
 Then(/^the response status should be 404$/) do
   page.status_code.should == 404
@@ -41,6 +57,10 @@ When /^I click "(.*)"$/ do |link|
   click_link(link)
 end
 
+When /^I click id "(.*)"$/ do |id|
+  find("##{id}").click
+end
+
 When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
@@ -51,7 +71,7 @@ end
 
 Then /^I should be on the charity page for "(.*?)"$/ do |charity_name|
   charity = Organization.find_by_name(charity_name)
-  expect(current_path).to eq(organization_path charity.id) 
+  expect(current_path).to eq(organization_path charity.id)
 end
 
 Then /^following Disclaimer link should display Disclaimer$/ do
@@ -73,6 +93,10 @@ end
 Given /^I am on the charity page for "(.*?)"$/ do |name1|
   org1 = Organization.find_by_name(name1)
   visit organization_path org1.id
+  within('#content') do
+    page.should have_css('#column1.span6')
+    page.should have_css('#column2.span6')
+  end
 end
 
 Given /^I am on the edit charity page for "(.*?)"$/ do |name1|
@@ -95,6 +119,28 @@ When(/^I visit "(.*?)"$/) do |path|
   visit path
 end
 
+Then(/^the "([^"]*)" should be (not )?visible$/) do |id, negate|
+  # http://stackoverflow.com/a/15782921
+  # Capybara "visible?" method(s) are inaccurate!
+
+  #regex = /height: 0/ # Assume style="height: 0px;" is the only means of invisibility
+  #style = page.find("##{id}")['style']
+  #sleep 0.25 if style   # need to give js a moment to modify the DOM
+  #expectation = negate ? :should : :should_not
+  #style ? style.send(expectation, have_text(regex)) : negate.nil?
+
+  elem = page.find("##{id}")
+  negate ? !elem.visible? : elem.visible?
+end
+
 Then(/^the "([^"]*)" should be "([^"]*)"$/) do |id, css_class|
     page.should have_css("##{id}.#{css_class}")
 end
+
+When(/^I click link with id "([^"]*)"$/) do |id|
+  page.find("##{id}").click
+end
+When(/^javascript is enabled$/) do
+  Capybara.javascript_driver
+end
+

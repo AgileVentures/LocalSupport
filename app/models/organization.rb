@@ -7,13 +7,17 @@ class String
 end
 
 class Organization < ActiveRecord::Base
+  #validates_presence_of :website, :with => /http:\/\//
+  validates_url :website, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.website.present?}
+  validates_url :donation_info, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.donation_info.present?}
+
   # http://stackoverflow.com/questions/10738537/lazy-geocoding
   acts_as_gmappable :check_process => false, :process_geocoding => :run_geocode?
   has_many :users
   has_and_belongs_to_many :categories
   # Setup accessible (or protected) attributes for your model
   # prevents mass assignment on other fields not in this list
-  attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info
+  attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info, :publish_address, :publish_phone, :publish_email
   accepts_nested_attributes_for :users
   scope :order_by_most_recent, order('updated_at DESC')
 
@@ -24,6 +28,8 @@ class Organization < ActiveRecord::Base
     ## http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
     address_changed? or (address.present? and not_geocoded?)
   end
+
+
 
   def not_geocoded?
     latitude.blank? and longitude.blank?
@@ -88,9 +94,11 @@ class Organization < ActiveRecord::Base
       date_removed: 'date removed',
       cc_id: 'Charity Classification'
   }
+
   def self.column_mappings
     @@column_mappings
   end
+
   def self.import_categories_from_array(row)
     check_columns_in(row)
     org_name = row[@@column_mappings[:name]].to_s.humanized_all_first_capitals
@@ -108,8 +116,8 @@ class Organization < ActiveRecord::Base
   end
 
   def self.import_category_mappings(filename, limit)
-    import(filename, limit, false) do |row, validation| 
-      import_categories_from_array(row) 
+    import(filename, limit, false) do |row, validation|
+      import_categories_from_array(row)
     end
   end
 
@@ -118,8 +126,8 @@ class Organization < ActiveRecord::Base
   end
 
   def self.import_addresses(filename, limit, validation = true)
-    import(filename, limit, validation) do |row, validation| 
-       create_from_array(row, validation) 
+    import(filename, limit, validation) do |row, validation|
+       create_from_array(row, validation)
     end
   end
 
@@ -137,20 +145,24 @@ class Organization < ActiveRecord::Base
     end
   end
 
+  def self.export_orphan_organization_emails
+    self.where("email <> ''").select {|o| o.users.blank?}
+  end
+
   def self.import_emails(filename, limit, validation = true)
+    str = ''
     import(filename, limit, validation) do |row, validation|
-      add_email(row, validation)
+      str << add_email(row, validation)
     end
+    str
   end
 
   def self.add_email(row, validation)
     orgs = where("UPPER(name) LIKE ? ","%#{row[0].try(:upcase)}%")
-    if orgs && orgs[0] && orgs[0].email.blank?
-      orgs[0].email = row[7]
-      orgs[0].save
-    else
-      puts "#{row[0]} was not found"
-    end
+    return "#{row[0]} was not found\n" unless orgs && orgs[0] && orgs[0].email.blank?
+    orgs[0].email = row[7]
+    orgs[0].save
+    return "#{row[0]} was found\n"
   end
 
   def self.check_columns_in(row)

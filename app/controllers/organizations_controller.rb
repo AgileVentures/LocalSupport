@@ -1,7 +1,9 @@
 class OrganizationsController < ApplicationController
+  layout 'two_columns'
   # GET /organizations/search
   # GET /organizations/search.json
   before_filter :authenticate_user!, :except => [:search, :index, :show]
+
   def search
     @query_term = params[:q]
     @category_id = params.try(:[],'category').try(:[],'id')
@@ -27,7 +29,8 @@ class OrganizationsController < ApplicationController
   def show
     @organization = Organization.find(params[:id])
     @editable = current_user.can_edit?(@organization) if current_user
-    @grabbable = current_user.can_request_org_admin?(@organization) if current_user
+    @grabbable = current_user ? current_user.can_request_org_admin?(@organization) : true
+   # @next_path = current_user ? organization_user_path(@organization.id, current_user.id) : new_user_session_path
     @json = gmap4rails_with_popup_partial(@organization,'popup')
   end
 
@@ -39,12 +42,8 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations/1/edit
   def edit
-    #TODO Eliminate code duplication for permissions across methods
     @organization = Organization.find(params[:id])
-    unless current_user.try(:can_edit?,@organization)
-      flash[:notice] = PERMISSION_DENIED
-      redirect_to organization_path(params[:id]) and return false
-    end
+    return false unless user_can_edit? @organization
   end
 
   # POST /organizations
@@ -70,12 +69,8 @@ class OrganizationsController < ApplicationController
   def update
     @organization = Organization.find(params[:id])
     params[:organization][:admin_email_to_add] = params[:organization_admin_email_to_add] if params[:organization]
-    unless current_user.try(:can_edit?,@organization)
-      flash[:notice] = PERMISSION_DENIED
-      redirect_to organization_path(params[:id]) and return false
-    end
+    return false unless user_can_edit? @organization
     if @organization.update_attributes_with_admin(params[:organization])
-
       redirect_to @organization, notice: 'Organization was successfully updated.'
     else
       render action: "edit"
@@ -100,5 +95,12 @@ class OrganizationsController < ApplicationController
     item.to_gmaps4rails  do |org, marker|
       marker.infowindow render_to_string(:partial => partial, :locals => { :@org => org})
     end
+  end
+  def user_can_edit?(org)
+    unless current_user.try(:can_edit?,org)
+      flash[:notice] = PERMISSION_DENIED
+      redirect_to organization_path(params[:id]) and return false
+    end
+    true
   end
 end

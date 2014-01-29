@@ -16,8 +16,11 @@ group :development, :test do
   gem 'simplecov'
   gem 'rspec-rails'
   gem 'execjs'
+  gem 'aruba'
   gem 'rack_session_access'
   gem 'simplecov', :require => false
+  gem 'jasmine'
+  gem 'jasmine-jquery-rails'
 end
 
 group :development do
@@ -83,6 +86,9 @@ gem 'unicorn'
 gem 'redcarpet'
 
 # Adding font awesome
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
+
+# validating organization website URLs
+gem 'url_validator'
 
 

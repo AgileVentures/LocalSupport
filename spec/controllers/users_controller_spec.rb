@@ -81,7 +81,12 @@ describe UsersController do
 
         it "renders the index template" do
           get :index
-          expect(response).to render_template("index")
+          expect(response).to render_template('index')
+        end
+
+        it "renders in full width" do
+          get :index
+          expect(response).to render_template('layouts/full_width')
         end
       end
 
@@ -107,7 +112,7 @@ describe UsersController do
         controller.stub(:current_user).and_return(nil)
       end
 
-      it "redirects user to root and flashes a notice" do
+      it "redirects user to root" do
         get :index
         response.should redirect_to root_path
       end
@@ -116,6 +121,7 @@ describe UsersController do
         get :index
         expect(flash[:notice]).to have_content("You must be signed in as an admin to perform this action!")
       end
+
     end
   end
 end

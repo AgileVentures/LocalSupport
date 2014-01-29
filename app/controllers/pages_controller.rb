@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
-
+  layout 'full_width'
+  # in a method use render layout: "layout"
   before_filter :authorize, :except => :show
 
   # GET /pages
@@ -7,11 +8,6 @@ class PagesController < ApplicationController
   #TODO Hide all but show and edit
   def index
     @pages = Page.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @pages }
-    end
   end
 
   # GET /pages/:permalink
@@ -33,11 +29,6 @@ class PagesController < ApplicationController
   # GET /pages/new.json
   def new
     @page = Page.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @page }
-    end
   end
 
   # GET /pages/:permalink/edit
@@ -50,14 +41,10 @@ class PagesController < ApplicationController
   def create
     @page = Page.new(params[:page])
 
-    respond_to do |format|
-      if @page.save
-        format.html { redirect_to @page, notice: 'Page was successfully created.' }
-        format.json { render json: @page, status: :created, location: @page }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @page.errors, status: :unprocessable_entity }
-      end
+    if @page.save
+      redirect_to @page, notice: 'Page was successfully created.'
+    else
+      render action: "new"
     end
   end
 
@@ -66,14 +53,10 @@ class PagesController < ApplicationController
   def update
     @page = Page.find_by_permalink!(params[:id])
 
-    respond_to do |format|
-      if @page.update_attributes(params[:page])
-        format.html { redirect_to @page, notice: 'Page was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @page.errors, status: :unprocessable_entity }
-      end
+    if @page.update_attributes(params[:page])
+      redirect_to @page, notice: 'Page was successfully updated.'
+    else
+      render action: "edit"
     end
   end
 
@@ -83,10 +66,7 @@ class PagesController < ApplicationController
     @page = Page.find_by_permalink!(params[:id])
     @page.destroy
 
-    respond_to do |format|
-      format.html { redirect_to pages_url }
-      format.json { head :no_content }
-    end
+    redirect_to pages_url
   end
 
   private
