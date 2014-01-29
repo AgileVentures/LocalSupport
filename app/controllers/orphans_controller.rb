@@ -16,7 +16,7 @@ class OrphansController < ApplicationController
     end
     respond_to do |format|
       format.html { session[params[:id]] = response; redirect_to :index }
-      format.json { render :json => user.to_json }
+      format.json { render :json => response.to_json }
     end
   end
 
