@@ -11,6 +11,7 @@
                     dataType: 'json',
                     success: function(data) {
                         $('#' + org_id + ' .response').text(data);
+                        // disable button
                         return false;
                     },
                     error: function(data) {
