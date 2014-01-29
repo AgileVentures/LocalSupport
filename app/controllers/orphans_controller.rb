@@ -10,12 +10,12 @@ class OrphansController < ApplicationController
   def create
     user = Organization.find_by_id(params[:id]).generate_potential_user
     if user.errors.any?
-      user = user.errors.full_messages.first
+      response = user.errors.full_messages.first
     else
-      user = user.reset_password_token
+      response = user.reset_password_token
     end
     respond_to do |format|
-      format.html { session[params[:id]] = user; redirect_to :index }
+      format.html { session[params[:id]] = response; redirect_to :index }
       format.json { render :json => user.to_json }
     end
   end
