@@ -51,7 +51,6 @@ class ApplicationController < ActionController::Base
 
   # Not to be confused with the activerecord admin? method
   def admin?
-    current_user.present? ? current_user.admin? : false
     current_user.try :admin?
   end
 end
