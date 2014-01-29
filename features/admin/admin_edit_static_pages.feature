@@ -55,7 +55,7 @@ Feature: I want to be able to edit static pages
   Scenario: Non-admin cannot see pages index
     Given I am signed in as a non-admin
     And I visit "/pages"
-    Then I should see "unauthorized access"
+    Then I should see "You must be signed in as an admin to perform this action!"
     And I should be on the home page
 
   Scenario: Static pages are editable
