@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       redirect_to root_path
       flash[:notice] = "You must be signed in as an admin to perform this action!"
     else
-      @users = User.first(2)
+      @users = User.all
     end
   end
 end
