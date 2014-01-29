@@ -31,4 +31,7 @@ Feature:  Tool tip instructions for fields on edit form
       | Telephone                                            |  Make sure phone number is correct  |
       | Add an additional organisation administrator email   |  Please enter the details of individuals from your organisation you would like to give permission to update your entry. E-mail addresses entered here will not be made public.  |
       | Donation                                             |  Please enter a website here either to the fundraising page on your website or to an online donation site.  |
+      | Publish email                                        |  To make your email address visible to the public check this box |
+      | Publish address                                      |  To make your full address visible to the public check this box |
+      | Publish phone                                        |  To make your telephone number visible to the public check this box |
 

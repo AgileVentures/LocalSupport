@@ -11,7 +11,9 @@ describe 'organizations/show.html.erb' do
         :postcode => 'HA1 4HZ',
         :website => 'http://www.friendly.org',
         :donation_info => 'http://www.friendly.org/donate',
-        :publish_address => false
+        :publish_address => false,
+        :publish_email => true,
+        :publish_phone => false
     }
   end
 
@@ -50,10 +52,11 @@ describe 'organizations/show.html.erb' do
   end
 
   context 'some information is private' do
-    it 'should not show telephone and address by default' do
+    it 'should not show telephone and address by default but should show email by default' do
       render
       rendered.should_not have_content organization.address
       rendered.should_not have_content organization.telephone
+      rendered.should have_content organization.email
     end
     it 'should not show edit button by default' do
       render
@@ -71,6 +74,12 @@ describe 'organizations/show.html.erb' do
     organization.publish_phone = true
     render
     rendered.should have_content organization.telephone
+  end
+
+  it 'does not render the actual email if publish email is false' do
+    organization.publish_email = false
+    render
+    rendered.should_not have_content organization.email
   end
   
   context 'edit button' do
@@ -91,19 +100,34 @@ describe 'organizations/show.html.erb' do
     end
   end
 
-  context 'this is my organization button' do
-    let(:user) { stub_model User, :id => 2 }
-    it 'renders grab button if grabbable true' do
-      @grabbable = assign(:grabbable, true)
-      view.stub(:current_user).and_return(user)
-      render
-      rendered.should have_link 'This is my organization', :href => organization_user_path(organization.id, user.id)
-      #TODO should check hidden value for put
+  describe 'this is my organization button' do
+    context 'logged in user' do
+      let(:user) { stub_model User, :id => 2 }
+      it 'renders grab button if grabbable true' do
+        @grabbable = assign(:grabbable, true)
+        view.stub(:current_user).and_return(user)
+        render
+        rendered.should have_link 'This is my organization', :href => organization_user_path(organization.id, user.id)
+        #TODO should check hidden value for put
+      end
+      it 'does not render grab button if grabbable false' do
+        @grabbable = assign(:grabbable, false)
+        render
+        rendered.should_not have_button('This is my organization')
+      end
     end
-    it 'does not render grab button if grabbable false' do
-      @grabbable = assign(:grabbable, false)
-      render
-      rendered.should_not have_button('This is my organization')
+
+    context 'user not logged in' do
+      #let(:user) { stub_model User, :id => nil }
+      it 'renders grab button' do
+        @grabbable = assign(:grabbable, true)
+        #view.stub(:current_user).and_return(user)
+        render
+        rendered.should have_link 'This is my organization', :href => new_user_session_path
+        #TODO should check hidden value for put
+      end
     end
   end
 end
+
+
