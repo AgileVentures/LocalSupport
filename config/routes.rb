@@ -4,9 +4,8 @@ LocalSupport::Application.routes.draw do
 
   get 'contributors' => 'contributors#show'
   match 'organizations/search' => 'organizations#search'
-  match 'orphans' => 'orphans#index', via: [:get, :post]
-  post 'orphans/orphans_remote' => 'orphans#orphans_remote'
 
+  resources :orphans, only: [:index, :create]
   resources :users, only: [:index, :update]
 
   resources :pages
