@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-
   layout 'full_width'
+  before_filter :authorize, :except => [:update]
   # would like this to support generic updating of model with
   # business logic pulled into a separate model or process
 
@@ -21,11 +21,6 @@ class UsersController < ApplicationController
   end
 
   def index
-    if current_user && current_user.admin?
-      @users = User.all
-    else
-      flash[:notice] = "You must be signed in as an admin to perform this action!"
-      redirect_to root_path
-    end
+    @users = User.all
   end
 end
