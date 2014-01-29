@@ -143,4 +143,3 @@ end
 When(/^javascript is enabled$/) do
   Capybara.javascript_driver
 end
-
