@@ -1,14 +1,23 @@
 describe('Generate User operation', function() {
-    var generate_user;
+    var generate_user, ajax;
     beforeEach(function() {
-        setFixtures('<tr id="362"><td style="text-align: center;"><a class="generate_user btn btn-default" rel="nofollow" data-method="post" href="/orphans?id=362">+</a></td><td class="response"></td></tr>');
+        setFixtures('<tr id="362"><td><a class="generate_user"></a></td><td class="response"><span></span></td></tr>');
         generate_user = $('.generate_user');
         spyOn($, "ajax");
         generate_user.generate_user();
     });
-    it('should make an ajax request when clicked',function(){
+    it('makes an ajax request when clicked',function(){
         generate_user.click();
-        expect($.ajax.mostRecentCall.args[0]["url"]).toEqual("/orphans");
+        var args = $.ajax.mostRecentCall.args[0];
+        expect(args.data).toEqual({ id: '362' });
+        expect(args.dataType).toEqual('json');
+        expect(args.type).toEqual('POST');
+        expect(args.url).toEqual('/orphans')
     });
-
+//    it('inserts text if successful', function() {
+//        ajax.andCallFake(function(options) {
+//            options.success('hi');
+//        });
+//        expect($('#362 span')).toHaveText('hi')
+//    })
 });
