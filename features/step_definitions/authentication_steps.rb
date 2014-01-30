@@ -110,3 +110,8 @@ end
 And(/^cookies are not approved$/) do
   steps %Q{And I have a "cookie_policy_accepted" cookie set to "false"}
 end
+
+Given(/^I click on the link in the email to "([^\"]+)"$/) do  |email|
+  user = User.find_by_email email
+  visit '/users/password/edit?reset_password_token=' + user.reset_password_token
+end

@@ -20,6 +20,12 @@ Scenario: Retrieve password for an existing user
   And I press "Send me reset password instructions"
   Then I should see "You will receive an email with instructions about how to reset your password in a few minutes."
   And I should receive a "Reset password instructions" email
+  Given I click on the link in the email to "registered-user@example.com"
+  Then I should be on the password reset page
+  And I fill in "password" with "12345678"
+  And I fill in "password_confirmation" with "12345678"
+  And I press "Submit"
+  Then I should be on the home page
 
 @email
 Scenario: Retrieve password for a non-existent user
