@@ -7,15 +7,11 @@ class OrphansController < ApplicationController
     @orphans += Organization.not_null_email.generated_users
   end
 
-  # json only, js-disabled users can suck it
   # http://stackoverflow.com/questions/5315465/rails-3-link-to-generator-for-post-put-delete
+  # since graceful degradation is impossible anyway, js-disabled users can suck it
   def create
     user = Organization.find_by_id(params[:id]).generate_potential_user
-    if user.errors.any?
-      msg = user.errors.full_messages.first
-    else
-      msg = user.reset_password_token
-    end
+    msg = user.errors.any? ? user.errors.full_messages.first : user.reset_password_token
     respond_to do |format|
       format.json { render :json => msg.to_json }
     end

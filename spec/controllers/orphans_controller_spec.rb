@@ -10,11 +10,17 @@ describe OrphansController do
     session.stub(:admin?).and_return(false)
     get :index
     response.should redirect_to '/'
-    post :create, {}
+    post :create
     response.should redirect_to '/'
   end
 
   describe '#index' do
+    it 'assigns an instance variable' do
+      Organization.stub_chain(:not_null_email, :null_users).and_return([org])
+      Organization.stub_chain(:not_null_email, :generated_users).and_return([org])
+      get :index
+      assigns(:orphans).should eq([org, org])
+    end
   end
 
   describe '#create' do
@@ -38,8 +44,6 @@ describe OrphansController do
     end
 
     after(:each) do
-      post :create, { id: '3' }
-      debugger
       request.accept = 'application/json'
       post :create, { id: '3' }
       ActiveSupport::JSON.decode(response.body).should eq('just calling to say i love you')
