@@ -30,6 +30,12 @@ describe ApplicationController do
         get :custom
         session[:previous_url].should be_nil
       end
+
+      it 'when called from /users/password/edit' do
+        request.stub(:path).and_return("/users/password/edit")
+        get :custom
+        session[:previous_url].should be_nil
+      end
     end
     describe 'wanted previous urls' do
       it 'when called from /organizations/1' do
