@@ -20,5 +20,10 @@
                 return false
             });
         });
-    }
+    };
+//    $.fn.generate_user_success = function(org_id, data) {
+//        var matcher = $('#' + org_id + ' .response');
+//        $(matcher + ' a').remove();
+//        $(matcher + 'span').text(data)
+//    }
 })(jQuery);
