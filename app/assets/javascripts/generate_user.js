@@ -2,7 +2,7 @@
     'use strict';
     $.fn.generate_user = function() {
         this.each(function() {
-            var org_id = $(this).parent().parent().attr('id');
+            var org_id = $(this).closest('tr').attr('id');
             $(this).click(function() {
                 $.ajax({
                     type: 'POST',
@@ -10,13 +10,10 @@
                     data: { id: org_id},
                     dataType: 'json',
                     success: function(data) {
-                        $('#' + org_id + ' .response').text(data);
-                        // disable button
-                        return false;
+                        $('#' + org_id + ' .response span').text(data);
                     },
                     error: function(data) {
-                        $('#' + org_id + ' .response').text(data);
-                        return false;
+                        $('#' + org_id + ' .response span').text(data);
                     }
                 });
                 return false

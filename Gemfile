@@ -58,6 +58,7 @@ group :assets do
   gem 'sass-rails'
   gem 'less-rails'
   gem 'twitter-bootstrap-rails'
+  gem 'font-awesome-rails'
 end
 
 gem 'jquery-rails'
@@ -84,9 +85,6 @@ gem 'unicorn'
 
 # To use markdown in editing static pages
 gem 'redcarpet'
-
-# Adding font awesome
-gem 'font-awesome-rails'
 
 # validating organization website URLs
 gem 'url_validator'
