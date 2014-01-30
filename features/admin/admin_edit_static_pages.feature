@@ -61,9 +61,9 @@ Feature: I want to be able to edit static pages
   Scenario: Static pages are editable
     Given I am signed in as a admin
     And I am on the edit page with the "about" permalink
-    And I fill in "page_name" with "new name"
-    And I fill in "page_permalink" with "new_link"
-    And I fill in "page_content" with "xyz789"
+    And I fill in "page_name" with "new name" within the main body
+    And I fill in "page_permalink" with "new_link" within the main body
+    And I fill in "page_content" with "xyz789" within the main body
     And I press "Update Page"
     And the URL should contain "new_link"
     And I should see "xyz789"
