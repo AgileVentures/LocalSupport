@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
     sign_in = Regexp.new '/users/sign_in'
     sign_up = Regexp.new '/users/sign_up'
     sign_password = Regexp.new '/users/password'
-    debugger
     unless (sign_in =~ request.path ||
         sign_up =~ request.path ||
         sign_password =~ request.path ||

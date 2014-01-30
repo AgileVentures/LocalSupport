@@ -6,8 +6,8 @@ Feature: Password retrieval
 
 Background:
   Given the following users are registered:
-  | email             | password |
-  | registered-user@example.com | pppppppp |
+  | email             | password | confirmed_at |
+  | registered-user@example.com | pppppppp |   2014-01-20 16:27:36 |
   And cookies are approved
 
   Given I am on the home page
