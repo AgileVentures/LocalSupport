@@ -10,6 +10,7 @@
                     data: { id: org_id},
                     dataType: 'json',
                     success: function(data) {
+                        $('#' + org_id + ' .response a').remove();
                         $('#' + org_id + ' .response span').text(data);
                     },
                     error: function(data) {
