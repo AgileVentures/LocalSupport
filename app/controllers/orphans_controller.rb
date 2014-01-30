@@ -3,20 +3,22 @@ class OrphansController < ApplicationController
   before_filter :authorize
 
   def index
-    @families = Organization.not_null_email.null_users.map {|org| session[org.id].present? ? [org, session[org.id]] : [org, ''] }
-    @families += Organization.not_null_email.generated_users.map {|org| [org, org.users.first.reset_password_token]}
+    @orphans = Organization.not_null_email.null_users.map
+    @robo_matched = Organization.not_null_email.generated_users
   end
 
+  # json only, js-disabled users can suck it
+  # http://stackoverflow.com/questions/5315465/rails-3-link-to-generator-for-post-put-delete
   def create
     user = Organization.find_by_id(params[:id]).generate_potential_user
+    debugger
     if user.errors.any?
-      response = user.errors.full_messages.first
+      msg = user.errors.full_messages.first
     else
-      response = user.reset_password_token
+      msg = user.reset_password_token
     end
     respond_to do |format|
-      format.html { session[params[:id]] = response; redirect_to :index }
-      format.json { render :json => response.to_json }
+      format.json { render :json => msg.to_json }
     end
   end
 

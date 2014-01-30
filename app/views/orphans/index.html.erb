@@ -10,12 +10,35 @@
     </thead>
     <tbody>
     <% error = 'Email has already been taken Email is invalid' %>
-    <% @families.each do |organization, msg| %>
+    <% @orphans.each do |organization| %>
         <% generate_user = error.match(msg) ? 'generate_user btn btn-default' : 'btn btn-default disabled' %>
         <tr id="<%= organization.id %>">
           <td><%= link_to organization.name, organization_path(organization) %></td>
           <td><%= organization.email %></td>
           <td style="text-align: center;"><%= link_to('+', {controller: 'orphans', action: 'create', id: organization.id}, method: 'post', class: generate_user) %></td>
+          <td class="response">
+            <%= msg %>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="well">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Password Reset URL</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @robo_matched.each do |organization| %>
+        <tr id="<%= organization.id %>">
+          <td><%= link_to organization.name, organization_path(organization) %></td>
+          <td><%= organization.email %></td>
           <td class="response">
             <%= msg %>
           </td>
