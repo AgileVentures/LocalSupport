@@ -13,6 +13,7 @@ Then /^I should be on the (.*) page$/ do |location|
   when "organizations index" then current_path.should == organizations_path
   when "users" then current_path.should == users_path
   when "contributors" then current_path.should == contributors_path
+  when "password reset" then current_path.should == edit_user_password_path
   else raise "No matching path found for #{location}!"
   end
 end
