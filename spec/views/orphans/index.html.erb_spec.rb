@@ -2,12 +2,11 @@ require 'spec_helper'
 
 describe "orphans/index.html.erb" do
   let(:org1) { stub_model Organization, name: 'test', address: '12 pinner rd', email: 'hello@there.com', users: [] }
-  let(:null_user) { stub_model NullObject }
-  before(:each) { assign(:families, [[org1, null_user]]) }
+  before(:each) { assign(:orphans, [org1]) }
 
-  it "should display a generate user button" do
+  it "should display a password reset URL column" do
     render
-    rendered.should have_content "Generate User"
+    rendered.should have_content "Password Reset URL"
   end
 
 end
