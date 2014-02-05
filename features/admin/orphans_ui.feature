@@ -23,6 +23,7 @@ Background:
     And I visit "/orphans"
     When I click Generate User button for "The Organization"
     Then a token should be in the response field for "The Organization"
+
     When I click Generate User button for "The Same Email Org"
     Then I should see "Email has already been taken" in the response field for "The Same Email Org"
 
