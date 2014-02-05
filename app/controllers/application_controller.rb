@@ -22,11 +22,6 @@ class ApplicationController < ActionController::Base
     session[:previous_url] || root_path
   end
 
-  #def after_sign_in_path_for (resource)
-  #   return root_url if current_user.admin? || current_user.organization == nil
-  #   organization_path(current_user.organization.id)
-  #end
-
   def allow_cookie_policy
     response.set_cookie 'cookie_policy_accepted', {
         value: 'true',
