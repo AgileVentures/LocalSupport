@@ -5,13 +5,14 @@ describe ApplicationController do
     it 'should return organization path when user is associated with organization and has not previously visited the site' do
       controller = ApplicationController.new
       controller.stub(:store_location)
-      ApplicationController.any_instance.stub(:session).and_return({previous_url: nil})
+      controller.stub(:session).and_return({ :previous_url => nil })
+      controller.stub(:organization_path).and_return '/organization/1'
       user = double('User')
       org = double('Organization')
       org.stub(:id).and_return 1
       user.stub(:organization).and_return org
-      ApplicationController.any_instance.stub(:current_user).and_return(user)
-      ApplicationController.any_instance.stub(:root_path).and_return('/')
+      controller.stub(:current_user).and_return user
+      controller.stub(:root_path).and_return '/'
 
       controller.after_sign_in_path_for(user).should eq '/organization/1'
     end

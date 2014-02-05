@@ -19,8 +19,9 @@ class ApplicationController < ActionController::Base
   #We test this functionality in sign-in tests for session_controller_spec
   def after_sign_in_path_for(resource)
     store_location
-    #debugger
-    session[:previous_url] || root_path
+    return session[:previous_url] if session[:previous_url]
+    return organization_path(current_user.organization) if current_user.organization
+    root_path
   end
 
   def allow_cookie_policy
