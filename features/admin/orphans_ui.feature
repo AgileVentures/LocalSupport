@@ -50,4 +50,10 @@ Feature: Orphans UI
     And I press "Change my password"
     Then I should be on the charity page for "Yet Another Org"
 
-
+  Scenario: Table columns should be sortable
+    Given I am signed in as an admin
+    And I visit "/orphans"
+    And I click "name"
+    Then I should see "Crazy Email Org" before "Yet Another Org"
+    When I click "name"
+    Then I should see "Yet Another Org" before "Crazy Email Org"
