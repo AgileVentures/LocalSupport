@@ -10,4 +10,5 @@
 //= require_tree .
 $(function() {
     $('#TIMO').TIMO();
+    $('.generate_user').generate_user();
 });
