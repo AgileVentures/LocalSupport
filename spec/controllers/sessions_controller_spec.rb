@@ -32,7 +32,7 @@ describe Devise::SessionsController do
         it 'redirects to organization page' do
           Gmaps4rails.stub(:geocode)
           org = FactoryGirl.create(:organization, {:email => 'example@example.com'})
-          FactoryGirl.build(:user, {:email => 'example@example.com', :password => 'pppppppp'}).save!
+          FactoryGirl.build(:user, {:email => 'example@example.com', :password => 'pppppppp', :organization => org}).save!
           post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp'}
           expect(response).to redirect_to organization_path(org.id)
         end

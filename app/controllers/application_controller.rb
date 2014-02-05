@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
   #We test this functionality in sign-in tests for session_controller_spec
   def after_sign_in_path_for(resource)
     store_location
+    #debugger
     session[:previous_url] || root_path
   end
 
