@@ -5,18 +5,20 @@ Feature: Orphans UI
 
   Background:
     Given the following organizations exist:
-      | name               | address        | email            |
-      | The Organization   | 83 pinner road | no_owner@org.org |
-      | The Same Email Org | 84 pinner road | no_owner@org.org |
-      | Crazy Email Org    | 30 pinner road | sahjkgdsfsajnfds |
-      | My Organization    | 30 pinner road | admin@myorg.com  |
+      | name               | address        | email             |
+      | The Organization   | 83 pinner road | no_owner@org.org  |
+      | The Same Email Org | 84 pinner road | no_owner@org.org  |
+      | Crazy Email Org    | 30 pinner road | sahjkgdsfsajnfds  |
+      | My Organization    | 30 pinner road | admin@myorg.com   |
+      | Yet Another Org    | 30 pinner road | admin@another.org |
     And the following users are registered:
-      | email                 | password       | admin | confirmed_at        | organization    | pending_organization | reset_password_token |
-      | nonadmin@myorg.com    | mypassword1234 | false | 2008-01-01 00:00:00 |                 |                      | 23wed23red23qwred2   |
-      | admin@myorg.com       | adminpass0987  | true  | 2008-01-01 00:00:00 | My Organization |                      | 23ed23qed23d23qd     |
-      | pending@myorg.com     | password123    | false | 2008-01-01 00:00:00 |                 | My Organization      | 3rf23f23qrf23f23f3   |
-      | invited-admin@org.org | password123    | false | 2008-01-01 00:00:00 |                 |                      | 123423rwefw3resfaa56 |
+      | email                 | password       | admin | confirmed_at        | organization    | pending_organization |
+      | nonadmin@myorg.com    | mypassword1234 | false | 2008-01-01 00:00:00 |                 |                      |
+      | admin@myorg.com       | adminpass0987  | true  | 2008-01-01 00:00:00 | My Organization |                      |
+      | pending@myorg.com     | password123    | false | 2008-01-01 00:00:00 |                 | My Organization      |
+      | invited-admin@org.org | password123    | false | 2008-01-01 00:00:00 |                 |                      |
     And cookies are approved
+    And the admin made a preapproved user for "Yet Another Org"
 
   @javascript
   Scenario: Admin can generate link but only for unique email
@@ -41,11 +43,11 @@ Feature: Orphans UI
     And I should see "You must be signed in as an admin to perform this action!"
 
   Scenario: Pre-approved user clicking through on email
-    Given I click on the link in the email to "invited-admin@org.org"
+    Given I click on the link in the email to "admin@another.org"
     Then I should be on the password reset page
     And I fill in "user_password" with "12345678" within the main body
     And I fill in "user_password_confirmation" with "12345678" within the main body
     And I press "Change my password"
-    Then I should be on the charity page for "The Organization"
+    Then I should be on the charity page for "Yet Another Org"
 
 
