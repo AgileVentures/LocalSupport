@@ -51,6 +51,11 @@ Given /^the following users are registered:$/ do |users_table|
   end
 end
 
+Given(/^the admin made a preapproved user for "(.*?)"$/) do |organization_name|
+  org = Organization.find_by_name(organization_name)
+  org.generate_potential_user
+end
+
 Given /^that I am logged in as any user$/ do
   steps %Q{
      Given the following users are registered:
