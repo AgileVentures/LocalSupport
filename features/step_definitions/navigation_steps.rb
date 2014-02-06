@@ -55,8 +55,6 @@ Given /^I press "(.*?)"$/ do |button|
 end
 
 When /^I click "(.*)"$/ do |link|
-  puts 'hi'
-  debugger
   click_link(link)
 end
 
