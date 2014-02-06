@@ -7,17 +7,16 @@ describe('gem bootstrap_sortable_rails', function() {
         header = $('th');
     });
     describe('when clicking on the tableheader', function() {
-        it('inserts an arrow after click', function() {
-            header.click();
-            expect(header.find('span')).toHaveClass('arrow');
-            header.click();
-        });
         it('sorts A-Z then Z-A', function() {
             header.click();
             expect($('td').first()).toHaveText('Harrow Baptist Church');
             header.click();
             expect($('td').first()).toHaveText('Human Touch Worldwide')
-        })
+        });
+        it('inserts an arrow after click', function() {
+            header.click();
+            expect(header.find('span')).toHaveClass('arrow');
+        });
     });
 });
 
