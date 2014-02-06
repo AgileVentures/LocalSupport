@@ -6,6 +6,7 @@
 // Calling collapse will trigger the events 'show' or 'hide'
 // https://github.com/seyhunak/twitter-bootstrap-rails/blob/master/app/assets/javascripts/twitter/bootstrap/bootstrap-collapse.js#L69
 
+//=require spec_helper
 describe('This is my Organization button', function() {
     var timo, nav, menu, spyCollapse;
     beforeEach(function() {

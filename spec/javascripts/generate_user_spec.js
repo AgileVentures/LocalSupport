@@ -1,3 +1,4 @@
+//=require spec_helper
 describe('Generate User operation', function() {
     var generate_user, ajax;
     beforeEach(function() {
