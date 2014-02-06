@@ -9,7 +9,7 @@ describe('Generate User operation', function() {
     it('makes an ajax request when clicked',function(){
         spyOn($, "ajax");
         generate_user.click();
-        var args = $.ajax.calls.mostRecent();
+        var args = $.ajax.calls.mostRecent().args[0];
         expect(args.data).toEqual({ id: '362' });
         expect(args.dataType).toEqual('json');
         expect(args.type).toEqual('POST');
