@@ -6,7 +6,7 @@ describe('Generate User operation', function() {
 
         generate_user.generate_user();
     });
-    it('makes an ajax request when clicked',function(){
+    it('makes one ajax request when clicked',function(){
         spyOn($, "ajax");
         generate_user.click();
         expect($.ajax.calls.count()).toEqual(1);
