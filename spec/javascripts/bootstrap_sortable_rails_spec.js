@@ -1,5 +1,5 @@
 describe('gem bootstrap_sortable_rails', function() {
-    var header, harrow, human;
+    var header;
     beforeEach(function() {
         setFixtures('<table class="sortable"><thead><tr><th data-sortkey="0">Name</th></tr></thead>' +
             '<tbody><tr><td data-value="Harrow Baptist Church"><a href="/organizations/1">Harrow Baptist Church</td></tr>' +
