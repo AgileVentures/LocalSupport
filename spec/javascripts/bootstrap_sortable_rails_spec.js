@@ -6,9 +6,6 @@ describe('gem bootstrap_sortable_rails', function() {
             '<tr><td data-value="Human Touch Worldwide"><a href="/organizations/1">Human Touch Worldwide</td></tr></tbody></table>');
         header = $('th');
     });
-    it('matchers should match', function() {
-        expect(header).not.toBe(0);
-    });
     describe('when clicking on the tableheader', function() {
         it('inserts an arrow after click', function() {
             header.click();
