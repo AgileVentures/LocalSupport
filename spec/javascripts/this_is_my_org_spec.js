@@ -15,7 +15,7 @@ describe('This is my Organization button', function() {
         timo = $('#TIMO');
         nav  = $('.nav-collapse');
         menu = $('#menuLogin');
-        spyCollapse = spyOn($.fn, 'collapse').andCallThrough();
+        spyCollapse = spyOn($.fn, 'collapse').and.callThrough();
         spyOnEvent(nav, 'show');
         spyOnEvent(timo, 'click');
         timo.TIMO();
