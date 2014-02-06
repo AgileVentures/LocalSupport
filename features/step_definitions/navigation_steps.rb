@@ -55,6 +55,8 @@ Given /^I press "(.*?)"$/ do |button|
 end
 
 When /^I click "(.*)"$/ do |link|
+  puts 'hi'
+  debugger
   click_link(link)
 end
 
@@ -143,4 +145,9 @@ When(/^I click link with id "([^"]*)"$/) do |id|
 end
 When(/^javascript is enabled$/) do
   Capybara.javascript_driver
+end
+
+
+And(/^I click tableheader "([^"]*)"$/) do |name|
+  find('th', :text => "#{name}").click
 end

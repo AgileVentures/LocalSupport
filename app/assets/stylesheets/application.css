@@ -6,6 +6,7 @@
  *= require bootstrap_and_overrides
  *= require_tree .
  *= require font-awesome
+ *= require bootstrap-sortable
 */
 
 body, html {

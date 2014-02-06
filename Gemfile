@@ -61,6 +61,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'bootstrap_sortable_rails', '~> 0.1.3'
 
 # Use unicorn as the web server
 # gem 'unicorn'
