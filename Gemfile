@@ -57,8 +57,9 @@ group :assets do
   gem 'sass-rails'
   gem 'less-rails'
   gem 'twitter-bootstrap-rails'
-  gem 'font-awesome-rails'
 end
+
+gem 'font-awesome-rails'
 
 gem 'jquery-rails'
 

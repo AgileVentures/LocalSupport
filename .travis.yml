@@ -9,9 +9,9 @@ before_script:
 - bundle exec rake db:migrate
 - bundle exec rake db:test:prepare
 script:
-- bundle exec rake cucumber
-- bundle exec rake spec
 - USE_JASMINE_RAKE=true bundle exec rake jasmine:ci
+- bundle exec rake spec
+- bundle exec rake cucumber
 deploy:
   provider: heroku
   api_key:
