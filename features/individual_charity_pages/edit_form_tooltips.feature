@@ -22,14 +22,14 @@ Feature:  Tool tip instructions for fields on edit form
     # Then the "Name" label should display "Enter a unique name" as a tooltip
     Then the following tooltips should exist: 
       | label                                                |  tooltip        |
-      | Name                                                 |  Enter a unique name |
       | Address                                              |  Enter a complete address  |
+      | Add an additional organisation administrator email   |  Please enter the details of individuals from your organisation you would like to give permission to update your entry. E-mail addresses entered here will not be made public.  |
+      | Name                                                 |  Enter a unique name |
       | Postcode                                             |  Make sure post code is accurate  |
       | Email                                                |  Make sure email is correct  |
       | Description                                          |  Enter a full description here. When an individual searches this database all words in this description will be searched. |
       | Website                                              |  Make sure url is correct  |
       | Telephone                                            |  Make sure phone number is correct  |
-      | Add an additional organisation administrator email   |  Please enter the details of individuals from your organisation you would like to give permission to update your entry. E-mail addresses entered here will not be made public.  |
       | Donation                                             |  Please enter a website here either to the fundraising page on your website or to an online donation site.  |
       | Publish email                                        |  To make your email address visible to the public check this box |
       | Publish address                                      |  To make your full address visible to the public check this box |
