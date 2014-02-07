@@ -144,3 +144,8 @@ end
 When(/^javascript is enabled$/) do
   Capybara.javascript_driver
 end
+
+
+And(/^I click tableheader "([^"]*)"$/) do |name|
+  find('th', :text => "#{name}").click
+end
