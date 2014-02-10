@@ -9,8 +9,8 @@ Then(/^a token should be in the response field for "([^"]*)"$/) do |org_name|
   id = org.id
   user = org.users.first
   token = user.reset_password_token
+  url = Capybara.current_host + retrieve_password_url(token)
   response = within("##{id}") { find('.response') }
-  url = retrieve_password_url(token)
   raise "Expected '#{url}' but instead found '#{response.text}'" unless (response.text == url)
 end
 

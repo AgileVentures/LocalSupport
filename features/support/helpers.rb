@@ -12,8 +12,7 @@ module Helpers
   end
 
   def retrieve_password_url(token)
-    host = Capybara.server_host || "127.0.0.1"
-    Rails.application.routes.url_helpers.edit_user_password_path(reset_password_token: token, only_path: false, host: host)
+    Rails.application.routes.url_helpers.edit_user_password_path(reset_password_token: token)
   end
 end
 
