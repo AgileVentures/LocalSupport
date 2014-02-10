@@ -10,7 +10,8 @@ Then(/^a token should be in the response field for "([^"]*)"$/) do |org_name|
   user = org.users.first
   token = user.reset_password_token
   response = within("##{id}") { find('.response') }
-  raise "Expected '#{token}' but instead found '#{response.text}'" unless (response.text == token)
+  url = retrieve_password_url(token)
+  raise "Expected '#{url}' but instead found '#{response.text}'" unless (response.text == url)
 end
 
 

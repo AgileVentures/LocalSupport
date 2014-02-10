@@ -10,6 +10,10 @@ module Helpers
   def collect_links(html)
     Hash[Nokogiri::HTML(html).css('a').collect {|node| [node.text.strip, node.attributes['href'].to_s]}]
   end
+
+  def retrieve_password_url(token)
+    Rails.application.routes.url_helpers.edit_user_password_path(reset_password_token: token, :only_path => false, :host => 'localhost')
+  end
 end
 
 World(Helpers)
