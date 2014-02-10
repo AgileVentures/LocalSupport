@@ -1,3 +1,0 @@
-describe OrphansHelper do
-
-end

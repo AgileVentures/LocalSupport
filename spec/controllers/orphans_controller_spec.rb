@@ -26,6 +26,7 @@ describe OrphansController do
   describe '#create' do
     let(:error) { double('ActiveModel::Errors') }
     before(:each) do
+      request.accept = 'application/json'
       Organization.should_receive(:find_by_id).with('3').and_return(org)
       org.should_receive(:generate_potential_user).and_return(user)
     end
@@ -35,18 +36,19 @@ describe OrphansController do
       error.should_receive(:any?).and_return(true)
       error.should_receive(:full_messages)
       error.stub_chain(:full_messages, :first).and_return('just calling to say i love you')
-    end
-
-    it 'elicits the reset password token otherwise' do
-      user.should_receive(:errors).once.and_return(error)
-      error.should_receive(:any?).and_return(false)
-      user.should_receive(:reset_password_token).and_return('just calling to say i love you')
-    end
-
-    after(:each) do
-      request.accept = 'application/json'
       post :create, { id: '3' }
       ActiveSupport::JSON.decode(response.body).should eq('just calling to say i love you')
     end
+
+    it 'elicits the reset password token otherwise' do
+      url = 'http://' + request.host + '/users/password/edit?reset_password_token='
+      token = 'zCera2DfKGxpF4xqpWPW'
+      user.should_receive(:errors).once.and_return(error)
+      error.should_receive(:any?).and_return(false)
+      user.should_receive(:reset_password_token).and_return(token)
+      post :create, { id: '3' }
+      ActiveSupport::JSON.decode(response.body).should eq(url + token)
+    end
+
   end
 end
