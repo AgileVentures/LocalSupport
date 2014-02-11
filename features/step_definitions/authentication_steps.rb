@@ -118,5 +118,5 @@ end
 
 Given(/^I click on the link in the email to "([^\"]+)"$/) do  |email|
   user = User.find_by_email email
-  visit '/users/password/edit?reset_password_token=' + user.reset_password_token
+  visit retrieve_password_url(user.reset_password_token)
 end
