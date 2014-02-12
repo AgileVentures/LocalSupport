@@ -64,10 +64,13 @@ describe ApplicationController do
   end
 
   describe 'allow_cookie_policy' do
-    it 'cookie is set and redirected to root' do
+    before :each do
+      request.should_receive(:referer).and_return "/hello"
+    end
+    it 'cookie is set and redirected to referer' do
       response.should_receive(:set_cookie)
       get :allow_cookie_policy
-      response.should redirect_to root_path
+      response.should redirect_to "/hello"
     end
 
     it 'cookie has correct key/value pair' do
