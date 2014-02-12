@@ -54,8 +54,8 @@ Feature: Admin editing charity
 
   Scenario: Successfully create charity while being signed-in as admin from arbitrary page
     Given I am signed in as a admin
-    Given I am on the contributors page
-    And I follow "New Organization"
+    Given I am on the charity page for "Friendly Clone"
+    And I follow "New Organisation"
     And I fill in the new charity page validly
     And I press "Create Organisation"
     Then I should see "Organization was successfully created."
