@@ -110,4 +110,16 @@ describe "layouts/application.html.erb", :type => :feature do
       rendered.should have_css("li.dropdown ul.dropdown-menu li a[href=\"#{destroy_user_session_path}\"]")
     end
   end
+  context "admin signed-in" do
+    it 'links to new org link in footer' do
+      view.stub(:user_signed_in?).and_return(true)
+      user = double(User)
+      user.stub(:email).and_return('normal_user@example.com')
+      user.stub(:admin?).and_return(true)
+      view.stub(:current_user).and_return(user)
+      render
+
+      rendered.should have_link("New Organisation",href: new_organization_path)
+    end
+  end
 end
