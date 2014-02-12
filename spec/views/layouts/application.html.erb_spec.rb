@@ -93,10 +93,11 @@ describe "layouts/application.html.erb", :type => :feature do
        rendered.should have_link "Contributors"
      end
   end
-  context "user signed-in" do
+  context "regular user signed-in" do
     before :each do
       view.stub(:user_signed_in?).and_return(true)
       user = double(User)
+      user.stub(:admin?).and_return(false)
       user.stub(:email).and_return('normal_user@example.com')
       view.stub(:current_user).and_return(user)
     end
