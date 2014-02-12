@@ -52,6 +52,14 @@ Feature: Admin editing charity
     And I have created a new organization
     Then I should see "Organization was successfully created."
 
+  Scenario: Successfully create charity while being signed-in as admin from arbitrary page
+    Given I am signed in as a admin
+    Given I am on the contributors page
+    And I follow "New Organization"
+    And I fill in the new charity page validly
+    And I press "Create Organisation"
+    Then I should see "Organization was successfully created."
+
   Scenario: non logged in user should not see new organization link
     Given I am on the home page
     Then I should not see a new organizations link
