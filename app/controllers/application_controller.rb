@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
     #  format.json { render :nothing => true, :status => 200 }
     #end
 
-    redirect_to request.referer
+    redirect_to request.referer || '/'
   end
 
   private
