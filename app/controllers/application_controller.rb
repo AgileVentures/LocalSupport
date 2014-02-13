@@ -8,9 +8,11 @@ class ApplicationController < ActionController::Base
     sign_in = Regexp.new '/users/sign_in'
     sign_up = Regexp.new '/users/sign_up'
     sign_password = Regexp.new '/users/password'
+    cookies_allow = Regexp.new '/cookies/allow'
     unless (sign_in =~ request.path ||
         sign_up =~ request.path ||
         sign_password =~ request.path ||
+        cookies_allow =~ request.path ||
         request.xhr?) # don't store ajax calls
       session[:previous_url] = request.path
     end
