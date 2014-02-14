@@ -13,6 +13,8 @@ Then /^I should be on the (.*) page$/ do |location|
   when "organizations index" then current_path.should == organizations_path
   when "users" then current_path.should == users_path
   when "contributors" then current_path.should == contributors_path
+  when "password reset" then current_path.should == edit_user_password_path
+  else raise "No matching path found for #{location}!"
   end
 end
 
@@ -56,6 +58,10 @@ When /^I click "(.*)"$/ do |link|
   click_link(link)
 end
 
+When /^I click id "(.*)"$/ do |id|
+  find("##{id}").click
+end
+
 When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
@@ -66,7 +72,7 @@ end
 
 Then /^I should be on the charity page for "(.*?)"$/ do |charity_name|
   charity = Organization.find_by_name(charity_name)
-  expect(current_path).to eq(organization_path charity.id) 
+  expect(current_path).to eq(organization_path charity.id)
 end
 
 Then /^following Disclaimer link should display Disclaimer$/ do
@@ -117,11 +123,15 @@ end
 Then(/^the "([^"]*)" should be (not )?visible$/) do |id, negate|
   # http://stackoverflow.com/a/15782921
   # Capybara "visible?" method(s) are inaccurate!
-  regex = /height: 0/ # Assume style="height: 0px;" is the only means of invisibility
-  style = page.find("##{id}")['style']
-  sleep 0.25 if style   # need to give js a moment to modify the DOM
-  expectation = negate ? :should : :should_not
-  style ? style.send(expectation, have_text(regex)) : negate.nil?
+
+  #regex = /height: 0/ # Assume style="height: 0px;" is the only means of invisibility
+  #style = page.find("##{id}")['style']
+  #sleep 0.25 if style   # need to give js a moment to modify the DOM
+  #expectation = negate ? :should : :should_not
+  #style ? style.send(expectation, have_text(regex)) : negate.nil?
+
+  elem = page.find("##{id}")
+  negate ? !elem.visible? : elem.visible?
 end
 
 Then(/^the "([^"]*)" should be "([^"]*)"$/) do |id, css_class|
@@ -135,3 +145,7 @@ When(/^javascript is enabled$/) do
   Capybara.javascript_driver
 end
 
+
+And(/^I click tableheader "([^"]*)"$/) do |name|
+  find('th', :text => "#{name}").click
+end

@@ -266,8 +266,12 @@ def check_contact_details(name)
   page.should have_content smart_truncate(org.description)
 end
 
-When /^I fill in "(.*?)" with "(.*?)"$/ do |field, value|
-  fill_in(field, :with => value)
+When /^I fill in "(.*?)" with "(.*?)" within the navbar$/ do |field, value|
+  within('#navbar') { fill_in(field, :with => value) }
+end
+
+When /^I fill in "(.*?)" with "(.*?)" within the main body$/ do |field, value|
+  within('#main') { fill_in(field, :with => value) }
 end
 
 Given /^I create "(.*?)" org$/ do |name|

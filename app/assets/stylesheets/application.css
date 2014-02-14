@@ -6,6 +6,7 @@
  *= require bootstrap_and_overrides
  *= require_tree .
  *= require font-awesome
+ *= require bootstrap-sortable
 */
 
 body, html {
@@ -51,9 +52,9 @@ body {
     padding-left: 0px;
 }
 
-#main .btn {
-    padding-left: 8px !important;
-}
+/*#main .btn {*/
+    /*padding-left: 8px !important;*/
+/*}*/
 .position-bottom {
     margin-bottom:0;
 }

@@ -1,0 +1,27 @@
+<div class="well">
+  <table class="table table-hover sortable">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th style="text-align: center;">Password Reset URL</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @orphans.each do |organization| %>
+        <tr id="<%= organization.id %>">
+          <td><%= link_to organization.name, organization_path(organization) %></td>
+          <td><%= organization.email %></td>
+          <td class="response" style="text-align: center;">
+            <% if organization.users.any? %>
+                <%= organization.users.first.reset_password_token %>
+            <% else %>
+                <%= link_to(fa_icon 'plus', class: 'generate_user btn btn-default') %>
+                <span></span>
+            <% end %>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

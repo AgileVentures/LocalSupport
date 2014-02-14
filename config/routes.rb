@@ -3,8 +3,9 @@ LocalSupport::Application.routes.draw do
   devise_for :users
 
   get 'contributors' => 'contributors#show'
-
   match 'organizations/search' => 'organizations#search'
+
+  resources :orphans, only: [:index, :create]
   resources :users, only: [:index, :update]
 
   resources :pages

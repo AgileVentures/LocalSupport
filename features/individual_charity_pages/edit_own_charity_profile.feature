@@ -84,11 +84,11 @@ Scenario: Redirected to sign-in when not signed-in and edit donation url
 # TODO after sign in is take the user back to the edit page
 
 Scenario: By default, not display organizations address and phone number on home page
-  Given I am on the home page
+  Given I am on the charity page for "Friendly"
   Then I should not see any address or telephone information for "Nice" and "Friendly"
 
 Scenario: By default, not display organizations edit and delete on home page
-  Given I am on the home page
+  Given I am on the charity page for "Friendly"
   Then I should not see any edit or delete links
 
 Scenario: By default, not display organizations address and phone number on details page

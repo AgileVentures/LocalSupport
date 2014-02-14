@@ -8,3 +8,9 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+//= require bootstrap-sortable
+
+$(function() {
+    $('#TIMO').TIMO();
+    $('.generate_user').generate_user();
+});

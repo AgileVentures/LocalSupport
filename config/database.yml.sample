@@ -1,0 +1,18 @@
+development: &dev
+  adapter: postgresql
+  encoding: unicode
+  database: ls_development
+  pool: 5
+  username: psotgres
+  password: 
+  #host: localhost
+test: &test
+  <<: *dev
+  database: ls_test
+
+production:
+  <<: *dev
+  database: ls_production
+
+cucumber:
+  <<: *test

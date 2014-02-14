@@ -68,21 +68,4 @@ class PagesController < ApplicationController
 
     redirect_to pages_url
   end
-
-  private
-
-  # http://railscasts.com/episodes/20-restricting-access
-  def authorize
-    unless admin?
-      flash[:error] = 'unauthorized access'
-      redirect_to '/'
-      false
-    end
-  end
-
-  # Not to be confused with the activerecord admin? method
-  def admin?
-    current_user.present? ? current_user.admin? : false
-  end
-
 end

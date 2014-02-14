@@ -201,10 +201,10 @@ describe OrganizationsController do
         get :show, :id => 37
         assigns(:grabbable).should be(false)
       end
-      it 'when not signed in grabbable flag is nil' do
+      it 'when not signed in grabbable flag is true' do
         controller.stub(:current_user).and_return(nil)
         get :show, :id => 37
-        expect(assigns(:grabbable)).to be_false
+        expect(assigns(:grabbable)).to be_true
       end
     end
   end

@@ -55,15 +55,15 @@ Feature: I want to be able to edit static pages
   Scenario: Non-admin cannot see pages index
     Given I am signed in as a non-admin
     And I visit "/pages"
-    Then I should see "unauthorized access"
+    Then I should see "You must be signed in as an admin to perform this action!"
     And I should be on the home page
 
   Scenario: Static pages are editable
     Given I am signed in as a admin
     And I am on the edit page with the "about" permalink
-    And I fill in "page_name" with "new name"
-    And I fill in "page_permalink" with "new_link"
-    And I fill in "page_content" with "xyz789"
+    And I fill in "page_name" with "new name" within the main body
+    And I fill in "page_permalink" with "new_link" within the main body
+    And I fill in "page_content" with "xyz789" within the main body
     And I press "Update Page"
     And the URL should contain "new_link"
     And I should see "xyz789"
