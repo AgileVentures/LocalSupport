@@ -8,8 +8,6 @@
           </ul>
         </div>
     <% end %>
-    <%= charity_admin_display_msg %>
-
 
     <table class="table" >
       <thead>
@@ -100,10 +98,10 @@
       </tr>
       <tr>
         <td class="borderless">
-          <%= f.label :users %>
+          Organization administrator emails 
         </td>
         <td class="borderless" data-toggle="tooltip" title="Please enter a website here either to the fundraising page on your website or to an online donation site.">
-          <%= f.text_field :users, :class => "org_form" %>
+          <%= charity_admin_display_msg %>
         </td>
         <td class="borderless"> </td>
       </tr>
@@ -112,7 +110,7 @@
           Add an additional organisation administrator email
         </td>
         <td class="borderless" data-toggle="tooltip" title="Please enter the details of individuals from your organisation you would like to give permission to update your entry. E-mail addresses entered here will not be made public.">
-          <%= text_field_tag 'organization_admin_email_to_add', value = nil, {:size => 100, class: 'org_form', placeholder: charity_admin_display_msg, :cols => "10", :rows => "3" } %>
+          <%= text_field_tag 'organization_admin_email_to_add', value = nil, {:size => 100, class: 'org_form', :cols => "10", :rows => "3" } %>
         </td>
         <td class="borderless"></td>
       </tbody>
