@@ -14,6 +14,8 @@ Then /^I should be on the (.*) page$/ do |location|
   when "users" then current_path.should == users_path
   when "contributors" then current_path.should == contributors_path
   when "password reset" then current_path.should == edit_user_password_path
+  when "without users" then current_path.should == '/organization_reports/without_users'
+  when "all users" then current_path.should == '/user_reports/all'
   else raise "No matching path found for #{location}!"
   end
 end

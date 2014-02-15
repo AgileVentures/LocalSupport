@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe OrphansController do
+describe OrganizationReportsController do
   let(:org) { double('Organization') }
   let(:user) { double('User') }
   let(:session) { double(:admin? => true) }
@@ -8,9 +8,9 @@ describe OrphansController do
 
   it 'is for admins only' do
     session.stub(:admin?).and_return(false)
-    get :index
+    get :without_users_index
     response.should redirect_to '/'
-    post :create
+    post :without_users_create
     response.should redirect_to '/'
   end
 
@@ -18,7 +18,7 @@ describe OrphansController do
     it 'assigns an instance variable' do
       Organization.stub_chain(:not_null_email, :null_users).and_return([org])
       Organization.stub_chain(:not_null_email, :generated_users).and_return([org])
-      get :index
+      get :without_users_index
       assigns(:orphans).should eq([org, org])
     end
   end
@@ -36,7 +36,7 @@ describe OrphansController do
       error.should_receive(:any?).and_return(true)
       error.should_receive(:full_messages)
       error.stub_chain(:full_messages, :first).and_return('just calling to say i love you')
-      post :create, { id: '3' }
+      post :without_users_create, { id: '3' }
       ActiveSupport::JSON.decode(response.body).should eq('just calling to say i love you')
     end
 
@@ -46,7 +46,7 @@ describe OrphansController do
       user.should_receive(:errors).once.and_return(error)
       error.should_receive(:any?).and_return(false)
       user.should_receive(:reset_password_token).and_return(token)
-      post :create, { id: '3' }
+      post :without_users_create, { id: '3' }
       ActiveSupport::JSON.decode(response.body).should eq(url + token)
     end
 
