@@ -20,11 +20,6 @@ describe('This is my Organization button', function() {
         spyOnEvent(timo, 'click');
         timo.TIMO();
     });
-    it('matchers should match', function() {
-        expect(timo.length).not.toBe(0);
-        expect(nav.length).not.toBe(0);
-        expect(menu.length).not.toBe(0);
-    });
     describe('when not logged in', function() {
         beforeEach(function() { timo.attr('data-signed_in', 'false') });
         it('click propagation should be stopped', function() {
