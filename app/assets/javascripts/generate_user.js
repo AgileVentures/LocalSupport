@@ -1,3 +1,5 @@
+//= require bootstrap-sortable
+
 (function($) {
     'use strict';
     $.fn.generate_user = function() {
@@ -27,3 +29,7 @@
 //        $(matcher + 'span').text(data)
 //    }
 })(jQuery);
+
+$(function() {
+    $('.generate_user').generate_user();
+});
