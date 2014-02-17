@@ -26,7 +26,7 @@ Feature: Password retrieval
     And I press "Send me reset password instructions"
     Then I should see "You will receive an email with instructions about how to reset your password in a few minutes."
     And I should receive a "Reset password instructions" email
-    Given I click on the link in the email to "<email>"
+    Given I click on the retrieve password link in the email to "<email>"
     Then I should be on the password reset page
     And I fill in "user_password" with "12345678" within the main body
     And I fill in "user_password_confirmation" with "12345678" within the main body
