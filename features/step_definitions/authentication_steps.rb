@@ -118,7 +118,7 @@ end
 
 Given(/^I click on the confirmation link in the email to "([^\"]+)"$/) do  |email|
   user = User.find_by_email email
-  visit confirmation_url(user.reset_password_token)
+  visit confirmation_url(user.confirmation_token)
 end
 
 Given(/^I click on the retrieve password link in the email to "([^\"]+)"$/) do  |email|

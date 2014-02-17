@@ -16,7 +16,7 @@ module Helpers
   end
 
   def confirmation_url(token)
-    Rails.application.routes.url_helpers.user_confirmation_path(reset_password_token: token)
+    Rails.application.routes.url_helpers.user_confirmation_path(confirmation_token: token)
   end
 
 end
