@@ -14,6 +14,11 @@ module Helpers
   def retrieve_password_url(token)
     Rails.application.routes.url_helpers.edit_user_password_path(reset_password_token: token)
   end
+
+  def confirmation_url(token)
+    Rails.application.routes.url_helpers.user_confirmation_path(confirmation_token: token)
+  end
+
 end
 
 World(Helpers)

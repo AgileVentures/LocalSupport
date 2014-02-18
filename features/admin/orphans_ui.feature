@@ -47,7 +47,7 @@ Feature: Orphans UI
 
   Scenario: Pre-approved user clicking through on email
     Given cookies are approved
-    Given I click on the link in the email to "admin@another.org"
+    Given I click on the retrieve password link in the email to "admin@another.org"
     Then I should be on the password reset page
     And I fill in "user_password" with "12345678" within the main body
     And I fill in "user_password_confirmation" with "12345678" within the main body
@@ -55,7 +55,7 @@ Feature: Orphans UI
     Then I should be on the charity page for "Yet Another Org"
 
   Scenario: Pre-approved user clicking through on email and on cookies allow
-    Given I click on the link in the email to "admin@another.org"
+    Given I click on the retrieve password link in the email to "admin@another.org"
     Then I should be on the password reset page
     And I click "Close"
     Then I should be on the password reset page
