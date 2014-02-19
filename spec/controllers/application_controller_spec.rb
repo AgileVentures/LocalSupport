@@ -47,6 +47,11 @@ describe ApplicationController do
         get :custom
         session[:previous_url].should be_nil
       end
+      it 'when called from /users/confirmation' do
+        request.stub(:path).and_return("/users/confirmation")
+        get :custom
+        session[:previous_url].should be_nil
+      end
       it 'when called by ajax' do
         request.stub(:xhr?).and_return(true)
         get :custom

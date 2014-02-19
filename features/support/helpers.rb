@@ -15,6 +15,10 @@ module Helpers
     Rails.application.routes.url_helpers.edit_user_password_path(reset_password_token: token)
   end
 
+  def confirmation_url(token)
+    Rails.application.routes.url_helpers.user_confirmation_path(confirmation_token: token)
+  end
+
   # http://robots.thoughtbot.com/automatically-wait-for-ajax-with-capybara
   def wait_for_ajax
     Timeout.timeout(Capybara.default_wait_time) do
