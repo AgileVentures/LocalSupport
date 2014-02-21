@@ -76,7 +76,7 @@ class ApplicationController < ActionController::Base
     [sign_in_url, sign_up_url, user_confirmation, sign_password, cookies_allow]
   end
 
-  def request_path_matches_any_of?(*url_matchers)
+  def request_path_matches_any_of?(url_matchers)
     url_matchers.any? { |url| url.match request.path }
   end
 end
