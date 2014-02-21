@@ -8,8 +8,7 @@ class UserOrganizationClaimer
 
   def call(organization_id)
     if organization_id
-      user.pending_organization_id = organization_id
-      user.save!
+      user.request_admin_status organization_id
       listener.update_message_for_admin_status
     elsif current_user.admin?
       user.promote_to_org_admin

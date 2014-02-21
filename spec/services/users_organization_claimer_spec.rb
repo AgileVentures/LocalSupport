@@ -12,8 +12,7 @@ describe UserOrganizationClaimer,'.call'  do
     end
 
     it 'update the pending organization id' do
-      expect(user).to receive(:pending_organization_id=) 
-      expect(user).to receive(:save!)
+      expect(user).to receive(:request_admin_status).with(organization_id)
       expect(listener).to receive(:update_message_for_admin_status)
       service.call(organization_id)
     end

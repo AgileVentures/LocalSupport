@@ -15,12 +15,6 @@ describe UsersController do
       Organization.stub(:find).and_return(@org)
     end
     context 'user requesting pending status to be admin of charity' do
-      it 'should update the pending organization id to nested org id' do
-        User.should_receive(:find_by_id).with("4").and_return(@nonadmin_user)
-        @nonadmin_user.should_receive(:pending_organization_id=).with('5')
-        @nonadmin_user.should_receive(:save!)
-        put :update, id: 4, organization_id: 5
-      end
       it 'should redirect to the show page for nested org' do
         put :update, id: 4, organization_id: 5
         expect(response).to redirect_to(organization_path(5))
@@ -42,10 +36,6 @@ describe UsersController do
         response.response_code.should == 404
       end
 
-      it "calls a model method to add user's organziation and remove user's pending organization" do
-        @nonadmin_user.should_receive(:promote_to_org_admin)
-        put :update, {:id => '4'}
-      end
       it 'redirect to index page after update succeeds' do
         put :update, {:id => '4'}
         response.should redirect_to users_path
