@@ -17,6 +17,8 @@ describe UsersController do
     context 'user requesting pending status to be admin of charity' do
       before do 
         @nonadmin_user.stub(:request_admin_status)
+        @nonadmin_user.stub(:promote_to_org_admin)
+        @nonadmin_user.stub(:email)
       end
 
       it 'should redirect to the show page for nested org' do

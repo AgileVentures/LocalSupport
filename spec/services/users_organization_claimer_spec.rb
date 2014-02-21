@@ -6,7 +6,7 @@ describe UserOrganizationClaimer,'.call'  do
 
   context 'an organization_id is set' do 
     let(:organization_id) { -1 } 
-    let(:current_user) { double :current_user }
+    let(:current_user) { double(:current_user, admin?:false) }
     let(:service) do 
       UserOrganizationClaimer.new(listener, user, current_user)
     end
