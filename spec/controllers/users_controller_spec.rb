@@ -15,6 +15,10 @@ describe UsersController do
       Organization.stub(:find).and_return(@org)
     end
     context 'user requesting pending status to be admin of charity' do
+      before do 
+        @nonadmin_user.stub(:request_admin_status)
+      end
+
       it 'should redirect to the show page for nested org' do
         put :update, id: 4, organization_id: 5
         expect(response).to redirect_to(organization_path(5))
