@@ -45,6 +45,7 @@ class User < ActiveRecord::Base
   end
 
   def request_admin_status(organization_id)
-    update_attributes!(pending_organization_id:organization_id)
+    self.pending_organization_id = organization_id
+    save!
   end
 end
