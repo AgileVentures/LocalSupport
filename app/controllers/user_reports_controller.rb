@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UserReportsController < ApplicationController
   layout 'full_width'
   before_filter :authorize, :except => [:update]
 
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       redirect_to :status => 404 and return unless current_user.admin?
       user.promote_to_org_admin
       flash[:notice] = "You have approved #{user.email}."
-      redirect_to(users_path)
+      redirect_to users_report_path
     end
   end
 
