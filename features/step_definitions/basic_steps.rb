@@ -340,9 +340,9 @@ Then(/^I should see a mail-link to "([^"]*)"$/) do |email|
 end
 
 When /^I approve "(.*?)"$/ do |email|
-  visit users_path
+  visit users_report_path
   page.body.should have_content(email)
-  click_link "Approve"
+  click_link 'Approve'
 end
 Then(/^"(.*?)" is a charity admin of "(.*?)"$/) do |user_email, org_name|
   user = User.find_by_email(user_email)

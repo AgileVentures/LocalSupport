@@ -1,5 +1,5 @@
 require 'spec_helper'
-describe UsersController do
+describe UserReportsController do
   describe 'PUT update user-organization status' do
     before(:each) do
       admin_user = double("User")
@@ -48,7 +48,7 @@ describe UsersController do
       end
       it 'redirect to index page after update succeeds' do
         put :update, {:id => '4'}
-        response.should redirect_to users_path
+        response.should redirect_to users_report_path
       end
       it 'shows a flash telling which user got approved' do
         put :update, {:id => '4'}

@@ -53,7 +53,7 @@
       <div class="position-bottom span6">
         <%= link_to_if(@editable, "Edit", edit_organization_path(@organization.id), {:class => 'btn btn-primary'}) {} %>
         <% if current_user %>
-          <%= link_to "This is my organization", organization_user_path(@organization.id, current_user.id), {method: :put, class: 'btn btn-primary'} if @grabbable %>
+          <%= link_to "This is my organization", user_report_path(organization_id: @organization.id, id: current_user.id), {method: :put, class: 'btn btn-primary'} if @grabbable %>
         <% else %>
           <%= link_to "This is my organization", new_user_session_path, {method: :put, 'data-signed_in' => current_user.present?, id: 'TIMO', class: 'btn btn-primary'} if @grabbable %>
         <% end %>

@@ -14,7 +14,7 @@ describe('Generate User operation', function() {
         expect(args.data).toEqual({ id: '362' });
         expect(args.dataType).toEqual('json');
         expect(args.type).toEqual('POST');
-        expect(args.url).toEqual('/orphans')
+        expect(args.url).toEqual('/organization_reports/without_users')
     });
     it('inserts text and removes button if successful', function() {
         spyOn( $, "ajax" ).and.callFake(function (params) { 
