@@ -24,7 +24,7 @@ Feature: Orphans UI
   Scenario: Admin can generate link but only for unique email
     Given cookies are approved
     Given I am signed in as an admin
-    And I visit "/orphans"
+    And I visit the without users page
     When I click Generate User button for "The Organization"
     Then a token should be in the response field for "The Organization"
     When I click Generate User button for "The Same Email Org"
@@ -34,14 +34,14 @@ Feature: Orphans UI
   Scenario: Admin should be notified when email is invalid
     Given cookies are approved
     Given I am signed in as an admin
-    And I visit "/orphans"
+    And I visit the without users page
     When I click Generate User button for "Crazy Email Org"
     Then I should see "Email is invalid" in the response field for "Crazy Email Org"
 
   Scenario: As a non-admin trying to access orphans index
     Given cookies are approved
     Given I am signed in as a non-admin
-    And I visit "/orphans"
+    And I visit the without users page
     Then I should be on the home page
     And I should see "You must be signed in as an admin to perform this action!"
 
@@ -68,7 +68,7 @@ Feature: Orphans UI
   Scenario: Table columns should be sortable
     Given cookies are approved
     Given I am signed in as an admin
-    And I visit "/orphans"
+    And I visit the without users page
     And I click tableheader "Name"
     Then I should see "Crazy Email Org" before "Yet Another Org"
     When I click tableheader "Name"
