@@ -43,7 +43,7 @@ describe 'user_reports/index.html.erb' do
     it 'approve link if user has pending organization' do
       user.stub(:pending_organization).and_return(org1)
       render
-      rendered.should have_link "Approve", :href => user_path(id: user.id)
+      rendered.should have_link "Approve", :href => user_report_path(id: user.id)
     end
     it 'no approve link if user has no pending organization' do
       render
