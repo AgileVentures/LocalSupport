@@ -340,7 +340,7 @@ Then(/^I should see a mail-link to "([^"]*)"$/) do |email|
 end
 
 When /^I approve "(.*?)"$/ do |email|
-  visit '/user_reports/all'
+  visit users_report_path
   page.body.should have_content(email)
   click_link 'Approve'
 end
