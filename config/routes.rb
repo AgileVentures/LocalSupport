@@ -5,17 +5,14 @@ LocalSupport::Application.routes.draw do
   get 'contributors' => 'contributors#show'
   match 'organizations/search' => 'organizations#search'
 
-  get '/organization_reports/without_users' => 'organization_reports#without_users_index'
-  post '/organization_reports/without_users' => 'organization_reports#without_users_create'
+  get '/organization_reports/without_users' => 'organization_reports#without_users_index', as: :organizations_report
+  post '/organization_reports/without_users' => 'organization_reports#without_users_create', as: :organization_report
 
-  get '/user_reports/all' => 'user_reports#index'
-  put '/user_reports/update' => 'user_reports#update', as: :user
+  get '/user_reports/all' => 'user_reports#index', as: :users_report
+  put '/user_reports/update' => 'user_reports#update', as: :user_report
 
   resources :pages
-
-  resources :organizations do
-    resources :users
-  end
+  resources :organizations
 
   # so that static pages are linked directly instead of via /pages/:id
   get ':id', to: 'pages#show', as: :page
