@@ -5,6 +5,25 @@ And /^I select the "(.*?)" category$/ do |category|
   select(category, :from => "category[id]")
 end
 
+When(/^I visit "(.*?)"$/) do |path|
+  visit path
+end
+
+Then /^I visit the (.*) page$/ do |location|
+  case location
+    when "home" then visit root_path
+    when "sign up" then visit new_user_registration_path
+    when "sign in" then visit new_user_session_path
+    when "organizations index" then visit organizations_path
+    when "users" then visit users_path
+    when "contributors" then visit contributors_path
+    when "password reset" then visit edit_user_password_path
+    when "without users" then visit organization_report_path
+    when "all users" then visit users_report_path
+    else raise "No matching path found for #{location}!"
+  end
+end
+
 Then /^I should be on the (.*) page$/ do |location|
   case location
   when "home" then current_path.should == root_path
@@ -14,8 +33,8 @@ Then /^I should be on the (.*) page$/ do |location|
   when "users" then current_path.should == users_path
   when "contributors" then current_path.should == contributors_path
   when "password reset" then current_path.should == edit_user_password_path
-  when "without users" then current_path.should == '/organization_reports/without_users'
-  when "all users" then current_path.should == '/user_reports/all'
+  when "without users" then current_path.should == organization_report_path
+  when "all users" then current_path.should == user_report_path
   else raise "No matching path found for #{location}!"
   end
 end
@@ -116,10 +135,6 @@ end
 Given(/^I am on the edit page with the "(.*?)" permalink$/) do |permalink|
   pg = Page.find_by_permalink(permalink)
   visit edit_page_path pg.permalink
-end
-
-When(/^I visit "(.*?)"$/) do |path|
-  visit path
 end
 
 Then(/^the "([^"]*)" should be (not )?visible$/) do |id, negate|
