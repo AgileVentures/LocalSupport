@@ -276,13 +276,10 @@ describe OrganizationsController do
     end
   end
 
-  describe "POST create" do
+  describe "POST create", :helpers => :controllers do
     context "while signed in as admin" do
       before(:each) do
-        user = double("User")
-        request.env['warden'].stub :authenticate! => user
-        controller.stub(:current_user).and_return(user)
-        user.should_receive(:admin?).and_return(true)
+        make_current_user_admin.should_receive(:admin?).and_return true
       end
 
       describe "with valid params" do
@@ -441,12 +438,9 @@ describe OrganizationsController do
   end
 
   describe "DELETE destroy" do
-    context "while signed in as admin" do
+    context "while signed in as admin", :helpers => :controllers do
       before(:each) do
-        user = double("User")
-        user.stub(:admin?){true}
-        request.env['warden'].stub :authenticate! => user
-        controller.stub(:current_user).and_return(user)
+        make_current_user_admin
       end
       it "destroys the requested organization and redirect to organization list" do
         Organization.should_receive(:find).with('37') { double_organization }
