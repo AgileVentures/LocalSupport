@@ -37,7 +37,7 @@
             <% if organization.users.any? %>
                 <%= retrieve_password_url organization.users.first.reset_password_token %>
             <% else %>
-                <input type="checkbox" value="<%= organization.id %>" />
+                <input type="checkbox" value="<%= { id: organization.id, email: organization.email } %>" />
             <% end %>
             </tr>
     <% end %>

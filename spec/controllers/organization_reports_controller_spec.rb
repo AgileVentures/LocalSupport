@@ -2,8 +2,9 @@ require 'spec_helper'
 
 describe OrganizationReportsController do
   let(:org) { double('Organization') }
-  let(:user) { double('User') }
-  let(:session) { double(:admin? => true) }
+  let(:user) { double 'User' }
+  # whatever devise invitable is doing with my current user is breaking rspec mocks, need a real User
+  let(:session) { User.new(admin: true) }
   before(:each) { controller.stub(:current_user).and_return(session) }
 
   it 'is for admins only' do
@@ -25,6 +26,7 @@ describe OrganizationReportsController do
 
   describe '#without_users_create' do
     let(:error) { double('ActiveModel::Errors') }
+    let(:params) { { values: [{id: 1, email: 'a@org.org'}, {id: 3, email: 'c@org.org'}] } }
     before(:each) do
       request.accept = 'application/json'
       Organization.stub :find_by_id => org
@@ -36,7 +38,7 @@ describe OrganizationReportsController do
       error.stub :any? => true
       error.stub :full_messages
       error.stub_chain(:full_messages, :first).and_return('Ready to roll out!')
-      post :without_users_create, { organizations: %w(1 3) }
+      post :without_users_create, params
       res = ActiveSupport::JSON.decode(response.body)
       res.should eq({'1' => 'Error: Ready to roll out!', '3' => 'Error: Ready to roll out!'})
     end
@@ -45,7 +47,7 @@ describe OrganizationReportsController do
       user.stub :errors => error
       error.stub :any? => false
       user.stub :reset_password_token => 'I-dentify target!'
-      post :without_users_create, { organizations: %w(1 3) }
+      post :without_users_create, params
       res = ActiveSupport::JSON.decode(response.body)
       res.should eq({'1' => 'http://test.host/users/password/edit?reset_password_token=I-dentify+target%21', '3' => 'http://test.host/users/password/edit?reset_password_token=I-dentify+target%21'})
     end

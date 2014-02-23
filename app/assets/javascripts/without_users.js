@@ -5,15 +5,15 @@
     'use strict';
     $.fn.generate_users = function () {
         $(this).click(function () {
-            var ids = [],
+            var values = [],
                 checks = $('input:checked');
             checks.each(function () {
-                ids.push($(this).attr('value'))
+                values.push($(this).attr('value'))
             });
             $.ajax({
                 type: 'POST',
                 url: '/organization_reports/without_users',
-                data: { organizations: ids },
+                data: { values: values },
                 dataType: 'json',
                 success: function (data) {
                     checks.each(function () {
