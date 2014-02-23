@@ -8,13 +8,17 @@
             var values = [],
                 checks = $('input:checked');
             checks.each(function () {
-                values.push($(this).attr('value'))
+                values.push({
+                    id: $(this).attr('data-id'),
+                    email: $(this).attr('data-email')
+                })
             });
             $.ajax({
                 type: 'POST',
                 url: '/organization_reports/without_users',
-                data: { values: values },
+                data: JSON.stringify({ values: values }),
                 dataType: 'json',
+                contentType: 'application/json',
                 success: function (data) {
                     checks.each(function () {
                         var parent = $(this).closest('td'),

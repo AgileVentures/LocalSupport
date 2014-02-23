@@ -27,7 +27,7 @@ Feature: Orphans UI
     And I check the box for "The Organization"
     And I check the box for "The Same Email Org"
     When I click id "generate_users"
-    Then a token should be in the response field for "The Organization"
+    Then I should see "Invited!" in the response field for "The Organization"
     Then I should see "Error: Email has already been taken" in the response field for "The Same Email Org"
 
   @javascript

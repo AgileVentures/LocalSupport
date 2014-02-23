@@ -3,10 +3,10 @@ describe('Organization Reports - without users page', function () {
     beforeEach(function () {
         setFixtures('<button id="generate_users"></button>');
         appendSetFixtures('<button id="select_all" class="btn" data-toggle="button"></button>');
-        appendSetFixtures('<tr id="1"><td class="response"><input type="checkbox" value="{id: 1, email: a@org.org}" checked /></td></tr>');
-        appendSetFixtures('<tr id="2"><td class="response"><input type="checkbox" value="{id: 2, email: b@org.org}" /></td></tr>');
-        appendSetFixtures('<tr id="3"><td class="response"><input type="checkbox" value="{id: 3, email: c@org.org}" checked /></td></tr>');
-        appendSetFixtures('<tr id="4"><td class="response"><input type="checkbox" value="{id: 4, email: d@org.org}" /></td></tr>');
+        appendSetFixtures('<tr id="1"><td class="response"><input type="checkbox" data-id="1" data-email="a@org.org" checked /></td></tr>');
+        appendSetFixtures('<tr id="2"><td class="response"><input type="checkbox" data-id="2" data-email="b@org.org" /></td></tr>');
+        appendSetFixtures('<tr id="3"><td class="response"><input type="checkbox" data-id="3" data-email="c@org.org" checked /></td></tr>');
+        appendSetFixtures('<tr id="4"><td class="response"><input type="checkbox" data-id="4" data-email="d@org.org" /></td></tr>');
         generate_users = $('#generate_users');
         select_all = $('#select_all');
         generate_users.generate_users();
@@ -18,10 +18,16 @@ describe('Organization Reports - without users page', function () {
             generate_users.click();
             expect($.ajax.calls.count()).toBe(1);
             var args = $.ajax.calls.mostRecent().args[0];
-            expect(args.data).toEqual({ values: ['{id: 1, email: a@org.org}', '{id: 3, email: c@org.org}'] });
+            expect(args.data).toEqual('{"values":[{"id":"1","email":"a@org.org"},{"id":"3","email":"c@org.org"}]}');
             expect(args.dataType).toBe('json');
+            expect(args.contentType).toBe('application/json');
             expect(args.type).toBe('POST');
             expect(args.url).toBe('/organization_reports/without_users')
+        });
+        it('uses JSON stringify to format the array properly for Rails', function() {
+            var stringify = spyOn(JSON, 'stringify');
+            generate_users.click();
+            expect(stringify).toHaveBeenCalledWith({ values : [ { id : '1', email : 'a@org.org' }, { id : '3', email : 'c@org.org' } ] });
         });
         it('overwrites checkbox with server response', function () {
             spyOn($, "ajax").and.callFake(function (params) { 
@@ -32,9 +38,9 @@ describe('Organization Reports - without users page', function () {
             });
             generate_users.click();
             expect($('#1 .response')).toHaveHtml('I have returned.');
-            expect($('#2 .response')).toHaveHtml('<input type="checkbox" value="{id: 2, email: b@org.org}" />');
+            expect($('#2 .response')).toHaveHtml('<input type="checkbox" data-id="2" data-email="b@org.org" />');
             expect($('#3 .response')).toHaveHtml('Galahoslos?');
-            expect($('#4 .response')).toHaveHtml('<input type="checkbox" value="{id: 4, email: d@org.org}" />');
+            expect($('#4 .response')).toHaveHtml('<input type="checkbox" data-id="4" data-email="d@org.org" />');
         });
         it('color codes the server responses', function () {
             spyOn($, "ajax").and.callFake(function (params) { 
