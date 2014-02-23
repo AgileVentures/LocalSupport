@@ -1,11 +1,12 @@
 require 'spec_helper'
 describe UsersController do
-  describe 'PUT update user-organization status' do
+  describe 'PUT update user-organization status', :helpers => :controllers do
     before(:each) do
-      admin_user = double("User")
-      admin_user.stub(:admin?).and_return(true)
-      request.env['warden'].stub :authenticate! => admin_user
-      controller.stub(:current_user).and_return(admin_user)
+      #admin_user = double("User")
+      #admin_user.stub(:admin?).and_return(true)
+      #request.env['warden'].stub :authenticate! => admin_user
+      #controller.stub(:current_user).and_return(admin_user)
+      make_current_user_admin
       @nonadmin_user = double("User")
       User.stub(:find_by_id).with("4").and_return(@nonadmin_user)
       @nonadmin_user.stub(:pending_organization_id=).with('5')
