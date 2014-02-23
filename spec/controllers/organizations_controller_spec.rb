@@ -323,10 +323,7 @@ describe OrganizationsController do
 
     context "while signed in as non-admin" do
       before(:each) do
-        user = double("User")
-        request.env['warden'].stub :authenticate! => user
-        controller.stub(:current_user).and_return(user)
-        user.should_receive(:admin?).and_return(false)
+        make_current_user_nonadmin.should_receive(:admin?).and_return(false)
       end
 
       describe "with valid params" do
@@ -449,12 +446,9 @@ describe OrganizationsController do
         response.should redirect_to(organizations_url)
       end
     end
-    context "while signed in as non-admin" do
+    context "while signed in as non-admin", :helpers => :controllers do
       before(:each) do
-        user = double("User")
-        user.stub(:admin?){false}
-        request.env['warden'].stub :authenticate! => user
-        controller.stub(:current_user).and_return(user)
+        make_current_user_nonadmin
       end
       it "does not destroy the requested organization but redirects to organization home page" do
         double = double_organization

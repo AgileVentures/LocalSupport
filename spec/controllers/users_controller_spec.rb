@@ -51,18 +51,10 @@ describe UsersController do
   end
 
   describe 'GET index to view pending users' do
-    before(:each) do
-      @user = double("User")
-    end
-
-    context "user signed in" do
-      before(:each) do
-        controller.stub(:current_user).and_return(@user)
-      end
-
+    context "user signed in", :helpers => :controllers  do
       context "as admin" do
         before(:each) do
-          @user.stub(:admin?).and_return(true)
+          make_current_user_admin
         end
 
         it "assigns all users to @users" do
@@ -85,7 +77,7 @@ describe UsersController do
 
       context "as non-admin" do
         before(:each) do
-          @user.stub(:admin?).and_return(false)
+          make_current_user_nonadmin
         end
 
         it "redirects user to root and flashes a notice" do
