@@ -4,7 +4,7 @@ describe OrganizationReportsController do
   let(:org) { double('Organization') }
   let(:user) { double 'User' }
   # whatever devise invitable is doing with my current user is breaking rspec mocks, need a real User
-  let(:session) { User.new(admin: true) }
+  let(:session) { mock_model User, admin?: true, decrement_invitation_limit!: nil }
   before(:each) { controller.stub(:current_user).and_return(session) }
 
   it 'is for admins only' do
@@ -29,8 +29,7 @@ describe OrganizationReportsController do
     let(:params) { { values: [{id: 1, email: 'a@org.org'}, {id: 3, email: 'c@org.org'}] } }
     before(:each) do
       request.accept = 'application/json'
-      Organization.stub :find_by_id => org
-      org.stub :generate_potential_user => user
+      User.stub :invite! => user
     end
 
     it 'parses errors if there are any' do
@@ -46,10 +45,9 @@ describe OrganizationReportsController do
     it 'elicits the reset password token otherwise' do
       user.stub :errors => error
       error.stub :any? => false
-      user.stub :reset_password_token => 'I-dentify target!'
       post :without_users_create, params
       res = ActiveSupport::JSON.decode(response.body)
-      res.should eq({'1' => 'http://test.host/users/password/edit?reset_password_token=I-dentify+target%21', '3' => 'http://test.host/users/password/edit?reset_password_token=I-dentify+target%21'})
+      res.should eq({'1' => 'Invited!', '3' => 'Invited!'})
     end
   end
 end

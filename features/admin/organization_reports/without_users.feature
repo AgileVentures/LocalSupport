@@ -2,7 +2,7 @@ Feature: Orphans UI
   As the site owner
   So that I look up orphan orgs and email prospective users
   I want a UI that shows me orphan orgs and allows me to generate user accounts for them
-
+  
   Background:
     Given the following organizations exist:
       | name               | address        | email             |

@@ -1,7 +1,6 @@
 class OrganizationReportsController < ApplicationController
   layout 'full_width'
   before_filter :authorize
-  include OrganizationReportsHelper
 
   def without_users_index
     @orphans = Organization.not_null_email.null_users
