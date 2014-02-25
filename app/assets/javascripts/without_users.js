@@ -3,7 +3,7 @@
 
 (function ($) {
     'use strict';
-    $.fn.generate_users = function () {
+    $.fn.invite_users = function () {
         $(this).click(function () {
             var values = [],
                 checks = $('input:checked');
@@ -52,7 +52,7 @@
 })(jQuery);
 
 $(function () {
-    $('#generate_users').generate_users();
+    $('#invited_users').invite_users();
     $('#select_all').select_all();
     var toolbar = $('#toolbar');
     if (toolbar.length != 0) {

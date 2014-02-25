@@ -18,9 +18,8 @@ describe OrganizationReportsController do
   describe '#without_users_index' do
     it 'assigns an instance variable' do
       Organization.stub_chain(:not_null_email, :null_users).and_return([org])
-      Organization.stub_chain(:not_null_email, :generated_users).and_return([org])
       get :without_users_index
-      assigns(:orphans).should eq([org, org])
+      assigns(:orphans).should include org
     end
   end
 

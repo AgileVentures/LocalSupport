@@ -26,7 +26,7 @@ Feature: Orphans UI
     And I visit the without users page
     And I check the box for "The Organization"
     And I check the box for "The Same Email Org"
-    When I click id "generate_users"
+    When I click id "invite_users"
     Then I should see "Invited!" in the response field for "The Organization"
     Then I should see "Error: Email has already been taken" in the response field for "The Same Email Org"
 
@@ -44,7 +44,7 @@ Feature: Orphans UI
     Given I am signed in as an admin
     And I visit the without users page
     And I check the box for "Crazy Email Org"
-    When I click id "generate_users"
+    When I click id "invite_users"
     Then I should see "Error: Email is invalid" in the response field for "Crazy Email Org"
 
   Scenario: As a non-admin trying to access orphans index
