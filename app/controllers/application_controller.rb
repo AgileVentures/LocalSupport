@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   after_filter :store_location
 
+  #TODO just ban all devise controllers
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
     unless (request_path_includes?(sign_in_url) ||
@@ -22,6 +23,13 @@ class ApplicationController < ActionController::Base
     return organization_path(current_user.organization) if current_user.organization
     root_path
   end
+
+  #TODO test
+  def after_accept_path_for(resource)
+    return organization_path(current_user.organization) if current_user.organization
+    root_path
+  end
+
 
   def allow_cookie_policy
     response.set_cookie 'cookie_policy_accepted', {
