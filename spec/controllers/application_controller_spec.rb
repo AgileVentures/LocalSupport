@@ -18,6 +18,21 @@ describe ApplicationController do
     end
   end
 
+  describe '#after_accept_path_for' do
+    it 'should direct the newly invited user to their organization page' do
+      controller = ApplicationController.new
+      controller.stub(:organization_path).and_return '/organization/1'
+      user = double('User')
+      org = double('Organization')
+      org.stub(:id).and_return 1
+      user.stub(:organization).and_return org
+      controller.stub(:current_user).and_return user
+      controller.stub(:root_path).and_return '/'
+
+      controller.after_accept_path_for(user).should eq '/organization/1'
+    end
+  end
+
   describe 'checking previous request paths stored in session' do
     controller do
       def custom
