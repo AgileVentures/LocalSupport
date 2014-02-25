@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   belongs_to :organization
   belongs_to :pending_organization, :class_name => 'Organization', :foreign_key => 'pending_organization_id'
+  scope :invited_users, :conditions => 'users.invitation_sent_at IS NOT NULL AND users.invitation_accepted_at IS NULL'
 
   def confirm!
     super

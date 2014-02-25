@@ -23,6 +23,13 @@ describe User do
     user.admin.should be_false
   end
 
+  describe 'scopes' do
+    it 'invited_users finds users that have not accepted their invites yet' do
+      user = FactoryGirl.create(:user, invitation_sent_at: '2014-02-23 05:43:11', invitation_accepted_at: nil)
+      User.invited_users.should include user
+    end
+  end
+
   describe '#can_edit?' do
     context 'is admin' do
       subject(:user) { create(:user, admin: true) }

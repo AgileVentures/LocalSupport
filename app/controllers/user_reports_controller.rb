@@ -23,4 +23,6 @@ class UserReportsController < ApplicationController
   def index
     @users = User.all
   end
+
+  #TODO invited_users_index
 end

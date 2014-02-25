@@ -34,12 +34,9 @@
           <td><%= link_to organization.name, organization_path(organization) %></td>
           <td><%= organization.email %></td>
           <td class="response" style="text-align: center;">
-            <% if organization.users.any? %>
-                <%= organization.users.first.invitation_sent_at %>
-            <% else %>
-                <input type="checkbox" data-id="<%= organization.id %>" data-email="<%= organization.email %>" />
-            <% end %>
-            </tr>
+            <input type="checkbox" data-id="<%= organization.id %>" data-email="<%= organization.email %>" />
+          </td>
+        </tr>
     <% end %>
     </tbody>
   </table>

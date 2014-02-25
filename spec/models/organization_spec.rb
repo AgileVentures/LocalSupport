@@ -37,14 +37,6 @@ describe Organization do
       Organization.not_null_email.should eq [@org1]
     end
 
-    it 'should allow us to find orgs with recently generated users' do
-      Organization.generated_users.should eq []
-      @org1.email = "whatisthis@hello.com"
-      @org1.save
-      @org1.generate_potential_user
-      Organization.generated_users.should eq [@org1]
-    end
-
     it 'should allow us to grab orgs with no admin' do
       Organization.null_users.sort.should eq [@org1, @org2, @org3].sort
       @org1.email = "hello@hello.com"
