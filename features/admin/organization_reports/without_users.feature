@@ -2,7 +2,7 @@ Feature: Orphans UI
   As the site owner
   So that I look up orphan orgs and email prospective users
   I want a UI that shows me orphan orgs and allows me to generate user accounts for them
-  
+
   Background:
     Given the following organizations exist:
       | name               | address        | email             |
@@ -18,7 +18,7 @@ Feature: Orphans UI
       | pending@myorg.com     | password123    | false | 2008-01-01 00:00:00 |                 | My Organization      |
       | invited-admin@org.org | password123    | false | 2008-01-01 00:00:00 |                 |                      |
     And cookies are approved
-    And the admin made a preapproved user for "Yet Another Org"
+    And the admin invited a user for "Yet Another Org"
 
   @javascript
   Scenario: Admin can generate link but only for unique email
@@ -53,12 +53,12 @@ Feature: Orphans UI
     Then I should be on the home page
     And I should see "You must be signed in as an admin to perform this action!"
 
-  Scenario: Pre-approved user clicking through on email
-    Given I click on the retrieve password link in the email to "admin@another.org"
-    Then I should be on the password reset page
+  Scenario: Invited user clicking through on email
+    Given I click on the invitation link in the email to "admin@another.org"
+    Then I should be on the invitation page
     And I fill in "user_password" with "12345678" within the main body
     And I fill in "user_password_confirmation" with "12345678" within the main body
-    And I press "Change my password"
+    And I press "Set my password"
     Then I should be on the charity page for "Yet Another Org"
 
   @javascript

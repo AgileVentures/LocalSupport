@@ -4,7 +4,7 @@ class OrganizationReportsController < ApplicationController
 
   def without_users_index
     @orphans = Organization.not_null_email.null_users
-    @orphans += Organization.not_null_email.generated_users
+    @orphans += Organization.not_null_email.invited_users
   end
 
   # Uses email to create invite, uses id to respond with msg

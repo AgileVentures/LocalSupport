@@ -35,7 +35,7 @@
           <td><%= organization.email %></td>
           <td class="response" style="text-align: center;">
             <% if organization.users.any? %>
-                <%= retrieve_password_url organization.users.first.reset_password_token %>
+                <%= organization.users.first.invitation_sent_at %>
             <% else %>
                 <input type="checkbox" data-id="<%= organization.id %>" data-email="<%= organization.email %>" />
             <% end %>
