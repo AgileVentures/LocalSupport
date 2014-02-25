@@ -33,13 +33,6 @@ describe OrganizationReportsController do
     end
 
     it 'adds an error if the email is already in use by another user' do
-      user2 = double User
-      User.stub :find_by_email => user2
-      user2.stub :errors => error
-      error.should_receive(:add).twice
-      error.stub :any? => true
-      error.stub :full_messages
-      error.stub_chain(:full_messages, :first).and_return('I-dentify target!')
       post :without_users_create, params
       res = ActiveSupport::JSON.decode(response.body)
       res.should eq({'1' => 'Error: I-dentify target!', '3' => 'Error: I-dentify target!'})
@@ -56,8 +49,6 @@ describe OrganizationReportsController do
     end
 
     it 'elicits the reset password token otherwise' do
-      user.stub :errors => error
-      error.stub :any? => false
       post :without_users_create, params
       res = ActiveSupport::JSON.decode(response.body)
       res.should eq({'1' => 'Invited!', '3' => 'Invited!'})

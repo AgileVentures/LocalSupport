@@ -188,4 +188,12 @@ describe User do
 
   end
 
+  context '#user_error_message' do 
+    let(:user) { FactoryGirl.build(:user) } 
+
+    it 'returns a proper error message for the user' do 
+      expect(user.error_message).to eql 'Error: '
+    end
+  end
+
 end

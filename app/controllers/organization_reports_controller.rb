@@ -10,17 +10,19 @@ class OrganizationReportsController < ApplicationController
   def without_users_create
     res = params[:values].reduce({}) do |response, value|
       user = User.find_by_email(value[:email])
-      if user.present?
-        user.errors.add(:email, 'has already been taken')
-      else
-        user = UserInviter.call(User, value[:email], current_user)
-      end
-      msg = user.errors.any? ? 'Error: ' + user.errors.full_messages.first : 'Invited!'
-      response[value[:id]] = msg
-      response
+      UserInviter.new(
+        self, User, current_user
+      ).invite(
+         value[:email], user, value[:id]
+      )
     end
     respond_to do |format|
       format.json { render :json => res.to_json }
     end
+  end
+
+  def build_response(msg, dom_id)
+    response[dom_id] = msg
+    response
   end
 end

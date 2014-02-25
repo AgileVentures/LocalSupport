@@ -49,4 +49,8 @@ class User < ActiveRecord::Base
     self.pending_organization_id = nil
     save!
   end
+
+  def error_message  
+    "Error: #{errors.full_messages.first}"
+  end
 end
