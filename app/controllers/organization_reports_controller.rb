@@ -9,7 +9,12 @@ class OrganizationReportsController < ApplicationController
   # Uses email to create invite, uses id to respond with msg
   def without_users_create
     res = params[:values].reduce({}) do |response, value|
-      user = User.invite!({email: value[:email]}, current_user)
+      user = User.find_by_email(value[:email])
+      if user.present?
+        user.errors.add(:email, 'has already been taken')
+      else
+        user = User.invite!({email: value[:email]}, current_user)
+      end
       msg = user.errors.any? ? 'Error: ' + user.errors.full_messages.first : 'Invited!'
       response[value[:id]] = msg
       response
