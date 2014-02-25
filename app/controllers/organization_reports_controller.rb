@@ -13,7 +13,7 @@ class OrganizationReportsController < ApplicationController
       if user.present?
         user.errors.add(:email, 'has already been taken')
       else
-        user = User.invite!({email: value[:email]}, current_user)
+        user = UserInviter.call(User, value[:email], current_user)
       end
       msg = user.errors.any? ? 'Error: ' + user.errors.full_messages.first : 'Invited!'
       response[value[:id]] = msg
