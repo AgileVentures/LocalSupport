@@ -52,7 +52,7 @@
 })(jQuery);
 
 $(function () {
-    $('#invited_users').invite_users();
+    $('#invite_users').invite_users();
     $('#select_all').select_all();
     var toolbar = $('#toolbar');
     if (toolbar.length != 0) {
