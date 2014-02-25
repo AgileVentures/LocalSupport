@@ -22,7 +22,6 @@ class User < ActiveRecord::Base
     make_admin_of_org_with_matching_email
   end
 
-  #TODO test
   def accept_invitation!
     super
     make_admin_of_org_with_matching_email

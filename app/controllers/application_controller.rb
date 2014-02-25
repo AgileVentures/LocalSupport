@@ -24,7 +24,6 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
-  #TODO test
   def after_accept_path_for(resource)
     return organization_path(current_user.organization) if current_user.organization
     root_path
