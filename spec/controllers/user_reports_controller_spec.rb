@@ -1,11 +1,8 @@
 require 'spec_helper'
-describe UserReportsController do
-  describe 'PUT update user-organization status' do
+describe UsersController do
+  describe 'PUT update user-organization status', :helpers => :controllers do
     before(:each) do
-      admin_user = double("User")
-      admin_user.stub(:admin?).and_return(true)
-      request.env['warden'].stub :authenticate! => admin_user
-      controller.stub(:current_user).and_return(admin_user)
+      make_current_user_admin
       @nonadmin_user = double("User")
       User.stub(:find_by_id).with("4").and_return(@nonadmin_user)
       @nonadmin_user.stub(:pending_organization_id=).with('5')
@@ -54,18 +51,10 @@ describe UserReportsController do
   end
 
   describe 'GET index to view pending users' do
-    before(:each) do
-      @user = double("User")
-    end
-
-    context "user signed in" do
-      before(:each) do
-        controller.stub(:current_user).and_return(@user)
-      end
-
+    context "user signed in", :helpers => :controllers  do
       context "as admin" do
         before(:each) do
-          @user.stub(:admin?).and_return(true)
+          make_current_user_admin
         end
 
         it "assigns all users to @users" do
@@ -88,7 +77,7 @@ describe UserReportsController do
 
       context "as non-admin" do
         before(:each) do
-          @user.stub(:admin?).and_return(false)
+          make_current_user_nonadmin
         end
 
         it "redirects user to root and flashes a notice" do
