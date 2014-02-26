@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UserReportsController < ApplicationController
   layout 'full_width'
   before_filter :authorize, :except => [:update]
 
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def update_message_promoting(user)
     flash[:notice] = "You have approved #{user.email}."
-    redirect_to(users_path)
+    redirect_to(users_report_path)
   end
 
   def update_failure

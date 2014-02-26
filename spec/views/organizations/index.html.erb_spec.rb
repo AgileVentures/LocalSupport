@@ -74,29 +74,4 @@ describe "organizations/index.html.erb", :js => true do
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
   end
 
-  it "does not render a new organization link for non-logged in user"  do
-    view.stub(:user_signed_in? => false)
-    render
-    rendered.should_not have_xpath("//a[@href='#{new_organization_path}']")
-  end
-
-  it "does not render a new organization link for logged in user"  do
-    @user = double('user')
-    @user.stub(:id => 100)
-    view.stub(:current_user) {@user}
-    view.stub(:user_signed_in? => true)
-    @user.should_receive(:try).with(:admin?).and_return(false)
-    render
-    rendered.should_not have_xpath("//a[@href='#{new_organization_path}']")
-  end
-
-  it "does render a new organization link for logged in admin user"  do
-    @user = double('user')
-    @user.stub(:id => 100)
-    view.stub(:current_user) {@user}
-    @user.should_receive(:try).with(:admin?).and_return(true)
-    render
-    rendered.should have_xpath("//a[@href='#{new_organization_path}']")
-  end
-
 end

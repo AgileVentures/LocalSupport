@@ -41,7 +41,7 @@ describe UsersController do
 
       it 'redirect to index page after update succeeds' do
         put :update, {:id => '4'}
-        response.should redirect_to users_path
+        response.should redirect_to users_report_path
       end
       it 'shows a flash telling which user got approved' do
         put :update, {:id => '4'}
