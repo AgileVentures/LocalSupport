@@ -1,5 +1,5 @@
 describe('bootstrap toggle', function() {
-    var header;
+    var link;
     beforeEach(function() {
         setFixtures('<li class="dropdown" id="menuOrgs">'+
             '<a class="dropdown-toggle" href="#" data-toggle ="dropdown">Organisations</a>' +
@@ -7,7 +7,7 @@ describe('bootstrap toggle', function() {
             '    <li><a href="/organization_reports/without_users">Without Users</a></li>' +
             '</ul>' +
         '</li>');
-        link = $('a')[0];
+        link = $('a').first();
     });
     describe('when clicking on the parent', function() {
         it('pops up a list', function() {
