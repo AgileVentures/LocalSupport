@@ -92,6 +92,10 @@ Given /^I am on the sign up page$/ do
   expect(page).to have_button('signup')
 end
 
+Given(/^I am on the password reset page$/) do
+  visit edit_user_password_path(reset_password_token: "18217tiegi1qwea")
+end
+
 When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |email, password|
   user = User.find_by_email("#{email}")
   user.confirm!

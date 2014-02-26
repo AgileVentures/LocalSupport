@@ -92,8 +92,15 @@ describe "layouts/application.html.erb", :type => :feature do
        render
        rendered.should have_link "Contributors"
      end
+
+    it "does not render a new organization link"  do
+      view.stub(:user_signed_in? => false)
+      render
+      rendered.should_not have_xpath("//a[@href='#{new_organization_path}']")
+    end
   end
-  context "user signed-in" do
+
+  context "regular user signed-in" do
     before :each do
       view.stub :user_signed_in? => true
       @user = double(User, email: 'normal_user@example.com', admin?: false)
@@ -117,6 +124,24 @@ describe "layouts/application.html.erb", :type => :feature do
       render
       rendered.should have_css('#menuOrgs')
       rendered.should have_css('#menuUsers')
+    end
+
+    it "does not render a new organization link"  do
+      render
+      rendered.should_not have_xpath("//a[@href='#{new_organization_path}']")
+    end
+  end
+
+  context "admin signed-in" do
+    it 'links to new org link in footer' do
+      view.stub(:user_signed_in?).and_return(true)
+      user = double(User)
+      user.stub(:email).and_return('normal_user@example.com')
+      user.stub(:admin?).and_return(true)
+      view.stub(:current_user).and_return(user)
+      render
+
+      rendered.should have_link("New Organisation",href: new_organization_path)
     end
   end
 end
