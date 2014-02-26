@@ -1,5 +1,5 @@
 require 'spec_helper'
-describe UsersController do
+describe UserReportsController do
   describe 'PUT update user-organization status', :helpers => :controllers do
     before(:each) do
       make_current_user_admin
