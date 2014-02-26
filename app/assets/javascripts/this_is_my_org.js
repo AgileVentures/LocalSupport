@@ -1,5 +1,3 @@
-// Tips on stopPropagation(): http://fuelyourcoding.com/jquery-events-stop-misusing-return-false/
-
 (function($) {
     'use strict';
     $.fn.TIMO = function() {
@@ -18,3 +16,7 @@
         });
     }
 })(jQuery);
+
+$(function() {
+    $('#TIMO').TIMO();
+});
