@@ -14,20 +14,19 @@
             </a>
             <a href="/" class="brand" title="Search for local voluntary and community organisations">Search for local
               voluntary and community organisations</a>
+
             <div class="nav-collapse collapse">
 
               <ul class="nav nav-pills pull-right">
 
 
-                <% unless user_signed_in? %>
+                <% if current_user.nil? %>
                     <li class="dropdown " id="menuLogin">
                       <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
 
                       <div class="dropdown-menu" id="login" style="padding:17px; width: 300px; padding-bottom: 0px;">
-
                         <div class="well">
                           <%= form_for(resource, :class => "collapse", :html => {:id => "loginForm"}, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-
                               <div>
                                 <label>Login:</label>
                                 <!--[if lt IE 10]>
@@ -44,21 +43,15 @@
                               <% if devise_mapping.rememberable? -%>
                                   <div><%= f.check_box :remember_me %> <%= f.label :remember_me, :style => "display: inline;" %></div>
                               <% end -%>
-
                               <div style="display: inline;"><%= f.submit "Sign in", :id => 'signin', :class => "btn btn-primary" %></div>
-
                               <%= link_to "Forgot your password?", new_password_path(resource_name) %>
                           <% end %>
-
                           <form>
                             <%= link_to('New organisation? Sign-up..', '#', :id => 'toggle_link', :title => 'Click this link to Sign Up for an account') %>
                           </form>
-
                           <div id="register">
-
                             <%= form_for(resource, :class => "collapse", :html => {:id => "registerForm"}, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
                                 <%= devise_error_messages! %>
-
                                 <!--[if lt IE 10]>
                                 <label for="user_password">Enter email</label>
                                 <![endif]-->
@@ -71,7 +64,6 @@
                                 <label for="user_password">Confirm password</label>
                                 <![endif]-->
                                 <%= f.password_field :password_confirmation, :id => 'signup_password_confirmation', :placeholder => 'confirm password' %>
-
                                 <div><%= f.submit "Sign up", :id => 'signup', :class => "btn btn-primary" %></div>
                             <% end %>
                           </div>
@@ -79,19 +71,30 @@
                       </div>
                     </li>
                 <% else %>
-                    <li class="dropdown">
-                      <a href="#" id="<%= current_user.email %>" class="dropdown-toggle" data-toggle="dropdown" title="Logged in as: <%= current_user.email %>">
-                        <i class="icon-user icon-xxlarge"> </i> <%= current_user.email %>
-                        <b class="caret"></b>
-                      </a>
-
-                      <ul class="dropdown-menu">
-                        <li><%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
+                      <% if current_user.admin? %>
+                          <li class="dropdown" id="menuOrgs">
+                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Organisations</a>
+                            <ul class="dropdown-menu">
+                              <li><%= link_to 'Without Users', '/organization_reports/without_users' %></li>
+                            </ul>
+                          </li>
+                          <li class="dropdown" id="menuUsers">
+                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Users</a>
+                            <ul class="dropdown-menu">
+                              <li><%= link_to 'All', '/user_reports/all' %></li>
+                            </ul>
+                          </li>
+                      <% end %>
+                      <li class="dropdown">
+                        <a href="#" id="<%= current_user.email %>" class="dropdown-toggle" data-toggle="dropdown" title="Logged in as: <%= current_user.email %>">
+                          <i class="icon-user icon-xxlarge"></i>
+                          <%= current_user.email %>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
+                        </ul>
+                      </li>
                 <% end %>
-
-                </ul>
-                </li>
-
               </ul>
             </div>
           </div>
