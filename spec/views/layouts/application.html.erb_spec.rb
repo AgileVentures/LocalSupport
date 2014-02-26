@@ -127,11 +127,6 @@ describe "layouts/application.html.erb", :type => :feature do
     end
 
     it "does not render a new organization link"  do
-      @user = double('user')
-      @user.stub(:id => 100)
-      view.stub(:current_user) {@user}
-      view.stub(:user_signed_in? => true)
-      @user.should_receive(:try).with(:admin?).and_return(false)
       render
       rendered.should_not have_xpath("//a[@href='#{new_organization_path}']")
     end
