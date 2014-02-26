@@ -132,6 +132,12 @@ body {
     padding: 0 5px 0 5px;
 }
 
+/* so that the extra admin-only buttons don't get too spaced out */
+.dropdown-toggle {
+    margin-left: -5px;
+    margin-right: 0 !important;
+}
+
 
 /*Contributors list using Flex-boxes and media types */
 

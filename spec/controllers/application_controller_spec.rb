@@ -27,6 +27,11 @@ describe ApplicationController do
     before(:each) { routes.draw { get "custom" => "anonymous#custom" } }
 
     describe 'unwanted previous URLS' do
+      it 'when called from /cookies/allow' do
+        request.stub(:path).and_return("/cookies/allow")
+        get :custom
+        session[:previous_url].should be_nil
+      end
       it 'when called from /users/sign_in' do
         request.stub(:path).and_return("/users/sign_in")
         get :custom
@@ -39,6 +44,11 @@ describe ApplicationController do
       end
       it 'when called from /users/password' do
         request.stub(:path).and_return("/users/password")
+        get :custom
+        session[:previous_url].should be_nil
+      end
+      it 'when called from /users/confirmation' do
+        request.stub(:path).and_return("/users/confirmation")
         get :custom
         session[:previous_url].should be_nil
       end
