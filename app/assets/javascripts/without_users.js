@@ -11,12 +11,16 @@
                 values.push({
                     id: $(this).attr('data-id'),
                     email: $(this).attr('data-email')
-                })
+                });
             });
+            var resend_invitation = $.parseJSON($('#resend_invitation').attr('data-resend_invitation'));
             $.ajax({
                 type: 'POST',
                 url: '/organization_reports/without_users',
-                data: JSON.stringify({ values: values }),
+                data: JSON.stringify({
+                    values: values,
+                    resend_invitation: resend_invitation
+                }),
                 dataType: 'json',
                 contentType: 'application/json',
                 success: function (data) {

@@ -1,29 +1,20 @@
 class UserInviter 
-  def initialize(listener, user_repository, current_user) 
+  def initialize(listener, user_repository, current_user, resend_invitation)
     @user_repository = user_repository
     @current_user = current_user
     @listener = listener
+    Devise.resend_invitation = resend_invitation
   end
 
-  def invite(email, user_to_invite, dom_id)
-    add_error_if_present(user_to_invite)
-    sent_invite(user_to_invite, email)
-    msg = user_to_invite.errors.any? ? user_to_invite.error_message : 'Invited!'
-    listener.build_response(msg, dom_id)
+  def invite(email)
+    user = user_repository.invite!({email:email}, current_user)
+    build_message_for(user)
   end
 
   private 
-  attr_reader :user_repository, :current_user, :listener
+  attr_reader :user_repository, :current_user, :listener, :response
 
-  def sent_invite(user_to_invite, email)
-    unless user_to_invite.present?
-      user_repository.invite!({email:email}, current_user)
-    end
-  end
-
-  def add_error_if_present(user_to_invite)
-    if user_to_invite.present?
-      user_to_invite.errors.add(:email, 'has already been taken')
-    end 
+  def build_message_for(user)
+    user.errors.any? ? 'Error: ' + user.errors.full_messages.first : 'Invited!'
   end
 end

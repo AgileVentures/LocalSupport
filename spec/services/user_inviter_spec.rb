@@ -1,9 +1,9 @@
 require_relative '../../app/services/user_inviter'
-describe UserInviter do 
-  let(:current_user) { double :user } 
-  let(:user_repository) { double :user_repository } 
-  let(:dom_id) { 'id' } 
-  let(:listener) { double :listener, build_response:true} 
+describe UserInviter do
+  let(:listener) { double :listener, build_response:true}
+  let(:user_repository) { double :user_repository }
+  let(:current_user) { double :user }
+  let(:dom_id) { 'id' }
 
   let(:email) { 'test@test.com' }
 
@@ -14,8 +14,7 @@ describe UserInviter do
 
     it 'makes an invite for a given user' do 
       expect(user_repository).to receive(:invite!).with({email:email}, current_user)
-      described_class.new(listener, user_repository, current_user).invite(
-        email, user_to_invite, dom_id)
+      described_class.new(listener, user_repository, current_user).invite(email)
     end
   end
 

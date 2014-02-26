@@ -1,7 +1,8 @@
 describe('Organization Reports - without users page', function () {
     var invite_users, select_all;
     beforeEach(function () {
-        setFixtures('<button id="invite_users"></button>');
+        setFixtures('<div id="resend_invitation" data-resend_invitation="false" style="display: none;"></div>');
+        appendSetFixtures('<button id="invite_users"></button>');
         appendSetFixtures('<button id="select_all" class="btn" data-toggle="button"></button>');
         appendSetFixtures('<tr id="1"><td class="response"><input type="checkbox" data-id="1" data-email="a@org.org" checked /></td></tr>');
         appendSetFixtures('<tr id="2"><td class="response"><input type="checkbox" data-id="2" data-email="b@org.org" /></td></tr>');
@@ -13,12 +14,17 @@ describe('Organization Reports - without users page', function () {
         select_all.select_all();
     });
     describe('Invite Users button', function () {
+        it('reads a boolean from a hidden field when clicked', function() {
+            var parser = spyOn($, 'parseJSON');
+            invite_users.click();
+            expect(parser).toHaveBeenCalledWith('false');
+        });
         it('makes an ajax request when clicked', function () {
             spyOn($, "ajax");
             invite_users.click();
             expect($.ajax.calls.count()).toBe(1);
             var args = $.ajax.calls.mostRecent().args[0];
-            expect(args.data).toEqual('{"values":[{"id":"1","email":"a@org.org"},{"id":"3","email":"c@org.org"}]}');
+            expect(args.data).toEqual('{"values":[{"id":"1","email":"a@org.org"},{"id":"3","email":"c@org.org"}],"resend_invitation":false}');
             expect(args.dataType).toBe('json');
             expect(args.contentType).toBe('application/json');
             expect(args.type).toBe('POST');
@@ -27,7 +33,7 @@ describe('Organization Reports - without users page', function () {
         it('uses JSON stringify to format the array properly for Rails', function() {
             var stringify = spyOn(JSON, 'stringify');
             invite_users.click();
-            expect(stringify).toHaveBeenCalledWith({ values : [ { id : '1', email : 'a@org.org' }, { id : '3', email : 'c@org.org' } ] });
+            expect(stringify).toHaveBeenCalledWith({ values : [ { id : '1', email : 'a@org.org' }, { id : '3', email : 'c@org.org' } ], resend_invitation : false });
         });
         it('overwrites checkbox with server response', function () {
             spyOn($, "ajax").and.callFake(function (params) { 
