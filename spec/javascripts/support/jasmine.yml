@@ -12,7 +12,7 @@
 #
 src_files:
   - assets/application.js
-  - assets/generate_user.js
+  - assets/without_users.js
   - assets/this_is_my_org.js
   - assets/jasmine-jquery.js
 

@@ -17,7 +17,6 @@ Feature: Orphans UI
       | admin@myorg.com       | adminpass0987  | true  | 2008-01-01 00:00:00 | My Organization |                      |
       | pending@myorg.com     | password123    | false | 2008-01-01 00:00:00 |                 | My Organization      |
       | invited-admin@org.org | password123    | false | 2008-01-01 00:00:00 |                 |                      |
-
     And the admin made a preapproved user for "Yet Another Org"
 
   @javascript
@@ -25,18 +24,30 @@ Feature: Orphans UI
     Given cookies are approved
     Given I am signed in as an admin
     And I visit the without users page
-    When I click Generate User button for "The Organization"
+    And I check the box for "The Organization"
+    And I check the box for "The Same Email Org"
+    When I click id "generate_users"
     Then a token should be in the response field for "The Organization"
-    When I click Generate User button for "The Same Email Org"
-    Then I should see "Email has already been taken" in the response field for "The Same Email Org"
+    Then I should see "Error: Email has already been taken" in the response field for "The Same Email Org"
+
+  @javascript
+  Scenario: Select All button toggles all checkboxes
+    Given cookies are approved
+    Given I am signed in as an admin
+    And I visit the without users page
+    And I press "Select All"
+    Then all the checkboxes should be checked
+    When I press "Select All"
+    Then all the checkboxes should be unchecked
 
   @javascript
   Scenario: Admin should be notified when email is invalid
     Given cookies are approved
     Given I am signed in as an admin
     And I visit the without users page
-    When I click Generate User button for "Crazy Email Org"
-    Then I should see "Email is invalid" in the response field for "Crazy Email Org"
+    And I check the box for "Crazy Email Org"
+    When I click id "generate_users"
+    Then I should see "Error: Email is invalid" in the response field for "Crazy Email Org"
 
   Scenario: As a non-admin trying to access orphans index
     Given cookies are approved
