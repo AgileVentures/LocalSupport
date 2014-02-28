@@ -6,12 +6,7 @@ class ApplicationController < ActionController::Base
   #TODO just ban all devise controllers
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
-    unless (request_path_includes?(sign_in_url) ||
-        request_path_includes?(sign_up_url) ||
-        request_path_includes?(user_confirmation) ||
-        request_path_includes?(sign_password) ||
-        request_path_includes?(cookies_allow) ||
-        request.xhr?) # don't store ajax calls
+    unless request_path_matches_any_of?(blacklisted) || request.xhr?
       session[:previous_url] = request.path
     end
   end
@@ -82,5 +77,13 @@ class ApplicationController < ActionController::Base
 
   def request_path_includes?(url)
     url =~ request.path
+  end
+
+  def blacklisted
+    [sign_in_url, sign_up_url, user_confirmation, sign_password, cookies_allow]
+  end
+
+  def request_path_matches_any_of?(url_matchers)
+    url_matchers.any? { |url| url.match request.path }
   end
 end

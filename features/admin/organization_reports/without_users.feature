@@ -17,11 +17,16 @@ Feature: Orphans UI
       | admin@myorg.com       | adminpass0987  | true  | 2008-01-01 00:00:00 | My Organization |                      |
       | pending@myorg.com     | password123    | false | 2008-01-01 00:00:00 |                 | My Organization      |
       | invited-admin@org.org | password123    | false | 2008-01-01 00:00:00 |                 |                      |
+<<<<<<< HEAD
     And cookies are approved
     And the admin invited a user for "Yet Another Org"
+=======
+    And the admin made a preapproved user for "Yet Another Org"
+>>>>>>> 4e261d2ad24711ab392756d6cd98695dbf35fcc1
 
   @javascript
   Scenario: Admin can generate link but only for unique email
+    Given cookies are approved
     Given I am signed in as an admin
     And I visit the without users page
     And I check the box for "The Organization"
@@ -32,6 +37,7 @@ Feature: Orphans UI
 
   @javascript
   Scenario: Select All button toggles all checkboxes
+    Given cookies are approved
     Given I am signed in as an admin
     And I visit the without users page
     And I press "Select All"
@@ -41,6 +47,7 @@ Feature: Orphans UI
 
   @javascript
   Scenario: Admin should be notified when email is invalid
+    Given cookies are approved
     Given I am signed in as an admin
     And I visit the without users page
     And I check the box for "Crazy Email Org"
@@ -48,12 +55,14 @@ Feature: Orphans UI
     Then I should see "Error: Email is invalid" in the response field for "Crazy Email Org"
 
   Scenario: As a non-admin trying to access orphans index
+    Given cookies are approved
     Given I am signed in as a non-admin
     And I visit the without users page
     Then I should be on the home page
     And I should see "You must be signed in as an admin to perform this action!"
 
   Scenario: Invited user clicking through on email
+    Given cookies are approved
     Given I click on the invitation link in the email to "admin@another.org"
     Then I should be on the invitation page
     And I fill in "user_password" with "12345678" within the main body
@@ -61,8 +70,19 @@ Feature: Orphans UI
     And I press "Set my password"
     Then I should be on the charity page for "Yet Another Org"
 
+  Scenario: Pre-approved user clicking through on email and on cookies allow
+    Given I click on the retrieve password link in the email to "admin@another.org"
+    Then I should be on the password reset page
+    And I click "Close"
+    Then I should be on the password reset page
+    And I fill in "user_password" with "12345678" within the main body
+    And I fill in "user_password_confirmation" with "12345678" within the main body
+    And I press "Change my password"
+    Then I should be on the charity page for "Yet Another Org"
+
   @javascript
   Scenario: Table columns should be sortable
+    Given cookies are approved
     Given I am signed in as an admin
     And I visit the without users page
     And I click tableheader "Name"

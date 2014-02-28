@@ -6,18 +6,7 @@ class UserReportsController < ApplicationController
   # business logic pulled into a separate model or process
   def update
     user = User.find_by_id(params[:id])
-    if params[:organization_id]
-      user.pending_organization_id = params[:organization_id]
-      user.save!
-      org = Organization.find(params[:organization_id])
-      flash[:notice] = "You have requested admin status for #{org.name}"
-      redirect_to(organization_path(params[:organization_id]))
-    else
-      redirect_to :status => 404 and return unless current_user.admin?
-      user.promote_to_org_admin
-      flash[:notice] = "You have approved #{user.email}."
-      redirect_to users_report_path
-    end
+    UserOrganizationClaimer.new(self, user, current_user).call(params[:organization_id])
   end
 
   def index
@@ -25,4 +14,20 @@ class UserReportsController < ApplicationController
   end
 
   #TODO invited_users_index
+
+  def update_message_for_admin_status
+    org = Organization.find(params[:organization_id])
+    flash[:notice] = "You have requested admin status for #{org.name}"
+    redirect_to(organization_path(params[:organization_id]))
+  end
+
+  def update_message_promoting(user)
+    flash[:notice] = "You have approved #{user.email}."
+    redirect_to(users_report_path)
+  end
+
+  def update_failure
+    redirect_to :status => 404 
+  end
 end
+

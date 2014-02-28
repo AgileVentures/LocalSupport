@@ -188,7 +188,7 @@ describe User do
 
   end
 
-  context '#user_error_message' do 
+  context '#user_error_message' do
     let(:user) { FactoryGirl.build(:user) } 
 
     it 'returns a proper error message for the user' do 
@@ -196,4 +196,15 @@ describe User do
     end
   end
 
+  context '#request_admin_status' do
+    before do
+      @user = FactoryGirl.build(:user)
+    end
+    let(:organization_id) { 12345 }
+
+    it 'update pending organization id' do 
+      @user.request_admin_status organization_id
+      expect(@user.pending_organization_id).to eql organization_id
+    end
+  end
 end

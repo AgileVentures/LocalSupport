@@ -50,7 +50,12 @@ class User < ActiveRecord::Base
     save!
   end
 
-  def error_message  
+  def error_message
     "Error: #{errors.full_messages.first}"
+  end
+
+  def request_admin_status(organization_id)
+    self.pending_organization_id = organization_id
+    save!
   end
 end

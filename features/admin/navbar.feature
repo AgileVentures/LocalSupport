@@ -11,6 +11,7 @@ Feature: Admin user interface
     And I am on the home page
 
   Scenario Outline: Top navbar has Organizations dropdown menus
+    #Given I click "Organisations"
     When I click "Without Users"
     Then I should be on the without users page
   # other links omitted until implemented
@@ -20,6 +21,7 @@ Feature: Admin user interface
     | Without Users |
 
   Scenario Outline: Top navbar has Users dropdown menus
+    #Given I click "Users"
     When I click "All"
     Then I should be on the all users page
   # other links omitted until implemented
