@@ -9,9 +9,10 @@ class OrganizationReportsController < ApplicationController
 
   # Uses email to create invite, uses id to respond with msg
   def without_users_create
+    UserResendInvitationEnabler.enable(Devise, params[:resend_invitation])
     response = params[:values].reduce({}) do |response, value|
       response[value[:id]] = UserInviter.new(
-        self, User, current_user, params[:resend_invitation]
+        self, User, current_user
       ).invite(value[:email])
       response
     end
