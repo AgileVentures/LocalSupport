@@ -1,9 +1,8 @@
 class UserInviter 
-  def initialize(listener, user_repository, current_user, resend_invitation)
+  def initialize(listener, user_repository, current_user)
     @user_repository = user_repository
     @current_user = current_user
     @listener = listener
-    Devise.resend_invitation = resend_invitation
   end
 
   def invite(email)
@@ -12,7 +11,7 @@ class UserInviter
   end
 
   private 
-  attr_reader :user_repository, :current_user, :listener, :response
+  attr_reader :user_repository, :current_user, :listener
 
   def build_message_for(user)
     user.errors.any? ? 'Error: ' + user.errors.full_messages.first : 'Invited!'
