@@ -7,13 +7,9 @@ class UserInviter
 
   def invite(email)
     user = user_repository.invite!({email:email}, current_user)
-    build_message_for(user)
+    user.error_message || 'Invited!'
   end
 
   private 
   attr_reader :user_repository, :current_user, :listener
-
-  def build_message_for(user)
-    user.errors.any? ? 'Error: ' + user.errors.full_messages.first : 'Invited!'
-  end
 end

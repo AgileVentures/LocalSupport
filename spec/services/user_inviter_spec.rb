@@ -3,8 +3,8 @@ describe UserInviter do
   let(:listener) { double :listener }
   let(:user_repository) { double :user_repository }
   let(:current_user) { double :user }
-  let(:invited_user) { double(:invited_user, errors:[]) } 
-  let(:email) { 'test@test.com' }
+  let(:invited_user) { double(:invited_user, errors:[], error_message:'') } 
+  let(:email) { 'test@test.com' } 
 
   it 'makes an invite for a given user' do 
     expect(user_repository).to receive(:invite!).with({email:email}, current_user) { invited_user } 

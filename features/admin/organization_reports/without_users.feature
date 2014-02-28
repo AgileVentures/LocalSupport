@@ -17,12 +17,7 @@ Feature: Orphans UI
       | admin@myorg.com       | adminpass0987  | true  | 2008-01-01 00:00:00 | My Organization |                      |
       | pending@myorg.com     | password123    | false | 2008-01-01 00:00:00 |                 | My Organization      |
       | invited-admin@org.org | password123    | false | 2008-01-01 00:00:00 |                 |                      |
-<<<<<<< HEAD
-    And cookies are approved
     And the admin invited a user for "Yet Another Org"
-=======
-    And the admin made a preapproved user for "Yet Another Org"
->>>>>>> 4e261d2ad24711ab392756d6cd98695dbf35fcc1
 
   @javascript
   Scenario: Admin can generate link but only for unique email
