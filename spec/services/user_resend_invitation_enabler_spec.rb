@@ -1,5 +1,5 @@
-require_relative '../../app/services/user_resend_invitation_enabler' 
-describe UserResendInvitationEnabler, '.enable' do 
+require_relative '../../app/services/resend_invitation_enabler'
+describe ResendInvitationEnabler, '.enable' do 
   let(:divisable) { double :divisable } 
 
   it 'toggles the divisable resend email invitation functionality' do 
