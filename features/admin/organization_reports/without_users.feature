@@ -65,16 +65,6 @@ Feature: Orphans UI
     And I press "Set my password"
     Then I should be on the charity page for "Yet Another Org"
 
-  Scenario: Pre-approved user clicking through on email and on cookies allow
-    Given I click on the retrieve password link in the email to "admin@another.org"
-    Then I should be on the password reset page
-    And I click "Close"
-    Then I should be on the password reset page
-    And I fill in "user_password" with "12345678" within the main body
-    And I fill in "user_password_confirmation" with "12345678" within the main body
-    And I press "Change my password"
-    Then I should be on the charity page for "Yet Another Org"
-
   @javascript
   Scenario: Table columns should be sortable
     Given cookies are approved

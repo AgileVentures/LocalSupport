@@ -7,7 +7,7 @@ class UserInviter
 
   def invite(email)
     user = user_repository.invite!({email:email}, current_user)
-    user.error_message || 'Invited!'
+    user.message_for_invite
   end
 
   private 

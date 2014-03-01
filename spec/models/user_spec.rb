@@ -188,27 +188,30 @@ describe User do
 
   end
 
-  context '#user_error_message' do
+  context '#message_for_invite' do
     let(:user) { FactoryGirl.build(:user) } 
 
-    it 'returns nil if there are no errors' do
-      expect(user.error_message).to eql nil
+    it 'returns Invited! if there are no errors' do
+      expect(user.message_for_invite).to eql 'Invited!'
     end
-    it 'returns a semi-custom error msg if there is one' do
-      user.stub_chain(:errors, :full_messages, :first).and_return('hello')
-      expect(user.error_message).to eql 'Error: hello'
+
+    context 'when there are errors' do 
+      before do 
+        user.errors.add(:email, 'error') 
+      end
+      it 'returns a semi-custom error msg if there is one' do
+        expect(user.message_for_invite).to eql 'Error: Email error'
+      end
     end
   end
 
   context '#request_admin_status' do
-    before do
-      @user = FactoryGirl.build(:user)
-    end
+    let(:user) { FactoryGirl.build(:user) } 
     let(:organization_id) { 12345 }
 
     it 'update pending organization id' do 
-      @user.request_admin_status organization_id
-      expect(@user.pending_organization_id).to eql organization_id
+      user.request_admin_status organization_id
+      expect(user.pending_organization_id).to eql organization_id
     end
   end
 end

@@ -50,8 +50,8 @@ class User < ActiveRecord::Base
     save!
   end
 
-  def error_message
-    "Error: #{errors.full_messages.first}"
+  def message_for_invite
+    errors.any? ? "Error: #{errors.full_messages.first}" : 'Invited!'
   end
 
   def request_admin_status(organization_id)
