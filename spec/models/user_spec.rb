@@ -191,8 +191,12 @@ describe User do
   context '#user_error_message' do
     let(:user) { FactoryGirl.build(:user) } 
 
-    it 'returns a proper error message for the user' do 
-      expect(user.error_message).to eql 'Error: '
+    it 'returns nil if there are no errors' do
+      expect(user.error_message).to eql nil
+    end
+    it 'returns a semi-custom error msg if there is one' do
+      user.stub_chain(:errors, :full_messages, :first).and_return('hello')
+      expect(user.error_message).to eql 'Error: hello'
     end
   end
 
