@@ -1,19 +1,36 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :store_location
 
-  after_filter :store_location
+  # To prevent infinite redirect loops, only requests from white listed
+  # controllers are available in the "after sign-in redirect" feature
+  def white_listed
+    %w(
+        application
+        contributors
+        organizations
+        pages
+    )
+  end
 
-  #TODO just ban all devise controllers
+  def request_controller_is(white_listed)
+    white_listed.include? request.params['controller']
+  end
+
+  def request_verb_is_get?
+    request.env['REQUEST_METHOD'] == 'GET'
+  end
+
+  # Stores the URL if permitted
   def store_location
-    # store last url - this is needed for post-login redirect to whatever the user last visited.
-    unless request_path_matches_any_of?(blacklisted) || request.xhr?
+    if request_controller_is(white_listed) && request_verb_is_get?
       session[:previous_url] = request.path
     end
   end
 
-  #We test this functionality in sign-in tests for session_controller_spec
+  # Devise hook
+  # Returns the users to the page they were viewing before signing in
   def after_sign_in_path_for(resource)
-    store_location
     return session[:previous_url] if session[:previous_url]
     return organization_path(current_user.organization) if current_user.organization
     root_path
@@ -41,6 +58,7 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # Enforces admin-only limits
   # http://railscasts.com/episodes/20-restricting-access
   def authorize
     unless admin?
@@ -50,40 +68,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # Not to be confused with the activerecord admin? method
   def admin?
     current_user.try :admin?
-  end
-
-  def sign_in_url
-    Regexp.new '/users/sign_in'
-  end
-
-  def sign_up_url
-    Regexp.new '/users/sign_up'
-  end
-
-  def sign_password
-    Regexp.new '/users/password'
-  end
-
-  def user_confirmation
-    Regexp.new '/users/confirmation'
-  end
-
-  def cookies_allow
-    Regexp.new '/cookies/allow'
-  end
-
-  def request_path_includes?(url)
-    url =~ request.path
-  end
-
-  def blacklisted
-    [sign_in_url, sign_up_url, user_confirmation, sign_password, cookies_allow]
-  end
-
-  def request_path_matches_any_of?(url_matchers)
-    url_matchers.any? { |url| url.match request.path }
   end
 end
