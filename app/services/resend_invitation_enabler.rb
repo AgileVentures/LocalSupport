@@ -1,4 +1,4 @@
-class UserResendInvitationEnabler 
+class ResendInvitationEnabler 
 
   def self.enable(devise, flag)
     new(devise).enable(flag)
