@@ -1,6 +1,7 @@
 class OrganizationReportsController < ApplicationController
   layout 'full_width'
   before_filter :authorize
+  respond_to :json
 
   def without_users_index
     @orphans = Organization.not_null_email.null_users
@@ -14,8 +15,6 @@ class OrganizationReportsController < ApplicationController
         self, User, current_user, Devise
       ).invite(value[:email], params[:resend_invitation])
     end
-    respond_to do |format|
-      format.json { render :json => response.to_json }
-    end
+    respond_with response.to_json
   end
 end
