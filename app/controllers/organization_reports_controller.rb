@@ -9,11 +9,10 @@ class OrganizationReportsController < ApplicationController
 
   # Uses email to create invite, uses id to respond with msg
   def without_users_create
-    response = params[:values].reduce({}) do |response, value|
+    response = params[:values].each_with_object({}) do |value, response|
       response[value[:id]] = UserInviter.new(
         self, User, current_user, Devise
       ).invite(value[:email], params[:resend_invitation])
-      response
     end
     respond_to do |format|
       format.json { render :json => response.to_json }
