@@ -57,8 +57,9 @@ Feature: Orphans UI
     And I should see "You must be signed in as an admin to perform this action!"
 
   Scenario: Invited user clicking through on email
-    Given cookies are approved
     Given I click on the invitation link in the email to "admin@another.org"
+    Then I should be on the invitation page
+    And I click "Close"
     Then I should be on the invitation page
     And I fill in "user_password" with "12345678" within the main body
     And I fill in "user_password_confirmation" with "12345678" within the main body
