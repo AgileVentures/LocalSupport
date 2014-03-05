@@ -19,7 +19,7 @@ Then /^I visit the (.*) page$/ do |location|
     when "contributors" then visit contributors_path
     when "password reset" then visit edit_user_password_path
     when "invitation" then visit accept_user_invitation_path
-    when "without users" then visit organization_report_path
+    when "without users" then visit organizations_report_path
     when "all users" then visit users_report_path
     else raise "No matching path found for #{location}!"
   end
