@@ -3,7 +3,7 @@ LocalSupport
 
 A directory of local support services. 
 
-[Project Overview on Google Site](https://sites.google.com/site/saasellsprojects/projects/local-support/getting-started---project-overview)
+[Project Overview on AgileVentures](http://www.agileventures.org/projects/localsupport/documents/project-overview-localsupport)
 
 Installation and other technical issues are being gathered in the github wiki:
 
