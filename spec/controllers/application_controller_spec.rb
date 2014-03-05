@@ -1,76 +1,51 @@
 require 'spec_helper'
 
-describe ApplicationController do
-  describe '#after_sign_in_path_for' do
-    it 'should return organization path when user is associated with organization and has not previously visited the site' do
-      controller = ApplicationController.new
-      controller.stub(:store_location)
-      controller.stub(:session).and_return({ :previous_url => nil })
-      controller.stub(:organization_path).and_return '/organization/1'
-      user = double('User')
-      org = double('Organization')
-      org.stub(:id).and_return 1
-      user.stub(:organization).and_return org
-      controller.stub(:current_user).and_return user
-      controller.stub(:root_path).and_return '/'
+describe ApplicationController, :helpers => :controllers do
+  it '#request_controller_is(white_listed)' do
+    controller.stub :white_listed => %w(a b c)
+    request.stub :params => { 'controller' => 'a' }
+    controller.request_controller_is(controller.white_listed).should be_true
 
-      controller.after_sign_in_path_for(user).should eq '/organization/1'
-    end
+    request.stub :params => { 'controller' => 'd' }
+    controller.request_controller_is(controller.white_listed).should be_false
   end
 
-  describe 'checking previous request paths stored in session' do
-    controller do
-      def custom
-        render :text => "custom called"
-      end
-    end
-    before(:each) { routes.draw { get "custom" => "anonymous#custom" } }
+  it '#request_verb_is_get?' do
+    request.env['REQUEST_METHOD'] = 'GET'
+    controller.request_verb_is_get?.should be_true
 
-    describe 'unwanted previous URLS' do
-      it 'when called from /cookies/allow' do
-        request.stub(:path).and_return("/cookies/allow")
-        get :custom
-        session[:previous_url].should be_nil
-      end
-      it 'when called from /users/sign_in' do
-        request.stub(:path).and_return("/users/sign_in")
-        get :custom
-        session[:previous_url].should be_nil
-      end
-      it 'when called from /users/sign_up' do
-        request.stub(:path).and_return("/users/sign_up")
-        get :custom
-        session[:previous_url].should be_nil
-      end
-      it 'when called from /users/password' do
-        request.stub(:path).and_return("/users/password")
-        get :custom
-        session[:previous_url].should be_nil
-      end
-      it 'when called from /users/confirmation' do
-        request.stub(:path).and_return("/users/confirmation")
-        get :custom
-        session[:previous_url].should be_nil
-      end
-      it 'when called by ajax' do
-        request.stub(:xhr?).and_return(true)
-        get :custom
-        session[:previous_url].should be_nil
-      end
+    request.env['REQUEST_METHOD'] = 'PUT'
+    controller.request_verb_is_get?.should be_false
+  end
 
-      it 'when called from /users/password/edit' do
-        request.stub(:path).and_return("/users/password/edit")
-        get :custom
-        session[:previous_url].should be_nil
-      end
-    end
-    describe 'wanted previous urls' do
-      it 'when called from /organizations/1' do
-        request.stub(:path).and_return("/organizations/1")
-        get :custom
-        session[:previous_url].should eq "/organizations/1"
-      end
-    end
+  it '#store_location stores URLs only when conditions permit' do
+    request.stub :path => 'this/is/a/path'
+
+    controller.stub :request_controller_is => false
+    controller.stub :request_verb_is_get? => false
+    controller.store_location
+    session[:previous_url].should be_nil
+
+    controller.stub :request_controller_is => true
+    controller.store_location
+    session[:previous_url].should be_nil
+
+    controller.stub :request_verb_is_get? => true
+    controller.store_location
+    session[:previous_url].should eq request.path
+  end
+
+  it '#after_sign_in_path_for' do
+    user = make_current_user_nonadmin
+    user.stub :organization => nil
+
+    controller.after_sign_in_path_for(user).should eq '/'
+
+    user.stub :organization => '1'
+    controller.after_sign_in_path_for(user).should eq '/organizations/1'
+
+    session[:previous_url] = 'i/was/here'
+    controller.after_sign_in_path_for(user).should eq 'i/was/here'
   end
 
   describe 'allow_cookie_policy' do
