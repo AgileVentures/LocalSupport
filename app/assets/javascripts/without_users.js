@@ -3,18 +3,26 @@
 
 (function ($) {
     'use strict';
-    $.fn.generate_users = function () {
+    $.fn.invite_users = function () {
         $(this).click(function () {
-            var ids = [],
+            var values = [],
                 checks = $('input:checked');
             checks.each(function () {
-                ids.push($(this).attr('value'))
+                values.push({
+                    id: $(this).attr('data-id'),
+                    email: $(this).attr('data-email')
+                });
             });
+            var resend_invitation = $.parseJSON($('#resend_invitation').attr('data-resend_invitation'));
             $.ajax({
                 type: 'POST',
                 url: '/organization_reports/without_users',
-                data: { organizations: ids },
+                data: JSON.stringify({
+                    values: values,
+                    resend_invitation: resend_invitation
+                }),
                 dataType: 'json',
+                contentType: 'application/json',
                 success: function (data) {
                     checks.each(function () {
                         var parent = $(this).closest('td'),
@@ -48,7 +56,7 @@
 })(jQuery);
 
 $(function () {
-    $('#generate_users').generate_users();
+    $('#invite_users').invite_users();
     $('#select_all').select_all();
     var toolbar = $('#toolbar');
     if (toolbar.length != 0) {

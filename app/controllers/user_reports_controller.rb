@@ -13,6 +13,8 @@ class UserReportsController < ApplicationController
     @users = User.all
   end
 
+  #TODO invited_users_index
+
   def update_message_for_admin_status
     org = Organization.find(params[:organization_id])
     flash[:notice] = "You have requested admin status for #{org.name}"

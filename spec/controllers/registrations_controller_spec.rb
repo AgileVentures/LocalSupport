@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Devise::RegistrationsController do
+describe DeviseInvitable::RegistrationsController do
   before :suite do
     FactoryGirl.factories.clear
     FactoryGirl.find_definitions

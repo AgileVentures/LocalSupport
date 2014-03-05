@@ -51,9 +51,10 @@ Given /^the following users are registered:$/ do |users_table|
   end
 end
 
-Given(/^the admin made a preapproved user for "(.*?)"$/) do |organization_name|
+Given(/^the admin invited a user for "(.*?)"$/) do |organization_name|
+  user = User.find_by_admin(true)
   org = Organization.find_by_name(organization_name)
-  org.generate_potential_user
+  User.invite!({email: org.email}, user)
 end
 
 Given /^that I am logged in as any user$/ do
@@ -127,5 +128,10 @@ end
 
 Given(/^I click on the retrieve password link in the email to "([^\"]+)"$/) do  |email|
   user = User.find_by_email email
-  visit retrieve_password_url(user.reset_password_token)
+  visit password_url(user.reset_password_token)
+  end
+
+Given(/^I click on the invitation link in the email to "([^\"]+)"$/) do  |email|
+  user = User.find_by_email email
+  visit invitation_url(user.invitation_token)
 end

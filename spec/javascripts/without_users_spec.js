@@ -1,27 +1,39 @@
 describe('Organization Reports - without users page', function () {
-    var generate_users, select_all;
+    var invite_users, select_all;
     beforeEach(function () {
-        setFixtures('<button id="generate_users"></button>');
+        setFixtures('<div id="resend_invitation" data-resend_invitation="false" style="display: none;"></div>');
+        appendSetFixtures('<button id="invite_users"></button>');
         appendSetFixtures('<button id="select_all" class="btn" data-toggle="button"></button>');
-        appendSetFixtures('<tr id="1"><td class="response"><input type="checkbox" value="1" checked /></td></tr>');
-        appendSetFixtures('<tr id="2"><td class="response"><input type="checkbox" value="2" /></td></tr>');
-        appendSetFixtures('<tr id="3"><td class="response"><input type="checkbox" value="3" checked /></td></tr>');
-        appendSetFixtures('<tr id="4"><td class="response"><input type="checkbox" value="4" /></td></tr>');
-        generate_users = $('#generate_users');
+        appendSetFixtures('<tr id="1"><td class="response"><input type="checkbox" data-id="1" data-email="a@org.org" checked /></td></tr>');
+        appendSetFixtures('<tr id="2"><td class="response"><input type="checkbox" data-id="2" data-email="b@org.org" /></td></tr>');
+        appendSetFixtures('<tr id="3"><td class="response"><input type="checkbox" data-id="3" data-email="c@org.org" checked /></td></tr>');
+        appendSetFixtures('<tr id="4"><td class="response"><input type="checkbox" data-id="4" data-email="d@org.org" /></td></tr>');
+        invite_users = $('#invite_users');
         select_all = $('#select_all');
-        generate_users.generate_users();
+        invite_users.invite_users();
         select_all.select_all();
     });
-    describe('Generate Users button', function () {
+    describe('Invite Users button', function () {
+        it('reads a boolean from a hidden field when clicked', function() {
+            var parser = spyOn($, 'parseJSON');
+            invite_users.click();
+            expect(parser).toHaveBeenCalledWith('false');
+        });
         it('makes an ajax request when clicked', function () {
             spyOn($, "ajax");
-            generate_users.click();
+            invite_users.click();
             expect($.ajax.calls.count()).toBe(1);
             var args = $.ajax.calls.mostRecent().args[0];
-            expect(args.data).toEqual({ organizations: ['1', '3'] });
+            expect(args.data).toEqual('{"values":[{"id":"1","email":"a@org.org"},{"id":"3","email":"c@org.org"}],"resend_invitation":false}');
             expect(args.dataType).toBe('json');
+            expect(args.contentType).toBe('application/json');
             expect(args.type).toBe('POST');
             expect(args.url).toBe('/organization_reports/without_users')
+        });
+        it('uses JSON stringify to format the array properly for Rails', function() {
+            var stringify = spyOn(JSON, 'stringify');
+            invite_users.click();
+            expect(stringify).toHaveBeenCalledWith({ values : [ { id : '1', email : 'a@org.org' }, { id : '3', email : 'c@org.org' } ], resend_invitation : false });
         });
         it('overwrites checkbox with server response', function () {
             spyOn($, "ajax").and.callFake(function (params) { 
@@ -30,11 +42,11 @@ describe('Organization Reports - without users page', function () {
                   3: 'Galahoslos?'
               });
             });
-            generate_users.click();
+            invite_users.click();
             expect($('#1 .response')).toHaveHtml('I have returned.');
-            expect($('#2 .response')).toHaveHtml('<input type="checkbox" value="2" />');
+            expect($('#2 .response')).toHaveHtml('<input type="checkbox" data-id="2" data-email="b@org.org" />');
             expect($('#3 .response')).toHaveHtml('Galahoslos?');
-            expect($('#4 .response')).toHaveHtml('<input type="checkbox" value="4" />');
+            expect($('#4 .response')).toHaveHtml('<input type="checkbox" data-id="4" data-email="d@org.org" />');
         });
         it('color codes the server responses', function () {
             spyOn($, "ajax").and.callFake(function (params) { 
@@ -43,7 +55,7 @@ describe('Organization Reports - without users page', function () {
                     3: 'Error: Five... Four... Three. Two. One! (fires phase disruptor)'
                 });
             });
-            generate_users.click();
+            invite_users.click();
             expect($('#1')).toHaveClass('alert');
             expect($('#2')).not.toHaveClass('alert');
             expect($('#3')).toHaveClass('alert');

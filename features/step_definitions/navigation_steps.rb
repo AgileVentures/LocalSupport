@@ -18,6 +18,7 @@ Then /^I visit the (.*) page$/ do |location|
     when "users" then visit users_path
     when "contributors" then visit contributors_path
     when "password reset" then visit edit_user_password_path
+    when "invitation" then visit accept_user_invitation_path
     when "without users" then visit organization_report_path
     when "all users" then visit users_report_path
     else raise "No matching path found for #{location}!"
@@ -33,6 +34,7 @@ Then /^I should be on the (.*) page$/ do |location|
   when "users" then current_path.should == users_path
   when "contributors" then current_path.should == contributors_path
   when "password reset" then current_path.should == edit_user_password_path
+  when "invitation" then current_path.should == accept_user_invitation_path
   when "without users" then current_path.should == organization_report_path
   when "all users" then current_path.should == users_report_path
   else raise "No matching path found for #{location}!"

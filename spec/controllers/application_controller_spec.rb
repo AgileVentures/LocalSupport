@@ -48,6 +48,16 @@ describe ApplicationController, :helpers => :controllers do
     controller.after_sign_in_path_for(user).should eq 'i/was/here'
   end
 
+  it '#after_accept_path_for' do
+    user = make_current_user_nonadmin
+    user.stub :organization => nil
+
+    controller.after_accept_path_for(user).should eq '/'
+
+    user.stub :organization => '1'
+    controller.after_accept_path_for(user).should eq '/organizations/1'
+  end
+
   describe 'allow_cookie_policy' do
     #before :each do
     #  request.should_receive(:referer).and_return "/hello"

@@ -25,14 +25,11 @@ class Organization < ActiveRecord::Base
   # Alternative => :joins('LEFT OUTER JOIN users ON users.organization_id = organizations.id)
   # Difference between inner and outer joins: http://stackoverflow.com/a/38578/2197402
   scope :null_users, lambda { includes(:users).where("users.organization_id IS NULL") }
-  scope :generated_users, lambda { includes(:users).where('users.reset_password_token IS NOT NULL AND users.sign_in_count = ?', 0) }
 
   def run_geocode?
     ## http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
     address_changed? or (address.present? and not_geocoded?)
   end
-
-
 
   def not_geocoded?
     latitude.blank? and longitude.blank?
