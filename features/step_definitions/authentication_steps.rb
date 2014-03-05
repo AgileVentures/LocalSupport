@@ -2,28 +2,28 @@ Given /^I am signed in as a charity worker (un)?related to "(.*?)"$/ do |negate,
   organization = Organization.find_by_name(organization_name)
   if negate
     users = User.find_all_by_admin(false)
-    user = users.find{|user| user.organization != organization}
+    user = users.find { |user| user.organization != organization }
   else
-    user = organization.users.find{|user| !user.admin?}
+    user = organization.users.find { |user| !user.admin? }
   end
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
 
 Given /^I am signed in as an? (non-)?admin$/ do |negate|
-  user = User.find_by_admin(negate ? false:true)
+  user = User.find_by_admin(negate ? false : true)
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
 
-Given /^I sign up as "(.*?)" with password "(.*?)" and password confirmation "(.*?)"$/ do |email, password,password_confirmation|
-  fill_in "signup_email" , :with => email
-  fill_in "signup_password" , :with => password
-  fill_in "signup_password_confirmation" , :with => password_confirmation
+Given /^I sign up as "(.*?)" with password "(.*?)" and password confirmation "(.*?)"$/ do |email, password, password_confirmation|
+  fill_in "signup_email", :with => email
+  fill_in "signup_password", :with => password
+  fill_in "signup_password_confirmation", :with => password_confirmation
   click_button "Sign up"
 end
 
 Given /^I sign in as a charity worker with permission to edit "(.*?)"$/ do |name|
   org = Organization.find_by_name name
-  org.users   # TODO we will want some habtm to support this eventually
+  org.users # TODO we will want some habtm to support this eventually
 end
 
 And /^I am signed in as the admin using password "(.*?)"$/ do |password|
@@ -39,7 +39,8 @@ And /^I am not signed in as the admin using password "(.*?)"$/ do |password|
   steps %Q{
     Given I am on the sign in page
     And I sign in as "#{admin.email}" with password "#{password}"
-  }end
+  }
+end
 
 #TODO: Should we bypass mass assgiment in the creation via :without_protection?
 Given /^the following users are registered:$/ do |users_table|
@@ -62,7 +63,7 @@ Given /^that I am logged in as any user$/ do
      Given the following users are registered:
    | email             | password | confirmed_at         |
    | registered_user@example.com | pppppppp | 2007-01-01  10:00:00 |
-  } 
+  }
   steps %Q{
     Given I am on the home page
     And I sign in as "registered_user@example.com" with password "pppppppp"
@@ -81,8 +82,8 @@ When /^I sign out$/ do
 end
 
 Given /^I sign in as "(.*?)" with password "(.*?)"$/ do |email, password|
-  fill_in "user_email" , :with => email
-  fill_in "user_password" , :with => password
+  fill_in "user_email", :with => email
+  fill_in "user_password", :with => password
   click_link_or_button "Sign in"
 end
 
@@ -121,17 +122,30 @@ And(/^cookies are not approved$/) do
   steps %Q{And I have a "cookie_policy_accepted" cookie set to "false"}
 end
 
-Given(/^I click on the confirmation link in the email to "([^\"]+)"$/) do  |email|
+Given(/^I click on the confirmation link in the email to "([^\"]+)"$/) do |email|
   user = User.find_by_email email
   visit confirmation_url(user.confirmation_token)
 end
 
-Given(/^I click on the retrieve password link in the email to "([^\"]+)"$/) do  |email|
+Given(/^I click on the retrieve password link in the email to "([^\"]+)"$/) do |email|
   user = User.find_by_email email
   visit password_url(user.reset_password_token)
-  end
+end
 
-Given(/^I click on the invitation link in the email to "([^\"]+)"$/) do  |email|
+Given(/^I click on the invitation link in the email to "([^\"]+)"$/) do |email|
   user = User.find_by_email email
   visit invitation_url(user.invitation_token)
+  step "I should be on the invitation page"
 end
+
+And(/^I accepted the cookie policy from the "([^\"]+)" page$/) do |page|
+  step %Q{I click "Close"}
+  step "I should be on the #{page} page"
+end
+
+And(/^I set my password/) do
+  step %Q{I fill in "user_password" with "12345678" within the main body}
+  step %Q{I fill in "user_password_confirmation" with "12345678" within the main body}
+  step %Q{I press "Set my password"}
+end
+
