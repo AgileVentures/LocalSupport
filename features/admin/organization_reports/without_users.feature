@@ -29,6 +29,8 @@ Feature: Orphans UI
     When I click id "invite_users"
     Then I should see "Invited!" in the response field for "The Organization"
     Then I should see "Error: Email has already been taken" in the response field for "The Same Email Org"
+    Given I visit the without users page
+    Then I should not see "The Organization"
 
   @javascript
   Scenario: Select All button toggles all checkboxes
