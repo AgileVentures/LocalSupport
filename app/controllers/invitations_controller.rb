@@ -9,8 +9,6 @@ class InvitationsController < ApplicationController
     respond_to do |format|
       format.json { render :json => res.to_json }
     end
-    debugger
-    puts 'hi'
   end
 
   private
