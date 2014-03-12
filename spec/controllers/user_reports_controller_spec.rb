@@ -110,7 +110,11 @@ describe UserReportsController do
     end
   end
 
-  describe 'GET invited users report' do
+  describe 'GET invited users report', :helpers => :controllers do
+    before(:each) do
+      make_current_user_admin
+    end
+
     it 'assigns invited users to @users' do
       user_double = double("User")
       User.should_receive(:invited_not_accepted).and_return([user_double])
