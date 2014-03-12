@@ -1,0 +1,21 @@
+<div class="well">
+  <div id="toolbar" class="navbar">
+    <div class="navbar-inner">
+      <!--<form class="navbar-search pull-left">-->
+      <!--<input type="text" class="search-query" placeholder="Search">-->
+      <!--</form>-->
+      <div class="btn-group" style="float: right">
+        <button class="btn" data-toggle="button" id="invite_users">
+          <i class="fa fa-group"></i>
+          Invite Users
+        </button>
+        <button class="btn" data-toggle="button" id="select_all">
+          <i class="fa fa-check-square"></i>
+          Select All
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="resend_invitation" data-resend_invitation="<%= @resend_invitation %>" style="display: none;"></div>
+  <% yield :table %>
+</div>
