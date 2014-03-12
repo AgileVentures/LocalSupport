@@ -13,7 +13,9 @@ class UserReportsController < ApplicationController
     @users = User.all
   end
 
-  #TODO invited_users_index
+  def invited
+    @users = User.invited_not_accepted
+  end
 
   def update_message_for_admin_status
     org = Organization.find(params[:organization_id])

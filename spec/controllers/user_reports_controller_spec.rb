@@ -109,4 +109,14 @@ describe UserReportsController do
 
     end
   end
+
+  describe 'GET invited users report' do
+    it 'assigns invited users to @users' do
+      user_double = double("User")
+      User.should_receive(:invited_not_accepted).and_return([user_double])
+      get :invited
+      expect(assigns(:users)).to eql([user_double])
+    end
+
+  end
 end
