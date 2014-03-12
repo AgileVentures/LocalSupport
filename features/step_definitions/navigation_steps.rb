@@ -21,7 +21,7 @@ Then /^I visit the (.*) page$/ do |location|
     when "invitation" then visit accept_user_invitation_path
     when "without users" then visit organizations_report_path
     when "all users" then visit users_report_path
-    when "invited users" then visit invited_users_report
+    when "invited users" then visit invited_users_report_path
     else raise "No matching path found for #{location}!"
   end
 end
@@ -38,7 +38,7 @@ Then /^I should be on the (.*) page$/ do |location|
   when "invitation" then current_path.should == accept_user_invitation_path
   when "without users" then current_path.should == organizations_report_path
   when "all users" then current_path.should == users_report_path
-  when "invited users" then current_path.should == invited_users_report
+  when "invited users" then current_path.should == invited_users_report_path
   else raise "No matching path found for #{location}!"
   end
 end
