@@ -30,6 +30,12 @@ Feature: Orphans UI
     Then I should see "Invited!" in the response field for "The Organization"
     Then I should see "Error: Email has already been taken" in the response field for "The Same Email Org"
 
+  Scenario: Already invited organizations don't appear
+    Given cookies are approved
+    And I am signed in as an admin
+    And I visit the without users page
+    Then I should not see "Yet Another Org"
+
   @javascript
   Scenario: Select All button toggles all checkboxes
     Given cookies are approved
@@ -73,6 +79,6 @@ Feature: Orphans UI
     Given I am signed in as an admin
     And I visit the without users page
     And I click tableheader "Name"
-    Then I should see "Crazy Email Org" before "Yet Another Org"
+    Then I should see "Crazy Email Org" before "The Organization"
     When I click tableheader "Name"
-    Then I should see "Yet Another Org" before "Crazy Email Org"
+    Then I should see "The Organization" before "Crazy Email Org"
