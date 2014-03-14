@@ -29,7 +29,10 @@ Feature:  Tool tip instructions for fields on edit form
       | Website                                              |  Make sure url is correct  |
       | Telephone                                            |  Make sure phone number is correct  |
       | Donation                                             |  Please enter a website here either to the fundraising page on your website or to an online donation site.  |
-      | Publish email                                        |  To make your email address visible to the public check this box |
-      | Publish address                                      |  To make your full address visible to the public check this box |
-      | Publish phone                                        |  To make your telephone number visible to the public check this box |
+      
+    And the following checkbox tooltips should exist: 
+    | label                                                |  tooltip        |
+    | Email                                                |  To make your email address visible to the public check this box |
+    | Address                                              |  To make your full address visible to the public check this box |
+    | Telephone                                            |  To make your telephone number visible to the public check this box |
 
