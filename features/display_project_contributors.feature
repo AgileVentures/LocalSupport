@@ -20,5 +20,11 @@ Scenario: Display avatar and links
   Then I should see a link avatar for "thomas"
   And I should see a link avatar for "john"
 
+Scenario: Logo linked to contributions page
+    Given I am on the home page
+    And I follow the AgileVentures logo
+    Then I should be on the contributors page
+
+
 
 

@@ -22,3 +22,6 @@ Then(/^I should see a link avatar for "([^"]*)"$/) do |name|
   page.should have_css("a[href='#{link}'] img[src='#{avatar}']")
 end
 
+Then(/^I follow the AgileVentures logo$/) do
+  visit page.find(:xpath, "//a/img[@alt='Agile Ventures Local Support']/..")['href']
+end
