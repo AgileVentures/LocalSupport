@@ -1,9 +1,6 @@
 Given /^I am on the home page$/ do
   visit "/"
 end
-And /^I select the "(.*?)" category$/ do |category|
-  select(category, :from => "category[id]")
-end
 
 When(/^I visit "(.*?)"$/) do |path|
   visit path
@@ -68,11 +65,6 @@ Then(/^the response status should be 404$/) do
   #page.response_code.should be 404
 end
 
-Then(/^I should be on the edit page for "(.*?)"$/) do |permalink|
-  pg = Page.find_by_permalink(permalink)
-  current_path.should eq( edit_page_path (pg.permalink ))
-end
-
 Given /^I press "(.*?)"$/ do |button|
   click_button(button)
 end
@@ -97,14 +89,6 @@ end
 Then /^I should be on the charity page for "(.*?)"$/ do |charity_name|
   charity = Organization.find_by_name(charity_name)
   expect(current_path).to eq(organization_path charity.id)
-end
-
-Then /^following Disclaimer link should display Disclaimer$/ do
-  steps %Q{
-    When I follow "Disclaimer"
-    Then I should see "Disclaimer"
-    And I should see "Whilst Voluntary Action Harrow has made effort to ensure the information here is accurate and up to date we are reliant on the information provided by the different organisations. No guarantees for the accuracy of the information is made."
-  }
 end
 
 Given /^I am on the new charity page$/ do
@@ -133,11 +117,6 @@ end
 Given /^I am furtively on the edit charity page for "(.*?)"$/ do |name|
   org = Organization.find_by_name(name)
   visit edit_organization_path org.id
-end
-
-Given(/^I am on the edit page with the "(.*?)" permalink$/) do |permalink|
-  pg = Page.find_by_permalink(permalink)
-  visit edit_page_path pg.permalink
 end
 
 Then(/^the "([^"]*)" should be (not )?visible$/) do |id, negate|
