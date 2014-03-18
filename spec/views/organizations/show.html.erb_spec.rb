@@ -107,7 +107,7 @@ describe 'organizations/show.html.erb' do
         @grabbable = assign(:grabbable, true)
         view.stub(:current_user).and_return(user)
         render
-        rendered.should have_link 'This is my organization', :href => organization_user_path(organization.id, user.id)
+        rendered.should have_link 'This is my organization', :href => user_report_path(organization_id: organization.id, id: user.id)
         #TODO should check hidden value for put
       end
       it 'does not render grab button if grabbable false' do

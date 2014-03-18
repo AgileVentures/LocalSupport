@@ -7,10 +7,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require_tree .
-//= require bootstrap-sortable
+//= require_tree ./gmaps4rails
+//= require_tree ./global
 
 $(function() {
-    $('#TIMO').TIMO();
-    $('.generate_user').generate_user();
+    // invoke global functions here
 });

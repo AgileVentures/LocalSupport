@@ -1,0 +1,46 @@
+<% content_for :scripts do %>
+    <%= javascript_include_tag 'without_users' %>
+<% end %>
+
+<div class="well">
+  <div id="toolbar" class="navbar">
+    <div class="navbar-inner">
+      <!--<form class="navbar-search pull-left">-->
+        <!--<input type="text" class="search-query" placeholder="Search">-->
+      <!--</form>-->
+      <div class="btn-group" style="float: right">
+        <button class="btn" data-toggle="button" id="generate_users">
+          <i class="fa fa-group"></i>
+          Generate Users
+        </button>
+        <button class="btn" data-toggle="button" id="select_all">
+          <i class="fa fa-check-square"></i>
+          Select All
+        </button>
+      </div>
+    </div>
+  </div>
+  <table class="table table-hover sortable">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th style="text-align: center;"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @orphans.each do |organization| %>
+        <tr id="<%= organization.id %>">
+          <td><%= link_to organization.name, organization_path(organization) %></td>
+          <td><%= organization.email %></td>
+          <td class="response" style="text-align: center;">
+            <% if organization.users.any? %>
+                <%= retrieve_password_url organization.users.first.reset_password_token %>
+            <% else %>
+                <input type="checkbox" value="<%= organization.id %>" />
+            <% end %>
+            </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

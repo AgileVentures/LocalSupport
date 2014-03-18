@@ -1,11 +1,8 @@
 require 'spec_helper'
-describe UsersController do
-  describe 'PUT update user-organization status' do
+describe UserReportsController do
+  describe 'PUT update user-organization status', :helpers => :controllers do
     before(:each) do
-      admin_user = double("User")
-      admin_user.stub(:admin?).and_return(true)
-      request.env['warden'].stub :authenticate! => admin_user
-      controller.stub(:current_user).and_return(admin_user)
+      make_current_user_admin
       @nonadmin_user = double("User")
       User.stub(:find_by_id).with("4").and_return(@nonadmin_user)
       @nonadmin_user.stub(:pending_organization_id=).with('5')
@@ -15,12 +12,12 @@ describe UsersController do
       Organization.stub(:find).and_return(@org)
     end
     context 'user requesting pending status to be admin of charity' do
-      it 'should update the pending organization id to nested org id' do
-        User.should_receive(:find_by_id).with("4").and_return(@nonadmin_user)
-        @nonadmin_user.should_receive(:pending_organization_id=).with('5')
-        @nonadmin_user.should_receive(:save!)
-        put :update, id: 4, organization_id: 5
+      before do 
+        @nonadmin_user.stub(:request_admin_status)
+        @nonadmin_user.stub(:promote_to_org_admin)
+        @nonadmin_user.stub(:email)
       end
+
       it 'should redirect to the show page for nested org' do
         put :update, id: 4, organization_id: 5
         expect(response).to redirect_to(organization_path(5))
@@ -42,13 +39,9 @@ describe UsersController do
         response.response_code.should == 404
       end
 
-      it "calls a model method to add user's organziation and remove user's pending organization" do
-        @nonadmin_user.should_receive(:promote_to_org_admin)
-        put :update, {:id => '4'}
-      end
       it 'redirect to index page after update succeeds' do
         put :update, {:id => '4'}
-        response.should redirect_to users_path
+        response.should redirect_to users_report_path
       end
       it 'shows a flash telling which user got approved' do
         put :update, {:id => '4'}
@@ -58,18 +51,10 @@ describe UsersController do
   end
 
   describe 'GET index to view pending users' do
-    before(:each) do
-      @user = double("User")
-    end
-
-    context "user signed in" do
-      before(:each) do
-        controller.stub(:current_user).and_return(@user)
-      end
-
+    context "user signed in", :helpers => :controllers  do
       context "as admin" do
         before(:each) do
-          @user.stub(:admin?).and_return(true)
+          make_current_user_admin
         end
 
         it "assigns all users to @users" do
@@ -92,7 +77,7 @@ describe UsersController do
 
       context "as non-admin" do
         before(:each) do
-          @user.stub(:admin?).and_return(false)
+          make_current_user_nonadmin
         end
 
         it "redirects user to root and flashes a notice" do

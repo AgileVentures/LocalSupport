@@ -47,11 +47,9 @@ describe PagesController do
     end
   end
 
-  describe "GET show" do
+  describe "GET show", :helpers => :controllers do
     before :each do
-      admin_user = double('User')
-      admin_user.stub(:admin?).and_return(true)
-      controller.stub(:current_user).and_return(admin_user)
+      make_current_user_admin
       @valid_page = double('Page', :name => 'About Us', :permalink => 'about', :content => 'blah blah')
       @error_page = double('Page')
     end

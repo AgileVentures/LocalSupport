@@ -43,4 +43,9 @@ class User < ActiveRecord::Base
     self.pending_organization_id = nil
     save!
   end
+
+  def request_admin_status(organization_id)
+    self.pending_organization_id = organization_id
+    save!
+  end
 end

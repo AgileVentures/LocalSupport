@@ -5,17 +5,7 @@ class ApplicationController < ActionController::Base
 
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
-    sign_in = Regexp.new '/users/sign_in'
-    sign_up = Regexp.new '/users/sign_up'
-    sign_password = Regexp.new '/users/password'
-    user_confirmation = Regexp.new '/users/confirmation'
-    cookies_allow = Regexp.new '/cookies/allow'
-    unless (sign_in =~ request.path ||
-        sign_up =~ request.path ||
-        user_confirmation =~ request.path ||
-        sign_password =~ request.path ||
-        cookies_allow =~ request.path ||
-        request.xhr?) # don't store ajax calls
+    unless request_path_matches_any_of?(blacklisted) || request.xhr?
       session[:previous_url] = request.path
     end
   end
@@ -56,5 +46,37 @@ class ApplicationController < ActionController::Base
   # Not to be confused with the activerecord admin? method
   def admin?
     current_user.try :admin?
+  end
+
+  def sign_in_url
+    Regexp.new '/users/sign_in'
+  end
+
+  def sign_up_url
+    Regexp.new '/users/sign_up'
+  end
+
+  def sign_password
+    Regexp.new '/users/password'
+  end
+
+  def user_confirmation
+    Regexp.new '/users/confirmation'
+  end
+
+  def cookies_allow
+    Regexp.new '/cookies/allow'
+  end
+
+  def request_path_includes?(url)
+    url =~ request.path
+  end
+
+  def blacklisted
+    [sign_in_url, sign_up_url, user_confirmation, sign_password, cookies_allow]
+  end
+
+  def request_path_matches_any_of?(url_matchers)
+    url_matchers.any? { |url| url.match request.path }
   end
 end
