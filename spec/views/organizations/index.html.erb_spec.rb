@@ -65,6 +65,7 @@ describe "organizations/index.html.erb", :js => true do
 
   it "displays the javascript for a google map" do
     assign(:json, organizations.to_gmaps4rails)
+    Page.stub(:all).and_return []
     render template: "organizations/index", layout: "layouts/application"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_zoom = true')]"
