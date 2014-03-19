@@ -1,64 +1,125 @@
 <%= form_for(@organization) do |f| %>
-  <% if @organization.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-      <% @organization.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <% if @organization.errors.any? %>
+        <div id="error_explanation">
+          <ul>
+            <% @organization.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
 
-  <div class="field" data-toggle="tooltip" title="Enter a unique name" >
-    <%= f.label :name %>
-    <%= f.text_field :name, :class => "org_form" %>
-  </div>
-  <div class="field" data-toggle="tooltip" title="To make your full address visible to the public check this box">
-    <%= f.label :publish_address, :class => "pull-right small" %>
-    <%= f.check_box :publish_address, :class => "pull-right" %>
-  </div>
-  <div class="field" data-toggle="tooltip" title="Enter a complete address">
-    <%= f.label :address %>
-    <%= f.text_field :address, :class => "org_form" %>
-  </div>
-  <div class="field" data-toggle="tooltip" title="Make sure post code is accurate">
-    <%= f.label :postcode %>
-    <%= f.text_field :postcode, :class => "org_form" %>
-  </div>
-  <div class="field" data-toggle="tooltip" title="To make your email address visible to the public check this box">
-    <%= f.label :publish_email, :class => "pull-right small" %>
-    <%= f.check_box :publish_email, :class => "pull-right" %>
-  </div>
-  <div class="field" data-toggle="tooltip" title="Make sure email is correct">
-    <%= f.label :email %>
-    <%= f.text_field :email, :class => "org_form" %>
-  </div>
-  <div class="field" data-toggle="tooltip" title="Enter a full description here. When an individual searching this database all words in this description will be searched.">
-    <%= f.label :description %>
-    <%= f.text_area :description, :class => "org_form", :cols => "10", :rows => "10" %>
-  </div>
-  <div class="field" data-toggle="tooltip" title="Make sure url is correct">
-    <%= f.label :website %>
-    <%= f.text_field :website, :class => "org_form" %>
-  </div>
-  <div class="field" data-toggle="tooltip" title="To make your telephone number visible to the public check this box">
-    <%= f.label :publish_phone, :class => "pull-right small" %>
-    <%= f.check_box :publish_phone, :class => "pull-right" %>
-  </div>
-  <div class="field" data-toggle="tooltip" title="Make sure phone number is correct">
-    <%= f.label :telephone %>
-    <%= f.text_field :telephone, :class => "org_form" %>
-  </div>
-  <div class="field" data-toggle="tooltip" title="Please enter a website here either to the fundraising page on your website or to an online donation site.">
-     <%= f.label :donation_info %>
-     <%= f.text_field :donation_info, :class => "org_form" %>
-  </div>
-  <%= charity_admin_display_msg %>
-  <div class="field" data-toggle="tooltip" title="Please enter the details of individuals from your organisation you would like to give permission to update your entry. E-mail addresses entered here will not be made public.">
-    <%= label_tag :organization_admin_email_to_add, "Add an additional organisation administrator email" %>
-    <%= text_field_tag 'organization_admin_email_to_add', value = nil, {:size => 100, class: 'org_form'} %>
-  </div>
-  <div class="actions">
-    <%= f.submit :class => 'btn btn-primary'%>
-  </div>
+    <table class="table" >
+      <thead>
+      <tr>
+        <td> </td>
+        <td> </td>
+        <td style="width: 90px"><small>Check to display in public listing</small></td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>
+          <%= f.label :name %>
+        </td>
+        <td data-toggle="tooltip" title="Enter a unique name">
+          <%= f.text_field :name, :class => "org_form" %>
+        </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td class="borderless">
+          <%= f.label :address %>
+        </td>
+        <td class="borderless" data-toggle="tooltip" title="Enter a complete address">
+          <%= f.text_field :address, :class => "org_form" %>
+        </td>
+        <td class="borderless" data-toggle="tooltip" title="To make your full address visible to the public check this box">
+          <%= f.check_box :publish_address %>
+       </td>
+      </tr>
+      <tr>
+        <td class="borderless">
+          <%= f.label :postcode %>
+        </td>
+        <td class="borderless" data-toggle="tooltip" title="Make sure post code is accurate">
+          <%= f.text_field :postcode, :class => "org_form" %>
+        </td>
+        <td class="borderless"> </td>
+      </tr>
+      <tr>
+        <td class="borderless">
+          <%= f.label :email %>
+        </td>
+        <td class="borderless" data-toggle="tooltip" title="Make sure email is correct">
+          <%= f.text_field :email, :class => "org_form" %>
+        </td>
+        <td class="borderless" data-toggle="tooltip" title="To make your email address visible to the public check this box">
+          <%= f.check_box :publish_email %>
+        </td>
+      </tr>
+      <tr>
+        <td class="borderless">
+          <%= f.label :description %>
+        </td>
+        <td class="borderless" data-toggle="tooltip" title="Enter a full description here. When an individual searches this database all words in this description will be searched.">
+          <%= f.text_area :description, :class => "org_form", :cols => "10", :rows => "10" %>
+        </td>
+        <td class="borderless"> </td>
+      </tr>
+      <tr>
+        <td class="borderless">
+          <%= f.label :website %>
+        </td>
+        <td class="borderless" data-toggle="tooltip" title="Make sure url is correct">
+          <%= f.text_field :website, :class => "org_form" %>
+        </td>
+        <td class="borderless"> </td>
+      </tr>
+      <tr>
+        <td class="borderless">
+          <%= f.label :telephone %>
+        </td>
+        <td class="borderless" data-toggle="tooltip" title="Make sure phone number is correct">
+          <%= f.text_field :telephone, :class => "org_form" %>
+        </td>
+        <td class="borderless" data-toggle="tooltip" title="To make your telephone number visible to the public check this box">
+          <%= f.check_box :publish_phone %>
+        </td>
+      </tr>
+      <tr>
+        <td class="borderless">
+          Donation link
+        </td>
+        <td class="borderless" data-toggle="tooltip" title="Please enter a website here either to the fundraising page on your website or to an online donation site.">
+          <%= f.text_field :donation_info, :class => "org_form" %>
+        </td>
+        <td class="borderless"> </td>
+      </tr>
+      <tr>
+        <td class="borderless">
+          Organisation administrator emails 
+        </td>
+        <td class="borderless" >
+          <div>
+            <ol class='unstyled' >
+          <%= charity_admin_display_msg %>
+            </ol>
+          </div>
+        </td>
+        <td class="borderless"> </td>
+      </tr>
+      <tr>
+        <td class="borderless">
+          Add an additional organisation administrator email
+        </td>
+        <td class="borderless" data-toggle="tooltip" title="Please enter the details of individuals from your organisation you would like to give permission to update your entry. E-mail addresses entered here will not be made public.">
+          <%= text_field_tag 'organization_admin_email_to_add', value = nil, {:size => 100, class: 'org_form', :cols => "10", :rows => "3" } %>
+        </td>
+        <td class="borderless"></td>
+      </tbody>
+    </table>
+    <div class="actions">
+      <%= f.submit :class => 'btn btn-primary' %>
+    </div>
 <% end %>
