@@ -6,7 +6,7 @@ LocalSupport::Application.routes.draw do
   match 'organizations/search' => 'organizations#search'
 
   get '/organization_reports/without_users' => 'organization_reports#without_users_index', as: :organizations_report
-  post '/organization_reports/without_users' => 'organization_reports#without_users_create', as: :organization_report
+  post '/invitations' => 'invitations#create', as: :invitations
 
   get '/user_reports/all' => 'user_reports#index', as: :users_report
   put '/user_reports/update' => 'user_reports#update', as: :user_report
