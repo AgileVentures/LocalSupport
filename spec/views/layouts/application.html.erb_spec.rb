@@ -88,9 +88,10 @@ describe "layouts/application.html.erb", :type => :feature do
       rendered.should have_selector("div.alert-error")
     end
 
-     it 'should display a link to the contributors page' do
-       render
-       rendered.should have_link "Contributors"
+     it 'should display a logo linked to the contributors page' do
+      render
+      doc = Nokogiri::HTML(rendered)
+      doc.xpath("//a/img[@alt='Agile Ventures Local Support']/..").first['href'].should eq contributors_path
      end
 
     it "does not render a new organization link"  do
