@@ -15,9 +15,9 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: nKye+WMlDc6OKW33W2ilwk+mD5Dbt8+27ArL52Mo29qvE2vc/8f8bxh8XCl2BiDPvsePM2d6PLC/RazKmgVDbIOtdEGVufznfH++3DeqQgmblxxlCykkkPW6KALHX3J/bFeCLhRyl/9wvUu7aeRk7dwuMuahHfZtQscCW/i4GGE=
+    secure: k4FCvNxFBbHzQORTljwBodH/1WXZxapcrGCvSuY9ibynj+/xvkVhdeYob5/O0QzMHO5o+Sm0MGrbF8bOIo8VXK6Hi7Zh9u/yczTBnMHk4EC4Joan8NIcQvNNC0hVj0q/J29oGqB1DUD7ZPKEgOOm8KFlqcQW1vcnjSzY2SBm2eA=
   app:
-      develop: harrowcn-develop
-      staging: harrowcn-staging
-      master: harrowcn-production
-  run: "rake db:migrate"
+    develop: harrowcn-develop
+    staging: harrowcn-staging
+    master: harrowcn-production
+  run: rake db:migrate
