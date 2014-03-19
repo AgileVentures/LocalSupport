@@ -1,5 +1,5 @@
 class UserReportsController < ApplicationController
-  layout 'full_width'
+  layout 'full_width', :except => [:invited]
   before_filter :authorize, :except => [:update]
 
   # would like this to support generic updating of model with
@@ -14,7 +14,10 @@ class UserReportsController < ApplicationController
   end
 
   def invited
-    @users = User.invited_not_accepted
+    users = User.invited_not_accepted
+    @invitations = users.each_with_object([]) do |user, array|
+      array << { user: user, organization: Organization.find_by_email(user.email) }
+    end
     render :template => 'user_reports/invited', :layout => 'invitation_table'
   end
 

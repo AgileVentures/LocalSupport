@@ -1,6 +1,6 @@
 Feature: Invited Users Page
   As the site owner
-  So that I see who I have already invited
+  So that I manage the invitation process
   I want a page that shows me who I have already invited
 
   Background:
@@ -13,7 +13,7 @@ Feature: Invited Users Page
     And the admin invited a user for "Invited Organization"
 
   @javascript
-  Scenario: Admin can generate link but only for unique email
+  Scenario: Page shows only invited users
     Given cookies are approved
     And I am signed in as an admin
     And I visit the invited users page
