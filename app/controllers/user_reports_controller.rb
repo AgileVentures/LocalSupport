@@ -15,7 +15,7 @@ class UserReportsController < ApplicationController
 
   def invited
     @users = User.invited_not_accepted
-    render :layout => 'admin_table'
+    render :template => 'user_reports/invited', :layout => 'invitation_table'
   end
 
   def update_message_for_admin_status
