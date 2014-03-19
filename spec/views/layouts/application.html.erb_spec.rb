@@ -99,6 +99,14 @@ describe "layouts/application.html.erb", :type => :feature do
       render
       rendered.should_not have_xpath("//a[@href='#{new_organization_path}']")
     end
+
+    it "shows a link to all of the editable pages" do
+      page_one = double(:page, :name => "About AV", :permalink => "about")
+      view.stub(:pages => [page_one])
+      render
+      rendered.should have_link('About AV', :href => '/about')
+    end
+
   end
 
   context "regular user signed-in" do
