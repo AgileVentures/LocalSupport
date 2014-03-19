@@ -4,12 +4,9 @@ require_relative '../../app/models/csv_header'
 require_relative '../../app/models/address'
 require_relative '../../app/models/description_humanizer'
 require_relative '../../app/models/first_capitals_humanizer'
-require_relative '../../app/models/create_organization_from_array'
+require_relative '../../app/services/create_organization_from_array'
 
-class Organization; end
-
-describe CreateOrganizationFromArray, "#call" do 
-  let(:service) { CreateOrganizationFromArray.new(row) }
+describe CreateOrganizationFromArray, ".create" do 
   let(:mappings) do 
     {name: 'Title',
      address: 'Contact Address',
@@ -24,24 +21,14 @@ describe CreateOrganizationFromArray, "#call" do
   let(:row) do 
     CSV::Row.new(headers, fields.flatten)
   end
+  let(:validate) { false } 
+  let(:organization_repository) { double :organization }
 
-  let(:organization) { double(:organization) }
-  before do 
-    Organization.stub(:find_by_name) { nil }
-    Organization.stub(:new) { organization }
-    organization.should_receive(:save!) { true }
+  it 'creates and validates an organization' do 
+    allow(organization_repository).to receive(:find_by_name)
+    expect(organization_repository).to receive(:create_and_validate)
+    described_class.create(organization_repository, row, validate)
   end
 
-  context 'create Organization from csv file running validations' do 
-    subject { service.call(true) } 
-
-    it { should == organization }
-  end
-
-  context 'should save Organization from file without running validations' do
-    subject { service.call(false) } 
-
-    it { should == organization }
-  end
 
 end

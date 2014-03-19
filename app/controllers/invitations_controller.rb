@@ -1,7 +1,7 @@
 class InvitationsController < ApplicationController
   before_filter :authorize
 
-  # Uses email to create invite, uses id to respond with msg
+  # xhr only, tested in a request spec
   def create
     res = params[:values].each_with_object({}) do |value, response|
       response[value[:id]] = invite_user(value[:email], params[:resend_invitation])

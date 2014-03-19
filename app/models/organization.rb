@@ -25,6 +25,7 @@ class Organization < ActiveRecord::Base
   # Alternative => :joins('LEFT OUTER JOIN users ON users.organization_id = organizations.id)
   # Difference between inner and outer joins: http://stackoverflow.com/a/38578/2197402
   scope :null_users, lambda { includes(:users).where("users.organization_id IS NULL") }
+  scope :without_matching_user_emails, :conditions => "organizations.email NOT IN (#{User.select('email').to_sql})"
 
   def run_geocode?
     ## http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
@@ -122,7 +123,11 @@ class Organization < ActiveRecord::Base
   end
 
   def self.create_from_array(row, validate)
-    CreateOrganizationFromArray.new(row).call(validate)
+    CreateOrganizationFromArray.create(Organization, row, validate)
+  end
+
+  def self.create_and_validate(attributes) 
+    create!(attributes)
   end
 
   def self.import_addresses(filename, limit, validation = true)
