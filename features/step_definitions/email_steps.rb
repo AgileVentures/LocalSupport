@@ -7,9 +7,10 @@ end
 
 And(/^an email with subject line "([^"]*)" should have been sent$/) do |arg|
   @email = ActionMailer::Base.deliveries.last
-  @email.subject.should include(arg)
+  debugger
+  @email.subject.should include arg
   @email.cc.should_not be_nil
-  @email.cc.include('technical@harrowcn.org.uk')
+  @email.cc.should include'technical@harrowcn.org.uk'
   ActionMailer::Base.deliveries.size.should eq 1
 end
 
