@@ -18,6 +18,7 @@ Feature: Orphans UI
       | pending@myorg.com     | password123    | false | 2008-01-01 00:00:00 |                 | My Organization      |
       | invited-admin@org.org | password123    | false | 2008-01-01 00:00:00 |                 |                      |
     And the admin invited a user for "Yet Another Org"
+    And an email with subject line "Invitation to Harrow Community Network" should have been sent
 
   @javascript
   Scenario: Admin can generate link but only for unique email

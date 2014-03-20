@@ -14,4 +14,4 @@ en:
         submit_button: "Set my password"
     mailer:
       invitation_instructions:
-        subject: 'Invitation instructions'
+        subject: 'Invitation to Harrow Community Network'
