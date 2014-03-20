@@ -115,11 +115,24 @@ describe UserReportsController do
       make_current_user_admin
     end
 
-    it 'assigns invited users to @users' do
-      user_double = double("User")
-      User.should_receive(:invited_not_accepted).and_return([user_double])
+    it 'is for admins only' do
+      make_current_user_nonadmin
       get :invited
-      expect(assigns(:users)).to eql([user_double])
+      response.should redirect_to root_path
+    end
+
+    it 'uses the invitation table layout' do
+      get :invited
+      response.should render_template 'layouts/invitation_table'
+    end
+
+    it 'assigns an invitation to @invitations' do
+      user = double('User', invitation_sent_at: 8.days.ago, email: 'why@hello.there')
+      org = double('Organization', id: '2', name: 'Harrow Charity', email: 'why@hello.there')
+      User.should_receive(:invited_not_accepted).and_return([user])
+      Organization.should_receive(:find_by_email).and_return(org)
+      get :invited
+      assigns(:invitations).should eql [{ 'id' => org.id, 'name' => org.name, 'email' => org.email, 'date' => '8 days' }]
     end
 
   end
