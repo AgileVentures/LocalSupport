@@ -13,5 +13,9 @@
     border-radius: 10px;
 }
 .org_form {
-    width:100%;
+    width: 95%;
+    margin-bottom: 0 !important;
+}
+.borderless {
+    border-top: none !important;
 }
