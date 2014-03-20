@@ -1,4 +1,6 @@
-<h1>Editing organisation</h1>
-
 <%= render 'form' %>
+<% content_for :map do %>
+    <%= gmaps("map_options" => {"auto_adjust" => true, "auto_zoom" => false, "center_latitude" => 51.5978,
+                                "center_longitude" => -0.3370, "zoom" => 13}, "markers" => {"data" => @json}) %>
+<% end %>
 

@@ -48,7 +48,7 @@ Then /^I should( not)? see an edit button for "(.*?)" charity$/ do |negate, name
 end
 
 Then /^I should see "(.*?)" in the charity admin email$/ do |email|
-  expect(page).to have_content "Organisation administrator emails: "
+  expect(page).to have_content "Organisation administrator emails"
   expect(page).to have_selector "ol"
   expect(page).to have_selector "li", :text => email
 end

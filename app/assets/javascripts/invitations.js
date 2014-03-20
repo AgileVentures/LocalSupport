@@ -16,7 +16,7 @@
             var resend_invitation = $.parseJSON($('#resend_invitation').attr('data-resend_invitation'));
             $.ajax({
                 type: 'POST',
-                url: '/organization_reports/without_users',
+                url: '/invitations',
                 data: JSON.stringify({
                     values: values,
                     resend_invitation: resend_invitation

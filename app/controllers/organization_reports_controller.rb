@@ -1,22 +1,10 @@
 class OrganizationReportsController < ApplicationController
-  layout 'full_width'
+  layout 'full_width', :except => [:without_users_index]
   before_filter :authorize
 
   def without_users_index
     @orphans = Organization.not_null_email.null_users.without_matching_user_emails
     @resend_invitation = false
-  end
-
-  # Uses email to create invite, uses id to respond with msg
-  def without_users_create
-    response = params[:values].reduce({}) do |response, value|
-      response[value[:id]] = UserInviter.new(
-        self, User, current_user, Devise
-      ).invite(value[:email], params[:resend_invitation])
-      response
-    end
-    respond_to do |format|
-      format.json { render :json => response.to_json }
-    end
+    render :template => 'organization_reports/without_users_index', :layout => 'invitation_table'
   end
 end

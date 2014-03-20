@@ -75,13 +75,14 @@
                           <li class="dropdown" id="menuOrgs">
                             <a class="dropdown-toggle" href="#" data-toggle="dropdown">Organisations</a>
                             <ul class="dropdown-menu">
-                              <li><%= link_to 'Without Users', '/organization_reports/without_users' %></li>
+                              <li><%= link_to 'Without Users', organizations_report_path %></li>
                             </ul>
                           </li>
                           <li class="dropdown" id="menuUsers">
                             <a class="dropdown-toggle" href="#" data-toggle="dropdown">Users</a>
                             <ul class="dropdown-menu">
-                              <li><%= link_to 'All', '/user_reports/all' %></li>
+                              <li><%= link_to 'All', users_report_path %></li>
+                              <li><%= link_to 'Invited', invited_users_report_path %></li>
                             </ul>
                           </li>
                       <% end %>

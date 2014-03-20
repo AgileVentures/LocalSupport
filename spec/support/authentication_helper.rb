@@ -14,3 +14,9 @@ module ControllerHelpers
     return nonadmin_user
   end
 end
+
+module RequestHelpers
+  def login(user)
+    post_via_redirect user_session_path, 'user[email]' => user.email, 'user[password]' => user.password
+  end
+end

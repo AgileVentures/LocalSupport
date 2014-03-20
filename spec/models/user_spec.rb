@@ -3,7 +3,19 @@ require 'spec_helper'
 describe User do
 
   let (:model) { mock_model("Organization") }
-  
+
+  context 'invited users scope' do
+    before(:each) do
+      @regular_user = FactoryGirl.create(:user, email: 'regular@guy.com')
+      @invited_user = FactoryGirl.create(:user, email: 'invited@guy.com', invitation_sent_at: '2014-03-12 00:18:02', invitation_accepted_at: nil)
+    end
+    it 'finds all users who have not accepted their invitations yet' do
+      collection = User.invited_not_accepted
+      collection.should_not include(@regular_user)
+      collection.should include(@invited_user)
+    end
+  end
+
   it 'must find an admin in find_by_admin with true argument' do
     FactoryGirl.create(:user, admin: true)
     result = User.find_by_admin(true)

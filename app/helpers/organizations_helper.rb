@@ -1,5 +1,9 @@
 module OrganizationsHelper
   def charity_admin_display_msg
-    render :partial => 'organizations/charity_admin_display'
+    if @organization.users.empty?
+      "This organisation has no admins yet"
+    else
+      @organization.users.map {|user| user.email}.join(", ")
+    end
   end
 end
