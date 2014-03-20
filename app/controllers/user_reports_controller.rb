@@ -14,9 +14,13 @@ class UserReportsController < ApplicationController
   end
 
   def invited
+    @resend_invitation = true
     users = User.invited_not_accepted
     @invitations = users.each_with_object([]) do |user, array|
-      array << { user: user, organization: Organization.find_by_email(user.email) }
+      org = Organization.find_by_email(user.email)
+      if org.present?
+        array << { id: org.id, name: org.name , email: org.email, date: user.invitation_sent_at }
+      end
     end
     render :template => 'user_reports/invited', :layout => 'invitation_table'
   end
