@@ -109,4 +109,27 @@ describe UserReportsController do
 
     end
   end
+
+  describe 'GET invited users report', :helpers => :controllers do
+    before(:each) do
+      make_current_user_admin
+    end
+
+    it 'is for admins only' do
+      make_current_user_nonadmin
+      get :invited
+      response.should redirect_to root_path
+    end
+
+    it 'uses the invitation table layout' do
+      get :invited
+      response.should render_template 'layouts/invitation_table'
+    end
+
+    it 'assigns an invitation to @invitations' do
+      get :invited
+      assigns(:invitations).should_not be_nil
+    end
+
+  end
 end

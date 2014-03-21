@@ -1,4 +1,4 @@
-describe('Organization Reports - without users page', function () {
+describe('Invitations toolbar script', function () {
     var invite_users, select_all;
     beforeEach(function () {
         setFixtures('<div id="resend_invitation" data-resend_invitation="false" style="display: none;"></div>');
