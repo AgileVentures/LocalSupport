@@ -10,7 +10,8 @@ class ListInvitedUsers
 
   def list 
     users.each_with_object([]) do |user, array|
-      array << build_invited_if_organization_exists(org(user.email), user) if org(user.email).present?
+      org = org(user.email)
+      array << build_invited_if_organization_exists(org, user) if org.present?
     end
   end
 
