@@ -10,7 +10,7 @@ class ListInvitedUsers
 
   def list 
     users.each_with_object([]) do |user, array|
-      array << build_invited_if_organization_exists(org(user.email), user)
+      array << build_invited_if_organization_exists(org(user.email), user) if org(user.email).present?
     end
   end
 
@@ -18,12 +18,10 @@ class ListInvitedUsers
   attr_reader :users, :organization_class
 
   def build_invited_if_organization_exists(org, user)
-    if org.present?
-      { id: org.id, 
-        name: org.name, 
-        email: org.email, 
-        date: user.invitation_sent_at }
-    end
+    { id: org.id, 
+      name: org.name, 
+      email: org.email, 
+      date: user.invitation_sent_at }
   end
 
   def org(user_email)
