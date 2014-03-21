@@ -19,7 +19,6 @@ class UserReportsController < ApplicationController
     @resend_invitation = true
     users = User.invited_not_accepted
     @invitations = ListInvitedUsers.list(users, Organization)
-    debugger
     render :template => 'user_reports/invited', :layout => 'invitation_table'
   end
 
