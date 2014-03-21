@@ -1,0 +1,23 @@
+<table class="table table-hover sortable">
+  <thead>
+  <tr>
+    <th>Organization</th>
+    <th>Email</th>
+    <th>Time Elapsed</th>
+    <th style="text-align: center;"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @invitations.each do |invitation| %>
+      <tr id="<%= invitation[:id] %>">
+        <td><%= link_to invitation[:name], organization_path(invitation[:id]) %></td>
+        <td><%= invitation[:email] %></td>
+        <td><%= time_ago_in_words(invitation[:date]) %></td>
+        <td class="response" style="text-align: center;">
+          <input type="checkbox" data-id="<%= invitation[:id] %>" data-email="<%= invitation[:email] %>"/>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
