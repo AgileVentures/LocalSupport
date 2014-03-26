@@ -10,7 +10,7 @@ describe 'user_reports/invited.html.erb' do
       row.should have_link invitation[:name], :href => organization_path(invitation[:id])
       row.should have_text invitation[:email]
       row.should have_text 'less than a minute'
-      row.should have_css('input[type=checkbox]')
+      row.should have_css("input[type=checkbox][data-id='#{invitation[:id]}'][data-email='#{invitation[:email]}']")
     end
   end
 end
