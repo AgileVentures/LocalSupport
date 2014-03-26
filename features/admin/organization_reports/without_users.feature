@@ -20,7 +20,7 @@ Feature: Orphans UI
     And the admin invited a user for "Yet Another Org"
 
   @javascript
-  Scenario: Admin can generate link but only for unique email
+  Scenario: Admin can invite users but only for unique emails
     Given cookies are approved
     Given I am signed in as an admin
     And I visit the without users page
@@ -35,16 +35,6 @@ Feature: Orphans UI
     And I am signed in as an admin
     And I visit the without users page
     Then I should not see "Yet Another Org"
-
-  @javascript
-  Scenario: Select All button toggles all checkboxes
-    Given cookies are approved
-    Given I am signed in as an admin
-    And I visit the without users page
-    And I press "Select All"
-    Then all the checkboxes should be checked
-    When I press "Select All"
-    Then all the checkboxes should be unchecked
 
   @javascript
   Scenario: Admin should be notified when email is invalid
@@ -73,6 +63,7 @@ Feature: Orphans UI
     And I set my password
     Then I should be on the charity page for "Yet Another Org"
 
+  #These next two scenarios apply to layouts/invitation_table
   @javascript
   Scenario: Table columns should be sortable
     Given cookies are approved
@@ -82,3 +73,13 @@ Feature: Orphans UI
     Then I should see "Crazy Email Org" before "The Organization"
     When I click tableheader "Name"
     Then I should see "The Organization" before "Crazy Email Org"
+
+  @javascript
+  Scenario: Select All button toggles all checkboxes
+    Given cookies are approved
+    Given I am signed in as an admin
+    And I visit the without users page
+    And I press "Select All"
+    Then all the checkboxes should be checked
+    When I press "Select All"
+    Then all the checkboxes should be unchecked

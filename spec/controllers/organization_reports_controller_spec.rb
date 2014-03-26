@@ -13,6 +13,11 @@ describe OrganizationReportsController do
   end
 
   describe '#without_users_index' do
+    it 'uses the invitation table layout' do
+      get :without_users_index
+      response.should render_template 'layouts/invitation_table'
+    end
+
     it 'assigns an instance variable' do
       Organization.stub_chain(:not_null_email, :null_users, :without_matching_user_emails).and_return([org])
       get :without_users_index

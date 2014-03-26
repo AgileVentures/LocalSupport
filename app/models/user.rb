@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
   belongs_to :organization
   belongs_to :pending_organization, :class_name => 'Organization', :foreign_key => 'pending_organization_id'
 
+  scope :invited_not_accepted, :conditions => "users.invitation_sent_at IS NOT NULL AND users.invitation_accepted_at IS NULL"
+
   def confirm!
     super
     make_admin_of_org_with_matching_email
