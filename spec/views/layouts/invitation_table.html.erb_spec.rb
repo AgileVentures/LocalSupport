@@ -1,7 +1,10 @@
 require 'spec_helper'
 
 describe 'layouts/invitation_table.html.erb' do
-  before(:each) { render }
+  before(:each) do
+    assign :resend_invitation, true
+    render
+  end
   it 'toolbar' do
     rendered.within('#toolbar') do |toolbar|
       toolbar.should have_button 'Invite Users'
