@@ -52,12 +52,6 @@ Given /^the following users are registered:$/ do |users_table|
   end
 end
 
-Given(/^the admin invited a user for "(.*?)"$/) do |organization_name|
-  user = User.find_by_admin(true)
-  org = Organization.find_by_name(organization_name)
-  User.invite!({email: org.email}, user)
-end
-
 Given /^that I am logged in as any user$/ do
   steps %Q{
      Given the following users are registered:

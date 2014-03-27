@@ -52,17 +52,6 @@ Feature: Orphans UI
     Then I should be on the home page
     And I should see "You must be signed in as an admin to perform this action!"
 
-  Scenario: Invited user clicking through on email with cookies policy clicked
-    Given I click on the invitation link in the email to "admin@another.org"
-    And I accepted the cookie policy from the "invitation" page
-    And I set my password
-    Then I should be on the charity page for "Yet Another Org"
-
-  Scenario: Invited user clicking through on email ignoring cookies policy
-    Given I click on the invitation link in the email to "admin@another.org"
-    And I set my password
-    Then I should be on the charity page for "Yet Another Org"
-
   #These next two scenarios apply to layouts/invitation_table
   @javascript
   Scenario: Table columns should be sortable
@@ -83,3 +72,17 @@ Feature: Orphans UI
     Then all the checkboxes should be checked
     When I press "Select All"
     Then all the checkboxes should be unchecked
+
+  #The next two scenarios check the flow of the user accepting the invitation
+  Scenario: Invited user clicking through on email with cookies policy clicked
+    Given I click on the invitation link in the email to "admin@another.org"
+    And I accepted the cookie policy from the "invitation" page
+    And I set my password
+    Then I should be on the charity page for "Yet Another Org"
+
+  Scenario: Invited user clicking through on email ignoring cookies policy
+    Given I click on the invitation link in the email to "admin@another.org"
+    And I set my password
+    Then I should be on the charity page for "Yet Another Org"
+
+
