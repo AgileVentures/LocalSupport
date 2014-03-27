@@ -26,16 +26,16 @@ describe "Invitations" do
     describe 'emails' do
       let(:email) { ActionMailer::Base.deliveries.last }
       before(:each) do
+        ActionMailer::Base.deliveries.clear
         login(admin)
         xhr :post, invitations_path, params
       end
-      around(:each) { ActionMailer::Base.deliveries.clear }
 
       it 'attributes' do
-        email.from.should eq 'support@harrowcn.org.uk'
-        email.reply_to.should eq 'support@harrowcn.org.uk'
-        email.to.should eq 'what@ever.com'
-        email.cc.should eq 'technical@harrowcn.org.uk'
+        email.from.should eq ['support@harrowcn.org.uk']
+        email.reply_to.should eq ['support@harrowcn.org.uk']
+        email.to.should eq ['what@ever.com']
+        email.cc.should eq ['technical@harrowcn.org.uk']
         email.subject.should eq 'Invitation to Harrow Community Network'
       end
     end
