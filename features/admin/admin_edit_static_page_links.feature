@@ -6,8 +6,8 @@ Feature: I want to be able to edit static page links
 
   Background: organizations have been added to database
     Given the following pages exist:
-    | name         | permalink  | content |
-    | About HCN     | about      | abc123  |
+    | name          | permalink  | content | display |
+    | About HCN     | about      | abc123  | true    |
     And the following users are registered:
     | email                         | password | admin | confirmed_at         |  organization |
     | registered-user-1@example.com | pppppppp | true  | 2007-01-01  10:00:00 |  Friendly     |
@@ -34,3 +34,11 @@ Feature: I want to be able to edit static page links
        And I am on the home page
        Then I should see "About HCN"
        And I should see "Contact Info"
+
+     Scenario: Admin can choose which pages are linked
+       Given I am signed in as an admin
+       And I visit the pages manager
+       And PENDING I remove "about" from the footer
+       Then the "about" link is not in the footer
+       And I add "about" to the footer
+       Then the "about" link is in the footer

@@ -1,9 +1,19 @@
 require 'spec_helper'
 
 describe Page do
+  before :each do
+    @page = FactoryGirl.create(:page)   
+  end
   it 'should override to_param to return the permalink instead of id' do
-    page = FactoryGirl.create(:page)
-    page.should_receive(:to_param).and_return('about')
-    page.to_param
+    @page.should_receive(:to_param).and_return('about')
+    @page.to_param
+  end
+  it 'has a link_visible attribute that can be set' do
+    @page.link_visible = true
+    @page.link_visible.should eq true
+  end
+  it 'has a link_visible attribute that can be cleared' do
+    @page.link_visible = false
+    @page.link_visible.should eq false
   end
 end
