@@ -16,4 +16,11 @@ describe Page do
     @page.link_visible = false
     @page.link_visible.should eq false
   end
+  describe 'self.create!' do
+    it 'can set the link_visible attribute' do
+      pg = Page.create!({"name" => "MyString", "permalink" => "my_link", :link_visible => false })
+      pg.reload.link_visible.should eq false
+    end
+  end
 end
+

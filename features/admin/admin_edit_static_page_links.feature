@@ -35,10 +35,11 @@ Feature: I want to be able to edit static page links
        Then I should see "About HCN"
        And I should see "Contact Info"
 
-     Scenario: Admin can choose which pages are linked
-       Given I am signed in as an admin
-       And I visit the pages manager
-       And PENDING I remove "about" from the footer
-       Then the "about" link is not in the footer
-       And I add "about" to the footer
-       Then the "about" link is in the footer
+     #   Pending 
+     # Scenario: Admin can choose which pages are linked
+     #   Given I am signed in as an admin
+     #   And I visit the pages manager
+     #   And PENDING I remove "about" from the footer
+     #   Then the "about" link is not in the footer
+     #   And I add "about" to the footer
+     #   Then the "about" link is in the footer
