@@ -2,9 +2,9 @@ LocalSupport.maps = {
     data: undefined, // View must provide this array of json hashes (e.g. raw @organizations.to_json)
     openInfoWindow: undefined, // Used to track currently open info window
     loadMap: function() {
-        var harrow = new google.maps.LatLng(51.590000,-0.280000);
+        var harrow = new google.maps.LatLng(51.5978, -0.3370);
         var mapOptions = {
-            zoom: 13,
+            zoom: 12,
             center: harrow
         };
         return new google.maps.Map(document.getElementById('map'), mapOptions);
