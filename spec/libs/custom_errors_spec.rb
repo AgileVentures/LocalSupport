@@ -1,0 +1,66 @@
+require 'spec_helper'
+require 'custom_errors.rb'
+
+describe CustomErrors, type: 'controller' do
+  controller do
+    include CustomErrors
+
+    def raise_404
+      raise ActiveRecord::RecordNotFound
+    end
+
+    def raise_500
+      raise Exception
+    end
+  end
+
+  before(:each) do
+    Rails.stub_chain(:env, :production?).and_return(true)
+  end
+
+  context '404 errors' do
+    before(:each) do
+      routes.draw { get 'raise_404' => 'anonymous#raise_404' }
+    end
+
+    it 'should catch 404 errors' do
+
+      get :raise_404
+      expect(response).to render_template 'pages/404'
+      expect(response.status).to eq 404
+    end
+  end
+
+  context '500 errors' do
+    before(:each) do
+      routes.draw { get 'raise_500' => 'anonymous#raise_500' }
+    end
+
+    it 'should catch 500 errors' do
+      get :raise_500
+      expect(response).to render_template 'pages/500'
+      expect(response.status).to eq 500
+    end
+
+    it 'should be able to adjust log stack trace limit' do
+      dummy = Class.new
+      Rails.stub(logger: dummy)
+      dummy.should_receive(:error).exactly(7)
+      get :raise_500
+    end
+
+    # Bryan: This could potentially be implemented in the future, copy&paste-d from WebsiteOne
+    #it 'should send an error notification to the admin' do
+    #  ActionMailer::Base.deliveries.clear
+    #  get :raise_500
+    #
+    #  ActionMailer::Base.deliveries.size.should eq 1
+    #  email = ActionMailer::Base.deliveries[0]
+    #  expect(email.subject).to include 'ERROR'
+    #
+    #  recipients = email.to
+    #  expect(recipients.size).to eq 1
+    #  expect(recipients[0]).to eq 'info@agileventures.org'
+    #end
+  end
+end

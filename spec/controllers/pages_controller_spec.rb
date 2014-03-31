@@ -68,29 +68,15 @@ describe PagesController do
       assigns(:page).should eq @valid_page
     end
 
-    it 'assigns 404 page if params[id] is not a valid permalink' do
-      Page.should_receive(:find_by_permalink!).with('lalala').and_raise(ActiveRecord::RecordNotFound)
-      Page.should_receive(:find_by_permalink!).with('404').and_return(@error_page)
-      get :show, { :id => 'lalala'}
-      assigns(:page).should eq @error_page
-    end
-
     it '200: respond code should be appropriate for page' do
       Page.stub(:find_by_permalink!)
       get :show, { :id => 'about' }
       response.status.should eq 200
     end
-
-    it '404: respond code should be appropriate for page' do
-      Page.should_receive(:find_by_permalink!).with('lalala').and_raise(ActiveRecord::RecordNotFound)
-      Page.should_receive(:find_by_permalink!).with('404').and_return(@error_page)
-      get :show, { :id => 'lalala'}
-      response.status.should eq 404
-    end
   end
 
-  describe "GET new" do
-    it "assigns a new page as @page" do
+  describe 'GET new' do
+    it 'assigns a new page as @page' do
       get :new, {}
       assigns(:page).should be_a_new(Page)
     end
@@ -101,7 +87,7 @@ describe PagesController do
     end
   end
 
-  describe "GET edit" do
+  describe 'GET edit' do
     it "assigns the requested page as @page" do
       page = Page.create! valid_attributes
       get :edit, {:id => page.to_param}

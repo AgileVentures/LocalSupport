@@ -1,6 +1,10 @@
+require 'custom_errors'
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :store_location
+
+  include CustomErrors
 
   # To prevent infinite redirect loops, only requests from white listed
   # controllers are available in the "after sign-in redirect" feature
