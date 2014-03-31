@@ -12,7 +12,7 @@ class Organization < ActiveRecord::Base
   validates_url :donation_info, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.donation_info.present?}
 
   # http://stackoverflow.com/questions/10738537/lazy-geocoding
-  acts_as_gmappable :check_process => false, :process_geocoding => :run_geocode?
+  #acts_as_gmappable :check_process => false, :process_geocoding => :run_geocode?
   has_many :users
   has_and_belongs_to_many :categories
   # Setup accessible (or protected) attributes for your model
