@@ -82,6 +82,7 @@ end
 
 gem 'therubyracer'
 gem 'gmaps4rails', '~>2.1.2'
+gem 'underscore-rails'
 #gem 'mongrel'
 gem 'kaminari'
 gem 'unicorn'
