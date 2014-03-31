@@ -9,6 +9,10 @@
                        :placeholder => "optional search name/description" }) %>
 <% end %>
 
+<%= javascript_tag do %>
+    LocalSupport.maps.data = <%= raw @organizations.to_json %>
+<% end %>
+
 <div id="orgs_scroll" style="height:340px;width:100%;border:1px solid #ccc;overflow:scroll;">
   <div class="table table-bordered">
     <table>
