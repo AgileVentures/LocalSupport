@@ -11,7 +11,7 @@ class OrganizationsController < ApplicationController
     @organizations = Organization.order_by_most_recent
     @organizations = @organizations.search_by_keyword(@query_term).filter_by_category(@category_id)
     flash.now[:alert] = SEARCH_NOT_FOUND if @organizations.empty?
-    @json = gmap4rails_with_popup_partial(@organizations,'popup')
+    #@json = gmap4rails_with_popup_partial(@organizations,'popup')
     @category_options = Category.html_drop_down_options
     render :template =>'organizations/index'
   end
@@ -20,7 +20,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations.json
   def index
     @organizations = Organization.order_by_most_recent
-    @json = gmap4rails_with_popup_partial(@organizations,'popup')
+    #@json = gmap4rails_with_popup_partial(@organizations,'popup')
     @category_options = Category.html_drop_down_options
   end
 
@@ -31,7 +31,7 @@ class OrganizationsController < ApplicationController
     @editable = current_user.can_edit?(@organization) if current_user
     @grabbable = current_user ? current_user.can_request_org_admin?(@organization) : true
    # @next_path = current_user ? organization_user_path(@organization.id, current_user.id) : new_user_session_path
-    @json = gmap4rails_with_popup_partial(@organization,'popup')
+   # @json = gmap4rails_with_popup_partial(@organization,'popup')
   end
 
   # GET /organizations/new
@@ -43,7 +43,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1/edit
   def edit
     @organization = Organization.find(params[:id])
-    @json = gmap4rails_with_popup_partial(@organization,'popup')
+    #@json = gmap4rails_with_popup_partial(@organization,'popup')
     return false unless user_can_edit? @organization
     #respond_to do |format|
     #  format.html {render :layout => 'full_width'}

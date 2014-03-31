@@ -129,7 +129,7 @@ GEM
       railties (>= 3.2, < 5.0)
     gherkin (2.12.1)
       multi_json (~> 1.3)
-    gmaps4rails (1.5.6)
+    gmaps4rails (2.1.2)
     heroku-api (0.3.15)
       excon (~> 0.25.1)
     hike (1.2.3)
@@ -350,7 +350,7 @@ DEPENDENCIES
   execjs
   factory_girl_rails
   font-awesome-rails
-  gmaps4rails
+  gmaps4rails (~> 2.1.2)
   heroku-api
   jasmine
   jasmine-jquery-rails
