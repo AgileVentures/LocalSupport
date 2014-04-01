@@ -127,6 +127,7 @@ GEM
       sexp_processor (~> 4.0)
     font-awesome-rails (4.0.3.0)
       railties (>= 3.2, < 5.0)
+    geocoder (1.1.9)
     gherkin (2.12.1)
       multi_json (~> 1.3)
     gmaps4rails (2.1.2)
@@ -351,6 +352,7 @@ DEPENDENCIES
   execjs
   factory_girl_rails
   font-awesome-rails
+  geocoder
   gmaps4rails (~> 2.1.2)
   heroku-api
   jasmine

@@ -81,6 +81,7 @@ group :test do
 end
 
 gem 'therubyracer'
+gem 'geocoder'
 gem 'gmaps4rails', '~>2.1.2'
 gem 'underscore-rails'
 #gem 'mongrel'

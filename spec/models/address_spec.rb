@@ -1,4 +1,5 @@
 require_relative '../../app/models/address'
+require 'spec_helper'
 
 describe Address, "#parse" do 
   let(:address) { Address.new(address_to_parse) }
@@ -45,7 +46,6 @@ describe Organization do
     @org3.save!
   end
 
-  #TODO: refactor with expect{} instead of should as Rspec 2 promotes
   it 'should delete geocoding errors and save organization' do
     new_address = '777 pinner road'
     @org1.latitude = 77

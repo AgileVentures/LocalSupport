@@ -6,13 +6,29 @@ describe Organization do
     FactoryGirl.factories.clear
     FactoryGirl.find_definitions
 
+    Geocoder.configure(:lookup => :test)
+
+    Geocoder::Lookup::Test.set_default_stub(
+        [
+            {
+                'latitude'     => 40.7143528,
+                'longitude'    => -74.0059731,
+                'address'      => 'New York, NY, USA',
+                'state'        => 'New York',
+                'state_code'   => 'NY',
+                'country'      => 'United States',
+                'country_code' => 'US'
+            }
+        ]
+    )
+
     @category1 = FactoryGirl.create(:category, :charity_commission_id => 207)
     @category2 = FactoryGirl.create(:category, :charity_commission_id => 305)
     @category3 = FactoryGirl.create(:category, :charity_commission_id => 108)
     @category4 = FactoryGirl.create(:category, :charity_commission_id => 302)
     @category5 = FactoryGirl.create(:category, :charity_commission_id => 306)
     @org1 = FactoryGirl.build(:organization, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate')
-    Gmaps4rails.stub(:geocode => nil)
+    #Gmaps4rails.stub(:geocode => nil)
     @org1.save!
     @org2 = FactoryGirl.build(:organization, :name => 'Indian Elders Association',
                               :description => 'Care for the elderly', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.indian-elders.co.uk/donate')
@@ -376,57 +392,64 @@ describe Organization do
     expect(@org1.gmaps4rails_options[:check_process]).to be_false
   end
 
-  it 'should geocode when address changes' do
-    new_address = '60 pinner road'
-    Gmaps4rails.should_receive(:geocode).with("#{new_address}, #{@org1.postcode}", "en", false,"http")
-    @org1.update_attributes :address => new_address
-  end
-
-  it 'should geocode when new object is created' do
-    address = '60 pinner road'
-    postcode = 'HA1 3RE'
-    Gmaps4rails.should_receive(:geocode).with("#{address}, #{postcode}", "en", false, "http")
-    org = FactoryGirl.build(:organization,:address => address, :postcode => postcode, :name => 'Happy and Nice', :gmaps => true)
-    org.save
-  end
-
-  #TODO: refactor with expect{} instead of should as Rspec 2 promotes
-  it 'should delete geocoding errors and save organization' do
-    new_address = '777 pinner road'
-    @org1.latitude = 77
-    @org1.longitude = 77
-    Gmaps4rails.should_receive(:geocode).and_raise(Gmaps4rails::GeocodeInvalidQuery)
-    @org1.address = new_address
-    @org1.update_attributes :address => new_address
-    @org1.errors['gmaps4rails_address'].should be_empty
-    actual_address = Organization.find_by_name(@org1.name).address
-    expect(actual_address).to eq(new_address)
-    expect(@org1.latitude).to be_nil
-    expect(@org1.longitude).to be_nil
-  end
-
-  it 'should not delete validation errors unrelated to gmap4rails address issues' do
-    Organization.class_eval do
-      validates :name, :presence => true
+  describe 'Geocoding' do
+    it 'should geocode on creation' do
+      org = FactoryGirl.build(:organization)
+      org.should_receive :geocode
+      org.save
     end
-    Gmaps4rails.should_receive(:geocode)
-    @org1.update_attributes :name => nil
-    expect(@org1.errors['name']).not_to be_empty
+
+    it 'should geocode when address changes' do
+      @org1.should_receive :geocode
+      @org1.update_attributes address: '64 pinner rd'
+    end
+
+    it 'should geocode when new object is created' do
+      address = '60 pinner road'
+      postcode = 'HA1 3RE'
+      Gmaps4rails.should_receive(:geocode).with("#{address}, #{postcode}", "en", false, "http")
+      org = FactoryGirl.build(:organization,:address => address, :postcode => postcode, :name => 'Happy and Nice', :gmaps => true)
+      org.save
+    end
+
+    it 'should delete geocoding errors and save organization' do
+      new_address = '777 pinner road'
+      @org1.latitude = 77
+      @org1.longitude = 77
+      Gmaps4rails.should_receive(:geocode).and_raise(Gmaps4rails::GeocodeInvalidQuery)
+      @org1.address = new_address
+      @org1.update_attributes :address => new_address
+      @org1.errors['gmaps4rails_address'].should be_empty
+      actual_address = Organization.find_by_name(@org1.name).address
+      expect(actual_address).to eq(new_address)
+      expect(@org1.latitude).to be_nil
+      expect(@org1.longitude).to be_nil
+    end
+
+    it 'should not delete validation errors unrelated to gmap4rails address issues' do
+      Organization.class_eval do
+        validates :name, :presence => true
+      end
+      Gmaps4rails.should_receive(:geocode)
+      @org1.update_attributes :name => nil
+      expect(@org1.errors['name']).not_to be_empty
+    end
+
+    it 'should attempt to geocode after failed' do
+      Gmaps4rails.should_receive(:geocode).and_raise(Gmaps4rails::GeocodeInvalidQuery)
+      @org1.save!
+      new_address = '60 pinner road'
+      Gmaps4rails.should_receive(:geocode)
+      expect(lambda{
+        @org1.address = new_address
+        # destructive save is called to raise exception if saving fails
+        @org1.save!
+      }).not_to raise_error
+      actual_address = Organization.find_by_name(@org1.name).address
+      expect(actual_address).to eq(new_address)
+    end
   end
 
-  it 'should attempt to geocode after failed' do
-    Gmaps4rails.should_receive(:geocode).and_raise(Gmaps4rails::GeocodeInvalidQuery)
-    @org1.save!
-    new_address = '60 pinner road'
-    Gmaps4rails.should_receive(:geocode)
-    expect(lambda{
-      @org1.address = new_address
-      # destructive save is called to raise exception if saving fails
-      @org1.save!
-    }).not_to raise_error
-    actual_address = Organization.find_by_name(@org1.name).address
-    expect(actual_address).to eq(new_address)
-  end
   # not sure if we need SQL injection security tests like this ...
   # org = Organization.new(:address =>"blah", :gmaps=> ";DROP DATABASE;")
   # org = Organization.new(:address =>"blah", :name=> ";DROP DATABASE;")

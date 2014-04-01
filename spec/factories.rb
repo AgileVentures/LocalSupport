@@ -2,8 +2,8 @@ FactoryGirl.define do
   factory :organization do
     name "friendly non profit"
     description "we are really really friendly"
-    address "64 pinner road"
-    postcode "HA1 3TE"
+    address "30 pinner road"
+    postcode "HA1 4HZ"
     donation_info 'www.harrow-bereavment.co.uk/donate'
   end
   factory :category do
