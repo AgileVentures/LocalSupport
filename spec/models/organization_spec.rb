@@ -274,7 +274,6 @@ describe Organization do
     end
 
     it 'must be able to handle no postcode in text representation' do
-      Geocoder.should_receive :search
       fields = CSV.parse('HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
       org = create_organization(fields)
       expect(org.name).to eq('Harrow Baptist Church')
@@ -287,7 +286,6 @@ describe Organization do
     end
 
     it 'must be able to handle no address in text representation' do
-      Geocoder.should_receive :search
       fields = CSV.parse('HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,,http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
       org = create_organization(fields)
       expect(org.name).to eq('Harrow Baptist Church')
@@ -300,7 +298,6 @@ describe Organization do
     end
 
     it 'must be able to generate Organization from text representation ensuring words in correct case and postcode is extracted from address' do
-      Geocoder.should_receive :search
       fields = CSV.parse('HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
       org = create_organization(fields)
       expect(org.name).to eq('Harrow Baptist Church')
