@@ -9,16 +9,16 @@ end
 class Organization < ActiveRecord::Base
   has_many :users
   has_and_belongs_to_many :categories
+  accepts_nested_attributes_for :users
+
 
   # Setup accessible (or protected) attributes for your model
   # prevents mass assignment on other fields not in this list
   attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info, :publish_address, :publish_phone, :publish_email
-  accepts_nested_attributes_for :users
 
   # From the geocoder gem
   geocoded_by :full_address
-  after_validation :geocode
-  #, :if => lambda { |org| org.run_geocode? } # geocoder-1.1.9/lib/geocoder/stores/active_record.rb
+  after_validation :geocode, :if => lambda { |org| org.run_geocode? }
 
   # From the url_validator gem
   validates_url :website, :prefferred_scheme => 'http://', :if => lambda { |org| org.website.present? }
@@ -39,13 +39,6 @@ class Organization < ActiveRecord::Base
   def not_geocoded?
     latitude.blank? and longitude.blank?
   end
-
-  #This method is overridden to save organization if address was failed to geocode
-  #def run_validations!
-  #  run_callbacks :validate
-  #  remove_errors_with_address
-  #  errors.empty?
-  #end
 
   #TODO: Give this TLC and refactor the flow or refactor out responsibilities
   # This method both adds new editors and/or updates attributes
@@ -87,10 +80,6 @@ class Organization < ActiveRecord::Base
     "#{self.address}, #{self.postcode}"
   end
 
-  def gmaps4rails_infowindow
-    "#{self.name}"
-  end
-
   #Edit this if CSV 'schema' changes
   #value is the name of a column in csv file
   def self.column_mappings
@@ -107,14 +96,14 @@ class Organization < ActiveRecord::Base
 
   def self.import_categories_from_array(row)
     check_columns_in(row)
-    org_name = row[@@column_mappings[:name]].to_s.humanized_all_first_capitals
+    org_name = row[self.column_mappings[:name]].to_s.humanized_all_first_capitals
     org = Organization.find_by_name(org_name)
     check_categories_for_import(row, org)
     org
   end
 
   def self.check_categories_for_import(row, org)
-    category_ids = row[@@column_mappings[:cc_id]] if org
+    category_ids = row[self.column_mappings[:cc_id]] if org
     category_ids.split(',').each do |id|
       cat = Category.find_by_charity_commission_id(id.to_i)
       org.categories << cat
@@ -131,7 +120,7 @@ class Organization < ActiveRecord::Base
     CreateOrganizationFromArray.create(Organization, row, validate)
   end
 
-  def self.create_and_validate(attributes) 
+  def self.create_and_validate(attributes)
     create!(attributes)
   end
 
@@ -172,26 +161,9 @@ class Organization < ActiveRecord::Base
   end
 
   def self.check_columns_in(row)
-    @@column_mappings.each_value do |column_name|
+    self.column_mappings.each_value do |column_name|
       unless row.header?(column_name)
         raise CSV::MalformedCSVError, "No expected column with name #{column_name} in CSV file"
-      end
-    end
-  end
-
-  private
-
-  def remove_errors_with_address
-    errors_hash = errors.to_hash
-    errors.clear
-    errors_hash.each do |key, value|
-      logger.warn "#{key} --> #{value}"
-      if key.to_s != 'gmaps4rails_address'
-        errors.add(key, value)
-      else
-        # nullify coordinates
-        self.latitude = nil
-        self.longitude = nil
       end
     end
   end
