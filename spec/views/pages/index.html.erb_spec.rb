@@ -20,8 +20,12 @@ describe "pages/index.html.erb" do
       rendered.within('tbody tr') do |row|
         row.should have_link 'Edit'
         row.should have_link 'Delete'
-        row.should have_link 'Hide Link'
+        row.should have_link 'Hide link'
       end
+    end
+
+    it 'Hide link button clears its link_visible flag' do
+      pending
     end
   end
 
@@ -33,7 +37,7 @@ describe "pages/index.html.erb" do
       rendered.within('tbody tr') do |row|
         row.should have_link 'Edit'
         row.should have_link 'Delete'
-        row.should have_link 'Show Link'
+        row.should have_link 'Show link'
       end
     end
   end
