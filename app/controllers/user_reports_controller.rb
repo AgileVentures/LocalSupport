@@ -1,6 +1,8 @@
 class UserReportsController < ApplicationController
-  layout 'full_width'
+  layout 'full_width', :except => [:invited]
   before_filter :authorize, :except => [:update]
+  include ActionView::Helpers::DateHelper
+
 
   # would like this to support generic updating of model with
   # business logic pulled into a separate model or process
@@ -13,7 +15,17 @@ class UserReportsController < ApplicationController
     @users = User.all
   end
 
-  #TODO invited_users_index
+  def invited
+    @resend_invitation = true
+    users = User.invited_not_accepted
+    @invitations = users.each_with_object([]) do |user, array|
+      org = Organization.find_by_email(user.email)
+      if org.present?
+        array << { id: org.id, name: org.name, email: org.email, date: time_ago_in_words(user.invitation_sent_at) }
+      end
+    end
+    render :template => 'user_reports/invited', :layout => 'invitation_table'
+  end
 
   def update_message_for_admin_status
     org = Organization.find(params[:organization_id])
