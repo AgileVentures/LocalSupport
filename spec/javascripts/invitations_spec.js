@@ -1,4 +1,4 @@
-describe('Organization Reports - without users page', function () {
+describe('Invitations toolbar script', function () {
     var invite_users, select_all;
     beforeEach(function () {
         setFixtures('<div id="resend_invitation" data-resend_invitation="false" style="display: none;"></div>');
@@ -28,7 +28,7 @@ describe('Organization Reports - without users page', function () {
             expect(args.dataType).toBe('json');
             expect(args.contentType).toBe('application/json');
             expect(args.type).toBe('POST');
-            expect(args.url).toBe('/organization_reports/without_users')
+            expect(args.url).toBe('/invitations')
         });
         it('uses JSON stringify to format the array properly for Rails', function() {
             var stringify = spyOn(JSON, 'stringify');

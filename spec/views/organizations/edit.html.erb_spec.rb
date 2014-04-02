@@ -20,21 +20,21 @@ describe "organizations/edit.html.erb" do
 
     render
 
-    hash = {'Name' => 'Enter a unique name',
-            'Address'  => 'Enter a complete address',
-            'Postcode' => 'Make sure post code is accurate',
-            'Email' => 'Make sure email is correct',
-            'Description' => 'Enter a full description here. When an individual searching this database all words in this description will be searched.',
-            'Website' => 'Make sure url is correct',
-            'Telephone' => 'Make sure phone number is correct',
-            'Add an additional organisation administrator email' => 'Please enter the details of individuals from your organisation you would like to give permission to update your entry. E-mail addresses entered here will not be made public.',
-            'Donation info' => 'Please enter a website here either to the fundraising page on your website or to an online donation site.',
-            'Publish email' => 'To make your email address visible to the public check this box',
-            'Publish phone' => 'To make your telephone number visible to the public check this box',
-            'Publish address' => 'To make your full address visible to the public check this box'
+    hash = {'organization_name' => 'Enter a unique name',
+            'organization_address'  => 'Enter a complete address',
+            'organization_postcode' => 'Make sure post code is accurate',
+            'organization_email' => 'Make sure email is correct',
+            'organization_description' => "Enter a full description here\. When an individual searches this database all words in this description will be searched\.",
+            'organization_website' => 'Make sure url is correct',
+            'organization_telephone' => 'Make sure phone number is correct',
+            "'Add an additional organisation administrator email'" => "Please enter the details of individuals from your organisation you would like to give permission to update your entry\. E-mail addresses entered here will not be made public\.",
+            'organization_donation_info' => 'Please enter a website here either to the fundraising page on your website or to an online donation site.',
+            'organization_publish_email' => 'To make your email address visible to the public check this box',
+            'organization_publish_telephone' => 'To make your telephone number visible to the public check this box',
+            'organization_publish_address' => 'To make your full address visible to the public check this box'
     }
     hash.each do |label,tooltip|
-      rendered.should have_css("div[title=\"#{tooltip}\"][data-toggle=\"tooltip\"]:contains('#{label}')")
+      rendered.should have_xpath("//tr/td[contains(.,#{label})]/../td[@data-toggle=\"tooltip\"][@title=\"#{tooltip}\"]")
     end
   end
 
