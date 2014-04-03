@@ -44,3 +44,5 @@ config/database.yml
 .ruby-gemset
 .rbenv
 .rbenv-gemsets
+.floo
+.flooignore

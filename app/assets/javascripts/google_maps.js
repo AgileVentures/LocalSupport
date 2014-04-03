@@ -7,7 +7,7 @@ LocalSupport.maps = {
             zoom: 12,
             center: harrow
         };
-        return new google.maps.Map(document.getElementById('map'), mapOptions);
+        return new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     },
     loadMarker: function(map, org) {
         var coords = new google.maps.LatLng(org.latitude, org.longitude);
@@ -40,3 +40,4 @@ $(function () {
         that.loadMarker(map, org)
     });
 });
+
