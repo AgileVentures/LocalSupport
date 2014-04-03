@@ -22,14 +22,6 @@
         <td><%= page.content %></td>
         <td><%= page.created_at %></td>
         <td>
-	  <% # if page.link_visible? %>
-	    <%= form_for page do |f| %>
-	    <%=  f.submit %>
-	    <%  end%>
-	  <% #  end%>
-	    
-	  <%   # form_"Hide link" : "Show link"), '/pages', :class => 'btn btn-mini') %>
-
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_page_path(page), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
