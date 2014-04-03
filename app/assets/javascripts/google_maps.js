@@ -34,8 +34,6 @@ LocalSupport.maps = {
 };
 
 $(function () {
-    hander = Gmaps.build('Google');
-    handler.buildMap
     var that = LocalSupport.maps;
     var map = that.loadMap();
     that.data.forEach(function(org) {
