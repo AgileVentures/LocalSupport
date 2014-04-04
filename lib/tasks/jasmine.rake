@@ -20,17 +20,36 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 =end
 
+module TaskHelpers
+  require 'net/http'
+
+  def get_url(url)
+    link = URI.parse(url)
+    req = Net::HTTP::Get.new(link.to_s)
+    res = Net::HTTP.start(link.host, link.port) {|http|
+      http.request(req)
+    }
+    res.body
+  end
+end
+
 Rake::Task['jasmine:ci'].clear if Rake::Task.task_defined?('jasmine:ci')
 
 
 namespace :jasmine do
-  task :google_maps_api do
-    require 'net/http'
-    
+  task :load_google_maps_api do
+    include TaskHelpers
+
+    get_url 'http://maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry'
+    get_url 'http://maps.gstatic.com/cat_js/intl/en_us/mapfiles/api-3/14/16/%7Bmain,geometry%7D.js'
+    get_url 'http://maps.gstatic.com/cat_js/intl/en_us/mapfiles/api-3/14/16/%7Bcommon,map,util,marker%7D.js'
+    get_url 'http://maps.gstatic.com/cat_js/intl/en_us/mapfiles/api-3/14/16/%7Binfowindow%7D.js'
+    get_url 'http://maps.gstatic.com/cat_js/intl/en_us/mapfiles/api-3/14/16/%7Bonion%7D.js'
+    get_url 'http://maps.gstatic.com/cat_js/intl/en_us/mapfiles/api-3/14/16/%7Bcontrols,stats%7D.js'
   end
 
   desc 'Run continuous integration tests'
-  task :ci => %w(jasmine:require_json jasmine:require jasmine:configure) do
+  task :ci => %w(jasmine:require_json jasmine:require jasmine:configure jasmine:load_google_maps_api) do
     config = Jasmine.config
 
     server = Jasmine::Server.new(config.port(:ci), Jasmine::Application.app(config))
