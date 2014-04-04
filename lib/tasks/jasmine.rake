@@ -24,6 +24,11 @@ Rake::Task['jasmine:ci'].clear if Rake::Task.task_defined?('jasmine:ci')
 
 
 namespace :jasmine do
+  task :google_maps_api do
+    require 'net/http'
+    
+  end
+
   desc 'Run continuous integration tests'
   task :ci => %w(jasmine:require_json jasmine:require jasmine:configure) do
     config = Jasmine.config
