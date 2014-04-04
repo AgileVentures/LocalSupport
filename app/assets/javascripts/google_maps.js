@@ -29,7 +29,8 @@ LocalSupport.maps = {
             this.infoWindow.open(map, this);
             LocalSupport.maps.openInfoWindow = this.infoWindow
         });
-        marker.setMap(map)
+        marker.setMap(map);
+        return marker
     }
 };
 
