@@ -17,6 +17,7 @@ src_files:
   - assets/this_is_my_org.js
 
   - assets/jasmine-jquery.js
+  - spec/javascripts/helpers/test.js
 
 # stylesheets
 #

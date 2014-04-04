@@ -34,10 +34,10 @@ LocalSupport.maps = {
 };
 
 $(function () {
-    var that = LocalSupport.maps;
-    var map = that.loadMap();
-    that.data.forEach(function(org) {
-        that.loadMarker(map, org)
+    var script = LocalSupport.maps;
+    var map = script.loadMap();
+    script.data.forEach(function(org) {
+        script.loadMarker(map, org)
     });
 });
 
