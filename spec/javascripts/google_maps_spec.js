@@ -4,18 +4,6 @@ describe('Interaction with Google Maps API', function () {
     beforeEach(function () {
         setFixtures(sandbox({ id: 'map-canvas' }));
 
-//        window.google = {
-//            maps: {
-//                LatLng: function() {},
-//                Map: function() {},
-//                Marker: function() {},
-//                InfoWindow: function() {},
-//                event: {
-//                    addListener: function() {}
-//                }
-//            }
-//        };
-
         coordinates_mock = jasmine.createSpy('LatLng');
         map_mock = jasmine.createSpy('Map');
         marker_mock = jasmine.createSpyObj('Marker', ['setMap']);
