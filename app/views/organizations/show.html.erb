@@ -2,6 +2,10 @@
   <%= javascript_include_tag 'this_is_my_org' %>
 <% end %>
 
+<%= javascript_tag do %>
+    LocalSupport.maps.data = <%= raw [@organization].to_json %>
+<% end %>
+
 <div class="row">
   <h3>
     <%= @organization.name %>
