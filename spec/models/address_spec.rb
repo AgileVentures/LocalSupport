@@ -1,5 +1,4 @@
 require_relative '../../app/models/address'
-require 'spec_helper'
 
 describe Address, "#parse" do
   let(:address) { Address.new(address_to_parse) }
