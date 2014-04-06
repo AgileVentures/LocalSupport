@@ -82,7 +82,6 @@ end
 
 gem 'therubyracer'
 gem 'geocoder'
-gem 'underscore-rails'
 #gem 'mongrel'
 gem 'kaminari'
 gem 'unicorn'
