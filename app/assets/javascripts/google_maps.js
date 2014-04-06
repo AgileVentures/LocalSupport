@@ -7,11 +7,11 @@ LocalSupport.maps = {
             zoom: 12,
             center: harrow
         };
-        return new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        return new google.maps.Map(document.getElementById('map-canvas'), mapOptions);      // calls to google servers
     },
-    loadMarker: function(map, org) {
+    createMarker: function(org) {
         var coords = new google.maps.LatLng(org.latitude, org.longitude);
-        var marker = new google.maps.Marker({
+        return new google.maps.Marker({
             position: coords,
             title: org.name,
             infoWindow: new google.maps.InfoWindow({
@@ -20,6 +20,8 @@ LocalSupport.maps = {
                 disableAutoPan: true
             })
         });
+    },
+    placeMarker: function(marker, map) {
         google.maps.event.addListener(marker, 'click', function() {
             // this == marker
             var previous = LocalSupport.maps.openInfoWindow;
@@ -30,7 +32,6 @@ LocalSupport.maps = {
             LocalSupport.maps.openInfoWindow = this.infoWindow
         });
         marker.setMap(map);
-        return marker
     }
 };
 
@@ -38,7 +39,8 @@ $(function () {
     var script = LocalSupport.maps;
     var map = script.loadMap();
     script.data.forEach(function(org) {
-        script.loadMarker(map, org)
+        var marker = script.createMarker(org);
+        script.placeMarker(marker, map)
     });
 });
 
