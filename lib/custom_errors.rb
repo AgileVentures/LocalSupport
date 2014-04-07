@@ -19,11 +19,6 @@ module CustomErrors
     Rails.logger.error error.message
     error.backtrace.each_with_index { |line, index| Rails.logger.error line; break if index >= 5 }
 
-    # Bryan:
-    #unless [ 404 ].include? status
-    #  ExceptionNotifier.notify_exception(error, env: request.env, :data => { message: 'was doing something wrong' })
-    #end
-
     case status
       when 404
         render template: 'pages/404', status: 404

@@ -22,5 +22,3 @@ Feature: I want to make error pages follow the general design of the site.
     Then the page should be titled "500 Internal Error"
     And the response status should be "500"
     And I should see "We're sorry, but something went wrong."
-  # Bryan: More copy&paste code from WebsiteOne
-#    And The admins should receive an error notification email

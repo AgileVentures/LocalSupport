@@ -48,19 +48,5 @@ describe CustomErrors, type: 'controller' do
       dummy.should_receive(:error).exactly(7)
       get :raise_500
     end
-
-    # Bryan: This could potentially be implemented in the future, copy&paste-d from WebsiteOne
-    #it 'should send an error notification to the admin' do
-    #  ActionMailer::Base.deliveries.clear
-    #  get :raise_500
-    #
-    #  ActionMailer::Base.deliveries.size.should eq 1
-    #  email = ActionMailer::Base.deliveries[0]
-    #  expect(email.subject).to include 'ERROR'
-    #
-    #  recipients = email.to
-    #  expect(recipients.size).to eq 1
-    #  expect(recipients[0]).to eq 'info@agileventures.org'
-    #end
   end
 end
