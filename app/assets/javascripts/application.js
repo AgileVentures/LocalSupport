@@ -9,7 +9,7 @@
 //= require twitter/bootstrap
 //= require_tree ./global
 
-LocalSupport = {};
+var LocalSupport = {};
 
 $(function() {
     // invoke global functions here

@@ -1,6 +1,14 @@
 LocalSupport.maps = {
     data: undefined, // View must provide this array of json hashes (e.g. raw @organizations.to_json)
     openInfoWindow: undefined, // Used to track currently open info window
+    initialize: function() {
+        var script = LocalSupport.maps;
+        var map = script.loadMap();
+        script.data.forEach(function(org) {
+            var marker = script.createMarker(org);
+            script.placeMarker(marker, map)
+        });
+    },
     loadMap: function() {
         var harrow = new google.maps.LatLng(51.5978, -0.3370);
         var mapOptions = {
@@ -38,7 +46,7 @@ LocalSupport.maps = {
 $(function () {
     var script = LocalSupport.maps;
     var map = script.loadMap();
-    $.each(script.data, function(_, org) {
+    $.each(script.data, function (_, org) {
         var marker = script.createMarker(org);
         script.placeMarker(marker, map)
     });
