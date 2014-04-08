@@ -39,9 +39,11 @@ Feature: I want to be able to edit static page links
        Given I am signed in as an admin
        And I visit "pages/about/edit"
        And I uncheck "Make a public link to this page"
+       And I press "Update Page"
        Then the "about" link is not in the footer     
        And I visit "pages/about/edit"
        And I check "Make a public link to this page"
+       And I press "Update Page"
        Then the "about" link is in the footer     
 
      Scenario: Admin can choose which pages are linked
