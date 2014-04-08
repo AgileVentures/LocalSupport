@@ -111,8 +111,17 @@ describe UserReportsController do
   end
 
   describe 'GET invited users report', :helpers => :controllers do
+    let(:organization) { double 'Organization',
+                                id: '1',
+                                name: 'sample',
+                                email: 'sample@sample.org',
+                                invitation_sent_at: 'date-time-thingy'
+    }
+    let(:user) { double 'User' }
     before(:each) do
       make_current_user_admin
+      User.stub :invited_not_accepted
+      ListInvitedUsers.stub :list => [organization]
     end
 
     it 'is for admins only' do
@@ -121,14 +130,26 @@ describe UserReportsController do
       response.should redirect_to root_path
     end
 
-    it 'uses the invitation table layout' do
+    it 'uses the invited template and the invitation table layout' do
       get :invited
+      response.should render_template 'user_reports/invited'
       response.should render_template 'layouts/invitation_table'
     end
 
-    it 'assigns an invitation to @invitations' do
+    it 'makes use of a scope and a service' do
+      User.should_receive(:invited_not_accepted) { user }
+      ListInvitedUsers.should_receive(:list).with(user, Organization)
       get :invited
-      assigns(:invitations).should_not be_nil
+    end
+
+    it 'assigns true to @resend_invitation' do
+      get :invited
+      assigns(:resend_invitation).should be_true
+    end
+
+    it 'assigns invitations to @invitations' do
+      get :invited
+      assigns(:invitations).should include organization
     end
 
   end
