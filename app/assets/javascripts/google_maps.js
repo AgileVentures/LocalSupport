@@ -38,7 +38,7 @@ LocalSupport.maps = {
 $(function () {
     var script = LocalSupport.maps;
     var map = script.loadMap();
-    script.data.forEach(function(org) {
+    $.each(script.data, function(_, org) {
         var marker = script.createMarker(org);
         script.placeMarker(marker, map)
     });
