@@ -7,12 +7,13 @@ require 'capybara'
 require 'capybara-webkit'
 require 'capybara/cucumber'
 require 'cucumber/rails'
-require "rack_session_access/capybara"
+require 'cucumber/rspec/doubles'
+require 'rack_session_access/capybara'
 require 'ruby-debug'
 require 'selenium/webdriver'
 require 'factory_girl_rails'
 require 'aruba/cucumber'
-Dir["../../spec/factories/*.rb"].each {|file| require_relative file }
+Dir['../../spec/factories/*.rb'].each {|file| require_relative file }
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
@@ -46,7 +47,7 @@ ActionController::Base.allow_rescue = false
 begin
   DatabaseCleaner.strategy = :truncation
 rescue NameError
-  raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
+  raise 'You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it.'
 end
 
 # You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
@@ -79,4 +80,12 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 # Aruba working directory (default: Aruba creates tmp/aruba)
 Before do
   @dirs = ["#{Rails.root.to_s}"]
+end
+
+Before('@in-production') do
+  Rails.env = 'production'
+end
+
+After('@in-production') do
+  Rails.env = 'test'
 end
