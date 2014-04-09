@@ -12,7 +12,7 @@
       <tr id="<%= invitation[:id] %>">
         <td><%= link_to invitation[:name], organization_path(invitation[:id]) %></td>
         <td><%= invitation[:email] %></td>
-        <td><%= invitation[:date] %></td>
+        <td><%= time_ago_in_words(invitation[:date]) %></td>
         <td class="response" style="text-align: center;">
           <input type="checkbox" data-id="<%= invitation[:id] %>" data-email="<%= invitation[:email] %>"/>
         </td>
@@ -20,3 +20,4 @@
   <% end %>
   </tbody>
 </table>
+
