@@ -13,7 +13,9 @@ LocalSupport::Application.routes.draw do
   get '/user_reports/invited' => 'user_reports#invited', as: :invited_users_report
 
   resources :pages
-  resources :organizations
+  resources :organizations do
+    resources :jobs
+  end
 
   # so that static pages are linked directly instead of via /pages/:id
   get ':id', to: 'pages#show', as: :page
