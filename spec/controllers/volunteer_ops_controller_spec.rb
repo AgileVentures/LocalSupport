@@ -142,46 +142,40 @@ describe VolunteerOpsController do
   end
 
   describe 'PUT update' do
-    describe 'with valid params' do
-      it 'updates the requested volunteer_op' do
-        volunteer_op = VolunteerOp.create! valid_attributes
-        # Assuming there are no other volunteer_ops in the database, this
-        # specifies that the VolunteerOp created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        VolunteerOp.any_instance.should_receive(:update_attributes).with({'title' => 'MyString'})
-        put :update, {:id => volunteer_op.to_param, :volunteer_op => {'title' => 'MyString'}}, valid_session
-      end
-
-      it 'assigns the requested volunteer_op as @volunteer_op' do
-        volunteer_op = VolunteerOp.create! valid_attributes
-        put :update, {:id => volunteer_op.to_param, :volunteer_op => valid_attributes}, valid_session
-        assigns(:volunteer_op).should eq(volunteer_op)
-      end
-
-      it 'redirects to the volunteer_op' do
-        volunteer_op = VolunteerOp.create! valid_attributes
-        put :update, {:id => volunteer_op.to_param, :volunteer_op => valid_attributes}, valid_session
-        response.should redirect_to(volunteer_op)
-      end
+    let(:op) { stub_model VolunteerOp, id: '9' }
+    let(:attributes) { {title: 'hard work', description: 'for the willing'} }
+    before do
+      controller.stub current_user: user, org_owner?: true
+      VolunteerOp.stub find: op
+      op.stub update_attributes: true
     end
 
-    describe 'with invalid params' do
-      it 'assigns the volunteer_op as @volunteer_op' do
-        volunteer_op = VolunteerOp.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        VolunteerOp.any_instance.stub(:save).and_return(false)
-        put :update, {:id => volunteer_op.to_param, :volunteer_op => {'title' => 'invalid value'}}, valid_session
-        assigns(:volunteer_op).should eq(volunteer_op)
-      end
+    it 'assigns a the volunteer_op to be updated as @volunteer_op' do
+      post :update, {id: op.id, volunteer_op: attributes}
+      assigns(:volunteer_op).should eq op
+    end
 
-      it 're-renders the "edit" template' do
-        volunteer_op = VolunteerOp.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        VolunteerOp.any_instance.stub(:save).and_return(false)
-        put :update, {:id => volunteer_op.to_param, :volunteer_op => {'title' => 'invalid value'}}, valid_session
-        response.should render_template('edit')
-      end
+    it 'non-org-owners denied' do
+      controller.stub org_owner?: false
+      post :update, {id: op.id, volunteer_op: attributes}
+      response.status.should eq 302
+    end
+
+    it 'mutation-proofing' do
+      VolunteerOp.should_receive(:find).with(op.id.to_s)
+      op.should_receive(:update_attributes ).with(attributes.stringify_keys)
+      post :update, {id: op.id, volunteer_op: attributes}
+    end
+
+    it 'redirects to the updated volunteer_op' do
+      post :update, {id: op.id, volunteer_op: attributes}
+      response.should redirect_to(op)
+    end
+
+    it 'with invalid attributes, it re-renders the "edit" template' do
+      op.stub update_attributes: false
+      post :update, {id: op.id, volunteer_op: attributes}
+      response.should render_template('edit')
     end
   end
 
