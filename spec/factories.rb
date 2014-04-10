@@ -33,4 +33,9 @@ FactoryGirl.define do
       end
     end
   end
+  factory :volunteer_op do
+    title "Help out"
+    description "Some nice people"
+    #TODO organisation
+  end
 end
