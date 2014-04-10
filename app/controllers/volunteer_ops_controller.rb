@@ -94,6 +94,6 @@ class VolunteerOpsController < ApplicationController
   end
 
   def org_owner?
-    #current_user.organization.present?
+    current_user.organization.present? if current_user.present?
   end
 end

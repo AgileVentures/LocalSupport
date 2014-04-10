@@ -3,19 +3,16 @@ describe VolunteerOpsController do
   let(:user) { double :user }
   let(:org) { double :organization, id: '1' }
   let(:op) { double :volunteer_op, id: '9' }
-  let(:ops_collection) { double :ops_collection }
   before do
-    org.stub volunteer_ops: ops_collection
     op.stub organization: org
-    # ops_collection.stub find: op
   end
 
   describe 'GET index' do
-    before { VolunteerOp.stub all: ops_collection }
+    before { VolunteerOp.stub all: [op] }
 
     it 'assigns all volunteer_ops as @volunteer_ops' do
       get :index, {}
-      assigns(:volunteer_ops).should eq ops_collection
+      assigns(:volunteer_ops).should eq [op]
     end
 
     it 'non-org-owners allowed' do
