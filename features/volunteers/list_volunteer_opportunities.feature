@@ -16,6 +16,32 @@ Background: organizations with volunteer opportunities have been added to databa
 
 @javascript
 Scenario:  
-    Given I am on the volunteer oppportunities page
+    Given I am on the volunteer opportunities page
     Then I should see "Litter Box Scooper"
     And I should see "Office Support"
+
+Scenario: List of volunteer opportunities in table layout
+    Given I am on the volunteer opportunities page
+    Then I should see "Volunteer Opportunities"
+    And show me the page
+    Then I should see:
+      | Text   |
+      | Create |
+      | Status |
+
+Scenario: Columns in projects table
+    When I go to the "projects" page
+    Then I should see "List of Projects" table
+
+
+Scenario: See a list of current projects
+    Given  I am on the "home" page
+    When I follow "Our projects"
+    Then I should see:
+      | Text                    |
+      | hello jupiter           |
+      | greetings jupiter folks |
+      | ACTIVE                  |
+      | hello mars              |
+      | greetings aliens        |
+      | INACTIVE                |
