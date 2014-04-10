@@ -20,28 +20,22 @@ Scenario:
     Then I should see "Litter Box Scooper"
     And I should see "Office Support"
 
-Scenario: List of volunteer opportunities in table layout
+Scenario: List of volunteer opportunities
     Given I am on the volunteer opportunities page
     Then I should see "Volunteer Opportunities"
-    And show me the page
     Then I should see:
-      | Text   |
-      | Create |
-      | Status |
+      | Title        | 
+      | Description  |
+      | Organization |
 
-Scenario: Columns in projects table
-    When I go to the "projects" page
-    Then I should see "List of Projects" table
+Scenario: Columns in volunteer opportunities table
+    Given I am on the volunteer opportunities page
+    Then I should see "Volunteer Opportunities" table
 
 
-Scenario: See a list of current projects
-    Given  I am on the "home" page
-    When I follow "Our projects"
+Scenario: See a list of current volunteer opportunities
+    Given I am on the volunteer opportunities page
     Then I should see:
-      | Text                    |
-      | hello jupiter           |
-      | greetings jupiter folks |
-      | ACTIVE                  |
-      | hello mars              |
-      | greetings aliens        |
-      | INACTIVE                |
+    | Title                           | Description                        | Organization              |
+    | Litter Box Scooper              | Assist with feline sanitation      | Cats Are Us               |
+    | Office Support                  | Help with printing and copying.    | Indian Elders Association | 
