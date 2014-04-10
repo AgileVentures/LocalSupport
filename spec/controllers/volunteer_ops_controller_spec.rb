@@ -45,9 +45,22 @@ describe VolunteerOpsController do
   end
 
   describe 'GET new' do
-    it 'assigns a new volunteer_op as @volunteer_op' do
-      get :new, {}, valid_session
-      assigns(:volunteer_op).should be_a_new(VolunteerOp)
+    before do
+      controller.stub current_user: user, org_owner?: true
+      VolunteerOp.stub new: op
+    end
+    it 'assigns all volunteer_ops as @volunteer_ops' do
+      get :new, {}
+      assigns(:volunteer_op).should eq op
+    end
+    it 'non-org-owners denied' do
+      controller.stub org_owner?: false
+      get :new, {}
+      response.status.should eq 302
+    end
+    it 'mutation-proofing' do
+      VolunteerOp.should_receive(:new)
+      get :new, {}
     end
   end
 
