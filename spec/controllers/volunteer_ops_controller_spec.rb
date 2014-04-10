@@ -1,8 +1,8 @@
 require 'spec_helper'
 describe VolunteerOpsController do
-  let(:user) { stub_model User }
-  let(:org) { stub_model Organization, id: '1' }
-  let(:op) { stub_model VolunteerOp, id: '9' }
+  let(:user) { double :user }
+  let(:org) { double :organization, id: '1' }
+  let(:op) { double :volunteer_op, id: '9' }
   let(:ops_collection) { double :ops_collection }
   before do
     org.stub volunteer_ops: ops_collection
@@ -28,10 +28,19 @@ describe VolunteerOpsController do
   end
 
   describe 'GET show' do
+    before { VolunteerOp.stub find: op }
     it 'assigns the requested volunteer_op as @volunteer_op' do
-      volunteer_op = VolunteerOp.create! valid_attributes
-      get :show, {:id => volunteer_op.to_param}, valid_session
-      assigns(:volunteer_op).should eq(volunteer_op)
+      get :show, {:id => op.id}
+      assigns(:volunteer_op).should eq(op)
+    end
+    it 'non-org-owners allowed' do
+      controller.stub current_user: user, org_owner?: false
+      get :show, {:id => op.id}
+      response.status.should eq 200
+    end
+    it 'mutation-proofing' do
+      VolunteerOp.should_receive(:find).with(op.id)
+      get :show, {:id => op.id}
     end
   end
 
