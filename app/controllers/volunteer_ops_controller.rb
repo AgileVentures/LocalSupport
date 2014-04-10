@@ -43,6 +43,7 @@ class VolunteerOpsController < ApplicationController
   # POST /volunteer_ops.json
   def create
     @volunteer_op = VolunteerOp.new(params[:volunteer_op])
+    #TODO add association with current_user's organization
 
     respond_to do |format|
       if @volunteer_op.save

@@ -129,13 +129,6 @@ describe VolunteerOpsController do
       post :create, {volunteer_op: attributes}
       response.should render_template('new')
     end
-
-    # TODO: Move to request spec
-    # it 'creates a new VolunteerOp' do
-    #   expect {
-    #     post :create, {:volunteer_op => valid_attributes}, valid_session
-    #   }.to change(VolunteerOp, :count).by(1)
-    # end
   end
 
   describe 'PUT update' do
@@ -198,14 +191,6 @@ describe VolunteerOpsController do
       delete :destroy, { id: op.id }
       response.should redirect_to(volunteer_ops_url)
     end
-
-
-    # it 'destroys the requested volunteer_op' do
-    #   volunteer_op = VolunteerOp.create! valid_attributes
-    #   expect {
-    #     delete :destroy, {:id => volunteer_op.to_param}, valid_session
-    #   }.to change(VolunteerOp, :count).by(-1)
-    # end
   end
 
 end
