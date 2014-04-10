@@ -49,7 +49,7 @@ describe VolunteerOpsController do
       controller.stub current_user: user, org_owner?: true
       VolunteerOp.stub new: op
     end
-    it 'assigns all volunteer_ops as @volunteer_ops' do
+    it 'assigns the requested volunteer_op as @volunteer_op' do
       get :new, {}
       assigns(:volunteer_op).should eq op
     end
@@ -65,10 +65,22 @@ describe VolunteerOpsController do
   end
 
   describe 'GET edit' do
+    before do
+      controller.stub current_user: user, org_owner?: true
+      VolunteerOp.stub find: op
+    end
     it 'assigns the requested volunteer_op as @volunteer_op' do
-      volunteer_op = VolunteerOp.create! valid_attributes
-      get :edit, {:id => volunteer_op.to_param}, valid_session
-      assigns(:volunteer_op).should eq(volunteer_op)
+      get :edit, {:id => op.id}
+      assigns(:volunteer_op).should eq op
+    end
+    it 'non-org-owners denied' do
+      controller.stub org_owner?: false
+      get :edit, {:id => op.id}
+      response.status.should eq 302
+    end
+    it 'mutation-proofing' do
+      VolunteerOp.should_receive(:find).with(op.id)
+      get :edit, {:id => op.id}
     end
   end
 
