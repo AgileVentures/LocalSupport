@@ -16,6 +16,6 @@ Background: organizations with volunteer opportunities have been added to databa
 
 @javascript
 Scenario:  
-    Given I am on the home page
-    Then I should see Litter Box Scooper
-    And I should see Office Support
+    Given I am on the volunteer oppportunities page
+    Then I should see "Litter Box Scooper"
+    And I should see "Office Support"

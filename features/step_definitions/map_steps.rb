@@ -65,6 +65,12 @@ Given /the following organizations exist/ do |organizations_table|
   end
 end
 
+Given /the following volunteer opportunities exist/ do |organizations_table|
+  organizations_table.hashes.each do |op|
+    VolunteerOp.create! op
+  end
+end
+
 Given /Google is indisposed for "(.*)"/ do  |address|
   body = %Q({
 "results" : [],
