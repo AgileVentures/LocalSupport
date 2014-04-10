@@ -180,18 +180,35 @@ describe VolunteerOpsController do
   end
 
   describe 'DELETE destroy' do
-    it 'destroys the requested volunteer_op' do
-      volunteer_op = VolunteerOp.create! valid_attributes
-      expect {
-        delete :destroy, {:id => volunteer_op.to_param}, valid_session
-      }.to change(VolunteerOp, :count).by(-1)
+    before do
+      controller.stub current_user: user, org_owner?: true
+      VolunteerOp.stub find: op
+      op.stub :destroy
+    end
+
+    it 'non-org-owners denied' do
+      controller.stub current_user: user, org_owner?: false
+      delete :destroy, { id: op.id }
+      response.status.should eq 302
+    end
+
+    it 'mutation-proofing' do
+      VolunteerOp.should_receive(:find).with(op.id)
+      delete :destroy, { id: op.id }
     end
 
     it 'redirects to the volunteer_ops list' do
-      volunteer_op = VolunteerOp.create! valid_attributes
-      delete :destroy, {:id => volunteer_op.to_param}, valid_session
+      delete :destroy, { id: op.id }
       response.should redirect_to(volunteer_ops_url)
     end
+
+
+    # it 'destroys the requested volunteer_op' do
+    #   volunteer_op = VolunteerOp.create! valid_attributes
+    #   expect {
+    #     delete :destroy, {:id => volunteer_op.to_param}, valid_session
+    #   }.to change(VolunteerOp, :count).by(-1)
+    # end
   end
 
 end
