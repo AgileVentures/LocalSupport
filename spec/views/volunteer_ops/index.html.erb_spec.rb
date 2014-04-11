@@ -2,25 +2,23 @@ require 'spec_helper'
 
 describe "volunteer_ops/index" do
   before(:each) do
-    assign(:volunteer_ops, [
-      stub_model(VolunteerOp,
-        :title => "Title",
-        :description => "MyText",
-        :organization => nil
-      ),
-      stub_model(VolunteerOp,
-        :title => "Title",
-        :description => "MyText",
-        :organization => nil
-      )
-    ])
+    @org = stub_model(Organization, :name => "The Adams Family",  
+                      :address => "666 Mockingbird Lane")
+    @volunteer_ops = [(stub_model(VolunteerOp, :title => "Undertaker",
+                      :description => "Help Uncle Fester", 
+                      :organization => @org)),
+                      (stub_model(VolunteerOp, :title => "Gravedigger",
+                      :description => "Dispose of victims", 
+                      :organization => @org))]
   end
 
   it "renders a list of volunteer_ops" do
+    debugger
     render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "tr>td", :text => "Title".to_s, :count => 2
-    assert_select "tr>td", :text => "MyText".to_s, :count => 2
-    assert_select "tr>td", :text => nil.to_s, :count => 2
+    @volunteer_ops.each do |op|
+      rendered.should have_content op.title
+      rendered.should have_content op.description
+      rendered.should have_content op.organization.name
+    end
   end
 end
