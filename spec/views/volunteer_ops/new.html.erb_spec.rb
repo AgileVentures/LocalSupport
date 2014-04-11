@@ -12,11 +12,10 @@ describe "volunteer_ops/new" do
   it "renders new volunteer_op form" do
     render
 
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "form[action=?][method=?]", volunteer_ops_path, "post" do
-      assert_select "input#volunteer_op_title[name=?]", "volunteer_op[title]"
-      assert_select "textarea#volunteer_op_description[name=?]", "volunteer_op[description]"
-      assert_select "input#volunteer_op_organization[name=?]", "volunteer_op[organization]"
+    rendered.should have_selector("form", :action => volunteer_ops_path, :method => "post") do |form|
+      form.should have_selector("input#volunteer_op_title", :name => "volunteer_op[title]")
+      form.should have_selector("textarea#volunteer_op_description", :name => "volunteer_op[description]")
+      form.should have_selector("input#volunteer_op_organization", :name => "volunteer_op[organization]")
     end
   end
 end
