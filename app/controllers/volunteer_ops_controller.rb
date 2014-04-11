@@ -59,7 +59,7 @@ class VolunteerOpsController < ApplicationController
   # PUT /volunteer_ops/1
   # PUT /volunteer_ops/1.json
   def update
-    @volunteer_op = VolunteerOp.find(params[:id])
+    @volunteer_op = VolunteerOp.find#(params[:id])
 
     respond_to do |format|
       if @volunteer_op.update_attributes(params[:volunteer_op])
@@ -95,6 +95,6 @@ class VolunteerOpsController < ApplicationController
   end
 
   def org_owner?
-    current_user.organization.present? if current_user.present?
+    current_user.try :can_edit?
   end
 end
