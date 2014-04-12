@@ -69,7 +69,7 @@ class ApplicationController < ActionController::Base
   def authorize
     unless admin?
       flash[:error] = 'You must be signed in as an admin to perform this action!'
-      redirect_to '/'
+      redirect_to root_path
       false
     end
   end

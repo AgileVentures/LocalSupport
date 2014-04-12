@@ -82,4 +82,50 @@ describe ApplicationController, :helpers => :controllers do
       response.cookies['cookie_policy_accepted'].should be_true
     end
   end
+
+  describe 'PRIVATE METHODS' do
+    let(:user) { double :user }
+    before { controller.stub current_user: user }
+
+    context '#authorize' do
+      it 'Unauthorized: redirects to root_path and displays flash' do
+        controller.stub admin?: false
+        # http://owowthathurts.blogspot.com/2013/08/rspec-response-delegation-error-fix.html
+        controller.should_receive(:redirect_to).with(root_path) { true } # can't assert `redirect_to root_path`
+        controller.instance_eval { authorize }.should be false
+        flash[:error].should_not be_empty
+      end
+
+      it 'Authorized: allows execution to continue' do
+        controller.stub admin?: true
+        controller.instance_eval { authorize }.should be nil
+      end
+
+      it 'mutation-proofing' do
+        controller.stub admin?: false
+        controller.should_receive(:redirect_to)
+        controller.flash.should_receive(:[]=)
+        controller.instance_eval { authorize }.should be false
+      end
+    end
+
+    context '#admin?' do
+      it 'returns false when current_user is nil' do
+        controller.stub current_user: nil
+        controller.instance_eval { admin? }.should be_false
+      end
+
+      it 'otherwise depends on { current_user.admin? }' do
+        user.stub admin?: false
+        controller.instance_eval { admin? }.should be_false
+        user.stub admin?: true
+        controller.instance_eval { admin? }.should be_true
+      end
+
+      it 'mutation-proofing' do
+        controller.current_user.should_receive(:admin?)
+        controller.instance_eval { admin? }
+      end
+    end
+  end
 end
