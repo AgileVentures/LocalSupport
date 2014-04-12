@@ -13,7 +13,6 @@ describe "volunteer_ops/index" do
   end
 
   it "renders a list of volunteer_ops" do
-    debugger
     render
     @volunteer_ops.each do |op|
       rendered.should have_content op.title
