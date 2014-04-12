@@ -13,8 +13,8 @@
 <% @volunteer_ops.each do |volunteer_op| %>
   <tr>
     <td><%= volunteer_op.title %></td>
-    <td><%= volunteer_op.description %></td>
-    <td><%= volunteer_op.organization %></td>
+    <td><%= volunteer_op.description%></td>
+    <td><%= volunteer_op.organization.name %></td>
     <td><%= link_to 'Show', volunteer_op %></td>
     <td><%= link_to 'Edit', edit_volunteer_op_path(volunteer_op) %></td>
     <td><%= link_to 'Destroy', volunteer_op, method: :delete, data: { confirm: 'Are you sure?' } %></td>
