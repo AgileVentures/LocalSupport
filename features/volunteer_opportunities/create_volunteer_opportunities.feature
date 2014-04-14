@@ -16,11 +16,11 @@ Feature: Org admin creating a volunteer work opportunity
     Given I am signed in as a charity worker related to "Friendly"
     And I am on the charity page for "Friendly"
     And I click "Create Volunteer Opportunity"
-    Then I should be on the create volunteer opportunity page for organization "Friendly"
+    Then I should be on the new volunteer opportunity page for organization "Friendly"
 
   Scenario: Org-owner creating a volunteer opportunity
     Given I am signed in as a charity worker related to "Friendly"
-    And I visit the create volunteer opportunity page for organization "Friendly"
+    And I visit the new volunteer opportunity page for organization "Friendly"
     And I submit an opportunity with title "Hard Work" and description "For no pay"
     Then I should be on the show volunteer opportunity page for organization "Friendly"
     And I should see "Hard Work"
