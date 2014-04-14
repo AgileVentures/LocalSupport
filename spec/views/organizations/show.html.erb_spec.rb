@@ -134,8 +134,9 @@ describe 'organizations/show.html.erb' do
     context 'logged in as org admin' do
       # When I am logged in as admin
       it 'should have a Create Volunteer Opportunity button' do
-        user.stub :org_admin? => true
+        user.stub :organization => organization
         view.stub :current_user => user
+        assign(:editable, true)
         render
         rendered.should have_link 'Create Volunteer Opportunity', :href => new_volunteer_op_path
       end
@@ -145,7 +146,7 @@ describe 'organizations/show.html.erb' do
         user.stub :org_admin? => false
         view.stub :current_user => user
         render
-        rendered.should_not have_link 'Create Volunteer Opportunity', :href => new_volunteer_op_path
+        rendered.should_not have_link 'Create Volunteer Opportunity'
       end
     end
     context 'not logged in' do
