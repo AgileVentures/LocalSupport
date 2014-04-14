@@ -137,7 +137,7 @@ describe 'organizations/show.html.erb' do
         user.stub :org_admin? => true
         view.stub :current_user => user
         render
-        rendered.should have_link 'Create Volunteer Opportunity', :href => new_organization_job_path(organization)
+        rendered.should have_link 'Create Volunteer Opportunity', :href => new_volunteer_op_path
       end
     end
     context 'logged in but not an admin of this organization' do
@@ -145,13 +145,13 @@ describe 'organizations/show.html.erb' do
         user.stub :org_admin? => false
         view.stub :current_user => user
         render
-        rendered.should_not have_link 'Create Volunteer Opportunity', :href => new_organization_job_path(organization)
+        rendered.should_not have_link 'Create Volunteer Opportunity', :href => new_volunteer_op_path
       end
     end
     context 'not logged in' do
       it 'should not have a Create Volunteer Opportunity button' do
         render
-        rendered.should_not have_link 'Create Volunteer Opportunity', :href => new_organization_job_path(organization)
+        rendered.should_not have_link 'Create Volunteer Opportunity', :href => new_volunteer_op_path
       end
     end
   end
