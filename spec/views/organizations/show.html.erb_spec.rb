@@ -102,7 +102,7 @@ describe 'organizations/show.html.erb' do
 
   describe 'this is my organization button' do
     context 'logged in user' do
-      let(:user) { stub_model User, :id => 2 }
+      let(:user) { stub_model User, :id => 2, :org_admin? => false }
       it 'renders grab button if grabbable true' do
         @grabbable = assign(:grabbable, true)
         view.stub(:current_user).and_return(user)
@@ -125,6 +125,33 @@ describe 'organizations/show.html.erb' do
         render
         rendered.should have_link 'This is my organization', :href => new_user_session_path
         #TODO should check hidden value for put
+      end
+    end
+  end
+
+  describe 'create volunteer opportunity button' do
+    let(:user) { stub_model User, :id => 2 }
+    context 'logged in as org admin' do
+      # When I am logged in as admin
+      it 'should have a Create Volunteer Opportunity button' do
+        user.stub :org_admin? => true
+        view.stub :current_user => user
+        render
+        rendered.should have_link 'Create Volunteer Opportunity', :href => new_organization_job_path(organization)
+      end
+    end
+    context 'logged in but not an admin of this organization' do
+      it 'should not have a Create Volunteer Opportunity button' do
+        user.stub :org_admin? => false
+        view.stub :current_user => user
+        render
+        rendered.should_not have_link 'Create Volunteer Opportunity', :href => new_organization_job_path(organization)
+      end
+    end
+    context 'not logged in' do
+      it 'should not have a Create Volunteer Opportunity button' do
+        render
+        rendered.should_not have_link 'Create Volunteer Opportunity', :href => new_organization_job_path(organization)
       end
     end
   end

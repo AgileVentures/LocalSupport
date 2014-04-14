@@ -26,6 +26,14 @@ Then /^I visit the (.*) page$/ do |location|
   end
 end
 
+Then /^I visit the (.*) page for organization "(.*?)"$/ do |location, organization|
+  organization = Organization.find_by_name organization
+  case location
+    when "create jobs" then visit new_organization_job_path(organization)
+    else raise "No matching path found for #{location}!"
+  end
+end
+
 Then /^I should be on the (.*) page$/ do |location|
   case location
   when "home" then current_path.should == root_path
@@ -40,6 +48,14 @@ Then /^I should be on the (.*) page$/ do |location|
   when "all users" then current_path.should == users_report_path
   when "invited users" then current_path.should == invited_users_report_path
   else raise "No matching path found for #{location}!"
+  end
+end
+
+Then /^I should be on the (.*) page for organization "(.*?)"$/ do |location, organization|
+  organization = Organization.find_by_name organization
+  case location
+    when "create jobs" then current_path.should == new_organization_job_path(organization)
+    else raise "No matching path found for #{location}!"
   end
 end
 
