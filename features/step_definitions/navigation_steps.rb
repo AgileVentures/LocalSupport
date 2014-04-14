@@ -27,10 +27,10 @@ Then /^I visit the (.*) page$/ do |location|
 end
 
 Then /^I visit the (.*) page for organization "(.*?)"$/ do |location, organization|
-  organization = Organization.find_by_name organization
+  org = Organization.find_by_name organization
   case location
     when "create volunteer opportunity" then visit new_volunteer_op_path
-    when "show volunteer opportunity" then visit volunteer_ops_path
+    when "show volunteer opportunity" then visit volunteer_ops_path(org_id: org)
     else raise "No matching path found for #{location}!"
   end
 end
@@ -53,10 +53,10 @@ Then /^I should be on the (.*) page$/ do |location|
 end
 
 Then /^I should be on the (.*) page for organization "(.*?)"$/ do |location, organization|
-  organization = Organization.find_by_name organization
+  org = Organization.find_by_name organization
   case location
     when "create volunteer opportunity" then current_path.should == new_volunteer_op_path
-    when "show volunteer opportunity" then current_path.should == volunteer_ops_path
+    when "show volunteer opportunity" then current_path.should == volunteer_ops_path(org_id: org)
     else raise "No matching path found for #{location}!"
   end
 end
