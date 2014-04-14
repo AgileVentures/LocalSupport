@@ -17,3 +17,8 @@ Feature: Org admin creating a volunteer work opportunity
     And I am on the charity page for "Friendly"
     And I click "Create Volunteer Opportunity"
     Then I should be on the create volunteer opportunity page for organization "Friendly"
+
+  Scenario: Only org-owners can create volunteer opportunities
+    # Tested that the API is restricted in the request spec
+    Given I am on the charity page for "Friendly"
+    Then I should not see a link with text "Create Volunteer Opportunity"
