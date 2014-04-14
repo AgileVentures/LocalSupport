@@ -199,7 +199,7 @@ describe VolunteerOpsController do
 
     context '#authorize' do
       it 'Unauthorized: redirects to root_path and displays flash' do
-        controller.stub admin?: false
+        controller.stub org_owner?: false
         # http://owowthathurts.blogspot.com/2013/08/rspec-response-delegation-error-fix.html
         controller.should_receive(:redirect_to).with(root_path) { true } # can't assert `redirect_to root_path`
         controller.instance_eval { authorize }.should be false
@@ -207,34 +207,50 @@ describe VolunteerOpsController do
       end
 
       it 'Authorized: allows execution to continue' do
-        controller.stub admin?: true
+        controller.stub org_owner?: true
         controller.instance_eval { authorize }.should be nil
       end
 
       it 'mutation-proofing' do
-        controller.stub admin?: false
-        controller.should_receive(:redirect_to)
-        controller.flash.should_receive(:[]=)
+        controller.stub org_owner?: false
+        controller.should_receive :redirect_to
+        controller.flash.should_receive(:[]=).with(:error, "You must be signed in as an organization owner to perform this action!")
         controller.instance_eval { authorize }.should be false
       end
     end
 
-    context '#admin?' do
-      it 'returns false when current_user is nil' do
-        controller.stub current_user: nil
-        controller.instance_eval { admin? }.should be_false
+    context '#org_owner?' do
+      context 'when current user is nil' do
+        before { controller.stub current_user: nil }
+
+        it 'returns false' do
+          controller.instance_eval { org_owner? }.should be_false
+        end
+        
+        it 'mutation-proofing' do
+          controller.current_user.should_receive :present?
+          controller.current_user.should_not_receive :organization
+          controller.instance_eval { org_owner? }
+        end
       end
 
-      it 'otherwise depends on { current_user.admin? }' do
-        user.stub admin?: false
-        controller.instance_eval { admin? }.should be_false
-        user.stub admin?: true
-        controller.instance_eval { admin? }.should be_true
-      end
+      context 'when there is a current user present' do
+        let(:org) { double :organization }
+        before { user.stub organization: nil }
 
-      it 'mutation-proofing' do
-        controller.current_user.should_receive(:admin?)
-        controller.instance_eval { admin? }
+        it 'otherwise depends on { current_user.organization.present? }' do
+          controller.instance_eval { org_owner? }.should be_false
+          user.stub organization: org
+          controller.instance_eval { org_owner? }.should be_true
+        end
+
+        it 'mutation-proofing' do
+          controller.current_user.should_receive :organization
+          user.stub organization: org
+          org.should_receive :present?
+          controller.instance_eval { org_owner? }
+        end
       end
     end
-    endend
+  end
+end

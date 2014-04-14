@@ -95,6 +95,7 @@ class VolunteerOpsController < ApplicationController
   end
 
   def org_owner?
-    current_user.try :can_edit?
+    current_user.organization.present? if current_user.present?
+    # current_user.try :can_edit?
   end
 end
