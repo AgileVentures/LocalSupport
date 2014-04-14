@@ -12,11 +12,19 @@ Feature: Org admin creating a volunteer work opportunity
       | admin@friendly.org | pppppppp | Friendly | 2007-01-01 10:00:00 |
     And cookies are approved
 
-  Scenario:
+  Scenario: Org-owners can see a Create Volunteer Opportunity button on their organization show page
     Given I am signed in as a charity worker related to "Friendly"
     And I am on the charity page for "Friendly"
     And I click "Create Volunteer Opportunity"
     Then I should be on the create volunteer opportunity page for organization "Friendly"
+
+  Scenario: Org-owner creating a volunteer opportunity
+    Given I am signed in as a charity worker related to "Friendly"
+    And I visit the create volunteer opportunity page for organization "Friendly"
+    And I submit an opportunity with title "Hard Work" and description "For no pay"
+    Then I should be on the show volunteer opportunity page for organization "Friendly"
+    And I should see "Hard Work"
+    And I should see "For no pay"
 
   Scenario: Only org-owners can create volunteer opportunities
     # Tested that the API is restricted in the request spec
