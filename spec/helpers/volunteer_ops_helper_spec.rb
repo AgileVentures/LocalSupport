@@ -6,12 +6,12 @@ describe VolunteerOpsHelper do
 
     it 'button mentions "Create" when it is a new record' do
       op.stub new_record?: true
-      button_text(op).should eq 'Create Volunteer Opportunity'
+      button_text(op).should eq 'Create a Volunteer Opportunity'
     end
 
     it 'button mentions "Update" when it is NOT a new record' do
       op.stub new_record?: false
-      button_text(op).should eq 'Update Volunteer Opportunity'
+      button_text(op).should eq 'Update a Volunteer Opportunity'
     end
 
     it 'mutation-proofing' do
