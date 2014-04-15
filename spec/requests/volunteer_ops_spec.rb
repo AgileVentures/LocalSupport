@@ -21,23 +21,4 @@ describe 'VolunteerOps', :helpers => :requests do
       }.to change(VolunteerOp, :count).by(0)
     end
   end
-
-  describe 'DELETE /volunteer_ops/:id' do
-    it 'destroys the requested volunteer_op' do
-      login(org_owner)
-      op = FactoryGirl.create(:volunteer_op)
-      expect {
-        delete volunteer_op_path({id: op.id})
-      }.to change(VolunteerOp, :count).by(-1)
-    end
-
-    it 'does not work for non-org-owners' do
-      login(non_org_owner)
-      op = FactoryGirl.create(:volunteer_op)
-      expect {
-        delete volunteer_op_path({id: op.id})
-      }.to change(VolunteerOp, :count).by(0)
-    end
-  end
-
 end
