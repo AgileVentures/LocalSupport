@@ -146,7 +146,8 @@ describe OrganizationsController do
     before(:each) do
       @user = double("User")
       Organization.stub(:find).with('37') { double_organization }
-      @user.stub(:can_edit?).and_return
+      @user.stub(:can_edit?)
+      @user.stub(:belongs_to?)
       @user.stub(:can_request_org_admin?)
       controller.stub(:current_user).and_return(@user)
     end
@@ -213,13 +214,13 @@ describe OrganizationsController do
         it 'true' do
           @user.should_receive(:belongs_to?) { true }
           get :show, :id => 37
-          assigns(:editable).should be true
+          assigns(:belongs_to).should be true
         end
 
         it 'false' do
           @user.should_receive(:belongs_to?) { false }
           get :show, :id => 37
-          assigns(:editable).should be false
+          assigns(:belongs_to).should be false
         end
       end
 
@@ -227,7 +228,7 @@ describe OrganizationsController do
         controller.stub current_user: nil
         @user.should_not_receive :belongs_to?
         get :show, :id => 37
-        assigns(:editable).should be nil
+        assigns(:belongs_to).should be nil
       end
     end
   end

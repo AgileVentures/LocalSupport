@@ -131,13 +131,13 @@ describe 'organizations/show.html.erb' do
 
   describe 'create volunteer opportunity button' do
     it 'shows when belongs_to is true' do
-      controller.stub belongs_to: true
+      assign(:belongs_to, true)
       render
       rendered.should have_link 'Create a Volunteer Opportunity', :href => new_volunteer_op_path
     end
 
     it 'does not shows when belongs_to is false' do
-      controller.stub belongs_to: false
+      assign(:belongs_to, false)
       render
       rendered.should_not have_link 'Create a Volunteer Opportunity', :href => new_volunteer_op_path
     end
