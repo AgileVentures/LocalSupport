@@ -12,6 +12,12 @@ describe "volunteer_ops/new" do
     view.stub current_user: user
   end
 
+  it 'uses a partial that needs local variables' do
+    submission_url = volunteer_ops_path(org_id: view.current_user.organization.id)
+    render
+    view.should render_template(partial: '_form', locals: { url: submission_url })
+  end
+
   it "renders new volunteer_op form" do
     render
     rendered.should have_content 'Create a new Volunteer Opportunity'
@@ -26,9 +32,9 @@ describe "volunteer_ops/new" do
     rendered.should have_css 'input[value="Create Volunteer Opportunity"]'
   end
 
-  it 'uses a partial that needs local variables' do
-    submission_url = volunteer_ops_path(org_id: view.current_user.organization.id)
+  it "only has 1 text area and 1 text input" do
     render
-    view.should render_template(partial: '_form', locals: { url: submission_url })
+    rendered.should have_css("textarea", :count => 1 )
+    rendered.should have_css("input[type=text]", :count => 1 )
   end
 end

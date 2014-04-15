@@ -10,6 +10,7 @@ describe "volunteer_ops/edit" do
   end
 
   it "renders the edit volunteer_op form" do
+    pending "No cucumber feature for edit view yet"
     render
 
 
