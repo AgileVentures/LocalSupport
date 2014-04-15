@@ -130,29 +130,16 @@ describe 'organizations/show.html.erb' do
   end
 
   describe 'create volunteer opportunity button' do
-    let(:user) { stub_model User, :id => 2 }
-    context 'logged in as someone (current_user is present)' do
-      it 'org-owner should have a Create Volunteer Opportunity button' do
-        user.stub :organization => organization
-        view.stub :current_user => user
-        assign(:editable, true)
-        render
-        rendered.should have_link 'Create Volunteer Opportunity', :href => new_volunteer_op_path
-      end
-
-      it 'non-org-owner should not have a Create Volunteer Opportunity button' do
-        user.stub :org_admin? => false
-        view.stub :current_user => user
-        render
-        rendered.should_not have_link 'Create Volunteer Opportunity'
-      end
+    it 'shows when belongs_to is true' do
+      controller.stub belongs_to: true
+      render
+      rendered.should have_link 'Create a Volunteer Opportunity', :href => new_volunteer_op_path
     end
 
-    context 'not logged in (current_user is nil)' do
-      it 'should not have a Create Volunteer Opportunity button' do
-        render
-        rendered.should_not have_link 'Create Volunteer Opportunity', :href => new_volunteer_op_path
-      end
+    it 'does not shows when belongs_to is false' do
+      controller.stub belongs_to: false
+      render
+      rendered.should_not have_link 'Create a Volunteer Opportunity', :href => new_volunteer_op_path
     end
   end
 end

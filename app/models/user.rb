@@ -29,6 +29,15 @@ class User < ActiveRecord::Base
     make_admin_of_org_with_matching_email
   end
 
+  def belongs_to? object
+    method_call = object.class.to_s.underscore
+    if self.respond_to? method_call
+      self.send(method_call) == object
+    else
+      false
+    end
+  end
+
   def can_edit? org
     admin? || (!org.nil? && organization == org)
   end
