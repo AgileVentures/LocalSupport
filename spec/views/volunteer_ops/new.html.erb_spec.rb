@@ -13,9 +13,9 @@ describe "volunteer_ops/new" do
   end
 
   it 'uses a partial that needs local variables' do
-    submission_url = volunteer_ops_path(org_id: view.current_user.organization.id)
+    url = volunteer_ops_path(org_id: view.current_user.organization.id)
     render
-    view.should render_template(partial: '_form', locals: { url: submission_url })
+    view.should render_template(partial: '_form', locals: { submission_url: url })
   end
 
   it "renders new volunteer_op form" do

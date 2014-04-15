@@ -1,1 +1,1 @@
-<%= render 'form' %>
+<%= render partial: 'form', locals: {submission_url: volunteer_ops_path(org_id: current_user.organization.id)} %>
