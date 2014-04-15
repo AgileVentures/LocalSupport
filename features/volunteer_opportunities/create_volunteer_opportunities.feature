@@ -10,6 +10,8 @@ Feature: Org admin creating a volunteer work opportunity
     And the following users are registered:
       | email              | password | organization | confirmed_at        |
       | admin@friendly.org | pppppppp | Friendly     | 2007-01-01 10:00:00 |
+      | admin@example.org  | pppppppp | Shy          | 2007-01-01 10:00:00 |
+
     And cookies are approved
 
   Scenario: Org-owners can see a Create Volunteer Opportunity button on their organization show page
@@ -30,4 +32,11 @@ Feature: Org admin creating a volunteer work opportunity
   Scenario: Only org-owners can create volunteer opportunities
     # Tested that the API is restricted in the request spec
     Given I am on the charity page for "Friendly"
-    Then I should not see a link with text "Create Volunteer Opportunity"
+    Then I should not see a link with text "Create a Volunteer Opportunity"
+
+  Scenario: Signed in users who don't own the org cannot create volunteer opportunities
+    Given I am signed in as a charity worker related to "Shy"
+    And I am on the charity page for "Friendly"
+    Then I should not see a link with text "Create a Volunteer Opportunity"
+
+    

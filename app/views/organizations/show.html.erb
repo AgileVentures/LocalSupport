@@ -56,7 +56,7 @@
     <div class="position-bottom span6">
       <% if @editable %>
           <%= link_to("Edit", edit_organization_path(@organization.id), {:class => 'btn btn-primary'}) %>
-          <%= link_to("Create Volunteer Opportunity", new_volunteer_op_path, {:class => 'btn btn-primary'}) %>
+          <%= link_to("Create a Volunteer Opportunity", new_volunteer_op_path, {:class => 'btn btn-primary'}) %>
       <% end %>
       <% if current_user %>
           <%= link_to "This is my organization", user_report_path(organization_id: @organization.id, id: current_user.id), {method: :put, class: 'btn btn-primary'} if @grabbable %>
