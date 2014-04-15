@@ -13,14 +13,14 @@ describe "volunteer_ops/new" do
   end
 
   it 'uses a partial that needs local variables' do
-    submission_url = volunteer_ops_path(org_id: view.current_user.organization.id)
+    url = volunteer_ops_path(org_id: view.current_user.organization.id)
     render
-    view.should render_template(partial: '_form', locals: { url: submission_url })
+    view.should render_template(partial: '_form', locals: { submission_url: url })
   end
 
   it "renders new volunteer_op form" do
     render
-    rendered.should have_content 'Create a new Volunteer Opportunity'
+    rendered.should have_selector('h3')
     rendered.should have_selector("form", :action => volunteer_ops_path(org_id: view.current_user.organization), :method => "post") do |form|
       form.should have_selector("input#volunteer_op_title", :name => "volunteer_op[title]")
       form.should have_selector("textarea#volunteer_op_description", :name => "volunteer_op[description]")

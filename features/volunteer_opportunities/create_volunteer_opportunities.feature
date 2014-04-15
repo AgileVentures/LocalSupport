@@ -21,6 +21,7 @@ Feature: Org admin creating a volunteer work opportunity
   Scenario: Org-owner creating a volunteer opportunity
     Given I am signed in as a charity worker related to "Friendly"
     And I visit the new volunteer opportunity page for organization "Friendly"
+    And I should see "Create a new Volunteer Opportunity"
     And I submit an opportunity with title "Hard Work" and description "For no pay"
     Then I should be on the show volunteer opportunity page for organization "Friendly"
     And I should see "Hard Work"
