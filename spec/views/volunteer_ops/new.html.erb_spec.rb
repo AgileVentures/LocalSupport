@@ -25,4 +25,12 @@ describe "volunteer_ops/new" do
     render
     rendered.should have_css 'input[value="Create Volunteer Opportunity"]'
   end
+
+  it "only has 1 text area and 1 text input" do
+    render
+    rendered.should have_css("textarea", :count => 1 )
+    rendered.should have_css("input[type=text]", :count => 1 )
+  end
+
+
 end
