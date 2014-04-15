@@ -1,17 +1,6 @@
 class VolunteerOpsController < ApplicationController
   before_filter :authorize, :except => [:index, :show]
 
-  # GET /volunteer_ops
-  # GET /volunteer_ops.json
-  def index
-    @volunteer_ops = VolunteerOp.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @volunteer_ops }
-    end
-  end
-
   # GET /volunteer_ops/1
   # GET /volunteer_ops/1.json
   def show
@@ -34,11 +23,6 @@ class VolunteerOpsController < ApplicationController
     end
   end
 
-  # GET /volunteer_ops/1/edit
-  def edit
-    @volunteer_op = VolunteerOp.find(params[:id])
-  end
-
   # POST /volunteer_ops
   # POST /volunteer_ops.json
   def create
@@ -53,34 +37,6 @@ class VolunteerOpsController < ApplicationController
         format.html { render action: "new" }
         format.json { render json: @volunteer_op.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PUT /volunteer_ops/1
-  # PUT /volunteer_ops/1.json
-  def update
-    @volunteer_op = VolunteerOp.find(params[:id])
-
-    respond_to do |format|
-      if @volunteer_op.update_attributes(params[:volunteer_op])
-        format.html { redirect_to @volunteer_op, notice: 'Volunteer op was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @volunteer_op.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /volunteer_ops/1
-  # DELETE /volunteer_ops/1.json
-  def destroy
-    @volunteer_op = VolunteerOp.find(params[:id])
-    @volunteer_op.destroy
-
-    respond_to do |format|
-      format.html { redirect_to volunteer_ops_url }
-      format.json { head :no_content }
     end
   end
 
