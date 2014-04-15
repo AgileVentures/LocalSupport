@@ -203,3 +203,12 @@ body {
     outline: 0;
     background: #FFF;
 }
+
+/* Page edit form */
+
+label.control-label#page_link_visible {
+    display: inline-block;
+}
+input#page_link_visible {
+    margin: 0;
+}

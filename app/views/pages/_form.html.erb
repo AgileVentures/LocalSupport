@@ -18,8 +18,8 @@
       </div>
     </div>
     <div class="control-group">
-      <%= f.label :link_visible, "Show a public link to this page", :class => 'control-label', :style => 'display: inline-block' %>
-      <%= f.check_box :link_visible, :checked_value => "true", :unchecked_value => "false", :style => 'margin: 0' %>
+      <%= f.label :link_visible, "Show a public link to this page", :class => 'control-label', :id => "page_link_visible" %>
+      <%= f.check_box :link_visible, :checked_value => "true", :unchecked_value => "false" %>
     </div>
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>

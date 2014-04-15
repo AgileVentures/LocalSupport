@@ -17,7 +17,6 @@ describe 'pages/edit.html.erb' do
         "input[type=checkbox][name='page[link_visible]']"
     end
     it 'has a corresponding label' do
-      debugger
       expect(rendered).to have_css \
         "label[for=page_link_visible]"
     end
