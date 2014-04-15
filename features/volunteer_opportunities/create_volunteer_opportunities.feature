@@ -5,12 +5,14 @@ Feature: Org admin creating a volunteer work opportunity
 
   Background:
     Given the following organizations exist:
-      | name     | description             | address        | postcode | telephone | website             | email              |
-      | Friendly | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.org | admin@friendly.org |
+      | name     | description             | address        | postcode | telephone | website                        | email                      |
+      | Friendly | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.example.org    | admin@friendly.example.org |
+      | Shy      | Software design         | 34 pinner road | HA1 1AA  | 020800001 | http://shy.example.org         | admin@shy.example.org      |
+
     And the following users are registered:
-      | email              | password | organization | confirmed_at        |
-      | admin@friendly.org | pppppppp | Friendly     | 2007-01-01 10:00:00 |
-      | admin@example.org  | pppppppp | Shy          | 2007-01-01 10:00:00 |
+      | email                      | password | organization | confirmed_at        |
+      | admin@friendly.example.org | pppppppp | Friendly     | 2007-01-01 10:00:00 |
+      | admin@shy.example.org      | pppppppp | Shy          | 2007-01-01 10:00:00 |
 
     And cookies are approved
 
