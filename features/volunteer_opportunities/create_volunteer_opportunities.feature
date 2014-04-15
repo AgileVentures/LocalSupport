@@ -29,4 +29,4 @@ Feature: Org admin creating a volunteer work opportunity
   Scenario: Only org-owners can create volunteer opportunities
     # Tested that the API is restricted in the request spec
     Given I am on the charity page for "Friendly"
-    Then I should not see a link with text "Create Volunteer Opportunity"
+    Then I should not see a link with text "Create a Volunteer Opportunity"
