@@ -19,8 +19,7 @@ Background: organizations with volunteer opportunities have been added to databa
 Scenario: See a list of current volunteer opportunities
     Given I am on the volunteer opportunities page
     And cookies are approved
-    And show me the page
     Then I should see:
-    | Title                           | Description                        | Organization              |
+    | title                           | description                        | organization              |
     | Litter Box Scooper              | Assist with feline sanitation      | Cats Are Us               |
     | Office Support                  | Help with printing and copying.    | Indian Elders Association |

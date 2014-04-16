@@ -65,9 +65,10 @@ Given /the following organizations exist/ do |organizations_table|
   end
 end
 
-Given /the following volunteer opportunities exist/ do |organizations_table|
-  organizations_table.hashes.each do |op|
-    VolunteerOp.create! op
+Given /the following volunteer opportunities exist/ do |volunteer_ops_table|
+  volunteer_ops_table.hashes.each do |volunteer_op|
+    volunteer_op["organization"] = Organization.find_by_name(volunteer_op["organization"])
+    VolunteerOp.create! volunteer_op, :without_protection => true
   end
 end
 
