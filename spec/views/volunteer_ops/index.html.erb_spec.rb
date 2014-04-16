@@ -20,4 +20,5 @@ describe "volunteer_ops/index" do
       rendered.should have_content op.organization.name
     end
   end
+
 end
