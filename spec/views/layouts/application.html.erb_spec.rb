@@ -22,10 +22,10 @@ describe "layouts/application.html.erb", :type => :feature do
     end
 
     it 'renders sign in form fields correctly' do
-       render
-       rendered.should have_css("#loginForm input#user_password")
-       rendered.should have_css("#loginForm input#user_email")
-       rendered.should have_css("#loginForm input#signin")
+      render
+      rendered.should have_css("#loginForm input#user_password")
+      rendered.should have_css("#loginForm input#user_email")
+      rendered.should have_css("#loginForm input#signin")
     end
 
     it 'renders dropdown menu' do
@@ -73,7 +73,7 @@ describe "layouts/application.html.erb", :type => :feature do
     end
 
     it 'should display flash messages when successful' do
-      view.stub(:flash).and_return([[:notice,"Yes, we have been successful!!!!!"]])
+      view.stub(:flash).and_return([[:notice, "Yes, we have been successful!!!!!"]])
       render
       rendered.should have_selector("div.alert")
       rendered.should have_content("Yes, we have been successful!!!!!")
@@ -81,20 +81,26 @@ describe "layouts/application.html.erb", :type => :feature do
     end
 
     it 'should display flash messages when failing' do
-      view.stub(:flash).and_return([[:error,"No, no, no!"]])
+      view.stub(:flash).and_return([[:error, "No, no, no!"]])
       render
       rendered.should have_selector("div.alert")
       rendered.should have_content("No, no, no!")
       rendered.should have_selector("div.alert-error")
     end
 
-     it 'should display a logo linked to the contributors page' do
+    it 'should display a logo linked to the contributors page' do
       render
       doc = Nokogiri::HTML(rendered)
-      doc.xpath("//a/img[@alt='Agile Ventures Local Support']/..").first['href'].should eq contributors_path
-     end
+      doc.xpath("//a/img[@alt='Agile Ventures']/..").first['href'].should eq contributors_path
+    end
+    #TODO replace with within?
+    it 'should display a logo linked to the ninefold page' do
+      render
+      doc = Nokogiri::HTML(rendered)
+      doc.xpath("//a/img[@alt='Ninefold']/..").first['href'].should eq 'https://ninefold.com'
+    end
 
-    it "does not render a new organization link"  do
+    it "does not render a new organization link" do
       view.stub(:user_signed_in? => false)
       render
       rendered.should_not have_xpath("//a[@href='#{new_organization_path}']")
@@ -133,7 +139,7 @@ describe "layouts/application.html.erb", :type => :feature do
       end
     end
 
-    it "does not render a new organization link"  do
+    it "does not render a new organization link" do
       render
       rendered.should_not have_xpath("//a[@href='#{new_organization_path}']")
     end
