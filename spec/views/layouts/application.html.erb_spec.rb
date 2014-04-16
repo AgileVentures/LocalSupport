@@ -118,7 +118,7 @@ describe "layouts/application.html.erb", :type => :feature do
       it "shows a link to all of the editable pages" do
         pages = [page_one, page_two]
         absent_pages = [page_three]
-        Page.should_receive(:all).and_return pages
+        assign(:footer_page_links, pages)
         render
         pages.each do |page|
           rendered.should have_link(page.name, :href => page_path(page.permalink))
