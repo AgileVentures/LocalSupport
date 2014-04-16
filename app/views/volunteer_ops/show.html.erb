@@ -12,9 +12,5 @@
 
 <p>
   <b>Organization:</b>
-  <%= @volunteer_op.organization %>
+  <%= @volunteer_op.organization.name %>
 </p>
-
-
-<%= link_to 'Edit', edit_volunteer_op_path(@volunteer_op) %> |
-<%= link_to 'Back', volunteer_ops_path %>
