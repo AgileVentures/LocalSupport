@@ -43,10 +43,11 @@ Then(/^the "(.*?)" link is not in the footer$/) do |link|
   expect(page.has_xpath? "//footer//a[@href=\"\/#{link}\"]").to be_false
 end
 
+Then(/^the "(.*?)" link is in the footer$/) do |link|
+  expect(page.has_xpath? "//footer//a[@href=\"\/#{link}\"]").to be_true
+end
+
 And(/^I add "(.*?)" to the footer$/) do |arg1|
   pending # express the regexp above with the code you wish you had
 end
 
-Then(/^the "(.*?)" link is in the footer$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
