@@ -14,6 +14,13 @@ describe 'VolunteerOps', :helpers => :requests do
       }.to change(VolunteerOp, :count).by(1)
     end
 
+    it 'the new VolunteerOp is associated with the organization of the current user' do
+      login(org_owner)
+      post volunteer_ops_path, params
+      op = VolunteerOp.last
+      op.organization.should eq org_owner.organization
+    end
+
     it 'does not work for non-org-owners' do
       login(non_org_owner)
       expect {
