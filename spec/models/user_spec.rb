@@ -74,7 +74,21 @@ describe User do
   # http://stackoverflow.com/questions/12125038/where-do-i-confirm-user-created-with-factorygirl
   describe '#make_admin_of_org_with_matching_email' do
     before do
-      Gmaps4rails.stub(:geocode => nil)
+      Geocoder.configure(:lookup => :test)
+      Geocoder::Lookup::Test.set_default_stub(
+          [
+              {
+                  'latitude' => 40.7143528,
+                  'longitude' => -74.0059731,
+                  'address' => 'New York, NY, USA',
+                  'state' => 'New York',
+                  'state_code' => 'NY',
+                  'country' => 'United States',
+                  'country_code' => 'US'
+              }
+          ]
+      )
+
       @user = FactoryGirl.create(:user, email: 'bert@charity.org')
       @admin_user = FactoryGirl.create(:user, email: 'admin@charity.org')
       @mismatch_org = FactoryGirl.create(:organization, email: 'admin@other_charity.org')

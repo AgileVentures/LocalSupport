@@ -6,21 +6,19 @@ class OrganizationsController < ApplicationController
 
   def search
     @query_term = params[:q]
-    @category_id = params.try(:[],'category').try(:[],'id')
+    @category_id = params.try(:[], 'category').try(:[], 'id')
     @category = Category.find_by_id(@category_id)
     @organizations = Organization.order_by_most_recent
     @organizations = @organizations.search_by_keyword(@query_term).filter_by_category(@category_id)
     flash.now[:alert] = SEARCH_NOT_FOUND if @organizations.empty?
-    @json = gmap4rails_with_popup_partial(@organizations,'popup')
     @category_options = Category.html_drop_down_options
-    render :template =>'organizations/index'
+    render :template => 'organizations/index'
   end
 
   # GET /organizations
   # GET /organizations.json
   def index
     @organizations = Organization.order_by_most_recent
-    @json = gmap4rails_with_popup_partial(@organizations,'popup')
     @category_options = Category.html_drop_down_options
   end
 
@@ -30,8 +28,6 @@ class OrganizationsController < ApplicationController
     @organization = Organization.find(params[:id])
     @editable = current_user.can_edit?(@organization) if current_user
     @grabbable = current_user ? current_user.can_request_org_admin?(@organization) : true
-   # @next_path = current_user ? organization_user_path(@organization.id, current_user.id) : new_user_session_path
-    @json = gmap4rails_with_popup_partial(@organization,'popup')
   end
 
   # GET /organizations/new
@@ -43,11 +39,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1/edit
   def edit
     @organization = Organization.find(params[:id])
-    @json = gmap4rails_with_popup_partial(@organization,'popup')
     return false unless user_can_edit? @organization
-    #respond_to do |format|
-    #  format.html {render :layout => 'full_width'}
-    #end
   end
 
   # POST /organizations
@@ -55,10 +47,10 @@ class OrganizationsController < ApplicationController
   def create
     # model filters for logged in users, but we check here if that user is an admin
     # TODO refactor that to model responsibility?
-     unless current_user.try(:admin?)
-       flash[:notice] = PERMISSION_DENIED
-       redirect_to organizations_path and return false
-     end
+    unless current_user.try(:admin?)
+      flash[:notice] = PERMISSION_DENIED
+      redirect_to organizations_path and return false
+    end
     @organization = Organization.new(params[:organization])
 
     if @organization.save
@@ -95,13 +87,8 @@ class OrganizationsController < ApplicationController
   end
 
   private
-  def gmap4rails_with_popup_partial(item, partial)
-    item.to_gmaps4rails  do |org, marker|
-      marker.infowindow render_to_string(:partial => partial, :locals => { :@org => org})
-    end
-  end
   def user_can_edit?(org)
-    unless current_user.try(:can_edit?,org)
+    unless current_user.try(:can_edit?, org)
       flash[:notice] = PERMISSION_DENIED
       redirect_to organization_path(params[:id]) and return false
     end

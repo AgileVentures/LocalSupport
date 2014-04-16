@@ -6,7 +6,11 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
-  <!--this is where the gmaps scripts are added-->
+
+  <!--google maps API-->
+  <script src="//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry" type='text/javascript'></script>
+
+
   <%= yield :scripts %>
 </head>
 

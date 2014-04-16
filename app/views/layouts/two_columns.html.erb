@@ -1,7 +1,13 @@
+<% content_for :scripts do %>
+    <%= javascript_include_tag 'google_maps' %>
+<% end %>
+
 <!-- Span 6 -->
 <div class="row">
   <div id="column1" class="span6">
-    <%= yield :map %>
+    <div class="map_container">
+      <div id="map-canvas"></div>
+    </div>
   </div>
   <div id="column2" class="span6">
     <%= yield %>

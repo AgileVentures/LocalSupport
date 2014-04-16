@@ -7,18 +7,23 @@ class String
 end
 
 class Organization < ActiveRecord::Base
-  #validates_presence_of :website, :with => /http:\/\//
-  validates_url :website, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.website.present?}
-  validates_url :donation_info, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.donation_info.present?}
-
-  # http://stackoverflow.com/questions/10738537/lazy-geocoding
-  acts_as_gmappable :check_process => false, :process_geocoding => :run_geocode?
   has_many :users
   has_and_belongs_to_many :categories
+  accepts_nested_attributes_for :users
+
+
   # Setup accessible (or protected) attributes for your model
   # prevents mass assignment on other fields not in this list
   attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info, :publish_address, :publish_phone, :publish_email
-  accepts_nested_attributes_for :users
+
+  # From the geocoder gem
+  geocoded_by :full_address
+  after_validation :geocode, :if => lambda { |org| org.run_geocode? }
+
+  # From the url_validator gem
+  validates_url :website, :prefferred_scheme => 'http://', :if => lambda { |org| org.website.present? }
+  validates_url :donation_info, :prefferred_scheme => 'http://', :if => lambda { |org| org.donation_info.present? }
+
   scope :order_by_most_recent, order('updated_at DESC')
   scope :not_null_email, :conditions => "organizations.email <> ''"
   # Should we not use :includes, which pulls in extra data? http://nlingutla.com/blog/2013/04/21/includes-vs-joins-in-rails/
@@ -28,19 +33,11 @@ class Organization < ActiveRecord::Base
   scope :without_matching_user_emails, :conditions => "organizations.email NOT IN (#{User.select('email').to_sql})"
 
   def run_geocode?
-    ## http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
-    address_changed? or (address.present? and not_geocoded?)
+    address_changed? or (address.present? and not_geocoded?) # http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
   end
 
   def not_geocoded?
     latitude.blank? and longitude.blank?
-  end
-
-  #This method is overridden to save organization if address was failed to geocode
-  def run_validations!
-    run_callbacks :validate
-    remove_errors_with_address
-    errors.empty?
   end
 
   #TODO: Give this TLC and refactor the flow or refactor out responsibilities
@@ -63,10 +60,12 @@ class Organization < ActiveRecord::Base
     end
   end
 
+  #TODO This should be moved to a scope
   def self.search_by_keyword(keyword)
     self.where("UPPER(description) LIKE ? OR UPPER(name) LIKE ?","%#{keyword.try(:upcase)}%","%#{keyword.try(:upcase)}%")
   end
 
+  #TODO This should be moved to a scope
   def self.filter_by_category(category_id)
     return scoped unless category_id.present?
     # could use this but doesn't play well with search by keyqord since table names are remapped
@@ -76,40 +75,35 @@ class Organization < ActiveRecord::Base
     where(:id => orgs)
   end
 
-  def gmaps4rails_address
+  # previously known as gmaps4rails address
+  def full_address
     "#{self.address}, #{self.postcode}"
-  end
-
-  def gmaps4rails_infowindow
-    "#{self.name}"
   end
 
   #Edit this if CSV 'schema' changes
   #value is the name of a column in csv file
-  @@column_mappings = {
-      name: 'Title',
-      address: 'Contact Address',
-      description: 'Activities',
-      website: 'website',
-      telephone: 'Contact Telephone',
-      date_removed: 'date removed',
-      cc_id: 'Charity Classification'
-  }
-
   def self.column_mappings
-    @@column_mappings
+    {
+        name: 'Title',
+        address: 'Contact Address',
+        description: 'Activities',
+        website: 'website',
+        telephone: 'Contact Telephone',
+        date_removed: 'date removed',
+        cc_id: 'Charity Classification'
+    }
   end
 
   def self.import_categories_from_array(row)
     check_columns_in(row)
-    org_name = row[@@column_mappings[:name]].to_s.humanized_all_first_capitals
+    org_name = row[self.column_mappings[:name]].to_s.humanized_all_first_capitals
     org = Organization.find_by_name(org_name)
     check_categories_for_import(row, org)
     org
   end
 
   def self.check_categories_for_import(row, org)
-    category_ids = row[@@column_mappings[:cc_id]] if org
+    category_ids = row[self.column_mappings[:cc_id]] if org
     category_ids.split(',').each do |id|
       cat = Category.find_by_charity_commission_id(id.to_i)
       org.categories << cat
@@ -126,7 +120,7 @@ class Organization < ActiveRecord::Base
     CreateOrganizationFromArray.create(Organization, row, validate)
   end
 
-  def self.create_and_validate(attributes) 
+  def self.create_and_validate(attributes)
     create!(attributes)
   end
 
@@ -167,41 +161,9 @@ class Organization < ActiveRecord::Base
   end
 
   def self.check_columns_in(row)
-    @@column_mappings.each_value do |column_name|
+    self.column_mappings.each_value do |column_name|
       unless row.header?(column_name)
         raise CSV::MalformedCSVError, "No expected column with name #{column_name} in CSV file"
-      end
-    end
-  end
-
-  def generate_potential_user
-    password = Devise.friendly_token.first(8)
-    user = User.new(:email => self.email, :password => password)
-    unless user.valid?
-      user.save
-      return user # so that it can be inspected for errors
-    end
-    user.skip_confirmation_notification!
-    user.reset_password_token=(User.reset_password_token)
-    user.reset_password_sent_at=Time.now
-    user.save!
-    user.confirm!
-    user
-  end
-
-  private
-
-  def remove_errors_with_address
-    errors_hash = errors.to_hash
-    errors.clear
-    errors_hash.each do |key, value|
-      logger.warn "#{key} --> #{value}"
-      if key.to_s != 'gmaps4rails_address'
-        errors.add(key, value)
-      else
-        # nullify coordinates
-        self.latitude = nil
-        self.longitude = nil
       end
     end
   end

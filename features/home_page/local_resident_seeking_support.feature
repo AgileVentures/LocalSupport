@@ -20,7 +20,6 @@ Scenario: Find help with care for elderly
   Then I should see contact details for "Indian Elders Association" and "Age UK"
   And I should see "Indian Elders Association"
   And I should see "Age UK"
-  And I should see search results for "elderly" in the map
   And the search box should contain "elderly"
 
 # starting within main site

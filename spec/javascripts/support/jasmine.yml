@@ -12,8 +12,10 @@
 #
 src_files:
   - assets/application.js
+  - assets/google_maps.js
   - assets/invitations.js
   - assets/this_is_my_org.js
+
   - assets/jasmine-jquery.js
 
 # stylesheets

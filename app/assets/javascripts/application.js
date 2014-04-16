@@ -7,8 +7,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require_tree ./gmaps4rails
 //= require_tree ./global
+
+var LocalSupport = {};
 
 $(function() {
     // invoke global functions here

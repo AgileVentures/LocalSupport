@@ -13,7 +13,7 @@ class CreateOrganizationFromArray
   end
 
   def create(validate)
-    return nil if @csv_organization.is_organization_removed? 
+    return nil if @csv_organization.is_organization_removed?
     return nil if organization_already_exists?
     @organization_repository.create_and_validate(
       name:@csv_organization.organization_name,

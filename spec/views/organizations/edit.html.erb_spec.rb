@@ -80,4 +80,9 @@ it 'renders errors without prefatory error message' do
   render.should have_content("Sample error")
   render.should_not have_content("1 error prohibited this organization from being saved:")
 end
+
+  it 'renders a script with organization info as json' do
+    render
+    rendered.should have_css 'script', text: "LocalSupport.maps.data = [#{@organization.to_json}]"
+  end
 end
