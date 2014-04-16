@@ -51,9 +51,10 @@ describe VolunteerOpsController do
     let(:op) { stub_model VolunteerOp, id: '9' }
     let(:attributes) { {title: 'hard work', description: 'for the willing'} }
     before do
+      user.stub organization: org
       controller.stub current_user: user, org_owner?: true
       VolunteerOp.stub new: op
-      op.stub save: true
+      op.stub :save => true, :organization= => true
     end
 
     it 'assigns a newly created volunteer_op as @volunteer_op' do
