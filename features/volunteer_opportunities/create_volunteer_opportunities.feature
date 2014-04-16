@@ -31,6 +31,7 @@ Feature: Org admin creating a volunteer work opportunity
     Then I should be on the show volunteer opportunity page for organization "Friendly"
     And I should see "Hard Work"
     And I should see "For no pay"
+	And I should see "Organisation: Friendly"
 
   Scenario: Only org-owners can create volunteer opportunities
     # Tested that the API is restricted in the request spec
