@@ -1,7 +1,7 @@
 <footer class="footer">
   <p class="text-right"><small>
     <%= link_to_if(current_user.try(:admin?), 'New Organisation',new_organization_path){} %> |
-    <% Page.all.each do |page|  %>
+    <% @footer_page_links.each do |page|  %>
         <%= link_to_unless_current page.name, page_path(page.permalink) %> |
     <% end %>
   </small></p>
