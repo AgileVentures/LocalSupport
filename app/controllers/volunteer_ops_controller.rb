@@ -27,8 +27,7 @@ class VolunteerOpsController < ApplicationController
   # POST /volunteer_ops.json
   def create
     @volunteer_op = VolunteerOp.new(params[:volunteer_op])
-    #TODO add association with current_user's organization
-
+    @volunteer_op.organization = current_user.organization
     respond_to do |format|
       if @volunteer_op.save
         format.html { redirect_to @volunteer_op, notice: 'Volunteer op was successfully created.' }

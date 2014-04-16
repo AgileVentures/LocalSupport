@@ -3,9 +3,6 @@ describe VolunteerOpsController do
   let(:user) { double :user }
   let(:org) { double :organization, id: '1' }
   let(:op) { double :volunteer_op, id: '9' }
-#  before do
-#    op.stub organization: org
-#  end
 
   describe 'GET show' do
     before { VolunteerOp.stub find: op }
@@ -64,11 +61,11 @@ describe VolunteerOpsController do
       assigns(:volunteer_op).should eq op
     end
 
-		it 'associates the new opportunity with the organization of the current user' do
-			controller.current_user.should_receive(:organization) { org }
-			op.should_receive(:organization=).with(org)
+    it 'associates the new opportunity with the organization of the current user' do
+      controller.current_user.should_receive(:organization) { org }
+      op.should_receive(:organization=).with(org)
       post :create, {volunteer_op: attributes}
-		end
+    end
 
     it 'non-org-owners denied' do
       controller.stub org_owner?: false
