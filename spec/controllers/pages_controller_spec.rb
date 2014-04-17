@@ -45,6 +45,13 @@ describe PagesController do
       get :index, {}
       response.should render_template 'layouts/full_width'
     end
+
+    it "assigns the pages in alphabetical order by default" do
+      page_xyz = Page.create! ({ "name" => "Xyz", "permalink" => "xyz" })
+      page_abc = Page.create! ({ "name" => "Abc", "permalink" => "abc" })
+      get :index, {}
+      assigns(:pages).should eq([page_abc, page_xyz])
+    end
   end
 
   describe "GET show", :helpers => :controllers do
