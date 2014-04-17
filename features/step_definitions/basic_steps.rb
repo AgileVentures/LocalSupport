@@ -373,3 +373,7 @@ Given(/^the (.*?) for "(.*?)" has been marked (public|hidden)$/) do |field,name,
   org.save!
 end
 
+
+Then(/^should see "([^"]*)" page before "([^"]*)"$/) do |first_item, second_item|
+  page.body.should =~ /#{first_item}.*#{second_item}/m
+end
