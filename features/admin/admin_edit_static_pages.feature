@@ -8,7 +8,7 @@ Feature: I want to be able to edit static pages
     Given the following pages exist:
       | name         | permalink  | content |
       | About Us     | about      | abc123  |
-      | Wow Page     | wow        | wow678  |
+      | Wow          | wow        | wow678  |
       | Bob          | bob        | bobcontent |
     And the following users are registered:
       | email                         | password | admin | confirmed_at         |  organization |
@@ -59,7 +59,7 @@ Feature: I want to be able to edit static pages
     And I am on the home page
     When I follow "About Us"
     And I follow "Pages"
-    Then should see "Bob" page before "Wow-page"
+    Then should see "Bob" page before "Wow"
 
   Scenario: Non-admin cannot see pages index
     Given I am signed in as a non-admin
