@@ -62,12 +62,16 @@ describe "layouts/application.html.erb", :type => :feature do
       rendered.should have_xpath("//a[@href=\"#{cookies_allow_path}\"]")
     end
 
-    it 'renders an organisation link' do
+    it 'renders an Organisations link' do
       render
-      rendered.should have_xpath("//navbar//a[@href=\"#{organizations_path}\"]")
-
+      rendered.should have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{organizations_path}\"]")
     end
 
+    it 'renders a Volunteers link' do
+      render
+      rendered.should have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{volunteer_ops_path}\"]")
+    end
+    
     it 'login form should be visible', :js => true do
       render
       rendered.should_not have_selector("form#loginForm", style: "height: 0px;")
