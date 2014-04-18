@@ -151,12 +151,4 @@ describe "layouts/application.html.erb", :type => :feature do
       rendered.should have_link("New Organisation", href: new_organization_path)
     end
   end
-
-  it "renders table for organizations scrolling" do
-    render
-    rendered.should have_selector('div', :class => "container")
-  end
 end
-
-
-
