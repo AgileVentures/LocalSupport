@@ -16,6 +16,14 @@ Background: organizations with volunteer opportunities have been added to databa
 
 @javascript
 
+Scenario Outline: Top navbar has links to Volunteers and Organisations 
+  Given I am on the home page
+  Then the navbar should have a link to <link>
+Examples:
+  | link          |
+  | Volunteers    |
+  | Organisations |
+
 Scenario: See a list of current volunteer opportunities
     Given I am on the volunteer opportunities page
     And cookies are approved
