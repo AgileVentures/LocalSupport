@@ -2,35 +2,28 @@ require 'spec_helper'
 describe VolunteerOpsController do
   let(:user) { double :user }
   let(:org) { double :organization, id: '1' }
-  let(:op) { double :volunteer_op, id: '9' }
+  let!(:op) { stub_model VolunteerOp } # stack level too deep errors if stub_model is loaded lazily in some contexts
 
   describe 'GET show' do
-    before { VolunteerOp.stub find: op }
-
     it 'assigns the requested volunteer_op as @volunteer_op' do
+      controller.stub org_owner?: true
+      VolunteerOp.should_receive(:find).with(op.id.to_s) { op }
       get :show, {:id => op.id}
-      assigns(:volunteer_op).should eq(op)
+      assigns(:volunteer_op).should eq op
     end
 
     it 'non-org-owners allowed' do
-      controller.stub current_user: user, org_owner?: false
+      controller.stub org_owner?: false
+      VolunteerOp.stub(:find)
       get :show, {:id => op.id}
       response.status.should eq 200
-    end
-
-    it 'mutation-proofing' do
-      VolunteerOp.should_receive(:find).with(op.id)
-      get :show, {:id => op.id}
     end
   end
 
   describe 'GET new' do
-    before do
-      controller.stub current_user: user, org_owner?: true
-      VolunteerOp.stub new: op
-    end
-
     it 'assigns the requested volunteer_op as @volunteer_op' do
+      controller.stub org_owner?: true
+      VolunteerOp.should_receive(:new) { op }
       get :new, {}
       assigns(:volunteer_op).should eq op
     end
@@ -40,55 +33,44 @@ describe VolunteerOpsController do
       get :new, {}
       response.status.should eq 302
     end
-
-    it 'mutation-proofing' do
-      VolunteerOp.should_receive(:new)
-      get :new, {}
-    end
   end
 
   describe 'POST create' do
-    let(:op) { stub_model VolunteerOp, id: '9' }
-    let(:attributes) { {title: 'hard work', description: 'for the willing'} }
+    let(:params) { {volunteer_op: {title: 'hard work', description: 'for the willing'}} }
     before do
-      user.stub organization: org
+      user.stub(:organization) { org }
       controller.stub current_user: user, org_owner?: true
-      VolunteerOp.stub new: op
-      op.stub :save => true, :organization= => true
+      VolunteerOp.stub(:new) { op }
+      op.stub(:save)
     end
 
     it 'assigns a newly created volunteer_op as @volunteer_op' do
-      post :create, {volunteer_op: attributes}
+      post :create, params
       assigns(:volunteer_op).should eq op
     end
 
     it 'associates the new opportunity with the organization of the current user' do
       controller.current_user.should_receive(:organization) { org }
-      op.should_receive(:organization=).with(org)
-      post :create, {volunteer_op: attributes}
+      VolunteerOp.should_receive(:new).with(hash_including(organization: org))
+      post :create, params
     end
 
     it 'non-org-owners denied' do
       controller.stub org_owner?: false
-      post :create, {volunteer_op: attributes}
+      post :create, params
       response.status.should eq 302
     end
 
-    it 'mutation-proofing' do
-      VolunteerOp.should_receive(:new).with(attributes.stringify_keys) { op }
-      op.should_receive :save
-      post :create, {volunteer_op: attributes}
+    it 'if valid, it redirects to the created volunteer_op' do
+      op.should_receive(:save) { true }
+      post :create, params
+      response.should redirect_to op
     end
 
-    it 'redirects to the created volunteer_op' do
-      post :create, {volunteer_op: attributes}
-      response.should redirect_to(op)
-    end
-
-    it 'with invalid attributes, it re-renders the "new" template' do
-      op.stub save: false
-      post :create, {volunteer_op: attributes}
-      response.should render_template('new')
+    it 'if invalid, it re-renders the "new" template' do
+      op.should_receive(:save) { false }
+      post :create, params
+      response.should render_template 'new'
     end
   end
 
@@ -96,12 +78,13 @@ describe VolunteerOpsController do
     let(:user) { double :user }
     before { controller.stub current_user: user }
 
-    context '#authorize' do
+    describe '#authorize' do
       it 'Unauthorized: redirects to root_path and displays flash' do
         controller.stub org_owner?: false
-        # http://owowthathurts.blogspot.com/2013/08/rspec-response-delegation-error-fix.html
-        controller.should_receive(:redirect_to).with(root_path) { true } # can't assert `redirect_to root_path`
+        controller.should_receive(:redirect_to).with(root_path) { true } # calling original raises errors
+        controller.flash.should_receive(:[]=).with(:error, 'You must be signed in as an organization owner to perform this action!').and_call_original
         controller.instance_eval { authorize }.should be false
+        # can't assert `redirect_to root_path`: http://owowthathurts.blogspot.com/2013/08/rspec-response-delegation-error-fix.html
         flash[:error].should_not be_empty
       end
 
@@ -109,24 +92,17 @@ describe VolunteerOpsController do
         controller.stub org_owner?: true
         controller.instance_eval { authorize }.should be nil
       end
-
-      it 'mutation-proofing' do
-        controller.stub org_owner?: false
-        controller.should_receive :redirect_to
-        controller.flash.should_receive(:[]=).with(:error, "You must be signed in as an organization owner to perform this action!")
-        controller.instance_eval { authorize }.should be false
-      end
     end
 
-    context '#org_owner?' do
+    describe '#org_owner?' do
       context 'when current user is nil' do
         before { controller.stub current_user: nil }
 
         it 'returns false' do
           controller.instance_eval { org_owner? }.should be_false
         end
-        
-        it 'mutation-proofing' do
+
+        it 'first checks if there is a current_user' do
           controller.current_user.should_receive :present?
           controller.current_user.should_not_receive :organization
           controller.instance_eval { org_owner? }
@@ -143,7 +119,7 @@ describe VolunteerOpsController do
           controller.instance_eval { org_owner? }.should be_true
         end
 
-        it 'mutation-proofing' do
+        it 'checks if the current_user has an organization' do
           controller.current_user.should_receive :organization
           user.stub organization: org
           org.should_receive :present?
