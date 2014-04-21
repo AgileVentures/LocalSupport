@@ -2,11 +2,12 @@
     <div class="table table-bordered">
       <table>
         <div id="volunteer_ops">
-            <% @volunteer_ops.each do |volunteer_op| %>
+            <% @volunteer_ops.each do |op| %>
             <tr>
               <td>
-                <u><%= link_to volunteer_op.title, volunteer_op %></u><br/>
-                <%= smart_truncate(volunteer_op.description) %>
+                <u><%= link_to op.title, op %></u><br/>
+                <%= smart_truncate(op.description) %>
+                <%= op.organization.name %>
               </td>
             </tr>
           <% end %>
