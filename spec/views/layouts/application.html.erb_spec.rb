@@ -117,20 +117,9 @@ describe "layouts/application.html.erb", :type => :feature do
       rendered.should have_css("li.dropdown ul.dropdown-menu li a[href=\"#{destroy_user_session_path}\"]")
     end
 
-    it 'admin-only dropdowns: Organizations and Users' do
+    it 'should not see admin-only dropdown' do
       render
-      rendered.should_not have_css('.menuOrgs')
-      rendered.should_not have_css('.menuUsers')
-
-      @user.stub :admin? => true
-      render
-      rendered.within('#menuOrgs') do |menu|
-        menu.should have_link 'Without Users', :href => organizations_report_path
-      end
-      rendered.within('#menuUsers') do |menu|
-        menu.should have_link 'All', :href => users_report_path
-        menu.should have_link 'Invited', :href => invited_users_report_path
-      end
+      rendered.should_not have_css('#menuAdmin')
     end
 
     it "does not render a new organization link"  do
@@ -149,6 +138,16 @@ describe "layouts/application.html.erb", :type => :feature do
       render
 
       rendered.should have_link("New Organisation", href: new_organization_path)
+    end
+
+    it 'should see admin-only dropdown' do
+      @user.stub :admin? => true
+      render
+      rendered.within('#menuAdmin') do |menu|
+        menu.should have_link 'Organisations Without Users', :href => organizations_report_path
+        menu.should have_link 'All Users', :href => users_report_path
+        menu.should have_link 'Invited Users', :href => invited_users_report_path
+      end
     end
   end
 end
