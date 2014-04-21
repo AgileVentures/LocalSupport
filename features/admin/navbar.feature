@@ -11,8 +11,6 @@ Feature: Admin user interface
     And I am on the home page
 
   Scenario Outline: Top navbar has an Admin dropdown menu
-#    When I click "Organisations Without Users"
-#    Then I should be on the without users page
     Then the Admin menu has a valid <link> link
   Examples:
     | link                        |
