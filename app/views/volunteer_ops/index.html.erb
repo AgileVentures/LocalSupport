@@ -5,10 +5,10 @@
             <tr>
               <td>
                 <strong><%= link_to op.title, op %></strong><br/>
-                <%= smart_truncate(op.description) %><br/>
                 <div id="organizations">
-                <u><%= link_to op.organization.name, op.organization %></u><br/>
+                  <small><%= link_to op.organization.name, op.organization %></small><br/>
                </div>
+                <%= smart_truncate(op.description) %><br/>
               </td>
             </tr>
           <% end %>
