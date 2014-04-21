@@ -6,7 +6,7 @@ Then /^I should see permission denied$/ do
   page.should have_content PERMISSION_DENIED
 end
 
-Then(/^the Admin menu has a (.*?) link$/) do |link|
+Then(/^the Admin menu has a valid (.*?) link$/) do |link|
   within('#menuAdmin > ul.dropdown-menu') do
     find('a', text: link).should_not be_nil
     click_link link
