@@ -36,6 +36,11 @@ describe VolunteerOpsController do
       get :index, {}, valid_session
       assigns(:volunteer_ops).should eq([volunteer_op])
     end
-  end
 
+    it "should render template two column layout"  do
+      get :index
+      response.should render_template 'index'
+      response.should render_template 'layouts/two_columns'
+    end
+  end
 end
