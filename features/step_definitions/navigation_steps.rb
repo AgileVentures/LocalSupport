@@ -18,7 +18,7 @@ def paths
       'contributors' => contributors_path,
       'password reset' => edit_user_password_path,
       'invitation' => accept_user_invitation_path,
-      'without users' => organizations_report_path,
+      'organisations without users' => organizations_report_path,
       'all users' => users_report_path,
       'invited users' => invited_users_report_path
   }

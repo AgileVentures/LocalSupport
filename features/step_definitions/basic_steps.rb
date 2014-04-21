@@ -8,10 +8,9 @@ end
 
 Then(/^the Admin menu has a (.*?) link$/) do |link|
   within('#menuAdmin > ul.dropdown-menu') do
-    link = find('a', text: link)
-    link.should_not be_nil
-    # click link
-
+    find('a', text: link).should_not be_nil
+    click_link link
+    current_path.should eq paths[link.downcase]
   end
 end
 
