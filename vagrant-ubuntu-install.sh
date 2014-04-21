@@ -40,6 +40,9 @@ sudo /etc/init.d/postgresql restart
 
 sudo apt-get install -y xvfb
 sudo apt-get install libicu48
+
+sudo apt-get install xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic x11-apps  # not needed?
+
 Xvfb :1 -screen 0 1280x768x24 &
 export DISPLAY=:1
 
