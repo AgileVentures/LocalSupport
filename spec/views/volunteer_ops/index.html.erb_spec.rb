@@ -23,16 +23,14 @@ describe "volunteer_ops/index" do
   it "renders a link to the volunteer_ops" do
     render
     @volunteer_ops.each do |op|
-      rendered.should have_link(href: volunteer_op_path(op))
+      rendered.should have_link op.title, :href => volunteer_op_path(op.id)
     end
   end
 
   it "renders a link to the organization" do
     render
     @volunteer_ops.each do |op|
-      rendered.should have_content op.title
-      rendered.should have_content op.description
-      rendered.should have_content op.organization.name
+      rendered.should have_link op.organization.name, :href => organization_path(op.organization.id)
     end
   end
 

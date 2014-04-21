@@ -1,13 +1,14 @@
   <div id="orgs_scroll" style="height:340px;width:100%;border:1px solid #ccc;overflow:scroll;">
     <div class="table table-bordered">
       <table>
-        <div id="volunteer_ops">
             <% @volunteer_ops.each do |op| %>
             <tr>
               <td>
-                <u><%= link_to op.title, op %></u><br/>
-                <%= smart_truncate(op.description) %>
-                <%= op.organization.name %>
+                <strong><%= link_to op.title, op %></strong><br/>
+                <%= smart_truncate(op.description) %><br/>
+                <div id="organizations">
+                <u><%= link_to op.organization.name, op.organization %></u><br/>
+               </div>
               </td>
             </tr>
           <% end %>
