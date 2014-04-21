@@ -9,38 +9,31 @@ When(/^I visit "(.*?)"$/) do |path|
   visit path
 end
 
+def paths
+  {
+      'home' => root_path,
+      'sign up' => new_user_registration_path,
+      'sign in' => new_user_session_path,
+      'organizations index' => organizations_path,
+      'contributors' => contributors_path,
+      'password reset' => edit_user_password_path,
+      'invitation' => accept_user_invitation_path,
+      'organisations without users' => organizations_report_path,
+      'all users' => users_report_path,
+      'invited users' => invited_users_report_path
+  }
+end
+
 Then /^I visit the (.*) page$/ do |location|
-  case location
-    when "home" then visit root_path
-    when "sign up" then visit new_user_registration_path
-    when "sign in" then visit new_user_session_path
-    when "organizations index" then visit organizations_path
-    when "users" then visit users_path
-    when "contributors" then visit contributors_path
-    when "password reset" then visit edit_user_password_path
-    when "invitation" then visit accept_user_invitation_path
-    when "without users" then visit organizations_report_path
-    when "all users" then visit users_report_path
-    when "invited users" then visit invited_users_report_path
-    else raise "No matching path found for #{location}!"
-  end
+  location = location.downcase
+  raise "No matching path found for #{location}" if paths[location].nil?
+  visit paths[location]
 end
 
 Then /^I should be on the (.*) page$/ do |location|
-  case location
-  when "home" then current_path.should == root_path
-  when "sign up" then current_path.should == new_user_registration_path
-  when "sign in" then current_path.should == new_user_session_path
-  when "organizations index" then current_path.should == organizations_path
-  when "users" then current_path.should == users_path
-  when "contributors" then current_path.should == contributors_path
-  when "password reset" then current_path.should == edit_user_password_path
-  when "invitation" then current_path.should == accept_user_invitation_path
-  when "without users" then current_path.should == organizations_report_path
-  when "all users" then current_path.should == users_report_path
-  when "invited users" then current_path.should == invited_users_report_path
-  else raise "No matching path found for #{location}!"
-  end
+  location = location.downcase
+  raise "No matching path found for #{location}" if paths[location].nil?
+  current_path.should eq paths[location]
 end
 
 Given(/^I try to access "(.*?)" page$/) do |page|
