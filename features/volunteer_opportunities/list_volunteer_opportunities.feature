@@ -31,3 +31,8 @@ Scenario: See a list of current volunteer opportunities
     | title                           | description                        | organization              |
     | Litter Box Scooper              | Assist with feline sanitation      | Cats Are Us               |
     | Office Support                  | Help with printing and copying.    | Indian Elders Association |
+  
+  Scenario: Volunteer index page has two column layout
+    Given I am on the volunteer opportunities page
+    And cookies are approved
+    Then I should see a two column layout
