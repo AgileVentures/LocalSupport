@@ -6,12 +6,13 @@ Then /^I should see permission denied$/ do
   page.should have_content PERMISSION_DENIED
 end
 
-Then(/^the Organizations menu has a dropdown menu with a (.*?) link$/) do |link|
-  within('#menuOrgs > ul.dropdown-menu') { find('a', text: link).should_not be_nil }
-end
+Then(/^the Admin menu has a (.*?) link$/) do |link|
+  within('#menuAdmin > ul.dropdown-menu') do
+    link = find('a', text: link)
+    link.should_not be_nil
+    # click link
 
-Then(/^the Users menu has a dropdown menu with a (.*?) link$/) do |link|
-  within('#menuUsers > ul.dropdown-menu') { find('a', text: link).should_not be_nil }
+  end
 end
 
 Then /^"(.*?)" should be a charity admin for "(.*?)" charity$/ do |email, org|
