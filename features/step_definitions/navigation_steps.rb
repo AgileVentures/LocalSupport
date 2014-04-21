@@ -26,12 +26,12 @@ end
 
 Then /^I visit the (.*) page$/ do |location|
   raise "No matching path found for #{location}" if paths[location].nil?
-  visit paths[location]
+  visit paths[location.downcase]
 end
 
 Then /^I should be on the (.*) page$/ do |location|
   raise "No matching path found for #{location}" if paths[location].nil?
-  current_path.should eq paths[location]
+  current_path.should eq paths[location.downcase]
 end
 
 Given(/^I try to access "(.*?)" page$/) do |page|
