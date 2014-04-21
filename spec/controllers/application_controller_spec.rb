@@ -90,22 +90,18 @@ describe ApplicationController, :helpers => :controllers do
     context '#authorize' do
       it 'Unauthorized: redirects to root_path and displays flash' do
         controller.stub admin?: false
-        # http://owowthathurts.blogspot.com/2013/08/rspec-response-delegation-error-fix.html
-        controller.should_receive(:redirect_to).with(root_path) { true } # can't assert `redirect_to root_path`
+        controller.should_receive(:redirect_to).with(root_path) { true } # calling original raises errors
+        controller.flash.should_receive(:[]=)
+          .with(:error, 'You must be signed in as an admin to perform this action!')
+          .and_call_original
         controller.instance_eval { authorize }.should be false
+        # can't assert `redirect_to root_path`: http://owowthathurts.blogspot.com/2013/08/rspec-response-delegation-error-fix.html
         flash[:error].should_not be_empty
       end
 
       it 'Authorized: allows execution to continue' do
         controller.stub admin?: true
         controller.instance_eval { authorize }.should be nil
-      end
-
-      it 'mutation-proofing' do
-        controller.stub admin?: false
-        controller.should_receive(:redirect_to)
-        controller.flash.should_receive(:[]=)
-        controller.instance_eval { authorize }.should be false
       end
     end
 
@@ -116,15 +112,10 @@ describe ApplicationController, :helpers => :controllers do
       end
 
       it 'otherwise depends on { current_user.admin? }' do
-        user.stub admin?: false
-        controller.instance_eval { admin? }.should be_false
-        user.stub admin?: true
-        controller.instance_eval { admin? }.should be_true
-      end
-
-      it 'mutation-proofing' do
-        controller.current_user.should_receive(:admin?)
-        controller.instance_eval { admin? }
+        user.should_receive(:admin?) { false }
+        controller.instance_eval { admin? }.should be false
+        user.should_receive(:admin?) { true }
+        controller.instance_eval { admin? }.should be true
       end
     end
   end
