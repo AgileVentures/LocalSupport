@@ -90,14 +90,16 @@ describe "layouts/application.html.erb", :type => :feature do
 
     it 'should display a logo linked to the contributors page' do
       render
-      doc = Nokogiri::HTML(rendered)
-      doc.xpath("//a/img[@alt='Agile Ventures']/..").first['href'].should eq contributors_path
+      rendered.within("a[href='#{contributors_path}']") do |hyperlink|
+        hyperlink.should have_css "img[@alt='Agile Ventures']"
+      end
     end
-    #TODO replace with within?
+
     it 'should display a logo linked to the ninefold page' do
       render
-      doc = Nokogiri::HTML(rendered)
-      doc.xpath("//a/img[@alt='Ninefold']/..").first['href'].should eq 'https://ninefold.com'
+      rendered.within("a[href='https://ninefold.com']") do |hyperlink|
+        hyperlink.should have_css "img[@alt='Ninefold']"
+      end
     end
 
     it "does not render a new organization link" do
