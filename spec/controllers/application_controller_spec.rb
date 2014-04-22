@@ -96,7 +96,7 @@ describe ApplicationController, :helpers => :controllers do
           .and_call_original
         controller.instance_eval { authorize }.should be false
         # can't assert `redirect_to root_path`: http://owowthathurts.blogspot.com/2013/08/rspec-response-delegation-error-fix.html
-        flash[:error].should_not be_empty
+        flash[:error].should_not be_nil
       end
 
       it 'Authorized: allows execution to continue' do
