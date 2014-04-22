@@ -14,13 +14,14 @@ def paths
       'home' => root_path,
       'sign up' => new_user_registration_path,
       'sign in' => new_user_session_path,
-      'organizations index' => organizations_path,
+      'organisations index' => organizations_path,
       'contributors' => contributors_path,
       'password reset' => edit_user_password_path,
       'invitation' => accept_user_invitation_path,
       'organisations without users' => organizations_report_path,
       'all users' => users_report_path,
-      'invited users' => invited_users_report_path
+      'invited users' => invited_users_report_path,
+      'volunteer opportunities' => volunteer_ops_path
   }
 end
 
@@ -168,4 +169,11 @@ end
 
 Given(/^I am on the volunteer opportunities page$/) do
   visit '/volunteer_ops'
+end
+
+Then(/^navbar button "(.*?)" should( not)? be active$/) do |button_text, negative|
+  expectation_method = negative ? :should_not : :should
+  within('.nav.nav-pills.pull-right') do |buttons|
+    page.send(expectation_method, have_css('li.active > a', :text => "#{button_text}"))
+  end
 end

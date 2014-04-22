@@ -16,12 +16,11 @@
               voluntary and community organisations</a>
 
             <div class="nav-collapse collapse">
-
               <ul class="nav nav-pills pull-right">
-                <li>
+                <li class="<%= 'active' if params[:controller] == 'organizations' %>">
                   <%= link_to "Organisations", organizations_path %>
                 </li>
-                <li>
+                <li class="<%= 'active' if params[:controller] == 'volunteer_ops' %>">
                   <%= link_to "Volunteers", volunteer_ops_path %>
                 </li>
                 <% if current_user.nil? %>
