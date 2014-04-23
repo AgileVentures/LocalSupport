@@ -190,3 +190,7 @@ And(/^I click tableheader "([^"]*)"$/) do |name|
   find('th', :text => "#{name}").click
   wait_for_ajax
 end
+
+Given(/^I am on the volunteer opportunities page$/) do
+  visit '/volunteer_ops'
+end
