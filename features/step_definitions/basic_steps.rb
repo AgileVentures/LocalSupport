@@ -242,18 +242,18 @@ end
 
 # this could be DRYed out (next three methods)
 Then /^I should see contact details for "([^"]*?)"$/ do |text|
-  check_contact_details text
+  check_search_results text
 end
 
-Then /^I should see contact details for "([^"]*?)" and "(.*?)"$/ do |text1, text2|
-  check_contact_details text1
-  check_contact_details text2
+Then /^I should see search results for "([^"]*?)" and "(.*?)"$/ do |text1, text2|
+  check_search_results text1
+  check_search_results text2
 end
 
-Then /^I should see contact details for "([^"]*?)", "([^"]*?)" and "(.*?)"$/ do |text1, text2, text3|
-  check_contact_details text1
-  check_contact_details text2
-  check_contact_details text3
+Then /^I should see search results for "([^"]*?)", "([^"]*?)" and "(.*?)"$/ do |text1, text2, text3|
+  check_search_results text1
+  check_search_results text2
+  check_search_results text3
 end
 
 Given /^I edit the charity address to be "(.*?)" when Google is indisposed$/ do |address|
@@ -273,7 +273,7 @@ Then /^the address for "(.*?)" should be "(.*?)"$/ do |name, address|
   Organization.find_by_name(name).address.should == address
 end
 
-def check_contact_details(name)
+def check_search_results(name)
   org = Organization.find_by_name(name)
   page.should have_link name, :href => organization_path(org.id)
   page.should have_content smart_truncate(org.description)

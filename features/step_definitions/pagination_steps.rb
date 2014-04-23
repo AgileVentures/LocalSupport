@@ -20,7 +20,7 @@ Then /^I should see a list of (\d+) organizations on the (index page|search page
     orgs = Organization.search_by_keyword($1)
   end
   number.to_i.times do |n|
-    check_contact_details orgs[n].name
+    check_search_results orgs[n].name
   end
 end
 

@@ -39,7 +39,7 @@ def check_map(names)
 end
 
 
-Then /^I should see search results for "(.*?)" in the map$/ do |search_terms|
+Then /^I should see search results for "(.*?)" in the table$/ do |search_terms|
   orgs = Organization.search_by_keyword(search_terms)
   orgs.each do |org|
     matches = page.html.match %Q<{\\"description\\":\\".*>#{org.name}</a>.*\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
