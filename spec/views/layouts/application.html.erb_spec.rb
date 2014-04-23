@@ -151,12 +151,4 @@ describe "layouts/application.html.erb", :type => :feature do
       end
     end
   end
-
-  it "renders table for organizations scrolling" do
-    render
-    rendered.should have_selector('div', :class => "container")
-  end
 end
-
-
-

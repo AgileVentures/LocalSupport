@@ -1,5 +1,5 @@
 require 'spec_helper'
- 
+
 describe User do
 
   let (:model) { mock_model("Organization") }
@@ -23,14 +23,14 @@ describe User do
   end
 
   it 'must find a non-admin in find_by_admin with false argument' do
-    FactoryGirl.create(:user, admin: false ) 
+    FactoryGirl.create(:user, admin: false)
     result = User.find_by_admin(false)
     result.admin?.should be_false
   end
 
   it 'does not allow mass assignment of admin for security' do
     user = FactoryGirl.create(:user, admin: false)
-    user.update_attributes(:admin=> true)
+    user.update_attributes(:admin => true)
     user.save!
     user.admin.should be_false
   end
@@ -46,8 +46,8 @@ describe User do
     end
 
     context 'is not admin' do
-      let( :non_associated_model ) { mock_model("Organization") }
-      subject(:user) { create(:user, admin: false, organization: model ) }
+      let(:non_associated_model) { mock_model("Organization") }
+      subject(:user) { create(:user, admin: false, organization: model) }
 
       it 'can edit associated organization' do
         user.organization.should eq model
@@ -194,15 +194,15 @@ describe User do
   end
 
   context '#message_for_invite' do
-    let(:user) { FactoryGirl.build(:user) } 
+    let(:user) { FactoryGirl.build(:user) }
 
     it 'returns Invited! if there are no errors' do
       expect(user.message_for_invite).to eql 'Invited!'
     end
 
-    context 'when there are errors' do 
-      before do 
-        user.errors.add(:email, 'error') 
+    context 'when there are errors' do
+      before do
+        user.errors.add(:email, 'error')
       end
       it 'returns a semi-custom error msg if there is one' do
         expect(user.message_for_invite).to eql 'Error: Email error'
@@ -211,12 +211,29 @@ describe User do
   end
 
   context '#request_admin_status' do
-    let(:user) { FactoryGirl.build(:user) } 
+    let(:user) { FactoryGirl.build(:user) }
     let(:organization_id) { 12345 }
 
-    it 'update pending organization id' do 
+    it 'update pending organization id' do
       user.request_admin_status organization_id
       expect(user.pending_organization_id).to eql organization_id
     end
   end
+
+  describe '#belongs_to?' do
+    let(:user) { FactoryGirl.create :user_stubbed_organization }
+    let(:other_org) { FactoryGirl.create :organization }
+    before { Gmaps4rails.stub(:geocode) }
+
+    it 'TRUE: user belongs to it' do
+      org = user.organization
+      user.belongs_to?(org).should be true
+    end
+
+    it 'FALSE: user does not belong to it' do
+      user.belongs_to?(other_org).should be false
+    end
+
+  end
+
 end

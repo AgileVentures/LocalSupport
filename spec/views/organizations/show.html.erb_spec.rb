@@ -84,17 +84,17 @@ describe 'organizations/show.html.erb' do
   
   context 'edit button' do
     it 'renders edit button if editable true' do
-      @editable = assign(:editable, true)
+      assign(:editable, true)
       render
       rendered.should have_link 'Edit', :href => edit_organization_path(organization.id)   
     end
     it 'does not render edit button if editable false' do
-      @editable = assign(:editable, false)
+      assign(:editable, false)
       render
       rendered.should_not have_link :href => edit_organization_path(organization.id)
     end
     it 'does not render edit button if editable nil' do
-      @editable = assign(:editable, nil)
+      assign(:editable, nil)
       render
       rendered.should_not have_link :href => edit_organization_path(organization.id)
     end
@@ -102,16 +102,16 @@ describe 'organizations/show.html.erb' do
 
   describe 'this is my organization button' do
     context 'logged in user' do
-      let(:user) { stub_model User, :id => 2 }
+      let(:user) { stub_model User, :id => 2, :org_admin? => false }
       it 'renders grab button if grabbable true' do
-        @grabbable = assign(:grabbable, true)
+        assign(:grabbable, true)
         view.stub(:current_user).and_return(user)
         render
         rendered.should have_link 'This is my organization', :href => user_report_path(organization_id: organization.id, id: user.id)
         #TODO should check hidden value for put
       end
       it 'does not render grab button if grabbable false' do
-        @grabbable = assign(:grabbable, false)
+        assign(:grabbable, false)
         render
         rendered.should_not have_button('This is my organization')
       end
@@ -120,12 +120,26 @@ describe 'organizations/show.html.erb' do
     context 'user not logged in' do
       #let(:user) { stub_model User, :id => nil }
       it 'renders grab button' do
-        @grabbable = assign(:grabbable, true)
+        assign(:grabbable, true)
         #view.stub(:current_user).and_return(user)
         render
         rendered.should have_link 'This is my organization', :href => new_user_session_path
         #TODO should check hidden value for put
       end
+    end
+  end
+
+  describe 'create volunteer opportunity button' do
+    it 'shows when belongs_to is true' do
+      assign(:can_create_volunteer_op, true)
+      render
+      rendered.should have_link 'Create a Volunteer Opportunity', :href => new_volunteer_op_path
+    end
+
+    it 'does not shows when belongs_to is false' do
+      assign(:can_create_volunteer_op, false)
+      render
+      rendered.should_not have_link 'Create a Volunteer Opportunity', :href => new_volunteer_op_path
     end
   end
 end

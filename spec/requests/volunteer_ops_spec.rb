@@ -1,11 +1,31 @@
 require 'spec_helper'
 
-describe "VolunteerOps" do
-  describe "GET /volunteer_ops" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get volunteer_ops_path
-      response.status.should be(200)
+describe 'VolunteerOps', :helpers => :requests do
+  let(:org_owner) { FactoryGirl.create(:user_stubbed_organization) }
+  let(:non_org_owner) { FactoryGirl.create :user }
+
+  describe 'POST /volunteer_ops' do
+    let(:params) { { volunteer_op: {title: 'hard work', description: 'for the willing'} } }
+
+    it 'creates a new VolunteerOp' do
+      login(org_owner)
+      expect {
+        post volunteer_ops_path, params
+      }.to change(VolunteerOp, :count).by(1)
+    end
+
+    it 'the new VolunteerOp is associated with the organization of the current user' do
+      login(org_owner)
+      post volunteer_ops_path, params
+      op = VolunteerOp.last
+      op.organization.should eq org_owner.organization
+    end
+
+    it 'does not work for non-org-owners' do
+      login(non_org_owner)
+      expect {
+        post volunteer_ops_path, params
+      }.to change(VolunteerOp, :count).by(0)
     end
   end
 end

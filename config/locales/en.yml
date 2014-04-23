@@ -6,5 +6,7 @@ en:
   activerecord:
     models:
       organization: Organisation
+  authorize:
+    admin: 'You must be signed in as an admin to perform this action!'
 
 

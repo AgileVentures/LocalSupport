@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
     make_admin_of_org_with_matching_email
   end
 
+  def belongs_to? organization
+    self.organization == organization
+  end
+
   def can_edit? org
     admin? || (!org.nil? && organization == org)
   end
