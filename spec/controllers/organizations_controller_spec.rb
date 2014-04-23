@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe OrganizationsController do
-  let(:category_html_options){[['cat1',1],['cat2',2]]}
+  let(:category_html_options) { [['cat1', 1], ['cat2', 2]] }
 
   # shouldn't this be done in spec_helper.rb?
   before :suite do
@@ -23,10 +23,10 @@ describe OrganizationsController do
       partial = double("template")
       marker = double("marker")
       marker.should_receive(:infowindow)
-      result.should_receive(:to_gmaps4rails).and_yield(double_organization,marker)
+      result.should_receive(:to_gmaps4rails).and_yield(double_organization, marker)
       @controller.should_receive(:render_to_string)
       #not sure if we are supposed to test private method on controller ...
-      @controller.send(:gmap4rails_with_popup_partial,result, partial)
+      @controller.send(:gmap4rails_with_popup_partial, result, partial)
     end
 
   end
@@ -34,9 +34,9 @@ describe OrganizationsController do
   describe "GET search" do
 
     context 'setting appropriate view vars for all combinations of input' do
-      let(:json) {'my markers'}
-      let(:result) {[double_organization]}
-      let(:category){double('Category')}
+      let(:json) { 'my markers' }
+      let(:result) { [double_organization] }
+      let(:category) { double('Category') }
       before(:each) do
         result.should_receive(:to_gmaps4rails).and_return(json)
         result.stub_chain(:page, :per).and_return(result)
@@ -54,7 +54,7 @@ describe OrganizationsController do
         Organization.should_receive(:search_by_keyword).with('test').and_return(result)
         result.should_receive(:filter_by_category).with('1').and_return(result)
         Category.should_receive(:find_by_id).with("1").and_return(category)
-        get :search, :q => 'test', "category" => {"id"=>"1"}
+        get :search, :q => 'test', "category" => {"id" => "1"}
         assigns(:query_term).should eq 'test'
         assigns(:category).should eq category
       end
@@ -83,7 +83,7 @@ describe OrganizationsController do
       it "handles empty string id gracefully" do
         Organization.should_receive(:search_by_keyword).with('test').and_return(result)
         result.should_receive(:filter_by_category).with("").and_return(result)
-        get :search, :q => 'test', "category" =>  {"id"=>""}
+        get :search, :q => 'test', "category" => {"id" => ""}
         assigns(:query_term).should eq 'test'
       end
 
@@ -108,7 +108,7 @@ describe OrganizationsController do
       ActionDispatch::Flash::FlashHash.any_instance.should_receive(:now).and_return double_now_flash
       ActionDispatch::Flash::FlashHash.any_instance.should_not_receive(:[]=)
       double_now_flash.should_receive(:[]=).with(:alert, SEARCH_NOT_FOUND)
-      get :search , :q => 'no results' , "category" => {"id"=>"1"}
+      get :search, :q => 'no results', "category" => {"id" => "1"}
     end
 
     it "does not set up flash nor flash.now when search returns results" do
@@ -121,7 +121,7 @@ describe OrganizationsController do
       result.should_receive(:filter_by_category).with('1').and_return(result)
       category = double('Category')
       Category.should_receive(:find_by_id).with("1").and_return(category)
-      get :search , :q => 'some results'  , "category" => {"id"=>"1"}
+      get :search, :q => 'some results', "category" => {"id" => "1"}
       expect(flash.now[:alert]).to be_nil
       expect(flash[:alert]).to be_nil
     end
@@ -146,7 +146,8 @@ describe OrganizationsController do
     before(:each) do
       @user = double("User")
       Organization.stub(:find).with('37') { double_organization }
-      @user.stub(:can_edit?).and_return
+      @user.stub(:can_edit?)
+      @user.stub(:belongs_to?)
       @user.stub(:can_request_org_admin?)
       controller.stub(:current_user).and_return(@user)
     end
@@ -207,6 +208,29 @@ describe OrganizationsController do
         expect(assigns(:grabbable)).to be_true
       end
     end
+
+    describe 'belongs_to flag' do
+      context 'depends on belongs_to?' do
+        it 'true' do
+          @user.should_receive(:belongs_to?) { true }
+          get :show, :id => 37
+          assigns(:can_create_volunteer_op).should be true
+        end
+
+        it 'false' do
+          @user.should_receive(:belongs_to?) { false }
+          get :show, :id => 37
+          assigns(:can_create_volunteer_op).should be false
+        end
+      end
+
+      it 'will not be called when current user is nil' do
+        controller.stub current_user: nil
+        @user.should_not_receive :belongs_to?
+        get :show, :id => 37
+        assigns(:can_create_volunteer_op).should be nil
+      end
+    end
   end
 
   describe "GET new" do
@@ -241,7 +265,7 @@ describe OrganizationsController do
     context "while signed in as user who can edit" do
       before(:each) do
         user = double("User")
-        user.stub(:can_edit?){true}
+        user.stub(:can_edit?) { true }
         request.env['warden'].stub :authenticate! => user
         controller.stub(:current_user).and_return(user)
       end
@@ -256,7 +280,7 @@ describe OrganizationsController do
     context "while signed in as user who cannot edit" do
       before(:each) do
         user = double("User")
-        user.stub(:can_edit?){false}
+        user.stub(:can_edit?) { false }
         request.env['warden'].stub :authenticate! => user
         controller.stub(:current_user).and_return(user)
       end
@@ -337,7 +361,7 @@ describe OrganizationsController do
         it "redirects to the organizations index" do
           Organization.stub(:new).with({'these' => 'params'}) { double_organization(:save => true) }
           post :create, :organization => {'these' => 'params'}
-          expect(response).to redirect_to organizations_path           
+          expect(response).to redirect_to organizations_path
         end
 
         it "assigns a flash refusal" do
@@ -354,7 +378,7 @@ describe OrganizationsController do
     context "while signed in as user who can edit" do
       before(:each) do
         user = double("User")
-        user.stub(:can_edit?){true}
+        user.stub(:can_edit?) { true }
         request.env['warden'].stub :authenticate! => user
         controller.stub(:current_user).and_return(user)
       end
@@ -362,7 +386,7 @@ describe OrganizationsController do
       describe "with valid params" do
         it "updates org for e.g. donation_info url" do
           double = double_organization(:id => 37, :model_name => 'Organization')
-          Organization.should_receive(:find).with('37'){double}
+          Organization.should_receive(:find).with('37') { double }
           double_organization.should_receive(:update_attributes_with_admin).with({'donation_info' => 'http://www.friendly.com/donate', 'admin_email_to_add' => nil})
           put :update, :id => '37', :organization => {'donation_info' => 'http://www.friendly.com/donate'}
         end
@@ -400,7 +424,7 @@ describe OrganizationsController do
     context "while signed in as user who cannot edit" do
       before(:each) do
         user = double("User")
-        user.stub(:can_edit?){false}
+        user.stub(:can_edit?) { false }
         request.env['warden'].stub :authenticate! => user
         controller.stub(:current_user).and_return(user)
       end
@@ -408,7 +432,7 @@ describe OrganizationsController do
       describe "with existing organization" do
         it "does not update the requested organization" do
           org = double_organization(:id => 37)
-          Organization.should_receive(:find).with("#{org.id}")  {org}
+          Organization.should_receive(:find).with("#{org.id}") { org }
           org.should_not_receive(:update_attributes)
           put :update, :id => "#{org.id}", :organization => {'these' => 'params'}
           response.should redirect_to(organization_url("#{org.id}"))
@@ -418,7 +442,7 @@ describe OrganizationsController do
 
       describe "with non-existent organization" do
         it "does not update the requested organization" do
-          Organization.should_receive(:find).with("9999")  {nil}
+          Organization.should_receive(:find).with("9999") { nil }
           put :update, :id => "9999", :organization => {'these' => 'params'}
           response.should redirect_to(organization_url("9999"))
           expect(flash[:notice]).to eq("You don't have permission")
@@ -452,7 +476,7 @@ describe OrganizationsController do
       end
       it "does not destroy the requested organization but redirects to organization home page" do
         double = double_organization
-        Organization.should_not_receive(:find).with('37'){double}
+        Organization.should_not_receive(:find).with('37') { double }
         double.should_not_receive(:destroy)
         delete :destroy, :id => '37'
         response.should redirect_to(organization_url('37'))
