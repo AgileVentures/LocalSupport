@@ -24,8 +24,10 @@ Feature: Admin user interface
   Scenario:  Highlighted button for Organisations or Volunteers
     Given I visit the organisations index page
     Then navbar button "Organisations" should be active
+    Then navbar button "Volunteers" should not be active
     Given I visit the volunteer opportunities page
     Then navbar button "Volunteers" should be active
+    Then navbar button "Organisations" should not be active
     Given I visit "/pages"
     Then navbar button "Volunteers" should not be active
     Then navbar button "Organisations" should not be active
