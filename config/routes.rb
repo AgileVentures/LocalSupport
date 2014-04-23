@@ -1,5 +1,8 @@
 LocalSupport::Application.routes.draw do
 
+  resources :volunteer_ops
+
+
   devise_for :users
 
   get 'contributors' => 'contributors#show'
