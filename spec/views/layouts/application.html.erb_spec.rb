@@ -109,6 +109,7 @@ describe "layouts/application.html.erb", :type => :feature do
 
       it "shows no links to pages when there are no pages" do
         absent_pages = [page_one, page_two, page_three]
+        assign(:footer_page_links, {})
         render
         absent_pages.each do |page|
           rendered.should_not have_link(page.name, :href => page_path(page.permalink))
