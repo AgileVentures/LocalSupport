@@ -1,17 +1,18 @@
 class VolunteerOpsController < ApplicationController
-  before_filter :authorize, :except => [:show]
+  before_filter :authorize, :except => [:show, :index]
 
-  # GET /volunteer_ops/1
+  def index
+    @volunteer_ops = VolunteerOp.all
+  end
+  
   def show
     @volunteer_op = VolunteerOp.find(params[:id])
   end
 
-  # GET /volunteer_ops/new
   def new
     @volunteer_op = VolunteerOp.new
   end
 
-  # POST /volunteer_ops
   def create
     params[:volunteer_op][:organization_id] = current_user.organization.id
     @volunteer_op = VolunteerOp.new(params[:volunteer_op])
@@ -32,8 +33,8 @@ class VolunteerOpsController < ApplicationController
     end
   end
 
-  # lame, but this is the best we can do without nested routes
   def org_owner?
+    #TODO this is the best we can do without nested routes
     current_user.organization.present? if current_user.present?
   end
 end
