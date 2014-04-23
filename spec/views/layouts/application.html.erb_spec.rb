@@ -1,6 +1,14 @@
 require 'spec_helper'
 
 describe "layouts/application.html.erb", :type => :feature do
+  let(:page_one) { double(:page, :name => "About Us", :permalink => "about") }
+  let(:page_two) { double(:page, :name => "Contact", :permalink => "contact") }
+  let(:page_three) { double(:page, :name => "Disclaimer", :permalink => "disclaimer") }
+  before :each do
+    @pages = [page_one, page_two]
+    @absent_pages = [page_three]
+    assign(:footer_page_links, @pages)
+  end
   context "no user signed-in" do
 
     before :each do
@@ -103,28 +111,22 @@ describe "layouts/application.html.erb", :type => :feature do
 
     context 'footer links to pages' do
 
-      let(:page_one) { double(:page, :name => "About Us", :permalink => "about") }
-      let(:page_two) { double(:page, :name => "Contact", :permalink => "contact") }
-      let(:page_three) { double(:page, :name => "Disclaimer", :permalink => "disclaimer") }
 
       it "shows no links to pages when there are no pages" do
-        absent_pages = [page_one, page_two, page_three]
+        @absent_pages = [page_one, page_two, page_three]
         assign(:footer_page_links, {})
         render
-        absent_pages.each do |page|
+        @absent_pages.each do |page|
           rendered.should_not have_link(page.name, :href => page_path(page.permalink))
         end
       end
 
       it "shows a link to all of the editable pages" do
-        pages = [page_one, page_two]
-        absent_pages = [page_three]
-        assign(:footer_page_links, pages)
         render
-        pages.each do |page|
+        @pages.each do |page|
           rendered.should have_link(page.name, :href => page_path(page.permalink))
         end
-        absent_pages.each do |page|
+        @absent_pages.each do |page|
           rendered.should_not have_link(page.name, :href => page_path(page.permalink))
         end
       end

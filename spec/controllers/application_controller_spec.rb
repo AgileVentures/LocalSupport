@@ -82,4 +82,7 @@ describe ApplicationController, :helpers => :controllers do
       response.cookies['cookie_policy_accepted'].should be_true
     end
   end
+  describe 'editable footer links' do
+
+  end
 end
