@@ -21,20 +21,4 @@ describe "volunteer_ops/index" do
     end
   end
 
-#  it "renders table for organizations scrolling" do
-#    render
-#    rendered.should have_selector('div', :class => "container")
-#  end
-#
-#
-##  <div class="row">
-##  <div id="column1" class="span6">
-##  <%= yield :map %>
-##  </div>
-##  <div id="column2" class="span6">
-##  <%= yield %>
-##  </div>
-##</div>
-##<%= parent_layout 'application' %>
-
 end

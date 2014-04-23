@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe VolunteerOpsController do
-  let(:op) { double :volunteer_op }
+  let(:user) { double :user }
+  let(:org) { double :organization, id: '1' }
+  let!(:op) { stub_model VolunteerOp } # stack level too deep errors if stub_model is loaded lazily in some contexts
 
   describe 'GET index' do
     it 'assigns all volunteer_ops as @volunteer_ops' do
@@ -10,11 +12,6 @@ describe VolunteerOpsController do
       assigns(:volunteer_ops).should eq [op]
     end
   end
-end
-describe VolunteerOpsController do
-  let(:user) { double :user }
-  let(:org) { double :organization, id: '1' }
-  let!(:op) { stub_model VolunteerOp } # stack level too deep errors if stub_model is loaded lazily in some contexts
 
   describe 'GET show' do
     it 'assigns the requested volunteer_op as @volunteer_op' do
