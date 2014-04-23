@@ -31,10 +31,28 @@ Then /^I visit the (.*) page$/ do |location|
   visit paths[location]
 end
 
+Then /^I visit the (.*) page for organization "(.*?)"$/ do |location, organization|
+  org = Organization.find_by_name organization
+  case location
+    when "new volunteer opportunity" then visit new_volunteer_op_path
+    when "show volunteer opportunity" then visit volunteer_op_path(org)
+    else raise "No matching path found for #{location}!"
+  end
+end
+
 Then /^I should be on the (.*) page$/ do |location|
   location = location.downcase
   raise "No matching path found for #{location}" if paths[location].nil?
   current_path.should eq paths[location]
+end
+
+Then /^I should be on the (.*) page for organization "(.*?)"$/ do |location, organization|
+  org = Organization.find_by_name organization
+  case location
+    when "new volunteer opportunity" then current_path.should == new_volunteer_op_path
+    when "show volunteer opportunity" then current_path.should == volunteer_op_path(org)
+    else raise "No matching path found for #{location}!"
+  end
 end
 
 Given(/^I try to access "(.*?)" page$/) do |page|

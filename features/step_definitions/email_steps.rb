@@ -4,6 +4,14 @@ And /^I should receive a "(.*?)" email$/ do |arg1|
   ActionMailer::Base.deliveries.size.should eq 1
 end
 
+And(/^an email with subject line "([^"]*)" should have been sent$/) do |arg|
+  @email = ActionMailer::Base.deliveries.last
+  @email.subject.should include(arg)
+  #@email.cc.should_not be_nil
+  #@email.cc.include('technical@harrowcn.org.uk')     # we want this but not clear how to do with invitation
+  ActionMailer::Base.deliveries.size.should eq 1
+end
+
 And /^I should not receive an email$/ do
   ActionMailer::Base.deliveries.size.should eq 0
 end

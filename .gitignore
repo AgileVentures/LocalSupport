@@ -6,7 +6,6 @@
 
 db/target_emails.csv
 cert_file
-Vagrantfile
 *.txt
 *.rbc
 *.sassc

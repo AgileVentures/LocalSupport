@@ -131,7 +131,7 @@ describe "layouts/application.html.erb", :type => :feature do
       rendered.should have_link("New Organisation", href: new_organization_path)
     end
 
-    it 'should see admin-only dropdown' do
+    it 'should have an admin-only dropdown' do
       rendered.within('#menuAdmin') do |menu|
         menu.should have_link 'Organisations Without Users', :href => organizations_report_path
         menu.should have_link 'All Users', :href => users_report_path
@@ -140,6 +140,3 @@ describe "layouts/application.html.erb", :type => :feature do
     end
   end
 end
-
-
-
