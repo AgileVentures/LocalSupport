@@ -1,6 +1,7 @@
 class VolunteerOpsController < ApplicationController
+  layout 'two_columns'
   before_filter :authorize, :except => [:show, :index]
-
+  
   def index
     @volunteer_ops = VolunteerOp.all
   end

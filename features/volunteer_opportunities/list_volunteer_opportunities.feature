@@ -16,10 +16,23 @@ Background: organizations with volunteer opportunities have been added to databa
 
 @javascript
 
+Scenario Outline: Top navbar has links to Volunteers and Organisations 
+  Given I visit the home page
+  Then the navbar should have a link to <link>
+Examples:
+  | link          |
+  | Volunteers    |
+  | Organisations |
+
 Scenario: See a list of current volunteer opportunities
-    Given I am on the volunteer opportunities page
+    Given I visit the volunteer opportunities page
     And cookies are approved
     Then I should see:
     | title                           | description                        | organization              |
     | Litter Box Scooper              | Assist with feline sanitation      | Cats Are Us               |
     | Office Support                  | Help with printing and copying.    | Indian Elders Association |
+  
+  Scenario: Volunteer index page has two column layout
+    Given I visit the volunteer opportunities page
+    And cookies are approved
+    Then I should see a two column layout

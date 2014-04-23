@@ -1,21 +1,21 @@
-<h1>Volunteer Opportunities</h1>
-
-<div class="span8">
-<div class="table table-striped">
-  <table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Organization</th>
-  </tr>
-
-<% @volunteer_ops.each do |volunteer_op| %>
-  <tr>
-    <td><%= volunteer_op.title %></td>
-    <td><%= volunteer_op.description %></td>
-    <td><%= volunteer_op.organization.name %></td>
-  </tr>
-<% end %>
+  <div id="orgs_scroll" style="height:340px;width:100%;border:1px solid #ccc;overflow:scroll;">
+    <div class="table table-bordered">
+      <table>
+            <% @volunteer_ops.each do |op| %>
+            <tr>
+              <td>
+                <strong><%= link_to op.title, op %></strong><br/>
+                <div id="organizations">
+                  <small><%= link_to op.organization.name, op.organization %></small><br/>
+               </div>
+                <%= smart_truncate(op.description) %><br/>
+              </td>
+            </tr>
+          <% end %>
+        </div>
+      </table>
+    </div>
+  </div>
 </table>
 </div>
 </div>

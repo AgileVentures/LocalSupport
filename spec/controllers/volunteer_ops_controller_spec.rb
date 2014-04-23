@@ -42,8 +42,14 @@ describe VolunteerOpsController do
       get :new, {}
       response.status.should eq 302
     end
-  end
 
+    it "should render template two column layout"  do
+      get :index
+      response.should render_template 'index'
+      response.should render_template 'layouts/two_columns'
+    end
+  end
+  
   describe 'POST create' do
     let(:params) { {volunteer_op: {title: 'hard work', description: 'for the willing'}} }
     before do
