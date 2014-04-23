@@ -3,11 +3,7 @@ sudo apt-get install -y curl
 \curl -L https://get.rvm.io | bash -s stable  --ruby=1.9.3
 source ~/.rvm/scripts/rvm
 
-git clone https://github.com/tansaku/LocalSupport
-
-cd LocalSupport
-
-sudo apt-get install libqtwebkit-dev
+sudo apt-get install libqtwebkit-dev  # had to type Y
 gem install debugger-ruby_core_source
 
 export LANGUAGE="en_US.UTF-8"
@@ -16,6 +12,8 @@ export LC_ALL="en_US.UTF-8"
 
 sudo apt-get install -y libpq-dev
 sudo apt-get install -y postgresql
+
+cd /LocalSupport
 
 bundle install
 
