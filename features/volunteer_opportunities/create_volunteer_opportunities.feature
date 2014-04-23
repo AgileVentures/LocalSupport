@@ -6,14 +6,15 @@ Feature: Org admin creating a volunteer work opportunity
 
   Background:
     Given the following organizations exist:
-      | name     | description             | address        | postcode | telephone | website                        | email                      |
-      | Friendly | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.example.org    | admin@friendly.example.org |
-      | Shy      | Software design         | 34 pinner road | HA1 1AA  | 020800001 | http://shy.example.org         | admin@shy.example.org      |
+      | name     | description             | address        | postcode | telephone | website                     | email                      |
+      | Friendly | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.example.org | admin@friendly.example.org |
+      | Shy      | Software design         | 34 pinner road | HA1 1AA  | 020800001 | http://shy.example.org      | admin@shy.example.org      |
 
     And the following users are registered:
-      | email                      | password | organization | confirmed_at        |
-      | admin@friendly.example.org | pppppppp | Friendly     | 2007-01-01 10:00:00 |
-      | admin@shy.example.org      | pppppppp | Shy          | 2007-01-01 10:00:00 |
+      | email                      | password | organization | confirmed_at        | admin |
+      | admin@friendly.example.org | pppppppp | Friendly     | 2007-01-01 10:00:00 | false |
+      | admin@shy.example.org      | pppppppp | Shy          | 2007-01-01 10:00:00 | false |
+      | admin@harrowcn.org.uk      | pppppppp | Shy          | 2007-01-01 10:00:00 | true  |
 
     And cookies are approved
 
@@ -31,7 +32,7 @@ Feature: Org admin creating a volunteer work opportunity
     Then I should be on the show volunteer opportunity page for organization "Friendly"
     And I should see "Hard Work"
     And I should see "For no pay"
-	And I should see "Organisation: Friendly"
+    And I should see "Organisation: Friendly"
 
   Scenario: Only org-owners can create volunteer opportunities
     # Tested that the API is restricted in the request spec
@@ -42,3 +43,9 @@ Feature: Org admin creating a volunteer work opportunity
     Given I am signed in as a charity worker related to "Shy"
     And I am on the charity page for "Friendly"
     Then I should not see a link with text "Create a Volunteer Opportunity"
+
+  Scenario: Admin users who don't own the org cannot create volunteer opportunities
+    Given I am signed in as a admin
+    And I am on the charity page for "Friendly"
+    Then I should not see a link with text "Create a Volunteer Opportunity"
+

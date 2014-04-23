@@ -13,7 +13,7 @@ class VolunteerOpsController < ApplicationController
 
   # POST /volunteer_ops
   def create
-    params[:volunteer_op][:organization] = current_user.organization
+    params[:volunteer_op][:organization_id] = current_user.organization.id
     @volunteer_op = VolunteerOp.new(params[:volunteer_op])
     if @volunteer_op.save
       redirect_to @volunteer_op, notice: 'Volunteer op was successfully created.'

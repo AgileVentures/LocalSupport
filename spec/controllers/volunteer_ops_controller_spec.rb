@@ -51,7 +51,7 @@ describe VolunteerOpsController do
 
     it 'associates the new opportunity with the organization of the current user' do
       controller.current_user.should_receive(:organization) { org }
-      VolunteerOp.should_receive(:new).with(hash_including(organization: org))
+      VolunteerOp.should_receive(:new).with(hash_including("organization_id" => "1"))
       post :create, params
     end
 

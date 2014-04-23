@@ -214,13 +214,13 @@ describe OrganizationsController do
         it 'true' do
           @user.should_receive(:belongs_to?) { true }
           get :show, :id => 37
-          assigns(:belongs_to).should be true
+          assigns(:can_create_volunteer_op).should be true
         end
 
         it 'false' do
           @user.should_receive(:belongs_to?) { false }
           get :show, :id => 37
-          assigns(:belongs_to).should be false
+          assigns(:can_create_volunteer_op).should be false
         end
       end
 
@@ -228,7 +228,7 @@ describe OrganizationsController do
         controller.stub current_user: nil
         @user.should_not_receive :belongs_to?
         get :show, :id => 37
-        assigns(:belongs_to).should be nil
+        assigns(:can_create_volunteer_op).should be nil
       end
     end
   end

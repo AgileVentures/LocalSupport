@@ -234,47 +234,6 @@ describe User do
       user.belongs_to?(other_org).should be false
     end
 
-    it 'argument has methods chained on it' do
-      class_object = double :class_object
-      string_of_class = double :string
-
-      other_org.should_receive(:class) { class_object }
-      class_object.should_receive(:to_s) { string_of_class }
-      string_of_class.should_receive(:underscore) { 'whatever' }
-
-      user.belongs_to? other_org
-    end
-
-    context 'does respond' do
-      it 'does a comparison' do
-        user.stub send: other_org
-        user.belongs_to?(other_org).should be true
-        user.stub send: 'whatever'
-        user.belongs_to?(other_org).should be false
-      end
-
-      it 'mutation proofing' do
-        method_call = double :method_call
-
-        other_org.stub_chain(:class, :to_s, :underscore) { method_call }
-
-        user.should_receive(:respond_to?).with(method_call) { true }
-        user.should_receive(:send).with(method_call)
-
-        user.belongs_to? other_org
-      end
-    end
-
-    it 'Does not respond: will not do comparison' do
-      method_call = double :method_call
-
-      other_org.stub_chain(:class, :to_s, :underscore) { method_call }
-
-      user.should_receive(:respond_to?).with(method_call) { false }
-      user.should_not_receive(:send)
-
-      user.belongs_to?(other_org).should be false
-    end
   end
 
 end
