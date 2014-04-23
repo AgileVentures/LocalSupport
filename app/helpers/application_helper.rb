@@ -26,10 +26,6 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
-  # def after_sign_in_path_for(resource)
-  #   redirect_to  root_url
-  # end
-
   def parent_layout(layout) # http://andre.arko.net/2013/02/02/nested-layouts-on-rails--31/
     @view_flow.set(:layout, output_buffer)
     self.output_buffer = render(:file => "layouts/#{layout}")
