@@ -1,5 +1,10 @@
 class VolunteerOpsController < ApplicationController
-  before_filter :authorize, :except => [:show]
+  before_filter :authorize, :except => [:index, :show]
+
+  # GET /volunteer_ops
+  def index
+    @volunteer_ops = VolunteerOp.all
+  end
 
   # GET /volunteer_ops/1
   def show

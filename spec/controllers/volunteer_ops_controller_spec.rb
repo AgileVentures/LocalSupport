@@ -4,6 +4,14 @@ describe VolunteerOpsController do
   let(:org) { double :organization, id: '1' }
   let!(:op) { stub_model VolunteerOp } # stack level too deep errors if stub_model is loaded lazily in some contexts
 
+  describe 'GET index' do
+    it 'assigns all volunteer_ops as @volunteer_ops' do
+      VolunteerOp.should_receive(:all) { [op] }
+      get :index, {}
+      assigns(:volunteer_ops).should eq [op]
+    end
+  end
+
   describe 'GET show' do
     it 'assigns the requested volunteer_op as @volunteer_op' do
       controller.stub org_owner?: true
