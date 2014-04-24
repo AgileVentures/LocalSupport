@@ -18,7 +18,6 @@ describe VolunteerOpsController do
       get :index, {}
       assigns(:organizations).should eq([org])
     end
-    it 'assigns 
     #json='my markers'
     #result.should_receive(:to_gmaps4rails).and_return(json)
     #get :index
