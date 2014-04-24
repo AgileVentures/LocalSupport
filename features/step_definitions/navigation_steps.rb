@@ -23,7 +23,7 @@ def paths(location, params = {})
   }[location]
 end
 
-Then /^I visit the (.*) page?$/ do |location|
+Then /^I visit the (.*) page$/ do |location|
   location.downcase!
   raise "No matching path found for #{location}" if paths(location).nil?
   visit paths(location)
@@ -35,6 +35,12 @@ Then /^I visit the (.*) page with params:$/ do |location, table|
   raise "No matching path found for #{location}" if paths(location).nil?
   visit paths(location, params)
 end
+
+Then /^I visit the (edit|show) page for the (.*?) named "(.*?)"$/ do |action, object, name|
+  record = eval("#{object.camelize}.find_by_name('#{name}')")
+  visit url_for controller: object.pluralize.underscore, action: action, id: record.id
+end
+
 
 Then /^I visit the (.*) page for organization "(.*?)"$/ do |location, organization|
   org = Organization.find_by_name organization

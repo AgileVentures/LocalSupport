@@ -36,7 +36,7 @@ Feature: Admin creating charity
 
   Scenario: Successfully create charity while being signed-in as admin from arbitrary page
     Given I am signed in as a admin
-    Given I am on the charity page for "Friendly Clone"
+    Given I visit the show page for the organization named "Friendly Clone"
     And I follow "New Organisation"
     And I fill in the new charity page validly
     And I press "Create Organisation"

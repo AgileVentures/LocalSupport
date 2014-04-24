@@ -14,7 +14,7 @@ Feature: This is my organization
 
   Scenario: I am a signed in user who requests to be admin for my organization
     Given I am signed in as a non-admin 
-    When I am on the charity page for "The Organization"
+    When I visit the show page for the organization named "The Organization"
     Then I should see a link or button "This is my organization"
     And I click "This is my organization"
     Then I should be on the charity page for "The Organization"
@@ -22,7 +22,7 @@ Feature: This is my organization
 
   @javascript
   Scenario: I am not signed in, I will be offered "This is my organization" claim button
-    When I am on the charity page for "The Organization"
+    When I visit the show page for the organization named "The Organization"
     Then I should see "This is my organization"
     When I click id "TIMO"
     Then I should be on the charity page for "The Organization"
@@ -31,7 +31,7 @@ Feature: This is my organization
 
   @javascript
   Scenario: I am not a registered user, I will be offered "This is my organization" claim button
-    When I am on the charity page for "The Organization"
+    When I visit the show page for the organization named "The Organization"
     Then I should see "This is my organization"
     When I click id "TIMO"
     When I click "toggle_link"

@@ -59,7 +59,7 @@ Given /^that I am logged in as any user$/ do
    | registered_user@example.com | pppppppp | 2007-01-01  10:00:00 |
   }
   steps %Q{
-    Given I am on the home page
+    Given I visit the home page
     And I sign in as "registered_user@example.com" with password "pppppppp"
   }
 end
@@ -86,10 +86,6 @@ Given /^I visit the sign up page$/ do
   expect(page).to have_field('signup_email')
   expect(page).to have_field('signup_password')
   expect(page).to have_button('signup')
-end
-
-Given(/^I am on the password reset page$/) do
-  visit edit_user_password_path(reset_password_token: "18217tiegi1qwea")
 end
 
 When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |email, password|

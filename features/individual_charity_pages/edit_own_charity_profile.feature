@@ -58,11 +58,11 @@ Examples:
 
 Scenario: Do not see edit button as non-admin not associated with Friendly
   Given I am signed in as a charity worker unrelated to "Friendly"
-  And I am on the charity page for "Friendly"
+  And I visit the show page for the organization named "Friendly"
   Then I should not see an edit button for "Friendly" charity
 
 Scenario: Non-logged in users do not see edit button either
-  Given I am on the charity page for "Friendly"
+  Given I visit the show page for the organization named "Friendly"
   Then I should not see an edit button for "Friendly" charity
 
 Scenario: Change the address of a charity when Google is indisposed
@@ -71,7 +71,7 @@ Scenario: Change the address of a charity when Google is indisposed
   Then I should not see the unable to save organization error
   Then the address for "Friendly" should be "83 pinner road"
   # TODO Then I should see "Failed to update map coordinates"
-  And I should be on the charity page for "Friendly"
+  And I visit the show page for the organization named "Friendly"
 #  TODO possible follow on if we could have the request re-issued on next page load
 #  Given Google is no longer indisposed
 #  And I am on the home page
@@ -84,17 +84,17 @@ Scenario: Redirected to sign-in when not signed-in and edit donation url
 # TODO after sign in is take the user back to the edit page
 
 Scenario: By default, not display organizations address and phone number on home page
-  Given I am on the charity page for "Friendly"
+  Given I visit the show page for the organization named "Friendly"
   Then I should not see any address or telephone information for "Nice" and "Friendly"
 
 Scenario: By default, not display organizations edit and delete on home page
-  Given I am on the charity page for "Friendly"
+  Given I visit the show page for the organization named "Friendly"
   Then I should not see any edit or delete links
 
 Scenario: By default, not display organizations address and phone number on details page
-  Given I am on the charity page for "Friendly"
+  Given I visit the show page for the organization named "Friendly"
   Then I should not see any address or telephone information for "Friendly"
 
 Scenario: By default, not display edit link on details page
-  Given I am on the charity page for "Friendly"
+  Given I visit the show page for the organization named "Friendly"
   Then I should not see any edit link for "Friendly"

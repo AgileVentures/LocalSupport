@@ -14,14 +14,14 @@ Feature: If new user's email matches an org's email, the new user with have edit
     Given I visit sign up page
     And I sign up as "tester@friendly.org" with password "12345678" and password confirmation "12345678"
     And I sign in as "tester@friendly.org" with password "12345678" via email confirmation
-    And I am on the charity page for "Friendly"
+    And I visit the show page for the organization named "Friendly"
     Then I should not see an edit button for "Friendly" charity
 
   Scenario: Sign up and can edit
     Given I visit sign up page
     And I sign up as "info@friendly.org" with password "12345678" and password confirmation "12345678"
     And I sign in as "info@friendly.org" with password "12345678" via email confirmation
-    And I am on the charity page for "Friendly"
+    And I visit the show page for the organization named "Friendly"
     Then I should see an edit button for "Friendly" charity
 
 # https://github.com/plataformatec/devise/wiki/How-To:-Override-confirmations-so-users-can-pick-their-own-passwords-as-part-of-confirmation-activation

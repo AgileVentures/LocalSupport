@@ -5,11 +5,5 @@ describe "Organizations" do
     it "works! (now write some real specs)" do
       get organizations_path
     end
-
-    it 'test' do
-      get edit_user_password_path
-      debugger
-      puts 'hi'
-    end
   end
 end
