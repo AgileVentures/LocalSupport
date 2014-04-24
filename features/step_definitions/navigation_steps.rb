@@ -1,6 +1,3 @@
-Given /^I am on the home page$/ do
-  visit "/"
-end
 And /^I select the "(.*?)" category$/ do |category|
   select(category, :from => "category[id]")
 end
@@ -9,26 +6,34 @@ When(/^I visit "(.*?)"$/) do |path|
   visit path
 end
 
-def paths
+def paths(location, params = {})
   {
-      'home' => root_path,
-      'sign up' => new_user_registration_path,
-      'sign in' => new_user_session_path,
-      'organisations index' => organizations_path,
-      'contributors' => contributors_path,
-      'password reset' => edit_user_password_path,
-      'invitation' => accept_user_invitation_path,
-      'organisations without users' => organizations_report_path,
-      'all users' => users_report_path,
-      'invited users' => invited_users_report_path,
-      'volunteer opportunities' => volunteer_ops_path
-  }
+      'home' => root_path(params),
+      'sign up' => new_user_registration_path(params),
+      'sign in' => new_user_session_path(params),
+      'organisations index' => organizations_path(params),
+      'contributors' => contributors_path(params),
+      'password reset' => edit_user_password_path(params),
+      'invitation' => accept_user_invitation_path(params),
+      'organisations without users' => organizations_report_path(params),
+      'all users' => users_report_path(params),
+      'invited users' => invited_users_report_path(params),
+      'volunteer opportunities' => volunteer_ops_path(params),
+      'new organisation' => new_organization_path(params)
+  }[location]
 end
 
-Then /^I visit the (.*) page$/ do |location|
-  location = location.downcase
-  raise "No matching path found for #{location}" if paths[location].nil?
-  visit paths[location]
+Then /^I visit the (.*) page?$/ do |location|
+  location.downcase!
+  raise "No matching path found for #{location}" if paths(location).nil?
+  visit paths(location)
+end
+
+Then /^I visit the (.*) page with params:$/ do |location, table|
+  params = Hash[table.rows]
+  location.downcase!
+  raise "No matching path found for #{location}" if paths(location).nil?
+  visit paths(location, params)
 end
 
 Then /^I visit the (.*) page for organization "(.*?)"$/ do |location, organization|
@@ -119,10 +124,6 @@ Then /^following Disclaimer link should display Disclaimer$/ do
     Then I should see "Disclaimer"
     And I should see "Whilst Voluntary Action Harrow has made effort to ensure the information here is accurate and up to date we are reliant on the information provided by the different organisations. No guarantees for the accuracy of the information is made."
   }
-end
-
-Given /^I am on the new charity page$/ do
-  visit new_organization_path
 end
 
 Then /^I should be on the new charity page$/ do

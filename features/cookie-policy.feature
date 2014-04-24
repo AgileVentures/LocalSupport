@@ -5,7 +5,9 @@ Feature: Approve cookies
   Tracker story ID: https://www.pivotaltracker.com/story/show/56438038
 
   Background:
-    Given I am on the password reset page
+    Given I visit the password reset page with params:
+      | key                  | value           |
+      | reset password token | 18217tiegi1qwea |
     Then I should see an approve cookie policy message
 
   Scenario: User approving the cookies

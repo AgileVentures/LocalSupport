@@ -29,7 +29,7 @@ end
 And /^I am signed in as the admin using password "(.*?)"$/ do |password|
   admin = User.find_by_admin(true)
   steps %Q{
-    Given I am on the sign in page
+    Given I visit the sign in page
     And I sign in as "#{admin.email}" with password "#{password}"
   }
 end
@@ -37,7 +37,7 @@ end
 And /^I am not signed in as the admin using password "(.*?)"$/ do |password|
   admin = User.find_by_admin(false)
   steps %Q{
-    Given I am on the sign in page
+    Given I visit the sign in page
     And I sign in as "#{admin.email}" with password "#{password}"
   }
 end
@@ -66,7 +66,7 @@ end
 
 Then /^I should not be signed in as any user$/ do
   steps %Q{
-    Given I am on the new charity page
+    Given I visit the new organisation page
     Then I should not see "Signed in as"
   }
 end
@@ -81,8 +81,8 @@ Given /^I sign in as "(.*?)" with password "(.*?)"$/ do |email, password|
   click_link_or_button "Sign in"
 end
 
-Given /^I am on the sign up page$/ do
-  step "I am on the home page"
+Given /^I visit the sign up page$/ do
+  step "I visit the home page"
   expect(page).to have_field('signup_email')
   expect(page).to have_field('signup_password')
   expect(page).to have_button('signup')
@@ -96,7 +96,7 @@ When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |
   user = User.find_by_email("#{email}")
   user.confirm!
   steps %Q{
-    Given I am on the home page
+    Given I visit the home page
     And I sign in as "#{email}" with password "#{password}"
   }
 end

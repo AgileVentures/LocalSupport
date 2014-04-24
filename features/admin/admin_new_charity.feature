@@ -16,7 +16,7 @@ Feature: Admin creating charity
 
   Scenario: Unsuccessfully attempt to create charity without being signed-in
       # should this be checking for absence of link to the new org page?
-    Given I am on the new charity page
+    Given I am on the new organisation page
     Then I should be on the sign in page
 
 # beta version only allows admin to create new organization, currently
