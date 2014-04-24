@@ -377,9 +377,11 @@ Given(/^the (.*?) for "(.*?)" has been marked (public|hidden)$/) do |field,name,
   org.send("publish_#{field}=", publish)
   org.save!
 end
-Then /^I should( not)? see:$/ do |negative, table|
+Then /^the index should( not)? contain:$/ do |negative, table|
     expectation = negative ? :should_not : :should
-    table.rows.flatten.each do |string|
-    page.send(expectation, have_text(string))
+    table.raw.flatten.each do |cell|
+      within('#column2') do
+        page.send(expectation, have_text(cell))
+      end
   end
 end

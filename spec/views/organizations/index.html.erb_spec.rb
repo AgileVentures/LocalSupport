@@ -1,14 +1,25 @@
 require 'spec_helper'
 
 describe "organizations/index.html.erb", :js => true do
+  let(:org1) { stub_model Organization,
+               name: 'test1',
+               address: '123 candy lane',
+               telephone: '911',
+               description: 'rainbows for all'
+  }
+  let(:org2) { stub_model Organization,
+               name: 'test2',
+               address: '321 candy lane',
+               telephone: '119',
+               description: 'unicorns are real'
+  }
+  #let(:org1) do
+  #  stub_model Organization,:name => 'test', :address => "12 pinner rd", :postcode => "HA1 4HP",:telephone => "1234", :website => 'http://a.com', :description => 'I am test organization hahahahahhahaha', :lat => 1, :lng => -1
+  #end
 
-  let(:org1) do
-    stub_model Organization,:name => 'test', :address => "12 pinner rd", :postcode => "HA1 4HP",:telephone => "1234", :website => 'http://a.com', :description => 'I am test organization hahahahahhahaha', :lat => 1, :lng => -1
-  end
-
-  let(:org2) do
-    stub_model Organization,:name => 'test2', :address => "12 oxford rd", :postcode => "HA1 4HX", :telephone => "4534", :website => 'http://b.com', :description => 'I am ', :lat => 1, :lng => -1
-  end
+  #let(:org2) do
+  #  stub_model Organization,:name => 'test2', :address => "12 oxford rd", :postcode => "HA1 4HX", :telephone => "4534", :website => 'http://b.com', :description => 'I am ', :lat => 1, :lng => -1
+  #end
 
   let(:organizations) do
     [org1,org2]
@@ -43,22 +54,17 @@ describe "organizations/index.html.erb", :js => true do
   end
 
   it "render organization names with hyperlinks" do
-    organizations.each do |org|
-      rendered.should have_link org.name, :href => organization_path(org.id)
-      rendered.should have_content org.description.truncate(128,:omission=>' ...')
+    rendered.within('#column2') do |index|
+      organizations.each do |org|
+        index.should have_link org.name, :href => organization_path(org.id)
+        index.should have_content org.description.truncate(128,:omission=>' ...')
+      end
     end
   end
 
   it "does not render addresses and telephone numbers" do
     rendered.should_not have_content org1.address
     rendered.should_not have_content org1.telephone
-    rendered.should_not have_content org2.address
-    rendered.should_not have_content org2.telephone
-  end
-
-  it "does not renders edit and destroy links" do
-    rendered.should_not have_link 'Edit'
-    rendered.should_not have_link 'Destroy'
     rendered.should_not have_content org2.address
     rendered.should_not have_content org2.telephone
   end
@@ -73,5 +79,4 @@ describe "organizations/index.html.erb", :js => true do
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.zoom = 12')]"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
   end
-
 end

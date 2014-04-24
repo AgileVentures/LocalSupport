@@ -13,28 +13,47 @@ Background: organizations have been added to database
   | Age UK                          | Care for the Elderly             | 84 pinner road | HA1 4HF  | http://c.com/ |
 
 # particularly want to provide visibility to organizations with no existing web presence
-Scenario: Find help with care for elderly
-  Given I am on the home page
-  When I search for "elderly"
-  Then I should see search results for "Indian Elders Association" and "Age UK"
-  And I should see "Indian Elders Association"
-  And I should see "Age UK"
-  And I should see search results for "elderly" in the table
-  And the search box should contain "elderly"
+  Scenario: Find help with care for elderly
+    Given I am on the home page
+    When I search for "elderly"
+    Then the index should contain:
+    | Indian Elders Association       | Care for the elderly             |
+    | Age UK                          | Care for the Elderly             |
+    And the index should not contain:
+    | Harrow Bereavement Counselling  | Harrow Bereavement Counselling   |
+    And I should see search results for "elderly" in the table
+    And the search box should contain "elderly"
 
 # starting within main site
-Scenario: Find a bereavement counsellor
-  Given I am on the home page
-  When I search for "Bereavement Counselling"
-  Then I should see contact details for "Harrow Bereavement Counselling"
-  Then I should not see the no results message
+  Scenario: Find a bereavement counsellor
+    Given I visit the home page
+    When I search for "Bereavement Counselling"
+    And the index should contain:
+    | Harrow Bereavement Counselling  | Harrow Bereavement Counselling   |
+    Then the index should not contain:
+    | Indian Elders Association       | Care for the elderly             |
+    | Age UK                          | Care for the Elderly             |
+    Then I should not see the no results message
 
-Scenario: Find friendly no search results message
-  Given I am on the home page
-  When I search for "non-existent results"
-  Then I should see the no results message
-  Given I am on the home page
-  Then I should not see the no results message
+  Scenario: Find friendly no search results message
+    Given I visit the home page
+    When I search for "non-existent results"
+    Then I should see the no results message
+    Given I am on the home page
+    Then I should not see the no results message
 
 # starting with web search
-Scenario: Searching Google for "death of a relative"
+  Scenario: Searching Google for "death of a relative"
+
+  Scenario: See a list of current organizations
+    Given I visit the home page
+    And cookies are approved
+    Then the index should contain:
+    | Harrow Bereavement Counselling  | Harrow Bereavement Counselling   |
+    | Indian Elders Association       | Care for the elderly             |
+    | Age UK                          | Care for the Elderly             |
+      
+  Scenario: Volunteer index page has two column layout
+    Given I visit the home page
+    And cookies are approved
+    Then I should see a two column layout

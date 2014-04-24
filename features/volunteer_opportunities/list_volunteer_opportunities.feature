@@ -27,8 +27,7 @@ Examples:
 Scenario: See a list of current volunteer opportunities
     Given I visit the volunteer opportunities page
     And cookies are approved
-    Then I should see:
-    | title                           | description                        | organization              |
+    Then the index should contain:
     | Litter Box Scooper              | Assist with feline sanitation      | Cats Are Us               |
     | Office Support                  | Help with printing and copying.    | Indian Elders Association |
   
