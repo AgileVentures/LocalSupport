@@ -60,7 +60,7 @@ end
 
 Given /the following organizations exist/ do |organizations_table|
   organizations_table.hashes.each do |org|
-    stub_request_with_address(org['address'])
+    # stub_request_with_address(org['address'])
     Organization.create! org
   end
 end
