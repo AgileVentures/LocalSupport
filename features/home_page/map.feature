@@ -19,7 +19,7 @@ Background:
 @javascript
 Scenario: Show all charities on homepage map
   Given I am on the home page
-  Then I should see contact details for "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling"
+  Then I should see search results for "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling"
   #And show me the page
   And I should see "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling" in the map centered on local organizations
 

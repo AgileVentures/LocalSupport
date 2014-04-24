@@ -54,11 +54,9 @@ describe "organizations/index.html.erb", :js => true do
   end
 
   it "render organization names with hyperlinks" do
-    rendered.within('#column2') do |index|
-      organizations.each do |org|
-        index.should have_link org.name, :href => organization_path(org.id)
-        index.should have_content org.description.truncate(128,:omission=>' ...')
-      end
+    organizations.each do |org|
+      rendered.should have_link org.name, :href => organization_path(org.id)
+      rendered.should have_content org.description.truncate(128,:omission=>' ...')
     end
   end
 
