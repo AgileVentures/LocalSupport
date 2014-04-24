@@ -10,7 +10,7 @@ Then(/^the Admin menu has a valid (.*?) link$/) do |link|
   within('#menuAdmin > ul.dropdown-menu') do
     find('a', text: link).should_not be_nil
     click_link link
-    current_path.should eq paths[link.downcase]
+    current_path.should eq paths(link.downcase)
   end
 end
 
@@ -26,7 +26,7 @@ Then /^I should see the cannot add non registered user "(.*?)" as charity admin 
 end
 
 And /^I add "(.*?)" as an admin for "(.*?)" charity$/ do |admin_email, charity|
-  steps %Q{ And I am on the edit charity page for "#{charity}"}
+  steps %Q{ And I visit the edit page for the organization named "#{charity}"}
   fill_in 'organization_admin_email_to_add', :with => admin_email
   steps %Q{
   And I press "Update Organisation"}
@@ -86,7 +86,7 @@ Then /^the about us should be available$/ do
 end
 Given /^I update "(.*?)" charity address to be "(.*?)"( when Google is indisposed)?$/ do |name, address, indisposed|
   steps %Q{
-    Given I am on the charity page for "#{name}"
+    Given I visit the show page for the organization named "#{name}"
     And I follow "Edit"
     And I edit the charity address to be "#{address}" #{indisposed ? 'when Google is indisposed':''}
     And I press "Update Organisation"
@@ -95,7 +95,7 @@ end
 
 Given /^I update "(.*?)" charity website to be "(.*?)"$/ do |name, url|
   steps %Q{
-    Given I am on the charity page for "#{name}"
+    Given I visit the show page for the organization named "#{name}"
     And I follow "Edit"
     And I edit the charity website to be "#{url}"
     And I press "Update Organisation"
@@ -104,7 +104,7 @@ end
 
 Given /^I have created a new organization$/ do
   steps %Q{
-    Given I am on the home page
+    Given I visit the home page
     And I follow "New Organization"
     And I fill in the new charity page validly
     And I press "Create Organisation"
@@ -130,7 +130,7 @@ end
 
 Then /^the website link for "(.*?)" should have a protocol$/ do |name|
   steps %{
-    Given I am on the charity page for "#{name}"
+    Given I visit the show page for the organization named "#{name}"
   }
    website = Organization.find_by_name(name).website
    website.should =~ /^http\:\/\//

@@ -33,7 +33,7 @@ Feature: I want to be able to edit static pages
 
   Scenario: Admin can edit
     Given I am signed in as a admin
-    And I am on the home page
+    And I visit the home page
     When I follow "About Us"
     Then I should see a link with text "Edit"
     And I follow "Edit"
@@ -41,13 +41,13 @@ Feature: I want to be able to edit static pages
 
   Scenario: Non-admin cannot edit
     Given I am signed in as a non-admin
-    And I am on the home page
+    And I visit the home page
     When I follow "About Us"
     Then I should not see a link with text "Edit"
 
   Scenario: Admin can see pages index
     Given I am signed in as a admin
-    And I am on the home page
+    And I visit the home page
     When I follow "About Us"
     And I follow "Pages"
     Then the URL should contain "pages"
@@ -69,7 +69,7 @@ Feature: I want to be able to edit static pages
     And I should see "xyz789"
 
   Scenario: Basic markdown syntax works
-    Given I am on the home page
+    Given I visit the home page
     When I follow "Contact"
     Then I should see "significant" < emphasized >
     And I should see "important" < stronged >

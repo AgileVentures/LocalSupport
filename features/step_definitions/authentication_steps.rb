@@ -122,6 +122,16 @@ Given(/^I click on the retrieve password link in the email to "([^\"]+)"$/) do |
   visit password_url(user.reset_password_token)
 end
 
+Given(/^I receive a new password for "(.*?)"$/) do |email|
+  steps %Q{
+    Given I visit the home page
+    And I follow "Forgot your password?"
+    And I fill in "user_retrieval_email" with "#{email}" within the main body
+    And I press "Send me reset password instructions"
+    And I click on the retrieve password link in the email to "#{email}"
+  }
+end
+
 Given(/^I click on the invitation link in the email to "([^\"]+)"$/) do |email|
   user = User.find_by_email email
   visit invitation_url(user.invitation_token)

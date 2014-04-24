@@ -12,6 +12,7 @@ def paths(location, params = {})
       'sign up' => new_user_registration_path(params),
       'sign in' => new_user_session_path(params),
       'organisations index' => organizations_path(params),
+      'new organisation' => new_organization_path(params),
       'contributors' => contributors_path(params),
       'password reset' => edit_user_password_path(params),
       'invitation' => accept_user_invitation_path(params),
@@ -19,14 +20,9 @@ def paths(location, params = {})
       'all users' => users_report_path(params),
       'invited users' => invited_users_report_path(params),
       'volunteer opportunities' => volunteer_ops_path(params),
-      'new organisation' => new_organization_path(params)
+      'new organisation' => new_organization_path(params),
+      'contributors' => contributors_path(params)
   }[location]
-end
-
-Then /^I visit the (.*) page$/ do |location|
-  location.downcase!
-  raise "No matching path found for #{location}" if paths(location).nil?
-  visit paths(location)
 end
 
 Then /^I visit the (.*) page with params:$/ do |location, table|
@@ -36,34 +32,35 @@ Then /^I visit the (.*) page with params:$/ do |location, table|
   visit paths(location, params)
 end
 
-Then /^I visit the (edit|show) page for the (.*?) named "(.*?)"$/ do |action, object, name|
-  record = eval("#{object.camelize}.find_by_name('#{name}')")
-  visit url_for controller: object.pluralize.underscore, action: action, id: record.id
+Then /^I should be on the (.*) page with params:$/ do |location, table|
+  params = Hash[table.rows]
+  location.downcase!
+  raise "No matching path found for #{location}" if paths(location).nil?
+  current_path.should eq paths(location, params)
 end
 
-
-Then /^I visit the (.*) page for organization "(.*?)"$/ do |location, organization|
-  org = Organization.find_by_name organization
-  case location
-    when "new volunteer opportunity" then visit new_volunteer_op_path
-    when "show volunteer opportunity" then visit volunteer_op_path(org)
-    else raise "No matching path found for #{location}!"
-  end
+Then /^I visit the (.*) page$/ do |location|
+  location.downcase!
+  raise "No matching path found for #{location}" if paths(location).nil?
+  visit paths(location)
 end
 
 Then /^I should be on the (.*) page$/ do |location|
   location = location.downcase
-  raise "No matching path found for #{location}" if paths[location].nil?
-  current_path.should eq paths[location]
+  raise "No matching path found for #{location}" if paths(location).nil?
+  current_path.should eq paths(location)
 end
 
-Then /^I should be on the (.*) page for organization "(.*?)"$/ do |location, organization|
-  org = Organization.find_by_name organization
-  case location
-    when "new volunteer opportunity" then current_path.should == new_volunteer_op_path
-    when "show volunteer opportunity" then current_path.should == volunteer_op_path(org)
-    else raise "No matching path found for #{location}!"
-  end
+Then /^I visit the (edit|show) page for the (.*?) (named|titled) "(.*?)"$/ do |action, object, schema, name|
+  schema.chomp!('d')
+  record = eval("#{object.camelize}.find_by_#{schema}('#{name}')")
+  visit url_for controller: object.pluralize.underscore, action: action, id: record.id
+end
+
+Then /^I should be on the (edit|show) page for the (.*?) (named|titled) "(.*?)"$/ do |action, object, schema, name|
+  schema.chomp!('d')
+  record = eval("#{object.camelize}.find_by_#{schema}('#{name}')")
+  current_path.should eq url_for controller: object.pluralize.underscore, action: action, id: record.id
 end
 
 Given(/^I try to access "(.*?)" page$/) do |page|
@@ -86,7 +83,6 @@ And (/^I should see a two column layout$/) do
     page.should have_css('#column2.span6')
   end
 end
-
 
 Then(/^the response status should be 404$/) do
   page.status_code.should == 404
@@ -113,10 +109,6 @@ end
 
 When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
-end
-
-Given /^I am on the charity search page$/ do
-  visit organizations_search_path
 end
 
 Then /^I should be on the charity page for "(.*?)"$/ do |charity_name|
@@ -190,10 +182,6 @@ end
 And(/^I click tableheader "([^"]*)"$/) do |name|
   find('th', :text => "#{name}").click
   wait_for_ajax
-end
-
-Given(/^I am on the volunteer opportunities page$/) do
-  visit '/volunteer_ops'
 end
 
 Then(/^navbar button "(.*?)" should( not)? be active$/) do |button_text, negative|

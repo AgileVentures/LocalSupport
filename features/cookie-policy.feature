@@ -5,20 +5,14 @@ Feature: Approve cookies
   Tracker story ID: https://www.pivotaltracker.com/story/show/56438038
 
   Background:
-    Given I visit the password reset page with params:
-      | key                  | value           |
-      | reset password token | 18217tiegi1qwea |
-    Then I should see an approve cookie policy message
+    Given the following users are registered:
+      | email                            | password | confirmed_at        |
+      | registered-user@example.com      | pppppppp | 2014-01-20 16:27:36 |
+    Given I receive a new password for "registered-user@example.com"
+    Then I should be on the password reset page
+    And I should see an approve cookie policy message
 
   Scenario: User approving the cookies
     Given I click "Close"
     Then I should not see an approve cookie policy message
     And I should be on the password reset page
-
-  @javascript
-  Scenario: Check that cookies can be approved even with JavaScript
-    Given I click "Close"
-    Then I should not see an approve cookie policy message
-    And I should be on the password reset page
-
-

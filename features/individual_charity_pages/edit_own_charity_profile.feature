@@ -30,7 +30,7 @@ Scenario: Successfully change the address of a charity
 
 Scenario Outline: Successfully mark a field of a charity as public or private
   Given I am signed in as a charity worker related to "Friendly"
-  And I am on the edit charity page for "Friendly"
+  And I visit the edit page for the organization named "Friendly"
   And the <field> for "Friendly" has been marked hidden
   And I <check_state> "<field_checkbox>"
   And I press "Update Organisation"
@@ -53,7 +53,7 @@ Examples:
 #  Given I furtively update "Friendly" charity address to be "30 pinner road"
 #  Then I should see "You don't have permission"
 #  And I should be on the charity page for "Friendly"
-#  Given I am on the home page
+#  Given I visit the home page
 #  Then the coordinates for "Nice" and "Friendly" should not be the same
 
 Scenario: Do not see edit button as non-admin not associated with Friendly
@@ -74,7 +74,7 @@ Scenario: Change the address of a charity when Google is indisposed
   And I visit the show page for the organization named "Friendly"
 #  TODO possible follow on if we could have the request re-issued on next page load
 #  Given Google is no longer indisposed
-#  And I am on the home page
+#  And I visit the home page
 #  Then the coordinates for "Friendly" should be correct
 #  Then show me the page
 

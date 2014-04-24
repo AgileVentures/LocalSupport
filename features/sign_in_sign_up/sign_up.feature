@@ -13,21 +13,21 @@ Background:
   And cookies are approved
 @email
 Scenario: Sign up for an existing user
-  Given I visit sign up page
+  Given I visit the sign up page
   And I sign up as "existent-user1@example.com" with password "pppppppp" and password confirmation "pppppppp"
   Then I should see "Email has already been taken"
   And I should not receive an email
   
 @email
 Scenario: Sign up for an non-existent user with non-matching password confirmation
-  Given I visit sign up page
+  Given I visit the sign up page
   And I sign up as "existent-user2@example.com" with password "pppppppp" and password confirmation "aaaaaaaa"
   Then I should see "Password doesn't match confirmation"
   And I should not receive an email
   
 @email
 Scenario: Sign up for a non-existent user
-  Given I visit sign up page
+  Given I visit the sign up page
   And I sign up as "non-existent-user@example.com" with password "pppppppp" and password confirmation "pppppppp"
   Then I should be on the home page
   And I should see "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."

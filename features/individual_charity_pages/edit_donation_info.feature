@@ -27,9 +27,9 @@ Scenario: Successfully change the donation url for a charity
   # Charity Admins can edit their charity's donation info url
 
   #TODO: Refactor the sign in process to dry it out
-  Given I am on the home page
+  Given I visit the home page
   And I sign in as "registered_user@example.com" with password "pppppppp"
-  Given I am on the edit charity page for "Friendly"
+  Given I visit the edit page for the organization named "Friendly"
   And I edit the donation url to be "http://www.friendly.com/donate"
   And I press "Update Organisation"
   Then I should be on the charity page for "Friendly"

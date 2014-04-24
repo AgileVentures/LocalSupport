@@ -1,8 +1,3 @@
-Given(/^I am on the contributors page$/) do
-  visit contributors_path
-end
-
-
 Given(/^the following contributors exist:$/) do |c_table|
   @contributors = Array.new
   c_table.hashes.each do |contributor|
