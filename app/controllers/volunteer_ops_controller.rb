@@ -4,6 +4,8 @@ class VolunteerOpsController < ApplicationController
   
   def index
     @volunteer_ops = VolunteerOp.all
+    @organizations = @volunteer_ops.map { |op| op.organization }
+    @json = gmap4rails_with_popup_partial(@organizations,'popup')
   end
   
   def show
