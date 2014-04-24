@@ -73,4 +73,8 @@ class ApplicationController < ActionController::Base
   def admin?
     current_user.try :admin?
   end
+
+  def assign_footer_page_links
+    @footer_page_links = Page.visible_links
+  end
 end
