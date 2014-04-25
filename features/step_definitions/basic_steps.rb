@@ -44,7 +44,7 @@ end
 Then /^I should( not)? see an edit button for "(.*?)" charity$/ do |negate, name|
   expectation_method = negate ? :not_to : :to
   org = Organization.find_by_name name
-  expect(page).send(expectation_method, have_link('Edit',:href => edit_organization_path(org.id)))
+  expect(page).send(expectation_method, have_link('Edit', :href => edit_organization_path(org.id)))
 end
 
 Then /^I should see "(.*?)" in the charity admin email$/ do |email|
@@ -73,7 +73,7 @@ Given /^I fill in the new charity page validly$/ do
 end
 
 Then /^the contact information should be available$/ do
-   steps %Q{
+  steps %Q{
     When I follow "Contact"
     Then I should see "Contact Info Email us: contact@voluntaryactionharrow.org.uk Phone Us: 020 8861 5894 Write to Us: The Lodge, 64 Pinner Road, Harrow, Middlesex, HA1 4HZ Find Us: On Social Media (Click Here)"
    }
@@ -88,7 +88,7 @@ Given /^I update "(.*?)" charity address to be "(.*?)"( when Google is indispose
   steps %Q{
     Given I visit the show page for the organization named "#{name}"
     And I follow "Edit"
-    And I edit the charity address to be "#{address}" #{indisposed ? 'when Google is indisposed':''}
+    And I edit the charity address to be "#{address}" #{indisposed ? 'when Google is indisposed' : ''}
     And I press "Update Organisation"
   }
 end
@@ -120,21 +120,21 @@ Given /^I furtively update "(.*?)" charity address to be "(.*?)"$/ do |name, add
 end
 
 Given /^I edit the charity website to be "(.*?)"$/ do |url|
-  fill_in('organization_website',:with => url)
+  fill_in('organization_website', :with => url)
 end
 
 When /^I edit the charity address to be "(.*?)"$/ do |address|
   stub_request_with_address(address)
-  fill_in('organization_address',:with => address)
+  fill_in('organization_address', :with => address)
 end
 
 Then /^the website link for "(.*?)" should have a protocol$/ do |name|
   steps %{
     Given I visit the show page for the organization named "#{name}"
   }
-   website = Organization.find_by_name(name).website
-   website.should =~ /^http\:\/\//
-   expect(page).to have_selector("a[href='#{website}']")
+  website = Organization.find_by_name(name).website
+  website.should =~ /^http\:\/\//
+  expect(page).to have_selector("a[href='#{website}']")
 end
 
 And /^"(.*?)" charity address is "(.*?)"$/ do |name, address|
@@ -142,14 +142,14 @@ And /^"(.*?)" charity address is "(.*?)"$/ do |name, address|
   expect(org.address).to eq(address)
 end
 
-Then /^I should see "(.*?)" before "(.*?)"$/ do |name1,name2|
+Then /^I should see "(.*?)" before "(.*?)"$/ do |name1, name2|
   str = page.body
   raise "Expected '#{name1}' first, but instead found '#{name2}' first" unless str.index(name1) < str.index(name2)
 end
 
 Then /^I should see the donation_info URL for "(.*?)"$/ do |name1|
   org1 = Organization.find_by_name(name1)
-  content =  "Donate to #{org1.name} now!"
+  content = "Donate to #{org1.name} now!"
   page.should have_xpath %Q<//a[@href = "#{org1.donation_info}" and @target = "_blank" and contains(.,'#{content}')]>
 end
 
@@ -161,7 +161,7 @@ And /^the search box should contain "(.*?)"$/ do |arg1|
   expect(page).to have_xpath("//input[@id='q' and @value='#{arg1}']")
 end
 
-Then /^I should( not)? see the no results message$/ do |negate| 
+Then /^I should( not)? see the no results message$/ do |negate|
   expectation_method = negate ? :not_to : :to
   expect(page).send(expectation_method, have_content(SEARCH_NOT_FOUND))
 end
@@ -209,7 +209,7 @@ Then /^I should( not)? see a link with text "([^"]*?)"$/ do |negate, link|
   end
 end
 
-Then /^I should( not)? see a new organizations link/ do  |negate|
+Then /^I should( not)? see a new organizations link/ do |negate|
   #page.should_not have_link "New Organization", :href => new_organization_path
   #page.should_not have_selector('a').with_attribute href: new_organization_path
   expectation_method = negate ? :not_to : :to
@@ -232,7 +232,7 @@ end
 
 Then(/^the navbar should( not)? have a link to (.*?)$/) do |negate, link|
   expectation_method = negate ? :not_to : :to
-  within('#navbar') {expect(page).send(expectation_method, have_selector(:link_or_button, link))}
+  within('#navbar') { expect(page).send(expectation_method, have_selector(:link_or_button, link)) }
 end
 
 #Then /^I should( not)? see a button saying "(.*?)"$/ do |negate, name|
@@ -312,18 +312,18 @@ end
 Then(/^"(.*?)" should have email "(.*?)"$/) do |org, email|
   Organization.find_by_name(org).email.should eq email
 end
-Given /^"(.*)"'s request status for "(.*)" should be updated appropriately$/ do |email,org_name|
-    steps %Q{
+Given /^"(.*)"'s request status for "(.*)" should be updated appropriately$/ do |email, org_name|
+  steps %Q{
       And "#{email}"'s request for "#{org_name}" should be persisted
       And I should see "You have requested admin status for #{Organization.find_by_name(org_name).name}"
       And I should not see a link or button "This is my organization"
     }
 end
 
-And /"(.*)"'s request for "(.*)" should be persisted/ do |email,org|
-    user = User.find_by_email(email)
-    org = Organization.find_by_name(org)
-    user.pending_organization_id.should eq org.id
+And /"(.*)"'s request for "(.*)" should be persisted/ do |email, org|
+  user = User.find_by_email(email)
+  org = Organization.find_by_name(org)
+  user.pending_organization_id.should eq org.id
 end
 
 When(/^the URL should contain "(.*?)"$/) do |string|
@@ -366,18 +366,30 @@ And(/^I (un)?check "([^"]*)"$/) do |negate, css|
   page.send(box_state, css)
 end
 
-Given(/^the (.*?) for "(.*?)" has been marked (public|hidden)$/) do |field,name,mode|
+Given(/^the (.*?) for "(.*?)" has been marked (public|hidden)$/) do |field, name, mode|
   org = Organization.find_by_name(name)
   case mode
-    when "hidden" then publish = false
-    when "public" then publish = true
+    when "hidden" then
+      publish = false
+    when "public" then
+      publish = true
   end
   org.send("publish_#{field}=", publish)
   org.save!
 end
+
 Then /^I should( not)? see:$/ do |negative, table|
-    expectation = negative ? :should_not : :should
-    table.rows.flatten.each do |string|
+  expectation = negative ? :should_not : :should
+  table.rows.flatten.each do |string|
     page.send(expectation, have_text(string))
+  end
+end
+
+Then /^the index should( not)? contain:$/ do |negative, table|
+  expectation = negative ? :should_not : :should
+  table.raw.flatten.each do |cell|
+    within('#column2') do
+      page.send(expectation, have_text(cell))
+    end
   end
 end
