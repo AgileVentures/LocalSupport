@@ -13,13 +13,16 @@ describe "organizations/index.html.erb", :js => true do
                telephone: '119',
                description: 'unicorns are real'
   }
-  #let(:org1) do
-  #  stub_model Organization,:name => 'test', :address => "12 pinner rd", :postcode => "HA1 4HP",:telephone => "1234", :website => 'http://a.com', :description => 'I am test organization hahahahahhahaha', :lat => 1, :lng => -1
-  #end
 
-  #let(:org2) do
-  #  stub_model Organization,:name => 'test2', :address => "12 oxford rd", :postcode => "HA1 4HX", :telephone => "4534", :website => 'http://b.com', :description => 'I am ', :lat => 1, :lng => -1
-  #end
+  # The commented out test objects provide data for more detailed map
+  # markers than those currently shown to the user.
+  # let(:org1) do
+  #   stub_model Organization,:name => 'test', :address => "12 pinner rd", :postcode => "HA1 4HP",:telephone => "1234", :website => 'http://a.com', :description => 'I am test organization hahahahahhahaha', :lat => 1, :lng => -1
+  # end
+
+  # let(:org2) do
+  #   stub_model Organization,:name => 'test2', :address => "12 oxford rd", :postcode => "HA1 4HX", :telephone => "4534", :website => 'http://b.com', :description => 'I am ', :lat => 1, :lng => -1
+  # end
 
   let(:organizations) do
     [org1,org2]
