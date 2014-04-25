@@ -48,5 +48,12 @@ describe "volunteer_ops/index" do
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
   end
 
+  # For the first pass of volunteer_ops the map popups are only
+  # the organizations, not the actual volunteer_ops
+  it "uses the same popup partial as the organizations index" do
+    render
+    expect(response).to render_template(:partial => "organizations/_popup")
+  end
+
 
 end
