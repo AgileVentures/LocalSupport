@@ -325,9 +325,6 @@ And /"(.*)"'s request for "(.*)" should be persisted/ do |email,org|
     org = Organization.find_by_name(org)
     user.pending_organization_id.should eq org.id
 end
-#Then an email should be sent to "admin@myorg.com"
-#And I should be on the charity page for "#{org}"
-
 
 When(/^the URL should contain "(.*?)"$/) do |string|
   URI.parse(current_url).path.should == '/' + string

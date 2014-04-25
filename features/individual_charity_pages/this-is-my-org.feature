@@ -17,7 +17,7 @@ Feature: This is my organization
     When I visit the show page for the organization named "The Organization"
     Then I should see a link or button "This is my organization"
     And I click "This is my organization"
-    Then I should be on the charity page for "The Organization"
+    Then I should be on the show page for the organization named "The Organization"
     And "nonadmin@myorg.com"'s request status for "The Organization" should be updated appropriately
 
   @javascript
@@ -25,9 +25,9 @@ Feature: This is my organization
     When I visit the show page for the organization named "The Organization"
     Then I should see "This is my organization"
     When I click id "TIMO"
-    Then I should be on the charity page for "The Organization"
+    Then I should be on the show page for the organization named "The Organization"
     When I sign in as "nonadmin@myorg.com" with password "mypassword1234"
-    Then I should be on the charity page for "The Organization"
+    Then I should be on the show page for the organization named "The Organization"
 
   @javascript
   Scenario: I am not a registered user, I will be offered "This is my organization" claim button

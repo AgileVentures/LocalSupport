@@ -41,7 +41,7 @@ Feature: Org admin creating a volunteer work opportunity
 
   Scenario: Signed in users who don't own the org cannot create volunteer opportunities
     Given I am signed in as a charity worker related to "Shy"
-    And I am on the charity page for "Friendly"
+    And I visit the show page for the organization named "Friendly"
     Then I should not see a link with text "Create a Volunteer Opportunity"
 
   Scenario: Admin users who don't own the org cannot create volunteer opportunities

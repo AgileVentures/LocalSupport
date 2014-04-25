@@ -32,7 +32,7 @@ Scenario: Successfully change the donation url for a charity
   Given I visit the edit page for the organization named "Friendly"
   And I edit the donation url to be "http://www.friendly.com/donate"
   And I press "Update Organisation"
-  Then I should be on the charity page for "Friendly"
+  Then I should be on the show page for the organization named "Friendly"
   And I should see "Organization was successfully updated"
   And the donation_info URL for "Friendly" should refer to "http://www.friendly.com/donate"
 

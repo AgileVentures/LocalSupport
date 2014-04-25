@@ -26,7 +26,7 @@ Scenario: Successfully add website url without protocol
 Scenario: Successfully change the address of a charity
   Given I am signed in as a charity worker related to "Friendly"
   And I update "Friendly" charity address to be "30 pinner road"
-  Then I should be on the charity page for "Friendly"
+  Then I should be on the show page for the organization named "Friendly"
 
 Scenario Outline: Successfully mark a field of a charity as public or private
   Given I am signed in as a charity worker related to "Friendly"
@@ -34,7 +34,7 @@ Scenario Outline: Successfully mark a field of a charity as public or private
   And the <field> for "Friendly" has been marked hidden
   And I <check_state> "<field_checkbox>"
   And I press "Update Organisation"
-  Then I should be on the charity page for "Friendly"
+  Then I should be on the show page for the organization named "Friendly"
   And I should <visibility> "<field_contents>"
   And I should <visibility> "<field_label>"
 Examples:
@@ -79,7 +79,7 @@ Scenario: Change the address of a charity when Google is indisposed
 #  Then show me the page
 
 Scenario: Redirected to sign-in when not signed-in and edit donation url
-  Given I am furtively on the edit charity page for "Friendly"
+  Given I visit the edit page for the organization named "Friendly"
   Then I should be on the sign in page
 # TODO after sign in is take the user back to the edit page
 
