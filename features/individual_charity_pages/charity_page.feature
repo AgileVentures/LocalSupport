@@ -6,9 +6,9 @@ Feature: Web page owned by each charity
 
   Background: organizations have been added to database
     Given the following organizations exist:
-      | name           | description               | address        | postcode | telephone | website              | email              |
-      | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.org  | admin@friendly.xx  |
-      | Friendly Clone | Quite Friendly!           | 30 pinner road |          | 020800010 |                      |                    |
+      | name       | description             | address        | postcode | telephone | website             | email             |
+      | Friendly   | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.org | admin@friendly.xx |
+      | Unfriendly | Bunch of jerks          | 30 pinner road |          | 020800010 |                     |                   |
     Given the following users are registered:
       | email                         | password | organization | confirmed_at         |
       | registered_user-1@example.com | pppppppp | Friendly     | 2007-01-01  10:00:00 |
@@ -28,15 +28,18 @@ Feature: Web page owned by each charity
     Then I should see "<label>"
   Examples:
     | label    |
-    |Postcode  |
-    |Email     |
+    | Postcode |
+    | Email    |
+    | Website  |
 
   Scenario Outline: hide labels if field is empty
+    Given I visit the show page for the organization named "Unfriendly"
     Then I should not see "<label>"
-    Examples:
+  Examples:
     | label    |
-    |Postcode  |
-    |Email     |
+    | Postcode |
+    | Email    |
+    | Website  |
 
 
 

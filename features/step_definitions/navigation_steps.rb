@@ -6,37 +6,24 @@ When(/^I visit "(.*?)"$/) do |path|
   visit path
 end
 
-def paths(location, params = {})
+def paths(location)
   {
-      'home' => root_path(params),
-      'sign up' => new_user_registration_path(params),
-      'sign in' => new_user_session_path(params),
-      'organisations index' => organizations_path(params),
-      'new organisation' => new_organization_path(params),
-      'contributors' => contributors_path(params),
-      'password reset' => edit_user_password_path(params),
-      'invitation' => accept_user_invitation_path(params),
-      'organisations without users' => organizations_report_path(params),
-      'all users' => users_report_path(params),
-      'invited users' => invited_users_report_path(params),
-      'volunteer opportunities' => volunteer_ops_path(params),
-      'new organisation' => new_organization_path(params),
-      'contributors' => contributors_path(params)
+      'home' => root_path,
+      'sign up' => new_user_registration_path,
+      'sign in' => new_user_session_path,
+      'organisations index' => organizations_path,
+      'new organisation' => new_organization_path,
+      'contributors' => contributors_path,
+      'password reset' => edit_user_password_path,
+      'invitation' => accept_user_invitation_path,
+      'organisations without users' => organizations_report_path,
+      'all users' => users_report_path,
+      'invited users' => invited_users_report_path,
+      'volunteer opportunities' => volunteer_ops_path,
+      'new volunteer opportunity' => new_volunteer_op_path,
+      'new organisation' => new_organization_path,
+      'contributors' => contributors_path
   }[location]
-end
-
-Then /^I visit the (.*) page with params:$/ do |location, table|
-  params = Hash[table.rows]
-  location.downcase!
-  raise "No matching path found for #{location}" if paths(location).nil?
-  visit paths(location, params)
-end
-
-Then /^I should be on the (.*) page with params:$/ do |location, table|
-  params = Hash[table.rows]
-  location.downcase!
-  raise "No matching path found for #{location}" if paths(location).nil?
-  current_path.should eq paths(location, params)
 end
 
 Then /^I visit the (.*) page$/ do |location|
@@ -46,7 +33,7 @@ Then /^I visit the (.*) page$/ do |location|
 end
 
 Then /^I should be on the (.*) page$/ do |location|
-  location = location.downcase
+  location.downcase!
   raise "No matching path found for #{location}" if paths(location).nil?
   current_path.should eq paths(location)
 end
@@ -54,17 +41,13 @@ end
 Then /^I visit the (edit|show) page for the (.*?) (named|titled) "(.*?)"$/ do |action, object, schema, name|
   schema.chomp!('d')
   record = eval("#{object.camelize}.find_by_#{schema}('#{name}')")
-  visit url_for controller: object.pluralize.underscore, action: action, id: record.id
+  visit url_for only_path: true, controller: object.pluralize.underscore, action: action, id: record.id
 end
 
 Then /^I should be on the (edit|show) page for the (.*?) (named|titled) "(.*?)"$/ do |action, object, schema, name|
   schema.chomp!('d')
   record = eval("#{object.camelize}.find_by_#{schema}('#{name}')")
-  current_path.should eq url_for controller: object.pluralize.underscore, action: action, id: record.id
-end
-
-Given(/^I try to access "(.*?)" page$/) do |page|
-  visit("/#{page}")
+  current_path.should eq url_for only_path: true, controller: object.pluralize.underscore, action: action, id: record.id
 end
 
 And(/^the page should be titled "(.*?)"$/) do |title|
@@ -111,41 +94,12 @@ When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
 
-Then /^I should be on the charity page for "(.*?)"$/ do |charity_name|
-  charity = Organization.find_by_name(charity_name)
-  expect(current_path).to eq(organization_path charity.id)
-end
-
 Then /^following Disclaimer link should display Disclaimer$/ do
   steps %Q{
     When I follow "Disclaimer"
     Then I should see "Disclaimer"
     And I should see "Whilst Voluntary Action Harrow has made effort to ensure the information here is accurate and up to date we are reliant on the information provided by the different organisations. No guarantees for the accuracy of the information is made."
   }
-end
-
-Then /^I should be on the new charity page$/ do
- current_path.should == new_organization_path
-end
-
-Given /^I am on the charity page for "(.*?)"$/ do |name1|
-  org1 = Organization.find_by_name(name1)
-  visit organization_path org1.id
-  within('#content') do
-    page.should have_css('#column1.span6')
-    page.should have_css('#column2.span6')
-  end
-end
-
-Given /^I am on the edit charity page for "(.*?)"$/ do |name1|
-  org1 = Organization.find_by_name(name1)
-  visit organization_path org1.id
-  click_link 'Edit'
-end
-
-Given /^I am furtively on the edit charity page for "(.*?)"$/ do |name|
-  org = Organization.find_by_name(name)
-  visit edit_organization_path org.id
 end
 
 Given(/^I am on the edit page with the "(.*?)" permalink$/) do |permalink|
@@ -177,7 +131,6 @@ end
 When(/^javascript is enabled$/) do
   Capybara.javascript_driver
 end
-
 
 And(/^I click tableheader "([^"]*)"$/) do |name|
   find('th', :text => "#{name}").click

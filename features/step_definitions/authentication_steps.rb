@@ -15,10 +15,12 @@ Given /^I am signed in as an? (non-)?admin$/ do |negate|
 end
 
 Given /^I sign up as "(.*?)" with password "(.*?)" and password confirmation "(.*?)"$/ do |email, password, password_confirmation|
-  fill_in "signup_email", :with => email
-  fill_in "signup_password", :with => password
-  fill_in "signup_password_confirmation", :with => password_confirmation
-  click_button "Sign up"
+  within('.dropdown-menu') do
+    fill_in "signup_email", :with => email
+    fill_in "signup_password", :with => password
+    fill_in "signup_password_confirmation", :with => password_confirmation
+    click_button "Sign up"
+  end
 end
 
 Given /^I sign in as a charity worker with permission to edit "(.*?)"$/ do |name|
@@ -79,13 +81,6 @@ Given /^I sign in as "(.*?)" with password "(.*?)"$/ do |email, password|
   fill_in "user_email", :with => email
   fill_in "user_password", :with => password
   click_link_or_button "Sign in"
-end
-
-Given /^I visit the sign up page$/ do
-  step "I visit the home page"
-  expect(page).to have_field('signup_email')
-  expect(page).to have_field('signup_password')
-  expect(page).to have_button('signup')
 end
 
 When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |email, password|

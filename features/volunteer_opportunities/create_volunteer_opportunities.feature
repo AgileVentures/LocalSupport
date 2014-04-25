@@ -29,7 +29,7 @@ Feature: Org admin creating a volunteer work opportunity
     And I visit the new volunteer opportunity page
     And I should see "Create a new Volunteer Opportunity"
     And I submit an opportunity with title "Hard Work" and description "For no pay"
-    Then I should be on the show volunteer_op page for organization "Friendly"
+    Then I should be on the show page for the volunteer_op titled "Friendly"
     And I should see "Hard Work"
     And I should see "For no pay"
     And I should see "Organisation: Friendly"

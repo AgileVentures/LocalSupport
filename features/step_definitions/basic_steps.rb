@@ -357,6 +357,7 @@ When /^I approve "(.*?)"$/ do |email|
   page.body.should have_content(email)
   click_link 'Approve'
 end
+
 Then(/^"(.*?)" is a charity admin of "(.*?)"$/) do |user_email, org_name|
   user = User.find_by_email(user_email)
   org = Organization.find_by_name(org_name)
