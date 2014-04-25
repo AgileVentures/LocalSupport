@@ -34,9 +34,12 @@ describe "volunteer_ops/index" do
     end
   end
   
-  it "displays the javascript for a google map" do
-    assign(:json, volunteer_ops.organizations.to_gmaps4rails)
-    render template: "organizations/index", layout: "layouts/application"
+  it "displays the javascript for a google map with a real call to Google" do
+    org1 = stub_model(Organization)
+    org2 =  stub_model(Organization)
+    orgs = [org1, org2]
+    assign(:json, orgs.to_gmaps4rails)
+    render template: "volunteer_ops/index", layout: "layouts/application"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_zoom = true')]"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_latitude = 51.5978')]"
