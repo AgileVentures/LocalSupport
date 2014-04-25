@@ -7,24 +7,20 @@ describe VolunteerOpsController do
 
   describe 'GET index' do
     it 'assigns all volunteer_ops as @volunteer_ops' do
-      VolunteerOp.should_receive(:all) { [op] }
+      results = [op]
+      VolunteerOp.should_receive(:all).and_return(results)
+      ApplicationController.any_instance.stub(:gmap4rails_with_popup_partial)
       get :index, {}
-      assigns(:volunteer_ops).should eq [op]
+      assigns(:volunteer_ops).should eq results
     end
     it 'assigns all volunteer_op orgs as @organizations' do
       results = [op]
-      VolunteerOp.stub(:all) { results }
+      VolunteerOp.stub(:all).and_return(results)
+      ApplicationController.any_instance.stub(:gmap4rails_with_popup_partial)
       results.stub(:map).and_return([org])
       get :index, {}
       assigns(:organizations).should eq([org])
     end
-    #json='my markers'
-    #result.should_receive(:to_gmaps4rails).and_return(json)
-    #get :index
-    #assigns(:organizations).should eq(result)
-    #assigns(:json).should eq(json)
-    #response.should render_template 'layouts/two_columns'
-    #
   end
 
   describe 'GET show' do
