@@ -1,5 +1,13 @@
 require 'spec_helper'
 
+describe  VolunteerOpsController do
+  it "should render template two column layout"  do
+    get :index
+    response.should render_template 'index'
+    response.should render_template 'layouts/two_columns'
+  end
+end
+
 describe VolunteerOpsController do
   let(:user) { double :user }
   let(:org) { double :organization, id: '1' }
@@ -25,15 +33,16 @@ describe VolunteerOpsController do
 
     it 'assigns @json' do
       results = [op]
+      orgs = double("orgs")
       VolunteerOp.stub(:all).and_return(results)
       ApplicationController.any_instance.stub(:gmap4rails_with_popup_partial)
       results.stub(:map).and_return([org])
       json='my markers'
-      results.should_receive(:to_gmaps4rails).and_return(json)
+      orgs.should_receive(:to_gmaps4rails).and_return(json)
       org.stub(:gmaps4rails_options)
+      get :index
       assigns(:json).should eq(json)
     end
-
   end
 
   describe 'GET show' do
@@ -64,12 +73,6 @@ describe VolunteerOpsController do
       controller.stub org_owner?: false
       get :new, {}
       response.status.should eq 302
-    end
-
-    it "should render template two column layout"  do
-      get :index
-      response.should render_template 'index'
-      response.should render_template 'layouts/two_columns'
     end
   end
   
