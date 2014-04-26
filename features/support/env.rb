@@ -27,7 +27,7 @@ Capybara.javascript_driver = :webkit
 # Stub out network calls and return fixtures with sinatra's help
 WebMock.disable_net_connect!(allow_localhost: true)
 require "#{Rails.root}/test/fake_google_geocode"
-Before { stub_request(:any, /maps.googleapis.com/).to_rack(FakeGoogleGeocode) }
+Before { stub_request(:any, /maps\.googleapis\.com/).to_rack(FakeGoogleGeocode) }
 
 
 # By default, any exception happening in your Rails application will bubble up

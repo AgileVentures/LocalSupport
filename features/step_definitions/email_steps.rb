@@ -21,6 +21,13 @@ Given(/^I import emails from "(.*?)"$/) do |file|
   @rake['db:import:emails'].invoke(file)
 end
 
+def stub_request_with_address(address, body = nil)
+  filename = "#{address.gsub(/\s/, '_')}.json"
+  filename = File.read "test/fixtures/#{filename}"
+  stub_request(:any, /maps\.googleapis\.com/).
+      to_return(status => 200, :body => body || filename, :headers => {})
+end
+
 Given /Google is indisposed for "(.*)"/ do |address|
   body = %Q({
 "results" : [],
@@ -28,4 +35,3 @@ Given /Google is indisposed for "(.*)"/ do |address|
 })
   stub_request_with_address(address, body)
 end
-
