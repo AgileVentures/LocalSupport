@@ -221,7 +221,7 @@ describe User do
   end
 
   describe '#belongs_to?' do
-    let(:user) { FactoryGirl.create :user_stubbed_organization }
+    let(:user) { FactoryGirl.create :user_with_organization }
     let(:other_org) { FactoryGirl.create :organization }
     before { Gmaps4rails.stub(:geocode) }
 
