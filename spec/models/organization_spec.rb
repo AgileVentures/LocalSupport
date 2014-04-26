@@ -12,7 +12,6 @@ describe Organization do
     @category4 = FactoryGirl.create(:category, :charity_commission_id => 302)
     @category5 = FactoryGirl.create(:category, :charity_commission_id => 306)
     @org1 = FactoryGirl.build(:organization, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate')
-    Gmaps4rails.stub(:geocode => nil)
     @org1.save!
     @org2 = FactoryGirl.build(:organization, :name => 'Indian Elders Association',
                               :description => 'Care for the elderly', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.indian-elders.co.uk/donate')
