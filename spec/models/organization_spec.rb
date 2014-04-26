@@ -4,14 +4,13 @@ describe 'Geocoding organizations' do
   let!(:org) { FactoryGirl.create :organization }
 
   it 'geocodes' do
-    Gmaps4rails.should_receive :geocode
+    Gmaps4rails.should_receive(:geocode).with("#{org.address}, #{org.postcode}", 'en', false, 'http')
     FactoryGirl.create :organization
   end
 
   it 'geocodes again if the address changes' do
-    Gmaps4rails.should_receive :geocode
     new_address = '84 pinner road'
-    org.address.should_not eq new_address
+    Gmaps4rails.should_receive(:geocode)
     org.update_attributes :address => new_address
   end
 
@@ -20,13 +19,27 @@ describe 'Geocoding organizations' do
     org.latitude.should_not be_nil
     org.longitude.should_not be_nil
     Gmaps4rails.should_receive(:geocode).and_raise(Gmaps4rails::GeocodeStatus)
-    org.update_attributes :address => '84 pinner road'
+    (->{org.update_attributes :address => '84 pinner road'}).should_not raise_error
     org.errors['gmaps4rails_address'].should be_empty
     actual_address = Organization.find_by_name(org.name).address
     actual_address.should eq new_address
     org.latitude.should be_nil
     org.longitude.should be_nil
   end
+
+  it 'should attempt to geocode after failed' do
+    Gmaps4rails.should_receive(:geocode).and_raise(Gmaps4rails::GeocodeInvalidQuery)
+    org.save!
+    new_address = '60 pinner road'
+    expect(->{
+      org.address = new_address
+      # destructive save is called to raise exception if saving fails
+      org.save!
+    }).not_to raise_error
+    actual_address = Organization.find_by_name(org.name).address
+    expect(actual_address).to eq(new_address)
+  end
+
 
   describe '#not_geocoded?' do
     it 'should return true if it lacks latitude and longitude' do
@@ -109,11 +122,11 @@ describe Organization do
     @org1 = FactoryGirl.build(:organization, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate')
     @org1.save!
     @org2 = FactoryGirl.build(:organization, :name => 'Indian Elders Association',
-                              :description => 'Care for the elderly', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.indian-elders.co.uk/donate')
+                              :description => 'Care for the elderly', :address => '64 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.indian-elders.co.uk/donate')
     @org2.categories << @category1
     @org2.categories << @category2
     @org2.save!
-    @org3 = FactoryGirl.build(:organization, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.age-uk.co.uk/donate')
+    @org3 = FactoryGirl.build(:organization, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '64 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.age-uk.co.uk/donate')
     @org3.categories << @category1
     @org3.save!
   end
@@ -470,35 +483,6 @@ describe Organization do
     expect(@org1.gmaps4rails_options[:check_process]).to be_false
   end
 
-  it 'should geocode when address changes' do
-    new_address = '60 pinner road'
-    Gmaps4rails.should_receive(:geocode).with("#{new_address}, #{@org1.postcode}", "en", false,"http")
-    @org1.update_attributes :address => new_address
-  end
-
-  it 'should geocode when new object is created' do
-    address = '60 pinner road'
-    postcode = 'HA1 3RE'
-    Gmaps4rails.should_receive(:geocode).with("#{address}, #{postcode}", "en", false, "http")
-    org = FactoryGirl.build(:organization,:address => address, :postcode => postcode, :name => 'Happy and Nice', :gmaps => true)
-    org.save
-  end
-
-  #TODO: refactor with expect{} instead of should as Rspec 2 promotes
-  it 'should delete geocoding errors and save organization' do
-    new_address = '777 pinner road'
-    @org1.latitude = 77
-    @org1.longitude = 77
-    Gmaps4rails.should_receive(:geocode).and_raise(Gmaps4rails::GeocodeInvalidQuery)
-    @org1.address = new_address
-    @org1.update_attributes :address => new_address
-    @org1.errors['gmaps4rails_address'].should be_empty
-    actual_address = Organization.find_by_name(@org1.name).address
-    expect(actual_address).to eq(new_address)
-    expect(@org1.latitude).to be_nil
-    expect(@org1.longitude).to be_nil
-  end
-
   it 'should not delete validation errors unrelated to gmap4rails address issues' do
     Organization.class_eval do
       validates :name, :presence => true
@@ -508,19 +492,6 @@ describe Organization do
     expect(@org1.errors['name']).not_to be_empty
   end
 
-  it 'should attempt to geocode after failed' do
-    Gmaps4rails.should_receive(:geocode).and_raise(Gmaps4rails::GeocodeInvalidQuery)
-    @org1.save!
-    new_address = '60 pinner road'
-    Gmaps4rails.should_receive(:geocode)
-    expect(lambda{
-      @org1.address = new_address
-      # destructive save is called to raise exception if saving fails
-      @org1.save!
-    }).not_to raise_error
-    actual_address = Organization.find_by_name(@org1.name).address
-    expect(actual_address).to eq(new_address)
-  end
   # not sure if we need SQL injection security tests like this ...
   # org = Organization.new(:address =>"blah", :gmaps=> ";DROP DATABASE;")
   # org = Organization.new(:address =>"blah", :name=> ";DROP DATABASE;")
