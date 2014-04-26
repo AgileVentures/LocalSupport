@@ -1,5 +1,100 @@
 require 'spec_helper'
 
+describe 'Geocoding organizations' do
+  let!(:org) { FactoryGirl.create :organization }
+
+  it 'geocodes' do
+    Gmaps4rails.should_receive :geocode
+    FactoryGirl.create :organization
+  end
+
+  it 'geocodes again if the address changes' do
+    Gmaps4rails.should_receive :geocode
+    new_address = '84 pinner road'
+    org.address.should_not eq new_address
+    org.update_attributes :address => new_address
+  end
+
+  it 'should delete geocoding errors and save organization' do
+    new_address = '84 pinner road'
+    org.latitude.should_not be_nil
+    org.longitude.should_not be_nil
+    Gmaps4rails.should_receive(:geocode).and_raise(Gmaps4rails::GeocodeStatus)
+    org.update_attributes :address => '84 pinner road'
+    org.errors['gmaps4rails_address'].should be_empty
+    actual_address = Organization.find_by_name(org.name).address
+    actual_address.should eq new_address
+    org.latitude.should be_nil
+    org.longitude.should be_nil
+  end
+
+  describe '#not_geocoded?' do
+    it 'should return true if it lacks latitude and longitude' do
+      org = FactoryGirl.build :organization
+      org.latitude.should be_nil
+      org.longitude.should be_nil
+      org.not_geocoded?.should be_true
+    end
+
+    it 'should return false if it has latitude and longitude' do
+      org = FactoryGirl.build :organization
+      org.latitude = 77
+      org.longitude = 77
+      org.not_geocoded?.should be_false
+    end
+  end
+
+  describe '#run_geocode?' do
+    it 'should return true if address is changed' do
+      org.address = 'asjkdhas,ba,asda'
+      org.run_geocode?.should be_true
+    end
+
+    it 'should return false if address is not changed' do
+      org.should_receive(:address_changed?).and_return(false)
+      org.should_receive(:not_geocoded?).and_return(false)
+      org.run_geocode?.should be_false
+    end
+
+    it 'should return false if org has no address' do
+      org = Organization.new
+      org.run_geocode?.should be_false
+    end
+
+    it 'should return true if org has an address but no coordinates' do
+      org.should_receive(:not_geocoded?).and_return(true)
+      org.run_geocode?.should be_true
+    end
+
+    it 'should return false if org has an address and coordinates' do
+      org.should_receive(:not_geocoded?).and_return(false)
+      org.run_geocode?.should be_false
+    end
+  end
+
+  describe "acts_as_gmappable's behavior is curtailed by the { :process_geocoding => :run_geocode? } option" do
+    it 'no geocoding allowed when saving if the org already has an address and coordinates' do
+      Gmaps4rails.should_not_receive(:geocode)
+      org.email = 'something@example.com'
+      org.save!
+    end
+
+    # it will try to rerun incomplete geocodes, but not valid ones, so no harm is done
+    it 'geocoding allowed when saving if the org has an address BUT NO coordinates' do
+      Gmaps4rails.should_receive(:geocode)
+      org.longitude = nil; org.latitude = nil
+      org.email = 'something@example.com'
+      org.save!
+    end
+
+    it 'geocoding allowed when saving if the org address changed' do
+      Gmaps4rails.should_receive(:geocode)
+      org.address = '777 pinner road'
+      org.save!
+    end
+  end
+end
+
 describe Organization do
 
   before do
