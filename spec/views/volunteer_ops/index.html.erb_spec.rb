@@ -50,9 +50,9 @@ describe "volunteer_ops/index" do
 
   # For the first pass of volunteer_ops the map popups are only
   # the organizations, not the actual volunteer_ops
-  it "uses the same popup partial as the organizations index" do
+  it "renders the popup partial" do
     render
-    expect(response).to render_template(:partial => "organizations/_popup")
+    expect(response).to render_template(:partial => "_popup")
   end
 
 

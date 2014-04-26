@@ -14,33 +14,29 @@ describe VolunteerOpsController do
   let!(:op) { stub_model VolunteerOp } # stack level too deep errors if stub_model is loaded lazily in some contexts
 
   describe 'GET index' do
-    it 'assigns all volunteer_ops as @volunteer_ops' do
-      results = [op]
-      VolunteerOp.should_receive(:all).and_return(results)
+    before :each do
+      @results = [op]
       ApplicationController.any_instance.stub(:gmap4rails_with_popup_partial)
+      VolunteerOp.stub(:all).and_return(@results)
+    end
+    it 'assigns all volunteer_ops as @volunteer_ops' do
+      VolunteerOp.should_receive(:all).and_return(@results)
       get :index, {}
-      assigns(:volunteer_ops).should eq results
+      assigns(:volunteer_ops).should eq @results
     end
 
     it 'assigns all volunteer_op orgs as @organizations' do
-      results = [op]
-      VolunteerOp.stub(:all).and_return(results)
-      ApplicationController.any_instance.stub(:gmap4rails_with_popup_partial)
-      results.stub(:map).and_return([org])
+      @results.stub(:map).and_return([org])
       get :index, {}
       assigns(:organizations).should eq([org])
     end
-
+    
     it 'assigns @json' do
-      results = [op]
-      orgs = double("orgs")
-      VolunteerOp.stub(:all).and_return(results)
-      ApplicationController.any_instance.stub(:gmap4rails_with_popup_partial)
-      results.stub(:map).and_return([org])
-      json='my markers'
-      orgs.should_receive(:to_gmaps4rails).and_return(json)
-      org.stub(:gmaps4rails_options)
-      get :index
+      json = 'my markers'
+      @results.stub(:map).and_return([org])
+      ApplicationController.any_instance.should_receive(:gmap4rails_with_popup_partial).and_return(json)
+      get :index, {}
+      assigns(:organizations).should eq([org])
       assigns(:json).should eq(json)
     end
   end
