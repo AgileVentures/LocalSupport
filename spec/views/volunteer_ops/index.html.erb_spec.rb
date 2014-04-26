@@ -2,14 +2,16 @@ require 'spec_helper'
 
 describe "volunteer_ops/index" do
   before(:each) do
-    @org = stub_model(Organization, :name => "The Addams Family",  
+    @org1 = stub_model(Organization, :name => "The Addams Family",  
+                      :address => "1313 Mockingbird Lane")
+    @org2 = stub_model(Organization, :name => "The Neighbors",  
                       :address => "666 Mockingbird Lane")
     @volunteer_ops = [(stub_model(VolunteerOp, :title => "Undertaker",
                       :description => "Help Uncle Fester", 
-                      :organization => @org)),
+                      :organization => @org1)),
                       (stub_model(VolunteerOp, :title => "Gravedigger",
                       :description => "Dispose of victims", 
-                      :organization => @org))]
+                      :organization => @org2))]
   end
   it "renders a list of volunteer_ops" do
     render
@@ -48,12 +50,16 @@ describe "volunteer_ops/index" do
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
   end
 
-  # For the first pass of volunteer_ops the map popups are only
-  # the organizations, not the actual volunteer_ops
-  it "renders the popup partial" do
-    render
-    expect(response).to render_template(:partial => "_popup")
+  it "displays the javascript for a google map" do
+    orgs = [@org1, @org2]
+    assign(:json, orgs.to_gmaps4rails)
+    render template: "volunteer_ops/index", layout: "layouts/application"
+    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
+    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_zoom = true')]"
+    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_latitude = 51.5978')]"
+    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_longitude = -0.337')]"
+    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.zoom = 12')]"
+    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
   end
-
 
 end
