@@ -23,37 +23,6 @@ Given /^I sign up as "(.*?)" with password "(.*?)" and password confirmation "(.
   end
 end
 
-Given /^I sign in as a charity worker with permission to edit "(.*?)"$/ do |name|
-  org = Organization.find_by_name name
-  org.users # TODO we will want some habtm to support this eventually
-end
-
-And /^I am signed in as the admin using password "(.*?)"$/ do |password|
-  admin = User.find_by_admin(true)
-  steps %Q{
-    Given I visit the sign in page
-    And I sign in as "#{admin.email}" with password "#{password}"
-  }
-end
-
-And /^I am not signed in as the admin using password "(.*?)"$/ do |password|
-  admin = User.find_by_admin(false)
-  steps %Q{
-    Given I visit the sign in page
-    And I sign in as "#{admin.email}" with password "#{password}"
-  }
-end
-
-#TODO: Should we bypass mass assgiment in the creation via :without_protection?
-Given /^the following users are registered:$/ do |users_table|
-  users_table.hashes.each do |user|
-    user["admin"] = user["admin"] == "true"
-    user["organization"] = Organization.find_by_name(user["organization"])
-    user["pending_organization"] = Organization.find_by_name(user["pending_organization"])
-    worker = User.create! user, :without_protection => true
-  end
-end
-
 Given /^that I am logged in as any user$/ do
   steps %Q{
      Given the following users are registered:

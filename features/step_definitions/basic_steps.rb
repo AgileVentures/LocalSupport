@@ -57,10 +57,6 @@ Then /^show me the page$/ do
   save_and_open_page
 end
 
-Given /^PENDING/ do
-  pending
-end
-
 When /^I search for "(.*?)"$/ do |text|
   fill_in 'q', with: text
   click_button 'Submit'
@@ -187,6 +183,10 @@ Then /^I should not see any address or telephone information for "([^"]*?)"$/ do
   page.should_not have_content org1.address
 end
 
+Given /^I edit the donation url to be "(.*?)"$/ do |url|
+  fill_in('organization_donation_info', :with => url)
+end
+
 Then /^I should not see any edit or delete links$/ do
   page.should_not have_link "Edit"
   page.should_not have_link "Destroy"
@@ -221,10 +221,6 @@ Then /^I should( not)? see "((?:(?!before|").)+)"$/ do |negate, text|
   expect(page).send(expectation_method, have_content(text))
 end
 
-#Then /^I should not see "(.*?)"$/ do |text|
-#  page.should_not have_content text
-#end
-
 Then(/^I should( not)? see a link or button "(.*?)"$/) do |negate, link|
   expectation_method = negate ? :not_to : :to
   expect(page).send(expectation_method, have_selector(:link_or_button, link))
@@ -233,27 +229,6 @@ end
 Then(/^the navbar should( not)? have a link to (.*?)$/) do |negate, link|
   expectation_method = negate ? :not_to : :to
   within('#navbar') { expect(page).send(expectation_method, have_selector(:link_or_button, link)) }
-end
-
-#Then /^I should( not)? see a button saying "(.*?)"$/ do |negate, name|
-#  expectation_method = negate ? :not_to : :to
-#  expect(page).send(expectation_method, have_button("#{name}"))
-#end
-
-# this could be DRYed out (next three methods)
-Then /^I should see contact details for "([^"]*?)"$/ do |text|
-  check_contact_details text
-end
-
-Then /^I should see contact details for "([^"]*?)" and "(.*?)"$/ do |text1, text2|
-  check_contact_details text1
-  check_contact_details text2
-end
-
-Then /^I should see contact details for "([^"]*?)", "([^"]*?)" and "(.*?)"$/ do |text1, text2, text3|
-  check_contact_details text1
-  check_contact_details text2
-  check_contact_details text3
 end
 
 Given /^I edit the charity address to be "(.*?)" when Google is indisposed$/ do |address|
@@ -273,12 +248,6 @@ Then /^the address for "(.*?)" should be "(.*?)"$/ do |name, address|
   Organization.find_by_name(name).address.should == address
 end
 
-def check_contact_details(name)
-  org = Organization.find_by_name(name)
-  page.should have_link name, :href => organization_path(org.id)
-  page.should have_content smart_truncate(org.description)
-end
-
 When /^I fill in "(.*?)" with "(.*?)" within the navbar$/ do |field, value|
   within('#navbar') { fill_in(field, :with => value) }
 end
@@ -295,23 +264,10 @@ Then /^"(.*?)" org should not exist$/ do |name|
   expect(Organization.find_by_name name).to be_nil
 end
 
-Then /^I debug$/ do
-  debugger
-  0
-end
-
-And(/^a file exists:$/) do |table|
-  CSV.open("db/email_test.csv", "wb") do |csv|
-    csv << table.hashes[0].keys
-    table.hashes.each do |org|
-      csv << org.values
-    end
-  end
-end
-
 Then(/^"(.*?)" should have email "(.*?)"$/) do |org, email|
   Organization.find_by_name(org).email.should eq email
 end
+
 Given /^"(.*)"'s request status for "(.*)" should be updated appropriately$/ do |email, org_name|
   steps %Q{
       And "#{email}"'s request for "#{org_name}" should be persisted
@@ -368,12 +324,7 @@ end
 
 Given(/^the (.*?) for "(.*?)" has been marked (public|hidden)$/) do |field, name, mode|
   org = Organization.find_by_name(name)
-  case mode
-    when "hidden" then
-      publish = false
-    when "public" then
-      publish = true
-  end
+  publish = mode == 'hidden' ? false : true
   org.send("publish_#{field}=", publish)
   org.save!
 end
@@ -391,5 +342,29 @@ Then /^the index should( not)? contain:$/ do |negative, table|
     within('#column2') do
       page.send(expectation, have_text(cell))
     end
+  end
+end
+
+And(/^"(.*?)" should not have nil coordinates$/) do |name|
+  org = Organization.find_by_name(name)
+  org.latitude.should_not be_nil
+  org.longitude.should_not be_nil
+end
+
+Then /^the coordinates for "(.*?)" and "(.*?)" should( not)? be the same/ do | org1_name, org2_name, negation|
+  #Gmaps.map.markers = [{"description":"<a href=\"/organizations/1320\">test</a>","lat":50.3739788,"lng":-95.84172219999999}];
+
+  matches = page.html.match %Q<{\\"description\\":\\"[^}]*#{org1_name}[^}]*\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
+  org1_lat = matches[1]
+  org1_lng = matches[2]
+  matches = page.html.match %Q<{\\"description\\":\\"[^}]*#{org2_name}[^}]*\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
+  org2_lat = matches[1]
+  org2_lng = matches[2]
+  lat_same = org1_lat == org2_lat
+  lng_same = org1_lng == org2_lng
+  if negation
+    expect(lat_same && lng_same).to be_false
+  else
+    expect(lat_same && lng_same).to be_true
   end
 end

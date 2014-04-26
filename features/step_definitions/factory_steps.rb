@@ -12,12 +12,13 @@ Given /^the following organizations exist:$/ do |organizations_table|
   end
 end
 
-Given /Google is indisposed for "(.*)"/ do  |address|
-  body = %Q({
-"results" : [],
-"status" : "OVER_QUERY_LIMIT"
-})
-  stub_request_with_address(address, body)
+Given /^the following users are registered:$/ do |users_table|
+  users_table.hashes.each do |user|
+    user["admin"] = user["admin"] == "true"
+    user["organization"] = Organization.find_by_name(user["organization"])
+    user["pending_organization"] = Organization.find_by_name(user["pending_organization"])
+    User.create! user, :without_protection => true
+  end
 end
 
 Given /the following volunteer opportunities exist/ do |volunteer_ops_table|
@@ -51,30 +52,11 @@ When(/^a static page named "(.*?)" with permalink "(.*?)" and markdown content:$
   Page.create!({:name => name, :permalink => permalink, :content => content})
 end
 
-Given /^I edit the donation url to be "(.*?)"$/ do |url|
-  fill_in('organization_donation_info', :with => url)
-end
-
-And(/^"(.*?)" should not have nil coordinates$/) do |name|
-  org = Organization.find_by_name(name)
-  org.latitude.should_not be_nil
-  org.longitude.should_not be_nil
-end
-
-Then /^the coordinates for "(.*?)" and "(.*?)" should( not)? be the same/ do | org1_name, org2_name, negation|
-  #Gmaps.map.markers = [{"description":"<a href=\"/organizations/1320\">test</a>","lat":50.3739788,"lng":-95.84172219999999}];
-
-  matches = page.html.match %Q<{\\"description\\":\\"[^}]*#{org1_name}[^}]*\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
-  org1_lat = matches[1]
-  org1_lng = matches[2]
-  matches = page.html.match %Q<{\\"description\\":\\"[^}]*#{org2_name}[^}]*\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
-  org2_lat = matches[1]
-  org2_lng = matches[2]
-  lat_same = org1_lat == org2_lat
-  lng_same = org1_lng == org2_lng
-  if negation
-    expect(lat_same && lng_same).to be_false
-  else
-    expect(lat_same && lng_same).to be_true
+And(/^a file exists:$/) do |table|
+  CSV.open("db/email_test.csv", "wb") do |csv|
+    csv << table.hashes[0].keys
+    table.hashes.each do |org|
+      csv << org.values
+    end
   end
 end
