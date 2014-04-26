@@ -344,3 +344,9 @@ Then /^the index should( not)? contain:$/ do |negative, table|
     end
   end
 end
+
+And(/^"(.*?)" should not have nil coordinates$/) do |name|
+  org = Organization.find_by_name(name)
+  org.latitude.should_not be_nil
+  org.longitude.should_not be_nil
+end
