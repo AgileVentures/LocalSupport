@@ -96,3 +96,12 @@ describe ApplicationController, :helpers => :controllers do
     end
   end
 end
+
+# all child controllers should implement the ApplicationController's
+# before_filter
+describe OrganizationsController do
+  it 'assigns footer page links on a given request' do
+    get :index
+    expect(assigns(:footer_page_links)).not_to be nil
+  end
+end
