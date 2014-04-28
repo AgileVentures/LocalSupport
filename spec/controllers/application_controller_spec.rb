@@ -83,7 +83,7 @@ describe ApplicationController, :helpers => :controllers do
     end
   end
 
-  describe 'assign_footer_page_links' do
+  describe '#assign_footer_page_links' do
     it 'calls the model method that provides visible page links' do
       expect(Page).to receive(:visible_links).and_return(nil)
       subject.send(:assign_footer_page_links)  
