@@ -5,6 +5,10 @@ class Page < ActiveRecord::Base
 
   # Provides links for page footers
   def self.visible_links
+    pages = Page.find_all_by_link_visible(true)
+    pages.map do |page|
+      {:name => page.name, :permalink => page.permalink}
+    end
   end
 
   # Override method to allow static pages to be found via permalink instead of id
