@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe 'layouts/invitation_table.html.erb' do
+  before do
+    assign(:footer_page_links, [])
+  end
   it 'toolbar' do
     render
     rendered.within('#toolbar') do |toolbar|
