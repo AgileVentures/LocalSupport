@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 ruby '1.9.3'
-gem 'rails', '3.2.14'
+gem 'rails', '3.2.17'
 gem 'pg'
 gem 'devise', '3.0.3'
 gem 'devise_invitable', '~> 1.2.1'
@@ -22,6 +22,8 @@ group :development, :test do
   gem 'rack_session_access'
   gem 'jasmine'
   gem 'jasmine-jquery-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller' # plays well with better_errors
 end
 
 group :development do

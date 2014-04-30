@@ -1,6 +1,10 @@
+require 'custom_errors'
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :store_location, :assign_footer_page_links
+
+  include CustomErrors
 
   # To prevent infinite redirect loops, only requests from white listed
   # controllers are available in the "after sign-in redirect" feature
@@ -64,8 +68,8 @@ class ApplicationController < ActionController::Base
   # http://railscasts.com/episodes/20-restricting-access
   def authorize
     unless admin?
-      flash[:error] = 'You must be signed in as an admin to perform this action!'
-      redirect_to '/'
+      flash[:error] = t('authorize.admin')
+      redirect_to root_path
       false
     end
   end

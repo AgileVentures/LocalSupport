@@ -132,6 +132,11 @@ body {
     padding: 0 5px 0 5px;
 }
 
+/* Get the top/bottom padding equal for the links in the navbar */
+.nav .nav-pills .pull-right {
+  padding: 2px 0 2px 0 !important;
+}
+
 /* so that the extra admin-only buttons don't get too spaced out */
 .dropdown-toggle {
     margin-left: -5px;

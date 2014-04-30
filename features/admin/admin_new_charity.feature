@@ -45,7 +45,7 @@ Feature: Admin creating charity
   Scenario: Non-admin unsuccessfully attempts to create an organization
     Given I am signed in as a non-admin
     And I create "Unwanted" org
-    Then I should be on the organizations index page
+    Then I should be on the organisations index page
     Then I should see permission denied
     And I should not see "Organization was successfully created."
     And "Unwanted" org should not exist

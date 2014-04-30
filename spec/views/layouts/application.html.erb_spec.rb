@@ -4,6 +4,7 @@ describe "layouts/application.html.erb", :type => :feature do
   let(:page_one)   {{:name => "About Us",   :permalink => "about"      }}
   let(:page_two)   {{:name => "Contact",    :permalink => "contact"    }}
   let(:page_three) {{:name => "Disclaimer", :permalink => "disclaimer" }}
+  let(:user) { double :user, email: 'user@example.com' }
   before :each do
     @pages = [page_one, page_two]
     @absent_pages = [page_three]
@@ -13,7 +14,6 @@ describe "layouts/application.html.erb", :type => :feature do
 
     before :each do
       view.stub :user_signed_in? => false
-      Page.stub(:all).and_return []
     end
     it "renders site title" do
       render
@@ -31,10 +31,10 @@ describe "layouts/application.html.erb", :type => :feature do
     end
 
     it 'renders sign in form fields correctly' do
-       render
-       rendered.should have_css("#loginForm input#user_password")
-       rendered.should have_css("#loginForm input#user_email")
-       rendered.should have_css("#loginForm input#signin")
+      render
+      rendered.should have_css("#loginForm input#user_password")
+      rendered.should have_css("#loginForm input#user_email")
+      rendered.should have_css("#loginForm input#signin")
     end
 
     it 'renders dropdown menu' do
@@ -71,6 +71,16 @@ describe "layouts/application.html.erb", :type => :feature do
       rendered.should have_xpath("//a[@href=\"#{cookies_allow_path}\"]")
     end
 
+    it 'renders an Organisations link' do
+      render
+      rendered.should have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{organizations_path}\"]")
+    end
+
+    it 'renders a Volunteers link' do
+      render
+      rendered.should have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{volunteer_ops_path}\"]")
+    end
+    
     it 'login form should be visible', :js => true do
       render
       rendered.should_not have_selector("form#loginForm", style: "height: 0px;")
@@ -97,14 +107,13 @@ describe "layouts/application.html.erb", :type => :feature do
       rendered.should have_selector("div.alert-error")
     end
 
-     it 'should display a logo linked to the contributors page' do
+    it 'should display a logo linked to the contributors page' do
       render
       doc = Nokogiri::HTML(rendered)
       doc.xpath("//a/img[@alt='Agile Ventures Local Support']/..").first['href'].should eq contributors_path
-     end
+    end
 
     it "does not render a new organization link"  do
-      view.stub(:user_signed_in? => false)
       render
       rendered.should_not have_xpath("//a[@href='#{new_organization_path}']")
     end
@@ -134,53 +143,46 @@ describe "layouts/application.html.erb", :type => :feature do
   end
 
   context "regular user signed-in" do
-    before :each do
-      view.stub :user_signed_in? => true
-      @user = double(User, email: 'normal_user@example.com', admin?: false)
-      view.stub :current_user => @user
-    end
-    it 'renders signed in users email' do
+    before do
+      user.stub(:admin?) { false }
+      view.stub(:current_user) { user }
       render
-      rendered.should have_link('normal_user@example.com')
+    end
+
+    it 'renders signed in users email' do
+      rendered.should have_link('user@example.com')
     end
 
     it 'contains log out link' do
-      render
       rendered.should have_css("li.dropdown ul.dropdown-menu li a[href=\"#{destroy_user_session_path}\"]")
     end
 
-    it 'admin-only dropdowns: Organizations and Users' do
-      render
-      rendered.should_not have_css('.menuOrgs')
-      rendered.should_not have_css('.menuUsers')
-
-      @user.stub :admin? => true
-      render
-      rendered.within('#menuOrgs') do |menu|
-        menu.should have_link 'Without Users', :href => organizations_report_path
-      end
-      rendered.within('#menuUsers') do |menu|
-        menu.should have_link 'All', :href => users_report_path
-        menu.should have_link 'Invited', :href => invited_users_report_path
-      end
+    it 'should not see admin-only dropdown' do
+      rendered.should_not have_css('#menuAdmin')
     end
 
     it "does not render a new organization link"  do
-      render
       rendered.should_not have_xpath("//a[@href='#{new_organization_path}']")
     end
   end
 
   context "admin signed-in" do
-    it 'links to new org link in footer' do
-      view.stub(:user_signed_in?).and_return(true)
-      user = double(User)
-      user.stub(:email).and_return('normal_user@example.com')
-      user.stub(:admin?).and_return(true)
-      view.stub(:current_user).and_return(user)
+    before(:each) do
+      user.stub(:admin?) { true }
+      view.stub(:current_user) { user }
       render
+    end
 
+    it 'links to new org link in footer' do
       rendered.should have_link("New Organisation", href: new_organization_path)
+    end
+
+    it 'should see admin-only dropdown' do
+      rendered.within('#menuAdmin') do |menu|
+        menu.should have_link 'Organisations Without Users', :href => organizations_report_path
+        menu.should have_link 'All Users', :href => users_report_path
+        menu.should have_link 'Invited Users', :href => invited_users_report_path
+      end
     end
   end
 end
