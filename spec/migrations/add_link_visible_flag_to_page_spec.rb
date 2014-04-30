@@ -41,6 +41,12 @@ describe AddLinkVisibleFlagToPage do
       migration.up; Page.reset_column_information
       Page.all.each {|p| expect(p.link_visible).to be true}
     end
+    it 'hides the link to the 404 page (again) if it exists' do
+      Page.reset_column_information; seed_some_pages
+      migration.up; Page.reset_column_information
+      expect(Page.find_by_permalink('404').link_visible).to be false
+    end
+    it 'doesn\'t care if 404 does not exist'
   end
 end
 
