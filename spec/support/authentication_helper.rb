@@ -21,75 +21,110 @@ module RequestHelpers
     post_via_redirect user_session_path, 'user[email]' => user.email, 'user[password]' => user.password
   end
 
-  def for_actions_in(controller, options = {})
-    tapper ||= RouteTapper.new(controller, options)
-    # tapper.anonymize_controller
-    tapper.actions.each_pair do |action, command|
-      yield(action, command)
-      # eval("#{verb} :#{action}")
-      # yield
-    end
-  end
+  # def for_actions_in(controller, options = {})
+  #   tapper ||= RouteTapper.new(controller, options)
+  #   # tapper.anonymize_controller
+  #   tapper.actions.each_pair do |action, command|
+  #     yield(action, command)
+  #     # eval("#{verb} :#{action}")
+  #     # yield
+  #   end
+  # end
 
   # def RouteFinder(controller, options = {})
   #   RouteFinder.new(controller, options = {})
   # end
 
-  class RouteFinder
-    # include Rails.application.routes.url_helpers
+  # def find_routes_for(controller)
+  #   controller_name = controller.to_s.chomp('Controller').downcase
+  #   Rails.application.routes.routes.select do |route|
+  #     route.defaults[:controller] == controller_name
+  #   end
+  # end
 
-    # attr_reader :actions
+  class Request
 
-    def initialize(controller, options = {})
-      @controller_name = controller.to_s.chomp('Controller').downcase
-      @model_name = controller.to_s.chomp('Controller').singularize
+  end
 
-      routes = Rails.application.routes.routes.select do |route|
-        route.defaults[:controller] == @controller_name
-      end
+  class Route
+    attr_accessor :param_keys
 
-      @options = options
+    def initialize(route)
+      @route = route
+      @param_keys = @route.parts.reject { |part| part == :format }
+    end
 
-      @actions = routes.each_with_object({}) do |route, hsh|
+    def verb
+        verbs = %w(GET POST PUT DELETE)
+        verbs.find { |verb| verb.match(@route.verb) }.downcase
+    end
+
+    def controller
+      @route.defaults[:controller]
+    end
+  end
+
+  def collect_routes_for(controller)
+    controller_name = controller.to_s.chomp('Controller').downcase
+
+    Rails.application.routes.routes.each_with_object({}) do |route, dict|
+      if route.defaults[:controller] == controller_name
         action = route.defaults[:action].to_sym
-        verb = find_verb_from(route.verb)
-        param_keys = find_param_keys_from(route.parts)
-        hsh[action] = {
-            :verb => verb,
-            :controller => @controller_name,
+        dict[action] = {
+            :controller => controller_name,
             :action => action,
-            :param_keys => param_keys
+            :verb => route.verb.source.gsub(/[$^]/, '').downcase,
+            :parts => route.parts.reject { |part| part == :format }
         }
       end
     end
+  end
 
-    def find(options)
-      if options[:only]
-        @actions.select { |key, _| options[:only].include? key }
-      elsif options[:except]
-        @actions.select { |key, _| options[:except].exclude? key }
-      else
-        @actions
-      end
-    end
+  class RouteInspector < Hash
 
-    def add_param(param_hash, action_list)
-      action_list.each do |action|
-        param_hash.each do |key, value|
-          @actions[action][key] = value
+    def initialize(controller)
+      controller_name = controller.to_s.chomp('Controller').downcase
+
+      Rails.application.routes.routes.each do |route|
+        if route.defaults[:controller] == controller_name
+          key = route.defaults[:action].to_sym
+          value = {
+              :controller => controller_name,
+              :action => route.defaults[:action],
+              :verb => route.verb.source.gsub(/[$^]/, '').downcase,
+              :parts => route.parts.reject { |part| part == :format }
+          }
+          self.send(:[]=, key, value)
         end
       end
     end
 
-    private
+    def only(*actions)
+      # puts 'hi'
+      # debugger
+      # puts 'lo'
 
-    def find_verb_from(regex)
-      actions = %w(GET POST PUT DELETE)
-      actions.select { |a| a.match(regex) }.first.downcase
+      sub_hash = self.dup
+      sub_hash.each do |key, _|
+        sub_hash.delete(key) unless actions.include? key
+      end
+
+      # self.select { |action, _| actions.include? action }
     end
 
-    def find_param_keys_from(list)
-      list.reject! { |elem| elem == :format }
+    def except(*actions)
+      self.reject { |action, _| actions.include? action }
+    end
+
+    def add_param(param_hash)
+      puts 'hi'
+      debugger
+      puts 'lo'
+      # action_list.each do |action|
+      #   param_hash.each do |key, value|
+      #     @actions[action][key] = value
+      #   end
+      # end
     end
   end
 

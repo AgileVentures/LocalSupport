@@ -73,7 +73,6 @@ class OrganizationsController < ApplicationController
   # PUT /organizations/1.json
   def update
     @organization = Organization.find(params[:id])
-    debugger
     params[:organization][:admin_email_to_add] = params[:organization_admin_email_to_add] if params[:organization]
     return false unless user_can_edit? @organization
     if @organization.update_attributes_with_admin(params[:organization])
