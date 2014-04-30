@@ -59,7 +59,7 @@ Feature: I want to be able to edit static pages
     And I am on the home page
     When I follow "About Us"
     And I follow "Pages"
-    Then should see "Bob" page before "Wow"
+    Then I should see "Bob" page before "Wow"
 
   Scenario: Non-admin cannot see pages index
     Given I am signed in as a non-admin
