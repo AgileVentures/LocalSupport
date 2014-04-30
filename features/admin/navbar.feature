@@ -4,28 +4,28 @@ Feature: Admin user interface
   I want a specialized interface
 
   Background:
-    Given the following users are registered:
-      | email | password | admin | confirmed_at | organization | pending_organization |
-      | admin@harrowcn.org.uk | mypassword1234 | true | 2008-01-01 00:00:00 | | |
+    Given the following pages exist:
+      | name         | permalink  | content |
+      | About Us     | about      | abc123  |
+    And the following users are registered:
+      | email                 | password       | admin | confirmed_at        | organization | pending_organization |
+      | admin@harrowcn.org.uk | mypassword1234 | true  | 2008-01-01 00:00:00 |              |                      |
     And I am signed in as a admin
     And I am on the home page
 
-  Scenario Outline: Top navbar has Organizations dropdown menus
-    #Given I click "Organisations"
-    When I click "Without Users"
-    Then I should be on the without users page
-  # other links omitted until implemented
-    Then the Organizations menu has a dropdown menu with a <link> link
+  Scenario Outline: Top navbar has an Admin dropdown menu
+    Then the Admin menu has a valid <link> link
   Examples:
-    | link |
-    | Without Users |
+    | link                        |
+    | Organisations Without Users |
+    | Invited Users               |
+    | All Users                   |
 
-  Scenario Outline: Top navbar has Users dropdown menus
-    #Given I click "Users"
-    When I click "All"
-    Then I should be on the all users page
-  # other links omitted until implemented
-    Then the Users menu has a dropdown menu with a <link> link
-  Examples:
-    | link |
-    | All |
+  Scenario:  Highlighted button for Organisations or Volunteers
+    Given I visit the organisations index page
+    Then navbar button "Organisations" should be active
+    Given I visit the volunteer opportunities page
+    Then navbar button "Volunteers" should be active
+    Given I visit "/pages"
+    Then navbar button "Volunteers" should not be active
+    Then navbar button "Organisations" should not be active

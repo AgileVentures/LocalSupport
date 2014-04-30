@@ -23,7 +23,7 @@ Feature: Orphans UI
   Scenario: Admin can invite users but only for unique emails
     Given cookies are approved
     Given I am signed in as an admin
-    And I visit the without users page
+    And I visit the organisations without users page
     And I check the box for "The Organization"
     And I check the box for "The Same Email Org"
     When I click id "invite_users"
@@ -33,14 +33,14 @@ Feature: Orphans UI
   Scenario: Already invited organizations don't appear
     Given cookies are approved
     And I am signed in as an admin
-    And I visit the without users page
+    And I visit the organisations without users page
     Then I should not see "Yet Another Org"
 
   @javascript
   Scenario: Admin should be notified when email is invalid
     Given cookies are approved
     Given I am signed in as an admin
-    And I visit the without users page
+    And I visit the organisations without users page
     And I check the box for "Crazy Email Org"
     When I click id "invite_users"
     Then I should see "Error: Email is invalid" in the response field for "Crazy Email Org"
@@ -48,7 +48,7 @@ Feature: Orphans UI
   Scenario: As a non-admin trying to access orphans index
     Given cookies are approved
     Given I am signed in as a non-admin
-    And I visit the without users page
+    And I visit the organisations without users page
     Then I should be on the home page
     And I should see "You must be signed in as an admin to perform this action!"
 
@@ -57,7 +57,7 @@ Feature: Orphans UI
   Scenario: Table columns should be sortable
     Given cookies are approved
     Given I am signed in as an admin
-    And I visit the without users page
+    And I visit the organisations without users page
     And I click tableheader "Name"
     Then I should see "Crazy Email Org" before "The Organization"
     When I click tableheader "Name"
@@ -67,7 +67,7 @@ Feature: Orphans UI
   Scenario: Select All button toggles all checkboxes
     Given cookies are approved
     Given I am signed in as an admin
-    And I visit the without users page
+    And I visit the organisations without users page
     And I press "Select All"
     Then all the checkboxes should be checked
     When I press "Select All"

@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
   # GET /pages
   def index
-    @pages = Page.all
+    @pages = Page.order('name ASC')
   end
 
   # GET /pages/:permalink

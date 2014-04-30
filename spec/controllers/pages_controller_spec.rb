@@ -5,12 +5,6 @@ describe PagesController do
   before { controller.stub(:admin?) { true } }
 
   describe 'GET index' do
-    it 'assigns all pages as @pages' do
-      Page.should_receive(:all) { [page] }
-      get :index, {}
-      assigns(:pages).should eq [page]
-    end
-
     it 'is restricted' do
       controller.should_receive(:admin?) { false }
       get :index, {}
@@ -20,6 +14,13 @@ describe PagesController do
     it 'uses a full-width layout' do
       get :index, {}
       response.should render_template 'layouts/full_width'
+    end
+
+    it "assigns the pages in alphabetical order by default" do
+      pages = double Array
+      Page.should_receive(:order).with('name ASC').and_return pages
+      get :index, {}
+      assigns(:pages).should eq(pages)
     end
   end
 
