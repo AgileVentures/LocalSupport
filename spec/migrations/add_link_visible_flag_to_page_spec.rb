@@ -37,10 +37,12 @@ describe AddLinkVisibleFlagToPage do
       migration.up;  Page.reset_column_information
       expect(Page.columns_hash).to have_key('link_visible')
     end
-    it 'makes link_visible true by default' do
-      Page.reset_column_information; seed_some_pages
-      migration.up; Page.reset_column_information
-      Page.all.each {|p| expect(p.link_visible).to eq visibility[p.permalink]}
+    visibility.each do |k,v|
+      it "#{k} has link_visible set to #{v}" do
+        Page.reset_column_information; seed_some_pages
+        migration.up; Page.reset_column_information
+        expect(Page.find_by_permalink(k).link_visible).to eq v
+      end
     end
     it 'doesn\'t care if 404 does not exist'
   end
