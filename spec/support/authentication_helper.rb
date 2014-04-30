@@ -47,16 +47,15 @@ module RequestHelpers
   end
 
   class Route
-    attr_accessor :param_keys
+    attr_accessor :parts
 
     def initialize(route)
       @route = route
-      @param_keys = @route.parts.reject { |part| part == :format }
+      @parts = @route.parts.reject { |part| part == :format }
     end
 
     def verb
-        verbs = %w(GET POST PUT DELETE)
-        verbs.find { |verb| verb.match(@route.verb) }.downcase
+      @route.verb.source.gsub(/[$^]/, '').downcase
     end
 
     def controller
@@ -80,40 +79,30 @@ module RequestHelpers
     end
   end
 
-  class RouteInspector < Hash
+  class RouteCollector
 
     def initialize(controller)
       controller_name = controller.to_s.chomp('Controller').downcase
 
-      Rails.application.routes.routes.each do |route|
+      @routes = Rails.application.routes.routes.each_with_object({}) do |route, dict|
         if route.defaults[:controller] == controller_name
-          key = route.defaults[:action].to_sym
-          value = {
+          action = route.defaults[:action]
+          dict[action.to_sym] =  {
               :controller => controller_name,
-              :action => route.defaults[:action],
+              :action => action,
               :verb => route.verb.source.gsub(/[$^]/, '').downcase,
               :parts => route.parts.reject { |part| part == :format }
           }
-          self.send(:[]=, key, value)
         end
       end
     end
 
     def only(*actions)
-      # puts 'hi'
-      # debugger
-      # puts 'lo'
-
-      sub_hash = self.dup
-      sub_hash.each do |key, _|
-        sub_hash.delete(key) unless actions.include? key
-      end
-
-      # self.select { |action, _| actions.include? action }
+      @routes.select { |action, _| actions.include? action }
     end
 
     def except(*actions)
-      self.reject { |action, _| actions.include? action }
+      @routes.reject { |action, _| actions.include? action }
     end
 
     def add_param(param_hash)
@@ -127,11 +116,6 @@ module RequestHelpers
       # end
     end
   end
-
-  # def Routable(object, options = {})
-  #   Routable.new(object, options = {})
-  # end
-
 
   class Routable
     include Rails.application.routes.url_helpers
