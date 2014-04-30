@@ -47,10 +47,10 @@ describe PagesController do
     end
 
     it "assigns the pages in alphabetical order by default" do
-      page_xyz = Page.create! ({ "name" => "Xyz", "permalink" => "xyz" })
-      page_abc = Page.create! ({ "name" => "Abc", "permalink" => "abc" })
+      pages = double Array
+      Page.should_receive(:order).with('name ASC').and_return pages
       get :index, {}
-      assigns(:pages).should eq([page_abc, page_xyz])
+      assigns(:pages).should eq(pages)
     end
   end
 
