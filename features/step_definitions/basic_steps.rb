@@ -377,9 +377,14 @@ Given(/^the (.*?) for "(.*?)" has been marked (public|hidden)$/) do |field,name,
   org.send("publish_#{field}=", publish)
   org.save!
 end
+
 Then /^I should( not)? see:$/ do |negative, table|
     expectation = negative ? :should_not : :should
     table.rows.flatten.each do |string|
     page.send(expectation, have_text(string))
   end
+end
+
+Then(/^I should see "([^"]*)" page before "([^"]*)"$/) do |first_item, second_item|
+  page.body.should =~ /#{first_item}.*#{second_item}/m
 end

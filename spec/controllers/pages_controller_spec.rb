@@ -35,15 +35,16 @@ describe PagesController do
   end
 
   describe "GET index" do
-    it "assigns all pages as @pages" do
-      page = Page.create! valid_attributes
-      get :index, {}
-      assigns(:pages).should eq([page])
-    end
-
     it 'should use a full-width layout' do
       get :index, {}
       response.should render_template 'layouts/full_width'
+    end
+
+    it "assigns the pages in alphabetical order by default" do
+      pages = double Array
+      Page.should_receive(:order).with('name ASC').and_return pages
+      get :index, {}
+      assigns(:pages).should eq(pages)
     end
   end
 
