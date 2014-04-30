@@ -34,12 +34,3 @@ Feature: I want to be able to edit static page links
        And I am on the home page
        Then the "about" link is in the footer     
 
-     Scenario: Admin can choose which pages are linked
-       Given I am signed in as an admin
-       And I visit the pages manager
-       And PENDING we need clear agreement on a UI for this
-       And  I remove "about" from the footer
-       Then the "about" link is not in the footer
-       And I add "about" to the footer
-       Then the "about" link is in the footer
-
