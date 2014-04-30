@@ -1,9 +1,20 @@
 require 'spec_helper'
 
 describe "layouts/application.html.erb", :type => :feature do
+  let(:page_one)   {{:name => "About Us",   :permalink => "about"      }}
+  let(:page_two)   {{:name => "Contact",    :permalink => "contact"    }}
+  let(:page_three) {{:name => "Disclaimer", :permalink => "disclaimer" }}
   let(:user) { double :user, email: 'user@example.com' }
-
+  before :each do
+    @pages = [page_one, page_two]
+    @absent_pages = [page_three]
+    assign(:footer_page_links, @pages)
+  end
   context "no user signed-in" do
+
+    before :each do
+      view.stub :user_signed_in? => false
+    end
     it "renders site title" do
       render
       rendered.should contain 'Harrow Community Network'
@@ -20,10 +31,10 @@ describe "layouts/application.html.erb", :type => :feature do
     end
 
     it 'renders sign in form fields correctly' do
-       render
-       rendered.should have_css("#loginForm input#user_password")
-       rendered.should have_css("#loginForm input#user_email")
-       rendered.should have_css("#loginForm input#signin")
+      render
+      rendered.should have_css("#loginForm input#user_password")
+      rendered.should have_css("#loginForm input#user_email")
+      rendered.should have_css("#loginForm input#signin")
     end
 
     it 'renders dropdown menu' do
@@ -96,15 +107,38 @@ describe "layouts/application.html.erb", :type => :feature do
       rendered.should have_selector("div.alert-error")
     end
 
-     it 'should display a logo linked to the contributors page' do
+    it 'should display a logo linked to the contributors page' do
       render
       doc = Nokogiri::HTML(rendered)
       doc.xpath("//a/img[@alt='Agile Ventures Local Support']/..").first['href'].should eq contributors_path
-     end
+    end
 
     it "does not render a new organization link"  do
       render
       rendered.should_not have_xpath("//a[@href='#{new_organization_path}']")
+    end
+
+    context 'footer links to pages' do
+
+
+      it "shows no links to pages when there are no pages" do
+        @absent_pages = [page_one, page_two, page_three]
+        assign(:footer_page_links, [])
+        render
+        @absent_pages.each do |page|
+          rendered.should_not have_link(page[:name], :href => page_path(page[:permalink]))
+        end
+      end
+
+      it "shows a link to all of the editable pages" do
+        render
+        @pages.each do |page|
+          rendered.should have_link(page[:name], :href => page_path(page[:permalink]))
+        end
+        @absent_pages.each do |page|
+          rendered.should_not have_link(page[:name], :href => page_path(page[:permalink]))
+        end
+      end
     end
   end
 

@@ -23,7 +23,7 @@ describe PagesController do
   # This should return the minimal set of attributes required to create a valid
   # Page. As you add validations to Page, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "name" => "MyString", "permalink" => "about" } }
+  let(:valid_attributes) { { "name" => "MyString", "permalink" => "about"} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -55,7 +55,7 @@ describe PagesController do
     end
 
     after(:each) {response.should render_template 'layouts/full_width'}
-
+ 
     it 'assigns @admin if current_user is admin' do
       Page.stub(:find_by_permalink!)
       get :show, { :id => 'about' }
@@ -180,6 +180,23 @@ describe PagesController do
         response.should render_template("edit")
       end
     end
+
+    describe "link_visible support" do
+      it "sets the link_visible flag" do
+        valid_attributes[:link_visible] = false
+        page = Page.create! valid_attributes 
+        page.reload.link_visible.should eq false
+        put :update, {:id => page.to_param, :page => { :link_visible => true}}
+        page.reload.link_visible.should eq true
+      end
+      it "clears the link_visible flag" do
+        valid_attributes[:link_visible] = true
+        page = Page.create! valid_attributes 
+        page.reload.link_visible.should eq true
+        put :update, {:id => page.to_param, :page => { :link_visible => false}}
+        page.reload.link_visible.should eq false
+      end
+    end
   end
 
   describe "DELETE destroy" do
@@ -196,5 +213,4 @@ describe PagesController do
       response.should redirect_to(pages_url)
     end
   end
-
 end
