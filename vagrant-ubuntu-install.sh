@@ -1,9 +1,20 @@
+#!/usr/bin/env bash
+
+whoami
+echo ~/
+
 sudo apt-get install -y git
 sudo apt-get install -y curl
-\curl -L https://get.rvm.io | bash -s stable  --ruby=1.9.3
-source ~/.rvm/scripts/rvm
 
-sudo apt-get install libqtwebkit-dev  # had to type Y
+curl -sSL https://get.rvm.io | bash -s stable
+source /home/vagrant/.rvm/scripts/rvm
+rvm use --install 1.9.3
+
+#\curl -L https://get.rvm.io | bash -s stable  --ruby=1.9.3
+
+#source ~/.rvm/scripts/rvm
+
+sudo apt-get install -y libqtwebkit-dev
 gem install debugger-ruby_core_source
 
 export LANGUAGE="en_US.UTF-8"
@@ -13,16 +24,13 @@ export LC_ALL="en_US.UTF-8"
 sudo apt-get install -y libpq-dev
 sudo apt-get install -y postgresql
 
-cd /LocalSupport
-
-bundle install
-
 # need to edit /etc/postgresql/9.1/main/pg_hba.conf
 # needs work to handle variable white space
-# sed -i '' -e 's/local\s\+all\s\+postgres\s\+peer/local all postgres peer map=basic/g' /etc/postgresql/9.1/main/pg_hba.conf
+#
+sudo sed -i -e 's/local\s\+all\s\+postgres\s\+peer/local all postgres peer map=basic/g' /etc/postgresql/9.1/main/pg_hba.conf
 
 # need to edit /etc/postgresql/9.1/main/pg_ident.conf
-sudo cat 'basic vagrant postgres' >> /etc/postgresql/9.1/main/pg_ident.conf
+echo "basic vagrant postgres" | sudo tee -a /etc/postgresql/9.1/main/pg_ident.conf
 
 sudo /etc/init.d/postgresql restart
 
@@ -39,11 +47,14 @@ sudo /etc/init.d/postgresql restart
 sudo apt-get install -y xvfb
 sudo apt-get install libicu48
 
-sudo apt-get install xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic x11-apps  # not needed?
-
 Xvfb :1 -screen 0 1280x768x24 &
 export DISPLAY=:1
 
+cd /LocalSupport
+
+#sudo apt-get install ruby-bundler
+
+bundle install
 bundle exec rake db:create
 bundle exec rake db:migrate
 
