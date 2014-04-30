@@ -10,9 +10,9 @@ Background: organizations have been added to database
     | name             | address        |
     | Friendly Charity | 83 pinner road |
   Given the following pages exist:
-    | name       | permalink  | content                                                   |
-    | 404        | 404        | We're sorry, but we couldn't find the page you requested! |
-    | Disclaimer | disclaimer | We disclaim everything!                                   |
+    | name       | permalink  | content                                                   | link_visible |
+    | 404        | 404        | We're sorry, but we couldn't find the page you requested! | false        |
+    | Disclaimer | disclaimer | We disclaim everything!                                   | true         |
 
   Scenario Outline: the disclaimer page is accessible on all pages
     Given I am on the <page>

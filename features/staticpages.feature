@@ -4,15 +4,15 @@ Feature: I want to have a contact and about us link in all the app pages
   I want to show a contact page and an about us page
   Tracker story ID: https://www.pivotaltracker.com/story/show/45693625
 
-Background: organizations have been added to database
-  Given the following organizations exist:
-    | name             | address        |
-    | Friendly Charity | 83 pinner road |
-  Given the following pages exist:
-    | name         | permalink  | content                                                   |
-    | 404          | 404        | We're sorry, but we couldn't find the page you requested! |
-    | About Us     | about      | abc123                                                    |
-    | Contact Info | contact    | def456                                                    |
+  Background: organizations have been added to database
+    Given the following organizations exist:
+      | name             | address        |
+      | Friendly Charity | 83 pinner road |
+    Given the following pages exist:
+      | name         | permalink | content                                                   | link_visible |
+      | 404          | 404       | We're sorry, but we couldn't find the page you requested! | false        |
+      | About Us     | about     | abc123                                                    | true         |
+      | Contact Info | contact   | def456                                                    | true         |
 
   Scenario Outline: the about us page is accessible on all pages
     Given I am on the <page>
