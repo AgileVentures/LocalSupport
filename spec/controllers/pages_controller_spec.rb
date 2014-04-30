@@ -35,12 +35,6 @@ describe PagesController do
   end
 
   describe "GET index" do
-    it "assigns all pages as @pages" do
-      page = Page.create! valid_attributes
-      get :index, {}
-      assigns(:pages).should eq([page])
-    end
-
     it 'should use a full-width layout' do
       get :index, {}
       response.should render_template 'layouts/full_width'
