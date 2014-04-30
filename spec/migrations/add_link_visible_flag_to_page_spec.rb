@@ -32,6 +32,7 @@ describe AddLinkVisibleFlagToPage do
   end
 
   describe '#up' do
+    visibility = { 'about' => true, 'disclaimer' => true, '404' => false }
     it 'adds the link_visible column' do
       migration.up;  Page.reset_column_information
       expect(Page.columns_hash).to have_key('link_visible')
@@ -39,12 +40,7 @@ describe AddLinkVisibleFlagToPage do
     it 'makes link_visible true by default' do
       Page.reset_column_information; seed_some_pages
       migration.up; Page.reset_column_information
-      Page.all.each {|p| expect(p.link_visible).to be true}
-    end
-    it 'hides the link to the 404 page (again) if it exists' do
-      Page.reset_column_information; seed_some_pages
-      migration.up; Page.reset_column_information
-      expect(Page.find_by_permalink('404').link_visible).to be false
+      Page.all.each {|p| expect(p.link_visible).to eq visibility[p.permalink]}
     end
     it 'doesn\'t care if 404 does not exist'
   end
