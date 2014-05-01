@@ -1,3 +1,5 @@
+require 'ostruct'
+
 module ControllerHelpers
   def make_current_user_admin
     admin_user = double("User")
@@ -46,20 +48,25 @@ module RequestHelpers
 
   end
 
-  class Route
-    attr_accessor :parts
+  class Route < OpenStruct
+    # attr_accessor :parts
+    #
+    # def initialize(route)
+    #   @route = route
+    #   @parts = @route.parts.reject { |part| part == :format }
+    #   @params = []
+    # end
+    #
+    # def verb
+    #   @route.verb.source.gsub(/[$^]/, '').downcase
+    # end
+    #
+    # def controller
+    #   @route.defaults[:controller]
+    # end
 
-    def initialize(route)
-      @route = route
-      @parts = @route.parts.reject { |part| part == :format }
-    end
-
-    def verb
-      @route.verb.source.gsub(/[$^]/, '').downcase
-    end
-
-    def controller
-      @route.defaults[:controller]
+    def add_params(*new_params)
+      params.push(*new_params)
     end
   end
 
@@ -68,31 +75,27 @@ module RequestHelpers
 
     Rails.application.routes.routes.each_with_object({}) do |route, dict|
       if route.defaults[:controller] == controller_name
-        action = route.defaults[:action].to_sym
-        dict[action] = {
+        action = route.defaults[:action]
+        dict[action.to_sym] = Route.new({
             :controller => controller_name,
             :action => action,
             :verb => route.verb.source.gsub(/[$^]/, '').downcase,
-            :parts => route.parts.reject { |part| part == :format }
-        }
+            :parts => route.parts.reject { |part| part == :format },
+            :params => []
+        })
       end
     end
   end
 
-  class RouteCollector
+  class RouteCollector < Hash
 
     def initialize(controller)
       controller_name = controller.to_s.chomp('Controller').downcase
 
-      @routes = Rails.application.routes.routes.each_with_object({}) do |route, dict|
+      Rails.application.routes.routes.each do |route|
         if route.defaults[:controller] == controller_name
           action = route.defaults[:action]
-          dict[action.to_sym] =  {
-              :controller => controller_name,
-              :action => action,
-              :verb => route.verb.source.gsub(/[$^]/, '').downcase,
-              :parts => route.parts.reject { |part| part == :format }
-          }
+          self.send(:[]=, action.to_sym, Route.new(route))
         end
       end
     end

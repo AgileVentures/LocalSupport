@@ -16,12 +16,12 @@ end
 describe "Organizations", :helpers => :requests do
   extend RequestHelpers
 
-  routes = RequestHelpers::RouteInspector.new(OrganizationsController)
+  routes = collect_routes_for(OrganizationsController)
   debugger
   thing = routes.only(:create)
   debugger
 
-  routes.only(:create, :update).add_param(
+  routes.only(:create, :update).each.add_param(
     {:organization => {:name => 'hello', :description => 'world'}}
   )
 
