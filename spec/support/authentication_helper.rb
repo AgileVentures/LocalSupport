@@ -76,13 +76,17 @@ module RequestHelpers
     Rails.application.routes.routes.each_with_object({}) do |route, dict|
       if route.defaults[:controller] == controller_name
         action = route.defaults[:action]
-        dict[action.to_sym] = Route.new({
+        dict[action.to_sym] = OpenStruct.new({
             :controller => controller_name,
             :action => action,
             :verb => route.verb.source.gsub(/[$^]/, '').downcase,
             :parts => route.parts.reject { |part| part == :format },
             :params => []
-        })
+        }) do
+          def add_params(*new_params)
+            params.push(*new_params)
+          end
+        end
       end
     end
   end
