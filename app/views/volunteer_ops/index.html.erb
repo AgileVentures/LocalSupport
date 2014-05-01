@@ -1,29 +1,28 @@
-  <div id="orgs_scroll" style="height:340px;width:100%;border:1px solid #ccc;overflow:scroll;">
-    <div class="table table-bordered">
-      <table>
-            <% @volunteer_ops.each do |op| %>
-            <tr>
-              <td>
-                <strong><%= link_to op.title, op %></strong><br/>
-                <div id="organizations">
-                  <small><%= link_to op.organization.name, op.organization %></small><br/>
-               </div>
-                <%= smart_truncate(op.description) %><br/>
-              </td>
-            </tr>
-          <% end %>
-        </div>
-      </table>
-    </div>
+<div id="orgs_scroll" style="height:340px;width:100%;border:1px solid #ccc;overflow:scroll;">
+  <div class="table table-bordered">
+    <table>
+      <% @volunteer_ops.each do |op| %>
+          <tr>
+            <td>
+              <strong><%= link_to op.title, op %></strong><br/>
+
+              <div id="organizations">
+                <small><%= link_to op.organization.name, op.organization %></small>
+                <br/>
+              </div>
+              <%= smart_truncate(op.description) %>
+              <br/>
+            </td>
+          </tr>
+      <% end %>
+    </table>
   </div>
-</table>
-</div>
 </div>
 <% content_for :map do %>
-  <%= gmaps("map_options" => { "auto_adjust" => false,
-                               "auto_zoom" => true,
-                               "center_latitude" => 51.5978,
-                               "center_longitude" => -0.3370,
-                               "zoom" => 12 },
-            "markers"     => { "data" => @json }) %>
+    <%= gmaps("map_options" => {"auto_adjust" => false,
+                                "auto_zoom" => true,
+                                "center_latitude" => 51.5978,
+                                "center_longitude" => -0.3370,
+                                "zoom" => 12},
+              "markers" => {"data" => @json}) %>
 <% end %>
