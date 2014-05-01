@@ -7,18 +7,22 @@ Feature: Invited Users Page
     Given the following organizations exist:
       | name                 | address        | email            |
       | Invited Organization | 30 pinner road | invited@user.org |
+      | UPCASED INSANITY     | 84 pinner road | CAPSARECOOL@user.org |
     And the following users are registered:
       | email            | password       | admin | confirmed_at        | organization    | pending_organization |
       | admin@myorg.com  | adminpass0987  | true  | 2008-01-01 00:00:00 | My Organization |                      |
       | regular@user.org | mypassword1234 | false | 2008-01-01 00:00:00 |                 |                      |
     And the admin invited a user for "Invited Organization"
-
-  @javascript
-  Scenario: Page shows only invited users
-    Given cookies are approved
-    And I am signed in as an admin
+    And the admin invited a user for "UPCASED INSANITY" 
+  
+  @javascript 
+  Scenario: Page shows only invited users 
+    Given cookies are approved 
+    And I am signed in as an admin 
     And I visit the invited users page
     Then I should see "invited@user.org"
+    # bug: created user is actually "capsarecool@user.org"
+    And I should see "CAPSARECOOL@user.org"
     And I should not see "regular@user.org"
 
   @javascript
