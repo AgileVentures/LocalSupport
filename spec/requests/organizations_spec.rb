@@ -122,7 +122,7 @@ describe "Access to the Organizations API", :helpers => :requests do
       it "public users cannot access #{action}" do
         route = RequestHelpers::Routable.new(request, org)
         self.send(:request_via_redirect, route.verb, route.url)
-        page_view.should have_content PERMISSION_DENIED
+        page_view.should have_content 'You need to sign in or sign up before continuing.'
       end
     end
   end
