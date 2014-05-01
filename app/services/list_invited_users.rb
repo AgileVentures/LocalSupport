@@ -1,24 +1,23 @@
 class ListInvitedUsers 
-  def self.list(users, organization_class) 
-    new(users, organization_class).list 
+  def self.list(users)
+    new(users).list 
   end
 
-  def initialize(users, organization_class) 
+  def initialize(users) 
     @users = users
-    @organization_class = organization_class
   end
 
   def list 
     users.each_with_object([]) do |user, array|
-      org = organization_class.find_by_email(user.email)
-      array << build_invited_if_organization_exists(org, user) if org.present?
+      org = user.organization
+      array << build_invited_attributes(org, user)
     end
   end
 
   private
-  attr_reader :users, :organization_class
+  attr_reader :users 
 
-  def build_invited_if_organization_exists(org, user)
+  def build_invited_attributes(org, user)
     { id: org.id, 
       name: org.name, 
       email: org.email, 

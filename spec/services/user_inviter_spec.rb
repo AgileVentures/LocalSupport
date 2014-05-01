@@ -12,13 +12,17 @@ describe UserInviter do
   it 'makes an invite for a given user' do 
     expect(user_repository).to receive(:invite!).with({email:email}, current_user) { invited_user } 
     allow(ResendInvitationEnabler).to receive(:enable) 
-    described_class.new(listener, user_repository, current_user,devise).invite(email, resend_invitation)
+    allow(invited_user).to receive(:organization_id=).with(org_id)
+    allow(invited_user).to receive(:save!)
+    described_class.new(listener, user_repository, current_user,devise).invite(email, resend_invitation, org_id)
   end
 
   it 'sets the association between the user and the organization' do
     allow(ResendInvitationEnabler).to receive(:enable) 
     allow(user_repository).to receive(:invite!) { invited_user } 
     expect(invited_user).to receive(:organization_id=).with(org_id)
+    expect(invited_user).to receive(:save!)
+    described_class.new(listener, user_repository, current_user,devise).invite(email, resend_invitation, org_id)
   end
 end
 
