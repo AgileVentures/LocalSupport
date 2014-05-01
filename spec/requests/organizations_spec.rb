@@ -1,19 +1,6 @@
 require 'spec_helper'
 
-shared_examples_for 'a restricted API' do |actions|
-
-  actions.each do |action, request|
-    it "admin users can access #{action}" do
-      login(admin)
-      route = RequestHelpers::Routable.new(request, org)
-      self.send(:request_via_redirect, route.verb, route.url)
-      response.status.should be 200
-      flash[:error].should be nil
-    end
-  end
-end
-
-describe "Organizations", :helpers => :requests do
+describe "Access to the Organizations API", :helpers => :requests do
   extend RequestHelpers
 
   actions = collect_actions_for(OrganizationsController)
@@ -29,10 +16,119 @@ describe "Organizations", :helpers => :requests do
     )
   end
 
-  it_should_behave_like 'a restricted API', actions do
-    let(:org) { FactoryGirl.create :organization }
-    # let(:non-admin) { FactoryGirl.create :user }
-    let(:admin) { FactoryGirl.create :admin_user}
+
+  let(:org) { FactoryGirl.create :organization }
+
+  describe 'admin access' do
+    let(:admin) { FactoryGirl.create :admin_user }
+    before { login(admin) }
+
+    actions.each do |action, request|
+      it "admin users can access #{action}" do
+        route = RequestHelpers::Routable.new(request, org)
+        self.send(:request_via_redirect, route.verb, route.url)
+      end
+    end
+
+    after do
+      page_view.should_not have_content PERMISSION_DENIED
+    end
   end
 
+  describe 'regular user' do
+    let(:user) { FactoryGirl.create :user }
+
+    context 'associated with given org' do
+      before do
+        login(user)
+        user.organization_id = org.id
+        user.save!
+      end
+
+      actions.except(:create, :destroy).each do |action, request|
+        it "regular users can access #{action} with their organization" do
+          route = RequestHelpers::Routable.new(request, org)
+          self.send(:request_via_redirect, route.verb, route.url)
+          page_view.should_not have_content PERMISSION_DENIED
+        end
+      end
+
+      actions.slice(:create, :destroy).each do |action, request|
+        it "regular users cannot access #{action} with their organization" do
+          route = RequestHelpers::Routable.new(request, org)
+          self.send(:request_via_redirect, route.verb, route.url)
+          page_view.should have_content PERMISSION_DENIED
+        end
+      end
+    end
+
+    context 'associated with some other org' do
+      let(:org2) { FactoryGirl.create :organization, name: 'other org'}
+      before do
+        login(user)
+        user.organization_id = org2.id
+        user.save!
+      end
+
+      actions.except(:edit, :update, :create, :destroy).each do |action, request|
+        it "regular users can access #{action} with some other organization" do
+          route = RequestHelpers::Routable.new(request, org)
+          self.send(:request_via_redirect, route.verb, route.url)
+          page_view.should_not have_content PERMISSION_DENIED
+        end
+      end
+
+      actions.slice(:edit, :update, :create, :destroy).each do |action, request|
+        it "regular users cannot access #{action} with some other organization" do
+          route = RequestHelpers::Routable.new(request, org)
+          self.send(:request_via_redirect, route.verb, route.url)
+          page_view.should have_content PERMISSION_DENIED
+        end
+      end
+    end
+
+
+    context 'not associated with any org' do
+      before { login(user) }
+
+      actions.except(:edit, :update, :create, :destroy).each do |action, request|
+        it "regular users with no organization can access #{action}" do
+          route = RequestHelpers::Routable.new(request, org)
+          self.send(:request_via_redirect, route.verb, route.url)
+          page_view.should_not have_content PERMISSION_DENIED
+        end
+      end
+
+      actions.slice(:edit, :update, :create, :destroy).each do |action, request|
+        it "regular users with no organization cannot access #{action}" do
+          route = RequestHelpers::Routable.new(request, org)
+          self.send(:request_via_redirect, route.verb, route.url)
+          page_view.should have_content PERMISSION_DENIED
+        end
+      end
+    end
+  end
+
+  describe 'no user signed in' do
+    actions.except(:edit, :update, :create, :destroy).each do |action, request|
+      it "public users can access #{action}" do
+        route = RequestHelpers::Routable.new(request, org)
+        self.send(:request_via_redirect, route.verb, route.url)
+        page_view.should_not have_content PERMISSION_DENIED
+      end
+    end
+
+    actions.slice(:edit, :update, :create, :destroy).each do |action, request|
+      it "public users cannot access #{action}" do
+        route = RequestHelpers::Routable.new(request, org)
+        self.send(:request_via_redirect, route.verb, route.url)
+        page_view.should have_content PERMISSION_DENIED
+      end
+    end
+  end
+
+
+  def page_view
+    Capybara::Node::Simple.new(@response.body)
+  end
 end
