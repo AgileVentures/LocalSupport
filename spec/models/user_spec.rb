@@ -102,10 +102,9 @@ describe User do
       @admin_user.organization.should eq @match_org
     end
 
-    it 'should be called in #confirm! and #accept_invitation!' do
-      @user.should_receive(:make_admin_of_org_with_matching_email).twice
+    it 'should be called in #confirm!' do
+      @user.should_receive(:make_admin_of_org_with_matching_email)
       @user.confirm!
-      @user.accept_invitation!
     end
   end
 
@@ -193,19 +192,37 @@ describe User do
 
   end
 
-  context '#message_for_invite' do
+  context '#respond_to_invite' do
     let(:user) { FactoryGirl.build(:user) }
+    let(:org_id) { -1 }
 
-    it 'returns Invited! if there are no errors' do
-      expect(user.message_for_invite).to eql 'Invited!'
+    it 'checks the user for errors' do
+      expect(user.errors).to receive(:any?)
+      user.respond_to_invite(org_id)
     end
 
-    context 'when there are errors' do
+    context 'no errors' do
       before do
-        user.errors.add(:email, 'error')
+        allow(user).to receive(:organization_id=)
+        allow(user).to receive(:save!)
       end
+
+      it 'returns "Invited!" if there are no errors' do
+        expect(user.respond_to_invite(org_id)).to eql 'Invited!'
+      end
+
+      it 'associates the user with the organization' do
+        expect(user).to receive(:organization_id=).with(-1)
+        expect(user).to receive(:save!)
+        user.respond_to_invite(org_id)
+      end
+    end
+
+    context 'errors' do
+      before { user.errors.add(:email, 'error') }
+
       it 'returns a semi-custom error msg if there is one' do
-        expect(user.message_for_invite).to eql 'Error: Email error'
+        expect(user.respond_to_invite(org_id)).to eql 'Error: Email error'
       end
     end
   end

@@ -13,7 +13,7 @@ class InvitationsController < ApplicationController
 
   private
   def invite_user(email, resend_invitation, organization_id)
-    UserInviter.new(self, User, current_user, Devise).invite(
+    UserInviter.new(User, current_user, Devise).invite(
         email, resend_invitation, organization_id)
   end
 end

@@ -24,11 +24,6 @@ class User < ActiveRecord::Base
     make_admin_of_org_with_matching_email
   end
 
-  def accept_invitation!
-    super
-    make_admin_of_org_with_matching_email
-  end
-
   def belongs_to? organization
     self.organization == organization
   end
@@ -55,8 +50,14 @@ class User < ActiveRecord::Base
     save!
   end
 
-  def message_for_invite
-    errors.any? ? "Error: #{errors.full_messages.first}" : 'Invited!'
+  def respond_to_invite(org_id)
+    if errors.any?
+      "Error: #{errors.full_messages.first}"
+    else
+      self.organization_id = org_id
+      self.save!
+      'Invited!'
+    end
   end
 
   def request_admin_status(organization_id)

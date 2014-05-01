@@ -10,7 +10,7 @@ class ListInvitedUsers
   def list 
     users.each_with_object([]) do |user, array|
       org = user.organization
-      array << build_invited_attributes(org, user)
+      array << build_invited_attributes(org, user) if org.present? # even though this should always be true ...
     end
   end
 
@@ -20,7 +20,7 @@ class ListInvitedUsers
   def build_invited_attributes(org, user)
     { id: org.id, 
       name: org.name, 
-      email: org.email, 
+      email: user.email,
       date: user.invitation_sent_at }
   end
 

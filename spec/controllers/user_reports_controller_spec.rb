@@ -138,7 +138,7 @@ describe UserReportsController do
 
     it 'makes use of a scope and a service' do
       User.should_receive(:invited_not_accepted) { user }
-      ListInvitedUsers.should_receive(:list).with(user, Organization)
+      ListInvitedUsers.should_receive(:list).with(user)
       get :invited
     end
 

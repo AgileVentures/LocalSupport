@@ -18,7 +18,7 @@ class UserReportsController < ApplicationController
   def invited
     @resend_invitation = true
     users = User.invited_not_accepted
-    @invitations = ListInvitedUsers.list(users, Organization)
+    @invitations = ListInvitedUsers.list(users)
     render :template => 'user_reports/invited', :layout => 'invitation_table'
   end
 

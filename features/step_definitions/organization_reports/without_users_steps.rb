@@ -17,7 +17,9 @@ Then(/^all the checkboxes should be (un)?checked$/) do |negate|
 end
 
 Given(/^the admin invited a user for "(.*?)"$/) do |organization_name|
-  user = User.find_by_admin(true)
+  current_user = User.find_by_admin true
   org = Organization.find_by_name(organization_name)
-  User.invite!({email: org.email}, user)
+  UserInviter.new(User, current_user, Devise).invite(
+      org.email, true, org.id
+  ).should eq 'Invited!'
 end
