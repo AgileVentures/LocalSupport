@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html>
-<small><%= link_to @org.name, organization_path(@org) %></small><br/>
 <% VolunteerOp.find_all_by_organization_id(@org.id).each do |op| %>
-  <p style="color:blue;margin-left:20px;"><%= link_to op.title %></p>
-  <%= smart_truncate(op.description,32) %></p>
-<% end %>
-</html>
+  <%= link_to op.title, op %></br>
+  <%= smart_truncate(op.description,32) %></br>
+  <% end %>
+</div>
