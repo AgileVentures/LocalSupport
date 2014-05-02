@@ -2,14 +2,18 @@ require_relative '../../lib/local_support/route_collector'
 
 describe RouteCollector, :helpers => :route_collector do
 
+  # Demo the module in the context of a contrived controller and route
+  let(:actions) { collect_actions_for(FakeController) }
+
   class FakeController < ApplicationController
     def custom
       render :text => 'custom called'
     end
   end
 
-  let(:actions) { collect_actions_for(FakeController) }
   before { Rails.application.routes.draw { post 'custom/:id' => 'fake#custom' } }
+
+
 
   describe '#collect_actions_for' do
     subject { actions }
