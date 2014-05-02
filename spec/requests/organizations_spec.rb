@@ -110,15 +110,16 @@ describe "Access to the Organizations API", :helpers => [:requests, :route_colle
   end
 
   describe 'no user signed in' do
-    actions.except(:edit, :update, :create, :destroy).each do |action, request|
+    actions.slice(:search, :index, :show).each do |action, request|
       it "public users can access #{action}" do
         route = route_request_for(request, org)
         self.send(:request_via_redirect, route.verb, route.url)
         page_view.should_not have_content PERMISSION_DENIED
+        page_view.should_not have_content 'You need to sign in or sign up before continuing.'
       end
     end
 
-    actions.slice(:edit, :update, :create, :destroy).each do |action, request|
+    actions.except(:search, :index, :show).each do |action, request|
       it "public users cannot access #{action}" do
         route = route_request_for(request, org)
         self.send(:request_via_redirect, route.verb, route.url)
