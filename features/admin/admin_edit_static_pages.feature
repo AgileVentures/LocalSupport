@@ -56,7 +56,7 @@ Feature: I want to be able to edit static pages
 
   Scenario: Pages index is sorted by default
     Given I am signed in as a admin
-    And I am on the home page
+    And I visit the home page
     When I follow "About Us"
     And I follow "Pages"
     Then I should see "Bob" page before "Wow"
