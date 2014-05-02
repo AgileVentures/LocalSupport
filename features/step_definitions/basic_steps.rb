@@ -2,6 +2,16 @@ require 'webmock/cucumber'
 require 'uri-handler'
 include ApplicationHelper
 
+Then(/^I should see the "(.*?)" image linked to "(.*?)"$/) do |image_alt, link|
+  within("a[href='#{link}']") do
+    find("img[@alt='#{image_alt}']").should_not be_nil
+  end
+end
+
+Then(/^I should see the "(.*?)" image linked to contributors$/) do |image_alt|
+  steps %{Then I should see the "#{image_alt}" image linked to "#{contributors_path}"}
+end
+
 Then /^I should see permission denied$/ do
   page.should have_content PERMISSION_DENIED
 end
@@ -367,4 +377,8 @@ Then /^the coordinates for "(.*?)" and "(.*?)" should( not)? be the same/ do | o
   else
     expect(lat_same && lng_same).to be_true
   end
+end
+
+Then(/^I should see "([^"]*)" page before "([^"]*)"$/) do |first_item, second_item|
+  page.body.should =~ /#{first_item}.*#{second_item}/m
 end
