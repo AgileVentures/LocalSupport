@@ -12,5 +12,5 @@ Then(/^I should see a link avatar for "([^"]*)"$/) do |name|
 end
 
 Then(/^I follow the AgileVentures logo$/) do
-  visit page.find(:xpath, "//a/img[@alt='Agile Ventures Local Support']/..")['href']
+  visit page.find(:xpath, "//a/img[@alt='Agile Ventures']/..")['href']
 end

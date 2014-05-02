@@ -1,9 +1,21 @@
 require 'spec_helper'
 
 describe Page do
-  it 'should override to_param to return the permalink instead of id' do
-    page = FactoryGirl.create(:page)
-    page.should_receive(:to_param).and_return('about')
-    page.to_param
+  it 'is invalid without a name' do
+    FactoryGirl.build(:page, name: nil).should_not be_valid
+  end
+
+  it 'is invalid without a permalink' do
+    FactoryGirl.build(:page, permalink: nil).should_not be_valid
+  end
+
+  it 'is invalid without a UNIQUE permalink' do
+    FactoryGirl.create(:page, permalink: 'hello').should be_valid
+    FactoryGirl.build(:page, permalink: 'hello').should_not be_valid
+  end
+
+  it 'overrides to_param to return the permalink instead of id' do
+    page = FactoryGirl.build(:page)
+    page.to_param.should eq page.permalink
   end
 end
