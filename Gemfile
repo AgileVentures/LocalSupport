@@ -27,8 +27,8 @@ group :development, :test do
 end
 
 group :development do
-  # gem 'ruby-debug19', :require => 'ruby-debug'
-  # gem 'debugger', '1.6.1'
+  #gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'debugger', '1.6.6'
   gem 'railroady'
 end
 
