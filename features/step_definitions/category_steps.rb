@@ -6,9 +6,9 @@ end
 
 Given /^the following categories_organizations exist:$/ do |join_table|
   join_table.hashes.each do |row|
-     cat = Category.find_by_name row[:category]
-     org = Organization.find_by_name row[:organization]
-     org.categories << cat
+    cat = Category.find_by_name row[:category]
+    org = Organization.find_by_name row[:organization]
+    org.categories << cat
   end
 end
 
