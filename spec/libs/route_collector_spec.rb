@@ -12,6 +12,7 @@ describe RouteCollector, :helpers => :route_collector do
   end
 
   before { Rails.application.routes.draw { post 'custom/:id' => 'fake#custom' } }
+  after { Rails.application.reload_routes! } # https://github.com/rspec/rspec-rails/issues/817
 
 
 
