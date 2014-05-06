@@ -20,7 +20,9 @@ describe Page do
   end
   describe '::create!' do
     it 'can set the link_visible attribute to be false' do
-      unlinked_page = Page.create!({"name" => "MyString", "permalink" => "my_link", :link_visible => false })
+      unlinked_page = Page.create!(:name => 'MyString', 
+                                   :permalink => 'my_link',
+                                   :link_visible => false)
       unlinked_page.reload.link_visible.should eq false
     end
   end
@@ -29,11 +31,11 @@ describe Page do
     before :each do
       @linked_page = FactoryGirl.create(:page)
       @second_linked_page = FactoryGirl.create(:page,
-                                               :name => "An interesting page",
-                                               :permalink => "interesting")
+                                               :name => 'An interesting page',
+                                               :permalink => 'interesting')
       @unlinked_page = FactoryGirl.create(:page,
-                                          :name => "A boring page",
-                                          :permalink => "bore",
+                                          :name => 'A boring page',
+                                          :permalink => 'bore',
                                           :link_visible => false)
     end
     
@@ -41,8 +43,8 @@ describe Page do
       it 'returns a collection of links to the pages that have visible links' do
         
         expect(Page.visible_links).to eq \
-          [{:name => "About Us", :permalink => "about"},
-            :name => "An interesting page", :permalink => "interesting"]
+          [{:name => 'About Us', :permalink => 'about'},
+           {:name => 'An interesting page', :permalink => 'interesting'}]
       end
     end
   end

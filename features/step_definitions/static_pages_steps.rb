@@ -4,8 +4,12 @@ Given /^the following pages exist:$/ do |pages_table|
   end
 end
 
-When(/^a static page named "(.*?)" with permalink "(.*?)" and markdown content:$/) do |name, permalink, content|
-  Page.create!({:name => name, :permalink => permalink, :content => content, :link_visible => true}, )
+When(/^a static page named "(.*?)" with permalink "(.*?)" and markdown content:$/) 
+do |name, permalink, content|
+  Page.create!(:name => name, 
+               :permalink => permalink, 
+               :content => content, 
+               :link_visible => true)
 end
 
 Then(/^I should be on the edit page for "(.*?)"$/) do |permalink|
@@ -17,7 +21,10 @@ Then /^following Disclaimer link should display Disclaimer$/ do
   steps %Q{
     When I follow "Disclaimer"
     Then I should see "Disclaimer"
-    And I should see "Whilst Voluntary Action Harrow has made effort to ensure the information here is accurate and up to date we are reliant on the information provided by the different organisations. No guarantees for the accuracy of the information is made."
+    And I should see "Whilst Voluntary Action Harrow has made effort to ensure \
+the information here is accurate and up to date we are reliant on the \
+information provided by the different organisations. No guarantees for the \
+accuracy of the information is made."
   }
 end
 
