@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'Pages', :helpers => :requests do
 
-  let(:valid_attributes) { { "name" => "MyString", "permalink" => "about"} }
+  let(:page) { FactoryGirl.create :page}
   let(:admin_user) { FactoryGirl.create :user, :admin => true}
 
   before {login(admin_user)}
@@ -10,18 +10,14 @@ describe 'Pages', :helpers => :requests do
   describe 'PUT update' do
     describe 'link_visible support' do
       it 'sets the link_visible flag' do
-        valid_attributes[:link_visible] = false
-        page = Page.create! valid_attributes 
-        page.reload.link_visible.should eq false
+        page.link_visible = false
+        page.save
         put page_path(page.to_param), :page => {:link_visible => true}
-        page.reload.link_visible.should eq true
+        expect(page.reload.link_visible).to be true
       end
       it 'clears the link_visible flag' do
-        valid_attributes[:link_visible] = true
-        page = Page.create! valid_attributes 
-        page.reload.link_visible.should eq true
         put page_path(page.to_param), :page => {:link_visible => false}
-        page.reload.link_visible.should eq false
+        expect(page.reload.link_visible).to be false
       end
     end
   end
