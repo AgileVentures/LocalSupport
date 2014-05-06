@@ -6,9 +6,9 @@ end
 
 When(/^a static page named "(.*?)" with permalink "(.*?)" and markdown content:$/) 
 do |name, permalink, content|
-  Page.create!(:name => name, 
-               :permalink => permalink, 
-               :content => content, 
+  Page.create!(:name => name,
+               :permalink => permalink,
+               :content => content,
                :link_visible => true)
 end
 
@@ -43,7 +43,7 @@ end
 Given(/^I remove "(.*?)" from the footer$/) do |permalink|
   # this finder relies on the permalink text _only_ appearing in one
   # row of the page under test
-  find("tr[contains('#{permalink}')]").click_link_or_button('Hide link')  
+  find("tr[contains('#{permalink}')]").click_link_or_button('Hide link'
 end
 
 Then(/^the "(.*?)" link is not in the footer$/) do |link|
