@@ -7,12 +7,18 @@ describe User do
   context 'invited users scope' do
     before(:each) do
       @regular_user = FactoryGirl.create(:user, email: 'regular@guy.com')
-      @invited_user = FactoryGirl.create(:user, email: 'invited@guy.com', invitation_sent_at: '2014-03-12 00:18:02', invitation_accepted_at: nil)
+      @invited_user = FactoryGirl.create(:user_stubbed_organization, email: 'invited@guy.com', invitation_sent_at: '2014-03-12 00:18:02', invitation_accepted_at: nil)
     end
+
     it 'finds all users who have not accepted their invitations yet' do
       collection = User.invited_not_accepted
       collection.should_not include(@regular_user)
       collection.should include(@invited_user)
+    end
+
+    it 'eager loads the associated organizations' do
+      collection = User.invited_not_accepted
+      collection.first.association_cache.should_not be_empty
     end
   end
 

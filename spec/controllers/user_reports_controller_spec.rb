@@ -12,7 +12,7 @@ describe UserReportsController do
       Organization.stub(:find).and_return(@org)
     end
     context 'user requesting pending status to be admin of charity' do
-      before do 
+      before do
         @nonadmin_user.stub(:request_admin_status)
         @nonadmin_user.stub(:promote_to_org_admin)
         @nonadmin_user.stub(:email)
@@ -51,7 +51,7 @@ describe UserReportsController do
   end
 
   describe 'GET index to view pending users' do
-    context "user signed in", :helpers => :controllers  do
+    context "user signed in", :helpers => :controllers do
       context "as admin" do
         before(:each) do
           make_current_user_admin
@@ -111,17 +111,24 @@ describe UserReportsController do
   end
 
   describe 'GET invited users report', :helpers => :controllers do
-    let(:organization) { double 'Organization',
-                                id: '1',
-                                name: 'sample',
-                                email: 'sample@sample.org',
-                                invitation_sent_at: 'date-time-thingy'
-    }
-    let(:user) { double 'User' }
-    before(:each) do
+    let(:organization) do
+      double :organization, {
+          id: '-1',
+          name: 'sample org'
+      }
+    end
+
+    let(:user) do
+      double :user, {
+          organization: organization,
+          email: 'user@email.org',
+          invitation_sent_at: 'date-time-thingy'
+      }
+    end
+
+    before do
       make_current_user_admin
-      User.stub :invited_not_accepted
-      ListInvitedUsers.stub :list => [organization]
+      allow(User).to receive(:invited_not_accepted) { [user] }
     end
 
     it 'is for admins only' do
@@ -136,20 +143,20 @@ describe UserReportsController do
       response.should render_template 'layouts/invitation_table'
     end
 
-    it 'makes use of a scope and a service' do
-      User.should_receive(:invited_not_accepted) { user }
-      ListInvitedUsers.should_receive(:list).with(user)
-      get :invited
-    end
-
     it 'assigns true to @resend_invitation' do
       get :invited
-      assigns(:resend_invitation).should be_true
+      expect(assigns(:resend_invitation)).to be true
     end
 
-    it 'assigns invitations to @invitations' do
+    it 'assigns serialized invitations to @invitations' do
+      expect(User).to receive(:invited_not_accepted) { [user] }
       get :invited
-      assigns(:invitations).should include organization
+      expect(assigns(:invitations)).to eq([{
+                                               'id' => '-1',
+                                               'name' => 'sample org',
+                                               'email' => 'user@email.org',
+                                               'date' => 'date-time-thingy'
+                                           }])
     end
 
   end

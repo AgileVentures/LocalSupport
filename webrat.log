@@ -1,0 +1,18 @@
+# Logfile created on 2014-04-24 16:36:14 +0100 by logger.rb/31641
+REQUESTING PAGE: GET  with {} and HTTP headers {}
+REQUESTING PAGE: GET  with {} and HTTP headers {}
+REQUESTING PAGE: GET / with {} and HTTP headers {}
+REQUESTING PAGE: GET /organizations with {} and HTTP headers {}
+REQUESTING PAGE: GET /pages with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/ with {} and HTTP headers {"HTTP_REFERER"=>"/pages"}
+REQUESTING PAGE: {"PAGE"=>{:NAME=>"ABOUT US", :PERMALINK=>"ABOUT", :CONTENT=>"ABC123"}} /pages with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/"}
+REQUESTING PAGE: GET /pages with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/ with {} and HTTP headers {"HTTP_REFERER"=>"/pages"}
+REQUESTING PAGE: {"PAGE"=>{:NAME=>"ABOUT US", :PERMALINK=>"ABOUT", :CONTENT=>"ABC123"}} /pages with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/"}
+REQUESTING PAGE: GET /pages with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/ with {} and HTTP headers {"HTTP_REFERER"=>"/pages"}
+REQUESTING PAGE: {"PAGE"=>{:NAME=>"ABOUT US", :PERMALINK=>"ABOUT", :CONTENT=>"ABC123"}} /pages with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/"}
+REQUESTING PAGE: GET /pages with {} and HTTP headers {}
+REQUESTING PAGE: GET http://www.example.com/ with {} and HTTP headers {"HTTP_REFERER"=>"/pages"}
+REQUESTING PAGE: {"PAGE"=>{:NAME=>"ABOUT US", :PERMALINK=>"ABOUT", :CONTENT=>"ABC123"}} /pages with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/"}
+REQUESTING PAGE: {"PAGE"=>{:NAME=>"ABOUT US", :PERMALINK=>"ABOUT", :CONTENT=>"ABC123"}} /pages with {} and HTTP headers {"HTTP_REFERER"=>"http://www.example.com/"}

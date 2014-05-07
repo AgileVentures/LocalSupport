@@ -3,17 +3,29 @@ class InvitationsController < ApplicationController
 
   # xhr only, tested in a request spec
   def create
-    res = params[:values].each_with_object({}) do |value, response|
-      response[value[:id]] = invite_user(value[:email], params[:resend_invitation], value[:id])
-    end
+    @response = build_response(params)
+
     respond_to do |format|
-      format.json { render :json => res.to_json }
+      format.json { render :json => @response.to_json }
     end
   end
 
   private
-  def invite_user(email, resend_invitation, organization_id)
-    UserInviter.new(User, current_user, Devise).invite(
-        email, resend_invitation, organization_id)
+
+  def build_response(params)
+    debugger
+    invitation = Inviter.new(User, Devise, params[:resend_invitation])
+
+    params[:values].each_with_object({}) do |value, dict|
+
+      dict[value[:id]] = invitation.rsvp(
+          value[:email],
+          current_user,
+          value[:id]
+
+      )
+
+    end
   end
+
 end
