@@ -79,11 +79,6 @@ Then(/^the response status should be 404$/) do
   page.status_code.should == 404
 end
 
-Then(/^I should be on the edit page for "(.*?)"$/) do |permalink|
-  pg = Page.find_by_permalink(permalink)
-  current_path.should eq( edit_page_path (pg.permalink ))
-end
-
 Given /^I press "(.*?)"$/ do |button|
   click_button(button)
 end
@@ -109,11 +104,6 @@ And I should see "Whilst Voluntary Action Harrow has made effort to ensure the i
 }
 end
 
-Given(/^I am on the edit page with the "(.*?)" permalink$/) do |permalink|
-  pg = Page.find_by_permalink(permalink)
-  visit edit_page_path pg.permalink
-end
-
 Then(/^the "([^"]*)" should be (not )?visible$/) do |id, negate|
   # http://stackoverflow.com/a/15782921
   # Capybara "visible?" method(s) are inaccurate!
@@ -135,6 +125,7 @@ end
 When(/^I click link with id "([^"]*)"$/) do |id|
   page.find("##{id}").click
 end
+
 When(/^javascript is enabled$/) do
   Capybara.javascript_driver
 end

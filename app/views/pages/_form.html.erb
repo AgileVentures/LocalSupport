@@ -1,26 +1,29 @@
-<%= form_for @page, :html => { :class => 'form' } do |f| %>
-  <div class="control-group">
-    <%= f.label :name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :name, :class => 'text_field' %>
+<%= form_for @page, :html => {:class => 'form'} do |f| %>
+    <div class="control-group">
+      <%= f.label :name, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :name, :class => 'text_field' %>
+      </div>
     </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :permalink, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :permalink, :class => 'text_field' %>
+    <div class="control-group">
+      <%= f.label :permalink, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :permalink, :class => 'text_field' %>
+      </div>
     </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :content, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :content, :class => 'text_area span6' %>
+    <div class="control-group">
+      <%= f.label :content, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :content, :class => 'text_area span6' %>
+      </div>
     </div>
-  </div>
-
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                pages_path, :class => 'btn' %>
-  </div>
+    <div class="control-group">
+      <%= f.label :link_visible, "Show a public link to this page", :class => 'control-label', :id => "page_link_visible" %>
+      <%= f.check_box :link_visible, :checked_value => "true", :unchecked_value => "false" %>
+    </div>
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  pages_path, :class => 'btn' %>
+    </div>
 <% end %>

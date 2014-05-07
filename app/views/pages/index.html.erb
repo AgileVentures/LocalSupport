@@ -20,7 +20,7 @@
         <td><%= page.name %></td>
         <td><%= page.permalink %></td>
         <td><%= page.content %></td>
-        <td><%=l page.created_at %></td>
+        <td><%= page.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_page_path(page), :class => 'btn btn-mini' %>
