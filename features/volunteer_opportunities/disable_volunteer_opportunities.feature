@@ -1,6 +1,6 @@
 Feature: As a project manager
   I want to push the latest patches to production
-  but I don't want the volunteer epic code to be visible to users
+  but I don't want the unfinished volunteer features to be visible to users
   so that we can work more quickly and efficiently with a single code base
   https://www.pivotaltracker.com/story/show/70846998
 
@@ -11,7 +11,7 @@ Background:
     | Indian Elders Association       | Care for the elderly             | 64 pinner road | HA1 4HA  | http://b.com/ |
   And the following users are registered:
     | email                      | password | organization | confirmed_at        | admin |
-    | admin@friendly.example.org | pppppppp | Friendly     | 2007-01-01 10:00:00 | false |
+    | admin@cats.example.org     | pppppppp | Cats Are Us  | 2007-01-01 10:00:00 | false |
     | admin@shy.example.org      | pppppppp | Shy          | 2007-01-01 10:00:00 | false |
     | admin@harrowcn.org.uk      | pppppppp | Shy          | 2007-01-01 10:00:00 | true  |
   And the following volunteer opportunities exist:

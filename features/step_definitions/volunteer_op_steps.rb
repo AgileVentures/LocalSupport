@@ -4,11 +4,11 @@ And(/^I submit an opportunity with title "(.*?)" and description "(.*?)"$/) do |
   click_on 'Create a Volunteer Opportunity'
 end
 
-Given(/^that the (.+) flag is (enabled|disabled)$/) do |flag, state|
+Given(/^that the (.+) flag is (enabled|disabled)$/) do |feature, state|
   if state == 'enabled'
-    Feature.activate(:volunteer_ops)
+    Feature.activate(feature)
   else
-    Feature.deactivate(:volunteer_ops)
+    Feature.deactivate(feature)
   end
 end
 
