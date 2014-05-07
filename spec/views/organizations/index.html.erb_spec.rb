@@ -38,6 +38,7 @@ describe 'organizations/index.html.erb' do
     rendered.should have_content org.description.truncate(128, :omission => ' ...')
   end
 
+<<<<<<< HEAD
   it 'renders an in-line script with settings used for interacting with client-side Google Maps API scripts' do
     render template: 'organizations/index', layout: 'layouts/application'
     rendered.should have_xpath '//script[contains(.,"Gmaps.map.map_options.auto_adjust = false")]'
@@ -46,5 +47,18 @@ describe 'organizations/index.html.erb' do
     rendered.should have_xpath '//script[contains(.,"Gmaps.map.map_options.center_longitude = -0.337")]'
     rendered.should have_xpath '//script[contains(.,"Gmaps.map.map_options.zoom = 12")]'
     rendered.should have_xpath '//script[contains(.,"Gmaps.map.map_options.auto_adjust = false")]'
+=======
+  it "displays the javascript for a google map" do
+    assign(:json, organizations.to_gmaps4rails)
+    assign(:footer_page_links, [])
+    Page.stub(:all).and_return []
+    render template: "organizations/index", layout: "layouts/application"
+    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
+    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_zoom = true')]"
+    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_latitude = 51.5978')]"
+    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_longitude = -0.337')]"
+    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.zoom = 12')]"
+    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
+>>>>>>> f72bd48c70c9795daf0360d09bff0c70954112f9
   end
 end
