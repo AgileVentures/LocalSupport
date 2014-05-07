@@ -23,7 +23,7 @@ group :development, :test do
   gem 'sinatra-base'
   gem 'jasmine'
   gem 'jasmine-jquery-rails'
-  gem 'better_errors'
+  #gem 'better_errors'
   gem 'binding_of_caller' # plays well with better_errors
 end
 
