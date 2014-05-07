@@ -45,19 +45,15 @@ end
 
 Then /^I (visit|should be on) the (edit|show) page for the (.*?) (named|titled) "(.*?)"$/ do |mode, action, object, schema, name|
   record = find_record_for(object, schema, name)
+  url = url_for({
+                    only_path: true,
+                    controller: object.pluralize.underscore,
+                    action: action,
+                    id: record.id
+                })
   case mode
-    when 'visit' then visit url_for({
-                                        only_path: true,
-                                        controller: object.pluralize.underscore,
-                                        action: action,
-                                        id: record.id
-                                    })
-    when 'should be on' then current_path.should eq url_for({
-                                                                only_path: true,
-                                                                controller: object.pluralize.underscore,
-                                                                action: action,
-                                                                id: record.id
-                                                            })
+    when 'visit' then visit url
+    when 'should be on' then current_path.should eq url
     else raise "unknown mode '#{mode}'"
   end
 end
@@ -107,10 +103,10 @@ end
 
 Then /^following Disclaimer link should display Disclaimer$/ do
   steps %Q{
-    When I follow "Disclaimer"
-    Then I should see "Disclaimer"
-    And I should see "Whilst Voluntary Action Harrow has made effort to ensure the information here is accurate and up to date we are reliant on the information provided by the different organisations. No guarantees for the accuracy of the information is made."
-  }
+When I follow "Disclaimer"
+Then I should see "Disclaimer"
+And I should see "Whilst Voluntary Action Harrow has made effort to ensure the information here is accurate and up to date we are reliant on the information provided by the different organisations. No guarantees for the accuracy of the information is made."
+}
 end
 
 Given(/^I am on the edit page with the "(.*?)" permalink$/) do |permalink|
@@ -124,7 +120,7 @@ Then(/^the "([^"]*)" should be (not )?visible$/) do |id, negate|
 
   #regex = /height: 0/ # Assume style="height: 0px;" is the only means of invisibility
   #style = page.find("##{id}")['style']
-  #sleep 0.25 if style   # need to give js a moment to modify the DOM
+  #sleep 0.25 if style # need to give js a moment to modify the DOM
   #expectation = negate ? :should : :should_not
   #style ? style.send(expectation, have_text(regex)) : negate.nil?
 
@@ -133,7 +129,7 @@ Then(/^the "([^"]*)" should be (not )?visible$/) do |id, negate|
 end
 
 Then(/^the "([^"]*)" should be "([^"]*)"$/) do |id, css_class|
-    page.should have_css("##{id}.#{css_class}")
+  page.should have_css("##{id}.#{css_class}")
 end
 
 When(/^I click link with id "([^"]*)"$/) do |id|
