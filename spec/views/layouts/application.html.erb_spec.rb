@@ -4,40 +4,35 @@ describe "layouts/application.html.erb", :type => :feature do
   let(:user) { double :user, email: 'user@example.com' }
 
   context "no user signed-in" do
+    before { render }
+
     it "renders site title" do
-      render
       rendered.should contain 'Harrow Community Network'
     end
 
     it "renders site tag line" do
-      render
       rendered.should contain 'Search for local voluntary and community organisations'
     end
 
     it 'renders Organization sign in form' do
-      render
       rendered.should have_selector("form", :id => "loginForm")
     end
 
     it 'renders sign in form fields correctly' do
-      render
       rendered.should have_css("#loginForm input#user_password")
       rendered.should have_css("#loginForm input#user_email")
       rendered.should have_css("#loginForm input#signin")
     end
 
     it 'renders dropdown menu' do
-      render
       rendered.should have_css("#navLogin")
     end
 
     it "renders new Organization sign up form" do
-      render
       rendered.should have_selector("form", :id => "registerForm")
     end
 
     it 'renders sign up form fields correctly' do
-      render
       rendered.should have_css("#registerForm input#signup_password")
       rendered.should have_css("#registerForm input#signup_email")
       rendered.should have_css("#registerForm input#signup_password_confirmation")
@@ -46,7 +41,6 @@ describe "layouts/application.html.erb", :type => :feature do
 
     it 'renders a password retrieval link' do
       #<a href="/users/password/new">Forgot your password?</a>
-      render
       rendered.should have_css("#menuLogin a[href=\"#{new_user_password_path}\"]")
     end
 
@@ -61,22 +55,18 @@ describe "layouts/application.html.erb", :type => :feature do
     end
 
     it 'renders an Organisations link' do
-      render
       rendered.should have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{organizations_path}\"]")
     end
 
     it 'renders a Volunteers link' do
-      render
       rendered.should have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{volunteer_ops_path}\"]")
     end
     
     it 'login form should be visible', :js => true do
-      render
       rendered.should_not have_selector("form#loginForm", style: "height: 0px;")
     end
 
     it 'should not have any flash messages' do
-      render
       rendered.should_not have_selector("div.alert")
     end
 
@@ -97,14 +87,12 @@ describe "layouts/application.html.erb", :type => :feature do
     end
 
     it 'should display a logo linked to the contributors page' do
-      render
       rendered.within("a[href='#{contributors_path}']") do |hyperlink|
         hyperlink.should have_css "img[@alt='Agile Ventures']"
       end
     end
 
     it 'should display a logo linked to the ninefold page' do
-      render
       rendered.within("a[href='https://ninefold.com']") do |hyperlink|
         hyperlink.should have_css "img[@alt='Ninefold']"
       end
