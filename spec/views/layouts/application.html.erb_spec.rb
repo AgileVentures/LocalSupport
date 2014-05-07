@@ -54,6 +54,7 @@ describe 'layouts/application.html.erb', :type => :feature do
       expect(rendered).to have_css('#registerForm input#signup_email')
       expect(rendered).to have_css('#registerForm input#signup_password_confirmation')
       expect(rendered).to have_css('#registerForm div input[value=\'Sign up\']')
+
     end
 
     it 'renders a password retrieval link' do
@@ -94,7 +95,7 @@ describe 'layouts/application.html.erb', :type => :feature do
     end
 
     it 'should display flash messages when successful' do
-      view.stub(:flash).and_return([[:notice, 'Yes, we have been successful!!!!!']])
+      view.stub(:flash).and_return([[:notice, "Yes, we have been successful!!!!!"]])
       render
       expect(rendered).to have_selector('div.alert')
       expect(rendered).to have_content('Yes, we have been successful!!!!!')
@@ -102,7 +103,7 @@ describe 'layouts/application.html.erb', :type => :feature do
     end
 
     it 'should display flash messages when failing' do
-      view.stub(:flash).and_return([[:error, 'No, no, no!']])
+      view.stub(:flash).and_return([[:error, "No, no, no!"]])
       render
       expect(rendered).to have_selector('div.alert')
       expect(rendered).to have_content('No, no, no!')
@@ -123,7 +124,7 @@ describe 'layouts/application.html.erb', :type => :feature do
       end
     end
 
-    it 'does not render a new organization link' do
+    it "does not render a new organization link" do
       view.stub(:user_signed_in? => false)
       render
       expect(rendered).not_to have_xpath("//a[@href='#{new_organization_path}']")

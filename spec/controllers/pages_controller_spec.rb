@@ -3,9 +3,7 @@ require 'spec_helper'
 describe PagesController do
   let(:page) { mock_model Page, id: '2' }
 
-  before(:each) do
-    controller.stub(:admin?).and_return(true)
-  end
+  before { controller.stub(:admin?) { true } }
 
   describe 'GET index' do
     it 'is restricted' do
@@ -29,18 +27,42 @@ describe PagesController do
 
   describe 'GET show' do
     let(:about_page) { double :page,
-      name: 'About Us',
-      permalink: 'about',
-      content: 'blah blah'
+                              name: 'About Us',
+                              permalink: 'about',
+                              content: 'blah blah'
     }
     let(:user) { double :user }
+
+    describe 'assigns site admin status of current_user to @admin' do
+      it 'NIL when there is no current_user' do
+        get :show, {id: 'about'}
+        assigns(:admin).should be nil
+      end
+      it 'FALSE when current_user is NOT admin' do
+        user.stub(:admin?) { false }
+        controller.stub(:current_user) { user }
+        get :show, {id: 'about'}
+        assigns(:admin).should be false
+      end
+
+      it 'TRUE when current_user is admin' do
+        user.stub(:admin?) { true }
+        controller.stub(:current_user) { user }
+        get :show, {id: 'about'}
+        assigns(:admin).should be true
+      end
+    end
+
+    it 'assigns a persisted page as @page' do
+      Page.should_receive(:find_by_permalink!).with('about') { about_page }
+      get :show, {id: 'about'}
+      assigns(:page).should eq about_page
+    end
 
     before do
       controller.stub(:current_user)
       Page.stub(:find_by_permalink!)
     end
-
-    after(:each) {response.should render_template 'layouts/full_width'}
 
     describe 'assigns site admin status of current_user to @admin' do
       it 'NIL when there is no current_user' do
@@ -211,7 +233,7 @@ describe PagesController do
       delete :destroy, {id: page.id}
       assigns(:page).should eq page
     end
-    
+
     it 'destroys the page' do
       page.should_receive(:destroy)
       delete :destroy, {id: page.id}
