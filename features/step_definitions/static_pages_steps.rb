@@ -1,17 +1,3 @@
-Given /^the following pages exist:$/ do |pages_table|
-  pages_table.hashes.each do |page|
-    Page.create! page
-  end
-end
-
-When(/^a static page named "(.*?)" with permalink "(.*?)" and markdown content:$/) \
-do |name, permalink, content|
-  Page.create!(:name => name,
-               :permalink => permalink,
-               :content => content,
-               :link_visible => true)
-end
-
 Then(/^I should be on the edit page for "(.*?)"$/) do |permalink|
   pg = Page.find_by_permalink(permalink)
   current_path.should eq( edit_page_path (pg.permalink ))
