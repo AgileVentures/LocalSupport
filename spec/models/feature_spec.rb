@@ -29,11 +29,11 @@ describe Feature do
 
   describe '::active?' do
     it 'is false when inactive' do
-      Feature.create(:foo, false)
+      Feature.create(name: :foo, active: false)
       expect(Feature.active?(:foo)).to be false
     end
     it 'is true when active' do
-      Feature.create(:foo, true)
+      Feature.create(name: :foo, active: true)
       expect(Feature.active?(:foo)).to be true
     end
   end

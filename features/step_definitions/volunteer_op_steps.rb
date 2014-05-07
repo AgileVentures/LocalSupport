@@ -11,3 +11,9 @@ Given(/^that the (.+) flag is (enabled|disabled)$/) do |flag, state|
     Feature.deactivate(:volunteer_ops)
   end
 end
+
+Given /the following feature flags exist/ do |feature_flags_table|
+  feature_flags_table.hashes.each do |feature_flag|
+    Feature.create! feature_flag
+  end
+end
