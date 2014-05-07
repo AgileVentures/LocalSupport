@@ -3,3 +3,11 @@ And(/^I submit an opportunity with title "(.*?)" and description "(.*?)"$/) do |
   fill_in 'Description', :with => description
   click_on 'Create a Volunteer Opportunity'
 end
+
+Given(/^that the (.+) flag is (enabled|disabled)$/) do |flag, state|
+  if state == 'enabled'
+    Feature.activate(:volunteer_ops)
+  else
+    Feature.deactivate(:volunteer_ops)
+  end
+end
