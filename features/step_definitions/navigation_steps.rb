@@ -26,28 +26,40 @@ def paths(location)
   }[location]
 end
 
-Then /^I visit the (.*) page$/ do |location|
+Then /^I (visit|should be on) the (.*) page$/ do |mode, location|
   location.downcase!
   raise "No matching path found for #{location}" if paths(location).nil?
-  visit paths(location)
+  case mode
+    when 'visit' then visit paths(location)
+    when 'should be on' then current_path.should eq paths(location)
+    else raise "unknown mode '#{mode}'"
+  end
 end
 
-Then /^I should be on the (.*) page$/ do |location|
-  location.downcase!
-  raise "No matching path found for #{location}" if paths(location).nil?
-  current_path.should eq paths(location)
+def find_record_for(object, schema, name)
+  # all types begin as strings
+  real_object = object.classify.constantize
+  schema = schema.chomp('d').to_sym
+  real_object.where(schema => name).first
 end
 
-Then /^I visit the (edit|show) page for the (.*?) (named|titled) "(.*?)"$/ do |action, object, schema, name|
-  schema.chomp!('d')
-  record = eval("#{object.camelize}.find_by_#{schema}('#{name}')")
-  visit url_for only_path: true, controller: object.pluralize.underscore, action: action, id: record.id
-end
-
-Then /^I should be on the (edit|show) page for the (.*?) (named|titled) "(.*?)"$/ do |action, object, schema, name|
-  schema.chomp!('d')
-  record = eval("#{object.camelize}.find_by_#{schema}('#{name}')")
-  current_path.should eq url_for only_path: true, controller: object.pluralize.underscore, action: action, id: record.id
+Then /^I (visit|should be on) the (edit|show) page for the (.*?) (named|titled) "(.*?)"$/ do |mode, action, object, schema, name|
+  record = find_record_for(object, schema, name)
+  case mode
+    when 'visit' then visit url_for({
+                                        only_path: true,
+                                        controller: object.pluralize.underscore,
+                                        action: action,
+                                        id: record.id
+                                    })
+    when 'should be on' then current_path.should eq url_for({
+                                                                only_path: true,
+                                                                controller: object.pluralize.underscore,
+                                                                action: action,
+                                                                id: record.id
+                                                            })
+    else raise "unknown mode '#{mode}'"
+  end
 end
 
 And(/^the page should be titled "(.*?)"$/) do |title|
@@ -69,7 +81,6 @@ end
 
 Then(/^the response status should be 404$/) do
   page.status_code.should == 404
-  #page.response_code.should be 404
 end
 
 Then(/^I should be on the edit page for "(.*?)"$/) do |permalink|
