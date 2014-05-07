@@ -1,5 +1,120 @@
 require 'spec_helper'
 
+describe 'Geocoding organizations' do
+  let!(:org) { FactoryGirl.create :organization }
+
+  describe 'geocoding (acts_as_gmappable) is curtailed by the { :process_geocoding => :run_geocode? } option' do
+    it 'geocoding allowed when saving if the org address changed' do
+      Gmaps4rails.should_receive(:geocode)
+      org.address = '777 pinner road'
+      org.save!
+    end
+
+    # it will try to rerun incomplete geocodes, but not valid ones, so no harm is done
+    it 'geocoding allowed when saving if the org has an address BUT NO coordinates' do
+      Gmaps4rails.should_receive(:geocode)
+      org.longitude = nil; org.latitude = nil
+      org.email = 'something@example.com'
+      org.save!
+    end
+    it 'geocoding NOT allowed when saving if the org already has coordinates and an unchanged address' do
+      Gmaps4rails.should_not_receive(:geocode)
+      org.email = 'something@example.com'
+      org.save!
+    end
+  end
+
+  context 'if Gmaps4rails encounters errors with geocoding' do
+    it 'handles them without raising errors' do
+      new_address = '84 pinner road'
+      Gmaps4rails.should_receive(:geocode).and_raise(Errno::ENOENT)
+      (-> { org.update_attributes! :address => new_address }).should raise_error
+      Gmaps4rails.should_receive(:geocode).and_raise(Gmaps4rails::GeocodeStatus)
+      (-> { org.update_attributes! :address => new_address }).should_not raise_error
+    end
+
+    it 'saves the record with the new information' do
+      new_address = '84 pinner road'
+      org.address.should_not eq new_address
+      Gmaps4rails.should_receive(:geocode).and_raise(Gmaps4rails::GeocodeStatus)
+      org.update_attributes! :address => new_address
+      org.should be_persisted
+      actual_address = Organization.find_by_name(org.name).address
+      actual_address.should eq new_address
+    end
+
+    it 'sets lat/lng to nil' do
+      org.latitude.should_not be nil
+      org.longitude.should_not be nil
+      Gmaps4rails.should_receive(:geocode).and_raise(Gmaps4rails::GeocodeStatus)
+      org.update_attributes! :address => '84 pinner road'
+      org.latitude.should be nil
+      org.longitude.should be nil
+    end
+
+    it 'deletes validations errors related to gmap4rails address issues' do
+      Gmaps4rails.should_receive(:geocode).and_raise(Gmaps4rails::GeocodeStatus)
+      org.update_attributes! :address => '84 pinner road'
+      org.errors.should be_empty
+    end
+
+    it 'does not delete validation errors unrelated to gmap4rails address issues' do
+      errors = {
+          :gmaps4rails_address => ['Address invalid'],
+          :other_error => ['Something is wrong!']
+      }
+      org.errors.should_receive(:to_hash) { errors }
+      org.save
+      org.errors['gmaps4rails_address'].should be_empty
+      org.errors['other_error'].should_not be_empty
+    end
+  end
+
+  describe '#not_geocoded?' do
+    it 'should return true if it lacks latitude and longitude' do
+      org = FactoryGirl.build :organization
+      org.latitude.should be_nil
+      org.longitude.should be_nil
+      org.not_geocoded?.should be_true
+    end
+
+    it 'should return false if it has latitude and longitude' do
+      org = FactoryGirl.build :organization
+      org.latitude = 77
+      org.longitude = 77
+      org.not_geocoded?.should be_false
+    end
+  end
+
+  describe '#run_geocode?' do
+    it 'should return true if address is changed' do
+      org.address = 'asjkdhas,ba,asda'
+      org.run_geocode?.should be_true
+    end
+
+    it 'should return false if address is not changed' do
+      org.should_receive(:address_changed?).and_return(false)
+      org.should_receive(:not_geocoded?).and_return(false)
+      org.run_geocode?.should be_false
+    end
+
+    it 'should return false if org has no address' do
+      org = Organization.new
+      org.run_geocode?.should be_false
+    end
+
+    it 'should return true if org has an address but no coordinates' do
+      org.should_receive(:not_geocoded?).and_return(true)
+      org.run_geocode?.should be_true
+    end
+
+    it 'should return false if org has an address and coordinates' do
+      org.should_receive(:not_geocoded?).and_return(false)
+      org.run_geocode?.should be_false
+    end
+  end
+end
+
 describe Organization do
 
   before do
@@ -12,14 +127,13 @@ describe Organization do
     @category4 = FactoryGirl.create(:category, :charity_commission_id => 302)
     @category5 = FactoryGirl.create(:category, :charity_commission_id => 306)
     @org1 = FactoryGirl.build(:organization, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate')
-    Gmaps4rails.stub(:geocode => nil)
     @org1.save!
     @org2 = FactoryGirl.build(:organization, :name => 'Indian Elders Association',
-                              :description => 'Care for the elderly', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.indian-elders.co.uk/donate')
+                              :description => 'Care for the elderly', :address => '64 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.indian-elders.co.uk/donate')
     @org2.categories << @category1
     @org2.categories << @category2
     @org2.save!
-    @org3 = FactoryGirl.build(:organization, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.age-uk.co.uk/donate')
+    @org3 = FactoryGirl.build(:organization, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '64 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.age-uk.co.uk/donate')
     @org3.categories << @category1
     @org3.save!
   end
@@ -65,18 +179,18 @@ describe Organization do
 
   context 'validating URLs' do
     subject(:no_http_org) { FactoryGirl.build(:organization, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate') }
-    subject(:empty_website)  {FactoryGirl.build(:organization, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => '', :website => '')}
+    subject(:empty_website) { FactoryGirl.build(:organization, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => '', :website => '') }
     it 'if lacking protocol, http is prefixed to URL when saved' do
       no_http_org.save!
       no_http_org.donation_info.should include('http://')
     end
 
     it 'a URL is left blank, no validation issues arise' do
-      expect {no_http_org.save! }.to_not raise_error
+      expect { no_http_org.save! }.to_not raise_error
     end
 
     it 'does not raise validation issues when URLs are empty strings' do
-      expect {empty_website.save!}.to_not raise_error
+      expect { empty_website.save! }.to_not raise_error
     end
   end
 
@@ -86,7 +200,7 @@ describe Organization do
       expect(@org1.errors[:administrator_email]).to eq ["The user email you entered,'nonexistentuser@example.com', does not exist in the system"]
     end
     it 'does not update other attributes when there is a non-existent email' do
-      expect(@org1.update_attributes_with_admin({:name => 'New name',:admin_email_to_add => 'nonexistentuser@example.com'})).to be_false
+      expect(@org1.update_attributes_with_admin({:name => 'New name', :admin_email_to_add => 'nonexistentuser@example.com'})).to be_false
       expect(@org1.name).not_to eq 'New name'
     end
     it 'handles a nil email' do
@@ -103,15 +217,16 @@ describe Organization do
       expect(@org1.users).to include usr
     end
     it 'updates other attributes with blank email' do
-      expect(@org1.update_attributes_with_admin({:name => 'New name',:admin_email_to_add => ''})).to be_true
+      expect(@org1.update_attributes_with_admin({:name => 'New name', :admin_email_to_add => ''})).to be_true
       expect(@org1.name).to eq 'New name'
     end
     it 'updates other attributes with valid email' do
       usr = FactoryGirl.create(:user, :email => 'user@example.org')
-      expect(@org1.update_attributes_with_admin({:name => 'New name',:admin_email_to_add => usr.email})).to be_true
+      expect(@org1.update_attributes_with_admin({:name => 'New name', :admin_email_to_add => usr.email})).to be_true
       expect(@org1.name).to eq 'New name'
     end
   end
+
   it 'responds to filter by category' do
     expect(Organization).to respond_to(:filter_by_category)
   end
@@ -172,7 +287,7 @@ describe Organization do
 
   it 'handles weird input (possibly from infinite scroll system)' do
     # Couldn't find Category with id=?test=0
-    expect(lambda {Organization.filter_by_category("?test=0")} ).not_to raise_error
+    expect(lambda { Organization.filter_by_category("?test=0") }).not_to raise_error
   end
 
   it 'has users' do
@@ -184,7 +299,7 @@ describe Organization do
   end
 
   describe 'Creating of Organizations from CSV file' do
-    before(:all){ @headers = 'Title,Charity Number,Activities,Contact Name,Contact Address,website,Contact Telephone,date registered,date removed,accounts date,spending,income,company number,OpenlyLocalURL,twitter account name,facebook account name,youtube account name,feed url,Charity Classification,signed up for 1010,last checked,created at,updated at,Removed?'.split(',')}
+    before(:all) { @headers = 'Title,Charity Number,Activities,Contact Name,Contact Address,website,Contact Telephone,date registered,date removed,accounts date,spending,income,company number,OpenlyLocalURL,twitter account name,facebook account name,youtube account name,feed url,Charity Classification,signed up for 1010,last checked,created at,updated at,Removed?'.split(',') }
 
     it 'must not override an existing organization' do
       fields = CSV.parse('INDIAN ELDERS ASSOCIATION,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH,COLLEGE ROAD, HARROW, HA1 1BA",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
@@ -211,12 +326,12 @@ describe Organization do
       time = Time.now
       Organization.should_receive(:new).exactly(actual_number_to_import).and_return mock_org
       rows_to_parse = (1..attempted_number_to_import).collect do |number|
-          hash_to_return = {}
-          hash_to_return.stub(:header?){true}
-          hash_to_return[Organization.column_mappings[:name]] = "Test org #{number}"
-          hash_to_return[Organization.column_mappings[:address]] = "10 Downing St London SW1A 2AA, United Kingdom"
-        if(actual_number_to_import < number)
-           hash_to_return[Organization.column_mappings[:date_removed]] = time
+        hash_to_return = {}
+        hash_to_return.stub(:header?) { true }
+        hash_to_return[Organization.column_mappings[:name]] = "Test org #{number}"
+        hash_to_return[Organization.column_mappings[:address]] = "10 Downing St London SW1A 2AA, United Kingdom"
+        if (actual_number_to_import < number)
+          hash_to_return[Organization.column_mappings[:date_removed]] = time
         end
 
         hash_to_return
@@ -283,7 +398,7 @@ describe Organization do
       #Headers are without Title header
       @headers = 'Charity Number,Activities,Contact Name,Contact Address,website,Contact Telephone,date registered,date removed,accounts date,spending,income,company number,OpenlyLocalURL,twitter account name,facebook account name,youtube account name,feed url,Charity Classification,signed up for 1010,last checked,created at,updated at,Removed?'.split(',')
       fields = CSV.parse('HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
-      expect(lambda{
+      expect(lambda {
         org = create_organization(fields)
       }).to raise_error
     end
@@ -311,7 +426,7 @@ describe Organization do
         @org4 = FactoryGirl.build(:organization, :name => 'Fellowship For Management In Food Distribution', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate')
         Gmaps4rails.should_receive(:geocode)
         @org4.save!
-        [102,206,302].each do |id|
+        [102, 206, 302].each do |id|
           FactoryGirl.build(:category, :charity_commission_id => id).save!
         end
         attempted_number_to_import = 2
@@ -324,7 +439,7 @@ describe Organization do
       it "allows us to import categories" do
         org = Organization.import_categories_from_array(row)
         expect(org.categories.length).to eq 5
-        [207,305,108,302,306].each do |id|
+        [207, 305, 108, 302, 306].each do |id|
           expect(org.categories).to include(Category.find_by_charity_commission_id(id))
         end
       end
@@ -342,7 +457,7 @@ describe Organization do
         Organization.should_receive(:find_by_name).with('Harrow Bereavement Counselling').and_return @org1
         array = double('Array')
         [{:cc_id => 207, :cat => @cat1}, {:cc_id => 305, :cat => @cat2}, {:cc_id => 108, :cat => @cat3},
-         {:cc_id => 302, :cat => @cat4}, {:cc_id => 306, :cat => @cat5}]. each do |cat_hash|
+         {:cc_id => 302, :cat => @cat4}, {:cc_id => 306, :cat => @cat5}].each do |cat_hash|
           Category.should_receive(:find_by_charity_commission_id).with(cat_hash[:cc_id]).and_return(cat_hash[:cat])
           array.should_receive(:<<).with(cat_hash[:cat])
         end
@@ -367,83 +482,23 @@ describe Organization do
     end
   end
 
-
   it 'offers information for the gmap4rails info window' do
     expect(@org1.gmaps4rails_infowindow).to eq(@org1.name)
   end
-  
-  it 'should have gmaps4rails_option hash with :check_process set to false' do
-    expect(@org1.gmaps4rails_options[:check_process]).to be_false
-  end
-
-  it 'should geocode when address changes' do
-    new_address = '60 pinner road'
-    Gmaps4rails.should_receive(:geocode).with("#{new_address}, #{@org1.postcode}", "en", false,"http")
-    @org1.update_attributes :address => new_address
-  end
-
-  it 'should geocode when new object is created' do
-    address = '60 pinner road'
-    postcode = 'HA1 3RE'
-    Gmaps4rails.should_receive(:geocode).with("#{address}, #{postcode}", "en", false, "http")
-    org = FactoryGirl.build(:organization,:address => address, :postcode => postcode, :name => 'Happy and Nice', :gmaps => true)
-    org.save
-  end
-
-  #TODO: refactor with expect{} instead of should as Rspec 2 promotes
-  it 'should delete geocoding errors and save organization' do
-    new_address = '777 pinner road'
-    @org1.latitude = 77
-    @org1.longitude = 77
-    Gmaps4rails.should_receive(:geocode).and_raise(Gmaps4rails::GeocodeInvalidQuery)
-    @org1.address = new_address
-    @org1.update_attributes :address => new_address
-    @org1.errors['gmaps4rails_address'].should be_empty
-    actual_address = Organization.find_by_name(@org1.name).address
-    expect(actual_address).to eq(new_address)
-    expect(@org1.latitude).to be_nil
-    expect(@org1.longitude).to be_nil
-  end
-
-  it 'should not delete validation errors unrelated to gmap4rails address issues' do
-    Organization.class_eval do
-      validates :name, :presence => true
-    end
-    Gmaps4rails.should_receive(:geocode)
-    @org1.update_attributes :name => nil
-    expect(@org1.errors['name']).not_to be_empty
-  end
-
-  it 'should attempt to geocode after failed' do
-    Gmaps4rails.should_receive(:geocode).and_raise(Gmaps4rails::GeocodeInvalidQuery)
-    @org1.save!
-    new_address = '60 pinner road'
-    Gmaps4rails.should_receive(:geocode)
-    expect(lambda{
-      @org1.address = new_address
-      # destructive save is called to raise exception if saving fails
-      @org1.save!
-    }).not_to raise_error
-    actual_address = Organization.find_by_name(@org1.name).address
-    expect(actual_address).to eq(new_address)
-  end
-  # not sure if we need SQL injection security tests like this ...
-  # org = Organization.new(:address =>"blah", :gmaps=> ";DROP DATABASE;")
-  # org = Organization.new(:address =>"blah", :name=> ";DROP DATABASE;")
 
   describe "importing emails" do
     it "should have a method import_emails" do
       Organization.should_receive(:add_email)
-      Organization.should_receive(:import).with(nil,2,false) do |&arg|
+      Organization.should_receive(:import).with(nil, 2, false) do |&arg|
         Organization.add_email(&arg)
       end
-      Organization.import_emails(nil,2,false)
+      Organization.import_emails(nil, 2, false)
     end
 
     it 'should handle absence of org gracefully' do
       Organization.should_receive(:where).with("UPPER(name) LIKE ? ", "%I LOVE PEOPLE%").and_return(nil)
-      expect(lambda{
-        response = Organization.add_email(fields = CSV.parse('i love people,,,,,,,test@example.org')[0],true)
+      expect(lambda {
+        response = Organization.add_email(fields = CSV.parse('i love people,,,,,,,test@example.org')[0], true)
         response.should eq "i love people was not found\n"
       }).not_to raise_error
     end
@@ -452,14 +507,14 @@ describe Organization do
       Organization.should_receive(:where).with("UPPER(name) LIKE ? ", "%FRIENDLY%").and_return([@org1])
       @org1.should_receive(:email=).with('test@example.org')
       @org1.should_receive(:save)
-      Organization.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0],true)
+      Organization.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0], true)
     end
 
     it "should add email to org even with case mismatch" do
       Organization.should_receive(:where).with("UPPER(name) LIKE ? ", "%FRIENDLY%").and_return([@org1])
       @org1.should_receive(:email=).with('test@example.org')
       @org1.should_receive(:save)
-      Organization.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0],true)
+      Organization.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0], true)
     end
 
     it 'should not add email to org when it has an existing email' do
@@ -468,38 +523,7 @@ describe Organization do
       Organization.should_receive(:where).with("UPPER(name) LIKE ? ", "%FRIENDLY%").and_return([@org1])
       @org1.should_not_receive(:email=).with('test@example.org')
       @org1.should_not_receive(:save)
-      Organization.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0],true)
+      Organization.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0], true)
     end
   end
-
-  describe '#generate_potential_user' do
-    let(:org) { @org1 }
-    # using a stub_model confuses User.should_receive on line 450 because it's expecting :new from my organization.rb, but instead the stub_model calls it first
-    let(:user) { double('User', {:email => org.email, :password => 'password'}) }
-
-    before :each do
-      Devise.stub_chain(:friendly_token, :first).with().with(8).and_return('password')
-      User.should_receive(:new).with({:email => org.email, :password => 'password'}).and_return(user)
-    end
-
-    it 'early returns a (broken) user when the user is invalid' do
-      user.should_receive(:valid?).and_return(false)
-      user.should_receive(:save)
-    end
-
-    it 'returns a user' do
-      user.should_receive(:valid?).and_return(true)
-      user.should_receive(:skip_confirmation_notification!)
-      User.should_receive(:reset_password_token)
-      user.should_receive(:reset_password_token=)
-      user.should_receive(:reset_password_sent_at=)
-      user.should_receive(:save!)
-      user.should_receive(:confirm!)
-    end
-
-    after(:each) do
-      org.generate_potential_user.should eq(user)
-    end
-  end
-
 end

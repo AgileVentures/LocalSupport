@@ -15,23 +15,23 @@ Feature: I want to have a contact and about us link in all the app pages
       | Contact Info | contact   | def456                                                    | true         |
 
   Scenario Outline: the about us page is accessible on all pages
-    Given I am on the <page>
+    Given I visit the <page>
     When I follow "About Us"
     Then I should see "abc123"
   Examples:
-    | page                                |
-    | home page                           |
-    | charity search page                 |
-    | new charity page                    |
-    | charity page for "Friendly Charity" |
+    | page                                                    |
+    | home page                                               |
+    | organisations index page                                |
+    | new organisation page                                   |
+    | show page for the organization named "Friendly Charity" |
 
   Scenario Outline: the contact page is accessible on all pages
-    Given I am on the <page>
+    Given I visit the <page>
     When I follow "Contact"
     Then I should see "def456"
   Examples:
-    | page                                |
-    | home page                           |
-    | charity search page                 |
-    | new charity page                    |
-    | charity page for "Friendly Charity" |
+    | page                                                    |
+    | home page                                               |
+    | organisations index page                                |
+    | new organisation page                                   |
+    | show page for the organization named "Friendly Charity" |

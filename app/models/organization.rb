@@ -12,7 +12,7 @@ class Organization < ActiveRecord::Base
   validates_url :donation_info, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.donation_info.present?}
 
   # http://stackoverflow.com/questions/10738537/lazy-geocoding
-  acts_as_gmappable :check_process => false, :process_geocoding => :run_geocode?
+  acts_as_gmappable :process_geocoding => :run_geocode?
   has_many :users
   has_many :volunteer_ops
   has_and_belongs_to_many :categories
@@ -173,21 +173,6 @@ class Organization < ActiveRecord::Base
         raise CSV::MalformedCSVError, "No expected column with name #{column_name} in CSV file"
       end
     end
-  end
-
-  def generate_potential_user
-    password = Devise.friendly_token.first(8)
-    user = User.new(:email => self.email, :password => password)
-    unless user.valid?
-      user.save
-      return user # so that it can be inspected for errors
-    end
-    user.skip_confirmation_notification!
-    user.reset_password_token=(User.reset_password_token)
-    user.reset_password_sent_at=Time.now
-    user.save!
-    user.confirm!
-    user
   end
 
   private

@@ -12,13 +12,22 @@ require 'capybara/rspec'
 require 'factory_girl_rails'
 require 'rack_session_access/capybara'
 require 'webmock/rspec'
+
 Capybara.javascript_driver = :webkit
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |file| require file }
+require "#{Rails.root}/lib/local_support/route_collector"
+
 
 RSpec.configure do |config|
+
+  # Stub out network calls and return fixtures with sinatra's help
+  WebMock.disable_net_connect!(allow_localhost: true)
+  require "#{Rails.root}/test/fake_google_geocode"
+  config.before(:each) { stub_request(:any, /maps\.googleapis\.com/).to_rack(FakeGoogleGeocode) }
+
   # == Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -46,4 +55,5 @@ RSpec.configure do |config|
   config.include ControllerHelpers, :helpers => :controllers
   config.include RequestHelpers, :helpers => :requests
   config.include ViewHelpers, :helpers => :views
+  config.include RouteCollector, :helpers => :route_collector
 end

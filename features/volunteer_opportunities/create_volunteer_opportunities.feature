@@ -20,32 +20,32 @@ Feature: Org admin creating a volunteer work opportunity
 
   Scenario: Org-owners can see a Create Volunteer Opportunity button on their organization show page
     Given I am signed in as a charity worker related to "Friendly"
-    And I am on the charity page for "Friendly"
+    And I visit the show page for the organization named "Friendly"
     And I click "Create a Volunteer Opportunity"
-    Then I should be on the new volunteer opportunity page for organization "Friendly"
+    Then I should be on the new volunteer opportunity page
 
   Scenario: Org-owner creating a volunteer opportunity
     Given I am signed in as a charity worker related to "Friendly"
-    And I visit the new volunteer opportunity page for organization "Friendly"
+    And I visit the new volunteer opportunity page
     And I should see "Create a new Volunteer Opportunity"
     And I submit an opportunity with title "Hard Work" and description "For no pay"
-    Then I should be on the show volunteer opportunity page for organization "Friendly"
+    Then I should be on the show page for the volunteer_op titled "Hard Work"
     And I should see "Hard Work"
     And I should see "For no pay"
     And I should see "Organisation: Friendly"
 
   Scenario: Only org-owners can create volunteer opportunities
     # Tested that the API is restricted in the request spec
-    Given I am on the charity page for "Friendly"
+    Given I visit the show page for the organization named "Friendly"
     Then I should not see a link with text "Create a Volunteer Opportunity"
 
   Scenario: Signed in users who don't own the org cannot create volunteer opportunities
     Given I am signed in as a charity worker related to "Shy"
-    And I am on the charity page for "Friendly"
+    And I visit the show page for the organization named "Friendly"
     Then I should not see a link with text "Create a Volunteer Opportunity"
 
   Scenario: Admin users who don't own the org cannot create volunteer opportunities
     Given I am signed in as a admin
-    And I am on the charity page for "Friendly"
+    And I visit the show page for the organization named "Friendly"
     Then I should not see a link with text "Create a Volunteer Opportunity"
 

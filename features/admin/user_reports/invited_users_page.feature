@@ -13,7 +13,6 @@ Feature: Invited Users Page
       | regular@user.org | mypassword1234 | false | 2008-01-01 00:00:00 |                 |                      |
     And the admin invited a user for "Invited Organization"
 
-  @javascript
   Scenario: Page shows only invited users
     Given cookies are approved
     And I am signed in as an admin

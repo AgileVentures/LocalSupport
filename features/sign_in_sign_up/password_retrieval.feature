@@ -16,7 +16,7 @@ Feature: Password retrieval
 
     And cookies are approved
 
-    Given I am on the home page
+    Given I visit the home page
     And I follow "Forgot your password?"
     And the email queue is clear
 
