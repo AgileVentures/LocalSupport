@@ -78,11 +78,11 @@ Feature: Orphans UI
     Given I click on the invitation link in the email to "admin@another.org"
     And I accepted the cookie policy from the "invitation" page
     And I set my password
-    Then I should be on the charity page for "Yet Another Org"
+    Then I should be on the show page for the organization named "Yet Another Org"
 
   Scenario: Invited user clicking through on email ignoring cookies policy
     Given I click on the invitation link in the email to "admin@another.org"
     And I set my password
-    Then I should be on the charity page for "Yet Another Org"
+    Then I should be on the show page for the organization named "Yet Another Org"
 
 

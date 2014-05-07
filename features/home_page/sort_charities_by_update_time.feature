@@ -14,12 +14,12 @@ Background: organizations have been added to database
 
 Scenario: Most recently updated charity shows at the top of the list 
   Given I update the "Harrow Elders Association" 
-  And I am on the home page
+  And I visit the home page
   Then I should see "Harrow Elders Association" before "Age UK"
   And I should see "Harrow Age UK" before "Harrow Bereavement Counselling"
  
 Scenario: Most recently updated charity shows at the top of the list 
-  Given I am on the home page
+  Given I visit the home page
   Then I should see "Harrow Elders Association" before "Harrow Bereavement Counselling"
   And I should see "Harrow Age UK" before "Harrow Elders Association"
   When I update the "Harrow Elders Association"

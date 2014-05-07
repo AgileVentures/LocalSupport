@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'VolunteerOps', :helpers => :requests do
-  let(:org_owner) { FactoryGirl.create(:user_stubbed_organization) }
+  let(:org_owner) { FactoryGirl.create :user_with_organization }
   let(:non_org_owner) { FactoryGirl.create :user }
 
   describe 'POST /volunteer_ops' do

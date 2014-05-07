@@ -16,7 +16,7 @@ Feature: Admin creating charity
 
   Scenario: Unsuccessfully attempt to create charity without being signed-in
       # should this be checking for absence of link to the new org page?
-    Given I am on the new charity page
+    Given I visit the new organisation page
     Then I should be on the sign in page
 
 # beta version only allows admin to create new organization, currently
@@ -26,7 +26,7 @@ Feature: Admin creating charity
   #Scenario: Unsuccessfully attempt to create charity when signed-in as non-admin
     ## should this be checking for absence of link to the new org page?
     #Given I am signed in as a non-admin
-    #Given I am on the new charity page
+    #Given I visit the new organisation page
     #Then I should be on the sign in page
 
   Scenario: Successfully create charity while being signed-in as admin
@@ -36,7 +36,7 @@ Feature: Admin creating charity
 
   Scenario: Successfully create charity while being signed-in as admin from arbitrary page
     Given I am signed in as a admin
-    Given I am on the charity page for "Friendly Clone"
+    Given I visit the show page for the organization named "Friendly Clone"
     And I follow "New Organisation"
     And I fill in the new charity page validly
     And I press "Create Organisation"
@@ -51,10 +51,10 @@ Feature: Admin creating charity
     And "Unwanted" org should not exist
 
   Scenario: non logged in user should not see new organization link
-    Given I am on the home page
+    Given I visit the home page
     Then I should not see a new organizations link
 
   Scenario: logged in non-admin user should not see new organization link
     Given I am signed in as a non-admin
-    Given I am on the home page
+    Given I visit the home page
     Then I should not see a new organizations link
