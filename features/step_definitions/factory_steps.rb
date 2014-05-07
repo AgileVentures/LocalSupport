@@ -40,8 +40,12 @@ Given /^the following pages exist:$/ do |pages_table|
   end
 end
 
-When(/^a static page named "(.*?)" with permalink "(.*?)" and markdown content:$/) do |name, permalink, content|
-  Page.create!({:name => name, :permalink => permalink, :content => content})
+When(/^a static page named "(.*?)" with permalink "(.*?)" and markdown content:$/) \
+do |name, permalink, content|
+  Page.create!(:name => name,
+               :permalink => permalink,
+               :content => content,
+               :link_visible => true)
 end
 
 And(/^a file exists:$/) do |table|
