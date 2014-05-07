@@ -5,17 +5,22 @@ Feature: As a project manager
   https://www.pivotaltracker.com/story/show/70846998
 
 Background:
-  Given the following users are registered:
-    | email                      | password | organization                       | confirmed_at        | admin |
-    | admin@friendly.example.org | pppppppp | Cats Are Us                        | 2007-01-01 10:00:00 | false |
-  And the following organizations exist:
+  Given the following organizations exist:
     | name                            | description                      | address        | postcode | website       |
     | Cats Are Us                     | Animal Shelter                   | 34 pinner road | HA1 4HZ  | http://a.com/ |
     | Indian Elders Association       | Care for the elderly             | 64 pinner road | HA1 4HA  | http://b.com/ |
+  And the following users are registered:
+    | email                      | password | organization | confirmed_at        | admin |
+    | admin@friendly.example.org | pppppppp | Friendly     | 2007-01-01 10:00:00 | false |
+    | admin@shy.example.org      | pppppppp | Shy          | 2007-01-01 10:00:00 | false |
+    | admin@harrowcn.org.uk      | pppppppp | Shy          | 2007-01-01 10:00:00 | true  |
   And the following volunteer opportunities exist:
     | title                           | description                        | organization              |
     | Litter Box Scooper              | Assist with feline sanitation      | Cats Are Us               |
     | Office Support                  | Help with printing and copying.    | Indian Elders Association |
+  And the following feature flags exist:
+    | name          | active |
+    | volunteer_ops | true   |
 
   And cookies are approved
 	
