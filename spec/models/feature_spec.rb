@@ -3,12 +3,12 @@ require 'spec_helper'
 describe Feature do
   describe '::activate' do
     it 'sets ::active? from true to true' do
-      Feature.create(:foo, true)
+      Feature.create(name: :foo, active: true)
       Feature.activate(:foo)
       expect(Feature.active?(:foo)).to be true
     end
     it 'sets ::active? from false to true' do
-      Feature.create(:foo, false)
+      Feature.create(name: :foo, active: false)
       Feature.activate(:foo)
       expect(Feature.active?(:foo)).to be true
     end
@@ -16,12 +16,12 @@ describe Feature do
 
   describe '::deactivate' do
     it 'sets ::active? from true to false' do
-      Feature.create(:foo, true)
+      Feature.create(name: :foo, active: true)
       Feature.deactivate(:foo)
       expect(Feature.active?(:foo)).to be false
     end
     it 'sets ::active? from false to false' do
-      Feature.create(:foo, false)
+      Feature.create(name: :foo, active: false)
       Feature.deactivate(:foo)
       expect(Feature.active?(:foo)).to be false
     end
