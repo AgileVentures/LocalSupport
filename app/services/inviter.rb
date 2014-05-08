@@ -1,9 +1,8 @@
 class Inviter
   def initialize(klass, gem, flag)
-    debugger
     @klass = klass
     @gem = gem
-    @gem.resend_invitation(to_boolean(flag))
+    @gem.resend_invitation = to_boolean(flag)
   end
 
   def rsvp(to_whom, from_whom, relation_id)
@@ -15,8 +14,8 @@ class Inviter
   attr_reader :klass
 
   def to_boolean(str)
-    return true if str == 'true'
-    return false if str == 'false'
+    return true if str.to_s == 'true'
+    return false if str.to_s == 'false'
     raise "cannot cast '#{str}' to boolean"
   end
 

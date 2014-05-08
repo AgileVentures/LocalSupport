@@ -7,17 +7,15 @@ describe Inviter do
   let(:current_user) { double :current_user }
   let(:honeybee) { double :honeybee }
 
-  # before { gem.stub :resend_invitation }
+  before { gem.stub :resend_invitation }
 
-describe '#initialize'
-  it 'tries to cast the flag as a boolean' do
+  describe '#initialize' do
+    it 'sets the resend_invitation flag on the gem during initialization' do
+      expect(flag).to receive(:to_s) { 'true' }
+      expect(gem).to receive(:resend_invitation).with(true)
+      Inviter.new(klass, gem, flag)
+    end
   end
-  
-  it 'sets the resend_invitation flag on the gem during initialization' do
-    expect(gem).to receive(:resend_invitation).with(flag)
-    Inviter.new(klass, gem, true)
-  end
-end
 
   describe '#rsvp' do
     it 'creates a new instance of klass with #invite!, and then tells it to give its response' do
@@ -28,13 +26,11 @@ end
   end
 
   describe '#to_boolean' do
-    # it 'works for stringified versions of "true" and "false"' do
-    #   expect { }
-    # end
-
-    # it 'works for true booleans' do
-    #   expect {  }
-    # end
+    it 'tries to cast the flag as a boolean and raises and error if it cannot' do
+      expect(flag).to receive(:to_s).exactly(3).times { flag } # #{} implicitly calls to_s
+      expect(flag).to receive(:==).exactly(2).times
+      expect { Inviter.new(klass, gem, flag) }.to raise_error
+    end
   end
 end
 

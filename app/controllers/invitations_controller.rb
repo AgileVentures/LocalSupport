@@ -13,7 +13,6 @@ class InvitationsController < ApplicationController
   private
 
   def build_response(params)
-    debugger
     invitation = Inviter.new(User, Devise, params[:resend_invitation])
 
     params[:values].each_with_object({}) do |value, dict|

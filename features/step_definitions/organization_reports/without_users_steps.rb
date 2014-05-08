@@ -19,7 +19,5 @@ end
 Given(/^the admin invited a user for "(.*?)"$/) do |organization_name|
   current_user = User.find_by_admin true
   org = Organization.find_by_name(organization_name)
-  UserInviter.new(User, current_user, Devise).invite(
-      org.email, true, org.id
-  ).should eq 'Invited!'
+  Inviter.new(User, Devise, true).rsvp(org.email, current_user, org.id).should eq 'Invited!'
 end
