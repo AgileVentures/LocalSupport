@@ -9,6 +9,7 @@ describe 'layouts/application.html.erb', :type => :feature do
     @pages = [page_one, page_two]
     @absent_pages = [page_three]
     assign(:footer_page_links, @pages)
+    view.stub :feature_active? => true
   end
   context 'no user signed-in' do
 
@@ -199,5 +200,20 @@ describe 'layouts/application.html.erb', :type => :feature do
       end
     end
   end
-end
 
+  context 'volunteer feature flags' do
+    it 'hides volunteers and organisations links when feature is inactive' do
+      view.should_receive(:feature_active?).with(:volunteer_ops).and_return(false)
+      render
+      expect(rendered).to_not have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{organizations_path}\"]")
+      expect(rendered).to_not have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{volunteer_ops_path}\"]")
+    end
+
+    it 'show volunteers and organisations links when feature is active' do
+      view.should_receive(:feature_active?).with(:volunteer_ops).and_return(true)
+      render
+      expect(rendered).to have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{organizations_path}\"]")
+      expect(rendered).to have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{volunteer_ops_path}\"]")
+    end
+  end
+end
