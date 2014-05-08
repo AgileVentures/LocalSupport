@@ -54,9 +54,13 @@ Scenario: Org-owners cannot see a Create Volunteer Opportunity button on their o
   And I am on the charity page for "Cats Are Us"
   Then I should not see a link with text "Create a Volunteer Opportunity"
 
+@allow-rescue @in-production
 Scenario: Volunteer Ops List Page should be inaccessible when feature is disabled
   Given that the volunteer_ops flag is disabled
   And I visit the volunteer opportunities page
+  And the page should be titled "404 - Page Not Found"
+  And the response status should be "404"
+  And I should see "We're sorry, but we couldn't find the page you requested"
   Then I should not see:
     | title                           | description                        | organization              |
     | Litter Box Scooper              | Assist with feline sanitation      | Cats Are Us               |
