@@ -1,6 +1,7 @@
 LocalSupport::Application.routes.draw do
 
-  resources :volunteer_ops, constraints: lambda { |request| Feature.active?(request.env["action_dispatch.request.path_parameters"][:controller]) }
+  # lambda Feature.active?(request.env["action_dispatch.request.path_parameters"][:controller])
+  resources :volunteer_ops, constraints: lambda { |request| Feature.active?(:volunteer_ops) }
 
   devise_for :users
 

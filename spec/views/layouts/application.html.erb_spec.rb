@@ -9,7 +9,6 @@ describe 'layouts/application.html.erb', :type => :feature do
     @pages = [page_one, page_two]
     @absent_pages = [page_three]
     assign(:footer_page_links, @pages)
-    view.stub :feature_active? => true
   end
   context 'no user signed-in' do
 

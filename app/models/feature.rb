@@ -11,6 +11,7 @@ class Feature < ActiveRecord::Base
   end
 
   def self.active?(feature)
-    find_by_name(feature).active?
+    flag = find_by_name(feature)
+    flag.nil? ? true : flag.active?
   end
 end

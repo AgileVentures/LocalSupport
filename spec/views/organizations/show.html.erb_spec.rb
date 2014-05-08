@@ -17,10 +17,7 @@ describe 'organizations/show.html.erb' do
     }
   end
 
-  before(:each) do
-    view.stub :feature_active? => true
-    assign(:organization, organization)
-  end
+  before(:each) { assign(:organization, organization) }
 
   context 'page styling' do
     it 'name should be wrapped in h3 tag' do
