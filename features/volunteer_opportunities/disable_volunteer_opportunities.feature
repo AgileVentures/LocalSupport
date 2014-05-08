@@ -43,7 +43,7 @@ Examples:
   | Organisations |
 
 Scenario: Org-owners can see a Create Volunteer Opportunity button on their organization show page when feature is enabled
-  Given that the volunteer_ops flag is disabled
+  Given that the volunteer_ops flag is enabled
   And I am signed in as a charity worker related to "Cats Are Us"
   And I am on the charity page for "Cats Are Us"
   Then I should see a link with text "Create a Volunteer Opportunity"

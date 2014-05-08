@@ -57,7 +57,7 @@
       <% if @editable %>
           <%= link_to("Edit", edit_organization_path(@organization.id), {:class => 'btn btn-primary'}) %>
       <% end %>
-      <% if @can_create_volunteer_op %>
+      <% if @can_create_volunteer_op and feature_active?(:volunteer_ops) %>
           <%= link_to("Create a Volunteer Opportunity", new_volunteer_op_path, {:class => 'btn btn-primary'}) %>
       <% end %>
       <% if current_user %>
