@@ -7,12 +7,12 @@ describe Inviter do
   let(:current_user) { double :current_user }
   let(:honeybee) { double :honeybee }
 
-  before { gem.stub :resend_invitation }
+  before { gem.stub :resend_invitation= }
 
   describe '#initialize' do
     it 'sets the resend_invitation flag on the gem during initialization' do
       expect(flag).to receive(:to_s) { 'true' }
-      expect(gem).to receive(:resend_invitation).with(true)
+      expect(gem).to receive(:resend_invitation=).with(true)
       Inviter.new(klass, gem, flag)
     end
   end
