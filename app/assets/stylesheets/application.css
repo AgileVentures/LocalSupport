@@ -21,9 +21,10 @@ body {
 }
 
 .ls_infobox {
-  border: 1px solid black;
-  margin-top: 8px;
-  background: whitesmoke;
+  border: 2px solid darkgray;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  background: white;
   padding: 5px;
 }
 
