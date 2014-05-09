@@ -1,3 +1,23 @@
+# Provides feature flags.
+# ======================
+# To create a new feature flag
+#
+#   Feature.create(:name => :my_feature_name)
+#
+# By default, features are active.
+# Test if your feature is active with
+#
+#   Feature.active?(:my_feature_name)
+#
+# Deactivate it and reactivate it with (just like the rollout gem):
+#
+#   Feature.deactivate(:my_feature_name)
+#   Feature.activate(:my_feature_name)
+#
+# In config/routes.rb, add this as a constraint to the route you want to flag. 
+# 
+#   constraints: lambda { |request| Feature.active?(:my_feature_name) }
+
 class Feature < ActiveRecord::Base
   attr_accessible :name, :active
   validates :name, presence: true, uniqueness:true, allow_blank: false
