@@ -41,7 +41,7 @@ describe "Invitations" do
     end
 
     describe 'association set between org and new user' do
-      let(:orphan) { FactoryGirl.create :organization }
+      let(:orphan) { FactoryGirl.create :organization, email: 'ineedauser@example.com' }
       let(:params) { {values: [{id: orphan.id, email: orphan.email}], resend_invitation: false} }
 
       before do
