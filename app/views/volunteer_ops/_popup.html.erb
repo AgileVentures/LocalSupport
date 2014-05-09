@@ -1,5 +1,10 @@
+<%= link_to @org.name, @org, :style => "font-weight: 100" %></strong></br>
+<ul>
 <% VolunteerOp.find_all_by_organization_id(@org.id).each do |op| %>
-  <%= link_to op.title, op %></br>
-  <%= smart_truncate(op.description,32) %></br>
+  <li>
+    <%= link_to op.title, op, :style => "font-weight: 900" %></br>
+    <%= smart_truncate(op.description,32) %></br>
+  </li>
   <% end %>
+  </ul>
 </div>

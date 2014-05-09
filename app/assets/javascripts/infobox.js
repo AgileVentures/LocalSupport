@@ -1,6 +1,7 @@
 Gmaps.map.infobox = function (boxText) {
     return {
         content: boxText,
+        alignBottom: true,
         disableAutoPan: false,
         maxWidth: 0,
         pixelOffset: new google.maps.Size(-140, 0),
