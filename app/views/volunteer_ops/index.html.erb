@@ -18,11 +18,5 @@
     </table>
   </div>
 </div>
-<% content_for :map do %>
-    <%= gmaps("map_options" => {"auto_adjust" => false,
-                                "auto_zoom" => true,
-                                "center_latitude" => 51.5978,
-                                "center_longitude" => -0.3370,
-                                "zoom" => 12},
-              "markers" => {"data" => @json}) %>
-<% end %>
+
+<% render partial: 'shared/map_scripts', locals: {json: @json} %>
