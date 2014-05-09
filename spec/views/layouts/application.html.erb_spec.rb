@@ -74,12 +74,12 @@ describe 'layouts/application.html.erb', :type => :feature do
       expect(rendered).to have_xpath("//a[@href=\"#{cookies_allow_path}\"]")
     end
 
-    xit 'renders an Organisations link' do
+    it 'renders an Organisations link' do
       render
       expect(rendered).to have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{organizations_path}\"]")
     end
 
-    xit 'renders a Volunteers link' do
+    it 'renders a Volunteers link' do
       render
       expect(rendered).to have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{volunteer_ops_path}\"]")
     end
