@@ -8,7 +8,6 @@ Gmaps.map.infobox = function (boxText) {
         zIndex: null,
         boxStyle: {
             background: "url('/assets/tipbox.gif') bottom left no-repeat",
-            border: '1px solid black',
             opacity: 0.9,
             width: "280px"
         },
