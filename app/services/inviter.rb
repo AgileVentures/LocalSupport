@@ -1,22 +1,42 @@
-class Inviter
-  def initialize(klass, gem, flag)
-    @klass = klass
-    @gem = gem
-    @gem.resend_invitation = to_boolean(flag)
+class BatchInvite
+
+  def initialize(flag)
+    InvitationGem.prepare(Devise, flag)
   end
 
-  def rsvp(to_whom, from_whom, relation_id)
-    invitee = @klass.invite!({email: to_whom}, from_whom)
-    invitee.respond_to_invite(relation_id)
+  def run(current_user, params)
+
+    params.each_with_object({}) do |param, response|
+
+      response[param[:id]] = invite(
+        current_user,
+        param[:email],
+        param[:id]
+      )
+
+    end
   end
 
   private
-  attr_reader :klass
 
-  def to_boolean(str)
-    return true if str.to_s == 'true'
-    return false if str.to_s == 'false'
-    raise "cannot cast '#{str}' to boolean"
+  def invite(from, to, relation_id)
+    invitee = User.invite!({email: to}, from)
+    invitee.respond_to_invite(relation_id)
+  end
+end
+
+class InvitationGem
+  def self.prepare(gem, flag)
+    gem.resend_invitation = to_boolean(flag)
   end
 
+  private
+
+  def to_boolean(flag)
+    raise "#{flag} must respond to #to_s" unless flag.respond_to?(:to_s)
+    flag = flag.to_s
+    return true if flag == 'true'
+    return false if flag == 'false'
+    raise "cannot cast '#{flag}' to boolean"
+  end
 end
