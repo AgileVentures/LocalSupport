@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-<<<<<<< HEAD
 describe "Access to the Organizations API", :helpers => [:requests, :route_collector] do
   extend RouteCollector
 
@@ -107,13 +106,6 @@ describe "Access to the Organizations API", :helpers => [:requests, :route_colle
           page_view.should have_content PERMISSION_DENIED
         end
       end
-=======
-describe "Organizations" do
-  describe "GET /organizations" do
-    it "works! (now write some real specs)" do
-      Page.stub(:all).and_return []
-      get organizations_path
->>>>>>> f72bd48c70c9795daf0360d09bff0c70954112f9
     end
   end
 
