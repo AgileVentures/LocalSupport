@@ -3,11 +3,20 @@ class InvitationsController < ApplicationController
 
   # xhr only
   def create
-    job = BatchInvite.new(params[:resend_invitation])
-    status = job.run(current_user, params[:values])
+    debugger
+    Devise.resend_invitation = to_boolean(params[:resend_invitation])
+    job = BatchInvite.new(User, Organization, current_user)
+    status = job.run(params[:values])
     respond_to do |format|
       format.json { render :json => status.to_json }
     end
   end
 
+  private
+
+  def to_boolean(flag)
+    return true if flag == 'true'
+    return false if flag == 'false'
+    raise "cannot cast '#{flag}' to boolean"
+  end
 end

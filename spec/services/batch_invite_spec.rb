@@ -1,27 +1,29 @@
-require_relative '../../app/services/inviter'
+require 'spec_helper'
 
-describe Inviter do
+describe BatchInvite do
   let(:klass) { double :klass }
   let(:gem) { double :gem }
-  let(:flag) { double :flag }
   let(:current_user) { double :current_user }
   let(:honeybee) { double :honeybee }
 
-  before { gem.stub :resend_invitation= }
+  before do
+    Devise.stub :resend_invitation=
+  end
 
   describe '#initialize' do
     it 'sets the resend_invitation flag on the gem during initialization' do
       expect(flag).to receive(:to_s) { 'true' }
-      expect(gem).to receive(:resend_invitation=).with(true)
-      Inviter.new(klass, gem, flag)
+      expect(Devise).to receive(:resend_invitation=).with(true)
+      BatchInvite.new(flag)
     end
   end
 
-  describe '#rsvp' do
-    it 'creates a new instance of klass with #invite!, and then tells it to give its response' do
-      expect(klass).to receive(:invite!).with({email: 'honeybee@gmail.com'}, current_user) { honeybee }
-      expect(honeybee).to receive(:respond_to_invite).with(-3)
-      Inviter.new(klass, gem, true).rsvp('honeybee@gmail.com', current_user, -3)
+  describe '#run' do
+    it 'sends all the invites and captures all the responses' do
+      params = [{id: -1, email: 'user@email.com'}]
+      job = double :job
+      expect(job).to receive(:invite) { 'Invited' }
+      BatchInvite.new(flag).run(current_user, params)
     end
   end
 

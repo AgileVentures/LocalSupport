@@ -50,16 +50,6 @@ class User < ActiveRecord::Base
     save!
   end
 
-  def respond_to_invite(org_id)
-    if errors.any?
-      "Error: #{errors.full_messages.first}"
-    else
-      self.organization_id = org_id
-      self.save!
-      'Invited!'
-    end
-  end
-
   def request_admin_status(organization_id)
     self.pending_organization_id = organization_id
     save!
