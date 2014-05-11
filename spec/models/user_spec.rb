@@ -198,41 +198,6 @@ describe User do
 
   end
 
-  context '#respond_to_invite' do
-    let(:user) { FactoryGirl.build(:user) }
-    let(:org_id) { -1 }
-
-    it 'checks the user for errors' do
-      expect(user.errors).to receive(:any?)
-      user.respond_to_invite(org_id)
-    end
-
-    context 'no errors' do
-      before do
-        allow(user).to receive(:organization_id=)
-        allow(user).to receive(:save!)
-      end
-
-      it 'returns "Invited!" if there are no errors' do
-        expect(user.respond_to_invite(org_id)).to eql 'Invited!'
-      end
-
-      it 'associates the user with the organization' do
-        expect(user).to receive(:organization_id=).with(-1)
-        expect(user).to receive(:save!)
-        user.respond_to_invite(org_id)
-      end
-    end
-
-    context 'errors' do
-      before { user.errors.add(:email, 'error') }
-
-      it 'returns a semi-custom error msg if there is one' do
-        expect(user.respond_to_invite(org_id)).to eql 'Error: Email error'
-      end
-    end
-  end
-
   context '#request_admin_status' do
     let(:user) { FactoryGirl.build(:user) }
     let(:organization_id) { 12345 }

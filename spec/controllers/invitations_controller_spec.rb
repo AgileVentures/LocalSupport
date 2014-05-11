@@ -3,7 +3,6 @@ require 'spec_helper'
 describe InvitationsController, :helpers => :controllers do
 
   describe '#create' do
-    let(:current_user) { make_current_user_admin }
     let(:job) { double :batch_invite }
     let(:params) do
       {
@@ -13,6 +12,7 @@ describe InvitationsController, :helpers => :controllers do
     end
 
     before do
+      make_current_user_admin
       allow(Devise).to receive(:resend_invitation=)
       allow(BatchInvite).to receive(:new) { job }
       allow(job).to receive(:run) { job }
@@ -25,7 +25,7 @@ describe InvitationsController, :helpers => :controllers do
 
     it 'initializes the job with the variables needed to invite users to orgs' do
       expect(BatchInvite).to receive(:new).with(
-        User, Organization, :organization_id=, current_user
+        User, Organization, :organization_id=, controller.current_user
       ) { job }
       post :create, params
     end
@@ -37,7 +37,7 @@ describe InvitationsController, :helpers => :controllers do
 
     it 'responds to format json' do
       expect(job).to receive(:to_json)
-      post :create, params, { :format => :json }
+      post :create, params.merge({ :format => :json })
     end
   end
 end
