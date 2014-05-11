@@ -3,28 +3,36 @@ require 'spec_helper'
 describe InvitationsController, :helpers => :controllers do
 
   describe '#create' do
-    # let(:current_user) { make_current_user_admin }
-    # let(:inviter) { double :inviter }
-    # let(:params) { {values: [{id:  '-1', email: 'org@email.com'}], resend_invitation: 'false'} }
-    # let(:job) { double :BatchInvite }
-    # 
-    # before do
-    #   Devise.stub(:resend_invitation=)
-    #   BatchInvite.stub(:new) { job }
-    #   job.stub(:run) { job }
-    # end
-
-    it 'test' do
-      post :create, {}, { :format => :json }
+    let(:current_user) { make_current_user_admin }
+    let(:job) { double :batch_invite }
+    let(:params) do
+      {
+        values: [{'id' =>  '-1', 'email' => 'org@email.com'}],
+        resend_invitation: 'false'
+      }
     end
+
+    before do
+      allow(Devise).to receive(:resend_invitation=)
+      allow(BatchInvite).to receive(:new) { job }
+      allow(job).to receive(:run) { job }
+    end
+
     it 'tells Devise about the resend_invitation flag' do
-      expect(Devise).to receive(:resend_invitation=).with(params[:resend_invitation])
+      expect(Devise).to receive(:resend_invitation=).with(false)
       post :create, params
     end
 
-    it 'collects responses from the invitation process' do
-      expect(BatchInvite).to receive(:new).with(User, Organization, current_user) { job }
-      expect(job).to receive(:run).with(params[:values]) { batch }
+    it 'initializes the job with the variables needed to invite users to orgs' do
+      expect(BatchInvite).to receive(:new).with(
+        User, Organization, :organization_id=, current_user
+      ) { job }
+      post :create, params
+    end
+
+    it 'runs the job with the invite list' do
+      expect(job).to receive(:run).with(params[:values]) { job }
+      post :create, params
     end
 
     it 'responds to format json' do
