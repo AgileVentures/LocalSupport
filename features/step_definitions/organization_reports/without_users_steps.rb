@@ -17,7 +17,9 @@ Then(/^all the checkboxes should be (un)?checked$/) do |negate|
 end
 
 Given(/^the admin invited a user for "(.*?)"$/) do |organization_name|
-  current_user = User.find_by_admin true
+  user = User.find_by_admin true
   org = Organization.find_by_name(organization_name)
-  Inviter.new(User, Devise, true).rsvp(org.email, current_user, org.id).should eq 'Invited!'
+  values = [{:id => org.id, :email => org.email}]
+  job = BatchInvite.new(User, Organization, :organization_id=, user)
+  job.run(values)
 end

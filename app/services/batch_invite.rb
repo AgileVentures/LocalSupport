@@ -9,8 +9,10 @@ class BatchInvite
 
   def run(invite_list)
     invite_list.each_with_object({}) do |invite, response|
-      invitee = @to_class.invite!({email: invite[:email]}, @by_whom)
-      response[invite[:id]] = respond_to_invite(invitee, invite[:id])
+      email = invite.fetch(:email)
+      relation_id = invite.fetch(:id)
+      invitee = @to_class.invite!({email: email}, @by_whom)
+      response[relation_id] = respond_to_invite(invitee, relation_id)
     end
   end
 
