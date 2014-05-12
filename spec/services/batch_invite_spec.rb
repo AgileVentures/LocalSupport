@@ -8,8 +8,14 @@ describe BatchInvite do
   let(:invite_list) { [{id: 1, email: 'user@email.com'}] }
 
   describe 'when called with missing info' do
-    it 'should raise an error' do
-      expect(->{job.run}).to raise_error
+    it 'raises an error if there is no relation_id' do
+      invite_list.first.delete :id
+      expect(->{job.run(invite_list)}).to raise_error 'key not found: :id'
+    end
+
+    it 'raises an error if there is no email' do
+      invite_list.first.delete :email
+      expect(->{job.run(invite_list)}).to raise_error 'key not found: :email'
     end
   end
 
