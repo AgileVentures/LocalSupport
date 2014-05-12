@@ -7,6 +7,12 @@ describe BatchInvite do
   let(:job) { BatchInvite.new(to_class, from_class, :foreign_key=, by_whom) }
   let(:invite_list) { [{id: 1, email: 'user@email.com'}] }
 
+  describe 'when called with missing info' do
+    it 'should raise an error' do
+      expect(->{job.run}).to raise_error
+    end
+  end
+
   describe '#run' do
     before do
       expect(to_class).to receive(:invite!) { to_class }
