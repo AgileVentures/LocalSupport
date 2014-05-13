@@ -1,31 +1,21 @@
-class BatchInvite
+module BatchInvite
+  extend self
 
-  def initialize(to_class, from_class, foreign_key, by_whom)
-    @to_class = to_class
-    @from_class = from_class
-    @foreign_key = foreign_key
-    @by_whom = by_whom
-  end
-
-  def run(invite_list)
+  def run(invite_service, invite_list, invited_by, flag)
     invite_list.each_with_object({}) do |invite, response|
+      Devise.resend_invitation = to_boolean(flag)
       email = invite.fetch(:email)
       relation_id = invite.fetch(:id)
-      invitee = @to_class.invite!({email: email}, @by_whom)
-      response[relation_id] = respond_to_invite(invitee, relation_id)
+      response[relation_id] = invite_service.(email, relation_id, invited_by)
     end
   end
+  alias_method :call, :run
 
   private
 
-  def respond_to_invite(invitee, relation_id)
-    if invitee.errors.any?
-      "Error: #{invitee.errors.full_messages.first}"
-    else
-      invitee.send(@foreign_key, relation_id)
-      invitee.save!
-      'Invited!'
-    end
+  def to_boolean(flag)
+    return true if flag.to_s == 'true'
+    return false if flag.to_s == 'false'
+    raise "cannot cast #{flag.class} '#{flag}' to boolean"
   end
-
 end

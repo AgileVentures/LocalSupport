@@ -1,48 +1,43 @@
+require 'devise'
 require_relative '../../app/services/batch_invite.rb'
 
 describe BatchInvite do
-  let(:to_class) { double :to_class }
-  let(:from_class) { double :from_class }
-  let(:by_whom) { double :by_whom }
-  let(:job) { BatchInvite.new(to_class, from_class, :foreign_key=, by_whom) }
+  let(:invite_service) { double :invite_service }
   let(:invite_list) { [{id: 1, email: 'user@email.com'}] }
+  let(:invited_by) { double :invited_by }
 
-  describe 'when called with missing info' do
+  subject { BatchInvite.(invite_service, invite_list, invited_by, 'true') }
+
+  before do
+    allow(Devise).to receive(:resend_invitation=)
+    allow(invite_service).to receive(:call) { 'Invited!' }
+  end
+
+  describe 'when invite_list hashes are missing keys' do
     it 'raises an error if there is no relation_id' do
       invite_list.first.delete :id
-      expect(->{job.run(invite_list)}).to raise_error 'key not found: :id'
+      expect(->{subject}).to raise_error 'key not found: :id'
     end
 
     it 'raises an error if there is no email' do
       invite_list.first.delete :email
-      expect(->{job.run(invite_list)}).to raise_error 'key not found: :email'
+      expect(->{subject}).to raise_error 'key not found: :email'
     end
   end
 
   describe '#run' do
-    before do
-      expect(to_class).to receive(:invite!) { to_class }
-      expect(to_class).to receive(:errors) { to_class }
+    it 'sets the resend_invitation flag on Devise' do
+      expect(Devise).to receive(:resend_invitation=).with(true)
+      subject
     end
 
-    context 'when the invite returns errors' do
-      before { expect(to_class).to receive(:any?) { true } }
-
-      it 'returns the error messages' do
-        expect(to_class).to receive(:errors) { to_class }
-        expect(to_class).to receive(:full_messages) { ['ERROR'] }
-        expect(job.run(invite_list)).to eq({1 => 'Error: ERROR'})
-      end
+    it 'calls the service with the required args' do
+      expect(invite_service).to receive(:call).with('user@email.com', 1, invited_by)
+      subject
     end
 
-    context 'when the invite returns NO errors' do
-      before { expect(to_class).to receive(:any?) { false } }
-
-      it 'sets the association and returns a success message' do
-        expect(to_class).to receive(:foreign_key=).with(1) { to_class }
-        expect(to_class).to receive(:save!)
-        expect(job.run(invite_list)).to eq({1 => 'Invited!'})
-      end
+    it 'captures the response in a hash' do
+      expect(subject).to eq({1 => 'Invited!'})
     end
   end
 

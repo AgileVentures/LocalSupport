@@ -3,40 +3,35 @@ require 'spec_helper'
 describe InvitationsController, :helpers => :controllers do
 
   describe '#create' do
-    let(:job) { double :batch_invite }
     let(:params) do
       {
-        values: [{'id' =>  '-1', 'email' => 'org@email.com'}],
-        resend_invitation: 'false'
+        values: 'whatever',
+        resend_invitation: 'whatever'
       }
     end
+    let(:response) { double :response }
 
     before do
       make_current_user_admin
-      allow(Devise).to receive(:resend_invitation=)
-      allow(BatchInvite).to receive(:new) { job }
-      allow(job).to receive(:run) { job }
+      allow(BatchInvite).to receive(:call) { response }
     end
 
-    it 'tells Devise about the resend_invitation flag' do
-      expect(Devise).to receive(:resend_invitation=).with(false)
-      post :create, params
+    it 'raises an error if either of the param keys are missing' do
+      params.keys.each do |key|
+        params.delete(key)
+        expect(->{post :create, params}).to raise_error KeyError, "key not found: \"#{key}\""
+      end
     end
 
-    it 'initializes the job with the variables needed to invite users to orgs' do
-      expect(BatchInvite).to receive(:new).with(
-        User, Organization, :organization_id=, controller.current_user
-      ) { job }
-      post :create, params
-    end
-
-    it 'runs the job with the invite list' do
-      expect(job).to receive(:run).with(params[:values]) { job }
+    it 'calls BatchInvite with the required args' do
+      expect(BatchInvite).to receive(:call).with(
+        UserInviter, params[:values], controller.current_user, params[:resend_invitation]
+      )
       post :create, params
     end
 
     it 'responds to format json' do
-      expect(job).to receive(:to_json)
+      expect(response).to receive(:to_json)
       post :create, params.merge({ :format => :json })
     end
   end
