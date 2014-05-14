@@ -9,11 +9,9 @@ describe InvitationsController, :helpers => :controllers do
         resend_invitation: 'whatever'
       }
     end
-    let(:response) { double :response }
 
     before do
       make_current_user_admin
-      allow(BatchInvite).to receive(:call) { response }
     end
 
     it 'raises an error if either of the param keys are missing' do
@@ -30,9 +28,12 @@ describe InvitationsController, :helpers => :controllers do
       post :create, params
     end
 
-    it 'responds to format json' do
-      expect(response).to receive(:to_json)
-      post :create, params.merge({ :format => :json })
+    it 'responds with json' do
+      results = double :results
+      allow(BatchInvite).to receive(:call) { results }
+      expect(results).to receive(:to_json) { 'json stuff' }
+      post :create, params
+      expect(response.body).to eq 'json stuff'
     end
   end
 end

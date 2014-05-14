@@ -5,10 +5,8 @@ class InvitationsController < ApplicationController
   def create
     flag = params.fetch(:resend_invitation)
     invite_list = params.fetch(:values)
-    response = BatchInvite.(UserInviter, invite_list, current_user, flag)
-    respond_to do |format|
-      format.json { render :json => response.to_json }
-    end
+    results = BatchInvite.(UserInviter, invite_list, current_user, flag)
+    render :json => results.to_json
   end
 
 end
