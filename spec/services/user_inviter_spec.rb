@@ -15,10 +15,10 @@ describe UserInviter do
   end
 
   context 'success' do
-    let(:user) { User.last }
+    let(:user) { User.find_by_email org.email.downcase }
     subject { UserInviter.(org.email, org.id, invited_by) }
 
-    it 'new user is persisted' do
+    it 'a new user is persisted' do
       invited_by
       expect(->{subject}).to change(User, :count).by(1)
     end
@@ -70,7 +70,8 @@ describe UserInviter do
   context 'resending invitations' do
     subject { ->{UserInviter.(org.email, org.id, invited_by)} }
 
-    it 'is toggled on by default' do
+    it 'can be toggled on' do
+      Devise.resend_invitation = true
       subject.call
       expect(ActionMailer::Base.deliveries).to_not be_empty
       ActionMailer::Base.deliveries.clear
@@ -94,7 +95,6 @@ describe InvitedUser do
   before { user.extend InvitedUser }
 
   describe '#status' do
-    
     it 'is "Invited!" if there are no errors' do
       expect(user.status).to eq 'Invited!'
     end

@@ -2,9 +2,9 @@ module UserInviter
   extend self
 
   def invite(email, org_id, invited_by)
-    user = User.invite!({email: email}, invited_by)
-    user.organization_id = org_id
-    user.save
+    user = User.invite!({email: email}, invited_by) do |user|
+      user.organization_id = org_id
+    end
     user.extend InvitedUser
     user.status
   end
@@ -13,15 +13,12 @@ module UserInviter
 end
 
 module InvitedUser
+
   def status
-    invited? ? success_message : failure_message
+    errors.any? ? failure_message : success_message
   end
 
   private
-
-  def invited?
-    !errors.any?
-  end
 
   def success_message
     'Invited!'
