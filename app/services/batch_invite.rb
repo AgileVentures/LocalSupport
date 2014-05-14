@@ -14,8 +14,6 @@ module BatchInvite
   private
 
   def to_boolean(flag)
-    return true if flag.to_s == 'true'
-    return false if flag.to_s == 'false'
-    raise "cannot cast #{flag.class} '#{flag}' to boolean"
+    flag.to_s == 'true' ? true : false
   end
 end
