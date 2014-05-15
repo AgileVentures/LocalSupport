@@ -18,7 +18,7 @@
                 type: 'POST',
                 url: '/invitations',
                 data: JSON.stringify({
-                    values: values,
+                    invite_list: values,
                     resend_invitation: resend_invitation
                 }),
                 dataType: 'json',

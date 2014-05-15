@@ -6,7 +6,7 @@ describe "Invitations" do
     let(:admin) { FactoryGirl.create(:user, email: 'admin@example.com', admin: true) }
 
     describe 'security' do
-      let(:params) { {values: [{id: '3', email: 'what@ever.com'}], resend_invitation: false} }
+      let(:params) { {invite_list: [{id: '3', email: 'what@ever.com'}], resend_invitation: false} }
 
       it 'un-signed-in users not allowed' do
         xhr :post, invitations_path, params
@@ -27,7 +27,7 @@ describe "Invitations" do
     describe 'batch invites' do
       let(:org) { FactoryGirl.create :organization, email: 'yes@hello.com' }
       let(:params) do
-        {values: [
+        {invite_list: [
             {id: org.id, email: org.email },
             {id: org.id+1, email: org.email }
           ],

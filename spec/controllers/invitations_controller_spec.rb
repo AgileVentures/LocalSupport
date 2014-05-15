@@ -5,8 +5,8 @@ describe InvitationsController, :helpers => :controllers do
   describe '#create' do
     let(:params) do
       {
-        values: 'whatever',
-        resend_invitation: 'whatever'
+        resend_invitation: 'whatever',
+        invite_list: 'whatever',
       }
     end
 
@@ -23,7 +23,7 @@ describe InvitationsController, :helpers => :controllers do
 
     it 'calls BatchInvite with the required args' do
       expect(BatchInvite).to receive(:call).with(
-        UserInviter, params[:values], controller.current_user, params[:resend_invitation]
+        UserInviter, params[:invite_list], controller.current_user, params[:resend_invitation]
       )
       post :create, params
     end

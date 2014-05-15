@@ -5,7 +5,7 @@ class InvitationsController < ApplicationController
   def create
     render :json => BatchInvite.(
       UserInviter,
-      params.fetch(:values),
+      params.fetch(:invite_list),
       current_user,
       params.fetch(:resend_invitation)
     ).to_json
