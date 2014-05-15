@@ -1,9 +1,9 @@
 module BatchInvite
   extend self
 
-  def run(invite_service, invite_list, invited_by, flag)
+  def run(invite_service, invite_list, invited_by, resend_invitation)
     invite_list.each_with_object({}) do |invite, response|
-      Devise.resend_invitation = to_boolean(flag)
+      Devise.resend_invitation = to_boolean(resend_invitation)
       email = invite.fetch(:email)
       relation_id = invite.fetch(:id)
       response[relation_id] = invite_service.(email, relation_id, invited_by)
@@ -13,7 +13,7 @@ module BatchInvite
 
   private
 
-  def to_boolean(flag)
-    flag.to_s == 'true' ? true : false
+  def to_boolean(resend_invitation)
+    resend_invitation.to_s == 'true' ? true : false
   end
 end

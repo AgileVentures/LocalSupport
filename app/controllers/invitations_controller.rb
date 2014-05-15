@@ -3,10 +3,12 @@ class InvitationsController < ApplicationController
 
   # xhr only
   def create
-    flag = params.fetch(:resend_invitation)
-    invite_list = params.fetch(:values)
-    results = BatchInvite.(UserInviter, invite_list, current_user, flag)
-    render :json => results.to_json
+    render :json => BatchInvite.(
+      UserInviter,
+      params.fetch(:values),
+      current_user,
+      params.fetch(:resend_invitation)
+    ).to_json
   end
 
 end
