@@ -12,7 +12,7 @@ module Invitations::Inviter
   private
 
   def toggle(resend_flag)
-    Invitations::Inviter::DeviseResendInvite.(resend_flag)
+    Invitations::Inviter::DeviseInviteResender.(resend_flag)
   end
 
   def invite(invite_hash, invited_by)

@@ -1,4 +1,4 @@
-module Invitations::Inviter::DeviseResendInvite
+module Invitations::Inviter::DeviseInviteResender
   extend self
 
   def toggle_resend_invite_setting(flag)
