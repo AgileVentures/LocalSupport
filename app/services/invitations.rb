@@ -1,18 +1,18 @@
 module Invitations
   extend self
 
-  def collect_replies(params, invited_by)
-    reduced(invited(parsed(params), invited_by))
+  def run_messages(params, invited_by)
+    reduced(invite(parse(params), invited_by))
   end
   alias_method :call, :collect_replies
 
   private
 
-  def parsed(params)
+  def parse(params)
     Invitations::KeyMapper.(params)
   end
 
-  def invited(params, invited_by)
+  def invite(params, invited_by)
     Invitations::Inviter.(params, invited_by)
   end
 
