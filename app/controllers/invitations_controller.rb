@@ -3,11 +3,10 @@ class InvitationsController < ApplicationController
 
   # xhr only
   def create
-    render :json => BatchInvite.(
-      UserInviter,
+    render :json => ::Invitations::BatchInviteJob.(
+      params.fetch(:resend_invitation),
       params.fetch(:invite_list),
-      current_user,
-      params.fetch(:resend_invitation)
+      current_user
     ).to_json
   end
 
