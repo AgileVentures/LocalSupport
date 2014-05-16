@@ -10,16 +10,16 @@ module Invitations::KeyMapper
 
   def validate_keys(hash)
     {
-        resend_invitation: hash.fetch(:resend_invitation),
-        invite_list: validate_invite_list(hash.fetch(:invite_list))
+        resend_invitation: hash.fetch('resend_invitation'),
+        invite_list: validate_invite_list(hash.fetch('invite_list'))
     }
   end
 
   def validate_invite_list(invites)
     invites.map do |invite|
       {
-          organization_id: invite.fetch(:id),
-          email: invite.fetch(:email)
+          organization_id: invite.fetch('id'),
+          email: invite.fetch('email')
       }
     end
   end

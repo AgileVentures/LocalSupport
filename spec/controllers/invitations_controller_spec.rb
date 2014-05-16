@@ -3,38 +3,35 @@ require 'spec_helper'
 describe InvitationsController, :helpers => :controllers do
 
   describe '#create' do
-    let(:params) do
-      {
-        resend_invitation: 'whatever',
-        invite_list: 'whatever',
-      }
-    end
+    let(:params) { {} }
 
-    before do
-      make_current_user_admin
-    end
-
-    it 'raises an error if either of the param keys are missing' do
-      [:resend_invitation, :invite_list].each do |key|
-        less_params = params.clone
-        less_params.delete(key)
-        expect(->{post :create, less_params}).to raise_error KeyError, "key not found: \"#{key}\""
+    context 'when not signed in as an admin' do
+      it 'you get redirected' do
+        post :create, params
+        expect(response).to redirect_to root_path
+        make_current_user_nonadmin
+        post :create, params
+        expect(response).to redirect_to root_path
       end
     end
 
-    it 'calls BatchInviteJob with the required args' do
-      expect(::Invitations::BatchInviteJob).to receive(:call).with(
-        params[:resend_invitation], params[:invite_list], controller.current_user
-      )
-      post :create, params
-    end
+    context 'when signed in as an admin' do
+      before { make_current_user_admin }
 
-    it 'responds with json' do
-      results = double :results
-      allow(::Invitations::BatchInviteJob).to receive(:call) { results }
-      expect(results).to receive(:to_json) { 'json stuff' }
-      post :create, params
-      expect(response.body).to eq 'json stuff'
+      it 'calls the Invitations service with the required args' do
+        params.merge!({'controller'=>'invitations', 'action'=>'create'})
+        expect(::Invitations).to receive(:call).with(params, controller.current_user)
+        post :create, params
+      end
+
+      it 'responds with json' do
+        results = double :results
+        allow(::Invitations).to receive(:call) { results }
+        expect(results).to receive(:to_json) { 'json stuff' }
+        post :create, params
+        expect(response.body).to eq 'json stuff'
+      end
+
     end
   end
 end
