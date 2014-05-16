@@ -3,9 +3,9 @@ class InvitationsController < ApplicationController
 
   # xhr only
   def create
-    render :json => ::Invitations::BatchInviteJob.(
+    render :json => ::Invitations.(
       params,
-      current_user
+      current_user,
     ).to_json
   end
 

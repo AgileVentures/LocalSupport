@@ -2,7 +2,7 @@ module Invitations::Inviter::DeviseUserInviter
   extend self
 
   def invite(params, invited_by)
-    org_id, email = params.fetch(:id), params.fetch(:email)
+    org_id, email = params.fetch(:organization_id), params.fetch(:email)
     user = User.invite!({email: email}, invited_by) do |user|
       user.organization_id = org_id
     end

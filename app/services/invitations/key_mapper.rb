@@ -18,7 +18,7 @@ module Invitations::KeyMapper
   def validate_invite_list(invites)
     invites.map do |invite|
       {
-          org_id: invite.fetch(:id),
+          organization_id: invite.fetch(:id),
           email: invite.fetch(:email)
       }
     end

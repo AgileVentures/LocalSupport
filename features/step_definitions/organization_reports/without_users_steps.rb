@@ -19,6 +19,9 @@ end
 Given(/^the admin invited a user for "(.*?)"$/) do |organization_name|
   current_user = User.find_by_admin true
   org = Organization.find_by_name(organization_name)
-  invite_list = [{:id => org.id, :email => org.email}]
-  ::Invitations::BatchInviteJob.(true, invite_list, current_user)
+  params = {
+      resend_invitation: 'true',
+      invite_list: [{:id => org.id, :email => org.email}]
+  }
+  ::Invitations.(params, current_user)
 end

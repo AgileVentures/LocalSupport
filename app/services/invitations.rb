@@ -4,6 +4,7 @@ module Invitations
   def collect_replies(params, invited_by)
     reduced(invited(parsed(params), invited_by))
   end
+  alias_method :call, :collect_replies
 
   private
 
