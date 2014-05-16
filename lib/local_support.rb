@@ -1,0 +1,2 @@
+module LocalSupport
+end

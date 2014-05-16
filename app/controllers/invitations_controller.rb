@@ -4,8 +4,7 @@ class InvitationsController < ApplicationController
   # xhr only
   def create
     render :json => ::Invitations::BatchInviteJob.(
-      params.fetch(:resend_invitation),
-      params.fetch(:invite_list),
+      params,
       current_user
     ).to_json
   end

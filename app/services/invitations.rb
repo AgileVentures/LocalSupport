@@ -1,11 +1,11 @@
 # The modules here that extend self are stateless singleton objects. They
 # expose one public method, which is aliased to call for the convenient fact
-# that UserInviter.call(...) can be written as UserInviter.(...).
+# that DeviseUserInviter.call(...) can be written as DeviseUserInviter.(...).
 
 module Invitations
 
   # This service works with a list of invites, passing each invite to
-  # UserInviter for processing, and building a hash of invite responses such
+  # DeviseUserInviter for processing, and building a hash of invite responses such
   # that [{:relation_id => '1', :email => 'what@ever.com'}] gets reduced to
   # {'1' => 'Invited!'}. The Devise configuration option resend_invitation
   # is set here.
@@ -13,22 +13,27 @@ module Invitations
   module BatchInviteJob
     extend self
 
-    def run(resend_invitation, invite_list, invited_by)
+    def run(params, invited_by)
+      resend_invitation = params.fetch(:resend_invitation)
+      invite_list = params.fetch(:invite_list)
+
       devise_resend_invitation(resend_invitation)
 
-      invite_list.reduce({}) do |memo, invite|
-        memo.update(
-          invite.fetch(:id) => UserInviter.(
-            invite.fetch(:email),
-            invite.fetch(:id),
-            invited_by
-          )
-        )
+      responses = invite_list.map do |invite_params|
+        UserInviter.(invite_params, invited_by)
       end
+
+      responses.reduce({}, :update)
     end
     alias_method :call, :run
 
     private
+
+    def validate_params(params)
+      params.fetch(:invite_list).map do |invite|
+
+      end
+    end
 
     def devise_resend_invitation(resend_invitation)
       Devise.resend_invitation = to_boolean(resend_invitation)
@@ -46,12 +51,13 @@ module Invitations
   module UserInviter
     extend self
 
-    def invite(email, org_id, invited_by)
+    def invite(params, invited_by)
+      org_id, email = params.fetch(:id), params.fetch(:email)
       user = User.invite!({email: email}, invited_by) do |user|
         user.organization_id = org_id
       end
       user.extend InvitedUser
-      user.status
+      {org_id => user.status}
     end
     alias_method :call, :invite
   end
