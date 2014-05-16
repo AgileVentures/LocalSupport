@@ -4,7 +4,7 @@ module Invitations
   def run_messages(params, invited_by)
     reduced(invite(parse(params), invited_by))
   end
-  alias_method :call, :collect_replies
+  alias_method :call, :run_messages
 
   private
 
