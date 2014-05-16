@@ -1,4 +1,4 @@
-module LocalSupport::Invitations::Inviter::DeviseUserInviter
+module Invitations::Inviter::DeviseUserInviter
   extend self
 
   def invite(params, invited_by)

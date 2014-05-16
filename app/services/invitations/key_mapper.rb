@@ -1,4 +1,4 @@
-module LocalSupport::Invitations::KeyMapper
+module Invitations::KeyMapper
   extend self
 
   def map_keys(params)

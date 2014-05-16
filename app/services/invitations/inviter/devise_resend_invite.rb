@@ -1,4 +1,4 @@
-module LocalSupport::Invitations::Inviter::DeviseResendInvite
+module Invitations::Inviter::DeviseResendInvite
   extend self
 
   def resend_invite(flag)

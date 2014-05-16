@@ -1,4 +1,4 @@
-module LocalSupport::Invitations::Inviter
+module Invitations::Inviter
   extend self
 
   def orchestrate_invites(params, invited_by)
@@ -12,10 +12,10 @@ module LocalSupport::Invitations::Inviter
   private
 
   def toggle(resend_flag)
-    LocalSupport::Invitations::Inviter::DeviseResendInvite.(resend_flag)
+    Invitations::Inviter::DeviseResendInvite.(resend_flag)
   end
 
   def invite(invite_hash, invited_by)
-    LocalSupport::Invitations::Inviter::DeviseUserInviter.(invite_hash, invited_by)
+    Invitations::Inviter::DeviseUserInviter.(invite_hash, invited_by)
   end
 end
