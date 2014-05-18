@@ -17,14 +17,9 @@ class User < ActiveRecord::Base
   belongs_to :organization
   belongs_to :pending_organization, :class_name => 'Organization', :foreign_key => 'pending_organization_id'
 
-  scope :invited_not_accepted, :conditions => "users.invitation_sent_at IS NOT NULL AND users.invitation_accepted_at IS NULL"
+  scope :invited_not_accepted, :include => :organization, :conditions => "users.invitation_sent_at IS NOT NULL AND users.invitation_accepted_at IS NULL"
 
   def confirm!
-    super
-    make_admin_of_org_with_matching_email
-  end
-
-  def accept_invitation!
     super
     make_admin_of_org_with_matching_email
   end
@@ -53,10 +48,6 @@ class User < ActiveRecord::Base
     self.organization_id = pending_organization_id
     self.pending_organization_id = nil
     save!
-  end
-
-  def message_for_invite
-    errors.any? ? "Error: #{errors.full_messages.first}" : 'Invited!'
   end
 
   def request_admin_status(organization_id)

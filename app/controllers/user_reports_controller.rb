@@ -17,8 +17,7 @@ class UserReportsController < ApplicationController
 
   def invited
     @resend_invitation = true
-    users = User.invited_not_accepted
-    @invitations = ListInvitedUsers.list(users, Organization)
+    @invitations = serialize_invitations
     render :template => 'user_reports/invited', :layout => 'invitation_table'
   end
 
@@ -36,5 +35,21 @@ class UserReportsController < ApplicationController
   def update_failure
     redirect_to :status => 404 
   end
-end
 
+  private
+
+  def serialize_invitations
+
+    User.invited_not_accepted.select do |user|
+      user.organization.present? # because invitation data may be 'dirty'
+    end.map do |user|
+      {
+          id: user.organization.id,
+          name: user.organization.name,
+          email: user.email,
+          date: user.invitation_sent_at
+      }
+    end
+
+  end
+end
