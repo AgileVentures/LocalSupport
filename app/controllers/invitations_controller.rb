@@ -10,12 +10,11 @@ class InvitationsController < ApplicationController
 
   def invite_users_and_collate_results
     invites = params.fetch(:invite_list)
-    invites_dup = invites.dup
 
-    invites_dup.each do |organization_id, email|
-      user = invite_user(email, organization_id)
-      invites[organization_id] = result_of_inviting user
-    end
+    invites = invites.map do |organization_id, email|
+      [organization_id, invite_user(email, organization_id)]
+    end.flatten
+    debugger
     invites
   end
 
