@@ -11,11 +11,10 @@ class InvitationsController < ApplicationController
   def invite_users_and_collate_results
     invites = params.fetch(:invite_list)
 
-    invites = invites.map do |organization_id, email|
-      [organization_id, invite_user(email, organization_id)]
-    end.flatten
-    debugger
-    invites
+    Hash[*invites.map do |organization_id, email|
+      [organization_id, result_of_inviting(invite_user(email, organization_id))]
+    end.flatten]
+    #Hash[*invites]
   end
 
   def tell_devise_if_okay_to_resend_invitations
