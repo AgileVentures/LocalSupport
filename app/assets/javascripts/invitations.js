@@ -5,13 +5,12 @@
     'use strict';
     $.fn.invite_users = function () {
         $(this).click(function () {
-            var values = [],
+            var values = {},
                 checks = $('input:checked');
             checks.each(function () {
-                values.push({
-                    id: $(this).attr('data-id'),
-                    email: $(this).attr('data-email')
-                });
+              var id= $(this).attr('data-id'),
+                  email= $(this).attr('data-email');
+              values[id] = email;
             });
             var resend_invitation = $.parseJSON($('#resend_invitation').attr('data-resend_invitation'));
             $.ajax({

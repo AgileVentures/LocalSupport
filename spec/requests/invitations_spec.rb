@@ -7,10 +7,9 @@ describe "Invitations" do
     describe 'batch invites' do
       let(:org) { FactoryGirl.create :organization, email: 'yes@hello.com' }
       let(:params) do
-        {invite_list: [
-            {id: org.id, email: org.email },
-            {id: org.id+1, email: org.email }
-          ],
+        {invite_list:
+          {org.id => org.email,
+          org.id+1 => org.email},
           resend_invitation: false}
       end
 
