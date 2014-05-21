@@ -16,17 +16,21 @@ describe InvitationsController, :helpers => :controllers do
     end
 
     context 'when signed in as an admin' do
+      let(:results) { double :results }
       before { make_current_user_admin }
 
-      it 'calls the Invitations service with the required args' do
+      it 'calls the BatchInviteJob with the required args' do
         params.merge!({'controller'=>'invitations', 'action'=>'create'})
-        expect(::Invitations).to receive(:call).with(params, controller.current_user)
+        expect(::BatchInviteJob).to receive(:new).with(
+          params, controller.current_user
+        ).and_return(results)
+        expect(results).to receive(:run)
         post :create, params
       end
 
       it 'responds with json' do
-        results = double :results
-        allow(::Invitations).to receive(:call) { results }
+        allow(::BatchInviteJob).to receive(:new) { results }
+        allow(results).to receive(:run) { results }
         expect(results).to receive(:to_json) { 'json stuff' }
         post :create, params
         expect(response.body).to eq 'json stuff'
