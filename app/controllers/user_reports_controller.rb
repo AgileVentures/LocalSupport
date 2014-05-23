@@ -33,7 +33,7 @@ class UserReportsController < ApplicationController
   end
 
   def update_failure
-    redirect_to :status => 404 
+    redirect_to :status => 404
   end
 
   private

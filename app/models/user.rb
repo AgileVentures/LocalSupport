@@ -17,7 +17,11 @@ class User < ActiveRecord::Base
   belongs_to :organization
   belongs_to :pending_organization, :class_name => 'Organization', :foreign_key => 'pending_organization_id'
 
-  scope :invited_not_accepted, :include => :organization, :conditions => "users.invitation_sent_at IS NOT NULL AND users.invitation_accepted_at IS NULL"
+  scope :invited_not_accepted,
+    includes(:organization).
+    #where('users.organization_id IS NOT NULL').
+    where('users.invitation_sent_at IS NOT NULL').
+    where('users.invitation_accepted_at IS NULL')
 
   def confirm!
     super
