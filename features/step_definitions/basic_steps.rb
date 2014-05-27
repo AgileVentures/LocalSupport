@@ -414,3 +414,7 @@ Given /^associations are destroyed for:$/ do |table|
     user.save
   end
 end
+
+Given /^I run the invite migration$/ do
+
+end

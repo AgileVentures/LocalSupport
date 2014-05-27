@@ -34,7 +34,7 @@ Feature: Fix Associations
     # without associations there
 
   Scenario: migration
-    Given I run the invite migration
+    Given I run the invite associate rake task
     Given cookies are approved
     Given I am signed in as an admin
     And I visit the organisations without users page
