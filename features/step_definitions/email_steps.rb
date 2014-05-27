@@ -20,6 +20,16 @@ And /^the email queue is clear$/ do
   ActionMailer::Base.deliveries.clear
 end
 
+Given(/^I run the fix invitations rake task$/) do
+  require "rake"
+  @rake = Rake::Application.new
+  Rake.application = @rake
+  Rake.application.rake_require "tasks/fix_invites"
+  Rake::Task.define_task(:environment)
+  @rake['db:fix_invites'].invoke
+end
+
+
 Given(/^I import emails from "(.*?)"$/) do |file|
   require "rake"
   @rake = Rake::Application.new
@@ -40,7 +50,8 @@ Given(/^I run the "(.*?)" rake task located at "(.*?)"$/) do |task, loc|
   # however this has side effect of not adding the files tasks to @rake
   # by explicitly overriding the loaded list we force a reload and get the
   # tasks pulled in - not sure what other side effects there might be
-  Rake.application.rake_require loc, ['lib/'], ''
+  debugger
+  Rake.application.rake_require loc, ['lib/tasks'], ''
   Rake::Task.define_task(:environment)
   @rake[task].invoke
 end
