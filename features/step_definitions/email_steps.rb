@@ -50,7 +50,7 @@ Given(/^I run the "(.*?)" rake task located at "(.*?)"$/) do |task, loc|
   # however this has side effect of not adding the files tasks to @rake
   # by explicitly overriding the loaded list we force a reload and get the
   # tasks pulled in - not sure what other side effects there might be
-  Rake.application.rake_require loc, ['lib'], ''
+  Rake.application.rake_require loc, ['lib/'], ''
   Rake::Task.define_task(:environment)
   @rake[task].invoke
 end
