@@ -7,12 +7,18 @@ describe User do
   context 'invited users scope' do
     before(:each) do
       @regular_user = FactoryGirl.create(:user, email: 'regular@guy.com')
-      @invited_user = FactoryGirl.create(:user, email: 'invited@guy.com', invitation_sent_at: '2014-03-12 00:18:02', invitation_accepted_at: nil)
+      @invited_user = FactoryGirl.create(:user_stubbed_organization, email: 'invited@guy.com', invitation_sent_at: '2014-03-12 00:18:02', invitation_accepted_at: nil)
     end
+
     it 'finds all users who have not accepted their invitations yet' do
       collection = User.invited_not_accepted
       collection.should_not include(@regular_user)
       collection.should include(@invited_user)
+    end
+
+    it 'eager loads the associated organizations' do
+      collection = User.invited_not_accepted
+      collection.first.association_cache.should_not be_empty
     end
   end
 
@@ -102,10 +108,9 @@ describe User do
       @admin_user.organization.should eq @match_org
     end
 
-    it 'should be called in #confirm! and #accept_invitation!' do
-      @user.should_receive(:make_admin_of_org_with_matching_email).twice
+    it 'should be called in #confirm!' do
+      @user.should_receive(:make_admin_of_org_with_matching_email)
       @user.confirm!
-      @user.accept_invitation!
     end
   end
 
@@ -191,23 +196,6 @@ describe User do
       user.can_request_org_admin?(@organization).should be_true
     end
 
-  end
-
-  context '#message_for_invite' do
-    let(:user) { FactoryGirl.build(:user) }
-
-    it 'returns Invited! if there are no errors' do
-      expect(user.message_for_invite).to eql 'Invited!'
-    end
-
-    context 'when there are errors' do
-      before do
-        user.errors.add(:email, 'error')
-      end
-      it 'returns a semi-custom error msg if there is one' do
-        expect(user.message_for_invite).to eql 'Error: Email error'
-      end
-    end
   end
 
   context '#request_admin_status' do

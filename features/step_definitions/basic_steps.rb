@@ -382,3 +382,23 @@ end
 Then(/^I should see "([^"]*)" page before "([^"]*)"$/) do |first_item, second_item|
   page.body.should =~ /#{first_item}.*#{second_item}/m
 end
+
+Given /^"(.*?)" has a whitespace at the end of the email address$/ do |org_name|
+  org = Organization.find_by_name(org_name)
+  org.email += ' '
+  org.save
+end
+
+Given /^associations are destroyed for:$/ do |table|
+  table.rows.flatten.each do |org_name|
+    org = Organization.find_by_name org_name
+    user = org.users.pop
+    org.save
+    user.organization_id = nil
+    user.save
+  end
+end
+
+Given /^I run the invite migration$/ do
+
+end

@@ -17,12 +17,14 @@
 
             <div class="nav-collapse collapse">
               <ul class="nav nav-pills pull-right">
+                <!--
                 <li class="<%= active_if 'organizations' %>">
                   <%= link_to "Organisations", organizations_path %>
                 </li>
                 <li class="<%= active_if 'volunteer_ops' %>">
                   <%= link_to "Volunteers", volunteer_ops_path %>
                 </li>
+                -->
                 <% if current_user.nil? %>
                     <li class="dropdown " id="menuLogin">
                       <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
