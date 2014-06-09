@@ -131,6 +131,7 @@ describe 'organizations/show.html.erb' do
 
   describe 'create volunteer opportunity button' do
     it 'shows when belongs_to is true' do
+      view.stub(:feature_active?).with(:volunteer_ops).and_return(true)
       assign(:can_create_volunteer_op, true)
       render
       rendered.should have_link 'Create a Volunteer Opportunity', :href => new_volunteer_op_path

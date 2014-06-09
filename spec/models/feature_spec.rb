@@ -36,5 +36,9 @@ describe Feature do
       Feature.create(name: :foo, active: true)
       expect(Feature.active?(:foo)).to be true
     end
+    it 'is false when the feature flag does not exist' do
+      # Feature :bar does not exist
+      expect(Feature.active?(:bar)).to be false
+    end
   end
 end

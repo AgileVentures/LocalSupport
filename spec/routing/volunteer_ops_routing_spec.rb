@@ -3,6 +3,10 @@ require "spec_helper"
 describe VolunteerOpsController do
   describe "routing" do
     context 'feature flag enabled' do
+      before :each do
+        Feature.stub(:active?).with(:volunteer_ops).and_return(true)
+      end
+
       it "routes to #index" do
         get("/volunteer_ops").should route_to("volunteer_ops#index")
       end

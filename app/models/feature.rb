@@ -4,7 +4,7 @@
 #
 #   Feature.create(:name => :my_feature_name)
 #
-# By default, features are active.
+# By default, features are inactive.
 # Test if your feature is active with
 #
 #   Feature.active?(:my_feature_name)
@@ -32,6 +32,6 @@ class Feature < ActiveRecord::Base
 
   def self.active?(feature)
     flag = find_by_name(feature)
-    flag.nil? ? true : flag.active?
+    flag.nil? ? false : flag.active?
   end
 end

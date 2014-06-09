@@ -43,4 +43,10 @@ describe ApplicationHelper do
       active_if(str2).should be nil
     end
   end
+
+  describe "#feature_active" do
+    it 'should return true if feature is active'
+
+    it 
+  end
 end
