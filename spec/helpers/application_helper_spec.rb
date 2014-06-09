@@ -45,8 +45,14 @@ describe ApplicationHelper do
   end
 
   describe "#feature_active" do
-    it 'should return true if feature is active'
+    it 'should return true if feature is active' do
+      Feature.stub(active?: true)
+      expect(helper.feature_active?(:volunteer_ops)).to be_true
+    end
 
-    it 
+    it 'should return false if feature is inactive' do
+      Feature.stub(active?: false)
+      expect(helper.feature_active?(:volunteer_ops)).to be_false
+    end
   end
 end
