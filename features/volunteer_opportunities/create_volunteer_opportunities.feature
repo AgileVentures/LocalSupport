@@ -17,15 +17,6 @@ Feature: Org admin creating a volunteer work opportunity
       | admin@harrowcn.org.uk      | pppppppp | Shy          | 2007-01-01 10:00:00 | true  |
 
     And cookies are approved
-    And the following feature flags exist:
-      | name          | active |
-      | volunteer_ops | true   |
-
-  Scenario: Org-owners can see a Create Volunteer Opportunity button on their organization show page
-    Given I am signed in as a charity worker related to "Friendly"
-    And I am on the charity page for "Friendly"
-    And I click "Create a Volunteer Opportunity"
-    Then I should be on the new volunteer opportunity page for organization "Friendly"
 
   Scenario: Org-owner creating a volunteer opportunity
     Given I am signed in as a charity worker related to "Friendly"
@@ -53,13 +44,13 @@ Feature: Org admin creating a volunteer work opportunity
     Then I should not see a link with text "Create a Volunteer Opportunity"
 
   Scenario: Org-owners can see a Create Volunteer Opportunity button on their organization show page when feature is enabled
-    Given that the volunteer_ops flag is enabled
+    Given that the volunteer_ops_create flag is enabled
     And I am signed in as a charity worker related to "Shy"
     And I am on the charity page for "Shy"
     Then I should see a link with text "Create a Volunteer Opportunity"
 
   Scenario: Org-owners cannot see a Create Volunteer Opportunity button on their organization show page when feature is disabled
-    Given that the volunteer_ops flag is disabled
+    Given that the volunteer_ops_create flag is disabled
     And I am signed in as a charity worker related to "Shy"
     And I am on the charity page for "Shy"
     Then I should not see a link with text "Create a Volunteer Opportunity"

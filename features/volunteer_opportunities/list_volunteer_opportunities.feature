@@ -13,17 +13,6 @@ Background: organizations with volunteer opportunities have been added to databa
   | title                           | description                        | organization              |
   | Litter Box Scooper              | Assist with feline sanitation      | Cats Are Us               |
   | Office Support                  | Help with printing and copying.    | Indian Elders Association | 
-  And the following feature flags exist:
-   | name          | active |
-   | volunteer_ops | true   |
-
-Scenario Outline: Top navbar has links to Volunteers and Organisations 
-  Given I visit the home page
-  Then the navbar should have a link to <link>
-Examples:
-  | link          |
-  | Volunteers    |
-  | Organisations |
 
 Scenario: See a list of current volunteer opportunities
     Given I visit the volunteer opportunities page
@@ -39,7 +28,7 @@ Scenario: See a list of current volunteer opportunities
     Then I should see a two column layout
 
   Scenario Outline: Top navbar links to Volunteers and Organisations are hidden when feature is disabled
-    Given that the volunteer_ops flag is disabled
+    Given that the volunteer_ops_list flag is disabled
     And I visit the home page
     Then the navbar should not have a link to <link>
     Examples:
@@ -48,7 +37,7 @@ Scenario: See a list of current volunteer opportunities
       | Organisations |
 
   Scenario Outline: Top navbar has links to Volunteers and Organisations when feature is enabled
-    Given that the volunteer_ops flag is enabled
+    Given that the volunteer_ops_list flag is enabled
     And I visit the home page
     Then the navbar should have a link to <link>
     Examples:
