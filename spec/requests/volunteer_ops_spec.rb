@@ -3,9 +3,6 @@ require 'spec_helper'
 describe 'VolunteerOps', :helpers => :requests do
   let(:org_owner) { FactoryGirl.create(:user_stubbed_organization) }
   let(:non_org_owner) { FactoryGirl.create :user }
-  before :each do
-    Feature.stub(:active?).with(:volunteer_ops).and_return(true)
-  end
 
   describe 'POST /volunteer_ops' do
     let(:params) { { volunteer_op: {title: 'hard work', description: 'for the willing'} } }

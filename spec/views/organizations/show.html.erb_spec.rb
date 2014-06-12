@@ -131,7 +131,7 @@ describe 'organizations/show.html.erb' do
 
   describe 'create volunteer opportunity button' do
     it 'shows when belongs_to is true' do
-      view.stub(:feature_active?).with(:volunteer_ops).and_return(true)
+      view.stub(:feature_active?).with(:volunteer_ops_create).and_return(true)
       assign(:can_create_volunteer_op, true)
       render
       rendered.should have_link 'Create a Volunteer Opportunity', :href => new_volunteer_op_path
@@ -146,7 +146,7 @@ describe 'organizations/show.html.erb' do
     it 'is shown when feature is active' do
       assign(:can_create_volunteer_op, true)
       expect(view).to receive(:feature_active?).
-        with(:volunteer_ops).and_return(true)
+        with(:volunteer_ops_create).and_return(true)
       render
       expect(rendered).to have_link \
         'Create a Volunteer Opportunity', :href => new_volunteer_op_path      
@@ -155,7 +155,7 @@ describe 'organizations/show.html.erb' do
     it 'is not visible when feature is inactive' do
       assign(:can_create_volunteer_op, true)
       expect(view).to receive(:feature_active?).
-        with(:volunteer_ops).and_return(false)
+        with(:volunteer_ops_create).and_return(false)
       render
       expect(rendered).not_to have_link \
         'Create a Volunteer Opportunity', :href => new_volunteer_op_path
