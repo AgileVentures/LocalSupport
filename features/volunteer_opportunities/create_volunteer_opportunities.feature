@@ -17,6 +17,9 @@ Feature: Org admin creating a volunteer work opportunity
       | admin@harrowcn.org.uk      | pppppppp | Shy          | 2007-01-01 10:00:00 | true  |
 
     And cookies are approved
+    And the following feature flags exist:
+      | name          | active |
+      | volunteer_ops | true   |
 
   Scenario: Org-owners can see a Create Volunteer Opportunity button on their organization show page
     Given I am signed in as a charity worker related to "Friendly"
