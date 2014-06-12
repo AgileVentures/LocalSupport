@@ -1,6 +1,6 @@
 LocalSupport::Application.routes.draw do
 
-  resources :volunteer_ops, constraints: lambda { |request| Feature.active?(:volunteer_ops) }
+  resources :volunteer_ops
 
   devise_for :users
 
