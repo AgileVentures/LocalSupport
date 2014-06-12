@@ -40,5 +40,9 @@ describe Feature do
       # Feature :bar does not exist
       expect(Feature.active?(:bar)).to be false
     end
+    it 'makes new flags inactive by default' do
+      Feature.create(name: :splat)
+      expect(Feature.active?(:splat)).to be false
+    end
   end
 end
