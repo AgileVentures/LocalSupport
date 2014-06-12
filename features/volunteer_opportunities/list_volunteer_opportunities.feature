@@ -37,3 +37,41 @@ Scenario: See a list of current volunteer opportunities
     Given I visit the volunteer opportunities page
     And cookies are approved
     Then I should see a two column layout
+
+  Scenario Outline: Top navbar links to Volunteers and Organisations are hidden when feature is disabled
+    Given that the volunteer_ops flag is disabled
+    And I visit the home page
+    Then the navbar should not have a link to <link>
+    Examples:
+      | link          |
+      | Volunteers    |
+      | Organisations |
+
+  Scenario Outline: Top navbar has links to Volunteers and Organisations when feature is enabled
+    Given that the volunteer_ops flag is enabled
+    And I visit the home page
+    Then the navbar should have a link to <link>
+    Examples:
+      | link          |
+      | Volunteers    |
+      | Organisations |
+
+  @allow-rescue @in-production
+  Scenario: Volunteer Ops List Page should be inaccessible when feature is disabled
+    Given that the volunteer_ops flag is disabled
+    And I visit the volunteer opportunities page
+    And the page should be titled "404 - Page Not Found"
+    And the response status should be "404"
+    And I should see "We're sorry, but we couldn't find the page you requested"
+    Then I should not see:
+      | title                           | description                        | organization              |
+      | Litter Box Scooper              | Assist with feline sanitation      | Cats Are Us               |
+      | Office Support                  | Help with printing and copying.    | Indian Elders Association |
+
+  Scenario: Volunteer Ops List Page should be accessible when feature is enabled
+    Given that the volunteer_ops flag is enabled
+    And I visit the volunteer opportunities page
+    Then I should see:
+      | title                           | description                        | organization              |
+      | Litter Box Scooper              | Assist with feline sanitation      | Cats Are Us               |
+      | Office Support                  | Help with printing and copying.    | Indian Elders Association |
