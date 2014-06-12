@@ -15,7 +15,7 @@ Feature: Org admin creating a volunteer work opportunity
       | admin@friendly.example.org | pppppppp | Friendly     | 2007-01-01 10:00:00 | false |
       | admin@shy.example.org      | pppppppp | Shy          | 2007-01-01 10:00:00 | false |
       | admin@harrowcn.org.uk      | pppppppp | Shy          | 2007-01-01 10:00:00 | true  |
-
+    And that the volunteer_ops_create flag is enabled
     And cookies are approved
 
   Scenario: Org-owner creating a volunteer opportunity

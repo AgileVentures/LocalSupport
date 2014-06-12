@@ -5,7 +5,11 @@ And(/^I submit an opportunity with title "(.*?)" and description "(.*?)"$/) do |
 end
 
 Given(/^that the (.+) flag is (enabled|disabled)$/) do |feature, state|
-  Feature.create!(name: feature, active: (state == 'enabled'))
+  if f = Feature.find_by_name(feature) then
+    f.update_attributes(active: (state == 'enabled'))
+  else
+    Feature.create!(name: feature, active: (state == 'enabled'))
+  end
 end
 
 # Given /the following feature flags exist/ do |feature_flags_table|
