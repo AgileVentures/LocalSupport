@@ -12,6 +12,7 @@ Feature: Admin user interface
       | admin@harrowcn.org.uk | mypassword1234 | true  | 2008-01-01 00:00:00 |              |                      |
     And I am signed in as a admin
     And I am on the home page
+    And that the volunteer_ops_list flag is enabled
 
   Scenario Outline: Top navbar has an Admin dropdown menu
     Then the Admin menu has a valid <link> link
@@ -21,15 +22,15 @@ Feature: Admin user interface
     | Invited Users               |
     | All Users                   |
 
-#  Scenario:  Highlighted button for Organisations or Volunteers
-#    Given I visit the organisations index page
-#    Then navbar button "Organisations" should be active
-#    Then navbar button "Volunteers" should not be active
-#
-#    Given I visit the volunteer opportunities page
-#    Then navbar button "Volunteers" should be active
-#    Then navbar button "Organisations" should not be active
-#
-#    Given I visit "/pages"
-#    Then navbar button "Volunteers" should not be active
-#    Then navbar button "Organisations" should not be active
+  Scenario:  Highlighted button for Organisations or Volunteers
+    Given I visit the organisations index page
+    Then navbar button "Organisations" should be active
+    Then navbar button "Volunteers" should not be active
+
+    Given I visit the volunteer opportunities page
+    Then navbar button "Volunteers" should be active
+    Then navbar button "Organisations" should not be active
+
+    Given I visit "/pages"
+    Then navbar button "Volunteers" should not be active
+    Then navbar button "Organisations" should not be active
