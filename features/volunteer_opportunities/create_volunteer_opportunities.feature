@@ -44,7 +44,6 @@ Feature: Org admin creating a volunteer work opportunity
     Then I should not see a link with text "Create a Volunteer Opportunity"
 
   Scenario: Org-owners can see a Create Volunteer Opportunity button on their organization show page when feature is enabled
-    Given that the volunteer_ops_create flag is enabled
     And I am signed in as a charity worker related to "Shy"
     And I am on the charity page for "Shy"
     Then I should see a link with text "Create a Volunteer Opportunity"
