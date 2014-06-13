@@ -5,7 +5,7 @@
 #   Feature.create(:name => :my_feature_name)
 #
 # By default, features are inactive.
-# Test if your feature is active with
+# Test if your feature is active with:
 #
 #   Feature.active?(:my_feature_name)
 #
@@ -14,7 +14,15 @@
 #   Feature.deactivate(:my_feature_name)
 #   Feature.activate(:my_feature_name)
 #
-# In config/routes.rb, add this as a constraint to the route you want to flag. 
+# ### Tips
+#
+# It is probably better only to flag the entry points that a 
+# user normally takes into a feature, and leave the actual
+# feature pages active. This approach is described in
+# http://martinfowler.com/bliki/FeatureToggle.html
+#
+# If you do want to block a route with a flag, edit config/routes.rb,
+# to add this as a constraint to that route:
 # 
 #   constraints: lambda { |request| Feature.active?(:my_feature_name) }
 
