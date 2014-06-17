@@ -31,11 +31,4 @@ Given(/^I import emails from "(.*?)"$/) do |file|
   @rake['db:import:emails'].invoke(file)
 end
 
-Given /Google is indisposed for "(.*)"/ do |address|
-  body = %Q({
-"results" : [],
-"status" : "OVER_QUERY_LIMIT"
-})
-  stub_request_with_address(address, body)
-end
 
