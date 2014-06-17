@@ -58,30 +58,12 @@ def stub_request_with_address(address, body = nil)
       to_return(status => 200, :body => body || filename, :headers => {})
 end
 
-Given /the following organizations exist/ do |organizations_table|
-  organizations_table.hashes.each do |org|
-    stub_request_with_address(org['address'])
-    Organization.create! org
-  end
-end
-
-Given /the following volunteer opportunities exist/ do |volunteer_ops_table|
-  volunteer_ops_table.hashes.each do |volunteer_op|
-    volunteer_op["organization"] = Organization.find_by_name(volunteer_op["organization"])
-    VolunteerOp.create! volunteer_op, :without_protection => true
-  end
-end
-
 Given /Google is indisposed for "(.*)"/ do  |address|
   body = %Q({
 "results" : [],
 "status" : "OVER_QUERY_LIMIT"
 })
   stub_request_with_address(address, body)
-end
-
-Given /^I edit the donation url to be "(.*?)"$/ do |url|
-  fill_in('organization_donation_info', :with => url)
 end
 
 And(/^"(.*?)" should not have nil coordinates$/) do |name|

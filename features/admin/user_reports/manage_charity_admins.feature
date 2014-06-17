@@ -16,12 +16,12 @@ Background: organizations have been added to database
 
  Scenario: Existing charity admin appears in form when editing charity
    Given I am signed in as a admin
-   And I am on the edit charity page for "Friendly"
+   And I visit the edit page for the organization named "Friendly"
    Then I should see "registered-user-1@example.com" in the charity admin email
 
  Scenario: No admin message displayed when charity has no admins
    Given I am signed in as a admin
-   And I am on the edit charity page for "Friendly Clone"
+   And I visit the edit page for the organization named "Friendly Clone"
    Then I should see the no charity admins message
 
  Scenario: Cannot add non-existent user as charity admin

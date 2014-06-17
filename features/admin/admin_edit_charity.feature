@@ -29,14 +29,14 @@ Feature: Admin editing charity
 
   Scenario: Non-admin sees no permission error when visiting the edit form for charity
     Given I am signed in as a non-admin
-    And I am furtively on the edit charity page for "Friendly"
-    Then I should be on the charity page for "Friendly"
+    And I visit the edit page for the organization named "Friendly"
+    Then I should be on the show page for the organization named "Friendly"
     And I should see permission denied
 
   Scenario: Non-admin unsuccessfully attempts to delete a charity
     Given I am signed in as a non-admin
     And I delete "Friendly" charity
-    Then I should be on the charity page for "Friendly"
+    Then I should be on the show page for the organization named "Friendly"
     And I should see permission denied
 
 

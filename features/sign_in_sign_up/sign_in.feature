@@ -14,7 +14,7 @@ Background:
     | normal_user@example.com   | pppppppp |       |              | 2007-01-01  10:00:00 |
     | site_admin@example.com    | pppppppp | true  |              | 2007-01-01  10:00:00 |
     | charity_owner@example.com | pppppppp | false | Friendly     | 2007-01-01  10:00:00 |
-  Given I am on the home page
+  Given I visit the home page
   And cookies are approved
 
 Scenario: Sign in for an existing non-admin user unassociated with any organization
