@@ -355,6 +355,30 @@ Then /^the index should( not)? contain:$/ do |negative, table|
   end
 end
 
+And(/^"(.*?)" should not have nil coordinates$/) do |name|
+  org = Organization.find_by_name(name)
+  org.latitude.should_not be_nil
+  org.longitude.should_not be_nil
+end
+
+Then /^the coordinates for "(.*?)" and "(.*?)" should( not)? be the same/ do | org1_name, org2_name, negation|
+  #Gmaps.map.markers = [{"description":"<a href=\"/organizations/1320\">test</a>","lat":50.3739788,"lng":-95.84172219999999}];
+
+  matches = page.html.match %Q<{\\"description\\":\\"[^}]*#{org1_name}[^}]*\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
+  org1_lat = matches[1]
+  org1_lng = matches[2]
+  matches = page.html.match %Q<{\\"description\\":\\"[^}]*#{org2_name}[^}]*\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
+  org2_lat = matches[1]
+  org2_lng = matches[2]
+  lat_same = org1_lat == org2_lat
+  lng_same = org1_lng == org2_lng
+  if negation
+    expect(lat_same && lng_same).to be_false
+  else
+    expect(lat_same && lng_same).to be_true
+  end
+end
+
 Then(/^I should see "([^"]*)" page before "([^"]*)"$/) do |first_item, second_item|
   page.body.should =~ /#{first_item}.*#{second_item}/m
 end
@@ -373,8 +397,4 @@ Given /^associations are destroyed for:$/ do |table|
     user.organization_id = nil
     user.save
   end
-end
-
-Given /^I run the invite migration$/ do
-
 end

@@ -19,6 +19,12 @@ Capybara.javascript_driver = :webkit
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |file| require file }
 
 RSpec.configure do |config|
+
+  # Stub out network calls and return fixtures with sinatra's help
+  WebMock.disable_net_connect!(allow_localhost: true)
+  require "#{Rails.root}/test/fake_google_geocode"
+  config.before(:each) { stub_request(:any, /maps\.googleapis\.com/).to_rack(FakeGoogleGeocode) }
+
   # == Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:

@@ -1,13 +1,5 @@
-def stub_request_with_address(address, body = nil)
-  filename = "#{address.gsub(/\s/, '_')}.json"
-  filename = File.read "test/fixtures/#{filename}"
-  stub_request(:any, /maps\.googleapis\.com/).
-      to_return(status => 200, :body => body || filename, :headers => {})
-end
-
 Given /^the following organizations exist:$/ do |organizations_table|
   organizations_table.hashes.each do |org|
-    stub_request_with_address(org['address'])
     Organization.create! org
   end
 end
