@@ -12,14 +12,13 @@ describe Organization do
     @category4 = FactoryGirl.create(:category, :charity_commission_id => 302)
     @category5 = FactoryGirl.create(:category, :charity_commission_id => 306)
     @org1 = FactoryGirl.build(:organization, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate')
-    Gmaps4rails.stub(:geocode => nil)
     @org1.save!
     @org2 = FactoryGirl.build(:organization, :name => 'Indian Elders Association',
-                              :description => 'Care for the elderly', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.indian-elders.co.uk/donate')
+                              :description => 'Care for the elderly', :address => '30 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.indian-elders.co.uk/donate')
     @org2.categories << @category1
     @org2.categories << @category2
     @org2.save!
-    @org3 = FactoryGirl.build(:organization, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.age-uk.co.uk/donate')
+    @org3 = FactoryGirl.build(:organization, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '30 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.age-uk.co.uk/donate')
     @org3.categories << @category1
     @org3.save!
   end
@@ -409,7 +408,6 @@ describe Organization do
     Organization.class_eval do
       validates :name, :presence => true
     end
-    Gmaps4rails.should_receive(:geocode)
     @org1.update_attributes :name => nil
     expect(@org1.errors['name']).not_to be_empty
   end
