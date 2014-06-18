@@ -12,6 +12,16 @@ And /^the email queue is clear$/ do
   ActionMailer::Base.deliveries.clear
 end
 
+Given(/^I run the fix invitations rake task$/) do
+  require "rake"
+  @rake = Rake::Application.new
+  Rake.application = @rake
+  Rake.application.rake_require "tasks/fix_invites"
+  Rake::Task.define_task(:environment)
+  @rake['db:fix_invites'].invoke
+end
+
+
 Given(/^I import emails from "(.*?)"$/) do |file|
   require "rake"
   @rake = Rake::Application.new

@@ -49,7 +49,3 @@ Feature: Local Resident seeking Support
       | Indian Elders Association      | Care for the elderly           |
       | Age UK                         | Care for the Elderly           |
 
-  Scenario: Volunteer index page has two column layout
-    Given I visit the home page
-    And cookies are approved
-    Then I should see a two column layout

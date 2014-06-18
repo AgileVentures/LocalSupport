@@ -11,6 +11,7 @@ Feature: Admin user interface
       | email                 | password       | admin | confirmed_at        | organization | pending_organization |
       | admin@harrowcn.org.uk | mypassword1234 | true  | 2008-01-01 00:00:00 |              |                      |
     And I am signed in as a admin
+    And that the volunteer_ops_list flag is enabled
     And I visit the home page
 
   Scenario Outline: Top navbar has an Admin dropdown menu
