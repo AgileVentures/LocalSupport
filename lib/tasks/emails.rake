@@ -3,6 +3,7 @@
 begin
   namespace :db do
     namespace :import do
+      desc 'Import email addresses from a named CSV file'
       task :emails, [:file] => :environment do |t, args|
         # pass variables like so bundle exec rake db:import:emails[db/emails.csv]
         require File.expand_path("../../config/environment", File.dirname(__FILE__))
