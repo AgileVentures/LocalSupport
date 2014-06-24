@@ -16,27 +16,22 @@ Background:
   | email             | password | organization | confirmed_at |
   | registered_user-3@example.com | pppppppp | Youth UK  | 2007-01-01  10:00:00 |
 @show
-@javascript
 Scenario: Show all charities on homepage map
-  Given I am on the home page
-  Then I should see contact details for "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling"
-  #And show me the page
+  Given I visit the home page
   And I should see "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling" in the map centered on local organizations
 
-#@javascript
-# TODO work out how to do testing on gmap
 Scenario: Clickable hyperlinks to charity homepage in map
-  Given I am on the home page
+  Given I visit the home page
   And I should see hyperlinks for "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling" in the map
 
 Scenario: Changing address on the map changes the map coordinates
-    Given I am on the home page
+    Given I visit the home page
     Then the coordinates for "Harrow Bereavement Counselling" and "Youth UK" should not be the same
     And the coordinates for "Age UK" and "Youth UK" should be the same
     Given cookies are approved
     When I am signed in as a charity worker related to "Youth UK"
     And I update "Youth UK" charity address to be "34 pinner road"
-    And I am on the home page
+    And I visit the home page
     Then the coordinates for "Harrow Bereavement Counselling" and "Youth UK" should be the same
     Then the coordinates for "Age UK" and "Youth UK" should not be the same
 

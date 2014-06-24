@@ -15,40 +15,11 @@ Given /^I am signed in as an? (non-)?admin$/ do |negate|
 end
 
 Given /^I sign up as "(.*?)" with password "(.*?)" and password confirmation "(.*?)"$/ do |email, password, password_confirmation|
-  fill_in "signup_email", :with => email
-  fill_in "signup_password", :with => password
-  fill_in "signup_password_confirmation", :with => password_confirmation
-  click_button "Sign up"
-end
-
-Given /^I sign in as a charity worker with permission to edit "(.*?)"$/ do |name|
-  org = Organization.find_by_name name
-  org.users # TODO we will want some habtm to support this eventually
-end
-
-And /^I am signed in as the admin using password "(.*?)"$/ do |password|
-  admin = User.find_by_admin(true)
-  steps %Q{
-    Given I am on the sign in page
-    And I sign in as "#{admin.email}" with password "#{password}"
-  }
-end
-
-And /^I am not signed in as the admin using password "(.*?)"$/ do |password|
-  admin = User.find_by_admin(false)
-  steps %Q{
-    Given I am on the sign in page
-    And I sign in as "#{admin.email}" with password "#{password}"
-  }
-end
-
-#TODO: Should we bypass mass assgiment in the creation via :without_protection?
-Given /^the following users are registered:$/ do |users_table|
-  users_table.hashes.each do |user|
-    user["admin"] = user["admin"] == "true"
-    user["organization"] = Organization.find_by_name(user["organization"])
-    user["pending_organization"] = Organization.find_by_name(user["pending_organization"])
-    worker = User.create! user, :without_protection => true
+  within('.dropdown-menu') do
+    fill_in "signup_email", :with => email
+    fill_in "signup_password", :with => password
+    fill_in "signup_password_confirmation", :with => password_confirmation
+    click_button "Sign up"
   end
 end
 
@@ -59,14 +30,14 @@ Given /^that I am logged in as any user$/ do
    | registered_user@example.com | pppppppp | 2007-01-01  10:00:00 |
   }
   steps %Q{
-    Given I am on the home page
+    Given I visit the home page
     And I sign in as "registered_user@example.com" with password "pppppppp"
   }
 end
 
 Then /^I should not be signed in as any user$/ do
   steps %Q{
-    Given I am on the new charity page
+    Given I visit the new organisation page
     Then I should not see "Signed in as"
   }
 end
@@ -81,22 +52,11 @@ Given /^I sign in as "(.*?)" with password "(.*?)"$/ do |email, password|
   click_link_or_button "Sign in"
 end
 
-Given /^I am on the sign up page$/ do
-  step "I am on the home page"
-  expect(page).to have_field('signup_email')
-  expect(page).to have_field('signup_password')
-  expect(page).to have_button('signup')
-end
-
-Given(/^I am on the password reset page$/) do
-  visit edit_user_password_path(reset_password_token: "18217tiegi1qwea")
-end
-
 When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |email, password|
   user = User.find_by_email("#{email}")
   user.confirm!
   steps %Q{
-    Given I am on the home page
+    Given I visit the home page
     And I sign in as "#{email}" with password "#{password}"
   }
 end
@@ -124,6 +84,16 @@ end
 Given(/^I click on the retrieve password link in the email to "([^\"]+)"$/) do |email|
   user = User.find_by_email email
   visit password_url(user.reset_password_token)
+end
+
+Given(/^I receive a new password for "(.*?)"$/) do |email|
+  steps %Q{
+    Given I visit the home page
+    And I follow "Forgot your password?"
+    And I fill in "user_retrieval_email" with "#{email}" within the main body
+    And I press "Send me reset password instructions"
+    And I click on the retrieve password link in the email to "#{email}"
+  }
 end
 
 Given(/^I click on the invitation link in the email to "([^\"]+)"$/) do |email|

@@ -26,15 +26,15 @@ Scenario: Successfully add website url without protocol
 Scenario: Successfully change the address of a charity
   Given I am signed in as a charity worker related to "Friendly"
   And I update "Friendly" charity address to be "30 pinner road"
-  Then I should be on the charity page for "Friendly"
+  Then I should be on the show page for the organization named "Friendly"
 
 Scenario Outline: Successfully mark a field of a charity as public or private
   Given I am signed in as a charity worker related to "Friendly"
-  And I am on the edit charity page for "Friendly"
+  And I visit the edit page for the organization named "Friendly"
   And the <field> for "Friendly" has been marked hidden
   And I <check_state> "<field_checkbox>"
   And I press "Update Organisation"
-  Then I should be on the charity page for "Friendly"
+  Then I should be on the show page for the organization named "Friendly"
   And I should <visibility> "<field_contents>"
   And I should <visibility> "<field_label>"
 Examples:
@@ -53,16 +53,16 @@ Examples:
 #  Given I furtively update "Friendly" charity address to be "30 pinner road"
 #  Then I should see "You don't have permission"
 #  And I should be on the charity page for "Friendly"
-#  Given I am on the home page
+#  Given I visit the home page
 #  Then the coordinates for "Nice" and "Friendly" should not be the same
 
 Scenario: Do not see edit button as non-admin not associated with Friendly
   Given I am signed in as a charity worker unrelated to "Friendly"
-  And I am on the charity page for "Friendly"
+  And I visit the show page for the organization named "Friendly"
   Then I should not see an edit button for "Friendly" charity
 
 Scenario: Non-logged in users do not see edit button either
-  Given I am on the charity page for "Friendly"
+  Given I visit the show page for the organization named "Friendly"
   Then I should not see an edit button for "Friendly" charity
 
 Scenario: Change the address of a charity when Google is indisposed
@@ -71,30 +71,30 @@ Scenario: Change the address of a charity when Google is indisposed
   Then I should not see the unable to save organization error
   Then the address for "Friendly" should be "83 pinner road"
   # TODO Then I should see "Failed to update map coordinates"
-  And I should be on the charity page for "Friendly"
+  And I visit the show page for the organization named "Friendly"
 #  TODO possible follow on if we could have the request re-issued on next page load
 #  Given Google is no longer indisposed
-#  And I am on the home page
+#  And I visit the home page
 #  Then the coordinates for "Friendly" should be correct
 #  Then show me the page
 
 Scenario: Redirected to sign-in when not signed-in and edit donation url
-  Given I am furtively on the edit charity page for "Friendly"
+  Given I visit the edit page for the organization named "Friendly"
   Then I should be on the sign in page
 # TODO after sign in is take the user back to the edit page
 
 Scenario: By default, not display organizations address and phone number on home page
-  Given I am on the charity page for "Friendly"
+  Given I visit the show page for the organization named "Friendly"
   Then I should not see any address or telephone information for "Nice" and "Friendly"
 
 Scenario: By default, not display organizations edit and delete on home page
-  Given I am on the charity page for "Friendly"
+  Given I visit the show page for the organization named "Friendly"
   Then I should not see any edit or delete links
 
 Scenario: By default, not display organizations address and phone number on details page
-  Given I am on the charity page for "Friendly"
+  Given I visit the show page for the organization named "Friendly"
   Then I should not see any address or telephone information for "Friendly"
 
 Scenario: By default, not display edit link on details page
-  Given I am on the charity page for "Friendly"
+  Given I visit the show page for the organization named "Friendly"
   Then I should not see any edit link for "Friendly"

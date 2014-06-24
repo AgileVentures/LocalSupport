@@ -4,7 +4,7 @@ Feature: Disclaimer about not being able to guarantee accuracy of sites content 
   I want to show a link to a disclaimer on every page
   Tracker story ID: https://www.pivotaltracker.com/story/show/49757817
 
-Background: organizations have been added to database
+  Background: organizations have been added to database
 
   Given the following organizations exist:
     | name             | address        |
@@ -15,13 +15,13 @@ Background: organizations have been added to database
     | Disclaimer | disclaimer | We disclaim everything!                                   | true         |
 
   Scenario Outline: the disclaimer page is accessible on all pages
-    Given I am on the <page>
+    Given I visit the <page>
     When I follow "Disclaimer"
     Then I should see "We disclaim everything!"
   Examples:
-    | page                                |
-    | home page                           |
-    | charity search page                 |
-    | new charity page                    |
-    | charity page for "Friendly Charity" |
+    | page                                                    |
+    | home page                                               |
+    | organisations index page                                |
+    | new organisation page                                   |
+    | show page for the organization named "Friendly Charity" |
 
