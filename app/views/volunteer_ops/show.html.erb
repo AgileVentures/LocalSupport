@@ -9,7 +9,7 @@
 
   <p>
     <b>Organisation:</b>
-    <%= @volunteer_op.organization.name %>
+    <%= link_to @volunteer_op.organization.name, organization_path(@volunteer_op.organization.id) %>
   </p>
 
 </div>
