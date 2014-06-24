@@ -18,4 +18,4 @@ Feature: As a member of the public
       | title          | description                     | organization              |
       | Office Support | Help with printing and copying. | Indian Elders Association |
     And I click "Indian Elders Association"
-    Then I should be on the show page for "Indian Elders Association"
+    Then I should be on the show page for the organization named "Indian Elders Association"
