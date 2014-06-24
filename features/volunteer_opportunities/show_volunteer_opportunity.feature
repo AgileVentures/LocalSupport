@@ -12,8 +12,10 @@ Feature: As a member of the public
       | Litter Box Scooper | Assist with feline sanitation   | Cats Are Us               |
       | Office Support     | Help with printing and copying. | Indian Elders Association |
 
-  Scenario: See a volunteer opportunity
+  Scenario: See a volunteer opportunity and hyperlink
     Given I visit the show page for the volunteer_op titled "Office Support"
     Then I should see:
       | title          | description                     | organization              |
       | Office Support | Help with printing and copying. | Indian Elders Association |
+    And I click "Indian Elders Association"
+    Then I should be on the show page for "Indian Elders Association"
