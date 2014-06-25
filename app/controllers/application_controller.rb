@@ -78,10 +78,5 @@ class ApplicationController < ActionController::Base
     current_user.try :admin?
   end
 
-  def gmap4rails_with_popup_partial(item, partial)
-    item.to_gmaps4rails  do |org, marker|
-      marker.infowindow render_to_string(:partial => partial, :locals => { :@org => org})
-    end
-  end
 
 end

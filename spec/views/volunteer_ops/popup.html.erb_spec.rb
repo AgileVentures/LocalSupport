@@ -20,7 +20,7 @@ describe "volunteer_ops/_popup.html.erb" do
     expect(rendered).to have_link 'Friendly Volunteer', :href => volunteer_op_path(op)
   end
   
-  it 'should not render a description of a volunteer opportunity' do
+  it 'should render a description of a volunteer opportunity' do
      expect(rendered).to have_content(smart_truncate(op.description, 32))
   end
   
