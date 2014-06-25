@@ -20,36 +20,14 @@ Feature: Local Resident seeking Support
       | Indian Elders Association | Care for the elderly |
       | Age UK                    | Care for the Elderly |
     And the index should not contain:
-      | Harrow Bereavement Counselling  | Counselling for the bereaved     |
-      | Harrow Bereavement Counselling  | Harrow Bereavement Counselling   |
-    Then the index should not contain:
-      | Indian Elders Association       | Care for the elderly             |
-      | Age UK                          | Care for the Elderly             |
-    Then I should not see the no results message
+      | Harrow Bereavement Counselling | Counselling for the bereaved |
+    And the search box should contain "elderly"
 
-  Scenario: Find friendly no search results message
+# starting within main site
+  Scenario: Find a bereavement counsellor
     Given I visit the home page
-    When I search for "non-existent results"
-    Then I should see the no results message
-    Given I am on the home page
-    Then I should not see the no results message
-
-# starting with web search
-  Scenario: Searching Google for "death of a relative"
-
-  Scenario: See a list of current organizations
-    Given I visit the home page
-    And cookies are approved
-    Then the index should contain:
-    | Harrow Bereavement Counselling  | Harrow Bereavement Counselling   |
-    | Indian Elders Association       | Care for the elderly             |
-    | Age UK                          | Care for the Elderly             |
-      
-  Scenario: Volunteer index page has two column layout
-    Given I visit the home page
-    And cookies are approved
-    Then I should see a two column layout
-=======
+    When I search for "Bereavement Counselling"
+    And the index should contain:
       | Harrow Bereavement Counselling | Counselling for the bereaved |
     Then the index should not contain:
       | Indian Elders Association | Care for the elderly |
@@ -71,4 +49,3 @@ Feature: Local Resident seeking Support
       | Indian Elders Association      | Care for the elderly           |
       | Age UK                         | Care for the Elderly           |
 
->>>>>>> cb73fe97a380074b6b192eadf60c9e273daca4aa
