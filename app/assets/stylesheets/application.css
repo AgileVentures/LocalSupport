@@ -108,6 +108,8 @@ body {
 
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
+
+
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-wrapper {
     margin-top: 20px ;
@@ -140,8 +142,8 @@ body {
 }
 
 /* Get the top/bottom padding equal for the links in the navbar */
-.nav .nav-pills .pull-right {
-  padding: 2px 0 2px 0 !important;
+#button-rack {
+  padding: 1px 0 1px 0 !important;
 }
 
 /* so that the extra admin-only buttons don't get too spaced out */
@@ -214,4 +216,13 @@ body {
 .form-frame  input:focus, .form-frame  textarea:focus {
     outline: 0;
     background: #FFF;
+}
+
+/* Page edit form */
+
+label.control-label#page_link_visible {
+    display: inline-block;
+}
+input#page_link_visible {
+    margin: 0;
 }

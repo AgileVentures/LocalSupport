@@ -2,6 +2,16 @@ require 'webmock/cucumber'
 require 'uri-handler'
 include ApplicationHelper
 
+Then(/^I should see the "(.*?)" image linked to "(.*?)"$/) do |image_alt, link|
+  within("a[href='#{link}']") do
+    find("img[@alt='#{image_alt}']").should_not be_nil
+  end
+end
+
+Then(/^I should see the "(.*?)" image linked to contributors$/) do |image_alt|
+  steps %{Then I should see the "#{image_alt}" image linked to "#{contributors_path}"}
+end
+
 Then /^I should see permission denied$/ do
   page.should have_content PERMISSION_DENIED
 end
@@ -10,7 +20,7 @@ Then(/^the Admin menu has a valid (.*?) link$/) do |link|
   within('#menuAdmin > ul.dropdown-menu') do
     find('a', text: link).should_not be_nil
     click_link link
-    current_path.should eq paths[link.downcase]
+    current_path.should eq paths(link.downcase)
   end
 end
 
@@ -26,7 +36,7 @@ Then /^I should see the cannot add non registered user "(.*?)" as charity admin 
 end
 
 And /^I add "(.*?)" as an admin for "(.*?)" charity$/ do |admin_email, charity|
-  steps %Q{ And I am on the edit charity page for "#{charity}"}
+  steps %Q{ And I visit the edit page for the organization named "#{charity}"}
   fill_in 'organization_admin_email_to_add', :with => admin_email
   steps %Q{
   And I press "Update Organisation"}
@@ -44,7 +54,7 @@ end
 Then /^I should( not)? see an edit button for "(.*?)" charity$/ do |negate, name|
   expectation_method = negate ? :not_to : :to
   org = Organization.find_by_name name
-  expect(page).send(expectation_method, have_link('Edit',:href => edit_organization_path(org.id)))
+  expect(page).send(expectation_method, have_link('Edit', :href => edit_organization_path(org.id)))
 end
 
 Then /^I should see "(.*?)" in the charity admin email$/ do |email|
@@ -55,10 +65,6 @@ end
 
 Then /^show me the page$/ do
   save_and_open_page
-end
-
-Given /^PENDING/ do
-  pending
 end
 
 When /^I search for "(.*?)"$/ do |text|
@@ -73,7 +79,7 @@ Given /^I fill in the new charity page validly$/ do
 end
 
 Then /^the contact information should be available$/ do
-   steps %Q{
+  steps %Q{
     When I follow "Contact"
     Then I should see "Contact Info Email us: contact@voluntaryactionharrow.org.uk Phone Us: 020 8861 5894 Write to Us: The Lodge, 64 Pinner Road, Harrow, Middlesex, HA1 4HZ Find Us: On Social Media (Click Here)"
    }
@@ -86,16 +92,16 @@ Then /^the about us should be available$/ do
 end
 Given /^I update "(.*?)" charity address to be "(.*?)"( when Google is indisposed)?$/ do |name, address, indisposed|
   steps %Q{
-    Given I am on the charity page for "#{name}"
+    Given I visit the show page for the organization named "#{name}"
     And I follow "Edit"
-    And I edit the charity address to be "#{address}" #{indisposed ? 'when Google is indisposed':''}
+    And I edit the charity address to be "#{address}" #{indisposed ? 'when Google is indisposed' : ''}
     And I press "Update Organisation"
   }
 end
 
 Given /^I update "(.*?)" charity website to be "(.*?)"$/ do |name, url|
   steps %Q{
-    Given I am on the charity page for "#{name}"
+    Given I visit the show page for the organization named "#{name}"
     And I follow "Edit"
     And I edit the charity website to be "#{url}"
     And I press "Update Organisation"
@@ -104,7 +110,7 @@ end
 
 Given /^I have created a new organization$/ do
   steps %Q{
-    Given I am on the home page
+    Given I visit the home page
     And I follow "New Organization"
     And I fill in the new charity page validly
     And I press "Create Organisation"
@@ -120,21 +126,21 @@ Given /^I furtively update "(.*?)" charity address to be "(.*?)"$/ do |name, add
 end
 
 Given /^I edit the charity website to be "(.*?)"$/ do |url|
-  fill_in('organization_website',:with => url)
+  fill_in('organization_website', :with => url)
 end
 
 When /^I edit the charity address to be "(.*?)"$/ do |address|
   stub_request_with_address(address)
-  fill_in('organization_address',:with => address)
+  fill_in('organization_address', :with => address)
 end
 
 Then /^the website link for "(.*?)" should have a protocol$/ do |name|
   steps %{
-    Given I am on the charity page for "#{name}"
+    Given I visit the show page for the organization named "#{name}"
   }
-   website = Organization.find_by_name(name).website
-   website.should =~ /^http\:\/\//
-   expect(page).to have_selector("a[href='#{website}']")
+  website = Organization.find_by_name(name).website
+  website.should =~ /^http\:\/\//
+  expect(page).to have_selector("a[href='#{website}']")
 end
 
 And /^"(.*?)" charity address is "(.*?)"$/ do |name, address|
@@ -142,14 +148,14 @@ And /^"(.*?)" charity address is "(.*?)"$/ do |name, address|
   expect(org.address).to eq(address)
 end
 
-Then /^I should see "(.*?)" before "(.*?)"$/ do |name1,name2|
+Then /^I should see "(.*?)" before "(.*?)"$/ do |name1, name2|
   str = page.body
   raise "Expected '#{name1}' first, but instead found '#{name2}' first" unless str.index(name1) < str.index(name2)
 end
 
 Then /^I should see the donation_info URL for "(.*?)"$/ do |name1|
   org1 = Organization.find_by_name(name1)
-  content =  "Donate to #{org1.name} now!"
+  content = "Donate to #{org1.name} now!"
   page.should have_xpath %Q<//a[@href = "#{org1.donation_info}" and @target = "_blank" and contains(.,'#{content}')]>
 end
 
@@ -161,7 +167,7 @@ And /^the search box should contain "(.*?)"$/ do |arg1|
   expect(page).to have_xpath("//input[@id='q' and @value='#{arg1}']")
 end
 
-Then /^I should( not)? see the no results message$/ do |negate| 
+Then /^I should( not)? see the no results message$/ do |negate|
   expectation_method = negate ? :not_to : :to
   expect(page).send(expectation_method, have_content(SEARCH_NOT_FOUND))
 end
@@ -187,6 +193,10 @@ Then /^I should not see any address or telephone information for "([^"]*?)"$/ do
   page.should_not have_content org1.address
 end
 
+Given /^I edit the donation url to be "(.*?)"$/ do |url|
+  fill_in('organization_donation_info', :with => url)
+end
+
 Then /^I should not see any edit or delete links$/ do
   page.should_not have_link "Edit"
   page.should_not have_link "Destroy"
@@ -209,7 +219,7 @@ Then /^I should( not)? see a link with text "([^"]*?)"$/ do |negate, link|
   end
 end
 
-Then /^I should( not)? see a new organizations link/ do  |negate|
+Then /^I should( not)? see a new organizations link/ do |negate|
   #page.should_not have_link "New Organization", :href => new_organization_path
   #page.should_not have_selector('a').with_attribute href: new_organization_path
   expectation_method = negate ? :not_to : :to
@@ -221,10 +231,6 @@ Then /^I should( not)? see "((?:(?!before|").)+)"$/ do |negate, text|
   expect(page).send(expectation_method, have_content(text))
 end
 
-#Then /^I should not see "(.*?)"$/ do |text|
-#  page.should_not have_content text
-#end
-
 Then(/^I should( not)? see a link or button "(.*?)"$/) do |negate, link|
   expectation_method = negate ? :not_to : :to
   expect(page).send(expectation_method, have_selector(:link_or_button, link))
@@ -232,28 +238,7 @@ end
 
 Then(/^the navbar should( not)? have a link to (.*?)$/) do |negate, link|
   expectation_method = negate ? :not_to : :to
-  within('#navbar') {expect(page).send(expectation_method, have_selector(:link_or_button, link))}
-end
-
-#Then /^I should( not)? see a button saying "(.*?)"$/ do |negate, name|
-#  expectation_method = negate ? :not_to : :to
-#  expect(page).send(expectation_method, have_button("#{name}"))
-#end
-
-# this could be DRYed out (next three methods)
-Then /^I should see contact details for "([^"]*?)"$/ do |text|
-  check_search_results text
-end
-
-Then /^I should see search results for "([^"]*?)" and "(.*?)"$/ do |text1, text2|
-  check_search_results text1
-  check_search_results text2
-end
-
-Then /^I should see search results for "([^"]*?)", "([^"]*?)" and "(.*?)"$/ do |text1, text2, text3|
-  check_search_results text1
-  check_search_results text2
-  check_search_results text3
+  within('#navbar') { expect(page).send(expectation_method, have_selector(:link_or_button, link)) }
 end
 
 Given /^I edit the charity address to be "(.*?)" when Google is indisposed$/ do |address|
@@ -273,12 +258,6 @@ Then /^the address for "(.*?)" should be "(.*?)"$/ do |name, address|
   Organization.find_by_name(name).address.should == address
 end
 
-def check_search_results(name)
-  org = Organization.find_by_name(name)
-  page.should have_link name, :href => organization_path(org.id)
-  page.should have_content smart_truncate(org.description)
-end
-
 When /^I fill in "(.*?)" with "(.*?)" within the navbar$/ do |field, value|
   within('#navbar') { fill_in(field, :with => value) }
 end
@@ -295,39 +274,23 @@ Then /^"(.*?)" org should not exist$/ do |name|
   expect(Organization.find_by_name name).to be_nil
 end
 
-Then /^I debug$/ do
-  debugger
-  0
-end
-
-And(/^a file exists:$/) do |table|
-  CSV.open("db/email_test.csv", "wb") do |csv|
-    csv << table.hashes[0].keys
-    table.hashes.each do |org|
-      csv << org.values
-    end
-  end
-end
-
 Then(/^"(.*?)" should have email "(.*?)"$/) do |org, email|
   Organization.find_by_name(org).email.should eq email
 end
-Given /^"(.*)"'s request status for "(.*)" should be updated appropriately$/ do |email,org_name|
-    steps %Q{
+
+Given /^"(.*)"'s request status for "(.*)" should be updated appropriately$/ do |email, org_name|
+  steps %Q{
       And "#{email}"'s request for "#{org_name}" should be persisted
       And I should see "You have requested admin status for #{Organization.find_by_name(org_name).name}"
       And I should not see a link or button "This is my organization"
     }
 end
 
-And /"(.*)"'s request for "(.*)" should be persisted/ do |email,org|
-    user = User.find_by_email(email)
-    org = Organization.find_by_name(org)
-    user.pending_organization_id.should eq org.id
+And /"(.*)"'s request for "(.*)" should be persisted/ do |email, org|
+  user = User.find_by_email(email)
+  org = Organization.find_by_name(org)
+  user.pending_organization_id.should eq org.id
 end
-#Then an email should be sent to "admin@myorg.com"
-#And I should be on the charity page for "#{org}"
-
 
 When(/^the URL should contain "(.*?)"$/) do |string|
   URI.parse(current_url).path.should == '/' + string
@@ -357,6 +320,7 @@ When /^I approve "(.*?)"$/ do |email|
   page.body.should have_content(email)
   click_link 'Approve'
 end
+
 Then(/^"(.*?)" is a charity admin of "(.*?)"$/) do |user_email, org_name|
   user = User.find_by_email(user_email)
   org = Organization.find_by_name(org_name)
@@ -368,20 +332,49 @@ And(/^I (un)?check "([^"]*)"$/) do |negate, css|
   page.send(box_state, css)
 end
 
-Given(/^the (.*?) for "(.*?)" has been marked (public|hidden)$/) do |field,name,mode|
+Given(/^the (.*?) for "(.*?)" has been marked (public|hidden)$/) do |field, name, mode|
   org = Organization.find_by_name(name)
-  case mode
-    when "hidden" then publish = false
-    when "public" then publish = true
-  end
+  publish = mode == 'hidden' ? false : true
   org.send("publish_#{field}=", publish)
   org.save!
 end
-Then /^the index should( not)? contain:$/ do |negative, table|
-    expectation = negative ? :should_not : :should
-    table.raw.flatten.each do |cell|
-      within('#column2') do
-        page.send(expectation, have_text(cell))
-      end
+
+Then /^I should( not)? see:$/ do |negative, table|
+  expectation = negative ? :should_not : :should
+  table.rows.flatten.each do |string|
+    page.send(expectation, have_text(string))
   end
+end
+
+Then /^the index should( not)? contain:$/ do |negative, table|
+  expectation = negative ? :should_not : :should
+  table.raw.flatten.each do |cell|
+    within('#column2') do
+      page.send(expectation, have_text(cell))
+    end
+  end
+end
+
+Then(/^I should see "([^"]*)" page before "([^"]*)"$/) do |first_item, second_item|
+  page.body.should =~ /#{first_item}.*#{second_item}/m
+end
+
+Given /^"(.*?)" has a whitespace at the end of the email address$/ do |org_name|
+  org = Organization.find_by_name(org_name)
+  org.email += ' '
+  org.save
+end
+
+Given /^associations are destroyed for:$/ do |table|
+  table.rows.flatten.each do |org_name|
+    org = Organization.find_by_name org_name
+    user = org.users.pop
+    org.save
+    user.organization_id = nil
+    user.save
+  end
+end
+
+Given /^I run the invite migration$/ do
+
 end

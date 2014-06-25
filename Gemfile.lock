@@ -39,9 +39,6 @@ GEM
       rspec-expectations (>= 2.7.0)
     awesome_print (1.2.0)
     bcrypt-ruby (3.1.2)
-    better_errors (1.1.0)
-      coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bluff (0.1.0)
@@ -81,7 +78,7 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     colored (1.2)
-    columnize (0.3.6)
+    columnize (0.8.9)
     commonjs (0.2.7)
     crack (0.4.1)
       safe_yaml (~> 0.9.0)
@@ -100,12 +97,12 @@ GEM
       cucumber-rails (>= 1.1.1)
     database_cleaner (1.0.1)
     debug_inspector (0.0.2)
-    debugger (1.6.1)
+    debugger (1.6.6)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.2.3)
+      debugger-ruby_core_source (~> 1.3.2)
     debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.2.4)
+    debugger-ruby_core_source (1.3.2)
     devise (3.0.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -116,7 +113,7 @@ GEM
       devise (~> 3.0.0)
     diff-lcs (1.2.4)
     erubis (2.7.0)
-    excon (0.25.3)
+    excon (0.33.0)
     execjs (2.0.2)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
@@ -136,8 +133,9 @@ GEM
     gherkin (2.12.1)
       multi_json (~> 1.3)
     gmaps4rails (1.5.6)
-    heroku-api (0.3.15)
-      excon (~> 0.25.1)
+    heroku-api (0.3.18)
+      excon (~> 0.27)
+      multi_json (~> 1.8)
     hike (1.2.3)
     hirb (0.7.1)
     i18n (0.6.9)
@@ -343,7 +341,6 @@ PLATFORMS
 DEPENDENCIES
   ZenTest
   aruba
-  better_errors
   binding_of_caller
   bootstrap_sortable_rails (~> 0.1.3)
   capybara (= 2.0.2)
@@ -352,7 +349,7 @@ DEPENDENCIES
   cucumber-rails
   cucumber-rails-training-wheels
   database_cleaner (= 1.0.1)
-  debugger (= 1.6.1)
+  debugger (= 1.6.6)
   devise (= 3.0.3)
   devise_invitable (~> 1.2.1)
   execjs

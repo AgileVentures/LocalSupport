@@ -133,7 +133,10 @@ describe VolunteerOpsController do
 
     describe '#org_owner?' do
       context 'when current user is nil' do
-        before { controller.stub current_user: nil }
+        before :each do 
+          allow_message_expectations_on_nil
+          controller.stub current_user: nil
+        end
 
         it 'returns false' do
           controller.instance_eval { org_owner? }.should be_false

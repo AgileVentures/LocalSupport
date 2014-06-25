@@ -2,7 +2,7 @@ require 'custom_errors'
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :store_location
+  before_filter :store_location, :assign_footer_page_links
 
   include CustomErrors
 
@@ -78,5 +78,7 @@ class ApplicationController < ActionController::Base
     current_user.try :admin?
   end
 
-
+  def assign_footer_page_links
+    @footer_page_links = Page.visible_links
+  end
 end

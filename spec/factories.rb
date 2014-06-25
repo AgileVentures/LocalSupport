@@ -15,6 +15,7 @@ FactoryGirl.define do
     name 'About Us'
     permalink 'about'
     content 'abc123'
+    link_visible true
   end
   factory :user do
     email "jj@example.com"

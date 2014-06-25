@@ -1,38 +1,30 @@
 Feature: Local Resident seeking Support
   As a local resident
-  So that I can get support for a specific condition
+  So that I can get support for a specific malady
   I want to find contact details for a local service specific to my need
   Tracker story ID: https://www.pivotaltracker.com/story/show/43946779
 
-Background: organizations have been added to database
-  
-  Given the following organizations exist:
-  | name                            | description                      | address        | postcode | website       |
-  | Harrow Bereavement Counselling  | Harrow Bereavement Counselling   | 34 pinner road | HA1 4HZ  | http://a.com/ |
-  | Indian Elders Association       | Care for the elderly             | 64 pinner road | HA1 4HA  | http://b.com/ |
-  | Age UK                          | Care for the Elderly             | 84 pinner road | HA1 4HF  | http://c.com/ |
+  Background: organizations have been added to database
+
+    Given the following organizations exist:
+      | name                           | description                  | address        | postcode | website       |
+      | Harrow Bereavement Counselling | Counselling for the bereaved | 34 pinner road | HA1 4HZ  | http://a.com/ |
+      | Indian Elders Association      | Care for the elderly         | 64 pinner road | HA1 4HA  | http://b.com/ |
+      | Age UK                         | Care for the Elderly         | 84 pinner road | HA1 4HF  | http://c.com/ |
 
 # particularly want to provide visibility to organizations with no existing web presence
   Scenario: Find help with care for elderly
-    Given I am on the home page
+    Given I visit the home page
     When I search for "elderly"
     Then the index should contain:
-    | Indian Elders Association       | Care for the elderly             |
-    | Age UK                          | Care for the Elderly             |
+      | Indian Elders Association | Care for the elderly |
+      | Age UK                    | Care for the Elderly |
     And the index should not contain:
-    | Harrow Bereavement Counselling  | Harrow Bereavement Counselling   |
-    And I should see search results for "elderly" in the table
-    And the search box should contain "elderly"
-
-# starting within main site
-  Scenario: Find a bereavement counsellor
-    Given I visit the home page
-    When I search for "Bereavement Counselling"
-    And the index should contain:
-    | Harrow Bereavement Counselling  | Harrow Bereavement Counselling   |
+      | Harrow Bereavement Counselling  | Counselling for the bereaved     |
+      | Harrow Bereavement Counselling  | Harrow Bereavement Counselling   |
     Then the index should not contain:
-    | Indian Elders Association       | Care for the elderly             |
-    | Age UK                          | Care for the Elderly             |
+      | Indian Elders Association       | Care for the elderly             |
+      | Age UK                          | Care for the Elderly             |
     Then I should not see the no results message
 
   Scenario: Find friendly no search results message
@@ -57,3 +49,26 @@ Background: organizations have been added to database
     Given I visit the home page
     And cookies are approved
     Then I should see a two column layout
+=======
+      | Harrow Bereavement Counselling | Counselling for the bereaved |
+    Then the index should not contain:
+      | Indian Elders Association | Care for the elderly |
+      | Age UK                    | Care for the Elderly |
+    Then I should not see the no results message
+
+  Scenario: Find friendly no search results message
+    Given I visit the home page
+    When I search for "non-existent results"
+    Then I should see the no results message
+    Given I visit the home page
+    Then I should not see the no results message
+
+  Scenario: See a list of current organizations
+    Given I visit the home page
+    And cookies are approved
+    Then the index should contain:
+      | Harrow Bereavement Counselling | Counselling for the bereaved |
+      | Indian Elders Association      | Care for the elderly           |
+      | Age UK                         | Care for the Elderly           |
+
+>>>>>>> cb73fe97a380074b6b192eadf60c9e273daca4aa

@@ -24,7 +24,7 @@ Feature: Categories of charities
 
   Scenario: Search for organizations in the "Animal Welfare" category
   #Given I have at least 3 organizations in the "Animal Welfare" category
-    Given I am on the home page
+    Given I visit the home page
     And I select the "Animal Welfare" category
     And I press "Submit"
     Then I should see "I love dogs"
@@ -32,7 +32,7 @@ Feature: Categories of charities
 
     # TODO must ensure this also works with searching for text so we can search within a category
   Scenario: Search for dogs in the Animal Welfare category
-    Given I am on the home page
+    Given I visit the home page
     And I select the "Animal Welfare" category
     And I search for "dogs"
     Then I should see "I love dogs"

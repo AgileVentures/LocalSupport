@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe 'layouts/invitation_table.html.erb' do
-  before(:each) do
+  before do
+    assign(:footer_page_links, [])
     assign :resend_invitation, true
     render
   end
@@ -18,3 +19,4 @@ describe 'layouts/invitation_table.html.erb' do
     rendered.should have_css('div[data-resend_invitation=true]')
   end
 end
+

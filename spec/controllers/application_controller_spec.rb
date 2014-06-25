@@ -83,6 +83,19 @@ describe ApplicationController, :helpers => :controllers do
     end
   end
 
+  describe '#assign_footer_page_links' do
+    it 'calls the model method that provides visible page links' do
+      expect(Page).to receive(:visible_links).and_return(nil)
+      subject.send(:assign_footer_page_links)  
+    end
+    it 'makes the visible page links available to the view' do
+      fake_links = Object.new
+      Page.stub(:visible_links).and_return(fake_links)
+      subject.send(:assign_footer_page_links)  
+      expect(assigns(:footer_page_links)).to be fake_links
+    end
+  end
+
   describe 'PRIVATE METHODS' do
     let(:user) { double :user }
     before { controller.stub current_user: user }
@@ -134,3 +147,13 @@ describe ApplicationController, :helpers => :controllers do
     end
   end
 end
+
+# all child controllers should implement the ApplicationController's
+# before_filter
+describe OrganizationsController do
+  it 'assigns footer page links on a given request' do
+    get :index
+    expect(assigns(:footer_page_links)).not_to be nil
+  end
+end
+
