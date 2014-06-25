@@ -4,11 +4,14 @@ class VolunteerOpsController < ApplicationController
   
   def index
     @volunteer_ops = VolunteerOp.all
-    @json = gmap4rails_with_popup_partial(@volunteer_ops, 'popup')
+    @organizations = @volunteer_ops.map { |op| op.organization }
+    @json = gmap4rails_with_popup_partial(@organizations, 'popup')
   end
   
   def show
     @volunteer_op = VolunteerOp.find(params[:id])
+    @organization = @volunteer_op.organization
+    @json = gmap4rails_with_popup_partial(@organization, 'popup')
   end
 
   def new
@@ -50,15 +53,14 @@ class VolunteerOpsController < ApplicationController
   #  end
   #end
   def gmap4rails_with_popup_partial(item, partial)
-    @organizations = @volunteer_ops.map { |op| op.organization }
 
-    @organizations.to_gmaps4rails  do |org, marker|
+    item.to_gmaps4rails  do |org, marker|
       marker.picture({
-                       :picture => "assets/volunteer_icon.png",
+                       :picture => ActionController::Base.helpers.asset_path("volunteer_icon.png"),
                        :width   => 32,
                        :height  => 32
                      })
-      marker.title   "Volunteer Opportunities at #{org.name}"
+      marker.title   "Click here to see volunteer opportunities at #{org.name}"
       marker.infowindow render_to_string(:partial => partial, :locals => { :@org => org})
     end
   end
