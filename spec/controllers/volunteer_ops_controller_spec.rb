@@ -19,16 +19,20 @@ describe VolunteerOpsController do
       ApplicationController.any_instance.stub(:gmap4rails_with_popup_partial)
       VolunteerOp.stub(:all).and_return(@results)
     end
+
     it 'assigns all volunteer_ops as @volunteer_ops' do
+      op2 = stub_model VolunteerOp, :organization => (stub_model Organization)
+      @results = [op2]
       VolunteerOp.should_receive(:all).and_return(@results)
       get :index, {}
       assigns(:volunteer_ops).should eq @results
     end
 
     it 'assigns all volunteer_op orgs as @organizations' do
-      @results.stub(:map).and_return([org])
+      org2 = stub_model Organization
+      @results.stub(:map).and_return([org2])
       get :index, {}
-      assigns(:organizations).should eq([org])
+      assigns(:organizations).should eq([org2])
     end
     
     it 'assigns @json' do

@@ -131,20 +131,6 @@ describe ApplicationController, :helpers => :controllers do
         controller.instance_eval { admin? }.should be true
       end
     end
-    
-    describe "popup partial" do
-      it "should take some argument and call to_gmap4rails on it" do
-        double_organization = double("Organization")
-        result = [double_organization]
-        partial = double("template")
-        marker = double("marker")
-        marker.should_receive(:infowindow)
-        result.should_receive(:to_gmaps4rails).and_yield(double_organization, marker)
-        @controller.should_receive(:render_to_string)
-        #not sure if we are supposed to test private method on controller ...
-        @controller.send(:gmap4rails_with_popup_partial, result, partial)
-      end
-    end
   end
 end
 
