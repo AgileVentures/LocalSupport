@@ -37,26 +37,29 @@ describe VolunteerOpsController do
     
     it 'assigns @json' do
       json = 'my markers'
-      @results.stub(:map).and_return([org])
-      ApplicationController.any_instance.should_receive(:gmap4rails_with_popup_partial).and_return(json)
+      org2 = stub_model Organization
+      @results.stub(:map).and_return([org2])
+      controller.should_receive(:gmap4rails_with_popup_partial).and_return(json)
       get :index, {}
-      assigns(:organizations).should eq([org])
       assigns(:json).should eq(json)
     end
   end
 
   describe 'GET show' do
     it 'assigns the requested volunteer_op as @volunteer_op' do
-      controller.stub org_owner?: true
-      VolunteerOp.should_receive(:find).with(op.id.to_s) { op }
-      get :show, {:id => op.id}
-      assigns(:volunteer_op).should eq op
+      op2 = stub_model VolunteerOp, :organization => (stub_model Organization)
+      @results = [op2]
+      VolunteerOp.should_receive(:find).with(op2.id.to_s) { op2 }
+      get :show, {:id => op2.id}
+      assigns(:volunteer_op).should eq op2
     end
 
     it 'non-org-owners allowed' do
+      op2 = stub_model VolunteerOp, :organization => (stub_model Organization)
+      @results = [op2]
       controller.stub org_owner?: false
-      VolunteerOp.stub(:find)
-      get :show, {:id => op.id}
+      VolunteerOp.should_receive(:find).with(op2.id.to_s) { op2 }
+      get :show, {:id => op2.id}
       response.status.should eq 200
     end
   end

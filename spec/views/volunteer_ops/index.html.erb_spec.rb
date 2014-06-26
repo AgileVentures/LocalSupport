@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "volunteer_ops/index" do
+describe "volunteer_ops/index", :js => true  do
   before(:each) do
     @org1 = stub_model(Organization, :name => "The Addams Family",  
                       :address => "1313 Mockingbird Lane")
@@ -37,9 +37,8 @@ describe "volunteer_ops/index" do
   end
   
   it "displays the javascript for a google map with a real call to Google" do
-    org1 = stub_model(Organization)
-    org2 =  stub_model(Organization)
-    orgs = [org1, org2]
+    orgs = [@org1, @org2]
+    assign(:footer_page_links, [])
     assign(:json, orgs.to_gmaps4rails)
     render template: "volunteer_ops/index", layout: "layouts/application"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
@@ -52,6 +51,7 @@ describe "volunteer_ops/index" do
 
   it "displays the javascript for a google map" do
     orgs = [@org1, @org2]
+    assign(:footer_page_links, [])
     assign(:json, orgs.to_gmaps4rails)
     render template: "volunteer_ops/index", layout: "layouts/application"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"

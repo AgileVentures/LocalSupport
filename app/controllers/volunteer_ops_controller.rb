@@ -39,21 +39,10 @@ class VolunteerOpsController < ApplicationController
   end
 
   def org_owner?
-    #TODO this is the best we can do without nested routes
     current_user.organization.present? if current_user.present?
   end
-  
-  #def gmap4rails_with_popup_partial(item, partial)
-  #  item.each do |op|
-  #    op.organizations.each do |org, marker|
-  #      org.to_gmaps4rails  do 
-  #      marker.infowindow render_to_string(:partial => partial, :locals => { :@org => org.organization})
-  #    end
-  #      end
-  #  end
-  #end
-  def gmap4rails_with_popup_partial(item, partial)
 
+  def gmap4rails_with_popup_partial(item, partial)
     item.to_gmaps4rails  do |org, marker|
       marker.picture({
                        :picture => ActionController::Base.helpers.asset_path("volunteer_icon.png"),
