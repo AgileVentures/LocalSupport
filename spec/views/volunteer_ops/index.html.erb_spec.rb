@@ -36,18 +36,6 @@ describe "volunteer_ops/index", :js => true  do
     end
   end
   
-  it "displays the javascript for a google map with a real call to Google" do
-    orgs = [@org1, @org2]
-    assign(:footer_page_links, [])
-    assign(:json, orgs.to_gmaps4rails)
-    render template: "volunteer_ops/index", layout: "layouts/application"
-    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
-    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_zoom = true')]"
-    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_latitude = 51.5978')]"
-    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_longitude = -0.337')]"
-    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.zoom = 12')]"
-    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
-  end
 
   it "displays the javascript for a google map" do
     orgs = [@org1, @org2]
