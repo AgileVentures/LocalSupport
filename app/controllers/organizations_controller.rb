@@ -96,16 +96,16 @@ class OrganizationsController < ApplicationController
   end
 
   private
+  def gmap4rails_with_popup_partial(item, partial)
+    item.to_gmaps4rails  do |org, marker|
+      marker.infowindow render_to_string(:partial => partial, :locals => { :@org => org})
+    end
+  end
   def user_can_edit?(org)
     unless current_user.try(:can_edit?,org)
       flash[:notice] = PERMISSION_DENIED
       redirect_to organization_path(params[:id]) and return false
     end
     true
-  end
-  def gmap4rails_with_popup_partial(item, partial)
-    item.to_gmaps4rails  do |org, marker|
-      marker.infowindow render_to_string(:partial => partial, :locals => { :@org => org})
-    end
   end
 end

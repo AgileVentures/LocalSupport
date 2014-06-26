@@ -1,28 +1,14 @@
 require 'spec_helper'
 
 describe "organizations/index.html.erb", :js => true do
-  let(:org1) { stub_model Organization,
-               name: 'test1',
-               address: '123 candy lane',
-               telephone: '911',
-               description: 'rainbows for all'
-  }
-  let(:org2) { stub_model Organization,
-               name: 'test2',
-               address: '321 candy lane',
-               telephone: '119',
-               description: 'unicorns are real'
-  }
 
-  # The commented out test objects provide data for more detailed map
-  # markers than those currently shown to the user.
-  # let(:org1) do
-  #   stub_model Organization,:name => 'test', :address => "12 pinner rd", :postcode => "HA1 4HP",:telephone => "1234", :website => 'http://a.com', :description => 'I am test organization hahahahahhahaha', :lat => 1, :lng => -1
-  # end
+  let(:org1) do
+    stub_model Organization,:name => 'test', :address => "12 pinner rd", :postcode => "HA1 4HP",:telephone => "1234", :website => 'http://a.com', :description => 'I am test organization hahahahahhahaha', :lat => 1, :lng => -1
+  end
 
-  # let(:org2) do
-  #   stub_model Organization,:name => 'test2', :address => "12 oxford rd", :postcode => "HA1 4HX", :telephone => "4534", :website => 'http://b.com', :description => 'I am ', :lat => 1, :lng => -1
-  # end
+  let(:org2) do
+    stub_model Organization,:name => 'test2', :address => "12 oxford rd", :postcode => "HA1 4HX", :telephone => "4534", :website => 'http://b.com', :description => 'I am ', :lat => 1, :lng => -1
+  end
 
   let(:organizations) do
     [org1,org2]
@@ -70,6 +56,13 @@ describe "organizations/index.html.erb", :js => true do
     rendered.should_not have_content org2.telephone
   end
 
+  it "does not renders edit and destroy links" do
+    rendered.should_not have_link 'Edit'
+    rendered.should_not have_link 'Destroy'
+    rendered.should_not have_content org2.address
+    rendered.should_not have_content org2.telephone
+  end
+
   it "displays the javascript for a google map" do
     assign(:json, organizations.to_gmaps4rails)
     assign(:footer_page_links, [])
@@ -82,4 +75,5 @@ describe "organizations/index.html.erb", :js => true do
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.zoom = 12')]"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
   end
+
 end
