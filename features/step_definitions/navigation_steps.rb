@@ -141,3 +141,9 @@ Then(/^navbar button "(.*?)" should( not)? be active$/) do |button_text, negativ
     page.send(expectation_method, have_css('li.active > a', :text => "#{button_text}"))
   end
 end
+
+
+Then(/^the page includes a hyperlink to "([^"]*)"$/) do |link|
+  #page.should have_link link
+  page.should have_xpath("//a[contains(.,'#{link}') and @href=\"#{link}\"]")
+end
