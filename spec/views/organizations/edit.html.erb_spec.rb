@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'debugger'
+
 
 describe "organizations/edit.html.erb" do
   before(:each) do
@@ -38,6 +40,20 @@ describe "organizations/edit.html.erb" do
     end
   end
 
+  it "renders the fields in order similar to show template" do
+    render
+    fields = ['organization_name',
+    					'organization_description',
+    					'organization_address',
+    					'organization_postcode',
+    					'organization_email',
+    					'organization_website',
+    					'organization_telephone',
+    					'organization_donation_info',
+    ]
+    indexes = fields.map { |element| rendered.index(element) }
+    indexes.should eq indexes.sort
+  end
 
 it "renders the donation_info url in edit form" do
   render
