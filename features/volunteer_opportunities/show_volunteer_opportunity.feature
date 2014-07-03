@@ -9,7 +9,7 @@ Feature: As a member of the public
       | Indian Elders Association | Care for the elderly | 64 pinner road | HA1 4HA  | http://b.com/ |
     Given the following volunteer opportunities exist:
       | title              | description                                     | organization              |
-      | Litter Box Scooper | Assist with feline sanitation                   | Cats Are Us               |
+      | Litter Box Scooper | Assist with feline sanitation   test@test.com   | Cats Are Us               |
       | Office Support     | Help with printing and copying. http://test.com | Indian Elders Association |
 
   Scenario: See a volunteer opportunity and hyperlink
@@ -23,3 +23,7 @@ Feature: As a member of the public
   Scenario: See URLs in volunteer opportunity pages are hyperlinked
     Given I visit the show page for the volunteer_op titled "Office Support"
     Then the page includes a hyperlink to "http://test.com"
+
+  Scenario: See emails in volunteer opportunity pages are hyperlinked
+    Given I visit the show page for the volunteer_op titled "Litter Box Scooper"
+    Then the page includes email hyperlink "test@test.com"

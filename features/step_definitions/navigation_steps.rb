@@ -142,8 +142,11 @@ Then(/^navbar button "(.*?)" should( not)? be active$/) do |button_text, negativ
   end
 end
 
-
 Then(/^the page includes a hyperlink to "([^"]*)"$/) do |link|
   #page.should have_link link
   page.should have_xpath("//a[contains(.,'#{link}') and @href=\"#{link}\"]")
+end
+
+Then(/^the page includes email hyperlink "([^"]*)"$/) do  |link|
+  page.should have_link link
 end
