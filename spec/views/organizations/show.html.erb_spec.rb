@@ -51,6 +51,22 @@ describe 'organizations/show.html.erb' do
     end
   end
 
+  
+  it "renders the fields in order similar to edit template" do
+    render
+    fields = ['organization_name',
+    					'organization_description',
+    					'organization_address',
+    					'organization_postcode',
+    					'organization_email',
+    					'organization_website',
+    					'organization_telephone',
+    					'organization_donation_info',
+    ]
+    indexes = fields.map { |element| rendered.index(element) }
+    indexes.should eq indexes.sort
+  end
+
   context 'some information is private' do
     it 'should not show telephone and address by default but should show email by default' do
       render

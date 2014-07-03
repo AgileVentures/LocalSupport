@@ -8,12 +8,19 @@
           </ul>
         </div>
     <% end %>
-
     <table class="org_table" >
       <tbody>
       <tr>
         <td data-toggle="tooltip" title="Enter a unique name">
           <%= f.text_area :name, :size => "50x2", :class => "org_form org_h3" %>
+        </td>
+        <td class="borderless">
+          <input type="checkbox" disabled checked = "checked" value="">
+        </td>
+      </tr>
+      <tr>
+        <td class="borderless" data-toggle="tooltip" title="Enter a full description here. When an individual searches this database all words in this description will be searched.">
+          <%= f.text_area :description, :class => "org_form", :cols => "10", :rows => "10" %>
         </td>
         <td class="borderless">
           <input type="checkbox" disabled checked = "checked" value="">
@@ -41,14 +48,6 @@
         </td>
         <td class="borderless" data-toggle="tooltip" title="To make your email address visible to the public check this box">
           <%= f.check_box :publish_email %>
-        </td>
-      </tr>
-      <tr>
-        <td class="borderless" data-toggle="tooltip" title="Enter a full description here. When an individual searches this database all words in this description will be searched.">
-          <%= f.text_area :description, :class => "org_form", :cols => "10", :rows => "10" %>
-        </td>
-        <td class="borderless">
-          <input type="checkbox" disabled checked = "checked" value="">
         </td>
       </tr>
       <tr>
