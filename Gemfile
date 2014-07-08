@@ -95,3 +95,4 @@ gem 'redcarpet'
 gem 'url_validator'
 
 
+gem 'rails_autolink'

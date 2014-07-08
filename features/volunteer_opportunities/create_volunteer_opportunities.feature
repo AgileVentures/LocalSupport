@@ -34,6 +34,14 @@ Feature: Org admin creating a volunteer work opportunity
     And I should see "For no pay"
     And I should see "Organisation: Friendly"
 
+  Scenario: Org-owner creating a volunteer opportunity with invalid data
+    Given I am signed in as a charity worker related to "Friendly"
+    And I visit the new volunteer opportunity page
+    And I should see "Create a new Volunteer Opportunity"
+    And I submit an opportunity with title "" and description ""
+    And I should see "Title can't be blank"
+    And I should see "Description can't be blank"
+
   Scenario: Only org-owners can create volunteer opportunities
     # Tested that the API is restricted in the request spec
     Given I visit the show page for the organization named "Friendly"
