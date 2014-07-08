@@ -26,18 +26,16 @@ Then /^I should see "([^"]*?)" and "([^"]*?)" in the map$/ do |name1, name2|
   check_map([name1,name2])
 end
 
+Given(/^the map should show the opportunity (.*)$/) do |op|
+    page.should have_xpath "//script[contains(.,'#{op}')]"
+end
 
 def check_map(names)
-  # this is specific to checking for all items when we want a generic one
-  #page.should have_xpath "//script[contains(.,'Gmaps.map.markers = #{Organization.all.to_gmaps4rails}')]"
-
   names.each do |name|
     page.should have_xpath "//script[contains(.,'#{name}')]"
-    #org = Organization.find_by_name(name)
     Organization.all.to_gmaps4rails.should match(name)
   end
 end
-
 
 Then /^I should see search results for "(.*?)" in the table$/ do |search_terms|
   orgs = Organization.search_by_keyword(search_terms)

@@ -18,4 +18,12 @@ Feature: As a member of the public
     Given I visit the volunteer opportunities page
     And cookies are approved
     And I should see "Indian Elders Association" and "Cats Are Us" in the map
-    And I should see "Litter Box Scooper" and "Office Support" in the map
+
+  Scenario Outline: Volunteer opportunites are listed in map popups
+    Given I visit the volunteer opportunities page
+    And cookies are approved
+    And the map should show the opportunity <name>
+    Examples:
+      | name               |
+      | Litter Box Scooper |
+      | Office Support     |
