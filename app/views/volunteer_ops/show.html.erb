@@ -12,4 +12,5 @@
     <%= link_to @volunteer_op.organization.name, organization_path(@volunteer_op.organization.id) %>
   </p>
 
+<% render partial: 'shared/map_scripts', locals: {json: @json} %>
 </div>

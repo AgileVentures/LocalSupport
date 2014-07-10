@@ -137,7 +137,7 @@ end
 
 Then(/^navbar button "(.*?)" should( not)? be active$/) do |button_text, negative|
   expectation_method = negative ? :should_not : :should
-  within('.nav.nav-pills.pull-right') do |buttons|
+  within('.nav.nav-pills.pull-right') do
     page.send(expectation_method, have_css('li.active > a', :text => "#{button_text}"))
   end
 end

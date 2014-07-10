@@ -16,11 +16,10 @@ Feature: As a member of the public
 
   Scenario: See a list of current volunteer opportunities
     Given I visit the volunteer opportunities page
-    Then I should see:
-      | title              | description                     | organization              |
-      | Litter Box Scooper | Assist with feline sanitation   | Cats Are Us               |
-      | Office Support     | Help with printing and copying. | Indian Elders Association |
-
+    And cookies are approved
+    Then the index should contain:
+    | Litter Box Scooper              | Assist with feline sanitation      | Cats Are Us               |
+    | Office Support                  | Help with printing and copying.    | Indian Elders Association |
   Scenario: Volunteer index page has two column layout
     Given I visit the volunteer opportunities page
     Then I should see a two column layout
