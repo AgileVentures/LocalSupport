@@ -10,4 +10,9 @@ describe VolunteerOp do
     v = VolunteerOp.new(description:'')
     expect(v).to have(1).errors_on(:description)
   end
+
+  it 'must not be created without an organisation' do
+    v = VolunteerOp.new(organization_id:nil)
+    expect(v).to have(1).error_on(:organization_id)
+  end
 end
