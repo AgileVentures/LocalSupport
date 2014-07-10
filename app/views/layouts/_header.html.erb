@@ -16,7 +16,7 @@
               voluntary and community organisations</a>
 
             <div class="nav-collapse collapse">
-              <ul class="nav nav-pills pull-right">
+              <ul id="button-rack" class="nav nav-pills pull-right">
                 <% if feature_active? :volunteer_ops_list %>
                     <li class="<%= active_if 'organizations' %>">
                       <%= link_to "Organisations", organizations_path %>

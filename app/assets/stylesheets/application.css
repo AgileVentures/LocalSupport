@@ -20,6 +20,13 @@ body {
     background-color: whitesmoke !important;
 }
 
+.ls_infobox {
+  border-radius: 4px;
+  margin-bottom: 8px;
+  background: white;
+  padding: 5px;
+}
+
 /* GLOBAL STYLES
 -------------------------------------------------- */
 .page-frame {
@@ -101,6 +108,8 @@ body {
 
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
+
+
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-wrapper {
     margin-top: 20px ;
@@ -133,8 +142,8 @@ body {
 }
 
 /* Get the top/bottom padding equal for the links in the navbar */
-.nav .nav-pills .pull-right {
-  padding: 2px 0 2px 0 !important;
+#button-rack {
+  padding: 1px 0 1px 0 !important;
 }
 
 /* so that the extra admin-only buttons don't get too spaced out */
