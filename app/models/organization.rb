@@ -8,6 +8,7 @@ end
 
 class Organization < ActiveRecord::Base
   #validates_presence_of :website, :with => /http:\/\//
+  acts_as_paranoid
   validates_url :website, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.website.present?}
   validates_url :donation_info, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.donation_info.present?}
 

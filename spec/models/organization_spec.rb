@@ -502,4 +502,13 @@ describe Organization do
     end
   end
 
+  describe 'destroy uses acts_as_paranoid' do
+    it 'can be recovered' do
+      @org1.destroy
+      expect(Organization.find_by_name('Harrow Bereavement Counselling')).to eq nil
+      Organization.only_deleted.find_by_name('Harrow Bereavement Counselling').recover
+      expect(Organization.find_by_name('Harrow Bereavement Counselling')).to eq @org1
+    end
+  end
+
 end
