@@ -11,6 +11,7 @@
     <b>Organisation:</b>
     <%= link_to @volunteer_op.organization.name, organization_path(@volunteer_op.organization.id) %>
   </p>
+      <%= link_to("Edit", edit_volunteer_op_path(@volunteer_op.id), {:class => 'btn btn-primary'}) %>
 
 <% render partial: 'shared/map_scripts', locals: {json: @json} %>
 </div>
