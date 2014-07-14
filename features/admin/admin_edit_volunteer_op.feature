@@ -22,8 +22,11 @@ Scenario:
   When I visit the show page for the volunteer_op titled "Litter Box Scooper"
   Then I should see an edit button for "Litter Box Scooper" volunteer opportunity
 
-  # Unimplemented scenarios : Non-admin cannot see edit button, guest cannot see edit button
 Scenario:
   Given I am signed in as a non-admin
   When I visit the show page for the volunteer_op titled "Litter Box Scooper"
+  Then I should not see an edit button for "Litter Box Scooper" volunteer opportunity
+
+Scenario:
+  Given I visit the show page for the volunteer_op titled "Litter Box Scooper"
   Then I should not see an edit button for "Litter Box Scooper" volunteer opportunity

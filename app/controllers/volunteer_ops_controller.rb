@@ -1,16 +1,17 @@
 class VolunteerOpsController < ApplicationController
   layout 'two_columns'
   before_filter :authorize, :except => [:show, :index]
-  
+
   def index
     @volunteer_ops = VolunteerOp.all
     @organizations = @volunteer_ops.map { |op| op.organization }
     @json = gmap4rails_with_popup_partial(@organizations, 'popup')
   end
-  
+
   def show
     @volunteer_op = VolunteerOp.find(params[:id])
     @organization = @volunteer_op.organization
+    @editable = current_user.can_edit?(@organization) if current_user
     @json = gmap4rails_with_popup_partial(@organization, 'popup')
   end
 

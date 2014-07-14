@@ -50,6 +50,7 @@ describe VolunteerOpsController do
       op2 = stub_model VolunteerOp, :organization => (stub_model Organization)
       @results = [op2]
       VolunteerOp.should_receive(:find).with(op2.id.to_s) { op2 }
+      @user.stub(:can_edit?).with(org).and_return(true)
       get :show, {:id => op2.id}
       assigns(:volunteer_op).should eq op2
     end
@@ -63,15 +64,32 @@ describe VolunteerOpsController do
       response.status.should eq 200
     end
 
-    it "admin user has true editable flag" do
-      org = stub_model Organization
-      op2 = stub_model VolunteerOp, :organization => (org)
-      @results = [op2]
-      VolunteerOp.stub(:find).with(op2.id.to_s) { op2 }
-      @user.stub(:can_edit?).with(org).and_return(true)
-      get :show, {:id => op2.id}
-      expect(assigns(:editable)).to be_true
+    describe "when user is signed in" do
+      it "admin user has true editable flag" do
+        org = stub_model Organization
+        op2 = stub_model VolunteerOp, :organization => (org)
+        @results = [op2]
+        VolunteerOp.stub(:find).with(op2.id.to_s) { op2 }
+        user.stub(:can_edit?).with(org).and_return(true)
+        controller.stub(:current_user).and_return(user)
+        get :show, {:id => op2.id}
+        expect(assigns(:editable)).to be_true
+      end
     end
+
+    describe "when user is not signed in" do
+      let (:user) { nil }
+      it "user has false editable flag" do
+        org = stub_model Organization
+        op2 = stub_model VolunteerOp, :organization => (org)
+        @results = [op2]
+        VolunteerOp.stub(:find).with(op2.id.to_s) { op2 }
+        #user.stub(:can_edit?).with(org).and_return(false)
+        get :show, {:id => op2.id}
+        expect(assigns(:editable)).to be_false
+      end
+    end
+
   end
 
   describe 'GET new' do
