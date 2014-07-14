@@ -29,6 +29,7 @@ class OrganizationsController < ApplicationController
   def show
     @organization = Organization.find(params[:id])
     @editable = current_user.can_edit?(@organization) if current_user
+    @deletable = current_user.can_delete?(@organization) if current_user
     @can_create_volunteer_op = current_user.belongs_to?(@organization) if current_user
     @grabbable = current_user ? current_user.can_request_org_admin?(@organization) : true
    # @next_path = current_user ? organization_user_path(@organization.id, current_user.id) : new_user_session_path

@@ -41,6 +41,25 @@ describe User do
     user.admin.should be_false
   end
 
+  describe '#can_delete?' do
+    context 'is admin' do
+      subject(:user) { create(:user, admin: true) }
+
+      it 'can edit organizations' do
+        user.can_delete?(model).should be_true
+      end
+
+    end
+    context 'is not admin' do
+      subject(:user) { create(:user, admin: false) }
+
+      it 'can edit organizations' do
+        user.can_delete?(model).should be_false
+      end
+
+    end
+  end
+
   describe '#can_edit?' do
     context 'is admin' do
       subject(:user) { create(:user, admin: true) }
