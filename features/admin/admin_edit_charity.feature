@@ -33,10 +33,3 @@ Feature: Admin editing charity
     Then I should be on the show page for the organization named "Friendly"
     And I should see permission denied
 
-  Scenario: Non-admin unsuccessfully attempts to delete a charity
-    Given I am signed in as a non-admin
-    And I delete "Friendly" charity
-    Then I should be on the show page for the organization named "Friendly"
-    And I should see permission denied
-
-

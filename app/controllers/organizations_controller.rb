@@ -91,8 +91,9 @@ class OrganizationsController < ApplicationController
     end
     @organization = Organization.find(params[:id])
     @organization.destroy
+    flash[:success] = "Deleted #{@organization.name}"
 
-    redirect_to organizations_url
+    redirect_to organizations_path
   end
 
   private
