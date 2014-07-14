@@ -1,16 +1,18 @@
-  <div class="table table-responsive">
-    <table>
+  <div>
+    <table class="table table-responsive sortable">
        <thead>
           <tr>
             <th>User Email</th>
-            <th>Organization</th>
+            <th>Last Login</th>
+            <th>Associated Organization</th>
             <th>Pending Organization</th>
             <th> </th>
           </tr>
         </thead>
       <% @users.each do |user| %>
-        <tr>
+        <tr id="<%= user.id %>">
           <td><%= user.email %></td>
+          <td><%= !user.last_sign_in_at.nil? ? time_ago_in_words(user.last_sign_in_at) + ' ago' : 'never' %> </td>
           <td><%= user.organization.name if user.organization %></td>
           <td><%= user.pending_organization.name if user.pending_organization %></td>
           <td><%= link_to('Approve', user_report_path(id: user.id), :method => :put) if user.pending_organization %></td>

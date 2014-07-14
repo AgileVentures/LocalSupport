@@ -1,5 +1,4 @@
 // for organization_reports/without_users_index.html.erb
-//= require bootstrap-sortable
 
 (function ($) {
     'use strict';
