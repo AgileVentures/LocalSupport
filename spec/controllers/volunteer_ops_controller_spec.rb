@@ -34,7 +34,7 @@ describe VolunteerOpsController do
       get :index, {}
       assigns(:organizations).should eq([org2])
     end
-    
+
     it 'assigns @json' do
       json = 'my markers'
       org2 = stub_model Organization
@@ -62,6 +62,16 @@ describe VolunteerOpsController do
       get :show, {:id => op2.id}
       response.status.should eq 200
     end
+
+    it "admin user has true editable flag" do
+      org = stub_model Organization
+      op2 = stub_model VolunteerOp, :organization => (org)
+      @results = [op2]
+      VolunteerOp.stub(:find).with(op2.id.to_s) { op2 }
+      @user.stub(:can_edit?).with(org).and_return(true)
+      get :show, {:id => op2.id}
+      expect(assigns(:editable)).to be_true
+    end
   end
 
   describe 'GET new' do
@@ -78,7 +88,7 @@ describe VolunteerOpsController do
       response.status.should eq 302
     end
   end
-  
+
   describe 'POST create' do
     let(:params) { {volunteer_op: {title: 'hard work', description: 'for the willing'}} }
     before do
@@ -140,7 +150,7 @@ describe VolunteerOpsController do
 
     describe '#org_owner?' do
       context 'when current user is nil' do
-        before :each do 
+        before :each do
           allow_message_expectations_on_nil
           controller.stub current_user: nil
         end
