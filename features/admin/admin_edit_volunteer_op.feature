@@ -28,5 +28,11 @@ Scenario:
   Then I should not see an edit button for "Litter Box Scooper" volunteer opportunity
 
 Scenario:
-  Given I visit the show page for the volunteer_op titled "Litter Box Scooper"
+  # Not logged in
+  When I visit the show page for the volunteer_op titled "Litter Box Scooper"
   Then I should not see an edit button for "Litter Box Scooper" volunteer opportunity
+
+Scenario: Admin successfully changes the description of an opportunity
+  Given I am signed in as a admin
+  And I update "Litter Box Scooper" description to be "Clean up cat mess"
+  Then the description for "Litter Box Scooper" should be "Clean up cat mess"
