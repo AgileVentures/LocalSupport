@@ -145,19 +145,27 @@ describe VolunteerOpsController do
       before do
         allow(user).to receive(:can_edit?).with(@org).and_return(true)
       end
-      it 'assigns the requested volunteer_op as @volunteer_op'
-        #       assigns(:volunteer_op).should eq op
+      it 'assigns the requested volunteer_op as @volunteer_op' do
+        get :edit, {:id => @op2.id}
+        assigns(:volunteer_op).should eq @op2
+      end
       it 'renders an edit form'  do
         get :edit, {:id => @op2.id}
         expect(response).to render_template 'edit'
       end
-      it 'has title and description fields'
+      xit 'has title and description fields' do
+        #
+      end
     end
     context 'user has no edit privilege' do
       before do
         allow(user).to receive(:can_edit?).with(@org).and_return(true)
       end
-      it 'redirects to the opportunity show page'
+      xit 'redirects to the opportunity show page' do
+
+        #
+      end
+    end
   end
 
   describe 'POST update' do

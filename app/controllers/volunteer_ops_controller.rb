@@ -1,6 +1,6 @@
 class VolunteerOpsController < ApplicationController
   layout 'two_columns'
-  before_filter :authorize, :except => [:show, :index]
+  before_filter :authorize, :except => [:show, :index, :edit]
 
   def index
     @volunteer_ops = VolunteerOp.all
@@ -30,6 +30,7 @@ class VolunteerOpsController < ApplicationController
   end
 
   def edit
+    @volunteer_op = VolunteerOp.find(params[:id])
   end
 
   private
