@@ -11,3 +11,20 @@ Given(/^that the (.+) flag is (enabled|disabled)$/) do |feature, state|
     Feature.create!(name: feature, active: (state == 'enabled'))
   end
 end
+
+Given /^I update "(.*?)" description to be "(.*?)"$/ do |title, description|
+  steps %Q{
+    Given I visit the show page for the volunteer_op titled "#{title}"
+    And I follow "Edit"
+    And I edit the description to be "#{description}"
+    And I press "Update Opportunity"
+  }
+end
+
+Given /^I edit the description to be "(.*?)"$/ do |text|
+  fill_in('description', :with => text)
+end
+
+Then /^the description for "(.*?)" should be "(.*?)"$/ do |title, description|
+  expect(VolunteerOp.find_by_title(title).description).to eql(description)
+end
