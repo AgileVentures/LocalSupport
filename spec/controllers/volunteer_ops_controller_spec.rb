@@ -134,6 +134,35 @@ describe VolunteerOpsController do
     end
   end
 
+  describe 'GET edit' do
+    before do
+      @org = stub_model Organization
+      @op2 = stub_model VolunteerOp, :organization => (@org)
+      @results = [@op2]
+      allow(VolunteerOp).to receive(:find).with(@op2.id.to_s).and_return(@op2)
+    end
+    context 'admin user logged in' do
+      before do
+        allow(user).to receive(:can_edit?).with(@org).and_return(true)
+      end
+      it 'assigns the requested volunteer_op as @volunteer_op'
+        #       assigns(:volunteer_op).should eq op
+      it 'renders an edit form'  do
+        get :edit, {:id => @op2.id}
+        expect(response).to render_template 'edit'
+      end
+      it 'has title and description fields'
+    end
+    context 'user has no edit privilege' do
+      before do
+        allow(user).to receive(:can_edit?).with(@org).and_return(true)
+      end
+      it 'redirects to the opportunity show page'
+  end
+
+  describe 'POST update' do
+  end
+
   describe 'PRIVATE METHODS' do
     let(:user) { double :user }
     before { controller.stub current_user: user }

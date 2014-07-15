@@ -29,6 +29,9 @@ class VolunteerOpsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   private
 
   def authorize
