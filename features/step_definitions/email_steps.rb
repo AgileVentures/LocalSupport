@@ -1,3 +1,10 @@
+And(/^an email should be sent to "(.*?)" confirming request$/) do |email|
+  last_mail = ActionMailer::Base.deliveries.last
+  expect(last_mail).not_to be_nil
+  expect(last_mail.to).to eq email
+  ActionMailer::Base.deliveries.size.should eq 1
+end
+
 And /^I should receive a "(.*?)" email$/ do |arg1|
   @email = ActionMailer::Base.deliveries.last
   @email.subject.should include(arg1)

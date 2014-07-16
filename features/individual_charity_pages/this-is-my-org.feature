@@ -5,20 +5,22 @@ Feature: This is my organization
 
   Background:
     Given the following users are registered:
-       | email              | password       | admin | confirmed_at        | organization |
-       | nonadmin@myorg.com | mypassword1234 | false | 2008-01-01 00:00:00 |              |
+      | email              | password       | admin | confirmed_at        | organization |
+      | nonadmin@myorg.com | mypassword1234 | false | 2008-01-01 00:00:00 |              |
+      | admin@myorg.com    | mypassword1234 | true  | 2008-01-01 00:00:00 |              |
     And the following organizations exist:
-       | name             | address        |
-       | The Organization | 83 pinner road |
+      | name             | address        |
+      | The Organization | 83 pinner road |
     And cookies are approved
 
   Scenario: I am a signed in user who requests to be admin for my organization
-    Given I am signed in as a non-admin 
+    Given I am signed in as a non-admin
     When I visit the show page for the organization named "The Organization"
     Then I should see a link or button "This is my organization"
     And I click "This is my organization"
     Then I should be on the show page for the organization named "The Organization"
     And "nonadmin@myorg.com"'s request status for "The Organization" should be updated appropriately
+    And an email should be sent to "admin@myorg.com" confirming request
 
   @javascript
   Scenario: I am not signed in, I will be offered "This is my organization" claim button
