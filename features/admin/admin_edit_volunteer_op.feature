@@ -33,6 +33,6 @@ Scenario:
   Then I should not see an edit button for "Litter Box Scooper" volunteer opportunity
 
 Scenario: Admin successfully changes the description of an opportunity
-  Given I am signed in as a admin
+  Given I am signed in as an admin
   And I update "Litter Box Scooper" description to be "Clean up cat mess"
   Then the description for "Litter Box Scooper" should be "Clean up cat mess"

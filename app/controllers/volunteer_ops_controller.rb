@@ -33,6 +33,9 @@ class VolunteerOpsController < ApplicationController
     @volunteer_op = VolunteerOp.find(params[:id])
   end
 
+  def update
+  end
+
   private
 
   def authorize

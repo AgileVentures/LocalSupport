@@ -153,9 +153,6 @@ describe VolunteerOpsController do
         get :edit, {:id => @op2.id}
         expect(response).to render_template 'edit'
       end
-      xit 'has title and description fields' do
-        #
-      end
     end
     context 'user has no edit privilege' do
       before do
@@ -169,6 +166,32 @@ describe VolunteerOpsController do
   end
 
   describe 'POST update' do
+    let(:org) { stub_model Organization }
+    let(:op2) do
+      stub_model VolunteerOp,
+      :organization => org,
+      :title => 'original title',
+      :description => 'original description'
+    end
+    context 'user has edit privileges' do
+      before do
+        allow(user).to receive(:can_edit?).with(org.id.to_s).and_return(true)
+      end
+      it 'updates the model'
+      it 'sets a flash message for success'
+      it 'redirects to the show page' do
+        put :update, {:id => op2.id,
+          :title => 'new title',
+          :description => 'new description'}
+        response.should redirect_to op2
+      end
+    end
+    context 'user has no edit privileges' do
+      it 'does not update the model'
+      it 'sets a flash message for denied permission'
+      it 'redirects to /'
+      # controller.should_receive(:redirect_to).with(root_path) { true }
+    end
   end
 
   describe 'PRIVATE METHODS' do

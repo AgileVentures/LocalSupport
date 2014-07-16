@@ -1,4 +1,6 @@
 ## Not implemented
+## Note the Update button seems to route the PagesController instead of the VolunteerOpsController
+
 require 'spec_helper'
 
 describe "organizations/edit.html.erb" do
