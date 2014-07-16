@@ -143,53 +143,73 @@ describe VolunteerOpsController do
     end
     context 'admin user logged in' do
       before do
+        allow(controller).to receive(:current_user).and_return(user)
         allow(user).to receive(:can_edit?).with(@org).and_return(true)
       end
       it 'assigns the requested volunteer_op as @volunteer_op' do
         get :edit, {:id => @op2.id}
         assigns(:volunteer_op).should eq @op2
       end
-      it 'renders an edit form'  do
+      it 'assigns an editable flag as true' do
         get :edit, {:id => @op2.id}
-        expect(response).to render_template 'edit'
+        expect(assigns(:editable)).to be_true
       end
     end
     context 'user has no edit privilege' do
       before do
-        allow(user).to receive(:can_edit?).with(@org).and_return(true)
+        allow(controller).to receive(:current_user).and_return(user)
+        allow(user).to receive(:can_edit?).with(@org).and_return(false)
       end
-      xit 'redirects to the opportunity show page' do
-
-        #
+      it 'assigns an editable flag as false' do
+        get :edit, {:id => @op2.id}
+        expect(assigns(:editable)).to be_false
       end
     end
   end
 
   describe 'POST update' do
-    let(:org) { stub_model Organization }
-    let(:op2) do
-      stub_model VolunteerOp,
-      :organization => org,
-      :title => 'original title',
-      :description => 'original description'
+    before do
+      @org = stub_model Organization, :title => "title",
+        :description => "description"
+      @op2 = stub_model VolunteerOp, :organization => (@org)
+      @results = [@op2]
+      allow(VolunteerOp).to receive(:find).with(@op2.id.to_s).and_return(@op2)
     end
+    #let(:org) { stub_model Organization }
+    #let(:op2) do
+    #  stub_model VolunteerOp,
+    #  :organization => org,
+    #  :title => 'original title',
+    #  :description => 'original description'
+    #end
     context 'user has edit privileges' do
       before do
-        allow(user).to receive(:can_edit?).with(org.id.to_s).and_return(true)
+        allow(controller).to receive(:current_user).and_return(user)
+        allow(user).to receive(:can_edit?).with(@org).and_return(true)
       end
-      it 'updates the model'
+      it 'updates the model' do
+        lambda {
+          put :update, :id => @op2.to_param, :volunteer_op => {:title => "new title", :description => "new description"}
+        }.should change {@op2.reload.title}.from("title").to("new title")
+      end
       it 'sets a flash message for success'
       it 'redirects to the show page' do
-        put :update, {:id => op2.id,
-          :title => 'new title',
-          :description => 'new description'}
-        response.should redirect_to op2
+        put :update, {:id => @op2.to_param}
+        response.should redirect_to volunteer_op_path(@op2)
       end
     end
     context 'user has no edit privileges' do
+      before do
+        allow(controller).to receive(:current_user).and_return(user)
+        allow(user).to receive(:can_edit?).with(@org).and_return(false)
+      end
       it 'does not update the model'
       it 'sets a flash message for denied permission'
-      it 'redirects to /'
+      it 'redirects to the opportunity show page' do
+        put :update, {:id => @op2.to_param}
+        expect(response).to render_template 'show'
+      end
+      xit 'redirects to /'
       # controller.should_receive(:redirect_to).with(root_path) { true }
     end
   end
