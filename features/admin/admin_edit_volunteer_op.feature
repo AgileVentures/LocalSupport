@@ -12,7 +12,6 @@ Background:
       | email                         | password | organization | confirmed_at        | admin |
       | admin@harrowcn.org.uk         | pppppppp |              | 2007-01-01 10:00:00 | true  |
       | registered-user-2@example.com | pppppppp |              | 2007-01-01 10:00:00 | false |
-
     And the following volunteer opportunities exist:
       | title              | description                     | organization              |
       | Litter Box Scooper | Assist with feline sanitation   | Cats Are Us               |

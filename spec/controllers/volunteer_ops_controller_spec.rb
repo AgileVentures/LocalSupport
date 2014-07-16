@@ -143,28 +143,32 @@ describe VolunteerOpsController do
     end
     context 'admin user logged in' do
       before do
+        allow(controller).to receive(:org_owner?).and_return(true)
         allow(controller).to receive(:current_user).and_return(user)
-        allow(user).to receive(:can_edit?).with(@org).and_return(true)
       end
       it 'assigns the requested volunteer_op as @volunteer_op' do
         get :edit, {:id => @op2.id}
         assigns(:volunteer_op).should eq @op2
       end
-      it 'assigns an editable flag as true' do
+      it 'assigns an organization' do
         get :edit, {:id => @op2.id}
-        expect(assigns(:editable)).to be_true
+        expect(assigns(:organization)).to eq @org
+      end
+      it 'renders the edit template' do
+        get :edit, {:id => @op2.id}
+        response.should render_template 'edit'
       end
     end
-    context 'user has no edit privilege' do
+    context 'non-admin user logged in' do
       before do
-        allow(controller).to receive(:current_user).and_return(user)
-        allow(user).to receive(:can_edit?).with(@org).and_return(false)
+        allow(controller).to receive(:org_owner?).and_return(false)
       end
-      it 'assigns an editable flag as false' do
+      it 'does not render the edit template' do
         get :edit, {:id => @op2.id}
-        expect(assigns(:editable)).to be_false
+        response.should_not render_template 'edit'
       end
     end
+
   end
 
   describe 'POST update' do
@@ -173,7 +177,7 @@ describe VolunteerOpsController do
         :description => "description"
       @op2 = stub_model VolunteerOp, :organization => (@org)
       @results = [@op2]
-      allow(VolunteerOp).to receive(:find).with(@op2.id.to_s).and_return(@op2)
+      expect(VolunteerOp).to receive(:find).with(@op2.id.to_s).and_return(@op2)
     end
     #let(:org) { stub_model Organization }
     #let(:op2) do
@@ -182,33 +186,37 @@ describe VolunteerOpsController do
     #  :title => 'original title',
     #  :description => 'original description'
     #end
-    context 'user has edit privileges' do
+    context 'user is authorized' do
       before do
-        allow(controller).to receive(:current_user).and_return(user)
-        allow(user).to receive(:can_edit?).with(@org).and_return(true)
+        allow(controller).to receive(:authorize).and_return(true)
       end
       it 'updates the model' do
-        lambda {
-          put :update, :id => @op2.to_param, :volunteer_op => {:title => "new title", :description => "new description"}
-        }.should change {@op2.reload.title}.from("title").to("new title")
+        expect(@op2).to receive(:update_attributes).with({"title" => "new title", "description" => "new description"})
+
+        put :update, :id => @op2.to_param, :volunteer_op => {:title => "new title", :description => "new description"}
       end
       it 'sets a flash message for success'
-      it 'redirects to the show page' do
+      it 'redirects to the show page on success' do
+        expect(@op2).to receive(:update_attributes).and_return true
         put :update, {:id => @op2.to_param}
         response.should redirect_to volunteer_op_path(@op2)
       end
-    end
-    context 'user has no edit privileges' do
-      before do
-        allow(controller).to receive(:current_user).and_return(user)
-        allow(user).to receive(:can_edit?).with(@org).and_return(false)
-      end
-      it 'does not update the model'
-      it 'sets a flash message for denied permission'
-      it 'redirects to the opportunity show page' do
+      it 'redirects to the edit page on failure' do
+        expect(@op2).to receive(:update_attributes).and_return false
         put :update, {:id => @op2.to_param}
-        expect(response).to render_template 'show'
+        response.should render_template 'edit'
       end
+    end
+    context 'user is not authorized' do
+      before do
+        allow(controller).to receive(:authorize).and_return(false)
+      end
+      it 'does not update the model' do
+        expect(@op2).not_to receive(:update_attributes).and_return true
+        put :update, {:id => @op2.to_param}, :volunteer_op => {:title => "new title", :description => "new description"}
+      end
+      it 'sets a flash message for denied permission'
+      it 'redirects to the opportunity show page'
       xit 'redirects to /'
       # controller.should_receive(:redirect_to).with(root_path) { true }
     end

@@ -1,6 +1,6 @@
 class VolunteerOpsController < ApplicationController
   layout 'two_columns'
-  before_filter :authorize, :except => [:show, :index, :edit, :update]
+  before_filter :authorize, :except => [:show, :index]
 
   def index
     @volunteer_ops = VolunteerOp.all
@@ -32,17 +32,12 @@ class VolunteerOpsController < ApplicationController
   def edit
     @volunteer_op = VolunteerOp.find(params[:id])
     @organization = @volunteer_op.organization
-    @editable = current_user.can_edit?(@organization) if current_user
-    return false unless @editable
   end
 
   def update
     @volunteer_op = VolunteerOp.find(params[:id])
     @organization = @volunteer_op.organization
-    @editable = current_user.can_edit?(@organization) if current_user
-    return false unless @editable
-    @volunteer_op.attributes = params[:volunteer_op]
-    if @volunteer_op.save
+    if @volunteer_op.update_attributes(params[:volunteer_op])
       redirect_to @volunteer_op, notice: 'Volunteer Opportunity was successfully updated.'
     else
       render action: "edit"
