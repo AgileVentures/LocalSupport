@@ -64,3 +64,9 @@ And(/^a file exists:$/) do |table|
     end
   end
 end
+
+
+Then(/^the organization "([^"]*)" should be deleted$/) do |name|
+  org = Organization.only_deleted.find_by_name name
+  expect(org).not_to be_nil
+end

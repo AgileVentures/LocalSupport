@@ -36,6 +36,10 @@ class User < ActiveRecord::Base
     admin? || (!org.nil? && organization == org)
   end
 
+  def can_delete? org
+    admin?
+  end
+
   def can_request_org_admin? org
     # admin false, pending_organization  pending_organization!=organization org != organization
     !admin? && organization != org && pending_organization != org

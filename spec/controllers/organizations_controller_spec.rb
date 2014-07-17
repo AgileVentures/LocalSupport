@@ -147,6 +147,7 @@ describe OrganizationsController do
       @user = double("User")
       Organization.stub(:find).with('37') { double_organization }
       @user.stub(:can_edit?)
+      @user.stub(:can_delete?)
       @user.stub(:belongs_to?)
       @user.stub(:can_request_org_admin?)
       controller.stub(:current_user).and_return(@user)
