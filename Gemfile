@@ -96,3 +96,4 @@ gem 'url_validator'
 
 
 gem 'rails_autolink'
+gem 'acts_as_paranoid'
