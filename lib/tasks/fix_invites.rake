@@ -7,8 +7,8 @@ begin
       nil_org_users = current_invites.select {|user| user.organization_id.nil?}
       nil_org_users.each do |user|
         query_result = Organization.where("UPPER(email) LIKE ? ", "%#{user.email.upcase}%")
-        raise("Wrong number of orgs") if query_result.length != 1
         org = query_result.first
+        puts "Wrong number of orgs: #{org.email}" if query_result.length != 1
         user.organization_id = org.id
         user.save!
       end
