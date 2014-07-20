@@ -15,7 +15,7 @@
           <%= f.text_area :name, :size => "50x2", :class => "org_form org_h3" %>
         </td>
         <td class="borderless">
-          <input type="checkbox" disabled checked = "checked" value="">
+          <input type="checkbox" class="publish" disabled checked = "checked" value="">
         </td>
       </tr>
       <tr>
@@ -23,7 +23,7 @@
           <%= f.text_area :description, :class => "org_form", :cols => "10", :rows => "10" %>
         </td>
         <td class="borderless">
-          <input type="checkbox" disabled checked = "checked" value="">
+          <input type="checkbox" class="publish" disabled checked = "checked" value="">
         </td>
       </tr>
       <tr>
@@ -31,7 +31,7 @@
           <%= f.text_field :address, :class => "org_form" %>
         </td>
         <td class="borderless" data-toggle="tooltip" title="To make your full address visible to the public check this box">
-          <%= f.check_box :publish_address %>
+          <%= f.check_box :publish_address, :class => 'publish' %>
         </td>
       </tr>
       <tr>
@@ -39,7 +39,7 @@
           <%= f.text_field :postcode, :class => "org_form", :placeholder => "Enter post code" %>
         </td>
         <td class="borderless">
-          <input type="checkbox" disabled checked = "checked" value="">
+          <input type="checkbox" class="publish" disabled checked = "checked" value="">
         </td>
       </tr>
       <tr>
@@ -47,31 +47,31 @@
           <%= f.text_field :email, :class => "org_form", :placeholder => "Enter email address" %>
         </td>
         <td class="borderless" data-toggle="tooltip" title="To make your email address visible to the public check this box">
-          <%= f.check_box :publish_email %>
+          <%= f.check_box :publish_email, :class => 'publish' %>
         </td>
       </tr>
       <tr>
         <td class="borderless" data-toggle="tooltip" title="Make sure url is correct">
-          <%= f.text_field :website, :class => "org_form" %>
+          <%= f.text_field :website, :class => "org_form", :placeholder => "Enter website url" %>
         </td>
         <td class="borderless">
-          <input type="checkbox" disabled checked = "checked" value="">
+          <input type="checkbox" class="publish" disabled checked = "checked" value="">
         </td>
       </tr>
       <tr>
         <td class="borderless" data-toggle="tooltip" title="Make sure phone number is correct">
-          <%= f.text_field :telephone, :class => "org_form" %>
+          <%= f.text_field :telephone, :class => "org_form", :placeholder => "Enter phone number" %>
         </td>
         <td class="borderless" data-toggle="tooltip" title="To make your telephone number visible to the public check this box">
-          <%= f.check_box :publish_phone %>
+          <%= f.check_box :publish_phone, :class => "publish"%>
         </td>
       </tr>
       <tr>
         <td class="borderless" data-toggle="tooltip" title="Please enter a website here either to the fundraising page on your website or to an online donation site.">
-          <%= f.text_field :donation_info, :class => "org_form" %>
+          <%= f.text_field :donation_info, :class => "org_form", :placeholder => "Enter donation url" %>
         </td>
         <td class="borderless">
-          <input type="checkbox" disabled checked = "checked" value="">
+          <input type="checkbox" disabled checked = "checked" value="" class="publish">
         </td>
       </tr>
       <tr>
@@ -83,12 +83,12 @@
           </div>
         </td>
         <td class="borderless">
-          <input type="checkbox" disabled checked = "checked" value="">
+          <input type="checkbox" class="publish" disabled>
         </td>
       </tr>
       <tr>
         <td class="borderless" data-toggle="tooltip" title="Please enter the details of individuals from your organisation you would like to give permission to update your entry. E-mail addresses entered here will not be made public.">
-          <%= text_field_tag 'organization_admin_email_to_add', value = nil, {:size => 100, class: 'org_form', :cols => "10", :rows => "3" } %>
+          <%= text_field_tag 'organization_admin_email_to_add',  value = nil, {:size => 100, class: 'org_form', :cols => "10", :placeholder => 'Enter additional admin emails', :rows => "3" } %>
         </td>
         <td class="borderless"></td>
       </tbody>

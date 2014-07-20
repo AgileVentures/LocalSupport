@@ -375,6 +375,10 @@ Given /^associations are destroyed for:$/ do |table|
   end
 end
 
+Given /^debugger$/ do
+  debugger
+  puts ""
+end
 Given /^I run the invite migration$/ do
 
 end
