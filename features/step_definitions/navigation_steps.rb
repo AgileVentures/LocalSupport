@@ -155,3 +155,4 @@ end
 Then(/^I should see "([^"]*)" in the flash$/) do |message|
   page.should have_css('div#flash_success', :text => message)
 end
+
