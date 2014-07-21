@@ -29,7 +29,7 @@ describe "organizations/edit.html.erb" do
             'organization_description' => "Enter a full description here\. When an individual searches this database all words in this description will be searched\.",
             'organization_website' => 'Make sure url is correct',
             'organization_telephone' => 'Make sure phone number is correct',
-            "'Add an additional organisation administrator email'" => "Please enter the details of individuals from your organisation you would like to give permission to update your entry\. E-mail addresses entered here will not be made public\.",
+            'organization_admin_email_to_add' => "Please enter the details of individuals from your organisation you would like to give permission to update your entry\. E-mail addresses entered here will not be made public\.",
             'organization_donation_info' => 'Please enter a website here either to the fundraising page on your website or to an online donation site.',
             'organization_publish_email' => 'To make your email address visible to the public check this box',
             'organization_publish_telephone' => 'To make your telephone number visible to the public check this box',
