@@ -10,7 +10,6 @@ require 'cucumber/rails'
 require 'cucumber/rspec/doubles'
 require 'rack_session_access/capybara'
 require 'debugger'
-require 'selenium/webdriver'
 require 'factory_girl_rails'
 require 'aruba/cucumber'
 Dir['../../spec/factories/*.rb'].each {|file| require_relative file }
@@ -76,7 +75,6 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 #  ActionMailer::Base.deliveries.clear
 #  block.call
 #end
-
 # Aruba working directory (default: Aruba creates tmp/aruba)
 Before do
   @dirs = ["#{Rails.root.to_s}"]
