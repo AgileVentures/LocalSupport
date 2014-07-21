@@ -57,6 +57,9 @@
       <% if @editable %>
           <%= link_to("Edit", edit_organization_path(@organization.id), {:class => 'btn btn-primary'}) %>
       <% end %>
+      <% if @deletable %>
+          <%= link_to("Delete", organization_path(@organization.id), {method: :delete, :class => 'btn btn-danger'}) %>
+      <% end %>
       <% if @can_create_volunteer_op and feature_active?(:volunteer_ops_create) %>
           <%= link_to("Create a Volunteer Opportunity", new_volunteer_op_path, {:class => 'btn btn-primary'}) %>
       <% end %>
@@ -67,8 +70,6 @@
       <% end %>
     </div>
   </div>
-  <% content_for :map do %>
-      <%= gmaps("map_options" => {"auto_adjust" => true, "auto_zoom" => false, "center_latitude" => 51.5978,
-                                  "center_longitude" => -0.3370, "zoom" => 13}, "markers" => {"data" => @json}) %>
-  <% end %>
 </div>
+
+<% render partial: 'shared/map_scripts', locals: {json: @json} %>

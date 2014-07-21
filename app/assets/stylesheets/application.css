@@ -21,6 +21,13 @@ body {
     background-color: whitesmoke !important;
 }
 
+.ls_infobox {
+  border-radius: 4px;
+  margin-bottom: 8px;
+  background: white;
+  padding: 5px;
+}
+
 /* GLOBAL STYLES
 -------------------------------------------------- */
 .page-frame {

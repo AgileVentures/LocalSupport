@@ -8,6 +8,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree ./gmaps4rails
+//= require bootstrap-sortable
 //= require_tree ./global
 //= require bootstrap-switch
 //= require organizations

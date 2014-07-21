@@ -12,6 +12,7 @@ Feature: Org admin creating a volunteer work opportunity
 
     And the following users are registered:
       | email                      | password | organization | confirmed_at        | admin |
+      | friend@harrowcn.org.uk     | pppppppp |              | 2007-01-01 10:00:00 | false |
       | admin@friendly.example.org | pppppppp | Friendly     | 2007-01-01 10:00:00 | false |
       | admin@shy.example.org      | pppppppp | Shy          | 2007-01-01 10:00:00 | false |
       | admin@harrowcn.org.uk      | pppppppp | Shy          | 2007-01-01 10:00:00 | true  |
@@ -33,6 +34,19 @@ Feature: Org admin creating a volunteer work opportunity
     And I should see "Hard Work"
     And I should see "For no pay"
     And I should see "Organisation: Friendly"
+
+  Scenario: Org-owner creating a volunteer opportunity with invalid data
+    Given I am signed in as a charity worker related to "Friendly"
+    And I visit the new volunteer opportunity page
+    Then I should see "Create a new Volunteer Opportunity"
+    And I submit an opportunity with title "" and description ""
+    And I should see "Title can't be blank"
+    And I should see "Description can't be blank"
+
+  Scenario: Signed in users who don't own the org cannot create volunteer opportunities on the sly
+    Given I am signed in as an non-admin
+    And I visit the new volunteer opportunity page
+    Then I should see "You must be signed in as an organization owner to perform this action!"
 
   Scenario: Only org-owners can create volunteer opportunities
     # Tested that the API is restricted in the request spec

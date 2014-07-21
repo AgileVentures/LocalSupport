@@ -59,7 +59,7 @@ Then /^I (visit|should be on) the (edit|show) page for the (.*?) (named|titled) 
 end
 
 And(/^the page should be titled "(.*?)"$/) do |title|
-  page.should have_selector("title", title)
+  page.should have_title(title)
 end
 
 And (/^I should see a full width layout$/) do
@@ -137,7 +137,21 @@ end
 
 Then(/^navbar button "(.*?)" should( not)? be active$/) do |button_text, negative|
   expectation_method = negative ? :should_not : :should
-  within('.nav.nav-pills.pull-right') do |buttons|
+  within('.nav.nav-pills.pull-right') do
     page.send(expectation_method, have_css('li.active > a', :text => "#{button_text}"))
   end
+end
+
+Then(/^the page includes a hyperlink to "([^"]*)"$/) do |link|
+  #page.should have_link link
+  page.should have_xpath("//a[contains(.,'#{link}') and @href=\"#{link}\"]")
+end
+
+Then(/^the page includes email hyperlink "([^"]*)"$/) do  |link|
+  page.should have_link link
+end
+
+
+Then(/^I should see "([^"]*)" in the flash$/) do |message|
+  page.should have_css('div#flash_success', :text => message)
 end
