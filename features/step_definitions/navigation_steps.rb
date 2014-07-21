@@ -59,7 +59,7 @@ Then /^I (visit|should be on) the (edit|show) page for the (.*?) (named|titled) 
 end
 
 And(/^the page should be titled "(.*?)"$/) do |title|
-  expect(find('title').native.text).to match title
+  page.should have_title(title)
 end
 
 And (/^I should see a full width layout$/) do

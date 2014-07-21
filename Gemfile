@@ -37,7 +37,7 @@ group :test do
   gem 'cucumber-rails-training-wheels'
   gem 'minitest', '~> 4.7.1'
   gem 'ZenTest'
-  gem 'capybara', '2.0.3'
+  gem 'capybara', '2.4.1'
   gem "capybara-webkit", "~> 1.0.0"
   gem 'webrat'
   gem 'factory_girl_rails', :require => false

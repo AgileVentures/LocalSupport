@@ -17,7 +17,6 @@ Feature: Map of local charities
       | email                         | password | organization | confirmed_at         |
       | registered_user-3@example.com | pppppppp | Youth UK     | 2007-01-01  10:00:00 |
 
-  @show
   Scenario: Show all charities on homepage map
     Given I visit the home page
     And I should see "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling" in the map centered on local organizations

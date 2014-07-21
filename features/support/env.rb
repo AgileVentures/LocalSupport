@@ -12,8 +12,13 @@ require 'rack_session_access/capybara'
 require 'debugger'
 require 'factory_girl_rails'
 require 'aruba/cucumber'
+require 'selenium'
 Dir['../../spec/factories/*.rb'].each {|file| require_relative file }
 
+# https://github.com/jnicklas/capybara/commit/4f805d5a1c42da29ed32ab0371e24add2dc08af1
+Capybara.add_selector(:css) do
+    xpath { |css| XPath.css(css) }
+end
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
 # prefer to use XPath just remove this line and adjust any selectors in your

@@ -32,6 +32,7 @@ end
 
 def check_map(names)
   names.each do |name|
+    debugger
     page.should have_xpath "//script[contains(.,'#{name}')]"
     Organization.all.to_gmaps4rails.should match(name)
   end
