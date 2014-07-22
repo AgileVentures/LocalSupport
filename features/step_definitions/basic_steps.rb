@@ -57,9 +57,9 @@ Then /^I should( not)? see an edit button for "(.*?)" charity$/ do |negate, name
   expect(page).send(expectation_method, have_link('Edit', :href => edit_organization_path(org.id)))
 end
 
-Then /^I should see "(.*?)" in the charity admin email$/ do |email|
-  expect(page).to have_selector "ol"
-  expect(page).to have_selector "li", :text => email
+Then /^I should( not)? see "(.*?)" in the charity admin email$/ do |negate,email|
+  expectation_method = negate ? :not_to : :to
+  expect(page).send(expectation_method, have_selector('li', :text => email))
 end
 
 Then /^show me the page$/ do

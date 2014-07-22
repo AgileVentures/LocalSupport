@@ -79,6 +79,7 @@ class OrganizationsController < ApplicationController
     if @organization.update_attributes_with_admin(params[:organization])
       redirect_to @organization, notice: 'Organization was successfully updated.'
     else
+      flash[:error] = @organization.errors[:administrator_email][0]
       render action: "edit"
     end
   end

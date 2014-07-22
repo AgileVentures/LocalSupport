@@ -151,6 +151,9 @@ Then(/^the page includes email hyperlink "([^"]*)"$/) do  |link|
   page.should have_link link
 end
 
+Then(/^I should see "([^"]*)" in the flash error$/) do |message|
+  page.should have_css('div#flash_error', :text => message)
+end
 
 Then(/^I should see "([^"]*)" in the flash$/) do |message|
   page.should have_css('div#flash_success', :text => message)

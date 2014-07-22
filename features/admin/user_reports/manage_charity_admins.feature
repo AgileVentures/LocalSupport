@@ -28,10 +28,9 @@ Background: organizations have been added to database
    Given I am signed in as a admin
    And I add "non-registered-user@example.com" as an admin for "Friendly" charity
    Then I should not see "non-registered-user-1@example.com" in the charity admin email
-   And I should see "Cannot add non registered user non-registered-user@example.com" in the flash
+   And I should see "The user email you entered,'non-registered-user@example.com', does not exist in the system" in the flash error
 
- Scenario: Successfully add existent user as charity admin
+  Scenario: Successfully add existent user as charity admin
    Given I am signed in as a admin
    And I add "registered-user-2@example.com" as an admin for "Friendly" charity
    Then "registered-user-2@example.com" should be a charity admin for "Friendly" charity
-
