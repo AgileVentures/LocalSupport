@@ -16,7 +16,7 @@ describe 'layouts/invitation_table.html.erb' do
     rendered.should have_css('div[class=well]')
   end
   it 'resend invitation variable' do
-    rendered.should have_css('div[data-resend_invitation=true]')
+    rendered.should have_selector('//div[@data-resend_invitation=true]')
   end
 end
 
