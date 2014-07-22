@@ -3,16 +3,15 @@ require 'debugger'
 
 
 describe "organizations/_form.html.erb" do
-
-  it "renders form partial even for empty Organization" do
+  before :each do
     @organization = Organization.new
     render
   end
+  it "renders form partial even for empty Organization" do
+    expect(rendered).not_to be_nil
+  end
 
   it "renders the form with placeholders" do
-    @organization = Organization.new
-
-    render
 
     hash = {
             'organization_name' => 'Enter organisation name',
@@ -26,16 +25,8 @@ describe "organizations/_form.html.erb" do
             'organization_donation_info' => 'Enter organisation donation url'
     }
     hash.each do |label,placeholder|
-      debugger
       expect(rendered).to have_xpath("(//td/input|//td/textarea)[@id='#{label}'][@placeholder='#{placeholder}']")
-      #expect(rendered).to have_xpath("//td/input[@id='#{label}'][@placeholder='#{placeholder}']")
     end
-  end
-
-  it "allows placeholder to be overwritten" do
-    @organization = Organization.new({:email => "DannyThomas@weirdly.com"})
-    render
-    expect(rendered).to have_xpath("//td/input[@id='organization_email'][@value='DannyThomas@weirdly.com']")
   end
 
 end
