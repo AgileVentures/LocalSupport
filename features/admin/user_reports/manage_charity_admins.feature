@@ -27,7 +27,8 @@ Background: organizations have been added to database
  Scenario: Cannot add non-existent user as charity admin
    Given I am signed in as a admin
    And I add "non-registered-user@example.com" as an admin for "Friendly" charity
-   Then I should see the cannot add non registered user "non-registered-user@example.com" as charity admin message
+   Then I should not see "non-registered-user-1@example.com" in the charity admin email
+   And I should see "Cannot add non registered user non-registered-user@example.com" in the flash
 
  Scenario: Successfully add existent user as charity admin
    Given I am signed in as a admin
