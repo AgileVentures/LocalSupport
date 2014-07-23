@@ -1,6 +1,4 @@
 require 'spec_helper'
-require 'debugger'
-
 
 describe "organizations/edit.html.erb" do
   before(:each) do
