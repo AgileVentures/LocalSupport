@@ -7,8 +7,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "hashicorp/precise32"
   config.vm.provision "shell", path: "vagrant-ubuntu-install.sh", privileged: false
   config.vm.network :forwarded_port, host: 3003, guest: 3000
-  #view http://localhost:3004 after runing rake jasmine in vagrant to view interactive jasmine specs on host
-  config.vm.network :forwarded_port, host: 3004, guest: 8888
+  #visit http://localhost:8888 after runing rake jasmine in vagrant to view interactive jasmine specs on host
+  config.vm.network :forwarded_port, host: 8888, guest: 8888
   config.vm.synced_folder ".", "/LocalSupport"
 
   config.vm.provider "virtualbox" do |v|
