@@ -87,13 +87,12 @@ it 'renders an update button with Anglicized spelling of Organisation' do
 end
 #todo: move this into proper integration test to avoid the errors mocking
 #out being coupled with rails
-it 'renders errors without prefatory error message' do
+it 'does not show errors on the page outside of flash' do
   errors = double("errors", :any? => true, :count => 1, :full_messages => ["Sample error"], :[] => double("somethingRailsExpects", :any? => false))
   org = stub_model(Organization)
   org.stub(:errors => errors)
   @organization = assign(:organization, org)
   render
-  render.should have_content("Sample error")
-  render.should_not have_content("1 error prohibited this organization from being saved:")
+  rendered.should_not have_content("Sample error")
 end
 end
