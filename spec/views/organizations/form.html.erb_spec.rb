@@ -21,7 +21,7 @@ describe "organizations/_form.html.erb" do
             'organization_description' => 'Enter organisation description',
             'organization_website' => 'Enter organisation website url',
             'organization_telephone' => 'Enter organisation phone number',
-            'organization_admin_email_to_add' => "Enter optional additional organisation administrator email",
+            'organization_admin_email_to_add' => "You may add an organisation administrator email here",
             'organization_donation_info' => 'Enter organisation donation url'
     }
     hash.each do |label,placeholder|
