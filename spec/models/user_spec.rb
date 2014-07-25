@@ -41,6 +41,25 @@ describe User do
     user.admin.should be_false
   end
 
+  describe 'can_change?' do
+    let (:org) { double("Organization") }
+    context 'is admin' do
+      subject(:user) { create(:user, admin: true) }
+
+      it 'can change organization' do
+        user.can_change?(org).should be_true
+      end
+    end
+
+   # parameter org
+    # TODO write spec for this
+    # return true if @user.admin?
+    # extend with other roles
+    # such as
+    # resource.owner == @user
+  end
+
+
   describe '#can_edit?' do
     let (:volop) { double("VolunteerOp") }
 
@@ -70,6 +89,7 @@ describe User do
         user.organization.should eq model
         user.can_edit?(model).should be_true
         volop.organization.should eq model
+      end
 
       it 'can not edit non-associated organization' do
         user.organization.should eq model
