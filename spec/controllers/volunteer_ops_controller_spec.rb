@@ -179,13 +179,6 @@ describe VolunteerOpsController do
       @results = [@op2]
       expect(VolunteerOp).to receive(:find).with(@op2.id.to_s).and_return(@op2)
     end
-    #let(:org) { stub_model Organization }
-    #let(:op2) do
-    #  stub_model VolunteerOp,
-    #  :organization => org,
-    #  :title => 'original title',
-    #  :description => 'original description'
-    #end
     context 'user is authorized' do
       before do
         allow(controller).to receive(:authorize).and_return(true)
@@ -225,6 +218,13 @@ describe VolunteerOpsController do
   describe 'PRIVATE METHODS' do
     let(:user) { double :user }
     before { controller.stub current_user: user }
+
+
+    #  def can_edit_op? vop
+    #      admin? || (!vop.nil? && !vop.organization.nil? &&
+    # =>   organization == vop.organization)
+    #   end
+
 
     describe '#authorize' do
       it 'Unauthorized: redirects to root_path and displays flash' do

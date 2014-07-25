@@ -42,11 +42,17 @@ describe User do
   end
 
   describe '#can_edit?' do
+    let (:volop) { double("VolunteerOp") }
+
     context 'is admin' do
       subject(:user) { create(:user, admin: true) }
 
       it 'can edit organizations' do
         user.can_edit?(model).should be_true
+      end
+
+      it 'can edit volunteer opportunities' do
+        user.can_edit?(volop).should be_true
       end
 
     end
@@ -59,6 +65,11 @@ describe User do
         user.organization.should eq model
         user.can_edit?(model).should be_true
       end
+
+      it 'can edit associated volunteer opportunity' do
+        user.organization.should eq model
+        user.can_edit?(model).should be_true
+        volop.organization.should eq model
 
       it 'can not edit non-associated organization' do
         user.organization.should eq model

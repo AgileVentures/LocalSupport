@@ -46,6 +46,15 @@ class VolunteerOpsController < ApplicationController
 
   private
 
+  # Comment from Sam:
+  # I think this is the code we ultimately want for checking
+  # who can edit the vol ops:
+
+  #  def can_edit_op? vop
+  #      admin? || (!vop.nil? && !vop.organization.nil? &&
+  # =>   organization == vop.organization)
+  #   end
+
   def authorize
     unless org_owner?
       flash[:error] = 'You must be signed in as an organization owner to perform this action!'
