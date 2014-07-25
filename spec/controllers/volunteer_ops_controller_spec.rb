@@ -189,8 +189,9 @@ describe VolunteerOpsController do
         put :update, :id => @op2.to_param, :volunteer_op => {:title => "new title", :description => "new description"}
       end
       it 'sets a flash message for success' do
-        expect(flash[:success]).not_to be_nil
+        debugger
         put :update, {:id => @op2.to_param}
+        expect(flash[:notice]).not_to be_nil
       end
       it 'redirects to the show page on success' do
         expect(@op2).to receive(:update_attributes).and_return true
