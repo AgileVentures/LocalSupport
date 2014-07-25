@@ -378,3 +378,10 @@ end
 Given /^I run the invite migration$/ do
 
 end
+
+
+Given(/^I can run the rake task "(.*?)"$/) do |task|
+  stdout, stderr, status = Open3.capture3("#{task}")
+  expect(stderr).to eq ""
+  expect(status).to be_success
+end
