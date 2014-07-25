@@ -56,6 +56,9 @@ class VolunteerOpsController < ApplicationController
   #   end
 
   def authorize
+    # set @organization
+    # then can make condition:
+    # unless current_user.can_change? organization
     unless org_owner?
       flash[:error] = 'You must be signed in as an organization owner to perform this action!'
       redirect_to '/'
