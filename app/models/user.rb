@@ -32,15 +32,7 @@ class User < ActiveRecord::Base
     self.organization == organization
   end
 
-  # can create, edit or delete an organization
-  def can_change? org
-    # TODO write spec for this
-    # return true if @user.admin?
-    # extend with other roles
-    # such as
-    # resource.owner == @user
-  end
-
+  # can create or edit an organization
   def can_edit? org
     admin? || (!org.nil? && organization == org)
   end

@@ -188,7 +188,10 @@ describe VolunteerOpsController do
 
         put :update, :id => @op2.to_param, :volunteer_op => {:title => "new title", :description => "new description"}
       end
-      it 'sets a flash message for success'
+      it 'sets a flash message for success' do
+        expect(flash[:success]).not_to be_nil
+        put :update, {:id => @op2.to_param}
+      end
       it 'redirects to the show page on success' do
         expect(@op2).to receive(:update_attributes).and_return true
         put :update, {:id => @op2.to_param}
@@ -208,23 +211,12 @@ describe VolunteerOpsController do
         expect(@op2).not_to receive(:update_attributes).and_return true
         put :update, {:id => @op2.to_param}, :volunteer_op => {:title => "new title", :description => "new description"}
       end
-      it 'sets a flash message for denied permission'
-      it 'redirects to the opportunity show page'
-      xit 'redirects to /'
-      # controller.should_receive(:redirect_to).with(root_path) { true }
     end
   end
 
   describe 'PRIVATE METHODS' do
     let(:user) { double :user }
     before { controller.stub current_user: user }
-
-
-    #  def can_edit_op? vop
-    #      admin? || (!vop.nil? && !vop.organization.nil? &&
-    # =>   organization == vop.organization)
-    #   end
-
 
     describe '#authorize' do
       it 'Unauthorized: redirects to root_path and displays flash' do
@@ -251,12 +243,6 @@ describe VolunteerOpsController do
 
         it 'returns false' do
           controller.instance_eval { org_owner? }.should be_false
-        end
-
-        it 'first checks if there is a current_user' do
-          controller.current_user.should_receive :present?
-          controller.current_user.should_not_receive :organization
-          controller.instance_eval { org_owner? }
         end
       end
 
