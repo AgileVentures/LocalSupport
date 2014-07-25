@@ -7,12 +7,12 @@
   </tr>
   </thead>
   <tbody>
-  <% @orphans.each do |organization| %>
-      <tr id="<%= organization.id %>">
-        <td><%= link_to organization.name, organization_path(organization) %></td>
-        <td><%= organization.email %></td>
+  <% @orphans.each do |organisation| %>
+      <tr id="<%= organisation.id %>">
+        <td><%= link_to organisation.name, organisation_path(organisation) %></td>
+        <td><%= organisation.email %></td>
         <td class="response" style="text-align: center;">
-          <input type="checkbox" data-id="<%= organization.id %>" data-email="<%= organization.email %>"/>
+          <input type="checkbox" data-id="<%= organisation.id %>" data-email="<%= organisation.email %>"/>
         </td>
       </tr>
   <% end %>
