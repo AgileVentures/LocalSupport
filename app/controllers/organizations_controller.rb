@@ -1,100 +1,100 @@
-class OrganizationsController < ApplicationController
+class OrganisationsController < ApplicationController
   layout 'two_columns'
-  # GET /organizations/search
-  # GET /organizations/search.json
+  # GET /organisations/search
+  # GET /organisations/search.json
   before_filter :authenticate_user!, :except => [:search, :index, :show]
 
   def search
     @query_term = params[:q]
     @category_id = params.try(:[],'category').try(:[],'id')
     @category = Category.find_by_id(@category_id)
-    @organizations = Organization.order_by_most_recent
-    @organizations = @organizations.search_by_keyword(@query_term).filter_by_category(@category_id)
-    flash.now[:alert] = SEARCH_NOT_FOUND if @organizations.empty?
-    @json = gmap4rails_with_popup_partial(@organizations,'popup')
+    @organisations = Organisation.order_by_most_recent
+    @organisations = @organisations.search_by_keyword(@query_term).filter_by_category(@category_id)
+    flash.now[:alert] = SEARCH_NOT_FOUND if @organisations.empty?
+    @json = gmap4rails_with_popup_partial(@organisations,'popup')
     @category_options = Category.html_drop_down_options
-    render :template =>'organizations/index'
+    render :template =>'organisations/index'
   end
 
-  # GET /organizations
-  # GET /organizations.json
+  # GET /organisations
+  # GET /organisations.json
   def index
-    @organizations = Organization.order_by_most_recent
-    @json = gmap4rails_with_popup_partial(@organizations,'popup')
+    @organisations = Organisation.order_by_most_recent
+    @json = gmap4rails_with_popup_partial(@organisations,'popup')
     @category_options = Category.html_drop_down_options
   end
 
-  # GET /organizations/1
-  # GET /organizations/1.json
+  # GET /organisations/1
+  # GET /organisations/1.json
   def show
-    @organization = Organization.find(params[:id])
-    @editable = current_user.can_edit?(@organization) if current_user
-    @deletable = current_user.can_delete?(@organization) if current_user
-    @can_create_volunteer_op = current_user.belongs_to?(@organization) if current_user
-    @grabbable = current_user ? current_user.can_request_org_admin?(@organization) : true
-   # @next_path = current_user ? organization_user_path(@organization.id, current_user.id) : new_user_session_path
-    @json = gmap4rails_with_popup_partial(@organization,'popup')
+    @organisation = Organisation.find(params[:id])
+    @editable = current_user.can_edit?(@organisation) if current_user
+    @deletable = current_user.can_delete?(@organisation) if current_user
+    @can_create_volunteer_op = current_user.belongs_to?(@organisation) if current_user
+    @grabbable = current_user ? current_user.can_request_org_admin?(@organisation) : true
+   # @next_path = current_user ? organisation_user_path(@organisation.id, current_user.id) : new_user_session_path
+    @json = gmap4rails_with_popup_partial(@organisation,'popup')
   end
 
-  # GET /organizations/new
-  # GET /organizations/new.json
+  # GET /organisations/new
+  # GET /organisations/new.json
   def new
-    @organization = Organization.new
+    @organisation = Organisation.new
   end
 
-  # GET /organizations/1/edit
+  # GET /organisations/1/edit
   def edit
-    @organization = Organization.find(params[:id])
-    @json = gmap4rails_with_popup_partial(@organization,'popup')
-    return false unless user_can_edit? @organization
+    @organisation = Organisation.find(params[:id])
+    @json = gmap4rails_with_popup_partial(@organisation,'popup')
+    return false unless user_can_edit? @organisation
     #respond_to do |format|
     #  format.html {render :layout => 'full_width'}
     #end
   end
 
-  # POST /organizations
-  # POST /organizations.json
+  # POST /organisations
+  # POST /organisations.json
   def create
     # model filters for logged in users, but we check here if that user is an admin
     # TODO refactor that to model responsibility?
      unless current_user.try(:admin?)
        flash[:notice] = PERMISSION_DENIED
-       redirect_to organizations_path and return false
+       redirect_to organisations_path and return false
      end
-    @organization = Organization.new(params[:organization])
+    @organisation = Organisation.new(params[:organisation])
 
-    if @organization.save
-      redirect_to @organization, notice: 'Organization was successfully created.'
+    if @organisation.save
+      redirect_to @organisation, notice: 'Organisation was successfully created.'
     else
       render action: "new"
     end
   end
 
-  # PUT /organizations/1
-  # PUT /organizations/1.json
+  # PUT /organisations/1
+  # PUT /organisations/1.json
   def update
-    @organization = Organization.find(params[:id])
-    params[:organization][:admin_email_to_add] = params[:organization_admin_email_to_add] if params[:organization]
-    return false unless user_can_edit? @organization
-    if @organization.update_attributes_with_admin(params[:organization])
-      redirect_to @organization, notice: 'Organization was successfully updated.'
+    @organisation = Organisation.find(params[:id])
+    params[:organisation][:admin_email_to_add] = params[:organisation_admin_email_to_add] if params[:organisation]
+    return false unless user_can_edit? @organisation
+    if @organisation.update_attributes_with_admin(params[:organisation])
+      redirect_to @organisation, notice: 'Organisation was successfully updated.'
     else
       render action: "edit"
     end
   end
 
-  # DELETE /organizations/1
-  # DELETE /organizations/1.json
+  # DELETE /organisations/1
+  # DELETE /organisations/1.json
   def destroy
     unless current_user.try(:admin?)
       flash[:notice] = PERMISSION_DENIED
-      redirect_to organization_path(params[:id]) and return false
+      redirect_to organisation_path(params[:id]) and return false
     end
-    @organization = Organization.find(params[:id])
-    @organization.destroy
-    flash[:success] = "Deleted #{@organization.name}"
+    @organisation = Organisation.find(params[:id])
+    @organisation.destroy
+    flash[:success] = "Deleted #{@organisation.name}"
 
-    redirect_to organizations_path
+    redirect_to organisations_path
   end
 
   private
@@ -106,7 +106,7 @@ class OrganizationsController < ApplicationController
   def user_can_edit?(org)
     unless current_user.try(:can_edit?,org)
       flash[:notice] = PERMISSION_DENIED
-      redirect_to organization_path(params[:id]) and return false
+      redirect_to organisation_path(params[:id]) and return false
     end
     true
   end

@@ -1,16 +1,16 @@
 require 'spec_helper'
 
-describe "organizations/index.html.erb", :js => true do
+describe "organisations/index.html.erb", :js => true do
 
   let(:org1) do
-    stub_model Organization,:name => 'test', :address => "12 pinner rd", :postcode => "HA1 4HP",:telephone => "1234", :website => 'http://a.com', :description => 'I am test organization hahahahahhahaha', :lat => 1, :lng => -1
+    stub_model Organisation,:name => 'test', :address => "12 pinner rd", :postcode => "HA1 4HP",:telephone => "1234", :website => 'http://a.com', :description => 'I am test organisation hahahahahhahaha', :lat => 1, :lng => -1
   end
 
   let(:org2) do
-    stub_model Organization,:name => 'test2', :address => "12 oxford rd", :postcode => "HA1 4HX", :telephone => "4534", :website => 'http://b.com', :description => 'I am ', :lat => 1, :lng => -1
+    stub_model Organisation,:name => 'test2', :address => "12 oxford rd", :postcode => "HA1 4HX", :telephone => "4534", :website => 'http://b.com', :description => 'I am ', :lat => 1, :lng => -1
   end
 
-  let(:organizations) do
+  let(:organisations) do
     [org1,org2]
   end
 
@@ -19,12 +19,12 @@ describe "organizations/index.html.erb", :js => true do
   end
 
   before(:each) do
-    assign(:organizations, organizations)
+    assign(:organisations, organisations)
     assign(:results, results)
     assign(:query_term,'search')
-    organizations.stub(:current_page).and_return(1)
-    organizations.stub(:total_pages).and_return(1)
-    organizations.stub(:limit_value).and_return(1)
+    organisations.stub(:current_page).and_return(1)
+    organisations.stub(:total_pages).and_return(1)
+    organisations.stub(:limit_value).and_return(1)
     assign(:category_options, [['Animal Welfare','1'],['Education','2']])
     render
   end
@@ -42,9 +42,9 @@ describe "organizations/index.html.erb", :js => true do
     rendered.should have_selector "form select[name='category[id]'] option[value='2']"
   end
 
-  it "render organization names with hyperlinks" do
-    organizations.each do |org|
-      rendered.should have_link org.name, :href => organization_path(org.id)
+  it "render organisation names with hyperlinks" do
+    organisations.each do |org|
+      rendered.should have_link org.name, :href => organisation_path(org.id)
       rendered.should have_content org.description.truncate(128,:omission=>' ...')
     end
   end
@@ -64,10 +64,10 @@ describe "organizations/index.html.erb", :js => true do
   end
 
   it "displays the javascript for a google map" do
-    assign(:json, organizations.to_gmaps4rails)
+    assign(:json, organisations.to_gmaps4rails)
     assign(:footer_page_links, [])
     Page.stub(:all).and_return []
-    render template: "organizations/index", layout: "layouts/application"
+    render template: "organisations/index", layout: "layouts/application"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_zoom = true')]"
     rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_latitude = 51.5978')]"

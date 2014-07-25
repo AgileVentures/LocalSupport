@@ -1,15 +1,15 @@
 require 'spec_helper'
 
-describe "organizations/new.html.erb" do
+describe "organisations/new.html.erb" do
   before(:each) do
-    assign(:organization, stub_model(Organization).as_new_record)
+    assign(:organisation, stub_model(Organisation).as_new_record)
   end
 
-  it "renders new organization form" do
-    view.lookup_context.prefixes = %w[organizations application]
+  it "renders new organisation form" do
+    view.lookup_context.prefixes = %w[organisations application]
     render
 
-    rendered.should have_selector("form", :action => organizations_path, :method => "post") do |form|
+    rendered.should have_selector("form", :action => organisations_path, :method => "post") do |form|
     end
   end
 end

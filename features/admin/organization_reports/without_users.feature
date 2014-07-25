@@ -4,18 +4,18 @@ Feature: Orphans UI
   I want a UI that shows me orphan orgs and allows me to generate user accounts for them
 
   Background:
-    Given the following organizations exist:
+    Given the following organisations exist:
       | name               | address        | email             |
-      | The Organization   | 83 pinner road | no_owner@org.org  |
+      | The Organisation   | 83 pinner road | no_owner@org.org  |
       | The Same Email Org | 84 pinner road | no_owner@org.org  |
       | Crazy Email Org    | 30 pinner road | sahjkgdsfsajnfds  |
-      | My Organization    | 30 pinner road | admin@myorg.com   |
+      | My Organisation    | 30 pinner road | admin@myorg.com   |
       | Yet Another Org    | 30 pinner road | admin@another.org |
     And the following users are registered:
-      | email                 | password       | admin | confirmed_at        | organization    | pending_organization |
+      | email                 | password       | admin | confirmed_at        | organisation    | pending_organisation |
       | nonadmin@myorg.com    | mypassword1234 | false | 2008-01-01 00:00:00 |                 |                      |
-      | admin@myorg.com       | adminpass0987  | true  | 2008-01-01 00:00:00 | My Organization |                      |
-      | pending@myorg.com     | password123    | false | 2008-01-01 00:00:00 |                 | My Organization      |
+      | admin@myorg.com       | adminpass0987  | true  | 2008-01-01 00:00:00 | My Organisation |                      |
+      | pending@myorg.com     | password123    | false | 2008-01-01 00:00:00 |                 | My Organisation      |
       | invited-admin@org.org | password123    | false | 2008-01-01 00:00:00 |                 |                      |
     And the admin invited a user for "Yet Another Org"
 
@@ -24,13 +24,13 @@ Feature: Orphans UI
     Given cookies are approved
     Given I am signed in as an admin
     And I visit the organisations without users page
-    And I check the box for "The Organization"
+    And I check the box for "The Organisation"
     And I check the box for "The Same Email Org"
     When I click id "invite_users"
-    Then I should see "Invited!" in the response field for "The Organization"
+    Then I should see "Invited!" in the response field for "The Organisation"
     Then I should see "Error: Email has already been taken" in the response field for "The Same Email Org"
 
-  Scenario: Already invited organizations don't appear
+  Scenario: Already invited organisations don't appear
     Given cookies are approved
     And I am signed in as an admin
     And I visit the organisations without users page
@@ -59,9 +59,9 @@ Feature: Orphans UI
     Given I am signed in as an admin
     And I visit the organisations without users page
     And I click tableheader "Name"
-    Then I should see "Crazy Email Org" before "The Organization"
+    Then I should see "Crazy Email Org" before "The Organisation"
     When I click tableheader "Name"
-    Then I should see "The Organization" before "Crazy Email Org"
+    Then I should see "The Organisation" before "Crazy Email Org"
 
   @javascript
   Scenario: Select All button toggles all checkboxes
@@ -78,11 +78,11 @@ Feature: Orphans UI
     Given I click on the invitation link in the email to "admin@another.org"
     And I accepted the cookie policy from the "invitation" page
     And I set my password
-    Then I should be on the show page for the organization named "Yet Another Org"
+    Then I should be on the show page for the organisation named "Yet Another Org"
 
   Scenario: Invited user clicking through on email ignoring cookies policy
     Given I click on the invitation link in the email to "admin@another.org"
     And I set my password
-    Then I should be on the show page for the organization named "Yet Another Org"
+    Then I should be on the show page for the organisation named "Yet Another Org"
 
 

@@ -1,4 +1,4 @@
-class UserOrganizationClaimer 
+class UserOrganisationClaimer 
 
   def initialize(listener, user, current_user)
     @listener = listener
@@ -6,10 +6,10 @@ class UserOrganizationClaimer
     @current_user = current_user
   end
 
-  def call(organization_id)
-    request_admin_status_if(organization_id)
-    error_message_if_not_admin_or_not(organization_id)
-    promote_user_if_admin_and_not(organization_id)
+  def call(organisation_id)
+    request_admin_status_if(organisation_id)
+    error_message_if_not_admin_or_not(organisation_id)
+    promote_user_if_admin_and_not(organisation_id)
   end
 
   private
@@ -19,22 +19,22 @@ class UserOrganizationClaimer
     current_user.admin?
   end
 
-  def request_admin_status_if(organization_id)
-    if organization_id 
-      user.request_admin_status organization_id
+  def request_admin_status_if(organisation_id)
+    if organisation_id 
+      user.request_admin_status organisation_id
       listener.update_message_for_admin_status
     end
   end
 
-  def promote_user_if_admin_and_not(organization_id)
-    if is_current_user_admin? && !organization_id
+  def promote_user_if_admin_and_not(organisation_id)
+    if is_current_user_admin? && !organisation_id
       user.promote_to_org_admin
       listener.update_message_promoting(user)
     end
   end
 
-  def error_message_if_not_admin_or_not(organization_id)
-    if !is_current_user_admin? && !organization_id
+  def error_message_if_not_admin_or_not(organisation_id)
+    if !is_current_user_admin? && !organisation_id
       listener.update_failure
     end
   end

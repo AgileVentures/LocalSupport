@@ -1,3 +1,3 @@
-class CategoryOrganization < ActiveRecord::Base
-  self.table_name = 'categories_organizations'
+class CategoryOrganisation < ActiveRecord::Base
+  self.table_name = 'categories_organisations'
 end

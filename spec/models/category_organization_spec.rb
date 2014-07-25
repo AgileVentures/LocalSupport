@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe 'CategoryOrganization' do
+describe 'CategoryOrganisation' do
   it 'should exist' do
-    expect(CategoryOrganization).not_to be_nil
+    expect(CategoryOrganisation).not_to be_nil
   end
 end

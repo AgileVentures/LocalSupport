@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe "organizations/_popup.html.erb" do
+describe "organisations/_popup.html.erb" do
   let(:org) do
-    stub_model Organization, :name => "Friendly Charity", :id => 1, 
+    stub_model Organisation, :name => "Friendly Charity", :id => 1, 
       :description => 'This is an absurdly absurdly long but very fun description that will make you sick '
   end
 
@@ -12,7 +12,7 @@ describe "organizations/_popup.html.erb" do
   end
 
   it "should render a link to an org" do
-    expect(rendered).to have_link 'Friendly Charity', :href => organization_path(org)
+    expect(rendered).to have_link 'Friendly Charity', :href => organisation_path(org)
   end
   
   it 'should render a description of org' do

@@ -6,7 +6,7 @@ class String
   end
 end
 
-class Organization < ActiveRecord::Base
+class Organisation < ActiveRecord::Base
   #validates_presence_of :website, :with => /http:\/\//
   acts_as_paranoid
   validates_url :website, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.website.present?}
@@ -22,12 +22,12 @@ class Organization < ActiveRecord::Base
   attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info, :publish_address, :publish_phone, :publish_email
   accepts_nested_attributes_for :users
   scope :order_by_most_recent, order('updated_at DESC')
-  scope :not_null_email, :conditions => "organizations.email <> ''"
+  scope :not_null_email, :conditions => "organisations.email <> ''"
   # Should we not use :includes, which pulls in extra data? http://nlingutla.com/blog/2013/04/21/includes-vs-joins-in-rails/
-  # Alternative => :joins('LEFT OUTER JOIN users ON users.organization_id = organizations.id)
+  # Alternative => :joins('LEFT OUTER JOIN users ON users.organisation_id = organisations.id)
   # Difference between inner and outer joins: http://stackoverflow.com/a/38578/2197402
-  scope :null_users, lambda { includes(:users).where("users.organization_id IS NULL") }
-  scope :without_matching_user_emails, :conditions => "organizations.email NOT IN (#{User.select('email').to_sql})"
+  scope :null_users, lambda { includes(:users).where("users.organisation_id IS NULL") }
+  scope :without_matching_user_emails, :conditions => "organisations.email NOT IN (#{User.select('email').to_sql})"
 
   def run_geocode?
     ## http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
@@ -38,7 +38,7 @@ class Organization < ActiveRecord::Base
     latitude.blank? and longitude.blank?
   end
 
-  #This method is overridden to save organization if address was failed to geocode
+  #This method is overridden to save organisation if address was failed to geocode
   def run_validations!
     run_callbacks :validate
     remove_errors_with_address
@@ -72,9 +72,9 @@ class Organization < ActiveRecord::Base
   def self.filter_by_category(category_id)
     return scoped unless category_id.present?
     # could use this but doesn't play well with search by keyqord since table names are remapped
-    #Organization.includes(:categories).where("categories_organizations.category_id" =>  category_id)
+    #Organisation.includes(:categories).where("categories_organisations.category_id" =>  category_id)
     category = Category.find_by_id(category_id)
-    orgs = category.organizations.select {|org| org.id} if category
+    orgs = category.organisations.select {|org| org.id} if category
     where(:id => orgs)
   end
 
@@ -105,7 +105,7 @@ class Organization < ActiveRecord::Base
   def self.import_categories_from_array(row)
     check_columns_in(row)
     org_name = row[@@column_mappings[:name]].to_s.humanized_all_first_capitals
-    org = Organization.find_by_name(org_name)
+    org = Organisation.find_by_name(org_name)
     check_categories_for_import(row, org)
     org
   end
@@ -125,7 +125,7 @@ class Organization < ActiveRecord::Base
   end
 
   def self.create_from_array(row, validate)
-    CreateOrganizationFromArray.create(Organization, row, validate)
+    CreateOrganisationFromArray.create(Organisation, row, validate)
   end
 
   def self.create_and_validate(attributes) 

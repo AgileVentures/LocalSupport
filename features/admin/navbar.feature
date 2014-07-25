@@ -8,7 +8,7 @@ Feature: Admin user interface
       | name         | permalink  | content |
       | About Us     | about      | abc123  |
     And the following users are registered:
-      | email                 | password       | admin | confirmed_at        | organization | pending_organization |
+      | email                 | password       | admin | confirmed_at        | organisation | pending_organisation |
       | admin@harrowcn.org.uk | mypassword1234 | true  | 2008-01-01 00:00:00 |              |                      |
     And I am signed in as a admin
     And that the volunteer_ops_list flag is enabled

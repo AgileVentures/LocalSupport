@@ -4,13 +4,13 @@ Feature: Admin editing charity
   I want to be able to edit/delete/add any charity information
   Tracker Story ID: https://www.pivotaltracker.com/story/show/50368203
 
-  Background: organizations have been added to database
-    Given the following organizations exist:
+  Background: organisations have been added to database
+    Given the following organisations exist:
       | name           | description             | address        | postcode | telephone |
       | Friendly       | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 |
       | Friendly Clone | Quite Friendly!         | 30 pinner road | HA1 4HZ  | 020800010 |
     And the following users are registered:
-      | email             | password | admin | confirmed_at |  organization |
+      | email             | password | admin | confirmed_at |  organisation |
       | registered-user-1@example.com | pppppppp | true  | 2007-01-01  10:00:00 |  Friendly |
       | registered-user-2@example.com | pppppppp | false | 2007-01-01  10:00:00 |           |
     And cookies are approved
@@ -29,7 +29,7 @@ Feature: Admin editing charity
 
   Scenario: Non-admin sees no permission error when visiting the edit form for charity
     Given I am signed in as a non-admin
-    And I visit the edit page for the organization named "Friendly"
-    Then I should be on the show page for the organization named "Friendly"
+    And I visit the edit page for the organisation named "Friendly"
+    Then I should be on the show page for the organisation named "Friendly"
     And I should see permission denied
 

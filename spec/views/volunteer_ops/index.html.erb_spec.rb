@@ -2,23 +2,23 @@ require 'spec_helper'
 
 describe "volunteer_ops/index", :js => true  do
   before(:each) do
-    @org1 = stub_model(Organization, :name => "The Addams Family",  
+    @org1 = stub_model(Organisation, :name => "The Addams Family",  
                       :address => "1313 Mockingbird Lane")
-    @org2 = stub_model(Organization, :name => "The Neighbors",  
+    @org2 = stub_model(Organisation, :name => "The Neighbors",  
                       :address => "666 Mockingbird Lane")
     @volunteer_ops = [(stub_model(VolunteerOp, :title => "Undertaker",
                       :description => "Help Uncle Fester", 
-                      :organization => @org1)),
+                      :organisation => @org1)),
                       (stub_model(VolunteerOp, :title => "Gravedigger",
                       :description => "Dispose of victims", 
-                      :organization => @org2))]
+                      :organisation => @org2))]
   end
   it "renders a list of volunteer_ops" do
     render
     @volunteer_ops.each do |op|
       rendered.should have_content op.title
       rendered.should have_content op.description
-      rendered.should have_content op.organization.name
+      rendered.should have_content op.organisation.name
     end
   end
 
@@ -29,10 +29,10 @@ describe "volunteer_ops/index", :js => true  do
     end
   end
 
-  it "renders a link to the organization" do
+  it "renders a link to the organisation" do
     render
     @volunteer_ops.each do |op|
-      rendered.should have_link op.organization.name, :href => organization_path(op.organization.id)
+      rendered.should have_link op.organisation.name, :href => organisation_path(op.organisation.id)
     end
   end
   

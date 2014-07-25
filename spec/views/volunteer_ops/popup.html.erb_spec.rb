@@ -2,20 +2,20 @@ require 'spec_helper'
 
 describe "volunteer_ops/_popup.html.erb" do
   let(:org) do
-    stub_model Organization, :name => "Friendly Charity", :id => 1, 
+    stub_model Organisation, :name => "Friendly Charity", :id => 1, 
       :description => 'This is an absurdly absurdly long but very fun description that will make you sick '
   end
   let(:op1) do
-    stub_model VolunteerOp, :title => "Friendly Volunteer", :organization_id => org.id, :id => 1, 
+    stub_model VolunteerOp, :title => "Friendly Volunteer", :organisation_id => org.id, :id => 1, 
       :description => 'Friendly people wanted!  This is an absurdly absurdly long but very fun description that will make you sick '
   end
   let(:op2) do
-    stub_model VolunteerOp, :title => "Friendly Driver", :organization_id => org.id, :id => 1, 
+    stub_model VolunteerOp, :title => "Friendly Driver", :organisation_id => org.id, :id => 1, 
       :description => 'Drivers wanted!  This is an absurdly absurdly long but very fun description that will make you sick '
   end
 
   before(:each) do
-    VolunteerOp.stub(:find_all_by_organization_id).and_return([op1, op2])
+    VolunteerOp.stub(:find_all_by_organisation_id).and_return([op1, op2])
     assign(:org, org)
     render
   end
@@ -31,7 +31,7 @@ describe "volunteer_ops/_popup.html.erb" do
   end
   
   it "should render a link to an org" do
-    expect(rendered).to have_link 'Friendly Charity', :href => organization_path(org)
+    expect(rendered).to have_link 'Friendly Charity', :href => organisation_path(org)
   end
   
   it 'should not render a description of org' do

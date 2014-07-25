@@ -1,13 +1,13 @@
-class CSVOrganization
+class CSVOrganisation
   def initialize(row)
     @row = row
   end
 
-  def is_organization_removed?
+  def is_organisation_removed?
     @row[mappings[:date_removed]] != nil
   end
 
-  def organization_name
+  def organisation_name
     FirstCapitalsHumanizer.call(@row[mappings[:name]])
   end
 

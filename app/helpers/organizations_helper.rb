@@ -1,9 +1,9 @@
-module OrganizationsHelper
+module OrganisationsHelper
   def charity_admin_display_msg
-    if @organization.users.empty?
+    if @organisation.users.empty?
       "This organisation has no admins yet"
     else
-      @organization.users.map {|user| user.email}.join(", ")
+      @organisation.users.map {|user| user.email}.join(", ")
     end
   end
 end

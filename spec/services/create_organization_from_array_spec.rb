@@ -4,9 +4,9 @@ require_relative '../../app/models/csv_header'
 require_relative '../../app/models/address'
 require_relative '../../app/models/description_humanizer'
 require_relative '../../app/models/first_capitals_humanizer'
-require_relative '../../app/services/create_organization_from_array'
+require_relative '../../app/services/create_organisation_from_array'
 
-describe CreateOrganizationFromArray, ".create" do 
+describe CreateOrganisationFromArray, ".create" do 
   let(:mappings) do 
     {name: 'Title',
      address: 'Contact Address',
@@ -22,12 +22,12 @@ describe CreateOrganizationFromArray, ".create" do
     CSV::Row.new(headers, fields.flatten)
   end
   let(:validate) { false } 
-  let(:organization_repository) { double :organization }
+  let(:organisation_repository) { double :organisation }
 
-  it 'creates and validates an organization' do 
-    allow(organization_repository).to receive(:find_by_name)
-    expect(organization_repository).to receive(:create_and_validate)
-    described_class.create(organization_repository, row, validate)
+  it 'creates and validates an organisation' do 
+    allow(organisation_repository).to receive(:find_by_name)
+    expect(organisation_repository).to receive(:create_and_validate)
+    described_class.create(organisation_repository, row, validate)
   end
 
 

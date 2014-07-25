@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe OrganizationsController do
+describe OrganisationsController do
   let(:category_html_options) { [['cat1', 1], ['cat2', 2]] }
 
   # shouldn't this be done in spec_helper.rb?
@@ -11,19 +11,19 @@ describe OrganizationsController do
 
   # http://stackoverflow.com/questions/10442159/rspec-as-null-object
   # doesn't calling as_null_object on a mock negate the need to stub anything?
-  def double_organization(stubs={})
-    (@double_organization ||= mock_model(Organization).as_null_object).tap do |organization|
-      organization.stub(stubs) unless stubs.empty?
+  def double_organisation(stubs={})
+    (@double_organisation ||= mock_model(Organisation).as_null_object).tap do |organisation|
+      organisation.stub(stubs) unless stubs.empty?
     end
   end
 
   describe "popup partial" do
     it "should take some argument and call to_gmap4rails on it" do
-      result = [double_organization]
+      result = [double_organisation]
       partial = double("template")
       marker = double("marker")
       marker.should_receive(:infowindow)
-      result.should_receive(:to_gmaps4rails).and_yield(double_organization, marker)
+      result.should_receive(:to_gmaps4rails).and_yield(double_organisation, marker)
       @controller.should_receive(:render_to_string)
       #not sure if we are supposed to test private method on controller ...
       @controller.send(:gmap4rails_with_popup_partial, result, partial)
@@ -35,7 +35,7 @@ describe OrganizationsController do
 
     context 'setting appropriate view vars for all combinations of input' do
       let(:json) { 'my markers' }
-      let(:result) { [double_organization] }
+      let(:result) { [double_organisation] }
       let(:category) { double('Category') }
       before(:each) do
         result.should_receive(:to_gmaps4rails).and_return(json)
@@ -44,14 +44,14 @@ describe OrganizationsController do
       end
 
       it "orders search results by most recent" do
-        Organization.should_receive(:order_by_most_recent).and_return(result)
+        Organisation.should_receive(:order_by_most_recent).and_return(result)
         result.stub_chain(:search_by_keyword, :filter_by_category).with('test').with(nil).and_return(result)
         get :search, :q => 'test'
-        assigns(:organizations).should eq([double_organization])
+        assigns(:organisations).should eq([double_organisation])
       end
 
-      it "sets up appropriate values for view vars: query_term, organizations and json" do
-        Organization.should_receive(:search_by_keyword).with('test').and_return(result)
+      it "sets up appropriate values for view vars: query_term, organisations and json" do
+        Organisation.should_receive(:search_by_keyword).with('test').and_return(result)
         result.should_receive(:filter_by_category).with('1').and_return(result)
         Category.should_receive(:find_by_id).with("1").and_return(category)
         get :search, :q => 'test', "category" => {"id" => "1"}
@@ -60,28 +60,28 @@ describe OrganizationsController do
       end
 
       it "handles lack of category gracefully" do
-        Organization.should_receive(:search_by_keyword).with('test').and_return(result)
+        Organisation.should_receive(:search_by_keyword).with('test').and_return(result)
         result.should_receive(:filter_by_category).with(nil).and_return(result)
         get :search, :q => 'test'
         assigns(:query_term).should eq 'test'
       end
 
       it "handles lack of query term gracefully" do
-        Organization.should_receive(:search_by_keyword).with(nil).and_return(result)
+        Organisation.should_receive(:search_by_keyword).with(nil).and_return(result)
         result.should_receive(:filter_by_category).with(nil).and_return(result)
         get :search
         assigns(:query_term).should eq nil
       end
 
       it "handles lack of id gracefully" do
-        Organization.should_receive(:search_by_keyword).with('test').and_return(result)
+        Organisation.should_receive(:search_by_keyword).with('test').and_return(result)
         result.should_receive(:filter_by_category).with(nil).and_return(result)
         get :search, :q => 'test', "category" => nil
         assigns(:query_term).should eq 'test'
       end
 
       it "handles empty string id gracefully" do
-        Organization.should_receive(:search_by_keyword).with('test').and_return(result)
+        Organisation.should_receive(:search_by_keyword).with('test').and_return(result)
         result.should_receive(:filter_by_category).with("").and_return(result)
         get :search, :q => 'test', "category" => {"id" => ""}
         assigns(:query_term).should eq 'test'
@@ -90,7 +90,7 @@ describe OrganizationsController do
       after(:each) do
         response.should render_template 'index'
         response.should render_template 'layouts/two_columns'
-        assigns(:organizations).should eq([double_organization])
+        assigns(:organisations).should eq([double_organisation])
         assigns(:json).should eq(json)
         assigns(:category_options).should eq category_html_options
       end
@@ -101,7 +101,7 @@ describe OrganizationsController do
       result = []
       result.should_receive(:empty?).and_return(true)
       result.stub_chain(:page, :per).and_return(result)
-      Organization.should_receive(:search_by_keyword).with('no results').and_return(result)
+      Organisation.should_receive(:search_by_keyword).with('no results').and_return(result)
       result.should_receive(:filter_by_category).with('1').and_return(result)
       category = double('Category')
       Category.should_receive(:find_by_id).with("1").and_return(category)
@@ -112,12 +112,12 @@ describe OrganizationsController do
     end
 
     it "does not set up flash nor flash.now when search returns results" do
-      result = [double_organization]
+      result = [double_organisation]
       json='my markers'
       result.should_receive(:to_gmaps4rails).and_return(json)
       result.should_receive(:empty?).and_return(false)
       result.stub_chain(:page, :per).and_return(result)
-      Organization.should_receive(:search_by_keyword).with('some results').and_return(result)
+      Organisation.should_receive(:search_by_keyword).with('some results').and_return(result)
       result.should_receive(:filter_by_category).with('1').and_return(result)
       category = double('Category')
       Category.should_receive(:find_by_id).with("1").and_return(category)
@@ -128,15 +128,15 @@ describe OrganizationsController do
   end
 
   describe "GET index" do
-    it "assigns all organizations as @organizations" do
-      result = [double_organization]
+    it "assigns all organisations as @organisations" do
+      result = [double_organisation]
       json='my markers'
       result.should_receive(:to_gmaps4rails).and_return(json)
       Category.should_receive(:html_drop_down_options).and_return(category_html_options)
-      Organization.should_receive(:order_by_most_recent).and_return(result)
+      Organisation.should_receive(:order_by_most_recent).and_return(result)
       result.stub_chain(:page, :per).and_return(result)
       get :index
-      assigns(:organizations).should eq(result)
+      assigns(:organisations).should eq(result)
       assigns(:json).should eq(json)
       response.should render_template 'layouts/two_columns'
     end
@@ -145,7 +145,7 @@ describe OrganizationsController do
   describe "GET show" do
     before(:each) do
       @user = double("User")
-      Organization.stub(:find).with('37') { double_organization }
+      Organisation.stub(:find).with('37') { double_organisation }
       @user.stub(:can_edit?)
       @user.stub(:can_delete?)
       @user.stub(:belongs_to?)
@@ -158,25 +158,25 @@ describe OrganizationsController do
       response.should render_template 'layouts/two_columns'
     end
 
-    it "assigns the requested organization as @organization and appropriate json" do
+    it "assigns the requested organisation as @organisation and appropriate json" do
       json='my markers'
-      @org = double_organization
+      @org = double_organisation
       @org.should_receive(:to_gmaps4rails).and_return(json)
-      Organization.should_receive(:find).with('37') { @org }
+      Organisation.should_receive(:find).with('37') { @org }
       get :show, :id => '37'
-      assigns(:organization).should be(double_organization)
+      assigns(:organisation).should be(double_organisation)
       assigns(:json).should eq(json)
     end
 
     context "editable flag is assigned to match user permission" do
       it "user with permission leads to editable flag true" do
-        @user.should_receive(:can_edit?).with(double_organization).and_return(true)
+        @user.should_receive(:can_edit?).with(double_organisation).and_return(true)
         get :show, :id => 37
         assigns(:editable).should be(true)
       end
 
       it "user without permission leads to editable flag false" do
-        @user.should_receive(:can_edit?).with(double_organization).and_return(true)
+        @user.should_receive(:can_edit?).with(double_organisation).and_return(true)
         get :show, :id => 37
         assigns(:editable).should be(true)
       end
@@ -191,14 +191,14 @@ describe OrganizationsController do
     context "grabbable flag is assigned to match user permission" do
       it 'assigns grabbable to true when user can request org admin status' do
         @user.stub(:can_edit?)
-        @user.should_receive(:can_request_org_admin?).with(double_organization).and_return(true)
+        @user.should_receive(:can_request_org_admin?).with(double_organisation).and_return(true)
         controller.stub(:current_user).and_return(@user)
         get :show, :id => 37
         assigns(:grabbable).should be(true)
       end
       it 'assigns grabbable to false when user cannot request org admin status' do
         @user.stub(:can_edit?)
-        @user.should_receive(:can_request_org_admin?).with(double_organization).and_return(false)
+        @user.should_receive(:can_request_org_admin?).with(double_organisation).and_return(false)
         controller.stub(:current_user).and_return(@user)
         get :show, :id => 37
         assigns(:grabbable).should be(false)
@@ -240,12 +240,12 @@ describe OrganizationsController do
         user = double("User")
         request.env['warden'].stub :authenticate! => user
         controller.stub(:current_user).and_return(user)
-        Organization.stub(:new) { double_organization }
+        Organisation.stub(:new) { double_organisation }
       end
 
-      it "assigns a new organization as @organization" do
+      it "assigns a new organisation as @organisation" do
         get :new
-        assigns(:organization).should be(double_organization)
+        assigns(:organisation).should be(double_organisation)
       end
 
       it 'should use a two_column layout' do
@@ -271,10 +271,10 @@ describe OrganizationsController do
         controller.stub(:current_user).and_return(user)
       end
 
-      it "assigns the requested organization as @organization" do
-        Organization.stub(:find).with('37') { double_organization }
+      it "assigns the requested organisation as @organisation" do
+        Organisation.stub(:find).with('37') { double_organisation }
         get :edit, :id => '37'
-        assigns(:organization).should be(double_organization)
+        assigns(:organisation).should be(double_organisation)
         response.should render_template 'layouts/two_columns'
       end
     end
@@ -286,10 +286,10 @@ describe OrganizationsController do
         controller.stub(:current_user).and_return(user)
       end
 
-      it "redirects to organization view" do
-        Organization.stub(:find).with('37') { double_organization }
+      it "redirects to organisation view" do
+        Organisation.stub(:find).with('37') { double_organisation }
         get :edit, :id => '37'
-        response.should redirect_to organization_url(37)
+        response.should redirect_to organisation_url(37)
       end
     end
     #TODO: way to dry out these redirect specs?
@@ -308,31 +308,31 @@ describe OrganizationsController do
       end
 
       describe "with valid params" do
-        it "assigns a newly created organization as @organization" do
-          Organization.stub(:new).with({'these' => 'params'}) { double_organization(:save => true, :name => 'org') }
-          post :create, :organization => {'these' => 'params'}
-          assigns(:organization).should be(double_organization)
+        it "assigns a newly created organisation as @organisation" do
+          Organisation.stub(:new).with({'these' => 'params'}) { double_organisation(:save => true, :name => 'org') }
+          post :create, :organisation => {'these' => 'params'}
+          assigns(:organisation).should be(double_organisation)
         end
 
-        it "redirects to the created organization" do
-          Organization.stub(:new) { double_organization(:save => true) }
-          post :create, :organization => {}
-          response.should redirect_to(organization_url(double_organization))
+        it "redirects to the created organisation" do
+          Organisation.stub(:new) { double_organisation(:save => true) }
+          post :create, :organisation => {}
+          response.should redirect_to(organisation_url(double_organisation))
         end
       end
 
       describe "with invalid params" do
         after(:each) { response.should render_template 'layouts/two_columns' }
 
-        it "assigns a newly created but unsaved organization as @organization" do
-          Organization.stub(:new).with({'these' => 'params'}) { double_organization(:save => false) }
-          post :create, :organization => {'these' => 'params'}
-          assigns(:organization).should be(double_organization)
+        it "assigns a newly created but unsaved organisation as @organisation" do
+          Organisation.stub(:new).with({'these' => 'params'}) { double_organisation(:save => false) }
+          post :create, :organisation => {'these' => 'params'}
+          assigns(:organisation).should be(double_organisation)
         end
 
         it "re-renders the 'new' template" do
-          Organization.stub(:new) { double_organization(:save => false) }
-          post :create, :organization => {}
+          Organisation.stub(:new) { double_organisation(:save => false) }
+          post :create, :organisation => {}
           response.should render_template("new")
         end
       end
@@ -340,8 +340,8 @@ describe OrganizationsController do
 
     context "while not signed in" do
       it "redirects to sign-in" do
-        Organization.stub(:new).with({'these' => 'params'}) { double_organization(:save => true) }
-        post :create, :organization => {'these' => 'params'}
+        Organisation.stub(:new).with({'these' => 'params'}) { double_organisation(:save => true) }
+        post :create, :organisation => {'these' => 'params'}
         expect(response).to redirect_to new_user_session_path
       end
     end
@@ -352,22 +352,22 @@ describe OrganizationsController do
       end
 
       describe "with valid params" do
-        it "refuses to create a new organization" do
-          # stubbing out Organization to prevent new method from calling Gmaps APIs
-          Organization.stub(:new).with({'these' => 'params'}) { double_organization(:save => true) }
-          Organization.should_not_receive :new
-          post :create, :organization => {'these' => 'params'}
+        it "refuses to create a new organisation" do
+          # stubbing out Organisation to prevent new method from calling Gmaps APIs
+          Organisation.stub(:new).with({'these' => 'params'}) { double_organisation(:save => true) }
+          Organisation.should_not_receive :new
+          post :create, :organisation => {'these' => 'params'}
         end
 
-        it "redirects to the organizations index" do
-          Organization.stub(:new).with({'these' => 'params'}) { double_organization(:save => true) }
-          post :create, :organization => {'these' => 'params'}
-          expect(response).to redirect_to organizations_path
+        it "redirects to the organisations index" do
+          Organisation.stub(:new).with({'these' => 'params'}) { double_organisation(:save => true) }
+          post :create, :organisation => {'these' => 'params'}
+          expect(response).to redirect_to organisations_path
         end
 
         it "assigns a flash refusal" do
-          Organization.stub(:new).with({'these' => 'params'}) { double_organization(:save => true) }
-          post :create, :organization => {'these' => 'params'}
+          Organisation.stub(:new).with({'these' => 'params'}) { double_organisation(:save => true) }
+          post :create, :organisation => {'these' => 'params'}
           expect(flash[:notice]).to eq("You don't have permission")
         end
       end
@@ -386,36 +386,36 @@ describe OrganizationsController do
 
       describe "with valid params" do
         it "updates org for e.g. donation_info url" do
-          double = double_organization(:id => 37, :model_name => 'Organization')
-          Organization.should_receive(:find).with('37') { double }
-          double_organization.should_receive(:update_attributes_with_admin).with({'donation_info' => 'http://www.friendly.com/donate', 'admin_email_to_add' => nil})
-          put :update, :id => '37', :organization => {'donation_info' => 'http://www.friendly.com/donate'}
+          double = double_organisation(:id => 37, :model_name => 'Organisation')
+          Organisation.should_receive(:find).with('37') { double }
+          double_organisation.should_receive(:update_attributes_with_admin).with({'donation_info' => 'http://www.friendly.com/donate', 'admin_email_to_add' => nil})
+          put :update, :id => '37', :organisation => {'donation_info' => 'http://www.friendly.com/donate'}
         end
 
-        it "assigns the requested organization as @organization" do
-          Organization.stub(:find) { double_organization(:update_attributes_with_admin => true) }
+        it "assigns the requested organisation as @organisation" do
+          Organisation.stub(:find) { double_organisation(:update_attributes_with_admin => true) }
           put :update, :id => "1"
-          assigns(:organization).should be(double_organization)
+          assigns(:organisation).should be(double_organisation)
         end
 
-        it "redirects to the organization" do
-          Organization.stub(:find) { double_organization(:update_attributes_with_admin => true) }
+        it "redirects to the organisation" do
+          Organisation.stub(:find) { double_organisation(:update_attributes_with_admin => true) }
           put :update, :id => "1"
-          response.should redirect_to(organization_url(double_organization))
+          response.should redirect_to(organisation_url(double_organisation))
         end
       end
 
       describe "with invalid params" do
         after(:each) { response.should render_template 'layouts/two_columns' }
 
-        it "assigns the organization as @organization" do
-          Organization.stub(:find) { double_organization(:update_attributes_with_admin => false) }
+        it "assigns the organisation as @organisation" do
+          Organisation.stub(:find) { double_organisation(:update_attributes_with_admin => false) }
           put :update, :id => "1"
-          assigns(:organization).should be(double_organization)
+          assigns(:organisation).should be(double_organisation)
         end
 
         it "re-renders the 'edit' template" do
-          Organization.stub(:find) { double_organization(:update_attributes_with_admin => false) }
+          Organisation.stub(:find) { double_organisation(:update_attributes_with_admin => false) }
           put :update, :id => "1"
           response.should render_template("edit")
         end
@@ -430,22 +430,22 @@ describe OrganizationsController do
         controller.stub(:current_user).and_return(user)
       end
 
-      describe "with existing organization" do
-        it "does not update the requested organization" do
-          org = double_organization(:id => 37)
-          Organization.should_receive(:find).with("#{org.id}") { org }
+      describe "with existing organisation" do
+        it "does not update the requested organisation" do
+          org = double_organisation(:id => 37)
+          Organisation.should_receive(:find).with("#{org.id}") { org }
           org.should_not_receive(:update_attributes)
-          put :update, :id => "#{org.id}", :organization => {'these' => 'params'}
-          response.should redirect_to(organization_url("#{org.id}"))
+          put :update, :id => "#{org.id}", :organisation => {'these' => 'params'}
+          response.should redirect_to(organisation_url("#{org.id}"))
           expect(flash[:notice]).to eq("You don't have permission")
         end
       end
 
-      describe "with non-existent organization" do
-        it "does not update the requested organization" do
-          Organization.should_receive(:find).with("9999") { nil }
-          put :update, :id => "9999", :organization => {'these' => 'params'}
-          response.should redirect_to(organization_url("9999"))
+      describe "with non-existent organisation" do
+        it "does not update the requested organisation" do
+          Organisation.should_receive(:find).with("9999") { nil }
+          put :update, :id => "9999", :organisation => {'these' => 'params'}
+          response.should redirect_to(organisation_url("9999"))
           expect(flash[:notice]).to eq("You don't have permission")
         end
       end
@@ -453,7 +453,7 @@ describe OrganizationsController do
 
     context "while not signed in" do
       it "redirects to sign-in" do
-        put :update, :id => "1", :organization => {'these' => 'params'}
+        put :update, :id => "1", :organisation => {'these' => 'params'}
         expect(response).to redirect_to new_user_session_path
       end
     end
@@ -464,23 +464,23 @@ describe OrganizationsController do
       before(:each) do
         make_current_user_admin
       end
-      it "destroys the requested organization and redirect to organization list" do
-        Organization.should_receive(:find).with('37') { double_organization }
-        double_organization.should_receive(:destroy)
+      it "destroys the requested organisation and redirect to organisation list" do
+        Organisation.should_receive(:find).with('37') { double_organisation }
+        double_organisation.should_receive(:destroy)
         delete :destroy, :id => '37'
-        response.should redirect_to(organizations_url)
+        response.should redirect_to(organisations_url)
       end
     end
     context "while signed in as non-admin", :helpers => :controllers do
       before(:each) do
         make_current_user_nonadmin
       end
-      it "does not destroy the requested organization but redirects to organization home page" do
-        double = double_organization
-        Organization.should_not_receive(:find).with('37') { double }
+      it "does not destroy the requested organisation but redirects to organisation home page" do
+        double = double_organisation
+        Organisation.should_not_receive(:find).with('37') { double }
         double.should_not_receive(:destroy)
         delete :destroy, :id => '37'
-        response.should redirect_to(organization_url('37'))
+        response.should redirect_to(organisation_url('37'))
       end
     end
     context "while not signed in" do

@@ -27,7 +27,7 @@ describe 'layouts/application.html.erb', :type => :feature do
       expect(rendered).to contain 'Search for local voluntary and community organisations'
     end
 
-    it 'renders Organization sign in form' do
+    it 'renders Organisation sign in form' do
       render
       expect(rendered).to have_selector('form', :id => 'loginForm')
     end
@@ -44,7 +44,7 @@ describe 'layouts/application.html.erb', :type => :feature do
       expect(rendered).to have_css('#navLogin')
     end
 
-    it 'renders new Organization sign up form' do
+    it 'renders new Organisation sign up form' do
       render
       expect(rendered).to have_selector('form', :id => 'registerForm')
     end
@@ -77,7 +77,7 @@ describe 'layouts/application.html.erb', :type => :feature do
 
     it 'renders an Organisations link' do
       render
-      expect(rendered).to have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{organizations_path}\"]")
+      expect(rendered).to have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{organisations_path}\"]")
     end
 
     it 'renders a Volunteers link' do
@@ -125,10 +125,10 @@ describe 'layouts/application.html.erb', :type => :feature do
       end
     end
 
-    it "does not render a new organization link" do
+    it "does not render a new organisation link" do
       view.stub(:user_signed_in? => false)
       render
-      expect(rendered).not_to have_xpath("//a[@href='#{new_organization_path}']")
+      expect(rendered).not_to have_xpath("//a[@href='#{new_organisation_path}']")
     end
 
     context 'footer links to pages' do
@@ -176,8 +176,8 @@ describe 'layouts/application.html.erb', :type => :feature do
       expect(rendered).not_to have_css('#menuAdmin')
     end
 
-    it 'does not render a new organization link' do
-      expect(rendered).not_to have_xpath("//a[@href='#{new_organization_path}']")
+    it 'does not render a new organisation link' do
+      expect(rendered).not_to have_xpath("//a[@href='#{new_organisation_path}']")
     end
   end
 
@@ -189,12 +189,12 @@ describe 'layouts/application.html.erb', :type => :feature do
     end
 
     it 'links to new org link in footer' do
-      expect(rendered).to have_link('New Organisation', href: new_organization_path)
+      expect(rendered).to have_link('New Organisation', href: new_organisation_path)
     end
 
     it 'should see admin-only dropdown' do
       rendered.within('#menuAdmin') do |menu|
-        menu.should have_link 'Organisations Without Users', :href => organizations_report_path
+        menu.should have_link 'Organisations Without Users', :href => organisations_report_path
         menu.should have_link 'All Users', :href => users_report_path
         menu.should have_link 'Invited Users', :href => invited_users_report_path
       end
@@ -205,14 +205,14 @@ describe 'layouts/application.html.erb', :type => :feature do
     it 'hides volunteers and organisations links when feature is inactive' do
       view.should_receive(:feature_active?).with(:volunteer_ops_list).and_return(false)
       render
-      expect(rendered).to_not have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{organizations_path}\"]")
+      expect(rendered).to_not have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{organisations_path}\"]")
       expect(rendered).to_not have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{volunteer_ops_path}\"]")
     end
 
     it 'show volunteers and organisations links when feature is active' do
       view.should_receive(:feature_active?).with(:volunteer_ops_list).and_return(true)
       render
-      expect(rendered).to have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{organizations_path}\"]")
+      expect(rendered).to have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{organisations_path}\"]")
       expect(rendered).to have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{volunteer_ops_path}\"]")
     end
   end

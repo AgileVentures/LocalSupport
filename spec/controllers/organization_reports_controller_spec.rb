@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe OrganizationReportsController do
-  let(:org) { double('Organization') }
+describe OrganisationReportsController do
+  let(:org) { double('Organisation') }
   let(:user) { double 'User' }
   let(:session) { mock_model User, admin?: true, decrement_invitation_limit!: nil }
   before(:each) { controller.stub(:current_user).and_return(session) }
@@ -19,7 +19,7 @@ describe OrganizationReportsController do
     end
 
     it 'assigns an instance variable' do
-      Organization.stub_chain(:not_null_email, :null_users, :without_matching_user_emails).and_return([org])
+      Organisation.stub_chain(:not_null_email, :null_users, :without_matching_user_emails).and_return([org])
       get :without_users_index
       assigns(:orphans).should include org
     end

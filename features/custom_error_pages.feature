@@ -12,7 +12,7 @@ Feature: I want to make error pages follow the general design of the site.
     And I should see "We're sorry, but we couldn't find the page you requested"
 
   Scenario: 404 page when opening an invalid project
-    When I visit "/organizations/foo-bar-org"
+    When I visit "/organisations/foo-bar-org"
     And the page should be titled "404 Page Not Found"
     And the response status should be "404"
     And I should see "We're sorry, but we couldn't find the page you requested"
