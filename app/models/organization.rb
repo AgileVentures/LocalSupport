@@ -77,7 +77,7 @@ class Organization < ActiveRecord::Base
     #category = Category.find_by_id(category_id)
     #orgs = category.organizations.select {|org| org.id} if category
     #where(:id => orgs)
-    Organization.joins(:categories).where(Category.arel_table[:id].eq(category_id))
+    self.joins(:categories).where(Category.arel_table[:id].eq(category_id))
   end
 
   def gmaps4rails_address
