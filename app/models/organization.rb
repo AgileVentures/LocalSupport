@@ -74,10 +74,7 @@ class Organization < ActiveRecord::Base
     return scoped unless category_id.present?
     # could use this but doesn't play well with search by keyqord since table names are remapped
     #Organization.includes(:categories).where("categories_organizations.category_id" =>  category_id)
-    #category = Category.find_by_id(category_id)
-    #orgs = category.organizations.select {|org| org.id} if category
-    #where(:id => orgs)
-    self.joins(:categories).where(Category.arel_table[:id].eq(category_id))
+    self.joins(:categories).where(is_in_category(category_id)) #do we need to sanitize category_id?
   end
 
   def gmaps4rails_address
@@ -197,6 +194,14 @@ class Organization < ActiveRecord::Base
 
   def self.table
     self.arel_table
+  end
+
+  def self.category_table
+    Category.arel_table
+  end
+
+  def self.is_in_category(category_id)
+    category_table[:id].eq(category_id)
   end
   
   def self.contains_description(key)
