@@ -14,8 +14,8 @@
             </a>
             <a href="/" class="brand" title="Search for local voluntary and community organisations">Search for local
               voluntary and community organisations</a>
-
             <div class="nav-collapse collapse">
+
               <ul id="button-rack" class="nav nav-pills pull-right">
                 <% if feature_active? :volunteer_ops_list %>
                     <li class="<%= active_if 'organizations' %>">
@@ -25,6 +25,7 @@
                       <%= link_to "Volunteers", volunteer_ops_path %>
                     </li>
                 <% end %>
+
                 <% if current_user.nil? %>
                     <li class="dropdown " id="menuLogin">
                       <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
@@ -96,6 +97,11 @@
                         </ul>
                       </li>
                 <% end %>
+                <li class="dropdown">
+                    <div id="google_translate_element" class="nav-translate" >
+                      Select Language
+                    </div>
+                </li>
               </ul>
             </div>
           </div>

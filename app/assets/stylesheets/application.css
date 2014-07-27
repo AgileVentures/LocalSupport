@@ -136,6 +136,11 @@ body {
     padding-bottom: 17px;
 }
 
+.nav-translate{
+   margin: 5px 5px 5px 5px;
+   padding: 5px 0 5px 0;
+}
+
 .nav input {
     margin: 5px 5px 5px 5px;
     padding: 0 5px 0 5px;
