@@ -1,6 +1,7 @@
 require 'webmock/cucumber'
 require 'uri-handler'
 include ApplicationHelper
+require 'debugger'
 
 Then(/^I should see the "(.*?)" image linked to "(.*?)"$/) do |image_alt, link|
   within("a[href='#{link}']") do
@@ -373,6 +374,10 @@ Given /^associations are destroyed for:$/ do |table|
     user.organization_id = nil
     user.save
   end
+end
+
+Then(/^I should see a "(.*?)" widget$/) do |label|
+  expect(page).to have_css('div#google_translate_element', :text == 'Select Language')
 end
 
 Given /^I run the invite migration$/ do
