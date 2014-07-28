@@ -20,8 +20,13 @@ body {
     padding-bottom: 0px !important;
     background-color: whitesmoke !important;
     position: static !important;
-    .goog-te-banner-frame {display:none !important;}
-    .goog-te-gadget-icon {display:none !important;}
+}
+
+.goog-te-banner-frame {
+    display:none !important;
+}
+.goog-te-gadget-icon {
+    display:none !important;
 }
 
 .ls_infobox {

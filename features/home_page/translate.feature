@@ -6,9 +6,9 @@ Feature: Site language translation
 
   Background: Translate widget available on home page
     Given I visit the home page
-    Then I should see a "Select Language ▼" widget
+    Then I should see a "Select Language" widget
 
-#  @javascript
+  @javascript
   Scenario: Translate site language to French and back
     When I select language "French"
     And I should see "Rechercher des organismes bénévoles et communautaires locales"
@@ -17,14 +17,14 @@ Feature: Site language translation
     And I should see "Search for local voluntary and community organisations"
     And I should not see "organizations"
 
-#  @javascript
+  @javascript
   Scenario: Translate site language to right-to-left language
     Given I accepted the cookie policy from the "home" page
     When I select language "Arabic"
     And I should see "بحث عن المنظمات الطوعية والمجتمع المحلي"
     And I should not see "Search for local voluntary and community organisations"
 
-#  @javascript
+  @javascript
   Scenario: Translate controls and alerts
     When I select language "Turkish"
     # lost the capital S on Submit button
