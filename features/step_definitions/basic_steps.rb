@@ -376,10 +376,29 @@ Given /^associations are destroyed for:$/ do |table|
   end
 end
 
-Then(/^I should see a "(.*?)" widget$/) do |label|
-  expect(page).to have_css('div#google_translate_element', :text == 'Select Language')
-end
-
 Given /^I run the invite migration$/ do
 
 end
+
+Then(/^I should see a "(.*?)" widget$/) do |label|
+  wait_for_ajax
+  expect(page).to have_css('div#google_translate_element', :text == 'Select Language')
+end
+
+When(/^I select language "([^"]*)"$/) do |lang|
+  sleep 3
+  find(:xpath, "//div[@id='google_translate_element']").click
+  find('span', :text => lang).click
+  steps %Q{ Then I should see "#{lang}" }
+  wait_for_ajax
+end
+#
+# When(/^I wait for ajax$/) do
+#   wait_for_ajax
+# end
+
+
+# And(/^I click language link "([^"]*)"$/) do |lang|
+#   page.all('span', :text => "#{lang}")[0].click
+#   steps %Q{ Then I should see "#{lang}" }
+# end

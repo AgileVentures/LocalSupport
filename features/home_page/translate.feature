@@ -6,31 +6,41 @@ Feature: Site language translation
 
   Background: Translate widget available on home page
     Given I visit the home page
-    Then I should see a "Select Language" widget
+    Then I should see a "Select Language ▼" widget
 
-#  Scenario: Translate site language in general
-#    When I select "Yiddish"
-#    Then I should see "אָרגאַניסאַטיאָנס וואָלונטעערס לאָגין פאָרלייגן קיכל פּאָליטיק"
-#    And I should not see "Search for local voluntary and community organisations"
-#
-#  Scenario: Translate works on controls and alerts
-#    When I select "Turkish"
-#    Then I should see "Sunmak"
-#    And I should see "Çerez Politikası"
-#    And I should not see "Submit"
-#    And I should not see "Cookie Policy"
-#
-#  Scenario: Translate can return it to the original version
-#    When I select "English"
-#    Then I should see "Organisation"
-#    And I should not see "Organization"
-#
+#  @javascript
+  Scenario: Translate site language to French and back
+    When I select language "French"
+    And I should see "Rechercher des organismes bénévoles et communautaires locales"
+    And I should not see "Search for local voluntary and community organisations"
+    When I select language "English"
+    And I should see "Search for local voluntary and community organisations"
+    And I should not see "organizations"
+
+#  @javascript
+  Scenario: Translate site language to right-to-left language
+    Given I accepted the cookie policy from the "home" page
+    When I select language "Arabic"
+    And I should see "بحث عن المنظمات الطوعية والمجتمع المحلي"
+    And I should not see "Search for local voluntary and community organisations"
+
+#  @javascript
+  Scenario: Translate controls and alerts
+    When I select language "Turkish"
+    # lost the capital S on Submit button
+    Then I should see "sunmak"
+    # This is Cookie Policy
+    And I should see "Çerez Politikası"
+    And I should not see "Submit"
+    And I should not see "Cookie Policy"
+
+
 #  Scenario: Google translation service unavailable at start
-#    Given the service is unavailable on page load
+#    When the service is unavailable on page load
 #    Then I should see the page load OK
 #    And I should not see a "Select Language" widget
 #
 #  Scenario: Google translation service becomes unavailable
-#    Given the service is unavailable after page load
-#    Then I should still see the page load OK
-#    And I should not see a "Select Language" widget
+#    When the service is unavailable after page load
+#    Then I should see a "Select Language" widget
+#    And it does nothing
