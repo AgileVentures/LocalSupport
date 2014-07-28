@@ -22,13 +22,6 @@ body {
     position: static !important;
 }
 
-.goog-te-banner-frame {
-    display:none !important;
-}
-.goog-te-gadget-icon {
-    display:none !important;
-}
-
 .ls_infobox {
   border-radius: 4px;
   margin-bottom: 8px;
@@ -145,11 +138,6 @@ body {
     padding-bottom: 17px;
 }
 
-.nav-translate{
-   margin: 5px 5px 5px 5px;
-   padding: 5px 0 5px 0;
-}
-
 .nav input {
     margin: 5px 5px 5px 5px;
     padding: 0 5px 0 5px;
@@ -166,6 +154,20 @@ body {
     margin-right: 0 !important;
 }
 
+/* google translate widget positioning in navbar */
+.nav-translate{
+    padding: 3px 5px 3px 5px ;
+}
+
+/* prevent google translate top banner bar */
+.goog-te-banner-frame {
+    display:none !important;
+}
+
+/* prevent google icon on translate widget */
+.goog-te-gadget-icon {
+    display:none !important;
+}
 
 /*Contributors list using Flex-boxes and media types */
 
