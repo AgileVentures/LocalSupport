@@ -4,15 +4,15 @@ class VolunteerOpsController < ApplicationController
 
   def index
     @volunteer_ops = VolunteerOp.all
-    @organizations = @volunteer_ops.map { |op| op.organization }
-    @json = gmap4rails_with_popup_partial(@organizations, 'popup')
+    @organisations = @volunteer_ops.map { |op| op.organisation }
+    @json = gmap4rails_with_popup_partial(@organisations, 'popup')
   end
 
   def show
     @volunteer_op = VolunteerOp.find(params[:id])
-    @organization = @volunteer_op.organization
-    @editable = current_user.can_edit?(@organization) if current_user
-    @json = gmap4rails_with_popup_partial(@organization, 'popup')
+    @organisation = @volunteer_op.organisation
+    @editable = current_user.can_edit?(@organisation) if current_user
+    @json = gmap4rails_with_popup_partial(@organisation, 'popup')
   end
 
   def new
@@ -20,7 +20,7 @@ class VolunteerOpsController < ApplicationController
   end
 
   def create
-    params[:volunteer_op][:organization_id] = current_user.organization.id
+    params[:volunteer_op][:organisation_id] = current_user.organisation.id
     @volunteer_op = VolunteerOp.new(params[:volunteer_op])
     if @volunteer_op.save
       redirect_to @volunteer_op, notice: 'Volunteer op was successfully created.'
@@ -31,12 +31,12 @@ class VolunteerOpsController < ApplicationController
 
   def edit
     @volunteer_op = VolunteerOp.find(params[:id])
-    @organization = @volunteer_op.organization
+    @organisation = @volunteer_op.organisation
   end
 
   def update
     @volunteer_op = VolunteerOp.find(params[:id])
-    @organization = @volunteer_op.organization
+    @organisation = @volunteer_op.organisation
     if @volunteer_op.update_attributes(params[:volunteer_op])
       redirect_to @volunteer_op, notice: 'Volunteer Opportunity was successfully updated.'
     else
@@ -47,18 +47,18 @@ class VolunteerOpsController < ApplicationController
   private
 
   def authorize
-    # set @organization
+    # set @organisation
     # then can make condition:
-    # unless current_user.can_edit? organization
+    # unless current_user.can_edit? organisation
     unless org_owner?
-      flash[:error] = 'You must be signed in as an organization owner to perform this action!'
+      flash[:error] = 'You must be signed in as an organisation owner to perform this action!'
       redirect_to '/'
       false
     end
   end
 
   def org_owner?
-    current_user.organization.present? if current_user.present?
+    current_user.organisation.present? if current_user.present?
   end
 
   def gmap4rails_with_popup_partial(item, partial)

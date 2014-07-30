@@ -1,10 +1,10 @@
 Feature: import email addresses
   As a Site Admin
-  So that I enable contacting organizations
-  I want to import emails for those organizations that do not have emails and not overwrite existing emails
+  So that I enable contacting organisations
+  I want to import emails for those organisations that do not have emails and not overwrite existing emails
 
-Background: organizations have been added to database
-  Given the following organizations exist:
+Background: organisations have been added to database
+  Given the following organisations exist:
     | name              | description              | address        | postcode | website       | email         |
     | I love dogs       | loves canines            | 34 pinner road | HA1 4HZ  | http://a.com/ | fred@dogs.com |
     | I love cats       | loves felines            | 64 pinner road | HA1 4HA  | http://b.com/ |               |

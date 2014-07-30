@@ -4,8 +4,8 @@ Feature: Categories of charities
   I want to navigate through categories to find service
   Tracker story ID: https://www.pivotaltracker.com/story/show/46217161
 
-  Background: organizations have been added to database
-    Given the following organizations exist:
+  Background: organisations have been added to database
+    Given the following organisations exist:
       | name              | description              | address        | postcode | website       |
       | I love dogs       | loves canines            | 34 pinner road | HA1 4HZ  | http://a.com/ |
       | I love cats       | loves felines            | 64 pinner road | HA1 4HA  | http://b.com/ |
@@ -17,13 +17,13 @@ Feature: Categories of charities
       | Health            | 102                   |
       | Education         | 103                   |
 
-    And the following categories_organizations exist:
-      | category |  organization |
+    And the following categories_organisations exist:
+      | category |  organisation |
       | Animal Welfare | I love dogs |
       | Animal Welfare | I love cats |
 
-  Scenario: Search for organizations in the "Animal Welfare" category
-  #Given I have at least 3 organizations in the "Animal Welfare" category
+  Scenario: Search for organisations in the "Animal Welfare" category
+  #Given I have at least 3 organisations in the "Animal Welfare" category
     Given I visit the home page
     And I select the "Animal Welfare" category
     And I press "Submit"
