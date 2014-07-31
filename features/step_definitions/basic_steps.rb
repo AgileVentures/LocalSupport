@@ -1,7 +1,6 @@
 require 'webmock/cucumber'
 require 'uri-handler'
 include ApplicationHelper
-require 'debugger'
 
 Then(/^I should see the "(.*?)" image linked to "(.*?)"$/) do |image_alt, link|
   within("a[href='#{link}']") do
