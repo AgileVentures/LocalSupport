@@ -13,7 +13,6 @@ describe "Invitations", :helpers => :requests do
       end
 
       before do
-        Gmaps4rails.stub :geocode
         login(admin)
       end
 
@@ -35,7 +34,6 @@ describe "Invitations", :helpers => :requests do
       let(:lost_invite) { User.invite!({email: org.email}, admin) }
 
       before do
-        Gmaps4rails.stub :geocode
         login(admin)
       end
 
