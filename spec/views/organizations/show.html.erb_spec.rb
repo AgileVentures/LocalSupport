@@ -162,6 +162,20 @@ describe 'organizations/show.html.erb' do
     end
 
   end
+
+  describe 'show categories' do
+    it 'renders categories when present' do
+      assign(:categories, ["Animal Welfare", "Sports"])
+      render
+      expect(rendered).to have_content "Animal Welfare"
+      expect(rendered).to have_content "Sports"
+    end
+    it 'handles no categories gracefully' do
+      render
+      expect(rendered).not_to have_content "Animal Welfare"
+      expect(rendered).not_to have_content "Sports"
+    end
+  end
 end
 
 

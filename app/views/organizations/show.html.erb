@@ -52,6 +52,13 @@
       </p>
   <% end %>
 
+  <%if @categories.present? %>
+    <p>
+      <b>Categories</b>
+      <%= display_organization_categories(@categories) %>
+    </p>
+  <% end %>
+
   <div class="row">
     <div class="position-bottom span6">
       <% if @editable %>
