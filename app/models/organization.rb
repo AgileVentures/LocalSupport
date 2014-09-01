@@ -66,8 +66,8 @@ class Organization < ActiveRecord::Base
   end
 
   def self.search_by_keyword(keyword)
-     key = sanitize_keyword(keyword) 
-     self.where(contains_description(key).or(contains_name(key)))
+     keyword = "%#{keyword}%"
+     self.where(contains_description(keyword).or(contains_name(keyword)))
   end
 
   def self.filter_by_category(category_id)
@@ -212,10 +212,6 @@ class Organization < ActiveRecord::Base
     table[:name].matches(key)
   end
   
-  def self.sanitize_keyword(keyword)
-    self.sanitize("%#{keyword}%")[1..-2]
-  end
-    
   def remove_errors_with_address
     errors_hash = errors.to_hash
     errors.clear
