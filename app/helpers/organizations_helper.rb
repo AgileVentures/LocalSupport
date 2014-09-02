@@ -6,10 +6,9 @@ module OrganizationsHelper
       @organization.users.map {|user| user.email}.join(", ")
     end
   end
-
-  def display_organization_categories category_names
-    category_names.reduce("") do |memo, cat_name|
-      memo.present? ? "#{memo}, #{cat_name}" : "#{cat_name}"
-    end
+  #use join per sam
+  def display_organization_categories categories
+    category_names = categories.map(&:name)
+    category_names.join(", ")
   end
 end

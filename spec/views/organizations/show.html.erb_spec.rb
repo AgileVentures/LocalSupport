@@ -164,8 +164,9 @@ describe 'organizations/show.html.erb' do
   end
 
   describe 'show categories' do
+    let(:categories){[mock_model(Category, name: "Animal Welfare"), mock_model(Category, name: "Sports")]}
     it 'renders categories when present' do
-      assign(:categories, ["Animal Welfare", "Sports"])
+      assign(:categories, categories)
       render
       expect(rendered).to have_content "Animal Welfare"
       expect(rendered).to have_content "Sports"
