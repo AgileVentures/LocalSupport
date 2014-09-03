@@ -46,3 +46,4 @@ Feature: This is my organization
       Given I visit the home page
       Given I sign in as "pendingadmin@myorg.com" with password "mypassword1234"
       Then I should be on the show page for the organization named "The Organization"
+      And I should see "Your request for admin status is pending."

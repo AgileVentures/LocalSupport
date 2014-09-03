@@ -129,6 +129,14 @@ describe 'organizations/show.html.erb' do
     end
   end
 
+  describe 'pending admin status' do
+    it 'displays pending admin message' do
+      assign(:pending_admin, true)
+      render
+      rendered.should have_content 'Your request for admin status is pending.'
+    end
+  end
+
   describe 'create volunteer opportunity button' do
     it 'shows when belongs_to is true' do
       view.stub(:feature_active?).with(:volunteer_ops_create).and_return(true)
