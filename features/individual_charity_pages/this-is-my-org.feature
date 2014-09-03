@@ -5,8 +5,9 @@ Feature: This is my organization
 
   Background:
     Given the following users are registered:
-       | email              | password       | admin | confirmed_at        | organization |
-       | nonadmin@myorg.com | mypassword1234 | false | 2008-01-01 00:00:00 |              |
+       | email              | password       | admin | confirmed_at        | organization | pending_organization_id|
+       | nonadmin@myorg.com | mypassword1234 | false | 2008-01-01 00:00:00 |              |                        |
+       | pendingadmin@myorg.com |mypassword1234| false | 2008-01-01 00:00;00|             |  1                     |
     And the following organizations exist:
        | name             | address        |
        | The Organization | 83 pinner road |
@@ -38,3 +39,8 @@ Feature: This is my organization
     And I sign up as "normal_user@myorg.com" with password "pppppppp" and password confirmation "pppppppp"
     Then I should be on the home page
     And I should see "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
+
+    Scenario: I have requested admin status but am not yet approved, I will see a notice on the show page
+      Given I visit the home page
+      Given I sign in as "nonadmin@myorg.com" with password "mypassword1234"
+      Then I should be on
