@@ -42,5 +42,5 @@ Feature: This is my organization
 
     Scenario: I have requested admin status but am not yet approved, I will see a notice on the show page
       Given I visit the home page
-      Given I sign in as "nonadmin@myorg.com" with password "mypassword1234"
-      Then I should be on
+      Given I sign in as "pendingadmin@myorg.com" with password "mypassword1234"
+      Then I should be on the show page for the organization named "The Organization"
