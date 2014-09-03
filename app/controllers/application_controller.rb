@@ -35,6 +35,7 @@ class ApplicationController < ActionController::Base
   # Devise hook
   # Returns the users to the page they were viewing before signing in
   def after_sign_in_path_for(resource)
+    return organization_path(Organization.find(current_user.pending_organization_id)) if current_user.pending_organization_id
     return session[:previous_url] if session[:previous_url]
     return organization_path(current_user.organization) if current_user.organization
     root_path
