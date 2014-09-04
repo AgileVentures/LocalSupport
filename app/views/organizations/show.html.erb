@@ -68,6 +68,9 @@
       <% else %>
           <%= link_to "This is my organization", new_user_session_path, {method: :put, 'data-signed_in' => current_user.present?, id: 'TIMO', class: 'btn btn-primary'} if @grabbable %>
       <% end %>
+      <% if @pending_admin %>
+        <p>Your request for admin status is pending.</p>
+      <% end%> 
     </div>
   </div>
 </div>
