@@ -5,7 +5,7 @@ en:
   hello: "Hello world"
   activerecord:
     models:
-      organization: Organisation
+      organisation: Organisation
   authorize:
     admin: 'You must be signed in as an admin to perform this action!'
 

@@ -18,15 +18,15 @@ class BatchInviteJob
   end
 
   def invite_users_and_collate_results
-    results = @invites.flat_map do |organization_id, email|
-      [organization_id, result_of_inviting(invite_user(email, organization_id))]
+    results = @invites.flat_map do |organisation_id, email|
+      [organisation_id, result_of_inviting(invite_user(email, organisation_id))]
     end
     Hash[*results]
   end
 
-  def invite_user email, organization_id
+  def invite_user email, organisation_id
     User.invite!({email: email}) do |user|
-      user.organization_id = organization_id
+      user.organisation_id = organisation_id
     end
   end
 

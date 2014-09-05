@@ -6,13 +6,13 @@ Feature: Edit donation information feature
   
   Tracker story: https://www.pivotaltracker.com/s/projects/742821/stories/45405077
 
-Background: organizations have been added to database 
-  Given the following organizations exist:
+Background: organisations have been added to database 
+  Given the following organisations exist:
   | name           | description               | address        | postcode | telephone |
   | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 |
 
   Given the following users are registered:
-  | email                       | password | admin | organization | confirmed_at |
+  | email                       | password | admin | organisation | confirmed_at |
   | registered_user@example.com | pppppppp | false | Friendly     | 2007-01-01  10:00:00 |
   | registered_user2@example.com| pppppppp | false |              | 2007-01-01  10:00:00 |
   And cookies are approved
@@ -29,11 +29,11 @@ Scenario: Successfully change the donation url for a charity
   #TODO: Refactor the sign in process to dry it out
   Given I visit the home page
   And I sign in as "registered_user@example.com" with password "pppppppp"
-  Given I visit the edit page for the organization named "Friendly"
+  Given I visit the edit page for the organisation named "Friendly"
   And I edit the donation url to be "http://www.friendly.com/donate"
   And I press "Update Organisation"
-  Then I should be on the show page for the organization named "Friendly"
-  And I should see "Organization was successfully updated"
+  Then I should be on the show page for the organisation named "Friendly"
+  And I should see "Organisation was successfully updated"
   And the donation_info URL for "Friendly" should refer to "http://www.friendly.com/donate"
 
  #TODO: Refactor this into integration test that posts to the update method
@@ -43,7 +43,7 @@ Scenario: Successfully change the donation url for a charity
  # And I sign in as "registered_user2@example.com" with password "pppppppp"
  # Given I am furtively on the edit charity page for "Friendly"
  # And I edit the donation url to be "http://www.friendly.com/donate"
- # And I press "Update Organization"
+ # And I press "Update Organisation"
  # Then I should be on the charity page for "Friendly"
  # And I should see "You don't have permission"
  # And I should see "We don't yet have any donation link for them."

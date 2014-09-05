@@ -1,0 +1,35 @@
+<%= form_tag("/organisations/search", :method => "get") do %>
+  <%= label_tag(:q, "Select Category:") %>
+  <%= select("category", "id", @category_options, { :include_blank => 'All' },
+             { :style => 'margin-bottom: 5px;' }) %>
+  <%= submit_tag "Submit", { :class => 'btn btn-info',
+                             :style => 'margin-bottom: 5px;' } %>
+  <%= text_field_tag(:q, @query_term || '',
+                     { :style => 'margin-bottom: 5px; width: 240px;',
+                       :placeholder => "optional search name/description" }) %>
+<% end %>
+
+<div id="orgs_scroll" style="height:340px;width:100%;border:1px solid #ccc;overflow:scroll;">
+  <div class="table table-bordered">
+    <table>
+      <div id="organisations">
+        <% @organisations.each do |organisation| %>
+          <tr>
+            <td>
+              <u><%= link_to organisation.name, organisation %></u><br/>
+              <%= smart_truncate(organisation.description) %>
+            </td>
+          </tr>
+        <% end %>
+      </div>
+    </table>
+  </div>
+</div>
+<br/>
+
+<div style="width:50%;float:left">
+  <%= link_to_if(current_user.try(:admin?), 'Add Organisation',
+                 new_organisation_path){} %>
+</div>
+
+<% render partial: 'shared/map_scripts', locals: {json: @json} %>

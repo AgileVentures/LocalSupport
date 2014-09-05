@@ -1,10 +1,10 @@
-Given /^I am signed in as a charity worker (un)?related to "(.*?)"$/ do |negate, organization_name|
-  organization = Organization.find_by_name(organization_name)
+Given /^I am signed in as a charity worker (un)?related to "(.*?)"$/ do |negate, organisation_name|
+  organisation = Organisation.find_by_name(organisation_name)
   if negate
     users = User.find_all_by_admin(false)
-    user = users.find { |user| user.organization != organization }
+    user = users.find { |user| user.organisation != organisation }
   else
-    user = organization.users.find { |user| !user.admin? }
+    user = organisation.users.find { |user| !user.admin? }
   end
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end

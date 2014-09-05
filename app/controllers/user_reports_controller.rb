@@ -8,7 +8,7 @@ class UserReportsController < ApplicationController
   # business logic pulled into a separate model or process
   def update
     user = User.find_by_id(params[:id])
-    UserOrganizationClaimer.new(self, user, current_user).call(params[:organization_id])
+    UserOrganisationClaimer.new(self, user, current_user).call(params[:organisation_id])
   end
 
   def index
@@ -22,9 +22,9 @@ class UserReportsController < ApplicationController
   end
 
   def update_message_for_admin_status
-    org = Organization.find(params[:organization_id])
+    org = Organisation.find(params[:organisation_id])
     flash[:notice] = "You have requested admin status for #{org.name}"
-    redirect_to(organization_path(params[:organization_id]))
+    redirect_to(organisation_path(params[:organisation_id]))
   end
 
   def update_message_promoting(user)
@@ -41,11 +41,11 @@ class UserReportsController < ApplicationController
   def serialize_invitations
 
     User.invited_not_accepted.select do |user|
-      user.organization.present? # because invitation data may be 'dirty'
+      user.organisation.present? # because invitation data may be 'dirty'
     end.map do |user|
       {
-          id: user.organization.id,
-          name: user.organization.name,
+          id: user.organisation.id,
+          name: user.organisation.name,
           email: user.email,
           date: user.invitation_sent_at
       }
