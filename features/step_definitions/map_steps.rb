@@ -14,12 +14,14 @@ end
 # e.g. one step to handle 2 or more orgs ...
 Then /^I should see "([^"]*?)", "([^"]*?)" and "([^"]*?)" in the map centered on local organizations$/ do |name1, name2, name3|
   check_map([name1,name2,name3])
-  page.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
-  page.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_zoom = true')]"
-  page.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_latitude = 51.5978')]"
-  page.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_longitude = -0.337')]"
-  page.should have_xpath "//script[contains(.,'Gmaps.map.map_options.zoom = 12')]"
-  page.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]"
+
+  ['Gmaps.map.map_options.auto_adjust = false',
+   'Gmaps.map.map_options.auto_zoom = true',
+   'Gmaps.map.map_options.center_latitude = 51.5978',
+   'Gmaps.map.map_options.center_longitude = -0.337',
+   'Gmaps.map.map_options.zoom = 12',
+   'Gmaps.map.map_options.auto_adjust = false'].each {|option| check_script_tag(option)}
+
 end
 
 Then /^I should see "([^"]*?)" and "([^"]*?)" in the map$/ do |name1, name2|
@@ -27,12 +29,16 @@ Then /^I should see "([^"]*?)" and "([^"]*?)" in the map$/ do |name1, name2|
 end
 
 Given(/^the map should show the opportunity (.*)$/) do |op|
-    page.should have_xpath "//script[contains(.,'#{op}')]"
+    page.should have_xpath "//script[contains(.,'#{op}')]", :visible => false
+end
+
+def check_script_tag(filter)
+  page.should have_xpath "//script[contains(.,\'#{filter}\')]", :visible => false
 end
 
 def check_map(names)
   names.each do |name|
-    page.should have_xpath "//script[contains(.,'#{name}')]"
+    check_script_tag(name)
     Organization.all.to_gmaps4rails.should match(name)
   end
 end
