@@ -55,7 +55,7 @@
   <% if @organization.categories.present? %>
     <p>
       <b>Categories: </b>
-      <%= display_organization_categories(@organization.categories) %>
+      <%= @organization.categories.map(&:name).join(", ") %>
     </p>
   <% end %>
 
