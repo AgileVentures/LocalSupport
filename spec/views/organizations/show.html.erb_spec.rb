@@ -170,6 +170,25 @@ describe 'organizations/show.html.erb' do
     end
 
   end
+
+  describe 'show categories' do
+    it 'handles no categories gracefully' do
+      render
+      expect(rendered).not_to have_content "Categories:"
+      expect(rendered).not_to have_content "Animal Welfare"
+      expect(rendered).not_to have_content "Sports"
+    end
+
+    it 'renders categories when present' do
+      cats = [mock_model(Category, name: "Animal Welfare"), mock_model(Category, name: "Sports")]
+      org = mock_model(Organization, categories: cats)
+      assign(:organization, org)
+      render
+      expect(rendered).to have_content "Categories:"
+      expect(rendered).to have_content "Animal Welfare"
+      expect(rendered).to have_content "Sports"
+    end
+  end
 end
 
 
