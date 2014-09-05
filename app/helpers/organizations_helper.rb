@@ -8,7 +8,6 @@ module OrganizationsHelper
   end
   #use join per sam
   def display_organization_categories categories
-    category_names = categories.map(&:name)
-    category_names.join(", ")
+    categories.map(&:name).join(", ")
   end
 end
