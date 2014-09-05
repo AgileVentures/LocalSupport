@@ -16,6 +16,12 @@
     width: 95%;
     margin-bottom: 0 !important;
 }
+.org-info-msg {
+    color: black;
+    background-color: #E0FDEF;
+    width:50%; 
+    border-radius:2em;
+}
 .borderless {
     border-top: none !important;
 }
