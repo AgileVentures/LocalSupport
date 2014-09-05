@@ -243,4 +243,26 @@ describe User do
 
   end
 
+  describe "#pending_admin?" do
+    let(:user) { FactoryGirl.create :user_stubbed_organization }
+    let(:other_org) { FactoryGirl.create :organization }
+
+    it 'true when user is pending admin for organization' do
+      user.pending_organization = other_org
+      expect(user.pending_admin? other_org).to be_true
+    end
+
+    it 'false when user is not pending admin for organization' do
+      expect(user.pending_admin? other_org).to be_false
+    end
+
+    it 'false when org nil' do
+      other_org = nil
+      expect(user.pending_admin? other_org).to be_false
+    end
+
+  end
+
+
+
 end
