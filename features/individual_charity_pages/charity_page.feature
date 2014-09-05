@@ -13,7 +13,20 @@ Feature: Web page owned by each charity
       | email                         | password | organisation | confirmed_at         |
       | registered_user-1@example.com | pppppppp | Friendly     | 2007-01-01  10:00:00 |
       | registered_user-2@example.com | pppppppp |              | 2007-01-01  10:00:00 |
+
     And I visit the show page for the organisation named "Friendly"
+
+    Given the following categories exist:
+      | name              | charity_commission_id |
+      | Animal Welfare    | 101                   |
+      | Health            | 102                   |
+      | Education         | 103                   |
+     Given the following categories_organisations exist:
+      | category |  organisation |
+      | Health | Friendly |
+      | Education | Friendly |
+    And I visit the show page for the organisation named "Friendly"
+
 
   Scenario: be able to view link to charity site on individual charity page
     Then I should see the external website link for "Friendly" charity
@@ -23,6 +36,15 @@ Feature: Web page owned by each charity
 
   Scenario: show organisation e-mail as link
     Then I should see a mail-link to "admin@friendly.xx"
+
+   Scenario: show categories of charity
+     Then I should see "Health"
+     And I should see "Education"
+     And I should not see "Animal Welfare"
+     And I visit the show page for the organisation named "Unfriendly"
+     Then I should not see "Health"
+     And I should not see "Education"
+     And I should not see "Animal Welfare"
 
   Scenario Outline: show labels if field is present
     Then I should see "<label>"
@@ -40,7 +62,3 @@ Feature: Web page owned by each charity
     | Postcode |
     | Email    |
     | Website  |
-
-
-
-

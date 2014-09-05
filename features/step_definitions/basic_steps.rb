@@ -382,6 +382,6 @@ end
 
 Given(/^I can run the rake task "(.*?)"$/) do |task|
   stdout, stderr, status = Open3.capture3("#{task}")
-  expect(stderr).to eq ""
+  expect(stderr).not_to include "Error"
   expect(status).to be_success
 end
