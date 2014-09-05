@@ -52,10 +52,10 @@
       </p>
   <% end %>
 
-  <%if @categories.present? %>
+  <% if @organization.categories.present? %>
     <p>
       <b>Categories: </b>
-      <%= display_organization_categories(@categories) %>
+      <%= display_organization_categories(@organization.categories) %>
     </p>
   <% end %>
 
