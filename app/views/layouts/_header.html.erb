@@ -45,6 +45,9 @@
                                 <![endif]-->
                                 <%= f.password_field :password, :placeholder => "password" %>
                               </div>
+                              <% if @organization %>
+                                  <%= f.hidden_field :organization_id, :value => @organization.id %>
+                              <% end %>
                               <% if devise_mapping.rememberable? -%>
                                   <div><%= f.check_box :remember_me %> <%= f.label :remember_me, :style => "display: inline;" %></div>
                               <% end -%>

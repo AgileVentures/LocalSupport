@@ -115,6 +115,7 @@ describe 'organizations/show.html.erb' do
         render
         rendered.should_not have_button('This is my organization')
       end
+
     end
 
     context 'user not logged in' do

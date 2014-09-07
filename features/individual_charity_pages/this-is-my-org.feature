@@ -28,6 +28,7 @@ Feature: This is my organization
     Then I should be on the show page for the organization named "The Organization"
     When I sign in as "nonadmin@myorg.com" with password "mypassword1234"
     Then I should be on the show page for the organization named "The Organization"
+    And "nonadmin@myorg.com"'s request status for "The Organization" should be updated appropriately
 
   @javascript
   Scenario: I am not a registered user, I will be offered "This is my organization" claim button
