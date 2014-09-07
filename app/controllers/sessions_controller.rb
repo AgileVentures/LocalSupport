@@ -4,6 +4,8 @@ class SessionsController < Devise::SessionsController
     super
     if params[:pending_organization_id] && current_user
       UserOrganizationClaimer.new(self, current_user, current_user).call(params[:pending_organization_id])
+    elsif params[:pending_organization_id] && current_user.nil?
+      @organization_id = params[:pending_organization_id]
     end
   end
 
