@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 ruby '1.9.3'
-gem 'rails', '3.2.17'
+gem 'rails', '3.2.19'
 gem 'pg'
 gem 'devise', '3.0.3'
 gem 'devise_invitable', '~> 1.2.1'
@@ -91,7 +91,7 @@ gem 'unicorn'
 # To use markdown in editing static pages
 gem 'redcarpet'
 
-# validating organization website URLs
+# validating organisation website URLs
 gem 'url_validator'
 
 

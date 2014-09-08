@@ -1,41 +1,42 @@
-Feature: This is my organization
-  As a organization administrator
-  So that I could be set as an admin of our organization
-  I want to be able to request for the privilege through our organization page
+Feature: This is my organisation
+  As a organisation administrator
+  So that I could be set as an admin of our organisation
+  I want to be able to request for the privilege through our organisation page
 
   Background:
 
-    And the following organizations exist:
+    And the following organisations exist:
        | name             | address        |
-       | The Organization | 83 pinner road |
+       | The Organisation | 83 pinner road |
 
     Given the following users are registered:
-       | email              | password       | admin | confirmed_at        | organization | pending_organization|
+       | email              | password       | admin | confirmed_at        | organisation | pending_organisation|
        | nonadmin@myorg.com | mypassword1234 | false | 2008-01-01 00:00:00 |              |                        |
-       | pendingadmin@myorg.com |mypassword1234| false | 2008-01-01 00:00;00|             |  The Organization                     |
+       | pendingadmin@myorg.com |mypassword1234| false | 2008-01-01 00:00;00|             |  The Organisation                     |
+
     And cookies are approved
 
-  Scenario: I am a signed in user who requests to be admin for my organization
+  Scenario: I am a signed in user who requests to be admin for my organisation
     Given I am signed in as a non-admin 
-    When I visit the show page for the organization named "The Organization"
-    Then I should see a link or button "This is my organization"
-    And I click "This is my organization"
-    Then I should be on the show page for the organization named "The Organization"
-    And "nonadmin@myorg.com"'s request status for "The Organization" should be updated appropriately
+    When I visit the show page for the organisation named "The Organisation"
+    Then I should see a link or button "This is my organisation"
+    And I click "This is my organisation"
+    Then I should be on the show page for the organisation named "The Organisation"
+    And "nonadmin@myorg.com"'s request status for "The Organisation" should be updated appropriately
 
   @javascript
-  Scenario: I am not signed in, I will be offered "This is my organization" claim button
-    When I visit the show page for the organization named "The Organization"
-    Then I should see "This is my organization"
+  Scenario: I am not signed in, I will be offered "This is my organisation" claim button
+    When I visit the show page for the organisation named "The Organisation"
+    Then I should see "This is my organisation"
     When I click id "TIMO"
-    Then I should be on the show page for the organization named "The Organization"
+    Then I should be on the show page for the organisation named "The Organisation"
     When I sign in as "nonadmin@myorg.com" with password "mypassword1234"
-    Then I should be on the show page for the organization named "The Organization"
+    Then I should be on the show page for the organisation named "The Organisation"
 
   @javascript
-  Scenario: I am not a registered user, I will be offered "This is my organization" claim button
-    When I visit the show page for the organization named "The Organization"
-    Then I should see "This is my organization"
+  Scenario: I am not a registered user, I will be offered "This is my organisation" claim button
+    When I visit the show page for the organisation named "The Organisation"
+    Then I should see "This is my organisation"
     When I click id "TIMO"
     When I click "toggle_link"
     And I sign up as "normal_user@myorg.com" with password "pppppppp" and password confirmation "pppppppp"
@@ -45,5 +46,5 @@ Feature: This is my organization
     Scenario: I have requested admin status but am not yet approved, I will see a notice on the show page
       Given I visit the home page
       Given I sign in as "pendingadmin@myorg.com" with password "mypassword1234"
-      Then I should be on the show page for the organization named "The Organization"
+      Then I should be on the show page for the organisation named "The Organisation"
       And I should see "Your request for admin status is pending."

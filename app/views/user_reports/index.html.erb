@@ -4,8 +4,8 @@
           <tr>
             <th>User Email</th>
             <th>Last Login</th>
-            <th>Associated Organization</th>
-            <th>Pending Organization</th>
+            <th>Associated Organisation</th>
+            <th>Pending Organisation</th>
             <th> </th>
           </tr>
         </thead>
@@ -13,9 +13,9 @@
         <tr id="<%= user.id %>">
           <td><%= user.email %></td>
           <td><%= time_ago_in_words_with_nils(user.last_sign_in_at) %> </td>
-          <td><%= user.organization.name if user.organization %></td>
-          <td><%= user.pending_organization.name if user.pending_organization %></td>
-          <td><%= link_to('Approve', user_report_path(id: user.id), :method => :put) if user.pending_organization %></td>
+          <td><%= user.organisation.name if user.organisation %></td>
+          <td><%= user.pending_organisation.name if user.pending_organisation %></td>
+          <td><%= link_to('Approve', user_report_path(id: user.id), :method => :put) if user.pending_organisation %></td>
         </tr>
       <% end %>
     </table>

@@ -3,14 +3,14 @@ Feature: As a member of the public
   I would like to see a list of volunteer opportunities
   Tracker story ID: https://www.pivotaltracker.com/story/show/66059724
 
-  Background: organizations with volunteer opportunities have been added to database
+  Background: organisations with volunteer opportunities have been added to database
 
-    Given the following organizations exist:
+    Given the following organisations exist:
       | name                      | description          | address        | postcode | website       |
       | Cats Are Us               | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
       | Indian Elders Association | Care for the elderly | 64 pinner road | HA1 4HA  | http://b.com/ |
     Given the following volunteer opportunities exist:
-      | title              | description                     | organization              |
+      | title              | description                     | organisation              |
       | Litter Box Scooper | Assist with feline sanitation   | Cats Are Us               |
       | Office Support     | Help with printing and copying. | Indian Elders Association |
 
