@@ -5,20 +5,20 @@ Feature: Site Admin approve charity admin
   I want to be able to verify the organisation/user and give them access to their charity.
 
   Background:
-    Given the following organizations exist:
+    Given the following organisations exist:
       | name            | address        |
-      | My Organization | 83 pinner road |
+      | My Organisation | 83 pinner road |
     And the following users are registered:
-      | email              | password       | admin | confirmed_at        | organization    | pending_organization |
+      | email              | password       | admin | confirmed_at        | organisation    | pending_organisation |
       | nonadmin@myorg.com | mypassword1234 | false | 2008-01-01 00:00:00 |                 |                      |
-      | admin@myorg.com    | adminpass0987  | true  | 2008-01-01 00:00:00 | My Organization |                      |
-      | pending@myorg.com  | password123    | false | 2008-01-01 00:00:00 |                 | My Organization      |
+      | admin@myorg.com    | adminpass0987  | true  | 2008-01-01 00:00:00 | My Organisation |                      |
+      | pending@myorg.com  | password123    | false | 2008-01-01 00:00:00 |                 | My Organisation      |
     And cookies are approved
 
   Scenario: As an admin approving a pending users request
     Given I am signed in as an admin
     When I approve "pending@myorg.com"
-    Then "pending@myorg.com" is a charity admin of "My Organization"
+    Then "pending@myorg.com" is a charity admin of "My Organisation"
 
   Scenario Outline: As an admin I should be able to see status of all users
     Given I am signed in as an admin

@@ -11,8 +11,8 @@
                 if (!menu.hasClass('open')) {
                     menu.addClass('open')
                 }
-                this.pending_org_id = $("#user_organization_id").val();
-                $('#loginForm div').first().append("<input name='pending_organization_id' type='hidden' value="+ this.pending_org_id+">");
+                this.pending_org_id = $("#user_organisation_id").val();
+                $('#loginForm div').first().append("<input name='pending_organisation_id' type='hidden' value="+ this.pending_org_id+">");
                 return false;
             }
         });

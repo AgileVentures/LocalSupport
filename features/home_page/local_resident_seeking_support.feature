@@ -4,15 +4,15 @@ Feature: Local Resident seeking Support
   I want to find contact details for a local service specific to my need
   Tracker story ID: https://www.pivotaltracker.com/story/show/43946779
 
-  Background: organizations have been added to database
+  Background: organisations have been added to database
 
-    Given the following organizations exist:
+    Given the following organisations exist:
       | name                           | description                  | address        | postcode | website       |
       | Harrow Bereavement Counselling | Counselling for the bereaved | 34 pinner road | HA1 4HZ  | http://a.com/ |
       | Indian Elders Association      | Care for the elderly         | 64 pinner road | HA1 4HA  | http://b.com/ |
       | Age UK                         | Care for the Elderly         | 84 pinner road | HA1 4HF  | http://c.com/ |
 
-# particularly want to provide visibility to organizations with no existing web presence
+# particularly want to provide visibility to organisations with no existing web presence
   Scenario: Find help with care for elderly
     Given I visit the home page
     When I search for "elderly"
@@ -41,7 +41,7 @@ Feature: Local Resident seeking Support
     Given I visit the home page
     Then I should not see the no results message
 
-  Scenario: See a list of current organizations
+  Scenario: See a list of current organisations
     Given I visit the home page
     And cookies are approved
     Then the index should contain:

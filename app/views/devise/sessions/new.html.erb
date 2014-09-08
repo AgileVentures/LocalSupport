@@ -5,8 +5,8 @@
       <h2>Sign in</h2>
 
       <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-          <% if session[:pending_organization_id] %>
-              <input type="hidden" name="pending_organization_id" value = "<%= session[:pending_organization_id] %>">
+          <% if session[:pending_organisation_id] %>
+              <input type="hidden" name="pending_organisation_id" value = "<%= session[:pending_organisation_id] %>">
           <% end %>
           <div><%= f.label :email %>
             <%= f.email_field :email, :class => 'input-block-level', :autofocus => true %></div>
