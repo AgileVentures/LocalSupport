@@ -7,6 +7,7 @@ Feature: This is my organisation
     Given the following users are registered:
        | email              | password       | admin | confirmed_at        | organisation |
        | nonadmin@myorg.com | mypassword1234 | false | 2008-01-01 00:00:00 |              |
+       | admin@myorg.com    | mypassword1234 | true  | 2008-01-01 00:00:00 |              |
     And the following organisations exist:
        | name             | address        |
        | The Organisation | 83 pinner road |

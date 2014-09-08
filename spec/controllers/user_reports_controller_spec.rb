@@ -27,10 +27,12 @@ describe UserReportsController do
         expect(flash[:notice]).to have_content("You have requested admin status for #{@org.name}")
       end
       it 'should send an email to the admin indicating a user has requested admin status' do
-        put :update, id: 4, organization_id: 5
+        admin_array = [mock_model(User, email:'admin@admin.org')]
+        expect(User).to receive(:find_all_by_admin).and_return admin_array
+        put :update, id: 4, organisation_id: 5
         last_mail = ActionMailer::Base.deliveries.last
         expect(last_mail).not_to be_nil
-        expect(last_mail.to).to eq email
+        expect(last_mail.to).to eq ['admin@admin.org']
         ActionMailer::Base.deliveries.size.should eq 1
       end
     end
