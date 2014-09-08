@@ -1,15 +1,15 @@
 require 'spec_helper'
 describe UserReportsController do
-  describe 'PUT update user-organization status', :helpers => :controllers do
+  describe 'PUT update user-organisation status', :helpers => :controllers do
     before(:each) do
       make_current_user_admin
       @nonadmin_user = double("User")
       User.stub(:find_by_id).with("4").and_return(@nonadmin_user)
-      @nonadmin_user.stub(:pending_organization_id=).with('5')
+      @nonadmin_user.stub(:pending_organisation_id=).with('5')
       @nonadmin_user.stub(:save!)
-      @org = double("Organization")
+      @org = double("Organisation")
       @org.stub(:name).and_return('Red Cross')
-      Organization.stub(:find).and_return(@org)
+      Organisation.stub(:find).and_return(@org)
     end
     context 'user requesting pending status to be admin of charity' do
       before do
@@ -19,11 +19,11 @@ describe UserReportsController do
       end
 
       it 'should redirect to the show page for nested org' do
-        put :update, id: 4, organization_id: 5
-        expect(response).to redirect_to(organization_path(5))
+        put :update, id: 4, organisation_id: 5
+        expect(response).to redirect_to(organisation_path(5))
       end
       it 'should display that a user has requested admin status for nested org' do
-        put :update, id: 4, organization_id: 5
+        put :update, id: 4, organisation_id: 5
         expect(flash[:notice]).to have_content("You have requested admin status for #{@org.name}")
       end
       it 'should send an email to the admin indicating a user has requested admin status' do
@@ -118,8 +118,8 @@ describe UserReportsController do
   end
 
   describe 'GET invited users report', :helpers => :controllers do
-    let(:organization) do
-      double :organization, {
+    let(:organisation) do
+      double :organisation, {
           id: '-1',
           name: 'sample org'
       }
@@ -127,7 +127,7 @@ describe UserReportsController do
 
     let(:user) do
       double :user, {
-          organization: organization,
+          organisation: organisation,
           email: 'user@email.org',
           invitation_sent_at: 'date-time-thingy'
       }

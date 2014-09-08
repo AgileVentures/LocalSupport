@@ -7,18 +7,18 @@ Feature: I want to make error pages follow the general design of the site.
 
   Scenario: 404 page when visiting an invalid URL
     When I visit "/foobar"
-    And the page should be titled "404 - Page Not Found"
+    And the page should be titled "404 Page Not Found"
     And the response status should be "404"
     And I should see "We're sorry, but we couldn't find the page you requested"
 
   Scenario: 404 page when opening an invalid project
-    When I visit "/organizations/foo-bar-org"
-    And the page should be titled "404 - Page Not Found"
+    When I visit "/organisations/foo-bar-org"
+    And the page should be titled "404 Page Not Found"
     And the response status should be "404"
     And I should see "We're sorry, but we couldn't find the page you requested"
 
   Scenario: 500 page
     When I encounter an internal server error
-    Then the page should be titled "500 Internal Error"
+    Then the page should be titled "500 Internal Server Error"
     And the response status should be "500"
     And I should see "We're sorry, but something went wrong."

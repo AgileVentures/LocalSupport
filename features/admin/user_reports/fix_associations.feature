@@ -5,9 +5,9 @@ Feature: Fix Associations
 
   Background:
     Given the following users are registered:
-      | email                 | password       | admin | confirmed_at        | organization    | pending_organization |
-      | admin@myorg.com       | adminpass0987  | true  | 2008-01-01 00:00:00 | My Organization |                      |
-    Given the following organizations exist:
+      | email                 | password       | admin | confirmed_at        | organisation    | pending_organisation |
+      | admin@myorg.com       | adminpass0987  | true  | 2008-01-01 00:00:00 | My Organisation |                      |
+    Given the following organisations exist:
       | name     | address          | email |
       | normal   | 83 pinner road | admin@org.org  |
       | upcased | 84 pinner road | UPCASED@org.org  |

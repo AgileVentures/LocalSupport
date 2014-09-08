@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 ruby '1.9.3'
-gem 'rails', '3.2.17'
+gem 'rails', '3.2.19'
 gem 'pg'
 gem 'devise', '3.0.3'
 gem 'devise_invitable', '~> 1.2.1'
@@ -28,7 +28,7 @@ end
 
 group :development do
   #gem 'ruby-debug19', :require => 'ruby-debug'
-  gem 'debugger', '1.6.6'
+  gem 'debugger', '~> 1.6.8'
   gem 'railroady'
 end
 
@@ -37,7 +37,7 @@ group :test do
   gem 'cucumber-rails-training-wheels'
   gem 'minitest', '~> 4.7.1'
   gem 'ZenTest'
-  gem 'capybara', '2.0.2'
+  gem 'capybara', '2.4.1'
   gem "capybara-webkit", "~> 1.0.0"
   gem 'webrat'
   gem 'factory_girl_rails', :require => false
@@ -96,3 +96,4 @@ gem 'url_validator'
 
 
 gem 'rails_autolink'
+gem 'acts_as_paranoid'
