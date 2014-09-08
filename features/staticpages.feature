@@ -4,8 +4,8 @@ Feature: I want to have a contact and about us link in all the app pages
   I want to show a contact page and an about us page
   Tracker story ID: https://www.pivotaltracker.com/story/show/45693625
 
-  Background: organizations have been added to database
-    Given the following organizations exist:
+  Background: organisations have been added to database
+    Given the following organisations exist:
       | name             | address        |
       | Friendly Charity | 83 pinner road |
     Given the following pages exist:
@@ -23,7 +23,7 @@ Feature: I want to have a contact and about us link in all the app pages
     | home page                                               |
     | organisations index page                                |
     | new organisation page                                   |
-    | show page for the organization named "Friendly Charity" |
+    | show page for the organisation named "Friendly Charity" |
 
   Scenario Outline: the contact page is accessible on all pages
     Given I visit the <page>
@@ -34,4 +34,4 @@ Feature: I want to have a contact and about us link in all the app pages
     | home page                                               |
     | organisations index page                                |
     | new organisation page                                   |
-    | show page for the organization named "Friendly Charity" |
+    | show page for the organisation named "Friendly Charity" |

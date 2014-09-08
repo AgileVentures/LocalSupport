@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 ruby '1.9.3'
-gem 'rails', '3.2.17'
+gem 'rails', '3.2.19'
 gem 'pg'
 gem 'devise', '3.0.3'
 gem 'devise_invitable', '~> 1.2.1'
@@ -38,7 +38,7 @@ group :test do
   gem 'minitest', '~> 4.7.1'
   gem 'ZenTest'
   gem 'capybara', '2.4.1'
-  gem "capybara-webkit", "~> 1.0.0"
+  gem "capybara-webkit", "~> 1.1.0"
   gem 'webrat'
   gem 'factory_girl_rails', :require => false
   gem 'webmock'
