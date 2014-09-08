@@ -4,14 +4,14 @@ Feature: I want to be able to edit static page links
   I want to be able to edit static page link position
   Tracker story ID: https://www.pivotaltracker.com/story/show/52536437
 
-  Background: organizations have been added to database
+  Background: organisations have been added to database
     Given the following pages exist:
     | name          | permalink  | content | link_visible |
     | About HCN     | about      | abc123  | true         |
     | Contact Info  | contact    | 123ccc  | false        |    
 
     And the following users are registered:
-    | email                         | password | admin | confirmed_at         |  organization |
+    | email                         | password | admin | confirmed_at         |  organisation |
     | registered-user-1@example.com | pppppppp | true  | 2007-01-01  10:00:00 |  Friendly     |
     | registered-user-2@example.com | pppppppp | false | 2007-01-01  10:00:00 |               |
     And cookies are approved

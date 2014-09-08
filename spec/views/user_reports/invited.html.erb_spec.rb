@@ -7,7 +7,7 @@ describe 'user_reports/invited.html.erb' do
   it 'columns: org name, email, date, checkbox' do
     render
     rendered.within("##{invitation[:id]}") do |row|
-      row.should have_link invitation[:name], :href => organization_path(invitation[:id])
+      row.should have_link invitation[:name], :href => organisation_path(invitation[:id])
       row.should have_text invitation[:email]
       row.should have_text 'less than a minute'
       row.should have_css("input[type=checkbox][data-id='#{invitation[:id]}'][data-email='#{invitation[:email]}']")

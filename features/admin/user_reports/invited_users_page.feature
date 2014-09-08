@@ -4,14 +4,14 @@ Feature: Invited Users Page
   I want a page that shows me who I have already invited
 
   Background:
-    Given the following organizations exist:
+    Given the following organisations exist:
       | name                 | address        | email            |
-      | Invited Organization | 30 pinner road | invited@user.org |
+      | Invited Organisation | 30 pinner road | invited@user.org |
     And the following users are registered:
-      | email            | password       | admin | confirmed_at        | organization    | pending_organization |
-      | admin@myorg.com  | adminpass0987  | true  | 2008-01-01 00:00:00 | My Organization |                      |
+      | email            | password       | admin | confirmed_at        | organisation    | pending_organisation |
+      | admin@myorg.com  | adminpass0987  | true  | 2008-01-01 00:00:00 | My Organisation |                      |
       | regular@user.org | mypassword1234 | false | 2008-01-01 00:00:00 |                 |                      |
-    And the admin invited a user for "Invited Organization"
+    And the admin invited a user for "Invited Organisation"
 
   Scenario: Page shows only invited users
     Given cookies are approved
@@ -25,7 +25,7 @@ Feature: Invited Users Page
     Given cookies are approved
     Given I am signed in as an admin
     And I visit the invited users page
-    And I check the box for "Invited Organization"
+    And I check the box for "Invited Organisation"
     When I click id "invite_users"
-    Then I should see "Invited!" in the response field for "Invited Organization"
+    Then I should see "Invited!" in the response field for "Invited Organisation"
 

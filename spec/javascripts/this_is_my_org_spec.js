@@ -6,10 +6,10 @@
 // Calling collapse will trigger the events 'show' or 'hide'
 // https://github.com/seyhunak/twitter-bootstrap-rails/blob/master/app/assets/javascripts/twitter/bootstrap/bootstrap-collapse.js#L69
 
-describe('This is my Organization button', function() {
+describe('This is my Organisation button', function() {
     var timo, nav, menu, spyCollapse;
     beforeEach(function() {
-        setFixtures('<a id="TIMO">This is my organization</a>');
+        setFixtures('<a id="TIMO">This is my organisation</a>');
         appendSetFixtures(sandbox({class:'nav-collapse'}));
         appendSetFixtures('<li id="menuLogin" class="dropdown"></li>');
         timo = $('#TIMO');

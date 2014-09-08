@@ -4,9 +4,9 @@ Feature: Disclaimer about not being able to guarantee accuracy of sites content 
   I want to show a link to a disclaimer on every page
   Tracker story ID: https://www.pivotaltracker.com/story/show/49757817
 
-  Background: organizations have been added to database
+  Background: organisations have been added to database
 
-  Given the following organizations exist:
+  Given the following organisations exist:
     | name             | address        |
     | Friendly Charity | 83 pinner road |
   Given the following pages exist:
@@ -23,5 +23,5 @@ Feature: Disclaimer about not being able to guarantee accuracy of sites content 
     | home page                                               |
     | organisations index page                                |
     | new organisation page                                   |
-    | show page for the organization named "Friendly Charity" |
+    | show page for the organisation named "Friendly Charity" |
 

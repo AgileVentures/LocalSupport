@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     %w(
         application
         contributors
-        organizations
+        organisations
         pages
     )
   end
@@ -36,14 +36,14 @@ class ApplicationController < ActionController::Base
   # Returns the users to the page they were viewing before signing in
   def after_sign_in_path_for(resource)
     return session[:previous_url] if session[:previous_url]
-    return organization_path(current_user.organization) if current_user.organization
+    return organisation_path(current_user.organisation) if current_user.organisation
     root_path
   end
 
   # Devise Invitable hook
   # Since users are invited to be org admins, we're delivering them to their page
   def after_accept_path_for(resource)
-    return organization_path(current_user.organization) if current_user.organization
+    return organisation_path(current_user.organisation) if current_user.organisation
     root_path
   end
 
