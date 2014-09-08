@@ -5,33 +5,33 @@ Feature: Sign in
   Tracker story ID: https://www.pivotaltracker.com/story/show/47373809
 
 Background:
-  Given the following organizations exist:
+  Given the following organisations exist:
     | name           | description               | address        | postcode | telephone |
     | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 |
 
   Given the following users are registered:
-    | email                     | password | admin | organization | confirmed_at         |
+    | email                     | password | admin | organisation | confirmed_at         |
     | normal_user@example.com   | pppppppp |       |              | 2007-01-01  10:00:00 |
     | site_admin@example.com    | pppppppp | true  |              | 2007-01-01  10:00:00 |
     | charity_owner@example.com | pppppppp | false | Friendly     | 2007-01-01  10:00:00 |
   Given I visit the home page
   And cookies are approved
 
-Scenario: Sign in for an existing non-admin user unassociated with any organization
+Scenario: Sign in for an existing non-admin user unassociated with any organisation
   Given I sign in as "normal_user@example.com" with password "pppppppp"
   Then I should see a link or button "normal_user@example.com"
 
-Scenario: Sign in with wrong password for an existing non-admin user unassociated with any organization
+Scenario: Sign in with wrong password for an existing non-admin user unassociated with any organisation
   Given I sign in as "normal_user@example.com" with password "12345"
   Then I should be on the sign in page
   And I should see "I'm sorry, you are not authorized to login to the system."
 
-Scenario: Sign in for an existing non-admin user associated with an organization
+Scenario: Sign in for an existing non-admin user associated with an organisation
   Given I sign in as "charity_owner@example.com" with password "pppppppp"
   Then I should be on the home page
   And I should see a link or button "charity_owner@example.com"
 
-Scenario: Sign in with wrong password for an existing non-admin user associated with an organization
+Scenario: Sign in with wrong password for an existing non-admin user associated with an organisation
   Given I sign in as "charity_owner@example.com" with password "12345"
   Then I should be on the sign in page
   And I should see "I'm sorry, you are not authorized to login to the system."

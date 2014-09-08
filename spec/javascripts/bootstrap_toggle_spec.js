@@ -4,7 +4,7 @@ describe('bootstrap toggle', function() {
         setFixtures('<li class="dropdown" id="menuOrgs">'+
             '<a class="dropdown-toggle" href="#" data-toggle ="dropdown">Organisations</a>' +
             '<ul class="dropdown-menu">' +
-            '    <li><a href="/organization_reports/without_users">Without Users</a></li>' +
+            '    <li><a href="/organisation_reports/without_users">Without Users</a></li>' +
             '</ul>' +
         '</li>');
         link = $('a').first();

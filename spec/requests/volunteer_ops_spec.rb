@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'VolunteerOps', :helpers => :requests do
-  let(:org_owner) { FactoryGirl.create(:user_stubbed_organization) }
+  let(:org_owner) { FactoryGirl.create(:user_stubbed_organisation) }
   let(:non_org_owner) { FactoryGirl.create :user }
 
   describe 'POST /volunteer_ops' do
@@ -14,11 +14,11 @@ describe 'VolunteerOps', :helpers => :requests do
       }.to change(VolunteerOp, :count).by(1)
     end
 
-    it 'the new VolunteerOp is associated with the organization of the current user' do
+    it 'the new VolunteerOp is associated with the organisation of the current user' do
       login(org_owner)
       post volunteer_ops_path, params
       op = VolunteerOp.last
-      op.organization.should eq org_owner.organization
+      op.organisation.should eq org_owner.organisation
     end
 
     it 'does not work for non-org-owners' do

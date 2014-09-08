@@ -5,12 +5,12 @@ Feature: Password retrieval
   Tracker story ID: https://www.pivotaltracker.com/story/show/47376361
 
   Background:
-    Given the following organizations exist:
+    Given the following organisations exist:
       | name     | description             | address        | postcode | telephone | email                            |
       | Friendly | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | registered-org-admin@example.com |
 
     Given the following users are registered:
-      | email                            | password | confirmed_at        | organization |
+      | email                            | password | confirmed_at        | organisation |
       | registered-user@example.com      | pppppppp | 2014-01-20 16:27:36 |              |
       | registered-org-admin@example.com | pppppppp | 2014-01-20 16:27:36 | Friendly     |
 

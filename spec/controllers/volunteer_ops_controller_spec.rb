@@ -10,7 +10,7 @@ end
 
 describe VolunteerOpsController do
   let(:user) { double :user }
-  let(:org) { double :organization, id: '1' }
+  let(:org) { double :organisation, id: '1' }
   let!(:op) { stub_model VolunteerOp } # stack level too deep errors if stub_model is loaded lazily in some contexts
 
   describe 'GET index' do
@@ -21,23 +21,23 @@ describe VolunteerOpsController do
     end
 
     it 'assigns all volunteer_ops as @volunteer_ops' do
-      op2 = stub_model VolunteerOp, :organization => (stub_model Organization)
+      op2 = stub_model VolunteerOp, :organisation => (stub_model Organisation)
       @results = [op2]
       VolunteerOp.should_receive(:all).and_return(@results)
       get :index, {}
       assigns(:volunteer_ops).should eq @results
     end
 
-    it 'assigns all volunteer_op orgs as @organizations' do
-      org2 = stub_model Organization
+    it 'assigns all volunteer_op orgs as @organisations' do
+      org2 = stub_model Organisation
       @results.stub(:map).and_return([org2])
       get :index, {}
-      assigns(:organizations).should eq([org2])
+      assigns(:organisations).should eq([org2])
     end
     
     it 'assigns @json' do
       json = 'my markers'
-      org2 = stub_model Organization
+      org2 = stub_model Organisation
       @results.stub(:map).and_return([org2])
       controller.should_receive(:gmap4rails_with_popup_partial).and_return(json)
       get :index, {}
@@ -47,7 +47,7 @@ describe VolunteerOpsController do
 
   describe 'GET show' do
     it 'assigns the requested volunteer_op as @volunteer_op' do
-      op2 = stub_model VolunteerOp, :organization => (stub_model Organization)
+      op2 = stub_model VolunteerOp, :organisation => (stub_model Organisation)
       @results = [op2]
       VolunteerOp.should_receive(:find).with(op2.id.to_s) { op2 }
       get :show, {:id => op2.id}
@@ -55,7 +55,7 @@ describe VolunteerOpsController do
     end
 
     it 'non-org-owners allowed' do
-      op2 = stub_model VolunteerOp, :organization => (stub_model Organization)
+      op2 = stub_model VolunteerOp, :organisation => (stub_model Organisation)
       @results = [op2]
       controller.stub org_owner?: false
       VolunteerOp.should_receive(:find).with(op2.id.to_s) { op2 }
@@ -82,7 +82,7 @@ describe VolunteerOpsController do
   describe 'POST create' do
     let(:params) { {volunteer_op: {title: 'hard work', description: 'for the willing'}} }
     before do
-      user.stub(:organization) { org }
+      user.stub(:organisation) { org }
       controller.stub current_user: user, org_owner?: true
       VolunteerOp.stub(:new) { op }
       op.stub(:save)
@@ -93,9 +93,9 @@ describe VolunteerOpsController do
       assigns(:volunteer_op).should eq op
     end
 
-    it 'associates the new opportunity with the organization of the current user' do
-      controller.current_user.should_receive(:organization) { org }
-      VolunteerOp.should_receive(:new).with(hash_including("organization_id" => "1"))
+    it 'associates the new opportunity with the organisation of the current user' do
+      controller.current_user.should_receive(:organisation) { org }
+      VolunteerOp.should_receive(:new).with(hash_including("organisation_id" => "1"))
       post :create, params
     end
 
@@ -126,7 +126,7 @@ describe VolunteerOpsController do
       it 'Unauthorized: redirects to root_path and displays flash' do
         controller.stub org_owner?: false
         controller.should_receive(:redirect_to).with(root_path) { true } # calling original raises errors
-        controller.flash.should_receive(:[]=).with(:error, 'You must be signed in as an organization owner to perform this action!').and_call_original
+        controller.flash.should_receive(:[]=).with(:error, 'You must be signed in as an organisation owner to perform this action!').and_call_original
         controller.instance_eval { authorize }.should be false
         # can't assert `redirect_to root_path`: http://owowthathurts.blogspot.com/2013/08/rspec-response-delegation-error-fix.html
         flash[:error].should_not be_empty
@@ -151,24 +151,24 @@ describe VolunteerOpsController do
 
         it 'first checks if there is a current_user' do
           controller.current_user.should_receive :present?
-          controller.current_user.should_not_receive :organization
+          controller.current_user.should_not_receive :organisation
           controller.instance_eval { org_owner? }
         end
       end
 
       context 'when there is a current user present' do
-        let(:org) { double :organization }
-        before { user.stub organization: nil }
+        let(:org) { double :organisation }
+        before { user.stub organisation: nil }
 
-        it 'otherwise depends on { current_user.organization.present? }' do
+        it 'otherwise depends on { current_user.organisation.present? }' do
           controller.instance_eval { org_owner? }.should be_false
-          user.stub organization: org
+          user.stub organisation: org
           controller.instance_eval { org_owner? }.should be_true
         end
 
-        it 'checks if the current_user has an organization' do
-          controller.current_user.should_receive :organization
-          user.stub organization: org
+        it 'checks if the current_user has an organisation' do
+          controller.current_user.should_receive :organisation
+          user.stub organisation: org
           org.should_receive :present?
           controller.instance_eval { org_owner? }
         end
