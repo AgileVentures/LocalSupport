@@ -66,16 +66,13 @@ class Organisation < ActiveRecord::Base
   end
 
   def self.search_by_keyword(keyword)
-    self.where("UPPER(description) LIKE ? OR UPPER(name) LIKE ?","%#{keyword.try(:upcase)}%","%#{keyword.try(:upcase)}%")
+     keyword = "%#{keyword}%"
+     self.where(contains_description(keyword).or(contains_name(keyword)))
   end
 
   def self.filter_by_category(category_id)
     return scoped unless category_id.present?
-    # could use this but doesn't play well with search by keyqord since table names are remapped
-    #Organisation.includes(:categories).where("categories_organisations.category_id" =>  category_id)
-    category = Category.find_by_id(category_id)
-    orgs = category.organisations.select {|org| org.id} if category
-    where(:id => orgs)
+    self.joins(:categories).where(is_in_category(category_id)) #do we need to sanitize category_id?
   end
 
   def gmaps4rails_address
@@ -193,6 +190,26 @@ class Organisation < ActiveRecord::Base
 
   private
 
+  def self.table
+    self.arel_table
+  end
+
+  def self.category_table
+    Category.arel_table
+  end
+
+  def self.is_in_category(category_id)
+    category_table[:id].eq(category_id)
+  end
+  
+  def self.contains_description(key)
+    table[:description].matches(key)
+  end
+
+  def self.contains_name(key)
+    table[:name].matches(key)
+  end
+  
   def remove_errors_with_address
     errors_hash = errors.to_hash
     errors.clear
