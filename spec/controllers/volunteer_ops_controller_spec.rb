@@ -47,8 +47,8 @@ describe VolunteerOpsController do
 
   describe 'GET show' do
     before do
-      @org = stub_model Organization
-      @op2 = stub_model VolunteerOp, :organization => (@org)
+      @org = stub_model Organisation
+      @op2 = stub_model VolunteerOp, :organisation => (@org)
       @results = [@op2]
       allow(VolunteerOp).to receive(:find).with(@op2.id.to_s).and_return(@op2)
     end
@@ -136,8 +136,8 @@ describe VolunteerOpsController do
 
   describe 'GET edit' do
     before do
-      @org = stub_model Organization
-      @op2 = stub_model VolunteerOp, :organization => (@org)
+      @org = stub_model Organisation
+      @op2 = stub_model VolunteerOp, :organisation => (@org)
       @results = [@op2]
       allow(VolunteerOp).to receive(:find).with(@op2.id.to_s).and_return(@op2)
     end
@@ -150,9 +150,9 @@ describe VolunteerOpsController do
         get :edit, {:id => @op2.id}
         assigns(:volunteer_op).should eq @op2
       end
-      it 'assigns an organization' do
+      it 'assigns an organisation' do
         get :edit, {:id => @op2.id}
-        expect(assigns(:organization)).to eq @org
+        expect(assigns(:organisation)).to eq @org
       end
       it 'renders the edit template' do
         get :edit, {:id => @op2.id}
@@ -173,9 +173,9 @@ describe VolunteerOpsController do
 
   describe 'POST update' do
     before do
-      @org = stub_model Organization, :title => "title",
+      @org = stub_model Organisation, :title => "title",
         :description => "description"
-      @op2 = stub_model VolunteerOp, :organization => (@org)
+      @op2 = stub_model VolunteerOp, :organisation => (@org)
       @results = [@op2]
       expect(VolunteerOp).to receive(:find).with(@op2.id.to_s).and_return(@op2)
     end
@@ -189,7 +189,6 @@ describe VolunteerOpsController do
         put :update, :id => @op2.to_param, :volunteer_op => {:title => "new title", :description => "new description"}
       end
       it 'sets a flash message for success' do
-        debugger
         put :update, {:id => @op2.to_param}
         expect(flash[:notice]).not_to be_nil
       end
