@@ -52,6 +52,13 @@
       </p>
   <% end %>
 
+  <% if @organisation.categories.present? %>
+    <p>
+      <b>Categories: </b>
+      <%= @organisation.categories.map(&:name).join(", ") %>
+    </p>
+  <% end %>
+
   <div class="row">
     <div class="position-bottom span6">
       <% if @editable %>
