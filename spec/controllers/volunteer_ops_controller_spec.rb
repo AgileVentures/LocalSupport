@@ -99,7 +99,7 @@ describe VolunteerOpsController do
     let(:params) { {volunteer_op: {title: 'hard work', description: 'for the willing'}} }
     before do
       user.stub(:organisation) { org }
-      controller.stub current_user: user, org_owner?: true
+      controller.stub current_user: user, org_owner?: true, admin?: false
       VolunteerOp.stub(:new) { op }
       op.stub(:save)
     end
@@ -220,8 +220,9 @@ describe VolunteerOpsController do
     describe '#authorize' do
       it 'Unauthorized: redirects to root_path and displays flash' do
         controller.stub org_owner?: false
+        controller.stub admin?: false
         controller.should_receive(:redirect_to).with(root_path) { true } # calling original raises errors
-        controller.flash.should_receive(:[]=).with(:error, 'You must be signed in as an organisation owner to perform this action!').and_call_original
+        controller.flash.should_receive(:[]=).with(:error, 'You must be signed in as an organisation owner or site admin to perform this action!').and_call_original
         controller.instance_eval { authorize }.should be false
         # can't assert `redirect_to root_path`: http://owowthathurts.blogspot.com/2013/08/rspec-response-delegation-error-fix.html
         flash[:error].should_not be_empty

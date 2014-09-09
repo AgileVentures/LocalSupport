@@ -1,2 +1,2 @@
 <h3>Update a Volunteer Opportunity</h3>
-<%= render partial: 'form', locals: {submission_url: volunteer_ops_path(org_id: current_user.organization.id)} %>
+<%= render partial: 'form', locals: {submission_url: volunteer_op_path(@volunteer_op.id)} %>

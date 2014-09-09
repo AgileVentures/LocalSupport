@@ -17,12 +17,12 @@ Given /^I update "(.*?)" description to be "(.*?)"$/ do |title, description|
     Given I visit the show page for the volunteer_op titled "#{title}"
     And I follow "Edit"
     And I edit the description to be "#{description}"
-    And I press "Update Opportunity"
+    And I press "Update a Volunteer Opportunity"
   }
 end
 
 Given /^I edit the description to be "(.*?)"$/ do |text|
-  fill_in('description', :with => text)
+  fill_in('Description', :with => text)
 end
 
 Then /^the description for "(.*?)" should be "(.*?)"$/ do |title, description|
