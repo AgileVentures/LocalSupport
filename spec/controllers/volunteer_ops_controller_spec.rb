@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe  VolunteerOpsController do
+describe VolunteerOpsController do
   it "should render template two column layout"  do
     get :index
     response.should render_template 'index'
@@ -173,8 +173,7 @@ describe VolunteerOpsController do
 
   describe 'POST update' do
     before do
-      @org = stub_model Organisation, :title => "title",
-        :description => "description"
+      @org = stub_model Organisation, :title => "title", :description => "description"
       @op2 = stub_model VolunteerOp, :organisation => (@org)
       @results = [@op2]
       expect(VolunteerOp).to receive(:find).with(@op2.id.to_s).and_return(@op2)
@@ -185,10 +184,10 @@ describe VolunteerOpsController do
       end
       it 'updates the model' do
         expect(@op2).to receive(:update_attributes).with({"title" => "new title", "description" => "new description"})
-
         put :update, :id => @op2.to_param, :volunteer_op => {:title => "new title", :description => "new description"}
       end
       it 'sets a flash message for success' do
+        expect(@op2).to receive(:update_attributes).and_return true
         put :update, {:id => @op2.to_param}
         expect(flash[:notice]).not_to be_nil
       end
