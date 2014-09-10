@@ -27,6 +27,7 @@ Feature: This is my organisation
     When I click id "TIMO"
     Then I should be on the show page for the organisation named "The Organisation"
     When I sign in as "nonadmin@myorg.com" with password "mypassword1234"
+    Then I should see "You have requested admin status for The Organisation"
     Then I should be on the show page for the organisation named "The Organisation"
     And "nonadmin@myorg.com"'s request status for "The Organisation" should be updated appropriately
 
@@ -39,6 +40,7 @@ Feature: This is my organisation
     When I sign in as "nonadmin@myorg.com" with password "mypassword1235"
     Then I should be on the sign in page
     When I sign in as "nonadmin@myorg.com" with password "mypassword1234"
+    Then I should see "You have requested admin status for The Organisation"
     Then I should be on the show page for the organisation named "The Organisation"
     And "nonadmin@myorg.com"'s request status for "The Organisation" should be updated appropriately
 
