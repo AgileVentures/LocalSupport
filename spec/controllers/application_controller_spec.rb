@@ -38,7 +38,7 @@ describe ApplicationController, :helpers => :controllers do
   it '#after_sign_in_path_for' do
     user = make_current_user_nonadmin
     user.stub :organisation => nil
-
+    user.stub :pending_organisation_id
     controller.after_sign_in_path_for(user).should eq '/'
 
     user.stub :organisation => '1'

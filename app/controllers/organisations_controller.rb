@@ -28,6 +28,7 @@ class OrganisationsController < ApplicationController
   # GET /organisations/1.json
   def show
     @organisation = Organisation.find(params[:id])
+    @pending_admin = current_user.pending_organisation @organisation if current_user
     @editable = current_user.can_edit?(@organisation) if current_user
     @deletable = current_user.can_delete?(@organisation) if current_user
     @can_create_volunteer_op = current_user.belongs_to?(@organisation) if current_user

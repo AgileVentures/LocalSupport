@@ -145,6 +145,7 @@ describe OrganisationsController do
   describe "GET show" do
     before(:each) do
       @user = double("User")
+      @user.stub(:pending_organisation)
       Organisation.stub(:find).with('37') { double_organisation }
       @user.stub(:can_edit?)
       @user.stub(:can_delete?)
