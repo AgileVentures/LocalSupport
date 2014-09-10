@@ -115,6 +115,7 @@ describe 'organisations/show.html.erb' do
         render
         rendered.should_not have_button('This is my organisation')
       end
+
     end
 
     context 'user not logged in' do
@@ -126,6 +127,14 @@ describe 'organisations/show.html.erb' do
         rendered.should have_link 'This is my organisation', :href => new_user_session_path
         #TODO should check hidden value for put
       end
+    end
+  end
+
+  describe 'pending admin status' do
+    it 'displays pending admin message' do
+      assign(:pending_admin, true)
+      render
+      rendered.should have_content 'Your request for admin status is pending.'
     end
   end
 

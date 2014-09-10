@@ -1,0 +1,11 @@
+<%= javascript_tag do %>
+     $(document).ready(function(){
+       $(".edit_user").submit();
+     });
+<% end %>
+
+<%= form_for @user, url: {action: "update"} do |f| %>
+<% if session[:pending_organisation_id] %>
+    <input type="hidden" name="pending_organisation_id" value = "<%= session[:pending_organisation_id] %>">
+<% end %>
+<% end %>
