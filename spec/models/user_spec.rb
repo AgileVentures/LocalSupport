@@ -67,7 +67,6 @@ describe User do
       it 'can edit organisations' do
         user.can_edit?(model).should be_true
       end
-
     end
 
     context 'is not admin' do
@@ -242,5 +241,27 @@ describe User do
     end
 
   end
+
+  describe "#pending_admin?" do
+    let(:user) { FactoryGirl.create :user_stubbed_organisation }
+    let(:other_org) { FactoryGirl.create :organisation }
+
+    it 'true when user is pending admin for organisation' do
+      user.pending_organisation = other_org
+      expect(user.pending_admin? other_org).to be_true
+    end
+
+    it 'false when user is not pending admin for organisation' do
+      expect(user.pending_admin? other_org).to be_false
+    end
+
+    it 'false when org nil' do
+      other_org = nil
+      expect(user.pending_admin? other_org).to be_false
+    end
+
+  end
+
+
 
 end

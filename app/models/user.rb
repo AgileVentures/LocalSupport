@@ -23,6 +23,11 @@ class User < ActiveRecord::Base
     where('users.invitation_sent_at IS NOT NULL').
     where('users.invitation_accepted_at IS NULL')
 
+  def pending_admin? org
+    return false if self.pending_organisation == nil
+    self.pending_organisation == org
+  end
+
   def confirm!
     super
     make_admin_of_org_with_matching_email
@@ -32,6 +37,7 @@ class User < ActiveRecord::Base
     self.organisation == organisation
   end
 
+  # can create or edit an organization
   def can_edit? org
     admin? || (!org.nil? && organisation == org)
   end

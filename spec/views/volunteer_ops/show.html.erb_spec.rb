@@ -8,10 +8,11 @@ describe "volunteer_ops/show" do
   let(:op) { double :volunteer_op,
     :title => "Honorary treasurer",
     :description => "Great opportunity to build your portfolio!",
-    :organisation => org
+    :organisation => org,
+    :id => 3
   }
   before(:each) do
-    @volunteer_op = assign(:volunteer_op, op) 
+    @volunteer_op = assign(:volunteer_op, op)
   end
 
   it "renders attributes in <p>" do
@@ -31,6 +32,23 @@ describe "volunteer_ops/show" do
 
   it 'hyperlinks the organisation' do
     render
-    rendered.should have_xpath("//a[contains(.,'#{op.organisation.name}') and @href=\"#{organisation_path(op.organisation.id)}\"]")
+    expect(rendered).
+      to have_xpath(
+                    "//a[contains(.,'#{op.organisation.name}')" +
+                    " and @href=\"#{organisation_path(op.organisation.id)}\"]")
+  end
+  context 'with the right to edit' do
+    it 'renders an edit button' do
+      assign(:editable, true)
+      render
+      expect(rendered).to have_link 'Edit', edit_volunteer_op_path(3)
+    end
+  end
+  context 'without the right to edit' do
+    it 'does not render an edit button' do
+      assign(:editable, false)
+      render
+      expect(rendered).not_to have_link 'Edit', edit_volunteer_op_path(3)
+    end
   end
 end

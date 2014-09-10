@@ -46,7 +46,7 @@ Feature: Org admin creating a volunteer work opportunity
   Scenario: Signed in users who don't own the org cannot create volunteer opportunities on the sly
     Given I am signed in as an non-admin
     And I visit the new volunteer opportunity page
-    Then I should see "You must be signed in as an organisation owner to perform this action!"
+    Then I should see "You must be signed in as an organisation owner or site admin to perform this action!"
 
   Scenario: Only org-owners can create volunteer opportunities
     # Tested that the API is restricted in the request spec

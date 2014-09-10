@@ -38,7 +38,7 @@ group :test do
   gem 'minitest', '~> 4.7.1'
   gem 'ZenTest'
   gem 'capybara', '2.4.1'
-  gem "capybara-webkit", "~> 1.0.0"
+  gem "capybara-webkit", "~> 1.1.0"
   gem 'webrat'
   gem 'factory_girl_rails', :require => false
   gem 'webmock'
@@ -91,7 +91,7 @@ gem 'unicorn'
 # To use markdown in editing static pages
 gem 'redcarpet'
 
-# validating organization website URLs
+# validating organisation website URLs
 gem 'url_validator'
 
 
