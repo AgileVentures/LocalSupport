@@ -31,7 +31,22 @@ Feature: This is my organisation
     When I click id "TIMO"
     Then I should be on the show page for the organisation named "The Organisation"
     When I sign in as "nonadmin@myorg.com" with password "mypassword1234"
+    Then I should see "You have requested admin status for The Organisation"
     Then I should be on the show page for the organisation named "The Organisation"
+    And "nonadmin@myorg.com"'s request status for "The Organisation" should be updated appropriately
+
+  @javascript
+  Scenario: I sign in incorrectly once and then sign in successfully after pressing TIMO
+    When I visit the show page for the organisation named "The Organisation"
+    Then I should see "This is my organisation"
+    When I click id "TIMO"
+    Then I should be on the show page for the organisation named "The Organisation"
+    When I sign in as "nonadmin@myorg.com" with password "mypassword1235"
+    Then I should be on the sign in page
+    When I sign in as "nonadmin@myorg.com" with password "mypassword1234"
+    Then I should see "You have requested admin status for The Organisation"
+    Then I should be on the show page for the organisation named "The Organisation"
+    And "nonadmin@myorg.com"'s request status for "The Organisation" should be updated appropriately
 
   @javascript
   Scenario: I am not a registered user, I will be offered "This is my organisation" claim button
