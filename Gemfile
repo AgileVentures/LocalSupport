@@ -91,7 +91,7 @@ gem 'unicorn'
 # To use markdown in editing static pages
 gem 'redcarpet'
 
-# validating organization website URLs
+# validating organisation website URLs
 gem 'url_validator'
 
 

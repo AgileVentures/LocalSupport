@@ -4,12 +4,16 @@ Feature: This is my organisation
   I want to be able to request for the privilege through our organisation page
 
   Background:
-    Given the following users are registered:
-       | email              | password       | admin | confirmed_at        | organisation |
-       | nonadmin@myorg.com | mypassword1234 | false | 2008-01-01 00:00:00 |              |
+
     And the following organisations exist:
        | name             | address        |
        | The Organisation | 83 pinner road |
+
+    Given the following users are registered:
+       | email              | password       | admin | confirmed_at        | organisation | pending_organisation|
+       | nonadmin@myorg.com | mypassword1234 | false | 2008-01-01 00:00:00 |              |                        |
+       | pendingadmin@myorg.com |mypassword1234| false | 2008-01-01 00:00;00|             |  The Organisation                     |
+
     And cookies are approved
 
   Scenario: I am a signed in user who requests to be admin for my organisation
@@ -38,3 +42,9 @@ Feature: This is my organisation
     And I sign up as "normal_user@myorg.com" with password "pppppppp" and password confirmation "pppppppp"
     Then I should be on the home page
     And I should see "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
+
+    Scenario: I have requested admin status but am not yet approved, I will see a notice on the show page
+      Given I visit the home page
+      And I sign in as "pendingadmin@myorg.com" with password "mypassword1234"
+      And I visit the show page for the organisation named "The Organisation"
+      Then I should see "Your request for admin status is pending."
