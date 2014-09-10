@@ -45,6 +45,6 @@ Feature: This is my organisation
 
     Scenario: I have requested admin status but am not yet approved, I will see a notice on the show page
       Given I visit the home page
-      Given I sign in as "pendingadmin@myorg.com" with password "mypassword1234"
-      Then I should be on the show page for the organisation named "The Organisation"
-      And I should see "Your request for admin status is pending."
+      And I sign in as "pendingadmin@myorg.com" with password "mypassword1234"
+      And I visit the show page for the organisation named "The Organisation"
+      Then I should see "Your request for admin status is pending."
