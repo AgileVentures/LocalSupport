@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   # prevents mass assignment on other fields not in this list
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :pending_organisation_id
   belongs_to :organisation
   belongs_to :pending_organisation, :class_name => 'Organisation', :foreign_key => 'pending_organisation_id'
 

@@ -62,8 +62,8 @@ Feature: This is my organisation
     And I sign up as "normal_user@myorg.com" with password "pppppppp" and password confirmation "pppppppp"
     And I should see "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
     Then I should be on the show page for the organisation named "The Organisation"
+    And "normal_user@myorg.com"'s request for "The Organisation" should be persisted
     And I should see "You have requested admin status for The Organisation"
-    And "normal_user@myorg.com"'s request status for "The Organisation" should be updated appropriately
 
   Scenario: I have requested admin status but am not yet approved, I will see a notice on the show page
     Given I visit the home page
