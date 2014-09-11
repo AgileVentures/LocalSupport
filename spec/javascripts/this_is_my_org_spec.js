@@ -43,7 +43,9 @@ describe('This is my Organisation button', function() {
                 expect(menu).toHaveClass('open');
             });
             it('contains hidden input field with org id', function(){
-                expect($("input[name='pending_organisation_id']").val()).toEqual('642');
+              //expect($("input#loginForm input[name=pending_organisation_id]").val()).toEqual('642');
+              //expect($("//input[@id='loginForm']//input[@name='pending_organisation_id']").val()).toEqual('642');
+              expect($("input#loginForm[name=pending_organisation_id]").val()).toEqual('642')
             });
         });
         describe('when login menu is open and TIMO is clicked', function() {

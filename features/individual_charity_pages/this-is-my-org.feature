@@ -52,14 +52,21 @@ Feature: This is my organisation
   Scenario: I am not a registered user, I will be offered "This is my organisation" claim button
     When I visit the show page for the organisation named "The Organisation"
     Then I should see "This is my organisation"
+
+
+  @javascript
+  Scenario: I am not a registered user and I claim this is my organisation
+    When I visit the show page for the organisation named "The Organisation"
     When I click id "TIMO"
     When I click "toggle_link"
     And I sign up as "normal_user@myorg.com" with password "pppppppp" and password confirmation "pppppppp"
-    Then I should be on the home page
     And I should see "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
+    Then I should be on the show page for the organisation named "The Organisation"
+    And I should see "You have requested admin status for The Organisation"
+    And "normal_user@myorg.com"'s request status for "The Organisation" should be updated appropriately
 
-    Scenario: I have requested admin status but am not yet approved, I will see a notice on the show page
-      Given I visit the home page
-      And I sign in as "pendingadmin@myorg.com" with password "mypassword1234"
-      And I visit the show page for the organisation named "The Organisation"
-      Then I should see "Your request for admin status is pending."
+  Scenario: I have requested admin status but am not yet approved, I will see a notice on the show page
+    Given I visit the home page
+    And I sign in as "pendingadmin@myorg.com" with password "mypassword1234"
+    And I visit the show page for the organisation named "The Organisation"
+    Then I should see "Your request for admin status is pending."
