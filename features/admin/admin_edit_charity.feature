@@ -1,5 +1,5 @@
 Feature: Admin editing charity
-  As a Admin
+  As a site admin
   So that I can ensure that charity information (for someone else) is correct (including adding a new organisation)
   I want to be able to edit/delete/add any charity information
   Tracker Story ID: https://www.pivotaltracker.com/story/show/50368203

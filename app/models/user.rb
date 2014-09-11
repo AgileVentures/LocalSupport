@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
     self.organisation == organisation
   end
 
+  # can create or edit an organization
   def can_edit? org
     admin? || (!org.nil? && organisation == org)
   end
