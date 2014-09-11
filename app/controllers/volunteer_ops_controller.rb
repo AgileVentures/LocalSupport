@@ -1,16 +1,17 @@
 class VolunteerOpsController < ApplicationController
   layout 'two_columns'
   before_filter :authorize, :except => [:show, :index]
-  
+
   def index
     @volunteer_ops = VolunteerOp.all
     @organisations = @volunteer_ops.map { |op| op.organisation }
     @json = gmap4rails_with_popup_partial(@organisations, 'popup')
   end
-  
+
   def show
     @volunteer_op = VolunteerOp.find(params[:id])
     @organisation = @volunteer_op.organisation
+    @editable = current_user.can_edit?(@organisation) if current_user
     @json = gmap4rails_with_popup_partial(@organisation, 'popup')
   end
 
@@ -28,11 +29,29 @@ class VolunteerOpsController < ApplicationController
     end
   end
 
+  def edit
+    @volunteer_op = VolunteerOp.find(params[:id])
+    @organisation = @volunteer_op.organisation
+  end
+
+  def update
+    @volunteer_op = VolunteerOp.find(params[:id])
+    @organisation = @volunteer_op.organisation
+    if @volunteer_op.update_attributes(params[:volunteer_op])
+      redirect_to @volunteer_op, notice: 'Volunteer Opportunity was successfully updated.'
+    else
+      render action: "edit"
+    end
+  end
+
   private
 
   def authorize
-    unless org_owner?
-      flash[:error] = 'You must be signed in as an organisation owner to perform this action!'
+    # set @organisation
+    # then can make condition:
+    # unless current_user.can_edit? organisation
+    unless org_owner? or admin?
+      flash[:error] = 'You must be signed in as an organisation owner or site admin to perform this action!'
       redirect_to '/'
       false
     end

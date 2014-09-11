@@ -67,7 +67,6 @@ describe User do
       it 'can edit organisations' do
         user.can_edit?(model).should be_true
       end
-
     end
 
     context 'is not admin' do
