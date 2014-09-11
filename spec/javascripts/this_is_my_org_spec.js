@@ -12,8 +12,9 @@ describe('This is my Organisation button', function() {
         setFixtures('<a id="TIMO">This is my organisation</a>');
         appendSetFixtures(sandbox({class:'nav-collapse'}));
         appendSetFixtures('<li id="menuLogin" class="dropdown"></li>');
-        appendSetFixtures("<form id='loginForm'><div></div> </form>")
+        appendSetFixtures("<form id='loginForm'><div></div> </form>");
         appendSetFixtures("<input id='user_organisation_id' name='user[organisation_id]' type='hidden' value='642' />")
+        appendSetFixtures("<form id='registerForm'><div></div> </form>")
         timo = $('#TIMO');
         nav  = $('.nav-collapse');
         menu = $('#menuLogin');
@@ -42,10 +43,11 @@ describe('This is my Organisation button', function() {
             it('menu changes attributes', function() {
                 expect(menu).toHaveClass('open');
             });
-            it('contains hidden input field with org id', function(){
-              //expect($("input#loginForm input[name=pending_organisation_id]").val()).toEqual('642');
-              //expect($("//input[@id='loginForm']//input[@name='pending_organisation_id']").val()).toEqual('642');
-              expect($("input#loginForm[name=pending_organisation_id]").val()).toEqual('642')
+            it('loginForm contains hidden input field with org id', function(){
+              expect($("form#loginForm input[name=pending_organisation_id]").val()).toEqual('642')
+            });
+            it('registerForm contains hidden input field with org id', function(){
+                expect($("form#registerForm input[name=pending_organisation_id]").val()).toEqual('642')
             });
         });
         describe('when login menu is open and TIMO is clicked', function() {
