@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
     #where('users.organisation_id IS NOT NULL').
     where('users.invitation_sent_at IS NOT NULL').
     where('users.invitation_accepted_at IS NULL')
+  scope :admins, -> { where(admin: true) }
 
   def pending_admin? org
     return false if self.pending_organisation == nil
