@@ -13,14 +13,18 @@ describe('This is my Organisation button', function() {
         appendSetFixtures(sandbox({class:'nav-collapse'}));
         appendSetFixtures('<li id="menuLogin" class="dropdown"></li>');
         appendSetFixtures("<form id='loginForm'><div></div> </form>");
-        appendSetFixtures("<input id='user_organisation_id' name='user[organisation_id]' type='hidden' value='642' />")
-        appendSetFixtures("<form id='registerForm'><div></div> </form>")
+        appendSetFixtures("<input id='user_organisation_id' name='user[organisation_id]' type='hidden' value='642' />");
+        appendSetFixtures('<a id = "toggle_link">');
+        appendSetFixtures("<form id='registerForm'><div></div> </form>");
         timo = $('#TIMO');
         nav  = $('.nav-collapse');
         menu = $('#menuLogin');
+        toggle = $('#toggle_link');
+        register = $('#registerForm');
         spyCollapse = spyOn($.fn, 'collapse').and.callThrough();
         spyOnEvent(nav, 'show');
         spyOnEvent(timo, 'click');
+        spyOnEvent(toggle, "click");
         timo.TIMO();
     });
     describe('when not logged in', function() {
@@ -33,6 +37,9 @@ describe('This is my Organisation button', function() {
             beforeEach(function() { timo.click() });
             it('$.fn.TIMO will call collapse("show")', function() {
                 expect(spyCollapse).toHaveBeenCalledWith('show');
+            });
+            it("toggle will have 'click' event", function(){
+                expect('click').toHaveBeenTriggeredOn(toggle);
             });
             it('nav will have "show" event', function() {
                 expect('show').toHaveBeenTriggeredOn(nav)
@@ -54,6 +61,7 @@ describe('This is my Organisation button', function() {
             beforeEach(function() {
                 nav.addClass('in');
                 menu.addClass('open');
+                register.addClass('in');
                 timo.click()
             });
             it('$.fn.TIMO will not call collapse("show")', function() {
@@ -62,6 +70,9 @@ describe('This is my Organisation button', function() {
             it('nav will not have "show" event', function() {
                 expect('show').not.toHaveBeenTriggeredOn(nav)
             });
+            it('toggle will not have "click" event', function(){
+                expect('click').not.toHaveBeenTriggeredOn(toggle);
+            })
             it('nav does not change attributes', function() {
                 expect(nav).toHaveClass('in');
             });
