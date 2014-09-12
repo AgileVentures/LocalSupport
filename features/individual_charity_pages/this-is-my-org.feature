@@ -25,12 +25,14 @@ Feature: This is my organisation
     And "nonadmin@myorg.com"'s request status for "The Organisation" should be updated appropriately
 
   @javascript
+  # when capybara-webkit clicks TIMO, it needs to submit sign in form with javascript or
+  # else ClickFailed error will occur due to overlapping elements
   Scenario: I am not signed in, I will be offered "This is my organisation" claim button
     When I visit the show page for the organisation named "The Organisation"
     Then I should see "This is my organisation"
     When I click id "TIMO"
     Then I should be on the show page for the organisation named "The Organisation"
-    When I sign in as "nonadmin@myorg.com" with password "mypassword1234"
+    When I sign in as "nonadmin@myorg.com" with password "mypassword1234" with javascript
     Then I should see "You have requested admin status for The Organisation"
     Then I should be on the show page for the organisation named "The Organisation"
     And "nonadmin@myorg.com"'s request status for "The Organisation" should be updated appropriately
@@ -41,7 +43,7 @@ Feature: This is my organisation
     Then I should see "This is my organisation"
     When I click id "TIMO"
     Then I should be on the show page for the organisation named "The Organisation"
-    When I sign in as "nonadmin@myorg.com" with password "mypassword1235"
+    When I sign in as "nonadmin@myorg.com" with password "mypassword1235" with javascript
     Then I should be on the sign in page
     When I sign in as "nonadmin@myorg.com" with password "mypassword1234"
     Then I should see "You have requested admin status for The Organisation"

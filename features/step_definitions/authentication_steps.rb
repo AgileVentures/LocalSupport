@@ -46,10 +46,14 @@ When /^I sign out$/ do
   click_link 'Log out'
 end
 
-Given /^I sign in as "(.*?)" with password "(.*?)"$/ do |email, password|
+Given /^I sign in as "(.*?)" with password "(.*?)"( with javascript)?$/ do |email, password, js|
   fill_in "user_email", :with => email
   fill_in "user_password", :with => password
-  click_link_or_button "Sign in"
+  if js
+    page.find("#signin").trigger("click")
+  else
+    click_link_or_button "Sign in"
+  end
 end
 
 When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |email, password|
