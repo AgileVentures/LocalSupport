@@ -1,4 +1,10 @@
 class RegistrationsController < Devise::RegistrationsController
+  def create
+    if params[:user]
+      @pending_org_id = params[:user][:pending_organisation_id]
+    end
+    super
+  end
   protected
     def after_inactive_sign_up_path_for(resource)
       if resource.pending_organisation

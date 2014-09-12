@@ -12,9 +12,9 @@
                 if (!menu.hasClass('open')) {
                     menu.addClass('open')
                 }
-                if(!register.hasClass('in')){
+               if(!register.hasClass('in')){
                   $('#toggle_link').click();
-                }
+                 }
                 this.pending_org_id = $("#user_organisation_id").val();
                 $('#loginForm div').first().append("<input name='pending_organisation_id' type='hidden' value="+ this.pending_org_id+">");
                 $('#registerForm div').first().append("<input name='user[pending_organisation_id]' type='hidden' value="+ this.pending_org_id+">");
