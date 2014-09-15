@@ -2,7 +2,7 @@ LocalSupport::Application.routes.draw do
 
   resources :volunteer_ops
 
-  devise_for :users, :controllers => {:sessions => "sessions"}
+  devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}
 
   get 'contributors' => 'contributors#show'
   match 'organisations/search' => 'organisations#search'

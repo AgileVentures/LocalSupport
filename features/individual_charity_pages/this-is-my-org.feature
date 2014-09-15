@@ -25,13 +25,15 @@ Feature: This is my organisation
     And "nonadmin@myorg.com"'s request status for "The Organisation" should be updated appropriately
     And an email should be sent to "admin@myorg.com" confirming request
 
+# when capybara-webkit clicks TIMO, it needs to submit sign in form with javascript or
+# else ClickFailed error will occur due to overlapping elements
   @javascript
   Scenario: I am not signed in, I will be offered "This is my organisation" claim button
     When I visit the show page for the organisation named "The Organisation"
     Then I should see "This is my organisation"
     When I click id "TIMO"
     Then I should be on the show page for the organisation named "The Organisation"
-    When I sign in as "nonadmin@myorg.com" with password "mypassword1234"
+    When I sign in as "nonadmin@myorg.com" with password "mypassword1234" with javascript
     Then I should see "You have requested admin status for The Organisation"
     Then I should be on the show page for the organisation named "The Organisation"
     And "nonadmin@myorg.com"'s request status for "The Organisation" should be updated appropriately
@@ -42,7 +44,7 @@ Feature: This is my organisation
     Then I should see "This is my organisation"
     When I click id "TIMO"
     Then I should be on the show page for the organisation named "The Organisation"
-    When I sign in as "nonadmin@myorg.com" with password "mypassword1235"
+    When I sign in as "nonadmin@myorg.com" with password "mypassword1235" with javascript
     Then I should be on the sign in page
     When I sign in as "nonadmin@myorg.com" with password "mypassword1234"
     Then I should see "You have requested admin status for The Organisation"
@@ -53,11 +55,29 @@ Feature: This is my organisation
   Scenario: I am not a registered user, I will be offered "This is my organisation" claim button
     When I visit the show page for the organisation named "The Organisation"
     Then I should see "This is my organisation"
+
+  @javascript
+  Scenario: I am not a registered user and I claim this is my organisation
+    When I visit the show page for the organisation named "The Organisation"
     When I click id "TIMO"
     When I click "toggle_link"
     And I sign up as "normal_user@myorg.com" with password "pppppppp" and password confirmation "pppppppp"
-    Then I should be on the home page
     And I should see "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
+    Then I should be on the show page for the organisation named "The Organisation"
+    And "normal_user@myorg.com"'s request for "The Organisation" should be persisted
+    And I should see "You have requested admin status for The Organisation"
+
+  @javascript
+  Scenario: I am not a registered user and I sign up incorrectly and then correctly after pressing TIMO
+    When I visit the show page for the organisation named "The Organisation"
+    Then I should see "This is my organisation"
+    When I click id "TIMO"
+    When I click "toggle_link"
+    And I sign up as "newuser@myorg.com" with password "pppppppp" and password confirmation "qppppppp"
+    Then I should see "error"
+    And I sign up as "newuser@myorg.com" with password "pppppppp" and password confirmation "pppppppp" on the legacy sign up page
+    And I should see "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
+    Then I should be on the show page for the organisation named "The Organisation"
 
   Scenario: I have requested admin status but am not yet approved, I will see a notice on the show page
     Given I visit the home page
