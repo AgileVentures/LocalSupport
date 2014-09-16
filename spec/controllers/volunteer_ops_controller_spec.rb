@@ -16,14 +16,14 @@ describe VolunteerOpsController do
   describe 'GET index' do
     before :each do
       @results = [op]
-      ApplicationController.any_instance.stub(:gmap4rails_with_popup_partial)
-      VolunteerOp.stub(:all).and_return(@results)
+      VolunteerOpsController.any_instance.stub(:gmap4rails_with_popup_partial)
+      VolunteerOp.stub(:order_by_most_recent).and_return(@results)
     end
 
     it 'assigns all volunteer_ops as @volunteer_ops' do
       op2 = stub_model VolunteerOp, :organisation => (stub_model Organisation)
       @results = [op2]
-      VolunteerOp.should_receive(:all).and_return(@results)
+      VolunteerOp.should_receive(:order_by_most_recent).and_return(@results)
       get :index, {}
       assigns(:volunteer_ops).should eq @results
     end
