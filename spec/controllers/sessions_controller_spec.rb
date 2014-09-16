@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Devise::SessionsController do
+describe SessionsController do
   before :suite do
     FactoryGirl.factories.clear
     FactoryGirl.find_definitions

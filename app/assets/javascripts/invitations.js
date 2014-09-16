@@ -1,4 +1,4 @@
-// for organization_reports/without_users_index.html.erb
+// for organisation_reports/without_users_index.html.erb
 
 (function ($) {
     'use strict';

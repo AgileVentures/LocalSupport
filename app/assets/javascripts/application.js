@@ -11,7 +11,7 @@
 //= require bootstrap-sortable
 //= require_tree ./global
 //= require bootstrap-switch
-//= require organizations
+//= require organisations
 
 $(function() {
     // invoke global functions here

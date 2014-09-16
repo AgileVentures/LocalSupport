@@ -6,7 +6,7 @@ Feature: Map of local charities
   Tracker story ID: https://www.pivotaltracker.com/story/show/52317013
 
   Background:
-    Given the following organizations exist:
+    Given the following organisations exist:
       | name                           | description                    | address        | postcode | website       |
       | Harrow Bereavement Counselling | Harrow Bereavement Counselling | 34 pinner road | HA1 4HZ  | http://a.com/ |
       | Indian Elders Association      | Care for the elderly           | 64 pinner road | HA1 4HA  | http://b.com/ |
@@ -14,12 +14,12 @@ Feature: Map of local charities
       | Youth UK                       | Care for the Very Young        | 84 pinner road | HA1 4HF  | http://d.com/ |
 
     Given the following users are registered:
-      | email                         | password | organization | confirmed_at         |
+      | email                         | password | organisation | confirmed_at         |
       | registered_user-3@example.com | pppppppp | Youth UK     | 2007-01-01  10:00:00 |
 
   Scenario: Show all charities on homepage map
     Given I visit the home page
-    And I should see "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling" in the map centered on local organizations
+    And I should see "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling" in the map centered on local organisations
 
   Scenario: Clickable hyperlinks to charity homepage in map
     Given I visit the home page

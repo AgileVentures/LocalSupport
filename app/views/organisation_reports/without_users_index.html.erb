@@ -1,0 +1,20 @@
+<table class="table table-hover sortable">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th style="text-align: center;"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @orphans.each do |organisation| %>
+      <tr id="<%= organisation.id %>">
+        <td><%= link_to organisation.name, organisation_path(organisation) %></td>
+        <td><%= organisation.email %></td>
+        <td class="response" style="text-align: center;">
+          <input type="checkbox" data-id="<%= organisation.id %>" data-email="<%= organisation.email %>"/>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
