@@ -23,7 +23,7 @@ Feature: This is my organisation
     And I click "This is my organisation"
     Then I should be on the show page for the organisation named "The Organisation"
     And "nonadmin@myorg.com"'s request status for "The Organisation" should be updated appropriately
-    And an email should be sent to "admin@myorg.com" confirming request
+    And an email should be sent to "admin@myorg.com" as notification of request
 
 # when capybara-webkit clicks TIMO, it needs to submit sign in form with javascript or
 # else ClickFailed error will occur due to overlapping elements
@@ -50,6 +50,7 @@ Feature: This is my organisation
     Then I should see "You have requested admin status for The Organisation"
     Then I should be on the show page for the organisation named "The Organisation"
     And "nonadmin@myorg.com"'s request status for "The Organisation" should be updated appropriately
+    And an email should be sent to "admin@myorg.com" as notification of request
 
   @javascript
   Scenario: I am not a registered user, I will be offered "This is my organisation" claim button

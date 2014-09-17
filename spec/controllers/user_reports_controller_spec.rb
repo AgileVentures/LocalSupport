@@ -26,13 +26,6 @@ describe UserReportsController do
         put :update, id: 4, organisation_id: 5
         expect(flash[:notice]).to have_content("You have requested admin status for #{@org.name}")
       end
-      it 'should send an email to the admin indicating a user has requested admin status' do
-        User.stub_chain(:admins, :pluck).and_return ['admin@admin.org']
-        put :update, id: 4, organisation_id: 5
-        last_mail = ActionMailer::Base.deliveries.last
-        expect(last_mail.to).to eq ['admin@admin.org']
-        ActionMailer::Base.deliveries.size.should eq 1
-      end
     end
     context 'admin promoting user to charity admin' do
       before(:each) do

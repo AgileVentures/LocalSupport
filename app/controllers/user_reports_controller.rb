@@ -24,8 +24,6 @@ class UserReportsController < ApplicationController
   def update_message_for_admin_status
     org = Organisation.find(params[:organisation_id])
     flash[:notice] = "You have requested admin status for #{org.name}"
-    admin_emails = User.admins.pluck(:email)
-    AdminMailer.new_user_waiting_for_approval(org.name, admin_emails).deliver
     redirect_to(organisation_path(params[:organisation_id]))
   end
 

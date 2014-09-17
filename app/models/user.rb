@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
   belongs_to :organisation
   belongs_to :pending_organisation, :class_name => 'Organisation', :foreign_key => 'pending_organisation_id'
 
+  # should we have a before_save here where we check if the pending_organization_id is going from
+  # nil to a value and then send the admin an email ...
+
   scope :invited_not_accepted,
     includes(:organisation).
     #where('users.organisation_id IS NOT NULL').
