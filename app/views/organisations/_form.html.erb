@@ -1,26 +1,11 @@
 <%= form_for(@organisation) do |f| %>
-    <% if @organisation.errors.any? %>
-        <div id="error_explanation">
-          <ul>
-            <% @organisation.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-
     <table class="org_table" >
       <thead>
-      <tr>
-        <td> </td>
-        <td> </td>
-        <td style="width: 90px"><small>Check to display in public listing</small></td>
-      </tr>
       </thead>
       <tbody>
       <tr>
         <td data-toggle="tooltip" title="Enter a unique name">
-          <%= f.text_area :name, :size => "50x2", :class => "org_form org_h3", :placeholder => "Enter organisation name" %>
+          <%= f.text_area :name, :size => "50x4", :class => "org_form org_h3", :placeholder => "Enter organisation name" %>
         </td>
         <td class="borderless">
           <input type="checkbox" class="publish" disabled checked = "checked" value="">
@@ -85,9 +70,7 @@
       <tr>
         <td class="borderless" >
           <div>
-            <ol>
-          <%= charity_admin_display_msg %>
-            </ol>
+            <%= render partial: 'charity_admin_display' %>
           </div>
         </td>
         <td class="borderless">

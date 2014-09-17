@@ -50,23 +50,52 @@ describe 'organisations/show.html.erb' do
       rendered.should_not have_selector 'a', :content => "Donate to #{organisation.name} now!", :href => organisation.donation_info, :target => '_blank'
     end
   end
-
-  
+  context "fields are in order" do
+    let(:organisation) do
+      stub_model Organisation, {
+          :name => 'Friendly',
+          :address => '12 pinner rd',
+          :description => 'lovely',
+          :telephone => '1234',
+          :email => 'admin@friendly.org',
+          :postcode => 'HA1 4HZ',
+          :website => 'http://www.friendly.org',
+          :donation_info => 'http://www.friendly.org/donate',
+          :publish_address => true,
+          :publish_email => true,
+          :publish_phone => true
+      }
+    end
+    let(:fields) { ["#{organisation.name}",
+              "#{organisation.description}",
+              "#{organisation.address}",
+              "#{organisation.postcode}",
+              "#{organisation.email}",
+              "#{organisation.website}",
+              "#{organisation.telephone}",
+              "#{organisation.donation_info}"
+             ] }
+    it "renders the fields" do
+      render
+      expect(fields.map { |f|  rendered.index(f) }).not_to include(nil)
+    end
   it "renders the fields in order similar to edit template" do
     render
-    fields = ['organization_name',
-    					'organization_description',
-    					'organization_address',
-    					'organization_postcode',
-    					'organization_email',
-    					'organization_website',
-    					'organization_telephone',
-    					'organization_donation_info',
-    ]
+    debugger
+    fields = ["#{organisation.name}",
+    					"#{organisation.description}",
+              "#{organisation.address}",
+              "#{organisation.postcode}",
+              "#{organisation.email}",
+              "#{organisation.website}",
+              "#{organisation.telephone}",
+              "#{organisation.donation_info}"
+             ]
     indexes = fields.map { |element| rendered.index(element) }
     indexes.should eq indexes.sort
   end
 
+  end
   context 'some information is private' do
     it 'should not show telephone and address by default but should show email by default' do
       render
