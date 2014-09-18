@@ -81,7 +81,6 @@ describe 'organisations/show.html.erb' do
     end
   it "renders the fields in order similar to edit template" do
     render
-    debugger
     fields = ["#{organisation.name}",
     					"#{organisation.description}",
               "#{organisation.address}",
