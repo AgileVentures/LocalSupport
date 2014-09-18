@@ -8,6 +8,7 @@ Feature: This is my organisation
     And the following organisations exist:
        | name             | address        |
        | The Organisation | 83 pinner road |
+       | The Other        | 83 pinner road |
 
     Given the following users are registered:
        | email              | password       | admin | confirmed_at        | organisation | pending_organisation|
@@ -78,8 +79,10 @@ Feature: This is my organisation
     And I should see "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
     Then I should be on the show page for the organisation named "The Organisation"
 
-  Scenario: I have requested admin status but am not yet approved, I will see a notice on the show page
+  Scenario: I have requested admin status but am not yet approved, I will see a notice only on the show page for the requested org
     Given I visit the home page
     And I sign in as "pendingadmin@myorg.com" with password "mypassword1234"
     And I visit the show page for the organisation named "The Organisation"
     Then I should see "Your request for admin status is pending."
+    And I visit the show page for the organisation named "The Other"
+    Then I should not see "Your request for admin status is pending."
