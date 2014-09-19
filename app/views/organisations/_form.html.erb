@@ -19,11 +19,14 @@
           <input type="checkbox" class="publish" disabled checked = "checked" value="">
         </td>
       </tr>
+      <tr><td><h4>
+        Contact information
+      </h4></td></tr>
       <tr>
         <td data-toggle="tooltip" title="Enter a complete address">
           <%= f.text_field :address, :class => "org_form", :placeholder => "Enter organisation address"%>
         </td>
-        <td class="borderless" data-toggle="tooltip" title="To make your full address visible to the public check this box">
+        <td class="borderless" data-toggle="tooltip" title="Toggle to change the visibility of your address">
           <%= f.check_box :publish_address, :class => 'publish' %>
         </td>
       </tr>
@@ -39,7 +42,7 @@
         <td class="borderless" data-toggle="tooltip" title="Make sure email is correct">
           <%= f.text_field :email, :class => "org_form", :placeholder => "Enter organisation email address" %>
         </td>
-        <td class="borderless" data-toggle="tooltip" title="To make your email address visible to the public check this box">
+        <td class="borderless" data-toggle="tooltip" title="Toggle to change the visibility of your email address">
           <%= f.check_box :publish_email, :class => 'publish' %>
         </td>
       </tr>
@@ -55,7 +58,7 @@
         <td class="borderless" data-toggle="tooltip" title="Make sure phone number is correct">
           <%= f.text_field :telephone, :class => "org_form", :placeholder => "Enter organisation phone number" %>
         </td>
-        <td class="borderless" data-toggle="tooltip" title="To make your telephone number visible to the public check this box">
+        <td class="borderless" data-toggle="tooltip" title="Toggle to change the visibility of your telephone number">
           <%= f.check_box :publish_phone, :class => "publish"%>
         </td>
       </tr>

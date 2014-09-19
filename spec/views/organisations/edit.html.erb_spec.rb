@@ -29,9 +29,9 @@ describe "organisations/edit.html.erb" do
             'organisation_telephone' => 'Make sure phone number is correct',
             'organisation_admin_email_to_add' => "Please enter the details of individuals from your organisation you would like to give permission to update your entry\. E-mail addresses entered here will not be made public\.",
             'organisation_donation_info' => 'Please enter a website here either to the fundraising page on your website or to an online donation site.',
-            'organisation_publish_email' => 'To make your email address visible to the public check this box',
-            'organisation_publish_telephone' => 'To make your telephone number visible to the public check this box',
-            'organisation_publish_address' => 'To make your full address visible to the public check this box'
+            'organisation_publish_email' => 'Toggle to change the visibility of your email address',
+            'organisation_publish_telephone' => 'Toggle to change the visibility of your telephone number',
+            'organisation_publish_address' => 'Toggle to change the visibility of your address'
     }
     hash.each do |label,tooltip|
       rendered.should have_xpath("//tr/td[contains(.,#{label})]/../td[@data-toggle=\"tooltip\"][@title=\"#{tooltip}\"]")
@@ -54,14 +54,15 @@ describe "organisations/edit.html.erb" do
           :publish_phone => true
       }
     end
-    let(:fields) { ["#{organisation.name}",
-              "#{organisation.description}",
-              "#{organisation.address}",
-              "#{organisation.postcode}",
-              "#{organisation.email}",
-              "#{organisation.website}",
-              "#{organisation.telephone}",
-              "#{organisation.donation_info}"
+    let(:fields) { ["organisation_name",
+              "organisation_description",
+              "Contact information",
+              "organisation_address",
+              "organisation_postcode",
+              "organisation_email",
+              "organisation_website",
+              "organisation_telephone",
+              "organisation_donation_info"
              ] }
     it "renders the fields" do
       render
@@ -69,7 +70,6 @@ describe "organisations/edit.html.erb" do
     end
   it "renders the fields in order similar to edit template" do
     render
-    debugger
     fields = ["#{organisation.name}",
     					"#{organisation.description}",
               "#{organisation.address}",
