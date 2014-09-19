@@ -38,38 +38,84 @@ describe "organisations/edit.html.erb" do
     end
   end
 
+  context "fields are in order" do
+    let(:organisation) do
+      stub_model Organisation, {
+          :name => 'Friendly',
+          :address => '12 pinner rd',
+          :description => 'lovely',
+          :telephone => '1234',
+          :email => 'admin@friendly.org',
+          :postcode => 'HA1 4HZ',
+          :website => 'http://www.friendly.org',
+          :donation_info => 'http://www.friendly.org/donate',
+          :publish_address => true,
+          :publish_email => true,
+          :publish_phone => true
+      }
+    end
+    let(:fields) { ["#{organisation.name}",
+              "#{organisation.description}",
+              "#{organisation.address}",
+              "#{organisation.postcode}",
+              "#{organisation.email}",
+              "#{organisation.website}",
+              "#{organisation.telephone}",
+              "#{organisation.donation_info}"
+             ] }
+    it "renders the fields" do
+      render
+      expect(fields.map { |f|  rendered.index(f) }).not_to include(nil)
+    end
+  it "renders the fields in order similar to edit template" do
+    render
+    debugger
+    fields = ["#{organisation.name}",
+    					"#{organisation.description}",
+              "#{organisation.address}",
+              "#{organisation.postcode}",
+              "#{organisation.email}",
+              "#{organisation.website}",
+              "#{organisation.telephone}",
+              "#{organisation.donation_info}"
+             ]
+      indexes = fields.map { |element| rendered.index(element) }
+      indexes.should eq indexes.sort
+    end
 
-it "renders the donation_info url in edit form" do
-  render
-  rendered.should have_field :organisation_donation_info,
-                             :with => "http://www.friendly.com/donate"
-end
+  end
 
-it "renders a form field to add an administrator email" do
-  render
-  rendered.should have_field :organisation_admin_email_to_add
-end
+  it "renders the donation_info url in edit form" do
+    render
+    rendered.should have_field :organisation_donation_info,
+                               :with => "http://www.friendly.com/donate"
+  end
 
-it "renders a checkbox to make address public" do
-  render
-  rendered.should have_selector('input', :id => 'organisation_publish_address', :type => 'checkbox')
-end
+  it "renders a form field to add an administrator email" do
+    render
+    rendered.should have_field :organisation_admin_email_to_add
+  end
 
-it "renders a checkbox to make email public" do
-  render
-  rendered.should have_selector('input', :id => 'organisation_publish_email', :type => 'checkbox')
-end
+  it "renders a checkbox to make address public" do
+    render
+    rendered.should have_selector('input', :id => 'organisation_publish_address', :type => 'checkbox')
+  end
 
-it "renders a checkbox to make phone number public" do
-  render
-  rendered.should have_selector('input', :id => 'organisation_publish_phone', :type => 'checkbox')
-end
+  it "renders a checkbox to make email public" do
+    render
+    rendered.should have_selector('input', :id => 'organisation_publish_email', :type => 'checkbox')
+  end
 
-it 'renders an update button with Anglicized spelling of Organisation' do
-  render
-  rendered.should have_selector("input", :type => "submit", :value => "Update Organisation")
-end
-#todo: move this into proper integration test to avoid the errors mocking
+  it "renders a checkbox to make phone number public" do
+    render
+    rendered.should have_selector('input', :id => 'organisation_publish_phone', :type => 'checkbox')
+  end
+
+  it 'renders an update button with Anglicized spelling of Organisation' do
+    render
+    rendered.should have_selector("input", :type => "submit", :value => "Update Organisation")
+  end
+  #todo: move this into proper integration test to avoid the errors mocking
 #out being coupled with rails
 
 end

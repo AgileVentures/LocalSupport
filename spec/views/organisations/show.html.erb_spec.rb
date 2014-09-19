@@ -90,9 +90,9 @@ describe 'organisations/show.html.erb' do
               "#{organisation.telephone}",
               "#{organisation.donation_info}"
              ]
-    indexes = fields.map { |element| rendered.index(element) }
-    indexes.should eq indexes.sort
-  end
+      indexes = fields.map { |element| rendered.index(element) }
+      indexes.should eq indexes.sort
+    end
 
   end
   context 'some information is private' do
