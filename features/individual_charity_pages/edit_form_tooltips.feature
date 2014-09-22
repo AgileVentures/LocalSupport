@@ -35,7 +35,7 @@ Feature:  Tool tip instructions for fields on edit form
     And I visit the edit page for the organisation named "Harrow Bereavement Counselling"
     Then the following tooltips should exist: 
     | label                                                |  tooltip        |
-    | Email                                                |  To make your email address visible to the public check this box |
-    | Address                                              |  To make your full address visible to the public check this box |
-    | Telephone                                            |  To make your telephone number visible to the public check this box |
+    | Email                                                |  Toggle to change the visibility of your email address    |
+    | Address                                              |  Toggle to change the visibility of your telephone number |
+    | Telephone                                            |  Toggle to change the visibility of your address          |
 
