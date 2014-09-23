@@ -14,6 +14,12 @@ Given /^I am signed in as an? (non-)?admin$/ do |negate|
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
 
+Given /^I am signed in as a pending-admin of "(.*?)"$/ do |org_name|
+  org = Organisation.find_by_name org_name
+  user = User.find_by_pending_organisation_id(org.id)
+  page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
+end
+
 Given /^I sign up as "(.*?)" with password "(.*?)" and password confirmation "(.*?)"( on the legacy sign up page)?$/ do |email, password, password_confirmation, legacy|
   if legacy
     within('#new_user') do

@@ -88,8 +88,7 @@ Feature: This is my organisation
     Then I should be on the show page for the organisation named "Helpful Folk"
 
   Scenario: I have requested admin status but am not yet approved, I will see a notice only on the show page for the requested org
-    Given I visit the home page
-    And I sign in as "pendingadmin@myorg.com" with password "mypassword1234"
+    Given I am signed in as a pending-admin of "Helpful Folk"
     And I visit the show page for the organisation named "Helpful Folk"
     Then I should see "Your request for admin status is pending."
     And I visit the show page for the organisation named "The Other"
