@@ -63,10 +63,9 @@ Then /^I should( not)? see an edit button for "(.*?)" volunteer opportunity$/ do
   expect(page).send(expectation_method, have_link('Edit', :href => edit_volunteer_op_path(op.id)))
 end
 
-Then /^I should see "(.*?)" in the charity admin email$/ do |email|
-  expect(page).to have_content "Organisation administrator emails"
-  expect(page).to have_selector "ol"
-  expect(page).to have_selector "li", :text => email
+Then /^I should( not)? see "(.*?)" in the charity admin email$/ do |negate,email|
+  expectation_method = negate ? :not_to : :to
+  expect(page).send(expectation_method, have_selector('li', :text => email))
 end
 
 Then /^show me the page$/ do
@@ -381,6 +380,10 @@ Given /^associations are destroyed for:$/ do |table|
   end
 end
 
+Given /^debugger$/ do
+  debugger
+  puts ""
+end
 Given /^I run the invite migration$/ do
 
 end
