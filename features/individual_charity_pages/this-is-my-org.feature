@@ -59,6 +59,8 @@ Feature: This is my organisation
     Then I should see "You have requested admin status for Helpful Folk"
     # And I should not see a link or button "This is my organisation"  <-- button still appears as we have no current_user ...
     And "normal_user@myorg.com"'s request for "Helpful Folk" should be persisted
+    And I click on the confirmation link in the email to "normal_user@myorg.com"
+    Then I should be on the show page for the organisation named "Helpful Folk"
     And an email should be sent to "admin@localsupport.org" as notification of the request
 
   @javascript
@@ -73,6 +75,8 @@ Feature: This is my organisation
     Then I should see "You have requested admin status for Helpful Folk"
     # And I should not see a link or button "This is my organisation"  <-- button still appears as we have no current_user ...
     And "newuser@myorg.com"'s request for "Helpful Folk" should be persisted
+    And I click on the confirmation link in the email to "newuser@myorg.com"
+    Then I should be on the show page for the organisation named "Helpful Folk"
     And an email should be sent to "admin@localsupport.org" as notification of the request
 
   Scenario: I have requested admin status but am not yet approved, I will see a notice only on the show page for the requested org
