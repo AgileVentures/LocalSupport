@@ -41,14 +41,14 @@ describe "volunteer_ops/show" do
     it 'renders an edit button' do
       assign(:editable, true)
       render
-      expect(rendered).to have_link 'Edit', edit_volunteer_op_path(3)
+      expect(rendered).to have_link 'Edit', edit_organisation_volunteer_op_path(id: 3, organisation_id: 1)
     end
   end
   context 'without the right to edit' do
     it 'does not render an edit button' do
       assign(:editable, false)
       render
-      expect(rendered).not_to have_link 'Edit', edit_volunteer_op_path(3)
+      expect(rendered).not_to have_link 'Edit', edit_organisation_volunteer_op_path(id: 3, organisation_id: 1)
     end
   end
 end

@@ -68,7 +68,7 @@
           <%= link_to("Delete", organisation_path(@organisation.id), {method: :delete, :class => 'btn btn-danger'}) %>
       <% end %>
       <% if @can_create_volunteer_op and feature_active?(:volunteer_ops_create) %>
-          <%= link_to("Create a Volunteer Opportunity", new_volunteer_op_path, {:class => 'btn btn-primary'}) %>
+          <%= link_to("Create a Volunteer Opportunity", new_organisation_volunteer_op_path(organisation_id: @organisation.id), {:class => 'btn btn-primary'}) %>
       <% end %>
       <% if current_user %>
           <%= link_to "This is my organisation", user_report_path(organisation_id: @organisation.id, id: current_user.id), {method: :put, class: 'btn btn-primary'} if @grabbable %>
