@@ -48,12 +48,12 @@ Feature: Org admin creating a volunteer work opportunity
     And I visit the new volunteer opportunity page
     Then I should see "You must be signed in as an organisation owner or site admin to perform this action!"
 
-  Scenario: Only org-owners can create volunteer opportunities
+  Scenario: Users who are not signed in cannot see link to create a new volunteer opportunity
     # Tested that the API is restricted in the request spec
     Given I visit the show page for the organisation named "Friendly"
     Then I should not see a link with text "Create a Volunteer Opportunity"
 
-  Scenario: Signed in users who don't own the org cannot create volunteer opportunities
+  Scenario: Signed in non-admin users who don't own the org cannot see link to create a new volunteer opportunity
     Given I am signed in as a charity worker related to "Shy"
     And I visit the show page for the organisation named "Friendly"
     Then I should not see a link with text "Create a Volunteer Opportunity"
@@ -62,6 +62,13 @@ Feature: Org admin creating a volunteer work opportunity
     Given I am signed in as a admin
     And I visit the show page for the organisation named "Friendly"
     Then I should see a link with text "Create a Volunteer Opportunity"
+    And I click "Create a Volunteer Opportunity"
+    Then I should be on the new volunteer opportunity page
+    When I submit an opportunity with title "Hard Work" and description "For no pay"
+    Then I should be on the show page for the volunteer_op titled "Hard Work"
+    And I should see "Hard Work"
+    And I should see "For no pay"
+    And I should see "Organisation: Friendly"
 
   Scenario: Org-owners can see a Create Volunteer Opportunity button on their organisation show page when feature is enabled
     And I am signed in as a charity worker related to "Shy"

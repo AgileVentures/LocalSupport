@@ -24,8 +24,9 @@ class User < ActiveRecord::Base
     where('users.invitation_accepted_at IS NULL')
 
   def can_create_volunteer_ops? org
-    belongs_to?(org)
+    belongs_to?(org) || admin?
   end
+
   def pending_admin? org
     return false if self.pending_organisation == nil
     self.pending_organisation == org

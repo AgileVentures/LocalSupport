@@ -212,7 +212,7 @@ describe OrganisationsController do
     end
 
     describe 'can_create_volunteer_op flag' do
-      context 'depends on belongs_to?' do
+      context 'depends on can_create_volunteer_ops?' do
         it 'true' do
           @user.should_receive(:can_create_volunteer_ops?) { true }
           get :show, :id => 37

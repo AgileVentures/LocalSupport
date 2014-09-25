@@ -251,8 +251,13 @@ describe User do
       user.can_create_volunteer_ops?(other_org).should be_false
     end
 
-    it 'can create volunteer op' do
+    it 'org owner can create volunteer op' do
       user.can_create_volunteer_ops?(user.organisation).should be_true
+    end
+
+    it 'site admin can create volunteer op' do
+      admin = FactoryGirl.create :user, admin: true
+      admin.can_create_volunteer_ops?(other_org).should be_true
     end
   end
 
