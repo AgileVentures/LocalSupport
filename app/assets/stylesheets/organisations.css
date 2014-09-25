@@ -21,7 +21,9 @@
     background-color: #E0FDEF;
     width:50%;
     border-radius:2em;
+    text-align: center;
 }
+
 .borderless {
     border-top: none !important;
 }

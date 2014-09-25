@@ -3,7 +3,7 @@ class VolunteerOpsController < ApplicationController
   before_filter :authorize, :except => [:show, :index]
 
   def index
-    @volunteer_ops = VolunteerOp.all
+    @volunteer_ops = VolunteerOp.order_by_most_recent
     @organisations = @volunteer_ops.map { |op| op.organisation }
     @json = gmap4rails_with_popup_partial(@organisations, 'popup')
   end
