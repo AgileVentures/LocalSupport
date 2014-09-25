@@ -15,7 +15,7 @@ Feature: Org admin creating a volunteer work opportunity
       | friend@harrowcn.org.uk     | pppppppp |              | 2007-01-01 10:00:00 | false |
       | admin@friendly.example.org | pppppppp | Friendly     | 2007-01-01 10:00:00 | false |
       | admin@shy.example.org      | pppppppp | Shy          | 2007-01-01 10:00:00 | false |
-      | admin@harrowcn.org.uk      | pppppppp | Shy          | 2007-01-01 10:00:00 | true  |
+      | admin@harrowcn.org.uk      | pppppppp |              | 2007-01-01 10:00:00 | true  |
     And that the volunteer_ops_create flag is enabled
     And cookies are approved
 
@@ -61,6 +61,7 @@ Feature: Org admin creating a volunteer work opportunity
   Scenario: Admin users who don't own the org can create volunteer opportunities
     Given I am signed in as a admin
     And I visit the show page for the organisation named "Friendly"
+    Then show me the page
     Then I should see a link with text "Create a Volunteer Opportunity"
     And I click "Create a Volunteer Opportunity"
     Then I should be on the new volunteer opportunity page
