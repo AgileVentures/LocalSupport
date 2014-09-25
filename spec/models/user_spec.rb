@@ -242,6 +242,20 @@ describe User do
 
   end
 
+  describe '#can_create_volunteer_ops?' do
+    let(:user){FactoryGirl.create :user_stubbed_organisation}
+    let(:other_org) { FactoryGirl.create :organisation }
+    before { Gmaps4rails.stub(:geocode) }
+
+    it 'cannot create volunteer op' do
+      user.can_create_volunteer_ops?(other_org).should be_false
+    end
+
+    it 'can create volunteer op' do
+      user.can_create_volunteer_ops?(user.organisation).should be_true
+    end
+  end
+
   describe "#pending_admin?" do
     let(:user) { FactoryGirl.create :user_stubbed_organisation }
     let(:other_org) { FactoryGirl.create :organisation }
