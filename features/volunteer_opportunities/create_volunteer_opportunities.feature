@@ -58,10 +58,10 @@ Feature: Org admin creating a volunteer work opportunity
     And I visit the show page for the organisation named "Friendly"
     Then I should not see a link with text "Create a Volunteer Opportunity"
 
-  Scenario: Admin users who don't own the org cannot create volunteer opportunities
+  Scenario: Admin users who don't own the org can create volunteer opportunities
     Given I am signed in as a admin
     And I visit the show page for the organisation named "Friendly"
-    Then I should not see a link with text "Create a Volunteer Opportunity"
+    Then I should see a link with text "Create a Volunteer Opportunity"
 
   Scenario: Org-owners can see a Create Volunteer Opportunity button on their organisation show page when feature is enabled
     And I am signed in as a charity worker related to "Shy"
