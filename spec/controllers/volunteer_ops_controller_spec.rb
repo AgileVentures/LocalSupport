@@ -84,19 +84,19 @@ describe VolunteerOpsController do
     it 'assigns the requested volunteer_op as @volunteer_op' do
       controller.stub org_owner?: true
       VolunteerOp.should_receive(:new) { op }
-      get :new, {}
+      get :new, {:organisation_id => 2}
       assigns(:volunteer_op).should eq op
     end
 
     it 'non-org-owners denied' do
       controller.stub org_owner?: false
-      get :new, {}
+      get :new, {:organisation_id => 2}
       response.status.should eq 302
     end
   end
 
   describe 'POST create' do
-    let(:params) { {volunteer_op: {title: 'hard work', description: 'for the willing'}} }
+    let(:params) { {organisation_id: 5, volunteer_op: {title: 'hard work', description: 'for the willing'}} }
     before do
       user.stub(:organisation) { org }
       controller.stub current_user: user, org_owner?: true, admin?: false

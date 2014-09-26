@@ -1,4 +1,4 @@
-<%= form_for(@volunteer_op, url: submission_url ) do |f| %>
+<%= form_for(@volunteer_op, url: organisation_volunteer_ops_path(params[:organisation_id]) ) do |f| %>
   <% if @volunteer_op.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@volunteer_op.errors.count, "error") %> prohibited this volunteer_op from being saved:</h2>

@@ -20,6 +20,8 @@ class VolunteerOpsController < ApplicationController
   end
 
   def create
+    #params[:volunteer_op][:organisation_id] = params[:organisation_id]
+    #unless current_user.can_create_volunteer_ops? Organization.find_by_id params[:organisation_id]
     params[:volunteer_op][:organisation_id] = current_user.organisation.id
     @volunteer_op = VolunteerOp.new(params[:volunteer_op])
     if @volunteer_op.save
