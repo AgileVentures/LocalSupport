@@ -31,7 +31,7 @@ class OrganisationsController < ApplicationController
     @pending_admin = current_user.pending_admin? @organisation if current_user
     @editable = current_user.can_edit?(@organisation) if current_user
     @deletable = current_user.can_delete?(@organisation) if current_user
-    @can_create_volunteer_op = current_user.can_create_volunteer_ops?(@organisation) if current_user
+    @can_create_volunteer_op = current_user.belongs_to?(@organisation) if current_user
     @grabbable = current_user ? current_user.can_request_org_admin?(@organisation) : true
    # @next_path = current_user ? organisation_user_path(@organisation.id, current_user.id) : new_user_session_path
     @json = gmap4rails_with_popup_partial(@organisation,'popup')
