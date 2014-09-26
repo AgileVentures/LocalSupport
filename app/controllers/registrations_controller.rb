@@ -1,7 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
   def create
     if params[:user]
-      @pending_org_id = params[:user][:pending_organisation_id]
+      session[:pending_organisation_id] = params[:user][:pending_organisation_id]
     end
     super
   end

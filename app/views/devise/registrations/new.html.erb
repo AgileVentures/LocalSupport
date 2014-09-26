@@ -7,8 +7,8 @@
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
           <%= devise_error_messages! %>
 
-          <% if @pending_org_id %>
-            <input type="hidden" name="user[pending_organisation_id]" value = "<%= @pending_org_id %>">
+          <% if session[:pending_organisation_id] %>
+            <input type="hidden" name="user[pending_organisation_id]" value = "<%= session[:pending_organisation_id] %>">
           <% end %>
 
           <div><%= f.label :email %>
