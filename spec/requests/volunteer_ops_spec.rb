@@ -10,13 +10,13 @@ describe 'VolunteerOps', :helpers => :requests do
     it 'creates a new VolunteerOp' do
       login(org_owner)
       expect {
-        post volunteer_ops_path, params
+        post organisation_volunteer_ops_path(4), params
       }.to change(VolunteerOp, :count).by(1)
     end
 
     it 'the new VolunteerOp is associated with the organisation of the current user' do
       login(org_owner)
-      post volunteer_ops_path, params
+      post organisation_volunteer_ops_path(4), params
       op = VolunteerOp.last
       op.organisation.should eq org_owner.organisation
     end
@@ -24,7 +24,7 @@ describe 'VolunteerOps', :helpers => :requests do
     it 'does not work for non-org-owners' do
       login(non_org_owner)
       expect {
-        post volunteer_ops_path, params
+        post organisation_volunteer_ops_path(4), params
       }.to change(VolunteerOp, :count).by(0)
     end
   end
