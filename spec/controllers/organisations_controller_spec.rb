@@ -149,7 +149,7 @@ describe OrganisationsController do
       Organisation.stub(:find).with('37') { double_organisation }
       @user.stub(:can_edit?)
       @user.stub(:can_delete?)
-      @user.stub(:can_create_volunteer_ops?)
+      @user.stub(:belongs_to?)
       @user.stub(:can_request_org_admin?)
       controller.stub(:current_user).and_return(@user)
     end
@@ -214,13 +214,13 @@ describe OrganisationsController do
     describe 'can_create_volunteer_op flag' do
       context 'depends on can_create_volunteer_ops?' do
         it 'true' do
-          @user.should_receive(:can_create_volunteer_ops?) { true }
+          @user.should_receive(:belongs_to?) { true }
           get :show, :id => 37
           assigns(:can_create_volunteer_op).should be true
         end
 
         it 'false' do
-          @user.should_receive(:can_create_volunteer_ops?) { false }
+          @user.should_receive(:belongs_to?) { false }
           get :show, :id => 37
           assigns(:can_create_volunteer_op).should be false
         end
@@ -228,7 +228,7 @@ describe OrganisationsController do
 
       it 'will not be called when current user is nil' do
         controller.stub current_user: nil
-        @user.should_not_receive :can_create_volunteer_ops?
+        @user.should_not_receive :belongs_to?
         get :show, :id => 37
         assigns(:can_create_volunteer_op).should be nil
       end
