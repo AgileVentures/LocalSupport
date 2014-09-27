@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ::BatchInviteJob do
   let(:current_user) { FactoryGirl.create(:user, email: 'admin@example.com', admin: true) }
-  let(:org) { FactoryGirl.create :organization, email: 'YES@hello.com' }
+  let(:org) { FactoryGirl.create :organisation, email: 'YES@hello.com' }
   let(:params) do
     {invite_list: {org.id => org.email,
                    org.id+1 => org.email},
@@ -31,7 +31,7 @@ describe ::BatchInviteJob do
 
     it 'associations can be set' do
       subject
-      expect(user.organization_id).to eq org.id
+      expect(user.organisation_id).to eq org.id
     end
 
     it 'sends a custom email' do
@@ -41,7 +41,7 @@ describe ::BatchInviteJob do
       expect(email.reply_to).to eq ['support@harrowcn.org.uk']
       expect(email.to).to eq [user.email]
       expect(email.cc).to eq ['technical@harrowcn.org.uk']
-      expect(email.subject).to eq 'Invitation to Harrow Community Network'
+      expect(email.subject).to eq 'Advertise volunteer opportunities on Harrow Community Network'
     end
 
     it 'example response for invites with duplicates' do

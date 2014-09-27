@@ -37,12 +37,12 @@ describe ApplicationController, :helpers => :controllers do
 
   it '#after_sign_in_path_for' do
     user = make_current_user_nonadmin
-    user.stub :organization => nil
-
+    user.stub :organisation => nil
+    user.stub :pending_organisation_id
     controller.after_sign_in_path_for(user).should eq '/'
 
-    user.stub :organization => '1'
-    controller.after_sign_in_path_for(user).should eq '/organizations/1'
+    user.stub :organisation => '1'
+    controller.after_sign_in_path_for(user).should eq '/organisations/1'
 
     session[:previous_url] = 'i/was/here'
     controller.after_sign_in_path_for(user).should eq 'i/was/here'
@@ -50,12 +50,12 @@ describe ApplicationController, :helpers => :controllers do
 
   it '#after_accept_path_for' do
     user = make_current_user_nonadmin
-    user.stub :organization => nil
+    user.stub :organisation => nil
 
     controller.after_accept_path_for(user).should eq '/'
 
-    user.stub :organization => '1'
-    controller.after_accept_path_for(user).should eq '/organizations/1'
+    user.stub :organisation => '1'
+    controller.after_accept_path_for(user).should eq '/organisations/1'
   end
 
   describe 'allow_cookie_policy' do
@@ -136,7 +136,7 @@ end
 
 # all child controllers should implement the ApplicationController's
 # before_filter
-describe OrganizationsController do
+describe OrganisationsController do
   it 'assigns footer page links on a given request' do
     get :index
     expect(assigns(:footer_page_links)).not_to be nil

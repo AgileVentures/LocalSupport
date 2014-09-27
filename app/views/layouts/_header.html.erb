@@ -18,8 +18,8 @@
             <div class="nav-collapse collapse">
               <ul id="button-rack" class="nav nav-pills pull-right">
                 <% if feature_active? :volunteer_ops_list %>
-                    <li class="<%= active_if 'organizations' %>">
-                      <%= link_to "Organisations", organizations_path %>
+                    <li class="<%= active_if 'organisations' %>">
+                      <%= link_to "Organisations", organisations_path %>
                     </li>
                     <li class="<%= active_if 'volunteer_ops' %>">
                       <%= link_to "Volunteers", volunteer_ops_path %>
@@ -45,6 +45,9 @@
                                 <![endif]-->
                                 <%= f.password_field :password, :placeholder => "password" %>
                               </div>
+                              <% if @organisation %>
+                                  <%= f.hidden_field :organisation_id, :value => @organisation.id %>
+                              <% end %>
                               <% if devise_mapping.rememberable? -%>
                                   <div><%= f.check_box :remember_me %> <%= f.label :remember_me, :style => "display: inline;" %></div>
                               <% end -%>
@@ -80,7 +83,7 @@
                           <li class="dropdown" id="menuAdmin">
                             <a class="dropdown-toggle" href="#" data-toggle="dropdown">Admin</a>
                             <ul class="dropdown-menu">
-                              <li><%= link_to 'Organisations Without Users', organizations_report_path %></li>
+                              <li><%= link_to 'Organisations Without Users', organisations_report_path %></li>
                               <li><%= link_to 'All Users', users_report_path %></li>
                               <li><%= link_to 'Invited Users', invited_users_report_path %></li>
                             </ul>
