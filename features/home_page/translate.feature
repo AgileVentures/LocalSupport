@@ -11,7 +11,8 @@ Feature: Site language translation
   @javascript
   Scenario: Translate site language to French and back
     When I select language "French"
-    And I should see "Rechercher des organismes bénévoles et communautaires locales"
+    # brittle: tests break when translation is corrected
+    And I should see "Recherche pour les organismes bénévoles et communautaires locaux"
     And I should not see "Search for local voluntary and community organisations"
     When I select language "English"
     And I should see "Search for local voluntary and community organisations"
