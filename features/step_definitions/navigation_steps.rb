@@ -20,7 +20,6 @@ def paths(location)
       'all users' => users_report_path,
       'invited users' => invited_users_report_path,
       'volunteer opportunities' => volunteer_ops_path,
-#      'new volunteer opportunity' => new_volunteer_op_path,
       'new organisation' => new_organisation_path,
       'contributors' => contributors_path
   }[location]
