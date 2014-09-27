@@ -16,7 +16,6 @@ Given /^I update "(.*?)" description to be "(.*?)"$/ do |title, description|
   steps %Q{
     Given I visit the show page for the volunteer_op titled "#{title}"
     And I follow "Edit"
-    And show me the page
     And I edit the description to be "#{description}"
     And I press "Update a Volunteer Opportunity"
   }

@@ -60,7 +60,7 @@ class VolunteerOpsController < ApplicationController
   end
 
   def org_owner?
-    current_user.organisation.present? if current_user.present?
+    current_user.organisation.id.to_s == params[:organisation_id] if current_user.present? && current_user.organisation.present?
   end
 
   def gmap4rails_with_popup_partial(item, partial)

@@ -44,7 +44,7 @@ Feature: Org admin creating a volunteer work opportunity
     And I should see "Description can't be blank"
 
   Scenario: Signed in users who don't own the org cannot create volunteer opportunities on the sly
-    Given I am signed in as an non-admin
+    Given I am signed in as a charity worker related to "Friendly"
     And I visit the new volunteer op page for "Shy"
     Then I should see "You must be signed in as an organisation owner or site admin to perform this action!"
 

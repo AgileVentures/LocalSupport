@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+require 'debugger'
 describe VolunteerOpsController do
   it "should render template two column layout"  do
     get :index
@@ -247,10 +247,11 @@ describe VolunteerOpsController do
       end
 
       context 'when there is a current user present' do
-        let(:org) { double :organisation }
+        let(:org) { mock_model Organisation, :id => 5 }
         before { user.stub organisation: nil }
 
-        it 'otherwise depends on { current_user.organisation.present? }' do
+        it 'depends on { current_user.organisation.id == params[:organisation_id] }' do
+          controller.stub(:params){{organisation_id: "5" }}
           controller.instance_eval { org_owner? }.should be_false
           user.stub organisation: org
           controller.instance_eval { org_owner? }.should be_true
