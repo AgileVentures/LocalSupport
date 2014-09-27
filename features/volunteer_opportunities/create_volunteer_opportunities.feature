@@ -68,7 +68,6 @@ Feature: Org admin creating a volunteer work opportunity
     And I visit the new volunteer op page for "Friendly"
     And I submit an opportunity with title "Hard Work" and description "For no pay"
     Then I should be on the show page for the volunteer_op titled "Hard Work"
-    And show me the page
     And I should see "Hard Work"
     And I should see "For no pay"
     And I should see "Organisation: Friendly"
