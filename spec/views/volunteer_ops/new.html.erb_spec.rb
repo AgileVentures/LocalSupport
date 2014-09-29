@@ -10,7 +10,12 @@ describe "volunteer_ops/new" do
       :organisation => nil
     ).as_new_record)
     params[:organisation_id] = 4
-    #view.stub current_user: user
+  end
+
+  it 'uses a partial that needs local variables' do
+    url = organisation_volunteer_ops_path(params[:organisation_id])
+    render
+    view.should render_template(partial: '_form', locals: { submission_url: url })
   end
 
   it "renders new volunteer_op form" do
