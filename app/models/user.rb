@@ -17,11 +17,15 @@ class User < ActiveRecord::Base
   belongs_to :organisation
   belongs_to :pending_organisation, :class_name => 'Organisation', :foreign_key => 'pending_organisation_id'
 
+  # should we have a before_save here where we check if the pending_organization_id is going from
+  # nil to a value and then send the admin an email ...
+
   scope :invited_not_accepted,
     includes(:organisation).
     #where('users.organisation_id IS NOT NULL').
     where('users.invitation_sent_at IS NOT NULL').
     where('users.invitation_accepted_at IS NULL')
+  scope :admins, -> { where(admin: true) }
 
   def pending_admin? org
     return false if self.pending_organisation == nil
