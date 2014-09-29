@@ -1,3 +1,10 @@
+And(/^an email should be sent to "(.*?)" as notification of the request$/) do |email|
+  mails = ActionMailer::Base.deliveries
+  expect(mails).not_to be_empty
+  tos = mails.map {|m| m.to}
+  expect(tos).to include [email]
+end
+
 And /^I should receive a "(.*?)" email$/ do |arg1|
   @email = ActionMailer::Base.deliveries.last
   @email.subject.should include(arg1)

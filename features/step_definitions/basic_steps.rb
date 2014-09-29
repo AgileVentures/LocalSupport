@@ -283,6 +283,15 @@ Then(/^"(.*?)" should have email "(.*?)"$/) do |org, email|
   Organisation.find_by_name(org).email.should eq email
 end
 
+And /^I click "(.*)" on the "(.*)" page and stay there$/  do |link, org_name|
+  steps %Q{
+    And I visit the show page for the organisation named "#{org_name}"
+    And I click "#{link}"
+    Then I should be on the show page for the organisation named "#{org_name}"
+  }
+end
+
+
 Given /^"(.*)"'s request status for "(.*)" should be updated appropriately$/ do |email, org_name|
   steps %Q{
       And "#{email}"'s request for "#{org_name}" should be persisted
