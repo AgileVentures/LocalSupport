@@ -20,7 +20,7 @@ class VolunteerOpsController < ApplicationController
   end
 
   def create
-    params[:volunteer_op][:organisation_id] = current_user.organisation.id
+    params[:volunteer_op][:organisation_id] = params[:organisation_id]
     @volunteer_op = VolunteerOp.new(params[:volunteer_op])
     if @volunteer_op.save
       redirect_to @volunteer_op, notice: 'Volunteer op was successfully created.'
@@ -58,7 +58,7 @@ class VolunteerOpsController < ApplicationController
   end
 
   def org_owner?
-    current_user.organisation.present? if current_user.present?
+    current_user.organisation.id.to_s == params[:organisation_id] if current_user.present? && current_user.organisation.present?
   end
 
   def gmap4rails_with_popup_partial(item, partial)
