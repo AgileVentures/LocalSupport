@@ -57,17 +57,17 @@ Scenario: Check that login/register toggle works
   Given I click "Login"
   Then the "loginForm" should be visible
   And the "registerForm" should be not visible
-  And I should see "New organisation? Sign-up.."
+  And I should see "New organisation? Sign up"
   # click one way
   Given I click "toggle_link"
   Then the "loginForm" should be not visible
   And the "registerForm" should be visible
-  And I should see "Already a member? Login"
+  And I should see "Already a member? Log in"
   # then click back the other way
   Given I click "toggle_link"
   Then the "loginForm" should be visible
   And the "registerForm" should be not visible
-  And I should see "New organisation? Sign-up.."
+  And I should see "New organisation? Sign up"
 
 Scenario: Check class of flash notice  - error
   Given I sign in as "site_admin@example.com" with password "12345"
