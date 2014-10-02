@@ -1,3 +1,9 @@
+And(/^I submit a volunteer op "(.*?)", "(.*?)" on the "(.*?)" page and stay there$/) do |title, desc, org|
+  step "I visit the new volunteer op page for \"#{org}\""
+  step "I submit an opportunity with title \"#{title}\" and description \"#{desc}\""
+  step "I should be on the show page for the volunteer_op titled \"#{title}\""
+end
+
 And(/^I submit an opportunity with title "(.*?)" and description "(.*?)"$/) do |title, description|
   fill_in 'Title', :with => title
   fill_in 'Description', :with => description

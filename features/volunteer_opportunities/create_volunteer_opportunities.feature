@@ -19,21 +19,10 @@ Feature: Org admin creating a volunteer work opportunity
     And that the volunteer_ops_create flag is enabled
     And cookies are approved
 
-  Scenario: Org-owners can see a Create Volunteer Opportunity button on their organisation show page
+  Scenario: Org-admins can create a volunteer opportunity
     Given I am signed in as a charity worker related to "Friendly"
-    And I visit the show page for the organisation named "Friendly"
-    And I click "Create a Volunteer Opportunity"
-    Then I should be on the new volunteer op page for "Friendly"
-
-  Scenario: Org-owner creating a volunteer opportunity
-    Given I am signed in as a charity worker related to "Friendly"
-    And I visit the new volunteer op page for "Friendly"
-    And I should see "Create a new Volunteer Opportunity"
-    And I submit an opportunity with title "Hard Work" and description "For no pay"
-    Then I should be on the show page for the volunteer_op titled "Hard Work"
-    And I should see "Hard Work"
-    And I should see "For no pay"
-    And I should see "Organisation: Friendly"
+    And I submit a volunteer op "Hard Work", "For no pay" on the "Friendly" page and stay there
+    And I should see "Hard Work", "For no pay", "Organisation: Friendly"
 
   Scenario: Org-owner creating a volunteer opportunity with invalid data
     Given I am signed in as a charity worker related to "Friendly"
