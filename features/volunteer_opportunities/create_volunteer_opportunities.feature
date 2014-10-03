@@ -21,26 +21,26 @@ Feature: Org admin creating a volunteer work opportunity
 
   Scenario: Org-admins can create a volunteer opportunity
     Given I am signed in as a charity worker related to "Friendly"
-    And I submit a volunteer op "Hard Work", "For no pay" on the "Friendly" page and stay there
-    And I should see "Hard Work", "For no pay", "Organisation: Friendly"
+    And I submit a volunteer op "Hard Work", "For no pay" on the "Friendly" page
+    Then I should be on the show page for the volunteer_op titled "Hard Work"
+    And I should see "Hard Work", "For no pay" and "Organisation: Friendly"
 
-  Scenario: Org-owner creating a volunteer opportunity with invalid data
+  Scenario: Org-admins can create a volunteer opportunity but get warning with invalid data
     Given I am signed in as a charity worker related to "Friendly"
-    And I visit the new volunteer op page for "Friendly"
-    Then I should see "Create a new Volunteer Opportunity"
-    And I submit an opportunity with title "" and description ""
-    And I should see "Title can't be blank"
-    And I should see "Description can't be blank"
+    And I submit a volunteer op "", "" on the "Friendly" page
+    And I should see "Title can't be blank" and "Description can't be blank"
+
+  Scenario: Only org-owners can create volunteer opportunities
+# Tested that the API is restricted in the request spec
+    Given I visit the show page for the organisation named "Friendly"
+    Then I should not see a link with text "Create a Volunteer Opportunity"
 
   Scenario: Signed in users who don't own the org cannot create volunteer opportunities on the sly
     Given I am signed in as a charity worker related to "Friendly"
     And I visit the new volunteer op page for "Shy"
     Then I should see "You must be signed in as an organisation owner or site admin to perform this action!"
 
-  Scenario: Only org-owners can create volunteer opportunities
-    # Tested that the API is restricted in the request spec
-    Given I visit the show page for the organisation named "Friendly"
-    Then I should not see a link with text "Create a Volunteer Opportunity"
+
 
   Scenario: Signed in users who don't own the org cannot create volunteer opportunities
     Given I am signed in as a charity worker related to "Shy"

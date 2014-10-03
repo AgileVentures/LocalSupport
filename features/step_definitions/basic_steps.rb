@@ -231,10 +231,15 @@ Then /^I should( not)? see a new organisations link/ do |negate|
   expect(page).send(expectation_method, have_xpath("//a[@href='#{new_organisation_path}']"))
 end
 
-Then /^I should see (("[^"]*",?\s?)*)$/ do |text, ignore|
-  text.gsub!(/"/,'').split(', ').each do |item|
-    expect(page).to have_content item
-  end
+Then /^I should see "([^"]*)", "([^"]*)" and "([^"]*)"$/ do |text1, text2, text3|
+  expect(page).to have_content text1
+  expect(page).to have_content text2
+  expect(page).to have_content text3
+end
+
+Then /^I should see "([^"]*)" and "([^"]*)"$/ do |text1, text2|
+  expect(page).to have_content text1
+  expect(page).to have_content text2
 end
 
 Then /^I should( not)? see "((?:(?!before|").)+)"$/ do |negate, text|
