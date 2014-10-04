@@ -12,7 +12,7 @@ class RegistrationsController < Devise::RegistrationsController
         return organisation_path resource.pending_organisation_id 
       else
         admin_emails = User.admins.pluck(:email)
-        AdminMailer.new_user_waiting_for_approval(resource.email, admin_emails).deliver
+        AdminMailer.new_user_sign_up(resource.email, admin_emails).deliver
       end
       root_path
     end
