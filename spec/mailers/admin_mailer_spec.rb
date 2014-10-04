@@ -2,11 +2,16 @@ require 'spec_helper'
 
 describe AdminMailer do
 
-  context "new user awaiting admin status" do
+  # database cleaner not configured around context blocks
+  describe "new user awaiting admin status" do
+    before do
+      # skip geocoding by providing nil addr
+      FactoryGirl.create(:organisation, name: 'friendly', address: nil, postcode: nil)
+    end
     subject{AdminMailer.new_user_waiting_for_approval('friendly', 'admin@admin.org')}
 
     it{ expect{subject.deliver}.to change{ActionMailer::Base.deliveries.length}.by(1)}
-    its(:subject) { should == "There is a User Waiting for Admin Approval to 'friendly'" }
+    its(:subject) { should == "There is a user waiting for Admin approval to 'friendly'." }
     its(:to) { should == ['admin@admin.org'] }
     its(:from) { should == ['support@harrowcn.org.uk'] }
     its(:reply_to) { should == ['support@harrowcn.org.uk'] }
