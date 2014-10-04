@@ -8,4 +8,13 @@ class AdminMailer < ActionMailer::Base
          cc: "technical@harrowcn.org.uk",
          reply_to: "support@harrowcn.org.uk")
   end
+
+  def new_user_sign_up(user_email, admin_emails)
+    @user_email = user_email
+    mail(subject: "A new user has joined Harrow Community Network",
+         to: admin_emails ,
+         from: "support@harrowcn.org.uk",
+         cc: "technical@harrowcn.org.uk",
+         reply_to: "support@harrowcn.org.uk")
+  end
 end

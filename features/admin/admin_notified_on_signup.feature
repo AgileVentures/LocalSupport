@@ -14,4 +14,4 @@ Feature: Site admin notified of new signups
   Scenario: Email is sent when new user signs up
     Given I visit the sign up page
     When I sign up as "non-existent-user@example.com" with password "pppppppp" and password confirmation "pppppppp"
-    Then an email should be sent to "admin@harrowcn.com " as notification of the request
+    Then an email should be sent to "admin@harrowcn.com" as notification of the request
