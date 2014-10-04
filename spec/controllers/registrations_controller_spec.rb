@@ -14,7 +14,7 @@ describe RegistrationsController do
 
     it 'does email confirmation upon registration' do
       expect(ActionMailer::Base.deliveries).to_not be_empty
-      email = ActionMailer::Base.deliveries.last
+      email = ActionMailer::Base.deliveries[-2]
       email.subject.should include('Confirmation instructions')
     end
 
