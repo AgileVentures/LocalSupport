@@ -5,15 +5,11 @@ And(/^an email should be sent to "(.*?)" as notification of the request$/) do |e
   expect(tos).to include email
 end
 
-And /^I should receive a "(.*?)" email$/ do |arg1|
-  if arg1 == "Confirmation instructions"
-    @email = ActionMailer::Base.deliveries[-2]
-    ActionMailer::Base.deliveries.size.should eq 2
-  else
-    @email = ActionMailer::Base.deliveries.last
-    ActionMailer::Base.deliveries.size.should eq 1
-  end
-    @email.subject.should include(arg1)
+And /^I should receive a "(.*?)" email$/ do |subj|
+  mails = ActionMailer::Base.deliveries
+  expect(mails).not_to be_empty
+  subjects = mails.map(&:subject)
+  expect(subjects).to include subj
 end
 
 And /^I should not receive an email$/ do
