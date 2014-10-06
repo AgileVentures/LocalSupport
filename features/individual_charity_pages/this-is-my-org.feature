@@ -23,7 +23,7 @@ Feature: This is my organisation
     Then I should see "You have requested admin status for Helpful Folk"
     And I should not see a link or button "This is my organisation"
     And "admin@helpfolk.com"'s request for "Helpful Folk" should be persisted
-    And an email should be sent to "admin@localsupport.org" as notification of the request
+    And an email should be sent to "admin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
 
 # when capybara-webkit clicks TIMO, it needs to submit sign in form with javascript or
 # else ClickFailed error will occur due to overlapping elements
@@ -34,7 +34,7 @@ Feature: This is my organisation
     Then I should see "You have requested admin status for Helpful Folk"
     And I should not see a link or button "This is my organisation"
     And "admin@helpfolk.com"'s request for "Helpful Folk" should be persisted
-    And an email should be sent to "admin@localsupport.org" as notification of the request
+    And an email should be sent to "admin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
 
 # what we're not checking here is that the login box pops open with the right message
 # I think we cover that in jasmine tests - needed here too?
@@ -47,7 +47,7 @@ Feature: This is my organisation
     Then I should see "You have requested admin status for Helpful Folk"
     And I should not see a link or button "This is my organisation"
     And "admin@helpfolk.com"'s request for "Helpful Folk" should be persisted
-    And an email should be sent to "admin@localsupport.org" as notification of the request
+    And an email should be sent to "admin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
 
   @javascript
   Scenario: Unregistered User
@@ -61,7 +61,7 @@ Feature: This is my organisation
     And "normal_user@myorg.com"'s request for "Helpful Folk" should be persisted
     And I click on the confirmation link in the email to "normal_user@myorg.com"
     Then I should be on the show page for the organisation named "Helpful Folk"
-    And an email should be sent to "admin@localsupport.org" as notification of the request
+    And an email should be sent to "admin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
 
   @javascript
   Scenario: Unregistered User Who Fails Signin Once
@@ -77,7 +77,7 @@ Feature: This is my organisation
     And "newuser@myorg.com"'s request for "Helpful Folk" should be persisted
     And I click on the confirmation link in the email to "newuser@myorg.com"
     Then I should be on the show page for the organisation named "Helpful Folk"
-    And an email should be sent to "admin@localsupport.org" as notification of the request
+    And an email should be sent to "admin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
 
   Scenario: I have requested admin status but am not yet approved, I will see a notice only on the show page for the requested org
     Given I am signed in as a pending-admin of "Helpful Folk"
