@@ -12,15 +12,14 @@ before_script:
 - bundle exec rake db:test:prepare
 script:
 - bundle exec rake spec
-- bundle exec rake spec
-#- bundle exec rake cucumber
-#- USE_JASMINE_RAKE=true bundle exec rake jasmine:ci
-#deploy:
-#  provider: heroku
-#  api_key:
-#    secure: k4FCvNxFBbHzQORTljwBodH/1WXZxapcrGCvSuY9ibynj+/xvkVhdeYob5/O0QzMHO5o+Sm0MGrbF8bOIo8VXK6Hi7Zh9u/yczTBnMHk4EC4Joan8NIcQvNNC0hVj0q/J29oGqB1DUD7ZPKEgOOm8KFlqcQW1vcnjSzY2SBm2eA=
-#  app:
-#    develop: harrowcn-develop
-#    staging: harrowcn-staging
-#    master: harrowcn-production
-#  run: rake db:migrate
+- bundle exec rake cucumber
+- USE_JASMINE_RAKE=true bundle exec rake jasmine:ci
+deploy:
+  provider: heroku
+  api_key:
+    secure: k4FCvNxFBbHzQORTljwBodH/1WXZxapcrGCvSuY9ibynj+/xvkVhdeYob5/O0QzMHO5o+Sm0MGrbF8bOIo8VXK6Hi7Zh9u/yczTBnMHk4EC4Joan8NIcQvNNC0hVj0q/J29oGqB1DUD7ZPKEgOOm8KFlqcQW1vcnjSzY2SBm2eA=
+  app:
+    develop: harrowcn-develop
+    staging: harrowcn-staging
+    master: harrowcn-production
+  run: rake db:migrate
