@@ -51,6 +51,7 @@ Then /^I (visit|should be on) the new volunteer op page for "(.*?)"$/ do |mode, 
     else raise "unknown mode '#{mode}'"
   end
 end
+
 Then /^I (visit|should be on) the (edit|show) page for the (.*?) (named|titled) "(.*?)"$/ do |mode, action, object, schema, name|
   record = find_record_for(object, schema, name)
   url = url_for({

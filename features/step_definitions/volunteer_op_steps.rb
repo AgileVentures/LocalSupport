@@ -1,5 +1,7 @@
 And(/^I submit a volunteer op "(.*?)", "(.*?)" on the "(.*?)" page$/) do |title, desc, org|
-  step "I visit the new volunteer op page for \"#{org}\""
+  step "I visit the show page for the organisation named \"#{org}\""
+  click_link "Create a Volunteer Opportunity"
+  step "I should be on the new volunteer op page for \"#{org}\""
   step "I submit an opportunity with title \"#{title}\" and description \"#{desc}\""
 end
 
