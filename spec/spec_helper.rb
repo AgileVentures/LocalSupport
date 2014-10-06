@@ -37,9 +37,9 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-  # config.before(:suite) do
-  #   DatabaseCleaner.clean_with(:truncation)
-  # end
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
   #TODO: Is this too hackish to clear something that smells fixture like?  Move to
   #other testing framework?  See:
   #https://github.com/rspec/rspec-rails/issues/661
