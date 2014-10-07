@@ -1,11 +1,9 @@
-And(/^I submit a volunteer op "(.*?)", "(.*?)" on the "(.*?)" page$/) do |title, desc, org|
-  step "I visit the show page for the organisation named \"#{org}\""
+And(/^I submit a volunteer op "(.*?)", "(.*?)" on the "(.*?)" page$/) do |title, desc, org_name|
+  debugger
+  org = Organisation.find_by_name(org_name)
+  visit organisation_path org
   click_link "Create a Volunteer Opportunity"
-  step "I should be on the new volunteer op page for \"#{org}\""
-  step "I submit an opportunity with title \"#{title}\" and description \"#{desc}\""
-end
-
-And(/^I submit an opportunity with title "(.*?)" and description "(.*?)"$/) do |title, description|
+  expect(current_path).to eq new_organisation_volunteer_op_path org
   fill_in 'Title', :with => title
   fill_in 'Description', :with => description
   click_on 'Create a Volunteer Opportunity'
