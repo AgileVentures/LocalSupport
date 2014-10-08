@@ -34,5 +34,4 @@ Feature: As a member of the public
   Scenario: See map when editing my volunteer opportunity
     Given I am signed in as a charity worker related to "Cats Are Us"
     And I visit the edit page for the volunteer_op titled "Litter Box Scooper"
-    Then show me the page
     Then the map should show the opportunity Litter Box Scooper
