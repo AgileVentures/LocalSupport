@@ -14,8 +14,8 @@ describe RegistrationsController do
 
     it 'does email confirmation upon registration' do
       expect(ActionMailer::Base.deliveries).to_not be_empty
-      email = ActionMailer::Base.deliveries.last
-      email.subject.should include('Confirmation instructions')
+      subjects = ActionMailer::Base.deliveries.map(&:subject)
+      expect(subjects).to include 'Confirmation instructions'
     end
 
     it 'does not authenticate user' do
