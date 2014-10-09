@@ -3,10 +3,10 @@
 <% else %>
   <div>
   Organisation administrator emails:
-  <ol>
+  <ul>
   <% @organisation.users.each do |admin| %>
   <li><%= admin.email %></li>
   <% end %>
-  </ol>
+  </ul>
   </div>
 <% end %>

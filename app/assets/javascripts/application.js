@@ -10,6 +10,8 @@
 //= require_tree ./gmaps4rails
 //= require bootstrap-sortable
 //= require_tree ./global
+//= require bootstrap-switch
+//= require organisations
 
 $(function() {
     // invoke global functions here
