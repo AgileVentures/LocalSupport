@@ -11,7 +11,7 @@ describe VolunteerOpsController do
     end
 
     it "routes to #new" do
-      get("/volunteer_ops/new").should route_to("volunteer_ops#new")
+      get("/organisations/2/volunteer_ops/new").should route_to("volunteer_ops#new", organisation_id: "2")
     end
 
     it "routes to #show" do
@@ -23,7 +23,7 @@ describe VolunteerOpsController do
     end
 
     it "routes to #create" do
-      post("/volunteer_ops").should route_to("volunteer_ops#create")
+      post("/organisations/2/volunteer_ops").should route_to("volunteer_ops#create", organisation_id: "2")
     end
 
     it "routes to #update" do

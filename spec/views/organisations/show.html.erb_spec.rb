@@ -53,6 +53,7 @@ describe 'organisations/show.html.erb' do
   context "fields are in order" do
     let(:organisation) do
       stub_model Organisation, {
+          :id => '6',
           :name => 'Friendly',
           :address => '12 pinner rd',
           :description => 'lovely',
@@ -151,7 +152,7 @@ describe 'organisations/show.html.erb' do
         assign(:grabbable, true)
         view.stub(:current_user).and_return(user)
         render
-        rendered.should have_link 'This is my organisation', :href => user_report_path(organisation_id: organisation.id, id: user.id)
+        rendered.should have_link 'This is my organisation', :href => user_path(pending_organisation_id: organisation.id, id: user.id)
         #TODO should check hidden value for put
       end
       it 'does not render grab button if grabbable false' do
@@ -187,13 +188,13 @@ describe 'organisations/show.html.erb' do
       view.stub(:feature_active?).with(:volunteer_ops_create).and_return(true)
       assign(:can_create_volunteer_op, true)
       render
-      rendered.should have_link 'Create a Volunteer Opportunity', :href => new_volunteer_op_path
+      rendered.should have_link 'Create a Volunteer Opportunity', :href => new_organisation_volunteer_op_path(organisation)
     end
 
     it 'does not shows when belongs_to is false' do
       assign(:can_create_volunteer_op, false)
       render
-      rendered.should_not have_link 'Create a Volunteer Opportunity', :href => new_volunteer_op_path
+      rendered.should_not have_link 'Create a Volunteer Opportunity', :href => new_organisation_volunteer_op_path(organisation)
     end
 
     it 'is shown when feature is active' do
@@ -202,7 +203,7 @@ describe 'organisations/show.html.erb' do
         with(:volunteer_ops_create).and_return(true)
       render
       expect(rendered).to have_link \
-        'Create a Volunteer Opportunity', :href => new_volunteer_op_path      
+        'Create a Volunteer Opportunity', :href => new_organisation_volunteer_op_path(organisation)      
     end
 
     it 'is not visible when feature is inactive' do
@@ -211,7 +212,7 @@ describe 'organisations/show.html.erb' do
         with(:volunteer_ops_create).and_return(false)
       render
       expect(rendered).not_to have_link \
-        'Create a Volunteer Opportunity', :href => new_volunteer_op_path
+        'Create a Volunteer Opportunity', :href => new_organisation_volunteer_op_path(organisation)
     end
 
   end

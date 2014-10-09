@@ -1,7 +1,5 @@
 LocalSupport::Application.routes.draw do
 
-  resources :volunteer_ops
-
   devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}
 
   get 'contributors' => 'contributors#show'
@@ -15,7 +13,10 @@ LocalSupport::Application.routes.draw do
   get '/user_reports/invited' => 'user_reports#invited', as: :invited_users_report
 
   resources :pages
-  resources :organisations
+  resources :volunteer_ops, :only => [:index, :edit, :show, :update, :destroy]
+  resources :organisations do
+    resources :volunteer_ops, :only => [:new, :create]
+  end
   resources :users
 
   # so that static pages are linked directly instead of via /pages/:id

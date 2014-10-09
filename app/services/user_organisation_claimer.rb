@@ -26,16 +26,16 @@ class UserOrganisationClaimer
     end
   end
 
+  def error_message_if_not_admin_or_not(organisation_id)
+    if !is_current_user_admin? && !organisation_id
+      listener.update_failure
+    end
+  end
+
   def promote_user_if_admin_and_not(organisation_id)
     if is_current_user_admin? && !organisation_id
       user.promote_to_org_admin
       listener.update_message_promoting(user)
-    end
-  end
-
-  def error_message_if_not_admin_or_not(organisation_id)
-    if !is_current_user_admin? && !organisation_id
-      listener.update_failure
     end
   end
 end

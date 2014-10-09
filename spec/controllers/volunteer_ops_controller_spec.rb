@@ -1,5 +1,4 @@
 require 'spec_helper'
-
 describe VolunteerOpsController do
   it "should render template two column layout"  do
     get :index
@@ -84,19 +83,19 @@ describe VolunteerOpsController do
     it 'assigns the requested volunteer_op as @volunteer_op' do
       controller.stub org_owner?: true
       VolunteerOp.should_receive(:new) { op }
-      get :new, {}
+      get :new, {:organisation_id => 2}
       assigns(:volunteer_op).should eq op
     end
 
     it 'non-org-owners denied' do
       controller.stub org_owner?: false
-      get :new, {}
+      get :new, {:organisation_id => 2}
       response.status.should eq 302
     end
   end
 
   describe 'POST create' do
-    let(:params) { {volunteer_op: {title: 'hard work', description: 'for the willing'}} }
+    let(:params) { {organisation_id: 5, volunteer_op: {title: 'hard work', description: 'for the willing'}} }
     before do
       user.stub(:organisation) { org }
       controller.stub current_user: user, org_owner?: true, admin?: false
@@ -109,9 +108,8 @@ describe VolunteerOpsController do
       assigns(:volunteer_op).should eq op
     end
 
-    it 'associates the new opportunity with the organisation of the current user' do
-      controller.current_user.should_receive(:organisation) { org }
-      VolunteerOp.should_receive(:new).with(hash_including("organisation_id" => "1"))
+    it 'associates the new opportunity with the organisation' do
+      VolunteerOp.should_receive(:new).with(hash_including("organisation_id" => "5"))
       post :create, params
     end
 
@@ -247,10 +245,11 @@ describe VolunteerOpsController do
       end
 
       context 'when there is a current user present' do
-        let(:org) { double :organisation }
+        let(:org) { mock_model Organisation, :id => 5 }
         before { user.stub organisation: nil }
 
-        it 'otherwise depends on { current_user.organisation.present? }' do
+        it 'depends on { current_user.organisation.id == params[:organisation_id] }' do
+          controller.stub(:params){{organisation_id: "5" }}
           controller.instance_eval { org_owner? }.should be_false
           user.stub organisation: org
           controller.instance_eval { org_owner? }.should be_true

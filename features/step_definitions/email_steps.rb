@@ -1,3 +1,11 @@
+And(/^an email should be sent to "(.*?)" as notification of the request for admin status of "(.*?)"$/) do |email, org_name|
+  message = "There is a User Waiting for Admin Approval to '#{org_name}'"
+  mails = ActionMailer::Base.deliveries.select{|m| m.to.include? email}
+  expect(mails).not_to be_empty
+  bodys = mails.map{|m| m.body}.select{|body| body.include? message }
+  expect(bodys).not_to be_empty
+end
+
 And /^I should receive a "(.*?)" email$/ do |arg1|
   @email = ActionMailer::Base.deliveries.last
   @email.subject.should include(arg1)

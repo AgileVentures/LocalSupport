@@ -20,7 +20,6 @@ def paths(location)
       'all users' => users_report_path,
       'invited users' => invited_users_report_path,
       'volunteer opportunities' => volunteer_ops_path,
-      'new volunteer opportunity' => new_volunteer_op_path,
       'new organisation' => new_organisation_path,
       'contributors' => contributors_path
   }[location]
@@ -43,6 +42,15 @@ def find_record_for(object, schema, name)
   real_object.where(schema => name).first
 end
 
+Then /^I (visit|should be on) the new volunteer op page for "(.*?)"$/ do |mode, name| 
+  org = Organisation.find_by_name(name)
+  url = new_organisation_volunteer_op_path(org)
+  case mode
+    when 'visit' then visit url
+    when 'should be on' then current_path.should eq url
+    else raise "unknown mode '#{mode}'"
+  end
+end
 Then /^I (visit|should be on) the (edit|show) page for the (.*?) (named|titled) "(.*?)"$/ do |mode, action, object, schema, name|
   record = find_record_for(object, schema, name)
   url = url_for({
