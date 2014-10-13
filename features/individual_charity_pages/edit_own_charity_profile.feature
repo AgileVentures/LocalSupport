@@ -134,7 +134,7 @@ Examples:
 Scenario Outline: Appropriate categories are checked/unchecked by default
   Given I am signed in as a charity worker related to "Friendly"
   And I visit the edit page for the organisation named "Friendly"
-  Then <category> should be <status>
+  Then the category named <category> should be <status>
 Examples:
   | category          | status       |
   | Health            | checked      |
