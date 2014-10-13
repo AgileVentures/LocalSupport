@@ -9,6 +9,9 @@ Feature: As a member of the public
       | name                      | description          | address        | postcode | website       |
       | Cats Are Us               | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
       | Indian Elders Association | Care for the elderly | 64 pinner road | HA1 4HA  | http://b.com/ |
+    Given the following users are registered:
+      | email                         | password | organisation | confirmed_at         |
+      | registered_user-1@example.com | pppppppp | Cats Are Us  | 2007-01-01  10:00:00 |
     Given the following volunteer opportunities exist:
       | title              | description                     | organisation              |
       | Litter Box Scooper | Assist with feline sanitation   | Cats Are Us               |
@@ -27,3 +30,8 @@ Feature: As a member of the public
       | name               |
       | Litter Box Scooper |
       | Office Support     |
+ 
+  Scenario: See map when editing my volunteer opportunity
+    Given I am signed in as a charity worker related to "Cats Are Us"
+    And I visit the edit page for the volunteer_op titled "Litter Box Scooper"
+    Then the map should show the opportunity Litter Box Scooper

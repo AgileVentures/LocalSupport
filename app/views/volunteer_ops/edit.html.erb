@@ -1,2 +1,2 @@
-<h3>Update a Volunteer Opportunity</h3>
 <%= render partial: 'form', locals: {submission_url: volunteer_op_path(@volunteer_op.id)} %>
+<% render partial: 'shared/map_scripts', locals: {json: @json} %>
