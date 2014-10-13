@@ -76,8 +76,8 @@ class OrganisationsController < ApplicationController
   def update
     @organisation = Organisation.find(params[:id])
     params[:organisation][:admin_email_to_add] = params[:organisation_admin_email_to_add] if params[:organisation]
-    return false unless user_can_edit? @organisationa
-    if params[:organisation][:catagory_ids]
+    return false unless user_can_edit? @organisation
+    if params[:organisation][:category_ids]
       cat_ids = params[:organisation][:category_ids].reject{|s| s.blank?}
       @organisation.categories = cat_ids.map{|id| Category.find_by_id id}
       @organisation.save!
