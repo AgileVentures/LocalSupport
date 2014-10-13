@@ -32,6 +32,7 @@ class VolunteerOpsController < ApplicationController
   def edit
     @volunteer_op = VolunteerOp.find(params[:id])
     @organisation = @volunteer_op.organisation
+    @json = gmap4rails_with_popup_partial(@organisation, 'popup')
   end
 
   def update

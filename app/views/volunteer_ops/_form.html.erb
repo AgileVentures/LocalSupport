@@ -1,25 +1,23 @@
 <%= form_for(@volunteer_op, url: submission_url ) do |f| %>
   <% if @volunteer_op.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@volunteer_op.errors.count, "error") %> prohibited this volunteer_op from being saved:</h2>
-
+    <div class= "text-error", id="error_explanation">
+      <%= pluralize(@volunteer_op.errors.count, "error") %> prohibited this volunteer_op from being saved:
       <ul>
-      <% @volunteer_op.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @volunteer_op.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
-  <% end %>
-
+  <% end %> 
   <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.label :title, :style => "margin-top: 16px;" %>
+    <%= f.text_field :title, :class => "wide_form" %>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.label :description , :style => "margin-top: 16px;" %>
+    <%= f.text_area :description, :class => "wide_form" %>
   </div>
-  <div class="form-actions">
+  <div class="actions" style="margin-top: 16px;">
     <%= f.submit button_text(@volunteer_op), class: 'btn btn-primary' %>
   </div>
 <% end %>

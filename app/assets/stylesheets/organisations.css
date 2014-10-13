@@ -1,43 +1,9 @@
-#floating_div {
-    text-align: center;
-    z-index: 100;
-    position: relative;
-    left: 30%;
-    width: 200px;
-    padding: 10px;
-    background: #000;
-    opacity: 0.8;
-    color: #FFF;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-}
-.org_form {
-    width: 95%;
-    margin-bottom: 0 !important;
-}
 .org-info-msg-1 {
     color: rgba(0, 0, 0, 0.7);
     background-color: #E0FDEF;
     width:50%;
     border-radius:2em;
     text-align: center;
-}
-
-.borderless {
-    border-top: none !important;
-}
-input::-webkit-input-placeholder {
-    color: rgba(0,5,143,.5);
-}
-input::-moz-placeholder {
-  color: rgba(0,5,143,.5);
-}
-input:-moz-placeholder {   /* Older versions of Firefox */
-  color: rgba(0,5,143,.5);
-}
-input:-ms-input-placeholder { 
-  color: rgba(0,5,143,.5);
 }
 .org_h3 {
   margin: 10px 0px;
@@ -47,13 +13,4 @@ input:-ms-input-placeholder {
   line-height: 20px;
   color: inherit;
   text-rendering: optimizelegibility;
-}
-div#container textarea {
-  min-width: 270px;
-  width: 270px;
-  height: 22px;
-  line-height: 24px;
-  min-height: 22px;
-  overflow-y: hidden; /* fixes scrollbar flash - kudos to @brettjonesdev */
-  padding-top: 1.1em; /* fixes text jump on Enter keypress */
 }
