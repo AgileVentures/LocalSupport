@@ -342,7 +342,6 @@ Then(/^"(.*?)" is a charity admin of "(.*?)"$/) do |user_email, org_name|
 end
 
 And(/^I (un)?check "([^"]*)"$/) do |negate, css|
-  debugger
   box_state = negate ? :uncheck : :check
   page.send(box_state, css)
 end
