@@ -89,7 +89,7 @@
       </tbody>
     </table>
     <h5>Edit categories</h5>
-    <div style="height:10em;width:60%;border:1px solid #ccc;overflow:auto;padding-left:2px;">
+    <div id = "categories_scroll"style="height:10em;width:60%;border:1px solid #ccc;overflow:auto;padding-left:2px;">
     <div><strong> <em>What you do</em></strong> </div>
     <% for category in Category.where("charity_commission_id < 200").order(:name)  %>  
       <div>  

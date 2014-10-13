@@ -147,6 +147,13 @@ Examples:
   | Teach them things | unchecked    |
   | Give them things  | unchecked    |
 
-Scenario: Successfully add and remove an organisation's categories
+Scenario Outline: Successfully add and remove an organisation's categories
   Given I am signed in as a charity worker related to "Friendly"
   And I visit the edit page for the organisation named "Friendly"
+  Then I <action> the category "<category>"
+  And I press "Update Organisation"
+  Then I should <visibility> "<category>"
+  Examples: 
+  | category      | action  | visibility |
+  | Health        | uncheck | not see    |
+  | Animal welfare| check   | see        | 
