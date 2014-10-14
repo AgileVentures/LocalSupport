@@ -11,17 +11,16 @@ def paths(location)
       'home' => root_path,
       'sign up' => new_user_registration_path,
       'sign in' => new_user_session_path,
-      'organisations index' => organizations_path,
-      'new organisation' => new_organization_path,
+      'organisations index' => organisations_path,
+      'new organisation' => new_organisation_path,
       'contributors' => contributors_path,
       'password reset' => edit_user_password_path,
       'invitation' => accept_user_invitation_path,
-      'organisations without users' => organizations_report_path,
+      'organisations without users' => organisations_report_path,
       'all users' => users_report_path,
       'invited users' => invited_users_report_path,
       'volunteer opportunities' => volunteer_ops_path,
-      'new volunteer opportunity' => new_volunteer_op_path,
-      'new organisation' => new_organization_path,
+      'new organisation' => new_organisation_path,
       'contributors' => contributors_path
   }[location]
 end
@@ -43,6 +42,15 @@ def find_record_for(object, schema, name)
   real_object.where(schema => name).first
 end
 
+Then /^I (visit|should be on) the new volunteer op page for "(.*?)"$/ do |mode, name| 
+  org = Organisation.find_by_name(name)
+  url = new_organisation_volunteer_op_path(org)
+  case mode
+    when 'visit' then visit url
+    when 'should be on' then current_path.should eq url
+    else raise "unknown mode '#{mode}'"
+  end
+end
 Then /^I (visit|should be on) the (edit|show) page for the (.*?) (named|titled) "(.*?)"$/ do |mode, action, object, schema, name|
   record = find_record_for(object, schema, name)
   url = url_for({
@@ -59,7 +67,7 @@ Then /^I (visit|should be on) the (edit|show) page for the (.*?) (named|titled) 
 end
 
 And(/^the page should be titled "(.*?)"$/) do |title|
-  page.should have_selector("title", title)
+  page.should have_title(title)
 end
 
 And (/^I should see a full width layout$/) do
@@ -151,6 +159,9 @@ Then(/^the page includes email hyperlink "([^"]*)"$/) do  |link|
   page.should have_link link
 end
 
+Then(/^I should see "([^"]*)" in the flash error$/) do |message|
+  page.should have_css('div#flash_error', :text => message)
+end
 
 Then(/^I should see "([^"]*)" in the flash$/) do |message|
   page.should have_css('div#flash_success', :text => message)

@@ -1,6 +1,8 @@
 class VolunteerOp < ActiveRecord::Base
-  validates :title, :description, :organization_id, presence: true
-  belongs_to :organization
+  validates :title, :description, :organisation_id, presence: true
+  belongs_to :organisation
 
-  attr_accessible :description, :title, :organization_id
+  scope :order_by_most_recent, order('updated_at DESC')
+
+  attr_accessible :description, :title, :organisation_id
 end

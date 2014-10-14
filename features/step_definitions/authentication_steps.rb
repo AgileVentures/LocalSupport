@@ -1,10 +1,10 @@
-Given /^I am signed in as a charity worker (un)?related to "(.*?)"$/ do |negate, organization_name|
-  organization = Organization.find_by_name(organization_name)
+Given /^I am signed in as a charity worker (un)?related to "(.*?)"$/ do |negate, organisation_name|
+  organisation = Organisation.find_by_name(organisation_name)
   if negate
     users = User.find_all_by_admin(false)
-    user = users.find { |user| user.organization != organization }
+    user = users.find { |user| user.organisation != organisation }
   else
-    user = organization.users.find { |user| !user.admin? }
+    user = organisation.users.find { |user| !user.admin? }
   end
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
@@ -14,12 +14,27 @@ Given /^I am signed in as an? (non-)?admin$/ do |negate|
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
 
-Given /^I sign up as "(.*?)" with password "(.*?)" and password confirmation "(.*?)"$/ do |email, password, password_confirmation|
-  within('.dropdown-menu') do
-    fill_in "signup_email", :with => email
-    fill_in "signup_password", :with => password
-    fill_in "signup_password_confirmation", :with => password_confirmation
-    click_button "Sign up"
+Given /^I am signed in as a pending-admin of "(.*?)"$/ do |org_name|
+  org = Organisation.find_by_name org_name
+  user = User.find_by_pending_organisation_id(org.id)
+  page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
+end
+
+Given /^I sign up as "(.*?)" with password "(.*?)" and password confirmation "(.*?)"( on the legacy sign up page)?$/ do |email, password, password_confirmation, legacy|
+  if legacy
+    within('#new_user') do
+      fill_in "user_email", :with => email
+      fill_in "user_password", :with => password
+      fill_in "user_password_confirmation", :with => password_confirmation
+      click_button "Sign up"
+    end
+  else
+    within('.dropdown-menu') do
+      fill_in "signup_email", :with => email
+      fill_in "signup_password", :with => password
+      fill_in "signup_password_confirmation", :with => password_confirmation
+      click_button "Sign up"
+    end
   end
 end
 
@@ -46,10 +61,14 @@ When /^I sign out$/ do
   click_link 'Log out'
 end
 
-Given /^I sign in as "(.*?)" with password "(.*?)"$/ do |email, password|
+Given /^I sign in as "(.*?)" with password "(.*?)"( with javascript)?$/ do |email, password, js|
   fill_in "user_email", :with => email
   fill_in "user_password", :with => password
-  click_link_or_button "Sign in"
+  if js
+    page.find("#signin").trigger("click")
+  else
+    click_link_or_button "Sign in"
+  end
 end
 
 When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |email, password|

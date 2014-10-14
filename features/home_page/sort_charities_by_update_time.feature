@@ -1,12 +1,12 @@
-Feature: Order organizations by most recently updated
+Feature: Order organisations by most recently updated
   As any user
   So that I can see which charities have been updated most recently
   I want to be able to sort charities by update time
   TTracker story ID: https://www.pivotaltracker.com/story/show/50082619
 
-Background: organizations have been added to database
+Background: organisations have been added to database
   
-  Given the following organizations exist:
+  Given the following organisations exist:
   | name                            | updated_at            | address        |
   | Harrow Bereavement Counselling  | "2013-01-23 15:54:34" | 34 pinner road |
   | Harrow Elders Association       | "2013-02-23 15:54:34" | 64 pinner road |

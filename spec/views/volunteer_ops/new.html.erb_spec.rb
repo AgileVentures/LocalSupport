@@ -1,26 +1,26 @@
 require 'spec_helper'
 
 describe "volunteer_ops/new" do
-  let (:organization) { double :organization, id: 3 }
-  let (:user) { double :user, organization: organization } 
+  let (:organisation) { double :organisation, id: 3 }
+  let (:user) { double :user, organisation: organisation } 
   before(:each) do
     assign(:volunteer_op, stub_model(VolunteerOp,
       :title => "MyString",
       :description => "MyText",
-      :organization => nil
+      :organisation => nil
     ).as_new_record)
-    view.stub current_user: user
+    params[:organisation_id] = 4
   end
 
   it 'uses a partial that needs local variables' do
-    url = volunteer_ops_path(org_id: view.current_user.organization.id)
+    url = organisation_volunteer_ops_path(params[:organisation_id])
     render
     view.should render_template(partial: '_form', locals: { submission_url: url })
   end
 
   it "renders new volunteer_op form" do
     render
-    rendered.should have_selector("form", :action => volunteer_ops_path(org_id: view.current_user.organization.id), :method => "post") do |form|
+    rendered.should have_selector("form", :action => organisation_volunteer_ops_path(organisation_id: 4), :method => "post") do |form|
       form.should have_selector("input#volunteer_op_title", :name => "volunteer_op[title]")
       form.should have_selector("textarea#volunteer_op_description", :name => "volunteer_op[description]")
     end

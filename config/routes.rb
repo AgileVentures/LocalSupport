@@ -1,13 +1,11 @@
 LocalSupport::Application.routes.draw do
 
-  resources :volunteer_ops
-
-  devise_for :users
+  devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}
 
   get 'contributors' => 'contributors#show'
-  match 'organizations/search' => 'organizations#search'
+  match 'organisations/search' => 'organisations#search'
 
-  get '/organization_reports/without_users' => 'organization_reports#without_users_index', as: :organizations_report
+  get '/organisation_reports/without_users' => 'organisation_reports#without_users_index', as: :organisations_report
   post '/invitations' => 'invitations#create', as: :invitations
 
   get '/user_reports/all' => 'user_reports#index', as: :users_report
@@ -15,7 +13,11 @@ LocalSupport::Application.routes.draw do
   get '/user_reports/invited' => 'user_reports#invited', as: :invited_users_report
 
   resources :pages
-  resources :organizations
+  resources :volunteer_ops, :only => [:index, :edit, :show, :update, :destroy]
+  resources :organisations do
+    resources :volunteer_ops, :only => [:new, :create]
+  end
+  resources :users
 
   # so that static pages are linked directly instead of via /pages/:id
   get ':id', to: 'pages#show', as: :page
@@ -73,7 +75,7 @@ LocalSupport::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'organizations#index'
+  root :to => 'organisations#index'
 
   # See how all your routes lay out with "rake routes"
 

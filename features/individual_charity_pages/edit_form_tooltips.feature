@@ -6,18 +6,18 @@ Feature:  Tool tip instructions for fields on edit form
   Tracker story ID: https://www.pivotaltracker.com/story/show/55198634
 
   Background:
-    Given the following organizations exist:
+    Given the following organisations exist:
       | name                            | description                      | address        | postcode | website       |
       | Harrow Bereavement Counselling  | Harrow Bereavement Counselling   | 34 pinner road | HA1 4HZ  | http://a.com/ |
 
     Given the following users are registered:
-      | email                         | password | organization                    | confirmed_at |
+      | email                         | password | organisation                    | confirmed_at |
       | registered_user-3@example.com | pppppppp | Harrow Bereavement Counselling  | 2007-01-01  10:00:00 |
     And cookies are approved
 
-  Scenario: Display tooltip for each label on the edit form
+  Scenario: Display tooltip for each field on the edit form
     Given I am signed in as a charity worker related to "Harrow Bereavement Counselling"
-    And I visit the edit page for the organization named "Harrow Bereavement Counselling"
+    And I visit the edit page for the organisation named "Harrow Bereavement Counselling"
     Then the following tooltips should exist: 
       | label                                                |  tooltip        |
       | Address                                              |  Enter a complete address  |
@@ -30,9 +30,12 @@ Feature:  Tool tip instructions for fields on edit form
       | Telephone                                            |  Make sure phone number is correct  |
       | Donation                                             |  Please enter a website here either to the fundraising page on your website or to an online donation site.  |
       
-    And the following checkbox tooltips should exist: 
+  Scenario: Display tooltip for each checkbox on the edit form
+    Given I am signed in as a charity worker related to "Harrow Bereavement Counselling"
+    And I visit the edit page for the organisation named "Harrow Bereavement Counselling"
+    Then the following tooltips should exist: 
     | label                                                |  tooltip        |
-    | Email                                                |  To make your email address visible to the public check this box |
-    | Address                                              |  To make your full address visible to the public check this box |
-    | Telephone                                            |  To make your telephone number visible to the public check this box |
+    | Email                                                |  Toggle to change the visibility of your email address    |
+    | Address                                              |  Toggle to change the visibility of your telephone number |
+    | Telephone                                            |  Toggle to change the visibility of your address          |
 

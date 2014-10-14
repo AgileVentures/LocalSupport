@@ -7,6 +7,7 @@
  *= require_tree .
  *= require font-awesome
  *= require bootstrap-sortable
+ *= require bootstrap-switch
 */
 
 body, html {
@@ -225,4 +226,17 @@ label.control-label#page_link_visible {
 }
 input#page_link_visible {
     margin: 0;
+}
+#loginForm{
+    margin-bottom: 0px;
+}
+#loginForm .in{
+     margin-bottom: 20px;
+}
+#remember_me {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#remember_me > label{
+    padding-left: 2px;
 }

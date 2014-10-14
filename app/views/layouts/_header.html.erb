@@ -18,8 +18,8 @@
             <div class="nav-collapse collapse">
               <ul id="button-rack" class="nav nav-pills pull-right">
                 <% if feature_active? :volunteer_ops_list %>
-                    <li class="<%= active_if 'organizations' %>">
-                      <%= link_to "Organisations", organizations_path %>
+                    <li class="<%= active_if 'organisations' %>">
+                      <%= link_to "Organisations", organisations_path %>
                     </li>
                     <li class="<%= active_if 'volunteer_ops' %>">
                       <%= link_to "Volunteers", volunteer_ops_path %>
@@ -45,17 +45,18 @@
                                 <![endif]-->
                                 <%= f.password_field :password, :placeholder => "password" %>
                               </div>
+                              <% if @organisation %>
+                                  <%= f.hidden_field :organisation_id, :value => @organisation.id %>
+                              <% end %>
                               <% if devise_mapping.rememberable? -%>
-                                  <div><%= f.check_box :remember_me %> <%= f.label :remember_me, :style => "display: inline;" %></div>
+                                  <div id = "remember_me"><%= f.check_box :remember_me %> <%= f.label :remember_me, class: "checkbox inline" %></div>
                               <% end -%>
                               <div style="display: inline;"><%= f.submit "Sign in", :id => 'signin', :class => "btn btn-primary" %></div>
                               <%= link_to "Forgot your password?", new_password_path(resource_name) %>
                           <% end %>
-                          <form>
-                            <%= link_to('New organisation? Sign-up..', '#', :id => 'toggle_link', :title => 'Click this link to Sign Up for an account') %>
-                          </form>
                           <div id="register">
                             <%= form_for(resource, :class => "collapse", :html => {:id => "registerForm"}, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+                                <label>Sign up:</label>
                                 <%= devise_error_messages! %>
                                 <!--[if lt IE 10]>
                                 <label for="user_password">Enter email</label>
@@ -69,9 +70,12 @@
                                 <label for="user_password">Confirm password</label>
                                 <![endif]-->
                                 <%= f.password_field :password_confirmation, :id => 'signup_password_confirmation', :placeholder => 'confirm password' %>
-                                <div><%= f.submit "Sign up", :id => 'signup', :class => "btn btn-primary" %></div>
+                                <div style="display: inline;"><%= f.submit "Sign up", :id => 'signup', :class => "btn btn-primary" %></div>
                             <% end %>
                           </div>
+                          <form>
+                            <%= link_to('New organisation? Sign up', '#', :id => 'toggle_link', :title => 'Click this link to Sign Up for an account') %>
+                          </form>
                         </div>
                       </div>
                     </li>
@@ -79,8 +83,8 @@
                       <% if current_user.admin? %>
                           <li class="dropdown" id="menuAdmin">
                             <a class="dropdown-toggle" href="#" data-toggle="dropdown">Admin</a>
-                            <ul class="dropdown-menu">
-                              <li><%= link_to 'Organisations Without Users', organizations_report_path %></li>
+                            <ul class="dropdown-menu" >
+                              <li><%= link_to 'Organisations Without Users', organisations_report_path %></li>
                               <li><%= link_to 'All Users', users_report_path %></li>
                               <li><%= link_to 'Invited Users', invited_users_report_path %></li>
                             </ul>
@@ -118,11 +122,11 @@
         $collapse1.collapse('toggle');
         $collapse2.collapse('toggle');
         // Change the link text
-        if ($link.text() == 'New organisation? Sign-up..') {
-            $link.text('Already a member? Login');
+        if ($link.text() == 'New organisation? Sign up') {
+            $link.text('Already a member? Log in');
         }
         else {
-            $link.text('New organisation? Sign-up..');
+            $link.text('New organisation? Sign up');
         }
     });
 </script>
