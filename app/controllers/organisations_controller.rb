@@ -47,6 +47,12 @@ class OrganisationsController < ApplicationController
   def edit
     @organisation = Organisation.find(params[:id])
     @json = gmap4rails_with_popup_partial(@organisation,'popup')
+    cats_for_what_they_do = Category.where("charity_commission_id < 200")
+    cats_for_who_they_help = Category.where("charity_commission_id < 300 AND charity_commission_id > 199")
+    cats_for_how_they_help = Category.where("charity_commission_id < 400 AND charity_commission_id > 299")
+    @first_category_name = cats_for_what_they_do.order(:name).first.name if !cats_for_what_they_do.empty?
+    @second_category_name = cats_for_who_they_help.order(:name).first.name if !cats_for_how_they_help.empty?
+    @third_category_name = cats_for_how_they_help.order(:name).first.name if !cats_for_how_they_help.empty?
     return false unless user_can_edit? @organisation
     #respond_to do |format|
     #  format.html {render :layout => 'full_width'}

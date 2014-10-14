@@ -7,17 +7,13 @@ Then (/the category named (.*) should be (checked|unchecked)$/) do |category, st
   page.find(:xpath, "//div/label[text()='#{category}']/preceding-sibling::input[1]").send(assertion, be_checked)
 end
 
-Then(/^I check the category "(.*?)"$/) do |category|
-  id = Category.find_by_name(category).id
+Then(/^I check the category "(.*?)"$/) do |category_name|
   within '#categories_scroll' do
-    find("input[value='#{id}']").set(true)
+    find(:xpath,"//div/label[text()='#{category_name}']/preceding-sibling::input[1]").set(true)
   end
 end
-Then(/^I uncheck the category "(.*?)"$/) do |category|
-  id = Category.find_by_name(category).id
+Then(/^I uncheck the category "(.*?)"$/) do |category_name|
   within '#categories_scroll' do
-    find("input[value='#{id}']").set(false)
+    find(:xpath,"//div/label[text()='#{category_name}']/preceding-sibling::input[1]").set(false)
   end
 end
-
-

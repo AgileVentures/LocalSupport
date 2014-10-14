@@ -1,5 +1,5 @@
 <% case category
-   when 'Accommodation'%> <div><strong> <em>What you do</em></strong> </div>
-   <% when 'Elderly' %> <div><strong> <em>Who you help</em></strong> </div>
-   <% when 'Advocacy' %> <div><strong> <em>How you help</em></strong> </div>
+   when @first_category_name %> <div><strong> <em>What you do</em></strong> </div>
+   <% when @second_category_name %> <div><strong> <em>Who you help</em></strong> </div>
+   <% when @third_category_name %> <div><strong> <em>How you help</em></strong> </div>
 <% end %>
