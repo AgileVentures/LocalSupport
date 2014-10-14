@@ -1,7 +1,7 @@
 require 'csv'
 
 class Category < ActiveRecord::Base
-  has_and_belongs_to_many :organisations
+  has_many :category_organisations
 
   @@column_mappings = {
       cc_id: 'CharityCommissionID',
