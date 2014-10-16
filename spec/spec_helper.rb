@@ -36,7 +36,12 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
+  # Be aware: Otherwise valid rspec is only cleaned if it conforms to database_cleaner defaults
+  # Eg, before :all, or 'sloppy' specs which omit an it block or inner describe are not cleaned
   config.use_transactional_fixtures = true
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
   #TODO: Is this too hackish to clear something that smells fixture like?  Move to
   #other testing framework?  See:
   #https://github.com/rspec/rspec-rails/issues/661
