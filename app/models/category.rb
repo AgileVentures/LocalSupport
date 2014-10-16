@@ -21,4 +21,32 @@ class Category < ActiveRecord::Base
   def self.html_drop_down_options
     self.where('charity_commission_id < 199').order('name ASC').collect {|category| [ category.name, category.id ] }
   end
+
+  def <=> other
+    self_is_what_they_do = self.charity_commission_id < 200
+    self_is_who_they_help = (self.charity_commission_id < 300) & (self.charity_commission_id > 199)
+    self_is_how_they_help = (self.charity_commission_id < 400) & (self.charity_commission_id > 299)
+    other_is_what_they_do = other.charity_commission_id < 200
+    other_is_who_they_help = (other.charity_commission_id < 300) & (other.charity_commission_id > 199)
+    other_is_how_they_help = (other.charity_commission_id < 400) & (other.charity_commission_id > 299)
+    if self_is_what_they_do & other_is_what_they_do
+      self.name <=> other.name
+    elsif self_is_what_they_do & other_is_how_they_help
+      -1
+    elsif self_is_what_they_do & other_is_who_they_help
+      -1
+    elsif self_is_who_they_help & other_is_what_they_do
+      1
+    elsif self_is_who_they_help & other_is_who_they_help
+      self.name <=> other.name
+    elsif self_is_who_they_help & other_is_how_they_help
+      -1
+    elsif self_is_how_they_help & other_is_what_they_do
+      1
+    elsif self_is_how_they_help & other_is_who_they_help
+      1
+    elsif self_is_how_they_help & other_is_how_they_help
+      self.name <=> other.name
+    end
+  end
 end
