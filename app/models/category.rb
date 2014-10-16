@@ -2,6 +2,7 @@ require 'csv'
 
 class Category < ActiveRecord::Base
   has_many :category_organisations
+  has_and_belongs_to_many :organisations
 
   @@column_mappings = {
       cc_id: 'CharityCommissionID',
@@ -20,6 +21,27 @@ class Category < ActiveRecord::Base
 
   def self.html_drop_down_options
     self.where('charity_commission_id < 199').order('name ASC').collect {|category| [ category.name, category.id ] }
+  end
+
+  def self.first_category_name_in_what_they_do
+    category = self.all.sort!.select{|cat| cat.charity_commission_id < 200}.first
+    if category
+      category.name
+    end
+  end
+
+  def self.first_category_name_in_who_they_help
+    category = self.all.sort!.select{|cat| (cat.charity_commission_id < 300)  & (cat.charity_commission_id > 199)}.first
+    if category
+      category.name
+    end
+  end
+
+  def self.first_category_name_in_how_they_help
+    category = self.all.sort!.select{|cat| (cat.charity_commission_id < 400)  & (cat.charity_commission_id > 299)}.first
+    if category
+      category.name
+    end
   end
 
   def <=> other
