@@ -24,25 +24,26 @@ class Category < ActiveRecord::Base
   end
 
   def self.first_category_name_in_what_they_do
-    category = self.all.sort!.select{|cat| cat.charity_commission_id < 200}.first
+    category = choose_first_in_range(0,200)
     if category
       category.name
     end
   end
 
   def self.first_category_name_in_who_they_help
-    category = self.all.sort!.select{|cat| (cat.charity_commission_id < 300)  & (cat.charity_commission_id > 199)}.first
+    category = choose_first_in_range(199,300)
     if category
       category.name
     end
   end
 
   def self.first_category_name_in_how_they_help
-    category = self.all.sort!.select{|cat| (cat.charity_commission_id < 400)  & (cat.charity_commission_id > 299)}.first
+    category = choose_first_in_range(299,400)
     if category
       category.name
     end
   end
+
   class CategoryType
     attr_reader :sym
 
@@ -86,4 +87,9 @@ class Category < ActiveRecord::Base
       self.type <=> other.type
     end
   end
+
+  private
+    def self.choose_first_in_range lower, upper
+      self.all.sort!.select{|cat| (cat.charity_commission_id < upper)  & (cat.charity_commission_id > lower)}.first
+    end
 end
