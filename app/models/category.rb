@@ -43,32 +43,35 @@ class Category < ActiveRecord::Base
       category.name
     end
   end
+  class CategoryType
+    attr_reader :sym
+    
+    def initialize sym
+      @sym = sym
+    end
+    def <=> other
+      if (@sym == :what_they_do && other.sym == :how_they_help) || (@sym == :what_they_do && other.sym == :who_they_help) ||
+        (@sym == :who_they_help && other.sym == :how_they_help)
+        -1
+      elsif @sym == other.sym
+        0
+      else
+        1
+      end
+    end
+  end
+
+  def type
+    return CategoryType.new :what_they_do if self.charity_commission_id < 200
+    return CategoryType.new :who_they_help if (self.charity_commission_id < 300) & (self.charity_commission_id > 199)
+    return CategoryType.new :how_they_help if (self.charity_commission_id < 400) & (self.charity_commission_id > 299)
+  end
 
   def <=> other
-    self_is_what_they_do = self.charity_commission_id < 200
-    self_is_who_they_help = (self.charity_commission_id < 300) & (self.charity_commission_id > 199)
-    self_is_how_they_help = (self.charity_commission_id < 400) & (self.charity_commission_id > 299)
-    other_is_what_they_do = other.charity_commission_id < 200
-    other_is_who_they_help = (other.charity_commission_id < 300) & (other.charity_commission_id > 199)
-    other_is_how_they_help = (other.charity_commission_id < 400) & (other.charity_commission_id > 299)
-    if self_is_what_they_do & other_is_what_they_do
+    if (self.type <=> other.type) == 0
       self.name <=> other.name
-    elsif self_is_what_they_do & other_is_how_they_help
-      -1
-    elsif self_is_what_they_do & other_is_who_they_help
-      -1
-    elsif self_is_who_they_help & other_is_what_they_do
-      1
-    elsif self_is_who_they_help & other_is_who_they_help
-      self.name <=> other.name
-    elsif self_is_who_they_help & other_is_how_they_help
-      -1
-    elsif self_is_how_they_help & other_is_what_they_do
-      1
-    elsif self_is_how_they_help & other_is_who_they_help
-      1
-    elsif self_is_how_they_help & other_is_how_they_help
-      self.name <=> other.name
+    else
+      self.type <=> other.type
     end
   end
 end
