@@ -45,7 +45,7 @@ class Category < ActiveRecord::Base
   end
   class CategoryType
     attr_reader :sym
-    
+
     def initialize sym
       @sym = sym
     end
@@ -59,12 +59,24 @@ class Category < ActiveRecord::Base
         1
       end
     end
+    @@what_they_do = new(:what_they_do)
+    @@who_they_help = new(:who_they_help)
+    @@how_they_help = new(:how_they_help)
+    def self.what_they_do
+      @@what_they_do
+    end
+    def self.who_they_help
+      @@who_they_help
+    end
+    def self.how_they_help
+      @@how_they_help
+    end
   end
 
   def type
-    return CategoryType.new :what_they_do if self.charity_commission_id < 200
-    return CategoryType.new :who_they_help if (self.charity_commission_id < 300) & (self.charity_commission_id > 199)
-    return CategoryType.new :how_they_help if (self.charity_commission_id < 400) & (self.charity_commission_id > 299)
+    return CategoryType.what_they_do if self.charity_commission_id < 200
+    return CategoryType.who_they_help if (self.charity_commission_id < 300) & (self.charity_commission_id > 199)
+    return CategoryType.how_they_help if (self.charity_commission_id < 400) & (self.charity_commission_id > 299)
   end
 
   def <=> other
