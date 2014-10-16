@@ -150,10 +150,14 @@ Examples:
 Scenario Outline: Successfully add and remove an organisation's categories
   Given I am signed in as a charity worker related to "Friendly"
   And I visit the edit page for the organisation named "Friendly"
-  Then I <action> the category "<category>"
+  Then I <action1> the category "<category1>"
+  And I <action2> the category "<category2>"
   And I press "Update Organisation"
-  Then I should <visibility> "<category>"
+  Then I should <visibility1> "<category1>"
+  And I should <visibility2> "<category2>"
   Examples: 
-  | category      | action  | visibility |
-  | Health        | uncheck | not see    |
-  | Animal welfare| check   | see        | 
+  | category1      | action1    | visibility1 | category2            | action2 | visibility2 |
+  | Health         | uncheck    | not see     | Child welfare        | check   | see         |
+  | Animal welfare | check      | see         | Education            | uncheck | not see     |
+  | Health         | uncheck    | not see     | Education            | uncheck | not see     |
+  | General        | check      | see         | Give them things     | check   | see         |
