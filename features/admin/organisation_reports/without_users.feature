@@ -85,4 +85,11 @@ Feature: Orphans UI
     And I set my password
     Then I should be on the show page for the organisation named "Yet Another Org"
 
-
+  Scenario: Invited user email is out of date
+    Given cookies are approved
+    And I am signed in as an admin
+    And I visit the organisations without users page
+    Then I should not see "Yet Another Org"
+    When I edit the charity email of "Yet Another Org" to be "other_email@charity.com"
+    And I visit the organisations without users page
+    Then I should see "Yet Another Org"
