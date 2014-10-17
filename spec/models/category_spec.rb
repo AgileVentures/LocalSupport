@@ -85,13 +85,9 @@ describe 'Category' do
       expect(alligator<=>crocodile).to eq 0
     end
   end
-  [{first_category: "alligator", method: :first_category_name_in_what_they_do},
-   {first_category: "crocodile", method: :first_category_name_in_who_they_help},
-   {first_category: "iguana", method: :first_category_name_in_how_they_help}].each do |hash|
-    describe "#{hash[:method].to_s}" do
-      it "should return #{hash[:first_category]}" do
-        Category.send(hash[:method]).should eq hash[:first_category]
+  describe '#first_category_name_in_each_type' do
+      it 'should return hash of first category names in each type of category' do
+        expect(Category.first_category_name_in_each_type).to eq({what_they_do: 'alligator', who_they_help: 'crocodile', how_they_help: 'iguana'})
       end
-    end
   end
 end
