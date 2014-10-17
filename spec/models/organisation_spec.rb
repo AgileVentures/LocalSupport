@@ -510,5 +510,39 @@ describe Organisation do
       expect(Organisation.find_by_name('Harrow Bereavement Counselling')).to eq @org1
     end
   end
+  describe '#uninvite_users' do
+    let(:current_user) { FactoryGirl.create(:user, email: 'admin@example.com', admin: true) }
+    let(:org) { FactoryGirl.create :organisation, email: 'YES@hello.com' }
+    let(:params) do
+      {invite_list: {org.id => org.email,
+                     org.id+1 => org.email},
+                     resend_invitation: false}
+    end
 
+    before do
+      Gmaps4rails.stub :geocode
+      current_user # lazy-loading messes up DB counts
+    end
+
+    let(:invite) { BatchInviteJob.new(params, current_user).run }
+    it "destroys users of the organisation that are invited_not_accepted" do
+      invite 
+      usr = User.where("users.organisation_id IS NOT null").first
+      expect{
+        org.uninvite_users
+      }.to change(User, :count).by(-1)
+    end
+    it "happens when email is updated" do
+      invite
+      expect{
+        org.update_attributes(email: 'hello@email.com')
+      }.to change(User, :count).by(-1)
+    end
+    it "doesn't happen when other attributes are updated" do
+      invite
+      expect{
+        org.update_attributes(website: 'www.abc.com')
+      }.not_to change(User, :count)
+    end
+  end
 end

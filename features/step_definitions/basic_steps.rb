@@ -104,6 +104,15 @@ Given /^I update "(.*?)" charity address to be "(.*?)"( when Google is indispose
   }
 end
 
+Given(/^I edit the charity email of "(.*?)" to be "(.*?)"$/) do |name, email|
+  steps %Q{
+    Given I visit the show page for the organisation named "#{name}"
+    And I follow "Edit"
+    And I edit the charity email to be "#{email}"
+    And I press "Update Organisation"
+  }
+end
+
 Given /^I update "(.*?)" charity website to be "(.*?)"$/ do |name, url|
   steps %Q{
     Given I visit the show page for the organisation named "#{name}"
@@ -132,6 +141,10 @@ end
 
 Given /^I edit the charity website to be "(.*?)"$/ do |url|
   fill_in('organisation_website', :with => url)
+end
+
+Given /^I edit the charity email to be "(.*?)"$/ do |email|
+  fill_in('organisation_email', :with => email)
 end
 
 When /^I edit the charity address to be "(.*?)"$/ do |address|
