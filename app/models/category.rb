@@ -24,24 +24,15 @@ class Category < ActiveRecord::Base
   end
 
   def self.first_category_name_in_what_they_do
-    category = choose_first_in_range(0,200)
-    if category
-      category.name
-    end
+    choose_first_in_range(0,200)
   end
 
   def self.first_category_name_in_who_they_help
-    category = choose_first_in_range(199,300)
-    if category
-      category.name
-    end
+    choose_first_in_range(199,300)
   end
 
   def self.first_category_name_in_how_they_help
-    category = choose_first_in_range(299,400)
-    if category
-      category.name
-    end
+    choose_first_in_range(299,400)
   end
 
   class CategoryType
@@ -60,17 +51,11 @@ class Category < ActiveRecord::Base
         1
       end
     end
-    @@what_they_do = new(:what_they_do)
-    @@who_they_help = new(:who_they_help)
-    @@how_they_help = new(:how_they_help)
-    def self.what_they_do
-      @@what_they_do
-    end
-    def self.who_they_help
-      @@who_they_help
-    end
-    def self.how_they_help
-      @@how_they_help
+    @what_they_do = CategoryType.new(:what_they_do)
+    @who_they_help = CategoryType.new(:who_they_help)
+    @how_they_help = CategoryType.new(:how_they_help)
+    class << self
+      attr_reader :what_they_do, :who_they_help, :how_they_help
     end
   end
 
@@ -90,6 +75,7 @@ class Category < ActiveRecord::Base
 
   private
     def self.choose_first_in_range lower, upper
-      self.all.sort!.select{|cat| (cat.charity_commission_id < upper)  & (cat.charity_commission_id > lower)}.first
+      category = self.all.sort!.select{|cat| (cat.charity_commission_id < upper)  & (cat.charity_commission_id > lower)}.first
+      category.name if category
     end
 end
