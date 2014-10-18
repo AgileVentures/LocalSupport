@@ -332,13 +332,36 @@ end
 When /^I approve "(.*?)"$/ do |email|
   visit users_report_path
   page.body.should have_content(email)
-  click_link 'Approve'
+  user_id = User.find_by_email(email).id
+  within("tr##{user_id}") do
+    click_link 'Approve'
+  end
 end
 
 Then(/^"(.*?)" is a charity admin of "(.*?)"$/) do |user_email, org_name|
   user = User.find_by_email(user_email)
   org = Organisation.find_by_name(org_name)
   user.organisation.should == org
+end
+
+When /^I delete "(.*?)"$/ do |email|
+  visit users_report_path
+  page.body.should have_content(email)
+  user_id = User.find_by_email(email).id
+  within("tr##{user_id}") do
+    click_link 'Delete'
+  end
+end
+
+Then /^I should( not)? see:$/ do |negative, table|
+  expectation = negative ? :should_not : :should
+  table.rows.flatten.each do |string|
+    page.send(expectation, have_text(string))
+  end
+end
+Then /^user "(.*?)" is( not)? deleted$/ do |email, negative|
+  expectation = negative ? :not_to : :to
+  expect(User.find_by_email email).send(expectation, be_nil)
 end
 
 And(/^I (un)?check "([^"]*)"$/) do |negate, css|

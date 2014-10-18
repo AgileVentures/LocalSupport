@@ -50,5 +50,11 @@ describe 'user_reports/index.html.erb' do
       rendered.should_not have_link "Approve"
     end
   end
+  context 'delete link shown' do
+    it 'for every user' do
+      render
+      rendered.should have_link "Delete", :href => user_reports_path(id: user.id)
+    end
+  end
 
 end

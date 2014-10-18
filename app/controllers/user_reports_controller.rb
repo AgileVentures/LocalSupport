@@ -11,6 +11,17 @@ class UserReportsController < ApplicationController
     UserOrganisationClaimer.new(self, user, current_user).call(params[:organisation_id])
   end
 
+  def destroy
+    user = User.find(params[:id])
+    if user == current_user
+      flash[:error] = "You may not destroy your own account!"
+    else
+      user.destroy
+      flash[:success] = "You have deleted #{user.email}."
+    end
+    redirect_to(users_report_path)
+  end
+
   def index
     @users = User.all
   end
