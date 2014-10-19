@@ -32,7 +32,7 @@ class Organisation < ActiveRecord::Base
   after_save :uninvite_users, if: ->{ email_changed? }
 
   def uninvite_users
-    self.users.invited_not_accepted.destroy_all
+    users.invited_not_accepted.update_all(organisation_id: nil)
   end
 
   def run_geocode?

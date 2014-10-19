@@ -366,12 +366,6 @@ When /^I delete "(.*?)"$/ do |email|
   end
 end
 
-Then /^I should( not)? see:$/ do |negative, table|
-  expectation = negative ? :should_not : :should
-  table.rows.flatten.each do |string|
-    page.send(expectation, have_text(string))
-  end
-end
 Then /^user "(.*?)" is( not)? deleted$/ do |email, negative|
   expectation = negative ? :not_to : :to
   expect(User.find_by_email email).send(expectation, be_nil)
