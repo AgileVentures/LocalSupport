@@ -1,4 +1,4 @@
-<%= form_for(@organisation) do |f| %>
+<%= form_for(setup_organisation(@organisation)) do |f| %>
     <table class="org_table" >
       <thead>
       </thead>
@@ -80,15 +80,32 @@
           <input type="checkbox" class="publish" disabled>
         </td>
       </tr>
-      <tr>
-        <td class="borderless" data-toggle="tooltip" title="Please enter the details of individuals from your organisation you would like to give permission to update your entry. E-mail addresses entered here will not be made public.">
-          <%= text_field_tag 'organisation_admin_email_to_add', value = nil, {:size => 100, class: 'wide_form', :cols => "10", :rows => "3", :placeholder => 'You may add an organisation administrator email here', :rows => "3" } %>
-        </td>
-        <td class="borderless"></td>
+    <tr>
+      <td class="borderless" data-toggle="tooltip" title="Please enter the details of individuals from your organisation you would like to give permission to update your entry. E-mail addresses entered here will not be made public.">
+        <%= text_field_tag 'organisation_admin_email_to_add', value = nil, {:size => 100, class: 'wide_form', :cols => "10", :rows => "3", :placeholder => 'You may add an organisation administrator email here', :rows => "3" } %>
+      </td>
+      <td class="borderless"></td>
+    </tr> 
       </tbody>
     </table>
+    <h5>Edit categories</h5>
+    <div id = "categories_scroll" style="height:10em;width:60%;border:1px solid #ccc;overflow:auto;padding-left:2px;">
+    <%= f.fields_for :category_organisations do |ff| %>
+         <%= render partial: 'category_type', locals: {category: ff.object.category.name} %>
+        <div>
+          <%= ff.check_box :_destroy,
+                           {:checked => ff.object.persisted?},
+                           '0', '1'
+          %>
+          <%= ff.label :_destroy, ff.object.category.name, class: "checkbox inline", style: "padding-left: 2px;"%>
+          <%= ff.hidden_field :category_id %>
+        </div>
+    <% end %>
+    </div>
+
     <br>
     <div class="actions">
       <%= f.submit :class => 'btn btn-primary' %>
     </div>
+
 <% end %>

@@ -47,6 +47,7 @@ class OrganisationsController < ApplicationController
   def edit
     @organisation = Organisation.find(params[:id])
     @json = gmap4rails_with_popup_partial(@organisation,'popup')
+    @categories_start_with = Category.first_category_name_in_each_type
     return false unless user_can_edit? @organisation
     #respond_to do |format|
     #  format.html {render :layout => 'full_width'}
