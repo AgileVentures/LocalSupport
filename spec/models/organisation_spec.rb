@@ -23,7 +23,20 @@ describe Organisation do
     @org3.categories << @category1
     @org3.save!
   end
+  describe "#gmaps4rails_marker_picture" do
 
+    it 'returns small icon when no associated user' do
+      expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_small.png"})
+    end
+
+    it 'returns large icon when there is an associated user' do
+      usr = FactoryGirl.create(:user, :email => "orgadmin@org.org")
+      usr.confirm!
+      @org1.users << [usr]
+      @org1.save!
+      expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_large.png"})
+    end
+  end
   context 'scopes for orphan orgs' do
     before(:each) do
       @user = FactoryGirl.create(:user, :email => "hello@hello.com")

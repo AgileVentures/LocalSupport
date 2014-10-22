@@ -8,7 +8,7 @@ class OrganisationsController < ApplicationController
     @query_term = params[:q]
     @category_id = params.try(:[],'category').try(:[],'id')
     @category = Category.find_by_id(@category_id)
-    @organisations = Organisation.order_by_most_recent
+    @organisations = Organisation.includes(:users).order_by_most_recent
     @organisations = @organisations.search_by_keyword(@query_term).filter_by_category(@category_id)
     flash.now[:alert] = SEARCH_NOT_FOUND if @organisations.empty?
     @json = gmap4rails_with_popup_partial(@organisations,'popup')
@@ -19,7 +19,7 @@ class OrganisationsController < ApplicationController
   # GET /organisations
   # GET /organisations.json
   def index
-    @organisations = Organisation.order_by_most_recent
+    @organisations = Organisation.includes(:users).order_by_most_recent
     @json = gmap4rails_with_popup_partial(@organisations,'popup')
     @category_options = Category.html_drop_down_options
   end
