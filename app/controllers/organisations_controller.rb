@@ -19,9 +19,13 @@ class OrganisationsController < ApplicationController
   # GET /organisations
   # GET /organisations.json
   def index
-    @organisations = Organisation.order_by_most_recent
+    @resend_invitation = false
+    set_default_if_missing_or_not_admin(params,{scopes:['order_by_most_recent'],template:'index',layout:'two_columns'})
+    @organisations = Organisation
+    params[:scopes].each { |scope|  @organisations = @organisations.send(scope.to_sym) }
     @json = gmap4rails_with_popup_partial(@organisations,'popup')
     @category_options = Category.html_drop_down_options
+    render :template => 'organisations/'+params[:template], :layout => params[:layout]
   end
 
   # GET /organisations/1
@@ -113,4 +117,11 @@ class OrganisationsController < ApplicationController
     end
     true
   end
+
+  def set_default_if_missing_or_not_admin(params,hash)
+    hash.each do |k,v|
+      params[k] = v if !admin? or params[k].nil?
+    end
+  end
+
 end
