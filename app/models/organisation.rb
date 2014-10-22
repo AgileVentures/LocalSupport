@@ -32,6 +32,12 @@ class Organisation < ActiveRecord::Base
   scope :null_users, lambda { includes(:users).where("users.organisation_id IS NULL") }
   scope :without_matching_user_emails, :conditions => "organisations.email NOT IN (#{User.select('email').to_sql})"
 
+  after_save :uninvite_users, if: ->{ email_changed? }
+
+  def uninvite_users
+    users.invited_not_accepted.update_all(organisation_id: nil)
+  end
+
   def run_geocode?
     ## http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
     address_changed? or (address.present? and not_geocoded?)

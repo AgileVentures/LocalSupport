@@ -10,6 +10,7 @@ LocalSupport::Application.routes.draw do
 
   get '/user_reports/all' => 'user_reports#index', as: :users_report
   put '/user_reports/update' => 'user_reports#update', as: :user_report
+  delete '/user_reports' => 'user_reports#destroy'
   get '/user_reports/invited' => 'user_reports#invited', as: :invited_users_report
 
   resources :pages

@@ -104,6 +104,15 @@ Given /^I update "(.*?)" charity address to be "(.*?)"( when Google is indispose
   }
 end
 
+Given(/^I edit the charity email of "(.*?)" to be "(.*?)"$/) do |name, email|
+  steps %Q{
+    Given I visit the show page for the organisation named "#{name}"
+    And I follow "Edit"
+    And I edit the charity email to be "#{email}"
+    And I press "Update Organisation"
+  }
+end
+
 Given /^I update "(.*?)" charity website to be "(.*?)"$/ do |name, url|
   steps %Q{
     Given I visit the show page for the organisation named "#{name}"
@@ -132,6 +141,10 @@ end
 
 Given /^I edit the charity website to be "(.*?)"$/ do |url|
   fill_in('organisation_website', :with => url)
+end
+
+Given /^I edit the charity email to be "(.*?)"$/ do |email|
+  fill_in('organisation_email', :with => email)
 end
 
 When /^I edit the charity address to be "(.*?)"$/ do |address|
@@ -332,13 +345,30 @@ end
 When /^I approve "(.*?)"$/ do |email|
   visit users_report_path
   page.body.should have_content(email)
-  click_link 'Approve'
+  user_id = User.find_by_email(email).id
+  within("tr##{user_id}") do
+    click_link 'Approve'
+  end
 end
 
 Then(/^"(.*?)" is a charity admin of "(.*?)"$/) do |user_email, org_name|
   user = User.find_by_email(user_email)
   org = Organisation.find_by_name(org_name)
   user.organisation.should == org
+end
+
+When /^I delete "(.*?)"$/ do |email|
+  visit users_report_path
+  page.body.should have_content(email)
+  user_id = User.find_by_email(email).id
+  within("tr##{user_id}") do
+    click_link 'Delete'
+  end
+end
+
+Then /^user "(.*?)" is( not)? deleted$/ do |email, negative|
+  expectation = negative ? :not_to : :to
+  expect(User.find_by_email email).send(expectation, be_nil)
 end
 
 And(/^I (un)?check "([^"]*)"$/) do |negate, css|
