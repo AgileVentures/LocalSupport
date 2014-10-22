@@ -1,6 +1,10 @@
-And(/^I submit an opportunity with title "(.*?)" and description "(.*?)"$/) do |title, description|
+And(/^I submit a volunteer op "(.*?)", "(.*?)" on the "(.*?)" page$/) do |title, desc, org_name|
+  org = Organisation.find_by_name(org_name)
+  visit organisation_path org
+  click_link "Create a Volunteer Opportunity"
+  expect(current_path).to eq new_organisation_volunteer_op_path org
   fill_in 'Title', :with => title
-  fill_in 'Description', :with => description
+  fill_in 'Description', :with => desc
   click_on 'Create a Volunteer Opportunity'
 end
 
@@ -12,19 +16,10 @@ Given(/^that the (.+) flag is (enabled|disabled)$/) do |feature, state|
   end
 end
 
-Given /^I update "(.*?)" description to be "(.*?)"$/ do |title, description|
-  steps %Q{
-    Given I visit the show page for the volunteer_op titled "#{title}"
-    And I follow "Edit"
-    And I edit the description to be "#{description}"
-    And I press "Update a Volunteer Opportunity"
-  }
-end
-
-Given /^I edit the description to be "(.*?)"$/ do |text|
-  fill_in('Description', :with => text)
-end
-
-Then /^the description for "(.*?)" should be "(.*?)"$/ do |title, description|
-  expect(VolunteerOp.find_by_title(title).description).to eql(description)
+Given /^I update "(.*?)" volunteer op description to be "(.*?)"$/ do |title, description|
+  vop = VolunteerOp.find_by_title title
+  visit volunteer_op_path vop
+  click_on 'Edit'
+  fill_in('Description', :with => description)
+  click_on 'Update a Volunteer Opportunity'
 end
