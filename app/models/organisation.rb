@@ -78,6 +78,16 @@ class Organisation < ActiveRecord::Base
     self.joins(:categories).where(is_in_category(category_id)) #do we need to sanitize category_id?
   end
 
+  def gmaps4rails_marker_picture
+    {
+     "picture" => "/assets/org_icon_#{size}.png"
+  #  "picture" => "/images/#{name}.png",
+  #   "width" => 400,
+  #   "height" => 400,
+     #{}"marker_anchor" => [ 5, 10],
+    }
+  end
+  
   def gmaps4rails_address
     "#{self.address}, #{self.postcode}"
   end

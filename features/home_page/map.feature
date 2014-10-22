@@ -25,6 +25,10 @@ Feature: Map of local charities
     Given I visit the home page
     And I should see hyperlinks for "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling" in the map
 
+  Scenario: Organisation map icon size depends on ownership
+    Given I visit the home page
+    Then the organisation "Youth UK" should have a large icon
+
   Scenario: Changing address on the map changes the map coordinates
     Given I visit the home page
     Then the coordinates for "Harrow Bereavement Counselling" and "Youth UK" should not be the same

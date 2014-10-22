@@ -10,6 +10,10 @@ Then /^I should see hyperlinks for "(.*?)", "(.*?)" and "(.*?)" in the map$/ do 
   end
 end
 
+Then /^the organisation "(.*?)" should have a large icon$/ do |name|
+  org_description = smart_truncate(Organisation.find_by_name(name).description, 32)
+  page.should have_xpath("//head//script[contains(string(),'#{org_description}\"\,\"picture\":\"/assets/org_icon_large.png\"')]", :visible => false)
+end
 # could we move maps stuff into separate step file and couldn't these things be DRYer ...
 # e.g. one step to handle 2 or more orgs ...
 Then /^I should see "([^"]*?)", "([^"]*?)" and "([^"]*?)" in the map centered on local organisations$/ do |name1, name2, name3|
