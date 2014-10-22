@@ -38,6 +38,9 @@ describe Organisation do
         @org1.users << [usr]
         @org1.save!
       end
+      after(:each) do
+        allow(Time).to receive(:now).and_call_original
+      end
     it 'returns large icon when there is an associated user' do
       expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_large.png"})
     end
@@ -46,7 +49,6 @@ describe Organisation do
         future_time = Time.at(Time.now + 2.month)
         Time.stub(:now){future_time}
         expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_small.png"})
-        allow(Time).to receive(:now).and_call_original
      end
     end
   end
