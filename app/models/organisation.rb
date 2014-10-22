@@ -81,7 +81,7 @@ class Organisation < ActiveRecord::Base
   def gmaps4rails_marker_picture
     {
 
-     "picture" => self.users.empty? ?  "/assets/org_icon_small.png" : "/assets/org_icon_large.png"
+     "picture" => (self.users.empty? || (Time.now - updated_at) > 1.month) ?  "/assets/org_icon_small.png" : "/assets/org_icon_large.png"
   #  "picture" => "/images/#{name}.png",
   #   "width" => 400,
   #   "height" => 400,

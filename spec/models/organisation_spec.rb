@@ -25,16 +25,29 @@ describe Organisation do
   end
   describe "#gmaps4rails_marker_picture" do
 
-    it 'returns small icon when no associated user' do
-      expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_small.png"})
+    context 'no user' do
+      it 'returns small icon when no associated user' do
+        expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_small.png"})
+      end
+   end
+
+    context 'has user' do
+      before(:each) do
+        usr = FactoryGirl.create(:user, :email => "orgadmin@org.org")
+        usr.confirm!
+        @org1.users << [usr]
+        @org1.save!
+      end
+    it 'returns large icon when there is an associated user' do
+      expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_large.png"})
     end
 
-    it 'returns large icon when there is an associated user' do
-      usr = FactoryGirl.create(:user, :email => "orgadmin@org.org")
-      usr.confirm!
-      @org1.users << [usr]
-      @org1.save!
-      expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_large.png"})
+     it 'returns small icon when there is an associated user but update is too old' do
+        future_time = Time.at(Time.now + 2.month)
+        Time.stub(:now){future_time}
+        expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_small.png"})
+        allow(Time).to receive(:now).and_call_original
+     end
     end
   end
   context 'scopes for orphan orgs' do
