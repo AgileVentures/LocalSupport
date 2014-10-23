@@ -26,13 +26,23 @@ Feature: Map of local charities
     And I should see hyperlinks for "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling" in the map
 
   @time_travel
-  Scenario: Organisation map icon size depends on ownership and how recently updated
-    Given I visit the home page
-    Then the organisation "Youth UK" should have a large icon
-    And the organisation "Indian Elders Association" should have a small icon
-    And I travel "2" months into the future
+  Scenario Outline: Organisation map has small icon for organisations updated more than 30 days ago
+    Given I travel "<days>" days into the future
     And I visit the home page
-    Then the organisation "Youth UK" should have a small icon
+    Then the organisation "Youth UK" should have a <size> icon
+    Examples: 
+      |days | size |
+      | 2   | large|
+      |10   | large|
+      |20   | large|
+      |29   | large|
+      |30   | small|
+      |31   | small|
+      |50   | small|
+
+  Scenario: Organisation map has small icon for organisation with no users
+    Given I visit the home page
+    Then the organisation "Indian Elders Association" should have a small icon
 
   Scenario: Changing address on the map changes the map coordinates
     Given I visit the home page

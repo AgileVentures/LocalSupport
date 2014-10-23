@@ -80,12 +80,7 @@ class Organisation < ActiveRecord::Base
 
   def gmaps4rails_marker_picture
     {
-
-     "picture" => (self.users.empty? || (Time.now - updated_at) > 1.month) ?  "/assets/org_icon_small.png" : "/assets/org_icon_large.png"
-  #  "picture" => "/images/#{name}.png",
-  #   "width" => 400,
-  #   "height" => 400,
-     #{}"marker_anchor" => [ 5, 10],
+     "picture" => updated_recently_and_has_owner ?  "/assets/org_icon_small.png" : "/assets/org_icon_large.png"
     }
   end
   
@@ -223,7 +218,9 @@ class Organisation < ActiveRecord::Base
   def self.contains_name(key)
     table[:name].matches(key)
   end
-  
+  def updated_recently_and_has_owner 
+    (self.users.empty? || (Time.now - updated_at) > 1.month) 
+  end
   def remove_errors_with_address
     errors_hash = errors.to_hash
     errors.clear
