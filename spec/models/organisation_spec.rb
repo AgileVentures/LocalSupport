@@ -44,11 +44,19 @@ describe Organisation do
       it 'returns large icon when there is an associated user' do
         expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_large.png"})
       end
-      [{days: 2, size: "large"}, {days: 10, size: "large"}, {days: 29, size: "large"}, {days: 31, size: "small"}].each do |hash| 
-        it 'returns small icon when there is an associated user but update is too old' do
+
+      [{days: 365}, {days: 366}, {days: 500}].each do |hash|
+        it "returns small icon when update is #{hash[:days]} days old" do
           future_time = Time.at(Time.now + hash[:days].day)
           Time.stub(:now){future_time}
-          expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_#{hash[:size]}.png"})
+          expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_small.png"})
+        end
+      end
+      [{days: 2}, {days: 100}, {days: 200}, {days: 364}].each do |hash|
+        it "returns large icon when update is only #{hash[:days]} days old" do
+          future_time = Time.at(Time.now + hash[:days].day)
+          Time.stub(:now){future_time}
+          expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_large.png"})
         end
       end
     end
