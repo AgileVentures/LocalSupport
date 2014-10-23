@@ -80,7 +80,7 @@ class Organisation < ActiveRecord::Base
 
   def gmaps4rails_marker_picture
     {
-     "picture" => not_updated_recently_or_has_no_owner ?  "/assets/org_icon_small.png" : "/assets/org_icon_large.png"
+     "picture" => not_updated_recently_or_has_no_owner? ?  "/assets/org_icon_small.png" : "/assets/org_icon_large.png"
     }
   end
   
@@ -218,7 +218,7 @@ class Organisation < ActiveRecord::Base
   def self.contains_name(key)
     table[:name].matches(key)
   end
-  def not_updated_recently_or_has_no_owner
+  def not_updated_recently_or_has_no_owner?
     (self.users.empty? || (Time.now - updated_at) > 365.day)
   end
   def remove_errors_with_address
