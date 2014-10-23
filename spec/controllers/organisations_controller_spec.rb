@@ -140,6 +140,43 @@ describe OrganisationsController do
       assigns(:json).should eq(json)
       response.should render_template 'layouts/two_columns'
     end
+
+    describe "#set_default_params_if_missing_or_not_admin" do
+      before do
+        controller.stub example.metadata.slice(:admin?)
+        controller.params.merge! example.metadata.slice(:scopes)
+      end
+
+      subject { controller.send :set_default_params_if_missing_or_not_admin }
+
+      context admin?: false do
+        it do
+          subject
+          expect(controller.params[:scopes]).to eq ['order_by_most_recent']
+        end
+      end
+
+      context admin?: true do
+        it do
+          subject
+          expect(controller.params[:scopes]).to eq ['order_by_most_recent']
+        end
+      end
+
+      context admin?: false, scopes: ['hello'] do
+        it do
+          subject
+          expect(controller.params[:scopes]).to eq ['order_by_most_recent']
+        end
+      end
+
+      context admin?: true, scopes: ['hello'] do
+        it do
+          subject
+          expect(controller.params[:scopes]).to eq ['hello']
+        end
+      end
+    end
   end
 
   describe "GET show" do

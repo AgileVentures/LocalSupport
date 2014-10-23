@@ -20,7 +20,7 @@ class OrganisationsController < ApplicationController
   # GET /organisations.json
   def index
     @resend_invitation = false
-    set_default_if_missing_or_not_admin(params,{scopes:['order_by_most_recent'],template:'index',layout:'two_columns'})
+    set_default_params_if_missing_or_not_admin
     @organisations = Organisation
     params[:scopes].each { |scope|  @organisations = @organisations.send(scope.to_sym) }
     @json = gmap4rails_with_popup_partial(@organisations,'popup')
@@ -118,9 +118,14 @@ class OrganisationsController < ApplicationController
     true
   end
 
-  def set_default_if_missing_or_not_admin(params,hash)
-    hash.each do |k,v|
-      params[k] = v if !admin? or params[k].nil?
+  def set_default_params_if_missing_or_not_admin
+    defaults = {
+      scopes: ['order_by_most_recent'],
+      template:'index',
+      layout:'two_columns'
+    }
+    defaults.each do |k, v|
+      params[k] = v if !admin? || params[k].nil?
     end
   end
 
