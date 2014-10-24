@@ -376,7 +376,11 @@ When /^I delete "(.*?)"$/ do |email|
     click_link 'Delete'
   end
 end
-
+Then(/^user "(.*?)" should exist$/) do |user_email|
+  visit users_report_path
+  user_id = User.find_by_email(user_email).id
+  find("tr##{user_id}", text: user_email).should_not be_nil
+end
 Then /^user "(.*?)" is( not)? deleted$/ do |email, negative|
   expectation = negative ? :not_to : :to
   expect(User.find_by_email email).send(expectation, be_nil)

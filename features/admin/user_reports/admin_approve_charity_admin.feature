@@ -28,6 +28,13 @@ Feature: All Users Page
     Then I should see "You have deleted pending@myorg.com."
     Then user "pending@myorg.com" is deleted
 
+  Scenario: As an admin recovering a deleted user
+    Given I am signed in as an admin
+    When I delete "pending@myorg.com"
+    Then user "pending@myorg.com" is deleted
+    And sysadmin restores "pending@myorg.com" from the console
+    Then user "pending@myorg.com" should exist
+
   Scenario: As an admin attempting self-deletion
     Given I am signed in as an admin
     When I delete "admin@myorg.com"

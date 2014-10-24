@@ -281,6 +281,17 @@ describe User do
 
   end
 
+  describe 'destroy uses acts_as_paranoid' do
+    let(:user){FactoryGirl.create :user}
+    it 'can be recovered' do
+      email = user.email
+      user.destroy
+      expect(User.find_by_email(email)).to eq nil
+      User.only_deleted.find_by_email(email).recover
+      expect(User.find_by_email(email)).to eq user
+    end
+  end
+
 
 
 end
