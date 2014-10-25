@@ -128,6 +128,16 @@ describe OrganisationsController do
   end
 
   describe "GET index" do
+    context service: 'without_users' do
+      it do
+        get :index, service: 'without_users'
+        expect(assigns(:resend_invitation)).to eq false
+      end
+      it do
+        get :index, service: 'without_users'
+        expect(assigns(:organisations)).to eq([])
+      end
+    end
     it "assigns all organisations as @organisations" do
       result = [double_organisation]
       json='my markers'
@@ -142,37 +152,36 @@ describe OrganisationsController do
     end
 
     describe "#set_default_params_if_missing_or_not_admin" do
+      let(:params) { example.metadata.slice(:scopes) }
       before do
         controller.stub example.metadata.slice(:admin?)
-        controller.params.merge! example.metadata.slice(:scopes)
       end
-
-      subject { controller.send :set_default_params_if_missing_or_not_admin }
 
       context admin?: false do
         it do
-          subject
+          get :index, params
           expect(controller.params[:scopes]).to eq ['order_by_most_recent']
         end
       end
 
       context admin?: true do
         it do
-          subject
+          get :index, params
           expect(controller.params[:scopes]).to eq ['order_by_most_recent']
         end
       end
 
       context admin?: false, scopes: ['hello'] do
         it do
-          subject
+          get :index, params
           expect(controller.params[:scopes]).to eq ['order_by_most_recent']
         end
       end
 
       context admin?: true, scopes: ['hello'] do
         it do
-          subject
+          expect(Organisation).to receive(:hello).and_return Organisation.all
+          get :index, params
           expect(controller.params[:scopes]).to eq ['hello']
         end
       end
