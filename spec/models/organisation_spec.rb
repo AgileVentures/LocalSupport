@@ -23,7 +23,44 @@ describe Organisation do
     @org3.categories << @category1
     @org3.save!
   end
+  describe "#gmaps4rails_marker_picture" do
 
+    context 'no user' do
+      it 'returns small icon when no associated user' do
+        expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_small.png"})
+      end
+    end
+
+    context 'has user' do
+      before(:each) do
+        usr = FactoryGirl.create(:user, :email => "orgadmin@org.org")
+        usr.confirm!
+        @org1.users << [usr]
+        @org1.save!
+      end
+      after(:each) do
+        allow(Time).to receive(:now).and_call_original
+      end
+      it 'returns large icon when there is an associated user' do
+        expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_large.png"})
+      end
+
+      [365, 366, 500].each do |days|
+        it "returns small icon when update is #{days} days old" do
+          future_time = Time.at(Time.now + days.day)
+          Time.stub(:now){future_time}
+          expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_small.png"})
+        end
+      end
+      [ 2, 100, 200, 364].each do |days|
+        it "returns large icon when update is only #{days} days old" do
+          future_time = Time.at(Time.now + days.day)
+          Time.stub(:now){future_time}
+          expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_large.png"})
+        end
+      end
+    end
+  end
   context 'scopes for orphan orgs' do
     before(:each) do
       @user = FactoryGirl.create(:user, :email => "hello@hello.com")

@@ -84,6 +84,12 @@ class Organisation < ActiveRecord::Base
     self.joins(:categories).where(is_in_category(category_id)) #do we need to sanitize category_id?
   end
 
+  def gmaps4rails_marker_picture
+    {
+     "picture" => not_updated_recently_or_has_no_owner? ?  "/assets/org_icon_small.png" : "/assets/org_icon_large.png"
+    }
+  end
+  
   def gmaps4rails_address
     "#{self.address}, #{self.postcode}"
   end
@@ -218,7 +224,9 @@ class Organisation < ActiveRecord::Base
   def self.contains_name(key)
     table[:name].matches(key)
   end
-  
+  def not_updated_recently_or_has_no_owner?
+    (self.users.empty? || (Time.now - updated_at) > 365.day)
+  end
   def remove_errors_with_address
     errors_hash = errors.to_hash
     errors.clear
