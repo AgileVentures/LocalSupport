@@ -15,5 +15,9 @@ module ControllerExtensions
       super
       @resend_invitation = false
     end
+
+    def self.check_permissions(controller)
+      controller.send(:admin?) ? self : super
+    end
   end
 end

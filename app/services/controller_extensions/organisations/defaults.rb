@@ -1,5 +1,7 @@
 module ControllerExtensions
   module Organisations::Defaults
+    extend ActiveSupport::Concern
+
     def set_params
       defaults = {
         layout: 'two_columns',
@@ -19,6 +21,12 @@ module ControllerExtensions
     def apply_scopes(klass)
       params[:scopes].each { |s| klass = klass.send(s) }
       klass
+    end
+
+    module ClassMethods
+      def check_permissions(controller)
+        Organisations::Index
+      end
     end
   end
 end
