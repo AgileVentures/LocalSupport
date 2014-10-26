@@ -1,4 +1,4 @@
-module ControllerExtensionss
+module ControllerExtensions
   module Organisations::Defaults
     def set_params
       defaults = {
@@ -9,6 +9,7 @@ module ControllerExtensionss
       defaults.each do |k, v|
         params[k] = v if !admin? || params[k].nil?
       end
+      params[:template].prepend(controller_name + '/')
     end
 
     def set_instance_variables

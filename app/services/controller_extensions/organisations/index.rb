@@ -1,6 +1,6 @@
 module ControllerExtensions
   module Organisations::Index
-    include Defaults
+    include Organisations::Defaults
 
     def set_params
       super

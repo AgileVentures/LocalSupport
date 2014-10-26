@@ -1,6 +1,6 @@
 module ControllerExtensions
   module Organisations::WithoutUsers
-    include Defaults
+    include Organisations::Defaults
 
     def set_params
       params.merge!({

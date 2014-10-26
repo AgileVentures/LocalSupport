@@ -23,7 +23,7 @@ class OrganisationsController < ApplicationController
     extend ControllerExtension.for self
     set_params
     set_instance_variables
-    render :template => params[:template].prepend('organisations/'), :layout => params[:layout]
+    render template: params[:template], layout: params[:layout]
   end
 
   # GET /organisations/1

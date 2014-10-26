@@ -128,30 +128,7 @@ describe OrganisationsController do
   end
 
   describe "GET index" do
-    context service: 'without_users' do
-      it do
-        get :index, service: 'without_users'
-        expect(assigns(:resend_invitation)).to eq false
-      end
-      it do
-        get :index, service: 'without_users'
-        expect(assigns(:organisations)).to eq([])
-      end
-    end
-    it "assigns all organisations as @organisations" do
-      result = [double_organisation]
-      json='my markers'
-      result.should_receive(:to_gmaps4rails).and_return(json)
-      Category.should_receive(:html_drop_down_options).and_return(category_html_options)
-      Organisation.should_receive(:order_by_most_recent).and_return(result)
-      result.stub_chain(:page, :per).and_return(result)
-      get :index
-      assigns(:organisations).should eq(result)
-      assigns(:json).should eq(json)
-      response.should render_template 'layouts/two_columns'
-    end
-
-    describe "#set_default_params_if_missing_or_not_admin" do
+    describe 'ControllerExtensions::Organisations::Default' do
       let(:params) { example.metadata.slice(:scopes) }
       before do
         controller.stub example.metadata.slice(:admin?)
@@ -186,6 +163,53 @@ describe OrganisationsController do
         end
       end
     end
+
+    context 'ControllerExtensions::Organisations::WithoutUsers' do
+      before do
+        controller.stub admin?: true
+        get :index, service: 'without_users'
+      end
+
+      context 'params set' do
+        {
+          template: 'without_users_index',
+          layout: 'invitation_table',
+          scopes: ['not_null_email','null_users','without_matching_user_emails'],
+        }.each do |k, v|
+          it do
+            if k == :template
+              v = v.prepend(controller.controller_name + '/')
+            end
+            expect(controller.params[k]).to eq v
+          end
+        end
+      end
+
+      context 'instance variables set' do
+        it do
+          expect(assigns(:resend_invitation)).to eq false
+        end
+
+        it do
+          org = create(:organisation, email: 'well@hello.there')
+          expect(assigns(:organisations)).to include org
+        end
+      end
+    end
+
+    it "assigns all organisations as @organisations" do
+      result = [double_organisation]
+      json='my markers'
+      result.should_receive(:to_gmaps4rails).and_return(json)
+      Category.should_receive(:html_drop_down_options).and_return(category_html_options)
+      Organisation.should_receive(:order_by_most_recent).and_return(result)
+      result.stub_chain(:page, :per).and_return(result)
+      get :index
+      assigns(:organisations).should eq(result)
+      assigns(:json).should eq(json)
+      response.should render_template 'layouts/two_columns'
+    end
+
   end
 
   describe "GET show" do
