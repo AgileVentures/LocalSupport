@@ -35,11 +35,23 @@ class ApplicationController < ActionController::Base
   # Devise hook
   # Returns the users to the page they were viewing before signing in
   def after_sign_in_path_for(resource)
+    set_flash_warning_reminder_to_update_details resource
     return edit_user_path id: current_user.id if session[:pending_organisation_id]
     return session[:previous_url] if session[:previous_url]
     return organisation_path(Organisation.find(current_user.pending_organisation_id)) if current_user.pending_organisation_id
     return organisation_path(current_user.organisation) if current_user.organisation
     root_path
+  end
+
+  def set_flash_warning_reminder_to_update_details usr
+    #if usr.organisation && (usr.organisation.updated_at < 365.day.ago)
+      msg = "You have not updated your details in over a year!"
+      if flash[:info]
+        flash[:info] << msg
+      else
+        flash[:info] = msg
+      end
+    #end
   end
 
   # Devise Invitable hook

@@ -167,3 +167,8 @@ end
 Then(/^I should see "([^"]*)" in the flash$/) do |message|
   page.should have_css('div#flash_success', :text => message)
 end
+
+Then(/^I should( not)? see "([^"]*)" in the flash notice/) do |negative, message|
+    expectation_method = negative ? :should_not : :should
+    page.send(expectation_method, have_css('div#flash_notice', :text => message))
+end
