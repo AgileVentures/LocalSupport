@@ -33,6 +33,13 @@ class Organisation < ActiveRecord::Base
   scope :without_matching_user_emails, :conditions => "organisations.email NOT IN (#{User.select('email').to_sql})"
 
   after_save :uninvite_users, if: ->{ email_changed? }
+  delegate :not_updated_recently?, to: :update_time
+
+  class UpdateTime < Struct.new(:update_time)
+    def not_updated_recently?
+      update_time < 365.day.ago
+    end
+  end
 
   def uninvite_users
     users.invited_not_accepted.update_all(organisation_id: nil)
@@ -225,7 +232,7 @@ class Organisation < ActiveRecord::Base
     table[:name].matches(key)
   end
   def not_updated_recently_or_has_no_owner?
-    (self.users.empty? || (Time.now - updated_at) > 365.day)
+    self.users.empty? || not_updated_recently?
   end
   def remove_errors_with_address
     errors_hash = errors.to_hash
@@ -241,4 +248,8 @@ class Organisation < ActiveRecord::Base
       end
     end
   end
+  def update_time
+    UpdateTime.new updated_at
+  end
+
 end

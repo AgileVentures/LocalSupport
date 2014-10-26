@@ -23,6 +23,22 @@ describe Organisation do
     @org3.categories << @category1
     @org3.save!
   end
+
+  describe '#not_updated_recently?' do
+    let(:org){FactoryGirl.create(:organisation, updated_at: Time.now)}
+
+    it{expect(org.not_updated_recently?).to be_false}
+
+    context "updated too long ago" do
+      let(:org){FactoryGirl.create(:organisation, updated_at: 365.day.ago)}
+      it{expect(org.not_updated_recently?).to be_true}
+    end
+
+    context "when updated recently" do
+      let(:org){FactoryGirl.create(:organisation, updated_at: 364.day.ago)}
+      it{expect(org.not_updated_recently?).to be_false}
+    end
+  end
   describe "#gmaps4rails_marker_picture" do
 
     context 'no user' do
