@@ -46,10 +46,10 @@ class ApplicationController < ActionController::Base
   def set_flash_warning_reminder_to_update_details usr
     #if usr.organisation && (usr.organisation.updated_at < 365.day.ago)
       msg = "You have not updated your details in over a year!"
-      if flash[:info]
-        flash[:info] << msg
+      if flash[:warning]
+        flash[:warning] << msg
       else
-        flash[:info] = msg
+        flash[:warning] = msg
       end
     #end
   end
