@@ -1,5 +1,5 @@
-module Organisations
-  module WithoutUsers
+module ControllerExtensions
+  module Organisations::WithoutUsers
     include Defaults
 
     def set_params

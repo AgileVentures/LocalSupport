@@ -1,5 +1,5 @@
-module Organisations
-  module Index
+module ControllerExtensions
+  module Organisations::Index
     include Defaults
 
     def set_params

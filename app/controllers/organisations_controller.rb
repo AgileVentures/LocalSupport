@@ -20,7 +20,9 @@ class OrganisationsController < ApplicationController
   # GET /organisations.json
   def index
     params[:service] ||= 'index'
-    apply_service
+    extend ControllerExtension.for self
+    set_params
+    set_instance_variables
     render :template => params[:template].prepend('organisations/'), :layout => params[:layout]
   end
 
@@ -112,9 +114,5 @@ class OrganisationsController < ApplicationController
       redirect_to organisation_path(params[:id]) and return false
     end
     true
-  end
-
-  def apply_service
-    ControllerExtension.for(self)
   end
 end

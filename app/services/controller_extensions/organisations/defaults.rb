@@ -1,5 +1,5 @@
-module Organisations
-  module Defaults
+module ControllerExtensionss
+  module Organisations::Defaults
     def set_params
       defaults = {
         layout: 'two_columns',

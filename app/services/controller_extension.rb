@@ -1,15 +1,13 @@
 module ControllerExtension
   def self.for(controller)
-    controller.extend lookup_service(controller)
-    controller.set_params
-    controller.set_instance_variables
-  end
-
-  def self.lookup_service(controller)
     controller.params
               .fetch(:service)
-              .prepend(controller.controller_name + '/')
+              .prepend(name_of controller)
               .camelize
               .constantize
+  end
+
+  def self.name_of(controller)
+    "controller_extensions/#{controller.controller_name}/"
   end
 end
