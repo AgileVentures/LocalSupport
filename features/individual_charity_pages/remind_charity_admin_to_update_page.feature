@@ -21,7 +21,7 @@ Feature: Charity worker is reminded annually to edit own charity profile
     And I visit the home page
     And I click "Login"
     When I sign in as "admin@friendly.org" with password "pppppppp" with javascript
-    Then I should see "You have not updated your details in over a year!" in the flash warning
+    Then I should see the call to update details for organisation "Friendly"
   @javascript 
   @time_travel
   Scenario: Org owner is not reminded to update details prior to a year
@@ -29,4 +29,4 @@ Feature: Charity worker is reminded annually to edit own charity profile
     And I visit the home page
     And I click "Login"
     When I sign in as "admin@friendly.org" with password "pppppppp" with javascript
-    Then I should not see "You have not updated your details in over a year!" in the flash warning
+    Then I should not see the call to update details for organisation "Friendly"

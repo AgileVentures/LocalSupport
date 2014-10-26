@@ -43,17 +43,6 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
-  def set_flash_warning_reminder_to_update_details usr
-    #if usr.organisation && (usr.organisation.updated_at < 365.day.ago)
-      msg = "You have not updated your details in over a year!"
-      if flash[:warning]
-        flash[:warning] << msg
-      else
-        flash[:warning] = msg
-      end
-    #end
-  end
-
   # Devise Invitable hook
   # Since users are invited to be org admins, we're delivering them to their page
   def after_accept_path_for(resource)
@@ -94,5 +83,16 @@ class ApplicationController < ActionController::Base
 
   def assign_footer_page_links
     @footer_page_links = Page.visible_links
+  end
+
+  def set_flash_warning_reminder_to_update_details usr
+    if usr.organisation && (usr.organisation.updated_at < 365.day.ago)
+      msg = "You have not updated your details in over a year! Please click #{view_context.link_to('here', edit_organisation_path(usr.organisation))} to update your details now.".html_safe
+      if flash[:warning]
+        flash[:warning] << msg
+      else
+        flash[:warning] = msg
+      end
+    end
   end
 end
