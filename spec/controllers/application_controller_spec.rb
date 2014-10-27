@@ -41,7 +41,7 @@ describe ApplicationController, :helpers => :controllers do
     user.stub :pending_organisation_id
     controller.after_sign_in_path_for(user).should eq '/'
 
-    user.stub :organisation => mock_model(Organisation, id: 1, not_updated_recently?: false)
+    user.stub :organisation => mock_model(Organisation, id: 1, not_updated_recently?: true)
     controller.after_sign_in_path_for(user).should eq '/organisations/1'
 
     session[:previous_url] = 'i/was/here'

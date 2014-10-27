@@ -33,12 +33,9 @@ class Organisation < ActiveRecord::Base
   scope :without_matching_user_emails, :conditions => "organisations.email NOT IN (#{User.select('email').to_sql})"
 
   after_save :uninvite_users, if: ->{ email_changed? }
-  delegate :not_updated_recently?, to: :update_time
 
-  class UpdateTime < Struct.new(:update_time)
-    def not_updated_recently?
-      update_time < 365.day.ago
-    end
+  def not_updated_recently?
+    updated_at < 365.day.ago
   end
 
   def uninvite_users
@@ -248,8 +245,4 @@ class Organisation < ActiveRecord::Base
       end
     end
   end
-  def update_time
-    UpdateTime.new updated_at
-  end
-
 end

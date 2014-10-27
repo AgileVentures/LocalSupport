@@ -21,6 +21,7 @@ Feature: Charity worker is reminded annually to edit own charity profile
     And I visit the home page
     And I click "Login"
     When I sign in as "admin@friendly.org" with password "pppppppp" with javascript
+    Then show me the page
     Then I should see the call to update details for organisation "Friendly"
   @javascript 
   @time_travel
