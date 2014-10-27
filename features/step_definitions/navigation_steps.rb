@@ -171,7 +171,7 @@ end
 Then(/^I should( not)? see the call to update details for organisation "(.*)"/) do |negative, org_name|
     org = Organisation.find_by_name org_name
     expectation_method = negative ? :should_not : :should
-    message = "You have not updated your details in over a year! Please click here to update your details now."
+    message = "You have not updated your details in over a year! Please click here to update now."
     page.send(expectation_method, have_css('div#flash_warning', :text => message))
 
     within(negative.nil? ? 'div#flash_warning' : 'body') do

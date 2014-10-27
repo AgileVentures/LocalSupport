@@ -87,7 +87,7 @@ class ApplicationController < ActionController::Base
 
   def set_flash_warning_reminder_to_update_details usr
     if usr.organisation && usr.organisation.not_updated_recently?
-      msg = "You have not updated your details in over a year! Please click #{view_context.link_to('here', edit_organisation_path(usr.organisation))} to update your details now.".html_safe
+      msg = "You have not updated your details in over a year! Please click #{view_context.link_to('here', edit_organisation_path(usr.organisation))} to update now.".html_safe
       if flash[:warning]
         flash[:warning] << msg
       else
