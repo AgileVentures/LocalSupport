@@ -3,7 +3,7 @@ LocalSupport::Application.routes.draw do
   devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}
 
   get 'contributors' => 'contributors#show'
-  match 'organisations/search' => 'organisations#search'
+  match 'organisations/search' => 'organisations#search', via: [:get, :post]
 
   get '/organisation_reports/without_users' => 'organisation_reports#without_users_index', as: :organisations_report
   post '/invitations' => 'invitations#create', as: :invitations
@@ -13,7 +13,7 @@ LocalSupport::Application.routes.draw do
   delete '/user_reports' => 'user_reports#destroy'
   get '/user_reports/invited' => 'user_reports#invited', as: :invited_users_report
 
-  resources :pages
+  resources :pages, only: [:show, :update, :destroy], as: :page
   resources :volunteer_ops, :only => [:index, :edit, :show, :update, :destroy]
   resources :organisations do
     resources :volunteer_ops, :only => [:new, :create]
@@ -21,9 +21,9 @@ LocalSupport::Application.routes.draw do
   resources :users
 
   # so that static pages are linked directly instead of via /pages/:id
-  get ':id', to: 'pages#show', as: :page
-  put ':id', to: 'pages#update', as: :page
-  delete ':id', to: 'pages#destroy', as: :page
+  #get ':id', to: 'pages#show', as: :page
+  #put ':id', to: 'pages#update', as: :page
+  #delete ':id', to: 'pages#destroy', as: :page
 
   post 'cookies/allow', to: 'application#allow_cookie_policy'
 

@@ -76,6 +76,9 @@ class OrganisationsController < ApplicationController
   # PUT /organisations/1.json
   def update
     @organisation = Organisation.find(params[:id])
+    params.require(:organisation).permit(:description, :address, :publish_address, :postcode, :email, :publish_email, :website, :publish_phone, :donation_info,
+      :id, :commit, :name, :telephone, :organisation_email_to_add, category_organisations_attributes: [:category_id, :id, :_destroy])
+    #.permit(:name, :age, pets_attributes: [ :name, :category ]))
     params[:organisation][:admin_email_to_add] = params[:organisation_admin_email_to_add] if params[:organisation]
     return false unless user_can_edit? @organisation
     if @organisation.update_attributes_with_admin(params[:organisation])

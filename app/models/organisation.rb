@@ -20,7 +20,7 @@ class Organisation < ActiveRecord::Base
   has_many :categories, :through => :category_organisations
   # Setup accessible (or protected) attributes for your model
   # prevents mass assignment on other fields not in this list
-  attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info, :publish_address, :publish_phone, :publish_email, :category_organisations_attributes
+  #attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info, :publish_address, :publish_phone, :publish_email, :category_organisations_attributes
   accepts_nested_attributes_for :users
   accepts_nested_attributes_for :category_organisations,
                                 :allow_destroy => true
@@ -59,6 +59,7 @@ class Organisation < ActiveRecord::Base
   def update_attributes_with_admin(params)
     email = params[:admin_email_to_add]
     if email.blank?
+      params.delete :admin_email_to_add
       return self.update_attributes(params)   # explicitly call with return to return boolean instead of nil
     end
     #Transactions are protective blocks where SQL statements are only permanent if they can all succeed as one atomic action.
@@ -74,6 +75,9 @@ class Organisation < ActiveRecord::Base
     end
   end
 
+  def self.make_hash
+    0.upto(33){ |i| {(i.to_s.to_sym) => [:_destroy, :category_id]}}
+  end
   def self.search_by_keyword(keyword)
      keyword = "%#{keyword}%"
      self.where(contains_description(keyword).or(contains_name(keyword)))

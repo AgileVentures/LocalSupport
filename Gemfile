@@ -1,7 +1,8 @@
 source 'http://rubygems.org'
 
 ruby '1.9.3'
-gem 'rails', '3.2.19'
+gem 'rails', '4.0.10'
+#gem 'protected_attributes'
 gem 'pg'
 gem 'devise', '3.0.3'
 gem 'devise_invitable', '~> 1.2.1'
@@ -83,7 +84,7 @@ group :test do
 end
 
 gem 'therubyracer'
-gem 'gmaps4rails'
+gem 'gmaps4rails', '1.5.6'
 #gem 'mongrel'
 gem 'kaminari'
 gem 'unicorn'
@@ -96,4 +97,4 @@ gem 'url_validator'
 
 
 gem 'rails_autolink'
-gem 'acts_as_paranoid'
+gem "paranoia", "~> 2.0"
