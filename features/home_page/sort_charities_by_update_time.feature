@@ -15,7 +15,7 @@ Background: organisations have been added to database
 Scenario: Most recently updated charity shows at the top of the list 
   Given I update the "Harrow Elders Association" 
   And I visit the home page
-  Then I should see "Harrow Elders Association" before "Age UK"
+  Then I should see "Harrow Elders Association" before "Harrow Age UK"
   And I should see "Harrow Age UK" before "Harrow Bereavement Counselling"
  
 Scenario: Most recently updated charity shows at the top of the list 
@@ -24,4 +24,5 @@ Scenario: Most recently updated charity shows at the top of the list
   And I should see "Harrow Age UK" before "Harrow Elders Association"
   When I update the "Harrow Elders Association"
   And I search for "Harrow"
+  And I visit the home page
   Then I should see "Harrow Elders Association" before "Harrow Bereavement Counselling"

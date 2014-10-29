@@ -37,6 +37,7 @@ class VolunteerOpsController < ApplicationController
   end
 
   def update
+    params.permit!
     @volunteer_op = VolunteerOp.find(params[:id])
     @organisation = @volunteer_op.organisation
     if @volunteer_op.update_attributes(params[:volunteer_op])

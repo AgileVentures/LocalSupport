@@ -20,6 +20,7 @@ class OrganisationsController < ApplicationController
   # GET /organisations.json
   def index
     @organisations = Organisation.order_by_most_recent
+    debugger
     @json = gmap4rails_with_popup_partial(@organisations,'popup')
     @category_options = Category.html_drop_down_options
   end
@@ -59,6 +60,7 @@ class OrganisationsController < ApplicationController
   def create
     # model filters for logged in users, but we check here if that user is an admin
     # TODO refactor that to model responsibility?
+     params.permit!
      unless current_user.try(:admin?)
        flash[:notice] = PERMISSION_DENIED
        redirect_to organisations_path and return false
@@ -76,8 +78,9 @@ class OrganisationsController < ApplicationController
   # PUT /organisations/1.json
   def update
     @organisation = Organisation.find(params[:id])
-    params.require(:organisation).permit(:description, :address, :publish_address, :postcode, :email, :publish_email, :website, :publish_phone, :donation_info,
-      :id, :commit, :name, :telephone, :organisation_email_to_add, category_organisations_attributes: [:category_id, :id, :_destroy])
+    params.permit!
+    #params.require(:organisation).permit(:description, :address, :publish_address, :postcode, :email, :publish_email, :website, :publish_phone, :donation_info,
+      #:id, :commit, :name, :telephone, :organisation_email_to_add, category_organisations_attributes: [:category_id, :id, :_destroy])
     #.permit(:name, :age, pets_attributes: [ :name, :category ]))
     params[:organisation][:admin_email_to_add] = params[:organisation_admin_email_to_add] if params[:organisation]
     return false unless user_can_edit? @organisation
