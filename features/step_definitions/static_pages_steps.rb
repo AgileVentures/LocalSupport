@@ -33,11 +33,11 @@ Given(/^I remove "(.*?)" from the footer$/) do |permalink|
 end
 
 Then(/^the "(.*?)" link is not in the footer$/) do |link|
-  expect(page.has_xpath? "//footer//a[@href=\"\/#{link}\"]").to be_false
+  expect(page.has_xpath? "//footer//a[@href=\"\/#{link}\"]").to be false
 end
 
 Then(/^the "(.*?)" link is in the footer$/) do |link|
-  expect(page.has_xpath? "//footer//a[@href=\"\/#{link}\"]").to be_true
+  expect(page.has_xpath? "//footer//a[@href=\"\/#{link}\"]").to be true
 end
 
 And(/^I add "(.*?)" to the footer$/) do |arg1|
