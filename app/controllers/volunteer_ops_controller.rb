@@ -20,6 +20,7 @@ class VolunteerOpsController < ApplicationController
   end
 
   def create
+    params.permit!
     params[:volunteer_op][:organisation_id] = params[:organisation_id]
     @volunteer_op = VolunteerOp.new(params[:volunteer_op])
     if @volunteer_op.save
