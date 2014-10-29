@@ -13,7 +13,7 @@ LocalSupport::Application.routes.draw do
   delete '/user_reports' => 'user_reports#destroy'
   get '/user_reports/invited' => 'user_reports#invited', as: :invited_users_report
 
-  resources :pages, only: [:show, :update, :destroy], as: :page
+  resources :pages, only: [:index, :new, :create, :edit]
   resources :volunteer_ops, :only => [:index, :edit, :show, :update, :destroy]
   resources :organisations do
     resources :volunteer_ops, :only => [:new, :create]
@@ -21,9 +21,9 @@ LocalSupport::Application.routes.draw do
   resources :users
 
   # so that static pages are linked directly instead of via /pages/:id
-  #get ':id', to: 'pages#show', as: :page
-  #put ':id', to: 'pages#update', as: :page
-  #delete ':id', to: 'pages#destroy', as: :page
+  get ':id', to: 'pages#show', as: :page
+  patch ':id', to: 'pages#update', as: nil
+  delete ':id', to: 'pages#destroy', as: nil
 
   post 'cookies/allow', to: 'application#allow_cookie_policy'
 

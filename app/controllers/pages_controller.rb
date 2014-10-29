@@ -39,7 +39,7 @@ class PagesController < ApplicationController
   # PUT /pages/:permalink
   def update
     @page = Page.find_by_permalink!(params[:id])
-
+    params.permit!
     if @page.update_attributes(params[:page])
       redirect_to @page, notice: 'Page was successfully updated.'
     else
