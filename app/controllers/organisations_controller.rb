@@ -20,7 +20,6 @@ class OrganisationsController < ApplicationController
   # GET /organisations.json
   def index
     @organisations = Organisation.order_by_most_recent
-    debugger
     @json = gmap4rails_with_popup_partial(@organisations,'popup')
     @category_options = Category.html_drop_down_options
   end

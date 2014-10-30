@@ -24,13 +24,13 @@ class Organisation < ActiveRecord::Base
   accepts_nested_attributes_for :users
   accepts_nested_attributes_for :category_organisations,
                                 :allow_destroy => true
-  scope :order_by_most_recent, order('updated_at DESC')
-  scope :not_null_email, :conditions => "organisations.email <> ''"
+  scope :order_by_most_recent, -> {order('updated_at DESC')}
+  scope :not_null_email, lambda {where("organisations.email <> ''")}
   # Should we not use :includes, which pulls in extra data? http://nlingutla.com/blog/2013/04/21/includes-vs-joins-in-rails/
   # Alternative => :joins('LEFT OUTER JOIN users ON users.organisation_id = organisations.id)
   # Difference between inner and outer joins: http://stackoverflow.com/a/38578/2197402
   scope :null_users, lambda { includes(:users).where("users.organisation_id IS NULL") }
-  scope :without_matching_user_emails, :conditions => "organisations.email NOT IN (#{User.select('email').to_sql})"
+  scope :without_matching_user_emails, lambda {where("organisations.email NOT IN (#{User.select('email').to_sql})")}
 
   after_save :uninvite_users, if: ->{ email_changed? }
 
@@ -58,8 +58,8 @@ class Organisation < ActiveRecord::Base
   # This method both adds new editors and/or updates attributes
   def update_attributes_with_admin(params)
     email = params[:admin_email_to_add]
+    params.delete :admin_email_to_add
     if email.blank?
-      params.delete :admin_email_to_add
       return self.update_attributes(params)   # explicitly call with return to return boolean instead of nil
     end
     #Transactions are protective blocks where SQL statements are only permanent if they can all succeed as one atomic action.
