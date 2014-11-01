@@ -29,7 +29,7 @@ class Organisation < ActiveRecord::Base
   # Should we not use :includes, which pulls in extra data? http://nlingutla.com/blog/2013/04/21/includes-vs-joins-in-rails/
   # Alternative => :joins('LEFT OUTER JOIN users ON users.organisation_id = organisations.id)
   # Difference between inner and outer joins: http://stackoverflow.com/a/38578/2197402
-  scope :null_users, lambda { includes(:users).where("users.organisation_id IS NULL") }
+  scope :null_users, lambda { includes(:users).where("users.organisation_id IS NULL").references(:users) }
   scope :without_matching_user_emails, lambda {where("organisations.email NOT IN (#{User.select('email').to_sql})")}
 
   after_save :uninvite_users, if: ->{ email_changed? }

@@ -5,7 +5,7 @@ class Page < ActiveRecord::Base
 
   # Provides links for page footers
   def self.visible_links
-    pages = Page.find_all_by_link_visible(true)
+    pages = Page.where(link_visible: true)
     pages.map do |page|
       {:name => page.name, :permalink => page.permalink}
     end

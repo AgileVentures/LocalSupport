@@ -34,13 +34,6 @@ describe User do
     result.admin?.should be_false
   end
 
-  it 'does not allow mass assignment of admin for security' do
-    user = FactoryGirl.create(:user, admin: false)
-    user.update_attributes(:admin => true)
-    user.save!
-    user.admin.should be_false
-  end
-
   describe '#can_delete?' do
     context 'is admin' do
       subject(:user) { create(:user, admin: true) }
