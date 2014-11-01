@@ -84,7 +84,7 @@ class Organisation < ActiveRecord::Base
   end
 
   def self.filter_by_category(category_id)
-    return scoped unless category_id.present?
+    return all unless category_id.present?
     self.joins(:categories).where(is_in_category(category_id)) #do we need to sanitize category_id?
   end
 
