@@ -20,8 +20,8 @@ group :development, :test do
   gem 'execjs'
   gem 'aruba'
   gem 'rack_session_access'
-  gem 'jasmine'
-  gem 'jasmine-jquery-rails'
+  gem 'jasmine', '2.0.0'
+  gem 'jasmine-jquery-rails', '2.0.2'
   #gem 'better_errors'
   gem 'binding_of_caller' # plays well with better_errors
 end
