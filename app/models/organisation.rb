@@ -75,9 +75,6 @@ class Organisation < ActiveRecord::Base
     end
   end
 
-  def self.make_hash
-    0.upto(33){ |i| {(i.to_s.to_sym) => [:_destroy, :category_id]}}
-  end
   def self.search_by_keyword(keyword)
      keyword = "%#{keyword}%"
      self.where(contains_description(keyword).or(contains_name(keyword)))

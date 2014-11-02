@@ -55,7 +55,7 @@ Feature: This is my organisation
     And I click "toggle_link"
     When I sign up as "normal_user@myorg.com" with password "pppppppp" and password confirmation "pppppppp"
     Then I should see "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
-    #    And I should be on the show page for the organisation named "Helpful Folk"
+    And I should be on the show page for the organisation named "Helpful Folk"
     Then I should see "You have requested admin status for Helpful Folk"
     # And I should not see a link or button "This is my organisation"  <-- button still appears as we have no current_user ...
     And "normal_user@myorg.com"'s request for "Helpful Folk" should be persisted

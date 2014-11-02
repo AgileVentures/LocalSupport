@@ -2,7 +2,6 @@ source 'http://rubygems.org'
 
 ruby '1.9.3'
 gem 'rails', '4.0.10'
-#gem 'protected_attributes'
 gem 'pg'
 gem 'devise', '3.0.3'
 gem 'devise_invitable', '~> 1.2.1'
