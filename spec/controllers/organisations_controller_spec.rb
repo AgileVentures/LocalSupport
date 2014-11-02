@@ -310,14 +310,14 @@ describe OrganisationsController do
 
       describe "with valid params" do
         it "assigns a newly created organisation as @organisation" do
-          Organisation.stub(:new).with({'these' => 'params'}) { double_organisation(:save => true, :name => 'org') }
+          Organisation.stub(:new){ double_organisation(:save => true, :name => 'org') }
           post :create, :organisation => {'these' => 'params'}
           assigns(:organisation).should be(double_organisation)
         end
 
         it "redirects to the created organisation" do
           Organisation.stub(:new) { double_organisation(:save => true) }
-          post :create, :organisation => {}
+          post :create, :organisation => {name: "blah"}
           response.should redirect_to(organisation_url(double_organisation))
         end
       end
@@ -326,14 +326,14 @@ describe OrganisationsController do
         after(:each) { response.should render_template 'layouts/two_columns' }
 
         it "assigns a newly created but unsaved organisation as @organisation" do
-          Organisation.stub(:new).with({'these' => 'params'}) { double_organisation(:save => false) }
+          Organisation.stub(:new){ double_organisation(:save => false) }
           post :create, :organisation => {'these' => 'params'}
           assigns(:organisation).should be(double_organisation)
         end
 
         it "re-renders the 'new' template" do
           Organisation.stub(:new) { double_organisation(:save => false) }
-          post :create, :organisation => {}
+          post :create, :organisation => {name: "great"}
           response.should render_template("new")
         end
       end
@@ -395,13 +395,13 @@ describe OrganisationsController do
 
         it "assigns the requested organisation as @organisation" do
           Organisation.stub(:find) { double_organisation(:update_attributes_with_admin => true) }
-          put :update, :id => "1"
+          put :update, :id => "1", :organisation => {'these' => 'params'}
           assigns(:organisation).should be(double_organisation)
         end
 
         it "redirects to the organisation" do
           Organisation.stub(:find) { double_organisation(:update_attributes_with_admin => true) }
-          put :update, :id => "1"
+          put :update, :id => "1", :organisation => {'these' => 'params'}
           response.should redirect_to(organisation_url(double_organisation))
         end
       end
@@ -411,13 +411,13 @@ describe OrganisationsController do
 
         it "assigns the organisation as @organisation" do
           Organisation.stub(:find) { double_organisation(:update_attributes_with_admin => false) }
-          put :update, :id => "1"
+          put :update, :id => "1", :organisation => {'these' => 'params'}
           assigns(:organisation).should be(double_organisation)
         end
 
         it "re-renders the 'edit' template" do
           Organisation.stub(:find) { double_organisation(:update_attributes_with_admin => false) }
-          put :update, :id => "1"
+          put :update, :id => "1", :organisation => {'these' => 'params'}
           response.should render_template("edit")
         end
       end
@@ -489,6 +489,25 @@ describe OrganisationsController do
         delete :destroy, :id => '37'
         expect(response).to redirect_to new_user_session_path
       end
+    end
+  end
+  describe ".permit" do 
+    it "returns the cleaned params" do
+      organisation_params = { organisation: {name: 'Happy Friends', description: 'Do nice things', address: '22 Pinner Road', 
+                             postcode: '12345', email: 'happy@annoting.com', website: 'www.happyplace.com', 
+                             telephone: '123-456-7890', donation_info: 'www.giveusmoney.com',
+                             publish_address: true, publish_phone: true, publish_email: true, 
+                             category_organisations_attributes: {'1' => {"_destroy" => "1", "id" => "1", "category_id" => "5"}}
+                             }}
+      params = ActionController::Parameters.new.merge(organisation_params)
+      permitted_params = OrganisationsController::OrganisationParams.build(params)
+      expect(permitted_params).to eq({name: 'Happy Friends', description: 'Do nice things', address: '22 Pinner Road', 
+                                      postcode: '12345', email: 'happy@annoting.com', website: 'www.happyplace.com', 
+                                      telephone: '123-456-7890', donation_info: 'www.giveusmoney.com',
+                                      publish_address: true, publish_phone: true, publish_email: true,
+                                      category_organisations_attributes: {'1' => {"_destroy" => "1", "id" => "1", "category_id" => "5"}}
+                                      }.with_indifferent_access)
+      #attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info, :publish_address, :publish_phone, :publish_email, :category_organisations_attributes
     end
   end
 end
