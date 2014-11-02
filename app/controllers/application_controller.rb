@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
         pages
     )
   end
+  # Devise wiki suggests we need to make this return nil for the after_inactive_signup_path_for to be called in registrationscontroller
+  # https://github.com/plataformatec/devise/wiki/How-To%3a-Change-the-redirect-path-after-destroying-a-session-i.e.-signing-out
+  #Also documented on last stackoverflow answer here:
+  #http://stackoverflow.com/questions/21571569/devise-after-sign-up-path-for-not-being-called
   def stored_location
 
   end
