@@ -255,7 +255,7 @@ describe PagesController do
       pages_params = { page: {content: 'stuff', name: 'this', permalink: 'here', link_visible: false}}
       params = ActionController::Parameters.new.merge(pages_params)
       permitted_params = PagesController::PageParams.build(params)
-      expect(permitted_params).to eq(pages_params[:pages].with_indifferent_access)
+      expect(permitted_params).to eq(pages_params.with_indifferent_access[:page])
     end
   end
 end
