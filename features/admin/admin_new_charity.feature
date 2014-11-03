@@ -12,6 +12,18 @@ Feature: Admin creating charity
       | email                         | password | admin | confirmed_at         | organisation |
       | registered-user-1@example.com | pppppppp | true  | 2007-01-01  10:00:00 | Friendly     |
       | registered-user-2@example.com | pppppppp | false | 2007-01-01  10:00:00 |              |
+    And the following categories exist:
+      | name              | charity_commission_id |
+      | Animal welfare    | 101                   |
+      | Child welfare     | 102                   |
+      | Feed the hungry   | 103                   |
+      | Accommodation     | 203                   |
+      | General           | 204                   |
+      | Health            | 202                   |
+      | Education         | 303                   |
+      | Give them things  | 304                   |
+      | Teach them things | 305                   |
+ 
     And cookies are approved
 
   Scenario: Unsuccessfully attempt to create charity without being signed-in
@@ -38,9 +50,15 @@ Feature: Admin creating charity
     Given I am signed in as a admin
     Given I visit the show page for the organisation named "Friendly Clone"
     And I follow "New Organisation"
-    And I fill in the new charity page validly
+    And I fill in the new charity page validly including the categories:
+    | name           |
+    | Feed the hungry|
+    | Accommodation  |
     And I press "Create Organisation"
     Then I should see "Organisation was successfully created."
+    And I should see "Feed the hungry"
+    And I should see "Accommodation"
+    And I should not see "General"
 
   Scenario: Non-admin unsuccessfully attempts to create an organisation
     Given I am signed in as a non-admin
