@@ -77,7 +77,17 @@ When /^I search for "(.*?)"$/ do |text|
   click_button 'Submit'
 end
 
-Given /^I fill in the new charity page validly$/ do
+Given (/^I fill in the new charity page validly$/) do
+  stub_request_with_address("64 pinner road")
+  fill_in 'organisation_address', :with => '64 pinner road'
+  fill_in 'organisation_name', :with => 'Friendly charity'
+end
+Given (/^I fill in the new charity page validly including the categories:$/) do |categories_table|
+  categories_table.hashes.each do |cat|
+    steps %Q{
+      And I check the category "#{cat[:name]}"
+    }
+  end
   stub_request_with_address("64 pinner road")
   fill_in 'organisation_address', :with => '64 pinner road'
   fill_in 'organisation_name', :with => 'Friendly charity'
@@ -376,7 +386,11 @@ When /^I delete "(.*?)"$/ do |email|
     click_link 'Delete'
   end
 end
-
+Then(/^user "(.*?)" should exist$/) do |user_email|
+  visit users_report_path
+  user_id = User.find_by_email(user_email).id
+  find("tr##{user_id}", text: user_email).should_not be_nil
+end
 Then /^user "(.*?)" is( not)? deleted$/ do |email, negative|
   expectation = negative ? :not_to : :to
   expect(User.find_by_email email).send(expectation, be_nil)

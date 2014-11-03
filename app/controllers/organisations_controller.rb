@@ -41,6 +41,7 @@ class OrganisationsController < ApplicationController
   # GET /organisations/new.json
   def new
     @organisation = Organisation.new
+    @categories_start_with = Category.first_category_name_in_each_type
   end
 
   # GET /organisations/1/edit
