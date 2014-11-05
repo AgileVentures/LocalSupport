@@ -34,13 +34,6 @@ describe User do
     result.admin?.should be_false
   end
 
-  it 'does not allow mass assignment of admin for security' do
-    user = FactoryGirl.create(:user, admin: false)
-    user.update_attributes(:admin => true)
-    user.save!
-    user.admin.should be_false
-  end
-
   describe '#can_delete?' do
     context 'is admin' do
       subject(:user) { create(:user, admin: true) }
@@ -283,11 +276,11 @@ describe User do
 
   describe 'destroy uses acts_as_paranoid' do
     let(:user){FactoryGirl.create :user}
-    it 'can be recovered' do
+    it 'can be restored' do
       email = user.email
       user.destroy
       expect(User.find_by_email(email)).to eq nil
-      User.only_deleted.find_by_email(email).recover
+      User.with_deleted.find_by_email(email).restore
       expect(User.find_by_email(email)).to eq user
     end
   end

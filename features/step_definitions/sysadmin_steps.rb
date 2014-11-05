@@ -3,5 +3,5 @@ require 'uri-handler'
 include ApplicationHelper
 
 And(/^sysadmin restores "(.*?)" from the console$/) do |email|
-  User.only_deleted.find_by_email(email).recover
+  User.with_deleted.find_by_email(email).restore
 end

@@ -15,7 +15,7 @@ describe "volunteer_ops/_popup.html.erb" do
   end
 
   before(:each) do
-    VolunteerOp.stub(:find_all_by_organisation_id).and_return([op1, op2])
+    VolunteerOp.stub(:where).and_return([op1, op2])
     assign(:org, org)
     render
   end

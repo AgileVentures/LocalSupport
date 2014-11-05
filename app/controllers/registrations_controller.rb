@@ -7,7 +7,9 @@ class RegistrationsController < Devise::RegistrationsController
   end
   protected
     def after_inactive_sign_up_path_for(resource)
-      if resource.pending_organisation
+      if  session[:pending_organisation_id]
+        resource.pending_organisation_id = session[:pending_organisation_id]
+        resource.save!
         update_message_for_admin_status
         return organisation_path resource.pending_organisation_id 
       else

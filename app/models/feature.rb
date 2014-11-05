@@ -27,7 +27,7 @@
 #   constraints: lambda { |request| Feature.active?(:my_feature_name) }
 
 class Feature < ActiveRecord::Base
-  attr_accessible :name, :active
+  #attr_accessible :name, :active
   validates :name, presence: true, uniqueness:true, allow_blank: false
 
   def self.deactivate(feature)
