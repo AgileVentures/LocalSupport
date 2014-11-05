@@ -11,6 +11,14 @@ describe VolunteerOpsController do
   let(:user) { double :user }
   let(:org) { double :organisation, id: '1' }
   let!(:op) { stub_model VolunteerOp } # stack level too deep errors if stub_model is loaded lazily in some contexts
+  describe ".permit" do 
+    it "returns the cleaned params" do
+      vol_ops_params = { volunteer_op: {title: "Opp", organisation_id: "1", description: "Great op"}}
+      params = ActionController::Parameters.new.merge(vol_ops_params)
+      permitted_params = VolunteerOpsController::VolunteerOpParams.build(params)
+      expect(permitted_params).to eq({title: "Opp", organisation_id: "1", description: "Great op"}.with_indifferent_access)
+    end
+  end
 
   describe 'GET index' do
     before :each do
@@ -186,17 +194,17 @@ describe VolunteerOpsController do
       end
       it 'sets a flash message for success' do
         expect(@op2).to receive(:update_attributes).and_return true
-        put :update, {:id => @op2.to_param}
+        put :update, {volunteer_op: {title: "blah"}, id: @op2.to_param}
         expect(flash[:notice]).not_to be_nil
       end
       it 'redirects to the show page on success' do
         expect(@op2).to receive(:update_attributes).and_return true
-        put :update, {:id => @op2.to_param}
+        put :update, {volunteer_op: {title: "blah"}, id: @op2.to_param}
         response.should redirect_to volunteer_op_path(@op2)
       end
       it 'redirects to the edit page on failure' do
         expect(@op2).to receive(:update_attributes).and_return false
-        put :update, {:id => @op2.to_param}
+        put :update, {volunteer_op: {title: "blah"}, id: @op2.to_param}
         response.should render_template 'edit'
       end
     end
@@ -206,7 +214,8 @@ describe VolunteerOpsController do
       end
       it 'does not update the model' do
         expect(@op2).not_to receive(:update_attributes).and_return true
-        put :update, {:id => @op2.to_param}, :volunteer_op => {:title => "new title", :description => "new description"}
+        put :update, {:volunteer_op => {:title => "new title", :description => "new description"}, 
+          :id => @op2.to_param}
       end
     end
   end
