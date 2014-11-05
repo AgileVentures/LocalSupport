@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '1.9.3'
+ruby '2.0.0'
 gem 'rails', '4.0.10'
 gem 'pg'
 gem 'devise', '3.0.3'
@@ -19,6 +19,7 @@ group :development, :test do
   gem 'rspec-rails', '2.14.2'
   gem 'execjs'
   gem 'aruba'
+  gem 'byebug'
   gem 'rack_session_access'
   gem 'jasmine', '2.0.0'
   gem 'jasmine-jquery-rails', '2.0.2'
@@ -28,7 +29,7 @@ end
 
 group :development do
   #gem 'ruby-debug19', :require => 'ruby-debug'
-  gem 'debugger', '~> 1.6.8'
+  #gem 'debugger', '~> 1.6.8'
   gem 'railroady'
 end
 
