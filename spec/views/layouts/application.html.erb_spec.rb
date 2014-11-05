@@ -19,17 +19,17 @@ describe 'layouts/application.html.erb', :type => :feature do
 
     it 'renders site title' do
       render
-      expect(rendered).to contain 'Harrow Community Network'
+      expect(rendered).to have_content 'Harrow Community Network'
     end
 
     it 'renders site tag line' do
       render
-      expect(rendered).to contain 'Search for local voluntary and community organisations'
+      expect(rendered).to have_content 'Search for local voluntary and community organisations'
     end
 
     it 'renders Organisation sign in form' do
       render
-      expect(rendered).to have_selector('form', :id => 'loginForm')
+      expect(rendered).to have_selector('form#loginForm')
     end
 
     it 'renders sign in form fields correctly' do
@@ -46,7 +46,7 @@ describe 'layouts/application.html.erb', :type => :feature do
 
     it 'renders new Organisation sign up form' do
       render
-      expect(rendered).to have_selector('form', :id => 'registerForm')
+      expect(rendered).to have_selector('form#registerForm')
     end
 
     it 'renders sign up form fields correctly' do
@@ -87,7 +87,7 @@ describe 'layouts/application.html.erb', :type => :feature do
     
     it 'login form should be visible', :js => true do
       render
-      expect(rendered).not_to have_selector('form#loginForm', style: 'height: 0px;')
+      expect(rendered).not_to have_selector(:xpath, "//form[@class='loginForm'][contains(@style, 'height: 0px\;')]")
     end
 
     it 'should not have any flash messages' do

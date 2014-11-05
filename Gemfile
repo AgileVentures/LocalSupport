@@ -39,7 +39,6 @@ group :test do
   gem 'ZenTest'
   gem 'capybara', '2.4.1'
   gem "capybara-webkit", "~> 1.1.0"
-  gem 'webrat'
   gem 'factory_girl_rails', :require => false
   gem 'webmock'
   gem 'uri-handler'
