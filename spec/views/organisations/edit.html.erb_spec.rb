@@ -10,9 +10,7 @@ describe "organisations/edit.html.erb" do
   it "renders the edit organisation form" do
     view.lookup_context.prefixes = %w[organisations application]
     render
-
-    rendered.should have_selector("form", :action => organisation_path(@organisation), :method => "post") do |form|
-    end
+    rendered.should have_xpath("//form[@action='#{organisation_path(@organisation)}'][@method='post']")
   end
 
   it "renders the edit organisation form with tooltips" do
@@ -98,22 +96,22 @@ describe "organisations/edit.html.erb" do
 
   it "renders a checkbox to make address public" do
     render
-    rendered.should have_selector('input', :id => 'organisation_publish_address', :type => 'checkbox')
+    rendered.should have_xpath("//input[@id='organisation_publish_address'][@type='checkbox']")
   end
 
   it "renders a checkbox to make email public" do
     render
-    rendered.should have_selector('input', :id => 'organisation_publish_email', :type => 'checkbox')
+    rendered.should have_xpath("//input[@id='organisation_publish_email'][@type='checkbox']")
   end
 
   it "renders a checkbox to make phone number public" do
     render
-    rendered.should have_selector('input', :id => 'organisation_publish_phone', :type => 'checkbox')
+    rendered.should have_xpath("//input[@id='organisation_publish_phone'][@type='checkbox']")
   end
 
   it 'renders an update button with Anglicized spelling of Organisation' do
     render
-    rendered.should have_selector("input", :type => "submit", :value => "Update Organisation")
+    rendered.should have_xpath("//input[@type='submit'][@value='Update Organisation']")
   end
   #todo: move this into proper integration test to avoid the errors mocking
 #out being coupled with rails

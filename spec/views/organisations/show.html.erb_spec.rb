@@ -30,9 +30,11 @@ describe 'organisations/show.html.erb' do
       rendered.should have_content('Email: ')
       rendered.should have_css("a[href='mailto:#{organisation.email}']")
       rendered.should have_content('Website: ')
-      rendered.should have_selector 'a', :content => "#{organisation.website}", :href => organisation.website, :target => '_blank'
+      rendered.should have_link "#{organisation.website}", :href => organisation.website      
+      rendered.should have_xpath("//a[@href='#{organisation.website}'][@target='_blank']")
       rendered.should have_content('Donation Info: ')
-      rendered.should have_selector 'a', :content => "Donate to #{organisation.name} now!", :href => organisation.donation_info, :target => '_blank'
+      rendered.should have_link "Donate to #{organisation.name} now!", :href => organisation.donation_info 
+      rendered.should have_xpath("//a[@href='#{organisation.donation_info}'][@target = '_blank']")
     end
     it 'ABSENT: postcode, email, website, donation info' do
       # using empty string rather than nil to cover this likely corner case
@@ -45,9 +47,12 @@ describe 'organisations/show.html.erb' do
       rendered.should_not have_content('Email: ')
       rendered.should_not have_css("a[href='mailto:#{organisation.email}']")
       rendered.should_not have_content('Website: ')
-      rendered.should_not have_selector 'a', :content => "#{organisation.website}", :href => organisation.website, :target => '_blank'
+      rendered.should_not have_xpath("//a[@href='#{organisation.website}'][@target='_blank']")
+      rendered.should_not have_link "#{organisation.website}", :href => organisation.website
+      rendered.should_not have_xpath("//a[@href='#{organisation.website}'][@target='_blank']")
       rendered.should_not have_content('Donation Info: ')
-      rendered.should_not have_selector 'a', :content => "Donate to #{organisation.name} now!", :href => organisation.donation_info, :target => '_blank'
+      rendered.should_not have_link "Donate to #{organisation.name} now!", :href => organisation.donation_info
+      rendered.should_not have_xpath("//a[@href='#{organisation.donation_info}'][@target='_blank']")
     end
   end
   context "fields are in order" do
