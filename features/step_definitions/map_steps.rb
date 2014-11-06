@@ -11,8 +11,14 @@ Then /^I should see hyperlinks for "(.*?)", "(.*?)" and "(.*?)" in the map$/ do 
 end
 
 Then /^the organisation "(.*?)" should have a (large|small) icon$/ do |name, icon_size|
-  org_description = smart_truncate(Organisation.find_by_name(name).description, 32)
-  page.should have_xpath("//head//script[contains(string(),'#{org_description}\"\,\"picture\":\"/assets/org_icon_#{icon_size}.png\"')]", :visible => false)
+  org = Organisation.find_by_name(name)
+  org_description = smart_truncate(org.description, 32)
+  if icon_size == "small"
+    page.should have_xpath("//head//script[contains(string(),'#{org_description}\"\,\"picture\":\"/assets/redcircle.png\"')]", :visible => false)
+  else
+    page.should_not have_xpath("//head//script[contains(string(),'#{org_description}\"\,\"picture\":\"/assets/redcircle.png\"')]", :visible => false)
+    page.should have_xpath("//head//script[contains(string(),'#{org_description}\"\,\"lat\":#{org.latitude},\"lng\":#{org.longitude}')]", :visible => false)
+  end
 end
 # could we move maps stuff into separate step file and couldn't these things be DRYer ...
 # e.g. one step to handle 2 or more orgs ...

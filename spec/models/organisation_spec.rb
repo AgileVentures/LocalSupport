@@ -27,7 +27,7 @@ describe Organisation do
 
     context 'no user' do
       it 'returns small icon when no associated user' do
-        expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_small.png"})
+        expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/redcircle.png"})
       end
     end
 
@@ -42,21 +42,21 @@ describe Organisation do
         allow(Time).to receive(:now).and_call_original
       end
       it 'returns large icon when there is an associated user' do
-        expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_large.png"})
+        expect(@org1.gmaps4rails_marker_picture).to eq({})
       end
 
       [365, 366, 500].each do |days|
         it "returns small icon when update is #{days} days old" do
           future_time = Time.at(Time.now + days.day)
           Time.stub(:now){future_time}
-          expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_small.png"})
+          expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/redcircle.png"})
         end
       end
       [ 2, 100, 200, 364].each do |days|
         it "returns large icon when update is only #{days} days old" do
           future_time = Time.at(Time.now + days.day)
           Time.stub(:now){future_time}
-          expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_large.png"})
+          expect(@org1.gmaps4rails_marker_picture).to eq({})
         end
       end
     end
