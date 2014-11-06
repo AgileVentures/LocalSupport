@@ -1,3 +1,5 @@
+table th, table td { overflow: hidden; }
+
 .table-borderless td {
     border-top: none !important;
 }
@@ -11,4 +13,20 @@
     top: 0;
     left: 0;
     width: 100%;
+}
+
+tr.actions-right > td:last-child {
+  width: 180px;
+}
+
+tr.actions-right .btn {
+  opacity: 0;
+}
+
+tr.actions-right:hover .btn {
+  opacity: 1;
+}
+
+a.btn.pull-right {
+  margin-left: 10px;
 }

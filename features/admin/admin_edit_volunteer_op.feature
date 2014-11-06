@@ -33,5 +33,5 @@ Scenario:
 
 Scenario: Admin successfully changes the description of an opportunity
   Given I am signed in as an admin
-  When I update "Litter Box Scooper" description to be "Clean up cat mess"
-  Then the description for "Litter Box Scooper" should be "Clean up cat mess"
+  When I update "Litter Box Scooper" volunteer op description to be "Clean up cat mess"
+  Then I should see "Clean up cat mess"

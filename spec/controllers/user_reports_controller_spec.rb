@@ -50,6 +50,24 @@ describe UserReportsController do
     end
   end
 
+  describe 'DELETE destroy', :helpers => :controllers do
+    let!(:user) { create :user }
+
+    it 'destroys the user' do
+      make_current_user_admin
+      expect{
+        delete :destroy, id: user.id
+      }.to change(User, :count).by -1
+    end
+
+    it 'unless that user is the current_user' do
+      make_current_user_admin(user)
+      expect{
+        delete :destroy, id: user.id
+      }.not_to change(User, :count)
+    end
+  end
+
   describe 'GET index to view pending users' do
     context "user signed in", :helpers => :controllers do
       context "as admin" do
@@ -152,10 +170,10 @@ describe UserReportsController do
       expect(User).to receive(:invited_not_accepted) { [user] }
       get :invited
       expect(assigns(:invitations)).to eq([{
-                                               'id' => '-1',
-                                               'name' => 'sample org',
-                                               'email' => 'user@email.org',
-                                               'date' => 'date-time-thingy'
+                                               :id => '-1',
+                                               :name => 'sample org',
+                                               :email => 'user@email.org',
+                                               :date => 'date-time-thingy'
                                            }])
     end
 

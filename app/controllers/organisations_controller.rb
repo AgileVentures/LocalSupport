@@ -41,6 +41,7 @@ class OrganisationsController < ApplicationController
   # GET /organisations/new.json
   def new
     @organisation = Organisation.new
+    @categories_start_with = Category.first_category_name_in_each_type
   end
 
   # GET /organisations/1/edit
@@ -59,11 +60,12 @@ class OrganisationsController < ApplicationController
   def create
     # model filters for logged in users, but we check here if that user is an admin
     # TODO refactor that to model responsibility?
+     org_params = OrganisationParams.build params
      unless current_user.try(:admin?)
        flash[:notice] = PERMISSION_DENIED
        redirect_to organisations_path and return false
      end
-    @organisation = Organisation.new(params[:organisation])
+    @organisation = Organisation.new(org_params)
 
     if @organisation.save
       redirect_to @organisation, notice: 'Organisation was successfully created.'
@@ -77,8 +79,9 @@ class OrganisationsController < ApplicationController
   def update
     @organisation = Organisation.find(params[:id])
     params[:organisation][:admin_email_to_add] = params[:organisation_admin_email_to_add] if params[:organisation]
+    update_params = OrganisationParams.build params 
     return false unless user_can_edit? @organisation
-    if @organisation.update_attributes_with_admin(params[:organisation])
+    if @organisation.update_attributes_with_admin(update_params)
       redirect_to @organisation, notice: 'Organisation was successfully updated.'
     else
       flash[:error] = @organisation.errors[:administrator_email][0]
@@ -100,6 +103,13 @@ class OrganisationsController < ApplicationController
     redirect_to organisations_path
   end
 
+class OrganisationParams 
+    def self.build params
+      params.require(:organisation).permit( :admin_email_to_add, :description, :address, :publish_address, :postcode, :email, 
+                     :publish_email, :website, :publish_phone, :donation_info, :name, :telephone,
+                     category_organisations_attributes: [:_destroy, :category_id, :id])
+    end
+  end
   private
   def gmap4rails_with_popup_partial(item, partial)
     item.to_gmaps4rails  do |org, marker|

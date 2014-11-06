@@ -9,7 +9,6 @@ require 'capybara/cucumber'
 require 'cucumber/rails'
 require 'cucumber/rspec/doubles'
 require 'rack_session_access/capybara'
-require 'debugger'
 require 'factory_girl_rails'
 require 'aruba/cucumber'
 Dir['../../spec/factories/*.rb'].each {|file| require_relative file }

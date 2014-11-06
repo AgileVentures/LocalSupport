@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
+  acts_as_paranoid
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
@@ -13,18 +14,14 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   # prevents mass assignment on other fields not in this list
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :pending_organisation_id
+  #attr_accessible :email, :password, :password_confirmation, :remember_me, :pending_organisation_id
   belongs_to :organisation
   belongs_to :pending_organisation, :class_name => 'Organisation', :foreign_key => 'pending_organisation_id'
 
   # should we have a before_save here where we check if the pending_organization_id is going from
   # nil to a value and then send the admin an email ...
 
-  scope :invited_not_accepted,
-    includes(:organisation).
-    #where('users.organisation_id IS NOT NULL').
-    where('users.invitation_sent_at IS NOT NULL').
-    where('users.invitation_accepted_at IS NULL')
+  scope :invited_not_accepted,-> {includes(:organisation).where('users.invitation_sent_at IS NOT NULL').where('users.invitation_accepted_at IS NULL')}
   scope :admins, -> { where(admin: true) }
 
   def can_create_volunteer_ops? org

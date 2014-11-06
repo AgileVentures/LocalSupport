@@ -90,7 +90,7 @@
     </table>
     <h5>Edit categories</h5>
     <div id = "categories_scroll" style="height:10em;width:60%;border:1px solid #ccc;overflow:auto;padding-left:2px;">
-    <%= f.fields_for :category_organisations do |ff| %>
+    <%= f.fields_for :category_organisations, f.object.category_organisations.sort! do |ff| %>
          <%= render partial: 'category_type', locals: {category: ff.object.category.name} %>
         <div>
           <%= ff.check_box :_destroy,

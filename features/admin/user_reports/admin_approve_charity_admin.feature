@@ -1,8 +1,9 @@
-Feature: Site Admin approve charity admin
+Feature: All Users Page
   As a Site Admin
   So that I can approve someone to be able to make edits for a particular charity
   (assuming charity admin has requested access to become charity admin and email has been sent)
-  I want to be able to verify the organisation/user and give them access to their charity.
+  Or so that I can delete a user
+  I want to be able to see all users displayed in a table, with various actions
 
   Background:
     Given the following organisations exist:
@@ -18,7 +19,27 @@ Feature: Site Admin approve charity admin
   Scenario: As an admin approving a pending users request
     Given I am signed in as an admin
     When I approve "pending@myorg.com"
+    Then I should see "You have approved pending@myorg.com."
     Then "pending@myorg.com" is a charity admin of "My Organisation"
+
+  Scenario: As an admin deleting a user
+    Given I am signed in as an admin
+    When I delete "pending@myorg.com"
+    Then I should see "You have deleted pending@myorg.com."
+    Then user "pending@myorg.com" is deleted
+
+  Scenario: As an admin recovering a deleted user
+    Given I am signed in as an admin
+    When I delete "pending@myorg.com"
+    Then user "pending@myorg.com" is deleted
+    And sysadmin restores "pending@myorg.com" from the console
+    Then user "pending@myorg.com" should exist
+
+  Scenario: As an admin attempting self-deletion
+    Given I am signed in as an admin
+    When I delete "admin@myorg.com"
+    Then I should see "You may not destroy your own account!"
+    Then user "admin@myorg.com" is not deleted
 
   Scenario Outline: As an admin I should be able to see status of all users
     Given I am signed in as an admin

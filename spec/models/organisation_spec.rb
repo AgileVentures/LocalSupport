@@ -159,11 +159,10 @@ describe Organisation do
     expect(Organisation.filter_by_category(@category1.id)).to include @org3
   end
 
-  it 'finds all orgs when category is nil, and returns ActiveRecord::Relation to keep kaminari happy' do
+  it 'finds all orgs when category is nil' do
     expect(Organisation.filter_by_category(nil)).to include(@org1)
     expect(Organisation.filter_by_category(nil)).to include(@org2)
     expect(Organisation.filter_by_category(nil)).to include(@org3)
-    expect(Organisation.filter_by_category(nil).class).to eq ActiveRecord::Relation
   end
 
   it 'should have and belong to many categories' do
@@ -543,8 +542,47 @@ describe Organisation do
     it 'can be recovered' do
       @org1.destroy
       expect(Organisation.find_by_name('Harrow Bereavement Counselling')).to eq nil
-      Organisation.only_deleted.find_by_name('Harrow Bereavement Counselling').recover
+      Organisation.with_deleted.find_by_name('Harrow Bereavement Counselling').restore
       expect(Organisation.find_by_name('Harrow Bereavement Counselling')).to eq @org1
+    end
+  end
+
+  describe '#uninvite_users' do
+    let!(:current_user) { FactoryGirl.create(:user, email: 'admin@example.com', admin: true) }
+    let(:org) { FactoryGirl.create :organisation, email: 'YES@hello.com' }
+    let(:params) do
+      {invite_list: {org.id => org.email,
+                     org.id+1 => org.email},
+                     resend_invitation: false}
+    end
+    let(:invited_user) { User.where("users.organisation_id IS NOT null").first }
+
+    before do
+      Gmaps4rails.stub :geocode
+      BatchInviteJob.new(params, current_user).run
+      expect(invited_user.organisation_id).to eq org.id
+    end
+
+    it "unsets user-organisation association of users of the organisation that"\
+       "are invited_not_accepted" do
+      expect{
+        org.uninvite_users
+        invited_user.reload
+      }.to change(invited_user, :organisation_id).from(org.id).to(nil)
+    end
+
+    it "happens when email is updated" do
+      expect{
+        org.update_attributes(email: 'hello@email.com')
+        invited_user.reload
+      }.to change(invited_user, :organisation_id).from(org.id).to(nil)
+    end
+
+    it "doesn't happen when other attributes are updated" do
+      expect{
+        org.update_attributes(website: 'www.abc.com')
+        invited_user.reload
+      }.not_to change(invited_user, :organisation_id)
     end
   end
 

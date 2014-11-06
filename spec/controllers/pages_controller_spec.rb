@@ -250,4 +250,12 @@ describe PagesController do
       response.status.should eq 302
     end
   end
+  describe ".permit" do
+    it "returns the cleaned params" do
+      pages_params = { page: {content: 'stuff', name: 'this', permalink: 'here', link_visible: false}}
+      params = ActionController::Parameters.new.merge(pages_params)
+      permitted_params = PagesController::PageParams.build(params)
+      expect(permitted_params).to eq(pages_params.with_indifferent_access[:page])
+    end
+  end
 end
