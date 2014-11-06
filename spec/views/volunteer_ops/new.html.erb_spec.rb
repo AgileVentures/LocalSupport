@@ -20,10 +20,11 @@ describe "volunteer_ops/new" do
 
   it "renders new volunteer_op form" do
     render
-    rendered.should have_selector("form", :action => organisation_volunteer_ops_path(organisation_id: 4), :method => "post") do |form|
-      form.should have_selector("input#volunteer_op_title", :name => "volunteer_op[title]")
-      form.should have_selector("textarea#volunteer_op_description", :name => "volunteer_op[description]")
-    end
+    rendered.should have_xpath("//form[@action='#{organisation_volunteer_ops_path(organisation_id:4)}'][@method='post']")
+    rendered.should have_xpath("//form[@action='#{organisation_volunteer_ops_path(organisation_id:4)}'][@method='post']
+      //input[@id='volunteer_op_title'][@name='volunteer_op[title]']")
+    rendered.should have_xpath("//form[@action='#{organisation_volunteer_ops_path(organisation_id:4)}'][@method='post']
+      //textarea[@id='volunteer_op_description'][@name='volunteer_op[description]']")
   end
 
   it "should have a Create Volunteer Opportunity button" do
