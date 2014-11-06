@@ -79,9 +79,8 @@ class Organisation < ActiveRecord::Base
   end
 
   def gmaps4rails_marker_picture
-    {
-     "picture" => not_updated_recently_or_has_no_owner? ?  "/assets/org_icon_small.png" : "/assets/org_icon_large.png"
-    }
+    return { "picture" => "/assets/redcircle.png" } if not_updated_recently_or_has_no_owner? 
+    return {}
   end
   
   def gmaps4rails_address
