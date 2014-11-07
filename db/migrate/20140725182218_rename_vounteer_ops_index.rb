@@ -1,5 +1,5 @@
 class RenameVounteerOpsIndex < ActiveRecord::Migration
   def change
-    rename_index :volunteer_ops, :index_volunteer_ops_on_organization_id, :index_volunteer_ops_on_organisation_id
+    #this is no longer needed in rails 4 since AR is apparently now smart enough to change the indices when tables change
   end
 end

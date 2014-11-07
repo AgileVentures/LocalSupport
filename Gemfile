@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
-ruby '1.9.3'
-gem 'rails', '3.2.19'
+ruby '2.0.0'
+gem 'rails', '4.0.10'
 gem 'pg'
 gem 'devise', '3.0.3'
 gem 'devise_invitable', '~> 1.2.1'
@@ -16,19 +16,20 @@ group :development, :test do
   gem 'database_cleaner', '1.0.1'
   gem 'launchy'
   gem 'simplecov'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '2.14.2'
   gem 'execjs'
   gem 'aruba'
+  gem 'byebug'
   gem 'rack_session_access'
-  gem 'jasmine'
-  gem 'jasmine-jquery-rails'
+  gem 'jasmine', '2.0.0'
+  gem 'jasmine-jquery-rails', '2.0.2'
   #gem 'better_errors'
   gem 'binding_of_caller' # plays well with better_errors
 end
 
 group :development do
   #gem 'ruby-debug19', :require => 'ruby-debug'
-  gem 'debugger', '~> 1.6.8'
+  #gem 'debugger', '~> 1.6.8'
   gem 'railroady'
 end
 
@@ -83,7 +84,7 @@ group :test do
 end
 
 gem 'therubyracer'
-gem 'gmaps4rails'
+gem 'gmaps4rails', '1.5.6'
 #gem 'mongrel'
 gem 'kaminari'
 gem 'unicorn'
@@ -96,4 +97,4 @@ gem 'url_validator'
 
 
 gem 'rails_autolink'
-gem 'acts_as_paranoid'
+gem "paranoia", "~> 2.0"

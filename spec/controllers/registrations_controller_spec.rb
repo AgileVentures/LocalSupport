@@ -53,7 +53,7 @@ describe RegistrationsController do
 
     it 'has an active record error message in the user instance variable when registration fails due to non matching passwords' do
       post :create, 'user' => {'email' => 'example2@example.com', 'password' => 'pppppppp', 'password_confirmation' => 'aaaaaaaaaa'}
-      expect(assigns(:user).errors.full_messages).to include("Password doesn't match confirmation")
+      expect(assigns(:user).errors.full_messages).to include("Password confirmation doesn't match Password")
     end
   end
 end

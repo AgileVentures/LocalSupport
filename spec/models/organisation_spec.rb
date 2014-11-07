@@ -122,11 +122,10 @@ describe Organisation do
     expect(Organisation.filter_by_category(@category1.id)).to include @org3
   end
 
-  it 'finds all orgs when category is nil, and returns ActiveRecord::Relation to keep kaminari happy' do
+  it 'finds all orgs when category is nil' do
     expect(Organisation.filter_by_category(nil)).to include(@org1)
     expect(Organisation.filter_by_category(nil)).to include(@org2)
     expect(Organisation.filter_by_category(nil)).to include(@org3)
-    expect(Organisation.filter_by_category(nil).class).to eq ActiveRecord::Relation
   end
 
   it 'should have and belong to many categories' do
@@ -506,7 +505,7 @@ describe Organisation do
     it 'can be recovered' do
       @org1.destroy
       expect(Organisation.find_by_name('Harrow Bereavement Counselling')).to eq nil
-      Organisation.only_deleted.find_by_name('Harrow Bereavement Counselling').recover
+      Organisation.with_deleted.find_by_name('Harrow Bereavement Counselling').restore
       expect(Organisation.find_by_name('Harrow Bereavement Counselling')).to eq @org1
     end
   end

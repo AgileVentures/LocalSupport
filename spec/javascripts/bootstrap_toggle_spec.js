@@ -7,7 +7,7 @@ describe('bootstrap toggle', function() {
             '    <li><a href="/organisation_reports/without_users">Without Users</a></li>' +
             '</ul>' +
         '</li>');
-        link = $('a').first();
+        link = $('.dropdown-toggle').first();
     });
     describe('when clicking on the parent', function() {
         it('pops up a list', function() {
