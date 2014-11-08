@@ -23,6 +23,7 @@ describe OrganisationsController do
       partial = double("template")
       marker = double("marker")
       marker.should_receive(:infowindow)
+      marker.should_receive(:instance_exec)
       result.should_receive(:to_gmaps4rails).and_yield(double_organisation, marker)
       @controller.should_receive(:render_to_string)
       #not sure if we are supposed to test private method on controller ...
