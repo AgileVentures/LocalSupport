@@ -14,8 +14,10 @@ Then /^the organisation "(.*?)" should have a (large|small) icon$/ do |name, ico
   org = Organisation.find_by_name(name)
   org_description = smart_truncate(org.description, 32)
   if icon_size == "small"
+    page.should have_xpath("//head//script[contains(string(),'\"zindex\":1\,\"description\":\"\\u003Ca href=\\\"/organisations/#{org.id}')]", :visible => false)
     page.should have_xpath("//head//script[contains(string(),'#{org_description}\"\,\"picture\":\"/assets/redcircle.png\"')]", :visible => false)
   else
+    page.should_not have_xpath("//head//script[contains(string(),'\"zindex\":1\,\"description\":\"\\u003Ca href=\\\"/organisations/#{org.id}')]", :visible => false)
     page.should_not have_xpath("//head//script[contains(string(),'#{org_description}\"\,\"picture\":\"/assets/redcircle.png\"')]", :visible => false)
     page.should have_xpath("//head//script[contains(string(),'#{org_description}\"\,\"lat\":#{org.latitude},\"lng\":#{org.longitude}')]", :visible => false)
   end
