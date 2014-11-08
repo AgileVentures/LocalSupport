@@ -21,7 +21,8 @@ class VolunteerOpsController < ApplicationController
 
   def create
     params[:volunteer_op][:organisation_id] = params[:organisation_id]
-    @volunteer_op = VolunteerOp.new(params[:volunteer_op])
+    volops_params = VolunteerOpsController::VolunteerOpParams.build params     
+    @volunteer_op = VolunteerOp.new(volops_params)
     if @volunteer_op.save
       redirect_to @volunteer_op, notice: 'Volunteer op was successfully created.'
     else
@@ -38,13 +39,18 @@ class VolunteerOpsController < ApplicationController
   def update
     @volunteer_op = VolunteerOp.find(params[:id])
     @organisation = @volunteer_op.organisation
-    if @volunteer_op.update_attributes(params[:volunteer_op])
+    vol_op_params = VolunteerOpParams.build params 
+    if @volunteer_op.update_attributes(vol_op_params)
       redirect_to @volunteer_op, notice: 'Volunteer Opportunity was successfully updated.'
     else
       render action: "edit"
     end
   end
-
+  class VolunteerOpParams
+    def self.build params
+      params.require(:volunteer_op).permit(:description, :title, :organisation_id)
+    end
+  end
   private
 
   def authorize

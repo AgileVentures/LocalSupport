@@ -8,8 +8,6 @@ describe "organisations/new.html.erb" do
   it "renders new organisation form" do
     view.lookup_context.prefixes = %w[organisations application]
     render
-
-    rendered.should have_selector("form", :action => organisations_path, :method => "post") do |form|
-    end
+    rendered.should have_xpath("//form[@action='#{organisations_path}'][@method='post']")
   end
 end

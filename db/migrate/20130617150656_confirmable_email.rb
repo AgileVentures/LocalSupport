@@ -7,10 +7,6 @@ class ConfirmableEmail < ActiveRecord::Migration
       t.datetime :confirmation_sent_at
       t.string   :unconfirmed_email
     end
-    User.all.each do |u|
-      u.confirmed_at = Time.now
-      u.save!
-    end
   end
 
   def down

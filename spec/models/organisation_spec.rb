@@ -43,7 +43,7 @@ describe Organisation do
 
     context 'no user' do
       it 'returns small icon when no associated user' do
-        expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_small.png"})
+        expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/redcircle.png"})
       end
     end
 
@@ -58,21 +58,21 @@ describe Organisation do
         allow(Time).to receive(:now).and_call_original
       end
       it 'returns large icon when there is an associated user' do
-        expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_large.png"})
+        expect(@org1.gmaps4rails_marker_picture).to eq({})
       end
 
       [365, 366, 500].each do |days|
         it "returns small icon when update is #{days} days old" do
           future_time = Time.at(Time.now + days.day)
           Time.stub(:now){future_time}
-          expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_small.png"})
+          expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/redcircle.png"})
         end
       end
       [ 2, 100, 200, 364].each do |days|
         it "returns large icon when update is only #{days} days old" do
           future_time = Time.at(Time.now + days.day)
           Time.stub(:now){future_time}
-          expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/org_icon_large.png"})
+          expect(@org1.gmaps4rails_marker_picture).to eq({})
         end
       end
     end
@@ -175,11 +175,10 @@ describe Organisation do
     expect(Organisation.filter_by_category(@category1.id)).to include @org3
   end
 
-  it 'finds all orgs when category is nil, and returns ActiveRecord::Relation to keep kaminari happy' do
+  it 'finds all orgs when category is nil' do
     expect(Organisation.filter_by_category(nil)).to include(@org1)
     expect(Organisation.filter_by_category(nil)).to include(@org2)
     expect(Organisation.filter_by_category(nil)).to include(@org3)
-    expect(Organisation.filter_by_category(nil).class).to eq ActiveRecord::Relation
   end
 
   it 'should have and belong to many categories' do
@@ -559,7 +558,7 @@ describe Organisation do
     it 'can be recovered' do
       @org1.destroy
       expect(Organisation.find_by_name('Harrow Bereavement Counselling')).to eq nil
-      Organisation.only_deleted.find_by_name('Harrow Bereavement Counselling').recover
+      Organisation.with_deleted.find_by_name('Harrow Bereavement Counselling').restore
       expect(Organisation.find_by_name('Harrow Bereavement Counselling')).to eq @org1
     end
   end

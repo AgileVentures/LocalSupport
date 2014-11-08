@@ -17,14 +17,14 @@ Given /^the following users are registered:$/ do |users_table|
     user["admin"] = user["admin"] == "true"
     user["organisation"] = Organisation.find_by_name(user["organisation"])
     user["pending_organisation"] = Organisation.find_by_name(user["pending_organisation"])
-    User.create! user, :without_protection => true
+    User.create! user
   end
 end
 
 Given /the following volunteer opportunities exist/ do |volunteer_ops_table|
   volunteer_ops_table.hashes.each do |volunteer_op|
     volunteer_op["organisation"] = Organisation.find_by_name(volunteer_op["organisation"])
-    VolunteerOp.create! volunteer_op, :without_protection => true
+    VolunteerOp.create! volunteer_op
   end
 end
 

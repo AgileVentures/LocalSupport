@@ -170,10 +170,10 @@ describe UserReportsController do
       expect(User).to receive(:invited_not_accepted) { [user] }
       get :invited
       expect(assigns(:invitations)).to eq([{
-                                               'id' => '-1',
-                                               'name' => 'sample org',
-                                               'email' => 'user@email.org',
-                                               'date' => 'date-time-thingy'
+                                               :id => '-1',
+                                               :name => 'sample org',
+                                               :email => 'user@email.org',
+                                               :date => 'date-time-thingy'
                                            }])
     end
 
