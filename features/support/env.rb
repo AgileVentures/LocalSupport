@@ -90,3 +90,7 @@ end
 After('@in-production') do
   Rails.env = 'test'
 end
+
+After('@time_travel') do
+  allow(Time).to receive(:now).and_call_original
+end
