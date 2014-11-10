@@ -343,7 +343,7 @@ DEPENDENCIES
   byebug
   capybara (= 2.4.1)
   capybara-webkit (~> 1.1.0)
-  coffee-rails
+  coffee-rails (= 4.1.0)
   cucumber-rails
   cucumber-rails-training-wheels
   database_cleaner (= 1.0.1)
@@ -360,7 +360,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   launchy
-  less-rails
+  less-rails (= 2.5.0)
   metric_fu
   minitest (~> 4.7.1)
   newrelic_rpm
@@ -372,14 +372,14 @@ DEPENDENCIES
   rails_autolink
   redcarpet
   rspec-rails (= 2.14.2)
-  sass-rails (~> 4.0.3)
+  sass-rails (= 4.0.3)
   selenium
   selenium-client
   simplecov
   therubyracer
   turn
-  twitter-bootstrap-rails
-  uglifier
+  twitter-bootstrap-rails (= 2.2.8)
+  uglifier (= 2.5.3)
   unicorn
   uri-handler
   url_validator
