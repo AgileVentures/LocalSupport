@@ -113,7 +113,7 @@ class OrganisationParams
   private
   def gmap4rails_with_popup_partial(item, partial)
     item.to_gmaps4rails  do |org, marker|
-      marker.json({zindex: org.send(:not_updated_recently_or_has_no_owner?) ? 1 : 0})
+      marker.json({zindex: org.not_updated_recently_or_has_no_owner? ? 1 : 0})
       marker.infowindow render_to_string(:partial => partial, :locals => { :@org => org})
     end
   end

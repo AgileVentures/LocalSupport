@@ -202,6 +202,9 @@ class Organisation < ActiveRecord::Base
     user.confirm!
     user
   end
+  def not_updated_recently_or_has_no_owner?
+    (self.users.empty? || (Time.now - updated_at) > 365.day)
+  end
 
   private
 
@@ -223,9 +226,6 @@ class Organisation < ActiveRecord::Base
 
   def self.contains_name(key)
     table[:name].matches(key)
-  end
-  def not_updated_recently_or_has_no_owner?
-    (self.users.empty? || (Time.now - updated_at) > 365.day)
   end
   def remove_errors_with_address
     errors_hash = errors.to_hash
