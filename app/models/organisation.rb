@@ -207,6 +207,10 @@ class Organisation < ActiveRecord::Base
     user
   end
 
+  def not_updated_recently_or_has_no_owner?
+    self.users.empty? || not_updated_recently?
+  end
+
   private
 
   def self.table
@@ -228,9 +232,7 @@ class Organisation < ActiveRecord::Base
   def self.contains_name(key)
     table[:name].matches(key)
   end
-  def not_updated_recently_or_has_no_owner?
-    self.users.empty? || not_updated_recently?
-  end
+
   def remove_errors_with_address
     errors_hash = errors.to_hash
     errors.clear

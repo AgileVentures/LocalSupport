@@ -39,8 +39,27 @@ describe Organisation do
       it{expect(org.not_updated_recently?).to be_false}
     end
   end
-  describe "#gmaps4rails_marker_picture" do
 
+  describe "#not_updated_recently_or_has_no_owner?" do
+    let(:subject){FactoryGirl.create(:organisation, :name => "Org with no owner", :updated_at => 364.day.ago)}
+    context 'has no owner but updated recently' do
+      it{expect(subject.not_updated_recently_or_has_no_owner?).to be_true}
+    end
+    context 'has owner but old update' do
+      let(:subject){FactoryGirl.create(:organisation_with_owner, :updated_at => 366.day.ago)}
+      it{expect(subject.not_updated_recently_or_has_no_owner?).to be_true}
+    end
+    context 'has no owner and old update' do 
+      let(:subject){FactoryGirl.create(:organisation, :updated_at => 366.day.ago)}
+      it{expect(subject.not_updated_recently_or_has_no_owner?).to be_true}
+    end
+    context 'has owner and recent update' do
+      let(:subject){FactoryGirl.create(:organisation_with_owner, :updated_at => 364.day.ago)}
+      it{expect(subject.not_updated_recently_or_has_no_owner?).to be_false}
+    end
+  end
+
+  describe "#gmaps4rails_marker_picture" do
     context 'no user' do
       it 'returns small icon when no associated user' do
         expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/redcircle.png"})

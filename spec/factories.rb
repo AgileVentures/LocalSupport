@@ -5,6 +5,13 @@ FactoryGirl.define do
     address "64 pinner road"
     postcode "HA1 3TE"
     donation_info 'www.harrow-bereavment.co.uk/donate'
+    factory :organisation_with_owner do
+      after(:build) do |org|
+        owner = FactoryGirl.build(:user)
+        org.users << owner
+        org.save!
+      end
+    end
   end
   factory :category do
     name "health"
