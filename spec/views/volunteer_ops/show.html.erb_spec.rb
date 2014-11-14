@@ -17,9 +17,9 @@ describe "volunteer_ops/show" do
 
   it "renders attributes in <p>" do
     render
-    rendered.should contain op.title
-    rendered.should contain op.description
-    rendered.should contain op.organisation.name
+    rendered.should have_content op.title
+    rendered.should have_content op.description
+    rendered.should have_content op.organisation.name
   end
 
   it "gets various model attributes" do
