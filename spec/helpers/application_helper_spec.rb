@@ -24,13 +24,13 @@ describe ApplicationHelper do
     # tested extensively in features/admin_edit_static_pages.feature
   end
 
-  describe 'cookie_policy_accepted' do
+  describe '#cookie_policy_accepted?' do
     it 'true with the cookie' do
       helper.cookies['cookie_policy_accepted'] = true
-      cookie_policy_accepted?.should be_true
+      cookie_policy_accepted?.should be true
     end
     it 'false without the cookie' do
-      cookie_policy_accepted?.should be_false
+      cookie_policy_accepted?.should be false
     end
   end
 
@@ -44,15 +44,15 @@ describe ApplicationHelper do
     end
   end
 
-  describe "#feature_active" do
+  describe "#feature_active?" do
     it 'should return true if feature is active' do
       Feature.stub(active?: true)
-      expect(helper.feature_active?(:volunteer_ops)).to be_true
+      expect(helper.feature_active?(:volunteer_ops)).to be true
     end
 
     it 'should return false if feature is inactive' do
       Feature.stub(active?: false)
-      expect(helper.feature_active?(:volunteer_ops)).to be_false
+      expect(helper.feature_active?(:volunteer_ops)).to be false
     end
   end
 end
