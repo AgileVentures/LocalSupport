@@ -35,17 +35,29 @@ describe ApplicationController, :helpers => :controllers do
     session[:previous_url].should eq request.path
   end
 
-  it '#after_sign_in_path_for' do
-    user = make_current_user_nonadmin
-    user.stub :organisation => nil
-    user.stub :pending_organisation_id
-    controller.after_sign_in_path_for(user).should eq '/'
+  describe '#after_sign_in_path_for' do
+    let(:user) {make_current_user_nonadmin}
+    context 'user not associated with any org' do
+      it 'should redirect to root' do
+        user.stub :organisation => nil
+        user.stub :pending_organisation_id
+        controller.after_sign_in_path_for(user).should eq '/'
+      end
+    end
 
-    user.stub :organisation => '1'
-    controller.after_sign_in_path_for(user).should eq '/organisations/1'
-
-    session[:previous_url] = 'i/was/here'
-    controller.after_sign_in_path_for(user).should eq 'i/was/here'
+    context 'user is org owner no previous url' do
+      it 'should redirect to root' do
+        user.stub :organisation => '1'
+        controller.after_sign_in_path_for(user).should eq '/organisations/1'
+      end
+    end
+    context 'user is org owner with previous url' do
+      it 'should redirect to root' do
+        user.stub :organisation => '1'
+        session[:previous_url] = 'i/was/here'
+        controller.after_sign_in_path_for(user).should eq '/organisations/1'
+      end
+    end
   end
 
   it '#after_accept_path_for' do

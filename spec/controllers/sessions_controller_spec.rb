@@ -26,5 +26,13 @@ describe SessionsController do
       post :create, 'user' => {'email' => 'example@example.com', 'password' => '12345'}
       expect(flash[:alert]).to have_content "I'm sorry, you are not authorized to login to the system."
     end
+
+    it 'redirects to charity page after non-admin associated with org' do
+      usr = FactoryGirl.build(:user_stubbed_organisation, {:email => 'example@example.com', :password => 'pppppppp'})
+      controller.stub(:session => {previous_url: "/"})
+      post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp'}
+      expect(response).to redirect_to organisation_path(usr.organisation.id)
+    end
+
   end
 end
