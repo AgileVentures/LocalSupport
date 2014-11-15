@@ -36,8 +36,6 @@ end
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
-  gem 'minitest', '~> 4.7.1'
-  gem 'ZenTest'
   gem 'capybara', '2.4.1'
   gem "capybara-webkit", "~> 1.1.0"
   gem 'factory_girl_rails', :require => false
@@ -71,11 +69,6 @@ gem 'bootstrap_sortable_rails', '~> 0.1.3'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
-
-group :test do
-  # Pretty printed test output
-  gem 'turn', :require => false
-end
 
 gem 'therubyracer'
 gem 'gmaps4rails', '1.5.6'
