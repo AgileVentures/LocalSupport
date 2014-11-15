@@ -19,7 +19,7 @@ describe RegistrationsController do
     end
 
     it 'does not authenticate user' do
-      expect(warden.authenticated?(:user)).to be_false
+      expect(warden.authenticated?(:user)).to be false
     end
 
     it 'redirects to home page after registration form' do
