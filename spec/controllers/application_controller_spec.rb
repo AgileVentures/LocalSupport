@@ -4,18 +4,18 @@ describe ApplicationController, :helpers => :controllers do
   it '#request_controller_is(white_listed)' do
     controller.stub :white_listed => %w(a b c)
     request.stub :params => { 'controller' => 'a' }
-    controller.request_controller_is(controller.white_listed).should be_true
+    controller.request_controller_is(controller.white_listed).should be true
 
     request.stub :params => { 'controller' => 'd' }
-    controller.request_controller_is(controller.white_listed).should be_false
+    controller.request_controller_is(controller.white_listed).should be false
   end
 
   it '#request_verb_is_get?' do
     request.env['REQUEST_METHOD'] = 'GET'
-    controller.request_verb_is_get?.should be_true
+    controller.request_verb_is_get?.should be true
 
     request.env['REQUEST_METHOD'] = 'PUT'
-    controller.request_verb_is_get?.should be_false
+    controller.request_verb_is_get?.should be false
   end
 
   it '#store_location stores URLs only when conditions permit' do
@@ -79,7 +79,7 @@ describe ApplicationController, :helpers => :controllers do
     it 'cookie has correct key/value pair' do
       request.should_receive(:referer).and_return "/hello"
       get :allow_cookie_policy
-      response.cookies['cookie_policy_accepted'].should be_true
+      expect(response.cookies).to eq({"cookie_policy_accepted"=>"true"})
     end
   end
 
@@ -119,9 +119,9 @@ describe ApplicationController, :helpers => :controllers do
     end
 
     context '#admin?' do
-      it 'returns false when current_user is nil' do
+      it 'returns nil when current_user is nil' do
         controller.stub current_user: nil
-        controller.instance_eval { admin? }.should be_false
+        controller.instance_eval { admin? }.should be_nil
       end
 
       it 'otherwise depends on { current_user.admin? }' do
