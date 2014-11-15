@@ -25,13 +25,13 @@ describe User do
   it 'must find an admin in find_by_admin with true argument' do
     FactoryGirl.create(:user, admin: true)
     result = User.find_by_admin(true)
-    result.admin?.should be_true
+    result.admin?.should be true
   end
 
   it 'must find a non-admin in find_by_admin with false argument' do
     FactoryGirl.create(:user, admin: false)
     result = User.find_by_admin(false)
-    result.admin?.should be_false
+    result.admin?.should be false
   end
 
   describe '#can_delete?' do
@@ -39,7 +39,7 @@ describe User do
       subject(:user) { create(:user, admin: true) }
 
       it 'can edit organisations' do
-        user.can_delete?(model).should be_true
+        user.can_delete?(model).should be true
       end
 
     end
@@ -47,7 +47,7 @@ describe User do
       subject(:user) { create(:user, admin: false) }
 
       it 'can edit organisations' do
-        user.can_delete?(model).should be_false
+        user.can_delete?(model).should be false
       end
 
     end
@@ -58,7 +58,7 @@ describe User do
       subject(:user) { create(:user, admin: true) }
 
       it 'can edit organisations' do
-        user.can_edit?(model).should be_true
+        user.can_edit?(model).should be true
       end
     end
 
@@ -68,22 +68,22 @@ describe User do
 
       it 'can edit associated organisation' do
         user.organisation.should eq model
-        user.can_edit?(model).should be_true
+        user.can_edit?(model).should be true
       end
 
       it 'can not edit non-associated organisation' do
         user.organisation.should eq model
-        user.can_edit?(non_associated_model).should be_false
+        user.can_edit?(non_associated_model).should be false
       end
 
       it 'can not edit when associated with no org' do
         user.organisation = nil
         user.organisation.should eq nil
-        user.can_edit?(non_associated_model).should be_false
+        user.can_edit?(non_associated_model).should be false
       end
 
       it 'can not edit when associated with no org and attempting to access non-existent org' do
-        user.can_edit?(nil).should be_false
+        user.can_edit?(nil).should be false
       end
     end
   end
@@ -170,41 +170,41 @@ describe User do
 
     it 'is false when user is site admin' do
       user.should_receive(:admin?).and_return(true)
-      user.can_request_org_admin?(@organisation).should be_false
+      user.can_request_org_admin?(@organisation).should be false
     end
 
     it 'is false when user is charity admin of this charity' do
       user.should_receive(:organisation).and_return(@organisation)
-      user.can_request_org_admin?(@organisation).should be_false
+      user.can_request_org_admin?(@organisation).should be false
     end
 
     it 'is true when user is charity admin of another charity' do
       user.should_receive(:organisation).and_return(@other_organisation)
-      user.can_request_org_admin?(@organisation).should be_true
+      user.can_request_org_admin?(@organisation).should be true
     end
 
     it 'is true when user is charity admin of no charity' do
       user.should_receive(:organisation).and_return(nil)
-      user.can_request_org_admin?(@organisation).should be_true
+      user.can_request_org_admin?(@organisation).should be true
     end
 
     it 'is false when user is pending charity admin of this charity' do
       user.should_receive(:pending_organisation).and_return(@organisation)
-      user.can_request_org_admin?(@organisation).should be_false
+      user.can_request_org_admin?(@organisation).should be false
     end
 
     it 'is true when user is pending charity admin of another charity' do
       user.should_receive(:pending_organisation).and_return(@other_organisation)
-      user.can_request_org_admin?(@organisation).should be_true
+      user.can_request_org_admin?(@organisation).should be true
     end
 
     it 'is true when user is pending charity admin of no charity' do
       user.should_receive(:pending_organisation).and_return(nil)
-      user.can_request_org_admin?(@organisation).should be_true
+      user.can_request_org_admin?(@organisation).should be true
     end
 
     it 'is true when user is not (site admin || charity admin of this charity || pending charity admin of this charity)' do
-      user.can_request_org_admin?(@organisation).should be_true
+      user.can_request_org_admin?(@organisation).should be true
     end
 
   end
@@ -241,16 +241,16 @@ describe User do
     before { Gmaps4rails.stub(:geocode) }
 
     it 'cannot create volunteer op' do
-      user.can_create_volunteer_ops?(other_org).should be_false
+      user.can_create_volunteer_ops?(other_org).should be false
     end
 
     it 'org owner can create volunteer op' do
-      user.can_create_volunteer_ops?(user.organisation).should be_true
+      user.can_create_volunteer_ops?(user.organisation).should be true
     end
 
     it 'site admin can create volunteer op' do
       admin = FactoryGirl.create :user, admin: true
-      admin.can_create_volunteer_ops?(other_org).should be_true
+      admin.can_create_volunteer_ops?(other_org).should be true
     end
   end
 
@@ -260,16 +260,16 @@ describe User do
 
     it 'true when user is pending admin for organisation' do
       user.pending_organisation = other_org
-      expect(user.pending_admin? other_org).to be_true
+      expect(user.pending_admin? other_org).to be true
     end
 
     it 'false when user is not pending admin for organisation' do
-      expect(user.pending_admin? other_org).to be_false
+      expect(user.pending_admin? other_org).to be false
     end
 
     it 'false when org nil' do
       other_org = nil
-      expect(user.pending_admin? other_org).to be_false
+      expect(user.pending_admin? other_org).to be false
     end
 
   end
