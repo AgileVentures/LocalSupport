@@ -1,5 +1,9 @@
 FactoryGirl.define do
+
   factory :organisation do
+    before(:create) do
+      Gmaps4rails.stub(:geocode)
+    end
     name "friendly non profit"
     description "we are really really friendly"
     address "64 pinner road"
@@ -13,17 +17,20 @@ FactoryGirl.define do
       end
     end
   end
+
   factory :category do
     name "health"
     charity_commission_id 1
     charity_commission_name "weird!"
   end
+
   factory :page do
     name 'About Us'
     permalink 'about'
     content 'abc123'
     link_visible true
   end
+
   factory :user do
     email "jj@example.com"
     password "pppppppp"
@@ -46,4 +53,5 @@ FactoryGirl.define do
     title "Help out"
     description "Some nice people"
   end
+
 end

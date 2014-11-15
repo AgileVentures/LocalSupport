@@ -18,6 +18,7 @@ group :development, :test do
   gem 'launchy'
   gem 'simplecov'
   gem 'rspec-rails', '2.99'
+  gem 'rspec-activemodel-mocks'
   gem 'execjs'
   gem 'aruba'
   gem 'byebug'

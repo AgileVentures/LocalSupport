@@ -11,12 +11,17 @@ describe VolunteerOpsController do
   let(:user) { double :user }
   let(:org) { double :organisation, id: '1' }
   let!(:op) { stub_model VolunteerOp } # stack level too deep errors if stub_model is loaded lazily in some contexts
-  describe ".permit" do 
-    it "returns the cleaned params" do
-      vol_ops_params = { volunteer_op: {title: "Opp", organisation_id: "1", description: "Great op"}}
-      params = ActionController::Parameters.new.merge(vol_ops_params)
-      permitted_params = VolunteerOpsController::VolunteerOpParams.build(params)
-      expect(permitted_params).to eq({title: "Opp", organisation_id: "1", description: "Great op"}.with_indifferent_access)
+  describe 'strong params' do
+    before do
+      @org = stub_model Organisation, :title => "title", :description => "description"
+      @op2 = stub_model VolunteerOp, :organisation => (@org)
+    end
+    it '#update uses strong params' do
+      put :update, :id => @op2.to_param, :volunteer_op => {:title => "new title", :description => "new description"}
+      expect(controller.volunteer_op_params).to eq(
+        {"description" => "new description",
+         "title" => "new title"}
+      )
     end
   end
 
@@ -74,7 +79,7 @@ describe VolunteerOpsController do
       allow(controller).to receive(:current_user).and_return(user)
       allow(user).to receive(:can_edit?).with(@org).and_return(true)
       get :show, {:id => @op2.id}
-      expect(assigns(:editable)).to be_true
+      expect(assigns(:editable)).to be_truthy
     end
 
     it "passes a false editable flag when guest user" do
@@ -83,7 +88,7 @@ describe VolunteerOpsController do
       @results = [@op2]
       VolunteerOp.stub(:find).with(@op2.id.to_s) { @op2 }
       get :show, {:id => @op2.id}
-      expect(assigns(:editable)).to be_false
+      expect(assigns(:editable)).to be_falsey
     end
   end
 
@@ -182,11 +187,11 @@ describe VolunteerOpsController do
       @org = stub_model Organisation, :title => "title", :description => "description"
       @op2 = stub_model VolunteerOp, :organisation => (@org)
       @results = [@op2]
-      expect(VolunteerOp).to receive(:find).with(@op2.id.to_s).and_return(@op2)
     end
     context 'user is authorized' do
       before do
         allow(controller).to receive(:authorize).and_return(true)
+        expect(VolunteerOp).to receive(:find).with(@op2.id.to_s).and_return(@op2)
       end
       it 'updates the model' do
         expect(@op2).to receive(:update_attributes).with({"title" => "new title", "description" => "new description"})
@@ -209,11 +214,9 @@ describe VolunteerOpsController do
       end
     end
     context 'user is not authorized' do
-      before do
-        allow(controller).to receive(:authorize).and_return(false)
-      end
       it 'does not update the model' do
-        expect(@op2).not_to receive(:update_attributes).and_return true
+        controller.stub org_owner?: false, admin?: false
+        expect(@op2).not_to receive(:update_attributes)
         put :update, {:volunteer_op => {:title => "new title", :description => "new description"}, 
           :id => @op2.to_param}
       end
@@ -230,7 +233,7 @@ describe VolunteerOpsController do
         controller.stub admin?: false
         controller.should_receive(:redirect_to).with(root_path) { true } # calling original raises errors
         controller.flash.should_receive(:[]=).with(:error, 'You must be signed in as an organisation owner or site admin to perform this action!').and_call_original
-        controller.instance_eval { authorize }.should be false
+        expect(controller.instance_eval { authorize }).to be_falsey
         # can't assert `redirect_to root_path`: http://owowthathurts.blogspot.com/2013/08/rspec-response-delegation-error-fix.html
         flash[:error].should_not be_empty
       end
@@ -248,8 +251,8 @@ describe VolunteerOpsController do
           controller.stub current_user: nil
         end
 
-        it 'returns false' do
-          controller.instance_eval { org_owner? }.should be_false
+        it 'returns a falsey value' do
+          expect(controller.instance_eval { org_owner? }).to be_falsey
         end
       end
 
@@ -259,9 +262,9 @@ describe VolunteerOpsController do
 
         it 'depends on { current_user.organisation.id == params[:organisation_id] }' do
           controller.stub(:params){{organisation_id: "5" }}
-          controller.instance_eval { org_owner? }.should be_false
+          controller.instance_eval { org_owner? }.should be_falsey
           user.stub organisation: org
-          controller.instance_eval { org_owner? }.should be_true
+          controller.instance_eval { org_owner? }.should be_truthy
         end
 
         it 'checks if the current_user has an organisation' do

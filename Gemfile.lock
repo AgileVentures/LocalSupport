@@ -255,6 +255,10 @@ GEM
       netrc (~> 0.7)
     roodi (3.3.1)
       ruby_parser (~> 3.2, >= 3.2.2)
+    rspec-activemodel-mocks (1.0.1)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      rspec-mocks (>= 2.99, < 4.0)
     rspec-collection_matchers (1.1.2)
       rspec-expectations (>= 2.99.0.beta1)
     rspec-core (2.99.2)
@@ -372,6 +376,7 @@ DEPENDENCIES
   rails (~> 4.1)
   rails_autolink
   redcarpet
+  rspec-activemodel-mocks
   rspec-rails (= 2.99)
   sass-rails (= 4.0.3)
   selenium
