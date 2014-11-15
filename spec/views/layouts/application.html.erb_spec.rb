@@ -96,7 +96,7 @@ describe 'layouts/application.html.erb', :type => :feature do
     end
 
     it 'should display flash messages when successful' do
-      view.stub(:flash).and_return([[:notice, "Yes, we have been successful!!!!!"]])
+      view.stub(:flash).and_return([["notice", "Yes, we have been successful!!!!!"]])
       render
       expect(rendered).to have_selector('div.alert')
       expect(rendered).to have_content('Yes, we have been successful!!!!!')
