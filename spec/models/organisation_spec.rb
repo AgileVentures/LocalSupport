@@ -27,35 +27,35 @@ describe Organisation do
   describe '#not_updated_recently?' do
     let(:org){FactoryGirl.create(:organisation, updated_at: Time.now)}
 
-    it{expect(org.not_updated_recently?).to be_false}
+    it{expect(org.not_updated_recently?).to be false}
 
     context "updated too long ago" do
       let(:org){FactoryGirl.create(:organisation, updated_at: 365.day.ago)}
-      it{expect(org.not_updated_recently?).to be_true}
+      it{expect(org.not_updated_recently?).to be true}
     end
 
     context "when updated recently" do
       let(:org){FactoryGirl.create(:organisation, updated_at: 364.day.ago)}
-      it{expect(org.not_updated_recently?).to be_false}
+      it{expect(org.not_updated_recently?).to be false}
     end
   end
 
   describe "#not_updated_recently_or_has_no_owner?" do
     let(:subject){FactoryGirl.create(:organisation, :name => "Org with no owner", :updated_at => 364.day.ago)}
     context 'has no owner but updated recently' do
-      it{expect(subject.not_updated_recently_or_has_no_owner?).to be_true}
+      it{expect(subject.not_updated_recently_or_has_no_owner?).to be true}
     end
     context 'has owner but old update' do
       let(:subject){FactoryGirl.create(:organisation_with_owner, :updated_at => 366.day.ago)}
-      it{expect(subject.not_updated_recently_or_has_no_owner?).to be_true}
+      it{expect(subject.not_updated_recently_or_has_no_owner?).to be true}
     end
     context 'has no owner and old update' do 
       let(:subject){FactoryGirl.create(:organisation, :updated_at => 366.day.ago)}
-      it{expect(subject.not_updated_recently_or_has_no_owner?).to be_true}
+      it{expect(subject.not_updated_recently_or_has_no_owner?).to be true}
     end
     context 'has owner and recent update' do
       let(:subject){FactoryGirl.create(:organisation_with_owner, :updated_at => 364.day.ago)}
-      it{expect(subject.not_updated_recently_or_has_no_owner?).to be_false}
+      it{expect(subject.not_updated_recently_or_has_no_owner?).to be false}
     end
   end
 
@@ -154,33 +154,33 @@ describe Organisation do
 
   context 'adding charity admins by email' do
     it 'handles a non-existent email with an error' do
-      expect(@org1.update_attributes_with_admin({:admin_email_to_add => 'nonexistentuser@example.com'})).to be_false
+      expect(@org1.update_attributes_with_admin({:admin_email_to_add => 'nonexistentuser@example.com'})).to be_nil
       expect(@org1.errors[:administrator_email]).to eq ["The user email you entered,'nonexistentuser@example.com', does not exist in the system"]
     end
     it 'does not update other attributes when there is a non-existent email' do
-      expect(@org1.update_attributes_with_admin({:name => 'New name',:admin_email_to_add => 'nonexistentuser@example.com'})).to be_false
+      expect(@org1.update_attributes_with_admin({:name => 'New name',:admin_email_to_add => 'nonexistentuser@example.com'})).to be_nil
       expect(@org1.name).not_to eq 'New name'
     end
     it 'handles a nil email' do
-      expect(@org1.update_attributes_with_admin({:admin_email_to_add => nil})).to be_true
-      expect(@org1.errors.any?).to be_false
+      expect(@org1.update_attributes_with_admin({:admin_email_to_add => nil})).to be true
+      expect(@org1.errors.any?).to be false
     end
     it 'handles a blank email' do
-      expect(@org1.update_attributes_with_admin({:admin_email_to_add => ''})).to be_true
-      expect(@org1.errors.any?).to be_false
+      expect(@org1.update_attributes_with_admin({:admin_email_to_add => ''})).to be true
+      expect(@org1.errors.any?).to be false
     end
     it 'adds existent user as charity admin' do
       usr = FactoryGirl.create(:user, :email => 'user@example.org')
-      expect(@org1.update_attributes_with_admin({:admin_email_to_add => usr.email})).to be_true
+      expect(@org1.update_attributes_with_admin({:admin_email_to_add => usr.email})).to be true
       expect(@org1.users).to include usr
     end
     it 'updates other attributes with blank email' do
-      expect(@org1.update_attributes_with_admin({:name => 'New name',:admin_email_to_add => ''})).to be_true
+      expect(@org1.update_attributes_with_admin({:name => 'New name',:admin_email_to_add => ''})).to be true
       expect(@org1.name).to eq 'New name'
     end
     it 'updates other attributes with valid email' do
       usr = FactoryGirl.create(:user, :email => 'user@example.org')
-      expect(@org1.update_attributes_with_admin({:name => 'New name',:admin_email_to_add => usr.email})).to be_true
+      expect(@org1.update_attributes_with_admin({:name => 'New name',:admin_email_to_add => usr.email})).to be true
       expect(@org1.name).to eq 'New name'
     end
   end
@@ -444,7 +444,7 @@ describe Organisation do
   end
   
   it 'should have gmaps4rails_option hash with :check_process set to false' do
-    expect(@org1.gmaps4rails_options[:check_process]).to be_false
+    expect(@org1.gmaps4rails_options[:check_process]).to be false
   end
 
   it 'should geocode when address changes' do
@@ -657,39 +657,39 @@ describe Organisation do
 
   describe 'not_geocoded?' do
     it 'should return true if it lacks latitude and longitude' do
-      @org1.not_geocoded?.should be_true
+      @org1.not_geocoded?.should be true
     end
 
     it 'should return false if it has latitude and longitude' do
-      @org2.not_geocoded?.should be_false
+      @org2.not_geocoded?.should be false
     end
   end
 
   describe 'run_geocode?' do
     it 'should return true if address is changed' do
       @org1.address = "asjkdhas,ba,asda"
-      @org1.run_geocode?.should be_true
+      @org1.run_geocode?.should be true
     end
 
     it 'should return false if address is not changed' do
       @org1.should_receive(:address_changed?).and_return(false)
       @org1.should_receive(:not_geocoded?).and_return(false)
-      @org1.run_geocode?.should be_false
+      @org1.run_geocode?.should be false
     end
 
     it 'should return false if org has no address' do
       org = Organisation.new
-      org.run_geocode?.should be_false
+      org.run_geocode?.should be false
     end
 
     it 'should return true if org has an address but no coordinates' do
       @org1.should_receive(:not_geocoded?).and_return(true)
-      @org1.run_geocode?.should be_true
+      @org1.run_geocode?.should be true
     end
 
     it 'should return false if org has an address and coordinates' do
       @org2.should_receive(:not_geocoded?).and_return(false)
-      @org2.run_geocode?.should be_false
+      @org2.run_geocode?.should be false
     end
   end
 
