@@ -34,6 +34,10 @@ class Organisation < ActiveRecord::Base
 
   after_save :uninvite_users, if: ->{ email_changed? }
 
+  def not_updated_recently?
+    updated_at < 365.day.ago
+  end
+
   def uninvite_users
     users.invited_not_accepted.update_all(organisation_id: nil)
   end
@@ -85,6 +89,11 @@ class Organisation < ActiveRecord::Base
     self.joins(:categories).where(is_in_category(category_id)) #do we need to sanitize category_id?
   end
 
+  def gmaps4rails_marker_picture
+    return { "picture" => "/assets/redcircle.png" } if not_updated_recently_or_has_no_owner? 
+    return {}
+  end
+  
   def gmaps4rails_address
     "#{self.address}, #{self.postcode}"
   end
@@ -198,6 +207,10 @@ class Organisation < ActiveRecord::Base
     user
   end
 
+  def not_updated_recently_or_has_no_owner?
+    self.users.empty? || not_updated_recently?
+  end
+
   private
 
   def self.table
@@ -219,7 +232,7 @@ class Organisation < ActiveRecord::Base
   def self.contains_name(key)
     table[:name].matches(key)
   end
-  
+
   def remove_errors_with_address
     errors_hash = errors.to_hash
     errors.clear

@@ -42,6 +42,16 @@ module ApplicationHelper
   def feature_active?(flag)
     Feature.active?(flag.to_sym)
   end
+  def bootstrap_class_for flash_type
+    case flash_type
+    when :warning
+     "alert-warning"
+    when :notice
+     "alert-success"
+    else
+      "alert-error"
+    end
+  end
 end
 
 

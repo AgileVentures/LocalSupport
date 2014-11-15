@@ -24,6 +24,78 @@ describe Organisation do
     @org3.save!
   end
 
+  describe '#not_updated_recently?' do
+    let(:org){FactoryGirl.create(:organisation, updated_at: Time.now)}
+
+    it{expect(org.not_updated_recently?).to be_false}
+
+    context "updated too long ago" do
+      let(:org){FactoryGirl.create(:organisation, updated_at: 365.day.ago)}
+      it{expect(org.not_updated_recently?).to be_true}
+    end
+
+    context "when updated recently" do
+      let(:org){FactoryGirl.create(:organisation, updated_at: 364.day.ago)}
+      it{expect(org.not_updated_recently?).to be_false}
+    end
+  end
+
+  describe "#not_updated_recently_or_has_no_owner?" do
+    let(:subject){FactoryGirl.create(:organisation, :name => "Org with no owner", :updated_at => 364.day.ago)}
+    context 'has no owner but updated recently' do
+      it{expect(subject.not_updated_recently_or_has_no_owner?).to be_true}
+    end
+    context 'has owner but old update' do
+      let(:subject){FactoryGirl.create(:organisation_with_owner, :updated_at => 366.day.ago)}
+      it{expect(subject.not_updated_recently_or_has_no_owner?).to be_true}
+    end
+    context 'has no owner and old update' do 
+      let(:subject){FactoryGirl.create(:organisation, :updated_at => 366.day.ago)}
+      it{expect(subject.not_updated_recently_or_has_no_owner?).to be_true}
+    end
+    context 'has owner and recent update' do
+      let(:subject){FactoryGirl.create(:organisation_with_owner, :updated_at => 364.day.ago)}
+      it{expect(subject.not_updated_recently_or_has_no_owner?).to be_false}
+    end
+  end
+
+  describe "#gmaps4rails_marker_picture" do
+    context 'no user' do
+      it 'returns small icon when no associated user' do
+        expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/redcircle.png"})
+      end
+    end
+
+    context 'has user' do
+      before(:each) do
+        usr = FactoryGirl.create(:user, :email => "orgadmin@org.org")
+        usr.confirm!
+        @org1.users << [usr]
+        @org1.save!
+      end
+      after(:each) do
+        allow(Time).to receive(:now).and_call_original
+      end
+      it 'returns large icon when there is an associated user' do
+        expect(@org1.gmaps4rails_marker_picture).to eq({})
+      end
+
+      [365, 366, 500].each do |days|
+        it "returns small icon when update is #{days} days old" do
+          future_time = Time.at(Time.now + days.day)
+          Time.stub(:now){future_time}
+          expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "/assets/redcircle.png"})
+        end
+      end
+      [ 2, 100, 200, 364].each do |days|
+        it "returns large icon when update is only #{days} days old" do
+          future_time = Time.at(Time.now + days.day)
+          Time.stub(:now){future_time}
+          expect(@org1.gmaps4rails_marker_picture).to eq({})
+        end
+      end
+    end
+  end
   context 'scopes for orphan orgs' do
     before(:each) do
       @user = FactoryGirl.create(:user, :email => "hello@hello.com")
