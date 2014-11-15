@@ -440,7 +440,8 @@ end
 Given /^associations are destroyed for:$/ do |table|
   table.rows.flatten.each do |org_name|
     org = Organisation.find_by_name org_name
-    user = org.users.pop
+    user = org.users.last
+    org.users = org.users[0..-2]
     org.save
     user.organisation_id = nil
     user.save
