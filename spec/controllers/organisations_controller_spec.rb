@@ -186,7 +186,7 @@ describe OrganisationsController do
       it 'when not signed in editable flag is nil' do
         controller.stub(:current_user).and_return(nil)
         get :show, :id => 37
-        expect(assigns(:editable)).to be_false
+        expect(assigns(:editable)).to be_nil
       end
     end
 
@@ -208,7 +208,7 @@ describe OrganisationsController do
       it 'when not signed in grabbable flag is true' do
         controller.stub(:current_user).and_return(nil)
         get :show, :id => 37
-        expect(assigns(:grabbable)).to be_true
+        expect(assigns(:grabbable)).to be true
       end
     end
 
