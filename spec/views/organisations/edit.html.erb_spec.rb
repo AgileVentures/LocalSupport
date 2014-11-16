@@ -5,7 +5,7 @@ describe "organisations/edit.html.erb" do
     @organisation = assign(:organisation, stub_model(Organisation,
                                                      :new_record? => false, :donation_info => "http://www.friendly.com/donate"
     ))
-    view.stub markers: 'my-markers'
+    # assign(:markers, 'my-markers')
   end
 
   it "renders the edit organisation form" do

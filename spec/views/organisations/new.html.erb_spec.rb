@@ -3,7 +3,6 @@ require 'spec_helper'
 describe "organisations/new.html.erb" do
   before(:each) do
     assign(:organisation, stub_model(Organisation).as_new_record)
-    view.stub markers: 'my-markers'
   end
 
   it "renders new organisation form" do
