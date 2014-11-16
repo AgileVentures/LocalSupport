@@ -12,6 +12,7 @@ describe "organisations/_form.html.erb" do
     @category6 = FactoryGirl.create(:category, name: "rabbit", charity_commission_id: 304)
     @organisation.categories << [@category1, @category3]
     @organisation.save!
+    view.stub markers: 'my-markers'
     render
   end
   it "renders form partial even for empty Organisation" do
