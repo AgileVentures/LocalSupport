@@ -17,28 +17,39 @@ describe OrganisationsController do
     end
   end
 
-  describe "popup partial" do
-    it "should take some argument and call to_gmap4rails on it" do
-      result = [double_organisation]
-      partial = double("template")
-      marker = double("marker")
-      marker.should_receive(:infowindow)
-      result.should_receive(:to_gmaps4rails).and_yield(double_organisation, marker)
-      @controller.should_receive(:render_to_string)
-      #not sure if we are supposed to test private method on controller ...
-      @controller.send(:gmap4rails_with_popup_partial, result, partial)
+  describe "#build_markers" do
+    render_views
+    let(:org) { create :organisation }
+    subject { JSON.parse controller.send(:build_markers, org) }
+    it { expect(subject['lat']).to eq 10 }
+    it { expect(subject['lng']).to eq 10 }
+    it do
+      expect(subject['infowindow']).to eq(
+        "<a href=\"/organisations/1\">friendly non profit</a><br/>\n" + \
+        "we are really really friendly\n"
+      )
     end
+    # it "should take some argument and call to_gmap4rails on it" do
+    #   result = [double_organisation]
+    #   partial = double("template")
+    #   marker = double("marker")
+    #   marker.should_receive(:infowindow)
+    #   result.should_receive(:to_gmaps4rails).and_yield(double_organisation, marker)
+    #   @controller.should_receive(:render_to_string)
+    #   #not sure if we are supposed to test private method on controller ...
+    #   @controller.send(:gmap4rails_with_popup_partial, result, partial)
+    # end
 
   end
 
   describe "GET search" do
 
     context 'setting appropriate view vars for all combinations of input' do
-      let(:json) { 'my markers' }
+      let(:markers) { 'my markers' }
       let(:result) { [double_organisation] }
       let(:category) { double('Category') }
       before(:each) do
-        result.should_receive(:to_gmaps4rails).and_return(json)
+        controller.should_receive(:build_markers).and_return(markers)
         result.stub_chain(:page, :per).and_return(result)
         Category.should_receive(:html_drop_down_options).and_return(category_html_options)
       end
@@ -50,7 +61,7 @@ describe OrganisationsController do
         assigns(:organisations).should eq([double_organisation])
       end
 
-      it "sets up appropriate values for view vars: query_term, organisations and json" do
+      it "sets up appropriate values for view vars: query_term, organisations and markers" do
         Organisation.should_receive(:search_by_keyword).with('test').and_return(result)
         result.should_receive(:filter_by_category).with('1').and_return(result)
         Category.should_receive(:find_by_id).with("1").and_return(category)
@@ -91,7 +102,7 @@ describe OrganisationsController do
         response.should render_template 'index'
         response.should render_template 'layouts/two_columns'
         assigns(:organisations).should eq([double_organisation])
-        assigns(:json).should eq(json)
+        assigns(:markers).should eq(markers)
         assigns(:category_options).should eq category_html_options
       end
     end
@@ -113,8 +124,8 @@ describe OrganisationsController do
 
     it "does not set up flash nor flash.now when search returns results" do
       result = [double_organisation]
-      json='my markers'
-      result.should_receive(:to_gmaps4rails).and_return(json)
+      markers='my markers'
+      result.should_receive(:to_gmaps4rails).and_return(markers)
       result.should_receive(:empty?).and_return(false)
       result.stub_chain(:page, :per).and_return(result)
       Organisation.should_receive(:search_by_keyword).with('some results').and_return(result)
@@ -130,14 +141,14 @@ describe OrganisationsController do
   describe "GET index" do
     it "assigns all organisations as @organisations" do
       result = [double_organisation]
-      json='my markers'
-      result.should_receive(:to_gmaps4rails).and_return(json)
+      markers='my markers'
+      result.should_receive(:to_gmaps4rails).and_return(markers)
       Category.should_receive(:html_drop_down_options).and_return(category_html_options)
       Organisation.should_receive(:order_by_most_recent).and_return(result)
       result.stub_chain(:page, :per).and_return(result)
       get :index
       assigns(:organisations).should eq(result)
-      assigns(:json).should eq(json)
+      assigns(:markers).should eq(markers)
       response.should render_template 'layouts/two_columns'
     end
   end
@@ -159,14 +170,14 @@ describe OrganisationsController do
       response.should render_template 'layouts/two_columns'
     end
 
-    it "assigns the requested organisation as @organisation and appropriate json" do
-      json='my markers'
+    it "assigns the requested organisation as @organisation and appropriate markers" do
+      markers='my markers'
       @org = double_organisation
-      @org.should_receive(:to_gmaps4rails).and_return(json)
+      @org.should_receive(:to_gmaps4rails).and_return(markers)
       Organisation.should_receive(:find).with('37') { @org }
       get :show, :id => '37'
       assigns(:organisation).should be(double_organisation)
-      assigns(:json).should eq(json)
+      assigns(:markers).should eq(markers)
     end
 
     context "editable flag is assigned to match user permission" do
