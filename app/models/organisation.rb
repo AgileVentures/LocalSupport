@@ -51,11 +51,11 @@ class Organisation < ActiveRecord::Base
   end
 
   #This method is overridden to save organisation if address was failed to geocode
-  def run_validations!
-    run_callbacks :validate
-    remove_errors_with_address
-    errors.empty?
-  end
+  # def run_validations!
+  #   run_callbacks :validate
+  #   remove_errors_with_address
+  #   errors.empty?
+  # end
 
   #TODO: Give this TLC and refactor the flow or refactor out responsibilities
   # This method both adds new editors and/or updates attributes
@@ -88,9 +88,9 @@ class Organisation < ActiveRecord::Base
     self.joins(:categories).where(is_in_category(category_id)) #do we need to sanitize category_id?
   end
 
-  def gmaps4rails_address
-    "#{self.address}, #{self.postcode}"
-  end
+  def full_address
+     "#{self.address}, #{self.postcode}"
+   end
 
   def gmaps4rails_infowindow
     "#{self.name}"
