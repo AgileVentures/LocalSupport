@@ -1,3 +1,8 @@
 <% content_for :scripts do %>
     <%= javascript_include_tag 'infobox' %>
+    <%= javascript_include_tag 'map' %>
+<% end %>
+
+<% content_for :map do %>
+    <%= content_tag "div", "", id: "marker_data", data: {markers: markers} %>
 <% end %>

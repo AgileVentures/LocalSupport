@@ -14,5 +14,5 @@
   <% if @editable %>
       <%= link_to("Edit", edit_volunteer_op_path(@volunteer_op.id), {:class => 'btn btn-primary'}) %>
   <% end %>
-<% render partial: 'shared/map_scripts', locals: {json: @json} %>
+<% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
 </div>
