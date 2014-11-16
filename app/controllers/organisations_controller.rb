@@ -117,6 +117,9 @@ class OrganisationParams
     Gmaps4rails.build_markers(organisations) do |org, marker|
       marker.lat org.latitude
       marker.lng org.longitude
+      marker.infowindow render_to_string(
+        partial: 'popup', locals: { org: org }
+      )
     end.select do |marker|
       marker[:lat].present? && marker[:lng].present?
     end.to_json
