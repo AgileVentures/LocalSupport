@@ -20,6 +20,20 @@ describe VolunteerOpsController do
     end
   end
 
+  describe "#build_markers" do
+    render_views
+    let(:org) { create :organisation }
+    let!(:op) { create :volunteer_op, organisation: org }
+    subject { JSON.parse(controller.send(:build_markers, org)).first }
+    it { expect(subject['lat']).to eq org.latitude }
+    it { expect(subject['lng']).to eq org.longitude }
+    it { expect(subject['infowindow']).to include org.id.to_s }
+    it { expect(subject['infowindow']).to include org.name }
+    it { expect(subject['infowindow']).to include op.id.to_s }
+    it { expect(subject['infowindow']).to include op.title }
+    it { expect(subject['infowindow']).to include op.description }
+  end
+
   describe 'GET index' do
     before :each do
       @results = [op]
@@ -42,13 +56,13 @@ describe VolunteerOpsController do
       assigns(:organisations).should eq([org2])
     end
 
-    it 'assigns @json' do
-      json = 'my markers'
+    it 'assigns @markers' do
+      markers = 'my markers'
       org2 = stub_model Organisation
       @results.stub(:map).and_return([org2])
-      controller.should_receive(:gmap4rails_with_popup_partial).and_return(json)
+      controller.should_receive(:build_markers).and_return(markers)
       get :index, {}
-      assigns(:json).should eq(json)
+      assigns(:markers).should eq(markers)
     end
   end
 

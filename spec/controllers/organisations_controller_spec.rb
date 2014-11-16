@@ -23,12 +23,9 @@ describe OrganisationsController do
     subject { JSON.parse(controller.send(:build_markers, org)).first }
     it { expect(subject['lat']).to eq org.latitude }
     it { expect(subject['lng']).to eq org.longitude }
-    it do
-      expect(subject['infowindow']).to eq(
-        "<a href=\"/organisations/#{org.id}\">#{org.name}</a><br/>\n" + \
-        "#{org.description}\n"
-      )
-    end
+    it { expect(subject['infowindow']).to include org.id.to_s }
+    it { expect(subject['infowindow']).to include org.name }
+    it { expect(subject['infowindow']).to include org.description }
   end
 
   describe "GET search" do
