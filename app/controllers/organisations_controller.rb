@@ -117,6 +117,8 @@ class OrganisationParams
     Gmaps4rails.build_markers(organisations) do |org, marker|
       marker.lat org.latitude
       marker.lng org.longitude
+    end.select do |marker|
+      marker[:lat].present? && marker[:lng].present?
     end.to_json
   end
 
