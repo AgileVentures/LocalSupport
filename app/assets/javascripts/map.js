@@ -5,6 +5,6 @@ $(function () {
     var markers = handler.addMarkers(marker_data);
     handler.bounds.extendWith(markers);
     handler.getMap().setZoom(12);
-    handler.getMap().setZoom(new google.maps.LatLng(51.5978, -0.3370));
+    handler.getMap().setCenter(new google.maps.LatLng(51.5978, -0.3370));
   });
 });
