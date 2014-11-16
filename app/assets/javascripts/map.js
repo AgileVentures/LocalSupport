@@ -5,7 +5,7 @@ $(function () {
     provider: {
       minZoom: 12,
       center: new google.maps.LatLng(51.5978, -0.3370),
-      auto_adjust: false,
+      mapTypeId : google.maps.MapTypeId.ROADMAP,
     }
     }, function(){
     var marker_data = $('#marker_data').data().markers;
