@@ -33,6 +33,7 @@ FactoryGirl.define do
     factory :user_stubbed_organisation do
       after(:build) do |user|
         org = FactoryGirl.build(:organisation)
+        org.stub :geocode
         org.save!
         user.organisation = org
         user.save!
