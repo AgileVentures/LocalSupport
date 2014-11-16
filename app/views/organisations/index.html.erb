@@ -1,11 +1,3 @@
-<% content_for :scripts do %>
-    <%= javascript_include_tag 'map' %>
-<% end %>
-
-<% content_for :map do %>
-    <%= content_tag "div", "", id: "marker_data", data: {markers: @markers} %>
-<% end %>
-
 <%= form_tag("/organisations/search", :method => "get") do %>
   <%= label_tag(:q, "Select Category:") %>
   <%= select("category", "id", @category_options, { :include_blank => 'All' },
@@ -40,4 +32,4 @@
                  new_organisation_path){} %>
 </div>
 
-<% render partial: 'shared/map_scripts', locals: {json: @json} %>
+<% render partial: 'shared/map_scripts', locals: {markers: @markers} %>

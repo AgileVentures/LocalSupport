@@ -1,10 +1,5 @@
 <% content_for :scripts do %>
-    <%= javascript_include_tag 'map' %>
     <%= javascript_include_tag 'this_is_my_org' %>
-<% end %>
-
-<% content_for :map do %>
-    <%= content_tag "div", "", id: "marker_data", data: {markers: @markers} %>
 <% end %>
 
 <div class="row">
@@ -87,4 +82,4 @@
   </div>
 </div>
 
-<% render partial: 'shared/map_scripts', locals: {json: @json} %>
+<% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
