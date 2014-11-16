@@ -7,7 +7,7 @@ describe "organisations/_popup.html.erb" do
   end
 
   before(:each) do
-    assign(:org, org)
+    view.stub org: org
     render
   end
 

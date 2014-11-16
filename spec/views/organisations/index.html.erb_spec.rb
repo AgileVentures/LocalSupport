@@ -66,7 +66,6 @@ describe "organisations/index.html.erb", :js => true do
 
   it 'displays the json for the map script' do
     assign(:footer_page_links, [])
-    Page.stub(:all).and_return []
     render template: "organisations/index", layout: "layouts/two_columns"
     expect(rendered).to include 'my-markers'
   end
