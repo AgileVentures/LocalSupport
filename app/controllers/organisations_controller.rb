@@ -34,7 +34,7 @@ class OrganisationsController < ApplicationController
     @can_create_volunteer_op = current_user.can_create_volunteer_ops?(@organisation) if current_user
     @grabbable = current_user ? current_user.can_request_org_admin?(@organisation) : true
    # @next_path = current_user ? organisation_user_path(@organisation.id, current_user.id) : new_user_session_path
-    @markers = build_markers(@organisation)
+    @markers = build_markers([@organisation])
   end
 
   # GET /organisations/new
@@ -47,7 +47,7 @@ class OrganisationsController < ApplicationController
   # GET /organisations/1/edit
   def edit
     @organisation = Organisation.find(params[:id])
-    @markers = build_markers(@organisation)
+    @markers = build_markers([@organisation])
     @categories_start_with = Category.first_category_name_in_each_type
     return false unless user_can_edit? @organisation
     #respond_to do |format|
@@ -113,7 +113,7 @@ class OrganisationParams
 
   private
 
-  def build_markers(*organisations)
+  def build_markers(organisations)
     Gmaps4rails.build_markers(organisations) do |org, marker|
       marker.lat org.latitude
       marker.lng org.longitude
