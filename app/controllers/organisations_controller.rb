@@ -114,7 +114,7 @@ class OrganisationParams
   private
 
   def build_markers(*organisations)
-    Gmaps4rails.build_markers(*organisations) do |org, marker|
+    Gmaps4rails.build_markers(organisations) do |org, marker|
       marker.lat org.latitude
       marker.lng org.longitude
       marker.infowindow render_to_string(
