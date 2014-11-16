@@ -11,7 +11,7 @@ class OrganisationsController < ApplicationController
     @organisations = Organisation.order_by_most_recent
     @organisations = @organisations.search_by_keyword(@query_term).filter_by_category(@category_id)
     flash.now[:alert] = SEARCH_NOT_FOUND if @organisations.empty?
-    @json = gmap4rails_with_popup_partial(@organisations,'popup')
+    @markers = build_markers(@organisations)
     @category_options = Category.html_drop_down_options
     render :template =>'organisations/index'
   end
@@ -20,7 +20,7 @@ class OrganisationsController < ApplicationController
   # GET /organisations.json
   def index
     @organisations = Organisation.order_by_most_recent
-    @json = gmap4rails_with_popup_partial(@organisations,'popup')
+    @markers = build_markers(@organisations)
     @category_options = Category.html_drop_down_options
   end
 
@@ -34,7 +34,7 @@ class OrganisationsController < ApplicationController
     @can_create_volunteer_op = current_user.can_create_volunteer_ops?(@organisation) if current_user
     @grabbable = current_user ? current_user.can_request_org_admin?(@organisation) : true
    # @next_path = current_user ? organisation_user_path(@organisation.id, current_user.id) : new_user_session_path
-    @json = gmap4rails_with_popup_partial(@organisation,'popup')
+    @markers = build_markers([@organisation])
   end
 
   # GET /organisations/new
@@ -47,7 +47,7 @@ class OrganisationsController < ApplicationController
   # GET /organisations/1/edit
   def edit
     @organisation = Organisation.find(params[:id])
-    @json = gmap4rails_with_popup_partial(@organisation,'popup')
+    @markers = build_markers([@organisation])
     @categories_start_with = Category.first_category_name_in_each_type
     return false unless user_can_edit? @organisation
     #respond_to do |format|
@@ -110,7 +110,16 @@ class OrganisationParams
                      category_organisations_attributes: [:_destroy, :category_id, :id])
     end
   end
+
   private
+
+  def build_markers(organisations)
+    Gmaps4rails.build_markers(organisations) do |org, marker|
+      marker.lat org.latitude
+      marker.lng org.longitude
+    end.to_json
+  end
+
   def gmap4rails_with_popup_partial(item, partial)
     item.to_gmaps4rails  do |org, marker|
       marker.infowindow render_to_string(:partial => partial, :locals => { :@org => org})

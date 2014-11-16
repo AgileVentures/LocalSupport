@@ -13,7 +13,6 @@ class Organisation < ActiveRecord::Base
   validates_url :donation_info, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.donation_info.present?}
 
   # http://stackoverflow.com/questions/10738537/lazy-geocoding
-  acts_as_gmappable :check_process => false, :process_geocoding => :run_geocode?
   has_many :users
   has_many :volunteer_ops
   has_many :category_organisations
@@ -37,6 +36,10 @@ class Organisation < ActiveRecord::Base
   def uninvite_users
     users.invited_not_accepted.update_all(organisation_id: nil)
   end
+
+  # For the geocoder gem
+  geocoded_by :full_address
+  after_validation :geocode, if: -> { run_geocode? }
 
   def run_geocode?
     ## http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
