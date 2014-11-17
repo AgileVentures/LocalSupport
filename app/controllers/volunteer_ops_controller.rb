@@ -5,7 +5,6 @@ class VolunteerOpsController < ApplicationController
   def index
     @volunteer_ops = VolunteerOp.order_by_most_recent
     @organisations = @volunteer_ops.map { |op| op.organisation }
-    # @json = gmap4rails_with_popup_partial(@organisations, 'popup')
     @markers = build_markers(@organisations)
   end
 
@@ -13,7 +12,6 @@ class VolunteerOpsController < ApplicationController
     @volunteer_op = VolunteerOp.find(params[:id])
     @organisation = @volunteer_op.organisation
     @editable = current_user.can_edit?(@organisation) if current_user
-    # @json = gmap4rails_with_popup_partial(@organisation, 'popup')
     @markers = build_markers([@organisation])
   end
 
@@ -35,7 +33,6 @@ class VolunteerOpsController < ApplicationController
   def edit
     @volunteer_op = VolunteerOp.find(params[:id])
     @organisation = @volunteer_op.organisation
-    # @json = gmap4rails_with_popup_partial(@organisation, 'popup')
     @markers = build_markers([@organisation])
   end
 

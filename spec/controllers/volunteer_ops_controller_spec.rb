@@ -32,6 +32,10 @@ describe VolunteerOpsController do
     it { expect(subject['infowindow']).to include op.id.to_s }
     it { expect(subject['infowindow']).to include op.title }
     it { expect(subject['infowindow']).to include op.description }
+    context 'markers without coords omitted' do
+      let(:org) { create :organisation, latitude: nil, longitude: nil }
+      it { expect(JSON.parse(controller.send(:build_markers, org))).to be_empty }
+    end
   end
 
   describe 'GET index' do

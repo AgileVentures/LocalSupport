@@ -26,6 +26,10 @@ describe OrganisationsController do
     it { expect(subject['infowindow']).to include org.id.to_s }
     it { expect(subject['infowindow']).to include org.name }
     it { expect(subject['infowindow']).to include org.description }
+    context 'markers without coords omitted' do
+      let(:org) { create :organisation, latitude: nil, longitude: nil }
+      it { expect(JSON.parse(controller.send(:build_markers, org))).to be_empty }
+    end
   end
 
   describe "GET search" do
