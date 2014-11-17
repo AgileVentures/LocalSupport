@@ -50,13 +50,6 @@ class Organisation < ActiveRecord::Base
     latitude.blank? and longitude.blank?
   end
 
-  #This method is overridden to save organisation if address was failed to geocode
-  # def run_validations!
-  #   run_callbacks :validate
-  #   remove_errors_with_address
-  #   errors.empty?
-  # end
-
   #TODO: Give this TLC and refactor the flow or refactor out responsibilities
   # This method both adds new editors and/or updates attributes
   def update_attributes_with_admin(params)
@@ -91,10 +84,6 @@ class Organisation < ActiveRecord::Base
   def full_address
      "#{self.address}, #{self.postcode}"
    end
-
-  def gmaps4rails_infowindow
-    "#{self.name}"
-  end
 
   #Edit this if CSV 'schema' changes
   #value is the name of a column in csv file

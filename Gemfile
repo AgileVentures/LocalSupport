@@ -80,7 +80,7 @@ end
 gem 'therubyracer'
 gem 'underscore-rails'
 gem 'geocoder'
-gem 'gmaps4rails'
+gem 'gmaps4rails', "~> 2.1.0"
 #gem 'mongrel'
 gem 'kaminari'
 gem 'unicorn'

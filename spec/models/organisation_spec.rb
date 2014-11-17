@@ -376,10 +376,6 @@ describe Organisation do
   end
 
 
-  it 'offers information for the gmap4rails info window' do
-    expect(@org1.gmaps4rails_infowindow).to eq(@org1.name)
-  end
-  
   it 'should geocode when address changes' do
     new_address = '60 pinner road'
     @org1.should_receive(:geocode)
