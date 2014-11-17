@@ -1,6 +1,6 @@
 Then /^I should see hyperlinks for "(.*?)", "(.*?)" and "(.*?)" in the map$/ do |org1, org2, org3|
-  markers = JSON.parse(find('#marker_data')['data-markers'])
-  descriptions = markers.map{|m| m['infowindow'] }.join
+  marker_json = JSON.parse markers
+  descriptions = marker_json.map{|m| m['infowindow'] }.join
   Organisation.where(name: [org1, org2, org3]).pluck(:description).each do |description|
     expect(descriptions).to include description
   end
@@ -9,42 +9,49 @@ end
 # could we move maps stuff into separate step file and couldn't these things be DRYer ...
 # e.g. one step to handle 2 or more orgs ...
 Then /^I should see "([^"]*?)", "([^"]*?)" and "([^"]*?)" in the map centered on local organisations$/ do |name1, name2, name3|
-  markers = find('#marker_data')['data-markers']
-  check_map(markers, name1, name2, name3)
+  names = [name1, name2, name3]
+  coords = Organisation.where(name: names).pluck(:latitude, :longitude).flatten.uniq
+
+  expect_markers_to_have_words(names)
+  expect_markers_to_have_words(coords)
 end
 
 Then /^I should see "([^"]*?)" and "([^"]*?)" in the map$/ do |name1, name2|
-  check_map([name1,name2])
+  names = [name1, name2]
+  coords = Organisation.where(name: names).pluck(:latitude, :longitude).flatten.uniq
+
+  expect_markers_to_have_words(names)
+  expect_markers_to_have_words(coords)
 end
 
-Given(/^the map should show the opportunity (.*)$/) do |op|
-    page.should have_xpath "//script[contains(.,'#{op}')]", :visible => false
+Given(/^the map should show the opportunity (.*)$/) do |opportunity_description|
+  expect_markers_to_have_words(opportunity_description)
 end
 
-def check_map(markers, *names)
-  names.each do |name|
-    expect(markers).to include name
+def markers
+ @markers ||= find('#marker_data')['data-markers']
+end
+
+def expect_markers_to_have_words(*words)
+  [*words].flatten.each do |word|
+    expect(markers).to include word.to_s
   end
-
-  Organisation.where(name: names).pluck(:latitude, :longitude).flatten.uniq.each do |coord|
-    expect(markers).to include coord.to_s
-  end
 end
 
-def markers_for_org_names(markers, *org_names)
+def marker_json_for_org_names(*org_names)
+  marker_json = JSON.parse markers
   [*org_names].map do |name|
-    markers.find{|m| m['infowindow'].include? name }
+    marker_json.find{|m| m['infowindow'].include? name }
   end
 end
 
 Then /^the coordinates for "(.*?)" and "(.*?)" should( not)? be the same/ do | org1_name, org2_name, negation|
-  markers = JSON.parse(find('#marker_data')['data-markers'])
-  org1, org2 = markers_for_org_names(markers, org1_name, org2_name)
-
+  org1, org2 = marker_json_for_org_names(org1_name, org2_name)
   if negation
     expect(org1['lat']).not_to eq org2['lat']
     expect(org1['lng']).not_to eq org2['lng']
   else
+    byebug if org1['lat'] != org2['lat']
     expect(org1['lat']).to eq org2['lat']
     expect(org1['lng']).to eq org2['lng']
   end
