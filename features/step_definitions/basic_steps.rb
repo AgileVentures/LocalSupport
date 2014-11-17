@@ -20,7 +20,8 @@ Then(/^the Admin menu has a valid (.*?) link$/) do |link|
   within('#menuAdmin > ul.dropdown-menu') do
     find('a', text: link).should_not be_nil
     click_link link
-    current_path.should eq paths(link.downcase)
+    url = current_url.gsub('http://www.example.com','').gsub('[]','%5B%5D')
+    expect(url).to eq paths(link.downcase)
   end
 end
 

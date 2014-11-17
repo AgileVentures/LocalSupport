@@ -19,9 +19,11 @@ class OrganisationsController < ApplicationController
   # GET /organisations
   # GET /organisations.json
   def index
-    @organisations = Organisation.order_by_most_recent
-    @json = gmap4rails_with_popup_partial(@organisations,'popup')
-    @category_options = Category.html_drop_down_options
+    params[:service] ||= 'index'
+    extend ControllerExtension.for self
+    set_params
+    set_instance_variables
+    render template: params[:template], layout: params[:layout]
   end
 
   # GET /organisations/1

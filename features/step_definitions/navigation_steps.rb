@@ -16,7 +16,7 @@ def paths(location)
       'contributors' => contributors_path,
       'password reset' => edit_user_password_path,
       'invitation' => accept_user_invitation_path,
-      'organisations without users' => organisations_report_path,
+      'organisations without users' => organisations_path(service: 'without_users'),
       'all users' => users_report_path,
       'invited users' => invited_users_report_path,
       'volunteer opportunities' => volunteer_ops_path,

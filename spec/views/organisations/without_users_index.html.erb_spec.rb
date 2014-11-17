@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe 'organisation_reports/without_users_index.html.erb' do
+describe 'organisations/without_users_index.html.erb' do
   let(:org) { stub_model Organisation, id: '2', name: 'test', email: 'hello@there.com' }
-  before(:each) { assign(:orphans, [org]) }
+  before(:each) { assign(:organisations, [org]) }
 
   it 'columns: name, email, checkbox' do
     render

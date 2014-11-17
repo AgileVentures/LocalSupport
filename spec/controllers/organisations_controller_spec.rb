@@ -128,18 +128,99 @@ describe OrganisationsController do
   end
 
   describe "GET index" do
-    it "assigns all organisations as @organisations" do
-      result = [double_organisation]
-      json='my markers'
-      result.should_receive(:to_gmaps4rails).and_return(json)
-      Category.should_receive(:html_drop_down_options).and_return(category_html_options)
-      Organisation.should_receive(:order_by_most_recent).and_return(result)
-      result.stub_chain(:page, :per).and_return(result)
-      get :index
-      assigns(:organisations).should eq(result)
-      assigns(:json).should eq(json)
-      response.should render_template 'layouts/two_columns'
+    describe 'ControllerExtensions::Organisations::Default' do
+      let(:params) { example.metadata.slice(:scopes) }
+      before do
+        controller.stub example.metadata.slice(:admin?)
+      end
+
+      context admin?: false do
+        it do
+          get :index, params
+          expect(controller.params[:scopes]).to eq ['order_by_most_recent']
+        end
+      end
+
+      context admin?: true do
+        it do
+          get :index, params
+          expect(controller.params[:scopes]).to eq ['order_by_most_recent']
+        end
+      end
+
+      context admin?: false, scopes: ['hello'] do
+        it do
+          get :index, params
+          expect(controller.params[:scopes]).to eq ['order_by_most_recent']
+        end
+      end
+
+      context admin?: true, scopes: ['hello'] do
+        it do
+          expect(Organisation).to receive(:hello).and_return Organisation.all
+          get :index, params
+          expect(controller.params[:scopes]).to eq ['hello']
+        end
+      end
     end
+
+
+    context 'ControllerExtensions::Organisations::Index' do
+      it "assigns all organisations as @organisations" do
+        result = [double_organisation]
+        json='my markers'
+        result.should_receive(:to_gmaps4rails).and_return(json)
+        Category.should_receive(:html_drop_down_options).and_return(category_html_options)
+        Organisation.should_receive(:order_by_most_recent).and_return(result)
+        result.stub_chain(:page, :per).and_return(result)
+        get :index
+        assigns(:organisations).should eq(result)
+        assigns(:json).should eq(json)
+        response.should render_template 'layouts/two_columns'
+      end
+    end
+
+    context 'ControllerExtensions::Organisations::WithoutUsers' do
+      it 'non-admins not allowed' do
+        controller.stub admin?: false
+        get :index, service: 'without_users'
+        expect(controller.params[:template]).to eq 'organisations/index'
+      end
+
+      context 'admins' do
+        before do
+          controller.stub admin?: true
+          get :index, service: 'without_users'
+        end
+
+        context 'params set' do
+          {
+            template: 'without_users_index',
+            layout: 'invitation_table',
+            scopes: ['not_null_email','null_users','without_matching_user_emails'],
+          }.each do |k, v|
+            it do
+              if k == :template
+                v = v.prepend(controller.controller_name + '/')
+              end
+              expect(controller.params[k]).to eq v
+            end
+          end
+        end
+
+        context 'instance variables set' do
+          it do
+            expect(assigns(:resend_invitation)).to eq false
+          end
+
+          it do
+            org = create(:organisation, email: 'well@hello.there')
+            expect(assigns(:organisations)).to include org
+          end
+        end
+      end
+    end
+
   end
 
   describe "GET show" do
