@@ -29,7 +29,7 @@ Given(/^the map should show the opportunity (.*)$/) do |opportunity_description|
 end
 
 def markers
- @markers ||= find('#marker_data')['data-markers']
+  find('#marker_data')['data-markers']
 end
 
 def expect_markers_to_have_words(*words)
@@ -51,7 +51,6 @@ Then /^the coordinates for "(.*?)" and "(.*?)" should( not)? be the same/ do | o
     expect(org1['lat']).not_to eq org2['lat']
     expect(org1['lng']).not_to eq org2['lng']
   else
-    byebug if org1['lat'] != org2['lat']
     expect(org1['lat']).to eq org2['lat']
     expect(org1['lng']).to eq org2['lng']
   end
