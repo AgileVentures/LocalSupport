@@ -7,7 +7,7 @@
   </tr>
   </thead>
   <tbody>
-  <% @orphans.each do |organisation| %>
+  <% @organisations.each do |organisation| %>
       <tr id="<%= organisation.id %>">
         <td><%= link_to organisation.name, organisation_path(organisation) %></td>
         <td><%= organisation.email %></td>

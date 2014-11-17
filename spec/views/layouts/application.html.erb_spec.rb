@@ -194,7 +194,7 @@ describe 'layouts/application.html.erb', :type => :feature do
 
     it 'should see admin-only dropdown' do
       rendered.within('#menuAdmin') do |menu|
-        menu.should have_link 'Organisations Without Users', :href => organisations_report_path
+        menu.should have_link 'Organisations Without Users', :href => organisations_path(template: 'without_users_index', layout: 'invitation_table', scopes:['not_null_email','null_users','without_matching_user_emails'])
         menu.should have_link 'All Users', :href => users_report_path
         menu.should have_link 'Invited Users', :href => invited_users_report_path
       end

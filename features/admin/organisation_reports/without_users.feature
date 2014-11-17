@@ -49,8 +49,7 @@ Feature: Orphans UI
     Given cookies are approved
     Given I am signed in as a non-admin
     And I visit the organisations without users page
-    Then I should be on the home page
-    And I should see "You must be signed in as an admin to perform this action!"
+    And I should not see "Invite Users"
 
   #These next two scenarios apply to layouts/invitation_table
   @javascript
