@@ -286,7 +286,9 @@ div#container textarea {
 }
 
 .gm-style-iw {
+  width: auto !important;
   height: auto !important;
+  padding-right: 3em;
 }
 
 
