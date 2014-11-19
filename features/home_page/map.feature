@@ -20,11 +20,7 @@ Feature: Map of local charities
   Scenario: Show all charities on homepage map
     Given I visit the home page
     And I should see "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling" in the map
-
-  Scenario: Map is centered on Harrow
-    Given I visit the home page
-    Then the map should be centered on local organisations
-
+  
   Scenario: Clickable hyperlinks to charity homepage in map
     Given I visit the home page
     And I should see hyperlinks for "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling" in the map
