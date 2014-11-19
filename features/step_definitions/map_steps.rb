@@ -10,10 +10,14 @@ end
 # e.g. one step to handle 2 or more orgs ...
 Then /^I should see "([^"]*?)", "([^"]*?)" and "([^"]*?)" in the map$/ do |name1, name2, name3|
   names = [name1, name2, name3]
-  coords = Organisation.where(name: names).pluck(:latitude, :longitude).flatten.uniq
-
-  expect_markers_to_have_words(names)
-  expect_markers_to_have_words(coords)
+  names_coords = names.map{|org_name| {name: org_name, lat: Organisation.where(name: org_name).first.latitude, lng: Organisation.where(name: org_name).first.longitude}}
+  names_coords.each do |name_coord|
+    org_name = name_coord[:name]
+    result = JSON.parse(markers).select{|marker| marker["infowindow"].include? org_name}
+    expect(result.length).to eq 1
+    expect(result.first["lat"]).to eq name_coord[:lat] 
+    expect(result.first["lng"]).to eq name_coord[:lng] 
+  end
 end
 
 Then /^I should see "([^"]*?)" and "([^"]*?)" in the map$/ do |name1, name2|
