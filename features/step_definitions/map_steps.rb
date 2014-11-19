@@ -1,14 +1,14 @@
 Then /^I should see hyperlinks for "(.*?)", "(.*?)" and "(.*?)" in the map$/ do |org1, org2, org3|
   marker_json = JSON.parse markers
   descriptions = marker_json.map{|m| m['infowindow'] }.join
-  Organisation.where(name: [org1, org2, org3]).pluck(:description).each do |description|
-    expect(descriptions).to include description
+  Organisation.where(name: [org1, org2, org3]).each do |org|
+    expect(descriptions).to have_xpath "//a[@href=\"#{organisation_path(org.id)}\"]", :text => "#{org.name}"
   end
 end
 
 # could we move maps stuff into separate step file and couldn't these things be DRYer ...
 # e.g. one step to handle 2 or more orgs ...
-Then /^I should see "([^"]*?)", "([^"]*?)" and "([^"]*?)" in the map centered on local organisations$/ do |name1, name2, name3|
+Then /^I should see "([^"]*?)", "([^"]*?)" and "([^"]*?)" in the map$/ do |name1, name2, name3|
   names = [name1, name2, name3]
   coords = Organisation.where(name: names).pluck(:latitude, :longitude).flatten.uniq
 
