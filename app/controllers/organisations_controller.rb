@@ -114,15 +114,11 @@ class OrganisationParams
   private
 
   def build_map_markers(organisations)
-    Gmaps4rails.build_markers(organisations) do |org, marker|
+    ::MapMarkerJson.build(organisations) do |org, marker|
       marker.lat org.latitude
       marker.lng org.longitude
-      marker.infowindow render_to_string(
-        partial: 'popup', locals: { org: org }
-      )
-    end.select do |marker|
-      marker[:lat].present? && marker[:lng].present?
-    end.to_json
+      marker.infowindow render_to_string(partial: 'popup', locals: {org: org})
+    end
   end
 
   def user_can_edit?(org)

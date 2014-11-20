@@ -46,25 +46,27 @@ class VolunteerOpsController < ApplicationController
       render action: "edit"
     end
   end
+
   class VolunteerOpParams
     def self.build params
       params.require(:volunteer_op).permit(:description, :title, :organisation_id)
     end
   end
+
   private
 
-  def build_marker_for_vol_op(org, marker)
-    marker.lat org.latitude
-    marker.lng org.longitude
-    marker.picture(
-      { :url => ActionController::Base.helpers.asset_path("volunteer_icon.png"),
+  def build_map_markers(organisations)
+    ::MapMarkerJson.build(organisations) do |org, marker|
+      marker.lat org.latitude
+      marker.lng org.longitude
+      marker.infowindow render_to_string( partial: 'popup', locals: {org: org})
+      marker.picture({
+        :url => ActionController::Base.helpers.asset_path("volunteer_icon.png"),
         :width   => 32,
-        :height  => 32 }
-    )
-    marker.title   "Click here to see volunteer opportunities at #{org.name}"
-    marker.infowindow render_to_string(
-      partial: 'popup', locals: { org: org }
-    )
+        :height  => 32,
+      })
+      marker.title "Click here to see volunteer opportunities at #{org.name}"
+    end
   end
 
   def authorize
@@ -85,25 +87,5 @@ class VolunteerOpsController < ApplicationController
        current_user.organisation == VolunteerOp.find(params[:id]).organisation if current_user.present? && current_user.organisation.present?
     end
 
-  end
-
-  def build_map_markers(organisations)
-    Gmaps4rails.build_markers(organisations) do |org, marker|
-      build_marker_for_vol_op(org, marker)
-    end.select do |marker|
-      marker[:lat].present? && marker[:lng].present?
-    end.to_json
-  end
-
-  def gmap4rails_with_popup_partial(item, partial)
-    item.to_gmaps4rails  do |org, marker|
-      marker.picture({
-                       :picture => ActionController::Base.helpers.asset_path("volunteer_icon.png"),
-                       :width   => 32,
-                       :height  => 32
-                     })
-      marker.title   "Click here to see volunteer opportunities at #{org.name}"
-      marker.infowindow render_to_string(:partial => partial, :locals => { :@org => org})
-    end
   end
 end
