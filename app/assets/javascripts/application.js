@@ -14,6 +14,8 @@
 //= require bootstrap-switch
 //= require organisations
 
+LocalSupport = {};
+
 $(function() {
     // invoke global functions here
 });
