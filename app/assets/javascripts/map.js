@@ -1,12 +1,11 @@
 LocalSupport.google_map = {
-  element: '#marker_data',
   settings: {
     id: 'map_canvas',
     zoom: 12,
     lat: 51.5978,
     lng: -0.3370,
   },
-  parse_settings: function(google, hash) {
+  parsed_settings: function(google, hash) {
     return {
       internal: {id: hash.id},
       provider: {
@@ -15,17 +14,19 @@ LocalSupport.google_map = {
       }
     }
   },
-  build: function(el, settings) {
+  marker_data: function() {
+    return $('#marker_data').data().markers;
+  },
+  build: function(settings, data) {
     var handler = Gmaps.build('Google');
     handler.buildMap(settings, function() {
-      var marker_data = $(el).data().markers;
-      var markers = handler.addMarkers(marker_data);
+      var markers = handler.addMarkers(data);
       handler.bounds.extendWith(markers);
     })
   }
 }
 $(function(){
   var map = LocalSupport.google_map;
-  var settings = map.parse_settings(google, map.settings);
-  map.build(map.element, settings);
+  var settings = map.parsed_settings(google, map.settings);
+  map.build(settings, map.marker_data());
 });
