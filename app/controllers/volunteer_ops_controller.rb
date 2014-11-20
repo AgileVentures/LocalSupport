@@ -5,14 +5,14 @@ class VolunteerOpsController < ApplicationController
   def index
     @volunteer_ops = VolunteerOp.order_by_most_recent
     @organisations = @volunteer_ops.map { |op| op.organisation }
-    @markers = build_markers(@organisations)
+    @markers = build_map_markers(@organisations)
   end
 
   def show
     @volunteer_op = VolunteerOp.find(params[:id])
     @organisation = @volunteer_op.organisation
     @editable = current_user.can_edit?(@organisation) if current_user
-    @markers = build_markers([@organisation])
+    @markers = build_map_markers([@organisation])
   end
 
   def new
@@ -33,7 +33,7 @@ class VolunteerOpsController < ApplicationController
   def edit
     @volunteer_op = VolunteerOp.find(params[:id])
     @organisation = @volunteer_op.organisation
-    @markers = build_markers([@organisation])
+    @markers = build_map_markers([@organisation])
   end
 
   def update
@@ -52,6 +52,20 @@ class VolunteerOpsController < ApplicationController
     end
   end
   private
+
+  def build_marker_for_vol_op(org, marker)
+    marker.lat org.latitude
+    marker.lng org.longitude
+    marker.picture(
+      { :url => ActionController::Base.helpers.asset_path("volunteer_icon.png"),
+        :width   => 32,
+        :height  => 32 }
+    )
+    marker.title   "Click here to see volunteer opportunities at #{org.name}"
+    marker.infowindow render_to_string(
+      partial: 'popup', locals: { org: org }
+    )
+  end
 
   def authorize
     # set @organisation
@@ -73,19 +87,9 @@ class VolunteerOpsController < ApplicationController
 
   end
 
-  def build_markers(organisations)
+  def build_map_markers(organisations)
     Gmaps4rails.build_markers(organisations) do |org, marker|
-      marker.lat org.latitude
-      marker.lng org.longitude
-      marker.picture(
-        { :picture => ActionController::Base.helpers.asset_path("volunteer_icon.png"),
-          :width   => 32,
-          :height  => 32 }
-      )
-      marker.title   "Click here to see volunteer opportunities at #{org.name}"
-      marker.infowindow render_to_string(
-        partial: 'popup', locals: { org: org }
-      )
+      build_marker_for_vol_op(org, marker)
     end.select do |marker|
       marker[:lat].present? && marker[:lng].present?
     end.to_json

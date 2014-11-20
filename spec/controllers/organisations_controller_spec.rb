@@ -17,10 +17,10 @@ describe OrganisationsController do
     end
   end
 
-  describe "#build_markers" do
+  describe "#build_map_markers" do
     render_views
     let(:org) { create :organisation }
-    subject { JSON.parse(controller.send(:build_markers, org)).first }
+    subject { JSON.parse(controller.send(:build_map_markers, org)).first }
     it { expect(subject['lat']).to eq org.latitude }
     it { expect(subject['lng']).to eq org.longitude }
     it { expect(subject['infowindow']).to include org.id.to_s }
@@ -28,7 +28,7 @@ describe OrganisationsController do
     it { expect(subject['infowindow']).to include org.description }
     context 'markers without coords omitted' do
       let(:org) { create :organisation, latitude: nil, longitude: nil }
-      it { expect(JSON.parse(controller.send(:build_markers, org))).to be_empty }
+      it { expect(JSON.parse(controller.send(:build_map_markers, org))).to be_empty }
     end
   end
 
@@ -39,7 +39,7 @@ describe OrganisationsController do
       let(:result) { [double_organisation] }
       let(:category) { double('Category') }
       before(:each) do
-        controller.should_receive(:build_markers).and_return(markers)
+        controller.should_receive(:build_map_markers).and_return(markers)
         result.stub_chain(:page, :per).and_return(result)
         Category.should_receive(:html_drop_down_options).and_return(category_html_options)
       end
@@ -98,7 +98,7 @@ describe OrganisationsController do
     end
     # TODO figure out how to make this less messy
     it "assigns to flash.now but not flash when search returns no results" do
-      controller.should_receive(:build_markers).and_return('my markers')
+      controller.should_receive(:build_map_markers).and_return('my markers')
       double_now_flash = double("FlashHash")
       result = []
       result.should_receive(:empty?).and_return(true)
@@ -116,7 +116,7 @@ describe OrganisationsController do
     it "does not set up flash nor flash.now when search returns results" do
       result = [double_organisation]
       markers='my markers'
-      controller.should_receive(:build_markers).and_return(markers)
+      controller.should_receive(:build_map_markers).and_return(markers)
       result.should_receive(:empty?).and_return(false)
       result.stub_chain(:page, :per).and_return(result)
       Organisation.should_receive(:search_by_keyword).with('some results').and_return(result)
@@ -133,7 +133,7 @@ describe OrganisationsController do
     it "assigns all organisations as @organisations" do
       result = [double_organisation]
       markers='my markers'
-      controller.should_receive(:build_markers).and_return(markers)
+      controller.should_receive(:build_map_markers).and_return(markers)
       Category.should_receive(:html_drop_down_options).and_return(category_html_options)
       Organisation.should_receive(:order_by_most_recent).and_return(result)
       result.stub_chain(:page, :per).and_return(result)
@@ -164,7 +164,7 @@ describe OrganisationsController do
     it "assigns the requested organisation as @organisation and appropriate markers" do
       markers='my markers'
       @org = double_organisation
-      controller.should_receive(:build_markers).and_return(markers)
+      controller.should_receive(:build_map_markers).and_return(markers)
       Organisation.should_receive(:find).with('37') { @org }
       get :show, :id => '37'
       assigns(:organisation).should be(double_organisation)

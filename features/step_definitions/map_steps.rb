@@ -38,6 +38,7 @@ end
 
 Given(/^the map should show the opportunity (.*)$/) do |opportunity_description|
   expect_markers_to_have_words(opportunity_description)
+  expect_markers_to_have_picture('/assets/volunteer_icon.png')
 end
 
 def markers
@@ -48,6 +49,10 @@ def expect_markers_to_have_words(*words)
   [*words].flatten.each do |word|
     expect(markers).to include word.to_s
   end
+end
+
+def expect_markers_to_have_picture(picture)
+  expect(markers).to include picture
 end
 
 def marker_json_for_org_names(*org_names)

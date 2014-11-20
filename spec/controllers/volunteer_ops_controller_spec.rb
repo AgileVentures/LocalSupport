@@ -20,11 +20,11 @@ describe VolunteerOpsController do
     end
   end
 
-  describe "#build_markers" do
+  describe "#build_map_markers" do
     render_views
     let(:org) { create :organisation }
     let!(:op) { create :volunteer_op, organisation: org }
-    subject { JSON.parse(controller.send(:build_markers, org)).first }
+    subject { JSON.parse(controller.send(:build_map_markers, org)).first }
     it { expect(subject['lat']).to eq org.latitude }
     it { expect(subject['lng']).to eq org.longitude }
     it { expect(subject['infowindow']).to include org.id.to_s }
@@ -34,7 +34,7 @@ describe VolunteerOpsController do
     it { expect(subject['infowindow']).to include op.description }
     context 'markers without coords omitted' do
       let(:org) { create :organisation, latitude: nil, longitude: nil }
-      it { expect(JSON.parse(controller.send(:build_markers, org))).to be_empty }
+      it { expect(JSON.parse(controller.send(:build_map_markers, org))).to be_empty }
     end
   end
 
@@ -64,7 +64,7 @@ describe VolunteerOpsController do
       markers = 'my markers'
       org2 = stub_model Organisation
       @results.stub(:map).and_return([org2])
-      controller.should_receive(:build_markers).and_return(markers)
+      controller.should_receive(:build_map_markers).and_return(markers)
       get :index, {}
       assigns(:markers).should eq(markers)
     end
