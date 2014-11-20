@@ -452,9 +452,19 @@ Given /^I run the invite migration$/ do
 
 end
 
+Then(/^I should see a "(.*?)" widget$/) do |label|
+  expect(page).to have_css('div#google_translate_element', :text => "#{label}")
+end
+
+When(/^I select language "([^"]*)"$/) do |lang|
+  find(:xpath, "//div[@id='google_translate_element']").click
+  find('span', :text => lang).click
+  steps %Q{ Then I should see "#{lang}" }
+end
 
 Given(/^I can run the rake task "(.*?)"$/) do |task|
   stdout, stderr, status = Open3.capture3("#{task}")
   expect(stderr).not_to include "Error"
   expect(status).to be_success
+
 end
