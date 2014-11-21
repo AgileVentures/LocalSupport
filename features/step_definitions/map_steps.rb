@@ -7,16 +7,14 @@ Then /^I should see hyperlinks for "(.*?)", "(.*?)" and "(.*?)" in the map$/ do 
 end
 
 Then /^the organisation "(.*?)" should have a (large|small) icon$/ do |name, icon_size|
-  org = Organisation.find_by_name(name)
-  org_description = smart_truncate(org.description, 32)
+  markers = choose_markers_containing_org_name name
+  expect(markers.length).to eq 1
   if icon_size == "small"
-    page.should have_xpath("//head//script[contains(string(),'\"zindex\":1\,\"description\":\"\\u003Ca href=\\\"/organisations/#{org.id}')]", :visible => false)
-    page.should have_xpath("//head//script[contains(string(),'#{org_description}\"\,\"picture\":\"/assets/redcircle.png\"')]", :visible => false)
+    expect(markers.first["picture"]["url"]).to eq "/assets/redcircle.png"
+    expect(markers.first["shadow"]).not_to be_nil #checking for the hack value
   else
-    page.should_not have_xpath("//head//script[contains(string(),'\"zindex\":1\,\"description\":\"\\u003Ca href=\\\"/organisations/#{org.id}')]", :visible => false)
-    page.should_not have_xpath("//head//script[contains(string(),'#{org_description}\"\,\"picture\":\"/assets/redcircle.png\"')]", :visible => false)
-    page.should have_xpath("//head//script[contains(string(),'#{org_description}\"\,\"lat\":#{org.latitude},\"lng\":#{org.longitude}')]", :visible => false)
-    page.should have_xpath("//head//script[contains(string(),'\"zindex\":0\,\"description\":\"\\u003Ca href=\\\"/organisations/#{org.id}')]", :visible => false)
+    expect(markers.first["shadow"]).to be_nil #checking for absence of the hack value
+    expect(markers.first["picture"]).to be_nil  
   end
 end
 # could we move maps stuff into separate step file and couldn't these things be DRYer ...
