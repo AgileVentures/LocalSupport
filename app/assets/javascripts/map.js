@@ -26,7 +26,9 @@ LocalSupport.google_map = {
   }
 }
 $(function(){
-  var map = LocalSupport.google_map;
-  var settings = map.parsed_settings(google, map.settings);
-  map.build(settings, map.marker_data());
+  if (typeof MarkerClusterer !== 'undefined') {
+    var map = LocalSupport.google_map;
+    var settings = map.parsed_settings(google, map.settings);
+    map.build(settings, map.marker_data());
+  }
 });
