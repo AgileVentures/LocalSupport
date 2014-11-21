@@ -35,19 +35,20 @@ describe "volunteer_ops/index", :js => true  do
       rendered.should have_link op.organisation.name, :href => organisation_path(op.organisation.id)
     end
   end
-  
+
+  it 'displays the json for the map script' do
+    orgs = [@org1, @org2]
+    assign(:footer_page_links, [])
+    assign(:markers, 'my-markers')
+    render template: "volunteer_ops/index", layout: "layouts/two_columns"
+    expect(rendered).to include 'my-markers'
+  end
 
   it "displays the javascript for a google map" do
     orgs = [@org1, @org2]
     assign(:footer_page_links, [])
-    assign(:json, orgs.to_gmaps4rails)
     render template: "volunteer_ops/index", layout: "layouts/application"
-    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]", :visible => false
-    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_zoom = true')]", :visible => false
-    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_latitude = 51.5978')]", :visible => false
-    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_longitude = -0.337')]", :visible => false
-    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.zoom = 12')]", :visible => false
-    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]", :visible => false
+    expect(rendered).to include 'map.js'
   end
 
 end

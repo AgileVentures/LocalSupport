@@ -13,7 +13,6 @@ class Organisation < ActiveRecord::Base
   validates_url :donation_info, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.donation_info.present?}
 
   # http://stackoverflow.com/questions/10738537/lazy-geocoding
-  acts_as_gmappable :check_process => false, :process_geocoding => :run_geocode?
   has_many :users
   has_many :volunteer_ops
   has_many :category_organisations
@@ -38,6 +37,10 @@ class Organisation < ActiveRecord::Base
     users.invited_not_accepted.update_all(organisation_id: nil)
   end
 
+  # For the geocoder gem
+  geocoded_by :full_address
+  after_validation :geocode, if: -> { run_geocode? }
+
   def run_geocode?
     ## http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
     address_changed? or (address.present? and not_geocoded?)
@@ -45,13 +48,6 @@ class Organisation < ActiveRecord::Base
 
   def not_geocoded?
     latitude.blank? and longitude.blank?
-  end
-
-  #This method is overridden to save organisation if address was failed to geocode
-  def run_validations!
-    run_callbacks :validate
-    remove_errors_with_address
-    errors.empty?
   end
 
   #TODO: Give this TLC and refactor the flow or refactor out responsibilities
@@ -89,14 +85,10 @@ class Organisation < ActiveRecord::Base
     return { "picture" => "/assets/redcircle.png" } if not_updated_recently_or_has_no_owner? 
     return {}
   end
-  
-  def gmaps4rails_address
-    "#{self.address}, #{self.postcode}"
-  end
 
-  def gmaps4rails_infowindow
-    "#{self.name}"
-  end
+  def full_address
+     "#{self.address}, #{self.postcode}"
+   end
 
   #Edit this if CSV 'schema' changes
   #value is the name of a column in csv file
