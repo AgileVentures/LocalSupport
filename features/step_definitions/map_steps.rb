@@ -11,9 +11,7 @@ Then /^the organisation "(.*?)" should have a (large|small) icon$/ do |name, ico
   expect(markers.length).to eq 1
   if icon_size == "small"
     expect(markers.first["picture"]["url"]).to eq "/assets/redcircle.png"
-    expect(markers.first["shadow"]).not_to be_nil #checking for the hack value
   else
-    expect(markers.first["shadow"]).to be_nil #checking for absence of the hack value
     expect(markers.first["picture"]).to be_nil  
   end
 end
