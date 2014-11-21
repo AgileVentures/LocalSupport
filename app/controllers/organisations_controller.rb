@@ -118,7 +118,7 @@ class OrganisationParams
       marker.lat org.latitude
       marker.lng org.longitude
       marker.infowindow render_to_string(partial: 'popup', locals: {org: org})
-      marker.json({zindex: org.not_updated_recently_or_has_no_owner? ? 100 : -100})
+      marker.shadow({ :url => 'hello' }) if org.not_updated_recently_or_has_no_owner?
       picture = org.gmaps4rails_marker_picture
       unless picture.empty?
         marker.picture({
