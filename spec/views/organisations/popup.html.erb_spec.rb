@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "organisations/_popup.html.erb", :type => :view do
   let(:org) do

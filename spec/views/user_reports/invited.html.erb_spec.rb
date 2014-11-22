@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'user_reports/invited.html.erb', :type => :view do
   let(:invitation) { { id: '2', name: 'Harrow Charity', email: 'hello@there.com', date: Time.now } }

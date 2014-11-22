@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "volunteer_ops/new", :type => :view do
   let (:organisation) { double :organisation, id: 3 }

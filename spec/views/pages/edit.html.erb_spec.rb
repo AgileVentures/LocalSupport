@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'pages/edit.html.erb', :type => :view do
   before(:each) do

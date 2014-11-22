@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ::BatchInviteJob do
   let(:current_user) { FactoryGirl.create(:user, email: 'admin@example.com', admin: true) }

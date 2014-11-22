@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 require 'custom_errors.rb'
 
 describe CustomErrors, type: :controller do

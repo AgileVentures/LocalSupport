@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'VolunteerOps', :type => :request, :helpers => :requests do
   let(:org_owner) { FactoryGirl.create(:user_stubbed_organisation) }

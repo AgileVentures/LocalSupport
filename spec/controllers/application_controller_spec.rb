@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ApplicationController, :type => :controller, :helpers => :controllers do
   it '#request_controller_is(white_listed)' do

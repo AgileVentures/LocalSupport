@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Devise::PasswordsController, :type => :controller do
   before :suite do

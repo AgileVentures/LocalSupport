@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'CategoryOrganisation', :type => :model do
   it 'should exist' do

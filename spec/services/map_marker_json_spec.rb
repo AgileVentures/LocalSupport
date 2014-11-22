@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe MapMarkerJson do
   let(:organisation) { double(:organisation) }

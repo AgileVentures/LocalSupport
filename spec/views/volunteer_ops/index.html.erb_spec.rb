@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "volunteer_ops/index", :type => :view, :js => true  do
   before(:each) do

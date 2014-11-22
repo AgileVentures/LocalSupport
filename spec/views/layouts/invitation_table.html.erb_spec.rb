@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'layouts/invitation_table.html.erb', :type => :view do
   before do

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe OrganisationReportsController, :type => :controller do
   let(:org) { double('Organisation') }

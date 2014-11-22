@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'user_reports/index.html.erb', :type => :view do
   let(:org1) do

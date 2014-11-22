@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'organisation_reports/without_users_index.html.erb', :type => :view do
   let(:org) { stub_model Organisation, id: '2', name: 'test', email: 'hello@there.com' }

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 describe VolunteerOpsController, :type => :controller do
   it "should render template two column layout"  do
     get :index

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe AdminMailer, :type => :mailer do
   subject { AdminMailer.new_user_waiting_for_approval('friendly', 'admin@admin.org') }

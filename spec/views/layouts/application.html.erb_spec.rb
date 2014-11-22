@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'layouts/application.html.erb', :type => :view do
   let(:page_one)   {{:name => 'About Us',   :permalink => 'about'      }}

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "organisations/index.html.erb", :type => :view, :js => true do
 

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "organisations/_form.html.erb", :type => :view do
   before :each do

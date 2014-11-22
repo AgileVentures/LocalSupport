@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "Invitations", :type => :request, :helpers => :requests do
   describe "create -- xhr POST /invitations" do

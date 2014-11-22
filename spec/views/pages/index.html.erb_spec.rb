@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "pages/index.html.erb", :type => :view do
   let(:page) { mock_model Page,

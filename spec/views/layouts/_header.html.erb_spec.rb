@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 describe '/layouts/_header.html.erb', :type => :view do
 
   it 'includes org id in hidden field' do
