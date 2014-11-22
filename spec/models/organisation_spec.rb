@@ -29,11 +29,11 @@ describe Organisation, :type => :model do
     @org1 = FactoryGirl.build(:organisation, :email => nil, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate')
     @org1.save!
     @org2 = FactoryGirl.build(:organisation, :email => nil,  :name => 'Indian Elders Association',
-                              :description => 'Care for the elderly', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.indian-elders.co.uk/donate')
+                              :description => 'Care for the elderly', :address => '64 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.indian-elders.co.uk/donate')
     @org2.categories << @category1
     @org2.categories << @category2
     @org2.save!
-    @org3 = FactoryGirl.build(:organisation, :email => nil, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.age-uk.co.uk/donate')
+    @org3 = FactoryGirl.build(:organisation, :email => nil, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '64 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.age-uk.co.uk/donate')
     @org3.categories << @category1
     @org3.save!
   end
@@ -625,9 +625,9 @@ describe Organisation, :type => :model do
 
     @org1 = FactoryGirl.build(:organisation, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate')
     @org1.save!
-    @org2 = FactoryGirl.build(:organisation, :name => 'Indian Elders Associaton', :description => 'Care for the elderly', :address => '62 pinner road', :postcode => 'HA1 3RE', :latitude => 77, :longitude => 77, :donation_info => 'www.indian-elders.co.uk/donate')
+    @org2 = FactoryGirl.build(:organisation, :name => 'Indian Elders Associaton', :description => 'Care for the elderly', :address => '64 pinner road', :postcode => 'HA1 3RE', :latitude => 77, :longitude => 77, :donation_info => 'www.indian-elders.co.uk/donate')
     @org2.save!
-    @org3 = FactoryGirl.build(:organisation, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.age-uk.co.uk/donate')
+    @org3 = FactoryGirl.build(:organisation, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '64 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.age-uk.co.uk/donate')
     @org3.save!
   end
   
