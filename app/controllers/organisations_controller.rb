@@ -120,9 +120,9 @@ class OrganisationParams
       marker.infowindow render_to_string(partial: 'popup', locals: {org: org})
       marker.shadow({ :url => 'hello' }) if org.not_updated_recently_or_has_no_owner?
       picture = org.gmaps4rails_marker_picture
-      unless picture.empty?
+      if picture.present?
         marker.picture({
-          :url => ActionController::Base.helpers.asset_path("redcircle.png"),
+          :url => picture['picture'],
           :width   => 32,
           :height  => 32,
         })

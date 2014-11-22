@@ -10,7 +10,7 @@ Then /^the organisation "(.*?)" should have a (large|small) icon$/ do |name, ico
   markers = choose_markers_containing_org_name name
   expect(markers.length).to eq 1
   if icon_size == "small"
-    expect(markers.first["picture"]["url"]).to eq "/assets/redcircle.png"
+    expect(markers.first["picture"]["url"]).to eq "https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png"
   else
     expect(markers.first["picture"]).to be_nil  
   end

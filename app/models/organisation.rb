@@ -86,7 +86,7 @@ class Organisation < ActiveRecord::Base
   end
 
   def gmaps4rails_marker_picture
-    return { "picture" => "/assets/redcircle.png" } if not_updated_recently_or_has_no_owner? 
+    return { "picture" => "https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png" } if not_updated_recently_or_has_no_owner? 
     return {}
   end
 
