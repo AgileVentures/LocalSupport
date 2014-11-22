@@ -10,7 +10,6 @@ describe ::BatchInviteJob do
   end
 
   before do
-    allow(Gmaps4rails).to receive :geocode
     current_user # lazy-loading messes up DB counts
   end
 
