@@ -43,9 +43,7 @@ describe CustomErrors, type: :controller do
     end
 
     it 'should be able to adjust log stack trace limit' do
-      dummy = Class.new
-      allow(Rails).to receive_messages(logger: dummy)
-      expect(dummy).to receive(:error).exactly(7)
+      expect(Rails.logger).to receive(:error).exactly(7)
       get :raise_500
     end
   end
