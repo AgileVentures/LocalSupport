@@ -91,7 +91,6 @@ describe User, :type => :model do
   # http://stackoverflow.com/questions/12125038/where-do-i-confirm-user-created-with-factorygirl
   describe '#make_admin_of_org_with_matching_email' do
     before do
-      allow(Gmaps4rails).to receive_messages(:geocode => nil)
       @user = FactoryGirl.create(:user, email: 'bert@charity.org')
       @admin_user = FactoryGirl.create(:user, email: 'admin@charity.org')
       @mismatch_org = FactoryGirl.create(:organisation, email: 'admin@other_charity.org')
@@ -222,7 +221,6 @@ describe User, :type => :model do
   describe '#belongs_to?' do
     let(:user) { FactoryGirl.create :user_stubbed_organisation }
     let(:other_org) { FactoryGirl.create :organisation }
-    before { allow(Gmaps4rails).to receive(:geocode) }
 
     it 'TRUE: user belongs to it' do
       org = user.organisation
@@ -238,7 +236,6 @@ describe User, :type => :model do
   describe '#can_create_volunteer_ops?' do
     let(:user){FactoryGirl.create :user_stubbed_organisation}
     let(:other_org) { FactoryGirl.create :organisation }
-    before { allow(Gmaps4rails).to receive(:geocode) }
 
     it 'cannot create volunteer op' do
       expect(user.can_create_volunteer_ops?(other_org)).to be false
