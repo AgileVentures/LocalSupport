@@ -1,13 +1,7 @@
-<% content_for :map do %>
-    <%= gmaps("map_options" => {"auto_adjust" => false,
-                                "auto_zoom" => true,
-                                "center_latitude" => 51.5978,
-                                "center_longitude" => -0.3370,
-                                "zoom" => 12},
-              "markers" => {"data" => @json},
-              "options" => {"custom_infowindow_class" => "ls_infobox"}) %>
+<% content_for :scripts do %>
+    <%= javascript_include_tag 'map' %>
 <% end %>
 
-<% content_for :scripts do %>
-    <%= javascript_include_tag 'infobox' %>
+<% content_for :map do %>
+    <%= content_tag "div", "", id: "marker_data", data: {markers: markers} %>
 <% end %>

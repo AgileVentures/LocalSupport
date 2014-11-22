@@ -1,7 +1,10 @@
 <!-- Span 6 -->
 <div class="row">
   <div id="column1" class="span6">
-    <%= yield :map %>
+    <div class="map_container">
+      <%= yield :map %>
+      <div id="map_canvas"></div>
+    </div>
   </div>
   <div id="column2" class="span6">
     <%= yield %>
