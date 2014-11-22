@@ -3,11 +3,11 @@ require 'rails_helper'
 describe "organisations/index.html.erb", :type => :view, :js => true do
 
   let(:org1) do
-    stub_model Organisation,:name => 'test', :address => "12 pinner rd", :postcode => "HA1 4HP",:telephone => "1234", :website => 'http://a.com', :description => 'I am test organisation hahahahahhahaha', :lat => 1, :lng => -1
+    stub_model Organisation,:name => 'test', :address => "12 pinner rd", :postcode => "HA1 4HP",:telephone => "1234", :website => 'http://a.com', :description => 'I am test organisation hahahahahhahaha'
   end
 
   let(:org2) do
-    stub_model Organisation,:name => 'test2', :address => "12 oxford rd", :postcode => "HA1 4HX", :telephone => "4534", :website => 'http://b.com', :description => 'I am ', :lat => 1, :lng => -1
+    stub_model Organisation,:name => 'test2', :address => "12 oxford rd", :postcode => "HA1 4HX", :telephone => "4534", :website => 'http://b.com', :description => 'I am '
   end
 
   let(:organisations) do
@@ -22,9 +22,6 @@ describe "organisations/index.html.erb", :type => :view, :js => true do
     assign(:organisations, organisations)
     assign(:results, results)
     assign(:query_term,'search')
-    allow(organisations).to receive(:current_page).and_return(1)
-    allow(organisations).to receive(:total_pages).and_return(1)
-    allow(organisations).to receive(:limit_value).and_return(1)
     assign(:category_options, [['Animal Welfare','1'],['Education','2']])
     assign(:markers, 'my-markers')
     render
