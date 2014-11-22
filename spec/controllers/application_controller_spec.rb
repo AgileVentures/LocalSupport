@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe ApplicationController, :type => :controller, :helpers => :controllers do
   it '#request_controller_is(white_listed)' do
-    controller.stub :white_listed => %w(a b c)
-    request.stub :params => { 'controller' => 'a' }
+    allow(controller).to receive_messages :white_listed => %w(a b c)
+    allow(request).to receive_messages :params => { 'controller' => 'a' }
     expect(controller.request_controller_is(controller.white_listed)).to be true
 
-    request.stub :params => { 'controller' => 'd' }
+    allow(request).to receive_messages :params => { 'controller' => 'd' }
     expect(controller.request_controller_is(controller.white_listed)).to be false
   end
 
@@ -19,29 +19,29 @@ describe ApplicationController, :type => :controller, :helpers => :controllers d
   end
 
   it '#store_location stores URLs only when conditions permit' do
-    request.stub :path => 'this/is/a/path'
+    allow(request).to receive_messages :path => 'this/is/a/path'
 
-    controller.stub :request_controller_is => false
-    controller.stub :request_verb_is_get? => false
+    allow(controller).to receive_messages :request_controller_is => false
+    allow(controller).to receive_messages :request_verb_is_get? => false
     controller.store_location
     expect(session[:previous_url]).to be_nil
 
-    controller.stub :request_controller_is => true
+    allow(controller).to receive_messages :request_controller_is => true
     controller.store_location
     expect(session[:previous_url]).to be_nil
 
-    controller.stub :request_verb_is_get? => true
+    allow(controller).to receive_messages :request_verb_is_get? => true
     controller.store_location
     expect(session[:previous_url]).to eq request.path
   end
 
   it '#after_sign_in_path_for' do
     user = make_current_user_nonadmin
-    user.stub :organisation => nil
+    allow(user).to receive_messages :organisation => nil
     allow(user).to receive :pending_organisation_id
     expect(controller.after_sign_in_path_for(user)).to eq '/'
 
-    user.stub :organisation => mock_model(Organisation, id: 1, not_updated_recently?: true)
+    allow(user).to receive_messages :organisation => mock_model(Organisation, id: 1, not_updated_recently?: true)
     expect(controller.after_sign_in_path_for(user)).to eq '/organisations/1'
 
     session[:previous_url] = 'i/was/here'
@@ -50,11 +50,11 @@ describe ApplicationController, :type => :controller, :helpers => :controllers d
 
   it '#after_accept_path_for' do
     user = make_current_user_nonadmin
-    user.stub :organisation => nil
+    allow(user).to receive_messages :organisation => nil
 
     expect(controller.after_accept_path_for(user)).to eq '/'
 
-    user.stub :organisation => '1'
+    allow(user).to receive_messages :organisation => '1'
     expect(controller.after_accept_path_for(user)).to eq '/organisations/1'
   end
 
@@ -98,11 +98,11 @@ describe ApplicationController, :type => :controller, :helpers => :controllers d
 
   describe 'PRIVATE METHODS' do
     let(:user) { double :user }
-    before { controller.stub current_user: user }
+    before { allow(controller).to receive_messages current_user: user }
 
     context '#authorize' do
       it 'Unauthorized: redirects to root_path and displays flash' do
-        controller.stub admin?: false
+        allow(controller).to receive_messages admin?: false
         expect(controller).to receive(:redirect_to).with(root_path) { true } # calling original raises errors
         expect(controller.flash).to receive(:[]=)
           .with(:error, 'You must be signed in as an admin to perform this action!')
@@ -113,14 +113,14 @@ describe ApplicationController, :type => :controller, :helpers => :controllers d
       end
 
       it 'Authorized: allows execution to continue' do
-        controller.stub admin?: true
+        allow(controller).to receive_messages admin?: true
         expect(controller.instance_eval { authorize }).to be nil
       end
     end
 
     context '#admin?' do
       it 'returns nil when current_user is nil' do
-        controller.stub current_user: nil
+        allow(controller).to receive_messages current_user: nil
         expect(controller.instance_eval { admin? }).to be_nil
       end
 

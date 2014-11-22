@@ -15,7 +15,7 @@ describe CustomErrors, type: 'controller' do
   end
 
   before(:each) do
-    Rails.stub_chain(:env, :production?).and_return(true)
+    allow(Rails).to receive_message_chain(:env, :production?).and_return(true)
   end
 
   context '404 errors' do
@@ -44,7 +44,7 @@ describe CustomErrors, type: 'controller' do
 
     it 'should be able to adjust log stack trace limit' do
       dummy = Class.new
-      Rails.stub(logger: dummy)
+      allow(Rails).to receive_messages(logger: dummy)
       expect(dummy).to receive(:error).exactly(7)
       get :raise_500
     end

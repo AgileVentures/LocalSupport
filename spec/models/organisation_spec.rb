@@ -512,7 +512,7 @@ describe Organisation, :type => :model do
     let(:user) { double('User', {:email => org.email, :password => 'password'}) }
 
     before :each do
-      Devise.stub_chain(:friendly_token, :first).with().with(8).and_return('password')
+      allow(Devise).to receive_message_chain(:friendly_token, :first).with().with(8).and_return('password')
       expect(User).to receive(:new).with({:email => org.email, :password => 'password'}).and_return(user)
     end
 

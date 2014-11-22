@@ -7,7 +7,7 @@ describe "organisations/_popup.html.erb", :type => :view do
   end
 
   before(:each) do
-    view.stub org: org
+    allow(view).to receive_messages org: org
     render
   end
 

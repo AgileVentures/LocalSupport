@@ -25,7 +25,7 @@ describe "pages/index.html.erb", :type => :view do
 
 
   context 'Page is hidden' do
-    before(:each) { page.stub :link_visible => false }
+    before(:each) { allow(page).to receive_messages :link_visible => false }
 
     it 'has buttons' do
       render

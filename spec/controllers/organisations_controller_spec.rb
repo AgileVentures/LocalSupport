@@ -42,13 +42,13 @@ describe OrganisationsController, :type => :controller do
       let(:category) { double('Category') }
       before(:each) do
         expect(controller).to receive(:build_map_markers).and_return(markers)
-        result.stub_chain(:page, :per).and_return(result)
+        allow(result).to receive_message_chain(:page, :per).and_return(result)
         expect(Category).to receive(:html_drop_down_options).and_return(category_html_options)
       end
 
       it "orders search results by most recent" do
         expect(Organisation).to receive(:order_by_most_recent).and_return(result)
-        result.stub_chain(:search_by_keyword, :filter_by_category).with('test').with(nil).and_return(result)
+        allow(result).to receive_message_chain(:search_by_keyword, :filter_by_category).with('test').with(nil).and_return(result)
         get :search, :q => 'test'
         expect(assigns(:organisations)).to eq([double_organisation])
       end
@@ -104,7 +104,7 @@ describe OrganisationsController, :type => :controller do
       double_now_flash = double("FlashHash")
       result = []
       expect(result).to receive(:empty?).and_return(true)
-      result.stub_chain(:page, :per).and_return(result)
+      allow(result).to receive_message_chain(:page, :per).and_return(result)
       expect(Organisation).to receive(:search_by_keyword).with('no results').and_return(result)
       expect(result).to receive(:filter_by_category).with('1').and_return(result)
       category = double('Category')
@@ -120,7 +120,7 @@ describe OrganisationsController, :type => :controller do
       markers='my markers'
       expect(controller).to receive(:build_map_markers).and_return(markers)
       expect(result).to receive(:empty?).and_return(false)
-      result.stub_chain(:page, :per).and_return(result)
+      allow(result).to receive_message_chain(:page, :per).and_return(result)
       expect(Organisation).to receive(:search_by_keyword).with('some results').and_return(result)
       expect(result).to receive(:filter_by_category).with('1').and_return(result)
       category = double('Category')
@@ -138,7 +138,7 @@ describe OrganisationsController, :type => :controller do
       expect(controller).to receive(:build_map_markers).and_return(markers)
       expect(Category).to receive(:html_drop_down_options).and_return(category_html_options)
       expect(Organisation).to receive(:order_by_most_recent).and_return(result)
-      result.stub_chain(:page, :per).and_return(result)
+      allow(result).to receive_message_chain(:page, :per).and_return(result)
       get :index
       expect(assigns(:organisations)).to eq(result)
       expect(assigns(:markers)).to eq(markers)
@@ -232,7 +232,7 @@ describe OrganisationsController, :type => :controller do
       end
 
       it 'will not be called when current user is nil' do
-        controller.stub current_user: nil
+        allow(controller).to receive_messages current_user: nil
         expect(@user).not_to receive :can_create_volunteer_ops?
         get :show, :id => 37
         expect(assigns(:can_create_volunteer_op)).to be nil
@@ -244,7 +244,7 @@ describe OrganisationsController, :type => :controller do
     context "while signed in" do
       before(:each) do
         user = double("User")
-        request.env['warden'].stub :authenticate! => user
+        allow(request.env['warden']).to receive_messages :authenticate! => user
         allow(controller).to receive(:current_user).and_return(user)
         allow(Organisation).to receive(:new) { double_organisation }
       end
@@ -275,7 +275,7 @@ describe OrganisationsController, :type => :controller do
       before(:each) do
         user = double("User")
         allow(user).to receive(:can_edit?) { true }
-        request.env['warden'].stub :authenticate! => user
+        allow(request.env['warden']).to receive_messages :authenticate! => user
         allow(controller).to receive(:current_user).and_return(user)
       end
 
@@ -290,7 +290,7 @@ describe OrganisationsController, :type => :controller do
       before(:each) do
         user = double("User")
         allow(user).to receive(:can_edit?) { false }
-        request.env['warden'].stub :authenticate! => user
+        allow(request.env['warden']).to receive_messages :authenticate! => user
         allow(controller).to receive(:current_user).and_return(user)
       end
 
@@ -388,7 +388,7 @@ describe OrganisationsController, :type => :controller do
       before(:each) do
         user = double("User")
         allow(user).to receive(:can_edit?) { true }
-        request.env['warden'].stub :authenticate! => user
+        allow(request.env['warden']).to receive_messages :authenticate! => user
         allow(controller).to receive(:current_user).and_return(user)
       end
 
@@ -434,7 +434,7 @@ describe OrganisationsController, :type => :controller do
       before(:each) do
         user = double("User")
         allow(user).to receive(:can_edit?) { false }
-        request.env['warden'].stub :authenticate! => user
+        allow(request.env['warden']).to receive_messages :authenticate! => user
         allow(controller).to receive(:current_user).and_return(user)
       end
 

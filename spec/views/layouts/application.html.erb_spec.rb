@@ -14,7 +14,7 @@ describe 'layouts/application.html.erb', :type => :feature do
   context 'no user signed-in' do
 
     before :each do
-      view.stub :user_signed_in? => false
+      allow(view).to receive_messages :user_signed_in? => false
     end
 
     it 'renders site title' do
@@ -126,7 +126,7 @@ describe 'layouts/application.html.erb', :type => :feature do
     end
 
     it "does not render a new organisation link" do
-      view.stub(:user_signed_in? => false)
+      allow(view).to receive_messages(:user_signed_in? => false)
       render
       expect(rendered).not_to have_xpath("//a[@href='#{new_organisation_path}']")
     end

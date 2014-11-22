@@ -91,7 +91,7 @@ describe User, :type => :model do
   # http://stackoverflow.com/questions/12125038/where-do-i-confirm-user-created-with-factorygirl
   describe '#make_admin_of_org_with_matching_email' do
     before do
-      Gmaps4rails.stub(:geocode => nil)
+      allow(Gmaps4rails).to receive_messages(:geocode => nil)
       @user = FactoryGirl.create(:user, email: 'bert@charity.org')
       @admin_user = FactoryGirl.create(:user, email: 'admin@charity.org')
       @mismatch_org = FactoryGirl.create(:organisation, email: 'admin@other_charity.org')

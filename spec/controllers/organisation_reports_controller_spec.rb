@@ -19,7 +19,7 @@ describe OrganisationReportsController, :type => :controller do
     end
 
     it 'assigns an instance variable' do
-      Organisation.stub_chain(:not_null_email, :null_users, :without_matching_user_emails).and_return([org])
+      allow(Organisation).to receive_message_chain(:not_null_email, :null_users, :without_matching_user_emails).and_return([org])
       get :without_users_index
       expect(assigns(:orphans)).to include org
     end

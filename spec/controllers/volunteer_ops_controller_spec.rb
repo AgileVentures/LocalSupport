@@ -112,14 +112,14 @@ describe VolunteerOpsController, :type => :controller do
 
   describe 'GET new' do
     it 'assigns the requested volunteer_op as @volunteer_op' do
-      controller.stub org_owner?: true
+      allow(controller).to receive_messages org_owner?: true
       expect(VolunteerOp).to receive(:new) { op }
       get :new, {:organisation_id => 2}
       expect(assigns(:volunteer_op)).to eq op
     end
 
     it 'non-org-owners denied' do
-      controller.stub org_owner?: false
+      allow(controller).to receive_messages org_owner?: false
       get :new, {:organisation_id => 2}
       expect(response.status).to eq 302
     end
@@ -129,7 +129,7 @@ describe VolunteerOpsController, :type => :controller do
     let(:params) { {organisation_id: 5, volunteer_op: {title: 'hard work', description: 'for the willing'}} }
     before do
       allow(user).to receive(:organisation) { org }
-      controller.stub current_user: user, org_owner?: true, admin?: false
+      allow(controller).to receive_messages current_user: user, org_owner?: true, admin?: false
       allow(VolunteerOp).to receive(:new) { op }
       allow(op).to receive(:save)
     end
@@ -145,7 +145,7 @@ describe VolunteerOpsController, :type => :controller do
     end
 
     it 'non-org-owners denied' do
-      controller.stub org_owner?: false
+      allow(controller).to receive_messages org_owner?: false
       post :create, params
       expect(response.status).to eq 302
     end
@@ -233,7 +233,7 @@ describe VolunteerOpsController, :type => :controller do
     end
     context 'user is not authorized' do
       it 'does not update the model' do
-        controller.stub org_owner?: false, admin?: false
+        allow(controller).to receive_messages org_owner?: false, admin?: false
         expect(@op2).not_to receive(:update_attributes)
         put :update, {:volunteer_op => {:title => "new title", :description => "new description"}, 
           :id => @op2.to_param}
@@ -243,12 +243,12 @@ describe VolunteerOpsController, :type => :controller do
 
   describe 'PRIVATE METHODS' do
     let(:user) { double :user }
-    before { controller.stub current_user: user }
+    before { allow(controller).to receive_messages current_user: user }
 
     describe '#authorize' do
       it 'Unauthorized: redirects to root_path and displays flash' do
-        controller.stub org_owner?: false
-        controller.stub admin?: false
+        allow(controller).to receive_messages org_owner?: false
+        allow(controller).to receive_messages admin?: false
         expect(controller).to receive(:redirect_to).with(root_path) { true } # calling original raises errors
         expect(controller.flash).to receive(:[]=).with(:error, 'You must be signed in as an organisation owner or site admin to perform this action!').and_call_original
         expect(controller.instance_eval { authorize }).to be_falsey
@@ -257,7 +257,7 @@ describe VolunteerOpsController, :type => :controller do
       end
 
       it 'Authorized: allows execution to continue' do
-        controller.stub org_owner?: true
+        allow(controller).to receive_messages org_owner?: true
         expect(controller.instance_eval { authorize }).to be nil
       end
     end
@@ -266,7 +266,7 @@ describe VolunteerOpsController, :type => :controller do
       context 'when current user is nil' do
         before :each do
           allow_message_expectations_on_nil
-          controller.stub current_user: nil
+          allow(controller).to receive_messages current_user: nil
         end
 
         it 'returns a falsey value' do
@@ -276,18 +276,18 @@ describe VolunteerOpsController, :type => :controller do
 
       context 'when there is a current user present' do
         let(:org) { mock_model Organisation, :id => 5 }
-        before { user.stub organisation: nil }
+        before { allow(user).to receive_messages organisation: nil }
 
         it 'depends on { current_user.organisation.id == params[:organisation_id] }' do
           allow(controller).to receive(:params){{organisation_id: "5" }}
           expect(controller.instance_eval { org_owner? }).to be_falsey
-          user.stub organisation: org
+          allow(user).to receive_messages organisation: org
           expect(controller.instance_eval { org_owner? }).to be_truthy
         end
 
         it 'checks if the current_user has an organisation' do
           expect(controller.current_user).to receive :organisation
-          user.stub organisation: org
+          allow(user).to receive_messages organisation: org
           expect(org).to receive :present?
           controller.instance_eval { org_owner? }
         end

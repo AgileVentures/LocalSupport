@@ -46,12 +46,12 @@ describe ApplicationHelper, :type => :helper do
 
   describe "#feature_active?" do
     it 'should return true if feature is active' do
-      Feature.stub(active?: true)
+      allow(Feature).to receive_messages(active?: true)
       expect(helper.feature_active?(:volunteer_ops)).to be true
     end
 
     it 'should return false if feature is inactive' do
-      Feature.stub(active?: false)
+      allow(Feature).to receive_messages(active?: false)
       expect(helper.feature_active?(:volunteer_ops)).to be false
     end
   end
