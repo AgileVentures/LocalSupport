@@ -29,7 +29,7 @@ describe OrganisationsController, :type => :controller do
     it { expect(subject['infowindow']).to include org.name }
     it { expect(subject['infowindow']).to include org.description }
     context 'markers without coords omitted' do
-      let(:org) { create :organisation, latitude: nil, longitude: nil }
+      let(:org) { create :organisation, address: '0 pinner rd', latitude: nil, longitude: nil }
       it { expect(JSON.parse(controller.send(:build_map_markers, org))).to be_empty }
     end
   end
@@ -37,12 +37,12 @@ describe OrganisationsController, :type => :controller do
   describe "GET search" do
 
     context 'setting appropriate view vars for all combinations of input' do
+      let!(:double_organisation) { create :organisation }
       let(:markers) { 'my markers' }
-      let(:result) { [double_organisation] }
+      let(:result) { Organisation.all }
       let(:category) { double('Category') }
       before(:each) do
         expect(controller).to receive(:build_map_markers).and_return(markers)
-        allow(result).to receive_message_chain(:page, :per).and_return(result)
         expect(Category).to receive(:html_drop_down_options).and_return(category_html_options)
       end
 
@@ -102,9 +102,8 @@ describe OrganisationsController, :type => :controller do
     it "assigns to flash.now but not flash when search returns no results" do
       expect(controller).to receive(:build_map_markers).and_return('my markers')
       double_now_flash = double("FlashHash")
-      result = []
+      result = Organisation.all
       expect(result).to receive(:empty?).and_return(true)
-      allow(result).to receive_message_chain(:page, :per).and_return(result)
       expect(Organisation).to receive(:search_by_keyword).with('no results').and_return(result)
       expect(result).to receive(:filter_by_category).with('1').and_return(result)
       category = double('Category')
@@ -116,11 +115,10 @@ describe OrganisationsController, :type => :controller do
     end
 
     it "does not set up flash nor flash.now when search returns results" do
-      result = [double_organisation]
+      result = Organisation.all
       markers='my markers'
       expect(controller).to receive(:build_map_markers).and_return(markers)
       expect(result).to receive(:empty?).and_return(false)
-      allow(result).to receive_message_chain(:page, :per).and_return(result)
       expect(Organisation).to receive(:search_by_keyword).with('some results').and_return(result)
       expect(result).to receive(:filter_by_category).with('1').and_return(result)
       category = double('Category')
@@ -133,7 +131,7 @@ describe OrganisationsController, :type => :controller do
 
   describe "GET index" do
     it "assigns all organisations as @organisations" do
-      result = [double_organisation]
+      result = Organisation.all
       markers='my markers'
       expect(controller).to receive(:build_map_markers).and_return(markers)
       expect(Category).to receive(:html_drop_down_options).and_return(category_html_options)
