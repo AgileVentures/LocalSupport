@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Devise::PasswordsController do
+describe Devise::PasswordsController, :type => :controller do
   before :suite do
     FactoryGirl.factories.clear
     FactoryGirl.find_definitions

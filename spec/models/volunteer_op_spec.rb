@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe VolunteerOp do
+describe VolunteerOp, :type => :model do
   it 'must have a title' do
     v = VolunteerOp.new(title:'')
     v.valid?

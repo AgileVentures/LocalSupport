@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Invitations", :helpers => :requests do
+describe "Invitations", :type => :request, :helpers => :requests do
   describe "create -- xhr POST /invitations" do
     let(:admin) { FactoryGirl.create(:user, email: 'admin@example.com', admin: true) }
 
@@ -13,7 +13,7 @@ describe "Invitations", :helpers => :requests do
       end
 
       before do
-        Gmaps4rails.stub :geocode
+        allow(Gmaps4rails).to receive :geocode
         login(admin)
       end
 
@@ -35,7 +35,7 @@ describe "Invitations", :helpers => :requests do
       let(:lost_invite) { User.invite!({email: org.email}, admin) }
 
       before do
-        Gmaps4rails.stub :geocode
+        allow(Gmaps4rails).to receive :geocode
         login(admin)
       end
 

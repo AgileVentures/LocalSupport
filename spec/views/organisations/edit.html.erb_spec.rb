@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "organisations/edit.html.erb" do
+describe "organisations/edit.html.erb", :type => :view do
   before(:each) do
     @organisation = assign(:organisation, stub_model(Organisation,
                                                      :new_record? => false, :donation_info => "http://www.friendly.com/donate"
@@ -10,7 +10,7 @@ describe "organisations/edit.html.erb" do
   it "renders the edit organisation form" do
     view.lookup_context.prefixes = %w[organisations application]
     render
-    rendered.should have_xpath("//form[@action='#{organisation_path(@organisation)}'][@method='post']")
+    expect(rendered).to have_xpath("//form[@action='#{organisation_path(@organisation)}'][@method='post']")
   end
 
   it "renders the edit organisation form with tooltips" do
@@ -32,7 +32,7 @@ describe "organisations/edit.html.erb" do
             'organisation_publish_address' => 'Toggle to change the visibility of your address'
     }
     hash.each do |label,tooltip|
-      rendered.should have_xpath("//tr/td[contains(.,#{label})]/../td[@data-toggle=\"tooltip\"][@title=\"#{tooltip}\"]")
+      expect(rendered).to have_xpath("//tr/td[contains(.,#{label})]/../td[@data-toggle=\"tooltip\"][@title=\"#{tooltip}\"]")
     end
   end
 
@@ -78,40 +78,40 @@ describe "organisations/edit.html.erb" do
               "#{organisation.donation_info}"
              ]
       indexes = fields.map { |element| rendered.index(element) }
-      indexes.should eq indexes.sort
+      expect(indexes).to eq indexes.sort
     end
 
   end
 
   it "renders the donation_info url in edit form" do
     render
-    rendered.should have_field :organisation_donation_info,
+    expect(rendered).to have_field :organisation_donation_info,
                                :with => "http://www.friendly.com/donate"
   end
 
   it "renders a form field to add an administrator email" do
     render
-    rendered.should have_field :organisation_admin_email_to_add
+    expect(rendered).to have_field :organisation_admin_email_to_add
   end
 
   it "renders a checkbox to make address public" do
     render
-    rendered.should have_xpath("//input[@id='organisation_publish_address'][@type='checkbox']")
+    expect(rendered).to have_xpath("//input[@id='organisation_publish_address'][@type='checkbox']")
   end
 
   it "renders a checkbox to make email public" do
     render
-    rendered.should have_xpath("//input[@id='organisation_publish_email'][@type='checkbox']")
+    expect(rendered).to have_xpath("//input[@id='organisation_publish_email'][@type='checkbox']")
   end
 
   it "renders a checkbox to make phone number public" do
     render
-    rendered.should have_xpath("//input[@id='organisation_publish_phone'][@type='checkbox']")
+    expect(rendered).to have_xpath("//input[@id='organisation_publish_phone'][@type='checkbox']")
   end
 
   it 'renders an update button with Anglicized spelling of Organisation' do
     render
-    rendered.should have_xpath("//input[@type='submit'][@value='Update Organisation']")
+    expect(rendered).to have_xpath("//input[@type='submit'][@value='Update Organisation']")
   end
   #todo: move this into proper integration test to avoid the errors mocking
 #out being coupled with rails

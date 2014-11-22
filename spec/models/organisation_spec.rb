@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Organisation do
+describe Organisation, :type => :model do
 
   before do
     FactoryGirl.factories.clear
@@ -97,14 +97,14 @@ describe Organisation do
       [365, 366, 500].each do |days|
         it "returns small icon when update is #{days} days old" do
           future_time = Time.at(Time.now + days.day)
-          Time.stub(:now){future_time}
+          allow(Time).to receive(:now){future_time}
           expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png"})
         end
       end
       [ 2, 100, 200, 364].each do |days|
         it "returns large icon when update is only #{days} days old" do
           future_time = Time.at(Time.now + days.day)
-          Time.stub(:now){future_time}
+          allow(Time).to receive(:now){future_time}
           expect(@org1.gmaps4rails_marker_picture).to eq({})
         end
       end
@@ -117,25 +117,25 @@ describe Organisation do
     end
 
     it 'should allow us to grab orgs with emails' do
-      Organisation.not_null_email.should eq []
+      expect(Organisation.not_null_email).to eq []
       @org1.email = "hello@hello.com"
       @org1.save
-      Organisation.not_null_email.should eq [@org1]
+      expect(Organisation.not_null_email).to eq [@org1]
     end
 
     it 'should allow us to grab orgs with no admin' do
-      Organisation.null_users.sort.should eq [@org1, @org2, @org3].sort
+      expect(Organisation.null_users.sort).to eq [@org1, @org2, @org3].sort
       @org1.email = "hello@hello.com"
       @org1.save
       @user.confirm!
-      @org1.users.should eq [@user]
-      Organisation.null_users.sort.should eq [@org2, @org3].sort
+      expect(@org1.users).to eq [@user]
+      expect(Organisation.null_users.sort).to eq [@org2, @org3].sort
     end
 
     it 'should allow us to exclude previously invited users' do
       @org1.email = "hello@hello.com"
       @org1.save
-      Organisation.without_matching_user_emails.should_not include @org1
+      expect(Organisation.without_matching_user_emails).not_to include @org1
     end
 
     # Should we have more tests to cover more possible combinations?
@@ -144,8 +144,8 @@ describe Organisation do
       @org1.save
       @org3.email = "hello_again@you_again.com"
       @org3.save
-      Organisation.null_users.not_null_email.sort.should eq [@org1, @org3]
-      Organisation.null_users.not_null_email.without_matching_user_emails.sort.should eq [@org3]
+      expect(Organisation.null_users.not_null_email.sort).to eq [@org1, @org3]
+      expect(Organisation.null_users.not_null_email.without_matching_user_emails.sort).to eq [@org3]
     end
   end
 
@@ -154,7 +154,7 @@ describe Organisation do
     subject(:empty_website)  {FactoryGirl.build(:organisation, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => '', :website => '')}
     it 'if lacking protocol, http is prefixed to URL when saved' do
       no_http_org.save!
-      no_http_org.donation_info.should include('http://')
+      expect(no_http_org.donation_info).to include('http://')
     end
 
     it 'a URL is left blank, no validation issues arise' do
@@ -288,16 +288,16 @@ describe Organisation do
     it 'must be able to generate multiple Organisations from text file' do
       mock_org = double("org")
       [:name, :name=, :description=, :address=, :postcode=, :website=, :telephone=].each do |method|
-        mock_org.stub(method)
+        allow(mock_org).to receive(method)
       end
-      Organisation.stub(:find_by_name).and_return nil
+      allow(Organisation).to receive(:find_by_name).and_return nil
       attempted_number_to_import = 1006
       actual_number_to_import = 642
       time = Time.now
-      Organisation.should_receive(:new).exactly(actual_number_to_import).and_return mock_org
+      expect(Organisation).to receive(:new).exactly(actual_number_to_import).and_return mock_org
       rows_to_parse = (1..attempted_number_to_import).collect do |number|
           hash_to_return = {}
-          hash_to_return.stub(:header?){true}
+          allow(hash_to_return).to receive(:header?){true}
           hash_to_return[Organisation.column_mappings[:name]] = "Test org #{number}"
           hash_to_return[Organisation.column_mappings[:address]] = "10 Downing St London SW1A 2AA, United Kingdom"
         if(actual_number_to_import < number)
@@ -307,9 +307,9 @@ describe Organisation do
         hash_to_return
       end
       mock_file_handle = double("file")
-      File.should_receive(:open).and_return(mock_file_handle)
-      CSV.should_receive(:parse).with(mock_file_handle, :headers => true).and_return rows_to_parse
-      mock_org.should_receive(:save!).exactly(actual_number_to_import)
+      expect(File).to receive(:open).and_return(mock_file_handle)
+      expect(CSV).to receive(:parse).with(mock_file_handle, :headers => true).and_return rows_to_parse
+      expect(mock_org).to receive(:save!).exactly(actual_number_to_import)
       Organisation.import_addresses 'db/data.csv', attempted_number_to_import
 
     end
@@ -317,7 +317,7 @@ describe Organisation do
     it 'must fail gracefully when encountering error in generating multiple Organisations from text file' do
       attempted_number_to_import = 1006
       actual_number_to_import = 642
-      Organisation.stub(:create_from_array).and_raise(CSV::MalformedCSVError)
+      allow(Organisation).to receive(:create_from_array).and_raise(CSV::MalformedCSVError)
       expect(lambda {
         Organisation.import_addresses 'db/data.csv', attempted_number_to_import
       }).to change(Organisation, :count).by(0)
@@ -411,36 +411,36 @@ describe Organisation do
 
       it 'must fail gracefully when encountering error in importing categories from text file' do
         attempted_number_to_import = 2
-        Organisation.stub(:import_categories_from_array).and_raise(CSV::MalformedCSVError)
+        allow(Organisation).to receive(:import_categories_from_array).and_raise(CSV::MalformedCSVError)
         expect(lambda {
           Organisation.import_category_mappings 'db/data.csv', attempted_number_to_import
         }).to change(Organisation, :count).by(0)
       end
 
       it "should import categories when matching org is found" do
-        Organisation.should_receive(:check_columns_in).with(row)
-        Organisation.should_receive(:find_by_name).with('Harrow Bereavement Counselling').and_return @org1
+        expect(Organisation).to receive(:check_columns_in).with(row)
+        expect(Organisation).to receive(:find_by_name).with('Harrow Bereavement Counselling').and_return @org1
         array = double('Array')
         [{:cc_id => 207, :cat => @cat1}, {:cc_id => 305, :cat => @cat2}, {:cc_id => 108, :cat => @cat3},
          {:cc_id => 302, :cat => @cat4}, {:cc_id => 306, :cat => @cat5}]. each do |cat_hash|
-          Category.should_receive(:find_by_charity_commission_id).with(cat_hash[:cc_id]).and_return(cat_hash[:cat])
-          array.should_receive(:<<).with(cat_hash[:cat])
+          expect(Category).to receive(:find_by_charity_commission_id).with(cat_hash[:cc_id]).and_return(cat_hash[:cat])
+          expect(array).to receive(:<<).with(cat_hash[:cat])
         end
-        @org1.should_receive(:categories).exactly(5).times.and_return(array)
+        expect(@org1).to receive(:categories).exactly(5).times.and_return(array)
         org = Organisation.import_categories_from_array(row)
         expect(org).not_to be_nil
       end
 
       it "should not import categories when no matching organisation" do
-        Organisation.should_receive(:check_columns_in).with(row)
-        Organisation.should_receive(:find_by_name).with('Harrow Bereavement Counselling').and_return nil
+        expect(Organisation).to receive(:check_columns_in).with(row)
+        expect(Organisation).to receive(:find_by_name).with('Harrow Bereavement Counselling').and_return nil
         org = Organisation.import_categories_from_array(row)
         expect(org).to be_nil
       end
 
       it "should not import categories when none are listed" do
-        Organisation.should_receive(:check_columns_in).with(row_cat_missing)
-        Organisation.should_receive(:find_by_name).with('Harrow Bereavement Counselling').and_return @org1
+        expect(Organisation).to receive(:check_columns_in).with(row_cat_missing)
+        expect(Organisation).to receive(:find_by_name).with('Harrow Bereavement Counselling').and_return @org1
         org = Organisation.import_categories_from_array(row_cat_missing)
         expect(org).not_to be_nil
       end
@@ -449,7 +449,7 @@ describe Organisation do
 
   it 'should geocode when address changes' do
     new_address = '60 pinner road'
-    @org1.should_receive(:geocode)
+    expect(@org1).to receive(:geocode)
     @org1.update_attributes :address => new_address
   end
 
@@ -457,7 +457,7 @@ describe Organisation do
     address = '60 pinner road'
     postcode = 'HA1 3RE'
     org = FactoryGirl.build(:organisation,:address => address, :postcode => postcode, :name => 'Happy and Nice', :gmaps => true)
-    org.should_receive(:geocode)    
+    expect(org).to receive(:geocode)    
     org.save
   end
   
@@ -467,41 +467,41 @@ describe Organisation do
 
   describe "importing emails" do
     it "should have a method import_emails" do
-      Organisation.should_receive(:add_email)
-      Organisation.should_receive(:import).with(nil,2,false) do |&arg|
+      expect(Organisation).to receive(:add_email)
+      expect(Organisation).to receive(:import).with(nil,2,false) do |&arg|
         Organisation.add_email(&arg)
       end
       Organisation.import_emails(nil,2,false)
     end
 
     it 'should handle absence of org gracefully' do
-      Organisation.should_receive(:where).with("UPPER(name) LIKE ? ", "%I LOVE PEOPLE%").and_return(nil)
+      expect(Organisation).to receive(:where).with("UPPER(name) LIKE ? ", "%I LOVE PEOPLE%").and_return(nil)
       expect(lambda{
         response = Organisation.add_email(fields = CSV.parse('i love people,,,,,,,test@example.org')[0],true)
-        response.should eq "i love people was not found\n"
+        expect(response).to eq "i love people was not found\n"
       }).not_to raise_error
     end
 
     it "should add email to org" do
-      Organisation.should_receive(:where).with("UPPER(name) LIKE ? ", "%FRIENDLY%").and_return([@org1])
-      @org1.should_receive(:email=).with('test@example.org')
-      @org1.should_receive(:save)
+      expect(Organisation).to receive(:where).with("UPPER(name) LIKE ? ", "%FRIENDLY%").and_return([@org1])
+      expect(@org1).to receive(:email=).with('test@example.org')
+      expect(@org1).to receive(:save)
       Organisation.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0],true)
     end
 
     it "should add email to org even with case mismatch" do
-      Organisation.should_receive(:where).with("UPPER(name) LIKE ? ", "%FRIENDLY%").and_return([@org1])
-      @org1.should_receive(:email=).with('test@example.org')
-      @org1.should_receive(:save)
+      expect(Organisation).to receive(:where).with("UPPER(name) LIKE ? ", "%FRIENDLY%").and_return([@org1])
+      expect(@org1).to receive(:email=).with('test@example.org')
+      expect(@org1).to receive(:save)
       Organisation.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0],true)
     end
 
     it 'should not add email to org when it has an existing email' do
       @org1.email = 'something@example.com'
       @org1.save!
-      Organisation.should_receive(:where).with("UPPER(name) LIKE ? ", "%FRIENDLY%").and_return([@org1])
-      @org1.should_not_receive(:email=).with('test@example.org')
-      @org1.should_not_receive(:save)
+      expect(Organisation).to receive(:where).with("UPPER(name) LIKE ? ", "%FRIENDLY%").and_return([@org1])
+      expect(@org1).not_to receive(:email=).with('test@example.org')
+      expect(@org1).not_to receive(:save)
       Organisation.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0],true)
     end
   end
@@ -513,26 +513,26 @@ describe Organisation do
 
     before :each do
       Devise.stub_chain(:friendly_token, :first).with().with(8).and_return('password')
-      User.should_receive(:new).with({:email => org.email, :password => 'password'}).and_return(user)
+      expect(User).to receive(:new).with({:email => org.email, :password => 'password'}).and_return(user)
     end
 
     it 'early returns a (broken) user when the user is invalid' do
-      user.should_receive(:valid?).and_return(false)
-      user.should_receive(:save)
+      expect(user).to receive(:valid?).and_return(false)
+      expect(user).to receive(:save)
     end
 
     it 'returns a user' do
-      user.should_receive(:valid?).and_return(true)
-      user.should_receive(:skip_confirmation_notification!)
-      User.should_receive(:reset_password_token)
-      user.should_receive(:reset_password_token=)
-      user.should_receive(:reset_password_sent_at=)
-      user.should_receive(:save!)
-      user.should_receive(:confirm!)
+      expect(user).to receive(:valid?).and_return(true)
+      expect(user).to receive(:skip_confirmation_notification!)
+      expect(User).to receive(:reset_password_token)
+      expect(user).to receive(:reset_password_token=)
+      expect(user).to receive(:reset_password_sent_at=)
+      expect(user).to receive(:save!)
+      expect(user).to receive(:confirm!)
     end
 
     after(:each) do
-      org.generate_potential_user.should eq(user)
+      expect(org.generate_potential_user).to eq(user)
     end
   end
 
@@ -587,39 +587,39 @@ describe Organisation do
     describe 'not_geocoded?' do
       it 'should return true if it lacks latitude and longitude' do
         @org1.assign_attributes(latitude: nil, longitude: nil)
-        @org1.not_geocoded?.should be true
+        expect(@org1.not_geocoded?).to be true
       end
 
       it 'should return false if it has latitude and longitude' do
-        @org2.not_geocoded?.should be false
+        expect(@org2.not_geocoded?).to be false
       end
     end
 
     describe 'run_geocode?' do
       it 'should return true if address is changed' do
         @org1.address = "asjkdhas,ba,asda"
-        @org1.run_geocode?.should be true
+        expect(@org1.run_geocode?).to be true
       end
 
       it 'should return false if address is not changed' do
-        @org1.should_receive(:address_changed?).and_return(false)
-        @org1.should_receive(:not_geocoded?).and_return(false)
-        @org1.run_geocode?.should be false
+        expect(@org1).to receive(:address_changed?).and_return(false)
+        expect(@org1).to receive(:not_geocoded?).and_return(false)
+        expect(@org1.run_geocode?).to be false
       end
 
       it 'should return false if org has no address' do
         org = Organisation.new
-        org.run_geocode?.should be false
+        expect(org.run_geocode?).to be false
       end
 
       it 'should return true if org has an address but no coordinates' do
-        @org1.should_receive(:not_geocoded?).and_return(true)
-        @org1.run_geocode?.should be true
+        expect(@org1).to receive(:not_geocoded?).and_return(true)
+        expect(@org1.run_geocode?).to be true
       end
 
       it 'should return false if org has an address and coordinates' do
-        @org2.should_receive(:not_geocoded?).and_return(false)
-        @org2.run_geocode?.should be false
+        expect(@org2).to receive(:not_geocoded?).and_return(false)
+        expect(@org2.run_geocode?).to be false
       end
     end
 
@@ -647,7 +647,7 @@ describe Organisation do
   end
 end
 
-describe Organisation do
+describe Organisation, :type => :model do
 
   before do
     FactoryGirl.factories.clear
@@ -664,39 +664,39 @@ describe Organisation do
   describe 'not_geocoded?' do
     it 'should return true if it lacks latitude and longitude' do
       @org1.assign_attributes(latitude: nil, longitude: nil)
-      @org1.not_geocoded?.should be true
+      expect(@org1.not_geocoded?).to be true
     end
 
     it 'should return false if it has latitude and longitude' do
-      @org2.not_geocoded?.should be false
+      expect(@org2.not_geocoded?).to be false
     end
   end
 
   describe 'run_geocode?' do
     it 'should return true if address is changed' do
       @org1.address = "asjkdhas,ba,asda"
-      @org1.run_geocode?.should be true
+      expect(@org1.run_geocode?).to be true
     end
 
     it 'should return false if address is not changed' do
-      @org1.should_receive(:address_changed?).and_return(false)
-      @org1.should_receive(:not_geocoded?).and_return(false)
-      @org1.run_geocode?.should be false
+      expect(@org1).to receive(:address_changed?).and_return(false)
+      expect(@org1).to receive(:not_geocoded?).and_return(false)
+      expect(@org1.run_geocode?).to be false
     end
 
     it 'should return false if org has no address' do
       org = Organisation.new
-      org.run_geocode?.should be false
+      expect(org.run_geocode?).to be false
     end
 
     it 'should return true if org has an address but no coordinates' do
-      @org1.should_receive(:not_geocoded?).and_return(true)
-      @org1.run_geocode?.should be true
+      expect(@org1).to receive(:not_geocoded?).and_return(true)
+      expect(@org1.run_geocode?).to be true
     end
 
     it 'should return false if org has an address and coordinates' do
-      @org2.should_receive(:not_geocoded?).and_return(false)
-      @org2.run_geocode?.should be false
+      expect(@org2).to receive(:not_geocoded?).and_return(false)
+      expect(@org2.run_geocode?).to be false
     end
   end
 

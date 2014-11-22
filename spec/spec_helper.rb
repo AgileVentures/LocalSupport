@@ -20,6 +20,10 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |file| require file }
 
 RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
+
+  # https://github.com/yujinakayama/transpec/issues/78#issuecomment-48416275
+  FactoryGirl::SyntaxRunner.send(:include, RSpec::Mocks::ExampleMethods)
+
   # == Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:

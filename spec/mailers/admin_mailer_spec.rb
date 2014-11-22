@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe AdminMailer do
+describe AdminMailer, :type => :mailer do
   subject { AdminMailer.new_user_waiting_for_approval('friendly', 'admin@admin.org') }
   it { expect{subject.deliver}.to change{ActionMailer::Base.deliveries.length}.by(1) }
   it { expect(subject.subject).to eq "There is a user waiting for Admin approval to 'friendly'." }

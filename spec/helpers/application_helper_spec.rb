@@ -1,17 +1,17 @@
 require 'spec_helper'
 
-describe ApplicationHelper do
+describe ApplicationHelper, :type => :helper do
   describe 'smart_truncate' do
     it 'should return empty string when truncating empty string' do
-      smart_truncate("").should == ""
+      expect(smart_truncate("")).to eq("")
     end
 
     it 'should return empty string when truncating nil' do
-      smart_truncate(nil).should == ""
+      expect(smart_truncate(nil)).to eq("")
     end
 
     it 'should return a the same string when the string is short' do
-      smart_truncate("test").should == "test"
+      expect(smart_truncate("test")).to eq("test")
     end
 
     it 'should return a truncated string when the string is long' do
@@ -27,20 +27,20 @@ describe ApplicationHelper do
   describe '#cookie_policy_accepted?' do
     it 'true with the cookie' do
       helper.cookies['cookie_policy_accepted'] = true
-      cookie_policy_accepted?.should be true
+      expect(cookie_policy_accepted?).to be true
     end
     it 'false without the cookie' do
-      cookie_policy_accepted?.should be false
+      expect(cookie_policy_accepted?).to be false
     end
   end
 
   describe '#active_if' do
     it 'returns "active" if the controller matches the given argument' do
       str1 = 'str1' ; str2 = 'str2'
-      active_if(str1).should be nil
+      expect(active_if(str1)).to be nil
       params[:controller] = str1
-      active_if(str1).should eq 'active'
-      active_if(str2).should be nil
+      expect(active_if(str1)).to eq 'active'
+      expect(active_if(str2)).to be nil
     end
   end
 

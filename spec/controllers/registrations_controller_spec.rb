@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe RegistrationsController do
+describe RegistrationsController, :type => :controller do
   before :suite do
     FactoryGirl.factories.clear
     FactoryGirl.find_definitions

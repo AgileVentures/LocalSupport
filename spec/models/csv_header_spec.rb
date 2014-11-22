@@ -1,6 +1,6 @@
 require_relative '../../app/models/csv_header'
 
-describe CSVHeader do
+describe CSVHeader, :type => :model do
   let(:value) { CSVHeader.build }
 
   context "column names" do
