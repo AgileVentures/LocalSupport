@@ -17,7 +17,7 @@ group :development, :test do
   gem 'database_cleaner', '1.0.1'
   gem 'launchy'
   gem 'simplecov'
-  gem 'rspec-rails', '2.99'
+  gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
   gem 'execjs'
   gem 'aruba'
