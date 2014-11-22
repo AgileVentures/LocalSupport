@@ -148,7 +148,7 @@ describe OrganisationsController do
     before(:each) do
       @user = double("User")
       @user.stub(:pending_admin?)
-      Organisation.stub(:find).with('37') { double_organisation }
+      Organisation.stub(:find).with('37') { create(:organisation) }
       @user.stub(:can_edit?)
       @user.stub(:can_delete?)
       @user.stub(:can_create_volunteer_ops?)
@@ -266,6 +266,8 @@ describe OrganisationsController do
   end
 
   describe "GET edit" do
+    let(:double_organisation) { create(:organisation) }
+
     context "while signed in as user who can edit" do
       before(:each) do
         user = double("User")
