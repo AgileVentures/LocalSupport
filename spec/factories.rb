@@ -1,12 +1,6 @@
 FactoryGirl.define do
 
   factory :organisation do
-    before(:create) do |org|
-      allow(org).to receive(:geocode)
-    end
-    before(:build) do |org|
-      org.stub :geocode
-    end
     name "friendly non profit"
     description "we are really really friendly"
     address "64 pinner road"
@@ -47,7 +41,6 @@ FactoryGirl.define do
     factory :user_stubbed_organisation do
       after(:build) do |user|
         org = FactoryGirl.build(:organisation)
-        allow(org).to receive(:geocode)
         org.save!
         user.organisation = org
         user.save!
