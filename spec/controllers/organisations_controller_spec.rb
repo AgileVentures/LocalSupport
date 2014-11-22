@@ -311,19 +311,20 @@ describe OrganisationsController, :type => :controller do
 
   describe "POST create", :helpers => :controllers do
     context "while signed in as admin" do
+      let!(:org) { build :organisation }
       before(:each) do
         expect(make_current_user_admin).to receive(:admin?).and_return true
       end
 
       describe "with valid params" do
         it "assigns a newly created organisation as @organisation" do
-          allow(Organisation).to receive(:new){ double_organisation(:save => true, :name => 'org') }
+          allow(Organisation).to receive(:new) { org }
           post :create, :organisation => {'these' => 'params'}
           expect(assigns(:organisation)).to be(double_organisation)
         end
 
         it "redirects to the created organisation" do
-          allow(Organisation).to receive(:new) { double_organisation(:save => true) }
+          allow(Organisation).to receive(:new) { org }
           post :create, :organisation => {name: "blah"}
           expect(response).to redirect_to(organisation_url(double_organisation))
         end

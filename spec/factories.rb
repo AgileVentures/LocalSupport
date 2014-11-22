@@ -4,6 +4,9 @@ FactoryGirl.define do
     before(:create) do |org|
       allow(org).to receive(:geocode)
     end
+    before(:build) do |org|
+      org.stub :geocode
+    end
     name "friendly non profit"
     description "we are really really friendly"
     address "64 pinner road"
