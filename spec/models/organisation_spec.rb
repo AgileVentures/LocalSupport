@@ -505,37 +505,7 @@ describe Organisation, :type => :model do
       Organisation.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0],true)
     end
   end
-
-  describe '#generate_potential_user' do
-    let(:org) { @org1 }
-    # using a stub_model confuses User.should_receive on line 450 because it's expecting :new from my organisation.rb, but instead the stub_model calls it first
-    let(:user) { double('User', {:email => org.email, :password => 'password'}) }
-
-    before :each do
-      allow(Devise).to receive_message_chain(:friendly_token, :first).with().with(8).and_return('password')
-      expect(User).to receive(:new).with({:email => org.email, :password => 'password'}).and_return(user)
-    end
-
-    it 'early returns a (broken) user when the user is invalid' do
-      expect(user).to receive(:valid?).and_return(false)
-      expect(user).to receive(:save)
-    end
-
-    it 'returns a user' do
-      expect(user).to receive(:valid?).and_return(true)
-      expect(user).to receive(:skip_confirmation_notification!)
-      expect(User).to receive(:reset_password_token)
-      expect(user).to receive(:reset_password_token=)
-      expect(user).to receive(:reset_password_sent_at=)
-      expect(user).to receive(:save!)
-      expect(user).to receive(:confirm!)
-    end
-
-    after(:each) do
-      expect(org.generate_potential_user).to eq(user)
-    end
-  end
-
+  
   describe 'destroy uses acts_as_paranoid' do
     it 'can be recovered' do
       @org1.destroy

@@ -385,6 +385,7 @@ describe OrganisationsController, :type => :controller do
   end
 
   describe "PUT update" do
+    let(:org) { create :organisation }
     context "while signed in as user who can edit" do
       before(:each) do
         user = double("User")
@@ -395,22 +396,21 @@ describe OrganisationsController, :type => :controller do
 
       describe "with valid params" do
         it "updates org for e.g. donation_info url" do
-          double = double_organisation(:id => 37, :model_name => 'Organisation')
-          expect(Organisation).to receive(:find).with('37') { double }
-          expect(double_organisation).to receive(:update_attributes_with_admin).with({'donation_info' => 'http://www.friendly.com/donate', 'admin_email_to_add' => nil})
+          expect(Organisation).to receive(:find).with('37') { org }
+          expect(org).to receive(:update_attributes_with_admin).with({'donation_info' => 'http://www.friendly.com/donate', 'admin_email_to_add' => nil})
           put :update, :id => '37', :organisation => {'donation_info' => 'http://www.friendly.com/donate'}
         end
 
         it "assigns the requested organisation as @organisation" do
-          allow(Organisation).to receive(:find) { double_organisation(:update_attributes_with_admin => true) }
+          allow(Organisation).to receive(:find) { org }
           put :update, :id => "1", :organisation => {'these' => 'params'}
-          expect(assigns(:organisation)).to be(double_organisation)
+          expect(assigns(:organisation)).to be(org)
         end
 
         it "redirects to the organisation" do
-          allow(Organisation).to receive(:find) { double_organisation(:update_attributes_with_admin => true) }
+          allow(Organisation).to receive(:find) { org }
           put :update, :id => "1", :organisation => {'these' => 'params'}
-          expect(response).to redirect_to(organisation_url(double_organisation))
+          expect(response).to redirect_to(organisation_url(org))
         end
       end
 
