@@ -90,6 +90,8 @@ Then /^I should see search results for "(.*?)" in the table$/ do |search_terms|
   end
 end
 
+#TODO if this ever needs refactoring, factor it in with what's in
+# config/initializers/webmock.rb
 def stub_request_with_address(address, body = nil)
   filename = "#{address.gsub(/\s/, '_')}.json"
   filename = File.read "test/fixtures/#{filename}"
