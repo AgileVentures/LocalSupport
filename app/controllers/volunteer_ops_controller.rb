@@ -5,14 +5,14 @@ class VolunteerOpsController < ApplicationController
   def index
     @volunteer_ops = VolunteerOp.order_by_most_recent
     @organisations = @volunteer_ops.map { |op| op.organisation }
-    @json = gmap4rails_with_popup_partial(@organisations, 'popup')
+    @markers = build_map_markers(@organisations)
   end
 
   def show
     @volunteer_op = VolunteerOp.find(params[:id])
     @organisation = @volunteer_op.organisation
     @editable = current_user.can_edit?(@organisation) if current_user
-    @json = gmap4rails_with_popup_partial(@organisation, 'popup')
+    @markers = build_map_markers([@organisation])
   end
 
   def new
@@ -33,7 +33,7 @@ class VolunteerOpsController < ApplicationController
   def edit
     @volunteer_op = VolunteerOp.find(params[:id])
     @organisation = @volunteer_op.organisation
-    @json = gmap4rails_with_popup_partial(@organisation, 'popup')
+    @markers = build_map_markers([@organisation])
   end
 
   def update
@@ -46,12 +46,28 @@ class VolunteerOpsController < ApplicationController
       render action: "edit"
     end
   end
+
   class VolunteerOpParams
     def self.build params
       params.require(:volunteer_op).permit(:description, :title, :organisation_id)
     end
   end
+
   private
+
+  def build_map_markers(organisations)
+    ::MapMarkerJson.build(organisations) do |org, marker|
+      marker.lat org.latitude
+      marker.lng org.longitude
+      marker.infowindow render_to_string( partial: 'popup', locals: {org: org})
+      marker.picture({
+        :url => ActionController::Base.helpers.asset_path("volunteer_icon.png"),
+        :width   => 32,
+        :height  => 32,
+      })
+      marker.title "Click here to see volunteer opportunities at #{org.name}"
+    end
+  end
 
   def authorize
     # set @organisation
@@ -71,17 +87,5 @@ class VolunteerOpsController < ApplicationController
        current_user.organisation == VolunteerOp.find(params[:id]).organisation if current_user.present? && current_user.organisation.present?
     end
 
-  end
-
-  def gmap4rails_with_popup_partial(item, partial)
-    item.to_gmaps4rails  do |org, marker|
-      marker.picture({
-                       :picture => ActionController::Base.helpers.asset_path("volunteer_icon.png"),
-                       :width   => 32,
-                       :height  => 32
-                     })
-      marker.title   "Click here to see volunteer opportunities at #{org.name}"
-      marker.infowindow render_to_string(:partial => partial, :locals => { :@org => org})
-    end
   end
 end

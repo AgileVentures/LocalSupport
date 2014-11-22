@@ -21,3 +21,4 @@
     <%= f.submit button_text(@volunteer_op), class: 'btn btn-primary' %>
   </div>
 <% end %>
+<% render partial: 'shared/map_scripts', locals: {markers: markers} %>
