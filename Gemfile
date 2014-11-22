@@ -23,7 +23,7 @@ group :development, :test do
   gem 'aruba'
   gem 'byebug'
   gem 'rack_session_access'
-  gem 'jasmine', '2.0.0'
+  gem 'jasmine', '2.1.0'
   gem 'jasmine-jquery-rails', '2.0.2'
   #gem 'better_errors'
   gem 'binding_of_caller' # plays well with better_errors
@@ -73,7 +73,9 @@ gem 'bootstrap_sortable_rails', '~> 0.1.3'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 gem 'therubyracer'
-gem 'gmaps4rails', '1.5.6'
+gem 'underscore-rails'
+gem 'geocoder'
+gem 'gmaps4rails', "2.1.2"
 #gem 'mongrel'
 gem 'kaminari'
 gem 'unicorn'

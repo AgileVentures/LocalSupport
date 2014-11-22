@@ -17,29 +17,29 @@ describe OrganisationsController do
     end
   end
 
-  describe "popup partial" do
-    it "should take some argument and call to_gmap4rails on it" do
-      result = [double_organisation]
-      partial = double("template")
-      marker = double("marker")
-      marker.should_receive(:infowindow)
-      marker.should_receive(:json)
-      result.should_receive(:to_gmaps4rails).and_yield(double_organisation, marker)
-      @controller.should_receive(:render_to_string)
-      #not sure if we are supposed to test private method on controller ...
-      @controller.send(:gmap4rails_with_popup_partial, result, partial)
+  describe "#build_map_markers" do
+    render_views
+    let(:org) { create :organisation }
+    subject { JSON.parse(controller.send(:build_map_markers, org)).first }
+    it { expect(subject['lat']).to eq org.latitude }
+    it { expect(subject['lng']).to eq org.longitude }
+    it { expect(subject['infowindow']).to include org.id.to_s }
+    it { expect(subject['infowindow']).to include org.name }
+    it { expect(subject['infowindow']).to include org.description }
+    context 'markers without coords omitted' do
+      let(:org) { create :organisation, latitude: nil, longitude: nil }
+      it { expect(JSON.parse(controller.send(:build_map_markers, org))).to be_empty }
     end
-
   end
 
   describe "GET search" do
 
     context 'setting appropriate view vars for all combinations of input' do
-      let(:json) { 'my markers' }
+      let(:markers) { 'my markers' }
       let(:result) { [double_organisation] }
       let(:category) { double('Category') }
       before(:each) do
-        result.should_receive(:to_gmaps4rails).and_return(json)
+        controller.should_receive(:build_map_markers).and_return(markers)
         result.stub_chain(:page, :per).and_return(result)
         Category.should_receive(:html_drop_down_options).and_return(category_html_options)
       end
@@ -51,7 +51,7 @@ describe OrganisationsController do
         assigns(:organisations).should eq([double_organisation])
       end
 
-      it "sets up appropriate values for view vars: query_term, organisations and json" do
+      it "sets up appropriate values for view vars: query_term, organisations and markers" do
         Organisation.should_receive(:search_by_keyword).with('test').and_return(result)
         result.should_receive(:filter_by_category).with('1').and_return(result)
         Category.should_receive(:find_by_id).with("1").and_return(category)
@@ -92,12 +92,13 @@ describe OrganisationsController do
         response.should render_template 'index'
         response.should render_template 'layouts/two_columns'
         assigns(:organisations).should eq([double_organisation])
-        assigns(:json).should eq(json)
+        assigns(:markers).should eq(markers)
         assigns(:category_options).should eq category_html_options
       end
     end
     # TODO figure out how to make this less messy
     it "assigns to flash.now but not flash when search returns no results" do
+      controller.should_receive(:build_map_markers).and_return('my markers')
       double_now_flash = double("FlashHash")
       result = []
       result.should_receive(:empty?).and_return(true)
@@ -114,8 +115,8 @@ describe OrganisationsController do
 
     it "does not set up flash nor flash.now when search returns results" do
       result = [double_organisation]
-      json='my markers'
-      result.should_receive(:to_gmaps4rails).and_return(json)
+      markers='my markers'
+      controller.should_receive(:build_map_markers).and_return(markers)
       result.should_receive(:empty?).and_return(false)
       result.stub_chain(:page, :per).and_return(result)
       Organisation.should_receive(:search_by_keyword).with('some results').and_return(result)
@@ -131,23 +132,24 @@ describe OrganisationsController do
   describe "GET index" do
     it "assigns all organisations as @organisations" do
       result = [double_organisation]
-      json='my markers'
-      result.should_receive(:to_gmaps4rails).and_return(json)
+      markers='my markers'
+      controller.should_receive(:build_map_markers).and_return(markers)
       Category.should_receive(:html_drop_down_options).and_return(category_html_options)
       Organisation.should_receive(:order_by_most_recent).and_return(result)
       result.stub_chain(:page, :per).and_return(result)
       get :index
       assigns(:organisations).should eq(result)
-      assigns(:json).should eq(json)
+      assigns(:markers).should eq(markers)
       response.should render_template 'layouts/two_columns'
     end
   end
 
   describe "GET show" do
+    let(:real_org){create(:organisation)}
     before(:each) do
       @user = double("User")
       @user.stub(:pending_admin?)
-      Organisation.stub(:find).with('37') { double_organisation }
+      Organisation.stub(:find).with('37') { real_org}
       @user.stub(:can_edit?)
       @user.stub(:can_delete?)
       @user.stub(:can_create_volunteer_ops?)
@@ -160,25 +162,25 @@ describe OrganisationsController do
       response.should render_template 'layouts/two_columns'
     end
 
-    it "assigns the requested organisation as @organisation and appropriate json" do
-      json='my markers'
-      @org = double_organisation
-      @org.should_receive(:to_gmaps4rails).and_return(json)
+    it "assigns the requested organisation as @organisation and appropriate markers" do
+      markers='my markers'
+      @org = real_org
+      controller.should_receive(:build_map_markers).and_return(markers)
       Organisation.should_receive(:find).with('37') { @org }
       get :show, :id => '37'
-      assigns(:organisation).should be(double_organisation)
-      assigns(:json).should eq(json)
+      assigns(:organisation).should be(real_org)
+      assigns(:markers).should eq(markers)
     end
 
     context "editable flag is assigned to match user permission" do
       it "user with permission leads to editable flag true" do
-        @user.should_receive(:can_edit?).with(double_organisation).and_return(true)
+        @user.should_receive(:can_edit?).with(real_org).and_return(true)
         get :show, :id => 37
         assigns(:editable).should be(true)
       end
 
       it "user without permission leads to editable flag false" do
-        @user.should_receive(:can_edit?).with(double_organisation).and_return(true)
+        @user.should_receive(:can_edit?).with(real_org).and_return(true)
         get :show, :id => 37
         assigns(:editable).should be(true)
       end
@@ -193,14 +195,14 @@ describe OrganisationsController do
     context "grabbable flag is assigned to match user permission" do
       it 'assigns grabbable to true when user can request org admin status' do
         @user.stub(:can_edit?)
-        @user.should_receive(:can_request_org_admin?).with(double_organisation).and_return(true)
+        @user.should_receive(:can_request_org_admin?).with(real_org).and_return(true)
         controller.stub(:current_user).and_return(@user)
         get :show, :id => 37
         assigns(:grabbable).should be(true)
       end
       it 'assigns grabbable to false when user cannot request org admin status' do
         @user.stub(:can_edit?)
-        @user.should_receive(:can_request_org_admin?).with(double_organisation).and_return(false)
+        @user.should_receive(:can_request_org_admin?).with(real_org).and_return(false)
         controller.stub(:current_user).and_return(@user)
         get :show, :id => 37
         assigns(:grabbable).should be(false)
@@ -265,6 +267,8 @@ describe OrganisationsController do
   end
 
   describe "GET edit" do
+    let(:real_org) { create(:organisation) }
+
     context "while signed in as user who can edit" do
       before(:each) do
         user = double("User")
@@ -274,9 +278,9 @@ describe OrganisationsController do
       end
 
       it "assigns the requested organisation as @organisation" do
-        Organisation.stub(:find).with('37') { double_organisation }
+        Organisation.stub(:find).with('37') { real_org }
         get :edit, :id => '37'
-        assigns(:organisation).should be(double_organisation)
+        assigns(:organisation).should be(real_org)
         response.should render_template 'layouts/two_columns'
       end
     end
@@ -289,7 +293,7 @@ describe OrganisationsController do
       end
 
       it "redirects to organisation view" do
-        Organisation.stub(:find).with('37') { double_organisation }
+        Organisation.stub(:find).with('37') { real_org }
         get :edit, :id => '37'
         response.should redirect_to organisation_url(37)
       end

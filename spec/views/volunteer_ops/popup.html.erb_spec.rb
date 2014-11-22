@@ -16,8 +16,7 @@ describe "volunteer_ops/_popup.html.erb" do
 
   before(:each) do
     VolunteerOp.stub(:where).and_return([op1, op2])
-    assign(:org, org)
-    render
+    render partial: "popup.html.erb", locals: {org: org}
   end
 
   it "should render a link to each volunteer opportunity at that org" do
