@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'layouts/application.html.erb', :type => :feature do
+describe 'layouts/application.html.erb', :type => :view do
   let(:page_one)   {{:name => 'About Us',   :permalink => 'about'      }}
   let(:page_two)   {{:name => 'Contact',    :permalink => 'contact'    }}
   let(:page_three) {{:name => 'Disclaimer', :permalink => 'disclaimer' }}
