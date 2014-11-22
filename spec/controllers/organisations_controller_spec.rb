@@ -320,13 +320,13 @@ describe OrganisationsController, :type => :controller do
         it "assigns a newly created organisation as @organisation" do
           allow(Organisation).to receive(:new) { org }
           post :create, :organisation => {'these' => 'params'}
-          expect(assigns(:organisation)).to be(double_organisation)
+          expect(assigns(:organisation)).to be org
         end
 
         it "redirects to the created organisation" do
           allow(Organisation).to receive(:new) { org }
           post :create, :organisation => {name: "blah"}
-          expect(response).to redirect_to(organisation_url(double_organisation))
+          expect(response).to redirect_to(organisation_url(org))
         end
       end
 
