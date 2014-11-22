@@ -13,7 +13,7 @@ describe VolunteerOpsController, :type => :controller do
   let!(:op) { stub_model VolunteerOp } # stack level too deep errors if stub_model is loaded lazily in some contexts
   describe 'strong params' do
     before do
-      @org = stub_model Organisation, :title => "title", :description => "description"
+      @org = stub_model Organisation, :name => "title", :description => "description"
       @op2 = stub_model VolunteerOp, :organisation => (@org)
     end
     it '#update uses strong params' do
@@ -38,7 +38,7 @@ describe VolunteerOpsController, :type => :controller do
     it { expect(subject['infowindow']).to include op.title }
     it { expect(subject['infowindow']).to include op.description }
     context 'markers without coords omitted' do
-      let(:org) { create :organisation, latitude: nil, longitude: nil }
+      let(:org) { create :organisation, address: "0 pinnner road", latitude: nil, longitude: nil }
       it { expect(JSON.parse(controller.send(:build_map_markers, org))).to be_empty }
     end
   end
@@ -46,7 +46,6 @@ describe VolunteerOpsController, :type => :controller do
   describe 'GET index' do
     before :each do
       @results = [op]
-      allow_any_instance_of(VolunteerOpsController).to receive(:gmap4rails_with_popup_partial)
       allow(VolunteerOp).to receive(:order_by_most_recent).and_return(@results)
     end
 
@@ -202,7 +201,7 @@ describe VolunteerOpsController, :type => :controller do
 
   describe 'POST update' do
     before do
-      @org = stub_model Organisation, :title => "title", :description => "description"
+      @org = stub_model Organisation, :name => "title", :description => "description"
       @op2 = stub_model VolunteerOp, :organisation => (@org)
       @results = [@op2]
     end
