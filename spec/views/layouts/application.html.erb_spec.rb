@@ -64,8 +64,14 @@ describe 'layouts/application.html.erb', :type => :view do
       expect(rendered).to have_css("#menuLogin a[href=\"#{new_user_password_path}\"]")
     end
 
+    it 'hides the cookies choice message when cookies have been accepted' do
+      allow(view).to receive(:cookie_policy_accepted?) { true }
+      render
+      expect(rendered).not_to have_css('#cookie-message')
+    end
+
     it 'renders a cookies choice message when cookies have not been accepted' do
-      allow(view).to receive(:cookies_accepted?).and_return(false)
+      allow(view).to receive(:cookie_policy_accepted?) { false }
       render
       expect(rendered).to have_css('#cookie-message')
       expect(rendered).to have_css('#cookie-message-inner.content')
