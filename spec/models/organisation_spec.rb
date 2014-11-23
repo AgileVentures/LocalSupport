@@ -283,35 +283,10 @@ describe Organisation, :type => :model do
       expect(org).to be_nil
     end
 
-    # the following 6 or so feel more like integration tests than unit tests
-    # TODO should they be moved into another file?  OR MAYBE TO CUCUMBER???
     it 'must be able to generate multiple Organisations from text file' do
-      mock_org = double("org")
-      [:name, :name=, :description=, :address=, :postcode=, :website=, :telephone=].each do |method|
-        allow(mock_org).to receive(method)
-      end
-      allow(Organisation).to receive(:find_by_name).and_return nil
-      attempted_number_to_import = 1006
-      actual_number_to_import = 642
-      time = Time.now
-      expect(Organisation).to receive(:new).exactly(actual_number_to_import).and_return mock_org
-      rows_to_parse = (1..attempted_number_to_import).collect do |number|
-          hash_to_return = {}
-          #allow(hash_to_return).to receive(:header?){true}
-          hash_to_return[Organisation.column_mappings[:name]] = "Test org #{number}"
-          hash_to_return[Organisation.column_mappings[:address]] = "10 Downing St London SW1A 2AA, United Kingdom"
-        if(actual_number_to_import < number)
-           hash_to_return[Organisation.column_mappings[:date_removed]] = time
-        end
-
-        hash_to_return
-      end
-      mock_file_handle = double("file")
-      expect(File).to receive(:open).and_return(mock_file_handle)
-      expect(CSV).to receive(:parse).with(mock_file_handle, :headers => true).and_return rows_to_parse
-      expect(mock_org).to receive(:save!).exactly(actual_number_to_import)
-      Organisation.import_addresses 'db/data.csv', attempted_number_to_import
-
+      expect{
+        Organisation.import_addresses 'db/data.csv', 2
+      }.to change(Organisation, :count).by 2
     end
 
     it 'must fail gracefully when encountering error in generating multiple Organisations from text file' do
