@@ -29,7 +29,7 @@ describe OrganisationsController, :type => :controller do
     it { expect(subject['infowindow']).to include org.name }
     it { expect(subject['infowindow']).to include org.description }
     context 'markers without coords omitted' do
-      let(:org) { create :organisation, address: '0 pinner rd', latitude: nil, longitude: nil }
+      let!(:org) { create :organisation, address: '150 pinner rd', latitude: nil, longitude: nil }
       it { expect(JSON.parse(controller.send(:build_map_markers, org))).to be_empty }
     end
   end
