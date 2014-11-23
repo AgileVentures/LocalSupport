@@ -38,6 +38,7 @@ class CSVOrganisation
 
   def mappings
     CSVHeader.build.names.each_value do |column_name|
+      byebug
       unless @row.header?(column_name)
         raise CSV::MalformedCSVError, "No expected column with name #{column_name} in CSV file"
       end

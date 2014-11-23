@@ -297,7 +297,7 @@ describe Organisation, :type => :model do
       expect(Organisation).to receive(:new).exactly(actual_number_to_import).and_return mock_org
       rows_to_parse = (1..attempted_number_to_import).collect do |number|
           hash_to_return = {}
-          allow(hash_to_return).to receive(:header?){true}
+          #allow(hash_to_return).to receive(:header?){true}
           hash_to_return[Organisation.column_mappings[:name]] = "Test org #{number}"
           hash_to_return[Organisation.column_mappings[:address]] = "10 Downing St London SW1A 2AA, United Kingdom"
         if(actual_number_to_import < number)
