@@ -3,9 +3,15 @@ require 'rails_helper'
 describe MapMarkerJson do
   let(:organisation) { double(:organisation) }
 
-  it 'passes the organisation into the block' do
-    expect(organisation).to receive(:honk_honk)
-    _subject { |o,_| o.honk_honk }
+  it do
+    expect {|b| Gmaps4rails.build_markers([organisation], &b) }.to yield_control
+  end
+
+  it 'yields the organisation and a marker' do
+    _subject do |o,m|
+      expect(o).to eq organisation
+      expect(m).to be_an_instance_of Gmaps4rails::MarkersBuilder::MarkerBuilder
+    end
   end
 
   it 'discards markers without a lat and lng' do
