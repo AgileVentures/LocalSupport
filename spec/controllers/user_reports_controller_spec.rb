@@ -132,7 +132,7 @@ describe UserReportsController, :type => :controller do
     let(:organisation) do
       double :organisation, {
           id: '-1',
-          name: 'sample org'
+          name: 'sample org',
       }
     end
 

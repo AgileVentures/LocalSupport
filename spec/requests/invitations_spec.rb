@@ -12,10 +12,7 @@ describe "Invitations", :type => :request, :helpers => :requests do
           resend_invitation: false}
       end
 
-      before do
-        allow(Gmaps4rails).to receive :geocode
-        login(admin)
-      end
+      before { login(admin) }
 
       it 'example response for invites with duplicates' do
         xhr :post, invitations_path, params
@@ -35,7 +32,6 @@ describe "Invitations", :type => :request, :helpers => :requests do
       let(:lost_invite) { User.invite!({email: org.email}, admin) }
 
       before do
-        allow(Gmaps4rails).to receive :geocode
         login(admin)
       end
 
