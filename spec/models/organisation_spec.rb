@@ -442,11 +442,14 @@ describe Organisation, :type => :model do
 
   describe "importing emails" do
     it "should have a method import_emails" do
-      expect(Organisation).to receive(:add_email)
-      expect(Organisation).to receive(:import).with(nil,2,false) do |&arg|
-        Organisation.add_email(&arg)
-      end
-      Organisation.import_emails(nil,2,false)
+      filename = "db/emails.csv"
+      expect(Organisation).to receive(:add_email).twice.and_call_original
+      expect(Organisation).to receive(:import).with(filename,2,false).and_call_original
+     # do |&arg|
+     #   byebug
+     #   Organisation.add_email(&arg)
+     # end
+      Organisation.import_emails(filename,2,false)
     end
 
     it 'should handle absence of org gracefully' do
