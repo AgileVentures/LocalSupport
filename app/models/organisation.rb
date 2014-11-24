@@ -33,6 +33,10 @@ class Organisation < ActiveRecord::Base
 
   after_save :uninvite_users, if: ->{ email_changed? }
 
+  def not_updated_recently?
+    updated_at < 365.day.ago
+  end
+
   def uninvite_users
     users.invited_not_accepted.update_all(organisation_id: nil)
   end
@@ -194,8 +198,9 @@ class Organisation < ActiveRecord::Base
     user.confirm!
     user
   end
+
   def not_updated_recently_or_has_no_owner?
-    (self.users.empty? || (Time.now - updated_at) > 365.day)
+    self.users.empty? || not_updated_recently?
   end
 
   private
@@ -219,6 +224,7 @@ class Organisation < ActiveRecord::Base
   def self.contains_name(key)
     table[:name].matches(key)
   end
+
   def remove_errors_with_address
     errors_hash = errors.to_hash
     errors.clear

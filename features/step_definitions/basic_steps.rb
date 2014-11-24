@@ -3,8 +3,7 @@ require 'uri-handler'
 include ApplicationHelper
 
 Then(/^I travel "(.*?)" days into the future$/) do |days|
-  future_time = Time.at(Time.now + days.to_i.day)
-  Time.stub(:now){future_time}
+  Delorean.time_travel_to "#{days} days from now"
 end
 Then(/^I should see the "(.*?)" image linked to "(.*?)"$/) do |image_alt, link|
   within("a[href='#{link}']") do
