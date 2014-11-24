@@ -145,10 +145,11 @@ describe OrganisationsController do
   end
 
   describe "GET show" do
+    let(:real_org){create(:organisation)}
     before(:each) do
       @user = double("User")
       @user.stub(:pending_admin?)
-      Organisation.stub(:find).with('37') { double_organisation }
+      Organisation.stub(:find).with('37') { real_org}
       @user.stub(:can_edit?)
       @user.stub(:can_delete?)
       @user.stub(:can_create_volunteer_ops?)
@@ -163,23 +164,23 @@ describe OrganisationsController do
 
     it "assigns the requested organisation as @organisation and appropriate markers" do
       markers='my markers'
-      @org = double_organisation
+      @org = real_org
       controller.should_receive(:build_map_markers).and_return(markers)
       Organisation.should_receive(:find).with('37') { @org }
       get :show, :id => '37'
-      assigns(:organisation).should be(double_organisation)
+      assigns(:organisation).should be(real_org)
       assigns(:markers).should eq(markers)
     end
 
     context "editable flag is assigned to match user permission" do
       it "user with permission leads to editable flag true" do
-        @user.should_receive(:can_edit?).with(double_organisation).and_return(true)
+        @user.should_receive(:can_edit?).with(real_org).and_return(true)
         get :show, :id => 37
         assigns(:editable).should be(true)
       end
 
       it "user without permission leads to editable flag false" do
-        @user.should_receive(:can_edit?).with(double_organisation).and_return(true)
+        @user.should_receive(:can_edit?).with(real_org).and_return(true)
         get :show, :id => 37
         assigns(:editable).should be(true)
       end
@@ -194,14 +195,14 @@ describe OrganisationsController do
     context "grabbable flag is assigned to match user permission" do
       it 'assigns grabbable to true when user can request org admin status' do
         @user.stub(:can_edit?)
-        @user.should_receive(:can_request_org_admin?).with(double_organisation).and_return(true)
+        @user.should_receive(:can_request_org_admin?).with(real_org).and_return(true)
         controller.stub(:current_user).and_return(@user)
         get :show, :id => 37
         assigns(:grabbable).should be(true)
       end
       it 'assigns grabbable to false when user cannot request org admin status' do
         @user.stub(:can_edit?)
-        @user.should_receive(:can_request_org_admin?).with(double_organisation).and_return(false)
+        @user.should_receive(:can_request_org_admin?).with(real_org).and_return(false)
         controller.stub(:current_user).and_return(@user)
         get :show, :id => 37
         assigns(:grabbable).should be(false)
@@ -266,6 +267,8 @@ describe OrganisationsController do
   end
 
   describe "GET edit" do
+    let(:real_org) { create(:organisation) }
+
     context "while signed in as user who can edit" do
       before(:each) do
         user = double("User")
@@ -275,9 +278,9 @@ describe OrganisationsController do
       end
 
       it "assigns the requested organisation as @organisation" do
-        Organisation.stub(:find).with('37') { double_organisation }
+        Organisation.stub(:find).with('37') { real_org }
         get :edit, :id => '37'
-        assigns(:organisation).should be(double_organisation)
+        assigns(:organisation).should be(real_org)
         response.should render_template 'layouts/two_columns'
       end
     end
@@ -290,7 +293,7 @@ describe OrganisationsController do
       end
 
       it "redirects to organisation view" do
-        Organisation.stub(:find).with('37') { double_organisation }
+        Organisation.stub(:find).with('37') { real_org }
         get :edit, :id => '37'
         response.should redirect_to organisation_url(37)
       end

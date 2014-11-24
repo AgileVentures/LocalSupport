@@ -12,7 +12,6 @@ class PagesController < ApplicationController
     @admin = current_user.admin? if current_user
     # find_by_permalink! returns exception if no match
     @page = Page.find_by_permalink!(params[:id])
-    render :html => @page
   end
 
   # GET /pages/new

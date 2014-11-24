@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 ruby '2.0.0'
-gem 'rails', '4.0.10'
+gem 'rails', '~> 4.1'
 gem 'pg'
 gem 'devise', '3.0.3'
 gem 'devise_invitable', '~> 1.2.1'
@@ -22,7 +22,7 @@ group :development, :test do
   gem 'aruba'
   gem 'byebug'
   gem 'rack_session_access'
-  gem 'jasmine', '2.0.0'
+  gem 'jasmine', '2.1.0'
   gem 'jasmine-jquery-rails', '2.0.2'
   #gem 'better_errors'
   gem 'binding_of_caller' # plays well with better_errors
@@ -37,8 +37,6 @@ end
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
-  gem 'minitest', '~> 4.7.1'
-  gem 'ZenTest'
   gem 'capybara', '2.4.1'
   gem "capybara-webkit", "~> 1.1.0"
   gem 'factory_girl_rails', :require => false
@@ -72,11 +70,6 @@ gem 'bootstrap_sortable_rails', '~> 0.1.3'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
-
-group :test do
-  # Pretty printed test output
-  gem 'turn', :require => false
-end
 
 gem 'therubyracer'
 gem 'underscore-rails'
