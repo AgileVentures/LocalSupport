@@ -1,45 +1,75 @@
 Then /^I should see hyperlinks for "(.*?)", "(.*?)" and "(.*?)" in the map$/ do |org1, org2, org3|
-  org1 = Organisation.find_by_name(org1)
-  org2 = Organisation.find_by_name(org2)
-  org3 = Organisation.find_by_name(org3)
-  [org1,org2,org3].each do |org|
-    match = page.html.match %Q<{\\"description\\":\\".*>#{org.name}</a>.*\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
-    expect(match).not_to be_nil
-    # the following might work if we were actually running all the gmaps js
-    #expect(page).to have_xpath("//div[@class='map_container']//a[@href='#{organisation_path(org)}']")
+  marker_json = JSON.parse markers
+  descriptions = marker_json.map{|m| m['infowindow'] }.join
+  Organisation.where(name: [org1, org2, org3]).each do |org|
+    expect(descriptions).to have_xpath "//a[@href=\"#{organisation_path(org.id)}\"]", :text => "#{org.name}"
   end
 end
 
 # could we move maps stuff into separate step file and couldn't these things be DRYer ...
 # e.g. one step to handle 2 or more orgs ...
-Then /^I should see "([^"]*?)", "([^"]*?)" and "([^"]*?)" in the map centered on local organisations$/ do |name1, name2, name3|
-  check_map([name1,name2,name3])
+Then /^I should see "([^"]*?)", "([^"]*?)" and "([^"]*?)" in the map$/ do |name1, name2, name3|
+  names = [name1, name2, name3]
+  names_coords = build_names_and_coords_map names
+  names_coords.each do |name_coord|
+    org_name = name_coord[:name]
+    result = choose_markers_containing_org_name org_name
+    expect(result.length).to eq 1
+    expect(result.first["lat"]).to eq name_coord[:lat] 
+    expect(result.first["lng"]).to eq name_coord[:lng] 
+  end
+end
 
-  ['Gmaps.map.map_options.auto_adjust = false',
-   'Gmaps.map.map_options.auto_zoom = true',
-   'Gmaps.map.map_options.center_latitude = 51.5978',
-   'Gmaps.map.map_options.center_longitude = -0.337',
-   'Gmaps.map.map_options.zoom = 12',
-   'Gmaps.map.map_options.auto_adjust = false'].each {|option| check_script_tag(option)}
+def choose_markers_containing_org_name org_name
+  JSON.parse(markers).select{|marker| marker["infowindow"].include? org_name}
+end
 
+def build_names_and_coords_map names
+  names.map{|org_name| {name: org_name, lat: Organisation.where(name: org_name).first.latitude, lng: Organisation.where(name: org_name).first.longitude}}
 end
 
 Then /^I should see "([^"]*?)" and "([^"]*?)" in the map$/ do |name1, name2|
-  check_map([name1,name2])
+  names = [name1, name2]
+  coords = Organisation.where(name: names).pluck(:latitude, :longitude).flatten.uniq
+
+  expect_markers_to_have_words(names)
+  expect_markers_to_have_words(coords)
 end
 
-Given(/^the map should show the opportunity (.*)$/) do |op|
-    page.should have_xpath "//script[contains(.,'#{op}')]", :visible => false
+Given(/^the map should show the opportunity (.*)$/) do |opportunity_description|
+  expect_markers_to_have_words(opportunity_description)
+  expect_markers_to_have_picture('/assets/volunteer_icon.png')
 end
 
-def check_script_tag(filter)
-  page.should have_xpath "//script[contains(.,\'#{filter}\')]", :visible => false
+def markers
+  find('#marker_data')['data-markers']
 end
 
-def check_map(names)
-  names.each do |name|
-    check_script_tag(name)
-    Organisation.all.to_gmaps4rails.should match(name)
+def expect_markers_to_have_words(*words)
+  [*words].flatten.each do |word|
+    expect(markers).to include word.to_s
+  end
+end
+
+def expect_markers_to_have_picture(picture)
+  expect(markers).to include picture
+end
+
+def marker_json_for_org_names(*org_names)
+  marker_json = JSON.parse markers
+  [*org_names].map do |name|
+    marker_json.find{|m| m['infowindow'].include? name }
+  end
+end
+
+Then /^the coordinates for "(.*?)" and "(.*?)" should( not)? be the same/ do | org1_name, org2_name, negation|
+  org1, org2 = marker_json_for_org_names(org1_name, org2_name)
+  if negation
+    expect(org1['lat']).not_to eq org2['lat']
+    expect(org1['lng']).not_to eq org2['lng']
+  else
+    expect(org1['lat']).to eq org2['lat']
+    expect(org1['lng']).to eq org2['lng']
   end
 end
 
@@ -74,22 +104,4 @@ And(/^"(.*?)" should not have nil coordinates$/) do |name|
   org = Organisation.find_by_name(name)
   org.latitude.should_not be_nil
   org.longitude.should_not be_nil
-end
-
-Then /^the coordinates for "(.*?)" and "(.*?)" should( not)? be the same/ do | org1_name, org2_name, negation|
-  #Gmaps.map.markers = [{"description":"<a href=\"/organisations/1320\">test</a>","lat":50.3739788,"lng":-95.84172219999999}];
-
-  matches = page.html.match %Q<{\\"description\\":\\"[^}]*#{org1_name}[^}]*\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
-  org1_lat = matches[1]
-  org1_lng = matches[2]
-  matches = page.html.match %Q<{\\"description\\":\\"[^}]*#{org2_name}[^}]*\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
-  org2_lat = matches[1]
-  org2_lng = matches[2]
-  lat_same = org1_lat == org2_lat
-  lng_same = org1_lng == org2_lng
-  if negation
-    expect(lat_same && lng_same).to be_false
-  else
-    expect(lat_same && lng_same).to be_true
-  end
 end

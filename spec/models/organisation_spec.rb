@@ -6,20 +6,34 @@ describe Organisation do
     FactoryGirl.factories.clear
     FactoryGirl.find_definitions
 
+    Geocoder.configure(:lookup => :test)
+    Geocoder::Lookup::Test.set_default_stub(
+    [
+      {
+        'latitude' => 40.7143528,
+        'longitude' => -74.0059731,
+        'address' => 'New York, NY, USA',
+        'state' => 'New York',
+        'state_code' => 'NY',
+        'country' => 'United States',
+        'country_code' => 'US'
+      }
+    ]
+    )
+
     @category1 = FactoryGirl.create(:category, :charity_commission_id => 207)
     @category2 = FactoryGirl.create(:category, :charity_commission_id => 305)
     @category3 = FactoryGirl.create(:category, :charity_commission_id => 108)
     @category4 = FactoryGirl.create(:category, :charity_commission_id => 302)
     @category5 = FactoryGirl.create(:category, :charity_commission_id => 306)
-    @org1 = FactoryGirl.build(:organisation, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate')
-    Gmaps4rails.stub(:geocode => nil)
+    @org1 = FactoryGirl.build(:organisation, :email => nil, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate')
     @org1.save!
-    @org2 = FactoryGirl.build(:organisation, :name => 'Indian Elders Association',
+    @org2 = FactoryGirl.build(:organisation, :email => nil,  :name => 'Indian Elders Association',
                               :description => 'Care for the elderly', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.indian-elders.co.uk/donate')
     @org2.categories << @category1
     @org2.categories << @category2
     @org2.save!
-    @org3 = FactoryGirl.build(:organisation, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.age-uk.co.uk/donate')
+    @org3 = FactoryGirl.build(:organisation, :email => nil, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.age-uk.co.uk/donate')
     @org3.categories << @category1
     @org3.save!
   end
@@ -231,7 +245,6 @@ describe Organisation do
     it 'must fail gracefully when encountering error in generating multiple Organisations from text file' do
       attempted_number_to_import = 1006
       actual_number_to_import = 642
-      Gmaps4rails.should_receive(:geocode).exactly(0)
       Organisation.stub(:create_from_array).and_raise(CSV::MalformedCSVError)
       expect(lambda {
         Organisation.import_addresses 'db/data.csv', attempted_number_to_import
@@ -239,7 +252,6 @@ describe Organisation do
     end
 
     it 'must be able to handle no postcode in text representation' do
-      Gmaps4rails.should_receive(:geocode)
       fields = CSV.parse('HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
       org = create_organisation(fields)
       expect(org.name).to eq('Harrow Baptist Church')
@@ -252,7 +264,6 @@ describe Organisation do
     end
 
     it 'must be able to handle no address in text representation' do
-      Gmaps4rails.should_receive(:geocode)
       fields = CSV.parse('HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,,http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
       org = create_organisation(fields)
       expect(org.name).to eq('Harrow Baptist Church')
@@ -265,7 +276,6 @@ describe Organisation do
     end
 
     it 'must be able to generate Organisation from text representation ensuring words in correct case and postcode is extracted from address' do
-      Gmaps4rails.should_receive(:geocode)
       fields = CSV.parse('HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
       org = create_organisation(fields)
       expect(org.name).to eq('Harrow Baptist Church')
@@ -308,7 +318,6 @@ describe Organisation do
       end
       it 'must be able to avoid org category relations from text file when org does not exist' do
         @org4 = FactoryGirl.build(:organisation, :name => 'Fellowship For Management In Food Distribution', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate')
-        Gmaps4rails.should_receive(:geocode)
         @org4.save!
         [102,206,302].each do |id|
           FactoryGirl.build(:category, :charity_commission_id => id).save!
@@ -367,65 +376,20 @@ describe Organisation do
   end
 
 
-  it 'offers information for the gmap4rails info window' do
-    expect(@org1.gmaps4rails_infowindow).to eq(@org1.name)
-  end
-  
-  it 'should have gmaps4rails_option hash with :check_process set to false' do
-    expect(@org1.gmaps4rails_options[:check_process]).to be_false
-  end
-
   it 'should geocode when address changes' do
     new_address = '60 pinner road'
-    Gmaps4rails.should_receive(:geocode).with("#{new_address}, #{@org1.postcode}", "en", false,"http")
+    @org1.should_receive(:geocode)
     @org1.update_attributes :address => new_address
   end
 
   it 'should geocode when new object is created' do
     address = '60 pinner road'
     postcode = 'HA1 3RE'
-    Gmaps4rails.should_receive(:geocode).with("#{address}, #{postcode}", "en", false, "http")
     org = FactoryGirl.build(:organisation,:address => address, :postcode => postcode, :name => 'Happy and Nice', :gmaps => true)
+    org.should_receive(:geocode)    
     org.save
   end
-
-  #TODO: refactor with expect{} instead of should as Rspec 2 promotes
-  it 'should delete geocoding errors and save organisation' do
-    new_address = '777 pinner road'
-    @org1.latitude = 77
-    @org1.longitude = 77
-    Gmaps4rails.should_receive(:geocode).and_raise(Gmaps4rails::GeocodeInvalidQuery)
-    @org1.address = new_address
-    @org1.update_attributes :address => new_address
-    @org1.errors['gmaps4rails_address'].should be_empty
-    actual_address = Organisation.find_by_name(@org1.name).address
-    expect(actual_address).to eq(new_address)
-    expect(@org1.latitude).to be_nil
-    expect(@org1.longitude).to be_nil
-  end
-
-  it 'should not delete validation errors unrelated to gmap4rails address issues' do
-    Organisation.class_eval do
-      validates :name, :presence => true
-    end
-    Gmaps4rails.should_receive(:geocode)
-    @org1.update_attributes :name => nil
-    expect(@org1.errors['name']).not_to be_empty
-  end
-
-  it 'should attempt to geocode after failed' do
-    Gmaps4rails.should_receive(:geocode).and_raise(Gmaps4rails::GeocodeInvalidQuery)
-    @org1.save!
-    new_address = '60 pinner road'
-    Gmaps4rails.should_receive(:geocode)
-    expect(lambda{
-      @org1.address = new_address
-      # destructive save is called to raise exception if saving fails
-      @org1.save!
-    }).not_to raise_error
-    actual_address = Organisation.find_by_name(@org1.name).address
-    expect(actual_address).to eq(new_address)
-  end
+  
   # not sure if we need SQL injection security tests like this ...
   # org = Organisation.new(:address =>"blah", :gmaps=> ";DROP DATABASE;")
   # org = Organisation.new(:address =>"blah", :name=> ";DROP DATABASE;")
@@ -521,7 +485,6 @@ describe Organisation do
     let(:invited_user) { User.where("users.organisation_id IS NOT null").first }
 
     before do
-      Gmaps4rails.stub :geocode
       BatchInviteJob.new(params, current_user).run
       expect(invited_user.organisation_id).to eq org.id
     end
@@ -549,4 +512,66 @@ describe Organisation do
     end
   end
 
+  context "geocoding" do
+    describe 'not_geocoded?' do
+      it 'should return true if it lacks latitude and longitude' do
+        @org1.assign_attributes(latitude: nil, longitude: nil)
+        @org1.not_geocoded?.should be_true
+      end
+
+      it 'should return false if it has latitude and longitude' do
+        @org2.not_geocoded?.should be_false
+      end
+    end
+
+    describe 'run_geocode?' do
+      it 'should return true if address is changed' do
+        @org1.address = "asjkdhas,ba,asda"
+        @org1.run_geocode?.should be_true
+      end
+
+      it 'should return false if address is not changed' do
+        @org1.should_receive(:address_changed?).and_return(false)
+        @org1.should_receive(:not_geocoded?).and_return(false)
+        @org1.run_geocode?.should be_false
+      end
+
+      it 'should return false if org has no address' do
+        org = Organisation.new
+        org.run_geocode?.should be_false
+      end
+
+      it 'should return true if org has an address but no coordinates' do
+        @org1.should_receive(:not_geocoded?).and_return(true)
+        @org1.run_geocode?.should be_true
+      end
+
+      it 'should return false if org has an address and coordinates' do
+        @org2.should_receive(:not_geocoded?).and_return(false)
+        @org2.run_geocode?.should be_false
+      end
+    end
+
+    describe "acts_as_gmappable's behavior is curtailed by the { :process_geocoding => :run_geocode? } option" do
+      it 'no geocoding allowed when saving if the org already has an address and coordinates' do
+        expect_any_instance_of(Organisation).not_to receive(:geocode)
+        @org2.email = 'something@example.com'
+        @org2.save!
+      end
+
+      # it will try to rerun incomplete geocodes, but not valid ones, so no harm is done
+      it 'geocoding allowed when saving if the org has an address BUT NO coordinates' do
+        expect_any_instance_of(Organisation).to receive(:geocode)
+        @org2.longitude = nil ; @org2.latitude = nil
+        @org2.email = 'something@example.com'
+        @org2.save!
+      end
+
+      it 'geocoding allowed when saving if the org address changed' do
+        expect_any_instance_of(Organisation).to receive(:geocode)
+        @org2.address = '777 pinner road'
+        @org2.save!
+      end
+    end
+  end
 end

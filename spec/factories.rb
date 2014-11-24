@@ -1,10 +1,16 @@
 FactoryGirl.define do
   factory :organisation do
+    before(:create) do |org|
+      org.stub(:geocode)
+    end
     name "friendly non profit"
     description "we are really really friendly"
     address "64 pinner road"
     postcode "HA1 3TE"
     donation_info 'www.harrow-bereavment.co.uk/donate'
+    email "friendly@charity.org"
+    latitude 10
+    longitude 10
   end
   factory :category do
     name "health"
@@ -26,8 +32,8 @@ FactoryGirl.define do
 
     factory :user_stubbed_organisation do
       after(:build) do |user|
-        Gmaps4rails.stub(:geocode)
         org = FactoryGirl.build(:organisation)
+        org.stub :geocode
         org.save!
         user.organisation = org
         user.save!
