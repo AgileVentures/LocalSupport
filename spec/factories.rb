@@ -11,6 +11,13 @@ FactoryGirl.define do
     email "friendly@charity.org"
     latitude 10
     longitude 10
+    factory :organisation_with_owner do
+      after(:build) do |org|
+        owner = FactoryGirl.build(:user)
+        org.users << owner
+        org.save!
+      end
+    end
   end
   factory :category do
     name "health"

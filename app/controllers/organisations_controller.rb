@@ -8,7 +8,7 @@ class OrganisationsController < ApplicationController
     @query_term = params[:q]
     @category_id = params.try(:[],'category').try(:[],'id')
     @category = Category.find_by_id(@category_id)
-    @organisations = Organisation.order_by_most_recent
+    @organisations = Organisation.includes(:users).order_by_most_recent
     @organisations = @organisations.search_by_keyword(@query_term).filter_by_category(@category_id)
     flash.now[:alert] = SEARCH_NOT_FOUND if @organisations.empty?
     @markers = build_map_markers(@organisations)
@@ -19,7 +19,7 @@ class OrganisationsController < ApplicationController
   # GET /organisations
   # GET /organisations.json
   def index
-    @organisations = Organisation.order_by_most_recent
+    @organisations = Organisation.includes(:users).order_by_most_recent
     @markers = build_map_markers(@organisations)
     @category_options = Category.html_drop_down_options
   end
@@ -118,6 +118,15 @@ class OrganisationParams
       marker.lat org.latitude
       marker.lng org.longitude
       marker.infowindow render_to_string(partial: 'popup', locals: {org: org})
+      marker.shadow({ :url => 'hello' }) if org.not_updated_recently_or_has_no_owner?
+      picture = org.gmaps4rails_marker_picture
+      if picture.present?
+        marker.picture({
+          :url => picture['picture'],
+          :width   => 32,
+          :height  => 32,
+        })
+      end
     end
   end
 

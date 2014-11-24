@@ -6,6 +6,15 @@ Then /^I should see hyperlinks for "(.*?)", "(.*?)" and "(.*?)" in the map$/ do 
   end
 end
 
+Then /^the organisation "(.*?)" should have a (large|small) icon$/ do |name, icon_size|
+  markers = choose_markers_containing_org_name name
+  expect(markers.length).to eq 1
+  if icon_size == "small"
+    expect(markers.first["picture"]["url"]).to eq "https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png"
+  else
+    expect(markers.first["picture"]).to be_nil  
+  end
+end
 # could we move maps stuff into separate step file and couldn't these things be DRYer ...
 # e.g. one step to handle 2 or more orgs ...
 Then /^I should see "([^"]*?)", "([^"]*?)" and "([^"]*?)" in the map$/ do |name1, name2, name3|

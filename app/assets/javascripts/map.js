@@ -21,6 +21,13 @@ LocalSupport.google_map = {
     var handler = Gmaps.build('Google');
     handler.buildMap(settings, function() {
       var markers = handler.addMarkers(data);
+      _.each(markers, function(marker) {
+        if (marker.serviceObject.shadow != null) {
+          marker.serviceObject.setZIndex(0);
+        } else {
+          marker.serviceObject.setZIndex(1);
+        }
+      })
       handler.bounds.extendWith(markers);
     })
   }
