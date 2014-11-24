@@ -183,22 +183,7 @@ class Organisation < ActiveRecord::Base
       end
     end
   end
-
-  def generate_potential_user
-    password = Devise.friendly_token.first(8)
-    user = User.new(:email => self.email, :password => password)
-    unless user.valid?
-      user.save
-      return user # so that it can be inspected for errors
-    end
-    user.skip_confirmation_notification!
-    user.reset_password_token=(User.reset_password_token)
-    user.reset_password_sent_at=Time.now
-    user.save!
-    user.confirm!
-    user
-  end
-
+  
   def not_updated_recently_or_has_no_owner?
     self.users.empty? || not_updated_recently?
   end

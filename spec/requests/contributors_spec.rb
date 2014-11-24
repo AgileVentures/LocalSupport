@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "Contributors" do
+describe "Contributors", :type => :request do
   describe "GET /contributors" do
     before :each do
       contributors = ([

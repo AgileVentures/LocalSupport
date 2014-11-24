@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe 'contributors/show.html.erb' do
+describe 'contributors/show.html.erb', :type => :view do
   before :each do
     @contributors = [
         {'login' => 'thomas', 'avatar_url' => 'http://example.com/thomas.png', 'html_url' => 'http://github.com/thomas', 'contributions' => 7},
@@ -13,12 +13,12 @@ describe 'contributors/show.html.erb' do
   it 'should display each contributor and their contributions' do
     render
     @contributors.each do |contributor|
-       rendered.should have_content contributor['login']
+       expect(rendered).to have_content contributor['login']
        avatar = contributor['avatar_url']
        link = contributor['html_url']
-       rendered.should have_css("a[href='#{link}'] img[src='#{avatar}']")
-       rendered.should have_link("Github Profile", href: link)
-       rendered.should have_content("Project Contributions: #{contributor['contributions']}")
+       expect(rendered).to have_css("a[href='#{link}'] img[src='#{avatar}']")
+       expect(rendered).to have_link("Github Profile", href: link)
+       expect(rendered).to have_content("Project Contributions: #{contributor['contributions']}")
     end
   end
 end

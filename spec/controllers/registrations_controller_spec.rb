@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe RegistrationsController do
+describe RegistrationsController, :type => :controller do
   before :suite do
     FactoryGirl.factories.clear
     FactoryGirl.find_definitions
@@ -19,7 +19,7 @@ describe RegistrationsController do
     end
 
     it 'does not authenticate user' do
-      expect(warden.authenticated?(:user)).to be_false
+      expect(warden.authenticated?(:user)).to be false
     end
 
     it 'redirects to home page after registration form' do

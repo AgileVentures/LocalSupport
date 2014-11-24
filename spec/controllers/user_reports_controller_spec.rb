@@ -1,21 +1,21 @@
-require 'spec_helper'
-describe UserReportsController do
+require 'rails_helper'
+describe UserReportsController, :type => :controller do
   describe 'PUT update user-organisation status', :helpers => :controllers do
     before(:each) do
       make_current_user_admin
       @nonadmin_user = double("User")
-      User.stub(:find_by_id).with("4").and_return(@nonadmin_user)
-      @nonadmin_user.stub(:pending_organisation_id=).with('5')
-      @nonadmin_user.stub(:save!)
+      allow(User).to receive(:find_by_id).with("4").and_return(@nonadmin_user)
+      allow(@nonadmin_user).to receive(:pending_organisation_id=).with('5')
+      allow(@nonadmin_user).to receive(:save!)
       @org = double("Organisation")
-      @org.stub(:name).and_return('Red Cross')
-      Organisation.stub(:find).and_return(@org)
+      allow(@org).to receive(:name).and_return('Red Cross')
+      allow(Organisation).to receive(:find).and_return(@org)
     end
     context 'user requesting pending status to be admin of charity' do
       before do
-        @nonadmin_user.stub(:request_admin_status)
-        @nonadmin_user.stub(:promote_to_org_admin)
-        @nonadmin_user.stub(:email)
+        allow(@nonadmin_user).to receive(:request_admin_status)
+        allow(@nonadmin_user).to receive(:promote_to_org_admin)
+        allow(@nonadmin_user).to receive(:email)
       end
 
       it 'should redirect to the show page for nested org' do
@@ -29,19 +29,19 @@ describe UserReportsController do
     end
     context 'admin promoting user to charity admin' do
       before(:each) do
-        @nonadmin_user.stub(:promote_to_org_admin)
-        @nonadmin_user.stub(:email).and_return('stuff@stuff.com')
+        allow(@nonadmin_user).to receive(:promote_to_org_admin)
+        allow(@nonadmin_user).to receive(:email).and_return('stuff@stuff.com')
       end
       it 'non-admins get refused' do
-        @nonadmin_user.stub(:admin?).and_return(false)
-        controller.stub(:current_user).and_return(@nonadmin_user)
+        allow(@nonadmin_user).to receive(:admin?).and_return(false)
+        allow(controller).to receive(:current_user).and_return(@nonadmin_user)
         put :update, {:id => '4'}
-        response.response_code.should == 404
+        expect(response.response_code).to eq(404)
       end
 
       it 'redirect to index page after update succeeds' do
         put :update, {:id => '4'}
-        response.should redirect_to users_report_path
+        expect(response).to redirect_to users_report_path
       end
       it 'shows a flash telling which user got approved' do
         put :update, {:id => '4'}
@@ -77,7 +77,7 @@ describe UserReportsController do
 
         it "assigns all users to @users" do
           user_double = double("User")
-          User.stub(:all).and_return([user_double])
+          allow(User).to receive(:all).and_return([user_double])
           get :index
           expect(assigns(:users)).to eql([user_double])
         end
@@ -100,7 +100,7 @@ describe UserReportsController do
 
         it "redirects user to root and flashes a notice" do
           get :index
-          response.should redirect_to root_path
+          expect(response).to redirect_to root_path
         end
 
         it "flashes the relevant notice" do
@@ -112,12 +112,12 @@ describe UserReportsController do
 
     context "user not signed in" do
       before(:each) do
-        controller.stub(:current_user).and_return(nil)
+        allow(controller).to receive(:current_user).and_return(nil)
       end
 
       it "redirects user to root" do
         get :index
-        response.should redirect_to root_path
+        expect(response).to redirect_to root_path
       end
 
       it "flashes the relevant notice" do
@@ -132,7 +132,7 @@ describe UserReportsController do
     let(:organisation) do
       double :organisation, {
           id: '-1',
-          name: 'sample org'
+          name: 'sample org',
       }
     end
 
@@ -152,13 +152,13 @@ describe UserReportsController do
     it 'is for admins only' do
       make_current_user_nonadmin
       get :invited
-      response.should redirect_to root_path
+      expect(response).to redirect_to root_path
     end
 
     it 'uses the invited template and the invitation table layout' do
       get :invited
-      response.should render_template 'user_reports/invited'
-      response.should render_template 'layouts/invitation_table'
+      expect(response).to render_template 'user_reports/invited'
+      expect(response).to render_template 'layouts/invitation_table'
     end
 
     it 'assigns true to @resend_invitation' do

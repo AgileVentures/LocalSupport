@@ -1,27 +1,27 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe PagesController do
+describe PagesController, :type => :controller do
   let(:page) { mock_model Page, id: '2' }
 
-  before { controller.stub(:admin?) { true } }
+  before { allow(controller).to receive(:admin?) { true } }
 
   describe 'GET index' do
     it 'is restricted' do
-      controller.should_receive(:admin?) { false }
+      expect(controller).to receive(:admin?) { false }
       get :index, {}
-      response.status.should eq 302
+      expect(response.status).to eq 302
     end
 
     it 'uses a full-width layout' do
       get :index, {}
-      response.should render_template 'layouts/full_width'
+      expect(response).to render_template 'layouts/full_width'
     end
 
     it "assigns the pages in alphabetical order by default" do
       pages = double Array
-      Page.should_receive(:order).with('name ASC').and_return pages
+      expect(Page).to receive(:order).with('name ASC').and_return pages
       get :index, {}
-      assigns(:pages).should eq(pages)
+      expect(assigns(:pages)).to eq(pages)
     end
   end
 
@@ -36,111 +36,111 @@ describe PagesController do
     describe 'assigns site admin status of current_user to @admin' do
       it 'NIL when there is no current_user' do
         get :show, {id: 'about'}
-        assigns(:admin).should be nil
+        expect(assigns(:admin)).to be nil
       end
       it 'FALSE when current_user is NOT admin' do
-        user.stub(:admin?) { false }
-        controller.stub(:current_user) { user }
+        allow(user).to receive(:admin?) { false }
+        allow(controller).to receive(:current_user) { user }
         get :show, {id: 'about'}
-        assigns(:admin).should be false
+        expect(assigns(:admin)).to be false
       end
 
       it 'TRUE when current_user is admin' do
-        user.stub(:admin?) { true }
-        controller.stub(:current_user) { user }
+        allow(user).to receive(:admin?) { true }
+        allow(controller).to receive(:current_user) { user }
         get :show, {id: 'about'}
-        assigns(:admin).should be true
+        expect(assigns(:admin)).to be true
       end
     end
 
     it 'assigns a persisted page as @page' do
-      Page.should_receive(:find_by_permalink!).with('about') { about_page }
+      expect(Page).to receive(:find_by_permalink!).with('about') { about_page }
       get :show, {id: 'about'}
-      assigns(:page).should eq about_page
+      expect(assigns(:page)).to eq about_page
     end
 
     before do
-      controller.stub(:current_user)
-      Page.stub(:find_by_permalink!)
+      allow(controller).to receive(:current_user)
+      allow(Page).to receive(:find_by_permalink!)
     end
 
     describe 'assigns site admin status of current_user to @admin' do
       it 'NIL when there is no current_user' do
         get :show, {id: 'about'}
-        assigns(:admin).should be nil
+        expect(assigns(:admin)).to be nil
       end
       it 'FALSE when current_user is NOT admin' do
-        user.stub(:admin?) { false }
-        controller.stub(:current_user) { user }
+        allow(user).to receive(:admin?) { false }
+        allow(controller).to receive(:current_user) { user }
         get :show, {id: 'about'}
-        assigns(:admin).should be false
+        expect(assigns(:admin)).to be false
       end
 
       it 'TRUE when current_user is admin' do
-        user.stub(:admin?) { true }
-        controller.stub(:current_user) { user }
+        allow(user).to receive(:admin?) { true }
+        allow(controller).to receive(:current_user) { user }
         get :show, {id: 'about'}
-        assigns(:admin).should be true
+        expect(assigns(:admin)).to be true
       end
     end
 
     it 'assigns a persisted page as @page' do
-      Page.should_receive(:find_by_permalink!).with('about') { about_page }
+      expect(Page).to receive(:find_by_permalink!).with('about') { about_page }
       get :show, {id: 'about'}
-      assigns(:page).should eq about_page
+      expect(assigns(:page)).to eq about_page
     end
 
     it 'is NOT restricted' do
-      controller.should_not_receive(:admin?)
+      expect(controller).not_to receive(:admin?)
       get :show, {id: 'about'}
-      response.status.should eq 200
+      expect(response.status).to eq 200
     end
 
     it 'uses a full-width layout' do
       get :show, {id: 'about'}
-      response.should render_template 'layouts/full_width'
+      expect(response).to render_template 'layouts/full_width'
     end
   end
 
   describe 'GET new' do
-    before { Page.stub(:new) }
+    before { allow(Page).to receive(:new) }
 
     it 'assigns a new page as @page' do
-      Page.should_receive(:new) { page }
+      expect(Page).to receive(:new) { page }
       get :new, {}
-      assigns(:page).should eq page
+      expect(assigns(:page)).to eq page
     end
 
     it 'is restricted' do
-      controller.should_receive(:admin?) { false }
+      expect(controller).to receive(:admin?) { false }
       get :new, {}
-      response.status.should eq 302
+      expect(response.status).to eq 302
     end
 
     it 'uses a full-width layout' do
       get :new, {}
-      response.should render_template 'layouts/full_width'
+      expect(response).to render_template 'layouts/full_width'
     end
   end
 
   describe 'GET edit' do
-    before { Page.stub(:find_by_permalink!) }
+    before { allow(Page).to receive(:find_by_permalink!) }
 
     it 'assigns the requested page as @page' do
-      Page.should_receive(:find_by_permalink!).with(page.id) { page }
+      expect(Page).to receive(:find_by_permalink!).with(page.id) { page }
       get :edit, {id: page.id}
-      assigns(:page).should eq page
+      expect(assigns(:page)).to eq page
     end
 
     it 'is restricted' do
-      controller.should_receive(:admin?) { false }
+      expect(controller).to receive(:admin?) { false }
       get :edit, {id: page.id}
-      response.status.should eq 302
+      expect(response.status).to eq 302
     end
 
     it 'uses a full-width layout' do
       get :edit, {id: page.id}
-      response.should render_template 'layouts/full_width'
+      expect(response).to render_template 'layouts/full_width'
     end
   end
 
@@ -148,38 +148,38 @@ describe PagesController do
     let(:attributes) { {name: 'Yoohoo!', permalink: 'yoohoo', content: 'yada yada'} }
 
     before do
-      Page.stub(:new) { page }
-      page.stub(:save)
+      allow(Page).to receive(:new) { page }
+      allow(page).to receive(:save)
     end
 
     it 'assigns a newly created page to @page' do
-      Page.should_receive(:new).with(attributes.stringify_keys) { page }
+      expect(Page).to receive(:new).with(attributes.stringify_keys) { page }
       post :create, {page: attributes}
-      assigns(:page).should eq page
+      expect(assigns(:page)).to eq page
     end
 
     it 'if created page is valid, it redirects to show it' do
-      page.should_receive(:save) { true }
+      expect(page).to receive(:save) { true }
       post :create, {page: attributes}
-      response.should redirect_to page
-      flash[:notice].should eq 'Page was successfully created.'
+      expect(response).to redirect_to page
+      expect(flash[:notice]).to eq 'Page was successfully created.'
     end
 
     it 'if created page is INVALID, it re-renders the "new" template' do
-      page.should_receive(:save) { false }
+      expect(page).to receive(:save) { false }
       post :create, {page: attributes}
-      response.should render_template 'new'
+      expect(response).to render_template 'new'
     end
 
     it 'is restricted' do
-      controller.should_receive(:admin?) { false }
+      expect(controller).to receive(:admin?) { false }
       post :create, {page: attributes}
-      response.status.should eq 302
+      expect(response.status).to eq 302
     end
 
     it 'uses a full-width layout' do
       post :create, {page: attributes}
-      response.should render_template 'layouts/full_width'
+      expect(response).to render_template 'layouts/full_width'
     end
   end
 
@@ -187,67 +187,67 @@ describe PagesController do
     let(:attributes) { {name: 'Yoohoo!', permalink: 'yoohoo', content: 'yada yada'} }
 
     before do
-      Page.stub(:find_by_permalink!) { page }
-      page.stub(:update_attributes)
+      allow(Page).to receive(:find_by_permalink!) { page }
+      allow(page).to receive(:update_attributes)
     end
 
     it 'assigns the updated page to @page' do
-      Page.should_receive(:find_by_permalink!).with(page.id) { page }
+      expect(Page).to receive(:find_by_permalink!).with(page.id) { page }
       put :update, {id: page.id, page: attributes}
-      assigns(:page).should eq page
+      expect(assigns(:page)).to eq page
     end
 
     it 'if updated page is valid, it redirects to show it' do
-      page.should_receive(:update_attributes).with(attributes.stringify_keys) { true }
+      expect(page).to receive(:update_attributes).with(attributes.stringify_keys) { true }
       put :update, {id: page.id, page: attributes}
-      response.should redirect_to page
-      flash[:notice].should eq 'Page was successfully updated.'
+      expect(response).to redirect_to page
+      expect(flash[:notice]).to eq 'Page was successfully updated.'
     end
 
     it 'if updated page is INVALID, it re-renders the "edit" template' do
-      page.should_receive(:update_attributes).with(attributes.stringify_keys) { false }
+      expect(page).to receive(:update_attributes).with(attributes.stringify_keys) { false }
       put :update, {id: page.id, page: attributes}
-      response.should render_template 'edit'
+      expect(response).to render_template 'edit'
     end
 
     it 'is restricted' do
-      controller.should_receive(:admin?) { false }
+      expect(controller).to receive(:admin?) { false }
       put :update, {id: page.id, page: attributes}
-      response.status.should eq 302
+      expect(response.status).to eq 302
     end
 
     it 'uses a full-width layout' do
       put :update, {id: page.id, page: attributes}
-      response.should render_template 'layouts/full_width'
+      expect(response).to render_template 'layouts/full_width'
     end
   end
   
   describe 'DELETE destroy' do
     before do
-      Page.stub(:find_by_permalink!) { page }
-      page.stub(:destroy)
+      allow(Page).to receive(:find_by_permalink!) { page }
+      allow(page).to receive(:destroy)
     end
 
     it 'assigns the page to be destroyed to @page' do
-      Page.should_receive(:find_by_permalink!).with(page.id) { page }
+      expect(Page).to receive(:find_by_permalink!).with(page.id) { page }
       delete :destroy, {id: page.id}
-      assigns(:page).should eq page
+      expect(assigns(:page)).to eq page
     end
 
     it 'destroys the page' do
-      page.should_receive(:destroy)
+      expect(page).to receive(:destroy)
       delete :destroy, {id: page.id}
     end
 
     it 'redirects to the index of pages' do
       delete :destroy, {id: page.id}
-      response.should redirect_to pages_path
+      expect(response).to redirect_to pages_path
     end
 
     it 'is restricted' do
-      controller.should_receive(:admin?) { false }
+      expect(controller).to receive(:admin?) { false }
       delete :destroy, {id: page.id}
-      response.status.should eq 302
+      expect(response.status).to eq 302
     end
   end
   describe ".permit" do

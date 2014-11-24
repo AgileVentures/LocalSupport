@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "Invitations", :helpers => :requests do
+describe "Invitations", :type => :request, :helpers => :requests do
   describe "create -- xhr POST /invitations" do
     let(:admin) { FactoryGirl.create(:user, email: 'admin@example.com', admin: true) }
 
@@ -12,10 +12,7 @@ describe "Invitations", :helpers => :requests do
           resend_invitation: false}
       end
 
-      before do
-        Gmaps4rails.stub :geocode
-        login(admin)
-      end
+      before { login(admin) }
 
       it 'example response for invites with duplicates' do
         xhr :post, invitations_path, params
@@ -35,7 +32,6 @@ describe "Invitations", :helpers => :requests do
       let(:lost_invite) { User.invite!({email: org.email}, admin) }
 
       before do
-        Gmaps4rails.stub :geocode
         login(admin)
       end
 

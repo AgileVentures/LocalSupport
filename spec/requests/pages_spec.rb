@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe 'Pages', :helpers => :requests do
+describe 'Pages', :type => :request, :helpers => :requests do
 
   let(:page) { FactoryGirl.create :page}
   let(:admin_user) { FactoryGirl.create :user, :admin => true}

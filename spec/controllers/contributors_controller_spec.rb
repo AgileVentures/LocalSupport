@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe ContributorsController do
+describe ContributorsController, :type => :controller do
 
   describe 'GET show' do
     before :each do
@@ -17,12 +17,12 @@ describe ContributorsController do
 
     it 'assigns the contributors appropriately' do
       get :show
-      assigns(:contributors).should eq(@contributors)
+      expect(assigns(:contributors)).to eq(@contributors)
     end
 
     it 'should use a full-width layout' do
       get :show
-      response.should render_template 'layouts/full_width'
+      expect(response).to render_template 'layouts/full_width'
     end
   end
 end

@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe 'CategoryOrganisation' do
+describe 'CategoryOrganisation', :type => :model do
   it 'should exist' do
     expect(CategoryOrganisation).not_to be_nil
   end

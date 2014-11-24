@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe InvitationsController, :helpers => :controllers do
+describe InvitationsController, :type => :controller, :helpers => :controllers do
 
   describe '#create' do
     let(:params) { {} }

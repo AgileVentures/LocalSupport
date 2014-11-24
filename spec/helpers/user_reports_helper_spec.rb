@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe UserReportsHelper do
+describe UserReportsHelper, :type => :helper do
   describe '#time_ago_in_words_with_nils' do
     it 'should handle nils' do
       expect(time_ago_in_words_with_nils(nil)).to eq 'never'
