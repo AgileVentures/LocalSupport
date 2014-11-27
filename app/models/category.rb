@@ -4,6 +4,14 @@ class Category < ActiveRecord::Base
   has_many :category_organisations
   has_and_belongs_to_many :organisations
 
+  scope :what_they_do,  -> { subcategory(100, 199) }
+  scope :who_they_help, -> { subcategory(200, 299) }
+  scope :how_they_help, -> { subcategory(300, 399) }
+
+  def self.subcategory(lower, upper)
+    where(charity_commission_id: lower..upper).order(name: :asc)
+  end
+
   @@column_mappings = {
       cc_id: 'CharityCommissionID',
       cc_name: 'CharityCommissionName',
