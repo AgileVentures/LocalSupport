@@ -1,6 +1,6 @@
 <%= form_tag("/organisations/search", :method => "get") do %>
   <%= label_tag(:q, "Select Category:") %>
-  <%= select("category", "id", @category_options, { :include_blank => 'All' },
+  <%= select("category", "id", grouped_options_for_select(@category_options), { :include_blank => 'All' },
              { :style => 'margin-bottom: 5px;' }) %>
   <%= submit_tag "Submit", { :class => 'btn btn-info',
                              :style => 'margin-bottom: 5px;' } %>

@@ -28,7 +28,11 @@ class Category < ActiveRecord::Base
   end
 
   def self.html_drop_down_options
-    self.where('charity_commission_id < 199').order('name ASC').collect {|category| [ category.name, category.id ] }
+    [
+      ['What they do', Category.what_they_do.pluck(:name, :id)],
+      ['Who they help', Category.who_they_help.pluck(:name, :id)],
+      ['How they help', Category.how_they_help.pluck(:name, :id)],
+    ]
   end
 
   def self.first_category_name_in_each_type
