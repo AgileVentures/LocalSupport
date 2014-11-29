@@ -6,21 +6,25 @@ Feature: Categories of charities
 
   Background: organisations have been added to database
     Given the following organisations exist:
-      | name              | description              | address        | postcode | website       |
-      | I love dogs       | loves canines            | 34 pinner road | HA1 4HZ  | http://a.com/ |
-      | I love cats       | loves felines            | 64 pinner road | HA1 4HA  | http://b.com/ |
-      | I hate animals    | hates birds and beasts   | 84 pinner road | HA1 4HF  | http://c.com/ |
+      | name                  | description                    | address        | postcode | website       |
+      | I love dogs           | loves canines                  | 34 pinner road | HA1 4HZ  | http://a.com/ |
+      | I love cats           | loves felines                  | 64 pinner road | HA1 4HA  | http://b.com/ |
+      | I hate animals        | hates birds and beasts         | 84 pinner road | HA1 4HF  | http://c.com/ |
+      | I help people         | helps people with disabilities | 30 pinner road | HA1 4HF  | http://c.com/ |
+      | I advocate for people | helps people by advocating     | 83 pinner road | HA1 4HF  | http://c.com/ |
 
     And the following categories exist:
-      | name              | charity_commission_id |
-      | Animal Welfare    | 101                   |
-      | Health            | 102                   |
-      | Education         | 103                   |
+      | name                     | charity_commission_id |
+      | Animal Welfare           | 101                   |
+      | People with disabilities | 202                   |
+      | Advocacy                 | 303                   |
 
     And the following categories_organisations exist:
-      | category |  organisation |
-      | Animal Welfare | I love dogs |
-      | Animal Welfare | I love cats |
+      | category                 | organisation          |
+      | Animal Welfare           | I love dogs           |
+      | Animal Welfare           | I love cats           |
+      | People with disabilities | I help people         |
+      | Advocacy                 | I advocate for people |
 
   Scenario: Search for organisations in the "Animal Welfare" category
   #Given I have at least 3 organisations in the "Animal Welfare" category
@@ -38,3 +42,18 @@ Feature: Categories of charities
     Then I should see "I love dogs"
     And I should not see "I love cats"
     And I should not see "I hate animals"
+
+  Scenario: Search for organisations in the "People with disabilities" category
+    Given I visit the home page
+    And I select the "People with disabilities" category
+    And I press "Submit"
+    Then I should see "I help people"
+    And I should not see "I hate animals"
+
+  Scenario: Search for organisations in the "Advocacy" category
+    Given I visit the home page
+    And I select the "Advocacy" category
+    And I press "Submit"
+    Then I should see "I advocate for people"
+    And I should not see "I hate animals"
+
