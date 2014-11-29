@@ -13,6 +13,7 @@
 //= require_tree ./global
 //= require bootstrap-switch
 //= require organisations
+//= require js-rich-marker/src/richmarker
 
 LocalSupport = {};
 
