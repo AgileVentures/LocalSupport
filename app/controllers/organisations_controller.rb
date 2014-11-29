@@ -119,10 +119,12 @@ class OrganisationParams
       marker.lng org.longitude
       marker.infowindow render_to_string(partial: 'popup', locals: {org: org})
       marker.shadow({ :url => 'hello' }) if org.not_updated_recently_or_has_no_owner?
-      custom_marker_url = org.gmaps4rails_marker_picture
-      if custom_marker_url.present?
-       marker.json(:custom_marker => render_to_string(partial: 'custom_marker', locals: {src: custom_marker_url["url"]}))
-      end
+      marker.json(
+        :custom_marker => render_to_string(
+          partial: 'custom_marker',
+          locals: { src: org.gmaps4rails_marker_picture }
+        )
+      )
     end
   end
 
