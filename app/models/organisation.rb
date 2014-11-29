@@ -85,11 +85,11 @@ class Organisation < ActiveRecord::Base
     self.joins(:categories).where(is_in_category(category_id)) #do we need to sanitize category_id?
   end
 
-  def gmaps4rails_marker_picture
+  def gmaps4rails_marker_attrs
     if not_updated_recently_or_has_no_owner?
-      ['measle.png', size: '6']
+      ['measle_recolor.png', class: 'measle']
     else
-      ['red-dot.png']
+      ['spotlight-poi.png', class: 'marker']
     end
   end
 
