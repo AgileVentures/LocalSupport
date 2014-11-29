@@ -7,7 +7,7 @@ class CustomMarkerBuilder extends Gmaps.Google.Builders.Marker
     marker = document.createElement("div")
     marker.setAttribute('class', 'custom_marker_content')
     marker.innerHTML = this.args.custom_marker
-    { content: marker }
+    { content: marker, flat: true }
 
   create_infowindow: ->
     return null unless _.isString @args.custom_infowindow
@@ -55,9 +55,15 @@ LocalSupport.google_map =
   build: (settings, data) ->
     handler = Gmaps.build("Google", builders: { Marker: CustomMarkerBuilder })
     handler.buildMap settings, ->
-      markers = handler.addMarkers(data)
-      _.each markers, (marker) ->
-        marker.serviceObject.setZIndex if marker.serviceObject.shadow? then 0 else 1
+      markers = _.map data, (marker_data) =>
+        handler.addMarker
+          lat: marker_data.lat
+          lng: marker_data.lng
+          custom_marker: marker_data.custom_marker
+          custom_infowindow: marker_data.infowindow
+      # markers = handler.addMarkers(data)
+      # _.each markers, (marker) ->
+      #   marker.serviceObject.setZIndex if marker.serviceObject.shadow? then 0 else 1
       handler.bounds.extendWith markers
 
 $ ->
