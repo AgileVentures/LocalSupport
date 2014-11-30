@@ -14,6 +14,7 @@
 //= require bootstrap-switch
 //= require organisations
 //= require js-rich-marker/src/richmarker
+//= require google-infobox/google-infobox
 
 LocalSupport = {};
 
