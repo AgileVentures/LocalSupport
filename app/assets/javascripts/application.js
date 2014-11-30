@@ -16,7 +16,7 @@
 //= require js-rich-marker/src/richmarker
 //= require google-infobox/google-infobox
 
-LocalSupport = {};
+window.LocalSupport = {};
 
 $(function() {
     // invoke global functions here

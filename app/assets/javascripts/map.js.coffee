@@ -33,21 +33,22 @@ class CustomMarkerBuilder extends Gmaps.Google.Builders.Marker
     content: boxText
     pixelOffset: new google.maps.Size(-150, 10)
 
-LocalSupport.google_map =
-  settings:
+LocalSupport.map_settings = ->
+  settings =
     id: "map_canvas"
     zoom: 12
     lat: 51.5978
     lng: -0.3370
 
-  parsed_settings: (google, hash) ->
+  for: (provider) ->
     internal:
-      id: hash.id
+      id: settings.id
 
     provider:
-      zoom: hash.zoom
-      center: new google.maps.LatLng(hash.lat, hash.lng)
+      zoom: settings.zoom
+      center: new provider.maps.LatLng(settings.lat, settings.lng)
 
+LocalSupport.google_map =
   marker_data: ->
     $("#marker_data").data().markers
 
@@ -67,7 +68,7 @@ LocalSupport.google_map =
       handler.bounds.extendWith markers
 
 $ ->
-  if typeof google isnt "undefined"
-    map = LocalSupport.google_map
-    settings = map.parsed_settings(google, map.settings)
-    map.build settings, map.marker_data()
+  map = LocalSupport.google_map
+  settings = LocalSupport.map_settings().for(google)
+  # settings = map.parsed_settings(google, map.settings)
+  map.build settings, map.marker_data()
