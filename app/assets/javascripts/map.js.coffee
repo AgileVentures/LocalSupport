@@ -20,26 +20,18 @@ class CustomMarkerBuilder extends Gmaps.Google.Builders.Marker
     boxText.setAttribute("class", 'arrow_box')
     boxText.innerHTML = @args.custom_infowindow
     @infowindow = new InfoBox(@infobox(boxText))
+    @addCloseHandler(@infowindow)
+
+
+  addCloseHandler: (infowindow) ->
+    $(infowindow.content_).find('.close').click(->
+      infowindow.close()
+    )
+    infowindow
 
   infobox: (boxText)->
     content: boxText
-    pixelOffset: new google.maps.Size(-140, -100)
-    boxStyle:
-      width: "280px"
-      'background-color': 'white'
-      'border-radius': '2px'
-      'padding': '5px'
-
-# handler = Gmaps.build("Google", builders: { Marker: CustomMarkerBuilder } )
-# handler.buildMap { internal: id: "custom_builder" }, ->
-#   marker = handler.addMarker
-#     lat:               40.689167
-#     lng:               -74.044444
-#     custom_marker:     "<img src='images/star.jpg' width='30' height='30'> Statue of Liberty"
-#     custom_infowindow: "<img src='images/statue.jpg' width='90' height='140'> The Statue of Liberty is a colossal neoclassical sculpture on Liberty Island in the middle of New York"
-#
-#   handler.map.centerOn marker
-#   handler.getMap().setZoom(15)
+    pixelOffset: new google.maps.Size(-150, 10)
 
 LocalSupport.google_map =
   settings:
