@@ -43,32 +43,25 @@ LocalSupport.map_settings = ->
   for: (provider) ->
     internal:
       id: settings.id
-
     provider:
       zoom: settings.zoom
       center: new provider.maps.LatLng(settings.lat, settings.lng)
 
-LocalSupport.google_map =
-  marker_data: ->
-    $("#marker_data").data().markers
+LocalSupport.google_map = ->
+  marker_data = $("#marker_data").data().markers
 
-  build: (settings, data) ->
+  build: (settings) ->
     handler = Gmaps.build("Google", builders: { Marker: CustomMarkerBuilder })
     handler.buildMap settings, ->
-      markers = _.map data, (marker_data) =>
+      markers = _.map marker_data, (marker_datum) =>
         handler.addMarker
-          lat: marker_data.lat
-          lng: marker_data.lng
-          custom_marker: marker_data.custom_marker
-          custom_infowindow: marker_data.infowindow
-          index: marker_data.index
-      # markers = handler.addMarkers(data)
-      # _.each markers, (marker) ->
-      #   marker.serviceObject.setZIndex if marker.serviceObject.shadow? then 0 else 1
+          lat: marker_datum.lat
+          lng: marker_datum.lng
+          custom_marker: marker_datum.custom_marker
+          custom_infowindow: marker_datum.infowindow
+          index: marker_datum.index
       handler.bounds.extendWith markers
 
 $ ->
-  map = LocalSupport.google_map
-  settings = LocalSupport.map_settings().for(google)
-  # settings = map.parsed_settings(google, map.settings)
-  map.build settings, map.marker_data()
+  settings = LocalSupport.map_settings().for google
+  LocalSupport.google_map().build settings
