@@ -19,7 +19,7 @@ class CustomMarkerBuilder extends Gmaps.Google.Builders.Marker
 
   infobox: (boxText)->
     content: boxText
-    pixelOffset: new google.maps.Size(-140, 0)
+    pixelOffset: new google.maps.Size(-140, -100)
     boxStyle:
       width: "280px"
       'background-color': 'white'
