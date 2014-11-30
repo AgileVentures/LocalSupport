@@ -40,10 +40,10 @@
 }
 
 .arrow_box {
+  background-color: white;
   position: relative;
-  border: 4px solid white;
-  border-radius: 4px;
   width: 280px;
+  padding: 10px;
 }
 
 .arrow_box:after, .arrow_box:before {
@@ -69,4 +69,10 @@
   border-top-color: #c2e1f5;
   border-width: 36px;
   margin-left: -36px;
+}
+
+.infowindow_close{
+  position: absolute;
+  top: -2px;
+  right: 0;
 }
