@@ -22,6 +22,9 @@ class CustomMarkerBuilder extends Gmaps.Google.Builders.Marker
     pixelOffset: new google.maps.Size(-140, 0)
     boxStyle:
       width: "280px"
+      'background-color': 'white'
+      'border-radius': '2px'
+      'padding': '5px'
 
 # handler = Gmaps.build("Google", builders: { Marker: CustomMarkerBuilder } )
 # handler.buildMap { internal: id: "custom_builder" }, ->
