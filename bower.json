@@ -9,7 +9,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-   "js-rich-marker": "git@github.com:googlemaps/js-rich-marker.git#gh-pages",
-   "google-infobox": "git@github.com:PepijnSenders/google-infobox.git"
+   "js-rich-marker": "https://github.com/googlemaps/js-rich-marker.git#gh-pages",
+   "google-infobox": "https://github.com/PepijnSenders/google-infobox.git"
   }
 }
