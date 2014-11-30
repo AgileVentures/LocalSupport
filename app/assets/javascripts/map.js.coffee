@@ -7,13 +7,17 @@ class CustomMarkerBuilder extends Gmaps.Google.Builders.Marker
     marker = document.createElement("div")
     marker.setAttribute('class', 'custom_marker_content')
     marker.innerHTML = this.args.custom_marker
-    { content: marker, flat: true, zIndex: this.args.index }
+    {
+      content: marker
+      flat: true
+      zIndex: this.args.index
+    }
 
   create_infowindow: ->
     return null unless _.isString @args.custom_infowindow
 
     boxText = document.createElement("div")
-    boxText.setAttribute("class", 'custom_infowindow_content')
+    boxText.setAttribute("class", 'arrow_box')
     boxText.innerHTML = @args.custom_infowindow
     @infowindow = new InfoBox(@infobox(boxText))
 
