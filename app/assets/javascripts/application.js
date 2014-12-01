@@ -8,13 +8,10 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require underscore
-//= require gmaps/google
 //= require bootstrap-sortable
 //= require_tree ./global
 //= require bootstrap-switch
 //= require organisations
-//= require js-rich-marker/src/richmarker
-//= require google-infobox/google-infobox
 
 window.LocalSupport = {};
 
