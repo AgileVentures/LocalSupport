@@ -5,14 +5,17 @@
 //= require google_map/marker_builder
 //= require google_map/map_settings
 
-LocalSupport.GoogleMap = ->
-  marker_data = $("#marker_data").data().markers
+class LocalSupport.GoogleMap
+  marker_data: ->
+    $("#marker_data").data().markers
 
-  handler = Gmaps.build("Google", builders: { Marker: LocalSupport.MarkerBuilder })
+  handler: ->
+    Gmaps.build("Google", builders: { Marker: LocalSupport.MarkerBuilder })
 
   build: (settings) ->
-    handler.buildMap settings, ->
-      markers = _.map marker_data, (marker_datum) =>
+    handler = @handler()
+    handler.buildMap settings, =>
+      markers = _.map @marker_data(), (marker_datum) =>
         handler.addMarker
           lat: marker_datum.lat
           lng: marker_datum.lng
@@ -23,4 +26,5 @@ LocalSupport.GoogleMap = ->
 
 $ ->
   settings = LocalSupport.MapSettings().for google
-  LocalSupport.GoogleMap().build settings
+  map = new LocalSupport.GoogleMap()
+  map.build settings
