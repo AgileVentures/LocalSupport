@@ -32,36 +32,3 @@ class LocalSupport.MarkerBuilder extends Gmaps.Google.Builders.Marker
   infobox: (boxText)->
     content: boxText
     pixelOffset: new google.maps.Size(-150, 10)
-
-LocalSupport.MapSettings = ->
-  settings =
-    id: "map_canvas"
-    zoom: 12
-    lat: 51.5978
-    lng: -0.3370
-
-  for: (provider) ->
-    internal:
-      id: settings.id
-    provider:
-      zoom: settings.zoom
-      center: new provider.maps.LatLng(settings.lat, settings.lng)
-
-LocalSupport.GoogleMap = ->
-  marker_data = $("#marker_data").data().markers
-
-  build: (settings) ->
-    handler = Gmaps.build("Google", builders: { Marker: LocalSupport.MarkerBuilder })
-    handler.buildMap settings, ->
-      markers = _.map marker_data, (marker_datum) =>
-        handler.addMarker
-          lat: marker_datum.lat
-          lng: marker_datum.lng
-          custom_marker: marker_datum.custom_marker
-          custom_infowindow: marker_datum.infowindow
-          index: marker_datum.index
-      handler.bounds.extendWith markers
-
-$ ->
-  settings = LocalSupport.MapSettings().for google
-  LocalSupport.GoogleMap().build settings
