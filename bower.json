@@ -7,7 +7,9 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-   "js-rich-marker": "https://github.com/googlemaps/js-rich-marker.git#gh-pages",
-   "google-infobox": "https://github.com/PepijnSenders/google-infobox.git"
+    "js-rich-marker": "https://github.com/googlemaps/js-rich-marker.git#gh-pages",
+    "google-infobox": "https://github.com/PepijnSenders/google-infobox.git",
+    "google-maps-loader": "https://github.com/sakren/node-google-maps.git#develop",
+    "gmaps-markerclusterer-plus": "~2.1.1"
   }
 }

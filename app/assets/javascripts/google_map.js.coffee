@@ -1,4 +1,5 @@
 //= require gmaps/google
+//= require gmaps-markerclusterer-plus/src/markerclusterer
 //= require js-rich-marker/src/richmarker
 //= require google-infobox/google-infobox
 //= require google_map/marker_builder
