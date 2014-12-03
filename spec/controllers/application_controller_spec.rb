@@ -35,17 +35,29 @@ describe ApplicationController, :type => :controller, :helpers => :controllers d
     expect(session[:previous_url]).to eq request.path
   end
 
-  it '#after_sign_in_path_for' do
-    user = make_current_user_nonadmin
-    allow(user).to receive_messages :organisation => nil
-    allow(user).to receive :pending_organisation_id
-    expect(controller.after_sign_in_path_for(user)).to eq '/'
+  describe '#after_sign_in_path_for' do
+    let(:user) {make_current_user_nonadmin}
+    context 'user not associated with any org' do
+      it 'should redirect to root' do
+        allow(user).to receive_messages :organisation => nil, :pending_organisation_id => nil
+        expect(controller.after_sign_in_path_for(user)).to eq '/'
+      end
+    end
 
-    allow(user).to receive_messages :organisation => mock_model(Organisation, id: 1, not_updated_recently?: true)
-    expect(controller.after_sign_in_path_for(user)).to eq '/organisations/1'
+    context 'user is org owner no previous url' do
+      it 'should redirect to root' do
+        allow(user).to receive_messages :organisation => mock_model(Organisation, id: 1, not_updated_recently?: true)
+        expect(controller.after_sign_in_path_for(user)).to eq '/organisations/1'
+      end
+    end
 
-    session[:previous_url] = 'i/was/here'
-    expect(controller.after_sign_in_path_for(user)).to eq 'i/was/here'
+    context 'user is org owner with previous url' do
+      it 'should redirect to root' do
+        allow(user).to receive_messages :organisation => mock_model(Organisation, id: 1, not_updated_recently?: true)
+        session[:previous_url] = 'i/was/here'
+        expect(controller.after_sign_in_path_for(user)).to eq '/organisations/1'
+      end
+    end
   end
 
   it '#after_accept_path_for' do
