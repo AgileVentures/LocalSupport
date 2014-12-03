@@ -13,7 +13,6 @@ class Organisation < ActiveRecord::Base
   validates_url :donation_info, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.donation_info.present?}
 
   # http://stackoverflow.com/questions/10738537/lazy-geocoding
-  acts_as_gmappable :check_process => false, :process_geocoding => :run_geocode?
   has_many :users
   has_many :volunteer_ops
   has_many :category_organisations
@@ -34,9 +33,17 @@ class Organisation < ActiveRecord::Base
 
   after_save :uninvite_users, if: ->{ email_changed? }
 
+  def not_updated_recently?
+    updated_at < 365.day.ago
+  end
+
   def uninvite_users
     users.invited_not_accepted.update_all(organisation_id: nil)
   end
+
+  # For the geocoder gem
+  geocoded_by :full_address
+  after_validation :geocode, if: -> { run_geocode? }
 
   def run_geocode?
     ## http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
@@ -45,13 +52,6 @@ class Organisation < ActiveRecord::Base
 
   def not_geocoded?
     latitude.blank? and longitude.blank?
-  end
-
-  #This method is overridden to save organisation if address was failed to geocode
-  def run_validations!
-    run_callbacks :validate
-    remove_errors_with_address
-    errors.empty?
   end
 
   #TODO: Give this TLC and refactor the flow or refactor out responsibilities
@@ -85,13 +85,14 @@ class Organisation < ActiveRecord::Base
     self.joins(:categories).where(is_in_category(category_id)) #do we need to sanitize category_id?
   end
 
-  def gmaps4rails_address
-    "#{self.address}, #{self.postcode}"
+  def gmaps4rails_marker_picture
+    return { "picture" => "https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png" } if not_updated_recently_or_has_no_owner? 
+    return {}
   end
 
-  def gmaps4rails_infowindow
-    "#{self.name}"
-  end
+  def full_address
+     "#{self.address}, #{self.postcode}"
+   end
 
   #Edit this if CSV 'schema' changes
   #value is the name of a column in csv file
@@ -182,20 +183,9 @@ class Organisation < ActiveRecord::Base
       end
     end
   end
-
-  def generate_potential_user
-    password = Devise.friendly_token.first(8)
-    user = User.new(:email => self.email, :password => password)
-    unless user.valid?
-      user.save
-      return user # so that it can be inspected for errors
-    end
-    user.skip_confirmation_notification!
-    user.reset_password_token=(User.reset_password_token)
-    user.reset_password_sent_at=Time.now
-    user.save!
-    user.confirm!
-    user
+  
+  def not_updated_recently_or_has_no_owner?
+    self.users.empty? || not_updated_recently?
   end
 
   private
@@ -219,7 +209,7 @@ class Organisation < ActiveRecord::Base
   def self.contains_name(key)
     table[:name].matches(key)
   end
-  
+
   def remove_errors_with_address
     errors_hash = errors.to_hash
     errors.clear

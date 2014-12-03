@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe SessionsController do
+describe SessionsController, :type => :controller do
   before :suite do
     FactoryGirl.factories.clear
     FactoryGirl.find_definitions
@@ -29,7 +29,7 @@ describe SessionsController do
 
     it 'redirects to charity page after non-admin associated with org' do
       usr = FactoryGirl.build(:user_stubbed_organisation, {:email => 'example@example.com', :password => 'pppppppp'})
-      controller.stub(:session => {previous_url: "/"})
+      allow(controller).to receive_messages :session => {previous_url: "/"}
       post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp'}
       expect(response).to redirect_to organisation_path(usr.organisation.id)
     end

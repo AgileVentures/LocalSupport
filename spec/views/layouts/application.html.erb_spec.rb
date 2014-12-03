@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe 'layouts/application.html.erb', :type => :feature do
+describe 'layouts/application.html.erb', :type => :view do
   let(:page_one)   {{:name => 'About Us',   :permalink => 'about'      }}
   let(:page_two)   {{:name => 'Contact',    :permalink => 'contact'    }}
   let(:page_three) {{:name => 'Disclaimer', :permalink => 'disclaimer' }}
@@ -9,12 +9,12 @@ describe 'layouts/application.html.erb', :type => :feature do
     @pages = [page_one, page_two]
     @absent_pages = [page_three]
     assign(:footer_page_links, @pages)
-    view.stub(:feature_active?).with(:volunteer_ops_list).and_return(true)
+    allow(view).to receive(:feature_active?).with(:volunteer_ops_list).and_return(true)
   end
   context 'no user signed-in' do
 
     before :each do
-      view.stub :user_signed_in? => false
+      allow(view).to receive_messages :user_signed_in? => false
     end
 
     it 'renders site title' do
@@ -64,8 +64,14 @@ describe 'layouts/application.html.erb', :type => :feature do
       expect(rendered).to have_css("#menuLogin a[href=\"#{new_user_password_path}\"]")
     end
 
+    it 'hides the cookies choice message when cookies have been accepted' do
+      allow(view).to receive(:cookie_policy_accepted?) { true }
+      render
+      expect(rendered).not_to have_css('#cookie-message')
+    end
+
     it 'renders a cookies choice message when cookies have not been accepted' do
-      view.stub(:cookies_accepted?).and_return(false)
+      allow(view).to receive(:cookie_policy_accepted?) { false }
       render
       expect(rendered).to have_css('#cookie-message')
       expect(rendered).to have_css('#cookie-message-inner.content')
@@ -96,7 +102,7 @@ describe 'layouts/application.html.erb', :type => :feature do
     end
 
     it 'should display flash messages when successful' do
-      view.stub(:flash).and_return([[:notice, "Yes, we have been successful!!!!!"]])
+      allow(view).to receive(:flash).and_return([["notice", "Yes, we have been successful!!!!!"]])
       render
       expect(rendered).to have_selector('div.alert')
       expect(rendered).to have_content('Yes, we have been successful!!!!!')
@@ -104,7 +110,7 @@ describe 'layouts/application.html.erb', :type => :feature do
     end
 
     it 'should display flash messages when failing' do
-      view.stub(:flash).and_return([[:error, "No, no, no!"]])
+      allow(view).to receive(:flash).and_return([[:error, "No, no, no!"]])
       render
       expect(rendered).to have_selector('div.alert')
       expect(rendered).to have_content('No, no, no!')
@@ -114,19 +120,19 @@ describe 'layouts/application.html.erb', :type => :feature do
     it 'should display a logo linked to the contributors page' do
       render
       rendered.within("a[href='#{contributors_path}']") do |hyperlink|
-        hyperlink.should have_css "img[@alt='Agile Ventures']"
+        expect(hyperlink).to have_css "img[@alt='Agile Ventures']"
       end
     end
 
     it 'should display a logo linked to the ninefold page' do
       render
       rendered.within("a[href='https://ninefold.com']") do |hyperlink|
-        hyperlink.should have_css "img[@alt='Ninefold']"
+        expect(hyperlink).to have_css "img[@alt='Ninefold']"
       end
     end
 
     it "does not render a new organisation link" do
-      view.stub(:user_signed_in? => false)
+      allow(view).to receive_messages(:user_signed_in? => false)
       render
       expect(rendered).not_to have_xpath("//a[@href='#{new_organisation_path}']")
     end
@@ -158,8 +164,8 @@ describe 'layouts/application.html.erb', :type => :feature do
 
   context 'regular user signed-in' do
     before do
-      user.stub(:admin?) { false }
-      view.stub(:current_user) { user }
+      allow(user).to receive(:admin?) { false }
+      allow(view).to receive(:current_user) { user }
       render
     end
 
@@ -183,8 +189,8 @@ describe 'layouts/application.html.erb', :type => :feature do
 
   context 'admin signed-in' do
     before(:each) do
-      user.stub(:admin?) { true }
-      view.stub(:current_user) { user }
+      allow(user).to receive(:admin?) { true }
+      allow(view).to receive(:current_user) { user }
       render
     end
 
@@ -194,23 +200,23 @@ describe 'layouts/application.html.erb', :type => :feature do
 
     it 'should see admin-only dropdown' do
       rendered.within('#menuAdmin') do |menu|
-        menu.should have_link 'Organisations Without Users', :href => organisations_report_path
-        menu.should have_link 'All Users', :href => users_report_path
-        menu.should have_link 'Invited Users', :href => invited_users_report_path
+        expect(menu).to have_link 'Organisations Without Users', :href => organisations_report_path
+        expect(menu).to have_link 'All Users', :href => users_report_path
+        expect(menu).to have_link 'Invited Users', :href => invited_users_report_path
       end
     end
   end
 
   context 'volunteer feature flags' do
     it 'hides volunteers and organisations links when feature is inactive' do
-      view.should_receive(:feature_active?).with(:volunteer_ops_list).and_return(false)
+      expect(view).to receive(:feature_active?).with(:volunteer_ops_list).and_return(false)
       render
       expect(rendered).to_not have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{organisations_path}\"]")
       expect(rendered).to_not have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{volunteer_ops_path}\"]")
     end
 
     it 'show volunteers and organisations links when feature is active' do
-      view.should_receive(:feature_active?).with(:volunteer_ops_list).and_return(true)
+      expect(view).to receive(:feature_active?).with(:volunteer_ops_list).and_return(true)
       render
       expect(rendered).to have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{organisations_path}\"]")
       expect(rendered).to have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{volunteer_ops_path}\"]")

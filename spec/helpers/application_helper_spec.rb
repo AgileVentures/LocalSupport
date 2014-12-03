@@ -1,17 +1,17 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe ApplicationHelper do
+describe ApplicationHelper, :type => :helper do
   describe 'smart_truncate' do
     it 'should return empty string when truncating empty string' do
-      smart_truncate("").should == ""
+      expect(smart_truncate("")).to eq("")
     end
 
     it 'should return empty string when truncating nil' do
-      smart_truncate(nil).should == ""
+      expect(smart_truncate(nil)).to eq("")
     end
 
     it 'should return a the same string when the string is short' do
-      smart_truncate("test").should == "test"
+      expect(smart_truncate("test")).to eq("test")
     end
 
     it 'should return a truncated string when the string is long' do
@@ -24,35 +24,35 @@ describe ApplicationHelper do
     # tested extensively in features/admin_edit_static_pages.feature
   end
 
-  describe 'cookie_policy_accepted' do
+  describe '#cookie_policy_accepted?' do
     it 'true with the cookie' do
       helper.cookies['cookie_policy_accepted'] = true
-      cookie_policy_accepted?.should be_true
+      expect(cookie_policy_accepted?).to be true
     end
     it 'false without the cookie' do
-      cookie_policy_accepted?.should be_false
+      expect(cookie_policy_accepted?).to be false
     end
   end
 
   describe '#active_if' do
     it 'returns "active" if the controller matches the given argument' do
       str1 = 'str1' ; str2 = 'str2'
-      active_if(str1).should be nil
+      expect(active_if(str1)).to be nil
       params[:controller] = str1
-      active_if(str1).should eq 'active'
-      active_if(str2).should be nil
+      expect(active_if(str1)).to eq 'active'
+      expect(active_if(str2)).to be nil
     end
   end
 
-  describe "#feature_active" do
+  describe "#feature_active?" do
     it 'should return true if feature is active' do
-      Feature.stub(active?: true)
-      expect(helper.feature_active?(:volunteer_ops)).to be_true
+      allow(Feature).to receive_messages(active?: true)
+      expect(helper.feature_active?(:volunteer_ops)).to be true
     end
 
     it 'should return false if feature is inactive' do
-      Feature.stub(active?: false)
-      expect(helper.feature_active?(:volunteer_ops)).to be_false
+      allow(Feature).to receive_messages(active?: false)
+      expect(helper.feature_active?(:volunteer_ops)).to be false
     end
   end
 end

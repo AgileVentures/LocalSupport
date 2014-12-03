@@ -69,7 +69,7 @@ class Category < ActiveRecord::Base
 
   private
     def self.choose_first_in_range lower, upper
-      category = self.all.sort!.select{|cat| (cat.charity_commission_id < upper)  & (cat.charity_commission_id > lower)}.first
+      category = self.all.sort.select{|cat| (cat.charity_commission_id < upper)  & (cat.charity_commission_id > lower)}.first
       category.name if category
     end
     def self.first_category_name_in_what_they_do

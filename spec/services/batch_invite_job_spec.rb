@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ::BatchInviteJob do
   let(:current_user) { FactoryGirl.create(:user, email: 'admin@example.com', admin: true) }
@@ -10,7 +10,6 @@ describe ::BatchInviteJob do
   end
 
   before do
-    Gmaps4rails.stub :geocode
     current_user # lazy-loading messes up DB counts
   end
 

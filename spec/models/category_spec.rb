@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe 'Category' do
+describe 'Category', :type => :model do
 
   before do
     FactoryGirl.factories.clear
@@ -12,16 +12,16 @@ describe 'Category' do
     @category3 = FactoryGirl.create(:category, name: "iguana", charity_commission_id: 310)
     @category6 = FactoryGirl.create(:category, name: "rabbit", charity_commission_id: 304)
     @org1 = FactoryGirl.build(:organisation, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate')
-    Gmaps4rails.should_receive(:geocode)
+    allow(@org1).to receive :geocode
     @org1.save!
-    @org2 = FactoryGirl.build(:organisation, :name => 'Indian Elders Associaton', :description => 'Care for the elderly', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.indian-elders.co.uk/donate')
-    Gmaps4rails.should_receive(:geocode)
+    @org2 = FactoryGirl.build(:organisation, :name => 'Indian Elders Associaton', :description => 'Care for the elderly', :address => '64 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.indian-elders.co.uk/donate')
+    allow(@org2).to receive :geocode
     @org2.categories << @category1
     @org2.categories << @category2
     @org2.save!
-    @org3 = FactoryGirl.build(:organisation, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '62 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.age-uk.co.uk/donate')
-    Gmaps4rails.should_receive(:geocode)
+    @org3 = FactoryGirl.build(:organisation, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '64 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.age-uk.co.uk/donate')
     @org3.categories << @category1
+    allow(@org3).to receive :geocode
     @org3.save!
   end
 
@@ -56,7 +56,7 @@ describe 'Category' do
   end
 
   it 'generated appropriate html drop down options' do
-     Category.html_drop_down_options.should eq [["alligator", @category1.id], ["capybara", @category4.id]]
+     expect(Category.html_drop_down_options).to eq [["alligator", @category1.id], ["capybara", @category4.id]]
   end
 
   describe "#<=>" do

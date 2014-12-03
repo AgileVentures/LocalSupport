@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 # uses code from http://stackoverflow.com/a/10155232 "How do I test Rails migrations?"
 # if you don't name the database columns and tables correctly in your up and down

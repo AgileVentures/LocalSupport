@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 ruby '2.0.0'
-gem 'rails', '4.0.10'
+gem 'rails', '~> 4.1'
 gem 'pg'
 gem 'devise', '3.0.3'
 gem 'devise_invitable', '~> 1.2.1'
@@ -12,16 +12,19 @@ gem 'heroku-api'
 
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do
+  gem 'delorean'
   gem 'metric_fu'
   gem 'database_cleaner', '1.0.1'
   gem 'launchy'
   gem 'simplecov'
-  gem 'rspec-rails', '2.14.2'
+  gem 'sinatra-base'
+  gem 'rspec-rails'
+  gem 'rspec-activemodel-mocks'
   gem 'execjs'
   gem 'aruba'
   gem 'byebug'
   gem 'rack_session_access'
-  gem 'jasmine', '2.0.0'
+  gem 'jasmine', '2.1.0'
   gem 'jasmine-jquery-rails', '2.0.2'
   #gem 'better_errors'
   gem 'binding_of_caller' # plays well with better_errors
@@ -36,12 +39,10 @@ end
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
-  gem 'minitest', '~> 4.7.1'
-  gem 'ZenTest'
   gem 'capybara', '2.4.1'
   gem "capybara-webkit", "~> 1.1.0"
   gem 'factory_girl_rails', :require => false
-  gem 'webmock'
+  gem 'webmock', '1.20.0'
   gem 'uri-handler'
   gem 'selenium'
   gem 'selenium-client'
@@ -72,13 +73,10 @@ gem 'bootstrap_sortable_rails', '~> 0.1.3'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-group :test do
-  # Pretty printed test output
-  gem 'turn', :require => false
-end
-
 gem 'therubyracer'
-gem 'gmaps4rails', '1.5.6'
+gem 'underscore-rails'
+gem 'geocoder'
+gem 'gmaps4rails', "2.1.2"
 #gem 'mongrel'
 gem 'kaminari'
 gem 'unicorn'

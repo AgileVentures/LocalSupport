@@ -1,7 +1,7 @@
 Given /^I am signed in as a charity worker (un)?related to "(.*?)"$/ do |negate, organisation_name|
   organisation = Organisation.find_by_name(organisation_name)
   if negate
-    users = User.find_all_by_admin(false)
+    users = User.where(admin: false)
     user = users.find { |user| user.organisation != organisation }
   else
     user = organisation.users.find { |user| !user.admin? }

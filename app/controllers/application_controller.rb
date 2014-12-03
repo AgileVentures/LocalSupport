@@ -40,6 +40,7 @@ class ApplicationController < ActionController::Base
   # Devise hook
   # Returns the users to the page they were viewing before signing in
   def after_sign_in_path_for(resource)
+    set_flash_warning_reminder_to_update_details resource
     return edit_user_path id: current_user.id if session[:pending_organisation_id]
     return organisation_path(current_user.organisation) if current_user.organisation
     return session[:previous_url] if session[:previous_url]
@@ -87,5 +88,16 @@ class ApplicationController < ActionController::Base
 
   def assign_footer_page_links
     @footer_page_links = Page.visible_links
+  end
+
+  def set_flash_warning_reminder_to_update_details usr
+    if usr.organisation && usr.organisation.not_updated_recently?
+      msg = render_to_string(partial: "shared/call_to_action", locals: {org: usr.organisation}).html_safe
+      if flash[:warning]
+        flash[:warning] << msg
+      else
+        flash[:warning] = msg
+      end
+    end
   end
 end

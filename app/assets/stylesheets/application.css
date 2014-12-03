@@ -284,3 +284,11 @@ div#container textarea {
   overflow-y: hidden; /* fixes scrollbar flash - kudos to @brettjonesdev */
   padding-top: 1.1em; /* fixes text jump on Enter keypress */
 }
+
+.gm-style-iw {
+  width: auto !important;
+  height: auto !important;
+  padding-right: 3em;
+}
+
+

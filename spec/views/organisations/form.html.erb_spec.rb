@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "organisations/_form.html.erb" do
+describe "organisations/_form.html.erb", :type => :view do
   before :each do
     @categories_start_with = {what_they_do: 'alligator', who_they_help: 'crocodile', how_they_help: 'iguana'} 
     @organisation = Organisation.new(name: 'Sarah Plain and Tall Foundation')

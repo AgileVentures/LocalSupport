@@ -7,11 +7,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require_tree ./gmaps4rails
+//= require underscore
+//= require gmaps/google
 //= require bootstrap-sortable
 //= require_tree ./global
 //= require bootstrap-switch
 //= require organisations
+
+LocalSupport = {};
 
 $(function() {
     // invoke global functions here

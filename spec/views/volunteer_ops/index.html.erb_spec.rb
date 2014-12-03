@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "volunteer_ops/index", :js => true  do
+describe "volunteer_ops/index", :type => :view, :js => true  do
   before(:each) do
     @org1 = stub_model(Organisation, :name => "The Addams Family",  
                       :address => "1313 Mockingbird Lane")
@@ -16,38 +16,39 @@ describe "volunteer_ops/index", :js => true  do
   it "renders a list of volunteer_ops" do
     render
     @volunteer_ops.each do |op|
-      rendered.should have_content op.title
-      rendered.should have_content op.description
-      rendered.should have_content op.organisation.name
+      expect(rendered).to have_content op.title
+      expect(rendered).to have_content op.description
+      expect(rendered).to have_content op.organisation.name
     end
   end
 
   it "renders a link to the volunteer_ops" do
     render
     @volunteer_ops.each do |op|
-      rendered.should have_link op.title, :href => volunteer_op_path(op.id)
+      expect(rendered).to have_link op.title, :href => volunteer_op_path(op.id)
     end
   end
 
   it "renders a link to the organisation" do
     render
     @volunteer_ops.each do |op|
-      rendered.should have_link op.organisation.name, :href => organisation_path(op.organisation.id)
+      expect(rendered).to have_link op.organisation.name, :href => organisation_path(op.organisation.id)
     end
   end
-  
+
+  it 'displays the json for the map script' do
+    orgs = [@org1, @org2]
+    assign(:footer_page_links, [])
+    assign(:markers, 'my-markers')
+    render template: "volunteer_ops/index", layout: "layouts/two_columns"
+    expect(rendered).to include 'my-markers'
+  end
 
   it "displays the javascript for a google map" do
     orgs = [@org1, @org2]
     assign(:footer_page_links, [])
-    assign(:json, orgs.to_gmaps4rails)
     render template: "volunteer_ops/index", layout: "layouts/application"
-    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]", :visible => false
-    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_zoom = true')]", :visible => false
-    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_latitude = 51.5978')]", :visible => false
-    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.center_longitude = -0.337')]", :visible => false
-    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.zoom = 12')]", :visible => false
-    rendered.should have_xpath "//script[contains(.,'Gmaps.map.map_options.auto_adjust = false')]", :visible => false
+    expect(rendered).to include 'map.js'
   end
 
 end

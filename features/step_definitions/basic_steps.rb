@@ -2,6 +2,9 @@ require 'webmock/cucumber'
 require 'uri-handler'
 include ApplicationHelper
 
+Then(/^I travel "(.*?)" days into the future$/) do |days|
+  Delorean.time_travel_to "#{days} days from now"
+end
 Then(/^I should see the "(.*?)" image linked to "(.*?)"$/) do |image_alt, link|
   within("a[href='#{link}']") do
     find("img[@alt='#{image_alt}']").should_not be_nil
@@ -437,7 +440,8 @@ end
 Given /^associations are destroyed for:$/ do |table|
   table.rows.flatten.each do |org_name|
     org = Organisation.find_by_name org_name
-    user = org.users.pop
+    user = org.users.last
+    org.users = org.users[0..-2]
     org.save
     user.organisation_id = nil
     user.save

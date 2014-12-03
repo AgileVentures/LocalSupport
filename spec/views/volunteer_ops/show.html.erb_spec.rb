@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "volunteer_ops/show" do
+describe "volunteer_ops/show", :type => :view do
   let(:org) { double :organisation,
     :name => 'Friendly',
     :id => 1
@@ -17,9 +17,9 @@ describe "volunteer_ops/show" do
 
   it "renders attributes in <p>" do
     render
-    rendered.should have_content op.title
-    rendered.should have_content op.description
-    rendered.should have_content op.organisation.name
+    expect(rendered).to have_content op.title
+    expect(rendered).to have_content op.description
+    expect(rendered).to have_content op.organisation.name
   end
 
   it "gets various model attributes" do

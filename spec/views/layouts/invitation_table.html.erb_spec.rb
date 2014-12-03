@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe 'layouts/invitation_table.html.erb' do
+describe 'layouts/invitation_table.html.erb', :type => :view do
   before do
     assign(:footer_page_links, [])
     assign :resend_invitation, true
@@ -8,15 +8,15 @@ describe 'layouts/invitation_table.html.erb' do
   end
   it 'toolbar' do
     rendered.within('#toolbar') do |toolbar|
-      toolbar.should have_button 'Invite Users'
-      toolbar.should have_button 'Select All'
+      expect(toolbar).to have_button 'Invite Users'
+      expect(toolbar).to have_button 'Select All'
     end
   end
   it 'well' do
-    rendered.should have_css('div[class=well]')
+    expect(rendered).to have_css('div[class=well]')
   end
   it 'resend invitation variable' do
-    rendered.should have_selector('//div[@data-resend_invitation=true]', :visible => false)
+    expect(rendered).to have_selector('//div[@data-resend_invitation=true]', :visible => false)
   end
 end
 

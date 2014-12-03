@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe UsersController do
+describe UsersController, :type => :controller do
   describe ".permit" do
     it "returns the cleaned params" do
       user_params = {id: 5, email: "a@a.com", password: "blahblah", password_confirmation: "blahblah", 
