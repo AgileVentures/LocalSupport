@@ -58,10 +58,10 @@ describe Organisation, :type => :model do
     end
   end
 
-  describe "#gmaps4rails_marker_picture" do
+  describe "#gmaps4rails_marker_attrs" do
     context 'no user' do
       it 'returns small icon when no associated user' do
-        expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png"})
+        expect(@org1.gmaps4rails_marker_attrs).to eq(["https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png", {:class=>"measle"}])
       end
     end
 
@@ -76,21 +76,21 @@ describe Organisation, :type => :model do
         allow(Time).to receive(:now).and_call_original
       end
       it 'returns large icon when there is an associated user' do
-        expect(@org1.gmaps4rails_marker_picture).to eq({})
+        expect(@org1.gmaps4rails_marker_attrs).to eq( ["http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png", {:class=>"marker"}])
       end
 
       [365, 366, 500].each do |days|
         it "returns small icon when update is #{days} days old" do
           future_time = Time.at(Time.now + days.day)
           allow(Time).to receive(:now){future_time}
-          expect(@org1.gmaps4rails_marker_picture).to eq({"picture" => "https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png"})
+          expect(@org1.gmaps4rails_marker_attrs).to eq(["https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png", {:class=>"measle"}])
         end
       end
       [ 2, 100, 200, 364].each do |days|
         it "returns large icon when update is only #{days} days old" do
           future_time = Time.at(Time.now + days.day)
           allow(Time).to receive(:now){future_time}
-          expect(@org1.gmaps4rails_marker_picture).to eq({})
+          expect(@org1.gmaps4rails_marker_attrs).to eq( ["http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png", {:class=>"marker"}])
         end
       end
     end
