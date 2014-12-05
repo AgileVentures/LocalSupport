@@ -17,6 +17,9 @@
 
             <div class="nav-collapse collapse">
               <ul id="button-rack" class="nav nav-pills pull-right">
+                <li>
+                  <%= link_to "Home", root_path %>
+                </li>
                 <% if feature_active? :volunteer_ops_list %>
                     <li class="<%= active_if 'organisations' %>">
                       <%= link_to "Organisations", organisations_path %>

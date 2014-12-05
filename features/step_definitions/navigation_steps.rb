@@ -178,3 +178,8 @@ Then(/^I should( not)? see the call to update details for organisation "(.*)"/) 
       page.send(expectation_method, have_link("here", :href => edit_organisation_path(org)))
     end
 end
+Then(/^I should see a home button in the header$/) do
+    within('.nav.nav-pills.pull-right') do
+      expect(page).to have_css("li.active > a[href='/']", :text => "Home")
+    end
+end
