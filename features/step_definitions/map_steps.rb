@@ -10,9 +10,9 @@ Then /^the organisation "(.*?)" should have a (large|small) icon$/ do |name, ico
   markers = choose_markers_containing_org_name name
   expect(markers.length).to eq 1
   if icon_size == "small"
-    expect(markers.first["picture"]["url"]).to eq "https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png"
+    expect(markers.first["custom_marker"]).to have_xpath("//img[@src='https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png']")
   else
-    expect(markers.first["picture"]).to be_nil  
+    expect(markers.first["custom_marker"]).to have_xpath("//img[@src='http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png']")
   end
 end
 # could we move maps stuff into separate step file and couldn't these things be DRYer ...
