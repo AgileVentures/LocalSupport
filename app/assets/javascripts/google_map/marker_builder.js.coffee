@@ -31,7 +31,7 @@ class LocalSupport.MarkerBuilder extends Gmaps.Google.Builders.Marker
 
   infobox: (boxText)->
     offset = switch @serviceObject.zIndex
-      when 1 then new google.maps.Size(-151, 10)
-      when -1 then new google.maps.Size(-151, 4)
+      when 1 then new google.maps.Size(-151, -102)
+      when -1 then new google.maps.Size(-151, -84)
     content: boxText
     pixelOffset: offset

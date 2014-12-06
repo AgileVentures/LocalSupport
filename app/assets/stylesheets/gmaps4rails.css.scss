@@ -56,7 +56,7 @@
 }
 
 .arrow_box:after, .arrow_box:before {
-  bottom: 100%;
+  top: 100%;
   left: 50%;
   border: solid transparent;
   content: " ";
@@ -68,14 +68,14 @@
 
 .arrow_box:after {
   border-color: rgba(255, 255, 255, 0);
-  border-bottom-color: #ffffff;
+  border-top-color: #ffffff;
   border-width: 10px;
   margin-left: -10px;
 }
 
 .arrow_box:before {
   border-color: rgba(219, 219, 219, 0);
-  border-bottom-color: #dbdbdb;
+  border-top-color: #dbdbdb;
   border-width: 11px;
   margin-left: -11px;
 }
