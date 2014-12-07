@@ -87,9 +87,13 @@ class Organisation < ActiveRecord::Base
 
   def gmaps4rails_marker_attrs
     if not_updated_recently_or_has_no_owner?
-      ['https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png', class: 'measle']
+      ['https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png',
+        'data-id' => id,
+        class: 'measle']
     else
-      ['http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png', class: 'marker']
+      ['http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png',
+        'data-id' => id,
+       class: 'marker']
     end
   end
 

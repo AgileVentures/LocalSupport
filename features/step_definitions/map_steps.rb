@@ -15,18 +15,16 @@ Then /^the organisation "(.*?)" should have a (large|small) icon$/ do |name, ico
     expect(markers.first["custom_marker"]).to have_xpath("//img[@src='http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png']")
   end
 end
-# could we move maps stuff into separate step file and couldn't these things be DRYer ...
-# e.g. one step to handle 2 or more orgs ...
-Then /^I should see "([^"]*?)", "([^"]*?)" and "([^"]*?)" in the map$/ do |name1, name2, name3|
-  names = [name1, name2, name3]
-  names_coords = build_names_and_coords_map names
-  names_coords.each do |name_coord|
-    org_name = name_coord[:name]
-    result = choose_markers_containing_org_name org_name
-    expect(result.length).to eq 1
-    expect(result.first["lat"]).to eq name_coord[:lat] 
-    expect(result.first["lng"]).to eq name_coord[:lng] 
+
+# Then /^I should see "([^"]*?)", "([^"]*?)" and "([^"]*?)" in the map$/ do |name1, name2, name3|
+Then /^I should( not)? see the following markers in the map:$/ do |negative, table|
+  expectation = negative ? :not_to : :to
+  until all('.measle').length == table.raw.flatten.length
+    sleep 0.5
   end
+  ids = all('.measle').to_a.map { |marker| marker[:'data-id'].to_i }
+
+  expect(ids).send(expectation, include(*Organisation.where(name: table.raw.flatten).pluck(:id)))
 end
 
 def choose_markers_containing_org_name org_name

@@ -17,10 +17,12 @@ Feature: Map of local charities
       | email                         | password | organisation | confirmed_at         |
       | registered_user-3@example.com | pppppppp | Youth UK     | 2007-01-01  10:00:00 |
 
+  @javascript
   Scenario: Show all charities on homepage map
     Given I visit the home page
-    And I should see "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling" in the map
-  
+    Then I should see the following markers in the map:
+      | Indian Elders Association | Age UK | Harrow Bereavement Counselling |
+
   Scenario: Clickable hyperlinks to charity homepage in map
     Given I visit the home page
     And I should see hyperlinks for "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling" in the map
