@@ -30,6 +30,7 @@ Feature: Map of local charities
       | Indian Elders Association | Age UK | Harrow Bereavement Counselling |
 
   @time_travel
+  @javascript
   Scenario Outline: Organisation map has small icon for organisations updated more than 365 days ago
     Given I travel "<days>" days into the future
     And I visit the home page

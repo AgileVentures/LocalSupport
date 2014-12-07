@@ -10,14 +10,23 @@ Then(/^I should see an infowindow when I click on the map markers:$/) do |table|
       expect(link).to eql(organisation_path(id))
   end
 end
-
+def find_map_icon klass, org_id
+  begin 
+    find(".#{klass}[data-id='#{org_id}']")
+  rescue Exception
+    nil
+  end
+end
 Then /^the organisation "(.*?)" should have a (large|small) icon$/ do |name, icon_size|
-  markers = choose_markers_containing_org_name name
-  expect(markers.length).to eq 1
-  if icon_size == "small"
-    expect(markers.first["custom_marker"]).to have_xpath("//img[@src='https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png']")
+  org_id = Organisation.find_by(name: name).id
+  klass = (icon_size == "small") ? "measle" : "marker"
+  until find_map_icon(klass, org_id).present?
+    sleep 0.5
+  end
+  if klass == "measle"
+    expect(find_map_icon(klass, org_id)["src"]).to eq "https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png"
   else
-    expect(markers.first["custom_marker"]).to have_xpath("//img[@src='http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png']")
+    expect(find_map_icon(klass, org_id)["src"]).to eq "http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png"
   end
 end
 
