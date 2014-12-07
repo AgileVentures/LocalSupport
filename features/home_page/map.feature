@@ -23,9 +23,11 @@ Feature: Map of local charities
     Then I should see the following markers in the map:
       | Indian Elders Association | Age UK | Harrow Bereavement Counselling |
 
-  Scenario: Clickable hyperlinks to charity homepage in map
+  @javascript
+  Scenario: Infowindow appears when clicking in map marker
     Given I visit the home page
-    And I should see hyperlinks for "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling" in the map
+    Then I should see an infowindow when I click on the map markers:
+      | Indian Elders Association | Age UK | Harrow Bereavement Counselling |
 
   @time_travel
   Scenario Outline: Organisation map has small icon for organisations updated more than 365 days ago

@@ -61,7 +61,7 @@ describe Organisation, :type => :model do
   describe "#gmaps4rails_marker_attrs" do
     context 'no user' do
       it 'returns small icon when no associated user' do
-        expect(@org1.gmaps4rails_marker_attrs).to eq(["https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png", {:class=>"measle"}])
+        expect(@org1.gmaps4rails_marker_attrs).to eq(["https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png", {"data-id"=>10, :class=>"measle"}])
       end
     end
 
@@ -76,21 +76,21 @@ describe Organisation, :type => :model do
         allow(Time).to receive(:now).and_call_original
       end
       it 'returns large icon when there is an associated user' do
-        expect(@org1.gmaps4rails_marker_attrs).to eq( ["http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png", {:class=>"marker"}])
+        expect(@org1.gmaps4rails_marker_attrs).to eq( ["http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png", {"data-id"=>@org1.id,:class=>"marker"}])
       end
 
       [365, 366, 500].each do |days|
         it "returns small icon when update is #{days} days old" do
           future_time = Time.at(Time.now + days.day)
           allow(Time).to receive(:now){future_time}
-          expect(@org1.gmaps4rails_marker_attrs).to eq(["https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png", {:class=>"measle"}])
+          expect(@org1.gmaps4rails_marker_attrs).to eq(["https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png", {"data-id"=>@org1.id, :class=>"measle"}])
         end
       end
       [ 2, 100, 200, 364].each do |days|
         it "returns large icon when update is only #{days} days old" do
           future_time = Time.at(Time.now + days.day)
           allow(Time).to receive(:now){future_time}
-          expect(@org1.gmaps4rails_marker_attrs).to eq( ["http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png", {:class=>"marker"}])
+          expect(@org1.gmaps4rails_marker_attrs).to eq( ["http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png", {"data-id"=>@org1.id, :class=>"marker"} ])
         end
       end
     end

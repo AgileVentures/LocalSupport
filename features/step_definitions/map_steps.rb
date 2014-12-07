@@ -1,8 +1,13 @@
-Then /^I should see hyperlinks for "(.*?)", "(.*?)" and "(.*?)" in the map$/ do |org1, org2, org3|
-  marker_json = JSON.parse markers
-  descriptions = marker_json.map{|m| m['infowindow'] }.join
-  Organisation.where(name: [org1, org2, org3]).each do |org|
-    expect(descriptions).to have_xpath "//a[@href=\"#{organisation_path(org.id)}\"]", :text => "#{org.name}"
+Then(/^I should see an infowindow when I click on the map markers:$/) do |table|
+  until all('.measle').length == table.raw.flatten.length
+    sleep 0.5
+  end
+  Organisation.where(name: table.raw.flatten).pluck(:name, :description, :id).map {|name, desc, id| [name, smart_truncate(desc, 42), id]}.each do |name, desc, id|
+      find(".measle[data-id='#{id}']").trigger('click')
+      expect(find('.arrow_box').text).to include(desc)
+      expect(find('.arrow_box').text).to include(name)
+      link = find('.arrow_box').find('a')[:href]
+      expect(link).to eql(organisation_path(id))
   end
 end
 
@@ -16,7 +21,6 @@ Then /^the organisation "(.*?)" should have a (large|small) icon$/ do |name, ico
   end
 end
 
-# Then /^I should see "([^"]*?)", "([^"]*?)" and "([^"]*?)" in the map$/ do |name1, name2, name3|
 Then /^I should( not)? see the following markers in the map:$/ do |negative, table|
   expectation = negative ? :not_to : :to
   until all('.measle').length == table.raw.flatten.length
