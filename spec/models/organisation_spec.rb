@@ -61,7 +61,7 @@ describe Organisation, :type => :model do
   describe "#gmaps4rails_marker_attrs" do
     context 'no user' do
       it 'returns small icon when no associated user' do
-        expect(@org1.gmaps4rails_marker_attrs).to eq(["https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png", {"data-id"=>10, :class=>"measle"}])
+        expect(@org1.gmaps4rails_marker_attrs).to eq(["https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png", {"data-id"=>@org1.id, :class=>"measle"}])
       end
     end
 
