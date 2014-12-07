@@ -1,13 +1,7 @@
-//= require google-maps-loader/lib/Google
-
-
 describe('LocalSupport.GoogleMap', function() {
-  var map, settings;
+  var map;
 
-  beforeEach(function(done) {
-    originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
-
+  beforeEach(function() {
     var marker_data = JSON.stringify([{
       custom_marker: "some image tag",
       index: -1,
@@ -22,12 +16,6 @@ describe('LocalSupport.GoogleMap', function() {
     }));
     appendSetFixtures(sandbox({ id: 'map_canvas' }))
 
-    GoogleMapsLoader.LIBRARIES = ['geometry'];
-    GoogleMapsLoader.load(function(google) {
-      settings = LocalSupport.MapSettings().for(google);
-      done();
-    });
-
     map = new LocalSupport.GoogleMap()
   });
 
@@ -40,17 +28,4 @@ describe('LocalSupport.GoogleMap', function() {
     expect(data.lng).toEqual(jasmine.any(Number));
   });
 
-  it('handler() uses LocalSupport.MarkerBuilder', function() {
-    expect(map.handler().builders.Marker.name).toEqual('MarkerBuilder')
-  });
-
-  it('build() works', function() {
-    expect(function() {
-      map.build(settings)
-    }).not.toThrowError();
-  });
-
-  afterEach(function() {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
-  });
 });
