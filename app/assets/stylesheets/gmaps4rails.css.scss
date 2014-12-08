@@ -22,7 +22,11 @@
 .map_container label {
     width: auto; display:inline;
 }
-
+.vol_op{
+  &:hover{
+    cursor: pointer;
+  }
+}
 .measle {
   &:hover{
     cursor: pointer;
