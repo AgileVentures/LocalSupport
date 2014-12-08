@@ -65,7 +65,8 @@ class VolunteerOpsController < ApplicationController
           partial: 'shared/custom_marker',
           locals: { attrs: [ActionController::Base.helpers.asset_path("volunteer_icon.png"),
                     class: 'vol_op']}
-        )
+        ),
+        index: 1
       )
       #marker.picture({
       #  :url => ActionController::Base.helpers.asset_path("volunteer_icon.png"),
