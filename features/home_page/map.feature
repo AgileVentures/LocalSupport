@@ -45,6 +45,7 @@ Feature: Map of local charities
       |366   | small|
       |500   | small|
 
+  @javascript
   Scenario: Organisation map has small icon for organisation with no users
     Given I visit the home page
     Then the organisation "Indian Elders Association" should have a small icon
