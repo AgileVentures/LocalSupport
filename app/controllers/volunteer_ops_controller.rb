@@ -64,7 +64,7 @@ class VolunteerOpsController < ApplicationController
         custom_marker: render_to_string(
           partial: 'shared/custom_marker',
           locals: { attrs: [ActionController::Base.helpers.asset_path("volunteer_icon.png"),
-                    class: 'vol_op'], title: "Click here to see volunteer opportunities at #{org.name}"}
+                    class: 'vol_op', title: "Click here to see volunteer opportunities at #{org.name}"]}
         ),
         index: 'vol_op'
       )
