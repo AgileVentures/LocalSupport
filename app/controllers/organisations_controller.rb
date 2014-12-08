@@ -120,7 +120,7 @@ class OrganisationParams
       marker.infowindow render_to_string(partial: 'popup', locals: {org: org})
       marker.json(
         custom_marker: render_to_string(
-          partial: 'custom_marker',
+          partial: 'shared/custom_marker',
           locals: { attrs: org.gmaps4rails_marker_attrs }
         ),
         index: org.not_updated_recently_or_has_no_owner? ? -1 : 1
