@@ -66,7 +66,7 @@ class VolunteerOpsController < ApplicationController
           locals: { attrs: [ActionController::Base.helpers.asset_path("volunteer_icon.png"),
                     class: 'vol_op']}
         ),
-        index: 1
+        index: 'vol_op'
       )
       #marker.picture({
       #  :url => ActionController::Base.helpers.asset_path("volunteer_icon.png"),
