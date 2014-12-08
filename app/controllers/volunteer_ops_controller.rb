@@ -52,7 +52,7 @@ class VolunteerOpsController < ApplicationController
       :organisation_id,
     )
   end
-
+  
   private
 
   def build_map_markers(organisations)
@@ -64,16 +64,10 @@ class VolunteerOpsController < ApplicationController
         custom_marker: render_to_string(
           partial: 'shared/custom_marker',
           locals: { attrs: [ActionController::Base.helpers.asset_path("volunteer_icon.png"),
-                    class: 'vol_op']}
+                    class: 'vol_op'], title: "Click here to see volunteer opportunities at #{org.name}"}
         ),
         index: 'vol_op'
       )
-      #marker.picture({
-      #  :url => ActionController::Base.helpers.asset_path("volunteer_icon.png"),
-      #  :width   => 32,
-      #  :height  => 32,
-      #})
-      marker.title "Click here to see volunteer opportunities at #{org.name}"
     end
   end
 
