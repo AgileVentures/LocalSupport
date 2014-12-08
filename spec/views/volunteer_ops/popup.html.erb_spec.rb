@@ -25,8 +25,8 @@ describe "volunteer_ops/_popup.html.erb", :type => :view do
   end
   
   it 'should render a description of a volunteer opportunity' do
-     expect(rendered).to have_content(smart_truncate(op1.description, 32))
-     expect(rendered).to have_content(smart_truncate(op2.description, 32))
+     expect(rendered).to have_content(smart_truncate(op1.description, 42))
+     expect(rendered).to have_content(smart_truncate(op2.description, 42))
   end
   
   it "should render a link to an org" do
@@ -34,6 +34,6 @@ describe "volunteer_ops/_popup.html.erb", :type => :view do
   end
   
   it 'should not render a description of org' do
-     expect(rendered).not_to have_content(smart_truncate(org.description, 32))
+     expect(rendered).not_to have_content(smart_truncate(org.description, 42))
   end
 end
