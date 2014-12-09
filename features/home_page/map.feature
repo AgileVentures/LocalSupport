@@ -18,9 +18,9 @@ Feature: Map of local charities
       | registered_user-3@example.com | pppppppp | Youth UK     | 2007-01-01  10:00:00 |
 
   @javascript
-  Scenario: Show all charities on homepage map
+  Scenario: Show all charities in map on homepage map
     Given I visit the home page
-    Then I should see the following markers in the map:
+    Then I should see the following measle markers in the map:
       | Indian Elders Association | Age UK | Harrow Bereavement Counselling |
 
   @javascript

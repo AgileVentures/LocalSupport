@@ -30,12 +30,13 @@ Then /^the organisation "(.*?)" should have a (large|small) icon$/ do |name, ico
   end
 end
 
-Then /^I should( not)? see the following markers in the map:$/ do |negative, table|
+Then /^I should( not)? see the following (measle|vol_op) markers in the map:$/ do |negative, klass, table|
   expectation = negative ? :not_to : :to
-  until all('.measle').length == table.raw.flatten.length
+  klass_hash = {'measle' => '.measle', 'vol_op' => '.vol_op'}
+  until all(klass_hash[klass]).length == table.raw.flatten.length
     sleep 0.5
   end
-  ids = all('.measle').to_a.map { |marker| marker[:'data-id'].to_i }
+  ids = all(klass_hash[klass]).to_a.map { |marker| marker[:'data-id'].to_i }
 
   expect(ids).send(expectation, include(*Organisation.where(name: table.raw.flatten).pluck(:id)))
 end
