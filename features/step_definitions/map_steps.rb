@@ -57,9 +57,15 @@ Then /^I should see "([^"]*?)" and "([^"]*?)" in the map$/ do |name1, name2|
   expect_markers_to_have_words(coords)
 end
 
-Given(/^the map should show the opportunity (.*)$/) do |opportunity_description|
-  expect_markers_to_have_words(opportunity_description)
-  expect_markers_to_have_picture('/assets/volunteer_icon.png')
+Given(/^the map should show the opportunity titled (.*)$/) do |opportunity_title|
+  id = VolunteerOp.find_by(title: opportunity_title).organisation.id
+  opportunity_description = VolunteerOp.find_by(title: opportunity_title).description
+  until find_map_icon('vol_op', id)
+    sleep 0.5
+  end
+  find_map_icon('vol_op', id).trigger('click')
+  expect(find('.arrow_box').text).to include(opportunity_title)
+  expect(find('.arrow_box').text).to include(opportunity_description)
 end
 
 def markers
