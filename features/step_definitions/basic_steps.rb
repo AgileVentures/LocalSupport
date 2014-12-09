@@ -77,7 +77,17 @@ When /^I search for "(.*?)"$/ do |text|
   click_button 'Submit'
 end
 
-Given /^I fill in the new charity page validly$/ do
+Given (/^I fill in the new charity page validly$/) do
+  stub_request_with_address("64 pinner road")
+  fill_in 'organisation_address', :with => '64 pinner road'
+  fill_in 'organisation_name', :with => 'Friendly charity'
+end
+Given (/^I fill in the new charity page validly including the categories:$/) do |categories_table|
+  categories_table.hashes.each do |cat|
+    steps %Q{
+      And I check the category "#{cat[:name]}"
+    }
+  end
   stub_request_with_address("64 pinner road")
   fill_in 'organisation_address', :with => '64 pinner road'
   fill_in 'organisation_name', :with => 'Friendly charity'
