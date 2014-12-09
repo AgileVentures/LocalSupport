@@ -217,18 +217,4 @@ class Organisation < ActiveRecord::Base
     table[:name].matches(key)
   end
 
-  def remove_errors_with_address
-    errors_hash = errors.to_hash
-    errors.clear
-    errors_hash.each do |key, value|
-      logger.warn "#{key} --> #{value}"
-      if key.to_s != 'gmaps4rails_address'
-        errors.add(key, value)
-      else
-        # nullify coordinates
-        self.latitude = nil
-        self.longitude = nil
-      end
-    end
-  end
 end
