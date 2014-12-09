@@ -41,22 +41,6 @@ Then /^I should( not)? see the following (measle|vol_op) markers in the map:$/ d
   expect(ids).send(expectation, include(*Organisation.where(name: table.raw.flatten).pluck(:id)))
 end
 
-def choose_markers_containing_org_name org_name
-  JSON.parse(markers).select{|marker| marker["infowindow"].include? org_name}
-end
-
-def build_names_and_coords_map names
-  names.map{|org_name| {name: org_name, lat: Organisation.where(name: org_name).first.latitude, lng: Organisation.where(name: org_name).first.longitude}}
-end
-
-Then /^I should see "([^"]*?)" and "([^"]*?)" in the map$/ do |name1, name2|
-  names = [name1, name2]
-  coords = Organisation.where(name: names).pluck(:latitude, :longitude).flatten.uniq
-
-  expect_markers_to_have_words(names)
-  expect_markers_to_have_words(coords)
-end
-
 Given(/^the map should show the opportunity titled (.*)$/) do |opportunity_title|
   id = VolunteerOp.find_by(title: opportunity_title).organisation.id
   opportunity_description = VolunteerOp.find_by(title: opportunity_title).description
@@ -70,16 +54,6 @@ end
 
 def markers
   find('#marker_data')['data-markers']
-end
-
-def expect_markers_to_have_words(*words)
-  [*words].flatten.each do |word|
-    expect(markers).to include word.to_s
-  end
-end
-
-def expect_markers_to_have_picture(picture)
-  expect(markers).to include picture
 end
 
 def marker_json_for_org_names(*org_names)
