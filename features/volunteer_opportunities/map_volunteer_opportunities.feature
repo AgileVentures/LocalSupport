@@ -17,21 +17,25 @@ Feature: As a member of the public
       | Litter Box Scooper | Assist with feline sanitation   | Cats Are Us               |
       | Office Support     | Help with printing and copying. | Indian Elders Association |
 
+  @javascript
   Scenario: See a map of current volunteer opportunities
     Given I visit the volunteer opportunities page
     And cookies are approved
-    And I should see "Indian Elders Association" and "Cats Are Us" in the map
+    And I should see the following vol_op markers in the map:
+    | Indian Elders Association| Cats Are Us |
 
+  @javascript
   Scenario Outline: Volunteer opportunites are listed in map popups
     Given I visit the volunteer opportunities page
     And cookies are approved
-    And the map should show the opportunity <name>
+    And the map should show the opportunity titled <title>
     Examples:
-      | name               |
+      | title              |
       | Litter Box Scooper |
       | Office Support     |
- 
+
+  @javascript
   Scenario: See map when editing my volunteer opportunity
     Given I am signed in as a charity worker related to "Cats Are Us"
     And I visit the edit page for the volunteer_op titled "Litter Box Scooper"
-    Then the map should show the opportunity Litter Box Scooper
+    Then the map should show the opportunity titled Litter Box Scooper

@@ -85,9 +85,16 @@ class Organisation < ActiveRecord::Base
     self.joins(:categories).where(is_in_category(category_id)) #do we need to sanitize category_id?
   end
 
-  def gmaps4rails_marker_picture
-    return { "picture" => "https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png" } if not_updated_recently_or_has_no_owner? 
-    return {}
+  def gmaps4rails_marker_attrs
+    if not_updated_recently_or_has_no_owner?
+      ['https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png',
+        'data-id' => id,
+        class: 'measle']
+    else
+      ['http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png',
+        'data-id' => id,
+       class: 'marker']
+    end
   end
 
   def full_address
@@ -210,18 +217,4 @@ class Organisation < ActiveRecord::Base
     table[:name].matches(key)
   end
 
-  def remove_errors_with_address
-    errors_hash = errors.to_hash
-    errors.clear
-    errors_hash.each do |key, value|
-      logger.warn "#{key} --> #{value}"
-      if key.to_s != 'gmaps4rails_address'
-        errors.add(key, value)
-      else
-        # nullify coordinates
-        self.latitude = nil
-        self.longitude = nil
-      end
-    end
-  end
 end

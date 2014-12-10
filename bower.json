@@ -1,0 +1,14 @@
+{
+  "name": "LocalSupport",
+  "version": "2.0.0",
+  "homepage": "https://github.com/AgileVentures/LocalSupport",
+  "authors": "",
+  "description": "A directory of local support services and volunteer opportunities",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "js-rich-marker": "https://github.com/googlemaps/js-rich-marker.git#gh-pages",
+    "google-infobox": "https://github.com/PepijnSenders/google-infobox.git",
+    "gmaps-markerclusterer-plus": "~2.1.1"
+  }
+}

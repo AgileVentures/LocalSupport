@@ -1,67 +1,59 @@
-Then /^I should see hyperlinks for "(.*?)", "(.*?)" and "(.*?)" in the map$/ do |org1, org2, org3|
-  marker_json = JSON.parse markers
-  descriptions = marker_json.map{|m| m['infowindow'] }.join
-  Organisation.where(name: [org1, org2, org3]).each do |org|
-    expect(descriptions).to have_xpath "//a[@href=\"#{organisation_path(org.id)}\"]", :text => "#{org.name}"
+Then(/^I should see an infowindow when I click on the map markers:$/) do |table|
+  until all('.measle').length == table.raw.flatten.length
+    sleep 0.5
+  end
+  Organisation.where(name: table.raw.flatten).pluck(:name, :description, :id).map {|name, desc, id| [name, smart_truncate(desc, 42), id]}.each do |name, desc, id|
+      find(".measle[data-id='#{id}']").trigger('click')
+      expect(find('.arrow_box').text).to include(desc)
+      expect(find('.arrow_box').text).to include(name)
+      link = find('.arrow_box').find('a')[:href]
+      expect(link).to eql(organisation_path(id))
   end
 end
-
+def find_map_icon klass, org_id
+  begin 
+    find(".#{klass}[data-id='#{org_id}']")
+  rescue Exception
+    nil
+  end
+end
 Then /^the organisation "(.*?)" should have a (large|small) icon$/ do |name, icon_size|
-  markers = choose_markers_containing_org_name name
-  expect(markers.length).to eq 1
-  if icon_size == "small"
-    expect(markers.first["picture"]["url"]).to eq "https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png"
+  org_id = Organisation.find_by(name: name).id
+  klass = (icon_size == "small") ? "measle" : "marker"
+  until find_map_icon(klass, org_id).present?
+    sleep 0.5
+  end
+  if klass == "measle"
+    expect(find_map_icon(klass, org_id)["src"]).to eq "https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png"
   else
-    expect(markers.first["picture"]).to be_nil  
-  end
-end
-# could we move maps stuff into separate step file and couldn't these things be DRYer ...
-# e.g. one step to handle 2 or more orgs ...
-Then /^I should see "([^"]*?)", "([^"]*?)" and "([^"]*?)" in the map$/ do |name1, name2, name3|
-  names = [name1, name2, name3]
-  names_coords = build_names_and_coords_map names
-  names_coords.each do |name_coord|
-    org_name = name_coord[:name]
-    result = choose_markers_containing_org_name org_name
-    expect(result.length).to eq 1
-    expect(result.first["lat"]).to eq name_coord[:lat] 
-    expect(result.first["lng"]).to eq name_coord[:lng] 
+    expect(find_map_icon(klass, org_id)["src"]).to eq "http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png"
   end
 end
 
-def choose_markers_containing_org_name org_name
-  JSON.parse(markers).select{|marker| marker["infowindow"].include? org_name}
+Then /^I should( not)? see the following (measle|vol_op) markers in the map:$/ do |negative, klass, table|
+  expectation = negative ? :not_to : :to
+  klass_hash = {'measle' => '.measle', 'vol_op' => '.vol_op'}
+  until all(klass_hash[klass]).length == table.raw.flatten.length
+    sleep 0.5
+  end
+  ids = all(klass_hash[klass]).to_a.map { |marker| marker[:'data-id'].to_i }
+
+  expect(ids).send(expectation, include(*Organisation.where(name: table.raw.flatten).pluck(:id)))
 end
 
-def build_names_and_coords_map names
-  names.map{|org_name| {name: org_name, lat: Organisation.where(name: org_name).first.latitude, lng: Organisation.where(name: org_name).first.longitude}}
-end
-
-Then /^I should see "([^"]*?)" and "([^"]*?)" in the map$/ do |name1, name2|
-  names = [name1, name2]
-  coords = Organisation.where(name: names).pluck(:latitude, :longitude).flatten.uniq
-
-  expect_markers_to_have_words(names)
-  expect_markers_to_have_words(coords)
-end
-
-Given(/^the map should show the opportunity (.*)$/) do |opportunity_description|
-  expect_markers_to_have_words(opportunity_description)
-  expect_markers_to_have_picture('/assets/volunteer_icon.png')
+Given(/^the map should show the opportunity titled (.*)$/) do |opportunity_title|
+  id = VolunteerOp.find_by(title: opportunity_title).organisation.id
+  opportunity_description = VolunteerOp.find_by(title: opportunity_title).description
+  until find_map_icon('vol_op', id)
+    sleep 0.5
+  end
+  find_map_icon('vol_op', id).trigger('click')
+  expect(find('.arrow_box').text).to include(opportunity_title)
+  expect(find('.arrow_box').text).to include(opportunity_description)
 end
 
 def markers
   find('#marker_data')['data-markers']
-end
-
-def expect_markers_to_have_words(*words)
-  [*words].flatten.each do |word|
-    expect(markers).to include word.to_s
-  end
-end
-
-def expect_markers_to_have_picture(picture)
-  expect(markers).to include picture
 end
 
 def marker_json_for_org_names(*org_names)
