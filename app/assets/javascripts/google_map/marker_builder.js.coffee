@@ -21,7 +21,8 @@ class LocalSupport.MarkerBuilder extends Gmaps.Google.Builders.Marker
     return null unless _.isString @args.custom_infowindow
 
     boxText = document.createElement("div")
-    boxText.setAttribute("class", 'arrow_box')
+    klass = if (@type == 'vol_op') then 'arrow_box_vol_op' else 'arrow_box'
+    boxText.setAttribute("class", klass)
     boxText.innerHTML = @args.custom_infowindow
     @infowindow = new InfoBox(@infobox(boxText))
     @addCloseHandler(@infowindow)
@@ -37,6 +38,6 @@ class LocalSupport.MarkerBuilder extends Gmaps.Google.Builders.Marker
     offset = switch @type
       when 'large_org' then new google.maps.Size(-151, -102)
       when 'small_org' then new google.maps.Size(-151, -84)
-      when 'vol_op' then new google.maps.Size(-151,-157)
+      when 'vol_op' then new google.maps.Size(-151,10)
     content: boxText
     pixelOffset: offset
