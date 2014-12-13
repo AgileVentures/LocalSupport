@@ -3,7 +3,7 @@
 class LocalSupport.MarkerBuilder extends Gmaps.Google.Builders.Marker
 
   create_marker: ->
-    @infoWindowBuilder = LocalSupport.InfoWindowBuilderFactory this.args.type
+    @infoWindowBuilder = LocalSupport.InfoWindowBuilderFactory google, this.args.type
     options = _.extend @marker_options(), @rich_marker_options()
     @serviceObject = new RichMarker options
 
