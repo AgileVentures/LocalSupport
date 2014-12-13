@@ -1,31 +1,33 @@
-class LocalSupport.LargeOrgInfoWindowBuilder
-  infobox: (boxText)->
-    content: boxText
-    pixelOffset: new google.maps.Size(-151,-102)
-  klass: ->
-    "arrow_box"
+window.InfoWindowBuilderFactory = {}
 
-class LocalSupport.SmallOrgInfoWindowBuilder
-  infobox: (boxText)->
-    content: boxText
-    pixelOffset: new google.maps.Size(-151,-84)
-  klass: ->
-    "arrow_box"
-
-class LocalSupport.VolOpInfoWindowBuilder
-  infobox: (boxText)->
-    content: boxText
-    pixelOffset: new google.maps.Size(-151,10)
-  klass: ->
-    "arrow_box_vol_op"
-
+InfoWindowBuilderFactory.fetchBuilder = (type) ->
+  switch type
+    when 'vol_op' then {
+      infobox: (boxText)->
+        content: boxText
+        pixelOffset: new google.maps.Size(-151,10)
+      klass: ->
+        "arrow_box_vol_op"
+    }
+    when 'small_org' then {
+      infobox: (boxText)->
+        content: boxText
+        pixelOffset: new google.maps.Size(-151,-84)
+      klass: ->
+        "arrow_box"
+    }
+    when 'large_org' then {
+      infobox: (boxText)->
+        content: boxText
+        pixelOffset: new google.maps.Size(-151,-102)
+      klass: ->
+        "arrow_box"
+    }
 
 class LocalSupport.MarkerBuilder extends Gmaps.Google.Builders.Marker
+
   create_marker: ->
-    @infoWindowBuilder = switch this.args.type
-      when 'vol_op' then new LocalSupport.VolOpInfoWindowBuilder
-      when 'small_org' then new LocalSupport.SmallOrgInfoWindowBuilder
-      when 'large_org' then new LocalSupport.LargeOrgInfoWindowBuilder
+    @infoWindowBuilder = InfoWindowBuilderFactory.fetchBuilder this.args.type
     options = _.extend @marker_options(), @rich_marker_options()
     @serviceObject = new RichMarker options
     
