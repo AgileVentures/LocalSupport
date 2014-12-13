@@ -1,6 +1,31 @@
+class LocalSupport.LargeOrgInfoWindowBuilder
+  infobox: (boxText)->
+    content: boxText
+    pixelOffset: new google.maps.Size(-151,-102)
+  klass: ->
+    "arrow_box"
+
+class LocalSupport.SmallOrgInfoWindowBuilder
+  infobox: (boxText)->
+    content: boxText
+    pixelOffset: new google.maps.Size(-151,-84)
+  klass: ->
+    "arrow_box"
+
+class LocalSupport.VolOpInfoWindowBuilder
+  infobox: (boxText)->
+    content: boxText
+    pixelOffset: new google.maps.Size(-151,10)
+  klass: ->
+    "arrow_box_vol_op"
+
+
 class LocalSupport.MarkerBuilder extends Gmaps.Google.Builders.Marker
   create_marker: ->
-    @type = this.args.type
+    @infoWindowBuilder = switch this.args.type
+      when 'vol_op' then new LocalSupport.VolOpInfoWindowBuilder
+      when 'small_org' then new LocalSupport.SmallOrgInfoWindowBuilder
+      when 'large_org' then new LocalSupport.LargeOrgInfoWindowBuilder
     options = _.extend @marker_options(), @rich_marker_options()
     @serviceObject = new RichMarker options
     
@@ -18,8 +43,7 @@ class LocalSupport.MarkerBuilder extends Gmaps.Google.Builders.Marker
     return null unless _.isString @args.custom_infowindow
 
     boxText = document.createElement("div")
-    klass = if (@type == 'vol_op') then 'arrow_box_vol_op' else 'arrow_box'
-    boxText.setAttribute("class", klass)
+    boxText.setAttribute("class", @infoWindowBuilder.klass())
     boxText.innerHTML = @args.custom_infowindow
     @infowindow = new InfoBox(@infobox(boxText))
     @addCloseHandler(@infowindow)
@@ -32,9 +56,4 @@ class LocalSupport.MarkerBuilder extends Gmaps.Google.Builders.Marker
     infowindow
 
   infobox: (boxText)->
-    offset = switch @type
-      when 'large_org' then new google.maps.Size(-151, -102)
-      when 'small_org' then new google.maps.Size(-151, -84)
-      when 'vol_op' then new google.maps.Size(-151,10)
-    content: boxText
-    pixelOffset: offset
+    @infoWindowBuilder.infobox boxText 
