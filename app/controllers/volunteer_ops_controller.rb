@@ -67,7 +67,8 @@ class VolunteerOpsController < ApplicationController
                     'data-id' => org.id,
                     class: 'vol_op', title: "Click here to see volunteer opportunities at #{org.name}"]}
         ),
-        index: 'vol_op'
+        index: 1,
+        type: 'vol_op'
       )
     end
   end

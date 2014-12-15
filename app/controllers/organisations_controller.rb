@@ -123,7 +123,8 @@ class OrganisationParams
           partial: 'shared/custom_marker',
           locals: { attrs: org.gmaps4rails_marker_attrs }
         ),
-        index: org.not_updated_recently_or_has_no_owner? ? 'small_org' : 'large_org'
+        index: org.not_updated_recently_or_has_no_owner? ? -1 : 1,
+        type:  org.not_updated_recently_or_has_no_owner? ? 'small_org' : 'large_org'
       )
     end
   end

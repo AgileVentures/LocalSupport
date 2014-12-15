@@ -48,8 +48,8 @@ Given(/^the map should show the opportunity titled (.*)$/) do |opportunity_title
     sleep 0.5
   end
   find_map_icon('vol_op', id).trigger('click')
-  expect(find('.arrow_box').text).to include(opportunity_title)
-  expect(find('.arrow_box').text).to include(opportunity_description)
+  expect(find('.arrow_box_vol_op').text).to include(opportunity_title)
+  expect(find('.arrow_box_vol_op').text).to include(opportunity_description)
 end
 
 def markers
