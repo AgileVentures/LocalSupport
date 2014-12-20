@@ -1,14 +1,19 @@
 Then(/^I should see an infowindow when I click on the map markers:$/) do |table|
-  until all('.measle').length == table.raw.flatten.length
-    sleep 0.5
-  end
+  expect(page).to have_css('.measle', :count => table.raw.flatten.length)
   Organisation.where(name: table.raw.flatten).pluck(:name, :description, :id).map {|name, desc, id| [name, smart_truncate(desc, 42), id]}.each do |name, desc, id|
-      find(".measle[data-id='#{id}']").trigger('click')
+      expect(page).to have_css(".measle[data-id='#{id}']")
+      icon =find(".measle[data-id='#{id}']")
+      click_twice icon
+      expect(page).to have_css('.arrow_box')
       expect(find('.arrow_box').text).to include(desc)
       expect(find('.arrow_box').text).to include(name)
       link = find('.arrow_box').find('a')[:href]
       expect(link).to eql(organisation_path(id))
   end
+end
+def click_twice elt
+  elt.trigger('click')
+  elt.trigger('click')
 end
 def find_map_icon klass, org_id
   begin 
@@ -47,7 +52,9 @@ Given(/^the map should show the opportunity titled (.*)$/) do |opportunity_title
   until find_map_icon('vol_op', id)
     sleep 0.5
   end
-  find_map_icon('vol_op', id).trigger('click')
+  icon = find_map_icon('vol_op', id)
+  click_twice icon
+  expect(page).to have_css('.arrow_box_vol_op')
   expect(find('.arrow_box_vol_op').text).to include(opportunity_title)
   expect(find('.arrow_box_vol_op').text).to include(opportunity_description)
 end
