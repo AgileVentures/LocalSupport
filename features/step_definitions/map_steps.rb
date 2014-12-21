@@ -16,18 +16,12 @@ def click_twice elt
   elt.trigger('click')
 end
 def find_map_icon klass, org_id
-  begin 
-    find(".#{klass}[data-id='#{org_id}']")
-  rescue Exception
-    nil
-  end
+  expect(page).to have_css ".#{klass}[data-id='#{org_id}']"
+  find(".#{klass}[data-id='#{org_id}']")
 end
 Then /^the organisation "(.*?)" should have a (large|small) icon$/ do |name, icon_size|
   org_id = Organisation.find_by(name: name).id
   klass = (icon_size == "small") ? "measle" : "marker"
-  until find_map_icon(klass, org_id).present?
-    sleep 0.5
-  end
   if klass == "measle"
     expect(find_map_icon(klass, org_id)["src"]).to eq "https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png"
   else
@@ -38,9 +32,7 @@ end
 Then /^I should( not)? see the following (measle|vol_op) markers in the map:$/ do |negative, klass, table|
   expectation = negative ? :not_to : :to
   klass_hash = {'measle' => '.measle', 'vol_op' => '.vol_op'}
-  until all(klass_hash[klass]).length == table.raw.flatten.length
-    sleep 0.5
-  end
+  expect(page).to have_css(klass_hash[klass], :count => table.raw.flatten.length)
   ids = all(klass_hash[klass]).to_a.map { |marker| marker[:'data-id'].to_i }
 
   expect(ids).send(expectation, include(*Organisation.where(name: table.raw.flatten).pluck(:id)))
@@ -49,9 +41,6 @@ end
 Given(/^the map should show the opportunity titled (.*)$/) do |opportunity_title|
   id = VolunteerOp.find_by(title: opportunity_title).organisation.id
   opportunity_description = VolunteerOp.find_by(title: opportunity_title).description
-  until find_map_icon('vol_op', id)
-    sleep 0.5
-  end
   icon = find_map_icon('vol_op', id)
   click_twice icon
   expect(page).to have_css('.arrow_box_vol_op')
