@@ -5,6 +5,7 @@ class OrganisationsController < ApplicationController
   before_filter :authenticate_user!, :except => [:search, :index, :show]
 
   def search
+    byebug
     @query_term = params[:q]
     @category_id = params.try(:[],'category').try(:[],'id')
     @category = Category.find_by_id(@category_id)
@@ -12,16 +13,21 @@ class OrganisationsController < ApplicationController
     @organisations = @organisations.search_by_keyword(@query_term).filter_by_category(@category_id)
     flash.now[:alert] = SEARCH_NOT_FOUND if @organisations.empty?
     @markers = build_map_markers(@organisations)
-    @category_options = Category.html_drop_down_options
+    @what_they_do = Category.what_they_do.pluck(:name, :id)
+    @who_they_help = Category.who_they_help.pluck(:name, :id)
+    @how_they_help = Category.how_they_help.pluck(:name, :id)
     render :template =>'organisations/index'
   end
 
   # GET /organisations
   # GET /organisations.json
   def index
+    byebug
     @organisations = Organisation.includes(:users).order_by_most_recent
     @markers = build_map_markers(@organisations)
-    @category_options = Category.html_drop_down_options
+    @what_they_do = Category.what_they_do.pluck(:name, :id)
+    @who_they_help = Category.who_they_help.pluck(:name, :id)
+    @how_they_help = Category.how_they_help.pluck(:name, :id)
   end
 
   # GET /organisations/1

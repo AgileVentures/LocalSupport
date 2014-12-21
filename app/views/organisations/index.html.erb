@@ -1,7 +1,10 @@
 <%= form_tag("/organisations/search", :method => "get") do %>
-  <%= label_tag(:q, "Select Category:") %>
-  <%= select("category", "id", grouped_options_for_select(@category_options), { :include_blank => 'All' },
-             { :style => 'margin-bottom: 5px;' }) %>
+  <%= label_tag(:q, "What They Do:") %>
+  <%= select("category", "id", @what_they_do, { :include_blank => 'All' }, { :style => 'margin-bottom: 5px;' }) %>
+  <%= label_tag(:q, "Who They Help:") %>
+  <%= select("category", "id", @who_they_help, { :include_blank => 'All' }, { :style => 'margin-bottom: 5px;' }) %>
+  <%= label_tag(:q, "How They Help:") %>
+  <%= select("category", "id", @how_they_help, { :include_blank => 'All' }, { :style => 'margin-bottom: 5px;' }) %>
   <%= submit_tag "Submit", { :class => 'btn btn-info',
                              :style => 'margin-bottom: 5px;' } %>
   <%= text_field_tag(:q, @query_term || '',
