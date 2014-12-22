@@ -8,13 +8,12 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require underscore
-//= require gmaps/google
 //= require bootstrap-sortable
 //= require_tree ./global
 //= require bootstrap-switch
 //= require organisations
 
-LocalSupport = {};
+window.LocalSupport = {};
 
 $(function() {
     // invoke global functions here

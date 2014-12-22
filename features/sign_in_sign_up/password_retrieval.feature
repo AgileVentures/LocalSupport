@@ -35,7 +35,7 @@ Feature: Password retrieval
   Examples:
     | email                            | page      |
     | registered-user@example.com      | home page |
-    | registered-org-admin@example.com | home page |
+    | registered-org-admin@example.com | show page for the organisation named "Friendly" |
 
   @email
   Scenario: Retrieve password for a non-existent user

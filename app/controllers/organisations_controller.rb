@@ -118,15 +118,14 @@ class OrganisationParams
       marker.lat org.latitude
       marker.lng org.longitude
       marker.infowindow render_to_string(partial: 'popup', locals: {org: org})
-      marker.shadow({ :url => 'hello' }) if org.not_updated_recently_or_has_no_owner?
-      picture = org.gmaps4rails_marker_picture
-      if picture.present?
-        marker.picture({
-          :url => picture['picture'],
-          :width   => 32,
-          :height  => 32,
-        })
-      end
+      marker.json(
+        custom_marker: render_to_string(
+          partial: 'shared/custom_marker',
+          locals: { attrs: org.gmaps4rails_marker_attrs }
+        ),
+        index: org.not_updated_recently_or_has_no_owner? ? -1 : 1,
+        type:  org.not_updated_recently_or_has_no_owner? ? 'small_org' : 'large_org'
+      )
     end
   end
 

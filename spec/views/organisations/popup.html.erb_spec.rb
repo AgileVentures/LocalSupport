@@ -15,6 +15,6 @@ describe "organisations/_popup.html.erb", :type => :view do
   end
 
   it 'should render a description of org' do
-     expect(rendered).to have_content(smart_truncate(org.description, 32))
+     expect(rendered).to have_content(smart_truncate(org.description, 44))
   end
 end

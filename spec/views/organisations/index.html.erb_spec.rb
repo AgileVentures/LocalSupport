@@ -71,7 +71,7 @@ describe "organisations/index.html.erb", :type => :view, :js => true do
     assign(:footer_page_links, [])
     allow(Page).to receive(:all).and_return []
     render template: "organisations/index", layout: "layouts/application"
-    expect(rendered).to include 'map.js'
+    expect(rendered).to include 'google_map.js'
   end
 
 end

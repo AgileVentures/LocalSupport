@@ -17,15 +17,19 @@ Feature: Map of local charities
       | email                         | password | organisation | confirmed_at         |
       | registered_user-3@example.com | pppppppp | Youth UK     | 2007-01-01  10:00:00 |
 
-  Scenario: Show all charities on homepage map
+  @javascript
+  Scenario: Show all charities in map on homepage map
     Given I visit the home page
-    And I should see "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling" in the map
-  
-  Scenario: Clickable hyperlinks to charity homepage in map
-    Given I visit the home page
-    And I should see hyperlinks for "Indian Elders Association", "Age UK" and "Harrow Bereavement Counselling" in the map
+    Then I should see the following measle markers in the map:
+      | Indian Elders Association | Age UK | Harrow Bereavement Counselling |
 
+  @javascript
+  Scenario: Infowindow appears when clicking on map marker
+    Given I visit the home page
+    Then I should see an infowindow when I click on the map markers:
+      | Indian Elders Association | Age UK | Harrow Bereavement Counselling |
   @time_travel
+  @javascript
   Scenario Outline: Organisation map has small icon for organisations updated more than 365 days ago
     Given I travel "<days>" days into the future
     And I visit the home page
@@ -40,6 +44,7 @@ Feature: Map of local charities
       |366   | small|
       |500   | small|
 
+  @javascript
   Scenario: Organisation map has small icon for organisation with no users
     Given I visit the home page
     Then the organisation "Indian Elders Association" should have a small icon
