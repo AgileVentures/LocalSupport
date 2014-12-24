@@ -11,3 +11,7 @@ Then(/^the user with email "(.*?)" should( not)? be displayed on the all deleted
   assertion = negation ? :not_to : :to
   expect(page).send(assertion, have_css("tr##{id}"))
 end
+
+Given(/^I click on the deleted users link$/) do
+  click_link "Deleted Users"
+end
