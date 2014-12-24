@@ -7,6 +7,12 @@ class UserReportsController < ApplicationController
     @users = User.only_deleted
   end
 
+  def undo_delete
+    User.restore(params[:id])
+    @users = User.only_deleted
+    redirect_to(deleted_users_report_path)
+  end
+
   # would like this to support generic updating of model with
   # business logic pulled into a separate model or process
   def update
