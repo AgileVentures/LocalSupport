@@ -40,6 +40,7 @@ Feature: All Users Page
     Then the user with email "pending@myorg.com" should be displayed on the all deleted users page
     And I restore the user with the email "pending@myorg.com"
     Then user "pending@myorg.com" is not deleted
+    And I should see "You have restored pending@myorg.com"
     And the user with email "pending@myorg.com" should not be displayed on the all deleted users page
 
   Scenario: as a non-admin attempting to see deleted users

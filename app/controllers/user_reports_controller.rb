@@ -8,8 +8,10 @@ class UserReportsController < ApplicationController
   end
 
   def undo_delete
+    usr = User.with_deleted.find_by_id params[:id]
     User.restore(params[:id])
     @users = User.only_deleted
+    flash[:success] = "You have restored #{usr.email}"
     redirect_to(deleted_users_report_path)
   end
 
