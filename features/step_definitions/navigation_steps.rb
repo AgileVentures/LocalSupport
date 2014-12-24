@@ -21,7 +21,8 @@ def paths(location)
       'invited users' => invited_users_report_path,
       'volunteer opportunities' => volunteer_ops_path,
       'new organisation' => new_organisation_path,
-      'contributors' => contributors_path
+      'contributors' => contributors_path,
+      'deleted users' => deleted_users_report_path
   }[location]
 end
 

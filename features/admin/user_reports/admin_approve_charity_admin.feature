@@ -36,6 +36,12 @@ Feature: All Users Page
     Then user "pending@myorg.com" is not deleted
     And the user with email "pending@myorg.com" should not be displayed on the all deleted users page
 
+  Scenario: as a non-admin attempting to see deleted users
+    Given I am signed in as an non-admin
+    And I visit the deleted users page
+    Then I should be on the home page
+    And I should see "You must be signed in as an admin to perform this action!"
+
   Scenario: As an admin attempting self-deletion
     Given I am signed in as an admin
     When I delete "admin@myorg.com"
