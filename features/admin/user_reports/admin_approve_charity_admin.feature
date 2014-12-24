@@ -28,6 +28,12 @@ Feature: All Users Page
     Then I should see "You have deleted pending@myorg.com."
     Then user "pending@myorg.com" is deleted
 
+  Scenario: As an admin about to recover a deleted user
+    Given I am signed in as an admin
+    And I visit the home page
+    And I click on the deleted users link
+    Then I should be on the deleted users page
+
   Scenario: As an admin recovering a deleted user
     Given I am signed in as an admin
     And I delete "pending@myorg.com"
