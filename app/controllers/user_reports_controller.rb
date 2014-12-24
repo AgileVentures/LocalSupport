@@ -3,6 +3,9 @@ class UserReportsController < ApplicationController
   before_filter :authorize, :except => [:update]
   include ActionView::Helpers::DateHelper
 
+  def deleted
+    @users = User.only_deleted
+  end
 
   # would like this to support generic updating of model with
   # business logic pulled into a separate model or process

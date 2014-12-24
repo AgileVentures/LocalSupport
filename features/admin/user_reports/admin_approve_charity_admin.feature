@@ -31,9 +31,10 @@ Feature: All Users Page
   Scenario: As an admin recovering a deleted user
     Given I am signed in as an admin
     When I delete "pending@myorg.com"
-    Then user "pending@myorg.com" is deleted
-    And sysadmin restores "pending@myorg.com" from the console
-    Then user "pending@myorg.com" should exist
+    Then the user with email "pending@myorg.com" should be displayed on the all deleted users page
+    #Then user "pending@myorg.com" is deleted
+    #And I restore the user with the email "pending@myorg.com"
+    #Then user "pending@myorg.com" should exist
 
   Scenario: As an admin attempting self-deletion
     Given I am signed in as an admin
