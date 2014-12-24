@@ -20,7 +20,7 @@
             <% end %>
           </td>
           <td>
-            <%= link_to(nil, :method => :get, :class => "btn btn-small btn-danger pull-right") do %>
+            <%= link_to(undo_delete_users_report_path(user.id), :method => :put, :class => "btn btn-small btn-danger pull-right") do %>
                 <i class="fa fa-undo"></i> Restore User</a>
             <% end %>
           </td>
