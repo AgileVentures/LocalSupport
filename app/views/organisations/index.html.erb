@@ -1,15 +1,38 @@
-<%= form_tag("/organisations/search", :method => "get") do %>
-  <%= label_tag(:q, "What They Do:") %>
-  <%= select("category", "id", @what_they_do, { :include_blank => 'All' }, { :style => 'margin-bottom: 5px;' }) %>
-  <%= label_tag(:q, "Who They Help:") %>
-  <%= select("category", "id", @who_they_help, { :include_blank => 'All' }, { :style => 'margin-bottom: 5px;' }) %>
-  <%= label_tag(:q, "How They Help:") %>
-  <%= select("category", "id", @how_they_help, { :include_blank => 'All' }, { :style => 'margin-bottom: 5px;' }) %>
-  <%= submit_tag "Submit", { :class => 'btn btn-info',
-                             :style => 'margin-bottom: 5px;' } %>
-  <%= text_field_tag(:q, @query_term || '',
-                     { :style => 'margin-bottom: 5px; width: 240px;',
-                       :placeholder => "optional search name/description" }) %>
+<%= form_tag("/organisations/search", :class => "form-horizontal", :method => "get") do %>
+  <div class="control-group">
+    <div class="form-inline">
+      <div class="left-side">
+        <%= label_tag(:q, "What They Do") %>
+      </div>
+      <div class="right-side">
+        <%= select("category", "id", @what_they_do, { :include_blank => 'All' }, { class: 'category-select' }) %>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="left-side">
+        <%= label_tag(:q, "Who They Help") %>
+      </div>
+      <div class="right-side">
+        <%= select("category", "id", @who_they_help, { :include_blank => 'All' }, { class: 'category-select' }) %>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="left-side">
+        <%= label_tag(:q, "How They Help") %>
+      </div>
+      <div class="right-side">
+        <%= select("category", "id", @how_they_help, { :include_blank => 'All' }, { class: 'category-select' }) %>
+      </div>
+    </div>
+    <div class="form-inline">
+      <div class="left-side">
+      </div>
+      <div class="right-side">
+        <%= text_field_tag(:q, @query_term || '', { :style => 'margin-bottom: 5px; width: 100px;', :placeholder => "optional search name/description" }) %>
+        <%= submit_tag "Submit", { :class => 'btn btn-info', :style => 'margin-bottom: 5px;' } %>
+      </div>
+    </div>
+  </div>
 <% end %>
 
 <div id="orgs_scroll" style="height:340px;width:100%;border:1px solid #ccc;overflow:scroll;">

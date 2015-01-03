@@ -5,7 +5,6 @@ class OrganisationsController < ApplicationController
   before_filter :authenticate_user!, :except => [:search, :index, :show]
 
   def search
-    byebug
     @query_term = params[:q]
     @category_id = params.try(:[],'category').try(:[],'id')
     @category = Category.find_by_id(@category_id)
@@ -22,7 +21,6 @@ class OrganisationsController < ApplicationController
   # GET /organisations
   # GET /organisations.json
   def index
-    byebug
     @organisations = Organisation.includes(:users).order_by_most_recent
     @markers = build_map_markers(@organisations)
     @what_they_do = Category.what_they_do.pluck(:name, :id)

@@ -14,3 +14,18 @@
   color: inherit;
   text-rendering: optimizelegibility;
 }
+
+.left-side {
+  display: inline-block;
+  width: 29%;
+}
+
+.right-side {
+  display: inline-block;
+  width: 70%;
+}
+
+.category-select {
+  width: 100%;
+  margin-bottom: 5px;
+}
