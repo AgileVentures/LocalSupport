@@ -1,5 +1,3 @@
-//= require google_map/infowindow_builder
-
 class LocalSupport.MarkerBuilder extends Gmaps.Google.Builders.Marker
 
   create_marker: ->
@@ -21,7 +19,7 @@ class LocalSupport.MarkerBuilder extends Gmaps.Google.Builders.Marker
     return null unless _.isString @args.custom_infowindow
 
     boxText = document.createElement("div")
-    boxText.setAttribute("class", @infoWindowBuilder.klass())
+    boxText.setAttribute("class", "arrow_box_vol_op")
     boxText.innerHTML = @args.custom_infowindow
     @infowindow = new InfoBox(@infobox(boxText))
     @addCloseHandler(@infowindow)
@@ -34,4 +32,5 @@ class LocalSupport.MarkerBuilder extends Gmaps.Google.Builders.Marker
     infowindow
 
   infobox: (boxText)->
-    @infoWindowBuilder.infobox boxText
+    content: boxText
+    pixelOffset: new google.maps.Size(-151,10)
