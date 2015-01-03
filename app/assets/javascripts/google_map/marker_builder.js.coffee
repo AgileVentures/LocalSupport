@@ -18,7 +18,7 @@ class LocalSupport.MarkerBuilder extends Gmaps.Google.Builders.Marker
     return null unless _.isString @args.custom_infowindow
 
     boxText = document.createElement("div")
-    boxText.setAttribute("class", "arrow_box_vol_op")
+    boxText.setAttribute("class", "arrow_box")
     boxText.innerHTML = @args.custom_infowindow
     @infowindow = new InfoBox(@infobox(boxText))
     @addCloseHandler(@infowindow)
