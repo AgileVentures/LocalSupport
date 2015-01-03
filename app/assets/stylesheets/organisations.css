@@ -15,14 +15,23 @@
   text-rendering: optimizelegibility;
 }
 
+.form-inline {
+  margin-bottom: 5px;
+}
+
 .left-side {
   display: inline-block;
-  width: 29%;
+  width: 24%;
+}
+
+.field-label {
+  color: #899096;
+  line-height: 19px;
 }
 
 .right-side {
   display: inline-block;
-  width: 70%;
+  width: 75%;
 }
 
 .category-select {
