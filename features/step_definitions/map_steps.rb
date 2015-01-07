@@ -43,9 +43,9 @@ Given(/^the map should show the opportunity titled (.*)$/) do |opportunity_title
   opportunity_description = VolunteerOp.find_by(title: opportunity_title).description
   icon = find_map_icon('vol_op', id)
   click_twice icon
-  expect(page).to have_css('.arrow_box_vol_op')
-  expect(find('.arrow_box_vol_op').text).to include(opportunity_title)
-  expect(find('.arrow_box_vol_op').text).to include(opportunity_description)
+  expect(page).to have_css('.arrow_box')
+  expect(find('.arrow_box').text).to include(opportunity_title)
+  expect(find('.arrow_box').text).to include(opportunity_description)
 end
 
 def markers
