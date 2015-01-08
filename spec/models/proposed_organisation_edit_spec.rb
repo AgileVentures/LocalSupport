@@ -7,6 +7,11 @@ describe ProposedOrganisationEdit do
   let(:proposed_edit){FactoryGirl.create(:proposed_organisation_edit, :organisation => org )}
   it{expect(proposed_edit.organisation).to eq org}
   describe '#editable?' do
-      it{expect(proposed_edit.editable?(:address)).to be true}
+      it{expect(proposed_edit.editable?(:address)).to be false}
+      it 'true only if publish_address is true' do
+        org.publish_address = true
+        org.save!
+        expect(proposed_edit.editable?(:address)).to be true
+      end
   end
 end
