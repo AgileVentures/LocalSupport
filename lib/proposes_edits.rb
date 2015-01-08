@@ -5,7 +5,11 @@ module ProposesEdits
   end
 
   def editable? field
-    publish_field = ('publish_' + field.to_s).to_sym
+    if field == :telephone
+      publish_field = :publish_phone
+    else
+      publish_field = ('publish_' + field.to_s).to_sym
+    end
     instance_to_edit = self.send(self.class.klass_to_edit)
     if instance_to_edit.respond_to? publish_field
       instance_to_edit.send(publish_field) && self.class.fields_to_edit.include?(field)
