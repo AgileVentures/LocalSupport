@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024215924) do
+ActiveRecord::Schema.define(version: 20150108201727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,10 +48,11 @@ ActiveRecord::Schema.define(version: 20141024215924) do
     t.float    "longitude"
     t.boolean  "gmaps"
     t.text     "donation_info"
-    t.boolean  "publish_address", default: false
-    t.boolean  "publish_phone",   default: false
-    t.boolean  "publish_email",   default: true
+    t.boolean  "publish_address",               default: false
+    t.boolean  "publish_phone",                 default: false
+    t.boolean  "publish_email",                 default: true
     t.datetime "deleted_at"
+    t.integer  "proposed_organisation_edit_id"
   end
 
   create_table "pages", force: true do |t|
@@ -64,6 +65,18 @@ ActiveRecord::Schema.define(version: 20141024215924) do
   end
 
   add_index "pages", ["permalink"], name: "index_pages_on_permalink", using: :btree
+
+  create_table "proposed_organisation_edits", force: true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "postcode"
+    t.string   "email"
+    t.text     "description"
+    t.string   "website"
+    t.string   "telephone"
+    t.text     "donation_info"
+    t.datetime "deleted_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                   default: "",    null: false
