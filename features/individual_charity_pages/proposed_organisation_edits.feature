@@ -18,5 +18,5 @@ I want to be able to propose edits to inaccurate organisation listings
     Then I should see "Propose an edit"
     Then I click "Propose an edit"
     And I should be on the new organisation proposed edit page for the organisation named "Friendly"
-    And I should see "020800000"
-    And I should not see "34 pinner road"
+    And the telephone field of the proposed edit should be pre-populated with the telephone of the organisation named "Friendly"
+    And the address of the organisation named "Friendly" should not be editable nor appear
