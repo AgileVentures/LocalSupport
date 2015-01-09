@@ -28,12 +28,26 @@ Feature: All Users Page
     Then I should see "You have deleted pending@myorg.com."
     Then user "pending@myorg.com" is deleted
 
+  Scenario: As an admin about to recover a deleted user
+    Given I am signed in as an admin
+    And I visit the home page
+    And I click on the deleted users link
+    Then I should be on the deleted users page
+
   Scenario: As an admin recovering a deleted user
     Given I am signed in as an admin
-    When I delete "pending@myorg.com"
-    Then user "pending@myorg.com" is deleted
-    And sysadmin restores "pending@myorg.com" from the console
-    Then user "pending@myorg.com" should exist
+    And I delete "pending@myorg.com"
+    Then the user with email "pending@myorg.com" should be displayed on the all deleted users page
+    And I restore the user with the email "pending@myorg.com"
+    Then user "pending@myorg.com" is not deleted
+    And I should see "You have restored pending@myorg.com"
+    And the user with email "pending@myorg.com" should not be displayed on the all deleted users page
+
+  Scenario: as a non-admin attempting to see deleted users
+    Given I am signed in as an non-admin
+    And I visit the deleted users page
+    Then I should be on the home page
+    And I should see "You must be signed in as an admin to perform this action!"
 
   Scenario: As an admin attempting self-deletion
     Given I am signed in as an admin
