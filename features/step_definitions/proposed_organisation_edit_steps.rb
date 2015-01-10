@@ -29,3 +29,9 @@ Then(/^"(.*?)" should have the following proposed edits:$/) do |name, table|
     end
   end
 end
+Then(/^the following proposed edits should be displayed on the page:$/) do |table|
+  table.hashes.each do |hash|
+    expect(page).to have_css('.current_value', :text => hash['current value'])
+    expect(page).to have_css('.proposed_value', :text => hash['proposed value'])
+  end
+end

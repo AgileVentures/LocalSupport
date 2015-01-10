@@ -50,4 +50,10 @@ I want to be able to propose edits to inaccurate organisation listings
     Then I should be on the show organisation proposed edit page for the organisation named "Friendly"
     And I should see "Friendly"
     And I should see "Unfriendly"
+    And show me the page
+    And the following proposed edits should be displayed on the page:
+      | field   | current value       | proposed value        |
+      | name    | Friendly            | Unfriendly            |
+      | website | http://friendly.org | http://unfriendly.org |
+      | email   | admin@friendly.xx   | newemail@friendly.xx  |
 

@@ -14,6 +14,10 @@ module ProposesEdits
     end
   end
 
+  def has_proposed_edit? field
+    organisation.send(field) != self.send(field)
+  end
+
   module ClassMethods
     attr_reader :klass_to_edit
     attr_reader :fields_to_edit

@@ -26,4 +26,17 @@ describe ProposedOrganisationEdit do
       end
 
   end
+  describe '#has_proposed_edit?' do
+    context 'when an edit to :name has not been proposed' do
+      let(:proposed_edit){FactoryGirl.create(:proposed_organisation_edit, :organisation => org, :name => 'Harrow Bereavement Counselling' )}
+      it{expect(proposed_edit.has_proposed_edit?(:name)).to be false }
+    end
+    context 'when an edit to :name has been proposed' do
+      let(:proposed_edit){FactoryGirl.create(:proposed_organisation_edit, :organisation => org, :name => 'Harrow Bereavement Counseling' )}
+      it{expect(proposed_edit.has_proposed_edit?(:name)).to be true }
+    end
+    context 'editabilty has changed' do
+      it{pending}
+    end
+  end
 end

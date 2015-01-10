@@ -1,4 +1,48 @@
 <div class="row">
-  <div class="span6">Friendly</div>
-  <div class="span6">Unfriendly</div>
+  <div class="span6">
+    <h3 class= <%= @proposed_organisation_edit.has_proposed_edit?(:name) ? "current_value": ""%>>
+      <%= @organisation.name %>
+    </h3>
+    <p>
+      <%= simple_format @organisation.description %>
+    </p>
+    <% if @proposed_organisation_edit.editable?(:email) %>
+        <p class= <%= @proposed_organisation_edit.has_proposed_edit?(:email) ? "current_value": ""%>>
+          <b>Email:</b>
+          <a href="mailto:<%= @organisation.email %>"><%= @organisation.email %></a>
+        </p>
+    <% end %>
+    <% if @organisation.website.present? %>
+        <p>
+          <b>Website:</b>
+          <div class= <%=  @proposed_organisation_edit.has_proposed_edit?(:website) ? "current_value": ""%>>
+            <%= link_to @organisation.website, @organisation.website, {:target => '_blank'} %>
+          </div>
+        </p>
+    <% end %>
+  </div>
+  <div class="span6">
+    <h3 class= <%=  @proposed_organisation_edit.has_proposed_edit?(:name) ? "proposed_value": ""%>>
+      <%= @proposed_organisation_edit.name %>
+    </h3>
+    <p>
+      <%= simple_format @proposed_organisation_edit.description %>
+    </p>
+    <% if @proposed_organisation_edit.editable?(:email) %>
+      <div class= <%=  @proposed_organisation_edit.has_proposed_edit?(:email) ? "proposed_value": ""%>>
+        <p>
+          <b>Email:</b>
+          <a href="mailto:<%= @proposed_organisation_edit.email %>"><%= @proposed_organisation_edit.email %></a>
+        </p>
+      </div>
+    <% end %>
+    <% if @organisation.website.present? %>
+        <p>
+          <b>Website:</b>
+          <div class= <%=  @proposed_organisation_edit.has_proposed_edit?(:website) ? "proposed_value": ""%>>
+            <%= link_to @proposed_organisation_edit.website, @proposed_organisation_edit.website, {:target => '_blank'} %>
+          </div>
+        </p>
+    <% end %>
+  </div>
 </div>
