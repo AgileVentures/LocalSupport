@@ -8,9 +8,23 @@ I want to be able to propose edits to inaccurate organisation listings
       | name       | description             | address        | postcode | telephone | website             | email             | publish_phone |
       | Friendly   | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.org | admin@friendly.xx | true          |
     Given the following users are registered:
-      | email                         | password | organisation | confirmed_at         |
-      | registered_user-2@example.com | pppppppp |              | 2007-01-01  10:00:00 |
+      | email                         | password | organisation | confirmed_at         | admin |
+      | registered_user-2@example.com | pppppppp |              | 2007-01-01  10:00:00 | false |
+      | admin@harrowcn.org.uk         | pppppppp |              | 2007-01-01  10:00:00 | true  |
+      | friendly@friendly.org         | pppppppp | Friendly     | 2007-01-01  10:00:00 | false |
     And cookies are approved
+
+  Scenario: Site admin does not see proposed edit button
+    Given I am signed in as a admin
+    And I visit the show page for the organisation named "Friendly"
+    Then I should not see "Propose an edit"
+    And I should see "Edit"
+
+  Scenario: Org admin does not see proposed edit button
+    Given I am signed in as a charity worker related to "Friendly"
+    And I visit the show page for the organisation named "Friendly"
+    Then I should not see "Propose an edit"
+    And I should see "Edit"
 
   Scenario: See only published fields
     Given I am signed in as a charity worker unrelated to "Friendly"

@@ -51,7 +51,6 @@ end
 Then /^I should be on the show organisation proposed edit page for the organisation named "(.*?)"$/ do |name|
   org = Organisation.find_by_name(name)
   prop_ed = org.edits.first
-  byebug
   url = organisation_proposed_organisation_edit_path org, prop_ed
   current_path.should eq url
 end
