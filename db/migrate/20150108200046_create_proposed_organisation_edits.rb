@@ -1,6 +1,7 @@
 class CreateProposedOrganisationEdits < ActiveRecord::Migration
   def change
     create_table :proposed_organisation_edits do |t|
+      t.references :organisation
       t.string   "name"
       t.string   "address"
       t.string   "postcode"

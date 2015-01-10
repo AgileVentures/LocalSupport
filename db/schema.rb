@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150108201727) do
+ActiveRecord::Schema.define(version: 20150108200046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20150108201727) do
     t.string   "name"
     t.integer  "charity_commission_id"
     t.string   "charity_commission_name"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "categories_organisations", force: true do |t|
@@ -42,31 +42,31 @@ ActiveRecord::Schema.define(version: 20150108201727) do
     t.text     "description"
     t.string   "website"
     t.string   "telephone"
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
     t.text     "donation_info"
-    t.boolean  "publish_address",               default: false
-    t.boolean  "publish_phone",                 default: false
-    t.boolean  "publish_email",                 default: true
+    t.boolean  "publish_address", default: false
+    t.boolean  "publish_phone",   default: false
+    t.boolean  "publish_email",   default: true
     t.datetime "deleted_at"
-    t.integer  "proposed_organisation_edit_id"
   end
 
   create_table "pages", force: true do |t|
     t.string   "name"
     t.string   "permalink"
     t.text     "content"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "link_visible", default: true
   end
 
   add_index "pages", ["permalink"], name: "index_pages_on_permalink", using: :btree
 
   create_table "proposed_organisation_edits", force: true do |t|
+    t.integer  "organisation_id"
     t.string   "name"
     t.string   "address"
     t.string   "postcode"
@@ -89,8 +89,8 @@ ActiveRecord::Schema.define(version: 20150108201727) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "admin",                   default: false
     t.integer  "organisation_id"
     t.string   "confirmation_token"
@@ -117,8 +117,8 @@ ActiveRecord::Schema.define(version: 20150108201727) do
     t.string   "title"
     t.text     "description"
     t.integer  "organisation_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "volunteer_ops", ["organisation_id"], name: "index_volunteer_ops_on_organisation_id", using: :btree
