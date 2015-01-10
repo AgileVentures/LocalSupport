@@ -8,3 +8,21 @@ Then(/^the address of the organisation named "(.*?)" should not be editable nor 
   expect(page).not_to have_content org_address
   expect(page).not_to have_field('proposed_organisation_edit_address')
 end
+When(/^I propose the following edit:$/) do |table|
+
+  table.hashes.each do |hash|
+    fields = { name: 'proposed_organisation_edit_name',
+               description: 'proposed_organisation_edit_description',
+               website: 'proposed_organisation_edit_website'}
+    hash.each_pair do |field_name, field_value|
+      fill_in(fields[field_name.to_sym],:with => field_value)
+    end
+  end
+end
+  #
+Then(/^"(.*?)" should have the following proposed edits:$/) do |arg1, table|
+  #     # table is a Cucumber::Ast::Table
+  #       pending # express the regexp above with the code you wish you had
+  #       end
+  #:
+end

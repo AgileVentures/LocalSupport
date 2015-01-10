@@ -20,3 +20,17 @@ I want to be able to propose edits to inaccurate organisation listings
     And I should be on the new organisation proposed edit page for the organisation named "Friendly"
     And the telephone field of the proposed edit should be pre-populated with the telephone of the organisation named "Friendly"
     And the address of the organisation named "Friendly" should not be editable nor appear
+
+  Scenario: Propose an edit
+    Given I am signed in as a charity worker unrelated to "Friendly"
+    And I visit the show page for the organisation named "Friendly"
+    And I click "Propose an edit"
+    Then I should be on the new organisation proposed edit page for the organisation named "Friendly"
+    When I propose the following edit:
+      | name         | description            | website               |
+      | Unfriendly   | Bereavement Counseling | http://unfriendly.org |
+    And I press "Propose this edit"
+    Then "Friendly" should have the following proposed edits:
+      | name         | description            | website               |
+      | Unfriendly   | Bereavement Counseling | http://unfriendly.org |
+    

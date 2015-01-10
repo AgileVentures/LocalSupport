@@ -47,6 +47,13 @@ Then /^I should be on the new organisation proposed edit page for the organisati
   url = new_organisation_proposed_organisation_edit_path org
   current_path.should eq url
 end
+
+Then /^I should be on the edit organisation proposed edit page for the organisation named "(.*?)"$/ do |name|
+  org = Organisation.find_by_name(name)
+  url = edit_organisation_proposed_organisation_edit_path org
+  current_path.should eq url
+end
+
 Then /^I (visit|should be on) the new volunteer op page for "(.*?)"$/ do |mode, name| 
   org = Organisation.find_by_name(name)
   url = new_organisation_volunteer_op_path(org)
