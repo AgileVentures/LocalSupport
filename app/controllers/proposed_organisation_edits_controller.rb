@@ -6,7 +6,7 @@ class ProposedOrganisationEditsController < ApplicationController
   end
   def create
     org = Organisation.find(params[:organisation_id])
-    create_params = params.require(:proposed_organisation_edit).permit(:name, :description, :website).merge(organisation: org)
+    create_params = params.require(:proposed_organisation_edit).permit(:name, :description, :website, :email).merge(organisation: org)
     redirect_to organisation_proposed_organisation_edit_path org, ProposedOrganisationEdit.create!(create_params)
   end
 end

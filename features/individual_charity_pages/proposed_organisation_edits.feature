@@ -41,11 +41,13 @@ I want to be able to propose edits to inaccurate organisation listings
     And I click "Propose an edit"
     Then I should be on the new organisation proposed edit page for the organisation named "Friendly"
     When I propose the following edit:
-      | name         | description            | website               |
-      | Unfriendly   | Bereavement Counseling | http://unfriendly.org |
+      | name         | description            | website               | email                      |
+      | Unfriendly   | Bereavement Counseling | http://unfriendly.org | newemail@friendly.xx       |
     And I press "Propose this edit"
     Then "Friendly" should have the following proposed edits:
-      | name         | description            | website               |
-      | Unfriendly   | Bereavement Counseling | http://unfriendly.org |
+      | name         | description            | website               | email                      |
+      | Unfriendly   | Bereavement Counseling | http://unfriendly.org | newemail@friendly.xx       |
     Then I should be on the show organisation proposed edit page for the organisation named "Friendly"
-    
+    And I should see "Friendly"
+    And I should see "Unfriendly"
+
