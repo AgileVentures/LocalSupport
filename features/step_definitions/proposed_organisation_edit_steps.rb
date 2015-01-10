@@ -24,7 +24,6 @@ Then(/^"(.*?)" should have the following proposed edits:$/) do |name, table|
   proposed_edit = Organisation.find_by(name: name).edits.first
   table.hashes.each do |hash|
     hash.each_pair do |field_name, field_value|
-      byebug
       expect(proposed_edit.send(field_name)).to eq field_value
     end
   end

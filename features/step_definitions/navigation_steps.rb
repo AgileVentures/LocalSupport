@@ -48,9 +48,11 @@ Then /^I should be on the new organisation proposed edit page for the organisati
   current_path.should eq url
 end
 
-Then /^I should be on the edit organisation proposed edit page for the organisation named "(.*?)"$/ do |name|
+Then /^I should be on the show organisation proposed edit page for the organisation named "(.*?)"$/ do |name|
   org = Organisation.find_by_name(name)
-  url = edit_organisation_proposed_organisation_edit_path org
+  prop_ed = org.edits.first
+  byebug
+  url = organisation_proposed_organisation_edit_path org, prop_ed
   current_path.should eq url
 end
 

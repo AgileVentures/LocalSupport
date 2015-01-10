@@ -17,7 +17,7 @@ LocalSupport::Application.routes.draw do
   resources :volunteer_ops, :only => [:index, :edit, :show, :update, :destroy]
   resources :organisations do
     resources :volunteer_ops, :only => [:new, :create]
-    resources :proposed_organisation_edits, :only => [:new, :create]
+    resources :proposed_organisation_edits, :only => [:new, :show, :create]
   end
   resources :users
 

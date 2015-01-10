@@ -33,4 +33,5 @@ I want to be able to propose edits to inaccurate organisation listings
     Then "Friendly" should have the following proposed edits:
       | name         | description            | website               |
       | Unfriendly   | Bereavement Counseling | http://unfriendly.org |
+    Then I should be on the show organisation proposed edit page for the organisation named "Friendly"
     
