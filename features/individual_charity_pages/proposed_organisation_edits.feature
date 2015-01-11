@@ -8,6 +8,7 @@ I want to be able to propose edits to inaccurate organisation listings
       | name              | description             | address        | postcode | telephone | website             | email             | publish_phone | publish_address | donation_info  |
       | Friendly          | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.org | admin@friendly.xx | true          |  false          | www.donate.com |
       | Really Friendly   | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.org | admin@friendly.xx | true          |  true           | www.donate.com |
+      | No website        | no website              | 34 pinner road | HA1 4HZ  | 020800000 |                     | email@friendly.xx | true          |  true           |                | 
 
     Given the following users are registered:
       | email                         | password | organisation        | confirmed_at         | admin |
@@ -36,6 +37,23 @@ I want to be able to propose edits to inaccurate organisation listings
     And I should be on the new organisation proposed edit page for the organisation named "Friendly"
     And the telephone field of the proposed edit should be pre-populated with the telephone of the organisation named "Friendly"
     And the address of the organisation named "Friendly" should not be editable nor appear
+    
+  Scenario: Propose an edit with no website or donation info initially
+    Given I am signed in as a charity worker unrelated to "No website"
+    And I visit the show page for the organisation named "No website"
+    And I click "Propose an edit"
+    When I propose the following edit:
+      | website         | donation_info     |
+      | www.newness.org | www.new.org/donate|
+    And I press "Propose this edit"
+    Then "No website" should have the following proposed edits:
+      | website         | donation_info     |
+      | www.newness.org | www.new.org/donate|
+    Then I should be on the show organisation proposed edit page for the organisation named "No website"
+    And the following proposed edits should be displayed on the page:
+      | field                  | current value   | proposed value     |
+      | donation_info          |                 | www.new.org/donate |
+      | website                |                 | www.newness.org    |
 
   Scenario: Propose an edit
     Given I am signed in as a charity worker unrelated to "Really Friendly"
