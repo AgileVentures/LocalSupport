@@ -14,7 +14,7 @@
       </p>
     <% end %>
 
-    <% if @organisation.postcode.present? %>
+    <% if @proposed_organisation_edit.editable? :postcode %>
         <p class= <%= @proposed_organisation_edit.has_proposed_edit?(:postcode) ? "current_value": ""%>>
           <b>Postcode:</b>
           <%= @organisation.postcode %>
@@ -60,7 +60,7 @@
       </p>
     <% end %>
 
-    <% if @organisation.postcode.present? %>
+    <% if @proposed_organisation_edit.editable? :postcode %>
         <p class= <%= @proposed_organisation_edit.has_proposed_edit?(:postcode) ? "proposed_value": ""%>>
           <b>Postcode:</b>
           <%= @proposed_organisation_edit.postcode %>
