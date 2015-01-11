@@ -14,6 +14,7 @@ module FormHelper
     proposed_organisation_edit.website = proposed_organisation_edit.organisation.website
     proposed_organisation_edit.donation_info = proposed_organisation_edit.organisation.donation_info
     proposed_organisation_edit.telephone = proposed_organisation_edit.organisation.telephone
+    proposed_organisation_edit.donation_info = proposed_organisation_edit.organisation.donation_info
     proposed_organisation_edit
   end
 end

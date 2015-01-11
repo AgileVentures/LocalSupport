@@ -13,8 +13,11 @@ When(/^I propose the following edit:$/) do |table|
   table.hashes.each do |hash|
     fields = { name: 'proposed_organisation_edit_name',
                description: 'proposed_organisation_edit_description',
-               website: 'proposed_organisation_edit_website', 
-               email: 'proposed_organisation_edit_email', 
+               website: 'proposed_organisation_edit_website',
+               email: 'proposed_organisation_edit_email',
+               postcode: 'proposed_organisation_edit_postcode',
+               telephone: 'proposed_organisation_edit_telephone',
+               donation_info: 'proposed_organisation_edit_donation_info',
                address: 'proposed_organisation_edit_address'}
     hash.each_pair do |field_name, field_value|
       fill_in(fields[field_name.to_sym],:with => field_value)

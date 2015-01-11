@@ -5,9 +5,9 @@ I want to be able to propose edits to inaccurate organisation listings
 
   Background: organisations have been added to database
     Given the following organisations exist:
-      | name              | description             | address        | postcode | telephone | website             | email             | publish_phone | publish_address |
-      | Friendly          | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.org | admin@friendly.xx | true          |  false          |
-      | Really Friendly   | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.org | admin@friendly.xx | true          |  true           |
+      | name              | description             | address        | postcode | telephone | website             | email             | publish_phone | publish_address | donation_info  |
+      | Friendly          | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.org | admin@friendly.xx | true          |  false          | www.donate.com |
+      | Really Friendly   | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.org | admin@friendly.xx | true          |  true           | www.donate.com |
 
     Given the following users are registered:
       | email                         | password | organisation        | confirmed_at         | admin |
@@ -43,18 +43,20 @@ I want to be able to propose edits to inaccurate organisation listings
     And I click "Propose an edit"
     Then I should be on the new organisation proposed edit page for the organisation named "Really Friendly"
     When I propose the following edit:
-      | name         | description            | website               | email                      |  address         | 
-      | Unfriendly   | Mourning loved ones    | http://unfriendly.org | newemail@friendly.xx       |  124 Pinner Road |
+      | name         | description            | website               | email                      |  address         | postcode | telephone | donation_info  |
+      | Unfriendly   | Mourning loved ones    | http://unfriendly.org | newemail@friendly.xx       |  124 Pinner Road | HA8 7TB  | 88888888  | www.pleasedonate.com |
     And I press "Propose this edit"
     Then "Really Friendly" should have the following proposed edits:
-      | name         | description            | website               | email                      |  address         |
-      | Unfriendly   | Mourning loved ones    | http://unfriendly.org | newemail@friendly.xx       |  124 Pinner Road |
+      | name         | description            | website               | email                      |  address         | postcode | telephone | donation_info   |
+      | Unfriendly   | Mourning loved ones    | http://unfriendly.org | newemail@friendly.xx       |  124 Pinner Road | HA8 7TB  | 88888888  | www.pleasedonate.com  |
     Then I should be on the show organisation proposed edit page for the organisation named "Really Friendly"
     And the following proposed edits should be displayed on the page:
-      | field       | current value                  | proposed value        |
-      | name        | Really Friendly                | Unfriendly            |
-      | website     | http://friendly.org            | http://unfriendly.org |
-      | email       | admin@friendly.xx              | newemail@friendly.xx  |
-      | description | Bereavement Counselling        | Mourning loved ones   | 
-      | address     | 34 Pinner Road                 | 124 Pinner Road       | 
-
+      | field         | current value                  | proposed value        |
+      | name          | Really Friendly                | Unfriendly            |
+      | website       | http://friendly.org            | http://unfriendly.org |
+      | email         | admin@friendly.xx              | newemail@friendly.xx  |
+      | description   | Bereavement Counselling        | Mourning loved ones   |
+      | address       | 34 pinner road                 | 124 Pinner Road       |
+      | postcode      | HA1 4HZ                        | HA8 7TB               |
+      | telephone     | 020800000                      | 88888888              |
+      | donation_info | www.donate.com                 | www.pleasedonate.com  |

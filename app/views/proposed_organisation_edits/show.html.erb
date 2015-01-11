@@ -6,11 +6,19 @@
     <p>
       <%= simple_format @organisation.description, class: @proposed_organisation_edit.has_proposed_edit?(:description) ? "current_value" : "" %>
     </p>
+
     <% if @proposed_organisation_edit.editable?(:address) %>
       <p class= <%= @proposed_organisation_edit.has_proposed_edit?(:address) ? "current_value": ""%>>
         <b>Address:</b>
         <%= @organisation.address %>
       </p>
+    <% end %>
+
+    <% if @organisation.postcode.present? %>
+        <p class= <%= @proposed_organisation_edit.has_proposed_edit?(:postcode) ? "current_value": ""%>>
+          <b>Postcode:</b>
+          <%= @organisation.postcode %>
+        </p>
     <% end %>
 
     <% if @proposed_organisation_edit.editable?(:email) %>
@@ -20,11 +28,21 @@
         </p>
     <% end %>
     <% if @organisation.website.present? %>
-        <p>
-          <b>Website:</b>
-          <div class= <%=  @proposed_organisation_edit.has_proposed_edit?(:website) ? "current_value": ""%>>
-            <%= link_to @organisation.website, @organisation.website, {:target => '_blank'} %>
-          </div>
+      <p class= <%=  @proposed_organisation_edit.has_proposed_edit?(:website) ? "current_value": ""%>>
+        <b>Website:</b>
+          <%= link_to @organisation.website, @organisation.website, {:target => '_blank'} %>
+      </p>
+    <% end %>
+    <% if @proposed_organisation_edit.editable?(:telephone) %>
+      <p class= <%= @proposed_organisation_edit.has_proposed_edit?(:telephone) ? "current_value": ""%>>
+        <b>Telephone:</b>
+        <%= @organisation.telephone %>
+      </p>
+    <% end %>
+    <% if @organisation.donation_info.present? %>
+        <p class= <%=  @proposed_organisation_edit.has_proposed_edit?(:donation_info) ? "current_value": ""%>>
+          <b>Donation Info:</b>
+          <%= @organisation.donation_info %>
         </p>
     <% end %>
   </div>
@@ -35,20 +53,42 @@
     <p>
       <%= simple_format @proposed_organisation_edit.description, class: @proposed_organisation_edit.has_proposed_edit?(:description) ? "proposed_value" : ""%>
     </p>
-    <% if @proposed_organisation_edit.editable?(:email) %>
-      <div class= <%=  @proposed_organisation_edit.has_proposed_edit?(:email) ? "proposed_value": ""%>>
-        <p>
-          <b>Email:</b>
-          <a href="mailto:<%= @proposed_organisation_edit.email %>"><%= @proposed_organisation_edit.email %></a>
+    <% if @proposed_organisation_edit.editable?(:address) %>
+      <p class= <%= @proposed_organisation_edit.has_proposed_edit?(:address) ? "proposed_value": ""%>>
+        <b>Address:</b>
+        <%= @proposed_organisation_edit.address %>
+      </p>
+    <% end %>
+
+    <% if @organisation.postcode.present? %>
+        <p class= <%= @proposed_organisation_edit.has_proposed_edit?(:postcode) ? "proposed_value": ""%>>
+          <b>Postcode:</b>
+          <%= @proposed_organisation_edit.postcode %>
         </p>
-      </div>
+    <% end %>
+
+    <% if @proposed_organisation_edit.editable?(:email) %>
+      <p class= <%=  @proposed_organisation_edit.has_proposed_edit?(:email) ? "proposed_value": ""%>>
+        <b>Email:</b>
+        <a href="mailto:<%= @proposed_organisation_edit.email %>"><%= @proposed_organisation_edit.email %></a>
+      </p>
     <% end %>
     <% if @organisation.website.present? %>
-        <p>
-          <b>Website:</b>
-          <div class= <%=  @proposed_organisation_edit.has_proposed_edit?(:website) ? "proposed_value": ""%>>
-            <%= link_to @proposed_organisation_edit.website, @proposed_organisation_edit.website, {:target => '_blank'} %>
-          </div>
+      <p class= <%=  @proposed_organisation_edit.has_proposed_edit?(:website) ? "proposed_value": ""%>>
+        <b>Website:</b>
+          <%= link_to @proposed_organisation_edit.website, @proposed_organisation_edit.website, {:target => '_blank'} %>
+      </p>
+    <% end %>
+    <% if @organisation.telephone.present? && @organisation.publish_phone? %>
+        <p class= <%= @proposed_organisation_edit.has_proposed_edit?(:telephone) ? "proposed_value": ""%>>
+          <b>Telephone:</b>
+          <%= @proposed_organisation_edit.telephone %>
+        </p>
+    <% end %>
+    <% if @organisation.donation_info.present? %>
+        <p class= <%=  @proposed_organisation_edit.has_proposed_edit?(:donation_info) ? "proposed_value": ""%>>
+          <b>Donation Info:</b>
+          <%= @proposed_organisation_edit.donation_info %>
         </p>
     <% end %>
   </div>
