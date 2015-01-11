@@ -36,7 +36,7 @@ describe ProposedOrganisationEdit do
       it{expect(proposed_edit.has_proposed_edit?(:name)).to be true }
     end
     context 'editabilty has changed' do
-      it{pending}
+      pending
     end
   end
 end
