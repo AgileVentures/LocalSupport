@@ -4,8 +4,15 @@
       <%= @organisation.name %>
     </h3>
     <p>
-      <%= simple_format @organisation.description %>
+      <%= simple_format @organisation.description, class: @proposed_organisation_edit.has_proposed_edit?(:description) ? "current_value" : "" %>
     </p>
+    <% if @proposed_organisation_edit.editable?(:address) %>
+      <p class= <%= @proposed_organisation_edit.has_proposed_edit?(:address) ? "current_value": ""%>>
+        <b>Address:</b>
+        <%= @organisation.address %>
+      </p>
+    <% end %>
+
     <% if @proposed_organisation_edit.editable?(:email) %>
         <p class= <%= @proposed_organisation_edit.has_proposed_edit?(:email) ? "current_value": ""%>>
           <b>Email:</b>
@@ -26,7 +33,7 @@
       <%= @proposed_organisation_edit.name %>
     </h3>
     <p>
-      <%= simple_format @proposed_organisation_edit.description %>
+      <%= simple_format @proposed_organisation_edit.description, class: @proposed_organisation_edit.has_proposed_edit?(:description) ? "proposed_value" : ""%>
     </p>
     <% if @proposed_organisation_edit.editable?(:email) %>
       <div class= <%=  @proposed_organisation_edit.has_proposed_edit?(:email) ? "proposed_value": ""%>>

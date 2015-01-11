@@ -14,7 +14,8 @@ When(/^I propose the following edit:$/) do |table|
     fields = { name: 'proposed_organisation_edit_name',
                description: 'proposed_organisation_edit_description',
                website: 'proposed_organisation_edit_website', 
-               email: 'proposed_organisation_edit_email'}
+               email: 'proposed_organisation_edit_email', 
+               address: 'proposed_organisation_edit_address'}
     hash.each_pair do |field_name, field_value|
       fill_in(fields[field_name.to_sym],:with => field_value)
     end
