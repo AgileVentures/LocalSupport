@@ -31,6 +31,18 @@ class Organisation < ActiveRecord::Base
   scope :null_users, lambda { includes(:users).where("users.organisation_id IS NULL").references(:users) }
   scope :without_matching_user_emails, lambda {where("organisations.email NOT IN (#{User.select('email').to_sql})")}
 
+  enum step: {
+    the_first_step: 0,
+    _description: 1,
+    _address: 2,
+    _email_address: 3,
+    _website_url: 4,
+    _phone_number: 5,
+    _donation_url: 6,
+    _admins: 7,
+    _categories: 8,
+  }
+
   after_save :uninvite_users, if: ->{ email_changed? }
 
   def not_updated_recently?

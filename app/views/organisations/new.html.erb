@@ -1,5 +1,10 @@
 <h1>New organisation</h1>
 
-<%= render 'form' %>
+<%= render "organisations/new_org_wizard/#{@organisation.step}" %>
 
+<%# <% content_for :scripts do %>
+<%#     <%= javascript_include_tag 'invitations' %>
+<%# <% end %>
+
+<% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
 <%= link_to 'Back', organisations_path %>

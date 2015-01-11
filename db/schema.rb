@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024215924) do
+ActiveRecord::Schema.define(version: 20141221210656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20141024215924) do
     t.boolean  "publish_phone",   default: false
     t.boolean  "publish_email",   default: true
     t.datetime "deleted_at"
+    t.integer  "step",            default: 0
   end
 
   create_table "pages", force: true do |t|
