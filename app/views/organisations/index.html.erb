@@ -1,6 +1,6 @@
-<%= form_tag("/organisations/search", :class => "form-horizontal", :method => "get") do %>
-  <div class="control-group">
-    <div class="form-inline">
+<%= form_tag("/organisations/search", :method => "get") do %>
+  <div class="flex-column">
+    <div class="flex-row">
       <div class="left-side">
         <%= label_tag(:q, "What They Do", class: 'field-label') %>
       </div>
@@ -8,7 +8,7 @@
         <%= select("category", "id", @what_they_do, { :include_blank => 'All' }, { class: 'category-select' }) %>
       </div>
     </div>
-    <div class="form-inline">
+    <div class="flex-row">
       <div class="left-side">
         <%= label_tag(:q, "Who They Help", class: 'field-label') %>
       </div>
@@ -16,7 +16,7 @@
         <%= select("category", "id", @who_they_help, { :include_blank => 'All' }, { class: 'category-select' }) %>
       </div>
     </div>
-    <div class="form-inline">
+    <div class="flex-row">
       <div class="left-side">
         <%= label_tag(:q, "How They Help", class: 'field-label') %>
       </div>
@@ -24,7 +24,7 @@
         <%= select("category", "id", @how_they_help, { :include_blank => 'All' }, { class: 'category-select' }) %>
       </div>
     </div>
-    <div class="form-inline">
+    <div class="flex-row">
       <div class="left-side">
         <%= label_tag(:q, "Optional Search Text", class: 'field-label') %>
       </div>
