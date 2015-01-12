@@ -25,8 +25,10 @@ When(/^I propose the following edit:$/) do |table|
   end
 end
   #
-Then(/^"(.*?)" should have the following proposed edits:$/) do |name, table|
+Then(/^"(.*?)" should have the following proposed edits by user "(.*?)":$/) do |name, editor_email, table|
   proposed_edit = Organisation.find_by(name: name).edits.first
+  editor = User.find_by(email: editor_email)
+  expect(proposed_edit.editor).to eq editor
   table.hashes.each do |hash|
     hash.each_pair do |field_name, field_value|
       expect(proposed_edit.send(field_name)).to eq field_value

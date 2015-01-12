@@ -1,6 +1,7 @@
 require 'proposes_edits'
 class ProposedOrganisationEdit < ActiveRecord::Base
   belongs_to :organisation
+  belongs_to :editor, :class_name => "User", :foreign_key => "user_id"
   include ProposesEdits
   proposes_edits_to :organisation
   editable_fields :address, :name, :description, :postcode, :email, :website, :telephone, :donation_info

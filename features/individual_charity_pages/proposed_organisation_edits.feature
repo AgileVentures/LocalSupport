@@ -39,14 +39,15 @@ I want to be able to propose edits to inaccurate organisation listings
     And the address of the organisation named "Friendly" should not be editable nor appear
     
   Scenario: Propose an edit with no website or donation info initially
-    Given I am signed in as a charity worker unrelated to "No website"
+    Given I visit the home page
+    And I sign in as "registered_user-2@example.com" with password "pppppppp"
     And I visit the show page for the organisation named "No website"
     And I click "Propose an edit"
     When I propose the following edit:
       | website         | donation_info     | postcode |
       | www.newness.org | www.new.org/donate| HA1 4HZ  |
     And I press "Propose this edit"
-    Then "No website" should have the following proposed edits:
+    Then "No website" should have the following proposed edits by user "registered_user-2@example.com":
       | website         | donation_info     | postcode |
       | www.newness.org | www.new.org/donate| HA1 4HZ  |
     Then I should be on the show organisation proposed edit page for the organisation named "No website"
@@ -57,7 +58,8 @@ I want to be able to propose edits to inaccurate organisation listings
       | postcode               |                 | HA1 4HZ            |
 
   Scenario: Propose an edit
-    Given I am signed in as a charity worker unrelated to "Really Friendly"
+    Given I visit the home page
+    And I sign in as "registered_user-2@example.com" with password "pppppppp"
     And I visit the show page for the organisation named "Really Friendly"
     And I click "Propose an edit"
     Then I should be on the new organisation proposed edit page for the organisation named "Really Friendly"
@@ -65,7 +67,7 @@ I want to be able to propose edits to inaccurate organisation listings
       | name         | description            | website               | email                      |  address         | postcode | telephone | donation_info  |
       | Unfriendly   | Mourning loved ones    | http://unfriendly.org | newemail@friendly.xx       |  124 Pinner Road | HA8 7TB  | 88888888  | www.pleasedonate.com |
     And I press "Propose this edit"
-    Then "Really Friendly" should have the following proposed edits:
+    Then "Really Friendly" should have the following proposed edits by user "registered_user-2@example.com":
       | name         | description            | website               | email                      |  address         | postcode | telephone | donation_info   |
       | Unfriendly   | Mourning loved ones    | http://unfriendly.org | newemail@friendly.xx       |  124 Pinner Road | HA8 7TB  | 88888888  | www.pleasedonate.com  |
     Then I should be on the show organisation proposed edit page for the organisation named "Really Friendly"
