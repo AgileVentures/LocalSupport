@@ -15,25 +15,12 @@
   text-rendering: optimizelegibility;
 }
 
-.form-inline {
-  margin-bottom: 5px;
-}
-
-/* .left-side { */
-/*   display: inline-block; */
-/*   width: 24%; */
-/* } */
-/*  */
-/* .right-side { */
-/*   display: inline-block; */
-/*   width: 75%; */
-/* } */
-
 .field-label {
   color: #899096;
   line-height: 19px;
 }
 
+// http://learnlayout.com/flexbox.html
 .flex-column {
   display: flex;
   flex-direction: column;
@@ -42,10 +29,18 @@
 .flex-row {
   display: flex;
   flex-direction: row;
+  margin-bottom: 5px;
 }
 
 .left-side {
   width: 180px;
+
+  display: flex;
+
+  .field-label {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
 }
 
 .right-side {
@@ -57,18 +52,16 @@
 
   select {
     width: 100%;
-    margin-bottom: 5px;
+    margin: auto;
   }
 
   input[type="text"] {
     width: 100%;
-    margin-bottom: 5px;
+    margin-bottom: 0;
   }
 
   input[type="submit"] {
     flex: none;
-    width: 70px !important;
     margin-left: 5px;
-    margin-bottom: 5px;
   }
 }
