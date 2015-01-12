@@ -29,39 +29,51 @@
 .flex-row {
   display: flex;
   flex-direction: row;
-  margin-bottom: 5px;
 }
 
-.left-side {
-  width: 180px;
+#organisation_search {
+  .flex-row {
+    margin-bottom: 5px;
+  }
 
-  display: flex;
+  .left-side {
+    width: 180px;
 
-  .field-label {
-    margin-top: auto;
-    margin-bottom: auto;
+    display: flex;
+
+    .field-label {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+  }
+
+  .right-side {
+    flex: initial;
+    width: 500px;
+    min-width: 100px;
+
+    display: flex;
+
+    select {
+      width: 100%;
+      margin: auto;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      margin-bottom: 0;
+    }
+
+    input[type="submit"] {
+      flex: none;
+      margin-left: 5px;
+    }
   }
 }
 
-.right-side {
-  flex: initial;
-  width: 500px;
-  min-width: 100px;
-
-  display: flex;
-
-  select {
-    width: 100%;
-    margin: auto;
-  }
-
-  input[type="text"] {
-    width: 100%;
-    margin-bottom: 0;
-  }
-
-  input[type="submit"] {
-    flex: none;
-    margin-left: 5px;
-  }
+#orgs_scroll {
+  height: 340px;
+  width: 100%;
+  border: 1px solid #ccc;
+  overflow-y: scroll;
 }

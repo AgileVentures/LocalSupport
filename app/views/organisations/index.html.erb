@@ -1,4 +1,4 @@
-<%= form_tag("/organisations/search", :method => "get") do %>
+<%= form_tag("/organisations/search", :id => "organisation_search", :method => "get") do %>
   <div class="flex-column">
     <div class="flex-row">
       <div class="left-side">
@@ -36,23 +36,20 @@
   </div>
 <% end %>
 
-<div id="orgs_scroll" style="height:340px;width:100%;border:1px solid #ccc;overflow:scroll;">
-  <div class="table table-bordered">
+<div id="orgs_scroll">
+  <div class="table">
     <table>
-      <div id="organisations">
-        <% @organisations.each do |organisation| %>
-          <tr>
-            <td>
-              <u><%= link_to organisation.name, organisation %></u><br/>
-              <%= smart_truncate(organisation.description) %>
-            </td>
-          </tr>
-        <% end %>
-      </div>
+      <% @organisations.each do |organisation| %>
+        <tr>
+          <td>
+            <u><%= link_to organisation.name, organisation %></u><br/>
+            <%= smart_truncate(organisation.description) %>
+          </td>
+        </tr>
+      <% end %>
     </table>
   </div>
 </div>
-<br/>
 
 <div style="width:50%;float:left">
   <%= link_to_if(current_user.try(:admin?), 'Add Organisation',
