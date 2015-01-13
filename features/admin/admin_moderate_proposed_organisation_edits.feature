@@ -24,3 +24,6 @@ Feature: Members of HCN may propose edits to organisations
     Given I am signed in as an admin
     And I visit the home page
     And I click on the all proposed edits link
+    And I click on view details for the proposed edit for the organisation named "Friendly"
+    Then I should see the accept edit button
+    And I should see the reject edit button

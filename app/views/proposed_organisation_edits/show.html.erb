@@ -46,6 +46,12 @@
           <%= @organisation.donation_info %>
         </p>
     <% end %>
+    <% if current_user.try(:admin?) %>
+        <div class = "centered" style="width: 25%;">
+          <%= link_to("Reject Edit", "#", {:style => "text-align: center;
+            margin: 0 auto;", :class => 'btn btn-danger'}) %>
+        </div>
+    <% end %>
   </div>
   <div class="span6">
     <h3 class= <%=  @proposed_organisation_edit.has_proposed_edit?(:name) ? "proposed_value": ""%>>
@@ -92,5 +98,12 @@
           <%= @proposed_organisation_edit.donation_info %>
         </p>
     <% end %>
+    <% if current_user.try(:admin?) %>
+        <div class = "centered" style="width: 25%;">
+          <%= link_to("Accept Edit", "#", {:style => "text-align: center;
+            margin: 0 auto;", :class => 'btn btn-primary'}) %>
+        </div>
+    <% end %>
   </div>
 </div>
+
