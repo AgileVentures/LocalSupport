@@ -14,5 +14,8 @@ class ProposedOrganisationEditsController < ApplicationController
     @organisation = Organisation.find(params[:organisation_id])
     @proposed_organisation_edit = ProposedOrganisationEdit.find(params[:id])
   end
+  def index
+
+  end
 
 end

@@ -41,3 +41,16 @@ Then(/^the following proposed edits should be displayed on the page:$/) do |tabl
     expect(page).to have_css('.proposed_value', :text => hash['proposed value'])
   end
 end
+
+Given(/^the following proposed edits exist:$/) do |table|
+  table.hashes.each do |hash|
+    create_hash = {}
+    hash.each_pair do |field_name, field_value|
+      key_value_to_add = {field_name.to_sym => field_value}
+      key_value_to_add = {editor: User.find_by(email: field_value)} if field_name == "editor_email"
+      key_value_to_add = {organisation: Organisation.find_by(name: field_value)} if field_name == "original_name"
+      create_hash.merge! key_value_to_add
+    end
+    ProposedOrganisationEdit.create! create_hash
+  end
+end
