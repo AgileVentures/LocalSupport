@@ -15,7 +15,7 @@ class ProposedOrganisationEditsController < ApplicationController
     @proposed_organisation_edit = ProposedOrganisationEdit.find(params[:id])
   end
   def index
-
+    @proposed_organisation_edits = ProposedOrganisationEdit.all
   end
 
 end

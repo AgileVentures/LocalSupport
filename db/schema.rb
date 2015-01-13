@@ -77,6 +77,8 @@ ActiveRecord::Schema.define(version: 20150112200028) do
     t.text     "donation_info"
     t.datetime "deleted_at"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "proposed_organisation_edits", ["user_id"], name: "index_proposed_organisation_edits_on_user_id", using: :btree
