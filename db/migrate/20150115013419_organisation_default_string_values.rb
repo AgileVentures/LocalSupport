@@ -8,6 +8,7 @@ class OrganisationDefaultStringValues < ActiveRecord::Migration
     description
     website
     telephone
+    donation_info
   ]
 
   def up

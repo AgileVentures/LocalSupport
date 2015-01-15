@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20150115013419) do
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
-    t.text     "donation_info"
+    t.text     "donation_info",   default: "",    null: false
     t.boolean  "publish_address", default: false
     t.boolean  "publish_phone",   default: false
     t.boolean  "publish_email",   default: true
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20150115013419) do
     t.text     "description",     default: "", null: false
     t.string   "website",         default: "", null: false
     t.string   "telephone",       default: "", null: false
-    t.text     "donation_info"
+    t.text     "donation_info",   default: "", null: false
     t.datetime "deleted_at"
     t.integer  "user_id"
     t.datetime "created_at"
