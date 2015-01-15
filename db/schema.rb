@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150112200028) do
+ActiveRecord::Schema.define(version: 20150115013419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,13 +35,13 @@ ActiveRecord::Schema.define(version: 20150112200028) do
   end
 
   create_table "organisations", force: true do |t|
-    t.string   "name"
-    t.string   "address"
-    t.string   "postcode"
-    t.string   "email"
-    t.text     "description"
-    t.string   "website"
-    t.string   "telephone"
+    t.string   "name",            default: "",    null: false
+    t.string   "address",         default: "",    null: false
+    t.string   "postcode",        default: "",    null: false
+    t.string   "email",           default: "",    null: false
+    t.text     "description",     default: "",    null: false
+    t.string   "website",         default: "",    null: false
+    t.string   "telephone",       default: "",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "latitude"
@@ -67,13 +67,13 @@ ActiveRecord::Schema.define(version: 20150112200028) do
 
   create_table "proposed_organisation_edits", force: true do |t|
     t.integer  "organisation_id"
-    t.string   "name"
-    t.string   "address"
-    t.string   "postcode"
-    t.string   "email"
-    t.text     "description"
-    t.string   "website"
-    t.string   "telephone"
+    t.string   "name",            default: "", null: false
+    t.string   "address",         default: "", null: false
+    t.string   "postcode",        default: "", null: false
+    t.string   "email",           default: "", null: false
+    t.text     "description",     default: "", null: false
+    t.string   "website",         default: "", null: false
+    t.string   "telephone",       default: "", null: false
     t.text     "donation_info"
     t.datetime "deleted_at"
     t.integer  "user_id"
