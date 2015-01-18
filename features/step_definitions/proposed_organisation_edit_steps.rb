@@ -45,13 +45,20 @@ Then(/^the following proposed edits should be displayed on the page:$/) do |tabl
              donation_info: '_organisation_donation_info',
              address: '_organisation_address'}
   table.hashes.each do |hash|
-    byebug
-    expect(page).to have_css("##{'current'+fields[hash['field'].to_sym]}.current_value", :text => hash['current value'])
-    expect(page).to have_css("##{'proposed'+fields[hash['field'].to_sym]}.proposed_value", :text => hash['proposed value'])
+    if (hash['current value'].blank?)
+      expect(page).not_to have_css("##{'current'+fields[hash['field'].to_sym]}.current_value a")
+    end
+    within("##{'current'+fields[hash['field'].to_sym]}") do
+      expect(find('.field_value').text).to eq hash['current value']
+    end
+    within("##{'proposed'+fields[hash['field'].to_sym]}") do
+      expect(find('.field_value').text).to eq hash['proposed value']
+    end
   end
 end
 
 Given(/^the following proposed edits exist:$/) do |table|
+  byebug 
   table.hashes.each do |hash|
     create_hash = {}
     hash.each_pair do |field_name, field_value|
