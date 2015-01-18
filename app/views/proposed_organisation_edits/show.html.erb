@@ -6,7 +6,9 @@
 <div class="row">
   <div class="span6">
     <h3 class= <%= show_class('current', 'name') %>>
+      <span class='field_value'>
       <%= @organisation.name %>
+      </span>
     </h3>
     <p>
       <%= simple_format @organisation.description, class: show_class('current', 'description') %>
@@ -43,7 +45,7 @@
       <p class= <%= show_class('current', 'website') %>>
         <span><b>Website:</b></span>
         <span class='field_value'>
-          <%= link_to @organisation.website, @organisation.website, {:target => '_blank'} if @organisation.website.present? %>
+          <%= link_to @organisation.website, @organisation.website, {:target => '_blank'} if @organisation.website.present?%>
         </span>
       </p>
     <% end %>
@@ -74,10 +76,14 @@
   </div>
   <div class="span6">
     <h3 class= <%= show_class('proposed', 'name') %>>
+      <span class="field_value">
       <%= @proposed_organisation_edit.name %>
+      </span>
     </h3>
     <p>
+      <span class="field_value">
       <%= simple_format @proposed_organisation_edit.description, class: show_class('proposed', 'description') %>
+      </span>
     </p>
 
     <% if @proposed_organisation_edit.editable?(:address) %>
@@ -111,7 +117,7 @@
       <p class= <%= show_class('proposed', 'website') %>>
         <span><b>Website:</b></span>
         <span class='field_value'>
-          <%= link_to @proposed_organisation_edit.website, @proposed_organisation_edit.website, {:target => '_blank'} %>
+          <%= link_to @proposed_organisation_edit.website, @proposed_organisation_edit.website, {:target => '_blank'} if @proposed_organisation_edit.website.present?%>
         </span>
       </p>
     <% end %>

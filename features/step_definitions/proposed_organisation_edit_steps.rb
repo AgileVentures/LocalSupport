@@ -38,17 +38,36 @@ end
 
 Then(/^the following proposed edits should be displayed on the page:$/) do |table|
   table.hashes.each do |hash|
-    within('.current_organisation_' + hash['field']) do
-      expect(find('.field_value').text).to eq hash['current value']
+    current_class = '.current_organisation_' + hash['field']
+    proposed_class = '.proposed_organisation_' + hash['field']
+    if (hash['field'] == 'website')
+      if hash['current value'].blank?
+        expect(page).not_to have_css(current_class + " .field_value a")
+      else
+        expect(page).to have_css current_class + " .field_value a"
+      end
+      if hash['proposed value'].blank?
+        expect(page).not_to have_css(proposed_class + " .field_value a")
+      else
+        expect(page).to have_css proposed_class + " .field_value a"
+      end
     end
-    within('.proposed_organisation_' + hash['field']) do
-      expect(find('.field_value').text).to eq hash['proposed value']
+    if hash['field'] == 'description'
+      expect(find(current_class).text).to eq hash['current value']
+      expect(find(proposed_class).text).to eq hash['proposed value']
+    else
+      within(current_class) do
+        expect(find('.field_value').text).to eq hash['current value']
+      end
+      within(proposed_class) do
+        expect(find('.field_value').text).to eq hash['proposed value']
+      end
     end
+
   end
 end
 
 Given(/^the following proposed edits exist:$/) do |table|
-  byebug 
   table.hashes.each do |hash|
     create_hash = {}
     hash.each_pair do |field_name, field_value|

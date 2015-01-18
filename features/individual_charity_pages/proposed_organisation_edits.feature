@@ -77,14 +77,14 @@ I want to be able to propose edits to inaccurate organisation listings
     Then I should be on the show organisation proposed edit page for the organisation named "Really Friendly"
     And I should see "This edit proposed by: registered_user-2@example.com"
     And the following proposed edits should be displayed on the page:
-      | field         | current value                  | proposed value        |
-      | name          | Really Friendly                | Unfriendly            |
-      | website       | http://friendly.org            | http://unfriendly.org |
-      | email         | admin@friendly.xx              | newemail@friendly.xx  |
-      | description   | Bereavement Counselling        | Mourning loved ones   |
-      | address       | 34 pinner road                 | 124 Pinner Road       |
-      | postcode      | HA1 4HZ                        | HA8 7TB               |
-      | telephone     | 020800000                      | 88888888              |
-      | donation_info | www.donate.com                 | www.pleasedonate.com  |
+      | field         | current value                         | proposed value        |
+      | name          | Really Friendly                       | Unfriendly            |
+      | website       | http://friendly.org                   | http://unfriendly.org |
+      | email         | admin@friendly.xx                     | newemail@friendly.xx  |
+      | description   | Bereavement Counselling               | Mourning loved ones   |
+      | address       | 34 pinner road                        | 124 Pinner Road       |
+      | postcode      | HA1 4HZ                               | HA8 7TB               |
+      | telephone     | 020800000                             | 88888888              |
+      | donation_info | http://www.donate.com                 | www.pleasedonate.com  |
     And I should not see the accept edit button
     And I should not see the reject edit button
