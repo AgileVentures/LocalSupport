@@ -452,6 +452,13 @@ describe Organisation, :type => :model do
       Organisation.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0],true)
     end
 
+    it "should add blank string email to org if email is NULL" do
+      expect(Organisation).to receive(:where).with("UPPER(name) LIKE ? ", "%FRIENDLY%").and_return([@org1])
+      expect{
+        Organisation.add_email(fields = CSV.parse('friendly,,,,,,,')[0],true)
+      }.not_to change(@org1, :email)
+    end
+
     it "should add email to org even with case mismatch" do
       expect(Organisation).to receive(:where).with("UPPER(name) LIKE ? ", "%FRIENDLY%").and_return([@org1])
       expect(@org1).to receive(:email=).with('test@example.org')
