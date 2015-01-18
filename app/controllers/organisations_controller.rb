@@ -9,13 +9,45 @@ class OrganisationsController < ApplicationController
     @category_id = params.try(:[],'category').try(:[],'id')
     @category = Category.find_by_id(@category_id)
     @organisations = Organisation.includes(:users).order_by_most_recent
-    @organisations = @organisations.search_by_keyword(@query_term).filter_by_category(@category_id)
+    categories = what_ids + who_ids + how_ids
+    @organisations = @organisations.search_by_keyword(
+      @query_term
+    ).filter_by_categories(
+      categories
+    )
     flash.now[:alert] = SEARCH_NOT_FOUND if @organisations.empty?
     @markers = build_map_markers(@organisations)
     @what_they_do = Category.what_they_do.pluck(:name, :id)
     @who_they_help = Category.who_they_help.pluck(:name, :id)
     @how_they_help = Category.how_they_help.pluck(:name, :id)
     render :template =>'organisations/index'
+  end
+
+  def what_ids
+    id = params.require(:what).permit(:id).values
+    if id.first.empty?
+      Category.what_they_do.pluck(:id)
+    else
+      id
+    end
+  end
+
+  def who_ids
+    id = params.require(:who).permit(:id).values
+    if id.first.empty?
+      Category.who_they_help.pluck(:id)
+    else
+      id
+    end
+  end
+
+  def how_ids
+    id = params.require(:how).permit(:id).values
+    if id.first.empty?
+      Category.how_they_help.pluck(:id)
+    else
+      id
+    end
   end
 
   # GET /organisations

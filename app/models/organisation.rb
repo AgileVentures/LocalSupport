@@ -80,9 +80,12 @@ class Organisation < ActiveRecord::Base
      self.where(contains_description(keyword).or(contains_name(keyword)))
   end
 
-  def self.filter_by_category(category_id)
-    return all unless category_id.present?
-    self.joins(:categories).where(is_in_category(category_id)) #do we need to sanitize category_id?
+  def self.filter_by_categories(category_ids)
+    where(id: category_ids)
+  end
+
+  def self.is_in_category(category_id)
+    category_table[:id].eq(category_id)
   end
 
   def gmaps4rails_marker_attrs
@@ -205,10 +208,6 @@ class Organisation < ActiveRecord::Base
     Category.arel_table
   end
 
-  def self.is_in_category(category_id)
-    category_table[:id].eq(category_id)
-  end
-  
   def self.contains_description(key)
     table[:description].matches(key)
   end
