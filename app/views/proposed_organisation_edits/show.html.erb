@@ -5,7 +5,7 @@
 
 <div class="row">
   <div class="span6">
-    <h3 class= <%= show_class('current', 'name') %>>
+    <h3 class="<%= show_class('current', 'name') %>">
       <span class='field_value'>
       <%= @organisation.name %>
       </span>
@@ -15,7 +15,7 @@
     </p>
 
     <% if @proposed_organisation_edit.editable?(:address) %>
-      <p class= <%= show_class('current', 'address') %>>
+      <p class="<%= show_class('current', 'address') %>">
         <span><b>Address:</b></span>
         <span class='field_value'>
           <%= @organisation.address %>
@@ -24,7 +24,7 @@
     <% end %>
 
     <% if @proposed_organisation_edit.editable? :postcode %>
-        <p class= <%= show_class('current', 'postcode') %>>
+        <p class="<%= show_class('current', 'postcode') %>">
           <span><b>Postcode:</b></span>
           <span class='field_value'>
             <%= @organisation.postcode %>
@@ -33,7 +33,7 @@
     <% end %>
 
     <% if @proposed_organisation_edit.editable?(:email) %>
-        <p class= <%= show_class('current', 'email') %>>
+        <p class="<%= show_class('current', 'email') %>">
           <span><b>Email:</b></span>
           <span class='field_value'>
             <a href="mailto:<%= @organisation.email %>"><%= @organisation.email %></a>
@@ -42,7 +42,7 @@
     <% end %>
 
     <% if @proposed_organisation_edit.editable? :website %>
-      <p class= <%= show_class('current', 'website') %>>
+      <p class="<%= show_class('current', 'website') %>">
         <span><b>Website:</b></span>
         <span class='field_value'>
           <%= link_to @organisation.website, @organisation.website, {:target => '_blank'} if @organisation.website.present?%>
@@ -51,7 +51,7 @@
     <% end %>
 
     <% if @proposed_organisation_edit.editable?(:telephone) %>
-      <p class= <%= show_class('current', 'telephone') %>>
+      <p class="<%= show_class('current', 'telephone') %>">
       <span><b>Telephone:</b></span>
       <span class='field_value'>
         <%= @organisation.telephone %>
@@ -60,7 +60,7 @@
     <% end %>
 
     <% if @proposed_organisation_edit.editable?(:donation_info)  %>
-        <p class= <%= show_class('current', 'donation_info') %>>
+        <p class="<%= show_class('current', 'donation_info') %>">
         <span><b>Donation Info:</b></span>
           <span class='field_value'>
             <%= @organisation.donation_info %>
@@ -75,7 +75,7 @@
     <% end %>
   </div>
   <div class="span6">
-    <h3 class= <%= show_class('proposed', 'name') %>>
+    <h3 class="<%= show_class('proposed', 'name') %>">
       <span class="field_value">
       <%= @proposed_organisation_edit.name %>
       </span>
@@ -87,7 +87,7 @@
     </p>
 
     <% if @proposed_organisation_edit.editable?(:address) %>
-      <p class= <%= show_class('proposed', 'address') %>>
+      <p class="<%= show_class('proposed', 'address') %>">
         <span><b>Address:</b></span>
         <span class='field_value'>
           <%= @proposed_organisation_edit.address %>
@@ -96,7 +96,7 @@
     <% end %>
 
     <% if @proposed_organisation_edit.editable? :postcode %>
-        <p class= <%= show_class('proposed', 'postcode') %>>
+        <p class="<%= show_class('proposed', 'postcode') %>">
           <span><b>Postcode:</b></span>
           <span class='field_value'>
             <%= @proposed_organisation_edit.postcode %>
@@ -105,7 +105,7 @@
     <% end %>
 
     <% if @proposed_organisation_edit.editable?(:email) %>
-      <p class= <%= show_class('proposed', 'email') %>>
+      <p class="<%= show_class('proposed', 'email') %>">
         <span><b>Email:</b></span>
         <span class='field_value'>
           <a href="mailto:<%= @proposed_organisation_edit.email %>"><%= @proposed_organisation_edit.email %></a>
@@ -114,7 +114,7 @@
     <% end %>
 
     <% if @proposed_organisation_edit.editable? :website %>
-      <p class= <%= show_class('proposed', 'website') %>>
+      <p class="<%= show_class('proposed', 'website') %>">
         <span><b>Website:</b></span>
         <span class='field_value'>
           <%= link_to @proposed_organisation_edit.website, @proposed_organisation_edit.website, {:target => '_blank'} if @proposed_organisation_edit.website.present?%>
@@ -123,7 +123,7 @@
     <% end %>
 
     <% if @organisation.telephone.present? && @organisation.publish_phone? %>
-        <p class= <%= show_class('proposed', 'telephone') %>>
+        <p class="<%= show_class('proposed', 'telephone') %>">
           <span><b>Telephone:</b></span>
           <span class='field_value'>
             <%= @proposed_organisation_edit.telephone %>
@@ -132,7 +132,7 @@
     <% end %>
 
     <% if @proposed_organisation_edit.editable? :donation_info %>
-        <p class= <%= show_class('proposed', 'donation_info') %>>
+        <p class="<%= show_class('proposed', 'donation_info') %>">
           <span><b>Donation Info:</b></span>
           <span class='field_value'>
             <%= @proposed_organisation_edit.donation_info %>
