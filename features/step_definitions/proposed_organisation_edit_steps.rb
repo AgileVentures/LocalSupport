@@ -36,9 +36,18 @@ Then(/^"(.*?)" should have the following proposed edits by user "(.*?)":$/) do |
   end
 end
 Then(/^the following proposed edits should be displayed on the page:$/) do |table|
+  fields = { name: '_organisation_name',
+             description: '_organisation_description',
+             website: '_organisation_website',
+             email: '_organisation_email',
+             postcode: '_organisation_postcode',
+             telephone: '_organisation_telephone',
+             donation_info: '_organisation_donation_info',
+             address: '_organisation_address'}
   table.hashes.each do |hash|
-    expect(page).to have_css('.current_value', :text => hash['current value'])
-    expect(page).to have_css('.proposed_value', :text => hash['proposed value'])
+    byebug
+    expect(page).to have_css("##{'current'+fields[hash['field'].to_sym]}.current_value", :text => hash['current value'])
+    expect(page).to have_css("##{'proposed'+fields[hash['field'].to_sym]}.proposed_value", :text => hash['proposed value'])
   end
 end
 

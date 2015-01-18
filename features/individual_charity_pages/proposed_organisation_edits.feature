@@ -8,7 +8,10 @@ I want to be able to propose edits to inaccurate organisation listings
       | name              | description             | address        | postcode | telephone | website             | email             | publish_phone | publish_address | donation_info  |
       | Friendly          | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.org | admin@friendly.xx | true          |  false          | www.donate.com |
       | Really Friendly   | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.org | admin@friendly.xx | true          |  true           | www.donate.com |
-      | No website        | no website              | 34 pinner road |          | 020800000 |                     | email@friendly.xx | true          |  true           |                | 
+
+    And the following organisations exist:
+      | name              | description             | address        | postcode | telephone | email             | publish_phone | publish_address |
+      | No website        | no website              | 34 pinner road |          | 020800000 | email@friendly.xx | true          |  true           |
 
     Given the following users are registered:
       | email                         | password | organisation        | confirmed_at         | admin |
@@ -51,11 +54,13 @@ I want to be able to propose edits to inaccurate organisation listings
       | website         | donation_info     | postcode |
       | www.newness.org | www.new.org/donate| HA1 4HZ  |
     Then I should be on the show organisation proposed edit page for the organisation named "No website"
+    Then show me the page
     And the following proposed edits should be displayed on the page:
       | field                  | current value   | proposed value     |
       | donation_info          |                 | www.new.org/donate |
       | website                |                 | www.newness.org    |
       | postcode               |                 | HA1 4HZ            |
+
 
   Scenario: Propose an edit
     Given I visit the home page

@@ -29,7 +29,7 @@
         </p>
     <% end %>
     <% if @proposed_organisation_edit.editable? :website %>
-      <p class= <%=  @proposed_organisation_edit.has_proposed_edit?(:website) ? "current_value": ""%>>
+      <p id = "current_organisation_website" class= <%=  @proposed_organisation_edit.has_proposed_edit?(:website) ? "current_value": ""%>>
         <b>Website:</b>
           <%= link_to @organisation.website, @organisation.website, {:target => '_blank'} %>
       </p>
@@ -41,7 +41,7 @@
       </p>
     <% end %>
     <% if @proposed_organisation_edit.editable?(:donation_info)  %>
-        <p class= <%=  @proposed_organisation_edit.has_proposed_edit?(:donation_info) ? "current_value": ""%>>
+        <p id = "current_organisation_donation_info" class= <%= @proposed_organisation_edit.has_proposed_edit?(:donation_info) ? "current_value": ""%>>
           <b>Donation Info:</b>
           <%= @organisation.donation_info %>
         </p>
@@ -81,7 +81,7 @@
       </p>
     <% end %>
     <% if @proposed_organisation_edit.editable? :website %>
-      <p class= <%=  @proposed_organisation_edit.has_proposed_edit?(:website) ? "proposed_value": ""%>>
+      <p id = "proposed_organisation_website" class= <%=  @proposed_organisation_edit.has_proposed_edit?(:website) ? "proposed_value": ""%>>
         <b>Website:</b>
           <%= link_to @proposed_organisation_edit.website, @proposed_organisation_edit.website, {:target => '_blank'} %>
       </p>
@@ -93,7 +93,7 @@
         </p>
     <% end %>
     <% if @proposed_organisation_edit.editable? :donation_info %>
-        <p class= <%=  @proposed_organisation_edit.has_proposed_edit?(:donation_info) ? "proposed_value": ""%>>
+        <p id = "proposed_organisation_donation_info"class= <%=  @proposed_organisation_edit.has_proposed_edit?(:donation_info) ? "proposed_value": ""%>>
           <b>Donation Info:</b>
           <%= @proposed_organisation_edit.donation_info %>
         </p>
