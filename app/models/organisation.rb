@@ -145,8 +145,8 @@ class Organisation < ActiveRecord::Base
     CreateOrganisationFromArray.create(Organisation, row, validate)
   end
 
-  def self.create_and_validate(attributes) 
-    create!(attributes)
+  def self.create_and_validate(attributes)
+    create!(attributes.select{|k,v| !v.nil?})
   end
 
   def self.import_addresses(filename, limit, validation = true)

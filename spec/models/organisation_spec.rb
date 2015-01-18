@@ -11,14 +11,14 @@ describe Organisation, :type => :model do
     @category3 = FactoryGirl.create(:category, :charity_commission_id => 108)
     @category4 = FactoryGirl.create(:category, :charity_commission_id => 302)
     @category5 = FactoryGirl.create(:category, :charity_commission_id => 306)
-    @org1 = FactoryGirl.build(:organisation, :email => nil, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate')
+    @org1 = FactoryGirl.build(:organisation, :email => "", :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate')
     @org1.save!
-    @org2 = FactoryGirl.build(:organisation, :email => nil,  :name => 'Indian Elders Association',
+    @org2 = FactoryGirl.build(:organisation, :name => 'Indian Elders Association',:email => "",
                               :description => 'Care for the elderly', :address => '64 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.indian-elders.co.uk/donate')
     @org2.categories << @category1
     @org2.categories << @category2
     @org2.save!
-    @org3 = FactoryGirl.build(:organisation, :email => nil, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '64 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.age-uk.co.uk/donate')
+    @org3 = FactoryGirl.build(:organisation, :email => "", :name => 'Age UK Elderly', :description => 'Care for older people', :address => '64 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.age-uk.co.uk/donate')
     @org3.categories << @category1
     @org3.save!
   end
@@ -292,7 +292,7 @@ describe Organisation, :type => :model do
       expect(org.postcode).to eq('')
       expect(org.website).to eq('http://www.harrow-baptist.org.uk')
       expect(org.telephone).to eq('020 8863 7837')
-      expect(org.donation_info).to eq(nil)
+      expect(org.donation_info).to eq("")
     end
 
     it 'must be able to handle no address in text representation' do
@@ -304,7 +304,7 @@ describe Organisation, :type => :model do
       expect(org.postcode).to eq('')
       expect(org.website).to eq('http://www.harrow-baptist.org.uk')
       expect(org.telephone).to eq('020 8863 7837')
-      expect(org.donation_info).to eq(nil)
+      expect(org.donation_info).to eq("")
     end
 
     it 'must be able to generate Organisation from text representation ensuring words in correct case and postcode is extracted from address' do
@@ -316,7 +316,7 @@ describe Organisation, :type => :model do
       expect(org.postcode).to eq('HA1 1BA')
       expect(org.website).to eq('http://www.harrow-baptist.org.uk')
       expect(org.telephone).to eq('020 8863 7837')
-      expect(org.donation_info).to eq(nil)
+      expect(org.donation_info).to eq("")
     end
 
 

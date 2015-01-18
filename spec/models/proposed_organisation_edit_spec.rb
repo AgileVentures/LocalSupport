@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe ProposedOrganisationEdit do
-  let(:org){FactoryGirl.create(:organisation, :email => nil, :name => 'Harrow Bereavement Counselling',
+  let(:org){FactoryGirl.create(:organisation, :name => 'Harrow Bereavement Counselling',
                                :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE',
                                :donation_info => 'www.harrow-bereavment.co.uk/donate')}
   let(:proposed_edit){FactoryGirl.create(:proposed_organisation_edit, :organisation => org )}
@@ -15,7 +15,7 @@ describe ProposedOrganisationEdit do
         it{expect(proposed_edit.editable?(sym)).to be true}
       end
       context 'opposite of default setting for publish fields' do
-        let(:org){FactoryGirl.create(:organisation, :email => nil, :name => 'Harrow Bereavement Counselling',
+        let(:org){FactoryGirl.create(:organisation, :name => 'Harrow Bereavement Counselling',
                                      :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE',
                                      :donation_info => 'www.harrow-bereavment.co.uk/donate', :publish_phone => true, :publish_address => true,
                                      :publish_email => false)}
