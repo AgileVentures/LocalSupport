@@ -40,6 +40,8 @@ Then(/^the following proposed edits should be displayed on the page:$/) do |tabl
   table.hashes.each do |hash|
     current_class = '.current_organisation_' + hash['field']
     proposed_class = '.proposed_organisation_' + hash['field']
+    expect(page).to have_css("#{current_class}.current_value")
+    expect(page).to have_css("#{proposed_class}.proposed_value")
     if (hash['field'] == 'website')
       if hash['current value'].blank?
         expect(page).not_to have_css(current_class + " .field_value a")
