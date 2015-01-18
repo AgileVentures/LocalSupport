@@ -1,15 +1,19 @@
-<div class = "centered" style="width: 50%; font-size: 1.5em; text-align: center;"><span style="color: #899096;">This edit proposed by:</span> <%= @proposed_organisation_edit.editor.email%></div>
+<div class="centered width_50 proposer">
+  <span>This edit proposed by:</span>
+  <%= @proposed_organisation_edit.editor.email%>
+</div>
+
 <div class="row">
   <div class="span6">
-    <h3 class= <%= @proposed_organisation_edit.has_proposed_edit?(:name) ? "current_value": ""%>>
+    <h3 class= <%= show_class('current', 'name') %>>
       <%= @organisation.name %>
     </h3>
     <p>
-      <%= simple_format @organisation.description, class: @proposed_organisation_edit.has_proposed_edit?(:description) ? "current_value" : "" %>
+      <%= simple_format @organisation.description, class: show_class('current', 'description') %>
     </p>
 
     <% if @proposed_organisation_edit.editable?(:address) %>
-      <p class= <%= @proposed_organisation_edit.has_proposed_edit?(:address) ? "current_value": ""%>>
+      <p class= <%= show_class('current', 'address') %>>
         <span><b>Address:</b></span>
         <span class='field_value'>
           <%= @organisation.address %>
@@ -18,7 +22,7 @@
     <% end %>
 
     <% if @proposed_organisation_edit.editable? :postcode %>
-        <p class= <%= @proposed_organisation_edit.has_proposed_edit?(:postcode) ? "current_value": ""%>>
+        <p class= <%= show_class('current', 'postcode') %>>
           <span><b>Postcode:</b></span>
           <span class='field_value'>
             <%= @organisation.postcode %>
@@ -27,53 +31,57 @@
     <% end %>
 
     <% if @proposed_organisation_edit.editable?(:email) %>
-        <p class= <%= @proposed_organisation_edit.has_proposed_edit?(:email) ? "current_value": ""%>>
+        <p class= <%= show_class('current', 'email') %>>
           <span><b>Email:</b></span>
           <span class='field_value'>
             <a href="mailto:<%= @organisation.email %>"><%= @organisation.email %></a>
           </span>
         </p>
     <% end %>
+
     <% if @proposed_organisation_edit.editable? :website %>
-      <p id = "current_organisation_website" class= <%=  @proposed_organisation_edit.has_proposed_edit?(:website) ? "current_value": ""%>>
+      <p class= <%= show_class('current', 'website') %>>
         <span><b>Website:</b></span>
         <span class='field_value'>
           <%= link_to @organisation.website, @organisation.website, {:target => '_blank'} if @organisation.website.present? %>
         </span>
       </p>
     <% end %>
+
     <% if @proposed_organisation_edit.editable?(:telephone) %>
-      <p class= <%= @proposed_organisation_edit.has_proposed_edit?(:telephone) ? "current_value": ""%>>
+      <p class= <%= show_class('current', 'telephone') %>>
       <span><b>Telephone:</b></span>
       <span class='field_value'>
         <%= @organisation.telephone %>
       </span>
       </p>
     <% end %>
+
     <% if @proposed_organisation_edit.editable?(:donation_info)  %>
-        <p id = "current_organisation_donation_info" class= <%= @proposed_organisation_edit.has_proposed_edit?(:donation_info) ? "current_value": ""%>>
+        <p class= <%= show_class('current', 'donation_info') %>>
         <span><b>Donation Info:</b></span>
           <span class='field_value'>
             <%= @organisation.donation_info %>
           </span>
         </p>
     <% end %>
+
     <% if current_user.try(:admin?) %>
-        <div class = "centered" style="width: 25%;">
-          <%= link_to("Reject Edit", "#", {:style => "text-align: center;
-            margin: 0 auto;", :class => 'btn btn-danger'}) %>
+        <div class="centered width_25">
+          <%= link_to("Reject Edit", "#", class: 'proposee_action btn btn-danger' ) %>
         </div>
     <% end %>
   </div>
   <div class="span6">
-    <h3 class= <%=  @proposed_organisation_edit.has_proposed_edit?(:name) ? "proposed_value": ""%>>
+    <h3 class= <%= show_class('proposed', 'name') %>>
       <%= @proposed_organisation_edit.name %>
     </h3>
     <p>
-      <%= simple_format @proposed_organisation_edit.description, class: @proposed_organisation_edit.has_proposed_edit?(:description) ? "proposed_value" : ""%>
+      <%= simple_format @proposed_organisation_edit.description, class: show_class('proposed', 'description') %>
     </p>
+
     <% if @proposed_organisation_edit.editable?(:address) %>
-      <p class= <%= @proposed_organisation_edit.has_proposed_edit?(:address) ? "proposed_value": ""%>>
+      <p class= <%= show_class('proposed', 'address') %>>
         <span><b>Address:</b></span>
         <span class='field_value'>
           <%= @proposed_organisation_edit.address %>
@@ -82,7 +90,7 @@
     <% end %>
 
     <% if @proposed_organisation_edit.editable? :postcode %>
-        <p class= <%= @proposed_organisation_edit.has_proposed_edit?(:postcode) ? "proposed_value": ""%>>
+        <p class= <%= show_class('proposed', 'postcode') %>>
           <span><b>Postcode:</b></span>
           <span class='field_value'>
             <%= @proposed_organisation_edit.postcode %>
@@ -91,41 +99,44 @@
     <% end %>
 
     <% if @proposed_organisation_edit.editable?(:email) %>
-      <p class= <%=  @proposed_organisation_edit.has_proposed_edit?(:email) ? "proposed_value": ""%>>
+      <p class= <%= show_class('proposed', 'email') %>>
         <span><b>Email:</b></span>
         <span class='field_value'>
           <a href="mailto:<%= @proposed_organisation_edit.email %>"><%= @proposed_organisation_edit.email %></a>
         </span>
       </p>
     <% end %>
+
     <% if @proposed_organisation_edit.editable? :website %>
-      <p id = "proposed_organisation_website" class= <%=  @proposed_organisation_edit.has_proposed_edit?(:website) ? "proposed_value": ""%>>
+      <p class= <%= show_class('proposed', 'website') %>>
         <span><b>Website:</b></span>
         <span class='field_value'>
           <%= link_to @proposed_organisation_edit.website, @proposed_organisation_edit.website, {:target => '_blank'} %>
         </span>
       </p>
     <% end %>
+
     <% if @organisation.telephone.present? && @organisation.publish_phone? %>
-        <p class= <%= @proposed_organisation_edit.has_proposed_edit?(:telephone) ? "proposed_value": ""%>>
+        <p class= <%= show_class('proposed', 'telephone') %>>
           <span><b>Telephone:</b></span>
           <span class='field_value'>
             <%= @proposed_organisation_edit.telephone %>
           </span>
         </p>
     <% end %>
+
     <% if @proposed_organisation_edit.editable? :donation_info %>
-        <p id = "proposed_organisation_donation_info"class= <%=  @proposed_organisation_edit.has_proposed_edit?(:donation_info) ? "proposed_value": ""%>>
+        <p class= <%= show_class('proposed', 'donation_info') %>>
           <span><b>Donation Info:</b></span>
           <span class='field_value'>
             <%= @proposed_organisation_edit.donation_info %>
           </span>
         </p>
     <% end %>
+
     <% if current_user.try(:admin?) %>
-        <div class = "centered" style="width: 25%;">
-          <%= link_to("Accept Edit", "#", {:style => "text-align: center;
-            margin: 0 auto;", :class => 'btn btn-primary'}) %>
+        <div class="centered width_25">
+          <%= link_to("Accept Edit", "#", class: 'proposee_action btn btn-primary') %>
         </div>
     <% end %>
   </div>

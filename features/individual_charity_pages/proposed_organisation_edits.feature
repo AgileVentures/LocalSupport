@@ -54,7 +54,6 @@ I want to be able to propose edits to inaccurate organisation listings
       | website         | donation_info     | postcode |
       | www.newness.org | www.new.org/donate| HA1 4HZ  |
     Then I should be on the show organisation proposed edit page for the organisation named "No website"
-    Then show me the page
     And the following proposed edits should be displayed on the page:
       | field                  | current value   | proposed value     |
       | donation_info          |                 | www.new.org/donate |
