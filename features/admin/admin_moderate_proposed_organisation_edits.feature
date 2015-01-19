@@ -36,4 +36,4 @@ Feature: Members of HCN may propose edits to organisations
     And "Friendly" should be updated as follows:
     |name          | description             | address        | postcode | telephone | website             | email             | donation_info  |
     | Unfriendly | Mourning loved ones     | 30 pinner road | HA5 4HZ  | 520800000 | http://unfriendly.org | admin@unfriendly.xx | http://www.pleasedonate.com |
-    And the proposed edit for "Unfriendly" should be destroyed
+    And the most recently updated proposed edit for "Unfriendly" should be archived and accepted

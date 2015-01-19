@@ -21,6 +21,8 @@ Then(/^"(.*?)" should be updated as follows:$/) do |org, table|
   end
 end
 
-Then(/^the proposed edit for "(.*?)" should be destroyed$/) do |name|
-  Organisation.find_by(name: name).edits.should be_empty
+Then(/^the most recently updated proposed edit for "(.*?)" should be archived and accepted$/) do |name|
+  edit = Organisation.find_by(name: name).edits.reorder(updated_at: :desc).first
+  edit.archived.should be true
+  edit.accepted.should be true
 end
