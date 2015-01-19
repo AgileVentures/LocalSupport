@@ -27,19 +27,14 @@ class ProposedOrganisationEditsController < ApplicationController
     if proposed_edit_params.any?
       proposed_edit.accept(proposed_edit_params)
     else
-      # update bool for archived
+      proposed_edit.update!(archived: true)
     end
     redirect_to organisation_path proposed_edit.organisation
   end
 
-  # should I change my form so this is in the same hash?
   def update_params
-    params.permit(:id)
+    params.require(:proposed_organisation_edit).permit(:id)
   end
-
-  # "utf8"=>"✓", "_method"=>"patch", "authenticity_token"=>"ggvf3NcbtYoZ3MK3uK9QyRKiBds7F12hq+mjR4gLXDo=", "proposed_organisation_edit"=>{"name"=>"Yeshivas Haram", "description"=>"Providing grants to furth│·
-  # er the charity's objects.", "donation_info"=>"", "address"=>"", "postcode"=>"HA7 4NW", "telephone"=>"", "website"=>"", "email"=>""}, "commit"=>"Accept Edit", "action"=>"update", "controller"=>"proposed_│·
-  # organisation_edits", "id"=>"1"}
 
   def proposed_edit_params
     params.require(:proposed_organisation_edit).permit(

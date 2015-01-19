@@ -70,7 +70,10 @@
 
     <% if current_user.try(:admin?) %>
         <div class="centered width_25">
-          <%= link_to("Reject Edit", "#", class: 'proposed_action btn btn-danger' ) %>
+          <%= form_for([@proposed_organisation_edit.organisation, @proposed_organisation_edit], :url => {:action => :update}) do |f| %>
+            <%= f.hidden_field :id, value: @proposed_organisation_edit.id %>
+            <%= f.submit 'Reject Edit', :class => 'btn btn-primary' %>
+          <% end %>
         </div>
     <% end %>
   </div>
@@ -142,7 +145,8 @@
 
     <% if current_user.try(:admin?) %>
         <div class="centered width_25">
-          <%= form_for(@proposed_organisation_edit) do |f| %>
+          <%= form_for([@proposed_organisation_edit.organisation, @proposed_organisation_edit], :url => {:action => :update}) do |f| %>
+            <%= f.hidden_field :id, value: @proposed_organisation_edit.id %>
             <%= f.hidden_field :name, value: @proposed_organisation_edit.name %>
             <%= f.hidden_field :description, value: @proposed_organisation_edit.description %>
             <%= f.hidden_field :donation_info, value: @proposed_organisation_edit.donation_info %>

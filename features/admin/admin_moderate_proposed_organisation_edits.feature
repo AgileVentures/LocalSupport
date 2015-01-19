@@ -24,6 +24,7 @@ Feature: Members of HCN may propose edits to organisations
     Given I am signed in as an non-admin
     And I visit the home page
     Then I should not see the all proposed edits link
+
   Scenario: Moderate a proposed edit
     Given I am signed in as an admin
     And I visit the home page
@@ -31,9 +32,24 @@ Feature: Members of HCN may propose edits to organisations
     And I click on view details for the proposed edit for the organisation named "Friendly"
     And I should see a link or button "Accept Edit"
     And I should see a link or button "Reject Edit"
+
+  Scenario: Accept a proposed edit
+    Given I am signed in as an admin
+    And I visit the most recently created proposed edit for "Friendly"
     When I press "Accept Edit"
     Then I should be on the show page for the organisation named "Unfriendly"
     And "Friendly" should be updated as follows:
-    |name          | description             | address        | postcode | telephone | website             | email             | donation_info  |
-    | Unfriendly | Mourning loved ones     | 30 pinner road | HA5 4HZ  | 520800000 | http://unfriendly.org | admin@unfriendly.xx | http://www.pleasedonate.com |
-    And the most recently updated proposed edit for "Unfriendly" should be archived and accepted
+    | name       | description         | address        | postcode | telephone | website               | email               | donation_info               |
+    | Unfriendly | Mourning loved ones | 30 pinner road | HA5 4HZ  | 520800000 | http://unfriendly.org | admin@unfriendly.xx | http://www.pleasedonate.com |
+    And the most recently updated proposed edit for "Unfriendly" should be updated as follows:
+      | archived | accepted |
+      | true     | true     |
+
+  Scenario: Reject a proposed edit
+    Given I am signed in as an admin
+    And I visit the most recently created proposed edit for "Friendly"
+    When I press "Reject Edit"
+    Then I should be on the show page for the organisation named "Friendly"
+    And the most recently updated proposed edit for "Friendly" should be updated as follows:
+      | archived | accepted |
+      | true     | false    |

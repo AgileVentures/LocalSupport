@@ -21,8 +21,16 @@ Then(/^"(.*?)" should be updated as follows:$/) do |org, table|
   end
 end
 
-Then(/^the most recently updated proposed edit for "(.*?)" should be archived and accepted$/) do |name|
+Given(/^I visit the most recently created proposed edit for "(.*?)"$/) do |name|
+  org = Organisation.find_by(name: name)
+  edit = org.edits.reorder(created_at: :desc).first
+  visit organisation_proposed_organisation_edit_path org, edit
+end
+
+Then(/^the most recently updated proposed edit for "(.*?)" should be updated as follows:$/) do |name, table|
   edit = Organisation.find_by(name: name).edits.reorder(updated_at: :desc).first
-  edit.archived.should be true
-  edit.accepted.should be true
+  require 'boolean'
+  table.hashes.first.each do |attr, value|
+    expect(edit.send(attr)).to eq Boolean.from(value)
+  end
 end
