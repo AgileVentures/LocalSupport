@@ -7,6 +7,8 @@ class ProposedOrganisationEdit < ActiveRecord::Base
   editable_fields :address, :name, :description, :postcode, :email, :website, :telephone, :donation_info
   publish_fields_booleans ->(f) {publish_fields_map(f)}
 
+  #TODO dependent destroys & validations
+
   private
   def self.publish_fields_map field
     if field == :telephone

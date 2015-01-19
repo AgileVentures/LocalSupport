@@ -4,9 +4,19 @@ module ProposesEdits
     base.extend ClassMethods
   end
 
+  attr_reader :instance_to_edit
+  def instance_to_edit
+    @instance_to_edit ||=
+      self.send(self.class.klass_to_edit)
+  end
+
+  def accept params
+    instance_to_edit.update(params)
+    update!(:accepted => true, :archived => true)
+  end
+
   def editable? field
     publish_field = self.class.publish_proc.call(field)
-    instance_to_edit = self.send(self.class.klass_to_edit)
     if instance_to_edit.respond_to? publish_field
       instance_to_edit.send(publish_field) && self.class.fields_to_edit.include?(field)
     else
@@ -15,7 +25,7 @@ module ProposesEdits
   end
 
   def has_proposed_edit? field
-    organisation.send(field) != self.send(field)
+    instance_to_edit.send(field) != self.send(field)
   end
 
   module ClassMethods

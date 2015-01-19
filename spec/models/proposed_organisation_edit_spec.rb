@@ -26,6 +26,31 @@ describe ProposedOrganisationEdit do
       end
 
   end
+
+  describe "#accept" do
+    context 'update with params' do
+      let(:org){FactoryGirl.create(:organisation, :name => 'Harrow Bereavement Counselling',
+                                   :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE',
+                                   :donation_info => 'www.harrow-bereavment.co.uk/donate')}
+      let(:proposed_edit){FactoryGirl.create(:proposed_organisation_edit, :organisation => org )}
+      it 'updates the name attribute' do
+        expect{
+          proposed_edit.accept("name" => "Care for the Elderly")
+        }.to change(org, :name).to("Care for the Elderly")
+      end
+      it do
+        expect{
+          proposed_edit.accept("name" => "Care for the Elderly")
+        }.to change(proposed_edit, :accepted).from(false).to true
+      end
+      it do
+        expect{
+          proposed_edit.accept("name" => "Care for the Elderly")
+        }.to change(proposed_edit, :archived).from(false).to true
+      end
+    end
+
+  end
   describe '#has_proposed_edit?' do
     context 'when an edit to :name has not been proposed' do
       let(:proposed_edit){FactoryGirl.create(:proposed_organisation_edit, :organisation => org, :name => 'Harrow Bereavement Counselling' )}
