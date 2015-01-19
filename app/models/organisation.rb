@@ -11,7 +11,6 @@ class Organisation < ActiveRecord::Base
   acts_as_paranoid
   validates_url :website, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.website.present?}
   validates_url :donation_info, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.donation_info.present?}
-  belongs_to :proposed_organisation_edit
 
   # http://stackoverflow.com/questions/10738537/lazy-geocoding
   has_many :users

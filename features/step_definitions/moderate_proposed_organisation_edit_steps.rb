@@ -21,3 +21,6 @@ Then(/^"(.*?)" should be updated as follows:$/) do |org, table|
   end
 end
 
+Then(/^the proposed edit for "(.*?)" should be destroyed$/) do |name|
+  Organisation.find_by(name: name).edits.should be_empty
+end
