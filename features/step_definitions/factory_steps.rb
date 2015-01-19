@@ -5,6 +5,12 @@ def stub_request_with_address(address, body = nil)
       to_return(status => 200, :body => body || filename, :headers => {})
 end
 
+Given(/^the following addresses exist:$/) do |table|
+  table.hashes.each do |addr|
+    stub_request_with_address(addr['address'])
+  end
+end
+
 Given /^the following organisations exist:$/ do |organisations_table|
   organisations_table.hashes.each do |org|
     stub_request_with_address(org['address'])

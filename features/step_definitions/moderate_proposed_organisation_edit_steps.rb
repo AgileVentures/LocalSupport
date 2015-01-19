@@ -11,12 +11,13 @@ Given(/^I click on view details for the proposed edit for the organisation named
   click_link "View Details", href: organisation_proposed_organisation_edit_path(edit.organisation, edit)
 end
 
-Then(/^I should see the (accept|reject) edit button$/) do |type|
-  text = (type == "accept") ? "Accept Edit" : "Reject Edit"
-  page.should have_link text, href: "#"
+Then(/^"(.*?)" should be updated as follows:$/) do |org, table|
+  expect(Organisation.find_by(name: org)).to be_nil
+  organisation = Organisation.find_by(name: table.hashes.first["name"])
+  table.hashes.each do |hash|
+    hash.each_pair do |field_name, field_value|
+      expect(organisation.send(field_name)).to eq(field_value)
+    end
+  end
 end
 
-Then(/^I should not see the (accept|reject) edit button$/) do |type|
-  text = (type == "accept") ? "Accept Edit" : "Reject Edit"
-  page.should_not have_link text, href: "#"
-end

@@ -70,7 +70,7 @@
 
     <% if current_user.try(:admin?) %>
         <div class="centered width_25">
-          <%= link_to("Reject Edit", "#", class: 'proposee_action btn btn-danger' ) %>
+          <%= link_to("Reject Edit", "#", class: 'proposed_action btn btn-danger' ) %>
         </div>
     <% end %>
   </div>
@@ -142,7 +142,17 @@
 
     <% if current_user.try(:admin?) %>
         <div class="centered width_25">
-          <%= link_to("Accept Edit", "#", class: 'proposee_action btn btn-primary') %>
+          <%= form_for(@organisation) do |f| %>
+            <%= f.hidden_field :name, value: @proposed_organisation_edit.name %>
+            <%= f.hidden_field :description, value: @proposed_organisation_edit.description %>
+            <%= f.hidden_field :donation_info, value: @proposed_organisation_edit.donation_info %>
+            <%= f.hidden_field :address, value: @proposed_organisation_edit.address %>
+            <%= f.hidden_field :postcode, value: @proposed_organisation_edit.postcode %>
+            <%= f.hidden_field :telephone, value: @proposed_organisation_edit.telephone %>
+            <%= f.hidden_field :website, value: @proposed_organisation_edit.website %>
+            <%= f.hidden_field :email, value: @proposed_organisation_edit.email %>
+            <%= f.submit 'Accept Edit', :class => 'btn btn-primary' %>
+          <% end %>
         </div>
     <% end %>
   </div>
