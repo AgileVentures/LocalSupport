@@ -67,14 +67,14 @@ ActiveRecord::Schema.define(version: 20150119192906) do
 
   create_table "proposed_organisation_edits", force: true do |t|
     t.integer  "organisation_id"
-    t.string   "name",            default: "", null: false
-    t.string   "address",         default: "", null: false
-    t.string   "postcode",        default: "", null: false
-    t.string   "email",           default: "", null: false
-    t.text     "description",     default: "", null: false
-    t.string   "website",         default: "", null: false
-    t.string   "telephone",       default: "", null: false
-    t.text     "donation_info",   default: "", null: false
+    t.string   "name",            default: "",    null: false
+    t.string   "address",         default: "",    null: false
+    t.string   "postcode",        default: "",    null: false
+    t.string   "email",           default: "",    null: false
+    t.text     "description",     default: "",    null: false
+    t.string   "website",         default: "",    null: false
+    t.string   "telephone",       default: "",    null: false
+    t.text     "donation_info",   default: "",    null: false
     t.datetime "deleted_at"
     t.integer  "user_id"
     t.datetime "created_at"

@@ -46,6 +46,7 @@ Feature: Members of HCN may propose edits to organisations
     And the most recently updated proposed edit for "Unfriendly" should be updated as follows:
       | archived | accepted |
       | true     | true     |
+    And I should see "The edit you accepted has been applied and archived"
 
   Scenario: Reject a proposed edit
     Given I am signed in as an admin
@@ -55,3 +56,4 @@ Feature: Members of HCN may propose edits to organisations
     And the most recently updated proposed edit for "Friendly" should be updated as follows:
       | archived | accepted |
       | true     | false    |
+    And I should see "The edit you rejected has been archived"
