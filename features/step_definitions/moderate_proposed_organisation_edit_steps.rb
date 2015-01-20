@@ -35,3 +35,9 @@ Then(/^the most recently updated proposed edit for "(.*?)" should be updated as 
   end
 end
 
+Then(/^the organisation named "(.*?)" should have fields as follows:$/) do |name, table|
+ org = Organisation.find_by(name: name)
+ table.hashes.first.each do |attr, value|
+   expect(org.send(attr)).to eq value
+ end
+end
