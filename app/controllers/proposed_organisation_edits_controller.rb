@@ -19,7 +19,7 @@ class ProposedOrganisationEditsController < ApplicationController
 
   def index
     #TODO use scope
-    @proposed_organisation_edits = ProposedOrganisationEdit.all
+    @proposed_organisation_edits = ProposedOrganisationEdit.still_pending
   end
 
   def update

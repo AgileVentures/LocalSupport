@@ -34,3 +34,4 @@ Then(/^the most recently updated proposed edit for "(.*?)" should be updated as 
     expect(edit.send(attr)).to eq Boolean.from(value)
   end
 end
+

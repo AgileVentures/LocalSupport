@@ -6,6 +6,7 @@ class ProposedOrganisationEdit < ActiveRecord::Base
   proposes_edits_to :organisation
   editable_fields :address, :name, :description, :postcode, :email, :website, :telephone, :donation_info
   publish_fields_booleans ->(f) {publish_fields_map(f)}
+  scope :still_pending, ->{where(archived: false)}
 
   #TODO dependent destroys & validations
 

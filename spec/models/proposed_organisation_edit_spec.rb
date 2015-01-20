@@ -6,6 +6,13 @@ describe ProposedOrganisationEdit do
                                :donation_info => 'www.harrow-bereavment.co.uk/donate')}
   let(:proposed_edit){FactoryGirl.create(:proposed_organisation_edit, :organisation => org )}
   it{expect(proposed_edit.organisation).to eq org}
+  describe '::still_pending' do
+    let(:archived_edit){FactoryGirl.create(:proposed_organisation_edit, :organisation => org, :archived => true)}
+    it 'returns non archived edits' do
+      expect(ProposedOrganisationEdit.all).to include archived_edit
+      expect(ProposedOrganisationEdit.still_pending).to eq [proposed_edit] 
+    end
+  end
   describe '#editable?' do
       [:address,:telephone].each do |sym|
           it{expect(proposed_edit.editable?(sym)).to be false}
