@@ -15,6 +15,10 @@ module ProposesEdits
     update!(:accepted => true, :archived => true)
   end
 
+  def non_published_generally_editable_fields
+    self.class.fields_to_edit.select{|f| !editable?(f)}
+  end
+
   def editable? field
     publish_field = self.class.publish_proc.call(field)
     if instance_to_edit.respond_to? publish_field

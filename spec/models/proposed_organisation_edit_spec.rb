@@ -33,7 +33,22 @@ describe ProposedOrganisationEdit do
       end
 
   end
-
+  describe '#non_published_editable_fields' do
+    let(:org){FactoryGirl.create(:organisation, :name => "Happy Org", :publish_email => false)}
+    context 'all fields are private' do
+      it 'returns email, telephone and address but nothing else' do
+        expect(proposed_edit.non_published_generally_editable_fields).to include :email, :telephone, :address
+        expect(proposed_edit.non_published_generally_editable_fields).not_to include :name, :postcode, :description, :donation_info, :website
+      end
+    end
+    context 'address is public' do
+      let(:org){FactoryGirl.create(:organisation, :name => "Happy Org", :publish_email => false, :publish_address => true)}
+      it 'returns email, and telephone but not address' do
+        expect(proposed_edit.non_published_generally_editable_fields).to include :email, :telephone
+        expect(proposed_edit.non_published_generally_editable_fields).not_to include :address, :name, :postcode, :description, :donation_info, :website
+      end
+    end
+  end
   describe "#accept" do
     context 'update with params' do
       let(:org){FactoryGirl.create(:organisation, :name => 'Harrow Bereavement Counselling',

@@ -40,6 +40,7 @@ I want to be able to propose edits to inaccurate organisation listings
     And I should be on the new organisation proposed edit page for the organisation named "Friendly"
     And the telephone field of the proposed edit should be pre-populated with the telephone of the organisation named "Friendly"
     And the address of the organisation named "Friendly" should not be editable nor appear
+
     
   Scenario: Propose an edit with no website or donation info initially
     Given I visit the home page
@@ -72,7 +73,7 @@ I want to be able to propose edits to inaccurate organisation listings
       | Unfriendly   | Mourning loved ones    | http://unfriendly.org | newemail@friendly.xx       |  124 Pinner Road | HA8 7TB  | 88888888  | www.pleasedonate.com |
     And I press "Propose this edit"
     Then "Really Friendly" should have the following proposed edits by user "registered_user-2@example.com":
-      | name         | description            | website               | email                      |  address         | postcode | telephone | donation_info   |
+      | name         | description            | website               | email                      |  address         | postcode | telephone | donation_info         |
       | Unfriendly   | Mourning loved ones    | http://unfriendly.org | newemail@friendly.xx       |  124 Pinner Road | HA8 7TB  | 88888888  | www.pleasedonate.com  |
     Then I should be on the show organisation proposed edit page for the organisation named "Really Friendly"
     And I should see "This edit proposed by: registered_user-2@example.com"
