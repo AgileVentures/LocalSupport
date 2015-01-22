@@ -59,8 +59,8 @@
   // box-shadow: 2px 2px 2px #888888;
 }
 
-.arrow_box:after, .arrow_box:before {
-  top: 100%;
+.arrow_box:after, .arrow_box:before{
+  bottom: 100%;
   left: 50%;
   border: solid transparent;
   content: " ";
@@ -70,16 +70,16 @@
   pointer-events: none;
 }
 
-.arrow_box:after {
+.arrow_box:after{
   border-color: rgba(255, 255, 255, 0);
-  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
   border-width: 10px;
   margin-left: -10px;
 }
 
 .arrow_box:before {
   border-color: rgba(219, 219, 219, 0);
-  border-top-color: #dbdbdb;
+  border-bottom-color: #dbdbdb;
   border-width: 11px;
   margin-left: -11px;
 }

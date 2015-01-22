@@ -3,6 +3,17 @@ class UserReportsController < ApplicationController
   before_filter :authorize, :except => [:update]
   include ActionView::Helpers::DateHelper
 
+  def deleted
+    @users = User.only_deleted
+  end
+
+  def undo_delete
+    usr = User.with_deleted.find_by_id params[:id]
+    User.restore(params[:id])
+    @users = User.only_deleted
+    flash[:success] = "You have restored #{usr.email}"
+    redirect_to(deleted_users_report_path)
+  end
 
   # would like this to support generic updating of model with
   # business logic pulled into a separate model or process

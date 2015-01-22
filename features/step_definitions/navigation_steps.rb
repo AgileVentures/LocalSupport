@@ -21,7 +21,8 @@ def paths(location)
       'invited users' => invited_users_report_path,
       'volunteer opportunities' => volunteer_ops_path,
       'new organisation' => new_organisation_path,
-      'contributors' => contributors_path
+      'contributors' => contributors_path,
+      'deleted users' => deleted_users_report_path
   }[location]
 end
 
@@ -176,5 +177,11 @@ Then(/^I should( not)? see the call to update details for organisation "(.*)"/) 
 
     within(negative.nil? ? 'div#flash_warning' : 'body') do
       page.send(expectation_method, have_link("here", :href => edit_organisation_path(org)))
+    end
+end
+Then(/^I should see an (active|inactive) home button in the header$/) do |active|
+    active_class = (active == "active") ? ".active" : "" 
+    within('.nav.nav-pills.pull-right') do
+      expect(page).to have_css("li#{active_class} > a[href='/']", :text => "Home")
     end
 end

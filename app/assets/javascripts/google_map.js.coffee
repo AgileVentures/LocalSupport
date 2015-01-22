@@ -22,6 +22,7 @@ class LocalSupport.GoogleMap
           custom_marker: marker_datum.custom_marker
           custom_infowindow: marker_datum.infowindow
           index: marker_datum.index
+          type: marker_datum.type
       handler.bounds.extendWith markers
 
 $ ->
