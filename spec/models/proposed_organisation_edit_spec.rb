@@ -4,13 +4,21 @@ describe ProposedOrganisationEdit do
   let(:org){FactoryGirl.create(:organisation, :name => 'Harrow Bereavement Counselling',
                                :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE',
                                :donation_info => 'www.harrow-bereavment.co.uk/donate')}
-  let(:proposed_edit){FactoryGirl.create(:proposed_organisation_edit, :organisation => org )}
+  let!(:proposed_edit){FactoryGirl.create(:proposed_organisation_edit, :organisation => org )}
   it{expect(proposed_edit.organisation).to eq org}
   describe '::still_pending' do
     let(:archived_edit){FactoryGirl.create(:proposed_organisation_edit, :organisation => org, :archived => true)}
     it 'returns non archived edits' do
       expect(ProposedOrganisationEdit.all).to include archived_edit
       expect(ProposedOrganisationEdit.still_pending).to eq [proposed_edit] 
+    end
+  end
+
+  describe 'soft delete of associated edits when org is soft deleted' do
+    it do
+      org.destroy
+      expect(ProposedOrganisationEdit.all).not_to include proposed_edit
+      expect(ProposedOrganisationEdit.with_deleted).to include proposed_edit
     end
   end
   describe '#editable?' do

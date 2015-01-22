@@ -8,6 +8,10 @@ Feature: Admin deleting charity
     Given the following organisations exist:
       | name     | description             | address        | postcode | telephone |
       | Friendly | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 |
+    And the following proposed edits exist:
+      |original_name | editor_email                  | name       | description             | address        | postcode | telephone | website               | email               | donation_info        | archived|
+      |Friendly      | registered_user-2@example.com | Unfriendly | Mourning loved ones     | 30 pinner road | HA5 4HZ  | 520800000 | http://unfriendly.org | admin@unfriendly.xx | www.pleasedonate.com | false   |
+      |Friendly      | registered_user-2@example.com | Unfriendly | Mourning loved ones     | 30 pinner road | HA5 4HZ  | 520800000 | http://unfriendly.org | admin@unfriendly.xx | www.pleasedonate.com | true    |
     And the following users are registered:
       | email                 | password | admin | confirmed_at         | organisation |
       | admin@example.com     | pppppppp | true  | 2007-01-01  10:00:00 |              |
@@ -22,6 +26,7 @@ Feature: Admin deleting charity
     Then the organisation "Friendly" should be deleted
     And I should see "Deleted Friendly" in the flash
     And I should be on the organisations index page
+    And the "2" proposed edits for the organisation named "Friendly" should only be soft deleted
 
   Scenario: Org admin cannot see delete button
     Given I am signed in as a non-admin

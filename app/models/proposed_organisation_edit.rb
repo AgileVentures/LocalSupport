@@ -1,5 +1,6 @@
 require 'proposes_edits'
 class ProposedOrganisationEdit < ActiveRecord::Base
+  acts_as_paranoid
   belongs_to :organisation
   belongs_to :editor, :class_name => "User", :foreign_key => "user_id"
   include ProposesEdits

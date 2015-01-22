@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150119192906) do
+ActiveRecord::Schema.define(version: 20150122133605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20150119192906) do
     t.boolean  "archived",        default: false, null: false
   end
 
+  add_index "proposed_organisation_edits", ["deleted_at"], name: "index_proposed_organisation_edits_on_deleted_at", using: :btree
   add_index "proposed_organisation_edits", ["user_id"], name: "index_proposed_organisation_edits_on_user_id", using: :btree
 
   create_table "users", force: true do |t|

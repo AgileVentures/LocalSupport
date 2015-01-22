@@ -76,3 +76,10 @@ Then(/^the organisation "([^"]*)" should be deleted$/) do |name|
   org = Organisation.only_deleted.find_by_name name
   expect(org).not_to be_nil
 end
+
+Then(/^the "(.*?) proposed edits for the organisation named "(.*?)" should only be soft deleted$/) do |number, name|
+  number = number.to_i
+  org = Organisation.with_deleted.find_by(name: name)
+  expect(ProposedOrganisationEdit.where(organisation: org)).to be_empty
+  expect(ProposedOrganisationEdit.with_deleted.where(organisation: org).size).to eq number
+end

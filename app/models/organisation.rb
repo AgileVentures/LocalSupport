@@ -16,7 +16,7 @@ class Organisation < ActiveRecord::Base
   has_many :users
   has_many :volunteer_ops
   has_many :category_organisations
-  has_many :edits, class_name: 'ProposedOrganisationEdit'
+  has_many :edits, class_name: 'ProposedOrganisationEdit', :dependent => :destroy
   has_many :categories, :through => :category_organisations
   # Setup accessible (or protected) attributes for your model
   # prevents mass assignment on other fields not in this list
