@@ -7,7 +7,7 @@ Then(/^I should not see the all proposed edits link$/) do
 end
 
 Given(/^I click on view details for the proposed edit for the organisation named "(.*?)"$/) do |org_name|
-  edit = ProposedOrganisationEdit.find_by(organisation: Organisation.find_by(name: org_name))
+  edit = ProposedOrganisationEdit.find_by(archived: false, organisation: Organisation.find_by(name: org_name))
   click_link "View Details", href: organisation_proposed_organisation_edit_path(edit.organisation, edit)
 end
 

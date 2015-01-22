@@ -87,5 +87,5 @@ I want to be able to propose edits to inaccurate organisation listings
       | postcode      | HA1 4HZ                               | HA8 7TB               |
       | telephone     | 020800000                             | 88888888              |
       | donation_info | http://www.donate.com                 | www.pleasedonate.com  |
-    And I should not see the accept edit button
-    And I should not see the reject edit button
+    And I should not see a link or button "Accept Edit"
+    And I should not see a link or button "Reject Edit"
