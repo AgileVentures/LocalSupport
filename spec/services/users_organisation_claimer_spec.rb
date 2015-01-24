@@ -25,7 +25,7 @@ describe UserOrganisationClaimer,'.call'  do
       UserOrganisationClaimer.new(listener, user, current_user)
     end
     it 'promote the user to superadmin' do 
-      expect(user).to receive(:promote_to_org_superadmin)
+      expect(user).to receive(:promote_to_org_admin)
       expect(listener).to receive(:update_message_promoting).with(user)
       service.call(organisation_id)
     end

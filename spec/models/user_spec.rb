@@ -124,7 +124,7 @@ describe User, :type => :model do
     end
   end
 
-  describe '#promote_to_org_superadmin' do
+  describe '#promote_to_org_admin' do
     subject(:user) { User.new }
 
     it 'gets pending org id' do
@@ -132,32 +132,32 @@ describe User, :type => :model do
       allow(user).to receive(:organisation_id=)
       allow(user).to receive(:pending_organisation=)
       allow(user).to receive(:save!)
-      user.promote_to_org_superadmin
+      user.promote_to_org_admin
     end
     it 'sets organisation id to pending_organisation id' do
       allow(user).to receive(:pending_organisation_id).and_return('4')
       expect(user).to receive(:organisation_id=).with('4')
       allow(user).to receive(:pending_organisation=)
       allow(user).to receive(:save!)
-      user.promote_to_org_superadmin
+      user.promote_to_org_admin
     end
     it 'sets pending organisation id to nil' do
       allow(user).to receive(:pending_organisation_id)
       allow(user).to receive(:organisation_id=)
       expect(user).to receive(:pending_organisation_id=).with(nil)
       allow(user).to receive(:save!)
-      user.promote_to_org_superadmin
+      user.promote_to_org_admin
     end
     it 'saves changes' do
       allow(user).to receive(:pending_organisation_id)
       allow(user).to receive(:organisation_id=)
       allow(user).to receive(:pending_organisation_id=)
       expect(user).to receive(:save!)
-      user.promote_to_org_superadmin
+      user.promote_to_org_admin
     end
   end
 
-  describe '#can_request_org_superadmin?' do
+  describe '#can_request_org_admin?' do
     subject(:user) { User.new }
     before(:each) do
       allow(user).to receive(:superadmin?).and_return(false)
@@ -169,41 +169,41 @@ describe User, :type => :model do
 
     it 'is false when user is site superadmin' do
       expect(user).to receive(:superadmin?).and_return(true)
-      expect(user.can_request_org_superadmin?(@organisation)).to be false
+      expect(user.can_request_org_admin?(@organisation)).to be false
     end
 
     it 'is false when user is charity superadmin of this charity' do
       expect(user).to receive(:organisation).and_return(@organisation)
-      expect(user.can_request_org_superadmin?(@organisation)).to be false
+      expect(user.can_request_org_admin?(@organisation)).to be false
     end
 
     it 'is true when user is charity superadmin of another charity' do
       expect(user).to receive(:organisation).and_return(@other_organisation)
-      expect(user.can_request_org_superadmin?(@organisation)).to be true
+      expect(user.can_request_org_admin?(@organisation)).to be true
     end
 
     it 'is true when user is charity superadmin of no charity' do
       expect(user).to receive(:organisation).and_return(nil)
-      expect(user.can_request_org_superadmin?(@organisation)).to be true
+      expect(user.can_request_org_admin?(@organisation)).to be true
     end
 
     it 'is false when user is pending charity superadmin of this charity' do
       expect(user).to receive(:pending_organisation).and_return(@organisation)
-      expect(user.can_request_org_superadmin?(@organisation)).to be false
+      expect(user.can_request_org_admin?(@organisation)).to be false
     end
 
     it 'is true when user is pending charity superadmin of another charity' do
       expect(user).to receive(:pending_organisation).and_return(@other_organisation)
-      expect(user.can_request_org_superadmin?(@organisation)).to be true
+      expect(user.can_request_org_admin?(@organisation)).to be true
     end
 
     it 'is true when user is pending charity superadmin of no charity' do
       expect(user).to receive(:pending_organisation).and_return(nil)
-      expect(user.can_request_org_superadmin?(@organisation)).to be true
+      expect(user.can_request_org_admin?(@organisation)).to be true
     end
 
     it 'is true when user is not (site superadmin || charity superadmin of this charity || pending charity superadmin of this charity)' do
-      expect(user.can_request_org_superadmin?(@organisation)).to be true
+      expect(user.can_request_org_admin?(@organisation)).to be true
     end
 
   end

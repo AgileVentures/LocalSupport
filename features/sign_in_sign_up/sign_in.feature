@@ -12,7 +12,7 @@ Background:
   Given the following users are registered:
     | email                     | password | superadmin | organisation | confirmed_at         |
     | normal_user@example.com   | pppppppp |       |              | 2007-01-01  10:00:00 |
-    | site_superadmin@example.com    | pppppppp | true  |              | 2007-01-01  10:00:00 |
+    | superadmin@example.com    | pppppppp | true  |              | 2007-01-01  10:00:00 |
     | charity_owner@example.com | pppppppp | false | Friendly     | 2007-01-01  10:00:00 |
   Given I visit the home page
   And cookies are approved
@@ -37,12 +37,12 @@ Scenario: Sign in with wrong password for an existing non-superadmin user associ
   And I should see "I'm sorry, you are not authorized to login to the system."
 
 Scenario: Sign in for an existing superadmin user
-  Given I sign in as "site_superadmin@example.com" with password "pppppppp"
+  Given I sign in as "superadmin@example.com" with password "pppppppp"
   Then I should be on the home page
-  And I should see a link or button "site_superadmin@example.com"
+  And I should see a link or button "superadmin@example.com"
 
 Scenario: Sign in with wrong password for an existing superadmin user
-  Given I sign in as "site_superadmin@example.com" with password "12345"
+  Given I sign in as "superadmin@example.com" with password "12345"
   Then I should be on the sign in page
   And I should see "I'm sorry, you are not authorized to login to the system."
 
@@ -70,12 +70,12 @@ Scenario: Check that login/register toggle works
   And I should see "New organisation? Sign up"
 
 Scenario: Check class of flash notice  - error
-  Given I sign in as "site_superadmin@example.com" with password "12345"
+  Given I sign in as "superadmin@example.com" with password "12345"
   Then I should be on the sign in page
   And the "flash_alert" should be "alert-error"
 
 
 Scenario: Check class of flash notice  - success
-  Given I sign in as "site_superadmin@example.com" with password "pppppppp"
+  Given I sign in as "superadmin@example.com" with password "pppppppp"
   Then I should be on the home page
   And the "flash_notice" should be "alert-success"

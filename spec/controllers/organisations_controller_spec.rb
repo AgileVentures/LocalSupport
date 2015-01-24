@@ -153,7 +153,7 @@ describe OrganisationsController, :type => :controller do
       allow(@user).to receive(:can_edit?)
       allow(@user).to receive(:can_delete?)
       allow(@user).to receive(:can_create_volunteer_ops?)
-      allow(@user).to receive(:can_request_org_superadmin?)
+      allow(@user).to receive(:can_request_org_admin?)
       allow(controller).to receive(:current_user).and_return(@user)
     end
 
@@ -195,14 +195,14 @@ describe OrganisationsController, :type => :controller do
     context "grabbable flag is assigned to match user permission" do
       it 'assigns grabbable to true when user can request org superadmin status' do
         allow(@user).to receive(:can_edit?)
-        expect(@user).to receive(:can_request_org_superadmin?).with(real_org).and_return(true)
+        expect(@user).to receive(:can_request_org_admin?).with(real_org).and_return(true)
         allow(controller).to receive(:current_user).and_return(@user)
         get :show, :id => 37
         expect(assigns(:grabbable)).to be(true)
       end
       it 'assigns grabbable to false when user cannot request org superadmin status' do
         allow(@user).to receive(:can_edit?)
-        expect(@user).to receive(:can_request_org_superadmin?).with(real_org).and_return(false)
+        expect(@user).to receive(:can_request_org_admin?).with(real_org).and_return(false)
         allow(controller).to receive(:current_user).and_return(@user)
         get :show, :id => 37
         expect(assigns(:grabbable)).to be(false)

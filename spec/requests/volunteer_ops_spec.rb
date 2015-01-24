@@ -9,19 +9,19 @@ describe 'VolunteerOps', :type => :request, :helpers => :requests do
     let(:params) { { volunteer_op: {title: 'hard work', description: 'for the willing'} } }
 
     it 'creates a new VolunteerOp' do
-      org_superadmin = org_owner
-      login(org_superadmin)
+      org_admin = org_owner
+      login(org_admin)
       expect {
-        post organisation_volunteer_ops_path(org_superadmin.organisation), params
+        post organisation_volunteer_ops_path(org_admin.organisation), params
       }.to change(VolunteerOp, :count).by(1)
     end
 
     it 'the new VolunteerOp is associated with the requested organisation' do
-      org_superadmin = org_owner
-      login(org_superadmin)
-      post organisation_volunteer_ops_path(org_superadmin.organisation), params
+      org_admin = org_owner
+      login(org_admin)
+      post organisation_volunteer_ops_path(org_admin.organisation), params
       op = VolunteerOp.last
-      expect(op.organisation).to eq org_superadmin.organisation
+      expect(op.organisation).to eq org_admin.organisation
     end
 
     it 'does not work for non-org-owners' do

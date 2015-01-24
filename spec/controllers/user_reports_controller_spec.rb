@@ -14,7 +14,7 @@ describe UserReportsController, :type => :controller do
     context 'user requesting pending status to be superadmin of charity' do
       before do
         allow(@nonsuperadmin_user).to receive(:request_superadmin_status)
-        allow(@nonsuperadmin_user).to receive(:promote_to_org_superadmin)
+        allow(@nonsuperadmin_user).to receive(:promote_to_org_admin)
         allow(@nonsuperadmin_user).to receive(:email)
       end
 
@@ -29,7 +29,7 @@ describe UserReportsController, :type => :controller do
     end
     context 'superadmin promoting user to charity superadmin' do
       before(:each) do
-        allow(@nonsuperadmin_user).to receive(:promote_to_org_superadmin)
+        allow(@nonsuperadmin_user).to receive(:promote_to_org_admin)
         allow(@nonsuperadmin_user).to receive(:email).and_return('stuff@stuff.com')
       end
       it 'non-superadmins get refused' do

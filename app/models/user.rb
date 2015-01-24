@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
     superadmin?
   end
 
-  def can_request_org_superadmin? org
+  def can_request_org_admin? org
     # superadmin false, pending_organisation  pending_organisation!=organisation org != organisation
     !superadmin? && organisation != org && pending_organisation != org
   end
@@ -62,7 +62,7 @@ class User < ActiveRecord::Base
     save!
   end
 
-  def promote_to_org_superadmin
+  def promote_to_org_admin
     # self required with setter method: http://stackoverflow.com/questions/5183664/why-isnt-self-always-needed-in-ruby-rails-activerecord/5183917#5183917
     self.organisation_id = pending_organisation_id
     self.pending_organisation_id = nil

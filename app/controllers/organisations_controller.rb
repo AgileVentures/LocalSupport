@@ -32,7 +32,7 @@ class OrganisationsController < ApplicationController
     @editable = current_user.can_edit?(@organisation) if current_user
     @deletable = current_user.can_delete?(@organisation) if current_user
     @can_create_volunteer_op = current_user.can_create_volunteer_ops?(@organisation) if current_user
-    @grabbable = current_user ? current_user.can_request_org_superadmin?(@organisation) : true
+    @grabbable = current_user ? current_user.can_request_org_admin?(@organisation) : true
     @can_propose_edits = current_user.present? && !@editable
    # @next_path = current_user ? organisation_user_path(@organisation.id, current_user.id) : new_user_session_path
     @markers = build_map_markers([@organisation])

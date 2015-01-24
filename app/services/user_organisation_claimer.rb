@@ -34,7 +34,7 @@ class UserOrganisationClaimer
 
   def promote_user_if_superadmin_and_not(organisation_id)
     if is_current_user_superadmin? && !organisation_id
-      user.promote_to_org_superadmin
+      user.promote_to_org_admin
       listener.update_message_promoting(user)
     end
   end
