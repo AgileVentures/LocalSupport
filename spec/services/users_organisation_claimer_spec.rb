@@ -6,26 +6,26 @@ describe UserOrganisationClaimer,'.call'  do
 
   context 'an organisation_id is set' do 
     let(:organisation_id) { -1 } 
-    let(:current_user) { double(:current_user, admin?:false) }
+    let(:current_user) { double(:current_user, superadmin?:false) }
     let(:service) do 
       UserOrganisationClaimer.new(listener, user, current_user)
     end
 
     it 'update the pending organisation id' do
-      expect(user).to receive(:request_admin_status).with(organisation_id)
-      expect(listener).to receive(:update_message_for_admin_status)
+      expect(user).to receive(:request_superadmin_status).with(organisation_id)
+      expect(listener).to receive(:update_message_for_superadmin_status)
       service.call(organisation_id)
     end
   end
 
-  context 'when current user is an admin and organisation_id is not sent' do 
+  context 'when current user is an superadmin and organisation_id is not sent' do 
     let(:organisation_id) { nil }
-    let(:current_user) { double(:current_user, admin?:true) }
+    let(:current_user) { double(:current_user, superadmin?:true) }
     let(:service) do 
       UserOrganisationClaimer.new(listener, user, current_user)
     end
-    it 'promote the user to admin' do 
-      expect(user).to receive(:promote_to_org_admin)
+    it 'promote the user to superadmin' do 
+      expect(user).to receive(:promote_to_org_superadmin)
       expect(listener).to receive(:update_message_promoting).with(user)
       service.call(organisation_id)
     end

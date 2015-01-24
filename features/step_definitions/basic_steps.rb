@@ -19,34 +19,34 @@ Then /^I should see permission denied$/ do
   page.should have_content PERMISSION_DENIED
 end
 
-Then(/^the Admin menu has a valid (.*?) link$/) do |link|
-  within('#menuAdmin > ul.dropdown-menu') do
+Then(/^the Super Admin menu has a valid (.*?) link$/) do |link|
+  within('#menuSuper Admin > ul.dropdown-menu') do
     find('a', text: link).should_not be_nil
     click_link link
     current_path.should eq paths(link.downcase)
   end
 end
 
-Then /^"(.*?)" should be a charity admin for "(.*?)" charity$/ do |email, org|
+Then /^"(.*?)" should be a charity superadmin for "(.*?)" charity$/ do |email, org|
   org = Organisation.find_by_name org
   usr = User.find_by_email(email)
   expect(usr).not_to be_nil
   expect(org.users).to include usr
 end
 
-Then /^I should see the cannot add non registered user "(.*?)" as charity admin message$/ do |email|
+Then /^I should see the cannot add non registered user "(.*?)" as charity superadmin message$/ do |email|
   page.should have_content "The user email you entered,'#{email}', does not exist in the system"
 end
 
-And /^I add "(.*?)" as an admin for "(.*?)" charity$/ do |admin_email, charity|
+And /^I add "(.*?)" as a superadmin for "(.*?)" charity$/ do |superadmin_email, charity|
   steps %Q{ And I visit the edit page for the organisation named "#{charity}"}
-  fill_in 'organisation_admin_email_to_add', :with => admin_email
+  fill_in 'organisation_superadmin_email_to_add', :with => superadmin_email
   steps %Q{
   And I press "Update Organisation"}
 end
 
-Then /^I should see the no charity admins message$/ do
-  expect(page).to have_content "This organisation has no admins yet"
+Then /^I should see the no charity superadmins message$/ do
+  expect(page).to have_content "This organisation has no superadmins yet"
 end
 
 Given /^I delete "(.*?)" charity$/ do |name|
@@ -66,7 +66,7 @@ Then /^I should( not)? see an edit button for "(.*?)" volunteer opportunity$/ do
   expect(page).send(expectation_method, have_link('Edit', :href => edit_volunteer_op_path(op.id)))
 end
 
-Then /^I should( not)? see "(.*?)" in the charity admin email$/ do |negate,email|
+Then /^I should( not)? see "(.*?)" in the charity superadmin email$/ do |negate,email|
   expectation_method = negate ? :not_to : :to
   expect(page).send(expectation_method, have_selector('li', :text => email))
 end
@@ -332,7 +332,7 @@ end
 Given /^"(.*)"'s request status for "(.*)" should be updated appropriately$/ do |email, org_name|
   steps %Q{
       And "#{email}"'s request for "#{org_name}" should be persisted
-      And I should see "You have requested admin status for #{Organisation.find_by_name(org_name).name}"
+      And I should see "You have requested superadmin status for #{Organisation.find_by_name(org_name).name}"
       And I should not see a link or button "This is my organisation"
     }
 end
@@ -375,7 +375,7 @@ When /^I approve "(.*?)"$/ do |email|
   end
 end
 
-Then(/^"(.*?)" is a charity admin of "(.*?)"$/) do |user_email, org_name|
+Then(/^"(.*?)" is a charity superadmin of "(.*?)"$/) do |user_email, org_name|
   user = User.find_by_email(user_email)
   org = Organisation.find_by_name(org_name)
   user.organisation.should == org

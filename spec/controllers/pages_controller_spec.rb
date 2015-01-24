@@ -3,11 +3,11 @@ require 'rails_helper'
 describe PagesController, :type => :controller do
   let(:page) { mock_model Page, id: '2' }
 
-  before { allow(controller).to receive(:admin?) { true } }
+  before { allow(controller).to receive(:superadmin?) { true } }
 
   describe 'GET index' do
     it 'is restricted' do
-      expect(controller).to receive(:admin?) { false }
+      expect(controller).to receive(:superadmin?) { false }
       get :index, {}
       expect(response.status).to eq 302
     end
@@ -33,23 +33,23 @@ describe PagesController, :type => :controller do
     }
     let(:user) { double :user }
 
-    describe 'assigns site admin status of current_user to @admin' do
+    describe 'assigns site superadmin status of current_user to @superadmin' do
       it 'NIL when there is no current_user' do
         get :show, {id: 'about'}
-        expect(assigns(:admin)).to be nil
+        expect(assigns(:superadmin)).to be nil
       end
-      it 'FALSE when current_user is NOT admin' do
-        allow(user).to receive(:admin?) { false }
+      it 'FALSE when current_user is NOT superadmin' do
+        allow(user).to receive(:superadmin?) { false }
         allow(controller).to receive(:current_user) { user }
         get :show, {id: 'about'}
-        expect(assigns(:admin)).to be false
+        expect(assigns(:superadmin)).to be false
       end
 
-      it 'TRUE when current_user is admin' do
-        allow(user).to receive(:admin?) { true }
+      it 'TRUE when current_user is superadmin' do
+        allow(user).to receive(:superadmin?) { true }
         allow(controller).to receive(:current_user) { user }
         get :show, {id: 'about'}
-        expect(assigns(:admin)).to be true
+        expect(assigns(:superadmin)).to be true
       end
     end
 
@@ -64,23 +64,23 @@ describe PagesController, :type => :controller do
       allow(Page).to receive(:find_by_permalink!)
     end
 
-    describe 'assigns site admin status of current_user to @admin' do
+    describe 'assigns site superadmin status of current_user to @superadmin' do
       it 'NIL when there is no current_user' do
         get :show, {id: 'about'}
-        expect(assigns(:admin)).to be nil
+        expect(assigns(:superadmin)).to be nil
       end
-      it 'FALSE when current_user is NOT admin' do
-        allow(user).to receive(:admin?) { false }
+      it 'FALSE when current_user is NOT superadmin' do
+        allow(user).to receive(:superadmin?) { false }
         allow(controller).to receive(:current_user) { user }
         get :show, {id: 'about'}
-        expect(assigns(:admin)).to be false
+        expect(assigns(:superadmin)).to be false
       end
 
-      it 'TRUE when current_user is admin' do
-        allow(user).to receive(:admin?) { true }
+      it 'TRUE when current_user is superadmin' do
+        allow(user).to receive(:superadmin?) { true }
         allow(controller).to receive(:current_user) { user }
         get :show, {id: 'about'}
-        expect(assigns(:admin)).to be true
+        expect(assigns(:superadmin)).to be true
       end
     end
 
@@ -91,7 +91,7 @@ describe PagesController, :type => :controller do
     end
 
     it 'is NOT restricted' do
-      expect(controller).not_to receive(:admin?)
+      expect(controller).not_to receive(:superadmin?)
       get :show, {id: 'about'}
       expect(response.status).to eq 200
     end
@@ -112,7 +112,7 @@ describe PagesController, :type => :controller do
     end
 
     it 'is restricted' do
-      expect(controller).to receive(:admin?) { false }
+      expect(controller).to receive(:superadmin?) { false }
       get :new, {}
       expect(response.status).to eq 302
     end
@@ -133,7 +133,7 @@ describe PagesController, :type => :controller do
     end
 
     it 'is restricted' do
-      expect(controller).to receive(:admin?) { false }
+      expect(controller).to receive(:superadmin?) { false }
       get :edit, {id: page.id}
       expect(response.status).to eq 302
     end
@@ -172,7 +172,7 @@ describe PagesController, :type => :controller do
     end
 
     it 'is restricted' do
-      expect(controller).to receive(:admin?) { false }
+      expect(controller).to receive(:superadmin?) { false }
       post :create, {page: attributes}
       expect(response.status).to eq 302
     end
@@ -211,7 +211,7 @@ describe PagesController, :type => :controller do
     end
 
     it 'is restricted' do
-      expect(controller).to receive(:admin?) { false }
+      expect(controller).to receive(:superadmin?) { false }
       put :update, {id: page.id, page: attributes}
       expect(response.status).to eq 302
     end
@@ -245,7 +245,7 @@ describe PagesController, :type => :controller do
     end
 
     it 'is restricted' do
-      expect(controller).to receive(:admin?) { false }
+      expect(controller).to receive(:superadmin?) { false }
       delete :destroy, {id: page.id}
       expect(response.status).to eq 302
     end

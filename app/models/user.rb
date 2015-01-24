@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
     belongs_to?(org) || superadmin?
   end
 
-  def pending_superadmin? org
+  def pending_org_admin? org
     return false if self.pending_organisation == nil
     self.pending_organisation == org
   end

@@ -1,20 +1,20 @@
 Given /^I am signed in as a charity worker (un)?related to "(.*?)"$/ do |negate, organisation_name|
   organisation = Organisation.find_by_name(organisation_name)
   if negate
-    users = User.where(admin: false)
+    users = User.where(superadmin: false)
     user = users.find { |user| user.organisation != organisation }
   else
-    user = organisation.users.find { |user| !user.admin? }
+    user = organisation.users.find { |user| !user.superadmin? }
   end
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
 
-Given /^I am signed in as an? (non-)?admin$/ do |negate|
-  user = User.find_by_admin(negate ? false : true)
+Given /^I am signed in as an? (non-)?superadmin$/ do |negate|
+  user = User.find_by_superadmin(negate ? false : true)
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
 
-Given /^I am signed in as a pending-admin of "(.*?)"$/ do |org_name|
+Given /^I am signed in as a pending-superadmin of "(.*?)"$/ do |org_name|
   org = Organisation.find_by_name org_name
   user = User.find_by_pending_organisation_id(org.id)
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))

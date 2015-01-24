@@ -1,6 +1,6 @@
 Feature: This is my organisation
-  As an organisation administrator
-  So that I could be set as an admin of our organisation (to edit details, post volunteer ops)
+  As an organisation superadministrator
+  So that I could be set as a superadmin of our organisation (to edit details, post volunteer ops)
   I want to be able to request for the privilege through our organisation page
 
   Background:
@@ -10,44 +10,44 @@ Feature: This is my organisation
       | The Other    | 83 pinner road |
 
     And the following users are registered:
-      | email                     | password       | admin | confirmed_at        | organisation | pending_organisation |
-      | admin@helpfolk.com        | mypassword1234 | false | 2008-01-01 00:00:00 |              |                      |
-      | pendingadmin@helpfolk.com | mypassword1234 | false | 2008-01-01 00:00;00 |              | Helpful Folk         |
-      | admin@localsupport.org    | mypassword1234 | true  | 2008-01-01 00:00:00 |              |                      |
+      | email                     | password       | superadmin | confirmed_at        | organisation | pending_organisation |
+      | superadmin@helpfolk.com        | mypassword1234 | false | 2008-01-01 00:00:00 |              |                      |
+      | pendingsuperadmin@helpfolk.com | mypassword1234 | false | 2008-01-01 00:00;00 |              | Helpful Folk         |
+      | superadmin@localsupport.org    | mypassword1234 | true  | 2008-01-01 00:00:00 |              |                      |
 
     And cookies are approved
 
   Scenario: Signed in User
-    Given I am signed in as a non-admin
+    Given I am signed in as a non-superadmin
     And I click "This is my organisation" on the "Helpful Folk" page and stay there
-    Then I should see "You have requested admin status for Helpful Folk"
+    Then I should see "You have requested superadmin status for Helpful Folk"
     And I should not see a link or button "This is my organisation"
-    And "admin@helpfolk.com"'s request for "Helpful Folk" should be persisted
-    And an email should be sent to "admin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
+    And "superadmin@helpfolk.com"'s request for "Helpful Folk" should be persisted
+    And an email should be sent to "superadmin@localsupport.org" as notification of the request for superadmin status of "Helpful Folk"
 
 # when capybara-webkit clicks TIMO, it needs to submit sign in form with javascript or
 # else ClickFailed error will occur due to overlapping elements
   @javascript
   Scenario: Not Signed in User
     Given I click "This is my organisation" on the "Helpful Folk" page and stay there
-    When I sign in as "admin@helpfolk.com" with password "mypassword1234" with javascript
-    Then I should see "You have requested admin status for Helpful Folk"
+    When I sign in as "superadmin@helpfolk.com" with password "mypassword1234" with javascript
+    Then I should see "You have requested superadmin status for Helpful Folk"
     And I should not see a link or button "This is my organisation"
-    And "admin@helpfolk.com"'s request for "Helpful Folk" should be persisted
-    And an email should be sent to "admin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
+    And "superadmin@helpfolk.com"'s request for "Helpful Folk" should be persisted
+    And an email should be sent to "superadmin@localsupport.org" as notification of the request for superadmin status of "Helpful Folk"
 
 # what we're not checking here is that the login box pops open with the right message
 # I think we cover that in jasmine tests - needed here too?
   @javascript
   Scenario: Not Signed in User Who Fails Signin Once
     Given I click "This is my organisation" on the "Helpful Folk" page and stay there
-    When I sign in as "admin@helpfolk.com" with password "mypassword1235" with javascript
+    When I sign in as "superadmin@helpfolk.com" with password "mypassword1235" with javascript
     Then I should be on the sign in page
-    When I sign in as "admin@helpfolk.com" with password "mypassword1234"
-    Then I should see "You have requested admin status for Helpful Folk"
+    When I sign in as "superadmin@helpfolk.com" with password "mypassword1234"
+    Then I should see "You have requested superadmin status for Helpful Folk"
     And I should not see a link or button "This is my organisation"
-    And "admin@helpfolk.com"'s request for "Helpful Folk" should be persisted
-    And an email should be sent to "admin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
+    And "superadmin@helpfolk.com"'s request for "Helpful Folk" should be persisted
+    And an email should be sent to "superadmin@localsupport.org" as notification of the request for superadmin status of "Helpful Folk"
 
   @javascript
   Scenario: Unregistered User
@@ -56,12 +56,12 @@ Feature: This is my organisation
     When I sign up as "normal_user@myorg.com" with password "pppppppp" and password confirmation "pppppppp"
     Then I should see "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
     And I should be on the show page for the organisation named "Helpful Folk"
-    Then I should see "You have requested admin status for Helpful Folk"
+    Then I should see "You have requested superadmin status for Helpful Folk"
     # And I should not see a link or button "This is my organisation"  <-- button still appears as we have no current_user ...
     And "normal_user@myorg.com"'s request for "Helpful Folk" should be persisted
     And I click on the confirmation link in the email to "normal_user@myorg.com"
     Then I should be on the show page for the organisation named "Helpful Folk"
-    And an email should be sent to "admin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
+    And an email should be sent to "superadmin@localsupport.org" as notification of the request for superadmin status of "Helpful Folk"
 
   @javascript
   Scenario: Unregistered User Who Fails Signin Once
@@ -72,16 +72,16 @@ Feature: This is my organisation
     And I sign up as "newuser@myorg.com" with password "pppppppp" and password confirmation "pppppppp" on the legacy sign up page
     And I should see "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
     And I should be on the show page for the organisation named "Helpful Folk"
-    Then I should see "You have requested admin status for Helpful Folk"
+    Then I should see "You have requested superadmin status for Helpful Folk"
     # And I should not see a link or button "This is my organisation"  <-- button still appears as we have no current_user ...
     And "newuser@myorg.com"'s request for "Helpful Folk" should be persisted
     And I click on the confirmation link in the email to "newuser@myorg.com"
     Then I should be on the show page for the organisation named "Helpful Folk"
-    And an email should be sent to "admin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
+    And an email should be sent to "superadmin@localsupport.org" as notification of the request for superadmin status of "Helpful Folk"
 
-  Scenario: I have requested admin status but am not yet approved, I will see a notice only on the show page for the requested org
-    Given I am signed in as a pending-admin of "Helpful Folk"
+  Scenario: I have requested superadmin status but am not yet approved, I will see a notice only on the show page for the requested org
+    Given I am signed in as a pending-superadmin of "Helpful Folk"
     And I visit the show page for the organisation named "Helpful Folk"
-    Then I should see "Your request for admin status is pending."
+    Then I should see "Your request for superadmin status is pending."
     And I visit the show page for the organisation named "The Other"
-    Then I should not see "Your request for admin status is pending."
+    Then I should not see "Your request for superadmin status is pending."
