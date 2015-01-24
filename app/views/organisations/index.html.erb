@@ -28,7 +28,7 @@
 <br/>
 
 <div style="width:50%;float:left">
-  <%= link_to_if(current_user.try(:admin?), 'Add Organisation',
+  <%= link_to_if(current_user.try(:superadmin?), 'Add Organisation',
                  new_organisation_path){} %>
 </div>
 

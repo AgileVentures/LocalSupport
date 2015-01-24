@@ -1,11 +1,11 @@
 <% if @organisation.users.empty? %>
-    <div>This organisation has no admins yet</div>
+    <div>This organisation has no superadmins yet</div>
 <% else %>
   <div>
-  Organisation administrator emails:
+  Organisation superadministrator emails:
   <ul>
-  <% @organisation.users.each do |admin| %>
-  <li><%= admin.email %></li>
+  <% @organisation.users.each do |superadmin| %>
+  <li><%= superadmin.email %></li>
   <% end %>
   </ul>
   </div>

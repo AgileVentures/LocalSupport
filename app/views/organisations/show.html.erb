@@ -78,8 +78,8 @@
       <% else %>
           <%= link_to "This is my organisation", new_user_session_path, {method: :put, 'data-signed_in' => current_user.present?, id: 'TIMO', class: 'btn btn-primary'} if @grabbable %>
       <% end %>
-      <% if @pending_admin %>
-        <p class="org-info-msg-1" ><strong>Your request for admin status is pending.</strong></p>
+      <% if @pending_superadmin %>
+        <p class="org-info-msg-1" ><strong>Your request for superadmin status is pending.</strong></p>
       <% end%> 
     </div>
   </div>

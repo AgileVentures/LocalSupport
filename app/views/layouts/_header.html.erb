@@ -83,7 +83,7 @@
                       </div>
                     </li>
                 <% else %>
-                      <% if current_user.admin? %>
+                      <% if current_user.superadmin? %>
                           <li class="dropdown" id="menuAdmin">
                             <a class="dropdown-toggle" href="#" data-toggle="dropdown">Admin</a>
                             <ul class="dropdown-menu" >

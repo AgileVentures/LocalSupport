@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
   end
 
   # Devise Invitable hook
-  # Since users are invited to be org admins, we're delivering them to their page
+  # Since users are invited to be org superadmins, we're delivering them to their page
   def after_accept_path_for(resource)
     return organisation_path(current_user.organisation) if current_user.organisation
     root_path
@@ -72,18 +72,18 @@ class ApplicationController < ActionController::Base
 
   private
 
-  # Enforces admin-only limits
+  # Enforces superadmin-only limits
   # http://railscasts.com/episodes/20-restricting-access
   def authorize
-    unless admin?
-      flash[:error] = t('authorize.admin')
+    unless superadmin?
+      flash[:error] = t('authorize.superadmin')
       redirect_to root_path
       false
     end
   end
 
-  def admin?
-    current_user.try :admin?
+  def superadmin?
+    current_user.try :superadmin?
   end
 
   def assign_footer_page_links
