@@ -22,25 +22,25 @@ describe ProposedOrganisationEdit do
     end
   end
   describe '#editable?' do
+    [:address,:telephone].each do |sym|
+      it{expect(proposed_edit.editable?(sym)).to be false}
+    end
+    it{expect(proposed_edit.editable?(:email)).to be true}
+    [:name, :description, :postcode, :website, :donation_info].each do |sym|
+      it{expect(proposed_edit.editable?(sym)).to be true}
+    end
+    context 'opposite of default setting for publish fields' do
+      let(:org){FactoryGirl.create(:organisation, :name => 'Harrow Bereavement Counselling',
+                                   :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE',
+                                   :donation_info => 'www.harrow-bereavment.co.uk/donate', :publish_phone => true, :publish_address => true,
+                                   :publish_email => false)}
       [:address,:telephone].each do |sym|
-          it{expect(proposed_edit.editable?(sym)).to be false}
-      end
-      it{expect(proposed_edit.editable?(:email)).to be true}
-      [:name, :description, :postcode, :website, :donation_info].each do |sym|
         it{expect(proposed_edit.editable?(sym)).to be true}
       end
-      context 'opposite of default setting for publish fields' do
-        let(:org){FactoryGirl.create(:organisation, :name => 'Harrow Bereavement Counselling',
-                                     :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE',
-                                     :donation_info => 'www.harrow-bereavment.co.uk/donate', :publish_phone => true, :publish_address => true,
-                                     :publish_email => false)}
-        [:address,:telephone].each do |sym|
-          it{expect(proposed_edit.editable?(sym)).to be true}
-        end
-        it{expect(proposed_edit.editable?(:email)).to be false}
-      end
-
+      it{expect(proposed_edit.editable?(:email)).to be false}
+    end
   end
+
   describe '#non_published_editable_fields' do
     let(:org){FactoryGirl.create(:organisation, :name => "Happy Org", :publish_email => false)}
     context 'all fields are private' do
@@ -57,6 +57,7 @@ describe ProposedOrganisationEdit do
       end
     end
   end
+
   describe "#accept" do
     context 'update with params' do
       let(:org){FactoryGirl.create(:organisation, :name => 'Harrow Bereavement Counselling',
@@ -79,8 +80,8 @@ describe ProposedOrganisationEdit do
         }.to change(proposed_edit, :archived).from(false).to true
       end
     end
-
   end
+
   describe '#has_proposed_edit?' do
     context 'when an edit to :name has not been proposed' do
       let(:proposed_edit){FactoryGirl.create(:proposed_organisation_edit, :organisation => org, :name => 'Harrow Bereavement Counselling' )}
