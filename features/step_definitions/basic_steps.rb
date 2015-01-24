@@ -19,8 +19,8 @@ Then /^I should see permission denied$/ do
   page.should have_content PERMISSION_DENIED
 end
 
-Then(/^the Super Admin menu has a valid (.*?) link$/) do |link|
-  within('#menuSuper Admin > ul.dropdown-menu') do
+Then(/^the SuperAdmin menu has a valid (.*?) link$/) do |link|
+  within('#menuSuperAdmin > ul.dropdown-menu') do
     find('a', text: link).should_not be_nil
     click_link link
     current_path.should eq paths(link.downcase)

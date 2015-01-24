@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
   end
 
   # Devise Invitable hook
-  # Since users are invited to be org superadmins, we're delivering them to their page
+  # Since users are invited to be org admins, we're delivering them to their page
   def after_accept_path_for(resource)
     return organisation_path(current_user.organisation) if current_user.organisation
     root_path

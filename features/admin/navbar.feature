@@ -14,8 +14,8 @@ Feature: Super Admin user interface
     And that the volunteer_ops_list flag is enabled
     And I visit the home page
 
-  Scenario Outline: Top navbar has an Super Admin dropdown menu
-    Then the Super Admin menu has a valid <link> link
+  Scenario Outline: Top navbar has a SuperAdmin dropdown menu
+    Then the SuperAdmin menu has a valid <link> link
   Examples:
     | link                        |
     | Organisations Without Users |

@@ -84,7 +84,7 @@
                     </li>
                 <% else %>
                       <% if current_user.superadmin? %>
-                          <li class="dropdown" id="menuAdmin">
+                          <li class="dropdown" id="menuSuperAdmin">
                             <a class="dropdown-toggle" href="#" data-toggle="dropdown">Admin</a>
                             <ul class="dropdown-menu" >
                               <li><%= link_to 'Organisations Without Users', organisations_report_path %></li>

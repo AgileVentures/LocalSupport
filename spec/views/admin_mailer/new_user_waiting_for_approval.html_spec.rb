@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'superadmin_mailer/new_user_waiting_for_approval.html.erb', :type => :view do
+describe 'admin_mailer/new_user_waiting_for_approval.html.erb', :type => :view do
   it 'should render with org name' do
     assign(:org_name, 'Friendly')
     render

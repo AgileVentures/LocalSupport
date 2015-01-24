@@ -117,7 +117,7 @@ describe ApplicationController, :type => :controller, :helpers => :controllers d
         allow(controller).to receive_messages superadmin?: false
         expect(controller).to receive(:redirect_to).with(root_path) { true } # calling original raises errors
         expect(controller.flash).to receive(:[]=)
-          .with(:error, 'You must be signed in as an superadmin to perform this action!')
+          .with(:error, 'You must be signed in as a superadmin to perform this action!')
           .and_call_original
         expect(controller.instance_eval { authorize }).to be false
         # can't assert `redirect_to root_path`: http://owowthathurts.blogspot.com/2013/08/rspec-response-delegation-error-fix.html

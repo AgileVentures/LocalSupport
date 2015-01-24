@@ -105,7 +105,7 @@ describe UserReportsController, :type => :controller do
 
         it "flashes the relevant notice" do
           get :index
-          expect(flash[:error]).to have_content("You must be signed in as an superadmin to perform this action!")
+          expect(flash[:error]).to have_content("You must be signed in as a superadmin to perform this action!")
         end
       end
     end
@@ -122,7 +122,7 @@ describe UserReportsController, :type => :controller do
 
       it "flashes the relevant notice" do
         get :index
-        expect(flash[:error]).to have_content("You must be signed in as an superadmin to perform this action!")
+        expect(flash[:error]).to have_content("You must be signed in as a superadmin to perform this action!")
       end
 
     end
