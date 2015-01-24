@@ -89,7 +89,7 @@ describe User, :type => :model do
   end
 
   # http://stackoverflow.com/questions/12125038/where-do-i-confirm-user-created-with-factorygirl
-  describe '#make_superadmin_of_org_with_matching_email' do
+  describe '#make_admin_of_org_with_matching_email' do
     before do
       @user = FactoryGirl.create(:user, email: 'bert@charity.org')
       @superadmin_user = FactoryGirl.create(:user, email: 'superadmin@charity.org')
@@ -98,28 +98,28 @@ describe User, :type => :model do
     end
 
     it 'should call promote_new_user after confirmation' do
-      expect(@user).to receive(:make_superadmin_of_org_with_matching_email)
+      expect(@user).to receive(:make_admin_of_org_with_matching_email)
       @user.confirm!
     end
 
     it 'should not promote the user if org email does not match' do
-      @user.make_superadmin_of_org_with_matching_email
+      @user.make_admin_of_org_with_matching_email
       expect(@user.organisation).not_to eq @mismatch_org
       expect(@user.organisation).not_to eq @match_org
     end
 
-    it 'should not promote the superadmin user if org email does not match' do
-      @superadmin_user.make_superadmin_of_org_with_matching_email
+    it 'should not promote the admin user if org email does not match' do
+      @superadmin_user.make_admin_of_org_with_matching_email
       expect(@superadmin_user.organisation).not_to eq @mismatch_org
     end
 
-    it 'should promote the superadmin user if org email matches' do
-      @superadmin_user.make_superadmin_of_org_with_matching_email
+    it 'should promote the admin user if org email matches' do
+      @superadmin_user.make_admin_of_org_with_matching_email
       expect(@superadmin_user.organisation).to eq @match_org
     end
 
     it 'should be called in #confirm!' do
-      expect(@user).to receive(:make_superadmin_of_org_with_matching_email)
+      expect(@user).to receive(:make_admin_of_org_with_matching_email)
       @user.confirm!
     end
   end
@@ -172,48 +172,48 @@ describe User, :type => :model do
       expect(user.can_request_org_admin?(@organisation)).to be false
     end
 
-    it 'is false when user is charity superadmin of this charity' do
+    it 'is false when user is organisation admin of this organisation' do
       expect(user).to receive(:organisation).and_return(@organisation)
       expect(user.can_request_org_admin?(@organisation)).to be false
     end
 
-    it 'is true when user is charity superadmin of another charity' do
+    it 'is true when user is organisation admin of another organisation' do
       expect(user).to receive(:organisation).and_return(@other_organisation)
       expect(user.can_request_org_admin?(@organisation)).to be true
     end
 
-    it 'is true when user is charity superadmin of no charity' do
+    it 'is true when user is organisation admin of no organisation' do
       expect(user).to receive(:organisation).and_return(nil)
       expect(user.can_request_org_admin?(@organisation)).to be true
     end
 
-    it 'is false when user is pending charity superadmin of this charity' do
+    it 'is false when user is pending organisation admin of this organisation' do
       expect(user).to receive(:pending_organisation).and_return(@organisation)
       expect(user.can_request_org_admin?(@organisation)).to be false
     end
 
-    it 'is true when user is pending charity superadmin of another charity' do
+    it 'is true when user is pending organisation admin of another organisation' do
       expect(user).to receive(:pending_organisation).and_return(@other_organisation)
       expect(user.can_request_org_admin?(@organisation)).to be true
     end
 
-    it 'is true when user is pending charity superadmin of no charity' do
+    it 'is true when user is pending organisation admin of no organisation' do
       expect(user).to receive(:pending_organisation).and_return(nil)
       expect(user.can_request_org_admin?(@organisation)).to be true
     end
 
-    it 'is true when user is not (site superadmin || charity superadmin of this charity || pending charity superadmin of this charity)' do
+    it 'is true when user is not (site superadmin || organisation admin of this organisation || pending organisation admin of this organisation)' do
       expect(user.can_request_org_admin?(@organisation)).to be true
     end
 
   end
 
-  context '#request_superadmin_status' do
+  context '#request_admin_status' do
     let(:user) { FactoryGirl.build(:user) }
     let(:organisation_id) { 12345 }
 
     it 'update pending organisation id' do
-      user.request_superadmin_status organisation_id
+      user.request_admin_status organisation_id
       expect(user.pending_organisation_id).to eql organisation_id
     end
   end
@@ -255,12 +255,12 @@ describe User, :type => :model do
     let(:user) { FactoryGirl.create :user_stubbed_organisation }
     let(:other_org) { FactoryGirl.create :organisation }
 
-    it 'true when user is pending superadmin for organisation' do
+    it 'true when user is pending admin for organisation' do
       user.pending_organisation = other_org
       expect(user.pending_org_admin? other_org).to be true
     end
 
-    it 'false when user is not pending superadmin for organisation' do
+    it 'false when user is not pending admin for organisation' do
       expect(user.pending_org_admin? other_org).to be false
     end
 

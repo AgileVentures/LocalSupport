@@ -7,7 +7,7 @@ class UserOrganisationClaimer
   end
 
   def call(organisation_id)
-    request_superadmin_status_if(organisation_id)
+    request_admin_status_if(organisation_id)
     error_message_if_not_superadmin_or_not(organisation_id)
     promote_user_if_superadmin_and_not(organisation_id)
   end
@@ -19,10 +19,10 @@ class UserOrganisationClaimer
     current_user.superadmin?
   end
 
-  def request_superadmin_status_if(organisation_id)
+  def request_admin_status_if(organisation_id)
     if organisation_id 
-      user.request_superadmin_status organisation_id
-      listener.update_message_for_superadmin_status
+      user.request_admin_status organisation_id
+      listener.update_message_for_admin_status
     end
   end
 

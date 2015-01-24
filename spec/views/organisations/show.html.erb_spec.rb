@@ -184,7 +184,7 @@ describe 'organisations/show.html.erb', :type => :view do
     it 'displays pending superadmin message' do
       assign(:pending_org_admin, true)
       render
-      expect(rendered).to have_content 'Your request for superadmin status is pending.'
+      expect(rendered).to have_content 'Your request for admin status is pending.'
     end
   end
 

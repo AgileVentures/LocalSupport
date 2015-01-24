@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
 
   def confirm!
     super
-    make_superadmin_of_org_with_matching_email
+    make_admin_of_org_with_matching_email
   end
 
   def belongs_to? organisation
@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
     !superadmin? && organisation != org && pending_organisation != org
   end
 
-  def make_superadmin_of_org_with_matching_email
+  def make_admin_of_org_with_matching_email
     org = Organisation.find_by_email self.email
     self.organisation = org if org
     save!
@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
     save!
   end
 
-  def request_superadmin_status(organisation_id)
+  def request_admin_status(organisation_id)
     self.pending_organisation_id = organisation_id
     save!
   end

@@ -1,4 +1,4 @@
-And(/^an email should be sent to "(.*?)" as notification of the request for superadmin status of "(.*?)"$/) do |email, org_name|
+And(/^an email should be sent to "(.*?)" as notification of the request for admin status of "(.*?)"$/) do |email, org_name|
   message = "There is a user waiting for superadmin approval to #{org_name}"
   mails = ActionMailer::Base.deliveries.select{|m| m.to.include? email}
   expect(mails).not_to be_empty

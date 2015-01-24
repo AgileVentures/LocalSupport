@@ -14,7 +14,7 @@ Given /^I am signed in as an? (non-)?superadmin$/ do |negate|
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
 
-Given /^I am signed in as a pending-superadmin of "(.*?)"$/ do |org_name|
+Given /^I am signed in as a pending admin of "(.*?)"$/ do |org_name|
   org = Organisation.find_by_name org_name
   user = User.find_by_pending_organisation_id(org.id)
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))

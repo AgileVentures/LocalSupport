@@ -43,9 +43,9 @@ class UserReportsController < ApplicationController
     render :template => 'user_reports/invited', :layout => 'invitation_table'
   end
 
-  def update_message_for_superadmin_status
+  def update_message_for_admin_status
     org = Organisation.find(params[:organisation_id])
-    flash[:notice] = "You have requested superadmin status for #{org.name}"
+    flash[:notice] = "You have requested admin status for #{org.name}"
     redirect_to(organisation_path(params[:organisation_id]))
   end
 

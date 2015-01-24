@@ -3,34 +3,34 @@ describe UserReportsController, :type => :controller do
   describe 'PUT update user-organisation status', :helpers => :controllers do
     before(:each) do
       make_current_user_superadmin
-      @nonsuperadmin_user = double("User")
-      allow(User).to receive(:find_by_id).with("4").and_return(@nonsuperadmin_user)
-      allow(@nonsuperadmin_user).to receive(:pending_organisation_id=).with('5')
-      allow(@nonsuperadmin_user).to receive(:save!)
+      @nonadmin_user = double("User")
+      allow(User).to receive(:find_by_id).with("4").and_return(@nonadmin_user)
+      allow(@nonadmin_user).to receive(:pending_organisation_id=).with('5')
+      allow(@nonadmin_user).to receive(:save!)
       @org = double("Organisation")
       allow(@org).to receive(:name).and_return('Red Cross')
       allow(Organisation).to receive(:find).and_return(@org)
     end
-    context 'user requesting pending status to be superadmin of charity' do
+    context 'user requesting pending status to be admin of charity' do
       before do
-        allow(@nonsuperadmin_user).to receive(:request_superadmin_status)
-        allow(@nonsuperadmin_user).to receive(:promote_to_org_admin)
-        allow(@nonsuperadmin_user).to receive(:email)
+        allow(@nonadmin_user).to receive(:request_admin_status)
+        allow(@nonadmin_user).to receive(:promote_to_org_admin)
+        allow(@nonadmin_user).to receive(:email)
       end
 
       it 'should redirect to the show page for nested org' do
         put :update, id: 4, organisation_id: 5
         expect(response).to redirect_to(organisation_path(5))
       end
-      it 'should display that a user has requested superadmin status for nested org' do
+      it 'should display that a user has requested admin status for nested org' do
         put :update, id: 4, organisation_id: 5
-        expect(flash[:notice]).to have_content("You have requested superadmin status for #{@org.name}")
+        expect(flash[:notice]).to have_content("You have requested admin status for #{@org.name}")
       end
     end
-    context 'superadmin promoting user to charity superadmin' do
+    context 'superadmin promoting user to charity admin' do
       before(:each) do
-        allow(@nonsuperadmin_user).to receive(:promote_to_org_admin)
-        allow(@nonsuperadmin_user).to receive(:email).and_return('stuff@stuff.com')
+        allow(@nonadmin_user).to receive(:promote_to_org_admin)
+        allow(@nonadmin_user).to receive(:email).and_return('stuff@stuff.com')
       end
       it 'non-superadmins get refused' do
         allow(@nonsuperadmin_user).to receive(:superadmin?).and_return(false)
@@ -45,7 +45,7 @@ describe UserReportsController, :type => :controller do
       end
       it 'shows a flash telling which user got approved' do
         put :update, {:id => '4'}
-        expect(flash[:notice]).to have_content("You have approved #{@nonsuperadmin_user.email}.")
+        expect(flash[:notice]).to have_content("You have approved #{@nonadmin_user.email}.")
       end
     end
   end
