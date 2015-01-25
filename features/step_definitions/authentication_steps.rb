@@ -9,8 +9,8 @@ Given /^I am signed in as a charity worker (un)?related to "(.*?)"$/ do |negate,
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
  
-Given /^I am signed in as a siteadmin$/ do 
-  user = User.find_by(siteadmin: true)
+Given /^I am signed in as a (non-)?siteadmin$/ do |negate|
+  user = User.find_by(siteadmin: negate ? false : true)
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
 Given /^I am signed in as an? (non-)?superadmin$/ do |negate|

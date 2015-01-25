@@ -98,3 +98,8 @@ Then(/^I should not see links for archived edits$/) do
     expect(page).not_to have_link "View Details", href: organisation_proposed_organisation_edit_path(archived_edit.organisation, archived_edit)
   end
 end
+
+Then(/^I should not see the (.*) for (.*)/) do |field, org|
+  value = Organisation.find_by(name: org).send(field.to_sym)
+  expect(page).not_to have_content(value)
+end

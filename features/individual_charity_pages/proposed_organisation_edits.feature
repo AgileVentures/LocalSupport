@@ -81,7 +81,7 @@ I want to be able to propose edits to inaccurate organisation listings
       | field         | current value                         | proposed value        |
       | name          | Really Friendly                       | Unfriendly            |
       | website       | http://friendly.org                   | http://unfriendly.org |
-      | email         | superadmin@friendly.xx                     | newemail@friendly.xx  |
+      | email         | superadmin@friendly.xx                | newemail@friendly.xx  |
       | description   | Bereavement Counselling               | Mourning loved ones   |
       | address       | 34 pinner road                        | 124 Pinner Road       |
       | postcode      | HA1 4HZ                               | HA8 7TB               |

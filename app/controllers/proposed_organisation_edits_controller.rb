@@ -10,10 +10,12 @@ class ProposedOrganisationEditsController < ApplicationController
   def create
     org = Organisation.find(params[:organisation_id])
     in_memory_edit = ProposedOrganisationEdit.new(organisation: org)
-    create_params = params.require(:proposed_organisation_edit).permit(:address, :telephone, :postcode, :name,
-      :description, :website, :postcode, :email, :donation_info).merge(organisation: org, editor: current_user)
-    in_memory_edit.non_published_generally_editable_fields.each do |non_published_field|
-      create_params.merge!(non_published_field => org.send(non_published_field))
+      create_params = params.require(:proposed_organisation_edit).permit(:address, :telephone, :postcode, :name,
+        :description, :website, :postcode, :email, :donation_info).merge(organisation: org, editor: current_user)
+    if !current_user.siteadmin?
+      in_memory_edit.non_published_generally_editable_fields.each do |non_published_field|
+        create_params.merge!(non_published_field => org.send(non_published_field))
+      end
     end
     redirect_to organisation_proposed_organisation_edit_path org, ProposedOrganisationEdit.create!(create_params)
   end
