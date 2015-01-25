@@ -1,7 +1,16 @@
-Then(/^the telephone field of the proposed edit should be pre\-populated with the telephone of the organisation named "(.*?)"$/) do |name|
-  org_phone = Organisation.find_by_name(name).telephone
-  expect(page).to have_field('proposed_organisation_edit_telephone', with: org_phone)
+Then(/^the email field of the proposed edit should be pre\-populated with the email of the organisation named "(.*?)"$/) do |name|
+  org_email = Organisation.find_by_name(name).email
+  expect(page).to have_field('proposed_organisation_edit_email', with: org_email)
 end
+Then(/^the address field of the proposed edit should be pre\-populated with the address of the organisation named "(.*?)"$/) do |name|
+  org_address = Organisation.find_by_name(name).address
+  expect(page).to have_field('proposed_organisation_edit_address', with: org_address)
+end
+Then(/^the telephone field of the proposed edit should be pre\-populated with the telephone of the organisation named "(.*?)"$/) do |name|
+  org_telephone = Organisation.find_by_name(name).telephone
+  expect(page).to have_field('proposed_organisation_edit_telephone', with: org_telephone)
+end
+
 
 Then(/^the address of the organisation named "(.*?)" should not be editable nor appear$/) do |name|
   org_address = Organisation.find_by_name(name).address

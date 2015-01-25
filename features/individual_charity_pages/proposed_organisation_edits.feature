@@ -16,7 +16,7 @@ I want to be able to propose edits to inaccurate organisation listings
     Given the following users are registered:
       | email                         | password | organisation        | confirmed_at         | superadmin |
       | registered_user-2@example.com | pppppppp |                     | 2007-01-01  10:00:00 | false |
-      | superadmin@harrowcn.org.uk         | pppppppp |                     | 2007-01-01  10:00:00 | true  |
+      | superadmin@harrowcn.org.uk    | pppppppp |                     | 2007-01-01  10:00:00 | true  |
       | friendly@friendly.org         | pppppppp | Really Friendly     | 2007-01-01  10:00:00 | false |
     And cookies are approved
 
