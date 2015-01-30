@@ -99,7 +99,7 @@ Then(/^I should not see links for archived edits$/) do
   end
 end
 
-Then(/^I should not see the (.*) for (.*)/) do |field, org|
+Then(/^I should not see the (.*) field for (.*)/) do |field, org|
   value = Organisation.find_by(name: org).send(field.to_sym)
   expect(page).not_to have_content(value)
 end

@@ -40,7 +40,7 @@ I want to be able to propose edits to inaccurate organisation listings, includin
       | original_name       | editor_email                  | address        | telephone | email   |
       | Friendly            | siteadmin@example.com         | 30 pinner road | 520800000 | a@a.com |
     And I visit the most recently created proposed edit for "Friendly"
-    Then I should not see the email for Friendly
-    Then I should not see the address for Friendly
-    Then I should not see the telephone for Friendly
+    Then I should not see the email field for Friendly
+    Then I should not see the address field for Friendly
+    Then I should not see the telephone field for Friendly
 
