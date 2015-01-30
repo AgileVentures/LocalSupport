@@ -1,43 +1,60 @@
 require 'rails_helper'
 
+def check_editability(boolean, array_of_symbols)
+  array_of_symbols.each do |sym|
+    it "should indicate#{boolean ? '' : ' NOT'} editable for #{sym}" do
+      expect(proposed_edit.editable?(sym)).to be boolean
+    end
+  end
+end
+
 describe ProposedOrganisationEdit do
-  let(:org){FactoryGirl.create(:organisation, :name => 'Harrow Bereavement Counselling',
-                               :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE',
-                               :donation_info => 'www.harrow-bereavment.co.uk/donate')}
-  let!(:proposed_edit){FactoryGirl.create(:proposed_organisation_edit, :organisation => org )}
-  it{expect(proposed_edit.organisation).to eq org}
+
+  let(:org) do
+    FactoryGirl.create(:organisation,
+                       :name => 'Harrow Bereavement Counselling',
+                       :description => 'Bereavement Counselling',
+                       :address => '64 pinner road',
+                       :postcode => 'HA1 3TE',
+                       :donation_info => 'www.harrow-bereavment.co.uk/donate')
+  end
+
+  let!(:proposed_edit) do
+    FactoryGirl.create(:proposed_organisation_edit,
+                       :organisation => org )
+  end
+
   describe '::still_pending' do
-    let(:archived_edit){FactoryGirl.create(:proposed_organisation_edit, :organisation => org, :archived => true)}
-    it 'returns non archived edits' do
+    let(:archived_edit) do
+      FactoryGirl.create(:proposed_organisation_edit,
+                         :organisation => org,
+                         :archived => true)
+    end
+    it 'should return all edits that are not yet archived' do
       expect(ProposedOrganisationEdit.all).to include archived_edit
       expect(ProposedOrganisationEdit.still_pending).to eq [proposed_edit] 
     end
   end
 
-  describe 'soft delete of associated edits when org is soft deleted' do
-    it do
+  it 'should soft delete associated edits when org is soft deleted' do
       org.destroy
       expect(ProposedOrganisationEdit.all).not_to include proposed_edit
       expect(ProposedOrganisationEdit.with_deleted).to include proposed_edit
-    end
   end
+
   describe '#editable?' do
-    [:address,:telephone].each do |sym|
-      it{expect(proposed_edit.editable?(sym)).to be false}
-    end
-    it{expect(proposed_edit.editable?(:email)).to be true}
-    [:name, :description, :postcode, :website, :donation_info].each do |sym|
-      it{expect(proposed_edit.editable?(sym)).to be true}
-    end
-    context 'opposite of default setting for publish fields' do
-      let(:org){FactoryGirl.create(:organisation, :name => 'Harrow Bereavement Counselling',
-                                   :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE',
-                                   :donation_info => 'www.harrow-bereavment.co.uk/donate', :publish_phone => true, :publish_address => true,
-                                   :publish_email => false)}
-      [:address,:telephone].each do |sym|
-        it{expect(proposed_edit.editable?(sym)).to be true}
+
+    check_editability(false, [:address,:telephone])
+    check_editability(true, [:name, :description, :postcode, :website, :donation_info, :email])
+
+    context 'when publish field settings are changed' do
+      before do
+        org.update(:publish_phone => true,
+                   :publish_address => true,
+                   :publish_email => false)
       end
-      it{expect(proposed_edit.editable?(:email)).to be false}
+      check_editability(true, [:address,:telephone])
+      check_editability(false, [:email])
     end
   end
 
@@ -96,3 +113,5 @@ describe ProposedOrganisationEdit do
     end
   end
 end
+
+
