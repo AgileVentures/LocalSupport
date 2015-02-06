@@ -4,7 +4,6 @@ module ProposesEdits
     base.extend ClassMethods
   end
 
-  attr_reader :instance_to_edit
   def instance_to_edit
     @instance_to_edit ||=
       self.send(self.class.klass_to_edit)
