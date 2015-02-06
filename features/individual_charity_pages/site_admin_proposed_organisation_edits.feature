@@ -11,6 +11,7 @@ I want to be able to propose edits to inaccurate organisation listings, includin
     Given the following users are registered:
       | email                 | password | organisation        | confirmed_at         | superadmin | siteadmin |
       | siteadmin@example.com | pppppppp |                     | 2007-01-01  10:00:00 | false      | true      |
+      | justauser@example.com | pppppppp |                     | 2007-01-01  10:00:00 | false      | false     |
 
  Scenario: Site admin proposes edit to non public fields
    Given I am signed in as a siteadmin
@@ -26,12 +27,20 @@ I want to be able to propose edits to inaccurate organisation listings, includin
    Then "Friendly" should have the following proposed edits by user "siteadmin@example.com":
      | telephone  | address         | email    |
      | 520800000  | 30 pinner road  | a@a.com  |
-   Then I should be on the show organisation proposed edit page for the organisation named "Really Friendly"
+   Then I should be on the show organisation proposed edit page for the organisation named "Friendly"
+   And the following proposed edits should be displayed on the page:
+     | field               | current value                 | proposed value     |
+     | telephone           | 020800000                     | 520800000          |
+     | email               | superadmin@friendly.xx        | a@a.com            |
+     | address             | 34 pinner road                | 30 pinner road     |
 
-
-   
-   
-   
-
-
+  Scenario: User who is not site admin cannot see unpublished fields in proposed edit
+    Given I am signed in as a non-siteadmin
+    And the following proposed edits exist:
+      | original_name       | editor_email                  | address        | telephone | email   |
+      | Friendly            | siteadmin@example.com         | 30 pinner road | 520800000 | a@a.com |
+    And I visit the most recently created proposed edit for "Friendly"
+    Then I should not see the email field for Friendly
+    Then I should not see the address field for Friendly
+    Then I should not see the telephone field for Friendly
 
