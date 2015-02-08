@@ -136,7 +136,6 @@ describe OrganisationsController, :type => :controller do
       expect(controller).to receive(:build_map_markers).and_return(markers)
       expect(Category).to receive(:html_drop_down_options).and_return(category_html_options)
       expect(Organisation).to receive(:order_by_most_recent).and_return(result)
-      allow(result).to receive_message_chain(:page, :per).and_return(result)
       get :index
       expect(assigns(:organisations)).to eq(result)
       expect(assigns(:markers)).to eq(markers)
