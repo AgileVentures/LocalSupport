@@ -5,6 +5,12 @@ def stub_request_with_address(address, body = nil)
       to_return(status => 200, :body => body || filename, :headers => {})
 end
 
+Given(/^the following addresses exist:$/) do |table|
+  table.hashes.each do |addr|
+    stub_request_with_address(addr['address'])
+  end
+end
+
 Given /^the following organisations exist:$/ do |organisations_table|
   organisations_table.hashes.each do |org|
     stub_request_with_address(org['address'])
@@ -69,4 +75,11 @@ end
 Then(/^the organisation "([^"]*)" should be deleted$/) do |name|
   org = Organisation.only_deleted.find_by_name name
   expect(org).not_to be_nil
+end
+
+Then(/^the "(.*?) proposed edits for the organisation named "(.*?)" should only be soft deleted$/) do |number, name|
+  number = number.to_i
+  org = Organisation.with_deleted.find_by(name: name)
+  expect(ProposedOrganisationEdit.where(organisation: org)).to be_empty
+  expect(ProposedOrganisationEdit.with_deleted.where(organisation: org).size).to eq number
 end
