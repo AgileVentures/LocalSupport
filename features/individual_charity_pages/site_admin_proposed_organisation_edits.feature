@@ -44,3 +44,19 @@ I want to be able to propose edits to inaccurate organisation listings, includin
     Then I should not see the address field for Friendly
     Then I should not see the telephone field for Friendly
 
+  Scenario: Super admin can see unpublished fields in proposed edit
+    Given the following users are registered:
+      | email                  | password | organisation        | confirmed_at         | superadmin | siteadmin |
+      | superadmin@example.com | pppppppp |                     | 2007-01-01  10:00:00 | true       | false     |
+    And the following proposed edits exist:
+      | original_name       | editor_email                  | address        | telephone | email   |
+      | Friendly            | siteadmin@example.com         | 30 pinner road | 520800000 | a@a.com |
+    And I am signed in as an superadmin
+    And I visit the most recently created proposed edit for "Friendly"
+    Then the following proposed edits should be displayed on the page:
+      | field          |  current value         | proposed value |
+      | address        | 34 pinner road         | 30 pinner road |
+      | telephone      | 020800000              | 520800000      |
+      | email          | superadmin@friendly.xx | a@a.com        |
+
+
