@@ -150,15 +150,15 @@
             <%= f.hidden_field :name, value: @proposed_organisation_edit.name %>
             <%= f.hidden_field :description, value: @proposed_organisation_edit.description %>
             <%= f.hidden_field :donation_info, value: @proposed_organisation_edit.donation_info %>
-            <% if @proposed_organisation_edit.editable?(:address) %>
+            <% if @proposed_organisation_edit.editable?(:address) || @proposed_organisation_edit.editor.siteadmin?  %>
             <%= f.hidden_field :address, value: @proposed_organisation_edit.address %>\
             <% end %>
             <%= f.hidden_field :postcode, value: @proposed_organisation_edit.postcode %>
-            <% if @proposed_organisation_edit.editable?(:telephone) %>
+            <% if @proposed_organisation_edit.editable?(:telephone) || @proposed_organisation_edit.editor.siteadmin?%>
             <%= f.hidden_field :telephone, value: @proposed_organisation_edit.telephone %>
             <% end %>
             <%= f.hidden_field :website, value: @proposed_organisation_edit.website %>
-            <% if @proposed_organisation_edit.editable?(:email) %>
+            <% if @proposed_organisation_edit.editable?(:email)  ||  @proposed_organisation_edit.editor.siteadmin?%>
             <%= f.hidden_field :email, value: @proposed_organisation_edit.email %>
             <% end %>
             <%= f.submit 'Accept Edit', :class => 'btn btn-primary' %>
