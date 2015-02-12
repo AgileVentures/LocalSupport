@@ -64,6 +64,9 @@
       <% if @editable %>
           <%= link_to("Edit", edit_organisation_path(@organisation.id), {:class => 'btn btn-primary'}) %>
       <% end %>
+      <% if @can_propose_edits %>
+          <%= link_to("Propose an edit", new_organisation_proposed_organisation_edit_path(@organisation.id) , {:class => 'btn btn-primary'})%>
+      <% end %>
       <% if @deletable %>
           <%= link_to("Delete", organisation_path(@organisation.id), {method: :delete, :class => 'btn btn-danger'}) %>
       <% end %>

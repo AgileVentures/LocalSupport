@@ -1,0 +1,27 @@
+<div class="well">
+  <table class="table table-responsive table-hover sortable">
+    <thead>
+    <tr>
+      <th>Editor Email</th>
+      <th>Proposed </th>
+      <th>Last modified</th>
+      <th>Organisation to be edited</th>
+      <th> </th>
+    </tr>
+    </thead>
+    <% @proposed_organisation_edits.each do |proposed_edit| %>
+        <tr id="<%= proposed_edit.id %>" class="actions-right">
+          <td><%= proposed_edit.editor.try(:email) %></td>
+          <td><%= time_ago_in_words_with_nils(proposed_edit.try(:created_at)) %> </td>
+          <td><%= time_ago_in_words_with_nils(proposed_edit.try(:updated_at)) %></td>
+          <td><%= proposed_edit.organisation.name %></td>
+          <td>
+            <%= link_to(organisation_proposed_organisation_edit_path(proposed_edit.organisation, proposed_edit),
+                        :class => "btn btn-small btn-primary pull-right") do %>
+                <i class="fa fa-undo"></i> View Details</a>
+            <% end %>
+          </td>
+        </tr>
+    <% end %>
+  </table>
+</div>
