@@ -13,8 +13,8 @@ class OrganisationDefaultStringValues < ActiveRecord::Migration
 
   def up
     ATTRS.each do |attr|
-      Organisation.where(attr => nil).update_all(attr => "")
-      ProposedOrganisationEdit.where(attr => nil).update_all(attr => "")
+      Organisation.with_deleted.where(attr => nil).update_all(attr => "")
+      ProposedOrganisationEdit.with_deleted.where(attr => nil).update_all(attr => "")
       change_column_default(:organisations, attr, "")
       change_column_null(:organisations, attr, false)
       change_column_default(:proposed_organisation_edits, attr, "")
