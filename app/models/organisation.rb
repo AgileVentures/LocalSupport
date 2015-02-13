@@ -16,6 +16,7 @@ class Organisation < ActiveRecord::Base
   has_many :users
   has_many :volunteer_ops
   has_many :category_organisations
+  has_many :edits, class_name: 'ProposedOrganisationEdit', :dependent => :destroy
   has_many :categories, :through => :category_organisations
   # Setup accessible (or protected) attributes for your model
   # prevents mass assignment on other fields not in this list
@@ -143,8 +144,8 @@ class Organisation < ActiveRecord::Base
     CreateOrganisationFromArray.create(Organisation, row, validate)
   end
 
-  def self.create_and_validate(attributes) 
-    create!(attributes)
+  def self.create_and_validate(attributes)
+    create!(attributes.select{|k,v| !v.nil?})
   end
 
   def self.import_addresses(filename, limit, validation = true)
@@ -178,7 +179,7 @@ class Organisation < ActiveRecord::Base
   def self.add_email(row, validation)
     orgs = where("UPPER(name) LIKE ? ","%#{row[0].try(:upcase)}%")
     return "#{row[0]} was not found\n" unless orgs && orgs[0] && orgs[0].email.blank?
-    orgs[0].email = row[7]
+    orgs[0].email = row[7].to_s
     orgs[0].save
     return "#{row[0]} was found\n"
   end

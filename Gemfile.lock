@@ -155,9 +155,6 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     json_pure (1.8.1)
-    kaminari (0.16.1)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     kgio (2.9.2)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -374,7 +371,6 @@ DEPENDENCIES
   jasmine (= 2.1.0)
   jasmine-jquery-rails (= 2.0.2)
   jquery-rails
-  kaminari
   launchy
   less-rails (= 2.5.0)
   metric_fu

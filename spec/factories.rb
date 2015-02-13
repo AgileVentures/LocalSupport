@@ -18,6 +18,10 @@ FactoryGirl.define do
     end
   end
 
+  factory :proposed_organisation_edit do
+
+  end
+
   factory :category do
     name "health"
     charity_commission_id 1

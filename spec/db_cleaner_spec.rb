@@ -16,14 +16,14 @@ require 'rails_helper'
 describe 'database cleaner' do
   # before :each aka before gets cleaned up, before :all does not
   before :each do
-    FactoryGirl.create(:organisation, name: 'fiendish-all', address: nil, postcode: nil)
+    FactoryGirl.create(:organisation, name: 'fiendish-all')
   end
   it 'it block gets cleaned up' do
-    FactoryGirl.create(:organisation, name: 'fiendish-it', address: nil, postcode: nil)
+    FactoryGirl.create(:organisation, name: 'fiendish-it')
   end
   describe 'inner describe' do
     it 'with it block cleaned up too' do
-      FactoryGirl.create(:organisation, name: 'fiendish-inner', address: nil, postcode: nil)
+      FactoryGirl.create(:organisation, name: 'fiendish-inner')
     end
   end
 end
