@@ -28,8 +28,8 @@ class OrganisationDefaultStringValues < ActiveRecord::Migration
       change_column_null(:organisations, attr, true)
       change_column_default(:proposed_organisation_edits, attr, nil)
       change_column_null(:proposed_organisation_edits, attr, true)
-      Organisation.where(attr => "").update_all(attr => nil)
-      ProposedOrganisationEdit.where(attr => "").update_all(attr => nil)
+      Organisation.with_deleted.where(attr => "").update_all(attr => nil)
+      ProposedOrganisationEdit.with_deleted.where(attr => "").update_all(attr => nil)
     end
   end
 end
