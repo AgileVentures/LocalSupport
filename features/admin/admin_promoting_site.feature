@@ -1,5 +1,5 @@
-Feature: Admin promoting site
-  As a site administrator
+Feature: Super Admin promoting site
+  As a site superadministrator
   So that people recognize our brand
   I want to have the site name displayed prominently
   Tracker story ID: https://www.pivotaltracker.com/story/show/50372317

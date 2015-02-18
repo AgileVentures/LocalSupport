@@ -164,7 +164,7 @@ describe 'layouts/application.html.erb', :type => :view do
 
   context 'regular user signed-in' do
     before do
-      allow(user).to receive(:admin?) { false }
+      allow(user).to receive(:superadmin?) { false }
       allow(view).to receive(:current_user) { user }
       render
     end
@@ -178,8 +178,8 @@ describe 'layouts/application.html.erb', :type => :view do
         have_css("li.dropdown ul.dropdown-menu li a[href=\"#{destroy_user_session_path}\"]")
     end
 
-    it 'should not see admin-only dropdown' do
-      expect(rendered).not_to have_css('#menuAdmin')
+    it 'should not see superadmin-only dropdown' do
+      expect(rendered).not_to have_css('#menuSuperAdmin')
     end
 
     it 'does not render a new organisation link' do
@@ -187,9 +187,9 @@ describe 'layouts/application.html.erb', :type => :view do
     end
   end
 
-  context 'admin signed-in' do
+  context 'superadmin signed-in' do
     before(:each) do
-      allow(user).to receive(:admin?) { true }
+      allow(user).to receive(:superadmin?) { true }
       allow(view).to receive(:current_user) { user }
       render
     end
@@ -198,8 +198,8 @@ describe 'layouts/application.html.erb', :type => :view do
       expect(rendered).to have_link('New Organisation', href: new_organisation_path)
     end
 
-    it 'should see admin-only dropdown' do
-      rendered.within('#menuAdmin') do |menu|
+    it 'should see superadmin-only dropdown' do
+      rendered.within('#menuSuperAdmin') do |menu|
         expect(menu).to have_link 'Organisations Without Users', :href => organisations_report_path
         expect(menu).to have_link 'All Users', :href => users_report_path
         expect(menu).to have_link 'Invited Users', :href => invited_users_report_path

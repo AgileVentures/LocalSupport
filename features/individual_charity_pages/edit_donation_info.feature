@@ -12,19 +12,19 @@ Background: organisations have been added to database
   | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 |
 
   Given the following users are registered:
-  | email                       | password | admin | organisation | confirmed_at |
+  | email                       | password | superadmin | organisation | confirmed_at |
   | registered_user@example.com | pppppppp | false | Friendly     | 2007-01-01  10:00:00 |
   | registered_user2@example.com| pppppppp | false |              | 2007-01-01  10:00:00 |
   And cookies are approved
 
 Scenario: Successfully change the donation url for a charity
   # TODO Refactor towards something like this
-  #Given I am signed in as a charity admin for "Friendly"
+  #Given I am signed in as a charity superadmin for "Friendly"
   #And I update the "Friendly" donation url to be "http://www.friendly.com/donate"
   #And the donation_info URL for "Friendly" should refer to "http://www.friendly.com/donate"
 
   # TODO or ultimately even something like this
-  # Charity Admins can edit their charity's donation info url
+  # Charity Super Admins can edit their charity's donation info url
 
   #TODO: Refactor the sign in process to dry it out
   Given I visit the home page

@@ -3,11 +3,11 @@ require 'rails_helper'
 describe OrganisationReportsController, :type => :controller do
   let(:org) { double('Organisation') }
   let(:user) { double 'User' }
-  let(:session) { mock_model User, admin?: true, decrement_invitation_limit!: nil }
+  let(:session) { mock_model User, superadmin?: true, decrement_invitation_limit!: nil }
   before(:each) { allow(controller).to receive(:current_user).and_return(session) }
 
-  it 'is for admins only' do
-    allow(session).to receive(:admin?).and_return(false)
+  it 'is for superadmins only' do
+    allow(session).to receive(:superadmin?).and_return(false)
     get :without_users_index
     expect(response).to redirect_to '/'
   end

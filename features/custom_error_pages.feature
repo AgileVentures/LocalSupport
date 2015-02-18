@@ -1,6 +1,6 @@
 @allow-rescue @in-production
 Feature: I want to make error pages follow the general design of the site.
-  As a site administrator
+  As a site superadministrator
   So that site users are not alarmed when I enter an incorrect URL
   I want custom error pages, rendered in-line with the rest of the site
   Pivotal Tracker story:  https://www.pivotaltracker.com/story/show/60838900

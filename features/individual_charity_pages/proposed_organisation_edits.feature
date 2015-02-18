@@ -6,27 +6,27 @@ I want to be able to propose edits to inaccurate organisation listings
   Background: organisations have been added to database
     Given the following organisations exist:
       | name              | description             | address        | postcode | telephone | website             | email             | publish_phone | publish_address | donation_info  |
-      | Friendly          | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.org | admin@friendly.xx | true          |  false          | www.donate.com |
-      | Really Friendly   | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.org | admin@friendly.xx | true          |  true           | www.donate.com |
+      | Friendly          | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.org | superadmin@friendly.xx | true          |  false          | www.donate.com |
+      | Really Friendly   | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.org | superadmin@friendly.xx | true          |  true           | www.donate.com |
 
     And the following organisations exist:
       | name              | description             | address        | postcode | telephone | email             | publish_phone | publish_address |
       | No website        | no website              | 34 pinner road |          | 020800000 | email@friendly.xx | true          |  true           |
 
     Given the following users are registered:
-      | email                         | password | organisation        | confirmed_at         | admin |
+      | email                         | password | organisation        | confirmed_at         | superadmin |
       | registered_user-2@example.com | pppppppp |                     | 2007-01-01  10:00:00 | false |
-      | admin@harrowcn.org.uk         | pppppppp |                     | 2007-01-01  10:00:00 | true  |
+      | superadmin@harrowcn.org.uk         | pppppppp |                     | 2007-01-01  10:00:00 | true  |
       | friendly@friendly.org         | pppppppp | Really Friendly     | 2007-01-01  10:00:00 | false |
     And cookies are approved
 
-  Scenario: Site admin does not see proposed edit button
-    Given I am signed in as a admin
+  Scenario: Site superadmin does not see proposed edit button
+    Given I am signed in as a superadmin
     And I visit the show page for the organisation named "Really Friendly"
     Then I should not see "Propose an edit"
     And I should see "Edit"
 
-  Scenario: Org admin does not see proposed edit button
+  Scenario: Org superadmin does not see proposed edit button
     Given I am signed in as a charity worker related to "Really Friendly"
     And I visit the show page for the organisation named "Really Friendly"
     Then I should not see "Propose an edit"
@@ -81,7 +81,7 @@ I want to be able to propose edits to inaccurate organisation listings
       | field         | current value                         | proposed value        |
       | name          | Really Friendly                       | Unfriendly            |
       | website       | http://friendly.org                   | http://unfriendly.org |
-      | email         | admin@friendly.xx                     | newemail@friendly.xx  |
+      | email         | superadmin@friendly.xx                     | newemail@friendly.xx  |
       | description   | Bereavement Counselling               | Mourning loved ones   |
       | address       | 34 pinner road                        | 124 Pinner Road       |
       | postcode      | HA1 4HZ                               | HA8 7TB               |
