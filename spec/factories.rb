@@ -18,6 +18,10 @@ FactoryGirl.define do
     end
   end
 
+  factory :proposed_organisation_edit do
+
+  end
+
   factory :category do
     name "health"
     charity_commission_id 1
@@ -35,7 +39,7 @@ FactoryGirl.define do
     email "jj@example.com"
     password "pppppppp"
     confirmed_at "2007-01-01 10:00:00"
-    admin false
+    superadmin false
     organisation nil
 
     factory :user_stubbed_organisation do

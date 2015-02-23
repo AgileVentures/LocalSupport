@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024215924) do
+ActiveRecord::Schema.define(version: 20150124183656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20141024215924) do
     t.string   "name"
     t.integer  "charity_commission_id"
     t.string   "charity_commission_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "categories_organisations", force: true do |t|
@@ -35,19 +35,19 @@ ActiveRecord::Schema.define(version: 20141024215924) do
   end
 
   create_table "organisations", force: true do |t|
-    t.string   "name"
-    t.string   "address"
-    t.string   "postcode"
-    t.string   "email"
-    t.text     "description"
-    t.string   "website"
-    t.string   "telephone"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "name",            default: "",    null: false
+    t.string   "address",         default: "",    null: false
+    t.string   "postcode",        default: "",    null: false
+    t.string   "email",           default: "",    null: false
+    t.text     "description",     default: "",    null: false
+    t.string   "website",         default: "",    null: false
+    t.string   "telephone",       default: "",    null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
-    t.text     "donation_info"
+    t.text     "donation_info",   default: "",    null: false
     t.boolean  "publish_address", default: false
     t.boolean  "publish_phone",   default: false
     t.boolean  "publish_email",   default: true
@@ -58,12 +58,33 @@ ActiveRecord::Schema.define(version: 20141024215924) do
     t.string   "name"
     t.string   "permalink"
     t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.boolean  "link_visible", default: true
   end
 
   add_index "pages", ["permalink"], name: "index_pages_on_permalink", using: :btree
+
+  create_table "proposed_organisation_edits", force: true do |t|
+    t.integer  "organisation_id"
+    t.string   "name",            default: "",    null: false
+    t.string   "address",         default: "",    null: false
+    t.string   "postcode",        default: "",    null: false
+    t.string   "email",           default: "",    null: false
+    t.text     "description",     default: "",    null: false
+    t.string   "website",         default: "",    null: false
+    t.string   "telephone",       default: "",    null: false
+    t.text     "donation_info",   default: "",    null: false
+    t.datetime "deleted_at"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "accepted",        default: false, null: false
+    t.boolean  "archived",        default: false, null: false
+  end
+
+  add_index "proposed_organisation_edits", ["deleted_at"], name: "index_proposed_organisation_edits_on_deleted_at", using: :btree
+  add_index "proposed_organisation_edits", ["user_id"], name: "index_proposed_organisation_edits_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                   default: "",    null: false
@@ -76,9 +97,9 @@ ActiveRecord::Schema.define(version: 20141024215924) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "admin",                   default: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.boolean  "superadmin",              default: false
     t.integer  "organisation_id"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
@@ -104,8 +125,8 @@ ActiveRecord::Schema.define(version: 20141024215924) do
     t.string   "title"
     t.text     "description"
     t.integer  "organisation_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_index "volunteer_ops", ["organisation_id"], name: "index_volunteer_ops_on_organisation_id", using: :btree

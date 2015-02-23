@@ -7,7 +7,7 @@ describe 'organisations/show.html.erb', :type => :view do
         :name => 'Friendly',
         :address => '12 pinner rd',
         :telephone => '1234',
-        :email => 'admin@friendly.org',
+        :email => 'superadmin@friendly.org',
         :postcode => 'HA1 4HZ',
         :website => 'http://www.friendly.org',
         :donation_info => 'http://www.friendly.org/donate',
@@ -63,7 +63,7 @@ describe 'organisations/show.html.erb', :type => :view do
           :address => '12 pinner rd',
           :description => 'lovely',
           :telephone => '1234',
-          :email => 'admin@friendly.org',
+          :email => 'superadmin@friendly.org',
           :postcode => 'HA1 4HZ',
           :website => 'http://www.friendly.org',
           :donation_info => 'http://www.friendly.org/donate',
@@ -180,9 +180,9 @@ describe 'organisations/show.html.erb', :type => :view do
     end
   end
 
-  describe 'pending admin status' do
-    it 'displays pending admin message' do
-      assign(:pending_admin, true)
+  describe 'pending superadmin status' do
+    it 'displays pending superadmin message' do
+      assign(:pending_org_admin, true)
       render
       expect(rendered).to have_content 'Your request for admin status is pending.'
     end

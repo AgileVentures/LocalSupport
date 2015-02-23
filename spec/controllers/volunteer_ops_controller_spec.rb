@@ -92,7 +92,7 @@ describe VolunteerOpsController, :type => :controller do
       expect(response.status).to eq 200
     end
 
-    it "passes a true editable flag when admin user" do
+    it "passes a true editable flag when superadmin user" do
       allow(controller).to receive(:current_user).and_return(user)
       allow(user).to receive(:can_edit?).with(@org).and_return(true)
       get :show, {:id => @op2.id}
@@ -128,7 +128,7 @@ describe VolunteerOpsController, :type => :controller do
     let(:params) { {organisation_id: 5, volunteer_op: {title: 'hard work', description: 'for the willing'}} }
     before do
       allow(user).to receive(:organisation) { org }
-      allow(controller).to receive_messages current_user: user, org_owner?: true, admin?: false
+      allow(controller).to receive_messages current_user: user, org_owner?: true, superadmin?: false
       allow(VolunteerOp).to receive(:new) { op }
       allow(op).to receive(:save)
     end
@@ -169,7 +169,7 @@ describe VolunteerOpsController, :type => :controller do
       @results = [@op2]
       allow(VolunteerOp).to receive(:find).with(@op2.id.to_s).and_return(@op2)
     end
-    context 'admin user logged in' do
+    context 'superadmin user logged in' do
       before do
         allow(controller).to receive(:org_owner?).and_return(true)
         allow(controller).to receive(:current_user).and_return(user)
@@ -187,7 +187,7 @@ describe VolunteerOpsController, :type => :controller do
         expect(response).to render_template 'edit'
       end
     end
-    context 'non-admin user logged in' do
+    context 'non-superadmin user logged in' do
       before do
         allow(controller).to receive(:org_owner?).and_return(false)
       end
@@ -232,7 +232,7 @@ describe VolunteerOpsController, :type => :controller do
     end
     context 'user is not authorized' do
       it 'does not update the model' do
-        allow(controller).to receive_messages org_owner?: false, admin?: false
+        allow(controller).to receive_messages org_owner?: false, superadmin?: false
         expect(@op2).not_to receive(:update_attributes)
         put :update, {:volunteer_op => {:title => "new title", :description => "new description"}, 
           :id => @op2.to_param}
@@ -247,9 +247,9 @@ describe VolunteerOpsController, :type => :controller do
     describe '#authorize' do
       it 'Unauthorized: redirects to root_path and displays flash' do
         allow(controller).to receive_messages org_owner?: false
-        allow(controller).to receive_messages admin?: false
+        allow(controller).to receive_messages superadmin?: false
         expect(controller).to receive(:redirect_to).with(root_path) { true } # calling original raises errors
-        expect(controller.flash).to receive(:[]=).with(:error, 'You must be signed in as an organisation owner or site admin to perform this action!').and_call_original
+        expect(controller.flash).to receive(:[]=).with(:error, 'You must be signed in as an organisation owner or site superadmin to perform this action!').and_call_original
         expect(controller.instance_eval { authorize }).to be_falsey
         # can't assert `redirect_to root_path`: http://owowthathurts.blogspot.com/2013/08/rspec-response-delegation-error-fix.html
         expect(flash[:error]).not_to be_empty

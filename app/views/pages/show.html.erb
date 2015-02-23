@@ -1,6 +1,6 @@
 <%- model_class = Page -%>
 <%= markdown(@page.content) %>
-<% if @admin %>
+<% if @superadmin %>
   <div class="form-actions">
     <%= link_to 'Pages', pages_path, :class => 'btn'  %>
     <%= link_to t('.edit', :default => t("helpers.links.edit")),

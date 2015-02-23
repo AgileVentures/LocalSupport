@@ -1,5 +1,5 @@
 Feature: Acknowledging Contributors
-  As a site administrator
+  As a site superadministrator
   So that I can encourage continued support from vendors and developers
   I want to see acknowledgement of support on every page
 

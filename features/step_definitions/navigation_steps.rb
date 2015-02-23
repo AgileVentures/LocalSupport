@@ -21,7 +21,8 @@ def paths(location)
       'invited users' => invited_users_report_path,
       'volunteer opportunities' => volunteer_ops_path,
       'new organisation' => new_organisation_path,
-      'contributors' => contributors_path
+      'contributors' => contributors_path,
+      'deleted users' => deleted_users_report_path
   }[location]
 end
 
@@ -40,6 +41,19 @@ def find_record_for(object, schema, name)
   real_object = object.classify.constantize
   schema = schema.chomp('d').to_sym
   real_object.where(schema => name).first
+end
+
+Then /^I should be on the new organisation proposed edit page for the organisation named "(.*?)"$/ do |name|
+  org = Organisation.find_by_name(name)
+  url = new_organisation_proposed_organisation_edit_path org
+  current_path.should eq url
+end
+
+Then /^I should be on the show organisation proposed edit page for the organisation named "(.*?)"$/ do |name|
+  org = Organisation.find_by_name(name)
+  prop_ed = org.edits.first
+  url = organisation_proposed_organisation_edit_path org, prop_ed
+  current_path.should eq url
 end
 
 Then /^I (visit|should be on) the new volunteer op page for "(.*?)"$/ do |mode, name| 
@@ -176,5 +190,11 @@ Then(/^I should( not)? see the call to update details for organisation "(.*)"/) 
 
     within(negative.nil? ? 'div#flash_warning' : 'body') do
       page.send(expectation_method, have_link("here", :href => edit_organisation_path(org)))
+    end
+end
+Then(/^I should see an (active|inactive) home button in the header$/) do |active|
+    active_class = (active == "active") ? ".active" : "" 
+    within('.nav.nav-pills.pull-right') do
+      expect(page).to have_css("li#{active_class} > a[href='/']", :text => "Home")
     end
 end

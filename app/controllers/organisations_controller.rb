@@ -64,11 +64,12 @@ class OrganisationsController < ApplicationController
   # GET /organisations/1.json
   def show
     @organisation = Organisation.find(params[:id])
-    @pending_admin = current_user.pending_admin? @organisation if current_user
+    @pending_org_admin = current_user.pending_org_admin? @organisation if current_user
     @editable = current_user.can_edit?(@organisation) if current_user
     @deletable = current_user.can_delete?(@organisation) if current_user
     @can_create_volunteer_op = current_user.can_create_volunteer_ops?(@organisation) if current_user
     @grabbable = current_user ? current_user.can_request_org_admin?(@organisation) : true
+    @can_propose_edits = current_user.present? && !@editable
    # @next_path = current_user ? organisation_user_path(@organisation.id, current_user.id) : new_user_session_path
     @markers = build_map_markers([@organisation])
   end
@@ -94,10 +95,10 @@ class OrganisationsController < ApplicationController
   # POST /organisations
   # POST /organisations.json
   def create
-    # model filters for logged in users, but we check here if that user is an admin
+    # model filters for logged in users, but we check here if that user is an superadmin
     # TODO refactor that to model responsibility?
      org_params = OrganisationParams.build params
-     unless current_user.try(:admin?)
+     unless current_user.try(:superadmin?)
        flash[:notice] = PERMISSION_DENIED
        redirect_to organisations_path and return false
      end
@@ -114,13 +115,13 @@ class OrganisationsController < ApplicationController
   # PUT /organisations/1.json
   def update
     @organisation = Organisation.find(params[:id])
-    params[:organisation][:admin_email_to_add] = params[:organisation_admin_email_to_add] if params[:organisation]
+    params[:organisation][:superadmin_email_to_add] = params[:organisation_superadmin_email_to_add] if params[:organisation]
     update_params = OrganisationParams.build params 
     return false unless user_can_edit? @organisation
-    if @organisation.update_attributes_with_admin(update_params)
+    if @organisation.update_attributes_with_superadmin(update_params)
       redirect_to @organisation, notice: 'Organisation was successfully updated.'
     else
-      flash[:error] = @organisation.errors[:administrator_email][0]
+      flash[:error] = @organisation.errors[:superadministrator_email][0]
       render action: "edit"
     end
   end
@@ -128,7 +129,7 @@ class OrganisationsController < ApplicationController
   # DELETE /organisations/1
   # DELETE /organisations/1.json
   def destroy
-    unless current_user.try(:admin?)
+    unless current_user.try(:superadmin?)
       flash[:notice] = PERMISSION_DENIED
       redirect_to organisation_path(params[:id]) and return false
     end
@@ -141,7 +142,7 @@ class OrganisationsController < ApplicationController
 
 class OrganisationParams 
     def self.build params
-      params.require(:organisation).permit( :admin_email_to_add, :description, :address, :publish_address, :postcode, :email, 
+      params.require(:organisation).permit( :superadmin_email_to_add, :description, :address, :publish_address, :postcode, :email, 
                      :publish_email, :website, :publish_phone, :donation_info, :name, :telephone,
                      category_organisations_attributes: [:_destroy, :category_id, :id])
     end

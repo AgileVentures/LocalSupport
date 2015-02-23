@@ -16,6 +16,7 @@ class Organisation < ActiveRecord::Base
   has_many :users
   has_many :volunteer_ops
   has_many :category_organisations
+  has_many :edits, class_name: 'ProposedOrganisationEdit', :dependent => :destroy
   has_many :categories, :through => :category_organisations
   # Setup accessible (or protected) attributes for your model
   # prevents mass assignment on other fields not in this list
@@ -56,9 +57,9 @@ class Organisation < ActiveRecord::Base
 
   #TODO: Give this TLC and refactor the flow or refactor out responsibilities
   # This method both adds new editors and/or updates attributes
-  def update_attributes_with_admin(params)
-    email = params[:admin_email_to_add]
-    params.delete :admin_email_to_add
+  def update_attributes_with_superadmin(params)
+    email = params[:superadmin_email_to_add]
+    params.delete :superadmin_email_to_add
     if email.blank?
       return self.update_attributes(params)   # explicitly call with return to return boolean instead of nil
     end
@@ -69,7 +70,7 @@ class Organisation < ActiveRecord::Base
         self.users << usr
         return self.update_attributes(params)
       else
-        self.errors.add(:administrator_email, "The user email you entered,'#{email}', does not exist in the system")
+        self.errors.add(:superadministrator_email, "The user email you entered,'#{email}', does not exist in the system")
         raise ActiveRecord::Rollback    # is this necessary? Doesn't the transaction block rollback the change with `usr` if update_attributes fails?
       end
     end
@@ -146,8 +147,8 @@ class Organisation < ActiveRecord::Base
     CreateOrganisationFromArray.create(Organisation, row, validate)
   end
 
-  def self.create_and_validate(attributes) 
-    create!(attributes)
+  def self.create_and_validate(attributes)
+    create!(attributes.select{|k,v| !v.nil?})
   end
 
   def self.import_addresses(filename, limit, validation = true)
@@ -181,7 +182,7 @@ class Organisation < ActiveRecord::Base
   def self.add_email(row, validation)
     orgs = where("UPPER(name) LIKE ? ","%#{row[0].try(:upcase)}%")
     return "#{row[0]} was not found\n" unless orgs && orgs[0] && orgs[0].email.blank?
-    orgs[0].email = row[7]
+    orgs[0].email = row[7].to_s
     orgs[0].save
     return "#{row[0]} was found\n"
   end

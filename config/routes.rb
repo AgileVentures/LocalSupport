@@ -12,11 +12,15 @@ LocalSupport::Application.routes.draw do
   put '/user_reports/update' => 'user_reports#update', as: :user_report
   delete '/user_reports' => 'user_reports#destroy'
   get '/user_reports/invited' => 'user_reports#invited', as: :invited_users_report
+  get '/user_reports/deleted' => 'user_reports#deleted', as: :deleted_users_report
+  put 'user_reports/undo_delete/:id' => 'user_reports#undo_delete', as: :undo_delete_users_report
 
   resources :pages, only: [:index, :new, :create, :edit]
   resources :volunteer_ops, :only => [:index, :edit, :show, :update, :destroy]
+  resources :proposed_organisation_edits, :only => [:index]
   resources :organisations do
     resources :volunteer_ops, :only => [:new, :create]
+    resources :proposed_organisation_edits, :only => [:new, :show, :create, :update]
   end
   resources :users
 

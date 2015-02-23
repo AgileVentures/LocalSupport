@@ -9,7 +9,7 @@ class PagesController < ApplicationController
 
   # GET /pages/:permalink
   def show
-    @admin = current_user.admin? if current_user
+    @superadmin = current_user.superadmin? if current_user
     # find_by_permalink! returns exception if no match
     @page = Page.find_by_permalink!(params[:id])
   end

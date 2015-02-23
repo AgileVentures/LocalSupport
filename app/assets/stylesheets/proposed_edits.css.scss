@@ -1,0 +1,37 @@
+@import 'utils/colors';
+
+.centered {
+  margin: auto;
+}
+
+.width_50 {
+  width: 50%;
+}
+
+.width_25 {
+  width: 25%;
+}
+
+.proposer {
+  font-size: 1.5em;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  span {
+    color: $grey-40;
+  }
+}
+
+.proposee_action {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.current_value {
+  background-color: $bootstrap-green;
+}
+
+.proposed_value {
+  background-color: $bootstrap-red;
+}

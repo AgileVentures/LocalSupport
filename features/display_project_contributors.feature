@@ -1,4 +1,4 @@
-Feature: As a site administrator
+Feature: As a site superadministrator
   I want to be able to show all project members on a page
 
 Background:

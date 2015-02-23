@@ -1,0 +1,30 @@
+<div class="well">
+  <table class="table table-responsive table-hover sortable">
+    <thead>
+    <tr>
+      <th>User Email</th>
+      <th>Deleted </th>
+      <th>Associated Organisation</th>
+      <th>Pending Organisation</th>
+      <th> </th>
+    </tr>
+    </thead>
+    <% @users.each do |user| %>
+        <tr id="<%= user.id %>" class="actions-right">
+          <td><%= user.email %></td>
+          <td><%= time_ago_in_words_with_nils(user.deleted_at) %> </td>
+          <td><%= user.organisation.name if user.organisation %></td>
+          <td>
+            <% if user.pending_organisation %>
+                <%= user.pending_organisation.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to(undo_delete_users_report_path(user.id), :method => :put, :class => "btn btn-small btn-danger pull-right") do %>
+                <i class="fa fa-undo"></i> Restore User</a>
+            <% end %>
+          </td>
+        </tr>
+    <% end %>
+  </table>
+</div>
