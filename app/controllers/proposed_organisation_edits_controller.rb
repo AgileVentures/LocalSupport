@@ -9,13 +9,10 @@ class ProposedOrganisationEditsController < ApplicationController
 
   def create
     org = Organisation.find(params[:organisation_id])
-    in_memory_edit = ProposedOrganisationEdit.new(organisation: org)
-      create_params = params.require(:proposed_organisation_edit).permit(:address, :telephone, :postcode, :name,
-        :description, :website, :postcode, :email, :donation_info).merge(organisation: org, editor: current_user)
-    if !current_user.siteadmin?
-      in_memory_edit.non_published_generally_editable_fields.each do |non_published_field|
-        create_params.merge!(non_published_field => org.send(non_published_field))
-      end
+    create_params = params.require(:proposed_organisation_edit).permit(:address, :telephone, :postcode, :name,
+      :description, :website, :postcode, :email, :donation_info).merge(organisation: org, editor: current_user)
+    unless current_user.siteadmin?
+      merge_in_non_published_fields org, create_params
     end
     redirect_to organisation_proposed_organisation_edit_path org, ProposedOrganisationEdit.create!(create_params)
   end
@@ -71,5 +68,11 @@ class ProposedOrganisationEditsController < ApplicationController
   #  2. Not archived, accepted ... invalid state
   #  3. archived, not accepted ... rejected edits
   #  4. archived, accepted ... accepted edits
-
+  private 
+  def merge_in_non_published_fields(org, create_params)
+    in_memory_edit = ProposedOrganisationEdit.new(organisation: org)
+    in_memory_edit.non_published_generally_editable_fields.each do |non_published_field|
+      create_params.merge!(non_published_field => org.send(non_published_field))
+    end
+  end
 end
