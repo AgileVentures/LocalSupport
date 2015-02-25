@@ -19,17 +19,20 @@ module ProposesEdits
   end
 
   def editable? field, opts = {}
-    usr = opts[:by]
-    publish_field = self.class.publish_proc.call(field)
-    if instance_to_edit.respond_to? publish_field
-      (instance_to_edit.send(publish_field) || usr.try(self.class.user_type_who_edits_non_public_fields)) && self.class.fields_to_edit.include?(field)
-    else
-      self.class.fields_to_edit.include?(field)
-    end
+    editable = self.class.fields_to_edit.include?(field)
+    editable &= can_user_edit_this_field_if_private? self.class.publish_proc.call(field), opts[:by]
+    editable
   end
 
   def has_proposed_edit? field
     instance_to_edit.send(field) != self.send(field)
+  end
+  private 
+  def can_user_edit_this_field_if_private? publish_field, usr
+    return true unless instance_to_edit.respond_to? publish_field
+    is_public = instance_to_edit.send(publish_field)
+    user_can_edit_private_fields = usr.try(self.class.user_type_who_edits_non_public_fields)
+    is_public || user_can_edit_private_fields  
   end
 
   module ClassMethods
