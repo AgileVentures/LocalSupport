@@ -14,7 +14,7 @@
       <%= simple_format @organisation.description, class: show_class('current', 'description') %>
     </p>
 
-    <% if @proposed_organisation_edit.editable?(:address) || (current_user.siteadmin?  || current_user.superadmin?) %>
+    <% if @proposed_organisation_edit.viewable_field?(:address, by: current_user) %>
       <p class="<%= show_class('current', 'address') %>">
         <span><b>Address:</b></span>
         <span class='field_value'>
@@ -32,7 +32,7 @@
         </p>
     <% end %>
 
-    <% if @proposed_organisation_edit.editable?(:email) || (current_user.siteadmin? || current_user.superadmin?) %>
+    <% if @proposed_organisation_edit.viewable_field?(:email, by: current_user)%>
         <p class="<%= show_class('current', 'email') %>">
           <span><b>Email:</b></span>
           <span class='field_value'>
@@ -50,7 +50,7 @@
       </p>
     <% end %>
 
-    <% if @proposed_organisation_edit.editable?(:telephone) || (current_user.siteadmin? || current_user.superadmin?) %>
+    <% if @proposed_organisation_edit.viewable_field?(:telephone, by: current_user)%>
       <p class="<%= show_class('current', 'telephone') %>">
       <span><b>Telephone:</b></span>
       <span class='field_value'>
@@ -89,7 +89,7 @@
       </span>
     </p>
 
-    <% if (current_user.siteadmin? || current_user.superadmin?) || @proposed_organisation_edit.editable?(:address) %>
+    <% if @proposed_organisation_edit.viewable_field?(:address, by: current_user) %>
       <p class="<%= show_class('proposed', 'address') %>">
         <span><b>Address:</b></span>
         <span class='field_value'>
@@ -107,7 +107,7 @@
         </p>
     <% end %>
 
-    <% if (current_user.siteadmin? || current_user.superadmin?) || @proposed_organisation_edit.editable?(:email) %>
+    <% if @proposed_organisation_edit.viewable_field?(:email, by: current_user) %>
       <p class="<%= show_class('proposed', 'email') %>">
         <span><b>Email:</b></span>
         <span class='field_value'>
@@ -125,7 +125,7 @@
       </p>
     <% end %>
 
-    <% if (current_user.siteadmin?  || current_user.superadmin?) || @proposed_organisation_edit.editable?(:telephone) %>
+    <% if @proposed_organisation_edit.viewable_field?(:telephone, by: current_user) %>
         <p class="<%= show_class('proposed', 'telephone') %>">
           <span><b>Telephone:</b></span>
           <span class='field_value'>

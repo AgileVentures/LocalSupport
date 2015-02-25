@@ -18,6 +18,10 @@ module ProposesEdits
     self.class.fields_to_edit.select{|f| !editable?(f)}
   end
 
+  def viewable_field? field, opts = {}
+    editable?(field) || can_user_view_non_public_fields?(opts[:by])
+
+  end
   def editable? field, opts = {}
     editable = self.class.fields_to_edit.include?(field)
     editable &= can_user_edit_this_field_if_private? self.class.publish_proc.call(field), opts[:by]
@@ -28,6 +32,9 @@ module ProposesEdits
     instance_to_edit.send(field) != self.send(field)
   end
   private 
+  def can_user_view_non_public_fields? usr
+    self.class.user_types_who_view_non_public_fields.any?{|u| usr.try(u)} 
+  end
   def can_user_edit_this_field_if_private? publish_field, usr
     return true unless instance_to_edit.respond_to? publish_field
     is_public = instance_to_edit.send(publish_field)
@@ -40,6 +47,7 @@ module ProposesEdits
     attr_reader :fields_to_edit
     attr_reader :publish_proc
     attr_reader :user_type_who_edits_non_public_fields
+    attr_reader :user_types_who_view_non_public_fields
     def publish_fields_booleans proc
       @publish_proc = proc
     end
@@ -48,6 +56,10 @@ module ProposesEdits
     end
     def non_public_fields_editable_by usr_type
       @user_type_who_edits_non_public_fields = usr_type
+    end
+    def non_public_fields_viewable_by *args
+      @user_types_who_view_non_public_fields ||= []
+      args.each{|u| @user_types_who_view_non_public_fields.push u}
     end
     def editable_fields *fields
       @fields_to_edit ||= []
