@@ -22,7 +22,7 @@
       <tr><td><h4>
         Contact information
       </h4></td></tr>
-      <% if @proposed_organisation_edit.editable?(:address) || current_user.siteadmin? %>
+      <% if @proposed_organisation_edit.editable?(:address, by: current_user) %>
       <tr>
         <td data-toggle="tooltip" title="Enter a complete address">
           <%= f.text_field :address, :class => "wide_form", :placeholder => "Enter organisation address"%>
@@ -40,7 +40,7 @@
           <input type="checkbox" class="publish" disabled checked = "checked" value="">
         </td>
       </tr>
-      <% if @proposed_organisation_edit.editable?(:email) || current_user.siteadmin? %>
+      <% if @proposed_organisation_edit.editable?(:email, by: current_user)%>
       <tr>
         <td class="borderless" data-toggle="tooltip" title="Make sure email is correct">
           <%= f.text_field :email, :class => "wide_form", :placeholder => "Enter organisation email address" %>
@@ -58,7 +58,7 @@
           <input type="checkbox" class="publish" disabled checked = "checked" value="">
         </td>
       </tr>
-      <% if @proposed_organisation_edit.editable?(:telephone) || current_user.siteadmin? %>
+      <% if @proposed_organisation_edit.editable?(:telephone, by: current_user)%>
       <tr>
         <td class="borderless" data-toggle="tooltip" title="Make sure phone number is correct">
           <%= f.text_field :telephone, :class => "wide_form", :placeholder => "Enter organisation phone number" %>

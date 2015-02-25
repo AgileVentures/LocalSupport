@@ -1,9 +1,25 @@
 require 'rails_helper'
 
-def check_editability(boolean, array_of_symbols)
+def check_editability(boolean, usr, array_of_symbols)
   array_of_symbols.each do |sym|
+    let(:regular_user) do
+      FactoryGirl.create(:user, :email => "regularjoe@example.com", :password => 'asdf1234', :password_confirmation =>
+        'asdf1234', :siteadmin => false)
+     end
+    let(:siteadmin) do
+      FactoryGirl.create(:user, :email => "regularjoe@example.com", :password => 'asdf1234', :password_confirmation =>
+        'asdf1234', :siteadmin => true)
+     end
     it "should indicate#{boolean ? '' : ' NOT'} editable for #{sym}" do
-      expect(proposed_edit.editable?(sym)).to be boolean
+      user = case usr
+        when :regular_user
+          regular_user 
+        when :siteadmin
+          siteadmin
+        else
+          {}
+        end
+      expect(proposed_edit.editable?(sym, by: user)).to be boolean
     end
   end
 end
@@ -23,7 +39,7 @@ describe ProposedOrganisationEdit do
     FactoryGirl.create(:proposed_organisation_edit,
                        :organisation => org )
   end
-
+  
   describe '::still_pending' do
     let(:archived_edit) do
       FactoryGirl.create(:proposed_organisation_edit,
@@ -43,9 +59,9 @@ describe ProposedOrganisationEdit do
   end
 
   describe '#editable?' do
-
-    check_editability(false, [:address,:telephone])
-    check_editability(true, [:name, :description, :postcode, :website, :donation_info, :email])
+    
+    check_editability(false, :regular_user, [:address,:telephone])
+    check_editability(true, :regular_user, [:name, :description, :postcode, :website, :donation_info, :email])
 
     context 'when publish field settings are changed' do
       before do
@@ -53,8 +69,15 @@ describe ProposedOrganisationEdit do
                    :publish_address => true,
                    :publish_email => false)
       end
-      check_editability(true, [:address,:telephone])
-      check_editability(false, [:email])
+      check_editability(true, :regular_user, [:address,:telephone])
+      check_editability(false, :regular_user, [:email])
+    end
+    
+    context 'when editor is siteadmin' do
+      before do 
+        org.update(:publish_email => false)
+      end
+      check_editability(true, :siteadmin, [:address, :telephone, :email])
     end
   end
 

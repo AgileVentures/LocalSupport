@@ -7,6 +7,7 @@ class ProposedOrganisationEdit < ActiveRecord::Base
   proposes_edits_to :organisation
   editable_fields :address, :name, :description, :postcode, :email, :website, :telephone, :donation_info
   publish_fields_booleans ->(f) {publish_fields_map(f)}
+  non_public_fields_editable_by :siteadmin
   scope :still_pending, ->{where(archived: false)}
 
   private
