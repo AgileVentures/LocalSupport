@@ -9,8 +9,8 @@ Feature: Charity worker can edit own charity profile
 Background: organisations have been added to database 
   Given the following organisations exist:
   | name           | description               | address        | postcode | telephone | email              |
-  | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 | admin@friendly.org |
-  | Nice           | Quite Pleasant!           | 30 pinner road | HA1 4HZ  | 020800010 | admin@nice.org     |
+  | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 | superadmin@friendly.org |
+  | Nice           | Quite Pleasant!           | 30 pinner road | HA1 4HZ  | 020800010 | superadmin@nice.org     |
   
   Given the following users are registered:
   | email                         | password | organisation | confirmed_at         |
@@ -57,10 +57,10 @@ Examples:
   | field     | field_checkbox               | field_contents      | field_label | check_state | visibility |
   | phone     | organisation_publish_phone   | 020800000           | Telephone   | check       | see        |
   | address   | organisation_publish_address | 34 pinner road      | Address     | check       | see        |
-  | email     | organisation_publish_email   | admin@friendly.org  | Email       | check       | see        |
+  | email     | organisation_publish_email   | superadmin@friendly.org  | Email       | check       | see        |
   | phone     | organisation_publish_phone   | 020800000           | Telephone   | uncheck     | not see    |
   | address   | organisation_publish_address | 34 pinner road      | Address     | uncheck     | not see    |
-  | email     | organisation_publish_email   | admin@friendly.org  | Email       | uncheck     | not see    |
+  | email     | organisation_publish_email   | superadmin@friendly.org  | Email       | uncheck     | not see    |
 
 
 #TODO refactor into integration test that posts to update method
@@ -72,7 +72,7 @@ Examples:
 #  Given I visit the home page
 #  Then the coordinates for "Nice" and "Friendly" should not be the same
 
-Scenario: Do not see edit button as non-admin not associated with Friendly
+Scenario: Do not see edit button as non-superadmin not associated with Friendly
   Given I am signed in as a charity worker unrelated to "Friendly"
   And I visit the show page for the organisation named "Friendly"
   Then I should not see an edit button for "Friendly" charity

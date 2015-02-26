@@ -7,7 +7,7 @@ Feature: Web page owned by each charity
   Background: organisations have been added to database
     Given the following organisations exist:
       | name       | description             | address        | postcode | telephone | website             | email             |
-      | Friendly   | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.org | admin@friendly.xx |
+      | Friendly   | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.org | superadmin@friendly.xx |
       | Unfriendly | Bunch of jerks          | 30 pinner road |          | 020800010 |                     |                   |
     Given the following users are registered:
       | email                         | password | organisation | confirmed_at         |
@@ -35,7 +35,7 @@ Feature: Web page owned by each charity
     Then I should see "Friendly" < tagged > with "h3"
 
   Scenario: show organisation e-mail as link
-    Then I should see a mail-link to "admin@friendly.xx"
+    Then I should see a mail-link to "superadmin@friendly.xx"
 
    Scenario: show categories of charity
      Then I should see "Health"

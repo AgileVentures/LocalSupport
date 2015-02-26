@@ -7,11 +7,11 @@ Feature: Charity worker is reminded annually to edit own charity profile
   Background: organisations have been added to database 
     Given the following organisations exist:
     | name           | description               | address        | postcode | telephone | email              |
-    | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 | admin@friendly.org |
+    | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 | superadmin@friendly.org |
 
     Given the following users are registered:
     | email                         | password | organisation | confirmed_at         |
-    | admin@friendly.org            | pppppppp | Friendly     | 2007-01-01  10:00:00 |
+    | superadmin@friendly.org            | pppppppp | Friendly     | 2007-01-01  10:00:00 |
     And cookies are approved
   
   @javascript
@@ -20,7 +20,7 @@ Feature: Charity worker is reminded annually to edit own charity profile
     Given I travel "365" days into the future
     And I visit the home page
     And I click "Login"
-    When I sign in as "admin@friendly.org" with password "pppppppp" with javascript
+    When I sign in as "superadmin@friendly.org" with password "pppppppp" with javascript
     Then I should see the call to update details for organisation "Friendly"
   @javascript 
   @time_travel
@@ -28,5 +28,5 @@ Feature: Charity worker is reminded annually to edit own charity profile
     Given I travel "364" days into the future
     And I visit the home page
     And I click "Login"
-    When I sign in as "admin@friendly.org" with password "pppppppp" with javascript
+    When I sign in as "superadmin@friendly.org" with password "pppppppp" with javascript
     Then I should not see the call to update details for organisation "Friendly"

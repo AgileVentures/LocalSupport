@@ -1,5 +1,5 @@
 Feature: I want to be able to edit static pages
-  As a site admin
+  As a site superadmin
   So that I can update my website
   I want to be able to edit static pages via markdown
   Tracker story ID: https://www.pivotaltracker.com/story/show/52536437
@@ -11,7 +11,7 @@ Feature: I want to be able to edit static pages
       | Wow          | wow        | wow678     | true	      |
       | Bob          | bob        | bobcontent | true	      |
     And the following users are registered:
-      | email                         | password | admin | confirmed_at         |  organisation |
+      | email                         | password | superadmin | confirmed_at         |  organisation |
       | registered-user-1@example.com | pppppppp | true  | 2007-01-01  10:00:00 |  Friendly     |
       | registered-user-2@example.com | pppppppp | false | 2007-01-01  10:00:00 |               |
     And cookies are approved
@@ -33,42 +33,42 @@ Feature: I want to be able to edit static pages
       This _message_ is important too.
       """
 
-  Scenario: Admin can edit
-    Given I am signed in as a admin
+  Scenario: Super Admin can edit
+    Given I am signed in as a superadmin
     And I visit the home page
     When I follow "About Us"
     Then I should see a link with text "Edit"
     And I follow "Edit"
     Then I should be on the edit page for "about"
 
-  Scenario: Non-admin cannot edit
-    Given I am signed in as a non-admin
+  Scenario: Non-superadmin cannot edit
+    Given I am signed in as a non-superadmin
     And I visit the home page
     When I follow "About Us"
     Then I should not see a link with text "Edit"
 
-  Scenario: Admin can see pages index
-    Given I am signed in as a admin
+  Scenario: Super Admin can see pages index
+    Given I am signed in as a superadmin
     And I visit the home page
     When I follow "About Us"
     And I follow "Pages"
     Then the URL should contain "pages"
 
   Scenario: Pages index is sorted by default
-    Given I am signed in as a admin
+    Given I am signed in as a superadmin
     And I visit the home page
     When I follow "About Us"
     And I follow "Pages"
     Then I should see "Bob" page before "Wow"
 
-  Scenario: Non-admin cannot see pages index
-    Given I am signed in as a non-admin
+  Scenario: Non-superadmin cannot see pages index
+    Given I am signed in as a non-superadmin
     And I visit "/pages"
-    Then I should see "You must be signed in as an admin to perform this action!"
+    Then I should see "You must be signed in as a superadmin to perform this action!"
     And I should be on the home page
 
   Scenario: Static pages are editable
-    Given I am signed in as a admin
+    Given I am signed in as a superadmin
     And I am on the edit page with the "about" permalink
     And I fill in "page_name" with "new name" within the main body
     And I fill in "page_permalink" with "new_link" within the main body

@@ -3,9 +3,9 @@ require 'rails_helper'
 describe 'Pages', :type => :request, :helpers => :requests do
 
   let(:page) { FactoryGirl.create :page}
-  let(:admin_user) { FactoryGirl.create :user, :admin => true}
+  let(:superadmin_user) { FactoryGirl.create :user, :superadmin => true}
 
-  before {login(admin_user)}
+  before {login(superadmin_user)}
 
   describe 'PUT update' do
     describe 'link_visible support' do

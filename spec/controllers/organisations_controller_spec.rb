@@ -147,7 +147,7 @@ describe OrganisationsController, :type => :controller do
     let(:real_org){create(:organisation)}
     before(:each) do
       @user = double("User")
-      allow(@user).to receive(:pending_admin?)
+      allow(@user).to receive(:pending_org_admin?)
       allow(Organisation).to receive(:find).with('37') { real_org}
       allow(@user).to receive(:can_edit?)
       allow(@user).to receive(:can_delete?)
@@ -192,14 +192,14 @@ describe OrganisationsController, :type => :controller do
     end
 
     context "grabbable flag is assigned to match user permission" do
-      it 'assigns grabbable to true when user can request org admin status' do
+      it 'assigns grabbable to true when user can request org superadmin status' do
         allow(@user).to receive(:can_edit?)
         expect(@user).to receive(:can_request_org_admin?).with(real_org).and_return(true)
         allow(controller).to receive(:current_user).and_return(@user)
         get :show, :id => 37
         expect(assigns(:grabbable)).to be(true)
       end
-      it 'assigns grabbable to false when user cannot request org admin status' do
+      it 'assigns grabbable to false when user cannot request org superadmin status' do
         allow(@user).to receive(:can_edit?)
         expect(@user).to receive(:can_request_org_admin?).with(real_org).and_return(false)
         allow(controller).to receive(:current_user).and_return(@user)
@@ -307,10 +307,10 @@ describe OrganisationsController, :type => :controller do
   end
 
   describe "POST create", :helpers => :controllers do
-    context "while signed in as admin" do
+    context "while signed in as superadmin" do
       let!(:org) { build :organisation }
       before(:each) do
-        expect(make_current_user_admin).to receive(:admin?).and_return true
+        expect(make_current_user_superadmin).to receive(:superadmin?).and_return true
       end
 
       describe "with valid params" do
@@ -352,9 +352,9 @@ describe OrganisationsController, :type => :controller do
       end
     end
 
-    context "while signed in as non-admin" do
+    context "while signed in as non-superadmin" do
       before(:each) do
-        expect(make_current_user_nonadmin).to receive(:admin?).and_return(false)
+        expect(make_current_user_nonsuperadmin).to receive(:superadmin?).and_return(false)
       end
 
       describe "with valid params" do
@@ -394,7 +394,7 @@ describe OrganisationsController, :type => :controller do
       describe "with valid params" do
         it "updates org for e.g. donation_info url" do
           expect(Organisation).to receive(:find).with('37') { org }
-          expect(org).to receive(:update_attributes_with_admin).with({'donation_info' => 'http://www.friendly.com/donate', 'admin_email_to_add' => nil})
+          expect(org).to receive(:update_attributes_with_superadmin).with({'donation_info' => 'http://www.friendly.com/donate', 'superadmin_email_to_add' => nil})
           put :update, :id => '37', :organisation => {'donation_info' => 'http://www.friendly.com/donate'}
         end
 
@@ -415,13 +415,13 @@ describe OrganisationsController, :type => :controller do
         after(:each) { expect(response).to render_template 'layouts/two_columns' }
 
         it "assigns the organisation as @organisation" do
-          allow(Organisation).to receive(:find) { double_organisation(:update_attributes_with_admin => false) }
+          allow(Organisation).to receive(:find) { double_organisation(:update_attributes_with_superadmin => false) }
           put :update, :id => "1", :organisation => {'these' => 'params'}
           expect(assigns(:organisation)).to be(double_organisation)
         end
 
         it "re-renders the 'edit' template" do
-          allow(Organisation).to receive(:find) { double_organisation(:update_attributes_with_admin => false) }
+          allow(Organisation).to receive(:find) { double_organisation(:update_attributes_with_superadmin => false) }
           put :update, :id => "1", :organisation => {'these' => 'params'}
           expect(response).to render_template("edit")
         end
@@ -466,9 +466,9 @@ describe OrganisationsController, :type => :controller do
   end
 
   describe "DELETE destroy" do
-    context "while signed in as admin", :helpers => :controllers do
+    context "while signed in as superadmin", :helpers => :controllers do
       before(:each) do
-        make_current_user_admin
+        make_current_user_superadmin
       end
       it "destroys the requested organisation and redirect to organisation list" do
         expect(Organisation).to receive(:find).with('37') { double_organisation }
@@ -477,9 +477,9 @@ describe OrganisationsController, :type => :controller do
         expect(response).to redirect_to(organisations_url)
       end
     end
-    context "while signed in as non-admin", :helpers => :controllers do
+    context "while signed in as non-superadmin", :helpers => :controllers do
       before(:each) do
-        make_current_user_nonadmin
+        make_current_user_nonsuperadmin
       end
       it "does not destroy the requested organisation but redirects to organisation home page" do
         double = double_organisation

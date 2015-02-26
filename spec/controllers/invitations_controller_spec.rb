@@ -5,19 +5,19 @@ describe InvitationsController, :type => :controller, :helpers => :controllers d
   describe '#create' do
     let(:params) { {} }
 
-    context 'when not signed in as an admin' do
+    context 'when not signed in as an superadmin' do
       it 'you get redirected' do
         post :create, params
         expect(response).to redirect_to root_path
-        make_current_user_nonadmin
+        make_current_user_nonsuperadmin
         post :create, params
         expect(response).to redirect_to root_path
       end
     end
 
-    context 'when signed in as an admin' do
+    context 'when signed in as an superadmin' do
       let(:results) { double :results }
-      before { make_current_user_admin }
+      before { make_current_user_superadmin }
 
       it 'calls the BatchInviteJob with the required args' do
         params.merge!({'controller'=>'invitations', 'action'=>'create'})

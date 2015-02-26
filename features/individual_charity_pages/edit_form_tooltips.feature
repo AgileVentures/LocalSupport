@@ -21,7 +21,7 @@ Feature:  Tool tip instructions for fields on edit form
     Then the following tooltips should exist: 
       | label                                                |  tooltip        |
       | Address                                              |  Enter a complete address  |
-      | Add an additional organisation administrator email   |  Please enter the details of individuals from your organisation you would like to give permission to update your entry. E-mail addresses entered here will not be made public.  |
+      | Add an additional organisation superadministrator email   |  Please enter the details of individuals from your organisation you would like to give permission to update your entry. E-mail addresses entered here will not be made public.  |
       | Name                                                 |  Enter a unique name |
       | Postcode                                             |  Make sure post code is accurate  |
       | Email                                                |  Make sure email is correct  |
