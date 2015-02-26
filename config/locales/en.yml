@@ -7,6 +7,6 @@ en:
     models:
       organisation: Organisation
   authorize:
-    admin: 'You must be signed in as an admin to perform this action!'
+    superadmin: 'You must be signed in as a superadmin to perform this action!'
 
 

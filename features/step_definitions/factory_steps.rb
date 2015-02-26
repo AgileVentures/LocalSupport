@@ -20,7 +20,7 @@ end
 
 Given /^the following users are registered:$/ do |users_table|
   users_table.hashes.each do |user|
-    user["admin"] = user["admin"] == "true"
+    user["superadmin"] = user["superadmin"] == "true"
     user["organisation"] = Organisation.find_by_name(user["organisation"])
     user["pending_organisation"] = Organisation.find_by_name(user["pending_organisation"])
     User.create! user

@@ -67,7 +67,7 @@ describe Organisation, :type => :model do
 
     context 'has user' do
       before(:each) do
-        usr = FactoryGirl.create(:user, :email => "orgadmin@org.org")
+        usr = FactoryGirl.create(:user, :email => "orgsuperadmin@org.org")
         usr.confirm!
         @org1.users << [usr]
         @org1.save!
@@ -108,7 +108,7 @@ describe Organisation, :type => :model do
       expect(Organisation.not_null_email).to eq [@org1]
     end
 
-    it 'should allow us to grab orgs with no admin' do
+    it 'should allow us to grab orgs with no superadmin' do
       expect(Organisation.null_users.sort).to eq [@org1, @org2, @org3].sort
       @org1.email = "hello@hello.com"
       @org1.save
@@ -151,35 +151,35 @@ describe Organisation, :type => :model do
     end
   end
 
-  context 'adding charity admins by email' do
+  context 'adding charity superadmins by email' do
     it 'handles a non-existent email with an error' do
-      expect(@org1.update_attributes_with_admin({:admin_email_to_add => 'nonexistentuser@example.com'})).to be_nil
-      expect(@org1.errors[:administrator_email]).to eq ["The user email you entered,'nonexistentuser@example.com', does not exist in the system"]
+      expect(@org1.update_attributes_with_superadmin({:superadmin_email_to_add => 'nonexistentuser@example.com'})).to be_nil
+      expect(@org1.errors[:superadministrator_email]).to eq ["The user email you entered,'nonexistentuser@example.com', does not exist in the system"]
     end
     it 'does not update other attributes when there is a non-existent email' do
-      expect(@org1.update_attributes_with_admin({:name => 'New name',:admin_email_to_add => 'nonexistentuser@example.com'})).to be_nil
+      expect(@org1.update_attributes_with_superadmin({:name => 'New name',:superadmin_email_to_add => 'nonexistentuser@example.com'})).to be_nil
       expect(@org1.name).not_to eq 'New name'
     end
     it 'handles a nil email' do
-      expect(@org1.update_attributes_with_admin({:admin_email_to_add => nil})).to be true
+      expect(@org1.update_attributes_with_superadmin({:superadmin_email_to_add => nil})).to be true
       expect(@org1.errors.any?).to be false
     end
     it 'handles a blank email' do
-      expect(@org1.update_attributes_with_admin({:admin_email_to_add => ''})).to be true
+      expect(@org1.update_attributes_with_superadmin({:superadmin_email_to_add => ''})).to be true
       expect(@org1.errors.any?).to be false
     end
-    it 'adds existent user as charity admin' do
+    it 'adds existent user as charity superadmin' do
       usr = FactoryGirl.create(:user, :email => 'user@example.org')
-      expect(@org1.update_attributes_with_admin({:admin_email_to_add => usr.email})).to be true
+      expect(@org1.update_attributes_with_superadmin({:superadmin_email_to_add => usr.email})).to be true
       expect(@org1.users).to include usr
     end
     it 'updates other attributes with blank email' do
-      expect(@org1.update_attributes_with_admin({:name => 'New name',:admin_email_to_add => ''})).to be true
+      expect(@org1.update_attributes_with_superadmin({:name => 'New name',:superadmin_email_to_add => ''})).to be true
       expect(@org1.name).to eq 'New name'
     end
     it 'updates other attributes with valid email' do
       usr = FactoryGirl.create(:user, :email => 'user@example.org')
-      expect(@org1.update_attributes_with_admin({:name => 'New name',:admin_email_to_add => usr.email})).to be true
+      expect(@org1.update_attributes_with_superadmin({:name => 'New name',:superadmin_email_to_add => usr.email})).to be true
       expect(@org1.name).to eq 'New name'
     end
   end
@@ -486,7 +486,7 @@ describe Organisation, :type => :model do
   end
 
   describe '#uninvite_users' do
-    let!(:current_user) { FactoryGirl.create(:user, email: 'admin@example.com', admin: true) }
+    let!(:current_user) { FactoryGirl.create(:user, email: 'superadmin@example.com', superadmin: true) }
     let(:org) { FactoryGirl.create :organisation, email: 'YES@hello.com' }
     let(:params) do
       {invite_list: {org.id => org.email,

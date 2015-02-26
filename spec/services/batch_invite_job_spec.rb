@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe ::BatchInviteJob do
-  let(:current_user) { FactoryGirl.create(:user, email: 'admin@example.com', admin: true) }
+  let(:current_user) { FactoryGirl.create(:user, email: 'superadmin@example.com', superadmin: true) }
   let(:org) { FactoryGirl.create :organisation, email: 'YES@hello.com' }
   let(:params) do
     {invite_list: {org.id => org.email,

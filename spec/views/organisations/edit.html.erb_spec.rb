@@ -25,7 +25,7 @@ describe "organisations/edit.html.erb", :type => :view do
             'organisation_description' => "Enter a full description here\. When an individual searches this database all words in this description will be searched\.",
             'organisation_website' => 'Make sure url is correct',
             'organisation_telephone' => 'Make sure phone number is correct',
-            'organisation_admin_email_to_add' => "Please enter the details of individuals from your organisation you would like to give permission to update your entry\. E-mail addresses entered here will not be made public\.",
+            'organisation_superadmin_email_to_add' => "Please enter the details of individuals from your organisation you would like to give permission to update your entry\. E-mail addresses entered here will not be made public\.",
             'organisation_donation_info' => 'Please enter a website here either to the fundraising page on your website or to an online donation site.',
             'organisation_publish_email' => 'Toggle to change the visibility of your email address',
             'organisation_publish_telephone' => 'Toggle to change the visibility of your telephone number',
@@ -43,7 +43,7 @@ describe "organisations/edit.html.erb", :type => :view do
           :address => '12 pinner rd',
           :description => 'lovely',
           :telephone => '1234',
-          :email => 'admin@friendly.org',
+          :email => 'superadmin@friendly.org',
           :postcode => 'HA1 4HZ',
           :website => 'http://www.friendly.org',
           :donation_info => 'http://www.friendly.org/donate',
@@ -89,9 +89,9 @@ describe "organisations/edit.html.erb", :type => :view do
                                :with => "http://www.friendly.com/donate"
   end
 
-  it "renders a form field to add an administrator email" do
+  it "renders a form field to add an superadministrator email" do
     render
-    expect(rendered).to have_field :organisation_admin_email_to_add
+    expect(rendered).to have_field :organisation_superadmin_email_to_add
   end
 
   it "renders a checkbox to make address public" do

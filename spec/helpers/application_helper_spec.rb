@@ -21,7 +21,7 @@ describe ApplicationHelper, :type => :helper do
   end
 
   describe 'markdown' do
-    # tested extensively in features/admin_edit_static_pages.feature
+    # tested extensively in features/superadmin_edit_static_pages.feature
   end
 
   describe '#cookie_policy_accepted?' do

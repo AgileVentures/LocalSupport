@@ -7,12 +7,12 @@ Feature: Password retrieval
   Background:
     Given the following organisations exist:
       | name     | description             | address        | postcode | telephone | email                            |
-      | Friendly | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | registered-org-admin@example.com |
+      | Friendly | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | registered-org-superadmin@example.com |
 
     Given the following users are registered:
       | email                            | password | confirmed_at        | organisation |
       | registered-user@example.com      | pppppppp | 2014-01-20 16:27:36 |              |
-      | registered-org-admin@example.com | pppppppp | 2014-01-20 16:27:36 | Friendly     |
+      | registered-org-superadmin@example.com | pppppppp | 2014-01-20 16:27:36 | Friendly     |
 
     And cookies are approved
 
@@ -35,7 +35,7 @@ Feature: Password retrieval
   Examples:
     | email                            | page      |
     | registered-user@example.com      | home page |
-    | registered-org-admin@example.com | show page for the organisation named "Friendly" |
+    | registered-org-superadmin@example.com | show page for the organisation named "Friendly" |
 
   @email
   Scenario: Retrieve password for a non-existent user

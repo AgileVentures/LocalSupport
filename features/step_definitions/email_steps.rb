@@ -1,14 +1,14 @@
 And(/^an email should be sent to "(.*?)" as notification of the request for admin status of "(.*?)"$/) do |email, org_name|
-  message = "There is a user waiting for admin approval to #{org_name}"
+  message = "There is a user waiting for superadmin approval to #{org_name}"
   mails = ActionMailer::Base.deliveries.select{|m| m.to.include? email}
   expect(mails).not_to be_empty
   bodys = mails.map{|m| m.body}.select{|body| body.include? message }
   expect(bodys).not_to be_empty
 end
 
-Then(/^an email should be sent to "(.*?)" as notification of the signup by email "(.*?)"$/) do |admin_email, user_email|
+Then(/^an email should be sent to "(.*?)" as notification of the signup by email "(.*?)"$/) do |superadmin_email, user_email|
   message = "A new user with the email #{user_email} has signed up on Harrow Community Network."
-  mails = ActionMailer::Base.deliveries.select{|m| m.to.include? admin_email}
+  mails = ActionMailer::Base.deliveries.select{|m| m.to.include? superadmin_email}
   expect(mails).not_to be_empty
   bodys = mails.map{|m| m.body}.select{|body| body.include? message }
   expect(bodys).not_to be_empty
