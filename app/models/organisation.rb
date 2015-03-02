@@ -82,10 +82,13 @@ class Organisation < ActiveRecord::Base
   end
 
   def self.filter_by_categories(category_ids)
-    return all if Array.wrap(category_ids).map(&:to_i).uniq.sort == Category.pluck(:id).sort
-    where(
-      id: CategoryOrganisation.where(category_id: category_ids).select(:organisation_id)
-    )
+    category_organisations = CategoryOrganisation.where(category_id: category_ids)
+
+    if category_organisations.pluck(:category_id).uniq.count == Category.count
+      all
+    else
+      where(id: category_organisations.select(:organisation_id))
+    end
   end
 
   def self.is_in_category(category_id)

@@ -20,7 +20,7 @@ module Queries
     def what_ids
       id = params.require(:what).permit(:id).values
       if id.first.empty?
-        Category.what_they_do.pluck(:id)
+        Category.what_they_do.select(:id)
       else
         id
       end
@@ -29,7 +29,7 @@ module Queries
     def who_ids
       id = params.require(:who).permit(:id).values
       if id.first.empty?
-        Category.who_they_help.pluck(:id)
+        Category.who_they_help.select(:id)
       else
         id
       end
@@ -38,7 +38,7 @@ module Queries
     def how_ids
       id = params.require(:how).permit(:id).values
       if id.first.empty?
-        Category.how_they_help.pluck(:id)
+        Category.how_they_help.select(:id)
       else
         id
       end
