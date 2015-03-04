@@ -119,9 +119,20 @@ Given(/^I receive a new password for "(.*?)"$/) do |email|
   }
 end
 
+def find_emails_to email
+  ActionMailer::Base.deliveries.select{|i| i.to.include? email}
+end
+
+def find_emails_with_accept_invitation_link emails
+  emails.select{|email| Nokogiri::HTML(email.body.raw_source).search("//a[text()='Accept invitation']")}
+end
+
+def extract_invite_link email
+  emails_with_accept_link = find_emails_with_accept_invitation_link(find_emails_to(email))
+  Nokogiri::HTML(emails_with_accept_link.first.body.raw_source).search("//a[text()='Accept invitation']")[0].attribute("href").value
+end
 Given(/^I click on the invitation link in the email to "([^\"]+)"$/) do |email|
-  visit Nokogiri::HTML(ActionMailer::Base.deliveries.select{|i| i.to.include? email}.first.body.raw_source).search("//a[text()='Accept invitation']")[0].attribute("href").value
-  save_and_open_page
+  visit extract_invite_link(email)
   step "I should be on the invitation page"
 end
 
