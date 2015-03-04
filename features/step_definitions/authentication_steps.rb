@@ -98,10 +98,16 @@ end
 And(/^cookies are not approved$/) do
   steps %Q{And I have a "cookie_policy_accepted" cookie set to "false"}
 end
-
+def extract_confirmation_link email
+  emails_with_confirmation_link = find_emails_with_confirmation_link(find_emails_to(email))
+  Nokogiri::HTML(emails_with_confirmation_link.first.body.raw_source).search("//a[text()='Confirm my account']")[0].attribute("href").value
+end
+def find_emails_with_confirmation_link emails
+  emails.select{|email| Nokogiri::HTML(email.body.raw_source).search("//a[text()='Confirm my account']")}
+end
 Given(/^I click on the confirmation link in the email to "([^\"]+)"$/) do |email|
   user = User.find_by_email email
-  visit confirmation_url(user.confirmation_token)
+  visit extract_confirmation_link(email)
 end
 
 Given(/^I click on the retrieve password link in the email to "([^\"]+)"$/) do |email|
