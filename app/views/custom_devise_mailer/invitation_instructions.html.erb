@@ -4,7 +4,7 @@
 
 <p>To post volunteer opportunities please accept the invitation below. This will then enable you to update your organisation's details and post volunteer opportunities for free. </p>
 
-<p><%= link_to 'Accept invitation', accept_invitation_url(@resource, :invitation_token => @resource.invitation_token) %></p>
+<p><%= link_to 'Accept invitation', accept_invitation_url(@resource, :invitation_token => @resource.raw_invitation_token) %></p>
 
 <p><a href="http://harrowcn.org.uk/">Harrow Community Network</a> is an online directory for Harrow charities and non-profits using information from The Charities Commission.  It is run by <a href="http://www.voluntaryactionharrow.org.uk/">Voluntary Action Harrow (VAH)</a> in partnership with <a href="https://www.agileventures.org">Agile Ventures.</a></p>
 

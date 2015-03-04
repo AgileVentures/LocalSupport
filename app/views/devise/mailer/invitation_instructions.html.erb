@@ -4,7 +4,7 @@
 
 <p>To view and update your organisation's information please accept the invitation below. This will then enable you to update your organisation's directory entry.</p>
 
-<p><%= link_to 'Accept invitation', accept_invitation_url(@resource, :invitation_token => @resource.invitation_token) %></p>
+<p><%= link_to 'Accept invitation', accept_invitation_url(@resource, :invitation_token => @resource.raw_invitation_token) %></p>
 
 <p>To view the directory visit: <a href="http://harrowcn.org.uk/">http://harrowcn.org.uk/</a></p>
 

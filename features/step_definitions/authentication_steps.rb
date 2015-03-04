@@ -120,8 +120,8 @@ Given(/^I receive a new password for "(.*?)"$/) do |email|
 end
 
 Given(/^I click on the invitation link in the email to "([^\"]+)"$/) do |email|
-  user = User.find_by_email email
-  visit invitation_url(user.invitation_token)
+  visit Nokogiri::HTML(ActionMailer::Base.deliveries.select{|i| i.to.include? email}.first.body.raw_source).search("//a[text()='Accept invitation']")[0].attribute("href").value
+  save_and_open_page
   step "I should be on the invitation page"
 end
 
