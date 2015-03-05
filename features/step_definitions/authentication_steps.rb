@@ -107,7 +107,7 @@ def find_emails_with_confirmation_link emails
 end
 Given(/^I click on the confirmation link in the email to "([^\"]+)"$/) do |email|
   user = User.find_by_email email
-  visit extract_confirmation_link(email)
+  get extract_confirmation_link(email)
 end
 
 Given(/^I click on the retrieve password link in the email to "([^\"]+)"$/) do |email|

@@ -61,6 +61,7 @@ Feature: This is my organisation
     And "normal_user@myorg.com"'s request for "Helpful Folk" should be persisted
     And I click on the confirmation link in the email to "normal_user@myorg.com"
     Then I should be on the show page for the organisation named "Helpful Folk"
+    Then show me the page
     And an email should be sent to "superadmin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
 
   @javascript
