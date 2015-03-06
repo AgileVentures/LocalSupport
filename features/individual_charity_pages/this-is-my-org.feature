@@ -77,6 +77,7 @@ Feature: This is my organisation
     # And I should not see a link or button "This is my organisation"  <-- button still appears as we have no current_user ...
     And "newuser@myorg.com"'s request for "Helpful Folk" should be persisted
     And I click on the confirmation link in the email to "newuser@myorg.com"
+    When I sign in as "newuser@myorg.com" with password "pppppppp" on the legacy sign in page
     Then I should be on the show page for the organisation named "Helpful Folk"
     And an email should be sent to "superadmin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
 
