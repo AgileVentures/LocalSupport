@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 ruby '2.0.0'
 gem 'rails', '4.1.9'
 gem 'pg'
-gem 'devise', '~> 3.2.0'
+gem 'devise', '3.3.0'
 gem 'devise_invitable', '~> 1.3.0'
 gem 'heroku-api'
 
