@@ -114,7 +114,9 @@ def find_emails_with_confirmation_link emails
   emails.select{|email| Nokogiri::HTML(email.body.raw_source).search("//a[text()='Confirm my account']")}
 end
 Given(/^I click on the confirmation link in the email to "([^\"]+)"$/) do |email|
+  Capybara.current_driver = :rack_test
   visit extract_confirmation_link(email)
+  save_and_open_page
 end
 def extract_retrieve_password_link email
   emails_with_retrieve_password_link = find_emails_with_retrieve_password_link(find_emails_to(email))
