@@ -116,7 +116,6 @@ end
 Given(/^I click on the confirmation link in the email to "([^\"]+)"$/) do |email|
   Capybara.current_driver = :rack_test
   visit extract_confirmation_link(email)
-  save_and_open_page
 end
 def extract_retrieve_password_link email
   emails_with_retrieve_password_link = find_emails_with_retrieve_password_link(find_emails_to(email))
