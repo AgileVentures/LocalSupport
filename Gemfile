@@ -1,10 +1,10 @@
 source 'http://rubygems.org'
 
 ruby '2.0.0'
-gem 'rails', '~> 4.1'
+gem 'rails', '4.1.9'
 gem 'pg'
-gem 'devise', '3.0.3'
-gem 'devise_invitable', '~> 1.2.1'
+gem 'devise', '3.1.2'
+gem 'devise_invitable', '~> 1.3.0'
 gem 'heroku-api'
 
 # Bundle edge Rails instead:
