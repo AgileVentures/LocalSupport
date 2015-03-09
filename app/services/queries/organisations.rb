@@ -1,5 +1,5 @@
 module Queries
-  class CategoryOrganisations
+  class Organisations
 
     attr_reader :query_term, :organisations, :params
     def initialize(query_term, organisations, params)
@@ -8,7 +8,7 @@ module Queries
       @params = params
     end
 
-    def call
+    def search_by_keyword_and_category
       categories = what_ids + who_ids + how_ids
       organisations.search_by_keyword(
         query_term

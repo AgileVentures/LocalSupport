@@ -615,10 +615,11 @@ describe Organisation, :type => :model do
   end
 end
 
-describe Organisation, 'filter_by_categories' do
-  let!(:category1) { create(:category, :charity_commission_id => 207) }
+describe Organisation, '::filter_by_categories' do
+  let!(:category1) { create(:category, :charity_commission_id => 108) }
   let!(:category2) { create(:category, :charity_commission_id => 205) }
-  let(:category3) { create(:category, :charity_commission_id => 108) }
+  # not initialized!
+  let(:category3) { create(:category, :charity_commission_id => 307) }
 
   let!(:org1) do
     create(
@@ -654,6 +655,29 @@ describe Organisation, 'filter_by_categories' do
       :postcode => 'HA1 3RE',
       :donation_info => 'www.age-uk.co.uk/donate',
     ).tap { |o| o.categories  << category1 }
+  end
+
+  context 'when filtering by one category, it returns only organisations that
+           \ are associated with that category' do
+    it 'organisations in join table' do
+      expect(
+        CategoryOrganisation.where(
+          organisation_id: Organisation.filter_by_categories([category1.id]).select(:id)
+        ).pluck(:id).uniq.sort
+      ).to eq(
+        [org2.id, org3.id]
+      )
+    end
+
+    it 'categories in join table' do
+      expect(
+        CategoryOrganisation.where(
+          organisation_id: Organisation.filter_by_categories([category1.id]).select(:id)
+        ).pluck(:category_id).uniq
+      ).to eq(
+        [category1.id]
+      )
+    end
   end
 
   it 'responds to filter by category' do

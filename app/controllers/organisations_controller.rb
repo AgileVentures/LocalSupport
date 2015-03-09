@@ -1,5 +1,3 @@
-require_relative '../services/queries/category_organisations'
-
 class OrganisationsController < ApplicationController
   layout 'two_columns'
   # GET /organisations/search
@@ -11,9 +9,10 @@ class OrganisationsController < ApplicationController
     @category_id = params.try(:[],'category').try(:[],'id')
     @category = Category.find_by_id(@category_id)
     @organisations = Organisation.includes(:users).order_by_most_recent
-    @organisations = Queries::CategoryOrganisations.new(
+    @organisations = Queries::Organisations.new(
       @query_term, @organisations, params
-    ).call
+    ).search_by_keyword_and_category
+    byebug
     flash.now[:alert] = SEARCH_NOT_FOUND if @organisations.empty?
     @markers = build_map_markers(@organisations)
     @what_they_do = Category.what_they_do.pluck(:name, :id)
