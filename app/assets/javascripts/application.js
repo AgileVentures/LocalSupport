@@ -12,6 +12,7 @@
 //= require_tree ./global
 //= require bootstrap-switch
 //= require organisations
+//= require analytics
 
 window.LocalSupport = {};
 
