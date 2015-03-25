@@ -34,7 +34,7 @@ Feature: Map of local charities
     Given I travel "<days>" days into the future
     And I visit the home page
     Then the organisation "Youth UK" should have a <size> icon
-    Examples: 
+    Examples:
       |days  | size |
       | 2    | large|
       |100   | large|
@@ -60,3 +60,7 @@ Feature: Map of local charities
     Then the coordinates for "Harrow Bereavement Counselling" and "Youth UK" should be the same
     Then the coordinates for "Age UK" and "Youth UK" should not be the same
 
+  Scenario: Showing meaning of large map icons
+    Given I visit the home page
+    And I click "Close"
+    Then I should see the map key
