@@ -33,6 +33,8 @@ Scenario: Sign up for a non-existent user
   And I should see "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
   And I should receive a "Confirmation instructions" email
   And I click on the confirmation link in the email to "non-existent-user@example.com"
+  Then I should be on the sign in page
+  And I sign in as "non-existent-user@example.com" with password "pppppppp" on the legacy sign in page
   Then I should be on the home page
 
 
