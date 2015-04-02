@@ -1,11 +1,6 @@
 require 'rails_helper'
 
 describe SessionsController, :type => :controller do
-  before :suite do
-    FactoryGirl.factories.clear
-    FactoryGirl.find_definitions
-  end
-
   describe "POST create" do
     before :each do
       request.env["devise.mapping"] = Devise.mappings[:user]
