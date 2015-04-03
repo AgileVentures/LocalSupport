@@ -83,7 +83,25 @@ describe 'Category', :type => :model do
     end
 
     it 'generated appropriate html drop down options' do
-      expect(Category.html_drop_down_options).to eq [["alligator", @category1.id], ["capybara", @category4.id]]
+      expect(Category.html_drop_down_options).to eq(
+        [
+          ["What they do",
+           [
+             [@category1.name, @category1.id], [@category4.name, @category4.id]
+           ]
+          ],
+          ["Who they help",
+            [
+              [@category2.name, @category2.id], [@category5.name, @category5.id]
+            ]
+          ],
+          ["How they help",
+            [
+                [@category3.name,@category3.id], [@category6.name, @category6.id]
+            ]
+          ]
+        ]
+      )
     end
 
     describe "#<=>" do

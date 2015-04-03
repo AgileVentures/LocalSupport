@@ -3,7 +3,7 @@ module Queries
 
     attr_reader :query_term, :organisations, :params
     def initialize(query_term, organisations, params)
-      @querty_term = query_term
+      @query_term = query_term
       @organisations = organisations
       @params = params
     end
