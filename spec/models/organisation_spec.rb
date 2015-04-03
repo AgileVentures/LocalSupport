@@ -663,19 +663,20 @@ describe Organisation, '::filter_by_categories' do
       expect(
         CategoryOrganisation.where(
           organisation_id: Organisation.filter_by_categories([category1.id]).select(:id)
-        ).pluck(:id).uniq.sort
+        ).pluck(:organisation_id).uniq.sort
       ).to eq(
         [org2.id, org3.id]
       )
     end
 
     it 'categories in join table' do
+      byebug
       expect(
         CategoryOrganisation.where(
           organisation_id: Organisation.filter_by_categories([category1.id]).select(:id)
         ).pluck(:category_id).uniq
       ).to eq(
-        [category1.id]
+        [category1.id, category2.id]
       )
     end
   end
