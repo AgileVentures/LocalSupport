@@ -8,7 +8,11 @@ Given /^I am signed in as a charity worker (un)?related to "(.*?)"$/ do |negate,
   end
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
-
+ 
+Given /^I am signed in as a (non-)?siteadmin$/ do |negate|
+  user = User.find_by(siteadmin: negate ? false : true)
+  page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
+end
 Given /^I am signed in as an? (non-)?superadmin$/ do |negate|
   user = User.find_by_superadmin(negate ? false : true)
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
@@ -71,6 +75,14 @@ Given /^I sign in as "(.*?)" with password "(.*?)"( with javascript)?$/ do |emai
   end
 end
 
+Given /^I sign in as "(.*?)" with password "(.*?)" on the legacy sign in page$/ do |email, password|
+  within("#new_user") do 
+    fill_in "user_email", :with => email
+    fill_in "user_password", :with => password
+    click_link_or_button "Sign in"
+  end
+end
+
 When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |email, password|
   user = User.find_by_email("#{email}")
   user.confirm!
@@ -94,15 +106,26 @@ end
 And(/^cookies are not approved$/) do
   steps %Q{And I have a "cookie_policy_accepted" cookie set to "false"}
 end
-
-Given(/^I click on the confirmation link in the email to "([^\"]+)"$/) do |email|
-  user = User.find_by_email email
-  visit confirmation_url(user.confirmation_token)
+def extract_confirmation_link email
+  emails_with_confirmation_link = find_emails_with_confirmation_link(find_emails_to(email))
+  Nokogiri::HTML(emails_with_confirmation_link.first.body.raw_source).search("//a[text()='Confirm my account']")[0].attribute("href").value
 end
-
+def find_emails_with_confirmation_link emails
+  emails.select{|email| Nokogiri::HTML(email.body.raw_source).search("//a[text()='Confirm my account']")}
+end
+Given(/^I click on the confirmation link in the email to "([^\"]+)"$/) do |email|
+  Capybara.current_driver = :rack_test
+  visit extract_confirmation_link(email)
+end
+def extract_retrieve_password_link email
+  emails_with_retrieve_password_link = find_emails_with_retrieve_password_link(find_emails_to(email))
+  Nokogiri::HTML(emails_with_retrieve_password_link.first.body.raw_source).search("//a[text()='Change my password']")[0].attribute("href").value
+end
+def find_emails_with_retrieve_password_link emails
+  emails.select{|email| Nokogiri::HTML(email.body.raw_source).search("//a[text()='Change my password']")}
+end
 Given(/^I click on the retrieve password link in the email to "([^\"]+)"$/) do |email|
-  user = User.find_by_email email
-  visit password_url(user.reset_password_token)
+  visit extract_retrieve_password_link(email)
 end
 
 Given(/^I receive a new password for "(.*?)"$/) do |email|
@@ -115,9 +138,20 @@ Given(/^I receive a new password for "(.*?)"$/) do |email|
   }
 end
 
+def find_emails_to email
+  ActionMailer::Base.deliveries.select{|i| i.to.include? email}
+end
+
+def find_emails_with_accept_invitation_link emails
+  emails.select{|email| Nokogiri::HTML(email.body.raw_source).search("//a[text()='Accept invitation']")}
+end
+
+def extract_invite_link email
+  emails_with_accept_link = find_emails_with_accept_invitation_link(find_emails_to(email))
+  Nokogiri::HTML(emails_with_accept_link.first.body.raw_source).search("//a[text()='Accept invitation']")[0].attribute("href").value
+end
 Given(/^I click on the invitation link in the email to "([^\"]+)"$/) do |email|
-  user = User.find_by_email email
-  visit invitation_url(user.invitation_token)
+  visit extract_invite_link(email)
   step "I should be on the invitation page"
 end
 

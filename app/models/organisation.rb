@@ -12,7 +12,7 @@ class Organisation < ActiveRecord::Base
   validates_url :website, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.website.present?}
   validates_url :donation_info, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.donation_info.present?}
 
-  # http://stackoverflow.com/questions/10738537/lazy-geocoding
+  # 
   has_many :users
   has_many :volunteer_ops
   has_many :category_organisations
@@ -162,6 +162,7 @@ class Organisation < ActiveRecord::Base
 
   def self.import_addresses(filename, limit, validation = true)
     import(filename, limit, validation) do |row, validation|
+       sleep 0.1
        create_from_array(row, validation)
     end
   end

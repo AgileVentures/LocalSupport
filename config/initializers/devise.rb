@@ -5,7 +5,8 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
   config.mailer_sender = "support@harrowcn.org.uk"
-
+   
+  config.secret_key = ENV['DEVISE_SECRET_KEY'] || '2f7f19354e23c74299e72ec771ba2509ea0f65c87584fb4a4c3a344e73ec5d2482384e069f978d1a500c87d24df645c838081b9bf2c9a45b06bc374a56244fe2'
   # Configure the class responsible to send e-mails.
   config.mailer = "CustomDeviseMailer"
 
@@ -24,7 +25,7 @@ Devise.setup do |config|
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
   # config.authentication_keys = [ :email ]
-
+  
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
   # find_for_authentication method and considered in your model lookup. For instance,

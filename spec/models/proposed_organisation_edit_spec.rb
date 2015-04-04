@@ -1,14 +1,52 @@
 require 'rails_helper'
-
-def check_editability(boolean, array_of_symbols)
+def check_viewability(boolean, usr, array_of_symbols)
+  array_of_symbols.each do |sym|
+    it "should indicate#{boolean ? '' : ' NOT'} viewable for #{sym}" do
+      user = case usr
+        when :regular_user
+          regular_user 
+        when :siteadmin
+          siteadmin
+        when :superadmin
+          superadmin
+        else
+          {}
+        end
+      expect(proposed_edit.viewable_field?(sym, by: user)).to be boolean
+    end
+  end    
+end
+def check_editability(boolean, usr, array_of_symbols)
   array_of_symbols.each do |sym|
     it "should indicate#{boolean ? '' : ' NOT'} editable for #{sym}" do
-      expect(proposed_edit.editable?(sym)).to be boolean
+      user = case usr
+        when :regular_user
+          regular_user 
+        when :siteadmin
+          siteadmin
+        else
+          {}
+        end
+      expect(proposed_edit.editable?(sym, by: user)).to be boolean
     end
   end
 end
 
 describe ProposedOrganisationEdit do
+
+  let(:regular_user) do
+    FactoryGirl.create(:user, :email => "regularjoe@example.com", :password => 'asdf1234', :password_confirmation =>
+      'asdf1234', :siteadmin => false)
+   end
+  let(:superadmin) do
+    FactoryGirl.create(:user, :email => "superadmin@example.com", :password => 'asdf1234', :password_confirmation =>
+      'asdf1234', :superadmin => true)
+   end
+
+  let(:siteadmin) do
+    FactoryGirl.create(:user, :email => "siteadmin@example.com", :password => 'asdf1234', :password_confirmation =>
+      'asdf1234', :siteadmin => true)
+   end
 
   let(:org) do
     FactoryGirl.create(:organisation,
@@ -23,7 +61,7 @@ describe ProposedOrganisationEdit do
     FactoryGirl.create(:proposed_organisation_edit,
                        :organisation => org )
   end
-
+  
   describe '::still_pending' do
     let(:archived_edit) do
       FactoryGirl.create(:proposed_organisation_edit,
@@ -42,10 +80,48 @@ describe ProposedOrganisationEdit do
       expect(ProposedOrganisationEdit.with_deleted).to include proposed_edit
   end
 
+  describe '#viewable_field?' do
+    context 'when publish fields are all false and user is regular user' do
+      before do 
+        org.update(:publish_email => false)
+      end
+      check_viewability(false, :regular_user, [:address, :telephone, :email])
+    end
+    context 'when publish fields are all true and user is regular user' do
+      before do 
+        org.update(:publish_phone => true, :publish_address => true)
+      end
+      check_viewability(true, :regular_user, [:address, :telephone, :email])
+    end
+    context 'when publish fields are all false but user is siteadmin' do
+      before do
+        org.update(:publish_email => false)
+      end
+      check_viewability(true, :siteadmin, [:address, :telephone, :email])
+    end
+    context 'when publish fields are all true and user is siteadmin' do
+      before do
+        org.update(:publish_phone => true, :publish_address => true)
+      end
+      check_viewability(true, :siteadmin, [:address, :telephone, :email])
+    end
+    context 'when publish fields are all false but user is superadmin' do
+      before do
+        org.update(:publish_email => false)
+      end
+      check_viewability(true, :superadmin, [:address, :telephone, :email])
+    end
+   context 'when publish fields are all true and user is superadmin' do
+      before do
+        org.update(:publish_phone => true, :publish_address => true)
+      end
+      check_viewability(true, :superadmin, [:address, :telephone, :email])
+    end
+  end
   describe '#editable?' do
-
-    check_editability(false, [:address,:telephone])
-    check_editability(true, [:name, :description, :postcode, :website, :donation_info, :email])
+    
+    check_editability(false, :regular_user, [:address,:telephone])
+    check_editability(true, :regular_user, [:name, :description, :postcode, :website, :donation_info, :email])
 
     context 'when publish field settings are changed' do
       before do
@@ -53,8 +129,15 @@ describe ProposedOrganisationEdit do
                    :publish_address => true,
                    :publish_email => false)
       end
-      check_editability(true, [:address,:telephone])
-      check_editability(false, [:email])
+      check_editability(true, :regular_user, [:address,:telephone])
+      check_editability(false, :regular_user, [:email])
+    end
+    
+    context 'when editor is siteadmin' do
+      before do 
+        org.update(:publish_email => false)
+      end
+      check_editability(true, :siteadmin, [:address, :telephone, :email])
     end
   end
 
