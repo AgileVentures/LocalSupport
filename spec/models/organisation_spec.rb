@@ -226,7 +226,7 @@ describe Organisation, :type => :model do
       }.to change(Organisation, :count).by 2
     end
 
-    it 'must fail gracefully when encountering error in generating multiple Organisations from text file' do
+    xit 'must fail gracefully when encountering error in generating multiple Organisations from text file' do
       attempted_number_to_import = 1006
       actual_number_to_import = 642
       allow(Organisation).to receive(:create_from_array).and_raise(CSV::MalformedCSVError)
