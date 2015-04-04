@@ -12,7 +12,6 @@ class OrganisationsController < ApplicationController
     @organisations = Queries::Organisations.new(
       @query_term, @organisations, params
     ).search_by_keyword_and_category
-    byebug
     flash.now[:alert] = SEARCH_NOT_FOUND if @organisations.empty?
     @markers = build_map_markers(@organisations)
     @what_they_do = Category.what_they_do.pluck(:name, :id)

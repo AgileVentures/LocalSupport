@@ -670,7 +670,6 @@ describe Organisation, '::filter_by_categories' do
     end
 
     it 'categories in join table' do
-      byebug
       expect(
         CategoryOrganisation.where(
           organisation_id: Organisation.filter_by_categories([category1.id]).select(:id)

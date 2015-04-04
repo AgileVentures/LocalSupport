@@ -1,5 +1,13 @@
-And /^I select the "(.*?)" category$/ do |category|
-  select(category, :from => "category[id]")
+And /^I select the "(.*?)" category from What They Do$/ do |category|
+  select(category, :from => "what[id]")
+end
+
+Given(/^I select the "(.*?)" category from Who They Help$/) do |category|
+  select(category, :from => "who[id]")
+end
+
+Given(/^I select the "(.*?)" category from How They Help$/) do |category|
+  select(category, :from => "how[id]")
 end
 
 When(/^I visit "(.*?)"$/) do |path|
