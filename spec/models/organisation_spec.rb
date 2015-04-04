@@ -227,7 +227,7 @@ describe Organisation, :type => :model do
     end
 
     it 'must fail gracefully when encountering error in generating multiple Organisations from text file' do
-      allow(Kernel).to receive(:sleep)
+      allow(Organisation).to receive(:sleep)
       attempted_number_to_import = 1006
       actual_number_to_import = 642
       allow(Organisation).to receive(:create_from_array).and_raise(CSV::MalformedCSVError)

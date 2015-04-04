@@ -162,7 +162,7 @@ class Organisation < ActiveRecord::Base
 
   def self.import_addresses(filename, limit, validation = true)
     import(filename, limit, validation) do |row, validation|
-       Kernel.sleep 0.1
+       sleep 0.1
        create_from_array(row, validation)
     end
   end
