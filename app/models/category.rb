@@ -27,14 +27,6 @@ class Category < ActiveRecord::Base
     end
   end
 
-  def self.html_drop_down_options
-    [
-      ['What they do', Category.what_they_do.pluck(:name, :id)],
-      ['Who they help', Category.who_they_help.pluck(:name, :id)],
-      ['How they help', Category.how_they_help.pluck(:name, :id)],
-    ]
-  end
-
   def self.first_category_name_in_each_type
     {what_they_do: first_category_name_in_what_they_do, who_they_help: first_category_name_in_who_they_help,
      how_they_help: first_category_name_in_how_they_help}

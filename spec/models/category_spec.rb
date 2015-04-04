@@ -82,28 +82,6 @@ describe 'Category', :type => :model do
       end
     end
 
-    it 'generated appropriate html drop down options' do
-      expect(Category.html_drop_down_options).to eq(
-        [
-          ["What they do",
-           [
-             [@category1.name, @category1.id], [@category4.name, @category4.id]
-           ]
-          ],
-          ["Who they help",
-            [
-              [@category2.name, @category2.id], [@category5.name, @category5.id]
-            ]
-          ],
-          ["How they help",
-            [
-                [@category3.name,@category3.id], [@category6.name, @category6.id]
-            ]
-          ]
-        ]
-      )
-    end
-
     describe "#<=>" do
       [{type: "what they do", id: 110}, {type: "who they help", id: 210}, {type: "how they help", id: 310}].each do |hash|
         it "orders by name when category types are both #{hash[:type]}" do
