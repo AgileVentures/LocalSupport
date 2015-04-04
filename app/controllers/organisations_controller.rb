@@ -6,8 +6,6 @@ class OrganisationsController < ApplicationController
 
   def search
     @query_term = params[:q]
-    @category_id = params.try(:[],'category').try(:[],'id')
-    @category = Category.find_by_id(@category_id)
     @organisations = Organisation.includes(:users).order_by_most_recent
     @organisations = Queries::Organisations.new(
       @query_term, @organisations, params
