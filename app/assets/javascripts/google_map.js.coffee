@@ -30,5 +30,6 @@ class LocalSupport.GoogleMap
 $ ->
   settings = LocalSupport.MapSettings().for google
   map = new LocalSupport.GoogleMap()
-  $('#map_canvas').height($('#content').height() - map.container_padding)
+  height = if (400 > ($('#content').height() - map.container_padding)) then 400 else ($('#content').height() - map.container_padding)
+  $('#map_canvas').height(height)
   map.build settings
