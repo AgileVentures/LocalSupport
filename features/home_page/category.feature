@@ -76,3 +76,13 @@ Feature: Categories of charities
     And I press "Submit"
     Then I should see "I hate animals"
 
+  Scenario: Categories are sticky
+    Given I visit the home page
+    And cookies are approved
+    And I select the "Plant Welfare" category from What They Do
+    And I select the "Advocacy" category from How They Help
+    And I select the "People with disabilities" category from Who They Help
+    And I press "Submit"
+    Then the "Plant Welfare" category should be selected from What They Do
+    Then the "Advocacy" category should be selected from How They Help
+    Then the "People with disabilities" category should be selected from Who They Help

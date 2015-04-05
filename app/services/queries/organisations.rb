@@ -17,6 +17,19 @@ module Queries
       )
     end
 
+
+    def what_id
+      params.require(:what).permit(:id)[:id]
+    end
+
+    def how_id
+      params.require(:how).permit(:id)[:id]
+    end
+
+    def who_id
+      params.require(:who).permit(:id)[:id]
+    end
+
     def what_ids
       id = params.require(:what).permit(:id).values
       if id.first.empty?

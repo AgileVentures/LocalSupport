@@ -7,9 +7,13 @@ class OrganisationsController < ApplicationController
   def search
     @query_term = params[:q]
     @organisations = Organisation.includes(:users).order_by_most_recent
-    @organisations = Queries::Organisations.new(
-      @query_term, @organisations, params
-    ).search_by_keyword_and_category
+    query_service = Queries::Organisations.new(
+        @query_term, @organisations, params
+    )
+    @what_id = query_service.what_id
+    @how_id = query_service.how_id
+    @who_id = query_service.who_id
+    @organisations = query_service.search_by_keyword_and_category
     flash.now[:alert] = SEARCH_NOT_FOUND if @organisations.empty?
     @markers = build_map_markers(@organisations)
     @what_they_do = Category.what_they_do.pluck(:name, :id)

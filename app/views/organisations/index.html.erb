@@ -5,7 +5,7 @@
         <%= label_tag(:q, "What They Do", class: 'field-label') %>
       </div>
       <div class="right-side">
-        <%= select_tag("what[id]", options_for_select(@what_they_do, nil), { :include_blank => 'All' }) %>
+        <%= select_tag("what[id]", options_for_select(@what_they_do, @what_id), { :include_blank => 'All' }) %>
       </div>
     </div>
     <div class="flex-row">
@@ -13,7 +13,7 @@
         <%= label_tag(:q, "Who They Help", class: 'field-label') %>
       </div>
       <div class="right-side">
-        <%= select_tag("who[id]", options_for_select(@who_they_help, ""), :include_blank => 'All' ) %>
+        <%= select_tag("who[id]", options_for_select(@who_they_help, @who_id), :include_blank => 'All' ) %>
       </div>
     </div>
     <div class="flex-row">
@@ -21,7 +21,7 @@
         <%= label_tag(:q, "How They Help", class: 'field-label') %>
       </div>
       <div class="right-side">
-        <%= select("how", "id", options_for_select(@how_they_help,nil), { :include_blank => 'All' }) %>
+        <%= select("how", "id", options_for_select(@how_they_help,@how_id), { :include_blank => 'All' }) %>
       </div>
     </div>
     <div class="flex-row">

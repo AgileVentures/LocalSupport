@@ -17,3 +17,18 @@ Then(/^I uncheck the category "(.*?)"$/) do |category_name|
     find(:xpath,"//div/label[text()='#{category_name}']/preceding-sibling::input[1]").set(false)
   end
 end
+
+Then(/^the "(.*?)" category should be selected from What They Do$/) do |name|
+  id = Category.find_by(name: name).id.to_s
+  find("#what_id").value.should eq id
+end
+
+Then(/^the "(.*?)" category should be selected from How They Help$/) do |name|
+  id = Category.find_by(name: name).id.to_s
+  find("#how_id").value.should eq id
+end
+
+Then(/^the "(.*?)" category should be selected from Who They Help$/) do |name|
+  id = Category.find_by(name: name).id.to_s
+  find("#who_id").value.should eq id
+end
