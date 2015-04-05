@@ -32,3 +32,15 @@ Then(/^the "(.*?)" category should be selected from Who They Help$/) do |name|
   id = Category.find_by(name: name).id.to_s
   find("#who_id").value.should eq id
 end
+
+Then(/^the default all value should be selected from What They Do$/) do
+  expect(find("#what_id").value).to be_empty
+end
+
+Then(/^the default all value should be selected from Who They Help$/) do
+  expect(find("#who_id").value).to be_empty
+end
+
+Then(/^the default all value should be selected from How They Help$/) do
+  expect(find("#how_id").value).to be_empty
+end

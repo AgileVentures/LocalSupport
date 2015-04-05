@@ -86,3 +86,11 @@ Feature: Categories of charities
     Then the "Plant Welfare" category should be selected from What They Do
     Then the "Advocacy" category should be selected from How They Help
     Then the "People with disabilities" category should be selected from Who They Help
+
+  Scenario: All values stay as default if not changed
+    Given I visit the home page
+    And cookies are approved
+    And I press "Submit"
+    Then the default all value should be selected from What They Do
+    Then the default all value should be selected from Who They Help
+    Then the default all value should be selected from How They Help
