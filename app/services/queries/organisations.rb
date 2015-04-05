@@ -19,41 +19,38 @@ module Queries
 
 
     def what_id
-      params.require(:what).permit(:id)[:id]
+      @what_id ||= params.require(:what).permit(:id).fetch(:id)
     end
 
     def how_id
-      params.require(:how).permit(:id)[:id]
+      @how_id ||= params.require(:how).permit(:id).fetch(:id)
     end
 
     def who_id
-      params.require(:who).permit(:id)[:id]
+      @who_id ||= params.require(:who).permit(:id).fetch(:id)
     end
 
     def what_ids
-      id = params.require(:what).permit(:id).values
-      if id.first.empty?
+      if what_id.empty?
         Category.what_they_do.select(:id)
       else
-        id
+        Array.wrap(what_id)
       end
     end
 
     def who_ids
-      id = params.require(:who).permit(:id).values
-      if id.first.empty?
+      if who_id.empty?
         Category.who_they_help.select(:id)
       else
-        id
+        Array.wrap(who_id)
       end
     end
 
     def how_ids
-      id = params.require(:how).permit(:id).values
-      if id.first.empty?
+      if how_id.empty?
         Category.how_they_help.select(:id)
       else
-        id
+        Array.wrap(how_id)
       end
     end
 
