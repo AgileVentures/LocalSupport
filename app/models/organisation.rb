@@ -24,7 +24,7 @@ class Organisation < ActiveRecord::Base
   accepts_nested_attributes_for :users
   accepts_nested_attributes_for :category_organisations,
                                 :allow_destroy => true
-  scope :order_by_most_recent, -> {order('updated_at DESC')}
+  scope :order_by_most_recent, -> { order('organisations.updated_at DESC') }
   scope :not_null_email, lambda {where("organisations.email <> ''")}
   # Should we not use :includes, which pulls in extra data? http://nlingutla.com/blog/2013/04/21/includes-vs-joins-in-rails/
   # Alternative => :joins('LEFT OUTER JOIN users ON users.organisation_id = organisations.id)
@@ -82,11 +82,12 @@ class Organisation < ActiveRecord::Base
   end
 
   def self.filter_by_categories(category_ids)
-    category_ids = Array.wrap(category_ids)
-    return all if category_ids.uniq.count == Category.count
-    category_ids = category_ids.reject{|c| !c.present?}
-    return all if category_ids.empty?
-    joins(:categories).where('categories.id IN (?)', category_ids)
+    joins(:categories)
+      .where('categories.id IN (?)', category_ids)
+      # .uniq
+      # blows up when used with ::order
+      # due to issues with ORDER BY not having #updated_at in query scope
+      # due to ::uniq's SELECT DISTINCT lacking #updated_at
   end
 
   def self.is_in_category(category_id)

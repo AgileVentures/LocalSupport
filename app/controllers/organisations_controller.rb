@@ -5,20 +5,21 @@ class OrganisationsController < ApplicationController
   before_filter :authenticate_user!, :except => [:search, :index, :show]
 
   def search
-    @query_term = params[:q]
-    @organisations = Organisation.includes(:users).order_by_most_recent
-    query_service = Queries::Organisations.new(
-        @query_term, @organisations, params
-    )
-    @what_id = query_service.what_id
-    @how_id = query_service.how_id
-    @who_id = query_service.who_id
-    @organisations = query_service.search_by_keyword_and_category
-    flash.now[:alert] = SEARCH_NOT_FOUND if @organisations.empty?
-    @markers = build_map_markers(@organisations)
+    parsed_params = SearchParamsParser.new(params)
+
+    @what_id = parsed_params.what_id
+    @how_id = parsed_params.how_id
+    @who_id = parsed_params.who_id
     @what_they_do = Category.what_they_do.pluck(:name, :id)
     @who_they_help = Category.who_they_help.pluck(:name, :id)
     @how_they_help = Category.how_they_help.pluck(:name, :id)
+
+    @organisations = Queries::Organisations.search_by_keyword_and_category(
+      parsed_params
+    )
+    flash.now[:alert] = SEARCH_NOT_FOUND if @organisations.empty?
+    @markers = build_map_markers(@organisations)
+
     render :template =>'organisations/index'
   end
 
