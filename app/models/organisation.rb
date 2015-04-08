@@ -83,15 +83,12 @@ class Organisation < ActiveRecord::Base
 
   def self.filter_by_categories(category_ids)
     category_ids = Array.wrap(category_ids)
-    if category_ids.uniq.count == Category.count
-      all
-    else
-      where(
-        id: CategoryOrganisation.where(
-          category_id: category_ids
-        ).select(:organisation_id)
-      )
-    end
+    return all if category_ids.uniq.count == Category.count
+    category_ids = category_ids.reject{|c| !c.present?}
+    return all if category_ids.empty?
+    condition =
+      category_ids[1..-1].reduce(is_in_category(category_ids.first)){|m,o| m.or(is_in_category(o))}
+    self.joins(:categories).where(condition)
   end
 
   def self.is_in_category(category_id)
