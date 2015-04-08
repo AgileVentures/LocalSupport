@@ -86,9 +86,7 @@ class Organisation < ActiveRecord::Base
     return all if category_ids.uniq.count == Category.count
     category_ids = category_ids.reject{|c| !c.present?}
     return all if category_ids.empty?
-    condition =
-      category_ids[1..-1].reduce(is_in_category(category_ids.first)){|m,o| m.or(is_in_category(o))}
-    self.joins(:categories).where(condition)
+    joins(:categories).where('categories.id IN (?)', category_ids)
   end
 
   def self.is_in_category(category_id)

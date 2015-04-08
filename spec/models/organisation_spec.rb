@@ -658,7 +658,7 @@ describe Organisation, '::filter_by_categories' do
     ).tap { |o| o.categories  << category1 }
   end
 
-  context 'when filtering by one category, it returns only organisations that
+  context 'when filtering by ONE CATEGORY, it returns only organisations that
            \ are associated with that category' do
     it 'organisations in join table' do
       expect(
@@ -675,6 +675,37 @@ describe Organisation, '::filter_by_categories' do
         CategoryOrganisation.where(
           organisation_id: Organisation.filter_by_categories([category1.id]).select(:id)
         ).pluck(:category_id).uniq
+      ).to eq(
+        [category1.id, category2.id]
+      )
+    end
+  end
+
+  context 'when filtering by TWO CATEGORIES, it returns only organisations that
+           \ are associated with those categories' do
+    # init
+    before { category3 }
+    it 'organisations in join table' do
+      expect(
+        CategoryOrganisation.where(
+          organisation_id: Organisation.filter_by_categories([
+            category1.id,
+            category2.id,
+          ]).select(:id)
+        ).pluck(:organisation_id).uniq.sort
+      ).to eq(
+        [org2.id, org3.id]
+      )
+    end
+
+    it 'categories in join table' do
+      expect(
+        CategoryOrganisation.where(
+          organisation_id: Organisation.filter_by_categories([
+            category1.id,
+            category2.id,
+          ]).select(:id)
+        ).pluck(:category_id).uniq.sort
       ).to eq(
         [category1.id, category2.id]
       )
