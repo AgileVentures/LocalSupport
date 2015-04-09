@@ -60,6 +60,14 @@ describe Queries::Organisations, '::search_by_keyword_and_category' do
     let(:what_who_how_ids) { [category1.id].map(&:to_s) }
     it { expect(run_spec).not_to include org1 }
     it { expect(run_spec).to include org2, org3 }
+    it { expect(run_spec.size).to eq 2 }
+  end
+
+  context 'finds all orgs in several particular categories' do
+    let(:what_who_how_ids) { [category1.id, category2.id].map(&:to_s) }
+    it { expect(run_spec).not_to include org1 }
+    it { expect(run_spec).to include org2, org3 }
+    it { expect(run_spec.size).to eq 2 }
   end
 
   context 'finds all orgs when all category dropselects are set to "all"' do

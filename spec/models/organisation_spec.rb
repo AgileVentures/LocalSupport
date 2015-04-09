@@ -660,13 +660,28 @@ describe Organisation, '::filter_by_categories' do
 
   context 'when filtering by ONE CATEGORY, it returns only organisations that
            \ are associated with that category' do
+
+    it 'organisations returned by query' do
+      expect(
+        Organisation.filter_by_categories([category1.id]).pluck(:id)
+      ).to include(
+        org2.id, org3.id
+      )
+    end
+
+    it 'no duplicates' do
+      expect(
+        Organisation.filter_by_categories([category1.id]).size
+      ).to eq 2
+    end
+
     it 'organisations in join table' do
       expect(
         CategoryOrganisation.where(
           organisation_id: Organisation.filter_by_categories([category1.id]).select(:id)
-        ).pluck(:organisation_id).uniq.sort
-      ).to eq(
-        [org2.id, org3.id]
+        ).pluck(:organisation_id).uniq
+      ).to include(
+        org2.id, org3.id
       )
     end
 
@@ -675,8 +690,8 @@ describe Organisation, '::filter_by_categories' do
         CategoryOrganisation.where(
           organisation_id: Organisation.filter_by_categories([category1.id]).select(:id)
         ).pluck(:category_id).uniq
-      ).to eq(
-        [category1.id, category2.id]
+      ).to include(
+        category1.id, category2.id
       )
     end
   end
@@ -685,17 +700,25 @@ describe Organisation, '::filter_by_categories' do
            \ are associated with those categories' do
     # init
     before { category3 }
-    it 'organisations in join table' do
+
+    it 'organisations returned by query' do
       expect(
-        CategoryOrganisation.where(
-          organisation_id: Organisation.filter_by_categories([
-            category1.id,
-            category2.id,
-          ]).select(:id)
-        ).pluck(:organisation_id).uniq.sort
-      ).to eq(
-        [org2.id, org3.id]
+        Organisation.filter_by_categories([
+          category1.id,
+          category2.id,
+        ]).pluck(:id)
+      ).to include(
+        org2.id, org3.id
       )
+    end
+
+    it 'no duplicates' do
+      expect(
+        Organisation.filter_by_categories([
+          category1.id,
+          category2.id,
+        ]).size
+      ).to eq 2
     end
 
     it 'categories in join table' do
@@ -705,9 +728,9 @@ describe Organisation, '::filter_by_categories' do
             category1.id,
             category2.id,
           ]).select(:id)
-        ).pluck(:category_id).uniq.sort
-      ).to eq(
-        [category1.id, category2.id]
+        ).pluck(:category_id).uniq
+      ).to include(
+        category1.id, category2.id
       )
     end
   end
