@@ -72,10 +72,9 @@ describe OrganisationsController, :type => :controller do
       end
 
       it "handles lack of query term gracefully" do
-        expect(Organisation).to receive(:search_by_keyword).with(nil).and_return(result)
-        expect(result).to receive(:filter_by_categories).with([]).and_return(result)
-        get :search, category_params
-        expect(assigns(:query_term)).to eq nil
+        expect(Organisation).to receive(:search_by_keyword).with("").and_return(result)
+        get :search, category_params.merge({q: ''})
+        expect(assigns(:query_term)).to eq("")
       end
 
       it "handles lack of id gracefully" do
