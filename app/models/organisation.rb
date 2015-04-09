@@ -78,17 +78,43 @@ class Organisation < ActiveRecord::Base
 
   def self.search_by_keyword(keyword)
      keyword = "%#{keyword}%"
-     self.where(contains_description(keyword).or(contains_name(keyword)))
+     where(contains_description?(keyword).or(contains_name?(keyword)))
   end
 
   def self.filter_by_categories(category_ids)
     joins(:categories)
-      .where('categories.id IN (?)', category_ids)
+      .where(is_in_categories?(category_ids))
       .uniq
   end
 
-  def self.is_in_category(category_id)
+  # TODO second arg to switch between or / and
+  def self.is_in_categories?(category_ids)
+    head, *tail = Array.wrap(category_ids)
+    tail.reduce(
+      is_in_category?(head)
+    ) do |query, category_id|
+      query.or(is_in_category?(category_id))
+    end
+  end
+
+  def self.is_in_category?(category_id)
     category_table[:id].eq(category_id)
+  end
+
+  def self.table
+    arel_table
+  end
+
+  def self.category_table
+    Category.arel_table
+  end
+
+  def self.contains_description?(key)
+    table[:description].matches(key)
+  end
+
+  def self.contains_name?(key)
+    table[:name].matches(key)
   end
 
   def gmaps4rails_marker_attrs
@@ -197,27 +223,9 @@ class Organisation < ActiveRecord::Base
       end
     end
   end
-  
+
   def not_updated_recently_or_has_no_owner?
     self.users.empty? || not_updated_recently?
-  end
-
-  private
-
-  def self.table
-    self.arel_table
-  end
-
-  def self.category_table
-    Category.arel_table
-  end
-
-  def self.contains_description(key)
-    table[:description].matches(key)
-  end
-
-  def self.contains_name(key)
-    table[:name].matches(key)
   end
 
 end

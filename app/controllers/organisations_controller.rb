@@ -7,6 +7,7 @@ class OrganisationsController < ApplicationController
   def search
     parsed_params = SearchParamsParser.new(params)
 
+    @query_term = parsed_params.query_term
     @what_id = parsed_params.what_id
     @how_id = parsed_params.how_id
     @who_id = parsed_params.who_id
