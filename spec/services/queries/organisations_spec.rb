@@ -70,6 +70,21 @@ describe Queries::Organisations, '::search_by_keyword_and_category' do
     it { expect(run_spec.size).to eq 2 }
   end
 
+  context '::order_by_most_recent works' do
+    context 'org2 is updated most recently' do
+      let(:what_who_how_ids) { [category1.id].map(&:to_s) }
+      before { [org3, org2].map(&:touch) }
+      it { expect(run_spec).not_to include org1 }
+      it { expect(run_spec.map(&:id)).to eq [org2.id, org3.id] }
+    end
+    context 'org3 is updated most recently' do
+      let(:what_who_how_ids) { [category1.id].map(&:to_s) }
+      before { [org2, org3].map(&:touch) }
+      it { expect(run_spec).not_to include org1 }
+      it { expect(run_spec.map(&:id)).to eq [org3.id, org2.id] }
+    end
+  end
+
   context 'finds all orgs when all category dropselects are set to "all"' do
     let(:what_who_how_ids) { ['', '', ''] }
     it { expect(run_spec).to include org1, org2, org3 }

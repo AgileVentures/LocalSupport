@@ -84,10 +84,7 @@ class Organisation < ActiveRecord::Base
   def self.filter_by_categories(category_ids)
     joins(:categories)
       .where('categories.id IN (?)', category_ids)
-      # .uniq
-      # blows up when used with ::order
-      # due to issues with ORDER BY not having #updated_at in query scope
-      # due to ::uniq's SELECT DISTINCT lacking #updated_at
+      .uniq
   end
 
   def self.is_in_category(category_id)
