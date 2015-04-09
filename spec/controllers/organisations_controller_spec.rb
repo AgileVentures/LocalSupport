@@ -52,7 +52,7 @@ describe OrganisationsController, :type => :controller do
 
       it "orders search results by most recent" do
         expect(Organisation).to receive(:order_by_most_recent).and_return(result)
-        expect(result).to receive_message_chain(:search_by_keyword, :filter_by_categories).with('test').with([]).and_return(result)
+        expect(result).to receive(:search_by_keyword).with('test').and_return(result)
         get :search, { q: 'test' }.merge(category_params)
         expect(assigns(:organisations)).to eq([double_organisation])
       end
