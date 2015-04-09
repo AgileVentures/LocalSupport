@@ -83,8 +83,9 @@ class Organisation < ActiveRecord::Base
 
   def self.filter_by_categories(category_ids)
     joins(:categories)
-      .where(is_in_categories?(category_ids))
-      .uniq
+      .where('categories.id IN (?)', category_ids)
+      .group('organisations.id')
+      .having('COUNT(organisations.id) = ?', category_ids.size)
   end
 
   # TODO second arg to switch between or / and

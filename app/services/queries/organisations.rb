@@ -7,6 +7,7 @@ module Queries
           parsed_params.query_term
         )
 
+      # organisations = Organisation.all
       if parsed_params.what_who_how_ids.any?
         organisations.filter_by_categories(
           parsed_params.what_who_how_ids
