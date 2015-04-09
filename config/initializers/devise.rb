@@ -25,11 +25,7 @@ Devise.setup do |config|
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
   # config.authentication_keys = [ :email ]
-
-  #per devise docs: http://blog.plataformatec.com.br/2013/08/devise-3-1-now-with-more-secure-defaults/
-  #only leave set for a little while
-  config.allow_insecure_token_lookup = true
-
+  
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
   # find_for_authentication method and considered in your model lookup. For instance,
