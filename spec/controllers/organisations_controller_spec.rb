@@ -52,7 +52,7 @@ describe OrganisationsController, :type => :controller do
 
       it "orders search results by most recent" do
         expect(Organisation).to receive(:order_by_most_recent).and_return(result)
-        allow(result).to receive_message_chain(:search_by_keyword, :filter_by_categories).with('test').with([]).and_return(result)
+        expect(result).to receive_message_chain(:search_by_keyword, :filter_by_categories).with('test').with([]).and_return(result)
         get :search, { q: 'test' }.merge(category_params)
         expect(assigns(:organisations)).to eq([double_organisation])
       end
@@ -66,7 +66,6 @@ describe OrganisationsController, :type => :controller do
 
       it "handles lack of category gracefully" do
         expect(Organisation).to receive(:search_by_keyword).with('test').and_return(result)
-        expect(result).to receive(:filter_by_categories).with([]).and_return(result)
         get :search, { q: 'test' }.merge(category_params)
         expect(assigns(:query_term)).to eq 'test'
       end
@@ -79,7 +78,6 @@ describe OrganisationsController, :type => :controller do
 
       it "handles lack of id gracefully" do
         expect(Organisation).to receive(:search_by_keyword).with('test').and_return(result)
-        expect(result).to receive(:filter_by_categories).with([]).and_return(result)
         get :search, { q: 'test' }.merge(category_params)
         expect(assigns(:query_term)).to eq 'test'
       end
