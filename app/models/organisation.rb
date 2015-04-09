@@ -85,6 +85,7 @@ class Organisation < ActiveRecord::Base
     joins(:categories)
       .where(is_in_categories?(category_ids))
       .uniq
+    byebug
   end
 
   # TODO second arg to switch between or / and
