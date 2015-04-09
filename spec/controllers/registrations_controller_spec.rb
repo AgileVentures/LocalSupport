@@ -1,11 +1,6 @@
 require 'rails_helper'
 
 describe RegistrationsController, :type => :controller do
-  before :suite do
-    FactoryGirl.factories.clear
-    FactoryGirl.find_definitions
-  end
-
   describe "POST create" do
     before :each do
       request.env["devise.mapping"] = Devise.mappings[:user]
