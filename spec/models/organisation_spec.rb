@@ -671,7 +671,7 @@ describe Organisation, '::filter_by_categories' do
 
     it 'no duplicates' do
       expect(
-        Organisation.filter_by_categories([category1.id]).size
+        Organisation.filter_by_categories([category1.id]).map{|x| x}.size
       ).to eq 2
     end
 
@@ -698,7 +698,7 @@ describe Organisation, '::filter_by_categories' do
           category2.id,
         ]).pluck(:id)
       ).to include(
-        org2.id, org3.id
+        org2.id
       )
     end
 
@@ -707,8 +707,8 @@ describe Organisation, '::filter_by_categories' do
         Organisation.filter_by_categories([
           category1.id,
           category2.id,
-        ]).size
-      ).to eq 2
+        ]).map{|x| x}.size
+      ).to eq 1
     end
 
     it 'categories in join table' do
