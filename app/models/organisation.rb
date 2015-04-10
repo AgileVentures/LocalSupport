@@ -83,9 +83,9 @@ class Organisation < ActiveRecord::Base
 
   def self.filter_by_categories(category_ids)
     joins(:categories)
-      .where('categories.id IN (?)', category_ids)
-      .group('organisations.id')
-      .having('COUNT(organisations.id) = ?', category_ids.size)
+      .where(is_in_categories?(category_ids))
+      .group(organisation_id)
+      .having(organisation_id.count.eq category_ids.size)
   end
 
   # TODO second arg to switch between or / and
@@ -104,6 +104,10 @@ class Organisation < ActiveRecord::Base
 
   def self.table
     arel_table
+  end
+
+  def self.organisation_id
+    table[:id]
   end
 
   def self.category_table
