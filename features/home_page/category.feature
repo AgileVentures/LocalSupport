@@ -28,7 +28,9 @@ Feature: Categories of charities
       | Animals with plants      | I love dogs           |
       | Animal Welfare           | I love cats           |
       | People with disabilities | I help people         |
+      | Advocacy                 | I love dogs           |
       | Advocacy                 | I advocate for people |
+      | Animals with plants      | I advocate for people |
 
   Scenario: Search for organisations in the "Animal Welfare" category
   #Given I have at least 3 organisations in the "Animal Welfare" category
@@ -47,6 +49,17 @@ Feature: Categories of charities
     And I press "Submit"
     Then I should see "I love dogs"
     And I should not see "I love cats"
+
+  Scenario: Search for organisations in Advocacy, Animal Welfare and Animals with plants categories
+    Given I visit the home page
+    And cookies are approved
+    And I select the "Animal Welfare" category from What They Do
+    And I select the "Animals with plants" category from Who They Help
+    And I select the "Advocacy" category from How They Help
+    And I press "Submit"
+    Then I should see "I love dogs"
+    And I should not see "I love cats"
+    And I should not see "I advocate for people"
 
     # TODO must ensure this also works with searching for text so we can search within a category
   Scenario: Search for dogs in the Animal Welfare category
