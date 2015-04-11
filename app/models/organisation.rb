@@ -83,23 +83,9 @@ class Organisation < ActiveRecord::Base
 
   def self.filter_by_categories(category_ids)
     joins(:categories)
-      .where(is_in_categories?(category_ids))
-      .group(organisation_id)
-      .having(organisation_id.count.eq category_ids.size)
-  end
-
-  # TODO second arg to switch between or / and
-  def self.is_in_categories?(category_ids)
-    head, *tail = Array.wrap(category_ids)
-    tail.reduce(
-      is_in_category?(head)
-    ) do |query, category_id|
-      query.or(is_in_category?(category_id))
-    end
-  end
-
-  def self.is_in_category?(category_id)
-    category_table[:id].eq(category_id)
+      .where(category_id.in category_ids)                 # at this point, orgs in multiple categories show up as duplicates
+      .group(organisation_id)                             # so we exploit this
+      .having(organisation_id.count.eq category_ids.size) # and return the orgs with correct number of duplicates
   end
 
   def self.table
@@ -112,6 +98,10 @@ class Organisation < ActiveRecord::Base
 
   def self.category_table
     Category.arel_table
+  end
+
+  def self.category_id
+    category_table[:id]
   end
 
   def self.contains_description?(key)
