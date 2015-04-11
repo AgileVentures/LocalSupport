@@ -20,5 +20,17 @@ module Queries
       end
     end
 
+    def self.xyz(organisations)
+      recently_updated = "organisations.updated_at > now() - interval '1 year'"
+      has_owner = "organisations.id IN (SELECT users.organisation_id FROM users)"
+      condition =
+        "CASE WHEN #{recently_updated} AND #{has_owner} THEN TRUE ELSE FALSE END"
+      x=organisations
+        .select("organisations.*, (#{condition}) as recently_updated_and_has_owner")
+      debugger
+      x
+        # .joins('LEFT OUTER JOIN users on users.organisation_id = organisations.id')
+    end
+
   end
 end
