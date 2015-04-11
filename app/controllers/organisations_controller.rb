@@ -27,7 +27,7 @@ class OrganisationsController < ApplicationController
   # GET /organisations
   # GET /organisations.json
   def index
-    @organisations = Organisation.order_by_most_recent
+    @organisations = Queries::Organisations.order_by_most_recent
     @markers = build_map_markers(@organisations)
     @what_ids = Category.what_they_do.pluck(:name, :id)
     @who_ids = Category.who_they_help.pluck(:name, :id)
