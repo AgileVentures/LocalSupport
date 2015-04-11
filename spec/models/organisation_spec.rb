@@ -671,7 +671,7 @@ describe Organisation, '::filter_by_categories' do
 
     it 'no duplicates' do
       expect(
-        Organisation.filter_by_categories([category1.id]).map{|x| x}.size
+        Organisation.filter_by_categories([category1.id]).map.size
       ).to eq 2
     end
 
@@ -707,7 +707,7 @@ describe Organisation, '::filter_by_categories' do
         Organisation.filter_by_categories([
           category1.id,
           category2.id,
-        ]).map{|x| x}.size
+        ]).map.size
       ).to eq 1
     end
 
