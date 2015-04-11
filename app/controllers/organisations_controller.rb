@@ -127,6 +127,7 @@ class OrganisationsController < ApplicationController
   private
 
   def build_map_markers(organisations)
+    Queries::Organisations.xyz(organisations)
     ::MapMarkerJson.build(organisations) do |org, marker|
       marker.lat org.latitude
       marker.lng org.longitude
