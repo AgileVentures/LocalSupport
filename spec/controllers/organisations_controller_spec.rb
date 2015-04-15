@@ -87,9 +87,7 @@ describe OrganisationsController, :type => :controller do
         expect(response).to render_template 'layouts/two_columns'
         expect(assigns(:organisations)).to eq([double_organisation])
         expect(assigns(:markers)).to eq(markers)
-        expect(assigns(:what_ids)).to eq []
-        expect(assigns(:who_ids)).to eq []
-        expect(assigns(:how_ids)).to eq []
+        expect(assigns(:cat_name_ids)).to eq({what: [], how: [], who: []})
       end
     end
 

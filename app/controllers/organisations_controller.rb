@@ -6,10 +6,7 @@ class OrganisationsController < ApplicationController
 
   def search
     @parsed_params = SearchParamsParser.new(params)
-    @what_ids = Category.what_they_do.pluck(:name, :id)
-    @who_ids = Category.who_they_help.pluck(:name, :id)
-    @how_ids = Category.how_they_help.pluck(:name, :id)
-
+    @cat_name_ids = Category.name_and_id_for_what_who_and_how
     @organisations = Queries::Organisations.search_by_keyword_and_category(
       @parsed_params
     )
@@ -24,9 +21,7 @@ class OrganisationsController < ApplicationController
   def index
     @organisations = Queries::Organisations.order_by_most_recent
     @markers = build_map_markers(@organisations)
-    @what_ids = Category.what_they_do.pluck(:name, :id)
-    @who_ids = Category.who_they_help.pluck(:name, :id)
-    @how_ids = Category.how_they_help.pluck(:name, :id)
+    @cat_name_ids = Category.name_and_id_for_what_who_and_how
   end
 
   # GET /organisations/1
