@@ -427,6 +427,15 @@ Then /^the index should( not)? contain:$/ do |negative, table|
   end
 end
 
+Then /^the organisation results should( not)? contain:$/ do |negative, table|
+  expectation = negative ? :should_not : :should
+  table.raw.flatten.each do |cell|
+    within('#orgs_scroll') do
+      page.send(expectation, have_text(cell))
+    end
+  end
+end
+
 Then(/^I should see "([^"]*)" page before "([^"]*)"$/) do |first_item, second_item|
   page.body.should =~ /#{first_item}.*#{second_item}/m
 end

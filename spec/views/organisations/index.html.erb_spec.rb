@@ -21,10 +21,10 @@ describe "organisations/index.html.erb", :type => :view, :js => true do
   before(:each) do
     assign(:organisations, organisations)
     assign(:results, results)
-    assign(:query_term, 'search')
-    assign(:what_they_do, [['Animal Welfare','1'],['Education','2']])
-    assign(:who_they_help, [['Youth','3'],['Ethnic','4']])
-    assign(:how_they_help, [['Umbrella','5'],['Individual Grants','6']])
+    assign(:current_query_term, 'search')
+    assign(:what_ids, [['Animal Welfare','1'],['Education','2']])
+    assign(:who_ids, [['Youth','3'],['Ethnic','4']])
+    assign(:how_ids, [['Umbrella','5'],['Individual Grants','6']])
     assign(:markers, 'my-markers')
     render
   end
@@ -34,12 +34,12 @@ describe "organisations/index.html.erb", :type => :view, :js => true do
     expect(rendered).to have_selector "form input[type='submit']"
     expect(rendered).to have_selector "form input[value='search']"
     expect(rendered).to have_content "Optional Search Text"
-    expect(rendered).to have_selector "form select[name='what[id]']"
-    expect(rendered).to have_selector "form select[name='what[id]'] option[value='']" do |all_select|
+    expect(rendered).to have_selector "form select[name='what_id']"
+    expect(rendered).to have_selector "form select[name='what_id'] option[value='']" do |all_select|
       expect(all_select).to contain("All")
     end
-    expect(rendered).to have_selector "form select[name='what[id]'] option[value='1']"
-    expect(rendered).to have_selector "form select[name='what[id]'] option[value='2']"
+    expect(rendered).to have_selector "form select[name='what_id'] option[value='1']"
+    expect(rendered).to have_selector "form select[name='what_id'] option[value='2']"
   end
 
   it "render organisation names with hyperlinks" do

@@ -1,11 +1,11 @@
 And /^I select the "(.*?)" category from (How They Help|Who They Help|What They Do)$/ do |category, cat_type|
   cat_id = case cat_type
     when 'What They Do'
-      'what[id]'
+      'what_id'
     when 'How They Help'
-      'how[id]'
+      'how_id'
     when 'Who They Help'
-      'who[id]'
+      'who_id'
     else
       raise "Unsupported category type"
   end
