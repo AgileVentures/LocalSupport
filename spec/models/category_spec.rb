@@ -3,10 +3,24 @@ require 'rails_helper'
 describe 'Category', :type => :model do
 
   context 'scopes' do
+    let!(:category_array){[["education", 100], ["sports", 199], ["children", 200], ["youth", 299], ["advocacy", 300], ["umbrella", 399]]}
     before do
-      [100, 199, 200, 299, 300, 399].each do |charity_commission_id|
-        create(:category, charity_commission_id: charity_commission_id)
+      category_array.each do | name, charity_commission_id |
+        create(:category, charity_commission_id: charity_commission_id, name: name)
       end
+    end
+
+    describe "self.name_and_id_for_what_who_and_how" do
+      subject { Category.name_and_id_for_what_who_and_how }
+      it { expect(subject[:what].count).to eq(2)}
+      it { expect(subject[:who].count).to eq(2) }
+      it { expect(subject[:how].count).to eq(2) }
+      it { expect(subject[:what]).to include [Category.find_by(charity_commission_id: 100).name, Category.find_by(charity_commission_id: 100).id]}
+      it { expect(subject[:what]).to include [Category.find_by(charity_commission_id: 199).name, Category.find_by(charity_commission_id: 199).id]}
+      it { expect(subject[:who]).to include [Category.find_by(charity_commission_id: 200).name, Category.find_by(charity_commission_id: 200).id]}
+      it { expect(subject[:who]).to include [Category.find_by(charity_commission_id: 299).name, Category.find_by(charity_commission_id: 299).id]}
+      it { expect(subject[:how]).to include [Category.find_by(charity_commission_id: 300).name, Category.find_by(charity_commission_id: 300).id]}
+      it { expect(subject[:how]).to include [Category.find_by(charity_commission_id: 399).name, Category.find_by(charity_commission_id: 399).id]}
     end
 
     describe 'self.what_they_do' do
@@ -27,6 +41,7 @@ describe 'Category', :type => :model do
       it { expect(subject.pluck(:charity_commission_id)).to include 300, 399 }
     end
   end
+
 
   context do
     before do

@@ -18,6 +18,14 @@ class Category < ActiveRecord::Base
       name: 'Name'
   }
 
+  def self.name_and_id_for_what_who_and_how
+    {
+      what: self.what_they_do.pluck(:name, :id),
+      who: self.who_they_help.pluck(:name, :id),
+      how: self.how_they_help.pluck(:name, :id)
+    }
+
+  end
   def self.seed(csv_file)
     csv_text = File.open(csv_file, 'r:ISO-8859-1')
     CSV.parse(csv_text, :headers => true).each do |row|
