@@ -5,7 +5,7 @@
         <%= label_tag(:what_id, "What They Do", class: 'field-label') %>
       </div>
       <div class="right-side">
-        <%= select_tag(:what_id, options_for_select(@what_ids, @current_what_id), { :include_blank => 'All' }) %>
+        <%= select_tag(:what_id, options_for_select(@what_ids, @parsed_params.try(:what_id)), { :include_blank => 'All' }) %>
       </div>
     </div>
     <div class="flex-row">
@@ -13,7 +13,7 @@
         <%= label_tag(:who_id, "Who They Help", class: 'field-label') %>
       </div>
       <div class="right-side">
-        <%= select_tag(:who_id, options_for_select(@who_ids, @current_who_id), :include_blank => 'All' ) %>
+        <%= select_tag(:who_id, options_for_select(@who_ids, @parsed_params.try(:who_id)), :include_blank => 'All' ) %>
       </div>
     </div>
     <div class="flex-row">
@@ -21,7 +21,7 @@
         <%= label_tag(:how_id, "How They Help", class: 'field-label') %>
       </div>
       <div class="right-side">
-        <%= select_tag(:how_id, options_for_select(@how_ids, @current_how_id), { :include_blank => 'All' }) %>
+        <%= select_tag(:how_id, options_for_select(@how_ids, @parsed_params.try(:how_id)), { :include_blank => 'All' }) %>
       </div>
     </div>
     <div class="flex-row">
@@ -29,7 +29,7 @@
         <%= label_tag(:q, "Optional Search Text", class: 'field-label') %>
       </div>
       <div class="right-side">
-        <%= text_field_tag(:q, @current_query_term) %>
+        <%= text_field_tag(:q, @parsed_params.try(:query_term)) %>
         <%= submit_tag "Submit", { :class => 'btn btn-info' } %>
       </div>
     </div>

@@ -61,25 +61,25 @@ describe OrganisationsController, :type => :controller do
         expect(Organisation).to receive(:search_by_keyword).with('test').and_return(result)
         expect(result).to receive(:filter_by_categories).with(['1']).and_return(result)
         get :search, { q: 'test' }.merge(category_params).merge("what_id" => "1")
-        expect(assigns(:current_query_term)).to eq 'test'
+        expect(assigns(:parsed_params).query_term).to eq 'test'
       end
 
       it "handles lack of category gracefully" do
         expect(Organisation).to receive(:search_by_keyword).with('test').and_return(result)
         get :search, { q: 'test' }.merge(category_params)
-        expect(assigns(:current_query_term)).to eq 'test'
+        expect(assigns(:parsed_params).query_term).to eq 'test'
       end
 
       it "handles lack of query term gracefully" do
         expect(Organisation).to receive(:search_by_keyword).with("").and_return(result)
         get :search, category_params.merge({q: ''})
-        expect(assigns(:current_query_term)).to eq("")
+        expect(assigns(:parsed_params).query_term).to eq("")
       end
 
       it "handles lack of id gracefully" do
         expect(Organisation).to receive(:search_by_keyword).with('test').and_return(result)
         get :search, { q: 'test' }.merge(category_params)
-        expect(assigns(:current_query_term)).to eq 'test'
+        expect(assigns(:parsed_params).query_term).to eq 'test'
       end
 
       after(:each) do
