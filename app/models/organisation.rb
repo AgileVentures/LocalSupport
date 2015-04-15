@@ -88,30 +88,6 @@ class Organisation < ActiveRecord::Base
       .having(organisation_id.count.eq category_ids.size) # and return the orgs with correct number of duplicates
   end
 
-  def self.table
-    arel_table
-  end
-
-  def self.organisation_id
-    table[:id]
-  end
-
-  def self.category_table
-    Category.arel_table
-  end
-
-  def self.category_id
-    category_table[:id]
-  end
-
-  def self.contains_description?(key)
-    table[:description].matches(key)
-  end
-
-  def self.contains_name?(key)
-    table[:name].matches(key)
-  end
-
   def gmaps4rails_marker_attrs
     if not_updated_recently_or_has_no_owner?
       ['https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png',
@@ -222,5 +198,32 @@ class Organisation < ActiveRecord::Base
   def not_updated_recently_or_has_no_owner?
     self.users.empty? || not_updated_recently?
   end
+
+  private
+  
+  def self.table
+    arel_table
+  end
+
+  def self.organisation_id
+    table[:id]
+  end
+
+  def self.category_table
+    Category.arel_table
+  end
+
+  def self.category_id
+    category_table[:id]
+  end
+
+  def self.contains_description?(key)
+    table[:description].matches(key)
+  end
+
+  def self.contains_name?(key)
+    table[:name].matches(key)
+  end
+
 
 end
