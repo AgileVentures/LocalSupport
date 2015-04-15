@@ -21,7 +21,7 @@ describe "organisations/index.html.erb", :type => :view, :js => true do
   before(:each) do
     assign(:organisations, organisations)
     assign(:results, results)
-    assign(:current_query_term, 'search')
+    assign(:parsed_params, double("ParsedParams", :query_term => 'search'))
     assign(:what_ids, [['Animal Welfare','1'],['Education','2']])
     assign(:who_ids, [['Youth','3'],['Ethnic','4']])
     assign(:how_ids, [['Umbrella','5'],['Individual Grants','6']])
