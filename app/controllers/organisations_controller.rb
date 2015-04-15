@@ -6,11 +6,6 @@ class OrganisationsController < ApplicationController
 
   def search
     @parsed_params = SearchParamsParser.new(params)
-
-    #@current_query_term = parsed_params.query_term
-    #@current_what_id = parsed_params.what_id
-    #@current_how_id = parsed_params.how_id
-    #@current_who_id = parsed_params.who_id
     @what_ids = Category.what_they_do.pluck(:name, :id)
     @who_ids = Category.who_they_help.pluck(:name, :id)
     @how_ids = Category.how_they_help.pluck(:name, :id)
