@@ -1,13 +1,15 @@
-And /^I select the "(.*?)" category from What They Do$/ do |category|
-  select(category, :from => "what[id]")
-end
-
-Given(/^I select the "(.*?)" category from Who They Help$/) do |category|
-  select(category, :from => "who[id]")
-end
-
-Given(/^I select the "(.*?)" category from How They Help$/) do |category|
-  select(category, :from => "how[id]")
+And /^I select the "(.*?)" category from (How They Help|Who They Help|What They Do)$/ do |category, cat_type|
+  cat_id = case cat_type
+    when 'What They Do'
+      'what[id]'
+    when 'How They Help'
+      'how[id]'
+    when 'Who They Help'
+      'who[id]'
+    else
+      raise "Unsupported category type"
+  end
+  select(category, :from => cat_id)
 end
 
 When(/^I visit "(.*?)"$/) do |path|
