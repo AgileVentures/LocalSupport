@@ -1,5 +1,15 @@
-And /^I select the "(.*?)" category$/ do |category|
-  select(category, :from => "category[id]")
+And /^I select the "(.*?)" category from (How They Help|Who They Help|What They Do)$/ do |category, cat_type|
+  cat_id = case cat_type
+    when 'What They Do'
+      'what_id'
+    when 'How They Help'
+      'how_id'
+    when 'Who They Help'
+      'who_id'
+    else
+      raise "Unsupported category type"
+  end
+  select(category, :from => cat_id)
 end
 
 When(/^I visit "(.*?)"$/) do |path|

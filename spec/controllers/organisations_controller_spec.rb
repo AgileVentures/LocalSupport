@@ -30,6 +30,14 @@ describe OrganisationsController, :type => :controller do
 
   describe "GET search" do
 
+    let(:category_params) do
+      {
+        "what_id" => "",
+        "who_id"  => "",
+        "how_id"  => "",
+      }
+    end
+
     context 'setting appropriate view vars for all combinations of input' do
       let!(:double_organisation) { create :organisation }
       let(:markers) { 'my markers' }
@@ -37,51 +45,41 @@ describe OrganisationsController, :type => :controller do
       let(:category) { double('Category') }
       before(:each) do
         expect(controller).to receive(:build_map_markers).and_return(markers)
-        expect(Category).to receive(:html_drop_down_options).and_return(category_html_options)
+        allow(Category).to receive(:what_they_do) { Category.all }
+        allow(Category).to receive(:who_they_help) { Category.all }
+        allow(Category).to receive(:how_they_help) { Category.all }
       end
 
       it "orders search results by most recent" do
         expect(Organisation).to receive(:order_by_most_recent).and_return(result)
-        allow(result).to receive_message_chain(:search_by_keyword, :filter_by_category).with('test').with(nil).and_return(result)
-        get :search, :q => 'test'
+        expect(result).to receive(:search_by_keyword).with('test').and_return(result)
+        get :search, { q: 'test' }.merge(category_params)
         expect(assigns(:organisations)).to eq([double_organisation])
       end
 
       it "sets up appropriate values for view vars: query_term, organisations and markers" do
         expect(Organisation).to receive(:search_by_keyword).with('test').and_return(result)
-        expect(result).to receive(:filter_by_category).with('1').and_return(result)
-        expect(Category).to receive(:find_by_id).with("1").and_return(category)
-        get :search, :q => 'test', "category" => {"id" => "1"}
-        expect(assigns(:query_term)).to eq 'test'
-        expect(assigns(:category)).to eq category
+        expect(result).to receive(:filter_by_categories).with(['1']).and_return(result)
+        get :search, { q: 'test' }.merge(category_params).merge("what_id" => "1")
+        expect(assigns(:parsed_params).query_term).to eq 'test'
       end
 
       it "handles lack of category gracefully" do
         expect(Organisation).to receive(:search_by_keyword).with('test').and_return(result)
-        expect(result).to receive(:filter_by_category).with(nil).and_return(result)
-        get :search, :q => 'test'
-        expect(assigns(:query_term)).to eq 'test'
+        get :search, { q: 'test' }.merge(category_params)
+        expect(assigns(:parsed_params).query_term).to eq 'test'
       end
 
       it "handles lack of query term gracefully" do
-        expect(Organisation).to receive(:search_by_keyword).with(nil).and_return(result)
-        expect(result).to receive(:filter_by_category).with(nil).and_return(result)
-        get :search
-        expect(assigns(:query_term)).to eq nil
+        expect(Organisation).to receive(:search_by_keyword).with("").and_return(result)
+        get :search, category_params.merge({q: ''})
+        expect(assigns(:parsed_params).query_term).to eq("")
       end
 
       it "handles lack of id gracefully" do
         expect(Organisation).to receive(:search_by_keyword).with('test').and_return(result)
-        expect(result).to receive(:filter_by_category).with(nil).and_return(result)
-        get :search, :q => 'test', "category" => nil
-        expect(assigns(:query_term)).to eq 'test'
-      end
-
-      it "handles empty string id gracefully" do
-        expect(Organisation).to receive(:search_by_keyword).with('test').and_return(result)
-        expect(result).to receive(:filter_by_category).with("").and_return(result)
-        get :search, :q => 'test', "category" => {"id" => ""}
-        expect(assigns(:query_term)).to eq 'test'
+        get :search, { q: 'test' }.merge(category_params)
+        expect(assigns(:parsed_params).query_term).to eq 'test'
       end
 
       after(:each) do
@@ -89,9 +87,10 @@ describe OrganisationsController, :type => :controller do
         expect(response).to render_template 'layouts/two_columns'
         expect(assigns(:organisations)).to eq([double_organisation])
         expect(assigns(:markers)).to eq(markers)
-        expect(assigns(:category_options)).to eq category_html_options
+        expect(assigns(:cat_name_ids)).to eq({what: [], how: [], who: []})
       end
     end
+
     # TODO figure out how to make this less messy
     it "assigns to flash.now but not flash when search returns no results" do
       expect(controller).to receive(:build_map_markers).and_return('my markers')
@@ -99,13 +98,12 @@ describe OrganisationsController, :type => :controller do
       result = Organisation.all
       expect(result).to receive(:empty?).and_return(true)
       expect(Organisation).to receive(:search_by_keyword).with('no results').and_return(result)
-      expect(result).to receive(:filter_by_category).with('1').and_return(result)
+      expect(result).to receive(:filter_by_categories).with(['1']).and_return(result)
       category = double('Category')
-      expect(Category).to receive(:find_by_id).with("1").and_return(category)
       expect_any_instance_of(ActionDispatch::Flash::FlashHash).to receive(:now).and_return double_now_flash
       expect_any_instance_of(ActionDispatch::Flash::FlashHash).not_to receive(:[]=)
       expect(double_now_flash).to receive(:[]=).with(:alert, SEARCH_NOT_FOUND)
-      get :search, :q => 'no results', "category" => {"id" => "1"}
+      get :search, { q: 'no results' }.merge(category_params).merge("what_id" => "1")
     end
 
     it "does not set up flash nor flash.now when search returns results" do
@@ -114,10 +112,9 @@ describe OrganisationsController, :type => :controller do
       expect(controller).to receive(:build_map_markers).and_return(markers)
       expect(result).to receive(:empty?).and_return(false)
       expect(Organisation).to receive(:search_by_keyword).with('some results').and_return(result)
-      expect(result).to receive(:filter_by_category).with('1').and_return(result)
+      expect(result).to receive(:filter_by_categories).with(['1']).and_return(result)
       category = double('Category')
-      expect(Category).to receive(:find_by_id).with("1").and_return(category)
-      get :search, :q => 'some results', "category" => {"id" => "1"}
+      get :search, { q: 'some results' }.merge(category_params).merge("what_id" => "1")
       expect(flash.now[:alert]).to be_nil
       expect(flash[:alert]).to be_nil
     end
@@ -128,7 +125,6 @@ describe OrganisationsController, :type => :controller do
       result = Organisation.all
       markers='my markers'
       expect(controller).to receive(:build_map_markers).and_return(markers)
-      expect(Category).to receive(:html_drop_down_options).and_return(category_html_options)
       expect(Organisation).to receive(:order_by_most_recent).and_return(result)
       get :index
       expect(assigns(:organisations)).to eq(result)

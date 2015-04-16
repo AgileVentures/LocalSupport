@@ -4,12 +4,28 @@ class Category < ActiveRecord::Base
   has_many :category_organisations
   has_and_belongs_to_many :organisations
 
+  scope :what_they_do,  -> { subcategory(100, 199) }
+  scope :who_they_help, -> { subcategory(200, 299) }
+  scope :how_they_help, -> { subcategory(300, 399) }
+
+  def self.subcategory(lower, upper)
+    where(charity_commission_id: lower..upper).order(name: :asc)
+  end
+
   @@column_mappings = {
       cc_id: 'CharityCommissionID',
       cc_name: 'CharityCommissionName',
       name: 'Name'
   }
 
+  def self.name_and_id_for_what_who_and_how
+    {
+      what: self.what_they_do.pluck(:name, :id),
+      who: self.who_they_help.pluck(:name, :id),
+      how: self.how_they_help.pluck(:name, :id)
+    }
+
+  end
   def self.seed(csv_file)
     csv_text = File.open(csv_file, 'r:ISO-8859-1')
     CSV.parse(csv_text, :headers => true).each do |row|
@@ -17,10 +33,6 @@ class Category < ActiveRecord::Base
                        :charity_commission_id => row[@@column_mappings[:cc_id]],
                        :charity_commission_name => row[@@column_mappings[:cc_name]].strip
     end
-  end
-
-  def self.html_drop_down_options
-    self.where('charity_commission_id < 199').order('name ASC').collect {|category| [ category.name, category.id ] }
   end
 
   def self.first_category_name_in_each_type

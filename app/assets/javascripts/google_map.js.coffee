@@ -6,6 +6,8 @@
 //= require google_map/map_settings
 
 class LocalSupport.GoogleMap
+  container_padding: 6 * 2
+
   marker_data: ->
     $("#marker_data").data().markers
 
@@ -28,4 +30,6 @@ class LocalSupport.GoogleMap
 $ ->
   settings = LocalSupport.MapSettings().for google
   map = new LocalSupport.GoogleMap()
+  height = if (400 > ($('#content').height() - map.container_padding)) then 400 else ($('#content').height() - map.container_padding)
+  $('#map_canvas').height(height)
   map.build settings
