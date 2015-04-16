@@ -21,23 +21,24 @@ describe "organisations/index.html.erb", :type => :view, :js => true do
   before(:each) do
     assign(:organisations, organisations)
     assign(:results, results)
-    assign(:query_term,'search')
-    assign(:category_options, [['Animal Welfare','1'],['Education','2']])
+    assign(:parsed_params, double("ParsedParams", :query_term => 'search'))
+    assign(:cat_name_ids, {what: [['Animal Welfare','1'],['Education','2']],
+      who: [['Youth','3'],['Ethnic','4']], how: [['Umbrella','5'],['Individual Grants','6']]})
     assign(:markers, 'my-markers')
     render
   end
 
-  it "renders a search form" do
+  it "renders a search form for delivering subcategory-specific params to the controller" do
     expect(rendered).to have_selector "form input[name='q']"
     expect(rendered).to have_selector "form input[type='submit']"
     expect(rendered).to have_selector "form input[value='search']"
-    expect(rendered).to have_selector "form input[placeholder='optional search name/description']"
-    expect(rendered).to have_selector "form select[name='category[id]']"
-    expect(rendered).to have_selector "form select[name='category[id]'] option[value='']" do |all_select|
+    expect(rendered).to have_content "Optional Search Text"
+    expect(rendered).to have_selector "form select[name='what_id']"
+    expect(rendered).to have_selector "form select[name='what_id'] option[value='']" do |all_select|
       expect(all_select).to contain("All")
     end
-    expect(rendered).to have_selector "form select[name='category[id]'] option[value='1']"
-    expect(rendered).to have_selector "form select[name='category[id]'] option[value='2']"
+    expect(rendered).to have_selector "form select[name='what_id'] option[value='1']"
+    expect(rendered).to have_selector "form select[name='what_id'] option[value='2']"
   end
 
   it "render organisation names with hyperlinks" do
