@@ -83,11 +83,18 @@ describe Organisation, :type => :model do
           {"data-id"=>@org1.id,:class=>"marker"}])
       end
 
-      [365, 366, 500].each do |days|
+      [ 365, 366, 500 ].each do |days|
         it "returns small icon when update is #{days} days old" do
-          past_time = Time.at(Time.now - days.day)
-          expect(build_org_with_computed_fields_and_updated_at(@org1, past_time).gmaps4rails_marker_attrs).to eq(["https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png",
-            {"data-id"=>@org1.id, :class=>"measle"}])
+          # adds generous 5 second pad for query to run
+          past_time = Time.current.advance(days: -days).advance(seconds: -5)
+          expect(
+            build_org_with_computed_fields_and_updated_at(
+              @org1, past_time
+            ).gmaps4rails_marker_attrs
+          ).to eq([
+            "https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png",
+            {"data-id"=>@org1.id, :class=>"measle"}
+          ])
         end
       end
       [ 2, 100, 200, 364].each do |days|
