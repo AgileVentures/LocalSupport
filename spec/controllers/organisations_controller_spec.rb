@@ -155,9 +155,8 @@ describe OrganisationsController, :type => :controller do
       markers='my markers'
       @org = real_org
       expect(controller).to receive(:build_map_markers).and_return(markers)
-      expect(Organisation).to receive(:find).with('37') { @org }
       get :show, :id => real_org.id.to_s
-      expect(assigns(:organisation)).to be(real_org)
+      expect(assigns(:organisation)).to eq(real_org)
       expect(assigns(:markers)).to eq(markers)
     end
 
@@ -186,19 +185,19 @@ describe OrganisationsController, :type => :controller do
         allow(@user).to receive(:can_edit?)
         expect(@user).to receive(:can_request_org_admin?).with(real_org).and_return(true)
         allow(controller).to receive(:current_user).and_return(@user)
-        get :show, :id => 37
+        get :show, :id => real_org.id.to_s
         expect(assigns(:grabbable)).to be(true)
       end
       it 'assigns grabbable to false when user cannot request org superadmin status' do
         allow(@user).to receive(:can_edit?)
         expect(@user).to receive(:can_request_org_admin?).with(real_org).and_return(false)
         allow(controller).to receive(:current_user).and_return(@user)
-        get :show, :id => 37
+        get :show, :id => real_org.id.to_s
         expect(assigns(:grabbable)).to be(false)
       end
       it 'when not signed in grabbable flag is true' do
         allow(controller).to receive(:current_user).and_return(nil)
-        get :show, :id => 37
+        get :show, :id => real_org.id.to_s
         expect(assigns(:grabbable)).to be true
       end
     end
