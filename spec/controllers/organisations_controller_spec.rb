@@ -15,8 +15,9 @@ describe OrganisationsController, :type => :controller do
 
   describe "#build_map_markers" do
     render_views
-    let(:org) { create :organisation }
-    subject { JSON.parse(controller.send(:build_map_markers, org)).first }
+    let!(:org) { create :organisation }
+    let(:org_relation){Organisation.all}
+    subject { JSON.parse(controller.send(:build_map_markers, org_relation)).first }
     it { expect(subject['lat']).to eq org.latitude }
     it { expect(subject['lng']).to eq org.longitude }
     it { expect(subject['infowindow']).to include org.id.to_s }
@@ -24,7 +25,7 @@ describe OrganisationsController, :type => :controller do
     it { expect(subject['infowindow']).to include org.description }
     context 'markers without coords omitted' do
       let!(:org) { create :organisation, address: '150 pinner rd', latitude: nil, longitude: nil }
-      it { expect(JSON.parse(controller.send(:build_map_markers, org))).to be_empty }
+      it { expect(JSON.parse(controller.send(:build_map_markers, org_relation))).to be_empty }
     end
   end
 
@@ -138,7 +139,7 @@ describe OrganisationsController, :type => :controller do
     before(:each) do
       @user = double("User")
       allow(@user).to receive(:pending_org_admin?)
-      allow(Organisation).to receive(:find).with('37') { real_org}
+      allow(Organisation).to receive(:where).with(id: '37') { Organisation.where(id: '37')}
       allow(@user).to receive(:can_edit?)
       allow(@user).to receive(:can_delete?)
       allow(@user).to receive(:can_create_volunteer_ops?)
