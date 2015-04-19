@@ -2,8 +2,10 @@ require 'webmock/cucumber'
 require 'uri-handler'
 include ApplicationHelper
 
-Then(/^I travel "(.*?)" days into the future$/) do |days|
-  Delorean.time_travel_to "#{days} days from now"
+Then(/^I travel a year plus "(.*?)" days into the future$/) do |days|
+  Timecop.travel(
+    Time.current.advance(years: 1, days: days.to_i)
+  )
 end
 Then(/^I should see the "(.*?)" image linked to "(.*?)"$/) do |image_alt, link|
   within("a[href='#{link}']") do

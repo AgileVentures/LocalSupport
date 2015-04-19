@@ -13,7 +13,7 @@ require 'cucumber/rspec/doubles'
 require 'rack_session_access/capybara'
 require 'factory_girl_rails'
 require 'aruba/cucumber'
-require 'delorean'
+require 'timecop'
 Dir['../../spec/factories/*.rb'].each {|file| require_relative file }
 
 # https://github.com/jnicklas/capybara/commit/4f805d5a1c42da29ed32ab0371e24add2dc08af1
@@ -94,5 +94,5 @@ After('@in-production') do
 end
 
 After('@time_travel') do
-  Delorean.back_to_1985
+  Timecop.return
 end
