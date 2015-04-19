@@ -20,8 +20,12 @@ module Queries
       end
     end
 
+    FORMAT = '%Y-%m-%d %H:%M:%S.%N'
+
     def self.xyz(organisations)
-      recently_updated = "organisations.updated_at > now() - interval '1 year'"
+      one_year_ago = Time.current.advance(years: -1)
+      recently_updated = "organisations.updated_at > '#{one_year_ago.strftime(FORMAT)}'"
+      # recently_updated = "organisations.updated_at > #{one_year_ago.strftime}"
       has_owner = "organisations.id IN (users.organisation_id)"
       condition =
         "CASE WHEN #{recently_updated} AND #{has_owner} THEN TRUE ELSE FALSE END"

@@ -34,7 +34,7 @@ Feature: Map of local charities
     Given I travel "<days>" days into the future
     And I visit the home page
     Then the organisation "Youth UK" should have a <size> icon
-    Examples: 
+    Examples:
       |days  | size |
       | 2    | large|
       |100   | large|
