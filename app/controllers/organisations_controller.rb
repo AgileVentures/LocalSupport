@@ -48,8 +48,9 @@ class OrganisationsController < ApplicationController
 
   # GET /organisations/1/edit
   def edit
-    @organisation = Organisation.find(params[:id])
-    @markers = build_map_markers([@organisation])
+    org_relation = Organisation.where(id: params[:id])
+    @organisation = org_relation.first
+    @markers = build_map_markers(org_relation)
     @categories_start_with = Category.first_category_name_in_each_type
     return false unless user_can_edit? @organisation
     #respond_to do |format|
