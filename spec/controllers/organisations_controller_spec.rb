@@ -139,7 +139,6 @@ describe OrganisationsController, :type => :controller do
     before(:each) do
       @user = double("User")
       allow(@user).to receive(:pending_org_admin?)
-      allow(Organisation).to receive(:where).with(id: '37') { Organisation.where(id: '37')}
       allow(@user).to receive(:can_edit?)
       allow(@user).to receive(:can_delete?)
       allow(@user).to receive(:can_create_volunteer_ops?)
@@ -148,7 +147,7 @@ describe OrganisationsController, :type => :controller do
     end
 
     it 'should use a two_column layout' do
-      get :show, :id => '37'
+      get :show, :id => real_org.id.to_s
       expect(response).to render_template 'layouts/two_columns'
     end
 
@@ -157,7 +156,7 @@ describe OrganisationsController, :type => :controller do
       @org = real_org
       expect(controller).to receive(:build_map_markers).and_return(markers)
       expect(Organisation).to receive(:find).with('37') { @org }
-      get :show, :id => '37'
+      get :show, :id => real_org.id.to_s
       expect(assigns(:organisation)).to be(real_org)
       expect(assigns(:markers)).to eq(markers)
     end
@@ -165,19 +164,19 @@ describe OrganisationsController, :type => :controller do
     context "editable flag is assigned to match user permission" do
       it "user with permission leads to editable flag true" do
         expect(@user).to receive(:can_edit?).with(real_org).and_return(true)
-        get :show, :id => 37
+        get :show, id: real_org.id.to_s
         expect(assigns(:editable)).to be(true)
       end
 
       it "user without permission leads to editable flag false" do
         expect(@user).to receive(:can_edit?).with(real_org).and_return(true)
-        get :show, :id => 37
+        get :show, id: real_org.id.to_s
         expect(assigns(:editable)).to be(true)
       end
 
       it 'when not signed in editable flag is nil' do
         allow(controller).to receive(:current_user).and_return(nil)
-        get :show, :id => 37
+        get :show, id: real_org.id.to_s
         expect(assigns(:editable)).to be_nil
       end
     end
