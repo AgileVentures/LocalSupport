@@ -206,13 +206,13 @@ describe OrganisationsController, :type => :controller do
       context 'depends on can_create_volunteer_ops?' do
         it 'true' do
           expect(@user).to receive(:can_create_volunteer_ops?) { true }
-          get :show, :id => 37
+          get :show, :id => real_org.id.to_s
           expect(assigns(:can_create_volunteer_op)).to be true
         end
 
         it 'false' do
           expect(@user).to receive(:can_create_volunteer_ops?) { false }
-          get :show, :id => 37
+          get :show, :id => real_org.id.to_s
           expect(assigns(:can_create_volunteer_op)).to be false
         end
       end
@@ -220,7 +220,7 @@ describe OrganisationsController, :type => :controller do
       it 'will not be called when current user is nil' do
         allow(controller).to receive_messages current_user: nil
         expect(@user).not_to receive :can_create_volunteer_ops?
-        get :show, :id => 37
+        get :show, :id => real_org.id.to_s
         expect(assigns(:can_create_volunteer_op)).to be nil
       end
     end

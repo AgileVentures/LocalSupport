@@ -35,7 +35,7 @@ class Organisation < ActiveRecord::Base
   after_save :uninvite_users, if: ->{ email_changed? }
 
   def not_updated_recently?
-    updated_at < 365.day.ago
+    updated_at < 1.year.ago
   end
 
   def uninvite_users

@@ -27,8 +27,7 @@ class OrganisationsController < ApplicationController
   # GET /organisations/1
   # GET /organisations/1.json
   def show
-    org_relation = Organisation.where(id: params[:id])
-    @organisation = org_relation.first
+    @organisation = Organisation.find(params[:id])
     @pending_org_admin = current_user.pending_org_admin? @organisation if current_user
     @editable = current_user.can_edit?(@organisation) if current_user
     @deletable = current_user.can_delete?(@organisation) if current_user
@@ -36,7 +35,7 @@ class OrganisationsController < ApplicationController
     @grabbable = current_user ? current_user.can_request_org_admin?(@organisation) : true
     @can_propose_edits = current_user.present? && !@editable
    # @next_path = current_user ? organisation_user_path(@organisation.id, current_user.id) : new_user_session_path
-    @markers = build_map_markers(org_relation)
+    @markers = build_map_markers([@organisation])
   end
 
   # GET /organisations/new
@@ -48,9 +47,8 @@ class OrganisationsController < ApplicationController
 
   # GET /organisations/1/edit
   def edit
-    org_relation = Organisation.where(id: params[:id])
-    @organisation = org_relation.first
-    @markers = build_map_markers(org_relation)
+    @organisation = Organisation.find(params[:id])
+    @markers = build_map_markers([@organisation])
     @categories_start_with = Category.first_category_name_in_each_type
     return false unless user_can_edit? @organisation
     #respond_to do |format|

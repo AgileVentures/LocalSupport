@@ -23,6 +23,16 @@ module Queries
     FORMAT = '%Y-%m-%d %H:%M:%S.%N'
 
     def self.xyz(organisations)
+      if organisations.method(:select).arity == 0
+        organisations.each do |o|
+          o.instance_eval %{
+            def recently_updated_and_has_owner
+              !not_updated_recently? && !self.users.empty?
+            end
+         }
+        end
+        return organisations
+      end
       one_year_ago = Time.current.advance(years: -1)
       recently_updated = "organisations.updated_at > '#{one_year_ago.strftime(FORMAT)}'"
       # recently_updated = "organisations.updated_at > #{one_year_ago.strftime}"
