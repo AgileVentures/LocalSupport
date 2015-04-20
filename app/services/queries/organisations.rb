@@ -26,11 +26,10 @@ module Queries
       one_year_ago = Time.current.advance(years: -1)
       recently_updated = "organisations.updated_at > '#{one_year_ago.strftime(FORMAT)}'"
       # recently_updated = "organisations.updated_at > #{one_year_ago.strftime}"
-      has_owner = "organisations.id IN (users.organisation_id)"
+      has_owner = "organisations.id IN (SELECT users.organisation_id FROM users)"
       condition =
         "CASE WHEN #{recently_updated} AND #{has_owner} THEN TRUE ELSE FALSE END"
       organisations
-        .joins('LEFT OUTER JOIN users on users.organisation_id = organisations.id')
         .select("organisations.*, (#{condition}) as recently_updated_and_has_owner")
     end
 
