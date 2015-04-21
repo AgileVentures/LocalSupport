@@ -22,7 +22,7 @@ module Queries
 
     FORMAT = '%Y-%m-%d %H:%M:%S.%N'
 
-    def self.xyz(organisations)
+    def self.add_recently_updated_and_has_owner(organisations)
       if organisations.method(:select).arity == 0
         organisations.each do |o|
           o.instance_eval %{

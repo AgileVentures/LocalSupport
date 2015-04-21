@@ -62,7 +62,7 @@ describe Organisation, :type => :model do
 
     def build_org_with_computed_fields_and_updated_at org, updated_at = nil
       org.update_attributes(updated_at: updated_at) unless updated_at.nil?
-      Queries::Organisations.xyz(Organisation.where(id: org.id)).first
+      Queries::Organisations.add_recently_updated_and_has_owner(Organisation.where(id: org.id)).first
     end
     context 'no user' do
       it 'returns small icon when no associated user' do
