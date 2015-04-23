@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150125154920) do
+ActiveRecord::Schema.define(version: 20150423160344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "categories", force: true do |t|
+  create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.integer  "charity_commission_id"
     t.string   "charity_commission_name"
@@ -24,17 +24,17 @@ ActiveRecord::Schema.define(version: 20150125154920) do
     t.datetime "updated_at"
   end
 
-  create_table "categories_organisations", force: true do |t|
+  create_table "categories_organisations", force: :cascade do |t|
     t.integer "category_id"
     t.integer "organisation_id"
   end
 
-  create_table "features", force: true do |t|
+  create_table "features", force: :cascade do |t|
     t.string  "name"
     t.boolean "active", default: false
   end
 
-  create_table "organisations", force: true do |t|
+  create_table "organisations", force: :cascade do |t|
     t.string   "name",            default: "",    null: false
     t.string   "address",         default: "",    null: false
     t.string   "postcode",        default: "",    null: false
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20150125154920) do
     t.datetime "deleted_at"
   end
 
-  create_table "pages", force: true do |t|
+  create_table "pages", force: :cascade do |t|
     t.string   "name"
     t.string   "permalink"
     t.text     "content"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20150125154920) do
 
   add_index "pages", ["permalink"], name: "index_pages_on_permalink", using: :btree
 
-  create_table "proposed_organisation_edits", force: true do |t|
+  create_table "proposed_organisation_edits", force: :cascade do |t|
     t.integer  "organisation_id"
     t.string   "name",            default: "",    null: false
     t.string   "address",         default: "",    null: false
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20150125154920) do
   add_index "proposed_organisation_edits", ["deleted_at"], name: "index_proposed_organisation_edits_on_deleted_at", using: :btree
   add_index "proposed_organisation_edits", ["user_id"], name: "index_proposed_organisation_edits_on_user_id", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                   default: "",    null: false
     t.string   "encrypted_password",      default: ""
     t.string   "reset_password_token"
@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(version: 20150125154920) do
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "volunteer_ops", force: true do |t|
+  create_table "volunteer_ops", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.integer  "organisation_id"
