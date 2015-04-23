@@ -1,31 +1,55 @@
-<%= form_tag("/organisations/search", :method => "get") do %>
-  <%= label_tag(:q, "Select Category:") %>
-  <%= select("category", "id", @category_options, { :include_blank => 'All' },
-             { :style => 'margin-bottom: 5px;' }) %>
-  <%= submit_tag "Submit", { :class => 'btn btn-info',
-                             :style => 'margin-bottom: 5px;' } %>
-  <%= text_field_tag(:q, @query_term || '',
-                     { :style => 'margin-bottom: 5px; width: 240px;',
-                       :placeholder => "optional search name/description" }) %>
+<%= form_tag("/organisations/search", :id => "organisation_search", :method => "get") do %>
+  <div class="flex-column">
+    <div class="flex-row">
+      <div class="left-side">
+        <%= label_tag(:what_id, "What They Do", class: 'field-label') %>
+      </div>
+      <div class="right-side">
+        <%= select_tag(:what_id, options_for_select(@cat_name_ids[:what], @parsed_params.try(:what_id)), { :include_blank => 'All' }) %>
+      </div>
+    </div>
+    <div class="flex-row">
+      <div class="left-side">
+        <%= label_tag(:who_id, "Who They Help", class: 'field-label') %>
+      </div>
+      <div class="right-side">
+        <%= select_tag(:who_id, options_for_select(@cat_name_ids[:who], @parsed_params.try(:who_id)), :include_blank => 'All' ) %>
+      </div>
+    </div>
+    <div class="flex-row">
+      <div class="left-side">
+        <%= label_tag(:how_id, "How They Help", class: 'field-label') %>
+      </div>
+      <div class="right-side">
+        <%= select_tag(:how_id, options_for_select(@cat_name_ids[:how], @parsed_params.try(:how_id)), { :include_blank => 'All' }) %>
+      </div>
+    </div>
+    <div class="flex-row">
+      <div class="left-side">
+        <%= label_tag(:q, "Optional Search Text", class: 'field-label') %>
+      </div>
+      <div class="right-side">
+        <%= text_field_tag(:q, @parsed_params.try(:query_term)) %>
+        <%= submit_tag "Submit", { :class => 'btn btn-info' } %>
+      </div>
+    </div>
+  </div>
 <% end %>
 
-<div id="orgs_scroll" style="height:340px;width:100%;border:1px solid #ccc;overflow:scroll;">
-  <div class="table table-bordered">
+<div id="orgs_scroll">
+  <div class="table">
     <table>
-      <div id="organisations">
-        <% @organisations.each do |organisation| %>
-          <tr>
-            <td>
-              <u><%= link_to organisation.name, organisation %></u><br/>
-              <%= smart_truncate(organisation.description) %>
-            </td>
-          </tr>
-        <% end %>
-      </div>
+      <% @organisations.each do |organisation| %>
+        <tr>
+          <td>
+            <u><%= link_to organisation.name, organisation %></u><br/>
+            <%= smart_truncate(organisation.description) %>
+          </td>
+        </tr>
+      <% end %>
     </table>
   </div>
 </div>
-<br/>
 
 <div style="width:50%;float:left">
   <%= link_to_if(current_user.try(:superadmin?), 'Add Organisation',

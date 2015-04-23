@@ -5,6 +5,14 @@
   <meta name="description" content="Harrow Community Network is a service provided by Voluntary Action Harrow to help people find voluntary services in their local community" />
   <meta name="keywords" content="Harrow, Community, Network, volunteer, volunteering, voluntary, organisations, causes" />
   <meta name="google-site-verification" content="NnSd82Tg3wYtm75gYpDTcnfe5HzS5T38cU7oPDRlTD0" />
+
+  <meta name="application-name" content="LocalSupport">
+
+  <meta property="og:title" content="<%= content_for?(:title) ? yield(:title) : 'Harrow Community Network' %>"/>
+  <meta property="og:url" content="<%= request.original_url %>"/>
+  <meta property="og:site_name" content="Harrow Community Network"/>
+  <meta property="og:description" content="Harrow Community Network is a service provided by Voluntary Action Harrow to help people find voluntary services in their local community">
+
   <title><%= content_for?(:title) ? yield(:title) : "Harrow Community Network" %> </title>
   <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>

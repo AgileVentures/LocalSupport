@@ -5,23 +5,23 @@ class OrganisationsController < ApplicationController
   before_filter :authenticate_user!, :except => [:search, :index, :show]
 
   def search
-    @query_term = params[:q]
-    @category_id = params.try(:[],'category').try(:[],'id')
-    @category = Category.find_by_id(@category_id)
-    @organisations = Organisation.includes(:users).order_by_most_recent
-    @organisations = @organisations.search_by_keyword(@query_term).filter_by_category(@category_id)
+    @parsed_params = SearchParamsParser.new(params)
+    @cat_name_ids = Category.name_and_id_for_what_who_and_how
+    @organisations = Queries::Organisations.search_by_keyword_and_category(
+      @parsed_params
+    )
     flash.now[:alert] = SEARCH_NOT_FOUND if @organisations.empty?
     @markers = build_map_markers(@organisations)
-    @category_options = Category.html_drop_down_options
+
     render :template =>'organisations/index'
   end
 
   # GET /organisations
   # GET /organisations.json
   def index
-    @organisations = Organisation.includes(:users).order_by_most_recent
+    @organisations = Queries::Organisations.order_by_most_recent
     @markers = build_map_markers(@organisations)
-    @category_options = Category.html_drop_down_options
+    @cat_name_ids = Category.name_and_id_for_what_who_and_how
   end
 
   # GET /organisations/1
@@ -104,11 +104,23 @@ class OrganisationsController < ApplicationController
     redirect_to organisations_path
   end
 
-class OrganisationParams 
+  class OrganisationParams
     def self.build params
-      params.require(:organisation).permit( :superadmin_email_to_add, :description, :address, :publish_address, :postcode, :email, 
-                     :publish_email, :website, :publish_phone, :donation_info, :name, :telephone,
-                     category_organisations_attributes: [:_destroy, :category_id, :id])
+      params.require(:organisation).permit(
+        :superadmin_email_to_add,
+        :description,
+        :address,
+        :publish_address,
+        :postcode,
+        :email,
+        :publish_email,
+        :website,
+        :publish_phone,
+        :donation_info,
+        :name,
+        :telephone,
+        category_organisations_attributes: [:_destroy, :category_id, :id]
+      )
     end
   end
 
@@ -137,4 +149,6 @@ class OrganisationParams
     end
     true
   end
+
+
 end
