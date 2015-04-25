@@ -23,7 +23,7 @@ describe "organisations/index.html.erb", :type => :view, :js => true do
     assign(:results, results)
     assign(:parsed_params, double("ParsedParams", :query_term => 'search'))
     assign(:cat_name_ids, {what: [['Animal Welfare','1'],['Education','2']],
-      who: [['Youth','3'],['Ethnic','4']], how: [['Umbrella','5'],['Individual Grants','6']]})
+      who: [['Youth','3'],['Ethnic Minorities','4']], how: [['Umbrella','5'],['Individual Grants','6']]})
     assign(:markers, 'my-markers')
     render
   end
