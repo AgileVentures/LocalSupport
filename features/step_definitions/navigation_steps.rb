@@ -23,6 +23,7 @@ def paths(location)
       'sign in' => new_user_session_path,
       'organisations index' => organisations_path,
       'new organisation' => new_organisation_path,
+      'new proposed organisation' => new_proposed_organisation_path,
       'contributors' => contributors_path,
       'password reset' => edit_user_password_path,
       'invitation' => accept_user_invitation_path,

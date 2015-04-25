@@ -6,11 +6,8 @@ class String
   end
 end
 
-class Organisation < ActiveRecord::Base
+class Organisation < BaseOrganisation
   #validates_presence_of :website, :with => /http:\/\//
-  acts_as_paranoid
-  validates_url :website, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.website.present?}
-  validates_url :donation_info, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.donation_info.present?}
 
   # 
   has_many :users
@@ -24,7 +21,7 @@ class Organisation < ActiveRecord::Base
   accepts_nested_attributes_for :users
   accepts_nested_attributes_for :category_organisations,
                                 :allow_destroy => true
-  scope :order_by_most_recent, -> { order('organisations.updated_at DESC') }
+  scope :order_by_most_recent, -> { order('base_organisations.updated_at DESC') }
   scope :not_null_email, lambda {where("organisations.email <> ''")}
   # Should we not use :includes, which pulls in extra data? http://nlingutla.com/blog/2013/04/21/includes-vs-joins-in-rails/
   # Alternative => :joins('LEFT OUTER JOIN users ON users.organisation_id = organisations.id)
