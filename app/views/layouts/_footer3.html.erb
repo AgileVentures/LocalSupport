@@ -1,6 +1,7 @@
 <footer class="footer">
   <p class="text-right"><small>
     <%= link_to_if(current_user.try(:superadmin?), 'New Organisation',new_organisation_path){} %> |
+    <%= link_to_unless(current_user.try(:superadmin?),"Add Organisation", new_proposed_organisation_path){}%> |
     <% @footer_page_links.each do |link|  %>
         <%= link_to_unless_current link[:name], page_path(link[:permalink]) %> |
     <% end %>

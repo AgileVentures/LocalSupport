@@ -1,0 +1,3 @@
+class ProposedOrganisation < BaseOrganisation
+
+end

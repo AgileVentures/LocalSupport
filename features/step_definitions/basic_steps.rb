@@ -97,6 +97,14 @@ Given (/^I fill in the new charity page validly including the categories:$/) do 
   fill_in 'organisation_address', :with => '64 pinner road'
   fill_in 'organisation_name', :with => 'Friendly charity'
 end
+Given (/^I fill in the proposed charity page validly including the categories:$/) do |categories_table|
+  categories_table.hashes.each do |cat|
+    steps %Q{
+      And I check the category "#{cat[:name]}"
+    }
+  end
+  fill_in 'proposed_organisation_name', :with => 'Friendly charity'
+end
 
 Then /^the contact information should be available$/ do
   steps %Q{
