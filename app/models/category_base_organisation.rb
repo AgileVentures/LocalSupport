@@ -1,7 +1,7 @@
-class CategoryOrganisation < ActiveRecord::Base
+class CategoryBaseOrganisation < ActiveRecord::Base
   belongs_to :category
   belongs_to :organisation
-  self.table_name = 'categories_organisations'
+  self.table_name = 'categories_base_organisations'
 
   def <=> other
     self.category <=> other.category

@@ -119,7 +119,7 @@ class OrganisationsController < ApplicationController
         :donation_info,
         :name,
         :telephone,
-        category_organisations_attributes: [:_destroy, :category_id, :id]
+        category_base_organisations_attributes: [:_destroy, :category_id, :id]
       )
     end
   end

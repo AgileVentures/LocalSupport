@@ -75,8 +75,8 @@ describe 'Category', :type => :model do
     end
 
     it 'has and belongs to many organisations' do
-      expect(@category1.organisations).to include(@org2)
-      expect(@category1.organisations).to include(@org3)
+      expect(@category1.base_organisations).to include(@org2)
+      expect(@category1.base_organisations).to include(@org3)
     end
 
     it 'should have a seed method' do
