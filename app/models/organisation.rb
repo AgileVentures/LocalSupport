@@ -22,12 +22,12 @@ class Organisation < BaseOrganisation
   accepts_nested_attributes_for :category_organisations,
                                 :allow_destroy => true
   scope :order_by_most_recent, -> { order('base_organisations.updated_at DESC') }
-  scope :not_null_email, lambda {where("organisations.email <> ''")}
+  scope :not_null_email, lambda {where("base_organisations.email <> ''")}
   # Should we not use :includes, which pulls in extra data? http://nlingutla.com/blog/2013/04/21/includes-vs-joins-in-rails/
   # Alternative => :joins('LEFT OUTER JOIN users ON users.organisation_id = organisations.id)
   # Difference between inner and outer joins: http://stackoverflow.com/a/38578/2197402
   scope :null_users, lambda { includes(:users).where("users.organisation_id IS NULL").references(:users) }
-  scope :without_matching_user_emails, lambda {where("organisations.email NOT IN (#{User.select('email').to_sql})")}
+  scope :without_matching_user_emails, lambda {where("base_organisations.email NOT IN (#{User.select('email').to_sql})")}
 
   after_save :uninvite_users, if: ->{ email_changed? }
 
