@@ -8,19 +8,13 @@ end
 
 class Organisation < BaseOrganisation
   #validates_presence_of :website, :with => /http:\/\//
-
-  # 
   has_many :users
   has_many :volunteer_ops
-  has_many :category_organisations
   has_many :edits, class_name: 'ProposedOrganisationEdit', :dependent => :destroy
-  has_many :categories, :through => :category_organisations
   # Setup accessible (or protected) attributes for your model
   # prevents mass assignment on other fields not in this list
   #attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info, :publish_address, :publish_phone, :publish_email, :category_organisations_attributes
   accepts_nested_attributes_for :users
-  accepts_nested_attributes_for :category_organisations,
-                                :allow_destroy => true
   scope :order_by_most_recent, -> { order('base_organisations.updated_at DESC') }
   scope :not_null_email, lambda {where("base_organisations.email <> ''")}
   # Should we not use :includes, which pulls in extra data? http://nlingutla.com/blog/2013/04/21/includes-vs-joins-in-rails/
