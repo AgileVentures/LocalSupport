@@ -2,7 +2,7 @@ require 'csv'
 
 class Category < ActiveRecord::Base
   has_many :category_base_organisations
-  has_and_belongs_to_manymany :base_organisations
+  has_and_belongs_to_many :base_organisations, join_table: :categories_base_organisations
 
   scope :what_they_do,  -> { subcategory(100, 199) }
   scope :who_they_help, -> { subcategory(200, 299) }
