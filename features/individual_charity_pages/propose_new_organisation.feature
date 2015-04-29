@@ -38,5 +38,6 @@ Feature: User proposes an organisation to be added to HarrowCN
       | Teach them things |
     And I press "Create Proposed organisation"
     Then I should be on the show page for the proposed_organisation named "Friendly charity"
+    Then show me the page
 
 
