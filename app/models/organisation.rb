@@ -8,8 +8,8 @@ end
 
 class Organisation < BaseOrganisation
   #validates_presence_of :website, :with => /http:\/\//
-  has_many :users
   has_many :volunteer_ops
+  has_many :users
   has_many :edits, class_name: 'ProposedOrganisationEdit', :dependent => :destroy
   # Setup accessible (or protected) attributes for your model
   # prevents mass assignment on other fields not in this list
