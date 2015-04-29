@@ -13,7 +13,7 @@ class ProposedOrganisationsController < ApplicationController
     end
   end
   def show
-
+    @proposed_organisation = ProposedOrganisation.find(params[:id])
   end
 end
 
