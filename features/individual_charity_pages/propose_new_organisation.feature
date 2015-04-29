@@ -28,16 +28,21 @@ Feature: User proposes an organisation to be added to HarrowCN
     And I fill in the proposed charity page validly including the categories:
       | name              |
       | Animal welfare    |
-      | Child welfare     |
-      | Feed the hungry   |
       | Accommodation     |
-      | General           |
-      | Health            |
       | Education         |
       | Give them things  |
-      | Teach them things |
     And I press "Create Proposed organisation"
     Then I should be on the show page for the proposed_organisation named "Friendly charity"
-    Then show me the page
+    And I should see "Friendly charity"
+    And I should see "Animal welfare"
+    And I should not see "Child welfare"
+    And I should not see "Feed the hungry"
+    And I should see "Accommodation"
+    And I should not see "General"
+    And I should not see "Health"
+    And I should see "Education"
+    And I should see "Give them things"
+    And I should not see "Teach them things"
+
 
 
