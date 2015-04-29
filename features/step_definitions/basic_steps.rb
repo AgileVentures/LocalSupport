@@ -88,22 +88,24 @@ Given (/^I fill in the new charity page validly$/) do
   fill_in 'organisation_name', :with => 'Friendly charity'
 end
 Given (/^I fill in the new charity page validly including the categories:$/) do |categories_table|
+  fill_in 'organisation_address', :with => '64 pinner road'
+  fill_in 'organisation_name', :with => 'Friendly charity'
   categories_table.hashes.each do |cat|
     steps %Q{
       And I check the category "#{cat[:name]}"
     }
   end
   stub_request_with_address("64 pinner road")
-  fill_in 'organisation_address', :with => '64 pinner road'
-  fill_in 'organisation_name', :with => 'Friendly charity'
 end
 Given (/^I fill in the proposed charity page validly including the categories:$/) do |categories_table|
+  fill_in 'proposed_organisation_name', :with => 'Friendly charity'
+  fill_in 'proposed_organisation_address', :with => '64 pinner road'
   categories_table.hashes.each do |cat|
     steps %Q{
       And I check the category "#{cat[:name]}"
     }
   end
-  fill_in 'proposed_organisation_name', :with => 'Friendly charity'
+  stub_request_with_address("64 pinner road")
 end
 
 Then /^the contact information should be available$/ do
