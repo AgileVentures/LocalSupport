@@ -63,4 +63,5 @@ Feature: Map of local charities
   Scenario: Showing meaning of large map icons
     Given I visit the home page
     And I click "Close"
-    Then I should see the map key
+    Then I should see "Details updated by the organisation within the last 12 months"
+    Then I should see "Details NOT updated by the organisation within the last 12 months"

@@ -5,18 +5,12 @@
       <%= yield :map %>
       <div id="map_canvas"></div>
     </div>
+    <div class="map_key">
+      <%= yield :legend %>
+    </div>
   </div>
   <div id="column2" class="span6">
     <%= yield %>
-  </div>
-</div>
-<div class="row key_row">
-  <div class="span5" id="column3">
-    <div class="map_key">
-      <div class="key_title">key</div>
-      <div class="key_image"><%= image_tag("marker.png", :size =>"15x15", alt:"Large map marker") %></div>
-      <div class="key_text">Details updated by the organisation within the last 12 months</div>
-    </div>
   </div>
 </div>
 <%= parent_layout 'application' %>

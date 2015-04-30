@@ -289,38 +289,3 @@ div#container textarea {
   height: auto !important;
   padding-right: 3em;
 }
-
-.key_row {
-    margin-left: 0px !important;
-    margin-top: 15px;
-}
-
-.map_key {
-    padding: 10px;
-    border: 2px solid #dddddd;
-}
-
-.key_title {
-    display: none;
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 15px;
-}
-
-.key_image {
-    display: inline;
-    margin-left: 5px;
-    margin-right: 7px;
-}
-
-.key_text {
-    display: inline;
-}
-
-#column2 {
-    max-height: 430px;
-}
-
-
-
-
