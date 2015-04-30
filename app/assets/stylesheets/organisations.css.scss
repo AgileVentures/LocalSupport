@@ -1,0 +1,113 @@
+.org-info-msg-1 {
+    color: rgba(0, 0, 0, 0.7);
+    background-color: #E0FDEF;
+    width:50%;
+    border-radius:2em;
+    text-align: center;
+}
+.org_h3 {
+  margin: 10px 0px;
+  font-size: 24.5px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: bold;
+  line-height: 20px;
+  color: inherit;
+  text-rendering: optimizelegibility;
+}
+
+.field-label {
+  color: #899096;
+  line-height: 19px;
+}
+
+// http://learnlayout.com/flexbox.html
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+#organisation_search {
+  .flex-row {
+    margin-bottom: 5px;
+  }
+
+  .left-side {
+    width: 180px;
+
+    display: flex;
+
+    .field-label {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+  }
+
+  .right-side {
+    flex: initial;
+    width: 500px;
+    min-width: 100px;
+
+    display: flex;
+
+    select {
+      width: 100%;
+      margin: auto;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      margin-bottom: 0;
+    }
+
+    input[type="submit"] {
+      flex: none;
+      margin-left: 5px;
+    }
+  }
+}
+
+#orgs_scroll {
+  height: 340px;
+  width: 100%;
+  border: 1px solid #ccc;
+  overflow-y: scroll;
+}
+
+.key_row {
+  margin-left: 10px !important;
+  margin-top: 5px;
+}
+
+.map_key {
+  margin: 5px;
+  padding: 0px;
+  border: 2px solid #dddddd;
+  width: 90%;
+}
+
+.key_title {
+  display: none;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 15px;
+}
+
+.key_image {
+  display: inline;
+  margin-left: 5px;
+  margin-right: 7px;
+  width: 20px;
+  align-content: center;
+  text-align: center;
+  height: 15px;
+}
+
+.key_text {
+  display: inline;
+  font-size: 14px;
+}

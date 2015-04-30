@@ -33,8 +33,8 @@ describe UserReportsController, :type => :controller do
         allow(@nonadmin_user).to receive(:email).and_return('stuff@stuff.com')
       end
       it 'non-superadmins get refused' do
-        allow(@nonsuperadmin_user).to receive(:superadmin?).and_return(false)
-        allow(controller).to receive(:current_user).and_return(@nonsuperadmin_user)
+        allow(@nonadmin_user).to receive(:superadmin?).and_return(false)
+        allow(controller).to receive(:current_user).and_return(@nonadmin_user)
         put :update, {:id => '4'}
         expect(response.response_code).to eq(404)
       end

@@ -12,7 +12,7 @@ class Organisation < ActiveRecord::Base
   validates_url :website, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.website.present?}
   validates_url :donation_info, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.donation_info.present?}
 
-  # http://stackoverflow.com/questions/10738537/lazy-geocoding
+  # 
   has_many :users
   has_many :volunteer_ops
   has_many :category_organisations
@@ -24,7 +24,7 @@ class Organisation < ActiveRecord::Base
   accepts_nested_attributes_for :users
   accepts_nested_attributes_for :category_organisations,
                                 :allow_destroy => true
-  scope :order_by_most_recent, -> {order('updated_at DESC')}
+  scope :order_by_most_recent, -> { order('organisations.updated_at DESC') }
   scope :not_null_email, lambda {where("organisations.email <> ''")}
   # Should we not use :includes, which pulls in extra data? http://nlingutla.com/blog/2013/04/21/includes-vs-joins-in-rails/
   # Alternative => :joins('LEFT OUTER JOIN users ON users.organisation_id = organisations.id)
@@ -78,12 +78,14 @@ class Organisation < ActiveRecord::Base
 
   def self.search_by_keyword(keyword)
      keyword = "%#{keyword}%"
-     self.where(contains_description(keyword).or(contains_name(keyword)))
+     where(contains_description?(keyword).or(contains_name?(keyword)))
   end
 
-  def self.filter_by_category(category_id)
-    return all unless category_id.present?
-    self.joins(:categories).where(is_in_category(category_id)) #do we need to sanitize category_id?
+  def self.filter_by_categories(category_ids)
+    joins(:categories)
+      .where(category_id.in category_ids)                 # at this point, orgs in multiple categories show up as duplicates
+      .group(organisation_id)                             # so we exploit this
+      .having(organisation_id.count.eq category_ids.size) # and return the orgs with correct number of duplicates
   end
 
   def gmaps4rails_marker_attrs
@@ -150,6 +152,7 @@ class Organisation < ActiveRecord::Base
 
   def self.import_addresses(filename, limit, validation = true)
     import(filename, limit, validation) do |row, validation|
+       sleep 0.1
        create_from_array(row, validation)
     end
   end
@@ -191,31 +194,36 @@ class Organisation < ActiveRecord::Base
       end
     end
   end
-  
+
   def not_updated_recently_or_has_no_owner?
     self.users.empty? || not_updated_recently?
   end
 
   private
-
+  
   def self.table
-    self.arel_table
+    arel_table
+  end
+
+  def self.organisation_id
+    table[:id]
   end
 
   def self.category_table
     Category.arel_table
   end
 
-  def self.is_in_category(category_id)
-    category_table[:id].eq(category_id)
+  def self.category_id
+    category_table[:id]
   end
-  
-  def self.contains_description(key)
+
+  def self.contains_description?(key)
     table[:description].matches(key)
   end
 
-  def self.contains_name(key)
+  def self.contains_name?(key)
     table[:name].matches(key)
   end
+
 
 end
