@@ -44,8 +44,8 @@ module Queries
               !not_updated_recently? && !self.users.empty?
             end
          }
-        return organisations
       end
+      return organisations
     end
   end
 end
