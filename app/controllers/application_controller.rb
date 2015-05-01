@@ -3,8 +3,7 @@ require 'custom_errors'
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :store_location,
-                :assign_footer_page_links,
-                :miniprofiler
+                :assign_footer_page_links
 
   include CustomErrors
 
@@ -87,10 +86,6 @@ class ApplicationController < ActionController::Base
 
   def superadmin?
     current_user.try :superadmin?
-  end
-
-  def miniprofiler
-    # Rack::MiniProfiler.authorize_request if superadmin?
   end
 
   def assign_footer_page_links

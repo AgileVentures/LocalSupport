@@ -24,14 +24,7 @@ module Queries
 
     def self.add_recently_updated_and_has_owner(organisations)
       if organisations.method(:select).arity == 0
-        organisations.each do |o|
-          o.instance_eval %{
-            def recently_updated_and_has_owner
-              !not_updated_recently? && !self.users.empty?
-            end
-         }
-        end
-        return organisations
+        return add_recently_update_and_has_owner_to_enumerable(organisations)
       end
       one_year_ago = Time.current.advance(years: -1)
       recently_updated = "organisations.updated_at > '#{one_year_ago.strftime(FORMAT)}'"
@@ -43,5 +36,16 @@ module Queries
         .select("organisations.*, (#{condition}) as recently_updated_and_has_owner")
     end
 
+  private
+    def self.add_recently_update_and_has_owner_to_enumerable(organisations)
+      organisations.each do |o|
+        o.instance_eval %{
+            def recently_updated_and_has_owner
+              !not_updated_recently? && !self.users.empty?
+            end
+         }
+        return organisations
+      end
+    end
   end
 end
