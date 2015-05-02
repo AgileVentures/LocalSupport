@@ -59,9 +59,15 @@ describe Organisation, :type => :model do
   end
 
   describe "#gmaps4rails_marker_attrs" do
+
+    def build_org_with_computed_fields_and_updated_at org, updated_at = nil
+      org.update_attributes(updated_at: updated_at) unless updated_at.nil?
+      Queries::Organisations.add_recently_updated_and_has_owner(Organisation.where(id: org.id)).first
+    end
     context 'no user' do
       it 'returns small icon when no associated user' do
-        expect(@org1.gmaps4rails_marker_attrs).to eq(["https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png", {"data-id"=>@org1.id, :class=>"measle"}])
+        expect(build_org_with_computed_fields_and_updated_at(@org1).gmaps4rails_marker_attrs).to eq(["https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png",
+          {"data-id"=>@org1.id, :class=>"measle"}])
       end
     end
 
@@ -72,25 +78,30 @@ describe Organisation, :type => :model do
         @org1.users << [usr]
         @org1.save!
       end
-      after(:each) do
-        allow(Time).to receive(:now).and_call_original
-      end
       it 'returns large icon when there is an associated user' do
-        expect(@org1.gmaps4rails_marker_attrs).to eq( ["http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png", {"data-id"=>@org1.id,:class=>"marker"}])
+        expect(build_org_with_computed_fields_and_updated_at(@org1).gmaps4rails_marker_attrs).to eq( ["http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png",
+          {"data-id"=>@org1.id,:class=>"marker"}])
       end
 
-      [365, 366, 500].each do |days|
+      [ 365, 366, 500 ].each do |days|
         it "returns small icon when update is #{days} days old" do
-          future_time = Time.at(Time.now + days.day)
-          allow(Time).to receive(:now){future_time}
-          expect(@org1.gmaps4rails_marker_attrs).to eq(["https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png", {"data-id"=>@org1.id, :class=>"measle"}])
+          # adds generous 5 second pad for query to run
+          past_time = Time.current.advance(days: -days).advance(seconds: -5)
+          expect(
+            build_org_with_computed_fields_and_updated_at(
+              @org1, past_time
+            ).gmaps4rails_marker_attrs
+          ).to eq([
+            "https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png",
+            {"data-id"=>@org1.id, :class=>"measle"}
+          ])
         end
       end
       [ 2, 100, 200, 364].each do |days|
         it "returns large icon when update is only #{days} days old" do
-          future_time = Time.at(Time.now + days.day)
-          allow(Time).to receive(:now){future_time}
-          expect(@org1.gmaps4rails_marker_attrs).to eq( ["http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png", {"data-id"=>@org1.id, :class=>"marker"} ])
+          past_time = Time.at(Time.now - days.day)
+          expect(build_org_with_computed_fields_and_updated_at(@org1, past_time).gmaps4rails_marker_attrs).to eq( ["http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png",
+            {"data-id"=>@org1.id, :class=>"marker"} ])
         end
       end
     end
