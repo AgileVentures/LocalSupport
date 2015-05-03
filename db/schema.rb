@@ -29,6 +29,9 @@ ActiveRecord::Schema.define(version: 20150502193421) do
     t.integer "organisation_id"
   end
 
+  add_index "categories_organisations", ["category_id"], name: "index_categories_organisations_on_category_id", using: :btree
+  add_index "categories_organisations", ["organisation_id"], name: "index_categories_organisations_on_organisation_id", using: :btree
+
   create_table "features", force: :cascade do |t|
     t.string  "name"
     t.boolean "active", default: false
