@@ -2,7 +2,9 @@ require 'custom_errors'
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :store_location, :assign_footer_page_links
+  before_filter :store_location,
+                :assign_footer_page_links
+
   include CustomErrors
 
   # To prevent infinite redirect loops, only requests from white listed
