@@ -29,7 +29,7 @@ describe VolunteerOpsController, :type => :controller do
     render_views
     let(:org) { create :organisation }
     let!(:op) { create :volunteer_op, organisation: org }
-    subject { JSON.parse(controller.send(:build_map_markers, org)).first }
+    subject { JSON.parse(controller.send(:build_map_markers, [org])).first }
     it { expect(subject['lat']).to eq org.latitude }
     it { expect(subject['lng']).to eq org.longitude }
     it { expect(subject['infowindow']).to include org.id.to_s }
@@ -39,7 +39,7 @@ describe VolunteerOpsController, :type => :controller do
     it { expect(subject['infowindow']).to include op.description }
     context 'markers without coords omitted' do
       let(:org) { create :organisation, address: "0 pinnner road", latitude: nil, longitude: nil }
-      it { expect(JSON.parse(controller.send(:build_map_markers, org))).to be_empty }
+      it { expect(JSON.parse(controller.send(:build_map_markers, [org]))).to be_empty }
     end
   end
 
