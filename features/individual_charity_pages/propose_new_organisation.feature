@@ -25,7 +25,7 @@ Feature: User proposes an organisation to be added to HarrowCN
   Scenario: Unregistered User
     Given I click "Add Organisation"
     Then I should be on the home page
-    And I click "toggle_link"
+    #And I click "toggle_link"
     When I sign up as "normal_user@myorg.com" with password "pppppppp" and password confirmation "pppppppp"
     Then I should see "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
     And I should be on the new proposed organisation page

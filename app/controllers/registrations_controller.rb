@@ -1,6 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
   def create
     if params[:user]
+      session[:proposed_org] = params[:user][:proposed_org]
       session[:pending_organisation_id] = params[:user][:pending_organisation_id]
     end
     super
@@ -17,6 +18,9 @@ class RegistrationsController < Devise::RegistrationsController
       if session[:pending_organisation_id]
         UserOrganisationClaimer.new(self, resource, resource).call(session[:pending_organisation_id])
         return organisation_path resource.pending_organisation_id 
+      elsif session[:proposed_org]
+        session[:user_id] =  resource.id
+        return new_proposed_organisation_path
       else
         send_email_to_superadmin_about_signup resource.email
       end

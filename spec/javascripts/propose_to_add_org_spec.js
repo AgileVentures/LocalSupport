@@ -41,6 +41,10 @@ describe("Proposed to add organisation link", function(){
             it('menu changes attributes', function() {
                 expect(menu).toHaveClass('open');
             });
+            it('loginForm contains hidden input field proposed_org', function(){
+                expect($("form#registerForm input[name=user\\[proposed_org\\]]").val()).toBeDefined();
+            });
+
         });
       });
 });
