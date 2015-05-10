@@ -7,7 +7,8 @@ class ProposedOrganisationsController < ApplicationController
   def create
     org_params = ProposedOrganisationParams.build params
     @proposed_organisation = ProposedOrganisation.new(org_params)
-    if @proposed_organisation.save
+    if @proposed_organisation.save!
+      byebug
       redirect_to @proposed_organisation, notice: 'Organisation is pending admin approval.'
     else
       render action: "new"

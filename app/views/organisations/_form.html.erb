@@ -102,7 +102,9 @@
         </div>
     <% end %>
     </div>
-
+    <% if @user_id %>
+      <%= f.hidden_field :user_id, value: @user_id %> 
+    <%end %>
     <br>
     <div class="actions">
       <%= f.submit :class => 'btn btn-primary' %>
