@@ -13,6 +13,7 @@
 //= require bootstrap-switch
 //= require organisations
 //= require analytics
+//= require propose_to_add_org
 
 window.LocalSupport = {};
 
