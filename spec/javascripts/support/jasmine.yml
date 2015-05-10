@@ -15,6 +15,7 @@ src_files:
   - assets/invitations.js
   - assets/this_is_my_org.js
   - assets/propose_to_add_org.js
+  - assets/utilities.js
   - assets/google_map.js
   - assets/jasmine-jquery.js
 
