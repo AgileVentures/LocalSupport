@@ -36,26 +36,5 @@ Feature: User proposes an organisation to be added to HarrowCN
       | Education         |
       | Give them things  |
     And I press "Create Proposed organisation"
-  Scenario: User fills out form to add new org
-    When I visit the new proposed organisation page
-    And I fill in the proposed charity page validly including the categories:
-      | name              |
-      | Animal welfare    |
-      | Accommodation     |
-      | Education         |
-      | Give them things  |
-    And I press "Create Proposed organisation"
-    Then I should be on the show page for the proposed_organisation named "Friendly charity"
-    And I should see "Friendly charity"
-    And I should see "Animal welfare"
-    And I should not see "Child welfare"
-    And I should not see "Feed the hungry"
-    And I should see "Accommodation"
-    And I should not see "General"
-    And I should not see "Health"
-    And I should see "Education"
-    And I should see "Give them things"
-    And I should not see "Teach them things"
-
-
+    And I should see "This organisation proposed by 'normal_user@myorg.com'"
 

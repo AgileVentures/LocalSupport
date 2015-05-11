@@ -6,8 +6,11 @@ class ProposedOrganisationsController < ApplicationController
   end
   def create
     org_params = ProposedOrganisationParams.build params
+    usr = User.find params[:proposed_organisation][:user_id]
     @proposed_organisation = ProposedOrganisation.new(org_params)
+    @proposed_organisation.users << [usr]
     if @proposed_organisation.save!
+      byebug
       redirect_to @proposed_organisation, notice: 'Organisation is pending admin approval.'
     else
       render action: "new"
@@ -15,6 +18,7 @@ class ProposedOrganisationsController < ApplicationController
   end
   def show
     @proposed_organisation = ProposedOrganisation.find(params[:id])
+    @proposer_email = @proposed_organisation.users.first.email
   end
 end
 
