@@ -10,7 +10,6 @@ class ProposedOrganisationsController < ApplicationController
     @proposed_organisation = ProposedOrganisation.new(org_params)
     @proposed_organisation.users << [usr]
     if @proposed_organisation.save!
-      byebug
       redirect_to @proposed_organisation, notice: 'Organisation is pending admin approval.'
     else
       render action: "new"
