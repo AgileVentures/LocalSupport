@@ -1,8 +1,8 @@
 <div class="row">
   <% if @proposer_email %>
-  <div class="row">
-    This organisation proposed by '<%= @proposer_email%>'
-  </div>
+    <p>
+      This organisation proposed by '<%= @proposer_email%>'
+    </p>
   <% end %>
 <%= render partial: "organisations/show", locals: {org: @proposed_organisation}%>
 </div>
