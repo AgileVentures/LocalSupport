@@ -22,7 +22,7 @@ Feature: User proposes an organisation to be added to HarrowCN
     And I click "Close"
 
   @javascript
-  Scenario: Unregistered user is directed to sign up
+  Scenario: Unregistered user proposes new organisation
     Given I click "Add Organisation"
     Then I should be on the home page
     When I sign up as "normal_user@myorg.com" with password "pppppppp" and password confirmation "pppppppp"
@@ -34,4 +34,4 @@ Feature: User proposes an organisation to be added to HarrowCN
     And the proposed organisation should have been created
     And I should see all the proposed organisation fields
     And I should be on the proposed organisations show page for the organisation
-
+    And the proposed organisation "Friendly charity" should have a large icon

@@ -1,4 +1,5 @@
-class ProposedOrganisationsController < ApplicationController
+class ProposedOrganisationsController < BaseOrganisationsController
+  layout 'two_columns'
   def new
     @proposed_organisation = ProposedOrganisation.new 
     @categories_start_with = Category.first_category_name_in_each_type
@@ -15,9 +16,11 @@ class ProposedOrganisationsController < ApplicationController
       render action: "new"
     end
   end
+
   def show
     @proposed_organisation = ProposedOrganisation.find(params[:id])
     @proposer_email = @proposed_organisation.users.first.email
+    @markers = build_map_markers([@proposed_organisation])
   end
 end
 

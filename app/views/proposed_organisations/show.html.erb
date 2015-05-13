@@ -6,3 +6,5 @@
   <% end %>
 <%= render partial: "organisations/show", locals: {org: @proposed_organisation}%>
 </div>
+
+<% render partial: 'shared/map_scripts', locals: {markers: @markers} %>

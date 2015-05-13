@@ -6,4 +6,37 @@ class BaseOrganisation < ActiveRecord::Base
   has_many :categories, :through => :category_base_organisations
   accepts_nested_attributes_for :category_base_organisations,
                                 :allow_destroy => true
+  # For the geocoder gem
+  geocoded_by :full_address
+  after_validation :geocode, if: -> { run_geocode? }
+
+  def run_geocode?
+    ## http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
+    address_changed? or (address.present? and not_geocoded?)
+  end
+
+  def not_geocoded?
+    latitude.blank? and longitude.blank?
+  end
+
+  def full_address
+     "#{self.address}, #{self.postcode}"
+  end
+
+  def gmaps4rails_marker_attrs
+    if recently_updated_and_has_owner
+      ['http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png',
+        'data-id' => id,
+       class: 'marker']
+    else
+      ['https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png',
+        'data-id' => id,
+        class: 'measle']
+    end
+  end
+
+  def not_updated_recently?
+    updated_at < 1.year.ago
+  end
+
 end
