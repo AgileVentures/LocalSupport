@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe User, :type => :model do
 
-  let (:model) { mock_model("Organisation") }
+  let (:model) { Organisation.new }
 
   context 'invited users scope' do
     before(:each) do

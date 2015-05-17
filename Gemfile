@@ -49,9 +49,9 @@ group :test do
 end
 
 group :production do
+  gem 'rails_12factor'
   gem 'newrelic_rpm'
 end
-
 
 gem 'coffee-rails', "4.1.0"
 gem 'uglifier', '2.5.3'
