@@ -4,9 +4,9 @@
       This organisation proposed by '<%= @proposer_email%>'
     </p>
   <% end %>
-<%= render partial: "organisations/show", locals: {org: @proposed_organisation}%>
+  <%= render partial: "organisations/show", locals: {org: @proposed_organisation}%>
   <a href = "#", class = "btn btn-primary">Accept</a>
-    <a href = "#", class = "btn btn-danger">Reject</a>
+  <a href = "#", class = "btn btn-danger">Reject</a>
 </div>
 
 <% render partial: 'shared/map_scripts', locals: {markers: @markers} %>

@@ -1,11 +1,5 @@
 require_relative 'proposed_organisation_testing_api'
 
-def stub_request_with_address(address, body = nil)
-  filename = "#{address.gsub(/\s/, '_')}.json"
-  filename = File.read "test/fixtures/#{filename}"
-  stub_request(:any, /maps\.googleapis\.com/).
-      to_return(status => 200, :body => body || filename, :headers => {})
-end
 def unsaved_proposed_organisation(associated_user = nil)
   proposed_org = ProposedOrganisation.new({name: "Friendly Chariity", description: "We are friendly!", 
     email: "sample@sample.org", address: "30 Pinner Road", donation_info: "https://www.donate.com",
