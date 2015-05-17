@@ -1,3 +1,5 @@
+require_relative 'proposed_organisation_testing_api'
+
 And /^I select the "(.*?)" category from (How They Help|Who They Help|What They Do)$/ do |category, cat_type|
   cat_id = case cat_type
     when 'What They Do'
@@ -12,6 +14,10 @@ And /^I select the "(.*?)" category from (How They Help|Who They Help|What They 
   select(category, :from => cat_id)
 end
 
+When /^I visit the proposed organisation show page for the proposed organisation that was proposed$/ do 
+  proposed_org = ProposedOrganisation.find_by(name: unsaved_proposed_organisation(User.first).name)
+  visit proposed_organisation_path(proposed_org)
+end
 When(/^I visit "(.*?)"$/) do |path|
   visit path
 end
