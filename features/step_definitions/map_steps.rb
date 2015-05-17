@@ -33,7 +33,7 @@ Then /^the (proposed organisation|organisation) "(.*?)" should have a (large|sma
   if marker_class == "measle"
     expect(find_map_icon(marker_class, org_id)["src"]).to eq "https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png"
   else
-    expect(find_map_icon(marker_class, org_id)["src"]).to eq "http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png"
+    expect(find_map_icon(marker_class, org_id)["src"]).to eq "https://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png"
   end
 end
 
