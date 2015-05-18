@@ -4,19 +4,34 @@ Feature: Admin moderates an organisation to be added to HarrowCN
   I want to moderate proposed organisations to be added to HCN
   Tracker story ID: https://www.pivotaltracker.com/story/show/742821
 
-  Background: 
+  Background:
 
     Given the following users are registered:
       | email                         | password | superadmin   | confirmed_at         |
       | superadmin@example.com        | pppppppp | true         | 2007-01-01  10:00:00 |
       | registered_user-1@example.com | pppppppp | false        | 2007-01-01  10:00:00 |
+      | registered_user-2@example.com | pppppppp | false        | 2007-01-01  10:00:00 |
     And a proposed organisation has been proposed by "registered_user-1@example.com"
 
-  Scenario:
+  Scenario: Superadmin sees proposed organisation and buttons
     And I am signed in as an superadmin
     And I visit the proposed organisation show page for the proposed organisation that was proposed
     Then I should see an "Accept Proposed Organisation" button
     And I should see a "Reject Proposed Organisation" button
+
+  Scenario: Nonsigned in user does not see proposed organisation
+    And I visit the proposed organisation show page for the proposed organisation that was proposed
+    Then I should see "You don't have permission"
+    And I should be on the home page
+
+  Scenario: Random user does not see proposed organisation
+    And I visit the home page
+    And I sign in as "registered_user-2@example.com" with password "pppppppp"
+    Then I should see a link or button "registered_user-2@example.com"
+    And I visit the proposed organisation show page for the proposed organisation that was proposed
+    Then I should see "You don't have permission"
+    And I should be on the home page
+
 
 
 
