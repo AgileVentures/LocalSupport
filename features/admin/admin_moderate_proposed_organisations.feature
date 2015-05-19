@@ -11,6 +11,7 @@ Feature: Admin moderates an organisation to be added to HarrowCN
       | superadmin@example.com        | pppppppp | true         | 2007-01-01  10:00:00 |
       | registered_user-1@example.com | pppppppp | false        | 2007-01-01  10:00:00 |
       | registered_user-2@example.com | pppppppp | false        | 2007-01-01  10:00:00 |
+      | registered_user-3@example.com | pppppppp | false        | 2007-01-01  10:00:00 |
     And a proposed organisation has been proposed by "registered_user-1@example.com"
 
   Scenario: Superadmin sees proposed organisation and buttons
@@ -32,6 +33,16 @@ Feature: Admin moderates an organisation to be added to HarrowCN
     Then I should see "You don't have permission"
     And I should be on the home page
 
+
+  Scenario: Superadmin finds list of proposed organisations
+    Given the following proposed organisations exist:
+       |proposer_email                | name       | description             | address        | postcode | telephone | website               | email                    | donation_info        |
+       |registered_user-2@example.com | Unfriendly | Mourning loved ones     | 30 pinner road | HA5 4HZ  | 520800000 | http://unfriendly.org | superadmin@unfriendly.xx | www.pleasedonate.com |
+       |registered_user-3@example.com | Friendly   | Bereavement             | 30 pinner road | HA5 4HZ  | 520800000 | http://friendly.org   | superadmin@friendly.xx   | www.pleasedonate.com |
+    And I am signed in as an superadmin
+    And I visit the home page
+    And I click on the all proposed organisations link
+    Then I should see a view details link for each of the proposed organisations
 
 
 

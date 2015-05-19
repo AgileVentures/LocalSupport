@@ -1,6 +1,11 @@
 class ProposedOrganisationsController < BaseOrganisationsController
-  layout 'two_columns'
+  layout 'two_columns', except: [:index]
   before_filter :require_login_or_recent_creation, only: [:show]
+
+  def index
+    @proposed_organisations = ProposedOrganisation.all
+  end
+
   def new
     @proposed_organisation = ProposedOrganisation.new 
     @categories_start_with = Category.first_category_name_in_each_type

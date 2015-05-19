@@ -12,3 +12,7 @@ Then (/^I should( not)? see a "Reject Proposed Organisation" button$/) do |negat
     expect(page).to have_link "Reject"
   end
 end
+
+Then(/^I click on the all proposed organisations link$/) do
+  click_link "All Proposed Organisations"
+end
