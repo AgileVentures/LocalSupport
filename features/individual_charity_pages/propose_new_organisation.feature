@@ -35,6 +35,8 @@ Feature: User proposes an organisation to be added to HarrowCN
     And I should see all the proposed organisation fields
     And I should be on the proposed organisations show page for the organisation
     And the proposed organisation "Friendly charity" should have a large icon
+    Then I should not see an "Accept Proposed Organisation" button
+    And I should not see a "Reject Proposed Organisation" button
 
   @javascript
   Scenario: Unregistered user fails to signup once and then successfully proposes new organisation
