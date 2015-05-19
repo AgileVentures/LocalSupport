@@ -1,12 +1,12 @@
 Then (/^I should( not)? see an "Accept Proposed Organisation" button$/) do |negation|
-  unless negation
-    expect(page).to have_link "Accept"
+  if negation
+    expect(page).not_to have_link "Accept"
   end
-  expect(page).not_to have_link "Accept"
+  expect(page).to have_link "Accept"
 end
 Then (/^I should( not)? see a "Reject Proposed Organisation" button$/) do |negation|
-  unless negation
-    expect(page).to have_link "Reject"
+  if negation
+    expect(page).not_to have_link "Reject"
   end
-  expect(page).not_to have_link "Reject"
+  expect(page).to have_link "Reject"
 end
