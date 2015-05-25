@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe ProposedOrganisation, :type => :model do
   context 'with associated user' do
-    let!(:proposed_org){ProposedOrganisation.create}
+    let!(:proposed_org){FactoryGirl.create :proposed_organisation}
     let!(:owner){proposed_org.users.first}
     let(:new_org){proposed_org.accept_proposal}
     it 'retains associated user after approval' do

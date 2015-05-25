@@ -7,10 +7,14 @@ class ProposedOrganisationsController < BaseOrganisationsController
   end
 
   def update
+    unless current_user.try(:superadmin?)
+      flash[:warning] = PERMISSION_DENIED
+      redirect_to root_path and return false
+    end
     if update_param == "accept"
       proposed_org = ProposedOrganisation.find params[:id]
       flash[:notice] = "You have approved the following organisation"
-      redirect_to organisation_path(proposed_org.accept_proposal)
+      redirect_to organisation_path(proposed_org.accept_proposal) and return false
     else
       redirect_to root_path
     end

@@ -32,7 +32,7 @@ FactoryGirl.define do
     latitude 10
     longitude 10
     after(:build) do |proposed_org|
-      owner = FactoryGirl.build(:user)
+      owner = FactoryGirl.create(:user)
       proposed_org.users << owner
       proposed_org.save!
     end
@@ -52,7 +52,7 @@ FactoryGirl.define do
   end
 
   factory :user do
-    email "jj@example.com"
+    sequence(:email) { |n| "jj#{n}@example.com" }
     password "pppppppp"
     confirmed_at "2007-01-01 10:00:00"
     superadmin false
