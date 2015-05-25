@@ -20,6 +20,13 @@ Feature: Admin moderates an organisation to be added to HarrowCN
     Then I should see an "Accept Proposed Organisation" button
     And I should see a "Reject Proposed Organisation" button
 
+  Scenario: Superadmin accepts new organisation
+    And I am signed in as an superadmin
+    And I visit the proposed organisation show page for the proposed organisation that was proposed
+    And I press "Accept"
+    Then I should be on the show page for the organisation that was proposed
+    And I should see "You have approved the following organisation"
+
   Scenario: Nonsigned in user does not see proposed organisation
     And I visit the proposed organisation show page for the proposed organisation that was proposed
     Then I should see "You don't have permission"

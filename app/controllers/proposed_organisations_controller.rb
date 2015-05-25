@@ -6,6 +6,16 @@ class ProposedOrganisationsController < BaseOrganisationsController
     @proposed_organisations = ProposedOrganisation.all
   end
 
+  def update
+    if update_param == "accept"
+      proposed_org = ProposedOrganisation.find params[:id]
+      flash[:notice] = "You have approved the following organisation"
+      redirect_to organisation_path(proposed_org.accept_proposal)
+    else
+      redirect_to root_path
+    end
+  end
+
   def new
     @proposed_organisation = ProposedOrganisation.new 
     @categories_start_with = Category.first_category_name_in_each_type
@@ -42,6 +52,9 @@ class ProposedOrganisationsController < BaseOrganisationsController
   end
 end
 
+def update_param
+  params.require(:proposed_organisation).require(:action)
+end
 class ProposedOrganisationParams
   def self.build params
     params.require(:proposed_organisation).permit(
