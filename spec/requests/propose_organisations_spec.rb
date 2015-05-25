@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Propose an org", :type => :request, :helpers => :requests do
+describe "Moderate a proposed org", :type => :request, :helpers => :requests do
   let(:nonsuperadmin) { FactoryGirl.create(:user, superadmin: false) }
   let!(:proposed_org){FactoryGirl.create(:proposed_organisation)}
   before { login(nonsuperadmin) }
