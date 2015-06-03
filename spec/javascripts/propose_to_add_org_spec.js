@@ -47,4 +47,15 @@ describe("Proposed to add organisation link", function(){
 
         });
       });
+    describe('when logged in', function() {
+        beforeEach(function () {
+            add_org.attr('data-signed_in', 'true')
+        });
+
+        it('click propagation is allowed to propagate for default click behavior', function() {
+            add_org.click();
+            expect('click').not.toHaveBeenStoppedOn(add_org);
+        });
+    });
+
 });

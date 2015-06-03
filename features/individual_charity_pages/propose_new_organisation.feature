@@ -54,3 +54,20 @@ Feature: User proposes an organisation to be added to HarrowCN
     And I should see all the proposed organisation fields
     And I should be on the proposed organisations show page for the organisation
     And the proposed organisation "Friendly charity" should have a large icon
+
+  @javascript
+  Scenario: Signed in user proposes new organisation
+    Given the following users are registered:
+      | email                     | password | superadmin | organisation | confirmed_at         |
+      | normal_user@example.com   | pppppppp |            |              | 2007-01-01  10:00:00 |
+    And I am signed in as a non-siteadmin
+    And I visit the home page
+    And I click "Add Organisation"
+    Then I should be on the new proposed organisation page
+    And I fill in the proposed charity page validly
+    And I press "Create Proposed organisation"
+    And I should see "This organisation proposed by 'normal_user@example.com'"
+    And the proposed organisation should have been created
+    And I should see all the proposed organisation fields
+    And I should be on the proposed organisations show page for the organisation
+    And the proposed organisation "Friendly charity" should have a large icon

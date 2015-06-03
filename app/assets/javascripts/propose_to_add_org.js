@@ -7,9 +7,9 @@
           var register = $('#registerForm');
           if (that.attr('data-signed_in') === 'false') {
               LSUtilities.unfurlToSignUp();
+              $('#registerForm div').first().append("<input name='user[proposed_org]' type='hidden' value='true'>");
+              return false;
           }
-          $('#registerForm div').first().append("<input name='user[proposed_org]' type='hidden' value='true'>");
-          return false;
         });	
     };
 })(jQuery);

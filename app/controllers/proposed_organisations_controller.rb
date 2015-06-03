@@ -23,7 +23,7 @@ class ProposedOrganisationsController < BaseOrganisationsController
   def new
     @proposed_organisation = ProposedOrganisation.new 
     @categories_start_with = Category.first_category_name_in_each_type
-    @user_id = session[:user_id]
+    @user_id = session[:user_id] || current_user.try(:id)
   end
   def create
     org_params = ProposedOrganisationParams.build params
