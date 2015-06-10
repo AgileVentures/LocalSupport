@@ -1,6 +1,6 @@
 class ProposedOrganisationsController < BaseOrganisationsController
   layout 'two_columns', except: [:index]
-  before_filter :require_login_or_recent_creation, only: [:show]
+  before_filter :require_superadmin_or_recent_creation, only: [:show]
 
   def index
     @proposed_organisations = ProposedOrganisation.all
@@ -25,12 +25,14 @@ class ProposedOrganisationsController < BaseOrganisationsController
     @categories_start_with = Category.first_category_name_in_each_type
     @user_id = session[:user_id] || current_user.try(:id)
   end
+
   def create
     org_params = ProposedOrganisationParams.build params
-    usr = User.find params[:proposed_organisation][:user_id]
+    usr = User.find params[:proposed_organisation][:user_id] if params[:proposed_organisation][:user_id]
     @proposed_organisation = ProposedOrganisation.new(org_params)
-    @proposed_organisation.users << [usr]
+    @proposed_organisation.users << [usr] if usr
     if @proposed_organisation.save!
+      session[:proposed_organisation_id] = @proposed_organisation.id
       redirect_to @proposed_organisation, notice: 'Organisation is pending admin approval.'
     else
       render action: "new"
@@ -40,17 +42,15 @@ class ProposedOrganisationsController < BaseOrganisationsController
   def show
     @proposed_organisation = ProposedOrganisation.find(params[:id])
     #refactor this into model
-    unless current_user.try(:superadmin?) || ((current_user.try(:id) || session[:user_id]) == @proposed_organisation.users.first.id)
-      flash[:warning] = PERMISSION_DENIED
-      redirect_to root_path
-    end
-    @proposer_email = @proposed_organisation.users.first.email
+    @proposer_email = @proposed_organisation.users.first.email if !@proposed_organisation.users.empty?
     @markers = build_map_markers([@proposed_organisation])
   end
+
   private
-  def require_login_or_recent_creation
-    unless current_user || session[:user_id]
-      flash[:notice] = PERMISSION_DENIED 
+
+  def require_superadmin_or_recent_creation
+    unless session[:proposed_organisation_id] || current_user.try(:superadmin)
+      flash[:notice] = PERMISSION_DENIED
       redirect_to root_path
     end
   end

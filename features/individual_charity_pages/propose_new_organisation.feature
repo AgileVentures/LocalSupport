@@ -24,36 +24,15 @@ Feature: User proposes an organisation to be added to HarrowCN
   @javascript
   Scenario: Unregistered user proposes new organisation
     Given I click "Add Organisation"
-    Then I should be on the home page
-    When I sign up as "normal_user@myorg.com" with password "pppppppp" and password confirmation "pppppppp"
-    Then I should see "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
-    And I should be on the new proposed organisation page
+    Then I should be on the new proposed organisation page
     And I fill in the proposed charity page validly
     And I press "Create Proposed organisation"
-    And I should see "This organisation proposed by 'normal_user@myorg.com'"
-    And the proposed organisation should have been created
     And I should see all the proposed organisation fields
+    And the proposed organisation should have been created
     And I should be on the proposed organisations show page for the organisation
-    And the proposed organisation "Friendly charity" should have a large icon
+    And the proposed organisation "Friendly charity" should have a small icon
     Then I should not see an "Accept Proposed Organisation" button
     And I should not see a "Reject Proposed Organisation" button
-
-  @javascript
-  Scenario: Unregistered user fails to signup once and then successfully proposes new organisation
-    Given I click "Add Organisation"
-    Then I should be on the home page
-    When I sign up as "normal_user@myorg.com" with password "pppppppp" and password confirmation "pppppppx"
-    Then I should see "Password confirmation doesn't match Password"
-    And I sign up as "normal_user@myorg.com" with password "pppppppp" and password confirmation "pppppppp" on the legacy sign up page
-    Then I should see "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
-    And I should be on the new proposed organisation page
-    And I fill in the proposed charity page validly
-    And I press "Create Proposed organisation"
-    And I should see "This organisation proposed by 'normal_user@myorg.com'"
-    And the proposed organisation should have been created
-    And I should see all the proposed organisation fields
-    And I should be on the proposed organisations show page for the organisation
-    And the proposed organisation "Friendly charity" should have a large icon
 
   @javascript
   Scenario: Signed in user proposes new organisation

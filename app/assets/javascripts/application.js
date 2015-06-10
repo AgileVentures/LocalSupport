@@ -14,7 +14,6 @@
 //= require organisations
 //= require analytics
 //= require utilities
-//= require propose_to_add_org
 
 window.LocalSupport = {};
 
