@@ -322,7 +322,7 @@ describe Organisation, :type => :model do
         number_cat_org_relations_generated = 3
         expect(lambda {
           Organisation.import_category_mappings 'db/data.csv', attempted_number_to_import
-        }).to change(CategoryBaseOrganisation, :count).by(number_cat_org_relations_generated)
+        }).to change(CategoryOrganisation, :count).by(number_cat_org_relations_generated)
       end
 
       it "allows us to import categories" do
@@ -688,8 +688,8 @@ describe Organisation, '::filter_by_categories' do
 
     it 'categories in join table' do
       expect(
-        CategoryBaseOrganisation.where(
-          base_organisation_id: Organisation.filter_by_categories([category1.id]).select(:id)
+        CategoryOrganisation.where(
+          organisation_id: Organisation.filter_by_categories([category1.id]).select(:id)
         ).pluck(:category_id).uniq
       ).to include(
         category1.id, category2.id
@@ -724,8 +724,8 @@ describe Organisation, '::filter_by_categories' do
 
     it 'categories in join table' do
       expect(
-        CategoryBaseOrganisation.where(
-          base_organisation_id: Organisation.filter_by_categories([
+        CategoryOrganisation.where(
+          organisation_id: Organisation.filter_by_categories([
             category1.id,
             category2.id,
           ]).select(:id)

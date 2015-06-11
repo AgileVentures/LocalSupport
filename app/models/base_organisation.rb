@@ -2,13 +2,14 @@ class BaseOrganisation < ActiveRecord::Base
   acts_as_paranoid
   validates_url :website, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.website.present?}
   validates_url :donation_info, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.donation_info.present?}
-  has_many :category_base_organisations
-  has_many :categories, :through => :category_base_organisations
-  accepts_nested_attributes_for :category_base_organisations,
+  has_many :category_organisations, :foreign_key => :organisation_id
+  has_many :categories, :through => :category_organisations, :foreign_key => :organisation_id
+  accepts_nested_attributes_for :category_organisations,
                                 :allow_destroy => true
   # For the geocoder gem
   geocoded_by :full_address
   after_validation :geocode, if: -> { run_geocode? }
+  self.table_name = "organisations"
 
   def run_geocode?
     ## http://api.rubyonrails.org/classes/ActiveModel/Dirty.html

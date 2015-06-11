@@ -74,7 +74,7 @@ class ProposedOrganisationParams
       :donation_info,
       :name,
       :telephone,
-      category_base_organisations_attributes: [:_destroy, :category_id, :id]
+      category_organisations_attributes: [:_destroy, :category_id, :id]
     )
   end
   end
