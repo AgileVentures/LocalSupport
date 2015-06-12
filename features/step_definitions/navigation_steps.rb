@@ -28,6 +28,7 @@ def paths(location)
       'sign up' => new_user_registration_path,
       'sign in' => new_user_session_path,
       'organisations index' => organisations_path,
+      'proposed organisations index' => proposed_organisations_path,
       'new organisation' => new_organisation_path,
       'new proposed organisation' => new_proposed_organisation_path,
       'contributors' => contributors_path,

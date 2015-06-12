@@ -11,7 +11,11 @@
       <%= f.hidden_field :action, value: "accept" %>
       <%= f.submit 'Accept', :class => 'btn btn-primary' %>
     <% end %>
-    <a href = "#", class = "btn btn-danger">Reject</a>
+    <%= form_for((@proposed_organisation), :url => {:action => :update}, :html =>
+        {:style => 'display: inline-block;'}) do |f| %>
+      <%= f.hidden_field :action, value: "reject" %>
+      <%= f.submit 'Reject', :class => 'btn btn-danger' %>
+    <% end %>
   <% end %>
 </div>
 

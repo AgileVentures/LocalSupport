@@ -20,3 +20,8 @@ end
 Then(/^I should be on the show page for the organisation that was proposed$/) do
   steps %{Then I should be on the show page for the organisation named "#{unsaved_proposed_organisation.name}"}
 end
+
+Then(/^the proposed organisation should have been rejected$/) do
+  expect(ProposedOrganisation.find_by(name: unsaved_proposed_organisation.name)).to be_nil
+  expect(Organisation.find_by(name: unsaved_proposed_organisation.name)).to be_nil
+end

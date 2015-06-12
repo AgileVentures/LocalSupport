@@ -27,6 +27,13 @@ Feature: Admin moderates an organisation to be added to HarrowCN
     Then I should be on the show page for the organisation that was proposed
     And I should see "You have approved the following organisation"
 
+  Scenario: Superadmin rejects new organisation
+    And I am signed in as an superadmin
+    And I visit the proposed organisation show page for the proposed organisation that was proposed
+    And I press "Reject"
+    Then I should be on the proposed organisations index page
+    And the proposed organisation should have been rejected
+
   Scenario: Nonsigned in user does not see proposed organisation
     And I visit the proposed organisation show page for the proposed organisation that was proposed
     Then I should see "You don't have permission"

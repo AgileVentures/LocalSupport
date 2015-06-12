@@ -11,12 +11,13 @@ class ProposedOrganisationsController < BaseOrganisationsController
       flash[:warning] = PERMISSION_DENIED
       redirect_to root_path and return false
     end
+    proposed_org = ProposedOrganisation.find params[:id]
     if update_param == "accept"
-      proposed_org = ProposedOrganisation.find params[:id]
       flash[:notice] = "You have approved the following organisation"
       redirect_to organisation_path(proposed_org.accept_proposal) and return false
     else
-      redirect_to root_path
+      proposed_org.destroy
+      redirect_to proposed_organisations_path
     end
   end
 
