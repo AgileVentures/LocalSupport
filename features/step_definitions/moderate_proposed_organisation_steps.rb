@@ -7,9 +7,9 @@ Then (/^I should( not)? see an "Accept Proposed Organisation" button$/) do |nega
 end
 Then (/^I should( not)? see a "Reject Proposed Organisation" button$/) do |negation|
   if negation
-    expect(page).not_to have_link "Reject"
+    expect(page).not_to have_button "Reject"
   else
-    expect(page).to have_link "Reject"
+    expect(page).to have_button "Reject"
   end
 end
 
