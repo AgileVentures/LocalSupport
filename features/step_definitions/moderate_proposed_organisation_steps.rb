@@ -17,6 +17,10 @@ Then(/^I click on the all proposed organisations link$/) do
   click_link "All Proposed Organisations"
 end
 
+Then (/^I should not see an add organisation link$/) do
+  expect(page).to_not have_link("Add Organisation", new_proposed_organisation_path)
+end
+
 Then(/^I should be on the show page for the organisation that was proposed$/) do
   steps %{Then I should be on the show page for the organisation named "#{unsaved_proposed_organisation.name}"}
 end

@@ -18,8 +18,15 @@ Feature: User proposes an organisation to be added to HarrowCN
       | Give them things  | 304                   |
       | Teach them things | 305                   |
 
+    And that the automated_propose_org flag is enabled
     And I visit the home page
     And I click "Close"
+
+  @javascript
+  Scenario: Link not live when feature flag disabled
+    Given that the automated_propose_org flag is disabled
+    And I visit the home page
+    Then I should not see an add organisation link
 
   @javascript
   Scenario: Unregistered user proposes new organisation
