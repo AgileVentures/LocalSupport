@@ -40,7 +40,7 @@ describe ::BatchInviteJob do
       expect(email.reply_to).to eq ['support@harrowcn.org.uk']
       expect(email.to).to eq [user.email]
       expect(email.cc).to eq ['technical@harrowcn.org.uk']
-      expect(email.subject).to eq 'Advertise volunteer opportunities on Harrow Community Network'
+      expect(email.subject).to eq 'Welcome to Harrow Community Network!'
     end
 
     it 'example response for invites with duplicates' do
