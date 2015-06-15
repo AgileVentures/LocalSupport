@@ -59,3 +59,8 @@ Feature: Map of local charities
     Then the coordinates for "Harrow Bereavement Counselling" and "Youth UK" should be the same
     Then the coordinates for "Age UK" and "Youth UK" should not be the same
 
+  Scenario: Showing meaning of large map icons
+    Given I visit the home page
+    And I click "Close"
+    Then I should see "Details updated by the organisation within the last 12 months"
+    Then I should see "Details NOT updated by the organisation within the last 12 months"
