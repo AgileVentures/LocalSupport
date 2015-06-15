@@ -2,7 +2,6 @@
   flex: 1;
   // since the height of #map_container is dynamic, these 12px need to be subtracted
   padding: 6px;
-  margin-right: 2%;
   border-width: 1px;
   border-style: solid;
   border-color: #ccc #ccc #999 #ccc;
@@ -79,4 +78,41 @@
   border-bottom-color: #dbdbdb;
   border-width: 11px;
   margin-left: -11px;
+}
+
+
+/* MAP LEGEND STYLE
+-------------------------------------------------- */
+.map_key {
+  background-color: #F9F9F9;
+  padding: 10px;
+}
+
+//.key_row {
+//  margin-left: 10px !important;
+//  margin-top: 5px;
+//}
+
+.map_key .flex-row{
+  align-items: flex-end;
+}
+
+.key_title {
+  display: none;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 15px;
+}
+
+.key_image {
+  margin-left: 0;
+  margin-right: 7px;
+  width: 20px;
+  text-align: center;
+}
+
+.key_text {
+  font-size: 12px;
+  color: #899096;
+  margin-left: 3px;
 }
