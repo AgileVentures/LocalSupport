@@ -117,20 +117,6 @@ describe 'layouts/application.html.erb', :type => :view do
       expect(rendered).to have_selector('div.alert-error')
     end
 
-    it 'should display a logo linked to the contributors page' do
-      render
-      rendered.within("a[href='#{contributors_path}']") do |hyperlink|
-        expect(hyperlink).to have_css "img[@alt='Agile Ventures']"
-      end
-    end
-
-    it 'should display a logo linked to the ninefold page' do
-      render
-      rendered.within("a[href='https://ninefold.com']") do |hyperlink|
-        expect(hyperlink).to have_css "img[@alt='Ninefold']"
-      end
-    end
-
     it "does not render a new organisation link" do
       allow(view).to receive_messages(:user_signed_in? => false)
       render

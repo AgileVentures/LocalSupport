@@ -7,7 +7,7 @@ class CustomDeviseMailer < Devise::Mailer
   # from devise_invitable-1.2.1/lib/devise_invitable/mailer.rb
   def invitation_instructions(record, token, opts={})
     opts[:cc] = 'technical@harrowcn.org.uk'
-    opts[:subject] = 'Advertise volunteer opportunities on Harrow Community Network'
+    opts[:subject] = 'Welcome to Harrow Community Network!'
     super
   end
 end
