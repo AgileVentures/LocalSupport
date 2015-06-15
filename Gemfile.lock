@@ -115,8 +115,6 @@ GEM
     database_cleaner (1.0.1)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
-    delorean (2.1.0)
-      chronic
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -258,6 +256,9 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.1)
       loofah (~> 2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
     rails_autolink (1.1.6)
       rails (> 3.1)
     rails_best_practices (1.15.7)
@@ -269,6 +270,8 @@ GEM
       json
       require_all
       ruby-progressbar
+    rails_serve_static_assets (0.0.4)
+    rails_stdout_logging (0.0.3)
     railties (4.2.0)
       actionpack (= 4.2.0)
       activesupport (= 4.2.0)
@@ -352,6 +355,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
+    timecop (0.7.3)
     twitter-bootstrap-rails (2.2.8)
       actionpack (>= 3.1)
       execjs
@@ -402,7 +406,6 @@ DEPENDENCIES
   cucumber-rails
   cucumber-rails-training-wheels
   database_cleaner (= 1.0.1)
-  delorean
   devise (~> 3.4.0)
   devise_invitable (~> 1.3.0)
   execjs
@@ -423,6 +426,7 @@ DEPENDENCIES
   rack_session_access
   railroady
   rails (~> 4.2.0)
+  rails_12factor
   rails_autolink
   redcarpet
   rspec-activemodel-mocks
@@ -433,6 +437,7 @@ DEPENDENCIES
   simplecov
   sinatra-base
   therubyracer
+  timecop
   twitter-bootstrap-rails (= 2.2.8)
   uglifier (= 2.5.3)
   underscore-rails

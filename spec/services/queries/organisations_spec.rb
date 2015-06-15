@@ -6,6 +6,8 @@ describe Queries::Organisations, '::search_by_keyword_and_category' do
   # not initialized!
   let(:category3) { create(:category, :charity_commission_id => 307) }
 
+
+
   let!(:org1) do
     create(
       :organisation,
@@ -123,4 +125,32 @@ describe Queries::Organisations, '::search_by_keyword_and_category' do
     it { expect(run_spec).to include org1, org2, org3 }
   end
 
+  context '#add_computed_recently_updated_and_has_owner' do
+    let(:user1){create(:user)}
+    let(:user2){create(:user, email: "blah@blah.org")}
+    before{org1.update_attributes(updated_at: 2.year.ago); org1.users << user1; org2.users << user2; }
+    context 'computes correctly when array passed in' do
+      it do
+        orgs = described_class.add_recently_updated_and_has_owner([org1, org2, org3])
+        expect(orgs[0].recently_updated_and_has_owner).to be false
+        expect(orgs[1].recently_updated_and_has_owner).to be true
+        expect(orgs[2].recently_updated_and_has_owner).to be false
+      end
+    end
+    context 'computes correctly when scope passed in' do
+      it do
+        orgs = described_class.add_recently_updated_and_has_owner(Organisation.all)
+        orgs.each do |o|
+          case o.name
+            when org1.name
+              expect(o.recently_updated_and_has_owner).to be false
+            when org2.name
+              expect(o.recently_updated_and_has_owner).to be true
+            when org3.name
+              expect(o.recently_updated_and_has_owner).to be false
+          end
+        end
+      end
+    end
+  end
 end

@@ -31,18 +31,17 @@ Feature: Map of local charities
   @time_travel
   @javascript
   Scenario Outline: Organisation map has small icon for organisations updated more than 365 days ago
-    Given I travel "<days>" days into the future
+    Given I travel a year plus "<days>" days into the future
     And I visit the home page
     Then the organisation "Youth UK" should have a <size> icon
     Examples:
       |days  | size |
-      | 2    | large|
-      |100   | large|
-      |200   | large|
-      |364   | large|
-      |365   | small|
-      |366   | small|
-      |500   | small|
+      | -10  | large|
+      | -1   | large|
+      |  0   | small|
+      |  1   | small|
+      | 10   | small|
+      |100   | small|
 
   @javascript
   Scenario: Organisation map has small icon for organisation with no users

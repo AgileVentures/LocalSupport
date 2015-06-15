@@ -15,8 +15,9 @@ describe OrganisationsController, :type => :controller do
 
   describe "#build_map_markers" do
     render_views
-    let(:org) { create :organisation }
-    subject { JSON.parse(controller.send(:build_map_markers, org)).first }
+    let!(:org) { create :organisation }
+    let(:org_relation){Organisation.all}
+    subject { JSON.parse(controller.send(:build_map_markers, org_relation)).first }
     it { expect(subject['lat']).to eq org.latitude }
     it { expect(subject['lng']).to eq org.longitude }
     it { expect(subject['infowindow']).to include org.id.to_s }
@@ -24,7 +25,7 @@ describe OrganisationsController, :type => :controller do
     it { expect(subject['infowindow']).to include org.description }
     context 'markers without coords omitted' do
       let!(:org) { create :organisation, address: '150 pinner rd', latitude: nil, longitude: nil }
-      it { expect(JSON.parse(controller.send(:build_map_markers, org))).to be_empty }
+      it { expect(JSON.parse(controller.send(:build_map_markers, org_relation))).to be_empty }
     end
   end
 
@@ -138,7 +139,6 @@ describe OrganisationsController, :type => :controller do
     before(:each) do
       @user = double("User")
       allow(@user).to receive(:pending_org_admin?)
-      allow(Organisation).to receive(:find).with('37') { real_org}
       allow(@user).to receive(:can_edit?)
       allow(@user).to receive(:can_delete?)
       allow(@user).to receive(:can_create_volunteer_ops?)
@@ -147,7 +147,7 @@ describe OrganisationsController, :type => :controller do
     end
 
     it 'should use a two_column layout' do
-      get :show, :id => '37'
+      get :show, :id => real_org.id.to_s
       expect(response).to render_template 'layouts/two_columns'
     end
 
@@ -155,28 +155,27 @@ describe OrganisationsController, :type => :controller do
       markers='my markers'
       @org = real_org
       expect(controller).to receive(:build_map_markers).and_return(markers)
-      expect(Organisation).to receive(:find).with('37') { @org }
-      get :show, :id => '37'
-      expect(assigns(:organisation)).to be(real_org)
+      get :show, :id => real_org.id.to_s
+      expect(assigns(:organisation)).to eq(real_org)
       expect(assigns(:markers)).to eq(markers)
     end
 
     context "editable flag is assigned to match user permission" do
       it "user with permission leads to editable flag true" do
         expect(@user).to receive(:can_edit?).with(real_org).and_return(true)
-        get :show, :id => 37
+        get :show, id: real_org.id.to_s
         expect(assigns(:editable)).to be(true)
       end
 
       it "user without permission leads to editable flag false" do
         expect(@user).to receive(:can_edit?).with(real_org).and_return(true)
-        get :show, :id => 37
+        get :show, id: real_org.id.to_s
         expect(assigns(:editable)).to be(true)
       end
 
       it 'when not signed in editable flag is nil' do
         allow(controller).to receive(:current_user).and_return(nil)
-        get :show, :id => 37
+        get :show, id: real_org.id.to_s
         expect(assigns(:editable)).to be_nil
       end
     end
@@ -186,19 +185,19 @@ describe OrganisationsController, :type => :controller do
         allow(@user).to receive(:can_edit?)
         expect(@user).to receive(:can_request_org_admin?).with(real_org).and_return(true)
         allow(controller).to receive(:current_user).and_return(@user)
-        get :show, :id => 37
+        get :show, :id => real_org.id.to_s
         expect(assigns(:grabbable)).to be(true)
       end
       it 'assigns grabbable to false when user cannot request org superadmin status' do
         allow(@user).to receive(:can_edit?)
         expect(@user).to receive(:can_request_org_admin?).with(real_org).and_return(false)
         allow(controller).to receive(:current_user).and_return(@user)
-        get :show, :id => 37
+        get :show, :id => real_org.id.to_s
         expect(assigns(:grabbable)).to be(false)
       end
       it 'when not signed in grabbable flag is true' do
         allow(controller).to receive(:current_user).and_return(nil)
-        get :show, :id => 37
+        get :show, :id => real_org.id.to_s
         expect(assigns(:grabbable)).to be true
       end
     end
@@ -207,13 +206,13 @@ describe OrganisationsController, :type => :controller do
       context 'depends on can_create_volunteer_ops?' do
         it 'true' do
           expect(@user).to receive(:can_create_volunteer_ops?) { true }
-          get :show, :id => 37
+          get :show, :id => real_org.id.to_s
           expect(assigns(:can_create_volunteer_op)).to be true
         end
 
         it 'false' do
           expect(@user).to receive(:can_create_volunteer_ops?) { false }
-          get :show, :id => 37
+          get :show, :id => real_org.id.to_s
           expect(assigns(:can_create_volunteer_op)).to be false
         end
       end
@@ -221,7 +220,7 @@ describe OrganisationsController, :type => :controller do
       it 'will not be called when current user is nil' do
         allow(controller).to receive_messages current_user: nil
         expect(@user).not_to receive :can_create_volunteer_ops?
-        get :show, :id => 37
+        get :show, :id => real_org.id.to_s
         expect(assigns(:can_create_volunteer_op)).to be nil
       end
     end

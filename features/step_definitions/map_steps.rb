@@ -25,7 +25,7 @@ Then /^the organisation "(.*?)" should have a (large|small) icon$/ do |name, ico
   if klass == "measle"
     expect(find_map_icon(klass, org_id)["src"]).to eq "https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png"
   else
-    expect(find_map_icon(klass, org_id)["src"]).to eq "http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png"
+    expect(find_map_icon(klass, org_id)["src"]).to eq "https://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png"
   end
 end
 
