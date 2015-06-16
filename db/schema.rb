@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150425220712) do
+ActiveRecord::Schema.define(version: 20150502193421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,9 @@ ActiveRecord::Schema.define(version: 20150425220712) do
     t.integer "category_id"
     t.integer "organisation_id"
   end
+
+  add_index "categories_organisations", ["category_id"], name: "index_categories_organisations_on_category_id", using: :btree
+  add_index "categories_organisations", ["organisation_id"], name: "index_categories_organisations_on_organisation_id", using: :btree
 
   create_table "features", force: :cascade do |t|
     t.string  "name",   limit: 255
@@ -141,6 +144,7 @@ ActiveRecord::Schema.define(version: 20150425220712) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
+  add_index "users", ["organisation_id"], name: "index_users_on_organisation_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "volunteer_ops", force: :cascade do |t|
