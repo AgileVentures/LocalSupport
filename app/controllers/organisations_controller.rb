@@ -1,5 +1,6 @@
 class OrganisationsController < ApplicationController
   layout 'two_columns'
+
   # GET /organisations/search
   # GET /organisations/search.json
   before_filter :authenticate_user!, :except => [:search, :index, :show]

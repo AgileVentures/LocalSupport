@@ -3,7 +3,7 @@ describe VolunteerOpsController, :type => :controller do
   it "should render template two column layout"  do
     get :index
     expect(response).to render_template 'index'
-    expect(response).to render_template 'layouts/two_columns'
+    expect(response).to render_template 'layouts/two_columns_without_map_legend'
   end
 end
 
