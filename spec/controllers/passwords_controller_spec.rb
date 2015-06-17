@@ -7,8 +7,8 @@ describe Devise::PasswordsController, :type => :controller do
     end
     context "successful" do
       before :each do
-        FactoryGirl.create(:user)
-        post :create, 'user' => {'email' => 'jj@example.com'}
+        usr = FactoryGirl.create(:user)
+        post :create, 'user' => {'email' => usr.email}
       end
 
       it 'emails when user requests password for email in the system' do

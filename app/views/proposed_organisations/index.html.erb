@@ -1,0 +1,27 @@
+<div class="well">
+  <table class="table table-responsive table-hover sortable">
+    <thead>
+    <tr>
+      <th>Proposer Email</th>
+      <th>Proposed </th>
+      <th>Last modified</th>
+      <th>Organisation Name</th>
+      <th> </th>
+    </tr>
+    </thead>
+    <% @proposed_organisations.each do |proposed_organisation| %>
+        <tr id="<%= proposed_organisation.id %>" class="actions-right">
+          <td><%= proposed_organisation.users.first.try(:email) %></td>
+          <td><%= time_ago_in_words_with_nils(proposed_organisation.try(:created_at)) %> </td>
+          <td><%= time_ago_in_words_with_nils(proposed_organisation.try(:updated_at)) %></td>
+          <td><%= proposed_organisation.name %></td>
+          <td>
+            <%= link_to(proposed_organisation_path(proposed_organisation),
+                        :class => "btn btn-small btn-primary pull-right") do %>
+                <i class="fa fa-undo"></i> View Details</a>
+            <% end %>
+          </td>
+        </tr>
+    <% end %>
+  </table>
+</div>

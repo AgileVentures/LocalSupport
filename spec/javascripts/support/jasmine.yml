@@ -16,7 +16,7 @@ src_files:
   - assets/this_is_my_org.js
   - assets/google_map.js
   - assets/jasmine-jquery.js
-
+  - assets/utilities.coffee
 # stylesheets
 #
 # Return an array of stylesheet filepaths relative to src_dir to include before jasmine specs.

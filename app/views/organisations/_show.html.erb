@@ -1,0 +1,55 @@
+<h3>
+  <%= org.name %>
+</h3>
+
+<p>
+  <%= simple_format org.description %>
+</p>
+
+
+<h4>
+  Contact information
+</h4>
+<% if org.address.present? && (org.publish_address? || org.type == "ProposedOrganisation")%>
+    <p>
+      <b>Address:</b>
+      <%= org.address %>
+    </p>
+<% end %>
+<% if org.postcode.present? %>
+    <p>
+      <b>Postcode:</b>
+      <%= org.postcode %>
+    </p>
+<% end %>
+<% if org.email.present? && (org.publish_email? || org.type == "ProposedOrganisation")%>
+    <p>
+      <b>Email:</b>
+      <a href="mailto:<%= org.email %>"><%= org.email %></a>
+    </p>
+<% end %>
+<% if org.website.present? %>
+    <p>
+      <b>Website:</b>
+      <%= link_to org.website, org.website, {:target => '_blank'} %>
+    </p>
+<% end %>
+<% if org.telephone.present? && (org.publish_phone? || org.type == "ProposedOrganisation")%>
+    <p>
+      <b>Telephone:</b>
+      <%= org.telephone %>
+    </p>
+<% end %>
+<% if org.donation_info.present? %>
+    <p>
+      <b>Donation Info:</b>
+      <%= link_to "Donate to #{org.name} now!", org.donation_info, {:target => '_blank'} %>
+    </p>
+<% end %>
+
+<% if org.categories.present? %>
+    <p>
+      <b>Categories: </b>
+      <%= org.categories.map(&:name).join(", ") %>
+    </p>
+<% end %>

@@ -1,8 +1,30 @@
-def stub_request_with_address(address, body = nil)
-  filename = "#{address.gsub(/\s/, '_')}.json"
-  filename = File.read "test/fixtures/#{filename}"
-  stub_request(:any, /maps\.googleapis\.com/).
-      to_return(status => 200, :body => body || filename, :headers => {})
+require_relative 'proposed_organisation_testing_api'
+
+Given(/^the following proposed organisations exist:$/) do |table|
+  require 'boolean'
+  table.hashes.each do |hash|
+    create_hash = {}
+    proposer = nil
+    hash.each_pair do |field_name, field_value|
+      if field_name == "address"
+        stub_request_with_address(field_value)
+      end
+      if field_name != "proposer_email"
+        key_value_to_add = {field_name.to_sym => field_value}
+      else
+        proposer = User.find_by(email: field_value)
+      end
+      create_hash.merge! key_value_to_add unless key_value_to_add.nil?
+    end
+    proposed_org = ProposedOrganisation.new create_hash
+    proposed_org.users << proposer
+    proposed_org.save!
+  end
+end
+
+Given(/^a proposed organisation has been proposed by "(.*)"$/) do |user_email|
+  usr = User.find_by(email: user_email)
+  unsaved_proposed_organisation(usr).save!
 end
 
 Given(/^the following addresses exist:$/) do |table|
