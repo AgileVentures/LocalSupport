@@ -41,3 +41,9 @@ Then(/^the organisation named "(.*?)" should have fields as follows:$/) do |name
    expect(org.send(attr)).to eq value
  end
 end
+
+Then(/^I should see a view details link for each of the proposed organisations$/) do
+  ProposedOrganisation.all.each do |proposed_org|
+    expect(page).to have_link "View Details", href: proposed_organisation_path(proposed_org)
+  end
+end

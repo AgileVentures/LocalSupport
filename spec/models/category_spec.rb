@@ -74,9 +74,9 @@ describe 'Category', :type => :model do
       expect(c.charity_commission_name).to eq("WELL BEING AND JOYOUS EXISTENCE")
     end
 
-    it 'has and belongs to many organisations' do
-      expect(@category1.organisations).to include(@org2)
-      expect(@category1.organisations).to include(@org3)
+    it 'has and belongs to many base_organisations' do
+      expect(@category1.base_organisations).to include(@org2)
+      expect(@category1.base_organisations).to include(@org3)
     end
 
     it 'should have a seed method' do
