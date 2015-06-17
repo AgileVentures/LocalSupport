@@ -48,7 +48,7 @@ And /^I add "(.*?)" as a superadmin for "(.*?)" charity$/ do |superadmin_email, 
 end
 
 Then /^I should see the no charity superadmins message$/ do
-  expect(page).to have_content "This organisation has no superadmins yet"
+  expect(page).to have_content "This organisation has no admins yet"
 end
 
 Given /^I delete "(.*?)" charity$/ do |name|
