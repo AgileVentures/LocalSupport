@@ -6,13 +6,3 @@
     <%= content_tag "div", "", id: "marker_data", data: {markers: markers} %>
 <% end %>
 
-<% content_for :legend do %>
-      <div class="flex-row key_row">
-        <div class="span1 key_image"><%= image_tag("marker.png", :size =>"15x15", alt:"Large map marker") %></div>
-        <div class="span5 key_text">Details updated by the organisation within the last 12 months</div>
-      </div>
-      <div class="flex-row key_row">
-        <div class="span1 key_image"><%= image_tag("redcircle.png", :size =>"5x5", alt:"Small map marker") %></div>
-        <div class="span5 key_text">Details NOT updated by the organisation within the last 12 months</div>
-      </div>
-<% end %>

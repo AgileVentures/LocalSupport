@@ -1,5 +1,5 @@
 class OrganisationsController < ApplicationController
-  layout 'two_columns'
+  layout 'two_columns_with_map'
 
   # GET /organisations/search
   # GET /organisations/search.json

@@ -85,7 +85,7 @@ describe OrganisationsController, :type => :controller do
 
       after(:each) do
         expect(response).to render_template 'index'
-        expect(response).to render_template 'layouts/two_columns'
+        expect(response).to render_template 'layouts/two_columns_with_map'
         expect(assigns(:organisations)).to eq([double_organisation])
         expect(assigns(:markers)).to eq(markers)
         expect(assigns(:cat_name_ids)).to eq({what: [], how: [], who: []})
@@ -130,7 +130,7 @@ describe OrganisationsController, :type => :controller do
       get :index
       expect(assigns(:organisations)).to eq(result)
       expect(assigns(:markers)).to eq(markers)
-      expect(response).to render_template 'layouts/two_columns'
+      expect(response).to render_template 'layouts/two_columns_with_map'
     end
   end
 
@@ -146,9 +146,9 @@ describe OrganisationsController, :type => :controller do
       allow(controller).to receive(:current_user).and_return(@user)
     end
 
-    it 'should use a two_column layout' do
+    it 'should use a two_column with map layout' do
       get :show, :id => real_org.id.to_s
-      expect(response).to render_template 'layouts/two_columns'
+      expect(response).to render_template 'layouts/two_columns_with_map'
     end
 
     it "assigns the requested organisation as @organisation and appropriate markers" do
@@ -240,9 +240,9 @@ describe OrganisationsController, :type => :controller do
         expect(assigns(:organisation)).to be(double_organisation)
       end
 
-      it 'should use a two_column layout' do
+      it 'should use a two_column with map layout' do
         get :new
-        expect(response).to render_template 'layouts/two_columns'
+        expect(response).to render_template 'layouts/two_columns_with_map'
       end
     end
 
@@ -269,7 +269,7 @@ describe OrganisationsController, :type => :controller do
         allow(Organisation).to receive(:find).with('37') { real_org }
         get :edit, :id => '37'
         expect(assigns(:organisation)).to be(real_org)
-        expect(response).to render_template 'layouts/two_columns'
+        expect(response).to render_template 'layouts/two_columns_with_map'
       end
     end
     context "while signed in as user who cannot edit" do
@@ -317,7 +317,7 @@ describe OrganisationsController, :type => :controller do
       end
 
       describe "with invalid params" do
-        after(:each) { expect(response).to render_template 'layouts/two_columns' }
+        after(:each) { expect(response).to render_template 'two_columns_with_map' }
 
         it "assigns a newly created but unsaved organisation as @organisation" do
           allow(Organisation).to receive(:new){ double_organisation(:save => false) }
@@ -401,7 +401,7 @@ describe OrganisationsController, :type => :controller do
       end
 
       describe "with invalid params" do
-        after(:each) { expect(response).to render_template 'layouts/two_columns' }
+        after(:each) { expect(response).to render_template 'layouts/two_columns_with_map' }
 
         it "assigns the organisation as @organisation" do
           allow(Organisation).to receive(:find) { double_organisation(:update_attributes_with_superadmin => false) }
