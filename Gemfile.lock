@@ -445,3 +445,6 @@ DEPENDENCIES
   uri-handler
   url_validator
   webmock (= 1.20.0)
+
+BUNDLED WITH
+   1.10.3
