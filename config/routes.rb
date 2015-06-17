@@ -23,6 +23,7 @@ LocalSupport::Application.routes.draw do
     resources :proposed_organisation_edits, :only => [:new, :show, :create, :update]
   end
   resources :users
+  resources :proposed_organisations, :only => [:new, :create, :show, :index, :update]
 
   # so that static pages are linked directly instead of via /pages/:id
   get ':id', to: 'pages#show', as: :page

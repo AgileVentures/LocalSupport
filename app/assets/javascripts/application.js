@@ -13,6 +13,7 @@
 //= require bootstrap-switch
 //= require organisations
 //= require analytics
+//= require utilities
 
 window.LocalSupport = {};
 

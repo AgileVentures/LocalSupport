@@ -19,13 +19,21 @@ def find_map_icon klass, org_id
   expect(page).to have_css ".#{klass}[data-id='#{org_id}']"
   find(".#{klass}[data-id='#{org_id}']")
 end
-Then /^the organisation "(.*?)" should have a (large|small) icon$/ do |name, icon_size|
-  org_id = Organisation.find_by(name: name).id
-  klass = (icon_size == "small") ? "measle" : "marker"
-  if klass == "measle"
-    expect(find_map_icon(klass, org_id)["src"]).to eq "https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png"
+Then /^the (proposed organisation|organisation) "(.*?)" should have a (large|small) icon$/ do |type, name, icon_size|
+  klass = case type
+  when 'proposed organisation'
+    ProposedOrganisation
+  when 'organisation'
+    Organisation
   else
-    expect(find_map_icon(klass, org_id)["src"]).to eq "https://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png"
+    raise "Unknown class #{type}"
+  end
+  org_id = klass.find_by(name: name).id
+  marker_class = (icon_size == "small") ? "measle" : "marker"
+  if marker_class == "measle"
+    expect(find_map_icon(marker_class, org_id)["src"]).to eq "https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png"
+  else
+    expect(find_map_icon(marker_class, org_id)["src"]).to eq "https://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png"
   end
 end
 

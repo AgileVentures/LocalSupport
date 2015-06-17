@@ -51,7 +51,7 @@ describe('This is my Organisation button', function() {
                 expect(menu).toHaveClass('open');
             });
             it('loginForm contains hidden input field with org id', function(){
-              expect($("form#loginForm input[name=pending_organisation_id]").val()).toEqual('642')
+                expect($("form#loginForm input[name=pending_organisation_id]").val()).toEqual('642')
             });
             it('registerForm contains hidden input field with org id', function(){
                 expect($("form#registerForm input[name=user\\[pending_organisation_id\\]]").val()).toEqual('642')
