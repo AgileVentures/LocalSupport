@@ -83,36 +83,27 @@
 
 /* MAP LEGEND STYLE
 -------------------------------------------------- */
-.map_key {
-  background-color: #F4F4F4;
-  padding: 10px;
+
+.map_legend td {
+  padding: 0;
+  vertical-align: bottom;
+  border: none;
 }
 
-//.key_row {
-//  margin-left: 10px !important;
-//  margin-top: 5px;
+//.key_title {
+//  display: none;
+//  text-transform: uppercase;
+//  text-align: center;
+//  font-size: 15px;
 //}
 
-.map_key .flex-row{
-  align-items: flex-end;
-}
-
-.key_title {
-  display: none;
-  text-transform: uppercase;
-  text-align: center;
-  font-size: 15px;
-}
-
-.key_image {
-  margin-left: 0;
-  margin-right: 7px;
-  width: 20px;
+.map_legend td.key_image {
+  padding-right: 10px;
   text-align: center;
 }
 
-.key_text {
+.map_legend td.key_text {
   font-size: 12px;
   color: #899096;
-  margin-left: 3px;
 }
+
