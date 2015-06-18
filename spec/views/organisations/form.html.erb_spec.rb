@@ -28,7 +28,7 @@ describe "organisations/_form.html.erb", :type => :view do
             'organisation_description' => 'Enter organisation description',
             'organisation_website' => 'Enter organisation website url',
             'organisation_telephone' => 'Enter organisation phone number',
-            'organisation_superadmin_email_to_add' => "You may add an organisation superadministrator email here",
+            'organisation_superadmin_email_to_add' => "You may add an organisation administrator email here",
             'organisation_donation_info' => 'Enter organisation donation url'
     }
     hash.each do |label,placeholder|
