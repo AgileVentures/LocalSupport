@@ -112,3 +112,7 @@ And(/^"(.*?)" should not have nil coordinates$/) do |name|
   org.latitude.should_not be_nil
   org.longitude.should_not be_nil
 end
+
+Then(/^I should see the map key$/) do
+  expect(page).to have_text("key")
+end

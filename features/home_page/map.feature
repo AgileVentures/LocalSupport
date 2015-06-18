@@ -59,3 +59,7 @@ Feature: Map of local charities
     Then the coordinates for "Harrow Bereavement Counselling" and "Youth UK" should be the same
     Then the coordinates for "Age UK" and "Youth UK" should not be the same
 
+  Scenario: Showing meaning of large map icons
+    Given I visit the home page
+    And I click "Close"
+    Then I should see the map key
