@@ -13,6 +13,7 @@ class OrganisationDefaultStringValues < ActiveRecord::Migration
 
   def up
     ATTRS.each do |attr|
+      Organisation.table_name = "organisations"
       Organisation.with_deleted.where(attr => nil).update_all(attr => "")
       ProposedOrganisationEdit.with_deleted.where(attr => nil).update_all(attr => "")
       change_column_default(:organisations, attr, "")
@@ -28,6 +29,7 @@ class OrganisationDefaultStringValues < ActiveRecord::Migration
       change_column_null(:organisations, attr, true)
       change_column_default(:proposed_organisation_edits, attr, nil)
       change_column_null(:proposed_organisation_edits, attr, true)
+      Organisation.table_name = "organisations"
       Organisation.with_deleted.where(attr => "").update_all(attr => nil)
       ProposedOrganisationEdit.with_deleted.where(attr => "").update_all(attr => nil)
     end
