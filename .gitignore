@@ -17,6 +17,7 @@ capybara-*.html
 /vendor/bundle
 vendor/assets/bower_components/
 /log/*
+/node_modules/
 /tmp/*
 /db/*.sqlite3
 /db/schema.rb

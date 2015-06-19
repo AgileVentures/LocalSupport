@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150423160344) do
+ActiveRecord::Schema.define(version: 20150502193421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,29 +29,33 @@ ActiveRecord::Schema.define(version: 20150423160344) do
     t.integer "organisation_id"
   end
 
+  add_index "categories_organisations", ["category_id"], name: "index_categories_organisations_on_category_id", using: :btree
+  add_index "categories_organisations", ["organisation_id"], name: "index_categories_organisations_on_organisation_id", using: :btree
+
   create_table "features", force: :cascade do |t|
     t.string  "name",   limit: 255
     t.boolean "active",             default: false
   end
 
   create_table "organisations", force: :cascade do |t|
-    t.string   "name",            limit: 255, default: "",    null: false
-    t.string   "address",         limit: 255, default: "",    null: false
-    t.string   "postcode",        limit: 255, default: "",    null: false
-    t.string   "email",           limit: 255, default: "",    null: false
-    t.text     "description",                 default: "",    null: false
-    t.string   "website",         limit: 255, default: "",    null: false
-    t.string   "telephone",       limit: 255, default: "",    null: false
+    t.string   "name",            limit: 255, default: "",             null: false
+    t.string   "address",         limit: 255, default: "",             null: false
+    t.string   "postcode",        limit: 255, default: "",             null: false
+    t.string   "email",           limit: 255, default: "",             null: false
+    t.text     "description",                 default: "",             null: false
+    t.string   "website",         limit: 255, default: "",             null: false
+    t.string   "telephone",       limit: 255, default: "",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
-    t.text     "donation_info",               default: "",    null: false
+    t.text     "donation_info",               default: "",             null: false
     t.boolean  "publish_address",             default: false
     t.boolean  "publish_phone",               default: false
     t.boolean  "publish_email",               default: true
     t.datetime "deleted_at"
+    t.string   "type",                        default: "Organisation"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -120,6 +124,7 @@ ActiveRecord::Schema.define(version: 20150423160344) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
+  add_index "users", ["organisation_id"], name: "index_users_on_organisation_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "volunteer_ops", force: :cascade do |t|
