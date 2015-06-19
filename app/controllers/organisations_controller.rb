@@ -1,4 +1,3 @@
-
 class OrganisationsController < BaseOrganisationsController
   layout 'two_columns_with_map'
   # GET /organisations/search
@@ -134,6 +133,5 @@ class OrganisationsController < BaseOrganisationsController
     end
     true
   end
-
-
+  
 end
