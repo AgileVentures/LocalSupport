@@ -88,22 +88,24 @@
     </tr> 
       </tbody>
     </table>
-    <h5>Edit categories</h5>
-    <div id = "categories_scroll" style="height:10em;width:60%;border:1px solid #ccc;overflow:auto;padding-left:2px;">
-    <%= f.fields_for :category_organisations, f.object.category_organisations.sort do |ff| %>
-         <%= render partial: 'organisations/category_type', locals: {category: ff.object.category.name} %>
-        <div>
-          <%= ff.check_box :_destroy,
-                           {:checked => ff.object.persisted?},
-                           '0', '1'
-          %>
-          <%= ff.label :_destroy, ff.object.category.name, class: "checkbox inline", style: "padding-left: 2px;"%>
-          <%= ff.hidden_field :category_id %>
-        </div>
-    <% end %>
+    <div id="org_categories" class="row">
+      <h4>Edit categories</h4>
+      <ul class="categories_scroll span5">
+        <%= f.fields_for :category_organisations, f.object.category_organisations.sort do |ff| %>
+            <%= render partial: 'organisations/category_type', locals: {category: ff.object.category.name} %>
+            <li>
+              <%= ff.check_box :_destroy,
+                               {:checked => ff.object.persisted?},
+                               '0', '1'
+              %>
+              <%= ff.label :_destroy, ff.object.category.name, class: "checkbox inline", style: "padding-left: 2px;"%>
+              <%= ff.hidden_field :category_id %>
+            </li>
+        <% end %>
+      </ul>
     </div>
     <% if @user_id %>
-      <%= f.hidden_field :user_id, value: @user_id %> 
+      <%= f.hidden_field :user_id, value: @user_id %>
     <%end %>
     <br>
     <div class="actions">
@@ -113,3 +115,4 @@
 <% end %>
 
 <% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
+
