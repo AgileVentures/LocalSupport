@@ -1,3 +1,5 @@
+require_relative 'proposed_organisation_testing_api'
+
 And /^I select the "(.*?)" category from (How They Help|Who They Help|What They Do)$/ do |category, cat_type|
   cat_id = case cat_type
     when 'What They Do'
@@ -12,6 +14,10 @@ And /^I select the "(.*?)" category from (How They Help|Who They Help|What They 
   select(category, :from => cat_id)
 end
 
+When /^I visit the proposed organisation show page for the proposed organisation that was proposed$/ do 
+  proposed_org = ProposedOrganisation.find_by(name: unsaved_proposed_organisation(User.first).name)
+  visit proposed_organisation_path(proposed_org)
+end
 When(/^I visit "(.*?)"$/) do |path|
   visit path
 end
@@ -22,7 +28,9 @@ def paths(location)
       'sign up' => new_user_registration_path,
       'sign in' => new_user_session_path,
       'organisations index' => organisations_path,
+      'proposed organisations index' => proposed_organisations_path,
       'new organisation' => new_organisation_path,
+      'new proposed organisation' => new_proposed_organisation_path,
       'contributors' => contributors_path,
       'password reset' => edit_user_password_path,
       'invitation' => accept_user_invitation_path,
@@ -30,7 +38,6 @@ def paths(location)
       'all users' => users_report_path,
       'invited users' => invited_users_report_path,
       'volunteer opportunities' => volunteer_ops_path,
-      'new organisation' => new_organisation_path,
       'contributors' => contributors_path,
       'deleted users' => deleted_users_report_path
   }[location]

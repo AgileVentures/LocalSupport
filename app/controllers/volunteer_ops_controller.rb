@@ -1,5 +1,5 @@
 class VolunteerOpsController < ApplicationController
-  layout 'two_columns'
+  layout 'two_columns_with_map'
   before_filter :authorize, :except => [:show, :index]
 
   def index
