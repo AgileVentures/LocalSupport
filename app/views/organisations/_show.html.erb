@@ -49,7 +49,7 @@
 
 <% if org.categories.present? %>
     <b>Categories: </b>
-        <ul>
+        <ul class="org_categories_types">
             <li>
               <strong>What they do:</strong>
               <%= @organisation.categories.what_they_do.map(&:name).join(", ") %>
