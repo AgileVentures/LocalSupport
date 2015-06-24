@@ -48,8 +48,19 @@
 <% end %>
 
 <% if org.categories.present? %>
-    <p>
-      <b>Categories: </b>
-      <%= org.categories.map(&:name).join(", ") %>
-    </p>
+    <b>Categories: </b>
+        <ul>
+            <li>
+              <strong>What they do:</strong>
+              <%= @organisation.categories.what_they_do.map(&:name).join(", ") %>
+            </li>
+            <li>
+              <strong>Who they help:</strong>
+              <%= @organisation.categories.who_they_help.map(&:name).join(", ") %>
+            </li>
+            <li>
+              <strong>How they help:</strong>
+              <%= @organisation.categories.how_they_help.map(&:name).join(", ") %>
+          </li>
+        </ul>
 <% end %>
