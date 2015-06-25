@@ -43,6 +43,10 @@ body {
     margin: 0 auto -80px;
 }
 
+li {
+  list-style-type: none;
+}
+
 #push, #footer {
     clear: both;
     height: 40px;

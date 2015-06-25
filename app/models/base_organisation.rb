@@ -3,7 +3,17 @@ class BaseOrganisation < ActiveRecord::Base
   validates_url :website, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.website.present?}
   validates_url :donation_info, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.donation_info.present?}
   has_many :category_organisations, :foreign_key => :organisation_id
-  has_many :categories, :through => :category_organisations, :foreign_key => :organisation_id
+  has_many :categories, :through => :category_organisations, :foreign_key => :organisation_id do
+    def what_they_do
+      where(charity_commission_id: 100..199).order(name: :asc)
+    end
+    def who_they_help
+      where(charity_commission_id: 200..299).order(name: :asc)
+    end
+    def how_they_help
+      where(charity_commission_id: 300..399).order(name: :asc)
+    end
+  end
   accepts_nested_attributes_for :category_organisations,
                                 :allow_destroy => true
   # For the geocoder gem
