@@ -89,7 +89,7 @@
   margin: 5px 0;
 }
 
-.categories_scroll {
+#categories_scroll {
   height:10em;
   overflow: auto;
   margin:0;
@@ -97,18 +97,18 @@
   border:1px solid #ccc;
 }
 
-.categories_scroll strong {
+#categories_scroll strong {
   display: block;
   padding: 5px;
   margin: 15px 0 5px 0;
   background: #f2f2f2;
 }
 
-.categories_scroll strong:first-child {
+#categories_scroll strong:first-child {
   margin-top: 0;
 }
 
-.categories_scroll li {
+#categories_scroll li {
   display: block;
   margin-left: 15px;
 }

@@ -4,7 +4,7 @@ include ApplicationHelper
 
 Then(/^I travel a year plus "(.*?)" days into the future$/) do |days|
   Timecop.travel(
-    Time.current.advance(years: 1, days: days.to_i)
+      Time.current.advance(years: 1, days: days.to_i)
   )
 end
 Then(/^I should see the "(.*?)" image linked to "(.*?)"$/) do |image_alt, link|
@@ -128,9 +128,9 @@ end
 
 def proposed_org_fields
   {
-    name: 'Friendly charity',
-    address: '64 pinner road',
-    description: 'Such friendly so charity'
+      name: 'Friendly charity',
+      address: '64 pinner road',
+      description: 'Such friendly so charity'
   }
 end
 
@@ -272,16 +272,13 @@ Then /^I should not see any address or telephone information for "([^"]*?)"$/ do
   page.should_not have_content org1.telephone
   page.should_not have_content org1.address
 end
-
 Given /^I edit the donation url to be "(.*?)"$/ do |url|
   fill_in('organisation_donation_info', :with => url)
 end
-
 Then /^I should not see any edit or delete links$/ do
   page.should_not have_link "Edit"
   page.should_not have_link "Destroy"
 end
-
 Then /^I should not see any edit link for "([^"]*?)"$/ do |name1|
   page.should_not have_link "Edit"
 end
@@ -298,14 +295,12 @@ Then /^I should( not)? see a link with text "([^"]*?)"$/ do |negate, link|
     page.should have_link link
   end
 end
-
 Then /^I should( not)? see a new organisations link/ do |negate|
   #page.should_not have_link "New Organisation", :href => new_organisation_path
   #page.should_not have_selector('a').with_attribute href: new_organisation_path
   expectation_method = negate ? :not_to : :to
   expect(page).send(expectation_method, have_xpath("//a[@href='#{new_organisation_path}']"))
 end
-
 Then /^I should see "([^"]*)", "([^"]*)" and "([^"]*)"$/ do |text1, text2, text3|
   expect(page).to have_content text1
   expect(page).to have_content text2
@@ -322,8 +317,11 @@ Then /^I should( not)? see "((?:(?!before|").)+)"$/ do |negate, text|
   expect(page).send(expectation_method, have_content(text))
 end
 
-Then(/^I should see "(.*?)" within "(.*?)"$/) do |text, selector|
-  within('ul.org_categories_types > li:' + selector) { expect(page).to have_content text }
+Then(/^I should see "([^"]*)" within "([^"]*)"$/) do |text, type|
+  selector = 'first-child' if type == 'What they do'
+  selector = 'nth-child(2)' if type == 'Who they help'
+  selector = 'last-child' if type == 'How they help'
+  within('.org_categories_types > li:' + selector) { expect(page).to have_content text }
 end
 
 Then(/^I should( not)? see a link or button "(.*?)"$/) do |negate, link|
@@ -380,7 +378,6 @@ And /^I click "(.*)" on the "(.*)" page and stay there$/  do |link, org_name|
     Then I should be on the show page for the organisation named "#{org_name}"
   }
 end
-
 
 Given /^"(.*)"'s request status for "(.*)" should be updated appropriately$/ do |email, org_name|
   steps %Q{
@@ -442,11 +439,13 @@ When /^I delete "(.*?)"$/ do |email|
     click_link 'Delete'
   end
 end
+
 Then(/^user "(.*?)" should exist$/) do |user_email|
   visit users_report_path
   user_id = User.find_by_email(user_email).id
   find("tr##{user_id}", text: user_email).should_not be_nil
 end
+
 Then /^user "(.*?)" is( not)? deleted$/ do |email, negative|
   expectation = negative ? :not_to : :to
   expect(User.find_by_email email).send(expectation, be_nil)
@@ -514,10 +513,10 @@ Given /^debugger$/ do
   debugger
   puts ""
 end
+
 Given /^I run the invite migration$/ do
 
 end
-
 
 Given(/^I can run the rake task "(.*?)"$/) do |task|
   stdout, stderr, status = Open3.capture3("#{task}")

@@ -80,35 +80,30 @@
           <input type="checkbox" class="publish" disabled>
         </td>
       </tr>
-    <tr>
-      <td class="borderless" data-toggle="tooltip" title="Please enter the details of individuals from your organisation you would like to give permission to update your entry. E-mail addresses entered here will not be made public.">
-        <%= text_field_tag 'organisation_superadmin_email_to_add', value = nil, {:size => 100, class: 'wide_form', :cols => "10", :rows => "3", :placeholder => 'You may add an organisation administrator email here', :rows => "3" } %>
-      </td>
-      <td class="borderless"></td>
-    </tr> 
+      <tr>
+        <td class="borderless" data-toggle="tooltip" title="Please enter the details of individuals from your organisation you would like to give permission to update your entry. E-mail addresses entered here will not be made public.">
+          <%= text_field_tag 'organisation_superadmin_email_to_add', value = nil, {:size => 100, class: 'wide_form', :cols => "10", :rows => "3", :placeholder => 'You may add an organisation administrator email here', :rows => "3" } %>
+        </td>
+        <td class="borderless"></td>
+      </tr>
       </tbody>
     </table>
-    <div id="org_categories" class="row">
-      <h4>Edit categories</h4>
-      <ul class="categories_scroll span5">
-        <%= f.fields_for :category_organisations, f.object.category_organisations.sort do |ff| %>
-
-            <!--  render partial: 'organisations/category_type', locals: {category: ff.object.category.name}-->
-            <% if  ff.object.category.charity_commission_id == (100..199) %>
-                 <li>
-                     <%= ff.check_box :_destroy,
-                               {:checked => ff.object.persisted?},
-                               '0', '1'
-                  %>
-                  <%= ff.label :_destroy, ff.object.category.name, class: "checkbox inline", style: "padding-left: 2px;" %>
-                  <%= ff.hidden_field :category_id %>
-                </li>
-            <% end %>
-        <% end %>
-      </ul>
+    <h5>Edit categories</h5>
+    <div id = "categories_scroll" style="height:10em;width:60%;border:1px solid #ccc;overflow:auto;padding-left:2px;">
+      <%= f.fields_for :category_organisations, f.object.category_organisations.sort do |ff| %>
+          <%= render partial: 'organisations/category_type', locals: {category: ff.object.category.name} %>
+          <div>
+            <%= ff.check_box :_destroy,
+                             {:checked => ff.object.persisted?},
+                             '0', '1'
+            %>
+            <%= ff.label :_destroy, ff.object.category.name, class: "checkbox inline", style: "padding-left: 2px;"%>
+            <%= ff.hidden_field :category_id %>
+          </div>
+      <% end %>
     </div>
     <% if @user_id %>
-      <%= f.hidden_field :user_id, value: @user_id %>
+        <%= f.hidden_field :user_id, value: @user_id %>
     <%end %>
     <br>
     <div class="actions">
@@ -118,4 +113,3 @@
 <% end %>
 
 <% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
-
