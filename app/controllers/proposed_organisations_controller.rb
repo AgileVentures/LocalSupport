@@ -34,7 +34,7 @@ class ProposedOrganisationsController < BaseOrganisationsController
     @proposed_organisation.users << [usr] if usr
     if @proposed_organisation.invalid?
       flash[:error] =  @proposed_organisation.errors.first
-      render action: "new" && return false
+      render(action: "new") and false
     end
     if @proposed_organisation.save!
       session[:proposed_organisation_id] = @proposed_organisation.id
