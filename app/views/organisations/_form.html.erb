@@ -102,6 +102,21 @@
         </div>
     <% end %>
     </div>
+
+    <br>
+    <% if org.class == ProposedOrganisation %>
+      <h5>Please Confirm you are a not for profit organisation and are registered or working in Harrow</h5>
+      <%= f.check_box :non_profit %>
+      <%= f.label :non_profit ,"We are a not for profit organisation", class: "checkbox inline", style: "padding-left: 5px; padding-top: 1px;" %>
+      <br>
+      <%= f.check_box :registered_in_harrow %>
+      <%= f.label :registered_in_harrow, "We are registered in Harrow", class: "checkbox inline", style: "padding-left: 5px; padding-top: 1px;" %>
+      <br>
+      <%= f.check_box :works_in_harrow %>
+      <%= f.label :works_in_harrow, "We work in Harrow", class: "checkbox inline", style: "padding-left: 5px; padding-top: 1px;" %>
+    <% end %>
+    <br>
+
     <% if @user_id %>
       <%= f.hidden_field :user_id, value: @user_id %> 
     <%end %>
