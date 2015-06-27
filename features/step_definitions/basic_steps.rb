@@ -99,6 +99,11 @@ Given (/^I fill in the new charity page validly including the categories:$/) do 
   stub_request_with_address("64 pinner road")
 end
 
+Given(/^I am proposing an organisation$/) do
+  visit new_proposed_organisation_path
+  steps %Q{And I fill in the proposed charity page validly}
+end
+
 Given (/^I fill in the proposed charity page validly$/) do
   proposed_org_fields.each do |key, val|
     fill_in "proposed_organisation_#{key}", with: val
@@ -111,12 +116,25 @@ Given (/^I fill in the proposed charity page validly$/) do
   stub_request_with_address("64 pinner road")
 end
 
+When(/^I check the confirmation box for "(.*?)"$/) do |text|
+  find(:xpath,"//label[text()='#{text}']/preceding-sibling::input[1]").set(true)
+end
+
+When(/^I uncheck the confirmation box for "(.*?)"$/) do |text|
+  find(:xpath,"//label[text()='#{text}']/preceding-sibling::input[1]").set(false)
+end
+
 Then(/^I should be on the proposed organisations show page for the organisation$/) do
   expect(current_path).to eq proposed_organisation_path(ProposedOrganisation.find_by(name: proposed_org_fields[:name]))
 end
 
 Then(/^the proposed organisation should have been created$/) do
   expect(ProposedOrganisation.find_by(name: 'Friendly charity')).not_to be_nil
+end
+
+Then (/the confirmation box named (.*) should be (checked|unchecked)$/) do |category, status|
+  assertion = (status == 'checked') ? :should : :should_not
+  page.find(:xpath, "//label[text()='#{category}']/preceding-sibling::input[1]").send(assertion, be_checked)
 end
 
 def proposed_org_categories

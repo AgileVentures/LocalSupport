@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150502193421) do
+ActiveRecord::Schema.define(version: 20150627195630) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,24 +38,27 @@ ActiveRecord::Schema.define(version: 20150502193421) do
   end
 
   create_table "organisations", force: :cascade do |t|
-    t.string   "name",            default: "",             null: false
-    t.string   "address",         default: "",             null: false
-    t.string   "postcode",        default: "",             null: false
-    t.string   "email",           default: "",             null: false
-    t.text     "description",     default: "",             null: false
-    t.string   "website",         default: "",             null: false
-    t.string   "telephone",       default: "",             null: false
+    t.string   "name",                 default: "",             null: false
+    t.string   "address",              default: "",             null: false
+    t.string   "postcode",             default: "",             null: false
+    t.string   "email",                default: "",             null: false
+    t.text     "description",          default: "",             null: false
+    t.string   "website",              default: "",             null: false
+    t.string   "telephone",            default: "",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
-    t.text     "donation_info",   default: "",             null: false
-    t.boolean  "publish_address", default: false
-    t.boolean  "publish_phone",   default: false
-    t.boolean  "publish_email",   default: true
+    t.text     "donation_info",        default: "",             null: false
+    t.boolean  "publish_address",      default: false
+    t.boolean  "publish_phone",        default: false
+    t.boolean  "publish_email",        default: true
     t.datetime "deleted_at"
-    t.string   "type",            default: "Organisation"
+    t.string   "type",                 default: "Organisation"
+    t.boolean  "non_profit"
+    t.boolean  "registered_in_harrow"
+    t.boolean  "works_in_harrow"
   end
 
   create_table "pages", force: :cascade do |t|
