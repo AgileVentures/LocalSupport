@@ -32,6 +32,7 @@ FactoryGirl.define do
     latitude 10
     longitude 10
     non_profit true
+    works_in_harrow true
     after(:build) do |proposed_org|
       owner = FactoryGirl.create(:user)
       proposed_org.users << owner
@@ -47,6 +48,7 @@ FactoryGirl.define do
       latitude 10
       longitude 10
       non_profit nil
+      works_in_harrow nil
       after(:build) do |proposed_org|
         owner = FactoryGirl.create(:user)
         proposed_org.users << owner
