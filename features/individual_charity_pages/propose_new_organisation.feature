@@ -33,6 +33,9 @@ Feature: User proposes an organisation to be added to HarrowCN
     Given I click "Add Organisation"
     Then I should be on the new proposed organisation page
     And I fill in the proposed charity page validly
+    When I check the confirmation box for "We are a not for profit organisation"
+    And I check the confirmation box for "We are registered in Harrow"
+    And I uncheck the confirmation box for "We work in Harrow"
     And I press "Create Proposed organisation"
     And I should see all the proposed organisation fields
     And the proposed organisation should have been created
@@ -43,26 +46,21 @@ Feature: User proposes an organisation to be added to HarrowCN
 
 
   @javascript
-  Scenario: User must confirm that organisation to be added is a non-profit in Harrow
+  Scenario: User must confirm that organisation is registered in or works in Harrow
     Given I am proposing an organisation
     Then I should see "Please Confirm you are a not for profit organisation and are registered or working in Harrow"
     When I check the confirmation box for "We are a not for profit organisation"
-    And I check the confirmation box for "We are registered in Harrow"
+    And I uncheck the confirmation box for "We are registered in Harrow"
     And I uncheck the confirmation box for "We work in Harrow"
-    Then the confirmation box named We are a not for profit organisation should be checked
-    Then the confirmation box named We are registered in Harrow should be checked
-    Then the confirmation box named We work in Harrow should be unchecked
+    And I press "Create Proposed organisation"
+    Then I should see "You must be registered or work in Harrow to join Harrow Community Network"
 
   @javascript
   Scenario: User must confirm that organisation to be added is a non-profit in Harrow
     Given I am proposing an organisation
     Then I should see "Please Confirm you are a not for profit organisation and are registered or working in Harrow"
     And I check the confirmation box for "We are registered in Harrow"
-    Then the confirmation box named We are registered in Harrow should be checked
-    Then the confirmation box named We are a not for profit organisation should be unchecked
-    Then the confirmation box named We work in Harrow should be unchecked
     And I press "Create Proposed organisation"
-    Then show me the page
     Then I should see "You must be a nonprofit organisation to join Harrow Community Network"
 
   @javascript
@@ -75,6 +73,9 @@ Feature: User proposes an organisation to be added to HarrowCN
     And I click "Add Organisation"
     Then I should be on the new proposed organisation page
     And I fill in the proposed charity page validly
+    When I check the confirmation box for "We are a not for profit organisation"
+    And I check the confirmation box for "We are registered in Harrow"
+    And I uncheck the confirmation box for "We work in Harrow"
     And I press "Create Proposed organisation"
     And I should see "This organisation proposed by 'normal_user@example.com'"
     And the proposed organisation should have been created

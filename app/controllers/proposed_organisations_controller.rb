@@ -33,14 +33,14 @@ class ProposedOrganisationsController < BaseOrganisationsController
     @proposed_organisation = ProposedOrganisation.new(org_params)
     @proposed_organisation.users << [usr] if usr
     if @proposed_organisation.invalid?
-      flash[:error] =  @proposed_organisation.errors.first
-      render(action: "new") and false
+      flash[:error] =  @proposed_organisation.errors.first[1]
+      redirect_to new_proposed_organisation_path and return false
     end
     if @proposed_organisation.save!
       session[:proposed_organisation_id] = @proposed_organisation.id
       redirect_to @proposed_organisation, notice: 'Organisation is pending admin approval.'
     else
-      render action: "new"
+      redirect_to new_proposed_organisation_path and return false
     end
   end
 
@@ -79,6 +79,9 @@ class ProposedOrganisationParams
       :donation_info,
       :name,
       :telephone,
+      :non_profit,
+      :works_in_harrow,
+      :registered_in_harrow,
       category_organisations_attributes: [:_destroy, :category_id, :id]
     )
   end

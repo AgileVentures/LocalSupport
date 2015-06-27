@@ -22,9 +22,15 @@ describe ProposedOrganisation, :type => :model do
       end
     end
   end
+
   context "without nonprofit status confirmed" do
-    let(:proposed_org){FactoryGirl.build_stubbed :invalid_proposed_organisation}
-    it {expect(proposed_org.invalid?).to be true}   
+    let(:proposed_org){FactoryGirl.build_stubbed :invalid_proposed_organisation, works_in_harrow: true}
+    it {expect(proposed_org.invalid?).to be true}
+  end
+
+  context "without neither works in nor registered in Harrow confirmed" do
+    let(:proposed_org){FactoryGirl.build_stubbed :invalid_proposed_organisation, non_profit: true}
+    it {expect(proposed_org.invalid?).to be true}
   end
 
 end
