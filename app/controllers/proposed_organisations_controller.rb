@@ -32,6 +32,10 @@ class ProposedOrganisationsController < BaseOrganisationsController
     usr = User.find params[:proposed_organisation][:user_id] if params[:proposed_organisation][:user_id]
     @proposed_organisation = ProposedOrganisation.new(org_params)
     @proposed_organisation.users << [usr] if usr
+    if @proposed_organisation.invalid?
+      flash[:error] =  @proposed_organisation.errors.first
+      render action: "new" && return false
+    end
     if @proposed_organisation.save!
       session[:proposed_organisation_id] = @proposed_organisation.id
       redirect_to @proposed_organisation, notice: 'Organisation is pending admin approval.'

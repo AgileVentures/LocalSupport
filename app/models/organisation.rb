@@ -23,8 +23,10 @@ class Organisation < BaseOrganisation
   scope :null_users, lambda { includes(:users).where("users.organisation_id IS NULL").references(:users) }
   scope :without_matching_user_emails, lambda {where("organisations.email NOT IN (#{User.select('email').to_sql})")}
 
+
   after_save :uninvite_users, if: ->{ email_changed? }
 
+  
   def uninvite_users
     users.invited_not_accepted.update_all(organisation_id: nil)
   end
