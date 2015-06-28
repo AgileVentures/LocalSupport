@@ -15,26 +15,6 @@ ActiveRecord::Schema.define(version: 20150627195630) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "btree_gist"
-  enable_extension "chkpass"
-  enable_extension "citext"
-  enable_extension "cube"
-  enable_extension "dblink"
-  enable_extension "dict_int"
-  enable_extension "dict_xsyn"
-  enable_extension "earthdistance"
-  enable_extension "fuzzystrmatch"
-  enable_extension "hstore"
-  enable_extension "isn"
-  enable_extension "ltree"
-  enable_extension "pg_stat_statements"
-  enable_extension "pg_trgm"
-  enable_extension "pgcrypto"
-  enable_extension "pgrowlocks"
-  enable_extension "pgstattuple"
-  enable_extension "tablefunc"
-  enable_extension "unaccent"
-  enable_extension "uuid-ossp"
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -85,15 +65,9 @@ ActiveRecord::Schema.define(version: 20150627195630) do
     t.string   "name"
     t.string   "permalink"
     t.text     "content"
-<<<<<<< HEAD
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "link_visible", default: true
-=======
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
-    t.boolean  "link_visible",             default: true
->>>>>>> Add validation
   end
 
   add_index "pages", ["permalink"], name: "index_pages_on_permalink", using: :btree
@@ -160,8 +134,8 @@ ActiveRecord::Schema.define(version: 20150627195630) do
     t.string   "title"
     t.text     "description"
     t.integer  "organisation_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "volunteer_ops", ["organisation_id"], name: "index_volunteer_ops_on_organisation_id", using: :btree

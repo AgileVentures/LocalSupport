@@ -44,6 +44,15 @@ Feature: User proposes an organisation to be added to HarrowCN
     Then I should not see an "Accept Proposed Organisation" button
     And I should not see a "Reject Proposed Organisation" button
 
+  @javascript
+  Scenario: Categories are sticky even if initial proposal is rejected
+    Given I visit the new proposed organisation page
+    Then I should see "Please Confirm you are a not for profit organisation and are registered or working in Harrow"
+    And I check the category "Animal welfare"
+    And I press "Create Proposed organisation"
+    Then I should see "You must be a nonprofit organisation to join Harrow Community Network"
+    And the category named Animal welfare should be checked
+    And the category named General should be unchecked
 
   @javascript
   Scenario: User must confirm that organisation is registered in or works in Harrow

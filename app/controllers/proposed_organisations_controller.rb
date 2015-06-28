@@ -35,6 +35,8 @@ class ProposedOrganisationsController < BaseOrganisationsController
     if @proposed_organisation.invalid?
       flash[:error] =  @proposed_organisation.errors.first[1]
       @categories_start_with = Category.first_category_name_in_each_type
+      @proposed_organisation = ProposedOrganisation.new ProposedOrganisationParams.without_categories(params)
+      @categories_selected = collect_selected_categories
       render("new") and return false
     end
     if @proposed_organisation.save!
@@ -59,6 +61,13 @@ class ProposedOrganisationsController < BaseOrganisationsController
       flash[:notice] = PERMISSION_DENIED
       redirect_to root_path
     end
+  end
+  def collect_selected_categories
+    category_params = ProposedOrganisationParams.just_categories(params)
+    cats = category_params["category_organisations_attributes"].select do |key,value|
+      value["_destroy"] == "0"
+    end
+    cats.map{|k,v| v["category_id"]}
   end
 end
 
@@ -86,4 +95,26 @@ class ProposedOrganisationParams
       category_organisations_attributes: [:_destroy, :category_id, :id]
     )
   end
+  def self.just_categories params
+    params.require(:proposed_organisation).permit(category_organisations_attributes: [:_destroy, :category_id, :id])
   end
+  def self.without_categories params
+    params.require(:proposed_organisation).permit(
+      :superadmin_email_to_add,
+      :description,
+      :address,
+      :publish_address,
+      :postcode,
+      :email,
+      :publish_email,
+      :website,
+      :publish_phone,
+      :donation_info,
+      :name,
+      :telephone,
+      :non_profit,
+      :works_in_harrow,
+      :registered_in_harrow
+    )
+  end
+end
