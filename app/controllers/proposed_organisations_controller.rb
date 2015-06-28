@@ -34,7 +34,8 @@ class ProposedOrganisationsController < BaseOrganisationsController
     @proposed_organisation.users << [usr] if usr
     if @proposed_organisation.invalid?
       flash[:error] =  @proposed_organisation.errors.first[1]
-      redirect_to new_proposed_organisation_path and return false
+      @categories_start_with = Category.first_category_name_in_each_type
+      render("new") and return false
     end
     if @proposed_organisation.save!
       session[:proposed_organisation_id] = @proposed_organisation.id
