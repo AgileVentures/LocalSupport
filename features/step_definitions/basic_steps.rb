@@ -343,6 +343,11 @@ end
 Then(/^I should see "(.*?)" within "(.*?)"$/) do |text, selector|
   within('#' + selector) { expect(page).to have_content text}
 end
+Then(/^I should see the following:$/) do |table|
+  table.rows.each do |text|
+    expect(page).to have_content text.first
+  end
+end
 
 Then(/^I should( not)? see a link or button "(.*?)"$/) do |negate, link|
   expectation_method = negate ? :not_to : :to

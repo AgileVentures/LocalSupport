@@ -5,6 +5,20 @@
     </p>
   <% end %>
   <%= render partial: "organisations/show", locals: {org: @proposed_organisation}%>
+  <br>
+  <strong>Eligibility:</strong>
+  <ul class="unstyled" style="text-indent: 10px;">
+    <% if @proposed_organisation.non_profit %>
+      <li>We are a not for profit organisation</li>
+    <% end %>
+    <% if @proposed_organisation.works_in_harrow %>
+      <li>We work in Harrow</li>
+    <% end %>
+    <% if @proposed_organisation.registered_in_harrow %>
+      <li>We are registered in Harrow</li>
+    <% end %>
+  </ul>
+
   <% if current_user.try(:superadmin?) %>
     <%= form_for((@proposed_organisation), :url => {:action => :update}, :html =>
         {:style => 'display: inline-block;'}) do |f| %>
