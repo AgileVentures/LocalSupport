@@ -94,7 +94,7 @@
          <%= render partial: 'organisations/category_type', locals: {category: ff.object.category.name} %>
         <div>
           <%= ff.check_box :_destroy,
-                           {:checked => ff.object.persisted?},
+                           {:checked => @categories_selected.nil? || @categories_selected.empty? ? ff.object.persisted? : @categories_selected.index(ff.object.category.id.to_s).present?},
                            '0', '1'
           %>
           <%= ff.label :_destroy, ff.object.category.name, class: "checkbox inline", style: "padding-left: 2px;"%>
