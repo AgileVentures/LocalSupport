@@ -322,6 +322,11 @@ Then /^I should( not)? see "((?:(?!before|").)+)"$/ do |negate, text|
   expect(page).send(expectation_method, have_content(text))
 end
 
+Then(/^I should see "(.*?)" within "(.*?)"$/) do |text, type|
+  selector = 'first-child' if type == 'What they do'
+  within('#org-categories li:' + selector) { expect(page).to have_content text}
+end
+
 Then(/^I should( not)? see a link or button "(.*?)"$/) do |negate, link|
   expectation_method = negate ? :not_to : :to
   expect(page).send(expectation_method, have_selector(:link_or_button, link))
