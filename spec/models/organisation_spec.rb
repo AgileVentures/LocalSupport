@@ -203,6 +203,8 @@ describe Organisation, :type => :model do
 
   it 'should have and belong to many categories by types' do
     expect(@org2.categories.what_they_do).to include(@category3)
+    expect(@org2.categories.who_they_help).to include(@category1)
+    expect(@org2.categories.how_they_help).to include(@category2)
   end
 
   it 'must have search by keyword' do

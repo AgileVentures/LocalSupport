@@ -21,10 +21,14 @@ Feature: Web page owned by each charity
       | Animal Welfare    | 101                   |
       | Health            | 102                   |
       | Education         | 103                   |
+      | Voluntary         | 201                   |
+      | Finance           | 301                   |
      Given the following categories_organisations exist:
-      | category |  organisation |
-      | Health | Friendly |
+      | category  | organisation |
+      | Health    | Friendly |
       | Education | Friendly |
+      | Voluntary | Friendly  |
+      | Finance   | Friendly  |
     And I visit the show page for the organisation named "Friendly"
 
 
@@ -40,6 +44,8 @@ Feature: Web page owned by each charity
   Scenario: show categories of charity by type
     Then I should see "Health" within "What they do"
     And I should see "Education" within "What they do"
+    And I should see "Voluntary" within "Who they help"
+    And I should see "Finance" within "How they help"
     And I should not see "Animal Welfare"
     And I visit the show page for the organisation named "Unfriendly"
     Then I should not see "Health"
