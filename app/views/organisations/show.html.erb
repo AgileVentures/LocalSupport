@@ -2,9 +2,8 @@
     <%= javascript_include_tag 'this_is_my_org' %>
 <% end %>
 
-<div class="row">
-  <%= render partial: "show", locals: {org: @organisation} %>
-  <div class="row">
+<%= render partial: "show", locals: {org: @organisation} %>
+<div id="org-cat-buttons" class="row">
     <div class="position-bottom span6">
       <% if @editable %>
           <%= link_to("Edit", edit_organisation_path(@organisation.id), {:class => 'btn btn-primary'}) %>
@@ -25,9 +24,8 @@
       <% end %>
       <% if @pending_org_admin %>
         <p class="org-info-msg-1" ><strong>Your request for admin status is pending.</strong></p>
-      <% end%> 
+      <% end%>
     </div>
-  </div>
 </div>
 
 <% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
