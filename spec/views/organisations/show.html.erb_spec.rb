@@ -229,16 +229,6 @@ describe 'organisations/show.html.erb', :type => :view do
       expect(rendered).not_to have_content "Animal Welfare"
       expect(rendered).not_to have_content "Sports"
     end
-
-    it 'renders categories when present' do
-      cats = [mock_model(Category, name: "Animal Welfare"), mock_model(Category, name: "Sports")]
-      org = mock_model(Organisation, categories: cats)
-      assign(:organisation, org)
-      render
-      expect(rendered).to have_content "Categories:"
-      expect(rendered).to have_content "Animal Welfare"
-      expect(rendered).to have_content "Sports"
-    end
   end
 end
 
