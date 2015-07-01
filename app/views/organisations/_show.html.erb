@@ -52,15 +52,15 @@
     <ul id="org-categories">
       <li>
         <strong>What they do: </strong>
-        <%= @organisation.categories.what_they_do.map(&:name).join(', ') %>
+        <%= org.categories.what_they_do.pluck(:name).join(', ') %>
       </li>
       <li>
         <strong>Who they help: </strong>
-        <%= @organisation.categories.who_they_help.map(&:name).join(', ') %>
+        <%= org.categories.who_they_help.pluck(:name).join(', ') %>
       </li>
       <li>
         <strong>How they help: </strong>
-        <%= @organisation.categories.how_they_help.map(&:name).join(', ') %>
+        <%= org.categories.how_they_help.pluck(:name).join(', ') %>
       </li>
     </ul>
 <% end %>
