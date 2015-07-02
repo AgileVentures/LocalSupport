@@ -10,6 +10,9 @@
           <% if session[:pending_organisation_id] %>
             <input type="hidden" name="user[pending_organisation_id]" value = "<%= session[:pending_organisation_id] %>">
           <% end %>
+          <% if session[:proposed_org] %>
+            <input type="hidden" name="user[proposed_org]" value = "<%= session[:proposed_org] %>" >
+          <% end %>
 
           <div><%= f.label :email %>
             <%= f.email_field :email, :class => 'input-block-level', :autofocus => true %></div>

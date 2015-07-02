@@ -48,7 +48,7 @@ And /^I add "(.*?)" as a superadmin for "(.*?)" charity$/ do |superadmin_email, 
 end
 
 Then /^I should see the no charity superadmins message$/ do
-  expect(page).to have_content "This organisation has no superadmins yet"
+  expect(page).to have_content "This organisation has no admins yet"
 end
 
 Given /^I delete "(.*?)" charity$/ do |name|
@@ -87,15 +87,60 @@ Given (/^I fill in the new charity page validly$/) do
   fill_in 'organisation_address', :with => '64 pinner road'
   fill_in 'organisation_name', :with => 'Friendly charity'
 end
+
 Given (/^I fill in the new charity page validly including the categories:$/) do |categories_table|
+  fill_in 'organisation_address', :with => '64 pinner road'
+  fill_in 'organisation_name', :with => 'Friendly charity'
   categories_table.hashes.each do |cat|
     steps %Q{
       And I check the category "#{cat[:name]}"
     }
   end
   stub_request_with_address("64 pinner road")
-  fill_in 'organisation_address', :with => '64 pinner road'
-  fill_in 'organisation_name', :with => 'Friendly charity'
+end
+
+Given (/^I fill in the proposed charity page validly$/) do
+  proposed_org_fields.each do |key, val|
+    fill_in "proposed_organisation_#{key}", with: val
+  end
+  proposed_org_categories.each do |cat|
+    steps %Q{
+      And I check the category "#{cat}"
+    }
+  end
+  stub_request_with_address("64 pinner road")
+end
+
+Then(/^I should be on the proposed organisations show page for the organisation$/) do
+  expect(current_path).to eq proposed_organisation_path(ProposedOrganisation.find_by(name: proposed_org_fields[:name]))
+end
+
+Then(/^the proposed organisation should have been created$/) do
+  expect(ProposedOrganisation.find_by(name: 'Friendly charity')).not_to be_nil
+end
+
+def proposed_org_categories
+  [ 'Animal welfare',
+    'Accommodation',
+    'Education',
+    'Give them things' ]
+end
+
+def proposed_org_fields
+  {
+    name: 'Friendly charity',
+    address: '64 pinner road',
+    description: 'Such friendly so charity'
+  }
+end
+
+Then(/^I should see all the proposed organisation fields$/) do
+  proposed_org_fields.each_value do |value|
+    expect(page).to have_content(value)
+  end
+  proposed_org_categories.each do |cat|
+    expect(page).to have_content(cat)
+  end
 end
 
 Then /^the contact information should be available$/ do
@@ -104,12 +149,14 @@ Then /^the contact information should be available$/ do
     Then I should see "Contact Info Email us: contact@voluntaryactionharrow.org.uk Phone Us: 020 8861 5894 Write to Us: The Lodge, 64 Pinner Road, Harrow, Middlesex, HA1 4HZ Find Us: On Social Media (Click Here)"
    }
 end
+
 Then /^the about us should be available$/ do
   steps %Q{
     When I follow "About Us"
     Then I should see "About Us Supporting groups in Harrow We are a not-for-profit workers co-operative who support people and not-for-profit organisations to make a difference in their local community by: Working with local people and groups to identify local needs and develop appropriate action. Providing a range of services that help organisations to succeed. Supporting and encouraging the growth of co-operative movement. How do we support? Find out here (VAH in a nutshell) What is a Workers Co-operative? A workers co-operative is a business owned and democratically controlled by their employee members using co-operative principles. They are an attractive and increasingly relevant alternative to traditional investor owned models of enterprise. (Click here for more details)"
   }
 end
+
 Given /^I update "(.*?)" charity address to be "(.*?)"( when Google is indisposed)?$/ do |name, address, indisposed|
   steps %Q{
     Given I visit the show page for the organisation named "#{name}"

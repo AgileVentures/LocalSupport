@@ -1,0 +1,22 @@
+<div class="row">
+  <% if @proposer_email %>
+    <p>
+      This organisation proposed by '<%= @proposer_email%>'
+    </p>
+  <% end %>
+  <%= render partial: "organisations/show", locals: {org: @proposed_organisation}%>
+  <% if current_user.try(:superadmin?) %>
+    <%= form_for((@proposed_organisation), :url => {:action => :update}, :html =>
+        {:style => 'display: inline-block;'}) do |f| %>
+      <%= f.hidden_field :action, value: "accept" %>
+      <%= f.submit 'Accept', :class => 'btn btn-primary' %>
+    <% end %>
+    <%= form_for((@proposed_organisation), :url => {:action => :update}, :html =>
+        {:style => 'display: inline-block;'}) do |f| %>
+      <%= f.hidden_field :action, value: "reject" %>
+      <%= f.submit 'Reject', :class => 'btn btn-danger' %>
+    <% end %>
+  <% end %>
+</div>
+
+<% render partial: 'shared/map_scripts', locals: {markers: @markers} %>

@@ -1,6 +1,11 @@
 <footer class="footer">
   <p class="text-right"><small>
-    <%= link_to_if(current_user.try(:superadmin?), 'New Organisation',new_organisation_path){} %> |
+    <% if current_user.try(:superadmin?) %>
+      | <%= link_to('New Organisation' , new_organisation_path)%>
+    <%end%>
+    <% unless current_user.try(:superadmin?) || !Feature.active?(:automated_propose_org)%>
+       | <%= link_to("Add Organisation", new_proposed_organisation_path, 'data-signed_in' => current_user.present?, id: 'add_org')%>
+     <%end%> |
     <% @footer_page_links.each do |link|  %>
         <%= link_to_unless_current link[:name], page_path(link[:permalink]) %> |
     <% end %>

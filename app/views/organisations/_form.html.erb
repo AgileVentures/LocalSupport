@@ -1,4 +1,4 @@
-<%= form_for(setup_organisation(@organisation)) do |f| %>
+<%= form_for(setup_organisation(org)) do |f| %>
     <table>
       <thead>
       </thead>
@@ -73,7 +73,7 @@
       <tr>
         <td class="borderless" >
           <div>
-            <%= render partial: 'organisation_admin_display' %>
+            <%= render partial: 'organisations/organisation_admin_display', locals: {org: org} %>
           </div>
         </td>
         <td class="borderless">
@@ -82,7 +82,7 @@
       </tr>
     <tr>
       <td class="borderless" data-toggle="tooltip" title="Please enter the details of individuals from your organisation you would like to give permission to update your entry. E-mail addresses entered here will not be made public.">
-        <%= text_field_tag 'organisation_superadmin_email_to_add', value = nil, {:size => 100, class: 'wide_form', :cols => "10", :rows => "3", :placeholder => 'You may add an organisation superadministrator email here', :rows => "3" } %>
+        <%= text_field_tag 'organisation_superadmin_email_to_add', value = nil, {:size => 100, class: 'wide_form', :cols => "10", :rows => "3", :placeholder => 'You may add an organisation administrator email here', :rows => "3" } %>
       </td>
       <td class="borderless"></td>
     </tr> 
@@ -91,7 +91,7 @@
     <h5>Edit categories</h5>
     <div id = "categories_scroll" style="height:10em;width:60%;border:1px solid #ccc;overflow:auto;padding-left:2px;">
     <%= f.fields_for :category_organisations, f.object.category_organisations.sort do |ff| %>
-         <%= render partial: 'category_type', locals: {category: ff.object.category.name} %>
+         <%= render partial: 'organisations/category_type', locals: {category: ff.object.category.name} %>
         <div>
           <%= ff.check_box :_destroy,
                            {:checked => ff.object.persisted?},
@@ -102,7 +102,9 @@
         </div>
     <% end %>
     </div>
-
+    <% if @user_id %>
+      <%= f.hidden_field :user_id, value: @user_id %> 
+    <%end %>
     <br>
     <div class="actions">
       <%= f.submit :class => 'btn btn-primary' %>

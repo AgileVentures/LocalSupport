@@ -3,62 +3,7 @@
 <% end %>
 
 <div class="row">
-  <h3>
-    <%= @organisation.name %>
-  </h3>
-
-  <p>
-    <%= simple_format @organisation.description %>
-  </p>
-
-
-  <h4>
-    Contact information
-  </h4>
-  <% if @organisation.address.present? && @organisation.publish_address? %>
-      <p>
-        <b>Address:</b>
-        <%= @organisation.address %>
-      </p>
-  <% end %>
-  <% if @organisation.postcode.present? %>
-      <p>
-        <b>Postcode:</b>
-        <%= @organisation.postcode %>
-      </p>
-  <% end %>
-  <% if @organisation.email.present? && @organisation.publish_email? %>
-      <p>
-        <b>Email:</b>
-        <a href="mailto:<%= @organisation.email %>"><%= @organisation.email %></a>
-      </p>
-  <% end %>
-  <% if @organisation.website.present? %>
-      <p>
-        <b>Website:</b>
-        <%= link_to @organisation.website, @organisation.website, {:target => '_blank'} %>
-      </p>
-  <% end %>
-  <% if @organisation.telephone.present? && @organisation.publish_phone? %>
-      <p>
-        <b>Telephone:</b>
-        <%= @organisation.telephone %>
-      </p>
-  <% end %>
-  <% if @organisation.donation_info.present? %>
-      <p>
-        <b>Donation Info:</b>
-        <%= link_to "Donate to #{@organisation.name} now!", @organisation.donation_info, {:target => '_blank'} %>
-      </p>
-  <% end %>
-
-  <% if @organisation.categories.present? %>
-    <p>
-      <b>Categories: </b>
-      <%= @organisation.categories.map(&:name).join(", ") %>
-    </p>
-  <% end %>
-
+  <%= render partial: "show", locals: {org: @organisation} %>
   <div class="row">
     <div class="position-bottom span6">
       <% if @editable %>
