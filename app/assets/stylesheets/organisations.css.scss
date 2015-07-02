@@ -7,7 +7,6 @@
 }
 .org_h3 {
   margin: 10px 0px;
-  font-size: 30px;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight: bold;
   line-height: 20px;
@@ -29,6 +28,11 @@
 .flex-row {
   display: flex;
   flex-direction: row;
+}
+
+#org-information h4 span {
+  font-size: 15px;
+  font-weight: 400;
 }
 
 #organisation_search {
@@ -71,7 +75,7 @@
   }
 }
 
-/* ORGANISATION INFORMATION STYLE
+/* ORGANISATION CATEGORIES STYLE
 -------------------------------------------------- */
 
 #orgs_scroll {
@@ -94,6 +98,7 @@
   margin: 0;
   margin-bottom: 5px;
   padding-left: 10px;
+  color: #777;
   background-color: #F3F3F3;
 }
 
