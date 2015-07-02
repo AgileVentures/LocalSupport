@@ -21,6 +21,10 @@ body {
     background-color: whitesmoke !important;
 }
 
+li {
+  list-style: none;
+}
+
 .ls_infobox {
   border-radius: 4px;
   margin-bottom: 8px;

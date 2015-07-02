@@ -48,8 +48,19 @@
 <% end %>
 
 <% if org.categories.present? %>
-    <p>
-      <b>Categories: </b>
-      <%= org.categories.map(&:name).join(", ") %>
-    </p>
+    <b>Categories: </b>
+    <ul id="org-categories">
+      <li>
+        <strong>What they do: </strong>
+        <%= org.categories.what_they_do.pluck(:name).join(', ') %>
+      </li>
+      <li>
+        <strong>Who they help: </strong>
+        <%= org.categories.who_they_help.pluck(:name).join(', ') %>
+      </li>
+      <li>
+        <strong>How they help: </strong>
+        <%= org.categories.how_they_help.pluck(:name).join(', ') %>
+      </li>
+    </ul>
 <% end %>
