@@ -51,16 +51,16 @@
     <b>Categories: </b>
     <ul id="org-categories">
       <li>
-        <strong>What they do: </strong>
-        <%= org.categories.what_they_do.pluck(:name).join(', ') %>
+        <h5><strong>What they do</strong></h5>
+        <p><%= org.categories.what_they_do.pluck(:name).join(', ') %></p>
       </li>
       <li>
-        <strong>Who they help: </strong>
-        <%= org.categories.who_they_help.pluck(:name).join(', ') %>
+        <h5><strong>Who they help</strong></h5>
+        <p><%= org.categories.who_they_help.pluck(:name).join(', ') %></p>
       </li>
       <li>
-        <strong>How they help: </strong>
-        <%= org.categories.how_they_help.pluck(:name).join(', ') %>
+        <h5><strong>How they help</strong></h5>
+        <p><%= org.categories.how_they_help.pluck(:name).join(', ') %></p>
       </li>
     </ul>
 <% end %>
