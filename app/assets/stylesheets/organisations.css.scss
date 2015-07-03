@@ -7,7 +7,6 @@
 }
 .org_h3 {
   margin: 10px 0px;
-  font-size: 24.5px;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight: bold;
   line-height: 20px;
@@ -29,6 +28,11 @@
 .flex-row {
   display: flex;
   flex-direction: row;
+}
+
+#org-information h4 span {
+  font-size: 15px;
+  font-weight: 400;
 }
 
 #organisation_search {
@@ -71,11 +75,34 @@
   }
 }
 
+/* ORGANISATION CATEGORIES STYLE
+-------------------------------------------------- */
+
 #orgs_scroll {
   height: 340px;
   width: 100%;
   border: 1px solid #ccc;
   overflow-y: scroll;
+}
+
+#org-categories {
+  margin: 0;
+  margin-top: 10px;
+}
+
+#org-categories li {
+  margin-bottom: 10px;
+}
+
+#org-categories h5 {
+  margin: 0;
+  margin-bottom: 5px;
+  padding-left: 10px;
+  background-color: #F3F3F3;
+}
+
+#org-categories p {
+  margin-left: 10px;
 }
 
 #org-cat-buttons {
