@@ -1,6 +1,8 @@
 {
   "name":"LocalSupport",
-  "scripts":{},
+  "scripts":{
+    "postdeploy": "bundle exec rake db:setup"
+  },
   "env":{
     "BUILDPACK_URL":{
       "required":true
