@@ -18,7 +18,7 @@
       <h4>Postcode: <span><%= org.postcode %></span></h4>
   <% end %>
   <% if org.email.present? && (org.publish_email? || org.type == "ProposedOrganisation")%>
-      <h4>Mail: <span><a href="mailto:<%= org.email %>"><%= org.email %></a></span></h4>
+      <h4>Email: <span><a href="mailto:<%= org.email %>"><%= org.email %></a></span></h4>
   <% end %>
   <% if org.website.present? %>
       <h4>Website: <span><%= link_to org.website, org.website, {:target => '_blank'} %></a></span></h4>
