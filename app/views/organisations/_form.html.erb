@@ -1,115 +1,120 @@
 <%= form_for(setup_organisation(org)) do |f| %>
-    <table>
-      <thead>
-      </thead>
-      <tbody>
-      <tr>
-        <td data-toggle="tooltip" title="Enter a unique name">
-          <%= f.text_area :name, :size => "50x4", :class => "wide_form org_h3", :placeholder => "Enter organisation name" %>
-        </td>
-        <td class="borderless">
-          <input type="checkbox" class="publish" disabled checked = "checked" value="">
-        </td>
-      </tr>
-      <tr>
-        <td class="borderless" data-toggle="tooltip" title="Enter a full description here. When an individual searches this database all words in this description will be searched.">
-          <%= f.text_area :description, :class => "wide_form", :cols => "10", :rows => "10", :placeholder => "Enter organisation description" %>
-        </td>
-        <td class="borderless">
-          <input type="checkbox" class="publish" disabled checked = "checked" value="">
-        </td>
-      </tr>
-      <tr><td><h4>
-        Contact information
-      </h4></td></tr>
-      <tr>
-        <td data-toggle="tooltip" title="Enter a complete address">
-          <%= f.text_field :address, :class => "wide_form", :placeholder => "Enter organisation address"%>
-        </td>
-        <td class="borderless" data-toggle="tooltip" title="Toggle to change the visibility of your address">
-          <%= f.check_box :publish_address, :class => 'publish' %>
-        </td>
-      </tr>
-      <tr>
-        <td class="borderless" data-toggle="tooltip" title="Make sure post code is accurate">
-          <%= f.text_field :postcode, :class => "wide_form", :placeholder => "Enter organisation post code" %>
-        </td>
-        <td class="borderless">
-          <input type="checkbox" class="publish" disabled checked = "checked" value="">
-        </td>
-      </tr>
-      <tr>
-        <td class="borderless" data-toggle="tooltip" title="Make sure email is correct">
-          <%= f.text_field :email, :class => "wide_form", :placeholder => "Enter organisation email address" %>
-        </td>
-        <td class="borderless" data-toggle="tooltip" title="Toggle to change the visibility of your email address">
-          <%= f.check_box :publish_email, :class => 'publish' %>
-        </td>
-      </tr>
-      <tr>
-        <td class="borderless" data-toggle="tooltip" title="Make sure url is correct">
-          <%= f.text_field :website, :class => "wide_form", :placeholder => "Enter organisation website url" %>
-        </td>
-        <td class="borderless">
-          <input type="checkbox" class="publish" disabled checked = "checked" value="">
-        </td>
-      </tr>
-      <tr>
-        <td class="borderless" data-toggle="tooltip" title="Make sure phone number is correct">
-          <%= f.text_field :telephone, :class => "wide_form", :placeholder => "Enter organisation phone number" %>
-        </td>
-        <td class="borderless" data-toggle="tooltip" title="Toggle to change the visibility of your telephone number">
-          <%= f.check_box :publish_phone, :class => "publish"%>
-        </td>
-      </tr>
-      <tr>
-        <td class="borderless" data-toggle="tooltip" title="Please enter a website here either to the fundraising page on your website or to an online donation site.">
-          <%= f.text_field :donation_info, :class => "wide_form", :placeholder => "Enter organisation donation url" %>
-        </td>
-        <td class="borderless">
-          <input type="checkbox" disabled checked = "checked" value="" class="publish">
-        </td>
-      </tr>
-      <tr>
-        <td class="borderless" >
-          <div>
-            <%= render partial: 'organisations/organisation_admin_display', locals: {org: org} %>
-          </div>
-        </td>
-        <td class="borderless">
-          <input type="checkbox" class="publish" disabled>
-        </td>
-      </tr>
+  <table>
+    <thead>
+    </thead>
+    <tbody>
     <tr>
-      <td class="borderless" data-toggle="tooltip" title="Please enter the details of individuals from your organisation you would like to give permission to update your entry. E-mail addresses entered here will not be made public.">
-        <%= text_field_tag 'organisation_superadmin_email_to_add', value = nil, {:size => 100, class: 'wide_form', :cols => "10", :rows => "3", :placeholder => 'You may add an organisation administrator email here', :rows => "3" } %>
+      <td data-toggle="tooltip" title="Enter a unique name">
+        <%= f.text_area :name, :size => "50x4", :class => "wide_form org_h3", :placeholder => "Enter organisation name" %>
       </td>
-      <td class="borderless"></td>
-    </tr> 
-      </tbody>
-    </table>
-    <h5>Edit categories</h5>
-    <div id = "categories_scroll" style="height:10em;width:60%;border:1px solid #ccc;overflow:auto;padding-left:2px;">
-    <%= f.fields_for :category_organisations, f.object.category_organisations.sort do |ff| %>
-         <%= render partial: 'organisations/category_type', locals: {category: ff.object.category.name} %>
+      <td class="borderless">
+        <input type="checkbox" class="publish" disabled checked = "checked" value="">
+      </td>
+    </tr>
+    <tr>
+      <td class="borderless" data-toggle="tooltip" title="Enter a full description here. When an individual searches this database all words in this description will be searched.">
+        <%= f.text_area :description, :class => "wide_form", :cols => "10", :rows => "10", :placeholder => "Enter organisation description" %>
+      </td>
+      <td class="borderless">
+        <input type="checkbox" class="publish" disabled checked = "checked" value="">
+      </td>
+    </tr>
+    <tr><td><h4>
+      Contact information
+    </h4></td></tr>
+    <tr>
+      <td data-toggle="tooltip" title="Enter a complete address">
+        <%= f.text_field :address, :class => "wide_form", :placeholder => "Enter organisation address"%>
+      </td>
+      <td class="borderless" data-toggle="tooltip" title="Toggle to change the visibility of your address">
+        <%= f.check_box :publish_address, :class => 'publish' %>
+      </td>
+    </tr>
+    <tr>
+      <td class="borderless" data-toggle="tooltip" title="Make sure post code is accurate">
+        <%= f.text_field :postcode, :class => "wide_form", :placeholder => "Enter organisation post code" %>
+      </td>
+      <td class="borderless">
+        <input type="checkbox" class="publish" disabled checked = "checked" value="">
+      </td>
+    </tr>
+    <tr>
+      <td class="borderless" data-toggle="tooltip" title="Make sure email is correct">
+        <%= f.text_field :email, :class => "wide_form", :placeholder => "Enter organisation email address" %>
+      </td>
+      <td class="borderless" data-toggle="tooltip" title="Toggle to change the visibility of your email address">
+        <%= f.check_box :publish_email, :class => 'publish' %>
+      </td>
+    </tr>
+    <tr>
+      <td class="borderless" data-toggle="tooltip" title="Make sure url is correct">
+        <%= f.text_field :website, :class => "wide_form", :placeholder => "Enter organisation website url" %>
+      </td>
+      <td class="borderless">
+        <input type="checkbox" class="publish" disabled checked = "checked" value="">
+      </td>
+    </tr>
+    <tr>
+      <td class="borderless" data-toggle="tooltip" title="Make sure phone number is correct">
+        <%= f.text_field :telephone, :class => "wide_form", :placeholder => "Enter organisation phone number" %>
+      </td>
+      <td class="borderless" data-toggle="tooltip" title="Toggle to change the visibility of your telephone number">
+        <%= f.check_box :publish_phone, :class => "publish"%>
+      </td>
+    </tr>
+    <tr>
+      <td class="borderless" data-toggle="tooltip" title="Please enter a website here either to the fundraising page on your website or to an online donation site.">
+        <%= f.text_field :donation_info, :class => "wide_form", :placeholder => "Enter organisation donation url" %>
+      </td>
+      <td class="borderless">
+        <input type="checkbox" disabled checked = "checked" value="" class="publish">
+      </td>
+    </tr>
+    <tr>
+      <td class="borderless" >
         <div>
-          <%= ff.check_box :_destroy,
-                           {:checked => ff.object.persisted?},
-                           '0', '1'
-          %>
-          <%= ff.label :_destroy, ff.object.category.name, class: "checkbox inline", style: "padding-left: 2px;"%>
-          <%= ff.hidden_field :category_id %>
+          <%= render partial: 'organisations/organisation_admin_display', locals: {org: org} %>
         </div>
+      </td>
+      <td class="borderless">
+        <input type="checkbox" class="publish" disabled>
+      </td>
+    </tr>
+  <tr>
+    <td class="borderless" data-toggle="tooltip" title="Please enter the details of individuals from your organisation you would like to give permission to update your entry. E-mail addresses entered here will not be made public.">
+      <%= text_field_tag 'organisation_superadmin_email_to_add', value = nil, {:size => 100, class: 'wide_form', :cols => "10", :rows => "3", :placeholder => 'You may add an organisation administrator email here', :rows => "3" } %>
+    </td>
+    <td class="borderless"></td>
+  </tr>
+    </tbody>
+  </table>
+  <h5>Edit categories</h5>
+  <div id="categories_scroll"
+    <div class= "categories_scroll" style="height:10em;width:60%;border:1px solid #ccc;overflow:auto;padding-left:2px;">
+    <%= f.fields_for :category_organisations, f.object.category_organisations.sort do |ff| %>
+      <% case ff.object.category.name
+         when @categories_start_with[:what_they_do]%><div><strong> <em>What you do</em></strong> </div>
+      <% when @categories_start_with[:who_they_help] %></div><div class= "categories_scroll" style="height:10em;width:60%;border:1px solid #ccc;overflow:auto;padding-left:2px;"><div><strong> <em>Who you help</em></strong></div>
+      <% when @categories_start_with[:how_they_help] %></div><div class= "categories_scroll" style="height:10em;width:60%;border:1px solid #ccc;overflow:auto;padding-left:2px;"><div><strong> <em>How you help</em></strong> </div>
+      <% end %>
+      <div>
+        <%= ff.check_box :_destroy,
+                         {:checked => ff.object.persisted?},
+                         '0', '1'
+        %>
+        <%= ff.label :_destroy, ff.object.category.name, class: "checkbox inline", style: "padding-left: 2px;"%>
+        <%= ff.hidden_field :category_id %>
+      </div>
     <% end %>
     </div>
     <% if @user_id %>
-      <%= f.hidden_field :user_id, value: @user_id %> 
+      <%= f.hidden_field :user_id, value: @user_id %>
     <%end %>
     <br>
     <div class="actions">
       <%= f.submit :class => 'btn btn-primary' %>
     </div>
-
+  </div>
 <% end %>
 
 <% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
