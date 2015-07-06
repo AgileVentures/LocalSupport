@@ -12,7 +12,9 @@ end
 
 module LocalSupport
   class Application < Rails::Application
-
+    config.action_view.field_error_proc = Proc.new do |html_tag, instance|
+      "<div class=\"field_with_errors control-group error\" style = \"margin-bottom: 0px; display: inline-block;\">#{html_tag}</div>".html_safe
+    end
     config.exceptions_app = self.routes
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
