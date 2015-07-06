@@ -1,83 +1,83 @@
 .map_container {
-flex: 1;
-// since the height of #map_container is dynamic, these 12px need to be subtracted
-padding: 6px;
-border-width: 1px;
-border-style: solid;
-border-color: #ccc #ccc #999 #ccc;
--webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
--moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
-box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
-margin-bottom: 20px; // for when the screen narrows to a one column layout
+  flex: 1;
+  // since the height of #map_container is dynamic, these 12px need to be subtracted
+  padding: 6px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ccc #ccc #999 #ccc;
+  -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+  -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+  box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
+  margin-bottom: 20px; // for when the screen narrows to a one column layout
 }
 
 .map_container img {
-max-width: none;
+    max-width: none;
 }
 
 .map_container label {
-width: auto; display:inline;
+    width: auto; display:inline;
 }
 .vol_op{
-&:hover{
-cursor: pointer;
-}
+  &:hover{
+    cursor: pointer;
+  }
 }
 .measle {
-&:hover{
-cursor: pointer;
-}
-width: 6px;
-height: 6px;
+  &:hover{
+    cursor: pointer;
+  }
+  width: 6px;
+  height: 6px;
 }
 
 .marker {
-&:hover{
-cursor: pointer;
-}
-width: 16px;
-height: 30px;
+  &:hover{
+    cursor: pointer;
+  }
+  width: 16px;
+  height: 30px;
 }
 
 .infowindow_close{
-position: absolute;
-top: 0;
-right: 5px;
+  position: absolute;
+  top: 0;
+  right: 5px;
 }
 
 .arrow_box {
-position: relative;
-background: #ffffff;
-border: 1px solid #dbdbdb;
-border-radius: 4px;
-width: 280px;
-padding: 10px;
-// box-shadow: 2px 2px 2px #888888;
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+  width: 280px;
+  padding: 10px;
+  // box-shadow: 2px 2px 2px #888888;
 }
 
 .arrow_box:after, .arrow_box:before{
-bottom: 100%;
-left: 50%;
-border: solid transparent;
-content: " ";
-height: 0;
-width: 0;
-position: absolute;
-pointer-events: none;
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
 }
 
 .arrow_box:after{
-border-color: rgba(255, 255, 255, 0);
-border-bottom-color: #ffffff;
-border-width: 10px;
-margin-left: -10px;
+  border-color: rgba(255, 255, 255, 0);
+  border-bottom-color: #ffffff;
+  border-width: 10px;
+  margin-left: -10px;
 }
 
 .arrow_box:before {
-border-color: rgba(219, 219, 219, 0);
-border-bottom-color: #dbdbdb;
-border-width: 11px;
-margin-left: -11px;
+  border-color: rgba(219, 219, 219, 0);
+  border-bottom-color: #dbdbdb;
+  border-width: 11px;
+  margin-left: -11px;
 }
 
 
@@ -85,18 +85,19 @@ margin-left: -11px;
 -------------------------------------------------- */
 
 .map_legend td {
-padding: 0;
-vertical-align: baseline;
-border: none;
+  padding: 0;
+  vertical-align: baseline;
+  border: none;
 }
 
 .map_legend td.key_image {
-padding-right: 10px;
-text-align: center;
+  padding-right: 10px;
+  text-align: center;
 }
 
 .map_legend td.key_text {
-font-size: 12px;
-color: #899096;
+  font-size: 12px;
+  color: #899096;
 }
+
 
