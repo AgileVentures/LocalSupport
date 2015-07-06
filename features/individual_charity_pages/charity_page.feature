@@ -36,7 +36,7 @@ Feature: Web page owned by each charity
     Then I should see the external website link for "Friendly" charity
 
   Scenario: display charity title in a visible way
-    Then I should see "Friendly" < tagged > with "h3"
+    Then I should see "Friendly" < tagged > with "h2"
 
   Scenario: show organisation e-mail as link
     Then I should see a mail-link to "superadmin@friendly.xx"

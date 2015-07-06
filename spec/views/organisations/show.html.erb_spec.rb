@@ -20,9 +20,9 @@ describe 'organisations/show.html.erb', :type => :view do
   before(:each) { assign(:organisation, organisation) }
 
   context 'page styling' do
-    it 'name should be wrapped in h3 tag' do
+    it 'name should be wrapped in h2 tag' do
       render
-      expect(rendered).to have_css('h3', :text => organisation.name)
+      expect(rendered).to have_css('h2', :text => organisation.name)
     end
     it 'PRESENT: postcode, email, website, donation info' do
       render
