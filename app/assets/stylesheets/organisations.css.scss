@@ -75,33 +75,36 @@
   }
 }
 
-/*  DISPLAYING ORGANISATION CATEGORIES STYLE
+/* ORGANISATION CATEGORIES STYLE
 -------------------------------------------------- */
 
-#orgs_scroll {
-  height: 340px;
-  width: 100%;
-  border: 1px solid #ccc;
-  overflow-y: scroll;
-}
+//#org_scroll {
+//  height: 340px;
+//  width: 100%;
+//  border: 1px solid #ccc;
+//  overflow-y: scroll;
+//}
 
-#org-categories {
+.org-categories {
   margin: 0;
   margin-top: 10px;
+  overflow: hidden;
 }
 
-#org-categories li {
-  margin-bottom: 10px;
-}
-
-#org-categories h5 {
+.org-categories h5 {
   margin: 0;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   padding-left: 10px;
   background-color: #F3F3F3;
 }
 
-#org-categories p {
+/* ------- DISPLAY -------- */
+
+.org-categories li {
+  margin-bottom: 10px;
+}
+
+.org-categories p {
   margin-left: 10px;
 }
 
@@ -110,19 +113,18 @@
 }
 
 
-/*  EDITING ORGANISATION CATEGORIES STYLE
--------------------------------------------------- */
+/* ------- EDITING -------- */
 
 #categories_scroll {
   margin: 20px 0;
 }
 
-#categories_scroll #org-categories {
+#categories_scroll .org-categories {
   margin: 20px 0 0 -20px;
 }
 
 #categories_scroll .org-category {
-  margin-top: 5px;
+  margin-top: 2px;
 }
 
 #categories_scroll .org-category .checkbox.inline {

@@ -32,7 +32,7 @@
 
   <% if org.categories.present? %>
       <h4>Categories: </h4>
-      <ul id="org-categories">
+      <ul class="org-categories">
         <li>
           <h5><strong>What they do</strong></h5>
           <p><%= org.categories.what_they_do.pluck(:name).join(', ') %></p>
