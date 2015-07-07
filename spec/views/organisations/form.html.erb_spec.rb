@@ -37,13 +37,14 @@ describe "organisations/_form.html.erb", :type => :view do
   end
 
   it 'should have categories in scroll box ordered by type and name' do
-    expect(rendered).to have_xpath("//div/strong/em[text()='What you do']/../../following-sibling::div[1]/label[text()='alligator']")
-    expect(rendered).to have_xpath("//div/strong/em[text()='What you do']/../../following-sibling::div[2]/label[text()='capybara']")
-    expect(rendered).to have_xpath("//div/strong/em[text()='Who you help']/../../following-sibling::div[1]/label[text()='crocodile']")
-    expect(rendered).to have_xpath("//div/strong/em[text()='Who you help']/../../following-sibling::div[2]/label[text()='guinea pig']")
-    expect(rendered).to have_xpath("//div/strong/em[text()='How you help']/../../following-sibling::div[1]/label[text()='iguana']")
-    expect(rendered).to have_xpath("//div/strong/em[text()='How you help']/../../following-sibling::div[2]/label[text()='rabbit']")
+    expect(rendered).to have_xpath("//h5[contains(., 'What you do')]/following-sibling::div[1]/label[text()='alligator']")
+    expect(rendered).to have_xpath("//h5[contains(., 'What you do')]/following-sibling::div[2]/label[text()='capybara']")
+    expect(rendered).to have_xpath("//h5[contains(., 'Who you help')]/following-sibling::div[1]/label[text()='crocodile']")
+    expect(rendered).to have_xpath("//h5[contains(., 'Who you help')]/following-sibling::div[2]/label[text()='guinea pig']")
+    expect(rendered).to have_xpath("//h5[contains(., 'How you help')]/following-sibling::div[1]/label[text()='iguana']")
+    expect(rendered).to have_xpath("//h5[contains(., 'How you help')]/following-sibling::div[2]/label[text()='rabbit']")
   end
+
   it 'should have categories associated with organisation checked' do
     [@category1.name, @category3.name].each do |category|
       expect(rendered).to have_xpath("//div/label[text()='#{category}']/preceding-sibling::input[1][@checked='checked']")
