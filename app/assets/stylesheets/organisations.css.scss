@@ -120,3 +120,13 @@
 #categories_scroll #org-categories {
   margin: 20px 0 0 -20px;
 }
+
+#categories_scroll .org-category {
+  margin-top: 5px;
+}
+
+#categories_scroll .org-category .checkbox.inline {
+  width: 120px;
+  padding-top: 3px;
+  vertical-align: top;
+}

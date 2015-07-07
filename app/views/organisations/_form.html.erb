@@ -98,7 +98,7 @@
           <% when @categories_start_with[:who_they_help] %></div><div class= "span2 category_type"><h5>Who you help</h5>
           <% when @categories_start_with[:how_they_help] %></div><div class= "span2 category_type"><h5>How you help</h5>
           <% end %>
-          <div>
+          <div class="org-category">
             <%= ff.check_box :_destroy,
                              {:checked => ff.object.persisted?},
                              '0', '1'
