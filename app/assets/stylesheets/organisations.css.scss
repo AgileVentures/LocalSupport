@@ -75,7 +75,7 @@
   }
 }
 
-/* ORGANISATION CATEGORIES STYLE
+/*  DISPLAYING ORGANISATION CATEGORIES STYLE
 -------------------------------------------------- */
 
 #orgs_scroll {
@@ -109,3 +109,14 @@
   margin-top: 30px
 }
 
+
+/*  EDITING ORGANISATION CATEGORIES STYLE
+-------------------------------------------------- */
+
+#categories_scroll {
+  margin: 20px 0;
+}
+
+#categories_scroll #org-categories {
+  margin: 20px 0 0 -20px;
+}
