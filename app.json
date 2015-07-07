@@ -1,0 +1,25 @@
+{
+  "name":"LocalSupport",
+  "scripts":{
+    "postdeploy": "bundle exec rake db:setup"
+  },
+  "env":{
+    "BUILDPACK_URL":{
+      "required":true
+    },
+    "MAILER_URL":{
+      "required":true
+    },
+    "MYAPP_SECRET_TOKEN":{
+      "required":true
+    },
+    "RACK_ENV":{
+      "required":true
+    }
+  },
+  "addons":[
+    "papertrail",
+    "sendgrid",
+    "heroku-postgresql"
+  ]
+}

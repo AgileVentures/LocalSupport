@@ -17,6 +17,7 @@ describe Organisation, :type => :model do
                               :description => 'Care for the elderly', :address => '64 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.indian-elders.co.uk/donate')
     @org2.categories << @category1
     @org2.categories << @category2
+    @org2.categories << @category3
     @org2.save!
     @org3 = FactoryGirl.build(:organisation, :email => "", :name => 'Age UK Elderly', :description => 'Care for older people', :address => '64 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.age-uk.co.uk/donate')
     @org3.categories << @category1
@@ -198,6 +199,12 @@ describe Organisation, :type => :model do
   it 'should have and belong to many categories' do
     expect(@org2.categories).to include(@category1)
     expect(@org2.categories).to include(@category2)
+  end
+
+  it 'should have and belong to many categories by types' do
+    expect(@org2.categories.what_they_do).to include(@category3)
+    expect(@org2.categories.who_they_help).to include(@category1)
+    expect(@org2.categories.how_they_help).to include(@category2)
   end
 
   it 'must have search by keyword' do

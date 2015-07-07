@@ -345,6 +345,12 @@ Then(/^I should see the following:$/) do |table|
     expect(page).to have_content text.first
   end
 end
+Then(/^I should see "(.*?)" within "(.*?)"$/) do |text, type|
+  selector = 'first-child' if type == 'What they do'
+  selector = 'nth-child(2)' if type == 'Who they help'
+  selector = 'last-child' if type == 'How they help'
+  within('#org-categories li:' + selector) { expect(page).to have_content text}
+end
 
 Then(/^I should( not)? see a link or button "(.*?)"$/) do |negate, link|
   expectation_method = negate ? :not_to : :to

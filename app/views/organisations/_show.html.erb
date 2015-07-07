@@ -1,55 +1,50 @@
-<h3>
-  <%= org.name %>
-</h3>
+<div id="org-information">
+  <h2>
+    <%= org.name %>
+  </h2>
 
-<p>
-  <%= simple_format org.description %>
-</p>
+  <p>
+    <%= simple_format org.description %>
+  </p>
 
 
-<h4>
-  Contact information
-</h4>
-<% if org.address.present? && (org.publish_address? || org.type == "ProposedOrganisation")%>
-    <p>
-      <b>Address:</b>
-      <%= org.address %>
-    </p>
-<% end %>
-<% if org.postcode.present? %>
-    <p>
-      <b>Postcode:</b>
-      <%= org.postcode %>
-    </p>
-<% end %>
-<% if org.email.present? && (org.publish_email? || org.type == "ProposedOrganisation")%>
-    <p>
-      <b>Email:</b>
-      <a href="mailto:<%= org.email %>"><%= org.email %></a>
-    </p>
-<% end %>
-<% if org.website.present? %>
-    <p>
-      <b>Website:</b>
-      <%= link_to org.website, org.website, {:target => '_blank'} %>
-    </p>
-<% end %>
-<% if org.telephone.present? && (org.publish_phone? || org.type == "ProposedOrganisation")%>
-    <p>
-      <b>Telephone:</b>
-      <%= org.telephone %>
-    </p>
-<% end %>
-<% if org.donation_info.present? %>
-    <p>
-      <b>Donation Info:</b>
-      <%= link_to "Donate to #{org.name} now!", org.donation_info, {:target => '_blank'} %>
-    </p>
-<% end %>
+  <h3>
+    Contact information
+  </h3>
+  <% if org.address.present? && (org.publish_address? || org.type == "ProposedOrganisation")%>
+      <h4>Address: <span><%= org.address %></span></h4>
+  <% end %>
+  <% if org.postcode.present? %>
+      <h4>Postcode: <span><%= org.postcode %></span></h4>
+  <% end %>
+  <% if org.email.present? && (org.publish_email? || org.type == "ProposedOrganisation")%>
+      <h4>Email: <span><a href="mailto:<%= org.email %>"><%= org.email %></a></span></h4>
+  <% end %>
+  <% if org.website.present? %>
+      <h4>Website: <span><%= link_to org.website, org.website, {:target => '_blank'} %></a></span></h4>
+  <% end %>
+  <% if org.telephone.present? && (org.publish_phone? || org.type == "ProposedOrganisation")%>
+      <h4>Telephone: <span><%= org.telephone %></span></h4>
+  <% end %>
+  <% if org.donation_info.present? %>
+      <h4>Donation Info: <span><%= link_to "Donate to #{org.name} now!", org.donation_info, {:target => '_blank'} %></span></h4>
+  <% end %>
 
-<% if org.categories.present? %>
-    <p>
-      <b>Categories: </b>
-      <%= org.categories.map(&:name).join(", ") %>
-    </p>
-<% end %>
+  <% if org.categories.present? %>
+      <h4>Categories: </h4>
+      <ul id="org-categories">
+        <li>
+          <h5><strong>What they do</strong></h5>
+          <p><%= org.categories.what_they_do.pluck(:name).join(', ') %></p>
+        </li>
+        <li>
+          <h5><strong>Who they help</strong></h5>
+          <p><%= org.categories.who_they_help.pluck(:name).join(', ') %></p>
+        </li>
+        <li>
+          <h5><strong>How they help</strong></h5>
+          <p><%= org.categories.how_they_help.pluck(:name).join(', ') %></p>
+        </li>
+      </ul>
+  <% end %>
+</div>
