@@ -7,7 +7,6 @@
     <%= simple_format org.description %>
   </p>
 
-
   <h3>
     Contact information
   </h3>
@@ -33,13 +32,8 @@
    <div id="org-categories">
     <% if org.categories.present? %>
       <h4>Categories: </h4>
-<<<<<<< HEAD
       <ul class="org-categories">
-        <li>
-=======
-      <ul>
         <li id="what_they_do">
->>>>>>> develop
           <h5><strong>What they do</strong></h5>
           <p><%= org.categories.what_they_do.pluck(:name).join(', ') %></p>
         </li>
