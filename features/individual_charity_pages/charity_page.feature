@@ -42,10 +42,10 @@ Feature: Web page owned by each charity
     Then I should see a mail-link to "superadmin@friendly.xx"
 
   Scenario: show categories of charity by type
-    Then I should see "Health" within "What they do"
-    And I should see "Education" within "What they do"
-    And I should see "Voluntary" within "Who they help"
-    And I should see "Finance" within "How they help"
+    Then I should see "Health" within "what_they_do"
+    And I should see "Education" within "what_they_do"
+    And I should see "Voluntary" within "who_they_help"
+    And I should see "Finance" within "how_they_help"
     And I should not see "Animal Welfare"
     And I visit the show page for the organisation named "Unfriendly"
     Then I should not see "Health"
