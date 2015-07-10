@@ -98,11 +98,10 @@
         <% when @categories_start_with[:how_they_help] %></div><div class= "row category_type"><h5>How you help</h5>
         <% end %>
         <div class="span2 org-category">
-          <%= ff.check_box :_destroy,
-                           {:checked => ff.object.persisted?},
-                           '0', '1'
-          %>
-          <%= ff.label :_destroy, ff.object.category.name, class: "checkbox inline", style: "padding-left: 2px;"%>
+          <%= ff.label :_destroy, class: "checkbox inline" do %>
+            <%=    ff.check_box :_destroy, {:checked => ff.object.persisted?},  '0', '1' %>
+            <%= ff.object.category.name %>
+          <%  end  %>
           <%= ff.hidden_field :category_id %>
         </div>
       <% end %>
