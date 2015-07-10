@@ -8,13 +8,13 @@ Then (/the category named (.*) should be (checked|unchecked)$/) do |category, st
 end
 
 Then(/^I check the category "(.*?)"$/) do |category_name|
-  within '#categories_scroll' do
+  within '.org-categories' do
     find(:xpath,"//div/label[text()='#{category_name}']/preceding-sibling::input[1]").set(true)
   end
 end
 
 Then(/^I uncheck the category "(.*?)"$/) do |category_name|
-  within '#categories_scroll' do
+  within '.org-categories' do
     find(:xpath,"//div/label[text()='#{category_name}']/preceding-sibling::input[1]").set(false)
   end
 end

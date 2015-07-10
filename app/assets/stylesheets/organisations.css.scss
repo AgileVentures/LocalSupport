@@ -5,6 +5,7 @@
     border-radius:2em;
     text-align: center;
 }
+
 .org_h3 {
   margin: 10px 0px;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -125,4 +126,11 @@
   width: 88%;
   padding-top: 3px;
   vertical-align: top;
+}
+
+input[type=checkbox] + label {
+  display: inline-block;
+  margin-left: 0.5em;
+  margin-right: 2em;
+  line-height: 1em;
 }
