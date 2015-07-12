@@ -121,16 +121,10 @@
 
 .category_type .org-category {
   margin: 2px 0 0 0;
-}
-.category_type .checkbox.inline {
-  width: 88%;
-  padding-top: 3px;
-  vertical-align: top;
+  padding-right: 3px;
 }
 
-input[type=checkbox] + label {
-  display: inline-block;
-  margin-left: 0.5em;
-  margin-right: 2em;
-  line-height: 1em;
+.category_type .checkbox.inline {
+  padding-top: 3px;
+  vertical-align: top;
 }
