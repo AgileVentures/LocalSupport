@@ -1,21 +1,21 @@
 Then(/^I should see the category named (.*) as the (.*) category in (.*)$/) do |category, nth, heading|
-  page.should have_xpath("//h5[contains(., '#{heading}')]/following-sibling::div[#{nth[0..-3]}]/label[text()='#{category}']")
+  page.should have_xpath("//h5[contains(., '#{heading}')]/following-sibling::div[#{nth[0..-3]}]/label[text()[contains(.,'#{category}')]]")
 end
 
 Then (/the category named (.*) should be (checked|unchecked)$/) do |category, status|
   assertion = (status == 'checked') ? :should : :should_not
-  page.find(:xpath, "//div/label[text()='#{category}']/preceding-sibling::input[1]").send(assertion, be_checked)
+  page.find(:xpath, "//div/label[text()[contains(.,'#{category}')]]/input[2]").send(assertion, be_checked)
 end
 
 Then(/^I check the category "(.*?)"$/) do |category_name|
   within '.org-categories' do
-    find(:xpath,"//div/label[text()='#{category_name}']/preceding-sibling::input[1]").set(true)
+    find(:xpath,"//div/label[text()[contains(.,'#{category_name}')]]/input[2]").set(true)
   end
 end
 
 Then(/^I uncheck the category "(.*?)"$/) do |category_name|
   within '.org-categories' do
-    find(:xpath,"//div/label[text()='#{category_name}']/preceding-sibling::input[1]").set(false)
+    find(:xpath,"//div/label[text()[contains(.,'#{category_name}')]]/input[2]").set(false)
   end
 end
 
