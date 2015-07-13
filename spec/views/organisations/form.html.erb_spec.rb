@@ -37,12 +37,12 @@ describe "organisations/_form.html.erb", :type => :view do
   end
 
   it 'should have categories in scroll box ordered by type and name' do
-    expect(rendered).to have_xpath("//h5[contains(., 'What you do')]/following-sibling::div[1]/label[text()[contains(.,'alligator')]]")
-    expect(rendered).to have_xpath("//h5[contains(., 'What you do')]/following-sibling::div[2]/label[text()[contains(.,'capybara')]]")
-    expect(rendered).to have_xpath("//h5[contains(., 'Who you help')]/following-sibling::div[1]/label[text()[contains(.,'crocodile')]]")
-    expect(rendered).to have_xpath("//h5[contains(., 'Who you help')]/following-sibling::div[2]/label[text()[contains(.,'guinea pig')]]")
-    expect(rendered).to have_xpath("//h5[contains(., 'How you help')]/following-sibling::div[1]/label[text()[contains(.,'iguana')]]")
-    expect(rendered).to have_xpath("//h5[contains(., 'How you help')]/following-sibling::div[2]/label[text()[contains(.,'rabbit')]]")
+    expect(rendered).to have_xpath("//div[contains(@class, 'category_type')]/child::*[1][contains(., 'What you do')]/following-sibling::div[1]/label[text()[contains(.,'alligator')]]")
+    expect(rendered).to have_xpath("//div[contains(@class, 'category_type')]/child::*[1][contains(., 'What you do')]/following-sibling::div[2]/label[text()[contains(.,'capybara')]]")
+    expect(rendered).to have_xpath("//div[contains(@class, 'category_type')]/child::*[1][contains(., 'Who you help')]/following-sibling::div[1]/label[text()[contains(.,'crocodile')]]")
+    expect(rendered).to have_xpath("//div[contains(@class, 'category_type')]/child::*[1][contains(., 'Who you help')]/following-sibling::div[2]/label[text()[contains(.,'guinea pig')]]")
+    expect(rendered).to have_xpath("//div[contains(@class, 'category_type')]/child::*[1][contains(., 'How you help')]/following-sibling::div[1]/label[text()[contains(.,'iguana')]]")
+    expect(rendered).to have_xpath("//div[contains(@class, 'category_type')]/child::*[1][contains(., 'How you help')]/following-sibling::div[2]/label[text()[contains(.,'rabbit')]]")
   end
 
   it 'should have categories associated with organisation checked' do
