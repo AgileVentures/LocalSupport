@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 20150502193421) do
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name",                    limit: 255
+    t.string   "name"
     t.integer  "charity_commission_id"
-    t.string   "charity_commission_name", limit: 255
+    t.string   "charity_commission_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,92 +33,92 @@ ActiveRecord::Schema.define(version: 20150502193421) do
   add_index "categories_organisations", ["organisation_id"], name: "index_categories_organisations_on_organisation_id", using: :btree
 
   create_table "features", force: :cascade do |t|
-    t.string  "name",   limit: 255
-    t.boolean "active",             default: false
+    t.string  "name"
+    t.boolean "active", default: false
   end
 
   create_table "organisations", force: :cascade do |t|
-    t.string   "name",            limit: 255, default: "",             null: false
-    t.string   "address",         limit: 255, default: "",             null: false
-    t.string   "postcode",        limit: 255, default: "",             null: false
-    t.string   "email",           limit: 255, default: "",             null: false
-    t.text     "description",                 default: "",             null: false
-    t.string   "website",         limit: 255, default: "",             null: false
-    t.string   "telephone",       limit: 255, default: "",             null: false
+    t.string   "name",            default: "",             null: false
+    t.string   "address",         default: "",             null: false
+    t.string   "postcode",        default: "",             null: false
+    t.string   "email",           default: "",             null: false
+    t.text     "description",     default: "",             null: false
+    t.string   "website",         default: "",             null: false
+    t.string   "telephone",       default: "",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
-    t.text     "donation_info",               default: "",             null: false
-    t.boolean  "publish_address",             default: false
-    t.boolean  "publish_phone",               default: false
-    t.boolean  "publish_email",               default: true
+    t.text     "donation_info",   default: "",             null: false
+    t.boolean  "publish_address", default: false
+    t.boolean  "publish_phone",   default: false
+    t.boolean  "publish_email",   default: true
     t.datetime "deleted_at"
-    t.string   "type",                        default: "Organisation"
+    t.string   "type",            default: "Organisation"
   end
 
   create_table "pages", force: :cascade do |t|
-    t.string   "name",         limit: 255
-    t.string   "permalink",    limit: 255
+    t.string   "name"
+    t.string   "permalink"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "link_visible",             default: true
+    t.boolean  "link_visible", default: true
   end
 
   add_index "pages", ["permalink"], name: "index_pages_on_permalink", using: :btree
 
   create_table "proposed_organisation_edits", force: :cascade do |t|
     t.integer  "organisation_id"
-    t.string   "name",            limit: 255, default: "",    null: false
-    t.string   "address",         limit: 255, default: "",    null: false
-    t.string   "postcode",        limit: 255, default: "",    null: false
-    t.string   "email",           limit: 255, default: "",    null: false
-    t.text     "description",                 default: "",    null: false
-    t.string   "website",         limit: 255, default: "",    null: false
-    t.string   "telephone",       limit: 255, default: "",    null: false
-    t.text     "donation_info",               default: "",    null: false
+    t.string   "name",            default: "",    null: false
+    t.string   "address",         default: "",    null: false
+    t.string   "postcode",        default: "",    null: false
+    t.string   "email",           default: "",    null: false
+    t.text     "description",     default: "",    null: false
+    t.string   "website",         default: "",    null: false
+    t.string   "telephone",       default: "",    null: false
+    t.text     "donation_info",   default: "",    null: false
     t.datetime "deleted_at"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "accepted",                    default: false, null: false
-    t.boolean  "archived",                    default: false, null: false
+    t.boolean  "accepted",        default: false, null: false
+    t.boolean  "archived",        default: false, null: false
   end
 
   add_index "proposed_organisation_edits", ["deleted_at"], name: "index_proposed_organisation_edits_on_deleted_at", using: :btree
   add_index "proposed_organisation_edits", ["user_id"], name: "index_proposed_organisation_edits_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                   limit: 255, default: "",    null: false
-    t.string   "encrypted_password",      limit: 255, default: ""
-    t.string   "reset_password_token",    limit: 255
+    t.string   "email",                   default: "",    null: false
+    t.string   "encrypted_password",      default: ""
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                       default: 0
+    t.integer  "sign_in_count",           default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",      limit: 255
-    t.string   "last_sign_in_ip",         limit: 255
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "superadmin",                          default: false
+    t.boolean  "superadmin",              default: false
     t.integer  "organisation_id"
-    t.string   "confirmation_token",      limit: 255
+    t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email",       limit: 255
+    t.string   "unconfirmed_email"
     t.integer  "pending_organisation_id"
-    t.string   "invitation_token",        limit: 255
+    t.string   "invitation_token"
     t.datetime "invitation_created_at"
     t.datetime "invitation_sent_at"
     t.datetime "invitation_accepted_at"
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
-    t.string   "invited_by_type",         limit: 255
+    t.string   "invited_by_type"
     t.datetime "deleted_at"
-    t.boolean  "siteadmin",                           default: false
+    t.boolean  "siteadmin",               default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -128,7 +128,7 @@ ActiveRecord::Schema.define(version: 20150502193421) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "volunteer_ops", force: :cascade do |t|
-    t.string   "title",           limit: 255
+    t.string   "title"
     t.text     "description"
     t.integer  "organisation_id"
     t.datetime "created_at"
