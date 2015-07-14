@@ -343,6 +343,7 @@ end
 Then(/^I should see "(.*?)" within "(.*?)"$/) do |text, selector|
   within('#' + selector) { expect(page).to have_content text}
 end
+
 Then(/^I should see the following:$/) do |table|
   table.rows.each do |text|
     expect(page).to have_content text.first

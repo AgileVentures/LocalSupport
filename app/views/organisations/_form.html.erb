@@ -74,7 +74,7 @@
       <td class="borderless" >
         <div>
           <%= render partial: 'organisations/organisation_admin_display', locals: {org: org} %>
-        </div>
+       </div>
       </td>
       <td class="borderless">
         <input type="checkbox" class="publish" disabled>
@@ -106,7 +106,6 @@
         <br>
 
     <% end %>
-
 
     <% if @user_id %>
       <%= f.hidden_field :user_id, value: @user_id %> 
