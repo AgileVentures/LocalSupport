@@ -1,5 +1,5 @@
 Then(/^I should see the category named (.*) as the (.*) category in (.*)$/) do |category, nth, heading|
-  page.should have_xpath("//*[contains(., '#{heading}')]/following-sibling::*[#{nth[0..-3]}]/label[text()[contains(.,'#{category}')]]")
+  page.should have_xpath("//*[contains(., '#{heading}')]/following-sibling::*[not(self::input) and #{nth[0..-3]}]//label[text()[contains(.,'#{category}')]]")
 end
 
 Then (/the category named (.*) should be (checked|unchecked)$/) do |category, status|
