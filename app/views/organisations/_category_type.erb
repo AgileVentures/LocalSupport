@@ -1,5 +1,19 @@
-<% case category
-   when @categories_start_with[:what_they_do]%> <div><strong> <em>What you do</em></strong> </div>
-   <% when @categories_start_with[:who_they_help] %> <div><strong> <em>Who you help</em></strong> </div>
-   <% when @categories_start_with[:how_they_help] %> <div><strong> <em>How you help</em></strong> </div>
-<% end %>
+<div class="row category_type">
+  <%= f.fields_for :category_organisations, f.object.category_organisations.sort do |ff| %>
+    <% case ff.object.category.name
+         when @categories_start_with[:what_they_do] %><h5>What you do</h5>
+    <% when @categories_start_with[:who_they_help] %></div><div class= "row category_type"><h5>Who you help</h5>
+    <% when @categories_start_with[:how_they_help] %></div><div class= "row category_type"><h5>How you help</h5>
+    <% end %>
+    <div class="span3 org-category">
+      <%= ff.label :_destroy, class: "checkbox inline" do %>
+        <%= ff.check_box :_destroy, {:checked => ff.object.persisted?},  '0', '1' %>
+        <%= ff.object.category.name %>
+      <%  end  %>
+      <%= ff.hidden_field :category_id %>
+    </div>
+  <% end %>
+  </div>
+  <% if @user_id %>
+    <%= f.hidden_field :user_id, value: @user_id %>
+  <%end %>

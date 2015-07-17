@@ -317,9 +317,13 @@ Then /^I should see "([^"]*)" and "([^"]*)"$/ do |text1, text2|
   expect(page).to have_content text2
 end
 
-Then /^I should( not)? see "((?:(?!before|").)+)"$/ do |negate, text|
+Then /^I should( not)? see "([^"]*)"$/ do |negate, text|
   expectation_method = negate ? :not_to : :to
   expect(page).send(expectation_method, have_content(text))
+end
+
+Then(/^I should see "(.*?)" within "(.*?)"$/) do |text, selector|
+  within('#' + selector) { expect(page).to have_content text}
 end
 
 Then(/^I should( not)? see a link or button "(.*?)"$/) do |negate, link|

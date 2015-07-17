@@ -5,9 +5,9 @@
     border-radius:2em;
     text-align: center;
 }
+
 .org_h3 {
   margin: 10px 0px;
-  font-size: 24.5px;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight: bold;
   line-height: 20px;
@@ -29,6 +29,11 @@
 .flex-row {
   display: flex;
   flex-direction: row;
+}
+
+#org-information h4 span {
+  font-size: 15px;
+  font-weight: 400;
 }
 
 #organisation_search {
@@ -76,4 +81,50 @@
   width: 100%;
   border: 1px solid #ccc;
   overflow-y: scroll;
+}
+
+/* ORGANISATION CATEGORIES STYLE
+-------------------------------------------------- */
+
+.org-categories {
+  margin: 10px 0 30px 0;
+  overflow: hidden;
+}
+
+.org-categories h5 {
+  margin: 0;
+  margin-bottom: 5px;
+  padding-left: 10px;
+  background-color: #F3F3F3;
+}
+
+/* ------- DISPLAY -------- */
+
+.org-categories li {
+  margin-bottom: 10px;
+}
+
+.org-categories p {
+  margin-left: 10px;
+}
+
+#org-cat-buttons {
+  margin-top: 30px
+}
+
+
+/* ------- EDITING -------- */
+
+.category_type {
+  margin: 15px 0 0 0;
+}
+
+.category_type .org-category {
+  margin: 2px 0 0 0;
+  padding-right: 3px;
+}
+
+.category_type .checkbox.inline {
+  padding-top: 3px;
+  vertical-align: top;
 }

@@ -1,5 +1,5 @@
 class ProposedOrganisationsController < BaseOrganisationsController
-  layout 'two_columns', except: [:index]
+  layout 'two_columns_with_map', except: [:index]
   before_filter :require_superadmin_or_recent_creation, only: [:show]
 
   def index
