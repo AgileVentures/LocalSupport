@@ -32,31 +32,13 @@ FactoryGirl.define do
     latitude 10
     longitude 10
     non_profit true
-    works_in_harrow true
     after(:build) do |proposed_org|
       owner = FactoryGirl.create(:user)
       proposed_org.users << owner
       proposed_org.save!
     end
-    factory :invalid_proposed_organisation do
-      name "Friendly Charity"
-      description "We are friendly!"
-      address "64 pinner road"
-      postcode "HA1 3TE"
-      donation_info "www.donate.org/friendly"
-      email "friendly@charity.org"
-      latitude 10
-      longitude 10
-      non_profit nil
-      works_in_harrow nil
-      after(:build) do |proposed_org|
-        owner = FactoryGirl.create(:user)
-        proposed_org.users << owner
-        proposed_org.save!
-      end
-    end
   end
- 
+
   factory :category do
     name "health"
     charity_commission_id 1
