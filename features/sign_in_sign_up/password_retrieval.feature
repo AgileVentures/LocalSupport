@@ -17,7 +17,7 @@ Feature: Password retrieval
     And cookies are approved
 
     Given I visit the home page
-    And I follow "Forgot your Password?"
+    And I follow "Forgot your password?"
     And the email queue is clear
 
   @email

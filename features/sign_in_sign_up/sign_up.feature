@@ -28,6 +28,8 @@ Scenario: Sign up for an non-existent user with non-matching password confirmati
 @email
 Scenario: Sign up for a non-existent user
   Given I visit the sign up page
+  And I sign up as "non-existent-user@example.com" with password "ppppp" and password confirmation "ppppp"
+  Then I should see "Password is too short (minimum is 8 characters)"
   And I sign up as "non-existent-user@example.com" with password "pppppppp" and password confirmation "pppppppp"
   Then I should be on the home page
   And I should see "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."

@@ -309,6 +309,7 @@ div#container textarea {
 #error_explanation ul {
   padding: 10px;
   margin: 0;
+  list-style-type: circle;
   border: 2px solid #D61516;
   background-color: #FFEDEF;
   font-weight: 600;
