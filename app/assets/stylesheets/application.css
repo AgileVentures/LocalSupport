@@ -297,3 +297,13 @@ div#container textarea {
 /* CUSTOMIZE DEVISE ERROR MESSAGE
 -------------------------------------------------- */
 
+#error_explanation {
+  margin-bottom: 20px;
+}
+
+#error_explanation ul {
+  padding: 10px;
+  margin: 0;
+  border: 2px solid #D61516;
+  background-color: #FFEDEF;
+}
