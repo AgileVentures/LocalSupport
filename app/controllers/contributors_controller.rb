@@ -4,7 +4,7 @@ class ContributorsController < ApplicationController
   require 'json'
 
   def show
-    url = 'https://api.github.com/repos/tansaku/LocalSupport/contributors'
+    url = 'https://api.github.com/repos/AgileVentures/LocalSupport/contributors'
     uri = URI.parse url
     request = Net::HTTP::Get.new(uri.request_uri)
     http = Net::HTTP.new(uri.host, uri.port)
