@@ -298,7 +298,7 @@ div#container textarea {
 -------------------------------------------------- */
 
 #error_explanation {
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 #error_explanation h4 {
