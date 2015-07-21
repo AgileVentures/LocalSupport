@@ -5,6 +5,7 @@
     border-radius:2em;
     text-align: center;
 }
+
 .org_h3 {
   margin: 10px 0px;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -75,9 +76,6 @@
   }
 }
 
-/* ORGANISATION CATEGORIES STYLE
--------------------------------------------------- */
-
 #orgs_scroll {
   height: 340px;
   width: 100%;
@@ -85,23 +83,28 @@
   overflow-y: scroll;
 }
 
-#org-categories {
-  margin: 0;
-  margin-top: 10px;
+/* ORGANISATION CATEGORIES STYLE
+-------------------------------------------------- */
+
+.org-categories {
+  margin: 10px 0 30px 0;
+  overflow: hidden;
 }
 
-#org-categories li {
-  margin-bottom: 10px;
-}
-
-#org-categories h5 {
+.org-categories h5 {
   margin: 0;
   margin-bottom: 5px;
   padding-left: 10px;
   background-color: #F3F3F3;
 }
 
-#org-categories p {
+/* ------- DISPLAY -------- */
+
+.org-categories li {
+  margin-bottom: 10px;
+}
+
+.org-categories p {
   margin-left: 10px;
 }
 
@@ -109,3 +112,19 @@
   margin-top: 30px
 }
 
+
+/* ------- EDITING -------- */
+
+.category_type {
+  margin: 15px 0 0 0;
+}
+
+.category_type .org-category {
+  margin: 2px 0 0 0;
+  padding-right: 3px;
+}
+
+.category_type .checkbox.inline {
+  padding-top: 3px;
+  vertical-align: top;
+}

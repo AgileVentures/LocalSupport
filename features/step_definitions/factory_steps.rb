@@ -31,7 +31,7 @@ Then(/^I should see the details of the proposed organisation$/) do
   [:name, :description, :email, :address, :postcode].each do |key|
     expect(page).to have_content unsaved_proposed_organisation[key]
   end
-  ["Donate to Friendly Charity now!", 'We are a not for profit organisation', 'We work in Harrow'].each do |value|
+  ["Donate to Friendly Charity now!", 'We are a not for profit organisation registered or working in Harrow'].each do |value|
       expect(page).to have_content value
   end
 end
