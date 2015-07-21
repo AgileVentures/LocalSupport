@@ -11,6 +11,7 @@ Background:
   | existent-user2@example.com | pppppppp |
   And the email queue is clear
   And cookies are approved
+
 @email
 Scenario: Sign up for an existing user
   Given I visit the sign up page
