@@ -301,9 +301,15 @@ div#container textarea {
   margin-bottom: 20px;
 }
 
+#error_explanation h4 {
+  font-size: 17px;
+  font-weight: 400;
+}
+
 #error_explanation ul {
   padding: 10px;
   margin: 0;
   border: 2px solid #D61516;
   background-color: #FFEDEF;
+  font-weight: 600;
 }
