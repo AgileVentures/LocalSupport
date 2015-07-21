@@ -17,7 +17,7 @@ Feature: Password retrieval
     And cookies are approved
 
     Given I visit the home page
-    And I follow "Forgot your password?"
+    And I follow "Forgot your Password?"
     And the email queue is clear
 
   @email
@@ -41,6 +41,7 @@ Feature: Password retrieval
   Scenario: Retrieve password for a non-existent user
     When I fill in "user_retrieval_email" with "non-existent_user@example.com" within the main body
     And I press "Send me reset password instructions"
+    And I should not see "1 error prohibited this user from being saved:"
     And I should see "Email not found in our database. Sorry!"
     And I should not receive an email
   #And I should be on the sign up page 

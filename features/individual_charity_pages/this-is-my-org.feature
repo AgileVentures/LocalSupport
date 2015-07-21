@@ -69,6 +69,7 @@ Feature: This is my organisation
     Given I click "This is my organisation" on the "Helpful Folk" page and stay there
     When I click "toggle_link"
     And I sign up as "newuser@myorg.com" with password "pppppppp" and password confirmation "qppppppp"
+    Then show me the page
     Then I should see "error"
     And I sign up as "newuser@myorg.com" with password "pppppppp" and password confirmation "pppppppp" on the legacy sign up page
     And I should see "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
