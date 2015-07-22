@@ -10,6 +10,9 @@ module DeviseHelper
 
     messages = resource.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
 
+    # empty out error messages so they don't linger
+    resource.errors.clear
+
     html = <<-HTML
     <div id="error_explanation">
       <ul>#{messages}</ul>
