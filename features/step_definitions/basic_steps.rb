@@ -336,6 +336,11 @@ Then(/^the navbar should( not)? have a link to (.*?)$/) do |negate, link|
   within('#navbar') { expect(page).send(expectation_method, have_selector(:link_or_button, link)) }
 end
 
+Then(/^I should not see "(.*?)"  within "(.*?)"$/) do |text, selector|
+  within('.' + selector) { expect(page).not_to have_content text}
+end
+
+
 Given /^I edit the charity address to be "(.*?)" when Google is indisposed$/ do |address|
   body = %Q({
 "results" : [],

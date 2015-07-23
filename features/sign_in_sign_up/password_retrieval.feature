@@ -44,4 +44,8 @@ Feature: Password retrieval
     And I should not see "1 error prohibited this user from being saved:"
     And I should see "Email not found in our database. Sorry!"
     And I should not receive an email
-  #And I should be on the sign up page 
+    Given I click "Login"
+    And I click "New organisation? Sign up"
+    Then show me the page
+    Then I should not see "Email not found in our database. Sorry!"  within "dropdown-menu"
+    #And I should be on the sign up page
