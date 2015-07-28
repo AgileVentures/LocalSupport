@@ -12,10 +12,26 @@ $(document).ready(function () {
 
     rules: {
 
+      "organisation[name]": {
+        required: true
+      },
+
+      "organisation[description]": {
+        required: true
+      },
+
+      "organisation[address]": {
+        required: true
+      },
+
+      "organisation[postcode]": {
+        required: true
+      },
+
       "organisation[email]": {
-          // other rules,
-          required: true,
-          emailVal: true // <-  declare the rule someplace!
+        // other rules,
+        required: true,
+        emailVal: true
       }
 
     },
