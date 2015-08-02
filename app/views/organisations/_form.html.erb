@@ -102,9 +102,13 @@
     <% if @user_id %>
       <%= f.hidden_field :user_id, value: @user_id %> 
     <%end %>
-    <br>
-    <div class="actions">
-      <%= f.submit :class => 'btn btn-primary' %>
+
+    <div id="org-cat-buttons" class="row">
+      <div class="position-bottom span6">
+        <div class="actions">
+          <%= f.submit :class => 'btn btn-primary' %>
+        </div>
+      </div>
     </div>
 
 <% end %>

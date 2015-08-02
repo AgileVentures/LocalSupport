@@ -30,13 +30,6 @@ class ProposedOrganisationsController < BaseOrganisationsController
   def create
     org_params = ProposedOrganisationParams.build params
     usr = User.find params[:proposed_organisation][:user_id] if params[:proposed_organisation][:user_id]
-    @proposed_organisation = ProposedOrganisation.new(ProposedOrganisationParams.without_categories(params))
-    if @proposed_organisation.invalid?
-      flash[:error] =  @proposed_organisation.errors.first[1]
-      @categories_start_with = Category.first_category_name_in_each_type
-      @categories_selected = collect_selected_categories
-      render("new") and return false
-    end
     @proposed_organisation = ProposedOrganisation.new(org_params)
     @proposed_organisation.users << [usr] if usr
     if @proposed_organisation.save!
