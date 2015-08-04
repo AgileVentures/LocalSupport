@@ -22,5 +22,4 @@ describe ProposedOrganisation, :type => :model do
       end
     end
   end
-
 end

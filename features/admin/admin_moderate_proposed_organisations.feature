@@ -50,14 +50,38 @@ Feature: Admin moderates an organisation to be added to HarrowCN
 
   Scenario: Superadmin finds list of proposed organisations
     Given the following proposed organisations exist:
-       |proposer_email                | name       | description             | address        | postcode | telephone | website               | email                    | donation_info        |
-       |registered_user-2@example.com | Unfriendly | Mourning loved ones     | 30 pinner road | HA5 4HZ  | 520800000 | http://unfriendly.org | superadmin@unfriendly.xx | www.pleasedonate.com |
-       |registered_user-3@example.com | Friendly   | Bereavement             | 30 pinner road | HA5 4HZ  | 520800000 | http://friendly.org   | superadmin@friendly.xx   | www.pleasedonate.com |
+      |proposer_email                | name       | description             | address        | postcode | telephone | website               | email                    | donation_info        | non_profit |
+      |registered_user-2@example.com | Unfriendly | Mourning loved ones     | 30 pinner road | HA5 4HZ  | 520800000 | http://unfriendly.org | superadmin@unfriendly.xx | www.pleasedonate.com | true       |
+      |registered_user-3@example.com | Friendly   | Bereavement             | 30 pinner road | HA5 4HZ  | 520800000 | http://friendly.org   | superadmin@friendly.xx   | www.pleasedonate.com | true       |
     And I am signed in as an superadmin
     And I visit the home page
     And I click on the all proposed organisations link
     Then I should see a view details link for each of the proposed organisations
 
-
-
-
+  Scenario: Superadmin views details of proposed organisations
+    And the following categories exist:
+      | name                     | charity_commission_id |
+      | Animal Welfare           | 101                   |
+      | Plant Welfare            | 102                   |
+      | Animals with plants      | 201                   |
+      | People with disabilities | 202                   |
+      | Watering                 | 301                   |
+      | Advocacy                 | 303                   |
+    And the proposed organisations have the categories:
+      | category                 | proposed_organisation |
+      | Animal Welfare           | Friendly Charity      |
+      | Plant Welfare            | Friendly Charity      |
+      | Animals with plants      | Friendly Charity      |
+      | People with disabilities | Friendly Charity      |
+      | Watering                 | Friendly Charity      |
+      | Advocacy                 | Friendly Charity      |
+    And I am signed in as an superadmin
+    And I visit the proposed organisation show page for the proposed organisation that was proposed
+    Then I should see the details of the proposed organisation
+    And I should see the following:
+      | Animal Welfare           |
+      | Plant Welfare            |
+      | Animals with plants      |
+      | People with disabilities |
+      | Watering                 |
+      | Advocacy                 |
