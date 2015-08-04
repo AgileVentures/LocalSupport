@@ -33,6 +33,7 @@ Feature: User proposes an organisation to be added to HarrowCN
     Given I click "Add Organisation"
     Then I should be on the new proposed organisation page
     And I fill in the proposed charity page validly
+    When I check the confirmation box for "We are a not for profit organisation registered or working in Harrow"
     And I press "Create Proposed organisation"
     And I should see all the proposed organisation fields
     And the proposed organisation should have been created
@@ -40,6 +41,21 @@ Feature: User proposes an organisation to be added to HarrowCN
     And the proposed organisation "Friendly charity" should have a small icon
     Then I should not see an "Accept Proposed Organisation" button
     And I should not see a "Reject Proposed Organisation" button
+
+  @javascript
+  Scenario: Unregistered user proposes new organisation without checking confirmation box
+    Given I click "Add Organisation"
+    Then I should be on the new proposed organisation page
+    And I fill in the proposed charity page validly
+    When I uncheck the confirmation box for "We are a not for profit organisation registered or working in Harrow"
+    And I press "Create Proposed organisation"
+    And I should see all the proposed organisation fields
+    And the proposed organisation should have been created
+    And I should be on the proposed organisations show page for the organisation
+    And the proposed organisation "Friendly charity" should have a small icon
+    Then I should not see an "Accept Proposed Organisation" button
+    And I should not see a "Reject Proposed Organisation" button
+
 
   @javascript
   Scenario: Signed in user proposes new organisation
@@ -51,6 +67,7 @@ Feature: User proposes an organisation to be added to HarrowCN
     And I click "Add Organisation"
     Then I should be on the new proposed organisation page
     And I fill in the proposed charity page validly
+    And I check the confirmation box for "We are a not for profit organisation registered or working in Harrow"
     And I press "Create Proposed organisation"
     And I should see "This organisation proposed by 'normal_user@example.com'"
     And the proposed organisation should have been created
