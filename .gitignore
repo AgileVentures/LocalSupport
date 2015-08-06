@@ -39,6 +39,7 @@ linecache19-0.5.13.gem
 db/email_test.csv
 config/database.yml
 .projectile
+/public/assets
 
 # ignore ruby version management stuff
 .rvmrc

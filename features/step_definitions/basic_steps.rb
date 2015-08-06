@@ -360,6 +360,10 @@ Then(/^the navbar should( not)? have a link to (.*?)$/) do |negate, link|
   within('#navbar') { expect(page).send(expectation_method, have_selector(:link_or_button, link)) }
 end
 
+Then(/^I should not see "(.*?)"  within "(.*?)"$/) do |text, selector|
+  within('.' + selector) { expect(page).not_to have_content text}
+end
+
 Given /^I edit the charity address to be "(.*?)" when Google is indisposed$/ do |address|
   body = %Q({
 "results" : [],
@@ -404,7 +408,6 @@ And /^I click "(.*)" on the "(.*)" page and stay there$/  do |link, org_name|
     Then I should be on the show page for the organisation named "#{org_name}"
   }
 end
-
 
 Given /^"(.*)"'s request status for "(.*)" should be updated appropriately$/ do |email, org_name|
   steps %Q{
@@ -538,10 +541,10 @@ Given /^debugger$/ do
   debugger
   puts ""
 end
+
 Given /^I run the invite migration$/ do
 
 end
-
 
 Given(/^I can run the rake task "(.*?)"$/) do |task|
   stdout, stderr, status = Open3.capture3("#{task}")
