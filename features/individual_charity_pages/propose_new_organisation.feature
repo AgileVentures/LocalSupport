@@ -74,3 +74,17 @@ Feature: User proposes an organisation to be added to HarrowCN
     And I should see all the proposed organisation fields
     And I should be on the proposed organisations show page for the organisation
     And the proposed organisation "Friendly charity" should have a large icon
+
+  @javascript
+  Scenario: Superadmin receives an email when an organisation is proposed
+    Given the following users are registered:
+      | email                     | password | superadmin | organisation | confirmed_at         |
+      | superadmin@example.com    | pppppppp | true       |              | 2007-01-01  10:00:00 |
+    And I click "Add Organisation"
+    Then I should be on the new proposed organisation page
+    And I fill in the proposed charity page validly
+    When I uncheck the confirmation box for "We are a not for profit organisation registered or working in Harrow"
+    And I press "Create Proposed organisation"
+    And I should see all the proposed organisation fields
+    And the proposed organisation should have been created
+    Then an email should be sent to "superadmin@example.com" as notification of the proposed organisation

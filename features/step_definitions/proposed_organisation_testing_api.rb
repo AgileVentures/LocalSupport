@@ -8,4 +8,17 @@ def unsaved_proposed_organisation(associated_user = nil)
   proposed_org.users << associated_user if associated_user
   proposed_org
 end
+def proposed_org_categories
+  [ 'Animal welfare',
+    'Accommodation',
+    'Education',
+    'Give them things' ]
+end
 
+def proposed_org_fields
+  {
+    name: 'Friendly charity',
+    address: '64 pinner road',
+    description: 'Such friendly so charity'
+  }
+end

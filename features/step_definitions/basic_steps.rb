@@ -1,5 +1,6 @@
 require 'webmock/cucumber'
 require 'uri-handler'
+require_relative 'proposed_organisation_testing_api'
 include ApplicationHelper
 
 Then(/^I travel a year plus "(.*?)" days into the future$/) do |days|
@@ -137,20 +138,6 @@ Then (/the confirmation box named (.*) should be (checked|unchecked)$/) do |cate
   page.find(:xpath, "//label[text()='#{category}']/preceding-sibling::input[1]").send(assertion, be_checked)
 end
 
-def proposed_org_categories
-  [ 'Animal welfare',
-    'Accommodation',
-    'Education',
-    'Give them things' ]
-end
-
-def proposed_org_fields
-  {
-    name: 'Friendly charity',
-    address: '64 pinner road',
-    description: 'Such friendly so charity'
-  }
-end
 
 Then(/^I should see all the proposed organisation fields$/) do
   proposed_org_fields.each_value do |value|

@@ -34,6 +34,7 @@ class ProposedOrganisationsController < BaseOrganisationsController
     @proposed_organisation.users << [usr] if usr
     if @proposed_organisation.save!
       session[:proposed_organisation_id] = @proposed_organisation.id
+      send_email_to_superadmin_about_org_signup @proposed_organisation
       redirect_to @proposed_organisation, notice: 'Organisation is pending admin approval.'
     else
       redirect_to new_proposed_organisation_path and return false
@@ -48,6 +49,10 @@ class ProposedOrganisationsController < BaseOrganisationsController
   end
 
   private
+  def send_email_to_superadmin_about_org_signup(org)
+    superadmin_emails = User.superadmins.pluck(:email)
+    AdminMailer.new_org_waiting_for_approval(org, superadmin_emails).deliver_now
+  end
 
   def require_superadmin_or_recent_creation
     unless session[:proposed_organisation_id] || current_user.try(:superadmin)
