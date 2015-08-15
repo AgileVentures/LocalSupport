@@ -25,7 +25,7 @@ describe AdminMailer, :type => :mailer do
   end
 
   context "new proposed org notification" do
-    subject { AdminMailer.new_org_waiting_for_approval('friendly', 'superadmin@superadmin.org') }
+    subject { AdminMailer.new_org_waiting_for_approval(double("Organisation", name: 'friendly'), 'superadmin@superadmin.org') }
     it { expect{subject.deliver_now}.to change{ActionMailer::Base.deliveries.length}.by(1) }
     it { expect(subject.subject).to eq "A new organisation has been proposed for inclusion in Harrow Community Network" }
     it { expect(subject.to).to eq ['superadmin@superadmin.org'] }
