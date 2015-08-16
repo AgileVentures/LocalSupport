@@ -28,6 +28,10 @@ Background: organisations have been added to database
    Given I am signed in as a superadmin
    And I add "non-registered-user@example.com" as a superadmin for "Friendly" charity
    Then "non-registered-user@example.com" should be a charity superadmin for "Friendly" charity
+   And I click on the invitation link in the email to "non-registered-user@example.com"
+   And I set my password
+   Then I should be on the show page for the organisation named "Friendly"
+   And I should see a link or button "non-registered-user@example.com"
 
   Scenario: Adding non-existent user as charity superadmin invites said user
    Given I am signed in as a superadmin
