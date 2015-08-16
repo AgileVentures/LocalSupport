@@ -44,6 +44,8 @@ class Organisation < BaseOrganisation
       usr = User.find_by_email(email)
       if usr.present?
         self.users << usr
+        org_admin_email = [email]
+        OrgAdminMailer.new_org_admin(self, org_admin_email).deliver_now
       else
         result = ::BatchInviteJob.new({:resend_invitation => false, :invite_list => {id.to_s => email}}, User.first).run
         if result[id.to_s] != "Invited!"
