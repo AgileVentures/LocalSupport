@@ -24,11 +24,14 @@ Background: organisations have been added to database
    And I visit the edit page for the organisation named "Friendly Clone"
    Then I should see the no charity superadmins message
 
- Scenario: Cannot add non-existent user as charity superadmin
+  Scenario: Adding non-existent user as charity superadmin invites said user
    Given I am signed in as a superadmin
    And I add "non-registered-user@example.com" as a superadmin for "Friendly" charity
-   Then I should not see "non-registered-user-1@example.com" in the charity superadmin email
-   And I should see "The user email you entered,'non-registered-user@example.com', does not exist in the system" in the flash error
+   Then "non-registered-user@example.com" should be a charity superadmin for "Friendly" charity
+
+  Scenario: Adding non-existent user as charity superadmin invites said user
+   Given I am signed in as a superadmin
+   And I add "blah" as a superadmin for "Friendly" charity
 
  Scenario: Successfully add existent user as charity superadmin
    Given I am signed in as a superadmin
