@@ -46,8 +46,9 @@ class Organisation < BaseOrganisation
         self.users << usr
         return self.update_attributes(params)
       else
-        self.errors.add(:superadministrator_email, "The user email you entered,'#{email}', does not exist in the system")
-        raise ActiveRecord::Rollback    # is this necessary? Doesn't the transaction block rollback the change with `usr` if update_attributes fails?
+        #self.errors.add(:superadministrator_email, "The user email you entered,'#{email}', does not exist in the system")
+        #raise ActiveRecord::Rollback    # is this necessary? Doesn't the transaction block rollback the change with `usr` if update_attributes fails?
+        ::BatchInviteJob.new({:resend_invitation => false, :invite_list => {id.to_s => email}}, User.first).run
       end
     end
   end
