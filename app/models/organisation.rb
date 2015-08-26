@@ -34,23 +34,13 @@ class Organisation < BaseOrganisation
   #TODO: Give this TLC and refactor the flow or refactor out responsibilities
   # This method both adds new editors and/or updates attributes
   def update_attributes_with_superadmin(params)
-    email = params[:superadmin_email_to_add]
-    params.delete :superadmin_email_to_add
+    email = extract_email_param params
     if email.blank?
       return self.update_attributes(params)   # explicitly call with return to return boolean instead of nil
     end
     #Transactions are protective blocks where SQL statements are only permanent if they can all succeed as one atomic action.
     ActiveRecord::Base.transaction do
-      usr = User.find_by_email(email)
-      if usr.present?
-        self.users << usr
-      else
-        result = ::BatchInviteJob.new({:resend_invitation => false, :invite_list => {id.to_s => email}}, User.first).run
-        if result[id.to_s] != "Invited!"
-          self.errors.add(:superadministrator_email, "The user email you entered,'#{email}', is invalid")
-          raise ActiveRecord::Rollback    # is this necessary? Doesn't the transaction block rollback the change with `usr` if update_attributes fails?
-        end
-      end
+      add_existing_user_or_create_anew email
       return self.update_attributes(params)
     end
   end
@@ -163,7 +153,25 @@ class Organisation < BaseOrganisation
   end
 
   private
-  
+
+  def add_existing_user_or_create_anew email
+    usr = User.find_by_email(email)
+    if usr.present?
+      self.users << usr
+    else
+      result = ::BatchInviteJob.new({:resend_invitation => false, :invite_list => {id.to_s => email}}, User.first).run
+      if result[id.to_s] != "Invited!"
+        self.errors.add(:superadministrator_email, "The user email you entered,'#{email}', is invalid")
+        raise ActiveRecord::Rollback    # is this necessary? Doesn't the transaction block rollback the change with `usr` if update_attributes fails?
+      end
+    end
+  end
+
+  def extract_email_param params
+    email = params[:superadmin_email_to_add]
+    params.delete :superadmin_email_to_add
+    email
+  end
   def self.table
     arel_table
   end
