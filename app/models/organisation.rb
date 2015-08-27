@@ -159,7 +159,9 @@ class Organisation < BaseOrganisation
     if usr.present?
       self.users << usr
     else
-      ::BatchInviteJob.invite_user self, email 
+      ::BatchInviteJob.invite_user self, email  do |email|
+        error_when_new_org_admin_invited email
+      end
     end
   end
 
