@@ -34,9 +34,14 @@ class Organisation < BaseOrganisation
   #TODO: Give this TLC and refactor the flow or refactor out responsibilities
   # This method both adds new editors and/or updates attributes
   def update_attributes_with_superadmin(params)
-    email = extract_email_from params
-    return unless email.blank? || can_add_or_invite_admin?(email)
-    self.update_attributes(params)
+
+    email = extract_email_param(params)
+    return self.update_attributes(params) if email.blank?   # explicitly call with return to return boolean instead of nil
+    #Transactions are protective blocks where SQL statements are only permanent if they can all succeed as one atomic action.
+    ActiveRecord::Base.transaction do
+      add_existing_user_or_create_anew email
+      return self.update_attributes(params)
+
     end
   end
 
@@ -146,13 +151,13 @@ class Organisation < BaseOrganisation
   def not_updated_recently_or_has_no_owner?
     self.users.empty? || not_updated_recently?
   end
-  
+
+  private
+
   def error_when_new_org_admin_invited email
     self.errors.add(:superadministrator_email, "The user email you entered,'#{email}', is invalid")
     raise ActiveRecord::Rollback    # is this necessary? Doesn't the transaction block rollback the change with `usr` if update_attributes fails?
   end
-  
-  private
 
   def add_existing_user_or_create_anew email
     usr = User.find_by_email(email)
