@@ -152,8 +152,9 @@ class Organisation < BaseOrganisation
 
   private
 
-  def error_when_new_org_admin_invited email
-    self.errors.add(:superadministrator_email, "The user email you entered,'#{email}', is invalid")
+  def error_when_new_org_admin_invited email, error_msg
+    error_msg = ("Error: Email is invalid" == error_msg) ? "The user email you entered,'#{email}', is invalid" : error_msg
+    self.errors.add(:superadministrator_email, error_msg)
     raise ActiveRecord::Rollback    # is this necessary? Doesn't the transaction block rollback the change with `usr` if update_attributes fails?
   end
 
@@ -162,8 +163,8 @@ class Organisation < BaseOrganisation
     if usr.present?
       self.users << usr
     else
-      ::BatchInviteJob.invite_user self, email  do |email|
-        error_when_new_org_admin_invited email
+      ::BatchInviteJob.invite_user self, email  do |email, error_msg|
+        error_when_new_org_admin_invited email, error_msg
       end
     end
   end
