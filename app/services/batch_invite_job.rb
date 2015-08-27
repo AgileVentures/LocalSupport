@@ -10,10 +10,10 @@ class BatchInviteJob
     invite_users_and_collate_results
   end
 
-  def self.invite_user org, email
+  def self.invite_user(org, email, &callback)
     result = ::BatchInviteJob.new({:resend_invitation => false, :invite_list => {org.id.to_s => email}}, User.first).run
     if result[org.id.to_s] != "Invited!"
-      org.error_when_new_org_admin_invited email
+      callback.call email
     end
   end
   private
