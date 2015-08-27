@@ -74,7 +74,6 @@ Scenario: Check class of flash notice  - error
   Then I should be on the sign in page
   And the "flash_alert" should be "alert-error"
 
-
 Scenario: Check class of flash notice  - success
   Given I sign in as "superadmin@example.com" with password "pppppppp"
   Then I should be on the home page

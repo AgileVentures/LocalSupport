@@ -85,6 +85,7 @@ class OrganisationsController < BaseOrganisationsController
     if @organisation.update_attributes_with_superadmin(update_params)
       redirect_to @organisation, notice: 'Organisation was successfully updated.'
     else
+      @categories_start_with = Category.first_category_name_in_each_type
       flash[:error] = @organisation.errors[:superadministrator_email][0]
       render action: "edit"
     end

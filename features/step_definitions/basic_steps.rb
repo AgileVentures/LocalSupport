@@ -99,6 +99,11 @@ Given (/^I fill in the new charity page validly including the categories:$/) do 
   stub_request_with_address("64 pinner road")
 end
 
+Given(/^I am proposing an organisation$/) do
+  visit new_proposed_organisation_path
+  steps %Q{And I fill in the proposed charity page validly}
+end
+
 Given (/^I fill in the proposed charity page validly$/) do
   proposed_org_fields.each do |key, val|
     fill_in "proposed_organisation_#{key}", with: val
@@ -111,12 +116,25 @@ Given (/^I fill in the proposed charity page validly$/) do
   stub_request_with_address("64 pinner road")
 end
 
+When(/^I check the confirmation box for "(.*?)"$/) do |text|
+  find(:xpath,"//label[text()='#{text}']/preceding-sibling::input[1]").set(true)
+end
+
+When(/^I uncheck the confirmation box for "(.*?)"$/) do |text|
+  find(:xpath,"//label[text()='#{text}']/preceding-sibling::input[1]").set(false)
+end
+
 Then(/^I should be on the proposed organisations show page for the organisation$/) do
   expect(current_path).to eq proposed_organisation_path(ProposedOrganisation.find_by(name: proposed_org_fields[:name]))
 end
 
 Then(/^the proposed organisation should have been created$/) do
   expect(ProposedOrganisation.find_by(name: 'Friendly charity')).not_to be_nil
+end
+
+Then (/the confirmation box named (.*) should be (checked|unchecked)$/) do |category, status|
+  assertion = (status == 'checked') ? :should : :should_not
+  page.find(:xpath, "//label[text()='#{category}']/preceding-sibling::input[1]").send(assertion, be_checked)
 end
 
 def proposed_org_categories
@@ -326,6 +344,12 @@ Then(/^I should see "(.*?)" within "(.*?)"$/) do |text, selector|
   within('#' + selector) { expect(page).to have_content text}
 end
 
+Then(/^I should see the following:$/) do |table|
+  table.rows.each do |text|
+    expect(page).to have_content text.first
+  end
+end
+
 Then(/^I should( not)? see a link or button "(.*?)"$/) do |negate, link|
   expectation_method = negate ? :not_to : :to
   expect(page).send(expectation_method, have_selector(:link_or_button, link))
@@ -334,6 +358,10 @@ end
 Then(/^the navbar should( not)? have a link to (.*?)$/) do |negate, link|
   expectation_method = negate ? :not_to : :to
   within('#navbar') { expect(page).send(expectation_method, have_selector(:link_or_button, link)) }
+end
+
+Then(/^I should not see "(.*?)"  within "(.*?)"$/) do |text, selector|
+  within('.' + selector) { expect(page).not_to have_content text}
 end
 
 Given /^I edit the charity address to be "(.*?)" when Google is indisposed$/ do |address|
@@ -380,7 +408,6 @@ And /^I click "(.*)" on the "(.*)" page and stay there$/  do |link, org_name|
     Then I should be on the show page for the organisation named "#{org_name}"
   }
 end
-
 
 Given /^"(.*)"'s request status for "(.*)" should be updated appropriately$/ do |email, org_name|
   steps %Q{
@@ -514,10 +541,10 @@ Given /^debugger$/ do
   debugger
   puts ""
 end
+
 Given /^I run the invite migration$/ do
 
 end
-
 
 Given(/^I can run the rake task "(.*?)"$/) do |task|
   stdout, stderr, status = Open3.capture3("#{task}")

@@ -13,7 +13,6 @@ gem 'heroku-api'
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do
   gem 'timecop'
-  gem 'metric_fu'
   gem 'database_cleaner', '1.0.1'
   gem 'launchy'
   gem 'simplecov'

@@ -31,6 +31,7 @@ FactoryGirl.define do
     email "friendly@charity.org"
     latitude 10
     longitude 10
+    non_profit true
     after(:build) do |proposed_org|
       owner = FactoryGirl.create(:user)
       proposed_org.users << owner
