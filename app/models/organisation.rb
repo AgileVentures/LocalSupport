@@ -146,7 +146,12 @@ class Organisation < BaseOrganisation
   def not_updated_recently_or_has_no_owner?
     self.users.empty? || not_updated_recently?
   end
-
+  
+  def error_when_new_org_admin_invited email
+    self.errors.add(:superadministrator_email, "The user email you entered,'#{email}', is invalid")
+    raise ActiveRecord::Rollback    # is this necessary? Doesn't the transaction block rollback the change with `usr` if update_attributes fails?
+  end
+  
   private
 
   def add_existing_user_or_create_anew email
@@ -154,11 +159,7 @@ class Organisation < BaseOrganisation
     if usr.present?
       self.users << usr
     else
-      result = ::BatchInviteJob.new({:resend_invitation => false, :invite_list => {id.to_s => email}}, User.first).run
-      if result[id.to_s] != "Invited!"
-        self.errors.add(:superadministrator_email, "The user email you entered,'#{email}', is invalid")
-        raise ActiveRecord::Rollback    # is this necessary? Doesn't the transaction block rollback the change with `usr` if update_attributes fails?
-      end
+      ::BatchInviteJob.invite_user self, email 
     end
   end
 
