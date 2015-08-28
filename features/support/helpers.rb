@@ -35,4 +35,38 @@ module Helpers
   end
 end
 
-World(Helpers)
+module MapHelpers
+  def stub_request_with_address(address, body = nil)
+    filename = "#{address.gsub(/\s/, '_')}.json"
+    filename = File.read "test/fixtures/#{filename}"
+    stub_request(:any, /maps\.googleapis\.com/).
+        to_return(status => 200, :body => body || filename, :headers => {})
+  end
+end
+
+module ProposedOrgHelpers
+  def unsaved_proposed_organisation(associated_user = nil)
+    proposed_org = ProposedOrganisation.new({name: "Friendly Charity", description: "We are friendly!",
+      email: "sample@sample.org", address: "30 pinner road", donation_info: "https://www.donate.com",
+      postcode: 'HA1 4JD', non_profit: true})
+    stub_request_with_address("30 pinner road")
+    proposed_org.users << associated_user if associated_user
+    proposed_org
+  end
+  def proposed_org_categories
+    [ 'Animal welfare',
+      'Accommodation',
+      'Education',
+      'Give them things' ]
+  end
+
+  def proposed_org_fields
+    {
+      name: 'Friendly charity',
+      address: '64 pinner road',
+      description: 'Such friendly so charity'
+    }
+  end
+end
+
+World(Helpers, MapHelpers, ProposedOrgHelpers)

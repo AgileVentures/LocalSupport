@@ -28,12 +28,10 @@ class ProposedOrganisationsController < BaseOrganisationsController
   end
 
   def create
-    org_params = ProposedOrganisationParams.build params
-    usr = User.find params[:proposed_organisation][:user_id] if params[:proposed_organisation][:user_id]
-    @proposed_organisation = ProposedOrganisation.new(org_params)
-    @proposed_organisation.users << [usr] if usr
+    make_user_into_org_admin_of_new_proposed_org
     if @proposed_organisation.save!
       session[:proposed_organisation_id] = @proposed_organisation.id
+      send_email_to_superadmin_about_org_signup @proposed_organisation
       redirect_to @proposed_organisation, notice: 'Organisation is pending admin approval.'
     else
       redirect_to new_proposed_organisation_path and return false
@@ -48,6 +46,18 @@ class ProposedOrganisationsController < BaseOrganisationsController
   end
 
   private
+
+  def make_user_into_org_admin_of_new_proposed_org
+    org_params = ProposedOrganisationParams.build params
+    usr = User.find params[:proposed_organisation][:user_id] if params[:proposed_organisation][:user_id]
+    @proposed_organisation = ProposedOrganisation.new(org_params)
+    @proposed_organisation.users << [usr] if usr
+  end
+
+  def send_email_to_superadmin_about_org_signup(org)
+    superadmin_emails = User.superadmins.pluck(:email)
+    AdminMailer.new_org_waiting_for_approval(org, superadmin_emails).deliver_now
+  end
 
   def require_superadmin_or_recent_creation
     unless session[:proposed_organisation_id] || current_user.try(:superadmin)
