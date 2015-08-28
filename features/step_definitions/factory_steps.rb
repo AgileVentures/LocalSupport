@@ -1,4 +1,3 @@
-require_relative 'proposed_organisation_testing_api'
 
 Given(/^the following proposed organisations exist:$/) do |table|
   require 'boolean'
