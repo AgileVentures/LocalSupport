@@ -1,6 +1,5 @@
 require 'webmock/cucumber'
 require 'uri-handler'
-require_relative 'proposed_organisation_testing_api'
 include ApplicationHelper
 
 Then(/^I travel a year plus "(.*?)" days into the future$/) do |days|

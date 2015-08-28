@@ -1,4 +1,3 @@
-require_relative 'proposed_organisation_testing_api'
 
 def expect_email_exists(message: nil, email: nil, link: nil, link_text: nil)
   #TODO: use mandatory keyword arguments, ie. message:, when upgrading to ruby 2.1
