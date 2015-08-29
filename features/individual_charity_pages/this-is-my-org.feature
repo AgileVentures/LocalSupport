@@ -17,6 +17,7 @@ Feature: This is my organisation
 
     And cookies are approved
 
+  @vcr
   Scenario: Signed in User
     Given I am signed in as a non-superadmin
     And I click "This is my organisation" on the "Helpful Folk" page and stay there
@@ -28,6 +29,7 @@ Feature: This is my organisation
 # when capybara-webkit clicks TIMO, it needs to submit sign in form with javascript or
 # else ClickFailed error will occur due to overlapping elements
   @javascript
+  @vcr
   Scenario: Not Signed in User
     Given I click "This is my organisation" on the "Helpful Folk" page and stay there
     When I sign in as "admin@helpfolk.com" with password "mypassword1234" with javascript
@@ -39,6 +41,7 @@ Feature: This is my organisation
 # what we're not checking here is that the login box pops open with the right message
 # I think we cover that in jasmine tests - needed here too?
   @javascript
+  @vcr
   Scenario: Not Signed in User Who Fails Signin Once
     Given I click "This is my organisation" on the "Helpful Folk" page and stay there
     When I sign in as "admin@helpfolk.com" with password "mypassword1235" with javascript
@@ -50,6 +53,7 @@ Feature: This is my organisation
     And an email should be sent to "superadmin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
 
   @javascript
+  @vcr
   Scenario: Unregistered User
     Given I click "This is my organisation" on the "Helpful Folk" page and stay there
     And I click "toggle_link"
@@ -65,6 +69,7 @@ Feature: This is my organisation
     And an email should be sent to "superadmin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
 
   @javascript
+  @vcr
   Scenario: Unregistered User Who Fails Signin Once
     Given I click "This is my organisation" on the "Helpful Folk" page and stay there
     When I click "toggle_link"
@@ -80,7 +85,8 @@ Feature: This is my organisation
     When I sign in as "newuser@myorg.com" with password "pppppppp" on the legacy sign in page
     Then I should be on the show page for the organisation named "Helpful Folk"
     And an email should be sent to "superadmin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
-
+  
+  @vcr
   Scenario: I have requested admin status but am not yet approved, I will see a notice only on the show page for the requested org
     Given I am signed in as a pending admin of "Helpful Folk"
     And I visit the show page for the organisation named "Helpful Folk"

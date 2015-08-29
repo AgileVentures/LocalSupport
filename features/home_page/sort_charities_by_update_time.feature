@@ -12,12 +12,14 @@ Background: organisations have been added to database
   | Harrow Elders Association       | "2013-02-23 15:54:34" | 64 pinner road |
   | Harrow Age UK                   | "2013-03-23 15:54:34" | 84 pinner road |
 
+@vcr
 Scenario: Most recently updated charity shows at the top of the list 
   Given I update the "Harrow Elders Association" 
   And I visit the home page
   Then I should see "Harrow Elders Association" before "Harrow Age UK"
   And I should see "Harrow Age UK" before "Harrow Bereavement Counselling"
- 
+
+@vcr 
 Scenario: Most recently updated charity shows at the top of the list 
   Given I visit the home page
   Then I should see "Harrow Elders Association" before "Harrow Bereavement Counselling"

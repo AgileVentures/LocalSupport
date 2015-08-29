@@ -34,16 +34,19 @@ Given the following categories_organisations exist:
   | Health    | Friendly      |
   | Education | Friendly      |
 
+@vcr
 Scenario: Successfully add website url without protocol
   Given I am signed in as a charity worker related to "Friendly"
   And I update "Friendly" charity website to be "www.friendly.com"
   Then the website link for "Friendly" should have a protocol
 
+@vcr
 Scenario: Successfully change the address of a charity
   Given I am signed in as a charity worker related to "Friendly"
   And I update "Friendly" charity address to be "30 pinner road"
   Then I should be on the show page for the organisation named "Friendly"
 
+@vcr
 Scenario Outline: Successfully mark a field of a charity as public or private
   Given I am signed in as a charity worker related to "Friendly"
   And I visit the edit page for the organisation named "Friendly"
@@ -72,15 +75,18 @@ Examples:
 #  Given I visit the home page
 #  Then the coordinates for "Nice" and "Friendly" should not be the same
 
+@vcr
 Scenario: Do not see edit button as non-superadmin not associated with Friendly
   Given I am signed in as a charity worker unrelated to "Friendly"
   And I visit the show page for the organisation named "Friendly"
   Then I should not see an edit button for "Friendly" charity
 
+@vcr
 Scenario: Non-logged in users do not see edit button either
   Given I visit the show page for the organisation named "Friendly"
   Then I should not see an edit button for "Friendly" charity
 
+@vcr
 Scenario: Change the address of a charity when Google is indisposed
   Given I am signed in as a charity worker related to "Friendly"
   And I update "Friendly" charity address to be "83 pinner road" when Google is indisposed
@@ -94,27 +100,33 @@ Scenario: Change the address of a charity when Google is indisposed
 #  Then the coordinates for "Friendly" should be correct
 #  Then show me the page
 
+@vcr
 Scenario: Redirected to sign-in when not signed-in and edit donation url
   Given I visit the edit page for the organisation named "Friendly"
   Then I should be on the sign in page
 # TODO after sign in is take the user back to the edit page
 
+@vcr
 Scenario: By default, not display organisations address and phone number on home page
   Given I visit the show page for the organisation named "Friendly"
   Then I should not see any address or telephone information for "Nice" and "Friendly"
 
+@vcr
 Scenario: By default, not display organisations edit and delete on home page
   Given I visit the show page for the organisation named "Friendly"
   Then I should not see any edit or delete links
 
+@vcr
 Scenario: By default, not display organisations address and phone number on details page
   Given I visit the show page for the organisation named "Friendly"
   Then I should not see any address or telephone information for "Friendly"
 
+@vcr
 Scenario: By default, not display edit link on details page
   Given I visit the show page for the organisation named "Friendly"
   Then I should not see any edit link for "Friendly"
   
+@vcr
 Scenario Outline: Edit page has scroll box for selecting categories
   Given I am signed in as a charity worker related to "Friendly"
   And I visit the edit page for the organisation named "Friendly"
@@ -131,6 +143,7 @@ Examples:
   | How you help | Give them things    | 2nd |
   | How you help | Teach them things   | 3rd |
   
+@vcr
 Scenario Outline: Appropriate categories are checked/unchecked by default
   Given I am signed in as a charity worker related to "Friendly"
   And I visit the edit page for the organisation named "Friendly"
@@ -147,6 +160,7 @@ Examples:
   | Teach them things | unchecked    |
   | Give them things  | unchecked    |
 
+@vcr
 Scenario Outline: Successfully add and remove an organisation's categories
   Given I am signed in as a charity worker related to "Friendly"
   And I visit the edit page for the organisation named "Friendly"

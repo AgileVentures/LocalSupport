@@ -23,6 +23,7 @@ Feature: Fix Associations
       | whitespace |
 
   # check if the records are in the broken state
+  @vcr
   Scenario: Broken invites as seen on the orphans page
     Given cookies are approved
     Given I am signed in as a superadmin
@@ -33,6 +34,7 @@ Feature: Fix Associations
     # None will show on the invited users page because we don't show users
     # without associations there
 
+  @vcr
   Scenario: migration
     Given I run the fix invitations rake task
     Given cookies are approved

@@ -10,6 +10,7 @@ Background: organisations have been added to database
     | name                            | donation_info                      | address        |
     | Age UK                          | www.age-uk.co.uk/donate            | 84 pinner road |
 
+@vcr
 Scenario: Org page of an organisation with donation info URL
   Given I visit the show page for the organisation named "Age UK"
   Then I should see the donation_info URL for "Age UK"

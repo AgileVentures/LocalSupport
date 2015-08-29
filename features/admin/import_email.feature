@@ -16,6 +16,7 @@ Background: organisations have been added to database
     | I hate animals    |             |           |           |          |       |            | superadmin@cruelty.com   |
     | I love people     |             |           |           |          |       |            | people@humanity.org |
 
+  @vcr
   Scenario: import email addresses
     Given Google is indisposed for "64 pinner road"
     And I import emails from "db/email_test.csv"

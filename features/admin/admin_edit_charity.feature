@@ -15,6 +15,7 @@ Feature: Super Admin editing charity
       | registered-user-2@example.com | pppppppp | false | 2007-01-01  10:00:00 |           |
     And cookies are approved
 
+  @vcr
   Scenario: Super Admin successfully changes the address of a charity
     Given I am signed in as a superadmin
     And I update "Friendly" charity address to be "30 pinner road"
@@ -27,6 +28,7 @@ Feature: Super Admin editing charity
 #    Then I should see "You don't have permission"
 #    And "Friendly" charity address is "34 pinner road"
 
+  @vcr
   Scenario: Non-superadmin sees no permission error when visiting the edit form for charity
     Given I am signed in as a non-superadmin
     And I visit the edit page for the organisation named "Friendly"

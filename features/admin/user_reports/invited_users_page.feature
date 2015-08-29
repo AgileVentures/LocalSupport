@@ -13,6 +13,7 @@ Feature: Invited Users Page
       | regular@user.org | mypassword1234 | false | 2008-01-01 00:00:00 |                 |                      |
     And the superadmin invited a user for "Invited Organisation"
 
+  @vcr
   Scenario: Page shows only invited users
     Given cookies are approved
     And I am signed in as a superadmin
@@ -21,6 +22,7 @@ Feature: Invited Users Page
     And I should not see "regular@user.org"
 
   @javascript
+  @vcr
   Scenario: Invitations can be resent
     Given cookies are approved
     Given I am signed in as a superadmin

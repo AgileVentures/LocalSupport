@@ -18,7 +18,8 @@ Feature: Super Admin deleting charity
       | org-superadmin@example.com | pppppppp | false | 2007-01-01  10:00:00 | Friendly     |
       | user@example.com      | pppppppp | false | 2007-01-01  10:00:00 |              |
     And cookies are approved
-
+    
+  @vcr
   Scenario: Super Admin successfully deletes a charity   # scenario 'Super Admin successfully deletes a charity' do
     Given I am signed in as a superadmin
     And I visit the show page for the organisation named "Friendly"
@@ -27,21 +28,25 @@ Feature: Super Admin deleting charity
     And I should see "Deleted Friendly" in the flash
     And I should be on the organisations index page
     And the "2" proposed edits for the organisation named "Friendly" should only be soft deleted
-
+    
+  @vcr
   Scenario: Org superadmin cannot see delete button
     Given I am signed in as a non-superadmin
     And I visit the show page for the organisation named "Friendly"
     And I should not see "Delete"
-
+    
+  @vcr
   Scenario: Non-superadmin cannot see delete button
     Given I am signed in as a non-superadmin
     And I visit the show page for the organisation named "Friendly"
     And I should not see "Delete"
-
+  
+  @vcr
   Scenario: Public cannot see delete button
     Given I visit the show page for the organisation named "Friendly"
     And I should not see "Delete"
-
+  
+  @vcr
   Scenario: Non-superadmin unsuccessfully attempts to delete a charity directly
     Given I am signed in as a non-superadmin
     And I delete "Friendly" charity

@@ -13,6 +13,7 @@ Feature: Local Resident seeking Support
       | Age UK                         | Care for the Elderly         | 84 pinner road | HA1 4HF  | http://c.com/ |
 
 # particularly want to provide visibility to organisations with no existing web presence
+  @vcr
   Scenario: Find help with care for elderly
     Given I visit the home page
     When I search for "elderly"
@@ -24,6 +25,7 @@ Feature: Local Resident seeking Support
     And the search box should contain "elderly"
 
 # starting within main site
+  @vcr
   Scenario: Find a bereavement counsellor
     Given I visit the home page
     When I search for "Bereavement Counselling"
@@ -34,6 +36,7 @@ Feature: Local Resident seeking Support
       | Age UK                    | Care for the Elderly |
     Then I should not see the no results message
 
+  @vcr
   Scenario: Find friendly no search results message
     Given I visit the home page
     When I search for "non-existent results"
@@ -41,6 +44,7 @@ Feature: Local Resident seeking Support
     Given I visit the home page
     Then I should not see the no results message
 
+  @vcr
   Scenario: See a list of current organisations
     Given I visit the home page
     And cookies are approved

@@ -16,21 +16,25 @@ Background:
       | title              | description                     | organisation              |
       | Litter Box Scooper | Assist with feline sanitation   | Cats Are Us               |
 
+@vcr
 Scenario:
   Given I am signed in as a superadmin
   When I visit the show page for the volunteer_op titled "Litter Box Scooper"
   Then I should see an edit button for "Litter Box Scooper" volunteer opportunity
 
+@vcr
 Scenario:
   Given I am signed in as a non-superadmin
   When I visit the show page for the volunteer_op titled "Litter Box Scooper"
   Then I should not see an edit button for "Litter Box Scooper" volunteer opportunity
 
+@vcr
 Scenario:
   # Not logged in
   When I visit the show page for the volunteer_op titled "Litter Box Scooper"
   Then I should not see an edit button for "Litter Box Scooper" volunteer opportunity
 
+@vcr
 Scenario: Super Admin successfully changes the description of an opportunity
   Given I am signed in as a superadmin
   When I update "Litter Box Scooper" volunteer op description to be "Clean up cat mess"

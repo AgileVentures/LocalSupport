@@ -16,7 +16,7 @@ Feature: Home button in header
       |title              | description            | organisation |
       |Litter Box Scooper | Assist with sanitation | Age UK |
 
-
+  @vcr
   Scenario Outline: Find help with care for elderly
     Given I visit the <page>
     Then I should see an <status> home button in the header

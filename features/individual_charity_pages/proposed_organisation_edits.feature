@@ -20,6 +20,7 @@ I want to be able to propose edits to inaccurate organisation listings
       | friendly@friendly.org         | pppppppp | Really Friendly     | 2007-01-01  10:00:00 | false |
     And cookies are approved
 
+  @vcr
   Scenario: Site superadmin does not see proposed edit button
     Given I am signed in as a superadmin
     And I visit the show page for the organisation named "Really Friendly"

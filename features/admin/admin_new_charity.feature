@@ -26,6 +26,7 @@ Feature: Super Admin creating charity
  
     And cookies are approved
 
+  @vcr
   Scenario: Unsuccessfully attempt to create charity without being signed-in
       # should this be checking for absence of link to the new org page?
     Given I visit the new organisation page
@@ -41,11 +42,13 @@ Feature: Super Admin creating charity
     #Given I visit the new organisation page
     #Then I should be on the sign in page
 
+  @vcr
   Scenario: Successfully create charity while being signed-in as superadmin
     Given I am signed in as a superadmin
     And I have created a new organisation
     Then I should see "Organisation was successfully created."
 
+  @vcr
   Scenario: Successfully create charity while being signed-in as superadmin from arbitrary page
     Given I am signed in as a superadmin
     Given I visit the show page for the organisation named "Friendly Clone"
@@ -60,6 +63,7 @@ Feature: Super Admin creating charity
     And I should see "Accommodation"
     And I should not see "General"
 
+  @vcr
   Scenario: Non-superadmin unsuccessfully attempts to create an organisation
     Given I am signed in as a non-superadmin
     And I create "Unwanted" org
@@ -68,10 +72,12 @@ Feature: Super Admin creating charity
     And I should not see "Organisation was successfully created."
     And "Unwanted" org should not exist
 
+  @vcr
   Scenario: non logged in user should not see new organisation link
     Given I visit the home page
     Then I should not see a new organisations link
-
+  
+  @vcr
   Scenario: logged in non-superadmin user should not see new organisation link
     Given I am signed in as a non-superadmin
     Given I visit the home page
