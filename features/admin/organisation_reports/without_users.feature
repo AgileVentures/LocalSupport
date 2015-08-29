@@ -18,7 +18,7 @@ Feature: Orphans UI
       | pending@myorg.com     | password123    | false | 2008-01-01 00:00:00 |                 | My Organisation      |
       | invited-superadmin@org.org | password123    | false | 2008-01-01 00:00:00 |                 |                      |
     And the superadmin invited a user for "Yet Another Org"
-
+  @vcr
   @javascript
   Scenario: Super Admin can invite users but only for unique emails
     Given cookies are approved
