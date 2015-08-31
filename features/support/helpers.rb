@@ -43,6 +43,7 @@ module MapHelpers
     stub_request(:any, /maps\.googleapis\.com/).
         to_return(status => 200, :body => body || filename, :headers => {})
 =end
+    # VCR can't record the stubs!
     google_response= Net::HTTP.get_response(URI.parse( "http://maps.googleapis.com/maps/api/geocode/json?address=#{address.gsub(/\s/, '+')}&language=en&sensor=false" ))
     return google_response
   end
