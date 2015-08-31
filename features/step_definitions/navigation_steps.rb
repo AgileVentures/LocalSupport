@@ -1,4 +1,3 @@
-require_relative 'proposed_organisation_testing_api'
 
 And /^I select the "(.*?)" category from (How They Help|Who They Help|What They Do)$/ do |category, cat_type|
   cat_id = case cat_type
