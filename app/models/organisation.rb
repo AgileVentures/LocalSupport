@@ -36,10 +36,7 @@ class Organisation < BaseOrganisation
   def update_attributes_with_superadmin(params)
     email = extract_email_param(params)
     return self.update_attributes(params) if email.blank?   # explicitly call with return to return boolean instead of nil
-    #Transactions are protective blocks where SQL statements are only permanent if they can all succeed as one atomic action.
-    if add_existing_user_or_create_anew email
-      return self.update_attributes(params)
-    end
+    return self.update_attributes(params) if add_existing_user_or_create_anew email
   end
 
   def self.search_by_keyword(keyword)
