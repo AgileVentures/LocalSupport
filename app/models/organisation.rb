@@ -38,8 +38,8 @@ class Organisation < BaseOrganisation
     email = extract_email_param(params)
     return self.update_attributes(params) if email.blank?   # explicitly call with return to return boolean instead of nil
     #Transactions are protective blocks where SQL statements are only permanent if they can all succeed as one atomic action.
-    ActiveRecord::Base.transaction do
-      add_existing_user_or_create_anew email
+
+    if add_existing_user_or_create_anew email
       return self.update_attributes(params)
 
     end
@@ -157,7 +157,6 @@ class Organisation < BaseOrganisation
   def error_when_new_org_admin_invited email, error_msg
     error_msg = ("Error: Email is invalid" == error_msg) ? "The user email you entered,'#{email}', is invalid" : error_msg
     self.errors.add(:superadministrator_email, error_msg)
-    raise ActiveRecord::Rollback    # is this necessary? Doesn't the transaction block rollback the change with `usr` if update_attributes fails?
   end
 
   def add_existing_user_or_create_anew email
@@ -165,10 +164,13 @@ class Organisation < BaseOrganisation
     if usr.present?
       self.users << usr
     else
-      ::SingleInvite.new self, email  do |email, error_msg|
-        error_when_new_org_admin_invited email, error_msg
-      end.invite_user
+      result = ::SingleInvite.new(self, email).invite_user
+      unless result.invited_user?
+        error_when_new_org_admin_invited email,result.error
+        return false
+      end
     end
+    true
   end
 
   def extract_email_param params
