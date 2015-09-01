@@ -165,9 +165,9 @@ class Organisation < BaseOrganisation
       org_admin_email = [email]
       OrgAdminMailer.new_org_admin(self, org_admin_email).deliver_now
     else
-      ::BatchInviteJob.invite_user self, email  do |email, error_msg|
+      ::SingleInvite.new self, email  do |email, error_msg|
         error_when_new_org_admin_invited email, error_msg
-      end
+      end.invite_user
     end
   end
 
