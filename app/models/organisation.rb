@@ -160,7 +160,7 @@ class Organisation < BaseOrganisation
       org_admin_email = [email]
       OrgAdminMailer.new_org_admin(self, org_admin_email).deliver_now
     else
-      result = ::SingleInvite.new(self, email).invite_user
+      result = ::SingleInviteJob.new(self, email).invite_user
       unless result.invited_user?
         error_when_new_org_admin_invited email,result.error
         return false
