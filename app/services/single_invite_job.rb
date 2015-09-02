@@ -9,7 +9,6 @@ class SingleInviteJob
   def initialize(org, email)
     @batch_invite = ::BatchInviteJob.new({:resend_invitation => false, :invite_list => {org.id.to_s => email}}, nil)
     @org_id = org.id
-    @callable_on_error = callable_on_error
     @email = email
   end
 
@@ -20,6 +19,6 @@ class SingleInviteJob
   end
 
   private
-  attr_reader :batch_invite,:callable_on_error, :org_id, :email
+  attr_reader :batch_invite,:org_id, :email
 
 end
