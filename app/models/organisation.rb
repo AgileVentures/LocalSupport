@@ -161,7 +161,7 @@ class Organisation < BaseOrganisation
     if usr.present?
       self.users << usr
     else
-      result = ::SingleInvite.new(self, email).invite_user
+      result = ::SingleInviteJob.new(self, email).invite_user
       unless result.invited_user?
         error_when_new_org_admin_invited email,result.error
         return false

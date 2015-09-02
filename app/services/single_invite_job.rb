@@ -1,4 +1,4 @@
-class SingleInvite
+class SingleInviteJob
 
   SingleInviteResult = Struct.new(:error) do
     def invited_user?
