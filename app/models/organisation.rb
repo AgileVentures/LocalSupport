@@ -34,21 +34,12 @@ class Organisation < BaseOrganisation
   #TODO: Give this TLC and refactor the flow or refactor out responsibilities
   # This method both adds new editors and/or updates attributes
   def update_attributes_with_superadmin(params)
-    email = params[:superadmin_email_to_add]
-    params.delete :superadmin_email_to_add
-    if email.blank?
-      return self.update_attributes(params)   # explicitly call with return to return boolean instead of nil
-    end
+    email = extract_email_param(params)
+    return self.update_attributes(params) if email.blank?   # explicitly call with return to return boolean instead of nil
     #Transactions are protective blocks where SQL statements are only permanent if they can all succeed as one atomic action.
     ActiveRecord::Base.transaction do
-      usr = User.find_by_email(email)
-      if usr.present?
-        self.users << usr
-        return self.update_attributes(params)
-      else
-        self.errors.add(:superadministrator_email, "The user email you entered,'#{email}', does not exist in the system")
-        raise ActiveRecord::Rollback    # is this necessary? Doesn't the transaction block rollback the change with `usr` if update_attributes fails?
-      end
+      add_existing_user_or_create_anew email
+      return self.update_attributes(params)
     end
   end
 
@@ -160,7 +151,29 @@ class Organisation < BaseOrganisation
   end
 
   private
-  
+
+  def error_when_new_org_admin_invited email, error_msg
+    error_msg = ("Error: Email is invalid" == error_msg) ? "The user email you entered,'#{email}', is invalid" : error_msg
+    self.errors.add(:superadministrator_email, error_msg)
+    raise ActiveRecord::Rollback    # is this necessary? Doesn't the transaction block rollback the change with `usr` if update_attributes fails?
+  end
+
+  def add_existing_user_or_create_anew email
+    usr = User.find_by_email(email)
+    if usr.present?
+      self.users << usr
+    else
+      ::BatchInviteJob.invite_user self, email  do |email, error_msg|
+        error_when_new_org_admin_invited email, error_msg
+      end
+    end
+  end
+
+  def extract_email_param params
+    email = params[:superadmin_email_to_add]
+    params.delete :superadmin_email_to_add
+    email
+  end
   def self.table
     arel_table
   end
