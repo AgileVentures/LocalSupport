@@ -41,7 +41,6 @@ I want to be able to propose edits to inaccurate organisation listings
     And the telephone field of the proposed edit should be pre-populated with the telephone of the organisation named "Friendly"
     And the address of the organisation named "Friendly" should not be editable nor appear
 
-    
   Scenario: Propose an edit with no website or donation info initially
     Given I visit the home page
     And I sign in as "registered_user-2@example.com" with password "pppppppp"
