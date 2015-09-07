@@ -350,13 +350,19 @@ Then(/^I should not see "(.*?)"  within "(.*?)"$/) do |text, selector|
   within('.' + selector) { expect(page).not_to have_content text}
 end
 
+Given /^I update "(.*?)" charity postcode to be "(.*?)"$/ do |name, postcode|
+  steps %Q{And I visit the edit page for the organisation named "#{name}"}
+  fill_in('organisation_postcode', :with => postcode)
+  click_button 'Update Organisation'
+end
+
 Given /^I edit the charity address to be "(.*?)" when Google is indisposed$/ do |address|
   body = %Q({
 "results" : [],
 "status" : "OVER_QUERY_LIMIT"
 })
   stub_request_with_address(address, body)
-  fill_in('organisation_address', :with => address)
+  fill_in('organisation_address',:with => address)
 end
 
 Then /^I should not see the unable to save organisation error$/ do
