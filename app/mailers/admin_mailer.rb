@@ -26,4 +26,5 @@ class AdminMailer < ActionMailer::Base
          cc: "technical@harrowcn.org.uk",
          reply_to: "support@harrowcn.org.uk")
   end
+
 end

@@ -14,6 +14,14 @@ def expect_email_exists(message: nil, email: nil, link: nil, link_text: nil)
   end
 end
 
+
+And(/^an email should be sent to "(.*?)" as notice of becoming org admin of "(.*?)"$/) do |email, org_name|
+  message = "You have been made an organisation admin for the organisation called #{org_name} on the Harrow Community Network. After logging in,
+you will be able to update your organisation's directory entry."
+  expect_email_exists(message: message, email: email, link: organisation_path(Organisation.find_by(name: org_name)), 
+                      link_text: "Click here to view your organisation on the Harrow Community Network.")
+end
+
 And(/^an email should be sent to "(.*?)" as notification of the request for admin status of "(.*?)"$/) do |email, org_name|
   message = "There is a user waiting for superadmin approval to #{org_name}"
   expect_email_exists(message: message,email: email) 

@@ -38,8 +38,8 @@ class Organisation < BaseOrganisation
     return self.update_attributes(params) if email.blank?   # explicitly call with return to return boolean instead of nil
     #Transactions are protective blocks where SQL statements are only permanent if they can all succeed as one atomic action.
     ActiveRecord::Base.transaction do
-      add_existing_user_or_create_anew email
-      return self.update_attributes(params)
+    add_existing_user_or_create_anew email
+    return self.update_attributes(params)
     end
   end
 
@@ -162,6 +162,8 @@ class Organisation < BaseOrganisation
     usr = User.find_by_email(email)
     if usr.present?
       self.users << usr
+      org_admin_email = [email]
+      OrgAdminMailer.new_org_admin(self, org_admin_email).deliver_now
     else
       ::BatchInviteJob.invite_user self, email  do |email, error_msg|
         error_when_new_org_admin_invited email, error_msg

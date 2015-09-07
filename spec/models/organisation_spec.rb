@@ -168,6 +168,12 @@ describe Organisation, :type => :model do
       @org1.update_attributes_with_superadmin({:superadmin_email_to_add => 'user'})
       expect(@org1.errors.messages[:superadministrator_email]).to include "The user email you entered,'user', is invalid"
     end
+    it 'does not email when email is invalid' do
+      expect{
+        @org1.update_attributes_with_superadmin({:superadmin_email_to_add => 'user'})
+      }.not_to change(ActionMailer::Base.deliveries, :length)
+    end
+
     it 'handles a non-existent email by inviting user' do
       expect(@org1.update_attributes_with_superadmin({:superadmin_email_to_add => 'nonexistentuser@example.com'})).to be true
       expect(@org1).to be_valid
@@ -191,6 +197,13 @@ describe Organisation, :type => :model do
       usr = FactoryGirl.create(:user, :email => 'user@example.org')
       expect(@org1.update_attributes_with_superadmin({:superadmin_email_to_add => usr.email})).to be true
       expect(@org1.users).to include usr
+    end
+    it 'uses org admin mailer to email existent user when upgraded to org admin' do
+      usr = FactoryGirl.create(:user, :email => 'user@example.org')
+      mockMessage = double("message")
+      expect(mockMessage).to receive :deliver_now
+      expect(OrgAdminMailer).to receive_message_chain(:new_org_admin).with(@org1, [usr.email]).and_return(mockMessage)
+      @org1.update_attributes_with_superadmin({:superadmin_email_to_add => usr.email})
     end
     it 'updates other attributes with blank email' do
       expect(@org1.update_attributes_with_superadmin({:name => 'New name',:superadmin_email_to_add => ''})).to be true
