@@ -13,8 +13,12 @@ Then(/^the telephone field of the proposed edit should be pre\-populated with th
   expect(page).to have_field('proposed_organisation_edit_telephone', with: org_telephone)
 end
 
-Given(/^the (.*) field is marked private$/) do |field|
-  expect(page.find(:xpath, "//input[@id='proposed_organisation_edit_#{field}']/../../td[@class='borderless']/input[@type='checkbox']")).not_to be_checked
+Given(/^the (.*) field is marked (private|public)$/) do |field, visibility|
+  if visibility == "private"
+    expect(page.find(:xpath, "//input[@id='proposed_organisation_edit_#{field}']/../../td[@class='borderless']/input[@type='checkbox']")).not_to be_checked
+  else
+    expect(page.find(:xpath, "//input[@id='proposed_organisation_edit_#{field}']/../../td[@class='borderless']/input[@type='checkbox']")).to be_checked
+  end
 end
 
 Then(/^the address of the organisation named "(.*?)" should not be editable nor appear$/) do |name|
