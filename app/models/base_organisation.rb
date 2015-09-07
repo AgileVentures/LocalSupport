@@ -13,7 +13,7 @@ class BaseOrganisation < ActiveRecord::Base
 
   def run_geocode?
     ## http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
-    address_changed? or (address.present? and not_geocoded?)
+    address_changed? or postcode_changed? or (address.present? and not_geocoded?)
   end
 
   def not_geocoded?

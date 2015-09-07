@@ -408,6 +408,12 @@ describe Organisation, :type => :model do
     @org1.update_attributes :address => new_address
   end
 
+  it 'should geocode when postcode changes' do
+    new_postcode = 'HA1 4ZH'
+    expect(@org1).to receive(:geocode)
+    @org1.update_attributes :postcode => new_postcode
+  end
+
   it 'should geocode when new object is created' do
     address = '60 pinner road'
     postcode = 'HA1 3RE'
