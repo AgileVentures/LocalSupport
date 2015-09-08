@@ -1,10 +1,5 @@
 require 'csv'
-
-class String
-  def humanized_all_first_capitals
-    self.humanize.split(' ').map{|w| w.capitalize}.join(' ')
-  end
-end
+require 'string'
 
 class Organisation < BaseOrganisation
   #validates_presence_of :website, :with => /http:\/\//
