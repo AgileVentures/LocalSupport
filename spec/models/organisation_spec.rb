@@ -24,22 +24,6 @@ describe Organisation, :type => :model do
     @org3.save!
   end
 
-  describe '#not_updated_recently?' do
-    let(:org){FactoryGirl.create(:organisation, updated_at: Time.now)}
-
-    it{expect(org.not_updated_recently?).to be false}
-
-    context "updated too long ago" do
-      let(:org){FactoryGirl.create(:organisation, updated_at: 365.day.ago)}
-      it{expect(org.not_updated_recently?).to be true}
-    end
-
-    context "when updated recently" do
-      let(:org){FactoryGirl.create(:organisation, updated_at: 364.day.ago)}
-      it{expect(org.not_updated_recently?).to be false}
-    end
-  end
-
   describe "#not_updated_recently_or_has_no_owner?" do
     let(:subject){FactoryGirl.create(:organisation, :name => "Org with no owner", :updated_at => 364.day.ago)}
     context 'has no owner but updated recently' do
