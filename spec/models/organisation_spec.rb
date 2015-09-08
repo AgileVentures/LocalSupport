@@ -173,6 +173,10 @@ describe Organisation, :type => :model do
         @org1.update_attributes_with_superadmin({:superadmin_email_to_add => 'user'})
       }.not_to change(ActionMailer::Base.deliveries, :length)
     end
+    it 'does not update other attributes when email is invalid' do
+      @org1.update_attributes_with_superadmin({:superadmin_email_to_add => 'user', :name => "Random name"})
+      expect(@org1.name).not_to eq "Random name"
+    end
 
     it 'handles a non-existent email by inviting user' do
       expect(@org1.update_attributes_with_superadmin({:superadmin_email_to_add => 'nonexistentuser@example.com'})).to be true
