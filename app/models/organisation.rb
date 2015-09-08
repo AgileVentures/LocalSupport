@@ -31,16 +31,10 @@ class Organisation < BaseOrganisation
     users.invited_not_accepted.update_all(organisation_id: nil)
   end
 
-  #TODO: Give this TLC and refactor the flow or refactor out responsibilities
-  # This method both adds new editors and/or updates attributes
   def update_attributes_with_superadmin(params)
-    email = extract_email_param(params)
-    return self.update_attributes(params) if email.blank?   # explicitly call with return to return boolean instead of nil
-    #Transactions are protective blocks where SQL statements are only permanent if they can all succeed as one atomic action.
-    ActiveRecord::Base.transaction do
-    add_existing_user_or_create_anew email
-    return self.update_attributes(params)
-    end
+    email = extract_email_from(params)
+    return unless email.blank? || can_add_or_invite_admin?(email)
+    self.update_attributes(params)
   end
 
   def self.search_by_keyword(keyword)
@@ -152,30 +146,33 @@ class Organisation < BaseOrganisation
 
   private
 
-  def error_when_new_org_admin_invited email, error_msg
+  def embellish_invite_error_and_add_to_model(email, error_msg)
     error_msg = ("Error: Email is invalid" == error_msg) ? "The user email you entered,'#{email}', is invalid" : error_msg
     self.errors.add(:superadministrator_email, error_msg)
-    raise ActiveRecord::Rollback    # is this necessary? Doesn't the transaction block rollback the change with `usr` if update_attributes fails?
   end
 
-  def add_existing_user_or_create_anew email
+  def add_and_notify(usr)
+    self.users << usr
+    org_admin_email = [usr.email]
+    OrgAdminMailer.new_org_admin(self, org_admin_email).deliver_now
+  end
+
+  def can_add_or_invite_admin?(email)
+    return false if email.blank?
     usr = User.find_by_email(email)
-    if usr.present?
-      self.users << usr
-      org_admin_email = [email]
-      OrgAdminMailer.new_org_admin(self, org_admin_email).deliver_now
-    else
-      ::BatchInviteJob.invite_user self, email  do |email, error_msg|
-        error_when_new_org_admin_invited email, error_msg
-      end
-    end
+    return add_and_notify(usr) if usr.present?
+    result = ::SingleInviteJob.new(self, email).invite_user
+    return true if result.invited_user?
+    embellish_invite_error_and_add_to_model(email,result.error)
+    false
   end
 
-  def extract_email_param params
+  def extract_email_from(params)
     email = params[:superadmin_email_to_add]
     params.delete :superadmin_email_to_add
     email
   end
+
   def self.table
     arel_table
   end
