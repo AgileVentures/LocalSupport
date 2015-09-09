@@ -40,4 +40,8 @@ class BaseOrganisation < ActiveRecord::Base
     updated_at < 1.year.ago
   end
 
+  def not_updated_recently_or_has_no_owner?
+    self.users.empty? || not_updated_recently?
+  end
+
 end
