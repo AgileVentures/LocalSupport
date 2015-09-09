@@ -1,32 +1,26 @@
 require 'csv'
-
-class String
-  def humanized_all_first_capitals
-    self.humanize.split(' ').map{|w| w.capitalize}.join(' ')
-  end
-end
+require 'string'
 
 class Organisation < BaseOrganisation
-  #validates_presence_of :website, :with => /http:\/\//
+
   has_many :volunteer_ops
   has_many :users
   has_many :edits, class_name: 'ProposedOrganisationEdit', :dependent => :destroy
-  # Setup accessible (or protected) attributes for your model
-  # prevents mass assignment on other fields not in this list
-  #attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info, :publish_address, :publish_phone, :publish_email, :category_organisations_attributes
-  accepts_nested_attributes_for :users
+
+  accepts_nested_attributes_for :users # TODO check if needed
+
   scope :order_by_most_recent, -> { order('organisations.updated_at DESC') }
   scope :not_null_email, lambda {where("organisations.email <> ''")}
+
   # Should we not use :includes, which pulls in extra data? http://nlingutla.com/blog/2013/04/21/includes-vs-joins-in-rails/
   # Alternative => :joins('LEFT OUTER JOIN users ON users.organisation_id = organisations.id)
   # Difference between inner and outer joins: http://stackoverflow.com/a/38578/2197402
+
   scope :null_users, lambda { includes(:users).where("users.organisation_id IS NULL").references(:users) }
   scope :without_matching_user_emails, lambda {where("organisations.email NOT IN (#{User.select('email').to_sql})")}
 
-
   after_save :uninvite_users, if: ->{ email_changed? }
 
-  
   def uninvite_users
     users.invited_not_accepted.update_all(organisation_id: nil)
   end
