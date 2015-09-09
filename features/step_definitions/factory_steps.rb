@@ -5,9 +5,6 @@ Given(/^the following proposed organisations exist:$/) do |table|
     create_hash = {}
     proposer = nil
     hash.each_pair do |field_name, field_value|
-      if field_name == "address"
-        stub_request_with_address(field_value)
-      end
       if field_name != "proposer_email"
         key_value_to_add = {field_name.to_sym => field_value}
       else
@@ -35,15 +32,8 @@ Then(/^I should see the details of the proposed organisation$/) do
   end
 end
 
-Given(/^the following addresses exist:$/) do |table|
-  table.hashes.each do |addr|
-    stub_request_with_address(addr['address'])
-  end
-end
-
 Given /^the following organisations exist:$/ do |organisations_table|
   organisations_table.hashes.each do |org|
-    stub_request_with_address(org['address'])
     Organisation.create! org
   end
 end
