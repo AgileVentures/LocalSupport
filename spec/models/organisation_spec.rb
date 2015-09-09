@@ -24,25 +24,6 @@ describe Organisation, :type => :model do
     @org3.save!
   end
 
-  describe "#not_updated_recently_or_has_no_owner?" do
-    let(:subject){FactoryGirl.create(:organisation, :name => "Org with no owner", :updated_at => 364.day.ago)}
-    context 'has no owner but updated recently' do
-      it{expect(subject.not_updated_recently_or_has_no_owner?).to be true}
-    end
-    context 'has owner but old update' do
-      let(:subject){FactoryGirl.create(:organisation_with_owner, :updated_at => 366.day.ago)}
-      it{expect(subject.not_updated_recently_or_has_no_owner?).to be true}
-    end
-    context 'has no owner and old update' do 
-      let(:subject){FactoryGirl.create(:organisation, :updated_at => 366.day.ago)}
-      it{expect(subject.not_updated_recently_or_has_no_owner?).to be true}
-    end
-    context 'has owner and recent update' do
-      let(:subject){FactoryGirl.create(:organisation_with_owner, :updated_at => 364.day.ago)}
-      it{expect(subject.not_updated_recently_or_has_no_owner?).to be false}
-    end
-  end
-
   describe "#gmaps4rails_marker_attrs" do
 
     def build_org_with_computed_fields_and_updated_at org, updated_at = nil
