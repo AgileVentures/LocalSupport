@@ -24,22 +24,6 @@ describe Organisation, :type => :model do
     @org3.save!
   end
 
-  describe '#not_updated_recently?' do
-    let(:org){FactoryGirl.create(:organisation, updated_at: Time.now)}
-
-    it{expect(org.not_updated_recently?).to be false}
-
-    context "updated too long ago" do
-      let(:org){FactoryGirl.create(:organisation, updated_at: 365.day.ago)}
-      it{expect(org.not_updated_recently?).to be true}
-    end
-
-    context "when updated recently" do
-      let(:org){FactoryGirl.create(:organisation, updated_at: 364.day.ago)}
-      it{expect(org.not_updated_recently?).to be false}
-    end
-  end
-
   describe "#not_updated_recently_or_has_no_owner?" do
     let(:subject){FactoryGirl.create(:organisation, :name => "Org with no owner", :updated_at => 364.day.ago)}
     context 'has no owner but updated recently' do
@@ -172,6 +156,10 @@ describe Organisation, :type => :model do
       expect{
         @org1.update_attributes_with_superadmin({:superadmin_email_to_add => 'user'})
       }.not_to change(ActionMailer::Base.deliveries, :length)
+    end
+    it 'does not update other attributes when email is invalid' do
+      @org1.update_attributes_with_superadmin({:superadmin_email_to_add => 'user', :name => "Random name"})
+      expect(@org1.name).not_to eq "Random name"
     end
 
     it 'handles a non-existent email by inviting user' do

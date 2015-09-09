@@ -6,9 +6,6 @@ if ENV["RAILS_ENV"] == 'test'
   # Stub out network calls and return fixtures with sinatra's help
   WebMock.disable_net_connect!(allow_localhost: true)
   require "#{Rails.root}/test/fake_google_geocode"
-  # if ENV['CUCUMBER']
-  #   Before { stub_google_maps }
-  # end
   if ENV['RSPEC']
     RSpec.configure {|r| r.before(:each) { stub_google_maps } }
   end

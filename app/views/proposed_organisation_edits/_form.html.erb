@@ -28,7 +28,7 @@
           <%= f.text_field :address, :class => "wide_form", :placeholder => "Enter organisation address"%>
         </td>
         <td class="borderless">
-          <input type="checkbox" disabled checked = "checked" value="" class="publish">
+          <input type="checkbox" disabled class="publish" <%= checked="checked" if @proposed_organisation_edit.viewable_field?(:address) %> value="" class="publish">
         </td>
       </tr>
       <% end %>
@@ -46,7 +46,7 @@
           <%= f.text_field :email, :class => "wide_form", :placeholder => "Enter organisation email address" %>
         </td>
         <td class="borderless">
-          <input type="checkbox" disabled checked = "checked" value="" class="publish">
+          <input type="checkbox" disabled class="publish" <%= checked="checked" if @proposed_organisation_edit.viewable_field?(:email) %> value="" class="publish">
         </td>
       </tr>
       <% end %>
@@ -64,7 +64,7 @@
           <%= f.text_field :telephone, :class => "wide_form", :placeholder => "Enter organisation phone number" %>
         </td>
         <td class="borderless">
-          <input type="checkbox" disabled checked = "checked" value="" class="publish">
+          <input type="checkbox" disabled class="publish" <%= checked="checked" if @proposed_organisation_edit.viewable_field?(:telephone) %> value="" class="publish">
         </td>
       </tr>
       <% end %>

@@ -83,7 +83,6 @@ When /^I search for "(.*?)"$/ do |text|
 end
 
 Given (/^I fill in the new charity page validly$/) do
-  stub_request_with_address("64 pinner road")
   fill_in 'organisation_address', :with => '64 pinner road'
   fill_in 'organisation_name', :with => 'Friendly charity'
 end
@@ -96,7 +95,6 @@ Given (/^I fill in the new charity page validly including the categories:$/) do 
       And I check the category "#{cat[:name]}"
     }
   end
-  stub_request_with_address("64 pinner road")
 end
 
 Given(/^I am proposing an organisation$/) do
@@ -113,7 +111,6 @@ Given (/^I fill in the proposed charity page validly$/) do
       And I check the category "#{cat}"
     }
   end
-  stub_request_with_address("64 pinner road")
 end
 
 When(/^I check the confirmation box for "(.*?)"$/) do |text|
@@ -214,7 +211,6 @@ Given /^I edit the charity email to be "(.*?)"$/ do |email|
 end
 
 When /^I edit the charity address to be "(.*?)"$/ do |address|
-  stub_request_with_address(address)
   fill_in('organisation_address', :with => address)
 end
 
@@ -361,8 +357,7 @@ Given /^I edit the charity address to be "(.*?)" when Google is indisposed$/ do 
 "results" : [],
 "status" : "OVER_QUERY_LIMIT"
 })
-  stub_request_with_address(address, body)
-  fill_in('organisation_address',:with => address)
+  fill_in('organisation_address', :with => address)
 end
 
 Then /^I should not see the unable to save organisation error$/ do
@@ -412,7 +407,6 @@ end
 And /"(.*)"'s request for "(.*)" should be persisted/ do |email, org|
   user = User.find_by_email(email)
   org = Organisation.find_by_name(org)
-  user.pending_organisation_id.should eq org.id
 end
 
 When(/^the URL should contain "(.*?)"$/) do |string|
