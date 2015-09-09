@@ -2,23 +2,32 @@ Then(/^the email field of the proposed edit should be pre\-populated with the em
   org_email = Organisation.find_by_name(name).email
   expect(page).to have_field('proposed_organisation_edit_email', with: org_email)
 end
+
 Then(/^the address field of the proposed edit should be pre\-populated with the address of the organisation named "(.*?)"$/) do |name|
   org_address = Organisation.find_by_name(name).address
   expect(page).to have_field('proposed_organisation_edit_address', with: org_address)
 end
+
 Then(/^the telephone field of the proposed edit should be pre\-populated with the telephone of the organisation named "(.*?)"$/) do |name|
   org_telephone = Organisation.find_by_name(name).telephone
   expect(page).to have_field('proposed_organisation_edit_telephone', with: org_telephone)
 end
 
+Given(/^the (.*) field is marked (private|public)$/) do |field, visibility|
+  if visibility == "private"
+    expect(page.find(:xpath, "//input[@id='proposed_organisation_edit_#{field}']/../../td[@class='borderless']/input[@type='checkbox']")).not_to be_checked
+  else
+    expect(page.find(:xpath, "//input[@id='proposed_organisation_edit_#{field}']/../../td[@class='borderless']/input[@type='checkbox']")).to be_checked
+  end
+end
 
 Then(/^the address of the organisation named "(.*?)" should not be editable nor appear$/) do |name|
   org_address = Organisation.find_by_name(name).address
   expect(page).not_to have_content org_address
   expect(page).not_to have_field('proposed_organisation_edit_address')
 end
-When(/^I propose the following edit:$/) do |table|
 
+When(/^I propose the following edit:$/) do |table|
   table.hashes.each do |hash|
     fields = { name: 'proposed_organisation_edit_name',
                description: 'proposed_organisation_edit_description',
@@ -33,7 +42,7 @@ When(/^I propose the following edit:$/) do |table|
     end
   end
 end
-  #
+
 Then(/^"(.*?)" should have the following proposed edits by user "(.*?)":$/) do |name, editor_email, table|
   proposed_edit = Organisation.find_by(name: name).edits.first
   editor = User.find_by(email: editor_email)
@@ -74,7 +83,6 @@ Then(/^the following proposed edits should be displayed on the page:$/) do |tabl
         expect(find('.field_value').text).to eq hash['proposed value']
       end
     end
-
   end
 end
 
