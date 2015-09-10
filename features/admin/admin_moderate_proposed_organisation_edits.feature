@@ -4,10 +4,6 @@ Feature: Members of HCN may propose edits to organisations
   I want to be able to moderate proposed edits to organisations listed on the HCN
 
   Background: organisations have been added to database
-    Given the following addresses exist:
-      | address                 |
-      | 30 pinner road          |
-      | 34 pinner road          |
     Given the following organisations exist:
       | name              | description             | address        | publish_address | postcode | telephone | website             | email             | publish_phone |donation_info  | publish_email |
       | Friendly          | Bereavement Counselling | 30 pinner road | true            |HA1 4HZ   | 020800000 | http://friendly.org | superadmin@friendly.xx | true          |www.donate.com | true          |

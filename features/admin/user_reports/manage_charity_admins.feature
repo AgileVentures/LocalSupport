@@ -46,3 +46,4 @@ Background: organisations have been added to database
    Given I am signed in as a superadmin
    And I add "registered-user-2@example.com" as a superadmin for "Friendly" charity
    Then "registered-user-2@example.com" should be a charity superadmin for "Friendly" charity
+   Then an email should be sent to "registered-user-2@example.com" as notice of becoming org admin of "Friendly"
