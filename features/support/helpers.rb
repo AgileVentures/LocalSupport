@@ -37,13 +37,7 @@ end
 
 module MapHelpers
   def stub_request_with_address(address, body = nil)
-=begin
-    filename = "#{address.gsub(/\s/, '_')}.json"
-    filename = File.read "test/fixtures/#{filename}"
-    stub_request(:any, /maps\.googleapis\.com/).
-        to_return(status => 200, :body => body || filename, :headers => {})
-=end
-    # VCR can't record the stubs!
+    # VCR can't record stubs!
     google_response= Net::HTTP.get_response(URI.parse( "http://maps.googleapis.com/maps/api/geocode/json?address=#{address.gsub(/\s/, '+')}&language=en&sensor=false" ))
     return google_response
   end

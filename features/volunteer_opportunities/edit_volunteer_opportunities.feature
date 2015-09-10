@@ -17,11 +17,15 @@ Feature: Org owner can edit volunteer opportunities
       | title              | description                     | organisation              |
       | Litter Box Scooper | Assist with feline sanitation   | Cats Are Us               |
 
+  @vcr
+  Scenario: Edit volunteer opportunities
     Given I am signed in as a charity worker related to "Cats Are Us"
     And I visit the show page for the volunteer_op titled "Litter Box Scooper"
     And I click "Edit"
     Then I should be on the edit page for the volunteer_op titled "Litter Box Scooper"
 
+  @vcr
+  Scenario: Superadmin or organisation must be loged in for edit 
     Given I am signed in as a charity worker related to "Dogs Rule"
     And I visit the show page for the volunteer_op titled "Litter Box Scooper"
     And I should not see a link or button "Edit"

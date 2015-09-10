@@ -36,7 +36,8 @@ Background: organisations have been added to database
    Then I should be on the show page for the organisation named "Friendly"
    And I should see a link or button "non-registered-user@example.com"
 
-  Scenario: Adding non-existent user as charity superadmin invites said user
+ @vcr  
+ Scenario: Adding non-existent user as charity superadmin invites said user
    Given I am signed in as a superadmin
    And I add "blah" as a superadmin for "Friendly" charity
 
