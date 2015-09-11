@@ -46,14 +46,14 @@ describe ApplicationController, :type => :controller, :helpers => :controllers d
 
     context 'user is org owner no previous url' do
       it 'should redirect to root' do
-        allow(user).to receive_messages :organisation => mock_model(Organisation, id: 1, not_updated_recently?: true)
+        allow(user).to receive_messages :organisation => mock_model(Organisation, id: 1, has_been_updated_recently?: false)
         expect(controller.after_sign_in_path_for(user)).to eq '/organisations/1'
       end
     end
 
     context 'user is org owner with previous url' do
       it 'should redirect to root' do
-        allow(user).to receive_messages :organisation => mock_model(Organisation, id: 1, not_updated_recently?: true)
+        allow(user).to receive_messages :organisation => mock_model(Organisation, id: 1, has_been_updated_recently?: false)
         session[:previous_url] = 'i/was/here'
         expect(controller.after_sign_in_path_for(user)).to eq '/organisations/1'
       end
