@@ -36,8 +36,8 @@ class BaseOrganisation < ActiveRecord::Base
     end
   end
 
-  def not_updated_recently?
-    updated_at < 1.year.ago
+  def has_been_updated_recently?
+    updated_at >= 1.year.ago
   end
 
 end
