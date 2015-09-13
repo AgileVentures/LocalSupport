@@ -15,7 +15,7 @@ describe Queries::Organisations, '::search_by_keyword_and_category' do
       :name => 'Harrow Bereavement Counselling',
       :description => 'Bereavement Counselling',
       :address => '64 pinner road',
-      :postcode => 'HA1 3TE',
+      :postcode => 'HA1 4HZ',
       :donation_info => 'www.harrow-bereavment.co.uk/donate',
     )
   end
@@ -27,7 +27,7 @@ describe Queries::Organisations, '::search_by_keyword_and_category' do
       :email => "",
       :description => 'Care for the elderly',
       :address => '64 pinner road',
-      :postcode => 'HA1 3RE',
+      :postcode => 'HA1 4HZ',
       :donation_info => 'www.indian-elders.co.uk/donate'
     ).tap { |o| o.categories << category1 ; o.categories << category2 }
   end
@@ -39,7 +39,7 @@ describe Queries::Organisations, '::search_by_keyword_and_category' do
       :name => 'Age UK Elderly',
       :description => 'Care for older people',
       :address => '64 pinner road',
-      :postcode => 'HA1 3RE',
+      :postcode => 'HA1 4HZ',
       :donation_info => 'www.age-uk.co.uk/donate',
     ).tap { |o| o.categories  << category1 }
   end

@@ -3,11 +3,11 @@ require 'rails_helper'
 describe "organisations/index.html.erb", :type => :view, :js => true do
 
   let(:org1) do
-    stub_model Organisation,:name => 'test', :address => "12 pinner rd", :postcode => "HA1 4HP",:telephone => "1234", :website => 'http://a.com', :description => 'I am test organisation hahahahahhahaha'
+    stub_model Organisation,:name => 'test', :address => "12 pinner rd", :postcode => "HA1 4HZ",:telephone => "1234", :website => 'http://a.com', :description => 'I am test organisation hahahahahhahaha'
   end
 
   let(:org2) do
-    stub_model Organisation,:name => 'test2', :address => "12 oxford rd", :postcode => "HA1 4HX", :telephone => "4534", :website => 'http://b.com', :description => 'I am '
+    stub_model Organisation,:name => 'test2', :address => "12 oxford rd", :postcode => "HA1 4HZ", :telephone => "4534", :website => 'http://b.com', :description => 'I am '
   end
 
   let(:organisations) do
