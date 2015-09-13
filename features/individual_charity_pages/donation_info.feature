@@ -7,8 +7,8 @@ Feature: Local Resident looking to donate
 Background: organisations have been added to database
   
   Given the following organisations exist:
-    | name                            | donation_info                      | address        |
-    | Age UK                          | www.age-uk.co.uk/donate            | 84 pinner road |
+    | name     | donation_info           | address        | postcode |
+    | Age UK   | www.age-uk.co.uk/donate | 84 pinner road | HA1 4HZ  |
 
 Scenario: Org page of an organisation with donation info URL
   Given I visit the show page for the organisation named "Age UK"

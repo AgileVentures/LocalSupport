@@ -11,7 +11,7 @@ I want to be able to propose edits to inaccurate organisation listings
 
     And the following organisations exist:
       | name              | description             | address        | postcode | telephone | email             | publish_phone | publish_address |
-      | No website        | no website              | 34 pinner road |          | 020800000 | email@friendly.xx | true          |  true           |
+      | No website        | no website              | 30 pinner road |          | 020800000 | email@friendly.xx | true          |  true           |
 
     Given the following users are registered:
       | email                         | password | organisation        | confirmed_at         | superadmin |

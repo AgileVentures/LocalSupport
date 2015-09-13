@@ -5,13 +5,13 @@ Feature: Fix Associations
 
   Background:
     Given the following users are registered:
-      | email                 | password       | superadmin | confirmed_at        | organisation    | pending_organisation |
-      | superadmin@myorg.com       | superadminpass0987  | true  | 2008-01-01 00:00:00 | My Organisation |                      |
+      | email                 | password            | superadmin | confirmed_at        | organisation    | pending_organisation |
+      | superadmin@myorg.com  | superadminpass0987  | true       | 2008-01-01 00:00:00 | My Organisation |                      |
     Given the following organisations exist:
-      | name     | address          | email |
-      | normal   | 83 pinner road | superadmin@org.org  |
-      | upcased | 84 pinner road | UPCASED@org.org  |
-      | whitespace    | 30 pinner road | whitespace@charity.org |
+      | name          | address          | postcode | email                  |
+      | normal        | 83 pinner road   | HA1 4HZ  | superadmin@org.org     |
+      | upcased       | 84 pinner road   | HA1 4HZ  | UPCASED@org.org        |
+      | whitespace    | 30 pinner road   | HA1 4HZ  | whitespace@charity.org |
     And "whitespace" has a whitespace at the end of the email address
     And the superadmin invited a user for "normal"
     And the superadmin invited a user for "upcased"
