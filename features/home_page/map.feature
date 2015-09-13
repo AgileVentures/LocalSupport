@@ -55,6 +55,7 @@ Feature: Map of local charities
     Given cookies are approved
     When I am signed in as a charity worker related to "Youth UK"
     And I update "Youth UK" charity address to be "34 pinner road"
+    And I update "Youth UK" charity postcode to be "HA1 4HZ"
     And I visit the home page
     Then the coordinates for "Harrow Bereavement Counselling" and "Youth UK" should be the same
     Then the coordinates for "Age UK" and "Youth UK" should not be the same
