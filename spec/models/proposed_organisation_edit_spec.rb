@@ -53,7 +53,7 @@ describe ProposedOrganisationEdit do
                        :name => 'Harrow Bereavement Counselling',
                        :description => 'Bereavement Counselling',
                        :address => '64 pinner road',
-                       :postcode => 'HA1 3TE',
+                       :postcode => 'HA1 4HZ',
                        :donation_info => 'www.harrow-bereavment.co.uk/donate')
   end
 
@@ -161,7 +161,7 @@ describe ProposedOrganisationEdit do
   describe "#accept" do
     context 'update with params' do
       let(:org){FactoryGirl.create(:organisation, :name => 'Harrow Bereavement Counselling',
-                                   :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE',
+                                   :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 4HZ',
                                    :donation_info => 'www.harrow-bereavment.co.uk/donate')}
       let(:proposed_edit){FactoryGirl.create(:proposed_organisation_edit, :organisation => org )}
       it 'updates the name attribute' do

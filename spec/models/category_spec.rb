@@ -53,15 +53,15 @@ describe 'Category', :type => :model do
       @category5 = FactoryGirl.create(:category, name: "guinea pig", charity_commission_id: 201)
       @category3 = FactoryGirl.create(:category, name: "iguana", charity_commission_id: 310)
       @category6 = FactoryGirl.create(:category, name: "rabbit", charity_commission_id: 304)
-      @org1 = FactoryGirl.build(:organisation, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 3TE', :donation_info => 'www.harrow-bereavment.co.uk/donate')
+      @org1 = FactoryGirl.build(:organisation, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.harrow-bereavment.co.uk/donate')
       allow(@org1).to receive :geocode
       @org1.save!
-      @org2 = FactoryGirl.build(:organisation, :name => 'Indian Elders Associaton', :description => 'Care for the elderly', :address => '64 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.indian-elders.co.uk/donate')
+      @org2 = FactoryGirl.build(:organisation, :name => 'Indian Elders Associaton', :description => 'Care for the elderly', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.indian-elders.co.uk/donate')
       allow(@org2).to receive :geocode
       @org2.categories << @category1
       @org2.categories << @category2
       @org2.save!
-      @org3 = FactoryGirl.build(:organisation, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '64 pinner road', :postcode => 'HA1 3RE', :donation_info => 'www.age-uk.co.uk/donate')
+      @org3 = FactoryGirl.build(:organisation, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.age-uk.co.uk/donate')
       @org3.categories << @category1
       allow(@org3).to receive :geocode
       @org3.save!
