@@ -37,7 +37,7 @@ end
 
 module MapHelpers
   def stub_request_with_address(address, body = nil)
-    filename = "#{address.gsub(/\s/, '_')}.json"
+    filename = "#{address.downcase.gsub(/,/,'').gsub(/\s/, '_')}.json"
     filename = File.read "test/fixtures/#{filename}"
     stub_request(:any, /maps\.googleapis\.com/).
         to_return(status => 200, :body => body || filename, :headers => {})
@@ -64,7 +64,8 @@ module ProposedOrgHelpers
     {
       name: 'Friendly charity',
       address: '64 pinner road',
-      description: 'Such friendly so charity'
+      description: 'Such friendly so charity',
+      postcode: 'HA1 4HA'
     }
   end
 end

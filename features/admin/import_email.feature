@@ -17,7 +17,7 @@ Background: organisations have been added to database
     | I love people     |             |           |           |          |       |            | people@humanity.org |
 
   Scenario: import email addresses
-    Given Google is indisposed for "64 pinner road"
+    Given Google is indisposed for "64 pinner road, HA1 4HA"
     And I import emails from "db/email_test.csv"
     Then "I love dogs" should have email "fred@dogs.com"
     Then "I love cats" should have email "superadmin@cats.com"
