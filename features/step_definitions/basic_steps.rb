@@ -370,6 +370,10 @@ Then /^the address for "(.*?)" should be "(.*?)"$/ do |name, address|
   Organisation.find_by_name(name).address.should == address
 end
 
+Then /^the postcode for "(.*?)" should be "(.*?)"$/ do |name, address|
+  Organisation.find_by_name(name).postcode.should == postcode
+end
+
 When /^I fill in "(.*?)" with "(.*?)" within the navbar$/ do |field, value|
   within('#navbar') { fill_in(field, :with => value) }
 end
