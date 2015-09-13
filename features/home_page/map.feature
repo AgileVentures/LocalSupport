@@ -9,9 +9,9 @@ Feature: Map of local charities
     Given the following organisations exist:
       | name                           | description                    | address        | postcode | website       |
       | Harrow Bereavement Counselling | Harrow Bereavement Counselling | 34 pinner road | HA1 4HZ  | http://a.com/ |
-      | Indian Elders Association      | Care for the elderly           | 64 pinner road | HA1 4HA  | http://b.com/ |
-      | Age UK                         | Care for the Elderly           | 84 pinner road | HA1 4HF  | http://c.com/ |
-      | Youth UK                       | Care for the Very Young        | 84 pinner road | HA1 4HF  | http://d.com/ |
+      | Indian Elders Association      | Care for the elderly           | 64 pinner road | HA1 4HZ  | http://b.com/ |
+      | Age UK                         | Care for the Elderly           | 84 pinner road | HA1 4HZ  | http://c.com/ |
+      | Youth UK                       | Care for the Very Young        | 84 pinner road | HA1 4HZ  | http://d.com/ |
 
     Given the following users are registered:
       | email                         | password | organisation | confirmed_at         |
