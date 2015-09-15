@@ -93,7 +93,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_flash_warning_reminder_to_update_details usr
-    if usr.organisation && usr.organisation.not_updated_recently?
+    if usr.organisation and not usr.organisation.has_been_updated_recently?
       msg = render_to_string(partial: "shared/call_to_action", locals: {org: usr.organisation}).html_safe
       if flash[:warning]
         flash[:warning] << msg
