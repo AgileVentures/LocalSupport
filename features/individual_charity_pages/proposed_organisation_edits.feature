@@ -20,18 +20,21 @@ I want to be able to propose edits to inaccurate organisation listings
       | friendly@friendly.org         | pppppppp | Really Friendly     | 2007-01-01  10:00:00 | false |
     And cookies are approved
 
+  @vcr
   Scenario: Site superadmin does not see proposed edit button
     Given I am signed in as a superadmin
     And I visit the show page for the organisation named "Really Friendly"
     Then I should not see "Propose an edit"
     And I should see "Edit"
 
+  @vcr
   Scenario: Org superadmin does not see proposed edit button
     Given I am signed in as a charity worker related to "Really Friendly"
     And I visit the show page for the organisation named "Really Friendly"
     Then I should not see "Propose an edit"
     And I should see "Edit"
 
+  @vcr
   Scenario: See only published fields
     Given I am signed in as a charity worker unrelated to "Friendly"
     And I visit the show page for the organisation named "Friendly"
@@ -41,6 +44,7 @@ I want to be able to propose edits to inaccurate organisation listings
     And the telephone field of the proposed edit should be pre-populated with the telephone of the organisation named "Friendly"
     And the address of the organisation named "Friendly" should not be editable nor appear
 
+  @vcr
   Scenario: Propose an edit with no website or donation info initially
     Given I visit the home page
     And I sign in as "registered_user-2@example.com" with password "pppppppp"
@@ -60,7 +64,7 @@ I want to be able to propose edits to inaccurate organisation listings
       | website                |                 | www.newness.org    |
       | postcode               |                 | HA1 4HZ            |
 
-
+  @vcr
   Scenario: Propose an edit
     Given I visit the home page
     And I sign in as "registered_user-2@example.com" with password "pppppppp"

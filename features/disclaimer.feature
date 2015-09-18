@@ -14,6 +14,7 @@ Feature: Disclaimer about not being able to guarantee accuracy of sites content 
     | 404        | 404        | We're sorry, but we couldn't find the page you requested! | false        |
     | Disclaimer | disclaimer | We disclaim everything!                                   | true         |
 
+  @vcr
   Scenario Outline: the disclaimer page is accessible on all pages
     Given I visit the <page>
     When I follow "Disclaimer"

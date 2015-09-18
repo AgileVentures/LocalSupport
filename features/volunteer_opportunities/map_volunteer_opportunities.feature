@@ -18,6 +18,7 @@ Feature: As a member of the public
       | Office Support     | Help with printing and copying. | Indian Elders Association |
 
   @javascript
+  @vcr
   Scenario: See a map of current volunteer opportunities
     Given I visit the volunteer opportunities page
     And cookies are approved
@@ -25,6 +26,7 @@ Feature: As a member of the public
     | Indian Elders Association| Cats Are Us |
 
   @javascript
+  @vcr
   Scenario Outline: Volunteer opportunites are listed in map popups
     Given I visit the volunteer opportunities page
     And cookies are approved
@@ -35,6 +37,7 @@ Feature: As a member of the public
       | Office Support     |
 
   @javascript
+  @vcr
   Scenario: See map when editing my volunteer opportunity
     Given I am signed in as a charity worker related to "Cats Are Us"
     And I visit the edit page for the volunteer_op titled "Litter Box Scooper"

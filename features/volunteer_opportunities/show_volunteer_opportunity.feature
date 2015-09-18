@@ -12,6 +12,7 @@ Feature: As a member of the public
       | Litter Box Scooper | Assist with feline sanitation   test@test.com   | Cats Are Us               |
       | Office Support     | Help with printing and copying. http://test.com | Indian Elders Association |
 
+  @vcr
   Scenario: See a volunteer opportunity and hyperlink
     Given I visit the show page for the volunteer_op titled "Office Support"
     Then I should see:
@@ -20,10 +21,12 @@ Feature: As a member of the public
     And I click "Indian Elders Association"
     Then I should be on the show page for the organisation named "Indian Elders Association"
 
+  @vcr
   Scenario: See URLs in volunteer opportunity pages are hyperlinked
     Given I visit the show page for the volunteer_op titled "Office Support"
     Then the page includes a hyperlink to "http://test.com"
 
+  @vcr
   Scenario: See emails in volunteer opportunity pages are hyperlinked
     Given I visit the show page for the volunteer_op titled "Litter Box Scooper"
     Then the page includes email hyperlink "test@test.com"

@@ -14,19 +14,22 @@ Feature: Admin moderates an organisation to be added to HarrowCN
       | registered_user-3@example.com | pppppppp | false        | 2007-01-01  10:00:00 |
     And a proposed organisation has been proposed by "registered_user-1@example.com"
 
+  @vcr
   Scenario: Superadmin sees proposed organisation and buttons
     And I am signed in as an superadmin
     And I visit the proposed organisation show page for the proposed organisation that was proposed
     Then I should see an "Accept Proposed Organisation" button
     And I should see a "Reject Proposed Organisation" button
-
+  
+  @vcr
   Scenario: Superadmin accepts new organisation
     And I am signed in as an superadmin
     And I visit the proposed organisation show page for the proposed organisation that was proposed
     And I press "Accept"
     Then I should be on the show page for the organisation that was proposed
     And I should see "You have approved the following organisation"
-
+  
+  @vcr
   Scenario: Superadmin rejects new organisation
     And I am signed in as an superadmin
     And I visit the proposed organisation show page for the proposed organisation that was proposed
@@ -34,11 +37,13 @@ Feature: Admin moderates an organisation to be added to HarrowCN
     Then I should be on the proposed organisations index page
     And the proposed organisation should have been rejected
 
+  @vcr
   Scenario: Nonsigned in user does not see proposed organisation
     And I visit the proposed organisation show page for the proposed organisation that was proposed
     Then I should see "You don't have permission"
     And I should be on the home page
-
+  
+  @vcr
   Scenario: Random user does not see proposed organisation
     And I visit the home page
     And I sign in as "registered_user-2@example.com" with password "pppppppp"
@@ -47,7 +52,7 @@ Feature: Admin moderates an organisation to be added to HarrowCN
     Then I should see "You don't have permission"
     And I should be on the home page
 
-
+  @vcr
   Scenario: Superadmin finds list of proposed organisations
     Given the following proposed organisations exist:
       |proposer_email                | name       | description             | address        | postcode | telephone | website               | email                    | donation_info        | non_profit |
@@ -57,7 +62,8 @@ Feature: Admin moderates an organisation to be added to HarrowCN
     And I visit the home page
     And I click on the all proposed organisations link
     Then I should see a view details link for each of the proposed organisations
-
+  
+  @vcr
   Scenario: Superadmin views details of proposed organisations
     And the following categories exist:
       | name                     | charity_commission_id |

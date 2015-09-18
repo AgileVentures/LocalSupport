@@ -15,10 +15,11 @@ Feature:  Tool tip instructions for fields on edit form
       | registered_user-3@example.com | pppppppp | Harrow Bereavement Counselling  | 2007-01-01  10:00:00 |
     And cookies are approved
 
+  @vcr
   Scenario: Display tooltip for each field on the edit form
     Given I am signed in as a charity worker related to "Harrow Bereavement Counselling"
     And I visit the edit page for the organisation named "Harrow Bereavement Counselling"
-    Then the following tooltips should exist: 
+    Then the following tooltips should exist:
       | label                                                |  tooltip        |
       | Address                                              |  Enter a complete address  |
       | Add an additional organisation superadministrator email   |  Please enter the details of individuals from your organisation you would like to give permission to update your entry. E-mail addresses entered here will not be made public.  |
@@ -29,13 +30,13 @@ Feature:  Tool tip instructions for fields on edit form
       | Website                                              |  Make sure url is correct  |
       | Telephone                                            |  Make sure phone number is correct  |
       | Donation                                             |  Please enter a website here either to the fundraising page on your website or to an online donation site.  |
-      
+
+  @vcr    
   Scenario: Display tooltip for each checkbox on the edit form
     Given I am signed in as a charity worker related to "Harrow Bereavement Counselling"
     And I visit the edit page for the organisation named "Harrow Bereavement Counselling"
-    Then the following tooltips should exist: 
+    Then the following tooltips should exist:
     | label                                                |  tooltip        |
     | Email                                                |  Toggle to change the visibility of your email address    |
     | Address                                              |  Toggle to change the visibility of your telephone number |
     | Telephone                                            |  Toggle to change the visibility of your address          |
-

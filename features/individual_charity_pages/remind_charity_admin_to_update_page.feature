@@ -16,14 +16,17 @@ Feature: Charity worker is reminded annually to edit own charity profile
   
   @javascript
   @time_travel
+  @vcr
   Scenario: Org owner is reminded to update details after a year
     Given I travel a year plus "0" days into the future
     And I visit the home page
     And I click "Login"
     When I sign in as "superadmin@friendly.org" with password "pppppppp" with javascript
     Then I should see the call to update details for organisation "Friendly"
+    
   @javascript 
   @time_travel
+  @vcr
   Scenario: Org owner is not reminded to update details prior to a year
     Given I travel a year plus "-1" days into the future
     And I visit the home page

@@ -45,6 +45,7 @@ group :test do
   gem 'uri-handler'
   gem 'selenium'
   gem 'selenium-client'
+  gem 'vcr', '~> 2.9.3'
 end
 
 group :production do

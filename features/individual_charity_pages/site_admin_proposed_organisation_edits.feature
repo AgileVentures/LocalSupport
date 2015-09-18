@@ -13,30 +13,16 @@ I want to be able to propose edits to inaccurate organisation listings, includin
       | siteadmin@example.com | pppppppp |                     | 2007-01-01  10:00:00 | false      | true      |
       | justauser@example.com | pppppppp |                     | 2007-01-01  10:00:00 | false      | false     |
 
-   Scenario: Site admin sees fields marked as private
-    Given I am signed in as a siteadmin
-    And I visit the show page for the organisation named "Friendly"
-    And I click "Propose an edit"
-    Then the email field is marked private
-    And the address field is marked private
-    And the telephone field is marked private
-   
-  Scenario: Site admin sees fields marked as public
-    Given I am signed in as a siteadmin
-    And I visit the show page for the organisation named "Example"
-    And I click "Propose an edit"
-    Then the email field is marked public
-    And the address field is marked public
-    And the telephone field is marked public
+ @vcr
+ Scenario: Site admin proposes edit to non public fields
+   Given I am signed in as a siteadmin
+   And I visit the show page for the organisation named "Friendly"
+   And I click "Propose an edit"
+   And the telephone field of the proposed edit should be pre-populated with the telephone of the organisation named "Friendly"
+   And the email field of the proposed edit should be pre-populated with the email of the organisation named "Friendly"
+   And the address field of the proposed edit should be pre-populated with the address of the organisation named "Friendly"
+   When I propose the following edit:
 
-  Scenario: Site admin proposes edit to non public fields
-    Given I am signed in as a siteadmin
-    And I visit the show page for the organisation named "Friendly"
-    And I click "Propose an edit"
-    And the telephone field of the proposed edit should be pre-populated with the telephone of the organisation named "Friendly"
-    And the email field of the proposed edit should be pre-populated with the email of the organisation named "Friendly"
-    And the address field of the proposed edit should be pre-populated with the address of the organisation named "Friendly"
-    When I propose the following edit:
      | telephone  | address         | email    |
      | 520800000  | 30 pinner road  | a@a.com  |
     And I press "Propose this edit"
@@ -50,6 +36,7 @@ I want to be able to propose edits to inaccurate organisation listings, includin
      | email               | superadmin@friendly.xx        | a@a.com            |
      | address             | 34 pinner road                | 30 pinner road     |
 
+  @vcr
   Scenario: User who is not site admin cannot see unpublished fields in proposed edit
     Given I am signed in as a non-siteadmin
     And the following proposed edits exist:
@@ -60,6 +47,7 @@ I want to be able to propose edits to inaccurate organisation listings, includin
     Then I should not see the address field for Friendly
     Then I should not see the telephone field for Friendly
 
+  @vcr
   Scenario: Super admin can see unpublished fields in proposed edit
     Given the following users are registered:
       | email                  | password | organisation        | confirmed_at         | superadmin | siteadmin |
@@ -74,5 +62,3 @@ I want to be able to propose edits to inaccurate organisation listings, includin
       | address        | 34 pinner road         | 30 pinner road |
       | telephone      | 020800000              | 520800000      |
       | email          | superadmin@friendly.xx | a@a.com        |
-
-

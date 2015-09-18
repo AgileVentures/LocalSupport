@@ -14,17 +14,20 @@ Background: organisations have been added to database
       | registered-user-2@example.com | pppppppp | false | 2007-01-01  10:00:00 |           |
     And cookies are approved
 
+ @vcr
  Scenario: Existing charity superadmin appears in form when editing charity
    Given I am signed in as a superadmin
    And I visit the edit page for the organisation named "Friendly"
    Then I should see "registered-user-1@example.com" in the charity superadmin email
 
+ @vcr
  Scenario: No superadmin message displayed when charity has no superadmins
    Given I am signed in as a superadmin
    And I visit the edit page for the organisation named "Friendly Clone"
    Then I should see the no charity superadmins message
 
-  Scenario: Adding non-existent user as charity superadmin invites said user
+ @vcr
+ Scenario: Adding non-existent user as charity superadmin invites said user
    Given I am signed in as a superadmin
    And I add "non-registered-user@example.com" as a superadmin for "Friendly" charity
    Then "non-registered-user@example.com" should be a charity superadmin for "Friendly" charity
@@ -33,10 +36,12 @@ Background: organisations have been added to database
    Then I should be on the show page for the organisation named "Friendly"
    And I should see a link or button "non-registered-user@example.com"
 
-  Scenario: Adding non-existent user as charity superadmin invites said user
+ @vcr  
+ Scenario: Adding non-existent user as charity superadmin invites said user
    Given I am signed in as a superadmin
    And I add "blah" as a superadmin for "Friendly" charity
 
+ @vcr
  Scenario: Successfully add existent user as charity superadmin
    Given I am signed in as a superadmin
    And I add "registered-user-2@example.com" as a superadmin for "Friendly" charity

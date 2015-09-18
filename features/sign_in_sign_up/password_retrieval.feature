@@ -19,7 +19,8 @@ Feature: Password retrieval
     Given I visit the home page
     And I follow "Forgot your password?"
     And the email queue is clear
-
+  
+  @vcr
   @email
   Scenario Outline: Retrieving passwords
     When I fill in "user_retrieval_email" with "<email>" within the main body
@@ -37,6 +38,7 @@ Feature: Password retrieval
     | registered-user@example.com      | home page |
     | registered-org-superadmin@example.com | show page for the organisation named "Friendly" |
 
+  @vcr
   @email
   Scenario: Retrieve password for a non-existent user
     When I fill in "user_retrieval_email" with "non-existent_user@example.com" within the main body

@@ -17,6 +17,7 @@ Background: organisations have been added to database
   | registered_user2@example.com| pppppppp | false |              | 2007-01-01  10:00:00 |
   And cookies are approved
 
+@vcr
 Scenario: Successfully change the donation url for a charity
   # TODO Refactor towards something like this
   #Given I am signed in as a charity superadmin for "Friendly"

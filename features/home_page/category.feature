@@ -36,12 +36,14 @@ Feature: Categories of charities
 
     And I visit the home page
 
+  @vcr
   Scenario: Search for organisations in the "Animal Welfare" category
     Given I select the "Animal Welfare" category from What They Do
     And I press "Submit"
     Then I should see "I love dogs"
     And I should not see "I hate animals"
-
+  
+  @vcr
   Scenario: Search for organisations in both Animal Welfare and Animals with plants categories
     Given I select the "Animal Welfare" category from What They Do
     And I select the "Animals with plants" category from Who They Help
@@ -49,6 +51,7 @@ Feature: Categories of charities
     Then I should see "I love dogs"
     And I should not see "I love cats"
 
+  @vcr
   Scenario: Search for organisations in Advocacy, Animal Welfare and Animals with plants categories
     Given I select the "Animal Welfare" category from What They Do
     And I select the "Animals with plants" category from Who They Help
@@ -59,6 +62,7 @@ Feature: Categories of charities
     And I should not see "I advocate for people"
 
     # TODO must ensure this also works with searching for text so we can search within a category
+  @vcr
   Scenario: Search for dogs in the Animal Welfare category
     Given I select the "Animal Welfare" category from What They Do
     And I search for "dogs"
@@ -66,6 +70,7 @@ Feature: Categories of charities
     And I should not see "I love cats"
     And I should not see "I hate animals"
 
+  @vcr
   Scenario: Search for doges when selected categories exclude I love dogs
     Given I select the "Plant Welfare" category from What They Do
     And I select the "Advocacy" category from How They Help
@@ -73,22 +78,26 @@ Feature: Categories of charities
     And I search for "dogs"
     And I should not see "I love dogs"
 
+  @vcr
   Scenario: Search for organisations in the "People with disabilities" category
     Given I select the "People with disabilities" category from Who They Help
     And I press "Submit"
     Then I should see "I help people"
     And I should not see "I hate animals"
 
+  @vcr
   Scenario: Search for organisations in the "Advocacy" category
     Given I select the "Advocacy" category from How They Help
     And I press "Submit"
     Then I should see "I advocate for people"
     And I should not see "I hate animals"
 
+  @vcr
   Scenario: Even organisations without categories are returned when All is selected for all dropdowns
     Given I press "Submit"
     Then I should see "I hate animals"
 
+  @vcr
   Scenario: Using category dropselects to successively filter the results
     Given I select the "Animals with plants" category from Who They Help
     And I press "Submit"
@@ -111,6 +120,7 @@ Feature: Categories of charities
       | I help people         |
       | I advocate for people |
 
+  @vcr
   Scenario: Categories are sticky
     Given I select the "Plant Welfare" category from What They Do
     And I select the "Advocacy" category from How They Help
@@ -120,6 +130,7 @@ Feature: Categories of charities
     Then the "Advocacy" category should be selected from How They Help
     Then the "People with disabilities" category should be selected from Who They Help
 
+  @vcr
   Scenario: All values stay as default if not changed
     Given I press "Submit"
     Then the default all value should be selected from What They Do

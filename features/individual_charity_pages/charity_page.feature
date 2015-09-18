@@ -31,16 +31,19 @@ Feature: Web page owned by each charity
       | Finance   | Friendly  |
     And I visit the show page for the organisation named "Friendly"
 
-
+  @vcr
   Scenario: be able to view link to charity site on individual charity page
     Then I should see the external website link for "Friendly" charity
 
+  @vcr
   Scenario: display charity title in a visible way
     Then I should see "Friendly" < tagged > with "h2"
 
+  @vcr
   Scenario: show organisation e-mail as link
     Then I should see a mail-link to "superadmin@friendly.xx"
 
+  @vcr
   Scenario: show categories of charity by type
     Then I should see "Health" within "what_they_do"
     And I should see "Education" within "what_they_do"
@@ -52,6 +55,7 @@ Feature: Web page owned by each charity
     And I should not see "Education"
     And I should not see "Animal Welfare"
 
+  @vcr
   Scenario Outline: show labels if field is present
     Then I should see "<label>"
   Examples:
@@ -60,6 +64,7 @@ Feature: Web page owned by each charity
     | Email    |
     | Website  |
 
+  @vcr
   Scenario Outline: hide labels if field is empty
     Given I visit the show page for the organisation named "Unfriendly"
     Then I should not see "<label>"

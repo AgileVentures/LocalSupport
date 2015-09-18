@@ -14,6 +14,7 @@ Feature: I want to have a contact and about us link in all the app pages
       | About Us     | about     | abc123                                                    | true         |
       | Contact Info | contact   | def456                                                    | true         |
 
+  @vcr
   Scenario Outline: the about us page is accessible on all pages
     Given I visit the <page>
     When I follow "About Us"
@@ -25,6 +26,7 @@ Feature: I want to have a contact and about us link in all the app pages
     | new organisation page                                   |
     | show page for the organisation named "Friendly Charity" |
 
+  @vcr
   Scenario Outline: the contact page is accessible on all pages
     Given I visit the <page>
     When I follow "Contact"

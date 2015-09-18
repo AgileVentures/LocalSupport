@@ -20,11 +20,13 @@ Feature: Members of HCN may propose edits to organisations
  
     And cookies are approved
 
+  @vcr
   Scenario: Nonsuperadmins do not see all proposed edits link
     Given I am signed in as an non-superadmin
     And I visit the home page
     Then I should not see the all proposed edits link
 
+  @vcr
   Scenario: Moderate a proposed edit
     Given I am signed in as a superadmin
     And I visit the home page
@@ -33,7 +35,8 @@ Feature: Members of HCN may propose edits to organisations
     And I click on view details for the proposed edit for the organisation named "Friendly"
     And I should see a link or button "Accept Edit"
     And I should see a link or button "Reject Edit"
-
+  
+  @vcr
   Scenario: Editability is enforced at moderate time even if it has changed since proposal of edit
     Given I am signed in as a superadmin
     And the following proposed edits exist:
@@ -45,6 +48,8 @@ Feature: Members of HCN may propose edits to organisations
     And the organisation named "Unfriendly" should have fields as follows:
      |address         | telephone | email             |
      | 30 pinner road | 020800000 | superadmin@friendly.xx |
+  
+  @vcr
   Scenario: Accept a proposed edit
     Given I am signed in as a superadmin
     And I visit the most recently created proposed edit for "Friendly"
@@ -58,6 +63,7 @@ Feature: Members of HCN may propose edits to organisations
       | true     | true     |
     And I should see "The edit you accepted has been applied and archived"
 
+  @vcr
   Scenario: Accept a proposed edit from a siteadmin edits nonpublic fields
     Given I am signed in as a superadmin
     And the following proposed edits exist:
@@ -68,6 +74,8 @@ Feature: Members of HCN may propose edits to organisations
     Then "Newness" should be updated as follows:
       | name             | description             | address        | postcode | telephone | website               | email               | donation_info               |
       | Unfriendly       | Mourning loved ones     | 34 pinner road | HA5 4HZ  | 420800000 | http://unfriendly.org | stuff@unfriendly.xx | http://www.pleasedonate.com |
+  
+  @vcr
   Scenario: Reject a proposed edit
     Given I am signed in as a superadmin
     And I visit the most recently created proposed edit for "Friendly"

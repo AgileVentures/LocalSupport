@@ -18,18 +18,22 @@ Feature: Map of local charities
       | registered_user-3@example.com | pppppppp | Youth UK     | 2007-01-01  10:00:00 |
 
   @javascript
+  @vcr
   Scenario: Show all charities in map on homepage map
     Given I visit the home page
     Then I should see the following measle markers in the map:
       | Indian Elders Association | Age UK | Harrow Bereavement Counselling |
 
   @javascript
+  @vcr
   Scenario: Infowindow appears when clicking on map marker
     Given I visit the home page
     Then I should see an infowindow when I click on the map markers:
       | Indian Elders Association | Age UK | Harrow Bereavement Counselling |
+  
   @time_travel
   @javascript
+  @vcr
   Scenario Outline: Organisation map has small icon for organisations updated more than 365 days ago
     Given I travel a year plus "<days>" days into the future
     And I visit the home page
@@ -44,10 +48,12 @@ Feature: Map of local charities
       |100   | small|
 
   @javascript
+  @vcr
   Scenario: Organisation map has small icon for organisation with no users
     Given I visit the home page
     Then the organisation "Indian Elders Association" should have a small icon
 
+  @vcr
   Scenario: Changing address on the map changes the map coordinates
     Given I visit the home page
     Then the coordinates for "Harrow Bereavement Counselling" and "Youth UK" should not be the same
@@ -59,12 +65,14 @@ Feature: Map of local charities
     Then the coordinates for "Harrow Bereavement Counselling" and "Youth UK" should be the same
     Then the coordinates for "Age UK" and "Youth UK" should not be the same
 
+  @vcr
   Scenario: Show meaning of large map icons on home page
     Given I visit the home page
     And I click "Close"
     Then I should see "Details updated by the organisation within the last 12 months"
     Then I should see "Details NOT updated by the organisation within the last 12 months"
 
+  @vcr
   Scenario: Do not show meaning of large map icons on volunteer ops page
     Given I visit the volunteer opportunities page
     And I click "Close"

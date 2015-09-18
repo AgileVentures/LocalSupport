@@ -16,24 +16,28 @@ Feature: All Users Page
       | pending@myorg.com  | password123    | false | 2008-01-01 00:00:00 |                 | My Organisation      |
     And cookies are approved
 
+  @vcr
   Scenario: As a superadmin approving a pending users request
     Given I am signed in as a superadmin
     When I approve "pending@myorg.com"
     Then I should see "You have approved pending@myorg.com."
     Then "pending@myorg.com" is a charity superadmin of "My Organisation"
 
+  @vcr
   Scenario: As a superadmin deleting a user
     Given I am signed in as a superadmin
     When I delete "pending@myorg.com"
     Then I should see "You have deleted pending@myorg.com."
     Then user "pending@myorg.com" is deleted
 
+  @vcr
   Scenario: As a superadmin about to recover a deleted user
     Given I am signed in as a superadmin
     And I visit the home page
     And I click on the deleted users link
     Then I should be on the deleted users page
 
+  @vcr
   Scenario: As a superadmin recovering a deleted user
     Given I am signed in as a superadmin
     And I delete "pending@myorg.com"
@@ -43,18 +47,21 @@ Feature: All Users Page
     And I should see "You have restored pending@myorg.com"
     And the user with email "pending@myorg.com" should not be displayed on the all deleted users page
 
+  @vcr
   Scenario: as a non-superadmin attempting to see deleted users
     Given I am signed in as an non-superadmin
     And I visit the deleted users page
     Then I should be on the home page
     And I should see "You must be signed in as a superadmin to perform this action!"
 
+  @vcr
   Scenario: As a superadmin attempting self-deletion
     Given I am signed in as a superadmin
     When I delete "superadmin@myorg.com"
     Then I should see "You may not destroy your own account!"
     Then user "superadmin@myorg.com" is not deleted
 
+  @vcr
   Scenario Outline: As a superadmin I should be able to see status of all users
     Given I am signed in as a superadmin
     And I visit the all users page
@@ -64,7 +71,8 @@ Feature: All Users Page
       | nonsuperadmin@myorg.com |
       | superadmin@myorg.com    |
       | pending@myorg.com  |
-
+  
+  @vcr
   Scenario: As a non-superadmin trying to access users index
     Given I am signed in as a non-superadmin
     And I visit the all users page

@@ -18,8 +18,9 @@ Feature: Orphans UI
       | pending@myorg.com     | password123    | false | 2008-01-01 00:00:00 |                 | My Organisation      |
       | invited-superadmin@org.org | password123    | false | 2008-01-01 00:00:00 |                 |                      |
     And the superadmin invited a user for "Yet Another Org"
-
+  
   @javascript
+  @vcr
   Scenario: Super Admin can invite users but only for unique emails
     Given cookies are approved
     Given I am signed in as a superadmin
@@ -29,7 +30,8 @@ Feature: Orphans UI
     When I click id "invite_users"
     Then I should see "Invited!" in the response field for "The Organisation"
     Then I should see "Error: Email has already been taken" in the response field for "The Same Email Org"
-
+  
+  @vcr  
   Scenario: Already invited organisations don't appear
     Given cookies are approved
     And I am signed in as a superadmin
@@ -37,6 +39,7 @@ Feature: Orphans UI
     Then I should not see "Yet Another Org"
 
   @javascript
+  @vcr
   Scenario: Super Admin should be notified when email is invalid
     Given cookies are approved
     Given I am signed in as a superadmin
@@ -44,7 +47,7 @@ Feature: Orphans UI
     And I check the box for "Crazy Email Org"
     When I click id "invite_users"
     Then I should see "Error: Email is invalid" in the response field for "Crazy Email Org"
-
+  @vcr
   Scenario: As a non-superadmin trying to access orphans index
     Given cookies are approved
     Given I am signed in as a non-superadmin
@@ -54,6 +57,7 @@ Feature: Orphans UI
 
   #These next two scenarios apply to layouts/invitation_table
   @javascript
+  @vcr
   Scenario: Table columns should be sortable
     Given cookies are approved
     Given I am signed in as a superadmin
@@ -64,6 +68,7 @@ Feature: Orphans UI
     Then I should see "The Organisation" before "Crazy Email Org"
 
   @javascript
+  @vcr
   Scenario: Select All button toggles all checkboxes
     Given cookies are approved
     Given I am signed in as a superadmin
@@ -74,17 +79,20 @@ Feature: Orphans UI
     Then all the checkboxes should be unchecked
 
   #The next two scenarios check the flow of the user accepting the invitation
+  @vcr
   Scenario: Invited user clicking through on email with cookies policy clicked
     Given I click on the invitation link in the email to "superadmin@another.org"
     And I accepted the cookie policy from the "invitation" page
     And I set my password
     Then I should be on the show page for the organisation named "Yet Another Org"
 
+  @vcr
   Scenario: Invited user clicking through on email ignoring cookies policy
     Given I click on the invitation link in the email to "superadmin@another.org"
     And I set my password
     Then I should be on the show page for the organisation named "Yet Another Org"
 
+  @vcr
   Scenario: Invited user email is out of date
     Given cookies are approved
     And I am signed in as a superadmin
