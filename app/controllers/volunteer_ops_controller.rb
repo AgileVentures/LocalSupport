@@ -10,9 +10,9 @@ class VolunteerOpsController < ApplicationController
 
   def show
     @volunteer_op = VolunteerOp.find(params[:id])
-    @organisation = Organisation.where(id: @volunteer_op)
+    @organisation = @volunteer_op.organisation
     @editable = current_user.can_edit?(@organisation) if current_user
-    @markers = build_map_markers(@organisation)
+    @markers = build_map_markers(Organisation.where(id: @organisation))
   end
 
   def new
