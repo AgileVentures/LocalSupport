@@ -31,17 +31,5 @@ module Queries
       organisations
         .select("organisations.*, (#{condition}) as recently_updated_and_has_owner")
     end
-
-  private
-    def self.add_recently_update_and_has_owner_to_enumerable(organisations)
-      organisations.each do |o|
-        o.instance_eval %{
-            def recently_updated_and_has_owner
-              has_been_updated_recently? && !self.users.empty?
-            end
-         }
-      end
-      return organisations
-    end
   end
 end
