@@ -34,8 +34,7 @@ class OrganisationsController < BaseOrganisationsController
     @can_create_volunteer_op = current_user.can_create_volunteer_ops?(@organisation) if current_user
     @grabbable = current_user ? current_user.can_request_org_admin?(@organisation) : true
     @can_propose_edits = current_user.present? && !@editable
-   # @next_path = current_user ? organisation_user_path(@organisation.id, current_user.id) : new_user_session_path
-    @markers = build_map_markers([@organisation])
+    @markers = build_map_markers(Organisation.where(id: @organisation))
   end
 
   # GET /organisations/new
@@ -48,7 +47,7 @@ class OrganisationsController < BaseOrganisationsController
   # GET /organisations/1/edit
   def edit
     @organisation = Organisation.find(params[:id])
-    @markers = build_map_markers([@organisation])
+    @markers = build_map_markers(Organisation.where(id: @organisation))
     @categories_start_with = Category.first_category_name_in_each_type
     return false unless user_can_edit? @organisation
     #respond_to do |format|
