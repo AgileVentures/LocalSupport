@@ -281,9 +281,9 @@ describe OrganisationsController, :type => :controller do
       end
 
       it "redirects to organisation view" do
-        allow(Organisation).to receive(:find).with('37') { real_org }
-        get :edit, :id => '37'
-        expect(response).to redirect_to organisation_url(37)
+        org = create(:organisation)
+        get :edit, id: org.id
+        expect(response).to redirect_to organisation_url(org)
       end
     end
     #TODO: way to dry out these redirect specs?
