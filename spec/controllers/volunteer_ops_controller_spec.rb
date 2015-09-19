@@ -8,9 +8,9 @@ describe VolunteerOpsController, :type => :controller do
 end
 
 describe VolunteerOpsController, :type => :controller do
-  # let(:user) { double :user }
-  # let(:org) { double :organisation, id: '1' }
-  # let!(:op) { stub_model VolunteerOp } # stack level too deep errors if stub_model is loaded lazily in some contexts
+  let(:user) { double :user }
+  let(:org) { double :organisation, id: '1' }
+  let!(:op) { stub_model VolunteerOp } # stack level too deep errors if stub_model is loaded lazily in some contexts
   describe 'strong params' do
     before do
       @org = stub_model Organisation, :name => "title", :description => "description"
@@ -28,8 +28,9 @@ describe VolunteerOpsController, :type => :controller do
   describe "#build_map_markers" do
     render_views
     let(:org) { create :organisation }
+    let(:orgs) { Organisation.where(id: org) }
     let!(:op) { create :volunteer_op, organisation: org }
-    subject { JSON.parse(controller.send(:build_map_markers, [org])).first }
+    subject { JSON.parse(controller.send(:build_map_markers, orgs)).first }
     it { expect(subject['lat']).to eq org.latitude }
     it { expect(subject['lng']).to eq org.longitude }
     it { expect(subject['infowindow']).to include org.id.to_s }
@@ -38,8 +39,8 @@ describe VolunteerOpsController, :type => :controller do
     it { expect(subject['infowindow']).to include op.title }
     it { expect(subject['infowindow']).to include op.description }
     context 'markers without coords omitted' do
-      let(:org) { create :organisation, address: "0 pinner road", postcode: "HA1 4HZ", latitude: nil, longitude: nil }
-      it { expect(JSON.parse(controller.send(:build_map_markers, [org]))).to be_empty }
+      let(:org) { create :organisation, address: "0 pinnner road", postcode: "HA1 4HZ", latitude: nil, longitude: nil }
+      it { expect(JSON.parse(controller.send(:build_map_markers, orgs))).to be_empty }
     end
   end
 
