@@ -54,26 +54,20 @@ describe VolunteerOpsController, :type => :controller do
     end
 
     it 'assigns all volunteer_op orgs as @organisations' do
-      create(:organisation)
+      create_list(:organisation, 2)
       create(:volunteer_op, organisation: create(:organisation))
       get :index, {}
       expect(assigns(:organisations).count).to eq 1
     end
 
     it 'assigns @markers' do
+      create_list(:organisation, 2)
       org = create(:organisation)
       create(:volunteer_op, organisation: org)
       get :index, {}
       expect(
         JSON.parse(assigns(:markers))
-      ).to eq([{
-       "lat"           => org.latitude,
-       "lng"           => org.longitude,
-       "infowindow"    => "",
-       "custom_marker" => "",
-       "index"         => 1,
-       "type"          => "vol_op",
-      }])
+      ).to match(a_collection_containing_exactly(an_instance_of(Hash)))
     end
   end
 
@@ -86,6 +80,21 @@ describe VolunteerOpsController, :type => :controller do
       expect(assigns(:volunteer_op)).to eq op
     end
 
+    it "assigns the volunteer_op's org as @organisation" do
+      get :show, id: op.id
+      expect(assigns(:organisation)).to eq org
+    end
+
+    it 'assigns @markers' do
+      create_list(:organisation, 2)
+      org = create(:organisation)
+      create(:volunteer_op, organisation: org)
+      get :show, id: op.id
+      expect(
+        JSON.parse(assigns(:markers))
+      ).to match(a_collection_containing_exactly(an_instance_of(Hash)))
+    end
+
     it 'non-org-owners allowed' do
       allow(controller).to receive(:org_owner?).and_return(false)
       get :show, id: op.id
@@ -95,9 +104,7 @@ describe VolunteerOpsController, :type => :controller do
     it "passes a true editable flag when superadmin user" do
       user = double(:user)
       allow(controller).to receive(:current_user).and_return(user)
-      allow(user).to receive(:can_edit?).with(
-        Organisation.where(id: org)
-      ).and_return(true)
+      allow(user).to receive(:can_edit?).with(org).and_return(true)
       get :show, id: op.id
       expect(assigns(:editable)).to eq true
     end
