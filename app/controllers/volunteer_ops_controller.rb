@@ -4,7 +4,7 @@ class VolunteerOpsController < ApplicationController
 
   def index
     @volunteer_ops = VolunteerOp.order_by_most_recent
-    @organisations = @volunteer_ops.map { |op| op.organisation }
+    @organisations = Organisation.where(id: @volunteer_ops.select(:organisation_id))
     @markers = build_map_markers(@organisations)
   end
 

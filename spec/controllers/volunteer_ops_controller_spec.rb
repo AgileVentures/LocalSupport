@@ -44,33 +44,36 @@ describe VolunteerOpsController, :type => :controller do
   end
 
   describe 'GET index' do
-    before :each do
-      @results = [op]
-      allow(VolunteerOp).to receive(:order_by_most_recent).and_return(@results)
-    end
-
     it 'assigns all volunteer_ops as @volunteer_ops' do
-      op2 = stub_model VolunteerOp, :organisation => (stub_model Organisation)
-      @results = [op2]
-      expect(VolunteerOp).to receive(:order_by_most_recent).and_return(@results)
-      get :index, {}
-      expect(assigns(:volunteer_ops)).to eq @results
+      expect {
+        create(:volunteer_op, organisation: create(:organisation))
+      }.to change {
+        get :index, {}
+        assigns(:volunteer_ops).count
+      }.from(0).to 1
     end
 
     it 'assigns all volunteer_op orgs as @organisations' do
-      org2 = stub_model Organisation
-      allow(@results).to receive(:map).and_return([org2])
+      create(:organisation)
+      create(:volunteer_op, organisation: create(:organisation))
       get :index, {}
-      expect(assigns(:organisations)).to eq([org2])
+      expect(assigns(:organisations).count).to eq 1
     end
 
     it 'assigns @markers' do
-      markers = 'my markers'
-      org2 = stub_model Organisation
-      allow(@results).to receive(:map).and_return([org2])
-      expect(controller).to receive(:build_map_markers).and_return(markers)
+      org = create(:organisation)
+      create(:volunteer_op, organisation: org)
       get :index, {}
-      expect(assigns(:markers)).to eq(markers)
+      expect(
+        JSON.parse(assigns(:markers))
+      ).to eq([{
+       "lat"           => org.latitude,
+       "lng"           => org.longitude,
+       "infowindow"    => "",
+       "custom_marker" => "",
+       "index"         => 1,
+       "type"          => "vol_op",
+      }])
     end
   end
 
