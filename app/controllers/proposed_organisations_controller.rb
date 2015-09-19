@@ -42,7 +42,7 @@ class ProposedOrganisationsController < BaseOrganisationsController
     @proposed_organisation = ProposedOrganisation.find(params[:id])
     #refactor this into model
     @proposer_email = @proposed_organisation.users.first.email if !@proposed_organisation.users.empty?
-    @markers = build_map_markers([@proposed_organisation])
+    @markers = build_map_markers(ProposedOrganisation.where(id: @proposed_organisation))
   end
 
   private
@@ -65,6 +65,7 @@ class ProposedOrganisationsController < BaseOrganisationsController
       redirect_to root_path
     end
   end
+
   def collect_selected_categories
     category_params = ProposedOrganisationParams.just_categories(params)
     cats = category_params["category_organisations_attributes"].select do |key,value|

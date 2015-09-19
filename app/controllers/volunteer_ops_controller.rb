@@ -52,7 +52,7 @@ class VolunteerOpsController < ApplicationController
       :organisation_id,
     )
   end
-  
+
   private
 
   def build_map_markers(organisations)
