@@ -87,8 +87,6 @@ describe VolunteerOpsController, :type => :controller do
 
     it 'assigns @markers' do
       create_list(:organisation, 2)
-      org = create(:organisation)
-      create(:volunteer_op, organisation: org)
       get :show, id: op.id
       expect(
         JSON.parse(assigns(:markers))
@@ -170,36 +168,43 @@ describe VolunteerOpsController, :type => :controller do
   end
 
   describe 'GET edit' do
-    before do
-      @org = stub_model Organisation
-      @op2 = stub_model VolunteerOp, :organisation => (@org)
-      @results = [@op2]
-      allow(VolunteerOp).to receive(:find).with(@op2.id.to_s).and_return(@op2)
-    end
+    let(:org) { create(:organisation) }
+    let(:op) { create(:volunteer_op, organisation: org) }
+
     context 'superadmin user logged in' do
-      before do
-        allow(controller).to receive(:org_owner?).and_return(true)
-        allow(controller).to receive(:current_user).and_return(user)
-      end
+      before { allow(controller).to receive(:org_owner?).and_return(true) }
+
       it 'assigns the requested volunteer_op as @volunteer_op' do
-        get :edit, {:id => @op2.id}
-        expect(assigns(:volunteer_op)).to eq @op2
+        get :edit, id: op.id
+        expect(assigns(:volunteer_op)).to eq op
       end
-      it 'assigns an organisation' do
-        get :edit, {:id => @op2.id}
-        expect(assigns(:organisation)).to eq @org
+
+      it "assigns the volunteer_op's org as @organisation" do
+        get :edit, id: op.id
+        expect(assigns(:organisation)).to eq org
       end
+
+      it 'assigns @markers' do
+        create_list(:organisation, 2)
+        get :edit, id: op.id
+        expect(
+          JSON.parse(assigns(:markers))
+        ).to match(a_collection_containing_exactly(an_instance_of(Hash)))
+      end
+
       it 'renders the edit template' do
-        get :edit, {:id => @op2.id}
+        get :edit, id: op.id
         expect(response).to render_template 'edit'
       end
     end
+
     context 'non-superadmin user logged in' do
       before do
         allow(controller).to receive(:org_owner?).and_return(false)
       end
+
       it 'does not render the edit template' do
-        get :edit, {:id => @op2.id}
+        get :edit, id: op.id
         expect(response).not_to render_template 'edit'
       end
     end

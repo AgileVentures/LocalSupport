@@ -32,7 +32,7 @@ class VolunteerOpsController < ApplicationController
   def edit
     @volunteer_op = VolunteerOp.find(params[:id])
     @organisation = @volunteer_op.organisation
-    @markers = build_map_markers([@organisation])
+    @markers = build_map_markers(Organisation.where(id: @organisation))
   end
 
   def update
