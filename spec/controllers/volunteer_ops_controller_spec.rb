@@ -8,9 +8,9 @@ describe VolunteerOpsController, :type => :controller do
 end
 
 describe VolunteerOpsController, :type => :controller do
-  let(:user) { double :user }
-  let(:org) { double :organisation, id: '1' }
-  let!(:op) { stub_model VolunteerOp } # stack level too deep errors if stub_model is loaded lazily in some contexts
+  # let(:user) { double :user }
+  # let(:org) { double :organisation, id: '1' }
+  # let!(:op) { stub_model VolunteerOp } # stack level too deep errors if stub_model is loaded lazily in some contexts
   describe 'strong params' do
     before do
       @org = stub_model Organisation, :name => "title", :description => "description"
@@ -78,37 +78,34 @@ describe VolunteerOpsController, :type => :controller do
   end
 
   describe 'GET show' do
-    before do
-      @org = stub_model Organisation
-      @op2 = stub_model VolunteerOp, :organisation => (@org)
-      @results = [@op2]
-      allow(VolunteerOp).to receive(:find).with(@op2.id.to_s).and_return(@op2)
-    end
+    let(:org) { create(:organisation) }
+    let(:op) { create(:volunteer_op, organisation: org) }
+
     it 'assigns the requested volunteer_op as @volunteer_op' do
-      get :show, {:id => @op2.id}
-      expect(assigns(:volunteer_op)).to eq @op2
+      get :show, id: op.id
+      expect(assigns(:volunteer_op)).to eq op
     end
 
     it 'non-org-owners allowed' do
       allow(controller).to receive(:org_owner?).and_return(false)
-      get :show, {:id => @op2.id}
+      get :show, id: op.id
       expect(response.status).to eq 200
     end
 
     it "passes a true editable flag when superadmin user" do
+      user = double(:user)
       allow(controller).to receive(:current_user).and_return(user)
-      allow(user).to receive(:can_edit?).with(@org).and_return(true)
-      get :show, {:id => @op2.id}
-      expect(assigns(:editable)).to be_truthy
+      allow(user).to receive(:can_edit?).with(
+        Organisation.where(id: org)
+      ).and_return(true)
+      get :show, id: op.id
+      expect(assigns(:editable)).to eq true
     end
 
     it "passes a false editable flag when guest user" do
-      # allow(controller).to_receive(:user).and_return(nil)
       allow(controller).to receive(:current_user).and_return(nil)
-      @results = [@op2]
-      allow(VolunteerOp).to receive(:find).with(@op2.id.to_s) { @op2 }
-      get :show, {:id => @op2.id}
-      expect(assigns(:editable)).to be_falsey
+      get :show, id: op.id
+      expect(assigns(:editable)).to eq nil
     end
   end
 
