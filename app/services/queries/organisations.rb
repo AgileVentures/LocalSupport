@@ -23,9 +23,9 @@ module Queries
     FORMAT = '%Y-%m-%d %H:%M:%S.%N'
 
     def self.add_recently_updated_and_has_owner(organisations)
-      if organisations.method(:select).arity == 0
-        return add_recently_update_and_has_owner_to_enumerable(organisations)
-      end
+      # if organisations.method(:select).arity == 0
+      #   return add_recently_update_and_has_owner_to_enumerable(organisations)
+      # end
       one_year_ago = Time.current.advance(years: -1)
       recently_updated = "organisations.updated_at > '#{one_year_ago.strftime(FORMAT)}'"
       # recently_updated = "organisations.updated_at > #{one_year_ago.strftime}"
