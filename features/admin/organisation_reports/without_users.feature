@@ -19,6 +19,7 @@ Feature: Orphans UI
       | invited-superadmin@org.org | password123    | false | 2008-01-01 00:00:00 |                 |                      |
     And the superadmin invited a user for "Yet Another Org"
 
+  @vcr
   @javascript
   Scenario: Super Admin can invite users but only for unique emails
     Given cookies are approved
@@ -53,6 +54,7 @@ Feature: Orphans UI
     And I should see "You must be signed in as a superadmin to perform this action!"
 
   #These next two scenarios apply to layouts/invitation_table
+  @vcr
   @javascript
   Scenario: Table columns should be sortable
     Given cookies are approved
@@ -63,6 +65,7 @@ Feature: Orphans UI
     When I click tableheader "Name"
     Then I should see "The Organisation" before "Crazy Email Org"
 
+  @vcr
   @javascript
   Scenario: Select All button toggles all checkboxes
     Given cookies are approved
