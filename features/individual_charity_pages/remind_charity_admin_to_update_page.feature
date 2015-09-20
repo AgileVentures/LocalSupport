@@ -14,6 +14,7 @@ Feature: Charity worker is reminded annually to edit own charity profile
     | superadmin@friendly.org            | pppppppp | Friendly     | 2007-01-01  10:00:00 |
     And cookies are approved
   
+  @vcr
   @javascript
   @time_travel
   Scenario: Org owner is reminded to update details after a year
@@ -22,6 +23,8 @@ Feature: Charity worker is reminded annually to edit own charity profile
     And I click "Login"
     When I sign in as "superadmin@friendly.org" with password "pppppppp" with javascript
     Then I should see the call to update details for organisation "Friendly"
+  
+  @vcr
   @javascript 
   @time_travel
   Scenario: Org owner is not reminded to update details prior to a year

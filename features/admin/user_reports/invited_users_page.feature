@@ -19,7 +19,8 @@ Feature: Invited Users Page
     And I visit the invited users page
     Then I should see "invited@user.org"
     And I should not see "regular@user.org"
-
+  
+  @vcr
   @javascript
   Scenario: Invitations can be resent
     Given cookies are approved
