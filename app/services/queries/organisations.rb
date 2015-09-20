@@ -41,7 +41,7 @@ module Queries
       organisations.each do |o|
         o.instance_eval %{
             def recently_updated_and_has_owner
-              !not_updated_recently? && !self.users.empty?
+              has_been_updated_recently? && !self.users.empty?
             end
          }
       end

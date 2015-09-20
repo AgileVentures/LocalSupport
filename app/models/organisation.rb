@@ -134,10 +134,6 @@ class Organisation < BaseOrganisation
     end
   end
 
-  def not_updated_recently_or_has_no_owner?
-    self.users.empty? || not_updated_recently?
-  end
-
   private
 
   def embellish_invite_error_and_add_to_model(email, error_msg)
