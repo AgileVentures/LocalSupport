@@ -369,26 +369,6 @@ describe Organisation, :type => :model do
     end
   end
 
-  it 'should geocode when address changes' do
-    new_address = '30 pinner road'
-    expect(@org1).to receive(:geocode)
-    @org1.update_attributes :address => new_address
-  end
-
-  it 'should geocode when postcode changes' do
-    new_postcode = 'HA1 4HZ'
-    expect(@org1).to receive(:geocode)
-    @org1.update_attributes :postcode => new_postcode
-  end
-
-  it 'should geocode when new object is created' do
-    address = '60 pinner road'
-    postcode = 'HA1 4HZ'
-    org = FactoryGirl.build(:organisation,:address => address, :postcode => postcode, :name => 'Happy and Nice', :gmaps => true)
-    expect(org).to receive(:geocode)    
-    org.save
-  end
-  
   # not sure if we need SQL injection security tests like this ...
   # org = Organisation.new(:address =>"blah", :gmaps=> ";DROP DATABASE;")
   # org = Organisation.new(:address =>"blah", :name=> ";DROP DATABASE;")
