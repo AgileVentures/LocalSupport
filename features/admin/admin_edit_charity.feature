@@ -18,9 +18,12 @@ Feature: Super Admin editing charity
   Scenario: Super Admin successfully changes the address of a charity
     Given I am signed in as a superadmin
     And I update "Friendly" charity address to be "30 pinner road"
-    And I update "Friendly" charity postcode to be "HA1 4HZ"
     Then the address for "Friendly" should be "30 pinner road"
-    Then the postcode for "Friendly" should be "HA1 4HZ"
+
+  Scenario: Super Admin successfully changes the postcode of a charity
+    Given I am signed in as a superadmin
+    And I update "Friendly" charity postcode to be "HA1 4RZ"
+    Then the postcode for "Friendly" should be "HA1 4RZ"
 
 #TODO Refactor into integration test that posts to update method
 #  Scenario: Non-superadmin unsuccessfully attempts to change the address of a charity
