@@ -5,7 +5,7 @@ development: &dev
   pool: 5
   username: postgres
   password:
-  #host: localhost
+  host: localhost
 test: &test
   <<: *dev
   database: ls_test
