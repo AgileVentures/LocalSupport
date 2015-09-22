@@ -39,10 +39,11 @@ class ProposedOrganisationsController < BaseOrganisationsController
   end
 
   def show
-    @proposed_organisation = ProposedOrganisation.find(params[:id])
+    proposed_organisations = ProposedOrganisation.where(id: params[:id])
+    @proposed_organisation = proposed_organisations.first!
     #refactor this into model
     @proposer_email = @proposed_organisation.users.first.email if !@proposed_organisation.users.empty?
-    @markers = build_map_markers(ProposedOrganisation.where(id: @proposed_organisation))
+    @markers = build_map_markers(proposed_organisations)
   end
 
   private
