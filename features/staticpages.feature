@@ -6,8 +6,8 @@ Feature: I want to have a contact and about us link in all the app pages
 
   Background: organisations have been added to database
     Given the following organisations exist:
-      | name             | address        |
-      | Friendly Charity | 83 pinner road |
+      | name             | address        | postcode |
+      | Friendly Charity | 83 pinner road | HA1 4HZ  |
     Given the following pages exist:
       | name         | permalink | content                                                   | link_visible |
       | 404          | 404       | We're sorry, but we couldn't find the page you requested! | false        |

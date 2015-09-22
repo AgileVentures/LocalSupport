@@ -8,7 +8,7 @@ Feature: As a member of the public
     Given the following organisations exist:
       | name                      | description          | address        | postcode | website       |
       | Cats Are Us               | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
-      | Indian Elders Association | Care for the elderly | 64 pinner road | HA1 4HA  | http://b.com/ |
+      | Indian Elders Association | Care for the elderly | 64 pinner road | HA1 4HZ  | http://b.com/ |
     Given the following volunteer opportunities exist:
       | title              | description                     | organisation              |
       | Litter Box Scooper | Assist with feline sanitation   | Cats Are Us               |

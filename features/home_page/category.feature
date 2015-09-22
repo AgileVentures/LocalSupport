@@ -8,10 +8,10 @@ Feature: Categories of charities
     Given the following organisations exist:
       | name                  | description                    | address        | postcode | website       |
       | I love dogs           | loves canines                  | 34 pinner road | HA1 4HZ  | http://a.com/ |
-      | I love cats           | loves felines                  | 64 pinner road | HA1 4HA  | http://b.com/ |
-      | I hate animals        | hates birds and beasts         | 84 pinner road | HA1 4HF  | http://c.com/ |
-      | I help people         | helps people with disabilities | 30 pinner road | HA1 4HF  | http://c.com/ |
-      | I advocate for people | helps people by advocating     | 83 pinner road | HA1 4HF  | http://c.com/ |
+      | I love cats           | loves felines                  | 64 pinner road | HA1 4HZ  | http://b.com/ |
+      | I hate animals        | hates birds and beasts         | 84 pinner road | HA1 4HZ  | http://c.com/ |
+      | I help people         | helps people with disabilities | 30 pinner road | HA1 4HZ  | http://c.com/ |
+      | I advocate for people | helps people by advocating     | 83 pinner road | HA1 4HZ  | http://c.com/ |
       | Dogs watering plants  | it just makes sense            | 34 pinner road | HA1 4HZ  | http://a.com/ |
 
     And the following categories exist:

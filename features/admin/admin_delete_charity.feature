@@ -10,8 +10,8 @@ Feature: Super Admin deleting charity
       | Friendly | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 |
     And the following proposed edits exist:
       |original_name | editor_email                  | name       | description             | address        | postcode | telephone | website               | email               | donation_info        | archived|
-      |Friendly      | registered_user-2@example.com | Unfriendly | Mourning loved ones     | 30 pinner road | HA5 4HZ  | 520800000 | http://unfriendly.org | superadmin@unfriendly.xx | www.pleasedonate.com | false   |
-      |Friendly      | registered_user-2@example.com | Unfriendly | Mourning loved ones     | 30 pinner road | HA5 4HZ  | 520800000 | http://unfriendly.org | superadmin@unfriendly.xx | www.pleasedonate.com | true    |
+      |Friendly      | registered_user-2@example.com | Unfriendly | Mourning loved ones     | 30 pinner road | HA1 4HZ  | 520800000 | http://unfriendly.org | superadmin@unfriendly.xx | www.pleasedonate.com | false   |
+      |Friendly      | registered_user-2@example.com | Unfriendly | Mourning loved ones     | 30 pinner road | HA1 4HZ  | 520800000 | http://unfriendly.org | superadmin@unfriendly.xx | www.pleasedonate.com | true    |
     And the following users are registered:
       | email                 | password | superadmin | confirmed_at         | organisation |
       | superadmin@example.com     | pppppppp | true  | 2007-01-01  10:00:00 |              |
