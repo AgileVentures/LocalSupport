@@ -10,9 +10,10 @@ class VolunteerOpsController < ApplicationController
 
   def show
     @volunteer_op = VolunteerOp.find(params[:id])
-    @organisation = @volunteer_op.organisation
+    organisations = Organisation.where(id: @volunteer_op.organisation_id)
+    @organisation = organisations.first!
     @editable = current_user.can_edit?(@organisation) if current_user
-    @markers = build_map_markers(Organisation.where(id: @organisation))
+    @markers = build_map_markers(organisations)
   end
 
   def new
@@ -31,8 +32,9 @@ class VolunteerOpsController < ApplicationController
 
   def edit
     @volunteer_op = VolunteerOp.find(params[:id])
-    @organisation = @volunteer_op.organisation
-    @markers = build_map_markers(Organisation.where(id: @organisation))
+    organisations = Organisation.where(id: @volunteer_op.organisation_id)
+    @organisation = organisations.first!
+    @markers = build_map_markers(organisations)
   end
 
   def update
