@@ -255,7 +255,7 @@ describe OrganisationsController, :type => :controller do
   end
 
   describe "GET edit" do
-    let(:real_org) { create(:organisation) }
+    let(:org) { create(:organisation) }
 
     context "while signed in as user who can edit" do
       before(:each) do
@@ -266,9 +266,8 @@ describe OrganisationsController, :type => :controller do
       end
 
       it "assigns the requested organisation as @organisation" do
-        allow(Organisation).to receive(:find).with('37') { real_org }
-        get :edit, :id => '37'
-        expect(assigns(:organisation)).to be(real_org)
+        get :edit, id: org.id
+        expect(assigns(:organisation)).to eq org
         expect(response).to render_template 'layouts/two_columns_with_map'
       end
     end
@@ -281,9 +280,8 @@ describe OrganisationsController, :type => :controller do
       end
 
       it "redirects to organisation view" do
-        allow(Organisation).to receive(:find).with('37') { real_org }
-        get :edit, :id => '37'
-        expect(response).to redirect_to organisation_url(37)
+        get :edit, id: org.id
+        expect(response).to redirect_to organisation_url(org)
       end
     end
     #TODO: way to dry out these redirect specs?

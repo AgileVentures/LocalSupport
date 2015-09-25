@@ -4,15 +4,16 @@ class VolunteerOpsController < ApplicationController
 
   def index
     @volunteer_ops = VolunteerOp.order_by_most_recent
-    @organisations = @volunteer_ops.map { |op| op.organisation }
+    @organisations = Organisation.where(id: @volunteer_ops.select(:organisation_id))
     @markers = build_map_markers(@organisations)
   end
 
   def show
     @volunteer_op = VolunteerOp.find(params[:id])
-    @organisation = @volunteer_op.organisation
+    organisations = Organisation.where(id: @volunteer_op.organisation_id)
+    @organisation = organisations.first!
     @editable = current_user.can_edit?(@organisation) if current_user
-    @markers = build_map_markers([@organisation])
+    @markers = build_map_markers(organisations)
   end
 
   def new
@@ -31,8 +32,9 @@ class VolunteerOpsController < ApplicationController
 
   def edit
     @volunteer_op = VolunteerOp.find(params[:id])
-    @organisation = @volunteer_op.organisation
-    @markers = build_map_markers([@organisation])
+    organisations = Organisation.where(id: @volunteer_op.organisation_id)
+    @organisation = organisations.first!
+    @markers = build_map_markers(organisations)
   end
 
   def update
@@ -52,7 +54,7 @@ class VolunteerOpsController < ApplicationController
       :organisation_id,
     )
   end
-  
+
   private
 
   def build_map_markers(organisations)
