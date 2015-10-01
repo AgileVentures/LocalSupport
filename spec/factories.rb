@@ -39,6 +39,18 @@ FactoryGirl.define do
     end
   end
 
+  factory :orphan_proposed_organisation, class: ProposedOrganisation do
+    name "Friendly Charity"
+    description "We are friendly!"
+    address "64 pinner road"
+    postcode "HA1 4HZ"
+    donation_info "www.donate.org/friendly"
+    email "friendly@charity.org"
+    latitude 10
+    longitude 10
+    non_profit true
+  end
+
   factory :category do
     name "health"
     charity_commission_id 1
