@@ -27,6 +27,17 @@ Feature: Admin moderates an organisation to be added to HarrowCN
     Then I should be on the show page for the organisation that was proposed
     And I should see "You have approved the following organisation"
 
+  Scenario: Unregistered user is invited when superadmin accepts proposed organisation
+    Given the following proposed organisations exist:
+      | name       | description             | address        | postcode | telephone | website               | email                      | donation_info        | non_profit |
+      | Unfriendly | Mourning loved ones     | 30 pinner road | HA5 4HZ  | 520800000 | http://unfriendly.org | unregistered@unfriendly.xx | www.pleasedonate.com | true       |
+    And I am signed in as an superadmin
+    And I visit the show page for the proposed_organisation named "Unfriendly"
+    And I press "Accept"
+    Then I should be on the show page for the organisation named "Unfriendly"
+    And an email should be sent to "unregistered@unfriendly.xx" as notification of the acceptance of proposed organisation "Unfriendly"
+
+
   Scenario: Superadmin rejects new organisation
     And I am signed in as an superadmin
     And I visit the proposed organisation show page for the proposed organisation that was proposed

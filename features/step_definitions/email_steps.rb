@@ -27,6 +27,11 @@ And(/^an email should be sent to "(.*?)" as notification of the request for admi
   expect_email_exists(message: message,email: email) 
 end
 
+Then(/^an email should be sent to "(.*?)" as notification of the acceptance of proposed organisation "(.*?)"$/) do |email, org_name|
+  mails = ActionMailer::Base.deliveries.select{|m| m.to.include? email}
+  expect(mails).not_to be_empty
+end
+
 Then(/^an email should be sent to "(.*?)" as notification of the signup by email "(.*?)"$/) do |email, user_email|
   message = "A new user with the email #{user_email} has signed up on Harrow Community Network."
   expect_email_exists(message: message,email: email) 
