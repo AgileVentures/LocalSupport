@@ -14,9 +14,14 @@ class ProposedOrganisationsController < BaseOrganisationsController
     proposed_org = ProposedOrganisation.find params[:id]
     if update_param == "accept"
       org = proposed_org.accept_proposal
+      usr = User.find_by(email: org.email)
       flash[:notice] = "You have approved the following organisation"
-      result_of_inviting = InviteUnregisteredUserFromProposedOrg.new(org.email,org).run
-      set_flash_error_for_inviting_user_from_proposed_org(result_of_inviting, org.name, org.email)
+      unless usr
+        result_of_inviting = InviteUnregisteredUserFromProposedOrg.new(org.email,org).run
+        set_flash_error_for_inviting_user_from_proposed_org(result_of_inviting, org.name, org.email)
+      else
+        NotifyRegisteredUserFromProposedOrg.new(usr,org).run
+      end
       redirect_to organisation_path(org) and return false
     else
       proposed_org.destroy

@@ -29,6 +29,11 @@ end
 
 Then(/^an email should be sent to "(.*?)" as notification of the acceptance of proposed organisation "(.*?)"$/) do |email, org_name|
   message = "Your request to include #{org_name} on the Harrow Community Network has been granted."
+  expect_email_exists(message: message, email: email, link: organisation_path(Organisation.find_by(name: org_name)) , link_text: "Login with your account and go here to see your organisation.")
+end
+
+Then(/^an invitational email should be sent to "(.*?)" as notification of the acceptance of proposed organisation "(.*?)"$/) do |email, org_name|
+  message = "Your request to include #{org_name} on the Harrow Community Network has been granted."
   expect_email_exists(message: message, email: email)
 end
 
