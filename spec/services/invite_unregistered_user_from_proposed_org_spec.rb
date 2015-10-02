@@ -1,11 +1,10 @@
 require 'rails_helper'
 
 describe InviteUnregisteredUserFromProposedOrg do
-
+  let(:proposed_org){FactoryGirl.create(:orphan_proposed_organisation).accept_proposal}
   context 'successful invite' do
 
     let(:unregistered_email){"unregistered@email.com"}
-    let(:proposed_org){FactoryGirl.create(:orphan_proposed_organisation).accept_proposal}
     let(:subject){InviteUnregisteredUserFromProposedOrg.new(unregistered_email,proposed_org).run}
 
     it 'sends an email' do
@@ -24,4 +23,38 @@ describe InviteUnregisteredUserFromProposedOrg do
 
   end
 
+  context 'invalid email' do
+
+    let(:invalid_email){'xyz'}
+    let(:subject){InviteUnregisteredUserFromProposedOrg.new(invalid_email,proposed_org).run}
+
+    it 'has #error_message' do
+      expect(subject).to respond_to :error_message
+    end
+    it 'does not send an email' do
+      expect(->{subject}).not_to change{ActionMailer::Base.deliveries.size}
+    end
+
+    it 'returns non successful response object' do
+      expect(subject).not_to be_success
+    end
+
+    it 'returns invalid email error code' do
+      expect(subject.status).to eq InviteUnregisteredUserFromProposedOrg::Response::INVALID_EMAIL
+    end
+
+  end
+
+  context 'no email' do
+    let(:empty_email){""}
+    let(:subject){InviteUnregisteredUserFromProposedOrg.new(empty_email,proposed_org).run}
+
+    it 'returns non successful response object' do
+      expect(subject).not_to be_success
+    end
+
+    it 'returns no email error code' do
+      expect(subject.status).to eq InviteUnregisteredUserFromProposedOrg::Response::NO_EMAIL
+    end
+  end
 end

@@ -15,7 +15,8 @@ class ProposedOrganisationsController < BaseOrganisationsController
     if update_param == "accept"
       org = proposed_org.accept_proposal
       flash[:notice] = "You have approved the following organisation"
-      InviteUnregisteredUserFromProposedOrg.new(org.email,org).run
+      result_of_inviting = InviteUnregisteredUserFromProposedOrg.new(org.email,org).run
+      set_flash_error_for_inviting_user_from_proposed_org(result_of_inviting, org.name, org.email)
       redirect_to organisation_path(org) and return false
     else
       proposed_org.destroy
@@ -49,6 +50,20 @@ class ProposedOrganisationsController < BaseOrganisationsController
   end
 
   private
+
+  def set_flash_error_for_inviting_user_from_proposed_org result, org_name, email
+    unless result.success?
+      flash_msg = case result.status
+        when InviteUnregisteredUserFromProposedOrg::Response::INVALID_EMAIL
+          "No invitation email was sent because the email associated with #{org_name}, #{email}, seems invalid"
+        when InviteUnregisteredUserFromProposedOrg::Response::NO_EMAIL
+          "No invitation email was sent because no email is associated with the organisation"
+        else
+          "No invitation mail was sent because: #{result.error_message}"
+        end
+       flash[:error] = flash_msg
+    end
+  end
 
   def make_user_into_org_admin_of_new_proposed_org
     org_params = ProposedOrganisationParams.build params

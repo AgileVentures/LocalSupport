@@ -41,6 +41,26 @@ Feature: Admin moderates an organisation to be added to HarrowCN
     And I set my password
     Then I should be on the show page for the organisation named "Unfriendly"
 
+  Scenario: Invalid email garners message when superadmin accepts proposed organisation
+    Given the following proposed organisations exist:
+      | name       | description             | address        | postcode | telephone | website               | email    | donation_info        | non_profit |
+      | Unfriendly | Mourning loved ones     | 30 pinner road | HA5 4HZ  | 520800000 | http://unfriendly.org |  xyt     | www.pleasedonate.com | true       |
+    And I am signed in as an superadmin
+    And I visit the show page for the proposed_organisation named "Unfriendly"
+    And I press "Accept"
+    Then I should be on the show page for the organisation named "Unfriendly"
+    And I should see "No invitation email was sent because the email associated with Unfriendly, xyt, seems invalid"
+
+  Scenario: Blank email garners message when superadmin accepts proposed organisation
+    Given the following proposed organisations exist:
+      | name       | description             | address        | postcode | telephone | website               | email    | donation_info        | non_profit |
+      | Unfriendly | Mourning loved ones     | 30 pinner road | HA5 4HZ  | 520800000 | http://unfriendly.org |          | www.pleasedonate.com | true       |
+    And I am signed in as an superadmin
+    And I visit the show page for the proposed_organisation named "Unfriendly"
+    And I press "Accept"
+    Then I should be on the show page for the organisation named "Unfriendly"
+    And I should see "No invitation email was sent because no email is associated with the organisation"
+
 
   Scenario: Superadmin rejects new organisation
     And I am signed in as an superadmin
