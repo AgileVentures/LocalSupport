@@ -7,10 +7,10 @@ Feature: Order organisations by most recently updated
 Background: organisations have been added to database
   
   Given the following organisations exist:
-  | name                            | updated_at            | address        |
-  | Harrow Bereavement Counselling  | "2013-01-23 15:54:34" | 34 pinner road |
-  | Harrow Elders Association       | "2013-02-23 15:54:34" | 64 pinner road |
-  | Harrow Age UK                   | "2013-03-23 15:54:34" | 84 pinner road |
+  | name                            | updated_at            | address        | postcode |
+  | Harrow Bereavement Counselling  | "2013-01-23 15:54:34" | 34 pinner road | HA1 4HZ  |
+  | Harrow Elders Association       | "2013-02-23 15:54:34" | 64 pinner road | HA1 4HZ  |
+  | Harrow Age UK                   | "2013-03-23 15:54:34" | 84 pinner road | HA1 4HZ  |
 
 Scenario: Most recently updated charity shows at the top of the list 
   Given I update the "Harrow Elders Association" 

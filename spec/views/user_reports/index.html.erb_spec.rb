@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'user_reports/index.html.erb', :type => :view do
   let(:org1) do
-    stub_model Organisation,:name => 'test', :address => "12 pinner rd", :postcode => "HA1 4HP",:telephone => "1234", :website => 'http://a.com', :description => 'I am test organisation hahahahahhahaha'
+    stub_model Organisation,:name => 'test', :address => "12 pinner rd", :postcode => "HA1 4HZ",:telephone => "1234", :website => 'http://a.com', :description => 'I am test organisation hahahahahhahaha'
   end
   let(:user) do
     stub_model User,:email => 'pending@myorg.com'

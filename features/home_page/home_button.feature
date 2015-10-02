@@ -9,8 +9,8 @@ Feature: Home button in header
     Given the following organisations exist:
       | name                           | description                  | address        | postcode | website       |
       | Harrow Bereavement Counselling | Counselling for the bereaved | 34 pinner road | HA1 4HZ  | http://a.com/ |
-      | Indian Elders Association      | Care for the elderly         | 64 pinner road | HA1 4HA  | http://b.com/ |
-      | Age UK                         | Care for the Elderly         | 84 pinner road | HA1 4HF  | http://c.com/ |
+      | Indian Elders Association      | Care for the elderly         | 64 pinner road | HA1 4HZ  | http://b.com/ |
+      | Age UK                         | Care for the Elderly         | 84 pinner road | HA1 4HZ  | http://c.com/ |
    
     Given the following volunteer opportunities exist:
       |title              | description            | organisation |

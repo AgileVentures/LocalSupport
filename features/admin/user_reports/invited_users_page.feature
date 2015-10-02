@@ -5,8 +5,8 @@ Feature: Invited Users Page
 
   Background:
     Given the following organisations exist:
-      | name                 | address        | email            |
-      | Invited Organisation | 30 pinner road | invited@user.org |
+      | name                 | address        | postcode | email            |
+      | Invited Organisation | 30 pinner road | HA1 4HZ  | invited@user.org |
     And the following users are registered:
       | email            | password       | superadmin | confirmed_at        | organisation    | pending_organisation |
       | superadmin@myorg.com  | superadminpass0987  | true  | 2008-01-01 00:00:00 | My Organisation |                      |

@@ -51,8 +51,8 @@ Feature: Admin moderates an organisation to be added to HarrowCN
   Scenario: Superadmin finds list of proposed organisations
     Given the following proposed organisations exist:
       |proposer_email                | name       | description             | address        | postcode | telephone | website               | email                    | donation_info        | non_profit |
-      |registered_user-2@example.com | Unfriendly | Mourning loved ones     | 30 pinner road | HA5 4HZ  | 520800000 | http://unfriendly.org | superadmin@unfriendly.xx | www.pleasedonate.com | true       |
-      |registered_user-3@example.com | Friendly   | Bereavement             | 30 pinner road | HA5 4HZ  | 520800000 | http://friendly.org   | superadmin@friendly.xx   | www.pleasedonate.com | true       |
+      |registered_user-2@example.com | Unfriendly | Mourning loved ones     | 30 pinner road | HA1 4HZ  | 520800000 | http://unfriendly.org | superadmin@unfriendly.xx | www.pleasedonate.com | true       |
+      |registered_user-3@example.com | Friendly   | Bereavement             | 30 pinner road | HA1 4HZ  | 520800000 | http://friendly.org   | superadmin@friendly.xx   | www.pleasedonate.com | true       |
     And I am signed in as an superadmin
     And I visit the home page
     And I click on the all proposed organisations link

@@ -85,11 +85,13 @@ end
 Given (/^I fill in the new charity page validly$/) do
   fill_in 'organisation_address', :with => '64 pinner road'
   fill_in 'organisation_name', :with => 'Friendly charity'
+  fill_in 'organisation_postcode', :with => 'HA1 4HZ'
 end
 
 Given (/^I fill in the new charity page validly including the categories:$/) do |categories_table|
   fill_in 'organisation_address', :with => '64 pinner road'
   fill_in 'organisation_name', :with => 'Friendly charity'
+  fill_in 'organisation_postcode', :with => 'HA1 4HZ'
   categories_table.hashes.each do |cat|
     steps %Q{
       And I check the category "#{cat[:name]}"
@@ -346,6 +348,12 @@ Then(/^I should not see "(.*?)"  within "(.*?)"$/) do |text, selector|
   within('.' + selector) { expect(page).not_to have_content text}
 end
 
+Given /^I update "(.*?)" charity postcode to be "(.*?)"$/ do |name, postcode|
+  steps %Q{And I visit the edit page for the organisation named "#{name}"}
+  fill_in('organisation_postcode', :with => postcode)
+  click_button 'Update Organisation'
+end
+
 Given /^I edit the charity address to be "(.*?)" when Google is indisposed$/ do |address|
   body = %Q({
 "results" : [],
@@ -360,6 +368,10 @@ end
 
 Then /^the address for "(.*?)" should be "(.*?)"$/ do |name, address|
   Organisation.find_by_name(name).address.should == address
+end
+
+Then /^the postcode for "(.*?)" should be "(.*?)"$/ do |name, postcode|
+  Organisation.find_by_name(name).postcode.should == postcode
 end
 
 When /^I fill in "(.*?)" with "(.*?)" within the navbar$/ do |field, value|

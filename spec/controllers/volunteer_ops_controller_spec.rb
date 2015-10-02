@@ -28,8 +28,9 @@ describe VolunteerOpsController, :type => :controller do
   describe "#build_map_markers" do
     render_views
     let(:org) { create :organisation }
+    let(:orgs) { Organisation.where(id: org) }
     let!(:op) { create :volunteer_op, organisation: org }
-    subject { JSON.parse(controller.send(:build_map_markers, [org])).first }
+    subject { JSON.parse(controller.send(:build_map_markers, orgs)).first }
     it { expect(subject['lat']).to eq org.latitude }
     it { expect(subject['lng']).to eq org.longitude }
     it { expect(subject['infowindow']).to include org.id.to_s }
@@ -38,74 +39,79 @@ describe VolunteerOpsController, :type => :controller do
     it { expect(subject['infowindow']).to include op.title }
     it { expect(subject['infowindow']).to include op.description }
     context 'markers without coords omitted' do
-      let(:org) { create :organisation, address: "0 pinnner road", latitude: nil, longitude: nil }
-      it { expect(JSON.parse(controller.send(:build_map_markers, [org]))).to be_empty }
+      let(:org) { create :organisation, address: "0 pinnner road", postcode: "HA1 4HZ", latitude: nil, longitude: nil }
+      it { expect(JSON.parse(controller.send(:build_map_markers, orgs))).to be_empty }
     end
   end
 
   describe 'GET index' do
-    before :each do
-      @results = [op]
-      allow(VolunteerOp).to receive(:order_by_most_recent).and_return(@results)
-    end
-
     it 'assigns all volunteer_ops as @volunteer_ops' do
-      op2 = stub_model VolunteerOp, :organisation => (stub_model Organisation)
-      @results = [op2]
-      expect(VolunteerOp).to receive(:order_by_most_recent).and_return(@results)
-      get :index, {}
-      expect(assigns(:volunteer_ops)).to eq @results
+      expect {
+        create(:volunteer_op, organisation: create(:organisation))
+      }.to change {
+        get :index, {}
+        assigns(:volunteer_ops).count
+      }.from(0).to 1
     end
 
     it 'assigns all volunteer_op orgs as @organisations' do
-      org2 = stub_model Organisation
-      allow(@results).to receive(:map).and_return([org2])
+      create_list(:organisation, 2)
+      create(:volunteer_op, organisation: create(:organisation))
       get :index, {}
-      expect(assigns(:organisations)).to eq([org2])
+      expect(assigns(:organisations).count).to eq 1
     end
 
     it 'assigns @markers' do
-      markers = 'my markers'
-      org2 = stub_model Organisation
-      allow(@results).to receive(:map).and_return([org2])
-      expect(controller).to receive(:build_map_markers).and_return(markers)
+      create_list(:organisation, 2)
+      org = create(:organisation)
+      create(:volunteer_op, organisation: org)
       get :index, {}
-      expect(assigns(:markers)).to eq(markers)
+      expect(
+        JSON.parse(assigns(:markers))
+      ).to match(a_collection_containing_exactly(an_instance_of(Hash)))
     end
   end
 
   describe 'GET show' do
-    before do
-      @org = stub_model Organisation
-      @op2 = stub_model VolunteerOp, :organisation => (@org)
-      @results = [@op2]
-      allow(VolunteerOp).to receive(:find).with(@op2.id.to_s).and_return(@op2)
-    end
+    let(:org) { create(:organisation) }
+    let(:op) { create(:volunteer_op, organisation: org) }
+
     it 'assigns the requested volunteer_op as @volunteer_op' do
-      get :show, {:id => @op2.id}
-      expect(assigns(:volunteer_op)).to eq @op2
+      get :show, id: op.id
+      expect(assigns(:volunteer_op)).to eq op
+    end
+
+    it "assigns the volunteer_op's org as @organisation" do
+      get :show, id: op.id
+      expect(assigns(:organisation)).to eq org
+    end
+
+    it 'assigns @markers' do
+      create_list(:organisation, 2)
+      get :show, id: op.id
+      expect(
+        JSON.parse(assigns(:markers))
+      ).to match(a_collection_containing_exactly(an_instance_of(Hash)))
     end
 
     it 'non-org-owners allowed' do
       allow(controller).to receive(:org_owner?).and_return(false)
-      get :show, {:id => @op2.id}
+      get :show, id: op.id
       expect(response.status).to eq 200
     end
 
     it "passes a true editable flag when superadmin user" do
+      user = double(:user)
       allow(controller).to receive(:current_user).and_return(user)
-      allow(user).to receive(:can_edit?).with(@org).and_return(true)
-      get :show, {:id => @op2.id}
-      expect(assigns(:editable)).to be_truthy
+      allow(user).to receive(:can_edit?).with(org).and_return(true)
+      get :show, id: op.id
+      expect(assigns(:editable)).to eq true
     end
 
     it "passes a false editable flag when guest user" do
-      # allow(controller).to_receive(:user).and_return(nil)
       allow(controller).to receive(:current_user).and_return(nil)
-      @results = [@op2]
-      allow(VolunteerOp).to receive(:find).with(@op2.id.to_s) { @op2 }
-      get :show, {:id => @op2.id}
-      expect(assigns(:editable)).to be_falsey
+      get :show, id: op.id
+      expect(assigns(:editable)).to eq nil
     end
   end
 
@@ -163,36 +169,43 @@ describe VolunteerOpsController, :type => :controller do
   end
 
   describe 'GET edit' do
-    before do
-      @org = stub_model Organisation
-      @op2 = stub_model VolunteerOp, :organisation => (@org)
-      @results = [@op2]
-      allow(VolunteerOp).to receive(:find).with(@op2.id.to_s).and_return(@op2)
-    end
+    let(:org) { create(:organisation) }
+    let(:op) { create(:volunteer_op, organisation: org) }
+
     context 'superadmin user logged in' do
-      before do
-        allow(controller).to receive(:org_owner?).and_return(true)
-        allow(controller).to receive(:current_user).and_return(user)
-      end
+      before { allow(controller).to receive(:org_owner?).and_return(true) }
+
       it 'assigns the requested volunteer_op as @volunteer_op' do
-        get :edit, {:id => @op2.id}
-        expect(assigns(:volunteer_op)).to eq @op2
+        get :edit, id: op.id
+        expect(assigns(:volunteer_op)).to eq op
       end
-      it 'assigns an organisation' do
-        get :edit, {:id => @op2.id}
-        expect(assigns(:organisation)).to eq @org
+
+      it "assigns the volunteer_op's org as @organisation" do
+        get :edit, id: op.id
+        expect(assigns(:organisation)).to eq org
       end
+
+      it 'assigns @markers' do
+        create_list(:organisation, 2)
+        get :edit, id: op.id
+        expect(
+          JSON.parse(assigns(:markers))
+        ).to match(a_collection_containing_exactly(an_instance_of(Hash)))
+      end
+
       it 'renders the edit template' do
-        get :edit, {:id => @op2.id}
+        get :edit, id: op.id
         expect(response).to render_template 'edit'
       end
     end
+
     context 'non-superadmin user logged in' do
       before do
         allow(controller).to receive(:org_owner?).and_return(false)
       end
+
       it 'does not render the edit template' do
-        get :edit, {:id => @op2.id}
+        get :edit, id: op.id
         expect(response).not_to render_template 'edit'
       end
     end

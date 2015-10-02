@@ -15,7 +15,7 @@ describe Queries::Organisations, '::search_by_keyword_and_category' do
       :name => 'Harrow Bereavement Counselling',
       :description => 'Bereavement Counselling',
       :address => '64 pinner road',
-      :postcode => 'HA1 3TE',
+      :postcode => 'HA1 4HZ',
       :donation_info => 'www.harrow-bereavment.co.uk/donate',
     )
   end
@@ -27,7 +27,7 @@ describe Queries::Organisations, '::search_by_keyword_and_category' do
       :email => "",
       :description => 'Care for the elderly',
       :address => '64 pinner road',
-      :postcode => 'HA1 3RE',
+      :postcode => 'HA1 4HZ',
       :donation_info => 'www.indian-elders.co.uk/donate'
     ).tap { |o| o.categories << category1 ; o.categories << category2 }
   end
@@ -39,7 +39,7 @@ describe Queries::Organisations, '::search_by_keyword_and_category' do
       :name => 'Age UK Elderly',
       :description => 'Care for older people',
       :address => '64 pinner road',
-      :postcode => 'HA1 3RE',
+      :postcode => 'HA1 4HZ',
       :donation_info => 'www.age-uk.co.uk/donate',
     ).tap { |o| o.categories  << category1 }
   end
@@ -125,30 +125,25 @@ describe Queries::Organisations, '::search_by_keyword_and_category' do
     it { expect(run_spec).to include org1, org2, org3 }
   end
 
-  context '#add_computed_recently_updated_and_has_owner' do
-    let(:user1){create(:user)}
-    let(:user2){create(:user, email: "blah@blah.org")}
-    before{org1.update_attributes(updated_at: 2.year.ago); org1.users << user1; org2.users << user2; }
-    context 'computes correctly when array passed in' do
-      it do
-        orgs = described_class.add_recently_updated_and_has_owner([org1, org2, org3])
-        expect(orgs[0].recently_updated_and_has_owner).to be false
-        expect(orgs[1].recently_updated_and_has_owner).to be true
-        expect(orgs[2].recently_updated_and_has_owner).to be false
-      end
+  context '#add_recently_updated_and_has_owner' do
+    let(:user1) { create(:user) }
+    let(:user2) { create(:user, email: "blah@blah.org") }
+    before do
+      org1.update_attributes(updated_at: 2.year.ago)
+      org1.users << user1
+      org2.users << user2
     end
-    context 'computes correctly when scope passed in' do
-      it do
-        orgs = described_class.add_recently_updated_and_has_owner(Organisation.all)
-        orgs.each do |o|
-          case o.name
-            when org1.name
-              expect(o.recently_updated_and_has_owner).to be false
-            when org2.name
-              expect(o.recently_updated_and_has_owner).to be true
-            when org3.name
-              expect(o.recently_updated_and_has_owner).to be false
-          end
+
+    it 'computes correctly when scope passed in' do
+      orgs = described_class.add_recently_updated_and_has_owner(Organisation.all)
+      orgs.each do |o|
+        case o.name
+          when org1.name
+            expect(o.recently_updated_and_has_owner).to be false
+          when org2.name
+            expect(o.recently_updated_and_has_owner).to be true
+          when org3.name
+            expect(o.recently_updated_and_has_owner).to be false
         end
       end
     end

@@ -8,7 +8,7 @@ Feature: Org superadmin creating a volunteer work opportunity
     Given the following organisations exist:
       | name     | description             | address        | postcode | telephone | website                     | email                      |
       | Friendly | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.example.org | superadmin@friendly.example.org |
-      | Shy      | Software design         | 34 pinner road | HA1 1AA  | 020800001 | http://shy.example.org      | superadmin@shy.example.org      |
+      | Shy      | Software design         | 34 pinner road | HA1 4HZ  | 020800001 | http://shy.example.org      | superadmin@shy.example.org      |
 
     And the following users are registered:
       | email                      | password | organisation | confirmed_at        | superadmin |
