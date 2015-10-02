@@ -10,4 +10,9 @@ describe  NotifyRegisteredUserFromProposedOrg do
     expect(->{subject}).to change{ActionMailer::Base.deliveries.size}.by(1)
   end
 
+  it 'associates user with the proposed organisation' do
+    subject
+    expect(proposed_org.reload.users).to include(user)
+  end
+
 end
