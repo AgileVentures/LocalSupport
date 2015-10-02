@@ -1,4 +1,3 @@
-
 Given(/^the following proposed organisations exist:$/) do |table|
   require 'boolean'
   table.hashes.each do |hash|

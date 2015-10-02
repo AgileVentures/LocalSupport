@@ -5,11 +5,11 @@ describe InviteUnregisteredUserFromProposedOrg do
   context 'successful invite' do
 
     let(:unregistered_email){"unregistered@email.com"}
-    let(:proposed_org){FactoryGirl.create(:orphan_proposed_organisation)}
+    let(:proposed_org){FactoryGirl.create(:orphan_proposed_organisation).accept_proposal}
     let(:subject){InviteUnregisteredUserFromProposedOrg.new(unregistered_email,proposed_org).run}
 
     it 'sends an email' do
-      expect(->{subject}).to change(ActionMailer::Base.deliveries, :size).by(1)
+      expect(->{subject}).to change{ActionMailer::Base.deliveries.size}.by(1)
     end
 
     it 'creates a user' do
