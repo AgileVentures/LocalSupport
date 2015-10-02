@@ -11,8 +11,9 @@ class CustomDeviseMailer < Devise::Mailer
     super
   end
 
-  def proposed_org_approved(org,email)
+  def proposed_org_approved(org,email, usr)
     @org = org
+    @resource = usr
     mail(subject: "Your organisation has been approved for inclusion in the Harrow Community Network!",
          to: [email],
          from: "support@harrowcn.org.uk",

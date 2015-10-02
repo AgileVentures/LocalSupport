@@ -37,6 +37,10 @@ Feature: Admin moderates an organisation to be added to HarrowCN
     Then I should be on the show page for the organisation named "Unfriendly"
     And an email should be sent to "unregistered@unfriendly.xx" as notification of the acceptance of proposed organisation "Unfriendly"
     And "unregistered@unfriendly.xx" is a charity superadmin of "Unfriendly"
+    And I click on the invitation link in the proposed org accepted email to "unregistered@unfriendly.xx"
+    And I set my password
+    Then I should be on the show page for the organisation named "Unfriendly"
+
 
   Scenario: Superadmin rejects new organisation
     And I am signed in as an superadmin

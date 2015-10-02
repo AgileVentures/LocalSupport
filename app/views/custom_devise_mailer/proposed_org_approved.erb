@@ -1,1 +1,2 @@
 Your request to include <%= @org.name%> on the Harrow Community Network has been granted.
+<%= link_to "Take over your organisation on HCN by clicking here.", accept_invitation_url(@resource, :invitation_token => @resource.raw_invitation_token)%>
