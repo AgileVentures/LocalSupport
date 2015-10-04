@@ -30,6 +30,10 @@ describe  AcceptProposedOrganisation do
     it 'returns an invitation sent result' do
       expect(subject.status).to eq(AcceptProposedOrganisation::Response::INVITATION_SENT)
     end
+
+    it 'returns the accepted org on the result' do 
+      expect(subject.accepted_organisation).to eq Organisation.find_by(name: proposed_org.name)
+    end
   end
 
   context 'proposed organisation email is a registered user' do
@@ -57,6 +61,10 @@ describe  AcceptProposedOrganisation do
       expect(subject.status).to eq(AcceptProposedOrganisation::Response::NOTIFICATION_SENT)
     end
 
+    it 'returns the accepted org on the result' do 
+      expect(subject.accepted_organisation).to eq Organisation.find_by(name: proposed_org.name)
+    end
+
   end
 
   context 'proposed organisation has no email' do
@@ -76,6 +84,10 @@ describe  AcceptProposedOrganisation do
 
     it 'returns a notification sent result' do
       expect(subject.status).to eq(AcceptProposedOrganisation::Response::NO_EMAIL)
+    end
+
+    it 'returns the accepted org on the result' do 
+      expect(subject.accepted_organisation).to eq Organisation.find_by(name: proposed_org.name)
     end
 
   end
@@ -99,5 +111,8 @@ describe  AcceptProposedOrganisation do
       expect(subject.status).to eq(AcceptProposedOrganisation::Response::INVALID_EMAIL)
     end
 
+    it 'returns the accepted org on the result' do 
+      expect(subject.accepted_organisation).to eq Organisation.find_by(name: proposed_org.name)
+    end
   end
 end
