@@ -60,15 +60,20 @@ class ProposedOrganisationsController < BaseOrganisationsController
     org
   end
 
-  def set_flash_error_for_inviting_user_from_proposed_org result, org_name, email
+  def set_flash_error_for_accepting_proposed_org result, org_name, email
+    flash[:notice] = "You have approved the following organisation"
     unless result.success?
       flash_msg = case result.status
-        when InviteUnregisteredUserFromProposedOrg::Response::INVALID_EMAIL
+        when AcceptProposedOrganisation::Response::INVALID_EMAIL
           "No invitation email was sent because the email associated with #{org_name}, #{email}, seems invalid"
-        when InviteUnregisteredUserFromProposedOrg::Response::NO_EMAIL
+        when AcceptProposedOrganisation::Response::NO_EMAIL
           "No invitation email was sent because no email is associated with the organisation"
+        when AcceptProposedOrganisation::Response::INVITATION_SENT
+          "An invitation email was sent to #{email}"
+        when AcceptProposedOrganisation::Response::NOTIFICATION_SENT
+          "A notification of acceptance was sent to #{email}"
         else
-          "No invitation mail was sent because: #{result.error_message}"
+          "No mail was sent because: #{result.error_message}"
         end
        flash[:error] = flash_msg
     end
