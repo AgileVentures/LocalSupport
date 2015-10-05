@@ -359,10 +359,7 @@ Given /^I edit the charity address to be "(.*?)" when Google is indisposed$/ do 
 "results" : [],
 "status" : "OVER_QUERY_LIMIT"
 })
-<<<<<<< HEAD
 
-=======
->>>>>>> 9ff0377a030ff687bbb7563dcb417d0178d6c349
   fill_in('organisation_address', :with => address)
 
 end

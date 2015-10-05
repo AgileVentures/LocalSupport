@@ -26,17 +26,11 @@ class Organisation < BaseOrganisation
   end
 
   def update_attributes_with_superadmin(params)
-<<<<<<< HEAD
 
     email = extract_email_from(params)
     return unless email.blank? || can_add_or_invite_admin?(email)
     self.update_attributes(params)
 
-=======
-    email = extract_email_from(params)
-    return unless email.blank? || can_add_or_invite_admin?(email)
-    self.update_attributes(params)
->>>>>>> 9ff0377a030ff687bbb7563dcb417d0178d6c349
   end
 
   def self.search_by_keyword(keyword)

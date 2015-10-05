@@ -66,11 +66,7 @@ Feature: Map of local charities
     Then the coordinates for "Harrow Bereavement Counselling" and "Youth UK" should be the same
     Then the coordinates for "Age UK" and "Youth UK" should not be the same
 
-<<<<<<< HEAD
 
-  @vcr
-
-=======
   @vcr
   Scenario: Changing postcode changes the map coordinates
     Given I visit the home page
@@ -82,7 +78,7 @@ Feature: Map of local charities
     Then the coordinates for "Age UK" and "Youth UK" should not be the same
   
   @vcr
->>>>>>> 9ff0377a030ff687bbb7563dcb417d0178d6c349
+
   Scenario: Show meaning of large map icons on home page
     Given I visit the home page
     And I click "Close"
