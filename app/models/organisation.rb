@@ -152,30 +152,13 @@ class Organisation < BaseOrganisation
   def can_add_or_invite_admin?(email)
     return false if email.blank?
     usr = User.find_by_email(email)
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if usr.present?
-      self.users << usr
-    else
-      result = ::SingleInviteJob.new(self, email).invite_user
-      unless result.invited_user?
-        error_when_new_org_admin_invited email,result.error
-        return false
-      end
-    end
-    true
-=======
-=======
->>>>>>> 9ff0377a030ff687bbb7563dcb417d0178d6c349
+
     return add_and_notify(usr) if usr.present?
     result = ::SingleInviteJob.new(self, email).invite_user
     return true if result.invited_user?
     embellish_invite_error_and_add_to_model(email,result.error)
     false
-<<<<<<< HEAD
->>>>>>> Refactor update_attributes_with_superadmin and its collaborator methods
-=======
->>>>>>> 9ff0377a030ff687bbb7563dcb417d0178d6c349
+
   end
 
   def extract_email_from(params)
