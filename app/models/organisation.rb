@@ -26,11 +26,17 @@ class Organisation < BaseOrganisation
   end
 
   def update_attributes_with_superadmin(params)
+<<<<<<< HEAD
 
     email = extract_email_from(params)
     return unless email.blank? || can_add_or_invite_admin?(email)
     self.update_attributes(params)
 
+=======
+    email = extract_email_from(params)
+    return unless email.blank? || can_add_or_invite_admin?(email)
+    self.update_attributes(params)
+>>>>>>> 9ff0377a030ff687bbb7563dcb417d0178d6c349
   end
 
   def self.search_by_keyword(keyword)
@@ -153,6 +159,7 @@ class Organisation < BaseOrganisation
     return false if email.blank?
     usr = User.find_by_email(email)
 <<<<<<< HEAD
+<<<<<<< HEAD
     if usr.present?
       self.users << usr
     else
@@ -164,12 +171,17 @@ class Organisation < BaseOrganisation
     end
     true
 =======
+=======
+>>>>>>> 9ff0377a030ff687bbb7563dcb417d0178d6c349
     return add_and_notify(usr) if usr.present?
     result = ::SingleInviteJob.new(self, email).invite_user
     return true if result.invited_user?
     embellish_invite_error_and_add_to_model(email,result.error)
     false
+<<<<<<< HEAD
 >>>>>>> Refactor update_attributes_with_superadmin and its collaborator methods
+=======
+>>>>>>> 9ff0377a030ff687bbb7563dcb417d0178d6c349
   end
 
   def extract_email_from(params)
