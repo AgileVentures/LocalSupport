@@ -20,7 +20,7 @@ Feature: All Users Page
     Given I am signed in as a superadmin
     When I approve "pending@myorg.com"
     Then I should see "You have approved pending@myorg.com."
-    Then "pending@myorg.com" is a charity superadmin of "My Organisation"
+    Then "pending@myorg.com" is an organisation admin of "My Organisation"
 
   Scenario: As a superadmin deleting a user
     Given I am signed in as a superadmin

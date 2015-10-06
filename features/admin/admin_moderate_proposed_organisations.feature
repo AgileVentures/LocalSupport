@@ -36,7 +36,7 @@ Feature: Admin moderates an organisation to be added to HarrowCN
     And I press "Accept"
     Then I should be on the show page for the organisation named "Unfriendly"
     And an email should be sent to "registered_user-1@example.com" as notification of the acceptance of proposed organisation "Unfriendly"
-    And "registered_user-1@example.com" is a charity superadmin of "Unfriendly"
+    And "registered_user-1@example.com" is an organisation admin of "Unfriendly"
     And I should see "A notification of acceptance was sent to registered_user-1@example.com"
 
   Scenario: Unregistered user is invited when superadmin accepts proposed organisation
@@ -49,7 +49,7 @@ Feature: Admin moderates an organisation to be added to HarrowCN
     Then I should be on the show page for the organisation named "Unfriendly"
     And I should see "An invitation email was sent to unregistered@unfriendly.xx"
     And an invitational email should be sent to "unregistered@unfriendly.xx" as notification of the acceptance of proposed organisation "Unfriendly"
-    And "unregistered@unfriendly.xx" is a charity superadmin of "Unfriendly"
+    And "unregistered@unfriendly.xx" is an organisation admin of "Unfriendly"
     And I click on the invitation link in the proposed org accepted email to "unregistered@unfriendly.xx"
     And I set my password
     Then I should be on the show page for the organisation named "Unfriendly"
