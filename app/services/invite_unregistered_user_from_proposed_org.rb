@@ -44,18 +44,16 @@ class InviteUnregisteredUserFromProposedOrg
   private
 
   def create_response_object(usr)
-    unless usr.errors.empty?
-      status = case usr.errors.full_messages.first
-        when "Email can't be blank"
-          Response::NO_EMAIL
-        when "Email is invalid"
-          Response::INVALID_EMAIL
-        else
-          Response::OTHER_FAILURE
-      end
-      return Response.new(status,usr.errors.full_messages.first)
+    return Response.new(Response::SUCCESS, nil) if usr.errors.empty?
+    status =  case usr.errors.full_messages.first
+      when "Email can't be blank"
+        Response::NO_EMAIL
+      when "Email is invalid"
+        Response::INVALID_EMAIL
+      else
+        Response::OTHER_FAILURE
     end
-    Response.new(Response::SUCCESS, nil)
+    return Response.new(status,usr.errors.full_messages.first)
   end
 
 
