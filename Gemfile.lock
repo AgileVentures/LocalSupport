@@ -303,6 +303,7 @@ GEM
     url_validator (0.1.0)
       addressable
       rails
+    vcr (2.9.3)
     warden (1.2.3)
       rack (>= 1.0)
     webmock (1.20.0)
@@ -364,6 +365,7 @@ DEPENDENCIES
   unicorn
   uri-handler
   url_validator
+  vcr
   webmock (= 1.20.0)
 
 BUNDLED WITH

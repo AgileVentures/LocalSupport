@@ -16,18 +16,22 @@ Feature: Map of local charities
     Given the following users are registered:
       | email                         | password | organisation | confirmed_at         |
       | registered_user-3@example.com | pppppppp | Youth UK     | 2007-01-01  10:00:00 |
-
+ 
+  @vcr
   @javascript
   Scenario: Show all charities in map on homepage map
     Given I visit the home page
     Then I should see the following measle markers in the map:
       | Indian Elders Association | Age UK | Harrow Bereavement Counselling |
 
+  @vcr
   @javascript
   Scenario: Infowindow appears when clicking on map marker
     Given I visit the home page
     Then I should see an infowindow when I click on the map markers:
       | Indian Elders Association | Age UK | Harrow Bereavement Counselling |
+  
+  @vcr
   @time_travel
   @javascript
   Scenario Outline: Organisation map has small icon for organisations updated more than 365 days ago
@@ -43,11 +47,13 @@ Feature: Map of local charities
       | 10   | small|
       |100   | small|
 
+  @vcr
   @javascript
   Scenario: Organisation map has small icon for organisation with no users
     Given I visit the home page
     Then the organisation "Indian Elders Association" should have a small icon
 
+  @vcr
   Scenario: Changing address on the map changes the map coordinates
     Given I visit the home page
     Then the coordinates for "Harrow Bereavement Counselling" and "Youth UK" should not be the same
@@ -60,14 +66,8 @@ Feature: Map of local charities
     Then the coordinates for "Harrow Bereavement Counselling" and "Youth UK" should be the same
     Then the coordinates for "Age UK" and "Youth UK" should not be the same
 
-  Scenario: Changing postcode changes the map coordinates
-    Given I visit the home page
-    And the coordinates for "Age UK" and "Youth UK" should be the same
-    Given cookies are approved
-    When I am signed in as a charity worker related to "Youth UK"
-    And I update "Youth UK" charity postcode to be "HA1 4HA"
-    And I visit the home page
-    Then the coordinates for "Age UK" and "Youth UK" should not be the same
+
+  @vcr
 
   Scenario: Show meaning of large map icons on home page
     Given I visit the home page
@@ -75,6 +75,7 @@ Feature: Map of local charities
     Then I should see "Details updated by the organisation within the last 12 months"
     Then I should see "Details NOT updated by the organisation within the last 12 months"
 
+  @vcr
   Scenario: Do not show meaning of large map icons on volunteer ops page
     Given I visit the volunteer opportunities page
     And I click "Close"

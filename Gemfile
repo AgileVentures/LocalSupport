@@ -45,7 +45,11 @@ group :test do
   gem 'uri-handler'
   gem 'selenium'
   gem 'selenium-client'
+
+  gem 'vcr'
+
   gem 'coveralls', require: false
+
 end
 
 group :production do
