@@ -27,16 +27,21 @@ class AcceptProposedOrganisation
       NotifyRegisteredUserFromProposedOrg.new(usr,org).run
       Response.new(Response::NOTIFICATION_SENT,nil, org)
     else
-      result_of_inviting = InviteUnregisteredUserFromProposedOrg.new(@email,org).run
-      return Response.new(Response::INVITATION_SENT, result_of_inviting.error_message, org) if result_of_inviting.success?
-      case result_of_inviting.status
-        when InviteUnregisteredUserFromProposedOrg::Response::INVALID_EMAIL
-          Response.new(Response::INVALID_EMAIL, result_of_inviting.error_message, org)
-        when InviteUnregisteredUserFromProposedOrg::Response::NO_EMAIL
-          Response.new(Response::NO_EMAIL, result_of_inviting.error_message, org)
-        else
-          Response.new(Response::OTHER_ERROR, result_of_inviting.error_message, org)
-      end
+      create_invitation_response_object(InviteUnregisteredUserFromProposedOrg.new(@email,org).run, org)
+    end
+  end
+
+  private
+
+  def create_invitation_response_object(result_of_inviting, org)
+    return Response.new(Response::INVITATION_SENT, result_of_inviting.error_message, org) if result_of_inviting.success?
+    case result_of_inviting.status
+      when InviteUnregisteredUserFromProposedOrg::Response::INVALID_EMAIL
+        Response.new(Response::INVALID_EMAIL, result_of_inviting.error_message, org)
+      when InviteUnregisteredUserFromProposedOrg::Response::NO_EMAIL
+        Response.new(Response::NO_EMAIL, result_of_inviting.error_message, org)
+      else
+        Response.new(Response::OTHER_ERROR, result_of_inviting.error_message, org)
     end
   end
 end

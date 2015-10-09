@@ -1,16 +1,13 @@
 class ProposedOrganisationsController < BaseOrganisationsController
   layout 'two_columns_with_map', except: [:index]
   before_filter :require_superadmin_or_recent_creation, only: [:show]
+  before_filter :require_superadmin, only: [:update]
 
   def index
     @proposed_organisations = ProposedOrganisation.all
   end
 
   def update
-    unless current_user.try(:superadmin?)
-      flash[:warning] = PERMISSION_DENIED
-      redirect_to root_path and return false
-    end
     proposed_org = ProposedOrganisation.find params[:id]
     if update_param == "accept"
       result = AcceptProposedOrganisation.new(proposed_org).run
@@ -76,6 +73,13 @@ class ProposedOrganisationsController < BaseOrganisationsController
   def send_email_to_superadmin_about_org_signup(org)
     superadmin_emails = User.superadmins.pluck(:email)
     AdminMailer.new_org_waiting_for_approval(org, superadmin_emails).deliver_now
+  end
+
+  def require_superadmin
+    unless current_user.try(:superadmin?)
+      flash[:warning] = PERMISSION_DENIED
+      redirect_to root_path and return false
+    end
   end
 
   def require_superadmin_or_recent_creation
