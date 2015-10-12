@@ -5,6 +5,13 @@ Then (/^I should( not)? see an "Accept Proposed Organisation" button$/) do |nega
       expect(page).to have_button "Accept"
   end
 end
+Then(/^I accept the proposed_organisation named "(.*)"$/) do |org_name|
+  steps %Q{
+    And I visit the show page for the proposed_organisation named "#{org_name}"
+    And I press "Accept"
+  }
+end
+
 Then (/^I should( not)? see a "Reject Proposed Organisation" button$/) do |negation|
   if negation
     expect(page).not_to have_button "Reject"
