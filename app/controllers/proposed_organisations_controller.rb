@@ -11,7 +11,7 @@ class ProposedOrganisationsController < BaseOrganisationsController
     proposed_org = ProposedOrganisation.find params[:id]
     if update_param == "accept"
       result = AcceptProposedOrganisation.new(proposed_org).run
-      set_flash_for_accepting_proposed_org result, result.accepted_organisation.name, result.accepted_organisation.email
+      set_flash_for_accepting_proposed_org result
       redirect_to organisation_path(result.accepted_organisation) and return false
     else
       proposed_org.destroy
@@ -46,17 +46,17 @@ class ProposedOrganisationsController < BaseOrganisationsController
 
   private
 
-  def set_flash_for_accepting_proposed_org result, org_name, email
+  def set_flash_for_accepting_proposed_org result
     flash[:notice] = "You have approved the following organisation"
     flash_msg = case result.status
       when AcceptProposedOrganisation::Response::INVALID_EMAIL
-        "No invitation email was sent because the email associated with #{org_name}, #{email}, seems invalid"
+        "No invitation email was sent because the email associated with #{result.accepted_organisation.name}, #{result.accepted_organisation.email}, seems invalid"
       when AcceptProposedOrganisation::Response::NO_EMAIL
         "No invitation email was sent because no email is associated with the organisation"
       when AcceptProposedOrganisation::Response::INVITATION_SENT
-        "An invitation email was sent to #{email}"
+        "An invitation email was sent to #{result.accepted_organisation.email}"
       when AcceptProposedOrganisation::Response::NOTIFICATION_SENT
-        "A notification of acceptance was sent to #{email}"
+        "A notification of acceptance was sent to #{result.accepted_organisation.email}"
       else
         "No mail was sent because: #{result.error_message}"
       end
