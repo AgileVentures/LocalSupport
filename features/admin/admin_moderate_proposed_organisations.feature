@@ -83,20 +83,6 @@ Feature: Admin moderates an organisation to be added to HarrowCN
     Then I should be on the proposed organisations index page
     And the proposed organisation should have been rejected
 
-  Scenario: Nonsigned in user does not see proposed organisation
-    And I visit the proposed organisation show page for the proposed organisation that was proposed
-    Then I should see "You don't have permission"
-    And I should be on the home page
-
-  Scenario: Random user does not see proposed organisation
-    And I visit the home page
-    And I sign in as "registered_user-2@example.com" with password "pppppppp"
-    Then I should see a link or button "registered_user-2@example.com"
-    And I visit the proposed organisation show page for the proposed organisation that was proposed
-    Then I should see "You don't have permission"
-    And I should be on the home page
-
-
   Scenario: Superadmin finds list of proposed organisations
     Given the following proposed organisations exist:
       |proposer_email                | name       | description             | address        | postcode | telephone | website               | email                    | donation_info        | non_profit |
