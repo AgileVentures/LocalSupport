@@ -5,9 +5,11 @@ describe "Moderate a proposed org", :type => :request, :helpers => :requests do
   let!(:proposed_org){FactoryGirl.create(:proposed_organisation)}
   before { login(nonsuperadmin) }
 
-  it 'does not act upon non superadmins requests' do
-    expect{patch(proposed_organisation_path(proposed_org),
-                 :proposed_organisation => {action: "accept"})}.not_to change(ProposedOrganisation, :count)
+  it 'does not act upon non superadmins requests to accept org' do
+    expect{patch(proposed_organisation_path(proposed_org))}.not_to change(ProposedOrganisation, :count)
+  end
 
+  it 'does not act upon non superadmins requests to decline/destroy org' do
+    expect{delete(proposed_organisation_path(proposed_org))}.not_to change(ProposedOrganisation, :count)
   end
 end
