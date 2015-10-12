@@ -9,14 +9,15 @@ class ProposedOrganisationsController < BaseOrganisationsController
 
   def update
     proposed_org = ProposedOrganisation.find params[:id]
-    if update_param == "accept"
-      result = AcceptProposedOrganisation.new(proposed_org).run
-      set_flash_for_accepting_proposed_org result
-      redirect_to organisation_path(result.accepted_organisation) and return false
-    else
-      proposed_org.destroy
-      redirect_to proposed_organisations_path
-    end
+    result = AcceptProposedOrganisation.new(proposed_org).run
+    set_flash_for_accepting_proposed_org result
+    redirect_to organisation_path(result.accepted_organisation) and return false
+  end
+
+  def destroy
+    proposed_org = ProposedOrganisation.find params[:id]
+    proposed_org.destroy
+    redirect_to proposed_organisations_path
   end
 
   def new
@@ -98,9 +99,6 @@ class ProposedOrganisationsController < BaseOrganisationsController
   end
 end
 
-def update_param
-  params.require(:proposed_organisation).require(:action)
-end
 class ProposedOrganisationParams
   def self.build params
     params.require(:proposed_organisation).permit(
