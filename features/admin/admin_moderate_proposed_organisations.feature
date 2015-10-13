@@ -40,9 +40,7 @@ Feature: Admin moderates an organisation to be added to HarrowCN
     Given the following proposed organisations exist:
       | name       | description             | address        | postcode | telephone | website               | email                      | donation_info        | non_profit |
       | Unfriendly | Mourning loved ones     | 30 pinner road | HA5 4HZ  | 520800000 | http://unfriendly.org | unregistered@unfriendly.xx | www.pleasedonate.com | true       |
-    And I accept the proposed_organisation named "Unfriendly"
-    Then I should be on the show page for the organisation named "Unfriendly"
-    And I should see "An invitation email was sent to unregistered@unfriendly.xx"
+    And having accepted the proposed organisation named "Unfriendly", I see "An invitation email was sent to unregistered@unfriendly.xx"
     And an invitational email should be sent to "unregistered@unfriendly.xx" as notification of the acceptance of proposed organisation "Unfriendly"
     And "unregistered@unfriendly.xx" is an organisation admin of "Unfriendly"
     And I click on the invitation link in the proposed org accepted email to "unregistered@unfriendly.xx"
@@ -53,17 +51,13 @@ Feature: Admin moderates an organisation to be added to HarrowCN
     Given the following proposed organisations exist:
       | name       | description             | address        | postcode | telephone | website               | email    | donation_info        | non_profit |
       | Unfriendly | Mourning loved ones     | 30 pinner road | HA5 4HZ  | 520800000 | http://unfriendly.org |  xyt     | www.pleasedonate.com | true       |
-    And I accept the proposed_organisation named "Unfriendly"
-    Then I should be on the show page for the organisation named "Unfriendly"
-    And I should see "No invitation email was sent because the email associated with Unfriendly, xyt, seems invalid"
+    And having accepted the proposed organisation named "Unfriendly", I see "No invitation email was sent because the email associated with Unfriendly, xyt, seems invalid"
 
   Scenario: Blank email garners message when superadmin accepts proposed organisation
     Given the following proposed organisations exist:
       | name       | description             | address        | postcode | telephone | website               | email    | donation_info        | non_profit |
       | Unfriendly | Mourning loved ones     | 30 pinner road | HA5 4HZ  | 520800000 | http://unfriendly.org |          | www.pleasedonate.com | true       |
-    And I accept the proposed_organisation named "Unfriendly"
-    Then I should be on the show page for the organisation named "Unfriendly"
-    And I should see "No invitation email was sent because no email is associated with the organisation"
+    And having accepted the proposed organisation named "Unfriendly", I see "No invitation email was sent because no email is associated with the organisation"
 
   Scenario: Superadmin rejects new organisation
     And I visit the proposed organisation show page for the proposed organisation that was proposed
