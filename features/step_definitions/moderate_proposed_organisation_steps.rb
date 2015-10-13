@@ -13,6 +13,12 @@ And(/^having accepted the proposed organisation named "(.*?)", I see "(.*?)"$/) 
   expect(page).to have_content message
 end
 
+Given(/^I accept the proposed_organisation named "(.*?)"$/) do |org_name|
+  visit_proposed_organisation name: org_name
+  press_acceptance_for_proposed_organisation
+  assert_on_organisation_show_page name: org_name
+end
+
 Then (/^I should( not)? see a "Reject Proposed Organisation" button$/) do |negation|
   if negation
     expect(page).not_to have_button "Reject"

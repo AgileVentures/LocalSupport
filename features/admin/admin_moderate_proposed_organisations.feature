@@ -31,7 +31,6 @@ Feature: Admin moderates an organisation to be added to HarrowCN
       | name       | description             | address        | postcode | telephone | website               | email                         | donation_info        | non_profit |
       | Unfriendly | Mourning loved ones     | 30 pinner road | HA5 4HZ  | 520800000 | http://unfriendly.org | registered_user-1@example.com | www.pleasedonate.com | true       |
     And I accept the proposed_organisation named "Unfriendly"
-    Then I should be on the show page for the organisation named "Unfriendly"
     And an email should be sent to "registered_user-1@example.com" as notification of the acceptance of proposed organisation "Unfriendly"
     And "registered_user-1@example.com" is an organisation admin of "Unfriendly"
     And I should see "A notification of acceptance was sent to registered_user-1@example.com"
