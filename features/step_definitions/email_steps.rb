@@ -28,12 +28,12 @@ And(/^an email should be sent to "(.*?)" as notification of the request for admi
 end
 
 Then(/^an email should be sent to "(.*?)" as notification of the acceptance of proposed organisation "(.*?)"$/) do |email, org_name|
-  message = "Your request to include #{org_name} on the Harrow Community Network has been granted."
-  expect_email_exists(message: message, email: email, link: organisation_path(Organisation.find_by(name: org_name)) , link_text: "Login with your account and go here to see your organisation.")
+  message = "Thank you for registering your organisation.\n\nWe have granted your request to have it included in our directory.\n\nDetails of your organisation are now live in our directory."
+  expect_email_exists(message: message, email: email, link: organisation_path(Organisation.find_by(name: org_name)) , link_text: "You can edit your organisation details by logging in and editing it directly.")
 end
 
 Then(/^an invitational email should be sent to "(.*?)" as notification of the acceptance of proposed organisation "(.*?)"$/) do |email, org_name|
-  message = "Your request to include #{org_name} on the Harrow Community Network has been granted."
+  message = "Thank you for registering your organisation.\n\nWe have granted your request to have it included in our directory.\n\nDetails of your organisation are now live in our directory."
   expect_email_exists(message: message, email: email)
 end
 

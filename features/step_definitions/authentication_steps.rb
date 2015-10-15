@@ -153,7 +153,7 @@ end
 
 def extract_invite_link_for_proposed_org email
   emails_with_accept_link = find_emails_with_accept_invitation_link(find_emails_to(email), "Take over your organisation on HCN by clicking here.")
-  Nokogiri::HTML(emails_with_accept_link.first.body.raw_source).search("//a[text()='Take over your organisation on HCN by clicking here.']")[0].attribute("href").value
+  Nokogiri::HTML(emails_with_accept_link.first.body.raw_source).search("//a[text()='You can get admin access and edit your organisation details by clicking here.']")[0].attribute("href").value
 end
 
 And(/^I click on the invitation link in the proposed org accepted email to "(.*?)"$/) do |email|
