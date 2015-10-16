@@ -1,4 +1,3 @@
-
 Given(/^the following proposed organisations exist:$/) do |table|
   require 'boolean'
   table.hashes.each do |hash|
@@ -13,7 +12,7 @@ Given(/^the following proposed organisations exist:$/) do |table|
       create_hash.merge! key_value_to_add unless key_value_to_add.nil?
     end
     proposed_org = ProposedOrganisation.new create_hash
-    proposed_org.users << proposer
+    proposed_org.users << proposer if proposer
     proposed_org.save!
   end
 end

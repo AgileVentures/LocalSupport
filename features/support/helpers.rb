@@ -67,6 +67,18 @@ module ProposedOrgHelpers
       postcode: 'HA1 4HZ'
     }
   end
+
+  def visit_proposed_organisation opts
+    visit proposed_organisation_path(ProposedOrganisation.find_by(name: opts.fetch(:name)))
+  end
+
+  def press_acceptance_for_proposed_organisation
+    click_button 'Accept'
+  end
+
+  def assert_on_organisation_show_page opts
+    expect(current_path).to eq organisation_path(Organisation.find_by(name: opts.fetch(:name)))
+  end
 end
 
 World(Helpers, MapHelpers, ProposedOrgHelpers)

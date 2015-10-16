@@ -142,13 +142,23 @@ def find_emails_to email
   ActionMailer::Base.deliveries.select{|i| i.to.include? email}
 end
 
-def find_emails_with_accept_invitation_link emails
-  emails.select{|email| Nokogiri::HTML(email.body.raw_source).search("//a[text()='Accept invitation']")}
+def find_emails_with_accept_invitation_link emails, verbiage
+  emails.select{|email| Nokogiri::HTML(email.body.raw_source).search("//a[text()='#{verbiage}']")}
 end
 
 def extract_invite_link email
-  emails_with_accept_link = find_emails_with_accept_invitation_link(find_emails_to(email))
+  emails_with_accept_link = find_emails_with_accept_invitation_link(find_emails_to(email), 'Accept Invitation')
   Nokogiri::HTML(emails_with_accept_link.first.body.raw_source).search("//a[text()='Accept invitation']")[0].attribute("href").value
+end
+
+def extract_invite_link_for_proposed_org email
+  emails_with_accept_link = find_emails_with_accept_invitation_link(find_emails_to(email), "Take over your organisation on HCN by clicking here.")
+  Nokogiri::HTML(emails_with_accept_link.first.body.raw_source).search("//a[text()='You can get admin access and edit your organisation details by clicking here.']")[0].attribute("href").value
+end
+
+And(/^I click on the invitation link in the proposed org accepted email to "(.*?)"$/) do |email|
+  visit extract_invite_link_for_proposed_org(email)
+  step "I should be on the invitation page"
 end
 
 Given(/^I click on the invitation link in the email to "([^\"]+)"$/) do |email|

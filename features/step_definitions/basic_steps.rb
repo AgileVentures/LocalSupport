@@ -448,7 +448,7 @@ When /^I approve "(.*?)"$/ do |email|
   end
 end
 
-Then(/^"(.*?)" is a charity superadmin of "(.*?)"$/) do |user_email, org_name|
+Then(/^"(.*?)" is an organisation admin of "(.*?)"$/) do |user_email, org_name|
   user = User.find_by_email(user_email)
   org = Organisation.find_by_name(org_name)
   user.organisation.should == org
