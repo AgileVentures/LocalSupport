@@ -143,7 +143,7 @@ def find_emails_to email
 end
 
 def find_emails_with_accept_invitation_link emails, verbiage
-  emails.select{|email| Nokogiri::HTML(email.body.raw_source).search("//a[text()='#{verbiage}']")}
+  emails.select{|email| !Nokogiri::HTML(email.body.raw_source).search("//a[text()='#{verbiage}']").empty?}
 end
 
 def extract_invite_link email
@@ -152,13 +152,26 @@ def extract_invite_link email
 end
 
 def extract_invite_link_for_proposed_org email
-  emails_with_accept_link = find_emails_with_accept_invitation_link(find_emails_to(email), "Take over your organisation on HCN by clicking here.")
+  emails_with_accept_link = find_emails_with_accept_invitation_link(find_emails_to(email), "You can get admin access and edit your organisation details by clicking here.")
   Nokogiri::HTML(emails_with_accept_link.first.body.raw_source).search("//a[text()='You can get admin access and edit your organisation details by clicking here.']")[0].attribute("href").value
+end
+
+def find_emails_with_view_link_for_accepted_org emails, verbiage
+  emails.select{|email| !Nokogiri::HTML(email.body.raw_source).search("//a[text()='#{verbiage}']").empty?}
+end
+
+def extract_view_link_for_accepted_org email
+  emails_with_view_link = find_emails_with_view_link_for_accepted_org(find_emails_to(email),"You can edit your organisation details by logging in and editing it directly.")
+  Nokogiri::HTML(emails_with_view_link.first.body.raw_source).search("//a[text()='You can edit your organisation details by logging in and editing it directly.']")[0].attribute("href").value
 end
 
 And(/^I click on the invitation link in the proposed org accepted email to "(.*?)"$/) do |email|
   visit extract_invite_link_for_proposed_org(email)
   step "I should be on the invitation page"
+end
+
+And(/^I click on the link in the email notification of acceptance of proposed organisation to "(.*?)"$/) do |email|
+  visit extract_view_link_for_accepted_org(email)
 end
 
 Given(/^I click on the invitation link in the email to "([^\"]+)"$/) do |email|

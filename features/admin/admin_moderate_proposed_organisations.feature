@@ -34,6 +34,9 @@ Feature: Admin moderates an organisation to be added to HarrowCN
     And an email should be sent to "registered_user-1@example.com" as notification of the acceptance of proposed organisation "Unfriendly"
     And "registered_user-1@example.com" is an organisation admin of "Unfriendly"
     And I should see "A notification of acceptance was sent to registered_user-1@example.com"
+    And I click on the link in the email notification of acceptance of proposed organisation to "registered_user-1@example.com"
+    Then show me the page
+    Then I should be on the show page for the organisation named "Unfriendly"
 
   Scenario: Unregistered user is invited when superadmin accepts proposed organisation
     Given the following proposed organisations exist:
