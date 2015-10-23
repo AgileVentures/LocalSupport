@@ -18,7 +18,7 @@ end
 And(/^an email should be sent to "(.*?)" as notice of becoming org admin of "(.*?)"$/) do |email, org_name|
   message = "You have been made an organisation admin for the organisation called #{org_name} on the Harrow Community Network. After logging in,
 you will be able to update your organisation's directory entry."
-  expect_email_exists(message: message, email: email, link: organisation_path(Organisation.find_by(name: org_name)), 
+  expect_email_exists(message: message, email: email, link: organisation_url(Organisation.find_by(name: org_name)),
                       link_text: "Click here to view your organisation on the Harrow Community Network.")
 end
 
@@ -29,7 +29,7 @@ end
 
 Then(/^an email should be sent to "(.*?)" as notification of the acceptance of proposed organisation "(.*?)"$/) do |email, org_name|
   message = "Thank you for registering your organisation.\n\nWe have granted your request to have it included in our directory.\n\nDetails of your organisation are now live in our directory."
-  expect_email_exists(message: message, email: email, link: organisation_path(Organisation.find_by(name: org_name)) , link_text: "You can edit your organisation details by logging in and editing it directly.")
+  expect_email_exists(message: message, email: email, link: organisation_url(Organisation.find_by(name: org_name)) , link_text: "You can edit your organisation details by logging in and editing it directly.")
 end
 
 Then(/^an invitational email should be sent to "(.*?)" as notification of the acceptance of proposed organisation "(.*?)"$/) do |email, org_name|
@@ -45,7 +45,7 @@ end
 Then(/^an email should be sent to "(.*?)" as notification of the proposed organisation$/) do |email|
   message = "A new organisation called #{proposed_org_fields[:name]} has been proposed for inclusion in the Harrow Community Network."
   expect_email_exists(message: message,email: email, 
-    link: proposed_organisation_path(ProposedOrganisation.find_by(name: proposed_org_fields[:name])),
+    link: proposed_organisation_url(ProposedOrganisation.find_by(name: proposed_org_fields[:name])),
     link_text: "Click here to view this proposed organisation"
   )
 end
