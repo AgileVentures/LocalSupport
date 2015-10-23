@@ -147,7 +147,7 @@ def find_emails_with_accept_invitation_link emails, verbiage
 end
 
 def extract_invite_link email
-  emails_with_accept_link = find_emails_with_accept_invitation_link(find_emails_to(email), 'Accept Invitation')
+  emails_with_accept_link = find_emails_with_accept_invitation_link(find_emails_to(email), 'Accept invitation')
   Nokogiri::HTML(emails_with_accept_link.first.body.raw_source).search("//a[text()='Accept invitation']")[0].attribute("href").value
 end
 
