@@ -170,10 +170,6 @@ And(/^I click on the invitation link in the proposed org accepted email to "(.*?
   step "I should be on the invitation page"
 end
 
-And(/^I click on the link in the email notification of acceptance of proposed organisation to "(.*?)"$/) do |email|
-  visit extract_view_link_for_accepted_org(email)
-end
-
 Given(/^I click on the invitation link in the email to "([^\"]+)"$/) do |email|
   visit extract_invite_link(email)
   step "I should be on the invitation page"
