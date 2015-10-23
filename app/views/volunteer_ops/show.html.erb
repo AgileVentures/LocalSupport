@@ -1,4 +1,4 @@
-<div class="row">
+
   <h3>
     <%= @volunteer_op.title %>
   </h3>
@@ -14,5 +14,5 @@
   <% if @editable %>
       <%= link_to("Edit", edit_volunteer_op_path(@volunteer_op.id), {:class => 'btn btn-primary'}) %>
   <% end %>
-</div>
+
 <% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
