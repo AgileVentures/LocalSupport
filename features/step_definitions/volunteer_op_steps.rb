@@ -8,6 +8,20 @@ And(/^I submit a volunteer op "(.*?)", "(.*?)" on the "(.*?)" page$/) do |title,
   click_on 'Create a Volunteer Opportunity'
 end
 
+Then(/^I submit a volunteer op located at "(.*?)", "(.*?)" and titled "(.*?)", "(.*?)" on the "(.*?)" page$/) do |address, postcode, title, desc, org_name, |
+  org = Organisation.find_by_name(org_name)
+  visit organisation_path org
+  click_link "Create a Volunteer Opportunity"
+  expect(current_path).to eq new_organisation_volunteer_op_path org
+  save_and_open_page
+  fill_in 'Title', :with => title
+  fill_in 'Description', :with => desc
+  fill_in 'Address', :with => address
+  fill_in 'Postcode', :with => postcode
+  check "Use this address as location for volunteer opportunity"
+  click_on 'Create a Volunteer Opportunity'
+end
+
 Given(/^that the (.+) flag is (enabled|disabled)$/) do |feature, state|
   if f = Feature.find_by_name(feature) then
     f.update_attributes(active: (state == 'enabled'))

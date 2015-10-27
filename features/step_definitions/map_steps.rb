@@ -69,6 +69,7 @@ end
 
 Then /^the coordinates for "(.*?)" and "(.*?)" should( not)? be the same/ do | org1_name, org2_name, negation|
   org1, org2 = marker_json_for_org_names(org1_name, org2_name)
+  byebug
   if negation
     expect(org1['lat']).not_to eq org2['lat']
     expect(org1['lng']).not_to eq org2['lng']

@@ -24,6 +24,8 @@ Feature: Org superadmin creating a volunteer work opportunity
     And I submit a volunteer op "Hard Work", "For no pay" on the "Friendly" page
     Then I should be on the show page for the volunteer_op titled "Hard Work"
     And I should see "Hard Work", "For no pay" and "Organisation: Friendly"
+    And I submit a volunteer op located at "30 pinner road", "HA1 4HZ" and titled "Easy Work", "And still no pay" on the "Friendly" page
+    Then the coordinates for "Easy Work" and "Hard Work" should not be the same
 
   Scenario: Org-superadmins can create a volunteer opportunity but get warning with invalid data
     Given I am signed in as a charity worker related to "Friendly"

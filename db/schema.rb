@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150627195630) do
+ActiveRecord::Schema.define(version: 20151027133016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -134,6 +134,9 @@ ActiveRecord::Schema.define(version: 20150627195630) do
     t.integer  "organisation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "address"
+    t.string   "postcode"
+    t.string   "use_this_address_as_location_for_volunteer_opportunity"
   end
 
   add_index "volunteer_ops", ["organisation_id"], name: "index_volunteer_ops_on_organisation_id", using: :btree

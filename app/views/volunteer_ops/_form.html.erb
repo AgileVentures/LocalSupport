@@ -17,6 +17,18 @@
     <%= f.label :description , :style => "margin-top: 16px;" %>
     <%= f.text_area :description, :class => "wide_form" %>
   </div>
+  <div>
+    <%= f.label :address, :style => "margin-top: 16px;"%>
+    <%= f.text_field :address, :class => "wide_form" %>
+  </div>
+  <div>
+    <%= f.label :postcode, :style => "margin-top: 16px;"%>
+    <%= f.text_field :postcode, :class => "wide_form" %>
+  </div>
+   <div>
+     <%= f.label :use_this_address_as_location_for_volunteer_opportunity, :class => "margin-top: 16px;" %>
+    <%= f.check_box :use_this_address_as_location_for_volunteer_opportunity, :class => "wide_form" %>
+   </div>
   <div class="actions" style="margin-top: 16px;">
     <%= f.submit button_text(@volunteer_op), class: 'btn btn-primary' %>
   </div>
