@@ -42,7 +42,6 @@ Then /^I should( not)? see the following (measle|vol_op) markers in the map:$/ d
   klass_hash = {'measle' => '.measle', 'vol_op' => '.vol_op'}
   expect(page).to have_css(klass_hash[klass], :count => table.raw.flatten.length)
   ids = all(klass_hash[klass]).to_a.map { |marker| marker[:'data-id'].to_i }
-
   expect(ids).send(expectation, include(*Organisation.where(name: table.raw.flatten).pluck(:id)))
 end
 

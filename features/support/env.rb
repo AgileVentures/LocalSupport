@@ -15,6 +15,7 @@ require 'factory_girl_rails'
 require 'aruba/cucumber'
 require 'timecop'
 Dir['../../spec/factories/*.rb'].each {|file| require_relative file }
+WebMock.disable_net_connect!(allow_localhost: true)
 
 # https://github.com/jnicklas/capybara/commit/4f805d5a1c42da29ed32ab0371e24add2dc08af1
 Capybara.add_selector(:css) do
@@ -26,8 +27,11 @@ end
 # steps to use the XPath syntax.
 Capybara.default_selector = :css
 Capybara.default_wait_time = 3
-
 Capybara.javascript_driver = :webkit
+Capybara::Webkit.configure do |config|
+	#config.debug = true
+	config.block_unknown_urls
+end
 
 # By default, any exception happening in your Rails application will bubble up
 # to Cucumber so that your scenario will fail. This is a different from how 
