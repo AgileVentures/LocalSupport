@@ -157,7 +157,9 @@ http_interactions:
   recorded_at: Sun, 04 Oct 2015 01:13:25 GMT
 - request:
     method: get
-    uri: http://127.0.0.1:53420/__identify__
+
+    uri: http://127.0.0.1:34567/__identify__
+
     body:
       encoding: US-ASCII
       string: ''
@@ -174,140 +176,20 @@ http_interactions:
       message: 'OK '
     headers:
       Server:
-      - WEBrick/1.3.1 (Ruby/2.0.0/2014-02-24)
+
+      - WEBrick/1.3.1 (Ruby/2.0.0/2015-02-25)
       Date:
-      - Sun, 11 Oct 2015 15:42:57 GMT
+      - Tue, 06 Oct 2015 04:42:26 GMT
       Content-Length:
-      - '10'
+      - '8'
+
       Connection:
       - Keep-Alive
     body:
       encoding: UTF-8
-      string: '2206648560'
+
+      string: '30559740'
     http_version: 
-  recorded_at: Sun, 11 Oct 2015 15:42:57 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:53238/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - '*/*'
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.0.0/2014-02-24)
-      Date:
-      - Sat, 24 Oct 2015 02:15:38 GMT
-      Content-Length:
-      - '10'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '2158975400'
-    http_version: 
-  recorded_at: Sat, 24 Oct 2015 02:15:38 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:55253/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - '*/*'
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.0.0/2014-02-24)
-      Date:
-      - Sat, 24 Oct 2015 04:06:46 GMT
-      Content-Length:
-      - '10'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '2183134960'
-    http_version: 
-  recorded_at: Sat, 24 Oct 2015 04:06:46 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:56057/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - '*/*'
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.0.0/2014-02-24)
-      Date:
-      - Sat, 24 Oct 2015 17:29:41 GMT
-      Content-Length:
-      - '10'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '2158139460'
-    http_version: 
-  recorded_at: Sat, 24 Oct 2015 17:29:41 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:58389/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - '*/*'
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.0.0/2014-02-24)
-      Date:
-      - Sun, 08 Nov 2015 17:55:48 GMT
-      Content-Length:
-      - '10'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '2227372880'
-    http_version: 
-  recorded_at: Sun, 08 Nov 2015 17:55:48 GMT
+  recorded_at: Tue, 06 Oct 2015 04:42:26 GMT
+
 recorded_with: VCR 2.9.3
