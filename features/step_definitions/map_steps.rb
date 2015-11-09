@@ -1,3 +1,8 @@
+Before('@billy') do
+  Capybara.current_driver = :webkit_billy
+  
+end
+
 Then(/^I should see an infowindow when I click on the map markers:$/) do |table|
   expect(page).to have_css('.measle', :count => table.raw.flatten.length)
   Organisation.where(name: table.raw.flatten).pluck(:name, :description, :id).map {|name, desc, id| [name, smart_truncate(desc, 42), id]}.each do |name, desc, id|
@@ -36,6 +41,10 @@ Then /^the (proposed organisation|organisation) "(.*?)" should have a (large|sma
     expect(find_map_icon(marker_class, org_id)["src"]).to eq "https://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png"
   end
 end
+
+
+
+
 
 Then /^I should( not)? see the following (measle|vol_op) markers in the map:$/ do |negative, klass, table|
   expectation = negative ? :not_to : :to

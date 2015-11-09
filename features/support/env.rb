@@ -14,6 +14,7 @@ require 'rack_session_access/capybara'
 require 'factory_girl_rails'
 require 'aruba/cucumber'
 require 'timecop'
+require 'billy/cucumber'
 Dir['../../spec/factories/*.rb'].each {|file| require_relative file }
 WebMock.disable_net_connect!(allow_localhost: true)
 
@@ -32,6 +33,7 @@ Capybara::Webkit.configure do |config|
 	#config.debug = true
 	config.block_unknown_urls
 end
+
 
 # By default, any exception happening in your Rails application will bubble up
 # to Cucumber so that your scenario will fail. This is a different from how 
