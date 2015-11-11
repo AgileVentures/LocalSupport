@@ -17,6 +17,7 @@ Feature: As a member of the public
       | Litter Box Scooper | Assist with feline sanitation   | Cats Are Us               |
       | Office Support     | Help with printing and copying. | Indian Elders Association |
 
+  @vcr
   @javascript
   Scenario: See a map of current volunteer opportunities
     Given I visit the volunteer opportunities page
@@ -24,6 +25,7 @@ Feature: As a member of the public
     And I should see the following vol_op markers in the map:
     | Indian Elders Association| Cats Are Us |
 
+  @vcr
   @javascript
   Scenario Outline: Volunteer opportunites are listed in map popups
     Given I visit the volunteer opportunities page
@@ -34,6 +36,7 @@ Feature: As a member of the public
       | Litter Box Scooper |
       | Office Support     |
 
+  @vcr
   @javascript
   Scenario: See map when editing my volunteer opportunity
     Given I am signed in as a charity worker related to "Cats Are Us"
