@@ -1,0 +1,60 @@
+---
+:scope: 
+:url: http://maps.google.com/maps-api-v3/api/js/20/16/geometry.js
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Vary: Accept-Encoding
+  Content-Type: text/javascript
+  Date: Fri, 16 Oct 2015 10:27:54 GMT
+  Expires: Sat, 15 Oct 2016 10:27:54 GMT
+  Last-Modified: Tue, 15 Sep 2015 04:00:25 GMT
+  X-Content-Type-Options: nosniff
+  Server: sffe
+  X-Xss-Protection: 1; mode=block
+  Cache-Control: public, max-age=31536000
+  Age: '2020572'
+  Accept-Ranges: none
+  Connection: close
+  Content-Length: '4971'
+:content: google.maps.__gjsload__('geometry', '\'use strict\';function Ml(a,b,c){return
+  Zd(ke(a-b,-180,180))<=c}\nfunction Nl(a,b,c,d,e){if(!d){d=a.lng();c=Zd(ke(c-d,-180,180));d=a.lng();var
+  f=b.lng();d=Zd(ke(f-d,-180,180));c=c/d;if(!e)return e=m.sin(me(a.lat())),e=m.log((1+e)/(1-e))/2,b=m.sin(me(b.lat())),b=m.log((1+b)/(1-b))/2,ne(2*m[mc](m.exp(e+c*(b-e)))-m.PI/2);a=e[ub](a);b=e[ub](b);return
+  e[Ob](new V(a.x+c*(b.x-a.x),a.y+c*(b.y-a.y))).lat()}e=me(a.lat());a=me(a.lng());d=me(b.lat());b=me(b.lng());c=me(c);return
+  ke(ne(m[Pc](m.sin(e)*m.cos(d)*m.sin(c-b)-m.sin(d)*m.cos(e)*m.sin(c-a),m.cos(e)*m.cos(d)*m.sin(a-\nb))),-90,90)}\nvar
+  Ol={containsLocation:function(a,b){for(var c=ke(a.lng(),-180,180),d=!!b.get("geodesic"),e=b.get("latLngs"),f=b.get("map"),f=!d&&f?f[Mc]():null,g=!1,h=0,l=e[ic]();h<l;++h)for(var
+  r=e[bd](h),t=0,w=r[ic]();t<w;++t){var y=r[bd](t),z=r[bd]((t+1)%w),I=ke(y.lng(),-180,180),C=ke(z.lng(),-180,180),M=be(I,C),I=ce(I,C);(180<M-I?c>=M||c<I:c<M&&c>=I)&&Nl(y,z,c,d,f)<a.lat()&&(g=!g)}return
+  g||Ol.isLocationOnEdge(a,b)},isLocationOnEdge:function(a,b,c){c=c||1E-9;var d=ke(a.lng(),-180,180),e=b
+  instanceof Zh,f=\n!!b.get("geodesic"),g=b.get("latLngs");b=b.get("map");b=!f&&b?b[Mc]():null;for(var
+  h=0,l=g[ic]();h<l;++h)for(var r=g[bd](h),t=r[ic](),w=e?t:t-1,y=0;y<w;++y){var z=r[bd](y),I=r[bd]((y+1)%t),C=ke(z.lng(),-180,180),M=ke(I.lng(),-180,180),P=be(C,M),R=ce(C,M);if(C=Ml(C,M,1E-9)&&(Ml(C,d,c)||Ml(M,d,c)))var
+  C=a.lat(),M=ce(z.lat(),I.lat())-c,K=be(z.lat(),I.lat())+c,C=C>=M&&C<=K;if(C)return!0;if(180<P-R?d+c>=P||d-c<=R:d+c>=R&&d-c<=P)if(z=Nl(z,I,d,f,b),Zd(z-a.lat())<c)return!0}return!1}};var
+  Pl={computeHeading:function(a,b){var c=pf(a),d=pf(b),e=qf(b)-qf(a);return ke(ne(m[Pc](m.sin(e)*m.cos(d),m.cos(c)*m.sin(d)-m.sin(c)*m.cos(d)*m.cos(e))),-180,180)},computeOffset:function(a,b,c,d){b/=d||6378137;c=me(c);var
+  e=pf(a);d=m.cos(b);b=m.sin(b);var f=m.sin(e),e=m.cos(e),g=d*f+b*e*m.cos(c);return
+  new of(ne(m[yc](g)),ne(qf(a)+m[Pc](b*e*m.sin(c),d-f*g)))},computeOffsetOrigin:function(a,b,c,d){c=me(c);b/=d||6378137;d=m.cos(b);var
+  e=m.sin(b)*m.cos(c);b=m.sin(b)*m.sin(c);c=m.sin(pf(a));var f=e*\ne*d*d+d*d*d*d-d*d*c*c;if(0>f)return
+  null;var g=e*c+m[Qc](f),g=g/(d*d+e*e),h=(c-e*g)/d,g=m[Pc](h,g);if(g<-m.PI/2||g>m.PI/2)g=e*c-m[Qc](f),g=m[Pc](h,g/(d*d+e*e));return
+  g<-m.PI/2||g>m.PI/2?null:new of(ne(g),ne(qf(a)-m[Pc](b,d*m.cos(g)-e*m.sin(g))))},interpolate:function(a,b,c){var
+  d=pf(a),e=qf(a),f=pf(b),g=qf(b),h=m.cos(d),l=m.cos(f);b=Pl.Vf(a,b);var r=m.sin(b);if(1E-6>r)return
+  new of(a.lat(),a.lng());a=m.sin((1-c)*b)/r;c=m.sin(c*b)/r;b=a*h*m.cos(e)+c*l*m.cos(g);e=a*h*m.sin(e)+c*l*m.sin(g);return
+  new of(ne(m[Pc](a*\nm.sin(d)+c*m.sin(f),m[Qc](b*b+e*e))),ne(m[Pc](e,b)))},Vf:function(a,b){var
+  c=pf(a),d=pf(b);return 2*m[yc](m[Qc](m.pow(m.sin((c-d)/2),2)+m.cos(c)*m.cos(d)*m.pow(m.sin((qf(a)-qf(b))/2),2)))},computeDistanceBetween:function(a,b,c){return
+  Pl.Vf(a,b)*(c||6378137)},computeLength:function(a,b){var c=b||6378137,d=0;a instanceof
+  og&&(a=a[pc]());for(var e=0,f=a[G]-1;e<f;++e)d+=Pl.computeDistanceBetween(a[e],a[e+1],c);return
+  d},computeArea:function(a,b){return m.abs(Pl.computeSignedArea(a,b))},computeSignedArea:function(a,\nb){var
+  c=b||6378137;a instanceof og&&(a=a[pc]());for(var d=a[0],e=0,f=1,g=a[G]-1;f<g;++f)e+=Pl.ym(d,a[f],a[f+1]);return
+  e*c*c},ym:function(a,b,c){return Pl.zm(a,b,c)*Pl.Gn(a,b,c)},zm:function(a,b,c){var
+  d=[a,b,c,a];a=[];for(c=b=0;3>c;++c)a[c]=Pl.Vf(d[c],d[c+1]),b+=a[c];b/=2;d=m.tan(b/2);for(c=0;3>c;++c)d*=m.tan((b-a[c])/2);return
+  4*m[mc](m[Qc](m.abs(d)))},Gn:function(a,b,c){a=[a,b,c];b=[];for(c=0;3>c;++c){var
+  d=a[c],e=pf(d),d=qf(d),f=b[c]=[];f[0]=m.cos(e)*m.cos(d);f[1]=m.cos(e)*m.sin(d);f[2]=m.sin(e)}return
+  0<\nb[0][0]*b[1][1]*b[2][2]+b[1][0]*b[2][1]*b[0][2]+b[2][0]*b[0][1]*b[1][2]-b[0][0]*b[2][1]*b[1][2]-b[1][0]*b[0][1]*b[2][2]-b[2][0]*b[1][1]*b[0][2]?1:-1}};var
+  Ql={decodePath:function(a){for(var b=ee(a),c=ea(m[xb](a[G]/2)),d=0,e=0,f=0,g=0;d<b;++g){var
+  h=1,l=0,r;do r=a[id](d++)-63-1,h+=r<<l,l+=5;while(31<=r);e+=h&1?~(h>>1):h>>1;h=1;l=0;do
+  r=a[id](d++)-63-1,h+=r<<l,l+=5;while(31<=r);f+=h&1?~(h>>1):h>>1;c[g]=new of(1E-5*e,1E-5*f,!0)}eb(c,g);return
+  c},encodePath:function(a){a instanceof og&&(a=a[pc]());return Ql.Xo(a,function(a){return[de(1E5*a.lat()),de(1E5*a.lng())]})},Xo:function(a,b){for(var
+  c=[],d=[0,0],e,f=0,g=ee(a);f<g;++f)e=b?b(a[f]):a[f],Ql.bj(e[0]-\nd[0],c),Ql.bj(e[1]-d[1],c),d=e;return
+  c[od]("")},Kq:function(a){for(var b=ee(a),c=ea(b),d=0;d<b;++d)c[d]=a[id](d)-63;return
+  c},bj:function(a,b){return Ql.Yo(0>a?~(a<<1):a<<1,b)},Yo:function(a,b){for(;32<=a;)b[E](na[Nc]((32|a&31)+63)),a>>=5;b[E](na[Nc](a+63));return
+  b}};Ih.geometry=function(a){eval(a)};Ld[Wc].maps.geometry={encoding:Ql,spherical:Pl,poly:Ol};function
+  Rl(){}N=Rl[H];N.decodePath=Ql.decodePath;N.encodePath=Ql.encodePath;N.computeDistanceBetween=Pl.computeDistanceBetween;N.interpolate=Pl.interpolate;N.computeHeading=Pl[Kc];N.computeOffset=Pl.computeOffset;N.computeOffsetOrigin=Pl.computeOffsetOrigin;dg("geometry",new
+  Rl);\n')

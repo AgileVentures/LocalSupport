@@ -16,7 +16,7 @@ Feature: Map of local charities
     Given the following users are registered:
       | email                         | password | organisation | confirmed_at         |
       | registered_user-3@example.com | pppppppp | Youth UK     | 2007-01-01  10:00:00 |
- 
+
   @vcr
   @javascript
   @billy
@@ -27,14 +27,16 @@ Feature: Map of local charities
 
   @vcr
   @javascript
+  @billy
   Scenario: Infowindow appears when clicking on map marker
     Given I visit the home page
     Then I should see an infowindow when I click on the map markers:
       | Indian Elders Association | Age UK | Harrow Bereavement Counselling |
-  
+
   @vcr
   @time_travel
   @javascript
+  @billy
   Scenario Outline: Organisation map has small icon for organisations updated more than 365 days ago
     Given I travel a year plus "<days>" days into the future
     And I visit the home page
@@ -50,6 +52,7 @@ Feature: Map of local charities
 
   @vcr
   @javascript
+  @billy
   Scenario: Organisation map has small icon for organisation with no users
     Given I visit the home page
     Then the organisation "Indian Elders Association" should have a small icon
@@ -77,7 +80,7 @@ Feature: Map of local charities
     And I update "Youth UK" charity postcode to be "HA1 4HA"
     And I visit the home page
     Then the coordinates for "Age UK" and "Youth UK" should not be the same
-  
+
   @vcr
 
   Scenario: Show meaning of large map icons on home page

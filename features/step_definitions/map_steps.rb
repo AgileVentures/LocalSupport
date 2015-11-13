@@ -1,6 +1,5 @@
 Before('@billy') do
   Capybara.current_driver = :webkit_billy
-  
 end
 
 Then(/^I should see an infowindow when I click on the map markers:$/) do |table|
