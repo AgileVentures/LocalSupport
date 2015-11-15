@@ -10,10 +10,10 @@ Feature: All Users Page
       | name            | address        | postcode |
       | My Organisation | 83 pinner road | HA1 4HZ  |
     And the following users are registered:
-      | email              | password       | superadmin | confirmed_at        | organisation    | pending_organisation |
-      | nonsuperadmin@myorg.com | mypassword1234 | false | 2008-01-01 00:00:00 |                 |                      |
-      | superadmin@myorg.com    | superadminpass0987  | true  | 2008-01-01 00:00:00 | My Organisation |                      |
-      | pending@myorg.com  | password123    | false | 2008-01-01 00:00:00 |                 | My Organisation      |
+      | email                   | password            | superadmin | confirmed_at        | organisation    | pending_organisation |
+      | nonsuperadmin@myorg.com | mypassword1234      | false      | 2008-01-01 00:00:00 |                 |                      |
+      | superadmin@myorg.com    | superadminpass0987  | true       | 2008-01-01 00:00:00 | My Organisation |                      |
+      | pending@myorg.com       | password123         | false      | 2008-01-01 00:00:00 |                 | My Organisation      |
     And cookies are approved
 
   Scenario: As a superadmin approving a pending users request
@@ -27,6 +27,13 @@ Feature: All Users Page
     When I delete "pending@myorg.com"
     Then I should see "You have deleted pending@myorg.com."
     Then user "pending@myorg.com" is deleted
+
+  Scenario: As a superadmin declining a timo request but not deleting the user
+    Given I am signed in as a superadmin
+    When I decline "pending@myorg.com"
+    Then I should see "You have declined pending@myorg.com's request for admin status for My Organization."
+    Then "pending@myorg.com" is not an organisation admin of "My Organisation"
+    And "pending@myorg.com"'s request for "My Organisation" should not be persisted
 
   Scenario: As a superadmin about to recover a deleted user
     Given I am signed in as a superadmin
