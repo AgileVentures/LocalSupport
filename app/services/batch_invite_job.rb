@@ -7,6 +7,7 @@ class BatchInviteJob
 
   def run
     tell_devise_if_okay_to_resend_invitations
+    complitely_delete_deleted_users
     invite_users_and_collate_results
   end
 
@@ -36,5 +37,10 @@ class BatchInviteJob
     else
       'Invited!'
     end
+  end
+
+  def complitely_delete_deleted_users
+    User.deleted.delete User.deleted.where(email: @invites.flat_map{|org_id, email| email.downcase}).pluck(:id)
+
   end
 end
