@@ -49,6 +49,13 @@ describe ::BatchInviteJob do
          (org.id+1) => 'Error: Email has already been taken'}
       )
     end
+
+
+    it 'resend invitation to a deleted user' do
+      deleted_user = FactoryGirl.create(:user,email: 'YES@hello.com', deleted_at: "2015-11-11 08:37:14")
+      expect(-> { subject }).to change(User, :count).by(1)
+    end
+
   end
 
   context 'failure' do
