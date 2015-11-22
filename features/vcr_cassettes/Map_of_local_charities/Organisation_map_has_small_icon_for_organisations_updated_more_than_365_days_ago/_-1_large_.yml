@@ -20091,4 +20091,55 @@ http_interactions:
         R0lGODlhAQABAID/AP///wAAACwAAAAAAQABAAACAkQBADs=
     http_version: 
   recorded_at: Mon, 21 Nov 2016 04:01:03 GMT
+- request:
+    method: get
+    uri: http://www.google-analytics.com/r/collect?_r=1&_s=1&_u=AEAAAEQAI~&_v=j39&a=1982245073&cid=921852807.1448208304&de=UTF-8&dl=http://127.0.0.1/&dt=Harrow%20Community%20Network&je=0&jid=1382387405&sd=32-bit&sr=1440x900&t=pageview&tid=UA-60361269-1&ul=en-us&v=1&vp=1024x768&z=1792211297
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; PPC Mac OS X) AppleWebKit/534.34 (KHTML, like Gecko)
+        PhantomJS/1.9.7 Safari/534.34
+      Referer:
+      - http://127.0.0.1:65438/
+      Accept:
+      - '*/*'
+      Connection:
+      - Keep-Alive
+      Accept-Language:
+      - en-US,*
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Date:
+      - Sun, 22 Nov 2015 16:04:59 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Last-Modified:
+      - Sun, 17 May 1998 03:00:00 GMT
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - image/gif
+      Server:
+      - Golfe2
+      Content-Length:
+      - '35'
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        R0lGODlhAQABAID/AP///wAAACwAAAAAAQABAAACAkQBADs=
+    http_version: 
+  recorded_at: Mon, 21 Nov 2016 16:05:04 GMT
 recorded_with: VCR 2.9.3
