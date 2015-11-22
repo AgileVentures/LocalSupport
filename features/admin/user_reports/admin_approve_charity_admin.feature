@@ -31,7 +31,7 @@ Feature: All Users Page
   Scenario: As a superadmin declining a timo request but not deleting the user
     Given I am signed in as a superadmin
     When I decline "pending@myorg.com"
-    Then I should see "You have declined pending@myorg.com's request for admin status for My Organization."
+    Then I should see "You have declined pending@myorg.com's request for admin status for My Organisation."
     Then "pending@myorg.com" is not an organisation admin of "My Organisation"
     And "pending@myorg.com"'s request for "My Organisation" should not be persisted
 

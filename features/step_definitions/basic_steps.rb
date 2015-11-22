@@ -410,11 +410,15 @@ Given /^"(.*)"'s request status for "(.*)" should be updated appropriately$/ do 
     }
 end
 
-And /"(.*)"'s request for "(.*)" should (not )?be persisted/ do |email, org, negative|
+And /"(.*)"'s request for "(.*)" (should|should not) be persisted/ do |email, org, expectation|
   user = User.find_by_email(email)
   org = Organisation.find_by_name(org)
-  expectation = negative ? :not_to : :to
-  expect(user.pending_organisation).send(expectation, eq(org))
+  case expectation
+  when 'should'
+    expect(user.pending_organisation).to eq(org)
+  when 'should not'
+    expect(user.pending_organisation).to be_nil
+  end
 end
 
 When(/^the URL should contain "(.*?)"$/) do |string|
