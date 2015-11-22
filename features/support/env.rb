@@ -7,6 +7,7 @@ ENV['CUCUMBER'] = 'cucumber'
 # files.
 require 'capybara'
 require 'capybara-webkit'
+require 'capybara/poltergeist'
 require 'capybara/cucumber'
 require 'cucumber/rails'
 require 'cucumber/rspec/doubles'
@@ -16,7 +17,7 @@ require 'aruba/cucumber'
 require 'timecop'
 require 'billy/cucumber'
 Dir['../../spec/factories/*.rb'].each {|file| require_relative file }
-WebMock.disable_net_connect!(allow_localhost: true)
+#WebMock.disable_net_connect!(allow_localhost: true)
 
 # https://github.com/jnicklas/capybara/commit/4f805d5a1c42da29ed32ab0371e24add2dc08af1
 Capybara.add_selector(:css) do
@@ -28,11 +29,26 @@ end
 # steps to use the XPath syntax.
 Capybara.default_selector = :css
 Capybara.default_wait_time = 3
-Capybara.javascript_driver = :webkit
-Capybara::Webkit.configure do |config|
-	#config.debug = true
-	config.block_unknown_urls
+Capybara.javascript_driver = :poltergeist
+
+Capybara.register_driver :poltergeist do |app|
+	Capybara::Poltergeist::Driver.new(
+      app, {js_errors: false})
 end
+
+#Capybara::Webkit.configure do |config|
+	#config.debug = true
+	#config.block_unknown_urls
+	#config.allow_url("google.com/*")
+#end
+
+
+#Capybara.register_driver :webkit do |app|
+  #Capybara::Webkit::Driver.new(app).tap do |driver|
+    #driver.block_unknown_urls
+    #driver.allow_url "google.com/*"
+  #end
+#end
 
 
 # By default, any exception happening in your Rails application will bubble up

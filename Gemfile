@@ -29,6 +29,7 @@ group :development, :test do
   gem 'binding_of_caller' # plays well with better_errors
   gem 'puffing-billy'
   gem 'em-http-request', '~> 1.1', '>= 1.1.2'
+  gem 'poltergeist'
 end
 
 group :development do
