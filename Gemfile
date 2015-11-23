@@ -40,8 +40,8 @@ end
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
-  gem 'capybara', '2.4.1'
-  gem "capybara-webkit", "~> 1.6.0"
+  gem 'capybara', '2.5.0'
+  gem "capybara-webkit", "1.7.1"
   gem 'factory_girl_rails', :require => false
   gem 'webmock', '1.20.0'
   gem 'uri-handler'

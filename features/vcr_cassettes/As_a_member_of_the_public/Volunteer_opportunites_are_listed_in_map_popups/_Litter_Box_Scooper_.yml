@@ -2555,4 +2555,937 @@ http_interactions:
         \   </div>\n  </div>\n</div>\n</body>\n</html>\n\n"
     http_version: 
   recorded_at: Fri, 13 Nov 2015 23:04:37 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:57451/volunteer_ops
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) capybara-webkit
+        Safari/537.21
+      Connection:
+      - Keep-Alive
+      Accept-Language:
+      - en-US,*
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Etag:
+      - W/"f237d695dd7fd1c07ef83ba91e45e43a"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - e3761552-b98e-47a2-846c-d2ecb167459d
+      X-Runtime:
+      - '0.051422'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2015-02-25)
+      Date:
+      - Sun, 15 Nov 2015 17:56:22 GMT
+      Content-Length:
+      - '12148'
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html>\n<html>\n<head>\n  <meta http-equiv=\"content-type\"
+        content=\"text/html; charset=utf-8\" />\n  <meta name=\"description\" content=\"Harrow
+        Community Network is a service provided by Voluntary Action Harrow to help
+        people find voluntary services in their local community\" />\n  <meta name=\"keywords\"
+        content=\"Harrow, Community, Network, volunteer, volunteering, voluntary,
+        organisations, causes\" />\n  <meta name=\"google-site-verification\" content=\"NnSd82Tg3wYtm75gYpDTcnfe5HzS5T38cU7oPDRlTD0\"
+        />\n\n  <meta name=\"application-name\" content=\"LocalSupport\">\n\n  <meta
+        property=\"og:title\" content=\"Harrow Community Network\"/>\n  <meta property=\"og:url\"
+        content=\"http://127.0.0.1:57451/volunteer_ops\"/>\n  <meta property=\"og:site_name\"
+        content=\"Harrow Community Network\"/>\n  <meta property=\"og:description\"
+        content=\"Harrow Community Network is a service provided by Voluntary Action
+        Harrow to help people find voluntary services in their local community\">\n\n
+        \ <title>Harrow Community Network </title>\n  <link rel=\"stylesheet\" media=\"screen\"
+        href=\"/assets/application.css\" />\n  \n  <!--[if lt IE 9]>\n     <script
+        src=\"http://html5shim.googlecode.com/svn/trunk/html5.js\"></script>\n<![endif]-->\n\n
+        \ <script src=\"//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry\"
+        type=\"text/javascript\"></script>\n  <script src=\"/assets/application.js\"></script>\n
+        \ <!--this is where page-specific scripts are added-->\n      <script src=\"/assets/google_map.js\"></script>\n\n\n</head>\n\n<body>\n
+        \   <div id=\"cookie-message\" style=\"display: block;\">\n\n  <div id=\"cookie-message-inner\"
+        class=\"content\">\n    <div class=\"row\">\n      <h2>Cookie Policy</h2>\n
+        \     <a id=\"accept_cookies\" class=\"btn btn-primary\" rel=\"nofollow\"
+        data-method=\"POST\" href=\"/cookies/allow\">Close</a>\n\n    <p>We use cookies
+        to give you the best experience on our website. If you continue without changing
+        your cookie\n      settings, we assume that you consent to our use of cookies
+        on this device. You can change your cookie settings at\n      any time but
+        if you do, you may lose some functionality on our website. More information
+        can be found in our\n      <a href=\"/disclaimer\">terms of use.</a>\n    </div>\n
+        \ </div>\n</div>\n<div class=\"page-frame\">\n  <header>\n  <div id=\"navbar-wrapper\">\n
+        \   <div class=\"container\">\n      <div id=\"navbar\" class=\"navbar\">\n
+        \       <div class=\"navbar-inner\">\n          <div id=\"banner\" class=\"container\">\n
+        \           <a href=\"/\"><img class=\"img-responsive\" src=\"/assets/HCN-long.png\"
+        alt=\"Hcn long\" /></a>\n          </div>\n          <div class=\"container\">\n
+        \           <a class=\"btn btn-navbar\" data-toggle=\"collapse\" data-target=\".nav-collapse\">\n
+        \             <span class=\"icon-bar\"></span>\n              <span class=\"icon-bar\"></span>\n
+        \             <span class=\"icon-bar\"></span>\n            </a>\n            <a
+        href=\"/\" class=\"brand\" title=\"Search for local voluntary and community
+        organisations\">Search for local\n              voluntary and community organisations</a>\n\n
+        \           <div class=\"nav-collapse collapse\">\n              <ul id=\"button-rack\"
+        class=\"nav nav-pills pull-right\">\n                <li class = \"\">\n                  <a
+        href=\"/\">Home</a>\n                </li>\n                    <li class=\"dropdown
+        \" id=\"menuLogin\">\n                      <a class=\"dropdown-toggle\" href=\"#\"
+        data-toggle=\"dropdown\" id=\"navLogin\">Login</a>\n\n                      <div
+        class=\"dropdown-menu\" id=\"login\" style=\"padding:17px; width: 300px; padding-bottom:
+        0px;\">\n                        <div class=\"well\">\n                          <form
+        id=\"loginForm\" class=\"new_user\" action=\"/users/sign_in\" accept-charset=\"UTF-8\"
+        method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" />\n
+        \                             <div>\n                                <label>Login:</label>\n
+        \                               <!--[if lt IE 10]>\n                                <label
+        for=\"user_email\">Enter email</label>\n                                <![endif]-->\n
+        \                               <input autofocus=\"autofocus\" placeholder=\"you@example.com\"
+        type=\"email\" value=\"\" name=\"user[email]\" id=\"user_email\" />\n                              </div>\n
+        \                             <div>\n                                <!--[if
+        lt IE 10]>\n                                <label for=\"user_password\">Enter
+        password</label>\n                                <![endif]-->\n                                <input
+        placeholder=\"password\" type=\"password\" name=\"user[password]\" id=\"user_password\"
+        />\n                              </div>\n                                  <div
+        id = \"remember_me\"><input name=\"user[remember_me]\" type=\"hidden\" value=\"0\"
+        /><input type=\"checkbox\" value=\"1\" name=\"user[remember_me]\" id=\"user_remember_me\"
+        /> <label class=\"checkbox inline\" for=\"user_remember_me\">Remember me</label></div>\n
+        \                             <div style=\"display: inline;\"><input type=\"submit\"
+        name=\"commit\" value=\"Sign in\" id=\"signin\" class=\"btn btn-primary\"
+        /></div>\n                              <a href=\"/users/password/new\">Forgot
+        your password?</a>\n</form>                          <div id=\"register\">\n
+        \                           <form id=\"registerForm\" class=\"new_user\" action=\"/users\"
+        accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\"
+        value=\"&#x2713;\" />\n                                <label>Sign up:</label>\n
+        \                               \n                                <!--[if
+        lt IE 10]>\n                                <label for=\"user_password\">Enter
+        email</label>\n                                <![endif]-->\n                                <input
+        autofocus=\"autofocus\" id=\"signup_email\" name=\"user[email]\" placeholder=\"you@example.com\"
+        type=\"email\" value=\"\" />\n                                <!--[if lt IE
+        10]>\n                                <label for=\"user_password\">Enter password</label>\n
+        \                               <![endif]-->\n                                <input
+        id=\"signup_password\" name=\"user[password]\" placeholder=\"password\" type=\"password\"
+        />\n                                <!--[if lt IE 10]>\n                                <label
+        for=\"user_password\">Confirm password</label>\n                                <![endif]-->\n
+        \                               <input id=\"signup_password_confirmation\"
+        placeholder=\"confirm password\" type=\"password\" name=\"user[password_confirmation]\"
+        />\n                                <div style=\"display: inline;\"><input
+        type=\"submit\" name=\"commit\" value=\"Sign up\" id=\"signup\" class=\"btn
+        btn-primary\" /></div>\n</form>                          </div>\n                          <form>\n
+        \                           <a id=\"toggle_link\" title=\"Click this link
+        to Sign Up for an account\" href=\"#\">New organisation? Sign up</a>\n                          </form>\n
+        \                       </div>\n                      </div>\n                    </li>\n
+        \             </ul>\n            </div>\n          </div>\n        </div>\n
+        \     </div>\n    </div>\n  </div>\n\n</header>\n\n<script>\n    $('#registerForm').collapse('hide');\n
+        \   $('a#toggle_link').on('click', function (e) {\n        e.preventDefault();\n
+        \       // Get all relevant elements\n        var $link = $('a#toggle_link');\n
+        \       var $collapse1 = $('#loginForm');\n        var $collapse2 = $('#registerForm');\n
+        \       // Toggle the collapse of the forms\n        $collapse1.collapse('toggle');\n
+        \       $collapse2.collapse('toggle');\n        // Change the link text\n
+        \       if ($link.text() == 'New organisation? Sign up') {\n            $link.text('Already
+        a member? Log in');\n        }\n        else {\n            $link.text('New
+        organisation? Sign up');\n        }\n    });\n</script>\n\n  <section id=\"main\">
+        \  <!-- uniquify the child container to create the top margin -->\n      <div
+        class=\"container\">  <!-- outermost twitter bootstrap container-->\n        <div
+        id=\"content\">\n          <!-- Span 6 -->\n<div class=\"row\">\n  <div id=\"column1\"
+        class=\"span6\">\n    <div class=\"flex-row\">\n      <div class=\"map_container\">\n
+        \           <div id=\"marker_data\" data-markers=\"[{&quot;lat&quot;:51.5814093,&quot;lng&quot;:-0.343908,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        style=\\&quot;font-weight: 100\\&quot; href=\\&quot;/organisations/1\\&quot;\\u003eCats
+        Are Us\\u003c/a\\u003e\\u003c/strong\\u003e\\u003c/br\\u003e\\n\\u003cul\\u003e\\n
+        \ \\u003cli\\u003e\\n    \\u003ca style=\\&quot;font-weight: 900\\&quot; href=\\&quot;/volunteer_ops/1\\&quot;\\u003eLitter
+        Box Scooper\\u003c/a\\u003e\\u003c/br\\u003e\\n    Assist with feline sanitation\\u003c/br\\u003e\\n
+        \ \\u003c/li\\u003e\\n  \\u003c/ul\\u003e\\n\\u003c/div\\u003e\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg
+        data-id=\\&quot;1\\&quot; class=\\&quot;vol_op\\&quot; title=\\&quot;Click
+        here to see volunteer opportunities at Cats Are Us\\&quot; src=\\&quot;/assets/volunteer_icon.png\\&quot;
+        alt=\\&quot;Volunteer icon\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:1,&quot;type&quot;:&quot;vol_op&quot;},{&quot;lat&quot;:51.5813411,&quot;lng&quot;:-0.3468075,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        style=\\&quot;font-weight: 100\\&quot; href=\\&quot;/organisations/2\\&quot;\\u003eIndian
+        Elders Association\\u003c/a\\u003e\\u003c/strong\\u003e\\u003c/br\\u003e\\n\\u003cul\\u003e\\n
+        \ \\u003cli\\u003e\\n    \\u003ca style=\\&quot;font-weight: 900\\&quot; href=\\&quot;/volunteer_ops/2\\&quot;\\u003eOffice
+        Support\\u003c/a\\u003e\\u003c/br\\u003e\\n    Help with printing and copying.\\u003c/br\\u003e\\n
+        \ \\u003c/li\\u003e\\n  \\u003c/ul\\u003e\\n\\u003c/div\\u003e\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg
+        data-id=\\&quot;2\\&quot; class=\\&quot;vol_op\\&quot; title=\\&quot;Click
+        here to see volunteer opportunities at Indian Elders Association\\&quot; src=\\&quot;/assets/volunteer_icon.png\\&quot;
+        alt=\\&quot;Volunteer icon\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:1,&quot;type&quot;:&quot;vol_op&quot;}]\"></div>\n\n
+        \       <div id=\"map_canvas\"></div>\n      </div>\n    </div>\n    <div
+        class=\"map_legend\">\n      \n    </div>\n  </div>\n  <div id=\"column2\"
+        class=\"span6\">\n    <br>\n<div id=\"orgs_scroll\" style=\"height:410px;width:100%;border:1px
+        solid #ccc;overflow:scroll;\">\n  <div class=\"table table-bordered\">\n    <table>\n
+        \         <tr>\n            <td>\n              <strong><a href=\"/volunteer_ops/2\">Office
+        Support</a></strong><br/>\n\n              <div id=\"organisations\">\n                <small><a
+        href=\"/organisations/2\">Indian Elders Association</a></small>\n                <br/>\n
+        \             </div>\n              Help with printing and copying.\n              <br/>\n
+        \           </td>\n          </tr>\n          <tr>\n            <td>\n              <strong><a
+        href=\"/volunteer_ops/1\">Litter Box Scooper</a></strong><br/>\n\n              <div
+        id=\"organisations\">\n                <small><a href=\"/organisations/1\">Cats
+        Are Us</a></small>\n                <br/>\n              </div>\n              Assist
+        with feline sanitation\n              <br/>\n            </td>\n          </tr>\n
+        \   </table>\n  </div>\n</div>\n\n  </div>\n</div>\n\n        </div>\n      </div>\n
+        \     <br>\n      <br>\n      <div id=\"push\"></div>\n  </section>\n\n</div>\n<div
+        id=\"footer\" class=\"container\">\n  <hr>\n  <div class=\"row\">\n    <div
+        class=\"span5\">\n      <footer class=\"footer\">\n  <small>\n    Harrow Community
+        Network\n    provided by <a href=\"http://www.voluntaryactionharrow.org.uk/\">Voluntary
+        Action Harrow Co-operative&nbsp<img alt=\"Voluntary Action Harrow Co-operative\"
+        src=\"/assets/VAHC-Small-Logo.png\" width=\"30\" height=\"30\" /></a>\n  </small>\n</footer>\n\n\n
+        \   </div>\n    <div class=\"span3\">\n      <footer class=\"footer\">\n   <p
+        class=\"text-center\"><small>\n     Powered by <a href=\"/contributors\"><img
+        alt=\"Agile Ventures\" src=\"/assets/av_symbol_30px.png\" width=\"30\" height=\"30\"
+        /></a>&nbsp; &nbsp;<a href=\"https://www.expeditedssl.com/simple-ssl-scanner/scan?target_domain=www.harrowcn.org.uk\"
+        target=\"_blank\"><img width='70px' height='40px' alt=\"Ssl-secure-badge\"
+        src=\"https://www.expeditedssl.com/ssl-secure-badge.png\" /></a>\n   </small>
+        </p>\n</footer>\n\n\n\n    </div>\n    <div class=\"span4\">\n      <footer
+        class=\"footer\">\n  <p class=\"text-right\"><small>\n |\n  </small></p>\n</footer>\n\n\n
+        \   </div>\n  </div>\n</div>\n</body>\n</html>\n\n"
+    http_version: 
+  recorded_at: Sun, 15 Nov 2015 17:56:22 GMT
+- request:
+    method: get
+    uri: http://www.google-analytics.com/r/collect?_r=1&_s=1&_u=AEAAAEQAI~&_v=j39&a=933695584&cid=647373959.1447610183&de=UTF-8&dl=http://127.0.0.1/volunteer_ops&dt=Harrow%20Community%20Network&je=0&jid=1761719836&sd=24-bit&sr=1366x768&t=pageview&tid=UA-60361269-1&ul=en-us&v=1&vp=1667x1050&z=1727575387
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Referer:
+      - http://127.0.0.1:57451/volunteer_ops
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) capybara-webkit
+        Safari/537.21
+      Accept:
+      - '*/*'
+      Connection:
+      - Keep-Alive
+      Accept-Language:
+      - en-US,*
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Date:
+      - Sun, 15 Nov 2015 17:56:22 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Last-Modified:
+      - Sun, 17 May 1998 03:00:00 GMT
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - image/gif
+      Server:
+      - Golfe2
+      Content-Length:
+      - '35'
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        R0lGODlhAQABAID/AP///wAAACwAAAAAAQABAAACAkQBADs=
+    http_version: 
+  recorded_at: Sun, 15 Nov 2015 17:56:22 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:58487/volunteer_ops
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) capybara-webkit
+        Safari/537.21
+      Connection:
+      - Keep-Alive
+      Accept-Language:
+      - en-US,*
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Etag:
+      - W/"49a59aff45ab5fe3e97838930eff1f6b"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 47e656d9-4044-4cb3-8c4a-8d697f373e11
+      X-Runtime:
+      - '0.032349'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2015-02-25)
+      Date:
+      - Mon, 23 Nov 2015 20:17:47 GMT
+      Content-Length:
+      - '12148'
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html>\n<html>\n<head>\n  <meta http-equiv=\"content-type\"
+        content=\"text/html; charset=utf-8\" />\n  <meta name=\"description\" content=\"Harrow
+        Community Network is a service provided by Voluntary Action Harrow to help
+        people find voluntary services in their local community\" />\n  <meta name=\"keywords\"
+        content=\"Harrow, Community, Network, volunteer, volunteering, voluntary,
+        organisations, causes\" />\n  <meta name=\"google-site-verification\" content=\"NnSd82Tg3wYtm75gYpDTcnfe5HzS5T38cU7oPDRlTD0\"
+        />\n\n  <meta name=\"application-name\" content=\"LocalSupport\">\n\n  <meta
+        property=\"og:title\" content=\"Harrow Community Network\"/>\n  <meta property=\"og:url\"
+        content=\"http://127.0.0.1:58487/volunteer_ops\"/>\n  <meta property=\"og:site_name\"
+        content=\"Harrow Community Network\"/>\n  <meta property=\"og:description\"
+        content=\"Harrow Community Network is a service provided by Voluntary Action
+        Harrow to help people find voluntary services in their local community\">\n\n
+        \ <title>Harrow Community Network </title>\n  <link rel=\"stylesheet\" media=\"screen\"
+        href=\"/assets/application.css\" />\n  \n  <!--[if lt IE 9]>\n     <script
+        src=\"http://html5shim.googlecode.com/svn/trunk/html5.js\"></script>\n<![endif]-->\n\n
+        \ <script src=\"//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry\"
+        type=\"text/javascript\"></script>\n  <script src=\"/assets/application.js\"></script>\n
+        \ <!--this is where page-specific scripts are added-->\n      <script src=\"/assets/google_map.js\"></script>\n\n\n</head>\n\n<body>\n
+        \   <div id=\"cookie-message\" style=\"display: block;\">\n\n  <div id=\"cookie-message-inner\"
+        class=\"content\">\n    <div class=\"row\">\n      <h2>Cookie Policy</h2>\n
+        \     <a id=\"accept_cookies\" class=\"btn btn-primary\" rel=\"nofollow\"
+        data-method=\"POST\" href=\"/cookies/allow\">Close</a>\n\n    <p>We use cookies
+        to give you the best experience on our website. If you continue without changing
+        your cookie\n      settings, we assume that you consent to our use of cookies
+        on this device. You can change your cookie settings at\n      any time but
+        if you do, you may lose some functionality on our website. More information
+        can be found in our\n      <a href=\"/disclaimer\">terms of use.</a>\n    </div>\n
+        \ </div>\n</div>\n<div class=\"page-frame\">\n  <header>\n  <div id=\"navbar-wrapper\">\n
+        \   <div class=\"container\">\n      <div id=\"navbar\" class=\"navbar\">\n
+        \       <div class=\"navbar-inner\">\n          <div id=\"banner\" class=\"container\">\n
+        \           <a href=\"/\"><img class=\"img-responsive\" src=\"/assets/HCN-long.png\"
+        alt=\"Hcn long\" /></a>\n          </div>\n          <div class=\"container\">\n
+        \           <a class=\"btn btn-navbar\" data-toggle=\"collapse\" data-target=\".nav-collapse\">\n
+        \             <span class=\"icon-bar\"></span>\n              <span class=\"icon-bar\"></span>\n
+        \             <span class=\"icon-bar\"></span>\n            </a>\n            <a
+        href=\"/\" class=\"brand\" title=\"Search for local voluntary and community
+        organisations\">Search for local\n              voluntary and community organisations</a>\n\n
+        \           <div class=\"nav-collapse collapse\">\n              <ul id=\"button-rack\"
+        class=\"nav nav-pills pull-right\">\n                <li class = \"\">\n                  <a
+        href=\"/\">Home</a>\n                </li>\n                    <li class=\"dropdown
+        \" id=\"menuLogin\">\n                      <a class=\"dropdown-toggle\" href=\"#\"
+        data-toggle=\"dropdown\" id=\"navLogin\">Login</a>\n\n                      <div
+        class=\"dropdown-menu\" id=\"login\" style=\"padding:17px; width: 300px; padding-bottom:
+        0px;\">\n                        <div class=\"well\">\n                          <form
+        id=\"loginForm\" class=\"new_user\" action=\"/users/sign_in\" accept-charset=\"UTF-8\"
+        method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" />\n
+        \                             <div>\n                                <label>Login:</label>\n
+        \                               <!--[if lt IE 10]>\n                                <label
+        for=\"user_email\">Enter email</label>\n                                <![endif]-->\n
+        \                               <input autofocus=\"autofocus\" placeholder=\"you@example.com\"
+        type=\"email\" value=\"\" name=\"user[email]\" id=\"user_email\" />\n                              </div>\n
+        \                             <div>\n                                <!--[if
+        lt IE 10]>\n                                <label for=\"user_password\">Enter
+        password</label>\n                                <![endif]-->\n                                <input
+        placeholder=\"password\" type=\"password\" name=\"user[password]\" id=\"user_password\"
+        />\n                              </div>\n                                  <div
+        id = \"remember_me\"><input name=\"user[remember_me]\" type=\"hidden\" value=\"0\"
+        /><input type=\"checkbox\" value=\"1\" name=\"user[remember_me]\" id=\"user_remember_me\"
+        /> <label class=\"checkbox inline\" for=\"user_remember_me\">Remember me</label></div>\n
+        \                             <div style=\"display: inline;\"><input type=\"submit\"
+        name=\"commit\" value=\"Sign in\" id=\"signin\" class=\"btn btn-primary\"
+        /></div>\n                              <a href=\"/users/password/new\">Forgot
+        your password?</a>\n</form>                          <div id=\"register\">\n
+        \                           <form id=\"registerForm\" class=\"new_user\" action=\"/users\"
+        accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\"
+        value=\"&#x2713;\" />\n                                <label>Sign up:</label>\n
+        \                               \n                                <!--[if
+        lt IE 10]>\n                                <label for=\"user_password\">Enter
+        email</label>\n                                <![endif]-->\n                                <input
+        autofocus=\"autofocus\" id=\"signup_email\" name=\"user[email]\" placeholder=\"you@example.com\"
+        type=\"email\" value=\"\" />\n                                <!--[if lt IE
+        10]>\n                                <label for=\"user_password\">Enter password</label>\n
+        \                               <![endif]-->\n                                <input
+        id=\"signup_password\" name=\"user[password]\" placeholder=\"password\" type=\"password\"
+        />\n                                <!--[if lt IE 10]>\n                                <label
+        for=\"user_password\">Confirm password</label>\n                                <![endif]-->\n
+        \                               <input id=\"signup_password_confirmation\"
+        placeholder=\"confirm password\" type=\"password\" name=\"user[password_confirmation]\"
+        />\n                                <div style=\"display: inline;\"><input
+        type=\"submit\" name=\"commit\" value=\"Sign up\" id=\"signup\" class=\"btn
+        btn-primary\" /></div>\n</form>                          </div>\n                          <form>\n
+        \                           <a id=\"toggle_link\" title=\"Click this link
+        to Sign Up for an account\" href=\"#\">New organisation? Sign up</a>\n                          </form>\n
+        \                       </div>\n                      </div>\n                    </li>\n
+        \             </ul>\n            </div>\n          </div>\n        </div>\n
+        \     </div>\n    </div>\n  </div>\n\n</header>\n\n<script>\n    $('#registerForm').collapse('hide');\n
+        \   $('a#toggle_link').on('click', function (e) {\n        e.preventDefault();\n
+        \       // Get all relevant elements\n        var $link = $('a#toggle_link');\n
+        \       var $collapse1 = $('#loginForm');\n        var $collapse2 = $('#registerForm');\n
+        \       // Toggle the collapse of the forms\n        $collapse1.collapse('toggle');\n
+        \       $collapse2.collapse('toggle');\n        // Change the link text\n
+        \       if ($link.text() == 'New organisation? Sign up') {\n            $link.text('Already
+        a member? Log in');\n        }\n        else {\n            $link.text('New
+        organisation? Sign up');\n        }\n    });\n</script>\n\n  <section id=\"main\">
+        \  <!-- uniquify the child container to create the top margin -->\n      <div
+        class=\"container\">  <!-- outermost twitter bootstrap container-->\n        <div
+        id=\"content\">\n          <!-- Span 6 -->\n<div class=\"row\">\n  <div id=\"column1\"
+        class=\"span6\">\n    <div class=\"flex-row\">\n      <div class=\"map_container\">\n
+        \           <div id=\"marker_data\" data-markers=\"[{&quot;lat&quot;:51.5814093,&quot;lng&quot;:-0.343908,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        style=\\&quot;font-weight: 100\\&quot; href=\\&quot;/organisations/1\\&quot;\\u003eCats
+        Are Us\\u003c/a\\u003e\\u003c/strong\\u003e\\u003c/br\\u003e\\n\\u003cul\\u003e\\n
+        \ \\u003cli\\u003e\\n    \\u003ca style=\\&quot;font-weight: 900\\&quot; href=\\&quot;/volunteer_ops/1\\&quot;\\u003eLitter
+        Box Scooper\\u003c/a\\u003e\\u003c/br\\u003e\\n    Assist with feline sanitation\\u003c/br\\u003e\\n
+        \ \\u003c/li\\u003e\\n  \\u003c/ul\\u003e\\n\\u003c/div\\u003e\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg
+        data-id=\\&quot;1\\&quot; class=\\&quot;vol_op\\&quot; title=\\&quot;Click
+        here to see volunteer opportunities at Cats Are Us\\&quot; src=\\&quot;/assets/volunteer_icon.png\\&quot;
+        alt=\\&quot;Volunteer icon\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:1,&quot;type&quot;:&quot;vol_op&quot;},{&quot;lat&quot;:51.5813411,&quot;lng&quot;:-0.3468075,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        style=\\&quot;font-weight: 100\\&quot; href=\\&quot;/organisations/2\\&quot;\\u003eIndian
+        Elders Association\\u003c/a\\u003e\\u003c/strong\\u003e\\u003c/br\\u003e\\n\\u003cul\\u003e\\n
+        \ \\u003cli\\u003e\\n    \\u003ca style=\\&quot;font-weight: 900\\&quot; href=\\&quot;/volunteer_ops/2\\&quot;\\u003eOffice
+        Support\\u003c/a\\u003e\\u003c/br\\u003e\\n    Help with printing and copying.\\u003c/br\\u003e\\n
+        \ \\u003c/li\\u003e\\n  \\u003c/ul\\u003e\\n\\u003c/div\\u003e\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg
+        data-id=\\&quot;2\\&quot; class=\\&quot;vol_op\\&quot; title=\\&quot;Click
+        here to see volunteer opportunities at Indian Elders Association\\&quot; src=\\&quot;/assets/volunteer_icon.png\\&quot;
+        alt=\\&quot;Volunteer icon\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:1,&quot;type&quot;:&quot;vol_op&quot;}]\"></div>\n\n
+        \       <div id=\"map_canvas\"></div>\n      </div>\n    </div>\n    <div
+        class=\"map_legend\">\n      \n    </div>\n  </div>\n  <div id=\"column2\"
+        class=\"span6\">\n    <br>\n<div id=\"orgs_scroll\" style=\"height:410px;width:100%;border:1px
+        solid #ccc;overflow:scroll;\">\n  <div class=\"table table-bordered\">\n    <table>\n
+        \         <tr>\n            <td>\n              <strong><a href=\"/volunteer_ops/2\">Office
+        Support</a></strong><br/>\n\n              <div id=\"organisations\">\n                <small><a
+        href=\"/organisations/2\">Indian Elders Association</a></small>\n                <br/>\n
+        \             </div>\n              Help with printing and copying.\n              <br/>\n
+        \           </td>\n          </tr>\n          <tr>\n            <td>\n              <strong><a
+        href=\"/volunteer_ops/1\">Litter Box Scooper</a></strong><br/>\n\n              <div
+        id=\"organisations\">\n                <small><a href=\"/organisations/1\">Cats
+        Are Us</a></small>\n                <br/>\n              </div>\n              Assist
+        with feline sanitation\n              <br/>\n            </td>\n          </tr>\n
+        \   </table>\n  </div>\n</div>\n\n  </div>\n</div>\n\n        </div>\n      </div>\n
+        \     <br>\n      <br>\n      <div id=\"push\"></div>\n  </section>\n\n</div>\n<div
+        id=\"footer\" class=\"container\">\n  <hr>\n  <div class=\"row\">\n    <div
+        class=\"span5\">\n      <footer class=\"footer\">\n  <small>\n    Harrow Community
+        Network\n    provided by <a href=\"http://www.voluntaryactionharrow.org.uk/\">Voluntary
+        Action Harrow Co-operative&nbsp<img alt=\"Voluntary Action Harrow Co-operative\"
+        src=\"/assets/VAHC-Small-Logo.png\" width=\"30\" height=\"30\" /></a>\n  </small>\n</footer>\n\n\n
+        \   </div>\n    <div class=\"span3\">\n      <footer class=\"footer\">\n   <p
+        class=\"text-center\"><small>\n     Powered by <a href=\"/contributors\"><img
+        alt=\"Agile Ventures\" src=\"/assets/av_symbol_30px.png\" width=\"30\" height=\"30\"
+        /></a>&nbsp; &nbsp;<a href=\"https://www.expeditedssl.com/simple-ssl-scanner/scan?target_domain=www.harrowcn.org.uk\"
+        target=\"_blank\"><img width='70px' height='40px' alt=\"Ssl-secure-badge\"
+        src=\"https://www.expeditedssl.com/ssl-secure-badge.png\" /></a>\n   </small>
+        </p>\n</footer>\n\n\n\n    </div>\n    <div class=\"span4\">\n      <footer
+        class=\"footer\">\n  <p class=\"text-right\"><small>\n |\n  </small></p>\n</footer>\n\n\n
+        \   </div>\n  </div>\n</div>\n</body>\n</html>\n\n"
+    http_version: 
+  recorded_at: Mon, 23 Nov 2015 20:17:47 GMT
+- request:
+    method: get
+    uri: http://www.google-analytics.com/r/collect?_r=1&_s=1&_u=AEAAAEQAI~&_v=j39&a=1395327857&cid=2018770595.1448309867&de=UTF-8&dl=http://127.0.0.1/volunteer_ops&dt=Harrow%20Community%20Network&je=0&jid=1564368254&sd=24-bit&sr=1366x768&t=pageview&tid=UA-60361269-1&ul=en-us&v=1&vp=1667x1050&z=688924562
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Referer:
+      - http://127.0.0.1:58487/volunteer_ops
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) capybara-webkit
+        Safari/537.21
+      Accept:
+      - '*/*'
+      Connection:
+      - Keep-Alive
+      Accept-Language:
+      - en-US,*
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Date:
+      - Mon, 23 Nov 2015 20:17:47 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Last-Modified:
+      - Sun, 17 May 1998 03:00:00 GMT
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - image/gif
+      Server:
+      - Golfe2
+      Content-Length:
+      - '35'
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        R0lGODlhAQABAID/AP///wAAACwAAAAAAQABAAACAkQBADs=
+    http_version: 
+  recorded_at: Mon, 23 Nov 2015 20:17:47 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:36773/volunteer_ops
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) capybara-webkit
+        Safari/537.21
+      Connection:
+      - Keep-Alive
+      Accept-Language:
+      - en-US,*
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Etag:
+      - W/"b0c019cd89e2524952800e731f8c2461"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 7e653a20-8936-4b7b-8228-98b4164bd734
+      X-Runtime:
+      - '0.143519'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2015-02-25)
+      Date:
+      - Mon, 23 Nov 2015 20:42:34 GMT
+      Content-Length:
+      - '12148'
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html>\n<html>\n<head>\n  <meta http-equiv=\"content-type\"
+        content=\"text/html; charset=utf-8\" />\n  <meta name=\"description\" content=\"Harrow
+        Community Network is a service provided by Voluntary Action Harrow to help
+        people find voluntary services in their local community\" />\n  <meta name=\"keywords\"
+        content=\"Harrow, Community, Network, volunteer, volunteering, voluntary,
+        organisations, causes\" />\n  <meta name=\"google-site-verification\" content=\"NnSd82Tg3wYtm75gYpDTcnfe5HzS5T38cU7oPDRlTD0\"
+        />\n\n  <meta name=\"application-name\" content=\"LocalSupport\">\n\n  <meta
+        property=\"og:title\" content=\"Harrow Community Network\"/>\n  <meta property=\"og:url\"
+        content=\"http://127.0.0.1:36773/volunteer_ops\"/>\n  <meta property=\"og:site_name\"
+        content=\"Harrow Community Network\"/>\n  <meta property=\"og:description\"
+        content=\"Harrow Community Network is a service provided by Voluntary Action
+        Harrow to help people find voluntary services in their local community\">\n\n
+        \ <title>Harrow Community Network </title>\n  <link rel=\"stylesheet\" media=\"screen\"
+        href=\"/assets/application.css\" />\n  \n  <!--[if lt IE 9]>\n     <script
+        src=\"http://html5shim.googlecode.com/svn/trunk/html5.js\"></script>\n<![endif]-->\n\n
+        \ <script src=\"//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry\"
+        type=\"text/javascript\"></script>\n  <script src=\"/assets/application.js\"></script>\n
+        \ <!--this is where page-specific scripts are added-->\n      <script src=\"/assets/google_map.js\"></script>\n\n\n</head>\n\n<body>\n
+        \   <div id=\"cookie-message\" style=\"display: block;\">\n\n  <div id=\"cookie-message-inner\"
+        class=\"content\">\n    <div class=\"row\">\n      <h2>Cookie Policy</h2>\n
+        \     <a id=\"accept_cookies\" class=\"btn btn-primary\" rel=\"nofollow\"
+        data-method=\"POST\" href=\"/cookies/allow\">Close</a>\n\n    <p>We use cookies
+        to give you the best experience on our website. If you continue without changing
+        your cookie\n      settings, we assume that you consent to our use of cookies
+        on this device. You can change your cookie settings at\n      any time but
+        if you do, you may lose some functionality on our website. More information
+        can be found in our\n      <a href=\"/disclaimer\">terms of use.</a>\n    </div>\n
+        \ </div>\n</div>\n<div class=\"page-frame\">\n  <header>\n  <div id=\"navbar-wrapper\">\n
+        \   <div class=\"container\">\n      <div id=\"navbar\" class=\"navbar\">\n
+        \       <div class=\"navbar-inner\">\n          <div id=\"banner\" class=\"container\">\n
+        \           <a href=\"/\"><img class=\"img-responsive\" src=\"/assets/HCN-long.png\"
+        alt=\"Hcn long\" /></a>\n          </div>\n          <div class=\"container\">\n
+        \           <a class=\"btn btn-navbar\" data-toggle=\"collapse\" data-target=\".nav-collapse\">\n
+        \             <span class=\"icon-bar\"></span>\n              <span class=\"icon-bar\"></span>\n
+        \             <span class=\"icon-bar\"></span>\n            </a>\n            <a
+        href=\"/\" class=\"brand\" title=\"Search for local voluntary and community
+        organisations\">Search for local\n              voluntary and community organisations</a>\n\n
+        \           <div class=\"nav-collapse collapse\">\n              <ul id=\"button-rack\"
+        class=\"nav nav-pills pull-right\">\n                <li class = \"\">\n                  <a
+        href=\"/\">Home</a>\n                </li>\n                    <li class=\"dropdown
+        \" id=\"menuLogin\">\n                      <a class=\"dropdown-toggle\" href=\"#\"
+        data-toggle=\"dropdown\" id=\"navLogin\">Login</a>\n\n                      <div
+        class=\"dropdown-menu\" id=\"login\" style=\"padding:17px; width: 300px; padding-bottom:
+        0px;\">\n                        <div class=\"well\">\n                          <form
+        id=\"loginForm\" class=\"new_user\" action=\"/users/sign_in\" accept-charset=\"UTF-8\"
+        method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" />\n
+        \                             <div>\n                                <label>Login:</label>\n
+        \                               <!--[if lt IE 10]>\n                                <label
+        for=\"user_email\">Enter email</label>\n                                <![endif]-->\n
+        \                               <input autofocus=\"autofocus\" placeholder=\"you@example.com\"
+        type=\"email\" value=\"\" name=\"user[email]\" id=\"user_email\" />\n                              </div>\n
+        \                             <div>\n                                <!--[if
+        lt IE 10]>\n                                <label for=\"user_password\">Enter
+        password</label>\n                                <![endif]-->\n                                <input
+        placeholder=\"password\" type=\"password\" name=\"user[password]\" id=\"user_password\"
+        />\n                              </div>\n                                  <div
+        id = \"remember_me\"><input name=\"user[remember_me]\" type=\"hidden\" value=\"0\"
+        /><input type=\"checkbox\" value=\"1\" name=\"user[remember_me]\" id=\"user_remember_me\"
+        /> <label class=\"checkbox inline\" for=\"user_remember_me\">Remember me</label></div>\n
+        \                             <div style=\"display: inline;\"><input type=\"submit\"
+        name=\"commit\" value=\"Sign in\" id=\"signin\" class=\"btn btn-primary\"
+        /></div>\n                              <a href=\"/users/password/new\">Forgot
+        your password?</a>\n</form>                          <div id=\"register\">\n
+        \                           <form id=\"registerForm\" class=\"new_user\" action=\"/users\"
+        accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\"
+        value=\"&#x2713;\" />\n                                <label>Sign up:</label>\n
+        \                               \n                                <!--[if
+        lt IE 10]>\n                                <label for=\"user_password\">Enter
+        email</label>\n                                <![endif]-->\n                                <input
+        autofocus=\"autofocus\" id=\"signup_email\" name=\"user[email]\" placeholder=\"you@example.com\"
+        type=\"email\" value=\"\" />\n                                <!--[if lt IE
+        10]>\n                                <label for=\"user_password\">Enter password</label>\n
+        \                               <![endif]-->\n                                <input
+        id=\"signup_password\" name=\"user[password]\" placeholder=\"password\" type=\"password\"
+        />\n                                <!--[if lt IE 10]>\n                                <label
+        for=\"user_password\">Confirm password</label>\n                                <![endif]-->\n
+        \                               <input id=\"signup_password_confirmation\"
+        placeholder=\"confirm password\" type=\"password\" name=\"user[password_confirmation]\"
+        />\n                                <div style=\"display: inline;\"><input
+        type=\"submit\" name=\"commit\" value=\"Sign up\" id=\"signup\" class=\"btn
+        btn-primary\" /></div>\n</form>                          </div>\n                          <form>\n
+        \                           <a id=\"toggle_link\" title=\"Click this link
+        to Sign Up for an account\" href=\"#\">New organisation? Sign up</a>\n                          </form>\n
+        \                       </div>\n                      </div>\n                    </li>\n
+        \             </ul>\n            </div>\n          </div>\n        </div>\n
+        \     </div>\n    </div>\n  </div>\n\n</header>\n\n<script>\n    $('#registerForm').collapse('hide');\n
+        \   $('a#toggle_link').on('click', function (e) {\n        e.preventDefault();\n
+        \       // Get all relevant elements\n        var $link = $('a#toggle_link');\n
+        \       var $collapse1 = $('#loginForm');\n        var $collapse2 = $('#registerForm');\n
+        \       // Toggle the collapse of the forms\n        $collapse1.collapse('toggle');\n
+        \       $collapse2.collapse('toggle');\n        // Change the link text\n
+        \       if ($link.text() == 'New organisation? Sign up') {\n            $link.text('Already
+        a member? Log in');\n        }\n        else {\n            $link.text('New
+        organisation? Sign up');\n        }\n    });\n</script>\n\n  <section id=\"main\">
+        \  <!-- uniquify the child container to create the top margin -->\n      <div
+        class=\"container\">  <!-- outermost twitter bootstrap container-->\n        <div
+        id=\"content\">\n          <!-- Span 6 -->\n<div class=\"row\">\n  <div id=\"column1\"
+        class=\"span6\">\n    <div class=\"flex-row\">\n      <div class=\"map_container\">\n
+        \           <div id=\"marker_data\" data-markers=\"[{&quot;lat&quot;:51.5814093,&quot;lng&quot;:-0.343908,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        style=\\&quot;font-weight: 100\\&quot; href=\\&quot;/organisations/1\\&quot;\\u003eCats
+        Are Us\\u003c/a\\u003e\\u003c/strong\\u003e\\u003c/br\\u003e\\n\\u003cul\\u003e\\n
+        \ \\u003cli\\u003e\\n    \\u003ca style=\\&quot;font-weight: 900\\&quot; href=\\&quot;/volunteer_ops/1\\&quot;\\u003eLitter
+        Box Scooper\\u003c/a\\u003e\\u003c/br\\u003e\\n    Assist with feline sanitation\\u003c/br\\u003e\\n
+        \ \\u003c/li\\u003e\\n  \\u003c/ul\\u003e\\n\\u003c/div\\u003e\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg
+        data-id=\\&quot;1\\&quot; class=\\&quot;vol_op\\&quot; title=\\&quot;Click
+        here to see volunteer opportunities at Cats Are Us\\&quot; src=\\&quot;/assets/volunteer_icon.png\\&quot;
+        alt=\\&quot;Volunteer icon\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:1,&quot;type&quot;:&quot;vol_op&quot;},{&quot;lat&quot;:51.5813411,&quot;lng&quot;:-0.3468075,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        style=\\&quot;font-weight: 100\\&quot; href=\\&quot;/organisations/2\\&quot;\\u003eIndian
+        Elders Association\\u003c/a\\u003e\\u003c/strong\\u003e\\u003c/br\\u003e\\n\\u003cul\\u003e\\n
+        \ \\u003cli\\u003e\\n    \\u003ca style=\\&quot;font-weight: 900\\&quot; href=\\&quot;/volunteer_ops/2\\&quot;\\u003eOffice
+        Support\\u003c/a\\u003e\\u003c/br\\u003e\\n    Help with printing and copying.\\u003c/br\\u003e\\n
+        \ \\u003c/li\\u003e\\n  \\u003c/ul\\u003e\\n\\u003c/div\\u003e\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg
+        data-id=\\&quot;2\\&quot; class=\\&quot;vol_op\\&quot; title=\\&quot;Click
+        here to see volunteer opportunities at Indian Elders Association\\&quot; src=\\&quot;/assets/volunteer_icon.png\\&quot;
+        alt=\\&quot;Volunteer icon\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:1,&quot;type&quot;:&quot;vol_op&quot;}]\"></div>\n\n
+        \       <div id=\"map_canvas\"></div>\n      </div>\n    </div>\n    <div
+        class=\"map_legend\">\n      \n    </div>\n  </div>\n  <div id=\"column2\"
+        class=\"span6\">\n    <br>\n<div id=\"orgs_scroll\" style=\"height:410px;width:100%;border:1px
+        solid #ccc;overflow:scroll;\">\n  <div class=\"table table-bordered\">\n    <table>\n
+        \         <tr>\n            <td>\n              <strong><a href=\"/volunteer_ops/2\">Office
+        Support</a></strong><br/>\n\n              <div id=\"organisations\">\n                <small><a
+        href=\"/organisations/2\">Indian Elders Association</a></small>\n                <br/>\n
+        \             </div>\n              Help with printing and copying.\n              <br/>\n
+        \           </td>\n          </tr>\n          <tr>\n            <td>\n              <strong><a
+        href=\"/volunteer_ops/1\">Litter Box Scooper</a></strong><br/>\n\n              <div
+        id=\"organisations\">\n                <small><a href=\"/organisations/1\">Cats
+        Are Us</a></small>\n                <br/>\n              </div>\n              Assist
+        with feline sanitation\n              <br/>\n            </td>\n          </tr>\n
+        \   </table>\n  </div>\n</div>\n\n  </div>\n</div>\n\n        </div>\n      </div>\n
+        \     <br>\n      <br>\n      <div id=\"push\"></div>\n  </section>\n\n</div>\n<div
+        id=\"footer\" class=\"container\">\n  <hr>\n  <div class=\"row\">\n    <div
+        class=\"span5\">\n      <footer class=\"footer\">\n  <small>\n    Harrow Community
+        Network\n    provided by <a href=\"http://www.voluntaryactionharrow.org.uk/\">Voluntary
+        Action Harrow Co-operative&nbsp<img alt=\"Voluntary Action Harrow Co-operative\"
+        src=\"/assets/VAHC-Small-Logo.png\" width=\"30\" height=\"30\" /></a>\n  </small>\n</footer>\n\n\n
+        \   </div>\n    <div class=\"span3\">\n      <footer class=\"footer\">\n   <p
+        class=\"text-center\"><small>\n     Powered by <a href=\"/contributors\"><img
+        alt=\"Agile Ventures\" src=\"/assets/av_symbol_30px.png\" width=\"30\" height=\"30\"
+        /></a>&nbsp; &nbsp;<a href=\"https://www.expeditedssl.com/simple-ssl-scanner/scan?target_domain=www.harrowcn.org.uk\"
+        target=\"_blank\"><img width='70px' height='40px' alt=\"Ssl-secure-badge\"
+        src=\"https://www.expeditedssl.com/ssl-secure-badge.png\" /></a>\n   </small>
+        </p>\n</footer>\n\n\n\n    </div>\n    <div class=\"span4\">\n      <footer
+        class=\"footer\">\n  <p class=\"text-right\"><small>\n |\n  </small></p>\n</footer>\n\n\n
+        \   </div>\n  </div>\n</div>\n</body>\n</html>\n\n"
+    http_version: 
+  recorded_at: Mon, 23 Nov 2015 20:42:34 GMT
+- request:
+    method: get
+    uri: http://www.google-analytics.com/r/collect?_r=1&_s=1&_u=AEAAAEQAI~&_v=j39&a=1761850155&cid=754534914.1448311355&de=UTF-8&dl=http://127.0.0.1/volunteer_ops&dt=Harrow%20Community%20Network&je=0&jid=218801974&sd=24-bit&sr=1366x768&t=pageview&tid=UA-60361269-1&ul=en-us&v=1&vp=1667x1050&z=836866357
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Referer:
+      - http://127.0.0.1:36773/volunteer_ops
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) capybara-webkit
+        Safari/537.21
+      Accept:
+      - '*/*'
+      Connection:
+      - Keep-Alive
+      Accept-Language:
+      - en-US,*
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Date:
+      - Mon, 23 Nov 2015 20:42:34 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Last-Modified:
+      - Sun, 17 May 1998 03:00:00 GMT
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - image/gif
+      Server:
+      - Golfe2
+      Content-Length:
+      - '35'
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        R0lGODlhAQABAID/AP///wAAACwAAAAAAQABAAACAkQBADs=
+    http_version: 
+  recorded_at: Mon, 23 Nov 2015 20:42:34 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:37134/volunteer_ops
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) capybara-webkit
+        Safari/537.21
+      Connection:
+      - Keep-Alive
+      Accept-Language:
+      - en-US,*
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Etag:
+      - W/"ca163cf48b2966a3971cdb69d51f2f9b"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - af920477-ab02-4518-bc7a-2752a49eaa06
+      X-Runtime:
+      - '0.048719'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2015-02-25)
+      Date:
+      - Mon, 23 Nov 2015 21:05:32 GMT
+      Content-Length:
+      - '12148'
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html>\n<html>\n<head>\n  <meta http-equiv=\"content-type\"
+        content=\"text/html; charset=utf-8\" />\n  <meta name=\"description\" content=\"Harrow
+        Community Network is a service provided by Voluntary Action Harrow to help
+        people find voluntary services in their local community\" />\n  <meta name=\"keywords\"
+        content=\"Harrow, Community, Network, volunteer, volunteering, voluntary,
+        organisations, causes\" />\n  <meta name=\"google-site-verification\" content=\"NnSd82Tg3wYtm75gYpDTcnfe5HzS5T38cU7oPDRlTD0\"
+        />\n\n  <meta name=\"application-name\" content=\"LocalSupport\">\n\n  <meta
+        property=\"og:title\" content=\"Harrow Community Network\"/>\n  <meta property=\"og:url\"
+        content=\"http://127.0.0.1:37134/volunteer_ops\"/>\n  <meta property=\"og:site_name\"
+        content=\"Harrow Community Network\"/>\n  <meta property=\"og:description\"
+        content=\"Harrow Community Network is a service provided by Voluntary Action
+        Harrow to help people find voluntary services in their local community\">\n\n
+        \ <title>Harrow Community Network </title>\n  <link rel=\"stylesheet\" media=\"screen\"
+        href=\"/assets/application.css\" />\n  \n  <!--[if lt IE 9]>\n     <script
+        src=\"http://html5shim.googlecode.com/svn/trunk/html5.js\"></script>\n<![endif]-->\n\n
+        \ <script src=\"//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry\"
+        type=\"text/javascript\"></script>\n  <script src=\"/assets/application.js\"></script>\n
+        \ <!--this is where page-specific scripts are added-->\n      <script src=\"/assets/google_map.js\"></script>\n\n\n</head>\n\n<body>\n
+        \   <div id=\"cookie-message\" style=\"display: block;\">\n\n  <div id=\"cookie-message-inner\"
+        class=\"content\">\n    <div class=\"row\">\n      <h2>Cookie Policy</h2>\n
+        \     <a id=\"accept_cookies\" class=\"btn btn-primary\" rel=\"nofollow\"
+        data-method=\"POST\" href=\"/cookies/allow\">Close</a>\n\n    <p>We use cookies
+        to give you the best experience on our website. If you continue without changing
+        your cookie\n      settings, we assume that you consent to our use of cookies
+        on this device. You can change your cookie settings at\n      any time but
+        if you do, you may lose some functionality on our website. More information
+        can be found in our\n      <a href=\"/disclaimer\">terms of use.</a>\n    </div>\n
+        \ </div>\n</div>\n<div class=\"page-frame\">\n  <header>\n  <div id=\"navbar-wrapper\">\n
+        \   <div class=\"container\">\n      <div id=\"navbar\" class=\"navbar\">\n
+        \       <div class=\"navbar-inner\">\n          <div id=\"banner\" class=\"container\">\n
+        \           <a href=\"/\"><img class=\"img-responsive\" src=\"/assets/HCN-long.png\"
+        alt=\"Hcn long\" /></a>\n          </div>\n          <div class=\"container\">\n
+        \           <a class=\"btn btn-navbar\" data-toggle=\"collapse\" data-target=\".nav-collapse\">\n
+        \             <span class=\"icon-bar\"></span>\n              <span class=\"icon-bar\"></span>\n
+        \             <span class=\"icon-bar\"></span>\n            </a>\n            <a
+        href=\"/\" class=\"brand\" title=\"Search for local voluntary and community
+        organisations\">Search for local\n              voluntary and community organisations</a>\n\n
+        \           <div class=\"nav-collapse collapse\">\n              <ul id=\"button-rack\"
+        class=\"nav nav-pills pull-right\">\n                <li class = \"\">\n                  <a
+        href=\"/\">Home</a>\n                </li>\n                    <li class=\"dropdown
+        \" id=\"menuLogin\">\n                      <a class=\"dropdown-toggle\" href=\"#\"
+        data-toggle=\"dropdown\" id=\"navLogin\">Login</a>\n\n                      <div
+        class=\"dropdown-menu\" id=\"login\" style=\"padding:17px; width: 300px; padding-bottom:
+        0px;\">\n                        <div class=\"well\">\n                          <form
+        id=\"loginForm\" class=\"new_user\" action=\"/users/sign_in\" accept-charset=\"UTF-8\"
+        method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" />\n
+        \                             <div>\n                                <label>Login:</label>\n
+        \                               <!--[if lt IE 10]>\n                                <label
+        for=\"user_email\">Enter email</label>\n                                <![endif]-->\n
+        \                               <input autofocus=\"autofocus\" placeholder=\"you@example.com\"
+        type=\"email\" value=\"\" name=\"user[email]\" id=\"user_email\" />\n                              </div>\n
+        \                             <div>\n                                <!--[if
+        lt IE 10]>\n                                <label for=\"user_password\">Enter
+        password</label>\n                                <![endif]-->\n                                <input
+        placeholder=\"password\" type=\"password\" name=\"user[password]\" id=\"user_password\"
+        />\n                              </div>\n                                  <div
+        id = \"remember_me\"><input name=\"user[remember_me]\" type=\"hidden\" value=\"0\"
+        /><input type=\"checkbox\" value=\"1\" name=\"user[remember_me]\" id=\"user_remember_me\"
+        /> <label class=\"checkbox inline\" for=\"user_remember_me\">Remember me</label></div>\n
+        \                             <div style=\"display: inline;\"><input type=\"submit\"
+        name=\"commit\" value=\"Sign in\" id=\"signin\" class=\"btn btn-primary\"
+        /></div>\n                              <a href=\"/users/password/new\">Forgot
+        your password?</a>\n</form>                          <div id=\"register\">\n
+        \                           <form id=\"registerForm\" class=\"new_user\" action=\"/users\"
+        accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\"
+        value=\"&#x2713;\" />\n                                <label>Sign up:</label>\n
+        \                               \n                                <!--[if
+        lt IE 10]>\n                                <label for=\"user_password\">Enter
+        email</label>\n                                <![endif]-->\n                                <input
+        autofocus=\"autofocus\" id=\"signup_email\" name=\"user[email]\" placeholder=\"you@example.com\"
+        type=\"email\" value=\"\" />\n                                <!--[if lt IE
+        10]>\n                                <label for=\"user_password\">Enter password</label>\n
+        \                               <![endif]-->\n                                <input
+        id=\"signup_password\" name=\"user[password]\" placeholder=\"password\" type=\"password\"
+        />\n                                <!--[if lt IE 10]>\n                                <label
+        for=\"user_password\">Confirm password</label>\n                                <![endif]-->\n
+        \                               <input id=\"signup_password_confirmation\"
+        placeholder=\"confirm password\" type=\"password\" name=\"user[password_confirmation]\"
+        />\n                                <div style=\"display: inline;\"><input
+        type=\"submit\" name=\"commit\" value=\"Sign up\" id=\"signup\" class=\"btn
+        btn-primary\" /></div>\n</form>                          </div>\n                          <form>\n
+        \                           <a id=\"toggle_link\" title=\"Click this link
+        to Sign Up for an account\" href=\"#\">New organisation? Sign up</a>\n                          </form>\n
+        \                       </div>\n                      </div>\n                    </li>\n
+        \             </ul>\n            </div>\n          </div>\n        </div>\n
+        \     </div>\n    </div>\n  </div>\n\n</header>\n\n<script>\n    $('#registerForm').collapse('hide');\n
+        \   $('a#toggle_link').on('click', function (e) {\n        e.preventDefault();\n
+        \       // Get all relevant elements\n        var $link = $('a#toggle_link');\n
+        \       var $collapse1 = $('#loginForm');\n        var $collapse2 = $('#registerForm');\n
+        \       // Toggle the collapse of the forms\n        $collapse1.collapse('toggle');\n
+        \       $collapse2.collapse('toggle');\n        // Change the link text\n
+        \       if ($link.text() == 'New organisation? Sign up') {\n            $link.text('Already
+        a member? Log in');\n        }\n        else {\n            $link.text('New
+        organisation? Sign up');\n        }\n    });\n</script>\n\n  <section id=\"main\">
+        \  <!-- uniquify the child container to create the top margin -->\n      <div
+        class=\"container\">  <!-- outermost twitter bootstrap container-->\n        <div
+        id=\"content\">\n          <!-- Span 6 -->\n<div class=\"row\">\n  <div id=\"column1\"
+        class=\"span6\">\n    <div class=\"flex-row\">\n      <div class=\"map_container\">\n
+        \           <div id=\"marker_data\" data-markers=\"[{&quot;lat&quot;:51.5814093,&quot;lng&quot;:-0.343908,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        style=\\&quot;font-weight: 100\\&quot; href=\\&quot;/organisations/1\\&quot;\\u003eCats
+        Are Us\\u003c/a\\u003e\\u003c/strong\\u003e\\u003c/br\\u003e\\n\\u003cul\\u003e\\n
+        \ \\u003cli\\u003e\\n    \\u003ca style=\\&quot;font-weight: 900\\&quot; href=\\&quot;/volunteer_ops/1\\&quot;\\u003eLitter
+        Box Scooper\\u003c/a\\u003e\\u003c/br\\u003e\\n    Assist with feline sanitation\\u003c/br\\u003e\\n
+        \ \\u003c/li\\u003e\\n  \\u003c/ul\\u003e\\n\\u003c/div\\u003e\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg
+        data-id=\\&quot;1\\&quot; class=\\&quot;vol_op\\&quot; title=\\&quot;Click
+        here to see volunteer opportunities at Cats Are Us\\&quot; src=\\&quot;/assets/volunteer_icon.png\\&quot;
+        alt=\\&quot;Volunteer icon\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:1,&quot;type&quot;:&quot;vol_op&quot;},{&quot;lat&quot;:51.5813411,&quot;lng&quot;:-0.3468075,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        style=\\&quot;font-weight: 100\\&quot; href=\\&quot;/organisations/2\\&quot;\\u003eIndian
+        Elders Association\\u003c/a\\u003e\\u003c/strong\\u003e\\u003c/br\\u003e\\n\\u003cul\\u003e\\n
+        \ \\u003cli\\u003e\\n    \\u003ca style=\\&quot;font-weight: 900\\&quot; href=\\&quot;/volunteer_ops/2\\&quot;\\u003eOffice
+        Support\\u003c/a\\u003e\\u003c/br\\u003e\\n    Help with printing and copying.\\u003c/br\\u003e\\n
+        \ \\u003c/li\\u003e\\n  \\u003c/ul\\u003e\\n\\u003c/div\\u003e\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg
+        data-id=\\&quot;2\\&quot; class=\\&quot;vol_op\\&quot; title=\\&quot;Click
+        here to see volunteer opportunities at Indian Elders Association\\&quot; src=\\&quot;/assets/volunteer_icon.png\\&quot;
+        alt=\\&quot;Volunteer icon\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:1,&quot;type&quot;:&quot;vol_op&quot;}]\"></div>\n\n
+        \       <div id=\"map_canvas\"></div>\n      </div>\n    </div>\n    <div
+        class=\"map_legend\">\n      \n    </div>\n  </div>\n  <div id=\"column2\"
+        class=\"span6\">\n    <br>\n<div id=\"orgs_scroll\" style=\"height:410px;width:100%;border:1px
+        solid #ccc;overflow:scroll;\">\n  <div class=\"table table-bordered\">\n    <table>\n
+        \         <tr>\n            <td>\n              <strong><a href=\"/volunteer_ops/2\">Office
+        Support</a></strong><br/>\n\n              <div id=\"organisations\">\n                <small><a
+        href=\"/organisations/2\">Indian Elders Association</a></small>\n                <br/>\n
+        \             </div>\n              Help with printing and copying.\n              <br/>\n
+        \           </td>\n          </tr>\n          <tr>\n            <td>\n              <strong><a
+        href=\"/volunteer_ops/1\">Litter Box Scooper</a></strong><br/>\n\n              <div
+        id=\"organisations\">\n                <small><a href=\"/organisations/1\">Cats
+        Are Us</a></small>\n                <br/>\n              </div>\n              Assist
+        with feline sanitation\n              <br/>\n            </td>\n          </tr>\n
+        \   </table>\n  </div>\n</div>\n\n  </div>\n</div>\n\n        </div>\n      </div>\n
+        \     <br>\n      <br>\n      <div id=\"push\"></div>\n  </section>\n\n</div>\n<div
+        id=\"footer\" class=\"container\">\n  <hr>\n  <div class=\"row\">\n    <div
+        class=\"span5\">\n      <footer class=\"footer\">\n  <small>\n    Harrow Community
+        Network\n    provided by <a href=\"http://www.voluntaryactionharrow.org.uk/\">Voluntary
+        Action Harrow Co-operative&nbsp<img alt=\"Voluntary Action Harrow Co-operative\"
+        src=\"/assets/VAHC-Small-Logo.png\" width=\"30\" height=\"30\" /></a>\n  </small>\n</footer>\n\n\n
+        \   </div>\n    <div class=\"span3\">\n      <footer class=\"footer\">\n   <p
+        class=\"text-center\"><small>\n     Powered by <a href=\"/contributors\"><img
+        alt=\"Agile Ventures\" src=\"/assets/av_symbol_30px.png\" width=\"30\" height=\"30\"
+        /></a>&nbsp; &nbsp;<a href=\"https://www.expeditedssl.com/simple-ssl-scanner/scan?target_domain=www.harrowcn.org.uk\"
+        target=\"_blank\"><img width='70px' height='40px' alt=\"Ssl-secure-badge\"
+        src=\"https://www.expeditedssl.com/ssl-secure-badge.png\" /></a>\n   </small>
+        </p>\n</footer>\n\n\n\n    </div>\n    <div class=\"span4\">\n      <footer
+        class=\"footer\">\n  <p class=\"text-right\"><small>\n |\n  </small></p>\n</footer>\n\n\n
+        \   </div>\n  </div>\n</div>\n</body>\n</html>\n\n"
+    http_version: 
+  recorded_at: Mon, 23 Nov 2015 21:05:32 GMT
 recorded_with: VCR 2.9.3

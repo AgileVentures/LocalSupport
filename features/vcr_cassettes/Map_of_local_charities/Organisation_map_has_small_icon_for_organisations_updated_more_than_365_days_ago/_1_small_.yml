@@ -5540,4 +5540,1603 @@ http_interactions:
         \   </div>\n  </div>\n</div>\n</body>\n</html>\n\n"
     http_version: 
   recorded_at: Mon, 14 Nov 2016 23:00:40 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:57451/
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) capybara-webkit
+        Safari/537.21
+      Connection:
+      - Keep-Alive
+      Accept-Language:
+      - en-US,*
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Etag:
+      - W/"e9eed6b298529b3a473422790cdbb7b3"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - fc60ced8-dab6-4d46-83ef-8c8080df4c4f
+      X-Runtime:
+      - '0.031022'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2015-02-25)
+      Date:
+      - Wed, 16 Nov 2016 17:52:19 GMT
+      Content-Length:
+      - '14390'
+      Connection:
+      - close
+      Set-Cookie:
+      - _LocalSupport_session=cEdzZDlWbWw4MzJZZElmQWRqZCszdjBHdmNLU2F5OGJqRkUxS0RQbTgrVUpHSTVBWndWU2lZR05sR2NjR200N2VOWnZ2VGNwdmlTMXNVYnM0bDgyZ3JQS3phS0Z2VlYxdjFFYjFPVStHREhCTmg2QTBlWkl6b05NdU1uVkI5V1ItLUZBYkUxZFFISENoNVgvSzhGRmNTemc9PQ%3D%3D--cd731ad0c395a620644b72fa9d395a6ed7bac5bd;
+        path=/; HttpOnly
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html>\n<html>\n<head>\n  <meta http-equiv=\"content-type\"
+        content=\"text/html; charset=utf-8\" />\n  <meta name=\"description\" content=\"Harrow
+        Community Network is a service provided by Voluntary Action Harrow to help
+        people find voluntary services in their local community\" />\n  <meta name=\"keywords\"
+        content=\"Harrow, Community, Network, volunteer, volunteering, voluntary,
+        organisations, causes\" />\n  <meta name=\"google-site-verification\" content=\"NnSd82Tg3wYtm75gYpDTcnfe5HzS5T38cU7oPDRlTD0\"
+        />\n\n  <meta name=\"application-name\" content=\"LocalSupport\">\n\n  <meta
+        property=\"og:title\" content=\"Harrow Community Network\"/>\n  <meta property=\"og:url\"
+        content=\"http://127.0.0.1:57451/\"/>\n  <meta property=\"og:site_name\" content=\"Harrow
+        Community Network\"/>\n  <meta property=\"og:description\" content=\"Harrow
+        Community Network is a service provided by Voluntary Action Harrow to help
+        people find voluntary services in their local community\">\n\n  <title>Harrow
+        Community Network </title>\n  <link rel=\"stylesheet\" media=\"screen\" href=\"/assets/application.css\"
+        />\n  \n  <!--[if lt IE 9]>\n     <script src=\"http://html5shim.googlecode.com/svn/trunk/html5.js\"></script>\n<![endif]-->\n\n
+        \ <script src=\"//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry\"
+        type=\"text/javascript\"></script>\n  <script src=\"/assets/application.js\"></script>\n
+        \ <!--this is where page-specific scripts are added-->\n      <script src=\"/assets/google_map.js\"></script>\n\n\n</head>\n\n<body>\n
+        \   <div id=\"cookie-message\" style=\"display: block;\">\n\n  <div id=\"cookie-message-inner\"
+        class=\"content\">\n    <div class=\"row\">\n      <h2>Cookie Policy</h2>\n
+        \     <a id=\"accept_cookies\" class=\"btn btn-primary\" rel=\"nofollow\"
+        data-method=\"POST\" href=\"/cookies/allow\">Close</a>\n\n    <p>We use cookies
+        to give you the best experience on our website. If you continue without changing
+        your cookie\n      settings, we assume that you consent to our use of cookies
+        on this device. You can change your cookie settings at\n      any time but
+        if you do, you may lose some functionality on our website. More information
+        can be found in our\n      <a href=\"/disclaimer\">terms of use.</a>\n    </div>\n
+        \ </div>\n</div>\n<div class=\"page-frame\">\n  <header>\n  <div id=\"navbar-wrapper\">\n
+        \   <div class=\"container\">\n      <div id=\"navbar\" class=\"navbar\">\n
+        \       <div class=\"navbar-inner\">\n          <div id=\"banner\" class=\"container\">\n
+        \           <a href=\"/\"><img class=\"img-responsive\" src=\"/assets/HCN-long.png\"
+        alt=\"Hcn long\" /></a>\n          </div>\n          <div class=\"container\">\n
+        \           <a class=\"btn btn-navbar\" data-toggle=\"collapse\" data-target=\".nav-collapse\">\n
+        \             <span class=\"icon-bar\"></span>\n              <span class=\"icon-bar\"></span>\n
+        \             <span class=\"icon-bar\"></span>\n            </a>\n            <a
+        href=\"/\" class=\"brand\" title=\"Search for local voluntary and community
+        organisations\">Search for local\n              voluntary and community organisations</a>\n\n
+        \           <div class=\"nav-collapse collapse\">\n              <ul id=\"button-rack\"
+        class=\"nav nav-pills pull-right\">\n                <li class = \"active\">\n
+        \                 <a href=\"/\">Home</a>\n                </li>\n                    <li
+        class=\"dropdown \" id=\"menuLogin\">\n                      <a class=\"dropdown-toggle\"
+        href=\"#\" data-toggle=\"dropdown\" id=\"navLogin\">Login</a>\n\n                      <div
+        class=\"dropdown-menu\" id=\"login\" style=\"padding:17px; width: 300px; padding-bottom:
+        0px;\">\n                        <div class=\"well\">\n                          <form
+        id=\"loginForm\" class=\"new_user\" action=\"/users/sign_in\" accept-charset=\"UTF-8\"
+        method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" />\n
+        \                             <div>\n                                <label>Login:</label>\n
+        \                               <!--[if lt IE 10]>\n                                <label
+        for=\"user_email\">Enter email</label>\n                                <![endif]-->\n
+        \                               <input autofocus=\"autofocus\" placeholder=\"you@example.com\"
+        type=\"email\" value=\"\" name=\"user[email]\" id=\"user_email\" />\n                              </div>\n
+        \                             <div>\n                                <!--[if
+        lt IE 10]>\n                                <label for=\"user_password\">Enter
+        password</label>\n                                <![endif]-->\n                                <input
+        placeholder=\"password\" type=\"password\" name=\"user[password]\" id=\"user_password\"
+        />\n                              </div>\n                                  <div
+        id = \"remember_me\"><input name=\"user[remember_me]\" type=\"hidden\" value=\"0\"
+        /><input type=\"checkbox\" value=\"1\" name=\"user[remember_me]\" id=\"user_remember_me\"
+        /> <label class=\"checkbox inline\" for=\"user_remember_me\">Remember me</label></div>\n
+        \                             <div style=\"display: inline;\"><input type=\"submit\"
+        name=\"commit\" value=\"Sign in\" id=\"signin\" class=\"btn btn-primary\"
+        /></div>\n                              <a href=\"/users/password/new\">Forgot
+        your password?</a>\n</form>                          <div id=\"register\">\n
+        \                           <form id=\"registerForm\" class=\"new_user\" action=\"/users\"
+        accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\"
+        value=\"&#x2713;\" />\n                                <label>Sign up:</label>\n
+        \                               \n                                <!--[if
+        lt IE 10]>\n                                <label for=\"user_password\">Enter
+        email</label>\n                                <![endif]-->\n                                <input
+        autofocus=\"autofocus\" id=\"signup_email\" name=\"user[email]\" placeholder=\"you@example.com\"
+        type=\"email\" value=\"\" />\n                                <!--[if lt IE
+        10]>\n                                <label for=\"user_password\">Enter password</label>\n
+        \                               <![endif]-->\n                                <input
+        id=\"signup_password\" name=\"user[password]\" placeholder=\"password\" type=\"password\"
+        />\n                                <!--[if lt IE 10]>\n                                <label
+        for=\"user_password\">Confirm password</label>\n                                <![endif]-->\n
+        \                               <input id=\"signup_password_confirmation\"
+        placeholder=\"confirm password\" type=\"password\" name=\"user[password_confirmation]\"
+        />\n                                <div style=\"display: inline;\"><input
+        type=\"submit\" name=\"commit\" value=\"Sign up\" id=\"signup\" class=\"btn
+        btn-primary\" /></div>\n</form>                          </div>\n                          <form>\n
+        \                           <a id=\"toggle_link\" title=\"Click this link
+        to Sign Up for an account\" href=\"#\">New organisation? Sign up</a>\n                          </form>\n
+        \                       </div>\n                      </div>\n                    </li>\n
+        \             </ul>\n            </div>\n          </div>\n        </div>\n
+        \     </div>\n    </div>\n  </div>\n\n</header>\n\n<script>\n    $('#registerForm').collapse('hide');\n
+        \   $('a#toggle_link').on('click', function (e) {\n        e.preventDefault();\n
+        \       // Get all relevant elements\n        var $link = $('a#toggle_link');\n
+        \       var $collapse1 = $('#loginForm');\n        var $collapse2 = $('#registerForm');\n
+        \       // Toggle the collapse of the forms\n        $collapse1.collapse('toggle');\n
+        \       $collapse2.collapse('toggle');\n        // Change the link text\n
+        \       if ($link.text() == 'New organisation? Sign up') {\n            $link.text('Already
+        a member? Log in');\n        }\n        else {\n            $link.text('New
+        organisation? Sign up');\n        }\n    });\n</script>\n\n  <section id=\"main\">
+        \  <!-- uniquify the child container to create the top margin -->\n      <div
+        class=\"container\">  <!-- outermost twitter bootstrap container-->\n        <div
+        id=\"content\">\n          <!-- Span 6 -->\n<div class=\"row\">\n  <div id=\"column1\"
+        class=\"span6\">\n    <div class=\"flex-row\">\n      <div class=\"map_container\">\n
+        \           <div id=\"marker_data\" data-markers=\"[{&quot;lat&quot;:51.5812577,&quot;lng&quot;:-0.3473078,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/4\\&quot;\\u003eYouth UK\\u003c/a\\u003e\\u003cbr/\\u003e\\nCare
+        for the Very Young\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg data-id=\\&quot;4\\&quot;
+        class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;},{&quot;lat&quot;:51.5812577,&quot;lng&quot;:-0.3473078,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/3\\&quot;\\u003eAge UK\\u003c/a\\u003e\\u003cbr/\\u003e\\nCare
+        for the Elderly\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg data-id=\\&quot;3\\&quot;
+        class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;},{&quot;lat&quot;:51.5813411,&quot;lng&quot;:-0.3468075,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/2\\&quot;\\u003eIndian Elders Association\\u003c/a\\u003e\\u003cbr/\\u003e\\nCare
+        for the elderly\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg data-id=\\&quot;2\\&quot;
+        class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;},{&quot;lat&quot;:51.5814093,&quot;lng&quot;:-0.343908,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/1\\&quot;\\u003eHarrow Bereavement Counselling\\u003c/a\\u003e\\u003cbr/\\u003e\\nHarrow
+        Bereavement Counselling\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg
+        data-id=\\&quot;1\\&quot; class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;}]\"></div>\n\n
+        \       <div id=\"map_canvas\"></div>\n      </div>\n    </div>\n    <div
+        class=\"map_legend\">\n          <aside>\n      <table class=\"table\">\n
+        \       <tr>\n          <td class=\"key_image\"><img alt=\"Large map marker\"
+        src=\"/assets/marker.png\" width=\"15\" height=\"15\" /></td>\n          <td
+        class=\"key_text\">Details updated by the organisation within the last 12
+        months</td>\n        </tr>\n        <tr>\n          <td class=\"key_image\"><img
+        alt=\"Small map marker\" src=\"/assets/redcircle.png\" width=\"5\" height=\"5\"
+        /></td>\n          <td class=\"key_text\">Details NOT updated by the organisation
+        within the last 12 months</td>\n        </tr>\n      </table>\n    </aside>\n\n
+        \   </div>\n  </div>\n  <div id=\"column2\" class=\"span6\">\n    <form id=\"organisation_search\"
+        action=\"/organisations/search\" accept-charset=\"UTF-8\" method=\"get\"><input
+        name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" />\n  <div class=\"flex-column\">\n
+        \   <div class=\"flex-row\">\n      <div class=\"left-side\">\n        <label
+        class=\"field-label\" for=\"what_id\">What They Do</label>\n      </div>\n
+        \     <div class=\"right-side\">\n        <select name=\"what_id\" id=\"what_id\"><option
+        value=\"\">All</option></select>\n      </div>\n    </div>\n    <div class=\"flex-row\">\n
+        \     <div class=\"left-side\">\n        <label class=\"field-label\" for=\"who_id\">Who
+        They Help</label>\n      </div>\n      <div class=\"right-side\">\n        <select
+        name=\"who_id\" id=\"who_id\"><option value=\"\">All</option></select>\n      </div>\n
+        \   </div>\n    <div class=\"flex-row\">\n      <div class=\"left-side\">\n
+        \       <label class=\"field-label\" for=\"how_id\">How They Help</label>\n
+        \     </div>\n      <div class=\"right-side\">\n        <select name=\"how_id\"
+        id=\"how_id\"><option value=\"\">All</option></select>\n      </div>\n    </div>\n
+        \   <div class=\"flex-row\">\n      <div class=\"left-side\">\n        <label
+        class=\"field-label\" for=\"q\">Optional Search Text</label>\n      </div>\n
+        \     <div class=\"right-side\">\n        <input type=\"text\" name=\"q\"
+        id=\"q\" />\n        <input type=\"submit\" name=\"commit\" value=\"Submit\"
+        class=\"btn btn-info\" />\n      </div>\n    </div>\n  </div>\n</form>\n<div
+        id=\"orgs_scroll\">\n  <div class=\"table\">\n    <table>\n        <tr>\n
+        \         <td>\n            <u><a href=\"/organisations/4\">Youth UK</a></u><br/>\n
+        \           Care for the Very Young\n          </td>\n        </tr>\n        <tr>\n
+        \         <td>\n            <u><a href=\"/organisations/3\">Age UK</a></u><br/>\n
+        \           Care for the Elderly\n          </td>\n        </tr>\n        <tr>\n
+        \         <td>\n            <u><a href=\"/organisations/2\">Indian Elders
+        Association</a></u><br/>\n            Care for the elderly\n          </td>\n
+        \       </tr>\n        <tr>\n          <td>\n            <u><a href=\"/organisations/1\">Harrow
+        Bereavement Counselling</a></u><br/>\n            Harrow Bereavement Counselling\n
+        \         </td>\n        </tr>\n    </table>\n  </div>\n</div>\n\n<div style=\"width:50%;float:left\">\n
+        \ \n</div>\n\n\n\n\n\n  </div>\n</div>\n\n        </div>\n      </div>\n      <br>\n
+        \     <br>\n      <div id=\"push\"></div>\n  </section>\n\n</div>\n<div id=\"footer\"
+        class=\"container\">\n  <hr>\n  <div class=\"row\">\n    <div class=\"span5\">\n
+        \     <footer class=\"footer\">\n  <small>\n    Harrow Community Network\n
+        \   provided by <a href=\"http://www.voluntaryactionharrow.org.uk/\">Voluntary
+        Action Harrow Co-operative&nbsp<img alt=\"Voluntary Action Harrow Co-operative\"
+        src=\"/assets/VAHC-Small-Logo.png\" width=\"30\" height=\"30\" /></a>\n  </small>\n</footer>\n\n\n
+        \   </div>\n    <div class=\"span3\">\n      <footer class=\"footer\">\n   <p
+        class=\"text-center\"><small>\n     Powered by <a href=\"/contributors\"><img
+        alt=\"Agile Ventures\" src=\"/assets/av_symbol_30px.png\" width=\"30\" height=\"30\"
+        /></a>&nbsp; &nbsp;<a href=\"https://www.expeditedssl.com/simple-ssl-scanner/scan?target_domain=www.harrowcn.org.uk\"
+        target=\"_blank\"><img width='70px' height='40px' alt=\"Ssl-secure-badge\"
+        src=\"https://www.expeditedssl.com/ssl-secure-badge.png\" /></a>\n   </small>
+        </p>\n</footer>\n\n\n\n    </div>\n    <div class=\"span4\">\n      <footer
+        class=\"footer\">\n  <p class=\"text-right\"><small>\n |\n  </small></p>\n</footer>\n\n\n
+        \   </div>\n  </div>\n</div>\n</body>\n</html>\n\n"
+    http_version: 
+  recorded_at: Wed, 16 Nov 2016 17:52:19 GMT
+- request:
+    method: get
+    uri: http://www.google-analytics.com/r/collect?_r=1&_s=1&_u=AEAAAEQAI~&_v=j39&a=1408023121&cid=1234249977.1447609939&de=UTF-8&dl=http://127.0.0.1/&dt=Harrow%20Community%20Network&je=0&jid=1197013826&sd=24-bit&sr=1366x768&t=pageview&tid=UA-60361269-1&ul=en-us&v=1&vp=1667x1050&z=1154173019
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Referer:
+      - http://127.0.0.1:57451/
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) capybara-webkit
+        Safari/537.21
+      Accept:
+      - '*/*'
+      Connection:
+      - Keep-Alive
+      Accept-Language:
+      - en-US,*
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Date:
+      - Sun, 15 Nov 2015 17:52:19 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Last-Modified:
+      - Sun, 17 May 1998 03:00:00 GMT
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - image/gif
+      Server:
+      - Golfe2
+      Content-Length:
+      - '35'
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        R0lGODlhAQABAID/AP///wAAACwAAAAAAQABAAACAkQBADs=
+    http_version: 
+  recorded_at: Wed, 16 Nov 2016 17:52:19 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:58487/
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) capybara-webkit
+        Safari/537.21
+      Connection:
+      - Keep-Alive
+      Accept-Language:
+      - en-US,*
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Etag:
+      - W/"c046ef68a085ddd1bc0413ea309994fd"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - fcf4354a-b3d3-475e-bff8-06de5efb591e
+      X-Runtime:
+      - '0.050947'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2015-02-25)
+      Date:
+      - Thu, 24 Nov 2016 20:13:40 GMT
+      Content-Length:
+      - '14390'
+      Connection:
+      - close
+      Set-Cookie:
+      - _LocalSupport_session=MWx6SmVsRHUwajFnT1M4aG5zamZ6aUR2aVJmVzIvN05reTNWeHJYZU1nWnNMN29TQXIyaXdTVTNnTzdIejRxNjlGdk1CSEJVei9reEhTRzZhQ1pXRDJZdm5VRHlCTU1PeGtZdzBJa1ZuQnUxY3FjLzdsY2RNaW0wZ1BmdFJWQ2EtLUh4c1pDR1EvT254YjZzcTE0a2MwblE9PQ%3D%3D--9d708ed823716968f448bd04606378c8349d35f0;
+        path=/; HttpOnly
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html>\n<html>\n<head>\n  <meta http-equiv=\"content-type\"
+        content=\"text/html; charset=utf-8\" />\n  <meta name=\"description\" content=\"Harrow
+        Community Network is a service provided by Voluntary Action Harrow to help
+        people find voluntary services in their local community\" />\n  <meta name=\"keywords\"
+        content=\"Harrow, Community, Network, volunteer, volunteering, voluntary,
+        organisations, causes\" />\n  <meta name=\"google-site-verification\" content=\"NnSd82Tg3wYtm75gYpDTcnfe5HzS5T38cU7oPDRlTD0\"
+        />\n\n  <meta name=\"application-name\" content=\"LocalSupport\">\n\n  <meta
+        property=\"og:title\" content=\"Harrow Community Network\"/>\n  <meta property=\"og:url\"
+        content=\"http://127.0.0.1:58487/\"/>\n  <meta property=\"og:site_name\" content=\"Harrow
+        Community Network\"/>\n  <meta property=\"og:description\" content=\"Harrow
+        Community Network is a service provided by Voluntary Action Harrow to help
+        people find voluntary services in their local community\">\n\n  <title>Harrow
+        Community Network </title>\n  <link rel=\"stylesheet\" media=\"screen\" href=\"/assets/application.css\"
+        />\n  \n  <!--[if lt IE 9]>\n     <script src=\"http://html5shim.googlecode.com/svn/trunk/html5.js\"></script>\n<![endif]-->\n\n
+        \ <script src=\"//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry\"
+        type=\"text/javascript\"></script>\n  <script src=\"/assets/application.js\"></script>\n
+        \ <!--this is where page-specific scripts are added-->\n      <script src=\"/assets/google_map.js\"></script>\n\n\n</head>\n\n<body>\n
+        \   <div id=\"cookie-message\" style=\"display: block;\">\n\n  <div id=\"cookie-message-inner\"
+        class=\"content\">\n    <div class=\"row\">\n      <h2>Cookie Policy</h2>\n
+        \     <a id=\"accept_cookies\" class=\"btn btn-primary\" rel=\"nofollow\"
+        data-method=\"POST\" href=\"/cookies/allow\">Close</a>\n\n    <p>We use cookies
+        to give you the best experience on our website. If you continue without changing
+        your cookie\n      settings, we assume that you consent to our use of cookies
+        on this device. You can change your cookie settings at\n      any time but
+        if you do, you may lose some functionality on our website. More information
+        can be found in our\n      <a href=\"/disclaimer\">terms of use.</a>\n    </div>\n
+        \ </div>\n</div>\n<div class=\"page-frame\">\n  <header>\n  <div id=\"navbar-wrapper\">\n
+        \   <div class=\"container\">\n      <div id=\"navbar\" class=\"navbar\">\n
+        \       <div class=\"navbar-inner\">\n          <div id=\"banner\" class=\"container\">\n
+        \           <a href=\"/\"><img class=\"img-responsive\" src=\"/assets/HCN-long.png\"
+        alt=\"Hcn long\" /></a>\n          </div>\n          <div class=\"container\">\n
+        \           <a class=\"btn btn-navbar\" data-toggle=\"collapse\" data-target=\".nav-collapse\">\n
+        \             <span class=\"icon-bar\"></span>\n              <span class=\"icon-bar\"></span>\n
+        \             <span class=\"icon-bar\"></span>\n            </a>\n            <a
+        href=\"/\" class=\"brand\" title=\"Search for local voluntary and community
+        organisations\">Search for local\n              voluntary and community organisations</a>\n\n
+        \           <div class=\"nav-collapse collapse\">\n              <ul id=\"button-rack\"
+        class=\"nav nav-pills pull-right\">\n                <li class = \"active\">\n
+        \                 <a href=\"/\">Home</a>\n                </li>\n                    <li
+        class=\"dropdown \" id=\"menuLogin\">\n                      <a class=\"dropdown-toggle\"
+        href=\"#\" data-toggle=\"dropdown\" id=\"navLogin\">Login</a>\n\n                      <div
+        class=\"dropdown-menu\" id=\"login\" style=\"padding:17px; width: 300px; padding-bottom:
+        0px;\">\n                        <div class=\"well\">\n                          <form
+        id=\"loginForm\" class=\"new_user\" action=\"/users/sign_in\" accept-charset=\"UTF-8\"
+        method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" />\n
+        \                             <div>\n                                <label>Login:</label>\n
+        \                               <!--[if lt IE 10]>\n                                <label
+        for=\"user_email\">Enter email</label>\n                                <![endif]-->\n
+        \                               <input autofocus=\"autofocus\" placeholder=\"you@example.com\"
+        type=\"email\" value=\"\" name=\"user[email]\" id=\"user_email\" />\n                              </div>\n
+        \                             <div>\n                                <!--[if
+        lt IE 10]>\n                                <label for=\"user_password\">Enter
+        password</label>\n                                <![endif]-->\n                                <input
+        placeholder=\"password\" type=\"password\" name=\"user[password]\" id=\"user_password\"
+        />\n                              </div>\n                                  <div
+        id = \"remember_me\"><input name=\"user[remember_me]\" type=\"hidden\" value=\"0\"
+        /><input type=\"checkbox\" value=\"1\" name=\"user[remember_me]\" id=\"user_remember_me\"
+        /> <label class=\"checkbox inline\" for=\"user_remember_me\">Remember me</label></div>\n
+        \                             <div style=\"display: inline;\"><input type=\"submit\"
+        name=\"commit\" value=\"Sign in\" id=\"signin\" class=\"btn btn-primary\"
+        /></div>\n                              <a href=\"/users/password/new\">Forgot
+        your password?</a>\n</form>                          <div id=\"register\">\n
+        \                           <form id=\"registerForm\" class=\"new_user\" action=\"/users\"
+        accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\"
+        value=\"&#x2713;\" />\n                                <label>Sign up:</label>\n
+        \                               \n                                <!--[if
+        lt IE 10]>\n                                <label for=\"user_password\">Enter
+        email</label>\n                                <![endif]-->\n                                <input
+        autofocus=\"autofocus\" id=\"signup_email\" name=\"user[email]\" placeholder=\"you@example.com\"
+        type=\"email\" value=\"\" />\n                                <!--[if lt IE
+        10]>\n                                <label for=\"user_password\">Enter password</label>\n
+        \                               <![endif]-->\n                                <input
+        id=\"signup_password\" name=\"user[password]\" placeholder=\"password\" type=\"password\"
+        />\n                                <!--[if lt IE 10]>\n                                <label
+        for=\"user_password\">Confirm password</label>\n                                <![endif]-->\n
+        \                               <input id=\"signup_password_confirmation\"
+        placeholder=\"confirm password\" type=\"password\" name=\"user[password_confirmation]\"
+        />\n                                <div style=\"display: inline;\"><input
+        type=\"submit\" name=\"commit\" value=\"Sign up\" id=\"signup\" class=\"btn
+        btn-primary\" /></div>\n</form>                          </div>\n                          <form>\n
+        \                           <a id=\"toggle_link\" title=\"Click this link
+        to Sign Up for an account\" href=\"#\">New organisation? Sign up</a>\n                          </form>\n
+        \                       </div>\n                      </div>\n                    </li>\n
+        \             </ul>\n            </div>\n          </div>\n        </div>\n
+        \     </div>\n    </div>\n  </div>\n\n</header>\n\n<script>\n    $('#registerForm').collapse('hide');\n
+        \   $('a#toggle_link').on('click', function (e) {\n        e.preventDefault();\n
+        \       // Get all relevant elements\n        var $link = $('a#toggle_link');\n
+        \       var $collapse1 = $('#loginForm');\n        var $collapse2 = $('#registerForm');\n
+        \       // Toggle the collapse of the forms\n        $collapse1.collapse('toggle');\n
+        \       $collapse2.collapse('toggle');\n        // Change the link text\n
+        \       if ($link.text() == 'New organisation? Sign up') {\n            $link.text('Already
+        a member? Log in');\n        }\n        else {\n            $link.text('New
+        organisation? Sign up');\n        }\n    });\n</script>\n\n  <section id=\"main\">
+        \  <!-- uniquify the child container to create the top margin -->\n      <div
+        class=\"container\">  <!-- outermost twitter bootstrap container-->\n        <div
+        id=\"content\">\n          <!-- Span 6 -->\n<div class=\"row\">\n  <div id=\"column1\"
+        class=\"span6\">\n    <div class=\"flex-row\">\n      <div class=\"map_container\">\n
+        \           <div id=\"marker_data\" data-markers=\"[{&quot;lat&quot;:51.5812577,&quot;lng&quot;:-0.3473078,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/4\\&quot;\\u003eYouth UK\\u003c/a\\u003e\\u003cbr/\\u003e\\nCare
+        for the Very Young\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg data-id=\\&quot;4\\&quot;
+        class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;},{&quot;lat&quot;:51.5812577,&quot;lng&quot;:-0.3473078,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/3\\&quot;\\u003eAge UK\\u003c/a\\u003e\\u003cbr/\\u003e\\nCare
+        for the Elderly\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg data-id=\\&quot;3\\&quot;
+        class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;},{&quot;lat&quot;:51.5813411,&quot;lng&quot;:-0.3468075,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/2\\&quot;\\u003eIndian Elders Association\\u003c/a\\u003e\\u003cbr/\\u003e\\nCare
+        for the elderly\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg data-id=\\&quot;2\\&quot;
+        class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;},{&quot;lat&quot;:51.5814093,&quot;lng&quot;:-0.343908,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/1\\&quot;\\u003eHarrow Bereavement Counselling\\u003c/a\\u003e\\u003cbr/\\u003e\\nHarrow
+        Bereavement Counselling\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg
+        data-id=\\&quot;1\\&quot; class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;}]\"></div>\n\n
+        \       <div id=\"map_canvas\"></div>\n      </div>\n    </div>\n    <div
+        class=\"map_legend\">\n          <aside>\n      <table class=\"table\">\n
+        \       <tr>\n          <td class=\"key_image\"><img alt=\"Large map marker\"
+        src=\"/assets/marker.png\" width=\"15\" height=\"15\" /></td>\n          <td
+        class=\"key_text\">Details updated by the organisation within the last 12
+        months</td>\n        </tr>\n        <tr>\n          <td class=\"key_image\"><img
+        alt=\"Small map marker\" src=\"/assets/redcircle.png\" width=\"5\" height=\"5\"
+        /></td>\n          <td class=\"key_text\">Details NOT updated by the organisation
+        within the last 12 months</td>\n        </tr>\n      </table>\n    </aside>\n\n
+        \   </div>\n  </div>\n  <div id=\"column2\" class=\"span6\">\n    <form id=\"organisation_search\"
+        action=\"/organisations/search\" accept-charset=\"UTF-8\" method=\"get\"><input
+        name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" />\n  <div class=\"flex-column\">\n
+        \   <div class=\"flex-row\">\n      <div class=\"left-side\">\n        <label
+        class=\"field-label\" for=\"what_id\">What They Do</label>\n      </div>\n
+        \     <div class=\"right-side\">\n        <select name=\"what_id\" id=\"what_id\"><option
+        value=\"\">All</option></select>\n      </div>\n    </div>\n    <div class=\"flex-row\">\n
+        \     <div class=\"left-side\">\n        <label class=\"field-label\" for=\"who_id\">Who
+        They Help</label>\n      </div>\n      <div class=\"right-side\">\n        <select
+        name=\"who_id\" id=\"who_id\"><option value=\"\">All</option></select>\n      </div>\n
+        \   </div>\n    <div class=\"flex-row\">\n      <div class=\"left-side\">\n
+        \       <label class=\"field-label\" for=\"how_id\">How They Help</label>\n
+        \     </div>\n      <div class=\"right-side\">\n        <select name=\"how_id\"
+        id=\"how_id\"><option value=\"\">All</option></select>\n      </div>\n    </div>\n
+        \   <div class=\"flex-row\">\n      <div class=\"left-side\">\n        <label
+        class=\"field-label\" for=\"q\">Optional Search Text</label>\n      </div>\n
+        \     <div class=\"right-side\">\n        <input type=\"text\" name=\"q\"
+        id=\"q\" />\n        <input type=\"submit\" name=\"commit\" value=\"Submit\"
+        class=\"btn btn-info\" />\n      </div>\n    </div>\n  </div>\n</form>\n<div
+        id=\"orgs_scroll\">\n  <div class=\"table\">\n    <table>\n        <tr>\n
+        \         <td>\n            <u><a href=\"/organisations/4\">Youth UK</a></u><br/>\n
+        \           Care for the Very Young\n          </td>\n        </tr>\n        <tr>\n
+        \         <td>\n            <u><a href=\"/organisations/3\">Age UK</a></u><br/>\n
+        \           Care for the Elderly\n          </td>\n        </tr>\n        <tr>\n
+        \         <td>\n            <u><a href=\"/organisations/2\">Indian Elders
+        Association</a></u><br/>\n            Care for the elderly\n          </td>\n
+        \       </tr>\n        <tr>\n          <td>\n            <u><a href=\"/organisations/1\">Harrow
+        Bereavement Counselling</a></u><br/>\n            Harrow Bereavement Counselling\n
+        \         </td>\n        </tr>\n    </table>\n  </div>\n</div>\n\n<div style=\"width:50%;float:left\">\n
+        \ \n</div>\n\n\n\n\n\n  </div>\n</div>\n\n        </div>\n      </div>\n      <br>\n
+        \     <br>\n      <div id=\"push\"></div>\n  </section>\n\n</div>\n<div id=\"footer\"
+        class=\"container\">\n  <hr>\n  <div class=\"row\">\n    <div class=\"span5\">\n
+        \     <footer class=\"footer\">\n  <small>\n    Harrow Community Network\n
+        \   provided by <a href=\"http://www.voluntaryactionharrow.org.uk/\">Voluntary
+        Action Harrow Co-operative&nbsp<img alt=\"Voluntary Action Harrow Co-operative\"
+        src=\"/assets/VAHC-Small-Logo.png\" width=\"30\" height=\"30\" /></a>\n  </small>\n</footer>\n\n\n
+        \   </div>\n    <div class=\"span3\">\n      <footer class=\"footer\">\n   <p
+        class=\"text-center\"><small>\n     Powered by <a href=\"/contributors\"><img
+        alt=\"Agile Ventures\" src=\"/assets/av_symbol_30px.png\" width=\"30\" height=\"30\"
+        /></a>&nbsp; &nbsp;<a href=\"https://www.expeditedssl.com/simple-ssl-scanner/scan?target_domain=www.harrowcn.org.uk\"
+        target=\"_blank\"><img width='70px' height='40px' alt=\"Ssl-secure-badge\"
+        src=\"https://www.expeditedssl.com/ssl-secure-badge.png\" /></a>\n   </small>
+        </p>\n</footer>\n\n\n\n    </div>\n    <div class=\"span4\">\n      <footer
+        class=\"footer\">\n  <p class=\"text-right\"><small>\n |\n  </small></p>\n</footer>\n\n\n
+        \   </div>\n  </div>\n</div>\n</body>\n</html>\n\n"
+    http_version: 
+  recorded_at: Thu, 24 Nov 2016 20:13:40 GMT
+- request:
+    method: get
+    uri: http://www.google-analytics.com/r/collect?_r=1&_s=1&_u=AEAAAEQAI~&_v=j39&a=1003690810&cid=1153370261.1448309620&de=UTF-8&dl=http://127.0.0.1/&dt=Harrow%20Community%20Network&je=0&jid=1478636004&sd=24-bit&sr=1366x768&t=pageview&tid=UA-60361269-1&ul=en-us&v=1&vp=1667x1050&z=87796846
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Referer:
+      - http://127.0.0.1:58487/
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) capybara-webkit
+        Safari/537.21
+      Accept:
+      - '*/*'
+      Connection:
+      - Keep-Alive
+      Accept-Language:
+      - en-US,*
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Date:
+      - Mon, 23 Nov 2015 20:13:40 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Last-Modified:
+      - Sun, 17 May 1998 03:00:00 GMT
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - image/gif
+      Server:
+      - Golfe2
+      Content-Length:
+      - '35'
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        R0lGODlhAQABAID/AP///wAAACwAAAAAAQABAAACAkQBADs=
+    http_version: 
+  recorded_at: Thu, 24 Nov 2016 20:13:40 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:37118/
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) capybara-webkit
+        Safari/537.21
+      Connection:
+      - Keep-Alive
+      Accept-Language:
+      - en-US,*
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Etag:
+      - W/"b4a2206d29f5d13dc441ba9c3d39b08f"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - c37494b8-56fb-4e34-88ea-7362021f6505
+      X-Runtime:
+      - '0.040579'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2015-02-25)
+      Date:
+      - Thu, 24 Nov 2016 20:21:57 GMT
+      Content-Length:
+      - '14390'
+      Connection:
+      - close
+      Set-Cookie:
+      - _LocalSupport_session=dGsxSFpUYjBMYmJaMkltWGMwMUNOcXA0a3Azb2pSZ004VWwxN1BDeEtGTU12SmFnWGtRampIdWlxOEpFWGZySkc3dGh3dXJESG1UamJ2YVdMWWh0QWxybytQcUxsYVpXd1hkM1haUG8xam9IbkNFRmI1Yk9CRFl3MmNUYmpRbkYtLVNMSjVOQm9aTVBUVDNCUTEvWEJqa1E9PQ%3D%3D--59f764fb02ba00dba2619ec80344c252d4cfbd2c;
+        path=/; HttpOnly
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html>\n<html>\n<head>\n  <meta http-equiv=\"content-type\"
+        content=\"text/html; charset=utf-8\" />\n  <meta name=\"description\" content=\"Harrow
+        Community Network is a service provided by Voluntary Action Harrow to help
+        people find voluntary services in their local community\" />\n  <meta name=\"keywords\"
+        content=\"Harrow, Community, Network, volunteer, volunteering, voluntary,
+        organisations, causes\" />\n  <meta name=\"google-site-verification\" content=\"NnSd82Tg3wYtm75gYpDTcnfe5HzS5T38cU7oPDRlTD0\"
+        />\n\n  <meta name=\"application-name\" content=\"LocalSupport\">\n\n  <meta
+        property=\"og:title\" content=\"Harrow Community Network\"/>\n  <meta property=\"og:url\"
+        content=\"http://127.0.0.1:37118/\"/>\n  <meta property=\"og:site_name\" content=\"Harrow
+        Community Network\"/>\n  <meta property=\"og:description\" content=\"Harrow
+        Community Network is a service provided by Voluntary Action Harrow to help
+        people find voluntary services in their local community\">\n\n  <title>Harrow
+        Community Network </title>\n  <link rel=\"stylesheet\" media=\"screen\" href=\"/assets/application.css\"
+        />\n  \n  <!--[if lt IE 9]>\n     <script src=\"http://html5shim.googlecode.com/svn/trunk/html5.js\"></script>\n<![endif]-->\n\n
+        \ <script src=\"//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry\"
+        type=\"text/javascript\"></script>\n  <script src=\"/assets/application.js\"></script>\n
+        \ <!--this is where page-specific scripts are added-->\n      <script src=\"/assets/google_map.js\"></script>\n\n\n</head>\n\n<body>\n
+        \   <div id=\"cookie-message\" style=\"display: block;\">\n\n  <div id=\"cookie-message-inner\"
+        class=\"content\">\n    <div class=\"row\">\n      <h2>Cookie Policy</h2>\n
+        \     <a id=\"accept_cookies\" class=\"btn btn-primary\" rel=\"nofollow\"
+        data-method=\"POST\" href=\"/cookies/allow\">Close</a>\n\n    <p>We use cookies
+        to give you the best experience on our website. If you continue without changing
+        your cookie\n      settings, we assume that you consent to our use of cookies
+        on this device. You can change your cookie settings at\n      any time but
+        if you do, you may lose some functionality on our website. More information
+        can be found in our\n      <a href=\"/disclaimer\">terms of use.</a>\n    </div>\n
+        \ </div>\n</div>\n<div class=\"page-frame\">\n  <header>\n  <div id=\"navbar-wrapper\">\n
+        \   <div class=\"container\">\n      <div id=\"navbar\" class=\"navbar\">\n
+        \       <div class=\"navbar-inner\">\n          <div id=\"banner\" class=\"container\">\n
+        \           <a href=\"/\"><img class=\"img-responsive\" src=\"/assets/HCN-long.png\"
+        alt=\"Hcn long\" /></a>\n          </div>\n          <div class=\"container\">\n
+        \           <a class=\"btn btn-navbar\" data-toggle=\"collapse\" data-target=\".nav-collapse\">\n
+        \             <span class=\"icon-bar\"></span>\n              <span class=\"icon-bar\"></span>\n
+        \             <span class=\"icon-bar\"></span>\n            </a>\n            <a
+        href=\"/\" class=\"brand\" title=\"Search for local voluntary and community
+        organisations\">Search for local\n              voluntary and community organisations</a>\n\n
+        \           <div class=\"nav-collapse collapse\">\n              <ul id=\"button-rack\"
+        class=\"nav nav-pills pull-right\">\n                <li class = \"active\">\n
+        \                 <a href=\"/\">Home</a>\n                </li>\n                    <li
+        class=\"dropdown \" id=\"menuLogin\">\n                      <a class=\"dropdown-toggle\"
+        href=\"#\" data-toggle=\"dropdown\" id=\"navLogin\">Login</a>\n\n                      <div
+        class=\"dropdown-menu\" id=\"login\" style=\"padding:17px; width: 300px; padding-bottom:
+        0px;\">\n                        <div class=\"well\">\n                          <form
+        id=\"loginForm\" class=\"new_user\" action=\"/users/sign_in\" accept-charset=\"UTF-8\"
+        method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" />\n
+        \                             <div>\n                                <label>Login:</label>\n
+        \                               <!--[if lt IE 10]>\n                                <label
+        for=\"user_email\">Enter email</label>\n                                <![endif]-->\n
+        \                               <input autofocus=\"autofocus\" placeholder=\"you@example.com\"
+        type=\"email\" value=\"\" name=\"user[email]\" id=\"user_email\" />\n                              </div>\n
+        \                             <div>\n                                <!--[if
+        lt IE 10]>\n                                <label for=\"user_password\">Enter
+        password</label>\n                                <![endif]-->\n                                <input
+        placeholder=\"password\" type=\"password\" name=\"user[password]\" id=\"user_password\"
+        />\n                              </div>\n                                  <div
+        id = \"remember_me\"><input name=\"user[remember_me]\" type=\"hidden\" value=\"0\"
+        /><input type=\"checkbox\" value=\"1\" name=\"user[remember_me]\" id=\"user_remember_me\"
+        /> <label class=\"checkbox inline\" for=\"user_remember_me\">Remember me</label></div>\n
+        \                             <div style=\"display: inline;\"><input type=\"submit\"
+        name=\"commit\" value=\"Sign in\" id=\"signin\" class=\"btn btn-primary\"
+        /></div>\n                              <a href=\"/users/password/new\">Forgot
+        your password?</a>\n</form>                          <div id=\"register\">\n
+        \                           <form id=\"registerForm\" class=\"new_user\" action=\"/users\"
+        accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\"
+        value=\"&#x2713;\" />\n                                <label>Sign up:</label>\n
+        \                               \n                                <!--[if
+        lt IE 10]>\n                                <label for=\"user_password\">Enter
+        email</label>\n                                <![endif]-->\n                                <input
+        autofocus=\"autofocus\" id=\"signup_email\" name=\"user[email]\" placeholder=\"you@example.com\"
+        type=\"email\" value=\"\" />\n                                <!--[if lt IE
+        10]>\n                                <label for=\"user_password\">Enter password</label>\n
+        \                               <![endif]-->\n                                <input
+        id=\"signup_password\" name=\"user[password]\" placeholder=\"password\" type=\"password\"
+        />\n                                <!--[if lt IE 10]>\n                                <label
+        for=\"user_password\">Confirm password</label>\n                                <![endif]-->\n
+        \                               <input id=\"signup_password_confirmation\"
+        placeholder=\"confirm password\" type=\"password\" name=\"user[password_confirmation]\"
+        />\n                                <div style=\"display: inline;\"><input
+        type=\"submit\" name=\"commit\" value=\"Sign up\" id=\"signup\" class=\"btn
+        btn-primary\" /></div>\n</form>                          </div>\n                          <form>\n
+        \                           <a id=\"toggle_link\" title=\"Click this link
+        to Sign Up for an account\" href=\"#\">New organisation? Sign up</a>\n                          </form>\n
+        \                       </div>\n                      </div>\n                    </li>\n
+        \             </ul>\n            </div>\n          </div>\n        </div>\n
+        \     </div>\n    </div>\n  </div>\n\n</header>\n\n<script>\n    $('#registerForm').collapse('hide');\n
+        \   $('a#toggle_link').on('click', function (e) {\n        e.preventDefault();\n
+        \       // Get all relevant elements\n        var $link = $('a#toggle_link');\n
+        \       var $collapse1 = $('#loginForm');\n        var $collapse2 = $('#registerForm');\n
+        \       // Toggle the collapse of the forms\n        $collapse1.collapse('toggle');\n
+        \       $collapse2.collapse('toggle');\n        // Change the link text\n
+        \       if ($link.text() == 'New organisation? Sign up') {\n            $link.text('Already
+        a member? Log in');\n        }\n        else {\n            $link.text('New
+        organisation? Sign up');\n        }\n    });\n</script>\n\n  <section id=\"main\">
+        \  <!-- uniquify the child container to create the top margin -->\n      <div
+        class=\"container\">  <!-- outermost twitter bootstrap container-->\n        <div
+        id=\"content\">\n          <!-- Span 6 -->\n<div class=\"row\">\n  <div id=\"column1\"
+        class=\"span6\">\n    <div class=\"flex-row\">\n      <div class=\"map_container\">\n
+        \           <div id=\"marker_data\" data-markers=\"[{&quot;lat&quot;:51.5812577,&quot;lng&quot;:-0.3473078,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/4\\&quot;\\u003eYouth UK\\u003c/a\\u003e\\u003cbr/\\u003e\\nCare
+        for the Very Young\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg data-id=\\&quot;4\\&quot;
+        class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;},{&quot;lat&quot;:51.5812577,&quot;lng&quot;:-0.3473078,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/3\\&quot;\\u003eAge UK\\u003c/a\\u003e\\u003cbr/\\u003e\\nCare
+        for the Elderly\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg data-id=\\&quot;3\\&quot;
+        class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;},{&quot;lat&quot;:51.5813411,&quot;lng&quot;:-0.3468075,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/2\\&quot;\\u003eIndian Elders Association\\u003c/a\\u003e\\u003cbr/\\u003e\\nCare
+        for the elderly\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg data-id=\\&quot;2\\&quot;
+        class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;},{&quot;lat&quot;:51.5814093,&quot;lng&quot;:-0.343908,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/1\\&quot;\\u003eHarrow Bereavement Counselling\\u003c/a\\u003e\\u003cbr/\\u003e\\nHarrow
+        Bereavement Counselling\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg
+        data-id=\\&quot;1\\&quot; class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;}]\"></div>\n\n
+        \       <div id=\"map_canvas\"></div>\n      </div>\n    </div>\n    <div
+        class=\"map_legend\">\n          <aside>\n      <table class=\"table\">\n
+        \       <tr>\n          <td class=\"key_image\"><img alt=\"Large map marker\"
+        src=\"/assets/marker.png\" width=\"15\" height=\"15\" /></td>\n          <td
+        class=\"key_text\">Details updated by the organisation within the last 12
+        months</td>\n        </tr>\n        <tr>\n          <td class=\"key_image\"><img
+        alt=\"Small map marker\" src=\"/assets/redcircle.png\" width=\"5\" height=\"5\"
+        /></td>\n          <td class=\"key_text\">Details NOT updated by the organisation
+        within the last 12 months</td>\n        </tr>\n      </table>\n    </aside>\n\n
+        \   </div>\n  </div>\n  <div id=\"column2\" class=\"span6\">\n    <form id=\"organisation_search\"
+        action=\"/organisations/search\" accept-charset=\"UTF-8\" method=\"get\"><input
+        name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" />\n  <div class=\"flex-column\">\n
+        \   <div class=\"flex-row\">\n      <div class=\"left-side\">\n        <label
+        class=\"field-label\" for=\"what_id\">What They Do</label>\n      </div>\n
+        \     <div class=\"right-side\">\n        <select name=\"what_id\" id=\"what_id\"><option
+        value=\"\">All</option></select>\n      </div>\n    </div>\n    <div class=\"flex-row\">\n
+        \     <div class=\"left-side\">\n        <label class=\"field-label\" for=\"who_id\">Who
+        They Help</label>\n      </div>\n      <div class=\"right-side\">\n        <select
+        name=\"who_id\" id=\"who_id\"><option value=\"\">All</option></select>\n      </div>\n
+        \   </div>\n    <div class=\"flex-row\">\n      <div class=\"left-side\">\n
+        \       <label class=\"field-label\" for=\"how_id\">How They Help</label>\n
+        \     </div>\n      <div class=\"right-side\">\n        <select name=\"how_id\"
+        id=\"how_id\"><option value=\"\">All</option></select>\n      </div>\n    </div>\n
+        \   <div class=\"flex-row\">\n      <div class=\"left-side\">\n        <label
+        class=\"field-label\" for=\"q\">Optional Search Text</label>\n      </div>\n
+        \     <div class=\"right-side\">\n        <input type=\"text\" name=\"q\"
+        id=\"q\" />\n        <input type=\"submit\" name=\"commit\" value=\"Submit\"
+        class=\"btn btn-info\" />\n      </div>\n    </div>\n  </div>\n</form>\n<div
+        id=\"orgs_scroll\">\n  <div class=\"table\">\n    <table>\n        <tr>\n
+        \         <td>\n            <u><a href=\"/organisations/4\">Youth UK</a></u><br/>\n
+        \           Care for the Very Young\n          </td>\n        </tr>\n        <tr>\n
+        \         <td>\n            <u><a href=\"/organisations/3\">Age UK</a></u><br/>\n
+        \           Care for the Elderly\n          </td>\n        </tr>\n        <tr>\n
+        \         <td>\n            <u><a href=\"/organisations/2\">Indian Elders
+        Association</a></u><br/>\n            Care for the elderly\n          </td>\n
+        \       </tr>\n        <tr>\n          <td>\n            <u><a href=\"/organisations/1\">Harrow
+        Bereavement Counselling</a></u><br/>\n            Harrow Bereavement Counselling\n
+        \         </td>\n        </tr>\n    </table>\n  </div>\n</div>\n\n<div style=\"width:50%;float:left\">\n
+        \ \n</div>\n\n\n\n\n\n  </div>\n</div>\n\n        </div>\n      </div>\n      <br>\n
+        \     <br>\n      <div id=\"push\"></div>\n  </section>\n\n</div>\n<div id=\"footer\"
+        class=\"container\">\n  <hr>\n  <div class=\"row\">\n    <div class=\"span5\">\n
+        \     <footer class=\"footer\">\n  <small>\n    Harrow Community Network\n
+        \   provided by <a href=\"http://www.voluntaryactionharrow.org.uk/\">Voluntary
+        Action Harrow Co-operative&nbsp<img alt=\"Voluntary Action Harrow Co-operative\"
+        src=\"/assets/VAHC-Small-Logo.png\" width=\"30\" height=\"30\" /></a>\n  </small>\n</footer>\n\n\n
+        \   </div>\n    <div class=\"span3\">\n      <footer class=\"footer\">\n   <p
+        class=\"text-center\"><small>\n     Powered by <a href=\"/contributors\"><img
+        alt=\"Agile Ventures\" src=\"/assets/av_symbol_30px.png\" width=\"30\" height=\"30\"
+        /></a>&nbsp; &nbsp;<a href=\"https://www.expeditedssl.com/simple-ssl-scanner/scan?target_domain=www.harrowcn.org.uk\"
+        target=\"_blank\"><img width='70px' height='40px' alt=\"Ssl-secure-badge\"
+        src=\"https://www.expeditedssl.com/ssl-secure-badge.png\" /></a>\n   </small>
+        </p>\n</footer>\n\n\n\n    </div>\n    <div class=\"span4\">\n      <footer
+        class=\"footer\">\n  <p class=\"text-right\"><small>\n |\n  </small></p>\n</footer>\n\n\n
+        \   </div>\n  </div>\n</div>\n</body>\n</html>\n\n"
+    http_version: 
+  recorded_at: Thu, 24 Nov 2016 20:21:57 GMT
+- request:
+    method: get
+    uri: http://www.google-analytics.com/r/collect?_r=1&_s=1&_u=AEAAAEQAI~&_v=j39&a=50531492&cid=1332782577.1448310117&de=UTF-8&dl=http://127.0.0.1/&dt=Harrow%20Community%20Network&je=0&jid=2060406943&sd=24-bit&sr=1366x768&t=pageview&tid=UA-60361269-1&ul=en-us&v=1&vp=1667x1050&z=601102989
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Referer:
+      - http://127.0.0.1:37118/
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) capybara-webkit
+        Safari/537.21
+      Accept:
+      - '*/*'
+      Connection:
+      - Keep-Alive
+      Accept-Language:
+      - en-US,*
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Date:
+      - Mon, 23 Nov 2015 20:21:57 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Last-Modified:
+      - Sun, 17 May 1998 03:00:00 GMT
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - image/gif
+      Server:
+      - Golfe2
+      Content-Length:
+      - '35'
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        R0lGODlhAQABAID/AP///wAAACwAAAAAAQABAAACAkQBADs=
+    http_version: 
+  recorded_at: Thu, 24 Nov 2016 20:21:57 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:57668/
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) capybara-webkit
+        Safari/537.21
+      Connection:
+      - Keep-Alive
+      Accept-Language:
+      - en-US,*
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Etag:
+      - W/"8d68fd4c6c9a518fb4cb34ec934e3922"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 7e33d1fe-740c-4e6b-8114-669f2654581e
+      X-Runtime:
+      - '0.037102'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2015-02-25)
+      Date:
+      - Thu, 24 Nov 2016 20:31:39 GMT
+      Content-Length:
+      - '14390'
+      Connection:
+      - close
+      Set-Cookie:
+      - _LocalSupport_session=ZWF1MnZ2U0ZNOVd6WFZLakpGVUZDL1Z6T3VPajRIQmUxSDVoTERwZXA0WXI0bFdMa3JvNks1TkZpWFdYcm41dTVwV0t1TDhET2tpRXlES3FOMFdlOVdrdVRiVUNrWk1TVWk3ZnJucncxdHA2ejlaamc0ZFdGV2huT3V1Q0Y0MXotLXFsaFZvOTh5Nit2WTgzQWUxWDJrblE9PQ%3D%3D--250631d6b6862dbeb69e96cb01ec10dfb8cdfb44;
+        path=/; HttpOnly
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html>\n<html>\n<head>\n  <meta http-equiv=\"content-type\"
+        content=\"text/html; charset=utf-8\" />\n  <meta name=\"description\" content=\"Harrow
+        Community Network is a service provided by Voluntary Action Harrow to help
+        people find voluntary services in their local community\" />\n  <meta name=\"keywords\"
+        content=\"Harrow, Community, Network, volunteer, volunteering, voluntary,
+        organisations, causes\" />\n  <meta name=\"google-site-verification\" content=\"NnSd82Tg3wYtm75gYpDTcnfe5HzS5T38cU7oPDRlTD0\"
+        />\n\n  <meta name=\"application-name\" content=\"LocalSupport\">\n\n  <meta
+        property=\"og:title\" content=\"Harrow Community Network\"/>\n  <meta property=\"og:url\"
+        content=\"http://127.0.0.1:57668/\"/>\n  <meta property=\"og:site_name\" content=\"Harrow
+        Community Network\"/>\n  <meta property=\"og:description\" content=\"Harrow
+        Community Network is a service provided by Voluntary Action Harrow to help
+        people find voluntary services in their local community\">\n\n  <title>Harrow
+        Community Network </title>\n  <link rel=\"stylesheet\" media=\"screen\" href=\"/assets/application.css\"
+        />\n  \n  <!--[if lt IE 9]>\n     <script src=\"http://html5shim.googlecode.com/svn/trunk/html5.js\"></script>\n<![endif]-->\n\n
+        \ <script src=\"//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry\"
+        type=\"text/javascript\"></script>\n  <script src=\"/assets/application.js\"></script>\n
+        \ <!--this is where page-specific scripts are added-->\n      <script src=\"/assets/google_map.js\"></script>\n\n\n</head>\n\n<body>\n
+        \   <div id=\"cookie-message\" style=\"display: block;\">\n\n  <div id=\"cookie-message-inner\"
+        class=\"content\">\n    <div class=\"row\">\n      <h2>Cookie Policy</h2>\n
+        \     <a id=\"accept_cookies\" class=\"btn btn-primary\" rel=\"nofollow\"
+        data-method=\"POST\" href=\"/cookies/allow\">Close</a>\n\n    <p>We use cookies
+        to give you the best experience on our website. If you continue without changing
+        your cookie\n      settings, we assume that you consent to our use of cookies
+        on this device. You can change your cookie settings at\n      any time but
+        if you do, you may lose some functionality on our website. More information
+        can be found in our\n      <a href=\"/disclaimer\">terms of use.</a>\n    </div>\n
+        \ </div>\n</div>\n<div class=\"page-frame\">\n  <header>\n  <div id=\"navbar-wrapper\">\n
+        \   <div class=\"container\">\n      <div id=\"navbar\" class=\"navbar\">\n
+        \       <div class=\"navbar-inner\">\n          <div id=\"banner\" class=\"container\">\n
+        \           <a href=\"/\"><img class=\"img-responsive\" src=\"/assets/HCN-long.png\"
+        alt=\"Hcn long\" /></a>\n          </div>\n          <div class=\"container\">\n
+        \           <a class=\"btn btn-navbar\" data-toggle=\"collapse\" data-target=\".nav-collapse\">\n
+        \             <span class=\"icon-bar\"></span>\n              <span class=\"icon-bar\"></span>\n
+        \             <span class=\"icon-bar\"></span>\n            </a>\n            <a
+        href=\"/\" class=\"brand\" title=\"Search for local voluntary and community
+        organisations\">Search for local\n              voluntary and community organisations</a>\n\n
+        \           <div class=\"nav-collapse collapse\">\n              <ul id=\"button-rack\"
+        class=\"nav nav-pills pull-right\">\n                <li class = \"active\">\n
+        \                 <a href=\"/\">Home</a>\n                </li>\n                    <li
+        class=\"dropdown \" id=\"menuLogin\">\n                      <a class=\"dropdown-toggle\"
+        href=\"#\" data-toggle=\"dropdown\" id=\"navLogin\">Login</a>\n\n                      <div
+        class=\"dropdown-menu\" id=\"login\" style=\"padding:17px; width: 300px; padding-bottom:
+        0px;\">\n                        <div class=\"well\">\n                          <form
+        id=\"loginForm\" class=\"new_user\" action=\"/users/sign_in\" accept-charset=\"UTF-8\"
+        method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" />\n
+        \                             <div>\n                                <label>Login:</label>\n
+        \                               <!--[if lt IE 10]>\n                                <label
+        for=\"user_email\">Enter email</label>\n                                <![endif]-->\n
+        \                               <input autofocus=\"autofocus\" placeholder=\"you@example.com\"
+        type=\"email\" value=\"\" name=\"user[email]\" id=\"user_email\" />\n                              </div>\n
+        \                             <div>\n                                <!--[if
+        lt IE 10]>\n                                <label for=\"user_password\">Enter
+        password</label>\n                                <![endif]-->\n                                <input
+        placeholder=\"password\" type=\"password\" name=\"user[password]\" id=\"user_password\"
+        />\n                              </div>\n                                  <div
+        id = \"remember_me\"><input name=\"user[remember_me]\" type=\"hidden\" value=\"0\"
+        /><input type=\"checkbox\" value=\"1\" name=\"user[remember_me]\" id=\"user_remember_me\"
+        /> <label class=\"checkbox inline\" for=\"user_remember_me\">Remember me</label></div>\n
+        \                             <div style=\"display: inline;\"><input type=\"submit\"
+        name=\"commit\" value=\"Sign in\" id=\"signin\" class=\"btn btn-primary\"
+        /></div>\n                              <a href=\"/users/password/new\">Forgot
+        your password?</a>\n</form>                          <div id=\"register\">\n
+        \                           <form id=\"registerForm\" class=\"new_user\" action=\"/users\"
+        accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\"
+        value=\"&#x2713;\" />\n                                <label>Sign up:</label>\n
+        \                               \n                                <!--[if
+        lt IE 10]>\n                                <label for=\"user_password\">Enter
+        email</label>\n                                <![endif]-->\n                                <input
+        autofocus=\"autofocus\" id=\"signup_email\" name=\"user[email]\" placeholder=\"you@example.com\"
+        type=\"email\" value=\"\" />\n                                <!--[if lt IE
+        10]>\n                                <label for=\"user_password\">Enter password</label>\n
+        \                               <![endif]-->\n                                <input
+        id=\"signup_password\" name=\"user[password]\" placeholder=\"password\" type=\"password\"
+        />\n                                <!--[if lt IE 10]>\n                                <label
+        for=\"user_password\">Confirm password</label>\n                                <![endif]-->\n
+        \                               <input id=\"signup_password_confirmation\"
+        placeholder=\"confirm password\" type=\"password\" name=\"user[password_confirmation]\"
+        />\n                                <div style=\"display: inline;\"><input
+        type=\"submit\" name=\"commit\" value=\"Sign up\" id=\"signup\" class=\"btn
+        btn-primary\" /></div>\n</form>                          </div>\n                          <form>\n
+        \                           <a id=\"toggle_link\" title=\"Click this link
+        to Sign Up for an account\" href=\"#\">New organisation? Sign up</a>\n                          </form>\n
+        \                       </div>\n                      </div>\n                    </li>\n
+        \             </ul>\n            </div>\n          </div>\n        </div>\n
+        \     </div>\n    </div>\n  </div>\n\n</header>\n\n<script>\n    $('#registerForm').collapse('hide');\n
+        \   $('a#toggle_link').on('click', function (e) {\n        e.preventDefault();\n
+        \       // Get all relevant elements\n        var $link = $('a#toggle_link');\n
+        \       var $collapse1 = $('#loginForm');\n        var $collapse2 = $('#registerForm');\n
+        \       // Toggle the collapse of the forms\n        $collapse1.collapse('toggle');\n
+        \       $collapse2.collapse('toggle');\n        // Change the link text\n
+        \       if ($link.text() == 'New organisation? Sign up') {\n            $link.text('Already
+        a member? Log in');\n        }\n        else {\n            $link.text('New
+        organisation? Sign up');\n        }\n    });\n</script>\n\n  <section id=\"main\">
+        \  <!-- uniquify the child container to create the top margin -->\n      <div
+        class=\"container\">  <!-- outermost twitter bootstrap container-->\n        <div
+        id=\"content\">\n          <!-- Span 6 -->\n<div class=\"row\">\n  <div id=\"column1\"
+        class=\"span6\">\n    <div class=\"flex-row\">\n      <div class=\"map_container\">\n
+        \           <div id=\"marker_data\" data-markers=\"[{&quot;lat&quot;:51.5812577,&quot;lng&quot;:-0.3473078,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/4\\&quot;\\u003eYouth UK\\u003c/a\\u003e\\u003cbr/\\u003e\\nCare
+        for the Very Young\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg data-id=\\&quot;4\\&quot;
+        class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;},{&quot;lat&quot;:51.5812577,&quot;lng&quot;:-0.3473078,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/3\\&quot;\\u003eAge UK\\u003c/a\\u003e\\u003cbr/\\u003e\\nCare
+        for the Elderly\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg data-id=\\&quot;3\\&quot;
+        class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;},{&quot;lat&quot;:51.5813411,&quot;lng&quot;:-0.3468075,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/2\\&quot;\\u003eIndian Elders Association\\u003c/a\\u003e\\u003cbr/\\u003e\\nCare
+        for the elderly\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg data-id=\\&quot;2\\&quot;
+        class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;},{&quot;lat&quot;:51.5814093,&quot;lng&quot;:-0.343908,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/1\\&quot;\\u003eHarrow Bereavement Counselling\\u003c/a\\u003e\\u003cbr/\\u003e\\nHarrow
+        Bereavement Counselling\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg
+        data-id=\\&quot;1\\&quot; class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;}]\"></div>\n\n
+        \       <div id=\"map_canvas\"></div>\n      </div>\n    </div>\n    <div
+        class=\"map_legend\">\n          <aside>\n      <table class=\"table\">\n
+        \       <tr>\n          <td class=\"key_image\"><img alt=\"Large map marker\"
+        src=\"/assets/marker.png\" width=\"15\" height=\"15\" /></td>\n          <td
+        class=\"key_text\">Details updated by the organisation within the last 12
+        months</td>\n        </tr>\n        <tr>\n          <td class=\"key_image\"><img
+        alt=\"Small map marker\" src=\"/assets/redcircle.png\" width=\"5\" height=\"5\"
+        /></td>\n          <td class=\"key_text\">Details NOT updated by the organisation
+        within the last 12 months</td>\n        </tr>\n      </table>\n    </aside>\n\n
+        \   </div>\n  </div>\n  <div id=\"column2\" class=\"span6\">\n    <form id=\"organisation_search\"
+        action=\"/organisations/search\" accept-charset=\"UTF-8\" method=\"get\"><input
+        name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" />\n  <div class=\"flex-column\">\n
+        \   <div class=\"flex-row\">\n      <div class=\"left-side\">\n        <label
+        class=\"field-label\" for=\"what_id\">What They Do</label>\n      </div>\n
+        \     <div class=\"right-side\">\n        <select name=\"what_id\" id=\"what_id\"><option
+        value=\"\">All</option></select>\n      </div>\n    </div>\n    <div class=\"flex-row\">\n
+        \     <div class=\"left-side\">\n        <label class=\"field-label\" for=\"who_id\">Who
+        They Help</label>\n      </div>\n      <div class=\"right-side\">\n        <select
+        name=\"who_id\" id=\"who_id\"><option value=\"\">All</option></select>\n      </div>\n
+        \   </div>\n    <div class=\"flex-row\">\n      <div class=\"left-side\">\n
+        \       <label class=\"field-label\" for=\"how_id\">How They Help</label>\n
+        \     </div>\n      <div class=\"right-side\">\n        <select name=\"how_id\"
+        id=\"how_id\"><option value=\"\">All</option></select>\n      </div>\n    </div>\n
+        \   <div class=\"flex-row\">\n      <div class=\"left-side\">\n        <label
+        class=\"field-label\" for=\"q\">Optional Search Text</label>\n      </div>\n
+        \     <div class=\"right-side\">\n        <input type=\"text\" name=\"q\"
+        id=\"q\" />\n        <input type=\"submit\" name=\"commit\" value=\"Submit\"
+        class=\"btn btn-info\" />\n      </div>\n    </div>\n  </div>\n</form>\n<div
+        id=\"orgs_scroll\">\n  <div class=\"table\">\n    <table>\n        <tr>\n
+        \         <td>\n            <u><a href=\"/organisations/4\">Youth UK</a></u><br/>\n
+        \           Care for the Very Young\n          </td>\n        </tr>\n        <tr>\n
+        \         <td>\n            <u><a href=\"/organisations/3\">Age UK</a></u><br/>\n
+        \           Care for the Elderly\n          </td>\n        </tr>\n        <tr>\n
+        \         <td>\n            <u><a href=\"/organisations/2\">Indian Elders
+        Association</a></u><br/>\n            Care for the elderly\n          </td>\n
+        \       </tr>\n        <tr>\n          <td>\n            <u><a href=\"/organisations/1\">Harrow
+        Bereavement Counselling</a></u><br/>\n            Harrow Bereavement Counselling\n
+        \         </td>\n        </tr>\n    </table>\n  </div>\n</div>\n\n<div style=\"width:50%;float:left\">\n
+        \ \n</div>\n\n\n\n\n\n  </div>\n</div>\n\n        </div>\n      </div>\n      <br>\n
+        \     <br>\n      <div id=\"push\"></div>\n  </section>\n\n</div>\n<div id=\"footer\"
+        class=\"container\">\n  <hr>\n  <div class=\"row\">\n    <div class=\"span5\">\n
+        \     <footer class=\"footer\">\n  <small>\n    Harrow Community Network\n
+        \   provided by <a href=\"http://www.voluntaryactionharrow.org.uk/\">Voluntary
+        Action Harrow Co-operative&nbsp<img alt=\"Voluntary Action Harrow Co-operative\"
+        src=\"/assets/VAHC-Small-Logo.png\" width=\"30\" height=\"30\" /></a>\n  </small>\n</footer>\n\n\n
+        \   </div>\n    <div class=\"span3\">\n      <footer class=\"footer\">\n   <p
+        class=\"text-center\"><small>\n     Powered by <a href=\"/contributors\"><img
+        alt=\"Agile Ventures\" src=\"/assets/av_symbol_30px.png\" width=\"30\" height=\"30\"
+        /></a>&nbsp; &nbsp;<a href=\"https://www.expeditedssl.com/simple-ssl-scanner/scan?target_domain=www.harrowcn.org.uk\"
+        target=\"_blank\"><img width='70px' height='40px' alt=\"Ssl-secure-badge\"
+        src=\"https://www.expeditedssl.com/ssl-secure-badge.png\" /></a>\n   </small>
+        </p>\n</footer>\n\n\n\n    </div>\n    <div class=\"span4\">\n      <footer
+        class=\"footer\">\n  <p class=\"text-right\"><small>\n |\n  </small></p>\n</footer>\n\n\n
+        \   </div>\n  </div>\n</div>\n</body>\n</html>\n\n"
+    http_version: 
+  recorded_at: Thu, 24 Nov 2016 20:31:39 GMT
+- request:
+    method: get
+    uri: http://www.google-analytics.com/r/collect?_r=1&_s=1&_u=AEAAAEQAI~&_v=j39&a=1883791621&cid=1707555760.1448310700&de=UTF-8&dl=http://127.0.0.1/&dt=Harrow%20Community%20Network&je=0&jid=939184440&sd=24-bit&sr=1366x768&t=pageview&tid=UA-60361269-1&ul=en-us&v=1&vp=1667x1050&z=1820935747
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Referer:
+      - http://127.0.0.1:57668/
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) capybara-webkit
+        Safari/537.21
+      Accept:
+      - '*/*'
+      Connection:
+      - Keep-Alive
+      Accept-Language:
+      - en-US,*
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Date:
+      - Mon, 23 Nov 2015 20:31:39 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Last-Modified:
+      - Sun, 17 May 1998 03:00:00 GMT
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - image/gif
+      Server:
+      - Golfe2
+      Content-Length:
+      - '35'
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        R0lGODlhAQABAID/AP///wAAACwAAAAAAQABAAACAkQBADs=
+    http_version: 
+  recorded_at: Thu, 24 Nov 2016 20:31:39 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:36773/
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) capybara-webkit
+        Safari/537.21
+      Connection:
+      - Keep-Alive
+      Accept-Language:
+      - en-US,*
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Etag:
+      - W/"ebec4cda7c6c5e033e7bb63579fb4f69"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 1234c636-2428-47be-8ea0-e2fc3fdc7244
+      X-Runtime:
+      - '0.054377'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2015-02-25)
+      Date:
+      - Thu, 24 Nov 2016 20:38:34 GMT
+      Content-Length:
+      - '14390'
+      Connection:
+      - close
+      Set-Cookie:
+      - _LocalSupport_session=TGd6TXRvMkxGUE50Tmpvejdhd1ZwQXNBdVZYWUpxR09VWUZ6YnJETWRSRVB5cFJ1ZFVMUjhybEVIZ3J6dnNCUnF6blBKTGZiYkdDdWw4Wkd6SmJLSzI2elVsZWF6VGtZV3pUVHhRdG51M2d0bE5KN004U3dRYkZ1TVlTWXJkVUYtLXU0eDNONXJScHlGZmN3NFFEbG9xeVE9PQ%3D%3D--6c7fd52a76925bac0c4b1e8e67186bb7d12c5915;
+        path=/; HttpOnly
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html>\n<html>\n<head>\n  <meta http-equiv=\"content-type\"
+        content=\"text/html; charset=utf-8\" />\n  <meta name=\"description\" content=\"Harrow
+        Community Network is a service provided by Voluntary Action Harrow to help
+        people find voluntary services in their local community\" />\n  <meta name=\"keywords\"
+        content=\"Harrow, Community, Network, volunteer, volunteering, voluntary,
+        organisations, causes\" />\n  <meta name=\"google-site-verification\" content=\"NnSd82Tg3wYtm75gYpDTcnfe5HzS5T38cU7oPDRlTD0\"
+        />\n\n  <meta name=\"application-name\" content=\"LocalSupport\">\n\n  <meta
+        property=\"og:title\" content=\"Harrow Community Network\"/>\n  <meta property=\"og:url\"
+        content=\"http://127.0.0.1:36773/\"/>\n  <meta property=\"og:site_name\" content=\"Harrow
+        Community Network\"/>\n  <meta property=\"og:description\" content=\"Harrow
+        Community Network is a service provided by Voluntary Action Harrow to help
+        people find voluntary services in their local community\">\n\n  <title>Harrow
+        Community Network </title>\n  <link rel=\"stylesheet\" media=\"screen\" href=\"/assets/application.css\"
+        />\n  \n  <!--[if lt IE 9]>\n     <script src=\"http://html5shim.googlecode.com/svn/trunk/html5.js\"></script>\n<![endif]-->\n\n
+        \ <script src=\"//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry\"
+        type=\"text/javascript\"></script>\n  <script src=\"/assets/application.js\"></script>\n
+        \ <!--this is where page-specific scripts are added-->\n      <script src=\"/assets/google_map.js\"></script>\n\n\n</head>\n\n<body>\n
+        \   <div id=\"cookie-message\" style=\"display: block;\">\n\n  <div id=\"cookie-message-inner\"
+        class=\"content\">\n    <div class=\"row\">\n      <h2>Cookie Policy</h2>\n
+        \     <a id=\"accept_cookies\" class=\"btn btn-primary\" rel=\"nofollow\"
+        data-method=\"POST\" href=\"/cookies/allow\">Close</a>\n\n    <p>We use cookies
+        to give you the best experience on our website. If you continue without changing
+        your cookie\n      settings, we assume that you consent to our use of cookies
+        on this device. You can change your cookie settings at\n      any time but
+        if you do, you may lose some functionality on our website. More information
+        can be found in our\n      <a href=\"/disclaimer\">terms of use.</a>\n    </div>\n
+        \ </div>\n</div>\n<div class=\"page-frame\">\n  <header>\n  <div id=\"navbar-wrapper\">\n
+        \   <div class=\"container\">\n      <div id=\"navbar\" class=\"navbar\">\n
+        \       <div class=\"navbar-inner\">\n          <div id=\"banner\" class=\"container\">\n
+        \           <a href=\"/\"><img class=\"img-responsive\" src=\"/assets/HCN-long.png\"
+        alt=\"Hcn long\" /></a>\n          </div>\n          <div class=\"container\">\n
+        \           <a class=\"btn btn-navbar\" data-toggle=\"collapse\" data-target=\".nav-collapse\">\n
+        \             <span class=\"icon-bar\"></span>\n              <span class=\"icon-bar\"></span>\n
+        \             <span class=\"icon-bar\"></span>\n            </a>\n            <a
+        href=\"/\" class=\"brand\" title=\"Search for local voluntary and community
+        organisations\">Search for local\n              voluntary and community organisations</a>\n\n
+        \           <div class=\"nav-collapse collapse\">\n              <ul id=\"button-rack\"
+        class=\"nav nav-pills pull-right\">\n                <li class = \"active\">\n
+        \                 <a href=\"/\">Home</a>\n                </li>\n                    <li
+        class=\"dropdown \" id=\"menuLogin\">\n                      <a class=\"dropdown-toggle\"
+        href=\"#\" data-toggle=\"dropdown\" id=\"navLogin\">Login</a>\n\n                      <div
+        class=\"dropdown-menu\" id=\"login\" style=\"padding:17px; width: 300px; padding-bottom:
+        0px;\">\n                        <div class=\"well\">\n                          <form
+        id=\"loginForm\" class=\"new_user\" action=\"/users/sign_in\" accept-charset=\"UTF-8\"
+        method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" />\n
+        \                             <div>\n                                <label>Login:</label>\n
+        \                               <!--[if lt IE 10]>\n                                <label
+        for=\"user_email\">Enter email</label>\n                                <![endif]-->\n
+        \                               <input autofocus=\"autofocus\" placeholder=\"you@example.com\"
+        type=\"email\" value=\"\" name=\"user[email]\" id=\"user_email\" />\n                              </div>\n
+        \                             <div>\n                                <!--[if
+        lt IE 10]>\n                                <label for=\"user_password\">Enter
+        password</label>\n                                <![endif]-->\n                                <input
+        placeholder=\"password\" type=\"password\" name=\"user[password]\" id=\"user_password\"
+        />\n                              </div>\n                                  <div
+        id = \"remember_me\"><input name=\"user[remember_me]\" type=\"hidden\" value=\"0\"
+        /><input type=\"checkbox\" value=\"1\" name=\"user[remember_me]\" id=\"user_remember_me\"
+        /> <label class=\"checkbox inline\" for=\"user_remember_me\">Remember me</label></div>\n
+        \                             <div style=\"display: inline;\"><input type=\"submit\"
+        name=\"commit\" value=\"Sign in\" id=\"signin\" class=\"btn btn-primary\"
+        /></div>\n                              <a href=\"/users/password/new\">Forgot
+        your password?</a>\n</form>                          <div id=\"register\">\n
+        \                           <form id=\"registerForm\" class=\"new_user\" action=\"/users\"
+        accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\"
+        value=\"&#x2713;\" />\n                                <label>Sign up:</label>\n
+        \                               \n                                <!--[if
+        lt IE 10]>\n                                <label for=\"user_password\">Enter
+        email</label>\n                                <![endif]-->\n                                <input
+        autofocus=\"autofocus\" id=\"signup_email\" name=\"user[email]\" placeholder=\"you@example.com\"
+        type=\"email\" value=\"\" />\n                                <!--[if lt IE
+        10]>\n                                <label for=\"user_password\">Enter password</label>\n
+        \                               <![endif]-->\n                                <input
+        id=\"signup_password\" name=\"user[password]\" placeholder=\"password\" type=\"password\"
+        />\n                                <!--[if lt IE 10]>\n                                <label
+        for=\"user_password\">Confirm password</label>\n                                <![endif]-->\n
+        \                               <input id=\"signup_password_confirmation\"
+        placeholder=\"confirm password\" type=\"password\" name=\"user[password_confirmation]\"
+        />\n                                <div style=\"display: inline;\"><input
+        type=\"submit\" name=\"commit\" value=\"Sign up\" id=\"signup\" class=\"btn
+        btn-primary\" /></div>\n</form>                          </div>\n                          <form>\n
+        \                           <a id=\"toggle_link\" title=\"Click this link
+        to Sign Up for an account\" href=\"#\">New organisation? Sign up</a>\n                          </form>\n
+        \                       </div>\n                      </div>\n                    </li>\n
+        \             </ul>\n            </div>\n          </div>\n        </div>\n
+        \     </div>\n    </div>\n  </div>\n\n</header>\n\n<script>\n    $('#registerForm').collapse('hide');\n
+        \   $('a#toggle_link').on('click', function (e) {\n        e.preventDefault();\n
+        \       // Get all relevant elements\n        var $link = $('a#toggle_link');\n
+        \       var $collapse1 = $('#loginForm');\n        var $collapse2 = $('#registerForm');\n
+        \       // Toggle the collapse of the forms\n        $collapse1.collapse('toggle');\n
+        \       $collapse2.collapse('toggle');\n        // Change the link text\n
+        \       if ($link.text() == 'New organisation? Sign up') {\n            $link.text('Already
+        a member? Log in');\n        }\n        else {\n            $link.text('New
+        organisation? Sign up');\n        }\n    });\n</script>\n\n  <section id=\"main\">
+        \  <!-- uniquify the child container to create the top margin -->\n      <div
+        class=\"container\">  <!-- outermost twitter bootstrap container-->\n        <div
+        id=\"content\">\n          <!-- Span 6 -->\n<div class=\"row\">\n  <div id=\"column1\"
+        class=\"span6\">\n    <div class=\"flex-row\">\n      <div class=\"map_container\">\n
+        \           <div id=\"marker_data\" data-markers=\"[{&quot;lat&quot;:51.5812577,&quot;lng&quot;:-0.3473078,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/4\\&quot;\\u003eYouth UK\\u003c/a\\u003e\\u003cbr/\\u003e\\nCare
+        for the Very Young\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg data-id=\\&quot;4\\&quot;
+        class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;},{&quot;lat&quot;:51.5812577,&quot;lng&quot;:-0.3473078,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/3\\&quot;\\u003eAge UK\\u003c/a\\u003e\\u003cbr/\\u003e\\nCare
+        for the Elderly\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg data-id=\\&quot;3\\&quot;
+        class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;},{&quot;lat&quot;:51.5813411,&quot;lng&quot;:-0.3468075,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/2\\&quot;\\u003eIndian Elders Association\\u003c/a\\u003e\\u003cbr/\\u003e\\nCare
+        for the elderly\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg data-id=\\&quot;2\\&quot;
+        class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;},{&quot;lat&quot;:51.5814093,&quot;lng&quot;:-0.343908,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/1\\&quot;\\u003eHarrow Bereavement Counselling\\u003c/a\\u003e\\u003cbr/\\u003e\\nHarrow
+        Bereavement Counselling\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg
+        data-id=\\&quot;1\\&quot; class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;}]\"></div>\n\n
+        \       <div id=\"map_canvas\"></div>\n      </div>\n    </div>\n    <div
+        class=\"map_legend\">\n          <aside>\n      <table class=\"table\">\n
+        \       <tr>\n          <td class=\"key_image\"><img alt=\"Large map marker\"
+        src=\"/assets/marker.png\" width=\"15\" height=\"15\" /></td>\n          <td
+        class=\"key_text\">Details updated by the organisation within the last 12
+        months</td>\n        </tr>\n        <tr>\n          <td class=\"key_image\"><img
+        alt=\"Small map marker\" src=\"/assets/redcircle.png\" width=\"5\" height=\"5\"
+        /></td>\n          <td class=\"key_text\">Details NOT updated by the organisation
+        within the last 12 months</td>\n        </tr>\n      </table>\n    </aside>\n\n
+        \   </div>\n  </div>\n  <div id=\"column2\" class=\"span6\">\n    <form id=\"organisation_search\"
+        action=\"/organisations/search\" accept-charset=\"UTF-8\" method=\"get\"><input
+        name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" />\n  <div class=\"flex-column\">\n
+        \   <div class=\"flex-row\">\n      <div class=\"left-side\">\n        <label
+        class=\"field-label\" for=\"what_id\">What They Do</label>\n      </div>\n
+        \     <div class=\"right-side\">\n        <select name=\"what_id\" id=\"what_id\"><option
+        value=\"\">All</option></select>\n      </div>\n    </div>\n    <div class=\"flex-row\">\n
+        \     <div class=\"left-side\">\n        <label class=\"field-label\" for=\"who_id\">Who
+        They Help</label>\n      </div>\n      <div class=\"right-side\">\n        <select
+        name=\"who_id\" id=\"who_id\"><option value=\"\">All</option></select>\n      </div>\n
+        \   </div>\n    <div class=\"flex-row\">\n      <div class=\"left-side\">\n
+        \       <label class=\"field-label\" for=\"how_id\">How They Help</label>\n
+        \     </div>\n      <div class=\"right-side\">\n        <select name=\"how_id\"
+        id=\"how_id\"><option value=\"\">All</option></select>\n      </div>\n    </div>\n
+        \   <div class=\"flex-row\">\n      <div class=\"left-side\">\n        <label
+        class=\"field-label\" for=\"q\">Optional Search Text</label>\n      </div>\n
+        \     <div class=\"right-side\">\n        <input type=\"text\" name=\"q\"
+        id=\"q\" />\n        <input type=\"submit\" name=\"commit\" value=\"Submit\"
+        class=\"btn btn-info\" />\n      </div>\n    </div>\n  </div>\n</form>\n<div
+        id=\"orgs_scroll\">\n  <div class=\"table\">\n    <table>\n        <tr>\n
+        \         <td>\n            <u><a href=\"/organisations/4\">Youth UK</a></u><br/>\n
+        \           Care for the Very Young\n          </td>\n        </tr>\n        <tr>\n
+        \         <td>\n            <u><a href=\"/organisations/3\">Age UK</a></u><br/>\n
+        \           Care for the Elderly\n          </td>\n        </tr>\n        <tr>\n
+        \         <td>\n            <u><a href=\"/organisations/2\">Indian Elders
+        Association</a></u><br/>\n            Care for the elderly\n          </td>\n
+        \       </tr>\n        <tr>\n          <td>\n            <u><a href=\"/organisations/1\">Harrow
+        Bereavement Counselling</a></u><br/>\n            Harrow Bereavement Counselling\n
+        \         </td>\n        </tr>\n    </table>\n  </div>\n</div>\n\n<div style=\"width:50%;float:left\">\n
+        \ \n</div>\n\n\n\n\n\n  </div>\n</div>\n\n        </div>\n      </div>\n      <br>\n
+        \     <br>\n      <div id=\"push\"></div>\n  </section>\n\n</div>\n<div id=\"footer\"
+        class=\"container\">\n  <hr>\n  <div class=\"row\">\n    <div class=\"span5\">\n
+        \     <footer class=\"footer\">\n  <small>\n    Harrow Community Network\n
+        \   provided by <a href=\"http://www.voluntaryactionharrow.org.uk/\">Voluntary
+        Action Harrow Co-operative&nbsp<img alt=\"Voluntary Action Harrow Co-operative\"
+        src=\"/assets/VAHC-Small-Logo.png\" width=\"30\" height=\"30\" /></a>\n  </small>\n</footer>\n\n\n
+        \   </div>\n    <div class=\"span3\">\n      <footer class=\"footer\">\n   <p
+        class=\"text-center\"><small>\n     Powered by <a href=\"/contributors\"><img
+        alt=\"Agile Ventures\" src=\"/assets/av_symbol_30px.png\" width=\"30\" height=\"30\"
+        /></a>&nbsp; &nbsp;<a href=\"https://www.expeditedssl.com/simple-ssl-scanner/scan?target_domain=www.harrowcn.org.uk\"
+        target=\"_blank\"><img width='70px' height='40px' alt=\"Ssl-secure-badge\"
+        src=\"https://www.expeditedssl.com/ssl-secure-badge.png\" /></a>\n   </small>
+        </p>\n</footer>\n\n\n\n    </div>\n    <div class=\"span4\">\n      <footer
+        class=\"footer\">\n  <p class=\"text-right\"><small>\n |\n  </small></p>\n</footer>\n\n\n
+        \   </div>\n  </div>\n</div>\n</body>\n</html>\n\n"
+    http_version: 
+  recorded_at: Thu, 24 Nov 2016 20:38:34 GMT
+- request:
+    method: get
+    uri: http://www.google-analytics.com/r/collect?_r=1&_s=1&_u=AEAAAEQAI~&_v=j39&a=1370128171&cid=1118502973.1448311114&de=UTF-8&dl=http://127.0.0.1/&dt=Harrow%20Community%20Network&je=0&jid=1885997449&sd=24-bit&sr=1366x768&t=pageview&tid=UA-60361269-1&ul=en-us&v=1&vp=1667x1050&z=287963317
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Referer:
+      - http://127.0.0.1:36773/
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) capybara-webkit
+        Safari/537.21
+      Accept:
+      - '*/*'
+      Connection:
+      - Keep-Alive
+      Accept-Language:
+      - en-US,*
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Date:
+      - Mon, 23 Nov 2015 20:38:34 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Last-Modified:
+      - Sun, 17 May 1998 03:00:00 GMT
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - image/gif
+      Server:
+      - Golfe2
+      Content-Length:
+      - '35'
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        R0lGODlhAQABAID/AP///wAAACwAAAAAAQABAAACAkQBADs=
+    http_version: 
+  recorded_at: Thu, 24 Nov 2016 20:38:34 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:37134/
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) capybara-webkit
+        Safari/537.21
+      Connection:
+      - Keep-Alive
+      Accept-Language:
+      - en-US,*
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Etag:
+      - W/"0e561b051614fe0a787fc57ed516a89f"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - f38c0abc-b01d-4967-bf5f-a0e53b139266
+      X-Runtime:
+      - '0.073875'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2015-02-25)
+      Date:
+      - Thu, 24 Nov 2016 21:01:37 GMT
+      Content-Length:
+      - '14390'
+      Connection:
+      - close
+      Set-Cookie:
+      - _LocalSupport_session=QzlIN3FpRXB2QytVQnZ2dWtMa3FKQ0lqMnZ0VWZpWER0YjdOYVRSVEZqNGNRQ3J2ak1yVmZwaG1OVVpVL2JrWEtwNEw3anI3Ui9PNVpiUXRac1Q2azFtZ1owZHRoRTFzQ0Nzckt3eTNiZTUreFUwbFNYc1htTVRIekJMRXBPaEwtLVJDN2ZpdUpzN2w4M3oydDNqRi9YUkE9PQ%3D%3D--9a8a7b7f605fae84efab026a0c9afbb44b46b75c;
+        path=/; HttpOnly
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html>\n<html>\n<head>\n  <meta http-equiv=\"content-type\"
+        content=\"text/html; charset=utf-8\" />\n  <meta name=\"description\" content=\"Harrow
+        Community Network is a service provided by Voluntary Action Harrow to help
+        people find voluntary services in their local community\" />\n  <meta name=\"keywords\"
+        content=\"Harrow, Community, Network, volunteer, volunteering, voluntary,
+        organisations, causes\" />\n  <meta name=\"google-site-verification\" content=\"NnSd82Tg3wYtm75gYpDTcnfe5HzS5T38cU7oPDRlTD0\"
+        />\n\n  <meta name=\"application-name\" content=\"LocalSupport\">\n\n  <meta
+        property=\"og:title\" content=\"Harrow Community Network\"/>\n  <meta property=\"og:url\"
+        content=\"http://127.0.0.1:37134/\"/>\n  <meta property=\"og:site_name\" content=\"Harrow
+        Community Network\"/>\n  <meta property=\"og:description\" content=\"Harrow
+        Community Network is a service provided by Voluntary Action Harrow to help
+        people find voluntary services in their local community\">\n\n  <title>Harrow
+        Community Network </title>\n  <link rel=\"stylesheet\" media=\"screen\" href=\"/assets/application.css\"
+        />\n  \n  <!--[if lt IE 9]>\n     <script src=\"http://html5shim.googlecode.com/svn/trunk/html5.js\"></script>\n<![endif]-->\n\n
+        \ <script src=\"//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry\"
+        type=\"text/javascript\"></script>\n  <script src=\"/assets/application.js\"></script>\n
+        \ <!--this is where page-specific scripts are added-->\n      <script src=\"/assets/google_map.js\"></script>\n\n\n</head>\n\n<body>\n
+        \   <div id=\"cookie-message\" style=\"display: block;\">\n\n  <div id=\"cookie-message-inner\"
+        class=\"content\">\n    <div class=\"row\">\n      <h2>Cookie Policy</h2>\n
+        \     <a id=\"accept_cookies\" class=\"btn btn-primary\" rel=\"nofollow\"
+        data-method=\"POST\" href=\"/cookies/allow\">Close</a>\n\n    <p>We use cookies
+        to give you the best experience on our website. If you continue without changing
+        your cookie\n      settings, we assume that you consent to our use of cookies
+        on this device. You can change your cookie settings at\n      any time but
+        if you do, you may lose some functionality on our website. More information
+        can be found in our\n      <a href=\"/disclaimer\">terms of use.</a>\n    </div>\n
+        \ </div>\n</div>\n<div class=\"page-frame\">\n  <header>\n  <div id=\"navbar-wrapper\">\n
+        \   <div class=\"container\">\n      <div id=\"navbar\" class=\"navbar\">\n
+        \       <div class=\"navbar-inner\">\n          <div id=\"banner\" class=\"container\">\n
+        \           <a href=\"/\"><img class=\"img-responsive\" src=\"/assets/HCN-long.png\"
+        alt=\"Hcn long\" /></a>\n          </div>\n          <div class=\"container\">\n
+        \           <a class=\"btn btn-navbar\" data-toggle=\"collapse\" data-target=\".nav-collapse\">\n
+        \             <span class=\"icon-bar\"></span>\n              <span class=\"icon-bar\"></span>\n
+        \             <span class=\"icon-bar\"></span>\n            </a>\n            <a
+        href=\"/\" class=\"brand\" title=\"Search for local voluntary and community
+        organisations\">Search for local\n              voluntary and community organisations</a>\n\n
+        \           <div class=\"nav-collapse collapse\">\n              <ul id=\"button-rack\"
+        class=\"nav nav-pills pull-right\">\n                <li class = \"active\">\n
+        \                 <a href=\"/\">Home</a>\n                </li>\n                    <li
+        class=\"dropdown \" id=\"menuLogin\">\n                      <a class=\"dropdown-toggle\"
+        href=\"#\" data-toggle=\"dropdown\" id=\"navLogin\">Login</a>\n\n                      <div
+        class=\"dropdown-menu\" id=\"login\" style=\"padding:17px; width: 300px; padding-bottom:
+        0px;\">\n                        <div class=\"well\">\n                          <form
+        id=\"loginForm\" class=\"new_user\" action=\"/users/sign_in\" accept-charset=\"UTF-8\"
+        method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" />\n
+        \                             <div>\n                                <label>Login:</label>\n
+        \                               <!--[if lt IE 10]>\n                                <label
+        for=\"user_email\">Enter email</label>\n                                <![endif]-->\n
+        \                               <input autofocus=\"autofocus\" placeholder=\"you@example.com\"
+        type=\"email\" value=\"\" name=\"user[email]\" id=\"user_email\" />\n                              </div>\n
+        \                             <div>\n                                <!--[if
+        lt IE 10]>\n                                <label for=\"user_password\">Enter
+        password</label>\n                                <![endif]-->\n                                <input
+        placeholder=\"password\" type=\"password\" name=\"user[password]\" id=\"user_password\"
+        />\n                              </div>\n                                  <div
+        id = \"remember_me\"><input name=\"user[remember_me]\" type=\"hidden\" value=\"0\"
+        /><input type=\"checkbox\" value=\"1\" name=\"user[remember_me]\" id=\"user_remember_me\"
+        /> <label class=\"checkbox inline\" for=\"user_remember_me\">Remember me</label></div>\n
+        \                             <div style=\"display: inline;\"><input type=\"submit\"
+        name=\"commit\" value=\"Sign in\" id=\"signin\" class=\"btn btn-primary\"
+        /></div>\n                              <a href=\"/users/password/new\">Forgot
+        your password?</a>\n</form>                          <div id=\"register\">\n
+        \                           <form id=\"registerForm\" class=\"new_user\" action=\"/users\"
+        accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\"
+        value=\"&#x2713;\" />\n                                <label>Sign up:</label>\n
+        \                               \n                                <!--[if
+        lt IE 10]>\n                                <label for=\"user_password\">Enter
+        email</label>\n                                <![endif]-->\n                                <input
+        autofocus=\"autofocus\" id=\"signup_email\" name=\"user[email]\" placeholder=\"you@example.com\"
+        type=\"email\" value=\"\" />\n                                <!--[if lt IE
+        10]>\n                                <label for=\"user_password\">Enter password</label>\n
+        \                               <![endif]-->\n                                <input
+        id=\"signup_password\" name=\"user[password]\" placeholder=\"password\" type=\"password\"
+        />\n                                <!--[if lt IE 10]>\n                                <label
+        for=\"user_password\">Confirm password</label>\n                                <![endif]-->\n
+        \                               <input id=\"signup_password_confirmation\"
+        placeholder=\"confirm password\" type=\"password\" name=\"user[password_confirmation]\"
+        />\n                                <div style=\"display: inline;\"><input
+        type=\"submit\" name=\"commit\" value=\"Sign up\" id=\"signup\" class=\"btn
+        btn-primary\" /></div>\n</form>                          </div>\n                          <form>\n
+        \                           <a id=\"toggle_link\" title=\"Click this link
+        to Sign Up for an account\" href=\"#\">New organisation? Sign up</a>\n                          </form>\n
+        \                       </div>\n                      </div>\n                    </li>\n
+        \             </ul>\n            </div>\n          </div>\n        </div>\n
+        \     </div>\n    </div>\n  </div>\n\n</header>\n\n<script>\n    $('#registerForm').collapse('hide');\n
+        \   $('a#toggle_link').on('click', function (e) {\n        e.preventDefault();\n
+        \       // Get all relevant elements\n        var $link = $('a#toggle_link');\n
+        \       var $collapse1 = $('#loginForm');\n        var $collapse2 = $('#registerForm');\n
+        \       // Toggle the collapse of the forms\n        $collapse1.collapse('toggle');\n
+        \       $collapse2.collapse('toggle');\n        // Change the link text\n
+        \       if ($link.text() == 'New organisation? Sign up') {\n            $link.text('Already
+        a member? Log in');\n        }\n        else {\n            $link.text('New
+        organisation? Sign up');\n        }\n    });\n</script>\n\n  <section id=\"main\">
+        \  <!-- uniquify the child container to create the top margin -->\n      <div
+        class=\"container\">  <!-- outermost twitter bootstrap container-->\n        <div
+        id=\"content\">\n          <!-- Span 6 -->\n<div class=\"row\">\n  <div id=\"column1\"
+        class=\"span6\">\n    <div class=\"flex-row\">\n      <div class=\"map_container\">\n
+        \           <div id=\"marker_data\" data-markers=\"[{&quot;lat&quot;:51.5812577,&quot;lng&quot;:-0.3473078,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/4\\&quot;\\u003eYouth UK\\u003c/a\\u003e\\u003cbr/\\u003e\\nCare
+        for the Very Young\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg data-id=\\&quot;4\\&quot;
+        class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;},{&quot;lat&quot;:51.5812577,&quot;lng&quot;:-0.3473078,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/3\\&quot;\\u003eAge UK\\u003c/a\\u003e\\u003cbr/\\u003e\\nCare
+        for the Elderly\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg data-id=\\&quot;3\\&quot;
+        class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;},{&quot;lat&quot;:51.5813411,&quot;lng&quot;:-0.3468075,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/2\\&quot;\\u003eIndian Elders Association\\u003c/a\\u003e\\u003cbr/\\u003e\\nCare
+        for the elderly\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg data-id=\\&quot;2\\&quot;
+        class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;},{&quot;lat&quot;:51.5814093,&quot;lng&quot;:-0.343908,&quot;infowindow&quot;:&quot;\\u003cbutton
+        class=&#39;close infowindow_close&#39; type=&#39;button&#39;\\u003e×\\u003c/button\\u003e\\n\\u003ca
+        href=\\&quot;/organisations/1\\&quot;\\u003eHarrow Bereavement Counselling\\u003c/a\\u003e\\u003cbr/\\u003e\\nHarrow
+        Bereavement Counselling\\n&quot;,&quot;custom_marker&quot;:&quot;\\u003cimg
+        data-id=\\&quot;1\\&quot; class=\\&quot;measle\\&quot; src=\\&quot;https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png\\&quot;
+        alt=\\&quot;Measle\\&quot; /\\u003e\\n&quot;,&quot;index&quot;:-1,&quot;type&quot;:&quot;small_org&quot;}]\"></div>\n\n
+        \       <div id=\"map_canvas\"></div>\n      </div>\n    </div>\n    <div
+        class=\"map_legend\">\n          <aside>\n      <table class=\"table\">\n
+        \       <tr>\n          <td class=\"key_image\"><img alt=\"Large map marker\"
+        src=\"/assets/marker.png\" width=\"15\" height=\"15\" /></td>\n          <td
+        class=\"key_text\">Details updated by the organisation within the last 12
+        months</td>\n        </tr>\n        <tr>\n          <td class=\"key_image\"><img
+        alt=\"Small map marker\" src=\"/assets/redcircle.png\" width=\"5\" height=\"5\"
+        /></td>\n          <td class=\"key_text\">Details NOT updated by the organisation
+        within the last 12 months</td>\n        </tr>\n      </table>\n    </aside>\n\n
+        \   </div>\n  </div>\n  <div id=\"column2\" class=\"span6\">\n    <form id=\"organisation_search\"
+        action=\"/organisations/search\" accept-charset=\"UTF-8\" method=\"get\"><input
+        name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" />\n  <div class=\"flex-column\">\n
+        \   <div class=\"flex-row\">\n      <div class=\"left-side\">\n        <label
+        class=\"field-label\" for=\"what_id\">What They Do</label>\n      </div>\n
+        \     <div class=\"right-side\">\n        <select name=\"what_id\" id=\"what_id\"><option
+        value=\"\">All</option></select>\n      </div>\n    </div>\n    <div class=\"flex-row\">\n
+        \     <div class=\"left-side\">\n        <label class=\"field-label\" for=\"who_id\">Who
+        They Help</label>\n      </div>\n      <div class=\"right-side\">\n        <select
+        name=\"who_id\" id=\"who_id\"><option value=\"\">All</option></select>\n      </div>\n
+        \   </div>\n    <div class=\"flex-row\">\n      <div class=\"left-side\">\n
+        \       <label class=\"field-label\" for=\"how_id\">How They Help</label>\n
+        \     </div>\n      <div class=\"right-side\">\n        <select name=\"how_id\"
+        id=\"how_id\"><option value=\"\">All</option></select>\n      </div>\n    </div>\n
+        \   <div class=\"flex-row\">\n      <div class=\"left-side\">\n        <label
+        class=\"field-label\" for=\"q\">Optional Search Text</label>\n      </div>\n
+        \     <div class=\"right-side\">\n        <input type=\"text\" name=\"q\"
+        id=\"q\" />\n        <input type=\"submit\" name=\"commit\" value=\"Submit\"
+        class=\"btn btn-info\" />\n      </div>\n    </div>\n  </div>\n</form>\n<div
+        id=\"orgs_scroll\">\n  <div class=\"table\">\n    <table>\n        <tr>\n
+        \         <td>\n            <u><a href=\"/organisations/4\">Youth UK</a></u><br/>\n
+        \           Care for the Very Young\n          </td>\n        </tr>\n        <tr>\n
+        \         <td>\n            <u><a href=\"/organisations/3\">Age UK</a></u><br/>\n
+        \           Care for the Elderly\n          </td>\n        </tr>\n        <tr>\n
+        \         <td>\n            <u><a href=\"/organisations/2\">Indian Elders
+        Association</a></u><br/>\n            Care for the elderly\n          </td>\n
+        \       </tr>\n        <tr>\n          <td>\n            <u><a href=\"/organisations/1\">Harrow
+        Bereavement Counselling</a></u><br/>\n            Harrow Bereavement Counselling\n
+        \         </td>\n        </tr>\n    </table>\n  </div>\n</div>\n\n<div style=\"width:50%;float:left\">\n
+        \ \n</div>\n\n\n\n\n\n  </div>\n</div>\n\n        </div>\n      </div>\n      <br>\n
+        \     <br>\n      <div id=\"push\"></div>\n  </section>\n\n</div>\n<div id=\"footer\"
+        class=\"container\">\n  <hr>\n  <div class=\"row\">\n    <div class=\"span5\">\n
+        \     <footer class=\"footer\">\n  <small>\n    Harrow Community Network\n
+        \   provided by <a href=\"http://www.voluntaryactionharrow.org.uk/\">Voluntary
+        Action Harrow Co-operative&nbsp<img alt=\"Voluntary Action Harrow Co-operative\"
+        src=\"/assets/VAHC-Small-Logo.png\" width=\"30\" height=\"30\" /></a>\n  </small>\n</footer>\n\n\n
+        \   </div>\n    <div class=\"span3\">\n      <footer class=\"footer\">\n   <p
+        class=\"text-center\"><small>\n     Powered by <a href=\"/contributors\"><img
+        alt=\"Agile Ventures\" src=\"/assets/av_symbol_30px.png\" width=\"30\" height=\"30\"
+        /></a>&nbsp; &nbsp;<a href=\"https://www.expeditedssl.com/simple-ssl-scanner/scan?target_domain=www.harrowcn.org.uk\"
+        target=\"_blank\"><img width='70px' height='40px' alt=\"Ssl-secure-badge\"
+        src=\"https://www.expeditedssl.com/ssl-secure-badge.png\" /></a>\n   </small>
+        </p>\n</footer>\n\n\n\n    </div>\n    <div class=\"span4\">\n      <footer
+        class=\"footer\">\n  <p class=\"text-right\"><small>\n |\n  </small></p>\n</footer>\n\n\n
+        \   </div>\n  </div>\n</div>\n</body>\n</html>\n\n"
+    http_version: 
+  recorded_at: Thu, 24 Nov 2016 21:01:37 GMT
 recorded_with: VCR 2.9.3

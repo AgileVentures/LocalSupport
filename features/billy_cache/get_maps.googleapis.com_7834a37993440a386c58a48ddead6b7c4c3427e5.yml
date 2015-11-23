@@ -1,0 +1,35 @@
+---
+:scope: 
+:url: http://maps.googleapis.com/maps/gen_204?target=api&ev=api_viewport&cad=host:127.0.0.1%3A37134,v:20,r:1,mt:m,c:51.597754%2C-0.337,sp:0.12988x0.19089,size:556x609,relsize:0.19,token:17btdoeq9g,src:apiv3,ts:cfxt6f
+:body: ''
+:status: 404
+:method: get
+:headers:
+  Content-Type: text/html;charset=utf-8
+  X-Cascade: pass
+  Content-Length: '453'
+  X-Xss-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Connection: close
+:content: |
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <style type="text/css">
+    body { text-align:center;font-family:helvetica,arial;font-size:22px;
+      color:#888;margin:20px}
+    #c {margin:0 auto;width:500px;text-align:left}
+    </style>
+  </head>
+  <body>
+    <h2>Sinatra doesn&rsquo;t know this ditty.</h2>
+    <img src='http://maps.googleapis.com/__sinatra__/404.png'>
+    <div id="c">
+      Try this:
+      <pre>get '/maps/gen_204' do
+    "Hello World"
+  end</pre>
+    </div>
+  </body>
+  </html>

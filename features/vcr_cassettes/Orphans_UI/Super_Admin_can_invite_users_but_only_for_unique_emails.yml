@@ -651,4 +651,190 @@ http_interactions:
       string: '32590660'
     http_version: 
   recorded_at: Fri, 13 Nov 2015 22:58:43 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:57451/__identify__
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2015-02-25)
+      Date:
+      - Sun, 15 Nov 2015 17:50:15 GMT
+      Content-Length:
+      - '8'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '31875500'
+    http_version: 
+  recorded_at: Sun, 15 Nov 2015 17:50:15 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:58487/__identify__
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2015-02-25)
+      Date:
+      - Mon, 23 Nov 2015 20:11:39 GMT
+      Content-Length:
+      - '8'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '46959220'
+    http_version: 
+  recorded_at: Mon, 23 Nov 2015 20:11:39 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:37118/__identify__
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2015-02-25)
+      Date:
+      - Mon, 23 Nov 2015 20:19:59 GMT
+      Content-Length:
+      - '8'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '65010960'
+    http_version: 
+  recorded_at: Mon, 23 Nov 2015 20:19:59 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:57668/__identify__
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2015-02-25)
+      Date:
+      - Mon, 23 Nov 2015 20:29:42 GMT
+      Content-Length:
+      - '8'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '18794660'
+    http_version: 
+  recorded_at: Mon, 23 Nov 2015 20:29:42 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:36773/__identify__
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2015-02-25)
+      Date:
+      - Mon, 23 Nov 2015 20:36:37 GMT
+      Content-Length:
+      - '8'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '67099760'
+    http_version: 
+  recorded_at: Mon, 23 Nov 2015 20:36:37 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:37134/__identify__
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2015-02-25)
+      Date:
+      - Mon, 23 Nov 2015 20:59:42 GMT
+      Content-Length:
+      - '8'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '22116020'
+    http_version: 
+  recorded_at: Mon, 23 Nov 2015 20:59:42 GMT
 recorded_with: VCR 2.9.3

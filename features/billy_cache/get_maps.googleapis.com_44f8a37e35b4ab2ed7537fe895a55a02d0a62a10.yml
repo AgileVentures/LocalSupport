@@ -1,0 +1,18 @@
+---
+:scope: 
+:url: http://maps.googleapis.com/maps/gen_204?target=api&ev=api_maprft&cad=host:127.0.0.1%3A36773,v:20,r:1,t:501,smni:3,src:apiv3,token:7mxmvzv9k9,ts:cf1co5
+:body: ''
+:status: 204
+:method: get
+:headers:
+  Content-Type: image/gif
+  Date: Mon, 23 Nov 2015 20:38:25 GMT
+  Pragma: no-cache
+  Expires: Fri, 01 Jan 1990 00:00:00 GMT
+  Cache-Control: no-cache, must-revalidate
+  Server: mafe
+  Content-Length: '0'
+  X-XSS-Protection: 1; mode=block
+  X-Frame-Options: SAMEORIGIN
+  Connection: close
+:content: ''
