@@ -73,4 +73,8 @@ class User < ActiveRecord::Base
     self.pending_organisation_id = organisation_id
     save!
   end
+
+  def self.purge_deleted_users_where(query)
+    User.deleted.delete User.deleted.where(query).pluck(:id)
+  end
 end
