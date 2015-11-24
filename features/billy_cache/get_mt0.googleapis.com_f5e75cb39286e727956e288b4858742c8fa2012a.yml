@@ -1,0 +1,25 @@
+---
+:scope: 
+:url: http://mt0.googleapis.com/vt?pb=!1m4!1m3!1i12!2i2042!3i1362!1m4!1m3!1i12!2i2043!3i1362!1m4!1m3!1i12!2i2044!3i1362!1m4!1m3!1i12!2i2045!3i1362!2m3!1e0!2sm!3i328000000!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e3&callback=_xdc_._vpnblo&token=84223
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Fri, 13 Nov 2015 22:23:46 GMT
+  Expires: Thu, 28 Jul 2016 03:14:08 GMT
+  Cache-Control: public, max-age=22222222
+  Content-Type: text/javascript; charset=UTF-8
+  X-Content-Type-Options: nosniff
+  Content-Disposition: attachment; filename="f.txt"
+  Server: paintfe
+  X-XSS-Protection: 1; mode=block
+  X-Frame-Options: SAMEORIGIN
+  Accept-Ranges: none
+  Vary: Accept-Encoding
+  Connection: close
+:content: /* API Response */ _xdc_._vpnblo && _xdc_._vpnblo([{id:"twvwvwvwvtwt",base:[1071030272,714450944],zrange:[12,12],layer:"m@328000000",features:[{id:"10369348292721394023",a:[0,0,1071030272,714450944,1071030272,714450944],bb:[-7,-7,7,7,-7,-7,7,7,-7,-7,7,7,-94,-7,-6,8],c:"{1:{title:\"Heathrow
+  Airport\"},4:{type:1}}"}]},{id:"twvwvwvwvtwv",base:[1071704064,714586112],zrange:[12,12],layer:"m@328000000",features:[{id:"12181789252114816164",a:[0,0],bb:[-117,-7,-6,8],c:"{1:{title:\"Twickenham
+  Stadium\"},4:{type:1}}"}]},{id:"twvwvwvwvvut",base:[1071704064,714586112],zrange:[12,12],layer:"m@328000000",features:[{id:"12181789252114816164",a:[0,0,1071704064,714586112,1071704064,714586112],bb:[-7,-7,7,7,-7,-7,7,7,-7,-7,7,7,-117,-7,-6,8],c:"{1:{title:\"Twickenham
+  Stadium\"},4:{type:1}}"}]},{id:"twvwvwvwvvuv",base:[1072621568,714106880],zrange:[12,12],layer:"m@328000000",features:[{id:"9936730966454976391",a:[0,0,1072621568,714106880,1072621568,714106880],bb:[-7,-7,7,7,-7,-7,7,7,-7,-7,7,7,6,-7,102,8],c:"{1:{title:\"Kensington
+  Palace\"},4:{type:1}}"},{id:"2808567295917436825",a:[-135168,94208,1072486400,714201088,1072486400,714201088],bb:[-7,-7,7,7,-7,-7,7,7,-7,-7,7,7,-90,-7,-5,8],c:"{1:{title:\"Olympia
+  London\"},4:{type:1}}"}]}])

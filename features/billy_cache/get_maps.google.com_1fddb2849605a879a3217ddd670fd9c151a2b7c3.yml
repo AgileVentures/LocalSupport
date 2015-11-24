@@ -1,0 +1,28 @@
+---
+:scope: 
+:url: http://maps.google.com/maps-api-v3/api/js/20/16/overlay.js
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Vary: Accept-Encoding
+  Content-Type: text/javascript
+  Date: Thu, 05 Nov 2015 00:13:17 GMT
+  Expires: Fri, 04 Nov 2016 00:13:17 GMT
+  Last-Modified: Tue, 15 Sep 2015 04:00:25 GMT
+  X-Content-Type-Options: nosniff
+  Server: sffe
+  X-Xss-Protection: 1; mode=block
+  Cache-Control: public, max-age=31536000
+  Age: '329451'
+  Accept-Ranges: none
+  Connection: close
+  Content-Length: '1541'
+:content: google.maps.__gjsload__('overlay', '\'use strict\';function BT(a){this.j=a}O(BT,U);$a(BT[H],function(a){"outProjection"!=a&&(a=!!(this.get("offset")&&this.get("projectionTopLeft")&&this.get("projection")&&te(this.get("zoom"))),a==!this.get("outProjection")&&this.set("outProjection",a?this.j:null))});function
+  CT(){}function DT(){var a=this.gm_props_;if(this[On]()){if(this[Mc]()){if(!a.Of&&this.onAdd)this.onAdd();a.Of=!0;this.draw()}}else{if(a.Of)if(this[Xc])this[Xc]();else
+  this[Fb]();a.Of=!1}}function ET(a){a.gm_props_=a.gm_props_||new CT;return a.gm_props_}function
+  FT(a){Tj[J](this);this.na=S(a,DT)}O(FT,Tj);function GT(){}\nGT[H].bm=function(a){var
+  b=a[Ln](),c=ET(a),d=c.wg;c.wg=b;d&&(c=ET(a),(d=c.Ha)&&d[qn](),(d=c.ej)&&d[qn](),a[qn](),a.set("panes",null),a.set("projection",null),Q(c.ba,T[Ab]),c.ba=null,c.mb&&(c.mb.na(),c.mb=null),os("Ox","-p",a));if(b){c=ET(a);d=c.mb;d||(d=c.mb=new
+  FT(a));Q(c.ba,T[Ab]);var e=c.Ha=c.Ha||new rr,f=b[B];e[p]("zoom",f);e[p]("offset",f);e[p]("center",f,"projectionCenterQ");e[p]("projection",b);e[p]("projectionTopLeft",f);e=c.ej=c.ej||new
+  BT(e);e[p]("zoom",f);e[p]("offset",f);e[p]("projection",\nb);e[p]("projectionTopLeft",f);a[p]("projection",e,"outProjection");a[p]("panes",f);e=S(d,d.Z);c.ba=[T[A](a,"panes_changed",e),T[A](f,"zoom_changed",e),T[A](f,"offset_changed",e),T[A](b,"projection_changed",e),T[A](f,"projectioncenterq_changed",e),T[v](b,"forceredraw",d)];d.Z();b
+  instanceof ph&&(ls(b,"Ox"),ns("Ox","-p",a,!!b.ga))}};var HT=new GT;Ih.overlay=function(a){eval(a)};dg("overlay",HT);\n')
