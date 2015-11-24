@@ -79,6 +79,9 @@ FactoryGirl.define do
         user.save!
       end
     end
+    factory :deleted_user do
+      deleted_at 1.year.ago
+    end
   end
 
   factory :volunteer_op do
