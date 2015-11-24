@@ -20,9 +20,7 @@ class UserOrganisationDecliner
   end
 
   def error_message_if_not_superadmin
-    if !is_current_user_superadmin?
-      listener.authorization_failure_for_update
-    end
+    listener.authorization_failure_for_update unless is_current_user_superadmin?
   end
 
   def remove_pending_org_from_user
