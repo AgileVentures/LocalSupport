@@ -59,7 +59,6 @@ describe ::BatchInviteJob do
     it 'resend invitations to a deleted user' do
       deleted_user = FactoryGirl.create(:deleted_user, email: 'YES@hello.com')
       valid_user = instance_double('User', errors: [])
-      invalid_user = instance_double('User', errors: ['email has been taken'])
       expect(User).to receive(:purge_deleted_users_where).with(email: ['yes@hello.com', 'yes@hello.com'])
       allow(User).to receive(:invite!).and_return(valid_user)
       subject
