@@ -282,6 +282,19 @@ describe User, :type => :model do
     end
   end
 
-
-
+  describe '.purge_deleted_users_where' do
+    subject{User.purge_deleted_users_where(email: 'yes@hello.com')}
+    it 'purge deleted user when user match query' do
+      user = FactoryGirl.create :deleted_user, email: 'yes@hello.com'
+      expect{subject}.to change(User.deleted, :count).by(-1)
+    end
+    it 'does not delete users that is not match query' do
+      user = FactoryGirl.create :deleted_user, email: 'no@hello.com'
+      expect{subject}.to change(User.deleted, :count).by(0)
+    end
+    it 'does not affect undeleted users' do
+      user = FactoryGirl.create :user, email: 'yes@hello.com'
+      expect{subject}.to change(User, :count).by(0)
+    end
+  end
 end
