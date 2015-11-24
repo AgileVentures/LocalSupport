@@ -359,7 +359,9 @@ Given /^I edit the charity address to be "(.*?)" when Google is indisposed$/ do 
 "results" : [],
 "status" : "OVER_QUERY_LIMIT"
 })
+
   fill_in('organisation_address', :with => address)
+
 end
 
 Then /^I should not see the unable to save organisation error$/ do

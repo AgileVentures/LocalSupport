@@ -1,0 +1,65 @@
+---
+:scope: 
+:url: http://maps.google.com/maps-api-v3/api/js/20/16/stats.js
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Vary: Accept-Encoding
+  Content-Type: text/javascript
+  Date: Fri, 16 Oct 2015 10:26:20 GMT
+  Expires: Sat, 15 Oct 2016 10:26:20 GMT
+  Last-Modified: Tue, 15 Sep 2015 04:00:25 GMT
+  X-Content-Type-Options: nosniff
+  Server: sffe
+  X-Xss-Protection: 1; mode=block
+  Cache-Control: public, max-age=31536000
+  Age: '2020668'
+  Accept-Ranges: none
+  Connection: close
+  Content-Length: '5719'
+:content: google.maps.__gjsload__('stats', '\'use strict\';function pX(a,b,c){var
+  d=[];he(a,function(a,c){d[E](a+b+c)});return d[od](c)}function qX(a,b,c,d){var e={};e.host=ca[kc]&&ca[kc][zn]||k[kc][zn];e.v=a;e.r=m[F](1/b);c&&(e.client=c);d&&(e.key=d);return
+  e}function Zaa(){this.j=new mH;this.A=0}function rX(a,b){var c=new Image,d=a.A++;a.j.set(d,c);oa(c,Xa(c,function(){oa(c,Xa(c,Md));a.j[Fb](d)}));c.src=b}function
+  $aa(a){var b={};he(a,function(a,d){var e=ha(a),f=ha(d)[vb](/%7C/g,"|");b[e]=f});return
+  pX(b,":",",")}\nfunction aba(a,b,c,d){var e=sj.B[23],f=sj.B[22];this.I=a;this.J=b;this.M=null!=e?e:500;this.H=null!=f?f:2;this.G=c;this.D=d;this.A=new
+  mH;this.j=0;this.F=+new Date;sX(this)}function sX(a){var b=m.min(a.M*m.pow(a.H,a.j),2147483647);k[dc](function(){bba(a);sX(a)},b)}function
+  tX(a,b,c){a.A.set(b,c)}function bba(a){var b=qX(a.J,a.G,a.D,void 0);b.t=a.j+"-"+(+new
+  Date-a.F);a.A[Ib](function(a,d){var e=a();0<e&&(b[d]=AE(e[dn](2))+(ir()?"":"-if"))});a.I.nd({ev:"api_snap"},b);++a.j}\nfunction
+  uX(a,b,c,d,e){this.D=a;this.I=b;this.H=c;this.A=d;this.F=e;this.j=new mH;this.G=+new
+  Date}uX[H].Dg=function(a,b){var c=Cp(b)?b:1;this.j[Ec]()&&k[dc](Xd(function(){var
+  a=qX(this.I,this.H,this.A,this.F);a.t=+new Date-this.G;var b=this.j;nH(b);for(var
+  c={},g=0;g<b.j[G];g++){var h=b.j[g];c[h]=b.R[h]}JH(a,c);this.j[un]();this.D.nd({ev:"api_maprft"},a)},this),500);c=this.j.get(a,0)+c;this.j.set(a,c)};\nfunction
+  vX(a,b,c,d){this.G=c;this.F={};this.H=a+"/csi";this.A=d||"";this.D=b+"/maps/gen_204";this.j=new
+  Zaa}vX[H].lj=function(a,b,c,d){Mk&&!this.F[a]&&(this.F[a]=!0,a=cba(this,a,b.j,c,d||null),rX(this.j,a))};function
+  cba(a,b,c,d,e){var f=a.H,f=f+("?v=2&s=mapsapi3&action="+b+"&rt="),g=[];Q(c,function(a){g[E](a[0]+"."+a[1])});ee(g)&&(f+=g[od](","));he(d,function(a,b){f+="&"+ha(a)+"="+ha(b)});a.A&&(e=IH(a.A,e||[]));e&&e[G]&&(f+="&e="+HH(e,ha)[od](","));return
+  f}\nvX[H].nd=function(a,b){var c=b||{},d=Be()[ac](36);c.src="apiv3";c.token=this.G;c.ts=d[Xb](d[G]-6);a.cad=$aa(c);c=pX(a,"=","&");rX(this.j,this.D+"?target=api&"+c)};vX[H].Lg=function(a){rX(this.j,a)};function
+  wX(){this.B=new mH}wX[H].update=function(a,b,c){this.B.set(df(a),{wq:b,Up:c})};function
+  dba(a){var b=0,c=0;a.B[Ib](function(a){b+=a.wq;c+=a.Up});return c?b/c:0}function
+  xX(a,b,c,d,e){this.G=a;this.I=b;this.D=c;this.F=d;this.H=e;this.A={};this.j=[]}\nxX[H].Dg=function(a){this.A[a]||(this.A[a]=!0,this.j[E](a),2>this.j[G]&&jq(this,this.J,500))};xX[H].J=function(){for(var
+  a=qX(this.I,this.D,this.F,this.H),b=0,c;c=this.j[b];++b)a[c]="1";b=Dq;a.hybrid=+((Kq(b)||b.I)&&Lq(b));eb(this.j,0);this.G.nd({ev:"api_mapft"},a)};function
+  yX(a,b,c,d){this.F=a;T[u](this.F,"set_at",this,this.H);T[u](this.F,"insert_at",this,this.H);this.G=b;this.I=c;this.D=d;this.A=0;this.j={};this.H()}yX[H].H=function(){for(var
+  a;a=this.F[Pb](0);){var b=a.yp;a=a.timestamp-this.I;++this.A;this.j[b]||(this.j[b]=0);++this.j[b];if(20<=this.A&&!(this.A%5)){var
+  c={};c.s=b;c.sr=this.j[b];c.tr=this.A;c.te=a;c.hc=this.D?"1":"0";this.G({ev:"api_services"},c)}}};function
+  zX(){this.j={}}zX[H].pa=function(a){a=df(a);var b=this.j;a in b||(b[a]=0);++b[a]};xa(zX[H],function(a){a=df(a);var
+  b=this.j;a in b&&(--b[a],b[a]||delete b[a])});im(zX[H],function(a){return this.j[df(a)]||0});function
+  eba(){this.j=[];this.A=[]};function AX(a,b,c){this.j=a;this.A=b;this.F=c}Qa(AX[H],function(a){return!!this.A[In](a)});function
+  fba(a,b){a.j.j[E](b);a.A.pa(b);var c=a.j;if(c.j[G]+c.A[G]>a.F){var d=a.j,c=d.A,d=d.j;if(!c[G])for(;d[G];)c[E](d.pop());(c=c.pop())&&a.A[Fb](c)}};function
+  BX(a,b){this.G=new AX(new eba,new zX,100);this.Bd=null;this.ba=[];this.D=a;T[u](a,"insert_at",this,this.Zd);T[u](a,"set_at",this,this.Zd);T[u](a,"remove_at",this,this.Zd);this.Zd();this.j=0;this.R=b;this.A=0}O(BX,U);N=BX[H];N.Zd=function(){Q(this.ba,T[Ab]);eb(this.ba,0);var
+  a=this.ba,b=S(this,this.Qf);this.D[Ib](function(c){a[E](T[A](c[fn],"insert",b))});b()};\nN.Qf=function(){var
+  a=this.get("bounds");if(this.get("projection")&&a&&this.Bd){var b={};this.D[Ib](S(this,function(c){c[fn][Ib](S(this,function(c){var
+  d=c.rawData;if(0==(""+d.layer)[Lc](this.Bd[Xb](0,5))&&d[ed]){c=d.id[G];for(var e=HJ(d.id),d=d[ed],l=0,r;r=d[l];l++){var
+  t=r.id,w;a:{w=r;if(!w.latLngCached){var y=w.a;if(!y){w=null;break a}var z=new V(y[0],y[1]),y=e,z=[z.x,z.y],I=(1<<c)/8388608;z[0]/=I;z[1]/=I;z[0]+=y.U;z[1]+=y.T;z[0]/=8388608;z[1]/=8388608;y=new
+  V(z[0],z[1]);z=this.get("projection");\nw.latLngCached=z&&z[Ob](y)}w=w.latLngCached}w&&a[tc](w)&&(b[t]=r)}}}))}));var
+  c=this.G,d;for(d in b)c[tc](d)||(++this.j,fba(c,d));!this.A&&this.j&&(this.A=jq(this,this.Ln,0))}else
+  jq(this,this.Qf,1E3)};N.Ln=function(){this.A=0;this.j&&(ms(this.R,"smni",this.j),this.j=0)};N.mapType_changed=function(){var
+  a=this.get("mapType");this.Bd=a&&a.ef};Wm(N,function(){this.Qf()});function CX(){this.j=Bj(sj);var
+  a=rj(sj),b;Qp()?(b=a.B[11],b=null!=b?b:""):b=or;a=Lj[43]?a.B[12]:a.B[7];a=null!=a?a:"";this.Ib=new
+  vX(a,b,il,this.j);new yX(jl,S(this.Ib,this.Ib.nd),kl,!!this.j);b=wj(Ij());this.D=b[fc](".")[1]||b;hl&&(this.A=new
+  aba(this.Ib,this.D,this.J,this.j));this.G={};this.H={};this.F={};this.I={};this.J=Aj()}N=CX[H];N.Dm=function(a,b){var
+  c=new BX(b,a);c[p]("mapType",a[B]);c[p]("zoom",a);c[p]("bounds",a);c[p]("projection",a)};\nN.cn=function(a){a=df(a);this.G[a]||(this.G[a]=new
+  xX(this.Ib,this.D,this.J,this.j));return this.G[a]};N.an=function(a){a=df(a);this.H[a]||(this.H[a]=new
+  uX(this.Ib,this.D,1,this.j));return this.H[a]};N.ve=function(a){if(this.A){this.F[a]||(this.F[a]=new
+  fI,tX(this.A,a,function(){return b.Bc()}));var b=this.F[a];return b}};N.$m=function(a){if(this.A){this.I[a]||(this.I[a]=new
+  wX,tX(this.A,a,function(){return dba(b)}));var b=this.I[a];return b}};var gba=new
+  CX;Ih.stats=function(a){eval(a)};dg("stats",gba);\n')
