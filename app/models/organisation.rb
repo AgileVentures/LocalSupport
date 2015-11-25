@@ -26,9 +26,11 @@ class Organisation < BaseOrganisation
   end
 
   def update_attributes_with_superadmin(params)
+
     email = extract_email_from(params)
     return unless email.blank? || can_add_or_invite_admin?(email)
     self.update_attributes(params)
+
   end
 
   def self.search_by_keyword(keyword)
@@ -150,11 +152,13 @@ class Organisation < BaseOrganisation
   def can_add_or_invite_admin?(email)
     return false if email.blank?
     usr = User.find_by_email(email)
+
     return add_and_notify(usr) if usr.present?
     result = ::SingleInviteJob.new(self, email).invite_user
     return true if result.invited_user?
     embellish_invite_error_and_add_to_model(email,result.error)
     false
+
   end
 
   def extract_email_from(params)

@@ -51,6 +51,7 @@ Scenario: Sign in for a non-existent user
   Then I should be on the sign in page
   And I should see "I'm sorry, you are not authorized to login to the system"
 
+@vcr
 @javascript
 Scenario: Check that login/register toggle works
   # when first opened
