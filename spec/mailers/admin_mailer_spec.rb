@@ -34,4 +34,14 @@ describe AdminMailer, :type => :mailer do
     it { expect(subject.cc).to eq ['technical@harrowcn.org.uk'] }
   end
 
+  context "proposed org edit notification" do
+    subject { AdminMailer.edit_org_waiting_for_approval(double("Organisation", name: 'friendly'), 'superadmin@superadmin.org') }
+    it { expect{subject.deliver_now}.to change{ActionMailer::Base.deliveries.length}.by(1) }
+    it { expect(subject.subject).to eq "An edit to 'friendly' is awaiting Admin approval." }
+    it { expect(subject.to).to eq ['superadmin@superadmin.org'] }
+    it { expect(subject.from).to eq ['support@harrowcn.org.uk'] }
+    it { expect(subject.reply_to).to eq ['support@harrowcn.org.uk'] }
+    it { expect(subject.cc).to eq ['technical@harrowcn.org.uk'] }
+  end
+
 end

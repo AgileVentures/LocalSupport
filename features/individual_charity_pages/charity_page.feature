@@ -25,10 +25,10 @@ Feature: Web page owned by each charity
       | Finance           | 301                   |
      Given the following categories_organisations exist:
       | category  | organisation |
-      | Health    | Friendly |
-      | Education | Friendly |
-      | Voluntary | Friendly  |
-      | Finance   | Friendly  |
+      | Health    | Friendly     |
+      | Education | Friendly     |
+      | Voluntary | Friendly     |
+      | Finance   | Friendly     |
     And I visit the show page for the organisation named "Friendly"
 
 
