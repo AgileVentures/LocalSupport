@@ -6,12 +6,12 @@ Feature: Charity worker can edit own charity profile
 
 #address of nice must be 30 pinner road because of change the address of charity scenario
 #need to revisit this
-Background: organisations have been added to database 
+Background: organisations have been added to database
   Given the following organisations exist:
-  | name           | description               | address        | postcode | telephone | email              |
+  | name           | description               | address        | postcode | telephone | email                   |
   | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 | superadmin@friendly.org |
   | Nice           | Quite Pleasant!           | 30 pinner road | HA1 4HZ  | 020800010 | superadmin@nice.org     |
-  
+
   Given the following users are registered:
   | email                         | password | organisation | confirmed_at         |
   | registered_user-2@example.com | pppppppp | Friendly     | 2007-01-01  10:00:00 |
@@ -54,13 +54,13 @@ Scenario Outline: Successfully mark a field of a charity as public or private
   And I should <visibility> "<field_contents>"
   And I should <visibility> "<field_label>"
 Examples:
-  | field     | field_checkbox               | field_contents      | field_label | check_state | visibility |
-  | phone     | organisation_publish_phone   | 020800000           | Telephone   | check       | see        |
-  | address   | organisation_publish_address | 34 pinner road      | Address     | check       | see        |
-  | email     | organisation_publish_email   | superadmin@friendly.org  | Email       | check       | see        |
-  | phone     | organisation_publish_phone   | 020800000           | Telephone   | uncheck     | not see    |
-  | address   | organisation_publish_address | 34 pinner road      | Address     | uncheck     | not see    |
-  | email     | organisation_publish_email   | superadmin@friendly.org  | Email       | uncheck     | not see    |
+  | field     | field_checkbox               | field_contents          | field_label | check_state | visibility |
+  | phone     | organisation_publish_phone   | 020800000               | Telephone   | check       | see        |
+  | address   | organisation_publish_address | 34 pinner road          | Address     | check       | see        |
+  | email     | organisation_publish_email   | superadmin@friendly.org | Email       | check       | see        |
+  | phone     | organisation_publish_phone   | 020800000               | Telephone   | uncheck     | not see    |
+  | address   | organisation_publish_address | 34 pinner road          | Address     | uncheck     | not see    |
+  | email     | organisation_publish_email   | superadmin@friendly.org | Email       | uncheck     | not see    |
 
 
 #TODO refactor into integration test that posts to update method
@@ -114,7 +114,7 @@ Scenario: By default, not display organisations address and phone number on deta
 Scenario: By default, not display edit link on details page
   Given I visit the show page for the organisation named "Friendly"
   Then I should not see any edit link for "Friendly"
-  
+
 Scenario Outline: Edit page has scroll box for selecting categories
   Given I am signed in as a charity worker related to "Friendly"
   And I visit the edit page for the organisation named "Friendly"
@@ -130,7 +130,7 @@ Examples:
   | How you help | Education           | 1st |
   | How you help | Give them things    | 2nd |
   | How you help | Teach them things   | 3rd |
-  
+
 Scenario Outline: Appropriate categories are checked/unchecked by default
   Given I am signed in as a charity worker related to "Friendly"
   And I visit the edit page for the organisation named "Friendly"
@@ -155,7 +155,7 @@ Scenario Outline: Successfully add and remove an organisation's categories
   And I press "Update Organisation"
   Then I should <visibility1> "<category1>"
   And I should <visibility2> "<category2>"
-  Examples: 
+  Examples:
   | category1      | action1    | visibility1 | category2            | action2 | visibility2 |
   | Health         | uncheck    | not see     | Child welfare        | check   | see         |
   | Animal welfare | check      | see         | Education            | uncheck | not see     |
