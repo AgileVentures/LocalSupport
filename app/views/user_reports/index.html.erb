@@ -20,14 +20,24 @@
             <% end %>
           </td>
           <td>
-            <%= link_to(user_reports_path(id: user.id), :method => :delete, :class => "btn btn-small btn-danger pull-right") do %>
-              <i class="icon-trash icon-large"></i> Delete</a>
-            <% end %>
-            <% if user.pending_organisation %>
-              <%= link_to(user_report_path(id: user.id), :method => :put, :class => "btn btn-small btn-success pull-right") do %>
-                <i class="icon-thumbs-up-alt icon-large"></i> Approve</a>
+            <div class="btn-group">
+              <% if user.pending_organisation %>
+                <%= link_to(user_report_path(id: user.id, pending_org_action: "approve"), :method => :put, :class => "btn btn-mini btn-success",
+                           style: "border-radius: 3px; margin-right: 3px;") do %>
+                  <i class="icon-thumbs-up-alt icon-small"></i> Approve</a>
+                <% end %>
               <% end %>
-            <% end %>
+              <% if user.pending_organisation %>
+                <%= link_to(user_report_path(id: user.id, pending_org_action: "decline"), :method => :put, :class => "btn btn-mini btn-warning",
+                           style: "border-radius: 3px; margin-right: 3px;") do %>
+                  <i class="icon-thumbs-down-alt icon-small"></i> Decline</a>
+                <% end %>
+              <% end %>
+              <%= link_to(user_reports_path(id: user.id), :method => :delete, :class => "btn btn-mini btn-danger",
+                         style: "border-radius: 3px;") do %>
+                <i class="icon-trash icon-small"></i> Delete
+              <% end %>
+            </div>
           </td>
         </tr>
       <% end %>
