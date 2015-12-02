@@ -9,14 +9,9 @@ class ProposedOrganisationEditsController < ApplicationController
 
   def create
     org = Organisation.find(params[:organisation_id])
-    create_params = params.require(:proposed_organisation_edit).permit(:address, :telephone, :postcode, :name,
-      :description, :website, :postcode, :email, :donation_info).merge(organisation: org, editor: current_user)
-    unless current_user.siteadmin?
-      merge_in_non_published_fields org, create_params
-      send_email_to_superadmin_about_org_edit org
-      flash[:notice] = "Edit is pending admin approval."
-    end
-    redirect_to organisation_proposed_organisation_edit_path org, ProposedOrganisationEdit.create!(create_params)
+    create_params = proposed_edit_params.merge!(organisation: org, editor: current_user)
+    proposed_org_edit = ProposedOrganisationEditRepository.create(self, create_params)
+    redirect_to organisation_proposed_organisation_edit_path org, proposed_org_edit
   end
 
   def show
@@ -25,7 +20,6 @@ class ProposedOrganisationEditsController < ApplicationController
   end
 
   def index
-    #TODO use scope
     @proposed_organisation_edits = ProposedOrganisationEdit.still_pending
   end
 
@@ -70,6 +64,7 @@ class ProposedOrganisationEditsController < ApplicationController
   #  2. Not archived, accepted ... invalid state
   #  3. archived, not accepted ... rejected edits
   #  4. archived, accepted ... accepted edits
+
   private
   def merge_in_non_published_fields(org, create_params)
     in_memory_edit = ProposedOrganisationEdit.new(organisation: org)
