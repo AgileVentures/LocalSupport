@@ -2,6 +2,7 @@
     <%= javascript_include_tag 'this_is_my_org' %>
 <% end %>
 
+<%= render partial: "search_form" %>
 <%= render partial: "show", locals: {org: @organisation} %>
 <div id="org-cat-buttons" class="row">
   <div class="position-bottom span6">
