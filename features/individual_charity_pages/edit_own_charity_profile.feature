@@ -153,11 +153,11 @@ Scenario Outline: Successfully add and remove an organisation's categories
   Then I <action1> the category "<category1>"
   And I <action2> the category "<category2>"
   And I press "Update Organisation"
-  Then I should <visibility1> "<category1>"
-  And I should <visibility2> "<category2>"
+  Then I should <visibility1> "<category1>" within "org-categories"
+  And I should <visibility2> "<category2>" within "org-categories"
   Examples:
   | category1      | action1    | visibility1 | category2            | action2 | visibility2 |
   | Health         | uncheck    | not see     | Child welfare        | check   | see         |
   | Animal welfare | check      | see         | Education            | uncheck | not see     |
   | Health         | uncheck    | not see     | Education            | uncheck | not see     |
-  | General        | check      | see         | Give them things     | check   | see         |
+  | General        | check      | see         | Give them things     | check   | see         | 
