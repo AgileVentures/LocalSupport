@@ -25,12 +25,14 @@ Feature: Web page owned by each charity
       | Finance           | 301                   |
       | Advocacy          | 303                   |
      Given the following categories_organisations exist:
+
       | category        | organisation |
       | Health          | Friendly     |
       | Education       | Friendly     |
       | Voluntary       | Friendly     |
       | Finance         | Friendly     |
       | Advocacy        | Unfriendly   |
+
     And I visit the show page for the organisation named "Friendly"
 
   Scenario: Search for organisations on an organization individual page

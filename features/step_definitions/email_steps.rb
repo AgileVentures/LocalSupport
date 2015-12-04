@@ -24,7 +24,12 @@ end
 
 And(/^an email should be sent to "(.*?)" as notification of the request for admin status of "(.*?)"$/) do |email, org_name|
   message = "There is a user waiting for superadmin approval to #{org_name}"
-  expect_email_exists(message: message,email: email) 
+  expect_email_exists(message: message,email: email)
+end
+
+And(/^an email should be sent to "(.*?)" as notification of the proposed edit to "(.*?)"$/) do |email, org_name|
+  message = "There is an edit awaiting for superadmin approval to #{org_name}."
+  expect_email_exists(message: message, email: email)
 end
 
 Then(/^an email should be sent to "(.*?)" as notification of the acceptance of proposed organisation "(.*?)"$/) do |email, org_name|
@@ -39,12 +44,12 @@ end
 
 Then(/^an email should be sent to "(.*?)" as notification of the signup by email "(.*?)"$/) do |email, user_email|
   message = "A new user with the email #{user_email} has signed up on Harrow Community Network."
-  expect_email_exists(message: message,email: email) 
+  expect_email_exists(message: message,email: email)
 end
 
 Then(/^an email should be sent to "(.*?)" as notification of the proposed organisation$/) do |email|
   message = "A new organisation called #{proposed_org_fields[:name]} has been proposed for inclusion in the Harrow Community Network."
-  expect_email_exists(message: message,email: email, 
+  expect_email_exists(message: message,email: email,
     link: proposed_organisation_url(ProposedOrganisation.find_by(name: proposed_org_fields[:name])),
     link_text: "Click here to view this proposed organisation"
   )
@@ -83,5 +88,3 @@ Given(/^I import emails from "(.*?)"$/) do |file|
   Rake::Task.define_task(:environment)
   @rake['db:import:emails'].invoke(file)
 end
-
-

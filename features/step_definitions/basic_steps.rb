@@ -414,10 +414,15 @@ Given /^"(.*)"'s request status for "(.*)" should be updated appropriately$/ do 
     }
 end
 
-And /"(.*)"'s request for "(.*)" should be persisted/ do |email, org|
+And /"(.*)"'s request for "(.*)" (should|should not) be persisted/ do |email, org, expectation|
   user = User.find_by_email(email)
   org = Organisation.find_by_name(org)
-  user.pending_organisation_id.should eq org.id
+  case expectation
+  when 'should'
+    expect(user.pending_organisation).to eq(org)
+  when 'should not'
+    expect(user.pending_organisation).to be_nil
+  end
 end
 
 When(/^the URL should contain "(.*?)"$/) do |string|
@@ -452,18 +457,19 @@ When /^I approve "(.*?)"$/ do |email|
   end
 end
 
-Then(/^"(.*?)" is an organisation admin of "(.*?)"$/) do |user_email, org_name|
+Then(/^"(.*?)" is (not )?an organisation admin of "(.*?)"$/) do |user_email, negative, org_name|
   user = User.find_by_email(user_email)
   org = Organisation.find_by_name(org_name)
-  user.organisation.should == org
+  expectation = negative ? :not_to : :to
+  expect(user.organisation).send(expectation, eq(org))
 end
 
-When /^I delete "(.*?)"$/ do |email|
+When /^I (delete|decline) "(.*?)"$/ do |action, email|
   visit users_report_path
   page.body.should have_content(email)
   user_id = User.find_by_email(email).id
   within("tr##{user_id}") do
-    click_link 'Delete'
+    click_link action.titlecase
   end
 end
 Then(/^user "(.*?)" should exist$/) do |user_email|
