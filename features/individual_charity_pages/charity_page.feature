@@ -53,11 +53,11 @@ Feature: Web page owned by each charity
     And I should see "Education" within "what_they_do"
     And I should see "Voluntary" within "who_they_help"
     And I should see "Finance" within "how_they_help"
-    And I should not see "Animal Welfare"
+    And I should not see "Animal Welfare" within "what_they_do"
     And I visit the show page for the organisation named "Unfriendly"
-    Then I should not see "Health"
-    And I should not see "Education"
-    And I should not see "Animal Welfare"
+    Then I should not see "Health" within "what_they_do"
+    And I should not see "Education" within "what_they_do"
+    And I should not see "Animal Welfare" within "what_they_do"
 
   Scenario Outline: show labels if field is present
     Then I should see "<label>"
