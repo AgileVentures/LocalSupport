@@ -23,14 +23,21 @@ Feature: Web page owned by each charity
       | Education         | 103                   |
       | Voluntary         | 201                   |
       | Finance           | 301                   |
+      | Advocacy          | 303                   |
      Given the following categories_organisations exist:
-      | category  | organisation |
-      | Health    | Friendly |
-      | Education | Friendly |
-      | Voluntary | Friendly  |
-      | Finance   | Friendly  |
+      | category        | organisation |
+      | Health          | Friendly     |
+      | Education       | Friendly     |
+      | Voluntary       | Friendly     |
+      | Finance         | Friendly     |
+      | Advocacy        | Unfriendly   |
     And I visit the show page for the organisation named "Friendly"
 
+  Scenario: Search for organisations on an organization individual page
+    Given I select the "Advocacy" category from How They Help
+    And I press "Submit"
+    Then I should see "Unfriendly"
+    And I should not see "Friendly"
 
   Scenario: be able to view link to charity site on individual charity page
     Then I should see the external website link for "Friendly" charity
