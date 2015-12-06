@@ -43,7 +43,7 @@ describe 'user_reports/index.html.erb', :type => :view do
     it 'approve link if user has pending organisation' do
       allow(user).to receive(:pending_organisation).and_return(org1)
       render
-      expect(rendered).to have_link "Approve", :href => user_report_path(id: user.id)
+      expect(rendered).to have_link "Approve", :href => user_report_path(id: user.id, pending_org_action: "approve")
     end
     it 'no approve link if user has no pending organisation' do
       render

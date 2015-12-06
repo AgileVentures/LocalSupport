@@ -24,21 +24,26 @@ Feature: As a member of the public
     Given I visit the volunteer opportunities page
     Then I should see a two column layout
 
-  Scenario Outline: Top navbar links to Volunteers and Organisations are hidden when feature is disabled
+  Scenario Outline: Top navber has link to Organisations
+    Given I visit the home page
+    Then the navbar should have a link to <link>
+    Examples:
+      | link |
+      | Organisations |
+
+  Scenario Outline: Top navbar links to Volunteers are hidden when feature is disabled
     Given that the volunteer_ops_list flag is disabled
     And I visit the home page
     Then the navbar should not have a link to <link>
     Examples:
       | link          |
       | Volunteers    |
-      | Organisations |
 
-  Scenario Outline: Top navbar has links to Volunteers and Organisations when feature is enabled
+  Scenario Outline: Top navbar has links to Volunteers when feature is enabled
     Given that the volunteer_ops_list flag is enabled
     And I visit the home page
     Then the navbar should have a link to <link>
     Examples:
       | link          |
       | Volunteers    |
-      | Organisations |
 

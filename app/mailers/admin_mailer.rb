@@ -27,4 +27,13 @@ class AdminMailer < ActionMailer::Base
          reply_to: "support@harrowcn.org.uk")
   end
 
+  def edit_org_waiting_for_approval(org, superadmin_emails)
+    @org = org
+    mail(subject: "An edit to '#{org.name}' is awaiting Admin approval.",
+         to: superadmin_emails ,
+         from: "support@harrowcn.org.uk",
+         cc: "technical@harrowcn.org.uk",
+         reply_to: "support@harrowcn.org.uk")
+  end
+
 end

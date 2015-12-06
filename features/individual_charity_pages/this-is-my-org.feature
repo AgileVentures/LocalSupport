@@ -11,9 +11,9 @@ Feature: This is my organisation
 
     And the following users are registered:
       | email                       | password       | superadmin | confirmed_at        | organisation | pending_organisation |
-      | admin@helpfolk.com          | mypassword1234 | false | 2008-01-01 00:00:00 |              |                      |
-      | pendingadmin@helpfolk.com   | mypassword1234 | false | 2008-01-01 00:00;00 |              | Helpful Folk         |
-      | superadmin@localsupport.org | mypassword1234 | true  | 2008-01-01 00:00:00 |              |                      |
+      | admin@helpfolk.com          | mypassword1234 | false      | 2008-01-01 00:00:00 |              |                      |
+      | pendingadmin@helpfolk.com   | mypassword1234 | false      | 2008-01-01 00:00;00 |              | Helpful Folk         |
+      | superadmin@localsupport.org | mypassword1234 | true       | 2008-01-01 00:00:00 |              |                      |
 
     And cookies are approved
 
