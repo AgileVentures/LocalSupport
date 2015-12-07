@@ -17,7 +17,22 @@ describe 'organisations/show.html.erb', :type => :view do
     }
   end
 
-  before(:each) { assign(:organisation, organisation) }
+  before(:each) do
+    assign(:organisation, organisation)
+    assign(:parsed_params, double("ParsedParams", :query_term => 'search'))
+    assign(:cat_name_ids, {what: [], who: [], how: []})
+  end
+
+  it "renders a search form" do
+    render
+    expect(rendered).to have_selector "form input[name='q']"
+    expect(rendered).to have_selector "form input[type='submit']"
+    expect(rendered).to have_selector "form input[value='search']"
+    expect(rendered).to have_content "Optional Search Text"
+    expect(rendered).to have_selector "form select[name='what_id']"
+    expect(rendered).to have_selector "form select[name='who_id']"
+    expect(rendered).to have_selector "form select[name='how_id']"
+  end
 
   context 'page styling' do
     it 'name should be wrapped in h2 tag' do
@@ -30,10 +45,10 @@ describe 'organisations/show.html.erb', :type => :view do
       expect(rendered).to have_content('Email: ')
       expect(rendered).to have_css("a[href='mailto:#{organisation.email}']")
       expect(rendered).to have_content('Website: ')
-      expect(rendered).to have_link "#{organisation.website}", :href => organisation.website      
+      expect(rendered).to have_link "#{organisation.website}", :href => organisation.website
       expect(rendered).to have_xpath("//a[@href='#{organisation.website}'][@target='_blank']")
       expect(rendered).to have_content('Donation Info: ')
-      expect(rendered).to have_link "Donate to #{organisation.name} now!", :href => organisation.donation_info 
+      expect(rendered).to have_link "Donate to #{organisation.name} now!", :href => organisation.donation_info
       expect(rendered).to have_xpath("//a[@href='#{organisation.donation_info}'][@target = '_blank']")
     end
     it 'ABSENT: postcode, email, website, donation info' do
@@ -119,7 +134,7 @@ describe 'organisations/show.html.erb', :type => :view do
     render
     expect(rendered).to have_content organisation.address
   end
-  
+
   it 'renders the actual phone if publish phone is true' do
     organisation.publish_phone = true
     render
@@ -131,12 +146,12 @@ describe 'organisations/show.html.erb', :type => :view do
     render
     expect(rendered).not_to have_content organisation.email
   end
-  
+
   context 'edit button' do
     it 'renders edit button if editable true' do
       assign(:editable, true)
       render
-      expect(rendered).to have_link 'Edit', :href => edit_organisation_path(organisation.id)   
+      expect(rendered).to have_link 'Edit', :href => edit_organisation_path(organisation.id)
     end
     it 'does not render edit button if editable false' do
       assign(:editable, false)
@@ -208,7 +223,7 @@ describe 'organisations/show.html.erb', :type => :view do
         with(:volunteer_ops_create).and_return(true)
       render
       expect(rendered).to have_link \
-        'Create a Volunteer Opportunity', :href => new_organisation_volunteer_op_path(organisation)      
+        'Create a Volunteer Opportunity', :href => new_organisation_volunteer_op_path(organisation)
     end
 
     it 'is not visible when feature is inactive' do
