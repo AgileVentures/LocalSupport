@@ -5,6 +5,7 @@ And(/^I submit a volunteer op "(.*?)", "(.*?)" on the "(.*?)" page$/) do |title,
   expect(current_path).to eq new_organisation_volunteer_op_path org
   fill_in 'Title', :with => title
   fill_in 'Description', :with => desc
+  check 'Use organisation address as location for volunteer opportunity'
   click_on 'Create a Volunteer Opportunity'
 end
 
@@ -18,7 +19,6 @@ Then(/^I submit a volunteer op located at "(.*?)", "(.*?)" and titled "(.*?)", "
   fill_in 'Description', :with => desc
   fill_in 'Address', :with => address
   fill_in 'Postcode', :with => postcode
-  check "Use this address as location for volunteer opportunity"
   click_on 'Create a Volunteer Opportunity'
 end
 

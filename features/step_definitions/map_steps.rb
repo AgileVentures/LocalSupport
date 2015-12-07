@@ -67,15 +67,16 @@ def marker_json_for_org_names(*org_names)
   end
 end
 
-Then /^the coordinates for "(.*?)" and "(.*?)" should( not)? be the same/ do | org1_name, org2_name, negation|
-  org1, org2 = marker_json_for_org_names(org1_name, org2_name)
-  byebug
+Then /^the volunteer opportunity "(.*?)" should( not)? be at the same location as the organisation "(.*?)"$/ do |vol_op_title, negation, org_name|
+  org = Organisation.find_by(name: org_name)
+  vol_op = marker_json_for_org_names(vol_op_title).first
   if negation
-    expect(org1['lat']).not_to eq org2['lat']
-    expect(org1['lng']).not_to eq org2['lng']
+    expect(org.latitude).not_to eq vol_op['lat']
+    expect(org.longitude).not_to eq vol_op['lng']
   else
-    expect(org1['lat']).to eq org2['lat']
-    expect(org1['lng']).to eq org2['lng']
+    debugger
+    expect(org.latitude).to eq vol_op['lat']
+    expect(org.longitude).to eq vol_op['lng']
   end
 end
 
