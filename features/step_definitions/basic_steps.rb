@@ -25,7 +25,7 @@ Then(/^the SuperAdmin menu has a valid (.*?) link$/) do |link|
   within('#menuSuperAdmin > ul.dropdown-menu') do
     find('a', text: link).should_not be_nil
     click_link link
-    current_path.should eq paths(link.downcase)
+    current_path.should eq paths(link.downcase) # This line is failing
   end
 end
 

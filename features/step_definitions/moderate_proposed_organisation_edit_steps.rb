@@ -1,8 +1,8 @@
-Given(/^I click on the all proposed edits link$/) do
-  click_link "All Proposed Edits"
+Given(/^I click on the pending proposed edits link$/) do
+  click_link "Pending Proposed Edits"
 end
 
-Then(/^I should not see the all proposed edits link$/) do
+Then(/^I should not see the pending proposed edits link$/) do
   page.should_not have_link href: proposed_organisation_edits_path
 end
 
