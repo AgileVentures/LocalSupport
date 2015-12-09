@@ -36,6 +36,7 @@ class OrganisationsController < BaseOrganisationsController
     @grabbable = current_user ? current_user.can_request_org_admin?(@organisation) : true
     @can_propose_edits = current_user.present? && !@editable
     @markers = build_map_markers(organisations)
+    @cat_name_ids = Category.name_and_id_for_what_who_and_how
   end
 
   # GET /organisations/new
@@ -81,7 +82,7 @@ class OrganisationsController < BaseOrganisationsController
   def update
     @organisation = Organisation.find(params[:id])
     params[:organisation][:superadmin_email_to_add] = params[:organisation_superadmin_email_to_add] if params[:organisation]
-    update_params = OrganisationParams.build params 
+    update_params = OrganisationParams.build params
     return false unless user_can_edit? @organisation
     if @organisation.update_attributes_with_superadmin(update_params)
       redirect_to @organisation, notice: 'Organisation was successfully updated.'
