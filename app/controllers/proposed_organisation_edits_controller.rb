@@ -64,17 +64,4 @@ class ProposedOrganisationEditsController < ApplicationController
   #  2. Not archived, accepted ... invalid state
   #  3. archived, not accepted ... rejected edits
   #  4. archived, accepted ... accepted edits
-
-  private
-  def merge_in_non_published_fields(org, create_params)
-    in_memory_edit = ProposedOrganisationEdit.new(organisation: org)
-    in_memory_edit.non_published_generally_editable_fields.each do |non_published_field|
-      create_params.merge!(non_published_field => org.send(non_published_field))
-    end
-  end
-
-  def send_email_to_superadmin_about_org_edit(org)
-    superadmin_emails = User.superadmins.pluck(:email)
-    AdminMailer.edit_org_waiting_for_approval(org, superadmin_emails).deliver_now
-  end
 end

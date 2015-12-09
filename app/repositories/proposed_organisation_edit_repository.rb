@@ -9,7 +9,7 @@ class ProposedOrganisationEditRepository
     ProposedOrganisationEdit.create(params)
   end
 
-private
+  private
 
   def self.merge_in_non_published_fields(org, params)
     in_memory_edit = ProposedOrganisationEdit.new(organisation: org)
