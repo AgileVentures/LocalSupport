@@ -23,17 +23,6 @@ describe 'organisations/show.html.erb', :type => :view do
     assign(:cat_name_ids, {what: [], who: [], how: []})
   end
 
-  it "renders a search form" do
-    render
-    expect(rendered).to have_selector "form input[name='q']"
-    expect(rendered).to have_selector "form input[type='submit']"
-    expect(rendered).to have_selector "form input[value='search']"
-    expect(rendered).to have_content "Optional Search Text"
-    expect(rendered).to have_selector "form select[name='what_id']"
-    expect(rendered).to have_selector "form select[name='who_id']"
-    expect(rendered).to have_selector "form select[name='how_id']"
-  end
-
   context 'page styling' do
     it 'name should be wrapped in h2 tag' do
       render
@@ -205,6 +194,7 @@ describe 'organisations/show.html.erb', :type => :view do
 
   describe 'create volunteer opportunity button' do
     it 'shows when belongs_to is true' do
+      allow(view).to receive(:feature_active?).with(:search_input_bar).and_return(false)
       allow(view).to receive(:feature_active?).with(:volunteer_ops_create).and_return(true)
       assign(:can_create_volunteer_op, true)
       render
@@ -218,6 +208,7 @@ describe 'organisations/show.html.erb', :type => :view do
     end
 
     it 'is shown when feature is active' do
+      allow(view).to receive(:feature_active?).with(:search_input_bar).and_return(false)
       assign(:can_create_volunteer_op, true)
       expect(view).to receive(:feature_active?).
         with(:volunteer_ops_create).and_return(true)
@@ -227,6 +218,7 @@ describe 'organisations/show.html.erb', :type => :view do
     end
 
     it 'is not visible when feature is inactive' do
+      allow(view).to receive(:feature_active?).with(:search_input_bar).and_return(false)
       assign(:can_create_volunteer_op, true)
       expect(view).to receive(:feature_active?).
         with(:volunteer_ops_create).and_return(false)
@@ -235,6 +227,36 @@ describe 'organisations/show.html.erb', :type => :view do
         'Create a Volunteer Opportunity', :href => new_organisation_volunteer_op_path(organisation)
     end
 
+  end
+
+  describe 'show search input bar' do
+    context 'feature is on' do
+      it 'displays search feature' do
+        allow(view).to receive(:feature_active?).with(:search_input_bar).and_return(true)
+        render
+        expect(rendered).to have_selector "form input[name='q']"
+        expect(rendered).to have_selector "form input[type='submit']"
+        expect(rendered).to have_selector "form input[value='search']"
+        expect(rendered).to have_content "Optional Search Text"
+        expect(rendered).to have_selector "form select[name='what_id']"
+        expect(rendered).to have_selector "form select[name='who_id']"
+        expect(rendered).to have_selector "form select[name='how_id']"
+      end
+    end
+
+    context 'feature is off' do
+      it 'does not show search feature' do
+        allow(view).to receive(:feature_active?).with(:search_input_bar).and_return(false)
+        render
+        expect(rendered).not_to have_selector "form input[name='q']"
+        expect(rendered).not_to have_selector "form input[type='submit']"
+        expect(rendered).not_to have_selector "form input[value='search']"
+        expect(rendered).not_to have_content "Optional Search Text"
+        expect(rendered).not_to have_selector "form select[name='what_id']"
+        expect(rendered).not_to have_selector "form select[name='who_id']"
+        expect(rendered).not_to have_selector "form select[name='how_id']"
+      end
+    end
   end
 
   describe 'show categories' do

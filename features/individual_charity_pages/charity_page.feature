@@ -13,7 +13,7 @@ Feature: Web page owned by each charity
       | email                         | password | organisation | confirmed_at         |
       | registered_user-1@example.com | pppppppp | Friendly     | 2007-01-01  10:00:00 |
       | registered_user-2@example.com | pppppppp |              | 2007-01-01  10:00:00 |
-
+    And that the search_input_bar flag is enabled
     And I visit the show page for the organisation named "Friendly"
 
     Given the following categories exist:
