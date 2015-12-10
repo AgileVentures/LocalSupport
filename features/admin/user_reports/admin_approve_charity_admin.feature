@@ -64,7 +64,7 @@ Feature: All Users Page
 
   Scenario Outline: As a superadmin I should be able to see status of all users
     Given I am signed in as a superadmin
-    And I visit the all users page
+    And I visit the registered users page
     Then I should see "<email>"
     Examples:
       | email              |
@@ -74,7 +74,6 @@ Feature: All Users Page
 
   Scenario: As a non-superadmin trying to access users index
     Given I am signed in as a non-superadmin
-    And I visit the all users page
+    And I visit the registered users page
     Then I should be on the home page
     And I should see "You must be signed in as a superadmin to perform this action!"
-

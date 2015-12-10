@@ -13,7 +13,7 @@ And /^I select the "(.*?)" category from (How They Help|Who They Help|What They 
   select(category, :from => cat_id)
 end
 
-When /^I visit the proposed organisation show page for the proposed organisation that was proposed$/ do 
+When /^I visit the proposed organisation show page for the proposed organisation that was proposed$/ do
   proposed_org = ProposedOrganisation.find_by(name: unsaved_proposed_organisation(User.first).name)
   visit proposed_organisation_path(proposed_org)
 end
@@ -33,8 +33,8 @@ def paths(location)
       'contributors' => contributors_path,
       'password reset' => edit_user_password_path,
       'invitation' => accept_user_invitation_path,
-      'organisations without users' => organisations_report_path,
-      'all users' => users_report_path,
+      'invite users to become admin of organisations' => organisations_report_path,
+      'registered users' => users_report_path,
       'invited users' => invited_users_report_path,
       'volunteer opportunities' => volunteer_ops_path,
       'contributors' => contributors_path,
@@ -72,7 +72,7 @@ Then /^I should be on the show organisation proposed edit page for the organisat
   current_path.should eq url
 end
 
-Then /^I (visit|should be on) the new volunteer op page for "(.*?)"$/ do |mode, name| 
+Then /^I (visit|should be on) the new volunteer op page for "(.*?)"$/ do |mode, name|
   org = Organisation.find_by_name(name)
   url = new_organisation_volunteer_op_path(org)
   case mode
@@ -209,7 +209,7 @@ Then(/^I should( not)? see the call to update details for organisation "(.*)"/) 
     end
 end
 Then(/^I should see an (active|inactive) home button in the header$/) do |active|
-    active_class = (active == "active") ? ".active" : "" 
+    active_class = (active == "active") ? ".active" : ""
     within('.nav.nav-pills.pull-right') do
       expect(page).to have_css("li#{active_class} > a[href='/']", :text => "Home")
     end

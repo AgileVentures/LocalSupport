@@ -23,7 +23,7 @@ Feature: Orphans UI
   Scenario: Super Admin can invite users but only for unique emails
     Given cookies are approved
     Given I am signed in as a superadmin
-    And I visit the organisations without users page
+    And I visit the invite users to become admin of organisations page
     And I check the box for "The Organisation"
     And I check the box for "The Same Email Org"
     When I click id "invite_users"
@@ -33,14 +33,14 @@ Feature: Orphans UI
   Scenario: Already invited organisations don't appear
     Given cookies are approved
     And I am signed in as a superadmin
-    And I visit the organisations without users page
+    And I visit the invite users to become admin of organisations page
     Then I should not see "Yet Another Org"
 
   @javascript
   Scenario: Super Admin should be notified when email is invalid
     Given cookies are approved
     Given I am signed in as a superadmin
-    And I visit the organisations without users page
+    And I visit the invite users to become admin of organisations page
     And I check the box for "Crazy Email Org"
     When I click id "invite_users"
     Then I should see "Error: Email is invalid" in the response field for "Crazy Email Org"
@@ -48,7 +48,7 @@ Feature: Orphans UI
   Scenario: As a non-superadmin trying to access orphans index
     Given cookies are approved
     Given I am signed in as a non-superadmin
-    And I visit the organisations without users page
+    And I visit the invite users to become admin of organisations page
     Then I should be on the home page
     And I should see "You must be signed in as a superadmin to perform this action!"
 
@@ -57,7 +57,7 @@ Feature: Orphans UI
   Scenario: Table columns should be sortable
     Given cookies are approved
     Given I am signed in as a superadmin
-    And I visit the organisations without users page
+    And I visit the invite users to become admin of organisations page
     And I click tableheader "Name"
     Then I should see "Crazy Email Org" before "The Organisation"
     When I click tableheader "Name"
@@ -67,7 +67,7 @@ Feature: Orphans UI
   Scenario: Select All button toggles all checkboxes
     Given cookies are approved
     Given I am signed in as a superadmin
-    And I visit the organisations without users page
+    And I visit the invite users to become admin of organisations page
     And I press "Select All"
     Then all the checkboxes should be checked
     When I press "Select All"
@@ -88,8 +88,8 @@ Feature: Orphans UI
   Scenario: Invited user email is out of date
     Given cookies are approved
     And I am signed in as a superadmin
-    And I visit the organisations without users page
+    And I visit the invite users to become admin of organisations page
     Then I should not see "Yet Another Org"
     When I edit the charity email of "Yet Another Org" to be "other_email@charity.com"
-    And I visit the organisations without users page
+    And I visit the invite users to become admin of organisations page
     Then I should see "Yet Another Org"

@@ -23,7 +23,7 @@ Feature: Super Admin creating charity
       | Education         | 303                   |
       | Give them things  | 304                   |
       | Teach them things | 305                   |
- 
+
     And cookies are approved
 
   Scenario: Unsuccessfully attempt to create charity without being signed-in
@@ -58,7 +58,7 @@ Feature: Super Admin creating charity
     Then I should see "Organisation was successfully created."
     And I should see "Feed the hungry"
     And I should see "Accommodation"
-    And I should not see "General"
+    And I should not see "General" within "org-categories"
 
   Scenario: Non-superadmin unsuccessfully attempts to create an organisation
     Given I am signed in as a non-superadmin

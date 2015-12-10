@@ -2,6 +2,9 @@
     <%= javascript_include_tag 'this_is_my_org' %>
 <% end %>
 
+<% if feature_active? :search_input_bar_on_org_pages %>
+  <%= render partial: "search_form" %>
+<% end %>
 <%= render partial: "show", locals: {org: @organisation} %>
 <div id="org-cat-buttons" class="row">
   <div class="position-bottom span6">

@@ -20,15 +20,15 @@ Feature: Members of HCN may propose edits to organisations
 
     And cookies are approved
 
-  Scenario: Nonsuperadmins do not see all proposed edits link
+  Scenario: Nonsuperadmins do not see pending proposed edits link
     Given I am signed in as an non-superadmin
     And I visit the home page
-    Then I should not see the all proposed edits link
+    Then I should not see the pending proposed edits link
 
   Scenario: Moderate a proposed edit
     Given I am signed in as a superadmin
     And I visit the home page
-    And I click on the all proposed edits link
+    And I click on the pending proposed edits link
     And I should not see links for archived edits
     And I click on view details for the proposed edit for the organisation named "Friendly"
     And I should see a link or button "Accept Edit"

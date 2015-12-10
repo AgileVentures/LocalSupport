@@ -129,7 +129,7 @@ describe 'layouts/application.html.erb', :type => :view do
         assign(:footer_page_links, [])
         render
         @absent_pages.each do |page|
-          expect(rendered).not_to have_link(page[:name], 
+          expect(rendered).not_to have_link(page[:name],
                                             :href => page_path(page[:permalink]))
         end
       end
@@ -137,11 +137,11 @@ describe 'layouts/application.html.erb', :type => :view do
       it 'shows a link to all of the editable pages' do
         render
         @pages.each do |page|
-          expect(rendered).to have_link(page[:name], 
+          expect(rendered).to have_link(page[:name],
                                         :href => page_path(page[:permalink]))
         end
         @absent_pages.each do |page|
-          expect(rendered).not_to have_link(page[:name], 
+          expect(rendered).not_to have_link(page[:name],
                                             :href => page_path(page[:permalink]))
         end
       end
@@ -186,8 +186,8 @@ describe 'layouts/application.html.erb', :type => :view do
 
     it 'should see superadmin-only dropdown' do
       rendered.within('#menuSuperAdmin') do |menu|
-        expect(menu).to have_link 'Organisations Without Users', :href => organisations_report_path
-        expect(menu).to have_link 'All Users', :href => users_report_path
+        expect(menu).to have_link 'Invite Users to become admin of Organisations', :href => organisations_report_path
+        expect(menu).to have_link 'Registered Users', :href => users_report_path
         expect(menu).to have_link 'Invited Users', :href => invited_users_report_path
       end
     end
