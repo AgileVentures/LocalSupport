@@ -26,7 +26,7 @@ Feature: Fix Associations
   Scenario: Broken invites as seen on the orphans page
     Given cookies are approved
     Given I am signed in as a superadmin
-    And I visit the organisations without users page
+    And I visit the invite users to become admin of organisations page
     Then I should not see "normal"
     Then I should see "upcased"
     Then I should see "whitespace"
@@ -37,7 +37,7 @@ Feature: Fix Associations
     Given I run the fix invitations rake task
     Given cookies are approved
     Given I am signed in as a superadmin
-    And I visit the organisations without users page
+    And I visit the invite users to become admin of organisations page
     Then I should not see "normal"
     Then I should not see "upcased"
     Then I should not see "whitespace"

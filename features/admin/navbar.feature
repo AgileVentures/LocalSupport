@@ -17,10 +17,10 @@ Feature: Super Admin user interface
   Scenario Outline: Top navbar has a SuperAdmin dropdown menu
     Then the SuperAdmin menu has a valid <link> link
   Examples:
-    | link                        |
-    | Organisations Without Users |
-    | Invited Users               |
-    | All Users                   |
+    | link                                          |
+    | Invite Users to become admin of Organisations |
+    | Invited Users                                 |
+    | Registered Users                              |
 
   Scenario:  Highlighted button for Organisations or Volunteers
     Given I visit the organisations index page
