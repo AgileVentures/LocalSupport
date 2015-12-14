@@ -32,7 +32,7 @@ Feature: Members of HCN may propose edits to organisations
     And I should not see links for archived edits
     And I click on view details for the proposed edit for the organisation named "Friendly"
     And I should see a link or button "Accept Edit"
-    And I should see a link or button "Reject Edit"
+    And I should see a link or button "Keep Current Information"
 
   Scenario: Editability is enforced at moderate time even if it has changed since proposal of edit
     Given I am signed in as a superadmin
@@ -71,7 +71,7 @@ Feature: Members of HCN may propose edits to organisations
   Scenario: Reject a proposed edit
     Given I am signed in as a superadmin
     And I visit the most recently created proposed edit for "Friendly"
-    When I press "Reject Edit"
+    When I press "Keep Current Information"
     Then I should be on the show page for the organisation named "Friendly"
     And the most recently updated proposed edit for "Friendly" should be updated as follows:
       | archived | accepted |
