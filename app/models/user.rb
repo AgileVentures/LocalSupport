@@ -75,6 +75,6 @@ class User < ActiveRecord::Base
   end
 
   def self.purge_deleted_users_where(query)
-    User.deleted.delete User.deleted.where(query).pluck(:id)
+    User.deleted.delete_all(query)
   end
 end
