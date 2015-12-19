@@ -283,7 +283,7 @@ describe User, :type => :model do
   end
 
   describe '.purge_deleted_users_where' do
-    subject(:do_purge) {User.purge_deleted_users_where(email: 'yes@hello.com')}
+    subject(:do_purge) { User.purge_deleted_users_where(email: 'yes@hello.com') }
     it 'purge deleted user when user match query' do
       user = FactoryGirl.create :deleted_user, email: 'yes@hello.com'
       expect { do_purge }.to change(User.deleted, :count).by(-1)
