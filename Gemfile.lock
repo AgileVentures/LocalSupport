@@ -130,6 +130,9 @@ GEM
     hike (1.2.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jar_wrapper (0.1.8)
       zip
@@ -163,6 +166,7 @@ GEM
     minitest (5.8.0)
     multi_json (1.11.2)
     multi_test (0.1.2)
+    multi_xml (0.5.5)
     netrc (0.10.3)
     newrelic_rpm (3.12.1.298)
     nokogiri (1.6.6.2)
@@ -335,6 +339,7 @@ DEPENDENCIES
   geocoder
   gmaps4rails (= 2.1.2)
   heroku-api
+  httparty
   jasmine (= 2.1.0)
   jasmine-jquery-rails (= 2.0.2)
   jquery-rails
@@ -367,4 +372,4 @@ DEPENDENCIES
   webmock (= 1.20.0)
 
 BUNDLED WITH
-   1.10.5
+   1.10.6

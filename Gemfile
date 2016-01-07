@@ -88,3 +88,4 @@ gem 'url_validator'
 
 gem 'rails_autolink'
 gem "paranoia", "~> 2.0"
+gem 'httparty'

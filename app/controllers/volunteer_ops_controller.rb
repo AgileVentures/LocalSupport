@@ -6,6 +6,29 @@ class VolunteerOpsController < ApplicationController
     @volunteer_ops = VolunteerOp.order_by_most_recent
     @organisations = Organisation.where(id: @volunteer_ops.select(:organisation_id))
     @markers = build_map_markers(@organisations)
+    # Do-it API works from below
+    host = "https://api.do-it.org"
+    href = "/v1/opportunities\?lat\=51.5978\&lng\=-0.3370\&miles\=2 "
+    js_items = Array.new
+    collect_all_items(host, href, js_items)
+    @orgs = js_items
+    @hash = Gmaps4rails.build_markers(@orgs) do |org, marker|
+      marker.lat org["lat"]
+      marker.lng org["lng"]
+    end
+  end
+  # This needs to be a helper method for the do-it API
+  def collect_all_items (host, href, js_items)
+    while href do
+      url = host + href
+      response = HTTParty.get(url)
+      respItems = JSON.parse(response.body)["data"]["items"]
+      respItems.each do |item|
+        js_items.push( { "lat" => item["lat"], "lng" => item["lng"], "title" => item["title"] } )
+      end
+      nextHash = JSON.parse(response.body)["links"]["next"]
+      href = nextHash ? nextHash["href"] : nil
+    end
   end
 
   def show
