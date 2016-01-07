@@ -25,3 +25,7 @@ Given(/^the superadmin invited a user for "(.*?)"$/) do |organisation_name|
   }
   BatchInviteJob.new(params, current_user).run
 end
+
+Then(/^I should see the preview email$/) do
+  expect(page).to have_content "The Following email will be sent when a user is invited:"
+end
