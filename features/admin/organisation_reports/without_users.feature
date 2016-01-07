@@ -45,6 +45,12 @@ Feature: Orphans UI
     When I click id "invite_users"
     Then I should see "Error: Email is invalid" in the response field for "Crazy Email Org"
 
+  Scenario: Super Admin can see the preview email
+    Given cookies are approved
+    And I am signed in as a superadmin
+    And I visit the invite users to become admin of organisations page
+    Then I should see the preview email
+
   Scenario: As a non-superadmin trying to access orphans index
     Given cookies are approved
     Given I am signed in as a non-superadmin
