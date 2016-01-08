@@ -15,10 +15,19 @@ class VolunteerOpsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@orgs) do |org, marker|
       marker.lat org["lat"]
       marker.lng org["lng"]
+      marker.json(
+        custom_marker: render_to_string(
+          partial: 'shared/custom_marker',
+          locals: { attrs: [ActionController::Base.helpers.asset_path("doit_volunteer_icon.png"),
+                    class: 'vol_op', title: "Click here to see volunteer opportunities #{org['title']}"]}
+        ),
+        index: 1,
+        type: 'vol_op'
+      )
     end
     gon.orgs = @hash
   end
-
+ 
   def build_map_markers(organisations)
     ::MapMarkerJson.build(organisations) do |org, marker|
       marker.lat org.latitude
@@ -27,7 +36,7 @@ class VolunteerOpsController < ApplicationController
       marker.json(
         custom_marker: render_to_string(
           partial: 'shared/custom_marker',
-          locals: { attrs: [ActionController::Base.helpers.asset_path("volunteer_icon.png"),
+          locals: { attrs: [ActionController::Base.helpers.asset_path("volunteer_icon_red.png"),
                     'data-id' => org.id,
                     class: 'vol_op', title: "Click here to see volunteer opportunities at #{org.name}"]}
         ),
