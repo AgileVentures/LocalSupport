@@ -27,6 +27,11 @@ class LocalSupport.GoogleMap
           type: marker_datum.type
       handler.bounds.extendWith markers
 
+      do_it_markers = handler.addMarkers(gon.orgs);
+      handler.bounds.extendWith(do_it_markers);
+      handler.fitMapToBounds();
+
+
 $ ->
   settings = LocalSupport.MapSettings().for google
   map = new LocalSupport.GoogleMap()

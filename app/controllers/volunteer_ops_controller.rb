@@ -16,7 +16,28 @@ class VolunteerOpsController < ApplicationController
       marker.lat org["lat"]
       marker.lng org["lng"]
     end
+    gon.orgs = @hash
   end
+
+  def build_map_markers(organisations)
+    ::MapMarkerJson.build(organisations) do |org, marker|
+      marker.lat org.latitude
+      marker.lng org.longitude
+      marker.infowindow render_to_string( partial: 'popup', locals: {org: org})
+      marker.json(
+        custom_marker: render_to_string(
+          partial: 'shared/custom_marker',
+          locals: { attrs: [ActionController::Base.helpers.asset_path("volunteer_icon.png"),
+                    'data-id' => org.id,
+                    class: 'vol_op', title: "Click here to see volunteer opportunities at #{org.name}"]}
+        ),
+        index: 1,
+        type: 'vol_op'
+      )
+    end
+  end
+
+
   # This needs to be a helper method for the do-it API
   def collect_all_items (host, href, js_items)
     while href do
@@ -80,23 +101,7 @@ class VolunteerOpsController < ApplicationController
 
   private
 
-  def build_map_markers(organisations)
-    ::MapMarkerJson.build(organisations) do |org, marker|
-      marker.lat org.latitude
-      marker.lng org.longitude
-      marker.infowindow render_to_string( partial: 'popup', locals: {org: org})
-      marker.json(
-        custom_marker: render_to_string(
-          partial: 'shared/custom_marker',
-          locals: { attrs: [ActionController::Base.helpers.asset_path("volunteer_icon.png"),
-                    'data-id' => org.id,
-                    class: 'vol_op', title: "Click here to see volunteer opportunities at #{org.name}"]}
-        ),
-        index: 1,
-        type: 'vol_op'
-      )
-    end
-  end
+
 
   def authorize
     # set @organisation
