@@ -20,6 +20,12 @@ Feature: Invited Users Page
     Then I should see "invited@user.org"
     And I should not see "regular@user.org"
 
+  Scenario: Super Admin can see the preview email
+    Given cookies are approved
+    And I am signed in as a superadmin
+    And I visit the invited users page
+    Then I should see the preview email
+
   @javascript
   Scenario: Invitations can be resent
     Given cookies are approved
@@ -28,4 +34,3 @@ Feature: Invited Users Page
     And I check the box for "Invited Organisation"
     When I click id "invite_users"
     Then I should see "Invited!" in the response field for "Invited Organisation"
-
