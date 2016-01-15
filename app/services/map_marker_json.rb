@@ -6,4 +6,12 @@ module MapMarkerJson
       marker[:lat].present? && marker[:lng].present?
     end.to_json
   end
+
+  def self.build_with_hash(organisations)
+    Gmaps4rails.build_markers(organisations) do |org, marker|
+      yield org, marker
+    end.select do |marker|
+      marker[:lat].present? && marker[:lng].present?
+    end.to_json
+  end
 end

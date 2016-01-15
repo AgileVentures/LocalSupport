@@ -3,29 +3,51 @@ class VolunteerOpsController < ApplicationController
   before_filter :authorize, :except => [:show, :index]
 
   def index
-    @volunteer_ops = VolunteerOp.order_by_most_recent
-    @organisations = Organisation.where(id: @volunteer_ops.select(:organisation_id))
-    @markers = build_map_markers(@organisations)
+    # @volunteer_ops = VolunteerOp.order_by_most_recent
+    # @organisations = Organisation.where(id: @volunteer_ops.select(:organisation_id))
+
+    # @markers = build_map_markers(@organisations)
     # Do-it API works from below
     host = "https://api.do-it.org"
-    href = "/v1/opportunities\?lat\=51.5978\&lng\=-0.3370\&miles\=2 "
+    href = "/v1/opportunities\?lat\=51.5978\&lng\=-0.3370\&miles\=1 "
     js_items = Array.new
     collect_all_items(host, href, js_items)
     @orgs = js_items
-    @hash = Gmaps4rails.build_markers(@orgs) do |org, marker|
+    # @hash = Gmaps4rails.build_markers(@orgs) do |org, marker|
+    #   marker.lat org["lat"]
+    #   marker.lng org["lng"]
+    #   marker.infowindow "test"
+    #   marker.json(
+    #     custom_marker: render_to_string(
+    #       partial: 'shared/custom_marker',
+    #       locals: { attrs: [ActionController::Base.helpers.asset_path("doit_volunteer_icon.png"),
+    #                 class: 'vol_op', title: "Click here to see volunteer opportunities #{org['title']}"]}
+    #     ),
+    #     index: 1,
+    #     type: 'vol_op'
+    #   )
+    # end
+    # gon.orgs = @hash
+    @markers = build_map_markers_with_hash(@orgs)
+    # gon.orgs = @hash
+  end
+
+  def build_map_markers_with_hash(organisations)
+    ::MapMarkerJson.build_with_hash(organisations) do |org, marker|
       marker.lat org["lat"]
       marker.lng org["lng"]
+      marker.infowindow render_to_string( partial: 'popup2', locals: {org: org})
       marker.json(
         custom_marker: render_to_string(
           partial: 'shared/custom_marker',
-          locals: { attrs: [ActionController::Base.helpers.asset_path("doit_volunteer_icon.png"),
-                    class: 'vol_op', title: "Click here to see volunteer opportunities #{org['title']}"]}
+          locals: { attrs: [ActionController::Base.helpers.asset_path("volunteer_icon_red.png"),
+                    'data-id' => org["id"],
+                    class: 'vol_op', title: "Click here to see volunteer opportunities at #{org['title']}"]}
         ),
         index: 1,
         type: 'vol_op'
       )
     end
-    gon.orgs = @hash
   end
  
   def build_map_markers(organisations)
@@ -54,7 +76,9 @@ class VolunteerOpsController < ApplicationController
       response = HTTParty.get(url)
       respItems = JSON.parse(response.body)["data"]["items"]
       respItems.each do |item|
-        js_items.push( { "lat" => item["lat"], "lng" => item["lng"], "title" => item["title"] } )
+        n=1
+        js_items.push( { "lat" => item["lat"], "lng" => item["lng"], "title" => item["title"], "id" => n } )
+        n+=1
       end
       nextHash = JSON.parse(response.body)["links"]["next"]
       href = nextHash ? nextHash["href"] : nil
