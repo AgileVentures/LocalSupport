@@ -11,6 +11,9 @@ class LocalSupport.GoogleMap
   marker_data: ->
     $("#marker_data").data().markers
 
+  marker_data2: ->
+    $("#marker_data2").data().markers2
+
   handler: ->
     Gmaps.build("Google", builders: { Marker: LocalSupport.MarkerBuilder })
 
@@ -26,9 +29,15 @@ class LocalSupport.GoogleMap
           index: marker_datum.index
           type: marker_datum.type
       handler.bounds.extendWith markers
-
-
-
+      markers2 = _.map @marker_data2(), (marker_datum) =>
+        handler.addMarker
+          lat: marker_datum.lat
+          lng: marker_datum.lng
+          custom_marker: marker_datum.custom_marker
+          custom_infowindow: marker_datum.infowindow
+          index: marker_datum.index
+          type: marker_datum.type
+      handler.bounds.extendWith markers2
 
 $ ->
   settings = LocalSupport.MapSettings().for google

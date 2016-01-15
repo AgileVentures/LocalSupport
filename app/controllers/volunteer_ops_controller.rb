@@ -3,10 +3,10 @@ class VolunteerOpsController < ApplicationController
   before_filter :authorize, :except => [:show, :index]
 
   def index
-    # @volunteer_ops = VolunteerOp.order_by_most_recent
-    # @organisations = Organisation.where(id: @volunteer_ops.select(:organisation_id))
+    @volunteer_ops = VolunteerOp.order_by_most_recent
+    @organisations = Organisation.where(id: @volunteer_ops.select(:organisation_id))
 
-    # @markers = build_map_markers(@organisations)
+    @markers = build_map_markers(@organisations)
     # Do-it API works from below
     host = "https://api.do-it.org"
     href = "/v1/opportunities\?lat\=51.5978\&lng\=-0.3370\&miles\=1 "
@@ -28,7 +28,7 @@ class VolunteerOpsController < ApplicationController
     #   )
     # end
     # gon.orgs = @hash
-    @markers = build_map_markers_with_hash(@orgs)
+    @markers2 = build_map_markers_with_hash(@orgs)
     # gon.orgs = @hash
   end
 
@@ -40,7 +40,7 @@ class VolunteerOpsController < ApplicationController
       marker.json(
         custom_marker: render_to_string(
           partial: 'shared/custom_marker',
-          locals: { attrs: [ActionController::Base.helpers.asset_path("volunteer_icon_red.png"),
+          locals: { attrs: [ActionController::Base.helpers.asset_path("doit_volunteer_icon.png"),
                     'data-id' => org["id"],
                     class: 'vol_op', title: "Click here to see volunteer opportunities at #{org['title']}"]}
         ),
