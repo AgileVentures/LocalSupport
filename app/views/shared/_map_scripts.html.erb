@@ -4,5 +4,7 @@
 
 <% content_for :map do %>
     <%= content_tag "div", "", id: "marker_data", data: {markers: markers} %>
-    <%= content_tag "div", "", id: "marker_data2", data: {markers2: markers2} %>
+    <% if defined? markers2 %>
+    	<%= content_tag "div", "", id: "marker_data2", data: {markers2: markers2} %>
+    <%end%>
 <% end %>
