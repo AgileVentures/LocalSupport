@@ -5,69 +5,34 @@ class VolunteerOpsController < ApplicationController
   def index
     @volunteer_ops = VolunteerOp.order_by_most_recent
     @organisations = Organisation.where(id: @volunteer_ops.select(:organisation_id))
-
-    @markers = build_map_markers(@organisations)
+    recently_updated_orgs = Queries::Organisations.add_recently_updated_and_has_owner(@organisations)
+    @markers = build_map_markers(recently_updated_orgs, "volunteer_icon_red.png")
     # Do-it API works from below
     host = "https://api.do-it.org"
     href = "/v1/opportunities\?lat\=51.5978\&lng\=-0.3370\&miles\=1 "
     js_items = Array.new
     collect_all_items(host, href, js_items)
     @orgs = js_items
-    # @hash = Gmaps4rails.build_markers(@orgs) do |org, marker|
-    #   marker.lat org["lat"]
-    #   marker.lng org["lng"]
-    #   marker.infowindow "test"
-    #   marker.json(
-    #     custom_marker: render_to_string(
-    #       partial: 'shared/custom_marker',
-    #       locals: { attrs: [ActionController::Base.helpers.asset_path("doit_volunteer_icon.png"),
-    #                 class: 'vol_op', title: "Click here to see volunteer opportunities #{org['title']}"]}
-    #     ),
-    #     index: 1,
-    #     type: 'vol_op'
-    #   )
-    # end
-    # gon.orgs = @hash
-    @markers2 = build_map_markers_with_hash(@orgs)
-    # gon.orgs = @hash
-  end
-
-  def build_map_markers_with_hash(organisations)
-    ::MapMarkerJson.build_with_hash(organisations) do |org, marker|
-      marker.lat org["lat"]
-      marker.lng org["lng"]
-      marker.infowindow render_to_string( partial: 'popup2', locals: {org: org})
-      marker.json(
-        custom_marker: render_to_string(
-          partial: 'shared/custom_marker',
-          locals: { attrs: [ActionController::Base.helpers.asset_path("doit_volunteer_icon.png"),
-                    'data-id' => org["id"],
-                    class: 'vol_op', title: "Click here to see volunteer opportunities at #{org['title']}"]}
-        ),
-        index: 1,
-        type: 'vol_op'
-      )
-    end
+    @markers2 = build_map_markers(@orgs, "doit_volunteer_icon.png")
   end
  
-  def build_map_markers(organisations)
+  def build_map_markers(organisations, icon)
     ::MapMarkerJson.build(organisations) do |org, marker|
-      marker.lat org.latitude
-      marker.lng org.longitude
+      marker.lat org["latitude"]
+      marker.lng org["longitude"]
       marker.infowindow render_to_string( partial: 'popup', locals: {org: org})
       marker.json(
         custom_marker: render_to_string(
           partial: 'shared/custom_marker',
-          locals: { attrs: [ActionController::Base.helpers.asset_path("volunteer_icon_red.png"),
-                    'data-id' => org.id,
-                    class: 'vol_op', title: "Click here to see volunteer opportunities at #{org.name}"]}
+          locals: { attrs: [ActionController::Base.helpers.asset_path(icon),
+                    'data-id' => org['id'],
+                    class: 'vol_op', title: "Click here to see volunteer opportunities at #{org['name']}"]}
         ),
         index: 1,
         type: 'vol_op'
       )
     end
   end
-
 
   # This needs to be a helper method for the do-it API
   def collect_all_items (host, href, js_items)
@@ -77,7 +42,7 @@ class VolunteerOpsController < ApplicationController
       respItems = JSON.parse(response.body)["data"]["items"]
       respItems.each do |item|
         n=1
-        js_items.push( { "lat" => item["lat"], "lng" => item["lng"], "title" => item["title"], "id" => n } )
+        js_items.push( { "latitude" => item["lat"], "longitude" => item["lng"], "name" => item["title"], "id" => n } )
         n+=1
       end
       nextHash = JSON.parse(response.body)["links"]["next"]
