@@ -6,14 +6,16 @@ class VolunteerOpsController < ApplicationController
     @volunteer_ops = VolunteerOp.order_by_most_recent
     @organisations = Organisation.where(id: @volunteer_ops.select(:organisation_id))
     recently_updated_orgs = Queries::Organisations.add_recently_updated_and_has_owner(@organisations)
-    @markers = build_map_markers(recently_updated_orgs, "volunteer_icon_red.png")
+    markers1 = build_map_markers(recently_updated_orgs, "volunteer_icon_red.png")
     # Do-it API works from below
     host = "https://api.do-it.org"
     href = "/v1/opportunities\?lat\=51.5978\&lng\=-0.3370\&miles\=1 "
     js_items = Array.new
     collect_all_items(host, href, js_items)
     @orgs = js_items
-    @markers2 = build_map_markers(@orgs, "doit_volunteer_icon.png")
+    markers2 = build_map_markers(@orgs, "doit_volunteer_icon.png")
+    @markers = markers1[0...-1]+', '+markers2[1..-1]
+    # @markers = markers1 + markers2
   end
  
   def build_map_markers(organisations, icon)
