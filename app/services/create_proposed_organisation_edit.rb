@@ -1,6 +1,6 @@
-class ProposedOrganisationEditRepository
+class CreateProposedOrganisationEdit
 
-  def self.create(listener, params)
+  def self.with(listener: listener, params: params)
     unless params[:editor].siteadmin?
       merge_in_non_published_fields params[:organisation], params
       send_email_to_superadmin_about_org_edit params[:organisation]

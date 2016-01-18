@@ -10,7 +10,7 @@ class ProposedOrganisationEditsController < ApplicationController
   def create
     org = Organisation.find(params[:organisation_id])
     create_params = proposed_edit_params.merge!(organisation: org, editor: current_user)
-    proposed_org_edit = ProposedOrganisationEditRepository.create(self, create_params)
+    proposed_org_edit = CreateProposedOrganisationEdit.with(listener: self, params: create_params)
     redirect_to organisation_proposed_organisation_edit_path org, proposed_org_edit
   end
 
@@ -24,6 +24,7 @@ class ProposedOrganisationEditsController < ApplicationController
   end
 
   def update
+    # UpdateProposedOrganisationEdit.with(observer: self, params: create_params)
     proposed_edit = ProposedOrganisationEdit.find(update_params.fetch(:id))
     if proposed_edit_params.any?
       proposed_edit.accept(proposed_edit_params)
