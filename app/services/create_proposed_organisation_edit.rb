@@ -1,12 +1,12 @@
 class CreateProposedOrganisationEdit
 
-  def self.with(listener: listener, params: params)
+  def self.with(listener, params, model_klass = ProposedOrganisationEdit)
     unless params[:editor].siteadmin?
       merge_in_non_published_fields params[:organisation], params
       send_email_to_superadmin_about_org_edit params[:organisation]
       listener.flash[:notice] = "Edit is pending admin approval."
     end
-    ProposedOrganisationEdit.create(params)
+    model_klass.create(params)
   end
 
   private
