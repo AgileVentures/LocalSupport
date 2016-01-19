@@ -1,6 +1,6 @@
 module MapMarkerJson
-  def self.build(organisations)
-    if organisations.first.is_a?(ActiveRecord::Base)
+  def self.build(organisations, include_extra_organisation_data = true)
+    if include_extra_organisation_data
       organisations = Queries::Organisations.add_recently_updated_and_has_owner(organisations)
     end
     Gmaps4rails.build_markers(organisations) do |org, marker|

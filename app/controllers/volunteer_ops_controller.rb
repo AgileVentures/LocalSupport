@@ -13,7 +13,7 @@ class VolunteerOpsController < ApplicationController
     href = "/v1/opportunities\?lat\=51.5978\&lng\=-0.3370\&miles\=1 "
     @doit_orgs = Array.new
     collect_all_items(host, href, @doit_orgs)
-    doit_markers = build_map_markers(@doit_orgs)
+    doit_markers = build_map_markers(@doit_orgs, :doit, false)
     @markers = harrow_markers[0...-1]+', ' + doit_markers[1..-1]
   end
 
@@ -86,9 +86,8 @@ class VolunteerOpsController < ApplicationController
     end
   end
 
-  def build_map_markers(organisations)
-    organisations.first.is_a?(ActiveRecord::Base) ? type = :harrow : type = :doit
-    ::MapMarkerJson.build(organisations) do |org, marker|
+  def build_map_markers(organisations,  type = :harrow, include_extra_organisation_data = true)
+    ::MapMarkerJson.build(organisations, include_extra_organisation_data) do |org, marker|
       marker.lat org.latitude
       marker.lng org.longitude
       marker.infowindow render_to_string( partial: "popup_#{type}", locals: {org: org})
