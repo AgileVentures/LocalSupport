@@ -1,7 +1,5 @@
 <button class='close infowindow_close' type='button'>×</button>
-<%if org.is_a? (ActiveRecord::Base) %>
 	<%= link_to org.name, org, :style => "font-weight: 100" %></strong></br>
-<%end%>
 <ul>
 <% VolunteerOp.where(organisation_id: org.id).each do |op| %>
   <li>
@@ -9,5 +7,5 @@
     <%= smart_truncate(op.description,44) %></br>
   </li>
   <% end %>
-  </ul>
+</ul>
 </div>
