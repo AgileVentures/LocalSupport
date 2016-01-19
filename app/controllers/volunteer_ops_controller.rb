@@ -16,25 +16,6 @@ class VolunteerOpsController < ApplicationController
     doit_markers = build_map_markers(@doit_orgs)
     @markers = harrow_markers[0...-1]+', ' + doit_markers[1..-1]
   end
- 
-  def build_map_markers(organisations)
-    organisations.first.is_a?(ActiveRecord::Base) ? type = :harrow : type = :doit
-    ::MapMarkerJson.build(organisations) do |org, marker|
-      marker.lat org.latitude
-      marker.lng org.longitude
-      marker.infowindow render_to_string( partial: "popup_#{type}", locals: {org: org})
-      marker.json(
-        custom_marker: render_to_string(
-          partial: 'shared/custom_marker',
-          locals: { attrs: [ActionController::Base.helpers.asset_path("volunteer_icon_#{type}.png"),
-                    'data-id' => org.id,
-                    class: 'vol_op', title: "Click here to see volunteer opportunities at #{org.name}"]}
-        ),
-        index: 1,
-        type: 'vol_op'
-      )
-    end
-  end
 
   def show
     @volunteer_op = VolunteerOp.find(params[:id])
@@ -102,6 +83,25 @@ class VolunteerOpsController < ApplicationController
       current_user.organisation.id.to_s == params[:organisation_id]
     else
       current_user.organisation == VolunteerOp.find(params[:id]).organisation if current_user.present? && current_user.organisation.present?
+    end
+  end
+
+  def build_map_markers(organisations)
+    organisations.first.is_a?(ActiveRecord::Base) ? type = :harrow : type = :doit
+    ::MapMarkerJson.build(organisations) do |org, marker|
+      marker.lat org.latitude
+      marker.lng org.longitude
+      marker.infowindow render_to_string( partial: "popup_#{type}", locals: {org: org})
+      marker.json(
+        custom_marker: render_to_string(
+          partial: 'shared/custom_marker',
+          locals: { attrs: [ActionController::Base.helpers.asset_path("volunteer_icon_#{type}.png"),
+                    'data-id' => org.id,
+                    class: 'vol_op', title: "Click here to see volunteer opportunities at #{org.name}"]}
+        ),
+        index: 1,
+        type: 'vol_op'
+      )
     end
   end
 
