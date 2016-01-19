@@ -7,25 +7,25 @@ class VolunteerOpsController < ApplicationController
   def index
     @volunteer_ops = VolunteerOp.order_by_most_recent
     @organisations = Organisation.where(id: @volunteer_ops.select(:organisation_id))
-    harrow_markers = build_map_markers(@organisations, "volunteer_icon_red.png")
+    harrow_markers = build_map_markers(@organisations, :harrow)
     # Do-it API works from below
     host = "https://api.do-it.org"
     href = "/v1/opportunities\?lat\=51.5978\&lng\=-0.3370\&miles\=1 "
     @doit_orgs = Array.new
     collect_all_items(host, href, @doit_orgs)
-    doit_markers = build_map_markers(@doit_orgs, "doit_volunteer_icon.png")
+    doit_markers = build_map_markers(@doit_orgs, :doit)
     @markers = harrow_markers[0...-1]+', ' + doit_markers[1..-1]
   end
  
-  def build_map_markers(organisations, icon)
+  def build_map_markers(organisations, type)
     ::MapMarkerJson.build(organisations) do |org, marker|
       marker.lat org.latitude
       marker.lng org.longitude
-      marker.infowindow render_to_string( partial: 'popup_harrow', locals: {org: org})
+      marker.infowindow render_to_string( partial: "popup_#{type}", locals: {org: org})
       marker.json(
         custom_marker: render_to_string(
           partial: 'shared/custom_marker',
-          locals: { attrs: [ActionController::Base.helpers.asset_path(icon),
+          locals: { attrs: [ActionController::Base.helpers.asset_path("volunteer_icon_#{type}.png"),
                     'data-id' => org.id,
                     class: 'vol_op', title: "Click here to see volunteer opportunities at #{org.name}"]}
         ),

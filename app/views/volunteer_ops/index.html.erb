@@ -17,6 +17,17 @@
           </tr>
       <% end %>
     </table>
+    <br>
+    <strong>Do-it ops</strong>
+    <table>
+       <% @doit_orgs.each do |op| %>
+          <tr>
+            <td>
+              <%=op.name%>
+            </td>
+          </tr>
+      <% end %>
+    </table>
   </div>
 </div>
 <% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
