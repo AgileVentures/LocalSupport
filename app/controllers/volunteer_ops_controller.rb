@@ -1,3 +1,5 @@
+require 'ostruct'
+
 class VolunteerOpsController < ApplicationController
   layout 'two_columns_with_map'
   before_filter :authorize, :except => [:show, :index]
@@ -5,30 +7,27 @@ class VolunteerOpsController < ApplicationController
   def index
     @volunteer_ops = VolunteerOp.order_by_most_recent
     @organisations = Organisation.where(id: @volunteer_ops.select(:organisation_id))
-    recently_updated_orgs = Queries::Organisations.add_recently_updated_and_has_owner(@organisations)
-    markers1 = build_map_markers(recently_updated_orgs, "volunteer_icon_red.png")
+    harrow_markers = build_map_markers(@organisations, "volunteer_icon_red.png")
     # Do-it API works from below
     host = "https://api.do-it.org"
     href = "/v1/opportunities\?lat\=51.5978\&lng\=-0.3370\&miles\=1 "
-    js_items = Array.new
-    collect_all_items(host, href, js_items)
-    @orgs = js_items
-    markers2 = build_map_markers(@orgs, "doit_volunteer_icon.png")
-    @markers = markers1[0...-1]+', '+markers2[1..-1]
-    # @markers = markers1 + markers2
+    @doit_orgs = Array.new
+    collect_all_items(host, href, @doit_orgs)
+    doit_markers = build_map_markers(@doit_orgs, "doit_volunteer_icon.png")
+    @markers = harrow_markers[0...-1]+', ' + doit_markers[1..-1]
   end
  
   def build_map_markers(organisations, icon)
     ::MapMarkerJson.build(organisations) do |org, marker|
-      marker.lat org["latitude"]
-      marker.lng org["longitude"]
-      marker.infowindow render_to_string( partial: 'popup', locals: {org: org})
+      marker.lat org.latitude
+      marker.lng org.longitude
+      marker.infowindow render_to_string( partial: 'popup_harrow', locals: {org: org})
       marker.json(
         custom_marker: render_to_string(
           partial: 'shared/custom_marker',
           locals: { attrs: [ActionController::Base.helpers.asset_path(icon),
-                    'data-id' => org['id'],
-                    class: 'vol_op', title: "Click here to see volunteer opportunities at #{org['name']}"]}
+                    'data-id' => org.id,
+                    class: 'vol_op', title: "Click here to see volunteer opportunities at #{org.name}"]}
         ),
         index: 1,
         type: 'vol_op'
@@ -37,14 +36,15 @@ class VolunteerOpsController < ApplicationController
   end
 
   # This needs to be a helper method for the do-it API
-  def collect_all_items (host, href, js_items)
+  def collect_all_items (host, href, orgs)
     while href do
       url = host + href
       response = HTTParty.get(url)
       respItems = JSON.parse(response.body)["data"]["items"]
       respItems.each do |item|
         n=1
-        js_items.push( { "latitude" => item["lat"], "longitude" => item["lng"], "name" => item["title"], "id" => n } )
+        org = OpenStruct.new(latitude: item["lat"], longitude: item["lng"], name: item["title"], id: n) 
+        orgs.push (org)
         n+=1
       end
       nextHash = JSON.parse(response.body)["links"]["next"]
