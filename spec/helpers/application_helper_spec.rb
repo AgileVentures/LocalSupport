@@ -55,4 +55,16 @@ describe ApplicationHelper, :type => :helper do
       expect(helper.feature_active?(:volunteer_ops)).to be false
     end
   end
+
+  describe "#parent_layout" do
+    it "should call parent_layout" do
+      view_flow = double(:view_flow)
+      output_buffer = double(:output_buffer)
+      allow(view_flow).to receive(:set)
+      allow(view_flow).to receive(:get)
+      assign(:view_flow, view_flow)
+      assign(:output_buffer, output_buffer)
+      helper.parent_layout("application")
+    end
+  end
 end
