@@ -113,7 +113,7 @@ class VolunteerOpsController < ApplicationController
     while href do
       url = host + href
       response = HTTParty.get(url)
-      if response.body != '[]'
+      if response.body && response.body != '[]'
         p response.body.length
         respItems = JSON.parse(response.body)["data"]["items"]
         respItems.each do |item|

@@ -20,7 +20,7 @@
     <br>
     <strong>Do-it ops</strong>
     <table>
-       <%if @doit_orgs.length>0%>
+       <%if @doit_orgs && @doit_orgs.length>0%>
          <% @doit_orgs.each do |op| %>
             <tr>
               <td>
