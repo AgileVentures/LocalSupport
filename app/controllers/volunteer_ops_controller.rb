@@ -14,7 +14,7 @@ class VolunteerOpsController < ApplicationController
     @doit_orgs = Array.new
     collect_all_items(host, href, @doit_orgs)
     doit_markers = build_map_markers(@doit_orgs, :doit, false)
-    if doit_markers !=[]
+    if doit_markers == '[]'
       @markers = harrow_markers
     else
       @markers = harrow_markers[0...-1]+', ' + doit_markers[1..-1]
@@ -114,7 +114,6 @@ class VolunteerOpsController < ApplicationController
       url = host + href
       response = HTTParty.get(url)
       if response.body && response.body != '[]'
-        p response.body.length
         respItems = JSON.parse(response.body)["data"]["items"]
         respItems.each do |item|
           n=1
