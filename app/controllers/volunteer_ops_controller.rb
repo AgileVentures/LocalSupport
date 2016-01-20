@@ -13,10 +13,12 @@ class VolunteerOpsController < ApplicationController
     href = "/v1/opportunities\?lat\=51.5978\&lng\=-0.3370\&miles\=1 "
     @doit_orgs = Array.new
     collect_all_items(host, href, @doit_orgs)
-    p 'LOOK DOWN'
-    p @doit_orgs[0]
     doit_markers = build_map_markers(@doit_orgs, :doit, false)
-    @markers = harrow_markers[0...-1]+', ' + doit_markers[1..-1]
+    if doit_markers !=[]
+      @markers = harrow_markers
+    else
+      @markers = harrow_markers[0...-1]+', ' + doit_markers[1..-1]
+    end
   end
 
   def show
