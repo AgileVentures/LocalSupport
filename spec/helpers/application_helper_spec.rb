@@ -56,15 +56,31 @@ describe ApplicationHelper, :type => :helper do
     end
   end
 
-  describe "#parent_layout" do
-    it "should call parent_layout" do
-      view_flow = double(:view_flow)
-      output_buffer = double(:output_buffer)
-      allow(view_flow).to receive(:set)
-      allow(view_flow).to receive(:get)
+  describe '#parent_layout' do
+    subject(:parent_layout) { helper.parent_layout('application') }
+
+    let(:view_flow) { double :view_flow, set: true, get: true }
+    let(:result) { double :result }
+
+    before do
+      allow(helper).to receive(:render)
       assign(:view_flow, view_flow)
-      assign(:output_buffer, output_buffer)
-      helper.parent_layout("application")
+    end
+
+    it 'sets view_flow layout to output buffer' do
+      expect(view_flow).to receive(:set).with(:layout, helper.output_buffer)
+      parent_layout
+    end
+
+    it 'renders the parent layout' do
+      expect(helper).to receive(:render).with(file: 'layouts/application')
+      parent_layout
+    end
+
+    it 'sets the output buffer to the rendered layout' do
+      allow(helper).to receive(:render).and_return(result)
+      expect(helper).to receive(:output_buffer=).with(result)
+      parent_layout
     end
   end
 end
