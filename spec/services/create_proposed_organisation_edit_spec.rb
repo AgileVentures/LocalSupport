@@ -7,11 +7,8 @@ describe CreateProposedOrganisationEdit do
   let(:user_klass) { double(:user_klass) }
   let(:mailer_class) { double(:mailer_class) }
   let(:listener) { double :listener }
-  let(:params) { {} }
-
-  before do
-    allow(params).to receive(:[]).with(:editor).and_return editor
-  end
+  let(:organisation) { double :organisation }
+  let(:params) { { editor: editor, organisation: organisation } }
 
   context 'editor is siteadmin' do
     let(:editor) { double :editor, siteadmin?: true }
@@ -24,13 +21,12 @@ describe CreateProposedOrganisationEdit do
 
   context 'editor is not siteadmin' do
     let(:editor) { double :editor, siteadmin?: false }
-    let(:organisation) { double :organisation }
+    let(:mail) { double :mail }
 
     before do
-      allow(params).to receive(:[]).with(:organisation).and_return organisation
       allow(listener).to receive_message_chain :flash, :[]=
       allow(described_class).to receive :merge_in_non_published_fields
-      allow(user_klass).to receive_message_chain :superadmins, :pluck
+      allow(user_klass).to receive_message_chain(:superadmins, :pluck).and_return(:admins)
       allow(mailer_class).to receive_message_chain :edit_org_waiting_for_approval, :deliver_now
     end
 
@@ -40,7 +36,8 @@ describe CreateProposedOrganisationEdit do
     end
 
     it 'sends email to superadmin about org edit' do
-      expect(mailer_class).to receive_message_chain :edit_org_waiting_for_approval, :deliver_now
+      expect(mail).to receive(:deliver_now)
+      expect(mailer_class).to receive(:edit_org_waiting_for_approval).with(organisation, :admins).and_return(mail)
       create_proposed_organisation_edit
     end
 
