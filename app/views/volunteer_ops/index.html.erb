@@ -20,13 +20,15 @@
     <br>
     <strong>Do-it ops</strong>
     <table>
-       <% @doit_orgs.each do |op| %>
-          <tr>
-            <td>
-              <%=op.name%>
-            </td>
-          </tr>
-      <% end %>
+       <%if @doit_orgs.length>0%>
+         <% @doit_orgs.each do |op| %>
+            <tr>
+              <td>
+                <%=op.name%>
+              </td>
+            </tr>
+        <% end %>
+      <%end%>
     </table>
   </div>
 </div>
