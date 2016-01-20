@@ -104,6 +104,13 @@ Given(/^I am proposing an organisation$/) do
   steps %Q{And I fill in the proposed charity page validly}
 end
 
+Given (/^I fill in the proposed charity page with an invalid url$/) do
+  fill_in 'proposed_organisation_address', :with => '64 pinner road'
+  fill_in 'proposed_organisation_name', :with => 'Friendly charity'
+  fill_in 'proposed_organisation_postcode', :with => 'HA1 4HZ'
+  fill_in 'proposed_organisation_website', :with => 'I am an invalid url'
+end
+
 Given (/^I fill in the proposed charity page validly$/) do
   proposed_org_fields.each do |key, val|
     fill_in "proposed_organisation_#{key}", with: val

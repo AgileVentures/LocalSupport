@@ -56,6 +56,14 @@ Feature: User proposes an organisation to be added to HarrowCN
     Then I should not see an "Accept Proposed Organisation" button
     And I should not see a "Reject Proposed Organisation" button
 
+  @javascript
+  Scenario: Unregistered user proposes new organisation with invalid url
+    Given I click "Add Organisation"
+    Then I should be on the new proposed organisation page
+    And I fill in the proposed charity page with an invalid url 
+    And I check the confirmation box for "We are a not for profit organisation registered or working in Harrow"
+    And I press "Create Proposed organisation"
+    And I should see "This url is invalid"
 
   @javascript
   Scenario: Signed in user proposes new organisation
