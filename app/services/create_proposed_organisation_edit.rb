@@ -1,7 +1,12 @@
 class CreateProposedOrganisationEdit
 
-  def self.with(listener, params, model_klass = ProposedOrganisationEdit)
+  @user_klass = nil
+  @mailer_klass = nil
+
+  def self.with(listener, params, model_klass = ProposedOrganisationEdit, user_klass = User, mailer_klass = AdminMailer)
     unless params[:editor].siteadmin?
+      @user_klass = user_klass
+      @mailer_klass = mailer_klass
       merge_in_non_published_fields params[:organisation], params
       send_email_to_superadmin_about_org_edit params[:organisation]
       listener.flash[:notice] = "Edit is pending admin approval."
@@ -19,7 +24,7 @@ class CreateProposedOrganisationEdit
   end
 
   def self.send_email_to_superadmin_about_org_edit(org)
-    superadmin_emails = User.superadmins.pluck(:email)
-    AdminMailer.edit_org_waiting_for_approval(org, superadmin_emails).deliver_now
+    superadmin_emails = @user_klass.superadmins.pluck(:email)
+    @mailer_klass.edit_org_waiting_for_approval(org, superadmin_emails).deliver_now
   end
 end
