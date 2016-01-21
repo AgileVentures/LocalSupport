@@ -1,8 +1,12 @@
 class CreateProposedOrganisationEdit
 
   def self.with(listener, params, model_klass = ProposedOrganisationEdit, user_klass = User, mailer_klass = AdminMailer)
-    CreateProposedOrganisationEdit.new(listener, params, model_klass, user_klass, mailer_klass).run
+    new(listener, params, model_klass, user_klass, mailer_klass).send(:run)
   end
+
+  private
+
+  attr_reader :listener, :params, :organisation, :model_klass, :user_klass, :mailer_klass, :editor
 
   def initialize(listener, params, model_klass, user_klass, mailer_klass)
     @listener = listener
@@ -22,10 +26,6 @@ class CreateProposedOrganisationEdit
     end
     model_klass.create(params)
   end
-
-  private
-
-  attr_reader :listener, :params, :organisation, :model_klass, :user_klass, :mailer_klass, :editor
 
   def merge_in_non_published_fields
     in_memory_edit = ProposedOrganisationEdit.new(organisation: organisation)
