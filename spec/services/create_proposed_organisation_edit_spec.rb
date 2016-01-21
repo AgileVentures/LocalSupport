@@ -25,13 +25,13 @@ describe CreateProposedOrganisationEdit do
 
     before do
       allow(listener).to receive_message_chain :flash, :[]=
-      allow(described_class).to receive :merge_in_non_published_fields
+      allow_any_instance_of(described_class).to receive :merge_in_non_published_fields
       allow(user_klass).to receive_message_chain(:superadmins, :pluck).and_return(:admins)
       allow(mailer_class).to receive_message_chain :edit_org_waiting_for_approval, :deliver_now
     end
 
     it 'merges in non published fields' do
-      expect(described_class).to receive :merge_in_non_published_fields
+      expect_any_instance_of(described_class).to receive :merge_in_non_published_fields
       create_proposed_organisation_edit
     end
 
