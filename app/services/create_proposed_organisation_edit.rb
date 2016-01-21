@@ -22,7 +22,7 @@ class CreateProposedOrganisationEdit
     unless editor.siteadmin?
       merge_in_non_published_fields
       send_email_to_superadmin_about_org_edit
-      listener.flash[:notice] = "Edit is pending admin approval."
+      listener.set_notice('Edit is pending admin approval.')
     end
     model_klass.create(params)
   end

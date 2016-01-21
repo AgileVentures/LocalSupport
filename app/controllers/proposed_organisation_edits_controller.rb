@@ -36,6 +36,10 @@ class ProposedOrganisationEditsController < ApplicationController
     redirect_to organisation_path proposed_edit.organisation
   end
 
+  def set_notice(notice)
+    flash[:notice] = notice
+  end
+
   def update_params
     params.require(:proposed_organisation_edit).permit(:id)
   end

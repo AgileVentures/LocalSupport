@@ -6,7 +6,7 @@ describe CreateProposedOrganisationEdit do
   let(:model_klass) { spy(:proposed_organisation_edit) }
   let(:user_klass) { double(:user_klass) }
   let(:mailer_class) { double(:mailer_class) }
-  let(:listener) { double :listener }
+  let(:listener) { spy :listener }
   let(:organisation) { double :organisation }
   let(:params) { { editor: editor, organisation: organisation } }
 
@@ -42,8 +42,8 @@ describe CreateProposedOrganisationEdit do
     end
 
     it 'sets the flash notice on the listener' do
-      expect(listener).to receive_message_chain :flash, :[]=
       create_proposed_organisation_edit
+      expect(listener).to have_received(:set_notice).with('Edit is pending admin approval.')
     end
 
     it 'creates a proposed organisation edit' do
