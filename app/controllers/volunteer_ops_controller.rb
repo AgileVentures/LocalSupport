@@ -10,7 +10,7 @@ class VolunteerOpsController < ApplicationController
     harrow_markers = build_map_markers(@organisations)
     # Do-it API works from below
     host = "https://api.do-it.org"
-    href = "/v1/opportunities\?lat\=51.5978\&lng\=-0.3370\&miles\=1 "
+    href = "/v1/opportunities\?lat\=51.5978\&lng\=-0.3370\&miles\=0.5 "
     @doit_orgs = Array.new
     collect_all_items(host, href, @doit_orgs)
     doit_markers = build_map_markers(@doit_orgs, :doit, false)
@@ -113,11 +113,12 @@ class VolunteerOpsController < ApplicationController
     while href do
       url = host + href
       response = HTTParty.get(url)
+      p response.body
       if response.body && response.body != '[]'
         respItems = JSON.parse(response.body)["data"]["items"]
         respItems.each do |item|
           n=1
-          org = OpenStruct.new(latitude: item["lat"], longitude: item["lng"], name: item["title"], id: n) 
+          org = OpenStruct.new(latitude: item["lat"], longitude: item["lng"], name: item["title"], id: n)
           orgs.push (org)
           n+=1
         end
