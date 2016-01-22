@@ -119,7 +119,8 @@ class VolunteerOpsController < ApplicationController
         respItems.each do |item|
           n = 1
           org = OpenStruct.new(latitude: item["lat"], longitude: item["lng"], name: item["title"], id: n,
-                                description: item["description"], opportunity_id: item["id"])
+                                description: item["description"], opportunity_id: item["id"],
+                                org_name: item['for_recruiter']['name'])
           orgs.push (org)
           n += 1
         end
