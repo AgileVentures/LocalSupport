@@ -113,14 +113,15 @@ class VolunteerOpsController < ApplicationController
     while href do
       url = host + href
       response = HTTParty.get(url)
-      p response.body
       if response.body && response.body != '[]'
         respItems = JSON.parse(response.body)["data"]["items"]
+        p respItems[0]
         respItems.each do |item|
-          n=1
-          org = OpenStruct.new(latitude: item["lat"], longitude: item["lng"], name: item["title"], id: n)
+          n = 1
+          org = OpenStruct.new(latitude: item["lat"], longitude: item["lng"], name: item["title"], id: n,
+                                description: item["description"], opportunity_id: item["id"])
           orgs.push (org)
-          n+=1
+          n += 1
         end
         nextHash = JSON.parse(response.body)["links"]["next"]
       end
