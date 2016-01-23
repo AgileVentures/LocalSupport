@@ -17,6 +17,7 @@ Background:
   Given I visit the home page
   And cookies are approved
 
+@vcr
 Scenario: Sign in for an existing non-superadmin user unassociated with any organisation
   Given I sign in as "normal_user@example.com" with password "pppppppp"
   Then I should see a link or button "normal_user@example.com"

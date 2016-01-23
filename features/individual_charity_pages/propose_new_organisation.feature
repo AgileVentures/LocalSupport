@@ -28,7 +28,7 @@ Feature: User proposes an organisation to be added to HarrowCN
     And I visit the home page
     Then I should not see an add organisation link
 
-  @javascript
+  @javascript @vcr
   Scenario: Unregistered user proposes new organisation
     Given I click "Add Organisation"
     Then I should be on the new proposed organisation page
@@ -42,7 +42,7 @@ Feature: User proposes an organisation to be added to HarrowCN
     Then I should not see an "Accept Proposed Organisation" button
     And I should not see a "Reject Proposed Organisation" button
 
-  @javascript
+  @javascript @vcr
   Scenario: Unregistered user proposes new organisation without checking confirmation box
     Given I click "Add Organisation"
     Then I should be on the new proposed organisation page
@@ -57,7 +57,7 @@ Feature: User proposes an organisation to be added to HarrowCN
     And I should not see a "Reject Proposed Organisation" button
 
 
-  @javascript
+  @javascript @vcr
   Scenario: Signed in user proposes new organisation
     Given the following users are registered:
       | email                     | password | superadmin | organisation | confirmed_at         |
@@ -75,7 +75,7 @@ Feature: User proposes an organisation to be added to HarrowCN
     And I should be on the proposed organisations show page for the organisation
     And the proposed organisation "Friendly charity" should have a large icon
 
-  @javascript
+  @javascript @vcr
   Scenario: Superadmin receives an email when an organisation is proposed
     Given the following users are registered:
       | email                     | password | superadmin | organisation | confirmed_at         |

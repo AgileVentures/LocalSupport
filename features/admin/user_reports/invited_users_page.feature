@@ -16,6 +16,7 @@ Feature: Invited Users Page
     And I am signed in as a superadmin
     And I visit the invited users page
 
+  @vcr
   Scenario: Page shows only invited users
     Then I should see "invited@user.org"
     And I should not see "regular@user.org"

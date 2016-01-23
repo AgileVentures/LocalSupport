@@ -17,7 +17,7 @@ Feature: Map of local charities
       | email                         | password | organisation | confirmed_at         |
       | registered_user-3@example.com | pppppppp | Youth UK     | 2007-01-01  10:00:00 |
 
-  @javascript
+  @javascript @vcr
   Scenario: Show all charities in map on homepage map
     Given I visit the home page
     Then I should see the following measle markers in the map:
@@ -48,6 +48,7 @@ Feature: Map of local charities
     Given I visit the home page
     Then the organisation "Indian Elders Association" should have a small icon
 
+  @vcr
   Scenario: Changing address on the map changes the map coordinates
     Given I visit the home page
     Then the coordinates for "Harrow Bereavement Counselling" and "Youth UK" should not be the same
@@ -60,6 +61,7 @@ Feature: Map of local charities
     Then the coordinates for "Harrow Bereavement Counselling" and "Youth UK" should be the same
     Then the coordinates for "Age UK" and "Youth UK" should not be the same
 
+  @vcr
   Scenario: Changing postcode changes the map coordinates
     Given I visit the home page
     And the coordinates for "Age UK" and "Youth UK" should be the same

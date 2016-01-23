@@ -17,6 +17,7 @@ Feature: This is my organisation
 
     And cookies are approved
 
+  @vcr
   Scenario: Signed in User
     Given I am signed in as a non-superadmin
     And I click "This is my organisation" on the "Helpful Folk" page and stay there
