@@ -89,14 +89,14 @@ end
 #TODO if this ever needs refactoring, factor it in with what's in
 # config/initializers/webmock.rb
 def stub_request_with_address(address, body = nil)
-  filename = "#{address.gsub(/\s/, '_')}.json"
-  filename = File.read "test/fixtures/#{filename}"
+  #filename = "#{address.gsub(/\s/, '_')}.json"
+  #filename = File.read "test/fixtures/#{filename}"
   # Webmock shows URLs with '%20' standing for space, but uri_encode susbtitutes with '+'
   # So let's fix
-  addr_in_uri = address.uri_encode.gsub(/\+/, "%20")
+  #addr_in_uri = address.uri_encode.gsub(/\+/, "%20")
   # Stub request, which URL matches Regex
-  stub_request(:get, /http:\/\/maps.googleapis.com\/maps\/api\/geocode\/json\?address=#{addr_in_uri}/).
-      to_return(status => 200, :body => body || filename, :headers => {})
+  #stub_request(:get, /http:\/\/maps.googleapis.com\/maps\/api\/geocode\/json\?address=#{addr_in_uri}/).
+  #    to_return(status => 200, :body => body || filename, :headers => {})
 end
 
 Given /Google is indisposed for "(.*)"/ do  |address|
