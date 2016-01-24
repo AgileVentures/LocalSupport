@@ -17,19 +17,20 @@ Feature: Map of local charities
       | email                         | password | organisation | confirmed_at         |
       | registered_user-3@example.com | pppppppp | Youth UK     | 2007-01-01  10:00:00 |
 
-  @javascript @vcr
+  @javascript @vcr @billy
   Scenario: Show all charities in map on homepage map
     Given I visit the home page
     Then I should see the following measle markers in the map:
       | Indian Elders Association | Age UK | Harrow Bereavement Counselling |
 
-  @javascript
+  @javascript @billy
   Scenario: Infowindow appears when clicking on map marker
     Given I visit the home page
     Then I should see an infowindow when I click on the map markers:
       | Indian Elders Association | Age UK | Harrow Bereavement Counselling |
+
   @time_travel
-  @javascript
+  @javascript @billy
   Scenario Outline: Organisation map has small icon for organisations updated more than 365 days ago
     Given I travel a year plus "<days>" days into the future
     And I visit the home page
@@ -43,7 +44,7 @@ Feature: Map of local charities
       | 10   | small|
       |100   | small|
 
-  @javascript
+  @javascript @billy
   Scenario: Organisation map has small icon for organisation with no users
     Given I visit the home page
     Then the organisation "Indian Elders Association" should have a small icon
@@ -61,7 +62,7 @@ Feature: Map of local charities
     Then the coordinates for "Harrow Bereavement Counselling" and "Youth UK" should be the same
     Then the coordinates for "Age UK" and "Youth UK" should not be the same
 
-  @vcr
+  @vcr @billy
   Scenario: Changing postcode changes the map coordinates
     Given I visit the home page
     And the coordinates for "Age UK" and "Youth UK" should be the same
