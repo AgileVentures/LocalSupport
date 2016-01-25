@@ -12,9 +12,12 @@ class CreateProposedOrganisationEdits < ActiveRecord::Migration
       t.text     "donation_info"
       t.datetime "deleted_at"
     end
+
+    Feature.create(name: :automated_propose_org)
   end
 
   def down
+    Feature.delete(name: :automated_propose_org)
     drop_table :proposed_organisation_edits
   end
 end

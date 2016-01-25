@@ -7,6 +7,10 @@ class CreateVolunteerOps < ActiveRecord::Migration
 
       t.timestamps
     end
+
     add_index :volunteer_ops, :organization_id
+
+    Feature.create(name: :volunteer_ops_create)
+    Feature.create(name: :volunteer_ops_list)
   end
 end
