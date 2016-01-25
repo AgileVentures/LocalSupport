@@ -22,7 +22,7 @@ Feature: User proposes an organisation to be added to HarrowCN
     And I visit the home page
     And I click "Close"
 
-  @javascript
+  @javascript @billy
   Scenario: Link not live when feature flag disabled
     Given that the automated_propose_org flag is disabled
     And I visit the home page
@@ -75,7 +75,7 @@ Feature: User proposes an organisation to be added to HarrowCN
     And I should be on the proposed organisations show page for the organisation
     And the proposed organisation "Friendly charity" should have a large icon
 
-  @javascript @vcr
+  @javascript @vcr @billy
   Scenario: Superadmin receives an email when an organisation is proposed
     Given the following users are registered:
       | email                     | password | superadmin | organisation | confirmed_at         |

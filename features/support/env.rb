@@ -46,7 +46,7 @@ Billy.configure do |c|
   c.persist_cache = true
   c.cache_path = 'features/req_cache/'
 end
-Billy.proxy.restore_cache
+Billy.proxy.reset_cache
 
 Before('@billy') do
   Capybara.current_driver = :poltergeist_billy

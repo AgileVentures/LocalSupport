@@ -24,7 +24,7 @@ Feature: Invited Users Page
   Scenario: Super Admin can see the preview email
     Then I should see the preview email
 
-  @javascript
+  @javascript @billy
   Scenario: Invitations can be resent
     Given I check the box for "Invited Organisation"
     When I click id "invite_users"
