@@ -13,7 +13,7 @@ describe ProposedOrganisation, :type => :model do
     end
     it 'expunges the proposed organisation' do
       expect(proposed_org.id).to eq new_org.id
-      expect{ProposedOrganisation.find proposed_org.id}.to raise_error
+      expect{ProposedOrganisation.find proposed_org.id}.to raise_error ActiveRecord::RecordNotFound
     end
     [:name, :description, :address, :longitude, :latitude, :email, :postcode, :publish_email, :publish_phone,
     :donation_info, :website, :publish_address, :telephone].each do |attr|
