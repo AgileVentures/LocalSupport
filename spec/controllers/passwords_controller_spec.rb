@@ -64,7 +64,7 @@ describe Devise::PasswordsController, :type => :controller do
          put :update, user:
            { reset_password_token: reset_password_token, password: '123qwe___', password_confirmation: '123qwe___' }
 #         expect(response.body).to have_content('Reset password token has expired, please request a new one')
-         expect(assigns(:user).errors.full_messages).to include "Reset password token has expired, please request a new one"
+         expect(assigns(:user).errors.full_messages).to include 'reset requested too long ago - please request a new reset by clicking "forgot password" again'
        end
      end
    end

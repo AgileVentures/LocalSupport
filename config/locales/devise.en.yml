@@ -57,3 +57,10 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            reset_password_token:
+              expired: 'reset requested too long ago - please request a new reset by clicking "forgot password" again'
