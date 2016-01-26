@@ -14,6 +14,7 @@
 //= require organisations
 //= require analytics
 //= require utilities
+//= require rails.validations
 
 window.LocalSupport = {};
 

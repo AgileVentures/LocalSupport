@@ -1,7 +1,12 @@
 class BaseOrganisation < ActiveRecord::Base
+  before_validation :add_url_protocol
+
   acts_as_paranoid
-  validates_url :website, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.website.present?}
-  validates_url :donation_info, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.donation_info.present?}
+
+  validates_format_of :donation_info, :allow_blank => true,
+    :with => /^(?:http:\/\/|https:\/\/|)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix, :multiline => true, :message => "Please enter a valid URL"
+  validates_format_of :website, :allow_blank => true,
+    :with => /^(?:http:\/\/|https:\/\/|)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix, :multiline => true, :message => "Please enter a valid URL"
   has_many :category_organisations, :foreign_key => :organisation_id
   has_many :categories, :through => :category_organisations, :foreign_key => :organisation_id
   accepts_nested_attributes_for :category_organisations,
@@ -38,6 +43,20 @@ class BaseOrganisation < ActiveRecord::Base
 
   def has_been_updated_recently?
     updated_at >= 1.year.ago
+  end
+
+  def add_url_protocol
+      self.website = "http://#{self.website}" if needs_url_protocol? self.website
+      self.donation_info = "http://#{self.donation_info}" if needs_url_protocol? self.donation_info
+  end
+
+  private
+  def needs_url_protocol? url
+    !valid_url_with_protocol?(url) && url.length > 0
+  end
+
+  def valid_url_with_protocol? url
+    url[/\Ahttp:\/\//] || url[/\Ahttps:\/\//]
   end
 
 end

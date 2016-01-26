@@ -58,6 +58,7 @@ gem 'uglifier', '2.5.3'
 gem 'sass-rails', '4.0.3'
 gem 'less-rails', '2.5.0'
 gem 'twitter-bootstrap-rails', '2.2.8'
+gem 'client_side_validations'
 
 gem 'font-awesome-rails'
 
