@@ -11,10 +11,11 @@ class CreateFeatures < ActiveRecord::Migration
   end
 
   def down
+    # Feature.find_by(name: :volunteer_ops_create).destroy
+    # Feature.find_by(name: :volunteer_ops_list).destroy
+
     drop_table :features
 
-    Feature.find_by(name: :volunteer_ops_create).destroy
-    Feature.find_by(name: :volunteer_ops_list).destroy
 
   end
 
