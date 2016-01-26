@@ -1,6 +1,6 @@
 
-Given(/^I should see all do_it markers in the map$/) do
-  expect(page).to have_css('.vol_op', count: 16)
+Given /^I should see (\d+) markers in the map$/ do |num|
+  expect(page).to have_css('.vol_op', count: num)
 end
 
 And(/^I submit a volunteer op "(.*?)", "(.*?)" on the "(.*?)" page$/) do |title, desc, org_name|

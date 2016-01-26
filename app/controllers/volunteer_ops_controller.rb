@@ -111,14 +111,13 @@ class VolunteerOpsController < ApplicationController
 
   # This needs to be a helper method for the do-it API
   def collect_all_items (host, href, orgs)
+    n=1
     while href do
       url = host + href
       response = HTTParty.get(url)
       if response.body && response.body != '[]'
         respItems = JSON.parse(response.body)["data"]["items"]
-        p respItems[0]
         respItems.each do |item|
-          n = 1
           org = OpenStruct.new(latitude: item["lat"], longitude: item["lng"], name: item["title"], id: n,
                                 description: item["description"], opportunity_id: item["id"],
                                 org_name: item['for_recruiter']['name'])
