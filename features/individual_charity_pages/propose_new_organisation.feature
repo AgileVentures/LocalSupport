@@ -63,7 +63,7 @@ Feature: User proposes an organisation to be added to HarrowCN
     And I fill in the proposed charity page with an invalid url 
     And I check the confirmation box for "We are a not for profit organisation registered or working in Harrow"
     And I press "Create Proposed organisation"
-    And I should see "Please enter a valid URL"
+    Then I should see "Please enter a valid URL"
 
   @javascript
   Scenario: Signed in user proposes new organisation
