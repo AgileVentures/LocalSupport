@@ -28,4 +28,12 @@ Feature: As a member of the public
     And cookies are approved
     And I should see 18 markers in the map
 
+    @javascript
+    Scenario: See a list of current doit volunteer opportunities
+      Given that the doit_volunteer_opportunities flag is enabled
+      Given I visit the volunteer opportunities page
+      And cookies are approved
+      Then the index should contain:
+      | Scout Leader (volunteering with 10-14 year olds) 27th Harrow              | By Volunteering to work with scouts, you will be responsible, along with the other leaders, helpers and members for planning and running the weekly ...    | Scouts - Scout Association - Greater London Region               |
+
 
