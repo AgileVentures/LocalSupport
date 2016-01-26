@@ -1,5 +1,6 @@
 class CreateProposedOrganisationEdits < ActiveRecord::Migration
-  def change
+  def up
+
     create_table :proposed_organisation_edits do |t|
       t.references :organisation
       t.string   "name"
@@ -14,10 +15,14 @@ class CreateProposedOrganisationEdits < ActiveRecord::Migration
     end
 
     Feature.create(name: :automated_propose_org)
+
   end
 
   def down
-    Feature.delete(name: :automated_propose_org)
     drop_table :proposed_organisation_edits
+
+    Feature.find_by(name: :automated_propose_org).destroy
+
   end
+
 end
