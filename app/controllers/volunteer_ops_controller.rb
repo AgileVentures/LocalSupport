@@ -17,6 +17,7 @@ class VolunteerOpsController < ApplicationController
       collect_all_items(host, href, @doit_orgs)
       doit_markers = build_map_markers(@doit_orgs, :doit, false)
       @markers = harrow_markers[0...-1]+', ' + doit_markers[1..-1]
+      @markers = doit_markers if harrow_markers == '[]'
     end
     @markers = harrow_markers if doit_markers == '[]'
   end
