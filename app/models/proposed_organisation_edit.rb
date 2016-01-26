@@ -4,11 +4,6 @@ class ProposedOrganisationEdit < ActiveRecord::Base
 
   acts_as_paranoid
 
-  validates_format_of :donation_info, :allow_blank => true,
-    :with => /^(?:http:\/\/|https:\/\/|)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix, :multiline => true, :message => "Please enter a valid URL"
-  validates_format_of :website, :allow_blank => true,
-    :with => /^(?:http:\/\/|https:\/\/|)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix, :multiline => true, :message => "Please enter a valid URL"
-
   belongs_to :organisation
   belongs_to :editor, :class_name => "User", :foreign_key => "user_id"
   include ProposesEdits
@@ -18,6 +13,12 @@ class ProposedOrganisationEdit < ActiveRecord::Base
   non_public_fields_editable_by :siteadmin
   non_public_fields_viewable_by :siteadmin, :superadmin
   scope :still_pending, ->{where(archived: false)}
+
+  validates_format_of :donation_info, :allow_blank => true,
+    :with => /^(?:http:\/\/|https:\/\/|)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix, :multiline => true, :message => "Please enter a valid URL"
+  validates_format_of :website, :allow_blank => true,
+    :with => /^(?:http:\/\/|https:\/\/|)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix, :multiline => true, :message => "Please enter a valid URL"
+
 
   def add_url_protocol
       self.website = "http://#{self.website}" if needs_url_protocol? self.website
