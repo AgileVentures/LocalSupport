@@ -28,3 +28,6 @@ user.confirmed_at = DateTime.now
 user.siteadmin = true
 user.save!
 
+3.times do |n|
+  VolunteerOp.create(description: "This is a test#{n}", title: "Test#{n}", organisation_id: "#{1 + n}")
+end

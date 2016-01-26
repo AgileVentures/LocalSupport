@@ -1,3 +1,8 @@
+
+Given /^I should see (\d+) markers in the map$/ do |num|
+  expect(page).to have_css('.vol_op', count: num)
+end
+
 And(/^I submit a volunteer op "(.*?)", "(.*?)" on the "(.*?)" page$/) do |title, desc, org_name|
   org = Organisation.find_by_name(org_name)
   visit organisation_path org

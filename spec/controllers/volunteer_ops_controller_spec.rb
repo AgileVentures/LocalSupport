@@ -1,5 +1,12 @@
 require 'rails_helper'
 describe VolunteerOpsController, :type => :controller do
+
+  before :each do
+    stub_request(:get, "https://api.do-it.org/v1/opportunities?lat=51.5978&lng=-0.3370&miles=0.5").
+       with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+       to_return(:status => 200, :body => "", :headers => {})
+  end
+
   it "should render template two column with map layout"  do
     get :index
     expect(response).to render_template 'index'
@@ -45,6 +52,12 @@ describe VolunteerOpsController, :type => :controller do
   end
 
   describe 'GET index' do
+    before :each do
+      stub_request(:get, "https://api.do-it.org/v1/opportunities?lat=51.5978&lng=-0.3370&miles=0.5").
+         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+         to_return(:status => 200, :body => "", :headers => {})
+    end
+
     it 'assigns all volunteer_ops as @volunteer_ops' do
       expect {
         create(:volunteer_op, organisation: create(:organisation))
