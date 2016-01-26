@@ -90,3 +90,16 @@ I want to be able to propose edits to inaccurate organisation listings
       | donation_info | http://www.donate.com                 | www.pleasedonate.com  |
     And I should not see a link or button "Accept Edit"
     And I should not see a link or button "Reject Edit"
+
+  Scenario: Propose an edit with an invalid website
+    Given I visit the home page
+    And I sign in as "registered_user-2@example.com" with password "pppppppp"
+    And I visit the show page for the organisation named "Really Friendly"
+    And I click "Propose an edit"
+    Then I should be on the new organisation proposed edit page for the organisation named "Really Friendly"
+    When I propose the following edit:
+      | name         | description            | website               | email                      |  address         | postcode | telephone | donation_info  |
+      | Unfriendly   | Mourning loved ones    | ##invalid_url | newemail@friendly.xx       |  124 Pinner Road | HA8 7TB  | 88888888  | www.pleasedonate.com |
+
+    And I press "Propose this edit"
+    Then I should see "Please enter a valid URL"
