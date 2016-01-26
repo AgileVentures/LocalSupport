@@ -10,7 +10,7 @@ migration_file_name =
       join('db/migrate/*_add_link_visible_flag_to_page.rb')].first
 require migration_file_name
 
-
+ActiveRecord::Migration.verbose = false
 
 describe AddLinkVisibleFlagToPage do
 
