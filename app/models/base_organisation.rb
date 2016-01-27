@@ -5,7 +5,7 @@ class BaseOrganisation < ActiveRecord::Base
   validates_url :website, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.website.present?}
   validates_url :donation_info, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.donation_info.present?}
   validates :name, presence: true
-  validates :email, email: true
+  validates :email, allow_blank: true, email: true
   has_many :category_organisations, :foreign_key => :organisation_id
   has_many :categories, :through => :category_organisations, :foreign_key => :organisation_id
   accepts_nested_attributes_for :category_organisations,
