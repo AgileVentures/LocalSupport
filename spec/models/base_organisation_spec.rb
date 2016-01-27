@@ -43,7 +43,7 @@ describe BaseOrganisation, type: :model do
       end
 
       it 'should have a unique email address' do
-        FactoryGirl.build(:organisation)
+        FactoryGirl.create(:organisation)
         expect(FactoryGirl.build(:organisation, name: 'Awesome charity')).not_to be_valid
       end
     end
