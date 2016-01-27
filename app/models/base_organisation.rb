@@ -3,8 +3,8 @@ class BaseOrganisation < ActiveRecord::Base
 
   acts_as_paranoid
 
-  validates :name, :description, :email, :postcode, presence: true
-  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+  validates :name, :description, :postcode, presence: true
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }, uniqueness: true, presence: true
   validates_format_of :donation_info, :allow_blank => true,
     :with => /^(?:http:\/\/|https:\/\/|)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix, :multiline => true, :message => "Please enter a valid URL"
   validates_format_of :website, :allow_blank => true,
