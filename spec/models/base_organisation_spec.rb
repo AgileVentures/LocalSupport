@@ -41,6 +41,11 @@ describe BaseOrganisation, type: :model do
       it 'should have a valid email' do
         expect(FactoryGirl.build(:organisation, email: 'invalid.email')).not_to be_valid
       end
+
+      it 'should have a unique email address' do
+        FactoryGirl.build(:organisation)
+        expect(FactoryGirl.build(:organisation, name: 'Awesome charity')).not_to be_valid
+      end
     end
   end
 
