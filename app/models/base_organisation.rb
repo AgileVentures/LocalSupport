@@ -1,24 +1,3 @@
-class PostcodeValidator < ActiveModel::EachValidator
-  def validate_each(record, attribute, value)
-    record.errors.add attribute, (options[:message] || "Please enter a valid postcode") unless
-          value =~ /\A([A-PR-UWYZ]([0-9]{1,2}|([A-HK-Y][0-9]|[A-HK-Y][0-9]([0-9]|[ABEHMNPRV-Y]))|[0-9][A-HJKS-UW])\s?[0-9][ABD-HJLNP-UW-Z]{2}|(GIR\ 0AA)|(SAN\ TA1)|(BFPO\ (C\/O\ )?[0-9]{1,4})|((ASCN|BBND|[BFS]IQQ|PCRN|STHL|TDCU|TKCA)\ 1ZZ))\z/i  
-  end
-end
-
-class EmailValidator < ActiveModel::EachValidator
-  def validate_each(record, attribute, value)
-    record.errors.add attribute, (options[:message] || "Please enter a valid email") unless
-          value =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-  end
-end
-
-class UrlValidator < ActiveModel::EachValidator
-  def validate_each(record, attribute, value)
-    record.errors.add attribute, (options[:message] || "Please enter a valid URL") unless
-          value =~ /\A(?:http:\/\/|https:\/\/|)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?\z/ix
-  end
-end
-
 class BaseOrganisation < ActiveRecord::Base
   include ActiveModel::Validations
 
@@ -34,8 +13,7 @@ class BaseOrganisation < ActiveRecord::Base
 
   has_many :category_organisations, :foreign_key => :organisation_id
   has_many :categories, :through => :category_organisations, :foreign_key => :organisation_id
-  accepts_nested_attributes_for :category_organisations,
-    :allow_destroy => true
+  accepts_nested_attributes_for :category_organisations, :allow_destroy => true
   # For the geocoder gem
   geocoded_by :full_address
   after_validation :geocode, if: -> { run_geocode? }
