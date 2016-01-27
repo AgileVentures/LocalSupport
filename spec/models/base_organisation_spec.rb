@@ -5,6 +5,15 @@ describe BaseOrganisation, type: :model do
     it 'should have a valid factory' do
       expect(FactoryGirl.build(:organisation)).to be_valid
     end 
+    
+    context 'website and donation_info url' do
+      it 'is not required' do
+        expect(FactoryGirl.build(:organisation, website: '', donation_info: '')).to be_valid
+      end
+      it 'should be a valid url' do
+        expect(FactoryGirl.build(:organisation, website: '##')).not_to be_valid
+      end
+    end
   end
 
   describe '#has_been_updated_recently?' do
