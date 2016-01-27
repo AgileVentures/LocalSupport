@@ -82,8 +82,9 @@ gem 'unicorn'
 # To use markdown in editing static pages
 gem 'redcarpet'
 
-# validating organisation website URLs
+# validating form fields 
 gem 'url_validator'
+gem 'valid_email'
 
 
 gem 'rails_autolink'

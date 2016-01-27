@@ -1,6 +1,20 @@
 require 'rails_helper'
 
 describe BaseOrganisation, type: :model do
+  describe '#validation' do
+    it 'should have a valid factory' do
+      expect(FactoryGirl.build(:organisation)).to be_valid
+    end 
+
+    it 'is should have name' do
+      expect(FactoryGirl.build(:organisation, name: '')).not_to be_valid
+    end
+
+    it 'optional email should be valid' do
+      expect(FactoryGirl.build(:organisation, email: 'invalid.email')).not_to be_valid
+    end
+  end
+
   describe '#has_been_updated_recently?' do
     subject { FactoryGirl.create(:organisation, updated_at: Time.now) }
 
