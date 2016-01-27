@@ -70,6 +70,7 @@ Given /^I sign in as "(.*?)" with password "(.*?)"( with javascript)?$/ do |emai
   fill_in "user_password", :with => password
   if js
     page.find("#signin").trigger("click")
+    sleep 0.5
   else
     click_link_or_button "Sign in"
   end

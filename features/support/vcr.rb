@@ -2,6 +2,7 @@ VCR.configure do |config|
   config.ignore_localhost = true
   config.cassette_library_dir = "features/vcr_cassettes"
   config.hook_into :webmock
+  config.debug_logger = File.open('vcr.log', 'w')
   config.default_cassette_options = { record: :new_episodes }
   config.ignore_request do |request|
     request.headers.include?('Referer')
