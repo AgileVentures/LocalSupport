@@ -28,6 +28,9 @@ describe BaseOrganisation, type: :model do
       it 'should have a description' do
         expect(FactoryGirl.build(:organisation, description: '')).not_to be_valid
       end
+      it 'should have at least three characters' do
+        expect(FactoryGirl.build(:organisation, description: 'ab')).not_to be_valid
+      end
     end
 
     context 'postcode' do
