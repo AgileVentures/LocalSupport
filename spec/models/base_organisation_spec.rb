@@ -19,6 +19,9 @@ describe BaseOrganisation, type: :model do
       it 'should have a name' do
         expect(FactoryGirl.build(:organisation, name: '')).not_to be_valid
       end
+      it 'should have at least three characters' do
+        expect(FactoryGirl.build(:organisation, name: 'ab')).not_to be_valid
+      end
     end 
 
     context 'description' do
