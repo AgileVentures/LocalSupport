@@ -82,9 +82,5 @@ gem 'unicorn'
 # To use markdown in editing static pages
 gem 'redcarpet'
 
-# validating organisation website URLs
-gem 'url_validator'
-
-
 gem 'rails_autolink'
 gem "paranoia", "~> 2.0"
