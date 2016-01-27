@@ -29,6 +29,12 @@ describe BaseOrganisation, type: :model do
         expect(FactoryGirl.build(:organisation, email: '')).not_to be_valid
       end
     end
+
+    context 'email' do
+      it 'should have a valid email' do
+        expect(FactoryGirl.build(:organisation, email: 'invalid.email')).not_to be_valid
+      end
+    end
   end
 
   describe '#has_been_updated_recently?' do
