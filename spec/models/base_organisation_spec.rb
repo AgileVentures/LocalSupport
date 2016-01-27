@@ -37,6 +37,9 @@ describe BaseOrganisation, type: :model do
       it 'should have a postcode' do
         expect(FactoryGirl.build(:organisation, postcode: '')).not_to be_valid
       end
+      it 'should have a valid postcode' do
+        expect(FactoryGirl.build(:organisation, postcode: 'ABD542')).not_to be_valid
+      end
     end
 
     context 'email' do
