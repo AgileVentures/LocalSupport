@@ -16,7 +16,7 @@ describe BaseOrganisation, type: :model do
     end
 
     context 'name' do
-      it 'should have a name' do
+      it 'is required' do
         expect(FactoryGirl.build(:organisation, name: '')).not_to be_valid
       end
       it 'should have at least three characters' do
@@ -25,7 +25,7 @@ describe BaseOrganisation, type: :model do
     end 
 
     context 'description' do
-      it 'should have a description' do
+      it 'is required' do
         expect(FactoryGirl.build(:organisation, description: '')).not_to be_valid
       end
       it 'should have at least three characters' do
@@ -34,7 +34,7 @@ describe BaseOrganisation, type: :model do
     end
 
     context 'postcode' do
-      it 'should have a postcode' do
+      it 'is required' do
         expect(FactoryGirl.build(:organisation, postcode: '')).not_to be_valid
       end
       it 'should have a valid postcode' do
@@ -43,7 +43,7 @@ describe BaseOrganisation, type: :model do
     end
 
     context 'email' do
-      it 'should have an email' do
+      it 'is required' do
         expect(FactoryGirl.build(:organisation, email: '')).not_to be_valid
       end
 
