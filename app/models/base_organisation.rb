@@ -49,8 +49,8 @@ class BaseOrganisation < ActiveRecord::Base
   end
 
   def add_url_protocol
-    self.website = "http://#{self.website}" if needs_url_protocol? self.website
-    self.donation_info = "http://#{self.donation_info}" if needs_url_protocol? self.donation_info
+    self.website.prepend('http://') if needs_url_protocol? self.website
+    self.donation_info.prepend('http://') if needs_url_protocol? self.donation_info
   end
 
   private
