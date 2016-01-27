@@ -1,8 +1,6 @@
 class BaseOrganisation < ActiveRecord::Base
   include ActiveModel::Validations
 
-  before_validation :add_url_protocol
-
   acts_as_paranoid
 
   validates :postcode, presence: true, postcode: true
@@ -46,19 +44,5 @@ class BaseOrganisation < ActiveRecord::Base
 
   def has_been_updated_recently?
     updated_at >= 1.year.ago
-  end
-
-  def add_url_protocol
-    self.website.prepend('http://') if needs_url_protocol? self.website
-    self.donation_info.prepend('http://') if needs_url_protocol? self.donation_info
-  end
-
-  private
-  def needs_url_protocol? url
-    !valid_url_with_protocol?(url) && url.length > 0
-  end
-
-  def valid_url_with_protocol? url
-    url[/\Ahttp:\/\//] || url[/\Ahttps:\/\//]
   end
 end
