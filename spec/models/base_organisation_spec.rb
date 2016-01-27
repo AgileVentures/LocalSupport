@@ -6,10 +6,9 @@ describe BaseOrganisation, type: :model do
       expect(FactoryGirl.build(:organisation)).to be_valid
     end 
 
-     it 'is should have name' do
-        expect(FactoryGirl.build(:organisation, name: '')).not_to be_valid
-      end
-    end 
+    it 'is should have name' do
+      expect(FactoryGirl.build(:organisation, name: '')).not_to be_valid
+    end
   end
 
   describe '#has_been_updated_recently?' do
