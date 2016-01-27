@@ -6,8 +6,11 @@ describe BaseOrganisation, type: :model do
       expect(FactoryGirl.build(:organisation)).to be_valid
     end 
 
-    it 'is should have name' do
+    it 'should have a name' do
       expect(FactoryGirl.build(:organisation, name: '')).not_to be_valid
+    end
+    it 'should have a description' do
+      expect(FactoryGirl.build(:organisation, description: '')).not_to be_valid
     end
   end
 
