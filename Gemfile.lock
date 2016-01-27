@@ -303,6 +303,9 @@ GEM
     url_validator (0.1.0)
       addressable
       rails
+    valid_email (0.0.12)
+      activemodel
+      mail (~> 2.6.1)
     warden (1.2.3)
       rack (>= 1.0)
     webmock (1.20.0)
@@ -364,7 +367,8 @@ DEPENDENCIES
   unicorn
   uri-handler
   url_validator
+  valid_email
   webmock (= 1.20.0)
 
 BUNDLED WITH
-   1.10.5
+   1.11.2
