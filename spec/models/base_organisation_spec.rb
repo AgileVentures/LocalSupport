@@ -14,6 +14,21 @@ describe BaseOrganisation, type: :model do
         expect(FactoryGirl.build(:organisation, website: '##')).not_to be_valid
       end
     end
+
+    context 'required fields: name, description, postcode, email' do
+      it 'should have a name' do
+        expect(FactoryGirl.build(:organisation, name: '')).not_to be_valid
+      end
+      it 'should have a description' do
+        expect(FactoryGirl.build(:organisation, description: '')).not_to be_valid
+      end
+      it 'should have a postcode' do
+        expect(FactoryGirl.build(:organisation, postcode: '')).not_to be_valid
+      end
+      it 'should have an email' do
+        expect(FactoryGirl.build(:organisation, email: '')).not_to be_valid
+      end
+    end
   end
 
   describe '#has_been_updated_recently?' do
