@@ -1,6 +1,63 @@
 require 'rails_helper'
 
 describe BaseOrganisation, type: :model do
+  describe '#validation' do
+    it 'should have a valid factory' do
+      expect(FactoryGirl.build(:organisation)).to be_valid
+    end 
+    
+    context 'website and donation_info url' do
+      it 'is not required' do
+        expect(FactoryGirl.build(:organisation, website: '', donation_info: '')).to be_valid
+      end
+      it 'should be a valid url' do
+        expect(FactoryGirl.build(:organisation, website: '##')).not_to be_valid
+      end
+    end
+
+    context 'name' do
+      it 'is required' do
+        expect(FactoryGirl.build(:organisation, name: '')).not_to be_valid
+      end
+      it 'should have at least three characters' do
+        expect(FactoryGirl.build(:organisation, name: 'ab')).not_to be_valid
+      end
+    end 
+
+    context 'description' do
+      it 'is required' do
+        expect(FactoryGirl.build(:organisation, description: '')).not_to be_valid
+      end
+      it 'should have at least three characters' do
+        expect(FactoryGirl.build(:organisation, description: 'ab')).not_to be_valid
+      end
+    end
+
+    context 'postcode' do
+      it 'is required' do
+        expect(FactoryGirl.build(:organisation, postcode: '')).not_to be_valid
+      end
+      it 'should have a valid postcode' do
+        expect(FactoryGirl.build(:organisation, postcode: 'ABD542')).not_to be_valid
+      end
+    end
+
+    context 'email' do
+      it 'is required' do
+        expect(FactoryGirl.build(:organisation, email: '')).not_to be_valid
+      end
+
+      it 'should have a valid email' do
+        expect(FactoryGirl.build(:organisation, email: 'invalid.email')).not_to be_valid
+      end
+
+      it 'should have a unique email address' do
+        FactoryGirl.create(:organisation)
+        expect(FactoryGirl.build(:organisation, name: 'Awesome charity')).not_to be_valid
+      end
+    end
+  end
+
   describe '#has_been_updated_recently?' do
     subject { FactoryGirl.create(:organisation, updated_at: Time.now) }
 
@@ -39,5 +96,4 @@ describe BaseOrganisation, type: :model do
       org.save
     end
   end
-
 end

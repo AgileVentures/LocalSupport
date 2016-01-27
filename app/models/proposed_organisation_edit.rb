@@ -1,6 +1,15 @@
 require 'proposes_edits'
 class ProposedOrganisationEdit < ActiveRecord::Base
+  include ActiveModel::Validations
+
   acts_as_paranoid
+
+  validates :postcode, presence: true, postcode: true
+  validates :name, presence: true, length: { minimum: 3 }
+  validates :description, presence: true, length: { minimum: 3 }
+  validates :email, uniqueness: true, presence: true, email: true
+  validates :website, :donation_info, allow_blank: true, url: true
+
   belongs_to :organisation
   belongs_to :editor, :class_name => "User", :foreign_key => "user_id"
   include ProposesEdits
