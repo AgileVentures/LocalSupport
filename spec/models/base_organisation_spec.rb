@@ -96,24 +96,4 @@ describe BaseOrganisation, type: :model do
       org.save
     end
   end
-
-  describe '#add_url_protocol' do
-    it 'should add the url protocol if absent' do
-      org = FactoryGirl.create(:organisation, :website => 'friendly.org')
-      org.add_url_protocol
-      expect(org.website).to eq 'http://friendly.org'
-    end
-
-    it 'should leave url unchanged if prototcol present' do
-      org = FactoryGirl.create(:organisation, :website => 'https://www.sup.org')
-      org.add_url_protocol
-      expect(org.website).to eq 'https://www.sup.org'
-    end
-
-    it 'should ignore empty urls' do
-      org = FactoryGirl.create(:organisation, :website => '')
-      org.add_url_protocol
-      expect(org.website).to eq ''
-    end
-  end
 end
