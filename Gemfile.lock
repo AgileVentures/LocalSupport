@@ -300,9 +300,6 @@ GEM
       rack
       raindrops (~> 0.7)
     uri-handler (1.0.2)
-    url_validator (0.1.0)
-      addressable
-      rails
     warden (1.2.3)
       rack (>= 1.0)
     webmock (1.20.0)
@@ -363,8 +360,7 @@ DEPENDENCIES
   underscore-rails
   unicorn
   uri-handler
-  url_validator
   webmock (= 1.20.0)
 
 BUNDLED WITH
-   1.10.5
+   1.11.2
