@@ -4,6 +4,10 @@ describe BaseOrganisation, type: :model do
   describe '#validation' do
     it { is_expected.to validate_presence_of :name }
     it { is_expected.to validate_presence_of :description }
+    it { is_expected.to allow_value('test.com').for(:website) }
+    it { is_expected.to allow_value('www.test.com').for(:website) }
+    it { is_expected.to allow_value('https://test.co.uk').for(:website) }
+    it { is_expected.not_to allow_value('##').for(:website) }
   end
 
   describe '#has_been_updated_recently?' do
