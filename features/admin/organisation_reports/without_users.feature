@@ -5,12 +5,12 @@ Feature: Orphans UI
 
   Background:
     Given the following organisations exist:
-      | name               | address        | email             | postcode |
-      | The Organisation   | 83 pinner road | no_owner@org.org  | HA1 4HZ  |
-      | The Same Email Org | 84 pinner road | no_owner@org.org  | HA1 4HZ  |
-      | Crazy Email Org    | 30 pinner road | sahjkgdsfsajnfds  | HA1 4HZ  |
-      | My Organisation    | 30 pinner road | superadmin@myorg.com   | HA1 4HZ  |
-      | Yet Another Org    | 30 pinner road | superadmin@another.org | HA1 4HZ  |
+      | name               | description    | address        | email             | postcode |
+      | The Organisation   | Awesome people | 83 pinner road | no_owner@org.org  | HA1 4HZ  |
+      | The Same Email Org | Awesome people | 84 pinner road | no_owner@org.org  | HA1 4HZ  |
+      | Crazy Email Org    | Awesome people | 30 pinner road | sahjkgdsfsajnfds  | HA1 4HZ  |
+      | My Organisation    | Awesome people | 30 pinner road | superadmin@myorg.com   | HA1 4HZ  |
+      | Yet Another Org    | Awesome people | 30 pinner road | superadmin@another.org | HA1 4HZ  |
     And the following users are registered:
       | email                 | password       | superadmin | confirmed_at        | organisation    | pending_organisation |
       | nonsuperadmin@myorg.com    | mypassword1234 | false | 2008-01-01 00:00:00 |                 |                      |
