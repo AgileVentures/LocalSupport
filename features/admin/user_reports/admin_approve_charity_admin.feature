@@ -7,8 +7,8 @@ Feature: All Users Page
 
   Background:
     Given the following organisations exist:
-      | name            | description    | address        | postcode |
-      | My Organisation | Awesome people | 83 pinner road | HA1 4HZ  |
+      | name            | address        | postcode |
+      | My Organisation | 83 pinner road | HA1 4HZ  |
     And the following users are registered:
       | email                   | password            | superadmin | confirmed_at        | organisation    | pending_organisation |
       | nonsuperadmin@myorg.com | mypassword1234      | false      | 2008-01-01 00:00:00 |                 |                      |
