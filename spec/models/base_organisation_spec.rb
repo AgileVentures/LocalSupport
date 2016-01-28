@@ -2,13 +2,7 @@ require 'rails_helper'
 
 describe BaseOrganisation, type: :model do
   describe '#validation' do
-    it 'should have a valid factory' do
-      expect(FactoryGirl.build(:organisation)).to be_valid
-    end 
-
-    it 'is should have name' do
-      expect(FactoryGirl.build(:organisation, name: '')).not_to be_valid
-    end
+    it { is_expected.to validate_presence_of :name }
   end
 
   describe '#has_been_updated_recently?' do
