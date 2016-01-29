@@ -28,7 +28,11 @@ user.confirmed_at = DateTime.now
 user.siteadmin = true
 user.save!
 
-Feature.find(name: :volunteer_ops_create).activate
-Feature.find(name: :volunteer_ops_list).activate
-Feature.find(name: :automated_propose_org).activate
-Feature.find(name: :search_input_bar_on_org_pages).activate
+3.times do |n|
+  VolunteerOp.create(description: "This is a test#{n}", title: "Test#{n}", organisation_id: "#{1 + n}")
+end
+
+# Feature.find(name: :volunteer_ops_create).activate
+# Feature.find(name: :volunteer_ops_list).activate
+# Feature.find(name: :automated_propose_org).activate
+# Feature.find(name: :search_input_bar_on_org_pages).activate
