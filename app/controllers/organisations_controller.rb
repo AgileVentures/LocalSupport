@@ -69,6 +69,7 @@ class OrganisationsController < BaseOrganisationsController
        redirect_to organisations_path and return false
      end
     @organisation = Organisation.new(org_params)
+    @categories_start_with = Category.first_category_name_in_each_type
 
     if @organisation.save
       redirect_to @organisation, notice: 'Organisation was successfully created.'
