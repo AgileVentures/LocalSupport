@@ -84,12 +84,14 @@ end
 
 Given (/^I fill in the new charity page validly$/) do
   fill_in 'organisation_address', :with => '64 pinner road'
+  fill_in 'organisation_description', :with => 'This is an awesome charity'
   fill_in 'organisation_name', :with => 'Friendly charity'
   fill_in 'organisation_postcode', :with => 'HA1 4HZ'
 end
 
 Given (/^I fill in the new charity page validly including the categories:$/) do |categories_table|
   fill_in 'organisation_address', :with => '64 pinner road'
+  fill_in 'organisation_description', :with => 'This is an awesome charity'
   fill_in 'organisation_name', :with => 'Friendly charity'
   fill_in 'organisation_postcode', :with => 'HA1 4HZ'
   categories_table.hashes.each do |cat|
