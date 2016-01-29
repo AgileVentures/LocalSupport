@@ -27,15 +27,15 @@ Feature: Super Admin creating charity
     And cookies are approved
 
   Scenario: Unsuccessfully attempt to create charity without being signed-in
-      # should this be checking for absence of link to the new org page?
+    # should this be checking for absence of link to the new org page?
     Given I visit the new organisation page
     Then I should be on the sign in page
 
-# beta version only allows superadmin to create new organisation, currently
-# we only show link to superadmin, and are waiting on proper enforcement feature
-# TODO get scenario as following commented one
+    # beta version only allows superadmin to create new organisation, currently
+    # we only show link to superadmin, and are waiting on proper enforcement feature
+    # TODO get scenario as following commented one
 
-  #Scenario: Unsuccessfully attempt to create charity when signed-in as non-superadmin
+    #Scenario: Unsuccessfully attempt to create charity when signed-in as non-superadmin
     ## should this be checking for absence of link to the new org page?
     #Given I am signed in as a non-superadmin
     #Given I visit the new organisation page
@@ -46,14 +46,21 @@ Feature: Super Admin creating charity
     And I have created a new organisation
     Then I should see "Organisation was successfully created."
 
+  Scenario: Get validation error creating new charity while being signed-in as superadmin
+    Given I am signed in as a superadmin
+    And I visit the home page
+    And I follow "New Organisation"
+    And I press "Create Organisation"
+    Then I should see "Organisation name and description are required."
+
   Scenario: Successfully create charity while being signed-in as superadmin from arbitrary page
     Given I am signed in as a superadmin
     Given I visit the show page for the organisation named "Friendly Clone"
     And I follow "New Organisation"
     And I fill in the new charity page validly including the categories:
-    | name           |
-    | Feed the hungry|
-    | Accommodation  |
+      | name           |
+      | Feed the hungry|
+      | Accommodation  |
     And I press "Create Organisation"
     Then I should see "Organisation was successfully created."
     And I should see "Feed the hungry"
