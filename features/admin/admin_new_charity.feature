@@ -51,7 +51,8 @@ Feature: Super Admin creating charity
     And I visit the home page
     And I follow "New Organisation"
     And I press "Create Organisation"
-    Then I should see "Organisation name and description are required."
+    Then I should see "Name can't be blank"
+    Then I should see "Description can't be blank"
 
   Scenario: Successfully create charity while being signed-in as superadmin from arbitrary page
     Given I am signed in as a superadmin
