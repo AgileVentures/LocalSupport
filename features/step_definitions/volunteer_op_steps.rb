@@ -23,3 +23,7 @@ Given /^I update "(.*?)" volunteer op description to be "(.*?)"$/ do |title, des
   fill_in('Description', :with => description)
   click_on 'Update a Volunteer Opportunity'
 end
+
+Given /^I should see (\d+) markers in the map$/ do |num|
+  expect(page).to have_css('.vol_op', count: num)
+end
