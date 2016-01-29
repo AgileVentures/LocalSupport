@@ -74,6 +74,7 @@ class OrganisationsController < BaseOrganisationsController
     if @organisation.save
       redirect_to @organisation, notice: 'Organisation was successfully created.'
     else
+      flash[:error] = "Organisation name and description are required."
       render action: "new"
     end
   end
