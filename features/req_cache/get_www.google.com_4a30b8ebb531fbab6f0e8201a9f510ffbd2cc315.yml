@@ -6,8 +6,8 @@
 :method: get
 :headers:
   Content-Type: image/gif
-  Date: Sat, 23 Jan 2016 23:36:15 GMT
-  Expires: Sat, 23 Jan 2016 23:36:15 GMT
+  Date: Wed, 27 Jan 2016 21:50:36 GMT
+  Expires: Wed, 27 Jan 2016 21:50:36 GMT
   Cache-Control: private, max-age=31536000
   Last-Modified: Mon, 02 Apr 2012 02:13:37 GMT
   X-Content-Type-Options: nosniff

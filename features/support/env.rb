@@ -33,6 +33,11 @@ Capybara.default_selector = :css
 Capybara.default_wait_time = 3
 
 Capybara.javascript_driver = :webkit
+Capybara::Webkit.configure do |config|
+ #config.debug = true
+ config.block_unknown_urls
+ #config.allow_url("google.com/*")
+end
 
 Billy.configure do |c|
   c.cache = true

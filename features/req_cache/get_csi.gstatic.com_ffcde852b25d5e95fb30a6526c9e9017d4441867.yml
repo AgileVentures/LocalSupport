@@ -1,0 +1,18 @@
+---
+:scope: 
+:url: http://csi.gstatic.com/csi?v=2&s=mapsapi3&action=apiboot&rt=jl.13,mc.164,mb.231,ep.1914,smv.1918,dm.1918,prt.1918,plt.1767,vt.1940,mt.1941&size=446x400&maptype=m
+:body: ''
+:status: 204
+:method: get
+:headers:
+  Access-Control-Allow-Origin: '*'
+  Date: Sat, 30 Jan 2016 19:32:22 GMT
+  Pragma: no-cache
+  Expires: Fri, 01 Jan 1990 00:00:00 GMT
+  Cache-Control: no-cache, no-store, must-revalidate
+  Last-Modified: Wed, 21 Jan 2004 19:51:30 GMT
+  Content-Type: image/gif
+  Server: Golfe2
+  Content-Length: '0'
+  Connection: close
+:content: ''

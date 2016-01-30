@@ -7,13 +7,13 @@
 :headers:
   Vary: Accept-Encoding
   Content-Type: text/javascript
-  Date: Thu, 21 Jan 2016 16:31:39 GMT
-  Expires: Fri, 20 Jan 2017 16:31:39 GMT
+  Date: Mon, 11 Jan 2016 10:34:12 GMT
+  Expires: Tue, 10 Jan 2017 10:34:12 GMT
   Last-Modified: Wed, 11 Nov 2015 12:39:04 GMT
   X-Content-Type-Options: nosniff
   Server: sffe
   X-XSS-Protection: 1; mode=block
-  Age: '198271'
+  Age: '1422980'
   Cache-Control: public, max-age=31536000
   Accept-Ranges: none
   Connection: close

@@ -5,8 +5,8 @@
 :status: 200
 :method: get
 :headers:
-  Date: Thu, 21 Jan 2016 16:03:01 GMT
-  Expires: Tue, 04 Oct 2016 20:53:23 GMT
+  Date: Fri, 22 Jan 2016 05:51:53 GMT
+  Expires: Wed, 05 Oct 2016 10:42:15 GMT
   Access-Control-Allow-Origin: '*'
   Content-Type: image/png
   X-Content-Type-Options: nosniff
@@ -15,7 +15,7 @@
   X-XSS-Protection: 1; mode=block
   X-Frame-Options: SAMEORIGIN
   Cache-Control: public, max-age=22222222
-  Age: '199989'
+  Age: '489520'
   Connection: close
 :content: !binary |-
   iVBORw0KGgoAAAANSUhEUgAAABYAAAAoCAMAAADNGvrUAAAACXBIWXMAAAAc

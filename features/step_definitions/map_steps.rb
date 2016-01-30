@@ -61,14 +61,15 @@ def markers
 end
 
 def marker_json_for_org_names(*org_names)
-  marker_json = JSON.parse markers
-  [*org_names].map do |name|
-    marker_json.find{|m| m['infowindow'].include? name }
-  end
+    marker_json = JSON.parse markers
+    [*org_names].map do |name|
+      marker_json.find{|m| m['infowindow'].include? name }
+    end
 end
 
 Then /^the coordinates for "(.*?)" and "(.*?)" should( not)? be the same/ do | org1_name, org2_name, negation|
   org1, org2 = marker_json_for_org_names(org1_name, org2_name)
+  #byebug
   if negation
     expect(org1['lat']).not_to eq org2['lat']
     expect(org1['lng']).not_to eq org2['lng']

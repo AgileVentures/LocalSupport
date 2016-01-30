@@ -21,9 +21,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Sat, 23 Jan 2016 21:59:00 GMT
+      - Wed, 27 Jan 2016 21:52:55 GMT
       Expires:
-      - Sun, 24 Jan 2016 21:59:00 GMT
+      - Thu, 28 Jan 2016 21:52:55 GMT
       Cache-Control:
       - public, max-age=86400
       Access-Control-Allow-Origin:
@@ -114,5 +114,5 @@ http_interactions:
            "status" : "OK"
         }
     http_version: 
-  recorded_at: Sat, 23 Jan 2016 21:59:00 GMT
+  recorded_at: Wed, 27 Jan 2016 21:52:55 GMT
 recorded_with: VCR 2.9.3

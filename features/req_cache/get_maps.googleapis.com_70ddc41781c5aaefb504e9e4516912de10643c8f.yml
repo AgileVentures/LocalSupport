@@ -1,0 +1,20 @@
+---
+:scope: 
+:url: http://maps.googleapis.com/maps/api/js/AuthenticationService.Authenticate?1shttp%3A%2F%2F127.0.0.1%3A50785%2Forganisations%2F4&callback=_xdc_._cw9h2m&token=16073
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: text/javascript; charset=UTF-8
+  Date: Wed, 27 Jan 2016 22:17:09 GMT
+  Pragma: no-cache
+  Expires: Fri, 01 Jan 1990 00:00:00 GMT
+  Cache-Control: no-cache, must-revalidate
+  Content-Disposition: attachment
+  Server: mafe
+  X-XSS-Protection: 1; mode=block
+  X-Frame-Options: SAMEORIGIN
+  Accept-Ranges: none
+  Vary: Accept-Encoding
+  Connection: close
+:content: /**/_xdc_._cw9h2m && _xdc_._cw9h2m( [1,null,0] )

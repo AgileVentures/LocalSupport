@@ -36,7 +36,7 @@ Feature: Orphans UI
     And I visit the invite users to become admin of organisations page
     Then I should not see "Yet Another Org"
 
-  @javascript @billy
+  @javascript  
   Scenario: Super Admin should be notified when email is invalid
     Given cookies are approved
     Given I am signed in as a superadmin
