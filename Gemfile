@@ -46,6 +46,7 @@ group :test do
   gem 'selenium'
   gem 'selenium-client'
   gem 'coveralls', require: false
+  gem 'rspec-activemodel-mocks'
 end
 
 group :production do
