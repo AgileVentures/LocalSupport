@@ -355,7 +355,6 @@ end
 Given /^I update "(.*?)" charity postcode to be "(.*?)"$/ do |name, postcode|
   steps %Q{And I visit the edit page for the organisation named "#{name}"}
   fill_in('organisation_postcode', :with => postcode)
-  #byebug
   click_button 'Update Organisation'
 end
 
