@@ -13,6 +13,7 @@ I want to be able to propose edits to inaccurate organisation listings, includin
       | siteadmin@example.com | pppppppp |                     | 2007-01-01  10:00:00 | false      | true      |
       | justauser@example.com | pppppppp |                     | 2007-01-01  10:00:00 | false      | false     |
 
+   @vcr
    Scenario: Site admin sees fields marked as private
     Given I am signed in as a siteadmin
     And I visit the show page for the organisation named "Friendly"

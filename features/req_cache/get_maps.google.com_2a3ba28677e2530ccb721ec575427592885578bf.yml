@@ -1,0 +1,22 @@
+---
+:scope: 
+:url: http://maps.google.com/maps/vt?pb=!1m4!1m3!1i12!2i2043!3i1359!1m4!1m3!1i12!2i2044!3i1359!1m4!1m3!1i12!2i2045!3i1359!1m4!1m3!1i12!2i2043!3i1360!1m4!1m3!1i12!2i2043!3i1361!1m4!1m3!1i12!2i2044!3i1360!1m4!1m3!1i12!2i2044!3i1361!1m4!1m3!1i12!2i2045!3i1360!1m4!1m3!1i12!2i2045!3i1361!2m3!1e0!2sm!3i336007949!3m9!2sen-GB!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e3&callback=_xdc_._potcu2&token=103185
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Tue, 02 Feb 2016 12:10:49 GMT
+  Expires: Sun, 16 Oct 2016 17:01:11 GMT
+  Cache-Control: public, max-age=22222222
+  Content-Type: text/javascript; charset=UTF-8
+  X-Content-Type-Options: nosniff
+  Content-Disposition: attachment; filename="f.txt"
+  Server: paintfe
+  X-XSS-Protection: 1; mode=block
+  X-Frame-Options: SAMEORIGIN
+  Accept-Ranges: none
+  Vary: Accept-Encoding
+  Connection: close
+:content: /* API Response */ _xdc_._potcu2 && _xdc_._potcu2([{id:"twvwvwvvwuww",zrange:[12,12],layer:"m@336007949"},{id:"twvwvwvvwwuu",zrange:[12,12],layer:"m@336007949"},{id:"twvwvwvvwwuw",zrange:[12,12],layer:"m@336007949"},{id:"twvwvwvwvtvv",base:[1071140864,713232384],zrange:[12,12],layer:"m@336007949",features:[{id:"10837346827302587422",a:[0,0],bb:[-37,-18,37,-3,-22,-7,23,8,-39,3,40,18],c:"{1:{title:\"Ruislip
+  Woods National Nature Reserve\"},4:{type:1}}"}]},{id:"twvwvwvwvtvw",base:[1071224832,713648128],zrange:[12,12],layer:"m@336007949",features:[{id:"6690458799742309100",a:[0,0,1071224832,713648128,1071224832,713648128],bb:[-7,-7,7,7,-7,-7,7,7,-7,-7,7,7,-73,-7,-5,8],c:"{1:{title:\"RAF
+  Northolt\"},4:{type:1}}"}]},{id:"twvwvwvwvvtt",zrange:[12,12],layer:"m@336007949"},{id:"twvwvwvwvvtu",zrange:[12,12],layer:"m@336007949"},{id:"twvwvwvwvvtv",zrange:[12,12],layer:"m@336007949"},{id:"twvwvwvwvvtw",zrange:[12,12],layer:"m@336007949"}])

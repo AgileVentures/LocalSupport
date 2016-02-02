@@ -16,6 +16,7 @@ Background:
       | title              | description                     | organisation              |
       | Litter Box Scooper | Assist with feline sanitation   | Cats Are Us               |
 
+@vcr
 Scenario:
   Given I am signed in as a superadmin
   When I visit the show page for the volunteer_op titled "Litter Box Scooper"

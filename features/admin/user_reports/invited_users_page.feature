@@ -16,6 +16,7 @@ Feature: Invited Users Page
     And I am signed in as a superadmin
     And I visit the invited users page
 
+  @vcr
   Scenario: Page shows only invited users
     Then I should see "invited@user.org"
     And I should not see "regular@user.org"
@@ -23,7 +24,7 @@ Feature: Invited Users Page
   Scenario: Super Admin can see the preview email
     Then I should see the preview email
 
-  @javascript
+  @javascript @billy
   Scenario: Invitations can be resent
     Given I check the box for "Invited Organisation"
     When I click id "invite_users"

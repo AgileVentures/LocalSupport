@@ -1,0 +1,27 @@
+---
+:scope: 
+:url: http://maps.google.com/maps-api-v3/api/js/21/12/intl/en_gb/overlay.js
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Vary: Accept-Encoding
+  Content-Type: text/javascript
+  Date: Fri, 22 Jan 2016 18:32:34 GMT
+  Expires: Sat, 21 Jan 2017 18:32:34 GMT
+  Last-Modified: Wed, 11 Nov 2015 12:39:04 GMT
+  X-Content-Type-Options: nosniff
+  Server: sffe
+  X-XSS-Protection: 1; mode=block
+  Cache-Control: public, max-age=31536000
+  Age: '927495'
+  Accept-Ranges: none
+  Connection: close
+:content: google.maps.__gjsload__('overlay', '\'use strict\';function ZG(a){this.j=a}Q(ZG,T);Ma(ZG[v],function(a){"outProjection"!=a&&(a=!!(this.get("offset")&&this.get("projectionTopLeft")&&this.get("projection")&&ze(this.get("zoom"))),a==!this.get("outProjection")&&this.set("outProjection",a?this.j:null))});function
+  $G(){}function aH(){var a=this.gm_props_;if(this[vo]()){if(this[Pb]()){if(!a.Rf&&this[pc])this[pc]();a.Rf=!0;this.draw()}}else{if(a.Rf)if(this[Wb])this[Wb]();else
+  this[Ec]();a.Rf=!1}}function bH(a){a.gm_props_=a.gm_props_||new $G;return a.gm_props_}function
+  cH(a){vk[u](this);this.va=O(aH,a)}Q(cH,vk);function dH(){}\ndH[v].dm=function(a){var
+  b=a[Ao](),c=bH(a),d=c.Bg;c.Bg=b;d&&(c=bH(a),(d=c.Ja)&&d[qo](),(d=c.kj)&&d[qo](),a[qo](),a.set("panes",null),a.set("projection",null),R(c.na,S[Sc]),c.na=null,c.vb&&(c.vb.va(),c.vb=null),qs("Ox","-p",a));if(b){c=bH(a);d=c.vb;d||(d=c.vb=new
+  cH(a));R(c.na,S[Sc]);var e=c.Ja=c.Ja||new sr,f=b[vd];e[p]("zoom",f);e[p]("offset",f);e[p]("center",f,"projectionCenterQ");e[p]("projection",b);e[p]("projectionTopLeft",f);e=c.kj=c.kj||new
+  ZG(e);e[p]("zoom",f);e[p]("offset",f);e[p]("projection",\nb);e[p]("projectionTopLeft",f);a[p]("projection",e,"outProjection");a[p]("panes",f);e=O(d.ka,d);c.na=[S[D](a,"panes_changed",e),S[D](f,"zoom_changed",e),S[D](f,"offset_changed",e),S[D](b,"projection_changed",e),S[D](f,"projectioncenterq_changed",e),S[G](b,"forceredraw",d)];d.ka();b
+  instanceof yh&&(ns(b,"Ox"),ps("Ox","-p",a,!!b.oa))}};var eH=new dH;Qh.overlay=function(a){eval(a)};mg("overlay",eH);\n')
