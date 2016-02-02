@@ -7,12 +7,12 @@
 :headers:
   Connection: close
   Server: nginx/1.4.1
-  Date: Wed, 27 Jan 2016 21:48:44 GMT
+  Date: Tue, 02 Feb 2016 12:10:33 GMT
   Content-Type: image/png
   Content-Length: '5047'
   Status: 200 OK
   Strict-Transport-Security: max-age=31536000
-  Last-Modified: Fri, 08 Jan 2016 02:04:36 GMT
+  Last-Modified: Thu, 28 Jan 2016 07:57:29 GMT
   Cache-Control: public, max-age=604800, no-transform
   Via: 1.1 vegur
 :content: !binary |-
