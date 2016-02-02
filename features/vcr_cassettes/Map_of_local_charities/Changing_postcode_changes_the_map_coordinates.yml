@@ -1,0 +1,500 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=84%20pinner%20road,%20HA1%204HA&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 30 Jan 2016 20:51:15 GMT
+      Expires:
+      - Sun, 31 Jan 2016 20:51:15 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - '*'
+      Server:
+      - mafe
+      Content-Length:
+      - '529'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "84",
+                       "short_name" : "84",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Pinner Road",
+                       "short_name" : "Pinner Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Harrow",
+                       "short_name" : "Harrow",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Harrow",
+                       "short_name" : "Harrow",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "HA1 4HZ",
+                       "short_name" : "HA1 4HZ",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "84 Pinner Rd, Harrow, Greater London HA1 4HZ, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.5814584,
+                       "lng" : -0.3472856
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5828073802915,
+                          "lng" : -0.3459366197084979
+                       },
+                       "southwest" : {
+                          "lat" : 51.5801094197085,
+                          "lng" : -0.348634580291502
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJIRtZtW0TdkgRjzYto3pttxw",
+                 "types" : [ "street_address" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Sat, 30 Jan 2016 20:51:15 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=50%20City%20Road,%20E1%206LT&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Tue, 02 Feb 2016 11:33:46 GMT
+      Expires:
+      - Wed, 03 Feb 2016 11:33:46 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - '*'
+      Server:
+      - mafe
+      Content-Length:
+      - '1371'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "50",
+                       "short_name" : "50",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "City Road",
+                       "short_name" : "City Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "London",
+                       "short_name" : "London",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "London",
+                       "short_name" : "London",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "EC1Y 2AN",
+                       "short_name" : "EC1Y 2AN",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "50 City Rd, London EC1Y 2AN, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.52403640000001,
+                       "lng" : -0.08787389999999999
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.52538538029151,
+                          "lng" : -0.08652491970849796
+                       },
+                       "southwest" : {
+                          "lat" : 51.52268741970851,
+                          "lng" : -0.08922288029150202
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJ02ivNa8cdkgRWGP5YvHogLw",
+                 "types" : [ "street_address" ]
+              },
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "Post Office",
+                       "short_name" : "Post Office",
+                       "types" : [ "premise" ]
+                    },
+                    {
+                       "long_name" : "50",
+                       "short_name" : "50",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "City Road",
+                       "short_name" : "City Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Sheffield",
+                       "short_name" : "Sheffield",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Sheffield",
+                       "short_name" : "Sheffield",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "South Yorkshire",
+                       "short_name" : "South Yorkshire",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "S2 5HL",
+                       "short_name" : "S2 5HL",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "Post Office, 50 City Rd, Sheffield, South Yorkshire S2 5HL, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 53.3765799,
+                          "lng" : -1.4520028
+                       },
+                       "southwest" : {
+                          "lat" : 53.3764901,
+                          "lng" : -1.4521408
+                       }
+                    },
+                    "location" : {
+                       "lat" : 53.376535,
+                       "lng" : -1.4520718
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 53.3778839802915,
+                          "lng" : -1.450722819708498
+                       },
+                       "southwest" : {
+                          "lat" : 53.3751860197085,
+                          "lng" : -1.453420780291502
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJ8UAaNZ-CeUgRwEYNLeoDdYo",
+                 "types" : [ "premise" ]
+              },
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "50",
+                       "short_name" : "50",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "City Road",
+                       "short_name" : "City Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Birmingham",
+                       "short_name" : "Birmingham",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Birmingham",
+                       "short_name" : "Birmingham",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "West Midlands",
+                       "short_name" : "West Midlands",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "B16",
+                       "short_name" : "B16",
+                       "types" : [ "postal_code_prefix", "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "50 City Rd, Birmingham, West Midlands B16, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 52.48502569999999,
+                          "lng" : -1.9427032
+                       },
+                       "southwest" : {
+                          "lat" : 52.48501719999999,
+                          "lng" : -1.9427159
+                       }
+                    },
+                    "location" : {
+                       "lat" : 52.48502569999999,
+                       "lng" : -1.9427159
+                    },
+                    "location_type" : "RANGE_INTERPOLATED",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 52.48637043029149,
+                          "lng" : -1.941360569708498
+                       },
+                       "southwest" : {
+                          "lat" : 52.48367246970849,
+                          "lng" : -1.944058530291502
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "Ei01MCBDaXR5IFJkLCBCaXJtaW5naGFtLCBXZXN0IE1pZGxhbmRzIEIxNiwgVUs",
+                 "types" : [ "street_address" ]
+              },
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "50",
+                       "short_name" : "50",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "City Road",
+                       "short_name" : "City Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Stoke-on-Trent",
+                       "short_name" : "Stoke-on-Trent",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Stoke-on-Trent",
+                       "short_name" : "Stoke-on-Trent",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Stoke-on-Trent",
+                       "short_name" : "Stoke-on-Trent",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "ST4 1DP",
+                       "short_name" : "ST4 1DP",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "50 City Rd, Stoke-on-Trent, Stoke-on-Trent ST4 1DP, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 53.0025355,
+                          "lng" : -2.1773404
+                       },
+                       "southwest" : {
+                          "lat" : 53.0025262,
+                          "lng" : -2.177351
+                       }
+                    },
+                    "location" : {
+                       "lat" : 53.0025355,
+                       "lng" : -2.1773404
+                    },
+                    "location_type" : "RANGE_INTERPOLATED",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 53.0038798302915,
+                          "lng" : -2.175996719708498
+                       },
+                       "southwest" : {
+                          "lat" : 53.0011818697085,
+                          "lng" : -2.178694680291502
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "EjY1MCBDaXR5IFJkLCBTdG9rZS1vbi1UcmVudCwgU3Rva2Utb24tVHJlbnQgU1Q0IDFEUCwgVUs",
+                 "types" : [ "street_address" ]
+              },
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "50",
+                       "short_name" : "50",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "City Road",
+                       "short_name" : "City Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Saint Andrews",
+                       "short_name" : "Saint Andrews",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "St Andrews",
+                       "short_name" : "St Andrews",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Fife",
+                       "short_name" : "Fife",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "KY16 9HW",
+                       "short_name" : "KY16 9HW",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "50 City Rd, St Andrews, Fife KY16 9HW, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 56.3410379,
+                          "lng" : -2.8026255
+                       },
+                       "southwest" : {
+                          "lat" : 56.34103409999999,
+                          "lng" : -2.8026429
+                       }
+                    },
+                    "location" : {
+                       "lat" : 56.34103409999999,
+                       "lng" : -2.8026429
+                    },
+                    "location_type" : "RANGE_INTERPOLATED",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 56.34238498029149,
+                          "lng" : -2.801285219708498
+                       },
+                       "southwest" : {
+                          "lat" : 56.33968701970849,
+                          "lng" : -2.803983180291501
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "Eik1MCBDaXR5IFJkLCBTdCBBbmRyZXdzLCBGaWZlIEtZMTYgOUhXLCBVSw",
+                 "types" : [ "street_address" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Tue, 02 Feb 2016 11:33:53 GMT
+recorded_with: VCR 2.9.3

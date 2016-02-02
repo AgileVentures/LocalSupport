@@ -10,6 +10,7 @@ Feature: If new user's email matches an org's email, the new user with have edit
       | Friendly       | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | info@friendly.org |
     And cookies are approved
 
+  @vcr
   Scenario: Sign up and CANNOT edit
     Given I visit the sign up page
     And I sign up as "tester@friendly.org" with password "12345678" and password confirmation "12345678"

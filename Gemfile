@@ -46,6 +46,9 @@ group :test do
   gem 'selenium'
   gem 'selenium-client'
   gem 'coveralls', require: false
+  gem 'vcr'
+  gem 'puffing-billy'
+  gem 'poltergeist'
 end
 
 group :production do

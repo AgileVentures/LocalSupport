@@ -14,6 +14,7 @@ Feature: As a member of the public
       | Litter Box Scooper | Assist with feline sanitation   | Cats Are Us               |
       | Office Support     | Help with printing and copying. | Indian Elders Association |
 
+  @vcr
   Scenario: See a list of current volunteer opportunities
     Given I visit the volunteer opportunities page
     And cookies are approved
@@ -46,4 +47,3 @@ Feature: As a member of the public
     Examples:
       | link          |
       | Volunteers    |
-

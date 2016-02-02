@@ -20,6 +20,7 @@ Feature: Members of HCN may propose edits to organisations
 
     And cookies are approved
 
+  @vcr
   Scenario: Nonsuperadmins do not see pending proposed edits link
     Given I am signed in as an non-superadmin
     And I visit the home page
@@ -58,6 +59,7 @@ Feature: Members of HCN may propose edits to organisations
       | true     | true     |
     And I should see "The edit you accepted has been applied and archived"
 
+  @vcr
   Scenario: Accept a proposed edit from a siteadmin edits nonpublic fields
     Given I am signed in as a superadmin
     And the following proposed edits exist:

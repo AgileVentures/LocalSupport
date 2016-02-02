@@ -12,6 +12,7 @@ Feature: As a member of the public
       | Litter Box Scooper | Assist with feline sanitation   test@test.com   | Cats Are Us               |
       | Office Support     | Help with printing and copying. http://test.com | Indian Elders Association |
 
+  @vcr
   Scenario: See a volunteer opportunity and hyperlink
     Given I visit the show page for the volunteer_op titled "Office Support"
     Then I should see:
