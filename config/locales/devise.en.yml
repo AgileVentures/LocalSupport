@@ -61,6 +61,6 @@ en:
     errors:
       models:
         user:
+          reset_password_token_expired: 'Reset requested too long ago - please request a new reset by clicking "forgot password" again'
           attributes:
             reset_password_token:
-              expired: 'reset requested too long ago - please request a new reset by clicking "forgot password" again'

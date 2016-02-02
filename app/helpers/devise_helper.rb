@@ -8,7 +8,13 @@ module DeviseHelper
   def devise_error_messages!
     return "" if resource.errors.empty?
 
-    messages = resource.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
+    errors = resource.errors
+    if errors[:reset_password_token] and errors[:reset_password_token].include? "has expired, please request a new one"
+      errors.add(:base, :reset_password_token_expired)
+      errors[:reset_password_token].delete "has expired, please request a new one"
+    end
+      
+    messages = errors.full_messages.map { |msg| content_tag(:li, msg) }.join
 
     # empty out error messages so they don't linger
     resource.errors.clear
