@@ -20,7 +20,7 @@ Feature: Password retrieval
     And I follow "Forgot your password?"
     And the email queue is clear
 
-  @email
+  @email @vcr
   Scenario Outline: Retrieving passwords
     When I fill in "user_retrieval_email" with "<email>" within the main body
     And I press "Send me reset password instructions"

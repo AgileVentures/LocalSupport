@@ -61,14 +61,27 @@ def markers
 end
 
 def marker_json_for_org_names(*org_names)
-  marker_json = JSON.parse markers
-  [*org_names].map do |name|
-    marker_json.find{|m| m['infowindow'].include? name }
+    marker_json = JSON.parse markers
+    [*org_names].map do |name|
+      marker_json.find{|m| m['infowindow'].include? name }
+    end
+end
+
+Then /^the coordinates for "(.*?)" should( not)? be "(.*?), (.*?)"/ do | org1_name, negation, lat, lng |
+  org1 = marker_json_for_org_names(org1_name).first
+  if negation
+    expect(org1['lat']).not_to eq lat.to_f
+    expect(org1['lng']).not_to eq lng.to_f
+  else
+    expect(org1['lat']).to eq lat.to_f
+    expect(org1['lng']).to eq lng.to_f
   end
 end
 
-Then /^the coordinates for "(.*?)" and "(.*?)" should( not)? be the same/ do | org1_name, org2_name, negation|
+
+Then /^the coordinates for "(.*?)" and "(.*?)" should( not)? be the same/ do | org1_name, org2_name, negation |
   org1, org2 = marker_json_for_org_names(org1_name, org2_name)
+  #byebug
   if negation
     expect(org1['lat']).not_to eq org2['lat']
     expect(org1['lng']).not_to eq org2['lng']
@@ -89,14 +102,14 @@ end
 #TODO if this ever needs refactoring, factor it in with what's in
 # config/initializers/webmock.rb
 def stub_request_with_address(address, body = nil)
-  filename = "#{address.gsub(/\s/, '_')}.json"
-  filename = File.read "test/fixtures/#{filename}"
+  #filename = "#{address.gsub(/\s/, '_')}.json"
+  #filename = File.read "test/fixtures/#{filename}"
   # Webmock shows URLs with '%20' standing for space, but uri_encode susbtitutes with '+'
   # So let's fix
-  addr_in_uri = address.uri_encode.gsub(/\+/, "%20")
+  #addr_in_uri = address.uri_encode.gsub(/\+/, "%20")
   # Stub request, which URL matches Regex
-  stub_request(:get, /http:\/\/maps.googleapis.com\/maps\/api\/geocode\/json\?address=#{addr_in_uri}/).
-      to_return(status => 200, :body => body || filename, :headers => {})
+  #stub_request(:get, /http:\/\/maps.googleapis.com\/maps\/api\/geocode\/json\?address=#{addr_in_uri}/).
+  #    to_return(status => 200, :body => body || filename, :headers => {})
 end
 
 Given /Google is indisposed for "(.*)"/ do  |address|

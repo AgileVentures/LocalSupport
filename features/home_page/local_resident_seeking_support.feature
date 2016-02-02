@@ -13,6 +13,7 @@ Feature: Local Resident seeking Support
       | Age UK                         | Care for the Elderly         | 84 pinner road | HA1 4HZ  | http://c.com/ |
 
 # particularly want to provide visibility to organisations with no existing web presence
+  @vcr
   Scenario: Find help with care for elderly
     Given I visit the home page
     When I search for "elderly"
@@ -48,4 +49,3 @@ Feature: Local Resident seeking Support
       | Harrow Bereavement Counselling | Counselling for the bereaved |
       | Indian Elders Association      | Care for the elderly           |
       | Age UK                         | Care for the Elderly           |
-

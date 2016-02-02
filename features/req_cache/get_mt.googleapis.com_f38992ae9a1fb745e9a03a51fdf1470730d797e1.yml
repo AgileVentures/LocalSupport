@@ -1,0 +1,40 @@
+---
+:scope: 
+:url: https://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Fri, 22 Jan 2016 18:55:17 GMT
+  Expires: Wed, 05 Oct 2016 23:45:39 GMT
+  Access-Control-Allow-Origin: '*'
+  Content-Type: image/png
+  X-Content-Type-Options: nosniff
+  Server: paintfe
+  Content-Length: '807'
+  X-XSS-Protection: 1; mode=block
+  X-Frame-Options: SAMEORIGIN
+  Cache-Control: public, max-age=22222222
+  Age: '926132'
+  Alternate-Protocol: 443:quic,p=1
+  Alt-Svc: quic=":443"; ma=604800; v="30,29,28,27,26,25"
+  Connection: close
+:content: !binary |-
+  iVBORw0KGgoAAAANSUhEUgAAABYAAAAoCAMAAADNGvrUAAAACXBIWXMAAAAc
+  AAAAHAAPAbmPAAABL1BMVEUAAAC3ODC7PDS3PDC3ODC3ODDbSEi3PDC7PDC7
+  PDC3PDC/PDi7PDS/QDTTVFS3ODC7ODDbXEjHSDi7PDC3ODDLVEC7ODC3PDC7
+  PDDDRDi/PDTDPDC7PDDDTDy3ODDDQDjHSEDHQDC3ODC3PDS3ODD3YFRcFBD3
+  aFz3ZFj3XFDzUEjfVEz7cGS7PDBoHBjfXFS3ODD3bGD3XFTzTETLTEDLQDT7
+  dGjHRDyAKCSTMCyrQDjzSDzzSECjPDTbTEC7ODDPWEzXVEzDQDTTSEDTQDTL
+  QDj3WEz3VEjXVEjjRDj3VEz3WFD3YFjbUETnTEDjTEDnSEDzUETjSEDnRDjT
+  UEjLVEjbVEzbTETfRDzLUEjTTEDTSDzbRDjLSEDLPDTHPDDDPDTDPDDDRDjH
+  QDjDRDz0MTjSAAAAJXRSTlMA73C3++MK95Ng0ySAQA7HoxAU+9sYgMvLODws
+  gBzzIiQkk5PTi97zdQAAAW1JREFUeNrt/VWao0AUhmEcnGh7x6ONY/F4fHx8
+  fKxt/2voUEUedAvf1X/eS4oFAO6KpAiaJijyCryyLa5nSbouWT2ulT1qPdlr
+  D9zaf2/qWCvMeuBrzVQcZfMv9EBf8uyByUc91D0JcFaVwyxXzyAxbOOk1Upy
+  5zABlIbnV1MUzZ94f6OAECQnS0RZ6BAIoGW05pjn6JBpsDGPMY8x28AJstME
+  8wQdAgdJDa2O6ajZQYeWBP7XG5Q2EsWRhveWh4IhuCnKcRkFgNxbIdT33OGb
+  ZAylE0gxMs4npLZKoN8U+t4pTn3tS+VS+B3SD898bdLuo7GXC08Xl+zxMYsX
+  6is39aLoPT2/f+62531/xDnxDut74tzHQG5U1C3pV2CZDx8PfWLYAEO53z3U
+  LwcVarTDdC3EcPKj2/1zElYg+7PZPzLCpeV0uixFGJjPL5mowuludxrDif93
+  iRhu2HYjhoEg4hQoKpabzVi+vvb2ExVqXbtVNaNEAAAAAElFTkSuQmCC
