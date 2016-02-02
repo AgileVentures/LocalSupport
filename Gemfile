@@ -47,6 +47,9 @@ group :test do
   gem 'selenium-client'
   gem 'coveralls', require: false
   gem 'rspec-activemodel-mocks'
+  gem 'vcr'
+  gem 'puffing-billy'
+  gem 'poltergeist'
 end
 
 group :production do

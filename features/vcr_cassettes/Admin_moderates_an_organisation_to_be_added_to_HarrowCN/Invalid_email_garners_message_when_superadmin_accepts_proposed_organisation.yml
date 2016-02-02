@@ -1,0 +1,334 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=30%20pinner%20road,%20HA1%204HZ&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 27 Jan 2016 21:47:55 GMT
+      Expires:
+      - Thu, 28 Jan 2016 21:47:55 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - '*'
+      Server:
+      - mafe
+      Content-Length:
+      - '516'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "30",
+                       "short_name" : "30",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Pinner Road",
+                       "short_name" : "Pinner Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Harrow",
+                       "short_name" : "Harrow",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Harrow",
+                       "short_name" : "Harrow",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "HA1 4HZ",
+                       "short_name" : "HA1 4HZ",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "30 Pinner Rd, Harrow, Greater London HA1 4HZ, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.5813502,
+                       "lng" : -0.3436644
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.58269918029149,
+                          "lng" : -0.3423154197084979
+                       },
+                       "southwest" : {
+                          "lat" : 51.58000121970849,
+                          "lng" : -0.345013380291502
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJIRtZtW0TdkgR-ZdpVy_UOc0",
+                 "types" : [ "street_address" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jan 2016 21:47:55 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=30%20pinner%20road,%20HA5%204HZ&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 27 Jan 2016 21:47:55 GMT
+      Expires:
+      - Thu, 28 Jan 2016 21:47:55 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - '*'
+      Server:
+      - mafe
+      Content-Length:
+      - '747'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "30",
+                       "short_name" : "30",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Pinner Hill Road",
+                       "short_name" : "Pinner Hill Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Pinner",
+                       "short_name" : "Pinner",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Pinner",
+                       "short_name" : "Pinner",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "HA5 3SB",
+                       "short_name" : "HA5 3SB",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "30 Pinner Hill Rd, Pinner, Greater London HA5 3SB, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.59989969999999,
+                       "lng" : -0.3952476
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.6012486802915,
+                          "lng" : -0.3938986197084979
+                       },
+                       "southwest" : {
+                          "lat" : 51.5985507197085,
+                          "lng" : -0.396596580291502
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJC0zoyVhrdkgRZTKHNi8oY3M",
+                 "types" : [ "street_address" ]
+              },
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "30",
+                       "short_name" : "30",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Pinner Green",
+                       "short_name" : "Pinner Green",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Pinner",
+                       "short_name" : "Pinner",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Pinner",
+                       "short_name" : "Pinner",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "HA5 2AA",
+                       "short_name" : "HA5 2AA",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "30 Pinner Green, Pinner, Greater London HA5 2AA, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.598323,
+                       "lng" : -0.3938555
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5996719802915,
+                          "lng" : -0.3925065197084979
+                       },
+                       "southwest" : {
+                          "lat" : 51.5969740197085,
+                          "lng" : -0.395204480291502
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJ0UdtYqdsdkgRqZuMK_2Kw60",
+                 "types" : [ "street_address" ]
+              },
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "30",
+                       "short_name" : "30",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Pinner Grove",
+                       "short_name" : "Pinner Grove",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Pinner",
+                       "short_name" : "Pinner",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Pinner",
+                       "short_name" : "Pinner",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "HA5 5NY",
+                       "short_name" : "HA5 5NY",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "30 Pinner Grove, Pinner, Greater London HA5 5NY, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.5883581,
+                       "lng" : -0.3798305
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5897070802915,
+                          "lng" : -0.3784815197084979
+                       },
+                       "southwest" : {
+                          "lat" : 51.5870091197085,
+                          "lng" : -0.381179480291502
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJM5Z4ZK1sdkgRUlK-PXf8Gxs",
+                 "types" : [ "street_address" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jan 2016 21:47:55 GMT
+recorded_with: VCR 2.9.3

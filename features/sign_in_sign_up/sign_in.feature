@@ -17,6 +17,7 @@ Background:
   Given I visit the home page
   And cookies are approved
 
+@vcr
 Scenario: Sign in for an existing non-superadmin user unassociated with any organisation
   Given I sign in as "normal_user@example.com" with password "pppppppp"
   Then I should see a link or button "normal_user@example.com"
@@ -51,7 +52,7 @@ Scenario: Sign in for a non-existent user
   Then I should be on the sign in page
   And I should see "I'm sorry, you are not authorized to login to the system"
 
-@javascript
+@javascript @billy
 Scenario: Check that login/register toggle works
   # when first opened
   Given I click "Login"

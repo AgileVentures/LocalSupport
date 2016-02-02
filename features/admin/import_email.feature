@@ -16,6 +16,7 @@ Background: organisations have been added to database
     | I hate animals    |             |           |           |          |       |            | superadmin@cruelty.com   |
     | I love people     |             |           |           |          |       |            | people@humanity.org |
 
+  @vcr
   Scenario: import email addresses
     Given Google is indisposed for "64 pinner road, HA1 4HZ"
     And I import emails from "db/email_test.csv"
@@ -23,4 +24,3 @@ Background: organisations have been added to database
     Then "I love cats" should have email "superadmin@cats.com"
     Then "I hate animals" should have email "superadmin@cruelty.com"
     And "I love cats" should not have nil coordinates
-
