@@ -48,11 +48,12 @@ describe Devise::PasswordsController, :type => :controller do
        end
      end
      context 'unsuccessfully' do
-#      render_views
+       render_views
        it 'incorrect reset password token' do
          put :update, user:
            { reset_password_token: 'abracadabra', password: '123qwe___', password_confirmation: '123qwe___' }
-         expect(assigns(:user).errors.full_messages).to include "Reset password token is invalid"
+#        expect(assigns(:user).errors.full_messages).to include "Reset password token is invalid"
+         expect(response.body).to have_content('Reset password token is invalid')
        end
        it 'expires token' do
 
@@ -63,8 +64,8 @@ describe Devise::PasswordsController, :type => :controller do
          user.reload
          put :update, user:
            { reset_password_token: reset_password_token, password: '123qwe___', password_confirmation: '123qwe___' }
-#         expect(response.body).to have_content('Reset password token has expired, please request a new one')
-         expect(assigns(:user).errors.full_messages).to include 'reset requested too long ago - please request a new reset by clicking "forgot password" again'
+         expect(response.body).to have_content('Reset requested too long ago - please request a new reset by clicking "forgot password" again')
+#        expect(assigns(:user).errors.full_messages).to include 'reset requested too long ago - please request a new reset by clicking "forgot password" again'
        end
      end
    end
