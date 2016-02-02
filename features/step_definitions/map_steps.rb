@@ -67,7 +67,19 @@ def marker_json_for_org_names(*org_names)
     end
 end
 
-Then /^the coordinates for "(.*?)" and "(.*?)" should( not)? be the same/ do | org1_name, org2_name, negation|
+Then /^the coordinates for "(.*?)" should( not)? be "(.*?), (.*?)"/ do | org1_name, negation, lat, lng |
+  org1 = marker_json_for_org_names(org1_name).first
+  if negation
+    expect(org1['lat']).not_to eq lat.to_f
+    expect(org1['lng']).not_to eq lng.to_f
+  else
+    expect(org1['lat']).to eq lat.to_f
+    expect(org1['lng']).to eq lng.to_f
+  end
+end
+
+
+Then /^the coordinates for "(.*?)" and "(.*?)" should( not)? be the same/ do | org1_name, org2_name, negation |
   org1, org2 = marker_json_for_org_names(org1_name, org2_name)
   #byebug
   if negation
