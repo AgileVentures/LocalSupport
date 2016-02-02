@@ -41,19 +41,13 @@ end
 
 Billy.configure do |c|
   c.cache = true
-  c.ignore_params = ["http://maps.googleapis.com/maps/gen_204",
-                     "http://maps.googleapis.com/maps/api/js/AuthenticationService.Authenticate",
-                     "http://csi.gstatic.com/csi",
-                     "http://maps.gstatic.com/mapfiles/openhand_8_8.cur",
-                     "http://www.google-analytics.com/collect",
-                     "http://www.google-analytics.com/r/collect",
-                     "http://www.google-analytics.com/__utm.gif",
-                     "https://r.twimg.com/jot",
-                     "http://p.twitter.com/t.gif",
-                     "http://p.twitter.com/f.gif",
-                     "http://www.facebook.com/plugins/like.php",
-                     "https://www.facebook.com/dialog/oauth",
-                     "http://cdn.api.twitter.com/1/urls/count.json",
+  c.ignore_params = ['http://maps.googleapis.com/maps/gen_204',
+                     'http://maps.googleapis.com/maps/api/js/AuthenticationService.Authenticate',
+                     'http://csi.gstatic.com/csi',
+                     'http://maps.gstatic.com/mapfiles/openhand_8_8.cur',
+                     'http://www.google-analytics.com/collect',
+                     'http://www.google-analytics.com/r/collect',
+                     'http://www.google-analytics.com/__utm.gif',
                      ]
   c.persist_cache = true
   c.cache_path = 'features/req_cache/'
