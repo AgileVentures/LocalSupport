@@ -41,7 +41,8 @@ end
 
 Billy.configure do |c|
   c.cache = true
-  c.ignore_params = ['http://maps.googleapis.com/maps/gen_204',
+  c.ignore_params = ['http://maps.google.com/maps/vt',
+                     'http://maps.googleapis.com/maps/gen_204',
                      'http://maps.googleapis.com/maps/api/js/AuthenticationService.Authenticate',
                      'http://csi.gstatic.com/csi',
                      'http://maps.gstatic.com/mapfiles/openhand_8_8.cur',
@@ -54,10 +55,21 @@ Billy.configure do |c|
 end
 Billy.proxy.reset_cache
 
-Before('@billy') do
-  Capybara.current_driver = :poltergeist_billy
+
+Capybara.register_driver :pg_billy do |app|
+  options = {
+    js_errors: false,
+    phantomjs_options: [
+      '--ignore-ssl-errors=yes',
+      "--proxy=#{Billy.proxy.host}:#{Billy.proxy.port}"
+    ]
+  }
+  Capybara::Poltergeist::Driver.new(app, options)
 end
 
+Before('@billy') do
+  Capybara.current_driver = :pg_billy
+end
 
 After('@billy') do
   Capybara.use_default_driver
