@@ -33,7 +33,9 @@ end
 
 Given /^the following organisations exist:$/ do |organisations_table|
   organisations_table.hashes.each do |org|
-    Organisation.create! org
+    VCR.use_cassette("#{org["name"]}-#{org["postcode"]}") do
+      Organisation.create! org
+    end
   end
 end
 

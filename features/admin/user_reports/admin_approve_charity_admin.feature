@@ -16,6 +16,7 @@ Feature: All Users Page
       | pending@myorg.com       | password123         | false      | 2008-01-01 00:00:00 |                 | My Organisation      |
     And cookies are approved
 
+  @vcr
   Scenario: As a superadmin approving a pending users request
     Given I am signed in as a superadmin
     When I approve "pending@myorg.com"

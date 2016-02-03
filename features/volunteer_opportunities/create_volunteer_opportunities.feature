@@ -19,6 +19,7 @@ Feature: Org superadmin creating a volunteer work opportunity
     And that the volunteer_ops_create flag is enabled
     And cookies are approved
 
+  @vcr
   Scenario: Org-superadmins can create a volunteer opportunity
     Given I am signed in as a charity worker related to "Friendly"
     And I submit a volunteer op "Hard Work", "For no pay" on the "Friendly" page
@@ -68,4 +69,3 @@ Feature: Org superadmin creating a volunteer work opportunity
     And I am signed in as a charity worker related to "Shy"
     And I visit the show page for the organisation named "Shy"
     Then I should not see a link with text "Create a Volunteer Opportunity"
-

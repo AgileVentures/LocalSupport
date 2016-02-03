@@ -49,3 +49,6 @@ config/database.yml
 .rbenv-gemsets
 .floo
 .flooignore
+
+
+vcr.log

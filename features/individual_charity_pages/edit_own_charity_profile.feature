@@ -34,11 +34,13 @@ Given the following categories_organisations exist:
   | Health    | Friendly      |
   | Education | Friendly      |
 
+@vcr
 Scenario: Successfully add website url without protocol
   Given I am signed in as a charity worker related to "Friendly"
   And I update "Friendly" charity website to be "www.friendly.com"
   Then the website link for "Friendly" should have a protocol
 
+@vcr
 Scenario: Successfully change the address of a charity
   Given I am signed in as a charity worker related to "Friendly"
   And I update "Friendly" charity address to be "30 pinner road"
@@ -81,6 +83,7 @@ Scenario: Non-logged in users do not see edit button either
   Given I visit the show page for the organisation named "Friendly"
   Then I should not see an edit button for "Friendly" charity
 
+@vcr
 Scenario: Change the address of a charity when Google is indisposed
   Given I am signed in as a charity worker related to "Friendly"
   And I update "Friendly" charity address to be "83 pinner road" when Google is indisposed
@@ -160,4 +163,4 @@ Scenario Outline: Successfully add and remove an organisation's categories
   | Health         | uncheck    | not see     | Child welfare        | check   | see         |
   | Animal welfare | check      | see         | Education            | uncheck | not see     |
   | Health         | uncheck    | not see     | Education            | uncheck | not see     |
-  | General        | check      | see         | Give them things     | check   | see         | 
+  | General        | check      | see         | Give them things     | check   | see         |
