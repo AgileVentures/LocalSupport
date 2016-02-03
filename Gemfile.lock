@@ -144,10 +144,10 @@ GEM
     hike (1.2.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
-    http_parser.rb (0.6.0)
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
+    http_parser.rb (0.6.0)
     i18n (0.7.0)
     jar_wrapper (0.1.8)
       zip
@@ -405,4 +405,5 @@ DEPENDENCIES
   webmock (= 1.20.0)
 
 BUNDLED WITH
-   1.11.2
+   1.10.6
+

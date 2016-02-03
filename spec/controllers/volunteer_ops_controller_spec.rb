@@ -27,10 +27,11 @@ describe VolunteerOpsController, :type => :controller do
 
   describe "#build_map_markers" do
     render_views
-    let(:org) { create :organisation }
-    let(:orgs) { Organisation.where(id: org) }
-    let!(:op) { create :volunteer_op, organisation: org }
+    let(:org) { mock_model Organisation, name: 'My Org', address: "10 pinner road", postcode: "HA1 4HZ", latitude: 3.2, longitude: 6.5, id: 12}
+    let(:orgs) { double :active_record_result, select: [org] }
+    let!(:op) { mock_model VolunteerOp, organisation: org, title: 'Ops galore', description: 'such ops!', id:11 }
     subject { JSON.parse(controller.send(:build_map_markers, orgs)).first }
+    before { expect(VolunteerOp).to receive(:where).with({:organisation_id=>org.id}).and_return [op] }
     it { expect(subject['lat']).to eq org.latitude }
     it { expect(subject['lng']).to eq org.longitude }
     it { expect(subject['infowindow']).to include org.id.to_s }
@@ -39,7 +40,7 @@ describe VolunteerOpsController, :type => :controller do
     it { expect(subject['infowindow']).to include op.title }
     it { expect(subject['infowindow']).to include op.description }
     context 'markers without coords omitted' do
-      let(:org) { create :organisation, address: "0 pinnner road", postcode: "HA1 4HZ", latitude: nil, longitude: nil }
+      let(:org) { mock_model Organisation, name: 'My Org', address: "10 pinner road", postcode: "HA1 4HZ", latitude: nil, longitude: nil}
       it { expect(JSON.parse(controller.send(:build_map_markers, orgs))).to be_empty }
     end
   end
