@@ -1,0 +1,6 @@
+When setting up new feature please make sure the feature is activated in seed.sb file.
+
+e.g. if a feature calle New Feature is added then this can be activated by adding a line as below
+
+     Feature.activate('New Feature')
+
