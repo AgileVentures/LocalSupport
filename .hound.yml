@@ -1,0 +1,6 @@
+ruby:
+  config_file: .rubocop.yml
+  enabled: true
+
+javascript:
+  config_file: .javascript-style.json
