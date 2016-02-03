@@ -89,8 +89,5 @@ gem 'redcarpet'
 # validating organisation website URLs
 gem 'url_validator'
 
-gem 'httparty'
-
-
 gem 'rails_autolink'
 gem "paranoia", "~> 2.0"
