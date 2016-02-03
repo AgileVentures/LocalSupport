@@ -511,6 +511,19 @@ Style/SpecialGlobalVars:
   Description: 'Avoid Perl-style global variables.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-cryptic-perlisms'
   Enabled: true
+  
+Style/StringLiterals:
+  Description: 'Checks if uses of quotes match the configured preference.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#consistent-string-literals'
+  EnforcedStyle: single_quotes
+  Enabled: true
+
+Style/StringLiteralsInInterpolation:
+  Description: >-
+                 Checks if uses of quotes inside expressions in interpolated
+                 strings match the configured preference.
+  EnforcedStyle: single_quotes
+  Enabled: true
 
 Style/StructInheritance:
   Description: 'Checks for inheritance from Struct.new.'
@@ -822,12 +835,6 @@ Style/EmptyLinesAroundClassBody:
 Style/EmptyLinesAroundBlockBody:
   Enabled: false
 
-Style/StringLiterals:
-  Enabled: false
-
-Style/StringLiteralsInInterpolation:
-  Enabled: false
-
 Style/Documentation:
   Description: Document classes and non-namespace modules.
   Enabled: false
@@ -1102,17 +1109,6 @@ Style/SpaceInsideRangeLiteral:
 Style/SpaceInsideStringInterpolation:
   Description: 'Checks for padding/surrounding spaces inside string interpolation.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#string-interpolation'
-  Enabled: false
-
-Style/StringLiterals:
-  Description: 'Checks if uses of quotes match the configured preference.'
-  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#consistent-string-literals'
-  Enabled: false
-
-Style/StringLiteralsInInterpolation:
-  Description: >-
-                 Checks if uses of quotes inside expressions in interpolated
-                 strings match the configured preference.
   Enabled: false
 
 Style/Tab:
