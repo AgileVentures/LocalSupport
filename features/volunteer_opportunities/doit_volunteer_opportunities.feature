@@ -2,14 +2,14 @@ Feature: As a member of the public
   So that I can see where organisations with volunteer opportunities are located
   I would like to see a map of do-it volunteer opportunities
 
-  @javascript
+  @javascript @vcr @billy
   Scenario: See a map of current doit volunteer opportunities
     Given that the doit_volunteer_opportunities flag is enabled
     And I visit the volunteer opportunities page
     And cookies are approved
-    And I should see 16 markers in the map
+    And I should see 17 markers in the map
 
-  @javascript
+  @javascript @vcr @billy
   Scenario: See a map of current doit and harrow volunteer opportunities
     Given the following organisations exist:
       | name                      | description          | address        | postcode | website       |
@@ -25,9 +25,9 @@ Feature: As a member of the public
     Given that the doit_volunteer_opportunities flag is enabled
     And I visit the volunteer opportunities page
     And cookies are approved
-    And I should see 18 markers in the map
+    And I should see 19 markers in the map
 
-    @javascript
+    @javascript @vcr @billy
     Scenario: See a list of current doit volunteer opportunities
       Given that the doit_volunteer_opportunities flag is enabled
       Given I visit the volunteer opportunities page
