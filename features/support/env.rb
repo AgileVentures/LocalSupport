@@ -75,6 +75,11 @@ After('@billy') do
   Capybara.use_default_driver
 end
 
+Before('@javascript') do
+  @javascript = true
+end
+
+
 # By default, any exception happening in your Rails application will bubble up
 # to Cucumber so that your scenario will fail. This is a different from how
 # your application behaves in the production environment, where an error page will
