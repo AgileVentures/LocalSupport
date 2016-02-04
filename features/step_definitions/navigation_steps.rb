@@ -144,17 +144,7 @@ And I should see "Whilst Voluntary Action Harrow has made effort to ensure the i
 end
 
 Then(/^the "([^"]*)" should be (not )?visible$/) do |id, negate|
-  # http://stackoverflow.com/a/15782921
-  # Capybara "visible?" method(s) are inaccurate!
-
-  #regex = /height: 0/ # Assume style="height: 0px;" is the only means of invisibility
-  #style = page.find("##{id}")['style']
-  #sleep 0.25 if style # need to give js a moment to modify the DOM
-  #expectation = negate ? :should : :should_not
-  #style ? style.send(expectation, have_text(regex)) : negate.nil?
-
-  elem = page.find("##{id}")
-  negate ? !elem.visible? : elem.visible?
+  expect(page).to have_css("##{id}", visible: negate)
 end
 
 Then(/^the "([^"]*)" should be "([^"]*)"$/) do |id, css_class|
