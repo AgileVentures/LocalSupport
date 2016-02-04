@@ -5,19 +5,7 @@ class VolunteerOpsController < ApplicationController
   def index
     @volunteer_ops = VolunteerOp.order_by_most_recent
     @organisations = Organisation.where(id: @volunteer_ops.select(:organisation_id))
-    harrow_markers = build_map_markers(@organisations)
-    doit_markers = '[]'
-    # Do-it API works from below
-    if Feature.active? :doit_volunteer_opportunities
-      host = 'https://api.do-it.org'
-      href = "/v1/opportunities\?lat\=51.5978\&lng\=-0.3370\&miles\=0.5 "
-      @doit_orgs = []
-      collect_all_items(host, href, @doit_orgs)
-      doit_markers = build_map_markers(@doit_orgs, :doit, false)
-      @markers = harrow_markers[0...-1]+', ' + doit_markers[1..-1]
-      @markers = doit_markers if harrow_markers == '[]'
-    end
-    @markers = harrow_markers if doit_markers == '[]'
+    @markers, @doit_orgs = assemble_volunteer_markers(@organisations)
   end
 
   def show
@@ -68,6 +56,23 @@ class VolunteerOpsController < ApplicationController
   end
 
   private
+
+  def assemble_volunteer_markers(organisations)
+    harrow_markers = build_map_markers(organisations)
+    doit_markers = '[]'
+    # Do-it API works from below
+    if Feature.active? :doit_volunteer_opportunities
+      host = 'https://api.do-it.org'
+      href = "/v1/opportunities\?lat\=51.5978\&lng\=-0.3370\&miles\=0.5 "
+      doit_orgs = []
+      collect_all_items(host, href, doit_orgs)
+      doit_markers = build_map_markers(doit_orgs, :doit, false)
+      markers = harrow_markers[0...-1]+', ' + doit_markers[1..-1]
+      markers = doit_markers if harrow_markers == '[]'
+    end
+    markers = harrow_markers if doit_markers == '[]' 
+    [markers, doit_orgs]
+  end
 
   def build_map_markers(organisations, type = :harrow, include_extra_organisation_data = true)
     ::MapMarkerJson.build(organisations, include_extra_organisation_data) do |org, marker|
