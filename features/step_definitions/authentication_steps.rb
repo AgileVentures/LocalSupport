@@ -39,6 +39,7 @@ Given /^I sign up as "(.*?)" with password "(.*?)" and password confirmation "(.
       fill_in "signup_password_confirmation", :with => password_confirmation
       click_button "Sign up"
     end
+    expect(page).not_to have_css('#signup') if @javascript
   end
 end
 
