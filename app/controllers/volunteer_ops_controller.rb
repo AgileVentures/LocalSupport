@@ -69,11 +69,11 @@ class VolunteerOpsController < ApplicationController
 
   private
 
-  def build_map_markers(organisations,  type = :harrow, include_extra_organisation_data = true)
+  def build_map_markers(organisations, type = :harrow, include_extra_organisation_data = true)
     ::MapMarkerJson.build(organisations, include_extra_organisation_data) do |org, marker|
       marker.lat org.latitude
       marker.lng org.longitude
-      marker.infowindow render_to_string( partial: "popup_#{type}", locals: {org: org})
+      marker.infowindow render_to_string(partial: "popup_#{type}", locals: { org: org })
       marker.json(
         custom_marker: render_to_string(
           partial: 'shared/custom_marker',
@@ -88,8 +88,8 @@ class VolunteerOpsController < ApplicationController
   end
 
   # This needs to be a helper method for the do-it API
-  def collect_all_items (host, href, orgs)
-    n=1
+  def collect_all_items(host, href, orgs)
+    n = 1
     while href
       url = host + href
       response = HTTParty.get(url)
