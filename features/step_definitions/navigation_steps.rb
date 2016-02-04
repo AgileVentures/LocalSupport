@@ -144,7 +144,7 @@ And I should see "Whilst Voluntary Action Harrow has made effort to ensure the i
 end
 
 Then(/^the "([^"]*)" should be (not )?visible$/) do |id, negate|
-  expect(page).to have_css("##{id}", :visible => negate)
+  expect(page).to have_css("##{id}", visible: negate)
 end
 
 Then(/^the "([^"]*)" should be "([^"]*)"$/) do |id, css_class|
