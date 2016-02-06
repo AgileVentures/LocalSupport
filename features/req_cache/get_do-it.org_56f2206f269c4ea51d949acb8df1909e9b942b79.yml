@@ -1,0 +1,159 @@
+---
+:scope: 
+:url: https://do-it.org/partials/recruiter-detail.html
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Accept-Ranges: bytes
+  Content-Type: text/html
+  Date: Sat, 06 Feb 2016 11:50:21 GMT
+  ETag: '"569c1749-291e"'
+  Last-Modified: Sun, 17 Jan 2016 22:35:53 GMT
+  Server: nginx/1.4.6 (Ubuntu)
+  Strict-Transport-Security: max-age=31536000
+  Content-Length: '10526'
+  Connection: close
+:content: |
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-lg-28 col-md-28 col-sm-28 col-xs-28">
+              <div class="org-profile" ng-class="{ verified: recruiter.doit_approved }">
+
+                  <div class="banner">
+                      <div class="hero-image-wrapper">
+                          <img ng-if="!recruiter.banner[0].absolute_url" src="img/stock/banner-green.jpg" class="hero-image" alt="{{ recruiter.name }}">
+                          <img ng-if="!recruiter.banner[0].absolute_url && permissions.recruiter_permissions.update" src="img/stock/banner-red.jpg" class="hero-image-hover" alt="{{ recruiter.name }}">
+                          <img ng-if="recruiter.banner[0].absolute_url" ng-src="{{ recruiter.banner[0].absolute_url }}" class="hero-image" alt="{{ recruiter.name }}">
+                          <div ng-if="recruiter.banner[0].absolute_url" class="hero-gradient" ng-class="{ hover: permissions.recruiter_permissions.update }"></div>
+                          <div ng-if="permissions.recruiter_permissions.update" doit-form data-model="recruiter" data-template-url="partials/banner-upload.html" data-on-valid="uploadBanner()"></div>
+                      </div>
+                      <div class="org-details">
+                          <div class="row">
+                              <div class="col-lg-5 col-lg-offset-2 col-md-5 col-md-offset-2 col-sm-6 col-sm-offset-2 col-xs-13 col-xs-offset-2">
+                                  <div class="logo-wrapper">
+                                      <img ng-if="!recruiter.logo[0].absolute_url" src ng-src="{{ 'stock-logo' | translate }}" class="logo" alt="{{ recruiter.name }} logo"/>
+                                      <img ng-if="!recruiter.logo[0].absolute_url && permissions.recruiter_permissions.update" src ng-src="{{ 'stock-logo-hover' | translate }}" class="logo-hover" alt="{{ recruiter.name }} logo"/>
+                                      <img ng-if="recruiter.logo[0].absolute_url" ng-src="{{ recruiter.logo[0].absolute_url }}" class="logo" alt="{{ recruiter.name }} logo"/>
+                                      <div ng-if="recruiter.logo[0].absolute_url && permissions.recruiter_permissions.update" class="logo-gradient"></div>
+                                      <div ng-if="permissions.recruiter_permissions.update" doit-form data-model="recruiter" data-template-url="partials/logo-upload.html" data-on-valid="uploadLogo()"></div>
+                                      <span class="verified-badge">{{ "verified_recruiter" | translate }}</span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+
+                  <div class="row">
+                      <div class="col-lg-24 col-lg-offset-2 col-md-24 col-md-offset-2 col-sm-24 col-sm-offset-2 col-xs-24 col-xs-offset-2">
+                          <div class="description">
+                              <div class="row">
+                                  <div class="col-md-percent-66 col-xs-percent-100">
+                                      <h1>{{ recruiter.name }}</h1>
+                                      <p class="blurb" ng-bind-html="recruiter.blurb | preserveLineBreaks"></p>
+                                  </div>
+                                  <div class="col-md-percent-33 col-xs-percent-100">
+                                      <div class="cta">
+                                          <p class="subscribers"><span class="number">{{ recruiter.subscriber_count }}</span> <span class="subscribers-label">subscribers</span></p>
+                                          <button class="btn btn-short btn-subscribe" ng-click="subscribe(recruiter.id)" ng-show="!recruiter.is_user_subscribed">Subscribe</button>
+                                          <button class="btn btn-short btn-white btn-subscribe" ng-click="unSubscribe(recruiter.id)" ng-show="recruiter.is_user_subscribed">Un-subscribe</button>
+                                          <hr class="hidden-xs" ng-if="recruiter.website || recruiter.facebook || recruiter.twitter">
+                                          <a ng-if="recruiter.website" href ng-href="{{ recruiter.website }}" class="btn btn-icon-only btn-transparent" target="_blank"><span class="icon icon-website-black"></span></a>
+                                          <br class="visible-sm" />
+                                          <a ng-if="recruiter.facebook" href ng-href="{{ recruiter.facebook }}" class="btn btn-icon-only btn-facebook-blue" target="_blank"><span class="icon icon-social-facebook"></span></a>
+                                          <a ng-if="recruiter.twitter" href ng-href="{{ recruiter.twitter }}" class="btn btn-icon-only btn-twitter-blue" target="_blank"><span class="icon icon-social-twitter"></span></a>
+                                          <hr>
+                                          <p>Registered: {{ recruiter.created | date:"dd/MM/yyyy" }}</p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="row">
+                      <div class="col-lg-24 col-lg-offset-2 col-md-24 col-md-offset-2 col-sm-24 col-sm-offset-2 col-xs-24 col-xs-offset-2">
+                          <hr class="has-triangle">
+                          <p class="opps-no">
+                              <strong class="number">{{ recruiter.active_opportunities_count || 0 }}</strong>
+                              <span ng-if="recruiter.active_opportunities_count !== 1" class="label"> opportunities</span>
+                              <span ng-if="recruiter.active_opportunities_count === 1" class="label"> opportunity</span>
+                          </p>
+                      </div>
+                  </div>
+
+                  <div class="row" ng-if="recruiter.active_opportunities_count === 0 && permissions.opportunity_permissions.create">
+                      <div class="col-lg-24 col-lg-offset-2 col-md-24 col-md-offset-2 col-sm-24 col-sm-offset-2 col-xs-24 col-xs-offset-2">
+                          <div class="opportunity-card is-list-item is-empty">
+                              <div class="wrapper">
+                                  <p>You have not created any opportunities yet.</p>
+                                  <a class="btn create" href="#/opportunities/create">Create a new opportunity</a>
+                                  <span class="point-down-left hidden-xs"></span>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-lg-24 col-lg-offset-2 col-md-24 col-md-offset-2 col-sm-24 col-sm-offset-2 col-xs-24 col-xs-offset-2">
+                          <a href="#/opportunities/create">
+                              <div class="opportunity-card is-list-item is-empty is-last is-create-link">
+                                  <div class="wrapper">
+                                      <span class="icon icon-plus"></span>
+                                  </div>
+                              </div>
+                          </a>
+                      </div>
+                  </div>
+
+                  <div class="row" ng-if="recruiter.active_opportunities_count === 0 && !permissions.opportunity_permissions.create">
+                      <div class="col-lg-24 col-lg-offset-2 col-md-24 col-md-offset-2 col-sm-24 col-sm-offset-2 col-xs-24 col-xs-offset-2">
+                          <div class="opportunity-card is-list-item is-empty is-last">
+                              <div class="wrapper">
+                                  <p>This organisation doesn't have any opportunites yet</p>
+                                  <a class="btn create" href="#/opportunities/search">Look for new opportunities</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="row" ng-if="recruiter.active_opportunities_count > 0">
+                      <div doit-opportunity-card ng-repeat="card in opportunities" data-model="card" class="col-lg-24 col-lg-offset-2 col-md-24 col-md-offset-2 col-sm-24 col-sm-offset-2 col-xs-24 col-xs-offset-2"></div>
+                  </div>
+
+                  <div class="row" ng-if="recruiter.active_opportunities_count > 0">
+                      <div class="col-lg-24 col-lg-offset-2 col-md-24 col-md-offset-2 col-sm-24 col-sm-offset-2 col-xs-24 col-xs-offset-2">
+                          <hr>
+                      </div>
+                  </div>
+
+                  <div class="row" ng-if="recruiter.active_opportunities_count > 0">
+                      <div class="col-lg-24 col-lg-offset-2 col-md-24 col-md-offset-2 col-sm-24 col-sm-offset-2 col-xs-24 col-xs-offset-2">
+                          <pagination doit-pagination class="pagination-sm" ng-model="meta.current_page" total-items="meta.total_items" items-per-page="meta.items_per_page" max-size="5" num-pages="meta.total_pages" ng-change="pageChanged(meta.current_page)" boundary-links="true"></pagination>
+                      </div>
+                  </div>
+
+                  <div class="row">
+                      <div class="col-lg-28 col-md-28 col-sm-28 col-xs-28">
+                          <div class="social">
+                              <div class="row">
+                                  <div class="col-lg-24 col-lg-offset-2 col-md-24 col-md-offset-2 col-sm-24 col-sm-offset-2 col-xs-24 col-xs-offset-2">
+                                      <p class="share">Spread the word about this organisation</p>
+                                      <div
+                                          class="addthis_custom_sharing"
+                                          data-title="{{ recruiter.name }} - {{ 'title' | translate }}"
+                                          data-description="{{ recruiter.blurb }}"
+                                          sn-addthis-toolbox
+                                      >
+                                          <a href class="btn btn-facebook-blue btn-with-icon addthis_button_facebook"><span class="icon icon-social-facebook"></span>Share</a>
+                                          <a href class="btn btn-twitter-blue btn-with-icon addthis_button_twitter"><span class="icon icon-social-twitter"></span>Share</a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+  </div>

@@ -1,0 +1,982 @@
+---
+:scope: 
+:url: https://api.do-it.org/v1/orgs/33c3a2ab-06e2-4fab-a865-a8518cd842ca/opportunities
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Access-Control-Allow-Credentials: 'true'
+  Access-Control-Allow-Headers: Content-Type, X-HTTP-Method-Override, X-Auth-Token,
+    X-Facebook-Token
+  Access-Control-Allow-Methods: GET, HEAD, OPTIONS
+  Access-Control-Allow-Origin: https://do-it.org
+  Access-Control-Expose-Headers: X-Auth-Token
+  Cache-Control: no-cache, no-store, must-revalidate
+  Content-Type: application/json
+  Date: Sat, 06 Feb 2016 11:42:13 GMT
+  Expires: '0'
+  Pragma: no-cache
+  Server: nginx/1.4.6 (Ubuntu)
+  Content-Length: '102648'
+  Connection: close
+:content: '{"data": {"items": [{"address_1": "Bexley Business Academy", "city": "Erith",
+  "created": "2014-10-27T09:50:40.547414+00:00", "description": "Act as secretary
+  to the District Scout Council\n\n Act as secretary to the District Executive\n\n
+  Work closely with and support the Group Chairperson\n\n Work with Group Executive
+  and ensure the completion of the Group Annual Census return and Charities Commission
+  return\n\n Maintain such records and lists of members and associate members for
+  the efficient administration of the Scout Group\n\n Be a full and active trustee
+  member of the Group Executive Committee and organize venues and send out the agenda,
+  in co-operation with the Group Chairperson, for Group Executive Committee meetings
+  and the Annual General Meeting.\n\n Ensure that documents relating to the ownership
+  of the property and equipment and all other legal and official documents are kept
+  in a safe and secure place, ensuring there is s full recovery of all files stored
+  electronically\n\n Provide sound administration in respect of the obligations according
+  to Scout Association Rules.\n\n Work along side the Group Executive Committee in
+  producing the Scout Group Annual Report.\n\nSupport will be given to enable you
+  to understand and accept the Scout Association?s policies and rules.\n\nYou will
+  be required to have a satisfactory DBS (previously CRB) clearance and to complete
+  the appropriate training modules. \n \nCandidates should be IT literate, have access
+  to both computer and internet and also have commitment and flexibility.  There are
+  usually 6 meetings per year and an AGM.", "for_recruiter": {"contact_name": null,
+  "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "ef264e6e-b47f-4302-b557-5539a877d9d2",
+  "interests": [{"children": [], "created": "2014-10-26T17:24:25.897903+00:00", "id":
+  "f76f8162-e300-403b-9c96-bae336cb9330", "name": "Literacy", "parent_id": "cf1ab709-0632-4d79-adef-f2fd32c1ebdf",
+  "slug": "literacy", "updated": "2014-10-26T17:24:25.897923+00:00"}, {"children":
+  [], "created": "2014-10-26T17:24:26.278190+00:00", "id": "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+  "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.271205+00:00", "id": "8678f792-d24e-4810-99d5-c6e6ba4196a4",
+  "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "families", "updated": "2014-10-26T17:24:26.271224+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+  "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new": false,
+  "lat": 51.4964, "lng": 0.133227, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Secretary_RruuYHMXbw5QxnbT9uAJNn.616x318.jpg",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Secretary_RruuYHMXbw5QxnbT9uAJNn.308x159.jpg",
+  "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Secretary_RruuYHMXbw5QxnbT9uAJNn.243x124.jpg",
+  "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Secretary_RruuYHMXbw5QxnbT9uAJNn.170x87.jpg",
+  "height": 87, "width": 170}], "postcode": "DA18 4DW", "rating": "0.00", "specific_end_date":
+  "2022-12-31T00:00:00+00:00", "specific_start_date": "2016-01-29T17:14:01.712000+00:00",
+  "status": "live", "title": "Trustee Scout Group Secretary for Bexley Business Academy",
+  "updated": "2016-01-29T17:28:26.489109+00:00", "working_from_home": false}, {"address_1":
+  "Bexley Business Academy", "city": "Erith", "created": "2014-10-27T09:51:41.047677+00:00",
+  "description": "Scouting offers opportunities for young people to develop their
+  potential. Our Scout Group needs a volunteer manager to help organize, support and
+  manage the adult volunteers that make these possibilities happen. The role centres
+  on supporting the adult volunteers in the Scout Group and is a varied and challenging
+  task. Communicating effectively and providing inspiration are key skills to have.
+  If you are a manager at work, or would like to develop skills in this area, this
+  is an ideal role for you.", "for_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
+  "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+  "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "17c6e259-dc2a-4034-8456-8603deb0a452",
+  "interests": [{"children": [], "created": "2014-10-26T17:24:26.278190+00:00", "id":
+  "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd", "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
+  "slug": "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children":
+  [], "created": "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+  "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}, {"children": [],
+  "created": "2014-10-26T17:24:25.689999+00:00", "id": "8832e673-44fc-4771-a66d-40dfb9d038da",
+  "name": "IT", "parent_id": "a0be8981-33c6-46df-a3fe-2100a575695f", "slug": "it",
+  "updated": "2014-10-26T17:24:25.690020+00:00"}, {"children": [], "created": "2014-10-26T17:24:26.271205+00:00",
+  "id": "8678f792-d24e-4810-99d5-c6e6ba4196a4", "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
+  "slug": "families", "updated": "2014-10-26T17:24:26.271224+00:00"}], "is_new": false,
+  "lat": 51.4964, "lng": 0.133227, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Adults_xgvPD42mpsUxYxMxDjK7n6.616x318.jpg",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Adults_xgvPD42mpsUxYxMxDjK7n6.308x159.jpg",
+  "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Adults_xgvPD42mpsUxYxMxDjK7n6.243x124.jpg",
+  "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Adults_xgvPD42mpsUxYxMxDjK7n6.170x87.jpg",
+  "height": 87, "width": 170}], "postcode": "DA18 4DW", "rating": "0.00", "specific_end_date":
+  "2022-12-31T00:00:00+00:00", "specific_start_date": "2016-01-29T17:33:57.872000+00:00",
+  "status": "live", "title": "Volunteer Group Scout Leader/Managers - Bexley Business
+  Academy", "updated": "2016-01-29T17:19:22.204869+00:00", "working_from_home": false},
+  {"address_1": "Bexley Business Academy", "city": "Erith", "created": "2014-10-27T09:50:41.498981+00:00",
+  "description": "Act as Treasurer to the Group Scout Council & Executive\n\n Work
+  closely with and support the Group Chairman\n\n Work with Group Executive to ensure
+  the completion of the District Annual Census return and Charities  Commission return\n\n
+  Maintain such records and lists of members and associate members for the efficient
+  administration of the Scout Group and collection of subscriptions from members\n\n
+  Be a full and active trustee member of the Group Executive Committee \n\n Ensure
+  that documents relating to the finances and the insurance of the group are kept
+  in a safe and secure place, ensuring there is full recovery of all files stored
+  electronically\n\n Provide sound financial support in respect of the obligations
+  according to Scout Association Rules (POR).\n\n Work alongside the Group Executive
+  Committee in producing the Scout District Annual Report and submit the Group accounts
+  to the agreed examiner/auditor in good time.\n\nSupport and training will be provided
+  to enable you to understand and accept the Scout Association''s policies, organisation
+  and rules.\n\nYou will be required to complete an application form and have a satisfactory
+  DBS (previously CRB) clearance as well as completing the appropriate training modules.
+  \n \nCandidates should be IT literate, have access to both a computer and the internet
+  and also have commitment and flexibility.  There are usually six Executive Committee
+  meetings per year and an AGM.", "for_recruiter": {"contact_name": null, "created":
+  "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk", "id":
+  "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "3afcd8a0-9c32-472c-b020-3d2b302d456b",
+  "interests": [{"children": [], "created": "2014-10-26T17:24:25.897903+00:00", "id":
+  "f76f8162-e300-403b-9c96-bae336cb9330", "name": "Literacy", "parent_id": "cf1ab709-0632-4d79-adef-f2fd32c1ebdf",
+  "slug": "literacy", "updated": "2014-10-26T17:24:25.897923+00:00"}, {"children":
+  [], "created": "2014-10-26T17:24:26.278190+00:00", "id": "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+  "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.271205+00:00", "id": "8678f792-d24e-4810-99d5-c6e6ba4196a4",
+  "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "families", "updated": "2014-10-26T17:24:26.271224+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+  "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new": false,
+  "lat": 51.4964, "lng": 0.133227, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Treasurer_87AVdBcyLtihYgiR75CzMa.616x318.jpg",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Treasurer_87AVdBcyLtihYgiR75CzMa.308x159.jpg",
+  "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Treasurer_87AVdBcyLtihYgiR75CzMa.243x124.jpg",
+  "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Treasurer_87AVdBcyLtihYgiR75CzMa.170x87.jpg",
+  "height": 87, "width": 170}], "postcode": "DA18 4DW", "rating": "0.00", "specific_end_date":
+  "2022-12-31T00:00:00+00:00", "specific_start_date": "2016-01-29T17:25:51.020000+00:00",
+  "status": "live", "title": "Trustee Treasurer for new Scout Group at the Bexley
+  Business Academy", "updated": "2016-01-29T17:11:25.536073+00:00", "working_from_home":
+  false}, {"address_1": "Bexley Business Academy", "city": "Erith", "created": "2014-10-27T09:51:14.768194+00:00",
+  "description": "Leaders are responsible, with Assistant Leaders, helpers and members,
+  for planning and running the weekly activities for 6-8 year olds. It is a fun and
+  rewarding role, allowing you to see young people enjoy the events / activities you
+  organise and grow in confidence and ability over time. The Scout Association provides
+  a wide range of books and electronic resources to aid volunteers plan their activities.",
+  "for_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
+  "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+  "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "e2e6af5b-b699-48a5-a207-f4b4da4581f7",
+  "interests": [{"children": [], "created": "2014-10-26T17:24:26.246077+00:00", "id":
+  "c1a66cf8-a685-4300-8f69-6d47a0bd93e0", "name": "Recreation", "parent_id": "cd7d0590-2800-45b4-8084-b475562e73f4",
+  "slug": "recreation", "updated": "2014-10-26T17:24:26.246096+00:00"}, {"children":
+  [], "created": "2014-10-26T17:24:26.278190+00:00", "id": "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+  "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.271205+00:00", "id": "8678f792-d24e-4810-99d5-c6e6ba4196a4",
+  "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "families", "updated": "2014-10-26T17:24:26.271224+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+  "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new": false,
+  "lat": 51.4964, "lng": 0.133227, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Beavers_xc9CWxKTtGafx466Gzp63Z.616x318.jpg",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Beavers_xc9CWxKTtGafx466Gzp63Z.308x159.jpg",
+  "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Beavers_xc9CWxKTtGafx466Gzp63Z.243x124.jpg",
+  "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Beavers_xc9CWxKTtGafx466Gzp63Z.170x87.jpg",
+  "height": 87, "width": 170}], "postcode": "DA18 4DW", "rating": "0.00", "specific_end_date":
+  "2022-01-29T00:00:00+00:00", "specific_start_date": "2016-01-29T16:42:42.789000+00:00",
+  "status": "live", "title": "Leader (volunteering with 6-8 year olds) - Bexley Business
+  Academy", "updated": "2016-01-29T17:11:19.576774+00:00", "working_from_home": false},
+  {"address_1": "Bexley Business Academy", "city": "Erith", "created": "2014-10-27T09:50:53.911337+00:00",
+  "description": "The main responsibilities are:\n\n- Act as Chairman to the Scout
+  Group and Executive.\n\n- Work closely with and support the Group Scout Leader.\n\n-
+  Ensure the completion of the District Annual Census return and annual Charities
+  Commission return.\n\n- Ensure the Group accounts and records are completed and
+  are kept up to date. \n\n- Be a full and active trustee member of the Group Executive
+  Committee. \n\n- Provide sound management in respect of the obligations according
+  to Scout Association Rules (POR).\n\n- Work along side the Group Executive Committee
+  in producing the Scout Group Annual Report.\n\n- Support will be given to enable
+  you to understand and accept the Scout Association''s policies and rules.\n\nYou
+  will be required to submit an application form, have a satisfactory DBS clearance
+  (formerly CRB) and to complete the appropriate training modules. \n\nCandidates
+  should be IT literate, be flexible and committed to the Group, and have access to
+  both computer and internet. There are usually six Group Executive meetings per year
+  and an AGM.", "for_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
+  "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+  "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "73b1f244-6a96-44de-bec4-d551c6082be8",
+  "interests": [{"children": [], "created": "2014-10-26T17:24:25.897903+00:00", "id":
+  "f76f8162-e300-403b-9c96-bae336cb9330", "name": "Literacy", "parent_id": "cf1ab709-0632-4d79-adef-f2fd32c1ebdf",
+  "slug": "literacy", "updated": "2014-10-26T17:24:25.897923+00:00"}, {"children":
+  [], "created": "2014-10-26T17:24:26.278190+00:00", "id": "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+  "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.271205+00:00", "id": "8678f792-d24e-4810-99d5-c6e6ba4196a4",
+  "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "families", "updated": "2014-10-26T17:24:26.271224+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+  "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}, {"children": [],
+  "created": "2014-10-26T17:24:26.260228+00:00", "id": "3fd515b4-6e1a-41a1-bad9-ea401937555b",
+  "name": "Older people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "older-people", "updated": "2014-10-26T17:24:26.260247+00:00"}], "is_new": false,
+  "lat": 51.4964, "lng": 0.133227, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Chairperson_2_MRUXxbTibjMuMnsTmW8eg9.616x318.jpg",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Chairperson_2_MRUXxbTibjMuMnsTmW8eg9.308x159.jpg",
+  "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Chairperson_2_MRUXxbTibjMuMnsTmW8eg9.243x124.jpg",
+  "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Chairperson_2_MRUXxbTibjMuMnsTmW8eg9.170x87.jpg",
+  "height": 87, "width": 170}], "postcode": "DA18 4DW", "rating": "0.00", "specific_end_date":
+  "2022-12-31T00:00:00+00:00", "specific_start_date": "2016-01-29T17:10:46.791000+00:00",
+  "status": "live", "title": "Trustee Group Chairman for new Group - Bexley Business
+  Academy", "updated": "2016-01-29T17:08:49.288249+00:00", "working_from_home": false},
+  {"address_1": "Bexley Business Academy", "city": "Erith", "created": "2014-10-27T09:51:15.661012+00:00",
+  "description": "Leaders are responsible, with Assistant Leaders, helpers and members,
+  for planning and running the weekly activities for 6-8 year olds. It is a fun and
+  rewarding role, allowing you to see young people enjoy the events and activities
+  that you organise and growing in confidence and ability over time. The Scout Association
+  provides a wide range of books and electronic resources to aid volunteers plan their
+  activities.", "for_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
+  "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+  "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "94c319fe-535e-41ca-b69b-9af7020d9a03",
+  "interests": [{"children": [], "created": "2014-10-26T17:24:26.246077+00:00", "id":
+  "c1a66cf8-a685-4300-8f69-6d47a0bd93e0", "name": "Recreation", "parent_id": "cd7d0590-2800-45b4-8084-b475562e73f4",
+  "slug": "recreation", "updated": "2014-10-26T17:24:26.246096+00:00"}, {"children":
+  [], "created": "2014-10-26T17:24:26.278190+00:00", "id": "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+  "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.271205+00:00", "id": "8678f792-d24e-4810-99d5-c6e6ba4196a4",
+  "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "families", "updated": "2014-10-26T17:24:26.271224+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+  "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new": false,
+  "lat": 51.4964, "lng": 0.133227, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Beavers_mucky_hands_3dQvPMT7MtYQZzteFwA53.616x318.JPG",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Beavers_mucky_hands_3dQvPMT7MtYQZzteFwA53.308x159.JPG",
+  "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Beavers_mucky_hands_3dQvPMT7MtYQZzteFwA53.243x124.JPG",
+  "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Beavers_mucky_hands_3dQvPMT7MtYQZzteFwA53.170x87.JPG",
+  "height": 87, "width": 170}], "postcode": "DA18 4DW", "rating": "0.00", "specific_end_date":
+  "2022-12-31T00:00:00+00:00", "specific_start_date": "2016-01-29T16:58:27.368000+00:00",
+  "status": "live", "title": "Leader (volunteering with 6-8 year olds) - Bexley Business
+  Academy", "updated": "2016-01-29T16:56:11.406001+00:00", "working_from_home": false},
+  {"address_1": "Bexley Business Academy", "city": "Erith", "created": "2014-10-27T09:50:53.345980+00:00",
+  "description": "Leaders are responsible, with Assistant Leaders, helpers and members,
+  for planning and running the weekly activities for 8-10 year olds. It is a fun and
+  rewarding role, allowing you to see young people enjoy the events and activities
+  you organise for them and growing in confidence and ability over time. The Scout
+  Association provides a wide range of books and electronic resources to aid volunteers
+  plan their activities.", "for_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
+  "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+  "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "c903fa7a-bab4-45bc-83c8-07811ec13bdf",
+  "interests": [{"children": [], "created": "2014-10-26T17:24:26.246077+00:00", "id":
+  "c1a66cf8-a685-4300-8f69-6d47a0bd93e0", "name": "Recreation", "parent_id": "cd7d0590-2800-45b4-8084-b475562e73f4",
+  "slug": "recreation", "updated": "2014-10-26T17:24:26.246096+00:00"}, {"children":
+  [], "created": "2014-10-26T17:24:26.278190+00:00", "id": "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+  "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.271205+00:00", "id": "8678f792-d24e-4810-99d5-c6e6ba4196a4",
+  "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "families", "updated": "2014-10-26T17:24:26.271224+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+  "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new": false,
+  "lat": 51.4964, "lng": 0.133227, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Cubs_outside_6fF5dwWGksQje47LAUNSKD.616x318.jpg",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Cubs_outside_6fF5dwWGksQje47LAUNSKD.308x159.jpg",
+  "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Cubs_outside_6fF5dwWGksQje47LAUNSKD.243x124.jpg",
+  "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Cubs_outside_6fF5dwWGksQje47LAUNSKD.170x87.jpg",
+  "height": 87, "width": 170}], "postcode": "DA18 4DW", "rating": "0.00", "specific_end_date":
+  "2022-12-31T00:00:00+00:00", "specific_start_date": "2016-01-29T17:08:13.138000+00:00",
+  "status": "live", "title": "Leader (volunteering with 8-10 year olds) - Bexley Business
+  Academy", "updated": "2016-01-29T16:53:42.488822+00:00", "working_from_home": false},
+  {"address_1": "Bexley Business Academy", "city": "Erith", "created": "2014-10-27T09:51:48.064897+00:00",
+  "description": "Assistant Leaders are responsible, with the Leader, helpers and
+  members, for planning and running the weekly activities for 6-8 year olds. It is
+  a fun and rewarding role, allowing you to see young people enjoy the events / activities
+  you organise and growing in confidence and ability over time. The Scout Association
+  provides a wide range of books, electronic resources and suggested programmes of
+  activities to aid volunteers plan their activities.", "for_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "475526a0-cce0-4abb-b513-64e7fb2b0fb7",
+  "interests": [{"children": [], "created": "2014-10-26T17:24:26.246077+00:00", "id":
+  "c1a66cf8-a685-4300-8f69-6d47a0bd93e0", "name": "Recreation", "parent_id": "cd7d0590-2800-45b4-8084-b475562e73f4",
+  "slug": "recreation", "updated": "2014-10-26T17:24:26.246096+00:00"}, {"children":
+  [], "created": "2014-10-26T17:24:26.278190+00:00", "id": "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+  "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.271205+00:00", "id": "8678f792-d24e-4810-99d5-c6e6ba4196a4",
+  "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "families", "updated": "2014-10-26T17:24:26.271224+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+  "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new": false,
+  "lat": 51.4964, "lng": 0.133227, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Beavers-game.616x318.jpg",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Beavers-game.308x159.jpg",
+  "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Beavers-game.243x124.jpg",
+  "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Beavers-game.170x87.jpg",
+  "height": 87, "width": 170}], "postcode": "DA18 4DW", "rating": "0.00", "specific_end_date":
+  "2022-12-31T00:00:00+00:00", "specific_start_date": "2016-01-29T16:53:01.428000+00:00",
+  "status": "live", "title": "Assistant Leaders (volunteering with 6-8 year olds)
+  - Bexley Business Academy", "updated": "2016-01-29T16:51:17.243976+00:00", "working_from_home":
+  false}, {"address_1": "Hill end road", "city": "Harefield", "created": "2016-01-29T16:25:17.486616+00:00",
+  "description": "By Volunteering to work with scouts, you will be responsible, along
+  with the other leaders, helpers and members for planning and running the weekly
+  activities for 10 - 14 year olds! \n\nIt is a fun and rewarding role, allowing you
+  to watch the young people enjoy the activities you organise, as well as being involved
+  in their development as they grow in confidence and ability. \n\nThe Scout Association
+  provides a wide range of books and electronic resources to aid volunteers plan their
+  activities together with an award winning training scheme and on-line programme
+  resources", "for_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
+  "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+  "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "87e2dbae-e1d4-43f1-84a5-0b2a9956afb5",
+  "interests": [{"children": [], "created": "2014-10-26T17:24:26.278190+00:00", "id":
+  "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd", "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
+  "slug": "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children":
+  [], "created": "2014-10-26T17:24:26.271205+00:00", "id": "8678f792-d24e-4810-99d5-c6e6ba4196a4",
+  "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "families", "updated": "2014-10-26T17:24:26.271224+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.246077+00:00", "id": "c1a66cf8-a685-4300-8f69-6d47a0bd93e0",
+  "name": "Recreation", "parent_id": "cd7d0590-2800-45b4-8084-b475562e73f4", "slug":
+  "recreation", "updated": "2014-10-26T17:24:26.246096+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+  "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new": false,
+  "lat": 51.6095, "lng": -0.481377, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Adults boating.616x318.jpg",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Adults
+  boating.308x159.jpg", "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Adults
+  boating.243x124.jpg", "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Adults
+  boating.170x87.jpg", "height": 87, "width": 170}], "postcode": "UB9 6LD", "rating":
+  "0.00", "specific_end_date": "2017-06-07T15:23:40.025000+00:00", "specific_start_date":
+  "2016-01-29T16:23:40.025000+00:00", "status": "live", "title": "Assistant Scout
+  Leaders (volunteering with 10-14 year olds) 1st Harefield", "updated": "2016-01-29T16:31:46.740297+00:00",
+  "working_from_home": false}, {"address_1": "Hill end road", "city": "harefield",
+  "created": "2016-01-29T16:21:56.799943+00:00", "description": "Assistant Leaders
+  are responsible, with Leaders, helpers and members, for planning and running the
+  weekly activities for 8-10 year olds!\n\nIt is a fun and rewarding role, allowing
+  you to watch the young people enjoy the activities you organize, as well as being
+  involved in their development as they grow in confidence and ability. \n\nThe Scout
+  Association provides a wide range of books and electronic resources to aid volunteers
+  plan their activities together with an award winning training scheme and on-line
+  programme resources.", "for_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
+  "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+  "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "517adf32-eb09-4e7e-8e6d-cc977bf24157",
+  "interests": [{"children": [], "created": "2014-10-26T17:24:26.271205+00:00", "id":
+  "8678f792-d24e-4810-99d5-c6e6ba4196a4", "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
+  "slug": "families", "updated": "2014-10-26T17:24:26.271224+00:00"}, {"children":
+  [], "created": "2014-10-26T17:24:26.278190+00:00", "id": "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+  "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.246077+00:00", "id": "c1a66cf8-a685-4300-8f69-6d47a0bd93e0",
+  "name": "Recreation", "parent_id": "cd7d0590-2800-45b4-8084-b475562e73f4", "slug":
+  "recreation", "updated": "2014-10-26T17:24:26.246096+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+  "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new": false,
+  "lat": 51.6095, "lng": -0.481377, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Cubs_outside_Sxsaz4eyvVoWyPDL8UrUv5.616x318.jpg",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Cubs_outside_Sxsaz4eyvVoWyPDL8UrUv5.308x159.jpg",
+  "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Cubs_outside_Sxsaz4eyvVoWyPDL8UrUv5.243x124.jpg",
+  "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Cubs_outside_Sxsaz4eyvVoWyPDL8UrUv5.170x87.jpg",
+  "height": 87, "width": 170}], "postcode": "UB9 6LD", "rating": "0.00", "specific_end_date":
+  "2017-12-05T16:19:47.751000+00:00", "specific_start_date": "2016-01-29T16:19:47.751000+00:00",
+  "status": "live", "title": "Assistant Cub Scout Leader (volunteering with 8-10 year
+  olds) 1st Harefield", "updated": "2016-01-29T16:28:33.087528+00:00", "working_from_home":
+  false}, {"address_1": "Hill end road", "city": "Harefield", "created": "2016-01-29T16:15:40.187106+00:00",
+  "description": "By Volunteering to work with beavers, you will be responsible, along
+  with the other leaders, helpers and members for planning and running the weekly
+  activities for 6-8 year olds! \n\nIt is a fun and rewarding role, allowing you to
+  watch the young people enjoy the activities you organise, as well as being involved
+  in their development as they grow in confidence and ability. \n\nThe Scout Association
+  provides a wide range of books and electronic resources to aid volunteers plan their
+  activities together with an award winning training scheme and on-line programme
+  resources", "for_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
+  "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+  "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "71b07eb5-b0bd-4574-8a14-648ff3ec0f04",
+  "interests": [{"children": [], "created": "2014-10-26T17:24:26.246077+00:00", "id":
+  "c1a66cf8-a685-4300-8f69-6d47a0bd93e0", "name": "Recreation", "parent_id": "cd7d0590-2800-45b4-8084-b475562e73f4",
+  "slug": "recreation", "updated": "2014-10-26T17:24:26.246096+00:00"}, {"children":
+  [], "created": "2014-10-26T17:24:26.271205+00:00", "id": "8678f792-d24e-4810-99d5-c6e6ba4196a4",
+  "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "families", "updated": "2014-10-26T17:24:26.271224+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.278190+00:00", "id": "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+  "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+  "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new": false,
+  "lat": 51.6095, "lng": -0.481377, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Beavers_mucky_hands_nqAzgzgtcsdYAeXSTZuoCb.616x318.JPG",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Beavers_mucky_hands_nqAzgzgtcsdYAeXSTZuoCb.308x159.JPG",
+  "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Beavers_mucky_hands_nqAzgzgtcsdYAeXSTZuoCb.243x124.JPG",
+  "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Beavers_mucky_hands_nqAzgzgtcsdYAeXSTZuoCb.170x87.JPG",
+  "height": 87, "width": 170}], "postcode": "UB9 6LD", "rating": "0.00", "specific_end_date":
+  "2017-10-12T15:12:56.404000+00:00", "specific_start_date": "2016-01-29T16:12:56.404000+00:00",
+  "status": "live", "title": "Assistant Beaver Scout Leaders (volunteering with 6-8
+  year olds) 1st Harefield", "updated": "2016-01-29T16:20:02.752898+00:00", "working_from_home":
+  false}, {"address_1": "Northumberland Road,", "city": "North Harrow.", "created":
+  "2014-10-27T09:50:47.608579+00:00", "description": "Scouting offers opportunities
+  for young people to develop their potential. Our Scout Group needs a volunteer Manager
+  to help organize, support and manage the adult volunteers that make these possibilities
+  happen. \n\nThe role centres on supporting the adult volunteers in the Scout Group
+  and is a varied and challenging task. Communicating effectively and providing inspiration
+  are key skills to have. \n\nIf you are a manager at work, or would like to develop
+  skills in this area, this is an ideal role for you.\n\nHere\u2019s what you can
+  expect:\n\u2022 Improve your CV & put your skills to good use\n\u2022 Try new things
+  & gain qualifications\n\u2022 Become an active member of your\ncommunity\n\u2022
+  Do something out of the ordinary\n\u2022 Meet new people, make friends and have\nfun!",
+  "for_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
+  "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+  "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "56927bc9-67fe-4745-bcda-3f086ecf9c86",
+  "interests": [{"children": [], "created": "2014-10-26T17:24:26.278190+00:00", "id":
+  "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd", "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
+  "slug": "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children":
+  [], "created": "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+  "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}, {"children": [],
+  "created": "2014-10-26T17:24:25.590527+00:00", "id": "517978aa-186d-4149-8548-c26b3d3f41cc",
+  "name": "Education", "parent_id": "cf1ab709-0632-4d79-adef-f2fd32c1ebdf", "slug":
+  "education", "updated": "2014-10-26T17:24:25.590548+00:00"}], "is_new": false, "lat":
+  51.5856, "lng": -0.365615, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/iScout_a4zSZLn4zLGpnbziiaGEob.616x318.jpg",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/iScout_a4zSZLn4zLGpnbziiaGEob.308x159.jpg",
+  "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/iScout_a4zSZLn4zLGpnbziiaGEob.243x124.jpg",
+  "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/iScout_a4zSZLn4zLGpnbziiaGEob.170x87.jpg",
+  "height": 87, "width": 170}], "postcode": "HA2 7RA", "rating": "0.00", "specific_end_date":
+  null, "specific_start_date": "2016-01-29T16:06:45.104000+00:00", "status": "live",
+  "title": "Volunteer Group Scout Leader/ Manager. 4th Headstone.", "updated": "2016-01-29T16:08:56.421199+00:00",
+  "working_from_home": false}, {"address_1": "Grandstand way", "city": "Northolt",
+  "created": "2014-10-27T09:51:37.857930+00:00", "description": "By Volunteering to
+  work with scouts, you will be responsible, along with the other leaders, helpers
+  and members for planning and running the weekly activities for 10 - 14 year olds!
+  \n\nIt is a fun and rewarding role, allowing you to watch the young people enjoy
+  the activities you organise, as well as being involved in their development as they
+  grow in confidence and ability. \n\nThe Scout Association provides a wide range
+  of books and electronic resources to aid volunteers plan their activities together
+  with an award winning training scheme and on-line programme resources.", "for_recruiter":
+  {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "51a083d3-ac1f-4551-aced-66ced79fa907",
+  "interests": [{"children": [], "created": "2014-10-26T17:24:26.246077+00:00", "id":
+  "c1a66cf8-a685-4300-8f69-6d47a0bd93e0", "name": "Recreation", "parent_id": "cd7d0590-2800-45b4-8084-b475562e73f4",
+  "slug": "recreation", "updated": "2014-10-26T17:24:26.246096+00:00"}, {"children":
+  [], "created": "2014-10-26T17:24:26.278190+00:00", "id": "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+  "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.271205+00:00", "id": "8678f792-d24e-4810-99d5-c6e6ba4196a4",
+  "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "families", "updated": "2014-10-26T17:24:26.271224+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+  "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new": false,
+  "lat": 51.5538, "lng": -0.371228, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC_0043_FNTJBrnPbjoWRDRnBxFCKo.616x318.JPG",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC_0043_FNTJBrnPbjoWRDRnBxFCKo.308x159.JPG",
+  "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC_0043_FNTJBrnPbjoWRDRnBxFCKo.243x124.JPG",
+  "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC_0043_FNTJBrnPbjoWRDRnBxFCKo.170x87.JPG",
+  "height": 87, "width": 170}], "postcode": "UB5 4BZ", "rating": "0.00", "specific_end_date":
+  null, "specific_start_date": "2016-01-29T16:00:57.123000+00:00", "status": "live",
+  "title": "Scout Leaders (volunteering with 10-14 year olds)1st Northolt", "updated":
+  "2016-01-29T16:05:04.488496+00:00", "working_from_home": false}, {"address_1": "Rear
+  of 121-123 Randall Avenue,", "city": "Neasden,", "created": "2014-10-27T09:50:54.540244+00:00",
+  "description": "By Volunteering to work with scouts, you will be responsible, along
+  with the other leaders, helpers and members for planning and running the weekly
+  activities for 10 - 14 year olds! \n\nIt is a fun and rewarding role, allowing you
+  to watch the young people enjoy the activities you organise, as well being involved
+  in their development as they grow in confidence and ability. \n\nThe Scout Association
+  provides a wide range of books and electronic resources to aid volunteers plan their
+  activities together with an award winning training scheme and on-line programme
+  resources", "for_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
+  "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+  "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "4b3298e8-97c1-4408-88c8-5cb939efc063",
+  "interests": [{"children": [], "created": "2014-10-26T17:24:26.246077+00:00", "id":
+  "c1a66cf8-a685-4300-8f69-6d47a0bd93e0", "name": "Recreation", "parent_id": "cd7d0590-2800-45b4-8084-b475562e73f4",
+  "slug": "recreation", "updated": "2014-10-26T17:24:26.246096+00:00"}, {"children":
+  [], "created": "2014-10-26T17:24:26.278190+00:00", "id": "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+  "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.271205+00:00", "id": "8678f792-d24e-4810-99d5-c6e6ba4196a4",
+  "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "families", "updated": "2014-10-26T17:24:26.271224+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+  "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new": false,
+  "lat": 51.5635, "lng": -0.247148, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC_0043_ejJnjUWhSgxfEte86B8w6j.616x318.JPG",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC_0043_ejJnjUWhSgxfEte86B8w6j.308x159.JPG",
+  "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC_0043_ejJnjUWhSgxfEte86B8w6j.243x124.JPG",
+  "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC_0043_ejJnjUWhSgxfEte86B8w6j.170x87.JPG",
+  "height": 87, "width": 170}], "postcode": "NW2 7SX", "rating": "0.00", "specific_end_date":
+  null, "specific_start_date": "2016-01-29T16:01:45.374000+00:00", "status": "live",
+  "title": "Scout Leaders (volunteering with 10-14 year olds) 37th Willesden", "updated":
+  "2016-01-29T16:01:21.931543+00:00", "working_from_home": false}, {"address_1": "Quainton
+  Hall School,", "city": "Harrow", "created": "2014-10-27T09:50:56.622157+00:00",
+  "description": "By Volunteering to work with beavers, you will be responsible, along
+  with the other leaders, helpers and members for planning and running the weekly
+  activities for 6-8 year olds! \n\nIt is a fun and rewarding role, allowing you to
+  watch the young people enjoy the activities you organise, as well being involved
+  in their development as they grow in confidence and ability. \n\nThe Scout Association
+  provides a wide range of books and electronic resources to aid volunteers plan their
+  activities together with an award winning training scheme and on-line programme
+  resources", "for_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
+  "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+  "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "48ddf50c-b9a9-4a79-9f1d-5942030dc301",
+  "interests": [{"children": [], "created": "2014-10-26T17:24:26.246077+00:00", "id":
+  "c1a66cf8-a685-4300-8f69-6d47a0bd93e0", "name": "Recreation", "parent_id": "cd7d0590-2800-45b4-8084-b475562e73f4",
+  "slug": "recreation", "updated": "2014-10-26T17:24:26.246096+00:00"}, {"children":
+  [], "created": "2014-10-26T17:24:26.278190+00:00", "id": "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+  "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.271205+00:00", "id": "8678f792-d24e-4810-99d5-c6e6ba4196a4",
+  "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "families", "updated": "2014-10-26T17:24:26.271224+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+  "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new": false,
+  "lat": 51.5849, "lng": -0.340641, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC0093_98CStvPa8QwNpnwze75o9k.616x318.jpg",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC0093_98CStvPa8QwNpnwze75o9k.308x159.jpg",
+  "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC0093_98CStvPa8QwNpnwze75o9k.243x124.jpg",
+  "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC0093_98CStvPa8QwNpnwze75o9k.170x87.jpg",
+  "height": 87, "width": 170}], "postcode": "HA1 1RX", "rating": "0.00", "specific_end_date":
+  null, "specific_start_date": "2016-01-29T15:53:52.046000+00:00", "status": "live",
+  "title": "Beaver Leader (volunteering with 6-8 year olds) 13th/21st Harrow", "updated":
+  "2016-01-29T15:58:58.333473+00:00", "working_from_home": false}, {"address_1": "43
+  Claremont Road,", "city": "Wealdstone", "created": "2014-10-27T09:51:53.864127+00:00",
+  "description": "By Volunteering to work with scouts, you will be responsible, along
+  with the other leaders, helpers and members for planning and running the weekly
+  activities for 10 - 14 year olds! \n\nIt is a fun and rewarding role, allowing you
+  to watch the young people enjoy the activities you organise, as well being involved
+  in their development as they grow in confidence and ability. \n\nThe Scout Association
+  provides a wide range of books and electronic resources to aid volunteers plan their
+  activities together with an award winning training scheme and on-line programme
+  resources", "for_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
+  "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+  "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "79ae1022-9059-40c0-82dd-3f5b15dd796a",
+  "interests": [{"children": [], "created": "2014-10-26T17:24:26.246077+00:00", "id":
+  "c1a66cf8-a685-4300-8f69-6d47a0bd93e0", "name": "Recreation", "parent_id": "cd7d0590-2800-45b4-8084-b475562e73f4",
+  "slug": "recreation", "updated": "2014-10-26T17:24:26.246096+00:00"}, {"children":
+  [], "created": "2014-10-26T17:24:26.278190+00:00", "id": "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+  "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.271205+00:00", "id": "8678f792-d24e-4810-99d5-c6e6ba4196a4",
+  "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "families", "updated": "2014-10-26T17:24:26.271224+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+  "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new": false,
+  "lat": 51.5983, "lng": -0.335993, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/X0A0667_6ptyC4xw2nhqJzudZRwLhS.616x318.jpg",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/X0A0667_6ptyC4xw2nhqJzudZRwLhS.308x159.jpg",
+  "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/X0A0667_6ptyC4xw2nhqJzudZRwLhS.243x124.jpg",
+  "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/X0A0667_6ptyC4xw2nhqJzudZRwLhS.170x87.jpg",
+  "height": 87, "width": 170}], "postcode": "HA3 7AU", "rating": "0.00", "specific_end_date":
+  null, "specific_start_date": "2016-01-29T16:05:04.445000+00:00", "status": "live",
+  "title": "Scout Leader (volunteering with 10-14 year olds) 27th Harrow", "updated":
+  "2016-01-29T15:50:10.669967+00:00", "working_from_home": false}, {"address_1": "Rear
+  of Methodist Church,", "city": "Greenford", "created": "2014-10-27T09:51:29.610153+00:00",
+  "description": "By volunteering to work with Cubs, you would be responsible, along
+  with the assistant Leaders, helpers and members, for planning and running the weekly
+  activities for 8-10 year olds!\n\nIt is a fun and rewarding role, allowing you to
+  watch the young people enjoy the activities you organize, as well as being involved
+  in their development as they grow in confidence and ability. \n\nThe Scout Association
+  provides a wide range of books and electronic resources to aid volunteers plan their
+  activities together with an award winning training scheme and on-line programme
+  resources.", "for_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
+  "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+  "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "37ba88ef-c8ef-464c-9c5a-f1a63be651d7",
+  "interests": [{"children": [], "created": "2014-10-26T17:24:26.246077+00:00", "id":
+  "c1a66cf8-a685-4300-8f69-6d47a0bd93e0", "name": "Recreation", "parent_id": "cd7d0590-2800-45b4-8084-b475562e73f4",
+  "slug": "recreation", "updated": "2014-10-26T17:24:26.246096+00:00"}, {"children":
+  [], "created": "2014-10-26T17:24:26.278190+00:00", "id": "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+  "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.271205+00:00", "id": "8678f792-d24e-4810-99d5-c6e6ba4196a4",
+  "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "families", "updated": "2014-10-26T17:24:26.271224+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+  "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new": false,
+  "lat": 51.5287, "lng": -0.357562, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/IMG_0085_3KZLujwVAeLxppXBjSjKpJ.616x318.jpg",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/IMG_0085_3KZLujwVAeLxppXBjSjKpJ.308x159.jpg",
+  "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/IMG_0085_3KZLujwVAeLxppXBjSjKpJ.243x124.jpg",
+  "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/IMG_0085_3KZLujwVAeLxppXBjSjKpJ.170x87.jpg",
+  "height": 87, "width": 170}], "postcode": "UB6 9QN", "rating": "0.00", "specific_end_date":
+  null, "specific_start_date": "2016-01-29T15:59:05.804000+00:00", "status": "live",
+  "title": "Cub Scout Leaders (volunteering with 8-10 year olds) 4th greenford", "updated":
+  "2016-01-29T15:44:15.439856+00:00", "working_from_home": false}, {"address_1": "43
+  Claremont Road,", "city": "Wealdstone", "created": "2014-10-27T09:50:38.557408+00:00",
+  "description": "Assistant Leaders are responsible, with Leaders, helpers and members,
+  for planning and running the weekly activities for 8-10 year olds!\n\nIt is a fun
+  and rewarding role, allowing you to watch the young people enjoy the activities
+  you organize, as well as being involved in their development as they grow in confidence
+  and ability. \n\nThe Scout Association provides a wide range of books and electronic
+  resources to aid volunteers plan their activities together with an award winning
+  training scheme and on-line programme resources", "for_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "d1f8f924-db77-48c9-82a9-7433bbc9a048",
+  "interests": [{"children": [], "created": "2014-10-26T17:24:26.246077+00:00", "id":
+  "c1a66cf8-a685-4300-8f69-6d47a0bd93e0", "name": "Recreation", "parent_id": "cd7d0590-2800-45b4-8084-b475562e73f4",
+  "slug": "recreation", "updated": "2014-10-26T17:24:26.246096+00:00"}, {"children":
+  [], "created": "2014-10-26T17:24:26.278190+00:00", "id": "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+  "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.271205+00:00", "id": "8678f792-d24e-4810-99d5-c6e6ba4196a4",
+  "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "families", "updated": "2014-10-26T17:24:26.271224+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+  "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new": false,
+  "lat": 51.5983, "lng": -0.335993, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/IMG_0085_k7cxdpYbjaec74qAFkkh6n.616x318.jpg",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/IMG_0085_k7cxdpYbjaec74qAFkkh6n.308x159.jpg",
+  "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/IMG_0085_k7cxdpYbjaec74qAFkkh6n.243x124.jpg",
+  "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/IMG_0085_k7cxdpYbjaec74qAFkkh6n.170x87.jpg",
+  "height": 87, "width": 170}], "postcode": "HA3 7AU", "rating": "0.00", "specific_end_date":
+  null, "specific_start_date": "2016-01-25T09:25:58.431000+00:00", "status": "live",
+  "title": "Cub Scout Leader (volunteering with 8-10 year olds) 27th Harrow", "updated":
+  "2016-01-25T09:30:07.758522+00:00", "working_from_home": false}, {"address_1": "Granstand
+  way", "city": "Northolt", "created": "2014-10-27T09:51:31.035309+00:00", "description":
+  "By Volunteering to work with beavers, you will be responsible, along with the other
+  assistant leaders, helpers and members for planning and running the weekly activities
+  for 6-8 year olds! \n\nIt is a fun and rewarding role, allowing you to watch the
+  young people enjoy the activities you organise, as well as being involved in their
+  development as they grow in confidence and ability. \n\nThe Scout Association provides
+  a wide range of books and electronic resources to aid volunteers plan their activities
+  together with an award winning training scheme and on-line programme resources.",
+  "for_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
+  "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+  "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "9f47b88f-ac0f-4b88-a954-a15ff6162b37",
+  "interests": [{"children": [], "created": "2014-10-26T17:24:26.246077+00:00", "id":
+  "c1a66cf8-a685-4300-8f69-6d47a0bd93e0", "name": "Recreation", "parent_id": "cd7d0590-2800-45b4-8084-b475562e73f4",
+  "slug": "recreation", "updated": "2014-10-26T17:24:26.246096+00:00"}, {"children":
+  [], "created": "2014-10-26T17:24:26.278190+00:00", "id": "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+  "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.271205+00:00", "id": "8678f792-d24e-4810-99d5-c6e6ba4196a4",
+  "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "families", "updated": "2014-10-26T17:24:26.271224+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+  "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new": false,
+  "lat": 51.5538, "lng": -0.371228, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC0093_TB5Sy3i38CaRKSkSbiQ2sB.616x318.jpg",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC0093_TB5Sy3i38CaRKSkSbiQ2sB.308x159.jpg",
+  "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC0093_TB5Sy3i38CaRKSkSbiQ2sB.243x124.jpg",
+  "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC0093_TB5Sy3i38CaRKSkSbiQ2sB.170x87.jpg",
+  "height": 87, "width": 170}], "postcode": "UB5 4BZ", "rating": "0.00", "specific_end_date":
+  null, "specific_start_date": "2016-01-25T09:24:59.631000+00:00", "status": "live",
+  "title": "Beaver Scout Leader (volunteering with 6-8 year olds)1st Northolt", "updated":
+  "2016-01-25T09:29:09.525997+00:00", "working_from_home": false}, {"address_1": "Rear
+  of 121 Randall Avenue", "city": "neasden", "created": "2014-10-27T09:52:00.569785+00:00",
+  "description": "Scouting offers opportunities for young people to develop their
+  potential. Our Scout Group needs a volunteer Manager to help organize, support and
+  manage the adult volunteers that make these possibilities happen. \n\nThe role centres
+  on supporting the adult volunteers in the Scout Group and is a varied and challenging
+  task. Communicating effectively and providing inspiration are key skills to have.
+  \n\nIf you are a manager at work, or would like to develop skills in this area,
+  this is an ideal role for you.\n\nHere\u2019s what you can expect:\n\u2022 Improve
+  your CV & put your skills to good use\n\u2022 Try new things & gain qualifications\n\u2022
+  Become an active member of your\ncommunity\n\u2022 Do something out of the ordinary\n\u2022
+  Meet new people, make friends and have\nfun!", "for_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "5639b5d5-5b60-47d5-9b95-856944d93fa4",
+  "interests": [{"children": [], "created": "2014-10-26T17:24:26.278190+00:00", "id":
+  "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd", "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
+  "slug": "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children":
+  [], "created": "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+  "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}, {"children": [],
+  "created": "2014-10-26T17:24:25.590527+00:00", "id": "517978aa-186d-4149-8548-c26b3d3f41cc",
+  "name": "Education", "parent_id": "cf1ab709-0632-4d79-adef-f2fd32c1ebdf", "slug":
+  "education", "updated": "2014-10-26T17:24:25.590548+00:00"}], "is_new": false, "lat":
+  51.5635, "lng": -0.247148, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  null, "created": "2014-10-27T09:50:29.663966+00:00", "email": "debbie.evans@scouts.org.uk",
+  "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater London
+  Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+  "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/iScout_cKz4UJ46Rm6NbsGoW8cz6S.616x318.jpg",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/iScout_cKz4UJ46Rm6NbsGoW8cz6S.308x159.jpg",
+  "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/iScout_cKz4UJ46Rm6NbsGoW8cz6S.243x124.jpg",
+  "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/iScout_cKz4UJ46Rm6NbsGoW8cz6S.170x87.jpg",
+  "height": 87, "width": 170}], "postcode": "NW2 7SX", "rating": "0.00", "specific_end_date":
+  null, "specific_start_date": "2016-01-25T09:29:40.026000+00:00", "status": "live",
+  "title": "Volunteer Manager for Scout Group- 37th Willesden", "updated": "2016-01-25T09:28:05.441293+00:00",
+  "working_from_home": false}]}, "links": {"next": {"href": "/v1/orgs/33c3a2ab-06e2-4fab-a865-a8518cd842ca/opportunities?page=2",
+  "title": "Next page"}, "self": {"href": "/v1/orgs/33c3a2ab-06e2-4fab-a865-a8518cd842ca/opportunities",
+  "title": "You are here."}}, "meta": {"code": 200, "current_page": 1, "items_per_page":
+  20, "sort_by": ["updated"], "tenant": "doittrust", "total_items": 196, "total_pages":
+  10, "version": "2016.01.20.1"}}'

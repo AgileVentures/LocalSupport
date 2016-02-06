@@ -1,0 +1,24 @@
+---
+:scope: 
+:url: https://do-it.org/partials/logo-upload.html
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Accept-Ranges: bytes
+  Content-Type: text/html
+  Date: Sat, 06 Feb 2016 11:47:20 GMT
+  ETag: '"569c1749-147"'
+  Last-Modified: Sun, 17 Jan 2016 22:35:53 GMT
+  Server: nginx/1.4.6 (Ubuntu)
+  Strict-Transport-Security: max-age=31536000
+  Content-Length: '327'
+  Connection: close
+:content: |-
+  <form name="form" class="form logo-upload" novalidate>
+      <input id="id_logo" type="file" name="logo" ng-model="fields.logo" ng-change="submit(onValid)" doit-input-file/>
+      <label for="id_logo" class="clearfix">
+          <span class="icon icon-photo"></span>
+          <p class="label-text">Change logo</p>
+      </label>
+  </form>

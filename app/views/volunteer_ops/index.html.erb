@@ -23,7 +23,7 @@
       <table>
          <%if @doit_orgs && @doit_orgs.length>0%>
            <% @doit_orgs.each do |op| %>
-              <tr>
+              <tr id="<%= op.id%>">
                 <td>
                   <strong> <%= link_to op.name, "https://do-it.org/opportunities/#{op.opportunity_id}" %> </strong><br>
 

@@ -1,0 +1,33 @@
+---
+:scope: 
+:url: https://maps.googleapis.com/maps-api-v3/api/js/23/7/intl/en_gb/stats.js
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Vary: Accept-Encoding
+  Content-Type: text/javascript
+  Date: Mon, 01 Feb 2016 22:45:16 GMT
+  Expires: Tue, 31 Jan 2017 22:45:16 GMT
+  Last-Modified: Mon, 01 Feb 2016 03:06:39 GMT
+  X-Content-Type-Options: nosniff
+  Server: sffe
+  X-XSS-Protection: 1; mode=block
+  Cache-Control: public, max-age=31536000
+  Age: '392151'
+  Alternate-Protocol: 443:quic,p=1
+  Alt-Svc: quic=":443"; ma=604800; v="30,29,28,27,26,25"
+  Accept-Ranges: none
+  Connection: close
+:content: |
+  google.maps.__gjsload__('stats', function(_){'use strict';var N3=function(a,b,c){var d=[];_.Dc(a,function(a,c){d.push(c+b+a)});return d.join(c)},O3=function(a,b,c,d){var e={};e.host=window.document.location&&window.document.location.host||window.location.host;e.v=a;e.r=Math.round(1/b);c&&(e.client=c);d&&(e.key=d);return e},Dda=function(a){var b={};_.Dc(a,function(a,d){b[(0,window.encodeURIComponent)(d)]=(0,window.encodeURIComponent)(a).replace(/%7C/g,"|")});return N3(b,":",",")},Eda=function(a,b,c,d){var e=_.Q.j[23],f=_.Q.j[22];this.ma=a;this.ta=
+  b;this.ua=null!=e?e:500;this.U=null!=f?f:2;this.W=c;this.V=d;this.R=new _.sj;this.j=0;this.S=_.Fa();P3(this)},P3=function(a){window.setTimeout(function(){Fda(a);P3(a)},Math.min(a.ua*Math.pow(a.U,a.j),2147483647))},Q3=function(a,b,c){a.R.set(b,c)},Fda=function(a){var b=O3(a.ta,a.W,a.V,void 0);b.t=a.j+"-"+(_.Fa()-a.S);a.R.forEach(function(a,d){var e=a();0<e&&(b[d]=+e.toFixed(2)+(_.xl()?"":"-if"))});a.ma.j({ev:"api_snap"},b);++a.j},R3=function(a,b,c,d,e){this.V=a;this.ma=b;this.U=c;this.R=d;this.S=e;
+  this.j=new _.sj;this.W=_.Fa()},S3=function(a,b,c){this.U=b;this.R=a+"/maps/gen_204";this.S=c},T3=function(){this.j=new _.sj},Gda=function(a){var b=0,c=0;a.j.forEach(function(a){b+=a.gr;c+=a.Hq});return c?b/c:0},U3=function(a,b,c,d,e){this.W=a;this.ma=b;this.V=c;this.S=d;this.U=e;this.R={};this.j=[]},V3=function(a,b,c,d){this.S=a;_.I.bind(this.S,"set_at",this,this.U);_.I.bind(this.S,"insert_at",this,this.U);this.W=b;this.ma=c;this.V=d;this.R=0;this.j={};this.U()},W3=function(){this.j={}},Hda=function(){this.j=
+  [];this.R=[]},X3=function(a,b,c){this.j=a;this.R=b;this.S=c},Ida=function(a,b){a.j.j.push(b);var c=a.R,d=_.pb(b),c=c.j;d in c||(c[d]=0);++c[d];d=a.j;if(d.j.length+d.R.length>a.S){c=a.j;d=c.R;c=c.j;if(!d.length)for(;c.length;)d.push(c.pop());(d=d.pop())&&a.R.remove(d)}},Y3=function(a,b){this.V=new X3(new Hda,new W3,100);this.R=null;this.Ea=[];this.U=a;_.I.bind(a,"insert_at",this,this.Ye);_.I.bind(a,"set_at",this,this.Ye);_.I.bind(a,"remove_at",this,this.Ye);this.Ye();this.j=0;this.va=b;this.S=0},Z3=
+  function(){this.R=_.ef(_.Q);var a;_.T[35]?(a=_.We(_.Q).j[11],a=null!=a?a:""):a=_.Mx;this.j=new S3(a,_.Di,window.document);new V3(_.zi,(0,_.u)(this.j.j,this.j),_.Uf,!!this.R);a=_.af(_.kf());this.W=a.split(".")[1]||a;_.Ci&&(this.S=new Eda(this.j,this.W,this.ua,this.R));this.ma={};this.V={};this.U={};this.ta={};this.ua=_.df()};
+  R3.prototype.ta=function(a,b){var c=_.ra(b)?b:1;this.j.isEmpty()&&window.setTimeout((0,_.u)(function(){var a=O3(this.ma,this.U,this.R,this.S);a.t=_.Fa()-this.W;var b=this.j;_.tj(b);for(var c={},g=0;g<b.j.length;g++){var h=b.j[g];c[h]=b.va[h]}_.iB(a,c);this.j.clear();this.V.j({ev:"api_maprft"},a)},this),500);c=this.j.get(a,0)+c;this.j.set(a,c)};
+  S3.prototype.j=function(a,b){var c=b||{},d=_.kk().toString(36);c.src="apiv3";c.token=this.U;c.ts=d.substr(d.length-6);a.cad=Dda(c);c=N3(a,"=","&");c=this.R+"?target=api&"+c;this.S.createElement("img").src=c;(d=_.dd.__gm_captureCSI)&&d(c)};T3.prototype.R=function(a,b,c){this.j.set(_.pb(a),{gr:b,Hq:c})};U3.prototype.ta=function(a){this.R[a]||(this.R[a]=!0,this.j.push(a),2>this.j.length&&_.yB(this,this.ua,500))};
+  U3.prototype.ua=function(){for(var a=O3(this.ma,this.V,this.S,this.U),b=0,c;c=this.j[b];++b)a[c]="1";a.hybrid=+((_.Tk()||!_.Sk())&&_.Sk());this.j.length=0;this.W.j({ev:"api_mapft"},a)};V3.prototype.U=function(){for(var a;a=this.S.removeAt(0);){var b=a.oq;a=a.timestamp-this.ma;++this.R;this.j[b]||(this.j[b]=0);++this.j[b];if(20<=this.R&&!(this.R%5)){var c={};c.s=b;c.sr=this.j[b];c.tr=this.R;c.te=a;c.hc=this.V?"1":"0";this.W({ev:"api_services"},c)}}};W3.prototype.remove=function(a){a=_.pb(a);var b=this.j;a in b&&(--b[a],b[a]||delete b[a])};X3.prototype.contains=function(a){return!!this.R.j[_.pb(a)]};_.v(Y3,_.J);_.t=Y3.prototype;_.t.Ye=function(){_.G(this.Ea,_.I.removeListener);this.Ea.length=0;var a=this.Ea,b=(0,_.u)(this.Hg,this);this.U.forEach(function(c){a.push(_.I.addListener(c.data,"insert",b))});b()};
+  _.t.Hg=function(){var a=this.get("bounds");if(this.get("projection")&&a&&this.R){var b={};this.U.forEach((0,_.u)(function(c){c.data.forEach((0,_.u)(function(c){var d=c.rawData;if(0==(""+d.layer).indexOf(this.R.substr(0,5))&&d.features){c=d.id.length;for(var e=_.dJ(d.id),d=d.features,l=0,n;n=d[l];l++){var p=n.id,q;a:{q=n;if(!q.latLngCached){var r=q.a;if(!r){q=null;break a}var w=new _.M(r[0],r[1]),r=e,w=[w.x,w.y],y=(1<<c)/8388608;w[0]/=y;w[1]/=y;w[0]+=r.Aa;w[1]+=r.ya;w[0]/=8388608;w[1]/=8388608;r=new _.M(w[0],
+  w[1]);w=this.get("projection");q.latLngCached=w&&w.fromPointToLatLng(r)}q=q.latLngCached}q&&a.contains(q)&&(b[p]=n)}}},this))},this));var c=this.V,d;for(d in b)c.contains(d)||(++this.j,Ida(c,d));!this.S&&this.j&&(this.S=_.yB(this,this.Bo,0))}else _.yB(this,this.Hg,1E3)};_.t.Bo=function(){this.S=0;this.j&&(_.lm(this.va,"smni",this.j),this.j=0)};_.t.mapType_changed=function(){var a=this.get("mapType");this.R=a&&a.$f};_.t.bounds_changed=function(){this.Hg()};_.t=Z3.prototype;_.t.un=function(a,b){var c=new Y3(b,a);c.bindTo("mapType",a.__gm);c.bindTo("zoom",a);c.bindTo("bounds",a);c.bindTo("projection",a)};_.t.Rn=function(a){a=_.pb(a);this.ma[a]||(this.ma[a]=new U3(this.j,this.W,this.ua,this.R));return this.ma[a]};_.t.Pn=function(a){a=_.pb(a);this.V[a]||(this.V[a]=new R3(this.j,this.W,1,this.R));return this.V[a]};_.t.qf=function(a){if(this.S){this.U[a]||(this.U[a]=new _.BC,Q3(this.S,a,function(){return b.xc()}));var b=this.U[a];return b}};
+  _.t.On=function(a){if(this.S){this.ta[a]||(this.ta[a]=new T3,Q3(this.S,a,function(){return Gda(b)}));var b=this.ta[a];return b}};var Jda=new Z3;_.nc("stats",Jda);});

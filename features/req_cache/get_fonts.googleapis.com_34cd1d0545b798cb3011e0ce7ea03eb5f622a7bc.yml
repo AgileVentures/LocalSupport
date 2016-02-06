@@ -1,0 +1,28 @@
+---
+:scope: 
+:url: https://fonts.googleapis.com/css?family=Nothing+You+Could+Do
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: text/css
+  Access-Control-Allow-Origin: '*'
+  Timing-Allow-Origin: '*'
+  Expires: Sat, 06 Feb 2016 11:41:01 GMT
+  Date: Sat, 06 Feb 2016 11:41:01 GMT
+  Cache-Control: private, max-age=86400
+  Content-Length: '305'
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
+  Server: GSE
+  Alternate-Protocol: 443:quic,p=1
+  Alt-Svc: quic=":443"; ma=604800; v="30,29,28,27,26,25"
+  Connection: close
+:content: |
+  @font-face {
+    font-family: 'Nothing You Could Do';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Nothing You Could Do'), local('NothingYouCouldDo'), url(https://fonts.gstatic.com/s/nothingyoucoulddo/v6/jpk1K3jbJoyoK0XKaSyQATQ_Mc_CI9I9rz7xtaEMUMz3rGVtsTkPsbDajuO5ueQw.ttf) format('truetype');
+  }

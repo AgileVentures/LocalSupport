@@ -1,0 +1,30 @@
+---
+:scope: 
+:url: https://do-it.org/partials/footer.html
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Accept-Ranges: bytes
+  Content-Type: text/html
+  Date: Sat, 06 Feb 2016 11:50:22 GMT
+  ETag: '"569c1749-19e"'
+  Last-Modified: Sun, 17 Jan 2016 22:35:53 GMT
+  Server: nginx/1.4.6 (Ubuntu)
+  Strict-Transport-Security: max-age=31536000
+  Content-Length: '414'
+  Connection: close
+:content: |
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-lg-28 col-md-28 col-sm-28 col-xs-28">
+              <div class="footer-wrapper">
+                  <div data-block="links"></div>
+                  <div class="row">
+                      <div data-block="copy"></div>
+                      <div data-block="powered"></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
