@@ -28,7 +28,7 @@
                   <strong> <%= link_to op.name, "https://do-it.org/opportunities/#{op.opportunity_id}" %> </strong><br>
 
                   <div id="organisations">
-                    <small><%= link_to op.org_name, "#" %></small>
+                    <small><%= link_to op.org_name, "https://do-it.org/organisations/#{op.org_link}" %></small>
                     <br/>
                   </div>
                   <%= smart_truncate(op.description) %>
