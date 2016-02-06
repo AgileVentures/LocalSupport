@@ -60,18 +60,18 @@ class VolunteerOpsController < ApplicationController
   def assemble_volunteer_markers(organisations)
     harrow_markers = build_map_markers(organisations)
     doit_markers = '[]'
-    # Do-it API works from below
     if Feature.active? :doit_volunteer_opportunities
-      host = 'https://api.do-it.org'
-      href = "/v1/opportunities\?lat\=51.5978\&lng\=-0.3370\&miles\=0.5 "
-      doit_orgs = []
-      collect_all_items(host, href, doit_orgs)
+      doit_orgs = collect_all_items
       doit_markers = build_map_markers(doit_orgs, :doit, false)
-      markers = harrow_markers[0...-1]+', ' + doit_markers[1..-1]
-      markers = doit_markers if harrow_markers == '[]'
     end
-    markers = harrow_markers if doit_markers == '[]' 
+    markers = list_of_markers(harrow_markers, doit_markers)
     [markers, doit_orgs]
+  end
+
+  def list_of_markers(harrow_markers, doit_markers)
+    return doit_markers if harrow_markers == '[]' 
+    return harrow_markers if doit_markers == '[]' 
+    return harrow_markers[0...-1]+', ' + doit_markers[1..-1]
   end
 
   def build_map_markers(organisations, type = :harrow, include_extra_organisation_data = true)
@@ -93,24 +93,28 @@ class VolunteerOpsController < ApplicationController
   end
 
   # This needs to be a helper method for the do-it API
-  def collect_all_items(host, href, orgs)
-    n = 1
+  def collect_all_items
+    host = 'https://api.do-it.org'
+    href = "/v1/opportunities\?lat\=51.5978\&lng\=-0.3370\&miles\=0.5 "
+    doit_orgs = []
+    id = 1
     while href
       url = host + href
       response = HTTParty.get(url)
       if response.body && response.body != '[]'
         resp_items = JSON.parse(response.body)['data']['items']
         resp_items.each do |item|
-          org = OpenStruct.new(latitude: item['lat'], longitude: item['lng'], name: item['title'], id: n,
+          org = OpenStruct.new(latitude: item['lat'], longitude: item['lng'], name: item['title'], id: id,
                                 description: item['description'], opportunity_id: item['id'],
                                 org_name: item['for_recruiter']['name'], org_link: item['for_recruiter']['slug'])
-          orgs.push (org)
-          n += 1
+          doit_orgs.push (org)
+          id += 1
         end
         next_page = JSON.parse(response.body)['links']['next']
       end
       href = next_page ? next_page['href'] : nil
     end
+    doit_orgs
   end
 
   def authorize
