@@ -1,0 +1,20 @@
+---
+:scope: 
+:url: https://maps.googleapis.com/maps/gen_204?target=api&ev=api_viewport&cad=host:do-it.org,v:23,r:1,mt:m,c:51.598298%2C-0.335993,sp:0.02453x0.05296,size:617x460,relsize:0.36,token:2hpvvn78v8,src:apiv3,ts:b58fw2
+:body: ''
+:status: 204
+:method: get
+:headers:
+  Content-Type: image/gif
+  Date: Sat, 06 Feb 2016 13:15:20 GMT
+  Pragma: no-cache
+  Expires: Fri, 01 Jan 1990 00:00:00 GMT
+  Cache-Control: no-cache, must-revalidate
+  Server: mafe
+  Content-Length: '0'
+  X-XSS-Protection: 1; mode=block
+  X-Frame-Options: SAMEORIGIN
+  Alternate-Protocol: 443:quic,p=1
+  Alt-Svc: quic=":443"; ma=604800; v="30,29,28,27,26,25"
+  Connection: close
+:content: ''

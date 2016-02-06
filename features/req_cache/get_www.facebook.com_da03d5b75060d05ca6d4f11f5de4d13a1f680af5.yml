@@ -1,0 +1,18 @@
+---
+:scope: 
+:url: https://www.facebook.com/impression.php/f1b604c748/?api_key=739930526026940&lid=115&payload=%7B%22source%22%3A%22jssdk%22%7D
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: image/gif
+  X-Content-Type-Options: nosniff
+  Pragma: no-cache
+  Cache-Control: private, no-cache, no-store, must-revalidate
+  Expires: Sat, 01 Jan 2000 00:00:00 GMT
+  X-FB-Debug: 9I9KfQxwSXC96V9+K1SIvNu/+FtbLLaL5g34uMvUNt7PZliaif154Z1XGZi5y+bXuU19bVuuRim21S5pZmprYA==
+  Date: Sat, 06 Feb 2016 12:43:42 GMT
+  Connection: close
+  Content-Length: '43'
+:content: !binary |-
+  R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==

@@ -71,7 +71,7 @@ class VolunteerOpsController < ApplicationController
   def list_of_markers(harrow_markers, doit_markers)
     return doit_markers if harrow_markers == '[]' 
     return harrow_markers if doit_markers == '[]' 
-    return harrow_markers[0...-1]+', ' + doit_markers[1..-1]
+    harrow_markers[0...-1]+', ' + doit_markers[1..-1]
   end
 
   def build_map_markers(organisations, type = :harrow, include_extra_organisation_data = true)
@@ -104,9 +104,11 @@ class VolunteerOpsController < ApplicationController
       if response.body && response.body != '[]'
         resp_items = JSON.parse(response.body)['data']['items']
         resp_items.each do |item|
-          org = OpenStruct.new(latitude: item['lat'], longitude: item['lng'], name: item['title'], id: id,
-                                description: item['description'], opportunity_id: item['id'],
-                                org_name: item['for_recruiter']['name'], org_link: item['for_recruiter']['slug'])
+          org = OpenStruct.new(latitude: item['lat'], longitude: item['lng'], 
+                name: item['title'], id: id, description: item['description'], 
+                opportunity_id: item['id'], 
+                org_name: item['for_recruiter']['name'], 
+                org_link: item['for_recruiter']['slug'])
           doit_orgs.push (org)
           id += 1
         end
