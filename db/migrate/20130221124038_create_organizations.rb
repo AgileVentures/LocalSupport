@@ -9,7 +9,7 @@ class CreateOrganizations < ActiveRecord::Migration
       t.string :website
       t.string :telephone
 
-      t.timestamps
+      t.timestamps null: true
     end
   end
 end

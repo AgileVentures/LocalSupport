@@ -5,7 +5,7 @@ class CreatePages < ActiveRecord::Migration
       t.string :permalink
       t.text :content
 
-      t.timestamps
+      t.timestamps null: true
     end
     add_index :pages, :permalink
   end
