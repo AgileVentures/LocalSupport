@@ -37,11 +37,14 @@ Feature: As a member of the public
       And I click the first "Scouts - Scout Association - Greater London Region"
       Then I should be on do-it "/organisations/greater-london-region" page
 
-    # @javascript @vcr @billy
-    # Scenario: See a volunteer opportunity and hyperlink
-    #   Given I visit the show page for the volunteer_op titled "Office Support"
-    #   Then I should see:
-    #     | title          | description                     | organisation              |
-    #     | Office Support | Help with printing and copying. | Indian Elders Association |
-    #   And I click "Indian Elders Association"
-    #   Then I should be on the show page for the organisation named "Indian Elders Association"
+    @javascript @vcr @billy
+    Scenario: See a list of current doit volunteer opportunities with a link to opportunity page
+      Given that the doit_volunteer_opportunities flag is enabled
+      Given I visit the volunteer opportunities page
+      And cookies are approved
+      Then the index should contain:
+      | Scout Leader (volunteering with 10-14 year olds) 27th Harrow              | By Volunteering to work with scouts, you will be responsible, along with the other leaders, helpers and members for planning and running the weekly ...    | Scouts - Scout Association - Greater London Region               |
+      And I click the first "Scout Leader (volunteering with 10-14 year olds) 27th Harrow"
+      Then I should be on do-it "/opportunities/79ae1022-9059-40c0-82dd-3f5b15dd796a" page
+
+

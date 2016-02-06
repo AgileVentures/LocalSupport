@@ -1,0 +1,117 @@
+---
+:scope: 
+:url: https://do-it.org/partials/time-of-day.html
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Accept-Ranges: bytes
+  Content-Type: text/html
+  Date: Sat, 06 Feb 2016 11:49:46 GMT
+  ETag: '"569c1749-2508"'
+  Last-Modified: Sun, 17 Jan 2016 22:35:53 GMT
+  Server: nginx/1.4.6 (Ubuntu)
+  Strict-Transport-Security: max-age=31536000
+  Content-Length: '9480'
+  Connection: close
+:content: |
+  <div class="hidden-xs time-of-day-wrapper">
+      <table class="time-of-day" ng-class="{disabled: isDisabled}">
+          <thead>
+              <tr>
+                  <th class="select-line" ng-click="selectAll()"></th>
+                  <th class="select-line" ng-click="selectLine('monday')">Mon</th>
+                  <th class="select-line" ng-click="selectLine('tuesday')">Tue</th>
+                  <th class="select-line" ng-click="selectLine('wednesday')">Wed</th>
+                  <th class="select-line" ng-click="selectLine('thursday')">Thu</th>
+                  <th class="select-line" ng-click="selectLine('friday')">Fri</th>
+                  <th class="select-line" ng-click="selectLine('saturday')">Sat</th>
+                  <th class="select-line" ng-click="selectLine('sunday')">Sun</th>
+              </tr>
+          </thead>
+          <tr>
+              <td class="head morning select-line" ng-click="selectLine(0)">Morning</td>
+              <td><input id="id_mon_mor" type="checkbox" class="is-list-style" name="mon_mor" ng-model="model.monday[0]" ng-disabled="isDisabled"/><label for="id_mon_mor"></label></td>
+              <td><input id="id_tue_mor" type="checkbox" class="is-list-style" name="tue_mor" ng-model="model.tuesday[0]" ng-disabled="isDisabled"/><label for="id_tue_mor"></label></td>
+              <td><input id="id_wed_mor" type="checkbox" class="is-list-style" name="wed_mor" ng-model="model.wednesday[0]"ng-disabled="isDisabled"/><label for="id_wed_mor"></label></td>
+              <td><input id="id_thu_mor" type="checkbox" class="is-list-style" name="thu_mor" ng-model="model.thursday[0]" ng-disabled="isDisabled"/><label for="id_thu_mor"></label></td>
+              <td><input id="id_fri_mor" type="checkbox" class="is-list-style" name="fri_mor" ng-model="model.friday[0]" ng-disabled="isDisabled"/><label for="id_fri_mor"></label></td>
+              <td><input id="id_sat_mor" type="checkbox" class="is-list-style" name="sat_mor" ng-model="model.saturday[0]" ng-disabled="isDisabled"/><label for="id_sat_mor"></label></td>
+              <td><input id="id_sun_mor" type="checkbox" class="is-list-style" name="sun_mor" ng-model="model.sunday[0]" ng-disabled="isDisabled"/><label for="id_sun_mor"></label></td>
+          </tr>
+           <tr>
+              <td class="head afternoon select-line" ng-click="selectLine(1)">Afternoon</td>
+              <td><input id="id_mon_aft" type="checkbox" class="is-list-style" name="mon_aft" ng-model="model.monday[1]" ng-disabled="isDisabled"/><label for="id_mon_aft"></label></td>
+              <td><input id="id_tue_aft" type="checkbox" class="is-list-style" name="tue_aft" ng-model="model.tuesday[1]" ng-disabled="isDisabled"/><label for="id_tue_aft"></label></td>
+              <td><input id="id_wed_aft" type="checkbox" class="is-list-style" name="wed_aft" ng-model="model.wednesday[1]" ng-disabled="isDisabled"/><label for="id_wed_aft"></label></td>
+              <td><input id="id_thu_aft" type="checkbox" class="is-list-style" name="thu_aft" ng-model="model.thursday[1]" ng-disabled="isDisabled"/><label for="id_thu_aft"></label></td>
+              <td><input id="id_fri_aft" type="checkbox" class="is-list-style" name="fri_aft" ng-model="model.friday[1]" ng-disabled="isDisabled"/><label for="id_fri_aft"></label></td>
+              <td><input id="id_sat_aft" type="checkbox" class="is-list-style" name="sat_aft" ng-model="model.saturday[1]" ng-disabled="isDisabled"/><label for="id_sat_aft"></label></td>
+              <td><input id="id_sun_aft" type="checkbox" class="is-list-style" name="sun_aft" ng-model="model.sunday[1]" ng-disabled="isDisabled"/><label for="id_sun_aft"></label></td>
+          </tr>
+          <tr>
+              <td class="head evening select-line" ng-click="selectLine(2)">Evening</td>
+              <td><input id="id_mon_eve" type="checkbox" class="is-list-style" name="mon_eve" ng-model="model.monday[2]" ng-disabled="isDisabled"/><label for="id_mon_eve"></label></td>
+              <td><input id="id_tue_eve" type="checkbox" class="is-list-style" name="tue_eve" ng-model="model.tuesday[2]" ng-disabled="isDisabled"/><label for="id_tue_eve"></label></td>
+              <td><input id="id_wed_eve" type="checkbox" class="is-list-style" name="wed_eve" ng-model="model.wednesday[2]" ng-disabled="isDisabled"/><label for="id_wed_eve"></label></td>
+              <td><input id="id_thu_eve" type="checkbox" class="is-list-style" name="thu_eve" ng-model="model.thursday[2]" ng-disabled="isDisabled"/><label for="id_thu_eve"></label></td>
+              <td><input id="id_fri_eve" type="checkbox" class="is-list-style" name="fri_eve" ng-model="model.friday[2]" ng-disabled="isDisabled"/><label for="id_fri_eve"></label></td>
+              <td><input id="id_sat_eve" type="checkbox" class="is-list-style" name="sat_eve" ng-model="model.saturday[2]" ng-disabled="isDisabled"/><label for="id_sat_eve"></label></td>
+              <td><input id="id_sun_eve" type="checkbox" class="is-list-style" name="sun_eve" ng-model="model.sunday[2]" ng-disabled="isDisabled"/><label for="id_sun_eve"></label></td>
+          </tr>
+      </table>
+  </div>
+  <div class="visible-xs hidden-print">
+      <table class="time-of-day" ng-class="{disabled: isDisabled}">
+          <thead>
+              <tr>
+                  <th></th>
+                  <th class="select-line" ng-click="selectLine(0)">AM</th>
+                  <th class="select-line" ng-click="selectLine(1)">PM</th>
+                  <th class="select-line" ng-click="selectLine(2)">EVE</th>
+              </tr>
+          </thead>
+          <tr>
+              <td class="head select-line" ng-click="selectLine('monday')">Mon</td>
+              <td><input type="checkbox" class="is-list-style" ng-model="model.monday[0]" ng-disabled="isDisabled"/><label for="id_mon_mor"></label></td>
+              <td><input type="checkbox" class="is-list-style" ng-model="model.monday[1]" ng-disabled="isDisabled"/><label for="id_mon_aft"></label></td>
+              <td><input type="checkbox" class="is-list-style" ng-model="model.monday[2]" ng-disabled="isDisabled"/><label for="id_mon_eve"></label></td>
+          </tr>
+          <tr>
+              <td class="head select-line" ng-click="selectLine('tuesday')">Tue</td>
+              <td><input type="checkbox" class="is-list-style" ng-model="model.tuesday[0]" ng-disabled="isDisabled"/><label for="id_tue_mor"></label></td>
+              <td><input type="checkbox" class="is-list-style" ng-model="model.tuesday[1]" ng-disabled="isDisabled"/><label for="id_tue_aft"></label></td>
+              <td><input type="checkbox" class="is-list-style" ng-model="model.tuesday[2]" ng-disabled="isDisabled"/><label for="id_tue_eve"></label></td>
+          </tr>
+          <tr>
+              <td class="head select-line" ng-click="selectLine('wednesday')">Wed</td>
+              <td><input type="checkbox" class="is-list-style" ng-model="model.wednesday[0]" ng-disabled="isDisabled"/><label for="id_wed_mor"></label></td>
+              <td><input type="checkbox" class="is-list-style" ng-model="model.wednesday[1]" ng-disabled="isDisabled"/><label for="id_wed_aft"></label></td>
+              <td><input type="checkbox" class="is-list-style" ng-model="model.wednesday[2]" ng-disabled="isDisabled"/><label for="id_wed_eve"></label></td>
+          </tr>
+          <tr>
+              <td class="head select-line" ng-click="selectLine('thursday')">Thu</td>
+              <td><input type="checkbox" class="is-list-style" ng-model="model.thursday[0]" ng-disabled="isDisabled"/><label for="id_thu_mor"></label></td>
+              <td><input type="checkbox" class="is-list-style" ng-model="model.thursday[1]" ng-disabled="isDisabled"/><label for="id_thu_aft"></label></td>
+              <td><input type="checkbox" class="is-list-style" ng-model="model.thursday[2]" ng-disabled="isDisabled"/><label for="id_thu_eve"></label></td>
+          </tr>
+          <tr>
+              <td class="head select-line" ng-click="selectLine('friday')">Fri</td>
+              <td><input type="checkbox" class="is-list-style" ng-model="model.friday[0]" ng-disabled="isDisabled"/><label for="id_fri_mor"></label></td>
+              <td><input type="checkbox" class="is-list-style" ng-model="model.friday[1]" ng-disabled="isDisabled"/><label for="id_fri_aft"></label></td>
+              <td><input type="checkbox" class="is-list-style" ng-model="model.friday[2]" ng-disabled="isDisabled"/><label for="id_fri_eve"></label></td>
+          </tr>
+          <tr>
+              <td class="head select-line" ng-click="selectLine('saturday')">Sat</td>
+              <td><input type="checkbox" class="is-list-style" ng-model="model.saturday[0]" ng-disabled="isDisabled"/><label for="id_sat_mor"></label></td>
+              <td><input type="checkbox" class="is-list-style" ng-model="model.saturday[1]" ng-disabled="isDisabled"/><label for="id_sat_aft"></label></td>
+              <td><input type="checkbox" class="is-list-style" ng-model="model.saturday[2]" ng-disabled="isDisabled"/><label for="id_sat_eve"></label></td>
+          </tr>
+          <tr>
+              <td class="head select-line" ng-click="selectLine('sunday')">Sun</td>
+              <td><input type="checkbox" class="is-list-style" ng-model="model.sunday[0]" ng-disabled="isDisabled"/><label for="id_sun_mor"></label></td>
+              <td><input type="checkbox" class="is-list-style" ng-model="model.sunday[1]" ng-disabled="isDisabled"/><label for="id_sun_aft"></label></td>
+              <td><input type="checkbox" class="is-list-style" ng-model="model.sunday[2]" ng-disabled="isDisabled"/><label for="id_sun_eve"></label></td>
+          </tr>
+      </table>
+  </div>

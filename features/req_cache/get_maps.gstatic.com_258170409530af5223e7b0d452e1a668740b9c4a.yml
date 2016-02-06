@@ -1,0 +1,24 @@
+---
+:scope: 
+:url: https://maps.gstatic.com/mapfiles/transparent.png
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: image/png
+  Access-Control-Allow-Origin: '*'
+  Date: Sat, 06 Feb 2016 11:54:22 GMT
+  Expires: Sat, 06 Feb 2016 11:54:22 GMT
+  Cache-Control: private, max-age=31536000
+  Last-Modified: Sun, 01 Apr 2012 21:37:22 GMT
+  X-Content-Type-Options: nosniff
+  Server: sffe
+  Content-Length: '95'
+  X-XSS-Protection: 1; mode=block
+  Alternate-Protocol: 443:quic,p=1
+  Alt-Svc: quic=":443"; ma=604800; v="30,29,28,27,26,25"
+  Connection: close
+:content: !binary |-
+  iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEX///+n
+  xBvIAAAAAXRSTlMAQObYZgAAAApJREFUCB1jYAAAAAIAAc/INeUAAAAASUVO
+  RK5CYII=

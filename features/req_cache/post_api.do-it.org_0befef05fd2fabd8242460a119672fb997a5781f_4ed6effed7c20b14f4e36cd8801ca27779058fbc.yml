@@ -1,0 +1,192 @@
+---
+:scope: 
+:url: https://api.do-it.org/v1/opportunities
+:body: promoted=true&slot=opportunity_detail
+:status: 200
+:method: post
+:headers:
+  Access-Control-Allow-Credentials: 'true'
+  Access-Control-Allow-Headers: Content-Type, X-HTTP-Method-Override, X-Auth-Token,
+    X-Facebook-Token
+  Access-Control-Allow-Methods: DELETE, GET, HEAD, OPTIONS, POST, PUT
+  Access-Control-Allow-Origin: https://do-it.org
+  Access-Control-Expose-Headers: X-Auth-Token
+  Cache-Control: no-cache, no-store, must-revalidate
+  Content-Type: application/json
+  Date: Sat, 06 Feb 2016 11:59:51 GMT
+  Expires: '0'
+  Pragma: no-cache
+  Server: nginx/1.4.6 (Ubuntu)
+  Content-Length: '17834'
+  Connection: close
+:content: '{"data": {"items": [{"address_1": "The Farmland Museum and Denny Abbey",
+  "city": "Waterbeach", "created": "2015-04-22T11:12:07.224662+00:00", "description":
+  "Enjoy history and talking to people? Interested in Denny\u2019s fascinating history?
+  \n\nVolunteer to be a steward in the 12th Century Denny Abbey at weekends (April
+  to November)\n\nThe Museum manages the Abbey on behalf of English Heritage.\n\nThis
+  role involves:\n\u2022\tTalking to visitors about the Abbey''s history and that
+  of the 14th Century Nuns'' Refectory\n\u2022\tActing as an guide for visitors if
+  requested\n\u2022\tPromoting any activities or performances taking place within
+  the Abbey during event days\n\u2022\tEncouraging our youngest visitors to dress
+  up as monks\n\u2022\tKeeping the Abbey looking tidy and attractive. Sweeping the
+  gravel floors and keeping the spiders at bay\n\nCommitment:At least 1 weekend a
+  month over the season (could be a Saturday one week and a Sunday another week within
+  the one month period).", "for_recruiter": {"contact_name": "Ann Wise", "created":
+  "2015-04-22T11:54:49.442165+00:00", "email": "info@farmlandmuseum.org.uk", "id":
+  "9cd33ddf-2aca-4eae-a2f8-1f17ede9b75b", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/The_Farmland_Museum_small_yUbcFqgEvvQJ5ofVe3s5pA.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/The_Farmland_Museum_small_yUbcFqgEvvQJ5ofVe3s5pA.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/The_Farmland_Museum_small_yUbcFqgEvvQJ5ofVe3s5pA.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/The_Farmland_Museum_small_yUbcFqgEvvQJ5ofVe3s5pA.50x50.jpg",
+  "height": 50, "width": 50}], "name": "The Farmland Museum", "phone": "01223 860988",
+  "rating": "0.00", "slug": "the-farmland-museum"}, "for_recruiter_id": "9cd33ddf-2aca-4eae-a2f8-1f17ede9b75b",
+  "id": "e333d1e4-19b3-43fe-93bd-b4281c529461", "interests": [{"children": [], "created":
+  "2014-10-26T17:24:25.894406+00:00", "id": "1b6205f2-02f8-4fc3-808c-e8e6b9e03c0e",
+  "name": "Heritage", "parent_id": "cf1ab709-0632-4d79-adef-f2fd32c1ebdf", "slug":
+  "heritage", "updated": "2014-10-26T17:24:25.894426+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:25.671861+00:00", "id": "f877eb40-6d22-4c17-9c70-e902d5f1d263",
+  "name": "Museums", "parent_id": "cf1ab709-0632-4d79-adef-f2fd32c1ebdf", "slug":
+  "museums", "updated": "2014-10-26T17:24:25.671883+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.271205+00:00", "id": "8678f792-d24e-4810-99d5-c6e6ba4196a4",
+  "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "families", "updated": "2014-10-26T17:24:26.271224+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:26.047188+00:00", "id": "ef94a8bb-eb86-494e-bb0c-44653280dd89",
+  "name": "Public events", "parent_id": "cd7d0590-2800-45b4-8084-b475562e73f4", "slug":
+  "public-events", "updated": "2014-10-26T17:24:26.047208+00:00"}], "is_new": false,
+  "lat": 52.2949, "lng": 0.1807, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  "Sarah Colwell", "created": "2014-10-28T13:46:04.885327+00:00", "email": "info@cam-volunteer.org.uk",
+  "id": "aa3d2e80-7c79-46b8-815d-0f97b1dd2e96", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/400dpiLogo.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/400dpiLogo.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/400dpiLogo.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/400dpiLogo.50x50.jpg",
+  "height": 50, "width": 50}], "name": "Cambridge & District Volunteer Centre", "phone":
+  "01223 356549", "rating": "0.00", "slug": "cambridge-district-volunteer-centre"},
+  "owner_recruiter_id": "aa3d2e80-7c79-46b8-815d-0f97b1dd2e96", "photo": [{"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Farmland Museum
+  Denny Abbey 2.616x318.jpg", "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Farmland
+  Museum Denny Abbey 2.308x159.jpg", "height": 159, "width": 308}, {"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Farmland Museum
+  Denny Abbey 2.243x124.jpg", "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Farmland
+  Museum Denny Abbey 2.170x87.jpg", "height": 87, "width": 170}], "postcode": "CB25
+  9PQ", "rating": "0.00", "specific_end_date": "2016-04-30T10:58:49+00:00", "specific_start_date":
+  "2016-01-28T16:10:17.696000+00:00", "status": "live", "title": "Denny Abbey Volunteer
+  Steward", "updated": "2016-01-29T12:21:57.631125+00:00", "working_from_home": false},
+  {"address_1": "Fairfax Court Community Centre", "city": "Southampton", "created":
+  "2016-01-28T16:31:35.827316+00:00", "description": "Overview: Provide support in
+  the kitchen at our Lunch & Laughs Club", "for_recruiter": {"contact_name": "Andy
+  Fulford", "created": "2014-10-27T17:24:22.709252+00:00", "email": "volunteering@ageuksouthampton.org.uk",
+  "id": "6afed4ec-8e40-4dff-af25-9e229f787bb1", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/35x35
+  AUKS_twlogo.125x125.jpg", "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/35x35
+  AUKS_twlogo.109x109.jpg", "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/35x35
+  AUKS_twlogo.76x76.jpg", "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/35x35
+  AUKS_twlogo.50x50.jpg", "height": 50, "width": 50}], "name": "Age UK Southampton",
+  "phone": "02380 368636", "rating": "0.00", "slug": "age-uk-southampton"}, "for_recruiter_id":
+  "6afed4ec-8e40-4dff-af25-9e229f787bb1", "id": "841bcd61-c4a9-49f9-9746-432e252d2fda",
+  "interests": [{"children": [], "created": "2014-10-26T17:24:26.142866+00:00", "id":
+  "6fc9bb15-1728-4d4d-bdab-51be247acba0", "name": "Social care", "parent_id": "24620d05-41c1-4884-a0cb-f70054faba9b",
+  "slug": "social-care", "updated": "2014-10-26T17:24:26.142886+00:00"}, {"children":
+  [], "created": "2014-10-26T17:24:26.260228+00:00", "id": "3fd515b4-6e1a-41a1-bad9-ea401937555b",
+  "name": "Older people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "older-people", "updated": "2014-10-26T17:24:26.260247+00:00"}], "is_new": false,
+  "lat": 50.9129, "lng": -1.32953, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  "Andy Fulford", "created": "2014-10-27T17:24:22.709252+00:00", "email": "volunteering@ageuksouthampton.org.uk",
+  "id": "6afed4ec-8e40-4dff-af25-9e229f787bb1", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/35x35
+  AUKS_twlogo.125x125.jpg", "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/35x35
+  AUKS_twlogo.109x109.jpg", "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/35x35
+  AUKS_twlogo.76x76.jpg", "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/35x35
+  AUKS_twlogo.50x50.jpg", "height": 50, "width": 50}], "name": "Age UK Southampton",
+  "phone": "02380 368636", "rating": "0.00", "slug": "age-uk-southampton"}, "owner_recruiter_id":
+  "6afed4ec-8e40-4dff-af25-9e229f787bb1", "photo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/D89ESH3WK7.616x318.jpg",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/D89ESH3WK7.308x159.jpg",
+  "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/D89ESH3WK7.243x124.jpg",
+  "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/D89ESH3WK7.170x87.jpg",
+  "height": 87, "width": 170}], "postcode": "SO19 6FU", "rating": "0.00", "specific_end_date":
+  "2016-04-27T15:27:46.982000+00:00", "specific_start_date": "2016-01-28T16:27:46.982000+00:00",
+  "status": "live", "title": "Lunch Club / Kitchen Skills Volunteer", "updated": "2016-01-29T12:21:29.826987+00:00",
+  "working_from_home": false}, {"address_1": null, "city": null, "created": "2016-01-28T17:57:00.000317+00:00",
+  "description": "We''re looking for an enthusiastic adult to come and help out at
+  Beavers in Chiseldon! \n\nIt''s a small Beaver Colony, with around a dozen Beavers
+  meeting once a week in the centre of Chiseldon. \n\nAs a Beaver Helper, you don''t
+  need any previous experience, and loads of support will be provided to you. \n\nBeavers
+  is about fun and adventure. If you could run a game, organise a craft activity,
+  or take some Beavers for a walk across a muddy field, then you''re the person we
+  are looking for! \n\nPlease do get in touch today for an informal chat about what
+  the role involves and how you could help out. We''d love to hear from you.", "for_recruiter":
+  {"contact_name": null, "created": "2014-10-28T15:49:07.780268+00:00", "email": "join@swindonridgewayscouts.org.uk",
+  "id": "19126985-541d-481f-ab60-04b14ef5b25b", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Swindon
+  Ridgeway - Square.125x125.png", "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Swindon
+  Ridgeway - Square.109x109.png", "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Swindon
+  Ridgeway - Square.76x76.png", "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Swindon
+  Ridgeway - Square.50x50.png", "height": 50, "width": 50}], "name": "Swindon Ridgeway
+  Scout District", "phone": "01793 295215", "rating": "0.00", "slug": "swindon-ridgeway-scouts-district"},
+  "for_recruiter_id": "19126985-541d-481f-ab60-04b14ef5b25b", "id": "53f76ba4-1278-4cde-a4e6-ce5899967b79",
+  "interests": [{"children": [], "created": "2014-10-26T17:24:26.274701+00:00", "id":
+  "02b052fd-4f3d-418b-9542-0b980533b03b", "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
+  "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}, {"children":
+  [], "created": "2014-10-26T17:24:26.278190+00:00", "id": "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+  "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+  "children", "updated": "2014-10-26T17:24:26.278210+00:00"}], "is_new": false, "lat":
+  51.51606, "lng": -1.73206, "location": {"admin_1": "England", "admin_2": "Borough
+  of Swindon", "admin_3": "Chiseldon", "admin_4": null, "id": "75be96c2-08b5-444d-8f27-e143d0bfc8cc",
+  "lat": 51.51606, "lng": -1.73206, "name": "Chiseldon"}, "location_id": "75be96c2-08b5-444d-8f27-e143d0bfc8cc",
+  "location_name": "Chiseldon", "location_type": "RL", "micro_availability": [], "owner_recruiter":
+  {"contact_name": null, "created": "2014-10-28T15:49:07.780268+00:00", "email": "join@swindonridgewayscouts.org.uk",
+  "id": "19126985-541d-481f-ab60-04b14ef5b25b", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Swindon
+  Ridgeway - Square.125x125.png", "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Swindon
+  Ridgeway - Square.109x109.png", "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Swindon
+  Ridgeway - Square.76x76.png", "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Swindon
+  Ridgeway - Square.50x50.png", "height": 50, "width": 50}], "name": "Swindon Ridgeway
+  Scout District", "phone": "01793 295215", "rating": "0.00", "slug": "swindon-ridgeway-scouts-district"},
+  "owner_recruiter_id": "19126985-541d-481f-ab60-04b14ef5b25b", "photo": [{"absolute_url":
+  "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/_MG_5118.616x318.jpg",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/_MG_5118.308x159.jpg",
+  "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/_MG_5118.243x124.jpg",
+  "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/_MG_5118.170x87.jpg",
+  "height": 87, "width": 170}], "postcode": "SN4 0NG", "rating": "0.00", "specific_end_date":
+  "2016-04-27T16:55:02.071000+00:00", "specific_start_date": "2016-01-28T17:55:02.071000+00:00",
+  "status": "live", "title": "Beaver Scout Helper", "updated": "2016-01-29T12:21:03.053977+00:00",
+  "working_from_home": false}, {"address_1": "RSPB Middleton Lakes", "city": "Tamworth",
+  "created": "2016-01-29T09:30:32.837848+00:00", "description": "We are seeking volunteers
+  to give a warm welcome to our visitors at weekends and during the school holidays.
+  If you are enthusiastic about nature and wildlife, are comfortable talking to members
+  of the public and are willing to help visitors get the most out of their visit please
+  get in touch!\n\nYou will be part of the largest wildlife conservation organisation
+  in Europe. You will get to meet lots of like-minded people, feel part of a team
+  and you will play your part in the RSPB''s mission give nature a home! \n\nPerhaps
+  you are looking for some volunteering experience before going back to college or
+  university? This can also be a short term opportunity so do get in touch if you
+  are looking to help in the holidays!", "for_recruiter": {"contact_name": null, "created":
+  "2014-10-27T14:44:48.183003+00:00", "email": "MIDvolunteers@rspb.org.uk", "id":
+  "f76fd400-3fa7-4481-a808-c0379fd4ea53", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/rspb_logo_square_gQ9hsqGBmSU5UwEdyiXaUU.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/rspb_logo_square_gQ9hsqGBmSU5UwEdyiXaUU.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/rspb_logo_square_gQ9hsqGBmSU5UwEdyiXaUU.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/rspb_logo_square_gQ9hsqGBmSU5UwEdyiXaUU.50x50.jpg",
+  "height": 50, "width": 50}], "name": "RSPB Midlands", "phone": "01295 253330", "rating":
+  "0.00", "slug": "rspb-midlands"}, "for_recruiter_id": "f76fd400-3fa7-4481-a808-c0379fd4ea53",
+  "id": "d1a45482-eec6-474c-b5cd-37f2a00b2c5d", "interests": [{"children": [], "created":
+  "2014-10-26T17:24:25.799439+00:00", "id": "6dd234b9-ce8d-439e-9379-a4093a4e8f6c",
+  "name": "Wildlife", "parent_id": "8e429036-c008-46cc-b1a5-ae2c739de9b9", "slug":
+  "wildlife", "updated": "2014-10-26T17:24:25.799459+00:00"}, {"children": [], "created":
+  "2014-10-26T17:24:25.948648+00:00", "id": "6818a00c-4b32-4838-9af4-66b7457310b0",
+  "name": "Conservation", "parent_id": "8e429036-c008-46cc-b1a5-ae2c739de9b9", "slug":
+  "conservation", "updated": "2014-10-26T17:24:25.948674+00:00"}], "is_new": false,
+  "lat": 52.5816, "lng": -1.71697, "location": null, "location_id": null, "location_name":
+  null, "location_type": "SL", "micro_availability": [], "owner_recruiter": {"contact_name":
+  null, "created": "2014-10-27T14:44:48.183003+00:00", "email": "MIDvolunteers@rspb.org.uk",
+  "id": "f76fd400-3fa7-4481-a808-c0379fd4ea53", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/rspb_logo_square_gQ9hsqGBmSU5UwEdyiXaUU.125x125.jpg",
+  "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/rspb_logo_square_gQ9hsqGBmSU5UwEdyiXaUU.109x109.jpg",
+  "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/rspb_logo_square_gQ9hsqGBmSU5UwEdyiXaUU.76x76.jpg",
+  "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/rspb_logo_square_gQ9hsqGBmSU5UwEdyiXaUU.50x50.jpg",
+  "height": 50, "width": 50}], "name": "RSPB Midlands", "phone": "01295 253330", "rating":
+  "0.00", "slug": "rspb-midlands"}, "owner_recruiter_id": "f76fd400-3fa7-4481-a808-c0379fd4ea53",
+  "photo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/1053319.616x318.jpg",
+  "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/1053319.308x159.jpg",
+  "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/1053319.243x124.jpg",
+  "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/1053319.170x87.jpg",
+  "height": 87, "width": 170}], "postcode": "B78 2AE", "rating": "0.00", "specific_end_date":
+  "2016-10-30T09:18:47+00:00", "specific_start_date": "2016-03-05T09:18:47+00:00",
+  "status": "live", "title": "People Engagement Assistant", "updated": "2016-01-29T12:20:03.425427+00:00",
+  "working_from_home": false}]}, "links": {"self": {"href": "/v1/opportunities", "title":
+  "You are here."}}, "meta": {"code": 200, "current_page": 1, "items_per_page": 20,
+  "tenant": "doittrust", "total_items": 4, "total_pages": 1, "version": "2016.01.20.1"}}'

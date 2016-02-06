@@ -1,0 +1,29 @@
+---
+:scope: 
+:url: https://maps.gstatic.com/mapfiles/openhand_8_8.cur
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: image/bmp
+  Access-Control-Allow-Origin: '*'
+  Date: Sat, 06 Feb 2016 11:54:22 GMT
+  Expires: Sat, 06 Feb 2016 11:54:22 GMT
+  Cache-Control: private, max-age=31536000
+  Last-Modified: Sun, 01 Apr 2012 21:37:22 GMT
+  X-Content-Type-Options: nosniff
+  Server: sffe
+  Content-Length: '326'
+  X-XSS-Protection: 1; mode=block
+  Alternate-Protocol: 443:quic,p=1
+  Alt-Svc: quic=":443"; ma=604800; v="30,29,28,27,26,25"
+  Connection: close
+:content: !binary |-
+  AAACAAEAICACAAgACAAwAQAAFgAAACgAAAAgAAAAQAAAAAEAAQAAAAAAAAEA
+  AAAAAAAAAAAAAgAAAAAAAAAAAAAA////AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD
+  8AAAA/AAAAfwAAAP+AAAH/gAAB/8AAA//AAAd/wAAGf+AAAH9gAADbYAAA2y
+  AAAZsAAAGbAAAAGAAAAAAAAA////////////////////////////////////
+  //////////////////////////////////////////////////gH///4B///
+  8Af//+AD///AA///wAH//4AB//8AAf//AAD//5AA///gAP//4AD//8AF///A
+  B///5A////5///8=

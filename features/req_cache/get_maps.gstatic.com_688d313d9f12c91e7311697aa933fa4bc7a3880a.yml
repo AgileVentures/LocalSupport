@@ -1,0 +1,46 @@
+---
+:scope: 
+:url: https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: image/png
+  Access-Control-Allow-Origin: '*'
+  Date: Sat, 06 Feb 2016 11:54:22 GMT
+  Expires: Sat, 06 Feb 2016 11:54:22 GMT
+  Cache-Control: private, max-age=31536000
+  Last-Modified: Fri, 26 Jul 2013 04:18:36 GMT
+  X-Content-Type-Options: nosniff
+  Server: sffe
+  Content-Length: '1091'
+  X-XSS-Protection: 1; mode=block
+  Alternate-Protocol: 443:quic,p=1
+  Alt-Svc: quic=":443"; ma=604800; v="30,29,28,27,26,25"
+  Connection: close
+:content: !binary |-
+  iVBORw0KGgoAAAANSUhEUgAAAHgAAAA2CAYAAAAMNl3OAAAECklEQVRYw+yX
+  v4rqUBDGV+8awV1SCO4LCDayNgqiWNiLdr6Cj7DP4gNskV6tfQYVKzvxT0RT
+  SrCI587nfoGD12uS4uqy1wMf48yZAePPc2by9PS9VkwU1xS7Ue1dllIqLkrM
+  ZrMkLPyotaLItXeDW6/XnwuFwku5XDZh4YcEhRzkvohM2ufvDBlABKw5n8+z
+  tm2/w8IPA4pwkZsVvdOakSB3Op2uyIKN+uXH43F3NBpZsBHK4oBaLBY/S6XS
+  ABY+T2NgLaF+iga0YWtPq9/vd3u9ngUb9XmbzWZXZMGGrZlOp8Z2u82tVqvh
+  er2ewMJHPARgQ5QTDUUTWvhGFMC2SMFGfWCBa4sUbNiadrv9q1KppAXsTqRg
+  4SMeohw5adEOz0+bZjzUEri2SMFGfd5Wq2WLFGzI0xsToClRTbQXKVr4Kexf
+  qxUhpybaq6+1p3+19h6AT30TEEWGnNg3AesQsAMfcUI+76t+z8Ue/rlvIoeA
+  HfoG9wN78i0A4wrFCQVEObWZxWLRkM8uAbvwEcc+8vQrl9eyQYgZUUPkErBL
+  P8N9I/C6vgHgU8/N5/OvonS1WgXcrA4YPuLYR57Wk/2e+8qTCpjZM8BZxtPM
+  u9qT/zVg/OCO45gCEddyDTCXy+WHfD4Q8AE+oWM/h3yC9XtujicVMD9EBwI+
+  0G9wP/dHT2bPtTV5BOydxbt/6bm2Jo+APT1+1pNjAjCFXstr2aGOBHzUYjvm
+  pTTAKfbaHYFCRwI+arEd81I6YPZcW5NHwJ4ev9ST0WsJ1ZdHwJ4e13syJt3N
+  ZpNFr+V17GpwfR0Yx/4Q+ZyQExykhryOXQ2u0iC73B8yP6EDtgg0SNaFE2sR
+  aJD02jimZQ5UKkjIQ772GmRyoFIhNGB+XDuxFoEGyboA2CLQq0KeX4NXIUzL
+  HKhUkJCHfL5CJTktT1S4NWF+8nGC/5cT/OjBP7wHP6boxxT9eA/+Ye/Bv9sz
+  gxQGYSCKtktx623ciYfs/YLQRQ/RtGSglPxxRBCJ78GjUOPqoyZ/aLJabrLo
+  ohvvopkmMU0CAABokHs57lT19g/efT/3n2tTVYoO15WiY81TbLqs6EgpdXnn
+  3Cs/152io8v2jl2o6DjqWGRVZT73DspAVTk4hqrKI8K1qnJZljEHOeXf+d/y
+  /+hUlWN2ys4Vp3I9NC5UPkSx8VwzOGyoGR021HzdYsOGqsFhQ9XAsEEZGTYo
+  GReWavLy40Ke4JaeYL7BjX+D2UWziwbOwQAAAAAgsdYqut6aquh6a6e2nDCK
+  IayFiq635im63tqmDcejLwRMwARMwDtDVapQlSpUpROqshqqUoWqVKEqVagK
+  AiZgXtG8ogmYgAn4ggEDAAAAAAAAVSVdNAE300UDAAAAwD7eKyZLwpGXLLYA
+  AAAASUVORK5CYII=
