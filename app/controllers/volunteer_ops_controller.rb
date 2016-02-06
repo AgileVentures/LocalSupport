@@ -105,9 +105,9 @@ class VolunteerOpsController < ApplicationController
         resp_items = JSON.parse(response.body)['data']['items']
         resp_items.each do |item|
           org = OpenStruct.new(latitude: item['lat'], longitude: item['lng'], 
-                name: item['title'], id: id, description: item['description'], 
+                opp_name: item['title'], id: id, description: item['description'], 
                 opportunity_id: item['id'], 
-                org_name: item['for_recruiter']['name'], 
+                name: item['for_recruiter']['name'], 
                 org_link: item['for_recruiter']['slug'])
           doit_orgs.push (org)
           id += 1

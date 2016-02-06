@@ -37,3 +37,10 @@ end
 Then(/^I should be on do\-it "(.*?)" page$/) do |arg1|
   current_path.should eq arg1
 end
+
+Given(/^the map should show the do\-it opportunity titled (.*)$/) do |opportunity_title|
+  icon = find_map_icon('vol_op', '10')
+  click_twice icon
+  expect(page).to have_css('.arrow_box')
+  expect(find('.arrow_box').text).to include(opportunity_title)
+end

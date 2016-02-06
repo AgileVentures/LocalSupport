@@ -22,16 +22,16 @@
       <strong>Do-it ops</strong>
       <table>
          <%if @doit_orgs && @doit_orgs.length>0%>
-           <% @doit_orgs.each do |op| %>
-              <tr id="<%= op.id%>">
+           <% @doit_orgs.each do |org| %>
+              <tr id="<%= org.id%>">
                 <td>
-                  <strong> <%= link_to op.name, "https://do-it.org/opportunities/#{op.opportunity_id}" %> </strong><br>
+                  <strong> <%= link_to org.opp_name, "https://do-it.org/opportunities/#{org.opportunity_id}" %> </strong><br>
 
                   <div id="organisations">
-                    <small><%= link_to op.org_name, "https://do-it.org/organisations/#{op.org_link}" %></small>
+                    <small><%= link_to org.name, "https://do-it.org/organisations/#{org.org_link}" %></small>
                     <br/>
                   </div>
-                  <%= smart_truncate(op.description) %>
+                  <%= smart_truncate(org.description) %>
                 </td>
               </tr>
           <% end %>

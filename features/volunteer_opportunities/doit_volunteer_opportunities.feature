@@ -47,4 +47,12 @@ Feature: As a member of the public
       And I click the first "Scout Leader (volunteering with 10-14 year olds) 27th Harrow"
       Then I should be on do-it "/opportunities/79ae1022-9059-40c0-82dd-3f5b15dd796a" page
 
+    @javascript @vcr @billy
+    Scenario: Doit volunteer opportunites are listed in map popups
+      Given that the doit_volunteer_opportunities flag is enabled
+      Given I visit the volunteer opportunities page
+      And cookies are approved
+      And the map should show the do-it opportunity titled Fundraising Officer for Age UK in Harrow
+
+
 
