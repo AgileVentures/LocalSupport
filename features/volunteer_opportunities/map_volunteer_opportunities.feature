@@ -31,8 +31,8 @@ Feature: As a member of the public
     And the map should show the opportunity titled <title>
     Examples:
       | title              |
-      | Volunteer Group Scout Leader/Manager - Harrow and Wealdstone |
-      | Harrow Community Radio- Marketing Volunteer |
+      | Litter Box Scooper |
+      | Office Support     |
 
   @javascript @billy
   Scenario: See map when editing my volunteer opportunity
