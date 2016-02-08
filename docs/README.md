@@ -29,6 +29,16 @@ makes Capybara check for visibility more robust [Finishes #112900047]
 
 which will close the relevant Pivotal Tracker ticket when we merge in your pull-request.
 
+Code Style
+-------------
+
+We follow the [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide) configured according to https://github.com/AgileVentures/LocalSupport/blob/develop/.rubocop.yml
+
+[Hound](http://houndci.com) inserts style suggestions into pull requests and you can see these in advance by either:
+
+1. Configuring your own fork of LocalSupport with Hound OR
+2. Running rubocop from the command line on your diff: https://github.com/m4i/rubocop-git
+
 
 Feature Flags
 -------------
