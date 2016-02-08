@@ -5,9 +5,9 @@ Feature: This is my organisation
 
   Background:
     Given the following organisations exist:
-      | name         | description    | address        | postcode |
-      | Helpful Folk | Amazing team   | 83 pinner road | HA1 4HZ  |
-      | The Other    | Awesome people | 83 pinner road | HA1 4HZ  |
+      | name         | address        | postcode |
+      | Helpful Folk | 83 pinner road | HA1 4HZ  |
+      | The Other    | 83 pinner road | HA1 4HZ  |
 
     And the following users are registered:
       | email                       | password       | superadmin | confirmed_at        | organisation | pending_organisation |
