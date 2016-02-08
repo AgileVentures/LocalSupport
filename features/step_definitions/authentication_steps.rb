@@ -8,7 +8,7 @@ Given /^I am signed in as a charity worker (un)?related to "(.*?)"$/ do |negate,
   end
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
- 
+
 Given /^I am signed in as a (non-)?siteadmin$/ do |negate|
   user = User.find_by(siteadmin: negate ? false : true)
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
@@ -39,6 +39,7 @@ Given /^I sign up as "(.*?)" with password "(.*?)" and password confirmation "(.
       fill_in "signup_password_confirmation", :with => password_confirmation
       click_button "Sign up"
     end
+    expect(page).not_to have_css('#signup') if @javascript
   end
 end
 
@@ -70,13 +71,14 @@ Given /^I sign in as "(.*?)" with password "(.*?)"( with javascript)?$/ do |emai
   fill_in "user_password", :with => password
   if js
     page.find("#signin").trigger("click")
+    expect(page).not_to have_css('#signin')
   else
     click_link_or_button "Sign in"
   end
 end
 
 Given /^I sign in as "(.*?)" with password "(.*?)" on the legacy sign in page$/ do |email, password|
-  within("#new_user") do 
+  within("#new_user") do
     fill_in "user_email", :with => email
     fill_in "user_password", :with => password
     click_link_or_button "Sign in"
@@ -93,10 +95,24 @@ When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |
 end
 
 Given /^I have a "([^\"]+)" cookie set to "([^\"]+)"$/ do |key, value|
-  headers = {}
-  Rack::Utils.set_cookie_header!(headers, key, value)
-  cookie_string = headers['Set-Cookie']
-  Capybara.current_session.driver.browser.set_cookie(cookie_string)
+  case Capybara.current_session.driver
+    when Capybara::Poltergeist::Driver
+      page.driver.set_cookie(key, value)
+    when Capybara::RackTest::Driver
+      headers = {}
+      Rack::Utils.set_cookie_header!(headers,key, value)
+      cookie_string = headers['Set-Cookie']
+      Capybara.current_session.driver.browser.set_cookie(cookie_string)
+    when Capybara::Webkit::Driver
+      headers = {}
+      Rack::Utils.set_cookie_header!(headers,key, value)
+      cookie_string = headers['Set-Cookie']
+      Capybara.current_session.driver.browser.set_cookie(cookie_string)
+    when Capybara::Selenium::Driver
+      page.driver.browser.manage.add_cookie(:name=>key, :value=>value)
+    else
+      raise "no cookie-setter implemented for driver #{Capybara.current_session.driver.class.name}"
+  end
 end
 
 And(/^cookies are approved$/) do
@@ -185,4 +201,3 @@ And(/^I set my password/) do
   step %Q{I fill in "user_password_confirmation" with "12345678" within the main body}
   step %Q{I press "Set my password"}
 end
-

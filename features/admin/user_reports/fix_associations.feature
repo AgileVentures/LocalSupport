@@ -23,6 +23,7 @@ Feature: Fix Associations
       | whitespace |
 
   # check if the records are in the broken state
+  @vcr
   Scenario: Broken invites as seen on the orphans page
     Given cookies are approved
     Given I am signed in as a superadmin

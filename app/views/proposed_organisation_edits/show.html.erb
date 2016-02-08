@@ -1,7 +1,9 @@
+<% if @proposed_organisation_edit.editor %>
 <div class="centered width_50 proposer">
   <span>This edit proposed by:</span>
   <%= @proposed_organisation_edit.editor.email%>
 </div>
+<% end %>
 
 <div class="row">
   <div class="span6">

@@ -26,6 +26,7 @@ Feature: Super Admin creating charity
 
     And cookies are approved
 
+  @vcr
   Scenario: Unsuccessfully attempt to create charity without being signed-in
     # should this be checking for absence of link to the new org page?
     Given I visit the new organisation page
@@ -41,11 +42,13 @@ Feature: Super Admin creating charity
     #Given I visit the new organisation page
     #Then I should be on the sign in page
 
+  @vcr
   Scenario: Successfully create charity while being signed-in as superadmin
     Given I am signed in as a superadmin
     And I have created a new organisation
     Then I should see "Organisation was successfully created."
 
+  @vcr
   Scenario: Get validation error creating new charity while being signed-in as superadmin
     Given I am signed in as a superadmin
     And I visit the home page
@@ -54,6 +57,7 @@ Feature: Super Admin creating charity
     Then I should see "Name can't be blank"
     Then I should see "Description can't be blank"
 
+  @vcr
   Scenario: Successfully create charity while being signed-in as superadmin from arbitrary page
     Given I am signed in as a superadmin
     Given I visit the show page for the organisation named "Friendly Clone"

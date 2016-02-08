@@ -5,7 +5,7 @@ class CreateVolunteerOps < ActiveRecord::Migration
       t.text :description
       t.references :organization
 
-      t.timestamps
+      t.timestamps null: true
     end
     add_index :volunteer_ops, :organization_id
   end
