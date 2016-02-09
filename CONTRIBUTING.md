@@ -47,7 +47,7 @@ We use Feature Flags to allow a feature to be turned off and on at will.  This a
 
 Please ask for advice on whether a feature you are working on requires a feature flag.  If you do set up a new [Feature Flag (or 'toggle')](http://martinfowler.com/bliki/FeatureToggle.html) please ensure to:
 
-1. Add a migration to place that feature flag in the database, e.g.
+1) Add a migration to place that feature flag in the database, e.g.
 
 ```
 class AddSearchInputBarOnOrgPages < ActiveRecord::Migration
@@ -61,7 +61,7 @@ class AddSearchInputBarOnOrgPages < ActiveRecord::Migration
 end
 ```
 
-2. Activate the feature in `db/seeds.rb` file like so:
+2) Activate the feature in `db/seeds.rb` file like so:
 
 ```
 Feature.activate('search_input_bar_on_org_pages')
