@@ -1,4 +1,4 @@
-class GetFromDoit
+class ListVolunteerOpportunities
 
 	def self.run
 		host = 'https://api.do-it.org'

@@ -61,7 +61,7 @@ class VolunteerOpsController < ApplicationController
     harrow_markers = build_map_markers(organisations)
     doit_markers = '[]'
     if Feature.active? :doit_volunteer_opportunities
-      doit_orgs = GetFromDoit.run
+      doit_orgs = ListVolunteerOpportunities.run
       doit_markers = build_map_markers(doit_orgs, :doit, false)
     end
     markers = list_of_markers(harrow_markers, doit_markers)
