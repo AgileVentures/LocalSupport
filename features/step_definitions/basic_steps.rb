@@ -59,13 +59,15 @@ end
 Then /^I should( not)? see an edit button for "(.*?)" charity$/ do |negate, name|
   expectation_method = negate ? :not_to : :to
   org = Organisation.find_by_name name
-  expect(page).send(expectation_method, have_link('Edit', href: edit_organisation_path(org.id)))
+  expect(page).send(expectation_method,
+                    have_link('Edit', href: edit_organisation_path(org.id)))
 end
 
 Then /^I should( not)? see an edit button for "(.*?)" volunteer opportunity$/ do |negate, title|
   expectation_method = negate ? :not_to : :to
   op = VolunteerOp.find_by_title title
-  expect(page).send(expectation_method, have_link('Edit', href: edit_volunteer_op_path(op.id)))
+  expect(page).send(expectation_method, 
+                    have_link('Edit', href: edit_volunteer_op_path(op.id)))
 end
 
 Then /^I should( not)? see "(.*?)" in the charity superadmin email$/ do |negate,email|
@@ -389,7 +391,7 @@ When /^I fill in "(.*?)" with "(.*?)" within the main body$/ do |field, value|
 end
 
 Given /^I create "(.*?)" org$/ do |name|
-  page.driver.submit :post, "/organisations", organisation: {name: name}
+  page.driver.submit :post, '/organisations', organisation: {name: name}
 end
 
 Then /^"(.*?)" org should not exist$/ do |name|
