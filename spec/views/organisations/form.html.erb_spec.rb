@@ -4,7 +4,7 @@ describe "organisations/_form.html.erb", :type => :view do
   before :each do
     @categories_start_with = {what_they_do: 'alligator', who_they_help: 'crocodile', how_they_help: 'iguana'} 
     @organisation = Organisation.new(name: 'Sarah Plain and Tall Foundation', 
-                                     description: 'A very charitable organisation')
+                                  description: 'A very charitable organisation')
     @category1 = FactoryGirl.create(:category, name: "alligator",  charity_commission_id: 100)
     @category2 = FactoryGirl.create(:category, name: "crocodile", charity_commission_id: 210)
     @category3 = FactoryGirl.create(:category, name: "iguana", charity_commission_id: 310)

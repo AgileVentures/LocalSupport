@@ -42,7 +42,7 @@ end
 
 And /^I add "(.*?)" as a superadmin for "(.*?)" charity$/ do |superadmin_email, charity|
   steps %Q{ And I visit the edit page for the organisation named "#{charity}"}
-  fill_in 'organisation_superadmin_email_to_add', :with => superadmin_email
+  fill_in 'organisation_superadmin_email_to_add', with: superadmin_email
   steps %Q{
   And I press "Update Organisation"}
 end
@@ -59,18 +59,18 @@ end
 Then /^I should( not)? see an edit button for "(.*?)" charity$/ do |negate, name|
   expectation_method = negate ? :not_to : :to
   org = Organisation.find_by_name name
-  expect(page).send(expectation_method, have_link('Edit', :href => edit_organisation_path(org.id)))
+  expect(page).send(expectation_method, have_link('Edit', href: edit_organisation_path(org.id)))
 end
 
 Then /^I should( not)? see an edit button for "(.*?)" volunteer opportunity$/ do |negate, title|
   expectation_method = negate ? :not_to : :to
   op = VolunteerOp.find_by_title title
-  expect(page).send(expectation_method, have_link('Edit', :href => edit_volunteer_op_path(op.id)))
+  expect(page).send(expectation_method, have_link('Edit', href: edit_volunteer_op_path(op.id)))
 end
 
 Then /^I should( not)? see "(.*?)" in the charity superadmin email$/ do |negate,email|
   expectation_method = negate ? :not_to : :to
-  expect(page).send(expectation_method, have_selector('li', :text => email))
+  expect(page).send(expectation_method, have_selector('li', text: email))
 end
 
 Then /^show me the page$/ do
@@ -83,17 +83,17 @@ When /^I search for "(.*?)"$/ do |text|
 end
 
 Given (/^I fill in the new charity page validly$/) do
-  fill_in 'organisation_address', :with => '64 pinner road'
-  fill_in 'organisation_description', :with => 'This is an awesome charity'
-  fill_in 'organisation_name', :with => 'Friendly charity'
-  fill_in 'organisation_postcode', :with => 'HA1 4HZ'
+  fill_in 'organisation_address', with: '64 pinner road'
+  fill_in 'organisation_description', with: 'This is an awesome charity'
+  fill_in 'organisation_name', with: 'Friendly charity'
+  fill_in 'organisation_postcode', with: 'HA1 4HZ'
 end
 
 Given (/^I fill in the new charity page validly including the categories:$/) do |categories_table|
-  fill_in 'organisation_address', :with => '64 pinner road'
-  fill_in 'organisation_description', :with => 'This is an awesome charity'
-  fill_in 'organisation_name', :with => 'Friendly charity'
-  fill_in 'organisation_postcode', :with => 'HA1 4HZ'
+  fill_in 'organisation_address', with: '64 pinner road'
+  fill_in 'organisation_description', with: 'This is an awesome charity'
+  fill_in 'organisation_name', with: 'Friendly charity'
+  fill_in 'organisation_postcode', with: 'HA1 4HZ'
   categories_table.hashes.each do |cat|
     steps %Q{
       And I check the category "#{cat[:name]}"
@@ -207,15 +207,15 @@ Given /^I furtively update "(.*?)" charity address to be "(.*?)"$/ do |name, add
 end
 
 Given /^I edit the charity website to be "(.*?)"$/ do |url|
-  fill_in('organisation_website', :with => url)
+  fill_in('organisation_website', with: url)
 end
 
 Given /^I edit the charity email to be "(.*?)"$/ do |email|
-  fill_in('organisation_email', :with => email)
+  fill_in('organisation_email', with: email)
 end
 
 When /^I edit the charity address to be "(.*?)"$/ do |address|
-  fill_in('organisation_address', :with => address)
+  fill_in('organisation_address', with: address)
 end
 
 Then /^the website link for "(.*?)" should have a protocol$/ do |name|
@@ -244,7 +244,7 @@ Then /^I should see the donation_info URL for "(.*?)"$/ do |name1|
 end
 
 Then /^the donation_info URL for "(.*?)" should refer to "(.*?)"$/ do |name, href|
-  expect(page).to have_link "Donate to #{name} now!", :href => href
+  expect(page).to have_link "Donate to #{name} now!", href: href
 end
 
 And /^the search box should contain "(.*?)"$/ do |arg1|
@@ -278,7 +278,7 @@ Then /^I should not see any address or telephone information for "([^"]*?)"$/ do
 end
 
 Given /^I edit the donation url to be "(.*?)"$/ do |url|
-  fill_in('organisation_donation_info', :with => url)
+  fill_in('organisation_donation_info', with: url)
 end
 
 Then /^I should not see any edit or delete links$/ do
@@ -356,7 +356,7 @@ end
 
 Given /^I update "(.*?)" charity postcode to be "(.*?)"$/ do |name, postcode|
   steps %Q{And I visit the edit page for the organisation named "#{name}"}
-  fill_in('organisation_postcode', :with => postcode)
+  fill_in('organisation_postcode', with: postcode)
   click_button 'Update Organisation'
 end
 
@@ -365,7 +365,7 @@ Given /^I edit the charity address to be "(.*?)" when Google is indisposed$/ do 
 "results" : [],
 "status" : "OVER_QUERY_LIMIT"
 })
-  fill_in('organisation_address', :with => address)
+  fill_in('organisation_address', with: address)
 end
 
 Then /^I should not see the unable to save organisation error$/ do
@@ -381,15 +381,15 @@ Then /^the postcode for "(.*?)" should be "(.*?)"$/ do |name, postcode|
 end
 
 When /^I fill in "(.*?)" with "(.*?)" within the navbar$/ do |field, value|
-  within('#navbar') { fill_in(field, :with => value) }
+  within('#navbar') { fill_in(field, with: value) }
 end
 
 When /^I fill in "(.*?)" with "(.*?)" within the main body$/ do |field, value|
-  within('#main') { fill_in(field, :with => value) }
+  within('#main') { fill_in(field, with: value) }
 end
 
 Given /^I create "(.*?)" org$/ do |name|
-  page.driver.submit :post, "/organisations", :organisation => {:name => name}
+  page.driver.submit :post, "/organisations", organisation: {name: name}
 end
 
 Then /^"(.*?)" org should not exist$/ do |name|
@@ -437,7 +437,7 @@ Then(/^I should see "(.*?)" < (.*?) >$/) do |text, tag|
 end
 
 Then(/^I should see "(.*?)" < tagged > with "(.*?)"$/) do |text, tag|
-  page.should have_css(tag, :text => text)
+  page.should have_css(tag, text: text)
   #collect_tag_contents(page.body, tag).should include(text)
 end
 
