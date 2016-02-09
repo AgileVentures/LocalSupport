@@ -34,8 +34,7 @@ Feature: As a member of the public
       And cookies are approved
       Then the index should contain:
       | Scout Leader (volunteering with 10-14 year olds) 27th Harrow              | By Volunteering to work with scouts, you will be responsible, along with the other leaders, helpers and members for planning and running the weekly ...    | Scouts - Scout Association - Greater London Region               |
-      And I click the first "Scouts - Scout Association - Greater London Region"
-      Then I should be on do-it "/organisations/greater-london-region" page
+      Then I should see a link to "Scouts - Scout Association - Greater London Region" page "https://do-it.org/organisations/greater-london-region"
 
     @javascript @vcr @billy
     Scenario: See a list of current doit volunteer opportunities with a link to opportunity page
@@ -44,8 +43,7 @@ Feature: As a member of the public
       And cookies are approved
       Then the index should contain:
       | Scout Leader (volunteering with 10-14 year olds) 27th Harrow              | By Volunteering to work with scouts, you will be responsible, along with the other leaders, helpers and members for planning and running the weekly ...    | Scouts - Scout Association - Greater London Region               |
-      And I click the first "Scout Leader (volunteering with 10-14 year olds) 27th Harrow"
-      Then I should be on do-it "/opportunities/79ae1022-9059-40c0-82dd-3f5b15dd796a" page
+      Then I should see a link to "Scout Leader (volunteering with 10-14 year olds) 27th Harrow" page "https://do-it.org/opportunities/79ae1022-9059-40c0-82dd-3f5b15dd796a" 
 
     @javascript @vcr @billy
     Scenario: Doit volunteer opportunites are listed in map popups

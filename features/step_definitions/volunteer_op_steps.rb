@@ -28,14 +28,8 @@ Given /^I should see (\d+) markers in the map$/ do |num|
   expect(page).to have_css('.vol_op', count: num)
 end
 
-When /^I click the first "(.*)"$/ do |link|
-  within("#1") do
-    click_link(link)
-  end
-end
-
-Then(/^I should be on do\-it "(.*?)" page$/) do |arg1|
-  current_path.should eq arg1
+Then(/^I should see a link to "(.*?)" page "(.*?)"$/) do |link, url|
+  page.should have_link(link, :href => url)
 end
 
 Given(/^the map should show the do\-it opportunity titled (.*)$/) do |opportunity_title|
