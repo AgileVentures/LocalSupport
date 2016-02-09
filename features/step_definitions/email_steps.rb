@@ -86,5 +86,12 @@ Given(/^I import emails from "(.*?)"$/) do |file|
   Rake.application = @rake
   Rake.application.rake_require "tasks/emails"
   Rake::Task.define_task(:environment)
+  # Stub 'puts' to send import messages to the file test.log
+  IO.any_instance.stub(:puts) do |stream, msgs|
+    Rails.logger.tagged('IMPORT EMAILS') do
+      msgs.split("\n").each { |msg| Rails.logger.info(msg) }
+    end
+  end
   @rake['db:import:emails'].invoke(file)
+  IO.any_instance.unstub(:puts) 
 end
