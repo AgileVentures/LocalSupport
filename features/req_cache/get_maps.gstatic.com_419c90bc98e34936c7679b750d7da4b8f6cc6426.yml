@@ -1,0 +1,44 @@
+---
+:scope: 
+:url: https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: image/png
+  Access-Control-Allow-Origin: '*'
+  Date: Tue, 02 Feb 2016 12:10:49 GMT
+  Expires: Tue, 02 Feb 2016 12:10:49 GMT
+  Cache-Control: private, max-age=31536000
+  Last-Modified: Sun, 01 Apr 2012 21:37:22 GMT
+  X-Content-Type-Options: nosniff
+  Server: sffe
+  Content-Length: '1024'
+  X-XSS-Protection: 1; mode=block
+  Alternate-Protocol: 443:quic,p=1
+  Alt-Svc: quic=":443"; ma=604800; v="30,29,28,27,26,25"
+  Connection: close
+:content: !binary |-
+  iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAADImlUWHRYTUw6
+  Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJX
+  NU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4
+  PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4w
+  LWMwNjAgNjEuMTM0Nzc3LCAyMDEwLzAyLzEyLTE3OjMyOjAwICAgICAgICAi
+  PiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkv
+  MDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjph
+  Ym91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEu
+  MC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+  bW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4w
+  L3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQ
+  aG90b3Nob3AgQ1M1IE1hY2ludG9zaCIgeG1wTU06SW5zdGFuY2VJRD0ieG1w
+  LmlpZDo0M0NEN0RGQkFGNDYxMUUwODM1QkY5RkRBNzJGNzQ0NSIgeG1wTU06
+  RG9jdW1lbnRJRD0ieG1wLmRpZDo0M0NEN0RGQ0FGNDYxMUUwODM1QkY5RkRB
+  NzJGNzQ0NSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlE
+  PSJ4bXAuaWlkOjQzQ0Q3REY5QUY0NjExRTA4MzVCRjlGREE3MkY3NDQ1IiBz
+  dFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjQzQ0Q3REZBQUY0NjExRTA4MzVC
+  RjlGREE3MkY3NDQ1Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+
+  IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+wpWA2QAAAJlJREFU
+  CJljYACCCU7W/UD8H4j/QTGID5bom+Rs83V7uN//Wxlx/w/HBP+f7GL7E6QA
+  JPl3Y4jP/w8Vef//VeT8/1Ka9f9EUuT/ic42f8GSZ9Ni/v8FSvwvz/7/uyzr
+  /8PSbITkroiA/2+LM///Ks38/7Y89//RzES4ZP9EZ+s/20N9/9/JTwNKJPyf
+  4mr3A+QWBiTX/kN3LQDBWGdOkmnGswAAAABJRU5ErkJggg==

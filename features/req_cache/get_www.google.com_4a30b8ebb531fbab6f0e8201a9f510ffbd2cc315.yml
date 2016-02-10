@@ -1,0 +1,20 @@
+---
+:scope: 
+:url: http://www.google.com/intl/en_us/mapfiles/close.gif
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: image/gif
+  Date: Tue, 02 Feb 2016 12:10:50 GMT
+  Expires: Tue, 02 Feb 2016 12:10:50 GMT
+  Cache-Control: private, max-age=31536000
+  Last-Modified: Mon, 02 Apr 2012 02:13:37 GMT
+  X-Content-Type-Options: nosniff
+  Server: sffe
+  Content-Length: '72'
+  X-XSS-Protection: 1; mode=block
+  Connection: close
+:content: !binary |-
+  R0lGODlhDgANAIAAAP///6CgpCH5BAAAAAAALAAAAAAOAA0AAAIfjI8Jy73m
+  IoAzNErrs/se72Qdg4BjhnGnKo3tlsRGAQA7
