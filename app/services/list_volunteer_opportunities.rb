@@ -1,13 +1,36 @@
 class ListVolunteerOpportunities
 
-	def self.run
+  def self.with(listener, organisations, feature = Feature, http_party = HTTParty)
+    new(listener, organisations, feature, http_party).send(:run)
+  end
+
+  private
+
+  attr_reader :organisations, :listener, :feature, :http_party
+
+  def initialize(listener, organisations, feature, http_party)
+    @listener = listener
+    @organisations = organisations
+    @feature = feature
+    @http_party = http_party
+  end
+
+  def run
+    harrow_markers = listener.build_map_markers(organisations)
+    return [harrow_markers, []] unless feature.active? :doit_volunteer_opportunities
+    doit_markers = listener.build_map_markers(doit_orgs, :doit, false)
+    markers = merge_json_markers(harrow_markers, doit_markers)
+    [markers, doit_orgs]
+  end
+
+	def doit_orgs
 		host = 'https://api.do-it.org'
     href = "/v1/opportunities\?lat\=51.5978\&lng\=-0.3370\&miles\=0.5 "
     doit_orgs = []
     id = 1
     while href
       url = host + href
-      response = HTTParty.get(url)
+      response = http_party.get(url)
       if response.body && response.body != '[]'
         resp_items = JSON.parse(response.body)['data']['items']
         resp_items.each do |item|
@@ -25,6 +48,12 @@ class ListVolunteerOpportunities
       href = next_page ? next_page['href'] : nil
     end
     doit_orgs
-	end
+  end
+
+  def merge_json_markers(harrow_markers, doit_markers)
+    return doit_markers if harrow_markers == '[]'
+    return harrow_markers if doit_markers == '[]'
+    harrow_markers[0...-1]+', ' + doit_markers[1..-1]
+  end
 
 end

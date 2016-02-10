@@ -5,7 +5,7 @@ class VolunteerOpsController < ApplicationController
   def index
     @volunteer_ops = VolunteerOp.order_by_most_recent
     @organisations = Organisation.where(id: @volunteer_ops.select(:organisation_id))
-    @markers, @doit_orgs = assemble_volunteer_markers(@organisations)
+    @markers, @doit_orgs = ListVolunteerOpportunities.with(self, @organisations)
   end
 
   def show
@@ -55,25 +55,6 @@ class VolunteerOpsController < ApplicationController
     )
   end
 
-  private
-
-  def assemble_volunteer_markers(organisations)
-    harrow_markers = build_map_markers(organisations)
-    doit_markers = '[]'
-    if Feature.active? :doit_volunteer_opportunities
-      doit_orgs = ListVolunteerOpportunities.run
-      doit_markers = build_map_markers(doit_orgs, :doit, false)
-    end
-    markers = list_of_markers(harrow_markers, doit_markers)
-    [markers, doit_orgs]
-  end
-
-  def list_of_markers(harrow_markers, doit_markers)
-    return doit_markers if harrow_markers == '[]' 
-    return harrow_markers if doit_markers == '[]' 
-    harrow_markers[0...-1]+', ' + doit_markers[1..-1]
-  end
-
   def build_map_markers(organisations, type = :harrow, include_extra_organisation_data = true)
     ::MapMarkerJson.build(organisations, include_extra_organisation_data) do |org, marker|
       marker.lat org.latitude
@@ -83,15 +64,17 @@ class VolunteerOpsController < ApplicationController
         custom_marker: render_to_string(
           partial: 'shared/custom_marker',
           locals: { attrs: [ActionController::Base.helpers.asset_path("volunteer_icon_#{type}.png"),
-            'data-id' => org.id,
-            class: 'vol_op', 
-            title: "Click here to see volunteer opportunities at #{org.name}"]}
+                            'data-id' => org.id,
+                            class: 'vol_op',
+                            title: "Click here to see volunteer opportunities at #{org.name}"]}
         ),
         index: 1,
         type: 'vol_op'
       )
     end
   end
+
+  private
 
   def authorize
     # set @organisation
