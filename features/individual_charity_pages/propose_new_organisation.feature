@@ -28,6 +28,14 @@ Feature: User proposes an organisation to be added to HarrowCN
     And I visit the home page
     Then I should not see an add organisation link
 
+  @vcr
+  Scenario: Get validation error proposing new charity
+    Given I click "Add Organisation"
+    Then I should be on the new proposed organisation page
+    And I press "Create Proposed organisation"
+    Then I should see "Name can't be blank"
+    Then I should see "Description can't be blank"
+
   @javascript @vcr @billy
   Scenario: Unregistered user proposes new organisation
     Given I click "Add Organisation"
