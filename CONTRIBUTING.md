@@ -29,6 +29,16 @@ makes Capybara check for visibility more robust [Finishes #112900047]
 
 which will close the relevant Pivotal Tracker ticket when we merge in your pull-request.
 
+Code Style
+-------------
+
+We follow the [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide) configured according to https://github.com/AgileVentures/LocalSupport/blob/develop/.rubocop.yml
+
+[Hound](http://houndci.com) inserts style suggestions into pull requests and you can see these in advance by either:
+
+1. Configuring your own fork of LocalSupport with Hound OR
+2. Running rubocop from the command line on your diff: https://github.com/m4i/rubocop-git
+
 
 Feature Flags
 -------------
@@ -37,7 +47,7 @@ We use Feature Flags to allow a feature to be turned off and on at will.  This a
 
 Please ask for advice on whether a feature you are working on requires a feature flag.  If you do set up a new [Feature Flag (or 'toggle')](http://martinfowler.com/bliki/FeatureToggle.html) please ensure to:
 
-1. Add a migration to place that feature flag in the database, e.g.
+1) Add a migration to place that feature flag in the database, e.g.
 
 ```
 class AddSearchInputBarOnOrgPages < ActiveRecord::Migration
@@ -51,7 +61,7 @@ class AddSearchInputBarOnOrgPages < ActiveRecord::Migration
 end
 ```
 
-2. Activate the feature in `db/seeds.rb` file like so:
+2) Activate the feature in `db/seeds.rb` file like so:
 
 ```
 Feature.activate('search_input_bar_on_org_pages')
