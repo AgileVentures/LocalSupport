@@ -28,11 +28,12 @@ class ProposedOrganisationsController < BaseOrganisationsController
 
   def create
     make_user_into_org_admin_of_new_proposed_org
-    if @proposed_organisation.save!
+    if @proposed_organisation.save
       session[:proposed_organisation_id] = @proposed_organisation.id
       send_email_to_superadmin_about_org_signup @proposed_organisation
       redirect_to @proposed_organisation, notice: 'Organisation is pending admin approval.'
     else
+      flash[:error] = @proposed_organisation.errors.full_messages.join('<br/>').html_safe
       redirect_to new_proposed_organisation_path and return false
     end
   end
