@@ -58,21 +58,12 @@ class VolunteerOpsController < ApplicationController
   private
 
   def build_map_markers(organisations)
-    ::MapMarkerJson.build(organisations) do |org, marker|
-      marker.lat org.latitude
-      marker.lng org.longitude
-      marker.infowindow render_to_string( partial: 'popup', locals: {org: org})
-      marker.json(
-        custom_marker: render_to_string(
-          partial: 'shared/custom_marker',
-          locals: { attrs: [ActionController::Base.helpers.asset_path("volunteer_icon.png"),
-                    'data-id' => org.id,
-                    class: 'vol_op', title: "Click here to see volunteer opportunities at #{org.name}"]}
-        ),
-        index: 1,
-        type: 'vol_op'
-      )
-    end
+    VolunteerOpMarkerBuilder.new(
+      organisations,
+      self,
+      MapMarkerJson,
+      ActionController::Base.helpers,
+    ).perform
   end
 
   def authorize
