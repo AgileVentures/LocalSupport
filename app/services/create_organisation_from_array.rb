@@ -18,7 +18,7 @@ class CreateOrganisationFromArray
     @organisation_repository.create_and_validate(
       name:@csv_organisation.organisation_name,
       address: @csv_organisation.capitalize_address,
-      description: @csv_organisation.description ,
+      description: @csv_organisation.description.nil? ? '' : @csv_organisation.description.nil?,
       postcode: @csv_organisation.postcode,
       website: @csv_organisation.website ,
       telephone: @csv_organisation.telephone)
