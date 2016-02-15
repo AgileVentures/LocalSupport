@@ -51,6 +51,7 @@ group :test do
   gem 'vcr'
   gem 'puffing-billy'
   gem 'poltergeist'
+  gem 'phantomjs', :require => 'phantomjs/poltergeist'
 end
 
 group :production do
