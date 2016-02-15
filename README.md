@@ -9,6 +9,8 @@ Installation and other technical issues are being gathered in the github wiki:
 
 [Installation notes](https://github.com/AgileVentures/LocalSupport/wiki/installation)
 
+To help with development please see our [contribution guidelines](CONTRIBUTING.md).
+
 * Gemnasium [![Dependency Status](https://gemnasium.com/AgileVentures/LocalSupport.svg)](https://gemnasium.com/AgileVentures/LocalSupport)
 * Travis C. I. [![Build Status](https://travis-ci.org/AgileVentures/LocalSupport.png)](https://travis-ci.org/AgileVentures/LocalSupport)
 * CodeClimate [![Code Climate](https://codeclimate.com/github/AgileVentures/LocalSupport.png)](https://codeclimate.com/github/AgileVentures/LocalSupport)

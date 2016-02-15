@@ -57,6 +57,7 @@ Feature: Super Admin creating charity
     Then I should see "Name can't be blank"
     Then I should see "Description can't be blank"
 
+  @vcr
   Scenario: Successfully create charity while being signed-in as superadmin from arbitrary page
     Given I am signed in as a superadmin
     Given I visit the show page for the organisation named "Friendly Clone"
