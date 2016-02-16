@@ -8,6 +8,7 @@ Feature: Acknowledging Contributors
   Scenario Outline: Display acknowledgements
     Given I visit the <page> page
     Then I should see the "Agile Ventures" image linked to contributors
+    And I should see the "Do-it" image linked to "https://do-it.org/"
     And I should see the "Ssl-secure-badge" image linked to "https://www.expeditedssl.com/simple-ssl-scanner/scan?target_domain=www.harrowcn.org.uk"
   Examples:
     | page                |
