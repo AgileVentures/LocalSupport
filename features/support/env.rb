@@ -59,6 +59,7 @@ Billy.proxy.reset_cache
 Capybara.register_driver :pg_billy do |app|
   options = {
     js_errors: false,
+    phantomjs: Phantomjs.path,
     phantomjs_options: [
       '--ignore-ssl-errors=yes',
       "--proxy=#{Billy.proxy.host}:#{Billy.proxy.port}"

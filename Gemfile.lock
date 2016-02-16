@@ -379,6 +379,7 @@ DEPENDENCIES
   newrelic_rpm
   paranoia (~> 2.0)
   pg
+  phantomjs
   poltergeist
   puffing-billy
   rack_session_access

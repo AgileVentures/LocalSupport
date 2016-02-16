@@ -74,4 +74,12 @@ Notes from original README:
 Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
 
 
+Acceptance Testing
+------------------
+
+Our Acceptance (or feature) tests are written in Cucumber to use a high level language that is as close as possible to the specifications provided by the client.
+
+Our Acceptance tests are sandboxed against network connections with VCR and Puffing Billy and we use poltergeist as a JavaScript driver for those tests that involve JavaScript functionality on the front end.  Poltergeist uses PhantomJS under the hood and we use the phantomjs gem to fix a particular version of PhantomJS.  If you have PhantomJS installed globally you may want to remove it to ensure the correct version of PhantomJS is in use during the running of the Acceptance tests.
+
+
 
