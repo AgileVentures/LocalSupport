@@ -20,6 +20,10 @@ Please create feature/bug-fix branches that include the id of the relevant pivot
 git checkout -b 112900047_make_capybara_wait_for_javascript_element
 ```
 
+Please ensure that each commit in your pull request makes a single coherent change and that the overall pull request only includes commits related to the specific GitHub issue that the pull request is addressing.  This helps the project managers understand the PRs and merge them more quickly.
+
+This is a learning project and so we currently do NOT require developers to rebase their work into a single commit - in particular because this interferes with the history of comments in the pull request.
+
 Whatever you are working on, or however far you get please open a "Work in Progress" (WIP) [pull request](https://help.github.com/articles/creating-a-pull-request/) so that others in the team can comment on your approach.  Even if you hate your horrible code :-) please throw it up there; you'll get automated feedback on code style from [hound](https://houndci.com/) and we'll help guide your code to fit in with the rest of the project.
 
 On your final git commit please include a comment in this format:
