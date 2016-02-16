@@ -6,7 +6,6 @@
           <tr>
             <td>
               <strong><%= link_to op.title, op %></strong><br/>
-
               <div id="organisations">
                 <small><%= link_to op.organisation.name, op.organisation %></small>
                 <br/>
@@ -17,6 +16,29 @@
           </tr>
       <% end %>
     </table>
+    <br>
+    <%if feature_active? :doit_volunteer_opportunities%>
+      <strong>Do-it ops</strong>
+      <table>
+         <%if @doit_orgs && @doit_orgs.length>0%>
+           <% @doit_orgs.each do |org| %>
+              <tr>
+                <td>
+                  <strong> <%= link_to org.opp_name, "https://do-it.org/opportunities/#{org.opportunity_id}" %> </strong><br>
+
+                  <div id="organisations">
+                    <small><%= link_to org.name, "https://do-it.org/organisations/#{org.org_link}" %></small>
+                    <br/>
+                  </div>
+                  <%= smart_truncate(org.description) %>
+                </td>
+              </tr>
+          <% end %>
+        <%end%>
+      </table>
+    <%end%>
   </div>
 </div>
 <% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
+
+

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "volunteer_ops/_popup.html.erb", :type => :view do
+describe 'volunteer_ops/_popup_harrow.html.erb', type: :view do
   let(:org) do
     stub_model Organisation, :name => "Friendly Charity", :id => 1,
       :description => 'This is an absurdly absurdly long but very fun description that will make you sick '
@@ -16,7 +16,7 @@ describe "volunteer_ops/_popup.html.erb", :type => :view do
 
   before(:each) do
     allow(VolunteerOp).to receive(:where).and_return([op1, op2])
-    render partial: "popup.html.erb", locals: {org: org}
+    render partial: 'popup_harrow.html.erb', locals: {org: org}
   end
 
   it "should render a link to each volunteer opportunity at that org" do
