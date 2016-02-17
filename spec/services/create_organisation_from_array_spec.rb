@@ -21,14 +21,18 @@ describe CreateOrganisationFromArray, ".create" do
   let(:row) do 
     CSV::Row.new(headers, fields.flatten)
   end
-  let(:validate) { false } 
   let(:organisation_repository) { double :organisation }
 
-  it 'creates and validates an organisation' do 
+  it 'creates and validates an organisation if validates is true' do
     allow(organisation_repository).to receive(:find_by_name)
     expect(organisation_repository).to receive(:create_and_validate)
-    described_class.create(organisation_repository, row, validate)
+    described_class.create(organisation_repository, row, validate = true)
   end
 
+  it 'creates and validates an organisation but missing info is substituted with empty string' do
+    allow(organisation_repository).to receive(:find_by_name)
+    expect(organisation_repository).to receive(:create_and_substitute_with_empty)
+    described_class.create(organisation_repository, row, validate = false)
+  end
 
 end
