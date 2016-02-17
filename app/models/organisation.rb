@@ -90,7 +90,7 @@ class Organisation < BaseOrganisation
   end
 
   def self.create_and_substitute_with_empty(attributes)
-    create!(attributes.map { |k, v| attributes[k] = v.nil? ? ' ' : v })
+    create!(attributes.each { |k, v| attributes[k] = v.empty? ? 'NO INFORMATION RECORDED' : v })
   end
 
   def self.import_addresses(filename, limit, validation = true)
