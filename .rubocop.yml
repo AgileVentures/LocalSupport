@@ -2,13 +2,15 @@ AllCops:
   DisabledByDefault: true
   DisplayCopNames: true
   DisplayStyleGuide: true
-  RunRailsCops: true
   Exclude:
     - 'spec/spec_helper.rb'
     - 'db/**/*'
     - 'config/**/*'
     - 'script/**/*'
     - 'bin/**/*'
+
+Rails:
+ Enabled: true
 
 # inherit_from:
 #   - enabled.yml
@@ -777,10 +779,6 @@ Rails/Date:
                   such as Date.today, Date.current etc.
   Enabled: true
 
-Rails/DefaultScope:
-  Description: 'Checks if the argument passed to default_scope is a block.'
-  Enabled: true
-
 Rails/Delegate:
   Description: 'Prefer delegate method for delegations.'
   Enabled: true
@@ -1008,7 +1006,7 @@ Style/SingleLineMethods:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-single-line-methods'
   Enabled: false
 
-Style/SingleSpaceBeforeFirstArg:
+Style/SpaceBeforeFirstArg:
   Description: >-
                  Checks that exactly one space is used between a method name
                  and the first argument for method calls without parentheses.
@@ -1024,8 +1022,8 @@ Style/SpaceAfterComma:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#spaces-operators'
   Enabled: false
 
-Style/SpaceAfterControlKeyword:
-  Description: 'Use spaces after if/elsif/unless/while/until/case/when.'
+Style/SpaceAroundKeyword:
+  Description: 'Use spaces around if/elsif/unless/while/until/case/when.'
   Enabled: false
 
 Style/SpaceAfterNot:
@@ -1082,10 +1080,6 @@ Style/SpaceAroundOperators:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#spaces-operators'
   Enabled: false
 
-Style/SpaceBeforeModifierKeyword:
-  Description: 'Put a space before the modifier keyword.'
-  Enabled: false
-
 Style/SpaceInsideBrackets:
   Description: 'No spaces after [ or before ].'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-spaces-braces'
@@ -1121,8 +1115,13 @@ Style/TrailingBlankLines:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#newline-eof'
   Enabled: false
 
-Style/TrailingComma:
-  Description: 'Checks for trailing comma in parameter lists and literals.'
+Style/TrailingCommaInLiteral:
+  Description: 'Checks for trailing comma in literals.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-trailing-array-commas'
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  Description: 'Checks for trailing comma in parameter lists.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-trailing-array-commas'
   Enabled: false
 
