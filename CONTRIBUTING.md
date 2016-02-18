@@ -1,12 +1,13 @@
 Development Process
 ------------------
 
-Our default working branch is `develop`.  We do work by creating branches off `develop` for new features and bugfixes.  Each developer will usually work with a [fork of the main repository](https://help.github.com/articles/fork-a-repo/)
+Our default working branch is `develop`.  We do work by creating branches off `develop` for new features and bugfixes.  Any feature should include appropriate Cucumber acceptance tests and RSpec unit tests.  We try to avoid view and controller specs, and focus purely on unit tests at the model and service level where possible.  A bugfix may include an acceptance test depending on where the bug occurred, but fixing a bug should start with the creation of a test that replicates the bug, so that any bugfix submission will include an appropriate test as well as the fix itself.
 
-Before starting work on a new feature or bugfix, please ensure you have [synced your fork to upstream/develop](https://help.github.com/articles/syncing-a-fork/):
+
+Each developer will usually work with a [fork](https://help.github.com/articles/fork-a-repo/) of the [main repository on Agile Ventures](https://github.com/AgileVentures/LocalSupport). Before starting work on a new feature or bugfix, please ensure you have [synced your fork to upstream/develop](https://help.github.com/articles/syncing-a-fork/):
 
 ```
-git pull upstream/develop
+git pull upstream develop
 ```
 
 Note that you should be re-syncing daily (even hourly at very active times) on your feature/bugfix branch to ensure that you are always building on top of very latest develop code.
@@ -19,15 +20,19 @@ Please create feature/bug-fix branches that include the id of the relevant pivot
 git checkout -b 112900047_make_capybara_wait_for_javascript_element
 ```
 
+Please ensure that each commit in your pull request makes a single coherent change and that the overall pull request only includes commits related to the specific GitHub issue that the pull request is addressing.  This helps the project managers understand the PRs and merge them more quickly.
+
+This is a learning project and so we currently do NOT require developers to rebase their work into a single commit - in particular because this interferes with the history of comments in the pull request.
+
 Whatever you are working on, or however far you get please open a "Work in Progress" (WIP) [pull request](https://help.github.com/articles/creating-a-pull-request/) so that others in the team can comment on your approach.  Even if you hate your horrible code :-) please throw it up there; you'll get automated feedback on code style from [hound](https://houndci.com/) and we'll help guide your code to fit in with the rest of the project.
 
-On your final commit please include a comment in this format:
+On your final git commit please include a comment in this format:
 
 ```
 makes Capybara check for visibility more robust [Finishes #112900047]
 ```
 
-which will close the relevant Pivotal Tracker ticket when we merge in your pull-request.
+which will close the relevant Pivotal Tracker ticket when we merge in your pull-request.  A hyperlink to the relevant Pivotal Tracker ticket in the pull request description will also be appreciated.
 
 Code Style
 -------------

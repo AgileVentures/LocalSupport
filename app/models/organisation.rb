@@ -89,6 +89,10 @@ class Organisation < BaseOrganisation
     create!(attributes.select{|k,v| !v.nil?})
   end
 
+  def self.create_and_substitute_with_empty(attributes)
+    create!(attributes.each { |k, v| attributes[k] = v.empty? ? 'NO INFORMATION RECORDED' : v })
+  end
+
   def self.import_addresses(filename, limit, validation = true)
     import(filename, limit, validation) do |row, validation|
        sleep 0.1
