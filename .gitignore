@@ -42,7 +42,6 @@ config/database.yml
 /public/assets
 
 # ignore ruby version management stuff
-.rvmrc
 .ruby-version
 .ruby-gemset
 .rbenv
