@@ -291,6 +291,15 @@ describe Organisation, :type => :model do
       }).to raise_error CSV::MalformedCSVError
     end
 
+    it 'should be able to substitute with empty string when data is missing' do
+      attributes = {name: '',
+                    address: '',
+                    description: '',
+                    postcode: '',
+                    website: '',
+                    telephone: ''}
+      expect { Organisation.create_and_substitute_with_empty attributes }.not_to raise_error
+    end
 
     def create_organisation(fields)
       row = CSV::Row.new(@headers, fields.flatten)

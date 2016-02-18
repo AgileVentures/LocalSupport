@@ -51,6 +51,7 @@ group :test do
   gem 'vcr'
   gem 'puffing-billy'
   gem 'poltergeist'
+  gem 'phantomjs', :require => 'phantomjs/poltergeist'
 end
 
 group :production do
@@ -90,6 +91,7 @@ gem 'redcarpet'
 # validating organisation website URLs
 gem 'url_validator'
 
+gem 'httparty'
 
 gem 'rails_autolink'
 gem "paranoia", "~> 2.0"

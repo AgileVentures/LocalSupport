@@ -23,3 +23,18 @@ Given /^I update "(.*?)" volunteer op description to be "(.*?)"$/ do |title, des
   fill_in('Description', :with => description)
   click_on 'Update a Volunteer Opportunity'
 end
+
+Given /^I should see (\d+) markers in the map$/ do |num|
+  expect(page).to have_css('.vol_op', count: num)
+end
+
+Then(/^I should see a link to "(.*?)" page "(.*?)"$/) do |link, url|
+  page.should have_link(link, :href => url)
+end
+
+Given(/^the map should show the do\-it opportunity titled (.*)$/) do |opportunity_title|
+  icon = find_map_icon('vol_op', '10')
+  click_twice icon
+  expect(page).to have_css('.arrow_box')
+  expect(find('.arrow_box').text).to include(opportunity_title)
+end

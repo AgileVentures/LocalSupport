@@ -28,7 +28,13 @@ user.confirmed_at = DateTime.now
 user.siteadmin = true
 user.save!
 
+3.times do |n|
+  VolunteerOp.create(description: "This is a test#{n}", title: "Test#{n}", organisation_id: "#{1 + n}")
+end
+
 Feature.activate('volunteer_ops_create')
 Feature.activate('volunteer_ops_list')
 Feature.activate('automated_propose_org')
 Feature.activate('search_input_bar_on_org_pages')
+Feature.activate('doit_volunteer_opportunities')
+
