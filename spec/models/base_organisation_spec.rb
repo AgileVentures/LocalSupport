@@ -6,6 +6,7 @@ describe BaseOrganisation, type: :model do
     it { is_expected.to validate_presence_of :description }
     it { is_expected.to allow_value('friendly@charity.org').for(:email) }
     it { is_expected.not_to allow_value('friendly').for(:email) }
+    it { is_expected.to allow_value('').for(:email) }
   end
 
   describe '#has_been_updated_recently?' do

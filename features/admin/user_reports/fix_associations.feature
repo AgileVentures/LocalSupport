@@ -11,17 +11,19 @@ Feature: Fix Associations
       | name          | description      | address          | postcode | email                  |
       | normal        | Awesome people   | 83 pinner road   | HA1 4HZ  | superadmin@org.org     |
       | upcased       | Awesome people   | 84 pinner road   | HA1 4HZ  | UPCASED@org.org        |
-      | whitespace    | Awesome people   | 30 pinner road   | HA1 4HZ  | whitespace@charity.org |
-    And "whitespace" has a whitespace at the end of the email address
+      #| whitespace    | Awesome people   | 30 pinner road   | HA1 4HZ  | whitespace@charity.org |
+    #And "whitespace" has a whitespace at the end of the email address
     And the superadmin invited a user for "normal"
     And the superadmin invited a user for "upcased"
-    And the superadmin invited a user for "whitespace"
+    #And the superadmin invited a user for "whitespace"
     And associations are destroyed for:
       | name |
       | normal |
       | upcased |
-      | whitespace |
+      #| whitespace |
 
+  # Are these tests still relevant with email validation in place? An email with
+  # whitespace at the end is not allowed from the start.
   # check if the records are in the broken state
   @vcr
   Scenario: Broken invites as seen on the orphans page
@@ -30,7 +32,7 @@ Feature: Fix Associations
     And I visit the invite users to become admin of organisations page
     Then I should not see "normal"
     Then I should see "upcased"
-    Then I should see "whitespace"
+    #Then I should see "whitespace"
     # None will show on the invited users page because we don't show users
     # without associations there
 
@@ -41,8 +43,8 @@ Feature: Fix Associations
     And I visit the invite users to become admin of organisations page
     Then I should not see "normal"
     Then I should not see "upcased"
-    Then I should not see "whitespace"
+    #Then I should not see "whitespace"
     And I visit the invited users page
     Then I should see "normal"
     Then I should see "upcased"
-    Then I should see "whitespace"
+    #Then I should see "whitespace"

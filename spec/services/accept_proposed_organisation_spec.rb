@@ -91,28 +91,4 @@ describe  AcceptProposedOrganisation do
     end
 
   end
-
-  context 'proposed organisation has invalid email' do
-    let!(:proposed_org){FactoryGirl.create(:orphan_proposed_organisation, email: "invalidemail.com")}
-
-    it 'promotes the proposed org to org' do
-      expect(->{subject}).to change(Organisation, :count).by 1
-    end
-
-    it 'has one less proposed organisation' do
-      expect(->{subject}).to change(ProposedOrganisation, :count).by -1
-    end
-
-    it 'does not send an email' do
-      expect(->{subject}).not_to change{ActionMailer::Base.deliveries.size}
-    end
-
-    it 'returns a notification sent result' do
-      expect(subject.status).to eq(AcceptProposedOrganisation::Response::INVALID_EMAIL)
-    end
-
-    it 'returns the accepted org on the result' do 
-      expect(subject.accepted_organisation).to eq Organisation.find_by(name: proposed_org.name)
-    end
-  end
 end

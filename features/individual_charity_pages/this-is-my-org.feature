@@ -50,7 +50,8 @@ Feature: This is my organisation
     And "admin@helpfolk.com"'s request for "Helpful Folk" should be persisted
     And an email should be sent to "superadmin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
 
-  @javascript @billy
+  # @billy
+  @javascript 
   Scenario: Unregistered User
     Given I click "This is my organisation" on the "Helpful Folk" page and stay there
     And I click "toggle_link"
@@ -65,7 +66,8 @@ Feature: This is my organisation
     Then I should be on the show page for the organisation named "Helpful Folk"
     And an email should be sent to "superadmin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
 
-  @javascript @billy
+  #@billy
+  @javascript 
   Scenario: Unregistered User Who Fails Signin Once
     Given I click "This is my organisation" on the "Helpful Folk" page and stay there
     When I click "toggle_link"

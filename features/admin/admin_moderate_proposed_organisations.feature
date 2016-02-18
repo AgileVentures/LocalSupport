@@ -50,12 +50,13 @@ Feature: Admin moderates an organisation to be added to HarrowCN
     And I set my password
     Then I should be on the show page for the organisation named "Unfriendly"
 
-  @vcr
-  Scenario: Invalid email garners message when superadmin accepts proposed organisation
-    Given the following proposed organisations exist:
-      | name       | description             | address        | postcode | telephone | website               | email    | donation_info        | non_profit |
-      | Unfriendly | Mourning loved ones     | 30 pinner road | HA5 4HZ  | 520800000 | http://unfriendly.org |  xyt     | www.pleasedonate.com | true       |
-    And having accepted the proposed organisation named "Unfriendly", I see "No invitation email was sent because the email associated with Unfriendly, xyt, seems invalid"
+  # This test is superfluous with email validations in place
+  #@vcr
+  #Scenario: Invalid email garners message when superadmin accepts proposed organisation
+    #Given the following proposed organisations exist:
+      #| name       | description             | address        | postcode | telephone | website               | email    | donation_info        | non_profit |
+      #| Unfriendly | Mourning loved ones     | 30 pinner road | HA5 4HZ  | 520800000 | http://unfriendly.org |  xyt     | www.pleasedonate.com | true       |
+    #And having accepted the proposed organisation named "Unfriendly", I see "No invitation email was sent because the email associated with Unfriendly, xyt, seems invalid"
 
   @vcr
   Scenario: Blank email garners message when superadmin accepts proposed organisation
