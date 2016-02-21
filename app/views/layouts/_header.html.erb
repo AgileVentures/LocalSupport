@@ -7,7 +7,7 @@
       <a href="/" class="btn py2 black muted">Home</a>
       <a href="/" class="btn py2 black muted">Organisations</a>
       <a href="/" class="btn py2 black muted">Volunteers</a>
-      <%= react_component('Label', label: 'hello world') %>
+      <%= react_component('LogInForm', submitURL: session_path(resource_name), isRememberable: devise_mapping.rememberable?) %>
     </div>
   </nav>
 </header>

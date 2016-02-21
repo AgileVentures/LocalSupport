@@ -1,12 +1,14 @@
-class Label extends React.Component {
-  constructor () {
-    super();
+class LogInForm extends React.Component {
+  constructor (props) {
+    super(props);
     this.handleOpenFormClick = this.handleOpenFormClick.bind(this);
     this.handleSignUpToggle = this.handleSignUpToggle.bind(this);
+    this.handleRememberableCheck = this.handleRememberableCheck.bind(this);
     this.render = this.render.bind(this);
     this.state = {
       isShowingForm: false,
-      isShowingLogInForm: true
+      isShowingLogInForm: true,
+      isRememberable: props.isRememberable
     };
   }
 
@@ -22,6 +24,12 @@ class Label extends React.Component {
     });
   }
 
+  handleRememberableCheck() {
+    this.setState({
+      isRememberable: !this.state.isRememberable
+    });
+  }
+
   renderLogInForm() {
     return (
       <form>
@@ -30,7 +38,7 @@ class Label extends React.Component {
         <label>Password</label>
         <input type='password' className='block col-12 mb1 field' />
         <label className='block col-12 mb2'>
-          <input type='checkbox' />
+          <input type='checkbox' onChange={this.handleRememberableCheck} checked={this.state.isRememberable} />
           Remember Me
         </label>
         <button type='submit' className='btn btn-primary'>Sign In</button>
@@ -75,6 +83,7 @@ class Label extends React.Component {
   }
 }
 
-Label.propTypes = {
-  label: React.PropTypes.string
+LogInForm.propTypes = {
+  submitURL: React.PropTypes.string.isRequired,
+  isRememberable: React.PropTypes.bool.isRequired
 };
