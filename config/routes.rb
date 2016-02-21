@@ -3,6 +3,8 @@ LocalSupport::Application.routes.draw do
   devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}
 
   get 'contributors' => 'contributors#show'
+  post 'sign_in' => 'pretends#sign_in'
+  post 'sign_up' => 'pretends#sign_up'
   match 'organisations/search' => 'organisations#search', via: [:get, :post]
 
   get '/organisation_reports/without_users' => 'organisation_reports#without_users_index', as: :organisations_report

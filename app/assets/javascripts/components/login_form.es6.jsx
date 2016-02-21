@@ -3,6 +3,7 @@ class LogInForm extends React.Component {
     super(props);
     this.handleOpenFormClick = this.handleOpenFormClick.bind(this);
     this.handleSignUpToggle = this.handleSignUpToggle.bind(this);
+    this.handleSignUpSubmit = this.handleSignUpSubmit.bind(this);
     this.handleRememberableCheck = this.handleRememberableCheck.bind(this);
     this.render = this.render.bind(this);
     this.state = {
@@ -21,6 +22,25 @@ class LogInForm extends React.Component {
   handleSignUpToggle() {
     this.setState({
       isShowingLogInForm: !this.state.isShowingLogInForm
+    });
+  }
+
+  handleSignUpSubmit(e) {
+    e.preventDefault();
+    console.log('submitting signup');
+    $.ajax({
+      url: "/sign_up",
+      dataType: 'json',
+      method: 'POST',
+      data: {
+        email: this.refs.signUpEmail.value,
+        password: this.refs.signUpPassword.value,
+        password_confirmation: this.refs.signUpPasswordConfirmation.value
+      }
+    }).then( response => {
+      console.log("Good job submitting Sign Up form", response);
+    }).fail( response => {
+      console.log("Error submitting Sign Up form", response);
     });
   }
 
@@ -52,12 +72,12 @@ class LogInForm extends React.Component {
     return (
       <form>
         <label>Email Address</label>
-        <input type='text' className='block col-12 mb1 field' />
+        <input ref='signUpEmail' type='text' className='block col-12 mb1 field' />
         <label>Password</label>
-        <input type='password' className='block col-12 mb1 field' />
+        <input ref='signUpPassword' type='password' className='block col-12 mb1 field' />
         <label>Confirm Password</label>
-        <input type='password' className='block col-12 mb1 field' />
-        <button type='submit' className='btn btn-primary'>Sign Up</button>
+        <input ref='signUpPasswordConfirmation' type='password' className='block col-12 mb1 field' />
+        <button onClick={this.handleSignUpSubmit} type='submit' className='btn btn-primary'>Sign Up</button>
         <a onClick={this.handleSignUpToggle} className='block py2'>Already a member? Log in</a>
       </form>
     );
