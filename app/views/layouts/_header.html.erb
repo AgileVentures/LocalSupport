@@ -7,7 +7,7 @@
       <a href="/" class="btn py2 black muted">Home</a>
       <a href="/" class="btn py2 black muted">Organisations</a>
       <a href="/" class="btn py2 black muted">Volunteers</a>
-      <%= react_component('LogInForm', submitURL: session_path(resource_name), isRememberable: devise_mapping.rememberable?) %>
+      <%= react_component('LogInForm', signInURL: session_path(resource_name), signUpURL: registration_path(resource_name), isRememberable: devise_mapping.rememberable?) %>
     </div>
   </nav>
 </header>

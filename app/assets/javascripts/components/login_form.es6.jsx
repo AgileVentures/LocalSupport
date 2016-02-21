@@ -29,16 +29,21 @@ class LogInForm extends React.Component {
     e.preventDefault();
     console.log('submitting signup');
     $.ajax({
-      url: "/sign_up",
+      url: this.props.signUpURL,
       dataType: 'json',
       method: 'POST',
       data: {
-        email: this.refs.signUpEmail.value,
-        password: this.refs.signUpPassword.value,
-        password_confirmation: this.refs.signUpPasswordConfirmation.value
+        user: {
+          email: this.refs.signUpEmail.value,
+          password: this.refs.signUpPassword.value,
+          password_confirmation: this.refs.signUpPasswordConfirmation.value
+        }
       }
     }).then( response => {
       console.log("Good job submitting Sign Up form", response);
+      this.setState({
+        isShowingForm: false
+      });
     }).fail( response => {
       console.log("Error submitting Sign Up form", response);
     });
@@ -104,6 +109,7 @@ class LogInForm extends React.Component {
 }
 
 LogInForm.propTypes = {
-  submitURL: React.PropTypes.string.isRequired,
+  signInURL: React.PropTypes.string.isRequired,
+  signUpURL: React.PropTypes.string.isRequired,
   isRememberable: React.PropTypes.bool.isRequired
 };
