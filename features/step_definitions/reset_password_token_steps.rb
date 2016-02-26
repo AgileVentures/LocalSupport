@@ -6,7 +6,7 @@ Given(/^I requested a new password too long ago$/) do
 end
 
 And(/^I try to reset my password$/) do
-  fill_in('user_password', :with => 'AbRaCaDaBrA123', :match => :prefer_exact)
-  fill_in('Confirm new password', :with => 'AbRaCaDaBrA123')
+  fill_in('user_password', with: 'AbRaCaDaBrA123', match: :prefer_exact)
+  fill_in('Confirm new password', with: 'AbRaCaDaBrA123')
   click_button 'Change my password'
 end

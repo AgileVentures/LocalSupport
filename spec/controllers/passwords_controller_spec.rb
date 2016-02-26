@@ -33,27 +33,40 @@ describe Devise::PasswordsController, :type => :controller do
       end
     end
    end
-   describe 'PATCH update' do
+
+   describe 'PUT update' do
      before :each do
-       request.env["devise.mapping"] = Devise.mappings[:user]
+       request.env['devise.mapping'] = Devise.mappings[:user]
+       change_password
      end
-     let(:user){ FactoryGirl.create(:user) }
-     let(:reset_password_token){ user.send_reset_password_instructions }
-     subject(:change_password){ put :update, user:
-       { reset_password_token: reset_password_token, password: '123qwe___', password_confirmation: '123qwe___' } }
-     context 'successfully' do
+
+     let(:success) { 'Your password was changed successfully. You are now signed in.' }
+     let(:failure) { 'Reset password token is invalid' }
+     let(:user) { FactoryGirl.create(:user) }
+
+     let(:put_params) do
+       {
+         reset_password_token: reset_password_token,
+         password: '123qwe___',
+         password_confirmation: '123qwe___'
+       }
+     end
+
+     subject(:change_password) { put :update, user: put_params }
+
+     context 'successful' do
+       let(:reset_password_token) { user.send_reset_password_instructions }
+
        it 'changes password' do
-         change_password
-         expect(flash[:notice]).to eq('Your password was changed successfully. You are now signed in.')
+         expect(flash[:notice]).to eq(success)
        end
      end
-     context 'unsuccessfully' do
-#      render_views
-       it 'incorrect reset password token' do
-         put :update, user:
-           { reset_password_token: 'abracadabra', password: '123qwe___', password_confirmation: '123qwe___' }
-         expect(assigns(:user).errors.full_messages).to include "Reset password token is invalid"
-#        expect(response.body).to have_content('Reset password token is invalid')
+
+     context 'unsuccessful' do
+       let(:reset_password_token) { 'abracadabra' }
+
+       it 'displays comprehensible error message' do
+         expect(assigns(:user).errors.full_messages).to include(failure)
        end
      end
    end
