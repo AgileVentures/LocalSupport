@@ -33,4 +33,28 @@ describe Devise::PasswordsController, :type => :controller do
       end
     end
    end
+   describe 'PATCH update' do
+     before :each do
+       request.env["devise.mapping"] = Devise.mappings[:user]
+     end
+     let(:user){ FactoryGirl.create(:user) }
+     let(:reset_password_token){ user.send_reset_password_instructions }
+     subject(:change_password){ put :update, user:
+       { reset_password_token: reset_password_token, password: '123qwe___', password_confirmation: '123qwe___' } }
+     context 'successfully' do
+       it 'changes password' do
+         change_password
+         expect(flash[:notice]).to eq('Your password was changed successfully. You are now signed in.')
+       end
+     end
+     context 'unsuccessfully' do
+#      render_views
+       it 'incorrect reset password token' do
+         put :update, user:
+           { reset_password_token: 'abracadabra', password: '123qwe___', password_confirmation: '123qwe___' }
+         expect(assigns(:user).errors.full_messages).to include "Reset password token is invalid"
+#        expect(response.body).to have_content('Reset password token is invalid')
+       end
+     end
+   end
 end

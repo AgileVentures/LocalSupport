@@ -38,7 +38,8 @@ def paths(location)
       'invited users' => invited_users_report_path,
       'volunteer opportunities' => volunteer_ops_path,
       'contributors' => contributors_path,
-      'deleted users' => deleted_users_report_path
+      'deleted users' => deleted_users_report_path,
+      'reset password' => "/users/password/edit?reset_password_token=#{@reset_password_token}"
   }[location]
 end
 
