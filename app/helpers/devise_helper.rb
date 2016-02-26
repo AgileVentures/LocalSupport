@@ -9,9 +9,10 @@ module DeviseHelper
     return "" if resource.errors.empty?
 
     errors = resource.errors
-    if errors[:reset_password_token] and errors[:reset_password_token].include? "has expired, please request a new one"
+    reset_token_error = errors.to_hash.fetch(:reset_password_token,'')
+    if reset_token_error.include? 'has expired, please request a new one'
       errors.add(:base, :reset_password_token_expired)
-      errors[:reset_password_token].delete "has expired, please request a new one"
+      errors[:reset_password_token].delete 'has expired, please request a new one'
     end
       
     messages = errors.full_messages.map { |msg| content_tag(:li, msg) }.join
