@@ -16,45 +16,6 @@ Rails:
 #   - enabled.yml
 #   - disabled.yml
 
-Metrics/AbcSize:
-  # The ABC size is a calculated magnitude, so this number can be a Fixnum or
-  # a Float.
-  Max: 15
-
-Metrics/BlockNesting:
-  Max: 3
-
-Metrics/ClassLength:
-  CountComments: false  # count full line comments?
-  Max: 100
-
-Metrics/ModuleLength:
-  CountComments: false  # count full line comments?
-  Max: 100
-
-# Avoid complex methods.
-Metrics/CyclomaticComplexity:
-  Max: 6
-
-Metrics/LineLength:
-  Max: 90
-  # To make it possible to copy or click on URIs in the code, we allow lines
-  # contaning a URI to be longer than Max.
-  AllowURI: true
-  URISchemes:
-    - http
-    - https
-
-Metrics/MethodLength:
-  CountComments: false  # count full line comments?
-  Max: 5
-
-Metrics/ParameterLists:
-  Max: 5
-  CountKeywordArgs: true
-
-Metrics/PerceivedComplexity:
-  Max: 7
 
 # ******** ENABLED ********
 
@@ -723,6 +684,9 @@ Lint/UselessAssignment:
   Enabled: true
 
 Metrics/AbcSize:
+  # The ABC size is a calculated magnitude, so this number can be a Fixnum or
+  # a Float.
+  Max: 15
   Description: >-
                  A calculated magnitude based on number of assignments,
                  branches, and conditions.
@@ -730,40 +694,59 @@ Metrics/AbcSize:
   Enabled: true
 
 Metrics/BlockNesting:
+  Max: 3
   Description: 'Avoid excessive block nesting'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#three-is-the-number-thou-shalt-count'
   Enabled: true
 
 Metrics/ClassLength:
+  CountComments: false  # count full line comments?
+  Max: 100
   Description: 'Avoid classes longer than 100 lines of code.'
   Enabled: true
 
 Metrics/ModuleLength:
+  CountComments: false  # count full line comments?
+  Max: 100
   Description: 'Avoid modules longer than 100 lines of code.'
   Enabled: true
 
+# Avoid complex methods.
 Metrics/CyclomaticComplexity:
+  Max: 6
   Description: >-
                  A complexity metric that is strongly correlated to the number
                  of test cases needed to validate a method.
   Enabled: true
 
 Metrics/LineLength:
-  Description: 'Limit lines to 80 characters.'
+  Max: 90
+  # To make it possible to copy or click on URIs in the code, we allow lines
+  # contaning a URI to be longer than Max.
+  AllowURI: true
+  URISchemes:
+    - http
+    - https
+  Description: 'Limit lines to 90 characters.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#80-character-limits'
   Enabled: true
 
 Metrics/MethodLength:
+  CountComments: false  # count full line comments?
+  Max: 5
   Description: 'Avoid methods longer than 10 lines of code.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#short-methods'
   Enabled: true
 
 Metrics/ParameterLists:
+  Max: 5
+  CountKeywordArgs: true
   Description: 'Avoid parameter lists longer than three or four parameters.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#too-many-params'
   Enabled: true
 
 Metrics/PerceivedComplexity:
+  Max: 7
   Description: >-
                  A complexity metric geared towards measuring complexity for a
                  human reader.

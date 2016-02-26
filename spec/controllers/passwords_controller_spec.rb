@@ -33,4 +33,41 @@ describe Devise::PasswordsController, :type => :controller do
       end
     end
    end
+
+   describe 'PUT update' do
+     before :each do
+       request.env['devise.mapping'] = Devise.mappings[:user]
+       change_password
+     end
+
+     let(:success) { 'Your password was changed successfully. You are now signed in.' }
+     let(:failure) { 'Reset password token is invalid' }
+     let(:user) { FactoryGirl.create(:user) }
+
+     let(:put_params) do
+       {
+         reset_password_token: reset_password_token,
+         password: '123qwe___',
+         password_confirmation: '123qwe___'
+       }
+     end
+
+     subject(:change_password) { put :update, user: put_params }
+
+     context 'successful' do
+       let(:reset_password_token) { user.send_reset_password_instructions }
+
+       it 'changes password' do
+         expect(flash[:notice]).to eq(success)
+       end
+     end
+
+     context 'unsuccessful' do
+       let(:reset_password_token) { 'abracadabra' }
+
+       it 'displays comprehensible error message' do
+         expect(assigns(:user).errors.full_messages).to include(failure)
+       end
+     end
+   end
 end
