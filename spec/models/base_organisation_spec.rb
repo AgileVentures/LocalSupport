@@ -16,7 +16,7 @@ describe BaseOrganisation, type: :model do
     it { is_expected.to have_been_updated_recently }
 
     context "updated too long ago" do
-      subject { FactoryGirl.create(:organisation, updated_at: 365.days.ago)}
+      subject { FactoryGirl.create(:organisation, updated_at: 1.year.ago)}
       it { is_expected.not_to have_been_updated_recently }
     end
 

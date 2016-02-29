@@ -52,7 +52,8 @@ describe Organisation, :type => :model do
       [ 365, 366, 500 ].each do |days|
         it "returns small icon when update is #{days} days old" do
           # adds generous 5 second pad for query to run
-          past_time = Time.current.advance(days: -days).advance(seconds: -5)
+          past_time = days == 365 ? Time.current.advance(years: -1) : Time.current.advance(days: -days)
+          past_time = past_time.advance(seconds: -5)
           expect(
             build_org_with_computed_fields_and_updated_at(
               @org1, past_time
