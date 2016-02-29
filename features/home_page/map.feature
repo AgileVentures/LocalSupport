@@ -1,3 +1,4 @@
+@time_travel
 Feature: Map of local charities
   As a local resident
   So that I can get support for a specific condition
@@ -6,6 +7,7 @@ Feature: Map of local charities
   Tracker story ID: https://www.pivotaltracker.com/story/show/52317013
 
   Background:
+    Given today's date is 1980-12-25
     Given the following organisations exist:
       | name                           | description                    | address        | postcode | website       |
       | Harrow Bereavement Counselling | Harrow Bereavement Counselling | 34 Pinner Road | HA1 4HZ  | http://a.com/ |
@@ -31,7 +33,6 @@ Feature: Map of local charities
     Then I should see an infowindow when I click on the map markers:
       | Indian Elders Association | Age UK | Harrow Bereavement Counselling |
 
-  @time_travel
   @javascript @billy
   Scenario Outline: Organisation map has small icon for organisations updated more than 365 days ago
     Given I travel a year plus "<days>" days into the future
