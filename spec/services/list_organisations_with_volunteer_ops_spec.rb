@@ -33,7 +33,7 @@ describe ListOrganisationsWithVolunteerOps do
   end
 
   context 'only local site volops' do
-    let(:local_site_scope) { :do_it }
+    let(:local_site_scope) { :local_only }
 
     subject(:list_orgs_with_vol_ops) do
       ListOrganisationsWithVolunteerOps.with(listener, local_site_scope, model)

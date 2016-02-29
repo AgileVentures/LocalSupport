@@ -18,4 +18,16 @@ describe VolunteerOp, :type => :model do
     v.valid?
     expect(v.errors[:organisation_id].size).to eq(1)
   end
+
+  describe '#local_only' do
+    let(:organisation){FactoryGirl.create(:organisation)}
+    let(:first_local){FactoryGirl.create(:local_volunteer_op, organisation: organisation)}
+    let(:second_local){FactoryGirl.create(:local_volunteer_op, organisation: organisation)}
+    let(:first_doit){FactoryGirl.create(:doit_volunteer_op, organisation: organisation)}
+    let(:second_doit){FactoryGirl.create(:doit_volunteer_op, organisation: organisation)}
+
+    it 'must contain local ops' do
+      expect(VolunteerOp.local_only).to include(first_doit,second_doit)
+    end
+  end
 end
