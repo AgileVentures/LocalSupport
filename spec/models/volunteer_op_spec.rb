@@ -27,7 +27,7 @@ describe VolunteerOp, :type => :model do
     let(:second_doit){FactoryGirl.create(:doit_volunteer_op, organisation: organisation)}
 
     it 'must contain local ops' do
-      expect(VolunteerOp.local_only).to include(first_doit,second_doit)
+      expect(VolunteerOp.local_only).to include(first_local,second_local)
     end
     it 'must contain only local ops' do
       expect(VolunteerOp.local_only).not_to include(first_doit, second_doit)
