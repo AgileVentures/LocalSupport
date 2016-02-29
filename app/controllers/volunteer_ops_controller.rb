@@ -4,8 +4,12 @@ class VolunteerOpsController < ApplicationController
 
   def index
     @volunteer_ops = VolunteerOp.order_by_most_recent
-    @organisations = Organisation.where(id: @volunteer_ops.select(:organisation_id))
-    @markers, @doit_orgs = ListVolunteerOpportunities.with(self, @organisations)
+    # @organisations = Organisation.where(id: @volunteer_ops.select(:organisation_id))
+
+
+    @markers, @organisations = ListOrganisationsWithVolunteerOps.with(self, :order_by_most_recent)
+    @doit_orgs = []
+    # @markers, @doit_orgs = ListVolunteerOpportunities.with(self, @organisations)
   end
 
   def show
