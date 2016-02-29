@@ -15,7 +15,8 @@ class ListOrganisationsWithVolunteerOps
   # rubocop:enable Lint/UnusedMethodArgument
 
   def run
-    orgs = model_klass.join(:volunteer_ops).where(scope)
+    # feature.active? :doit_volunteer_opportunities
+    orgs = model_klass.joins(:volunteer_ops).send(scope)
     [listener.build_map_markers(orgs), orgs]
   end
 end
