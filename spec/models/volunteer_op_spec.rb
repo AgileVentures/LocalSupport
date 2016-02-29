@@ -29,5 +29,8 @@ describe VolunteerOp, :type => :model do
     it 'must contain local ops' do
       expect(VolunteerOp.local_only).to include(first_doit,second_doit)
     end
+    it 'must contain only local ops' do
+      expect(VolunteerOp.local_only).not_to include(first_doit, second_doit)
+    end
   end
 end
