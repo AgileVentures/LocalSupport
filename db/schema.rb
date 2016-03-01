@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 20160228210147) do
     t.integer  "organisation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "source"
+    t.string   "source",          default: "local"
     t.string   "doit_op_link"
     t.string   "doit_op_id"
     t.string   "doit_org_link"
