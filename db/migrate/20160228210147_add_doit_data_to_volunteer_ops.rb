@@ -5,7 +5,7 @@ class AddDoitDataToVolunteerOps < ActiveRecord::Migration
     add_column :volunteer_ops, :doit_op_id, :string
     add_column :volunteer_ops, :doit_org_link, :string
     add_column :volunteer_ops, :doit_org_name, :string
-    add_column :volunteer_ops, :ops_lng, :float
-    add_column :volunteer_ops, :ops_lat, :float
+    add_column :volunteer_ops, :longitude, :float
+    add_column :volunteer_ops, :latitude, :float
   end
 end

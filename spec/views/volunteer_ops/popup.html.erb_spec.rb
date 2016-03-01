@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'volunteer_ops/_popup_harrow.html.erb', type: :view do
+describe 'volunteer_ops/_popup_local.html.erb', type: :view do
   let(:org) do
     stub_model Organisation, :name => "Friendly Charity", :id => 1,
       :description => 'This is an absurdly absurdly long but very fun description that will make you sick '
