@@ -6,8 +6,8 @@ class VolunteerOpsController < ApplicationController
     @volunteer_ops = VolunteerOp.order_by_most_recent
     # @organisations = Organisation.where(id: @volunteer_ops.select(:organisation_id))
 
-
-    @markers, @organisations = ListOrganisationsWithVolunteerOps.with(self, :order_by_most_recent)
+    scope = Feature.active?(:doit_volunteer_opportunities) ? :all : :local_only
+    @markers, @organisations = ListOrganisationsWithVolunteerOps.with(self, scope)
     @doit_orgs = []
     # @markers, @doit_orgs = ListVolunteerOpportunities.with(self, @organisations)
   end

@@ -1,3 +1,12 @@
+Given(/^the doit import job has been run$/) do
+  require "rake"
+  @rake = Rake::Application.new
+  Rake.application = @rake
+  Rake.application.rake_require "tasks/import_doit"
+  Rake::Task.define_task(:environment)
+  @rake['db:import_doit'].invoke
+end
+
 And(/^I submit a volunteer op "(.*?)", "(.*?)" on the "(.*?)" page$/) do |title, desc, org_name|
   org = Organisation.find_by_name(org_name)
   visit organisation_path org
