@@ -2,7 +2,7 @@ class BaseOrganisation < ActiveRecord::Base
   acts_as_paranoid
   validates_url :website, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.website.present?}
   validates_url :donation_info, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.donation_info.present?}
-  #validates :name, :description, presence: true
+  validates :name, :description, presence: true
   has_many :category_organisations, :foreign_key => :organisation_id
   has_many :categories, :through => :category_organisations, :foreign_key => :organisation_id
   accepts_nested_attributes_for :category_organisations,
