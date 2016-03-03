@@ -1,7 +1,7 @@
-require './app/services/list_volunteer_opportunities'
+require './app/services/import_do_it_volunteer_opportunities'
 require 'json'
 
-describe ListVolunteerOpportunities do
+describe ImportDoitVolunteerOpportunities do
 
   let(:listener) { double :listener }
   let(:organisations) { double :organisations }
@@ -9,7 +9,7 @@ describe ListVolunteerOpportunities do
   let(:http_party) { double :http_party}
   let(:harrow_markers) { '[]'}
 
-  subject(:list_volunteer_opportunities) { ListVolunteerOpportunities.with(listener, organisations, feature, http_party) }
+  subject(:list_volunteer_opportunities) { ImportDoitVolunteerOpportunities.with(listener, organisations, feature, http_party) }
 
   before { allow(listener).to receive(:build_map_markers).and_return(harrow_markers) }
 

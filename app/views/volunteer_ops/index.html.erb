@@ -7,7 +7,7 @@
             <td>
               <strong><%= link_to op.title, op %></strong><br/>
               <div id="organisations">
-                <small><%= link_to op.organisation.name, op.organisation %></small>
+                <small><%= link_to op.organisation_name, op.organisation_link %></small>
                 <br/>
               </div>
               <%= smart_truncate(op.description) %>

@@ -6,12 +6,12 @@ Feature: Doit volunteer opportunities
 
   Background:
     Given that the doit_volunteer_opportunities flag is enabled
-    And the doit import job has been run
+    And I run the import doit service
     And cookies are approved
 
   Scenario: See a map of current doit volunteer opportunities
     And I visit the volunteer opportunities page
-    And I should see 17 markers in the map
+    And I should see 13 markers in the map
 
   Scenario: See a map of current doit and harrow volunteer opportunities
     Given the following organisations exist:
@@ -26,7 +26,7 @@ Feature: Doit volunteer opportunities
       | Litter Box Scooper | Assist with feline sanitation   | Cats Are Us               |
       | Office Support     | Help with printing and copying. | Indian Elders Association |
     And I visit the volunteer opportunities page
-    And I should see 19 markers in the map
+    And I should see 15 markers in the map
 
   Scenario: See a list of current doit volunteer opportunities with a link to  organisation page
     Given I visit the volunteer opportunities page

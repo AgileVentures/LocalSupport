@@ -18,21 +18,17 @@
 # code also calls back to the controller to create the necessary google map
 # markers and merge the two sets together; handling cases where one or other
 # might be missing
-class ListVolunteerOpportunities
+class ImportDoItVolunteerOpportunities
 
-  def self.with(listener, organisations, feature = Feature,
-                http = HTTParty)
-    new(listener, organisations, feature, http).send(:run)
+  def self.with(http = HTTParty)
+    new(http).send(:run)
   end
 
   private
 
-  attr_reader :organisations, :listener, :feature, :http
+  attr_reader :http
 
-  def initialize(listener, organisations, feature, http)
-    @listener = listener
-    @organisations = organisations
-    @feature = feature
+  def initialize(http)
     @http = http
   end
 
@@ -40,12 +36,28 @@ class ListVolunteerOpportunities
   HREF = '/v1/opportunities?lat=51.5978&lng=-0.3370&miles=0.5'
 
   def run
-    harrow_markers = listener.build_map_markers(organisations)
-    return [harrow_markers, []] unless feature.active? :doit_volunteer_opportunities
-    doit_orgs = doit_orgs_for_multiple_pages_of_json
-    doit_markers = listener.build_map_markers(doit_orgs, :doit, false)
-    markers = merge_json_markers(harrow_markers, doit_markers)
-    [markers, doit_orgs]
+    #harrow_markers = listener.build_map_markers(organisations)
+    #return [harrow_markers, []] unless feature.active? :doit_volunteer_opportunities
+    #doit_orgs = doit_orgs_for_multiple_pages_of_json
+    #doit_markers = listener.build_map_markers(doit_orgs, :doit, false)
+    #markers = merge_json_markers(harrow_markers, doit_markers)
+    #[markers, doit_orgs]
+    persist_doit_vol_ops(fetch_doit_vol_ops)
+  end
+
+  def fetch_doit_vol_ops
+    JSON.parse(http.get("#{HOST}#{HREF}").body)['data']['items']
+  end
+
+  def persist_doit_vol_ops(opportunities)
+    opportunities.each do |op|
+      VolunteerOp.new(source: 'doit', latitude: op['lat'], longitude: op['lng'],
+                     title: op['title'],
+                     description: op['description'],
+                     doit_op_id: op['id'],
+                     doit_org_name: op['for_recruiter']['name'],
+                     doit_org_link: op['for_recruiter']['slug']).save!
+    end
   end
 
   def doit_orgs_for_multiple_pages_of_json
