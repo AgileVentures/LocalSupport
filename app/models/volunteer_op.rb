@@ -7,10 +7,17 @@ class VolunteerOp < ActiveRecord::Base
   scope :local_only, -> { where(source: 'local') }
 
   def organisation_name
-
+    return organisation.name if source == 'local'
+    doit_org_name
   end
 
   def organisation_link
+    return organisation if source == 'local'
+    "https://do-it.org/organisations/#{doit_org_link}"
+  end
 
+  def link
+    return self if source == 'local'
+    "https://do-it.org/opportunities/#{doit_op_id}"
   end
 end
