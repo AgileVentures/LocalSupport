@@ -86,7 +86,8 @@ class Organisation < BaseOrganisation
   end
 
   def self.create_and_validate(attributes)
-    create!(attributes.select{|k,v| !v.nil?})
+    # create!(attributes.select{|k,v| !v.nil?})
+    create!(attributes.each { |k, v| attributes[k] =v.nil? ? 'NO INFORMATION RECORDED' : (v.empty? ? 'NO INFORMATION RECORDED' : v) })
   end
 
   def self.create_and_substitute_with_empty(attributes)
