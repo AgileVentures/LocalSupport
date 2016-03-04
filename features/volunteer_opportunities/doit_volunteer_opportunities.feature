@@ -42,7 +42,7 @@ Feature: Doit volunteer opportunities
 
   Scenario: Doit volunteer opportunites are listed in map popups
     Given I visit the volunteer opportunities page
-    And the map should show the do-it opportunity titled Fundraising Officer for Age UK in Harrow
+    And the map should show the do-it opportunity titled Cub Scout Leader (volunteering with 8-10 year olds) 27th Harrow
 
 
 

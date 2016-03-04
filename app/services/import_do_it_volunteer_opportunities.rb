@@ -13,7 +13,7 @@ class ImportDoItVolunteerOpportunities
   end
 
   HOST = 'https://api.do-it.org'
-  HREF = '/v1/opportunities?lat=51.5978&lng=-0.3370&miles=3.0'
+  HREF = '/v1/opportunities?lat=51.5978&lng=-0.3370&miles=0.5'
 
   def run
     href = HREF
