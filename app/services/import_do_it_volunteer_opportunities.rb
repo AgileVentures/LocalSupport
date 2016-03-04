@@ -1,15 +1,16 @@
 class ImportDoItVolunteerOpportunities
 
-  def self.with(http = HTTParty)
-    new(http).send(:run)
+  def self.with(http = HTTParty, model_klass = VolunteerOp)
+    new(http, model_klass).send(:run)
   end
 
   private
 
-  attr_reader :http
+  attr_reader :http, :model_klass
 
-  def initialize(http)
+  def initialize(http, model_klass)
     @http = http
+    @model_klass = model_klass
   end
 
   HOST = 'https://api.do-it.org'
@@ -29,8 +30,8 @@ class ImportDoItVolunteerOpportunities
 
   def persist_doit_vol_ops(opportunities)
     opportunities.each do |op|
-      unless VolunteerOp.find_by(doit_op_id: op['id'])
-        VolunteerOp.new(source: 'doit', latitude: op['lat'], longitude: op['lng'],
+      unless model_klass.find_by(doit_op_id: op['id'])
+        model_klass.new(source: 'doit', latitude: op['lat'], longitude: op['lng'],
                         title: op['title'],
                         description: op['description'],
                         doit_op_id: op['id'],
@@ -43,6 +44,5 @@ class ImportDoItVolunteerOpportunities
   def has_content?(response)
     response.body && response.body != '[]'
   end
-
 
 end
