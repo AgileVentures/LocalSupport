@@ -33,4 +33,21 @@ describe VolunteerOp, :type => :model do
       expect(VolunteerOp.local_only).not_to include(first_doit, second_doit)
     end
   end
+
+  describe '#organisation_name' do
+    context 'doit org' do
+      let(:doit_org_name){"Nice Org"}
+      let(:vol_op) { FactoryGirl.create(:doit_volunteer_op, doit_org_name: doit_org_name) }
+      it 'returns the doit org name' do
+        expect(vol_op.organisation_name).to eq doit_org_name
+      end
+    end
+    context 'local org' do
+      let(:organisation) { FactoryGirl.create(:organisation,name: "Friendly") }
+      let(:vol_op) { FactoryGirl.create(:local_volunteer_op, organisation: organisation) }
+      it 'returns the doit org name' do
+        expect(vol_op.organisation_name).to eq organisation.name
+      end
+    end
+  end
 end

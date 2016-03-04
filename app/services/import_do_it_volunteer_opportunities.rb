@@ -1,24 +1,25 @@
 class ImportDoItVolunteerOpportunities
 
-  def self.with(http = HTTParty, model_klass = VolunteerOp)
-    new(http, model_klass).send(:run)
+  def self.with(radius=0.5, http = HTTParty, model_klass = VolunteerOp)
+    new(http, model_klass, radius).send(:run)
   end
 
   private
 
-  attr_reader :http, :model_klass
+  attr_reader :http, :model_klass, :radius
 
-  def initialize(http, model_klass)
+  def initialize(http, model_klass, radius)
     @http = http
     @model_klass = model_klass
+    @radius = radius
   end
 
   HOST = 'https://api.do-it.org'
-  HREF = '/v1/opportunities?lat=51.5978&lng=-0.3370&miles=0.5'
+  HREF = "/v1/opportunities?lat=51.5978&lng=-0.3370&miles="
 
   def run
     href = HREF
-    while href = process_doit_json_page(http.get("#{HOST}#{href}")) ; end
+    while href = process_doit_json_page(http.get("#{HOST}#{href}#{radius}")) ; end
   end
 
   def process_doit_json_page(response)
