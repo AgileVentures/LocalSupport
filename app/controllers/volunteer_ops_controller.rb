@@ -5,23 +5,7 @@ class VolunteerOpsController < ApplicationController
   def index
     @volunteer_ops = VolunteerOp.order_by_most_recent
     @volunteer_ops = Feature.active?(:doit_volunteer_opportunities) ? @volunteer_ops : @volunteer_ops.local_only
-
-    @markers = Gmaps4rails.build_markers(@volunteer_ops) do |volop, marker|
-      marker.lat volop.latitude.nil? ? volop.organisation.latitude : volop.latitude
-      marker.lng volop.longitude.nil? ? volop.organisation.longitude : volop.longitude
-      marker.infowindow render_to_string(partial: "popup_#{volop.source}", locals: { volop: volop })
-      marker.json(
-        custom_marker: render_to_string(
-          partial: 'shared/custom_marker',
-          locals: { attrs: [ActionController::Base.helpers.asset_path("volunteer_icon_#{volop.source}.png"),
-                            'data-id' => volop.id,
-                            class: 'vol_op',
-                            title: "Click here to see volunteer opportunities at #{volop.title}"]}
-        ),
-        index: 1,
-        type: 'vol_op'
-      )
-    end.to_json
+    @markers = BuildMarkersWithInfoWindow.with(@volunteer_ops,self)
   end
 
   def show
@@ -31,22 +15,7 @@ class VolunteerOpsController < ApplicationController
     @organisation = organisations.first!
     @editable = current_user.can_edit?(@organisation) if current_user
 
-    @markers = Gmaps4rails.build_markers(@volunteer_ops) do |volop, marker|
-      marker.lat volop.latitude.nil? ? volop.organisation.latitude : volop.latitude
-      marker.lng volop.longitude.nil? ? volop.organisation.longitude : volop.longitude
-      marker.infowindow render_to_string(partial: "popup_#{volop.source}", locals: { volop: volop })
-      marker.json(
-        custom_marker: render_to_string(
-          partial: 'shared/custom_marker',
-          locals: { attrs: [ActionController::Base.helpers.asset_path("volunteer_icon_#{volop.source}.png"),
-                            'data-id' => volop.id,
-                            class: 'vol_op',
-                            title: "Click here to see volunteer opportunities at #{volop.title}"]}
-        ),
-        index: 1,
-        type: 'vol_op'
-      )
-    end.to_json
+    @markers = BuildMarkersWithInfoWindow.with(@volunteer_ops,self)
   end
 
   def new
@@ -68,23 +37,7 @@ class VolunteerOpsController < ApplicationController
     @volunteer_op = @volunteer_ops.first
     organisations = Organisation.where(id: @volunteer_op.organisation_id)
     @organisation = organisations.first!
-
-    @markers = Gmaps4rails.build_markers(@volunteer_ops) do |volop, marker|
-      marker.lat volop.latitude.nil? ? volop.organisation.latitude : volop.latitude
-      marker.lng volop.longitude.nil? ? volop.organisation.longitude : volop.longitude
-      marker.infowindow render_to_string(partial: "popup_#{volop.source}", locals: { volop: volop })
-      marker.json(
-        custom_marker: render_to_string(
-          partial: 'shared/custom_marker',
-          locals: { attrs: [ActionController::Base.helpers.asset_path("volunteer_icon_#{volop.source}.png"),
-                            'data-id' => volop.id,
-                            class: 'vol_op',
-                            title: "Click here to see volunteer opportunities at #{volop.title}"]}
-        ),
-        index: 1,
-        type: 'vol_op'
-      )
-    end.to_json
+    @markers = BuildMarkersWithInfoWindow.with(@volunteer_ops,self)
   end
 
   def update
