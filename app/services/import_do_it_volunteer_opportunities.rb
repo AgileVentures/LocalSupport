@@ -19,7 +19,8 @@ class ImportDoItVolunteerOpportunities
 
   def run
     href = HREF
-    while href = process_doit_json_page(http.get("#{HOST}#{href}#{radius}")) ; end
+    while href = process_doit_json_page(http.get("#{HOST}#{href}#{radius}"));
+    end
   end
 
   def process_doit_json_page(response)
@@ -31,13 +32,15 @@ class ImportDoItVolunteerOpportunities
 
   def persist_doit_vol_ops(opportunities)
     opportunities.each do |op|
-      unless model_klass.find_by(doit_op_id: op['id'])
-        model_klass.new(source: 'doit', latitude: op['lat'], longitude: op['lng'],
-                        title: op['title'],
-                        description: op['description'],
-                        doit_op_id: op['id'],
-                        doit_org_name: op['for_recruiter']['name'],
-                        doit_org_link: op['for_recruiter']['slug']).save!
+      model_klass.find_or_create_by(doit_op_id: op['id']) do |model|
+        model.source = 'doit'
+        model.latitude = op['lat']
+        model.longitude = op['lng']
+        model.title = op['title']
+        model.description = op['description']
+        model.doit_op_id = op['id']
+        model.doit_org_name = op['for_recruiter']['name']
+        model.doit_org_link = op['for_recruiter']['slug']
       end
     end
   end
