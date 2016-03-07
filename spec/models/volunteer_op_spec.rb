@@ -2,20 +2,52 @@ require 'rails_helper'
 
 describe VolunteerOp, :type => :model do
   it 'must have a title' do
-    v = VolunteerOp.new(title:'')
+    v = VolunteerOp.new(title: '')
     v.valid?
     expect(v.errors[:title].size).to eq(1)
   end
 
   it 'must have a description' do
-    v = VolunteerOp.new(description:'')
+    v = VolunteerOp.new(description: '')
     v.valid?
     expect(v.errors[:description].size).to eq(1)
   end
 
   it 'must not be created without an organisation' do
-    v = VolunteerOp.new(organisation_id:nil)
+    v = VolunteerOp.new(organisation_id: nil)
     v.valid?
     expect(v.errors[:organisation_id].size).to eq(1)
+  end
+
+  describe '#local_only' do
+    let(:organisation) { FactoryGirl.create(:organisation) }
+    let(:first_local) { FactoryGirl.create(:local_volunteer_op, organisation: organisation) }
+    let(:second_local) { FactoryGirl.create(:local_volunteer_op, organisation: organisation) }
+    let(:first_doit) { FactoryGirl.create(:doit_volunteer_op, organisation: organisation) }
+    let(:second_doit) { FactoryGirl.create(:doit_volunteer_op, organisation: organisation) }
+
+    it 'must contain local ops' do
+      expect(VolunteerOp.local_only).to include(first_local, second_local)
+    end
+    it 'must contain only local ops' do
+      expect(VolunteerOp.local_only).not_to include(first_doit, second_doit)
+    end
+  end
+
+  describe '#organisation_name' do
+    context 'doit org' do
+      let(:doit_org_name){"Nice Org"}
+      let(:vol_op) { FactoryGirl.create(:doit_volunteer_op, doit_org_name: doit_org_name) }
+      it 'returns the doit org name' do
+        expect(vol_op.organisation_name).to eq doit_org_name
+      end
+    end
+    context 'local org' do
+      let(:organisation) { FactoryGirl.create(:organisation,name: "Friendly") }
+      let(:vol_op) { FactoryGirl.create(:local_volunteer_op, organisation: organisation) }
+      it 'returns the doit org name' do
+        expect(vol_op.organisation_name).to eq organisation.name
+      end
+    end
   end
 end
