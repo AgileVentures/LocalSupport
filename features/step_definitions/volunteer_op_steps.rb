@@ -8,6 +8,10 @@ And(/^I submit a volunteer op "(.*?)", "(.*?)" on the "(.*?)" page$/) do |title,
   click_on 'Create a Volunteer Opportunity'
 end
 
+And(/^I run the import doit service$/) do
+  ImportDoItVolunteerOpportunities.with
+end
+
 Given(/^that the (.+) flag is (enabled|disabled)$/) do |feature, state|
   if f = Feature.find_by_name(feature) then
     f.update_attributes(active: (state == 'enabled'))
@@ -33,7 +37,9 @@ Then(/^I should see a link to "(.*?)" page "(.*?)"$/) do |link, url|
 end
 
 Given(/^the map should show the do\-it opportunity titled (.*)$/) do |opportunity_title|
-  icon = find_map_icon('vol_op', '10')
+  vol_op = VolunteerOp.find_by(title: opportunity_title)
+  expect(vol_op).not_to be_nil
+  icon = find_map_icon('vol_op', vol_op.id)
   click_twice icon
   expect(page).to have_css('.arrow_box')
   expect(find('.arrow_box').text).to include(opportunity_title)
