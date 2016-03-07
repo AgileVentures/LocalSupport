@@ -30,7 +30,7 @@ class BuildMarkersWithInfoWindow
         locals: {attrs: [helper.asset_path("volunteer_icon_#{volop.source}.png"),
                          'data-id' => volop.id,
                          class: 'vol_op',
-                         title: "Click here to see volunteer opportunities at #{volop.title}"]}
+                         title: "Click here to see volunteer opportunities at #{volop.organisation_name}"]}
       ),
       index: 1,
       type: 'vol_op'
