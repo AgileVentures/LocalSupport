@@ -18,8 +18,8 @@ class ImportDoItVolunteerOpportunities
   HREF = "/v1/opportunities?lat=51.5978&lng=-0.3370&miles="
 
   def run
-    href = HREF
-    while href = process_doit_json_page(http.get("#{HOST}#{href}#{radius}"));
+    href = "#{HREF}#{radius}"
+    while href = process_doit_json_page(http.get("#{HOST}#{href}"));
     end
   end
 

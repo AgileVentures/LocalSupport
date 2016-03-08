@@ -57,7 +57,7 @@ class VolunteerOpsController < ApplicationController
       :organisation_id,
     )
   end
-  
+
   private
 
   def authorize

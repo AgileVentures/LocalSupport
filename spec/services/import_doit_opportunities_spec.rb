@@ -10,7 +10,7 @@ describe ImportDoItVolunteerOpportunities do
   end
 
   subject(:list_volunteer_opportunities) do
-    described_class.with(0.5, http_party, model_klass)
+    described_class.with(1.0, http_party, model_klass)
   end
 
   context 'no ops found' do
@@ -33,7 +33,7 @@ describe ImportDoItVolunteerOpportunities do
     end
 
     it 'queries the the default radius via the doit api' do
-      expect(http_party).to receive(:get).with("#{url}0.5").and_return(response)
+      expect(http_party).to receive(:get).with("#{url}1.0").and_return(response)
       list_volunteer_opportunities
     end
 
@@ -57,6 +57,12 @@ describe ImportDoItVolunteerOpportunities do
       allow(http_party).to receive(:get).and_return(response1, response2)
       list_volunteer_opportunities
       expect(model_klass).to have_received(:find_or_create_by).exactly(30).times
+    end
+
+    it 'pages correctly' do
+      expect(http_party).to receive(:get).with("#{url}1.0").and_return(response1).ordered
+      expect(http_party).to receive(:get).with("#{url}1.0&page=2").and_return(response2).ordered
+      list_volunteer_opportunities
     end
   end
 

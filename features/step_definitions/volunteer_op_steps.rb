@@ -8,8 +8,16 @@ And(/^I submit a volunteer op "(.*?)", "(.*?)" on the "(.*?)" page$/) do |title,
   click_on 'Create a Volunteer Opportunity'
 end
 
-And(/^I run the import doit service$/) do
-  ImportDoItVolunteerOpportunities.with
+Given(/^I run the import doit service( with a radius of (\d+) miles)?$/)do |override, radius|
+  if override
+    ImportDoItVolunteerOpportunities.with radius.to_f
+  else
+    ImportDoItVolunteerOpportunities.with
+  end
+end
+
+Then(/^there should be (\d+) doit volunteer ops stored$/) do |count|
+  expect(VolunteerOp.count(source: 'doit')).to eq count.to_i
 end
 
 Given(/^that the (.+) flag is (enabled|disabled)$/) do |feature, state|
