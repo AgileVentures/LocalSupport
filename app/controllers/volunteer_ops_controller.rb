@@ -50,6 +50,14 @@ class VolunteerOpsController < ApplicationController
     end
   end
 
+  def destroy
+    @volunteer_op = VolunteerOp.find(params[:id])
+    @volunteer_op.destroy
+    flash[:success] = "Deleted #{@volunteer_op.title}"
+
+    redirect_to volunteer_ops_path
+  end
+
   def volunteer_op_params
     params.require(:volunteer_op).permit(
       :description,

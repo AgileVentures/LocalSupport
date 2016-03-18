@@ -13,6 +13,7 @@
   </p>
   <% if @editable %>
       <%= link_to("Edit", edit_volunteer_op_path(@volunteer_op.id), {:class => 'btn btn-primary'}) %>
+      <%= link_to("Delete", volunteer_op_path(@volunteer_op.id), {method: :delete, :class => 'btn btn-danger'}) %>
   <% end %>
 
 <% render partial: 'shared/map_scripts', locals: {markers: @markers} %>

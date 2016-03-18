@@ -100,4 +100,10 @@ describe VolunteerOp, :type => :model do
     end
   end
 
+  describe 'destroy uses acts_as_paranoid' do
+    let!(:volunteer_op){FactoryGirl.create :volunteer_op, organisation_id: 1}
+    it 'can be restored' do
+      expect {volunteer_op.destroy }.not_to change(VolunteerOp.with_deleted, :count)
+    end
+  end
 end
