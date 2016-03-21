@@ -85,8 +85,15 @@ FactoryGirl.define do
   end
 
   factory :volunteer_op do
-    title "Help out"
-    description "Some nice people"
+    title 'Help out'
+    description 'Some nice people'
+
+    factory :local_volunteer_op do
+    end
+
+    factory :doit_volunteer_op do
+      source 'doit'
+    end
   end
 
 end
