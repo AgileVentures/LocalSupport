@@ -101,9 +101,20 @@ describe VolunteerOp, :type => :model do
   end
 
   describe 'destroy uses acts_as_paranoid' do
-    let!(:volunteer_op){FactoryGirl.create :volunteer_op, organisation_id: 1}
+    let!(:volunteer_op) { FactoryGirl.create :volunteer_op, organisation_id: 1 }
     it 'can be restored' do
-      expect {volunteer_op.destroy }.not_to change(VolunteerOp.with_deleted, :count)
+      expect { volunteer_op.destroy }.not_to change(VolunteerOp.with_deleted, :count)
+    end
+  end
+
+  describe '#search_by_keyword' do
+    let(:details1) { {title: 'test', description: 'description1', organisation_id: 1} }
+    let(:details2) { {title: 'Good', description: 'description2', organisation_id: 1} }
+    let!(:vol_op1) { FactoryGirl.create :volunteer_op, details1 }
+    let!(:vol_op2) { FactoryGirl.create :volunteer_op, details2 }
+
+    it 'find records where title or description match search text' do
+      expect(VolunteerOp.search_for_text('good')).to eq([vol_op2])
     end
   end
 end

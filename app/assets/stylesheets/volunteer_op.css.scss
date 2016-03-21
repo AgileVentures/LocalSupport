@@ -1,0 +1,35 @@
+
+#volunteer_ops_search {
+  .flex-row {
+    margin-bottom: 5px;
+  }
+
+  .left-side {
+    width: 120px;
+
+    display: flex;
+
+    .field-label {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+  }
+
+  .right-side {
+    flex: initial;
+    width: 570px;
+    min-width: 100px;
+
+    display: flex;
+
+    input[type="text"] {
+      width: 100%;
+      margin-bottom: 0;
+    }
+
+    input[type="submit"] {
+      flex: none;
+      margin-left: 5px;
+    }
+  }
+}
