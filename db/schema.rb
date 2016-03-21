@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160228210147) do
+ActiveRecord::Schema.define(version: 20160318085415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -141,8 +141,10 @@ ActiveRecord::Schema.define(version: 20160228210147) do
     t.string   "doit_org_name"
     t.float    "longitude"
     t.float    "latitude"
+    t.datetime "deleted_at"
   end
 
+  add_index "volunteer_ops", ["deleted_at"], name: "index_volunteer_ops_on_deleted_at", using: :btree
   add_index "volunteer_ops", ["organisation_id"], name: "index_volunteer_ops_on_organisation_id", using: :btree
 
 end

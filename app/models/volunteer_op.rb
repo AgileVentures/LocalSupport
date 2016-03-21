@@ -1,4 +1,5 @@
 class VolunteerOp < ActiveRecord::Base
+  acts_as_paranoid
   validates :title, :description, presence: true
   validates :organisation_id, presence: true, if: "source == 'local'"
   belongs_to :organisation
