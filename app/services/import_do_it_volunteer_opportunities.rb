@@ -19,6 +19,7 @@ class ImportDoItVolunteerOpportunities
 
   def run
     href = "#{HREF}#{radius}"
+    model_klass.delete_all(source: 'doit')
     while href = process_doit_json_page(http.get("#{HOST}#{href}"));
     end
   end
@@ -41,6 +42,7 @@ class ImportDoItVolunteerOpportunities
         model.doit_op_id = op['id']
         model.doit_org_name = op['for_recruiter']['name']
         model.doit_org_link = op['for_recruiter']['slug']
+        model.updated_at = op['updated']
       end
     end
   end

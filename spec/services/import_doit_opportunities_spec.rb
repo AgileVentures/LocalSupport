@@ -66,4 +66,14 @@ describe ImportDoItVolunteerOpportunities do
     end
   end
 
+  context 'outdated ops' do
+    let(:response) { double :response, body: File.read('test/fixtures/doit1.json') }
+    it 'removes all doit ops and fetch from api url' do
+      allow(http_party).to receive(:get).and_return(response)
+      list_volunteer_opportunities
+      expect(model_klass).to have_received(:delete_all).with(source: 'doit')
+      expect(model_klass).to have_received(:find_or_create_by).exactly(16).times
+    end
+  end
+
 end
