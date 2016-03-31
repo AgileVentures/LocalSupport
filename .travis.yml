@@ -24,3 +24,5 @@ deploy:
     staging: harrowcn-staging
     master: harrowcn-production
   run: rake db:migrate
+git:
+  submodules: false
