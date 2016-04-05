@@ -60,6 +60,8 @@ group :production do
   gem 'newrelic_rpm'
 end
 
+gem 'basscss-rails', '~> 3.0.0'
+gem 'react-rails', '~> 1.6.0'
 gem 'coffee-rails', "4.1.0"
 gem 'uglifier', '2.5.3'
 gem 'sass-rails', '4.0.3'

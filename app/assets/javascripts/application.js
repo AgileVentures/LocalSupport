@@ -9,6 +9,9 @@
 //= require twitter/bootstrap
 //= require underscore
 //= require bootstrap-sortable
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree ./global
 //= require bootstrap-switch
 //= require organisations
