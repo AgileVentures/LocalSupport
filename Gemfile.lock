@@ -178,6 +178,8 @@ GEM
     less-rails (2.5.0)
       actionpack (>= 3.1)
       less (~> 2.5.0)
+    letter_opener (1.4.1)
+      launchy (~> 2.2)
     libv8 (3.16.14.11)
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
@@ -390,6 +392,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   less-rails (= 2.5.0)
+  letter_opener
   newrelic_rpm
   paranoia (~> 2.0)
   pg

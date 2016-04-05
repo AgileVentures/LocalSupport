@@ -45,9 +45,13 @@ class ApplicationController < ActionController::Base
     set_flash_warning_reminder_to_update_details resource
     return edit_user_path id: current_user.id if session[:pending_organisation_id]
     return organisation_path(current_user.organisation) if current_user.organisation
-    return session[:previous_url] if session[:previous_url]
+    return session[:previous_url] if appropriate_previous_url_available?
     return organisation_path(Organisation.find(current_user.pending_organisation_id)) if current_user.pending_organisation_id
     root_path
+  end
+
+  def appropriate_previous_url_available?
+      session[:previous_url] && session[:previous_url] != organisations_search_path
   end
 
   # Devise Invitable hook
