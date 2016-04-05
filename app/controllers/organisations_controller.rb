@@ -22,6 +22,7 @@ class OrganisationsController < BaseOrganisationsController
     @organisations = Queries::Organisations.order_by_most_recent
     @markers = build_map_markers(@organisations)
     @cat_name_ids = Category.name_and_id_for_what_who_and_how
+    @organisations = @organisations.limit(3)
   end
 
   # GET /organisations/1
