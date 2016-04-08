@@ -1,6 +1,14 @@
 class VolunteerOpsController < ApplicationController
   layout 'two_columns_with_map'
-  before_filter :authorize, :except => [:show, :index]
+  before_action :authorize, :except => [:search, :show, :index]
+
+  def search
+    @query = params[:q]
+    @volunteer_ops = VolunteerOp.order_by_most_recent.search_for_text(@query)
+    flash.now[:alert] = SEARCH_NOT_FOUND if @volunteer_ops.empty?
+    @markers = BuildMarkersWithInfoWindow.with(@volunteer_ops,self)
+    render template: 'volunteer_ops/index'
+  end
 
   def index
     @volunteer_ops = VolunteerOp.order_by_most_recent
