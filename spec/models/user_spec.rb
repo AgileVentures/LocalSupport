@@ -297,4 +297,14 @@ describe User, :type => :model do
       expect { do_purge }.to change(User, :count).by(0)
     end
   end
+
+
+  describe 'Devise secret key' do
+    it 'should not change after restarting the server' do
+      old_secret =  Devise.secret_key
+      load("#{Rails.root}/config/initializers/devise.rb")
+      new_secret = Devise.secret_key
+      expect(old_secret).to eq(new_secret)
+    end
+  end
 end
