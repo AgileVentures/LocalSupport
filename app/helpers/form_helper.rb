@@ -1,7 +1,9 @@
 module FormHelper
-  def setup_organisation(organisation)
+  def setup_organisation(organisation, categories_selected=nil)
     (Category.all - organisation.categories).each do |category|
-      organisation.category_organisations.build(:category => category)
+      unless categories_selected && categories_selected.include?(category.id)
+        organisation.category_organisations.build(:category => category)
+      end
     end
     organisation
   end
