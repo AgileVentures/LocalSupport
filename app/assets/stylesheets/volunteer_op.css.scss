@@ -1,35 +1,32 @@
-
-#volunteer_ops_search {
+.volunteer-ops-search {
   .flex-row {
     margin-bottom: 5px;
   }
 
   .left-side {
-    width: 120px;
-
     display: flex;
+    width: 120px;
+  }
 
-    .field-label {
-      margin-top: auto;
-      margin-bottom: auto;
-    }
+  .field-label {
+    margin-bottom: auto;
+    margin-top: auto;
   }
 
   .right-side {
-    flex: initial;
-    width: 570px;
-    min-width: 100px;
-
     display: flex;
+    flex: initial;
+    min-width: 100px;
+    width: 570px;
+  }
 
-    input[type="text"] {
-      width: 100%;
-      margin-bottom: 0;
-    }
+  .search-text {
+    margin-bottom: 0;
+    width: 100%;
+  }
 
-    input[type="submit"] {
-      flex: none;
-      margin-left: 5px;
-    }
+  .search-btn {
+    flex: none;
+    margin-left: 5px;
   }
 }
