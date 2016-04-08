@@ -91,6 +91,12 @@ Given (/^I fill in the new charity page validly$/) do
   fill_in 'organisation_postcode', with: 'HA1 4HZ'
 end
 
+Given (/^I fill in the new charity page with an invalid email$/) do
+  fill_in 'organisation_description', with: 'This is an awesome charity'
+  fill_in 'organisation_name', with: 'Friendly charity'
+  fill_in 'organisation_email', with: 'friendlycharity.org'
+end
+
 Given (/^I fill in the new charity page with an invalid website$/) do
   fill_in 'organisation_description', with: 'This is an awesome charity'
   fill_in 'organisation_name', with: 'Friendly charity'

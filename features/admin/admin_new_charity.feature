@@ -49,6 +49,15 @@ Feature: Super Admin creating charity
     Then I should see "Organisation was successfully created."
 
   @vcr
+  Scenario: Get validation error creating new charity with invalid email while being signed-in as superadmin
+    Given I am signed in as a superadmin
+    And I visit the home page
+    And I follow "New Organisation"
+    And I fill in the new charity page with an invalid email
+    And I press "Create Organisation"
+    Then I should see "Email is invalid"
+
+  @vcr
   Scenario: Get validation error creating new charity with invalid url while being signed-in as superadmin
     Given I am signed in as a superadmin
     And I visit the home page
