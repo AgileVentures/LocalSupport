@@ -15,7 +15,9 @@ Given(/^I run the import doit service( with a radius of (\d+) miles)?$/)do |over
     ImportDoItVolunteerOpportunities.with
   end
 end
-
+Given(/^I have existent doit volunteer ops$/) do
+  VolunteerOp.create(title: 'volop', source: 'doit', organisation_id: 1)
+end
 Then(/^there should be (\d+) doit volunteer ops stored$/) do |count|
   expect(VolunteerOp.count(source: 'doit')).to eq count.to_i
 end
