@@ -75,7 +75,7 @@ class OrganisationsController < BaseOrganisationsController
     cat_org_attr = params[:organisation][:category_organisations_attributes]
     unless cat_org_attr.nil? 
       cat_org_attr
-        .reject {|_k,v| v[:_destroy] == "1"}
+        .reject {|_k,v| v[:_destroy] == '1'}
         .each_value {|v| @categories_selected << v[:category_id].to_i}
     end
 
