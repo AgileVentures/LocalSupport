@@ -1,8 +1,7 @@
 module FormHelper
   def setup_organisation(organisation, categories_selected=nil)
     (Category.all - organisation.categories).each do |category|
-      unless categories_selected && categories_selected.include?(category.id)
-        organisation.category_organisations.build(category: category); end
+      organisation.category_organisations.build(category: category) unless in_selected_categories(categories_selected, category.id)
     end
     organisation
   end
@@ -12,4 +11,8 @@ module FormHelper
     end
     proposed_organisation_edit
   end
+  def in_selected_categories(categories_selected, cat_id)
+    categories_selected && categories_selected.include?(cat_id)
+  end
+    
 end
