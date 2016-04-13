@@ -76,7 +76,6 @@ Feature: Super Admin creating charity
     And I press "Create Organisation"
     Then the category named Child welfare should be checked
     Then the category named Health should be checked
-  
 
   @vcr
   Scenario: Successfully create charity while being signed-in as superadmin from arbitrary page
