@@ -9,6 +9,6 @@ Feature: Importing DoIt Volunteer Ops
     Then there should be 182 doit volunteer ops stored
 
   Scenario: Check 3 miles with existent doit volunteer op
-    Given I have existent doit volunteer ops
+    Given There is a doit volunteer op named "no longer on doit"
     And I run the import doit service with a radius of 3 miles
-    Then there should be 166 doit volunteer ops stored
+    Then The doit volunteer op named "no longer on doit" should be deleted
