@@ -24,11 +24,13 @@ class ProposedOrganisationsController < BaseOrganisationsController
     @proposed_organisation = ProposedOrganisation.new 
     @categories_start_with = Category.first_category_name_in_each_type
     @user_id = session[:user_id] || current_user.try(:id)
+    setup_organisation(@proposed_organisation)
   end
 
   def create
     make_user_into_org_admin_of_new_proposed_org
     set_selected_categories
+    setup_organisation(@proposed_organisation)
     
     @categories_start_with = Category.first_category_name_in_each_type
     
@@ -104,6 +106,14 @@ class ProposedOrganisationsController < BaseOrganisationsController
         .reject {|_k,v| v[:_destroy] == '1'}
         .each_value {|v| @categories_selected << v[:category_id].to_i}
     end
+  end
+  
+  def setup_organisation(organisation)
+    (Category.all - organisation.categories).each do |category|
+      organisation.category_organisations.build(category: category) unless
+      organisation.category_organisations.any? {|v| v.category_id == category.id}
+    end
+    organisation
   end
 
 end

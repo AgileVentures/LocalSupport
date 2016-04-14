@@ -44,8 +44,9 @@ class OrganisationsController < BaseOrganisationsController
   def new
     @organisation = Organisation.new
     @categories_start_with = Category.first_category_name_in_each_type
+    setup_organisation(@organisation)
   end
-
+  
   # GET /organisations/1/edit
   def edit
     organisations = Organisation.where(id: params[:id])
@@ -56,6 +57,7 @@ class OrganisationsController < BaseOrganisationsController
     #respond_to do |format|
     #  format.html {render :layout => 'full_width'}
     #end
+    setup_organisation(@organisation)
     
   end
 
@@ -64,16 +66,16 @@ class OrganisationsController < BaseOrganisationsController
   def create
     # model filters for logged in users, but we check here if that user is an superadmin
     # TODO refactor that to model responsibility?
-     org_params = OrganisationParams.build params
-     set_selected_categories
+    org_params = OrganisationParams.build params
+    set_selected_categories
      
-     unless current_user.try(:superadmin?)
-       flash[:notice] = PERMISSION_DENIED
-       redirect_to organisations_path and return false
-     end
+    unless current_user.try(:superadmin?)
+      flash[:notice] = PERMISSION_DENIED
+      redirect_to organisations_path and return false
+    end
     @organisation = Organisation.new(org_params)
+    setup_organisation(@organisation)
     @categories_start_with = Category.first_category_name_in_each_type
-
     if @organisation.save
       redirect_to @organisation, notice: 'Organisation was successfully created.'
     else
@@ -151,5 +153,14 @@ class OrganisationsController < BaseOrganisationsController
         .each_value {|v| @categories_selected << v[:category_id].to_i}
     end
   end
+  
+  def setup_organisation(organisation)
+    (Category.all - organisation.categories).each do |category|
+      organisation.category_organisations.build(category: category) unless
+      organisation.category_organisations.any? {|v| v.category_id == category.id}
+    end
+    organisation
+  end
+
 
 end
