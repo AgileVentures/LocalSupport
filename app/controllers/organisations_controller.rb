@@ -74,12 +74,13 @@ class OrganisationsController < BaseOrganisationsController
       redirect_to organisations_path and return false
     end
     @organisation = Organisation.new(org_params)
-    setup_organisation(@organisation)
+    
     @categories_start_with = Category.first_category_name_in_each_type
     if @organisation.save
       redirect_to @organisation, notice: 'Organisation was successfully created.'
     else
      flash[:error] = @organisation.errors.full_messages.join('<br/>').html_safe
+     setup_organisation(@organisation)
      render action: 'new'
     end
   end

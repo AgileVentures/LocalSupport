@@ -30,7 +30,6 @@ class ProposedOrganisationsController < BaseOrganisationsController
   def create
     make_user_into_org_admin_of_new_proposed_org
     set_selected_categories
-    setup_organisation(@proposed_organisation)
     
     @categories_start_with = Category.first_category_name_in_each_type
     
@@ -40,6 +39,7 @@ class ProposedOrganisationsController < BaseOrganisationsController
       redirect_to @proposed_organisation, notice: 'Organisation is pending admin approval.'
     else
       flash[:error] = @proposed_organisation.errors.full_messages.join('<br/>').html_safe
+      setup_organisation(@proposed_organisation)
       render action: 'new'
     end
     
