@@ -31,6 +31,7 @@
     <%= render 'layouts/cookie_alert' %>
 <% end %>
 <div class="page-frame">
+  <%= react_component('LogInForm', signInURL: session_path(resource_name), signUpURL: registration_path(resource_name), isRememberable: devise_mapping.rememberable?) %>
   <%= render 'layouts/header' %>
   <section id="main">   <!-- uniquify the child container to create the top margin -->
       <div class="container">  <!-- outermost twitter bootstrap container-->
