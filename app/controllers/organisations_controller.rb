@@ -56,6 +56,7 @@ class OrganisationsController < BaseOrganisationsController
     #respond_to do |format|
     #  format.html {render :layout => 'full_width'}
     #end
+    
   end
 
   # POST /organisations
@@ -64,6 +65,8 @@ class OrganisationsController < BaseOrganisationsController
     # model filters for logged in users, but we check here if that user is an superadmin
     # TODO refactor that to model responsibility?
      org_params = OrganisationParams.build params
+     set_selected_categories
+     
      unless current_user.try(:superadmin?)
        flash[:notice] = PERMISSION_DENIED
        redirect_to organisations_path and return false
@@ -75,7 +78,7 @@ class OrganisationsController < BaseOrganisationsController
       redirect_to @organisation, notice: 'Organisation was successfully created.'
     else
      flash[:error] = @organisation.errors.full_messages.join('<br/>').html_safe
-      render action: "new"
+     render action: 'new'
     end
   end
 
@@ -137,6 +140,16 @@ class OrganisationsController < BaseOrganisationsController
       redirect_to organisation_path(params[:id]) and return false
     end
     true
+  end
+  
+  def set_selected_categories
+    @categories_selected = []
+    cat_org_attr = params[:organisation][:category_organisations_attributes]
+    unless cat_org_attr.nil? 
+      cat_org_attr
+        .reject {|_k,v| v[:_destroy] == '1'}
+        .each_value {|v| @categories_selected << v[:category_id].to_i}
+    end
   end
 
 end

@@ -28,14 +28,19 @@ class ProposedOrganisationsController < BaseOrganisationsController
 
   def create
     make_user_into_org_admin_of_new_proposed_org
+    set_selected_categories
+    
+    @categories_start_with = Category.first_category_name_in_each_type
+    
     if @proposed_organisation.save
       session[:proposed_organisation_id] = @proposed_organisation.id
       send_email_to_superadmin_about_org_signup @proposed_organisation
       redirect_to @proposed_organisation, notice: 'Organisation is pending admin approval.'
     else
       flash[:error] = @proposed_organisation.errors.full_messages.join('<br/>').html_safe
-      redirect_to new_proposed_organisation_path and return false
+      render action: 'new'
     end
+    
   end
 
   def show
@@ -88,6 +93,16 @@ class ProposedOrganisationsController < BaseOrganisationsController
     unless session[:proposed_organisation_id] || current_user.try(:superadmin)
       flash[:notice] = PERMISSION_DENIED
       redirect_to root_path
+    end
+  end
+  
+  def set_selected_categories
+    @categories_selected = []
+    cat_org_attr = params[:proposed_organisation][:category_organisations_attributes]
+    unless cat_org_attr.nil? 
+      cat_org_attr
+        .reject {|_k,v| v[:_destroy] == '1'}
+        .each_value {|v| @categories_selected << v[:category_id].to_i}
     end
   end
 
