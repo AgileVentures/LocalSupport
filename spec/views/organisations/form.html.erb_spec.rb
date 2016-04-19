@@ -13,7 +13,7 @@ describe "organisations/_form.html.erb", :type => :view do
     @category6 = FactoryGirl.create(:category, name: "rabbit", charity_commission_id: 304)
     @organisation.categories << [@category1, @category3]
     @organisation.save!
-    render partial: 'form', locals: {org: @organisation, slctd: @categories_selected}
+    render partial: 'form', locals: {org: @organisation}
   end
   it "renders form partial even for empty Organisation" do
     expect(rendered).not_to be_nil

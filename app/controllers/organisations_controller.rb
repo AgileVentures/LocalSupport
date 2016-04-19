@@ -44,7 +44,7 @@ class OrganisationsController < BaseOrganisationsController
   def new
     @organisation = Organisation.new
     @categories_start_with = Category.first_category_name_in_each_type
-    setup_organisation(@organisation)
+    setup_categories(@organisation)
   end
   
   # GET /organisations/1/edit
@@ -57,7 +57,7 @@ class OrganisationsController < BaseOrganisationsController
     #respond_to do |format|
     #  format.html {render :layout => 'full_width'}
     #end
-    setup_organisation(@organisation)
+    setup_categories(@organisation)
     
   end
 
@@ -80,7 +80,7 @@ class OrganisationsController < BaseOrganisationsController
       redirect_to @organisation, notice: 'Organisation was successfully created.'
     else
      flash[:error] = @organisation.errors.full_messages.join('<br/>').html_safe
-     setup_organisation(@organisation)
+     setup_categories(@organisation)
      render action: 'new'
     end
   end
@@ -155,13 +155,15 @@ class OrganisationsController < BaseOrganisationsController
     end
   end
   
-  def setup_organisation(organisation)
-    (Category.all - organisation.categories).each do |category|
-      organisation.category_organisations.build(category: category) unless
-      organisation.category_organisations.any? {|v| v.category_id == category.id}
+  def setup_categories(organisation)
+    Category.all.each do |category|
+      organisation.category_organisations.build(category: category) unless existing_relation?(organisation, category)
     end
     organisation
   end
 
+  def existing_relation?(organisation, category)
+    organisation.category_organisations.any? {|v| v.category_id == category.id}
+  end
 
 end
