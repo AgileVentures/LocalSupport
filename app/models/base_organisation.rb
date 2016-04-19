@@ -40,5 +40,16 @@ class BaseOrganisation < ActiveRecord::Base
   def has_been_updated_recently?
     updated_at >= 1.year.ago
   end
+  
+  def setup_categories
+    Category.all.each do |cat|
+      self.category_organisations.build(category: cat) unless has_relation?(cat)
+    end
+    self
+  end
+    
+  def has_relation?(category)
+    self.category_organisations.any? {|v| v.category_id == category.id}
+  end
 
 end

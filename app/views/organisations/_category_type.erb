@@ -7,7 +7,8 @@
     <% end %>
     <div class="span3 org-category">
       <%= ff.label :_destroy, class: "checkbox inline" do %>
-        <%= ff.check_box :_destroy, {:checked => is_checked?(ff.object, @categories_selected)}, '0', '1' %>
+        <%= ff.check_box :_destroy, {:checked => persisted_or_checked?(ff.object, @categories_selected)}, 
+        '0', '1' %>
         <%= ff.object.category.name %>
       <%  end  %>
       <%= ff.hidden_field :category_id %>

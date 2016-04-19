@@ -5,9 +5,13 @@ module FormHelper
     end
     proposed_organisation_edit
   end
-  def is_checked?(category_organisation, categories_selected)
-    categories_selected.nil? || categories_selected.empty? ? 
-    category_organisation.persisted? : categories_selected.any? {|v| v == category_organisation.category.id}
+  
+  def persisted_or_checked?(cat_org, cat_selected)
+    cat_selected.blank? ? cat_org.persisted? : checked?(cat_selected,cat_org) 
   end
-    
+  
+  def checked?(cat_selected, cat_org)
+    cat_selected.any? {|v| v == cat_org.category.id}
+  end
+  
 end

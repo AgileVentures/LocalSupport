@@ -24,7 +24,7 @@ class ProposedOrganisationsController < BaseOrganisationsController
     @proposed_organisation = ProposedOrganisation.new 
     @categories_start_with = Category.first_category_name_in_each_type
     @user_id = session[:user_id] || current_user.try(:id)
-    setup_organisation(@proposed_organisation)
+    @proposed_organisation.setup_categories
   end
 
   def create
@@ -39,7 +39,7 @@ class ProposedOrganisationsController < BaseOrganisationsController
       redirect_to @proposed_organisation, notice: 'Organisation is pending admin approval.'
     else
       flash[:error] = @proposed_organisation.errors.full_messages.join('<br/>').html_safe
-      setup_organisation(@proposed_organisation)
+      @proposed_organisation.setup_categories
       render action: 'new'
     end
     
@@ -101,19 +101,13 @@ class ProposedOrganisationsController < BaseOrganisationsController
   def set_selected_categories
     @categories_selected = []
     cat_org_attr = params[:proposed_organisation][:category_organisations_attributes]
-    unless cat_org_attr.nil? 
-      cat_org_attr
-        .reject {|_k,v| v[:_destroy] == '1'}
-        .each_value {|v| @categories_selected << v[:category_id].to_i}
-    end
+    add_selected(cat_org_attr) unless cat_org_attr.nil?
   end
   
-  def setup_organisation(organisation)
-    (Category.all - organisation.categories).each do |category|
-      organisation.category_organisations.build(category: category) unless
-      organisation.category_organisations.any? {|v| v.category_id == category.id}
-    end
-    organisation
+  def add_selected(attributes)
+    attributes
+      .reject {|_k,v| v[:_destroy] == '1'}
+      .each_value {|v| @categories_selected << v[:category_id].to_i}
   end
 
 end
