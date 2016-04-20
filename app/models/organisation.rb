@@ -2,6 +2,8 @@ require 'csv'
 require 'string'
 
 class Organisation < BaseOrganisation
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
   has_many :volunteer_ops
   has_many :users

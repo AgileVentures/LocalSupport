@@ -9,7 +9,7 @@
 <div id="org-cat-buttons" class="row">
   <div class="position-bottom span6">
     <% if @editable %>
-        <%= link_to("Edit", edit_organisation_path(@organisation.id), {:class => 'btn btn-primary'}) %>
+        <%= link_to("Edit", edit_organisation_path(@organisation.friendly_id), {:class => 'btn btn-primary'}) %>
     <% end %>
     <% if @can_propose_edits %>
         <%= link_to("Propose an edit", new_organisation_proposed_organisation_edit_path(@organisation.id) , {:class => 'btn btn-primary'})%>

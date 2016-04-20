@@ -56,6 +56,9 @@ end
 
 def find_record_for(object, schema, name)
   # all types begin as strings
+  # TODO? http://apidock.com/rails/ActiveSupport/Inflector/classify
+  # classify is for plural forms, should use camelize for singular
+  # it might be a problem in future
   real_object = object.classify.constantize
   schema = schema.chomp('d').to_sym
   real_object.where(schema => name).first
@@ -84,13 +87,13 @@ Then /^I (visit|should be on) the new volunteer op page for "(.*?)"$/ do |mode, 
   end
 end
 
-Then /^I (visit|should be on) the (edit|show) page for the (.*?) (named|titled) "(.*?)"$/ do |mode, action, object, schema, name|
+Then /^I (visit|should be on) the (edit|show) page for the (.*?) (named|titled) "(.*?)"(| using friendly url)$/ do |mode, action, object, schema, name, friendly|
   record = find_record_for(object, schema, name)
   url = url_for({
                     only_path: true,
                     controller: object.pluralize.underscore,
                     action: action,
-                    id: record.id
+                    id: (friendly == 'using friendly url' ? record.friendly_id : record.id)
                 })
   case mode
     when 'visit' then visit url
