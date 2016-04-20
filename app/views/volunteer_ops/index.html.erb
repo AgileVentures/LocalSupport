@@ -1,3 +1,14 @@
+<%= form_tag(search_volunteer_ops_path, :method => "get", class: "volunteer-ops-search") do %>
+  <div class="flex-row">
+    <div class="left-side">
+        <%= label_tag(:q, "Search Text", class: 'field-label') %>
+    </div>
+    <div class="right-side">
+        <%= text_field_tag(:q, @query, class: 'search-text') %>
+        <%= submit_tag("Search", class: 'btn btn-info search-btn') %>
+    </div>
+  </div>
+<% end %>
 <br>
 <div id="orgs_scroll" style="height:410px;width:100%;border:1px solid #ccc;overflow:scroll;">
   <div class="table table-bordered">
