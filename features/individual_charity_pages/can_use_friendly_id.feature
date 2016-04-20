@@ -16,13 +16,13 @@ Feature: Charity worker should see friendly url address
       
   @vcr
   Scenario: I get to the show page and see organisation's name in the url
-    Given I visit the show page for the organisation named "Friendly"
+    Given I visit the show page for the organisation named "Friendly" using friendly url
     Then the URL should contain "organisations/friendly"
     
   @vcr
   Scenario: I get to the edit page and see organisation's name in the url
     Given I am signed in as a charity worker related to "Unfriendly guys"
-    Given I visit the edit page for the organisation named "Unfriendly guys"
+    Given I visit the edit page for the organisation named "Unfriendly guys" using friendly url
     Then the URL should contain "organisations/unfriendly-guys/edit"
     
   # Should I define a step to reverse the case - I write an url and I should be 
