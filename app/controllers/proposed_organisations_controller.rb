@@ -38,9 +38,9 @@ class ProposedOrganisationsController < BaseOrganisationsController
       send_email_to_superadmin_about_org_signup @proposed_organisation
       redirect_to @proposed_organisation, notice: 'Organisation is pending admin approval.'
     else
-      flash[:error] = @proposed_organisation.errors.full_messages.join('<br/>').html_safe
       @proposed_organisation.setup_categories
-      render action: 'new'
+      @categories_start_with = Category.first_category_name_in_each_type
+      render :new
     end
     
   end

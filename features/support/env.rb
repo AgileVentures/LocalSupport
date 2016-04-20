@@ -49,6 +49,7 @@ Billy.configure do |c|
                      'http://www.google-analytics.com/collect',
                      'http://www.google-analytics.com/r/collect',
                      'http://www.google-analytics.com/__utm.gif',
+                     'http://maps.googleapis.com/maps/api/js/ViewportInfoService.GetViewportInfo',
                      ]
   c.persist_cache = true
   c.cache_path = 'features/req_cache/'

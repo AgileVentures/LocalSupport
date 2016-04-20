@@ -79,9 +79,8 @@ class OrganisationsController < BaseOrganisationsController
     if @organisation.save
       redirect_to @organisation, notice: 'Organisation was successfully created.'
     else
-     flash[:error] = @organisation.errors.full_messages.join('<br/>').html_safe
      @organisation.setup_categories
-     render action: 'new'
+     render :new
     end
   end
 
@@ -96,7 +95,6 @@ class OrganisationsController < BaseOrganisationsController
       redirect_to @organisation, notice: 'Organisation was successfully updated.'
     else
       @categories_start_with = Category.first_category_name_in_each_type
-      flash[:error] = @organisation.errors[:superadministrator_email][0]
       render action: "edit"
     end
   end
