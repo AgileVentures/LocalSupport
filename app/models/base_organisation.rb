@@ -1,8 +1,11 @@
 class BaseOrganisation < ActiveRecord::Base
   acts_as_paranoid
-  validates_url :website, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.website.present?}
-  validates_url :donation_info, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.donation_info.present?}
-  validates :name, :description, presence: true
+  validates_url :website, prefferred_scheme: 'http://', message: 'Website is not a valid URL',
+    if: proc{|org| org.website.present?}
+  validates_url :donation_info, prefferred_scheme: 'http://', message: 'Donation url is not a valid URL',
+    if: proc{|org| org.donation_info.present?}
+  validates :name, presence: { message: "Name can't be blank"}
+  validates :description, presence: { message: "Description can't be blank"}
   has_many :category_organisations, :foreign_key => :organisation_id
   has_many :categories, :through => :category_organisations, :foreign_key => :organisation_id
   accepts_nested_attributes_for :category_organisations,
