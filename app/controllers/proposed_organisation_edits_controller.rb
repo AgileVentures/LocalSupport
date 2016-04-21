@@ -8,13 +8,14 @@ class ProposedOrganisationEditsController < ApplicationController
   end
 
   def create
-    org = Organisation.find(params[:organisation_id])
+    org = Organisation.friendly.find(params[:organisation_id])
     create_params = proposed_edit_params.merge!(organisation: org, editor: current_user)
     proposed_org_edit = CreateProposedOrganisationEdit.with(self, create_params)
     redirect_to organisation_proposed_organisation_edit_path org, proposed_org_edit
   end
 
   def show
+    # TODO Friendly_id may be implemented?
     @organisation = Organisation.find(params[:organisation_id])
     @proposed_organisation_edit = ProposedOrganisationEdit.find(params[:id])
   end

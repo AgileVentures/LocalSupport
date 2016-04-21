@@ -20,7 +20,7 @@ describe OrganisationsController, :type => :controller do
     subject { JSON.parse(controller.send(:build_map_markers, org_relation)).first }
     it { expect(subject['lat']).to eq org.latitude }
     it { expect(subject['lng']).to eq org.longitude }
-    it { expect(subject['infowindow']).to include org.id.to_s }
+    it { expect(subject['infowindow']).to include org.friendly_id }
     it { expect(subject['infowindow']).to include org.name }
     it { expect(subject['infowindow']).to include org.description }
     context 'markers without coords omitted' do
@@ -280,7 +280,7 @@ describe OrganisationsController, :type => :controller do
       end
 
       it "redirects to organisation view" do
-        get :edit, id: org.id
+        get :edit, id: org
         expect(response).to redirect_to organisation_url(org)
       end
     end

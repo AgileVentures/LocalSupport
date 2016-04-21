@@ -12,14 +12,14 @@ describe 'VolunteerOps', :type => :request, :helpers => :requests do
       org_admin = org_owner
       login(org_admin)
       expect {
-        post organisation_volunteer_ops_path(org_admin.organisation), params
+        post organisation_volunteer_ops_path(org_admin.organisation.id), params
       }.to change(VolunteerOp, :count).by(1)
     end
 
     it 'the new VolunteerOp is associated with the requested organisation' do
       org_admin = org_owner
       login(org_admin)
-      post organisation_volunteer_ops_path(org_admin.organisation), params
+      post organisation_volunteer_ops_path(org_admin.organisation.id), params
       op = VolunteerOp.last
       expect(op.organisation).to eq org_admin.organisation
     end
@@ -27,14 +27,14 @@ describe 'VolunteerOps', :type => :request, :helpers => :requests do
     it 'does not work for non-org-owners' do
       login(non_org_owner)
       expect {
-        post organisation_volunteer_ops_path(org_owner.organisation), params
+        post organisation_volunteer_ops_path(org_owner.organisation.id), params
       }.to change(VolunteerOp, :count).by(0)
     end
 
     it 'does work for superadmins' do
       login(superadmin)
       expect{
-        post organisation_volunteer_ops_path(org_owner.organisation), params
+        post organisation_volunteer_ops_path(org_owner.organisation.id), params
       }.to change(VolunteerOp, :count).by(1)
     end
   end
