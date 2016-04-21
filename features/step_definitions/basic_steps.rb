@@ -53,14 +53,14 @@ end
 
 Given /^I delete "(.*?)" charity$/ do |name|
   org = Organisation.find_by_name name
-  page.driver.submit :delete, "/organisations/#{org.id}", {}
+  page.driver.submit :delete, "/organisations/#{org.friendly_id}", {}
 end
 
 Then /^I should( not)? see an edit button for "(.*?)" charity$/ do |negate, name|
   expectation_method = negate ? :not_to : :to
   org = Organisation.find_by_name name
   expect(page).send(expectation_method,
-                    have_link('Edit', href: edit_organisation_path(org.id)))
+                    have_link('Edit', href: edit_organisation_path(org)))
 end
 
 Then /^I should( not)? see an edit button for "(.*?)" volunteer opportunity$/ do |negate, title|

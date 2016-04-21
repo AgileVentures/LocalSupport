@@ -19,8 +19,8 @@ class VolunteerOpsController < ApplicationController
   def show
     @volunteer_ops = VolunteerOp.where(id: params[:id])
     @volunteer_op = @volunteer_ops.first
-    organisations = Organisation.where(id: @volunteer_op.organisation_id)
-    @organisation = organisations.first!
+    @organisation = Organisation.friendly.find(@volunteer_op.organisation_id)
+    organisations = Organisation.where(id: @organisation.id)
     @editable = current_user.can_edit?(@organisation) if current_user
 
     @markers = BuildMarkersWithInfoWindow.with(@volunteer_ops,self)
@@ -31,7 +31,8 @@ class VolunteerOpsController < ApplicationController
   end
 
   def create
-    params[:volunteer_op][:organisation_id] = params[:organisation_id]
+    org = Organisation.friendly.find(params[:organisation_id])
+    params[:volunteer_op][:organisation_id] = org.id
     @volunteer_op = VolunteerOp.new(volunteer_op_params)
     if @volunteer_op.save
       redirect_to @volunteer_op, notice: 'Volunteer op was successfully created.'

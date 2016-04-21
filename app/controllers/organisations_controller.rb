@@ -87,7 +87,7 @@ class OrganisationsController < BaseOrganisationsController
   # PUT /organisations/1
   # PUT /organisations/1.json
   def update
-    @organisation = Organisation.find(params[:id])
+    @organisation = Organisation.friendly.find(params[:id])
     params[:organisation][:superadmin_email_to_add] = params[:organisation_superadmin_email_to_add] if params[:organisation]
     update_params = OrganisationParams.build params
     return false unless user_can_edit? @organisation
@@ -106,7 +106,7 @@ class OrganisationsController < BaseOrganisationsController
       flash[:notice] = PERMISSION_DENIED
       redirect_to organisation_path(params[:id]) and return false
     end
-    @organisation = Organisation.find(params[:id])
+    @organisation = Organisation.friendly.find(params[:id])
     @organisation.destroy
     flash[:success] = "Deleted #{@organisation.name}"
 

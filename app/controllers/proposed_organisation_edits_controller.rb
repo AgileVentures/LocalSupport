@@ -3,7 +3,7 @@ class ProposedOrganisationEditsController < ApplicationController
   before_filter :authorize, :only => [:update]
 
   def new
-    org = Organisation.find_by_id params[:organisation_id]
+    org = Organisation.friendly.find params[:organisation_id]
     @proposed_organisation_edit = ProposedOrganisationEdit.new organisation: org
   end
 
@@ -15,8 +15,7 @@ class ProposedOrganisationEditsController < ApplicationController
   end
 
   def show
-    # TODO Friendly_id may be implemented?
-    @organisation = Organisation.find(params[:organisation_id])
+    @organisation = Organisation.friendly.find(params[:organisation_id])
     @proposed_organisation_edit = ProposedOrganisationEdit.find(params[:id])
   end
 
