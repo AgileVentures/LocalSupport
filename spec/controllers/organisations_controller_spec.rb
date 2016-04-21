@@ -370,46 +370,52 @@ describe OrganisationsController, :type => :controller do
 
   describe "PUT update" do
     let(:org) { create :organisation }
+    let(:all_orgs) { double }
     context "while signed in as user who can edit" do
       before(:each) do
         user = double("User")
         allow(user).to receive(:can_edit?) { true }
         allow(request.env['warden']).to receive_messages :authenticate! => user
         allow(controller).to receive(:current_user).and_return(user)
+        
       end
 
       describe "with valid params" do
         it "updates org for e.g. donation_info url" do
-          expect(Organisation).to receive(:find).with('37') { org }
+          expect(Organisation).to receive(:friendly) { all_orgs }
+          expect(all_orgs).to receive(:find).with('37') { org }
           expect(org).to receive(:update_attributes_with_superadmin).with({'donation_info' => 'http://www.friendly.com/donate', 'superadmin_email_to_add' => nil})
           put :update, :id => '37', :organisation => {'donation_info' => 'http://www.friendly.com/donate'}
         end
 
         it "assigns the requested organisation as @organisation" do
-          allow(Organisation).to receive(:find) { org }
+          allow(Organisation).to receive(:friendly) { all_orgs }
+          allow(all_orgs).to receive(:find) { org }
           put :update, :id => "1", :organisation => {'these' => 'params'}
           expect(assigns(:organisation)).to be(org)
         end
 
         it "redirects to the organisation" do
-          allow(Organisation).to receive(:find) { org }
+          allow(Organisation).to receive(:friendly) { all_orgs }
+          allow(all_orgs).to receive(:find) { org }
           put :update, :id => "1", :organisation => {'these' => 'params'}
           expect(response).to redirect_to(organisation_url(org))
         end
       end
 
       describe "with invalid params" do
+        before(:each) do 
+          allow(Organisation).to receive(:friendly) { all_orgs }
+          allow(all_orgs).to receive(:find) { double_organisation(:update_attributes_with_superadmin => false) }
+          put :update, :id => "1", :organisation => {'these' => 'params'}
+        end
         after(:each) { expect(response).to render_template 'layouts/two_columns_with_map' }
 
         it "assigns the organisation as @organisation" do
-          allow(Organisation).to receive(:find) { double_organisation(:update_attributes_with_superadmin => false) }
-          put :update, :id => "1", :organisation => {'these' => 'params'}
           expect(assigns(:organisation)).to be(double_organisation)
         end
 
         it "re-renders the 'edit' template" do
-          allow(Organisation).to receive(:find) { double_organisation(:update_attributes_with_superadmin => false) }
-          put :update, :id => "1", :organisation => {'these' => 'params'}
           expect(response).to render_template("edit")
         end
       end
@@ -426,7 +432,8 @@ describe OrganisationsController, :type => :controller do
       describe "with existing organisation" do
         it "does not update the requested organisation" do
           org = double_organisation(:id => 37)
-          expect(Organisation).to receive(:find).with("#{org.id}") { org }
+          expect(Organisation).to receive(:friendly) { all_orgs }
+          expect(all_orgs).to receive(:find).with("#{org.id}") { org }
           expect(org).not_to receive(:update_attributes)
           put :update, :id => "#{org.id}", :organisation => {'these' => 'params'}
           expect(response).to redirect_to(organisation_url("#{org.id}"))
@@ -436,7 +443,8 @@ describe OrganisationsController, :type => :controller do
 
       describe "with non-existent organisation" do
         it "does not update the requested organisation" do
-          expect(Organisation).to receive(:find).with("9999") { nil }
+          expect(Organisation).to receive(:friendly) { all_orgs }
+          expect(all_orgs).to receive(:find).with("9999") { nil }
           put :update, :id => "9999", :organisation => {'these' => 'params'}
           expect(response).to redirect_to(organisation_url("9999"))
           expect(flash[:notice]).to eq("You don't have permission")
@@ -453,12 +461,14 @@ describe OrganisationsController, :type => :controller do
   end
 
   describe "DELETE destroy" do
+    let(:all_orgs) { double }
     context "while signed in as superadmin", :helpers => :controllers do
       before(:each) do
         make_current_user_superadmin
       end
       it "destroys the requested organisation and redirect to organisation list" do
-        expect(Organisation).to receive(:find).with('37') { double_organisation }
+        expect(Organisation).to receive(:friendly) { all_orgs }
+        expect(all_orgs).to receive(:find).with('37') { double_organisation }
         expect(double_organisation).to receive(:destroy)
         delete :destroy, :id => '37'
         expect(response).to redirect_to(organisations_url)
