@@ -8,15 +8,16 @@ class UsersController < ApplicationController
   # and only superadmins should be allowed to update organisation_id
   # makes me think of a attributes permissions matrix
   def update
+    org = Organisation.friendly.find(params[:pending_organisation_id])
     usr = User.find_by_id UserParams.build(params).fetch(:id)
-    UserOrganisationClaimer.new(self, usr, usr).call(UserParams.build(params).fetch(:pending_organisation_id))
+    UserOrganisationClaimer.new(self, usr, usr).call(org.id)
   end
 
   def update_message_for_admin_status
-    org = Organisation.friendly.find(UserParams.build(params).fetch(:pending_organisation_id))
+    org = Organisation.friendly.find(params[:pending_organisation_id])
     flash[:notice] = "You have requested admin status for #{org.name}"
     send_email_to_superadmin_about_request_for_admin_of org   # could be moved to an hook on the user model?
-    redirect_to organisation_path(UserParams.build(params).fetch(:pending_organisation_id))
+    redirect_to organisation_path(org)
   end
 
   def send_email_to_superadmin_about_request_for_admin_of org
