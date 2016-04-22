@@ -2,7 +2,7 @@ Then(/^I should see an infowindow when I click on the map markers:$/) do |table|
   expect(page).to have_css('.measle', :count => table.raw.flatten.length)
   Organisation.where(name: table.raw.flatten)
         .pluck(:name, :description, :id, :slug)
-        .map {|name, desc, id, friendly_id| [name, smart_truncate(desc, 42), id, friendly_id]}
+        .map {|name, desc, id, frdly_id| [name, smart_truncate(desc, 42), id, frdly_id]}
         .each do |name, desc, id, friendly_id|
       expect(page).to have_css(".measle[data-id='#{id}']")
       icon =find(".measle[data-id='#{id}']")

@@ -13,7 +13,7 @@ describe OrganisationsController, :type => :controller do
     end
   end
 
-  describe "#build_map_markers" do
+  describe '#build_map_markers' do
     render_views
     let!(:org) { create :organisation }
     let(:org_relation){Organisation.all}
@@ -29,13 +29,13 @@ describe OrganisationsController, :type => :controller do
     end
   end
 
-  describe "GET search" do
+  describe 'GET search' do
 
     let(:category_params) do
       {
-        "what_id" => "",
-        "who_id"  => "",
-        "how_id"  => "",
+        'what_id' => '',
+        'who_id'  => '',
+        'how_id'  => '',
       }
     end
 
@@ -51,33 +51,33 @@ describe OrganisationsController, :type => :controller do
         allow(Category).to receive(:how_they_help) { Category.all }
       end
 
-      it "orders search results by most recent" do
+      it 'orders search results by most recent' do
         expect(Organisation).to receive(:order_by_most_recent).and_return(result)
         expect(result).to receive(:search_by_keyword).with('test').and_return(result)
         get :search, { q: 'test' }.merge(category_params)
         expect(assigns(:organisations)).to eq([double_organisation])
       end
 
-      it "sets up appropriate values for view vars: query_term, organisations and markers" do
+      it 'sets up appropriate values for view vars: query_term, organisations and markers' do
         expect(Organisation).to receive(:search_by_keyword).with('test').and_return(result)
         expect(result).to receive(:filter_by_categories).with(['1']).and_return(result)
-        get :search, { q: 'test' }.merge(category_params).merge("what_id" => "1")
+        get :search, { q: 'test' }.merge(category_params).merge('what_id' => '1')
         expect(assigns(:parsed_params).query_term).to eq 'test'
       end
 
-      it "handles lack of category gracefully" do
+      it 'handles lack of category gracefully' do
         expect(Organisation).to receive(:search_by_keyword).with('test').and_return(result)
         get :search, { q: 'test' }.merge(category_params)
         expect(assigns(:parsed_params).query_term).to eq 'test'
       end
 
-      it "handles lack of query term gracefully" do
-        expect(Organisation).to receive(:search_by_keyword).with("").and_return(result)
+      it 'handles lack of query term gracefully' do
+        expect(Organisation).to receive(:search_by_keyword).with('').and_return(result)
         get :search, category_params.merge({q: ''})
-        expect(assigns(:parsed_params).query_term).to eq("")
+        expect(assigns(:parsed_params).query_term).to eq('')
       end
 
-      it "handles lack of id gracefully" do
+      it 'handles lack of id gracefully' do
         expect(Organisation).to receive(:search_by_keyword).with('test').and_return(result)
         get :search, { q: 'test' }.merge(category_params)
         expect(assigns(:parsed_params).query_term).to eq 'test'
@@ -93,9 +93,9 @@ describe OrganisationsController, :type => :controller do
     end
 
     # TODO figure out how to make this less messy
-    it "assigns to flash.now but not flash when search returns no results" do
+    it 'assigns to flash.now but not flash when search returns no results' do
       expect(controller).to receive(:build_map_markers).and_return('my markers')
-      double_now_flash = double("FlashHash")
+      double_now_flash = double('FlashHash')
       result = Organisation.all
       expect(result).to receive(:empty?).and_return(true)
       expect(Organisation).to receive(:search_by_keyword).with('no results').and_return(result)
@@ -104,10 +104,10 @@ describe OrganisationsController, :type => :controller do
       expect_any_instance_of(ActionDispatch::Flash::FlashHash).to receive(:now).and_return double_now_flash
       expect_any_instance_of(ActionDispatch::Flash::FlashHash).not_to receive(:[]=)
       expect(double_now_flash).to receive(:[]=).with(:alert, SEARCH_NOT_FOUND)
-      get :search, { q: 'no results' }.merge(category_params).merge("what_id" => "1")
+      get :search, { q: 'no results' }.merge(category_params).merge('what_id' => '1')
     end
 
-    it "does not set up flash nor flash.now when search returns results" do
+    it 'does not set up flash nor flash.now when search returns results' do
       result = Organisation.all
       markers='my markers'
       expect(controller).to receive(:build_map_markers).and_return(markers)
@@ -115,14 +115,14 @@ describe OrganisationsController, :type => :controller do
       expect(Organisation).to receive(:search_by_keyword).with('some results').and_return(result)
       expect(result).to receive(:filter_by_categories).with(['1']).and_return(result)
       category = double('Category')
-      get :search, { q: 'some results' }.merge(category_params).merge("what_id" => "1")
+      get :search, { q: 'some results' }.merge(category_params).merge('what_id' => '1')
       expect(flash.now[:alert]).to be_nil
       expect(flash[:alert]).to be_nil
     end
   end
 
-  describe "GET index" do
-    it "assigns all organisations as @organisations" do
+  describe 'GET index' do
+    it 'assigns all organisations as @organisations' do
       result = Organisation.all
       markers='my markers'
       expect(controller).to receive(:build_map_markers).and_return(markers)
@@ -134,10 +134,10 @@ describe OrganisationsController, :type => :controller do
     end
   end
 
-  describe "GET show" do
+  describe 'GET show' do
     let(:real_org){create(:organisation)}
     before(:each) do
-      @user = double("User")
+      @user = double('User')
       allow(@user).to receive(:pending_org_admin?)
       allow(@user).to receive(:can_edit?)
       allow(@user).to receive(:can_delete?)
@@ -151,7 +151,7 @@ describe OrganisationsController, :type => :controller do
       expect(response).to render_template 'layouts/two_columns_with_map'
     end
 
-    it "assigns the requested organisation as @organisation and appropriate markers" do
+    it 'assigns the requested organisation as @organisation and appropriate markers' do
       markers='my markers'
       @org = real_org
       expect(controller).to receive(:build_map_markers).and_return(markers)
@@ -160,14 +160,14 @@ describe OrganisationsController, :type => :controller do
       expect(assigns(:markers)).to eq(markers)
     end
 
-    context "editable flag is assigned to match user permission" do
-      it "user with permission leads to editable flag true" do
+    context 'editable flag is assigned to match user permission' do
+      it 'user with permission leads to editable flag true' do
         expect(@user).to receive(:can_edit?).with(real_org).and_return(true)
         get :show, id: real_org.id.to_s
         expect(assigns(:editable)).to be(true)
       end
 
-      it "user without permission leads to editable flag false" do
+      it 'user without permission leads to editable flag false' do
         expect(@user).to receive(:can_edit?).with(real_org).and_return(true)
         get :show, id: real_org.id.to_s
         expect(assigns(:editable)).to be(true)
@@ -180,7 +180,7 @@ describe OrganisationsController, :type => :controller do
       end
     end
 
-    context "grabbable flag is assigned to match user permission" do
+    context 'grabbable flag is assigned to match user permission' do
       it 'assigns grabbable to true when user can request org superadmin status' do
         allow(@user).to receive(:can_edit?)
         expect(@user).to receive(:can_request_org_admin?).with(real_org).and_return(true)
@@ -226,16 +226,16 @@ describe OrganisationsController, :type => :controller do
     end
   end
 
-  describe "GET new" do
-    context "while signed in" do
+  describe 'GET new' do
+    context 'while signed in' do
       before(:each) do
-        user = double("User")
+        user = double('User')
         allow(request.env['warden']).to receive_messages :authenticate! => user
         allow(controller).to receive(:current_user).and_return(user)
         allow(Organisation).to receive(:new) { double_organisation }
       end
 
-      it "assigns a new organisation as @organisation" do
+      it 'assigns a new organisation as @organisation' do
         get :new
         expect(assigns(:organisation)).to be(double_organisation)
       end
@@ -246,227 +246,228 @@ describe OrganisationsController, :type => :controller do
       end
     end
 
-    context "while not signed in" do
-      it "redirects to sign-in" do
+    context 'while not signed in' do
+      it 'redirects to sign-in' do
         get :new
         expect(response).to redirect_to new_user_session_path
       end
     end
   end
 
-  describe "GET edit" do
+  describe 'GET edit' do
     let(:org) { create(:organisation) }
 
-    context "while signed in as user who can edit" do
+    context 'while signed in as user who can edit' do
       before(:each) do
-        user = double("User")
+        user = double('User')
         allow(user).to receive(:can_edit?) { true }
         allow(request.env['warden']).to receive_messages :authenticate! => user
         allow(controller).to receive(:current_user).and_return(user)
       end
 
-      it "assigns the requested organisation as @organisation" do
+      it 'assigns the requested organisation as @organisation' do
         get :edit, id: org.id
         expect(assigns(:organisation)).to eq org
         expect(response).to render_template 'layouts/two_columns_with_map'
       end
     end
-    context "while signed in as user who cannot edit" do
+    context 'while signed in as user who cannot edit' do
       before(:each) do
-        user = double("User")
+        user = double('User')
         allow(user).to receive(:can_edit?) { false }
         allow(request.env['warden']).to receive_messages :authenticate! => user
         allow(controller).to receive(:current_user).and_return(user)
       end
 
-      it "redirects to organisation view" do
+      it 'redirects to organisation view' do
         get :edit, id: org
         expect(response).to redirect_to organisation_url(org)
       end
     end
     #TODO: way to dry out these redirect specs?
-    context "while not signed in" do
-      it "redirects to sign-in" do
+    context 'while not signed in' do
+      it 'redirects to sign-in' do
         get :edit, :id => '37'
         expect(response).to redirect_to new_user_session_path
       end
     end
   end
 
-  describe "POST create", :helpers => :controllers do
-    context "while signed in as superadmin" do
+  describe 'POST create', :helpers => :controllers do
+    context 'while signed in as superadmin' do
       let!(:org) { build :organisation }
       before(:each) do
         expect(make_current_user_superadmin).to receive(:superadmin?).and_return true
       end
 
-      describe "with valid params" do
-        it "assigns a newly created organisation as @organisation" do
+      describe 'with valid params' do
+        it 'assigns a newly created organisation as @organisation' do
           allow(Organisation).to receive(:new) { org }
           post :create, :organisation => {'these' => 'params'}
           expect(assigns(:organisation)).to be org
         end
 
-        it "redirects to the created organisation" do
+        it 'redirects to the created organisation' do
           allow(Organisation).to receive(:new) { org }
-          post :create, :organisation => {name: "blah"}
+          post :create, :organisation => {name: 'blah'}
           expect(response).to redirect_to(organisation_url(org))
         end
       end
 
-      describe "with invalid params" do
+      describe 'with invalid params' do
         after(:each) { expect(response).to render_template 'two_columns_with_map' }
 
-        it "assigns a newly created but unsaved organisation as @organisation" do
+        it 'assigns a newly created but unsaved organisation as @organisation' do
           allow(Organisation).to receive(:new){ double_organisation(:save => false) }
           post :create, :organisation => {'these' => 'params'}
           expect(assigns(:organisation)).to be(double_organisation)
         end
 
-        it "re-renders the 'new' template" do
+        it 're-renders the "new" template' do
           allow(Organisation).to receive(:new) { double_organisation(:save => false) }
-          post :create, :organisation => {name: "great"}
-          expect(response).to render_template("new")
+          post :create, :organisation => {name: 'great'}
+          expect(response).to render_template('new')
         end
       end
     end
 
-    context "while not signed in" do
-      it "redirects to sign-in" do
+    context 'while not signed in' do
+      it 'redirects to sign-in' do
         allow(Organisation).to receive(:new).with({'these' => 'params'}) { double_organisation(:save => true) }
         post :create, :organisation => {'these' => 'params'}
         expect(response).to redirect_to new_user_session_path
       end
     end
 
-    context "while signed in as non-superadmin" do
+    context 'while signed in as non-superadmin' do
       before(:each) do
         expect(make_current_user_nonsuperadmin).to receive(:superadmin?).and_return(false)
       end
 
-      describe "with valid params" do
-        it "refuses to create a new organisation" do
+      describe 'with valid params' do
+        it 'refuses to create a new organisation' do
           # stubbing out Organisation to prevent new method from calling Gmaps APIs
           allow(Organisation).to receive(:new).with({'these' => 'params'}) { double_organisation(:save => true) }
           expect(Organisation).not_to receive :new
           post :create, :organisation => {'these' => 'params'}
         end
 
-        it "redirects to the organisations index" do
+        it 'redirects to the organisations index' do
           allow(Organisation).to receive(:new).with({'these' => 'params'}) { double_organisation(:save => true) }
           post :create, :organisation => {'these' => 'params'}
           expect(response).to redirect_to organisations_path
         end
 
-        it "assigns a flash refusal" do
+        it 'assigns a flash refusal' do
           allow(Organisation).to receive(:new).with({'these' => 'params'}) { double_organisation(:save => true) }
           post :create, :organisation => {'these' => 'params'}
-          expect(flash[:notice]).to eq("You don't have permission")
+          expect(flash[:notice]).to eq('You don\'t have permission')
         end
       end
       # not interested in invalid params
     end
   end
 
-  describe "PUT update" do
+  describe 'PUT update' do
     let(:org) { create :organisation }
     let(:all_orgs) { double }
-    context "while signed in as user who can edit" do
+    context 'while signed in as user who can edit' do
       before(:each) do
-        user = double("User")
+        user = double('User')
         allow(user).to receive(:can_edit?) { true }
         allow(request.env['warden']).to receive_messages :authenticate! => user
         allow(controller).to receive(:current_user).and_return(user)
         
       end
 
-      describe "with valid params" do
-        it "updates org for e.g. donation_info url" do
+      describe 'with valid params' do
+        it 'updates org for e.g. donation_info url' do
           expect(Organisation).to receive(:friendly) { all_orgs }
           expect(all_orgs).to receive(:find).with('37') { org }
           expect(org).to receive(:update_attributes_with_superadmin).with({'donation_info' => 'http://www.friendly.com/donate', 'superadmin_email_to_add' => nil})
           put :update, :id => '37', :organisation => {'donation_info' => 'http://www.friendly.com/donate'}
         end
 
-        it "assigns the requested organisation as @organisation" do
+        it 'assigns the requested organisation as @organisation' do
           allow(Organisation).to receive(:friendly) { all_orgs }
           allow(all_orgs).to receive(:find) { org }
-          put :update, :id => "1", :organisation => {'these' => 'params'}
+          put :update, :id => '1', :organisation => {'these' => 'params'}
           expect(assigns(:organisation)).to be(org)
         end
 
-        it "redirects to the organisation" do
+        it 'redirects to the organisation' do
           allow(Organisation).to receive(:friendly) { all_orgs }
           allow(all_orgs).to receive(:find) { org }
-          put :update, :id => "1", :organisation => {'these' => 'params'}
+          put :update, :id => '1', :organisation => {'these' => 'params'}
           expect(response).to redirect_to(organisation_url(org))
         end
       end
 
-      describe "with invalid params" do
+      describe 'with invalid params' do
+        let(:dbl_org) { double_organisation(update_attributes_with_superadmin: false) }
         before(:each) do 
           allow(Organisation).to receive(:friendly) { all_orgs }
-          allow(all_orgs).to receive(:find) { double_organisation(:update_attributes_with_superadmin => false) }
-          put :update, :id => "1", :organisation => {'these' => 'params'}
+          allow(all_orgs).to receive(:find) { dbl_org }
+          put :update, id: '1', organisation: {'these': 'params'}
         end
         after(:each) { expect(response).to render_template 'layouts/two_columns_with_map' }
 
-        it "assigns the organisation as @organisation" do
+        it 'assigns the organisation as @organisation' do
           expect(assigns(:organisation)).to be(double_organisation)
         end
 
-        it "re-renders the 'edit' template" do
-          expect(response).to render_template("edit")
+        it 're-renders the "edit" template' do
+          expect(response).to render_template('edit')
         end
       end
     end
 
-    context "while signed in as user who cannot edit" do
+    context 'while signed in as user who cannot edit' do
       before(:each) do
-        user = double("User")
+        user = double('User')
         allow(user).to receive(:can_edit?) { false }
         allow(request.env['warden']).to receive_messages :authenticate! => user
         allow(controller).to receive(:current_user).and_return(user)
       end
 
-      describe "with existing organisation" do
-        it "does not update the requested organisation" do
+      describe 'with existing organisation' do
+        it 'does not update the requested organisation' do
           org = double_organisation(:id => 37)
           expect(Organisation).to receive(:friendly) { all_orgs }
           expect(all_orgs).to receive(:find).with("#{org.id}") { org }
           expect(org).not_to receive(:update_attributes)
           put :update, :id => "#{org.id}", :organisation => {'these' => 'params'}
           expect(response).to redirect_to(organisation_url("#{org.id}"))
-          expect(flash[:notice]).to eq("You don't have permission")
+          expect(flash[:notice]).to eq('You don\'t have permission')
         end
       end
 
-      describe "with non-existent organisation" do
-        it "does not update the requested organisation" do
+      describe 'with non-existent organisation' do
+        it 'does not update the requested organisation' do
           expect(Organisation).to receive(:friendly) { all_orgs }
-          expect(all_orgs).to receive(:find).with("9999") { nil }
-          put :update, :id => "9999", :organisation => {'these' => 'params'}
-          expect(response).to redirect_to(organisation_url("9999"))
-          expect(flash[:notice]).to eq("You don't have permission")
+          expect(all_orgs).to receive(:find).with('9999') { nil }
+          put :update, :id => '9999', :organisation => {'these' => 'params'}
+          expect(response).to redirect_to(organisation_url('9999'))
+          expect(flash[:notice]).to eq('You don\'t have permission')
         end
       end
     end
 
-    context "while not signed in" do
-      it "redirects to sign-in" do
-        put :update, :id => "1", :organisation => {'these' => 'params'}
+    context 'while not signed in' do
+      it 'redirects to sign-in' do
+        put :update, :id => '1', :organisation => {'these' => 'params'}
         expect(response).to redirect_to new_user_session_path
       end
     end
   end
 
-  describe "DELETE destroy" do
+  describe 'DELETE destroy' do
     let(:all_orgs) { double }
-    context "while signed in as superadmin", :helpers => :controllers do
+    context 'while signed in as superadmin', :helpers => :controllers do
       before(:each) do
         make_current_user_superadmin
       end
-      it "destroys the requested organisation and redirect to organisation list" do
+      it 'destroys the requested organisation and redirect to organisation list' do
         expect(Organisation).to receive(:friendly) { all_orgs }
         expect(all_orgs).to receive(:find).with('37') { double_organisation }
         expect(double_organisation).to receive(:destroy)
@@ -474,11 +475,11 @@ describe OrganisationsController, :type => :controller do
         expect(response).to redirect_to(organisations_url)
       end
     end
-    context "while signed in as non-superadmin", :helpers => :controllers do
+    context 'while signed in as non-superadmin', :helpers => :controllers do
       before(:each) do
         make_current_user_nonsuperadmin
       end
-      it "does not destroy the requested organisation but redirects to organisation home page" do
+      it 'does not destroy the requested organisation but redirects to organisation home page' do
         double = double_organisation
         expect(Organisation).not_to receive(:find).with('37') { double }
         expect(double).not_to receive(:destroy)
@@ -486,20 +487,20 @@ describe OrganisationsController, :type => :controller do
         expect(response).to redirect_to(organisation_url('37'))
       end
     end
-    context "while not signed in" do
-      it "redirects to sign-in" do
+    context 'while not signed in' do
+      it 'redirects to sign-in' do
         delete :destroy, :id => '37'
         expect(response).to redirect_to new_user_session_path
       end
     end
   end
-  describe ".permit" do 
-    it "returns the cleaned params" do
+  describe '.permit' do 
+    it 'returns the cleaned params' do
       organisation_params = { organisation: {name: 'Happy Friends', description: 'Do nice things', address: '22 Pinner Road', 
                              postcode: '12345', email: 'happy@annoting.com', website: 'www.happyplace.com', 
                              telephone: '123-456-7890', donation_info: 'www.giveusmoney.com',
                              publish_address: true, publish_phone: true, publish_email: true, 
-                             category_organisations_attributes: {'1' => {"_destroy" => "1", "id" => "1", "category_id" => "5"}}
+                             category_organisations_attributes: {'1' => {'_destroy' => '1', 'id' => '1', 'category_id' => '5'}}
                              }}
       params = ActionController::Parameters.new.merge(organisation_params)
       permitted_params = OrganisationsController::OrganisationParams.build(params)
@@ -507,7 +508,7 @@ describe OrganisationsController, :type => :controller do
                                       postcode: '12345', email: 'happy@annoting.com', website: 'www.happyplace.com', 
                                       telephone: '123-456-7890', donation_info: 'www.giveusmoney.com',
                                       publish_address: true, publish_phone: true, publish_email: true,
-                                      category_organisations_attributes: {'1' => {"_destroy" => "1", "id" => "1", "category_id" => "5"}}
+                                      category_organisations_attributes: {'1' => {'_destroy' => '1', 'id' => '1', 'category_id' => '5'}}
                                       }.with_indifferent_access)
       #attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info, :publish_address, :publish_phone, :publish_email, :category_organisations_attributes
     end
