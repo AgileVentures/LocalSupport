@@ -12,14 +12,14 @@ describe 'VolunteerOps', :type => :request, :helpers => :requests do
       org_admin = org_owner
       login(org_admin)
       expect {
-        post organisation_volunteer_ops_path(org_admin.organisation.id), params
+        post organisation_volunteer_ops_path(org_admin.organisation), params
       }.to change(VolunteerOp, :count).by(1)
     end
 
     it 'the new VolunteerOp is associated with the requested organisation' do
       org_admin = org_owner
       login(org_admin)
-      post organisation_volunteer_ops_path(org_admin.organisation.id), params
+      post organisation_volunteer_ops_path(org_admin.organisation), params
       op = VolunteerOp.last
       expect(op.organisation).to eq org_admin.organisation
     end

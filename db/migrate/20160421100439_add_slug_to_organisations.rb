@@ -4,7 +4,7 @@ class AddSlugToOrganisations < ActiveRecord::Migration
     
     add_index :organisations, :slug, unique: true
     
-    Organisation.find_each(&:save!)
+    Organisation.find_each(&:save)
   end
   
   def down
