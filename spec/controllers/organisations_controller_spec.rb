@@ -293,7 +293,7 @@ describe OrganisationsController, :type => :controller do
     end
   end
 
-  describe 'POST create', :helpers => :controllers do
+  describe 'POST create', helpers: :controllers do
     context 'while signed in as superadmin' do
       let!(:org) { build :organisation }
       before(:each) do
@@ -309,7 +309,7 @@ describe OrganisationsController, :type => :controller do
 
         it 'redirects to the created organisation' do
           allow(Organisation).to receive(:new) { org }
-          post :create, :organisation => {name: 'blah'}
+          post :create, organisation: {name: 'blah'}
           expect(response).to redirect_to(organisation_url(org))
         end
       end
@@ -325,7 +325,7 @@ describe OrganisationsController, :type => :controller do
 
         it 're-renders the "new" template' do
           allow(Organisation).to receive(:new) { double_organisation(:save => false) }
-          post :create, :organisation => {name: 'great'}
+          post :create, organisation: {name: 'great'}
           expect(response).to render_template('new')
         end
       end
@@ -391,14 +391,14 @@ describe OrganisationsController, :type => :controller do
         it 'assigns the requested organisation as @organisation' do
           allow(Organisation).to receive(:friendly) { all_orgs }
           allow(all_orgs).to receive(:find) { org }
-          put :update, :id => '1', :organisation => {'these' => 'params'}
+          put :update, id: '1', organisation: {'these': 'params'}
           expect(assigns(:organisation)).to be(org)
         end
 
         it 'redirects to the organisation' do
           allow(Organisation).to receive(:friendly) { all_orgs }
           allow(all_orgs).to receive(:find) { org }
-          put :update, :id => '1', :organisation => {'these' => 'params'}
+          put :update, id: '1', organisation: {'these': 'params'}
           expect(response).to redirect_to(organisation_url(org))
         end
       end
@@ -446,7 +446,7 @@ describe OrganisationsController, :type => :controller do
         it 'does not update the requested organisation' do
           expect(Organisation).to receive(:friendly) { all_orgs }
           expect(all_orgs).to receive(:find).with('9999') { nil }
-          put :update, :id => '9999', :organisation => {'these' => 'params'}
+          put :update, id: '9999', organisation: {'these': 'params'}
           expect(response).to redirect_to(organisation_url('9999'))
           expect(flash[:notice]).to eq('You don\'t have permission')
         end
@@ -455,7 +455,7 @@ describe OrganisationsController, :type => :controller do
 
     context 'while not signed in' do
       it 'redirects to sign-in' do
-        put :update, :id => '1', :organisation => {'these' => 'params'}
+        put :update, id: '1', organisation: {'these': 'params'}
         expect(response).to redirect_to new_user_session_path
       end
     end
@@ -463,7 +463,7 @@ describe OrganisationsController, :type => :controller do
 
   describe 'DELETE destroy' do
     let(:all_orgs) { double }
-    context 'while signed in as superadmin', :helpers => :controllers do
+    context 'while signed in as superadmin', helpers: :controllers do
       before(:each) do
         make_current_user_superadmin
       end
@@ -471,11 +471,11 @@ describe OrganisationsController, :type => :controller do
         expect(Organisation).to receive(:friendly) { all_orgs }
         expect(all_orgs).to receive(:find).with('37') { double_organisation }
         expect(double_organisation).to receive(:destroy)
-        delete :destroy, :id => '37'
+        delete :destroy, id: '37'
         expect(response).to redirect_to(organisations_url)
       end
     end
-    context 'while signed in as non-superadmin', :helpers => :controllers do
+    context 'while signed in as non-superadmin', helpers: :controllers do
       before(:each) do
         make_current_user_nonsuperadmin
       end
@@ -496,19 +496,35 @@ describe OrganisationsController, :type => :controller do
   end
   describe '.permit' do 
     it 'returns the cleaned params' do
-      organisation_params = { organisation: {name: 'Happy Friends', description: 'Do nice things', address: '22 Pinner Road', 
-                             postcode: '12345', email: 'happy@annoting.com', website: 'www.happyplace.com', 
-                             telephone: '123-456-7890', donation_info: 'www.giveusmoney.com',
-                             publish_address: true, publish_phone: true, publish_email: true, 
-                             category_organisations_attributes: {'1' => {'_destroy' => '1', 'id' => '1', 'category_id' => '5'}}
-                             }}
+      organisation_params = { organisation: {
+                                name: 'Happy Friends', 
+                                description: 'Do nice things', 
+                                address: '22 Pinner Road', 
+                                postcode: '12345', 
+                                email: 'happy@annoting.com', 
+                                website: 'www.happyplace.com', 
+                                telephone: '123-456-7890', 
+                                donation_info: 'www.giveusmoney.com',
+                                publish_address: true, 
+                                publish_phone: true, 
+                                publish_email: true, 
+                                category_organisations_attributes: {
+                                  '1' => {'_destroy' => '1', 'id' => '1', 'category_id' => '5'}}
+                            }}
       params = ActionController::Parameters.new.merge(organisation_params)
       permitted_params = OrganisationsController::OrganisationParams.build(params)
-      expect(permitted_params).to eq({name: 'Happy Friends', description: 'Do nice things', address: '22 Pinner Road', 
-                                      postcode: '12345', email: 'happy@annoting.com', website: 'www.happyplace.com', 
-                                      telephone: '123-456-7890', donation_info: 'www.giveusmoney.com',
-                                      publish_address: true, publish_phone: true, publish_email: true,
-                                      category_organisations_attributes: {'1' => {'_destroy' => '1', 'id' => '1', 'category_id' => '5'}}
+      expect(permitted_params).to eq({name: 'Happy Friends', 
+                                      description: 'Do nice things', 
+                                      address: '22 Pinner Road', 
+                                      postcode: '12345', email: 'happy@annoting.com', 
+                                      website: 'www.happyplace.com', 
+                                      telephone: '123-456-7890', 
+                                      donation_info: 'www.giveusmoney.com',
+                                      publish_address: true, 
+                                      publish_phone: true, 
+                                      publish_email: true,
+                                      category_organisations_attributes: {
+                                        '1' => {'_destroy' => '1', 'id' => '1', 'category_id' => '5'}}
                                       }.with_indifferent_access)
       #attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info, :publish_address, :publish_phone, :publish_email, :category_organisations_attributes
     end
