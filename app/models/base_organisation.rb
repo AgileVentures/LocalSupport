@@ -1,6 +1,6 @@
 class BaseOrganisation < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :slug_candidates, use: :slugged
   
   acts_as_paranoid
   validates_url :website, prefferred_scheme: 'http://', message: 'Website is not a valid URL',
@@ -56,6 +56,26 @@ class BaseOrganisation < ActiveRecord::Base
     
   def has_relation?(category)
     self.category_organisations.any? {|v| v.category_id == category.id}
+  end
+  
+  def slug_candidates
+    [
+      :short_name,
+      :prolonged_name,
+      :name
+    ]
+  end
+  
+  def short_name
+    slug_words.first(3).join('-')
+  end
+  
+  def prolonged_name
+    "#{self.short_name}-#{slug_words[-2]}-#{slug_words[-1]}"
+  end
+  
+  def slug_words
+    "#{self.name}".delete("'").scan(/\b\w+\b/).map(&:downcase)
   end
 
 end
