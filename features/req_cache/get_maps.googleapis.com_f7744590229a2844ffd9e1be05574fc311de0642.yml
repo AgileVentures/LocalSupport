@@ -1,0 +1,21 @@
+---
+:scope: 
+:url: http://maps.googleapis.com/maps/api/js/StaticMapService.GetMapImage?1m2&1i523083&2i347995&2e1&3u12&4m2&1u446&2u519&5m5&1e0&5sen-GB&6sus&10b1&12b1&token=4796
+:body: ''
+:status: 403
+:method: get
+:headers:
+  Content-Type: text/plain; charset=UTF-8
+  X-Content-Type-Options: nosniff
+  Date: Tue, 22 Mar 2016 12:20:41 GMT
+  Pragma: no-cache
+  Expires: Fri, 01 Jan 1990 00:00:00 GMT
+  Cache-Control: no-cache, must-revalidate
+  Server: staticmap
+  X-XSS-Protection: 1; mode=block
+  X-Frame-Options: SAMEORIGIN
+  Accept-Ranges: none
+  Vary: Accept-Encoding
+  Connection: close
+:content: 'The Google Maps API server rejected your request. The Google Maps JavaScript
+  API must be downloaded directly from Google''s servers. Learn more: https://developers.google.com/maps/documentation/javascript/tutorial#Loading_the_Maps_API'

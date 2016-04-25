@@ -1,8 +1,14 @@
 class BaseOrganisation < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :slug_candidates, use: :slugged
+  
   acts_as_paranoid
-  validates_url :website, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.website.present?}
-  validates_url :donation_info, :prefferred_scheme => 'http://', :if => Proc.new{|org| org.donation_info.present?}
-  validates :name, :description, presence: true
+  validates_url :website, prefferred_scheme: 'http://', message: 'Website is not a valid URL',
+    if: proc{|org| org.website.present?}
+  validates_url :donation_info, prefferred_scheme: 'http://', message: 'Donation url is not a valid URL',
+    if: proc{|org| org.donation_info.present?}
+  validates :name, presence: { message: "Name can't be blank"}
+  validates :description, presence: { message: "Description can't be blank"}
   has_many :category_organisations, :foreign_key => :organisation_id
   has_many :categories, :through => :category_organisations, :foreign_key => :organisation_id
   accepts_nested_attributes_for :category_organisations,
@@ -39,6 +45,37 @@ class BaseOrganisation < ActiveRecord::Base
 
   def has_been_updated_recently?
     updated_at >= 1.year.ago
+  end
+  
+  def setup_categories
+    Category.all.each do |cat|
+      self.category_organisations.build(category: cat) unless has_relation?(cat)
+    end
+    self
+  end
+    
+  def has_relation?(category)
+    self.category_organisations.any? {|v| v.category_id == category.id}
+  end
+  
+  def slug_candidates
+    [
+      :short_name,
+      :prolonged_name,
+      :name
+    ]
+  end
+  
+  def short_name
+    slug_words.first(3).join('-')
+  end
+  
+  def prolonged_name
+    "#{self.short_name}-#{slug_words[-2]}-#{slug_words[-1]}"
+  end
+  
+  def slug_words
+    "#{self.name}".delete("'").scan(/\b\w+\b/).map(&:downcase)
   end
 
 end

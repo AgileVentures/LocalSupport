@@ -1,12 +1,24 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 require 'securerandom'
+
+def devise_secret_key_not_set_in_production?
+  ENV['RAILS_ENV'] == 'production' && !ENV['DEVISE_SECRET_KEY']
+end
+
+NO_DEVISE_SECRET_KEY_MESSAGE = %q(
+Please set a DEVISE_SECRET_KEY in environment vars for your production server
+Consider using `SecureRandom.hex(64)` to ensure security
+)
+
 Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
   config.mailer_sender = "support@harrowcn.org.uk"
-   
+
+  raise(NO_DEVISE_SECRET_KEY_MESSAGE) if devise_secret_key_not_set_in_production?
+
   config.secret_key = ENV['DEVISE_SECRET_KEY'] || SecureRandom.hex(64)
   # Configure the class responsible to send e-mails.
   config.mailer = "CustomDeviseMailer"

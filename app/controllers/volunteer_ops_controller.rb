@@ -1,6 +1,14 @@
 class VolunteerOpsController < ApplicationController
   layout 'two_columns_with_map'
-  before_filter :authorize, :except => [:show, :index]
+  before_action :authorize, :except => [:search, :show, :index]
+
+  def search
+    @query = params[:q]
+    @volunteer_ops = VolunteerOp.order_by_most_recent.search_for_text(@query)
+    flash.now[:alert] = SEARCH_NOT_FOUND if @volunteer_ops.empty?
+    @markers = BuildMarkersWithInfoWindow.with(@volunteer_ops,self)
+    render template: 'volunteer_ops/index'
+  end
 
   def index
     @volunteer_ops = VolunteerOp.order_by_most_recent
@@ -11,8 +19,8 @@ class VolunteerOpsController < ApplicationController
   def show
     @volunteer_ops = VolunteerOp.where(id: params[:id])
     @volunteer_op = @volunteer_ops.first
-    organisations = Organisation.where(id: @volunteer_op.organisation_id)
-    @organisation = organisations.first!
+    @organisation = Organisation.friendly.find(@volunteer_op.organisation_id)
+    organisations = Organisation.where(id: @organisation.id)
     @editable = current_user.can_edit?(@organisation) if current_user
 
     @markers = BuildMarkersWithInfoWindow.with(@volunteer_ops,self)
@@ -23,7 +31,8 @@ class VolunteerOpsController < ApplicationController
   end
 
   def create
-    params[:volunteer_op][:organisation_id] = params[:organisation_id]
+    org = Organisation.friendly.find(params[:organisation_id])
+    params[:volunteer_op][:organisation_id] = org.id
     @volunteer_op = VolunteerOp.new(volunteer_op_params)
     if @volunteer_op.save
       redirect_to @volunteer_op, notice: 'Volunteer op was successfully created.'
@@ -80,7 +89,7 @@ class VolunteerOpsController < ApplicationController
 
   def org_owner?
     if params[:organisation_id].present? && current_user.present? && current_user.organisation.present?
-      current_user.organisation.id.to_s == params[:organisation_id]
+      current_user.organisation.friendly_id == params[:organisation_id]
     else
       current_user.organisation == VolunteerOp.find(params[:id]).organisation if current_user.present? && current_user.organisation.present?
     end

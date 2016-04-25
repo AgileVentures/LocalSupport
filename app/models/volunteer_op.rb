@@ -21,4 +21,17 @@ class VolunteerOp < ActiveRecord::Base
     return self if source == 'local'
     "https://do-it.org/opportunities/#{doit_op_id}"
   end
+
+  def self.search_for_text(text)
+     keyword = "%#{text}%"
+     where(contains_description?(keyword).or(contains_title?(keyword)))
+  end
+
+  def self.contains_description?(text)
+    arel_table[:description].matches(text)
+  end
+
+  def self.contains_title?(text)
+    arel_table[:title].matches(text)
+  end
 end

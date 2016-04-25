@@ -8,14 +8,14 @@ class ProposedOrganisationsController < BaseOrganisationsController
   end
 
   def update
-    proposed_org = ProposedOrganisation.find params[:id]
+    proposed_org = ProposedOrganisation.friendly.find params[:id]
     result = AcceptProposedOrganisation.new(proposed_org).run
     set_flash_for_accepting_proposed_org result
     redirect_to organisation_path(result.accepted_organisation) and return false
   end
 
   def destroy
-    proposed_org = ProposedOrganisation.find params[:id]
+    proposed_org = ProposedOrganisation.friendly.find params[:id]
     proposed_org.destroy
     redirect_to proposed_organisations_path
   end
@@ -24,23 +24,30 @@ class ProposedOrganisationsController < BaseOrganisationsController
     @proposed_organisation = ProposedOrganisation.new 
     @categories_start_with = Category.first_category_name_in_each_type
     @user_id = session[:user_id] || current_user.try(:id)
+    @proposed_organisation.setup_categories
   end
 
   def create
     make_user_into_org_admin_of_new_proposed_org
+    set_selected_categories
+    
+    @categories_start_with = Category.first_category_name_in_each_type
+    
     if @proposed_organisation.save
       session[:proposed_organisation_id] = @proposed_organisation.id
       send_email_to_superadmin_about_org_signup @proposed_organisation
       redirect_to @proposed_organisation, notice: 'Organisation is pending admin approval.'
     else
-      flash[:error] = @proposed_organisation.errors.full_messages.join('<br/>').html_safe
-      redirect_to new_proposed_organisation_path and return false
+      @proposed_organisation.setup_categories
+      @categories_start_with = Category.first_category_name_in_each_type
+      render :new
     end
+    
   end
 
   def show
-    proposed_organisations = ProposedOrganisation.where(id: params[:id])
-    @proposed_organisation = proposed_organisations.first!
+    @proposed_organisation = ProposedOrganisation.friendly.find(params[:id])
+    proposed_organisations = ProposedOrganisation.where(id: @proposed_organisation.id)
     #refactor this into model
     @proposer_email = @proposed_organisation.users.first.email if !@proposed_organisation.users.empty?
     @markers = build_map_markers(proposed_organisations)
@@ -89,6 +96,18 @@ class ProposedOrganisationsController < BaseOrganisationsController
       flash[:notice] = PERMISSION_DENIED
       redirect_to root_path
     end
+  end
+  
+  def set_selected_categories
+    @categories_selected = []
+    cat_org_attr = params[:proposed_organisation][:category_organisations_attributes]
+    add_selected(cat_org_attr) unless cat_org_attr.nil?
+  end
+  
+  def add_selected(attributes)
+    attributes
+      .reject {|_k,v| v[:_destroy] == '1'}
+      .each_value {|v| @categories_selected << v[:category_id].to_i}
   end
 
 end

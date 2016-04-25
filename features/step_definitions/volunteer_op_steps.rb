@@ -8,12 +8,20 @@ And(/^I submit a volunteer op "(.*?)", "(.*?)" on the "(.*?)" page$/) do |title,
   click_on 'Create a Volunteer Opportunity'
 end
 
-Given(/^I run the import doit service( with a radius of (\d+) miles)?$/)do |override, radius|
+Given(/^I run the import doit service( with a radius of (\d+\.?\d*) miles)?$/)do |override, radius|
   if override
     ImportDoItVolunteerOpportunities.with radius.to_f
   else
     ImportDoItVolunteerOpportunities.with
   end
+end
+
+Given(/^there is a doit volunteer op named "(.*?)"$/) do |title|
+  VolunteerOp.create(title: title,description: 'description content', source: 'doit', organisation_id: 1)
+end
+
+Then(/^the doit volunteer op named "(.*?)" should be deleted$/) do |title|
+  expect(VolunteerOp.find_by_title(title)).to eq nil
 end
 
 Then(/^there should be (\d+) doit volunteer ops stored$/) do |count|
