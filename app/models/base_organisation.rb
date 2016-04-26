@@ -74,8 +74,14 @@ class BaseOrganisation < ActiveRecord::Base
     "#{self.short_name}-#{slug_words[-2]}-#{slug_words[-1]}"
   end
   
+  def orged
+    "#{slug_words.join('-')}-org"
+  end
+  
   def slug_words
-    "#{self.name}".delete("'").scan(/\b\w+\b/).map(&:downcase)
+    not_wanted = ["the", "of", "for", "and", "in", "to"]
+    words = "#{self.name}".delete('\'','-').scan(/\b\w+\b/).map(&:downcase)
+    words.reject {|w| not_wanted.include?(w) }
   end
 
 end
