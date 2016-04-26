@@ -17,7 +17,7 @@ class RegistrationsController < Devise::RegistrationsController
     def after_inactive_sign_up_path_for(resource)
       if session[:pending_organisation_id]
         UserOrganisationClaimer.new(self, resource, resource).call(session[:pending_organisation_id])
-        return organisation_path resource.pending_organisation_id 
+        return organisation_path resource.pending_organisation 
       elsif session[:proposed_org]
         session[:user_id] =  resource.id
         return new_proposed_organisation_path

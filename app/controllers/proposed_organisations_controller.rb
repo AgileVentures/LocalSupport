@@ -8,14 +8,14 @@ class ProposedOrganisationsController < BaseOrganisationsController
   end
 
   def update
-    proposed_org = ProposedOrganisation.find params[:id]
+    proposed_org = ProposedOrganisation.friendly.find params[:id]
     result = AcceptProposedOrganisation.new(proposed_org).run
     set_flash_for_accepting_proposed_org result
     redirect_to organisation_path(result.accepted_organisation) and return false
   end
 
   def destroy
-    proposed_org = ProposedOrganisation.find params[:id]
+    proposed_org = ProposedOrganisation.friendly.find params[:id]
     proposed_org.destroy
     redirect_to proposed_organisations_path
   end
@@ -46,8 +46,8 @@ class ProposedOrganisationsController < BaseOrganisationsController
   end
 
   def show
-    proposed_organisations = ProposedOrganisation.where(id: params[:id])
-    @proposed_organisation = proposed_organisations.first!
+    @proposed_organisation = ProposedOrganisation.friendly.find(params[:id])
+    proposed_organisations = ProposedOrganisation.where(id: @proposed_organisation.id)
     #refactor this into model
     @proposer_email = @proposed_organisation.users.first.email if !@proposed_organisation.users.empty?
     @markers = build_map_markers(proposed_organisations)

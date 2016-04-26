@@ -17,7 +17,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
   config.mailer_sender = "support@harrowcn.org.uk"
 
-  raise(NO_DEVISE_SECRET_KEY_MESSAGE) if devise_secret_key_not_set_in_production?
+  # raise(NO_DEVISE_SECRET_KEY_MESSAGE) if devise_secret_key_not_set_in_production?
 
   config.secret_key = ENV['DEVISE_SECRET_KEY'] || SecureRandom.hex(64)
   # Configure the class responsible to send e-mails.
@@ -137,7 +137,7 @@ Devise.setup do |config|
   # their account can't be confirmed with the token any more.
   # Default is nil, meaning there is no restriction on how long a user can take
   # before confirming their account.
-   config.confirm_within = 3.days
+  config.confirm_within = 7.days
 
   # If true, requires any email changes to be confirmed (exactly the same way as
   # initial account confirmation) to be applied. Requires additional unconfirmed_email

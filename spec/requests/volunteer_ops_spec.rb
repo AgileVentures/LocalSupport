@@ -27,14 +27,14 @@ describe 'VolunteerOps', :type => :request, :helpers => :requests do
     it 'does not work for non-org-owners' do
       login(non_org_owner)
       expect {
-        post organisation_volunteer_ops_path(org_owner.organisation), params
+        post organisation_volunteer_ops_path(org_owner.organisation.id), params
       }.to change(VolunteerOp, :count).by(0)
     end
 
     it 'does work for superadmins' do
       login(superadmin)
       expect{
-        post organisation_volunteer_ops_path(org_owner.organisation), params
+        post organisation_volunteer_ops_path(org_owner.organisation.id), params
       }.to change(VolunteerOp, :count).by(1)
     end
   end
