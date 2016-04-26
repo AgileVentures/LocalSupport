@@ -62,6 +62,7 @@ class BaseOrganisation < ActiveRecord::Base
     [
       :short_name,
       :prolonged_name,
+      :orged,
       :name
     ]
   end

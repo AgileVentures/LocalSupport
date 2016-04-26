@@ -17,6 +17,14 @@ FactoryGirl.define do
       end
     end
   end
+  
+  factory :friendly_id_org, class: Organisation do
+    name 'The Most Noble Great Charity of London'
+    description 'Really big, rich and generous charity'
+    after(:build) do |org|
+      org.save!
+    end
+  end
 
   factory :proposed_organisation_edit do
 
