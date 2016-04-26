@@ -17,7 +17,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
   config.mailer_sender = "support@harrowcn.org.uk"
 
-  raise(NO_DEVISE_SECRET_KEY_MESSAGE) if devise_secret_key_not_set_in_production?
+  # raise(NO_DEVISE_SECRET_KEY_MESSAGE) if devise_secret_key_not_set_in_production?
 
   config.secret_key = ENV['DEVISE_SECRET_KEY'] || SecureRandom.hex(64)
   # Configure the class responsible to send e-mails.
