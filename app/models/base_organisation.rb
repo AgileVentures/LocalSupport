@@ -79,7 +79,7 @@ class BaseOrganisation < ActiveRecord::Base
   end
   
   def slug_words
-    not_wanted = ["the", "of", "for", "and", "in", "to"]
+    not_wanted = ['the', 'of', 'for', 'and', 'in', 'to']
     words = "#{self.name}".delete('\'','-').scan(/\b\w+\b/).map(&:downcase)
     words.reject {|w| not_wanted.include?(w) }
   end
