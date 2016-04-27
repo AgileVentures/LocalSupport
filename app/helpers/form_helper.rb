@@ -6,12 +6,4 @@ module FormHelper
     proposed_organisation_edit
   end
   
-  def persisted_or_checked?(cat_org, cat_selected)
-    cat_selected.blank? ? cat_org.persisted? : checked?(cat_selected,cat_org) 
-  end
-  
-  def checked?(cat_selected, cat_org)
-    cat_selected.any? {|v| v == cat_org.category.id}
-  end
-  
 end

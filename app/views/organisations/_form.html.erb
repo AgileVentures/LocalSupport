@@ -102,8 +102,7 @@
   </table>
   <div class="org-categories">
     <h4>Edit categories</h4>
-    <%= f.collection_check_boxes( :category_ids, Category.all, :id, :name)%>
-    <%# <%= render partial: 'organisations/category_type', locals: {f: f} %>
+    <%= render partial: 'organisations/category_type', locals: {f: f} %>
   </div>
     <br>
     <% if org.class == ProposedOrganisation %>

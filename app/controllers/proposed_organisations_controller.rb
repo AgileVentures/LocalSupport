@@ -22,24 +22,16 @@ class ProposedOrganisationsController < BaseOrganisationsController
 
   def new
     @proposed_organisation = ProposedOrganisation.new 
-    @categories_start_with = Category.first_category_name_in_each_type
     @user_id = session[:user_id] || current_user.try(:id)
-    @proposed_organisation.setup_categories
   end
 
   def create
     make_user_into_org_admin_of_new_proposed_org
-    set_selected_categories
-    
-    @categories_start_with = Category.first_category_name_in_each_type
-    
     if @proposed_organisation.save
       session[:proposed_organisation_id] = @proposed_organisation.id
       send_email_to_superadmin_about_org_signup @proposed_organisation
       redirect_to @proposed_organisation, notice: 'Organisation is pending admin approval.'
     else
-      @proposed_organisation.setup_categories
-      @categories_start_with = Category.first_category_name_in_each_type
       render :new
     end
     
@@ -97,19 +89,6 @@ class ProposedOrganisationsController < BaseOrganisationsController
       redirect_to root_path
     end
   end
-  
-  def set_selected_categories
-    @categories_selected = []
-    cat_org_attr = params[:proposed_organisation][:category_organisations_attributes]
-    add_selected(cat_org_attr) unless cat_org_attr.nil?
-  end
-  
-  def add_selected(attributes)
-    attributes
-      .reject {|_k,v| v[:_destroy] == '1'}
-      .each_value {|v| @categories_selected << v[:category_id].to_i}
-  end
-
 end
 
 class ProposedOrganisationParams
@@ -130,8 +109,7 @@ class ProposedOrganisationParams
       :non_profit,
       :works_in_harrow,
       :registered_in_harrow,
-      :category_ids => [],
-      category_organisations_attributes: [:_destroy, :category_id, :id]
+      category_ids: []
     )
   end
 end
