@@ -130,6 +130,7 @@ class ProposedOrganisationParams
       :non_profit,
       :works_in_harrow,
       :registered_in_harrow,
+      :category_ids => [],
       category_organisations_attributes: [:_destroy, :category_id, :id]
     )
   end
