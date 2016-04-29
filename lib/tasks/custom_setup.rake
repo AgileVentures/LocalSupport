@@ -1,13 +1,14 @@
 begin
   namespace :db do
-    task :setup => :environment do
+    desc 'Setup project data'
+    task :custom_setup => :environment do
 
       Rake::Task['db:migrate'].invoke
       Rake::Task['db:categories'].invoke
       Rake::Task['db:seed'].invoke
       Rake::Task['db:cat_org_import'].invoke
       Rake::Task['db:pages'].invoke
-      Rake::Task['db:import:emails[db/emails.csv]'].invoke
+      Rake::Task['db:import:emails'].invoke('db/emails.csv')
 
     end
   end
