@@ -5,6 +5,7 @@ begin
     namespace :import do
       desc 'Import email addresses from a named CSV file'
       task :emails, [:file] => :environment do |t, args|
+        puts 'Start emails import'
         # pass variables like so bundle exec rake db:import:emails[db/emails.csv]
         require File.expand_path("../../config/environment", File.dirname(__FILE__))
         #this is needed because rake tasks load classes lazily; from the command line, the task will
@@ -12,6 +13,7 @@ begin
         Rails.logger.tagged('IMPORT EMAILS') do
           Organisation.import_emails(args[:file],1000).split("\n").each { |msg| Rails.logger.info(msg) }
         end
+        puts 'Emails import finished'
       end
     end
   end
