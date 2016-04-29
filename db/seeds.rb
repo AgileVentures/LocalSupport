@@ -5,10 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-puts 'Start Organisations seed'
+Logger.new(STDOUT).info 'Start Organisations seed'
 Organisation.import_addresses 'db/data.csv', 1006
 
-puts 'Start Users seed'
+Logger.new(STDOUT).info 'Start Users seed'
 user = User.where(email: "superadmin@harrowcn.org.uk").first_or_initialize
 user.password = "asdf1234"
 user.password_confirmation = "asdf1234"
@@ -30,16 +30,16 @@ user.confirmed_at = DateTime.now
 user.siteadmin = true
 user.save!
 
-puts 'Start VolunteerOps seed'
+Logger.new(STDOUT).info 'Start VolunteerOps seed'
 3.times do |n|
   VolunteerOp.create(description: "This is a test#{n}", title: "Test#{n}", organisation_id: "#{1 + n}")
 end
 
-puts 'Start features seed'
+Logger.new(STDOUT).info 'Start features seed'
 Feature.activate('volunteer_ops_create')
 Feature.activate('volunteer_ops_list')
 Feature.activate('automated_propose_org')
 Feature.activate('search_input_bar_on_org_pages')
 Feature.activate('doit_volunteer_opportunities')
 
-puts 'Seed completed'
+Logger.new(STDOUT).info 'Seed completed'
