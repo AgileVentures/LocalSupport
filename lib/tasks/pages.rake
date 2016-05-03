@@ -1,4 +1,5 @@
 namespace :db do
+  desc 'Creates page records'
   task :pages => :environment do
     unless Page.find_by_permalink('about')
       Page.create!({

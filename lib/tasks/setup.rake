@@ -1,5 +1,6 @@
 begin
   namespace :db do
+    desc 'Setup project data'
     task :setup => :environment do
 
       Rake::Task['db:migrate'].invoke
