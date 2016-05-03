@@ -1,7 +1,7 @@
 Rake::Task['db:setup'].clear
 begin
   namespace :db do
-    desc 'Custom setup task'
+    desc 'Setup project data'
     task :setup => :environment do
 
       Rake::Task['db:migrate'].invoke
