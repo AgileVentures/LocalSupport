@@ -22,7 +22,7 @@ end
 
 class String
     
-    NOT_WANTED = ['the', 'of', 'for', 'and', 'in', 'to']
+    NOT_WANTED = %w(the of for and in to)
 
     def short_name
         slug_words.first(3).join('-')
