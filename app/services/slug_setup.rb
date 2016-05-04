@@ -3,15 +3,19 @@ class SlugSetup
     attr_reader :name 
 
     def self.setup(name)
-        new(name).send(:run)
+        new(name).send(:candidates)
     end
 
     def initialize(name)
         @name = name
     end
     
-    def run
-        [@name.method(:short_name), @name.method(:prolonged_name), @name.method(:orged), :name]
+    def candidates
+        [   @name.method(:short_name), 
+            @name.method(:prolonged_name), 
+            @name.method(:orged), 
+            :name
+        ]
     end
     
 end
