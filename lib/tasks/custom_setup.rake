@@ -1,3 +1,4 @@
+Rake::Task['db:setup'].clear
 begin
   namespace :db do
     desc 'Setup project data'
@@ -8,7 +9,7 @@ begin
       Rake::Task['db:seed'].invoke
       Rake::Task['db:cat_org_import'].invoke
       Rake::Task['db:pages'].invoke
-      Rake::Task['db:import:emails[db/emails.csv]'].invoke
+      Rake::Task['db:import:emails'].invoke('db/emails.csv')
 
     end
   end
