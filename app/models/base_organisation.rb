@@ -30,7 +30,7 @@ class BaseOrganisation < ActiveRecord::Base
 
   def gmaps4rails_marker_attrs
     if recently_updated_and_has_owner
-      ['https://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png',
+      ['marker.png',
         'data-id' => id,
        class: 'marker']
     else
