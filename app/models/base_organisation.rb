@@ -59,30 +59,9 @@ class BaseOrganisation < ActiveRecord::Base
   end
   
   def slug_candidates
-    [
-      :short_name,
-      :prolonged_name,
-      :orged,
-      :name
-    ]
-  end
-  
-  def short_name
-    slug_words.first(3).join('-')
-  end
-  
-  def prolonged_name
-    "#{self.short_name}-#{slug_words[-2]}-#{slug_words[-1]}"
-  end
-  
-  def orged
-    "#{slug_words.join('-')}-org"
-  end
-  
-  def slug_words
-    not_wanted = ['the', 'of', 'for', 'and', 'in', 'to']
-    words = "#{self.name}".delete('\'','-').scan(/\b\w+\b/).map(&:downcase)
-    words.reject {|w| not_wanted.include?(w) }
+    # It checks if self.name is nil, because otherwise it breaks -
+    # this happens during the name validation spec
+    SlugSetup.setup(self.name) unless self.name.nil?
   end
 
 end
