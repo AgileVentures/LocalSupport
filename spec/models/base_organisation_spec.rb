@@ -81,6 +81,11 @@ describe BaseOrganisation, type: :model do
       org = FactoryGirl.build(:friendly_id_org)
       expect(org.slug).to eq('the-most-noble-great-charity-of-london')
     end
+    
+    it 'should use special name for parochial churches' do
+      org = FactoryGirl.create(:parochial_org)
+      expect(org.slug).to eq('parochial-church-st-alban-north')
+    end
   
   end
 

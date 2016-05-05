@@ -25,6 +25,14 @@ FactoryGirl.define do
       org.save!
     end
   end
+  
+  factory :parochial_org, class: Organisation do
+    name 'The Parochial Church Council Of The Ecclesiastical Parish Of St. Alban, North Harrow'
+    description 'Church charity'
+    after(:build) do |org|
+      org.save!
+    end
+  end
 
   factory :proposed_organisation_edit do
 
