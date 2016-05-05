@@ -21,17 +21,13 @@ FactoryGirl.define do
   factory :friendly_id_org, class: Organisation do
     name 'The Most Noble Great Charity of London'
     description 'Really big, rich and generous charity'
-    after(:build) do |org|
-      org.save!
-    end
+    after(:build, &:save!)
   end
   
   factory :parochial_org, class: Organisation do
-    name 'The Parochial Church Council Of The Ecclesiastical Parish Of St. Alban, North Harrow'
+    name 'The Parochial Church Council Of The Ecclesiastical Parish Of St. Alban, North'
     description 'Church charity'
-    after(:build) do |org|
-      org.save!
-    end
+    after(:build, &:save!)
   end
 
   factory :proposed_organisation_edit do
