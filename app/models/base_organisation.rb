@@ -1,4 +1,7 @@
 class BaseOrganisation < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  
   acts_as_paranoid
   validates_url :website, prefferred_scheme: 'http://', message: 'Website is not a valid URL',
     if: proc{|org| org.website.present?}

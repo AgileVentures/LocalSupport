@@ -27,8 +27,8 @@ class OrganisationsController < BaseOrganisationsController
   # GET /organisations/1
   # GET /organisations/1.json
   def show
-    organisations = Organisation.where(id: params[:id])
-    @organisation = organisations.first!
+    @organisation = Organisation.friendly.find(params[:id])
+    organisations = Organisation.where(id: @organisation.id)
     @pending_org_admin = current_user.pending_org_admin? @organisation if current_user
     @editable = current_user.can_edit?(@organisation) if current_user
     @deletable = current_user.can_delete?(@organisation) if current_user
@@ -49,8 +49,8 @@ class OrganisationsController < BaseOrganisationsController
   
   # GET /organisations/1/edit
   def edit
-    organisations = Organisation.where(id: params[:id])
-    @organisation = organisations.first!
+    @organisation = Organisation.friendly.find(params[:id])
+    organisations = Organisation.where(id: @organisation.id)
     @markers = build_map_markers(organisations)
     @categories_start_with = Category.first_category_name_in_each_type
     return false unless user_can_edit? @organisation
@@ -87,7 +87,7 @@ class OrganisationsController < BaseOrganisationsController
   # PUT /organisations/1
   # PUT /organisations/1.json
   def update
-    @organisation = Organisation.find(params[:id])
+    @organisation = Organisation.friendly.find(params[:id])
     params[:organisation][:superadmin_email_to_add] = params[:organisation_superadmin_email_to_add] if params[:organisation]
     update_params = OrganisationParams.build params
     return false unless user_can_edit? @organisation
@@ -106,7 +106,7 @@ class OrganisationsController < BaseOrganisationsController
       flash[:notice] = PERMISSION_DENIED
       redirect_to organisation_path(params[:id]) and return false
     end
-    @organisation = Organisation.find(params[:id])
+    @organisation = Organisation.friendly.find(params[:id])
     @organisation.destroy
     flash[:success] = "Deleted #{@organisation.name}"
 
