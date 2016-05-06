@@ -34,6 +34,7 @@ group :development do
   #gem 'debugger', '~> 1.6.8'
   gem "letter_opener"
   gem 'railroady'
+  gem 'quiet_assets'
 end
 
 group :test do
@@ -48,7 +49,6 @@ group :test do
   gem 'selenium-client'
   gem 'coveralls', require: false
   gem 'shoulda'
-  gem 'rspec-activemodel-mocks'
   gem 'vcr'
   gem 'puffing-billy'
   gem 'poltergeist'
