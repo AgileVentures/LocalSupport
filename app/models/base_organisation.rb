@@ -34,7 +34,7 @@ class BaseOrganisation < ActiveRecord::Base
         'data-id' => id,
        class: 'marker']
     else
-      ['https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png',
+      ['measle.png',
         'data-id' => id,
         class: 'measle']
     end
