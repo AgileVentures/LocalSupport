@@ -32,7 +32,7 @@ describe Organisation, :type => :model do
     end
     context 'no user' do
       it 'returns small icon when no associated user' do
-        expect(build_org_with_computed_fields_and_updated_at(@org1).gmaps4rails_marker_attrs).to eq(["https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png",
+        expect(build_org_with_computed_fields_and_updated_at(@org1).gmaps4rails_marker_attrs).to eq(["measle.png",
           {"data-id"=>@org1.id, :class=>"measle"}])
       end
     end
@@ -45,7 +45,7 @@ describe Organisation, :type => :model do
         @org1.save!
       end
       it 'returns large icon when there is an associated user' do
-        expect(build_org_with_computed_fields_and_updated_at(@org1).gmaps4rails_marker_attrs).to eq( ["https://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png",
+        expect(build_org_with_computed_fields_and_updated_at(@org1).gmaps4rails_marker_attrs).to eq( ["marker.png",
           {"data-id"=>@org1.id,:class=>"marker"}])
       end
 
@@ -59,7 +59,7 @@ describe Organisation, :type => :model do
               @org1, past_time
             ).gmaps4rails_marker_attrs
           ).to eq([
-            "https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png",
+            "measle.png",
             {"data-id"=>@org1.id, :class=>"measle"}
           ])
         end
@@ -67,7 +67,7 @@ describe Organisation, :type => :model do
       [ 2, 100, 200, 364].each do |days|
         it "returns large icon when update is only #{days} days old" do
           past_time = Time.at(Time.now - days.day)
-          expect(build_org_with_computed_fields_and_updated_at(@org1, past_time).gmaps4rails_marker_attrs).to eq( ["https://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png",
+          expect(build_org_with_computed_fields_and_updated_at(@org1, past_time).gmaps4rails_marker_attrs).to eq( ["marker.png",
             {"data-id"=>@org1.id, :class=>"marker"} ])
         end
       end
