@@ -17,14 +17,25 @@
     <%= f.label :description , :style => "margin-top: 16px;" %>
     <%= f.text_area :description, :class => "wide_form" %>
   </div>
-  <div class="field">
-    <%= check_box_tag 'has_diff_loc', 1, false %>
-    <%= label_tag 'has_diff_loc', 'Volunteer opportunity on different location?' %>
-  </div>
-  <div class="field" id="volunteer_op_diff" style="display:none;">
-    <%= f.label :volunteer_op_loc , 'Volunteer opportunity address', :style => "margin-top: 16px;" %>
-    <%= f.text_field :volunteer_op_loc, :class => "wide_form" %>    
-  </div>
+  <% if has_diff_volunteer_op_location? @volunteer_op %>
+    <div class="field">
+      <%= check_box_tag 'has_diff_loc', 1, true, :style => "float: left;" %>
+      <%= label_tag 'has_diff_loc', 'Volunteer opportunity on different location?', :style => "margin-top: 16px; margin-left: 20px;" %>
+    </div>
+    <div class="field" id="volunteer_op_diff" style="display:block;">
+      <%= f.label :volunteer_op_loc , 'Volunteer opportunity address', :style => "margin-top: 16px;" %>
+      <%= f.text_field :volunteer_op_loc, :class => "wide_form" %>    
+    </div>
+    <% else %>
+    <div class="field">
+      <%= check_box_tag 'has_diff_loc', 1, false, :style => "float: left;" %>
+      <%= label_tag 'has_diff_loc', 'Volunteer opportunity on different location?', :style => "margin-top: 16px; margin-left: 20px;" %>
+    </div>
+    <div class="field" id="volunteer_op_diff" style="display:none;">
+      <%= f.label :volunteer_op_loc , 'Volunteer opportunity address', :style => "margin-top: 16px;" %>
+      <%= f.text_field :volunteer_op_loc, :class => "wide_form" %>    
+    </div>
+  <% end %>
   <div class="actions" style="margin-top: 16px;">
     <%= f.submit button_text(@volunteer_op), class: 'btn btn-primary' %>
   </div>

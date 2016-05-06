@@ -6,7 +6,12 @@
   <p>
     <%= simple_format auto_link @volunteer_op.description %>
   </p>
-
+  <% if has_diff_volunteer_op_location? @volunteer_op %>
+    <p>
+      <b>Volunteer opportunity location:</b>
+      <%= @volunteer_op.volunteer_op_loc %>
+    </p>
+  <% end %>
   <p>
     <b>Organisation:</b>
     <%= link_to @volunteer_op.organisation.name, organisation_path(@volunteer_op.organisation) %>

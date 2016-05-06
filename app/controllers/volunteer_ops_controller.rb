@@ -72,6 +72,7 @@ class VolunteerOpsController < ApplicationController
       :description,
       :title,
       :organisation_id,
+      :volunteer_op_loc
     )
   end
 
