@@ -3,10 +3,16 @@ class VolunteerOp < ActiveRecord::Base
   validates :title, :description, presence: true
   validates :organisation_id, presence: true, if: "source == 'local'"
   belongs_to :organisation
+  
+  geocoded_by :street_address, :if => :volunteer_op_loc
+  after_validation :geocode   
 
   scope :order_by_most_recent, -> { order('updated_at DESC') }
   scope :local_only, -> { where(source: 'local') }
 
+  def street_address
+    "#{self.volunteer_op_loc}"
+  end
   def organisation_name
     return organisation.name if source == 'local'
     doit_org_name
