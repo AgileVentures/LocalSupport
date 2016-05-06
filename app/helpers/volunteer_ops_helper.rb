@@ -4,6 +4,6 @@ module VolunteerOpsHelper
   end
   
   def has_diff_volunteer_op_location? object
-    !object.volunteer_op_loc.empty?
+    !object.volunteer_op_loc.blank?
   end
 end

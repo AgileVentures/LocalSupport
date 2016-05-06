@@ -8,6 +8,7 @@ describe "volunteer_ops/show", :type => :view do
   let(:op) { double :volunteer_op,
     :title => "Honorary treasurer",
     :description => "Great opportunity to build your portfolio!",
+    :volunteer_op_loc => "2B BALFOUR ROAD",
     :organisation => org,
     :id => 3
   }
@@ -19,12 +20,14 @@ describe "volunteer_ops/show", :type => :view do
     render
     expect(rendered).to have_content op.title
     expect(rendered).to have_content op.description
+    expect(rendered).to have_content op.volunteer_op_loc
     expect(rendered).to have_content op.organisation.name
   end
 
   it "gets various model attributes" do
     expect(@volunteer_op).to receive :title
     expect(@volunteer_op).to receive :description
+    expect(@volunteer_op).to receive :volunteer_op_loc
     expect(@volunteer_op).to receive(:organisation) {org}
     expect(org).to receive(:name)
     render
