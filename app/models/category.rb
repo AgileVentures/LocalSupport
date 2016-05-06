@@ -35,11 +35,6 @@ class Category < ActiveRecord::Base
     end
   end
 
-  def self.first_category_name_in_each_type
-    {what_they_do: first_category_name_in_what_they_do, who_they_help: first_category_name_in_who_they_help,
-     how_they_help: first_category_name_in_how_they_help}
-  end
-
   class CategoryType
     attr_reader :sym
 
@@ -78,21 +73,4 @@ class Category < ActiveRecord::Base
     end
   end
 
-
-  private
-    def self.choose_first_in_range lower, upper
-      category = self.all.sort.select{|cat| (cat.charity_commission_id < upper)  & (cat.charity_commission_id > lower)}.first
-      category.name if category
-    end
-    def self.first_category_name_in_what_they_do
-      choose_first_in_range(0,200)
-    end
-
-    def self.first_category_name_in_who_they_help
-      choose_first_in_range(199,300)
-    end
-
-    def self.first_category_name_in_how_they_help
-      choose_first_in_range(299,400)
-    end
 end

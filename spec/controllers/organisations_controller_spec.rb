@@ -508,8 +508,7 @@ describe OrganisationsController, :type => :controller do
                                 publish_address: true, 
                                 publish_phone: true, 
                                 publish_email: true, 
-                                category_organisations_attributes: {
-                                  '1' => {'_destroy' => '1', 'id' => '1', 'category_id' => '5'}}
+                                category_ids: ['1','2']
                             }}
       params = ActionController::Parameters.new.merge(organisation_params)
       permitted_params = OrganisationsController::OrganisationParams.build(params)
@@ -523,8 +522,7 @@ describe OrganisationsController, :type => :controller do
                                       publish_address: true, 
                                       publish_phone: true, 
                                       publish_email: true,
-                                      category_organisations_attributes: {
-                                        '1' => {'_destroy' => '1', 'id' => '1', 'category_id' => '5'}}
+                                      category_ids: ['1','2']
                                       }.with_indifferent_access)
       #attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info, :publish_address, :publish_phone, :publish_email, :category_organisations_attributes
     end
