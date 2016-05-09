@@ -21,7 +21,7 @@
     <%= f.check_box :different_address, { :style => "float: left;" } %>
     <%= label_tag 'volunteer_op_different_address', 'Volunteer opportunity on different location?', :style => "margin-top: 16px; margin-left: 20px;" %>
   </div>
-  <div id="volunteer_op_diff" style="<%= has_diff_location( @volunteer_op ) ? "display:block;" : "display:none;" %>">
+  <div id="volunteer_op_diff" style="<%= has_diff_location?( @volunteer_op ) ? "display:block;" : "display:none;" %>">
     <div class="field">
       <%= f.label :address , 'Address', :style => "margin-top: 16px;" %>
       <%= f.text_field :address, :class => "wide_form" %>    

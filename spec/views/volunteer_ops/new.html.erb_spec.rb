@@ -29,7 +29,7 @@ describe "volunteer_ops/new", :type => :view do
 
   it "should have a Create Volunteer Opportunity button" do
     render
-    expect(rendered).to have_css 'input[value="Create a Volunteer Opportunity"]'
+    expect(rendered).to have_css 'input[value="Create Volunteer Opportunity"]'
   end
 
   it "only has 1 text area and 1 text input" do

@@ -4,26 +4,15 @@ class VolunteerOp < ActiveRecord::Base
   validates :organisation_id, presence: true, if: "source == 'local'"
   belongs_to :organisation
   
-  geocoded_by :full_address, :if => :has_different_address?
+  geocoded_by :full_address, if: :has_different_address?
   after_validation :geocode   
-  after_validation :clean_lat_lon
+  after_validation :clear_lat_lng
   
   scope :order_by_most_recent, -> { order('updated_at DESC') }
   scope :local_only, -> { where(source: 'local') }
   
   def full_address
     "#{self.address}, #{self.postcode}"
-  end
-  
-  def has_different_address?
-    self.different_address == "1"
-  end
-  
-  def clean_lat_lon
-    if self.different_address == "0"
-      self.longitude = nil
-      self.latitude = nil
-    end
   end
   
   def organisation_name
@@ -52,5 +41,18 @@ class VolunteerOp < ActiveRecord::Base
 
   def self.contains_title?(text)
     arel_table[:title].matches(text)
+  end
+  
+  private
+  
+  def has_different_address?
+    self.different_address == "1"
+  end
+  
+  def clear_lat_lng
+    if self.different_address == "0"
+      self.longitude = nil
+      self.latitude = nil
+    end
   end
 end
