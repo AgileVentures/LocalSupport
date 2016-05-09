@@ -48,7 +48,7 @@ class BaseOrganisation < ActiveRecord::Base
   def slug_candidates
     # It checks if self.name is nil, because otherwise it breaks -
     # this happens during the name validation spec
-    SlugSetup.setup(self.name) unless self.name.nil?
+    SetupSlug.run(self.name) unless self.name.nil?
   end
   
 end
