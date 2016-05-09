@@ -9,7 +9,7 @@
   <% if has_diff_volunteer_op_location? @volunteer_op %>
     <p>
       <b>Volunteer opportunity location:</b>
-      <%= @volunteer_op.volunteer_op_loc %>
+      <%= "#{ @volunteer_op.address }, #{ @volunteer_op.postcode }" %>
     </p>
   <% end %>
   <p>
