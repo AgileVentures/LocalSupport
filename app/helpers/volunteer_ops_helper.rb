@@ -3,7 +3,7 @@ module VolunteerOpsHelper
     object.new_record? ? 'Create Volunteer Opportunity' : 'Update Volunteer Opportunity'
   end
   
-  def has_diff_volunteer_op_location? object
-    !object.different_address
+  def has_diff_location object
+    object.different_address == "1"
   end
 end
