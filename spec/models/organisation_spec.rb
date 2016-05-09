@@ -32,25 +32,25 @@ describe Organisation, :type => :model do
     end
     context 'no user' do
       it 'returns small icon when no associated user' do
-        expect(build_org_with_computed_fields_and_updated_at(@org1).gmaps4rails_marker_attrs).to eq(["measle.png",
-          {"data-id"=>@org1.id, :class=>"measle"}])
+        expect(build_org_with_computed_fields_and_updated_at(@org1).gmaps4rails_marker_attrs).to eq(['measle.png',
+          {'data-id'=>@org1.id, :class=>'measle'}])
       end
     end
 
     context 'has user' do
       before(:each) do
-        usr = FactoryGirl.create(:user, :email => "orgsuperadmin@org.org")
+        usr = FactoryGirl.create(:user, :email => 'orgsuperadmin@org.org')
         usr.confirm!
         @org1.users << [usr]
         @org1.save!
       end
       it 'returns large icon when there is an associated user' do
-        expect(build_org_with_computed_fields_and_updated_at(@org1).gmaps4rails_marker_attrs).to eq( ["marker.png",
-          {"data-id"=>@org1.id,:class=>"marker"}])
+        expect(build_org_with_computed_fields_and_updated_at(@org1).gmaps4rails_marker_attrs).to eq( ['marker.png',
+          {'data-id'=>@org1.id,:class=>'marker'}])
       end
 
       [ 365, 366, 500 ].each do |days|
-        it "returns small icon when update is #{days} days old" do
+        it 'returns small icon when update is #{days} days old' do
           # adds generous 5 second pad for query to run
           past_time = days == 365 ? Time.current.advance(years: -1) : Time.current.advance(days: -days)
           past_time = past_time.advance(seconds: -5)
@@ -59,36 +59,36 @@ describe Organisation, :type => :model do
               @org1, past_time
             ).gmaps4rails_marker_attrs
           ).to eq([
-            "measle.png",
-            {"data-id"=>@org1.id, :class=>"measle"}
+            'measle.png',
+            {'data-id'=>@org1.id, :class=>'measle'}
           ])
         end
       end
       [ 2, 100, 200, 364].each do |days|
         it "returns large icon when update is only #{days} days old" do
           past_time = Time.at(Time.now - days.day)
-          expect(build_org_with_computed_fields_and_updated_at(@org1, past_time).gmaps4rails_marker_attrs).to eq( ["marker.png",
-            {"data-id"=>@org1.id, :class=>"marker"} ])
+          expect(build_org_with_computed_fields_and_updated_at(@org1, past_time).gmaps4rails_marker_attrs).to eq( ['marker.png',
+            {'data-id'=>@org1.id, :class=>'marker'} ])
         end
       end
     end
   end
   context 'scopes for orphan orgs' do
     before(:each) do
-      @user = FactoryGirl.create(:user, :email => "hello@hello.com")
+      @user = FactoryGirl.create(:user, :email => 'hello@hello.com')
       @user.confirm!
     end
 
     it 'should allow us to grab orgs with emails' do
       expect(Organisation.not_null_email).to eq []
-      @org1.email = "hello@hello.com"
+      @org1.email = 'hello@hello.com'
       @org1.save
       expect(Organisation.not_null_email).to eq [@org1]
     end
 
     it 'should allow us to grab orgs with no superadmin' do
       expect(Organisation.null_users.sort).to eq [@org1, @org2, @org3].sort
-      @org1.email = "hello@hello.com"
+      @org1.email = 'hello@hello.com'
       @org1.save
       @user.confirm!
       expect(@org1.users).to eq [@user]
@@ -96,16 +96,16 @@ describe Organisation, :type => :model do
     end
 
     it 'should allow us to exclude previously invited users' do
-      @org1.email = "hello@hello.com"
+      @org1.email = 'hello@hello.com'
       @org1.save
       expect(Organisation.without_matching_user_emails).not_to include @org1
     end
 
     # Should we have more tests to cover more possible combinations?
     it 'should allow us to combine scopes' do
-      @org1.email = "hello@hello.com"
+      @org1.email = 'hello@hello.com'
       @org1.save
-      @org3.email = "hello_again@you_again.com"
+      @org3.email = 'hello_again@you_again.com'
       @org3.save
       expect(Organisation.null_users.not_null_email.sort).to eq [@org1, @org3]
       expect(Organisation.null_users.not_null_email.without_matching_user_emails.sort).to eq [@org3]
@@ -140,8 +140,8 @@ describe Organisation, :type => :model do
       }.not_to change(ActionMailer::Base.deliveries, :length)
     end
     it 'does not update other attributes when email is invalid' do
-      @org1.update_attributes_with_superadmin({:superadmin_email_to_add => 'user', :name => "Random name"})
-      expect(@org1.name).not_to eq "Random name"
+      @org1.update_attributes_with_superadmin({:superadmin_email_to_add => 'user', :name => 'Random name'})
+      expect(@org1.name).not_to eq 'Random name'
     end
 
     it 'handles a non-existent email by inviting user' do
@@ -170,7 +170,7 @@ describe Organisation, :type => :model do
     end
     it 'uses org admin mailer to email existent user when upgraded to org admin' do
       usr = FactoryGirl.create(:user, :email => 'user@example.org')
-      mockMessage = double("message")
+      mockMessage = double('message')
       expect(mockMessage).to receive :deliver_now
       expect(OrgAdminMailer).to receive_message_chain(:new_org_admin).with(@org1, [usr.email]).and_return(mockMessage)
       @org1.update_attributes_with_superadmin({:superadmin_email_to_add => usr.email})
@@ -202,7 +202,7 @@ describe Organisation, :type => :model do
   end
 
   it 'find all orgs that have keyword anywhere in their name or description' do
-    expect(Organisation.search_by_keyword("elderly")).to eq([@org2, @org3])
+    expect(Organisation.search_by_keyword('elderly')).to eq([@org2, @org3])
   end
 
   it 'has users' do
@@ -210,7 +210,7 @@ describe Organisation, :type => :model do
   end
 
   it 'can humanize with all first capitals' do
-    expect("HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW".humanized_all_first_capitals).to eq("Harrow Baptist Church, College Road, Harrow")
+    expect('HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW'.humanized_all_first_capitals).to eq('Harrow Baptist Church, College Road, Harrow')
   end
 
   describe 'Creating of Organisations from CSV file' do
