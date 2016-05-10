@@ -32,7 +32,7 @@ describe ApplicationController, :type => :controller, :helpers => :controllers d
 
     allow(controller).to receive_messages :request_verb_is_get? => true
     controller.store_location
-    expect(session[:previous_url]).to eq request.path
+    expect(session[:previous_url]).to eq request.fullpath
   end
 
   describe '#after_sign_in_path_for' do
