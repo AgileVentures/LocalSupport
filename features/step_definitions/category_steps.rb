@@ -4,18 +4,18 @@ end
 
 Then (/the category named (.*) should be (checked|unchecked)$/) do |category, status|
   assertion = (status == 'checked') ? :should : :should_not
-  page.find(:xpath, "//label[text()[contains(.,'#{category}')]]/input[2]").send(assertion, be_checked)
+  page.has_checked_field?("#{category}").send(assertion, be_truthy)
 end
 
 Then(/^I check the category "(.*?)"$/) do |category_name|
   within '.org-categories' do
-    find(:xpath,"//label[text()[contains(.,'#{category_name}')]]/input[2]").set(true)
+    check(category_name)
   end
 end
 
 Then(/^I uncheck the category "(.*?)"$/) do |category_name|
   within '.org-categories' do
-    find(:xpath,"//label[text()[contains(.,'#{category_name}')]]/input[2]").set(false)
+    uncheck(category_name)
   end
 end
 

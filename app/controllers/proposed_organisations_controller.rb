@@ -8,21 +8,20 @@ class ProposedOrganisationsController < BaseOrganisationsController
   end
 
   def update
-    proposed_org = ProposedOrganisation.find params[:id]
+    proposed_org = ProposedOrganisation.friendly.find params[:id]
     result = AcceptProposedOrganisation.new(proposed_org).run
     set_flash_for_accepting_proposed_org result
     redirect_to organisation_path(result.accepted_organisation) and return false
   end
 
   def destroy
-    proposed_org = ProposedOrganisation.find params[:id]
+    proposed_org = ProposedOrganisation.friendly.find params[:id]
     proposed_org.destroy
     redirect_to proposed_organisations_path
   end
 
   def new
     @proposed_organisation = ProposedOrganisation.new 
-    @categories_start_with = Category.first_category_name_in_each_type
     @user_id = session[:user_id] || current_user.try(:id)
   end
 
@@ -33,14 +32,14 @@ class ProposedOrganisationsController < BaseOrganisationsController
       send_email_to_superadmin_about_org_signup @proposed_organisation
       redirect_to @proposed_organisation, notice: 'Organisation is pending admin approval.'
     else
-      flash[:error] = @proposed_organisation.errors.full_messages.join('<br/>').html_safe
-      redirect_to new_proposed_organisation_path and return false
+      render :new
     end
+    
   end
 
   def show
-    proposed_organisations = ProposedOrganisation.where(id: params[:id])
-    @proposed_organisation = proposed_organisations.first!
+    @proposed_organisation = ProposedOrganisation.friendly.find(params[:id])
+    proposed_organisations = ProposedOrganisation.where(id: @proposed_organisation.id)
     #refactor this into model
     @proposer_email = @proposed_organisation.users.first.email if !@proposed_organisation.users.empty?
     @markers = build_map_markers(proposed_organisations)
@@ -90,7 +89,6 @@ class ProposedOrganisationsController < BaseOrganisationsController
       redirect_to root_path
     end
   end
-
 end
 
 class ProposedOrganisationParams
@@ -111,7 +109,7 @@ class ProposedOrganisationParams
       :non_profit,
       :works_in_harrow,
       :registered_in_harrow,
-      category_organisations_attributes: [:_destroy, :category_id, :id]
+      category_ids: []
     )
   end
 end

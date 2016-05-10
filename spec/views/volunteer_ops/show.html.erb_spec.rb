@@ -35,7 +35,7 @@ describe "volunteer_ops/show", :type => :view do
     expect(rendered).
       to have_xpath(
                     "//a[contains(.,'#{op.organisation.name}')" +
-                    " and @href=\"#{organisation_path(op.organisation.id)}\"]")
+                    " and @href=\"#{organisation_path(op.organisation)}\"]")
   end
   context 'with the right to edit' do
     it 'renders an edit button' do

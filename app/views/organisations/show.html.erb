@@ -9,19 +9,19 @@
 <div id="org-cat-buttons" class="row">
   <div class="position-bottom span6">
     <% if @editable %>
-        <%= link_to("Edit", edit_organisation_path(@organisation.id), {:class => 'btn btn-primary'}) %>
+        <%= link_to("Edit", edit_organisation_path(@organisation), {:class => 'btn btn-primary'}) %>
     <% end %>
     <% if @can_propose_edits %>
-        <%= link_to("Propose an edit", new_organisation_proposed_organisation_edit_path(@organisation.id) , {:class => 'btn btn-primary'})%>
+        <%= link_to("Propose an edit", new_organisation_proposed_organisation_edit_path(@organisation) , {:class => 'btn btn-primary'})%>
     <% end %>
     <% if @deletable %>
-        <%= link_to("Delete", organisation_path(@organisation.id), {method: :delete, :class => 'btn btn-danger'}) %>
+        <%= link_to("Delete", organisation_path(@organisation), {method: :delete, :class => 'btn btn-danger'}) %>
     <% end %>
     <% if @can_create_volunteer_op and feature_active?(:volunteer_ops_create) %>
-        <%= link_to("Create a Volunteer Opportunity", new_organisation_volunteer_op_path(organisation_id: @organisation.id), {:class => 'btn btn-primary'}) %>
+        <%= link_to("Create a Volunteer Opportunity", new_organisation_volunteer_op_path(organisation_id: @organisation), {:class => 'btn btn-primary'}) %>
     <% end %>
     <% if current_user %>
-        <%= link_to "This is my organisation", user_path(pending_organisation_id: @organisation.id, id: current_user.id), {method: :put, class: 'btn btn-primary'} if @grabbable %>
+        <%= link_to "This is my organisation", user_path(pending_organisation_id: @organisation, id: current_user.id), {method: :put, class: 'btn btn-primary'} if @grabbable %>
     <% else %>
         <%= link_to "This is my organisation", new_user_session_path, {method: :put, 'data-signed_in' => current_user.present?, id: 'TIMO', class: 'btn btn-primary'} if @grabbable %>
     <% end %>

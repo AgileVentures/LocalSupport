@@ -1,0 +1,374 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.do-it.org/v1/opportunities?lat=51.5978&lng=-0.3370&miles=0.5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 14 Apr 2016 13:57:51 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Content-Length:
+      - '6359'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data": {"items": [{"address_1": "43 Claremont Road,", "city": "Wealdstone",
+        "created": "2014-10-27T09:50:38.557408+00:00", "description": "Assistant Leaders
+        are responsible, with Leaders, helpers and members, for planning and running
+        the weekly activities for 8-10 year olds!\n\nIt is a fun and rewarding role,
+        allowing you to watch the young people enjoy the activities you organize,
+        as well as being involved in their development as they grow in confidence
+        and ability. \n\nThe Scout Association provides a wide range of books and
+        electronic resources to aid volunteers plan their activities together with
+        an award winning training scheme and on-line programme resources", "for_recruiter":
+        {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00", "email":
+        "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+        "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.125x125.jpg",
+        "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.109x109.jpg",
+        "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.76x76.jpg",
+        "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.50x50.jpg",
+        "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater
+        London Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+        "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "d1f8f924-db77-48c9-82a9-7433bbc9a048",
+        "interests": [{"children": [], "created": "2014-10-26T17:24:26.246077+00:00",
+        "id": "c1a66cf8-a685-4300-8f69-6d47a0bd93e0", "name": "Recreation", "parent_id":
+        "cd7d0590-2800-45b4-8084-b475562e73f4", "slug": "recreation", "updated": "2014-10-26T17:24:26.246096+00:00"},
+        {"children": [], "created": "2014-10-26T17:24:26.278190+00:00", "id": "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+        "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+        "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children": [],
+        "created": "2014-10-26T17:24:26.271205+00:00", "id": "8678f792-d24e-4810-99d5-c6e6ba4196a4",
+        "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+        "families", "updated": "2014-10-26T17:24:26.271224+00:00"}, {"children": [],
+        "created": "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+        "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
+        "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
+        false, "lat": 51.5983, "lng": -0.335993, "location": null, "location_id":
+        null, "location_name": null, "location_type": "SL", "micro_availability":
+        [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
+        "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+        "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.125x125.jpg",
+        "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.109x109.jpg",
+        "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.76x76.jpg",
+        "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.50x50.jpg",
+        "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater
+        London Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+        "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+        "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/IMG_0085_k7cxdpYbjaec74qAFkkh6n.616x318.jpg",
+        "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/IMG_0085_k7cxdpYbjaec74qAFkkh6n.308x159.jpg",
+        "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/IMG_0085_k7cxdpYbjaec74qAFkkh6n.243x124.jpg",
+        "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/IMG_0085_k7cxdpYbjaec74qAFkkh6n.170x87.jpg",
+        "height": 87, "width": 170}], "postcode": "HA3 7AU", "rating": "0.00", "specific_end_date":
+        null, "specific_start_date": "2016-01-25T09:25:58.431000+00:00", "status":
+        "live", "title": "Cub Scout Leader (volunteering with 8-10 year olds) 27th
+        Harrow", "updated": "2016-01-25T09:30:07.758522+00:00", "working_from_home":
+        false}, {"address_1": "43 Claremont Road,", "city": "Wealdstone", "created":
+        "2014-10-27T09:51:53.864127+00:00", "description": "By Volunteering to work
+        with scouts, you will be responsible, along with the other leaders, helpers
+        and members for planning and running the weekly activities for 10 - 14 year
+        olds! \n\nIt is a fun and rewarding role, allowing you to watch the young
+        people enjoy the activities you organise, as well being involved in their
+        development as they grow in confidence and ability. \n\nThe Scout Association
+        provides a wide range of books and electronic resources to aid volunteers
+        plan their activities together with an award winning training scheme and on-line
+        programme resources", "for_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
+        "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+        "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.125x125.jpg",
+        "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.109x109.jpg",
+        "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.76x76.jpg",
+        "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.50x50.jpg",
+        "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater
+        London Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+        "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "79ae1022-9059-40c0-82dd-3f5b15dd796a",
+        "interests": [{"children": [], "created": "2014-10-26T17:24:26.246077+00:00",
+        "id": "c1a66cf8-a685-4300-8f69-6d47a0bd93e0", "name": "Recreation", "parent_id":
+        "cd7d0590-2800-45b4-8084-b475562e73f4", "slug": "recreation", "updated": "2014-10-26T17:24:26.246096+00:00"},
+        {"children": [], "created": "2014-10-26T17:24:26.278190+00:00", "id": "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+        "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+        "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children": [],
+        "created": "2014-10-26T17:24:26.271205+00:00", "id": "8678f792-d24e-4810-99d5-c6e6ba4196a4",
+        "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+        "families", "updated": "2014-10-26T17:24:26.271224+00:00"}, {"children": [],
+        "created": "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+        "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
+        "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
+        false, "lat": 51.5983, "lng": -0.335993, "location": null, "location_id":
+        null, "location_name": null, "location_type": "SL", "micro_availability":
+        [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
+        "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+        "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.125x125.jpg",
+        "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.109x109.jpg",
+        "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.76x76.jpg",
+        "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.50x50.jpg",
+        "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater
+        London Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+        "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+        "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/X0A0667_6ptyC4xw2nhqJzudZRwLhS.616x318.jpg",
+        "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/X0A0667_6ptyC4xw2nhqJzudZRwLhS.308x159.jpg",
+        "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/X0A0667_6ptyC4xw2nhqJzudZRwLhS.243x124.jpg",
+        "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/X0A0667_6ptyC4xw2nhqJzudZRwLhS.170x87.jpg",
+        "height": 87, "width": 170}], "postcode": "HA3 7AU", "rating": "0.00", "specific_end_date":
+        null, "specific_start_date": "2016-01-29T16:05:04.445000+00:00", "status":
+        "live", "title": "Scout Leader (volunteering with 10-14 year olds) 27th Harrow",
+        "updated": "2016-01-29T15:50:10.669967+00:00", "working_from_home": false},
+        {"address_1": "1c gordon road", "city": "harrow", "created": "2016-04-13T14:44:08.768746+00:00",
+        "description": "corresponding to emails,debt counselling,dealing with public
+        and customers,good communication skills,awareness of equal opportunities.
+        dealing with money.", "for_recruiter": {"contact_name": null, "created": "2014-10-27T18:56:39.571456+00:00",
+        "email": "harrowcommunityenterprise@gmail.com", "id": "f4cc3ac9-c300-44d7-a780-4759a5de0495",
+        "logo": [], "name": "Harrow Community Enterprise", "phone": "020 88611228",
+        "rating": "0.00", "slug": "harrow-community-enterprise"}, "for_recruiter_id":
+        "f4cc3ac9-c300-44d7-a780-4759a5de0495", "id": "adef803e-ad12-4705-bc66-25a5d9eb8783",
+        "interests": [{"children": [], "created": "2014-10-26T17:24:25.689999+00:00",
+        "id": "8832e673-44fc-4771-a66d-40dfb9d038da", "name": "IT", "parent_id": "a0be8981-33c6-46df-a3fe-2100a575695f",
+        "slug": "it", "updated": "2014-10-26T17:24:25.690020+00:00"}], "is_new": true,
+        "lat": 51.5951, "lng": -0.337177, "location": null, "location_id": null, "location_name":
+        null, "location_type": "SL", "micro_availability": [], "owner_recruiter":
+        {"contact_name": null, "created": "2014-10-27T18:56:39.571456+00:00", "email":
+        "harrowcommunityenterprise@gmail.com", "id": "f4cc3ac9-c300-44d7-a780-4759a5de0495",
+        "logo": [], "name": "Harrow Community Enterprise", "phone": "020 88611228",
+        "rating": "0.00", "slug": "harrow-community-enterprise"}, "owner_recruiter_id":
+        "f4cc3ac9-c300-44d7-a780-4759a5de0495", "photo": [], "postcode": "HA3 5RY",
+        "rating": "0.00", "specific_end_date": "2017-04-30T14:16:28.764000+00:00",
+        "specific_start_date": "2016-04-13T14:16:28.764000+00:00", "status": "live",
+        "title": "Volunteer Administrator", "updated": "2016-04-13T14:23:48.325789+00:00",
+        "working_from_home": false}, {"address_1": "1A Headstone Drive", "city": "Harrow",
+        "created": "2016-02-23T17:06:57.598409+00:00", "description": "Ignite Trust
+        are looking for volunteer tutors who can help tutor some of our young people
+        after school hours. You get to work with a  very diverse number of young people
+        with the aim to change their attitude towards learning. This is a fantastic
+        opportunity for any aspiring teachers. We have had some tutors who have gone
+        on to be full time teachers in some local schools through the experience they
+        gained from our programme. You are also guaranteed a fantastic reference from
+        us when you wish to move on. Hours of commitment will be completely up to
+        you. \n\nThis opportunity has been posted by Voluntary Action Harrow Co-operative,
+        on behalf of Ignite Trust.", "for_recruiter": {"contact_name": "Volunteering
+        Team", "created": "2016-01-11T16:55:34.106821+00:00", "email": "volunteering@voluntaryactionharrow.org.uk",
+        "id": "4dd7dfe2-c281-4170-8f0b-da17e8af5e5d", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg",
+        "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.109x109.jpg",
+        "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.76x76.jpg",
+        "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.50x50.jpg",
+        "height": 50, "width": 50}], "name": "Help Out Harrow!", "phone": "020 8861
+        5894", "rating": "0.00", "slug": "help-out-harrow"}, "for_recruiter_id": "4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
+        "id": "97362ec5-27c0-4cc6-acf6-15c17a06a560", "interests": [{"children": [],
+        "created": "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+        "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
+        "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
+        false, "lat": 51.5944, "lng": -0.336192, "location": null, "location_id":
+        null, "location_name": null, "location_type": "SL", "micro_availability":
+        [], "owner_recruiter": {"contact_name": "Volunteering Team", "created": "2016-01-11T16:55:34.106821+00:00",
+        "email": "volunteering@voluntaryactionharrow.org.uk", "id": "4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
+        "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg",
+        "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.109x109.jpg",
+        "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.76x76.jpg",
+        "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.50x50.jpg",
+        "height": 50, "width": 50}], "name": "Help Out Harrow!", "phone": "020 8861
+        5894", "rating": "0.00", "slug": "help-out-harrow"}, "owner_recruiter_id":
+        "4dd7dfe2-c281-4170-8f0b-da17e8af5e5d", "photo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/tutor-606091_640.616x318.jpg",
+        "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/tutor-606091_640.308x159.jpg",
+        "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/tutor-606091_640.243x124.jpg",
+        "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/tutor-606091_640.170x87.jpg",
+        "height": 87, "width": 170}], "postcode": "HA3 5QX", "rating": "0.00", "specific_end_date":
+        "2016-05-23T15:55:43.785000+00:00", "specific_start_date": "2016-02-23T16:55:43.785000+00:00",
+        "status": "live", "title": "Volunteer Tutor", "updated": "2016-02-23T17:07:37.427762+00:00",
+        "working_from_home": false}, {"address_1": "Age UK Harrow", "city": "Wealdstone",
+        "created": "2015-03-10T14:22:21.905124+00:00", "description": "Age UK Harrow
+        are looking for volunteers to spend an hour or two per week (or fortnight)
+        to take an older person shopping or to take a list and do the shopping for
+        an older person. Ideally a car owner/driver", "for_recruiter": {"contact_name":
+        "Steve Porter", "created": "2015-03-04T14:16:54.515493+00:00", "email": "info@capablecommunities.co.uk",
+        "id": "72dc3411-b4bc-4534-946a-b9de53280311", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.125x125.png",
+        "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.109x109.png",
+        "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.76x76.png",
+        "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.50x50.png",
+        "height": 50, "width": 50}], "name": "Harrow Volunteer Centre (Capable Communities
+        Ltd)", "phone": "07957 726 822", "rating": "2.00", "slug": "third-sector-potential"},
+        "for_recruiter_id": "72dc3411-b4bc-4534-946a-b9de53280311", "id": "70650851-c602-4d3a-be48-54a26099be32",
+        "interests": [{"children": [], "created": "2014-10-26T17:24:26.142866+00:00",
+        "id": "6fc9bb15-1728-4d4d-bdab-51be247acba0", "name": "Social care", "parent_id":
+        "24620d05-41c1-4884-a0cb-f70054faba9b", "slug": "social-care", "updated":
+        "2014-10-26T17:24:26.142886+00:00"}, {"children": [], "created": "2014-10-26T17:24:26.146376+00:00",
+        "id": "484cccef-29f7-463f-97e0-385657bc58da", "name": "Disability", "parent_id":
+        "24620d05-41c1-4884-a0cb-f70054faba9b", "slug": "disability", "updated": "2014-10-26T17:24:26.146396+00:00"}],
+        "is_new": false, "lat": 51.5943, "lng": -0.334769, "location": null, "location_id":
+        null, "location_name": null, "location_type": "SL", "micro_availability":
+        [], "owner_recruiter": {"contact_name": "Steve Porter", "created": "2015-03-04T14:16:54.515493+00:00",
+        "email": "info@capablecommunities.co.uk", "id": "72dc3411-b4bc-4534-946a-b9de53280311",
+        "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.125x125.png",
+        "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.109x109.png",
+        "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.76x76.png",
+        "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.50x50.png",
+        "height": 50, "width": 50}], "name": "Harrow Volunteer Centre (Capable Communities
+        Ltd)", "phone": "07957 726 822", "rating": "2.00", "slug": "third-sector-potential"},
+        "owner_recruiter_id": "72dc3411-b4bc-4534-946a-b9de53280311", "photo": [],
+        "postcode": "HA3 7TS", "rating": "0.00", "specific_end_date": "2018-12-12T14:13:30+00:00",
+        "specific_start_date": "2015-07-01T14:10:57.187000+00:00", "status": "live",
+        "title": "Shopping Volunteer - Age Uk Harrow", "updated": "2015-07-01T14:07:02.466077+00:00",
+        "working_from_home": false}, {"address_1": "Third Floor, Premier House", "city":
+        "Harrow", "created": "2016-03-17T16:35:29.563863+00:00", "description": "Purpose\n-\nTo
+        support\nHarrow Communities Click\nwith Admin\nistrational \nT\nasks\nDuties
+        \n1. To undertake volunteering and give practical support to Harrow Communities
+        Click staff\nbased at the Age UK Harrow office.\n2. Type and word - process
+        various documents and electronic information.\n3. Create statistical tools
+        and reports using spreadsheets.\n4. Manage, organise, and update relevant
+        data using database applications.\n5. Communicate and provide information
+        by relevant methods internally and externally to assist and enable organisational
+        operations and effective service to connecting groups.\n6. Interpret   instructions   and   issues   arising,   and   then   implement   actions   according   to
+        \nadministrative policies and procedures. \n7. Arrange and participate in
+        meetings, team activities and training as required.\n8. Adhere  to  procedures  relating  to  the  proper  use  and  care  of  equipment  and  materials  for
+        \nwhich the role has responsibility.\n9. Liaise  closely  with  the Harrow  Communities  Click
+        workers,  seeking  advice,  guidance  and \nsupport when required. \n10. Develop  a  working  knowledge  of  the  information  and  office  systems  supporting  the\nservice,  use
+        them effectively and contribute to their improvement \n11. Keep up -to-date
+        with relevant laws, policies and procedures, both locally and nationally.
+        \n12. Carry  out tasks   according   to   Age   UK Harrow   policies   and   standards,   in   particular   on
+        \nconfidentiality, equal opportunities and health and safety. \n13. Work as
+        part of a team with other Harrow Communities Click staff and volunteers.",
+        "for_recruiter": {"contact_name": "Rhona Denness", "created": "2016-03-17T16:18:46.842376+00:00",
+        "email": "hcc@ageukharrow.org.uk", "id": "bdb371b8-9781-4b11-86e7-193f9dc01eb7",
+        "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Harrow-Communities-Click-Logo_twitter.125x125.png",
+        "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Harrow-Communities-Click-Logo_twitter.109x109.png",
+        "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Harrow-Communities-Click-Logo_twitter.76x76.png",
+        "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Harrow-Communities-Click-Logo_twitter.50x50.png",
+        "height": 50, "width": 50}], "name": "Harrow Communities Click", "phone":
+        "020 8861 9191", "rating": "0.00", "slug": "harrow-communities-click"}, "for_recruiter_id":
+        "bdb371b8-9781-4b11-86e7-193f9dc01eb7", "id": "321ac15f-947b-4234-99cc-482972f962d4",
+        "interests": [{"children": [], "created": "2014-10-26T17:24:25.689999+00:00",
+        "id": "8832e673-44fc-4771-a66d-40dfb9d038da", "name": "IT", "parent_id": "a0be8981-33c6-46df-a3fe-2100a575695f",
+        "slug": "it", "updated": "2014-10-26T17:24:25.690020+00:00"}, {"children":
+        [], "created": "2014-10-26T17:24:26.142866+00:00", "id": "6fc9bb15-1728-4d4d-bdab-51be247acba0",
+        "name": "Social care", "parent_id": "24620d05-41c1-4884-a0cb-f70054faba9b",
+        "slug": "social-care", "updated": "2014-10-26T17:24:26.142886+00:00"}], "is_new":
+        false, "lat": 51.5943, "lng": -0.334769, "location": null, "location_id":
+        null, "location_name": null, "location_type": "SL", "micro_availability":
+        [], "owner_recruiter": {"contact_name": "Rhona Denness", "created": "2016-03-17T16:18:46.842376+00:00",
+        "email": "hcc@ageukharrow.org.uk", "id": "bdb371b8-9781-4b11-86e7-193f9dc01eb7",
+        "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Harrow-Communities-Click-Logo_twitter.125x125.png",
+        "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Harrow-Communities-Click-Logo_twitter.109x109.png",
+        "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Harrow-Communities-Click-Logo_twitter.76x76.png",
+        "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Harrow-Communities-Click-Logo_twitter.50x50.png",
+        "height": 50, "width": 50}], "name": "Harrow Communities Click", "phone":
+        "020 8861 9191", "rating": "0.00", "slug": "harrow-communities-click"}, "owner_recruiter_id":
+        "bdb371b8-9781-4b11-86e7-193f9dc01eb7", "photo": [], "postcode": "HA3 7TS",
+        "rating": "0.00", "specific_end_date": "2016-04-12T15:17:42.235000+00:00",
+        "specific_start_date": "2016-04-12T09:33:30.861000+00:00", "status": "live",
+        "title": "Admin Support", "updated": "2016-04-12T09:16:19.861382+00:00", "working_from_home":
+        false}, {"address_1": "Age UK Harrow", "city": "Wealdstone", "created": "2015-03-10T14:12:53.258041+00:00",
+        "description": "Age UK Harrow offers independant support to older people in
+        Harrow to help them say what they want, secure their rights, represent their
+        interests and obtain the services that they need.  The Volunteer will meet
+        with the older person and create a relationship through which s/he will feel
+        to discuss their problem(s) in confidence. They will then represent the old
+        person and keep them informed at all stages.", "for_recruiter": {"contact_name":
+        "Steve Porter", "created": "2015-03-04T14:16:54.515493+00:00", "email": "info@capablecommunities.co.uk",
+        "id": "72dc3411-b4bc-4534-946a-b9de53280311", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.125x125.png",
+        "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.109x109.png",
+        "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.76x76.png",
+        "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.50x50.png",
+        "height": 50, "width": 50}], "name": "Harrow Volunteer Centre (Capable Communities
+        Ltd)", "phone": "07957 726 822", "rating": "2.00", "slug": "third-sector-potential"},
+        "for_recruiter_id": "72dc3411-b4bc-4534-946a-b9de53280311", "id": "b9eb84a5-57b6-44fa-8f17-84bfb58197fc",
+        "interests": [{"children": [], "created": "2014-10-26T17:24:26.125624+00:00",
+        "id": "fc99930f-61e0-4dde-a941-79d9da4d3192", "name": "Crisis Support", "parent_id":
+        "66ab0718-8bb5-450c-b21d-9c90f9452422", "slug": "crisis-support", "updated":
+        "2014-10-26T17:24:26.125644+00:00"}, {"children": [], "created": "2014-10-26T17:24:25.835104+00:00",
+        "id": "a654354a-943f-4a5f-926e-33d27889f19d", "name": "Performance", "parent_id":
+        "cd7d0590-2800-45b4-8084-b475562e73f4", "slug": "performance", "updated":
+        "2014-10-26T17:24:25.835125+00:00"}, {"children": [], "created": "2014-10-26T17:24:26.057986+00:00",
+        "id": "8d67d71d-62b3-41b4-93ed-dd7abf27f4cf", "name": "Justice", "parent_id":
+        "48f607ba-71ae-4786-8a05-f0ff409252ee", "slug": "justice", "updated": "2014-10-26T17:24:26.058006+00:00"},
+        {"children": [], "created": "2014-10-26T17:24:26.093607+00:00", "id": "b1c8f0ab-5205-40b1-842d-e9f0a3f97476",
+        "name": "Legal", "parent_id": "a0be8981-33c6-46df-a3fe-2100a575695f", "slug":
+        "legal", "updated": "2014-10-26T17:24:26.093627+00:00"}, {"children": [],
+        "created": "2014-10-26T17:24:25.871721+00:00", "id": "14e14b9c-586f-4e31-8627-7dc02a99d816",
+        "name": "Poverty", "parent_id": "66ab0718-8bb5-450c-b21d-9c90f9452422", "slug":
+        "poverty", "updated": "2014-10-26T17:24:25.871742+00:00"}], "is_new": false,
+        "lat": 51.5943, "lng": -0.334769, "location": null, "location_id": null, "location_name":
+        null, "location_type": "SL", "micro_availability": [], "owner_recruiter":
+        {"contact_name": "Steve Porter", "created": "2015-03-04T14:16:54.515493+00:00",
+        "email": "info@capablecommunities.co.uk", "id": "72dc3411-b4bc-4534-946a-b9de53280311",
+        "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.125x125.png",
+        "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.109x109.png",
+        "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.76x76.png",
+        "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.50x50.png",
+        "height": 50, "width": 50}], "name": "Harrow Volunteer Centre (Capable Communities
+        Ltd)", "phone": "07957 726 822", "rating": "2.00", "slug": "third-sector-potential"},
+        "owner_recruiter_id": "72dc3411-b4bc-4534-946a-b9de53280311", "photo": [],
+        "postcode": "HA3 7TS", "rating": "0.00", "specific_end_date": "2016-04-13T13:03:41.164000+00:00",
+        "specific_start_date": "2015-04-16T14:49:32.584000+00:00", "status": "live",
+        "title": "Volunteer Advocate-Age Uk", "updated": "2015-04-16T14:50:44.208258+00:00",
+        "working_from_home": false}, {"address_1": null, "city": null, "created":
+        "2015-06-01T22:32:44.718305+00:00", "description": "Volunteer manager needed
+        to act as the lead volunteer in running a Group in Harrow and Wealdstone.
+        Tasks involving managing, inspiring and motivating new leaders to grow the
+        Group and provide more Scouting opportunities for young people in Harrow and
+        Wealdstone .\n\nScouting offers opportunities for young people to develop
+        their potential. The role centers on supporting the adult volunteers in the
+        Scout Group, this is a varied and challenging task. Communicating effectively
+        and providing inspiration are key skills to have. If you are a manager at
+        work, or would like to develop skills in this area, this is an ideal role
+        for you.", "for_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
+        "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+        "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.125x125.jpg",
+        "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.109x109.jpg",
+        "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.76x76.jpg",
+        "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.50x50.jpg",
+        "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater
+        London Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+        "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "id": "c5aee7d5-fb9b-48d0-9851-4d591c1b34fa",
+        "interests": [{"children": [], "created": "2014-10-26T17:24:26.278190+00:00",
+        "id": "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd", "name": "Children", "parent_id":
+        "56fabd4e-bac3-484f-9f55-448445f83481", "slug": "children", "updated": "2014-10-26T17:24:26.278210+00:00"},
+        {"children": [], "created": "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+        "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
+        "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
+        false, "lat": 51.5925, "lng": -0.3355, "location": {"admin_1": "England",
+        "admin_2": "Greater London", "admin_3": "Harrow", "admin_4": null, "id": "c82efb77-0357-4ca5-be22-fc2941c371ae",
+        "lat": 51.5925, "lng": -0.3355, "name": "Harrow & Wealdstone Station"}, "location_id":
+        "c82efb77-0357-4ca5-be22-fc2941c371ae", "location_name": "Harrow & Wealdstone
+        Station", "location_type": "RL", "micro_availability": [], "owner_recruiter":
+        {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00", "email":
+        "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+        "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.125x125.jpg",
+        "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.109x109.jpg",
+        "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.76x76.jpg",
+        "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.50x50.jpg",
+        "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater
+        London Region", "phone": "01635 247845", "rating": "3.00", "slug": "greater-london-region"},
+        "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "photo": [{"absolute_url":
+        "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Bear_Grylls.616x318.jpg",
+        "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Bear_Grylls.308x159.jpg",
+        "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Bear_Grylls.243x124.jpg",
+        "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Bear_Grylls.170x87.jpg",
+        "height": 87, "width": 170}], "postcode": "HA3 5DB", "rating": "0.00", "specific_end_date":
+        "2016-08-29T23:00:00+00:00", "specific_start_date": "2015-06-01T22:05:28.008000+00:00",
+        "status": "live", "title": "Volunteer Group Scout Leader/Manager - Harrow
+        and Wealdstone", "updated": "2016-01-11T22:28:12.498890+00:00", "working_from_home":
+        false}]}, "links": {"self": {"href": "/v1/opportunities", "title": "You are
+        here."}}, "meta": {"code": 200, "current_page": 1, "items_per_page": 20, "tenant":
+        "doittrust", "total_items": 8, "total_pages": 1, "version": "2016.03.18.1"}}'
+    http_version: 
+  recorded_at: Thu, 14 Apr 2016 13:55:27 GMT
+recorded_with: VCR 2.9.3
