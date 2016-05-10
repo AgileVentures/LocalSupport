@@ -3,8 +3,6 @@ class AddSlugToOrganisations < ActiveRecord::Migration
     add_column :organisations, :slug, :string
     
     add_index :organisations, :slug, unique: true
-    
-    Organisation.find_each(&:save)
   end
   
   def down
