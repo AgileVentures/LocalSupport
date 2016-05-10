@@ -2,7 +2,7 @@ class SetupSlug
 
   attr_reader :name 
   def self.run(name)
-    return true if name == nil
+    return if name.nil?
     new(name).send(:candidates)
   end
 
