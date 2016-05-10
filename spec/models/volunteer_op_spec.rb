@@ -117,4 +117,38 @@ describe VolunteerOp, :type => :model do
       expect(VolunteerOp.search_for_text('good')).to eq([vol_op2])
     end
   end
+  
+  describe '#full_address' do
+    let(:details) { {title: 'test', description: 'description', address: 'Station Rd', postcode: 'HA8 7BD', organisation_id: 1} }
+    let!(:vol_op) { FactoryGirl.create :volunteer_op, details }
+    
+    it 'returns a full address' do
+      expect(vol_op.full_address).to eq 'Station Rd, HA8 7BD'
+    end
+  end
+  
+  describe 'set\'s volunteer_op lat and lng' do
+    let(:details) {  {title: 'test',
+                     description: 'description', 
+                     address: 'Station Rd',
+                     postcode: 'HA8 7BD',
+                     different_address: '0',
+                     organisation_id: 1} }
+    # let!(:vol_op) { FactoryGirl.create :volunteer_op, details }   
+    
+    # it 'has a different address' do
+    #   vol_op.different_address = '1'
+    #   expect(vol_op).to receive(:geocode)
+    #   vol_op.save!
+    # end
+    
+    # it 'has not have different address' do
+    #   vol_op.different_address = '0'
+    #   vol_op.save
+    #   expect(vol_op.latitude).to be_nil
+    #   expect(vol_op.longitude).to be_nil
+    # end
+ 
+
+  end
 end
