@@ -1,6 +1,9 @@
 Then(/^I should see an infowindow when I click on the map markers:$/) do |table|
   expect(page).to have_css('.measle', :count => table.raw.flatten.length)
-  Organisation.where(name: table.raw.flatten).pluck(:name, :description, :id).map {|name, desc, id| [name, smart_truncate(desc, 42), id]}.each do |name, desc, id|
+  Organisation.where(name: table.raw.flatten)
+        .pluck(:name, :description, :id, :slug)
+        .map {|name, desc, id, frdly_id| [name, smart_truncate(desc, 42), id, frdly_id]}
+        .each do |name, desc, id, friendly_id|
       expect(page).to have_css(".measle[data-id='#{id}']")
       icon =find(".measle[data-id='#{id}']")
       click_twice icon
@@ -8,7 +11,7 @@ Then(/^I should see an infowindow when I click on the map markers:$/) do |table|
       expect(find('.arrow_box').text).to include(desc)
       expect(find('.arrow_box').text).to include(name)
       link = find('.arrow_box').find('a')[:href]
-      expect(link).to eql(organisation_path(id))
+      expect(link).to eql(organisation_path(friendly_id))
   end
 end
 def click_twice elt

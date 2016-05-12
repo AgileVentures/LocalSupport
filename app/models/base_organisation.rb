@@ -1,4 +1,7 @@
 class BaseOrganisation < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  
   acts_as_paranoid
   validates_url :website, prefferred_scheme: 'http://', message: 'Website is not a valid URL',
     if: proc{|org| org.website.present?}
@@ -8,8 +11,6 @@ class BaseOrganisation < ActiveRecord::Base
   validates :description, presence: { message: "Description can't be blank"}
   has_many :category_organisations, :foreign_key => :organisation_id
   has_many :categories, :through => :category_organisations, :foreign_key => :organisation_id
-  accepts_nested_attributes_for :category_organisations,
-                                :allow_destroy => true
   # For the geocoder gem
   geocoded_by :full_address
   after_validation :geocode, if: -> { run_geocode? }
@@ -43,16 +44,4 @@ class BaseOrganisation < ActiveRecord::Base
   def has_been_updated_recently?
     updated_at >= 1.year.ago
   end
-  
-  def setup_categories
-    Category.all.each do |cat|
-      self.category_organisations.build(category: cat) unless has_relation?(cat)
-    end
-    self
-  end
-    
-  def has_relation?(category)
-    self.category_organisations.any? {|v| v.category_id == category.id}
-  end
-
 end

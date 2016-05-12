@@ -27,8 +27,8 @@ class OrganisationsController < BaseOrganisationsController
   # GET /organisations/1
   # GET /organisations/1.json
   def show
-    organisations = Organisation.where(id: params[:id])
-    @organisation = organisations.first!
+    @organisation = Organisation.friendly.find(params[:id])
+    organisations = Organisation.where(id: @organisation.id)
     @pending_org_admin = current_user.pending_org_admin? @organisation if current_user
     @editable = current_user.can_edit?(@organisation) if current_user
     @deletable = current_user.can_delete?(@organisation) if current_user
@@ -43,22 +43,17 @@ class OrganisationsController < BaseOrganisationsController
   # GET /organisations/new.json
   def new
     @organisation = Organisation.new
-    @categories_start_with = Category.first_category_name_in_each_type
-    @organisation.setup_categories
   end
   
   # GET /organisations/1/edit
   def edit
-    organisations = Organisation.where(id: params[:id])
-    @organisation = organisations.first!
+    @organisation = Organisation.friendly.find(params[:id])
+    organisations = Organisation.where(id: @organisation.id)
     @markers = build_map_markers(organisations)
-    @categories_start_with = Category.first_category_name_in_each_type
     return false unless user_can_edit? @organisation
     #respond_to do |format|
     #  format.html {render :layout => 'full_width'}
     #end
-    @organisation.setup_categories
-    
   end
 
   # POST /organisations
@@ -67,19 +62,15 @@ class OrganisationsController < BaseOrganisationsController
     # model filters for logged in users, but we check here if that user is an superadmin
     # TODO refactor that to model responsibility?
     org_params = OrganisationParams.build params
-    set_selected_categories
      
     unless current_user.try(:superadmin?)
       flash[:notice] = PERMISSION_DENIED
       redirect_to organisations_path and return false
     end
     @organisation = Organisation.new(org_params)
-    
-    @categories_start_with = Category.first_category_name_in_each_type
     if @organisation.save
       redirect_to @organisation, notice: 'Organisation was successfully created.'
     else
-     @organisation.setup_categories
      render :new
     end
   end
@@ -87,14 +78,13 @@ class OrganisationsController < BaseOrganisationsController
   # PUT /organisations/1
   # PUT /organisations/1.json
   def update
-    @organisation = Organisation.find(params[:id])
+    @organisation = Organisation.friendly.find(params[:id])
     params[:organisation][:superadmin_email_to_add] = params[:organisation_superadmin_email_to_add] if params[:organisation]
     update_params = OrganisationParams.build params
     return false unless user_can_edit? @organisation
     if @organisation.update_attributes_with_superadmin(update_params)
       redirect_to @organisation, notice: 'Organisation was successfully updated.'
     else
-      @categories_start_with = Category.first_category_name_in_each_type
       render action: "edit"
     end
   end
@@ -106,7 +96,7 @@ class OrganisationsController < BaseOrganisationsController
       flash[:notice] = PERMISSION_DENIED
       redirect_to organisation_path(params[:id]) and return false
     end
-    @organisation = Organisation.find(params[:id])
+    @organisation = Organisation.friendly.find(params[:id])
     @organisation.destroy
     flash[:success] = "Deleted #{@organisation.name}"
 
@@ -128,7 +118,7 @@ class OrganisationsController < BaseOrganisationsController
         :donation_info,
         :name,
         :telephone,
-        category_organisations_attributes: [:_destroy, :category_id, :id]
+        category_ids: []
       )
     end
   end
@@ -142,17 +132,4 @@ class OrganisationsController < BaseOrganisationsController
     end
     true
   end
-  
-  def set_selected_categories
-    @categories_selected = []
-    cat_org_attr = params[:organisation][:category_organisations_attributes]
-    add_selected(cat_org_attr) unless cat_org_attr.nil?
-  end
-  
-  def add_selected(attributes)
-    attributes
-      .reject {|_k,v| v[:_destroy] == '1'}
-      .each_value {|v| @categories_selected << v[:category_id].to_i}
-  end
-
 end

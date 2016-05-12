@@ -1,20 +1,35 @@
 <div class="row category_type">
-  <%= f.fields_for :category_organisations, f.object.category_organisations.sort do |ff| %>
-    <% case ff.object.category.name
-       when @categories_start_with[:what_they_do] %><h5>What you do</h5>
-    <% when @categories_start_with[:who_they_help] %></div><div class= "row category_type"><h5>Who you help</h5>
-    <% when @categories_start_with[:how_they_help] %></div><div class= "row category_type"><h5>How you help</h5>
-    <% end %>
+  <h5>What you do</h5>
+  <%= f.collection_check_boxes( :category_ids, Category.what_they_do, :id, :name ) do |b| %>
     <div class="span3 org-category">
-      <%= ff.label :_destroy, class: "checkbox inline" do %>
-        <%= ff.check_box :_destroy, {:checked => persisted_or_checked?(ff.object, @categories_selected)}, 
-        '0', '1' %>
-        <%= ff.object.category.name %>
-      <%  end  %>
-      <%= ff.hidden_field :category_id %>
+      <%= b.label(class: 'checkbox inline') do %>
+        <%= b.check_box %>
+        <%= b.text %>
+      <%end%>
     </div>
-  <% end %>
-  </div>
-  <% if @user_id %>
-    <%= f.hidden_field :user_id, value: @user_id %>
-  <%end %>
+  <%end%>
+</div>
+
+<div class="row category_type">
+  <h5>Who you help</h5>
+  <%= f.collection_check_boxes( :category_ids, Category.who_they_help, :id, :name ) do |b|%>
+    <div class="span3 org-category">
+      <%= b.label(class: 'checkbox inline') do %>
+        <%= b.check_box %>
+        <%= b.text %>
+      <%end%>
+    </div>
+  <%end%>
+</div>
+
+<div class="row category_type">
+  <h5>How you help</h5>
+  <%= f.collection_check_boxes( :category_ids, Category.how_they_help, :id, :name ) do |b| %>
+    <div class="span3 org-category">
+      <%= b.label(class: 'checkbox inline') do %>
+        <%= b.check_box %>
+        <%= b.text %>
+      <%end%>
+    </div>
+  <%end%>
+</div>
