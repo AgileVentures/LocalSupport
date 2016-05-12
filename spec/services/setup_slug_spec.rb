@@ -1,36 +1,31 @@
 require 'rails_helper'
 
-describe ::SetupSlug do
-  describe 'friendly_id' do
-    
-    it 'should use short_name as slug as first' do
-      org = FactoryGirl.create(:friendly_id_org)
-      expect(org.slug).to eq('most-noble-great')
-    end
-    
-    it 'should use longer_name as slug as second' do
-      FactoryGirl.create(:friendly_id_org)
-      org = FactoryGirl.build(:friendly_id_org)
-      expect(org.slug).to eq('most-noble-great-charity-london')
-    end
-    
-    it 'should use append_org as slug as third' do
-      2.times { FactoryGirl.create(:friendly_id_org) }
-      org = FactoryGirl.build(:friendly_id_org)
-      expect(org.slug).to eq('most-noble-great-charity-london-org')
-    end
-    
-    it 'should use full name as slug as fourth' do
-      3.times { FactoryGirl.create(:friendly_id_org) }
-      org = FactoryGirl.build(:friendly_id_org)
-      expect(org.slug).to eq('the-most-noble-great-charity-of-london')
-    end
-    
-    it 'should use special name for parochial churches' do
-      org = FactoryGirl.create(:parochial_org)
-      expect(org.slug).to eq('parochial-church-st-alban-north')
-    end
-  
+describe SetupSlug do # unit test
+  subject(:setup_slug) { described_class }
+  let(:string) { 'test' }
+
+  # black box
+
+  # unit (high coverage, fast) danger (disconnected)
+
+  it 'returns true when arg is nil' do
+    expect(setup_slug.run(nil)).to be nil
+  end
+
+  it 'uses short name as slug in first instance' do
+    expect(setup_slug.run(string).first).to eq(string.method(:short_name))
+  end
+
+  it 'uses longer name as slug in second instance' do
+    expect(setup_slug.run(string).second).to eq(string.method(:longer_name))
+  end
+
+  it 'uses append org as slug in third instance' do
+    expect(setup_slug.run(string).third).to eq(string.method(:append_org))
+  end
+
+  it 'uses original name as slug in fourth instance' do
+    expect(setup_slug.run(string).fourth).to eq(:name)
   end
 
 end
