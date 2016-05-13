@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe ApplicationController, :type => :controller, :helpers => :controllers do
+   render_views
   it '#request_controller_is(white_listed)' do
     allow(controller).to receive_messages :white_listed => %w(a b c)
     allow(request).to receive_messages :params => { 'controller' => 'a' }
@@ -142,6 +143,32 @@ describe ApplicationController, :type => :controller, :helpers => :controllers d
         expect(user).to receive(:superadmin?) { true }
         expect(controller.instance_eval { superadmin? }).to be true
       end
+    end
+
+    context '#set_flash_warning_reminder_to_update_details' do
+      before(:each) do
+        @org = FactoryGirl.create(:organisation, slug: 'my-org')
+        @user = FactoryGirl.create(:user, organisation: @org)
+        allow(@org).to receive(:has_been_updated_recently?).and_return(false)
+      end
+
+      context 'With existing warnings' do
+        it 'append reminder msg to existing flash warning' do
+          flash[:warning]  = 'Exisitng warning !'
+          msg = 'Exisitng warning ! You have not updated your details in over a year!'\
+            " Please click <a href=\"/organisations/my-org/edit\">here</a> to update now.\n"
+          expect(controller.send(:set_flash_warning_reminder_to_update_details, @user)).to eq(msg)
+        end
+      end
+
+      context 'Without existing warnings' do
+        it 'returns reminder msg' do
+          msg = 'You have not updated your details in over a year!'\
+            " Please click <a href=\"/organisations/my-org/edit\">here</a> to update now.\n"
+          expect(controller.send(:set_flash_warning_reminder_to_update_details, @user)).to eq(msg)
+        end
+      end
+
     end
   end
 end

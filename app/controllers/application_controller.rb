@@ -96,7 +96,7 @@ class ApplicationController < ActionController::Base
     if usr.organisation and not usr.organisation.has_been_updated_recently?
       msg = render_to_string(partial: "shared/call_to_action", locals: {org: usr.organisation}).html_safe
       if flash[:warning]
-        flash[:warning] << msg
+        flash[:warning] << ' ' << msg
       else
         flash[:warning] = msg
       end
