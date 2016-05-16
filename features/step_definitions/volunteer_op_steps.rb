@@ -60,3 +60,10 @@ Given(/^the map should show the do\-it opportunity titled (.*)$/) do |opportunit
   expect(page).to have_css('.arrow_box')
   expect(find('.arrow_box').text).to include(opportunity_title)
 end
+
+When(/^I set new volunteer opportunity location to "(.*?)", "(.*?)"$/) do |address, postcode|
+  fill_in 'Address', :with => address
+  fill_in 'Postcode', :with => postcode
+  click_button 'Update Volunteer Opportunity'
+end
+

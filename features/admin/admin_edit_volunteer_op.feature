@@ -36,3 +36,12 @@ Scenario: Super Admin successfully changes the description of an opportunity
   Given I am signed in as a superadmin
   When I update "Litter Box Scooper" volunteer op description to be "Clean up cat mess"
   Then I should see "Clean up cat mess"
+
+@vcr @javascript  
+Scenario: Super Admin successfully changes volunteer opportunity location
+  Given I am signed in as a superadmin
+  When I visit the show page for the volunteer_op titled "Litter Box Scooper"
+  And I click "Edit"
+  And I check "Volunteer opportunity on different location?"
+  And I set new volunteer opportunity location to "Station Rd", "HA8 7BD"
+  Then I should see "Station Rd, HA8 7BD"
