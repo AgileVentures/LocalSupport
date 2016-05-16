@@ -8,6 +8,19 @@ And(/^I submit a volunteer op "(.*?)", "(.*?)" on the "(.*?)" page$/) do |title,
   click_on 'Create Volunteer Opportunity'
 end
 
+Given(/^I submit a volunteer op with address "(.*?)", "(.*?)", "(.*?)", "(.*?)" on the "(.*?)" page$/) do |title, desc, address, postcode, org_name|
+  org = Organisation.find_by_name(org_name)
+  visit organisation_path org
+  click_link "Create a Volunteer Opportunity"
+  expect(current_path).to eq new_organisation_volunteer_op_path org
+  fill_in 'Title', :with => title
+  fill_in 'Description', :with => desc
+  check 'Volunteer opportunity on different location?'
+  fill_in 'Address', :with => address
+  fill_in 'Postcode', :with => postcode
+  click_on 'Create Volunteer Opportunity'
+end
+
 Given(/^I run the import doit service( with a radius of (\d+\.?\d*) miles)?$/)do |override, radius|
   if override
     ImportDoItVolunteerOpportunities.with radius.to_f
@@ -65,5 +78,12 @@ When(/^I set new volunteer opportunity location to "(.*?)", "(.*?)"$/) do |addre
   fill_in 'Address', :with => address
   fill_in 'Postcode', :with => postcode
   click_button 'Update Volunteer Opportunity'
+end
+
+Then(/^I should see "(.*?)", "(.*?)", "(.*?)" and "(.*?)"$/) do |title, desc, address, org|
+  expect(page).to have_content title
+  expect(page).to have_content desc
+  expect(page).to have_content address
+  expect(page).to have_content org
 end
 
