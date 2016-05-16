@@ -4,8 +4,8 @@ class VolunteerOp < ActiveRecord::Base
   validates :organisation_id, presence: true, if: "source == 'local'"
   belongs_to :organisation
   
-  geocoded_by :full_address, if: :has_different_address?
-  after_validation :geocode   
+  geocoded_by :full_address
+  after_validation :geocode, if: :has_different_address?   
   after_validation :clear_lat_lng
   
   scope :order_by_most_recent, -> { order('updated_at DESC') }

@@ -5,7 +5,7 @@ And(/^I submit a volunteer op "(.*?)", "(.*?)" on the "(.*?)" page$/) do |title,
   expect(current_path).to eq new_organisation_volunteer_op_path org
   fill_in 'Title', :with => title
   fill_in 'Description', :with => desc
-  click_on 'Create a Volunteer Opportunity'
+  click_on 'Create Volunteer Opportunity'
 end
 
 Given(/^I run the import doit service( with a radius of (\d+\.?\d*) miles)?$/)do |override, radius|
@@ -41,7 +41,7 @@ Given /^I update "(.*?)" volunteer op description to be "(.*?)"$/ do |title, des
   visit volunteer_op_path vop
   click_on 'Edit'
   fill_in('Description', :with => description)
-  click_on 'Update a Volunteer Opportunity'
+  click_on 'Update Volunteer Opportunity'
 end
 
 Given /^I should see (\d+) markers in the map$/ do |num|
