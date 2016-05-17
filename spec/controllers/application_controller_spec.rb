@@ -2,12 +2,13 @@ require 'rails_helper'
 
 describe ApplicationController, :type => :controller, :helpers => :controllers do
   render_views
+
   it '#request_controller_is(white_listed)' do
-    allow(controller).to receive_messages :white_listed => %w(a b c)
-    allow(request).to receive_messages :params => {'controller' => 'a'}
+    allow(controller).to receive_messages white_listed: %w(a b c)
+    allow(request).to receive_messages params: {'controller' => 'a'}
     expect(controller.request_controller_is(controller.white_listed)).to be true
 
-    allow(request).to receive_messages :params => {'controller' => 'd'}
+    allow(request).to receive_messages params: {'controller' => 'd'}
     expect(controller.request_controller_is(controller.white_listed)).to be false
   end
 
@@ -92,7 +93,7 @@ describe ApplicationController, :type => :controller, :helpers => :controllers d
     it 'cookie has correct key/value pair' do
       expect(request).to receive(:referer).and_return "/hello"
       get :allow_cookie_policy
-      expect(response.cookies).to eq({"cookie_policy_accepted" => "true"})
+      expect(response.cookies).to eq('cookie_policy_accepted' => 'true')
     end
   end
 
@@ -111,15 +112,14 @@ describe ApplicationController, :type => :controller, :helpers => :controllers d
 
   describe 'PRIVATE METHODS' do
     let(:user) { double :user }
+    let(:msg) { 'You must be signed in as a superadmin to perform this action!' }
     before { allow(controller).to receive_messages current_user: user }
 
     context '#authorize' do
       it 'Unauthorized: redirects to root_path and displays flash' do
         allow(controller).to receive_messages superadmin?: false
         expect(controller).to receive(:redirect_to).with(root_path) { true } # calling original raises errors
-        expect(controller.flash).to receive(:[]=)
-                                        .with(:error, 'You must be signed in as a superadmin to perform this action!')
-                                        .and_call_original
+        expect(controller.flash).to receive(:[]=).with(:error, msg).and_call_original
         expect(controller.instance_eval { authorize }).to be false
         # can't assert `redirect_to root_path`: http://owowthathurts.blogspot.com/2013/08/rspec-response-delegation-error-fix.html
         expect(flash[:error]).not_to be_nil
