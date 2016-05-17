@@ -1,16 +1,5 @@
 require 'rails_helper'
 
-
-# encapsulation
-
-# domain model
-
-# object/entity --> base_organisation
-
-# black box
-
-# organisation integration (lower coverage, slower) (connected)
-
 describe BaseOrganisation do
   describe '#slug' do
 
