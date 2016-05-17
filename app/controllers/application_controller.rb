@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
         contributors
         organisations
         pages
+        volunteer_ops
     )
   end
   # Devise wiki suggests we need to make this return nil for the after_inactive_signup_path_for to be called in registrationscontroller
