@@ -3,6 +3,10 @@ class String
     self.humanize.split(' ').map{|w| w.capitalize}.join(' ')
   end
   
+  def downcase_words
+    self.scan(/\b\w+\b/).map(&:downcase)
+  end
+  
   # Methods below created to customly setup slugs from friendly_id gem
   
   def short_name
@@ -39,8 +43,4 @@ class String
     self.slice(/(?<=parish of )(.+)\z/i)
   end
 
-  def downcase_words
-    self.scan(/\b\w+\b/).map(&:downcase)
-  end
-  
 end
