@@ -1,7 +1,7 @@
 {
   "name":"LocalSupport",
   "scripts":{
-    "postdeploy": "bundle exec rake db:setup"
+    "postdeploy": "bundle exec rake db:migrate db:setup"
   },
   "env":{
     "BUILDPACK_URL":{

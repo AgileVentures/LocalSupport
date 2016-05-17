@@ -76,6 +76,7 @@ if [[ $@ != *no_db_seed* ]]; then
   bundle exec rake db:seed || { error "seed DB"; return 1; }
   bundle exec rake db:cat_org_import || { error "add org to DB"; return 1; }
   bundle exec rake db:pages || { error "add pages to DB"; return 1; }
+  bundle exec rake db:import:emails[db/emails.csv] || { error "add emails to DB"; return 1; }
 fi
 
 # Prepare test database
