@@ -2,7 +2,26 @@ require 'rails_helper'
 require 'string.rb'
 
 describe String do
-
+  
+  describe '#downcase_words' do 
+    
+    it 'returns an Array' do
+      string = ''
+      expect(string.downcase_words).to be_an(Array)
+    end
+    
+    it 'filters words with word characters [a-zA-Z0-9_]' do
+      string = "~`!@#$%^&*()-+=}]{[|\"':;?/>.<, "
+      expect(string.downcase_words).to be_empty
+    end
+    
+    it 'turns filtered words downcase' do
+      string = "Bee_hive And Spider\'s Nest"
+      expect(string.downcase_words).to eq(['bee_hive', 'and', 'spider', 's', 'nest'])
+    end
+    
+  end
+  
   describe '#short_name' do
     
     it 'as default returns first three words joined by dashes' do
