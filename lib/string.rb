@@ -4,7 +4,7 @@ class String
   end
   
   def downcase_words
-    self.scan(/\b\w+\b/).map(&:downcase)
+    scan(/\b\w+\b/).map(&:downcase)
   end
   
   # Methods below created to customly setup slugs from friendly_id gem
@@ -30,7 +30,7 @@ class String
   private
   
   def slug_words
-    words = "#{self}".delete('\'', '-').downcase_words
+    words = "#{self}".delete('\'', '-', '_').downcase_words
     words.reject { |w| NOT_WANTED.include?(w) }
   end
 
