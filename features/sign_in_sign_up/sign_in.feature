@@ -47,8 +47,9 @@ Scenario: Sign in for an existing superadmin user after search
   And I fill in "Optional Search Text" with "search words" within the main body
   And I press "Submit"
   And I sign in as "superadmin@example.com" with password "pppppppp"
-  Then I should be on the home page
+  Then I should be on the organisations search page
   And I should see a link or button "superadmin@example.com"
+  And the search box should contain "search words"
 
 Scenario: Sign in with wrong password for an existing superadmin user
   Given I sign in as "superadmin@example.com" with password "12345"

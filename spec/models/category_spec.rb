@@ -123,11 +123,6 @@ describe 'Category', :type => :model do
          expect(alligator<=>crocodile).to eq 0
        end
     end
-    describe '#first_category_name_in_each_type' do
-      it 'should return hash of first category names in each type of category' do
-        expect(Category.first_category_name_in_each_type).to eq({what_they_do: 'alligator', who_they_help: 'crocodile', how_they_help: 'iguana'})
-      end
-    end
   end
 
 end
