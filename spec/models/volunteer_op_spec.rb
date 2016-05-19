@@ -119,7 +119,15 @@ describe VolunteerOp, :type => :model do
   end
   
   describe '#full_address' do
-    let(:details) { {title: 'test', description: 'description', address: 'Station Rd', postcode: 'HA8 7BD', organisation_id: 1} }
+    let(:details) do
+      {
+        title: 'test',
+        description: 'description',
+        address: 'Station Rd',
+        postcode: 'HA8 7BD',
+        organisation_id: 1
+      } 
+    end
     let!(:vol_op) { FactoryGirl.create :volunteer_op, details }
     
     it 'returns a full address' do
@@ -128,12 +136,16 @@ describe VolunteerOp, :type => :model do
   end
   
   describe 'set\'s volunteer_op lat and lng' do
-    let(:details) {  {title: 'test',
-                     description: 'description', 
-                     address: 'Station Rd',
-                     postcode: 'HA8 7BD',
-                     different_address: '0',
-                     organisation_id: 1} }
+    let(:details) do
+      {
+        title: 'test',
+        description: 'description', 
+        address: 'Station Rd',
+        postcode: 'HA8 7BD',
+        different_address: '0',
+        organisation_id: 1
+      } 
+    end
     let!(:vol_op) { FactoryGirl.create :volunteer_op, details }   
     
     it 'has a different address' do

@@ -3,21 +3,21 @@ And(/^I submit a volunteer op "(.*?)", "(.*?)" on the "(.*?)" page$/) do |title,
   visit organisation_path org
   click_link "Create a Volunteer Opportunity"
   expect(current_path).to eq new_organisation_volunteer_op_path org
-  fill_in 'Title', :with => title
-  fill_in 'Description', :with => desc
+  fill_in 'Title', with: title
+  fill_in 'Description', with: desc
   click_on 'Create Volunteer Opportunity'
 end
 
 Given(/^I submit a volunteer op with address "(.*?)", "(.*?)", "(.*?)", "(.*?)" on the "(.*?)" page$/) do |title, desc, address, postcode, org_name|
   org = Organisation.find_by_name(org_name)
   visit organisation_path org
-  click_link "Create a Volunteer Opportunity"
+  click_link 'Create a Volunteer Opportunity'
   expect(current_path).to eq new_organisation_volunteer_op_path org
-  fill_in 'Title', :with => title
-  fill_in 'Description', :with => desc
+  fill_in 'Title', with: title
+  fill_in 'Description', with: desc
   check 'Volunteer opportunity on different location?'
-  fill_in 'Address', :with => address
-  fill_in 'Postcode', :with => postcode
+  fill_in 'Address', with: address
+  fill_in 'Postcode', with: postcode
   click_on 'Create Volunteer Opportunity'
 end
 
@@ -53,7 +53,7 @@ Given /^I update "(.*?)" volunteer op description to be "(.*?)"$/ do |title, des
   vop = VolunteerOp.find_by_title title
   visit volunteer_op_path vop
   click_on 'Edit'
-  fill_in('Description', :with => description)
+  fill_in('Description', with: description)
   click_on 'Update Volunteer Opportunity'
 end
 
@@ -62,7 +62,7 @@ Given /^I should see (\d+) markers in the map$/ do |num|
 end
 
 Then(/^I should see a link to "(.*?)" page "(.*?)"$/) do |link, url|
-  page.should have_link(link, :href => url)
+  page.should have_link(link, href: url)
 end
 
 Given(/^the map should show the do\-it opportunity titled (.*)$/) do |opportunity_title|
@@ -74,9 +74,9 @@ Given(/^the map should show the do\-it opportunity titled (.*)$/) do |opportunit
   expect(find('.arrow_box').text).to include(opportunity_title)
 end
 
-When(/^I set new volunteer opportunity location to "(.*?)", "(.*?)"$/) do |address, postcode|
-  fill_in 'Address', :with => address
-  fill_in 'Postcode', :with => postcode
+When(/^I set new volunteer opportunity location to "(.*?)", "(.*?)"$/) do |addr, pcode|
+  fill_in 'Address', with: addr
+  fill_in 'Postcode', with: pcode
   click_button 'Update Volunteer Opportunity'
 end
 

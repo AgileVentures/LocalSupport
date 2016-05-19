@@ -46,11 +46,11 @@ class VolunteerOp < ActiveRecord::Base
   private
   
   def has_different_address?
-    self.different_address == "1"
+    different_address == '1'
   end
   
   def clear_lat_lng
-    if self.different_address == "0"
+    if different_address == '0'
       self.longitude = nil
       self.latitude = nil
     end

@@ -1,18 +1,18 @@
 require 'rails_helper'
 
-describe "volunteer_ops/show", :type => :view do
+describe 'volunteer_ops/show', :type => :view do
   let(:org) { double :organisation,
-    :name => 'Friendly',
-    :id => 1
+    name: 'Friendly',
+    id: 1
   }
   let(:op) { double :volunteer_op,
-    :title => "Honorary treasurer",
-    :description => "Great opportunity to build your portfolio!",
-    :organisation => org,
-    :different_address => "1",
-    :address => "Station Rd",
-    :postcode => "HA8 7BD",
-    :id => 3
+    title: 'Honorary treasurer',
+    description: 'Great opportunity to build your portfolio!',
+    organisation: org,
+    different_address: '1',
+    address: 'Station Rd',
+    postcode: 'HA8 7BD',
+    id: 3
   }
   before(:each) do
     @volunteer_op = assign(:volunteer_op, op)
