@@ -19,24 +19,26 @@
     width: auto; display:inline;
 }
 .vol_op{
+  height: 22px;
+  width: 22px;
   &:hover{
     cursor: pointer;
   }
 }
 .measle {
+  height: 6px;
+  width: 6px;
   &:hover{
     cursor: pointer;
   }
-  width: 6px;
-  height: 6px;
 }
 
 .marker {
+  height: 22px;
+  width: 22px;
   &:hover{
     cursor: pointer;
   }
-  width: 16px;
-  height: 30px;
 }
 
 .infowindow_close{

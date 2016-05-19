@@ -34,9 +34,9 @@ Then /^the (proposed organisation|organisation) "(.*?)" should have a (large|sma
   org_id = klass.find_by(name: name).id
   marker_class = (icon_size == "small") ? "measle" : "marker"
   if marker_class == "measle"
-    expect(find_map_icon(marker_class, org_id)["src"]).to eq "https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png"
+    expect(find_map_icon(marker_class, org_id)["src"]).to eq "/assets/measle.png"
   else
-    expect(find_map_icon(marker_class, org_id)["src"]).to eq "https://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png"
+    expect(find_map_icon(marker_class, org_id)["src"]).to eq "/assets/marker.png"
   end
 end
 
