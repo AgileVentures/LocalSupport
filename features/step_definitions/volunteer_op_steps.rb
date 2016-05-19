@@ -74,9 +74,9 @@ Given(/^the map should show the do\-it opportunity titled (.*)$/) do |opportunit
   expect(find('.arrow_box').text).to include(opportunity_title)
 end
 
-When(/^I set new volunteer opportunity location to "(.*?)", "(.*?)"$/) do |addr, pcode|
+When(/^I set new volunteer opportunity location to "(.*?)", "(.*?)"$/) do |addr, pc|
   fill_in 'Address', with: addr
-  fill_in 'Postcode', with: pcode
+  fill_in 'Postcode', with: pc
   click_button 'Update Volunteer Opportunity'
 end
 

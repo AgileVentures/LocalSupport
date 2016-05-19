@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe VolunteerOp, :type => :model do
+describe VolunteerOp, type: :model do
   it 'must have a title' do
     v = VolunteerOp.new(title: '')
     v.valid?
