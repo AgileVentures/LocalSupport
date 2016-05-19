@@ -1,12 +1,8 @@
 require 'rails_helper'
 
-describe SetupSlug do # unit test
+describe SetupSlug do
   subject(:setup_slug) { described_class }
   let(:string) { 'test' }
-
-  # black box
-
-  # unit (high coverage, fast) danger (disconnected)
 
   it 'returns true when arg is nil' do
     expect(setup_slug.run(nil)).to be nil

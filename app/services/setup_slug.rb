@@ -14,10 +14,11 @@ class SetupSlug
   end
 
   def candidates
-    [  name.method(:short_name),
+    [
+        name.method(:short_name),
         name.method(:longer_name),
         name.method(:append_org),
-       :name
+        :name
     ]
   end
 

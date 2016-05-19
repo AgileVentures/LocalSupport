@@ -7,7 +7,8 @@ class String
     scan(/\b\w+\b/).map(&:downcase)
   end
   
-  # Methods below created to customly setup slugs from friendly_id gem
+  # Methods below created to do custom setup slugs from friendly_id gem
+  # perhaps should extract Name class?
   
   def short_name
     if self.match(/parochial church/i)
@@ -35,8 +36,8 @@ class String
   end
 
   def parochial_churches
-    return slug_words.first(2).push(parish.downcase_words.first(3)).join('-') unless parish.nil?
-    longer_name
+    return longer_name if parish.nil?
+    slug_words.first(2).push(parish.downcase_words.first(3)).join('-')
   end
   
   def parish

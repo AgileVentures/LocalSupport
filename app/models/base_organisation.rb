@@ -48,7 +48,5 @@ class BaseOrganisation < ActiveRecord::Base
   def slug_candidates
     SetupSlug.run(self.name) 
   end
-  
+
 end
-
-
