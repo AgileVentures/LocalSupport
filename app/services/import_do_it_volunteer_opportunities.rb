@@ -25,6 +25,7 @@ class ImportDoItVolunteerOpportunities
   end
 
   def process_doit_json_page(response)
+    check_status(response)
     return nil unless has_content?(response)
     opportunities = JSON.parse(response.body)['data']['items']
     persist_doit_vol_ops(opportunities)
@@ -49,6 +50,14 @@ class ImportDoItVolunteerOpportunities
 
   def has_content?(response)
     response.body && response.body != '[]'
+  end
+  
+  def check_status(response)
+    begin
+      raise HTTParty::Error unless response.status == 200
+    rescue HTTParty::Error => e
+      puts "HTTParty has encountered an error:\n #{e.message}\n HTTP status: #{response.status}"
+    end
   end
 
 end
