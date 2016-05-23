@@ -78,3 +78,13 @@ Feature: Web page owned by each charity
     | Postcode |
     | Email    |
     | Website  |
+
+  Scenario: display categories as links
+    Then I should see "Health" < tagged > with "a"
+    And  I should see "Education" < tagged > with "a"
+    And  I should see "Voluntary" < tagged > with "a"
+    And  I should see "Finance" < tagged > with "a"
+
+  Scenario: links to categories leads to search results
+    Given I click "Health"
+    Then the URL for "Health" should refer to "/organisations/search?utf8=%E2%9C%93&what_id=2&who_id=&how_id=&q=&commit=Submit"
