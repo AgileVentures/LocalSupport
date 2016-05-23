@@ -20,12 +20,17 @@ class ImportDoItVolunteerOpportunities
   def run
     href = "#{HREF}#{radius}"
     model_klass.delete_all(source: 'doit')
-    while href = process_doit_json_page(http.get("#{HOST}#{href}"));
+    while 
+      begin
+        response = http.get("#{HOST}#{href}")
+        href = process_doit_json_page(response)
+      rescue HTTParty::Error => e
+        logger.error(e.message)
+      end
     end
   end
 
   def process_doit_json_page(response)
-    check_status(response)
     return nil unless has_content?(response)
     opportunities = JSON.parse(response.body)['data']['items']
     persist_doit_vol_ops(opportunities)
@@ -52,12 +57,4 @@ class ImportDoItVolunteerOpportunities
     response.body && response.body != '[]'
   end
   
-  def check_status(response)
-    begin
-      raise HTTParty::Error unless response.status == 200
-    rescue HTTParty::Error => e
-      puts "HTTParty has encountered an error:\n #{e.message}\n HTTP status: #{response.status}"
-    end
-  end
-
 end
