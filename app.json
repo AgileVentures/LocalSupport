@@ -15,6 +15,9 @@
     },
     "RACK_ENV":{
       "required":true
+    },
+    "DEVISE_SECRET_KEY":{
+      "required":true
     }
   },
   "addons":[
