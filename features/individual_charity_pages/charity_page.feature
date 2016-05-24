@@ -61,18 +61,11 @@ Feature: Web page owned by each charity
     Then I should not see "Health" within "what_they_do"
     And I should not see "Education" within "what_they_do"
     And I should not see "Animal Welfare" within "what_they_do"
-    
-  Scenario: display categories as links
-    Then I should see "Health" < tagged > with "a"
-    And  I should see "Education" < tagged > with "a"
-    And  I should see "Voluntary" < tagged > with "a"
-    And  I should see "Finance" < tagged > with "a"
 
-  Scenario: links to categories leads to search results
-    Then the URL for "Health" should refer to "/organisations/search?how_id=&q=&what_id=2&who_id="
-    And the URL for "Education" should refer to "/organisations/search?how_id=&q=&what_id=3&who_id="
-    And the URL for "Voluntary" should refer to "/organisations/search?how_id=&q=&what_id=&who_id=4"
-    And the URL for "Finance" should refer to "/organisations/search?how_id=5&q=&what_id=&who_id="
+  Scenario: categories link to search results of orgs with these categories
+    Given I click "Health"
+    Then I should be on the organisations search page
+    And I should see "Friendly"
 
   Scenario Outline: show labels if field is present
     Then I should see "<label>"
