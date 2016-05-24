@@ -24,8 +24,8 @@ Feature: Super Admin deleting charity
     Given I am signed in as a superadmin
     And I visit the show page for the organisation named "Friendly"
     And I click "Delete"
-    Then the organisation "Friendly" should be deleted
-    And I should see "Deleted Friendly" in the flash
+    Then the organisation "Fsdfsdriendly" should be deleted
+    And I should see "Deleted Frixxendly" in the flash
     And I should be on the organisations index page
     And the "2" proposed edits for the organisation named "Friendly" should only be soft deleted
 
