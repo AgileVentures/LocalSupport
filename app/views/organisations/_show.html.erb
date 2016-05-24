@@ -33,31 +33,18 @@
     <% if org.categories.present? %>
       <h4>Categories: </h4>
       <ul class="org-categories">
-        <li id="what_they_do">
-          <h5><strong>What they do</strong></h5>
-          <p>
-          <% org.categories.what_they_do.collect do |category| %>
-          <%= link_to category.name, organisations_search_path(what_id: category.id, who_id: '', how_id: '', q: '') %>
-          <% end.join(', ') %>
-          </p>
-        </li>
-        <li id="who_they_help">
-          <h5><strong>Who they help</strong></h5>
-          <p>
-          <% org.categories.who_they_help.collect do |category| %>
-          <%= link_to category.name, organisations_search_path(what_id: '', who_id: category.id, how_id: '', q: '') %>
-          <% end.join(', ') %>
-          </p>
-        </li>
-        <li id="how_they_help">
-          <h5><strong>How they help</strong></h5>
-          <p>
-          <% org.categories.how_they_help.collect do |category| %>
-          <%= link_to category.name, organisations_search_path(what_id: '', who_id: '', how_id: category.id, q: '') %>
-          <% end.join(', ') %>
-          </p>
-        </li>
+        <% ['what_they_do', 'who_they_help', 'how_they_help'].each do |type| %>
+          <li id=<%="#{type}"%> >
+            <h5><strong><%="#{type.capitalize.gsub(/_/, ' ')}"%></strong></h5>
+            <p>
+            <% render_link_categories(type, org) do |category| %>
+            <%= link_to category.name, organisations_search_path(params_hash(type,category)) %>
+            <% end.join(', ') %>
+            </p>
+          </li>
+        <% end %>
+
       </ul>
     <% end %>
-  </div>
+   </div>
 </div>
