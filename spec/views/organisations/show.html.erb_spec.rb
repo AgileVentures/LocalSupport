@@ -267,17 +267,5 @@ describe 'organisations/show.html.erb', :type => :view do
       expect(rendered).not_to have_content "Sports"
     end
 
-    it 'renders categories when present' do
-      cats = double(Category::ActiveRecord_AssociationRelation)
-      org = mock_model(Organisation, categories: cats)
-      allow(cats).to receive_message_chain(:what_they_do, :pluck).and_return(["Animal Welfare", "Sports"])
-      allow(cats).to receive_message_chain(:who_they_help, :pluck).and_return(["Sports","Sports"])
-      allow(cats).to receive_message_chain(:how_they_help, :pluck).and_return(["Animal Welfare""Sports"])
-      assign(:organisation, org)
-      render
-      expect(rendered).to have_content "Categories:"
-      expect(rendered).to have_content "Animal Welfare"
-      expect(rendered).to have_content "Sports"
-    end
   end
 end
