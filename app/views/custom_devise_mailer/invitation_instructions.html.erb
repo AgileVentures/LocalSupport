@@ -1,16 +1,7 @@
-<p>Dear Colleague,</p>
-
-<p><a href="http://www.voluntaryactionharrow.org.uk/">Voluntary Action Harrow</a> in partnership with Agile Ventures have created an online directory for Harrow charities and non-profits using information from The Charities Commission. This directory can be updated by the individual organisations once they have signed up.</p>
+<%= simple_format( @mail_template.text ) %>
 
 <p>To view and update your organisation's information please accept the invitation below. This will then enable you to update your organisation's directory entry.</p>
 
 <p><%= link_to 'Accept invitation', accept_invitation_url(@resource, :invitation_token => @resource.raw_invitation_token) %></p>
 
-<p>To view the directory visit: <a href="http://harrowcn.org.uk/">http://harrowcn.org.uk/</a></p>
-
-<p>If you have any questions, please contact us.</p>
-<br/>
-<p>Rachel Wright<br/>
-  rachelwright@voluntaryactionharrow.org.uk<br/>
-  The Lodge, 64 Pinner Road, Harrow, Middlesex, HA1 4HZ - 020 8861 5894<br/>
-  Voluntary Action Harrow (VAH) is a company limited by guarantee (no. 7554530)</p>
+<%= simple_format( @mail_template.footnote ) %>
