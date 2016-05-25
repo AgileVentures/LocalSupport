@@ -37,9 +37,8 @@
           <li id=<%="#{type}"%> >
             <h5><strong><%="#{type.capitalize.gsub(/_/, ' ')}"%></strong></h5>
             <p>
-            <% render_link_categories(type, org) do |category| %>
-            <%= link_to category.name, organisations_search_path(params_hash(type,category)) %>
-            <% end.join(', ') %>
+            <%= safe_join(render_link_categories(type, org) {|category| link_to category.name, 
+            organisations_search_path(params_hash(type,category))}, ', ') %>
             </p>
           </li>
         <% end %>
