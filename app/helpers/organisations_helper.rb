@@ -1,7 +1,7 @@
 module OrganisationsHelper
   
   def render_link_categories(type, org, &block)
-    org.categories.send(:"#{type}").collect(&block)
+    org.categories.send(:"#{type}").map(&block)
   end
   
   def params_hash(type, category)
