@@ -12,7 +12,7 @@ describe 'volunteer_ops/show', :type => :view do
     address: 'Station Rd',
     postcode: 'HA8 7BD',
     id: 3,
-    has_different_address?: true
+    different_address?: true
   }
   before(:each) do
     @volunteer_op = assign(:volunteer_op, op)

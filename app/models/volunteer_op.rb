@@ -5,7 +5,7 @@ class VolunteerOp < ActiveRecord::Base
   belongs_to :organisation
   
   geocoded_by :full_address
-  after_validation :geocode, if: :has_different_address?   
+  after_validation :geocode, if: :different_address?   
   after_validation :clear_lat_lng
   
   scope :order_by_most_recent, -> { order('updated_at DESC') }
@@ -43,14 +43,14 @@ class VolunteerOp < ActiveRecord::Base
     arel_table[:title].matches(text)
   end
  
-  def has_different_address?
+  def different_address?
     address.present? && postcode.present?
   end 
   
   private
   
   def clear_lat_lng
-    return if has_different_address?
+    return if different_address?
     self.longitude = nil
     self.latitude = nil
   end

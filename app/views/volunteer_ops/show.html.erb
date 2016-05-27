@@ -6,7 +6,7 @@
   <p>
     <%= simple_format auto_link @volunteer_op.description %>
   </p>
-  <% if @volunteer_op.has_different_address? %>
+  <% if @volunteer_op.different_address? %>
   <p>
     <b>Volunteer opportunity location:</b>
     <%= "#{ @volunteer_op.address }, #{ @volunteer_op.postcode }" %>
