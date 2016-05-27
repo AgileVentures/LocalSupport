@@ -5,6 +5,7 @@ begin
       Logger.new(STDOUT).info 'Start friendly_id generation'
       Organisation.find_each do |org|
         WithoutTimestamps.run do
+          org.slug = nil
           org.save
         end
       end

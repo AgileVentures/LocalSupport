@@ -62,6 +62,11 @@ Feature: Web page owned by each charity
     And I should not see "Education" within "what_they_do"
     And I should not see "Animal Welfare" within "what_they_do"
 
+  Scenario: categories link to search results of orgs with these categories
+    Given I click "Health"
+    Then I should be on the organisations search page
+    And I should see "Friendly"
+
   Scenario Outline: show labels if field is present
     Then I should see "<label>"
   Examples:
@@ -78,3 +83,4 @@ Feature: Web page owned by each charity
     | Postcode |
     | Email    |
     | Website  |
+
