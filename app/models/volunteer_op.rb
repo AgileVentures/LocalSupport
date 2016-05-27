@@ -42,17 +42,16 @@ class VolunteerOp < ActiveRecord::Base
   def self.contains_title?(text)
     arel_table[:title].matches(text)
   end
+ 
+  def has_different_address?
+    address.present? && postcode.present?
+  end 
   
   private
   
-  def has_different_address?
-    different_address == '1'
-  end
-  
   def clear_lat_lng
-    if different_address == '0'
-      self.longitude = nil
-      self.latitude = nil
-    end
+    return if has_different_address?
+    self.longitude = nil
+    self.latitude = nil
   end
 end

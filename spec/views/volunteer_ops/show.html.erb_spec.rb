@@ -9,10 +9,10 @@ describe 'volunteer_ops/show', :type => :view do
     title: 'Honorary treasurer',
     description: 'Great opportunity to build your portfolio!',
     organisation: org,
-    different_address: '1',
     address: 'Station Rd',
     postcode: 'HA8 7BD',
-    id: 3
+    id: 3,
+    has_different_address?: true
   }
   before(:each) do
     @volunteer_op = assign(:volunteer_op, op)
@@ -32,7 +32,6 @@ describe 'volunteer_ops/show', :type => :view do
     expect(@volunteer_op).to receive :description
     expect(@volunteer_op).to receive :address
     expect(@volunteer_op).to receive :postcode
-    expect(@volunteer_op).to receive :different_address
     expect(@volunteer_op).to receive(:organisation) {org}
     expect(org).to receive(:name)
     render

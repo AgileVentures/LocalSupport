@@ -74,7 +74,6 @@ class VolunteerOpsController < ApplicationController
       :organisation_id,
       :address,
       :postcode,
-      :different_address
     )
   end
 

@@ -14,7 +14,6 @@
 //= require organisations
 //= require analytics
 //= require utilities
-//= require volunteer_ops
 
 window.LocalSupport = {};
 
