@@ -1,6 +1,6 @@
 class BaseOrganisation < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :slug_candidates, use: :slugged
   
   acts_as_paranoid
   validates_url :website, prefferred_scheme: 'http://', message: 'Website is not a valid URL',
@@ -31,11 +31,11 @@ class BaseOrganisation < ActiveRecord::Base
 
   def gmaps4rails_marker_attrs
     if recently_updated_and_has_owner
-      ['https://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png',
+      ['marker.png',
         'data-id' => id,
        class: 'marker']
     else
-      ['https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/measle.png',
+      ['measle.png',
         'data-id' => id,
         class: 'measle']
     end
@@ -44,4 +44,9 @@ class BaseOrganisation < ActiveRecord::Base
   def has_been_updated_recently?
     updated_at >= 1.year.ago
   end
+  
+  def slug_candidates
+    SetupSlug.run(self.name) 
+  end
+
 end

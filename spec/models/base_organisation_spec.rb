@@ -56,5 +56,16 @@ describe BaseOrganisation, type: :model do
       org.save
     end
   end
+  
+  describe 'friendly_id' do
+     
+     it 'should use SetupSlug service for setting slugs' do
+       service_double = class_double(SetupSlug).as_stubbed_const
+       expect(service_double).to receive(:run)
+       
+       FactoryGirl.create(:organisation)
+     end
+     
+  end
 
 end

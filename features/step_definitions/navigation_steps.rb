@@ -28,6 +28,7 @@ def paths(location)
     'sign up' => new_user_registration_path,
     'sign in' => new_user_session_path,
     'organisations index' => organisations_path,
+    'organisations search' => organisations_search_path,
     'proposed organisations index' => proposed_organisations_path,
     'new organisation' => new_organisation_path,
     'new proposed organisation' => new_proposed_organisation_path,
@@ -38,6 +39,7 @@ def paths(location)
     'registered users' => users_report_path,
     'invited users' => invited_users_report_path,
     'volunteer opportunities' => volunteer_ops_path,
+    'volunteer opportunities search' => search_volunteer_ops_path,
     'contributors' => contributors_path,
     'deleted users' => deleted_users_report_path,
     'reset password' => reset_pwd
