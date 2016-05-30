@@ -9,7 +9,7 @@
 
   <p>
     <b>Organisation:</b>
-    <%= link_to @volunteer_op.organisation.name, organisation_path(@volunteer_op.organisation.id) %>
+    <%= link_to @volunteer_op.organisation.name, organisation_path(@volunteer_op.organisation) %>
   </p>
   <% if @editable %>
       <%= link_to("Edit", edit_volunteer_op_path(@volunteer_op.id), {:class => 'btn btn-primary'}) %>

@@ -2,6 +2,7 @@
 
 begin
   namespace :db do
+   desc 'Link pending invited users to organisations'
    task :fix_invites => :environment do
       current_invites = User.invited_not_accepted
       nil_org_users = current_invites.select {|user| user.organisation_id.nil?}

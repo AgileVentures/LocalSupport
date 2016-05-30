@@ -90,7 +90,7 @@ Then /^I (visit|should be on) the (edit|show) page for the (.*?) (named|titled) 
                     only_path: true,
                     controller: object.pluralize.underscore,
                     action: action,
-                    id: record.id
+                    id: record
                 })
   case mode
     when 'visit' then visit url

@@ -1,3 +1,5 @@
+@import "utils/colors";
+
 .org-info-msg-1 {
     color: rgba(0, 0, 0, 0.7);
     background-color: #E0FDEF;
@@ -128,3 +130,16 @@
   padding-top: 3px;
   vertical-align: top;
 }
+
+.error {
+  color: $error-red;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.error-name {
+  @extend .error;
+  margin-bottom: -5px;
+}
+
+

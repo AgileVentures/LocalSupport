@@ -42,6 +42,14 @@ Scenario: Sign in for an existing superadmin user
   Then I should be on the home page
   And I should see a link or button "superadmin@example.com"
 
+Scenario: Sign in for an existing superadmin user after search
+  Given I visit the home page
+  And I fill in "Optional Search Text" with "search words" within the main body
+  And I press "Submit"
+  And I sign in as "superadmin@example.com" with password "pppppppp"
+  Then I should be on the home page
+  And I should see a link or button "superadmin@example.com"
+
 Scenario: Sign in with wrong password for an existing superadmin user
   Given I sign in as "superadmin@example.com" with password "12345"
   Then I should be on the sign in page

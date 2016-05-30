@@ -32,7 +32,9 @@ end
 group :development do
   #gem 'ruby-debug19', :require => 'ruby-debug'
   #gem 'debugger', '~> 1.6.8'
+  gem "letter_opener"
   gem 'railroady'
+  gem 'quiet_assets'
 end
 
 group :test do
@@ -47,7 +49,6 @@ group :test do
   gem 'selenium-client'
   gem 'coveralls', require: false
   gem 'shoulda'
-  gem 'rspec-activemodel-mocks'
   gem 'vcr'
   gem 'puffing-billy'
   gem 'poltergeist'
@@ -98,3 +99,6 @@ gem "paranoia", "~> 2.0"
 
 gem 'dotenv-rails'
 gem 'airbrake'
+
+# Using user friendly names in URLs
+gem 'friendly_id', '~> 5.1.0'

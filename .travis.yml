@@ -24,3 +24,7 @@ deploy:
     staging: harrowcn-staging
     master: harrowcn-production
   run: rake db:migrate
+notifications:
+  email: false
+  slack:
+    secure: TZyMRkIOE99+rMEfOP3a9hCLmgF0K+Qr9vO0b3tgJLeb+SdKL3L++NyO0Q7rJUFJLHkYhn/BcV2wGNT2mrU1q9GPqOO0yyFwjl+v2vpImkPlnVf6Ud9+NnQIgFWK98LmSY0uCCZ8axvHw4ReFi/nK1p2GNabyhY8Dio4uJnryEQ=
