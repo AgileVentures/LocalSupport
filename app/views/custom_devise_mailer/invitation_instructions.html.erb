@@ -1,9 +1,8 @@
 <%= simple_format( @mail_template.body ) %>
 
-<p>To view and update your organisation's information please accept the invitation below. This will then enable you to update your organisation's directory entry.</p>
-
-<p><%= link_to 'Accept invitation', accept_invitation_url(@resource, :invitation_token => @resource.raw_invitation_token) %></p>
+<br><p>To view and update your organisation's information please accept the invitation below.
+  This will then enable you to update your organisation's directory entry.  <br>
+  <%= link_to 'Accept invitation', accept_invitation_url(@resource, :invitation_token => @resource.raw_invitation_token) %>
+</p><br>
 
 <%= simple_format( @mail_template.footnote ) %>
-
-<%= link_to 'Edit template', edit_mail_template_path(@mail_template), class: 'btn btn-primary' %>
