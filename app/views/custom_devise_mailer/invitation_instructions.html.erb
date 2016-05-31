@@ -5,3 +5,5 @@
 <p><%= link_to 'Accept invitation', accept_invitation_url(@resource, :invitation_token => @resource.raw_invitation_token) %></p>
 
 <%= simple_format( @mail_template.footnote ) %>
+
+<%= link_to 'Edit template', edit_mail_template_path(@mail_template), class: 'btn btn-primary' %>
