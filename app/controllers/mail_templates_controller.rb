@@ -2,7 +2,7 @@ class MailTemplatesController < ApplicationController
   before_action :authorize
   
   def edit
-    @mail_template = current_user.mail_template
+    @mail_template = MailTemplate.find_by(name: 'Invitation instructions')
     @orphans = Organisation.not_null_email.null_users.without_matching_user_emails
     render :template => 'organisation_reports/without_users_edit', :layout => 'invitation_table'
   end
@@ -21,6 +21,6 @@ class MailTemplatesController < ApplicationController
   private
   
   def mail_params
-    params.require(:mail_template).permit(:text, :footnote)
+    params.require(:mail_template).permit(:body, :footnote)
   end
 end

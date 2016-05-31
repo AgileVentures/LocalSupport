@@ -1,10 +1,11 @@
 <p><b> The Following email will be sent when a user is invited: </b></p>
 <div class="well" id="preview_email">
-  <%#= render template: 'custom_devise_mailer/invitation_instructions', :locals => { :@resource => User.new, :@email => @mail_template } %>
   <%= form_for @mail_template do |f| %>
-    <%= f.text_area :text, :class => "wide_form", :cols => "10", :rows => "10"  %></br>
-    <%= f.text_area :footnote, :class => "wide_form", :cols => "10", :rows => "5" %></br>
-    <%= f.submit %>
+    <%= f.label :body, 'Message' %>
+    <%= f.text_area :body, :class => "wide_form", :cols => "10", :rows => "10"  %><br>
+    <%= f.label :footnote, 'Footnote' %>
+    <%= f.text_area :footnote, :class => "wide_form", :cols => "10", :rows => "5" %><br>
+    <%= f.submit 'Update template' %>
   <% end %>
 </div>
 <table class="table table-hover sortable">
