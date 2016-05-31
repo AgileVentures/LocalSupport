@@ -14,6 +14,7 @@ class CustomDeviseMailer < Devise::Mailer
   def invitation_instructions(record, token, opts={})
     opts[:cc] = 'technical@harrowcn.org.uk'
     opts[:subject] = 'Welcome to Harrow Community Network!'
+    @mail_template = MailTemplate.find_by(name: 'Invitation instructions')
     super
   end
 
