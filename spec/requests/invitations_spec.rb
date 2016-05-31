@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 describe "Invitations", :type => :request, :helpers => :requests do
+
+  before do
+    FactoryGirl.create :invitation_instructions
+  end
+
   describe "create -- xhr POST /invitations" do
     let(:superadmin) { FactoryGirl.create(:user, email: 'superadmin@example.com', superadmin: true) }
 

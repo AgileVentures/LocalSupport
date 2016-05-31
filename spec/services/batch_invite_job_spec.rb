@@ -11,6 +11,8 @@ describe ::BatchInviteJob do
 
   before do
     current_user # lazy-loading messes up DB counts
+
+    FactoryGirl.create :invitation_instructions
   end
 
   subject(:do_batch_invite) { BatchInviteJob.new(params, current_user).run }
