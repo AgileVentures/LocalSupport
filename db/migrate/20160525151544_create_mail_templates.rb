@@ -1,10 +1,10 @@
 class CreateMailTemplates < ActiveRecord::Migration
   def change
     create_table :mail_templates do |t|
-      t.text :text
-      t.string :email
+      t.text :name
+      t.text :body
       t.text :footnote
-      t.references :user
+      t.string :email
 
       t.timestamps null: false
     end

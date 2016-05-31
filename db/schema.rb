@@ -38,10 +38,10 @@ ActiveRecord::Schema.define(version: 20160525151544) do
   end
 
   create_table "mail_templates", force: :cascade do |t|
-    t.text     "text"
-    t.string   "email"
+    t.text     "name"
+    t.text     "body"
     t.text     "footnote"
-    t.integer  "user_id"
+    t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -4,7 +4,7 @@ class OrganisationReportsController < ApplicationController
 
   def without_users_index
     @resend_invitation = false
-    @mail_template = current_user.mail_template  
+    @mail_template = mail_template.find_by(name: 'Invitation email')
     @orphans = Organisation.not_null_email.null_users.without_matching_user_emails
     render :template => 'organisation_reports/without_users_index', :layout => 'invitation_table'
   end
