@@ -45,6 +45,7 @@ class UserReportsController < ApplicationController
   def invited
     @resend_invitation = true
     @invitations = serialize_invitations
+    @mail_template = MailTemplate.find_by(name: 'Invitation instructions')
     render :template => 'user_reports/invited', :layout => 'invitation_table'
   end
 

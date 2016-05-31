@@ -1,12 +1,6 @@
 <p><b> The Following email will be sent when a user is invited: </b></p>
 <div class="well" id="preview_email">
-  <%= form_for @mail_template do |f| %>
-    <%= f.label :body, 'Message' %>
-    <%= f.text_area :body, :class => "wide_form", :cols => "10", :rows => "10"  %><br>
-    <%= f.label :footnote, 'Footnote' %>
-    <%= f.text_area :footnote, :class => "wide_form", :cols => "10", :rows => "5" %><br>
-    <%= f.submit 'Update template' %>
-  <% end %>
+  <%= render partial: 'shared/edit_mail_template', :locals => { :@resource => User.new } %>
 </div>
 <table class="table table-hover sortable">
   <thead>
