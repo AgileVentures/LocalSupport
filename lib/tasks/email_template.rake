@@ -8,7 +8,7 @@ begin
     task :email_template => :environment do
       Logger.new(STDOUT).info 'Start email template generation'
 
-      f = File.read('./db/invitation_instructions.txt').split(/---/)
+      f = File.read('./db/invitation_instructions.txt').split(/\n---\n/)
       MailTemplate.create!(name: f[1], body: f[2], footnote: f[3], email: f[4])
 
       Logger.new(STDOUT).info 'Email template generation finished'
