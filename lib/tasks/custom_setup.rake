@@ -9,6 +9,7 @@ begin
       Rake::Task['db:cat_org_import'].invoke
       Rake::Task['db:pages'].invoke
       Rake::Task['db:import:emails'].invoke('db/emails.csv')
+      Rake::Task['db:email_template'].invoke
 
     end
   end

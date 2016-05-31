@@ -1,6 +1,7 @@
 # rake db:email_template
 
-# Later, with more templates, email_template can be a namespace, and each template could have separate task
+# Later, with more templates, email_template can be a namespace,
+# and each template could have separate task
 
 begin
   namespace :db do

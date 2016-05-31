@@ -101,7 +101,10 @@ And(/^a file exists:$/) do |table|
 end
 
 Given /^the invitation instructions mail template exists$/ do
-  MailTemplate.create!(name: 'Invitation instructions', body: 'Nothing', footnote: 'Nothing', email: 'noemail@email.org')
+  MailTemplate.create!(name: 'Invitation instructions',
+                       body: 'Nothing',
+                       footnote: 'Nothing',
+                       email: 'noemail@email.org')
 end
 
 
