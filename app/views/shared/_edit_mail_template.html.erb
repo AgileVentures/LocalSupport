@@ -2,9 +2,7 @@
     <%= f.label :body, 'Message:' %>
     <%= f.text_area :body, :class => "wide_form", :cols => "10", :rows => "10"  %><br><br>
 
-<strong>Link to accept invitation:</strong>
-<br><p>To view and update your organisation's information please accept the invitation below.
-  This will then enable you to update your organisation's directory entry.<br>
+<p>
   <%= link_to 'Accept invitation', accept_invitation_url(@resource, :invitation_token => @resource.raw_invitation_token) %>
 </p><br>
 
