@@ -52,22 +52,6 @@ Feature: Orphans UI
     And I visit the invite users to become admin of organisations page
     Then I should see the preview email
 
-  Scenario: Super Admin can enter edit email template page
-    Given cookies are approved
-    And I am signed in as a superadmin
-    And I visit the invite users to become admin of organisations page
-    And I click "Edit template"
-    Then I should be on the edit page for the MailTemplate named "Invitation instructions"
-
-  Scenario: Super Admin can edit email template
-    Given cookies are approved
-    And I am signed in as a superadmin
-    And I visit the edit page for the MailTemplate named "Invitation instructions"
-    And I fill in "Message" with "Test message" within the main body
-    And I press "Update template"
-    Then I should be on the invite users to become admin of organisations page
-    And I should see "Test message" within "preview_email"
-
   Scenario: As a non-superadmin trying to access orphans index
     Given cookies are approved
     Given I am signed in as a non-superadmin
