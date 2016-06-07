@@ -100,7 +100,7 @@ And(/^a file exists:$/) do |table|
   end
 end
 
-Given /^the invitation instructions mail template exists$/ do
+Given(/^the invitation instructions mail template exists$/) do
   MailTemplate.create!(name: 'Invitation instructions',
                        body: 'Nothing',
                        footnote: 'Nothing',
