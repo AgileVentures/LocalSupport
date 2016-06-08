@@ -15,7 +15,6 @@ Given(/^I submit a volunteer op with address "(.*?)", "(.*?)", "(.*?)", "(.*?)" 
   expect(current_path).to eq new_organisation_volunteer_op_path org
   fill_in 'Title', with: title
   fill_in 'Description', with: desc
-  check 'Volunteer opportunity on different location?'
   fill_in 'Address', with: address
   fill_in 'Postcode', with: postcode
   click_on 'Create Volunteer Opportunity'
