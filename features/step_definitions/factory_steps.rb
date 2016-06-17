@@ -100,6 +100,13 @@ And(/^a file exists:$/) do |table|
   end
 end
 
+Given(/^the invitation instructions mail template exists$/) do
+  MailTemplate.create!(name: 'Invitation instructions',
+                       body: 'Nothing',
+                       footnote: 'Nothing',
+                       email: 'noemail@email.org')
+end
+
 
 Then(/^the organisation "([^"]*)" should be deleted$/) do |name|
   org = Organisation.only_deleted.find_by_name name

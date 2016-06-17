@@ -12,6 +12,7 @@ Feature: Fix Associations
       | normal        | Awesome people   | 83 pinner road   | HA1 4HZ  | superadmin@org.org     |
       | upcased       | Awesome people   | 84 pinner road   | HA1 4HZ  | UPCASED@org.org        |
       | whitespace    | Awesome people   | 30 pinner road   | HA1 4HZ  | whitespace@charity.org |
+    And the invitation instructions mail template exists
     And "whitespace" has a whitespace at the end of the email address
     And the superadmin invited a user for "normal"
     And the superadmin invited a user for "upcased"

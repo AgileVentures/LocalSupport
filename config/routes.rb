@@ -34,6 +34,7 @@ LocalSupport::Application.routes.draw do
 
   post 'cookies/allow', to: 'application#allow_cookie_policy'
 
+  resources :mail_templates
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

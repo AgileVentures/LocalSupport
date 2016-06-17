@@ -108,4 +108,11 @@ FactoryGirl.define do
     end
   end
 
+  factory :invitation_instructions, class: MailTemplate do
+    name 'Invitation instructions'
+    body 'Test template body'
+    footnote 'Test template footnote'
+    email 'test@test.com'
+  end
+
 end

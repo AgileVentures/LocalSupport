@@ -1,0 +1,12 @@
+<%= form_for @mail_template do |f| %>
+    <%= f.label :body, 'Message:' %>
+    <%= f.text_area :body, :class => "wide_form", :cols => "10", :rows => "10"  %><br><br>
+
+<p>
+  <%= link_to 'Accept invitation', accept_invitation_url(@resource, :invitation_token => @resource.raw_invitation_token) %>
+</p><br>
+
+    <%= f.label :footnote, 'Footnote:' %>
+    <%= f.text_area :footnote, :class => "wide_form", :cols => "10", :rows => "8" %><br><br>
+    <%= f.submit 'Update template', class: 'btn btn-primary' %>
+<% end %>
