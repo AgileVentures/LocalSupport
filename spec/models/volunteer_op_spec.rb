@@ -148,14 +148,14 @@ describe VolunteerOp, type: :model do
     let!(:vol_op) { FactoryGirl.create :volunteer_op, details }   
     
     it 'has a different address' do
-      expect(vol_op.different_address?).to be_truthy
+      expect(vol_op.address_complete?).to be_truthy
     end
     
     it 'has not have different address' do
       vol_op.address = ''
       vol_op.postcode = '' 
       vol_op.save!
-      expect(vol_op.different_address?).to be_falsey
+      expect(vol_op.address_complete?).to be_falsey
     end
     
     it 'should clean the lat and lng if no address' do

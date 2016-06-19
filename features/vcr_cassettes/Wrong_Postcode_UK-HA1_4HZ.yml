@@ -10,7 +10,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
       User-Agent:
       - Ruby
   response:
@@ -21,13 +21,13 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Tue, 02 Feb 2016 10:02:02 GMT
+      - Sun, 19 Jun 2016 12:41:46 GMT
       Expires:
-      - Wed, 03 Feb 2016 10:02:02 GMT
+      - Mon, 20 Jun 2016 12:41:46 GMT
       Cache-Control:
       - public, max-age=86400
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Server:
       - mafe
       Content-Length:
@@ -37,7 +37,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: |
         {
            "results" : [
@@ -100,5 +100,5 @@ http_interactions:
            "status" : "OK"
         }
     http_version: 
-  recorded_at: Tue, 02 Feb 2016 10:02:09 GMT
+  recorded_at: Thu, 25 Dec 1980 00:00:00 GMT
 recorded_with: VCR 2.9.3
