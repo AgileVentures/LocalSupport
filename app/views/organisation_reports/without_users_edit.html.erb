@@ -1,0 +1,5 @@
+<p><b> The Following email will be sent when a user is invited: </b></p>
+<div class="well" id="preview_email">
+  <%= render partial: 'shared/edit_mail_template', :locals => { :@resource => User.new } %>
+</div>
+<%= render partial: 'organisation_reports/without_users_table' %>
