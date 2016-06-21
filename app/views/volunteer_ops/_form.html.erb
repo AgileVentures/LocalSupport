@@ -19,11 +19,13 @@
   </div>
   <div class="field">
     <%= f.label :address , 'Address', :style => "margin-top: 16px;" %>
-    <%= f.text_field :address, :class => "wide_form" %>    
+    <%= f.text_field :address, :class => "wide_form",
+                    placeholder: "#{@volunteer_op.organisation.address}" %>    
   </div>
   <div class="field">
     <%= f.label :postcode , 'Postcode', :style => "margin-top: 16px;" %>
-    <%= f.text_field :postcode, :class => "wide_form" %>    
+    <%= f.text_field :postcode, :class => "wide_form",
+                    placeholder: "#{@volunteer_op.organisation.postcode}"%>    
   </div>    
   <div class="actions" style="margin-top: 16px;">
     <%= f.submit button_text(@volunteer_op), class: 'btn btn-primary' %>
