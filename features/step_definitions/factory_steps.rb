@@ -50,8 +50,8 @@ end
 
 Given /the following volunteer opportunities exist/ do |volunteer_ops_table|
   volunteer_ops_table.hashes.each do |volunteer_op|
-    volunteer_op["organisation"] = Organisation.find_by_name(volunteer_op["organisation"])
-    VolunteerOp.create! volunteer_op
+      volunteer_op["organisation"] = Organisation.find_by_name(volunteer_op["organisation"])
+      VolunteerOp.create! volunteer_op
   end
 end
 

@@ -6,12 +6,12 @@ describe VolunteerOpsHelper, :type => :helper do
 
     it 'button mentions "Create" when it is a new record' do
       allow(op).to receive_messages new_record?: true
-      expect(button_text(op)).to eq 'Create a Volunteer Opportunity'
+      expect(button_text(op)).to eq 'Create Volunteer Opportunity'
     end
 
     it 'button mentions "Update" when it is NOT a new record' do
       allow(op).to receive_messages new_record?: false
-      expect(button_text(op)).to eq 'Update a Volunteer Opportunity'
+      expect(button_text(op)).to eq 'Update Volunteer Opportunity'
     end
 
     it 'mutation-proofing' do
