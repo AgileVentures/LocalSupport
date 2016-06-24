@@ -4,12 +4,18 @@ describe 'volunteer_ops/new', :type => :view do
   let (:organisation) { double :organisation, id: 3 }
   let (:user) { double :user, organisation: organisation } 
   before(:each) do
+    create(:organisation, 
+      name: 'Happy org',
+      address: '87 Roxeth Green Avenue, Harrow',
+      postcode: 'HA2 8AB'
+    )
     assign(:volunteer_op, stub_model(VolunteerOp,
       title: 'MyString',
       description: 'MyText',
       organisation: nil
     ).as_new_record)
-    params[:organisation_id] = 4
+    params[:organisation_id] = 'Happy org'
+    byebug
   end
 
   it 'uses a partial that needs local variables' do
