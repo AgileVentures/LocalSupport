@@ -1,6 +1,8 @@
 class VolunteerOpsController < ApplicationController
   layout 'two_columns_with_map'
-  before_action :authorize, :except => [:search, :show, :index]
+  before_action :authorize, except: [:search, :show, :index]
+  before_action :set_organisation, only: [:new, :create]
+  
 
   def search
     @query = params[:q]
@@ -28,17 +30,15 @@ class VolunteerOpsController < ApplicationController
 
   def new
     @volunteer_op = VolunteerOp.new
-    @organisation = Organisation.friendly.find(params[:organisation_id])
   end
 
   def create
-    org = Organisation.friendly.find(params[:organisation_id])
-    params[:volunteer_op][:organisation_id] = org.id
+    params[:volunteer_op][:organisation_id] = @organisation.id
     @volunteer_op = VolunteerOp.new(volunteer_op_params)
     if @volunteer_op.save
       redirect_to @volunteer_op, notice: 'Volunteer op was successfully created.'
     else
-      render action: 'new'
+      render :new
     end
   end
 
@@ -96,5 +96,9 @@ class VolunteerOpsController < ApplicationController
     else
       current_user.organisation == VolunteerOp.find(params[:id]).organisation if current_user.present? && current_user.organisation.present?
     end
+  end
+  
+  def set_organisation
+    @organisation = Organisation.friendly.find(params[:organisation_id])
   end
 end
