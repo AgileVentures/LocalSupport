@@ -28,6 +28,7 @@ class VolunteerOpsController < ApplicationController
 
   def new
     @volunteer_op = VolunteerOp.new
+    @organisation = Organisation.friendly.find(params[:organisation_id])
   end
 
   def create
@@ -72,6 +73,8 @@ class VolunteerOpsController < ApplicationController
       :description,
       :title,
       :organisation_id,
+      :address,
+      :postcode
     )
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160525151544) do
+ActiveRecord::Schema.define(version: 20160628192920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -154,6 +154,8 @@ ActiveRecord::Schema.define(version: 20160525151544) do
     t.float    "longitude"
     t.float    "latitude"
     t.datetime "deleted_at"
+    t.string   "address"
+    t.string   "postcode"
   end
 
   add_index "volunteer_ops", ["deleted_at"], name: "index_volunteer_ops_on_deleted_at", using: :btree
