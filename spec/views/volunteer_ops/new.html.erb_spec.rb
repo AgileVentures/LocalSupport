@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'volunteer_ops/new', type: :view do
-  let (:organisation) { double :organisation, id: 3 }
+  let (:organisation) { double :organisation, id: 3, address: 'home', postcode: 'wherever'}
   let (:user) { double :user, organisation: organisation } 
   before(:each) do
     create(:organisation, 
@@ -15,7 +15,10 @@ describe 'volunteer_ops/new', type: :view do
       organisation: nil
     ).as_new_record)
     params[:organisation_id] = 'Happy org'
+
+    @organisation = assign(:organisation, organisation)
   end
+
 
   it 'uses a partial that needs local variables' do
     url = organisation_volunteer_ops_path(params[:organisation_id])
@@ -25,14 +28,15 @@ describe 'volunteer_ops/new', type: :view do
 
   it 'renders new volunteer_op form' do
     render
-    expect(rendered).to have_xpath("//form[@action='#{organisation_volunteer_ops_path(organisation_id:4)}'][@method='post']")
-    expect(rendered).to have_xpath("//form[@action='#{organisation_volunteer_ops_path(organisation_id:4)}'][@method='post']
+    # byebug
+    expect(rendered).to have_xpath("//form[@action='#{organisation_volunteer_ops_path(organisation_id: 'Happy org')}'][@method='post']")
+    expect(rendered).to have_xpath("//form[@action='#{organisation_volunteer_ops_path(organisation_id: 'Happy org')}'][@method='post']
       //input[@id='volunteer_op_title'][@name='volunteer_op[title]']")
-    expect(rendered).to have_xpath("//form[@action='#{organisation_volunteer_ops_path(organisation_id:4)}'][@method='post']
+    expect(rendered).to have_xpath("//form[@action='#{organisation_volunteer_ops_path(organisation_id: 'Happy org')}'][@method='post']
       //textarea[@id='volunteer_op_description'][@name='volunteer_op[description]']")
-    expect(rendered).to have_xpath("//form[@action='#{organisation_volunteer_ops_path(organisation_id:4)}'][@method='post']
+    expect(rendered).to have_xpath("//form[@action='#{organisation_volunteer_ops_path(organisation_id: 'Happy org')}'][@method='post']
       //input[@id='volunteer_op_address'][@name='volunteer_op[address]']")
-    expect(rendered).to have_xpath("//form[@action='#{organisation_volunteer_ops_path(organisation_id:4)}'][@method='post']
+    expect(rendered).to have_xpath("//form[@action='#{organisation_volunteer_ops_path(organisation_id: 'Happy org')}'][@method='post']
       //input[@id='volunteer_op_postcode'][@name='volunteer_op[postcode]']")
   end
 
