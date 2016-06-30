@@ -21,7 +21,7 @@ describe 'volunteer_ops/show', type: :view do
   it "renders attributes in <p>" do
     render
     expect(rendered).to have_content op.title
-    expect(rendered).to have_content op.descri
+    expect(rendered).to have_content op.description
     expect(rendered).to have_content op.address
     expect(rendered).to have_content op.postcode
     expect(rendered).to have_content op.organisation.name
