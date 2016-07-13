@@ -2,4 +2,4 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
-  $("input[type='checkbox'].publish").bootstrapSwitch(size: 'mini', onText: 'public', offText: 'private')
+  $("input[type='checkbox'].publish").bootstrapSwitch(size: 'mini', onText: 'public',offText: 'private')

@@ -11,7 +11,7 @@
         <%= f.text_area :name, :size => "50x4", :class => "wide_form org_h3", :placeholder => "Enter organisation name" %>
       </td>
       <td class="borderless">
-        <input type="checkbox" class="publish" disabled checked = "checked" value="">
+        <input type="checkbox" class="publish" enabled checked = "checked" value="">
       </td>
     </tr>
     <tr>
@@ -30,26 +30,35 @@
     </h3></td></tr>
     <tr>
       <td data-toggle="tooltip" title="Enter a complete address">
+        <% if org.errors[:address].any?%>
+          <p class="error-address"><%= org.errors[:address].first %></p>
+        <% end %>
         <%= f.text_field :address, :class => "wide_form", :placeholder => "Enter organisation address"%>
       </td>
-      <td class="borderless" data-toggle="tooltip" title="Toggle to change the visibility of your address">
-        <%= f.check_box :publish_address, :class => 'publish' %>
+      <td class="borderless">
+         <input type="checkbox" class="publish" enabled checked = "checked" value="">
       </td>
     </tr>
     <tr>
-      <td class="borderless" data-toggle="tooltip" title="Make sure post code is accurate">
+      <td data-toggle="tooltip" title="Make sure post code is accurate">
+        <% if org.errors[:postcode].any?%>
+           <p class="error-postcode"><%= org.errors[:postcode].first %></p>
+         <% end %>
         <%= f.text_field :postcode, :class => "wide_form", :placeholder => "Enter organisation post code" %>
       </td>
       <td class="borderless">
         <input type="checkbox" class="publish" disabled checked = "checked" value="">
       </td>
-    </tr>
+ </tr>
     <tr>
-      <td class="borderless" data-toggle="tooltip" title="Make sure email is correct">
+      <td data-toggle="tooltip" title="Make sure email is correct">
+         <% if org.errors[:email].any?%>
+           <p class="error-email"><%= org.errors[:email].first %></p>
+         <% end %>
         <%= f.text_field :email, :class => "wide_form", :placeholder => "Enter organisation email address" %>
       </td>
-      <td class="borderless" data-toggle="tooltip" title="Toggle to change the visibility of your email address">
-        <%= f.check_box :publish_email, :class => 'publish' %>
+      <td class="borderless">
+        <input type="checkbox" class="publish" enabled checked = "checked" value="">
       </td>
     </tr>
     <tr>
@@ -64,22 +73,25 @@
       </td>
     </tr>
     <tr>
-      <td class="borderless" data-toggle="tooltip" title="Make sure phone number is correct">
+      <td data-toggle="tooltip" title="Make sure phone number is correct">
+        <% if org.errors[:telephone].any?%>
+           <p class="error-telephone"><%= org.errors[:telephone].first %></p>
+         <% end %>
         <%= f.text_field :telephone, :class => "wide_form", :placeholder => "Enter organisation phone number" %>
       </td>
-      <td class="borderless" data-toggle="tooltip" title="Toggle to change the visibility of your telephone number">
-        <%= f.check_box :publish_phone, :class => "publish"%>
+      <td class="borderless">
+        <input type="checkbox" class="publish" disabled checked = "checked" value="">
       </td>
     </tr>
     <tr>
-      <td class="borderless" data-toggle="tooltip" title="Please enter a website here either to the fundraising page on your website or to an online donation site.">
+      <td data-toggle="tooltip" title="Please enter a website here either to the fundraising page on your website or to an online donation site.">
         <% if org.errors[:donation_info].any?%>
           <p class="error"><%= org.errors[:donation_info].first %></p>
         <% end %>
         <%= f.text_field :donation_info, :class => "wide_form", :placeholder => "Enter organisation donation url" %>
       </td>
       <td class="borderless">
-        <input type="checkbox" disabled checked = "checked" value="" class="publish">
+        <input type="checkbox" class="publish" disabled checked = "checked" value="">
       </td>
     </tr>
     <tr>
