@@ -1,5 +1,11 @@
 
 <button class='close infowindow_close' type='button'>×</button>
-  <%= link_to volop.doit_org_name, "https://do-it.org/organisations/#{volop.doit_org_link}", :style => "font-weight: 100" %></strong></br>
-  <%= link_to volop.title, "https://do-it.org/opportunities/#{volop.doit_op_id}", :style => "font-weight: 900" %></br>
+  <%= link_to volop.doit_org_name,
+              "https://do-it.org/organisations/#{volop.doit_org_link}",
+              style: 'font-weight: 100',
+              target: '_blank' %></strong></br>
+  <%= link_to volop.title,
+              "https://do-it.org/opportunities/#{volop.doit_op_id}",
+              style: 'font-weight: 900',
+              target: '_blank' %></br>
   <%= smart_truncate(volop.description,44) %></br>

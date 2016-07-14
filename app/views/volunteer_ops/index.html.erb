@@ -16,11 +16,19 @@
       <% @volunteer_ops.each do |op| %>
           <tr>
             <td>
-              <strong><%= link_to op.title, op.link %></strong><br/>
-              <div id="organisations">
-                <small><%= link_to op.organisation_name, op.organisation_link %></small>
-                <br/>
-              </div>
+              <% unless op.source == "local" %>
+                <strong><%= link_to op.title, op.link, target: '_blank' %></strong><br/>
+                <div id="organisations">
+                  <small><%= link_to op.organisation_name, op.organisation_link, target: '_blank' %></small>
+                  <br/>
+                </div>
+              <% else %>
+                <strong><%= link_to op.title, op.link %></strong><br/>
+                <div id="organisations">
+                  <small><%= link_to op.organisation_name, op.organisation_link %></small>
+                  <br/>
+                </div>
+              <% end %>
               <%= smart_truncate(op.description) %>
               <br/>
             </td>
