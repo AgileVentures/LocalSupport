@@ -35,21 +35,21 @@
         <% end %>
         <%= f.text_field :address, :class => "wide_form", :placeholder => "Enter organisation address"%>
       </td>
-      <td class="borderless">
-         <input type="checkbox" class="publish" enabled checked = "checked" value="">
+      <td class="borderless" data-toggle="tooltip" title="Toggle to change the visibility of your address">
+        <%= f.check_box :publish_address, :class => 'publish' %>
       </td>
     </tr>
     <tr>
       <td data-toggle="tooltip" title="Make sure post code is accurate">
         <% if org.errors[:postcode].any?%>
            <p class="error-postcode"><%= org.errors[:postcode].first %></p>
-         <% end %>
+        <% end %>
         <%= f.text_field :postcode, :class => "wide_form", :placeholder => "Enter organisation post code" %>
       </td>
       <td class="borderless">
         <input type="checkbox" class="publish" disabled checked = "checked" value="">
       </td>
- </tr>
+    </tr>
     <tr>
       <td data-toggle="tooltip" title="Make sure email is correct">
          <% if org.errors[:email].any?%>
@@ -57,8 +57,8 @@
          <% end %>
         <%= f.text_field :email, :class => "wide_form", :placeholder => "Enter organisation email address" %>
       </td>
-      <td class="borderless">
-        <input type="checkbox" class="publish" enabled checked = "checked" value="">
+      <td class="borderless" data-toggle="tooltip" title="Toggle to change the visibility of your email address">
+        <%= f.check_box :publish_email, :class => 'publish' %>
       </td>
     </tr>
     <tr>
@@ -76,11 +76,11 @@
       <td data-toggle="tooltip" title="Make sure phone number is correct">
         <% if org.errors[:telephone].any?%>
            <p class="error-telephone"><%= org.errors[:telephone].first %></p>
-         <% end %>
+        <% end %>
         <%= f.text_field :telephone, :class => "wide_form", :placeholder => "Enter organisation phone number" %>
       </td>
-      <td class="borderless">
-        <input type="checkbox" class="publish" disabled checked = "checked" value="">
+      <td class="borderless" data-toggle="tooltip" title="Toggle to change the visibility of your telephone number">
+        <%= f.check_box :publish_phone, :class => "publish"%>
       </td>
     </tr>
     <tr>
@@ -104,12 +104,12 @@
         <input type="checkbox" class="publish" disabled>
       </td>
     </tr>
-  <tr>
-    <td class="borderless" data-toggle="tooltip" title="Please enter the details of individuals from your organisation you would like to give permission to update your entry. E-mail addresses entered here will not be made public.">
+    <tr>
+      <td class="borderless" data-toggle="tooltip" title="Please enter the details of individuals from your organisation you would like to give permission to update your entry. E-mail addresses entered here will not be made public.">
       <%= text_field_tag 'organisation_superadmin_email_to_add', value = nil, {:size => 100, class: 'wide_form', :cols => "10", :rows => "3", :placeholder => 'You may add an organisation administrator email here'} %>
-    </td>
+      </td>
     <td class="borderless"></td>
-  </tr>
+    </tr>
     </tbody>
   </table>
   <div class="org-categories">
