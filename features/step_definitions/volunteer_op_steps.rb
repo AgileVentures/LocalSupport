@@ -37,7 +37,7 @@ Then(/^the doit volunteer op named "(.*?)" should be deleted$/) do |title|
 end
 
 Then(/^there should be (\d+) doit volunteer ops stored$/) do |count|
-  expect(VolunteerOp.count(source: 'doit')).to eq count.to_i
+  expect(VolunteerOp.where(source: 'doit').count).to eq count.to_i
 end
 
 Given(/^that the (.+) flag is (enabled|disabled)$/) do |feature, state|
