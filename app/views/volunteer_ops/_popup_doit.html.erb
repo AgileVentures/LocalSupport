@@ -1,11 +1,9 @@
 
 <button class='close infowindow_close' type='button'>×</button>
   <%= link_to_vol_op( volop,
-                    volop.doit_org_name,
-                    volop.organisation_link,
+                    'organisation',
                     style: 'font-weight: 100' ) %></strong></br>
   <%= link_to_vol_op(volop,
-                    volop.title,
-                    volop.link,
+                    'title',
                     style: 'font-weight: 900') %></br>
   <%= smart_truncate(volop.description,44) %></br>
