@@ -158,12 +158,14 @@ describe VolunteerOp, type: :model do
       expect(vol_op.address_complete?).to be_falsey
     end
     
-    it 'should clean the lat and lng if no address' do
+    it 'should not clean the lat and lng if no address' do
       vol_op.address = ''
       vol_op.postcode = ''
+      vol_op.longitude = -0.393924
+      vol_op.latitude = 51.5843
       vol_op.save!
-      expect(vol_op.latitude).to be_nil
-      expect(vol_op.longitude).to be_nil
+      expect(vol_op.latitude).not_to be_nil
+      expect(vol_op.longitude).not_to be_nil
     end
   end
 end

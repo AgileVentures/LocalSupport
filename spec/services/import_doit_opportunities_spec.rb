@@ -73,4 +73,15 @@ describe ImportDoItVolunteerOpportunities do
     end
   end
 
+  context 'vol ops with missing long & lat' do
+    let(:response) { double :response, body: File.read('test/fixtures/doit_no_coordinates.json') }
+
+    it 'does not persist the vol op parsed' do
+      allow(http_party).to receive(:get).and_return(response)
+      expect(model_klass).not_to receive(:find_or_create_by)
+      list_volunteer_opportunities
+    end
+
+  end
+
 end
