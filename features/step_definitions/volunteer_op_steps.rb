@@ -28,6 +28,14 @@ Given(/^I run the import doit service( with a radius of (\d+\.?\d*) miles)?$/)do
   end
 end
 
+Then(/^all imported volunteer ops have latitude and longitude coordinates$/) do
+  all_with_coordiante = VolunteerOp.where(source: 'doit').all? do |op|
+    op.longitude && op.latitude?
+  end
+  expect(all_with_coordiante).to eq(true)
+end
+
+
 Given(/^there is a doit volunteer op named "(.*?)"$/) do |title|
   VolunteerOp.create(title: title,description: 'description content', source: 'doit', organisation_id: 1)
 end
