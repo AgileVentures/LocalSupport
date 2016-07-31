@@ -90,7 +90,7 @@ gem 'unicorn'
 gem 'redcarpet'
 
 # validating organisation website URLs
-gem 'url_validator'
+gem 'url_validator', git: 'https://github.com/AgileVentures/url_validator.git'
 
 gem 'httparty'
 

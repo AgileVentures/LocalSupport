@@ -17,6 +17,7 @@ Feature: Orphans UI
       | superadmin@myorg.com       | superadminpass0987  | true  | 2008-01-01 00:00:00 | My Organisation |                      |
       | pending@myorg.com     | password123    | false | 2008-01-01 00:00:00 |                 | My Organisation      |
       | invited-superadmin@org.org | password123    | false | 2008-01-01 00:00:00 |                 |                      |
+    And the invitation instructions mail template exists
     And the superadmin invited a user for "Yet Another Org"
 
   @javascript @vcr @billy

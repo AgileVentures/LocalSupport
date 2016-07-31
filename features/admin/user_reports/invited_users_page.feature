@@ -11,6 +11,7 @@ Feature: Invited Users Page
       | email            | password       | superadmin | confirmed_at        | organisation    | pending_organisation |
       | superadmin@myorg.com  | superadminpass0987  | true  | 2008-01-01 00:00:00 | My Organisation |                      |
       | regular@user.org | mypassword1234 | false | 2008-01-01 00:00:00 |                 |                      |
+    And the invitation instructions mail template exists
     And the superadmin invited a user for "Invited Organisation"
     And cookies are approved
     And I am signed in as a superadmin

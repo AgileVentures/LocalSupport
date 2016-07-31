@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421100439) do
+ActiveRecord::Schema.define(version: 20160628192920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 20160421100439) do
   create_table "features", force: :cascade do |t|
     t.string  "name"
     t.boolean "active", default: false
+  end
+
+  create_table "mail_templates", force: :cascade do |t|
+    t.text     "name"
+    t.text     "body"
+    t.text     "footnote"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "organisations", force: :cascade do |t|
@@ -145,6 +154,8 @@ ActiveRecord::Schema.define(version: 20160421100439) do
     t.float    "longitude"
     t.float    "latitude"
     t.datetime "deleted_at"
+    t.string   "address"
+    t.string   "postcode"
   end
 
   add_index "volunteer_ops", ["deleted_at"], name: "index_volunteer_ops_on_deleted_at", using: :btree

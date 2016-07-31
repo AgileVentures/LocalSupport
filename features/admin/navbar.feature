@@ -10,6 +10,7 @@ Feature: Super Admin user interface
     And the following users are registered:
       | email                 | password       | superadmin | confirmed_at        | organisation | pending_organisation |
       | superadmin@harrowcn.org.uk | mypassword1234 | true  | 2008-01-01 00:00:00 |              |                      |
+    And the invitation instructions mail template exists
     And I am signed in as a superadmin
     And that the volunteer_ops_list flag is enabled
     And I visit the home page

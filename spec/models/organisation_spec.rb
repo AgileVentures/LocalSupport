@@ -22,6 +22,8 @@ describe Organisation, :type => :model do
     @org3 = FactoryGirl.build(:organisation, :email => "", :name => 'Age UK Elderly', :description => 'Care for older people', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.age-uk.co.uk/donate')
     @org3.categories << @category1
     @org3.save!
+
+    FactoryGirl.create :invitation_instructions
   end
 
   describe "#gmaps4rails_marker_attrs" do
