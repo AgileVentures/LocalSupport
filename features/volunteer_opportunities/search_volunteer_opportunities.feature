@@ -33,3 +33,10 @@ Feature: As a potential volunteer
     And  I fill in "Search Text" with "search words" within the main body
     And I press "Search"
     Then the search box should contain "search words"
+    
+  Scenario: Searching on volunteer opportunity page
+    Given cookies are approved
+    And I visit the show page for the volunteer_op titled "Office Support"
+    And  I fill in "Search Text" with "search words" within the main body
+    And I press "Search"
+    Then the search box should contain "search words"
