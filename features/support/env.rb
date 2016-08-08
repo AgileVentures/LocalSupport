@@ -154,3 +154,12 @@ After do |s|
   # Tell Cucumber to quit after this scenario is done - if it failed.
   Cucumber.wants_to_quit = true if s.failed?
 end
+
+at_exit do
+  begin
+    e = $! # last exception
+    cleanup_after_tests
+  ensure
+    raise e if $! != e
+  end
+end
