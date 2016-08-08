@@ -157,9 +157,9 @@ end
 
 at_exit do
   begin
-    e = $! # last exception
+    e = $ERROR_INFO # last exception
     cleanup_after_tests
   ensure
-    raise e if $! != e
+    fail e if $ERROR_INFO != e
   end
 end
