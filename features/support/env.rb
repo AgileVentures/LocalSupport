@@ -149,12 +149,3 @@ end
 After('@time_travel') do
   Timecop.return
 end
-
-After do |s| 
-  # Tell Cucumber to quit after this scenario is done - if it failed.
-  Cucumber.wants_to_quit = true if s.failed?
-end
-
-at_exit do
-  exit 1 if Cucumber.wants_to_quit
-end
