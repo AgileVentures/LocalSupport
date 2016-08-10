@@ -156,10 +156,5 @@ After do |s|
 end
 
 at_exit do
-  begin
-    e = $ERROR_INFO # last exception
-    cleanup_after_tests
-  ensure
-    fail e if $ERROR_INFO != e
-  end
+  exit 1 if Cucumber.wants_to_quit
 end
