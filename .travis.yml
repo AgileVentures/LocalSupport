@@ -13,8 +13,8 @@ before_script:
 - bundle exec rake db:migrate
 - bundle exec rake db:test:prepare
 script:
-- bundle exec rake test_with_coveralls
 - USE_JASMINE_RAKE=true bundle exec rake jasmine:ci
+- bundle exec rake test_with_coveralls
 deploy:
   provider: heroku
   api_key:
