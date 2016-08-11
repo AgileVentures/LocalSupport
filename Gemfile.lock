@@ -1,4 +1,14 @@
 GIT
+  remote: git://github.com/AgileVentures/jasmine-gem.git
+  revision: 739e0f9b93173155ed5ae26ddf6f1201cb864063
+  specs:
+    jasmine (2.4.0)
+      jasmine-core (~> 2.4)
+      phantomjs
+      rack (>= 1.2.1)
+      rake
+
+GIT
   remote: https://github.com/AgileVentures/url_validator.git
   revision: 00f7246d39fae872dd198afda3638df88fa7dbd9
   specs:
@@ -169,11 +179,6 @@ GEM
     i18n (0.7.0)
     jar_wrapper (0.1.8)
       zip
-    jasmine (2.4.0)
-      jasmine-core (~> 2.4)
-      phantomjs
-      rack (>= 1.2.1)
-      rake
     jasmine-core (2.4.1)
     jasmine-jquery-rails (2.0.2)
     jquery-rails (4.1.1)
@@ -394,7 +399,7 @@ DEPENDENCIES
   gmaps4rails (= 2.1.2)
   heroku-api
   httparty
-  jasmine
+  jasmine!
   jasmine-jquery-rails (= 2.0.2)
   jquery-rails
   launchy

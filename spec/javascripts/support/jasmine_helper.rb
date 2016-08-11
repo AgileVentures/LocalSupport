@@ -19,4 +19,5 @@ end
 
 Jasmine.configure do |config|
   config.host = 'http://127.0.0.1'
+  config.hostname = '127.0.0.1'
 end

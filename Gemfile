@@ -23,7 +23,7 @@ group :development, :test do
   gem 'aruba'
   gem 'byebug'
   gem 'rack_session_access'
-  gem 'jasmine'
+  gem 'jasmine', github: 'AgileVentures/jasmine-gem'
   gem 'jasmine-jquery-rails', '2.0.2'
   #gem 'better_errors'
   gem 'binding_of_caller' # plays well with better_errors
