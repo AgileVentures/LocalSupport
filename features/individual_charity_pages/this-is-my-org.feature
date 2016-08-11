@@ -50,7 +50,7 @@ Feature: This is my organisation
     And "admin@helpfolk.com"'s request for "Helpful Folk" should be persisted
     And an email should be sent to "superadmin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
 
-  @javascript @billy
+  @vcr @javascript @billy
   Scenario: Unregistered User
     Given I click "This is my organisation" on the "Helpful Folk" page and stay there
     And I click "toggle_link"
