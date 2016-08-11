@@ -11,7 +11,7 @@ Then(/^I should see an infowindow when I click on the map markers:$/) do |table|
       expect(find('.arrow_box').text).to include(desc)
       expect(find('.arrow_box').text).to include(name)
       link = find('.arrow_box').find('a')[:href]
-      expect(link).to eql(organisation_path(friendly_id))
+      expect(link).to end_with(organisation_path(friendly_id))
   end
 end
 def click_twice elt
@@ -34,9 +34,9 @@ Then /^the (proposed organisation|organisation) "(.*?)" should have a (large|sma
   org_id = klass.find_by(name: name).id
   marker_class = (icon_size == "small") ? "measle" : "marker"
   if marker_class == "measle"
-    expect(find_map_icon(marker_class, org_id)["src"]).to eq "/assets/measle.png"
+    expect(find_map_icon(marker_class, org_id)["src"]).to end_with "/assets/measle.png"
   else
-    expect(find_map_icon(marker_class, org_id)["src"]).to eq "/assets/marker.png"
+    expect(find_map_icon(marker_class, org_id)["src"]).to end_with "/assets/marker.png"
   end
 end
 
