@@ -154,14 +154,12 @@ describe VolunteerOp, type: :model do
     it 'has not have different address' do
       vol_op.address = ''
       vol_op.postcode = '' 
-      vol_op.save!
       expect(vol_op.address_complete?).to be_falsey
     end
     
     it 'should clean the lat and lng if no address' do
       vol_op.address = ''
       vol_op.postcode = ''
-      vol_op.save!
       expect(vol_op.latitude).to be_nil
       expect(vol_op.longitude).to be_nil
     end
