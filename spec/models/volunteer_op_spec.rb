@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe VolunteerOp, :type => :model do
+describe VolunteerOp, type: :model do
   it 'must have a title' do
     v = VolunteerOp.new(title: '')
     v.valid?
@@ -115,6 +115,60 @@ describe VolunteerOp, :type => :model do
 
     it 'find records where title or description match search text' do
       expect(VolunteerOp.search_for_text('good')).to eq([vol_op2])
+    end
+  end
+  
+  describe '#full_address' do
+    let(:details) do
+      {
+        title: 'test',
+        description: 'description',
+        address: 'Station Rd',
+        postcode: 'HA8 7BD',
+        organisation_id: 1
+      } 
+    end
+    let!(:vol_op) { FactoryGirl.create :volunteer_op, details }
+    
+    it 'returns a full address' do
+      expect(vol_op.full_address).to eq 'Station Rd, HA8 7BD'
+    end
+  end
+
+  describe '#address_compelete?' do
+    context 'volunteer op has address and postcode' do
+      it 'returns true' do
+        vol_op = build(:volunteer_op, address: 'not nil', postcode: 'HA1 4HZ')
+        expect(vol_op.address_complete?).to be_truthy
+      end
+    end
+    context 'volunteer op does not have address or postcode' do
+      it 'returns false' do
+        vol_op = build(:volunteer_op, address: nil, postcode: nil)
+        expect(vol_op.address_complete?).to be_falsey
+      end
+    end
+  end
+
+
+  
+  describe 'clear_lat_lng callback' do
+    let(:vol_op) { build(:volunteer_op, source: source, address: nil, postcode: nil, longitude: -0.393924, latitude: 51.5843) }
+    context 'local volunteer op type' do
+      let(:source)  { 'local' }
+      it 'should clean the lat and lng if no address' do
+        vol_op.save
+        expect(vol_op.latitude).to be_nil
+        expect(vol_op.longitude).to be_nil
+      end
+    end
+    context 'non local volunteer op type' do
+      let(:source)  { 'doit' }
+      it 'should not clean the lat and lng if no address' do
+        vol_op.save
+        expect(vol_op.latitude).not_to be_nil
+        expect(vol_op.longitude).not_to be_nil
+      end
     end
   end
 end

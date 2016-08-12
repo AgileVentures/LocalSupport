@@ -27,8 +27,15 @@ class ImportDoItVolunteerOpportunities
   def process_doit_json_page(response)
     return nil unless has_content?(response)
     opportunities = JSON.parse(response.body)['data']['items']
-    persist_doit_vol_ops(opportunities)
+    valid_opportunities = get_valid_oppurtunities(opportunities)
+    persist_doit_vol_ops(valid_opportunities)
     JSON.parse(response.body)['links'].fetch('next', 'href' => nil)['href']
+  end
+
+  def get_valid_oppurtunities(opportunities)
+    opportunities.select do |op|
+      op['lat'] && op['lng']
+    end
   end
 
   def persist_doit_vol_ops(opportunities)
