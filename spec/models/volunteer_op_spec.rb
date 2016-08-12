@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe VolunteerOp, :type => :model do
+describe VolunteerOp, type: :model do
   it 'must have a title' do
     v = VolunteerOp.new(title: '')
     v.valid?
@@ -115,6 +115,55 @@ describe VolunteerOp, :type => :model do
 
     it 'find records where title or description match search text' do
       expect(VolunteerOp.search_for_text('good')).to eq([vol_op2])
+    end
+  end
+  
+  describe '#full_address' do
+    let(:details) do
+      {
+        title: 'test',
+        description: 'description',
+        address: 'Station Rd',
+        postcode: 'HA8 7BD',
+        organisation_id: 1
+      } 
+    end
+    let!(:vol_op) { FactoryGirl.create :volunteer_op, details }
+    
+    it 'returns a full address' do
+      expect(vol_op.full_address).to eq 'Station Rd, HA8 7BD'
+    end
+  end
+  
+  describe 'set\'s volunteer_op lat and lng' do
+    let(:details) do
+      {
+        title: 'test',
+        description: 'description', 
+        address: 'Station Rd',
+        postcode: 'HA8 7BD',
+        organisation_id: 1
+      } 
+    end
+    let!(:vol_op) { FactoryGirl.create :volunteer_op, details }   
+    
+    it 'has a different address' do
+      expect(vol_op.address_complete?).to be_truthy
+    end
+    
+    it 'has not have different address' do
+      vol_op.address = ''
+      vol_op.postcode = '' 
+      vol_op.save!
+      expect(vol_op.address_complete?).to be_falsey
+    end
+    
+    it 'should clean the lat and lng if no address' do
+      vol_op.address = ''
+      vol_op.postcode = ''
+      vol_op.save!
+      expect(vol_op.latitude).to be_nil
+      expect(vol_op.longitude).to be_nil
     end
   end
 end

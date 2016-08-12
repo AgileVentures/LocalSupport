@@ -26,6 +26,12 @@ Feature: Org superadmin creating a volunteer work opportunity
     Then I should be on the show page for the volunteer_op titled "Hard Work"
     And I should see "Hard Work", "For no pay" and "Organisation: Friendly"
 
+  @vcr @javascript  
+  Scenario: Org-superadmins can create a volunteer opportunity with different address
+    Given I am signed in as a charity worker related to "Friendly"
+    And I submit a volunteer op with address "Ops1", "For free", "Station Rd", "HA8 7BD" on the "Friendly" page
+    And I should see "Ops1", "For free", "Station Rd, HA8 7BD" and "Organisation: Friendly"
+    
   Scenario: Org-superadmins can create a volunteer opportunity but get warning with invalid data
     Given I am signed in as a charity worker related to "Friendly"
     And I submit a volunteer op "", "" on the "Friendly" page

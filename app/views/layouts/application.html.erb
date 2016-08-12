@@ -19,7 +19,7 @@
   <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
-  <script src="//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry" type="text/javascript"></script>
+  <script src="//maps.google.com/maps/api/js?v=3.13<%= ENV['GMAP_API_KEY'] ? "&key=#{ENV['GMAP_API_KEY']}" : '' %>&amp;sensor=false&amp;libraries=geometry" type="text/javascript"></script>
   <%= javascript_include_tag "application" %>
   <!--this is where page-specific scripts are added-->
   <%= yield :scripts %>
