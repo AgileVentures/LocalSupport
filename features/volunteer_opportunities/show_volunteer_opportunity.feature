@@ -16,8 +16,8 @@ Feature: As a member of the public
   Scenario: See a volunteer opportunity and hyperlink
     Given I visit the show page for the volunteer_op titled "Office Support"
     Then I should see:
-      | title          | description                     | organisation              |
-      | Office Support | Help with printing and copying. | Indian Elders Association |
+      | title              | description                                     | organisation              |
+      | Office Support     | Help with printing and copying. http://test.com | Indian Elders Association |
     And I click "Indian Elders Association"
     Then I should be on the show page for the organisation named "Indian Elders Association"
 
@@ -28,3 +28,8 @@ Feature: As a member of the public
   Scenario: See emails in volunteer opportunity pages are hyperlinked
     Given I visit the show page for the volunteer_op titled "Litter Box Scooper"
     Then the page includes email hyperlink "test@test.com"
+    
+  Scenario: See volunteer opportunity location with different address
+    Given I visit the show page for the volunteer_op titled "Mini Bus Driver"
+    Then I should see "Volunteer opportunity location: Station Rd, HA8 7BD" 
+    
