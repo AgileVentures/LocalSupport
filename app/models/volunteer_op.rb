@@ -6,7 +6,7 @@ class VolunteerOp < ActiveRecord::Base
   
   geocoded_by :full_address
   after_validation :geocode, if: :address_complete? 
-  after_validation :clear_lat_lng
+  after_validation :clear_lat_lng, if: "source == 'local'"
 
   scope :order_by_most_recent, -> { order('updated_at DESC') }
   scope :local_only, -> { where(source: 'local') }
