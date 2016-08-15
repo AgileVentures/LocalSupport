@@ -30,9 +30,8 @@ group :development, :test do
 end
 
 group :development do
-  #gem 'ruby-debug19', :require => 'ruby-debug'
-  #gem 'debugger', '~> 1.6.8'
-  gem "letter_opener"
+  gem 'rubocop-git'
+  gem 'letter_opener'
   gem 'railroady'
   gem 'quiet_assets'
 end
