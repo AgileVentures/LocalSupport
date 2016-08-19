@@ -94,26 +94,27 @@ When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |
   }
 end
 
+PoltergeistProc = -> (page, key , value){page.driver.set_cookie(key, value)}
+hash = { Capybara::Poltergeist::Driver => PoltergeistProc }
+
+
+SeleniumProc = -> (page, key , value) { page.driver.browser.manage.add_cookie(name: key, value: value) }
+hash = { Capybara::Selenium::Driver => SeleniumProc }
+
+# RackProc = -> (_page, key , value) do
+#      headers = {}
+#      Rack::Utils.set_cookie_header!(headers,key, value)
+#      cookie_string = headers['Set-Cookie']
+#      Capybara.current_session.driver.browser.set_cookie(cookie_string)
+# end
+
+
 Given /^I have a "([^\"]+)" cookie set to "([^\"]+)"$/ do |key, value|
-  case Capybara.current_session.driver
-    when Capybara::Poltergeist::Driver
-      page.driver.set_cookie(key, value)
-    when Capybara::RackTest::Driver
-      headers = {}
-      Rack::Utils.set_cookie_header!(headers,key, value)
-      cookie_string = headers['Set-Cookie']
-      Capybara.current_session.driver.browser.set_cookie(cookie_string)
-    when Capybara::Webkit::Driver
-      headers = {}
-      Rack::Utils.set_cookie_header!(headers,key, value)
-      cookie_string = headers['Set-Cookie']
-      Capybara.current_session.driver.browser.set_cookie(cookie_string)
-    when Capybara::Selenium::Driver
-      page.driver.browser.manage.add_cookie(:name=>key, :value=>value)
-    else
-      raise "no cookie-setter implemented for driver #{Capybara.current_session.driver.class.name}"
-  end
+  proc = hash[Capybara.current_session.driver]
+  #raise "no cookie for driver #{Capybara.current_session.driver.class.name}" if proc.nil?
+  #proc.call(page, key, value)
 end
+
 
 And(/^cookies are approved$/) do
   steps %Q{And I have a "cookie_policy_accepted" cookie set to "true"}
