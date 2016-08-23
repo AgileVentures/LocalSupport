@@ -94,25 +94,39 @@ When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |
   }
 end
 
-PoltergeistProc = -> (page, key , value){page.driver.set_cookie(key, value)}
-hash = { Capybara::Poltergeist::Driver => PoltergeistProc }
+PoltergeistProc = -> (page, key, value) do
+  page.driver.set_cookie(key, value)
+end
 
+SeleniumProc = -> (page, key, value) do
+  page.driver.browser.manage.add_cookie(name: key, value: value)
+end
 
-SeleniumProc = -> (page, key , value) { page.driver.browser.manage.add_cookie(name: key, value: value) }
-hash = { Capybara::Selenium::Driver => SeleniumProc }
+RackProc = -> (_page, key, value) do
+  headers = {}
+  Rack::Utils.set_cookie_header!(headers, key, value)
+  cookie_string = headers['Set-Cookie']
+  Capybara.current_session.driver.browser.set_cookie(cookie_string)
+end
 
-# RackProc = -> (_page, key , value) do
-#      headers = {}
-#      Rack::Utils.set_cookie_header!(headers,key, value)
-#      cookie_string = headers['Set-Cookie']
-#      Capybara.current_session.driver.browser.set_cookie(cookie_string)
-# end
+WebkitProc = -> (_page, key, value) do
+  headers = {}
+  Rack::Utils.set_cookie_header!(headers, key, value)
+  cookie_string = headers['Set-Cookie']
+  Capybara.current_session.driver.browser.set_cookie(cookie_string)
+end
 
+hash = {
+    Capybara::Selenium::Driver => SeleniumProc,
+    Capybara::Poltergeist::Driver => PoltergeistProc,
+    Capybara::RackTest::Driver => RackProc,
+    Capybara::Webkit::Driver => WebkitProc
+}
 
 Given /^I have a "([^\"]+)" cookie set to "([^\"]+)"$/ do |key, value|
-  proc = hash[Capybara.current_session.driver]
-  #raise "no cookie for driver #{Capybara.current_session.driver.class.name}" if proc.nil?
-  #proc.call(page, key, value)
+  proc = hash[Capybara.current_session.driver.class]
+  raise "no cookie for driver #{Capybara.current_session.driver.class.name}" if proc.nil?
+  proc.call(page, key, value)
 end
 
 
@@ -123,24 +137,30 @@ end
 And(/^cookies are not approved$/) do
   steps %Q{And I have a "cookie_policy_accepted" cookie set to "false"}
 end
+
 def extract_confirmation_link email
   emails_with_confirmation_link = find_emails_with_confirmation_link(find_emails_to(email))
   Nokogiri::HTML(emails_with_confirmation_link.first.body.raw_source).search("//a[text()='Confirm my account']")[0].attribute("href").value
 end
+
 def find_emails_with_confirmation_link emails
-  emails.select{|email| Nokogiri::HTML(email.body.raw_source).search("//a[text()='Confirm my account']")}
+  emails.select { |email| Nokogiri::HTML(email.body.raw_source).search("//a[text()='Confirm my account']") }
 end
+
 Given(/^I click on the confirmation link in the email to "([^\"]+)"$/) do |email|
   Capybara.current_driver = :rack_test
   visit extract_confirmation_link(email)
 end
+
 def extract_retrieve_password_link email
   emails_with_retrieve_password_link = find_emails_with_retrieve_password_link(find_emails_to(email))
   Nokogiri::HTML(emails_with_retrieve_password_link.first.body.raw_source).search("//a[text()='Change my password']")[0].attribute("href").value
 end
+
 def find_emails_with_retrieve_password_link emails
-  emails.select{|email| Nokogiri::HTML(email.body.raw_source).search("//a[text()='Change my password']")}
+  emails.select { |email| Nokogiri::HTML(email.body.raw_source).search("//a[text()='Change my password']") }
 end
+
 Given(/^I click on the retrieve password link in the email to "([^\"]+)"$/) do |email|
   visit extract_retrieve_password_link(email)
 end
@@ -156,11 +176,11 @@ Given(/^I receive a new password for "(.*?)"$/) do |email|
 end
 
 def find_emails_to email
-  ActionMailer::Base.deliveries.select{|i| i.to.include? email}
+  ActionMailer::Base.deliveries.select { |i| i.to.include? email }
 end
 
 def find_emails_with_accept_invitation_link emails, verbiage
-  emails.select{|email| !Nokogiri::HTML(email.body.raw_source).search("//a[text()='#{verbiage}']").empty?}
+  emails.select { |email| !Nokogiri::HTML(email.body.raw_source).search("//a[text()='#{verbiage}']").empty? }
 end
 
 def extract_invite_link email
@@ -174,11 +194,11 @@ def extract_invite_link_for_proposed_org email
 end
 
 def find_emails_with_view_link_for_accepted_org emails, verbiage
-  emails.select{|email| !Nokogiri::HTML(email.body.raw_source).search("//a[text()='#{verbiage}']").empty?}
+  emails.select { |email| !Nokogiri::HTML(email.body.raw_source).search("//a[text()='#{verbiage}']").empty? }
 end
 
 def extract_view_link_for_accepted_org email
-  emails_with_view_link = find_emails_with_view_link_for_accepted_org(find_emails_to(email),"You can edit your organisation details by logging in and editing it directly.")
+  emails_with_view_link = find_emails_with_view_link_for_accepted_org(find_emails_to(email), "You can edit your organisation details by logging in and editing it directly.")
   Nokogiri::HTML(emails_with_view_link.first.body.raw_source).search("//a[text()='You can edit your organisation details by logging in and editing it directly.']")[0].attribute("href").value
 end
 

@@ -51,3 +51,4 @@ config/database.yml
 
 
 vcr.log
+.byebug_history
