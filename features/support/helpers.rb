@@ -45,31 +45,34 @@ module MapHelpers
 end
 
 
+PoltergeistProc = -> (page, key, value) do
+  page.driver.set_cookie(key, value)
+end
 
-#  PoltergeistProc = -> (page, key , value) { page.driver.set_cookie(key, value) }
-# hash = { Capybara::Poltergeist::Driver => PoltergeistProc }
-#  module RackTest
- #    def self.perform(key: key, value: value)
- #      headers = {}
- #      Rack::Utils.set_cookie_header!(headers, key, value)
- #      cookie_string = headers['Set-Cookie']
- #      Capybara.current_session.driver.browser.set_cookie(cookie_string)
- #    end
- #  end
-#  Webkit = RackTest
-#  module Selenium
- #    def self.perform(key: key, value: value)
- #       page.driver.browser.manage.add_cookie(:name => key, :value => value)
- #    end
- #  end
-# should turn Capybara::Poltergeist::Driver to Poltergeist
- #  def self.find_klass(driver:)
- #    klass = driver.to_s.deconstantize
- #  end
+SeleniumProc = -> (page, key, value) do
+  page.driver.browser.manage.add_cookie(name: key, value: value)
+end
 
+RackProc = -> (_page, key, value) do
+  headers = {}
+  Rack::Utils.set_cookie_header!(headers, key, value)
+  cookie_string = headers['Set-Cookie']
+  Capybara.current_session.driver.browser.set_cookie(cookie_string)
+end
 
+WebkitProc = -> (_page, key, value) do
+  headers = {}
+  Rack::Utils.set_cookie_header!(headers, key, value)
+  cookie_string = headers['Set-Cookie']
+  Capybara.current_session.driver.browser.set_cookie(cookie_string)
+end
 
-
+CAPYBARA_DRIVERS = {
+    Capybara::Selenium::Driver => SeleniumProc,
+    Capybara::Poltergeist::Driver => PoltergeistProc,
+    Capybara::RackTest::Driver => RackProc,
+    Capybara::Webkit::Driver => WebkitProc
+}
 
 module ProposedOrgHelpers
   def unsaved_proposed_organisation(associated_user = nil)

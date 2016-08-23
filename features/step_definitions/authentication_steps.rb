@@ -94,41 +94,11 @@ When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |
   }
 end
 
-PoltergeistProc = -> (page, key, value) do
-  page.driver.set_cookie(key, value)
-end
-
-SeleniumProc = -> (page, key, value) do
-  page.driver.browser.manage.add_cookie(name: key, value: value)
-end
-
-RackProc = -> (_page, key, value) do
-  headers = {}
-  Rack::Utils.set_cookie_header!(headers, key, value)
-  cookie_string = headers['Set-Cookie']
-  Capybara.current_session.driver.browser.set_cookie(cookie_string)
-end
-
-WebkitProc = -> (_page, key, value) do
-  headers = {}
-  Rack::Utils.set_cookie_header!(headers, key, value)
-  cookie_string = headers['Set-Cookie']
-  Capybara.current_session.driver.browser.set_cookie(cookie_string)
-end
-
-hash = {
-    Capybara::Selenium::Driver => SeleniumProc,
-    Capybara::Poltergeist::Driver => PoltergeistProc,
-    Capybara::RackTest::Driver => RackProc,
-    Capybara::Webkit::Driver => WebkitProc
-}
-
 Given /^I have a "([^\"]+)" cookie set to "([^\"]+)"$/ do |key, value|
-  proc = hash[Capybara.current_session.driver.class]
+  proc = CAPYBARA_DRIVERS[Capybara.current_session.driver.class]
   raise "no cookie for driver #{Capybara.current_session.driver.class.name}" if proc.nil?
   proc.call(page, key, value)
 end
-
 
 And(/^cookies are approved$/) do
   steps %Q{And I have a "cookie_policy_accepted" cookie set to "true"}
