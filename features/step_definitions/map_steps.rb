@@ -125,3 +125,7 @@ And(/^"(.*?)" should not have nil coordinates$/) do |name|
   org.latitude.should_not be_nil
   org.longitude.should_not be_nil
 end
+
+Then(/^I should see the google map key in the correct location$/) do
+  expect(page.body).to match /key\=#{ENV['GMAP_API_KEY']}/
+end
