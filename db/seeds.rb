@@ -35,7 +35,7 @@ user.save!
   user.password = "asdf1234"
   user.password_confirmation = "asdf1234"
   user.confirmed_at = DateTime.now
-  user.organisation_id = i*5
+  user.organisation_id = Organisation.all.sample.id
   user.save!
 end
 
