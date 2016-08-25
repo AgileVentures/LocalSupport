@@ -127,9 +127,8 @@ And(/^"(.*?)" should not have nil coordinates$/) do |name|
 end
 
 Then(/^I should see the google map key in the correct location$/) do
-  #byebug
   if ENV['GMAP_API_KEY'].nil?
-    expect(page.body).not_to match /key\=#{ENV['GMAP_API_KEY']}/
+    expect(page.body).not_to match /key\=/
   else
     expect(page.body).to match /key\=#{ENV['GMAP_API_KEY']}/
   end

@@ -161,6 +161,8 @@ GEM
       factory_girl (~> 4.7.0)
       railties (>= 3.0.0)
     ffi (1.9.14)
+    figaro (1.1.1)
+      thor (~> 0.14)
     font-awesome-rails (4.6.3.1)
       railties (>= 3.2, < 5.1)
     friendly_id (5.1.0)
@@ -410,6 +412,7 @@ DEPENDENCIES
   dotenv-rails
   execjs
   factory_girl_rails
+  figaro
   font-awesome-rails
   friendly_id (~> 5.1.0)
   geocoder
