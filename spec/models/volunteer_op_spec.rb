@@ -153,7 +153,10 @@ describe VolunteerOp, type: :model do
   describe 'clear_lat_lng callback' do
     context 'local source' do
       let(:local_vol_op) do
-        build(:local_volunteer_op, longitude: -0.393924, latitude: 51.5843, organisation_id: 1)
+        build(:local_volunteer_op,
+              longitude: -0.393924,
+              latitude: 51.5843,
+              organisation_id: 1)
       end
       context 'without complete address' do
         it 'clears latitude and longitude coordinates' do
