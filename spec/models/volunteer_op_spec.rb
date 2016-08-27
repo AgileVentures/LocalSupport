@@ -117,7 +117,7 @@ describe VolunteerOp, type: :model do
       expect(VolunteerOp.search_for_text('good')).to eq([vol_op2])
     end
   end
-  
+
   describe '#full_address' do
     let(:details) do
       {
@@ -126,44 +126,76 @@ describe VolunteerOp, type: :model do
         address: 'Station Rd',
         postcode: 'HA8 7BD',
         organisation_id: 1
-      } 
+      }
     end
     let!(:vol_op) { FactoryGirl.create :volunteer_op, details }
-    
+
     it 'returns a full address' do
       expect(vol_op.full_address).to eq 'Station Rd, HA8 7BD'
     end
   end
-  
-  describe 'set\'s volunteer_op lat and lng' do
-    let(:details) do
-      {
-        title: 'test',
-        description: 'description', 
-        address: 'Station Rd',
-        postcode: 'HA8 7BD',
-        organisation_id: 1
-      } 
-    end
-    let!(:vol_op) { FactoryGirl.create :volunteer_op, details }   
-    
-    it 'has a different address' do
-      expect(vol_op.address_complete?).to be_truthy
-    end
-    
-    it 'has not have different address' do
-      vol_op.address = ''
-      vol_op.postcode = '' 
 
-      expect(vol_op.address_complete?).to be_falsey
+  describe '#address_compelete?' do
+    context 'volunteer op has address and postcode' do
+      it 'returns true' do
+        vol_op = build(:volunteer_op, address: 'not nil', postcode: 'HA1 4HZ')
+        expect(vol_op.address_complete?).to be_truthy
+      end
     end
-    
-    it 'should clean the lat and lng if no address' do
-      vol_op.address = ''
-      vol_op.postcode = ''
-
-      expect(vol_op.latitude).to be_nil
-      expect(vol_op.longitude).to be_nil
+    context 'volunteer op does not have address or postcode' do
+      it 'returns false' do
+        vol_op = build(:volunteer_op, address: nil, postcode: nil)
+        expect(vol_op.address_complete?).to be_falsey
+      end
     end
   end
+
+  describe 'clear_lat_lng callback' do
+    context 'local source' do
+      let(:local_vol_op) do
+        build(:local_volunteer_op, longitude: -0.393924, latitude: 51.5843, organisation_id: 1)
+      end
+      context 'without complete address' do
+        it 'clears latitude and longitude coordinates' do
+          allow(local_vol_op).to receive(:address_complete?).and_return(false)
+          local_vol_op.save
+          expect(local_vol_op.longitude).to eq(nil)
+          expect(local_vol_op.latitude).to eq(nil)
+        end
+      end
+
+      context 'with complete address' do
+        it 'keeps latitude and longitude coordinates' do
+          allow(local_vol_op).to receive(:address_complete?).and_return(true)
+          local_vol_op.save
+          expect(local_vol_op.longitude).not_to eq(nil)
+          expect(local_vol_op.latitude).not_to eq(nil)
+        end
+      end
+    end
+
+    context 'non local source' do
+      let(:remote_vol_op) do
+        build(:doit_volunteer_op, longitude: -0.393924, latitude: 51.5843)
+      end
+      context 'without complete address' do
+        it 'keeps latitude and longitude coordinates' do
+          allow(remote_vol_op).to receive(:address_complete?).and_return(false)
+          remote_vol_op.save
+          expect(remote_vol_op.longitude).not_to eq(nil)
+          expect(remote_vol_op.latitude).not_to eq(nil)
+        end
+      end
+
+      context 'with complete address' do
+        it 'keeps latitude and longitude coordinates' do
+          allow(remote_vol_op).to receive(:address_complete?).and_return(true)
+          remote_vol_op.save
+          expect(remote_vol_op.longitude).not_to eq(nil)
+          expect(remote_vol_op.latitude).not_to eq(nil)
+        end
+      end
+    end
+  end
+
 end
