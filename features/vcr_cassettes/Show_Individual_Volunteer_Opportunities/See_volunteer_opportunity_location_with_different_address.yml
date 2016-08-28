@@ -1,0 +1,121 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=Station%20Rd,%20HA8%207BD&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 15 Aug 2016 07:44:33 GMT
+      Expires:
+      - Tue, 16 Aug 2016 07:44:33 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '530'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '1'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "Station Road",
+                       "short_name" : "Station Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Edgware",
+                       "short_name" : "Edgware",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Edgware",
+                       "short_name" : "Edgware",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "HA8",
+                       "short_name" : "HA8",
+                       "types" : [ "postal_code", "postal_code_prefix" ]
+                    }
+                 ],
+                 "formatted_address" : "Station Rd, Edgware HA8, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.6155735,
+                          "lng" : -0.2742465000000001
+                       },
+                       "southwest" : {
+                          "lat" : 51.6107368,
+                          "lng" : -0.2793753
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.6131459,
+                       "lng" : -0.2766922
+                    },
+                    "location_type" : "GEOMETRIC_CENTER",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.6155735,
+                          "lng" : -0.2742465000000001
+                       },
+                       "southwest" : {
+                          "lat" : 51.6107368,
+                          "lng" : -0.2793753
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJa22KIKQWdkgR9R1b18_XLD8",
+                 "types" : [ "route" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Mon, 15 Aug 2016 07:44:34 GMT
+recorded_with: VCR 3.0.3

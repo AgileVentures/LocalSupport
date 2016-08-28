@@ -1,6 +1,6 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
-ruby '2.3.0'
+ruby '2.3.1'
 gem 'rails', '~> 4.2.0'
 gem 'pg'
 gem 'devise', '~> 3.4.0'
@@ -23,16 +23,15 @@ group :development, :test do
   gem 'aruba'
   gem 'byebug'
   gem 'rack_session_access'
-  gem 'jasmine', '2.1.0'
+  gem 'jasmine', github: 'AgileVentures/jasmine-gem'
   gem 'jasmine-jquery-rails', '2.0.2'
   #gem 'better_errors'
   gem 'binding_of_caller' # plays well with better_errors
 end
 
 group :development do
-  #gem 'ruby-debug19', :require => 'ruby-debug'
-  #gem 'debugger', '~> 1.6.8'
-  gem "letter_opener"
+  gem 'rubocop-git'
+  gem 'letter_opener'
   gem 'railroady'
   gem 'quiet_assets'
 end
