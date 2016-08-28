@@ -146,6 +146,12 @@ After('@in-production') do
   Rails.env = 'test'
 end
 
+#Turn off logging output
+Before do
+  logger = double('Logger').as_null_object
+  allow(Logger).to receive(:new).and_return(logger)
+end
+
 After('@time_travel') do
   Timecop.return
 end
