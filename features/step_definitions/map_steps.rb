@@ -126,10 +126,15 @@ And(/^"(.*?)" should not have nil coordinates$/) do |name|
   org.longitude.should_not be_nil
 end
 
-Then(/^I should see the google map key in the correct location$/) do
-  if ENV['GMAP_API_KEY'].nil?
-    expect(page.body).not_to match /key\=/
+Then(/^the google map key should( not)? be appended to the gmap js script$/) do |negation|
+  if negation
+    expect(page.body).not_to have_css "script[src='//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry&amp;key=']", visible: false
+    expect(page.body).not_to have_css "script[src='//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry&amp;key=#{ENV['GMAP_API_KEY']}']", visible: false
   else
-    expect(page.body).to match /key\=#{ENV['GMAP_API_KEY']}/
+    expect(page.body).to have_css "script[src='//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry&amp;key=#{ENV['GMAP_API_KEY']}']", visible: false
   end
+end
+
+Given(/^the Google Maps API key is( not)? set$/) do |negation|
+  ENV['GMAP_API_KEY'] = negation ? nil : '12345'
 end

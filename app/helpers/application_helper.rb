@@ -54,7 +54,7 @@ module ApplicationHelper
     end
   end
 
-  def gmap_key
+  def gmap_key_value_for_url
     return '' if ENV['GMAP_API_KEY'].nil?
     "&amp;key=#{ENV['GMAP_API_KEY']}"
   end
