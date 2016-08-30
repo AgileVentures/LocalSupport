@@ -60,12 +60,16 @@ RackProc = -> (_page, key, value) do
   Capybara.current_session.driver.browser.set_cookie(cookie_string)
 end
 
-WebkitProc = -> (_page, key, value) do
-  headers = {}
-  Rack::Utils.set_cookie_header!(headers, key, value)
-  cookie_string = headers['Set-Cookie']
-  Capybara.current_session.driver.browser.set_cookie(cookie_string)
-end
+# WebkitProc = -> (_page, key, value) do
+#   headers = {}
+#   Rack::Utils.set_cookie_header!(headers, key, value)
+#   cookie_string = headers['Set-Cookie']
+#   Capybara.current_session.driver.browser.set_cookie(cookie_string)
+# end
+
+WebkitProc = RackProc
+
+
 
 CAPYBARA_DRIVERS = {
     Capybara::Selenium::Driver => SeleniumProc,
