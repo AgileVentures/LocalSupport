@@ -30,6 +30,15 @@ user.confirmed_at = DateTime.now
 user.siteadmin = true
 user.save!
 
+(1..120).each do |i|
+  user = User.where(email: "user#{i}@example.com").first_or_initialize
+  user.password = "asdf1234"
+  user.password_confirmation = "asdf1234"
+  user.confirmed_at = DateTime.now
+  user.organisation_id = Organisation.all.sample.id
+  user.save!
+end
+
 Logger.new(STDOUT).info 'Start VolunteerOps seed'
 3.times do |n|
   VolunteerOp.create(description: "This is a test#{n}", title: "Test#{n}", organisation_id: "#{1 + n}")

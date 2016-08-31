@@ -6,16 +6,16 @@ Feature: Org superadmin creating a volunteer work opportunity
 
   Background:
     Given the following organisations exist:
-      | name     | description             | address        | postcode | telephone | website                     | email                      |
+      | name     | description             | address        | postcode | telephone | website                     | email                           |
       | Friendly | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | http://friendly.example.org | superadmin@friendly.example.org |
       | Shy      | Software design         | 34 pinner road | HA1 4HZ  | 020800001 | http://shy.example.org      | superadmin@shy.example.org      |
 
     And the following users are registered:
-      | email                      | password | organisation | confirmed_at        | superadmin |
-      | friend@harrowcn.org.uk     | pppppppp |              | 2007-01-01 10:00:00 | false |
-      | superadmin@friendly.example.org | pppppppp | Friendly     | 2007-01-01 10:00:00 | false |
-      | superadmin@shy.example.org      | pppppppp | Shy          | 2007-01-01 10:00:00 | false |
-      | superadmin@harrowcn.org.uk      | pppppppp | Shy          | 2007-01-01 10:00:00 | true  |
+      | email                           | password | organisation | confirmed_at        | superadmin |
+      | friend@harrowcn.org.uk          | pppppppp |              | 2007-01-01 10:00:00 | false      |
+      | superadmin@friendly.example.org | pppppppp | Friendly     | 2007-01-01 10:00:00 | false      |
+      | superadmin@shy.example.org      | pppppppp | Shy          | 2007-01-01 10:00:00 | false      |
+      | superadmin@harrowcn.org.uk      | pppppppp | Shy          | 2007-01-01 10:00:00 | true       |
     And that the volunteer_ops_create flag is enabled
     And cookies are approved
 
@@ -25,6 +25,14 @@ Feature: Org superadmin creating a volunteer work opportunity
     And I submit a volunteer op "Hard Work", "For no pay" on the "Friendly" page
     Then I should be on the show page for the volunteer_op titled "Hard Work"
     And I should see "Hard Work", "For no pay" and "Organisation: Friendly"
+
+  @vcr @javascript
+  Scenario: Org-superadmins can create a volunteer opportunity with different address
+    Given I am signed in as a charity worker related to "Friendly"
+    And I submit a volunteer op with address on the org page
+      | title | desc     | address    | postcode | org_name |
+      | Ops1  | For free | Station Rd | HA8 7BD  | Friendly |
+    Then I should see "Ops1", "For free", "Station Rd, HA8 7BD" and "Organisation: Friendly"
 
   Scenario: Org-superadmins can create a volunteer opportunity but get warning with invalid data
     Given I am signed in as a charity worker related to "Friendly"
