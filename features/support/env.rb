@@ -146,10 +146,13 @@ After('@in-production') do
   Rails.env = 'test'
 end
 
-#Turn off logging output
-Before do
+def logger_with_no_output
   logger = double('Logger').as_null_object
   allow(Logger).to receive(:new).and_return(logger)
+end
+
+Before do
+  logger_with_no_output
 end
 
 After('@time_travel') do
