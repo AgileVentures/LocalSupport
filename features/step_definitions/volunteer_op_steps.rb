@@ -47,6 +47,13 @@ Then(/^there should be (\d+) doit volunteer ops stored$/) do |count|
   expect(VolunteerOp.where(source: 'doit').count).to eq count.to_i
 end
 
+Then(/^all imported volunteer ops have latitude and longitude coordinates$/) do
+  all_with_coordiante = VolunteerOp.where(source: 'doit').all? do |op|
+    op.longitude && op.latitude
+  end
+  expect(all_with_coordiante).to eq(true)
+end
+
 Given(/^that the (.+) flag is (enabled|disabled)$/) do |feature, state|
   if f = Feature.find_by_name(feature) then
     f.update_attributes(active: (state == 'enabled'))
