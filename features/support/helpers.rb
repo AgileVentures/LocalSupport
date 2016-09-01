@@ -44,6 +44,40 @@ module MapHelpers
   end
 end
 
+
+PoltergeistProc = -> (page, key, value) do
+  page.driver.set_cookie(key, value)
+end
+
+SeleniumProc = -> (page, key, value) do
+  page.driver.browser.manage.add_cookie(name: key, value: value)
+end
+
+RackProc = -> (_page, key, value) do
+  headers = {}
+  Rack::Utils.set_cookie_header!(headers, key, value)
+  cookie_string = headers['Set-Cookie']
+  Capybara.current_session.driver.browser.set_cookie(cookie_string)
+end
+
+# WebkitProc = -> (_page, key, value) do
+#   headers = {}
+#   Rack::Utils.set_cookie_header!(headers, key, value)
+#   cookie_string = headers['Set-Cookie']
+#   Capybara.current_session.driver.browser.set_cookie(cookie_string)
+# end
+
+WebkitProc = RackProc
+
+
+
+CAPYBARA_DRIVERS = {
+    Capybara::Selenium::Driver => SeleniumProc,
+    Capybara::Poltergeist::Driver => PoltergeistProc,
+    Capybara::RackTest::Driver => RackProc,
+    Capybara::Webkit::Driver => WebkitProc
+}
+
 module ProposedOrgHelpers
   def unsaved_proposed_organisation(associated_user = nil)
     proposed_org = ProposedOrganisation.new({name: "Friendly Charity", description: "We are friendly!",
