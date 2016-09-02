@@ -6,6 +6,9 @@
   <%= render partial: "search_form" %>
 <% end %>
 <%= render partial: "show", locals: {org: @organisation} %>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox"></div>
+
 <div id="org-cat-buttons" class="row">
   <div class="position-bottom span6">
     <% if @editable %>
@@ -32,3 +35,4 @@
 </div>
 
 <% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
+<% render partial: 'shared/addthis_scripts' %>
