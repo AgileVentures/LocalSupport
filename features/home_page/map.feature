@@ -88,3 +88,14 @@ Feature: Map of local charities
     And I click "Close"
     Then I should not see "Details updated by the organisation within the last 12 months"
     Then I should not see "Details NOT updated by the organisation within the last 12 months"
+
+    @javascript
+Scenario: remembering users so they don't have to log in again for a while
+  Given I am a site member
+  When I go to the dashboard
+  And I log in with the Remember Me option checked
+  Then I should see "Welcome back"
+
+  When I close my browser (clearing the session)
+  And I return to the dashboard url
+  Then I should see "Welcome back"

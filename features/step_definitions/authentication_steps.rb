@@ -115,6 +115,29 @@ Given /^I have a "([^\"]+)" cookie set to "([^\"]+)"$/ do |key, value|
   end
 end
 
+# When(/^I visit "(.*?)"$/) do |path|
+#   visit path
+# end
+
+Given "I am a site member" do
+  visit paths('sign in')
+    fill_in "Email", :with => "admin@harrowcn.org.uk"
+  fill_in "Password", :with => "asdf1234"
+    click_button 'Sign in'
+end
+
+Then /^show me the cookies!$/ do
+  show_me_the_cookies
+end
+
+Then /^show me the '([^"]*)' cookie$/ do |cookie_name|
+  show_me_the_cookie(cookie_name)
+end
+
+Given /^I close my browser \(clearing the session\)$/ do
+  expire_cookies
+end
+
 And(/^cookies are approved$/) do
   steps %Q{And I have a "cookie_policy_accepted" cookie set to "true"}
 end

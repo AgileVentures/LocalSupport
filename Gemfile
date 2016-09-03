@@ -52,6 +52,7 @@ group :test do
   gem 'puffing-billy'
   gem 'poltergeist'
   gem 'phantomjs', :require => 'phantomjs/poltergeist'
+  gem 'show_me_the_cookies'
 end
 
 group :production do
