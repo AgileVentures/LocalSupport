@@ -34,6 +34,21 @@ describe VolunteerOp, type: :model do
     end
   end
 
+  describe '#remote_only' do
+    let(:first_local) { FactoryGirl.create(:local_volunteer_op, organisation_id: 1) }
+    let(:second_local) { FactoryGirl.create(:local_volunteer_op, organisation_id: 1) }
+    let(:first_doit) { FactoryGirl.create(:doit_volunteer_op, organisation_id: 1) }
+    let(:second_doit) { FactoryGirl.create(:doit_volunteer_op, organisation_id: 1) }
+
+    it 'contains remote ops' do
+      expect(VolunteerOp.remote_only).to include(first_doit, second_doit)
+    end
+
+    it 'does not contain local ops' do
+      expect(VolunteerOp.remote_only).not_to include(first_local, second_local)
+    end
+  end
+
   describe '#organisation_name' do
 
     context 'doit org' do
@@ -164,6 +179,49 @@ describe VolunteerOp, type: :model do
 
       expect(vol_op.latitude).to be_nil
       expect(vol_op.longitude).to be_nil
+    end
+  end
+
+  describe '.by_coordinates' do
+    it 'returns volunteer ops grouped by coordinates' do
+      org = create(:organisation, address: '', postcode: '', longitude: 77, latitude: 77)
+      no_coord1 = create(:volunteer_op, longitude: nil, latitude: nil, organisation: org)
+      no_coord2 = create(:volunteer_op, longitude: nil, latitude: nil, organisation: org)
+      d_vol_op1 = create(:doit_volunteer_op, longitude: 62, latitude: 10)
+      d_vol_op2 = create(:doit_volunteer_op, longitude: 62, latitude: 10)
+
+      loc1 = Location.new(longitude: 77.0, latitude: 77.0)
+      loc2 = Location.new(longitude: 62.0, latitude: 10.0)
+      l_vol1 = build(:volunteer_op, longitude: 77.0, latitude: 77.0, organisation: org)
+      l_vol2 = build(:volunteer_op, longitude: 77.0, latitude: 77.0, organisation: org)
+
+      expect(VolunteerOp.build_by_coordinates.keys).to match_array(
+        [loc1, loc2]
+      )
+      expect(VolunteerOp.build_by_coordinates[loc2]).to match_instance_array(
+        [d_vol_op1, d_vol_op2]
+      )
+      expect(VolunteerOp.build_by_coordinates[loc1]).to match_instance_array(
+        [l_vol1, l_vol2]
+      )
+    end
+  end
+
+  describe '.get_source'  do
+    it "returns 'local' for different sources" do
+      l_vol_op1 = build(:volunteer_op, organisation_id: 1)
+      l_vol_op2 = build(:volunteer_op, organisation_id: 1)
+      expect(VolunteerOp.get_source([l_vol_op1, l_vol_op2])).to eq('local')
+    end
+    it "returns 'doit' for different sources" do
+      d_vol_op1 = create(:doit_volunteer_op)
+      d_vol_op2 = create(:doit_volunteer_op)
+      expect(VolunteerOp.get_source([d_vol_op1, d_vol_op2])).to eq('doit')
+    end
+    it "returns 'mixed' for different sources" do
+      l_vol_op1 = build(:volunteer_op, organisation_id: 1)
+      d_vol_op2 = create(:doit_volunteer_op)
+      expect(VolunteerOp.get_source([l_vol_op1, d_vol_op2])).to eq('mixed')
     end
   end
 end

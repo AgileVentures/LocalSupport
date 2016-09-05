@@ -8,14 +8,14 @@ class VolunteerOpsController < ApplicationController
     @query = params[:q]
     @volunteer_ops = VolunteerOp.order_by_most_recent.search_for_text(@query)
     flash.now[:alert] = SEARCH_NOT_FOUND if @volunteer_ops.empty?
-    @markers = BuildMarkersWithInfoWindow.with(@volunteer_ops,self)
+    @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
     render template: 'volunteer_ops/index'
   end
 
   def index
     @volunteer_ops = VolunteerOp.order_by_most_recent
     @volunteer_ops = Feature.active?(:doit_volunteer_opportunities) ? @volunteer_ops : @volunteer_ops.local_only
-    @markers = BuildMarkersWithInfoWindow.with(@volunteer_ops,self)
+    @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
   end
 
   def show
@@ -25,7 +25,7 @@ class VolunteerOpsController < ApplicationController
     organisations = Organisation.where(id: @organisation.id)
     @editable = current_user.can_edit?(@organisation) if current_user
 
-    @markers = BuildMarkersWithInfoWindow.with(@volunteer_ops,self)
+    @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
   end
 
   def new
@@ -47,7 +47,7 @@ class VolunteerOpsController < ApplicationController
     @volunteer_op = @volunteer_ops.first
     organisations = Organisation.where(id: @volunteer_op.organisation_id)
     @organisation = organisations.first!
-    @markers = BuildMarkersWithInfoWindow.with(@volunteer_ops,self)
+    @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
   end
 
   def update

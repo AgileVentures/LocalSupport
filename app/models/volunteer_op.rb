@@ -10,6 +10,7 @@ class VolunteerOp < ActiveRecord::Base
 
   scope :order_by_most_recent, -> { order('updated_at DESC') }
   scope :local_only, -> { where(source: 'local') }
+  scope :remote_only, -> { where.not(source: 'local') }
 
 
   def full_address
@@ -43,10 +44,24 @@ class VolunteerOp < ActiveRecord::Base
   def self.contains_title?(text)
     arel_table[:title].matches(text)
   end
+
+  def self.build_by_coordinates
+    vol_ops = local_vol_op_with_coordinates + VolunteerOp.remote_only
+    vol_op_by_coordinates = by_coordinates(vol_ops)
+    Location.build_hash(vol_op_by_coordinates)
+  end
   
   def address_complete?
     address.present? && postcode.present?
   end 
+
+  def self.get_source(volunteer_ops)
+    source = volunteer_ops.first.source
+    unless volunteer_ops.all? { |vol_op| vol_op.source == source }
+      source = 'mixed'
+    end
+    source
+  end
   
   private
   
@@ -55,4 +70,24 @@ class VolunteerOp < ActiveRecord::Base
     self.longitude = nil
     self.latitude = nil
   end
+
+  def self.local_vol_op_with_coordinates
+    VolunteerOp.local_only.map do |vol_op|
+      if vol_op.latitude && vol_op.longitude 
+        vol_op
+      else
+        vol_op.tap do |v|
+          v.longitude = v.organisation.longitude
+          v.latitude = v.organisation.latitude
+        end
+      end
+    end
+  end
+
+  def self.by_coordinates(vol_ops)
+    vol_ops.group_by do |vol_op|
+      [vol_op.longitude, vol_op.latitude]
+    end
+  end
+
 end
