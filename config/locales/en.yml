@@ -13,4 +13,9 @@ en:
       messages:
         expired: 'reset requested too long ago - please request a new reset by clicking "forgot password" again'
 
+  home: "home"
+  organisations: "Organizations"
+  volunteers: "Volunteers"
+  login: "Login"
+
 

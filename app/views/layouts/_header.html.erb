@@ -18,19 +18,19 @@
             <div class="nav-collapse collapse">
               <ul id="button-rack" class="nav nav-pills pull-right">
                 <li class = "<%= 'active' if current_page?(root_url)%>">
-                  <%= link_to "Home", root_path %>
+                  <%= link_to (t :home), root_path %>
                 </li>
                 <li class="<%= active_if 'organisations' %>">
-                  <%= link_to "Organisations", organisations_path %>
+                  <%= link_to (t :organisations), organisations_path %>
                 </li>
                 <% if feature_active? :volunteer_ops_list %>
                   <li class="<%= active_if 'volunteer_ops' %>">
-                    <%= link_to "Volunteers", volunteer_ops_path %>
+                    <%= link_to (t :volunteers), volunteer_ops_path %>
                   </li>
                 <% end %>
                 <% if current_user.nil? %>
                     <li class="dropdown " id="menuLogin">
-                      <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
+                      <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin"><%= t :login= %></a>
 
                       <div class="dropdown-menu" id="login" style="padding:17px; width: 300px; padding-bottom: 0px;">
                         <div class="well">
