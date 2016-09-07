@@ -126,6 +126,16 @@ Given "I am a site member" do
     click_button 'Sign in'
 end
 
+#And I login with the Remember Me option checked                         # features/home_page/map.feature:95
+And(/^I login with the '([^"]*)' option checked$/) do |user_remember_me|  
+   check('user_remember_me')
+end 
+
+Given /^I close my browser \(clearing the session\)$/ do
+  expire_cookies
+end
+
+
 Then /^show me the cookies!$/ do
   show_me_the_cookies
 end
@@ -134,9 +144,12 @@ Then /^show me the '([^"]*)' cookie$/ do |cookie_name|
   show_me_the_cookie(cookie_name)
 end
 
-Given /^I close my browser \(clearing the session\)$/ do
-  expire_cookies
-end
+
+
+
+
+
+
 
 And(/^cookies are approved$/) do
   steps %Q{And I have a "cookie_policy_accepted" cookie set to "true"}

@@ -7,6 +7,7 @@ gem 'devise', '~> 3.4.0'
 gem 'devise_invitable', '~> 1.3.0'
 gem 'heroku-api'
 
+
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
@@ -27,6 +28,7 @@ group :development, :test do
   gem 'jasmine-jquery-rails', '2.0.2'
   #gem 'better_errors'
   gem 'binding_of_caller' # plays well with better_errors
+
 end
 
 group :development do
@@ -34,6 +36,7 @@ group :development do
   gem 'letter_opener'
   gem 'railroady'
   gem 'quiet_assets'
+  
 end
 
 group :test do
