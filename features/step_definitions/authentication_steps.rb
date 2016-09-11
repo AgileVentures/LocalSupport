@@ -95,11 +95,11 @@ When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |
 end
 
 And(/^cookies are approved$/) do
-  create_cookie("cookie_policy_accepted", true)
+  create_cookie('cookie_policy_accepted', true)
 end
 
 And(/^cookies are not approved$/) do
-  create_cookie("cookie_policy_accepted", false)
+  create_cookie('cookie_policy_accepted', false)
 end
 def extract_confirmation_link email
   emails_with_confirmation_link = find_emails_with_confirmation_link(find_emails_to(email))
