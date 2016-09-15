@@ -127,7 +127,7 @@ And(/^"(.*?)" should not have nil coordinates$/) do |name|
 end
 
 GMAPS_URL_KEY_NIL = '//maps.google.com/maps/api/js?' +
-                    'v=3.13&sensor=false&libraries=geometry&amp;key='.freeze
+                    'v=3.13&sensor=false&libraries=geometry&key='.freeze
 
 Then(/^the google map key should( not)? be appended to the gmap js script$/) do |negation|
   script_css = "script[src='#{GMAPS_URL_KEY_NIL}#{ENV['GMAP_API_KEY']}']"
