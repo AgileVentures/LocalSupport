@@ -16,9 +16,9 @@
       <% @volunteer_ops.each do |op| %>
           <tr>
             <td>
-              <strong><%= link_to op.title, op.link %></strong><br/>
+              <strong><%= link_to_vol_op(op, :title) %></strong><br/>
               <div id="organisations">
-                <small><%= link_to op.organisation_name, op.organisation_link %></small>
+                <small><%= link_to_vol_op(op, :organisation) %></small>
                 <br/>
               </div>
               <%= smart_truncate(op.description) %>
