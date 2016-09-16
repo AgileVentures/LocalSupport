@@ -95,9 +95,6 @@ Then(regex) do |title, desc, address, org|
 end
 
 Then(/^I should open "(.*?)" in a new window$/) do |organisation|
-  main = page.driver.browser.window_handles.first
-  expect(page.driver.browser.window_handles.count).to eq(1)
-  click_link(organisation)
-  do_it_window = page.driver.browser.window_handles.last
-  expect(page.driver.browser.window_handles.count).to eq(2)
+  number_of_windows = -> { page.driver.browser.window_handles.count }
+  expect { click_link(organisation) }.to change(&number_of_windows).by 1
 end
