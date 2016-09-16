@@ -26,14 +26,23 @@ begin
       t.profile = 'wip'
     end
 
-    Cucumber::Rake::Task.new({:rerun => 'db:test:prepare'}, 'Record failing features and run only them if any exist') do |t|
-      t.binary = vendored_cucumber_bin
-      t.fork = true # You may get faster startup if you set this to false
-      t.profile = 'rerun'
-    end
-
     desc 'Run all features'
     task :all => [:ok, :wip]
+
+    Cucumber::Rake::Task.new(:first_try) do |t|
+      t.binary = vendored_cucumber_bin
+      t.fork = true # You may get faster startup if you set this to false
+      t.profile = 'first_try'
+    end
+
+    Cucumber::Rake::Task.new(:second_try) do |t|
+      t.binary = vendored_cucumber_bin
+      t.fork = true # You may get faster startup if you set this to false
+      t.profile = 'second_try'
+    end
+
+    desc 'Run all features, rerun any failures'
+    task ci: [:first_try, :second_try]
 
     task :statsetup do
       require 'rails/code_statistics'
