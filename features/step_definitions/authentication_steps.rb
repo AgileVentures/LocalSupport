@@ -13,6 +13,7 @@ Given /^I am signed in as a (non-)?siteadmin$/ do |negate|
   user = User.find_by(siteadmin: negate ? false : true)
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
+
 Given /^I am signed in as an? (non-)?superadmin$/ do |negate|
   user = User.find_by_superadmin(negate ? false : true)
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
@@ -101,24 +102,30 @@ end
 And(/^cookies are not approved$/) do
   create_cookie('cookie_policy_accepted', false)
 end
+
 def extract_confirmation_link email
   emails_with_confirmation_link = find_emails_with_confirmation_link(find_emails_to(email))
   Nokogiri::HTML(emails_with_confirmation_link.first.body.raw_source).search("//a[text()='Confirm my account']")[0].attribute("href").value
 end
+
 def find_emails_with_confirmation_link emails
   emails.select{|email| Nokogiri::HTML(email.body.raw_source).search("//a[text()='Confirm my account']")}
 end
+
 Given(/^I click on the confirmation link in the email to "([^\"]+)"$/) do |email|
   Capybara.current_driver = :rack_test
   visit extract_confirmation_link(email)
 end
+
 def extract_retrieve_password_link email
   emails_with_retrieve_password_link = find_emails_with_retrieve_password_link(find_emails_to(email))
   Nokogiri::HTML(emails_with_retrieve_password_link.first.body.raw_source).search("//a[text()='Change my password']")[0].attribute("href").value
 end
+
 def find_emails_with_retrieve_password_link emails
   emails.select{|email| Nokogiri::HTML(email.body.raw_source).search("//a[text()='Change my password']")}
 end
+
 Given(/^I click on the retrieve password link in the email to "([^\"]+)"$/) do |email|
   visit extract_retrieve_password_link(email)
 end
