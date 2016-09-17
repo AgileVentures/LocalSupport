@@ -93,3 +93,8 @@ Then(regex) do |title, desc, address, org|
   expect(page).to have_content address
   expect(page).to have_content org
 end
+
+Then(/^I should open "(.*?)" in a new window$/) do |organisation|
+  number_of_windows = -> { page.driver.browser.window_handles.count }
+  expect { click_link(organisation) }.to change(&number_of_windows).by 1
+end

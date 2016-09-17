@@ -44,5 +44,8 @@ Feature: Doit volunteer opportunities
     Given I visit the volunteer opportunities page
     And the map should show the do-it opportunity titled Cub Scout Leader (volunteering with 8-10 year olds) 27th Harrow
 
+  Scenario: Doit volunteer opportunities are opened in a new page
+    Given I visit the volunteer opportunities page
+    Then I should open "Scout Leader (volunteering with 10-14 year olds) 27th Harrow" in a new window
 
 
