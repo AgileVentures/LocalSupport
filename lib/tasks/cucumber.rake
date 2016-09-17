@@ -29,20 +29,19 @@ begin
     desc 'Run all features'
     task :all => [:ok, :wip]
 
+    desc 'Run all features, record any failures'
     Cucumber::Rake::Task.new(:first_try) do |t|
       t.binary = vendored_cucumber_bin
       t.fork = true # You may get faster startup if you set this to false
       t.profile = 'first_try'
     end
 
+    desc 'Run failures if any exist'
     Cucumber::Rake::Task.new(:second_try) do |t|
       t.binary = vendored_cucumber_bin
       t.fork = true # You may get faster startup if you set this to false
       t.profile = 'second_try'
     end
-
-    desc 'Run all features, rerun any failures'
-    task ci: [:first_try, :second_try]
 
     task :statsetup do
       require 'rails/code_statistics'
