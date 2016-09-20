@@ -7,6 +7,10 @@ gem 'devise', '~> 3.4.0'
 gem 'devise_invitable', '~> 1.3.0'
 gem 'heroku-api'
 
+# i18n related
+gem 'rails-i18n', '~> 4.0.0'
+gem 'devise-i18n'
+
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
