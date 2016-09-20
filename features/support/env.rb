@@ -69,6 +69,8 @@ Capybara.register_driver :pg_billy do |app|
   Capybara::Poltergeist::Driver.new(app, options)
 end
 
+ShowMeTheCookies.register_adapter(:pg_billy, ShowMeTheCookies::Poltergeist)
+
 Before('@billy') do
   Capybara.current_driver = :pg_billy
 end

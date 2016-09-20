@@ -81,4 +81,4 @@ module ProposedOrgHelpers
   end
 end
 
-World(Helpers, MapHelpers, ProposedOrgHelpers)
+World(Helpers, MapHelpers, ProposedOrgHelpers, ShowMeTheCookies)
