@@ -33,7 +33,6 @@ class BuildMarkersWithInfoWindow
       custom_marker: listener.render_to_string(
         partial: 'shared/custom_marker',
         locals: {attrs: [helper.asset_path("volunteer_icon_#{source}.png"),
-                         # 'data-id' => volop.id,
                          class: 'vol_op',
                          title: 'Click here to see volunteer opportunities']}
       ),

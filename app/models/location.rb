@@ -23,8 +23,7 @@ class Location
   def self.build_hash(vol_op_by_coordinates)
     hash = {}
     vol_op_by_coordinates.each do |key,val|
-      new_key = Location.new(longitude: key.first, latitude: key.last)
-      hash[new_key] = val
+      hash[Location.new(longitude: key.first, latitude: key.last)] = val
     end
     hash
   end

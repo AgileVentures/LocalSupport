@@ -182,7 +182,7 @@ describe VolunteerOp, type: :model do
     end
   end
 
-  describe '.by_coordinates' do
+  describe '.build_by_coordinates' do
     it 'returns volunteer ops grouped by coordinates' do
       org = create(:organisation, address: '', postcode: '', longitude: 77, latitude: 77)
       no_coord1 = create(:volunteer_op, longitude: nil, latitude: nil, organisation: org)

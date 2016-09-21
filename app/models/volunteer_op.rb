@@ -47,7 +47,7 @@ class VolunteerOp < ActiveRecord::Base
 
   def self.build_by_coordinates
     vol_ops = local_vol_op_with_coordinates + VolunteerOp.remote_only
-    vol_op_by_coordinates = by_coordinates(vol_ops)
+    vol_op_by_coordinates = group_by_coordinates(vol_ops)
     Location.build_hash(vol_op_by_coordinates)
   end
   
@@ -76,15 +76,19 @@ class VolunteerOp < ActiveRecord::Base
       if vol_op.latitude && vol_op.longitude 
         vol_op
       else
-        vol_op.tap do |v|
-          v.longitude = v.organisation.longitude
-          v.latitude = v.organisation.latitude
-        end
+        vol_op.send(:with_organisation_corrdinates)
       end
     end
   end
 
-  def self.by_coordinates(vol_ops)
+  def with_organisation_corrdinates
+    self.tap do |v|
+      v.longitude = v.organisation.longitude
+      v.latitude = v.organisation.latitude
+    end
+  end
+
+  def self.group_by_coordinates(vol_ops)
     vol_ops.group_by do |vol_op|
       [vol_op.longitude, vol_op.latitude]
     end
