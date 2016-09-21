@@ -185,8 +185,8 @@ describe VolunteerOp, type: :model do
         it 'keeps latitude and longitude coordinates' do
           allow(remote_vol_op).to receive(:address_complete?).and_return(false)
           remote_vol_op.save
-          expect(remote_vol_op.longitude).not_to eq(nil)
-          expect(remote_vol_op.latitude).not_to eq(nil)
+          expect(remote_vol_op.longitude).not_to be nil
+          expect(remote_vol_op.latitude).not_to be nil
         end
       end
 
@@ -194,8 +194,8 @@ describe VolunteerOp, type: :model do
         it 'keeps latitude and longitude coordinates' do
           allow(remote_vol_op).to receive(:address_complete?).and_return(true)
           remote_vol_op.save
-          expect(remote_vol_op.longitude).not_to eq(nil)
-          expect(remote_vol_op.latitude).not_to eq(nil)
+          expect(remote_vol_op.longitude).not_to be nil
+          expect(remote_vol_op.latitude).not_to be nil
         end
       end
     end

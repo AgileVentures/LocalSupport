@@ -48,10 +48,10 @@ Then(/^there should be (\d+) doit volunteer ops stored$/) do |count|
 end
 
 Then(/^all imported volunteer ops have latitude and longitude coordinates$/) do
-  all_with_coordiante = VolunteerOp.where(source: 'doit').all? do |op|
-    op.longitude && op.latitude
+  VolunteerOp.where(source: 'doit').all? do |op|
+    expect(op.longitude).not_to be nil
+    expect(op.latitude).not_to be nil
   end
-  expect(all_with_coordiante).to eq(true)
 end
 
 Given(/^that the (.+) flag is (enabled|disabled)$/) do |feature, state|
