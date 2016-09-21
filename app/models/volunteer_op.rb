@@ -72,15 +72,12 @@ class VolunteerOp < ActiveRecord::Base
   end
 
   def self.local_vol_op_with_coordinates
-    VolunteerOp.local_only.map &:lat_lng_supplier
+    VolunteerOp.local_only.map { |volop| volop.send(:lat_lng_supplier) }
   end
 
   def lat_lng_supplier
-    if vol_op.latitude && vol_op.longitude
-      vol_op
-    else
-      vol_op.send(:with_organisation_corrdinates)
-    end
+    return self if latitude && longitude
+    send(:with_organisation_corrdinates)
   end
 
   def with_organisation_corrdinates
