@@ -72,10 +72,10 @@ class VolunteerOp < ActiveRecord::Base
   end
 
   def self.local_vol_op_with_coordinates
-    VolunteerOp.local_only.map &:get_lat_lng_supplier
+    VolunteerOp.local_only.map &:lat_lng_supplier
   end
 
-  def get_lat_lng_supplier
+  def lat_lng_supplier
     if vol_op.latitude && vol_op.longitude
       vol_op
     else
