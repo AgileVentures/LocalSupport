@@ -3,9 +3,9 @@ class VolunteerOp < ActiveRecord::Base
   validates :title, :description, presence: true
   validates :organisation_id, presence: true, if: "source == 'local'"
   belongs_to :organisation
-  
+
   geocoded_by :full_address
-  after_validation :geocode, if: :address_complete? 
+  after_validation :geocode, if: :address_complete?
   after_validation :clear_lat_lng, if: "source == 'local'"
 
   scope :order_by_most_recent, -> { order('updated_at DESC') }
@@ -16,7 +16,7 @@ class VolunteerOp < ActiveRecord::Base
   def full_address
     "#{self.address}, #{self.postcode}"
   end
-  
+
   def organisation_name
     return organisation.name if source == 'local'
     doit_org_name
@@ -33,8 +33,8 @@ class VolunteerOp < ActiveRecord::Base
   end
 
   def self.search_for_text(text)
-     keyword = "%#{text}%"
-     where(contains_description?(keyword).or(contains_title?(keyword)))
+    keyword = "%#{text}%"
+    where(contains_description?(keyword).or(contains_title?(keyword)))
   end
 
   def self.contains_description?(text)
@@ -50,10 +50,10 @@ class VolunteerOp < ActiveRecord::Base
     vol_op_by_coordinates = group_by_coordinates(vol_ops)
     Location.build_hash(vol_op_by_coordinates)
   end
-  
+
   def address_complete?
     address.present? && postcode.present?
-  end 
+  end
 
   def self.get_source(volunteer_ops)
     source = volunteer_ops.first.source
@@ -62,9 +62,9 @@ class VolunteerOp < ActiveRecord::Base
     end
     source
   end
-  
+
   private
-  
+
   def clear_lat_lng
     return if address_complete?
     self.longitude = nil
@@ -72,12 +72,14 @@ class VolunteerOp < ActiveRecord::Base
   end
 
   def self.local_vol_op_with_coordinates
-    VolunteerOp.local_only.map do |vol_op|
-      if vol_op.latitude && vol_op.longitude 
-        vol_op
-      else
-        vol_op.send(:with_organisation_corrdinates)
-      end
+    VolunteerOp.local_only.map &:get_lat_lng_supplier
+  end
+
+  def get_lat_lng_supplier
+    if vol_op.latitude && vol_op.longitude
+      vol_op
+    else
+      vol_op.send(:with_organisation_corrdinates)
     end
   end
 
