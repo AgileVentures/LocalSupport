@@ -49,8 +49,7 @@ end
 
 Then(/^all imported volunteer ops have latitude and longitude coordinates$/) do
   VolunteerOp.where(source: 'doit').all? do |op|
-    expect(op.longitude).not_to be nil
-    expect(op.latitude).not_to be nil
+    expect(op).to have_coordinates
   end
 end
 
