@@ -77,10 +77,10 @@ class VolunteerOp < ActiveRecord::Base
 
   def lat_lng_supplier
     return self if latitude && longitude
-    send(:with_organisation_corrdinates)
+    send(:with_organisation_coordinates)
   end
 
-  def with_organisation_corrdinates
+  def with_organisation_coordinates
     self.tap do |v|
       v.longitude = v.organisation.longitude
       v.latitude = v.organisation.latitude

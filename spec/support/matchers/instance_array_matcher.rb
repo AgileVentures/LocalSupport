@@ -9,4 +9,8 @@ RSpec::Matchers.define :match_instance_array do |expected|
 
     expect(actual_instances).to match_array(expected_instances)
   end
+
+  failure_message do |actual|
+    "expected that #{actual} would match the array #{expected}"
+  end
 end
