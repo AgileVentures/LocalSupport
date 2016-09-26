@@ -1,6 +1,6 @@
 In order to work on LocalSupport, please fork and clone the project.
 
-1. Install Ruby 2.3.0
+1. Install Ruby 2.3.1
 1. Fork the http://github.com/AgileVentures/LocalSupport repo (fork button at top right of github web interface)
 1. Clone the new forked repo onto your dev machine
 1. `cd LocalSupport`
