@@ -16,7 +16,7 @@ Type `psql` into command line. Then you should see this:
         psql (9.3.4)
         Type "help" for help.
         username=#
-Next to that type `ALTER ROLE "postgres" WITH CREATEDB`.  (You may need to create this role, see [issues]() for help.)
+Next to that type `ALTER ROLE "postgres" WITH CREATEDB`.  (You may need to create this role, see [issues](issues.md) for help.)
 1. `git checkout develop`.
 1. Run `bundle install` to get the gems.
 1. Run `npm install` to get the javascript dependencies.
