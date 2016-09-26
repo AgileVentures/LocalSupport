@@ -4,7 +4,7 @@ Notes on OSX installation
 In order to work on LocalSupport on Mac, please fork and clone the project.
 
 1. Install [RVM](https://rvm.io/).
-1. Install [Ruby 2.3.0](https://rvm.io/rubies/installing).
+1. Install [Ruby 2.3.1](https://rvm.io/rubies/installing).
 1. Fork the http://github.com/AgileVentures/LocalSupport repo (fork button at top right of github web interface).
 1. Clone the new forked repo onto your dev machine.
 1. `cd LocalSupport`.
@@ -16,9 +16,10 @@ Type `psql` into command line. Then you should see this:
         psql (9.3.4)
         Type "help" for help.
         username=#
-Next to that type `ALTER ROLE "postgres" WITH CREATEDB`.
+Next to that type `ALTER ROLE "postgres" WITH CREATEDB`.  (You may need to create this role, see [issues](issues.md) for help.)
 1. `git checkout develop`.
 1. Run `bundle install` to get the gems.
+1. Run `npm install` to get the javascript dependencies.
 1. Run `bower install` to get remaining dependencies.
 1. Run the following to get the database set up and import seed data (**Note:** `db:setup` is a custom task that invokes all required import and seeds. )
 
