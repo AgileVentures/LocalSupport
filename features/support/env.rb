@@ -20,6 +20,7 @@ require 'timecop'
 require 'billy/cucumber'
 
 Dir['../../spec/factories/*.rb'].each {|file| require_relative file }
+Dir[Rails.root.join('spec/support/matchers/*.rb')].each { |file| require file  }
 
 # https://github.com/jnicklas/capybara/commit/4f805d5a1c42da29ed32ab0371e24add2dc08af1
 Capybara.add_selector(:css) do
