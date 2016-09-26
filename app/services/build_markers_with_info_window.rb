@@ -21,16 +21,20 @@ class BuildMarkersWithInfoWindow
   end
 
   def build_single_marker(volop, marker)
-    marker.lat volop.latitude.nil? ? volop.organisation.latitude : volop.latitude
-    marker.lng volop.longitude.nil? ? volop.organisation.longitude : volop.longitude
-    marker.infowindow listener.render_to_string(partial: "popup_#{volop.source}", locals: {volop: volop})
+    location = volop.first
+    vol_ops = volop.last
+    source = VolunteerOp.get_source(vol_ops)
+    marker.lat location.latitude
+    marker.lng location.longitude
+    marker.infowindow listener.render_to_string(
+      partial: "volunteer_ops/popup/#{source}", locals: {vol_ops: vol_ops}
+    )
     marker.json(
       custom_marker: listener.render_to_string(
         partial: 'shared/custom_marker',
-        locals: {attrs: [helper.asset_path("volunteer_icon_#{volop.source}.png"),
-                         'data-id' => volop.id,
+        locals: {attrs: [helper.asset_path("volunteer_icon_#{source}.png"),
                          class: 'vol_op',
-                         title: "Click here to see volunteer opportunities at #{volop.organisation_name}"]}
+                         title: 'Click here to see volunteer opportunities']}
       ),
       index: 1,
       type: 'vol_op'

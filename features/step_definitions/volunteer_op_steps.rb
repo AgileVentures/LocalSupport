@@ -77,15 +77,6 @@ Then(/^I should see a link to "(.*?)" page "(.*?)"$/) do |link, url|
   page.should have_link(link, :href => url)
 end
 
-Given(/^the map should show the do\-it opportunity titled (.*)$/) do |opportunity_title|
-  vol_op = VolunteerOp.find_by(title: opportunity_title)
-  expect(vol_op).not_to be_nil
-  icon = find_map_icon('vol_op', vol_op.id)
-  click_twice icon
-  expect(page).to have_css('.arrow_box')
-  expect(find('.arrow_box').text).to include(opportunity_title)
-end
-
 When(/^I set new volunteer opportunity location to "(.*?)", "(.*?)"$/) do |addr, pc|
   fill_in 'Address', with: addr
   fill_in 'Postcode', with: pc
