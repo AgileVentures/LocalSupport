@@ -55,6 +55,13 @@ Given /the following volunteer opportunities exist/ do |volunteer_ops_table|
   end
 end
 
+Given /^the following doit volunteer opportunities exist:$/ do |volunteer_ops_table|
+  volunteer_ops_table.hashes.each do |volunteer_op|
+    volunteer_op['source'] = 'doit'
+    VolunteerOp.create! volunteer_op
+  end
+end
+
 Given /the following categories exist/ do |categories_table|
   categories_table.hashes.each do |cat|
     Category.create! cat
