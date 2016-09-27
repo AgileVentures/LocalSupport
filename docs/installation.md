@@ -14,7 +14,7 @@ We also have some collected notes on [issues encountered during install](install
 
 ### Google Map Keys
 
-In order for the Google Map to function locally you may also need to create an `application.yml` (which does not get checked in) and add the following:
+In order for the Google Map to function locally you MAY also need to create an `application.yml` (which does not get checked in) and add the following:
 
 ```
 GMAP_API_KEY: <YOUR KEY>
@@ -23,3 +23,5 @@ GMAP_API_KEY: <YOUR KEY>
 You can create a google maps key here:
 
 https://developers.google.com/maps/documentation/javascript/get-api-key
+
+Note: for some people the map seems to function fine without the above setting
