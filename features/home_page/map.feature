@@ -88,3 +88,13 @@ Feature: Map of local charities
     And I click "Close"
     Then I should not see "Details updated by the organisation within the last 12 months"
     Then I should not see "Details NOT updated by the organisation within the last 12 months"
+
+  Scenario: If the Google Maps API key is set that will appear in the right location
+    Given the Google Maps API key is set
+    When I visit the home page
+    Then the google map key should be appended to the gmap js script
+
+  Scenario: If the Google Maps API key is not set it will not appear at all
+    Given the Google Maps API key is not set
+    When I visit the home page
+    Then the google map key should not be appended to the gmap js script

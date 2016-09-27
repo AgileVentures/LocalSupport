@@ -101,6 +101,7 @@ gem 'rails_autolink'
 gem "paranoia", "~> 2.0"
 
 gem 'dotenv-rails'
+gem 'figaro'
 gem 'airbrake'
 
 # Using user friendly names in URLs

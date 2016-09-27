@@ -125,3 +125,20 @@ And(/^"(.*?)" should not have nil coordinates$/) do |name|
   org.latitude.should_not be_nil
   org.longitude.should_not be_nil
 end
+
+GMAPS_URL_KEY_NIL = '//maps.google.com/maps/api/js?' +
+                    'v=3.13&sensor=false&libraries=geometry&key='.freeze
+
+Then(/^the google map key should( not)? be appended to the gmap js script$/) do |negation|
+  script_css = "script[src='#{GMAPS_URL_KEY_NIL}#{ENV['GMAP_API_KEY']}']"
+  if negation
+    expect(page.body).not_to have_css "script[src='#{GMAPS_URL_KEY_NIL}']", visible: false
+    expect(page.body).not_to have_css script_css, visible: false
+  else
+    expect(page.body).to have_css script_css, visible: false
+  end
+end
+
+Given(/^the Google Maps API key is( not)? set$/) do |negation|
+  ENV['GMAP_API_KEY'] = negation ? nil : '12345'
+end
