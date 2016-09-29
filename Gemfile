@@ -106,3 +106,6 @@ gem 'airbrake'
 
 # Using user friendly names in URLs
 gem 'friendly_id', '~> 5.1.0'
+
+# SEO
+gem 'meta-tags'
