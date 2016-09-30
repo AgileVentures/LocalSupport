@@ -7,6 +7,19 @@ class ApplicationController < ActionController::Base
 
   include CustomErrors
 
+  # SEO
+  def show
+    set_meta_tags title: @org.name,
+                  site: 'Harrow Community Network',
+                  reverse: true,
+                  description: @org.description,
+                  author: 'http://www.agileventures.org/',
+                  og:{
+                    title: @org.name,
+                    description: @org.description,
+                  }
+  end
+
   # To prevent infinite redirect loops, only requests from white listed
   # controllers are available in the "after sign-in redirect" feature
   def white_listed
