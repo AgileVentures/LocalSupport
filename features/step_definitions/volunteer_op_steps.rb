@@ -95,3 +95,17 @@ Then(/^I should open "(.*?)" in a new window$/) do |organisation|
   number_of_windows = -> { page.driver.browser.window_handles.count }
   expect { click_link(organisation) }.to change(&number_of_windows).by 1
 end
+
+Then(/^the Do-it word in the legend should be a hyperlink to the Do-it website$/) do
+  within('.map_legend') do
+    first, _, third = all('.key_text').to_a
+
+    expect(
+      first.has_link?('Do-it', href: 'https://do-it.org/')
+    ).to eq(true)
+
+    expect(
+      third.has_link?('Do-it', href: 'https://do-it.org/')
+    ).to eq(true)
+  end
+end

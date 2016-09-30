@@ -77,3 +77,9 @@ Feature: As a member of the public
     And I am signed in as a charity worker related to "Cats Are Us"
     And I visit the edit page for the volunteer_op titled "Litter Box Scooper"
     Then the map should show the opportunity titled Litter Box Scooper
+
+
+  @javascript @billy
+  Scenario: See map when editing my volunteer opportunity
+    Given I visit the volunteer opportunities page
+    Then the Do-it word in the legend should be a hyperlink to the Do-it website
