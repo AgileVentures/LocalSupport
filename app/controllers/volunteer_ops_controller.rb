@@ -2,7 +2,7 @@ class VolunteerOpsController < ApplicationController
   layout 'two_columns_with_map'
   before_action :authorize, except: [:search, :show, :index]
   before_action :set_organisation, only: [:new, :create]
-  
+
 
   def search
     @query = params[:q]
@@ -91,13 +91,17 @@ class VolunteerOpsController < ApplicationController
   end
 
   def org_owner?
-    if params[:organisation_id].present? && current_user.present? && current_user.organisation.present?
+    if params[:organisation_id].present? && user_and_organisation_present?
       current_user.organisation.friendly_id == params[:organisation_id]
     else
       current_user.organisation == VolunteerOp.find(params[:id]).organisation if current_user.present? && current_user.organisation.present?
     end
   end
-  
+
+  def user_and_organisation_present?
+    current_user.present? && current_user.organisation.present?
+  end
+
   def set_organisation
     @organisation = Organisation.friendly.find(params[:organisation_id])
   end
