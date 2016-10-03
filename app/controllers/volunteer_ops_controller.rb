@@ -19,12 +19,10 @@ class VolunteerOpsController < ApplicationController
   end
 
   def show
-    @volunteer_ops = VolunteerOp.where(id: params[:id])
-    @volunteer_op = @volunteer_ops.first
+    set_volunteer_ops
     @organisation = Organisation.friendly.find(@volunteer_op.organisation_id)
     organisations = Organisation.where(id: @organisation.id)
     @editable = current_user.can_edit?(@organisation) if current_user
-
     @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
   end
 
@@ -43,8 +41,7 @@ class VolunteerOpsController < ApplicationController
   end
 
   def edit
-    @volunteer_ops = VolunteerOp.where(id: params[:id])
-    @volunteer_op = @volunteer_ops.first
+    set_volunteer_ops
     organisations = Organisation.where(id: @volunteer_op.organisation_id)
     @organisation = organisations.first!
     @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
@@ -105,4 +102,10 @@ class VolunteerOpsController < ApplicationController
   def set_organisation
     @organisation = Organisation.friendly.find(params[:organisation_id])
   end
+
+  def set_volunteer_ops
+    @volunteer_ops = VolunteerOp.where(id: params[:id])
+    @volunteer_op = @volunteer_ops.first
+  end
+
 end
