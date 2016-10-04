@@ -75,9 +75,10 @@ class VolunteerOpsController < ApplicationController
     # set @organisation
     # then can make condition:
     # unless current_user.can_edit? organisation
-    unless org_owner? or superadmin?
-      flash[:error] = 'You must be signed in as an organisation owner or site superadmin to perform this action!'
-      redirect_to '/' and return
+    unless org_owner? || superadmin?
+      flash[:error] =       'You must be signed in as an organisation owner or
+                            site superadmin to perform this action!'
+      (redirect_to '/') && return
     end
   end
 
@@ -98,8 +99,7 @@ class VolunteerOpsController < ApplicationController
   end
 
   def set_volunteer_ops
-    @volunteer_ops = VolunteerOp.where(id: params[:id])
-    @volunteer_op = @volunteer_ops.first
+    @volunteer_op = VolunteerOp.where(id: params[:id]).first
   end
 
   def volunteer_op_redirect(notice)
