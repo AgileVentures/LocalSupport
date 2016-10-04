@@ -14,7 +14,8 @@ class VolunteerOpsController < ApplicationController
 
   def index
     @volunteer_ops = VolunteerOp.order_by_most_recent
-    @volunteer_ops = Feature.active?(:doit_volunteer_opportunities) ? @volunteer_ops : @volunteer_ops.local_only
+    active_feature = Feature.active?(:doit_volunteer_opportunities)
+    @volunteer_ops = active_feature? ? @volunteer_ops : @volunteer_ops.local_only
     @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
   end
 
@@ -47,7 +48,8 @@ class VolunteerOpsController < ApplicationController
   def update
     @volunteer_op = VolunteerOp.find(params[:id])
     @organisation = @volunteer_op.organisation
-    volunteer_op_redirect 'Volunteer Opportunity was successfully updated.' if @volunteer_op.update_attributes(volunteer_op_params)
+    notice = 'Volunteer Opportunity was successfully updated.'
+    volunteer_op_redirect notice if @volunteer_op.update_attributes(volunteer_op_params)
     render action: 'edit' unless @volunteer_op.update_attributes(volunteer_op_params)
   end
 
