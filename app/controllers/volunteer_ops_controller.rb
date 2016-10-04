@@ -60,13 +60,9 @@ class VolunteerOpsController < ApplicationController
   end
 
   def volunteer_op_params
-    params.require(:volunteer_op).permit(
-      :description,
-      :title,
-      :organisation_id,
-      :address,
-      :postcode
-    )
+    params.require(:volunteer_op).permit(:description, :title, :organisation_id,
+                                         :address, :postcode
+                                        )
   end
 
   private
