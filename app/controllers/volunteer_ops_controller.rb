@@ -15,7 +15,7 @@ class VolunteerOpsController < ApplicationController
   def index
     @volunteer_ops = VolunteerOp.order_by_most_recent
     active_feature = Feature.active?(:doit_volunteer_opportunities)
-    @volunteer_ops = active_feature? ? @volunteer_ops : @volunteer_ops.local_only
+    @volunteer_ops = active_feature ? @volunteer_ops : @volunteer_ops.local_only
     @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
   end
 
