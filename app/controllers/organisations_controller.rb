@@ -37,6 +37,15 @@ class OrganisationsController < BaseOrganisationsController
     @can_propose_edits = current_user.present? && !@editable
     @markers = build_map_markers(organisations)
     @cat_name_ids = Category.name_and_id_for_what_who_and_how
+    set_meta_tags title: 'org.name',
+                  description: 'org.description',
+                  author: 'http://www.agileventures.org',
+                  og: {
+                    title: 'org.name',
+                    description: 'org.description',
+                    author: 'http://www.agileventures.org'
+                  }
+
   end
 
   # GET /organisations/new
@@ -44,7 +53,7 @@ class OrganisationsController < BaseOrganisationsController
   def new
     @organisation = Organisation.new
   end
-  
+
   # GET /organisations/1/edit
   def edit
     @organisation = Organisation.friendly.find(params[:id])
@@ -62,7 +71,7 @@ class OrganisationsController < BaseOrganisationsController
     # model filters for logged in users, but we check here if that user is an superadmin
     # TODO refactor that to model responsibility?
     org_params = OrganisationParams.build params
-     
+
     unless current_user.try(:superadmin?)
       flash[:notice] = PERMISSION_DENIED
       redirect_to organisations_path and return false
