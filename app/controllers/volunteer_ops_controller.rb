@@ -2,7 +2,7 @@ class VolunteerOpsController < ApplicationController
   layout 'two_columns_with_map'
   before_action :authorize, except: [:search, :show, :index]
   before_action :set_organisation, only: [:new, :create]
-
+  before_action :set_volunteer_op, only: [:show, :edit]
 
   def search
     @query = params[:q]
@@ -13,14 +13,11 @@ class VolunteerOpsController < ApplicationController
   end
 
   def index
-    @volunteer_ops = VolunteerOp.order_by_most_recent
-    active_feature = Feature.active?(:doit_volunteer_opportunities)
-    @volunteer_ops = active_feature ? @volunteer_ops : @volunteer_ops.local_only
+    @volunteer_ops = VolunteerOp.order_by_most_recent.send(restrict_by_feature_scope)
     @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
   end
 
   def show
-    set_volunteer_ops
     @organisation = Organisation.friendly.find(@volunteer_op.organisation_id)
     organisations = Organisation.where(id: @organisation.id)
     @editable = current_user.can_edit?(@organisation) if current_user
@@ -34,12 +31,11 @@ class VolunteerOpsController < ApplicationController
   def create
     params[:volunteer_op][:organisation_id] = @organisation.id
     @volunteer_op = VolunteerOp.new(volunteer_op_params)
-    volunteer_op_redirect 'Volunteer op was successfully created.' if @volunteer_op.save
-    render :new unless @volunteer_op.save
+    result = @volunteer_op.save
+    result ? vol_op_redirect('Volunteer op was successfully created.') : render(:new)
   end
 
   def edit
-    set_volunteer_ops
     organisations = Organisation.where(id: @volunteer_op.organisation_id)
     @organisation = organisations.first!
     @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
@@ -49,8 +45,8 @@ class VolunteerOpsController < ApplicationController
     @volunteer_op = VolunteerOp.find(params[:id])
     @organisation = @volunteer_op.organisation
     notice = 'Volunteer Opportunity was successfully updated.'
-    volunteer_op_redirect notice if @volunteer_op.update_attributes(volunteer_op_params)
-    render action: 'edit' unless @volunteer_op.update_attributes(volunteer_op_params)
+    result = @volunteer_op.update_attributes(volunteer_op_params)
+    result ? vol_op_redirect(notice) : render(action: 'edit')
   end
 
   def destroy
@@ -62,20 +58,24 @@ class VolunteerOpsController < ApplicationController
   end
 
   def volunteer_op_params
-    params.require(:volunteer_op).permit(:description, :title, :organisation_id,
-                                         :address, :postcode
-                                        )
+    args = [:description, :title, :organisation_id, :address, :postcode]
+    params.require(:volunteer_op).permit(*args)
   end
 
   private
+
+  def restrict_by_feature_scope
+    return :all if Feature.active?(:doit_volunteer_opportunities)
+    :local_only
+  end
 
   def authorize
     # set @organisation
     # then can make condition:
     # unless current_user.can_edit? organisation
     unless org_owner? || superadmin?
-      flash[:error] =       'You must be signed in as an organisation owner or
-                            site superadmin to perform this action!'
+      flash[:error] = 'You must be signed in as an organisation owner or
+                       site superadmin to perform this action!'
       (redirect_to '/') && return
     end
   end
@@ -83,8 +83,8 @@ class VolunteerOpsController < ApplicationController
   def org_owner?
     if params[:organisation_id].present? && user_and_organisation_present?
       current_user.organisation.friendly_id == params[:organisation_id]
-    else
-      current_user.organisation == VolunteerOp.find(params[:id]).organisation if user_and_organisation_present?
+    elsif user_and_organisation_present?
+      current_user.organisation == VolunteerOp.find(params[:id]).organisation
     end
   end
 
@@ -96,11 +96,11 @@ class VolunteerOpsController < ApplicationController
     @organisation = Organisation.friendly.find(params[:organisation_id])
   end
 
-  def set_volunteer_ops
+  def set_volunteer_op
     @volunteer_op = VolunteerOp.where(id: params[:id]).first
   end
 
-  def volunteer_op_redirect(notice)
+  def vol_op_redirect(notice)
     redirect_to(@volunteer_op, notice: notice)
   end
 end
