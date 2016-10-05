@@ -74,8 +74,8 @@ class VolunteerOpsController < ApplicationController
     # then can make condition:
     # unless current_user.can_edit? organisation
     unless org_owner? || superadmin?
-      flash[:error] =       'You must be signed in as an organisation owner or
-                            site superadmin to perform this action!'
+      flash[:error] =       'You must be signed in as an organisation owner or ' \
+                            'site superadmin to perform this action!'
       (redirect_to '/') && return
     end
   end
