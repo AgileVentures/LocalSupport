@@ -427,10 +427,7 @@ DEPENDENCIES
   launchy
   less-rails (= 2.5.0)
   letter_opener
-<<<<<<< HEAD
-=======
   meta-tags
->>>>>>> 78822e0... installing meta-tag gem
   newrelic_rpm
   paranoia (~> 2.0)
   pg
