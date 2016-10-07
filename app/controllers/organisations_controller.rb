@@ -37,15 +37,18 @@ class OrganisationsController < BaseOrganisationsController
     @can_propose_edits = current_user.present? && !@editable
     @markers = build_map_markers(organisations)
     @cat_name_ids = Category.name_and_id_for_what_who_and_how
-    set_meta_tags title: 'org.name',
-                  description: 'org.description',
+    set_meta_tags title: @organisation.name,
+                  site: 'Harrow Community Network',
+                  reverse: true,
+                  description: @organisation.description,
                   author: 'http://www.agileventures.org',
                   og: {
-                    title: 'org.name',
-                    description: 'org.description',
+                    title: @organisation.name,
+                    site: 'Harrow Community Network',
+                    reverse: true,
+                    description: @organisation.description,
                     author: 'http://www.agileventures.org'
                   }
-
   end
 
   # GET /organisations/new
