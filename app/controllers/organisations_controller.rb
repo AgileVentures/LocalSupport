@@ -38,7 +38,7 @@ class OrganisationsController < BaseOrganisationsController
     @markers = build_map_markers(organisations)
     @cat_name_ids = Category.name_and_id_for_what_who_and_how
     set_meta_tags title: @organisation.name,
-                  site: 'Harrow Community Network',
+                  site: 'Harrow Community Network | Harrow volunteering',
                   reverse: true,
                   description: @organisation.description,
                   author: 'http://www.agileventures.org',
