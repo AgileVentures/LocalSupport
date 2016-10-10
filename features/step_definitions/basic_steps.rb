@@ -66,7 +66,7 @@ end
 Then /^I should( not)? see an edit button for "(.*?)" volunteer opportunity$/ do |negate, title|
   expectation_method = negate ? :not_to : :to
   op = VolunteerOp.find_by_title title
-  expect(page).send(expectation_method, 
+  expect(page).send(expectation_method,
                     have_link('Edit', href: edit_volunteer_op_path(op.id)))
 end
 
@@ -567,4 +567,12 @@ Given(/^I can run the rake task "(.*?)"$/) do |task|
   stdout, stderr, status = Open3.capture3("#{task}")
   expect(stderr).not_to include "Error"
   expect(status).to be_success
+end
+
+Then(/^I should have a page with a title: "([^"]*)"$/) do |title|
+  expect(page).to have_title 'Harrow Community Network'
+end
+
+Then(/^I should have a page with a description: "([^"]*)"$/) do |description|
+  expect(page).to have_description 'description'
 end
