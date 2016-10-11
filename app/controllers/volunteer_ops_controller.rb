@@ -81,14 +81,14 @@ class VolunteerOpsController < ApplicationController
   end
 
   def org_owner?
-    if params[:organisation_id].present? && user_and_organisation_present?
+    if params[:organisation_id].present? && current_user_has_organisation?
       current_user.organisation.friendly_id == params[:organisation_id]
-    elsif user_and_organisation_present?
+    elsif current_user_has_organisation?
       current_user.organisation == VolunteerOp.find(params[:id]).organisation
     end
   end
 
-  def user_and_organisation_present?
+  def current_user_has_organisation?
     current_user.present? && current_user.organisation.present?
   end
 
@@ -97,7 +97,7 @@ class VolunteerOpsController < ApplicationController
   end
 
   def set_volunteer_op
-    @volunteer_op = VolunteerOp.where(id: params[:id]).first
+    @volunteer_op = VolunteerOp.find(params[:id])
   end
 
   def vol_op_redirect(notice)
