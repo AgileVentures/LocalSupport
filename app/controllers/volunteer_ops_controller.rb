@@ -13,7 +13,7 @@ class VolunteerOpsController < ApplicationController
   end
 
   def index
-    @volunteer_ops = VolunteerOp.order_by_most_recent.send(restrict_by_feature_scope)
+    @volunteer_ops = displayed_volunteer_ops
     @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
   end
 
@@ -63,6 +63,10 @@ class VolunteerOpsController < ApplicationController
   end
 
   private
+
+  def displayed_volunteer_ops
+    VolunteerOp.order_by_most_recent.send(restrict_by_feature_scope)
+  end
 
   def restrict_by_feature_scope
     return :all if Feature.active?(:doit_volunteer_opportunities)
