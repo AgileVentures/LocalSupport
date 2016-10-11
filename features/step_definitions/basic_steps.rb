@@ -570,9 +570,9 @@ Given(/^I can run the rake task "(.*?)"$/) do |task|
 end
 
 Then(/^I should have a page with a title: "([^"]*)"$/) do |title|
-  expect(page).to have_title 'Harrow Community Network'
+  expect(page).to have_title title
 end
 
 Then(/^I should have a page with a description: "([^"]*)"$/) do |description|
-  expect(page).to have_description 'description'
+  expect(page).to have_description description
 end
