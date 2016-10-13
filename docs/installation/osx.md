@@ -57,5 +57,5 @@ After that try running bundle install again.
 Issues
 -------
 
-* If you are having issues with PostgresQL - see [PostgreSQL install instructions](Installation#postgresql-install)
-* If you are having issues installing Qt webkit headers- see [capybara-webkit gem](Installation#capybara-webkit-gem)
+* If you are having issues with PostgresQL - see [PostgreSQL install instructions](issues.md#postgresql-install)
+* If you are having issues installing Qt webkit headers- see [capybara-webkit gem](issues.md#capybara-webkit-gem)

@@ -4,8 +4,8 @@ In order to work on LocalSupport, please fork and clone the project.
 1. Fork the http://github.com/AgileVentures/LocalSupport repo (fork button at top right of github web interface)
 1. Clone the new forked repo onto your dev machine
 1. `cd LocalSupport`
-1. Install Qt webkit headers - see [capybara-webkit gem below](Installation#capybara-webkit-gem)  
-1. Install postgreSQL - see [PostgreSQL install instructions below](Installation#postgresql-install)
+1. Install Qt webkit headers - see [capybara-webkit gem below](issues.md#capybara-webkit-gem)  
+1. Install postgreSQL - see [PostgreSQL install instructions below](issues.md#postgresql-install)
 1. Install X virtual frame buffer
 
     `sudo apt-get install xvfb`
