@@ -45,10 +45,15 @@ Logger.new(STDOUT).info 'Start VolunteerOps seed'
 end
 
 Logger.new(STDOUT).info 'Start features seed'
+Feature.create(name: 'volunteer_ops_create')
 Feature.activate('volunteer_ops_create')
+Feature.create(name: 'volunteer_ops_list')
 Feature.activate('volunteer_ops_list')
+Feature.create(name: 'automated_propose_org')
 Feature.activate('automated_propose_org')
+Feature.create(name: 'search_input_bar_on_org_pages')
 Feature.activate('search_input_bar_on_org_pages')
+Feature.create(name: 'doit_volunteer_opportunities')
 Feature.activate('doit_volunteer_opportunities')
 
 Logger.new(STDOUT).info 'Seed completed'

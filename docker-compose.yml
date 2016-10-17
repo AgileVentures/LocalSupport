@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+  app:
+    build:
+      context: .
+    environment:
+      DOCKER: "HELLO WORLD"
+    links:
+      - db
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+
+  db:
+    image: postgres:9.4
+    ports:
+     - "5432"
