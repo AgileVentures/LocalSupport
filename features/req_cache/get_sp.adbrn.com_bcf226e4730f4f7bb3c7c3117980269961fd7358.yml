@@ -1,0 +1,19 @@
+---
+:scope: 
+:url: http://sp.adbrn.com/match?syncid=at1_7f25ed2a-08a8-49e5-b0a4-9c58c4af6d42&cid=580a3372faba457f&rurl=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11167%26puid%3D%24%7BCOOKIE_ID%7D%26ssrc%3D1
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Server: nginx/1.8.1
+  Date: Fri, 21 Oct 2016 15:25:41 GMT
+  Content-Type: text/plain; charset=utf-8
+  Content-Length: '0'
+  Connection: close
+  Location: http://su.addthis.com/red/usync?pid=11167&puid=edb28b0e-a42c-db52-7884-acd75b88685e&ssrc=1
+  Set-Cookie:
+  - tuuid=edb28b0e-a42c-db52-7884-acd75b88685e; Path=/; Domain=.adbrn.com; Expires=Sun,
+    21 Oct 2018 15:25:41 GMT
+  - rscscap=1477063541; Path=/; Domain=.adbrn.com; Expires=Thu, 21 Oct 2021 15:25:41
+    GMT
+:content: ''

@@ -84,3 +84,9 @@ Feature: Web page owned by each charity
     | Email    |
     | Website  |
 
+  @javascript @billy
+  Scenario: See the AddThis sharing sidebar
+    Given I visit the show page for the organisation named "Friendly"
+    Then I should see the AddThis sharing sidebar
+
+

@@ -1,0 +1,19 @@
+---
+:scope: 
+:url: http://sync.mathtag.com/sync/img?mt_exid=10025&redir=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11112%26ssrc%3D4%26puid%3D%5BMM_UUID%5D&mm_bnc&mm_bct
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Date: Fri, 21 Oct 2016 15:25:40 GMT
+  Content-Type: image/gif
+  Content-Length: '0'
+  Connection: close
+  Cache-Control: no-cache
+  location: http://su.addthis.com/red/usync?pid=11112&ssrc=4&puid=0679580a-3374-4a00-a914-2b52c6964778
+  P3P: CP="NOI DSP COR NID CURa ADMa DEVa PSAa PSDa OUR BUS COM INT OTC PUR STA"
+  Server: MT3 1.10.1.3 d7361c0 cdg-pixel-x1
+  Set-Cookie: uuidc=EsDjWXFb9si8BIQgE5HLSzkEJJ6cOb9iRhgWynHO2ySGHm9wV1KCsY77R3k9kK3ENePfYRgbsQikhFItQ73oTzWNbuQ0fA/ICXipup+PhQo=;
+    Expires=Sat, 18-Nov-17 15:25:40 GMT; Domain=.mathtag.com; Path=/
+  Expires: Fri, 21 Oct 2016 15:25:39 GMT
+:content: ''

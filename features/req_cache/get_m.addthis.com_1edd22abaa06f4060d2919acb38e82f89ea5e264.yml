@@ -1,0 +1,26 @@
+---
+:scope: 
+:url: http://m.addthis.com/live/red_lojson/300lo.json?si=580a3372e2ab0986&bl=1&sid=580a3372e2ab0986&pub=ra-57ff949adbc21d93&rev=v7.6.4-wp&ln=en&pc=men&cb=0&ab=-&dp=127.0.0.1%3A54628&fp=organisations%2Ffriendly&fr=&of=0&pd=0&irt=1&vcl=1&md=0&ct=1&tct=0&abt=0&cdn=0&pi=1&rb=0&gen=100&chr=UTF-8&colc=1477063538980&jsl=1&uvs=580a3371dffae8ca001&skipb=1&callback=addthis.cbs.oln9_27941680443473160
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Fri, 21 Oct 2016 15:25:39 GMT
+  Content-Type: application/javascript;charset=UTF-8
+  Content-Length: '607'
+  Connection: close
+  Set-Cookie:
+  - di2="aUhmq#$Ek#$@p&.m&+qN#l7C]74R73l7(_6Hq6Cw5&R5%|(JV";Path=/;Domain=.addthis.com;Expires=Sun,
+    21-Oct-2018 15:25:39 GMT
+  - uid=580a3372faba457f;Path=/;Domain=.addthis.com;Expires=Sun, 21-Oct-2018 15:25:39
+    GMT
+  - vc=3;Path=/;Domain=.addthis.com;Expires=Sun, 21-Oct-2018 15:25:39 GMT
+  Expires: Thu, 01 Jan 1970 00:00:00 GMT
+  P3P: policyref="/w3c/p3p.xml", CP="NON ADM OUR DEV IND COM STA"
+  Cache-Control: max-age=0, no-cache, no-store, no-transform
+  Pragma: no-cache
+  Content-Disposition: attachment; filename=1.txt
+  Content-Encoding: gzip
+  Server: cloudflare-nginx
+  CF-RAY: 2f55b92f45890628-LHR
+:content: addthis.cbs.oln9_27941680443473160({"loc":"MDAwMDBFVUdCRU4yMzE1MTc5OTAwMDAwMDAwVg==","pixels":[{"url":"http://cm.g.doubleclick.net/pixel?google_nid=addthis&google_cm&pid=23&puidKey=google_gid&ssrc=1","id":5459},{"url":"http://cspix.media6degrees.com/orbserv/hbpix?pixId=3885&pcv=57&ptid=100&tpv=00&tpu=580a3372faba457f&curl=http%3A%2F%2F127.0.0.1%3A54628%2Forganisations%2Ffriendly","id":11},{"url":"http://addthis.mathtag.com/red/pixel?pid=11112","id":5460},{"url":"http://uip.semasio.net/addthis/1/get?sType=sync&sExtCookieId=580a3372faba457f&sInitiator=external&_url=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11150%26puid%3D%24%7BUIPID%7D%26ssrc%3D3","id":5484},{"url":"http://tags.bluekai.com/site/21176?ret=html&limit=3&id=580a3372faba457f#iframe","id":6088},{"url":"http://match.adsrvr.org/track/cmf/generic?ttd_pid=addthis&ttd_tpi=1","id":5450},{"url":"http://e.visualdna.com/import?api_key=addthis&id_space=at_id&partner_user_id=580a3372faba457f&sync","id":5490},{"url":"http://ib.adnxs.com/getuid?http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D6%26puid%3D%24UID%26ssrc%3D1","id":5458}]});
