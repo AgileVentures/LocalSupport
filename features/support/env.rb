@@ -32,6 +32,7 @@ end
 # steps to use the XPath syntax.
 Capybara.default_selector = :css
 Capybara.default_wait_time = 3
+Capybara.asset_host = 'http://localhost:3000'
 
 Capybara.javascript_driver = :webkit
 Capybara::Webkit.configure do |config|
@@ -56,7 +57,6 @@ Billy.configure do |c|
   c.cache_path = 'features/req_cache/'
 end
 Billy.proxy.reset_cache
-
 
 Capybara.register_driver :pg_billy do |app|
   options = {

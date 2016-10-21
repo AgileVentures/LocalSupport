@@ -1,0 +1,31 @@
+---
+:scope: 
+:url: http://ibeu2.mookie1.com/image.sbix?go=240236&pid=172&xid=kHpQRchE99Yy1QoR&rnd=1427774213
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Cache-Control: no-cache
+  Pragma: no-cache
+  Content-Type: image/png; charset=utf-8
+  Expires: "-1"
+  Location: http://tags.bluekai.com/site/14141?phint=s=MCE81,UKD56,MCE39,UK2467=1,UKD12,NW03,UK2950=1,MCE14,UKD01,UK2957=1,UK2275=2,UK2943=1,MCE83,MCE24,CACI005-2,UKFS03,MCE13,UK2274=2,UKD54,MCE05,CACI022-2,UKD42,UK2951=1,CACI079-2,TGLTV,UKD60,CACIN113,MCE23,UKD63,UKD27,UK2272=5,MCE64,UK2954=1,UKD30,UKD52,MCE35,MCE37,MCE73,UKD36,MCE65,MCE41,UKD06,UK2944=1,UKLND,UK2955=1,UK2402=8,UK2942=1&ida=1&xid=kHpQRchE99Yy1QoR
+  Server: Microsoft-IIS/7.5
+  Access-Control-Allow-Origin: "*"
+  Set-Cookie:
+  - ASP.NET_SessionId=fb0ef4beq2iiptusu13qduln; path=/; HttpOnly
+  - ibkukiuno=s=a27945c7-30a6-4612-899a-c991f0258e70&h=&v=4276023161&l=-8587245433450469803&op=00000000-0000-0000-0000-000000000000&m=2012240332211305&vlu=3;
+    domain=ibeu2.mookie1.com; expires=Sat, 21-Oct-2017 15:25:40 GMT; path=/; HttpOnly
+  - ibkukinet=1452402785=-8587245433450469803; domain=ibeu2.mookie1.com; expires=Sat,
+    21-Oct-2017 15:25:40 GMT; path=/; HttpOnly
+  p3p:
+  - CP=\"DSP COR ADM DEV PSA PSD OUR\"
+  - CP="DSP COR ADM DEV PSA PSD OUR"
+  X-AspNet-Version: 4.0.30319
+  X-Powered-By: ASP.NET
+  X-Server: MAN03
+  Date: Fri, 21 Oct 2016 15:25:40 GMT
+  Content-Length: '530'
+  Connection: close
+:content: "<html><head><title>Object moved</title></head><body>\r\n<h2>Object moved
+  to <a href=\"http://tags.bluekai.com/site/14141?phint=s=MCE81,UKD56,MCE39,UK2467=1,UKD12,NW03,UK2950=1,MCE14,UKD01,UK2957=1,UK2275=2,UK2943=1,MCE83,MCE24,CACI005-2,UKFS03,MCE13,UK2274=2,UKD54,MCE05,CACI022-2,UKD42,UK2951=1,CACI079-2,TGLTV,UKD60,CACIN113,MCE23,UKD63,UKD27,UK2272=5,MCE64,UK2954=1,UKD30,UKD52,MCE35,MCE37,MCE73,UKD36,MCE65,MCE41,UKD06,UK2944=1,UKLND,UK2955=1,UK2402=8,UK2942=1&amp;ida=1&amp;xid=kHpQRchE99Yy1QoR\">here</a>.</h2>\r\n</body></html>\r\n"

@@ -1,0 +1,25 @@
+---
+:scope: 
+:url: http://bcp.crwdcntrl.net/map/ct=y/c=2634/tp=ADTI/tpid=580a3372faba457f?http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11127%26puid%3D%24%7Bprofile_id%7D%26ssrc%3D3
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Cache-Control: no-cache
+  Date: Fri, 21 Oct 2016 15:25:42 GMT
+  Expires: Thu, 01 Jan 1970 00:00:00 GMT
+  Location: http://su.addthis.com/red/usync?pid=11127&puid=6a1d658ec89952f341c072dfd9a0cb85&ssrc=3
+  P3P: CP=NOI DSP COR NID PSAa PSDa OUR UNI COM NAV
+  Pragma: no-cache
+  Set-Cookie:
+  - _cc_aud="ABR4nGNgYGCI4DIuZYADAAzPAQs%3D";Version=1;Path=/;Domain=crwdcntrl.net;Expires=Tue,
+    18-Jul-2017 15:25:41 GMT;Max-Age=23328000
+  - _cc_cc="ACZ4nGNQMEs0TDEztUhNtrC0NDVKMzYxTDYwN0pJS7FMNEhOsjBlAIIILuNSBgQAAEoFCfc%3D";Version=1;Path=/;Domain=crwdcntrl.net;Expires=Tue,
+    18-Jul-2017 15:25:41 GMT;Max-Age=23328000
+  - _cc_id=6a1d658ec89952f341c072dfd9a0cb85;Path=/;Domain=crwdcntrl.net;Expires=Tue,
+    18-Jul-2017 15:25:41 GMT
+  - _cc_dc=1;Path=/;Domain=crwdcntrl.net;Expires=Tue, 18-Jul-2017 15:25:41 GMT
+  X-Server: 172.25.10.219
+  Content-Length: '0'
+  Connection: close
+:content: ''

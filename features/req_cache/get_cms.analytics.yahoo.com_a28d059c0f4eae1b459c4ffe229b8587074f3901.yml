@@ -1,0 +1,15 @@
+---
+:scope: 
+:url: http://cms.analytics.yahoo.com/cms?partner_id=ADDIS
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Date: Fri, 21 Oct 2016 15:25:41 GMT
+  Content-Type: text/html;charset=utf-8
+  Location: http://su.addthis.com/red/usync?pid=11156&ssrc=1&puid=E0
+  Content-Length: '0'
+  Server: ATS
+  Age: '0'
+  Connection: close
+:content: ''

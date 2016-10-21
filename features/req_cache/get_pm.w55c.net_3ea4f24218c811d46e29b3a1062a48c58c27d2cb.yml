@@ -1,0 +1,22 @@
+---
+:scope: 
+:url: http://pm.w55c.net/ping_match.gif?st=addthis&rurl=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D5%26puid%3D_wfivefivec_%26ssrc%3D1
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Cache-Control: no-cache, must-revalidate
+  Date: Fri, 21 Oct 2016 15:25:41 GMT
+  Expires: Fri, 01 Jan 1990 00:00:00 GMT
+  Location: http://su.addthis.com/red/usync?pid=5&puid=oae33bNp1BXBHv5&ssrc=1
+  P3P: policyref="https://cts.w55c.net/ct/p3p_policy_ref.xml", CP="UNI PUR COM INT
+    STA OTC STP OUR CUR TAIo COR DSP NOI"
+  Pragma: no-cache
+  Server: PingMatch/v2.0.30-85-g96d0329#rel-ec2-master i-b35fef38@eu-west-1a@dxedge-app_eu-west-1_prod_asg
+  Set-Cookie:
+  - wfivefivec=oae33bNp1BXBHv5; Domain=.w55c.net; Expires=Tue, 21-Nov-2017 15:25:41
+    GMT; Path=/
+  - matchaddthis=5; Domain=.w55c.net; Expires=Sun, 20-Nov-2016 15:25:41 GMT; Path=/
+  Content-Length: '0'
+  Connection: close
+:content: ''
