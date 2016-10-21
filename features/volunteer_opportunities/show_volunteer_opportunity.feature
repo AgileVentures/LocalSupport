@@ -33,5 +33,8 @@ Feature: Show Individual Volunteer Opportunities
 
   Scenario: See volunteer opportunity location with different address
     Given I visit the show page for the volunteer_op titled "Mini Bus Driver"
-    Then I should see "Volunteer opportunity location: Station Rd, HA8 7BD"
-
+    Then I should see "Volunteer opportunity location: Station Rd, HA8 7BD" 
+    
+  Scenario: See search form on show page
+    Given I visit the show page for the volunteer_op titled "Office Support"
+    Then I should see a search form

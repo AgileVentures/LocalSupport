@@ -34,6 +34,21 @@ describe VolunteerOp, type: :model do
     end
   end
 
+  describe '#remote_only' do
+    let(:first_local) { FactoryGirl.create(:local_volunteer_op, organisation_id: 1) }
+    let(:second_local) { FactoryGirl.create(:local_volunteer_op, organisation_id: 1) }
+    let(:first_doit) { FactoryGirl.create(:doit_volunteer_op, organisation_id: 1) }
+    let(:second_doit) { FactoryGirl.create(:doit_volunteer_op, organisation_id: 1) }
+
+    it 'contains remote ops' do
+      expect(VolunteerOp.remote_only).to include(first_doit, second_doit)
+    end
+
+    it 'does not contain local ops' do
+      expect(VolunteerOp.remote_only).not_to include(first_local, second_local)
+    end
+  end
+
   describe '#organisation_name' do
 
     context 'doit org' do
@@ -117,7 +132,7 @@ describe VolunteerOp, type: :model do
       expect(VolunteerOp.search_for_text('good')).to eq([vol_op2])
     end
   end
-  
+
   describe '#full_address' do
     let(:details) do
       {
@@ -126,42 +141,117 @@ describe VolunteerOp, type: :model do
         address: 'Station Rd',
         postcode: 'HA8 7BD',
         organisation_id: 1
-      } 
+      }
     end
     let!(:vol_op) { FactoryGirl.create :volunteer_op, details }
-    
+
     it 'returns a full address' do
       expect(vol_op.full_address).to eq 'Station Rd, HA8 7BD'
     end
   end
-  
-  describe 'set\'s volunteer_op lat and lng' do
-    let(:details) do
-      {
-        title: 'test',
-        description: 'description', 
-        address: 'Station Rd',
-        postcode: 'HA8 7BD',
-        organisation_id: 1
-      } 
+
+  describe '#address_compelete?' do
+    context 'volunteer op has address and postcode' do
+      it 'returns true' do
+        vol_op = build(:volunteer_op, address: 'not nil', postcode: 'HA1 4HZ')
+        expect(vol_op.address_complete?).to be_truthy
+      end
     end
-    let!(:vol_op) { FactoryGirl.create :volunteer_op, details }   
-    
-    it 'has a different address' do
-      expect(vol_op.address_complete?).to be_truthy
+    context 'volunteer op does not have address or postcode' do
+      it 'returns false' do
+        vol_op = build(:volunteer_op, address: nil, postcode: nil)
+        expect(vol_op.address_complete?).to be_falsey
+      end
     end
-    
-    it 'has not have different address' do
-      vol_op.address = ''
-      vol_op.postcode = '' 
-      expect(vol_op.address_complete?).to be_falsey
+  end
+
+  describe 'clear_lat_lng callback' do
+    context 'local source' do
+      let(:local_vol_op) do
+        build(:local_volunteer_op,
+              longitude: -0.393924,
+              latitude: 51.5843,
+              organisation_id: 1)
+      end
+      context 'without complete address' do
+        it 'clears latitude and longitude coordinates' do
+          allow(local_vol_op).to receive(:address_complete?).and_return(false)
+          local_vol_op.save
+          expect(local_vol_op).not_to have_coordinates
+        end
+      end
+
+      context 'with complete address' do
+        it 'keeps latitude and longitude coordinates' do
+          allow(local_vol_op).to receive(:address_complete?).and_return(true)
+          local_vol_op.save
+          expect(local_vol_op).to have_coordinates
+        end
+      end
     end
-    
-    it 'should clean the lat and lng if no address' do
-      vol_op.address = ''
-      vol_op.postcode = ''
-      expect(vol_op.latitude).to be_nil
-      expect(vol_op.longitude).to be_nil
+
+    context 'non local source' do
+      let(:remote_vol_op) do
+        build(:doit_volunteer_op, longitude: -0.393924, latitude: 51.5843)
+      end
+      context 'without complete address' do
+        it 'keeps latitude and longitude coordinates' do
+          allow(remote_vol_op).to receive(:address_complete?).and_return(false)
+          remote_vol_op.save
+          expect(remote_vol_op).to have_coordinates
+        end
+      end
+
+      context 'with complete address' do
+        it 'keeps latitude and longitude coordinates' do
+          allow(remote_vol_op).to receive(:address_complete?).and_return(true)
+          remote_vol_op.save
+          expect(remote_vol_op).to have_coordinates
+        end
+      end
+    end
+  end
+
+  describe '.build_by_coordinates' do
+    it 'returns volunteer ops grouped by coordinates' do
+      org = create(:organisation, address: '', postcode: '', longitude: 77, latitude: 77)
+      no_coord1 = create(:volunteer_op, longitude: nil, latitude: nil, organisation: org)
+      no_coord2 = create(:volunteer_op, longitude: nil, latitude: nil, organisation: org)
+      d_vol_op1 = create(:doit_volunteer_op, longitude: 62, latitude: 10)
+      d_vol_op2 = create(:doit_volunteer_op, longitude: 62, latitude: 10)
+
+      loc1 = Location.new(longitude: 77.0, latitude: 77.0)
+      loc2 = Location.new(longitude: 62.0, latitude: 10.0)
+      l_vol1 = build(:volunteer_op, longitude: 77.0, latitude: 77.0, organisation: org)
+      l_vol2 = build(:volunteer_op, longitude: 77.0, latitude: 77.0, organisation: org)
+
+      expect(VolunteerOp.build_by_coordinates.keys).to match_array(
+        [loc1, loc2]
+      )
+      expect(VolunteerOp.build_by_coordinates[loc2]).to match_instance_array(
+        [d_vol_op1, d_vol_op2]
+      )
+      expect(VolunteerOp.build_by_coordinates[loc1]).to match_instance_array(
+        [l_vol1, l_vol2]
+      )
+    end
+  end
+
+  describe '.get_source'  do
+    it "returns 'local' for different sources" do
+      l_vol_op1 = build(:volunteer_op, organisation_id: 1)
+      l_vol_op2 = build(:volunteer_op, organisation_id: 1)
+      expect(VolunteerOp.get_source([l_vol_op1, l_vol_op2])).to eq('local')
+    end
+    it "returns 'doit' for different sources" do
+      d_vol_op1 = create(:doit_volunteer_op)
+      d_vol_op2 = create(:doit_volunteer_op)
+      expect(VolunteerOp.get_source([d_vol_op1, d_vol_op2])).to eq('doit')
+    end
+    it "returns 'mixed' for different sources" do
+      l_vol_op1 = build(:volunteer_op, organisation_id: 1)
+      d_vol_op2 = create(:doit_volunteer_op)
+      expect(VolunteerOp.get_source([l_vol_op1, d_vol_op2])).to eq('mixed')
     end
   end
 end

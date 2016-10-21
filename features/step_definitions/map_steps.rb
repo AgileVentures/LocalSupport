@@ -44,19 +44,16 @@ Then /^I should( not)? see the following (measle|vol_op) markers in the map:$/ d
   expectation = negative ? :not_to : :to
   klass_hash = {'measle' => '.measle', 'vol_op' => '.vol_op'}
   expect(page).to have_css(klass_hash[klass], :count => table.raw.flatten.length)
-  ids = all(klass_hash[klass]).to_a.map { |marker| marker[:'data-id'].to_i }
-
-  expect(ids).send(expectation, include(*Organisation.where(name: table.raw.flatten).pluck(:id)))
+  marker_data = page.find('#marker_data')['data-markers']
+  table.raw.flatten do |title|
+    expect(marker_data).to include(title)
+  end
 end
 
 Given(/^the map should show the opportunity titled (.*)$/) do |opportunity_title|
-  id = VolunteerOp.find_by(title: opportunity_title).organisation.id
   opportunity_description = VolunteerOp.find_by(title: opportunity_title).description
-  icon = find_map_icon('vol_op', id)
-  click_twice icon
-  expect(page).to have_css('.arrow_box')
-  expect(find('.arrow_box').text).to include(opportunity_title)
-  expect(find('.arrow_box').text).to include(opportunity_description)
+  marker_data = page.find('#marker_data')['data-markers']
+  expect(marker_data).to include(opportunity_title)
 end
 
 def markers
@@ -127,4 +124,21 @@ And(/^"(.*?)" should not have nil coordinates$/) do |name|
   org = Organisation.find_by_name(name)
   org.latitude.should_not be_nil
   org.longitude.should_not be_nil
+end
+
+GMAPS_URL_KEY_NIL = '//maps.google.com/maps/api/js?' +
+                    'v=3.13&sensor=false&libraries=geometry&key='.freeze
+
+Then(/^the google map key should( not)? be appended to the gmap js script$/) do |negation|
+  script_css = "script[src='#{GMAPS_URL_KEY_NIL}#{ENV['GMAP_API_KEY']}']"
+  if negation
+    expect(page.body).not_to have_css "script[src='#{GMAPS_URL_KEY_NIL}']", visible: false
+    expect(page.body).not_to have_css script_css, visible: false
+  else
+    expect(page.body).to have_css script_css, visible: false
+  end
+end
+
+Given(/^the Google Maps API key is( not)? set$/) do |negation|
+  ENV['GMAP_API_KEY'] = negation ? nil : '12345'
 end

@@ -3,6 +3,8 @@ class OrganisationsController < BaseOrganisationsController
   # GET /organisations/search
   # GET /organisations/search.json
   before_filter :authenticate_user!, :except => [:search, :index, :show]
+  before_action :set_organisation, only: [:show, :update, :edit]
+  before_action :set_tags, only: [:show]
 
   def search
     @parsed_params = SearchParamsParser.new(params)
@@ -27,7 +29,6 @@ class OrganisationsController < BaseOrganisationsController
   # GET /organisations/1
   # GET /organisations/1.json
   def show
-    @organisation = Organisation.friendly.find(params[:id])
     organisations = Organisation.where(id: @organisation.id)
     @pending_org_admin = current_user.pending_org_admin? @organisation if current_user
     @editable = current_user.can_edit?(@organisation) if current_user
@@ -44,10 +45,9 @@ class OrganisationsController < BaseOrganisationsController
   def new
     @organisation = Organisation.new
   end
-  
+
   # GET /organisations/1/edit
   def edit
-    @organisation = Organisation.friendly.find(params[:id])
     organisations = Organisation.where(id: @organisation.id)
     @markers = build_map_markers(organisations)
     return false unless user_can_edit? @organisation
@@ -62,7 +62,7 @@ class OrganisationsController < BaseOrganisationsController
     # model filters for logged in users, but we check here if that user is an superadmin
     # TODO refactor that to model responsibility?
     org_params = OrganisationParams.build params
-     
+
     unless current_user.try(:superadmin?)
       flash[:notice] = PERMISSION_DENIED
       redirect_to organisations_path and return false
@@ -78,7 +78,6 @@ class OrganisationsController < BaseOrganisationsController
   # PUT /organisations/1
   # PUT /organisations/1.json
   def update
-    @organisation = Organisation.friendly.find(params[:id])
     params[:organisation][:superadmin_email_to_add] = params[:organisation_superadmin_email_to_add] if params[:organisation]
     update_params = OrganisationParams.build params
     return false unless user_can_edit? @organisation
@@ -124,6 +123,25 @@ class OrganisationsController < BaseOrganisationsController
   end
 
   private
+
+  def set_organisation
+    @organisation = Organisation.friendly.find(params[:id])
+  end
+
+  def set_tags
+    set_meta_tags title: @organisation.name,
+                  site: 'Harrow Community Network | Harrow volunteering',
+                  reverse: true,
+                  description: @organisation.description,
+                  author: 'http://www.agileventures.org',
+                  og: {
+                      title: @organisation.name,
+                      site: 'Harrow Community Network',
+                      reverse: true,
+                      description: @organisation.description,
+                      author: 'http://www.agileventures.org'
+                  }
+  end
 
   def user_can_edit?(org)
     unless current_user.try(:can_edit?,org)

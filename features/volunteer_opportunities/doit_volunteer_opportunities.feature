@@ -11,7 +11,7 @@ Feature: Doit volunteer opportunities
 
   Scenario: See a map of current doit volunteer opportunities
     And I visit the volunteer opportunities page
-    And I should see 13 markers in the map
+    And I should see 5 markers in the map
 
   Scenario: See a map of current doit and harrow volunteer opportunities
     Given the following organisations exist:
@@ -26,7 +26,7 @@ Feature: Doit volunteer opportunities
       | Litter Box Scooper | Assist with feline sanitation   | Cats Are Us               |
       | Office Support     | Help with printing and copying. | Indian Elders Association |
     And I visit the volunteer opportunities page
-    And I should see 15 markers in the map
+    And I should see 7 markers in the map
 
   Scenario: See a list of current doit volunteer opportunities with a link to  organisation page
     Given I visit the volunteer opportunities page
@@ -42,7 +42,10 @@ Feature: Doit volunteer opportunities
 
   Scenario: Doit volunteer opportunites are listed in map popups
     Given I visit the volunteer opportunities page
-    And the map should show the do-it opportunity titled Cub Scout Leader (volunteering with 8-10 year olds) 27th Harrow
+    And the map should show the opportunity titled Cub Scout Leader (volunteering with 8-10 year olds) 27th Harrow
 
+  Scenario: Doit volunteer opportunities are opened in a new page
+    Given I visit the volunteer opportunities page
+    Then I should open "Scout Leader (volunteering with 10-14 year olds) 27th Harrow" in a new window
 
 

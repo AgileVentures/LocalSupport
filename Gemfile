@@ -7,6 +7,7 @@ gem 'devise', '~> 3.4.0'
 gem 'devise_invitable', '~> 1.3.0'
 gem 'heroku-api'
 
+
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
@@ -34,6 +35,7 @@ group :development do
   gem 'letter_opener'
   gem 'railroady'
   gem 'quiet_assets'
+  
 end
 
 group :test do
@@ -52,6 +54,7 @@ group :test do
   gem 'puffing-billy'
   gem 'poltergeist'
   gem 'phantomjs', :require => 'phantomjs/poltergeist'
+  gem 'show_me_the_cookies'
 end
 
 group :production do
@@ -97,7 +100,11 @@ gem 'rails_autolink'
 gem "paranoia", "~> 2.0"
 
 gem 'dotenv-rails'
+gem 'figaro'
 gem 'airbrake'
 
 # Using user friendly names in URLs
 gem 'friendly_id', '~> 5.1.0'
+
+# SEO
+gem 'meta-tags'

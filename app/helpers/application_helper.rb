@@ -42,6 +42,7 @@ module ApplicationHelper
   def feature_active?(flag)
     Feature.active?(flag.to_sym)
   end
+
   def bootstrap_class_for flash_type
     case flash_type
     when "warning"
@@ -51,6 +52,11 @@ module ApplicationHelper
     else
       "alert-error"
     end
+  end
+
+  def gmap_key_value_for_url
+    return '' if ENV['GMAP_API_KEY'].nil?
+    "&key=#{ENV['GMAP_API_KEY']}"
   end
 end
 

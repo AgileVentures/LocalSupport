@@ -5,9 +5,9 @@ A directory of local support services.
 
 [Project Overview on AgileVentures](http://www.agileventures.org/projects/localsupport/documents/project-overview-localsupport)
 
-Installation and other technical issues are being gathered in the github wiki:
+Installation and other technical issues are being moved from the github wiki to the docs dir:
 
-[Installation notes](https://github.com/AgileVentures/LocalSupport/wiki/installation)
+[Installation notes](https://github.com/AgileVentures/LocalSupport/blob/develop/docs/installation.md#installation)
 
 To help with development please see our [contribution guidelines](CONTRIBUTING.md).
 
