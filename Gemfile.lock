@@ -232,6 +232,8 @@ GEM
       eventmachine_httpserver
       http_parser.rb (~> 0.6.0)
       multi_json
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
@@ -427,6 +429,7 @@ DEPENDENCIES
   phantomjs
   poltergeist
   puffing-billy
+  pundit
   quiet_assets
   rack_session_access
   railroady

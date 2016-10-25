@@ -1,11 +1,13 @@
 require 'custom_errors'
 
 class ApplicationController < ActionController::Base
+  include Pundit
   protect_from_forgery
   before_filter :store_location,
                 :assign_footer_page_links
 
   include CustomErrors
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   # To prevent infinite redirect loops, only requests from white listed
   # controllers are available in the "after sign-in redirect" feature
@@ -83,6 +85,11 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
       false
     end
+  end
+
+  def user_not_authorized
+    flash[:error] = t('authorize.superadmin')
+    redirect_to root_path
   end
 
   def superadmin?
