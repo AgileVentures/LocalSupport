@@ -16,6 +16,7 @@ RSpec.describe VolunteerOpPolicy do
       user = create(:user, organisation_id: organisation.id)
       expect(subject).to permit(user, build(:volunteer_op, organisation_id: organisation.id))
     end
+
     it 'denies access for non organisation owner' do
       organisation = create(:organisation)
       expect(subject).not_to permit(build(:user), build(:volunteer_op, organisation_id: organisation.id))
