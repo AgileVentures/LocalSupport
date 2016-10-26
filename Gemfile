@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '2.3.1'
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 4.2', '>= 4.2.7.1'
 gem 'pg'
 gem 'devise', '~> 3.4.0'
 gem 'devise_invitable', '~> 1.3.0'
@@ -24,7 +24,7 @@ group :development, :test do
   gem 'aruba'
   gem 'byebug'
   gem 'rack_session_access'
-  gem 'jasmine', github: 'AgileVentures/jasmine-gem'
+  gem 'jasmine', '~> 2.4'
   gem 'jasmine-jquery-rails', '2.0.2'
   #gem 'better_errors'
   gem 'binding_of_caller' # plays well with better_errors
