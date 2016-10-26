@@ -1,0 +1,19 @@
+---
+:scope: 
+:url: http://tapestry.tapad.com/tapestry/1?ta_partner_id=905&ta_partner_did=580a3372faba457f&ta_redirect=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11144%26puid%3D%24%7BIDS%3Akey%7D%26ssrc%3D3
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Server: nginx/1.11.3
+  Date: Fri, 21 Oct 2016 15:25:41 GMT
+  Content-Length: '0'
+  Connection: close
+  Set-Cookie:
+  - TapAd_TS=1477063541867;Expires=Tue, 20 Dec 2016 15:25:41 GMT;Path=/;Domain=.tapad.com
+  - TapAd_DID=a0bdd3b5-97a2-11e6-874e-005056a2677b;Expires=Tue, 20 Dec 2016 15:25:41
+    GMT;Path=/;Domain=.tapad.com
+  P3P: policyref="http://tapad-taptags.s3.amazonaws.com/policy/p3p.xml", CP="NOI DSP
+    COR ADM PSAo PSDo OURo SAMo UNRo OTRo BUS COM NAV DEM STA PRE"
+  Location: http://su.addthis.com/red/usync?pid=11144&puid=a0bdd3b5-97a2-11e6-874e-005056a2677b&ssrc=3
+:content: ''

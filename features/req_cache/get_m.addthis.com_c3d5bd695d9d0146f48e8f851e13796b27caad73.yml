@@ -1,0 +1,26 @@
+---
+:scope: 
+:url: http://m.addthis.com/live/red_lojson/300lo.json?si=580a3375e118fa3d&bl=1&sid=580a3375e118fa3d&pub=ra-57ff949adbc21d93&rev=v7.6.4-wp&ln=en&pc=men&cb=0&ab=-&dp=127.0.0.1%3A54628&fp=organisations%2Ffriendly&fr=&of=0&pd=0&irt=1&vcl=1&md=0&ct=1&tct=0&abt=0&cdn=0&pi=1&rb=0&gen=100&chr=UTF-8&colc=1477063541350&jsl=1&uvs=580a3371dffae8ca002&skipb=1&callback=addthis.cbs.oln9_69963358761742710
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Fri, 21 Oct 2016 15:25:41 GMT
+  Content-Type: application/javascript;charset=UTF-8
+  Content-Length: '583'
+  Connection: close
+  Set-Cookie:
+  - di2="aUhmq#$Ek#$@p#!%T&.m&+qN#lI=^I3i8%a7C]7={74R73l7.a7(`7(_6Hq6Cw5&R5%~5%|(JV";Path=/;Domain=.addthis.com;Expires=Sun,
+    21-Oct-2018 15:25:41 GMT
+  - uid=580a3372faba457f;Path=/;Domain=.addthis.com;Expires=Sun, 21-Oct-2018 15:25:41
+    GMT
+  - vc=4;Path=/;Domain=.addthis.com;Expires=Sun, 21-Oct-2018 15:25:41 GMT
+  Expires: Thu, 01 Jan 1970 00:00:00 GMT
+  P3P: policyref="/w3c/p3p.xml", CP="NON ADM OUR DEV IND COM STA"
+  Cache-Control: max-age=0, no-cache, no-store, no-transform
+  Pragma: no-cache
+  Content-Disposition: attachment; filename=1.txt
+  Content-Encoding: gzip
+  Server: cloudflare-nginx
+  CF-RAY: 2f55b93df11806ee-LHR
+:content: addthis.cbs.oln9_69963358761742710({"loc":"MDAwMDBFVUdCRU4yMzE1MTc5OTAwMDAwMDAwVg==","pixels":[{"url":"http://pm.w55c.net/ping_match.gif?st=addthis&rurl=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D5%26puid%3D_wfivefivec_%26ssrc%3D1","id":3387},{"url":"http://sp.adbrn.com/match?syncid=at1_7f25ed2a-08a8-49e5-b0a4-9c58c4af6d42&cid=580a3372faba457f&rurl=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11167%26puid%3D%24%7BCOOKIE_ID%7D%26ssrc%3D1","id":5317},{"url":"http://rp.gwallet.com/r1/cm/p110r","id":8410,"delay":[60]},{"url":"http://p.adsymptotic.com/d/px?_pid=12680&_psign=d6e01d3f4c20c809094ff0cbc2359cfb&_puuid=580a3372faba457f&_rand=742059&_redirect=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11178%26puid%3D%24%7BUUID%7D%26ssrc%3D3","id":5592},{"url":"http://tapestry.tapad.com/tapestry/1?ta_partner_id=905&ta_partner_did=580a3372faba457f&ta_redirect=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11144%26puid%3D%24%7BIDS%3Akey%7D%26ssrc%3D3","id":5487},{"url":"http://bcp.crwdcntrl.net/map/c=2634/tp=ADTI/tpid=580a3372faba457f?http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11127%26puid%3D%24%7Bprofile_id%7D%26ssrc%3D3","id":5123},{"url":"http://cms.analytics.yahoo.com/cms?partner_id=ADDIS","id":5492}]});

@@ -1,0 +1,23 @@
+---
+:scope: 
+:url: http://e.visualdna.com/import?partner_user_id=580a33cdf128188f&id_space=at_id&sync=&api_key=addthis&do_not_cookie=1
+:body: ''
+:status: 307
+:method: get
+:headers:
+  Cache-Control: max-age=0, no-store, no-cache, must-revalidate
+  Date: Fri, 21 Oct 2016 15:27:11 GMT
+  Expires: Fri, 21 Oct 2016 15:27:11 GMT
+  Location: "//su.addthis.com/red/usync?pid=11146&puid=74a97e3a-0c9b-257e-fb80-9989e1b06c12&ssrc=1&url=http%3A%2F%2Fcm.g.doubleclick.net%2Fpixel%3Fgoogle_nid%3Dvdna%26google_cm%26google_sc"
+  P3P: CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+  Server: Jetty(9.1.z-SNAPSHOT)
+  Set-Cookie:
+  - vdnaWidgetMC=11b38c1b-5a29-4a30-b556-524fab389107; path=/; domain=.visualdna.com;
+    expires=Thu, 19-Jan-2017 15:27:11 GMT
+  - vdnaR=11b38c1b-5a29-4a30-b556-524fab389107%7Caddthis_then_doubleclick%3A1477063631;
+    path=/; domain=.visualdna.com; expires=Thu, 19-Jan-2017 15:27:11 GMT
+  Vary: Cookie
+  X-Vdna-Request-Id: WAozzwr6KDAAAGeJXxoAAAFQ
+  Content-Length: '0'
+  Connection: close
+:content: ''

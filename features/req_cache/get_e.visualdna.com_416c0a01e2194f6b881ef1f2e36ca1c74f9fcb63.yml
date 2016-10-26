@@ -1,0 +1,22 @@
+---
+:scope: 
+:url: http://e.visualdna.com/conversion?api_key=doubleclick&id=sync&partner_user_id_type=id&google_gid=CAESEOpZn6ITtua4xgBnzKYTNLw&google_cver=1
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Accept-Ranges: bytes
+  Cache-Control: max-age=0, no-store, no-cache, must-revalidate
+  Content-Type: image/gif
+  Date: Fri, 21 Oct 2016 15:25:40 GMT
+  Expires: Fri, 21 Oct 2016 15:25:40 GMT
+  P3P: CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+  Server: Jetty(9.1.z-SNAPSHOT)
+  Set-Cookie: vdnaWidgetMC=423ccfda-93ea-49f1-93e8-e9e1552581ac; path=/; domain=.visualdna.com;
+    expires=Thu, 19-Jan-2017 15:25:40 GMT
+  Vary: Cookie
+  X-Vdna-Request-Id: WAozdAr6KroAAAffY-YAAAEX
+  Content-Length: '43'
+  Connection: close
+:content: !binary |-
+  R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==

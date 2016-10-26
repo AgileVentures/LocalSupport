@@ -1,0 +1,23 @@
+---
+:scope: 
+:url: http://match.adsrvr.org/track/cmf/generic?ttd_pid=addthis&ttd_tpi=1
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Cache-Control: private,no-cache, must-revalidate
+  Content-Type: text/html
+  Date: Fri, 21 Oct 2016 15:25:45 GMT
+  Location: http://match.adsrvr.org/track/cmb/generic?ttd_pid=addthis&ttd_tpi=1
+  P3P: CP="NOI DSP COR CUR ADMo DEVo PSAo PSDo OUR SAMo BUS UNI NAV"
+  Pragma: no-cache
+  Server: Microsoft-IIS/8.5
+  Set-Cookie:
+  - TDID=b91f5b4b-a6fa-405e-9e08-e2ca49a8453e; domain=.adsrvr.org; expires=Sat, 21-Oct-2017
+    15:25:45 GMT; path=/
+  - TDCPM=CAEYBSgCMgsI3on4paj0vDQQBTgB; domain=.adsrvr.org; expires=Sat, 21-Oct-2017
+    15:25:45 GMT; path=/
+  X-AspNet-Version: 4.0.30319
+  Content-Length: '165'
+  Connection: close
+:content: 'Redirecting to: <a href="http://match.adsrvr.org/track/cmb/generic?ttd_pid=addthis&ttd_tpi=1">http://match.adsrvr.org/track/cmb/generic?ttd_pid=addthis&ttd_tpi=1</a>'

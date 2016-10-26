@@ -1,0 +1,22 @@
+---
+:scope: 
+:url: http://su.addthis.com/red/usync?pid=5&puid=oae33bNp1BXBHv5&ssrc=1
+:body: ''
+:status: 204
+:method: get
+:headers:
+  Date: Fri, 21 Oct 2016 15:25:42 GMT
+  Content-Type: image/png;charset=UTF-8
+  Connection: close
+  Set-Cookie:
+  - uid=580a3372faba457f;Path=/;Domain=.addthis.com;Expires=Sun, 21-Oct-2018 15:25:42
+    GMT
+  - um=5.'oae33bNp1BXBHv5'|2JK.'17tlg7tzh6yly'|2Ke.'20144C1AC7AAA442';Path=/;Domain=.addthis.com;Expires=Sun,
+    21-Oct-2018 15:25:42 GMT
+  Expires: Thu, 01 Jan 1970 00:00:00 GMT
+  P3P: policyref="/w3c/p3p.xml", CP="NON ADM OUR DEV IND COM STA"
+  Cache-Control: max-age=0, no-cache, no-store, no-transform
+  Pragma: no-cache
+  Server: cloudflare-nginx
+  CF-RAY: 2f55b941518d352a-LHR
+:content: ''

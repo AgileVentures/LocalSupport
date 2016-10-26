@@ -1,0 +1,20 @@
+---
+:scope: 
+:url: http://e.visualdna.com/import?api_key=addthis&id_space=at_id&partner_user_id=580a3372faba457f&sync
+:body: ''
+:status: 307
+:method: get
+:headers:
+  Cache-Control: max-age=0, no-store, no-cache, must-revalidate
+  Date: Fri, 21 Oct 2016 15:25:40 GMT
+  Expires: Fri, 21 Oct 2016 15:25:40 GMT
+  Location: http://e.visualdna.com/import?partner_user_id=580a3372faba457f&api_key=addthis&id_space=at_id&sync=&do_not_cookie=1
+  P3P: CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+  Server: Jetty(9.1.z-SNAPSHOT)
+  Set-Cookie: vdnaWidgetMC=423ccfda-93ea-49f1-93e8-e9e1552581ac; path=/; domain=.visualdna.com;
+    expires=Thu, 19-Jan-2017 15:25:40 GMT
+  Vary: Cookie
+  X-Vdna-Request-Id: WAozdAr6KroAAAjLWJIAAADG
+  Content-Length: '0'
+  Connection: close
+:content: ''
