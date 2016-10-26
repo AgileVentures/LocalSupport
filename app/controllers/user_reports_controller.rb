@@ -18,6 +18,7 @@ class UserReportsController < ApplicationController
   # would like this to support generic updating of model with
   # business logic pulled into a separate model or process
 
+  #TODO ask for explanation
   def update
     user = User.find_by_id(params[:id])
     if params[:pending_org_action] == "decline"

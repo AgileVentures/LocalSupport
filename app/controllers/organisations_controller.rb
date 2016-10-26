@@ -31,11 +31,6 @@ class OrganisationsController < BaseOrganisationsController
   def show
     organisations = Organisation.where(id: @organisation.id)
     @pending_org_admin = current_user.pending_org_admin? @organisation if current_user
-    @editable = current_user.can_edit?(@organisation) if current_user
-    @deletable = current_user.can_delete?(@organisation) if current_user
-    @can_create_volunteer_op = current_user.can_create_volunteer_ops?(@organisation) if current_user
-    @grabbable = current_user ? current_user.can_request_org_admin?(@organisation) : true
-    @can_propose_edits = current_user.present? && !@editable
     @markers = build_map_markers(organisations)
     @cat_name_ids = Category.name_and_id_for_what_who_and_how
   end
@@ -44,13 +39,14 @@ class OrganisationsController < BaseOrganisationsController
   # GET /organisations/new.json
   def new
     @organisation = Organisation.new
+    authorize @organisation
   end
 
   # GET /organisations/1/edit
   def edit
+    authorize @organisation
     organisations = Organisation.where(id: @organisation.id)
     @markers = build_map_markers(organisations)
-    return false unless user_can_edit? @organisation
     #respond_to do |format|
     #  format.html {render :layout => 'full_width'}
     #end
@@ -63,11 +59,8 @@ class OrganisationsController < BaseOrganisationsController
     # TODO refactor that to model responsibility?
     org_params = OrganisationParams.build params
 
-    unless current_user.try(:superadmin?)
-      flash[:notice] = PERMISSION_DENIED
-      redirect_to organisations_path and return false
-    end
     @organisation = Organisation.new(org_params)
+    authorize @organisation
     if @organisation.save
       redirect_to @organisation, notice: 'Organisation was successfully created.'
     else
@@ -80,7 +73,7 @@ class OrganisationsController < BaseOrganisationsController
   def update
     params[:organisation][:superadmin_email_to_add] = params[:organisation_superadmin_email_to_add] if params[:organisation]
     update_params = OrganisationParams.build params
-    return false unless user_can_edit? @organisation
+    authorize @organisation
     if @organisation.update_attributes_with_superadmin(update_params)
       redirect_to @organisation, notice: 'Organisation was successfully updated.'
     else
@@ -91,11 +84,8 @@ class OrganisationsController < BaseOrganisationsController
   # DELETE /organisations/1
   # DELETE /organisations/1.json
   def destroy
-    unless current_user.try(:superadmin?)
-      flash[:notice] = PERMISSION_DENIED
-      redirect_to organisation_path(params[:id]) and return false
-    end
     @organisation = Organisation.friendly.find(params[:id])
+    authorize @organisation
     @organisation.destroy
     flash[:success] = "Deleted #{@organisation.name}"
 
@@ -141,13 +131,5 @@ class OrganisationsController < BaseOrganisationsController
                       description: @organisation.description,
                       author: 'http://www.agileventures.org'
                   }
-  end
-
-  def user_can_edit?(org)
-    unless current_user.try(:can_edit?,org)
-      flash[:notice] = PERMISSION_DENIED
-      redirect_to organisation_path(params[:id]) and return false
-    end
-    true
   end
 end

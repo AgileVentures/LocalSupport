@@ -1,10 +1,10 @@
 class PagesController < ApplicationController
   layout 'full_width'
-  before_filter :authorize, :except => :show
 
   # GET /pages
   def index
     @pages = Page.order('name ASC')
+    authorize @pages
   end
 
   # GET /pages/:permalink
@@ -17,16 +17,19 @@ class PagesController < ApplicationController
   # GET /pages/new
   def new
     @page = Page.new
+    authorize @pages
   end
 
   # GET /pages/:permalink/edit
   def edit
     @page = Page.find_by_permalink!(params[:id])
+    authorize @pages
   end
 
   # POST /pages
   def create
     @page = Page.new(params[:page])
+    authorize @pages
 
     if @page.save
       redirect_to @page, notice: 'Page was successfully created.'
@@ -38,6 +41,7 @@ class PagesController < ApplicationController
   # PUT /pages/:permalink
   def update
     @page = Page.find_by_permalink!(params[:id])
+    authorize @pages
     update_params = PageParams.build params
     if @page.update_attributes(update_params)
       redirect_to @page, notice: 'Page was successfully updated.'
@@ -49,6 +53,7 @@ class PagesController < ApplicationController
   # DELETE /pages/:permalink
   def destroy
     @page = Page.find_by_permalink!(params[:id])
+    authorize @pages
     @page.destroy
 
     redirect_to pages_url
