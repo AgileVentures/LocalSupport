@@ -1,0 +1,15 @@
+---
+:scope: 
+:url: http://m.addthisedge.com/live/prender?sid=580a3375e118fa3d&uid=580a3372faba457f&ids=3387-5317-5592-5487-5123-5492&rev=v7.6.4-wp&delay=0
+:body: ''
+:status: 204
+:method: get
+:headers:
+  Date: Fri, 21 Oct 2016 15:25:41 GMT
+  Connection: close
+  Access-Control-Allow-Origin: "*"
+  Cache-Control: max-age=0, no-cache, no-store, no-transform
+  Pragma: no-cache
+  Server: cloudflare-nginx
+  CF-RAY: 2f55b940855c3500-LHR
+:content: ''

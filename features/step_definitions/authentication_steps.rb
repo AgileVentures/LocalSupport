@@ -88,7 +88,7 @@ end
 
 When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |email, password|
   user = User.find_by_email("#{email}")
-  user.confirm!
+  user.confirm
   steps %Q{
     Given I visit the home page
     And I sign in as "#{email}" with password "#{password}"

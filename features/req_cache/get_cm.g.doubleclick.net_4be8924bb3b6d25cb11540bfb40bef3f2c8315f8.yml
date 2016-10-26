@@ -1,0 +1,28 @@
+---
+:scope: 
+:url: http://cm.g.doubleclick.net/pixel?google_nid=addthis&google_cm=&pid=23&puidKey=google_gid&ssrc=1&google_tc=
+:body: ''
+:status: 302
+:method: get
+:headers:
+  P3P: policyref="http://googleads.g.doubleclick.net/pagead/gcn_p3p_.xml", CP="CURa
+    ADMa DEVa TAIo PSAo PSDo OUR IND UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR"
+  Location: http://su.addthis.com/red/usync?pid=23&puidKey=google_gid&ssrc=1&google_gid=CAESELtE8fFbY9IWpmJQQMAwPNc&google_cver=1
+  Date: Fri, 21 Oct 2016 15:25:40 GMT
+  Pragma: no-cache
+  Expires: Fri, 01 Jan 1990 00:00:00 GMT
+  Cache-Control: no-cache, must-revalidate
+  Content-Type: text/html; charset=UTF-8
+  Server: HTTP server (unknown)
+  Content-Length: '330'
+  X-XSS-Protection: 1; mode=block
+  Set-Cookie:
+  - id=22e92679ce0d009d||t=1477063540|et=730|cs=002213fd4840526e900e25a93d; expires=Sun,
+    21-Oct-2018 15:25:40 GMT; path=/; domain=.doubleclick.net
+  - test_cookie=; domain=.doubleclick.net; path=/; expires=Mon, 21 Jul 2008 23:59:00
+    GMT
+  - IDE=AHWqTUntP-Vhl8-9ZZJoTKsTPwkWLtQTKmg2BVpiAT2wKpTT0kmR6tBWCg; expires=Sun, 21-Oct-2018
+    15:25:40 GMT; path=/; domain=.doubleclick.net; HttpOnly
+  Connection: close
+:content: "<HTML><HEAD><meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<TITLE>302
+  Moved</TITLE></HEAD><BODY>\n<H1>302 Moved</H1>\nThe document has moved\n<A HREF=\"http://su.addthis.com/red/usync?pid=23&amp;puidKey=google_gid&amp;ssrc=1&amp;google_gid=CAESELtE8fFbY9IWpmJQQMAwPNc&amp;google_cver=1\">here</A>.\r\n</BODY></HTML>\r\n"
