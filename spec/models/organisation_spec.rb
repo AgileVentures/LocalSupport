@@ -42,7 +42,7 @@ describe Organisation, :type => :model do
     context 'has user' do
       before(:each) do
         usr = FactoryGirl.create(:user, :email => 'orgsuperadmin@org.org')
-        usr.confirm!
+        usr.confirm
         @org1.users << [usr]
         @org1.save!
       end
@@ -78,7 +78,7 @@ describe Organisation, :type => :model do
   context 'scopes for orphan orgs' do
     before(:each) do
       @user = FactoryGirl.create(:user, :email => 'hello@hello.com')
-      @user.confirm!
+      @user.confirm
     end
 
     it 'should allow us to grab orgs with emails' do
@@ -92,7 +92,7 @@ describe Organisation, :type => :model do
       expect(Organisation.null_users.sort).to eq [@org1, @org2, @org3].sort
       @org1.email = 'hello@hello.com'
       @org1.save
-      @user.confirm!
+      @user.confirm
       expect(@org1.users).to eq [@user]
       expect(Organisation.null_users.sort).to eq [@org2, @org3].sort
     end

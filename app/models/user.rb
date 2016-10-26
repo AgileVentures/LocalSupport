@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
     self.pending_organisation == org
   end
 
-  def confirm!
+  def confirm
     super
     make_admin_of_org_with_matching_email
   end

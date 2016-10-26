@@ -99,7 +99,7 @@ describe User, :type => :model do
 
     it 'should call promote_new_user after confirmation' do
       expect(@user).to receive(:make_admin_of_org_with_matching_email)
-      @user.confirm!
+      @user.confirm
     end
 
     it 'should not promote the user if org email does not match' do
@@ -118,9 +118,9 @@ describe User, :type => :model do
       expect(@superadmin_user.organisation).to eq @match_org
     end
 
-    it 'should be called in #confirm!' do
+    it 'should be called in #confirm' do
       expect(@user).to receive(:make_admin_of_org_with_matching_email)
-      @user.confirm!
+      @user.confirm
     end
   end
 
