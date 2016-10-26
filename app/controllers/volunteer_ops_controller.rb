@@ -25,12 +25,12 @@ class VolunteerOpsController < ApplicationController
 
   def new
     @volunteer_op = @organisation.volunteer_ops.build
-    authorize @volunteer_op
+    authorize @organisation, :update? 
   end
 
   def create
     @volunteer_op = VolunteerOp.new(volunteer_op_params)
-    authorize @volunteer_op
+    authorize @organisation, :update? 
     result = @volunteer_op.save
     result ? vol_op_redirect('Volunteer op was successfully created.') : render(:new)
   end

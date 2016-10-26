@@ -1,7 +1,5 @@
 class ProposedOrganisationEditsController < ApplicationController
 
-  before_filter :authorize, :only => [:update]
-
   def new
     org = Organisation.friendly.find params[:organisation_id]
     @proposed_organisation_edit = ProposedOrganisationEdit.new organisation: org
@@ -26,6 +24,7 @@ class ProposedOrganisationEditsController < ApplicationController
   def update
     # UpdateProposedOrganisationEdit.with(observer: self, params: create_params)
     proposed_edit = ProposedOrganisationEdit.find(update_params.fetch(:id))
+    authorize proposed_edit
     if proposed_edit_params.any?
       proposed_edit.accept(proposed_edit_params)
       flash[:notice] = "The edit you accepted has been applied and archived"

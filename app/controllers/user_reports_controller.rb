@@ -4,10 +4,12 @@ class UserReportsController < ApplicationController
   include ActionView::Helpers::DateHelper
 
   def deleted
+    authorize :user_report, :access?
     @users = User.only_deleted
   end
 
   def undo_delete
+    authorize :user_report, :access?
     usr = User.with_deleted.find_by_id params[:id]
     User.restore(params[:id])
     @users = User.only_deleted
@@ -29,6 +31,7 @@ class UserReportsController < ApplicationController
   end
 
   def destroy
+    authorize :user_report, :access?
     user = User.find(params[:id])
     if user == current_user
       flash[:error] = "You may not destroy your own account!"
@@ -40,10 +43,12 @@ class UserReportsController < ApplicationController
   end
 
   def index
+    authorize :user_report, :access?
     @users = User.all
   end
 
   def invited
+    authorize :user_report, :access?
     @resend_invitation = true
     @invitations = serialize_invitations
     @mail_template = MailTemplate.find_by(name: 'Invitation instructions')
@@ -51,20 +56,24 @@ class UserReportsController < ApplicationController
   end
 
   def update_message_promoting(user)
+    authorize :user_report, :access?
     flash[:notice] = "You have approved #{user.email}."
     redirect_to(users_report_path)
   end
 
   def authorization_failure_for_update
+    authorize :user_report, :access?
     flash[:error] = t('authorize.superadmin')
     redirect_to(root_path)
   end
 
   def update_failure
+    authorize :user_report, :access?
     redirect_to :status => 404
   end
 
   def update_message_for_decline_success(user, pending_organisation)
+    authorize :user_report, :access?
     flash[:success] = "You have declined #{user.email}'s request for admin status for #{pending_organisation.name}."
     redirect_to(users_report_path)
   end

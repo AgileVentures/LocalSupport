@@ -115,36 +115,6 @@ describe ApplicationController, :type => :controller, :helpers => :controllers d
     let(:msg) { 'You must be signed in as a superadmin to perform this action!' }
     before { allow(controller).to receive_messages current_user: user }
 
-    context '#authorize' do
-      it 'Unauthorized: redirects to root_path and displays flash' do
-        allow(controller).to receive_messages superadmin?: false
-        expect(controller).to receive(:redirect_to).with(root_path) { true } # calling original raises errors
-        expect(controller.flash).to receive(:[]=).with(:error, msg).and_call_original
-        expect(controller.instance_eval { authorize }).to be false
-        # can't assert `redirect_to root_path`: http://owowthathurts.blogspot.com/2013/08/rspec-response-delegation-error-fix.html
-        expect(flash[:error]).not_to be_nil
-      end
-
-      it 'Authorized: allows execution to continue' do
-        allow(controller).to receive_messages superadmin?: true
-        expect(controller.instance_eval { authorize }).to be nil
-      end
-    end
-
-    context '#superadmin?' do
-      it 'returns nil when current_user is nil' do
-        allow(controller).to receive_messages current_user: nil
-        expect(controller.instance_eval { superadmin? }).to be_nil
-      end
-
-      it 'otherwise depends on { current_user.superadmin? }' do
-        expect(user).to receive(:superadmin?) { false }
-        expect(controller.instance_eval { superadmin? }).to be false
-        expect(user).to receive(:superadmin?) { true }
-        expect(controller.instance_eval { superadmin? }).to be true
-      end
-    end
-
     context '#set_flash_warning_reminder_to_update_details' do
       before(:each) do
         @org = FactoryGirl.create(:organisation, slug: 'my-org')

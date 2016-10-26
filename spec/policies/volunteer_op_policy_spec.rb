@@ -6,7 +6,7 @@ RSpec.describe VolunteerOpPolicy do
 
   subject { described_class }
 
-  permissions :create?, :update?, :destroy? do
+  permissions :update?, :destroy? do
     it 'grants access for superadmin' do
       expect(subject).to permit(build(:user, superadmin: true), build(:volunteer_op))
     end

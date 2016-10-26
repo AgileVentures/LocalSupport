@@ -1,6 +1,6 @@
 class InvitationPolicy < Struct.new(:user, :invitation)
 
   def create?
-    user.superadmin?
+    user.try(:superadmin?)
   end
 end

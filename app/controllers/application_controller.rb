@@ -92,9 +92,9 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
-  def superadmin?
-    current_user.try :superadmin?
-  end
+  # def superadmin?
+  #   current_user.try :superadmin?
+  # end
 
   def assign_footer_page_links
     @footer_page_links = Page.visible_links

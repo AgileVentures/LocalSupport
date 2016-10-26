@@ -1,4 +1,5 @@
 require 'rails_helper'
+require "pundit/rspec"
 
 RSpec.describe UserReportPolicy do
 
@@ -6,23 +7,13 @@ RSpec.describe UserReportPolicy do
 
   subject { described_class }
 
-  permissions ".scope" do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
+  permissions :access? do
+    it 'grants access for superadmin' do
+      expect(subject).to permit(build(:user, superadmin: true), :user_report)
+    end
 
-  permissions :show? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
-  permissions :create? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
-  permissions :update? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
-  permissions :destroy? do
-    pending "add some examples to (or delete) #{__FILE__}"
+    it 'denies access for user' do
+      expect(subject).not_to permit(build(:user), :user_report)
+    end
   end
 end

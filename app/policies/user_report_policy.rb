@@ -1,7 +1,6 @@
-class UserReportPolicy < ApplicationPolicy
-  class Scope < Scope
-    def resolve
-      scope
-    end
+class UserReportPolicy < Struct.new(:user, :user_report)
+
+  def access?
+    user.try(:superadmin?)
   end
 end

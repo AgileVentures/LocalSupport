@@ -1,7 +1,6 @@
 class ProposedOrganisationsController < BaseOrganisationsController
   layout 'two_columns_with_map', except: [:index]
   before_filter :require_superadmin_or_recent_creation, only: [:show]
-  before_filter :require_superadmin, only: [:update, :destroy]
 
   def index
     @proposed_organisations = ProposedOrganisation.all
@@ -9,6 +8,7 @@ class ProposedOrganisationsController < BaseOrganisationsController
 
   def update
     proposed_org = ProposedOrganisation.friendly.find params[:id]
+    authorize proposed_org
     result = AcceptProposedOrganisation.new(proposed_org).run
     set_flash_for_accepting_proposed_org result
     redirect_to organisation_path(result.accepted_organisation) and return false
@@ -16,6 +16,7 @@ class ProposedOrganisationsController < BaseOrganisationsController
 
   def destroy
     proposed_org = ProposedOrganisation.friendly.find params[:id]
+    authorize proposed_org
     proposed_org.destroy
     redirect_to proposed_organisations_path
   end
