@@ -27,7 +27,6 @@ Next to that type `ALTER ROLE "postgres" WITH CREATEDB`.  (You may need to creat
     bundle exec rake db:create
     bundle exec rake db:migrate
     bundle exec rake db:setup
-    rake db:email_template
     ```
 
 If you hit problems, ask us on Slack chat.

@@ -18,7 +18,6 @@ In order to work on LocalSupport, please fork and clone the project.
     bundle exec rake db:create
     bundle exec rake db:migrate
     bundle exec rake db:setup
-    rake db:email_template
     ```
 
 If you hit problems, review issues below, and ask us on Slack chat.
