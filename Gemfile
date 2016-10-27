@@ -6,6 +6,7 @@ gem 'pg'
 gem 'devise', '~> 3.5', '>= 3.5.10'
 gem 'devise_invitable', '~> 1.6', '>= 1.6.1'
 gem 'heroku-api'
+gem 'sprockets', '~> 2.11', '>= 2.11.3'
 
 
 # Bundle edge Rails instead:
@@ -64,7 +65,7 @@ end
 
 gem 'coffee-rails', "4.1.0"
 gem 'uglifier', '~> 3.0', '>= 3.0.3'
-gem 'sass-rails', '4.0.3'
+gem 'sass-rails', '~> 4.0', '>= 4.0.5'
 gem 'less-rails', '2.5.0'
 gem 'twitter-bootstrap-rails', '2.2.8'
 
