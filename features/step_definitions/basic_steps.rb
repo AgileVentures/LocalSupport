@@ -472,10 +472,9 @@ When /^I approve "(.*?)"$/ do |email|
 end
 
 Then(/^"(.*?)" is (not )?an organisation admin of "(.*?)"$/) do |user_email, negative, org_name|
-  user = User.find_by_email(user_email)
-  org = Organisation.find_by_name(org_name)
+  org = Organisation.find_by!(name: org_name)
   expectation = negative ? :not_to : :to
-  expect(user.organisation).send(expectation, eq(org))
+  expect(org.users.pluck(:email)).send(expectation, include(user_email))
 end
 
 When /^I (delete|decline) "(.*?)"$/ do |action, email|

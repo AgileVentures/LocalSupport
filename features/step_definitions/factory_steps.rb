@@ -1,5 +1,4 @@
 Given(/^the following proposed organisations exist:$/) do |table|
-  require 'boolean'
   table.hashes.each do |hash|
     create_hash = {}
     proposer = nil
@@ -14,6 +13,35 @@ Given(/^the following proposed organisations exist:$/) do |table|
     proposed_org = ProposedOrganisation.new create_hash
     proposed_org.users << proposer if proposer
     proposed_org.save!
+  end
+end
+
+Given /^I accept a proposed organisation called "(.*?)" with email "(.*?)"$/ do |name, email|
+  steps %{
+    Given the following proposed organisations exist:
+      | name    | description         | address        | postcode | telephone | website            | email    | donation_info        | non_profit |
+      | #{name} | Mourning loved ones | 30 pinner road | HA5 4HZ  | 520800000 | http://#{name}.org | #{email} | www.pleasedonate.com | true       |
+    When I accept the proposed_organisation named "#{name}"
+  }
+end
+
+Then /^"(.*?)" is (notified|invited|ignored) as an organisation admin of "(.*?)"$/ do |email, action, name|
+  case action
+  when 'notified'
+    steps %{
+      Then an email should be sent to "#{email}" as notification of the acceptance of proposed organisation "#{name}"
+      And "#{email}" is an organisation admin of "#{name}"
+    }
+  when 'invited'
+    steps %{
+      Then an invitational email should be sent to "#{email}" as notification of the acceptance of proposed organisation "#{name}"
+      And "#{email}" is an organisation admin of "#{name}"
+    }
+  when 'ignored'
+    steps %{
+      Then "#{email}" is not an organisation admin of "#{name}"
+    }
+  else raise "unknown action '#{action}'"
   end
 end
 
