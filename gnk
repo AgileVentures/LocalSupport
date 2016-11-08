@@ -1,0 +1,2109 @@
+[33mcommit ba81abfb99331d04326a3963eb79d00fa68f081b[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Oct 11 11:11:53 2016 +0100
+
+    changes before_filter to before_action for hound
+
+[33mcommit c3f44eb63a5c771f2bba2268cbf192d19b672e11[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Oct 11 11:06:22 2016 +0100
+
+    refactors org controller, removes hard coding, and simplifies feature description
+
+[33mcommit ed3f25cb137df2575c87d35ee1cdc189bf2229db[m
+Merge: d1bf904 7aee623
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Oct 11 10:56:08 2016 +0100
+
+    Merge branch 'develop' into 112146675_SEO
+
+[33mcommit d1bf9046ddaad30627248ec1d008bbe7cbe6eb1d[m
+Merge: 9b98572 0ee1458
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Oct 11 10:55:36 2016 +0100
+
+    Merge branch 'develop' into 112146675_SEO
+
+[33mcommit 7aee62317d13aa2103f391a6186b31f4fad5041a[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Mon Oct 10 17:33:59 2016 +0100
+
+    fix travis heroku deploy (#370)
+    
+    * updating travis config for heroku deploys
+    
+    * removes travis from Gemfile
+
+[33mcommit 0ee145816d449c48fb5d8bba84414b85e79ad387[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Mon Oct 10 15:43:19 2016 +0100
+
+    flagging temperamental test (#362)
+
+[33mcommit 9b985727ed29760da05b3f4f500e85fb0e8bcd9d[m
+Author: lollypop27 <lara@adfactory.co.za>
+Date:   Mon Oct 10 09:30:29 2016 +0200
+
+    Add SEO test for description
+
+[33mcommit e7c8f120dacf6b57912b56c688ae9b6f7131fb1d[m
+Author: lollypop27 <lara@adfactory.co.za>
+Date:   Mon Oct 10 08:59:28 2016 +0200
+
+    Add SEO test
+
+[33mcommit a7bb1acfa8e42aebc104eb83c2c2891971a93cfc[m
+Author: lollypop27 <lara@adfactory.co.za>
+Date:   Sat Oct 8 15:23:16 2016 +0200
+
+    Add Harrow volunteering to Title tag for SEO
+
+[33mcommit 4b177672a1fba6238445827e70efcf263a76f0ca[m
+Author: lollypop27 <lara@adfactory.co.za>
+Date:   Fri Oct 7 07:03:43 2016 +0200
+
+    Add H1 tag and paragraph to make page more SEO friendly
+
+[33mcommit 20ef56dac614d00022ad9c1ff390903680034597[m
+Author: lollypop27 <lara@adfactory.co.za>
+Date:   Fri Oct 7 06:53:42 2016 +0200
+
+    Remove hard coded meta-tags
+
+[33mcommit 0dbb8f85ba7f9756597e84497b13101dc94e0f98[m
+Author: lollypop27 <lara@adfactory.co.za>
+Date:   Fri Oct 7 06:38:36 2016 +0200
+
+    Add SEO meta-tags to Controller
+
+[33mcommit bdf20865d7c383d5c8aa8a5e24eb7ebdf10a8b9f[m
+Author: lollypop27 <lara@adfactory.co.za>
+Date:   Fri Oct 7 06:20:57 2016 +0200
+
+    Remove SEO method from application controller
+
+[33mcommit 574b95d4e87d80107a383f13b7851054614b3168[m
+Author: lollypop27 <lara@adfactory.co.za>
+Date:   Fri Sep 30 06:42:56 2016 +0200
+
+    merges in missing commit
+
+[33mcommit f4f505648144d056a95eca82d457b9160839ae0b[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Oct 6 12:06:16 2016 +0100
+
+    remove missed merge conflict
+
+[33mcommit ae4dc174a1684eac35967d4ac2d6f94d4f12d022[m
+Author: lollypop27 <lara@adfactory.co.za>
+Date:   Wed Oct 5 21:02:46 2016 +0200
+
+    Add set meta-tags to controller
+    Remove hard coded meta-tag to application view
+
+[33mcommit 7a651908ad90bc90816fa48b23e54b69c7ef7e83[m
+Author: lollypop27 <lara@adfactory.co.za>
+Date:   Wed Oct 5 16:13:13 2016 +0200
+
+    Remove SEO action
+
+[33mcommit f79ff8ddbcffdc07ed01f375cf7c4304300a9b10[m
+Author: lollypop27 <lara@adfactory.co.za>
+Date:   Fri Sep 30 06:42:56 2016 +0200
+
+    Add show meta-tags to controller
+    Add meta-tag to html header tag
+
+[33mcommit cee3d27e04b9b082fd8ff9a04369fa43e60c8e43[m
+Author: lollypop27 <lara@adfactory.co.za>
+Date:   Thu Sep 29 20:59:52 2016 +0200
+
+    Add display tag to header
+
+[33mcommit 0549367e023d3f89544436ecb5d9837da3238a81[m
+Author: lollypop27 <lara@adfactory.co.za>
+Date:   Thu Sep 29 20:43:11 2016 +0200
+
+    Add initializer to set default limits to SEO tags
+
+[33mcommit b1a09262ea5da02f2ad731fba26a832f3ce6580f[m
+Author: lollypop27 <lara@adfactory.co.za>
+Date:   Thu Sep 29 20:38:38 2016 +0200
+
+    resolves conflicts (that seem like git should handle)
+
+[33mcommit 2c0ba7ad65876000055c9a34daf55632153bfa97[m
+Author: Nick <nnarh@users.noreply.github.com>
+Date:   Mon Oct 3 05:45:39 2016 -0400
+
+    Make doit mentions in map key be hyperlinks (#365)
+    
+    * Make doit mentions in map key be hyperlinks
+    
+    * clean up step definition
+
+[33mcommit 517ce4ee5204476af2966a0c17bfdd8054a76fea[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Sep 27 14:16:20 2016 +0100
+
+    Handling google map API keys (#356)
+    
+    * test to check for presence of GMAP API key
+    
+    * adds figaro support
+    
+    * write failing test to make sure key is not in production
+    
+    * make tests more specific and robust
+    
+    * refactored to make variable names more self explanatory
+    
+    * fixing key in url for map
+    
+    * that url fix needed a corresponding change in the test
+    
+    * adds docs on google maps key installation
+    
+    * tweaks docs on google maps key installation
+
+[33mcommit 2d5e7e9eac80fe65bfc32b277983386a0b5da98a[m
+Author: Marouen Bousnina <marouen.it.technology@gmail.com>
+Date:   Mon Sep 26 17:15:05 2016 +0200
+
+    Add regression test to volunteer op#clear_lat_lng callback (#354)
+    
+    * Add regression test to volunteer op#clear_lat_lng callback
+    
+    - check that callback keeps remote volunteer op longitude and latitude
+      coordinates
+    
+    * fix hound style warning
+    
+    * Add feature refression test for clear_alt_lng callback
+    
+    * Add regression test to volunteer op#clear_lat_lng callback
+    
+    - check that callback keeps remote volunteer op longitude and latitude
+      coordinates
+    
+    * fix hound style warning
+    
+    * refactors rspec a little
+    
+    * Add RSpec custom matcher for coordinates
+    
+    * Update coordinates_matcher.rb
+
+[33mcommit 5670592a8e882d973140c3d643ed53818afa78c2[m
+Author: Robert Summers <rsummers02@gmail.com>
+Date:   Mon Sep 26 14:53:49 2016 +0100
+
+    Revise instal instructions (#364)
+    
+    * updated ruby version noted in docs.  instruct to install npm for osx
+    
+    * added link to issues when mentioning a common postgresql error
+
+[33mcommit dedac5453ec9d066d525cd1c9b0ae2c42fb42dc3[m
+Author: Marouen Bousnina <marouen.it.technology@gmail.com>
+Date:   Mon Sep 26 15:52:35 2016 +0200
+
+    118992581 fix vol op overlap (#358)
+    
+    * Display volunteer op with same location in same popup
+    
+    Addresses: https://www.pivotaltracker.com/story/show/118992581
+    
+    - Add new icon for location with different volunteer op sources
+    - Add new RSpec custom matcher for array of instances
+    
+    * fix codeclimate warning
+    
+    * refactors to reduce method complexity
+    
+    * fix for hound
+    
+    * deals with privacy
+    
+    * fix typo in method name for VolunteerOp
+
+[33mcommit 4f8d88a6c26e598b7c00290be25efe46a6e13fc3[m
+Author: Marcelo Gobelli <almagro@comcast.net>
+Date:   Tue Sep 20 05:16:13 2016 -0700
+
+    112899357 final refactor gem show me the cookies (#361)
+    
+    * installing gem and running first cukes
+    
+    * show_me_the_cookies_spike
+    
+    * refactor cookies step with show me the cookies gem
+    
+    * fix hound warning
+    
+    * arranging text in authentication_steps.rb
+
+[33mcommit 50f33c5ce5bf45d70dcaa2584e059f2b1d388163[m
+Author: Jon Mohrbacher <johnnymo87@gmail.com>
+Date:   Tue Sep 20 10:51:41 2016 +0000
+
+    Rerun failing cukes on CI [Finishes #129522757] (#360)
+    
+    * Rerun failing cukes on CI [Finishes #129522757]
+    
+    * Run second try of cucumber outside of coveralls' scope
+    
+    When I ran the first and second try of cucumber inside of coveralls' scope, the
+    coverage score dropped 15%. Perhaps coveralls expects the second try to run all
+    the tests, and penalizes our score when we don't?
+
+[33mcommit 9795e0243b952bf987b1fedecf475765177fcdb0[m
+Author: Zmago Devetak <ZmagoD@users.noreply.github.com>
+Date:   Fri Sep 16 15:20:44 2016 +0200
+
+    Added target blank attribute to doit volop links [fixes #117609689] (#329)
+    
+    * Volunteer location different from org location #78989204 (#325)
+    
+    * Adds different location feature to volounter ops [#78989204]
+    
+    * fixed render :new bug in volop_controller
+    
+    * fixes up view specs
+    
+    * added target blank attribute to doit volop links [fixes #117609689]
+    
+    * refactor PR #329
+    
+    * refactor link_to_vol_op
+    
+    * fixed codeclimate error
+    
+    * refactor link_to_vol_op method
+    
+    * tweaks the method signature to indicate there are different types of links
+    
+    * Add Cucumber tests to open in new window
+    
+    * refactors step definition
+
+[33mcommit 1915169ed8297b4fc3037a62cbcfe14d8f9e1e57[m
+Author: Marouen Bousnina <marouen.it.technology@gmail.com>
+Date:   Thu Sep 1 14:52:22 2016 +0200
+
+    Turn off logging message (#355)
+    
+    * Turn off logging message
+    
+    Disabe logging output for:
+    - Cucumber tests
+    - RSpec tests
+    
+    * Refactor logger stub
+
+[33mcommit 654f5429e0fe1eab3bd44d603f0b73d2d0b2c779[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Sep 1 13:52:16 2016 +0100
+
+    first pass at pulling installation docs into main repo (#346)
+    
+    * first pass at pulling installation docs into main repo
+    
+    * adds note about feature flags
+
+[33mcommit c74dd437f8ddde54aa0d7c2255b8d6b7856a8d3c[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Aug 30 10:00:35 2016 +0100
+
+    Change ambiguous language in admin notification mails (#338) (#351)
+    
+    * increases devise token duration to 7 days
+    
+    * increases devise token duration to 7 days
+    
+    * Change ambiguous language in admin mails [Fixes #113746563]
+    
+    * Fix spec
+    
+    * Refactor over Hound comments
+    
+    * Adjusted feature tests
+
+[33mcommit e3cf9893af33452500861024cad94deb8d95cee0[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Fri Aug 26 10:32:43 2016 +0100
+
+    Add more users linked to organisations to seeds (#345)
+    
+    * Add more users linked to organisations to seeds [Fixes #120210043]
+    
+    * makes user org selection randomization more robust
+
+[33mcommit 58eaeed4ef5d005f5832657200051c57925c4eeb[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Mon Aug 22 10:36:06 2016 +0100
+
+    Edit Heroku config for review app[fixes ##116276111] (#344)
+    
+    https://www.pivotaltracker.com/story/show/116276111
+    
+    - add the use of free dyno tier
+
+[33mcommit af2b6ade5100905305bf751c01c41330065fd1d0[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Aug 16 09:06:31 2016 +0900
+
+    Supporting different locations for volunteer ops from their parent organisations (#343)
+    
+    * Adds different location feature to volounter ops [#78989204]
+    
+    * fixed render :new bug in volop_controller
+    
+    * fixes up view specs
+    
+    * fixes cuke scenario
+    
+    * fixed vol_op spec L154, L160
+    
+    * adds marouens fix to the volop, so we do not clear lat lng from doit ops
+    
+    * gets the background info for the volunteer ops in this feature in the right place
+    
+    * adds support for rubocop-git and cleans up according to git
+
+[33mcommit 7ad9a782cb978a753c892f38761519030d474761[m
+Merge: daf37d2 9644936
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Fri Aug 12 08:37:21 2016 +0900
+
+    deal with travis merge conflict
+
+[33mcommit daf37d2637ff8d00f2d4b5e0479f3c753986bbde[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Fri Aug 12 08:32:56 2016 +0900
+
+    updates travis yml to preinstall phantomjs
+
+[33mcommit 9644936e322f4e2b19bbcac9e586251248a6de5d[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Fri Aug 12 08:16:37 2016 +0900
+
+    upgrade to ruby 2.3.1 and remove cucumber env fail thing (#342)
+    
+    * upgrade to ruby 2.3.1 and remove cucumber env fail thing
+    
+    * tries setting jasmine to work with 127.0.0.1 rather than localhost
+    
+    * tries updating to latest version of jasmine (2.4)
+    
+    * urgh - lots of updates needed to get both cukes and jasmine stable
+    
+    * increase timeout and add vcr to hopefully stabilize this occasionally failing method
+    
+    * tries custom jasmine
+
+[33mcommit c942dc6b91c3dbc5507c71ae90d2a34211d88e94[m
+Author: Brychu <pbrych@gmail.com>
+Date:   Fri Jun 17 11:15:11 2016 +0200
+
+    Admin can now edit invitation mails (#78643156) (#320)
+    
+    * increases devise token duration to 7 days
+    
+    * increases devise token duration to 7 days
+    
+    * Admin can now edit invitation mails (#78643156)
+    
+    * Changed model columns and added rake task
+    
+    * Fixed rake task
+    
+    * Added factory step for invitation instructions template
+    
+    * Feature is working with new structure
+    
+    * Improved edit template button
+    
+    * Refactored and fixed to work with invited page
+    
+    * Fixed cukes and compatibility with devise
+    
+    * Fixed failing specs (added mail_template factory)
+    
+    * Deleted failing view specs
+    
+    * Fixed failing cukes (added mail template to background)
+    
+    * Improved the views for email preview and edit
+    
+    * Following Hound/CodeClimate comments
+    
+    * Added missing invitation_instructions.txt file [Fixes #78643156]
+    
+    * Refactor over PR comments, v.1
+    
+    * Refactor over PR comments, v.2
+    
+    * Refactor over PR comments, v.3
+    
+    * Refactor over PR comments, v.4
+    
+    * Following Hound comment
+
+[33mcommit 717fef4ea8268012253f4cdc7743860db018746b[m
+Author: Marouen Bousnina <marouen.it.technology@gmail.com>
+Date:   Thu Jun 2 13:40:28 2016 +0200
+
+    Change url_validator gem url [Fixes #114080323] (#322)
+
+[33mcommit 722a94e45ba60a8b92b6003b1e0ec0840ac55a1c[m
+Author: Brychu <pbrych@gmail.com>
+Date:   Mon May 30 18:24:05 2016 +0200
+
+    Swap map marker colors and add legend to Volops page  (#323)
+    
+    * increases devise token duration to 7 days
+    
+    * increases devise token duration to 7 days
+    
+    * Swapped marker colors
+    
+    * Added legend to map on Volops page
+
+[33mcommit a557049ad14a97cab786dfd33cc322d3c6c23846[m
+Author: Brychu <pbrych@gmail.com>
+Date:   Fri May 27 10:35:47 2016 +0200
+
+    Adds links to categories on organisation page (#316)
+    
+    * Added cukes for the feature
+    
+    * Added links to categories on org show page
+    
+    * Refactored and joined by coma
+    
+    * Removed view spec for rendering categories
+    
+    * Refactored cucumber tests to more descriptive
+    
+    * Created helper methods - join is not working
+    
+    * spec_helper back to previous config
+    
+    * Fixed problem with comma between categories
+    
+    * Following Hound comments
+
+[33mcommit 35b6badfde6a32190a0405b97a244a0f4438e586[m
+Author: Brychu <pbrych@gmail.com>
+Date:   Thu May 26 09:52:44 2016 +0200
+
+    Fixed rake db:friendly_id task (#321)
+
+[33mcommit 04d21be4ea4ef5fe127881fb1b1fa9a0070573f5[m
+Author: Marouen Bousnina <marouen.it.technology@gmail.com>
+Date:   Tue May 24 18:05:48 2016 +0200
+
+    Add Devise token val for heroku review app (#318)
+
+[33mcommit 2a120a2327b0041a4b583f784766921874420dca[m
+Author: Brychu <pbrych@gmail.com>
+Date:   Thu May 19 10:56:07 2016 +0200
+
+    118172295 friendly id should have custom parser (#292)
+    
+    * Working feature, specs pass, cucumber left
+    
+    * Fixed most of cucumber, broke some specs, WIP
+    
+    * Fixed specs, left few cucumber, add some cucumber, WIP
+    
+    * Fixed some more cucumber, left hard cases
+    
+    * Fixed failing tests, feature works [PT #89294872]
+    
+    * Fixed Hound comments, feature works [PT #89294872]
+    
+    * Fixed Hound comments, v.2, feature works [PT #89294872]
+    
+    * Friendly_id has now custom parser [PT #118172295]
+    
+    * More friendly_ids - tweaked parser
+    
+    * Fixes double-quotes to single-quotes (Hound)
+    
+    * Added specs and fixed slug_candidates (added orged as third)
+    
+    * Slug parser moved to a service
+    
+    * Minor change - over Hound comment
+    
+    * Minor change - way of creating array of strings
+    
+    * Deleting changes to icons
+    
+    * Added special slugs for parochial churches
+    
+    * Following Hound notes
+    
+    * Following @tansaku's comments
+    
+    * Made SetupSlug handle nil arg
+    
+    * SetupSlug specs moved to separate file
+    
+    * Spec checking if SetupSlug is used added
+    
+    * Small refactor (.nil? for == nil)
+    
+    * spike of reorganising the tests
+    
+    * Added cucumber tests for friendly_id
+    
+    * Moved slug parser to String and added specs
+    
+    * Moved downcase_words back to public methods
+    
+    * Refactored slug parser's methods in string_spec
+    
+    * Added scenarios for #downcase_words in string_spec
+    
+    * Refactored #downcase_words (deleted self)
+    
+    * Small refactor - quotations deleted
+    
+    * tidies up outstanding comments and line endings
+
+[33mcommit 0eb37cb1ca1527e1cedcdf953f828eab3c0427f8[m
+Author: Brychu <pbrych@gmail.com>
+Date:   Thu May 19 10:35:13 2016 +0200
+
+    Changing the map marker icons [PT #113073505] (#304)
+    
+    * Added new icons to assets WIP [PT #113073505]
+    
+    * Old icons folder addes
+    
+    * Changed the marker and it's size
+    
+    * Alternative marker icon
+    
+    * Added edited icons, better looking
+    
+    * Fixing Hound comments 09:39am
+    
+    * Fixing Hound comments 09:41am
+    
+    * Fixed failing specs
+    
+    * Changing some double-q to single-q
+    
+    * Added better quality doit marker
+    
+    * Refactored icons for better visibility
+    
+    * Changed the measle icon
+    
+    * Fixed legend to match new markers
+    
+    * Fixed map_steps to match new icons
+
+[33mcommit 0fd599c4ff33316b821d6c7198605b3c645115cf[m
+Author: Marouen Bousnina <marouen.it.technology@gmail.com>
+Date:   Thu May 19 09:34:00 2016 +0200
+
+    Edit postdeploy script for heroku review build [Fixes #116276111] (#313)
+
+[33mcommit 4351c399cd08e9bca36087a3f7b20b5a0642bb4a[m
+Author: Marouen Bousnina <marouen.it.technology@gmail.com>
+Date:   Wed May 18 11:55:41 2016 +0200
+
+    Redirect admin to previous vol ops pages [Fixes #117609653] (#312)
+    
+    - redirect to previous visisted vol ops search results or pages
+
+[33mcommit 11000220bcda7cc1c093eec54f39ec4c5d3f44c9[m
+Author: Marouen Bousnina <marouen.it.technology@gmail.com>
+Date:   Tue May 17 11:38:43 2016 +0200
+
+    Make cucumber exit at the first failure (#311)
+
+[33mcommit 8aad5227177102e175c5bca3aba57609ea0f6a58[m
+Author: Marouen Bousnina <marouen.it.technology@gmail.com>
+Date:   Tue May 17 10:50:07 2016 +0200
+
+    Keep search result after admin login [Fixes #116115077] (#309)
+    
+    * Keep search result after admin login [Fixes #116115077]
+    
+    * Add tests for reminder flash warning
+    
+    - to avoid coverage drop we add unit test for
+     ApplicationController #set_flash_warning_reminder_to_update_details
+    
+    * tweaks the spec arrangment for line length
+    
+    * fixes rubocop issues created by automated re-indenting in RubyMine
+
+[33mcommit 5e96ddddc3ad0f1d6eda916bde43b590878bb8bf[m
+Author: Brychu <pbrych@gmail.com>
+Date:   Tue May 17 10:47:30 2016 +0200
+
+    Fixing db:setup (#310)
+    
+    * Moved db:migrate from db:setup to fix the issue
+    
+    * Changed chain of rake tasks in parts of instructions
+
+[33mcommit e4b470d1cb741f8fdc257187da4c4177e332bbec[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue May 10 09:49:26 2016 +0100
+
+    adds new google webmaster verification (#308)
+
+[33mcommit 0eecba22d46c9e56ec55aab97661b17efa48e8ee[m
+Author: Brychu <pbrych@gmail.com>
+Date:   Tue May 10 10:13:08 2016 +0200
+
+    Changed sitemap.xml file (#307)
+
+[33mcommit 1130ac04eacbe63126fbaf28ea136c8361a936c3[m
+Author: Marouen Bousnina <marouen.it.technology@gmail.com>
+Date:   Tue May 10 10:09:31 2016 +0200
+
+    generate friendly_id without updating 'update_at' field (#306)
+    
+    - task to generate friendly_id: rake db:friendly_id
+
+[33mcommit affb602c3658ef700b52f34dd3711ca93370024d[m
+Author: Brychu <pbrych@gmail.com>
+Date:   Fri May 6 10:45:16 2016 +0200
+
+    Rake and rspec-rails updated (#298)
+
+[33mcommit fa3edf5a8ed9d07e0503d8edf909050314df939c[m
+Author: Marouen Bousnina <marouen.it.technology@gmail.com>
+Date:   Fri May 6 10:38:43 2016 +0200
+
+    117985771 investigate collection_check_boxes usage (#299)
+    
+    * Spike the use of collection_check_box
+    
+    - check the use of collection_check_boxes instead of nested attributes
+    
+    * use collection_check_boxes  [Fixes #117985771]
+    
+    - change nested attributes for category to collection check boxes
+
+[33mcommit b0b744e6aa1812b46b89ca14f5dc3cd30f4f3d1b[m
+Author: Brychu <pbrych@gmail.com>
+Date:   Thu May 5 09:54:44 2016 +0200
+
+    Adds friendly_id feature (2nd attempt) [PT #89294872] (#291)
+    
+    * Working feature, specs pass, cucumber left
+    
+    * Fixed most of cucumber, broke some specs, WIP
+    
+    * Fixed specs, left few cucumber, add some cucumber, WIP
+    
+    * Fixed some more cucumber, left hard cases
+    
+    * Fixed failing tests, feature works [PT #89294872]
+    
+    * Fixed Hound comments, feature works [PT #89294872]
+    
+    * Fixed Hound comments, v.2, feature works [PT #89294872]
+
+[33mcommit fc0c3dbf4686203bd87182f47ae178a97cc44e91[m
+Author: Marouen Bousnina <marouen.it.technology@gmail.com>
+Date:   Wed May 4 13:17:04 2016 +0200
+
+    Fix rake setup task (#303)
+    
+    - change the task name to invoke migrate instead of setup
+    - fix the email import task invocation
+
+[33mcommit 5458d97ff09bee25ff8d71720911336cbccea1b6[m
+Author: Marouen Bousnina <marouen.it.technology@gmail.com>
+Date:   Tue May 3 11:30:28 2016 +0200
+
+    Add description to rake tasks [Fixes #116972425] (#301)
+    
+    * Add description to rake tasks [Fixes #116972425]
+    
+    * Use Logger output for rake tasks
+
+[33mcommit bc8605e33778bdd5eab17fd5036a270f134fc05b[m
+Author: Marouen Bousnina <marouen.it.technology@gmail.com>
+Date:   Fri Apr 29 12:03:18 2016 +0200
+
+    Remove assests log from development log (#300)
+    
+    - improve log by removing assets log by using 'quiet_assets' gem
+    - check more on 'https://github.com/evrone/quiet_assets'
+
+[33mcommit 66bd4e0c508d552e88d00758142ad2e1d3821427[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Wed Apr 20 16:04:04 2016 +0100
+
+    Update domain_vision_statement.md
+
+[33mcommit fc89be04746b5f34c1cad9800b0842bae8783565[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Wed Apr 20 15:59:32 2016 +0100
+
+    adds draft of domain vision statement (#276)
+
+[33mcommit b02c3b97971377691295446d1969cc4620cd036e[m
+Author: Marouen Bousnina <marouen.it.technology@gmail.com>
+Date:   Wed Apr 20 16:59:14 2016 +0200
+
+    add form error style [Fixes #113527281] (#279)
+    
+    * merges to develop, fixes CSS ordering and adds in cache miss
+    
+    * Fix CSS rule priority for .field_with_errors
+    
+    - use Bootstrap style to fix CSS rule priority
+
+[33mcommit b65bd814ae2e3f4c3d0a7dc5d5a3205d39974258[m
+Author: Brychu <pbrych@gmail.com>
+Date:   Wed Apr 20 10:22:23 2016 +0200
+
+    113527215 taking logic from views to controllers  (#288)
+    
+    * Fixed problem with dissapearing categories [Fixes #113527215]
+    
+    * Second attempt on [Fixes #113527215]
+    
+    * First integration test [#113527215]
+    
+    * Add second integration test
+    
+    * Solution on the proposed organisations [Fixes #113527215]
+    
+    * Following Hound's notices
+    
+    * Following Hound's notices 2
+    
+    * Following Hound's notices 3
+    
+    * Deleting question marks
+    
+    * Refactoring Part 1
+    
+    * Refactoring Part 2 - with errors (to fix)
+    
+    * Cucumber tests pass
+    
+    * Refactoring Part 3
+    
+    * Refactor Part 4
+
+[33mcommit 5674deecf93c79ed2c85846ff5478348c8453c22[m
+Merge: b3eada0 dbec49a
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Apr 14 15:08:59 2016 +0100
+
+    Merge pull request #275 from Maroo-b/116028741_remove_outdated_doit_volops
+    
+    Remove outdated volunteer ops from do-it
+
+[33mcommit dbec49a0b6890a3e8a5cf5b9a44fe43594b9f162[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Apr 14 14:59:30 2016 +0100
+
+    tightens up specs and ensures cucumber syntax is consistent
+
+[33mcommit 3abd2ad09585ae462bb8d2a5398abfb1fa96cc8a[m
+Merge: fd64659 b3eada0
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Apr 14 14:48:15 2016 +0100
+
+    Merge branch 'develop' into HEAD
+
+[33mcommit fd64659f31b7f9e8ab6c01d0ef5c4461c2027875[m
+Author: Marouen Bousnina <marouen.it.technology@gmail.com>
+Date:   Wed Apr 13 22:44:50 2016 +0200
+
+    Update acceptance test for doit volunteer ops import
+
+[33mcommit 0f6d25ab4844ee56414c3d2b0acb20a9b212602c[m
+Author: Marouen Bousnina <marouen.it.technology@gmail.com>
+Date:   Mon Apr 11 21:57:58 2016 +0200
+
+    Add acceptance test for import doit task
+
+[33mcommit c2f19a34e611301f1600fd5395fadbee70756bf5[m
+Author: Marouen Bousnina <marouen.it.technology@gmail.com>
+Date:   Tue Mar 22 18:30:11 2016 +0100
+
+    Remove outdated volunteer ops from do-it [Fixes #74774180]
+
+[33mcommit b3eada0c6d9ca21d98273e2e7043d7145b45b2fb[m
+Merge: e057779 3d5ab82
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Fri Apr 8 13:26:05 2016 +0100
+
+    Merge pull request #286 from AgileVentures/115398997_warn_if_devise_secret_key_not_set_in_production
+    
+    adjust devise config to fail hard if no secret key set in production
+
+[33mcommit 3d5ab82f5df995ee36ca5e274144296737d00d49[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Fri Apr 8 13:12:11 2016 +0100
+
+    adjust devise config to fail hard if no secret key set in production
+
+[33mcommit e0577796e56c944ae248db7a0de38ba19fda6306[m
+Merge: 2c4b803 87df3f4
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Fri Apr 8 12:25:53 2016 +0100
+
+    Merge pull request #272 from Maroo-b/74774180_search_volunteer_ops
+    
+    search volunteer ops via keywords
+
+[33mcommit 87df3f4af4b4d1a6c7aff85ec4095ba78ae511ac[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Fri Apr 8 10:25:08 2016 +0100
+
+    fixes stylesheet issues as pointed out by hound
+
+[33mcommit 2c4b803c8471ddac1d1988cb5548ca9087c8b171[m
+Merge: 169c52a 938f8c9
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Wed Apr 6 10:34:32 2016 +0100
+
+    Merge pull request #284 from bryszard/116959529_Add_an_explicit_favicon_in_layout
+    
+    Add the explicit favicon in the layout [Fixes #116959529]
+
+[33mcommit 938f8c933c884496a61b1f9a7ebcf429aadcaf60[m
+Author: Brychu <bryszard@poczta.onet.pl>
+Date:   Tue Apr 5 10:34:12 2016 +0000
+
+    Add the explicit favicon in the layout [Fixes #116959529]
+
+[33mcommit 169c52aa311cd06c53964e64001cfd313def633f[m
+Merge: 9549c63 85b8601
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Apr 5 10:34:29 2016 +0100
+
+    Merge pull request #283 from bryszard/116873653_add_apple_touch_icon
+    
+    Add apple touch icon [Fixes #116190363]
+
+[33mcommit 9549c634b4174d737fb3bd900a967c8750025127[m
+Merge: aec4d7b a57ae47
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Apr 5 08:58:36 2016 +0100
+
+    Merge pull request #282 from bryszard/116873653_add_description_to_doit_import_rake_task
+    
+    Adds description to doit_import rake task [Fixes #116873653]
+
+[33mcommit 85b860181180138e4075fa36c09b1e6b5f59eaee[m
+Author: Brychu <bryszard@poczta.onet.pl>
+Date:   Mon Apr 4 17:21:10 2016 +0000
+
+    Add apple touch icon [Fixes #116190363]
+
+[33mcommit a57ae47b6bc26e7b643a69e3d1beaeff012f9333[m
+Author: Brychu <bryszard@poczta.onet.pl>
+Date:   Mon Apr 4 11:55:11 2016 +0000
+
+    Adds description to doit_import rake task [Fixes #116873653]
+
+[33mcommit aec4d7bf3a626ca594abf20cd6025c4a39b37ff1[m
+Merge: 0ed267c d9ea08a
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Mon Apr 4 11:41:23 2016 +0100
+
+    Merge pull request #278 from AgileVentures/116299107_add_travis_slack_notification
+    
+    adds travis token for slack
+
+[33mcommit d9ea08a257d6cc6fbaa9b58c0dd944150f8daeae[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Mar 24 15:33:04 2016 +0000
+
+    turns off email notifications
+
+[33mcommit 7bf887cd0aaa88692b89f72dd96831b24f7d7f1c[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Mar 24 15:20:02 2016 +0000
+
+    adds travis token for slack
+
+[33mcommit c54904ae57f139ed5304a7d057dba89ec5eddce6[m
+Author: Marouen Bousnina <marouen.it.technology@gmail.com>
+Date:   Mon Mar 21 18:20:56 2016 +0100
+
+    Add ability to search volunteer ops [Fixes #74774180]
+    
+    Allow any user to search volunteer opportunities via keywords
+
+[33mcommit 0ed267cebc66762aaf977f7cc583b73044eeacda[m
+Merge: b4f4e6e 3d0d3f0
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Mar 24 10:24:23 2016 +0000
+
+    Merge pull request #277 from Maroo-b/112575297_add_email_config_dev
+    
+    Add email config for development environment
+
+[33mcommit b4f4e6e5e02b83a7469ee9d577d337f2b77fac32[m
+Merge: 9f4e8c8 511f272
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Mar 24 10:20:25 2016 +0000
+
+    Merge pull request #274 from Maroo-b/116052695_fix_admin_login_after_search
+    
+    fix admin login after search
+
+[33mcommit 3d0d3f012d25a8c3b328b3a7a291ed2453b1af58[m
+Author: Marouen Bousnina <marouen.it.technology@gmail.com>
+Date:   Thu Mar 24 10:53:51 2016 +0100
+
+    Add email config for development environment [Fixes #112575297]
+    
+    - Use open_letter to display email in browser  (https://github.com/ryanb/letter_opener)
+
+[33mcommit 511f27259a5d8cfb9b5e58e153f10ec860561af6[m
+Author: Marouen Bousnina <marouen.it.technology@gmail.com>
+Date:   Tue Mar 22 11:29:17 2016 +0100
+
+    Fix bug for admin login after search [Fixes #116052695]
+    
+    Redirect admin to home page if previous url was "organisations/search"
+
+[33mcommit 9f4e8c829cc1eda3180e8f337587d8179d65cfa6[m
+Merge: 9f4a36f f9ba134
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Mon Mar 21 13:23:04 2016 +0000
+
+    Merge pull request #271 from AgileVentures/116032737_install_airbrake
+    
+    adds dotenv and airbrake [Fixes #116032737]
+
+[33mcommit f9ba134c465ce397baf2fbb0065abc51decd9bd4[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Mon Mar 21 13:05:41 2016 +0000
+
+    adds dotenv and airbrake [Fixes #116032737]
+
+[33mcommit 9f4a36f95bc9c4990da23309110498d0169d8aa9[m
+Merge: 4650a96 11be33f
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Mon Mar 21 10:03:25 2016 +0000
+
+    Merge pull request #270 from Maroo-b/93410414_ability_delete_volunteer_op
+    
+    ability to delete volunteer opportunities
+
+[33mcommit 11be33ffff8ec89ab23256b0c293fb70570e4c82[m
+Author: Marouen Bousnina <marouen.it.technology@gmail.com>
+Date:   Fri Mar 18 08:48:44 2016 +0100
+
+    Add ability to delete volunteer op  [Finishes #93410414]
+    
+    * Allow OrgAdmin and SuperAdmin to delete volunteer opportunities
+    * Use Paranoia gem to hide deleted records (https://github.com/rubysherpas/paranoia)
+
+[33mcommit 4650a96acf1dd33d998fb6c1f958b0bf7dfe0d0e[m
+Merge: adf2084 b1021ea
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Mar 8 10:56:15 2016 +0000
+
+    Merge pull request #268 from AgileVentures/115232285_doit_import_in_loop
+    
+    Fixes doit import loop paging getting stuck
+
+[33mcommit b1021eab587015bce720ca5aca740e5d006b5b49[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Mar 8 10:26:22 2016 +0000
+
+    makes paging happen correctly [Fixes #115232285]
+
+[33mcommit adf2084d6f8deab1b62e15d891b7f8902ddaf007[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Mon Mar 7 17:33:38 2016 +0000
+
+    removes commented method
+
+[33mcommit 4e5e3497b805bb511100848971f91a24c85bd9e6[m
+Merge: cc5607f ecb9e1e
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Mon Mar 7 17:22:12 2016 +0000
+
+    Merge pull request #267 from AgileVentures/113613673_increase_doit_ops_radius_refactor
+    
+    Increase DoIt Ops Radius Refactoring
+
+[33mcommit ecb9e1e964a46caaa84f1bc02706a5113e8be866[m
+Author: mtc2013 <mtc2013opensource@gmail.com>
+Date:   Mon Mar 7 11:57:52 2016 -0500
+
+    Adjust tooltip to use organisation name
+
+[33mcommit 1ca6d80b7819f0a4b810a83ca82f599c2577f950[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Mon Mar 7 16:42:38 2016 +0000
+
+    fleshes out the build markers with info window spec
+
+[33mcommit bb3f2a9bc89a16755bd5635dd8e5002586dc4d32[m
+Author: mtc2013 <mtc2013opensource@gmail.com>
+Date:   Mon Mar 7 11:15:57 2016 -0500
+
+    Refactor controller into service
+    Test this new service
+
+[33mcommit 3f4ce05da5a0c3e6c691301409174a8650b73650[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Mon Mar 7 15:29:22 2016 +0000
+
+    refactors the service to use find_and_create_by and cleans up spec
+
+[33mcommit cc5607f14aa62bb433b8bbd88b4e17564f83489c[m
+Merge: 5cfad0f 371e347
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Mon Mar 7 08:06:56 2016 +0000
+
+    Merge pull request #266 from RajeevHejib/113736889_unable_to_setup_project_as_rake_db_seed_fails
+    
+    changes to create_and_validate method in organisation.rb
+
+[33mcommit 9784cf1a8803201d5faa6c84ea008f6025cf2627[m
+Author: ZmagoD <zmago_devetak@yahoo.com>
+Date:   Sun Feb 28 22:35:43 2016 +0100
+
+    added doit related fields to volunteer_ops table
+
+[33mcommit 2bddfa2bae6b7a37d8373b5c952b2369e8b004dd[m
+Author: mtc2013 <mtc2013opensource@gmail.com>
+Date:   Wed Feb 24 12:00:45 2016 +0000
+
+    Increases radius of doit vol ops, stores them in database and provides rake service to import
+
+[33mcommit 371e34773ce781c03be2f0c26c1d4ac6996aa22a[m
+Author: Rajeev Hejib <rajeev_hejib@yahoo.com>
+Date:   Thu Mar 3 20:01:08 2016 +0000
+
+    changes to organisation_spec.rb [Fixes #113736889]
+
+[33mcommit aabcbfd395a9669f5f29ee51cc0136941f14da6f[m
+Author: Rajeev Hejib <rajeev_hejib@yahoo.com>
+Date:   Thu Mar 3 15:29:19 2016 +0000
+
+    changes to create_and_validate method in organisation.rb [Fixes #113736889]
+
+[33mcommit 5cfad0ff6d3d22852e185e6a0a2cb16744158275[m
+Merge: 3e03930 13a6ef1
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Mar 3 10:10:55 2016 +0000
+
+    Merge pull request #265 from AgileVentures/112902301_intermittent_js_failures
+    
+    experiments with longer wait time
+
+[33mcommit 13a6ef1f9a4cf026827eb07e2cd0a9f0b19267df[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Wed Mar 2 21:20:31 2016 +0000
+
+    experiments with longer wait time
+
+[33mcommit 3e03930d7165980e248525559ea76e9ef09d2d10[m
+Merge: b6f9ebe 01afa69
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Mon Feb 29 15:17:07 2016 +0000
+
+    Merge pull request #264 from mtc2013/114675317_fix_leapyear
+    
+    Leap year test bug fix
+
+[33mcommit 01afa691ae169ff8b4ace75c4e6d4d465a6dbcae[m
+Author: mtc2013 <mtc2013opensource@gmail.com>
+Date:   Mon Feb 29 09:00:01 2016 -0500
+
+    Make cuke step take into account leap year
+    Adjust time travel to be feature level for affected features
+    Adjust rspec to take into account leap year
+
+[33mcommit b6f9ebea1044187489bba17d708aa531403e73ab[m
+Merge: fb2a4da 8fbed8e
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Fri Feb 26 18:04:22 2016 +0000
+
+    Merge pull request #263 from AgileVentures/Change_expired_token_message_when_resetting_password
+    
+    Refactors Aleksanders Change expired token message when resetting password
+
+[33mcommit 8fbed8e1f2d4b09b2a493d1a4ee295c0d89f8444[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Fri Feb 26 17:25:35 2016 +0000
+
+    refactors to keep hound happy [Fixes #100609498]
+
+[33mcommit ca1abb0d5f50147412a8cf152657cff9c27d8831[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Fri Feb 26 17:01:18 2016 +0000
+
+    cleans up some config conflicts
+
+[33mcommit 455229ee7d84a9e83fcb0cc3835655cb49779326[m
+Author: Aleksandr Karablin <aleks4ndr0@gmail.com>
+Date:   Wed Feb 24 14:29:29 2016 +1000
+
+    Add cucumber spec
+
+[33mcommit 4a26e3a8ef0c4721fe5ed9a46b3c86f31112d599[m
+Author: Aleksandr Karablin <aleks4ndr0@gmail.com>
+Date:   Tue Feb 2 18:25:25 2016 +1000
+
+    Change failed specs
+
+[33mcommit 78aa1829f857c9f44cfbeeffd4ec454af5b45ddc[m
+Author: Aleksandr Karablin <aleks4ndr0@gmail.com>
+Date:   Tue Feb 2 18:06:22 2016 +1000
+
+    Change devise helper to change message about reset password token
+
+[33mcommit 6592003a26ab4336f0694f6c1d40a085a8d5962b[m
+Author: Aleksandr Karablin <aleks4ndr0@gmail.com>
+Date:   Tue Jan 26 19:48:22 2016 +1000
+
+    test commit
+
+[33mcommit bf05a4912c3a30542e5338edd3ea3d3f8b30cd80[m
+Author: Aleksandr Karablin <aleks4ndr0@gmail.com>
+Date:   Sun Jan 17 13:12:35 2016 +1000
+
+    add tests
+
+[33mcommit fb2a4da0b2a9c143d31e1f1e68631501a30daf51[m
+Merge: 7643fee 39ead53
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Feb 23 08:08:41 2016 +0000
+
+    Merge pull request #260 from RajeevHejib/113073439_add_notes_about_inclusion_of_do-it_data
+    
+    shows a notice when mouseover on do-it logo
+
+[33mcommit 39ead53be2c14f940dafde287964940c786bdad2[m
+Author: Rajeev Hejib <rajeev_hejib@yahoo.com>
+Date:   Mon Feb 22 19:31:26 2016 +0000
+
+    shows a notice when mouseover on do-it logo [Fixes #113073439]
+
+[33mcommit 7643feea17cc7664f8321f085e06a5f35404ba08[m
+Merge: 43ccf6e 82c86c6
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Fri Feb 19 11:16:11 2016 +0000
+
+    Merge pull request #257 from AgileVentures/114077281_remove_duplicate_row_assignment
+    
+    removes duplicate row assignment
+
+[33mcommit 43ccf6ea1098bf6557f8be43a955584412629125[m
+Merge: aa72541 8d054e7
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Fri Feb 19 11:16:02 2016 +0000
+
+    Merge pull request #255 from RajeevHejib/113260749_add_do_it_logo_to_site_footer
+    
+    Adds 'Do-it' logo to site footer
+
+[33mcommit aa72541f0e8accb0d59da4c203b7f044e15b5d3a[m
+Merge: fc23f81 6ea471c
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Fri Feb 19 11:15:31 2016 +0000
+
+    Merge pull request #232 from samover/61986126_url_validation
+    
+    url validation
+
+[33mcommit 6ea471cac3a3cb31b88ed5cee2764c63637d967a[m
+Author: samover <samuel.overloop@gmail.com>
+Date:   Fri Feb 19 11:34:17 2016 +0100
+
+    untrack vcr.log
+
+[33mcommit 16fc8c3bd92a31d75b9b48a8e3090d955132f5de[m
+Author: samover <samuel.overloop@gmail.com>
+Date:   Thu Jan 28 10:15:15 2016 +0100
+
+    adds url validation to base organisation controller and flash
+
+[33mcommit 82c86c68af23176ccca900a421934b9fd521282c[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Fri Feb 19 10:18:27 2016 +0000
+
+    removes duplicate row assignment
+
+[33mcommit fc23f81db35f5948a7c680e0c4bd85b90f687f93[m
+Merge: fedf493 9ca3ccb
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Fri Feb 19 09:58:31 2016 +0000
+
+    Merge pull request #246 from johnnymo87/upgrade-to-ruby-2.3.0
+    
+    Upgrade to ruby 2.3.0
+
+[33mcommit 8d054e7218d876d376f45289bcec4e7e58ab4b71[m
+Merge: 557309b fedf493
+Author: Rajeev Hejib <rajeev_hejib@yahoo.com>
+Date:   Thu Feb 18 14:04:34 2016 +0000
+
+    Merge branch 'develop' into 113260749_add_do_it_logo_to_site_footer
+
+[33mcommit 9ca3ccb1d3ca589ef6490534f5bcc058e79994fb[m
+Author: johnnymo87 <johnnymo87@gmail.com>
+Date:   Thu Feb 18 13:26:48 2016 +0000
+
+    Add .rvmrc
+
+[33mcommit 6b77f908b8c0ca4ffcfb957e550be7a379e0f713[m
+Merge: 442d52d fedf493
+Author: samover <samuel.overloop@gmail.com>
+Date:   Thu Feb 18 13:29:13 2016 +0100
+
+    Merge branch 'develop' of github.com:AgileVentures/LocalSupport into develop
+
+[33mcommit 557309b028f28268154c90e5d450497eafb5f4c4[m
+Author: Rajeev Hejib <rajeev_hejib@yahoo.com>
+Date:   Thu Feb 18 11:49:23 2016 +0000
+
+    do-it logo displayed only when the feature is active [Fixes #113260749]
+
+[33mcommit fedf493a08287d10aa2cfa2eedff0677ee9752cc[m
+Merge: 68a8c2a 928d762
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Wed Feb 17 15:36:26 2016 +0000
+
+    Merge pull request #252 from ethanluoyc/113736889_fix_db_seed_validations
+    
+    fix failed validation on rake db:seed
+
+[33mcommit 68a8c2a95e4942f298e2b6ee339da432a02c6bb8[m
+Merge: 6807d1c 6cacdeb
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Wed Feb 17 15:36:14 2016 +0000
+
+    Merge pull request #256 from AgileVentures/113925489_update_rubocop_config
+    
+    Updates Rubocop Config
+
+[33mcommit 6cacdeb1d98b800c1725ffda45801d21e6a540ed[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Wed Feb 17 15:15:31 2016 +0000
+
+    updates rubocop config [Fixes #113925489]
+
+[33mcommit 928d762793d982b1440754fd28f6d02b74bfa79b[m
+Author: ethanluoyc <ethanluoyc@gmail.com>
+Date:   Wed Feb 17 21:36:22 2016 +0800
+
+    include tests on newly added functions
+
+[33mcommit 6807d1cb1e346648a689d3a50028002aac9e6732[m
+Merge: 7c9197e 50068e6
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Wed Feb 17 07:59:16 2016 +0000
+
+    Merge pull request #254 from AgileVentures/113811967_refactor_list_volunteer_op_service
+    
+    Pulls JSON into fixtures for ListVolunteerOps service
+
+[33mcommit 7c9197ed5355413e882b0ce218df2cab874be52d[m
+Merge: 3c96ccd 5a368ce
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Wed Feb 17 07:51:10 2016 +0000
+
+    Merge pull request #253 from AgileVentures/113802431_add_bugfix_notes_to_docs
+    
+    Tweaks to CONTRIBUTING.md
+
+[33mcommit e186ef72e6821589895dbd4cabd52407f0ba2bb2[m
+Author: ethanluoyc <ethanluoyc@gmail.com>
+Date:   Wed Feb 17 11:59:52 2016 +0800
+
+    Included functions tests for validating nil fields in the creation of organisation from csv files
+
+[33mcommit c1cc21bb8aae2600a3b0186781f4c2be2525a46e[m
+Author: Rajeev Hejib <rajeev_hejib@yahoo.com>
+Date:   Tue Feb 16 18:06:42 2016 +0000
+
+    adds 'Do-it' logo to the site footer [Fixes #113260749]
+
+[33mcommit 5a368ce8a5d711ba6b236e8272ffc626289ebfd4[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Feb 16 17:08:46 2016 +0000
+
+    adds notes about coherence of pull requests and no need to squash commits
+
+[33mcommit beffbe6ce6dc126ee9bc9b07bbdb2163c69ddaa4[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Feb 16 16:37:25 2016 +0000
+
+    fixes minor issues identified by Ethan and Jean-Pierre
+
+[33mcommit 50068e6cd8be9b872e48693f7168f8fadbcee895[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Feb 16 12:16:16 2016 +0000
+
+    responds to hound concerns
+
+[33mcommit 72efa3547f377a5a256f786306da8631ac909cf2[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Feb 16 12:07:06 2016 +0000
+
+    breaks up private methods into smaller chunks and adds big picture comments
+
+[33mcommit a58b102c5fe816d619ed0fc1c92d71aacb3d599e[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Feb 16 11:19:24 2016 +0000
+
+    adjusts doit json data to be indented for human readability
+
+[33mcommit 93f6bb83926b91e2e69b3a042832e882ce686f2c[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Feb 16 11:06:30 2016 +0000
+
+    extracts doit json data to fixture files [Fixes #113811967]
+
+[33mcommit 3c96ccdc4fb89baa0560a508df9c456624db609d[m
+Merge: d12f63e 959ca04
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Feb 16 10:26:15 2016 +0000
+
+    Merge pull request #233 from Proskurina/108529506_doit_vol_ops
+    
+    doit on a new branch [WIP]
+
+[33mcommit d12f63ef9b692f6e633cb7a6a08dee2b5f23bee3[m
+Merge: 6e3dccf 8a9d0b1
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Feb 16 10:22:34 2016 +0000
+
+    Merge pull request #251 from AgileVentures/113735567_use_phantomjs_gem
+    
+    Lock us to a particular version of phantomjs
+
+[33mcommit 8a9d0b1b261bd431eb7ca013e38a2f1b932c4d3f[m
+Author: Jean-Pierre Bernard <jeanpierre.bernard@gmail.com>
+Date:   Sat Feb 13 15:53:02 2016 +0000
+
+    Replace puts with logger in rake task and restaure email_steps
+
+[33mcommit 62717a48f3114a2e0ea5d7756c4f746c1b211c03[m
+Author: Jean-Pierre Bernard <jeanpierre.bernard@gmail.com>
+Date:   Tue Feb 9 03:08:07 2016 +0000
+
+    Add an underscore to an unused parameter to make houndci happy
+
+[33mcommit 33719c2e7736fdd4134db993574fb2762cfb13d0[m
+Author: Jean-Pierre Bernard <jeanpierre.bernard@gmail.com>
+Date:   Tue Feb 9 02:59:20 2016 +0000
+
+    Stub puts to send email import messages to test.log
+
+[33mcommit cee99cfcf54e1b7d8d1d27017a45e12087a34cc7[m
+Author: Jean-Pierre Bernard <jeanpierre.bernard@gmail.com>
+Date:   Fri Feb 5 17:06:58 2016 +0000
+
+    Skip puts when in test [Fix #112406067]
+
+[33mcommit 4876ab3ad9c9162516ac6c5f691739ea5d896249[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Mon Feb 15 12:28:41 2016 +0000
+
+    locks us to a specific version of phantomjs [Fixes #113735567]
+
+[33mcommit c5f3c74378641b0d67be08a2b357aad27031af29[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Feb 16 07:52:46 2016 +0000
+
+    updates docs with notes on required testing strategy [Fixes #113802431]
+
+[33mcommit 959ca04925c1eae2f09ace63d7e074f0212d1a8c[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Mon Feb 15 22:42:26 2016 +0000
+
+    Activated doit feature in seeds
+
+[33mcommit 442d52d74aec6f53d8199786030a05d0ea968709[m
+Merge: f9e5a22 6e3dccf
+Author: samover <samuel.overloop@gmail.com>
+Date:   Mon Feb 15 16:54:19 2016 +0100
+
+    merge with upstream
+
+[33mcommit bc36b8f26f2d97404ddb1cc0d00a3e05f6b28aac[m
+Author: ethanluoyc <ethanluoyc@gmail.com>
+Date:   Mon Feb 15 23:37:32 2016 +0800
+
+    fixed indentation
+
+[33mcommit b0abacce0032fa25840eea58fc9bb90b57d8acc6[m
+Author: ethanluoyc <ethanluoyc@gmail.com>
+Date:   Mon Feb 15 23:25:59 2016 +0800
+
+    fix failed validation on rake db:seed
+    [Fixes #113736889]
+
+[33mcommit 6e3dccf250364771549823b0d57ce190e94a6693[m
+Merge: 02695c5 ed0618d
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Mon Feb 15 15:14:19 2016 +0000
+
+    Merge pull request #247 from C9905557/112406067_find_alternative_to_put_statement_in_lib_tasks_email_rake
+    
+    Skip puts when in test [Fix #112406067]
+
+[33mcommit ed0618d0b4054cb9037e559311698bc71073b9ad[m
+Author: Jean-Pierre Bernard <jeanpierre.bernard@gmail.com>
+Date:   Sat Feb 13 15:53:02 2016 +0000
+
+    Replace puts with logger in rake task and restaure email_steps
+
+[33mcommit dc49d1f0d7075e9ab2ecd92324df5a19508c99e6[m
+Merge: 7b172e5 02695c5
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Fri Feb 12 17:52:49 2016 +0000
+
+    Merge branch 'develop' into 108529506_doit_vol_ops
+
+[33mcommit 7b172e51a27571c5f4464c77e1c9a2a0e59f1f41[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Fri Feb 12 17:26:41 2016 +0000
+
+    Added tests, slightly refactored get_doit_orgs
+
+[33mcommit 02695c55fb144a76692c0f99fae984fbb2318559[m
+Merge: 43cf33c 3094042
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Feb 11 15:07:31 2016 +0000
+
+    Merge pull request #248 from AgileVentures/113171795_update_doc_pointers
+    
+    Update doc link and mention hound/rubocop
+
+[33mcommit 43cf33c78487e148d7c273a812fd72150770fc65[m
+Merge: 2b7cdac b971968
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Feb 11 11:51:37 2016 +0000
+
+    Merge pull request #249 from AgileVentures/113528307_allow_proposed_orgs_to_handle_validation_fails_gracefully
+    
+    Gets proposed orgs set up to handle validations
+
+[33mcommit b97196831589820546c6d6c4fd742ea721810243[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Feb 11 10:52:16 2016 +0000
+
+    adds test and fix for proposed organisation handling validations [Fixes #113528307]
+
+[33mcommit 2b7cdac8c18d7d744627eb492b7d4d5c06b918f6[m
+Merge: ea2b8ce 17969a4
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Feb 11 10:27:50 2016 +0000
+
+    Merge pull request #231 from samover/61986126_name_and_description_validation
+    
+    name and description validation
+
+[33mcommit 1d50da52519ba4e1487ab3784153c3df09e82cd8[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Wed Feb 10 18:27:20 2016 +0000
+
+    Added req_cache from develop
+
+[33mcommit 2549e233e3422255c64232570cdedc0863dd126f[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Wed Feb 10 18:21:07 2016 +0000
+
+    req_cache deleted
+
+[33mcommit ea9cb11868d52be1483abbcbba73d2d4cc70026a[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Wed Feb 10 15:38:05 2016 +0000
+
+    pulls more into list volunteer ops service and starts on unit tests
+
+[33mcommit 55239f436835ac94d591fbc561199eaef0374f83[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Tue Feb 9 21:08:26 2016 +0000
+
+    Changed tests
+
+[33mcommit 4212667bf8b6de2edcb3d0af8f2f1d5fe903d546[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Tue Feb 9 20:47:59 2016 +0000
+
+    Change name of the service
+
+[33mcommit 3094042a390284575efed5df19e23919d7e3527e[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Feb 9 15:34:31 2016 +0000
+
+    removes docs dir and moves contribution guidelines into CONTRIBUTING.md
+
+[33mcommit 17969a4993f4bfc2ac835836d0f906a75dd2f40a[m
+Author: samover <samuel.overloop@gmail.com>
+Date:   Tue Feb 9 15:46:36 2016 +0100
+
+    refactor for the hound
+
+[33mcommit 0a9d70760229752d1f993aa26a53710cf216a104[m
+Author: samover <samuel.overloop@gmail.com>
+Date:   Tue Feb 9 15:41:20 2016 +0100
+
+    refactor for the hound
+
+[33mcommit d0f2f901135655b996a4e4c9ec826a1339f86f01[m
+Author: Jean-Pierre Bernard <jeanpierre.bernard@gmail.com>
+Date:   Tue Feb 9 03:08:07 2016 +0000
+
+    Add an underscore to an unused parameter to make houndci happy
+
+[33mcommit 6c86cb363a9c0e55f2549031bb6799c32a3051c5[m
+Author: Jean-Pierre Bernard <jeanpierre.bernard@gmail.com>
+Date:   Tue Feb 9 02:59:20 2016 +0000
+
+    Stub puts to send email import messages to test.log
+
+[33mcommit 5ccfac790e653a7de2a85e3217347ad6b27b0bad[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Mon Feb 8 17:41:16 2016 +0000
+
+    Added file get_from_doit.rb
+
+[33mcommit c5d30e63d0b68fd510f72c52fd527c6a0021d745[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Mon Feb 8 17:30:11 2016 +0000
+
+    Moved request to doit to services get_from_doit.rb
+
+[33mcommit e543cea8bec4f3587bdccb9506963bb31b8fe825[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Mon Feb 8 16:13:14 2016 +0000
+
+    adds some more docs notes, including link in main README
+
+[33mcommit f40cdc7f644bb5557d14ce8d8385b56f316f4ed0[m
+Author: johnnymo87 <johnnymo87@gmail.com>
+Date:   Fri Feb 5 02:04:53 2016 +0000
+
+    Upgrade to ruby 2.3.0
+
+[33mcommit e4b49815652b87d20a6ca287b62b0559ac03febc[m
+Merge: bb19680 ea2b8ce
+Author: samover <samuel.overloop@gmail.com>
+Date:   Mon Feb 8 11:33:18 2016 +0100
+
+    Merge remote-tracking branch 'upstream/develop' into 61986126_name_and_description_validation
+
+[33mcommit bb196801bf02af097a3b813c858565a7961c80cf[m
+Author: samover <samuel.overloop@gmail.com>
+Date:   Wed Jan 27 12:43:15 2016 +0100
+
+    # This is a combination of 2 commits.
+    # The first commit's message is:
+    
+    # This is a combination of 6 commits.
+    # The first commit's message is:
+    # This is a combination of 2 commits.
+    # The first commit's message is:
+    
+    # This is a combination of 2 commits.
+    # The first commit's message is:
+    
+    # This is a combination of 2 commits.
+    # The first commit's message is:
+    
+    # This is a combination of 2 commits.
+    # The first commit's message is:
+    
+    # This is a combination of 2 commits.
+    # The first commit's message is:
+    
+    # This is a combination of 2 commits.
+    # The first commit's message is:
+    
+    organisation should have a name
+    
+    # The 2nd commit message will be skipped:
+    
+    #       validates presence of a name
+    
+    # The 2nd commit message will be skipped:
+    
+    #       add shoulda gem
+    
+    # The 2nd commit message will be skipped:
+    
+    #       update test to use shoulda
+    
+    # The 2nd commit message will be skipped:
+    
+    #       get validation error when creating new charity with empty fileds
+    
+    # The 2nd commit message will be skipped:
+    
+    #       validation for required name and description
+    
+    # The 2nd commit message will be skipped:
+    
+    #       validation for presence of descritpion
+    
+    # The 2nd commit message will be skipped:
+    
+    #       fix test to include required organisation descritpion
+    
+    # The 3rd commit message will be skipped:
+    
+    #       add description when creating new organisation
+    
+    # The 4th commit message will be skipped:
+    
+    #       fix error in test that made it fail
+    
+    # The 5th commit message will be skipped:
+    
+    #       correct typo
+    
+    # The 6th commit message will be skipped:
+    
+    #       move @categories_start_with up
+    
+    # The 2nd commit message will be skipped:
+    
+    #       flash error: organisation name and description are requried
+
+[33mcommit f9e5a222bcc564564ad2d106776af8bce62c4ea7[m
+Merge: ea2b8ce 431e307
+Author: samover <samuel.overloop@gmail.com>
+Date:   Mon Feb 8 08:56:09 2016 +0100
+
+    solve merge conflict
+
+[33mcommit 431e30748b35835c75b2c2a0ba1bf728c05abf14[m
+Merge: 8cdae78 ee30296
+Author: samover <samuel.overloop@gmail.com>
+Date:   Mon Feb 8 08:51:10 2016 +0100
+
+    Merge remote-tracking branch 'upstream/develop' into 61986126_name_and_description_validation
+
+[33mcommit f17f4fa544727c7684b24493b556f37e4dce6312[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Sat Feb 6 16:07:51 2016 +0000
+
+    Minor changes
+
+[33mcommit b806b591384bf5f72b051463abf8e4ee2e91d5e1[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Sat Feb 6 14:38:05 2016 +0000
+
+    Minor changes
+
+[33mcommit c0f285c7c646bc07523943e3b53a959f4c483673[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Sat Feb 6 14:24:19 2016 +0000
+
+    Made do-it infowindow similar to harrow, added test for infowindow
+
+[33mcommit 00a43c34a02803f7c671cc64b324233d64c7a084[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Sat Feb 6 13:32:09 2016 +0000
+
+    Minor style changes
+
+[33mcommit 4519fe6523461d753d7f1db8c20ca02a1af9c831[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Sat Feb 6 12:36:16 2016 +0000
+
+    Slightly cleaned assemble_volunteer_markers method in vol opp controller
+
+[33mcommit 85b23f679da3fe327d6b686042717daad4281ec4[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Sat Feb 6 12:16:53 2016 +0000
+
+    Changed the icons
+
+[33mcommit 0298a1b65c218f1d04cd802d39299e258d5e173c[m
+Merge: acb73b9 ea2b8ce
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Sat Feb 6 11:57:04 2016 +0000
+
+    Merge branch 'develop' into 108529506_doit_vol_ops
+
+[33mcommit acb73b967fda4041a594cb3092995a86b46df30d[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Sat Feb 6 11:56:04 2016 +0000
+
+    Added test for vol opp link
+
+[33mcommit 5c2770cc859f20ae5fdf8b2d689a72e494dc7e7c[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Sat Feb 6 11:50:03 2016 +0000
+
+    Added test for org link
+
+[33mcommit 0a0ecd85ad7600af422b1a3277a87e6f7d2e8053[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Sat Feb 6 10:49:41 2016 +0000
+
+    Link to doit orgs added
+
+[33mcommit 7efae1bb025d604cccea0157a05b96cdb54e9ee4[m
+Author: Jean-Pierre Bernard <jeanpierre.bernard@gmail.com>
+Date:   Fri Feb 5 17:06:58 2016 +0000
+
+    Skip puts when in test [Fix #112406067]
+
+[33mcommit ea2b8ce205936cf719285bb5ec40c1b742675839[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Feb 4 12:49:22 2016 +0000
+
+    Adds more detail and links
+
+[33mcommit 3a3fdda70984be959d58d7ae64733c0c9a544fd2[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Feb 4 12:38:54 2016 +0000
+
+    Delete README_FOR_APP
+
+[33mcommit d7bfd41aa4e61e38960c025d2999cb69e60011c6[m
+Merge: f1b4a72 2fe86a8
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Feb 4 12:18:14 2016 +0000
+
+    Merge pull request #237 from RajeevHejib/112453577_deprication_warning_on_column_timestamp
+    
+    Changes to migration scripts to add 'null: true' for column timestamp
+
+[33mcommit f1b4a7281266b3bf7e2d8364bc181d94d2e79fd3[m
+Merge: 7a7015a e1ce6a3
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Feb 4 12:16:21 2016 +0000
+
+    Merge pull request #243 from AgileVentures/113063139_add_engineering_docs
+    
+    Fleshing out the engineering flow
+
+[33mcommit 7a7015a4cb349d10407f6361a66a5902dbef7640[m
+Merge: ff7363b a7280e8
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Feb 4 12:15:52 2016 +0000
+
+    Merge pull request #244 from AgileVentures/112902301_fixing_javascript_timing_issue
+    
+    A further attempt to stabilize javascript tests in cucumber
+
+[33mcommit a7280e87e933e7565c43ba5f56189311dc9ffb1b[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Feb 4 10:48:25 2016 +0000
+
+    makes check for change javascript tag dependent
+
+[33mcommit fe36252354baa1d451fa499bf227412f5f8d5904[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Feb 4 10:35:37 2016 +0000
+
+    addresses javascript timing issue [Fixes #112902301]
+
+[33mcommit b2ca3769deebfe52c7c16ac73ba300df039fa275[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Thu Feb 4 10:10:41 2016 +0000
+
+    Refactored vol_op_controller index
+
+[33mcommit 69bfac504c04c3e8644c1f91d8b6718158d5d36c[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Thu Feb 4 09:46:32 2016 +0000
+
+    Cleans up map_marker_json for hound
+
+[33mcommit f57055b174310036c6fdc1109730ca55b04937cf[m
+Merge: b373936 ff7363b
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Thu Feb 4 09:12:36 2016 +0000
+
+    Merged last changes
+
+[33mcommit ff7363b5adcd34c977410e616a3b8a655091a8fa[m
+Merge: eeea8e9 932b0ae
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Feb 4 09:09:48 2016 +0000
+
+    Merge pull request #242 from AgileVentures/112900047_make_capybara_wait_for_javascript_element
+    
+    Attempt to make capybara check for visibility more robust in javascript tests
+
+[33mcommit 932b0ae5534fff1b35b2b579eeb876ba87e60f41[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Feb 4 08:59:56 2016 +0000
+
+    refactors for hound
+
+[33mcommit e1ce6a30ce8934527186c2cd1e712e388dbc03de[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Feb 4 08:56:43 2016 +0000
+
+    updates the engineering docs [Finishes #113063139]
+
+[33mcommit eeea8e9dfaf488c6be9f4ef0f19a4c7359a906a6[m
+Merge: 3a9b38f 016aa20
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Feb 4 08:29:55 2016 +0000
+
+    Merge pull request #236 from RajeevHejib/112492939_changes_to_seed_rb
+    
+    Changes to seeds.rb to fix run time errors
+
+[33mcommit a459bd49d48e9e5af9591ac80be47d47e76aca0f[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Thu Feb 4 08:24:22 2016 +0000
+
+    makes capybara check for visibility more robust [Finishes #112900047]
+
+[33mcommit 016aa200e0652ca96176690808b920d0853e146d[m
+Merge: 7f96889 3a9b38f
+Author: Rajeev Hejib <rajeev_hejib@yahoo.com>
+Date:   Wed Feb 3 19:40:13 2016 +0000
+
+    Merge branch 'develop' into 112492939_changes_to_seed_rb
+
+[33mcommit 2fe86a88f0031089c048183fbfe9b437703ca258[m
+Merge: f998406 3a9b38f
+Author: Rajeev Hejib <rajeev_hejib@yahoo.com>
+Date:   Wed Feb 3 19:35:05 2016 +0000
+
+    Merge branch 'develop' into 112453577_deprication_warning_on_column_timestamp
+
+[33mcommit b3739366f36bebc1d44212c6b248d2fc58ea329c[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Wed Feb 3 16:57:00 2016 +0000
+
+    Making hound happier. All tests pass on local
+
+[33mcommit 7f968895520e805cfc92d2c07ef362e823564d71[m
+Author: Rajeev Hejib <rajeev_hejib@yahoo.com>
+Date:   Wed Feb 3 16:44:51 2016 +0000
+
+    renamed folder doc/ to docs/
+
+[33mcommit 308fbea9cfbd1f35b3c2bb21d31754ee40cc644b[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Wed Feb 3 16:21:40 2016 +0000
+
+    Httparty added
+
+[33mcommit fc52941c2e9b7ef815cbd18faa7aac753a68e487[m
+Merge: 1c493a7 3a9b38f
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Wed Feb 3 16:19:11 2016 +0000
+
+    Conflict resolved
+
+[33mcommit 1c493a702b7012d3004209149cffadac399ceb78[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Wed Feb 3 16:17:43 2016 +0000
+
+    Httparty deleted
+
+[33mcommit 3a9b38fc392e0cf82b1439bd06eb5f4981c77468[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Wed Feb 3 15:17:50 2016 +0000
+
+    Update .rubocop.yml
+
+[33mcommit 5d2b31db6df87a213b4e120add101ef767e0983b[m
+Merge: eb315c8 185f5e8
+Author: Rajeev Hejib <rajeev_hejib@yahoo.com>
+Date:   Wed Feb 3 12:51:20 2016 +0000
+
+    Merge branch 'develop' into 112492939_changes_to_seed_rb
+
+[33mcommit eb315c8d7a9ccd2d3adbca096ff2b0fce5a39226[m
+Author: Rajeev Hejib <rajeev_hejib@yahoo.com>
+Date:   Wed Feb 3 12:49:04 2016 +0000
+
+    changed file Readme_for_Setting_Up_new_Feature to README.md [Fixes #112492939
+
+[33mcommit 185f5e8f2301da84bb28a9c9b46cfc63ae315528[m
+Merge: 2a8fe34 803d0fb
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Wed Feb 3 12:24:21 2016 +0000
+
+    Merge pull request #239 from ZmagoD/zd-proposed-user-edit
+    
+    deleting a user causes a problem with edits they may have proposed
+
+[33mcommit 6012208d821738f229cfc9afb623e12994f19702[m
+Merge: 496a5c3 2a8fe34
+Author: Rajeev Hejib <rajeev_hejib@yahoo.com>
+Date:   Wed Feb 3 11:09:19 2016 +0000
+
+    Merge branch 'develop' into 112492939_changes_to_seed_rb
+
+[33mcommit 2a8fe340e3dc5061411112ac964d07789fb7bdfc[m
+Merge: 462de5e 0f8aefd
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Wed Feb 3 10:21:32 2016 +0000
+
+    Merge pull request #241 from AgileVentures/112963891_add_hound_config
+    
+    muzzle hound
+
+[33mcommit 496a5c38a0b5fd00684592127ca9351ccfe13df9[m
+Author: Rajeev Hejib <rajeev_hejib@yahoo.com>
+Date:   Wed Feb 3 10:14:38 2016 +0000
+
+    Added readme file with instruction on activating a new feature in seed.rb [Fixes 112492939]
+
+[33mcommit 17db51902442dd42c8f16ff992c080ba97136028[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Wed Feb 3 09:55:04 2016 +0000
+
+    All tests pass after the last merge
+
+[33mcommit 0f8aefd0d1d01ba0ba3b7111cf471e7908fa99d4[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Wed Feb 3 09:53:53 2016 +0000
+
+    adds hound/rubocop/javascript config to get sensible output
+
+[33mcommit bb1f512a3e3a0cb6582fc867325dd2a2391b2341[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Wed Feb 3 09:51:49 2016 +0000
+
+    Last merge done
+
+[33mcommit d3bb57fac3c5451b4d98e6fccfac18e7ef1e0735[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Wed Feb 3 09:46:26 2016 +0000
+
+    All tests pass after the merge
+
+[33mcommit 462de5e069c3dbc87c58ca71796f78d0e3b556e1[m
+Merge: a78b9e9 306f63b
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Wed Feb 3 08:15:09 2016 +0000
+
+    Merge pull request #234 from AgileVentures/112325275_refactor_volunteer_op_spec
+    
+    Making a start on isolating the unit tests from the geocoding service
+
+[33mcommit 665ceba9c0a4a005b93b83e46bb326f4a122967d[m
+Author: Proskurina <yproskurina@yahoo.com>
+Date:   Tue Feb 2 22:51:40 2016 +0000
+
+    Merged develop with vcr and billy
+
+[33mcommit 7838700fc86de36496421581c03ffd12561f7bd4[m
+Merge: 7c76709 12f4164
+Author: Rajeev Hejib <rajeev_hejib@yahoo.com>
+Date:   Tue Feb 2 17:09:23 2016 +0000
+
+    Merge branch 'develop' into 112492939_changes_to_seed_rb so as to get latest changes into the branchZZ
+
+[33mcommit a78b9e938645362b76f33290be6efd5b594ea873[m
+Merge: 12f4164 de646be
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Feb 2 17:00:58 2016 +0000
+
+    Merge pull request #240 from AgileVentures/112905907_ignore_js_errors_in_poltergeist_billy
+    
+    Trying to stub google maps comprehensively
+
+[33mcommit de646beadbe193a77da26d063b7702999a9ff56e[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Feb 2 16:36:29 2016 +0000
+
+    allows more aggressive caching of google maps - side effects? [Fixes #112905907]
+
+[33mcommit 803d0fbe0821f9c4d64d4a4a711d368f64aaf876[m
+Author: Zmago Devetak <zmago_devetak@yahoo.com>
+Date:   Tue Feb 2 11:51:59 2016 +0000
+
+    fixed delete user error [Fixes #112145095]
+
+[33mcommit 306f63bd7eb8330b6e054d6a5e3de90d4a1639a3[m
+Merge: 33b609c 12f4164
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Feb 2 16:04:24 2016 +0000
+
+    merges with vcr/billy
+
+[33mcommit 12f416436be59c069ea6bdb002a265a80e3c5304[m
+Merge: ee30296 babb84b
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Feb 2 15:40:58 2016 +0000
+
+    Merge pull request #219 from ZmagoD/zd-vcr-billy
+    
+    Zd vcr billy
+
+[33mcommit babb84b5e4e57c4eaddaffd2c37d632b1429f576[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Feb 2 15:29:03 2016 +0000
+
+    removes unecessary webmock config and stray byebug
+
+[33mcommit 470b9bb301e864d5d64ab78e9da01a9bec834918[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Feb 2 13:10:47 2016 +0000
+
+    adds two more google map related cache items - will these be the last?
+
+[33mcommit c62dcca1c3ed6d3bab0e867c3d33875b46a59c61[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Feb 2 13:07:14 2016 +0000
+
+    replaces sleep with waiting capybara action, and cleans up ignore params
+
+[33mcommit c4b3ff94e23346281058f0b24883f0eee3891848[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Feb 2 12:12:31 2016 +0000
+
+    adjusts billy env to avoid params on more google endpoints
+
+[33mcommit f6305f97d6ee7e50ca799e1f8fa54c0e77d6e668[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Tue Feb 2 11:40:54 2016 +0000
+
+    adjust test so that we do not compare with another org position when we check that postcode changes the lat lng
+
+[33mcommit f9984065708ab212f6da8321012cb0d64f457e7c[m
+Author: Rajeev Hejib <rajeev_hejib@yahoo.com>
+Date:   Mon Feb 1 18:15:20 2016 +0000
+
+    Changes to migration scripts to add 'null: true' for column timestamps [fixes #112453577]
+
+[33mcommit 7c76709479366f3a4f4e4e18dca2d0921abc9d73[m
+Author: Rajeev Hejib <rajeev_hejib@yahoo.com>
+Date:   Mon Feb 1 17:55:52 2016 +0000
+
+    Changes to seed.rb [fixes #112492939]
+
+[33mcommit 33b609ca3012e56bd5c39933d975c8462309152a[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Mon Feb 1 15:21:29 2016 +0000
+
+    adds mock_model to organisations controller spec to avoid geocoding [Finishes #112325275]
+
+[33mcommit 313848bbc4f477e514dff7f3b782a6d43c988c68[m
+Author: Sam Joseph <tansaku@gmail.com>
+Date:   Mon Feb 1 12:38:26 2016 +0000
+
+    adds rspec-activemodel-mocks in place of factory girl to ensure that geocoding service is not hit
+
+[33mcommit dccb7875b346334508dedb22defa8e87c07f13b5[m
+Author: ZmagoD <zmago_devetak@yahoo.com>
+Date:   Sat Jan 30 22:13:32 2016 +0100
+
+    with the original vcr cache of Changing_postcode_changes_the_map_coordinates.yml file

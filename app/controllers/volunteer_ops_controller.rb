@@ -3,6 +3,7 @@ class VolunteerOpsController < ApplicationController
   before_action :authorize, except: [:search, :show, :index]
   before_action :set_organisation, only: [:new, :create]
   before_action :set_volunteer_op, only: [:show, :edit]
+  before_action :set_tags, only: [:show]
 
   def search
     @query = params[:q]
@@ -106,5 +107,20 @@ class VolunteerOpsController < ApplicationController
 
   def vol_op_redirect(notice)
     redirect_to(@volunteer_op, notice: notice)
+  end
+
+  def set_tags
+    set_meta_tags title: @volunteer_op.title,
+                  site: 'Harrow volunteering',
+                  reverse: true,
+                  description: @volunteer_op.description,
+                  author: 'http://www.agileventures.org',
+                  og: {
+                      title: @volunteer_op.title,
+                      site: 'Harrow volunteering',
+                      reverse: true,
+                      description: @volunteer_op.description,
+                      author: 'http://www.agileventures.org'
+                  }
   end
 end
