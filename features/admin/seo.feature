@@ -22,4 +22,4 @@ Feature: Would like the site to appear high in Google's listing
 
   Scenario: Meta Title and Description for volunteers show page
     Given I visit the show page for the volunteer_op titled "Helping Volunteer"
-    Then I should have a page with a title: "Friendly Volunteer | Harrow volunteering"
+    Then I should have a page with a title: "Helping Volunteer | Harrow volunteering"
