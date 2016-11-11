@@ -537,14 +537,6 @@ Then(/^I should see "([^"]*)" page before "([^"]*)"$/) do |first_item, second_it
   page.body.should =~ /#{first_item}.*#{second_item}/m
 end
 
-Then (/^I should see "([^"]*)" in the page title$/) do |text|
-  page.title.should have_content(text)
-end
-
-Then (/^I should not see "([^"]*)" in the page title$/) do |text|
-  page.title.should_not have_content(text)
-end
-
 Given /^"(.*?)" has a whitespace at the end of the email address$/ do |org_name|
   org = Organisation.find_by_name(org_name)
   org.email += ' '
