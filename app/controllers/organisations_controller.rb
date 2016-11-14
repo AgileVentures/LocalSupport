@@ -130,7 +130,7 @@ class OrganisationsController < BaseOrganisationsController
 
   def set_tags
     set_meta_tags title: @organisation.name,
-                  site: 'Harrow Community Network | Harrow volunteering',
+                  site: 'Harrow volunteering',
                   reverse: true,
                   description: @organisation.description,
                   author: 'http://www.agileventures.org',
