@@ -1,46 +1,47 @@
 Given(/^the following proposed organisations exist:$/) do |table|
+  require_relative '../../db/proposed_organisations/create'
   table.hashes.each do |hash|
-    create_hash = {}
-    proposer = nil
-    hash.each_pair do |field_name, field_value|
-      if field_name != "proposer_email"
-        key_value_to_add = {field_name.to_sym => field_value}
-      else
-        proposer = User.find_by(email: field_value)
-      end
-      create_hash.merge! key_value_to_add unless key_value_to_add.nil?
-    end
-    proposed_org = ProposedOrganisation.new create_hash
-    proposed_org.users << proposer if proposer
-    proposed_org.save!
+    Db::ProposedOrganisations::Create.new(hash).perform
   end
 end
 
 Given /^I accept a proposed organisation called "(.*?)" with email "(.*?)"$/ do |name, email|
-  steps %{
-    Given the following proposed organisations exist:
-      | name    | description         | address        | postcode | telephone | website            | email    | donation_info        | non_profit |
-      | #{name} | Mourning loved ones | 30 pinner road | HA5 4HZ  | 520800000 | http://#{name}.org | #{email} | www.pleasedonate.com | true       |
-    When I accept the proposed_organisation named "#{name}"
-  }
+  require_relative '../../db/proposed_organisations/create'
+  Db::ProposedOrganisations::Create.new(
+    'name'  => name,
+    'email' => email,
+  ).perform
+  visit_proposed_organisation(name: name)
+  press_acceptance_for_proposed_organisation
+  assert_on_organisation_show_page(name: name)
 end
 
 Then /^"(.*?)" is (notified|invited|ignored) as an organisation admin of "(.*?)"$/ do |email, action, name|
+  org = Organisation.find_by!(name: name)
+  acceptance_message = (<<-MSG).strip_heredoc
+  Thank you for registering your organisation.
+
+  We have granted your request to have it included in our directory.
+
+  Details of your organisation are now live in our directory.
+  MSG
   case action
   when 'notified'
-    steps %{
-      Then an email should be sent to "#{email}" as notification of the acceptance of proposed organisation "#{name}"
-      And "#{email}" is an organisation admin of "#{name}"
-    }
+    expect_email_exists(
+      :message   => acceptance_message,
+      :email     => email,
+      :link      => organisation_url(org),
+      :link_text => 'You can edit your organisation details by logging in and editing it directly.'
+    )
+    expect(org.users.pluck(:email)).to include(email)
   when 'invited'
-    steps %{
-      Then an invitational email should be sent to "#{email}" as notification of the acceptance of proposed organisation "#{name}"
-      And "#{email}" is an organisation admin of "#{name}"
-    }
+    expect_email_exists(
+      :message => acceptance_message,
+      :email   => email,
+    )
+    expect(org.users.pluck(:email)).to include(email)
   when 'ignored'
-    steps %{
-      Then "#{email}" is not an organisation admin of "#{name}"
-    }
+    expect(org.users.pluck(:email)).not_to include(email)
   else raise "unknown action '#{action}'"
   end
 end

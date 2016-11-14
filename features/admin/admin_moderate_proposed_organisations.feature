@@ -5,7 +5,6 @@ Feature: Admin moderates an organisation to be added to HarrowCN
   Tracker story ID: https://www.pivotaltracker.com/story/show/742821
 
   Background:
-
     Given the following users are registered:
       | email                         | password | superadmin   | confirmed_at         |
       | superadmin@example.com        | pppppppp | true         | 2007-01-01  10:00:00 |
@@ -23,7 +22,7 @@ Feature: Admin moderates an organisation to be added to HarrowCN
 
   @vcr
   Scenario: Superadmin accepts new organisation
-    And I visit the proposed organisation show page for the proposed organisation that was proposed
+    Given I visit the proposed organisation show page for the proposed organisation that was proposed
     And I press "Accept"
     Then I should be on the show page for the organisation that was proposed
     And I should see "You have approved the following organisation"
