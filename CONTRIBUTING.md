@@ -26,6 +26,8 @@ This is a learning project and so we currently do NOT require developers to reba
 
 Whatever you are working on, or however far you get please open a "Work in Progress" (WIP) [pull request](https://help.github.com/articles/creating-a-pull-request/) so that others in the team can comment on your approach.  Even if you hate your horrible code :-) please throw it up there; you'll get automated feedback on code style from [hound](https://houndci.com/) and we'll help guide your code to fit in with the rest of the project.
 
+###Git Comments
+
 On your final git commit please include a comment in this format:
 
 ```
