@@ -104,8 +104,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  private
-
   def set_tags
     set_meta_tags title: meta_tag_title,
                   site: 'Harrow volunteering',
