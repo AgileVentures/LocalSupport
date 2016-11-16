@@ -13,12 +13,12 @@ Feature: Would like the site to appear high in Google's listing
 
   Scenario: Meta Title and Description for home page
     Given I visit the organisations index page
-    Then I should have a page with a title: "Harrow Community Network"
+    Then I should have a page with a title: "Harrow volunteering"
     And I should see "Harrow Community Network is a nonprofit workers"
 
   Scenario: Meta Title and Description for organisation show page
     Given I visit the show page for the organisation named "Friendly"
-    Then I should have a page with a title: "Friendly | Harrow Community Network | Harrow volunteering"
+    Then I should have a page with a title: "Friendly | Harrow volunteering"
 
   Scenario: Meta Title and Description for volunteers show page
     Given I visit the show page for the volunteer_op titled "Helping Volunteer"
