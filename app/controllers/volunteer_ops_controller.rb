@@ -109,18 +109,11 @@ class VolunteerOpsController < ApplicationController
     redirect_to(@volunteer_op, notice: notice)
   end
 
-  def set_tags
-    set_meta_tags title: @volunteer_op.title,
-                  site: 'Harrow volunteering',
-                  reverse: true,
-                  description: @volunteer_op.description,
-                  author: 'http://www.agileventures.org',
-                  og: {
-                      title: @volunteer_op.title,
-                      site: 'Harrow volunteering',
-                      reverse: true,
-                      description: @volunteer_op.description,
-                      author: 'http://www.agileventures.org'
-                  }
+  def meta_tag_title
+    @volunteer_op.title
+  end
+
+  def meta_tag_description
+    @volunteer_op.description
   end
 end
