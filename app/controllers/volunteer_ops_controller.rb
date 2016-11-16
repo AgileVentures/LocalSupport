@@ -3,6 +3,7 @@ class VolunteerOpsController < ApplicationController
   before_action :authorize, except: [:search, :show, :index]
   before_action :set_organisation, only: [:new, :create]
   before_action :set_volunteer_op, only: [:show, :edit]
+  before_action :set_tags, only: [:show]
 
   def search
     @query = params[:q]
@@ -106,5 +107,13 @@ class VolunteerOpsController < ApplicationController
 
   def vol_op_redirect(notice)
     redirect_to(@volunteer_op, notice: notice)
+  end
+
+  def meta_tag_title
+    @volunteer_op.title
+  end
+
+  def meta_tag_description
+    @volunteer_op.description
   end
 end

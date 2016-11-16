@@ -103,4 +103,23 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def set_tags
+    set_meta_tags title: meta_tag_title,
+                  site: 'Harrow volunteering',
+                  reverse: true,
+                  description: meta_tag_description,
+                  author: 'http://www.agileventures.org',
+                  og: open_graph_tags
+  end
+
+  def open_graph_tags
+    {
+        title: meta_tag_title,
+        site: 'Harrow Community Network',
+        reverse: true,
+        description: meta_tag_description,
+        author: 'http://www.agileventures.org'
+    }
+  end
 end

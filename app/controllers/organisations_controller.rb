@@ -128,20 +128,6 @@ class OrganisationsController < BaseOrganisationsController
     @organisation = Organisation.friendly.find(params[:id])
   end
 
-  def set_tags
-    set_meta_tags title: @organisation.name,
-                  site: 'Harrow volunteering',
-                  reverse: true,
-                  description: @organisation.description,
-                  author: 'http://www.agileventures.org',
-                  og: {
-                      title: @organisation.name,
-                      site: 'Harrow Community Network',
-                      reverse: true,
-                      description: @organisation.description,
-                      author: 'http://www.agileventures.org'
-                  }
-  end
 
   def user_can_edit?(org)
     unless current_user.try(:can_edit?,org)
@@ -149,5 +135,13 @@ class OrganisationsController < BaseOrganisationsController
       redirect_to organisation_path(params[:id]) and return false
     end
     true
+  end
+
+  def meta_tag_title
+    @organisation.name
+  end
+
+  def meta_tag_description
+    @organisation.description
   end
 end
