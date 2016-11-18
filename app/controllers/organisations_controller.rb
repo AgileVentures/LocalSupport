@@ -4,7 +4,6 @@ class OrganisationsController < BaseOrganisationsController
   # GET /organisations/search.json
   before_filter :authenticate_user!, :except => [:search, :index, :show]
   before_action :set_organisation, only: [:show, :update, :edit]
-  before_action :set_tags, only: [:show]
 
   def search
     @parsed_params = SearchParamsParser.new(params)
@@ -120,6 +119,10 @@ class OrganisationsController < BaseOrganisationsController
         category_ids: []
       )
     end
+
+    def entity
+      @organisation
+    end
   end
 
   private
@@ -127,7 +130,6 @@ class OrganisationsController < BaseOrganisationsController
   def set_organisation
     @organisation = Organisation.friendly.find(params[:id])
   end
-
 
   def user_can_edit?(org)
     unless current_user.try(:can_edit?,org)
