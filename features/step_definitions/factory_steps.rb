@@ -16,6 +16,28 @@ Given /^I accept a proposed organisation called "(.*?)" with email "(.*?)"$/ do 
   assert_on_organisation_show_page(name: name)
 end
 
+def expect_proposed_org_is_notified(acceptance_message, email, org)
+  expect_email_exists(
+    :message   => acceptance_message,
+    :email     => email,
+    :link      => organisation_url(org),
+    :link_text => 'You can edit your organisation details by logging in and editing it directly.'
+  )
+  expect(org.users.pluck(:email)).to include(email)
+end
+
+def expect_proposed_org_is_invited(acceptance_message, email, org)
+  expect_email_exists(
+    :message => acceptance_message,
+    :email   => email,
+  )
+  expect(org.users.pluck(:email)).to include(email)
+end
+
+def expect_proposed_org_is_ignored(email, org)
+  expect(org.users.pluck(:email)).not_to include(email)
+end
+
 Then /^"(.*?)" is (notified|invited|ignored) as an organisation admin of "(.*?)"$/ do |email, action, name|
   org = Organisation.find_by!(name: name)
   acceptance_message = (<<-MSG).strip_heredoc
@@ -27,21 +49,11 @@ Then /^"(.*?)" is (notified|invited|ignored) as an organisation admin of "(.*?)"
   MSG
   case action
   when 'notified'
-    expect_email_exists(
-      :message   => acceptance_message,
-      :email     => email,
-      :link      => organisation_url(org),
-      :link_text => 'You can edit your organisation details by logging in and editing it directly.'
-    )
-    expect(org.users.pluck(:email)).to include(email)
+    expect_proposed_org_is_notified(acceptance_message, email, org)
   when 'invited'
-    expect_email_exists(
-      :message => acceptance_message,
-      :email   => email,
-    )
-    expect(org.users.pluck(:email)).to include(email)
+    expect_proposed_org_is_invited(acceptance_message, email, org)
   when 'ignored'
-    expect(org.users.pluck(:email)).not_to include(email)
+    expect_proposed_org_is_ignored(email, org)
   else raise "unknown action '#{action}'"
   end
 end
