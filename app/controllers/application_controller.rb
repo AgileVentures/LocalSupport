@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :store_location,
                 :assign_footer_page_links
-  before_action :set_tags, only: [:show]
 
   include CustomErrors
 
