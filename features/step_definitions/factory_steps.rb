@@ -34,7 +34,7 @@ def expect_proposed_org_is_invited(acceptance_message, email, org)
   expect(org.users.pluck(:email)).to include(email)
 end
 
-def expect_proposed_org_is_ignored(email, org)
+def expect_proposed_org_is_ignored(_, email, org)
   expect(org.users.pluck(:email)).not_to include(email)
 end
 
@@ -47,15 +47,7 @@ Then /^"(.*?)" is (notified|invited|ignored) as an organisation admin of "(.*?)"
 
   Details of your organisation are now live in our directory.
   MSG
-  case action
-  when 'notified'
-    expect_proposed_org_is_notified(acceptance_message, email, org)
-  when 'invited'
-    expect_proposed_org_is_invited(acceptance_message, email, org)
-  when 'ignored'
-    expect_proposed_org_is_ignored(email, org)
-  else raise "unknown action '#{action}'"
-  end
+  send("expect_proposed_org_is_#{action}", acceptance_message, email, org)
 end
 
 Given(/^a proposed organisation has been proposed by "(.*)"$/) do |user_email|
