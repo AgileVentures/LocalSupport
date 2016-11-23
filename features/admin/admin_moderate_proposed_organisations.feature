@@ -38,7 +38,7 @@ Feature: Admin moderates an organisation to be added to HarrowCN
   Scenario Outline: superadmin accepting proposed organisations
     Given I accept a proposed organisation called "Unfriendly" with email "<email>"
     Then "<email>" is <action> as an organisation admin of "Unfriendly"
-    And I should see "<message>"
+    And I should see an error flash: "<message>"
     Examples:
       | email                         | action   | message                                                                                       |
       | registered_user-1@example.com | notified | A notification of acceptance was sent to registered_user-1@example.com                        |

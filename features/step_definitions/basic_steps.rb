@@ -338,6 +338,10 @@ Then /^I should( not)? see "([^"]*)"$/ do |negate, text|
   expect(page).send(expectation_method, have_content(text))
 end
 
+Then /^I should see (a|an) (error|warning|notice|success) flash: "([^"]*)"$/ do |_, flash_type, text|
+  expect(find("#flash_#{flash_type}")).to have_content(text)
+end
+
 Then(/^I should see "(.*?)" within "(.*?)"$/) do |text, selector|
   within('#' + selector) { expect(page).to have_content text}
 end
