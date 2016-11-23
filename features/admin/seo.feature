@@ -10,10 +10,9 @@ Feature: Would like the site to appear high in Google's listing
     And the following volunteer opportunities exist:
       | title             | description           | organisation |
       | Helping Volunteer | Helping the earlderly | Friendly     |
-    And the following pages exist:
-      | name         | content                                                                                           |
-      | About Harrow | We are a not-for-profit workers’ co-operative who support people and not-for-profit organisations |
-
+    And the following page exist:
+      | name     | content                                                                                           |
+      | About Us | We are a not-for-profit workers’ co-operative who support people and not-for-profit organisations |
 
   Scenario: Meta Title and Description for home page
     Given I visit the organisations index page
@@ -28,7 +27,7 @@ Feature: Would like the site to appear high in Google's listing
     Given I visit the show page for the volunteer_op titled "Helping Volunteer"
     Then I should have a page with a title: "Helping Volunteer | Harrow volunteering"
 
-  Scenario: Meta Title and Description for static show page
-    Given I visit "About Us"
+  Scenario: Meta Title and Description for about us show page
+    Given I visit the show page for "About Us"
     Then I should have a page with a title: "About Us | Harrow volunteering"
     And I should see "We are a not-for-profit workers’ co-operative who support people and not-for-profit organisations"

@@ -576,3 +576,13 @@ end
 Then(/^I should have a page with a description: "([^"]*)"$/) do |description|
   expect(page).to have_description description
 end
+
+Given(/^the following page exist:$/) do |page|
+  page.hashes.each do |row|
+    puts row[:name]
+  end
+end
+
+Given(/^I visit the show page for "([^"]*)"$/) do |page|
+  expect(page).to have_content
+end
