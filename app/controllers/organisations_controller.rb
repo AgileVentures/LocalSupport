@@ -4,7 +4,7 @@ class OrganisationsController < BaseOrganisationsController
   # GET /organisations/search.json
   before_filter :authenticate_user!, :except => [:search, :index, :show]
   before_action :set_organisation, only: [:show, :update, :edit]
-  before_action :set_tags, only: [:show]
+  #before_action :set_tags, only: [:show]
 
   def search
     @parsed_params = SearchParamsParser.new(params)
