@@ -29,5 +29,6 @@ Feature: Would like the site to appear high in Google's listing
 
   Scenario: Meta Title and Description for about us show page
     Given I visit the show page for "About Us"
-    Then I should have a page with a title: "About Us | Harrow volunteering"
+    Then show me the page
+    And I should have a page with a title: "About Us | Harrow volunteering"
     And I should see "We are a not-for-profit workers’ co-operative who support people and not-for-profit organisations"
