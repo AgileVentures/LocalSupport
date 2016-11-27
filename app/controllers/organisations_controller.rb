@@ -4,7 +4,7 @@ class OrganisationsController < BaseOrganisationsController
   # GET /organisations/search.json
   before_filter :authenticate_user!, :except => [:search, :index, :show]
   before_action :set_organisation, only: [:show, :update, :edit]
-  #before_action :set_tags, only: [:show]
+  before_action :set_controller_meta_tags, only: [:show]
 
   def search
     @parsed_params = SearchParamsParser.new(params)
@@ -137,11 +137,8 @@ class OrganisationsController < BaseOrganisationsController
     true
   end
 
-  def meta_tag_title
-    @organisation.name
-  end
-
-  def meta_tag_description
-    @organisation.description
+  def set_controller_meta_tags
+    set_meta_tags title: @organisation.name,
+                  description: @organisation.description
   end
 end

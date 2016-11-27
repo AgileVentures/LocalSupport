@@ -16,8 +16,7 @@ Feature: Would like the site to appear high in Google's listing
     Then I should have a page with a title: "Harrow volunteering"
     And I should see "Harrow Community Network is a nonprofit workers"
     And it should have a Meta Description
-    And it should have Meta Keywords
-
+    
   Scenario: Meta Title and Description for organisation show page
     Given I visit the show page for the organisation named "Friendly"
     Then I should have a page with a title: "Friendly | Harrow volunteering"

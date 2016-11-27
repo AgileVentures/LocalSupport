@@ -110,7 +110,6 @@ class ApplicationController < ActionController::Base
                   site: 'Harrow volunteering',
                   reverse: true,
                   description: meta_tag_description,
-                  keywords: meta_tag_keywords,
                   author: 'http://www.agileventures.org',
                   og: open_graph_tags
   end
@@ -126,14 +125,10 @@ class ApplicationController < ActionController::Base
   end
   
   def meta_tag_title
-    "Harrow Community Network"
+    'Harrow Community Network'
   end
   
   def meta_tag_description
-    "Volunteering Network for Harrow Community"
-  end
-  
-  def meta_tag_keywords
-    %w[Harrow Volunteer Volunteering]
+    'Volunteering Network for Harrow Community'
   end
 end
