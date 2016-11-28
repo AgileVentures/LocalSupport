@@ -554,9 +554,8 @@ Given /^associations are destroyed for:$/ do |table|
   end
 end
 
-Given /^debugger$/ do
-  debugger
-  puts ""
+Given /^I debug/ do
+  byebug
 end
 
 Given /^I run the invite migration$/ do
@@ -577,6 +576,8 @@ Then(/^I should have a page with a description: "([^"]*)"$/) do |description|
   expect(page).to have_description description
 end
 
-Given(/^I visit the show page for "([^"]*)"$/) do |page|
-  expect(page).to have_content
-end
+# Given(/^I visit the show page for "([^"]*)"$/) do |page|
+#   p = StaticPage.find_by name: page
+#   visit show_page_path(p.permalink)
+#   expect(page).to have_content
+# end
