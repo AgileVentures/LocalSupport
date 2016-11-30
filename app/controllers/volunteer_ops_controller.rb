@@ -80,22 +80,27 @@ class VolunteerOpsController < ApplicationController
     # unless current_user.can_edit? organisation
 
 #    unless org_owner? || superadmin?
-    organisation = params[:organisation_id].present? ? set_organisation : VolunteerOp.find(params[:id]).organisation
-    unless current_user.present? && (current_user.can_edit? organisation)
+    # organisation = params[:organisation_id].present? ? set_organisation : VolunteerOp.find(params[:id]).organisation
+    # unless current_user.present? && (current_user.can_edit? organisation)
+    unless org_owner?
       flash[:error] = 'You must be signed in as an organisation owner or ' \
                       'site superadmin to perform this action!'
       (redirect_to '/') && return
     end
   end
 
-  # def org_owner?
-  #   if current_user_has_organisation?
-  #     if params[:organisation_id].present?
-  #       return current_user.organisation.friendly_id == params[:organisation_id]
-  #     end
-  #     current_user.organisation == VolunteerOp.find(params[:id]).organisation
-  #   end
-  # end
+  def org_owner?
+    organisation = params[:organisation_id].present? ? 
+      set_organisation : VolunteerOp.find(params[:id]).organisation
+      
+    current_user.present? && (current_user.can_edit? organisation)
+    # if current_user_has_organisation?
+    #   if params[:organisation_id].present?
+    #     return current_user.organisation.friendly_id == params[:organisation_id]
+    #   end
+    #   current_user.organisation == VolunteerOp.find(params[:id]).organisation
+    # end
+  end
 
   # def current_user_has_organisation?
   #   current_user.present? && current_user.organisation.present?
