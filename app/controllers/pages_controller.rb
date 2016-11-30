@@ -19,11 +19,6 @@ class PagesController < ApplicationController
     @page = Page.new
   end
 
-  # GET /pages/:permalink/edit
-  def edit
-
-  end
-
   # POST /pages
   def create
     @page = Page.new(params[:page])

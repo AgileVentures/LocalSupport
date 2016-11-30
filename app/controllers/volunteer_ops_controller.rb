@@ -63,10 +63,6 @@ class VolunteerOpsController < ApplicationController
     params.require(:volunteer_op).permit(*args)
   end
 
-  def entity
-    @volunteer_op
-  end
-
   private
 
   def displayed_volunteer_ops

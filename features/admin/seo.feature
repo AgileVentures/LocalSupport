@@ -10,7 +10,7 @@ Feature: Would like the site to appear high in Google's listing
     And the following volunteer opportunities exist:
       | title             | description           | organisation |
       | Helping Volunteer | Helping the earlderly | Friendly     |
-    And the following page exist:
+    And the following pages exist:
       | name     | permalink | content                 |
       | About Us | aboutus   | We are a not-for-profit |
 
@@ -29,6 +29,5 @@ Feature: Would like the site to appear high in Google's listing
 
   Scenario: Meta Title and Description for about us show page
     Given I am on the show page with the "aboutus" permalink
-#    And I debug
     And I should have a page with a title: "About Us | Harrow volunteering"
     And I should see "We are a not-for-profit"

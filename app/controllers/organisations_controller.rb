@@ -121,9 +121,6 @@ class OrganisationsController < BaseOrganisationsController
       )
     end
 
-    def entity
-      @organisation
-    end
   end
 
   private
