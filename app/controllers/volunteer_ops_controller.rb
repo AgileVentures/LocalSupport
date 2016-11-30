@@ -88,11 +88,11 @@ class VolunteerOpsController < ApplicationController
 
   def org_owner?
 
-    current_user.present? && (current_user.can_edit? get_organisation)
+    current_user.present? && (current_user.can_edit? find_org)
 
   end
   
-  def get_organisation
+  def find_org
     if params[:organisation_id].present?
       organisation = set_organisation
     else
