@@ -1,6 +1,6 @@
 # Use a base image that already has ruby and and bundler installed
 # https://github.com/docker-library/ruby/blob/e89be7d60685ec51a193a358a8f3364b287aee3b/2.3/Dockerfile
-FROM ruby:2.3
+FROM ruby:2.3.1
 
 # Configure the main working directory. This is the base
 # directory used in any further RUN, COPY, and ENTRYPOINT
