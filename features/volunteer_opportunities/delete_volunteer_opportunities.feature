@@ -18,11 +18,13 @@ Feature: Org owner can delete volunteer opportunities
       | Litter Box Scooper | Assist with feline sanitation   | Cats Are Us               |
       | Litter Box Scooper 2| Assist with feline sanitation   | Cats Are Us               |
 
+  Scenario:
     Given I am signed in as a charity worker related to "Cats Are Us"
     And I visit the show page for the volunteer_op titled "Litter Box Scooper"
     And I click "Delete"
     Then I should see "Deleted Litter Box Scooper" in the flash
 
+  Scenario:
     Given I am signed in as a charity worker related to "Dogs Rule"
     And I visit the show page for the volunteer_op titled "Litter Box Scooper 2"
     Then I should not see a link or button "Delete"
