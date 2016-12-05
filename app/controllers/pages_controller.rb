@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
   layout 'full_width'
   before_filter :authorize, :except => :show
+  before_action :set_page, only: [:show, :update, :edit]
+  before_action :set_tags, only: [:show]
 
   # GET /pages
   def index
@@ -10,18 +12,11 @@ class PagesController < ApplicationController
   # GET /pages/:permalink
   def show
     @superadmin = current_user.superadmin? if current_user
-    # find_by_permalink! returns exception if no match
-    @page = Page.find_by_permalink!(params[:id])
   end
 
   # GET /pages/new
   def new
     @page = Page.new
-  end
-
-  # GET /pages/:permalink/edit
-  def edit
-    @page = Page.find_by_permalink!(params[:id])
   end
 
   # POST /pages
@@ -37,7 +32,6 @@ class PagesController < ApplicationController
 
   # PUT /pages/:permalink
   def update
-    @page = Page.find_by_permalink!(params[:id])
     update_params = PageParams.build params
     if @page.update_attributes(update_params)
       redirect_to @page, notice: 'Page was successfully updated.'
@@ -53,6 +47,13 @@ class PagesController < ApplicationController
 
     redirect_to pages_url
   end
+
+  private
+
+  def set_page
+    @page = Page.find_by_permalink!(params[:id])
+  end
+
   class PageParams
     def self.build params
       params.require(:page).permit(
@@ -62,5 +63,13 @@ class PagesController < ApplicationController
         :link_visible
       )
     end
+  end
+
+  def meta_tag_title
+    @page.name
+  end
+
+  def meta_tag_description
+    @page.content
   end
 end
