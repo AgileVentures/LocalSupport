@@ -3,6 +3,6 @@ And(/^the response status should be "([^"]*)"$/) do |status_code|
 end
 
 When(/^I encounter an internal server error$/) do
-  PagesController.any_instance.should_receive(:show).and_raise(Exception)
+  expect_any_instance_of(PagesController).to receive(:set_page).and_raise(Exception)
   visit '/totally-random-path'
 end
