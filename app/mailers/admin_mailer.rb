@@ -29,5 +29,4 @@ class AdminMailer < ActionMailer::Base
     mail(subject: "An edit to '#{org.name}' is awaiting Admin approval.",
          to: superadmin_emails)
   end
-
 end

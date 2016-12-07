@@ -77,4 +77,8 @@ class User < ActiveRecord::Base
   def self.purge_deleted_users_where(query)
     User.deleted.delete_all(query)
   end
+
+  def self.superadmin_emails
+    superadmins.pluck(:email)
+  end
 end
