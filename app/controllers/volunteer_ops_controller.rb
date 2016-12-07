@@ -79,7 +79,6 @@ class VolunteerOpsController < ApplicationController
     # then can make condition:
     # unless current_user.can_edit? organisation
 
-    set_organisation
     unless org_owner?
       flash[:error] = 'You must be signed in as an organisation owner or ' \
                       'site superadmin to perform this action!'
@@ -89,7 +88,7 @@ class VolunteerOpsController < ApplicationController
 
   def org_owner?
 
-    current_user.present? && (current_user.can_edit? @organisation)
+    current_user.present? && (current_user.can_edit? set_organisation)
 
   end
   
