@@ -87,22 +87,22 @@ class VolunteerOpsController < ApplicationController
   end
 
   def org_owner?
-    current_user.present? && (current_user.can_edit? get_org_independent_of_route)
+    current_user.present? && (current_user.can_edit? org_independent_of_route)
   end
   
-  def get_org_independent_of_route
-    organisation_set_for_nested_route? || get_organisation_for_simple_route
+  def org_independent_of_route
+    organisation_set_for_nested_route? || organisation_for_simple_route
   end
 
   def organisation_set_for_nested_route?
     @organisation
   end
 
-  def get_organisation_for_simple_route
+  def organisation_for_simple_route
     VolunteerOp.find(params[:id]).organisation
   end
 
-  def get_organisation_for_nested_route
+  def organisation_for_nested_route
     Organisation.friendly.find(params[:organisation_id])
   end
 
