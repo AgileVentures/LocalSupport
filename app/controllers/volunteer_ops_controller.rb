@@ -88,20 +88,24 @@ class VolunteerOpsController < ApplicationController
 
   def org_owner?
 
-    current_user.present? && (current_user.can_edit? find_org)
+    current_user.present? && (current_user.can_edit? set_organisation)
 
   end
   
-  def find_org
-    if params[:organisation_id].present?
-      organisation = set_organisation
-    else
-      organisation = VolunteerOp.find(params[:id]).organisation
-    end
-  end
+  # def find_org
+  #   if params[:organisation_id].present?
+  #     organisation = set_organisation
+  #   else
+  #     organisation = VolunteerOp.find(params[:id]).organisation
+  #   end
+  # end
   
   def set_organisation
-    @organisation = Organisation.friendly.find(params[:organisation_id])
+    if params[:organisation_id].present?
+      @organisation = Organisation.friendly.find(params[:organisation_id])
+    else
+      @organisation = VolunteerOp.find(params[:id]).organisation
+    end
   end
 
   def set_volunteer_op
