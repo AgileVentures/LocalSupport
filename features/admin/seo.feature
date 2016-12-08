@@ -10,6 +10,11 @@ Feature: Would like the site to appear high in Google's listing
     And the following volunteer opportunities exist:
       | title             | description           | organisation |
       | Helping Volunteer | Helping the earlderly | Friendly     |
+    And the following pages exist:
+      | name         | permalink  | content                         |
+      | About Us     | aboutus    | We are a not-for-profit         |
+      | Contact Info | contact    | Contact us to get involved      |
+      | Disclaimer   | disclaimer | Ensure the information accurate |
 
   Scenario: Meta Title, Meta Description, Meta Keywords and Description for home page
     Given I visit the organisations index page
@@ -24,3 +29,18 @@ Feature: Would like the site to appear high in Google's listing
   Scenario: Meta Title and Description for volunteers show page
     Given I visit the show page for the volunteer_op titled "Helping Volunteer"
     Then I should have a page with a title: "Helping Volunteer | Harrow volunteering"
+
+  Scenario: Meta Title and Description for about us show page
+    Given I am on the show page with the "aboutus" permalink
+    And I should have a page with a title: "About Us | Harrow volunteering"
+    And I should see "We are a not-for-profit"
+
+  Scenario: Meta Title and Description for contact show page
+      Given I am on the show page with the "contact" permalink
+      And I should have a page with a title: "Contact Info | Harrow volunteering"
+      And I should see "Contact us to get involved"
+
+  Scenario: Meta Title and Description for disclaimer show page
+      Given I am on the show page with the "disclaimer" permalink
+      And I should have a page with a title: "Disclaimer | Harrow volunteering"
+      And I should see "Ensure the information accurate"

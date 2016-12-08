@@ -120,6 +120,7 @@ class OrganisationsController < BaseOrganisationsController
         category_ids: []
       )
     end
+
   end
 
   private
@@ -127,7 +128,6 @@ class OrganisationsController < BaseOrganisationsController
   def set_organisation
     @organisation = Organisation.friendly.find(params[:id])
   end
-
 
   def user_can_edit?(org)
     unless current_user.try(:can_edit?,org)
