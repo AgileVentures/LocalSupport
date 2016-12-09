@@ -33,11 +33,18 @@ describe PagesController, :type => :controller do
     }
     let(:user) { double :user }
 
+    before(:each) do
+      allow(Page).to receive(:find_by_permalink!).with('about').and_return about_page
+      allow(controller).to receive(:current_user)
+    end
+
     describe 'assigns site superadmin status of current_user to @superadmin' do
+
       it 'NIL when there is no current_user' do
         get :show, {id: 'about'}
         expect(assigns(:superadmin)).to be nil
       end
+
       it 'FALSE when current_user is NOT superadmin' do
         allow(user).to receive(:superadmin?) { false }
         allow(controller).to receive(:current_user) { user }
@@ -57,11 +64,6 @@ describe PagesController, :type => :controller do
       expect(Page).to receive(:find_by_permalink!).with('about') { about_page }
       get :show, {id: 'about'}
       expect(assigns(:page)).to eq about_page
-    end
-
-    before do
-      allow(controller).to receive(:current_user)
-      allow(Page).to receive(:find_by_permalink!)
     end
 
     describe 'assigns site superadmin status of current_user to @superadmin' do

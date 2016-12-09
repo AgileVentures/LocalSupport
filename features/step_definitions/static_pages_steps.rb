@@ -19,6 +19,11 @@ Given(/^I am on the edit page with the "(.*?)" permalink$/) do |permalink|
   visit edit_page_path pg.permalink
 end
 
+Given(/^I am on the show page with the "(.*?)" permalink$/) do |permalink|
+  pg = Page.find_by_permalink(permalink)
+  visit page_path pg.permalink
+end
+
 Given(/^I visit the pages manager$/) do
   steps %Q{
     When I am on the home page
@@ -44,3 +49,8 @@ And(/^I add "(.*?)" to the footer$/) do |arg1|
   pending # express the regexp above with the code you wish you had
 end
 
+Given(/^the following "(.*?)" exist:$/) do |page|
+  page.hashes.each do |row|
+    Page.create row
+  end
+end
