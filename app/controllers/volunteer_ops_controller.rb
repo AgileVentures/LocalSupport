@@ -2,8 +2,7 @@ class VolunteerOpsController < ApplicationController
   layout 'two_columns_with_map'
   before_action :authorize, except: [:search, :show, :index]
   before_action :set_organisation, only: [:new, :create]
-  before_action :set_volunteer_op, only: [:show, :edit]
-  before_action :set_controller_meta_tags, only: [:show]
+  prepend_before_action :set_volunteer_op, only: [:show, :edit]
 
   def search
     @query = params[:q]
@@ -109,8 +108,13 @@ class VolunteerOpsController < ApplicationController
     redirect_to(@volunteer_op, notice: notice)
   end
 
-  def set_controller_meta_tags
-    set_meta_tags title: @volunteer_op.title,
-                  description: @volunteer_op.description
+  def meta_tag_title
+    return super unless @volunteer_op
+    @volunteer_op.title
+  end
+
+  def meta_tag_description
+    return super unless @volunteer_op
+    @volunteer_op.description
   end
 end
