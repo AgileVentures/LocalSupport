@@ -97,7 +97,7 @@ class VolunteerOpsController < ApplicationController
   end
 
   def set_organisation
-    @organisation = Organisation.friendly.find(params[:organisation_id])
+    @organisation = Organisation.friendly.find(params[:organisation_id]) rescue nil
   end
 
   def set_volunteer_op
