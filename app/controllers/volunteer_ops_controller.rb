@@ -107,7 +107,7 @@ class VolunteerOpsController < ApplicationController
   end
 
   def set_organisation
-    @organisation = get_organisation_for_nested_route
+    @organisation = organisation_for_nested_route
   end
 
   def set_volunteer_op
