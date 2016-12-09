@@ -2,20 +2,20 @@
   <div id="navbar-wrapper">
     <div class="container">
       <div id="navbar" class="navbar">
-        <div class="navbar-inner">
+        <div>
           <div id="banner" class="container">
             <%= link_to(image_tag("HCN-long.png", :class => "img-responsive"), root_path) %>
           </div>
           <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
+            <a class="btn navbar-btn" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="glyphicon glyphicon-bar"></span>
+              <span class="glyphicon glyphicon-bar"></span>
+              <span class="glyphicon glyphicon-bar"></span>
             </a>
-            <a href="/" class="brand" title="Search for local voluntary and community organisations">Search for local
+            <a href="/" class="navbar-brand" title="Search for local voluntary and community organisations">Search for local
               voluntary and community organisations</a>
 
-            <div class="nav-collapse collapse">
+            <div class="navbar-collapse collapse">
               <ul id="button-rack" class="nav nav-pills pull-right">
                 <li class = "<%= 'active' if current_page?(root_url)%>">
                   <%= link_to "Home", root_path %>
@@ -98,7 +98,7 @@
                       <% end %>
                       <li class="dropdown">
                         <a href="#" id="<%= current_user.email %>" class="dropdown-toggle" data-toggle="dropdown" title="Logged in as: <%= current_user.email %>">
-                          <i class="icon-user icon-xxlarge"></i>
+                          <i class="glyphicon glyphicon-user glyphicon-xxlarge"></i>
                           <%= current_user.email %>
                         </a>
                         <ul class="dropdown-menu">

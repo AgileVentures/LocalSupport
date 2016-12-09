@@ -7,7 +7,7 @@
   <%= render partial: "organisations/show", locals: {org: @proposed_organisation}%>
   <br>
   <strong>Eligibility:</strong>
-  <ul class="unstyled" style="text-indent: 10px;">
+  <ul class="list-unstyled" style="text-indent: 10px;">
     <% if @proposed_organisation.non_profit %>
       <li>We are a not for profit organisation registered or working in Harrow</li>
     <% end %>

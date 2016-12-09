@@ -28,8 +28,8 @@
       <div class="container">  <!-- outermost twitter bootstrap container-->
         <% flash.each do |name, msg| %>
             <div class="row">
-              <div class="span8 offset2">
-                <div id="flash_<%= "#{name}" %>" class="alert <%= bootstrap_class_for(name)%>">
+              <div class="col-md-8 col-md-offset-2">
+                <div id="flash_<%= "#{name}" %>" class="alert alert-warning <%= bootstrap_class_for(name)%>">
                   <a class="close" data-dismiss="alert">&#215;</a>
                   <%= content_tag :div, msg %>
                 </div>
@@ -49,13 +49,13 @@
 <div id="footer" class="container">
   <hr>
   <div class="row">
-    <div class="span5">
+    <div class="col-md-5">
       <%= render 'layouts/footer' %>
     </div>
-    <div class="span3">
+    <div class="col-md-3">
       <%= render 'layouts/footer2' %>
     </div>
-    <div class="span4">
+    <div class="col-md-4">
       <%= render 'layouts/footer3' %>
     </div>
   </div>
