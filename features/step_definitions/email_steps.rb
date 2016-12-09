@@ -32,16 +32,6 @@ And(/^an email should be sent to "(.*?)" as notification of the proposed edit to
   expect_email_exists(message: message, email: email)
 end
 
-Then(/^an email should be sent to "(.*?)" as notification of the acceptance of proposed organisation "(.*?)"$/) do |email, org_name|
-  message = "Thank you for registering your organisation.\n\nWe have granted your request to have it included in our directory.\n\nDetails of your organisation are now live in our directory."
-  expect_email_exists(message: message, email: email, link: organisation_url(Organisation.find_by(name: org_name)) , link_text: "You can edit your organisation details by logging in and editing it directly.")
-end
-
-Then(/^an invitational email should be sent to "(.*?)" as notification of the acceptance of proposed organisation "(.*?)"$/) do |email, org_name|
-  message = "Thank you for registering your organisation.\n\nWe have granted your request to have it included in our directory.\n\nDetails of your organisation are now live in our directory."
-  expect_email_exists(message: message, email: email)
-end
-
 Then(/^an email should be sent to "(.*?)" as notification of the signup by email "(.*?)"$/) do |email, user_email|
   message = "A new user with the email #{user_email} has signed up on Harrow Community Network."
   expect_email_exists(message: message,email: email)

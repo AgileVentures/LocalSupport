@@ -17,6 +17,7 @@ When /^I visit the proposed organisation show page for the proposed organisation
   proposed_org = ProposedOrganisation.find_by(name: unsaved_proposed_organisation(User.first).name)
   visit proposed_organisation_path(proposed_org)
 end
+
 When(/^I visit "(.*?)"$/) do |path|
   visit path
 end

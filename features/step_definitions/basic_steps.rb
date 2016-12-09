@@ -338,6 +338,10 @@ Then /^I should( not)? see "([^"]*)"$/ do |negate, text|
   expect(page).send(expectation_method, have_content(text))
 end
 
+Then /^I should see (a|an) (error|warning|notice|success) flash: "([^"]*)"$/ do |_, flash_type, text|
+  expect(find("#flash_#{flash_type}")).to have_content(text)
+end
+
 Then(/^I should see "(.*?)" within "(.*?)"$/) do |text, selector|
   within('#' + selector) { expect(page).to have_content text}
 end
@@ -472,10 +476,9 @@ When /^I approve "(.*?)"$/ do |email|
 end
 
 Then(/^"(.*?)" is (not )?an organisation admin of "(.*?)"$/) do |user_email, negative, org_name|
-  user = User.find_by_email(user_email)
-  org = Organisation.find_by_name(org_name)
+  org = Organisation.find_by!(name: org_name)
   expectation = negative ? :not_to : :to
-  expect(user.organisation).send(expectation, eq(org))
+  expect(org.users.pluck(:email)).send(expectation, include(user_email))
 end
 
 When /^I (delete|decline) "(.*?)"$/ do |action, email|
@@ -554,9 +557,8 @@ Given /^associations are destroyed for:$/ do |table|
   end
 end
 
-Given /^debugger$/ do
-  debugger
-  puts ""
+Given /^I debug/ do
+  byebug
 end
 
 Given /^I run the invite migration$/ do
