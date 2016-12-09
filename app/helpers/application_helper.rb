@@ -46,11 +46,11 @@ module ApplicationHelper
   def bootstrap_class_for flash_type
     case flash_type
     when "warning"
-     "alert-warning"
+      "alert-warning"
     when "notice"
-     "alert-success"
+      "alert-success"
     else
-      "alert-error"
+      "alert-danger"
     end
   end
 
