@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="span8 offset2">
+    <div id="flash_<%= "#{name}" %>" class="alert <%= bootstrap_class_for(name)%>">
+      <a class="close" data-dismiss="alert">&#215;</a>
+      <%= content_tag :div, msg %>
+    </div>
+  </div>
+</div>

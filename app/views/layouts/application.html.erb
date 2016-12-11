@@ -27,14 +27,9 @@
   <section id="main">   <!-- uniquify the child container to create the top margin -->
       <div class="container">  <!-- outermost twitter bootstrap container-->
         <% flash.each do |name, msg| %>
-            <div class="row">
-              <div class="span8 offset2">
-                <div id="flash_<%= "#{name}" %>" class="alert <%= bootstrap_class_for(name)%>">
-                  <a class="close" data-dismiss="alert">&#215;</a>
-                  <%= content_tag :div, msg %>
-                </div>
-              </div>
-            </div>
+          <% Array(msg).each do |item| %>
+            <%= render partial: 'layouts/flash', locals: { name: name, msg: item } %>
+          <% end %>
         <% end %>
         <div id="content">
           <%= yield %>
