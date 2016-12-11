@@ -1,4 +1,4 @@
-@vcr @javascript @billy
+@vcr @javascript @billy @maps
 Feature: As a member of the public
   So that I can see where organisations with volunteer opportunities are located
   I would like to see a map of volunteer opportunities

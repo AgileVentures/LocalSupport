@@ -40,21 +40,16 @@ function initMap() {
         }
         );
 
-    google.maps.event.addListener(marker, 'click', (function(marker, item) {
-
-      return function() {
-
+    google.maps.event.addListener(marker, 'click', function() {
         ib.setOptions(ibOptions);
         boxText.innerHTML = item.infowindow;
         $(ib.content_).find('.close').click(function(){
           ib.close();
         });
-        ib.open(map, marker);
+        ib.open(map, this);
         map.panTo(ib.getPosition());
+    }); 
 
-      }
-
-    })(marker, item)); 
   });
 }
 
