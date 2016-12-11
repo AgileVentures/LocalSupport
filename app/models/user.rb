@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
     !superadmin? && organisation != org && pending_organisation != org
   end
   
-  def is_org_owner? org_id, volunteer_op_id
+  def org_owner? org_id, volunteer_op_id
     if org_id.present?
       organisation.friendly_id == org_id
     else

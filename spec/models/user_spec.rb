@@ -259,12 +259,12 @@ describe User, :type => :model do
       let(:user) { FactoryGirl.create :user, organisation: organisation }
 
       it 'true when org_id is users organisations id' do
-        expect(user.is_org_owner?(user.organisation.friendly_id, nil)).to be true
+        expect(user.org_owner?(user.organisation.friendly_id, nil)).to be true
       end
 
       it 'true when org_id is nil but volunteer_op_id have same organistion' do
         volunteer_op = create(:volunteer_op, organisation: user.organisation)
-        expect(user.is_org_owner?(nil, volunteer_op.id)).to be true
+        expect(user.org_owner?(nil, volunteer_op.id)).to be true
       end
     end
     
@@ -274,12 +274,12 @@ describe User, :type => :model do
       let(:user) { FactoryGirl.create :user, organisation: organisation }
 
       it 'false when org_id is not users organisations id' do
-        expect(user.is_org_owner?(other_organisation.friendly_id, nil)).to be false
+        expect(user.org_owner?(other_organisation.friendly_id, nil)).to be false
       end
 
       it 'false when org_id is nil but volunteer_op_id does not have same organistion' do
         volunteer_op = create(:volunteer_op, organisation: other_organisation)
-        expect(user.is_org_owner?(nil, volunteer_op.id)).to be false
+        expect(user.org_owner?(nil, volunteer_op.id)).to be false
       end
     end
   end

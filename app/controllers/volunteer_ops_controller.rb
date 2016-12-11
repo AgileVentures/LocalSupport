@@ -86,7 +86,9 @@ class VolunteerOpsController < ApplicationController
   end
 
   def org_owner?
-    current_user.is_org_owner?(params[:organisation_id], params[:id]) if current_user_has_organisation?
+    if current_user_has_organisation?
+      current_user.org_owner?(params[:organisation_id], params[:id]) 
+    end
   end
 
   def current_user_has_organisation?
