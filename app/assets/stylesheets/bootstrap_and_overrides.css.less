@@ -1,4 +1,8 @@
 @import "twitter/bootstrap/bootstrap";
+
+body {
+  line-height: 20px;
+}
 @media (min-width: 980px) {
   body {
     padding-top: 81px;
@@ -49,7 +53,13 @@ a:focus {
 h3 {
   &:extend(.org_h3);
 }
-
+label {
+  font-weight: normal;
+}
+.container {
+  padding-left: 0;
+  padding-right: 0;
+}
 .alert-warning{
   color: #7F351C;
 }
@@ -61,3 +71,6 @@ h3 {
 .field_with_errors {
 }
 
+.nav-pills > li + li {
+  margin-left: 0;
+}

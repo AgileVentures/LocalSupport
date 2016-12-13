@@ -19,6 +19,7 @@ body {
     margin-top: 0px !important;
     padding-bottom: 0px !important;
     background-color: whitesmoke !important;
+    line-height: 20px;
 }
 
 li {
@@ -126,7 +127,6 @@ li {
 
 /* Flip around the padding for proper display in narrow viewports */
 .navbar-wrapper .container {
-
     padding-left: 0;
     padding-right: 0;
 }
@@ -145,6 +145,215 @@ li {
     margin: 5px 5px 5px 5px;
     padding: 0 5px 0 5px;
 }
+
+/* Substitute class from Bootstrap 2, removed in Bootstrap 3*/
+.navbar-inner {
+    min-height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #fafafa;
+    background-image: -moz-linear-gradient(top, #fff, #f2f2f2);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#f2f2f2));
+    background-image: -webkit-linear-gradient(top, #fff, #f2f2f2);
+    background-image: -o-linear-gradient(top, #fff, #f2f2f2);
+    background-image: linear-gradient(to bottom, #fff, #f2f2f2);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
+    border: 1px solid #d4d4d4;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.065);
+    -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.065);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.065);
+}
+.navbar-inner:before, .navbar-inner:after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+.navbar-inner:after {
+    clear: both;
+}
+.navbar .brand {
+    float: left;
+    display: block;
+    padding: 10px 20px 10px;
+    margin-left: -20px;
+    font-size: 20px;
+    font-weight: 200;
+    color: #777;
+    text-shadow: 0 1px 0 #fff;
+}
+.navbar .brand:hover {
+    text-decoration: none;
+}
+.navbar .container {
+    width: auto;
+}
+.navbar .nav>.active>a, .navbar .nav>.active>a:hover, .navbar .nav>.active>a:focus {
+    color: #555;
+    text-decoration: none;
+    background-color: #e5e5e5;
+    -webkit-box-shadow: inset 0 3px 8px rgba(0,0,0,0.125);
+    -moz-box-shadow: inset 0 3px 8px rgba(0,0,0,0.125);
+    box-shadow: inset 0 3px 8px rgba(0,0,0,0.125);
+}
+.nav > li {
+    line-height: 20px;
+    display: list-item;
+}
+.navbar .nav>li>a {
+    float: none;
+    padding: 10px 15px 10px;
+    color: #777;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #fff;
+}
+.nav-pills>li>a {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin: 2px 2px 2px 0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    line-height: 14px;
+}
+
+.nav-tabs:before, .nav-pills:before, .nav-tabs:after, .nav-pills:after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+.navbar .btn-navbar {
+    display: none;
+    float: right;
+    padding: 7px 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+    background-color: #ededed;
+    background-image: -moz-linear-gradient(top, #f2f2f2, #e5e5e5);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f2f2f2), to(#e5e5e5));
+    background-image: -webkit-linear-gradient(top, #f2f2f2, #e5e5e5);
+    background-image: -o-linear-gradient(top, #f2f2f2, #e5e5e5);
+    background-image: linear-gradient(to bottom, #f2f2f2, #e5e5e5);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff2f2f2', endColorstr='#ffe5e5e5', GradientType=0);
+    border-color: #e5e5e5 #e5e5e5 #bfbfbf;
+    border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.1),0 1px 0 rgba(255,255,255,0.075);
+    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.1),0 1px 0 rgba(255,255,255,0.075);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1),0 1px 0 rgba(255,255,255,0.075);
+}
+.navbar .btn, .navbar .btn-group {
+    margin-top: 5px;
+}
+.navbar .btn-navbar .icon-bar {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background-color: #f5f5f5;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.25);
+    -moz-box-shadow: 0 1px 0 rgba(0,0,0,0.25);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.25);
+}
+.navbar .pull-right>li>.dropdown-menu, .navbar .nav>li>.dropdown-menu.pull-right {
+    left: auto;
+    right: 0;
+}
+.navbar .nav>li>.dropdown-menu:before {
+    content: '';
+    display: inline-block;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #ccc;
+    border-bottom-color: rgba(0,0,0,0.2);
+    position: absolute;
+    top: -7px;
+    left: auto;
+    right: 12px;
+}
+.navbar .nav>li>.dropdown-menu:after {
+    content: '';
+    display: inline-block;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #fff;
+    position: absolute;
+    top: -6px;
+    left: auto;
+    right: 13px;
+}
+.nav-pills .dropdown-menu {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+.btn-navbar .icon-bar+.icon-bar {
+    margin-top: 3px;
+}
+.radio.inline, .checkbox.inline {
+    display: inline-block;
+    padding-top: 5px;
+    margin: 0;
+    vertical-align: middle;
+}
+@media (min-width: 980px) {
+    .nav-collapse.collapse {
+        height: auto !important;
+        overflow: visible !important;
+        display: block;
+    }
+}
+@media (max-width: 979px) {
+    .navbar .btn-navbar {
+        display: block;
+    }
+    .navbar .brand {
+        padding-left: 10px;
+        padding-right: 10px;
+        margin: 0 0 0 -5px;
+    }
+    .nav-collapse .nav>li>a, .nav-collapse .dropdown-menu a {
+        padding: 9px 15px;
+        font-weight: bold;
+        color: #777;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+    .nav-collapse .nav>li {
+        float: none;
+    }
+    .navbar .nav-collapse .nav.pull-right {
+        float: none !important;
+        margin-left: 0;
+    }
+    .nav-collapse, .nav-collapse.collapse {
+        overflow: hidden;
+        height: 0;
+    }
+    .nav-collapse {
+        clear: both;
+    }
+    .nav-collapse .nav>li>a {
+        margin-bottom: 2px;
+    }
+    .navbar .container {
+        width: auto;
+        padding: 0;
+    }
+    .dropdown-toggle {
+        margin-left: 0;
+    }
+}
+
 
 /* Get the top/bottom padding equal for the links in the navbar */
 #button-rack {
