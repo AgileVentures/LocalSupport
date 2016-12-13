@@ -28,7 +28,7 @@ class OrganisationsController < BaseOrganisationsController
   # GET /organisations/1
   # GET /organisations/1.json
   def show
-    render template: 'pages/404', status: 404 && return if @organisation.nil?
+    render template: 'pages/404', status: 404 and return if @organisation.nil?
     organisations = Organisation.where(id: @organisation.id)
     if current_user
       @pending_org_admin = current_user.pending_org_admin? @organisation
