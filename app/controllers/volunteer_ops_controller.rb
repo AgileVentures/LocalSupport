@@ -102,11 +102,9 @@ class VolunteerOpsController < ApplicationController
   end
 
   def set_volunteer_op
-    begin
-      @volunteer_op = VolunteerOp.find(params[:id])
+    @volunteer_op = VolunteerOp.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       @volunteer_op = nil
-    end
   end
 
   def vol_op_redirect(notice)
