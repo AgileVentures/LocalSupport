@@ -18,10 +18,7 @@ class VolunteerOpsController < ApplicationController
   end
 
   def show
-    if @volunteer_op.nil?
-      render template: 'pages/404', status: 404
-      return
-    end 
+    render template: 'pages/404', status: 404 and return if @volunteer_op.nil?
     @organisation = Organisation.friendly.find(@volunteer_op.organisation_id)
     organisations = Organisation.where(id: @organisation.id)
     @editable = current_user.can_edit?(@organisation) if current_user
@@ -102,14 +99,14 @@ class VolunteerOpsController < ApplicationController
 
   def set_organisation
     @organisation = Organisation.friendly.find(params[:organisation_id])
-    rescue ActiveRecord::RecordNotFound
-      @organisation = nil
   end
 
   def set_volunteer_op
-    @volunteer_op = VolunteerOp.find(params[:id])
+    begin
+      @volunteer_op = VolunteerOp.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       @volunteer_op = nil
+    end
   end
 
   def vol_op_redirect(notice)

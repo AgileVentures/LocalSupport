@@ -28,10 +28,7 @@ class OrganisationsController < BaseOrganisationsController
   # GET /organisations/1
   # GET /organisations/1.json
   def show
-    if @organisation.nil?
-      render template: 'pages/404', status: 404
-      return
-    end
+    render template: 'pages/404', status: 404 and return if @organisation.nil?
     organisations = Organisation.where(id: @organisation.id)
     if current_user
       @pending_org_admin = current_user.pending_org_admin? @organisation
@@ -133,9 +130,11 @@ class OrganisationsController < BaseOrganisationsController
   private
 
   def set_organisation
-    @organisation = Organisation.friendly.find(params[:id])
+    begin
+      @organisation = Organisation.friendly.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       @organisation = nil
+    end
   end
 
   def user_can_edit?(org)
