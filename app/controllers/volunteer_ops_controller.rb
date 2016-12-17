@@ -86,9 +86,10 @@ class VolunteerOpsController < ApplicationController
   end
 
   def org_owner?
-    if params[:organisation_id].present? && current_user_has_organisation?
-      current_user.organisation.friendly_id == params[:organisation_id]
-    elsif current_user_has_organisation?
+    if current_user_has_organisation?
+      if params[:organisation_id].present?
+        return current_user.organisation.friendly_id == params[:organisation_id]
+      end
       current_user.organisation == VolunteerOp.find(params[:id]).organisation
     end
   end
