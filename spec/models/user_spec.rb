@@ -250,6 +250,39 @@ describe User, :type => :model do
       expect(superadmin.can_create_volunteer_ops?(other_org)).to be true
     end
   end
+  
+  
+  describe '#is_org_owner?(org_id, volunteer_op_id)' do
+
+    context 'is organisation owner' do
+      let(:organisation) { FactoryGirl.create :organisation }
+      let(:user) { FactoryGirl.create :user, organisation: organisation }
+
+      it 'true when org_id is users organisations id' do
+        expect(user.is_org_owner?(user.organisation.friendly_id, nil)).to be true
+      end
+
+      it 'true when org_id is nil but volunteer_op_id have same organistion' do
+        volunteer_op = create(:volunteer_op, organisation: user.organisation)
+        expect(user.is_org_owner?(nil, volunteer_op.id)).to be true
+      end
+    end
+    
+    context 'is not organisation owner' do
+      let(:organisation) { FactoryGirl.create :organisation }
+      let(:other_organisation) { FactoryGirl.create :organisation }
+      let(:user) { FactoryGirl.create :user, organisation: organisation }
+
+      it 'false when org_id is not users organisations id' do
+        expect(user.is_org_owner?(other_organisation.friendly_id, nil)).to be false
+      end
+
+      it 'false when org_id is nil but volunteer_op_id does not have same organistion' do
+        volunteer_op = create(:volunteer_op, organisation: other_organisation)
+        expect(user.is_org_owner?(nil, volunteer_op.id)).to be false
+      end
+    end
+  end
 
   describe "#pending_org_admin?" do
     let(:user) { FactoryGirl.create :user_stubbed_organisation }

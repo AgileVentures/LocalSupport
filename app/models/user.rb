@@ -55,6 +55,14 @@ class User < ActiveRecord::Base
     # superadmin false, pending_organisation  pending_organisation!=organisation org != organisation
     !superadmin? && organisation != org && pending_organisation != org
   end
+  
+  def is_org_owner? org_id, volunteer_op_id
+    if org_id.present?
+      organisation.friendly_id == org_id
+    else
+      organisation == VolunteerOp.find(volunteer_op_id).organisation
+    end
+  end
 
   def make_admin_of_org_with_matching_email
     org = Organisation.find_by_email self.email
