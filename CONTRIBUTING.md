@@ -1,3 +1,30 @@
+Getting Involved
+------------------
+
+Project work is organised via this Pivotal Tracker instance:
+
+
+https://www.pivotaltracker.com/n/projects/742821
+
+The `CURRENT` column is what people are currently working on - feel free to reach out to anyone working on those to see if they are interested in collaborating.
+
+`BACKLOG` column tasks are ordered by priority (according to the client) and have 1, 2 or 3 points indicating difficulty (3 high). You are most welcome to start any task in the backlog, but please do come and say hi in our Slack channel:
+
+https://agileventures.slack.com/messages/localsupport/
+
+You can ask questions in the PT tickets themselves, or in the slack instance.  If you're not getting a response, please do tag `@tansaku` in the slack channel.  That's Sam Joseph, the project manager who'll be happy to help, or direct you to someone who can. 
+
+There's also the `ICEBOX` column where if you see something interesting you want to work on you can start on that.  However please do ensure it has an estimate.  If it does not then please coordinate with the ProjectManager to get the story voted on to create an estimate.  This helps you get input on what it would take to get the story done as well as helping the team understand what it is you want to work on.
+
+It's also great to look through the current PRs to see what code people are submitting:
+
+https://github.com/AgileVentures/LocalSupport/pulls
+
+Leaving comments and +1s where appropriate.  For more general details on joining any AgileVentures project please see: 
+
+https://github.com/AgileVentures/AgileVentures/blob/master/JOINING_A_PROJECT.md
+
+
 Development Process
 ------------------
 

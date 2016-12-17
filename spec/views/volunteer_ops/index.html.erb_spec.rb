@@ -48,7 +48,7 @@ describe "volunteer_ops/index", :type => :view, :js => true  do
     orgs = [@org1, @org2]
     assign(:footer_page_links, [])
     render template: "volunteer_ops/index", layout: "layouts/application"
-    expect(rendered).to include 'google_map.js'
+    expect(rendered).to include 'maps.js'
   end
 
 end
