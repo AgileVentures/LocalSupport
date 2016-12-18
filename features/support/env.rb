@@ -84,13 +84,6 @@ Before('@javascript') do
   @javascript = true
 end
 
-Before('@multiple_windows') do
-  Capybara.current_driver = :webkit
-end
-
-After('@multiple_windows') do
-  Capybara.use_default_driver
-end
 
 # By default, any exception happening in your Rails application will bubble up
 # to Cucumber so that your scenario will fail. This is a different from how

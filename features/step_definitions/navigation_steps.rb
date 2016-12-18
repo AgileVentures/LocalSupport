@@ -209,17 +209,9 @@ Then(/^I should see an (active|inactive) home button in the header$/) do |active
     end
 end
 
-When(/^I click "([^"]*)" in original window$/) do |link|
-  @original_window = page.driver.current_window_handle
-  click_link(link)
-end
-
-Then(/^a new window must appear$/) do
-  expect(page.driver.window_handles.length).to eq(2)
-end
-
-Then(/^I should be on the (.*) page in original window$/) do |page_name|
-  within_window @original_window do
-    steps %{ I should be on the #{page_name} page }
-  end
+Then(/^I should see link "([^"]*)" targeting new page$/) do |link_name|
+   within('#orgs_scroll') do
+     target_link = find_link(link_name)
+     expect(target_link[:target]).to eq '_blank'
+   end
 end
