@@ -3,6 +3,7 @@ require 'rails_helper'
 describe  AcceptProposedOrganisation do
   let!(:proposed_org){FactoryGirl.create(:orphan_proposed_organisation, email: email)}
   let(:subject){AcceptProposedOrganisation.new(proposed_org).run}
+  
   context 'proposed organisation email is not registered' do
     let(:email){"user@email.com"}
 
@@ -32,7 +33,11 @@ describe  AcceptProposedOrganisation do
     end
 
     it 'returns the accepted org on the result' do 
-      expect(subject.accepted_organisation).to eq Organisation.find_by(name: proposed_org.name)
+      expect(subject.accepted_org).to eq Organisation.find_by(name: proposed_org.name)
+    end
+    
+    it 'returns nil as not accepted organization on the result' do 
+      expect(subject.not_accepted_org).to be nil
     end
   end
 
@@ -62,9 +67,12 @@ describe  AcceptProposedOrganisation do
     end
 
     it 'returns the accepted org on the result' do 
-      expect(subject.accepted_organisation).to eq Organisation.find_by(name: proposed_org.name)
+      expect(subject.accepted_org).to eq Organisation.find_by(name: proposed_org.name)
     end
-
+    
+    it 'returns nil as not accepted organization on the result' do 
+      expect(subject.not_accepted_org).to be nil
+    end
   end
 
   context 'proposed organisation has no email' do
@@ -86,10 +94,13 @@ describe  AcceptProposedOrganisation do
       expect(subject.status).to eq(AcceptProposedOrganisation::Response::NO_EMAIL)
     end
 
-    it 'returns the accepted org on the result' do 
-      expect(subject.accepted_organisation).to eq Organisation.find_by(name: proposed_org.name)
+    it 'does not return accepted org on the result' do 
+      expect(subject.accepted_org).to be nil
     end
-
+    
+    it 'converts organization back and returns it on the result' do 
+      expect(subject.not_accepted_org.type).to eq('ProposedOrganisation')
+    end
   end
 
   context 'proposed organisation has invalid email' do
@@ -111,8 +122,12 @@ describe  AcceptProposedOrganisation do
       expect(subject.status).to eq(AcceptProposedOrganisation::Response::INVALID_EMAIL)
     end
 
-    it 'returns the accepted org on the result' do 
-      expect(subject.accepted_organisation).to eq Organisation.find_by(name: proposed_org.name)
+    it 'does not return accepted org on the result' do 
+      expect(subject.accepted_org).to be nil
+    end
+    
+    it 'converts organization back and returns it on the result' do 
+      expect(subject.not_accepted_org.type).to eq('ProposedOrganisation')
     end
   end
 end

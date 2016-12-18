@@ -11,7 +11,11 @@ class ProposedOrganisationsController < BaseOrganisationsController
     proposed_org = ProposedOrganisation.friendly.find params[:id]
     result = AcceptProposedOrganisation.new(proposed_org).run
     set_flash_for_accepting_proposed_org result
-    redirect_to organisation_path(result.accepted_organisation) and return false
+    if result.accepted_org
+      redirect_to organisation_path(result.accepted_org) and return false
+    else
+      redirect_to proposed_organisations_path
+    end
   end
 
   def destroy
@@ -48,32 +52,30 @@ class ProposedOrganisationsController < BaseOrganisationsController
   private
 
   def set_flash_for_accepting_proposed_org result
-    set_flash_for_accepted_organization
-    set_flash_for_valid_user(result) and return if [
-        AcceptProposedOrganisation::Response::INVITATION_SENT, 
+    if [AcceptProposedOrganisation::Response::INVITATION_SENT, 
         AcceptProposedOrganisation::Response::NOTIFICATION_SENT
       ].include?(result.status)
-    set_flash_for_invalid_user(result)
-  end
-  
-  def set_flash_for_accepted_organization
-    flash[:notice] = ["You have approved the following organisation"]
-  end
-  
-  def set_flash_for_valid_user result
-    if result.status == AcceptProposedOrganisation::Response::INVITATION_SENT
-      flash[:notice] << "An invitation email was sent to #{result.accepted_organisation.email}" 
-    elsif result.status == AcceptProposedOrganisation::Response::NOTIFICATION_SENT
-      flash[:notice] << "A notification of acceptance was sent to #{result.accepted_organisation.email}"
+      set_flash_for_accepted_organization result
+    else
+      set_flash_for_not_accepted_organization result
     end
   end
   
-  def set_flash_for_invalid_user result
+  def set_flash_for_accepted_organization result
+    flash[:notice] = ["You have approved the following organisation"]
+    if result.status == AcceptProposedOrganisation::Response::INVITATION_SENT
+      flash[:notice] << "An invitation email was sent to #{result.accepted_org.email}" 
+    elsif result.status == AcceptProposedOrganisation::Response::NOTIFICATION_SENT
+      flash[:notice] << "A notification of acceptance was sent to #{result.accepted_org.email}"
+    end
+  end
+  
+  def set_flash_for_not_accepted_organization result
     flash[:error] = "No mail was sent because: #{result.error_message}"
     if result.status == AcceptProposedOrganisation::Response::INVALID_EMAIL
       flash[:error] = "No invitation email was sent because the email associated with #{
-                        result.accepted_organisation.name
-                      }, #{result.accepted_organisation.email}, seems invalid"
+                        result.not_accepted_org.name
+                      }, #{result.not_accepted_org.email}, seems invalid"
     elsif result.status == AcceptProposedOrganisation::Response::NO_EMAIL
       flash[:error] = "No invitation email was sent because no email is associated with the organisation"
     end
