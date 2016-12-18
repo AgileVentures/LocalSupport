@@ -16,6 +16,17 @@ Given /^I accept a proposed organisation called "(.*?)" with email "(.*?)"$/ do 
   assert_on_organisation_show_page(name: name)
 end
 
+Given /^I try to accept a proposed organisation called "(.*?)" with email "(.*?)"$/ do |name, email|
+  require_relative '../../db/proposed_organisations/create'
+  Db::ProposedOrganisations::Create.new(
+    'name'  => name,
+    'email' => email,
+  ).perform
+  visit_proposed_organisation(name: name)
+  press_acceptance_for_proposed_organisation
+  assert_on_proposed_organizations_page
+end
+
 def expect_proposed_org_is_notified(acceptance_message, email, org)
   expect_email_exists(
     :message   => acceptance_message,

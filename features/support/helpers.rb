@@ -79,6 +79,10 @@ module ProposedOrgHelpers
   def assert_on_organisation_show_page opts
     expect(current_path).to eq organisation_path(Organisation.find_by(name: opts.fetch(:name)))
   end
+  
+  def assert_on_proposed_organizations_page
+    expect(current_path).to eq proposed_organisations_path
+  end
 end
 
 World(Helpers, MapHelpers, ProposedOrgHelpers, ShowMeTheCookies)
