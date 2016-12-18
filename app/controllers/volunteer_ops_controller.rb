@@ -1,8 +1,9 @@
 class VolunteerOpsController < ApplicationController
   layout 'two_columns_with_map'
-  before_action :authorize, except: [:search, :show, :index]
   before_action :set_organisation, only: [:new, :create]
+  before_action :authorize, except: [:search, :show, :index]
   prepend_before_action :set_volunteer_op, only: [:show, :edit]
+  before_action :set_tags, only: [:show]
 
   def search
     @query = params[:q]
@@ -78,7 +79,8 @@ class VolunteerOpsController < ApplicationController
     # set @organisation
     # then can make condition:
     # unless current_user.can_edit? organisation
-    unless org_owner? || superadmin?
+
+    unless org_owner?
       flash[:error] = 'You must be signed in as an organisation owner or ' \
                       'site superadmin to perform this action!'
       (redirect_to '/') && return
@@ -86,19 +88,27 @@ class VolunteerOpsController < ApplicationController
   end
 
   def org_owner?
-    if params[:organisation_id].present? && current_user_has_organisation?
-      current_user.organisation.friendly_id == params[:organisation_id]
-    elsif current_user_has_organisation?
-      current_user.organisation == VolunteerOp.find(params[:id]).organisation
-    end
+    current_user.present? && (current_user.can_edit? org_independent_of_route)
+  end
+  
+  def org_independent_of_route
+    organisation_set_for_nested_route? || organisation_for_simple_route
   end
 
-  def current_user_has_organisation?
-    current_user.present? && current_user.organisation.present?
+  def organisation_set_for_nested_route?
+    @organisation
+  end
+
+  def organisation_for_simple_route
+    VolunteerOp.find(params[:id]).organisation
+  end
+
+  def organisation_for_nested_route
+    Organisation.friendly.find(params[:organisation_id])
   end
 
   def set_organisation
-    @organisation = Organisation.friendly.find(params[:organisation_id])
+    @organisation = organisation_for_nested_route
   end
 
   def set_volunteer_op
