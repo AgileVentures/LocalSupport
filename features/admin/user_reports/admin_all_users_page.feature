@@ -22,9 +22,7 @@ Feature: Admin all users page
     @javascript
     Scenario: sorting by last sign it date
       When I visit the registered users page
-      # Then show me the page
       And I click column header "Last Login"
-      # Then show me the page
       Then I should see "user3@example.com" before "user2@example.com"
       And I should see "user2@example.com" before "user1@example.com"
       And I should see "user3@example.com" before "user1@example.com"

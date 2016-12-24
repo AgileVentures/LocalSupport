@@ -12,8 +12,6 @@
       <% @users.each do |user| %>
         <tr id="<%= user.id %>" class="actions-right">
           <td><%= user.email %></td>
-          <!--<td><%= time_ago_in_words_with_nils(user.last_sign_in_at) %> </td>-->
-          <!--<td data-dateformat="YYYY-MM-DD hh:mm:ss Z" data-value="<%= user.last_sign_in_at %>"><%= time_ago_in_words_with_nils(user.last_sign_in_at) %></td>-->
           <td data-value="<%= user.last_sign_in_at %>"><%= time_ago_in_words_with_nils(user.last_sign_in_at) %></td>
           <td><%= (link_to user.organisation.name, user.organisation, { :target => '_blank' }) if user.organisation %></td>
           <td>
