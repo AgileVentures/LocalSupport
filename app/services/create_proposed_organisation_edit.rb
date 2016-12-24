@@ -21,7 +21,8 @@ class CreateProposedOrganisationEdit
   def run
     unless editor.siteadmin?
       merge_in_non_published_fields
-      send_email_to_superadmin_about_org_edit
+      #send_email_to_superadmin_about_org_edit
+      deliver_edit_org_waiting_for_approval
       listener.set_notice('Edit is pending admin approval.')
     end
     model_klass.create(params)
@@ -34,8 +35,8 @@ class CreateProposedOrganisationEdit
     end
   end
 
-  def send_email_to_superadmin_about_org_edit
-    superadmin_emails = user_klass.superadmins.pluck(:email)
-    mailer_klass.edit_org_waiting_for_approval(organisation, superadmin_emails).deliver_now
-  end
+  # def send_email_to_superadmin_about_org_edit
+  #   superadmin_emails = user_klass.superadmins.pluck(:email)
+  #   mailer_klass.edit_org_waiting_for_approval(organisation, superadmin_emails).deliver_now
+  # end
 end

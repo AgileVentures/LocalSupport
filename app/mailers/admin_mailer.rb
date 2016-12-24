@@ -30,4 +30,7 @@ class AdminMailer < ActionMailer::Base
          to: superadmin_emails)
   end
 
+  def deliver_edit_org_waiting_for_approval(organisation, superadmin_emails)
+    mailer_klass.edit_org_waiting_for_approval(organisation, superadmin_emails).deliver_now
+  end
 end

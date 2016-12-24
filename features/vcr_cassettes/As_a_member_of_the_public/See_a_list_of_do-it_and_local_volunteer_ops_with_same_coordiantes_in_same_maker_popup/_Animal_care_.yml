@@ -1,0 +1,227 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=43%20Claremont%20Road,%20Wealdstone,%20HA3%207AU&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 24 Oct 2016 18:52:17 GMT
+      Expires:
+      - Tue, 25 Oct 2016 18:52:17 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '541'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "43",
+                       "short_name" : "43",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Claremont Road",
+                       "short_name" : "Claremont Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Harrow",
+                       "short_name" : "Harrow",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Harrow",
+                       "short_name" : "Harrow",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "HA3 7AU",
+                       "short_name" : "HA3 7AU",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "43 Claremont Rd, Harrow HA3 7AU, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.5986313,
+                       "lng" : -0.3356556
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5999802802915,
+                          "lng" : -0.334306619708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.5972823197085,
+                          "lng" : -0.337004580291502
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJw01CHX4TdkgRmPXNa1D1XUA",
+                 "types" : [ "street_address" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Mon, 24 Oct 2016 18:52:18 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=43%20Claremont%20Road,%20Wealdstone,%20HA3%207AU&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 24 Oct 2016 18:52:16 GMT
+      Expires:
+      - Tue, 25 Oct 2016 18:52:16 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '541'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '1'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "43",
+                       "short_name" : "43",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Claremont Road",
+                       "short_name" : "Claremont Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Harrow",
+                       "short_name" : "Harrow",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Harrow",
+                       "short_name" : "Harrow",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "HA3 7AU",
+                       "short_name" : "HA3 7AU",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "43 Claremont Rd, Harrow HA3 7AU, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.5986313,
+                       "lng" : -0.3356556
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5999802802915,
+                          "lng" : -0.334306619708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.5972823197085,
+                          "lng" : -0.337004580291502
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJw01CHX4TdkgRmPXNa1D1XUA",
+                 "types" : [ "street_address" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Mon, 24 Oct 2016 18:52:18 GMT
+recorded_with: VCR 3.0.3
