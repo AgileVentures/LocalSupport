@@ -210,8 +210,10 @@ Then(/^I should see an (active|inactive) home button in the header$/) do |active
 end
 
 Then(/^I should see link "([^"]*)" targeting new page$/) do |link_name|
-  # within('#orgs_scroll') do
      target_link = find_link(link_name)
      expect(target_link[:target]).to eq '_blank'
-  # end
+end
+
+When(/^I click column header "([^"]*)"$/) do |val|
+  find('th', :text => val).click()
 end
