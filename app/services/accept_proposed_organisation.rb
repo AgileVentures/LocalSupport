@@ -16,6 +16,8 @@ class AcceptProposedOrganisation
       @not_accepted_org = nil
     end
   end
+  
+  class NotificationError < StandardError; end
 
   def initialize(proposed_org)
     @proposed_org = proposed_org
@@ -23,34 +25,41 @@ class AcceptProposedOrganisation
   end
 
   def run
-    begin
-      accept_organization
-    rescue Exception
-      @proposed_org.accept_proposal(true)
-      @usr.organisation = nil if @usr
-      @result.not_accepted_org = @result.accepted_org
-      @result.accepted_org = nil
-    end
-    @result
+    accept_organisation
+  rescue NotificationError
+    rollback_changes_to_org
   end
 
   private
   
-  def accept_organization
-    org = @proposed_org.accept_proposal
-    @result = inform_user org
-    raise Exception if [Response::NOTIFICATION_SENT, 
-                        Response::INVITATION_SENT].include?(@result.status) == false 
+  def accept_organisation
+    org = @proposed_org.accept_proposal; @result = inform_user org
+    raise NotificationError if success?(@result.status) == false
+    @result                    
   end
   
   def inform_user org
     @usr = User.find_by(email: @email)
-    if @usr
-      NotifyRegisteredUserFromProposedOrg.new(@usr,org).run
-      Response.new(Response::NOTIFICATION_SENT, nil, org)
-    else
-      create_invitation_response_object(InviteUnregisteredUserFromProposedOrg.new(@email, org).run, org)
-    end
+    return notify_registered_usr org if @usr
+    rslt = InviteUnregisteredUserFromProposedOrg.new(@email, org).run
+    create_invitation_response_object(rslt, org)
+  end
+  
+  def notify_registered_usr org
+    NotifyRegisteredUserFromProposedOrg.new(@usr,org).run
+    Response.new(Response::NOTIFICATION_SENT, nil, org)
+  end
+  
+  def rollback_changes_to_org
+    @proposed_org.accept_proposal(true); @usr.organisation = nil if @usr
+    @result.not_accepted_org = @result.accepted_org; @result.accepted_org = nil
+    @result
+  end
+  
+  def success? status
+    return true if [Response::NOTIFICATION_SENT, 
+                    Response::INVITATION_SENT].include?(status)
+    false
   end
 
   def create_invitation_response_object(result_of_inviting, org)

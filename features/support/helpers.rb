@@ -80,7 +80,7 @@ module ProposedOrgHelpers
     expect(current_path).to eq organisation_path(Organisation.find_by(name: opts.fetch(:name)))
   end
   
-  def assert_on_proposed_organizations_page
+  def assert_on_proposed_organisations_page
     expect(current_path).to eq proposed_organisations_path
   end
 end

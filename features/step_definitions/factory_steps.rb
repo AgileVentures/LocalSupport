@@ -24,7 +24,7 @@ Given /^I try to accept a proposed organisation called "(.*?)" with email "(.*?)
   ).perform
   visit_proposed_organisation(name: name)
   press_acceptance_for_proposed_organisation
-  assert_on_proposed_organizations_page
+  assert_on_proposed_organisations_page
 end
 
 def expect_proposed_org_is_notified(acceptance_message, email, org)

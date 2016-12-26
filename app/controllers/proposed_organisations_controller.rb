@@ -9,10 +9,10 @@ class ProposedOrganisationsController < BaseOrganisationsController
 
   def update
     proposed_org = ProposedOrganisation.friendly.find params[:id]
-    result = AcceptProposedOrganisation.new(proposed_org).run
-    set_flash_for_accepting_proposed_org result
-    if result.accepted_org
-      redirect_to organisation_path(result.accepted_org) and return false
+    rslt = AcceptProposedOrganisation.new(proposed_org).run
+    flash.replace(CreateFlashForProposedOrganisation.new(rslt).run)
+    if rslt.accepted_org
+      redirect_to organisation_path(rslt.accepted_org) and return false
     else
       redirect_to proposed_organisations_path
     end
@@ -38,7 +38,6 @@ class ProposedOrganisationsController < BaseOrganisationsController
     else
       render :new
     end
-    
   end
 
   def show
@@ -50,36 +49,6 @@ class ProposedOrganisationsController < BaseOrganisationsController
   end
 
   private
-
-  def set_flash_for_accepting_proposed_org result
-    if [AcceptProposedOrganisation::Response::INVITATION_SENT, 
-        AcceptProposedOrganisation::Response::NOTIFICATION_SENT
-      ].include?(result.status)
-      set_flash_for_accepted_organization result
-    else
-      set_flash_for_not_accepted_organization result
-    end
-  end
-  
-  def set_flash_for_accepted_organization result
-    flash[:notice] = ["You have approved the following organisation"]
-    if result.status == AcceptProposedOrganisation::Response::INVITATION_SENT
-      flash[:notice] << "An invitation email was sent to #{result.accepted_org.email}" 
-    elsif result.status == AcceptProposedOrganisation::Response::NOTIFICATION_SENT
-      flash[:notice] << "A notification of acceptance was sent to #{result.accepted_org.email}"
-    end
-  end
-  
-  def set_flash_for_not_accepted_organization result
-    flash[:error] = "No mail was sent because: #{result.error_message}"
-    if result.status == AcceptProposedOrganisation::Response::INVALID_EMAIL
-      flash[:error] = "No invitation email was sent because the email associated with #{
-                        result.not_accepted_org.name
-                      }, #{result.not_accepted_org.email}, seems invalid"
-    elsif result.status == AcceptProposedOrganisation::Response::NO_EMAIL
-      flash[:error] = "No invitation email was sent because no email is associated with the organisation"
-    end
-  end
 
   def make_user_into_org_admin_of_new_proposed_org
     org_params = ProposedOrganisationParams.build params

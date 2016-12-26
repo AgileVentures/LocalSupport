@@ -22,7 +22,7 @@ describe ProposedOrganisationsController, :type => :controller do
           expect(response.status).to eq 302
         end
         
-        it 'redirects to organization path' do
+        it 'redirects to organisation path' do
           patch :update, id: proposed_org.id
           expect(response).to redirect_to organisation_path(proposed_org)
         end

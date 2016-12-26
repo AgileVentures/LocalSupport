@@ -36,7 +36,7 @@ describe  AcceptProposedOrganisation do
       expect(subject.accepted_org).to eq Organisation.find_by(name: proposed_org.name)
     end
     
-    it 'returns nil as not accepted organization on the result' do 
+    it 'returns nil as not accepted organisation on the result' do 
       expect(subject.not_accepted_org).to be nil
     end
   end
@@ -70,7 +70,7 @@ describe  AcceptProposedOrganisation do
       expect(subject.accepted_org).to eq Organisation.find_by(name: proposed_org.name)
     end
     
-    it 'returns nil as not accepted organization on the result' do 
+    it 'returns nil as not accepted organisation on the result' do 
       expect(subject.not_accepted_org).to be nil
     end
   end
@@ -98,7 +98,7 @@ describe  AcceptProposedOrganisation do
       expect(subject.accepted_org).to be nil
     end
     
-    it 'converts organization back and returns it on the result' do 
+    it 'converts organisation back and returns it on the result' do 
       expect(subject.not_accepted_org.type).to eq('ProposedOrganisation')
     end
   end
@@ -126,7 +126,7 @@ describe  AcceptProposedOrganisation do
       expect(subject.accepted_org).to be nil
     end
     
-    it 'converts organization back and returns it on the result' do 
+    it 'converts organisation back and returns it on the result' do 
       expect(subject.not_accepted_org.type).to eq('ProposedOrganisation')
     end
   end
