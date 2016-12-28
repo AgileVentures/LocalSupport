@@ -1,53 +1,32 @@
-# <% if ENV['DOCKER'].blank? %>
-# development: &dev
-#   adapter: postgresql
-#   encoding: unicode
-#   database: ls_development
-#   pool: 5
-#   username: postgres
-#   password:
-#   #host: localhost
-# test: &test
-#   <<: *dev
-#   database: ls_test
-# <% else %>
-# development: &dev
-#   adapter: postgresql
-#   encoding: unicode
-#   database: ls_development
-#   pool: 5
-#   username: postgres
-#   password:
-#   host: db
-# test: &test
-#   <<: *dev
-#   database: ls_test
-# <% end %>
-
-# production:
-#   <<: *dev
-#   database: ls_production
-
-# cucumber:
-#   <<: *test
-
-default: &default
+<% if ENV['DOCKER'].blank? %>
+development: &dev
   adapter: postgresql
   encoding: unicode
-  # For details on connection pooling, see rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  database: ls_development
   pool: 5
-
-development:
-  <<: *default
-  database: lunchapp_development
-
-test:
-  <<: *default
-  database: lunchapp_test
+  username: postgres
+  password:
+  #host: localhost
+test: &test
+  <<: *dev
+  database: ls_test
+<% else %>
+development: &dev
+  adapter: postgresql
+  encoding: unicode
+  database: ls_development
+  pool: 5
+  username: postgres
+  password:
+  host: db
+test: &test
+  <<: *dev
+  database: ls_test
+<% end %>
 
 production:
-  <<: *default
-  database: lunchapp_production
-  username: lunchapp
-  password: <%= ENV['LUNCHAPP_DATABASE_PASSWORD'] %>
+  <<: *dev
+  database: ls_production
+
+cucumber:
+  <<: *test
