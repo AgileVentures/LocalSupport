@@ -13,9 +13,8 @@ class ProposedOrganisationsController < BaseOrganisationsController
     flash.replace(CreateFlashForProposedOrganisation.new(rslt).run)
     if rslt.accepted_org
       redirect_to organisation_path(rslt.accepted_org) and return false
-    else
-      redirect_to proposed_organisations_path
     end
+    redirect_to proposed_organisations_path
   end
 
   def destroy

@@ -22,7 +22,7 @@ class CreateFlashForProposedOrganisation
   
   def flashes_for_accepted_org
     @rsl[:notice] = ['You have approved the following organisation']
-    if_invitation_sent; if_notification_sent
+    if_invitation_or_notification_sent
     @rsl
   end
   
@@ -33,29 +33,31 @@ class CreateFlashForProposedOrganisation
   end
   
   def if_invalid_email
-    @rsl[:error] = "No invitation email was sent because the email associated" +
-    " with #{@obj.not_accepted_org.name}, #{@obj.not_accepted_org.email}," +
-    " seems invalid" if @obj.status == NOT_ACCEPTED[:invalid_email]
+    @rsl[:error] = 'No invitation email was sent because the email associated' \
+                   " with #{@obj.not_accepted_org.name}, #{@obj.not_accepted_org.email}," \
+                   ' seems invalid' if @obj.status == NOT_ACCEPTED[:invalid_email]
   end
   
-  def if_invitation_sent
-    @rsl[:notice] << "An invitation email was sent to" +
-    " #{@obj.accepted_org.email}" if @obj.status == ACCEPTED[:invited]
+  def if_invitation_or_notification_sent
+    email_type = sent_email_type
+    @rsl[:notice] << "#{email_type} was sent to " \
+                     "#{@obj.accepted_org.email}" unless email_type.empty?
   end
   
   def if_no_email
-    @rsl[:error] = "No invitation email was sent" +
-    " because no email is associated with the " +
-    "organisation" if @obj.status == NOT_ACCEPTED[:no_email]
+    @rsl[:error] = 'No invitation email was sent' \
+                   ' because no email is associated with the' \
+                   ' organisation' if @obj.status == NOT_ACCEPTED[:no_email]
   end
-  
-  def if_notification_sent
-    @rsl[:notice] << "A notification of acceptance was sent to " +
-    "#{@obj.accepted_org.email}" if @obj.status == ACCEPTED[:notified]
-  end
-  
+
   def run
     return flashes_for_accepted_org if accepted?
     flash_for_not_accepted_org
+  end
+  
+  def sent_email_type
+    return 'A notification of acceptance' if @obj.status == ACCEPTED[:notified]
+    return 'An invitation email' if @obj.status == ACCEPTED[:invited]
+    ''
   end
 end
