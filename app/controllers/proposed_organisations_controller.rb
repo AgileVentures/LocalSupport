@@ -8,12 +8,8 @@ class ProposedOrganisationsController < BaseOrganisationsController
   end
 
   def update
-    proposed_org = ProposedOrganisation.friendly.find params[:id]
-    rslt = AcceptProposedOrganisation.new(proposed_org).run
-    flash.replace(CreateFlashForProposedOrganisation.new(rslt).run)
-    if rslt.accepted_org
-      redirect_to organisation_path(rslt.accepted_org) and return false
-    end
+    rslt = prepare_data_for_update
+    redirect_to organisation_path(rslt.accepted_org) and return false if rslt.accepted_org
     redirect_to proposed_organisations_path
   end
 
@@ -48,6 +44,13 @@ class ProposedOrganisationsController < BaseOrganisationsController
   end
 
   private
+  
+  def prepare_data_for_update
+    proposed_org = ProposedOrganisation.friendly.find params[:id]
+    rslt = AcceptProposedOrganisation.new(proposed_org).run
+    flash.replace(CreateFlashForProposedOrganisation.new(rslt).run)
+    rslt
+  end
 
   def make_user_into_org_admin_of_new_proposed_org
     org_params = ProposedOrganisationParams.build params

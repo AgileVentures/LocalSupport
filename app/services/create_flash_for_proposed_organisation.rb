@@ -33,9 +33,10 @@ class CreateFlashForProposedOrganisation
   end
   
   def if_invalid_email
-    @rsl[:error] = 'No invitation email was sent because the email associated' \
-                   " with #{@obj.not_accepted_org.name}, #{@obj.not_accepted_org.email}," \
-                   ' seems invalid' if @obj.status == NOT_ACCEPTED[:invalid_email]
+    @rsl[:error] = 'No invitation email was sent because the email ' \
+                   "associated with #{@obj.not_accepted_org.name}," \
+                   " #{@obj.not_accepted_org.email}, seems" \
+                   ' invalid' if @obj.status == NOT_ACCEPTED[:invalid_email]
   end
   
   def if_invitation_or_notification_sent
