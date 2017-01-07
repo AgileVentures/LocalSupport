@@ -321,7 +321,6 @@ li {
         margin: 0 0 0 -5px;
     }
     .nav-collapse .nav>li>a, .nav-collapse .dropdown-menu a {
-        padding: 9px 15px;
         font-weight: bold;
         color: #777;
         -webkit-border-radius: 3px;
@@ -345,12 +344,33 @@ li {
     .nav-collapse .nav>li>a {
         margin-bottom: 2px;
     }
+    .nav-collapse .open>.dropdown-menu {
+        display: block;
+    }
     .navbar .container {
         width: auto;
         padding: 0;
     }
     .dropdown-toggle {
         margin-left: 0;
+    }
+    .nav-collapse .dropdown-menu {
+        position: static;
+        top: auto;
+        left: auto;
+        float: none;
+        display: none;
+        max-width: none;
+        margin: 0 15px;
+        padding: 0;
+        background-color: transparent;
+        border: none;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
     }
 }
 
