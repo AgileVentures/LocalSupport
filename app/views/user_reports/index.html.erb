@@ -24,18 +24,18 @@
               <% if user.pending_organisation %>
                 <%= link_to(user_report_path(id: user.id, pending_org_action: "approve"), :method => :put, :class => "btn btn-xs btn-success",
                            style: "border-radius: 3px; margin-right: 3px;") do %>
-                  <i class="glyphicon glyphicon-thumbs-up-alt glyphicon-small"></i> Approve</a>
+                  <i class="fa fa-thumbs-o-up"></i> Approve</a>
                 <% end %>
               <% end %>
               <% if user.pending_organisation %>
                 <%= link_to(user_report_path(id: user.id, pending_org_action: "decline"), :method => :put, :class => "btn btn-xs btn-warning",
                            style: "border-radius: 3px; margin-right: 3px;") do %>
-                  <i class="glyphicon glyphicon-thumbs-down-alt glyphicon-small"></i> Decline</a>
+                  <i class="fa fa-thumbs-o-down"></i> Decline</a>
                 <% end %>
               <% end %>
               <%= link_to(user_reports_path(id: user.id), :method => :delete, :class => "btn btn-xs btn-danger",
                          style: "border-radius: 3px;") do %>
-                <i class="glyphicon glyphicon-trash glyphicon-small"></i> Delete
+                <i class="fa fa-trash-o"></i> Delete
               <% end %>
             </div>
           </td>
