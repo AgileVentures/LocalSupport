@@ -21,52 +21,17 @@ body {
     line-height: 20px;
 }
 li {
-  list-style: none;
+    list-style: none;
 }
-select {
-    width: 220px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    height: 30px;
-    line-height: 30px;
-    color: #555;
+form {
+    margin: 0 0 20px;
 }
+
 .ls_infobox {
   border-radius: 4px;
   margin-bottom: 8px;
   background: white;
   padding: 5px;
-}
-label, select, button, input[type="button"], input[type="reset"], 
-input[type="submit"], input[type="radio"], input[type="checkbox"] {
-    cursor: pointer;
-}
-textarea, input[type="text"], input[type="password"],
-input[type="datetime"], input[type="datetime-local"],
-input[type="date"], input[type="month"], input[type="time"],
-input[type="week"], input[type="number"], input[type="email"],
-input[type="url"], input[type="search"], input[type="tel"],
-input[type="color"], .uneditable-input {
-    display: inline-block;
-    height: 30px;
-    padding: 4px 6px;
-    margin-bottom: 10px;
-    font-size: 14px;
-    line-height: 20px;
-    color: #555;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    vertical-align: middle;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-    -webkit-transition: border linear .2s, box-shadow linear .2s;
-    -moz-transition: border linear .2s, box-shadow linear .2s;
-    -o-transition: border linear .2s, box-shadow linear .2s;
-    transition: border linear .2s, box-shadow linear .2s;
 }
 
 /* GLOBAL STYLES
@@ -182,7 +147,48 @@ input[type="color"], .uneditable-input {
     padding: 0 5px 0 5px;
 }
 
-/* Substitute class from Bootstrap 2, removed in Bootstrap 3*/
+/* Adjust styling from Bootstrap 3 to old Bootstrap 2 styles*/
+select {
+    width: 220px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    height: 30px;
+    line-height: 30px;
+    color: #555;
+}
+.table th, .table td {
+    padding: 8px;
+    line-height: 20px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+label, select, button, input[type="button"], input[type="reset"],
+input[type="submit"], input[type="radio"], input[type="checkbox"] {
+    cursor: pointer;
+}
+input[type="text"] {
+    display: inline-block;
+    height: 30px;
+    padding: 4px 6px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #555;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    vertical-align: middle;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition: border linear .2s, box-shadow linear .2s;
+    -moz-transition: border linear .2s, box-shadow linear .2s;
+    -o-transition: border linear .2s, box-shadow linear .2s;
+    transition: border linear .2s, box-shadow linear .2s;
+}
 .navbar-inner {
     min-height: 40px;
     padding-left: 20px;
