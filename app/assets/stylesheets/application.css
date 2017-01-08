@@ -194,6 +194,13 @@ textarea, input[type="text"] {
 input[type="text"] {
   height: 30px;
 }
+.form-actions {
+    padding: 19px 20px 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #e5e5e5;
+}
 .navbar-inner {
     min-height: 40px;
     padding-left: 20px;
@@ -353,6 +360,9 @@ input[type="text"] {
     padding-top: 5px;
     margin: 0;
     vertical-align: middle;
+}
+.text_area.col-md-6 {
+  float: none;
 }
 @media (min-width: 980px) {
     .nav-collapse.collapse {

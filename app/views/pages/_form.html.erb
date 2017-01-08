@@ -14,16 +14,16 @@
     <div class="form-group">
       <%= f.label :content, :class => 'control-label' %>
       <div>
-        <%= f.text_area :content, :class => 'text_area span6' %>
+        <%= f.text_area :content, :class => 'text_area col-md-6' %>
       </div>
     </div>
     <div class="form-group">
       <%= f.label :link_visible, "Show a public link to this page", :class => 'control-label', :id => "page_link_visible" %>
       <%= f.check_box :link_visible, :checked_value => "true", :unchecked_value => "false" %>
     </div>
-    <div>
+    <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  pages_path, :class => 'btn' %>
+                  pages_path, :class => 'btn btn-default' %>
     </div>
 <% end %>
