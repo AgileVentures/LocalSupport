@@ -10,7 +10,7 @@
       <% @organisations.each do |organisation| %>
         <tr>
           <td>
-            <u><%= link_to organisation.name, organisation %></u><br/>
+            <u><%= link_to organisation.name, organisation, { :target => '_blank' } %></u><br/>
             <%= smart_truncate(organisation.description) %>
           </td>
         </tr>

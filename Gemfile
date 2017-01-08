@@ -86,7 +86,6 @@ gem 'bootstrap_sortable_rails', '~> 0.1.3'
 gem 'therubyracer'
 gem 'underscore-rails'
 gem 'geocoder'
-gem 'gmaps4rails', "2.1.2"
 gem 'unicorn'
 
 # To use markdown in editing static pages

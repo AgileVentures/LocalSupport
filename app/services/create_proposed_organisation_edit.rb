@@ -35,7 +35,8 @@ class CreateProposedOrganisationEdit
   end
 
   def send_email_to_superadmin_about_org_edit
-    superadmin_emails = user_klass.superadmins.pluck(:email)
-    mailer_klass.edit_org_waiting_for_approval(organisation, superadmin_emails).deliver_now
+    superadmin_emails = user_klass.superadmin_emails
+    mailing = mailer_klass.edit_org_waiting_for_approval(organisation, superadmin_emails)
+    mailing.deliver_now
   end
 end

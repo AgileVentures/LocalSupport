@@ -1,6 +1,6 @@
 class BuildMarkersWithInfoWindow
 
-  def self.with(volops, listener, marker_builder = Gmaps4rails, helper = ActionController::Base.helpers)
+  def self.with(volops, listener, marker_builder = Gmaps::MarkersBuilder, helper = ActionController::Base.helpers)
     new(volops, listener, marker_builder, helper).send(:run)
   end
 
@@ -16,8 +16,7 @@ class BuildMarkersWithInfoWindow
   end
 
   def run
-    method(:build_single_marker)
-    marker_builder.build_markers(volops, &method(:build_single_marker)).to_json
+    marker_builder.generate(volops, &method(:build_single_marker)).to_json
   end
 
   def build_single_marker(volop, marker)
