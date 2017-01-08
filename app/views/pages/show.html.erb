@@ -1,10 +1,10 @@
 <%- model_class = Page -%>
 <%= markdown(@page.content) %>
 <% if @superadmin %>
-  <div>
-    <%= link_to 'Pages', pages_path, :class => 'btn'  %>
+  <div class="form-actions">
+    <%= link_to 'Pages', pages_path, :class => 'btn btn-default'  %>
     <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                edit_page_path(@page), :class => 'btn' %>
+                edit_page_path(@page), :class => 'btn btn-default' %>
     <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                 page_path(@page),
                 :method => 'delete',
