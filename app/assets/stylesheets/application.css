@@ -148,6 +148,10 @@ form {
 }
 
 /* Adjust styling from Bootstrap 3 to old Bootstrap 2 styles*/
+ul, ol {
+    padding: 0;
+    margin: 0 0 10px 25px;
+}
 select {
     width: 220px;
     border: 1px solid #ccc;
