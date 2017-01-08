@@ -7,7 +7,7 @@
 // https://github.com/seyhunak/twitter-bootstrap-rails/blob/master/app/assets/javascripts/twitter/bootstrap/bootstrap-collapse.js#L69
 
 describe('This is my Organisation button', function() {
-    var timo, nav, menu, spyCollapse;
+    var timo, nav, menu, spyCollapse, timelapse, x;
     beforeEach(function() {
         setFixtures('<a id="TIMO">This is my organisation</a>');
         appendSetFixtures(sandbox({class:'nav-collapse'}));
@@ -21,6 +21,11 @@ describe('This is my Organisation button', function() {
         menu = $('#menuLogin');
         toggle = $('#toggle_link');
         register = $('#registerForm');
+        timelapse = function() {
+          setTimeout(function() {
+            x = 5;
+          }, 1000);
+        };
         spyCollapse = spyOn($.fn, 'collapse').and.callThrough();
         spyOnEvent(nav, 'show');
         spyOnEvent(timo, 'click');
@@ -41,11 +46,8 @@ describe('This is my Organisation button', function() {
             it("toggle will have 'click' event", function(){
                 expect('click').toHaveBeenTriggeredOn(toggle);
             });
-            it('nav will have "show" event', function() {
-                expect('show').toHaveBeenTriggeredOn(nav)
-            });
             it('nav changes attributes', function() {
-                expect(nav).toHaveClass('in');
+                expect(nav).toHaveClass('collapsing');
             });
             it('menu changes attributes', function() {
                 expect(menu).toHaveClass('open');
