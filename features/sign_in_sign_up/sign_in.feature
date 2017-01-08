@@ -102,7 +102,7 @@ Scenario: Check that login/register toggle works
 Scenario: Check class of flash notice  - error
   Given I sign in as "superadmin@example.com" with password "12345"
   Then I should be on the sign in page
-  And the "flash_alert" should be "alert-error"
+  And the "flash_alert" should be "alert-warning"
 
 Scenario: Check class of flash notice  - success
   Given I sign in as "superadmin@example.com" with password "pppppppp"

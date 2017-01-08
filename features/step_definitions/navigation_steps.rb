@@ -107,14 +107,14 @@ end
 
 And (/^I should see a full width layout$/) do
   within('#content') do
-    page.should have_css('#one_column.span12')
+    page.should have_css('#one_column.col-md-12')
   end
 end
 
 And (/^I should see a two column layout$/) do
   within('#content') do
-    page.should have_css('#column1.span6')
-    page.should have_css('#column2.span6')
+    page.should have_css('#column1.col-md-6')
+    page.should have_css('#column2.col-md-6')
   end
 end
 
