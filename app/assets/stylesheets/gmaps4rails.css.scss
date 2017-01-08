@@ -108,7 +108,7 @@
 /* MAP LEGEND STYLE
 -------------------------------------------------- */
 
-.map_legend td {
+.map_legend .key_image, .map_legend .key_text {
   padding: 0;
   vertical-align: baseline;
   border: none;

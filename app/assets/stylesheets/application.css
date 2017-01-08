@@ -345,6 +345,9 @@ input[type="text"] {
 .btn-navbar .icon-bar+.icon-bar {
     margin-top: 3px;
 }
+.btn-group > .btn {
+  margin-top: 0;
+}
 .radio.inline, .checkbox.inline {
     display: inline-block;
     padding-top: 5px;
