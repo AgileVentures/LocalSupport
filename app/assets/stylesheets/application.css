@@ -151,10 +151,10 @@ form {
 select {
     width: 220px;
     border: 1px solid #ccc;
+    border-radius: 4px;
     background-color: #fff;
     height: 30px;
     line-height: 30px;
-    color: #555;
 }
 .table th, .table td {
     padding: 8px;
@@ -167,9 +167,9 @@ label, select, button, input[type="button"], input[type="reset"],
 input[type="submit"], input[type="radio"], input[type="checkbox"] {
     cursor: pointer;
 }
-input[type="text"] {
+textarea, input[type="text"] {
     display: inline-block;
-    height: 30px;
+    height: auto;
     padding: 4px 6px;
     margin-bottom: 10px;
     font-size: 14px;
@@ -179,6 +179,8 @@ input[type="text"] {
     -moz-border-radius: 4px;
     border-radius: 4px;
     vertical-align: middle;
+}
+textarea, input[type="text"] {
     background-color: #fff;
     border: 1px solid #ccc;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
@@ -188,6 +190,9 @@ input[type="text"] {
     -moz-transition: border linear .2s, box-shadow linear .2s;
     -o-transition: border linear .2s, box-shadow linear .2s;
     transition: border linear .2s, box-shadow linear .2s;
+}
+input[type="text"] {
+  height: 30px;
 }
 .navbar-inner {
     min-height: 40px;
@@ -532,24 +537,12 @@ input#page_link_visible {
 .wide_form {
     width: 95%;
     margin-bottom: 0 !important;
+    margin-top: 10px;
 }
 
 .borderless {
     border-top: none !important;
 }
-input::-webkit-input-placeholder {
-    color: rgba(0,5,143,.5);
-}
-input::-moz-placeholder {
-  color: rgba(0,5,143,.5);
-}
-input:-moz-placeholder {   /* Older versions of Firefox */
-  color: rgba(0,5,143,.5);
-}
-input:-ms-input-placeholder {
-  color: rgba(0,5,143,.5);
-}
-
 div#container textarea {
   min-width: 270px;
   width: 270px;

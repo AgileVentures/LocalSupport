@@ -3,9 +3,11 @@
 body {
   line-height: 20px;
 }
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+}
 h1 {
   font-size: 38.5px;
-  font-weight: bold;
 }
 @media (min-width: 980px) {
   body {
@@ -64,6 +66,9 @@ label {
 img {
   height: auto;
 }
+select {
+  color: #555;
+}
 .btn {
     display: inline-block;
     padding: 4px 12px;
@@ -76,6 +81,11 @@ img {
 .container {
   padding-left: 0;
   padding-right: 0;
+}
+.checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+    float: left;
+    margin-left: -15px;
+    margin-right: 5px;
 }
 .alert-warning{
   color: #7F351C;
