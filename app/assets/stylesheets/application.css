@@ -216,7 +216,6 @@ input[type="text"] {
     background-image: -o-linear-gradient(top, #fff, #f2f2f2);
     background-image: linear-gradient(to bottom, #fff, #f2f2f2);
     background-repeat: repeat-x;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
     border: 1px solid #d4d4d4;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -298,10 +297,8 @@ input[type="text"] {
     background-image: -o-linear-gradient(top, #f2f2f2, #e5e5e5);
     background-image: linear-gradient(to bottom, #f2f2f2, #e5e5e5);
     background-repeat: repeat-x;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff2f2f2', endColorstr='#ffe5e5e5', GradientType=0);
     border-color: #e5e5e5 #e5e5e5 #bfbfbf;
     border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
-    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
     -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.1),0 1px 0 rgba(255,255,255,0.075);
     -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.1),0 1px 0 rgba(255,255,255,0.075);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.1),0 1px 0 rgba(255,255,255,0.075);
@@ -330,8 +327,7 @@ input[type="text"] {
     display: inline-block;
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
-    border-bottom: 7px solid #ccc;
-    border-bottom-color: rgba(0,0,0,0.2);
+    border-bottom: 7px solid #ccc;    
     position: absolute;
     top: -7px;
     left: auto;
@@ -370,8 +366,8 @@ input[type="text"] {
 }
 @media (min-width: 980px) {
     .nav-collapse.collapse {
-        height: auto !important;
-        overflow: visible !important;
+        height: auto;
+        overflow: visible;
         display: block;
     }
 }
