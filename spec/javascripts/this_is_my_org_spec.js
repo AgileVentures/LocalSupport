@@ -7,7 +7,7 @@
 // https://github.com/seyhunak/twitter-bootstrap-rails/blob/master/app/assets/javascripts/twitter/bootstrap/bootstrap-collapse.js#L69
 
 describe('This is my Organisation button', function() {
-    var timo, nav, menu, spyCollapse, timelapse, x;
+    var timo, nav, menu, spyCollapse;
     beforeEach(function() {
         setFixtures('<a id="TIMO">This is my organisation</a>');
         appendSetFixtures(sandbox({class:'nav-collapse'}));
@@ -21,11 +21,6 @@ describe('This is my Organisation button', function() {
         menu = $('#menuLogin');
         toggle = $('#toggle_link');
         register = $('#registerForm');
-        timelapse = function() {
-          setTimeout(function() {
-            x = 5;
-          }, 1000);
-        };
         spyCollapse = spyOn($.fn, 'collapse').and.callThrough();
         spyOnEvent(nav, 'show');
         spyOnEvent(timo, 'click');
