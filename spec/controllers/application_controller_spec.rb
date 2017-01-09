@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+
 describe ApplicationController, :type => :controller, :helpers => :controllers do
   it '#request_controller_is(white_listed)' do
     allow(controller).to receive_messages :white_listed => %w(a b c)
