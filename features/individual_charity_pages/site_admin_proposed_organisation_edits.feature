@@ -13,6 +13,7 @@ I want to be able to propose edits to inaccurate organisation listings, includin
       | siteadmin@example.com | pppppppp |                     | 2007-01-01  10:00:00 | false      | true      |
       | justauser@example.com | pppppppp |                     | 2007-01-01  10:00:00 | false      | false     |
 
+   @vcr
    Scenario: Site admin sees fields marked as private
     Given I am signed in as a siteadmin
     And I visit the show page for the organisation named "Friendly"
@@ -20,7 +21,7 @@ I want to be able to propose edits to inaccurate organisation listings, includin
     Then the email field is marked private
     And the address field is marked private
     And the telephone field is marked private
-   
+
   Scenario: Site admin sees fields marked as public
     Given I am signed in as a siteadmin
     And I visit the show page for the organisation named "Example"
@@ -65,8 +66,8 @@ I want to be able to propose edits to inaccurate organisation listings, includin
       | email                  | password | organisation        | confirmed_at         | superadmin | siteadmin |
       | superadmin@example.com | pppppppp |                     | 2007-01-01  10:00:00 | true       | false     |
     And the following proposed edits exist:
-      | original_name       | editor_email                  | address        | telephone | email   |
-      | Friendly            | siteadmin@example.com         | 30 pinner road | 520800000 | a@a.com |
+      | original_name          | editor_email                   | address              | telephone  | email   |
+      | Friendly               | siteadmin@example.com          | 30 pinner road       | 520800000  | a@a.com |
     And I am signed in as an superadmin
     And I visit the most recently created proposed edit for "Friendly"
     Then the following proposed edits should be displayed on the page:
@@ -74,5 +75,3 @@ I want to be able to propose edits to inaccurate organisation listings, includin
       | address        | 34 pinner road         | 30 pinner road |
       | telephone      | 020800000              | 520800000      |
       | email          | superadmin@friendly.xx | a@a.com        |
-
-

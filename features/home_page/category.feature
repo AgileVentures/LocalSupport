@@ -36,6 +36,7 @@ Feature: Categories of charities
 
     And I visit the home page
 
+  @vcr
   Scenario: Search for organisations in the "Animal Welfare" category
     Given I select the "Animal Welfare" category from What They Do
     And I press "Submit"

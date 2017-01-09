@@ -1,0 +1,123 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=30%20pinner%20road,%20&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 27 Jan 2016 21:53:15 GMT
+      Expires:
+      - Thu, 28 Jan 2016 21:53:15 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - '*'
+      Server:
+      - mafe
+      Content-Length:
+      - '593'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "30",
+                       "short_name" : "30",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Pinner Road",
+                       "short_name" : "Pinner Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Arden",
+                       "short_name" : "Arden",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Limestone",
+                       "short_name" : "Limestone",
+                       "types" : [ "administrative_area_level_3", "political" ]
+                    },
+                    {
+                       "long_name" : "Buncombe County",
+                       "short_name" : "Buncombe County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "North Carolina",
+                       "short_name" : "NC",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "28704",
+                       "short_name" : "28704",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "30 Pinner Rd, Arden, NC 28704, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 35.4537613,
+                          "lng" : -82.5482217
+                       },
+                       "southwest" : {
+                          "lat" : 35.4537502,
+                          "lng" : -82.5482346
+                       }
+                    },
+                    "location" : {
+                       "lat" : 35.4537502,
+                       "lng" : -82.5482217
+                    },
+                    "location_type" : "RANGE_INTERPOLATED",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 35.4551047302915,
+                          "lng" : -82.5468791697085
+                       },
+                       "southwest" : {
+                          "lat" : 35.4524067697085,
+                          "lng" : -82.54957713029151
+                       }
+                    }
+                 },
+                 "place_id" : "EiIzMCBQaW5uZXIgUmQsIEFyZGVuLCBOQyAyODcwNCwgVVNB",
+                 "types" : [ "street_address" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jan 2016 21:53:15 GMT
+recorded_with: VCR 2.9.3

@@ -3,10 +3,12 @@ class BatchInviteJob
   def initialize(params, current_user)
     @resend_invitation = params.fetch(:resend_invitation)
     @invites = params.fetch(:invite_list)
+    @mail_template = MailTemplate.find_by(name: 'Invitation instructions')
   end
 
   def run
     tell_devise_if_okay_to_resend_invitations
+    purge_deleted_users
     invite_users_and_collate_results
   end
 
@@ -36,5 +38,9 @@ class BatchInviteJob
     else
       'Invited!'
     end
+  end
+
+  def purge_deleted_users
+    User.purge_deleted_users_where(email: @invites.flat_map{ |org_id, email| email.downcase })
   end
 end

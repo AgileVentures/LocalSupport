@@ -3,6 +3,8 @@ class OrganisationsController < BaseOrganisationsController
   # GET /organisations/search
   # GET /organisations/search.json
   before_filter :authenticate_user!, :except => [:search, :index, :show]
+  before_action :set_organisation, only: [:show, :update, :edit]
+  before_action :set_tags, only: [:show]
 
   def search
     @parsed_params = SearchParamsParser.new(params)
@@ -27,8 +29,7 @@ class OrganisationsController < BaseOrganisationsController
   # GET /organisations/1
   # GET /organisations/1.json
   def show
-    organisations = Organisation.where(id: params[:id])
-    @organisation = organisations.first!
+    organisations = Organisation.where(id: @organisation.id)
     @pending_org_admin = current_user.pending_org_admin? @organisation if current_user
     @editable = current_user.can_edit?(@organisation) if current_user
     @deletable = current_user.can_delete?(@organisation) if current_user
@@ -36,21 +37,19 @@ class OrganisationsController < BaseOrganisationsController
     @grabbable = current_user ? current_user.can_request_org_admin?(@organisation) : true
     @can_propose_edits = current_user.present? && !@editable
     @markers = build_map_markers(organisations)
+    @cat_name_ids = Category.name_and_id_for_what_who_and_how
   end
 
   # GET /organisations/new
   # GET /organisations/new.json
   def new
     @organisation = Organisation.new
-    @categories_start_with = Category.first_category_name_in_each_type
   end
 
   # GET /organisations/1/edit
   def edit
-    organisations = Organisation.where(id: params[:id])
-    @organisation = organisations.first!
+    organisations = Organisation.where(id: @organisation.id)
     @markers = build_map_markers(organisations)
-    @categories_start_with = Category.first_category_name_in_each_type
     return false unless user_can_edit? @organisation
     #respond_to do |format|
     #  format.html {render :layout => 'full_width'}
@@ -62,32 +61,29 @@ class OrganisationsController < BaseOrganisationsController
   def create
     # model filters for logged in users, but we check here if that user is an superadmin
     # TODO refactor that to model responsibility?
-     org_params = OrganisationParams.build params
-     unless current_user.try(:superadmin?)
-       flash[:notice] = PERMISSION_DENIED
-       redirect_to organisations_path and return false
-     end
-    @organisation = Organisation.new(org_params)
+    org_params = OrganisationParams.build params
 
+    unless current_user.try(:superadmin?)
+      flash[:notice] = PERMISSION_DENIED
+      redirect_to organisations_path and return false
+    end
+    @organisation = Organisation.new(org_params)
     if @organisation.save
       redirect_to @organisation, notice: 'Organisation was successfully created.'
     else
-      render action: "new"
+     render :new
     end
   end
 
   # PUT /organisations/1
   # PUT /organisations/1.json
   def update
-    @organisation = Organisation.find(params[:id])
     params[:organisation][:superadmin_email_to_add] = params[:organisation_superadmin_email_to_add] if params[:organisation]
-    update_params = OrganisationParams.build params 
+    update_params = OrganisationParams.build params
     return false unless user_can_edit? @organisation
     if @organisation.update_attributes_with_superadmin(update_params)
       redirect_to @organisation, notice: 'Organisation was successfully updated.'
     else
-      @categories_start_with = Category.first_category_name_in_each_type
-      flash[:error] = @organisation.errors[:superadministrator_email][0]
       render action: "edit"
     end
   end
@@ -99,7 +95,7 @@ class OrganisationsController < BaseOrganisationsController
       flash[:notice] = PERMISSION_DENIED
       redirect_to organisation_path(params[:id]) and return false
     end
-    @organisation = Organisation.find(params[:id])
+    @organisation = Organisation.friendly.find(params[:id])
     @organisation.destroy
     flash[:success] = "Deleted #{@organisation.name}"
 
@@ -121,12 +117,17 @@ class OrganisationsController < BaseOrganisationsController
         :donation_info,
         :name,
         :telephone,
-        category_organisations_attributes: [:_destroy, :category_id, :id]
+        category_ids: []
       )
     end
+
   end
 
   private
+
+  def set_organisation
+    @organisation = Organisation.friendly.find(params[:id])
+  end
 
   def user_can_edit?(org)
     unless current_user.try(:can_edit?,org)
@@ -136,4 +137,11 @@ class OrganisationsController < BaseOrganisationsController
     true
   end
 
+  def meta_tag_title
+    @organisation.name
+  end
+
+  def meta_tag_description
+    @organisation.description
+  end
 end

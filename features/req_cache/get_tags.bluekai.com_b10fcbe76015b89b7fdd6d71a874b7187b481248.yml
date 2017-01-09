@@ -1,0 +1,20 @@
+---
+:scope: 
+:url: http://tags.bluekai.com/site/14141?phint=s=MCE81,UKD56,MCE39,UK2467=1,UKD12,NW03,UK2950=1,MCE14,UKD01,UK2957=1,UK2275=2,UK2943=1,MCE83,MCE24,CACI005-2,UKFS03,MCE13,UK2274=2,UKD54,MCE05,CACI022-2,UKD42,UK2951=1,CACI079-2,TGLTV,UKD60,CACIN113,MCE23,UKD63,UKD27,UK2272=5,MCE64,UK2954=1,UKD30,UKD52,MCE35,MCE37,MCE73,UKD36,MCE65,MCE41,UKD06,UK2944=1,UKLND,UK2955=1,UK2402=8,UK2942=1&ida=1&xid=kHpQRchE99Yy1QoR
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Date: Fri, 21 Oct 2016 15:25:41 GMT
+  P3P: CP="NOI DSP COR CUR ADMo DEVo PSAo PSDo OUR SAMo BUS UNI NAV", policyref="http://tags.bluekai.com/w3c/p3p.xml"
+  Pragma: no-cache
+  Expires: Thu, 01 Dec 1994 16:00:00 GMT
+  Cache-Control: max-age=0, no-cache, no-store
+  Location: http://ib.adnxs.com/getuid?http://tags.bluekai.com/site/3085?id=
+  Content-Length: '0'
+  Set-Cookie: bku=ra/99cxpYkCHcKOQ; expires=Wed, 19-Apr-2017 15:25:41 GMT; path=/;
+    domain=.bluekai.com
+  BK-Server: e140
+  Content-Type: text/html
+  Connection: close
+:content: ''

@@ -1,0 +1,17 @@
+---
+:scope: 
+:url: http://cs.go.affec.tv/map/cs/580a33cdf128188f?src=cs&ssp=0&redir=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11123%26puid%3D%5BAFID%5D%26ssrc%3D1
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Content-Type: text/html; charset=utf-8
+  Date: Fri, 21 Oct 2016 15:27:10 GMT
+  Location: https://secure.adnxs.com/getuid?http%3A%2F%2Fmap.go.affec.tv%2Fmap%2Fan%2F%24UID%3Fch%3D580a33ce6468e300015255da%26chc%3Dcs%26mc%3D2%26px%3D%26ssp%3D0
+  Set-Cookie:
+  - pt=eyJjcyI6eyJkdCI6MTQ3NzA2MzYzMCwiaWQiOiI1ODBhMzNjZGYxMjgxODhmIiwibHMiOjE0NzcwNjM2MzB9LCJ2IjoxfQ==|1477063630|5d39cffdb6bf6650f9a07dcead450aa86662bcdf;
+    Path=/; Domain=go.affec.tv
+  - ck=580a33ce6468e300015255d9; Path=/; Domain=go.affec.tv
+  Content-Length: '173'
+  Connection: close
+:content: "<a href=\"https://secure.adnxs.com/getuid?http%3A%2F%2Fmap.go.affec.tv%2Fmap%2Fan%2F%24UID%3Fch%3D580a33ce6468e300015255da%26chc%3Dcs%26mc%3D2%26px%3D%26ssp%3D0\">Found</a>.\n\n"

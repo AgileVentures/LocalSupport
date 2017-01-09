@@ -3,20 +3,21 @@ Feature: Edit donation information feature
   So that I can attract funding
   I want to encourage local people to donate
   (charity worker can update a link to where they accept donations)
-  
+
   Tracker story: https://www.pivotaltracker.com/s/projects/742821/stories/45405077
 
-Background: organisations have been added to database 
+Background: organisations have been added to database
   Given the following organisations exist:
   | name           | description               | address        | postcode | telephone |
   | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 |
 
   Given the following users are registered:
-  | email                       | password | superadmin | organisation | confirmed_at |
-  | registered_user@example.com | pppppppp | false | Friendly     | 2007-01-01  10:00:00 |
-  | registered_user2@example.com| pppppppp | false |              | 2007-01-01  10:00:00 |
+  | email                       | password | superadmin | organisation | confirmed_at         |
+  | registered_user@example.com | pppppppp | false      | Friendly     | 2007-01-01  10:00:00 |
+  | registered_user2@example.com| pppppppp | false      |              | 2007-01-01  10:00:00 |
   And cookies are approved
 
+@vcr
 Scenario: Successfully change the donation url for a charity
   # TODO Refactor towards something like this
   #Given I am signed in as a charity superadmin for "Friendly"

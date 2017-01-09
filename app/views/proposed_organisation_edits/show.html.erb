@@ -1,19 +1,21 @@
+<% if @proposed_organisation_edit.editor %>
 <div class="centered width_50 proposer">
   <span>This edit proposed by:</span>
   <%= @proposed_organisation_edit.editor.email%>
 </div>
+<% end %>
 
 <div class="row">
   <div class="span6">
-    <h3 class="<%= show_class('current', 'name') %>">
+    <h3 class="text-center">Current Information</h3>
+    <h4 class="<%= show_class('current', 'name') %>">
       <span class='field_value'>
       <%= @organisation.name %>
       </span>
-    </h3>
+    </h4>
     <p>
       <%= simple_format @organisation.description, class: show_class('current', 'description') %>
     </p>
-
     <% if @proposed_organisation_edit.viewable_field?(:address, by: current_user) %>
       <p class="<%= show_class('current', 'address') %>">
         <span><b>Address:</b></span>
@@ -72,17 +74,18 @@
         <div class="centered width_25">
           <%= form_for([@proposed_organisation_edit.organisation, @proposed_organisation_edit], :url => {:action => :update}) do |f| %>
             <%= f.hidden_field :id, value: @proposed_organisation_edit.id %>
-            <%= f.submit 'Reject Edit', :class => 'btn btn-primary' %>
+            <%= f.submit 'Keep Current Information', :class => 'btn btn-primary' %>
           <% end %>
         </div>
     <% end %>
   </div>
   <div class="span6">
-    <h3 class="<%= show_class('proposed', 'name') %>">
+    <h3 class="text-center">Proposed Edit</h3>
+    <h4 class="<%= show_class('proposed', 'name') %>">
       <span class="field_value">
       <%= @proposed_organisation_edit.name %>
       </span>
-    </h3>
+    </h4>
     <p>
       <span class="field_value">
       <%= simple_format @proposed_organisation_edit.description, class: show_class('proposed', 'description') %>
@@ -151,7 +154,7 @@
             <%= f.hidden_field :description, value: @proposed_organisation_edit.description %>
             <%= f.hidden_field :donation_info, value: @proposed_organisation_edit.donation_info %>
             <% if @proposed_organisation_edit.editable?(:address, by: @proposed_organisation_edit.editor) %>
-            <%= f.hidden_field :address, value: @proposed_organisation_edit.address %>\
+            <%= f.hidden_field :address, value: @proposed_organisation_edit.address %>
             <% end %>
             <%= f.hidden_field :postcode, value: @proposed_organisation_edit.postcode %>
             <% if @proposed_organisation_edit.editable?(:telephone, by: @proposed_organisation_edit.editor)%>
@@ -161,10 +164,9 @@
             <% if @proposed_organisation_edit.editable?(:email, by: @proposed_organisation_edit.editor)%>
             <%= f.hidden_field :email, value: @proposed_organisation_edit.email %>
             <% end %>
-            <%= f.submit 'Accept Edit', :class => 'btn btn-primary' %>
+            <%= f.submit 'Accept Edit', :class => 'btn btn-success' %>
           <% end %>
         </div>
     <% end %>
   </div>
 </div>
-

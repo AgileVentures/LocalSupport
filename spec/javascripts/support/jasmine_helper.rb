@@ -16,3 +16,7 @@ module Jasmine
     WebMock.allow_net_connect!
   end
 end
+
+Jasmine.configure do |config|
+  config.host = 'http://127.0.0.1'
+end

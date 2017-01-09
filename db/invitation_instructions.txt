@@ -1,0 +1,28 @@
+The data below is being used be 'email_template.rake'. The order is following:
+1. MailTemplate.name
+2. MailTemplate.body
+3. MailTemplate.footnote
+4. MailTemplate.email
+
+Newlines are also being stored.
+
+---
+Invitation instructions
+---
+Dear Colleague,
+
+Voluntary Action Harrow in partnership with Agile Ventures have created an online directory for Harrow charities and non-profits using information from The Charities Commission. This directory can be updated by the individual organisations once they have signed up.
+
+To view the directory visit: http://harrowcn.org.uk/
+
+To view and update your organisation's information please accept the invitation below. This will then enable you to update your organisation's directory entry.
+
+---
+If you have any questions, please contact us.
+Rachel Wright
+rachelwright@voluntaryactionharrow.org.uk
+The Lodge, 64 Pinner Road, Harrow, Middlesex, HA1 4HZ - 020 8861 5894
+Voluntary Action Harrow (VAH) is a company limited by guarantee (no. 7554530)
+
+---
+rachelwright@voluntaryactionharrow.org.uk

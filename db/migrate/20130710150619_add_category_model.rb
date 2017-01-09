@@ -5,7 +5,7 @@ class AddCategoryModel < ActiveRecord::Migration
       t.integer :charity_commission_id
       t.string :charity_commission_name
 
-      t.timestamps
+      t.timestamps null: true
     end
   end
 

@@ -1,0 +1,8 @@
+<button class='close infowindow_close' type='button'>×</button>
+<div class="long-vol-op">
+  <ul>
+    <% vol_ops.each do |volop| %>
+      <%= render partial: 'volunteer_ops/popup/vol_doit', locals: {volop: volop} %>
+    <% end %>
+  </ul>
+</div>

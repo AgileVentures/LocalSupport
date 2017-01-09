@@ -99,7 +99,7 @@ describe User, :type => :model do
 
     it 'should call promote_new_user after confirmation' do
       expect(@user).to receive(:make_admin_of_org_with_matching_email)
-      @user.confirm!
+      @user.confirm
     end
 
     it 'should not promote the user if org email does not match' do
@@ -118,9 +118,9 @@ describe User, :type => :model do
       expect(@superadmin_user.organisation).to eq @match_org
     end
 
-    it 'should be called in #confirm!' do
+    it 'should be called in #confirm' do
       expect(@user).to receive(:make_admin_of_org_with_matching_email)
-      @user.confirm!
+      @user.confirm
     end
   end
 
@@ -282,6 +282,19 @@ describe User, :type => :model do
     end
   end
 
-
-
+  describe '.purge_deleted_users_where' do
+    subject(:do_purge) { User.purge_deleted_users_where(email: 'yes@hello.com') }
+    it 'purge deleted user when user match query' do
+      user = FactoryGirl.create :deleted_user, email: 'yes@hello.com'
+      expect { do_purge }.to change(User.deleted, :count).by(-1)
+    end
+    it 'does not delete users that is not match query' do
+      user = FactoryGirl.create :deleted_user, email: 'no@hello.com'
+      expect { do_purge }.to change(User.deleted, :count).by(0)
+    end
+    it 'does not affect undeleted users' do
+      user = FactoryGirl.create :user, email: 'yes@hello.com'
+      expect { do_purge }.to change(User, :count).by(0)
+    end
+  end
 end

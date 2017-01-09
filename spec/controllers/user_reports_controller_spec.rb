@@ -11,22 +11,7 @@ describe UserReportsController, :type => :controller do
       allow(@org).to receive(:name).and_return('Red Cross')
       allow(Organisation).to receive(:find).and_return(@org)
     end
-    context 'user requesting pending status to be admin of charity' do
-      before do
-        allow(@nonadmin_user).to receive(:request_admin_status)
-        allow(@nonadmin_user).to receive(:promote_to_org_admin)
-        allow(@nonadmin_user).to receive(:email)
-      end
 
-      it 'should redirect to the show page for nested org' do
-        put :update, id: 4, organisation_id: 5
-        expect(response).to redirect_to(organisation_path(5))
-      end
-      it 'should display that a user has requested admin status for nested org' do
-        put :update, id: 4, organisation_id: 5
-        expect(flash[:notice]).to have_content("You have requested admin status for #{@org.name}")
-      end
-    end
     context 'superadmin promoting user to charity admin' do
       before(:each) do
         allow(@nonadmin_user).to receive(:promote_to_org_admin)
@@ -35,16 +20,16 @@ describe UserReportsController, :type => :controller do
       it 'non-superadmins get refused' do
         allow(@nonadmin_user).to receive(:superadmin?).and_return(false)
         allow(controller).to receive(:current_user).and_return(@nonadmin_user)
-        put :update, {:id => '4'}
+        put :update, {:id => '4', :pending_org_action => "approve"}
         expect(response.response_code).to eq(404)
       end
 
       it 'redirect to index page after update succeeds' do
-        put :update, {:id => '4'}
+        put :update, {:id => '4', :pending_org_action => "approve"}
         expect(response).to redirect_to users_report_path
       end
       it 'shows a flash telling which user got approved' do
-        put :update, {:id => '4'}
+        put :update, {:id => '4', :pending_org_action => "approve"}
         expect(flash[:notice]).to have_content("You have approved #{@nonadmin_user.email}.")
       end
     end

@@ -16,7 +16,9 @@ LocalSupport::Application.routes.draw do
   put 'user_reports/undo_delete/:id' => 'user_reports#undo_delete', as: :undo_delete_users_report
 
   resources :pages, only: [:index, :new, :create, :edit]
-  resources :volunteer_ops, :only => [:index, :edit, :show, :update, :destroy]
+  resources :volunteer_ops, :only => [:index, :edit, :show, :update, :destroy] do
+    get 'search', on: :collection
+  end
   resources :proposed_organisation_edits, :only => [:index]
   resources :organisations do
     resources :volunteer_ops, :only => [:new, :create]
@@ -32,6 +34,7 @@ LocalSupport::Application.routes.draw do
 
   post 'cookies/allow', to: 'application#allow_cookie_policy'
 
+  resources :mail_templates
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

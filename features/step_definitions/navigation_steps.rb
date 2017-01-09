@@ -13,32 +13,36 @@ And /^I select the "(.*?)" category from (How They Help|Who They Help|What They 
   select(category, :from => cat_id)
 end
 
-When /^I visit the proposed organisation show page for the proposed organisation that was proposed$/ do 
+When /^I visit the proposed organisation show page for the proposed organisation that was proposed$/ do
   proposed_org = ProposedOrganisation.find_by(name: unsaved_proposed_organisation(User.first).name)
   visit proposed_organisation_path(proposed_org)
 end
+
 When(/^I visit "(.*?)"$/) do |path|
   visit path
 end
 
 def paths(location)
+  reset_pwd = "#{edit_user_password_path}?reset_password_token=#{@reset_password_token}"
   {
-      'home' => root_path,
-      'sign up' => new_user_registration_path,
-      'sign in' => new_user_session_path,
-      'organisations index' => organisations_path,
-      'proposed organisations index' => proposed_organisations_path,
-      'new organisation' => new_organisation_path,
-      'new proposed organisation' => new_proposed_organisation_path,
-      'contributors' => contributors_path,
-      'password reset' => edit_user_password_path,
-      'invitation' => accept_user_invitation_path,
-      'organisations without users' => organisations_report_path,
-      'all users' => users_report_path,
-      'invited users' => invited_users_report_path,
-      'volunteer opportunities' => volunteer_ops_path,
-      'contributors' => contributors_path,
-      'deleted users' => deleted_users_report_path
+    'home' => root_path,
+    'sign up' => new_user_registration_path,
+    'sign in' => new_user_session_path,
+    'organisations index' => organisations_path,
+    'organisations search' => organisations_search_path,
+    'proposed organisations index' => proposed_organisations_path,
+    'new organisation' => new_organisation_path,
+    'new proposed organisation' => new_proposed_organisation_path,
+    'contributors' => contributors_path,
+    'password reset' => edit_user_password_path,
+    'invitation' => accept_user_invitation_path,
+    'invite users to become admin of organisations' => organisations_report_path,
+    'registered users' => users_report_path,
+    'invited users' => invited_users_report_path,
+    'volunteer opportunities' => volunteer_ops_path,
+    'volunteer opportunities search' => search_volunteer_ops_path,
+    'deleted users' => deleted_users_report_path,
+    'reset password' => reset_pwd
   }[location]
 end
 
@@ -72,7 +76,7 @@ Then /^I should be on the show organisation proposed edit page for the organisat
   current_path.should eq url
 end
 
-Then /^I (visit|should be on) the new volunteer op page for "(.*?)"$/ do |mode, name| 
+Then /^I (visit|should be on) the new volunteer op page for "(.*?)"$/ do |mode, name|
   org = Organisation.find_by_name(name)
   url = new_organisation_volunteer_op_path(org)
   case mode
@@ -88,7 +92,7 @@ Then /^I (visit|should be on) the (edit|show) page for the (.*?) (named|titled) 
                     only_path: true,
                     controller: object.pluralize.underscore,
                     action: action,
-                    id: record.id
+                    id: record
                 })
   case mode
     when 'visit' then visit url
@@ -144,17 +148,7 @@ And I should see "Whilst Voluntary Action Harrow has made effort to ensure the i
 end
 
 Then(/^the "([^"]*)" should be (not )?visible$/) do |id, negate|
-  # http://stackoverflow.com/a/15782921
-  # Capybara "visible?" method(s) are inaccurate!
-
-  #regex = /height: 0/ # Assume style="height: 0px;" is the only means of invisibility
-  #style = page.find("##{id}")['style']
-  #sleep 0.25 if style # need to give js a moment to modify the DOM
-  #expectation = negate ? :should : :should_not
-  #style ? style.send(expectation, have_text(regex)) : negate.nil?
-
-  elem = page.find("##{id}")
-  negate ? !elem.visible? : elem.visible?
+  expect(page).to have_css("##{id}", visible: negate)
 end
 
 Then(/^the "([^"]*)" should be "([^"]*)"$/) do |id, css_class|
@@ -209,7 +203,7 @@ Then(/^I should( not)? see the call to update details for organisation "(.*)"/) 
     end
 end
 Then(/^I should see an (active|inactive) home button in the header$/) do |active|
-    active_class = (active == "active") ? ".active" : "" 
+    active_class = (active == "active") ? ".active" : ""
     within('.nav.nav-pills.pull-right') do
       expect(page).to have_css("li#{active_class} > a[href='/']", :text => "Home")
     end

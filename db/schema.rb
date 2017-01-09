@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150627195630) do
+ActiveRecord::Schema.define(version: 20160628192920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 20150627195630) do
     t.boolean "active", default: false
   end
 
+  create_table "mail_templates", force: :cascade do |t|
+    t.text     "name"
+    t.text     "body"
+    t.text     "footnote"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "organisations", force: :cascade do |t|
     t.string   "name",            default: "",             null: false
     t.string   "address",         default: "",             null: false
@@ -57,7 +66,10 @@ ActiveRecord::Schema.define(version: 20150627195630) do
     t.datetime "deleted_at"
     t.string   "type",            default: "Organisation"
     t.boolean  "non_profit"
+    t.string   "slug"
   end
+
+  add_index "organisations", ["slug"], name: "index_organisations_on_slug", unique: true, using: :btree
 
   create_table "pages", force: :cascade do |t|
     t.string   "name"
@@ -134,8 +146,19 @@ ActiveRecord::Schema.define(version: 20150627195630) do
     t.integer  "organisation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "source",          default: "local"
+    t.string   "doit_op_link"
+    t.string   "doit_op_id"
+    t.string   "doit_org_link"
+    t.string   "doit_org_name"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.datetime "deleted_at"
+    t.string   "address"
+    t.string   "postcode"
   end
 
+  add_index "volunteer_ops", ["deleted_at"], name: "index_volunteer_ops_on_deleted_at", using: :btree
   add_index "volunteer_ops", ["organisation_id"], name: "index_volunteer_ops_on_organisation_id", using: :btree
 
 end

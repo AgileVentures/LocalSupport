@@ -1,3 +1,4 @@
+<%= render "search_form" %>
 <br>
 <div id="orgs_scroll" style="height:410px;width:100%;border:1px solid #ccc;overflow:scroll;">
   <div class="table table-bordered">
@@ -5,10 +6,9 @@
       <% @volunteer_ops.each do |op| %>
           <tr>
             <td>
-              <strong><%= link_to op.title, op %></strong><br/>
-
+              <strong><%= link_to_vol_op(op, :title) %></strong><br/>
               <div id="organisations">
-                <small><%= link_to op.organisation.name, op.organisation %></small>
+                <small><%= link_to_vol_op(op, :organisation) %></small>
                 <br/>
               </div>
               <%= smart_truncate(op.description) %>
@@ -17,6 +17,11 @@
           </tr>
       <% end %>
     </table>
+    <br>
   </div>
 </div>
 <% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
+
+<% render 'shared/map_legend_doit_script' %>
+
+

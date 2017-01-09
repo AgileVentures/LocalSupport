@@ -1,11 +1,13 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
-ruby '2.0.0'
-gem 'rails', '~> 4.2.0'
+ruby '2.3.1'
+gem 'rails', '~> 4.2', '>= 4.2.7.1'
 gem 'pg'
-gem 'devise', '~> 3.4.0'
-gem 'devise_invitable', '~> 1.3.0'
+gem 'devise', '~> 3.5', '>= 3.5.10'
+gem 'devise_invitable', '~> 1.6', '>= 1.6.1'
 gem 'heroku-api'
+gem 'sprockets', '~> 2.11', '>= 2.11.3'
+
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -23,16 +25,18 @@ group :development, :test do
   gem 'aruba'
   gem 'byebug'
   gem 'rack_session_access'
-  gem 'jasmine', '2.1.0'
+  gem 'jasmine', '~> 2.4'
   gem 'jasmine-jquery-rails', '2.0.2'
   #gem 'better_errors'
   gem 'binding_of_caller' # plays well with better_errors
 end
 
 group :development do
-  #gem 'ruby-debug19', :require => 'ruby-debug'
-  #gem 'debugger', '~> 1.6.8'
+  gem 'rubocop-git'
+  gem 'letter_opener'
   gem 'railroady'
+  gem 'quiet_assets'
+  
 end
 
 group :test do
@@ -46,6 +50,12 @@ group :test do
   gem 'selenium'
   gem 'selenium-client'
   gem 'coveralls', require: false
+  gem 'shoulda'
+  gem 'vcr'
+  gem 'puffing-billy'
+  gem 'poltergeist'
+  gem 'phantomjs', :require => 'phantomjs/poltergeist'
+  gem 'show_me_the_cookies'
 end
 
 group :production do
@@ -54,8 +64,8 @@ group :production do
 end
 
 gem 'coffee-rails', "4.1.0"
-gem 'uglifier', '2.5.3'
-gem 'sass-rails', '4.0.3'
+gem 'uglifier', '~> 3.0', '>= 3.0.3'
+gem 'sass-rails', '~> 4.0', '>= 4.0.5'
 gem 'less-rails', '2.5.0'
 gem 'twitter-bootstrap-rails', '2.2.8'
 
@@ -83,8 +93,19 @@ gem 'unicorn'
 gem 'redcarpet'
 
 # validating organisation website URLs
-gem 'url_validator'
+gem 'url_validator', git: 'https://github.com/AgileVentures/url_validator.git'
 
+gem 'httparty'
 
 gem 'rails_autolink'
 gem "paranoia", "~> 2.0"
+
+gem 'dotenv-rails'
+gem 'figaro'
+gem 'airbrake'
+
+# Using user friendly names in URLs
+gem 'friendly_id', '~> 5.1.0'
+
+# SEO
+gem 'meta-tags'

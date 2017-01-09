@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
         contributors
         organisations
         pages
+        volunteer_ops
     )
   end
   # Devise wiki suggests we need to make this return nil for the after_inactive_signup_path_for to be called in registrationscontroller
@@ -35,7 +36,7 @@ class ApplicationController < ActionController::Base
   # Stores the URL if permitted
   def store_location
     if request_controller_is(white_listed) && request_verb_is_get?
-      session[:previous_url] = request.path
+      session[:previous_url] = request.fullpath
     end
   end
 
@@ -96,10 +97,29 @@ class ApplicationController < ActionController::Base
     if usr.organisation and not usr.organisation.has_been_updated_recently?
       msg = render_to_string(partial: "shared/call_to_action", locals: {org: usr.organisation}).html_safe
       if flash[:warning]
-        flash[:warning] << msg
+        flash[:warning] << ' ' << msg
       else
         flash[:warning] = msg
       end
     end
+  end
+
+  def set_tags
+    set_meta_tags title: meta_tag_title,
+                  site: 'Harrow volunteering',
+                  reverse: true,
+                  description: meta_tag_description,
+                  author: 'http://www.agileventures.org',
+                  og: open_graph_tags
+  end
+
+  def open_graph_tags
+    {
+        title: meta_tag_title,
+        site: 'Harrow Community Network',
+        reverse: true,
+        description: meta_tag_description,
+        author: 'http://www.agileventures.org'
+    }
   end
 end

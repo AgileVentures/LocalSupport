@@ -17,22 +17,23 @@ Feature: Members of HCN may propose edits to organisations
       |original_name | editor_email                  | name       | description             | address        | postcode | telephone | website               | email                    | donation_info        | archived|
       |Friendly      | registered_user-2@example.com | Unfriendly | Mourning loved ones     | 30 pinner road | HA1 4HZ  | 520800000 | http://unfriendly.org | superadmin@unfriendly.xx | www.pleasedonate.com | false   |
       |Friendly      | registered_user-2@example.com | Unfriendly | Mourning loved ones     | 30 pinner road | HA1 4HZ  | 520800000 | http://unfriendly.org | superadmin@unfriendly.xx | www.pleasedonate.com | true    |
- 
+
     And cookies are approved
 
-  Scenario: Nonsuperadmins do not see all proposed edits link
+  @vcr
+  Scenario: Nonsuperadmins do not see pending proposed edits link
     Given I am signed in as an non-superadmin
     And I visit the home page
-    Then I should not see the all proposed edits link
+    Then I should not see the pending proposed edits link
 
   Scenario: Moderate a proposed edit
     Given I am signed in as a superadmin
     And I visit the home page
-    And I click on the all proposed edits link
+    And I click on the pending proposed edits link
     And I should not see links for archived edits
     And I click on view details for the proposed edit for the organisation named "Friendly"
     And I should see a link or button "Accept Edit"
-    And I should see a link or button "Reject Edit"
+    And I should see a link or button "Keep Current Information"
 
   Scenario: Editability is enforced at moderate time even if it has changed since proposal of edit
     Given I am signed in as a superadmin
@@ -58,6 +59,7 @@ Feature: Members of HCN may propose edits to organisations
       | true     | true     |
     And I should see "The edit you accepted has been applied and archived"
 
+  @vcr
   Scenario: Accept a proposed edit from a siteadmin edits nonpublic fields
     Given I am signed in as a superadmin
     And the following proposed edits exist:
@@ -71,7 +73,7 @@ Feature: Members of HCN may propose edits to organisations
   Scenario: Reject a proposed edit
     Given I am signed in as a superadmin
     And I visit the most recently created proposed edit for "Friendly"
-    When I press "Reject Edit"
+    When I press "Keep Current Information"
     Then I should be on the show page for the organisation named "Friendly"
     And the most recently updated proposed edit for "Friendly" should be updated as follows:
       | archived | accepted |

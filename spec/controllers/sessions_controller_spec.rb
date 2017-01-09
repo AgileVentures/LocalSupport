@@ -26,7 +26,7 @@ describe SessionsController, :type => :controller do
       usr = FactoryGirl.build(:user_stubbed_organisation, {:email => 'example@example.com', :password => 'pppppppp'})
       allow(controller).to receive_messages :session => {previous_url: "/"}
       post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp'}
-      expect(response).to redirect_to organisation_path(usr.organisation.id)
+      expect(response).to redirect_to organisation_path(usr.organisation)
     end
 
   end

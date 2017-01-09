@@ -1,13 +1,30 @@
 require 'rails_helper'
 
 describe BaseOrganisation, type: :model do
+  describe '#validation' do
+    it do
+      is_expected.to validate_presence_of(:name)
+        .with_message("Name can't be blank") 
+    end
+
+    it do
+      is_expected.to validate_presence_of(:description)
+        .with_message("Description can't be blank") 
+    end
+
+    it { is_expected.to allow_value('test.com').for(:website) }
+    it { is_expected.to allow_value('www.test.com').for(:website) }
+    it { is_expected.to allow_value('https://test.co.uk').for(:website) }
+    it { is_expected.not_to allow_value('##').for(:website) }
+  end
+
   describe '#has_been_updated_recently?' do
     subject { FactoryGirl.create(:organisation, updated_at: Time.now) }
 
     it { is_expected.to have_been_updated_recently }
 
     context "updated too long ago" do
-      subject { FactoryGirl.create(:organisation, updated_at: 365.days.ago)}
+      subject { FactoryGirl.create(:organisation, updated_at: 1.year.ago)}
       it { is_expected.not_to have_been_updated_recently }
     end
 
@@ -38,6 +55,17 @@ describe BaseOrganisation, type: :model do
       expect(org).to receive(:geocode)
       org.save
     end
+  end
+  
+  describe 'friendly_id' do
+     
+     it 'should use SetupSlug service for setting slugs' do
+       service_double = class_double(SetupSlug).as_stubbed_const
+       expect(service_double).to receive(:run)
+       
+       FactoryGirl.create(:organisation)
+     end
+     
   end
 
 end

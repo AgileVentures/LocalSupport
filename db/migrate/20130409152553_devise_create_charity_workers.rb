@@ -34,7 +34,7 @@ class DeviseCreateCharityWorkers < ActiveRecord::Migration
       # t.string :authentication_token
 
 
-      t.timestamps
+      t.timestamps null: true
     end
 
     add_index :charity_workers, :email,                :unique => true

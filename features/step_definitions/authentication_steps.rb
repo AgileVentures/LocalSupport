@@ -8,11 +8,12 @@ Given /^I am signed in as a charity worker (un)?related to "(.*?)"$/ do |negate,
   end
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
- 
+
 Given /^I am signed in as a (non-)?siteadmin$/ do |negate|
   user = User.find_by(siteadmin: negate ? false : true)
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 end
+
 Given /^I am signed in as an? (non-)?superadmin$/ do |negate|
   user = User.find_by_superadmin(negate ? false : true)
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
@@ -39,6 +40,7 @@ Given /^I sign up as "(.*?)" with password "(.*?)" and password confirmation "(.
       fill_in "signup_password_confirmation", :with => password_confirmation
       click_button "Sign up"
     end
+    using_wait_time(15) { expect(page).not_to have_css('#signup') } if @javascript
   end
 end
 
@@ -70,13 +72,14 @@ Given /^I sign in as "(.*?)" with password "(.*?)"( with javascript)?$/ do |emai
   fill_in "user_password", :with => password
   if js
     page.find("#signin").trigger("click")
+    expect(page).not_to have_css('#signin')
   else
     click_link_or_button "Sign in"
   end
 end
 
 Given /^I sign in as "(.*?)" with password "(.*?)" on the legacy sign in page$/ do |email, password|
-  within("#new_user") do 
+  within("#new_user") do
     fill_in "user_email", :with => email
     fill_in "user_password", :with => password
     click_link_or_button "Sign in"
@@ -85,45 +88,44 @@ end
 
 When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |email, password|
   user = User.find_by_email("#{email}")
-  user.confirm!
+  user.confirm
   steps %Q{
     Given I visit the home page
     And I sign in as "#{email}" with password "#{password}"
   }
 end
 
-Given /^I have a "([^\"]+)" cookie set to "([^\"]+)"$/ do |key, value|
-  headers = {}
-  Rack::Utils.set_cookie_header!(headers, key, value)
-  cookie_string = headers['Set-Cookie']
-  Capybara.current_session.driver.browser.set_cookie(cookie_string)
-end
-
 And(/^cookies are approved$/) do
-  steps %Q{And I have a "cookie_policy_accepted" cookie set to "true"}
+  create_cookie('cookie_policy_accepted', true)
 end
 
 And(/^cookies are not approved$/) do
-  steps %Q{And I have a "cookie_policy_accepted" cookie set to "false"}
+  create_cookie('cookie_policy_accepted', false)
 end
+
 def extract_confirmation_link email
   emails_with_confirmation_link = find_emails_with_confirmation_link(find_emails_to(email))
   Nokogiri::HTML(emails_with_confirmation_link.first.body.raw_source).search("//a[text()='Confirm my account']")[0].attribute("href").value
 end
+
 def find_emails_with_confirmation_link emails
   emails.select{|email| Nokogiri::HTML(email.body.raw_source).search("//a[text()='Confirm my account']")}
 end
+
 Given(/^I click on the confirmation link in the email to "([^\"]+)"$/) do |email|
   Capybara.current_driver = :rack_test
   visit extract_confirmation_link(email)
 end
+
 def extract_retrieve_password_link email
   emails_with_retrieve_password_link = find_emails_with_retrieve_password_link(find_emails_to(email))
   Nokogiri::HTML(emails_with_retrieve_password_link.first.body.raw_source).search("//a[text()='Change my password']")[0].attribute("href").value
 end
+
 def find_emails_with_retrieve_password_link emails
   emails.select{|email| Nokogiri::HTML(email.body.raw_source).search("//a[text()='Change my password']")}
 end
+
 Given(/^I click on the retrieve password link in the email to "([^\"]+)"$/) do |email|
   visit extract_retrieve_password_link(email)
 end
@@ -185,4 +187,3 @@ And(/^I set my password/) do
   step %Q{I fill in "user_password_confirmation" with "12345678" within the main body}
   step %Q{I press "Set my password"}
 end
-

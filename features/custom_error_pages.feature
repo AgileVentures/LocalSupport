@@ -22,3 +22,9 @@ Feature: I want to make error pages follow the general design of the site.
     Then the page should be titled "500 Internal Server Error"
     And the response status should be "500"
     And I should see "We're sorry, but something went wrong."
+
+  Scenario: reset_password_token expired message
+    Given I requested a new password too long ago
+    When I visit the reset password page
+    And I try to reset my password
+    Then I should see "Reset requested too long ago - please request a new reset by clicking "forgot password" again" within "error_explanation"

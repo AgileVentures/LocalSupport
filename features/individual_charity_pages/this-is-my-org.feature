@@ -5,18 +5,19 @@ Feature: This is my organisation
 
   Background:
     Given the following organisations exist:
-      | name         | address        | postcode |
-      | Helpful Folk | 83 pinner road | HA1 4HZ  |
-      | The Other    | 83 pinner road | HA1 4HZ  |
+      | name         | description    | address        | postcode |
+      | Helpful Folk | Amazing team   | 83 pinner road | HA1 4HZ  |
+      | The Other    | Awesome people | 83 pinner road | HA1 4HZ  |
 
     And the following users are registered:
       | email                       | password       | superadmin | confirmed_at        | organisation | pending_organisation |
-      | admin@helpfolk.com          | mypassword1234 | false | 2008-01-01 00:00:00 |              |                      |
-      | pendingadmin@helpfolk.com   | mypassword1234 | false | 2008-01-01 00:00;00 |              | Helpful Folk         |
-      | superadmin@localsupport.org | mypassword1234 | true  | 2008-01-01 00:00:00 |              |                      |
+      | admin@helpfolk.com          | mypassword1234 | false      | 2008-01-01 00:00:00 |              |                      |
+      | pendingadmin@helpfolk.com   | mypassword1234 | false      | 2008-01-01 00:00;00 |              | Helpful Folk         |
+      | superadmin@localsupport.org | mypassword1234 | true       | 2008-01-01 00:00:00 |              |                      |
 
     And cookies are approved
 
+  @vcr
   Scenario: Signed in User
     Given I am signed in as a non-superadmin
     And I click "This is my organisation" on the "Helpful Folk" page and stay there
@@ -27,7 +28,7 @@ Feature: This is my organisation
 
 # when capybara-webkit clicks TIMO, it needs to submit sign in form with javascript or
 # else ClickFailed error will occur due to overlapping elements
-  @javascript
+  @javascript @billy
   Scenario: Not Signed in User
     Given I click "This is my organisation" on the "Helpful Folk" page and stay there
     When I sign in as "admin@helpfolk.com" with password "mypassword1234" with javascript
@@ -38,7 +39,7 @@ Feature: This is my organisation
 
 # what we're not checking here is that the login box pops open with the right message
 # I think we cover that in jasmine tests - needed here too?
-  @javascript
+  @javascript @billy
   Scenario: Not Signed in User Who Fails Signin Once
     Given I click "This is my organisation" on the "Helpful Folk" page and stay there
     When I sign in as "admin@helpfolk.com" with password "mypassword1235" with javascript
@@ -49,7 +50,7 @@ Feature: This is my organisation
     And "admin@helpfolk.com"'s request for "Helpful Folk" should be persisted
     And an email should be sent to "superadmin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
 
-  @javascript
+  @vcr @javascript @billy
   Scenario: Unregistered User
     Given I click "This is my organisation" on the "Helpful Folk" page and stay there
     And I click "toggle_link"
@@ -64,7 +65,7 @@ Feature: This is my organisation
     Then I should be on the show page for the organisation named "Helpful Folk"
     And an email should be sent to "superadmin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
 
-  @javascript
+  @javascript @billy @intermittent-ci-js-fail
   Scenario: Unregistered User Who Fails Signin Once
     Given I click "This is my organisation" on the "Helpful Folk" page and stay there
     When I click "toggle_link"

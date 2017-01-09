@@ -17,6 +17,18 @@ FactoryGirl.define do
       end
     end
   end
+  
+  factory :friendly_id_org, class: Organisation do
+    name 'The Most Noble Great Charity of London'
+    description 'Really big, rich and generous charity'
+    after(:build, &:save!)
+  end
+  
+  factory :parochial_org, class: Organisation do
+    name 'The Parochial Church Council Of The Ecclesiastical Parish Of St. Alban, North'
+    description 'Church charity'
+    after(:build, &:save!)
+  end
 
   factory :proposed_organisation_edit do
 
@@ -79,11 +91,28 @@ FactoryGirl.define do
         user.save!
       end
     end
+    factory :deleted_user do
+      deleted_at 1.year.ago
+    end
   end
 
   factory :volunteer_op do
-    title "Help out"
-    description "Some nice people"
+    title 'Help out'
+    description 'Some nice people'
+
+    factory :local_volunteer_op do
+    end
+
+    factory :doit_volunteer_op do
+      source 'doit'
+    end
+  end
+
+  factory :invitation_instructions, class: MailTemplate do
+    name 'Invitation instructions'
+    body 'Test template body'
+    footnote 'Test template footnote'
+    email 'test@test.com'
   end
 
 end

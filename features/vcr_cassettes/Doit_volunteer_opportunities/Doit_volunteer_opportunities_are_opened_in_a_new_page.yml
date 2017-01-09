@@ -1,0 +1,430 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.do-it.org/v1/opportunities?lat=51.5978&lng=-0.3370&miles=0.5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 17 Sep 2016 03:00:36 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data": {"items": [{"address_1": "Third Floor, Premier House", "address_2":
+        "1 Canning Road", "availability": {"friday": [true, true, false], "monday":
+        [true, true, false], "saturday": [false, false, false], "sunday": [false,
+        false, false], "thursday": [true, true, false], "tuesday": [true, true, false],
+        "wednesday": [true, true, false]}, "city": "Wealdstone", "county": "Middlesex",
+        "created": "2016-05-24T13:23:27.942884+00:00", "description": "To help raise
+        funds for Age UK Harrow.  To identify ways of raising funds and to take action
+        to help secure this funding by talking to companies on the telephone, internet
+        research and by visiting schools and colleges.\n\nTo help organise fundraising
+        events\nTo help with general fundraising opportunities", "for_recruiter":
+        {"active_opportunities_count": 1, "address_1": "3rd Floor Premier House",
+        "address_2": "1 Canning Road", "application_via_url": false, "banner": [{"absolute_url":
+        "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.1170x391.jpg", "height": 391, "width": 1170}, {"absolute_url":
+        "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.768x391.jpg", "height": 391, "width": 768}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.320x391.jpg", "height": 391, "width": 320}], "blurb": "Age UK
+        Harrow (formerly known as Age Concern Harrow) is an independent charity which
+        exists to serve the interests of all older citizens of the London Borough
+        of Harrow, from all walks of life and ethnic communities. It provides a wide
+        range of services, from information about an extensive breadth of issues of
+        interest to older people, to volunteering opportunities and support for those
+        who are housebound and isolated.\n\nIn addition we support the development
+        of quality services for older people in Harrow and work in partnership with
+        other voluntary sector organisations, the local authority and local health
+        services on all matters relevant to older residents of Harrow.\n\nAge UK Harrow
+        is responsible for its own funds and has its own Board of Trustees. The Board
+        of Trustees oversee the strategic management of the organisation.\n\nAge UK
+        Harrow is a local partner of Age UK, and draws on the expertise of Age UK
+        which campaigns on a national basis on behalf of older people and Age UK London
+        which campaigns on a regional basis on behalf of older people. Age UK Harrow
+        is a registered charity and a company limited by guarantee.", "charity": false,
+        "city": "Wealdstone", "contact_name": "Lena Hanen", "created": "2014-10-28T12:24:57.282302+00:00",
+        "doit_approved": false, "email": "lhanen@ageukharrow.org.uk", "facebook":
+        "https://www.facebook.com/ageukharrow/", "id": "072be9c2-e4c5-4ae4-aefd-ea2868567fba",
+        "instagram": null, "is_user_subscribed": false, "is_volunteer_center": false,
+        "lat": 51.5942, "links": [{"href": "/v2/orgs/age-uk-harrow", "title": "Age
+        UK Harrow Profile"}], "lng": -0.3348, "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.125x125.jpeg", "height": 125, "width": 125}, {"absolute_url":
+        "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.109x109.jpeg", "height": 109, "width": 109}, {"absolute_url":
+        "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.76x76.jpeg", "height": 76, "width": 76}, {"absolute_url":
+        "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.50x50.jpeg", "height": 50, "width": 50}], "name": "Age
+        UK Harrow", "permissions": null, "phone": "020 8861 7980", "postcode": "HA3
+        7TS", "rating": "0.00", "rating_count": 0, "slug": "age-uk-harrow", "source":
+        "doittrust", "subscriber_count": 2, "twitter": "https://twitter.com/Ageukharrow",
+        "website": "http://www.ageuk.org.uk/harrow"}, "for_recruiter_id": "072be9c2-e4c5-4ae4-aefd-ea2868567fba",
+        "id": "1b576407-4863-4dd9-bf50-b008a383c0f3", "interests": [{"children": [],
+        "created": "2014-10-26T17:24:26.260228+00:00", "id": "3fd515b4-6e1a-41a1-bad9-ea401937555b",
+        "name": "Older people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
+        "slug": "older-people", "updated": "2014-10-26T17:24:26.260247+00:00"}, {"children":
+        [], "created": "2014-10-26T17:24:26.047188+00:00", "id": "ef94a8bb-eb86-494e-bb0c-44653280dd89",
+        "name": "Public events", "parent_id": "70f2af2b-333b-4c66-bfdd-1dd46a89e3f7",
+        "slug": "public-events", "updated": "2016-06-17T14:49:21.642497+00:00"}, {"children":
+        [], "created": "2014-10-26T17:24:26.142866+00:00", "id": "6fc9bb15-1728-4d4d-bdab-51be247acba0",
+        "name": "Social care", "parent_id": "24620d05-41c1-4884-a0cb-f70054faba9b",
+        "slug": "social-care", "updated": "2014-10-26T17:24:26.142886+00:00"}, {"children":
+        [], "created": "2014-10-26T17:24:26.146376+00:00", "id": "484cccef-29f7-463f-97e0-385657bc58da",
+        "name": "Disability", "parent_id": "24620d05-41c1-4884-a0cb-f70054faba9b",
+        "slug": "disability", "updated": "2014-10-26T17:24:26.146396+00:00"}], "is_new":
+        false, "lat": 51.5943, "lng": -0.334769, "local_authority": {"id": "0561a78f-83e1-47fa-ae4c-07a9cf7390d3",
+        "name": "Harrow London Borough", "slug": "harrow-london-borough"}, "location_id":
+        null, "location_name": null, "location_type": "SL", "locations": [{"address_1":
+        "Third Floor, Premier House", "address_2": "1 Canning Road", "city": "Wealdstone",
+        "county": "Middlesex", "id": "1b576407-4863-4dd9-bf50-b008a383c0f3", "lat":
+        51.5943, "lng": -0.334769, "local_authority": {"id": "0561a78f-83e1-47fa-ae4c-07a9cf7390d3",
+        "name": "Harrow London Borough", "slug": "harrow-london-borough"}, "location":
+        null, "location_id": null, "location_name": null, "location_type": "SL", "places_available":
+        10, "postcode": "HA3 7TS", "rating": "0.00", "rating_count": 0, "working_from_home":
+        false}], "micro_availability": [], "owner_recruiter": {"active_opportunities_count":
+        1, "address_1": "3rd Floor Premier House", "address_2": "1 Canning Road",
+        "application_via_url": false, "banner": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.1170x391.jpg", "height": 391, "width": 1170}, {"absolute_url":
+        "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.768x391.jpg", "height": 391, "width": 768}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.320x391.jpg", "height": 391, "width": 320}], "blurb": "Age UK
+        Harrow (formerly known as Age Concern Harrow) is an independent charity which
+        exists to serve the interests of all older citizens of the London Borough
+        of Harrow, from all walks of life and ethnic communities. It provides a wide
+        range of services, from information about an extensive breadth of issues of
+        interest to older people, to volunteering opportunities and support for those
+        who are housebound and isolated.\n\nIn addition we support the development
+        of quality services for older people in Harrow and work in partnership with
+        other voluntary sector organisations, the local authority and local health
+        services on all matters relevant to older residents of Harrow.\n\nAge UK Harrow
+        is responsible for its own funds and has its own Board of Trustees. The Board
+        of Trustees oversee the strategic management of the organisation.\n\nAge UK
+        Harrow is a local partner of Age UK, and draws on the expertise of Age UK
+        which campaigns on a national basis on behalf of older people and Age UK London
+        which campaigns on a regional basis on behalf of older people. Age UK Harrow
+        is a registered charity and a company limited by guarantee.", "charity": false,
+        "city": "Wealdstone", "contact_name": "Lena Hanen", "created": "2014-10-28T12:24:57.282302+00:00",
+        "doit_approved": false, "email": "lhanen@ageukharrow.org.uk", "facebook":
+        "https://www.facebook.com/ageukharrow/", "id": "072be9c2-e4c5-4ae4-aefd-ea2868567fba",
+        "instagram": null, "is_user_subscribed": false, "is_volunteer_center": false,
+        "lat": 51.5942, "links": [{"href": "/v2/orgs/age-uk-harrow", "title": "Age
+        UK Harrow Profile"}], "lng": -0.3348, "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.125x125.jpeg", "height": 125, "width": 125}, {"absolute_url":
+        "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.109x109.jpeg", "height": 109, "width": 109}, {"absolute_url":
+        "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.76x76.jpeg", "height": 76, "width": 76}, {"absolute_url":
+        "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.50x50.jpeg", "height": 50, "width": 50}], "name": "Age
+        UK Harrow", "permissions": null, "phone": "020 8861 7980", "postcode": "HA3
+        7TS", "rating": "0.00", "rating_count": 0, "slug": "age-uk-harrow", "source":
+        "doittrust", "subscriber_count": 2, "twitter": "https://twitter.com/Ageukharrow",
+        "website": "http://www.ageuk.org.uk/harrow"}, "owner_recruiter_id": "072be9c2-e4c5-4ae4-aefd-ea2868567fba",
+        "photo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/2014-09-22_Age_UK_logo_web_RsG6DRoYYHX5M3fiyWkFaH.616x318.jpg",
+        "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/2014-09-22_Age_UK_logo_web_RsG6DRoYYHX5M3fiyWkFaH.308x159.jpg",
+        "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/2014-09-22_Age_UK_logo_web_RsG6DRoYYHX5M3fiyWkFaH.243x124.jpg",
+        "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/2014-09-22_Age_UK_logo_web_RsG6DRoYYHX5M3fiyWkFaH.170x87.jpg",
+        "height": 87, "width": 170}], "places_available": 10, "postcode": "HA3 7TS",
+        "rating": "0.00", "rating_count": 0, "specific_end_date": "2016-09-30T13:15:19.237000+00:00",
+        "specific_start_date": "2016-05-24T13:15:19.237000+00:00", "status": "live",
+        "title": "Fundraiser", "updated": "2016-05-24T13:24:13.052581+00:00", "working_from_home":
+        false}, {"address_1": "harrow community enterprise", "address_2": "gordon
+        road", "availability": {"friday": [false, false, false], "monday": [false,
+        true, false], "saturday": [false, false, false], "sunday": [false, false,
+        false], "thursday": [false, true, false], "tuesday": [false, true, false],
+        "wednesday": [false, false, false]}, "city": "harrow weald", "county": "middlesex",
+        "created": "2016-04-22T13:47:49.758705+00:00", "description": "using computer
+        to respond to emails,writing letters,advertising, learn debt counselling,
+        helping customers, responding to correspondence paying out bills and applications
+        to health lottery and national lottery for raising funds etc.", "for_recruiter":
+        {"active_opportunities_count": 1, "address_1": "1C Gordon Road", "address_2":
+        "Wealdstone", "application_via_url": false, "banner": [], "blurb": "The Harrow
+        Community Enterprise is a not-for-profit charity organisation operating in
+        the area of Harrow in London with the main focus on supporting the deprived
+        and disadvantaged sections of the local community. Harrow is home to one of
+        the most diverse ethnic groups in London with a large increase in low paying
+        jobs in the past few years as per the recent studies. The charity aims at
+        meeting basic needs and necessities of disadvantaged individuals. The uniqueness
+        of Harrow Community Enterprise is in its approach i.e. to regenerate and renew
+        the resources that are often discarded, to support every member of the community
+        in different ways.", "charity": false, "city": "London", "contact_name": null,
+        "created": "2014-10-27T18:56:39.571456+00:00", "doit_approved": false, "email":
+        "harrowcommunityenterprise@gmail.com", "facebook": null, "id": "f4cc3ac9-c300-44d7-a780-4759a5de0495",
+        "instagram": null, "is_user_subscribed": false, "is_volunteer_center": false,
+        "lat": 51.6, "links": [{"href": "/v2/orgs/harrow-community-enterprise", "title":
+        "Harrow Community Enterprise Profile"}], "lng": -0.34, "logo": [], "name":
+        "Harrow Community Enterprise", "permissions": null, "phone": "020 88611228",
+        "postcode": "HA3 5RY", "rating": "0.00", "rating_count": 0, "slug": "harrow-community-enterprise",
+        "source": "doittrust", "subscriber_count": 1, "twitter": null, "website":
+        "http://None"}, "for_recruiter_id": "f4cc3ac9-c300-44d7-a780-4759a5de0495",
+        "id": "101d591f-8ca0-45b6-ac18-dd76d8402efa", "interests": [{"children": [],
+        "created": "2014-10-26T17:24:25.689999+00:00", "id": "8832e673-44fc-4771-a66d-40dfb9d038da",
+        "name": "IT", "parent_id": "a0be8981-33c6-46df-a3fe-2100a575695f", "slug":
+        "it", "updated": "2014-10-26T17:24:25.690020+00:00"}], "is_new": false, "lat":
+        51.5951, "lng": -0.337177, "local_authority": {"id": "0561a78f-83e1-47fa-ae4c-07a9cf7390d3",
+        "name": "Harrow London Borough", "slug": "harrow-london-borough"}, "location_id":
+        null, "location_name": null, "location_type": "SL", "locations": [{"address_1":
+        "harrow community enterprise", "address_2": "gordon road", "city": "harrow
+        weald", "county": "middlesex", "id": "101d591f-8ca0-45b6-ac18-dd76d8402efa",
+        "lat": 51.5951, "lng": -0.337177, "local_authority": {"id": "0561a78f-83e1-47fa-ae4c-07a9cf7390d3",
+        "name": "Harrow London Borough", "slug": "harrow-london-borough"}, "location":
+        null, "location_id": null, "location_name": null, "location_type": "SL", "places_available":
+        6, "postcode": "HA3 5RY", "rating": "0.00", "rating_count": 0, "working_from_home":
+        false}], "micro_availability": [], "owner_recruiter": {"active_opportunities_count":
+        1, "address_1": "1C Gordon Road", "address_2": "Wealdstone", "application_via_url":
+        false, "banner": [], "blurb": "The Harrow Community Enterprise is a not-for-profit
+        charity organisation operating in the area of Harrow in London with the main
+        focus on supporting the deprived and disadvantaged sections of the local community.
+        Harrow is home to one of the most diverse ethnic groups in London with a large
+        increase in low paying jobs in the past few years as per the recent studies.
+        The charity aims at meeting basic needs and necessities of disadvantaged individuals.
+        The uniqueness of Harrow Community Enterprise is in its approach i.e. to regenerate
+        and renew the resources that are often discarded, to support every member
+        of the community in different ways.", "charity": false, "city": "London",
+        "contact_name": null, "created": "2014-10-27T18:56:39.571456+00:00", "doit_approved":
+        false, "email": "harrowcommunityenterprise@gmail.com", "facebook": null, "id":
+        "f4cc3ac9-c300-44d7-a780-4759a5de0495", "instagram": null, "is_user_subscribed":
+        false, "is_volunteer_center": false, "lat": 51.6, "links": [{"href": "/v2/orgs/harrow-community-enterprise",
+        "title": "Harrow Community Enterprise Profile"}], "lng": -0.34, "logo": [],
+        "name": "Harrow Community Enterprise", "permissions": null, "phone": "020
+        88611228", "postcode": "HA3 5RY", "rating": "0.00", "rating_count": 0, "slug":
+        "harrow-community-enterprise", "source": "doittrust", "subscriber_count":
+        1, "twitter": null, "website": "http://None"}, "owner_recruiter_id": "f4cc3ac9-c300-44d7-a780-4759a5de0495",
+        "photo": [], "places_available": 6, "postcode": "HA3 5RY", "rating": "0.00",
+        "rating_count": 0, "specific_end_date": "2017-03-06T14:30:03.645000+00:00",
+        "specific_start_date": "2016-04-22T13:30:03.645000+00:00", "status": "live",
+        "title": "Admin Volunteer", "updated": "2016-04-22T15:29:47.188090+00:00",
+        "working_from_home": false}, {"address_1": "43 Claremont Road,", "address_2":
+        null, "availability": {"friday": [false, false, false], "monday": [false,
+        false, false], "saturday": [false, false, false], "sunday": [false, false,
+        false], "thursday": [false, false, false], "tuesday": [false, false, true],
+        "wednesday": [false, false, false]}, "city": "Wealdstone", "county": "Middlesex",
+        "created": "2014-10-27T09:51:53.864127+00:00", "description": "By Volunteering
+        to work with scouts, you will be responsible, along with the other leaders,
+        helpers and members for planning and running the weekly activities for 10
+        - 14 year olds! \n\nIt is a fun and rewarding role, allowing you to watch
+        the young people enjoy the activities you organise, as well being involved
+        in their development as they grow in confidence and ability. \n\nThe Scout
+        Association provides a wide range of books and electronic resources to aid
+        volunteers plan their activities together with an award winning training scheme
+        and on-line programme resources", "for_recruiter": {"active_opportunities_count":
+        183, "address_1": "The Scout Association", "address_2": "Gilwell Park", "application_via_url":
+        false, "banner": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/ACTIVITIES_KRbQsPh2dyDWtoxS9CBTBM.1170x391.jpg",
+        "height": 391, "width": 1170}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/ACTIVITIES_KRbQsPh2dyDWtoxS9CBTBM.768x391.jpg",
+        "height": 391, "width": 768}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/ACTIVITIES_KRbQsPh2dyDWtoxS9CBTBM.320x391.jpg",
+        "height": 391, "width": 320}], "blurb": "Scouting in the UK is organised through
+        The Scout Association. This page is for anyone interested in Scouting volunteering
+        opportunities throughout London.\n\nThe purpose of Scouting is to help young
+        people, aged 6-25 years old, achieve their full physical, intellectual, social
+        and spiritual potential as individuals, as responsible citizens and as members
+        of their local, national and international communities. \n\nWith over 520,000
+        members in the UK, Scouting is the largest mixed youth organisation in the
+        country. \n\nAdult volunteers must follow the policies of The Scout Association,
+        which can be found on our webpage: www.scouts.org.uk.", "charity": true, "city":
+        "Chingford", "contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
+        "doit_approved": false, "email": "debbie.evans@scouts.org.uk", "facebook":
+        "https://www.facebook.com/pages/The-Scout-Association-Regional-Development-Service-Greater-London/",
+        "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "instagram": null, "is_user_subscribed":
+        false, "is_volunteer_center": false, "lat": 51.6501, "links": [{"href": "/v2/orgs/greater-london-region",
+        "title": "Scouts - Scout Association - Greater London Region Profile"}], "lng":
+        0.0026, "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.125x125.jpg",
+        "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.109x109.jpg",
+        "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.76x76.jpg",
+        "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.50x50.jpg",
+        "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater
+        London Region", "permissions": null, "phone": "01635 247845", "postcode":
+        "E4 7QW", "rating": "3.00", "rating_count": 2, "slug": "greater-london-region",
+        "source": "doittrust", "subscriber_count": 3, "twitter": "https://twitter.com/ScoutsLondon",
+        "website": "http://www.scouts.org.uk"}, "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+        "id": "79ae1022-9059-40c0-82dd-3f5b15dd796a", "interests": [{"children": [],
+        "created": "2014-10-26T17:24:26.278190+00:00", "id": "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+        "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+        "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children": [],
+        "created": "2014-10-26T17:24:26.246077+00:00", "id": "c1a66cf8-a685-4300-8f69-6d47a0bd93e0",
+        "name": "Recreation", "parent_id": "cd7d0590-2800-45b4-8084-b475562e73f4",
+        "slug": "recreation", "updated": "2014-10-26T17:24:26.246096+00:00"}, {"children":
+        [], "created": "2014-10-26T17:24:26.271205+00:00", "id": "8678f792-d24e-4810-99d5-c6e6ba4196a4",
+        "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+        "families", "updated": "2014-10-26T17:24:26.271224+00:00"}, {"children": [],
+        "created": "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+        "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
+        "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
+        false, "lat": 51.5983, "lng": -0.335993, "local_authority": {"id": "0561a78f-83e1-47fa-ae4c-07a9cf7390d3",
+        "name": "Harrow London Borough", "slug": "harrow-london-borough"}, "location_id":
+        null, "location_name": null, "location_type": "SL", "locations": [{"address_1":
+        "43 Claremont Road,", "address_2": null, "city": "Wealdstone", "county": "Middlesex",
+        "id": "79ae1022-9059-40c0-82dd-3f5b15dd796a", "lat": 51.5983, "lng": -0.335993,
+        "local_authority": {"id": "0561a78f-83e1-47fa-ae4c-07a9cf7390d3", "name":
+        "Harrow London Borough", "slug": "harrow-london-borough"}, "location": null,
+        "location_id": null, "location_name": null, "location_type": "SL", "places_available":
+        2, "postcode": "HA3 7AU", "rating": "0.00", "rating_count": 0, "working_from_home":
+        false}], "micro_availability": [], "owner_recruiter": {"active_opportunities_count":
+        183, "address_1": "The Scout Association", "address_2": "Gilwell Park", "application_via_url":
+        false, "banner": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/ACTIVITIES_KRbQsPh2dyDWtoxS9CBTBM.1170x391.jpg",
+        "height": 391, "width": 1170}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/ACTIVITIES_KRbQsPh2dyDWtoxS9CBTBM.768x391.jpg",
+        "height": 391, "width": 768}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/ACTIVITIES_KRbQsPh2dyDWtoxS9CBTBM.320x391.jpg",
+        "height": 391, "width": 320}], "blurb": "Scouting in the UK is organised through
+        The Scout Association. This page is for anyone interested in Scouting volunteering
+        opportunities throughout London.\n\nThe purpose of Scouting is to help young
+        people, aged 6-25 years old, achieve their full physical, intellectual, social
+        and spiritual potential as individuals, as responsible citizens and as members
+        of their local, national and international communities. \n\nWith over 520,000
+        members in the UK, Scouting is the largest mixed youth organisation in the
+        country. \n\nAdult volunteers must follow the policies of The Scout Association,
+        which can be found on our webpage: www.scouts.org.uk.", "charity": true, "city":
+        "Chingford", "contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
+        "doit_approved": false, "email": "debbie.evans@scouts.org.uk", "facebook":
+        "https://www.facebook.com/pages/The-Scout-Association-Regional-Development-Service-Greater-London/",
+        "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "instagram": null, "is_user_subscribed":
+        false, "is_volunteer_center": false, "lat": 51.6501, "links": [{"href": "/v2/orgs/greater-london-region",
+        "title": "Scouts - Scout Association - Greater London Region Profile"}], "lng":
+        0.0026, "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.125x125.jpg",
+        "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.109x109.jpg",
+        "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.76x76.jpg",
+        "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.50x50.jpg",
+        "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater
+        London Region", "permissions": null, "phone": "01635 247845", "postcode":
+        "E4 7QW", "rating": "3.00", "rating_count": 2, "slug": "greater-london-region",
+        "source": "doittrust", "subscriber_count": 3, "twitter": "https://twitter.com/ScoutsLondon",
+        "website": "http://www.scouts.org.uk"}, "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+        "photo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/X0A0667_6ptyC4xw2nhqJzudZRwLhS.616x318.jpg",
+        "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/X0A0667_6ptyC4xw2nhqJzudZRwLhS.308x159.jpg",
+        "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/X0A0667_6ptyC4xw2nhqJzudZRwLhS.243x124.jpg",
+        "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/X0A0667_6ptyC4xw2nhqJzudZRwLhS.170x87.jpg",
+        "height": 87, "width": 170}], "places_available": 2, "postcode": "HA3 7AU",
+        "rating": "0.00", "rating_count": 0, "specific_end_date": null, "specific_start_date":
+        "2016-01-29T16:05:04.445000+00:00", "status": "live", "title": "Scout Leader
+        (volunteering with 10-14 year olds) 27th Harrow", "updated": "2016-01-29T15:50:10.669967+00:00",
+        "working_from_home": false}, {"address_1": "43 Claremont Road,", "address_2":
+        "", "availability": {"friday": [false, false, false], "monday": [false, false,
+        false], "saturday": [false, false, false], "sunday": [false, false, false],
+        "thursday": [false, false, false], "tuesday": [false, false, true], "wednesday":
+        [false, false, false]}, "city": "Wealdstone", "county": "Middlesex", "created":
+        "2014-10-27T09:50:38.557408+00:00", "description": "Assistant Leaders are
+        responsible, with Leaders, helpers and members, for planning and running the
+        weekly activities for 8-10 year olds!\n\nIt is a fun and rewarding role, allowing
+        you to watch the young people enjoy the activities you organize, as well as
+        being involved in their development as they grow in confidence and ability.
+        \n\nThe Scout Association provides a wide range of books and electronic resources
+        to aid volunteers plan their activities together with an award winning training
+        scheme and on-line programme resources", "for_recruiter": {"active_opportunities_count":
+        183, "address_1": "The Scout Association", "address_2": "Gilwell Park", "application_via_url":
+        false, "banner": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/ACTIVITIES_KRbQsPh2dyDWtoxS9CBTBM.1170x391.jpg",
+        "height": 391, "width": 1170}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/ACTIVITIES_KRbQsPh2dyDWtoxS9CBTBM.768x391.jpg",
+        "height": 391, "width": 768}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/ACTIVITIES_KRbQsPh2dyDWtoxS9CBTBM.320x391.jpg",
+        "height": 391, "width": 320}], "blurb": "Scouting in the UK is organised through
+        The Scout Association. This page is for anyone interested in Scouting volunteering
+        opportunities throughout London.\n\nThe purpose of Scouting is to help young
+        people, aged 6-25 years old, achieve their full physical, intellectual, social
+        and spiritual potential as individuals, as responsible citizens and as members
+        of their local, national and international communities. \n\nWith over 520,000
+        members in the UK, Scouting is the largest mixed youth organisation in the
+        country. \n\nAdult volunteers must follow the policies of The Scout Association,
+        which can be found on our webpage: www.scouts.org.uk.", "charity": true, "city":
+        "Chingford", "contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
+        "doit_approved": false, "email": "debbie.evans@scouts.org.uk", "facebook":
+        "https://www.facebook.com/pages/The-Scout-Association-Regional-Development-Service-Greater-London/",
+        "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "instagram": null, "is_user_subscribed":
+        false, "is_volunteer_center": false, "lat": 51.6501, "links": [{"href": "/v2/orgs/greater-london-region",
+        "title": "Scouts - Scout Association - Greater London Region Profile"}], "lng":
+        0.0026, "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.125x125.jpg",
+        "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.109x109.jpg",
+        "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.76x76.jpg",
+        "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.50x50.jpg",
+        "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater
+        London Region", "permissions": null, "phone": "01635 247845", "postcode":
+        "E4 7QW", "rating": "3.00", "rating_count": 2, "slug": "greater-london-region",
+        "source": "doittrust", "subscriber_count": 3, "twitter": "https://twitter.com/ScoutsLondon",
+        "website": "http://www.scouts.org.uk"}, "for_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+        "id": "d1f8f924-db77-48c9-82a9-7433bbc9a048", "interests": [{"children": [],
+        "created": "2014-10-26T17:24:26.246077+00:00", "id": "c1a66cf8-a685-4300-8f69-6d47a0bd93e0",
+        "name": "Recreation", "parent_id": "cd7d0590-2800-45b4-8084-b475562e73f4",
+        "slug": "recreation", "updated": "2014-10-26T17:24:26.246096+00:00"}, {"children":
+        [], "created": "2014-10-26T17:24:26.278190+00:00", "id": "8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+        "name": "Children", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+        "children", "updated": "2014-10-26T17:24:26.278210+00:00"}, {"children": [],
+        "created": "2014-10-26T17:24:26.271205+00:00", "id": "8678f792-d24e-4810-99d5-c6e6ba4196a4",
+        "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
+        "families", "updated": "2014-10-26T17:24:26.271224+00:00"}, {"children": [],
+        "created": "2014-10-26T17:24:26.274701+00:00", "id": "02b052fd-4f3d-418b-9542-0b980533b03b",
+        "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
+        "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
+        false, "lat": 51.5983, "lng": -0.335993, "local_authority": {"id": "0561a78f-83e1-47fa-ae4c-07a9cf7390d3",
+        "name": "Harrow London Borough", "slug": "harrow-london-borough"}, "location_id":
+        null, "location_name": null, "location_type": "SL", "locations": [{"address_1":
+        "43 Claremont Road,", "address_2": "", "city": "Wealdstone", "county": "Middlesex",
+        "id": "d1f8f924-db77-48c9-82a9-7433bbc9a048", "lat": 51.5983, "lng": -0.335993,
+        "local_authority": {"id": "0561a78f-83e1-47fa-ae4c-07a9cf7390d3", "name":
+        "Harrow London Borough", "slug": "harrow-london-borough"}, "location": null,
+        "location_id": null, "location_name": null, "location_type": "SL", "places_available":
+        2, "postcode": "HA3 7AU", "rating": "0.00", "rating_count": 0, "working_from_home":
+        false}], "micro_availability": [], "owner_recruiter": {"active_opportunities_count":
+        183, "address_1": "The Scout Association", "address_2": "Gilwell Park", "application_via_url":
+        false, "banner": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/ACTIVITIES_KRbQsPh2dyDWtoxS9CBTBM.1170x391.jpg",
+        "height": 391, "width": 1170}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/ACTIVITIES_KRbQsPh2dyDWtoxS9CBTBM.768x391.jpg",
+        "height": 391, "width": 768}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/ACTIVITIES_KRbQsPh2dyDWtoxS9CBTBM.320x391.jpg",
+        "height": 391, "width": 320}], "blurb": "Scouting in the UK is organised through
+        The Scout Association. This page is for anyone interested in Scouting volunteering
+        opportunities throughout London.\n\nThe purpose of Scouting is to help young
+        people, aged 6-25 years old, achieve their full physical, intellectual, social
+        and spiritual potential as individuals, as responsible citizens and as members
+        of their local, national and international communities. \n\nWith over 520,000
+        members in the UK, Scouting is the largest mixed youth organisation in the
+        country. \n\nAdult volunteers must follow the policies of The Scout Association,
+        which can be found on our webpage: www.scouts.org.uk.", "charity": true, "city":
+        "Chingford", "contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
+        "doit_approved": false, "email": "debbie.evans@scouts.org.uk", "facebook":
+        "https://www.facebook.com/pages/The-Scout-Association-Regional-Development-Service-Greater-London/",
+        "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca", "instagram": null, "is_user_subscribed":
+        false, "is_volunteer_center": false, "lat": 51.6501, "links": [{"href": "/v2/orgs/greater-london-region",
+        "title": "Scouts - Scout Association - Greater London Region Profile"}], "lng":
+        0.0026, "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.125x125.jpg",
+        "height": 125, "width": 125}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.109x109.jpg",
+        "height": 109, "width": 109}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.76x76.jpg",
+        "height": 76, "width": 76}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/MG_5592_ZsRxrWnVe5Fk8RqJL4jEN6.50x50.jpg",
+        "height": 50, "width": 50}], "name": "Scouts - Scout Association - Greater
+        London Region", "permissions": null, "phone": "01635 247845", "postcode":
+        "E4 7QW", "rating": "3.00", "rating_count": 2, "slug": "greater-london-region",
+        "source": "doittrust", "subscriber_count": 3, "twitter": "https://twitter.com/ScoutsLondon",
+        "website": "http://www.scouts.org.uk"}, "owner_recruiter_id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+        "photo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/IMG_0085_k7cxdpYbjaec74qAFkkh6n.616x318.jpg",
+        "height": 318, "width": 616}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/IMG_0085_k7cxdpYbjaec74qAFkkh6n.308x159.jpg",
+        "height": 159, "width": 308}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/IMG_0085_k7cxdpYbjaec74qAFkkh6n.243x124.jpg",
+        "height": 124, "width": 243}, {"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/IMG_0085_k7cxdpYbjaec74qAFkkh6n.170x87.jpg",
+        "height": 87, "width": 170}], "places_available": 2, "postcode": "HA3 7AU",
+        "rating": "0.00", "rating_count": 0, "specific_end_date": null, "specific_start_date":
+        "2016-01-25T09:25:58.431000+00:00", "status": "live", "title": "Cub Scout
+        Leader (volunteering with 8-10 year olds) 27th Harrow", "updated": "2016-01-25T09:30:07.758522+00:00",
+        "working_from_home": false}]}, "links": {"self": {"href": "/v1/opportunities",
+        "title": "You are here."}}, "meta": {"code": 200, "current_page": 1, "items_per_page":
+        20, "sort_by": ["title", "rating", "updated", "advertise_end_date"], "tenant":
+        "doittrust", "total_items": 4, "total_pages": 1, "version": "2016.09.06.0"}}'
+    http_version: 
+  recorded_at: Sat, 17 Sep 2016 02:57:40 GMT
+recorded_with: VCR 3.0.3

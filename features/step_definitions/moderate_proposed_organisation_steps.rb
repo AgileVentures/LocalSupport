@@ -27,8 +27,8 @@ Then (/^I should( not)? see a "Reject Proposed Organisation" button$/) do |negat
   end
 end
 
-Then(/^I click on the all proposed organisations link$/) do
-  click_link "All Proposed Organisations"
+Then(/^I click on the pending proposed organisations link$/) do
+  click_link "Pending Proposed Organisations"
 end
 
 Then (/^I should not see an add organisation link$/) do

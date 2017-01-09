@@ -1,5 +1,6 @@
-begin
+if ENV['RACK_ENV'] != 'production'
   require 'coveralls/rake/task'
   Coveralls::RakeTask.new
-  task :test_with_coveralls => [:spec, :cucumber, 'coveralls:push']
+  desc 'Run Rspec and Cucumber tests with coveralls'
+  task :test_with_coveralls => [:spec, 'cucumber:first_try', 'coveralls:push']
 end
