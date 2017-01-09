@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+
 describe ApplicationController, :type => :controller, :helpers => :controllers do
   render_views
 
