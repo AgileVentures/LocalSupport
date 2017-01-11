@@ -1,0 +1,2 @@
+environment:
+  DEVISE_SECRET_KEY: 1234567
