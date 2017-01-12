@@ -3,7 +3,7 @@ class VolunteerOpsController < ApplicationController
   before_action :set_organisation, only: [:new, :create]
   before_action :authorize, except: [:search, :show, :index]
   prepend_before_action :set_volunteer_op, only: [:show, :edit]
-  before_action :set_tags, only: [:show]
+  before_action :set_tags, only: [:show, :edit]
 
   def search
     @query = params[:q]
