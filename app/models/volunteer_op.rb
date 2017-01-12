@@ -25,7 +25,7 @@ class VolunteerOp < ActiveRecord::Base
 
   def organisation_link
     return organisation if source == 'local'
-    "https://do-it.org/organisations/#{doit_org_link}" if source == 'doit'
+    return "https://do-it.org/organisations/#{doit_org_link}" if source == 'doit'
     reachskills_org_link
   end
 

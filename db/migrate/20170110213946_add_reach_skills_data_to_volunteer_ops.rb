@@ -9,7 +9,7 @@ class AddReachSkillsDataToVolunteerOps < ActiveRecord::Migration
   def down
     remove_column :volunteer_ops, :reachskills_org_name
     remove_column :volunteer_ops, :reachskills_org_link
-    
+
     Feature.find_by(name: :reachskills_volunteer_opportunities).destroy
   end
 end
