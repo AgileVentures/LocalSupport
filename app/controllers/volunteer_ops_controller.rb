@@ -90,7 +90,7 @@ class VolunteerOpsController < ApplicationController
   def org_owner?
     current_user.present? && (current_user.can_edit? org_independent_of_route)
   end
-  
+
   def org_independent_of_route
     organisation_set_for_nested_route? || organisation_for_simple_route
   end
@@ -113,8 +113,8 @@ class VolunteerOpsController < ApplicationController
 
   def set_volunteer_op
     @volunteer_op = VolunteerOp.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      @volunteer_op = nil
+  rescue ActiveRecord::RecordNotFound
+    @volunteer_op = nil
   end
 
   def vol_op_redirect(notice)

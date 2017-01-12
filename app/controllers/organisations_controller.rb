@@ -131,8 +131,8 @@ class OrganisationsController < BaseOrganisationsController
 
   def set_organisation
     @organisation = Organisation.friendly.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      @organisation = nil
+  rescue ActiveRecord::RecordNotFound
+    @organisation = nil
   end
 
   def user_can_edit?(org)
