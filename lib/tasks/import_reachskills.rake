@@ -1,8 +1,8 @@
 begin
   namespace :db do
-    desc 'Import volunteer opportunities from DoIt (http://do-it.org)'
+    desc 'Import volunteer opportunities from Reachskills (https://reachskills.org.uk/)'
     task :import_reachskills => :environment do
-      ImportReachSkillsVolunteerOpportunities.with()
+      ImportReachSkillsVolunteerOpportunities.with
     end
   end
 end

@@ -19,17 +19,20 @@ class VolunteerOp < ActiveRecord::Base
 
   def organisation_name
     return organisation.name if source == 'local'
-    doit_org_name
+    return doit_org_name if source == 'doit'
+    reachskills_org_name
   end
 
   def organisation_link
     return organisation if source == 'local'
-    "https://do-it.org/organisations/#{doit_org_link}"
+    "https://do-it.org/organisations/#{doit_org_link}" if source == 'doit'
+    reachskills_org_link
   end
 
   def link
     return self if source == 'local'
-    "https://do-it.org/opportunities/#{doit_op_id}"
+    return "https://do-it.org/opportunities/#{doit_op_id}" if source == 'doit'
+    reachskills_org_link
   end
 
   def self.search_for_text(text)

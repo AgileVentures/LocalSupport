@@ -31,9 +31,7 @@ class ImportReachSkillsVolunteerOpportunities
 
   def persist_reach_skills_vol_ops(opportunities)
     opportunities.each do |op|
-      coordinates = Geocoder.search(
-        "#{op['node']['Postcode']}, #{op['node']['Town']}"
-      ).first
+      coordinates = find_coortinates(op)
 
       model_klass.create(
         source: 'reachskills',
@@ -51,4 +49,9 @@ class ImportReachSkillsVolunteerOpportunities
     response.body && response.body != '[]'
   end
 
+  def find_coortinates(op)
+    Geocoder.search(
+      "#{op['node']['Postcode']}, #{op['node']['Town']}"
+    ).first
+  end
 end
