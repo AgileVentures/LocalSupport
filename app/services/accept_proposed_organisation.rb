@@ -51,13 +51,19 @@ class AcceptProposedOrganisation
   end
   
   def invalid_email? obj
-    obj == InviteUnregisteredUserFromProposedOrg::Response::INVALID_EMAIL ? 
-    true : false
+    if obj == InviteUnregisteredUserFromProposedOrg::Response::INVALID_EMAIL
+      true
+    else
+      false
+    end
   end
   
   def no_email? obj
-    obj == InviteUnregisteredUserFromProposedOrg::Response::NO_EMAIL ? true :
-    false
+    if obj == InviteUnregisteredUserFromProposedOrg::Response::NO_EMAIL 
+      true
+    else
+      false
+    end
   end
   
   def notify_registered_usr
@@ -85,7 +91,8 @@ class AcceptProposedOrganisation
   end
   
   def success? status
-    [Response::NOTIFICATION_SENT, Response::INVITATION_SENT].include?(status) ?
-    true : false
+    return true if [Response::NOTIFICATION_SENT, 
+                    Response::INVITATION_SENT].include?(status)
+    false
   end
 end
