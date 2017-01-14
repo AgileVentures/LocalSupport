@@ -20,8 +20,8 @@ class AcceptProposedOrganisation
   class NotificationError < StandardError; end
 
   def initialize(proposed_org)
-    @proposed_org = proposed_org
-    @email = @proposed_org.email
+    @org = proposed_org
+    @email = @org.email
   end
 
   def run
@@ -33,26 +33,29 @@ class AcceptProposedOrganisation
   private
   
   def accept_organisation
-    org = @proposed_org.accept_proposal; @result = inform_user org
-    raise NotificationError if success?(@result.status) == false
+    @org = @org.accept_proposal
+    @result = inform_user
+    raise NotificationError unless success?(@result.status)
     @result                    
   end
   
-  def inform_user org
+  def inform_user
     @usr = User.find_by(email: @email)
-    return notify_registered_usr org if @usr
-    rslt = InviteUnregisteredUserFromProposedOrg.new(@email, org).run
-    create_invitation_response_object(rslt, org)
+    return notify_registered_usr if @usr
+    rslt = InviteUnregisteredUserFromProposedOrg.new(@email, @org).run
+    create_invitation_response_object(rslt)
   end
   
-  def notify_registered_usr org
-    NotifyRegisteredUserFromProposedOrg.new(@usr,org).run
-    Response.new(Response::NOTIFICATION_SENT, nil, org)
+  def notify_registered_usr
+    NotifyRegisteredUserFromProposedOrg.new(@usr, @org).run
+    Response.new(Response::NOTIFICATION_SENT, nil, @org)
   end
   
   def rollback_changes_to_org
-    @proposed_org.accept_proposal(true); @usr.organisation = nil if @usr
-    @result.not_accepted_org = @result.accepted_org; @result.accepted_org = nil
+    @org = @org.rollback_acceptance
+    @usr.organisation = nil if @usr
+    @result.not_accepted_org = @result.accepted_org
+    @result.accepted_org = nil
     @result
   end
   
@@ -62,15 +65,15 @@ class AcceptProposedOrganisation
     false
   end
 
-  def create_invitation_response_object(result_of_inviting, org)
-    return Response.new(Response::INVITATION_SENT, result_of_inviting.error_message, org) if result_of_inviting.success?
-    case result_of_inviting.status
+  def create_invitation_response_object invitation_rslt
+    return Response.new(Response::INVITATION_SENT, invitation_rslt.error_message, @org) if invitation_rslt.success?
+    case invitation_rslt.status
       when InviteUnregisteredUserFromProposedOrg::Response::INVALID_EMAIL
-        Response.new(Response::INVALID_EMAIL, result_of_inviting.error_message, org)
+        Response.new(Response::INVALID_EMAIL, invitation_rslt.error_message, @org)
       when InviteUnregisteredUserFromProposedOrg::Response::NO_EMAIL
-        Response.new(Response::NO_EMAIL, result_of_inviting.error_message, org)
+        Response.new(Response::NO_EMAIL, invitation_rslt.error_message, @org)
       else
-        Response.new(Response::OTHER_ERROR, result_of_inviting.error_message, org)
+        Response.new(Response::OTHER_ERROR, invitation_rslt.error_message, @org)
     end
   end
 end

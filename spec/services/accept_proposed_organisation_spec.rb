@@ -78,12 +78,12 @@ describe  AcceptProposedOrganisation do
   context 'proposed organisation has no email' do
     let!(:proposed_org){FactoryGirl.create(:orphan_proposed_organisation, email: "")}
 
-    it 'promotes the proposed org to org' do
-      expect(->{subject}).to change(Organisation, :count).by 1
+    it 'does not promote the proposed org to org' do
+      expect(->{subject}).to change(Organisation, :count).by 0
     end
 
-    it 'has one less proposed organisation' do
-      expect(->{subject}).to change(ProposedOrganisation, :count).by -1
+    it 'has the same number of proposed organisations' do
+      expect(->{subject}).to change(ProposedOrganisation, :count).by 0
     end
 
     it 'does not send an email' do
@@ -106,12 +106,12 @@ describe  AcceptProposedOrganisation do
   context 'proposed organisation has invalid email' do
     let!(:proposed_org){FactoryGirl.create(:orphan_proposed_organisation, email: "invalidemail.com")}
 
-    it 'promotes the proposed org to org' do
-      expect(->{subject}).to change(Organisation, :count).by 1
+    it 'does not promotes the proposed org to org' do
+      expect(->{subject}).to change(Organisation, :count).by 0
     end
 
-    it 'has one less proposed organisation' do
-      expect(->{subject}).to change(ProposedOrganisation, :count).by -1
+    it 'has the same number of proposed organisations' do
+      expect(->{subject}).to change(ProposedOrganisation, :count).by 0
     end
 
     it 'does not send an email' do

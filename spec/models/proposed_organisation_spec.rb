@@ -25,14 +25,9 @@ describe ProposedOrganisation, :type => :model do
   end
   
   context '#accept_proposal' do
-    it 'changes organisation\'s type if it is accepted' do
+    it 'changes organisation\'s type' do
       proposed_org.accept_proposal
       expect(proposed_org.type).to eq('Organisation')
-    end
-    
-    it 'does not change organisation\'s type if it is not accepted' do
-      proposed_org.accept_proposal(true)
-      expect(proposed_org.type).to eq('ProposedOrganisation')
     end
   end
 end
