@@ -51,19 +51,13 @@ class AcceptProposedOrganisation
   end
   
   def invalid_email? obj
-    if obj == InviteUnregisteredUserFromProposedOrg::Response::INVALID_EMAIL
-      true
-    else
-      false
-    end
+    return true if obj == InviteUnregisteredUserFromProposedOrg::Response::INVALID_EMAIL
+    false
   end
   
   def no_email? obj
-    if obj == InviteUnregisteredUserFromProposedOrg::Response::NO_EMAIL 
-      true
-    else
-      false
-    end
+    return true if obj == InviteUnregisteredUserFromProposedOrg::Response::NO_EMAIL
+    false
   end
   
   def notify_registered_usr
