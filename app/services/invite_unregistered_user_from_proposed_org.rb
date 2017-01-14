@@ -6,11 +6,11 @@ class InviteUnregisteredUserFromProposedOrg
     OTHER_FAILURE = "Other Failure"
     SUCCESS = "Success"
 
-    attr_reader :status, :error_message
+    attr_reader :status, :error_msg
 
     def initialize(status, error_msg)
       @status = status
-      @error_message = error_msg
+      @error_msg = error_msg
     end
 
     def success?

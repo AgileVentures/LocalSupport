@@ -27,8 +27,9 @@ class CreateFlashForProposedOrganisation
   end
   
   def flash_for_not_accepted_org
-    @rsl[:error] = "No mail was sent because: #{@obj.error_message}"
-    if_invalid_email; if_no_email
+    @rsl[:error] = "No mail was sent because: #{@obj.error_msg}"
+    if_invalid_email
+    if_no_email
     @rsl
   end
   

@@ -6,12 +6,12 @@ class AcceptProposedOrganisation
     NO_EMAIL = "No email"
     OTHER_ERROR = "Other Error"
 
-    attr_reader   :status, :error_message 
+    attr_reader   :status, :error_msg 
     attr_accessor :accepted_org, :not_accepted_org
 
-    def initialize status, error_message, accepted_organisation
+    def initialize status, error_msg, accepted_organisation
       @status = status
-      @error_message = error_message
+      @error_msg = error_msg
       @accepted_org = accepted_organisation
       @not_accepted_org = nil
     end
@@ -66,14 +66,14 @@ class AcceptProposedOrganisation
   end
 
   def create_invitation_response_object invitation_rslt
-    return Response.new(Response::INVITATION_SENT, invitation_rslt.error_message, @org) if invitation_rslt.success?
+    return Response.new(Response::INVITATION_SENT, invitation_rslt.error_msg, @org) if invitation_rslt.success?
     case invitation_rslt.status
       when InviteUnregisteredUserFromProposedOrg::Response::INVALID_EMAIL
-        Response.new(Response::INVALID_EMAIL, invitation_rslt.error_message, @org)
+        Response.new(Response::INVALID_EMAIL, invitation_rslt.error_msg, @org)
       when InviteUnregisteredUserFromProposedOrg::Response::NO_EMAIL
-        Response.new(Response::NO_EMAIL, invitation_rslt.error_message, @org)
+        Response.new(Response::NO_EMAIL, invitation_rslt.error_msg, @org)
       else
-        Response.new(Response::OTHER_ERROR, invitation_rslt.error_message, @org)
+        Response.new(Response::OTHER_ERROR, invitation_rslt.error_msg, @org)
     end
   end
 end
