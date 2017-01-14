@@ -19,7 +19,7 @@ class AcceptProposedOrganisation
   
   class NotificationError < StandardError; end
 
-  def initialize(proposed_org)
+  def initialize proposed_org
     @org = proposed_org
     @email = @org.email
   end
@@ -39,6 +39,10 @@ class AcceptProposedOrganisation
     @result                    
   end
   
+  def create_invitation_response_object rslt_of_inviting
+    response_obj(response_type(rslt_of_inviting), rslt_of_inviting.error_msg)
+  end
+  
   def inform_user
     @usr = User.find_by(email: @email)
     return notify_registered_usr if @usr
@@ -46,9 +50,30 @@ class AcceptProposedOrganisation
     create_invitation_response_object(rslt)
   end
   
+  def invalid_email? obj
+    obj == InviteUnregisteredUserFromProposedOrg::Response::INVALID_EMAIL ? 
+    true : false
+  end
+  
+  def no_email? obj
+    obj == InviteUnregisteredUserFromProposedOrg::Response::NO_EMAIL ? true :
+    false
+  end
+  
   def notify_registered_usr
     NotifyRegisteredUserFromProposedOrg.new(@usr, @org).run
     Response.new(Response::NOTIFICATION_SENT, nil, @org)
+  end
+  
+  def response_obj type, message
+    Response.new(type, message, @org)
+  end
+  
+  def response_type rslt_of_inviting
+    return Response::INVITATION_SENT if rslt_of_inviting.success?
+    return Response::INVALID_EMAIL if invalid_email?(rslt_of_inviting.status)
+    return Response::NO_EMAIL if no_email?(rslt_of_inviting.status)
+    Response::OTHER_ERROR
   end
   
   def rollback_changes_to_org
@@ -60,20 +85,7 @@ class AcceptProposedOrganisation
   end
   
   def success? status
-    return true if [Response::NOTIFICATION_SENT, 
-                    Response::INVITATION_SENT].include?(status)
-    false
-  end
-
-  def create_invitation_response_object invitation_rslt
-    return Response.new(Response::INVITATION_SENT, invitation_rslt.error_msg, @org) if invitation_rslt.success?
-    case invitation_rslt.status
-      when InviteUnregisteredUserFromProposedOrg::Response::INVALID_EMAIL
-        Response.new(Response::INVALID_EMAIL, invitation_rslt.error_msg, @org)
-      when InviteUnregisteredUserFromProposedOrg::Response::NO_EMAIL
-        Response.new(Response::NO_EMAIL, invitation_rslt.error_msg, @org)
-      else
-        Response.new(Response::OTHER_ERROR, invitation_rslt.error_msg, @org)
-    end
+    [Response::NOTIFICATION_SENT, Response::INVITATION_SENT].include?(status) ?
+    true : false
   end
 end

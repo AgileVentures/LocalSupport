@@ -53,8 +53,7 @@ class CreateFlashForProposedOrganisation
   end
 
   def run
-    return flashes_for_accepted_org if accepted?
-    flash_for_not_accepted_org
+    accepted? ? flashes_for_accepted_org : flash_for_not_accepted_org
   end
   
   def sent_email_type

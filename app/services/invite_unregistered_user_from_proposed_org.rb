@@ -5,6 +5,7 @@ class InviteUnregisteredUserFromProposedOrg
     NO_EMAIL = "No Email"
     OTHER_FAILURE = "Other Failure"
     SUCCESS = "Success"
+    STATUSES = [INVALID_EMAIL, NO_EMAIL, OTHER_FAILURE, SUCCESS]
 
     attr_reader :status, :error_msg
 
