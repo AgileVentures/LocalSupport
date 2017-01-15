@@ -98,10 +98,10 @@ end
 
 Then(/^the Do-it word in the legend should be a hyperlink to the Do-it website$/) do
   within('.map_legend') do
-    first, _, third = all('.key_text').to_a
+    first, _, _, fourth = all('.key_text').to_a
 
     expect(first).to have_link('Do-it', href: 'https://do-it.org/')
-    expect(third).to have_link('Do-it', href: 'https://do-it.org/')
+    expect(fourth).to have_link('Do-it', href: 'https://do-it.org/')
   end
 end
 
