@@ -56,3 +56,4 @@ config/application.yml
 features/vcr_cassettes
 features/req_cache
 gnk
+/Users/tansaku/Documents/Github/AgileVentures/LocalSupport/.drie_encrypted.yml
