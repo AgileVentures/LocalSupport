@@ -55,6 +55,8 @@
 .marker {
   height: 22px;
   width: 22px;
+  position: relative;
+  z-index: 1;
   &:hover{
     cursor: pointer;
   }
