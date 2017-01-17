@@ -33,7 +33,7 @@ describe  AcceptProposedOrganisation do
     end
     
     context 'proposed organisation email is not registered' do
-      let(:email){"user@email.com"}
+      let(:email){'user@email.com'}
       
       it 'creates a user' do
         expect(->{subject}).to change(User, :count).by 1
@@ -47,7 +47,7 @@ describe  AcceptProposedOrganisation do
     end
   
     context 'proposed organisation email is a registered user' do
-      let(:email){"user@email.com"}
+      let(:email){'user@email.com'}
       let!(:user){FactoryGirl.create(:user, email: email)}
       
       it 'returns a notification sent result' do
@@ -82,7 +82,7 @@ describe  AcceptProposedOrganisation do
     end
     
     context 'proposed organisation has no email' do
-      let!(:proposed_org){FactoryGirl.create(:orphan_proposed_organisation, email: "")}
+      let!(:proposed_org){FactoryGirl.create(:orphan_proposed_organisation, email: '')}
   
       it 'returns a notification sent result' do
         expect(subject.status).to eq(AcceptProposedOrganisation::Response::NO_EMAIL)
@@ -92,10 +92,26 @@ describe  AcceptProposedOrganisation do
     end
   
     context 'proposed organisation has invalid email' do
-      let!(:proposed_org){FactoryGirl.create(:orphan_proposed_organisation, email: "invalidemail.com")}
+      let!(:proposed_org){FactoryGirl.create(:orphan_proposed_organisation, email: 'invalidemail.com')}
   
       it 'returns a notification sent result' do
         expect(subject.status).to eq(AcceptProposedOrganisation::Response::INVALID_EMAIL)
+      end
+      
+      it_behaves_like 'non acceptance steps'
+    end
+    
+    context 'proposed organisation contains other error' do
+      let(:email){'user@email.com'}
+      
+      before(:each) do
+        other_response = double(status: InviteUnregisteredUserFromProposedOrg::Response::OTHER_FAILURE, error_msg: 'Unverified')
+        allow(InviteUnregisteredUserFromProposedOrg).to receive_message_chain(:new, :run).and_return(other_response)
+        allow(other_response).to receive(:success?).and_return(false)
+      end
+      
+      it 'returns a notification sent result' do
+        expect(subject.status).to eq(AcceptProposedOrganisation::Response::OTHER_ERROR)
       end
       
       it_behaves_like 'non acceptance steps'
