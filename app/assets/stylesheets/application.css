@@ -152,7 +152,9 @@ ul, ol {
     padding: 0;
     margin: 0 0 10px 25px;
 }
-select {
+
+select, textarea, input[type="text"], input[type="password"],
+input[type="email"], input[type="search"] {
     width: 220px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -160,6 +162,7 @@ select {
     height: 30px;
     line-height: 30px;
 }
+
 .table th, .table td {
     padding: 8px;
     line-height: 20px;
@@ -167,10 +170,12 @@ select {
     vertical-align: top;
     border-top: 1px solid #ddd;
 }
+
 label, select, button, input[type="button"], input[type="reset"],
 input[type="submit"], input[type="radio"], input[type="checkbox"] {
     cursor: pointer;
 }
+
 textarea, input[type="text"] {
     display: inline-block;
     height: auto;
@@ -184,6 +189,7 @@ textarea, input[type="text"] {
     border-radius: 4px;
     vertical-align: middle;
 }
+
 textarea, input[type="text"] {
     background-color: #fff;
     border: 1px solid #ccc;
@@ -195,9 +201,11 @@ textarea, input[type="text"] {
     -o-transition: border linear .2s, box-shadow linear .2s;
     transition: border linear .2s, box-shadow linear .2s;
 }
+
 input[type="text"] {
   height: 30px;
 }
+
 .form-actions {
     padding: 19px 20px 20px;
     margin-top: 20px;
@@ -205,6 +213,7 @@ input[type="text"] {
     background-color: #f5f5f5;
     border-top: 1px solid #e5e5e5;
 }
+
 .navbar-inner {
     min-height: 40px;
     padding-left: 20px;
@@ -224,14 +233,17 @@ input[type="text"] {
     -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.065);
     box-shadow: 0 1px 4px rgba(0,0,0,0.065);
 }
+
 .navbar-inner:before, .navbar-inner:after {
     display: table;
     content: "";
     line-height: 0;
 }
+
 .navbar-inner:after {
     clear: both;
 }
+
 .navbar .brand {
     float: left;
     display: block;
@@ -242,12 +254,15 @@ input[type="text"] {
     color: #777;
     text-shadow: 0 1px 0 #fff;
 }
+
 .navbar .brand:hover {
     text-decoration: none;
 }
+
 .navbar .container {
     width: auto;
 }
+
 .navbar .nav>.active>a, .navbar .nav>.active>a:hover, .navbar .nav>.active>a:focus {
     color: #555;
     text-decoration: none;
@@ -256,10 +271,12 @@ input[type="text"] {
     -moz-box-shadow: inset 0 3px 8px rgba(0,0,0,0.125);
     box-shadow: inset 0 3px 8px rgba(0,0,0,0.125);
 }
+
 .nav > li {
     line-height: 20px;
     display: list-item;
 }
+
 .navbar .nav>li>a {
     float: none;
     padding: 10px 15px 10px;
@@ -267,6 +284,7 @@ input[type="text"] {
     text-decoration: none;
     text-shadow: 0 1px 0 #fff;
 }
+
 .nav-pills>li>a {
     padding-top: 8px;
     padding-bottom: 8px;
@@ -282,6 +300,7 @@ input[type="text"] {
     content: "";
     line-height: 0;
 }
+
 .navbar .btn-navbar {
     display: none;
     float: right;
@@ -303,9 +322,11 @@ input[type="text"] {
     -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.1),0 1px 0 rgba(255,255,255,0.075);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.1),0 1px 0 rgba(255,255,255,0.075);
 }
+
 .navbar .btn, .navbar .btn-group {
     margin-top: 5px;
 }
+
 .navbar .btn-navbar .icon-bar {
     display: block;
     width: 18px;
@@ -318,21 +339,24 @@ input[type="text"] {
     -moz-box-shadow: 0 1px 0 rgba(0,0,0,0.25);
     box-shadow: 0 1px 0 rgba(0,0,0,0.25);
 }
+
 .navbar .pull-right>li>.dropdown-menu, .navbar .nav>li>.dropdown-menu.pull-right {
     left: auto;
     right: 0;
 }
+
 .navbar .nav>li>.dropdown-menu:before {
     content: '';
     display: inline-block;
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
-    border-bottom: 7px solid #ccc;    
+    border-bottom: 7px solid #ccc;
     position: absolute;
     top: -7px;
     left: auto;
     right: 12px;
 }
+
 .navbar .nav>li>.dropdown-menu:after {
     content: '';
     display: inline-block;
@@ -344,26 +368,32 @@ input[type="text"] {
     left: auto;
     right: 13px;
 }
+
 .nav-pills .dropdown-menu {
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
 }
+
 .btn-navbar .icon-bar+.icon-bar {
     margin-top: 3px;
 }
+
 .btn-group > .btn {
   margin-top: 0;
 }
+
 .radio.inline, .checkbox.inline {
     display: inline-block;
     padding-top: 5px;
     margin: 0;
     vertical-align: middle;
 }
+
 .text_area.col-md-6 {
   float: none;
 }
+
 @media (min-width: 980px) {
     .nav-collapse.collapse {
         height: auto;
@@ -371,6 +401,7 @@ input[type="text"] {
         display: block;
     }
 }
+
 @media (max-width: 979px) {
     .navbar .btn-navbar {
         display: block;

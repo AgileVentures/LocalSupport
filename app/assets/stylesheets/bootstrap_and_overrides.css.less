@@ -31,9 +31,11 @@
 body {
   line-height: 20px;
 }
+
 h1, h2, h3, h4, h5 {
   font-weight: bold;
 }
+
 h1 {
   font-size: 38.5px;
 }
@@ -42,26 +44,37 @@ a {
   color: #006937;
   text-decoration: none;
 }
+
 a:hover,
 a:focus {
   color: #009247;
   text-decoration: underline;
 }
+
 h3 {
   &:extend(.org_h3);
 }
+
 label {
   font-weight: normal;
 }
+
 .checkbox input[type="checkbox"] {
   position: relative;
 }
+
 img {
   height: auto;
 }
+
+input {
+  vertical-align: middle;
+}
+
 select {
   color: #555;
 }
+
 .btn {
     display: inline-block;
     padding: 4px 12px;
@@ -71,31 +84,36 @@ select {
     text-align: center;
     vertical-align: middle;
 }
+
 .container {
   padding-left: 0;
   padding-right: 0;
 }
+
 .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
     float: left;
     margin-left: -15px;
     margin-right: 5px;
 }
+
 .alert-warning{
   color: #7F351C;
 }
+
 .alert-warning a{
   color: #185000;
 }
+
 .alert-success {
   background-color: #dff0d8;
   border-color: #d6e9c6;
   color: #468847;
 }
-.field_with_errors {
-}
+
 .nav-pills > li + li {
   margin-left: 0;
 }
+
 .table th, .table td {
     padding: 8px;
     line-height: 20px;
@@ -103,6 +121,7 @@ select {
     vertical-align: top;
     border-top: 1px solid #dddddd;
 }
+
 @media (min-width: 980px) {
   body {
     padding-top: 81px;
