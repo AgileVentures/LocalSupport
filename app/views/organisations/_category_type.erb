@@ -1,7 +1,7 @@
 <div class="row category_type">
   <h5>What you do</h5>
   <%= f.collection_check_boxes( :category_ids, Category.what_they_do, :id, :name ) do |b| %>
-    <div class="span3 org-category">
+    <div class="col-md-6 org-category">
       <%= b.label(class: 'checkbox inline') do %>
         <%= b.check_box %>
         <%= b.text %>
@@ -13,7 +13,7 @@
 <div class="row category_type">
   <h5>Who you help</h5>
   <%= f.collection_check_boxes( :category_ids, Category.who_they_help, :id, :name ) do |b|%>
-    <div class="span3 org-category">
+    <div class="col-md-6 org-category">
       <%= b.label(class: 'checkbox inline') do %>
         <%= b.check_box %>
         <%= b.text %>
@@ -25,7 +25,7 @@
 <div class="row category_type">
   <h5>How you help</h5>
   <%= f.collection_check_boxes( :category_ids, Category.how_they_help, :id, :name ) do |b| %>
-    <div class="span3 org-category">
+    <div class="col-md-6 org-category">
       <%= b.label(class: 'checkbox inline') do %>
         <%= b.check_box %>
         <%= b.text %>

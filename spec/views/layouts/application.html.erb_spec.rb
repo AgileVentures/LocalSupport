@@ -114,7 +114,7 @@ describe 'layouts/application.html.erb', :type => :view do
       render
       expect(rendered).to have_selector('div.alert')
       expect(rendered).to have_content('No, no, no!')
-      expect(rendered).to have_selector('div.alert-error')
+      expect(rendered).to have_selector('div.alert-danger')
     end
 
     it "does not render a new organisation link" do
