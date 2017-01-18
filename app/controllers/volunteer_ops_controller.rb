@@ -19,7 +19,7 @@ class VolunteerOpsController < ApplicationController
   end
 
   def show
-    render template: 'pages/404', status: 404 && return if @volunteer_op.nil?
+    render template: 'pages/404', status: 404 and return if @volunteer_op.nil?
     @organisation = Organisation.friendly.find(@volunteer_op.organisation_id)
     organisations = Organisation.where(id: @organisation.id)
     @editable = current_user.can_edit?(@organisation) if current_user
