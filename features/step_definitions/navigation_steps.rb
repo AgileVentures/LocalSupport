@@ -208,3 +208,12 @@ Then(/^I should see an (active|inactive) home button in the header$/) do |active
       expect(page).to have_css("li#{active_class} > a[href='/']", :text => "Home")
     end
 end
+
+Then(/^I should see link "([^"]*)" targeting new page$/) do |link_name|
+     target_link = find_link(link_name)
+     expect(target_link[:target]).to eq '_blank'
+end
+
+When(/^I click column header "([^"]*)"$/) do |val|
+  find('th', :text => val).click()
+end
