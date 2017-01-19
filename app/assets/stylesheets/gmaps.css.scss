@@ -1,5 +1,9 @@
 @import "utils/colors";
 
+#map-canvas {
+  height: 400px;
+  width: 100%;
+}
 .map_container {
   flex: 1;
   // since the height of #map_container is dynamic, these 12px need to be subtracted
@@ -20,6 +24,7 @@
 .map_container label {
     width: auto; display:inline;
 }
+
 .vol_op{
   height: 22px;
   width: 22px;
@@ -27,9 +32,21 @@
     cursor: pointer;
   }
 }
+
+.custom-marker {
+  height: 22px;
+  width: 22px;
+}
+
 .measle {
   height: 6px;
   width: 6px;
+  // set measle in bottom center of parent div,
+  // used in maps_utilities/custom_marker set markers positions
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   &:hover{
     cursor: pointer;
   }
@@ -38,6 +55,8 @@
 .marker {
   height: 22px;
   width: 22px;
+  position: relative;
+  z-index: 1;
   &:hover{
     cursor: pointer;
   }
@@ -108,7 +127,7 @@
 /* MAP LEGEND STYLE
 -------------------------------------------------- */
 
-.map_legend td {
+.map_legend .key_image, .map_legend .key_text {
   padding: 0;
   vertical-align: baseline;
   border: none;

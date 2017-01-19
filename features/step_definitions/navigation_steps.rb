@@ -107,14 +107,14 @@ end
 
 And (/^I should see a full width layout$/) do
   within('#content') do
-    page.should have_css('#one_column.span12')
+    page.should have_css('#one_column.col-md-12')
   end
 end
 
 And (/^I should see a two column layout$/) do
   within('#content') do
-    page.should have_css('#column1.span6')
-    page.should have_css('#column2.span6')
+    page.should have_css('#column1.col-md-6')
+    page.should have_css('#column2.col-md-6')
   end
 end
 
@@ -207,4 +207,13 @@ Then(/^I should see an (active|inactive) home button in the header$/) do |active
     within('.nav.nav-pills.pull-right') do
       expect(page).to have_css("li#{active_class} > a[href='/']", :text => "Home")
     end
+end
+
+Then(/^I should see link "([^"]*)" targeting new page$/) do |link_name|
+     target_link = find_link(link_name)
+     expect(target_link[:target]).to eq '_blank'
+end
+
+When(/^I click column header "([^"]*)"$/) do |val|
+  find('th', :text => val).click()
 end

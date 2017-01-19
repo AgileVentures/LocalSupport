@@ -11,7 +11,6 @@
   <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
-  <script src="//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry<%= gmap_key_value_for_url %>" type="text/javascript"></script>
   <%= javascript_include_tag "application" %>
   <!--this is where page-specific scripts are added-->
   <%= yield :scripts %>
@@ -39,18 +38,18 @@
       <br>
       <div id="push"></div>
   </section>
-
 </div>
+  
 <div id="footer" class="container">
   <hr>
-  <div class="row">
-    <div class="span5">
+  <div class="row"">
+    <div class="col-md-5">
       <%= render 'layouts/footer' %>
     </div>
-    <div class="span3">
+    <div class="col-md-3">
       <%= render 'layouts/footer2' %>
     </div>
-    <div class="span4">
+    <div class="col-md-4">
       <%= render 'layouts/footer3' %>
     </div>
   </div>
