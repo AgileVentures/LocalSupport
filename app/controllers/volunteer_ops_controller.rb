@@ -55,7 +55,6 @@ class VolunteerOpsController < ApplicationController
     @volunteer_op = VolunteerOp.find(params[:id])
     @volunteer_op.destroy
     flash[:success] = "Deleted #{@volunteer_op.title}"
-
     redirect_to volunteer_ops_path
   end
 
@@ -76,11 +75,9 @@ class VolunteerOpsController < ApplicationController
   end
 
   def authorize
-    unless org_owner?
-      flash[:error] = 'You must be signed in as an organisation owner or ' \
-                      'site superadmin to perform this action!'
-      (redirect_to '/') && return
-    end
+    return if org_owner?
+    flash[:error] = t('authorize.org_owner_or_superadmin')
+    redirect_to '/' and return
   end
 
   def org_owner?
