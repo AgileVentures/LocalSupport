@@ -3,7 +3,8 @@ require 'custom_errors'
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :store_location,
-                :assign_footer_page_links
+                :assign_footer_page_links,
+                :set_tags
 
   include CustomErrors
 
@@ -121,5 +122,13 @@ class ApplicationController < ActionController::Base
         description: meta_tag_description,
         author: 'http://www.agileventures.org'
     }
+  end
+  
+  def meta_tag_title
+    'Harrow Community Network'
+  end
+  
+  def meta_tag_description
+    'Volunteering Network for Harrow Community'
   end
 end

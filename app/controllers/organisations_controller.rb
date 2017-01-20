@@ -3,8 +3,7 @@ class OrganisationsController < BaseOrganisationsController
   # GET /organisations/search
   # GET /organisations/search.json
   before_filter :authenticate_user!, :except => [:search, :index, :show]
-  before_action :set_organisation, only: [:show, :update, :edit]
-  before_action :set_tags, only: [:show]
+  prepend_before_action :set_organisation, only: [:show, :update, :edit]
 
   def search
     @parsed_params = SearchParamsParser.new(params)
@@ -29,12 +28,17 @@ class OrganisationsController < BaseOrganisationsController
   # GET /organisations/1
   # GET /organisations/1.json
   def show
+    render template: 'pages/404', status: 404 and return if @organisation.nil?
     organisations = Organisation.where(id: @organisation.id)
-    @pending_org_admin = current_user.pending_org_admin? @organisation if current_user
-    @editable = current_user.can_edit?(@organisation) if current_user
-    @deletable = current_user.can_delete?(@organisation) if current_user
-    @can_create_volunteer_op = current_user.can_create_volunteer_ops?(@organisation) if current_user
-    @grabbable = current_user ? current_user.can_request_org_admin?(@organisation) : true
+    if current_user
+      @pending_org_admin = current_user.pending_org_admin? @organisation
+      @editable = current_user.can_edit?(@organisation)
+      @deletable = current_user.can_delete?(@organisation)
+      @can_create_volunteer_op = current_user.can_create_volunteer_ops?(@organisation)
+      @grabbable = current_user.can_request_org_admin?(@organisation)
+    else
+      @grabbable = true
+    end
     @can_propose_edits = current_user.present? && !@editable
     @markers = build_map_markers(organisations)
     @cat_name_ids = Category.name_and_id_for_what_who_and_how
@@ -127,6 +131,8 @@ class OrganisationsController < BaseOrganisationsController
 
   def set_organisation
     @organisation = Organisation.friendly.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    @organisation = nil
   end
 
   def user_can_edit?(org)
@@ -138,10 +144,12 @@ class OrganisationsController < BaseOrganisationsController
   end
 
   def meta_tag_title
+    return super unless @organisation
     @organisation.name
   end
 
   def meta_tag_description
+    return super unless @organisation
     @organisation.description
   end
 end

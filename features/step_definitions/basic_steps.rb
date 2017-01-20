@@ -575,6 +575,6 @@ Then(/^I should have a page with a title: "([^"]*)"$/) do |title|
   expect(page).to have_title title
 end
 
-Then(/^I should have a page with a description: "([^"]*)"$/) do |description|
-  expect(page).to have_description description
+And(/^it should have ?a? Meta (.*)$/) do |name_attribute|
+  expect(page.find(%Q{meta[name="#{name_attribute.downcase}"]}, :visible => false).class).to eq(Capybara::Node::Element)
 end
