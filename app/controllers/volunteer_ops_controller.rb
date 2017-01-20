@@ -34,7 +34,7 @@ class VolunteerOpsController < ApplicationController
     params[:volunteer_op][:organisation_id] = @organisation.id
     @volunteer_op = VolunteerOp.new(volunteer_op_params)
     result = @volunteer_op.save
-    result ? vol_op_redirect('Volunteer op was successfully created.') : render(:new)
+    result ? vol_op_redirect(t('volunteer.create_success')) : render(:new)
   end
 
   def edit
@@ -46,9 +46,8 @@ class VolunteerOpsController < ApplicationController
   def update
     @volunteer_op = VolunteerOp.find(params[:id])
     @organisation = @volunteer_op.organisation
-    notice = 'Volunteer Opportunity was successfully updated.'
     result = @volunteer_op.update_attributes(volunteer_op_params)
-    result ? vol_op_redirect(notice) : render(action: 'edit')
+    result ? vol_op_redirect(t('volunteer.update_success')) : render(action: 'edit')
   end
 
   def destroy

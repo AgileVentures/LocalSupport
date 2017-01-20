@@ -9,6 +9,9 @@ en:
   authorize:
     superadmin: 'You must be signed in as a superadmin to perform this action!'
     org_owner_or_superadmin: 'You must be signed in as an organisation owner or site superadmin to perform this action!'
+  volunteer:
+    create_success: 'Volunteer op was successfully created.'
+    update_success: 'Volunteer Opportunity was successfully updated.'
   devise:
     errors:
       messages:
