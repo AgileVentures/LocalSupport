@@ -17,6 +17,12 @@ Feature: I want to make error pages follow the general design of the site.
     And the response status should be "404"
     And I should see "We're sorry, but we couldn't find the page you requested"
 
+   Scenario: 404 page when opening an invalid opportunity
+    When I visit "/volunteer_ops/foo-bar-op"
+    And the page should be titled "404 Page Not Found"
+    And the response status should be "404"
+    And I should see "We're sorry, but we couldn't find the page you requested"
+    
   Scenario: 500 page
     When I encounter an internal server error
     Then the page should be titled "500 Internal Server Error"

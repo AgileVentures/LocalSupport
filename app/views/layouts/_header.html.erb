@@ -98,7 +98,7 @@
                       <% end %>
                       <li class="dropdown">
                         <a href="#" id="<%= current_user.email %>" class="dropdown-toggle" data-toggle="dropdown" title="Logged in as: <%= current_user.email %>">
-                          <i class="icon-user icon-xxlarge"></i>
+                          <i class="fa fa-user"></i>
                           <%= current_user.email %>
                         </a>
                         <ul class="dropdown-menu">
@@ -118,6 +118,7 @@
 
 <script>
     $('#registerForm').collapse('hide');
+    $('#loginForm').collapse('show');
     $('a#toggle_link').on('click', function (e) {
         e.preventDefault();
         // Get all relevant elements
