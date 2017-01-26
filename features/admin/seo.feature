@@ -36,7 +36,7 @@ Feature: Would like the site to appear high in Google's listing
 
   Scenario: Meta Title and Description for contact show page
       Given I am on the show page with the "contact" permalink
-      And I should have a page with a title: "Contact Info | Harrow volunteering"
+      And I should have a page with a title tag set to: "Contact Info | Harrow volunteering"
       And I should see "Contact us to get involved"
 
   Scenario: Meta Title and Description for disclaimer show page

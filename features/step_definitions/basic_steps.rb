@@ -571,7 +571,7 @@ Given(/^I can run the rake task "(.*?)"$/) do |task|
   expect(status).to be_success
 end
 
-Then(/^I should have a page with a title tag: "([^"]*)"$/) do |title|
+Then(/^I should have a page with a title tag set to: "([^"]*)"$/) do |title|
   expect(page).to have_title title
 end
 
