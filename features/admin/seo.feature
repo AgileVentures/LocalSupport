@@ -18,20 +18,20 @@ Feature: Would like the site to appear high in Google's listing
 
   Scenario: Meta Title and Description for home page
     Given I visit the organisations index page
-    Then I should have a page with a title: "Harrow volunteering"
+    Then I should have a page with a title tag set to: "Harrow volunteering"
     And I should see "Harrow Community Network is a nonprofit workers"
 
   Scenario: Meta Title and Description for organisation show page
     Given I visit the show page for the organisation named "Friendly"
-    Then I should have a page with a title: "Friendly | Harrow volunteering"
+    Then I should have a page with a title tag set to: "Friendly | Harrow volunteering"
 
   Scenario: Meta Title and Description for volunteers show page
     Given I visit the show page for the volunteer_op titled "Helping Volunteer"
-    Then I should have a page with a title: "Helping Volunteer | Harrow volunteering"
+    Then I should have a page with a title tag set to: "Helping Volunteer | Harrow volunteering"
 
   Scenario: Meta Title and Description for about us show page
     Given I am on the show page with the "aboutus" permalink
-    And I should have a page with a title: "About Us | Harrow volunteering"
+    And I should have a page with a title tag set to: "About Us | Harrow volunteering"
     And I should see "We are a not-for-profit"
 
   Scenario: Meta Title and Description for contact show page
@@ -41,5 +41,5 @@ Feature: Would like the site to appear high in Google's listing
 
   Scenario: Meta Title and Description for disclaimer show page
       Given I am on the show page with the "disclaimer" permalink
-      And I should have a page with a title: "Disclaimer | Harrow volunteering"
+      And I should have a page with a title tag set to: "Disclaimer | Harrow volunteering"
       And I should see "Ensure the information accurate"
