@@ -26,13 +26,13 @@ class VolunteerOp < ActiveRecord::Base
   def organisation_link
     return organisation if source == 'local'
     return "https://do-it.org/organisations/#{doit_org_link}" if source == 'doit'
-    reachskills_org_link
+    "https://reachskills.org.uk/org/#{parsed_reachskills_org_name}"
   end
 
   def link
     return self if source == 'local'
     return "https://do-it.org/opportunities/#{doit_op_id}" if source == 'doit'
-    reachskills_org_link
+    reachskills_op_link
   end
 
   def self.search_for_text(text)
@@ -94,6 +94,10 @@ class VolunteerOp < ActiveRecord::Base
     vol_ops.group_by do |vol_op|
       [vol_op.longitude, vol_op.latitude]
     end
+  end
+
+  def parsed_reachskills_org_name
+    reachskills_org_name.downcase.gsub(' ', '-')
   end
 
 end

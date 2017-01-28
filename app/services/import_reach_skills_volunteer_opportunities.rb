@@ -40,7 +40,7 @@ class ImportReachSkillsVolunteerOpportunities
         title: op['node']['title'],
         description: op['node']['Description'],
         reachskills_org_name: op['node']['Organisation'],
-        reachskills_org_link: op['node']['Path']
+        reachskills_op_link: op['node']['Path'],
       )
     end
   end

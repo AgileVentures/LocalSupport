@@ -157,7 +157,7 @@ ActiveRecord::Schema.define(version: 20170110213946) do
     t.string   "address"
     t.string   "postcode"
     t.string   "reachskills_org_name"
-    t.string   "reachskills_org_link"
+    t.string   "reachskills_op_link"
   end
 
   add_index "volunteer_ops", ["deleted_at"], name: "index_volunteer_ops_on_deleted_at", using: :btree

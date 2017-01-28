@@ -32,6 +32,10 @@ Given(regex) do |override, radius|
   end
 end
 
+Given(/^I run the import reachskills service$/) do
+  ImportReachSkillsVolunteerOpportunities.with
+end
+
 Given(/^there is a doit volunteer op named "(.*?)"$/) do |title|
   VolunteerOp.create(title: title,
                      description: 'description content',
