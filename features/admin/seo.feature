@@ -21,47 +21,47 @@ Feature: Would like the site to appear high in Google's listing
 
   Scenario: Meta Title, Meta Description, Meta Keywords and Description for home page
     Given I visit the organisations index page
-    Then I should have a page with a title: "Harrow volunteering"
+    Then I should have a page with a title tag set to: "Harrow volunteering"
     And I should see "Harrow Community Network is a nonprofit workers"
     And it should have a Meta Description
     
   Scenario: Meta Title and Description for organisation show page
     Given I visit the show page for the organisation named "Friendly"
-    Then I should have a page with a title: "Friendly | Harrow volunteering"
+    Then I should have a page with a title tag set to: "Friendly | Harrow volunteering"
     And it should have a Meta Description
-    
+
    Scenario: Meta Title and Description for organisation edit page
     Given I am signed in as a superadmin
     Then I visit the edit page for the organisation named "Friendly"
-    Then I should have a page with a title: "Friendly | Harrow volunteering"
-    And it should have a Meta Description   
+    Then I should have a page with a title tag set to: "Friendly | Harrow volunteering"
+    And it should have a Meta Description
 
   Scenario: Meta Title and Description for volunteers show page
     Given I visit the show page for the volunteer_op titled "Helping Volunteer"
-    Then I should have a page with a title: "Helping Volunteer | Harrow volunteering"
+    Then I should have a page with a title tag set to: "Helping Volunteer | Harrow volunteering"
     And it should have a Meta Description
 
   Scenario: Meta Title and Description for volunteers edit page
     Given I am signed in as a superadmin
     Then I visit the edit page for the volunteer_op titled "Helping Volunteer"
-    Then I should have a page with a title: "Helping Volunteer | Harrow volunteering"
+    Then I should have a page with a title tag set to: "Helping Volunteer | Harrow volunteering"
     And it should have a Meta Description
 
 
   Scenario: Meta Title and Description for about us show page
     Given I am on the show page with the "aboutus" permalink
-    And I should have a page with a title: "About Us | Harrow volunteering"
+    And I should have a page with a title tag set to: "About Us | Harrow volunteering"
     And I should see "We are a not-for-profit"
     And it should have a Meta Description
 
   Scenario: Meta Title and Description for contact show page
       Given I am on the show page with the "contact" permalink
-      And I should have a page with a title: "Contact Info | Harrow volunteering"
+      And I should have a page with a title tag set to: "Contact Info | Harrow volunteering"
       And I should see "Contact us to get involved"
       And it should have a Meta Description
 
   Scenario: Meta Title and Description for disclaimer show page
       Given I am on the show page with the "disclaimer" permalink
-      And I should have a page with a title: "Disclaimer | Harrow volunteering"
+      And I should have a page with a title tag set to: "Disclaimer | Harrow volunteering"
       And I should see "Ensure the information accurate"
       And it should have a Meta Description
