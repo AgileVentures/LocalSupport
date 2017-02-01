@@ -297,4 +297,25 @@ describe User, :type => :model do
       expect { do_purge }.to change(User, :count).by(0)
     end
   end
+
+  #sam Unit test
+  describe User do
+    let(:emails) {  ['a@a.com','b@b.com'] }
+    let(:users) { double('Users') }
+        it '.superadmin_emails' do 
+          expect(users). to receive(:pluck).with(:email).and_return(emails)
+          expect(User).to receive(:superadmins).and_return(users)
+          expect(User.superadmin_emails).to eq emails
+        end
+  end
+
+  #integration test 
+  describe 'return_emails to superadmin' do
+    let(:user){FactoryGirl.create admin: false}
+    let(:admin) { FactoryGirl.create admin: true }
+
+      it ".superadmin_emails" do
+        #pending #this will return all the emails from the proposed orgs/edits
+      end
+  end
 end
