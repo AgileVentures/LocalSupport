@@ -74,6 +74,8 @@ class VolunteerOpsController < ApplicationController
        Feature.active?(:reachskills_volunteer_opportunities)
       return :all
     end
+    return :doit if Feature.active?(:doit_volunteer_opportunities)
+    return :reachskills if Feature.active?(:reachskills_volunteer_opportunities)
     :local_only
   end
 

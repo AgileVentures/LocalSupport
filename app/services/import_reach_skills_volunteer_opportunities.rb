@@ -1,8 +1,7 @@
 require 'geocoder'
 
 class ImportReachSkillsVolunteerOpportunities
-
-  def self.with(http = HTTParty, model_klass = VolunteerOp)
+	def self.with(http = HTTParty, model_klass = VolunteerOp)
     new(http, model_klass).send(:run)
   end
 
@@ -32,16 +31,15 @@ class ImportReachSkillsVolunteerOpportunities
   def persist_reach_skills_vol_ops(opportunities)
     opportunities.each do |op|
       coordinates = find_coortinates(op)
-
-      model_klass.create(
-        source: 'reachskills',
-        latitude: coordinates ? coordinates.latitude.to_f : 0.0,
-        longitude: coordinates ? coordinates.longitude.to_f : 0.0,
-        title: op['node']['title'],
-        description: op['node']['Description'],
-        reachskills_org_name: op['node']['Organisation'],
-        reachskills_op_link: op['node']['Path'],
-      )
+      model_klass.find_or_create_by(reachskills_op_link: op['node']['Path']) do |model|
+	      model.source = 'reachskills'
+	      model.latitude = coordinates ? coordinates.latitude.to_f : 0.0
+	      model.longitude = coordinates ? coordinates.longitude.to_f : 0.0
+	      model.title = op['node']['title']
+	      model.description = op['node']['Description']
+	      model.reachskills_org_name = op['node']['Organisation']
+	      model.reachskills_op_link = op['node']['Path']
+      end
     end
   end
 

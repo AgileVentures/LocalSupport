@@ -6,7 +6,6 @@ Feature: Doit volunteer opportunities
 
   Background:
     Given that the doit_volunteer_opportunities flag is enabled
-    Given that the reachskills_volunteer_opportunities flag is enabled
     And I run the import doit service
     And cookies are approved
 

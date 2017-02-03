@@ -9,8 +9,10 @@ class VolunteerOp < ActiveRecord::Base
   after_validation :clear_lat_lng, if: "source == 'local'"
 
   scope :order_by_most_recent, -> { order('updated_at DESC') }
-  scope :local_only, -> { where(source: 'local') }
-  scope :remote_only, -> { where.not(source: 'local') }
+  scope :local_only,           -> { where(source: 'local') }
+  scope :doit,                 -> { where(source: 'doit') }
+  scope :reachskills,          -> { where(source: 'reachskills') }
+  scope :remote_only,          -> { where.not(source: 'local') }
 
 
   def full_address
