@@ -1,9 +1,8 @@
 require 'geocoder'
-
 class ImportReachSkillsVolunteerOpportunities
 	def self.with(http = HTTParty, model_klass = VolunteerOp)
     new(http, model_klass).send(:run)
-  end
+	end
 
   private
 
@@ -22,7 +21,7 @@ class ImportReachSkillsVolunteerOpportunities
   end
 
   def process_reach_skills_json_page(response)
-    return nil unless has_content?(response)
+    return nil unless content?(response)
     opportunities = JSON.parse(response.body)['nodes']
     persist_reach_skills_vol_ops(opportunities)
     nil
@@ -32,18 +31,12 @@ class ImportReachSkillsVolunteerOpportunities
     opportunities.each do |op|
       coordinates = find_coortinates(op)
       model_klass.find_or_create_by(reachskills_op_link: op['node']['Path']) do |model|
-	      model.source = 'reachskills'
-	      model.latitude = coordinates ? coordinates.latitude.to_f : 0.0
-	      model.longitude = coordinates ? coordinates.longitude.to_f : 0.0
-	      model.title = op['node']['title']
-	      model.description = op['node']['Description']
-	      model.reachskills_org_name = op['node']['Organisation']
-	      model.reachskills_op_link = op['node']['Path']
+	      vol_op_attributes(op, model, coordinates)
       end
     end
   end
 
-  def has_content?(response)
+  def content?(response)
     response.body && response.body != '[]'
   end
 
@@ -52,4 +45,14 @@ class ImportReachSkillsVolunteerOpportunities
       "#{op['node']['Postcode']}, #{op['node']['Town']}"
     ).first
   end
+
+	def vol_op_attributes(op, model, coordinates)
+		model.source = 'reachskills'
+		model.latitude = coordinates ? coordinates.latitude.to_f : 0.0
+		model.longitude = coordinates ? coordinates.longitude.to_f : 0.0
+		model.title = op['node']['title']
+		model.description = op['node']['Description']
+		model.reachskills_org_name = op['node']['Organisation']
+		model.reachskills_op_link = op['node']['Path']
+	end
 end
