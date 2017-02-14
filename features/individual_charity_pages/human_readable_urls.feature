@@ -22,8 +22,8 @@ Feature:  Human friendly URLs
       | Our Heroes         | Save the world                  | The Most Noble Great 1 Charity of London                                      |
       | God Loves Us       | Help the atheists               | The Parochial Church Council Of The Ecclesiastical Parish Of St. Alban, North |
 
-  Scenario: Human friendly links from home page
-    Given I visit the home page
+  Scenario: Human friendly links from oranisations index page
+    Given I visit the organisations index page
     Then the URL for "The Most Noble Great 1 Charity of London" should refer to "/organisations/most-noble-great"
     And the URL for "The Most Noble Great 2 Charity of London" should refer to "/organisations/most-noble-great-charity-london"
     And the URL for "The Most Noble Great 3 Charity of London" should refer to "/organisations/most-noble-great-3-charity-london-org"

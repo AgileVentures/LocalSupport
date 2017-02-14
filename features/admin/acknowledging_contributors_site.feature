@@ -22,6 +22,5 @@ Feature: Acknowledging Contributors
     Then I should see the "Do-it" image linked to "https://do-it.org/"
     Examples:
       | page                |
-      | home                |
       | organisations index |
       | new organisation    |
