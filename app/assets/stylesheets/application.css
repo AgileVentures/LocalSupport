@@ -49,9 +49,15 @@ form {
     margin: 0 auto -80px;
 }
 
+#push {
+    height: 40px;
+}
+#footer {
+    background: white;
+    min-height: 0%;
+}
 #push, #footer {
     clear: both;
-    height: 40px;
 }
 
 #footer a {
@@ -394,6 +400,11 @@ input[type="text"] {
   float: none;
 }
 
+@media (max-width: 990px) {
+    .footer > small{
+      @extend .text-center
+    }
+}
 @media (min-width: 980px) {
     .nav-collapse.collapse {
         height: auto;
