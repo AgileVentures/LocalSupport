@@ -400,11 +400,6 @@ input[type="text"] {
   float: none;
 }
 
-@media (max-width: 990px) {
-    .footer > small{
-      @extend .text-center
-    }
-}
 @media (min-width: 980px) {
     .nav-collapse.collapse {
         height: auto;
