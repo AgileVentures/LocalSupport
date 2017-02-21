@@ -56,3 +56,7 @@ config/application.yml
 features/vcr_cassettes
 features/req_cache
 gnk
+/keyrings/live/pubring.gpg~
+/keyrings/live/pubring.kbx~
+/keyrings/live/secring.gpg
+.drie_encrypted.yml

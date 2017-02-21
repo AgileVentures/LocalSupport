@@ -49,9 +49,15 @@ form {
     margin: 0 auto -80px;
 }
 
+#push {
+    height: 40px;
+}
+#footer {
+    background: white;
+    min-height: 0%;
+}
 #push, #footer {
     clear: both;
-    height: 40px;
 }
 
 #footer a {
