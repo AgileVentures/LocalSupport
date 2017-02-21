@@ -8,6 +8,7 @@
  *= require font-awesome
  *= require bootstrap-sortable
  *= require bootstrap-switch
+ *= require bootstrap-datepicker3
 */
 
 body, html {
