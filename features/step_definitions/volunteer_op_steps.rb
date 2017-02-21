@@ -116,3 +116,10 @@ end
 Given /^wait for (\d+) seconds?$/ do |n|
 	sleep(n.to_i)
 end
+
+Given(/^I fill additional fields required by Doit$/) do
+  select("Help Out Harrow!", from: 'doit_volunteer_op_doit_org_id')
+  fill_in('Advertise start date', with: '2017-03-01')
+  fill_in('Advertise end date', with: '2017-04-01')
+
+end

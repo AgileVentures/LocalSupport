@@ -26,6 +26,15 @@ class VolunteerOpsController < ApplicationController
     @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
     add_breadcrumb @organisation.name, organisation_path(@organisation)
     add_breadcrumb @volunteer_op.title, :volunteer_op_path
+    if current_user
+      if current_user.superadmin? && @volunteer_op.source == 'local'
+        if DoitTrace.published?(@volunteer_op.id)
+          @display_disabled_publish_button = true
+        else
+          @display_publish_button = true
+        end
+      end
+    end
   end
 
   def new

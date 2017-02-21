@@ -1,0 +1,1 @@
+<%= select(:doit_volunteer_op, :doit_org_id, doit_orgs.map {|o| [o[:name], o[:id]]}, {include_blank: 'Select Organisation that will manage the volunteer opportuniy'},  {class: 'form-control'}) %>
