@@ -1,0 +1,19 @@
+<h3>
+  <%= volunteer_op.title %>
+</h3>
+
+<p>
+<%= simple_format auto_link volunteer_op.description %>
+</p>
+
+<% if volunteer_op.address_complete? %>
+  <p>
+  <b>Volunteer opportunity location:</b>
+  <%= "#{ volunteer_op.address }, #{ volunteer_op.postcode }" %>
+  </p>
+<% end %>
+
+<p>
+<b>Organisation:</b>
+<%= link_to volunteer_op.organisation.name, organisation_path(volunteer_op.organisation) %>
+</p>

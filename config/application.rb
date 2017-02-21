@@ -51,6 +51,6 @@ module LocalSupport
     config.assets.version = '1.0'
 
     config.assets.initialize_on_precompile = false
-
+    config.active_job.queue_adapter = :sucker_punch
   end
 end

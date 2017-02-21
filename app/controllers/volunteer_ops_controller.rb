@@ -24,6 +24,15 @@ class VolunteerOpsController < ApplicationController
     organisations = Organisation.where(id: @organisation.id)
     @editable = current_user.can_edit?(@organisation) if current_user
     @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
+    if current_user
+      if current_user.superadmin? && @volunteer_op.source == 'local'
+        if DoitTrace.published?(@volunteer_op.id)
+          @display_disabled_publish_button = true
+        else
+          @display_publish_button = true
+        end
+      end
+    end
   end
 
   def new

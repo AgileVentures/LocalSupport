@@ -1,8 +1,10 @@
 class VolunteerOp < ActiveRecord::Base
+  include GlobalID::Identification
   acts_as_paranoid
   validates :title, :description, presence: true
   validates :organisation_id, presence: true, if: "source == 'local'"
   belongs_to :organisation
+  has_one :doit_trace
 
   geocoded_by :full_address
   after_validation :geocode, if: :address_complete?
