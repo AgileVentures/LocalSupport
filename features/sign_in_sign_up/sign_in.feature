@@ -48,7 +48,7 @@ Scenario: Sign in for an existing superadmin user
   And I should see a link or button "superadmin@example.com"
 
 Scenario: Sign in for an existing superadmin user after org search
-  Given I visit the home page
+  Given I visit the organisations index page
   And I fill in "Optional Search Text" with "search words" within the main body
   And I press "Submit"
   And I sign in as "superadmin@example.com" with password "pppppppp"
