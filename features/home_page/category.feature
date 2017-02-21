@@ -34,7 +34,7 @@ Feature: Categories of charities
       | Advocacy                 | I love dogs           |
       | Advocacy                 | I advocate for people |
 
-    And I visit the home page
+    And I visit the organisations index page
 
   @vcr
   Scenario: Search for organisations in the "Animal Welfare" category

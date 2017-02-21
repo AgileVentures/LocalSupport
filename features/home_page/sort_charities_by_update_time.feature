@@ -15,16 +15,16 @@ Background: organisations have been added to database
 @vcr
 Scenario: Most recently updated charity shows at the top of the list
   Given I update the "Harrow Elders Association"
-  And I visit the home page
+  And I visit the organisations index page
   Then I should see "Harrow Elders Association" before "Harrow Age UK"
   And I should see "Harrow Age UK" before "Harrow Bereavement Counselling"
 
 @vcr
 Scenario: Most recently updated charity shows at the top of the list
-  Given I visit the home page
+  Given I visit the organisations index page
   Then I should see "Harrow Elders Association" before "Harrow Bereavement Counselling"
   And I should see "Harrow Age UK" before "Harrow Elders Association"
   When I update the "Harrow Elders Association"
   And I search for "Harrow"
-  And I visit the home page
+  And I visit the organisations index page
   Then I should see "Harrow Elders Association" before "Harrow Bereavement Counselling"
