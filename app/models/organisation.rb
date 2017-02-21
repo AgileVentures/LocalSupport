@@ -30,6 +30,12 @@ class Organisation < BaseOrganisation
     return unless email.blank? || can_add_or_invite_admin?(email)
     self.update_attributes(params)
   end
+  
+  def rollback_acceptance
+    org = becomes!(ProposedOrganisation)
+    org.save!
+    org
+  end
 
   def self.search_by_keyword(keyword)
      keyword = "%#{keyword}%"

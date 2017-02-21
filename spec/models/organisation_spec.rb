@@ -482,6 +482,13 @@ describe Organisation, :type => :model do
       }.not_to change(invited_user, :organisation_id)
     end
   end
+  
+  context '#rollback_acceptance' do
+    it 'changes organisation\'s type if it is not accepted' do
+      @org1.rollback_acceptance
+      expect(@org1.type).to eq('ProposedOrganisation')
+    end
+  end
 
   context "geocoding" do
     describe 'not_geocoded?' do

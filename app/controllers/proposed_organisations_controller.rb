@@ -8,10 +8,9 @@ class ProposedOrganisationsController < BaseOrganisationsController
   end
 
   def update
-    proposed_org = ProposedOrganisation.friendly.find params[:id]
-    result = AcceptProposedOrganisation.new(proposed_org).run
-    set_flash_for_accepting_proposed_org result
-    redirect_to organisation_path(result.accepted_organisation) and return false
+    rslt = prepare_data_for_update
+    redirect_to organisation_path(rslt.accepted_org) and return false if rslt.accepted_org
+    redirect_to proposed_organisations_path
   end
 
   def destroy
@@ -34,7 +33,6 @@ class ProposedOrganisationsController < BaseOrganisationsController
     else
       render :new
     end
-    
   end
 
   def show
@@ -46,22 +44,12 @@ class ProposedOrganisationsController < BaseOrganisationsController
   end
 
   private
-
-  def set_flash_for_accepting_proposed_org result
-    flash[:notice] = "You have approved the following organisation"
-    flash_msg = case result.status
-      when AcceptProposedOrganisation::Response::INVALID_EMAIL
-        "No invitation email was sent because the email associated with #{result.accepted_organisation.name}, #{result.accepted_organisation.email}, seems invalid"
-      when AcceptProposedOrganisation::Response::NO_EMAIL
-        "No invitation email was sent because no email is associated with the organisation"
-      when AcceptProposedOrganisation::Response::INVITATION_SENT
-        "An invitation email was sent to #{result.accepted_organisation.email}"
-      when AcceptProposedOrganisation::Response::NOTIFICATION_SENT
-        "A notification of acceptance was sent to #{result.accepted_organisation.email}"
-      else
-        "No mail was sent because: #{result.error_message}"
-      end
-     flash[:error] = flash_msg
+  
+  def prepare_data_for_update
+    proposed_org = ProposedOrganisation.friendly.find params[:id]
+    rslt = AcceptProposedOrganisation.new(proposed_org).run
+    flash.replace(CreateFlashForProposedOrganisation.new(rslt).run)
+    rslt
   end
 
   def make_user_into_org_admin_of_new_proposed_org
