@@ -112,3 +112,7 @@ end
 Then(/^I should see a search form$/) do
   expect(page).to have_css('form.volunteer-ops-search')
 end
+
+Given /^wait for (\d+) seconds?$/ do |n|
+	sleep(n.to_i)
+end

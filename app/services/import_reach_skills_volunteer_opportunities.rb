@@ -30,7 +30,8 @@ class ImportReachSkillsVolunteerOpportunities
   def persist_reach_skills_vol_ops(opportunities)
     opportunities.each do |op|
       coordinates = find_coortinates(op)
-      model_klass.find_or_create_by(reachskills_op_link: op['node']['Path']) do |model|
+      model_klass
+	      .find_or_create_by(reachskills_op_link: op['node']['Path']) do |model|
 	      vol_op_attributes(op, model, coordinates)
       end
     end
