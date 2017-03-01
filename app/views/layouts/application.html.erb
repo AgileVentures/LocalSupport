@@ -30,6 +30,7 @@
             <%= render partial: 'layouts/flash', locals: { name: name, msg: item } %>
           <% end %>
         <% end %>
+        <%= render_breadcrumbs  %>
         <div id="content">
           <%= yield %>
         </div>

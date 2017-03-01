@@ -1,5 +1,7 @@
 class VolunteerOpsController < ApplicationController
-  layout 'two_columns_with_map'
+  add_breadcrumb "Home", :root_url
+  add_breadcrumb "Search", :search_volunteer_ops
+ layout 'two_columns_with_map'
   before_action :set_organisation, only: [:new, :create]
   before_action :authorize, except: [:search, :show, :index]
   prepend_before_action :set_volunteer_op, only: [:show, :edit]

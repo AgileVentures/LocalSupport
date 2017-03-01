@@ -73,7 +73,7 @@ gem 'font-awesome-rails'
 
 gem 'jquery-rails'
 gem 'bootstrap_sortable_rails', '~> 0.1.3'
-
+gem "breadcrumbs_on_rails"
 # Use unicorn as the web server
 # gem 'unicorn'
 
