@@ -26,14 +26,9 @@
   <section id="main">   <!-- uniquify the child container to create the top margin -->
       <div class="container">  <!-- outermost twitter bootstrap container-->
         <% flash.each do |name, msg| %>
-            <div clas="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div id="flash_<%= "#{name}" %>" class="alert alert-warning <%= bootstrap_class_for(name)%>">
-                  <a class="close" data-dismiss="alert">&#215;</a>
-                  <%= content_tag :div, msg %>
-                </div>
-              </div>
-            </div>
+          <% Array(msg).each do |item| %>
+            <%= render partial: 'layouts/flash', locals: { name: name, msg: item } %>
+          <% end %>
         <% end %>
         <div id="content">
           <%= yield %>
@@ -43,19 +38,19 @@
       <br>
       <div id="push"></div>
   </section>
+  <div id="footer" class="container">
+    <hr>
+    <div class="row">
 
-</div>
-<div id="footer" class="container">
-  <hr>
-  <div class="row"">
-    <div class="col-md-5">
-      <%= render 'layouts/footer' %>
-    </div>
-    <div class="col-md-3">
-      <%= render 'layouts/footer2' %>
-    </div>
-    <div class="col-md-4">
-      <%= render 'layouts/footer3' %>
+      <div class="col-md-5">
+        <%= render 'layouts/footer' %>
+      </div>
+      <div class="col-md-3">
+        <%= render 'layouts/footer2' %>
+      </div>
+      <div class="col-md-4">
+        <%= render 'layouts/footer3' %>
+      </div>
     </div>
   </div>
 </div>

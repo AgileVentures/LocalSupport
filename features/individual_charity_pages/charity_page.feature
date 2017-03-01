@@ -36,7 +36,7 @@ Feature: Web page owned by each charity
     And I visit the show page for the organisation named "Friendly"
 
   @vcr
-  Scenario: Search for organisations on an organization individual page
+  Scenario: Search for organisations on an organisation individual page
     Given I select the "Advocacy" category from How They Help
     And I press "Submit"
     Then I should see "Unfriendly"

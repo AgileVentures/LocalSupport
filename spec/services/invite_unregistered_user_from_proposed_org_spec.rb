@@ -29,7 +29,7 @@ describe InviteUnregisteredUserFromProposedOrg do
     let(:subject){InviteUnregisteredUserFromProposedOrg.new(invalid_email,proposed_org).run}
 
     it 'has #error_message' do
-      expect(subject).to respond_to :error_message
+      expect(subject).to respond_to :error_msg
     end
     it 'does not send an email' do
       expect(->{subject}).not_to change{ActionMailer::Base.deliveries.size}
