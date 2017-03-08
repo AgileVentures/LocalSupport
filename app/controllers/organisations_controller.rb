@@ -1,6 +1,6 @@
 class OrganisationsController < BaseOrganisationsController
-  add_breadcrumb "New Organisation", :new_organisation_path
-  add_breadcrumb "All Organisations", :organisations_path
+  add_breadcrumb 'New Organisation', :new_organisation_path
+  add_breadcrumb 'All Organisations', :organisations_path
 
   layout 'two_columns_with_map'
   # GET /organisations/search
