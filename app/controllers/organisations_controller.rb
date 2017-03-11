@@ -1,5 +1,4 @@
 class OrganisationsController < BaseOrganisationsController
-  add_breadcrumb 'All Organisations', :organisations_path
   layout 'two_columns_with_map'
   # GET /organisations/search
   # GET /organisations/search.json
