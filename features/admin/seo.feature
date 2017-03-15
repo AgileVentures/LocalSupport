@@ -20,9 +20,9 @@ Feature: Would like the site to appear high in Google's listing
       | superadmin@example.com     | pppppppp | true  | 2007-01-01  10:00:00 |              |
 
   Scenario: Meta Title, Meta Description, Meta Keywords and Description for home page
-    Given I visit the organisations index page
+    Given I visit the volunteer opportunities page
     Then I should have a page with a title tag set to: "Harrow volunteering"
-    And I should see "Harrow Community Network is a nonprofit workers"
+    And I should see "Harrow Community Network is a service provided"
     And it should have a Meta Description
     
   Scenario: Meta Title and Description for organisation show page
