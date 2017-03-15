@@ -41,11 +41,8 @@ describe('This is my Organisation button', function() {
             it("toggle will have 'click' event", function(){
                 expect('click').toHaveBeenTriggeredOn(toggle);
             });
-            it('nav will have "show" event', function() {
-                expect('show').toHaveBeenTriggeredOn(nav)
-            });
             it('nav changes attributes', function() {
-                expect(nav).toHaveClass('in');
+                expect(nav).toHaveClass('collapsing');
             });
             it('menu changes attributes', function() {
                 expect(menu).toHaveClass('open');

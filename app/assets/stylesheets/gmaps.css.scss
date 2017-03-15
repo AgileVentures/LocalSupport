@@ -55,6 +55,8 @@
 .marker {
   height: 22px;
   width: 22px;
+  position: relative;
+  z-index: 1;
   &:hover{
     cursor: pointer;
   }
@@ -125,7 +127,7 @@
 /* MAP LEGEND STYLE
 -------------------------------------------------- */
 
-.map_legend td {
+.map_legend .key_image, .map_legend .key_text {
   padding: 0;
   vertical-align: baseline;
   border: none;

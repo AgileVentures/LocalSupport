@@ -3,7 +3,7 @@ $ = jQuery
 window.LSUtilities.unfurlToSignUp = () ->
     menu = $('#menuLogin');
     register = $('#registerForm');
-    if !jQuery.contains(document, $('.in')[0])
+    if !jQuery.contains(document, $('.in')[1])
         $('.nav-collapse').collapse('show')
     if (!menu.hasClass('open'))
         menu.addClass('open')

@@ -15,7 +15,7 @@ Feature: Local Resident seeking Support
 # particularly want to provide visibility to organisations with no existing web presence
   @vcr
   Scenario: Find help with care for elderly
-    Given I visit the home page
+    Given I visit the organisations index page
     When I search for "elderly"
     Then the index should contain:
       | Indian Elders Association | Care for the elderly |
@@ -26,7 +26,7 @@ Feature: Local Resident seeking Support
 
 # starting within main site
   Scenario: Find a bereavement counsellor
-    Given I visit the home page
+    Given I visit the organisations index page
     When I search for "Bereavement Counselling"
     And the index should contain:
       | Harrow Bereavement Counselling | Counselling for the bereaved |
@@ -36,14 +36,14 @@ Feature: Local Resident seeking Support
     Then I should not see the no results message
 
   Scenario: Find friendly no search results message
-    Given I visit the home page
+    Given I visit the organisations index page
     When I search for "non-existent results"
     Then I should see the no results message
     Given I visit the home page
     Then I should not see the no results message
 
   Scenario: See a list of current organisations
-    Given I visit the home page
+    Given I visit the organisations index page
     And cookies are approved
     Then the index should contain:
       | Harrow Bereavement Counselling | Counselling for the bereaved |

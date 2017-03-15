@@ -54,3 +54,9 @@ function initMap() {
 }
 
 google.maps.event.addDomListener(window, "load", initMap);
+
+$(document).ready(function() {
+  if (($('#content').height() - 14) >= 400) {
+    $('#map-canvas').height($('#content').height() - 14);
+  }
+});
