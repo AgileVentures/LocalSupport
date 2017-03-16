@@ -1,2 +1,31 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
+<%= form_for(@event) do |f| %>
+  <% if @event.errors.any? %>
+    <div class="text-danger", id="error_explanation">
+      <%= pluralize(@event.errors.count, "error") %> prohibited you from creating an event.
+      <ul>
+        <% @event.errors.full_messages.each do |msg| %>
+          <li> <%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :title, :style => "margin-top: 16px;" %>
+    <%= f.text_field :title, :class => "wide_form" %>
+  </div>
+  <div class="field">
+    <%= f.label :description , :style => "margin-top: 16px;" %>
+    <%= f.text_area :description, :class => "wide_form" %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date, :style => "margin-top: 16px;" %>
+    <%= f.text_field :start_date, :class => "wide_form" %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date , :style => "margin-top: 16px;" %>
+    <%= f.text_field :end_date, :class => "wide_form" %>
+  </div>
+  <div class="actions" style="margin-top: 16px;">
+    <%= f.submit "Create Event", class: 'btn btn-primary' %>
+  </div>
+<% end %>

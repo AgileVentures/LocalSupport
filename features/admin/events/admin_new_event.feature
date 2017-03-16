@@ -11,16 +11,15 @@ Feature: Super Admin creating an event
 
   Scenario: Unsuccessfully attempt to create event without being signed-in
     When I visit the new event page
-    Then I should be on the sign in page 
+    Then I should be on the sign in page
 
-    # @vcr
-  # Scenario: Successfully create an event while being signed-in as superadmin
-    # Given I am signed in as a superadmin
-    # And I visit the home page
-    # And I follow "New Event"
-    # # Given I fill in the new event page validly
-    # And I  press "Create Event" 
-    # Then I should see "Event was successfully created"
+  Scenario: Successfully create an event while being signed-in as superadmin
+    Given I am signed in as a superadmin
+    And I visit the home page
+    And I click "New Event"
+    Given I fill in the new event page validly
+    Then I press "Create Event"
+    Then I should see "Event was successfully created"
 
   # @vcr
   # Scenario: Get validation error creating new event with empty fields

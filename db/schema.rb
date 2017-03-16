@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110213946) do
+ActiveRecord::Schema.define(version: 20170316122243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 20170110213946) do
 
   add_index "categories_organisations", ["category_id"], name: "index_categories_organisations_on_category_id", using: :btree
   add_index "categories_organisations", ["organisation_id"], name: "index_categories_organisations_on_organisation_id", using: :btree
+
+  create_table "events", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "start_date"
+    t.string   "end_date"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "features", force: :cascade do |t|
     t.string  "name"
@@ -146,7 +155,7 @@ ActiveRecord::Schema.define(version: 20170110213946) do
     t.integer  "organisation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "source",               default: "local"
+    t.string   "source",          default: "local"
     t.string   "doit_op_link"
     t.string   "doit_op_id"
     t.string   "doit_org_link"
@@ -156,8 +165,6 @@ ActiveRecord::Schema.define(version: 20170110213946) do
     t.datetime "deleted_at"
     t.string   "address"
     t.string   "postcode"
-    t.string   "reachskills_org_name"
-    t.string   "reachskills_op_link"
   end
 
   add_index "volunteer_ops", ["deleted_at"], name: "index_volunteer_ops_on_deleted_at", using: :btree
