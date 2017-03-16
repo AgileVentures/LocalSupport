@@ -48,6 +48,8 @@ config/database.yml
 .rbenv-gemsets
 .floo
 .flooignore
+Gemfile
+Gemfile.lock
 
 vcr.log
 .byebug_history
