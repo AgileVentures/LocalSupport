@@ -5,6 +5,10 @@ class EventsController < ApplicationController
   end
 
   def create
+    unless current_user.try(:superadmin?)
+      flash[:notice] = PERMISSION_DENIED
+      redirect_to events_path and return false
+    end
     @event = Event.new(event_params)
     if @event.save
       redirect_to @event, notice: 'Event was successfully created'
@@ -14,7 +18,11 @@ class EventsController < ApplicationController
   end
 
   def show
-    
+
+  end
+
+  def index
+
   end
 
   private
@@ -24,6 +32,6 @@ class EventsController < ApplicationController
   end
 
   def logged_in_user
-      redirect_to new_user_session_path unless signed_in?
+    redirect_to new_user_session_path unless signed_in?
   end
 end

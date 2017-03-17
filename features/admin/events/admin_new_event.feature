@@ -26,7 +26,6 @@ Feature: Super Admin creating an event
     And I visit the home page
     And I follow "New Event"
     And I press "Create Event"
-    Then show me the page
     Then I should see "Title can't be blank"
     Then I should see "Description can't be blank"
 
@@ -39,12 +38,12 @@ Feature: Super Admin creating an event
     Given I visit the home page
     Then I should not see "New Event"
 
-  # Scenario: Non-superadmin unsuccessfully attempts to create an event
-  #   Given I am signed in as a non-superadmin
-  #   And I create "Unwanted" event
-  #   Then I should be on the events index page
-  #   Then I should see permission denied
-  #   And I should not see "Event was successfully created"
-  #   And "Unwanted" event should not exist
+  Scenario: Non-superadmin unsuccessfully attempts to create an event
+    Given I am signed in as a non-superadmin
+    And I create "Unwanted" event
+    Then I should be on the events page
+    Then I should see permission denied
+    And I should not see "Event was successfully created"
+    And "Unwanted" event should not exist
 
 

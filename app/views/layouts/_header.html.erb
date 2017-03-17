@@ -23,6 +23,9 @@
                 <li class="<%= active_if 'organisations' %>">
                   <%= link_to "Organisations", organisations_path %>
                 </li>
+                <li class="<%= active_if 'events' %>">
+                  <%= link_to "Events", events_path %>
+                </li>
                 <% if feature_active? :volunteer_ops_list %>
                   <li class="<%= active_if 'volunteer_ops' %>">
                     <%= link_to "Volunteers", volunteer_ops_path %>
