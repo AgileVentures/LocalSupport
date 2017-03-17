@@ -21,7 +21,6 @@ Feature: Super Admin creating an event
     Then I press "Create Event"
     Then I should see "Event was successfully created"
 
-  # @vcr
   # Scenario: Get validation error creating new event with empty fields
     # Given I am signed in as a superadmin
     # And I visit home page
@@ -30,10 +29,10 @@ Feature: Super Admin creating an event
     # Then I should see "Title can't be blank"
     # Then I should see "Description can't be blank"
 
-  # Scenario: Logged in non-superadmin user should not see new event link
-    # Given I am signed in as a non-superadmin
-    # Given I visit the home page
-    # Then I should not see a new events link
+  Scenario: Logged in non-superadmin user should not see new event link
+    Given I am signed in as a non-superadmin
+    Given I visit the home page
+    Then I should not see "New Event"
 
   # Scenario: non logged in user should not see new event link
     # Given I visit the home page
