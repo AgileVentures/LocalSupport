@@ -24,9 +24,6 @@ class EventsController < ApplicationController
   end
 
   def logged_in_user
-    if !signed_in?
-      flash[:danger] = 'Please log in.'
-      redirect_to new_user_session_path
-    end
+      redirect_to new_user_session_path unless signed_in?
   end
 end
