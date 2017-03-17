@@ -21,40 +21,30 @@ Feature: Super Admin creating an event
     Then I press "Create Event"
     Then I should see "Event was successfully created"
 
-  # Scenario: Get validation error creating new event with empty fields
-    # Given I am signed in as a superadmin
-    # And I visit home page
-    # And I follow "New Event"
-    # And I press "Create Event"
-    # Then I should see "Title can't be blank"
-    # Then I should see "Description can't be blank"
+  Scenario: Get validation error creating new event with empty fields
+    Given I am signed in as a superadmin
+    And I visit the home page
+    And I follow "New Event"
+    And I press "Create Event"
+    Then show me the page
+    Then I should see "Title can't be blank"
+    Then I should see "Description can't be blank"
 
   Scenario: Logged in non-superadmin user should not see new event link
     Given I am signed in as a non-superadmin
     Given I visit the home page
     Then I should not see "New Event"
 
-  # Scenario: non logged in user should not see new event link
-    # Given I visit the home page
-    # Then I  should not see a new event link
+  Scenario: non logged in user should not see new event link
+    Given I visit the home page
+    Then I should not see "New Event"
 
   # Scenario: Non-superadmin unsuccessfully attempts to create an event
-    # Given I am signed in as a non-superadmin
-    # And I create "Unwanted" event
-    # Then I should be on the events index page
-    # Then I should see permission denied
-    # And I should not see "Event was successfully created"
-    # And "Unwanted" event should not exist
+  #   Given I am signed in as a non-superadmin
+  #   And I create "Unwanted" event
+  #   Then I should be on the events index page
+  #   Then I should see permission denied
+  #   And I should not see "Event was successfully created"
+  #   And "Unwanted" event should not exist
 
-  # Scenario: Successfully create event while being signed in as superadmin
-    # Given I am signed in as a superadmin
-    # And I visit home page
-    # And I follow "New Event"
-    # And I fill the new event page validity including the following attributes:
-    #   | title       |
-    #   | description |
-    #   | start date  |
-    #   | end date    |
-    # And I press "Create Event"
-    # Then I should see "Event was successfully created"
 
