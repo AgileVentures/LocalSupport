@@ -24,6 +24,7 @@ class VolunteerOpsController < ApplicationController
     organisations = Organisation.where(id: @organisation.id)
     @editable = current_user.can_edit?(@organisation) if current_user
     @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
+    add_breadcrumb @organisation.name, organisation_path(@organisation)
     add_breadcrumb @volunteer_op.title, :volunteer_op_path
   end
 

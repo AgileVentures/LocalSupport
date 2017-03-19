@@ -130,6 +130,17 @@ When /^I click "(.*)"$/ do |link|
   click_link(link)
 end
 
+When /^I click "(.*)" (.*) link$/ do |link, position|
+  case position
+  when 'breadcrumb'
+    click_link(link, :match => :first)
+  when 'organisation'
+    within('#column2') do
+       click_on link
+    end
+  end
+end
+
 When /^I click id "(.*)"$/ do |id|
   find("##{id}").click
   wait_for_ajax

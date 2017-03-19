@@ -20,7 +20,10 @@ Feature: Show Individual Volunteer Opportunities
     Then I should see:
       | title          | description                                     | organisation              |
       | Office Support | Help with printing and copying. http://test.com | Indian Elders Association |
-    And I click "Indian Elders Association"
+    And I click "Indian Elders Association" organisation link
+    Then I should be on the show page for the organisation named "Indian Elders Association"
+    Then I visit the show page for the volunteer_op titled "Office Support"
+    And I click "Indian Elders Association" breadcrumb link
     Then I should be on the show page for the organisation named "Indian Elders Association"
 
   Scenario: See URLs in volunteer opportunity pages are hyperlinked
