@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create]
-  before_action :is_superadmin?, except:[:show, :index]
+  before_action :superadmin?, except:[:show, :index]
 
   def new
     @event = Event.new
@@ -33,7 +33,7 @@ class EventsController < ApplicationController
     redirect_to new_user_session_path unless signed_in?
   end
 
-  def is_superadmin?
+  def superadmin?
     unless current_user.try(:superadmin?)
       flash[:notice] = PERMISSION_DENIED
       redirect_to events_path and return false
