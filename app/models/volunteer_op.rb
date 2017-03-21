@@ -11,30 +11,16 @@ class VolunteerOp < ActiveRecord::Base
   scope :order_by_most_recent, -> { order('updated_at DESC') }
   scope :local_only, -> { where(source: 'local') }
   scope :remote_only, -> { where.not(source: 'local') }
-
-
-  def full_address
-    "#{self.address}, #{self.postcode}"
+  
+  def self.add_coordinates(vol_ops)
+    vol_op_with_coordinates(vol_ops)
   end
-
-  def organisation_name
-    return organisation.name if source == 'local'
-    doit_org_name
-  end
-
-  def organisation_link
-    return organisation if source == 'local'
-    "https://do-it.org/organisations/#{doit_org_link}"
-  end
-
-  def link
-    return self if source == 'local'
-    "https://do-it.org/opportunities/#{doit_op_id}"
-  end
-
-  def self.search_for_text(text)
-    keyword = "%#{text}%"
-    where(contains_description?(keyword).or(contains_title?(keyword)))
+  
+  def self.build_by_coordinates
+    local_vol_ops = vol_op_with_coordinates(VolunteerOp.local_only)
+    vol_ops = local_vol_ops + VolunteerOp.remote_only
+    vol_op_by_coordinates = group_by_coordinates(vol_ops)
+    Location.build_hash(vol_op_by_coordinates)
   end
 
   def self.contains_description?(text)
@@ -44,17 +30,7 @@ class VolunteerOp < ActiveRecord::Base
   def self.contains_title?(text)
     arel_table[:title].matches(text)
   end
-
-  def self.build_by_coordinates
-    vol_ops = local_vol_op_with_coordinates + VolunteerOp.remote_only
-    vol_op_by_coordinates = group_by_coordinates(vol_ops)
-    Location.build_hash(vol_op_by_coordinates)
-  end
-
-  def address_complete?
-    address.present? && postcode.present?
-  end
-
+  
   def self.get_source(volunteer_ops)
     source = volunteer_ops.first.source
     unless volunteer_ops.all? { |vol_op| vol_op.source == source }
@@ -62,17 +38,51 @@ class VolunteerOp < ActiveRecord::Base
     end
     source
   end
+  
+  def self.search_for_text(text)
+    keyword = "%#{text}%"
+    where(contains_description?(keyword).or(contains_title?(keyword)))
+  end
+
+  def address_complete?
+    address.present? && postcode.present?
+  end
+
+  def full_address
+    "#{self.address}, #{self.postcode}"
+  end
+  
+  def link
+    return self if source == 'local'
+    "https://do-it.org/opportunities/#{doit_op_id}"
+  end
+  
+  def organisation_link
+    return organisation if source == 'local'
+    "https://do-it.org/organisations/#{doit_org_link}"
+  end
+  
+  def organisation_name
+    return organisation.name if source == 'local'
+    doit_org_name
+  end
 
   private
+  
+  def self.group_by_coordinates(vol_ops)
+    vol_ops.group_by do |vol_op|
+      [vol_op.longitude, vol_op.latitude]
+    end
+  end
 
+  def self.vol_op_with_coordinates(vol_ops)
+    vol_ops.map { |op| op.source == 'local' ? op.send(:lat_lng_supplier) : op }
+  end
+  
   def clear_lat_lng
     return if address_complete?
     self.longitude = nil
     self.latitude = nil
-  end
-
-  def self.local_vol_op_with_coordinates
-    VolunteerOp.local_only.map { |volop| volop.send(:lat_lng_supplier) }
   end
 
   def lat_lng_supplier
@@ -86,11 +96,4 @@ class VolunteerOp < ActiveRecord::Base
       v.latitude = v.organisation.latitude
     end
   end
-
-  def self.group_by_coordinates(vol_ops)
-    vol_ops.group_by do |vol_op|
-      [vol_op.longitude, vol_op.latitude]
-    end
-  end
-
 end

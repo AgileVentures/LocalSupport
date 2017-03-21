@@ -1,32 +1,51 @@
-<% if ENV['DOCKER'].blank? %>
-development: &dev
-  adapter: postgresql
-  encoding: unicode
-  database: ls_development
-  pool: 5
-  username: postgres
-  password:
-  #host: localhost
-test: &test
-  <<: *dev
-  database: ls_test
-<% else %>
-development: &dev
-  adapter: postgresql
-  encoding: unicode
-  database: ls_development
-  pool: 5
-  username: postgres
-  password:
-  host: db
-test: &test
-  <<: *dev
-  database: ls_test
-<% end %>
+# <% if ENV['DOCKER'].blank? %>
+# development: &dev
+#   adapter: postgresql
+#   encoding: unicode
+#   database: ls_development
+#   pool: 5
+#   username: postgres
+#   password:
+#   #host: localhost
+# test: &test
+#   <<: *dev
+#   database: ls_test
+# <% else %>
+# development: &dev
+#   adapter: postgresql
+#   encoding: unicode
+#   database: ls_development
+#   pool: 5
+#   username: postgres
+#   password:
+#   host: db
+# test: &test
+#   <<: *dev
+#   database: ls_test
+# <% end %>
 
+# production:
+#   <<: *dev
+#   database: ls_production
+
+# cucumber:
+#   <<: *test
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: local_support_development
+  
+test:
+  <<: *default
+  database: local_support_test
+  
 production:
-  <<: *dev
-  database: ls_production
-
-cucumber:
-  <<: *test
+  <<: *default
+  database: local_support_production
+  username: local_support
+  password: <%= ENV['LOCAL_SUPPORT_DATABASE_PASSWORD'] %>
