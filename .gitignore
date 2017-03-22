@@ -53,6 +53,4 @@ vcr.log
 .byebug_history
 config/application.yml
 
-features/vcr_cassettes
-features/req_cache
 gnk
