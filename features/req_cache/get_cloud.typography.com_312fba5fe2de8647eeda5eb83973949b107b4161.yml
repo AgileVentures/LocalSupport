@@ -1,0 +1,21 @@
+---
+:scope: 
+:url: https://cloud.typography.com/7035312/685524/css/fonts.css
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Server: Apache
+  Content-Length: '154'
+  Content-Type: text/html
+  Location: https://do-it.org/fonts/530507/C52884BF7F401DF6D.css
+  ETag: '"efc903ed2c1a93fd86257b292a768ccd:1482332654"'
+  X-HCo-pid: '1'
+  Expires: Thu, 23 March 2017 10:06:49 GMT
+  Vary: Accept-Encoding
+  Last-Modified: Wed, 21 Dec 2016 15:04:14 GMT
+  Cache-Control: must-revalidate, private
+  Date: Thu, 23 Mar 2017 10:06:49 GMT
+  Connection: close
+:content: "<HTML>\r\n<HEAD>\r\n<TITLE>Error Page</TITLE>\r\n</HEAD>\r\n<BODY>\r\nAn
+  error (302 Moved Temporarily) has occurred in response to this request.\r\n</BODY>\r\n</HTML>\r\n"

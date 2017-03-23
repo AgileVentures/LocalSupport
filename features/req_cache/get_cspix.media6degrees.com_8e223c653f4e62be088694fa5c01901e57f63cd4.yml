@@ -1,0 +1,21 @@
+---
+:scope: 
+:url: http://cspix.media6degrees.com/orbserv/hbpix?pixId=3885&pcv=57&ptid=100&tpuv=01&tpu=58d39e25ae43c8bf&curl=http%3A%2F%2F127.0.0.1%3A57407%2Forganisations%2Fhelpful-folk
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Server: Apache-Coyote/1.1
+  P3P: CP="COM NAV INT STA NID OUR IND NOI"
+  Pragma: no-cache
+  Cache-Control: no-cache
+  Set-Cookie:
+  - cckz=1on9iqu; Domain=media6degrees.com; Expires=Thu, 23-Mar-2017 10:16:30 GMT;
+    Path=/
+  - cckz=1on9iqu; Domain=media6degrees.com; Expires=Tue, 19-Sep-2017 10:06:30 GMT;
+    Path=/
+  Location: http://cspix.media6degrees.com/orbserv/hbpix?pixId=3885&pcv=57&curl=http://127.0.0.1:57407/organisations/helpful-folk&tpu=58d39e25ae43c8bf&ptid=100&tpuv=01&cckz=true
+  Content-Length: '0'
+  Date: Thu, 23 Mar 2017 10:06:30 GMT
+  Connection: close
+:content: ''

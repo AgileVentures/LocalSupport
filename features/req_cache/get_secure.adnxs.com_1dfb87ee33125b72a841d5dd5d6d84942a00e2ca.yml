@@ -1,0 +1,24 @@
+---
+:scope: 
+:url: https://secure.adnxs.com/getuid?http%3A%2F%2Fmap.go.affec.tv%2Fmap%2Fan%2F%24UID%3Fch%3D58d39e0735d4fb000144da33%26chc%3Dcs%26mc%3D2%26px%3D%26ssp%3D0
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Server: nginx/1.11.5
+  Date: Thu, 23 Mar 2017 10:06:02 GMT
+  Content-Type: image/gif
+  Content-Length: '43'
+  Connection: close
+  Cache-Control: no-store, no-cache, private
+  Pragma: no-cache
+  Expires: Sat, 15 Nov 2008 16:00:00 GMT
+  P3P: policyref="http://cdn.adnxs.com/w3c/policy/p3p.xml", CP="NOI DSP COR ADM PSAo
+    PSDo OURo SAMo UNRo OTRo BUS COM NAV DEM STA PRE"
+  X-XSS-Protection: '0'
+  Set-Cookie: sess=1; Path=/; Max-Age=86400; Expires=Fri, 24-Mar-2017 10:06:02 GMT;
+    Domain=.adnxs.com; HttpOnly
+  X-Proxy-Origin: 86.145.234.29; 86.145.234.29; 156.bm-nginx-loadbalancer.mgmt.fra1;
+    *.adnxs.com; 37.252.172.13:80
+:content: !binary |-
+  R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw==

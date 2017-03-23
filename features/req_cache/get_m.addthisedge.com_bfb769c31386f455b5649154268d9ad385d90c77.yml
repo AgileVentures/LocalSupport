@@ -1,0 +1,25 @@
+---
+:scope: 
+:url: http://m.addthisedge.com/live/boost/ra-57ff949adbc21d93/_ate.track.config_resp
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Thu, 23 Mar 2017 10:05:59 GMT
+  Content-Type: application/javascript;charset=UTF-8
+  Content-Length: '503'
+  Connection: close
+  Cache-Control: public, max-age=60, s-maxage=86400
+  Surrogate-Key: ra-57ff949adbc21d93
+  ETag: "-281497056"
+  Content-Disposition: attachment; filename=1.txt
+  Content-Encoding: gzip
+  CF-Cache-Status: EXPIRED
+  Vary: Accept-Encoding
+  Server: cloudflare-nginx
+  CF-RAY: 3440934ff1b80cc5-LHR
+:content: _ate.track.config_resp({"pc":"shfs","tool-config":{"_default":{"widgets":{"w0nd":{"hideEmailSharingConfirmation":false,"backgroundColor":"#FFFFFF","thankyou":true,"postShareRecommendedMsg":"Recommended
+  for you","offset":{"top":"20%"},"counts":true,"widgetId":"w0nd","shareCountThreshold":10,"label":"","textColor":"#222222","__hideOnHomepage":false,"desktopPosition":"left","numPreferredServices":5,"borderRadius":"0%","responsive":"979px","creationTimestamp":1476367589749,"postShareFollowMsg":"Follow","iconColor":"#FFFFFF","style":"modern","id":"shfs","mobilePosition":"bottom","postShareTitle":"Thanks
+  for sharing!","hideLabel":false}}}},"subscription":{"active":true,"edition":"BASIC","tier":"basic","reducedBranding":false,"insightsEnabled":false},"customMessageTemplates":[],"pro-config":{"_default":{"widgets":{"shfs":{"hideEmailSharingConfirmation":false,"backgroundColor":"#FFFFFF","thankyou":true,"postShareRecommendedMsg":"Recommended
+  for you","offset":{"top":"20%"},"counts":true,"widgetId":"w0nd","shareCountThreshold":10,"label":"","textColor":"#222222","__hideOnHomepage":false,"desktopPosition":"left","numPreferredServices":5,"borderRadius":"0%","responsive":"979px","creationTimestamp":1476367589749,"postShareFollowMsg":"Follow","iconColor":"#FFFFFF","style":"modern","id":"shfs","mobilePosition":"bottom","postShareTitle":"Thanks
+  for sharing!","hideLabel":false}}}}});

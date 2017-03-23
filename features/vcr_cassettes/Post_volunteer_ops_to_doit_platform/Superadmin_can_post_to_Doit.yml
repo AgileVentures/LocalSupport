@@ -1,0 +1,180 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.qa2.do-it.org/v2/users/current/orgs?page=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - eyJhbGciOiJIUzI1NiIsImV4cCI6MTQ4NDczNzM5NywiaWF0IjoxNDg0NzMzNzk3fQ.eyJyYW5kIjowLjY3NTc5MzE3MTcwMDMwMTMsImlkIjoiOWQwOTMwNGMtZWU0ZC00NDdkLWI1MDMtNzJiYjUxODU3ZWJjIn0.Sae0GnTffIKxDHI0PXdKT6HFigaQXGPNEvXr8oxVEgk
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 23 Mar 2017 10:06:57 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Content-Length:
+      - '7722'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "{\n  \"data\": {\n    \"items\": [\n      {\n        \"application_via_url\":
+        false, \n        \"contact_name\": \"Volunteering Team\", \n        \"created\":
+        \"2016-01-11T16:55:34.106821+00:00\", \n        \"email\": \"volunteering@voluntaryactionharrow.org.uk\",
+        \n        \"id\": \"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d\", \n        \"is_volunteer_center\":
+        false, \n        \"local_authority\": {\n          \"id\": \"0561a78f-83e1-47fa-ae4c-07a9cf7390d3\",
+        \n          \"name\": \"Harrow London Borough\", \n          \"slug\": \"harrow-london-borough\"\n
+        \       }, \n        \"logo\": [\n          {\n            \"absolute_url\":
+        \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/LT8GnLA__400x400.125x125.jpg\",
+        \n            \"height\": 125, \n            \"width\": 125\n          },
+        \n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/LT8GnLA__400x400.109x109.jpg\",
+        \n            \"height\": 109, \n            \"width\": 109\n          },
+        \n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/LT8GnLA__400x400.76x76.jpg\",
+        \n            \"height\": 76, \n            \"width\": 76\n          }, \n
+        \         {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/LT8GnLA__400x400.50x50.jpg\",
+        \n            \"height\": 50, \n            \"width\": 50\n          }\n        ],
+        \n        \"name\": \"Help Out Harrow!\", \n        \"phone\": \"020 8861
+        5894\", \n        \"rating\": \"2.00\", \n        \"slug\": \"help-out-harrow\",
+        \n        \"source\": \"doittrust\"\n      }, \n      {\n        \"application_via_url\":
+        false, \n        \"contact_name\": \"#PopUpHarrow Team\", \n        \"created\":
+        \"2015-02-02T14:23:45.364637+00:00\", \n        \"email\": \"volunteering@voluntaryactionharrow.org.uk\",
+        \n        \"id\": \"88a8d84b-0fd6-42f6-a6f7-753d41700353\", \n        \"is_volunteer_center\":
+        false, \n        \"local_authority\": {\n          \"id\": \"0561a78f-83e1-47fa-ae4c-07a9cf7390d3\",
+        \n          \"name\": \"Harrow London Borough\", \n          \"slug\": \"harrow-london-borough\"\n
+        \       }, \n        \"logo\": [\n          {\n            \"absolute_url\":
+        \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/PopUpHarrow3_RAvSEMXyBptMMv7kmNHsVA.125x125.png\",
+        \n            \"height\": 125, \n            \"width\": 125\n          },
+        \n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/PopUpHarrow3_RAvSEMXyBptMMv7kmNHsVA.109x109.png\",
+        \n            \"height\": 109, \n            \"width\": 109\n          },
+        \n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/PopUpHarrow3_RAvSEMXyBptMMv7kmNHsVA.76x76.png\",
+        \n            \"height\": 76, \n            \"width\": 76\n          }, \n
+        \         {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/PopUpHarrow3_RAvSEMXyBptMMv7kmNHsVA.50x50.png\",
+        \n            \"height\": 50, \n            \"width\": 50\n          }\n        ],
+        \n        \"name\": \"#PopUpHarrow\", \n        \"phone\": \"020 8861 5894\",
+        \n        \"rating\": \"2.87\", \n        \"slug\": \"popupharrow\", \n        \"source\":
+        \"teamlondon\"\n      }, \n      {\n        \"application_via_url\": false,
+        \n        \"contact_name\": \"Alex\", \n        \"created\": \"2015-08-17T15:35:27.298770+00:00\",
+        \n        \"email\": \"contact@voluntaryactionharrow.org.uk\", \n        \"id\":
+        \"c5bda7b3-8128-4336-8a6d-ab9df7520063\", \n        \"is_volunteer_center\":
+        false, \n        \"local_authority\": {\n          \"id\": \"0561a78f-83e1-47fa-ae4c-07a9cf7390d3\",
+        \n          \"name\": \"Harrow London Borough\", \n          \"slug\": \"harrow-london-borough\"\n
+        \       }, \n        \"logo\": [\n          {\n            \"absolute_url\":
+        \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/ZKhP-Jnk_UqmJm6qnD4p3DTAnJM8NRG.125x125.png\",
+        \n            \"height\": 125, \n            \"width\": 125\n          },
+        \n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/ZKhP-Jnk_UqmJm6qnD4p3DTAnJM8NRG.109x109.png\",
+        \n            \"height\": 109, \n            \"width\": 109\n          },
+        \n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/ZKhP-Jnk_UqmJm6qnD4p3DTAnJM8NRG.76x76.png\",
+        \n            \"height\": 76, \n            \"width\": 76\n          }, \n
+        \         {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/ZKhP-Jnk_UqmJm6qnD4p3DTAnJM8NRG.50x50.png\",
+        \n            \"height\": 50, \n            \"width\": 50\n          }\n        ],
+        \n        \"name\": \"The Beehive - Youth Enterprise Hub\", \n        \"phone\":
+        \"2088615894\", \n        \"rating\": \"0.00\", \n        \"slug\": \"the-beehive-youth-enterprise-hub\",
+        \n        \"source\": \"doittrust\"\n      }, \n      {\n        \"application_via_url\":
+        false, \n        \"contact_name\": null, \n        \"created\": \"2014-10-27T18:52:45.028251+00:00\",
+        \n        \"email\": \"contact@voluntaryactionharrow.org.uk\", \n        \"id\":
+        \"dbef7a61-30b9-4c79-9301-c11e6792f12a\", \n        \"is_volunteer_center\":
+        false, \n        \"local_authority\": {\n          \"id\": \"0561a78f-83e1-47fa-ae4c-07a9cf7390d3\",
+        \n          \"name\": \"Harrow London Borough\", \n          \"slug\": \"harrow-london-borough\"\n
+        \       }, \n        \"logo\": [\n          {\n            \"absolute_url\":
+        \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/Square_J53qgfSzPM3tig5uRScvoH.125x125.png\",
+        \n            \"height\": 125, \n            \"width\": 125\n          },
+        \n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/Square_J53qgfSzPM3tig5uRScvoH.109x109.png\",
+        \n            \"height\": 109, \n            \"width\": 109\n          },
+        \n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/Square_J53qgfSzPM3tig5uRScvoH.76x76.png\",
+        \n            \"height\": 76, \n            \"width\": 76\n          }, \n
+        \         {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/Square_J53qgfSzPM3tig5uRScvoH.50x50.png\",
+        \n            \"height\": 50, \n            \"width\": 50\n          }\n        ],
+        \n        \"name\": \"Voluntary Action Harrow Co-operative\", \n        \"phone\":
+        \"020 8861 5894\", \n        \"rating\": \"2.80\", \n        \"slug\": \"voluntary-action-harrow\",
+        \n        \"source\": \"doittrust\"\n      }\n    ]\n  }, \n  \"links\": {\n
+        \   \"self\": {\n      \"href\": \"/v2/users/current/orgs\", \n      \"title\":
+        \"You are here.\"\n    }\n  }, \n  \"meta\": {\n    \"code\": 200, \n    \"current_page\":
+        1, \n    \"items_per_page\": 20, \n    \"routes\": {\n      \"/v2/users/current\":
+        {\n        \"description\": \"Returns the currently logged in user or Unauthorized.\",
+        \n        \"methods\": [\n          \"HEAD\", \n          \"OPTIONS\", \n
+        \         \"GET\"\n        ]\n      }, \n      \"/v2/users/current/applications\":
+        {\n        \"description\": \"All of a users applications and only applicable
+        to the currently logged in user.\", \n        \"methods\": [\n          \"HEAD\",
+        \n          \"OPTIONS\", \n          \"GET\"\n        ]\n      }, \n      \"/v2/users/current/exports/<id>\":
+        {\n        \"description\": \"Download Exports from the Recruiter Admin System.\",
+        \n        \"methods\": [\n          \"HEAD\", \n          \"OPTIONS\", \n
+        \         \"GET\"\n        ]\n      }, \n      \"/v2/users/current/orgs\":
+        {\n        \"description\": \"Returns a list of recruiters this user has memberships
+        for. This can also be search against by the recrutier name.\", \n        \"methods\":
+        [\n          \"HEAD\", \n          \"OPTIONS\", \n          \"GET\"\n        ]\n
+        \     }\n    }, \n    \"sort_by\": [\n      \"name\", \n      \"created\",
+        \n      \"active_opportunities_count\"\n    ], \n    \"tenant\": \"doittrust\",
+        \n    \"total_items\": 4, \n    \"total_pages\": 1, \n    \"version\": \"2016.11.24.0\"\n
+        \ }\n}\n"
+    http_version: 
+  recorded_at: Thu, 23 Mar 2017 10:07:19 GMT
+- request:
+    method: get
+    uri: http://api.qa2.do-it.org/v2/users/current/orgs?page=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - eyJhbGciOiJIUzI1NiIsImV4cCI6MTQ4NDczNzM5NywiaWF0IjoxNDg0NzMzNzk3fQ.eyJyYW5kIjowLjY3NTc5MzE3MTcwMDMwMTMsImlkIjoiOWQwOTMwNGMtZWU0ZC00NDdkLWI1MDMtNzJiYjUxODU3ZWJjIn0.Sae0GnTffIKxDHI0PXdKT6HFigaQXGPNEvXr8oxVEgk
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 23 Mar 2017 10:06:57 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Content-Length:
+      - '1501'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "{\n  \"data\": {\n    \"items\": []\n  }, \n  \"links\": {\n    \"prev\":
+        {\n      \"href\": \"/v2/users/current/orgs?page=1\", \n      \"title\": \"Previous
+        Page\"\n    }, \n    \"self\": {\n      \"href\": \"/v2/users/current/orgs\",
+        \n      \"title\": \"You are here.\"\n    }\n  }, \n  \"meta\": {\n    \"code\":
+        200, \n    \"current_page\": 2, \n    \"items_per_page\": 20, \n    \"routes\":
+        {\n      \"/v2/users/current\": {\n        \"description\": \"Returns the
+        currently logged in user or Unauthorized.\", \n        \"methods\": [\n          \"HEAD\",
+        \n          \"OPTIONS\", \n          \"GET\"\n        ]\n      }, \n      \"/v2/users/current/applications\":
+        {\n        \"description\": \"All of a users applications and only applicable
+        to the currently logged in user.\", \n        \"methods\": [\n          \"HEAD\",
+        \n          \"OPTIONS\", \n          \"GET\"\n        ]\n      }, \n      \"/v2/users/current/exports/<id>\":
+        {\n        \"description\": \"Download Exports from the Recruiter Admin System.\",
+        \n        \"methods\": [\n          \"HEAD\", \n          \"OPTIONS\", \n
+        \         \"GET\"\n        ]\n      }, \n      \"/v2/users/current/orgs\":
+        {\n        \"description\": \"Returns a list of recruiters this user has memberships
+        for. This can also be search against by the recrutier name.\", \n        \"methods\":
+        [\n          \"HEAD\", \n          \"OPTIONS\", \n          \"GET\"\n        ]\n
+        \     }\n    }, \n    \"sort_by\": [\n      \"name\", \n      \"created\",
+        \n      \"active_opportunities_count\"\n    ], \n    \"tenant\": \"doittrust\",
+        \n    \"total_items\": 4, \n    \"total_pages\": 1, \n    \"version\": \"2016.11.24.0\"\n
+        \ }\n}\n"
+    http_version: 
+  recorded_at: Thu, 23 Mar 2017 10:07:19 GMT
+recorded_with: VCR 3.0.3

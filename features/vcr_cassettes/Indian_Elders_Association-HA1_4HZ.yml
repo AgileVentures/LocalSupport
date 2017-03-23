@@ -10,7 +10,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
       User-Agent:
       - Ruby
   response:
@@ -27,7 +27,7 @@ http_interactions:
       Cache-Control:
       - public, max-age=86400
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Server:
       - mafe
       Content-Length:
@@ -125,7 +125,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
       User-Agent:
       - Ruby
   response:
@@ -142,7 +142,7 @@ http_interactions:
       Cache-Control:
       - public, max-age=86400
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Server:
       - mafe
       Content-Length:
@@ -230,4 +230,193 @@ http_interactions:
         }
     http_version: 
   recorded_at: Tue, 02 Feb 2016 10:02:08 GMT
-recorded_with: VCR 2.9.3
+- request:
+    method: post
+    uri: http://api.qa2.do-it.org/v2/opportunities
+    body:
+      encoding: UTF-8
+      string: '{"advertise_start_date":"2017-03-01","advertise_end_date":"2017-04-01","blurb":"Help
+        with printing and copying.","description":"Help with printing and copying.","owner_recruiter_id":"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d","locations":[{"address":null,"postcode":null,"location_type":"SL","lat":null,"lng":null}],"title":"Office
+        Support"}'
+    headers:
+      X-Api-Key:
+      - eyJhbGciOiJIUzI1NiIsImV4cCI6MTQ4NDczNzM5NywiaWF0IjoxNDg0NzMzNzk3fQ.eyJyYW5kIjowLjY3NTc5MzE3MTcwMDMwMTMsImlkIjoiOWQwOTMwNGMtZWU0ZC00NDdkLWI1MDMtNzJiYjUxODU3ZWJjIn0.Sae0GnTffIKxDHI0PXdKT6HFigaQXGPNEvXr8oxVEgk
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 23 Mar 2017 10:06:58 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Content-Length:
+      - '12757'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "{\n  \"data\": {\n    \"opportunity\": {\n      \"activities\": [],
+        \n      \"advertise_end_date\": \"2017-04-01T00:00:00+00:00\", \n      \"advertise_start_date\":
+        \"2017-03-01T00:00:00+00:00\", \n      \"alternative_contact_email\": null,
+        \n      \"alternative_contact_name\": null, \n      \"alternative_contact_phone\":
+        null, \n      \"application_url\": null, \n      \"apply_recruiter\": {\n
+        \       \"active_opportunities_count\": 8, \n        \"address_1\": \"The
+        Lodge\", \n        \"address_2\": \"64 Pinner Road\", \n        \"application_via_url\":
+        false, \n        \"banner\": [\n          {\n            \"absolute_url\":
+        \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/banners/team-386673_1280_jDkQqYemMhh9VK8W2j27Sm.1170x391.jpg\",
+        \n            \"height\": 391, \n            \"width\": 1170\n          },
+        \n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/banners/team-386673_1280_jDkQqYemMhh9VK8W2j27Sm.768x391.jpg\",
+        \n            \"height\": 391, \n            \"width\": 768\n          },
+        \n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/banners/team-386673_1280_jDkQqYemMhh9VK8W2j27Sm.320x391.jpg\",
+        \n            \"height\": 391, \n            \"width\": 320\n          }\n
+        \       ], \n        \"blurb\": \"Help Out Harrow promotes and brokers volunteer
+        opportunities for a variety of Harrow charities and voluntary groups.\", \n
+        \       \"charity\": false, \n        \"city\": \"Harrow\", \n        \"contact_name\":
+        \"Volunteering Team\", \n        \"created\": \"2016-01-11T16:55:34.106821+00:00\",
+        \n        \"doit_approved\": false, \n        \"email\": \"volunteering@voluntaryactionharrow.org.uk\",
+        \n        \"facebook\": \"https://www.facebook.com/VAHCoop\", \n        \"id\":
+        \"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d\", \n        \"instagram\": null, \n
+        \       \"is_user_subscribed\": false, \n        \"is_volunteer_center\":
+        false, \n        \"lat\": 51.5815, \n        \"links\": [\n          {\n            \"href\":
+        \"/v2/orgs/help-out-harrow\", \n            \"title\": \"Help Out Harrow!
+        Profile\"\n          }\n        ], \n        \"lng\": -0.345092, \n        \"logo\":
+        [\n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/LT8GnLA__400x400.125x125.jpg\",
+        \n            \"height\": 125, \n            \"width\": 125\n          },
+        \n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/LT8GnLA__400x400.109x109.jpg\",
+        \n            \"height\": 109, \n            \"width\": 109\n          },
+        \n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/LT8GnLA__400x400.76x76.jpg\",
+        \n            \"height\": 76, \n            \"width\": 76\n          }, \n
+        \         {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/LT8GnLA__400x400.50x50.jpg\",
+        \n            \"height\": 50, \n            \"width\": 50\n          }\n        ],
+        \n        \"name\": \"Help Out Harrow!\", \n        \"permissions\": {\n          \"opportunity_permissions\":
+        {\n            \"create\": true, \n            \"delete\": true, \n            \"update\":
+        true\n          }, \n          \"recruiter_permissions\": {\n            \"add_members\":
+        true, \n            \"delete_members\": true, \n            \"update\": true,
+        \n            \"update_members\": true\n          }\n        }, \n        \"phone\":
+        \"020 8861 5894\", \n        \"postcode\": \"HA1 4HZ\", \n        \"rating\":
+        \"2.00\", \n        \"rating_count\": 2, \n        \"slug\": \"help-out-harrow\",
+        \n        \"source\": \"doittrust\", \n        \"subscriber_count\": 2, \n
+        \       \"twitter\": \"https://twitter.com/VAHcoop\", \n        \"website\":
+        \"http://www.voluntaryactionharrow.org.uk/volunteering-opportunities/\"\n
+        \     }, \n      \"apply_recruiter_id\": \"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d\",
+        \n      \"availability\": {\n        \"friday\": [\n          false, \n          false,
+        \n          false\n        ], \n        \"monday\": [\n          false, \n
+        \         false, \n          false\n        ], \n        \"saturday\": [\n
+        \         false, \n          false, \n          false\n        ], \n        \"sunday\":
+        [\n          false, \n          false, \n          false\n        ], \n        \"thursday\":
+        [\n          false, \n          false, \n          false\n        ], \n        \"tuesday\":
+        [\n          false, \n          false, \n          false\n        ], \n        \"wednesday\":
+        [\n          false, \n          false, \n          false\n        ]\n      },
+        \n      \"blurb\": \"Help with printing and copying.\", \n      \"created\":
+        \"2017-03-23T10:06:58.392743+00:00\", \n      \"description\": \"Help with
+        printing and copying.\", \n      \"draft\": false, \n      \"expired\": false,
+        \n      \"for_recruiter\": {\n        \"active_opportunities_count\": 8, \n
+        \       \"address_1\": \"The Lodge\", \n        \"address_2\": \"64 Pinner
+        Road\", \n        \"application_via_url\": false, \n        \"banner\": [\n
+        \         {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/banners/team-386673_1280_jDkQqYemMhh9VK8W2j27Sm.1170x391.jpg\",
+        \n            \"height\": 391, \n            \"width\": 1170\n          },
+        \n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/banners/team-386673_1280_jDkQqYemMhh9VK8W2j27Sm.768x391.jpg\",
+        \n            \"height\": 391, \n            \"width\": 768\n          },
+        \n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/banners/team-386673_1280_jDkQqYemMhh9VK8W2j27Sm.320x391.jpg\",
+        \n            \"height\": 391, \n            \"width\": 320\n          }\n
+        \       ], \n        \"blurb\": \"Help Out Harrow promotes and brokers volunteer
+        opportunities for a variety of Harrow charities and voluntary groups.\", \n
+        \       \"charity\": false, \n        \"city\": \"Harrow\", \n        \"contact_name\":
+        \"Volunteering Team\", \n        \"created\": \"2016-01-11T16:55:34.106821+00:00\",
+        \n        \"doit_approved\": false, \n        \"email\": \"volunteering@voluntaryactionharrow.org.uk\",
+        \n        \"facebook\": \"https://www.facebook.com/VAHCoop\", \n        \"id\":
+        \"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d\", \n        \"instagram\": null, \n
+        \       \"is_user_subscribed\": false, \n        \"is_volunteer_center\":
+        false, \n        \"lat\": 51.5815, \n        \"links\": [\n          {\n            \"href\":
+        \"/v2/orgs/help-out-harrow\", \n            \"title\": \"Help Out Harrow!
+        Profile\"\n          }\n        ], \n        \"lng\": -0.345092, \n        \"logo\":
+        [\n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/LT8GnLA__400x400.125x125.jpg\",
+        \n            \"height\": 125, \n            \"width\": 125\n          },
+        \n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/LT8GnLA__400x400.109x109.jpg\",
+        \n            \"height\": 109, \n            \"width\": 109\n          },
+        \n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/LT8GnLA__400x400.76x76.jpg\",
+        \n            \"height\": 76, \n            \"width\": 76\n          }, \n
+        \         {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/LT8GnLA__400x400.50x50.jpg\",
+        \n            \"height\": 50, \n            \"width\": 50\n          }\n        ],
+        \n        \"name\": \"Help Out Harrow!\", \n        \"permissions\": {\n          \"opportunity_permissions\":
+        {\n            \"create\": true, \n            \"delete\": true, \n            \"update\":
+        true\n          }, \n          \"recruiter_permissions\": {\n            \"add_members\":
+        true, \n            \"delete_members\": true, \n            \"update\": true,
+        \n            \"update_members\": true\n          }\n        }, \n        \"phone\":
+        \"020 8861 5894\", \n        \"postcode\": \"HA1 4HZ\", \n        \"rating\":
+        \"2.00\", \n        \"rating_count\": 2, \n        \"slug\": \"help-out-harrow\",
+        \n        \"source\": \"doittrust\", \n        \"subscriber_count\": 2, \n
+        \       \"twitter\": \"https://twitter.com/VAHcoop\", \n        \"website\":
+        \"http://www.voluntaryactionharrow.org.uk/volunteering-opportunities/\"\n
+        \     }, \n      \"for_recruiter_id\": \"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d\",
+        \n      \"id\": \"00a1d970-2da7-4d2e-8920-f579ca635f51\", \n      \"interests\":
+        [], \n      \"is_new\": false, \n      \"is_user_saved\": false, \n      \"locations\":
+        [\n        {\n          \"address_1\": null, \n          \"address_2\": null,
+        \n          \"city\": null, \n          \"county\": null, \n          \"id\":
+        \"938a0648-6aac-4661-a1ae-a8a96e62be37\", \n          \"lat\": null, \n          \"lng\":
+        null, \n          \"local_authority\": null, \n          \"location_id\":
+        null, \n          \"location_name\": null, \n          \"location_type\":
+        \"SL\", \n          \"places_available\": null, \n          \"postcode\":
+        null, \n          \"rating\": \"0.00\", \n          \"rating_count\": 0, \n
+        \         \"working_from_home\": false\n        }\n      ], \n      \"micro_availability\":
+        [], \n      \"owner_recruiter\": {\n        \"active_opportunities_count\":
+        8, \n        \"address_1\": \"The Lodge\", \n        \"address_2\": \"64 Pinner
+        Road\", \n        \"application_via_url\": false, \n        \"banner\": [\n
+        \         {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/banners/team-386673_1280_jDkQqYemMhh9VK8W2j27Sm.1170x391.jpg\",
+        \n            \"height\": 391, \n            \"width\": 1170\n          },
+        \n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/banners/team-386673_1280_jDkQqYemMhh9VK8W2j27Sm.768x391.jpg\",
+        \n            \"height\": 391, \n            \"width\": 768\n          },
+        \n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/banners/team-386673_1280_jDkQqYemMhh9VK8W2j27Sm.320x391.jpg\",
+        \n            \"height\": 391, \n            \"width\": 320\n          }\n
+        \       ], \n        \"blurb\": \"Help Out Harrow promotes and brokers volunteer
+        opportunities for a variety of Harrow charities and voluntary groups.\", \n
+        \       \"charity\": false, \n        \"city\": \"Harrow\", \n        \"contact_name\":
+        \"Volunteering Team\", \n        \"created\": \"2016-01-11T16:55:34.106821+00:00\",
+        \n        \"doit_approved\": false, \n        \"email\": \"volunteering@voluntaryactionharrow.org.uk\",
+        \n        \"facebook\": \"https://www.facebook.com/VAHCoop\", \n        \"id\":
+        \"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d\", \n        \"instagram\": null, \n
+        \       \"is_user_subscribed\": false, \n        \"is_volunteer_center\":
+        false, \n        \"lat\": 51.5815, \n        \"links\": [\n          {\n            \"href\":
+        \"/v2/orgs/help-out-harrow\", \n            \"title\": \"Help Out Harrow!
+        Profile\"\n          }\n        ], \n        \"lng\": -0.345092, \n        \"logo\":
+        [\n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/LT8GnLA__400x400.125x125.jpg\",
+        \n            \"height\": 125, \n            \"width\": 125\n          },
+        \n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/LT8GnLA__400x400.109x109.jpg\",
+        \n            \"height\": 109, \n            \"width\": 109\n          },
+        \n          {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/LT8GnLA__400x400.76x76.jpg\",
+        \n            \"height\": 76, \n            \"width\": 76\n          }, \n
+        \         {\n            \"absolute_url\": \"https://s3-eu-west-1.amazonaws.com/qa.media.doit.soon.build/orgs/logos/LT8GnLA__400x400.50x50.jpg\",
+        \n            \"height\": 50, \n            \"width\": 50\n          }\n        ],
+        \n        \"name\": \"Help Out Harrow!\", \n        \"permissions\": {\n          \"opportunity_permissions\":
+        {\n            \"create\": true, \n            \"delete\": true, \n            \"update\":
+        true\n          }, \n          \"recruiter_permissions\": {\n            \"add_members\":
+        true, \n            \"delete_members\": true, \n            \"update\": true,
+        \n            \"update_members\": true\n          }\n        }, \n        \"phone\":
+        \"020 8861 5894\", \n        \"postcode\": \"HA1 4HZ\", \n        \"rating\":
+        \"2.00\", \n        \"rating_count\": 2, \n        \"slug\": \"help-out-harrow\",
+        \n        \"source\": \"doittrust\", \n        \"subscriber_count\": 2, \n
+        \       \"twitter\": \"https://twitter.com/VAHcoop\", \n        \"website\":
+        \"http://www.voluntaryactionharrow.org.uk/volunteering-opportunities/\"\n
+        \     }, \n      \"owner_recruiter_id\": \"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d\",
+        \n      \"photo\": [], \n      \"practical\": null, \n      \"requirements\":
+        [], \n      \"skills_gained\": [], \n      \"skills_required\": [], \n      \"specific_end_date\":
+        null, \n      \"specific_start_date\": null, \n      \"status\": \"live\",
+        \n      \"suitibilities\": [], \n      \"title\": \"Office Support\", \n      \"updated\":
+        \"2017-03-23T10:06:58.392776+00:00\"\n    }\n  }, \n  \"links\": {\n    \"self\":
+        {\n      \"href\": \"/v2/opportunities\", \n      \"title\": \"You are here.\"\n
+        \   }\n  }, \n  \"meta\": {\n    \"code\": 201, \n    \"tenant\": \"doittrust\",
+        \n    \"version\": \"2016.11.24.0\"\n  }\n}\n"
+    http_version: 
+  recorded_at: Thu, 23 Mar 2017 10:07:20 GMT
+recorded_with: VCR 3.0.3
