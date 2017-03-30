@@ -53,10 +53,10 @@ vcr.log
 .byebug_history
 config/application.yml
 
-features/vcr_cassettes
-features/req_cache
 gnk
 /keyrings/live/pubring.gpg~
 /keyrings/live/pubring.kbx~
 /keyrings/live/secring.gpg
 .drie_encrypted.yml
+
+# DO NOT ADD features/vcr_cassettes or features/req_cache as we need these files
