@@ -1,0 +1,16 @@
+---
+:scope: 
+:url: http://uip.semasio.net/addthis/1/get2?sType=sync&sExtCookieId=58d9421fe26b263c&sInitiator=external&_url=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11150%26puid%3D%24%7BUIPID%7D%26ssrc%3D3
+:body: ''
+:status: 302
+:method: get
+:headers:
+  UIP-Response-Status: FallbackResponse
+  Frontend-ID: '1'
+  Location: http://su.addthis.com/red/usync?pid=11150&puid=${UIPID}&ssrc=3
+  Date: Mon, 27 Mar 2017 16:47:29 GMT
+  Content-Length: '0'
+  Routing-Server-ID: '3'
+  Access-Control-Allow-Origin: "*"
+  Connection: close
+:content: ''

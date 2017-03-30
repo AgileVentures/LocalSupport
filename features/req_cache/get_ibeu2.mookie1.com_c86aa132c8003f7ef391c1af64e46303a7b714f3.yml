@@ -1,0 +1,32 @@
+---
+:scope: 
+:url: http://ibeu2.mookie1.com/image.sbxx?go=260602&pid=400&xid=HdJVZCaz99YvEBkR&rand=699280861
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Cache-Control: no-cache
+  Pragma: no-cache
+  Content-Type: image/png
+  Expires: "-1"
+  Server: Microsoft-IIS/7.5
+  Access-Control-Allow-Origin: "*"
+  Set-Cookie:
+  - ASP.NET_SessionId=joxv4xuuhmbr4rsaaznve1on; path=/; HttpOnly
+  - ibkukiuno=s=03534932-8b8f-49de-86a1-22266f22fd2e&h=&v=1983000552&l=-8587109736344628060&op=&hl=0&vlu=3&tcs=1&dcc=-8587109736344628060;
+    domain=ibeu2.mookie1.com; expires=Tue, 27-Mar-2018 16:47:31 GMT; path=/; HttpOnly
+  - ibkukinet=1452403229=-8587109736344628060; domain=ibeu2.mookie1.com; expires=Tue,
+    27-Mar-2018 16:47:31 GMT; path=/; HttpOnly
+  p3p:
+  - CP=\"DSP COR ADM DEV PSA PSD OUR\"
+  - CP="DSP COR ADM DEV PSA PSD OUR"
+  X-AspNet-Version: 4.0.30319
+  X-Powered-By: ASP.NET
+  X-Server: MAN07
+  Date: Mon, 27 Mar 2017 16:47:30 GMT
+  Content-Length: '120'
+  Connection: close
+:content: !binary |-
+  iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c
+  6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAANSURB
+  VBhXY2BgYGAAAAAFAAGKM+MAAAAAAElFTkSuQmCC

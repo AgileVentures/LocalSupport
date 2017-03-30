@@ -1,0 +1,23 @@
+---
+:scope: 
+:url: http://uip.semasio.net/addthis/1/get?sType=sync&sExtCookieId=58d942229e8b2ff8&sInitiator=external&_url=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11150%26puid%3D%24%7BUIPID%7D%26ssrc%3D3
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Location: "/addthis/1/get2?sType=sync&sExtCookieId=58d942229e8b2ff8&sInitiator=external&_url=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11150%26puid%3D%24%7BUIPID%7D%26ssrc%3D3"
+  UIP-Response-Status: Ok
+  Frontend-ID: '4'
+  Set-Cookie: SEUNCY=F9858E26B9E424A0; Expires=Sat, 23 Sep 2017 16:47:31 GMT; Path=/;
+    Domain=.semasio.net; HttpOnly
+  Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+  Expires: Sat, 01 Jan 2011 12:00:00 GMT
+  P3P: policyref="http://uip.semasio.net/w3c/p3p.xml", CP="NOI PSAa PSDa OUR IND UNI
+    CNT"
+  Pragma: no-cache
+  Date: Mon, 27 Mar 2017 16:47:31 GMT
+  Content-Length: '0'
+  Routing-Server-ID: '1'
+  Access-Control-Allow-Origin: "*"
+  Connection: close
+:content: ''
