@@ -1,0 +1,21 @@
+---
+:scope: 
+:url: https://m.addthisedge.com/live/boost/ra-545b3f957aee3425/_ate.track.config_resp
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Tue, 14 Feb 2017 08:17:32 GMT
+  Content-Type: application/javascript;charset=UTF-8
+  Content-Length: '154'
+  Connection: close
+  Cache-Control: public, max-age=60, s-maxage=86400
+  Surrogate-Key: ra-545b3f957aee3425
+  ETag: '659743217'
+  Content-Disposition: attachment; filename=1.txt
+  Content-Encoding: gzip
+  CF-Cache-Status: HIT
+  Vary: Accept-Encoding
+  Server: cloudflare-nginx
+  CF-RAY: 330f1592996d28de-DXB
+:content: _ate.track.config_resp({"customMessageTemplates":[],"subscription":{"active":true,"edition":"BASIC","tier":"basic","reducedBranding":false,"insightsEnabled":false}});

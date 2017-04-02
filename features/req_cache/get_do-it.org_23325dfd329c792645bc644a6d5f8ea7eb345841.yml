@@ -1,0 +1,245 @@
+---
+:scope: 
+:url: https://do-it.org/partials/header.html
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Encoding: gzip
+  Content-Type: text/html
+  Date: Tue, 14 Feb 2017 07:50:59 GMT
+  Last-Modified: Tue, 07 Feb 2017 16:22:42 GMT
+  Server: nginx/1.4.6 (Ubuntu)
+  Strict-Transport-Security: max-age=31536000
+  Content-Length: '2874'
+  Connection: close
+:content: |
+  <div class="container-fluid">
+      <div class="row-top">
+          <div class="row">
+              <div class="logo hidden-xs col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-2">
+                  <a href="#/"><img src height="57" ng-src="{{ 'logo_large' | translate }}" alt="{{ 'title' | translate }}" /></a>
+              </div>
+              <div class="logo visible-xs col-xs-24 col-xs-offset-2">
+                  <a href="#/"><img src ng-src="{{ 'logo_small' | translate }}" alt="{{ 'title' | translate }}" /></a>
+              </div>
+              <div class="col-md-16 col-sm-14 col-xs-14 clearfix hidden-print">
+
+                  <ul ng-if="!getLoggedIn()" class="table-row pull-right account-options visible-lg visible-md">
+                      <li class="table-cell account-option"><a href ng-click="openRegisterModal($event)">Sign up</a></li>
+                      <li class="table-cell account-option"><a href ng-click="openLoginModal($event)">Sign in</a></li>
+                  </ul>
+
+                  <ul ng-if="getLoggedIn()" class="table-row pull-right visible-lg visible-md">
+                      <li class="table-cell">
+                          <p class="signed-in">You are signed in as<br /><span class="name">{{ getUser().first_name + " " + getUser().last_name }}</span></p>
+                      </li>
+                      <li class="table-cell">
+                          <div class="dropdown dropdown-user-profile" is-open="status.isOpen" dropdown>
+                              <button class="btn btn-dropdown btn-image dropdown-toggle" dropdown-toggle>
+                                  <img ng-if="!getUser().avatar[0].absolute_url" class="image img-circle" src="img/stock/profile.png" alt="{{ getUser().fullname }}" />
+                                  <img ng-if="getUser().avatar[0].absolute_url"  class="image img-circle" src ng-src="{{ getUser().avatar[0].absolute_url }}" alt="{{ getUser().fullname }}" />
+                                  {{ "user_profile_btn_label" | translate }}
+                                  <span class="pointer"></span>
+                                  <span class="icon icon-alert" ng-if="getUser().alerts.length > 1"></span>
+                              </button>
+                              <ul class="dropdown-menu" role="menu">
+                                  <li class="dropdown-item">
+                                      <a class="dropdown-link" href ng-href="#/users/dashboard" ng-click="toggleDropdown($event)">
+                                          <span class="text">Your dashboard</span>
+                                          <em class="btn btn-small notification" ng-if="getUser().alerts.dashboard">New</em>
+                                      </a>
+                                  </li>
+                                  <li class="dropdown-item">
+                                      <a class="dropdown-link" href ng-href="#/users/settings/volunteering" ng-click="toggleDropdown($event)">
+                                          <span class="text">Volunteering preferences</span>
+                                      </a>
+                                  </li>
+                                  <li class="dropdown-item">
+                                      <a class="dropdown-link" href ng-href="#/users/profile" ng-click="toggleDropdown($event)">
+                                          <span class="text">Volunteering CV</span>
+                                          <em class="btn btn-small notification" ng-if="getUser().alerts.cv">New</em>
+                                      </a>
+                                  </li>
+                                  <li class="dropdown-item">
+                                      <a class="dropdown-link" href="#/users/settings/account" ng-click="toggleDropdown($event)">
+                                          <span class="text">Account settings</span>
+                                      </a>
+                                  </li>
+                                  <li class="dropdown-item is-dark-green" ng-if="getUser().organisation_count > 0">
+                                      <a class="dropdown-link" ng-href="#/users/organisations/manage" ng-click="toggleDropdown($event)">
+                                          <span class="text">Recruiter dashboard</span>
+                                          <em class="btn btn-small notification" ng-if="getUser().alerts.recruiter_dashboard">New</em>
+                                      </a>
+                                  </li>
+                                  <li class="dropdown-item" ng-if="getUser().is_super_user || getUser().is_staff_member">
+                                      <a class="dropdown-link" ng-href="#/data-dashboard" ng-click="toggleDropdown($event)">
+                                          <span class="text">Data dashboard</span>
+                                      </a>
+                                  </li>
+                                  <li class="dropdown-item is-light-green">
+                                      <a class="dropdown-link" href ng-click="logout($event)">
+                                          <span class="text">Sign out</span>
+                                      </a>
+                                  </li>
+                              </ul>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+
+      <div class="row visible-lg visible-md hidden-print">
+          <div class="col-lg-28 col-md-28 col-sm-28 col-xs-28">
+              <div class="row-bottom" ng-if="!status.isAdminPage">
+                  <div class="row">
+
+                      <nav ng-class="!env.TENANT_CONFIG.full_organisation_search ? 'col-lg-18 col-lg-offset-2 col-md-18 col-md-offset-2' : 'col-lg-24 col-lg-offset-2 col-md-24 col-md-offset-2'">
+                          <ul class="nav-menu">
+                              <li class="nav-item" ng-class="{ active: isActive('/opportunities/search') }"><a href="#/opportunities/search">Start volunteering</a></li>
+                              <li class="nav-item" ng-if="!(getUser().organisation_count > 0) && !env.TENANT_CONFIG.hide_find_volunteers" ng-class="{ active: isActive('/opportunities/landing') }"><a href="#/opportunities/landing">Find volunteers</a></li>
+                              <li class="nav-item" ng-if="(getUser().organisation_count > 0)" ng-class="{ active: isActive('/opportunities/create') }"><a href="#/opportunities/create">Find volunteers</a></li>
+                              <li ng-if="!env.TENANT_CONFIG.micro_volunteering_enabled" class="nav-item" ng-class="{ active: isActive('/organisations/search') }"><a href="#/organisations/search">Search organisations</a></li>
+                              <li class="nav-item" ng-class="{ active: isActive('/news') }"><a href="#/news">News &amp; Campaigns</a></li>
+                              <li ng-if="env.TENANT_CONFIG.jobs_enabled" class="nav-item" ng-class="{ active: isActive('/jobs') }"><a href="#/jobs">Find a job</a></li>
+                              <li ng-if="env.TENANT_CONFIG.jobs_enabled" class="nav-item" ng-class="{ active: isActive('/jobs/landing') }"><a href="#/jobs/landing">Post a job</a></li>
+                          </ul>
+                      </nav>
+
+                      <nav ng-if="!env.TENANT_CONFIG.full_organisation_search" class="col-lg-6 col-md-6">
+                          <ul>
+                              <li>
+                                  <form class="nav-search" ng-class="{ 'focus': searchFocus }">
+                                      <div class="typeahead large">
+                                          <input type="text" class="search" ng-class="{ 'ng-invalid': errors.search }" ng-model="search" ng-change="onChange('search')" typeahead-on-select="gotoOrganisation($item); search = '';" placeholder="{{searchPlaceholder}}" ng-focus="searchFocus = true; searchPlaceholder = '';" ng-blur="searchFocus = false; searchPlaceholder = 'Search Organisation';" typeahead="recruiter as recruiter.name for recruiter in loadRecruiters({name: $viewValue})" typeahead-min-length="2" typeahead-wait-ms="300" typeahead-template-url="partials/typeahead.html" required>
+                                      </div>
+                                  </form>
+                              </li>
+                          </ul>
+                      </nav>
+
+                  </div>
+              </div>
+
+              <div class="row-bottom is-admin-nav" ng-if="status.isAdminPage">
+                  <div class="row">
+
+                      <nav class="col-lg-24 col-lg-offset-2 col-md-24 col-md-offset-2">
+                          <ul class="nav-menu">
+                              <li class="nav-item" ng-class="{ active: isActive('/users/organisations/manage') }"><a href="#/users/organisations/manage">My organisations</a></li>
+                              <li class="nav-item" ng-class="{ active: isActive('/users/opportunities/manage') }"><a href="#/users/opportunities/manage">My opportunities</a></li>
+                              <li class="nav-item" ng-class="{ active: isActive('/users/applications/manage') }"><a href="#/users/applications/manage">My applications</a></li>
+                              <li class="nav-item" ng-class="{ active: isActive('/users/volunteers/manage') }"><a href="#/users/volunteers/manage">My volunteers</a></li>
+                              <li ng-if="env.TENANT_CONFIG.jobs_enabled" class="nav-item" ng-class="{ active: isActive('/users/jobs/manage') }"><a href="#/users/jobs/manage">My job ads</a></li>
+                              <li class="nav-item" ng-if="getUser().is_vc_admin" ng-class="{ active: isActive('/users/vc-overview') }"><a href="#/users/vc-overview">VC overview</a></li>
+                          </ul>
+                      </nav>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+      <!-- Mobile Header -->
+
+
+      <div class="nav-mobile dropdown visible-sm visible-xs hidden-print" dropdown>
+
+          <ul class="nav-mobile-btn-group">
+
+              <li class="nav-mobile-btn" ng-if="getLoggedIn()">
+                  <a href class="user-profile" ng-class="{ open: status.profileOpen }" ng-click="toggleProfile($event)">
+                      <img ng-if="!getUser().avatar[0].absolute_url" class="icon img-circle" src="img/stock/profile.png" alt="{{ getUser().fullname }}" />
+                      <img ng-if="getUser().avatar[0].absolute_url"  class="icon img-circle" src ng-src="{{ getUser().avatar[0].absolute_url }}" alt="{{ getUser().fullname }}" />
+                  </a>
+              </li>
+
+              <li class="nav-mobile-btn">
+                  <a href class="burger-menu" ng-class="{ open: status.burgerOpen }" ng-click="toggleBurger($event)">
+                      <span class="icon"></span>
+                  </a>
+              </li>
+
+              <ul class="dropdown-menu" ng-if="getLoggedIn()" ng-show="status.profileOpen">
+
+                  <li class="dropdown-item" ng-class="{ active: isActive('/users/dashboard') }">
+                      <a class="dropdown-link" href ng-href="#/users/dashboard" ng-click="toggleDropdown($event)">
+                          <span class="text">Your dashboard</span>
+                          <em class="btn btn-small notification" ng-if="getUser().alerts.dashboard">New</em>
+                      </a>
+                  </li>
+                  <li class="dropdown-item" ng-class="{ active: isActive('/users/settings/volunteering') }">
+                      <a class="dropdown-link" href ng-href="#/users/settings/volunteering" ng-click="toggleDropdown($event)">
+                          <span class="text">Volunteering preferences</span>
+                      </a>
+                  </li>
+
+                  <li class="dropdown-item">
+                      <a class="dropdown-link" href ng-href="#/users/profile" ng-click="toggleDropdown($event)">
+                          <span class="text">Volunteering CV</span>
+                          <em class="btn btn-small notification" ng-if="getUser().alerts.cv">New</em>
+                      </a>
+                  </li>
+
+                  <li class="dropdown-item" ng-class="{ active: isActive('/users/settings/account') }">
+                      <a class="dropdown-link" href="#/users/settings/account" ng-click="toggleProfile($event)">
+                          <span class="text">Account Settings</span>
+                      </a>
+                  </li>
+                  <li class="dropdown-item" ng-class="{ active: isActive('/users/organisations/manage') }" ng-if="getUser().organisation_count > 0">
+                      <a class="dropdown-link" ng-href="#/users/organisations/manage" ng-click="toggleProfile($event)">
+                          <span class="text">Recruiter dashboard</span>
+                      </a>
+                  </li>
+                  <li class="dropdown-item is-light-green">
+                      <a class="dropdown-link" href ng-click="toggleProfile($event); logout($event)">
+                          <span class="text">Log out</span>
+                      </a>
+                  </li>
+
+              </ul>
+
+          </ul>
+
+          <ul class="dropdown-menu hidden-print" ng-show="status.burgerOpen">
+
+              <li class="sub-menu" ng-if="!status.isAdminPage">
+                  <ul>
+                      <li class="dropdown-item" ng-class="{ active: isActive('/') }"><a class="dropdown-link" href="#/" ng-click="toggleBurger()">Home</a></li>
+                      <li class="dropdown-item" ng-class="{ active: isActive('/opportunities/search') }"><a class="dropdown-link" href="#/opportunities/search" ng-click="toggleBurger()">Start volunteering</a></li>
+                      <li class="dropdown-item" ng-if="!(getUser().organisation_count > 0) && !env.TENANT_CONFIG.hide_find_volunteers" ng-class="{ active: isActive('/opportunities/landing') }"><a class="dropdown-link" href="#/opportunities/landing" ng-click="toggleBurger()">Find volunteers</a></li>
+                      <li class="dropdown-item" ng-if="(getUser().organisation_count > 0)" ng-class="{ active: isActive('/opportunities/create') }"><a class="dropdown-link" href="#/opportunities/create" ng-click="toggleBurger()">Find volunteers</a></li>
+                      <li class="dropdown-item" ng-class="{ active: isActive('/organisations/search') }"><a class="dropdown-link" href="#/organisations/search" ng-click="toggleBurger()">Search organisations</a></li>
+                      <li class="dropdown-item" ng-class="{ active: isActive('/news') }"><a class="dropdown-link" href="#/news" ng-click="toggleBurger()">News &amp; Campaigns</a></li>
+                      <li ng-if="env.TENANT_CONFIG.jobs_enabled" class="dropdown-item" ng-class="{ active: isActive('/jobs') }"><a class="dropdown-link" href="#/jobs" ng-click="toggleBurger()">Find a job</a></li>
+                      <li ng-if="env.TENANT_CONFIG.jobs_enabled" class="dropdown-item"><a class="dropdown-link" href="#/jobs/landing" ng-click="toggleBurger()">Post a job</a></li>
+                  </ul>
+              </li>
+
+              <li class="sub-menu" ng-if="status.isAdminPage">
+                  <ul>
+                      <li class="dropdown-item" ng-class="{ active: isActive('/users/organisations/manage') }"><a class="dropdown-link" href="#/users/organisations/manage" ng-click="toggleBurger()">My organisations</a></li>
+                      <li class="dropdown-item" ng-class="{ active: isActive('/users/opportunities/manage') }"><a class="dropdown-link" href="#/users/opportunities/manage" ng-click="toggleBurger()">My opportunities</a></li>
+                      <li class="dropdown-item" ng-class="{ active: isActive('/users/applications/manage') }"><a class="dropdown-link" href="#/users/applications/manage" ng-click="toggleBurger()">My applications</a></li>
+                      <li class="dropdown-item" ng-class="{ active: isActive('/users/volunteers/manage') }"><a class="dropdown-link" href="#/users/volunteers/manage" ng-click="toggleBurger()">My volunteers</a></li>
+                      <li ng-if="env.TENANT_CONFIG.jobs_enabled" class="dropdown-item" ng-class="{ active: isActive('/users/jobs/manage') }"><a class="dropdown-link" href="#/users/jobs/manage" ng-click="toggleBurger()">My job ads</a></li>
+                      <li class="dropdown-item" ng-if="getUser().is_vc_admin" ng-class="{ active: isActive('/users/vc-overview') }"><a class="dropdown-link" href="#/users/vc-overview" ng-click="toggleBurger()">VC overview</a></li>
+                  </ul>
+              </li>
+
+              <li class="sub-menu is-green">
+                  <ul>
+                      <li ng-if="!getLoggedIn()" class="dropdown-item"><a class="dropdown-link" href ng-click="openLoginModal($event)">Login</a></li>
+                      <li ng-if="!getLoggedIn()" class="dropdown-item"><a class="dropdown-link" href ng-click="openRegisterModal($event)">Sign up</a></li>
+                  </ul>
+              </li>
+
+          </ul>
+
+      </div>
+
+  </div>
+
+  <div doit-system-msg></div>

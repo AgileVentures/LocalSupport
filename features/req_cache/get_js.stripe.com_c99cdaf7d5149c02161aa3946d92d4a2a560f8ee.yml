@@ -1,0 +1,72 @@
+---
+:scope: 
+:url: https://js.stripe.com/v2/channel.html?stripe_xdm_e=https%3A%2F%2Fdo-it.org&stripe_xdm_c=default564418&stripe_xdm_p=1
+:body: ''
+:status: 200
+:method: get
+:headers:
+  x-amz-id-2: YPUQO1JheDSDzIVtnGSdUBPC4EEx/BAeYaKAfCL5Yq1m4PebVERqKkOgoxhKJLUgE5SDZ5UTGfU=
+  x-amz-request-id: 63A997E646918C6E
+  Last-Modified: Mon, 13 Feb 2017 15:39:13 GMT
+  ETag: '"19af0c6cc7a0bca20a355b3362dc64a0"'
+  Cache-Control: public, max-age=300
+  Content-Type: text/html
+  Server: AmazonS3
+  Fastly-Restarts: '1'
+  Content-Encoding: gzip
+  Content-Length: '560'
+  Accept-Ranges: bytes
+  Date: Sun, 19 Mar 2017 14:25:39 GMT
+  Via: 1.1 varnish
+  Age: '2'
+  Connection: close
+  X-Served-By: cache-lcy1132-LCY
+  X-Cache: HIT
+  X-Cache-Hits: '4'
+  X-Timer: S1489933539.345107,VS0,VE0
+  Vary: Accept-Encoding
+  Strict-Transport-Security: max-age=31556926; includeSubDomains
+  Timing-Allow-Origin: "*"
+:content: |
+  <!doctype html>
+  <html>
+  <head>
+  <title>Stripe Internal Communication Channel</title>
+  <script>
+  if ('postMessage' in window) {
+    var stripeTrack = function(type) {
+      var timestamp = Math.round(new Date().getTime() / 1000);
+      var report = (new Image()).src = "https://q.stripe.com?event=stripejs-error&type=" +
+        encodeURIComponent(type) +
+        "&timestamp=" + timestamp +
+        "&payment_user_agent=channel.html";
+    };
+
+    if (window.parent === window) {
+      stripeTrack('ChannelParentError');
+      window.Stripe = {earlyError: true};
+    }
+    else {
+      window.onload = function() {
+        var matches = window.location.search.match(/(\?|&)stripe_xdm_e=([^&]+)/);
+        if (matches && matches.length >= 3) {
+          var outerdomain = decodeURIComponent(matches[2]);
+          try {
+            window.parent.postMessage('stripe:ack', outerdomain);
+          }
+          catch(e) {
+            stripeTrack('ChannelAckError-' + e.toString());
+          }
+        }
+        else {
+          stripeTrack('ChannelUrlError');
+        }
+      }
+    }
+  }
+  </script>
+  </head>
+  <body>
+  <script src="https://js.stripe.com/v2/"></script>
+  </body>
+  </html>

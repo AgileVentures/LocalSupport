@@ -1,0 +1,57 @@
+---
+:scope: 
+:url: https://do-it.org/partials/doit-trust/footer.html
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Encoding: gzip
+  Content-Type: text/html
+  Date: Tue, 14 Feb 2017 08:17:32 GMT
+  Last-Modified: Tue, 07 Feb 2017 16:22:42 GMT
+  Server: nginx/1.4.6 (Ubuntu)
+  Strict-Transport-Security: max-age=31536000
+  Content-Length: '872'
+  Connection: close
+:content: |
+  <div data-extend-template="partials/footer.html">
+      <div data-block="links" class="row hidden-print footer-links">
+          <ul class="col-lg-5 col-lg-offset-2 col-md-5 col-md-offset-2 col-sm-5 col-sm-offset-2 col-xs-24 col-xs-offset-2">
+              <li><a href="http://doittrust.org/" target="_blank">About the Do-it Trust</a></li>
+              <li><a href="http://support.do-it.org" target="_blank">Problems with the service</a></li>
+              <li><a href="http://support.do-it.org" target="_blank">Contact us</a></li>
+          </ul>
+          <ul class="col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-4 col-sm-offset-0 col-xs-24 col-xs-offset-2">
+              <li><a href="#/about/termsandconditions">Terms</a></li>
+              <li><a href="#/about/safety">Safety &amp; security</a></li>
+              <li><a href="#/about/data">How we use data</a></li>
+              <li><a href="#/about/privacypolicy">Privacy policy</a></li>
+          </ul>
+          <ul class="col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-4 col-sm-offset-0 col-xs-24 col-xs-offset-2">
+              <li><a href="#/about/business">Business customers</a></li>
+              <li><a href="#/about/advertising">Advertising</a></li>
+              <li><a href="#/about/widgets">Search widgets</a></li>
+              <li><a href="#/about/developers">Developers</a></li>
+              <li><a href="#/about/partnerships">Partnerships</a></li>
+          </ul>
+          <div class="col-lg-9 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-24 col-sm-offset-2 col-xs-24 col-xs-offset-2 social-wrapper">
+              <div class="row">
+                  <div class="col-md-12">
+                      <p class="stay">Stay in touch</p>
+                  </div>
+                  <div class="col-md-16">
+                      <ul class="social-btns">
+                          <li><a href="https://www.facebook.com/DoItUK" target="_blank" class="btn btn-white btn-small btn-icon-only"><span class="icon icon-footer-social-facebook"></span></a></li>
+                          <li><a href="https://twitter.com/doituk" target="_blank" class="btn btn-white btn-small btn-icon-only"><span class="icon icon-footer-social-twitter"></span></a></li>
+                          <li><a href="http://instagram.com/doitvolunteering" target="_blank" class="btn btn-white btn-small btn-icon-only"><span class="icon icon-footer-social-instagram"></span></a></li>
+                          <li><a href="https://plus.google.com/u/0/104542109668334219910" target="_blank" class="btn btn-white btn-small btn-icon-only"><span class="icon icon-footer-social-google-plus"></span></a></li>
+                          <li><a href="https://www.youtube.com/channel/UCSgAwnwPyzAFC5hvICTE1Bw" target="_blank" class="btn btn-white btn-small btn-icon-only"><span class="icon icon-footer-social-youtube"></span></a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div data-block="copy" class="col-lg-24 col-lg-offset-2 col-md-24 col-md-offset-2 col-sm-24 col-sm-offset-2 col-xs-24 col-xs-offset-2">
+          <p class="copy">2014 &copy; All rights reserved Do-it trust</p>
+      </div>
+  </div>

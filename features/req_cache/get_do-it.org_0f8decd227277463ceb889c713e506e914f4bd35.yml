@@ -1,0 +1,30 @@
+---
+:scope: 
+:url: https://do-it.org/partials/system-msg.html
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Accept-Ranges: bytes
+  Content-Type: text/html
+  Date: Wed, 15 Mar 2017 05:40:50 GMT
+  ETag: '"58b6f1e1-236"'
+  Last-Modified: Wed, 01 Mar 2017 16:08:01 GMT
+  Server: nginx/1.10.1
+  Strict-Transport-Security: max-age=31536000
+  Content-Length: '566'
+  Connection: close
+:content: |-
+  <div class="container-fluid">
+      <div class="system-msg" collapse="closed">
+          <div class="row">
+              <div class="col-lg-24 col-lg-offset-2 col-md-24 col-md-offset-2 col-sm-24 col-sm-offset-2 col-xs-24 col-xs-offset-2">
+                  <div class="content">
+                      <h2>{{ heading }}</h2>
+                      <p>{{ text }}</p>
+                      <button class="btn btn-icon-only btn-white close" ng-click="close()"><span class="icon icon-btn-close"></span></button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>

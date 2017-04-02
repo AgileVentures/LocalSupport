@@ -1,0 +1,24 @@
+---
+:scope: 
+:url: http://graph.facebook.com/?id=http%3A%2F%2F127.0.0.1%3A46412%2Forganisations%2Fwrong-postcode-uk&callback=_ate.cbs.rcb_68fn0
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Access-Control-Allow-Origin: "*"
+  ETag: '"60a52279009c917b8ecdd60179f8316574a10ead"'
+  Pragma: no-cache
+  Cache-Control: private, no-cache, no-store, must-revalidate
+  facebook-api-version: v2.2
+  Expires: Sat, 01 Jan 2000 00:00:00 GMT
+  Content-Type: application/json; charset=UTF-8
+  x-fb-trace-id: CvnoGsWkgSR
+  x-fb-rev: '2834207'
+  X-FB-Debug: yDJ/bgk7jE9Kuayi79ogsQU3BWtNqtrx3qTuSnswkXb54K4euQwZr0sczprUR8R3v86vtewWFS1vDGjH8fju+A==
+  Date: Wed, 15 Feb 2017 06:10:51 GMT
+  Connection: close
+  Content-Length: '95'
+:content: |-
+  /**/ _ate.cbs.rcb_68fn0({
+     "id": "http://127.0.0.1:46412/organisations/wrong-postcode-uk"
+  });

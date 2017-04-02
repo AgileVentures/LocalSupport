@@ -1,0 +1,33 @@
+---
+:scope: 
+:url: https://fonts.googleapis.com/css?family=Open+Sans:700,300
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: text/css; charset=utf-8
+  Access-Control-Allow-Origin: "*"
+  Timing-Allow-Origin: "*"
+  Expires: Thu, 26 Jan 2017 16:48:39 GMT
+  Date: Thu, 26 Jan 2017 16:48:39 GMT
+  Cache-Control: private, max-age=86400
+  Content-Encoding: gzip
+  Server: ESF
+  X-XSS-Protection: 1; mode=block
+  X-Frame-Options: SAMEORIGIN
+  Alt-Svc: quic=":443"; ma=2592000; v="35,34"
+  Connection: close
+  Transfer-Encoding: chunked
+:content: |
+  @font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTYnF5uFdDttMLvmWuJdhhgs.ttf) format('truetype');
+  }
+  @font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzInF5uFdDttMLvmWuJdhhgs.ttf) format('truetype');
+  }
