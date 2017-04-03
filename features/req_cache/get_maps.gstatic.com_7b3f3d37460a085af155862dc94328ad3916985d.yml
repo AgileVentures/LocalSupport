@@ -5,10 +5,11 @@
 :status: 200
 :method: get
 :headers:
+  Accept-Ranges: bytes
   Content-Type: image/png
   Access-Control-Allow-Origin: "*"
-  Date: Wed, 22 Mar 2017 10:01:45 GMT
-  Expires: Wed, 22 Mar 2017 10:01:45 GMT
+  Date: Mon, 27 Mar 2017 16:46:55 GMT
+  Expires: Mon, 27 Mar 2017 16:46:55 GMT
   Cache-Control: private, max-age=31536000
   Last-Modified: Wed, 07 Dec 2016 16:58:57 GMT
   X-Content-Type-Options: nosniff

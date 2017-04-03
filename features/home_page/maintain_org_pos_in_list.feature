@@ -10,5 +10,5 @@ Feature: maintain position in organisation list
       | Harrow Bereavement Counselling | Harrow Bereavement Counselling | 34 Pinner Road | HA1 4HZ  | http://a.com/ |
 
   Scenario:
-    When I visit the home page
+    When I visit the organisations index page
     Then I should see link "Harrow Bereavement Counselling" targeting new page

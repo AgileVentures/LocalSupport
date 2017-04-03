@@ -1,0 +1,19 @@
+---
+:scope: 
+:url: http://cs.go.affec.tv/map/cs/58d94204ac9cf87a?src=cs&ssp=0&redir=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11123%26puid%3D%5BAFID%5D%26ssrc%3D1
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Content-Type: text/html; charset=utf-8
+  Date: Mon, 27 Mar 2017 16:47:00 GMT
+  Location: https://secure.adnxs.com/getuid?http%3A%2F%2Fmap.go.affec.tv%2Fmap%2Fan%2F%24UID%3Fch%3D58d9420435d4fb00013a9331%26chc%3Dcs%26mc%3D2%26px%3D%26ssp%3D0
+  Set-Cookie:
+  - ck=58d9420435d4fb00013a9330; Path=/; Domain=go.affec.tv; Expires=Mon, 28 Mar 2022
+    16:47:00 GMT
+  - oo=1; Path=/; Domain=go.affec.tv; Expires=Mon, 28 Mar 2022 16:47:00 GMT
+  - pt=eyJjcyI6eyJkdCI6MTQ5MDYzMzIyMCwiaWQiOiI1OGQ5NDIwNGFjOWNmODdhIiwibHMiOjE0OTA2MzMyMjB9LCJ2IjoxfQ==|1490633220|cec2552f6ae0635b617c4ecf90a0661994e3658b;
+    Path=/; Domain=go.affec.tv; Expires=Mon, 28 Mar 2022 16:47:00 GMT
+  Content-Length: '173'
+  Connection: close
+:content: "<a href=\"https://secure.adnxs.com/getuid?http%3A%2F%2Fmap.go.affec.tv%2Fmap%2Fan%2F%24UID%3Fch%3D58d9420435d4fb00013a9331%26chc%3Dcs%26mc%3D2%26px%3D%26ssp%3D0\">Found</a>.\n\n"

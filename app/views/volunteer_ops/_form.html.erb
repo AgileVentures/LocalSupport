@@ -1,6 +1,6 @@
 <%= form_for(@volunteer_op, url: submission_url ) do |f| %>
   <% if @volunteer_op.errors.any? %>
-    <div class= "text-error", id="error_explanation">
+    <div class= "text-danger", id="error_explanation">
       <%= pluralize(@volunteer_op.errors.count, "error") %> prohibited this volunteer_op from being saved:
       <ul>
         <% @volunteer_op.errors.full_messages.each do |msg| %>

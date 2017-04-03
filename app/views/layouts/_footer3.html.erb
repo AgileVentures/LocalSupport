@@ -1,5 +1,5 @@
 <footer class="footer">
-  <p class="text-right"><small>
+  <p class="right-footer"><small>
     <% if current_user.try(:superadmin?) %>
       | <%= link_to('New Organisation' , new_organisation_path)%>
     <%end%>
