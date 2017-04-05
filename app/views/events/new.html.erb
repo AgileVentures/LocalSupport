@@ -1,31 +1,50 @@
+<h1>New event</h1>
 <%= form_for(@event) do |f| %>
-  <% if @event.errors.any? %>
-    <div class="text-danger", id="error_explanation">
-      <%= pluralize(@event.errors.count, "error") %> prohibited you from creating an event.
-      <ul>
-        <% @event.errors.full_messages.each do |msg| %>
-          <li> <%= msg %></li>
-        <% end %>
-      </ul>
+  <table>
+    <thead>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-toggle="tooltip" title="Enter a unique title">
+          <% if @event.errors[:title].any?%>
+            <p class="error-name"><%= @event.errors[:title].first %></p>
+          <% end %>
+          <%= f.text_area :title, :size => "50x4", :class => "wide_form org_h3", :placeholder => "Enter event title" %>
+        </td>
+      </tr>
+      <tr>
+        <td class="borderless" data-toggle="tooltip" title="Enter a full description here. When an individual searches this database all words in this description will be searched.">
+          <% if @event.errors[:description].any?%>
+            <p class="error"><%= @event.errors[:description].first %></p>
+          <% end %>
+          <%= f.text_area :description, :class => "wide_form", :cols => "10", :rows => "10", :placeholder => "Enter event description" %>
+        </td>
+      </tr>
+      <tr>
+        <td data-toggle="tooltip" title="Enter the start date ">
+          <% if @event.errors[:start_date].any?%>
+            <p class="error-name"><%= @event.errors[:start_date].first %></p>
+          <% end %>
+          <%= f.text_field :start_date, :size => "50x4", :class => "wide_form org_h3", :placeholder => "E.g. 05 April 2017" %>
+        </td>
+      </tr>
+      <tr>
+        <td data-toggle="tooltip" title="Enter the end date ">
+          <% if @event.errors[:end_date].any?%>
+            <p class="error-name"><%= @event.errors[:end_date].first %></p>
+          <% end %>
+          <%= f.text_field :end_date, :size => "50x4", :class => "wide_form org_h3", :placeholder => "E.g. 12 April 2017" %>
+        </td>
+      </tr>
+  </table>
+  <br />
+  <div class="position-bottom col-md-6">
+    <div class="actions">
+      <%= f.submit :class => 'btn btn-primary' %>
     </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :title, :style => "margin-top: 16px;" %>
-    <%= f.text_field :title, :class => "wide_form" %>
-  </div>
-  <div class="field">
-    <%= f.label :description , :style => "margin-top: 16px;" %>
-    <%= f.text_area :description, :class => "wide_form" %>
-  </div>
-  <div class="field">
-    <%= f.label :start_date, :style => "margin-top: 16px;" %>
-    <%= f.text_field :start_date, :class => "wide_form" %>
-  </div>
-  <div class="field">
-    <%= f.label :end_date , :style => "margin-top: 16px;" %>
-    <%= f.text_field :end_date, :class => "wide_form" %>
-  </div>
-  <div class="actions" style="margin-top: 16px;">
-    <%= f.submit "Create Event", class: 'btn btn-primary' %>
   </div>
 <% end %>
+<%= render partial: 'shared/map_scripts', locals: {markers: @markers} %>
+
+<%= link_to 'Back', events_path %>
+
