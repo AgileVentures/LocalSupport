@@ -85,6 +85,26 @@
   overflow-y: scroll;
 }
 
+/* ORGANISATION EDITING STYLE
+-------------------------------------------------- */
+
+.edit_organisation table {
+  border-collapse:separate;
+  border-spacing:0 6px;
+}
+
+input.error, textarea.error {
+  border-color: red;
+}
+
+/* ------- VALIDATION -------- */
+label.error {
+  margin: 0;
+  color: red;
+}
+
+
+
 /* ORGANISATION CATEGORIES STYLE
 -------------------------------------------------- */
 

@@ -14,6 +14,8 @@
 //= require organisations
 //= require analytics
 //= require utilities
+//= require jquery.validate.min
+//= require org_validation
 
 window.LocalSupport = {};
 
