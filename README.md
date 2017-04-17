@@ -1,6 +1,8 @@
 LocalSupport
 ============
 
+[![Join the chat at https://gitter.im/AgileVentures/LocalSupport](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/AgileVentures/LocalSupport?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A directory of local support services. 
 
 [Project Overview on AgileVentures](http://www.agileventures.org/projects/localsupport/documents/project-overview-localsupport)
