@@ -11,18 +11,22 @@ class DoitVolunteerOp
 
   def save(trace_handler:)
     if valid?
-      options = {
-        volunteer_op: volunteer_op,
-        advertise_start_date: advertise_start_date,
-        advertise_end_date: advertise_end_date,
-        doit_org_id: doit_org_id
-      }
-      PostToDoitJob.perform_later(options)
-
+      PostToDoitJob.perform_later(build_options)
       trace_handler.add_entry(volunteer_op.id)
       true
     else
       false
     end
+  end
+
+  private
+
+  def build_options
+    {
+      volunteer_op: volunteer_op,
+      advertise_start_date: advertise_start_date,
+      advertise_end_date: advertise_end_date,
+      doit_org_id: doit_org_id
+    }
   end
 end

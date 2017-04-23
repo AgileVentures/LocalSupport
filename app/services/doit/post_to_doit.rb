@@ -1,5 +1,6 @@
 module Doit
   class PostToDoit
+    include StringUtility
 
     # API reference:
     # http://docs.doit.apiary.io/#reference/opportunities/opportunities/create?console=1
@@ -15,7 +16,8 @@ module Doit
     def call
       options = {}
 
-      options[:headers] = { "X-API-Key" => ENV["X-AUTH-TOKEN"], 'Content-Type' => 'application/json' }
+      options[:headers] = { 'X-API-Key' => ENV['X-AUTH-TOKEN'],
+                            'Content-Type' => 'application/json' }
       options[:body] = build_request_body
       http_adapter.post("#{ENV["DOIT_HOST"]}#{doit_volonteer_op_resource}", options)
 
@@ -23,7 +25,10 @@ module Doit
 
     private
 
-    attr_reader :volunteer_op, :advertise_start_date, :advertise_end_date, :doit_org_id, :http_adapter
+    attr_reader :volunteer_op,
+      :advertise_start_date, :advertise_end_date,
+      :doit_org_id,
+      :http_adapter
 
     def initialize(volunteer_op:, advertise_start_date:, advertise_end_date:, doit_org_id:, http_adapter: HTTParty)
       @volunteer_op = volunteer_op
@@ -51,15 +56,6 @@ module Doit
         ],
         title: volunteer_op.title
       }.to_json
-    end
-    
-    def smart_truncate(sentence, char_limit = 128)
-      sentence = sentence.to_s
-      size =0
-      sentence.split().reject do |word|
-        size+=word.size()
-        size>char_limit
-      end.join(" ")+(sentence.size()>char_limit ? " "+ "..." : "" )
     end
   end
 end

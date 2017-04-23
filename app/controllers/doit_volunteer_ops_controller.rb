@@ -22,7 +22,9 @@ class DoitVolunteerOpsController < ApplicationController
   private
 
   def doit_vol_op_params
-    params.require(:doit_volunteer_op).permit(:advertise_start_date, :advertise_end_date, :doit_org_id, :vol_op)
+    params.require(:doit_volunteer_op).permit(:advertise_start_date,
+                                              :advertise_end_date,
+                                              :doit_org_id, :vol_op)
   end
 
 end

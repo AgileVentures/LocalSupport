@@ -38,20 +38,22 @@ module Doit
     end
     
     def each
-      options = {}
-      options[:headers] = { "X-API-Key" => ENV["X-AUTH-TOKEN"] }
-      options[:query] = { page: 1 }
+      options = set_options
 
       loop do
-        response = http.get("#{ENV["DOIT_HOST"]}#{organisations_resource}", options)
+        response = http.get("#{ENV['DOIT_HOST']}#{organisations_resource}", options)
         records = JSON.parse(response.body)['data']['items']
-        if records.try(:any?)
-          records.each { |record| yield record }
-          options[:query][:page] += 1
-        else
-          break # no items included on that page
-        end
+        break unless records.try(:any?) # no items included on that page
+        records.each { |record| yield record }
+        options[:query][:page] += 1
       end
+    end
+
+    def set_options
+      {
+        headers: { 'X-API-Key' => ENV['X-AUTH-TOKEN'] },
+        query: { page: 1 }
+      }
     end
 
   end
