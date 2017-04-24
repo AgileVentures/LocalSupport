@@ -32,6 +32,10 @@ Given(regex) do |override, radius|
   end
 end
 
+Given(/^I run the import reachskills service$/) do
+  ImportReachSkillsVolunteerOpportunities.with
+end
+
 Given(/^there is a doit volunteer op named "(.*?)"$/) do |title|
   VolunteerOp.create(title: title,
                      description: 'description content',
@@ -98,13 +102,17 @@ end
 
 Then(/^the Do-it word in the legend should be a hyperlink to the Do-it website$/) do
   within('.map_legend') do
-    first, _, third = all('.key_text').to_a
+    first, _, _, fourth = all('.key_text').to_a
 
     expect(first).to have_link('Do-it', href: 'https://do-it.org/')
-    expect(third).to have_link('Do-it', href: 'https://do-it.org/')
+    expect(fourth).to have_link('Do-it', href: 'https://do-it.org/')
   end
 end
 
 Then(/^I should see a search form$/) do
   expect(page).to have_css('form.volunteer-ops-search')
+end
+
+Given /^wait for (\d+) seconds?$/ do |n|
+	sleep(n.to_i)
 end

@@ -9,8 +9,10 @@ class VolunteerOp < ActiveRecord::Base
   after_validation :clear_lat_lng, if: "source == 'local'"
 
   scope :order_by_most_recent, -> { order('updated_at DESC') }
-  scope :local_only, -> { where(source: 'local') }
-  scope :remote_only, -> { where.not(source: 'local') }
+  scope :local_only,           -> { where(source: 'local') }
+  scope :doit,                 -> { where(source: 'doit') }
+  scope :reachskills,          -> { where(source: 'reachskills') }
+  scope :remote_only,          -> { where.not(source: 'local') }
 
 
   def full_address
@@ -19,17 +21,20 @@ class VolunteerOp < ActiveRecord::Base
 
   def organisation_name
     return organisation.name if source == 'local'
-    doit_org_name
+    return doit_org_name if source == 'doit'
+    reachskills_org_name
   end
 
   def organisation_link
     return organisation if source == 'local'
-    "https://do-it.org/organisations/#{doit_org_link}"
+    return "https://do-it.org/organisations/#{doit_org_link}" if source == 'doit'
+    "https://reachskills.org.uk/org/#{parsed_reachskills_org_name}"
   end
 
   def link
     return self if source == 'local'
-    "https://do-it.org/opportunities/#{doit_op_id}"
+    return "https://do-it.org/opportunities/#{doit_op_id}" if source == 'doit'
+    reachskills_op_link
   end
 
   def self.search_for_text(text)
@@ -91,6 +96,10 @@ class VolunteerOp < ActiveRecord::Base
     vol_ops.group_by do |vol_op|
       [vol_op.longitude, vol_op.latitude]
     end
+  end
+
+  def parsed_reachskills_org_name
+    reachskills_org_name.downcase.gsub(' ', '-')
   end
 
 end

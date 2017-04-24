@@ -1,0 +1,1339 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://reachskills.org.uk/harrow-community-network-opportunity-feed
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 22 Mar 2017 10:01:47 GMT
+      Server:
+      - Apache
+      X-Drupal-Cache:
+      - HIT
+      Etag:
+      - '"1490176901-1"'
+      Cache-Control:
+      - public, max-age=0
+      Last-Modified:
+      - Wed, 22 Mar 2017 10:01:41 GMT
+      Expires:
+      - Sun, 19 Nov 1978 05:00:00 GMT
+      Vary:
+      - Cookie,Accept-Encoding
+      Content-Length:
+      - '5209'
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: ASCII-8BIT
+      string: '{"nodes":[{"node":{"title":"Charity Treasurer","Organisation":"The
+        Patients Association","Description":"The duties of a Trustee treasurer are
+        to:\nOversee, approve and present budgets, accounts and financial statements
+        to the rest of the board and external agencies\nAdvise the board on the financial
+        implications of decisions and strategic plans\nEnsure the charity has an appropriate
+        investment policy which is viable and does not conflict with its charitable
+        aims\nMake sure the organisation''s financial resources are adequate for present
+        and future spending and that proper accounting procedures and controls are
+        in place\nMaintain an appropriate reserves policy and coordinate with staff
+        and volunteers about financial matters\nSetting annual budget with the CEO,
+        ensuring budgets are maintained\u00a0\nProducing monthly reports to the Board\nBusiness
+        planning\u00a0\nMaintaining the audit and risk committee,\nHelp\u00a0with
+        accurate reporting of the actions from various sub committees\nWorking with
+        the fundraisers, reviewing funding applications,\nReviewing the funding and
+        marketing plans,\nWorking with the Board to set the Business Plan\nIn addition
+        to the above statutory duties each trustee should use any specific skills,
+        knowledge or experience they have to help the Board of Trustees reach sound
+        decisions.\nAdditional duties may involve leading discussions, focusing on
+        key issues, providing advice and guidance on new initiatives and other issues
+        in which the trustee has special expertise, and positively representing the
+        organisation. Trustees are expected to regularly attend Board meetings and,
+        if unable to attend, to contact the Chair with any input, feedback or suggestions
+        on the agenda items.\n","Path":"https:\/\/reachskills.org.uk\/opp\/charity-treasurer-10?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Harrow","Postcode":"HA1
+        3UJ","Coordinates":"51\u00b0 34'' 31.4652\" N, 0\u00b0 19'' 19.3332\" W"}},{"node":{"title":"Trustee","Organisation":"Sudbury
+        Neighbourhood Centre","Description":"Role\nTrustees, as voting members of
+        the Board, are responsible for the overall governance and strategic direction
+        of the Centre, developing the Centre''s aims, objectives and goals in accordance
+        with its governing documents, legal and regulatory guidelines and monitoring
+        its performance.\nMain responsibilities of a Trustee\nTo determine the overall
+        direction and development of the Centre through good governance and clear
+        strategic planning.\nTo ensure the Centre and its representatives function
+        within the legal and regulatory framework governing the activities of the
+        Centre, in line with the Centre''s governing documents, continually striving
+        for best practice in governance.\nTo maintain and develop the Centre''s standing
+        in the communities it serves and reputation and influence, continually striving
+        for best practice in governance.\n\u00a0\nMain duties of a Trustee\nTo contribute
+        actively to the Board''s role in giving clear strategic direction to the Centre,
+        setting overall policy objectives, defining goals, setting targets and evaluating
+        performance against agreed objectives.\nTo ensure that the Centre complies
+        with its governing documents, and also charity law, company law, and any other
+        relevant legislation or regulations.\nTo ensure that appropriate arrangements
+        (including a clear governance and management structure) are in place for the
+        Centre to deliver its objects. This\nSNC Trustee Role Description Page 2 of
+        3\nincludes appointing, supporting, monitoring and reviewing the effectiveness
+        of the Centre''s Chief Executive.\nMaintain sound financial management of
+        the charity''s resources, ensuring expenditure is in line with the Centre''s
+        objects, and investment activities meet accepted standards and policies.\nTo
+        ensure that the property of the Centre is properly protected, managed and
+        safeguarded.\nTo safeguard the good name and values of the Centre.\nTo maintain
+        confidentiality, disclose any conflicts of interest and abide by the Centre''s
+        Trustees Code of Conduct.\nIn addition to the above main statutory duties,
+        each Trustee should use any skills, knowledge or experience he\/she may have
+        to help the Board of Trustees reach sound decisions. This may involve leading
+        on certain key issues, providing advice and guidance on matters which the
+        Trustee has special expertise, etc.\n","Path":"https:\/\/reachskills.org.uk\/opp\/trustee-112?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Sudbury
+        Town, London Borough of Brent","Postcode":"HA02LP","Coordinates":"51\u00b0
+        33'' 20.8728\" N, 0\u00b0 19'' 1.938\" W"}},{"node":{"title":"School Governor
+        (Harrow)","Organisation":"SGOSS - Governors for Schools","Description":"Governing
+        bodies are responsible for the strategic management of a school and will make
+        decisions about a wide range of issues\nThe core responsibilities involved
+        are:\n\u2022Ensuring accountability\n\u2022Acting as a \u2018critical friend\u2019
+        to the Head Teacher\n\u2022Monitoring and evaluating the school\u2019s progress\n\u2022Budgetary
+        allocation and control\n\u2022Shaping plans for school improvement and overseeing
+        their implementation\n\u2022Setting the school\u2019s aims and values\n\u2022Appointing
+        senior members of staff including the Head Teacher\nThe governing body is
+        usually split in to a small number of committees, each responsible for one
+        area such as finance or pupil achievement. These committees will meet separately
+        from the main governing body to discuss relevant issues in more detail. Discussion
+        is then fed back at a full governing body meeting.\nA school governing body
+        is made up of representatives from the school, the parents, the local authority
+        and the local community.\n","Path":"https:\/\/reachskills.org.uk\/opp\/school-governor-harrow?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Harrow","Postcode":"HA","Coordinates":"0\u00b0
+        0'' 0\" N, 0\u00b0 0'' 0\" E"}},{"node":{"title":"Trustee","Organisation":"Sudbury
+        Neighbourhood Centre","Description":"Experienced Trustees required for the
+        Centre.\nSudbury Neighbourhood Centre is a community centre, located in the
+        London Borough of Brent that provides a range of activities and services (including
+        a day care service) to the people in the surrounding communities.\nWe are
+        governed by a Board of Trustees and are seeking to appoint new people to the
+        Board, who will become Trustees, and make a contribution to the overall direction
+        of the organisation.\u00a0 We are seeking individuals with a passion for our
+        work, who have skills and experience they can bring to the overall future
+        direction of the charity.\u00a0 In particular, we\u2019d like to hear from
+        you if you have knowledge or\u00a0skills in:\n\u00a0\nManagement in the voluntary
+        or public sectors\nMarketing \nFinance and Fundraising\nAdult social care
+        sector\n\u00a0\nOur Board of Trustees usually meets every other month.\u00a0
+        As volunteers our Trustees receive no payment for their contribution to the
+        Centre.\nWe welcome people from the widest possible diversity of background,
+        culture and experience to help ensure that the Board is representative of
+        the communities we serve.\n\u00a0\n","Path":"https:\/\/reachskills.org.uk\/opp\/trustee-108?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Brent","Postcode":"HA02LP","Coordinates":"51\u00b0
+        33'' 20.8728\" N, 0\u00b0 19'' 1.938\" W"}},{"node":{"title":"Technology Champion","Organisation":"Love
+        Burnt Oak","Description":"Burnt Oak is an area of Barnet in North London where
+        a significant number of people are not engaged with technology. They make
+        struggle to produce a CV using word-processing or fill-in an online application
+        for a job or a benefit. They may never have bought anything on-line despite
+        the fact that the savings made could be really useful for them.\nIn other
+        areas there are Coffee ''n Computers projects where people can drop in to
+        get the help they need (and a quick refreshment). Each project needs a leader
+        and a small team of volunteers to provide the help that it needed. Here in
+        Burnt Oak we need to find that volunteer for the leadership role.\nWe don''t
+        have a detailed list of what you WILL do. However it is easy to say what you
+        WON''T do. You are not here to fix people''s broken technology but to help
+        them make best use of whatever is in their hand, be it PC, SMART phone or
+        something else.\nA simple example might be that a person acquires some new
+        equipment (e.g. laptop) and just needs someone to shop\u00a0them how to use
+        it.\n\u00a0\n\u00a0\n","Path":"https:\/\/reachskills.org.uk\/opp\/technology-champion?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Barnet","Postcode":"HA8
+        0LN","Coordinates":"51\u00b0 36'' 10.6164\" N, 0\u00b0 15'' 45.5076\" W"}},{"node":{"title":"Literacy
+        Trainer (The Princess Alexandra Home)","Organisation":"Jewish Care","Description":"Duties
+        will include: \n\u2022 Administering pre-training assessment\n\u2022 Agreeing
+        learning objectives with manager and staff member in advance of training\n\u2022
+        Working one-to-one or small group with identified staff on their literacy
+        \u2013 verbal and written\n\u2022 Working one-to-one or small group to enable
+        staff to complete relevant documentation\n\u2022 Attending volunteer meetings
+        to report back to the group and offering any learning or recommendations for
+        the project\n","Path":"https:\/\/reachskills.org.uk\/opp\/literacy-trainer-princess-alexandra-home?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"London","Postcode":"HA7
+        3JE","Coordinates":"51\u00b0 37'' 28.074\" N, 0\u00b0 20'' 26.7252\" W"}},{"node":{"title":"Into
+        Work Volunteer","Organisation":"Love Burnt Oak","Description":"An opportunity
+        for anyone with skills, experience and a successful track record in HR, Recruitment
+        or a similar role to help others who are currently unwaged\/unemployed. Love
+        Burnt Oak operates IntoWork on a Tuesday morning, twice a month, at its resource
+        centre on Watling Avenue and short walk from the Underground Station.\nAs
+        a volunteer you will be helping people to: make better use of the Internet
+        in job search using our suite of PCs; share your experiences of effective
+        job search including CV writing and preparing for interviews and share whatever
+        knowledge you have which will enable another person to move from being a jobseeker
+        to an employee. IntoWork operates on the 1st\/3rd Tuesday\u00a0of each month
+        but you don''t have to make it to every session.\nLove Burnt Oak started in
+        2012 and is a community organisation in the Burnt Oak area of North London
+        Love Burnt Oak is committed to improving the life chances of local residents;
+        many of whom face disadvantages associated with poverty, unemployment, health
+        issues, disability and other personal circumstances. Burnt Oak is a multi-cultural
+        area with many languages including: English, Romanian, Polish, Guajarati,
+        Farsi and Nepalese. Love Burnt Oak welcomes people of all faiths (including
+        Christian, Muslim, Hindu, Buddhist) and none. As Burnt Oak is a multicultural
+        area, volunteers who speak other community languages are most welcome.\nLove
+        Burnt Oak contributes to essential volunteer expenses. We do not provide initial
+        training in job search skills but will provide support, particularly during
+        the induction period, to all volunteers.\n","Path":"https:\/\/reachskills.org.uk\/opp\/work-volunteer?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Burnt
+        Oak","Postcode":"HA8 0LN","Coordinates":"51\u00b0 36'' 10.6164\" N, 0\u00b0
+        15'' 45.5076\" W"}},{"node":{"title":"Trustee with business development expertise","Organisation":"The
+        Patients Association","Description":"The duties of a Trustee are to:\nEnsure
+        that The Patients Association complies with charity law, company law and any
+        other relevant legislation or regulations;\nEnsure that The Patients Association
+        complies with and pursues its objects as defined in its governing document,
+        the Memorandum and Articles of Association;\nEnsure that The Patients Association
+        applies its resources exclusively in pursuance of its objects;\nContribute
+        actively to the Board of Trustees\u2019 role in giving firm strategic direction
+        to the organisation, setting overall policy, defining goals and setting targets,
+        and evaluating performance against agreed targets;\nPromote and raise awareness
+        of The Patients Association and our national helpline;\nEnsure the effective
+        and efficient administration of The Patients Association;\nEnsure the financial
+        stability of the organisation;\nProtect and manage the property of the charity
+        and ensure the proper investment of the charity\u2019s funds;\nEnsure the
+        organisation acts within employment and health and safety laws.\n\u00a0\nIn
+        addition to the above statutory duties each trustee should use any specific
+        skills, knowledge or experience they have to help the Board of Trustees reach
+        sound decisions.\nAdditional duties may involve leading discussions, focusing
+        on key issues, providing advice and guidance on new initiatives and other
+        issues in which the trustee has special expertise, and positively representing
+        the organisation. Trustees are expected to regularly attend Board meetings
+        and, if unable to attend, to contact the Chair with any input, feedback or
+        suggestions on the agenda items.\n","Path":"https:\/\/reachskills.org.uk\/opp\/trustee-business-development-expertise-1?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Harrow","Postcode":"HA1
+        3UJ   ","Coordinates":"51\u00b0 34'' 31.4652\" N, 0\u00b0 19'' 19.3332\" W"}},{"node":{"title":"Quality
+        Assurance Volunteer","Organisation":"Jami","Description":"\u00a0\nThe Quality
+        Assurance group aims to help Jami reflect on its activities and find the best
+        ways of working, in order to become more effective and efficient. Jami is
+        a charity which supports the recovery of Jewish people with a history of mental
+        illness. The group aims to help Jami reflect on its activities and find the
+        best ways of working, in order to become more effective and efficient.\nJami
+        is a charity which supports the recovery of Jewish people with a history of
+        mental illness. The group meet approximately every two months. The group members
+        are expected to attend the meetings and follow up on identified tasks in between
+        meetings. The time commitment is variable but would not amount to more than
+        two days per month.\n","Path":"https:\/\/reachskills.org.uk\/opp\/quality-assurance-volunteer?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Edgware","Postcode":"HA8
+        9BG","Coordinates":"51\u00b0 36'' 27.4536\" N, 0\u00b0 16'' 22.9188\" W"}},{"node":{"title":"Social
+        Researcher","Organisation":"Chalkhill Community Centre","Description":"The
+        Social Research volunteer will be responsible for supporting the staff team
+        with designing and implementing a large-scale research project to measure
+        the outcomes, impact and social return on investment of the services provided
+        by Chalkhill Community Centre. This will involve: surveys, telephone questionnaires
+        and focus groups; analysis of data and writing up the research paper of findings.\nThe
+        volunteer will be required to help to design and carry out\u00a0surveys,\u00a0questionnaires
+        and focus groups using appropriate research methodology. They will collate
+        and analyse research data and help to prepare a report of findings.\u00a0\n","Path":"https:\/\/reachskills.org.uk\/opp\/social-researcher?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Wembley","Postcode":"HA9
+        9FX","Coordinates":"51\u00b0 33'' 50.0184\" N, 0\u00b0 16'' 35.5872\" W"}}]}'
+    http_version: 
+  recorded_at: Wed, 22 Mar 2017 10:02:05 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA1%203UJ,%20Harrow&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 22 Mar 2017 10:01:42 GMT
+      Expires:
+      - Thu, 23 Mar 2017 10:01:42 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '460'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '4'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA1 3UJ",
+                       "short_name" : "HA1 3UJ",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Harrow",
+                       "short_name" : "Harrow",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Harrow HA1 3UJ, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.5774212,
+                          "lng" : -0.3202171
+                       },
+                       "southwest" : {
+                          "lat" : 51.5734595,
+                          "lng" : -0.3277267
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.5750985,
+                       "lng" : -0.3224814
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5774212,
+                          "lng" : -0.3202171
+                       },
+                       "southwest" : {
+                          "lat" : 51.5734595,
+                          "lng" : -0.3277267
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJo1ytTKITdkgR0y0pujhfkSg",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 22 Mar 2017 10:02:05 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA02LP,%20Sudbury%20Town,%20London%20Borough%20of%20Brent&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 22 Mar 2017 10:01:42 GMT
+      Expires:
+      - Thu, 23 Mar 2017 10:01:42 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '581'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '4'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "Sudbury Town Station",
+                       "short_name" : "Sudbury Town Station",
+                       "types" : [
+                          "establishment",
+                          "point_of_interest",
+                          "subway_station",
+                          "transit_station"
+                       ]
+                    },
+                    {
+                       "long_name" : "Station Approach",
+                       "short_name" : "Station Approach",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Wembley",
+                       "short_name" : "Wembley",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "HA0 2LA",
+                       "short_name" : "HA0 2LA",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "Sudbury Town Station, Station Approach, Wembley HA0 2LA, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.5509044,
+                       "lng" : -0.3155506
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5522533802915,
+                          "lng" : -0.3142016197084979
+                       },
+                       "southwest" : {
+                          "lat" : 51.5495554197085,
+                          "lng" : -0.316899580291502
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJ85_vfE4SdkgRuwp5UE6Vryc",
+                 "types" : [
+                    "establishment",
+                    "point_of_interest",
+                    "subway_station",
+                    "transit_station"
+                 ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 22 Mar 2017 10:02:05 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA,%20Harrow&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 22 Mar 2017 10:01:42 GMT
+      Expires:
+      - Thu, 23 Mar 2017 10:01:42 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '558'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '4'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "21",
+                       "short_name" : "21",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Earls Crescent",
+                       "short_name" : "Earls Cres",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Harrow",
+                       "short_name" : "Harrow",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "HA1 1XL",
+                       "short_name" : "HA1 1XL",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "21 Earls Cres, Harrow HA1 1XL, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.5921058,
+                       "lng" : -0.3392224
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5934547802915,
+                          "lng" : -0.3378734197084979
+                       },
+                       "southwest" : {
+                          "lat" : 51.5907568197085,
+                          "lng" : -0.340571380291502
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJy3iIn3sTdkgRS7HPfujVUJ0",
+                 "types" : [ "establishment", "point_of_interest" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 22 Mar 2017 10:02:05 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA02LP,%20Brent&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 22 Mar 2017 10:01:43 GMT
+      Expires:
+      - Thu, 23 Mar 2017 10:01:43 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '529'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '3'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA0 2LP",
+                       "short_name" : "HA0 2LP",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Harrow Road",
+                       "short_name" : "Harrow Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Wembley",
+                       "short_name" : "Wembley",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Harrow Rd, Wembley HA0 2LP, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.5563709,
+                          "lng" : -0.3166243
+                       },
+                       "southwest" : {
+                          "lat" : 51.555338,
+                          "lng" : -0.3175526
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.5557691,
+                       "lng" : -0.3171052
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.55720343029149,
+                          "lng" : -0.3157394697084979
+                       },
+                       "southwest" : {
+                          "lat" : 51.5545054697085,
+                          "lng" : -0.318437430291502
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJNzo0RE0SdkgRcwuvpyb1C1I",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 22 Mar 2017 10:02:05 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA8%200LN,%20Barnet&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 22 Mar 2017 10:01:43 GMT
+      Expires:
+      - Thu, 23 Mar 2017 10:01:43 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '534'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '3'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA8 0LN",
+                       "short_name" : "HA8 0LN",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Watling Avenue",
+                       "short_name" : "Watling Ave",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Edgware",
+                       "short_name" : "Edgware",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Watling Ave, Edgware HA8 0LN, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.6031847,
+                          "lng" : -0.2623256
+                       },
+                       "southwest" : {
+                          "lat" : 51.6021762,
+                          "lng" : -0.2629624
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.6028405,
+                       "lng" : -0.2625868
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.6040294302915,
+                          "lng" : -0.261295019708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.6013314697085,
+                          "lng" : -0.2639929802915021
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJ-99gSrQWdkgRdkp0kgOHJsY",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 22 Mar 2017 10:02:05 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA7%203JE,%20London&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 22 Mar 2017 10:01:43 GMT
+      Expires:
+      - Thu, 23 Mar 2017 10:01:43 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '467'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '3'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA7 3JE",
+                       "short_name" : "HA7 3JE",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Stanmore",
+                       "short_name" : "Stanmore",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Stanmore HA7 3JE, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.6257285,
+                          "lng" : -0.334074
+                       },
+                       "southwest" : {
+                          "lat" : 51.62290220000001,
+                          "lng" : -0.3434249
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.6244112,
+                       "lng" : -0.3408023
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.6257285,
+                          "lng" : -0.334074
+                       },
+                       "southwest" : {
+                          "lat" : 51.62290220000001,
+                          "lng" : -0.3434249
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJyfO2JPIUdkgRPopKyypFvSk",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 22 Mar 2017 10:02:05 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA8%200LN,%20Burnt%20Oak&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 22 Mar 2017 10:01:43 GMT
+      Expires:
+      - Thu, 23 Mar 2017 10:01:43 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '534'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '3'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA8 0LN",
+                       "short_name" : "HA8 0LN",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Watling Avenue",
+                       "short_name" : "Watling Ave",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Edgware",
+                       "short_name" : "Edgware",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Watling Ave, Edgware HA8 0LN, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.6031847,
+                          "lng" : -0.2623256
+                       },
+                       "southwest" : {
+                          "lat" : 51.6021762,
+                          "lng" : -0.2629624
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.6028405,
+                       "lng" : -0.2625868
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.6040294302915,
+                          "lng" : -0.261295019708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.6013314697085,
+                          "lng" : -0.2639929802915021
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJ-99gSrQWdkgRdkp0kgOHJsY",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 22 Mar 2017 10:02:05 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA1%203UJ%20%20%20,%20Harrow&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 22 Mar 2017 10:01:43 GMT
+      Expires:
+      - Thu, 23 Mar 2017 10:01:43 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '460'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '3'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA1 3UJ",
+                       "short_name" : "HA1 3UJ",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Harrow",
+                       "short_name" : "Harrow",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Harrow HA1 3UJ, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.5774212,
+                          "lng" : -0.3202171
+                       },
+                       "southwest" : {
+                          "lat" : 51.5734595,
+                          "lng" : -0.3277267
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.5750985,
+                       "lng" : -0.3224814
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5774212,
+                          "lng" : -0.3202171
+                       },
+                       "southwest" : {
+                          "lat" : 51.5734595,
+                          "lng" : -0.3277267
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJo1ytTKITdkgR0y0pujhfkSg",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 22 Mar 2017 10:02:05 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA8%209BG,%20Edgware&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 22 Mar 2017 10:01:43 GMT
+      Expires:
+      - Thu, 23 Mar 2017 10:01:43 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '506'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '3'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA8 9BG",
+                       "short_name" : "HA8 9BG",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Edgware",
+                       "short_name" : "Edgware",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Edgware HA8 9BG, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.6077375,
+                          "lng" : -0.2724774
+                       },
+                       "southwest" : {
+                          "lat" : 51.6073178,
+                          "lng" : -0.2738792
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.60758149999999,
+                       "lng" : -0.2730927
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.6088766302915,
+                          "lng" : -0.2718293197084979
+                       },
+                       "southwest" : {
+                          "lat" : 51.6061786697085,
+                          "lng" : -0.274527280291502
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJuUhQuK8WdkgR-3oRXpZ-RIA",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 22 Mar 2017 10:02:05 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA9%209FX,%20Wembley&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 22 Mar 2017 10:01:43 GMT
+      Expires:
+      - Thu, 23 Mar 2017 10:01:43 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '531'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '3'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA9 9FX",
+                       "short_name" : "HA9 9FX",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Chalkhill Road",
+                       "short_name" : "Chalkhill Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Wembley",
+                       "short_name" : "Wembley",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Chalkhill Rd, Wembley HA9 9FX, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.56444,
+                          "lng" : -0.2751451
+                       },
+                       "southwest" : {
+                          "lat" : 51.5636322,
+                          "lng" : -0.277045
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.5639043,
+                       "lng" : -0.2766379
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5653850802915,
+                          "lng" : -0.274746069708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.5626871197085,
+                          "lng" : -0.2774440302915021
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJ7USWmnsRdkgRuBEH28vObuQ",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 22 Mar 2017 10:02:05 GMT
+recorded_with: VCR 3.0.3
