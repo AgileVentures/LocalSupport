@@ -10,9 +10,9 @@
       <% @volunteer_ops.each do |op| %>
           <tr>
             <td>
-              <strong class='organisation-title' data-id="<%= op.id %>" 
+              <strong class='organisation-title'
                       data-lat="<%= op.latitude %>" 
-                      data-lng="<%= op.longitude %>">
+                      data-lng="<%= op.longitude %>" >
                 <%= op.title %>
               </strong><br/>
               <div id='organisations'>
@@ -31,5 +31,3 @@
 <% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
 
 <% render 'shared/map_legend_doit_script' %>
-
-
