@@ -22,13 +22,6 @@ describe "volunteer_ops/index", :type => :view, :js => true  do
     end
   end
 
-  it "renders a link to the volunteer_ops" do
-    render
-    @volunteer_ops.each do |op|
-      expect(rendered).to have_link op.title, :href => volunteer_op_path(op.id)
-    end
-  end
-
   it "renders a link to the organisation" do
     render
     @volunteer_ops.each do |op|
