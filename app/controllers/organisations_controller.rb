@@ -4,10 +4,10 @@ class OrganisationsController < BaseOrganisationsController
   # GET /organisations/search.json
   before_filter :authenticate_user!, :except => [:search, :index, :show]
   prepend_before_action :set_organisation, only: [:show, :update, :edit]
+  before_action :assign_cat_name_ids, only: [:search, :index, :show]
 
   def search
     @parsed_params = SearchParamsParser.new(params)
-    @cat_name_ids = Category.name_and_id_for_what_who_and_how
     @organisations = Queries::Organisations.search_by_keyword_and_category(
       @parsed_params
     )
@@ -22,7 +22,6 @@ class OrganisationsController < BaseOrganisationsController
   def index
     @organisations = Queries::Organisations.order_by_most_recent
     @markers = build_map_markers(@organisations)
-    @cat_name_ids = Category.name_and_id_for_what_who_and_how
   end
 
   # GET /organisations/1
@@ -39,7 +38,6 @@ class OrganisationsController < BaseOrganisationsController
 
     @user_opts[:can_propose_edits] = current_user.present? && !@user_opts[:editable]
     @user_opts[:markers] = build_map_markers(organisations)
-    @cat_name_ids = Category.name_and_id_for_what_who_and_how
   end
 
   # GET /organisations/new
@@ -126,6 +124,10 @@ class OrganisationsController < BaseOrganisationsController
   end
 
   private
+
+  def assign_cat_name_ids
+    @cat_name_ids = Category.name_and_id_for_what_who_and_how
+  end
 
   def get_user_capabilities_hash(organisation)
       {
