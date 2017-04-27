@@ -5,6 +5,7 @@ class OrganisationsController < BaseOrganisationsController
   before_filter :authenticate_user!, :except => [:search, :index, :show]
   prepend_before_action :set_organisation, only: [:show, :update, :edit]
   before_action :assign_cat_name_ids, only: [:search, :index, :show]
+  after_action :assign_markers, only: [:search, :index, :edit]
 
   def search
     @parsed_params = SearchParamsParser.new(params)
@@ -12,8 +13,6 @@ class OrganisationsController < BaseOrganisationsController
       @parsed_params
     )
     flash.now[:alert] = SEARCH_NOT_FOUND if @organisations.empty?
-    @markers = build_map_markers(@organisations)
-
     render :template =>'organisations/index'
   end
 
@@ -21,12 +20,12 @@ class OrganisationsController < BaseOrganisationsController
   # GET /organisations.json
   def index
     @organisations = Queries::Organisations.order_by_most_recent
-    @markers = build_map_markers(@organisations)
   end
 
   # GET /organisations/1
   # GET /organisations/1.json
   def show
+    @user_opts = {}
     render template: 'pages/404', status: 404 and return if @organisation.nil?
     organisations = Organisation.where(id: @organisation.id)
 
@@ -48,8 +47,7 @@ class OrganisationsController < BaseOrganisationsController
 
   # GET /organisations/1/edit
   def edit
-    organisations = Organisation.where(id: @organisation.id)
-    @markers = build_map_markers(organisations)
+    @organisations = Organisation.where(id: @organisation.id)
     return false unless user_can_edit? @organisation
     #respond_to do |format|
     #  format.html {render :layout => 'full_width'}
@@ -124,6 +122,10 @@ class OrganisationsController < BaseOrganisationsController
   end
 
   private
+
+  def assign_markers
+    @markers = build_map_markers(@organisations)
+  end
 
   def assign_cat_name_ids
     @cat_name_ids = Category.name_and_id_for_what_who_and_how
