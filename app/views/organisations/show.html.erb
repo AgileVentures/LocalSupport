@@ -24,9 +24,9 @@
         <%= link_to("Create a Volunteer Opportunity", new_organisation_volunteer_op_path(organisation_id: @organisation), {:class => 'btn btn-primary'}) %>
     <% end %>
     <% if current_user %>
-        <%= link_to "This is my organisation", user_path(pending_organisation_id: @organisation, id: current_user.id), {method: :put, class: 'btn btn-primary'} if @grabbable %>
+        <%= link_to "This is my organisation", user_path(pending_organisation_id: @organisation, id: current_user.id), {method: :put, class: 'btn btn-primary'} if @user_opts[:grabbable] %>
     <% else %>
-        <%= link_to "This is my organisation", new_user_session_path, {method: :put, 'data-signed_in' => current_user.present?, id: 'TIMO', class: 'btn btn-primary'} if @grabbable %>
+        <%= link_to "This is my organisation", new_user_session_path, {method: :put, 'data-signed_in' => current_user.present?, id: 'TIMO', class: 'btn btn-primary'} if @user_opts[:grabbable] %>
     <% end %>
     <% if @user_opts[:pending_org_admin] %>
       <p class="org-info-msg-1" ><strong>Your request for admin status is pending.</strong></p>
