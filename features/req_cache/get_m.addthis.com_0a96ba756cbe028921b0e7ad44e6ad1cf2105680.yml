@@ -1,0 +1,26 @@
+---
+:scope: 
+:url: http://m.addthis.com/live/red_lojson/300lo.json?si=58ffa7567536c476&bkl=0&bl=1&sid=58ffa7567536c476&pub=ra-57ff949adbc21d93&rev=v7.11.0-wp&ln=en&pc=men&cb=0&ab=-&dp=127.0.0.1%3A45443&fp=organisations%2Ffriendly&fr=&of=0&pd=0&irt=1&vcl=1&md=0&ct=1&tct=0&abt=0&cdn=0&pi=1&rb=0&gen=100&chr=UTF-8&colc=1493149526241&jsl=1&uvs=58ffa752445235eb002&skipb=1&callback=addthis.cbs.oln9_52014424395747480
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Tue, 25 Apr 2017 19:45:26 GMT
+  Content-Type: application/javascript;charset=UTF-8
+  Content-Length: '529'
+  Connection: close
+  Set-Cookie:
+  - di2="aUjv~&.Z&-~&+pI1q$?Q9Fs7'}7'|7'y7'x7'w7'u7't7&[7%V6IR6Hq5%}4(g1Gr1Ge1@n1@m-@_+-^(Kw";Path=/;Domain=.addthis.com;Expires=Thu,
+    25-Apr-2019 19:45:26 GMT
+  - uid=580a3372faba457f;Path=/;Domain=.addthis.com;Expires=Thu, 25-Apr-2019 19:45:26
+    GMT
+  - vc=4;Path=/;Domain=.addthis.com;Expires=Thu, 25-Apr-2019 19:45:26 GMT
+  Expires: Thu, 01 Jan 1970 00:00:00 GMT
+  P3P: policyref="/w3c/p3p.xml", CP="NON ADM OUR DEV IND COM STA"
+  Cache-Control: max-age=0, no-cache, no-store, no-transform
+  Pragma: no-cache
+  Content-Disposition: attachment; filename=1.txt
+  Content-Encoding: gzip
+  Server: cloudflare-nginx
+  CF-RAY: 3553cd7b147d68cc-CDG
+:content: addthis.cbs.oln9_52014424395747480({"loc":"OTQwMzVOQVVTQ0EyMTc0MDU3OTgwNzc0MDBIVg==","pixels":[{"url":"http://cm.g.doubleclick.net/pixel?google_nid=addthis&google_cm&pid=23&puidKey=google_gid&ssrc=1","id":5459,"isHttp":true},{"url":"http://pixel-a.sitescout.com/connectors/addthis/usersync?redir=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11185%26puid%3D%24UUID%26ssrc%3D3","id":8579,"isHttp":true},{"url":"http://psi.tubemogul.com/upi/pid/bh3j1ma8?redir=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D24%26puid%3D%24%7BUSER_ID%7D%26ssrc%3D3","id":5488,"isHttp":true},{"url":"http://bcp.crwdcntrl.net/map/c=2634/tp=ADTI/tpid=580a3372faba457f?http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11127%26puid%3D%24%7Bprofile_id%7D%26ssrc%3D3","id":5123,"isHttp":true},{"url":"http://cms.analytics.yahoo.com/cms?partner_id=ADDIS","id":5492,"isHttp":true},{"url":"http://ds.reson8.com/vendor.gif?v=CS&c=580a3372faba457f","id":4,"delay":[60],"isHttp":true},{"url":"http://epiv.cardlytics.com/c/?pr=11010&prc=580a3372faba457f","id":5468,"isHttp":true}]});

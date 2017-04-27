@@ -72,25 +72,6 @@ class VolunteerOp < ActiveRecord::Base
     address.present? && postcode.present?
   end
 
-  def full_address
-    "#{self.address}, #{self.postcode}"
-  end
-  
-  def link
-    return self if source == 'local'
-    "https://do-it.org/opportunities/#{doit_op_id}"
-  end
-  
-  def organisation_link
-    return organisation if source == 'local'
-    "https://do-it.org/organisations/#{doit_org_link}"
-  end
-  
-  def organisation_name
-    return organisation.name if source == 'local'
-    doit_org_name
-  end
-
   private
   
   def self.group_by_coordinates(vol_ops)

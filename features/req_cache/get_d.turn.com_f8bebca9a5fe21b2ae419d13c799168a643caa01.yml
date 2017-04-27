@@ -1,0 +1,19 @@
+---
+:scope: 
+:url: http://d.turn.com/r/dd/id/L2NzaWQvMS9jaWQvMjg0Mzc2NzAvdC8y/url/http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D4%26puid%3D%24!%7BTURN_UUID%7D%26ssrc%3D1
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Server: Apache-Coyote/1.1
+  P3P: policyref="/w3c/p3p.xml", CP="NOI CURa DEVa TAIa PSAa PSDa IVAa IVDa OUR IND
+    UNI NAV"
+  Cache-Control: max-age=0, no-cache, no-store, private, must-revalidate, s-maxage=0
+  Pragma: no-cache
+  Set-Cookie: uid=3847537734468972651; Domain=.turn.com; Expires=Sun, 22-Oct-2017
+    19:22:30 GMT; Path=/
+  Location: http://su.addthis.com/red/usync?pid=4&puid=3847537734468972651&ssrc=1
+  Content-Length: '0'
+  Date: Tue, 25 Apr 2017 19:22:30 GMT
+  Connection: close
+:content: ''

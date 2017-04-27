@@ -1,0 +1,23 @@
+---
+:scope: 
+:url: http://dpm.demdex.net/demconf.jpg?et:ibs%7Cdata:dpid=420&dpuuid=59023664ac9766ee&redir=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D16%26puid%3D%24%7BDD_UUID%7D%26ssrc%3D3
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Cache-Control: no-cache,no-store,must-revalidate,max-age=0,proxy-revalidate,no-transform,private
+  Date: Thu, 27 Apr 2017 18:20:21 GMT
+  Expires: Thu, 01 Jan 2009 00:00:00 GMT
+  Location: http://su.addthis.com/red/usync?pid=16&puid=85360008917740595331650552380820305630&ssrc=3
+  P3P: policyref="/w3c/p3p.xml", CP="NOI NID CURa ADMa DEVa PSAa PSDa OUR SAMa BUS
+    PUR COM NAV INT"
+  Pragma: no-cache
+  Set-Cookie:
+  - demdex=85360008917740595331650552380820305630;Path=/;Domain=.demdex.net;Expires=Tue,
+    24-Oct-2017 18:20:21 GMT
+  - dpm=85360008917740595331650552380820305630;Path=/;Domain=.dpm.demdex.net;Expires=Tue,
+    24-Oct-2017 18:20:21 GMT
+  X-TID: 8BP4u3ClSzo=
+  Content-Length: '0'
+  Connection: close
+:content: ''

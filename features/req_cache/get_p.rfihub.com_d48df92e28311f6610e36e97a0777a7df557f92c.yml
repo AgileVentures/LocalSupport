@@ -1,0 +1,21 @@
+---
+:scope: 
+:url: https://p.rfihub.com/cm?in=1&pub=530&userid=4UsU%2FLo9999fvyaj
+:body: ''
+:status: 302
+:method: get
+:headers:
+  P3P: CP="NOI CURa ADMa DEVa TAIa OUR BUS IND UNI COM NAV INT"
+  Set-Cookie:
+  - eud=H4sIAAAAAAAAAFMSMAktDtX3ybcEgrSyysSsLF5DE0tjI1MjEyNTcyNLAKGRppEhAAAA;Path=/;Domain=.rfihub.com;Expires=Tue,
+    22-May-2018 00:20:25 GMT
+  - rud=H4sIAAAAAAAAAOMSMjO2MDQ3MTQ1MDY3tDQwNDCxFOIz1HUuCDF09XYNdrGscJfiNTSxNDYyNTIxMjU3sgQAzQzj7jMAAAA;Path=/;Domain=.rfihub.com;Expires=Tue,
+    22-May-2018 00:20:25 GMT
+  - euds=H4sIAAAAAAAAAFMSMAktDtX3ybcEgrSyysQsABcgRnASAAAA;Path=/;Domain=.rfihub.com
+  - ruds=H4sIAAAAAAAAAOMSMjO2MDQ3MTQ1MDY3tDQwNDCxFOIz1HUuCDF09XYNdrGscAcAqj8dPiQAAAA;Path=/;Domain=.rfihub.com
+  Expires: Thu, 01 Jan 1970 00:00:00 GMT
+  Location: https://tags.bluekai.com/site/4722?id=638174150371901049
+  Content-Length: '0'
+  Server: Jetty(9.0.6.v20130930)
+  Connection: close
+:content: ''

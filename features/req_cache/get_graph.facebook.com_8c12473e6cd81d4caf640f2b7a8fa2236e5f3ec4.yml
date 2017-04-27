@@ -1,0 +1,30 @@
+---
+:scope: 
+:url: http://graph.facebook.com/?id=http%3A%2F%2F127.0.0.1%3A35143%2Forganisations%2Ffriendly&callback=_ate.cbs.rcb_fj1o0
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Access-Control-Allow-Origin: "*"
+  ETag: '"24cb3a68e8a902a461fecdb6dcdaef4a1f634c4e"'
+  Pragma: no-cache
+  Cache-Control: private, no-cache, no-store, must-revalidate
+  x-fb-rev: '2985150'
+  Content-Type: application/json; charset=UTF-8
+  x-fb-trace-id: DF7L9UBieei
+  facebook-api-version: v2.3
+  Expires: Sat, 01 Jan 2000 00:00:00 GMT
+  Vary: Accept-Encoding
+  Content-Encoding: gzip
+  X-FB-Debug: h7jDQdd2ZbxxGyrN/qNOLAPsRHAYzDeXfkWklunXq5OTQEaPTtxG4MRLYWCDq2V7YgBaH6XtwKi8R7nYAVuLtQ==
+  Date: Thu, 27 Apr 2017 17:16:20 GMT
+  Connection: close
+  Content-Length: '141'
+:content: |-
+  /**/ _ate.cbs.rcb_fj1o0({
+     "share": {
+        "comment_count": 0,
+        "share_count": 0
+     },
+     "id": "http://127.0.0.1:35143/organisations/friendly"
+  });

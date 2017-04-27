@@ -1,0 +1,14 @@
+---
+:scope: 
+:url: https://pixel.advertising.com/ups/19350/sync?uid=KUvU%2FL8e999dv9aj&_origin=1&redir=true
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Content-Length: '0'
+  Connection: close
+  Set-Cookie: APID=UP4fc19676-2adf-11e7-a10d-00163e9526d7;Version=1;Domain=.advertising.com;Path=/;Max-Age=31622400;Expires=Sat,
+    28-Apr-2018 00:20:26 GMT
+  P3P: CP=NOI DSP COR LAW CURa DEVa TAIa PSAa PSDa OUR BUS UNI COM NAV
+  Location: https://pixel.advertising.com/ups/19350/sync?uid=KUvU%2FL8e999dv9aj&_origin=1&redir=true&verify=true
+:content: ''

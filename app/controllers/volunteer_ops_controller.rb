@@ -15,6 +15,7 @@ class VolunteerOpsController < ApplicationController
   def index
     @volunteer_ops = displayed_volunteer_ops
     @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
+    byebug
   end
 
   def show
