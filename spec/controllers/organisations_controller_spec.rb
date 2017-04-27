@@ -494,37 +494,4 @@ describe OrganisationsController, :type => :controller do
       end
     end
   end
-  describe '.permit' do 
-    it 'returns the cleaned params' do
-      organisation_params = { organisation: {
-                                name: 'Happy Friends', 
-                                description: 'Do nice things', 
-                                address: '22 Pinner Road', 
-                                postcode: '12345', 
-                                email: 'happy@annoting.com', 
-                                website: 'www.happyplace.com', 
-                                telephone: '123-456-7890', 
-                                donation_info: 'www.giveusmoney.com',
-                                publish_address: true, 
-                                publish_phone: true, 
-                                publish_email: true, 
-                                category_ids: ['1','2']
-                            }}
-      params = ActionController::Parameters.new.merge(organisation_params)
-      permitted_params = OrganisationsController::OrganisationParams.build(params)
-      expect(permitted_params).to eq({name: 'Happy Friends', 
-                                      description: 'Do nice things', 
-                                      address: '22 Pinner Road', 
-                                      postcode: '12345', email: 'happy@annoting.com', 
-                                      website: 'www.happyplace.com', 
-                                      telephone: '123-456-7890', 
-                                      donation_info: 'www.giveusmoney.com',
-                                      publish_address: true, 
-                                      publish_phone: true, 
-                                      publish_email: true,
-                                      category_ids: ['1','2']
-                                      }.with_indifferent_access)
-      #attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info, :publish_address, :publish_phone, :publish_email, :category_organisations_attributes
-    end
-  end
 end
