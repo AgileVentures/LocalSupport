@@ -30,7 +30,13 @@ class OrganisationsController < BaseOrganisationsController
   def show
     render template: 'pages/404', status: 404 and return if @organisation.nil?
     organisations = Organisation.where(id: @organisation.id)
-    @user_opts = current_user ? get_user_capabilities_hash(@organisation) : { grabbable: true }
+
+    if current_user
+      @user_opts = get_user_capabilities_hash(@organisation)
+    else 
+      @user_opts = { grabbable: true }
+    end
+
     @user_opts[:can_propose_edits] = current_user.present? && !@user_opts[:editable]
     @user_opts[:markers] = build_map_markers(organisations)
     @cat_name_ids = Category.name_and_id_for_what_who_and_how
