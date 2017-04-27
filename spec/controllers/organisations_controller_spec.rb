@@ -157,26 +157,26 @@ describe OrganisationsController, :type => :controller do
       expect(controller).to receive(:build_map_markers).and_return(markers)
       get :show, :id => real_org.id.to_s
       expect(assigns(:organisation)).to eq(real_org)
-      expect(assigns(:markers)).to eq(markers)
+      expect(assigns(:user_opts)[:markers]).to eq(markers)
     end
 
     context 'editable flag is assigned to match user permission' do
       it 'user with permission leads to editable flag true' do
         expect(@user).to receive(:can_edit?).with(real_org).and_return(true)
         get :show, id: real_org.id.to_s
-        expect(assigns(:editable)).to be(true)
+        expect(assigns(:user_opts)[:editable]).to be(true)
       end
 
       it 'user without permission leads to editable flag false' do
         expect(@user).to receive(:can_edit?).with(real_org).and_return(true)
         get :show, id: real_org.id.to_s
-        expect(assigns(:editable)).to be(true)
+        expect(assigns(:user_opts)[:editable]).to be(true)
       end
 
       it 'when not signed in editable flag is nil' do
         allow(controller).to receive(:current_user).and_return(nil)
         get :show, id: real_org.id.to_s
-        expect(assigns(:editable)).to be_nil
+        expect(assigns(:user_opts)[:editable]).to be_nil
       end
     end
 
@@ -186,19 +186,19 @@ describe OrganisationsController, :type => :controller do
         expect(@user).to receive(:can_request_org_admin?).with(real_org).and_return(true)
         allow(controller).to receive(:current_user).and_return(@user)
         get :show, :id => real_org.id.to_s
-        expect(assigns(:grabbable)).to be(true)
+        expect(assigns(:user_opts)[:grabbable]).to be true
       end
       it 'assigns grabbable to false when user cannot request org superadmin status' do
         allow(@user).to receive(:can_edit?)
         expect(@user).to receive(:can_request_org_admin?).with(real_org).and_return(false)
         allow(controller).to receive(:current_user).and_return(@user)
         get :show, :id => real_org.id.to_s
-        expect(assigns(:grabbable)).to be(false)
+        expect(assigns(:user_opts)[:grabbable]).to be false
       end
       it 'when not signed in grabbable flag is true' do
         allow(controller).to receive(:current_user).and_return(nil)
         get :show, :id => real_org.id.to_s
-        expect(assigns(:grabbable)).to be true
+        expect(assigns(:user_opts)[:grabbable]).to be true
       end
     end
 
@@ -207,13 +207,13 @@ describe OrganisationsController, :type => :controller do
         it 'true' do
           expect(@user).to receive(:can_create_volunteer_ops?) { true }
           get :show, :id => real_org.id.to_s
-          expect(assigns(:can_create_volunteer_op)).to be true
+          expect(assigns(:user_opts)[:can_create_volunteer_op]).to be true
         end
 
         it 'false' do
           expect(@user).to receive(:can_create_volunteer_ops?) { false }
           get :show, :id => real_org.id.to_s
-          expect(assigns(:can_create_volunteer_op)).to be false
+          expect(assigns(:user_opts)[:can_create_volunteer_op]).to be false
         end
       end
 
@@ -221,7 +221,7 @@ describe OrganisationsController, :type => :controller do
         allow(controller).to receive_messages current_user: nil
         expect(@user).not_to receive :can_create_volunteer_ops?
         get :show, :id => real_org.id.to_s
-        expect(assigns(:can_create_volunteer_op)).to be nil
+          expect(assigns(:user_opts)[:can_create_volunteer_op]).to be nil
       end
     end
   end

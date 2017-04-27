@@ -30,17 +30,8 @@ class OrganisationsController < BaseOrganisationsController
   def show
     render template: 'pages/404', status: 404 and return if @organisation.nil?
     organisations = Organisation.where(id: @organisation.id)
-    if current_user
-      @pending_org_admin = current_user.pending_org_admin? @organisation
-      @editable = current_user.can_edit?(@organisation)
-      @deletable = current_user.can_delete?(@organisation)
-      @can_create_volunteer_op = current_user.can_create_volunteer_ops?(@organisation)
-      @grabbable = current_user.can_request_org_admin?(@organisation)
-    else
-      @grabbable = true
-    end
-    @can_propose_edits = current_user.present? && !@editable
-    @markers = build_map_markers(organisations)
+    @user_opts = get_user_opts(@organisation)
+    @user_opts[:markers] = build_map_markers(organisations)
     @cat_name_ids = Category.name_and_id_for_what_who_and_how
   end
 
@@ -128,6 +119,25 @@ class OrganisationsController < BaseOrganisationsController
   end
 
   private
+
+  def get_user_opts(organisation)
+    user_opts = Hash.new
+    if current_user
+      user_opts = {
+        :pending_org_admin => current_user.pending_org_admin?(organisation),
+        :editable => current_user.can_edit?(organisation),
+        :deletable => current_user.can_delete?(organisation),
+        :can_create_volunteer_op => current_user.can_create_volunteer_ops?(organisation),
+        :grabbable => current_user.can_request_org_admin?(organisation)
+      }
+    else
+      user_opts = {
+        :grabbable => true
+      }
+    end
+    user_opts[:can_propose_edits] = current_user.present? && !user_opts[:editable]
+    return user_opts
+  end
 
   def set_organisation
     @organisation = Organisation.friendly.find(params[:id])
