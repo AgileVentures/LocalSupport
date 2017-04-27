@@ -30,9 +30,9 @@ Feature: Map of local charities
   @javascript @billy
   Scenario: Infowindow appears when clicking on map marker
     Given I visit the organisations index page
-    Then I should see an infowindow when I click on the map markers:
+    Then I should see an infowindow when I click on "map markers":
       | Indian Elders Association | Age UK | Harrow Bereavement Counselling |
-
+  
   @javascript @billy
   Scenario Outline: Organisation map has small icon for organisations updated more than 365 days ago
     Given I travel a year plus "<days>" days into the future
