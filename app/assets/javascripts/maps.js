@@ -59,9 +59,9 @@ function openInfoBox(lat, lng) {
   
   markers.forEach(function(item) {
     var posn = item.getPosition();
-    if (posn.lat() == lat && posn.lng().toFixed(6) == lng.toFixed(6)) {
+    if (posn.lat() === lat && posn.lng().toFixed(6) === lng.toFixed(6)) {
       items.forEach(function(i) {
-        if (i.lat == lat && i.lng == lng)
+        if (i.lat === lat && i.lng === lng)
           setInfoBoxInnerContent(ib, i.infowindow);
       })
       ib['infoBox'].open(map, item);
