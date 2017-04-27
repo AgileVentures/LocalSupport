@@ -121,18 +121,18 @@ class OrganisationsController < BaseOrganisationsController
   private
 
   def get_user_opts(organisation)
-    user_opts = Hash.new
+    user_opts = {}
     if current_user
       user_opts = {
-        :pending_org_admin => current_user.pending_org_admin?(organisation),
-        :editable => current_user.can_edit?(organisation),
-        :deletable => current_user.can_delete?(organisation),
-        :can_create_volunteer_op => current_user.can_create_volunteer_ops?(organisation),
-        :grabbable => current_user.can_request_org_admin?(organisation)
+        pending_org_admin: current_user.pending_org_admin?(organisation),
+        editable: current_user.can_edit?(organisation),
+        deletable: current_user.can_delete?(organisation),
+        can_create_volunteer_op: current_user.can_create_volunteer_ops?(organisation),
+        grabbable: current_user.can_request_org_admin?(organisation)
       }
     else
       user_opts = {
-        :grabbable => true
+        grabbable: true
       }
     end
     user_opts[:can_propose_edits] = current_user.present? && !user_opts[:editable]
