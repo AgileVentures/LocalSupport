@@ -35,9 +35,8 @@ class EventsController < ApplicationController
   end
 
   def superadmin?
+    return if current_user.try(:superadmin?)
     flash[:notice] = PERMISSION_DENIED
     redirect_to events_path and return false
-    unless current_user.try(:superadmin?)
-    end
   end
 end
