@@ -9,7 +9,7 @@
           <% if @event.errors[:title].any?%>
             <p class="error-name"><%= @event.errors[:title].first %></p>
           <% end %>
-          <%= f.text_area :title, :size => "50x4", :class => "wide_form org_h3", :placeholder => "Enter event title" %>
+          <%= f.text_area :title, :size => "50x4", :class => "wide_form event_h3", :placeholder => "Enter event title" %>
         </td>
       </tr>
       <tr>
@@ -28,7 +28,8 @@
             <% if @event.errors[:start_date].any?%>
               <p class="error-name"><%= @event.errors[:start_date].first %></p>
             <% end %>
-            <%= f.datetime_select :start_date, :size => "50x4", :class => "wide_form org_h3" %>
+            <%= f.datetime_select :start_date, size: "50x4",  prompt: true, start_year: Time.current.year,
+              class: "wide_form " %>
           </td>
         </tr>
         <tr>
@@ -41,7 +42,8 @@
             <% if @event.errors[:end_date].any?%>
               <p class="error-name"><%= @event.errors[:end_date].first %></p>
             <% end %>
-            <%= f.datetime_select :end_date, :size => "50x4", :class => "wide_form org_h3" %>
+            <%= f.datetime_select :end_date, :size => "50x4", 
+                 prompt: true %>
           </td>
         </tr>
   </table>
