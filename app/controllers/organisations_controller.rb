@@ -1,4 +1,5 @@
 class OrganisationsController < BaseOrganisationsController
+  add_breadcrumb 'All Organisations', :organisations_path
   layout 'two_columns_with_map'
   # GET /organisations/search
   # GET /organisations/search.json
@@ -39,6 +40,7 @@ class OrganisationsController < BaseOrganisationsController
     else
       @grabbable = true
     end
+    add_breadcrumb @organisation.name, :organisation_path
     @can_propose_edits = current_user.present? && !@editable
     @markers = build_map_markers(organisations)
     @cat_name_ids = Category.name_and_id_for_what_who_and_how
