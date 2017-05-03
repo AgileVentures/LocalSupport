@@ -2,6 +2,10 @@ require 'rails_helper'
 
 describe 'organisations/show.html.erb', :type => :view do
 
+  before(:all) do
+    @user_opts = {}
+  end  
+
   let(:organisation) do
     stub_model Organisation, {
         :name => 'Friendly',
@@ -85,7 +89,8 @@ describe 'organisations/show.html.erb', :type => :view do
               "#{organisation.telephone}",
               "#{organisation.donation_info}"
              ] }
-    it "renders the fields" do
+
+  it "renders the fields" do
       render
       expect(fields.map { |f|  rendered.index(f) }).not_to include(nil)
     end
@@ -138,17 +143,17 @@ describe 'organisations/show.html.erb', :type => :view do
 
   context 'edit button' do
     it 'renders edit button if editable true' do
-      assign(:editable, true)
+      assign(:user_opts, {editable: true})
       render
       expect(rendered).to have_link 'Edit', :href => edit_organisation_path(organisation.id)
     end
     it 'does not render edit button if editable false' do
-      assign(:editable, false)
+      assign(:user_opts, {editable: false})
       render
       expect(rendered).not_to have_link :href => edit_organisation_path(organisation.id)
     end
     it 'does not render edit button if editable nil' do
-      assign(:editable, nil)
+      assign(:user_opts, {editable: nil})
       render
       expect(rendered).not_to have_link :href => edit_organisation_path(organisation.id)
     end
@@ -158,14 +163,14 @@ describe 'organisations/show.html.erb', :type => :view do
     context 'logged in user' do
       let(:user) { stub_model User, :id => 2 }
       it 'renders grab button if grabbable true' do
-        assign(:grabbable, true)
+        assign(:user_opts, {grabbable: true})
         allow(view).to receive(:current_user).and_return(user)
         render
         expect(rendered).to have_link 'This is my organisation', :href => user_path(pending_organisation_id: organisation.id, id: user.id)
         #TODO should check hidden value for put
       end
       it 'does not render grab button if grabbable false' do
-        assign(:grabbable, false)
+        assign(:user_opts, {grabbable: false})
         render
         expect(rendered).not_to have_button('This is my organisation')
       end
@@ -175,7 +180,7 @@ describe 'organisations/show.html.erb', :type => :view do
     context 'user not logged in' do
       #let(:user) { stub_model User, :id => nil }
       it 'renders grab button' do
-        assign(:grabbable, true)
+        assign(:user_opts, {grabbable: true})
         #view.stub(:current_user).and_return(user)
         render
         expect(rendered).to have_link 'This is my organisation', :href => new_user_session_path
@@ -186,7 +191,7 @@ describe 'organisations/show.html.erb', :type => :view do
 
   describe 'pending superadmin status' do
     it 'displays pending superadmin message' do
-      assign(:pending_org_admin, true)
+      assign(:user_opts, {pending_org_admin: true})
       render
       expect(rendered).to have_content 'Your request for admin status is pending.'
     end
@@ -196,20 +201,20 @@ describe 'organisations/show.html.erb', :type => :view do
     it 'shows when belongs_to is true' do
       allow(view).to receive(:feature_active?).with(:search_input_bar_on_org_pages).and_return(false)
       allow(view).to receive(:feature_active?).with(:volunteer_ops_create).and_return(true)
-      assign(:can_create_volunteer_op, true)
+      assign(:user_opts, {can_create_volunteer_op: true})
       render
       expect(rendered).to have_link 'Create a Volunteer Opportunity', :href => new_organisation_volunteer_op_path(organisation)
     end
 
     it 'does not shows when belongs_to is false' do
-      assign(:can_create_volunteer_op, false)
+      assign(:user_opts, {can_create_volunteer_op: false})
       render
       expect(rendered).not_to have_link 'Create a Volunteer Opportunity', :href => new_organisation_volunteer_op_path(organisation)
     end
 
     it 'is shown when feature is active' do
       allow(view).to receive(:feature_active?).with(:search_input_bar_on_org_pages).and_return(false)
-      assign(:can_create_volunteer_op, true)
+      assign(:user_opts, {can_create_volunteer_op: true})
       expect(view).to receive(:feature_active?).
         with(:volunteer_ops_create).and_return(true)
       render
@@ -219,7 +224,7 @@ describe 'organisations/show.html.erb', :type => :view do
 
     it 'is not visible when feature is inactive' do
       allow(view).to receive(:feature_active?).with(:search_input_bar_on_org_pages).and_return(false)
-      assign(:can_create_volunteer_op, true)
+      assign(:user_opts, {can_create_volunteer_op: true})
       expect(view).to receive(:feature_active?).
         with(:volunteer_ops_create).and_return(false)
       render

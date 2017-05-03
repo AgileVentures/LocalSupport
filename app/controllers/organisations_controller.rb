@@ -4,16 +4,15 @@ class OrganisationsController < BaseOrganisationsController
   # GET /organisations/search.json
   before_filter :authenticate_user!, :except => [:search, :index, :show]
   prepend_before_action :set_organisation, only: [:show, :update, :edit]
+  before_action :assign_cat_name_ids, only: [:search, :index, :show]
+  after_action :assign_markers, only: [:search, :index, :edit]
 
   def search
     @parsed_params = SearchParamsParser.new(params)
-    @cat_name_ids = Category.name_and_id_for_what_who_and_how
     @organisations = Queries::Organisations.search_by_keyword_and_category(
       @parsed_params
     )
     flash.now[:alert] = SEARCH_NOT_FOUND if @organisations.empty?
-    @markers = build_map_markers(@organisations)
-
     render :template =>'organisations/index'
   end
 
@@ -21,27 +20,23 @@ class OrganisationsController < BaseOrganisationsController
   # GET /organisations.json
   def index
     @organisations = Queries::Organisations.order_by_most_recent
-    @markers = build_map_markers(@organisations)
-    @cat_name_ids = Category.name_and_id_for_what_who_and_how
   end
 
   # GET /organisations/1
   # GET /organisations/1.json
   def show
+    @user_opts = {}
     render template: 'pages/404', status: 404 and return if @organisation.nil?
     organisations = Organisation.where(id: @organisation.id)
+
     if current_user
-      @pending_org_admin = current_user.pending_org_admin? @organisation
-      @editable = current_user.can_edit?(@organisation)
-      @deletable = current_user.can_delete?(@organisation)
-      @can_create_volunteer_op = current_user.can_create_volunteer_ops?(@organisation)
-      @grabbable = current_user.can_request_org_admin?(@organisation)
-    else
-      @grabbable = true
+      @user_opts = get_user_capabilities_hash(@organisation)
+    else 
+      @user_opts = { grabbable: true }
     end
-    @can_propose_edits = current_user.present? && !@editable
-    @markers = build_map_markers(organisations)
-    @cat_name_ids = Category.name_and_id_for_what_who_and_how
+
+    @user_opts[:can_propose_edits] = current_user.present? && !@user_opts[:editable]
+    @user_opts[:markers] = build_map_markers(organisations)
   end
 
   # GET /organisations/new
@@ -52,8 +47,7 @@ class OrganisationsController < BaseOrganisationsController
 
   # GET /organisations/1/edit
   def edit
-    organisations = Organisation.where(id: @organisation.id)
-    @markers = build_map_markers(organisations)
+    @organisations = Organisation.where(id: @organisation.id)
     return false unless user_can_edit? @organisation
     #respond_to do |format|
     #  format.html {render :layout => 'full_width'}
@@ -65,13 +59,11 @@ class OrganisationsController < BaseOrganisationsController
   def create
     # model filters for logged in users, but we check here if that user is an superadmin
     # TODO refactor that to model responsibility?
-    org_params = OrganisationParams.build params
-
     unless current_user.try(:superadmin?)
       flash[:notice] = PERMISSION_DENIED
       redirect_to organisations_path and return false
     end
-    @organisation = Organisation.new(org_params)
+    @organisation = Organisation.new(organisation_params)
     if @organisation.save
       redirect_to @organisation, notice: 'Organisation was successfully created.'
     else
@@ -83,9 +75,8 @@ class OrganisationsController < BaseOrganisationsController
   # PUT /organisations/1.json
   def update
     params[:organisation][:superadmin_email_to_add] = params[:organisation_superadmin_email_to_add] if params[:organisation]
-    update_params = OrganisationParams.build params
     return false unless user_can_edit? @organisation
-    if @organisation.update_attributes_with_superadmin(update_params)
+    if @organisation.update_attributes_with_superadmin(organisation_params)
       redirect_to @organisation, notice: 'Organisation was successfully updated.'
     else
       render action: "edit"
@@ -106,9 +97,10 @@ class OrganisationsController < BaseOrganisationsController
     redirect_to organisations_path
   end
 
-  class OrganisationParams
-    def self.build params
-      params.require(:organisation).permit(
+  private
+
+  def organisation_params
+   params.require(:organisation).permit(
         :superadmin_email_to_add,
         :description,
         :address,
@@ -122,12 +114,26 @@ class OrganisationsController < BaseOrganisationsController
         :name,
         :telephone,
         category_ids: []
-      )
-    end
-
+    )
   end
 
-  private
+  def assign_markers
+    @markers = build_map_markers(@organisations)
+  end
+
+  def assign_cat_name_ids
+    @cat_name_ids = Category.name_and_id_for_what_who_and_how
+  end
+
+  def get_user_capabilities_hash(organisation)
+      {
+        pending_org_admin: current_user.pending_org_admin?(organisation),
+        editable: current_user.can_edit?(organisation),
+        deletable: current_user.can_delete?(organisation),
+        can_create_volunteer_op: current_user.can_create_volunteer_ops?(organisation),
+        grabbable: current_user.can_request_org_admin?(organisation)
+      }
+  end
 
   def set_organisation
     @organisation = Organisation.friendly.find(params[:id])

@@ -11,28 +11,28 @@
 
 <div id="org-cat-buttons" class="row">
   <div class="position-bottom col-md-6">
-    <% if @editable %>
+    <% if @user_opts[:editable] %>
         <%= link_to("Edit", edit_organisation_path(@organisation), {:class => 'btn btn-primary'}) %>
     <% end %>
-    <% if @can_propose_edits %>
+    <% if @user_opts[:can_propose_edits] %>
         <%= link_to("Propose an edit", new_organisation_proposed_organisation_edit_path(@organisation) , {:class => 'btn btn-primary'})%>
     <% end %>
-    <% if @deletable %>
+    <% if @user_opts[:deletable] %>
         <%= link_to("Delete", organisation_path(@organisation), {method: :delete, :class => 'btn btn-danger'}) %>
     <% end %>
-    <% if @can_create_volunteer_op and feature_active?(:volunteer_ops_create) %>
+    <% if @user_opts[:can_create_volunteer_op] and feature_active?(:volunteer_ops_create) %>
         <%= link_to("Create a Volunteer Opportunity", new_organisation_volunteer_op_path(organisation_id: @organisation), {:class => 'btn btn-primary'}) %>
     <% end %>
     <% if current_user %>
-        <%= link_to "This is my organisation", user_path(pending_organisation_id: @organisation, id: current_user.id), {method: :put, class: 'btn btn-primary'} if @grabbable %>
+        <%= link_to "This is my organisation", user_path(pending_organisation_id: @organisation, id: current_user.id), {method: :put, class: 'btn btn-primary'} if @user_opts[:grabbable] %>
     <% else %>
-        <%= link_to "This is my organisation", new_user_session_path, {method: :put, 'data-signed_in' => current_user.present?, id: 'TIMO', class: 'btn btn-primary'} if @grabbable %>
+        <%= link_to "This is my organisation", new_user_session_path, {method: :put, 'data-signed_in' => current_user.present?, id: 'TIMO', class: 'btn btn-primary'} if @user_opts[:grabbable] %>
     <% end %>
-    <% if @pending_org_admin %>
+    <% if @user_opts[:pending_org_admin] %>
       <p class="org-info-msg-1" ><strong>Your request for admin status is pending.</strong></p>
     <% end%>
   </div>
 </div>
 
-<% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
+<% render partial: 'shared/map_scripts', locals: {markers: @user_opts[:markers]} %>
 <% render partial: 'shared/addthis_scripts' %>
