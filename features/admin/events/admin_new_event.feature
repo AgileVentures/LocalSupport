@@ -26,8 +26,8 @@ Feature: Super Admin creating an event
     And I visit the home page
     And I follow "New Event"
     And I press "Create Event"
-    Then I should see "Title can't be blank"
-    Then I should see "Description can't be blank"
+    Then I should see "can't be blank"
+    Then I should see "can't be blank"
 
   Scenario: Logged in non-superadmin user should not see new event link
     Given I am signed in as a non-superadmin
