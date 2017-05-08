@@ -8,34 +8,12 @@ class VolunteerOp < ActiveRecord::Base
   after_validation :geocode, if: :address_complete?
   after_validation :clear_lat_lng, if: "source == 'local'"
 
-  scope :order_by_most_recent, -> { order('updated_at DESC') }
-  scope :local_only,           -> { where(source: 'local') }
   scope :doit,                 -> { where(source: 'doit') }
+  scope :local_only,           -> { where(source: 'local') }
+  scope :order_by_most_recent, -> { order('updated_at DESC') }
   scope :reachskills,          -> { where(source: 'reachskills') }
   scope :remote_only,          -> { where.not(source: 'local') }
 
-  def full_address
-    "#{self.address}, #{self.postcode}"
-  end
-
-  def organisation_name
-    return organisation.name if source == 'local'
-    return doit_org_name if source == 'doit'
-    reachskills_org_name
-  end
-
-  def organisation_link
-    return organisation if source == 'local'
-    return "https://do-it.org/organisations/#{doit_org_link}" if source == 'doit'
-    "https://reachskills.org.uk/org/#{parsed_reachskills_org_name}"
-  end
-
-  def link
-    return self if source == 'local'
-    return "https://do-it.org/opportunities/#{doit_op_id}" if source == 'doit'
-    reachskills_op_link
-  end
-  
   def self.add_coordinates(vol_ops)
     vol_op_with_coordinates(vol_ops)
   end
@@ -70,6 +48,28 @@ class VolunteerOp < ActiveRecord::Base
 
   def address_complete?
     address.present? && postcode.present?
+  end
+  
+  def full_address
+    "#{self.address}, #{self.postcode}"
+  end
+
+  def link
+    return self if source == 'local'
+    return "https://do-it.org/opportunities/#{doit_op_id}" if source == 'doit'
+    reachskills_op_link
+  end
+  
+  def organisation_name
+    return organisation.name if source == 'local'
+    return doit_org_name if source == 'doit'
+    reachskills_org_name
+  end
+
+  def organisation_link
+    return organisation if source == 'local'
+    return "https://do-it.org/organisations/#{doit_org_link}" if source == 'doit'
+    "https://reachskills.org.uk/org/#{parsed_reachskills_org_name}"
   end
 
   private

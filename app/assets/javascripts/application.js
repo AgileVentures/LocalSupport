@@ -10,7 +10,6 @@
 //= require underscore
 //= require bootstrap-sortable
 //= require_tree ./global
-//= require_tree
 //= require bootstrap-switch
 //= require organisations
 //= require analytics
