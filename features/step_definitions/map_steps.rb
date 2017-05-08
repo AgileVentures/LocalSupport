@@ -1,6 +1,14 @@
 Then (/^I should see an infowindow when I click on "(.*?)":$/) do |selector, table|
   expect(page).to have_css(css_class(selector), :count => table.raw.flatten.length)
-  Organisation.where(name: table.raw.flatten)
+  check_for_org_info_box(table.raw.flatten, selector) 
+end
+
+Then (/^I should open "(.*?)" infowindow on the map$/) do |org|
+  check_for_org_info_box(org, 'volunteer opportunity title')
+end
+
+def check_for_org_info_box title, selector
+  Organisation.where(name: title)
         .pluck(:name, :description, :id, :slug, :latitude)
         .map {|name, desc, id, frdly_id, lat| [name, smart_truncate(desc, 42), id, frdly_id, lat]}
         .each do |name, desc, id, friendly_id, lat|
