@@ -42,6 +42,6 @@ Feature: Reachskills volunteer opportunities
   #   Given I visit the volunteer opportunities page
   #   Then I should open "Charity Treasurer" in a new window
     
-  Scenario: Reachskills volunteer opportunities info boxes are opened after clicking on title
+  Scenario: Reachskills volunteer opportunity info box is opened after clicking on title
     Given I visit the volunteer opportunities page
     Then I should open "Charity Treasurer" infowindow on the map
