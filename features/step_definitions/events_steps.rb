@@ -1,8 +1,18 @@
 Given (/^I fill in the new event page validly$/) do
   fill_in 'event_title', with: 'Hackathon'
   fill_in 'event_description', with: 'Great place to brain storm'
-  fill_in 'event_start_date', with: '2017-05-02'
-  fill_in 'event_end_date', with: '2017-05-05'
+
+  select '2018', from: 'event_start_date_1i'
+  select 'April', from: 'event_start_date_2i'
+  select '20', from: 'event_start_date_3i'
+  select '08', from: 'event_start_date_4i'
+  select '28', from: 'event_start_date_5i'
+
+  select '2018', from: 'event_end_date_1i'
+  select 'April', from: 'event_end_date_2i'
+  select '10', from: 'event_end_date_3i'
+  select '15', from: 'event_end_date_4i'
+  select '30', from: 'event_end_date_5i'
 end
 
 Given /^I create "(.*?)" event$/ do |name|
