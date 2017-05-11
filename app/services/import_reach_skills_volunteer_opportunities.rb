@@ -16,8 +16,7 @@ class ImportReachSkillsVolunteerOpportunities
   def run
     href = 'https://reachskills.org.uk/harrow-community-network-opportunity-feed'
     model_klass.delete_all(source: 'reachskills')
-    while href = process_reach_skills_json_page(http.get("#{href}"));
-    end
+    process_reach_skills_json_page(http.get(href))
   end
 
   def process_reach_skills_json_page(response)
@@ -29,31 +28,33 @@ class ImportReachSkillsVolunteerOpportunities
 
   def persist_reach_skills_vol_ops(opportunities)
     opportunities.each do |op|
-      coordinates = find_coortinates(op)
-      model_klass
-	      .find_or_create_by(reachskills_op_link: op['node']['Path']) do |model|
-	      vol_op_attributes(op, model, coordinates)
-      end
+      create_or_update_reach_skills_vol_ops(op, find_coordinates(op))
     end
+  end
+
+  def create_or_update_reach_skills_vol_ops(op, coordinates)
+      model_klass.find_or_create_by(reachskills_op_link: op['node']['Path']) do |model|
+             populate_vol_op_attributes(op, model, coordinates)
+      end
   end
 
   def content?(response)
     response.body && response.body != '[]'
   end
 
-  def find_coortinates(op)
+  def find_coordinates(op)
     Geocoder.search(
       "#{op['node']['Postcode']}, #{op['node']['Town']}"
     ).first
   end
 
-	def vol_op_attributes(op, model, coordinates)
-		model.source = 'reachskills'
-		model.latitude = coordinates ? coordinates.latitude.to_f : 0.0
-		model.longitude = coordinates ? coordinates.longitude.to_f : 0.0
-		model.title = op['node']['title']
-		model.description = op['node']['Description']
-		model.reachskills_org_name = op['node']['Organisation']
-		model.reachskills_op_link = op['node']['Path']
-	end
+  def populate_vol_op_attributes(op, model, coordinates)
+    model.source = 'reachskills'
+    model.latitude = coordinates ? coordinates.latitude.to_f : 0.0
+    model.longitude = coordinates ? coordinates.longitude.to_f : 0.0
+    model.title = op['node']['title']
+    model.description = op['node']['Description']
+    model.reachskills_org_name = op['node']['Organisation']
+    model.reachskills_op_link = op['node']['Path']
+  end
 end
