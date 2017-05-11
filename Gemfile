@@ -9,6 +9,7 @@ gem 'heroku-api'
 gem 'sprockets', '~> 2.11', '>= 2.11.3'
 
 
+
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
@@ -29,6 +30,7 @@ group :development, :test do
   gem 'jasmine-jquery-rails', '2.0.2'
   #gem 'better_errors'
   gem 'binding_of_caller' # plays well with better_errors
+
 end
 
 group :development do
