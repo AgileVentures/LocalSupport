@@ -41,4 +41,7 @@ LocalSupport::Application.configure do
   Rails.application.routes.default_url_options[:host] = 'localhost:3000'
   config.middleware.use RackSessionAccess::Middleware
   config.eager_load = false
+
+  config.action_controller.action_on_unpermitted_parameters = :raise
+
 end
