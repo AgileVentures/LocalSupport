@@ -120,6 +120,8 @@ class OrganisationsController < BaseOrganisationsController
         :name,
         :telephone,
         :these,
+        :utf8,
+        :commit,
         category_ids: []
       )
   end
