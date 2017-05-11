@@ -391,14 +391,14 @@ describe OrganisationsController, :type => :controller do
         it 'assigns the requested organisation as @organisation' do
           allow(Organisation).to receive(:friendly) { all_orgs }
           allow(all_orgs).to receive(:find) { org }
-          put :update, id: '1', organisation: {'these': 'params'}
+          put :update, id: '1', organisation: {}
           expect(assigns(:organisation)).to be(org)
         end
 
         it 'redirects to the organisation' do
           allow(Organisation).to receive(:friendly) { all_orgs }
           allow(all_orgs).to receive(:find) { org }
-          put :update, id: '1', organisation: {'these': 'params'}
+          put :update, id: '1', organisation: {}
           expect(response).to redirect_to(organisation_url(org))
         end
       end
@@ -446,7 +446,7 @@ describe OrganisationsController, :type => :controller do
         it 'does not update the requested organisation' do
           expect(Organisation).to receive(:friendly) { all_orgs }
           expect(all_orgs).to receive(:find).with('9999') { nil }
-          put :update, id: '9999', organisation: {'these': 'params'}
+          put :update, id: '9999', organisation: {"these": "params"}
           expect(response).to redirect_to(organisation_url('9999'))
           expect(flash[:notice]).to eq('You don\'t have permission')
         end
@@ -494,37 +494,49 @@ describe OrganisationsController, :type => :controller do
       end
     end
   end
-  describe '.permit' do 
-    it 'returns the cleaned params' do
-      organisation_params = { organisation: {
-                                name: 'Happy Friends', 
-                                description: 'Do nice things', 
-                                address: '22 Pinner Road', 
-                                postcode: '12345', 
-                                email: 'happy@annoting.com', 
-                                website: 'www.happyplace.com', 
-                                telephone: '123-456-7890', 
+  describe '.permit', helpers: :controllers do 
+
+    let (:organisation_params) {                                
+                                { name: 'Happy Friends',
+                                description: 'Do nice things',
+                                address: '22 Pinner Road',
+                                postcode: '12345',
+                                email: 'happy@annoting.com',
+                                website: 'www.happyplace.com',
+                                telephone: '123-456-7890',
                                 donation_info: 'www.giveusmoney.com',
-                                publish_address: true, 
-                                publish_phone: true, 
-                                publish_email: true, 
-                                category_ids: ['1','2']
-                            }}
-      params = ActionController::Parameters.new.merge(organisation_params)
-      permitted_params = OrganisationsController::OrganisationParams.build(params)
-      expect(permitted_params).to eq({name: 'Happy Friends', 
-                                      description: 'Do nice things', 
-                                      address: '22 Pinner Road', 
-                                      postcode: '12345', email: 'happy@annoting.com', 
-                                      website: 'www.happyplace.com', 
-                                      telephone: '123-456-7890', 
-                                      donation_info: 'www.giveusmoney.com',
-                                      publish_address: true, 
-                                      publish_phone: true, 
-                                      publish_email: true,
-                                      category_ids: ['1','2']
-                                      }.with_indifferent_access)
-      #attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info, :publish_address, :publish_phone, :publish_email, :category_organisations_attributes
+                                publish_address: true,
+                                publish_phone: true,
+                                publish_email: true,
+                                category_ids: []
+                              } }
+
+    let (:bad_organisation_params) { organisation_params.merge({id: 'terrible'}) }
+
+    let (:id) { create(:organisation).id }
+
+     before(:each) do
+        make_current_user_superadmin
+        allow_any_instance_of(OrganisationsController).to receive(:user_can_edit?).and_return(true)
+      end
+    
+
+    context "#create" do
+      it "permits the correct params", params: true do
+        expect { post :create, organisation: organisation_params }.not_to raise_error
+      end
+      it "rejects incorrect params", params: true do
+        expect { post :create, organisation: bad_organisation_params }.to raise_error ActionController::UnpermittedParameters
+      end
+    end
+
+    context "#update" do
+      it "permits the correct params", params: true do
+        expect { put :update, id: id, organisation: organisation_params }.not_to raise_error
+      end
+      it "rejects incorrect params", params: true do
+        expect { put :update, id: id, organisation: bad_organisation_params }.to raise_error ActionController::UnpermittedParameters 
+      end
     end
   end
 end
