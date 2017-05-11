@@ -72,5 +72,33 @@ describe ImportDoItVolunteerOpportunities do
       list_volunteer_opportunities
     end
   end
+  
+  context 'errors are being handled' do
+    let(:response) { double :response, body: '[]' }
+    # require 'httparty'
+    # require 'spec_helper'
+    
+    it 'handles HTTParty:Error ' do
+      allow(http_party).to receive(:get).and_raise(HTTParty::Error)
+      expect(Rails.logger).to receive(:error)
+      list_volunteer_opportunities
+    end
+    
+    # it 'raises an error when response status is 404' do
+    #   allow(http_party).to receive(:get).and_return(response_404)
+    #   expect {list_volunteer_opportunities}.to raise_error(HTTParty::Error)
+    # end
+    
+    # it 'raises an error when response status is 500' do
+    #   allow(http_party).to receive(:get).and_return(response_500)
+    #   expect {list_volunteer_opportunities}.to raise_error(HTTParty::Error)
+    # end
+    
+    # it 'raises an error when response status is 504' do
+    #   allow(http_party).to receive(:get).and_return(response_504)
+    #   expect {list_volunteer_opportunities}.to raise_error(HTTParty::Error)
+    # end
+  
+  end
 
 end

@@ -20,7 +20,13 @@ class ImportDoItVolunteerOpportunities
   def run
     href = "#{HREF}#{radius}"
     model_klass.delete_all(source: 'doit')
-    while href = process_doit_json_page(http.get("#{HOST}#{href}"));
+    while 
+      begin
+        response = http.get("#{HOST}#{href}")
+        href = process_doit_json_page(response)
+      rescue HTTParty::Error => e
+        logger.error(e.message)
+      end
     end
   end
 
@@ -50,5 +56,5 @@ class ImportDoItVolunteerOpportunities
   def has_content?(response)
     response.body && response.body != '[]'
   end
-
+  
 end
