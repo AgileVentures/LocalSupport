@@ -31,7 +31,7 @@ describe UsersController, :type => :controller do
   describe 'edit' do
     before(:each) { get :edit, id: user.id }
     
-    it 'assigns @volunteer_ops variable' do
+    it 'assigns @user variable' do
       expect(assigns(:user)).to be_instance_of User
     end
     

@@ -70,7 +70,7 @@ class VolunteerOpsController < ApplicationController
 
   def restrict_by_feature_scope
     if Feature.active?(:doit_volunteer_opportunities) &&
-       Feature.active?(:reachskills_volunteer_opportunities)
+      Feature.active?(:reachskills_volunteer_opportunities)
       return :all
     end
     return :doit if Feature.active?(:doit_volunteer_opportunities)
