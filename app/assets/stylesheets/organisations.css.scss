@@ -111,7 +111,11 @@
 }
 
 #org-cat-buttons {
-  margin-top: 30px
+    margin-top: 30px;
+    .btn{
+        padding: 8px;
+        margin-bottom: 10px;
+    }
 }
 
 
@@ -141,5 +145,3 @@
   @extend .error;
   margin-bottom: -5px;
 }
-
-

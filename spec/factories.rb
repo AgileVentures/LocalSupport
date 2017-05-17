@@ -106,6 +106,10 @@ FactoryGirl.define do
     factory :doit_volunteer_op do
       source 'doit'
     end
+
+    factory :reachskills_volunteer_op do
+      source 'reachskills'
+    end
   end
 
   factory :invitation_instructions, class: MailTemplate do

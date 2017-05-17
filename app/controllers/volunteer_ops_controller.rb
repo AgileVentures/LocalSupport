@@ -1,9 +1,9 @@
 class VolunteerOpsController < ApplicationController
+  add_breadcrumb 'Volunteers', :root_url
   layout 'two_columns_with_map'
   before_action :set_organisation, only: [:new, :create]
   before_action :authorize, except: [:search, :show, :index]
   prepend_before_action :set_volunteer_op, only: [:show, :edit]
-  before_action :set_tags, only: [:show, :edit]
 
   def search
     @query = params[:q]
@@ -24,6 +24,8 @@ class VolunteerOpsController < ApplicationController
     organisations = Organisation.where(id: @organisation.id)
     @editable = current_user.can_edit?(@organisation) if current_user
     @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
+    add_breadcrumb @organisation.name, organisation_path(@organisation)
+    add_breadcrumb @volunteer_op.title, :volunteer_op_path
   end
 
   def new
@@ -69,7 +71,12 @@ class VolunteerOpsController < ApplicationController
   end
 
   def restrict_by_feature_scope
-    return :all if Feature.active?(:doit_volunteer_opportunities)
+    if Feature.active?(:doit_volunteer_opportunities) &&
+       Feature.active?(:reachskills_volunteer_opportunities)
+      return :all
+    end
+    return :doit if Feature.active?(:doit_volunteer_opportunities)
+    return :reachskills if Feature.active?(:reachskills_volunteer_opportunities)
     :local_only
   end
 

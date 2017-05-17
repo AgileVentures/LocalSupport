@@ -23,7 +23,10 @@ Many thanks to all the contributions from volunteers from all around the world.
 
 [Graph of Contributors](https://github.com/AgileVentures/LocalSupport/contributors)
 
-[![Pair program with me!](http://pairprogramwith.me/badge.png)](mailto:tansaku@gmail.com?subject=Pairing on LocalSupport)
+<a href="mailto:tansaku@gmail.com?subject=Pairing on LocalSupport" title="Pair program with me!">
+  <img  src="http://pairprogramwith.me/badge.png"
+        alt="Pair program with me!" />
+</a>
 
 License
 =======
