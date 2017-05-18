@@ -1,0 +1,26 @@
+---
+:scope: 
+:url: http://m.addthis.com/live/red_lojson/300lo.json?si=58ffa7780f5805b0&bkl=0&bl=1&sid=58ffa7780f5805b0&pub=ra-57ff949adbc21d93&rev=v7.11.0-wp&ln=en&pc=men&cb=0&ab=-&dp=127.0.0.1%3A45443&fp=organisations%2Ffriendly&fr=&of=0&pd=0&irt=0&vcl=0&md=0&ct=1&tct=0&abt=0&cdn=0&pi=1&rb=4&gen=100&chr=UTF-8&colc=1493149560291&jsl=1&uvs=58ffa778d908f080000&skipb=1&callback=addthis.cbs.oln9_74105123430490490
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Tue, 25 Apr 2017 19:46:00 GMT
+  Content-Type: application/javascript;charset=UTF-8
+  Content-Length: '114'
+  Connection: close
+  Set-Cookie:
+  - di2=aUjv~7&[6Hq1@n1@m;Path=/;Domain=.addthis.com;Expires=Thu, 25-Apr-2019 19:46:00
+    GMT
+  - uid=58ffa77880528e4e;Path=/;Domain=.addthis.com;Expires=Thu, 25-Apr-2019 19:46:00
+    GMT
+  - vc=2;Path=/;Domain=.addthis.com;Expires=Thu, 25-Apr-2019 19:46:00 GMT
+  Expires: Thu, 01 Jan 1970 00:00:00 GMT
+  P3P: policyref="/w3c/p3p.xml", CP="NON ADM OUR DEV IND COM STA"
+  Cache-Control: max-age=0, no-cache, no-store, no-transform
+  Pragma: no-cache
+  Content-Disposition: attachment; filename=1.txt
+  Content-Encoding: gzip
+  Server: cloudflare-nginx
+  CF-RAY: 3553ce5030bb3c6b-CDG
+:content: addthis.cbs.oln9_74105123430490490({"loc":"OTQwMzVOQVVTQ0EyMTc0MDU3OTgwNzc0MDBIVg==","pixels":[]});

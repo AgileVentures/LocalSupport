@@ -1,0 +1,19 @@
+---
+:scope: 
+:url: http://pixel-a.sitescout.com/connectors/addthis/usersync?redir=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11185%26puid%3D%24UUID%26ssrc%3D3
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Cache-Control: max-age=0,no-cache,no-store
+  Pragma: no-cache
+  Expires: Tue, 11 Oct 1977 12:34:56 GMT
+  P3P: CP="NON DEVa PSAa PSDa OUR NOR NAV",policyref="/w3c/p3p.xml"
+  Set-Cookie: ssi=76e5d5ee-3283-460b-916b-7f0435227aaf; Domain=.sitescout.com; Expires=Wed,
+    25-Apr-2018 19:22:30 GMT; Path=/
+  Location: http://su.addthis.com/red/usync?pid=11185&puid=76e5d5ee-3283-460b-916b-7f0435227aaf&ssrc=3
+  Content-Length: '0'
+  Date: Tue, 25 Apr 2017 19:22:30 GMT
+  Connection: close
+  Server: AC1.1
+:content: ''

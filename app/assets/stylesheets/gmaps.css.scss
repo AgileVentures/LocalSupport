@@ -103,7 +103,7 @@
   margin-left: -11px;
 }
 
-.infoBox > img { display: none;  }
+.infoBox > img { display: none; }
 
 .long-vol-op {
   max-height: 135px;
@@ -122,6 +122,21 @@
   li:last-child {
     border: 0;
   }
+}
+
+strong.organisation-title {
+  color: $basic-green;
+  cursor: pointer;
+}
+
+.ib-title, .ib-description {
+  margin: 0;
+  padding: 3%;
+}
+
+.ib-title {
+  color: $basic-green;
+  font-weight: bold;
 }
 
 /* MAP LEGEND STYLE

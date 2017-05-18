@@ -1,0 +1,17 @@
+---
+:scope: 
+:url: https://pixel.advertising.com/ups/19350/sync?uid=MQN3BX8e9996BQJj&_origin=1&redir=true&verify=true
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Content-Length: '0'
+  Connection: close
+  Set-Cookie:
+  - IDSYNC=exi~16r5;Version=1;Domain=.advertising.com;Path=/;Max-Age=31622400;Expires=Sat,
+    28-Apr-2018 17:15:47 GMT
+  - APID=UP278e347a-2b6d-11e7-82d0-00163e857170;Version=1;Domain=.advertising.com;Path=/;Max-Age=31622400;Expires=Sat,
+    28-Apr-2018 17:15:47 GMT
+  P3P: CP=NOI DSP COR LAW CURa DEVa TAIa PSAa PSDa OUR BUS UNI COM NAV
+  Location: https://tags.bluekai.com/site/4470?limit=0&id=UP278e347a-2b6d-11e7-82d0-00163e857170
+:content: ''

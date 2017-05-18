@@ -1,0 +1,24 @@
+---
+:scope: 
+:url: http://maps.google.com/maps-api-v3/api/js/27/12/overlay.js
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Vary: Accept-Encoding
+  Content-Encoding: gzip
+  Content-Type: text/javascript
+  Date: Fri, 03 Mar 2017 01:30:23 GMT
+  Expires: Sat, 03 Mar 2018 01:30:23 GMT
+  Last-Modified: Tue, 31 Jan 2017 03:07:06 GMT
+  X-Content-Type-Options: nosniff
+  Server: sffe
+  Content-Length: '725'
+  X-XSS-Protection: 1; mode=block
+  Cache-Control: public, max-age=31536000
+  Age: '4643506'
+  Connection: close
+:content: |
+  google.maps.__gjsload__('overlay', function(_){var $y=_.pa("b"),az=_.oa(),bz=function(){var a=this.If;if(this.getPanes()){if(this.getProjection()){if(!a.b&&this.onAdd)this.onAdd();a.b=!0;this.draw()}}else{if(a.b)if(this.onRemove)this.onRemove();else this.remove();a.b=!1}},cz=function(a){a.If=a.If||new az;return a.If},dz=function(a){_.Ff.call(this);this.X=(0,_.p)(bz,a)};_.t($y,_.A);
+  $y.prototype.changed=function(a){"outProjection"!=a&&(a=!!(this.get("offset")&&this.get("projectionTopLeft")&&this.get("projection")&&_.x(this.get("zoom"))),a==!this.get("outProjection")&&this.set("outProjection",a?this.b:null))};_.t(dz,_.Ff);_.xc("overlay",{qk:function(a){var b=a.getMap(),c=cz(a),d=c.ym;c.ym=b;d&&(c=cz(a),(d=c.ca)&&d.unbindAll(),(d=c.Qh)&&d.unbindAll(),a.unbindAll(),a.set("panes",null),a.set("projection",null),_.v(c.P,_.z.removeListener),c.P=null,c.Ra&&(c.Ra.X(),c.Ra=null),_.hn("Ox","-p",a));if(b){c=cz(a);d=c.Ra;d||(d=c.Ra=new dz(a));_.v(c.P||[],_.z.removeListener);var e=c.ca=c.ca||new _.Jm,f=b.__gm;e.bindTo("zoom",f);e.bindTo("offset",f);e.bindTo("center",f,"projectionCenterQ");e.bindTo("projection",b);e.bindTo("projectionTopLeft",
+  f);e=c.Qh=c.Qh||new $y(e);e.bindTo("zoom",f);e.bindTo("offset",f);e.bindTo("projection",b);e.bindTo("projectionTopLeft",f);a.bindTo("projection",e,"outProjection");a.bindTo("panes",f);e=(0,_.p)(d.K,d);c.P=[_.z.addListener(a,"panes_changed",e),_.z.addListener(f,"zoom_changed",e),_.z.addListener(f,"offset_changed",e),_.z.addListener(b,"projection_changed",e),_.z.addListener(f,"projectioncenterq_changed",e),_.z.forward(b,"forceredraw",d)];d.K();b instanceof _.Ae&&(_.en(b,"Ox"),_.gn("Ox","-p",a,!!b.b))}}});});

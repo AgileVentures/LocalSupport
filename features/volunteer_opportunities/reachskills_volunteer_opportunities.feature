@@ -38,6 +38,10 @@ Feature: Reachskills volunteer opportunities
     Given I visit the volunteer opportunities page
     And the map should show the opportunity titled Literacy Trainer (The Princess Alexandra Home)
 
-  Scenario: Reachskills volunteer opportunities are opened in a new page
+  # Scenario: Reachskills volunteer opportunities are opened in a new page
+  #   Given I visit the volunteer opportunities page
+  #   Then I should open "Charity Treasurer" in a new window
+    
+  Scenario: Reachskills volunteer opportunity info box is opened after clicking on title
     Given I visit the volunteer opportunities page
-    Then I should open "Charity Treasurer" in a new window
+    Then I should open "Charity Treasurer" infowindow on the map

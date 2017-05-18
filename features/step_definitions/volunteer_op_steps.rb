@@ -43,20 +43,6 @@ Given(/^there is a doit volunteer op named "(.*?)"$/) do |title|
                      organisation_id: 1)
 end
 
-Then(/^the doit volunteer op named "(.*?)" should be deleted$/) do |title|
-  expect(VolunteerOp.find_by_title(title)).to eq nil
-end
-
-Then(/^there should be (\d+) doit volunteer ops stored$/) do |count|
-  expect(VolunteerOp.where(source: 'doit').count).to eq count.to_i
-end
-
-Then(/^all imported volunteer ops have latitude and longitude coordinates$/) do
-  VolunteerOp.where(source: 'doit').all? do |op|
-    expect(op).to have_coordinates
-  end
-end
-
 Given(/^that the (.+) flag is (enabled|disabled)$/) do |feature, state|
   if f = Feature.find_by_name(feature) then
     f.update_attributes(active: (state == 'enabled'))
@@ -77,14 +63,28 @@ Given /^I should see (\d+) markers in the map$/ do |num|
   expect(page).to have_css('.vol_op', count: num)
 end
 
-Then(/^I should see a link to "(.*?)" page "(.*?)"$/) do |link, url|
-  page.should have_link(link, :href => url)
-end
-
 When(/^I set new volunteer opportunity location to "(.*?)", "(.*?)"$/) do |addr, pc|
   fill_in 'Address', with: addr
   fill_in 'Postcode', with: pc
   click_button 'Update a Volunteer Opportunity'
+end
+
+Then(/^the doit volunteer op named "(.*?)" should be deleted$/) do |title|
+  expect(VolunteerOp.find_by_title(title)).to eq nil
+end
+
+Then(/^there should be (\d+) doit volunteer ops stored$/) do |count|
+  expect(VolunteerOp.where(source: 'doit').count).to eq count.to_i
+end
+
+Then(/^all imported volunteer ops have latitude and longitude coordinates$/) do
+  VolunteerOp.where(source: 'doit').all? do |op|
+    expect(op).to have_coordinates
+  end
+end
+
+Then(/^I should see a link to "(.*?)" page "(.*?)"$/) do |link, url|
+  page.should have_link(link, :href => url)
 end
 
 regex = /^I should see "(.*?)", "(.*?)", "(.*?)" and "(.*?)"$/

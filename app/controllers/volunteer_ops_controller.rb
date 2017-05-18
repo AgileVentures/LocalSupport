@@ -67,7 +67,8 @@ class VolunteerOpsController < ApplicationController
   private
 
   def displayed_volunteer_ops
-    VolunteerOp.order_by_most_recent.send(restrict_by_feature_scope)
+    vol_ops = VolunteerOp.order_by_most_recent.send(restrict_by_feature_scope)
+    VolunteerOp.add_coordinates(vol_ops)
   end
 
   def restrict_by_feature_scope

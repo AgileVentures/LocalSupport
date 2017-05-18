@@ -1,0 +1,22 @@
+---
+:scope: 
+:url: http://epiv.cardlytics.com/c/?pr=11010&prc=580a3372faba457f
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Cache-Control: no-cache
+  Date: Tue, 25 Apr 2017 19:22:15 GMT
+  Expires: "-1"
+  Location: http://su.addthis.com/red/usync?pid=11147&puid=fbfbad0869af401ab0bef3ced76d8d37&ssrc=1
+  P3P: CP="DEM PSA OUR"
+  Pragma: no-cache
+  Server: Microsoft-IIS/8.5
+  Set-Cookie: mv3=8v5gIPyOcFMJag%2bIdCFl2zFRYQDpF%2bMAgnd6CMztmNRcowf9LYQNL%2fpELTGm3%2fKPY0ozIiWndBUojQGdVj4Dig%3d%3d;
+    expires=Sun, 22 Oct 2017 19:22:15 GMT; max-age=15552000; domain=.cardlytics.com;
+    path=/; httponly
+  X-AspNet-Version: 4.0.30319
+  X-Powered-By: ASP.NET
+  Content-Length: '0'
+  Connection: close
+:content: ''

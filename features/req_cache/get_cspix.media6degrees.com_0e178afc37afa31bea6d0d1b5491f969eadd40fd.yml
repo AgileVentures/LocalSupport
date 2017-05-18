@@ -1,0 +1,21 @@
+---
+:scope: 
+:url: http://cspix.media6degrees.com/orbserv/hbpix?pixId=1598&pcv=45&ptid=100&tpuv=01&tpu=5902210eab7fefde&curl=http%3A%2F%2F127.0.0.1%3A41927%2Forganisations%2Ffriendly
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Server: Apache-Coyote/1.1
+  P3P: CP="COM NAV INT STA NID OUR IND NOI"
+  Pragma: no-cache
+  Cache-Control: no-cache
+  Set-Cookie:
+  - cckz=1op2uq7; Domain=media6degrees.com; Expires=Thu, 27-Apr-2017 16:59:19 GMT;
+    Path=/
+  - cckz=1op2uq7; Domain=media6degrees.com; Expires=Tue, 24-Oct-2017 16:49:19 GMT;
+    Path=/
+  Location: http://cspix.media6degrees.com/orbserv/hbpix?pixId=1598&pcv=45&curl=http://127.0.0.1:41927/organisations/friendly&tpu=5902210eab7fefde&ptid=100&tpuv=01&cckz=true
+  Content-Length: '0'
+  Date: Thu, 27 Apr 2017 16:49:19 GMT
+  Connection: close
+:content: ''

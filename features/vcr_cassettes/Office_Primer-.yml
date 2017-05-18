@@ -1,0 +1,192 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=64%20pinner%20road,%20&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Thu, 27 Apr 2017 15:54:45 GMT
+      Expires:
+      - Fri, 28 Apr 2017 15:54:45 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '823'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "64",
+                       "short_name" : "64",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Pinner Road",
+                       "short_name" : "Pinner Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Harrow",
+                       "short_name" : "Harrow",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "HA1 4HZ",
+                       "short_name" : "HA1 4HZ",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "64 Pinner Rd, Harrow HA1 4HZ, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.5814347,
+                          "lng" : -0.346706
+                       },
+                       "southwest" : {
+                          "lat" : 51.5813254,
+                          "lng" : -0.3469967
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.58138,
+                       "lng" : -0.3468514
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5827290302915,
+                          "lng" : -0.345502369708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.5800310697085,
+                          "lng" : -0.348200330291502
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJjQWua2wTdkgRyc32EN8AgX0",
+                 "types" : [ "premise" ]
+              },
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "64",
+                       "short_name" : "64",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Pinner Road",
+                       "short_name" : "Pinner Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Arden",
+                       "short_name" : "Arden",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Limestone",
+                       "short_name" : "Limestone",
+                       "types" : [ "administrative_area_level_3", "political" ]
+                    },
+                    {
+                       "long_name" : "Buncombe County",
+                       "short_name" : "Buncombe County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "North Carolina",
+                       "short_name" : "NC",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "28704",
+                       "short_name" : "28704",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "64 Pinner Rd, Arden, NC 28704, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 35.4521421,
+                          "lng" : -82.55095489999999
+                       },
+                       "southwest" : {
+                          "lat" : 35.4521282,
+                          "lng" : -82.5509627
+                       }
+                    },
+                    "location" : {
+                       "lat" : 35.4521421,
+                       "lng" : -82.5509627
+                    },
+                    "location_type" : "RANGE_INTERPOLATED",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 35.4534841302915,
+                          "lng" : -82.54960981970849
+                       },
+                       "southwest" : {
+                          "lat" : 35.4507861697085,
+                          "lng" : -82.5523077802915
+                       }
+                    }
+                 },
+                 "place_id" : "EiI2NCBQaW5uZXIgUmQsIEFyZGVuLCBOQyAyODcwNCwgVVNB",
+                 "types" : [ "street_address" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Thu, 27 Apr 2017 15:54:45 GMT
+recorded_with: VCR 3.0.3

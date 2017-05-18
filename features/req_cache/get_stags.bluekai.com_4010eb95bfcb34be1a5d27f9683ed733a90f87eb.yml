@@ -1,0 +1,20 @@
+---
+:scope: 
+:url: https://stags.bluekai.com/site/5386?dt=0&r=315325879&sig=1593037272&bkca=KJpnEnaBLMH11660u5JBBW+nNeDh1WlP+DyNLBOBBDomBna1+e9hBDTa9me5Yr/=
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Tue, 25 Apr 2017 19:22:30 GMT
+  Content-Type: image/gif
+  Content-Length: '62'
+  Connection: close
+  P3P: CP="NOI DSP COR CUR ADMo DEVo PSAo PSDo OUR SAMo BUS UNI NAV", policyref="http://tags.bluekai.com/w3c/p3p.xml"
+  Expires: Wed, 26 Apr 2017 19:22:30 GMT
+  Cache-Control: max-age=86400, private
+  Set-Cookie: bku=YCD99wVCdNMaTe1L; expires=Sun, 22-Oct-2017 19:22:30 GMT; path=/;
+    domain=.bluekai.com
+  BK-Server: '3756'
+:content: !binary |-
+  R0lGODlhAQABAJAAAAAAAP///yH/C05FVFNDQVBFMi4wAwEAAAAh+QQJAAAB
+  ACwAAAAAAQABAAACAkwBADs=

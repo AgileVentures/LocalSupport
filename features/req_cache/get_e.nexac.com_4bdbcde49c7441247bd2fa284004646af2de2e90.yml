@@ -1,0 +1,24 @@
+---
+:scope: 
+:url: http://e.nexac.com/e/xrefid.xgi?na_exid=5902210eab7fefde&na_pid=2850&ru=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D19%26puid%3D%3Cna_id%3E%26ssrc%3D1
+:body: ''
+:status: 301
+:method: get
+:headers:
+  Content-type: text/html
+  Date: Thu, 27 Apr 2017 16:49:20 GMT
+  Expires: Wed Sep 15 09:14:42 MDT 2010
+  Location: http://su.addthis.com/red/usync?pid=19&puid=2017042710492017455131022904&ssrc=1
+  P3P: policyref="http://www.nextaction.net/P3P/PolicyReferences.xml", CP="NOI DSP
+    COR NID CURa ADMa DEVa TAIo PSAo PSDo HISa OUR DELa SAMo UNRo OTRo BUS UNI PUR
+    COM NAV INT DEM STA PRE"
+  Pragma: no-cache
+  Server: lighttpd/1.4.33
+  Set-Cookie:
+  - na_tc=Y; expires=Sun, 31-Dec-2017 23:00:00 GMT; domain=.nexac.com; path=/
+  - na_id=2017042710492017455131022904; expires=Sat, 27-Apr-2019 16:49:20 GMT; Max-Age=63072000;
+    path=/; domain=.nexac.com
+  X-Powered-By: Jigawatts
+  Content-Length: '0'
+  Connection: close
+:content: ''

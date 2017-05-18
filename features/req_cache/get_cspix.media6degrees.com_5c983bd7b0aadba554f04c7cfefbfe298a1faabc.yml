@@ -1,0 +1,25 @@
+---
+:scope: 
+:url: http://cspix.media6degrees.com/orbserv/hbpix?pixId=1598&pcv=45&curl=http://127.0.0.1:45443/organisations/friendly&ptid=100&tpuv=01&tpu=58ffa752268b74bf&cckz=true
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Server: Apache-Coyote/1.1
+  P3P: CP="COM NAV INT STA NID OUR IND NOI"
+  Pragma: no-cache
+  Cache-Control: no-cache
+  Set-Cookie:
+  - clid=2oozdjn011715b7xxlx7l0ar0000000137010h01401; Domain=media6degrees.com; Expires=Sun,
+    22-Oct-2017 19:45:23 GMT; Path=/
+  - sglst=""; Domain=media6degrees.com; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/
+  - rdrlst=""; Domain=media6degrees.com; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/
+  - acs=013020k0n1oozdjnxzt10xzt10; Domain=media6degrees.com; Expires=Sun, 22-Oct-2017
+    19:45:23 GMT; Path=/
+  - lbh=""; Domain=media6degrees.com; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/
+  - cckz=""; Domain=media6degrees.com; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/
+  Location: http://su.addthis.com/red/usync?pid=11118&puid=15b7xxlx7l0ar&ssrc=3
+  Content-Length: '0'
+  Date: Tue, 25 Apr 2017 19:45:23 GMT
+  Connection: close
+:content: ''
