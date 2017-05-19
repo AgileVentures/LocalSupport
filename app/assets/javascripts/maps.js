@@ -1,3 +1,6 @@
+//= require google-infobox/google-infobox
+//= require google_maps/custom_marker
+
 var map;
 var Settings = {
   id: 'map-canvas',
@@ -48,11 +51,11 @@ function initMap() {
     }); 
 
   });
-}
+};
 
 function centerMap(lat, lng) {
   map.setCenter({ lat: lat, lng: lng });
-}
+};
 
 google.maps.event.addDomListener(window, "load", initMap);
 
