@@ -23,6 +23,8 @@ vendor/assets/bower_components/
 /db/schema.rb
 /public/system/*
 /coverage/
+/features/req_cache/*
+/features/vcr_cassettes/*
 /spec/tmp/*
 **.orig
 rerun.txt
