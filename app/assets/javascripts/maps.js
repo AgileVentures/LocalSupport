@@ -51,11 +51,11 @@ function initMap() {
     }); 
 
   });
-};
+}
 
 function centerMap(lat, lng) {
   map.setCenter({ lat: lat, lng: lng });
-};
+}
 
 google.maps.event.addDomListener(window, "load", initMap);
 
