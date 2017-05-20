@@ -29,4 +29,13 @@ RSpec.describe Event, type: :model do
     subject.end_date = nil
     expect(subject).to_not be_valid
   end
+
+  describe "scopes" do
+    
+    it "should have a valid upcoming method" do
+      expect { Event.upcoming }.not_to raise_error
+    end
+
+  end
+
 end
