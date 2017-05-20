@@ -22,3 +22,12 @@ end
 Then /^"(.*?)" event should not exist$/ do |title|
   expect(Event.find_by_title title).to be_nil
 end
+
+Given(/^the following events exist:$/) do |table|
+  table.hashes.each do |hash|
+    event = Event.create(hash)
+    event.start_date = 2.days.from_now
+    event.end_date = 2.days.from_now
+    event.save
+  end
+end
