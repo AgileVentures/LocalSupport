@@ -13,3 +13,4 @@ Feature: List the upcoming events
         Given I visit the events page
         Then I should see "My first event"
 
+
