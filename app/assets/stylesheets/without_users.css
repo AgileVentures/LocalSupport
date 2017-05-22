@@ -15,6 +15,19 @@ table th, table td { overflow: hidden; }
     width: 100%;
 }
 
+#preview_email {
+  font-size: 80%;
+  background-color: white;
+}
+
+a.btn {
+  padding: 3px 9px;
+  margin-bottom: 0;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+
 tr.actions-right > td:last-child {
   width: 180px;
 }

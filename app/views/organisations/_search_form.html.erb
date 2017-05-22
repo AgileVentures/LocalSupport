@@ -1,0 +1,37 @@
+<%= form_tag(organisations_search_path, :id => "organisation_search", :method => "get") do %>
+  <div class="flex-column">
+    <div class="flex-row">
+      <div class="left-side">
+        <%= label_tag(:what_id, "What They Do", class: 'field-label') %>
+      </div>
+      <div class="right-side">
+        <%= select_tag(:what_id, options_for_select(@cat_name_ids[:what], @parsed_params.try(:what_id)), { :include_blank => 'All' }) %>
+      </div>
+    </div>
+    <div class="flex-row">
+      <div class="left-side">
+        <%= label_tag(:who_id, "Who They Help", class: 'field-label') %>
+      </div>
+      <div class="right-side">
+        <%= select_tag(:who_id, options_for_select(@cat_name_ids[:who], @parsed_params.try(:who_id)), :include_blank => 'All' ) %>
+      </div>
+    </div>
+    <div class="flex-row">
+      <div class="left-side">
+        <%= label_tag(:how_id, "How They Help", class: 'field-label') %>
+      </div>
+      <div class="right-side">
+        <%= select_tag(:how_id, options_for_select(@cat_name_ids[:how], @parsed_params.try(:how_id)), { :include_blank => 'All' }) %>
+      </div>
+    </div>
+    <div class="flex-row">
+      <div class="left-side">
+        <%= label_tag(:q, "Optional Search Text", class: 'field-label') %>
+      </div>
+      <div class="right-side">
+        <%= text_field_tag(:q, @parsed_params.try(:query_term)) %>
+        <%= submit_tag "Submit", { :class => 'btn btn-info' } %>
+      </div>
+    </div>
+  </div>
+<% end %>

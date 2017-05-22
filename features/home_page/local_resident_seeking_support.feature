@@ -9,12 +9,13 @@ Feature: Local Resident seeking Support
     Given the following organisations exist:
       | name                           | description                  | address        | postcode | website       |
       | Harrow Bereavement Counselling | Counselling for the bereaved | 34 pinner road | HA1 4HZ  | http://a.com/ |
-      | Indian Elders Association      | Care for the elderly         | 64 pinner road | HA1 4HA  | http://b.com/ |
-      | Age UK                         | Care for the Elderly         | 84 pinner road | HA1 4HF  | http://c.com/ |
+      | Indian Elders Association      | Care for the elderly         | 64 pinner road | HA1 4HZ  | http://b.com/ |
+      | Age UK                         | Care for the Elderly         | 84 pinner road | HA1 4HZ  | http://c.com/ |
 
 # particularly want to provide visibility to organisations with no existing web presence
+  @vcr
   Scenario: Find help with care for elderly
-    Given I visit the home page
+    Given I visit the organisations index page
     When I search for "elderly"
     Then the index should contain:
       | Indian Elders Association | Care for the elderly |
@@ -25,7 +26,7 @@ Feature: Local Resident seeking Support
 
 # starting within main site
   Scenario: Find a bereavement counsellor
-    Given I visit the home page
+    Given I visit the organisations index page
     When I search for "Bereavement Counselling"
     And the index should contain:
       | Harrow Bereavement Counselling | Counselling for the bereaved |
@@ -35,17 +36,16 @@ Feature: Local Resident seeking Support
     Then I should not see the no results message
 
   Scenario: Find friendly no search results message
-    Given I visit the home page
+    Given I visit the organisations index page
     When I search for "non-existent results"
     Then I should see the no results message
     Given I visit the home page
     Then I should not see the no results message
 
   Scenario: See a list of current organisations
-    Given I visit the home page
+    Given I visit the organisations index page
     And cookies are approved
     Then the index should contain:
       | Harrow Bereavement Counselling | Counselling for the bereaved |
       | Indian Elders Association      | Care for the elderly           |
       | Age UK                         | Care for the Elderly           |
-

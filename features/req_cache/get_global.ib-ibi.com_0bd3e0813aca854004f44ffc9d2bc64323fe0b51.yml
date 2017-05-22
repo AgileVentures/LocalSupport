@@ -1,0 +1,22 @@
+---
+:scope: 
+:url: http://global.ib-ibi.com/image.sbxx?go=260602&pid=400&xid=fnOAslhE999n1QoR&rand=978011813
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Cache-Control: private
+  Content-Type: text/html; charset=utf-8
+  Location: http://ibeu2.mookie1.com/image.sbxx?go=260602&pid=400&xid=fnOAslhE999n1QoR&rand=978011813
+  Server: Microsoft-IIS/7.5
+  Access-Control-Allow-Origin: "*"
+  Set-Cookie: ASP.NET_SessionId=svdyyt3kagenjfw4dr0a44po; path=/; HttpOnly
+  X-AspNet-Version: 4.0.30319
+  X-Powered-By: ASP.NET
+  X-Server: MAN13
+  p3p: CP="DSP COR ADM DEV PSA PSD OUR"
+  Date: Fri, 21 Oct 2016 15:27:10 GMT
+  Content-Length: '218'
+  Connection: close
+:content: "<html><head><title>Object moved</title></head><body>\r\n<h2>Object moved
+  to <a href=\"http://ibeu2.mookie1.com/image.sbxx?go=260602&amp;pid=400&amp;xid=fnOAslhE999n1QoR&amp;rand=978011813\">here</a>.</h2>\r\n</body></html>\r\n"

@@ -1,16 +1,17 @@
 require 'rails_helper'
 
 describe MapMarkerJson do
-  let(:organisation) { double(:organisation) }
+  let(:organisation) { create(:organisation) }
+  let(:organisations) { Organisation.where(id: organisation) }
 
   it do
-    expect {|b| Gmaps4rails.build_markers([organisation], &b) }.to yield_control
+    expect {|b| Gmaps::MarkersBuilder.generate(organisations, &b) }.to yield_control
   end
 
   it 'yields the organisation and a marker' do
     _subject do |o,m|
       expect(o).to eq organisation
-      expect(m).to be_an_instance_of Gmaps4rails::MarkersBuilder::MarkerBuilder
+      expect(m).to be_an_instance_of Gmaps::MarkersBuilder::MarkerBuilder
     end
   end
 
@@ -23,6 +24,6 @@ describe MapMarkerJson do
   end
 
   def _subject
-    JSON.parse(described_class.build([organisation]) {|o,m| yield o,m })
+    JSON.parse(described_class.build(organisations) {|o,m| yield o,m })
   end
 end

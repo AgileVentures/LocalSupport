@@ -1,3 +1,8 @@
+<p><b> The Following email will be sent when a user is invited: </b></p>
+<div class="well" id="preview_email">
+  <%= render template: 'custom_devise_mailer/invitation_instructions', :locals => { :@resource => User.new } %>
+  <%= link_to 'Edit template', edit_mail_template_path(@mail_template), class: 'btn btn-primary' %>
+</div>
 <table class="table table-hover sortable">
   <thead>
   <tr>
@@ -20,4 +25,3 @@
   <% end %>
   </tbody>
 </table>
-

@@ -7,7 +7,7 @@ describe 'organisations/show.html.erb', :type => :view do
         :name => 'Friendly',
         :address => '12 pinner rd',
         :telephone => '1234',
-        :email => 'admin@friendly.org',
+        :email => 'superadmin@friendly.org',
         :postcode => 'HA1 4HZ',
         :website => 'http://www.friendly.org',
         :donation_info => 'http://www.friendly.org/donate',
@@ -17,12 +17,16 @@ describe 'organisations/show.html.erb', :type => :view do
     }
   end
 
-  before(:each) { assign(:organisation, organisation) }
+  before(:each) do
+    assign(:organisation, organisation)
+    assign(:parsed_params, double("ParsedParams", :query_term => 'search'))
+    assign(:cat_name_ids, {what: [], who: [], how: []})
+  end
 
   context 'page styling' do
-    it 'name should be wrapped in h3 tag' do
+    it 'name should be wrapped in h2 tag' do
       render
-      expect(rendered).to have_css('h3', :text => organisation.name)
+      expect(rendered).to have_css('h2', :text => organisation.name)
     end
     it 'PRESENT: postcode, email, website, donation info' do
       render
@@ -30,10 +34,10 @@ describe 'organisations/show.html.erb', :type => :view do
       expect(rendered).to have_content('Email: ')
       expect(rendered).to have_css("a[href='mailto:#{organisation.email}']")
       expect(rendered).to have_content('Website: ')
-      expect(rendered).to have_link "#{organisation.website}", :href => organisation.website      
+      expect(rendered).to have_link "#{organisation.website}", :href => organisation.website
       expect(rendered).to have_xpath("//a[@href='#{organisation.website}'][@target='_blank']")
       expect(rendered).to have_content('Donation Info: ')
-      expect(rendered).to have_link "Donate to #{organisation.name} now!", :href => organisation.donation_info 
+      expect(rendered).to have_link "Donate to #{organisation.name} now!", :href => organisation.donation_info
       expect(rendered).to have_xpath("//a[@href='#{organisation.donation_info}'][@target = '_blank']")
     end
     it 'ABSENT: postcode, email, website, donation info' do
@@ -63,7 +67,7 @@ describe 'organisations/show.html.erb', :type => :view do
           :address => '12 pinner rd',
           :description => 'lovely',
           :telephone => '1234',
-          :email => 'admin@friendly.org',
+          :email => 'superadmin@friendly.org',
           :postcode => 'HA1 4HZ',
           :website => 'http://www.friendly.org',
           :donation_info => 'http://www.friendly.org/donate',
@@ -119,7 +123,7 @@ describe 'organisations/show.html.erb', :type => :view do
     render
     expect(rendered).to have_content organisation.address
   end
-  
+
   it 'renders the actual phone if publish phone is true' do
     organisation.publish_phone = true
     render
@@ -131,12 +135,12 @@ describe 'organisations/show.html.erb', :type => :view do
     render
     expect(rendered).not_to have_content organisation.email
   end
-  
+
   context 'edit button' do
     it 'renders edit button if editable true' do
       assign(:editable, true)
       render
-      expect(rendered).to have_link 'Edit', :href => edit_organisation_path(organisation.id)   
+      expect(rendered).to have_link 'Edit', :href => edit_organisation_path(organisation.id)
     end
     it 'does not render edit button if editable false' do
       assign(:editable, false)
@@ -180,9 +184,9 @@ describe 'organisations/show.html.erb', :type => :view do
     end
   end
 
-  describe 'pending admin status' do
-    it 'displays pending admin message' do
-      assign(:pending_admin, true)
+  describe 'pending superadmin status' do
+    it 'displays pending superadmin message' do
+      assign(:pending_org_admin, true)
       render
       expect(rendered).to have_content 'Your request for admin status is pending.'
     end
@@ -190,6 +194,7 @@ describe 'organisations/show.html.erb', :type => :view do
 
   describe 'create volunteer opportunity button' do
     it 'shows when belongs_to is true' do
+      allow(view).to receive(:feature_active?).with(:search_input_bar_on_org_pages).and_return(false)
       allow(view).to receive(:feature_active?).with(:volunteer_ops_create).and_return(true)
       assign(:can_create_volunteer_op, true)
       render
@@ -203,15 +208,17 @@ describe 'organisations/show.html.erb', :type => :view do
     end
 
     it 'is shown when feature is active' do
+      allow(view).to receive(:feature_active?).with(:search_input_bar_on_org_pages).and_return(false)
       assign(:can_create_volunteer_op, true)
       expect(view).to receive(:feature_active?).
         with(:volunteer_ops_create).and_return(true)
       render
       expect(rendered).to have_link \
-        'Create a Volunteer Opportunity', :href => new_organisation_volunteer_op_path(organisation)      
+        'Create a Volunteer Opportunity', :href => new_organisation_volunteer_op_path(organisation)
     end
 
     it 'is not visible when feature is inactive' do
+      allow(view).to receive(:feature_active?).with(:search_input_bar_on_org_pages).and_return(false)
       assign(:can_create_volunteer_op, true)
       expect(view).to receive(:feature_active?).
         with(:volunteer_ops_create).and_return(false)
@@ -222,6 +229,36 @@ describe 'organisations/show.html.erb', :type => :view do
 
   end
 
+  describe 'show search input bar' do
+    context 'feature is on' do
+      it 'displays search feature' do
+        allow(view).to receive(:feature_active?).with(:search_input_bar_on_org_pages).and_return(true)
+        render
+        expect(rendered).to have_selector "form input[name='q']"
+        expect(rendered).to have_selector "form input[type='submit']"
+        expect(rendered).to have_selector "form input[value='search']"
+        expect(rendered).to have_content "Optional Search Text"
+        expect(rendered).to have_selector "form select[name='what_id']"
+        expect(rendered).to have_selector "form select[name='who_id']"
+        expect(rendered).to have_selector "form select[name='how_id']"
+      end
+    end
+
+    context 'feature is off' do
+      it 'does not show search feature' do
+        allow(view).to receive(:feature_active?).with(:search_input_bar_on_org_pages).and_return(false)
+        render
+        expect(rendered).not_to have_selector "form input[name='q']"
+        expect(rendered).not_to have_selector "form input[type='submit']"
+        expect(rendered).not_to have_selector "form input[value='search']"
+        expect(rendered).not_to have_content "Optional Search Text"
+        expect(rendered).not_to have_selector "form select[name='what_id']"
+        expect(rendered).not_to have_selector "form select[name='who_id']"
+        expect(rendered).not_to have_selector "form select[name='how_id']"
+      end
+    end
+  end
+
   describe 'show categories' do
     it 'handles no categories gracefully' do
       render
@@ -230,16 +267,5 @@ describe 'organisations/show.html.erb', :type => :view do
       expect(rendered).not_to have_content "Sports"
     end
 
-    it 'renders categories when present' do
-      cats = [mock_model(Category, name: "Animal Welfare"), mock_model(Category, name: "Sports")]
-      org = mock_model(Organisation, categories: cats)
-      assign(:organisation, org)
-      render
-      expect(rendered).to have_content "Categories:"
-      expect(rendered).to have_content "Animal Welfare"
-      expect(rendered).to have_content "Sports"
-    end
   end
 end
-
-

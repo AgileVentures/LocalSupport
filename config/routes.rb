@@ -12,13 +12,20 @@ LocalSupport::Application.routes.draw do
   put '/user_reports/update' => 'user_reports#update', as: :user_report
   delete '/user_reports' => 'user_reports#destroy'
   get '/user_reports/invited' => 'user_reports#invited', as: :invited_users_report
+  get '/user_reports/deleted' => 'user_reports#deleted', as: :deleted_users_report
+  put 'user_reports/undo_delete/:id' => 'user_reports#undo_delete', as: :undo_delete_users_report
 
   resources :pages, only: [:index, :new, :create, :edit]
-  resources :volunteer_ops, :only => [:index, :edit, :show, :update, :destroy]
+  resources :volunteer_ops, :only => [:index, :edit, :show, :update, :destroy] do
+    get 'search', on: :collection
+  end
+  resources :proposed_organisation_edits, :only => [:index]
   resources :organisations do
     resources :volunteer_ops, :only => [:new, :create]
+    resources :proposed_organisation_edits, :only => [:new, :show, :create, :update]
   end
   resources :users
+  resources :proposed_organisations, :only => [:new, :create, :show, :index, :update, :destroy]
 
   # so that static pages are linked directly instead of via /pages/:id
   get ':id', to: 'pages#show', as: :page
@@ -27,6 +34,7 @@ LocalSupport::Application.routes.draw do
 
   post 'cookies/allow', to: 'application#allow_cookie_policy'
 
+  resources :mail_templates
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -76,7 +84,7 @@ LocalSupport::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'organisations#index'
+  root :to => 'volunteer_ops#index'
 
   # See how all your routes lay out with "rake routes"
 

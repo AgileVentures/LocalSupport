@@ -1,11 +1,25 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
+require 'securerandom'
+
+def devise_secret_key_not_set_in_production?
+  ENV['RAILS_ENV'] == 'production' && !ENV['DEVISE_SECRET_KEY']
+end
+
+NO_DEVISE_SECRET_KEY_MESSAGE = %q(
+Please set a DEVISE_SECRET_KEY in environment vars for your production server
+Consider using `SecureRandom.hex(64)` to ensure security
+)
+
 Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
   config.mailer_sender = "support@harrowcn.org.uk"
 
+  raise(NO_DEVISE_SECRET_KEY_MESSAGE) if devise_secret_key_not_set_in_production?
+
+  config.secret_key = ENV['DEVISE_SECRET_KEY'] || SecureRandom.hex(64)
   # Configure the class responsible to send e-mails.
   config.mailer = "CustomDeviseMailer"
 
@@ -24,7 +38,7 @@ Devise.setup do |config|
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
   # config.authentication_keys = [ :email ]
-
+  
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
   # find_for_authentication method and considered in your model lookup. For instance,
@@ -123,7 +137,7 @@ Devise.setup do |config|
   # their account can't be confirmed with the token any more.
   # Default is nil, meaning there is no restriction on how long a user can take
   # before confirming their account.
-   config.confirm_within = 3.days
+  config.confirm_within = 7.days
 
   # If true, requires any email changes to be confirmed (exactly the same way as
   # initial account confirmation) to be applied. Requires additional unconfirmed_email

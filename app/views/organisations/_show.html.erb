@@ -1,0 +1,50 @@
+<div id="org-information">
+  <h2>
+    <%= org.name %>
+  </h2>
+
+  <p>
+    <%= simple_format org.description %>
+  </p>
+
+  <h3>
+    Contact information
+  </h3>
+  <% if org.address.present? && (org.publish_address? || org.type == "ProposedOrganisation")%>
+      <h4>Address: <span><%= org.address %></span></h4>
+  <% end %>
+  <% if org.postcode.present? %>
+      <h4>Postcode: <span><%= org.postcode %></span></h4>
+  <% end %>
+  <% if org.email.present? && (org.publish_email? || org.type == "ProposedOrganisation")%>
+      <h4>Email: <span><a href="mailto:<%= org.email %>"><%= org.email %></a></span></h4>
+  <% end %>
+  <% if org.website.present? %>
+      <h4>Website: <span><%= link_to org.website, org.website, {:target => '_blank'} %></a></span></h4>
+  <% end %>
+  <% if org.telephone.present? && (org.publish_phone? || org.type == "ProposedOrganisation")%>
+      <h4>Telephone: <span><%= org.telephone %></span></h4>
+  <% end %>
+  <% if org.donation_info.present? %>
+      <h4>Donation Info: <span><%= link_to "Donate to #{org.name} now!", org.donation_info, {:target => '_blank'} %></span></h4>
+  <% end %>
+
+   <div id="org-categories">
+    <% if org.categories.present? %>
+      <h4>Categories: </h4>
+      <ul class="org-categories">
+        <% ['what_they_do', 'who_they_help', 'how_they_help'].each do |type| %>
+          <li id=<%="#{type}"%> >
+            <h5><strong><%="#{type.capitalize.gsub(/_/, ' ')}"%></strong></h5>
+            <p>
+            <%= safe_join(render_link_categories(type, org) {|category| link_to category.name, 
+            organisations_search_path(params_hash(type,category))}, ', ') %>
+            </p>
+          </li>
+        <% end %>
+
+      </ul>
+    <% end %>
+   </div>
+
+</div>

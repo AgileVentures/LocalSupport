@@ -1,8 +1,13 @@
 require 'rails_helper'
 
 describe "Invitations", :type => :request, :helpers => :requests do
+
+  before do
+    FactoryGirl.create :invitation_instructions
+  end
+
   describe "create -- xhr POST /invitations" do
-    let(:admin) { FactoryGirl.create(:user, email: 'admin@example.com', admin: true) }
+    let(:superadmin) { FactoryGirl.create(:user, email: 'superadmin@example.com', superadmin: true) }
 
     describe 'batch invites' do
       let(:org) { FactoryGirl.create :organisation, email: 'yes@hello.com' }
@@ -12,7 +17,7 @@ describe "Invitations", :type => :request, :helpers => :requests do
           resend_invitation: false}
       end
 
-      before { login(admin) }
+      before { login(superadmin) }
 
       it 'example response for invites with duplicates' do
         xhr :post, invitations_path, params
@@ -25,14 +30,14 @@ describe "Invitations", :type => :request, :helpers => :requests do
   end
 
   describe '#invited -- GET /user_reports/invited' do
-    let(:admin) { FactoryGirl.create(:user, email: 'admin@example.com', admin: true) }
+    let(:superadmin) { FactoryGirl.create(:user, email: 'superadmin@example.com', superadmin: true) }
 
     describe "User.invited_not_accepted returns users w/o orgs" do
       let(:org) { FactoryGirl.create :organisation, email: 'yes@hello.com' }
-      let(:lost_invite) { User.invite!({email: org.email}, admin) }
+      let(:lost_invite) { User.invite!({email: org.email}, superadmin) }
 
       before do
-        login(admin)
+        login(superadmin)
       end
 
       it 'users w/o orgs will cause nil errors if not protected' do

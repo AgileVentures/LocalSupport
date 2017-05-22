@@ -1,17 +1,7 @@
-<p>Dear Colleague,</p>
+<%= simple_format( @mail_template.body ) %>
 
-<p><a href="http://harrowcn.org.uk/">Harrow Community Network</a> has launched a volunteer section on the website.</p>
+<p>
+  <%= link_to 'Accept invitation', accept_invitation_url(@resource, :invitation_token => @resource.raw_invitation_token) %>
+</p>
 
-<p>To post volunteer opportunities please accept the invitation below. This will then enable you to update your organisation's details and post volunteer opportunities for free. </p>
-
-<p><%= link_to 'Accept invitation', accept_invitation_url(@resource, :invitation_token => @resource.invitation_token) %></p>
-
-<p><a href="http://harrowcn.org.uk/">Harrow Community Network</a> is an online directory for Harrow charities and non-profits using information from The Charities Commission.  It is run by <a href="http://www.voluntaryactionharrow.org.uk/">Voluntary Action Harrow (VAH)</a> in partnership with <a href="https://www.agileventures.org">Agile Ventures.</a></p>
-
-<p>If you have any questions, please contact us at VAH.</p>
-<br/>
-<p>Rachel Wright<br/>
-  rachelwright@voluntaryactionharrow.org.uk<br/>
-  The Lodge, 64 Pinner Road, Harrow, Middlesex, HA1 4HZ - 020 8861 5894<br/>
-  Voluntary Action Harrow (VAH) is a company limited by guarantee (no. 7554530)</p>
-
+<%= simple_format( @mail_template.footnote ) %>

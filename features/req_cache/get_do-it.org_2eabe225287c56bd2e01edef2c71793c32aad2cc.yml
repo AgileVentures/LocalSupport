@@ -1,0 +1,156 @@
+---
+:scope: 
+:url: https://do-it.org/opportunities/79ae1022-9059-40c0-82dd-3f5b15dd796a
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Encoding: gzip
+  Content-Type: text/html
+  Date: Sat, 17 Sep 2016 02:50:30 GMT
+  Last-Modified: Tue, 06 Sep 2016 18:24:13 GMT
+  Server: nginx/1.4.6 (Ubuntu)
+  Strict-Transport-Security: max-age=31536000
+  Content-Length: '2462'
+  Connection: close
+:content: |
+  <!DOCTYPE html>
+  <!--[if lt IE 7]>      <html lang="en" xmlns:ng="http://angularjs.org" id="ng-app" ng-app="doit.core" class="no-js lt-ie9 lt-ie8 lt-ie7 {{ env.TENANT }}"> <![endif]-->
+  <!--[if IE 7]>         <html lang="en" xmlns:ng="http://angularjs.org" id="ng-app" ng-app="doit.core" class="no-js lt-ie9 lt-ie8 {{ env.TENANT }}"> <![endif]-->
+  <!--[if IE 8]>         <html lang="en" xmlns:ng="http://angularjs.org" id="ng-app" ng-app="doit.core" class="no-js lt-ie9 {{ env.TENANT }}"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html lang="en" xmlns:ng="http://angularjs.org" id="ng-app" ng-app="doit.core" class="no-js {{ env.TENANT }}"> <!--<![endif]-->
+
+      <head>
+          <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+          <base href="https://do-it.org/">
+
+          <title>Do-It - for good</title>
+
+  <meta name="description" content="Find your perfect volunteering opportunity or charity job. Recruit volunteers or staff for your not-for-profit organisation. Do-it - for good." />
+
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://do-it.org" />
+  <meta name="twitter:site" content="@doituk" />
+  <meta name="twitter:title" content="Do-it - for good" />
+  <meta name="twitter:description" content="Do-it.org is the place to find out about volunteering, recruit volunteers and find or advertise the perfect UK charity job." />
+  <meta name="twitter:creator" content="@doituk" />
+  <meta name="twitter:image:src" content="https://do-it.org/img/stock/share.png" />
+
+  <!-- Open Graph data -->
+  <meta property="og:title" content="Do-it - for good" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://do-it.org"/>
+  <meta property="og:image" content="https://do-it.org/img/stock/share.png" />
+  <meta property="og:description" content="Do-it.org is the place to find out about volunteering, recruit volunteers and find or advertise the perfect UK charity job." />
+  <meta property="og:site_name" content="Do-it.org" />
+
+  <link rel="shortcut icon" type="image/gif" href="img/stock/favicon.gif"/>
+
+          <link rel="stylesheet" type="text/css" href="//cloud.typography.com/7035312/685524/css/fonts.css" />
+          <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Nothing+You+Could+Do" />
+          <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat:400,700" />
+          <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans:700,300" />
+          <link rel="stylesheet" href="css/all.min.css"/>
+
+          <!--[if (IE 8)|(IE 9)]>
+              <script src="components/xdomain/dist/xdomain.min.js"></script>
+              <script src="components/es5-shim/es5-shim.min.js"></script>
+              <script src="components/html5shiv/dist/html5shiv-printshiv.min.js"></script>
+              <script src="components/respond/dest/respond.min.js"></script>
+
+              <script>
+                  if (typeof xdomain !== "undefined") {
+                      xdomain.slaves({
+                          "https://api.do-it.org": "/proxy.html",
+                          "http://qa.api.doit.soon.build": "/proxy.html",
+                          "http://dev.api.doit.soon.build": "/proxy.html",
+                          "https://api.speedvolunteer.london.gov.uk": "/proxy.html",
+                          "http://qa.api.teamlondon.soon.build": "/proxy.html",
+                          "http://dev.api.teamlondon.soon.build": "/proxy.html"
+                      });
+                  }
+               </script>
+          <![endif]-->
+
+      </head>
+      <body data-spy="scroll" data-target=".scrollspy" data-offset="300" ng-class="{ 'overflow-hidden': isWidget }">
+
+          <header ng-class="{ 'hidden': isWidget }"></header>
+          <main ng-view autoscroll></main>
+          <footer ng-class="{ 'hidden': isWidget }"></footer>
+
+          <div doit-loading></div>
+
+          <!--[if lt IE 8]>
+          <div class="container-fluid generic error-page"> <div class="row"> <div class="col-md-24 col-md-offset-2"> <h1>Browser not supported</h1> <div class="error-details"> <p class="main">Sorry, but Internet Explorer 7 and below is not supported by the do-it.org website.<p> <p class="secondary">Please update your browser or contact <a href="mailto:support@do-it.org" class="emphasize-darker-red">support@do-it.org</a>.</p> </div> </div> </div> </div>
+          <![endif]-->
+
+          <noscript>
+
+              <div class="browser-not-supported container-fluid generic error-page"> <div class="row"> <div class="col-md-24 col-md-offset-2"> <h1>Javascript not detected</h1> <div class="error-details"> <p class="main">Sorry, but do-it.org requires a browser with javascript enabled.<p> <p class="secondary">Please update your browser or contact <a href="mailto:support@do-it.org" class="emphasize-darker-red">support@do-it.org</a>.</p> </div> </div> </div> </div>
+
+          </noscript>
+
+          <!--[if gt IE 7]><!-->
+          <script>
+              document.documentElement.className = document.documentElement.className.replace(/(^|\s)no-js(\s|$)/, "$1$2");
+          </script>
+
+          <!-- Google Tag Manager -->
+          <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PHNGGW"
+          height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+          <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-PHNGGW');</script>
+
+          <!-- Addthis -->
+          <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-545b3f957aee3425&async=1"></script>
+
+          <!-- Stripe -->
+          <script src="https://js.stripe.com/v2/"></script>
+
+          <!-- Google Maps API -->
+          <script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+          <script src="components/d3/d3.min.js"></script>
+          <script src="components/nvd3/build/nv.d3.min.js"></script>
+          <link rel="stylesheet" href="components/nvd3/build/nv.d3.min.css"></link>
+
+          <script src="js/app.min.js"></script>
+
+
+
+          <!-- Facebook API -->
+          <script>
+              (function(d, s, id){
+                  var js, fjs = d.getElementsByTagName(s)[0];
+                  if (d.getElementById(id)) {return;}
+                  js = d.createElement(s); js.id = id;
+                  js.src = "//connect.facebook.net/en_UK/sdk.js";
+                  fjs.parentNode.insertBefore(js, fjs);
+              }(document, "script", "facebook-jssdk"));
+          </script>
+
+          <!-- Facebook Tracking API -->
+          <script>
+              (function() {
+                var _fbq = window._fbq || (window._fbq = []);
+                if (!_fbq.loaded) {
+                  var fbds = document.createElement('script');
+                  fbds.async = true;
+                  fbds.src = '//connect.facebook.net/en_US/fbds.js';
+                  var s = document.getElementsByTagName('script')[0];
+                  s.parentNode.insertBefore(fbds, s);
+                  _fbq.loaded = true;
+                }
+              })();
+          </script>
+          <!--<![endif]-->
+      </body>
+  </html>

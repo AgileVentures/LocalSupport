@@ -6,10 +6,10 @@ describe Address, "#parse", :type => :model do
 
   context 'must be able to extract postcode and address' do
     let(:address_to_parse) do 
-      'HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 1BA'
+      'HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 4HZ'
     end
 
-    it { is_expected.to eql(:address => 'HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW', :postcode => 'HA1 1BA') }
+    it { is_expected.to eql(:address => 'HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW', :postcode => 'HA1 4HZ') }
   end
 
   context 'must be able to handle postcode extraction when no postcode' do

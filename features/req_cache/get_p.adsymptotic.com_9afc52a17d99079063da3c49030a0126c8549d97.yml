@@ -1,0 +1,15 @@
+---
+:scope: 
+:url: http://p.adsymptotic.com/d/px?_pid=12680&_psign=d6e01d3f4c20c809094ff0cbc2359cfb&_puuid=580a3372faba457f&_rand=742059&_redirect=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11178%26puid%3D%24%7BUUID%7D%26ssrc%3D3
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Date: Fri, 21 Oct 2016 15:25:41 GMT
+  Set-Cookie: U=0a3b4984e8d8965b0533a0d03204f01a;Path=/;Domain=.adsymptotic.com;Expires=Thu,
+    19-Jan-2017 15:25:41 GMT
+  Expires: Thu, 01 Jan 1970 00:00:00 GMT
+  Location: http://p.adsymptotic.com/d/px?_pid=12680&_psign=d6e01d3f4c20c809094ff0cbc2359cfb&_puuid=580a3372faba457f&_rand=742059&_redirect=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11178%26puid%3D%24%7BUUID%7D%26ssrc%3D3&_expected_cookie=0a3b4984e8d8965b0533a0d03204f01a
+  Connection: close
+  Server: Jetty(7.4.2.v20110526)
+:content: ''

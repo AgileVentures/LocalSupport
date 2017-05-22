@@ -7,12 +7,12 @@ Feature: Password retrieval
   Background:
     Given the following organisations exist:
       | name     | description             | address        | postcode | telephone | email                            |
-      | Friendly | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | registered-org-admin@example.com |
+      | Friendly | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | registered-org-superadmin@example.com |
 
     Given the following users are registered:
       | email                            | password | confirmed_at        | organisation |
       | registered-user@example.com      | pppppppp | 2014-01-20 16:27:36 |              |
-      | registered-org-admin@example.com | pppppppp | 2014-01-20 16:27:36 | Friendly     |
+      | registered-org-superadmin@example.com | pppppppp | 2014-01-20 16:27:36 | Friendly     |
 
     And cookies are approved
 
@@ -20,7 +20,7 @@ Feature: Password retrieval
     And I follow "Forgot your password?"
     And the email queue is clear
 
-  @email
+  @email @vcr
   Scenario Outline: Retrieving passwords
     When I fill in "user_retrieval_email" with "<email>" within the main body
     And I press "Send me reset password instructions"
@@ -35,12 +35,16 @@ Feature: Password retrieval
   Examples:
     | email                            | page      |
     | registered-user@example.com      | home page |
-    | registered-org-admin@example.com | show page for the organisation named "Friendly" |
+    | registered-org-superadmin@example.com | show page for the organisation named "Friendly" |
 
   @email
   Scenario: Retrieve password for a non-existent user
     When I fill in "user_retrieval_email" with "non-existent_user@example.com" within the main body
     And I press "Send me reset password instructions"
+    And I should not see "1 error prohibited this user from being saved:"
     And I should see "Email not found in our database. Sorry!"
     And I should not receive an email
-  #And I should be on the sign up page 
+    Given I click "Login"
+    And I click "New organisation? Sign up"
+    Then I should not see "Email not found in our database. Sorry!"  within "dropdown-menu"
+    #And I should be on the sign up page

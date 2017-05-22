@@ -2,13 +2,15 @@
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <meta name="description" content="Harrow Community Network is a service provided by Voluntary Action Harrow to help people find voluntary services in their local community" />
-  <meta name="keywords" content="Harrow, Community, Network, volunteer, volunteering, voluntary, organisations, causes" />
-  <title><%= content_for?(:title) ? yield(:title) : "Harrow Community Network" %> </title>
+  <meta name="google-site-verification" content="NnSd82Tg3wYtm75gYpDTcnfe5HzS5T38cU7oPDRlTD0" />
+  <% set_meta_tags title: yield(:title) if content_for?(:title) %>
+  <%= display_meta_tags %>
+  <meta name="application-name" content="LocalSupport">
+  <link rel="icon" href="/assets/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/apple_touch_icon2.png" />
   <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
-  <script src="//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry" type="text/javascript"></script>
   <%= javascript_include_tag "application" %>
   <!--this is where page-specific scripts are added-->
   <%= yield :scripts %>
@@ -24,15 +26,11 @@
   <section id="main">   <!-- uniquify the child container to create the top margin -->
       <div class="container">  <!-- outermost twitter bootstrap container-->
         <% flash.each do |name, msg| %>
-            <div class="row">
-              <div class="span8 offset2">
-                <div id="flash_<%= "#{name}" %>" class="alert <%= bootstrap_class_for(name)%>">
-                  <a class="close" data-dismiss="alert">&#215;</a>
-                  <%= content_tag :div, msg %>
-                </div>
-              </div>
-            </div>
+          <% Array(msg).each do |item| %>
+            <%= render partial: 'layouts/flash', locals: { name: name, msg: item } %>
+          <% end %>
         <% end %>
+        <%= render_breadcrumbs (' >> ') %>
         <div id="content">
           <%= yield %>
         </div>
@@ -41,19 +39,19 @@
       <br>
       <div id="push"></div>
   </section>
+  <div id="footer" class="container">
+    <hr>
+    <div class="row">
 
-</div>
-<div id="footer" class="container">
-  <hr>
-  <div class="row">
-    <div class="span5">
-      <%= render 'layouts/footer' %>
-    </div>
-    <div class="span3">
-      <%= render 'layouts/footer2' %>
-    </div>
-    <div class="span4">
-      <%= render 'layouts/footer3' %>
+      <div class="col-md-5">
+        <%= render 'layouts/footer' %>
+      </div>
+      <div class="col-md-3">
+        <%= render 'layouts/footer2' %>
+      </div>
+      <div class="col-md-4">
+        <%= render 'layouts/footer3' %>
+      </div>
     </div>
   </div>
 </div>

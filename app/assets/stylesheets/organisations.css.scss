@@ -1,0 +1,147 @@
+@import "utils/colors";
+
+.org-info-msg-1 {
+    color: rgba(0, 0, 0, 0.7);
+    background-color: #E0FDEF;
+    width:50%;
+    border-radius:2em;
+    text-align: center;
+}
+
+.org_h3 {
+  margin: 10px 0px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: bold;
+  line-height: 20px;
+  color: inherit;
+  text-rendering: optimizelegibility;
+}
+
+.field-label {
+  color: #899096;
+  line-height: 19px;
+}
+
+// http://learnlayout.com/flexbox.html
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+#org-information h4 span {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+#organisation_search {
+  .flex-row {
+    margin-bottom: 5px;
+  }
+
+  .left-side {
+    width: 180px;
+
+    display: flex;
+
+    .field-label {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+  }
+
+  .right-side {
+    flex: initial;
+    width: 500px;
+    min-width: 100px;
+
+    display: flex;
+
+    select {
+      width: 100%;
+      margin: auto;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      margin-bottom: 0;
+    }
+
+    input[type="submit"] {
+      flex: none;
+      margin-left: 5px;
+    }
+  }
+}
+
+#orgs_scroll {
+  height: 340px;
+  width: 100%;
+  border: 1px solid #ccc;
+  overflow-y: scroll;
+}
+
+/* ORGANISATION CATEGORIES STYLE
+-------------------------------------------------- */
+
+.org-categories {
+  margin: 10px 0 30px 0;
+  overflow: hidden;
+}
+
+.org-categories h5 {
+  margin: 0;
+  margin-bottom: 5px;
+  padding-left: 10px;
+  background-color: #F3F3F3;
+}
+
+/* ------- DISPLAY -------- */
+
+.org-categories li {
+  margin-bottom: 10px;
+}
+
+.org-categories p {
+  margin-left: 10px;
+}
+
+#org-cat-buttons {
+    margin-top: 30px;
+    .btn{
+        padding: 8px;
+        margin-bottom: 10px;
+    }
+}
+
+
+/* ------- EDITING -------- */
+
+.category_type {
+  margin: 15px 0 0 0;
+}
+
+.category_type .org-category {
+  margin: 2px 0 0 0;
+  padding-right: 3px;
+}
+
+.category_type .checkbox.inline {
+  padding-top: 3px;
+  vertical-align: top;
+}
+
+.error {
+  color: $error-red;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.error-name {
+  @extend .error;
+  margin-bottom: -5px;
+}

@@ -1,18 +1,26 @@
-<div class="row">
-  <h3>
-    <%= @volunteer_op.title %>
-  </h3>
+<%= render "search_form" %>
+<h3>
+  <%= @volunteer_op.title %>
+</h3>
 
-  <p>
-    <%= simple_format auto_link @volunteer_op.description %>
-  </p>
+<p>
+<%= simple_format auto_link @volunteer_op.description %>
+</p>
 
+<% if @volunteer_op.address_complete? %>
   <p>
-    <b>Organisation:</b>
-    <%= link_to @volunteer_op.organisation.name, organisation_path(@volunteer_op.organisation.id) %>
+  <b>Volunteer opportunity location:</b>
+  <%= "#{ @volunteer_op.address }, #{ @volunteer_op.postcode }" %>
   </p>
-  <% if @editable %>
-      <%= link_to("Edit", edit_volunteer_op_path(@volunteer_op.id), {:class => 'btn btn-primary'}) %>
-  <% end %>
-</div>
+<% end %>
+
+<p>
+<b>Organisation:</b>
+<%= link_to @volunteer_op.organisation.name, organisation_path(@volunteer_op.organisation) %>
+</p>
+<% if @editable %>
+  <%= link_to("Edit", edit_volunteer_op_path(@volunteer_op.id), {:class => 'btn btn-primary'}) %>
+  <%= link_to("Delete", volunteer_op_path(@volunteer_op.id), {method: :delete, :class => 'btn btn-danger'}) %>
+<% end %>
+
 <% render partial: 'shared/map_scripts', locals: {markers: @markers} %>

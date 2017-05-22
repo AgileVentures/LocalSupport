@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'user_reports/index.html.erb', :type => :view do
   let(:org1) do
-    stub_model Organisation,:name => 'test', :address => "12 pinner rd", :postcode => "HA1 4HP",:telephone => "1234", :website => 'http://a.com', :description => 'I am test organisation hahahahahhahaha'
+    stub_model Organisation,:name => 'test', :address => "12 pinner rd", :postcode => "HA1 4HZ",:telephone => "1234", :website => 'http://a.com', :description => 'I am test organisation hahahahahhahaha'
   end
   let(:user) do
     stub_model User,:email => 'pending@myorg.com'
@@ -43,7 +43,7 @@ describe 'user_reports/index.html.erb', :type => :view do
     it 'approve link if user has pending organisation' do
       allow(user).to receive(:pending_organisation).and_return(org1)
       render
-      expect(rendered).to have_link "Approve", :href => user_report_path(id: user.id)
+      expect(rendered).to have_link "Approve", :href => user_report_path(id: user.id, pending_org_action: "approve")
     end
     it 'no approve link if user has no pending organisation' do
       render

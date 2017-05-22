@@ -4,6 +4,8 @@ describe 'admin_mailer/new_user_waiting_for_approval.html.erb', :type => :view d
   it 'should render with org name' do
     assign(:org_name, 'Friendly')
     render
-    expect(render).to have_content("There is a user waiting for admin approval to Friendly")
+    expect(render).to have_content(
+      'There is a user waiting for your approval on Friendly'
+    )
   end
 end

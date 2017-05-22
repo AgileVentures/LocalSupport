@@ -1,0 +1,14 @@
+<% content_for :legend do %>
+    <aside>
+      <table class='table'>
+        <tr>
+          <td class='key_image'><%= image_tag('marker.png', size:'22x22', alt:'Large map marker') %></td>
+          <td class='key_text'>Details updated by the organisation within the last 12 months</td>
+        </tr>
+        <tr>
+          <td class='key_image'><%= image_tag('measle.png', size:'6x6', alt:'Small map marker') %></td>
+          <td class='key_text'>Details NOT updated by the organisation within the last 12 months</td>
+        </tr>
+      </table>
+    </aside>
+<% end %>

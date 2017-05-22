@@ -1,0 +1,28 @@
+<div class="org-information">
+  <% if @proposer_email %>
+    <p>
+      This organisation proposed by '<%= @proposer_email%>'
+    </p>
+  <% end %>
+  <%= render partial: "organisations/show", locals: {org: @proposed_organisation}%>
+  <br>
+  <strong>Eligibility:</strong>
+  <ul class="list-unstyled" style="text-indent: 10px;">
+    <% if @proposed_organisation.non_profit %>
+      <li>We are a not for profit organisation registered or working in Harrow</li>
+    <% end %>
+  </ul>
+
+  <% if current_user.try(:superadmin?) %>
+    <%= form_for((@proposed_organisation), :url => {:action => :update}, :html =>
+        {:style => 'display: inline-block;'}) do |f| %>
+      <%= f.submit 'Accept', :class => 'btn btn-primary' %>
+    <% end %>
+    <%= form_for((@proposed_organisation), :method => :delete, :html =>
+        {:style => 'display: inline-block;'}) do |f| %>
+      <%= f.submit 'Reject', :class => 'btn btn-danger' %>
+    <% end %>
+  <% end %>
+</div>
+
+<% render partial: 'shared/map_scripts', locals: {markers: @markers} %>

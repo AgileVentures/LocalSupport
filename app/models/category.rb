@@ -2,7 +2,15 @@ require 'csv'
 
 class Category < ActiveRecord::Base
   has_many :category_organisations
-  has_and_belongs_to_many :organisations
+  has_and_belongs_to_many :base_organisations, :through => :category_organisations, :association_foreign_key => :organisation_id
+
+  scope :what_they_do,  -> { subcategory(100, 199) }
+  scope :who_they_help, -> { subcategory(200, 299) }
+  scope :how_they_help, -> { subcategory(300, 399) }
+
+  def self.subcategory(lower, upper)
+    where(charity_commission_id: lower..upper).order(name: :asc)
+  end
 
   @@column_mappings = {
       cc_id: 'CharityCommissionID',
@@ -10,6 +18,14 @@ class Category < ActiveRecord::Base
       name: 'Name'
   }
 
+  def self.name_and_id_for_what_who_and_how
+    {
+      what: self.what_they_do.pluck(:name, :id),
+      who: self.who_they_help.pluck(:name, :id),
+      how: self.how_they_help.pluck(:name, :id)
+    }
+
+  end
   def self.seed(csv_file)
     csv_text = File.open(csv_file, 'r:ISO-8859-1')
     CSV.parse(csv_text, :headers => true).each do |row|
@@ -17,15 +33,6 @@ class Category < ActiveRecord::Base
                        :charity_commission_id => row[@@column_mappings[:cc_id]],
                        :charity_commission_name => row[@@column_mappings[:cc_name]].strip
     end
-  end
-
-  def self.html_drop_down_options
-    self.where('charity_commission_id < 199').order('name ASC').collect {|category| [ category.name, category.id ] }
-  end
-
-  def self.first_category_name_in_each_type
-    {what_they_do: first_category_name_in_what_they_do, who_they_help: first_category_name_in_who_they_help,
-     how_they_help: first_category_name_in_how_they_help}
   end
 
   class CategoryType
@@ -66,21 +73,4 @@ class Category < ActiveRecord::Base
     end
   end
 
-
-  private
-    def self.choose_first_in_range lower, upper
-      category = self.all.sort.select{|cat| (cat.charity_commission_id < upper)  & (cat.charity_commission_id > lower)}.first
-      category.name if category
-    end
-    def self.first_category_name_in_what_they_do
-      choose_first_in_range(0,200)
-    end
-
-    def self.first_category_name_in_who_they_help
-      choose_first_in_range(199,300)
-    end
-
-    def self.first_category_name_in_how_they_help
-      choose_first_in_range(299,400)
-    end
 end

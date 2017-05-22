@@ -6,12 +6,12 @@ Feature: Charity worker can edit own charity profile
 
 #address of nice must be 30 pinner road because of change the address of charity scenario
 #need to revisit this
-Background: organisations have been added to database 
+Background: organisations have been added to database
   Given the following organisations exist:
-  | name           | description               | address        | postcode | telephone | email              |
-  | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 | admin@friendly.org |
-  | Nice           | Quite Pleasant!           | 30 pinner road | HA1 4HZ  | 020800010 | admin@nice.org     |
-  
+  | name           | description               | address        | postcode | telephone | email                   |
+  | Friendly       | Bereavement Counselling   | 34 pinner road | HA1 4HZ  | 020800000 | superadmin@friendly.org |
+  | Nice           | Quite Pleasant!           | 30 pinner road | HA1 4HZ  | 020800010 | superadmin@nice.org     |
+
   Given the following users are registered:
   | email                         | password | organisation | confirmed_at         |
   | registered_user-2@example.com | pppppppp | Friendly     | 2007-01-01  10:00:00 |
@@ -34,11 +34,13 @@ Given the following categories_organisations exist:
   | Health    | Friendly      |
   | Education | Friendly      |
 
+@vcr
 Scenario: Successfully add website url without protocol
   Given I am signed in as a charity worker related to "Friendly"
   And I update "Friendly" charity website to be "www.friendly.com"
   Then the website link for "Friendly" should have a protocol
 
+@vcr
 Scenario: Successfully change the address of a charity
   Given I am signed in as a charity worker related to "Friendly"
   And I update "Friendly" charity address to be "30 pinner road"
@@ -54,13 +56,13 @@ Scenario Outline: Successfully mark a field of a charity as public or private
   And I should <visibility> "<field_contents>"
   And I should <visibility> "<field_label>"
 Examples:
-  | field     | field_checkbox               | field_contents      | field_label | check_state | visibility |
-  | phone     | organisation_publish_phone   | 020800000           | Telephone   | check       | see        |
-  | address   | organisation_publish_address | 34 pinner road      | Address     | check       | see        |
-  | email     | organisation_publish_email   | admin@friendly.org  | Email       | check       | see        |
-  | phone     | organisation_publish_phone   | 020800000           | Telephone   | uncheck     | not see    |
-  | address   | organisation_publish_address | 34 pinner road      | Address     | uncheck     | not see    |
-  | email     | organisation_publish_email   | admin@friendly.org  | Email       | uncheck     | not see    |
+  | field     | field_checkbox               | field_contents          | field_label | check_state | visibility |
+  | phone     | organisation_publish_phone   | 020800000               | Telephone   | check       | see        |
+  | address   | organisation_publish_address | 34 pinner road          | Address     | check       | see        |
+  | email     | organisation_publish_email   | superadmin@friendly.org | Email       | check       | see        |
+  | phone     | organisation_publish_phone   | 020800000               | Telephone   | uncheck     | not see    |
+  | address   | organisation_publish_address | 34 pinner road          | Address     | uncheck     | not see    |
+  | email     | organisation_publish_email   | superadmin@friendly.org | Email       | uncheck     | not see    |
 
 
 #TODO refactor into integration test that posts to update method
@@ -72,7 +74,7 @@ Examples:
 #  Given I visit the home page
 #  Then the coordinates for "Nice" and "Friendly" should not be the same
 
-Scenario: Do not see edit button as non-admin not associated with Friendly
+Scenario: Do not see edit button as non-superadmin not associated with Friendly
   Given I am signed in as a charity worker unrelated to "Friendly"
   And I visit the show page for the organisation named "Friendly"
   Then I should not see an edit button for "Friendly" charity
@@ -81,6 +83,7 @@ Scenario: Non-logged in users do not see edit button either
   Given I visit the show page for the organisation named "Friendly"
   Then I should not see an edit button for "Friendly" charity
 
+@vcr
 Scenario: Change the address of a charity when Google is indisposed
   Given I am signed in as a charity worker related to "Friendly"
   And I update "Friendly" charity address to be "83 pinner road" when Google is indisposed
@@ -114,7 +117,7 @@ Scenario: By default, not display organisations address and phone number on deta
 Scenario: By default, not display edit link on details page
   Given I visit the show page for the organisation named "Friendly"
   Then I should not see any edit link for "Friendly"
-  
+
 Scenario Outline: Edit page has scroll box for selecting categories
   Given I am signed in as a charity worker related to "Friendly"
   And I visit the edit page for the organisation named "Friendly"
@@ -130,7 +133,7 @@ Examples:
   | How you help | Education           | 1st |
   | How you help | Give them things    | 2nd |
   | How you help | Teach them things   | 3rd |
-  
+
 Scenario Outline: Appropriate categories are checked/unchecked by default
   Given I am signed in as a charity worker related to "Friendly"
   And I visit the edit page for the organisation named "Friendly"
@@ -153,9 +156,9 @@ Scenario Outline: Successfully add and remove an organisation's categories
   Then I <action1> the category "<category1>"
   And I <action2> the category "<category2>"
   And I press "Update Organisation"
-  Then I should <visibility1> "<category1>"
-  And I should <visibility2> "<category2>"
-  Examples: 
+  Then I should <visibility1> "<category1>" within "org-categories"
+  And I should <visibility2> "<category2>" within "org-categories"
+  Examples:
   | category1      | action1    | visibility1 | category2            | action2 | visibility2 |
   | Health         | uncheck    | not see     | Child welfare        | check   | see         |
   | Animal welfare | check      | see         | Education            | uncheck | not see     |

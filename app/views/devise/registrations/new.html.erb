@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="span4 offset4 form-frame">
+    <div class="col-md-4 col-md-offset-4 form-frame">
 
       <h2>Sign up</h2>
 
@@ -9,6 +9,9 @@
 
           <% if session[:pending_organisation_id] %>
             <input type="hidden" name="user[pending_organisation_id]" value = "<%= session[:pending_organisation_id] %>">
+          <% end %>
+          <% if session[:proposed_org] %>
+            <input type="hidden" name="user[proposed_org]" value = "<%= session[:proposed_org] %>" >
           <% end %>
 
           <div><%= f.label :email %>

@@ -2,7 +2,10 @@ require 'custom_errors'
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :store_location, :assign_footer_page_links
+  before_filter :store_location,
+                :assign_footer_page_links,
+                :set_tags
+
   include CustomErrors
 
   # To prevent infinite redirect loops, only requests from white listed
@@ -13,6 +16,7 @@ class ApplicationController < ActionController::Base
         contributors
         organisations
         pages
+        volunteer_ops
     )
   end
   # Devise wiki suggests we need to make this return nil for the after_inactive_signup_path_for to be called in registrationscontroller
@@ -33,7 +37,7 @@ class ApplicationController < ActionController::Base
   # Stores the URL if permitted
   def store_location
     if request_controller_is(white_listed) && request_verb_is_get?
-      session[:previous_url] = request.path
+      session[:previous_url] = request.fullpath
     end
   end
 
@@ -72,18 +76,18 @@ class ApplicationController < ActionController::Base
 
   private
 
-  # Enforces admin-only limits
+  # Enforces superadmin-only limits
   # http://railscasts.com/episodes/20-restricting-access
   def authorize
-    unless admin?
-      flash[:error] = t('authorize.admin')
+    unless superadmin?
+      flash[:error] = t('authorize.superadmin')
       redirect_to root_path
       false
     end
   end
 
-  def admin?
-    current_user.try :admin?
+  def superadmin?
+    current_user.try :superadmin?
   end
 
   def assign_footer_page_links
@@ -91,13 +95,40 @@ class ApplicationController < ActionController::Base
   end
 
   def set_flash_warning_reminder_to_update_details usr
-    if usr.organisation && usr.organisation.not_updated_recently?
+    if usr.organisation and not usr.organisation.has_been_updated_recently?
       msg = render_to_string(partial: "shared/call_to_action", locals: {org: usr.organisation}).html_safe
       if flash[:warning]
-        flash[:warning] << msg
+        flash[:warning] << ' ' << msg
       else
         flash[:warning] = msg
       end
     end
+  end
+
+  def set_tags
+    set_meta_tags title: meta_tag_title,
+                  site: 'Harrow volunteering',
+                  reverse: true,
+                  description: meta_tag_description,
+                  author: 'http://www.agileventures.org',
+                  og: open_graph_tags
+  end
+
+  def open_graph_tags
+    {
+        title: meta_tag_title,
+        site: 'Harrow Community Network',
+        reverse: true,
+        description: meta_tag_description,
+        author: 'http://www.agileventures.org'
+    }
+  end
+  
+  def meta_tag_title
+    'Harrow Community Network'
+  end
+  
+  def meta_tag_description
+    'Volunteering Network for Harrow Community'
   end
 end

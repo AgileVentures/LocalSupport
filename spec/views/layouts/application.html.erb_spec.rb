@@ -90,7 +90,7 @@ describe 'layouts/application.html.erb', :type => :view do
       render
       expect(rendered).to have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{volunteer_ops_path}\"]")
     end
-    
+
     it 'login form should be visible', :js => true do
       render
       expect(rendered).not_to have_selector(:xpath, "//form[@class='loginForm'][contains(@style, 'height: 0px\;')]")
@@ -114,21 +114,7 @@ describe 'layouts/application.html.erb', :type => :view do
       render
       expect(rendered).to have_selector('div.alert')
       expect(rendered).to have_content('No, no, no!')
-      expect(rendered).to have_selector('div.alert-error')
-    end
-
-    it 'should display a logo linked to the contributors page' do
-      render
-      rendered.within("a[href='#{contributors_path}']") do |hyperlink|
-        expect(hyperlink).to have_css "img[@alt='Agile Ventures']"
-      end
-    end
-
-    it 'should display a logo linked to the ninefold page' do
-      render
-      rendered.within("a[href='https://ninefold.com']") do |hyperlink|
-        expect(hyperlink).to have_css "img[@alt='Ninefold']"
-      end
+      expect(rendered).to have_selector('div.alert-danger')
     end
 
     it "does not render a new organisation link" do
@@ -143,7 +129,7 @@ describe 'layouts/application.html.erb', :type => :view do
         assign(:footer_page_links, [])
         render
         @absent_pages.each do |page|
-          expect(rendered).not_to have_link(page[:name], 
+          expect(rendered).not_to have_link(page[:name],
                                             :href => page_path(page[:permalink]))
         end
       end
@@ -151,11 +137,11 @@ describe 'layouts/application.html.erb', :type => :view do
       it 'shows a link to all of the editable pages' do
         render
         @pages.each do |page|
-          expect(rendered).to have_link(page[:name], 
+          expect(rendered).to have_link(page[:name],
                                         :href => page_path(page[:permalink]))
         end
         @absent_pages.each do |page|
-          expect(rendered).not_to have_link(page[:name], 
+          expect(rendered).not_to have_link(page[:name],
                                             :href => page_path(page[:permalink]))
         end
       end
@@ -164,7 +150,7 @@ describe 'layouts/application.html.erb', :type => :view do
 
   context 'regular user signed-in' do
     before do
-      allow(user).to receive(:admin?) { false }
+      allow(user).to receive(:superadmin?) { false }
       allow(view).to receive(:current_user) { user }
       render
     end
@@ -178,8 +164,8 @@ describe 'layouts/application.html.erb', :type => :view do
         have_css("li.dropdown ul.dropdown-menu li a[href=\"#{destroy_user_session_path}\"]")
     end
 
-    it 'should not see admin-only dropdown' do
-      expect(rendered).not_to have_css('#menuAdmin')
+    it 'should not see superadmin-only dropdown' do
+      expect(rendered).not_to have_css('#menuSuperAdmin')
     end
 
     it 'does not render a new organisation link' do
@@ -187,9 +173,9 @@ describe 'layouts/application.html.erb', :type => :view do
     end
   end
 
-  context 'admin signed-in' do
+  context 'superadmin signed-in' do
     before(:each) do
-      allow(user).to receive(:admin?) { true }
+      allow(user).to receive(:superadmin?) { true }
       allow(view).to receive(:current_user) { user }
       render
     end
@@ -198,27 +184,25 @@ describe 'layouts/application.html.erb', :type => :view do
       expect(rendered).to have_link('New Organisation', href: new_organisation_path)
     end
 
-    it 'should see admin-only dropdown' do
-      rendered.within('#menuAdmin') do |menu|
-        expect(menu).to have_link 'Organisations Without Users', :href => organisations_report_path
-        expect(menu).to have_link 'All Users', :href => users_report_path
+    it 'should see superadmin-only dropdown' do
+      rendered.within('#menuSuperAdmin') do |menu|
+        expect(menu).to have_link 'Invite Users to become admin of Organisations', :href => organisations_report_path
+        expect(menu).to have_link 'Registered Users', :href => users_report_path
         expect(menu).to have_link 'Invited Users', :href => invited_users_report_path
       end
     end
   end
 
   context 'volunteer feature flags' do
-    it 'hides volunteers and organisations links when feature is inactive' do
+    it 'hides volunteers link when feature is inactive' do
       expect(view).to receive(:feature_active?).with(:volunteer_ops_list).and_return(false)
       render
-      expect(rendered).to_not have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{organisations_path}\"]")
       expect(rendered).to_not have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{volunteer_ops_path}\"]")
     end
 
-    it 'show volunteers and organisations links when feature is active' do
+    it 'show volunteers link when feature is active' do
       expect(view).to receive(:feature_active?).with(:volunteer_ops_list).and_return(true)
       render
-      expect(rendered).to have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{organisations_path}\"]")
       expect(rendered).to have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{volunteer_ops_path}\"]")
     end
   end

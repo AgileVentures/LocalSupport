@@ -41,17 +41,14 @@ describe('This is my Organisation button', function() {
             it("toggle will have 'click' event", function(){
                 expect('click').toHaveBeenTriggeredOn(toggle);
             });
-            it('nav will have "show" event', function() {
-                expect('show').toHaveBeenTriggeredOn(nav)
-            });
             it('nav changes attributes', function() {
-                expect(nav).toHaveClass('in');
+                expect(nav).toHaveClass('collapsing');
             });
             it('menu changes attributes', function() {
                 expect(menu).toHaveClass('open');
             });
             it('loginForm contains hidden input field with org id', function(){
-              expect($("form#loginForm input[name=pending_organisation_id]").val()).toEqual('642')
+                expect($("form#loginForm input[name=pending_organisation_id]").val()).toEqual('642')
             });
             it('registerForm contains hidden input field with org id', function(){
                 expect($("form#registerForm input[name=user\\[pending_organisation_id\\]]").val()).toEqual('642')

@@ -7,6 +7,14 @@ en:
     models:
       organisation: Organisation
   authorize:
-    admin: 'You must be signed in as an admin to perform this action!'
+    superadmin: 'You must be signed in as a superadmin to perform this action!'
+    org_owner_or_superadmin: 'You must be signed in as an organisation owner or site superadmin to perform this action!'
+  volunteer:
+    create_success: 'Volunteer op was successfully created.'
+    update_success: 'Volunteer Opportunity was successfully updated.'
+  devise:
+    errors:
+      messages:
+        expired: 'reset requested too long ago - please request a new reset by clicking "forgot password" again'
 
 

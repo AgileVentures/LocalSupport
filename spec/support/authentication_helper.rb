@@ -1,17 +1,17 @@
 module ControllerHelpers
-  def make_current_user_admin(admin_user=double('user'))
-    allow(admin_user).to receive(:admin?).and_return(true)
-    allow(request.env['warden']).to receive_messages :authenticate! => admin_user
-    allow(controller).to receive(:current_user).and_return(admin_user)
-    admin_user
+  def make_current_user_superadmin(superadmin_user=double('user'))
+    allow(superadmin_user).to receive(:superadmin?).and_return(true)
+    allow(request.env['warden']).to receive_messages :authenticate! => superadmin_user
+    allow(controller).to receive(:current_user).and_return(superadmin_user)
+    superadmin_user
   end
 
-  def make_current_user_nonadmin
-    nonadmin_user = double("User")
-    allow(nonadmin_user).to receive(:admin?).and_return(false)
-    allow(request.env['warden']).to receive_messages :authenticate! => nonadmin_user
-    allow(controller).to receive(:current_user).and_return(nonadmin_user)
-    nonadmin_user
+  def make_current_user_nonsuperadmin
+    nonsuperadmin_user = double("User")
+    allow(nonsuperadmin_user).to receive(:superadmin?).and_return(false)
+    allow(request.env['warden']).to receive_messages :authenticate! => nonsuperadmin_user
+    allow(controller).to receive(:current_user).and_return(nonsuperadmin_user)
+    nonsuperadmin_user
   end
 end
 

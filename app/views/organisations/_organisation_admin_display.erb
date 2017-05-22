@@ -1,0 +1,12 @@
+<% if org.users.empty? %>
+  <div>This organisation has no admins yet</div>
+<% else %>
+  <div>
+    Organisation administrator emails:
+    <ul>
+      <% org.users.each do |superadmin| %>
+        <li><%= superadmin.email %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

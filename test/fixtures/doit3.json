@@ -1,0 +1,1335 @@
+{
+  "data":{
+    "items":[
+      {
+        "address_1":"HTN Studio, Unit 1",
+        "city":"Harrow",
+        "created":"2016-01-14T23:25:46.460492+00:00",
+        "description":"Harrow Talking Newspaper for the blind (HTN) is a voluntary organisation and registered charity that produces  weekly news audio-recordings for visually impaired  local people. News recordings, based on local newspapers, are produced on Wednesday evenings, reaching the listeners by free post within the next couple of days.\n\nThe recordings are issued on memory sticks which enable us to add internet and BBC podcasts of special interest to visually impaired residents. Listeners are supplied with an easy-to-use  digital player.\n\nThis opportunity has been posted by Voluntary Action Harrow Co-operative, on behalf of the Harrow Talking Newspaper.",
+        "for_recruiter":{
+          "contact_name":"Volunteering Team",
+          "created":"2016-01-11T16:55:34.106821+00:00",
+          "email":"volunteering@voluntaryactionharrow.org.uk",
+          "id":"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
+          "logo":[
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg",
+              "height":125,
+              "width":125
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.109x109.jpg",
+              "height":109,
+              "width":109
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.76x76.jpg",
+              "height":76,
+              "width":76
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.50x50.jpg",
+              "height":50,
+              "width":50
+            }
+          ],
+          "name":"Help Out Harrow!",
+          "phone":"020 8861 5894",
+          "rating":"0.00",
+          "slug":"help-out-harrow"
+        },
+        "for_recruiter_id":"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
+        "id":"03406135-ed7e-47f6-bc31-a92d4be58a20",
+        "interests":[
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:25.835104+00:00",
+            "id":"a654354a-943f-4a5f-926e-33d27889f19d",
+            "name":"Performance",
+            "parent_id":"cd7d0590-2800-45b4-8084-b475562e73f4",
+            "slug":"performance",
+            "updated":"2014-10-26T17:24:25.835125+00:00"
+          }
+        ],
+        "is_new":false,
+        "lat":51.5905,
+        "lng":-0.326823,
+        "location":null,
+        "location_id":null,
+        "location_name":null,
+        "location_type":"SL",
+        "micro_availability":[
+
+        ],
+        "owner_recruiter":{
+          "contact_name":"Volunteering Team",
+          "created":"2016-01-11T16:55:34.106821+00:00",
+          "email":"volunteering@voluntaryactionharrow.org.uk",
+          "id":"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
+          "logo":[
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg",
+              "height":125,
+              "width":125
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.109x109.jpg",
+              "height":109,
+              "width":109
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.76x76.jpg",
+              "height":76,
+              "width":76
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.50x50.jpg",
+              "height":50,
+              "width":50
+            }
+          ],
+          "name":"Help Out Harrow!",
+          "phone":"020 8861 5894",
+          "rating":"0.00",
+          "slug":"help-out-harrow"
+        },
+        "owner_recruiter_id":"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
+        "photo":[
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/lindsey-stirling-391614_640.616x318.jpg",
+            "height":318,
+            "width":616
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/lindsey-stirling-391614_640.308x159.jpg",
+            "height":159,
+            "width":308
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/lindsey-stirling-391614_640.243x124.jpg",
+            "height":124,
+            "width":243
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/lindsey-stirling-391614_640.170x87.jpg",
+            "height":87,
+            "width":170
+          }
+        ],
+        "postcode":"HA3 8NT",
+        "rating":"0.00",
+        "specific_end_date":"2016-04-13T22:11:52.220000+00:00",
+        "specific_start_date":"2016-01-14T23:11:52.220000+00:00",
+        "status":"live",
+        "title":"Editor/Presenter Of Audio News Recordings",
+        "updated":"2016-01-14T23:30:01.897660+00:00",
+        "working_from_home":false
+      },
+      {
+        "address_1":"HTN Studio, Unit 1,",
+        "city":"Harrow",
+        "created":"2016-01-14T23:13:02.368533+00:00",
+        "description":"Harrow Talking Newspaper for the blind (HTN) is a voluntary organisation and registered charity that produces  weekly news audio-recordings for visually impaired  local people. News recordings, based on local newspapers, are produced on Wednesday evenings, reaching the listeners by free post within the next couple of days.\n\nThe recordings are issued on memory sticks which enable us to add internet and BBC podcasts of special interest to visually impaired residents. Listeners are supplied with an easy-to-use  digital player.\n\nThe recordings are made on Wednesday evenings from 7pm to 9.30pm Each volunteer works an evening once a month or on a rota, so the dates are flexible. \n\nThis opportunity has been posted by Voluntary Action Harrow Co-operative, on behalf of the Harrow Talking Newspaper.",
+        "for_recruiter":{
+          "contact_name":"Volunteering Team",
+          "created":"2016-01-11T16:55:34.106821+00:00",
+          "email":"volunteering@voluntaryactionharrow.org.uk",
+          "id":"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
+          "logo":[
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg",
+              "height":125,
+              "width":125
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.109x109.jpg",
+              "height":109,
+              "width":109
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.76x76.jpg",
+              "height":76,
+              "width":76
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.50x50.jpg",
+              "height":50,
+              "width":50
+            }
+          ],
+          "name":"Help Out Harrow!",
+          "phone":"020 8861 5894",
+          "rating":"0.00",
+          "slug":"help-out-harrow"
+        },
+        "for_recruiter_id":"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
+        "id":"2357a44c-59b7-4c29-baca-c15ae95ab8a4",
+        "interests":[
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:25.857054+00:00",
+            "id":"49c16b59-d3a5-4d49-ae9c-2e665f092643",
+            "name":"Music",
+            "parent_id":"cd7d0590-2800-45b4-8084-b475562e73f4",
+            "slug":"music",
+            "updated":"2014-10-26T17:24:25.857074+00:00"
+          }
+        ],
+        "is_new":false,
+        "lat":51.5905,
+        "lng":-0.326823,
+        "location":null,
+        "location_id":null,
+        "location_name":null,
+        "location_type":"SL",
+        "micro_availability":[
+
+        ],
+        "owner_recruiter":{
+          "contact_name":"Volunteering Team",
+          "created":"2016-01-11T16:55:34.106821+00:00",
+          "email":"volunteering@voluntaryactionharrow.org.uk",
+          "id":"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
+          "logo":[
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg",
+              "height":125,
+              "width":125
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.109x109.jpg",
+              "height":109,
+              "width":109
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.76x76.jpg",
+              "height":76,
+              "width":76
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.50x50.jpg",
+              "height":50,
+              "width":50
+            }
+          ],
+          "name":"Help Out Harrow!",
+          "phone":"020 8861 5894",
+          "rating":"0.00",
+          "slug":"help-out-harrow"
+        },
+        "owner_recruiter_id":"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
+        "photo":[
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/microphone-338481_640.616x318.jpg",
+            "height":318,
+            "width":616
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/microphone-338481_640.308x159.jpg",
+            "height":159,
+            "width":308
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/microphone-338481_640.243x124.jpg",
+            "height":124,
+            "width":243
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/microphone-338481_640.170x87.jpg",
+            "height":87,
+            "width":170
+          }
+        ],
+        "postcode":"HA3 8NT",
+        "rating":"0.00",
+        "specific_end_date":"2016-04-13T21:46:36.643000+00:00",
+        "specific_start_date":"2016-01-14T22:46:36.643000+00:00",
+        "status":"live",
+        "title":"Sound Recordist",
+        "updated":"2016-01-14T23:13:50.516135+00:00",
+        "working_from_home":false
+      },
+      {
+        "address_1":"Headstone Manor and Museum",
+        "city":"Harrow",
+        "created":"2016-02-05T21:45:26.375585+00:00",
+        "description":"Come help maintain the gardens, spending  2-3 hours weeding, and some digging sometimes, with a coffee/tea break with free tea/coffee and home-made cakes.\n\nThis opportunity has been posted by Voluntary Action Harrow Co-operative, on behalf of the Friends of the Harrow Museum.",
+        "for_recruiter":{
+          "contact_name":"Volunteering Team",
+          "created":"2016-01-11T16:55:34.106821+00:00",
+          "email":"volunteering@voluntaryactionharrow.org.uk",
+          "id":"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
+          "logo":[
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg",
+              "height":125,
+              "width":125
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.109x109.jpg",
+              "height":109,
+              "width":109
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.76x76.jpg",
+              "height":76,
+              "width":76
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.50x50.jpg",
+              "height":50,
+              "width":50
+            }
+          ],
+          "name":"Help Out Harrow!",
+          "phone":"020 8861 5894",
+          "rating":"0.00",
+          "slug":"help-out-harrow"
+        },
+        "for_recruiter_id":"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
+        "id":"7019f667-8f72-4c22-8e7f-6ea7a72e18a7",
+        "interests":[
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:25.590527+00:00",
+            "id":"517978aa-186d-4149-8548-c26b3d3f41cc",
+            "name":"Education",
+            "parent_id":"cf1ab709-0632-4d79-adef-f2fd32c1ebdf",
+            "slug":"education",
+            "updated":"2014-10-26T17:24:25.590548+00:00"
+          },
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:25.948648+00:00",
+            "id":"6818a00c-4b32-4838-9af4-66b7457310b0",
+            "name":"Conservation",
+            "parent_id":"8e429036-c008-46cc-b1a5-ae2c739de9b9",
+            "slug":"conservation",
+            "updated":"2014-10-26T17:24:25.948674+00:00"
+          },
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:25.894406+00:00",
+            "id":"1b6205f2-02f8-4fc3-808c-e8e6b9e03c0e",
+            "name":"Heritage",
+            "parent_id":"cf1ab709-0632-4d79-adef-f2fd32c1ebdf",
+            "slug":"heritage",
+            "updated":"2014-10-26T17:24:25.894426+00:00"
+          },
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:25.671861+00:00",
+            "id":"f877eb40-6d22-4c17-9c70-e902d5f1d263",
+            "name":"Museums",
+            "parent_id":"cf1ab709-0632-4d79-adef-f2fd32c1ebdf",
+            "slug":"museums",
+            "updated":"2014-10-26T17:24:25.671883+00:00"
+          }
+        ],
+        "is_new":false,
+        "lat":51.5938,
+        "lng":-0.352949,
+        "location":null,
+        "location_id":null,
+        "location_name":null,
+        "location_type":"SL",
+        "micro_availability":[
+
+        ],
+        "owner_recruiter":{
+          "contact_name":"Volunteering Team",
+          "created":"2016-01-11T16:55:34.106821+00:00",
+          "email":"volunteering@voluntaryactionharrow.org.uk",
+          "id":"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
+          "logo":[
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg",
+              "height":125,
+              "width":125
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.109x109.jpg",
+              "height":109,
+              "width":109
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.76x76.jpg",
+              "height":76,
+              "width":76
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.50x50.jpg",
+              "height":50,
+              "width":50
+            }
+          ],
+          "name":"Help Out Harrow!",
+          "phone":"020 8861 5894",
+          "rating":"0.00",
+          "slug":"help-out-harrow"
+        },
+        "owner_recruiter_id":"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
+        "photo":[
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/moss-594461_640.616x318.jpg",
+            "height":318,
+            "width":616
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/moss-594461_640.308x159.jpg",
+            "height":159,
+            "width":308
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/moss-594461_640.243x124.jpg",
+            "height":124,
+            "width":243
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/moss-594461_640.170x87.jpg",
+            "height":87,
+            "width":170
+          }
+        ],
+        "postcode":"HA2 6PX",
+        "rating":"0.00",
+        "specific_end_date":"2016-05-05T20:34:51.318000+00:00",
+        "specific_start_date":"2016-02-05T21:34:51.318000+00:00",
+        "status":"live",
+        "title":"Museum Garden Helper",
+        "updated":"2016-02-05T21:34:38.285739+00:00",
+        "working_from_home":false
+      },
+      {
+        "address_1":"Scout hut",
+        "city":"Harrow,",
+        "created":"2014-10-27T09:51:33.365911+00:00",
+        "description":"By Volunteering to work with beavers, you will be responsible, along with the other leaders, helpers and members for planning and running the weekly activities for 6-8 year olds! \n\nIt is a fun and rewarding role, allowing you to watch the young people enjoy the activities you organise, as well as being involved in their development as they grow in confidence and ability. \n\nThe Scout Association provides a wide range of books and electronic resources to aid volunteers plan their activities together with an award winning training scheme and on-line programme resources.",
+        "for_recruiter":{
+          "contact_name":null,
+          "created":"2014-10-27T09:50:29.663966+00:00",
+          "email":"debbie.evans@scouts.org.uk",
+          "id":"33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+          "logo":[
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+              "height":125,
+              "width":125
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+              "height":109,
+              "width":109
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+              "height":76,
+              "width":76
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+              "height":50,
+              "width":50
+            }
+          ],
+          "name":"Scouts - Scout Association - Greater London Region",
+          "phone":"01635 247845",
+          "rating":"3.00",
+          "slug":"greater-london-region"
+        },
+        "for_recruiter_id":"33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+        "id":"0562ca2f-06da-4f76-9cd2-4013ab674eaf",
+        "interests":[
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:26.246077+00:00",
+            "id":"c1a66cf8-a685-4300-8f69-6d47a0bd93e0",
+            "name":"Recreation",
+            "parent_id":"cd7d0590-2800-45b4-8084-b475562e73f4",
+            "slug":"recreation",
+            "updated":"2014-10-26T17:24:26.246096+00:00"
+          },
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:26.278190+00:00",
+            "id":"8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+            "name":"Children",
+            "parent_id":"56fabd4e-bac3-484f-9f55-448445f83481",
+            "slug":"children",
+            "updated":"2014-10-26T17:24:26.278210+00:00"
+          },
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:26.271205+00:00",
+            "id":"8678f792-d24e-4810-99d5-c6e6ba4196a4",
+            "name":"Families",
+            "parent_id":"56fabd4e-bac3-484f-9f55-448445f83481",
+            "slug":"families",
+            "updated":"2014-10-26T17:24:26.271224+00:00"
+          },
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:26.274701+00:00",
+            "id":"02b052fd-4f3d-418b-9542-0b980533b03b",
+            "name":"Young people",
+            "parent_id":"56fabd4e-bac3-484f-9f55-448445f83481",
+            "slug":"young-people",
+            "updated":"2014-10-26T17:24:26.274721+00:00"
+          }
+        ],
+        "is_new":false,
+        "lat":51.5894,
+        "lng":-0.352487,
+        "location":null,
+        "location_id":null,
+        "location_name":null,
+        "location_type":"SL",
+        "micro_availability":[
+
+        ],
+        "owner_recruiter":{
+          "contact_name":null,
+          "created":"2014-10-27T09:50:29.663966+00:00",
+          "email":"debbie.evans@scouts.org.uk",
+          "id":"33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+          "logo":[
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+              "height":125,
+              "width":125
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+              "height":109,
+              "width":109
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+              "height":76,
+              "width":76
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+              "height":50,
+              "width":50
+            }
+          ],
+          "name":"Scouts - Scout Association - Greater London Region",
+          "phone":"01635 247845",
+          "rating":"3.00",
+          "slug":"greater-london-region"
+        },
+        "owner_recruiter_id":"33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+        "photo":[
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC0093_XPuBBBMjFfDEMCDmRnmW7P.616x318.jpg",
+            "height":318,
+            "width":616
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC0093_XPuBBBMjFfDEMCDmRnmW7P.308x159.jpg",
+            "height":159,
+            "width":308
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC0093_XPuBBBMjFfDEMCDmRnmW7P.243x124.jpg",
+            "height":124,
+            "width":243
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC0093_XPuBBBMjFfDEMCDmRnmW7P.170x87.jpg",
+            "height":87,
+            "width":170
+          }
+        ],
+        "postcode":"HA2 6BD",
+        "rating":"0.00",
+        "specific_end_date":null,
+        "specific_start_date":"2016-01-25T09:18:51.102000+00:00",
+        "status":"live",
+        "title":"Assistant Beaver Leader (volunteering with 6-8 year olds) 1st Headstone",
+        "updated":"2016-01-25T09:16:22.456928+00:00",
+        "working_from_home":false
+      },
+      {
+        "address_1":null,
+        "city":null,
+        "created":"2016-01-20T18:38:02.790587+00:00",
+        "description":"Working in a retail shop",
+        "for_recruiter":{
+          "contact_name":"rani perin",
+          "created":"2016-01-08T12:41:41.436496+00:00",
+          "email":"ranibooksgirl@yahoo.com",
+          "id":"050e13f3-f1d2-47aa-85d8-425fd4c1b70c",
+          "logo":[
+
+          ],
+          "name":"watford volunteer centrre",
+          "phone":"0753 847 3138",
+          "rating":"0.00",
+          "slug":"watford-volunteer-centrre"
+        },
+        "for_recruiter_id":"050e13f3-f1d2-47aa-85d8-425fd4c1b70c",
+        "id":"83a46bbe-d89e-4f66-a7a6-385a099b2a70",
+        "interests":[
+
+        ],
+        "is_new":false,
+        "lat":51.61066,
+        "lng":-0.3374,
+        "location":{
+          "admin_1":"England",
+          "admin_2":"Greater London",
+          "admin_3":"Harrow",
+          "admin_4":null,
+          "id":"b49e5686-1c08-446c-aa92-0830e2b3fbf6",
+          "lat":51.61066,
+          "lng":-0.3374,
+          "name":"Harrow Weald"
+        },
+        "location_id":"b49e5686-1c08-446c-aa92-0830e2b3fbf6",
+        "location_name":"Harrow Weald",
+        "location_type":"RL",
+        "micro_availability":[
+
+        ],
+        "owner_recruiter":{
+          "contact_name":"rani perin",
+          "created":"2016-01-08T12:41:41.436496+00:00",
+          "email":"ranibooksgirl@yahoo.com",
+          "id":"050e13f3-f1d2-47aa-85d8-425fd4c1b70c",
+          "logo":[
+
+          ],
+          "name":"watford volunteer centrre",
+          "phone":"0753 847 3138",
+          "rating":"0.00",
+          "slug":"watford-volunteer-centrre"
+        },
+        "owner_recruiter_id":"050e13f3-f1d2-47aa-85d8-425fd4c1b70c",
+        "photo":[
+
+        ],
+        "postcode":"HA3 6DF",
+        "rating":"0.00",
+        "specific_end_date":"2016-04-19T17:29:31.161000+00:00",
+        "specific_start_date":"2016-01-20T18:29:31.161000+00:00",
+        "status":"live",
+        "title":"Charity shop-St Lukes Hospice-Harrow Weald-retail helper",
+        "updated":"2016-01-20T18:36:24.592621+00:00",
+        "working_from_home":false
+      },
+      {
+        "address_1":"Quainton Hall School,",
+        "city":"Harrow",
+        "created":"2014-10-27T09:50:56.622157+00:00",
+        "description":"By Volunteering to work with beavers, you will be responsible, along with the other leaders, helpers and members for planning and running the weekly activities for 6-8 year olds! \n\nIt is a fun and rewarding role, allowing you to watch the young people enjoy the activities you organise, as well being involved in their development as they grow in confidence and ability. \n\nThe Scout Association provides a wide range of books and electronic resources to aid volunteers plan their activities together with an award winning training scheme and on-line programme resources",
+        "for_recruiter":{
+          "contact_name":null,
+          "created":"2014-10-27T09:50:29.663966+00:00",
+          "email":"debbie.evans@scouts.org.uk",
+          "id":"33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+          "logo":[
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+              "height":125,
+              "width":125
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+              "height":109,
+              "width":109
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+              "height":76,
+              "width":76
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+              "height":50,
+              "width":50
+            }
+          ],
+          "name":"Scouts - Scout Association - Greater London Region",
+          "phone":"01635 247845",
+          "rating":"3.00",
+          "slug":"greater-london-region"
+        },
+        "for_recruiter_id":"33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+        "id":"48ddf50c-b9a9-4a79-9f1d-5942030dc301",
+        "interests":[
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:26.246077+00:00",
+            "id":"c1a66cf8-a685-4300-8f69-6d47a0bd93e0",
+            "name":"Recreation",
+            "parent_id":"cd7d0590-2800-45b4-8084-b475562e73f4",
+            "slug":"recreation",
+            "updated":"2014-10-26T17:24:26.246096+00:00"
+          },
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:26.278190+00:00",
+            "id":"8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+            "name":"Children",
+            "parent_id":"56fabd4e-bac3-484f-9f55-448445f83481",
+            "slug":"children",
+            "updated":"2014-10-26T17:24:26.278210+00:00"
+          },
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:26.271205+00:00",
+            "id":"8678f792-d24e-4810-99d5-c6e6ba4196a4",
+            "name":"Families",
+            "parent_id":"56fabd4e-bac3-484f-9f55-448445f83481",
+            "slug":"families",
+            "updated":"2014-10-26T17:24:26.271224+00:00"
+          },
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:26.274701+00:00",
+            "id":"02b052fd-4f3d-418b-9542-0b980533b03b",
+            "name":"Young people",
+            "parent_id":"56fabd4e-bac3-484f-9f55-448445f83481",
+            "slug":"young-people",
+            "updated":"2014-10-26T17:24:26.274721+00:00"
+          }
+        ],
+        "is_new":false,
+        "lat":51.5849,
+        "lng":-0.340641,
+        "location":null,
+        "location_id":null,
+        "location_name":null,
+        "location_type":"SL",
+        "micro_availability":[
+
+        ],
+        "owner_recruiter":{
+          "contact_name":null,
+          "created":"2014-10-27T09:50:29.663966+00:00",
+          "email":"debbie.evans@scouts.org.uk",
+          "id":"33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+          "logo":[
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+              "height":125,
+              "width":125
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+              "height":109,
+              "width":109
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+              "height":76,
+              "width":76
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+              "height":50,
+              "width":50
+            }
+          ],
+          "name":"Scouts - Scout Association - Greater London Region",
+          "phone":"01635 247845",
+          "rating":"3.00",
+          "slug":"greater-london-region"
+        },
+        "owner_recruiter_id":"33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+        "photo":[
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC0093_98CStvPa8QwNpnwze75o9k.616x318.jpg",
+            "height":318,
+            "width":616
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC0093_98CStvPa8QwNpnwze75o9k.308x159.jpg",
+            "height":159,
+            "width":308
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC0093_98CStvPa8QwNpnwze75o9k.243x124.jpg",
+            "height":124,
+            "width":243
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC0093_98CStvPa8QwNpnwze75o9k.170x87.jpg",
+            "height":87,
+            "width":170
+          }
+        ],
+        "postcode":"HA1 1RX",
+        "rating":"0.00",
+        "specific_end_date":null,
+        "specific_start_date":"2016-01-29T15:53:52.046000+00:00",
+        "status":"live",
+        "title":"Beaver Leader (volunteering with 6-8 year olds) 13th/21st Harrow",
+        "updated":"2016-01-29T15:58:58.333473+00:00",
+        "working_from_home":false
+      },
+      {
+        "address_1":"Hartford Avenue",
+        "city":"Kenton",
+        "created":"2014-10-27T09:51:01.385776+00:00",
+        "description":"We need a volunteer to help us run our Explorer Unit. You would be responsible, along with the other leaders, helpers and members for planning and leading the weekly activities for 14- 18 year olds! And don't worry if you cant make it every week.\nWe particularly need someone who can help us with our administration. Things like keeping on top of who has gained awards, or who owes membership fees.\n\nIt is a fun and rewarding role, allowing you to watch the young people develop their confidence and\nability whilst they enjoy the activities you organise. Leaders are responsible, with Assistant Leaders, helpers and members, for supporting the young people with planning and running the weekly activities. \n\nThe Scout Association provides a wide range of books and electronic resources to aid volunteers plan their activities.",
+        "for_recruiter":{
+          "contact_name":null,
+          "created":"2014-10-27T09:50:29.663966+00:00",
+          "email":"debbie.evans@scouts.org.uk",
+          "id":"33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+          "logo":[
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+              "height":125,
+              "width":125
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+              "height":109,
+              "width":109
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+              "height":76,
+              "width":76
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+              "height":50,
+              "width":50
+            }
+          ],
+          "name":"Scouts - Scout Association - Greater London Region",
+          "phone":"01635 247845",
+          "rating":"3.00",
+          "slug":"greater-london-region"
+        },
+        "for_recruiter_id":"33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+        "id":"56d80e40-743f-42f1-85e1-89f0c3de2d0a",
+        "interests":[
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:26.246077+00:00",
+            "id":"c1a66cf8-a685-4300-8f69-6d47a0bd93e0",
+            "name":"Recreation",
+            "parent_id":"cd7d0590-2800-45b4-8084-b475562e73f4",
+            "slug":"recreation",
+            "updated":"2014-10-26T17:24:26.246096+00:00"
+          },
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:26.278190+00:00",
+            "id":"8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+            "name":"Children",
+            "parent_id":"56fabd4e-bac3-484f-9f55-448445f83481",
+            "slug":"children",
+            "updated":"2014-10-26T17:24:26.278210+00:00"
+          },
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:26.271205+00:00",
+            "id":"8678f792-d24e-4810-99d5-c6e6ba4196a4",
+            "name":"Families",
+            "parent_id":"56fabd4e-bac3-484f-9f55-448445f83481",
+            "slug":"families",
+            "updated":"2014-10-26T17:24:26.271224+00:00"
+          },
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:26.274701+00:00",
+            "id":"02b052fd-4f3d-418b-9542-0b980533b03b",
+            "name":"Young people",
+            "parent_id":"56fabd4e-bac3-484f-9f55-448445f83481",
+            "slug":"young-people",
+            "updated":"2014-10-26T17:24:26.274721+00:00"
+          }
+        ],
+        "is_new":false,
+        "lat":51.5956,
+        "lng":-0.314983,
+        "location":null,
+        "location_id":null,
+        "location_name":null,
+        "location_type":"SL",
+        "micro_availability":[
+
+        ],
+        "owner_recruiter":{
+          "contact_name":null,
+          "created":"2014-10-27T09:50:29.663966+00:00",
+          "email":"debbie.evans@scouts.org.uk",
+          "id":"33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+          "logo":[
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+              "height":125,
+              "width":125
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+              "height":109,
+              "width":109
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+              "height":76,
+              "width":76
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+              "height":50,
+              "width":50
+            }
+          ],
+          "name":"Scouts - Scout Association - Greater London Region",
+          "phone":"01635 247845",
+          "rating":"3.00",
+          "slug":"greater-london-region"
+        },
+        "owner_recruiter_id":"33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+        "photo":[
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Explorers_rafting_Lyem28mg8XFqxc8ncrbS8g.616x318.JPG",
+            "height":318,
+            "width":616
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Explorers_rafting_Lyem28mg8XFqxc8ncrbS8g.308x159.JPG",
+            "height":159,
+            "width":308
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Explorers_rafting_Lyem28mg8XFqxc8ncrbS8g.243x124.JPG",
+            "height":124,
+            "width":243
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Explorers_rafting_Lyem28mg8XFqxc8ncrbS8g.170x87.JPG",
+            "height":87,
+            "width":170
+          }
+        ],
+        "postcode":"HA3 8SZ",
+        "rating":"0.00",
+        "specific_end_date":null,
+        "specific_start_date":"2015-10-24T16:01:21.314000+00:00",
+        "status":"live",
+        "title":"Leaders (to support 14-18 year old Explorer Scouts)Pegasus",
+        "updated":"2015-10-24T16:10:32.896708+00:00",
+        "working_from_home":false
+      },
+      {
+        "address_1":"Cedars Hall",
+        "city":"Harrow",
+        "created":"2016-02-05T21:05:49.175675+00:00",
+        "description":"Purpose of Role: \nActing as a supporter to parents of children with special educational needs. Our aim is to help tackle the sense of social isolation felt by many parents of a child with special needs, so your role would be to a crucial one - buddy, confidante, moral supporter - to name but a few.  This could include covering our helpline, getting involved with organising our support group or simply meeting up with parents for a coffee and a chat.\n\nResponsibilities / Role Description: \n- Working with families and understanding their perspective.\n- Assisting parents to professional meeting.\n- Supporting IAS caseworker with families.\n- Working constructively with professionals.\n- Helping to fill various paperwork.\n- School visits with parents (e.g. Helping parents understand the process  to choose school).\n- Working with young people and understanding their perspective.\n- To ensure you have an understanding (appropriate to your role) of Independent supporter, and comply with Family Action\u2019s procedures for promoting and safeguarding the welfare of children and vulnerable adults.\n- To comply with Family Action\u2019s Diversity & Equality Policy and our Ethical Policy in every aspect of your work and positively promote the principles of these policies  amongst colleagues, service users, volunteers and other members of the community.\n- To comply with Family Action\u2019s Health and Safety Policy, Data Protection Policy and to protect your own and others\u2019 health, safety and welfare.\n\nThis opportunity has been posted by Voluntary Action Harrow Co-operative, on behalf of the Harrow SENDIAS.",
+        "for_recruiter":{
+          "contact_name":"Volunteering Team",
+          "created":"2016-01-11T16:55:34.106821+00:00",
+          "email":"volunteering@voluntaryactionharrow.org.uk",
+          "id":"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
+          "logo":[
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg",
+              "height":125,
+              "width":125
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.109x109.jpg",
+              "height":109,
+              "width":109
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.76x76.jpg",
+              "height":76,
+              "width":76
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.50x50.jpg",
+              "height":50,
+              "width":50
+            }
+          ],
+          "name":"Help Out Harrow!",
+          "phone":"020 8861 5894",
+          "rating":"0.00",
+          "slug":"help-out-harrow"
+        },
+        "for_recruiter_id":"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
+        "id":"c94a29e7-d38a-4708-860b-3f7eab86f8b0",
+        "interests":[
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:26.271205+00:00",
+            "id":"8678f792-d24e-4810-99d5-c6e6ba4196a4",
+            "name":"Families",
+            "parent_id":"56fabd4e-bac3-484f-9f55-448445f83481",
+            "slug":"families",
+            "updated":"2014-10-26T17:24:26.271224+00:00"
+          }
+        ],
+        "is_new":false,
+        "lat":51.6079,
+        "lng":-0.352798,
+        "location":null,
+        "location_id":null,
+        "location_name":null,
+        "location_type":"SL",
+        "micro_availability":[
+
+        ],
+        "owner_recruiter":{
+          "contact_name":"Volunteering Team",
+          "created":"2016-01-11T16:55:34.106821+00:00",
+          "email":"volunteering@voluntaryactionharrow.org.uk",
+          "id":"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
+          "logo":[
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg",
+              "height":125,
+              "width":125
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.109x109.jpg",
+              "height":109,
+              "width":109
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.76x76.jpg",
+              "height":76,
+              "width":76
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.50x50.jpg",
+              "height":50,
+              "width":50
+            }
+          ],
+          "name":"Help Out Harrow!",
+          "phone":"020 8861 5894",
+          "rating":"0.00",
+          "slug":"help-out-harrow"
+        },
+        "owner_recruiter_id":"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
+        "photo":[
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/family-730320_640.616x318_mcT23C4MMGsHumSoqLvSm9.616x318.jpg",
+            "height":318,
+            "width":616
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/family-730320_640.616x318_mcT23C4MMGsHumSoqLvSm9.308x159.jpg",
+            "height":159,
+            "width":308
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/family-730320_640.616x318_mcT23C4MMGsHumSoqLvSm9.243x124.jpg",
+            "height":124,
+            "width":243
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/family-730320_640.616x318_mcT23C4MMGsHumSoqLvSm9.170x87.jpg",
+            "height":87,
+            "width":170
+          }
+        ],
+        "postcode":"HA3 6QH",
+        "rating":"0.00",
+        "specific_end_date":"2016-05-05T19:42:00.544000+00:00",
+        "specific_start_date":"2016-02-05T20:42:00.544000+00:00",
+        "status":"live",
+        "title":"Harrow Information, Advise and Support Volunteer (2-4 Hours A Week)",
+        "updated":"2016-02-05T21:30:02.463937+00:00",
+        "working_from_home":false
+      },
+      {
+        "address_1":"Cedars Hall",
+        "city":"Harrow",
+        "created":"2015-06-25T09:46:55.981309+00:00",
+        "description":"\u2022\tAnswering, screening and forwarding phone calls. \n\n\u2022\tGiving basic advice relating to special educational needs and disability (for which training will be given)\n\n\u2022\tManaging diaries\n\n\u2022\tCompassionately approaching sensitive case-details\n \n\u2022\tGood literacy skills\n\n\u2022\tAble to deal with difficult clients or customers (for which support and training will be provided)\n\n\u2022\tData entry",
+        "for_recruiter":{
+          "contact_name":"Sejal Sanghvi",
+          "created":"2015-06-25T09:19:04.575700+00:00",
+          "email":"sejal.sanghvi@family-action.org.uk",
+          "id":"e0890a7e-a048-49fd-818f-08bbd15b54e8",
+          "logo":[
+
+          ],
+          "name":"Family Action Harrow SENDIAS",
+          "phone":"020 8428 6487",
+          "rating":"0.00",
+          "slug":"family-action-harrow-sendias"
+        },
+        "for_recruiter_id":"e0890a7e-a048-49fd-818f-08bbd15b54e8",
+        "id":"fba2a1cf-b198-4e35-abd1-047944621b7d",
+        "interests":[
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:26.271205+00:00",
+            "id":"8678f792-d24e-4810-99d5-c6e6ba4196a4",
+            "name":"Families",
+            "parent_id":"56fabd4e-bac3-484f-9f55-448445f83481",
+            "slug":"families",
+            "updated":"2014-10-26T17:24:26.271224+00:00"
+          }
+        ],
+        "is_new":false,
+        "lat":51.6079,
+        "lng":-0.352798,
+        "location":null,
+        "location_id":null,
+        "location_name":null,
+        "location_type":"SL",
+        "micro_availability":[
+
+        ],
+        "owner_recruiter":{
+          "contact_name":"Sejal Sanghvi",
+          "created":"2015-06-25T09:19:04.575700+00:00",
+          "email":"sejal.sanghvi@family-action.org.uk",
+          "id":"e0890a7e-a048-49fd-818f-08bbd15b54e8",
+          "logo":[
+
+          ],
+          "name":"Family Action Harrow SENDIAS",
+          "phone":"020 8428 6487",
+          "rating":"0.00",
+          "slug":"family-action-harrow-sendias"
+        },
+        "owner_recruiter_id":"e0890a7e-a048-49fd-818f-08bbd15b54e8",
+        "photo":[
+
+        ],
+        "postcode":"HA3 6QH",
+        "rating":"0.00",
+        "specific_end_date":"2016-05-25T09:38:05+00:00",
+        "specific_start_date":"2015-06-25T09:38:05.102000+00:00",
+        "status":"live",
+        "title":"Admin Support Worker",
+        "updated":"2015-06-25T09:40:49.648959+00:00",
+        "working_from_home":false
+      },
+      {
+        "address_1":"Blackwell Hall, Uxbridge Road",
+        "city":"Stanmore",
+        "created":"2014-10-27T09:50:56.034523+00:00",
+        "description":"By Volunteering to work with beavers, you will be responsible, along with the other leaders, helpers and members for planning and running the weekly activities for 6-8 year olds! \n\nIt is a fun and rewarding role, allowing you to watch the young people enjoy the activities you organise, as well being involved in their development as they grow in confidence and ability. \n\nThe Scout Association provides a wide range of books and electronic resources to aid volunteers plan their activities together with an award winning training scheme and on-line programme resources",
+        "for_recruiter":{
+          "contact_name":null,
+          "created":"2014-10-27T09:50:29.663966+00:00",
+          "email":"debbie.evans@scouts.org.uk",
+          "id":"33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+          "logo":[
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+              "height":125,
+              "width":125
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+              "height":109,
+              "width":109
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+              "height":76,
+              "width":76
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+              "height":50,
+              "width":50
+            }
+          ],
+          "name":"Scouts - Scout Association - Greater London Region",
+          "phone":"01635 247845",
+          "rating":"3.00",
+          "slug":"greater-london-region"
+        },
+        "for_recruiter_id":"33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+        "id":"f8eb3b36-9822-49ea-bb59-939cf63458ee",
+        "interests":[
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:26.246077+00:00",
+            "id":"c1a66cf8-a685-4300-8f69-6d47a0bd93e0",
+            "name":"Recreation",
+            "parent_id":"cd7d0590-2800-45b4-8084-b475562e73f4",
+            "slug":"recreation",
+            "updated":"2014-10-26T17:24:26.246096+00:00"
+          },
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:26.278190+00:00",
+            "id":"8f0a66e0-30e7-4bdd-a190-7a9a36afcedd",
+            "name":"Children",
+            "parent_id":"56fabd4e-bac3-484f-9f55-448445f83481",
+            "slug":"children",
+            "updated":"2014-10-26T17:24:26.278210+00:00"
+          },
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:26.271205+00:00",
+            "id":"8678f792-d24e-4810-99d5-c6e6ba4196a4",
+            "name":"Families",
+            "parent_id":"56fabd4e-bac3-484f-9f55-448445f83481",
+            "slug":"families",
+            "updated":"2014-10-26T17:24:26.271224+00:00"
+          },
+          {
+            "children":[
+
+            ],
+            "created":"2014-10-26T17:24:26.274701+00:00",
+            "id":"02b052fd-4f3d-418b-9542-0b980533b03b",
+            "name":"Young people",
+            "parent_id":"56fabd4e-bac3-484f-9f55-448445f83481",
+            "slug":"young-people",
+            "updated":"2014-10-26T17:24:26.274721+00:00"
+          }
+        ],
+        "is_new":false,
+        "lat":51.6119,
+        "lng":-0.337072,
+        "location":null,
+        "location_id":null,
+        "location_name":null,
+        "location_type":"SL",
+        "micro_availability":[
+
+        ],
+        "owner_recruiter":{
+          "contact_name":null,
+          "created":"2014-10-27T09:50:29.663966+00:00",
+          "email":"debbie.evans@scouts.org.uk",
+          "id":"33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+          "logo":[
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
+              "height":125,
+              "width":125
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.109x109.jpg",
+              "height":109,
+              "width":109
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.76x76.jpg",
+              "height":76,
+              "width":76
+            },
+            {
+              "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.50x50.jpg",
+              "height":50,
+              "width":50
+            }
+          ],
+          "name":"Scouts - Scout Association - Greater London Region",
+          "phone":"01635 247845",
+          "rating":"3.00",
+          "slug":"greater-london-region"
+        },
+        "owner_recruiter_id":"33c3a2ab-06e2-4fab-a865-a8518cd842ca",
+        "photo":[
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC0093_ET2AqggjToY9xfsErvBfcC.616x318.jpg",
+            "height":318,
+            "width":616
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC0093_ET2AqggjToY9xfsErvBfcC.308x159.jpg",
+            "height":159,
+            "width":308
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC0093_ET2AqggjToY9xfsErvBfcC.243x124.jpg",
+            "height":124,
+            "width":243
+          },
+          {
+            "absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/DSC0093_ET2AqggjToY9xfsErvBfcC.170x87.jpg",
+            "height":87,
+            "width":170
+          }
+        ],
+        "postcode":"HA3 6DQ",
+        "rating":"0.00",
+        "specific_end_date":null,
+        "specific_start_date":"2016-01-08T14:23:49.342000+00:00",
+        "status":"live",
+        "title":"Assistant Beaver Leaders (volunteering with 6-8 year olds) 1st Harrow Weald",
+        "updated":"2016-01-08T17:09:37.944369+00:00",
+        "working_from_home":false
+      }
+    ]
+  },
+  "links":{
+    "prev":{
+      "href":"/v1/opportunities?lat=51.5978&lng=-0.3370&miles=1.0&page=1",
+      "title":"Previous Page"
+    },
+    "self":{
+      "href":"/v1/opportunities",
+      "title":"You are here."
+    }
+  },
+  "meta":{
+    "code":200,
+    "current_page":2,
+    "items_per_page":20,
+    "tenant":"doittrust",
+    "total_items":30,
+    "total_pages":2,
+    "version":"2016.02.11.1"
+  }
+}

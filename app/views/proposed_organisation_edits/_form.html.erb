@@ -1,0 +1,86 @@
+<%= form_for(setup_proposed_organisation_edit(@proposed_organisation_edit), url: organisation_proposed_organisation_edits_path(@proposed_organisation_edit.organisation)) do |f| %>
+    <table class="centered" >
+      <thead>
+      </thead>
+      <tbody>
+      <tr>
+        <td data-toggle="tooltip" title="Enter a unique name">
+          <%= f.text_area :name, :size => "50x4", :class => "wide_form org_h3", :placeholder => "Enter organisation name" %>
+        </td>
+        <td class="borderless">
+          <input type="checkbox" class="publish" disabled checked = "checked" value="">
+        </td>
+      </tr>
+      <tr>
+        <td class="borderless" data-toggle="tooltip" title="Enter a full description here. When an individual searches this database all words in this description will be searched.">
+          <%= f.text_area :description, :class => "wide_form", :cols => "10", :rows => "10", :placeholder => "Enter organisation description" %>
+        </td>
+        <td class="borderless">
+          <input type="checkbox" class="publish" disabled checked = "checked" value="">
+        </td>
+      </tr>
+      <tr><td><h4>
+        Contact information
+      </h4></td></tr>
+      <% if @proposed_organisation_edit.editable?(:address, by: current_user) %>
+      <tr>
+        <td data-toggle="tooltip" title="Enter a complete address">
+          <%= f.text_field :address, :class => "wide_form", :placeholder => "Enter organisation address"%>
+        </td>
+        <td class="borderless">
+          <input type="checkbox" disabled class="publish" <%= checked="checked" if @proposed_organisation_edit.viewable_field?(:address) %> value="" class="publish">
+        </td>
+      </tr>
+      <% end %>
+      <tr>
+        <td class="borderless" data-toggle="tooltip" title="Make sure post code is accurate">
+          <%= f.text_field :postcode, :class => "wide_form", :placeholder => "Enter organisation post code" %>
+        </td>
+        <td class="borderless">
+          <input type="checkbox" class="publish" disabled checked = "checked" value="">
+        </td>
+      </tr>
+      <% if @proposed_organisation_edit.editable?(:email, by: current_user)%>
+      <tr>
+        <td class="borderless" data-toggle="tooltip" title="Make sure email is correct">
+          <%= f.text_field :email, :class => "wide_form", :placeholder => "Enter organisation email address" %>
+        </td>
+        <td class="borderless">
+          <input type="checkbox" disabled class="publish" <%= checked="checked" if @proposed_organisation_edit.viewable_field?(:email) %> value="" class="publish">
+        </td>
+      </tr>
+      <% end %>
+      <tr>
+        <td class="borderless" data-toggle="tooltip" title="Make sure url is correct">
+          <%= f.text_field :website, :class => "wide_form", :placeholder => "Enter organisation website url" %>
+        </td>
+        <td class="borderless">
+          <input type="checkbox" class="publish" disabled checked = "checked" value="">
+        </td>
+      </tr>
+      <% if @proposed_organisation_edit.editable?(:telephone, by: current_user)%>
+      <tr>
+        <td class="borderless" data-toggle="tooltip" title="Make sure phone number is correct">
+          <%= f.text_field :telephone, :class => "wide_form", :placeholder => "Enter organisation phone number" %>
+        </td>
+        <td class="borderless">
+          <input type="checkbox" disabled class="publish" <%= checked="checked" if @proposed_organisation_edit.viewable_field?(:telephone) %> value="" class="publish">
+        </td>
+      </tr>
+      <% end %>
+      <tr>
+        <td class="borderless" data-toggle="tooltip" title="Please enter a website here either to the fundraising page on your website or to an online donation site.">
+          <%= f.text_field :donation_info, :class => "wide_form", :placeholder => "Enter organisation donation url" %>
+        </td>
+        <td class="borderless">
+          <input type="checkbox" disabled checked = "checked" value="" class="publish">
+        </td>
+      </tr>
+      <tr>
+        <td style="padding-top: 5px;"><%= f.submit "Propose this edit",:class => 'btn btn-primary' %></td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
+
+<% end %>

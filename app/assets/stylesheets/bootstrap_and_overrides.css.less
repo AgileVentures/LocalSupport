@@ -1,30 +1,21 @@
 @import "twitter/bootstrap/bootstrap";
-@media (min-width: 980px) {
-  body {
-    padding-top: 81px;
-    padding-bottom: 41px;
-  }
-}
-@import "twitter/bootstrap/responsive";
 
 // Set the correct sprite paths
-@iconSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings.png");
-@iconWhiteSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings-white.png");
+@iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
+@iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
 
 // Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
-// Note: If you use asset_path() here, your compiled bootstrap_and_overrides.css will not
-//       have the proper paths. So for now we use the absolute path.
-@fontAwesomeEotPath: asset-path("fontawesome-webfont.eot?v=3.0.2");
-@fontAwesomeEotPath_iefix: asset-path("fontawesome-webfont.eot?#iefix&v=3.0.2");
-@fontAwesomeWoffPath: asset-path("fontawesome-webfont.woff?v=3.0.2");
-@fontAwesomeTtfPath: asset-path("fontawesome-webfont.ttf?v=3.0.2");
-@fontAwesomeSvgPath: asset-url("fontawesome-webfont.svg#fontawesomeregular");
+@fontAwesomeEotPath: font-url("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: font-url("fontawesome-webfont.eot?#iefix");
+@fontAwesomeWoffPath: font-url("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: font-url("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: font-url("fontawesome-webfont.svg#fontawesomeregular");
 
 // Font Awesome
 @import "fontawesome/font-awesome";
 
 // Glyphicons
-//@import "twitter/bootstrap/sprites.less";
+// @import "twitter/bootstrap/glyphicons.less";
 
 // Your custom LESS stylesheets goes here
 //
@@ -35,20 +26,74 @@
 // See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
 //
 // Example:
-// @linkColor: #ff0000;
+// @link-color: #ff0000;
 
+body {
+  line-height: 20px;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 38.5px;
+}
 
 a {
   color: #006937;
   text-decoration: none;
 }
+
 a:hover,
 a:focus {
   color: #009247;
   text-decoration: underline;
 }
+
 h3 {
   &:extend(.org_h3);
+}
+
+label {
+  font-weight: normal;
+}
+
+.checkbox input[type="checkbox"] {
+  position: relative;
+}
+
+img {
+  height: auto;
+}
+
+input {
+  vertical-align: middle;
+}
+
+select {
+  color: #555;
+}
+
+.btn {
+    display: inline-block;
+    padding: 4px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+    float: left;
+    margin-left: -15px;
+    margin-right: 5px;
 }
 
 .alert-warning{
@@ -57,4 +102,61 @@ h3 {
 
 .alert-warning a{
   color: #185000;
+}
+
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+}
+
+.nav-pills > li + li {
+  margin-left: 0;
+}
+
+.table th, .table td {
+    padding: 8px;
+    line-height: 20px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #dddddd;
+}
+
+@media (min-width: 980px) {
+  body {
+    padding-top: 81px;
+    padding-bottom: 41px;
+    color: #555;
+  }
+}
+
+@media(min-width: 991px) and (max-width: 1199px){
+ #powered-by-tagline{
+   display: block;
+ }
+ #provided-by-tagline{
+   display: block;
+ }
+ small.left-footer{
+   .text-center;
+ }
+ .left-footer > small{
+   .text-center;
+   display: block;
+ }
+}
+@media(min-width: 991px) {
+  p.right-footer {
+    .text-right;
+  }
+}
+
+@media (max-width: 990px){
+  small.left-footer{
+    display: block;
+    .text-center;
+  }
+  p.right-footer{
+    .text-center;
+  }
 }

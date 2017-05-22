@@ -10,6 +10,7 @@ Feature: If new user's email matches an org's email, the new user with have edit
       | Friendly       | Bereavement Counselling | 34 pinner road | HA1 4HZ  | 020800000 | info@friendly.org |
     And cookies are approved
 
+  @vcr
   Scenario: Sign up and CANNOT edit
     Given I visit the sign up page
     And I sign up as "tester@friendly.org" with password "12345678" and password confirmation "12345678"
@@ -25,6 +26,6 @@ Feature: If new user's email matches an org's email, the new user with have edit
     Then I should see an edit button for "Friendly" charity
 
 # https://github.com/plataformatec/devise/wiki/How-To:-Override-confirmations-so-users-can-pick-their-own-passwords-as-part-of-confirmation-activation
-# do_confirm @ ConfirmationController: all it does is call .confirm!, which is publicly available ...
+# do_confirm @ ConfirmationController: all it does is call .confirm, which is publicly available ...
 # http://rubydoc.info/github/plataformatec/devise/master/Devise/Models/Confirmable
-# Thus, to simulate a user returning with a valid email token, we can just call confirm! on them
+# Thus, to simulate a user returning with a valid email token, we can just call confirm on them

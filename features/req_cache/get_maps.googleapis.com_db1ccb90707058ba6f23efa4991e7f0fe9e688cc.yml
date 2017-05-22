@@ -1,0 +1,18 @@
+---
+:scope: 
+:url: http://maps.googleapis.com/maps/gen_204?target=api&ev=api_viewport&cad=host:127.0.0.1%3A49271,v:21,r:1,mt:m,c:51.597754%2C-0.337,sp:0.12988x0.15312,size:446x609,relsize:0.35,token:4n4jnvakhe,src:apiv3,ts:5d67j6
+:body: ''
+:status: 204
+:method: get
+:headers:
+  Content-Type: image/gif
+  Date: Tue, 02 Feb 2016 12:10:49 GMT
+  Pragma: no-cache
+  Expires: Fri, 01 Jan 1990 00:00:00 GMT
+  Cache-Control: no-cache, must-revalidate
+  Server: mafe
+  Content-Length: '0'
+  X-XSS-Protection: 1; mode=block
+  X-Frame-Options: SAMEORIGIN
+  Connection: close
+:content: ''

@@ -12,22 +12,32 @@
       <% @users.each do |user| %>
         <tr id="<%= user.id %>" class="actions-right">
           <td><%= user.email %></td>
-          <td><%= time_ago_in_words_with_nils(user.last_sign_in_at) %> </td>
-          <td><%= user.organisation.name if user.organisation %></td>
+          <td data-value="<%= user.last_sign_in_at %>"><%= time_ago_in_words_with_nils(user.last_sign_in_at) %></td>
+          <td><%= (link_to user.organisation.name, user.organisation, { :target => '_blank' }) if user.organisation %></td>
           <td>
             <% if user.pending_organisation %>
               <%= user.pending_organisation.name %>
             <% end %>
           </td>
           <td>
-            <%= link_to(user_reports_path(id: user.id), :method => :delete, :class => "btn btn-small btn-danger pull-right") do %>
-              <i class="icon-trash icon-large"></i> Delete</a>
-            <% end %>
-            <% if user.pending_organisation %>
-              <%= link_to(user_report_path(id: user.id), :method => :put, :class => "btn btn-small btn-success pull-right") do %>
-                <i class="icon-thumbs-up-alt icon-large"></i> Approve</a>
+            <div class="btn-group">
+              <% if user.pending_organisation %>
+                <%= link_to(user_report_path(id: user.id, pending_org_action: "approve"), :method => :put, :class => "btn btn-xs btn-success",
+                           style: "border-radius: 3px; margin-right: 3px;") do %>
+                  <i class="fa fa-thumbs-o-up"></i> Approve</a>
+                <% end %>
               <% end %>
-            <% end %>
+              <% if user.pending_organisation %>
+                <%= link_to(user_report_path(id: user.id, pending_org_action: "decline"), :method => :put, :class => "btn btn-xs btn-warning",
+                           style: "border-radius: 3px; margin-right: 3px;") do %>
+                  <i class="fa fa-thumbs-o-down"></i> Decline</a>
+                <% end %>
+              <% end %>
+              <%= link_to(user_reports_path(id: user.id), :method => :delete, :class => "btn btn-xs btn-danger",
+                         style: "border-radius: 3px;") do %>
+                <i class="fa fa-trash-o"></i> Delete
+              <% end %>
+            </div>
           </td>
         </tr>
       <% end %>

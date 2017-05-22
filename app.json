@@ -1,0 +1,35 @@
+{
+  "name":"LocalSupport",
+  "scripts":{
+    "postdeploy": "bundle exec rake db:migrate && bundle exec rake db:setup"
+  },
+  "env":{
+    "BUILDPACK_URL":{
+      "required":true
+    },
+    "MAILER_URL":{
+      "required":true
+    },
+    "MYAPP_SECRET_TOKEN":{
+      "required":true
+    },
+    "RACK_ENV":{
+      "required":true
+    },
+    "DEVISE_SECRET_KEY":{
+      "required":true,
+      "generator": "secret"
+    }
+  },
+  "addons":[
+    "papertrail",
+    "sendgrid",
+    "heroku-postgresql"
+  ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "Free"
+    }
+  }
+}

@@ -1,5 +1,5 @@
-Feature: Site Admin approves a charity edit
-  As an Admin
+Feature: Site Super Admin approves a charity edit
+  As an Super Admin
   So that I can approve someone else's changes to a charity
     (mainly for a newly registered organisation or an organisation
     who has asked to update their details but we have yet to

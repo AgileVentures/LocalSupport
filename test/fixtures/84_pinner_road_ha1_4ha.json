@@ -1,0 +1,84 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "84",
+               "short_name" : "84",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "Pinner Road",
+               "short_name" : "Pinner Rd",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Harrow",
+               "short_name" : "Harrow",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "London Borough of Harrow",
+               "short_name" : "London Borough of Harrow",
+               "types" : [ "administrative_area_level_3", "political" ]
+            },
+            {
+               "long_name" : "Greater London",
+               "short_name" : "Gt Lon",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "England",
+               "short_name" : "England",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United Kingdom",
+               "short_name" : "GB",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "HA1",
+               "short_name" : "HA1",
+               "types" : [ "postal_code_prefix", "postal_code" ]
+            },
+            {
+               "long_name" : "Harrow",
+               "short_name" : "Harrow",
+               "types" : [ "postal_town" ]
+            }
+         ],
+         "formatted_address" : "84 Pinner Road, Harrow, Greater London HA1, UK",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 53,
+                  "lng" : -0.4
+               },
+               "southwest" : {
+                  "lat" : 52.58124630,
+                  "lng" : -0.34730780
+               }
+            },
+            "location" : {
+               "lat" : 52.82323,
+               "lng" : -0.4
+            },
+            "location_type" : "RANGE_INTERPOLATED",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 51.58260098029150,
+                  "lng" : -0.3459584697084980
+               },
+               "southwest" : {
+                  "lat" : 51.57990301970850,
+                  "lng" : -0.3486564302915021
+               }
+            }
+         },
+         "partial_match" : true,
+         "types" : [ "street_address" ]
+      }
+   ],
+   "status" : "OK"
+}

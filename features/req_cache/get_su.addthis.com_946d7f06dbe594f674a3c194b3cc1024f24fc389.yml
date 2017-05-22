@@ -1,0 +1,23 @@
+---
+:scope: 
+:url: http://su.addthis.com/red/usync?pid=11146&puid=630c45db-71f5-34c9-a897-5fa961e448f9&ssrc=1&url=http%3A%2F%2Fcm.g.doubleclick.net%2Fpixel%3Fgoogle_nid%3Dvdna%26google_cm%26google_sc
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Date: Fri, 21 Oct 2016 15:25:40 GMT
+  Content-Length: '0'
+  Connection: close
+  Set-Cookie:
+  - uid=580a3372faba457f;Path=/;Domain=.addthis.com;Expires=Sun, 21-Oct-2018 15:25:40
+    GMT
+  - um=2Ka*1z34nrsvkQOqynnWBxV4zV;Path=/;Domain=.addthis.com;Expires=Sun, 21-Oct-2018
+    15:25:40 GMT
+  Expires: Thu, 01 Jan 1970 00:00:00 GMT
+  P3P: policyref="/w3c/p3p.xml", CP="NON ADM OUR DEV IND COM STA"
+  Cache-Control: max-age=0, no-cache, no-store, no-transform
+  Pragma: no-cache
+  Location: http://cm.g.doubleclick.net/pixel?google_nid=vdna&google_cm&google_sc
+  Server: cloudflare-nginx
+  CF-RAY: 2f55b938429435a2-LHR
+:content: ''

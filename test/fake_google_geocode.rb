@@ -11,7 +11,7 @@ class FakeGoogleGeocode < Sinatra::Base
 
   def filename
     # {"address"=>"34 pinner road, HA1 4HZ"}
-    "#{params[:address].split(',').first.gsub(/\s/, '_')}.json"
+    "#{params[:address].downcase.rstrip.gsub(/,/,'').gsub(/\s/, '_')}.json"
   end
 
   def json_response(response_code, file_name)

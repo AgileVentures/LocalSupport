@@ -1,0 +1,16 @@
+---
+:scope: 
+:url: http://addthis.mathtag.com/red/pixel?pid=11112
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Date: Fri, 21 Oct 2016 15:25:40 GMT
+  Content-Length: '0'
+  Connection: close
+  Cache-Control: max-age=0, no-cache, no-store, no-transform
+  Pragma: no-cache
+  Location: http://sync.mathtag.com/sync/img?mt_exid=10025&redir=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11112%26ssrc%3D4%26puid%3D%5BMM_UUID%5D
+  Server: cloudflare-nginx
+  CF-RAY: 2f55b93740ac34ac-LHR
+:content: ''

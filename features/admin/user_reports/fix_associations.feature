@@ -5,17 +5,18 @@ Feature: Fix Associations
 
   Background:
     Given the following users are registered:
-      | email                 | password       | admin | confirmed_at        | organisation    | pending_organisation |
-      | admin@myorg.com       | adminpass0987  | true  | 2008-01-01 00:00:00 | My Organisation |                      |
+      | email                 | password            | superadmin | confirmed_at        | organisation    | pending_organisation |
+      | superadmin@myorg.com  | superadminpass0987  | true       | 2008-01-01 00:00:00 | My Organisation |                      |
     Given the following organisations exist:
-      | name     | address          | email |
-      | normal   | 83 pinner road | admin@org.org  |
-      | upcased | 84 pinner road | UPCASED@org.org  |
-      | whitespace    | 30 pinner road | whitespace@charity.org |
+      | name          | description      | address          | postcode | email                  |
+      | normal        | Awesome people   | 83 pinner road   | HA1 4HZ  | superadmin@org.org     |
+      | upcased       | Awesome people   | 84 pinner road   | HA1 4HZ  | UPCASED@org.org        |
+      | whitespace    | Awesome people   | 30 pinner road   | HA1 4HZ  | whitespace@charity.org |
+    And the invitation instructions mail template exists
     And "whitespace" has a whitespace at the end of the email address
-    And the admin invited a user for "normal"
-    And the admin invited a user for "upcased"
-    And the admin invited a user for "whitespace"
+    And the superadmin invited a user for "normal"
+    And the superadmin invited a user for "upcased"
+    And the superadmin invited a user for "whitespace"
     And associations are destroyed for:
       | name |
       | normal |
@@ -23,10 +24,11 @@ Feature: Fix Associations
       | whitespace |
 
   # check if the records are in the broken state
+  @vcr
   Scenario: Broken invites as seen on the orphans page
     Given cookies are approved
-    Given I am signed in as an admin
-    And I visit the organisations without users page
+    Given I am signed in as a superadmin
+    And I visit the invite users to become admin of organisations page
     Then I should not see "normal"
     Then I should see "upcased"
     Then I should see "whitespace"
@@ -36,8 +38,8 @@ Feature: Fix Associations
   Scenario: migration
     Given I run the fix invitations rake task
     Given cookies are approved
-    Given I am signed in as an admin
-    And I visit the organisations without users page
+    Given I am signed in as a superadmin
+    And I visit the invite users to become admin of organisations page
     Then I should not see "normal"
     Then I should not see "upcased"
     Then I should not see "whitespace"

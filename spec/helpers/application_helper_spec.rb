@@ -21,7 +21,7 @@ describe ApplicationHelper, :type => :helper do
   end
 
   describe 'markdown' do
-    # tested extensively in features/admin_edit_static_pages.feature
+    # tested extensively in features/superadmin_edit_static_pages.feature
   end
 
   describe '#cookie_policy_accepted?' do
@@ -53,6 +53,34 @@ describe ApplicationHelper, :type => :helper do
     it 'should return false if feature is inactive' do
       allow(Feature).to receive_messages(active?: false)
       expect(helper.feature_active?(:volunteer_ops)).to be false
+    end
+  end
+
+  describe '#parent_layout' do
+    subject(:parent_layout) { helper.parent_layout('application') }
+
+    let(:view_flow) { double :view_flow, set: true, get: true }
+    let(:result) { double :result }
+
+    before do
+      allow(helper).to receive(:render)
+      assign(:view_flow, view_flow)
+    end
+
+    it 'sets view_flow layout to output buffer' do
+      expect(view_flow).to receive(:set).with(:layout, helper.output_buffer)
+      parent_layout
+    end
+
+    it 'renders the parent layout' do
+      expect(helper).to receive(:render).with(file: 'layouts/application')
+      parent_layout
+    end
+
+    it 'sets the output buffer to the rendered layout' do
+      allow(helper).to receive(:render).and_return(result)
+      expect(helper).to receive(:output_buffer=).with(result)
+      parent_layout
     end
   end
 end

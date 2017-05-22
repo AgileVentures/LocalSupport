@@ -1,9 +1,5 @@
 class CategoryOrganisation < ActiveRecord::Base
   belongs_to :category
-  belongs_to :organisation
+  belongs_to :base_organisation, :foreign_key => :organisation_id
   self.table_name = 'categories_organisations'
-
-  def <=> other
-    self.category <=> other.category
-  end
 end

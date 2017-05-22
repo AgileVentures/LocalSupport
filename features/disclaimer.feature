@@ -7,13 +7,14 @@ Feature: Disclaimer about not being able to guarantee accuracy of sites content 
   Background: organisations have been added to database
 
   Given the following organisations exist:
-    | name             | address        |
-    | Friendly Charity | 83 pinner road |
+      | name             | description      | address          | postcode |
+      | Friendly Charity | Awesome people   | 83 pinner road   | HA1 4HZ  |
   Given the following pages exist:
     | name       | permalink  | content                                                   | link_visible |
     | 404        | 404        | We're sorry, but we couldn't find the page you requested! | false        |
     | Disclaimer | disclaimer | We disclaim everything!                                   | true         |
 
+  @vcr
   Scenario Outline: the disclaimer page is accessible on all pages
     Given I visit the <page>
     When I follow "Disclaimer"
@@ -24,4 +25,3 @@ Feature: Disclaimer about not being able to guarantee accuracy of sites content 
     | organisations index page                                |
     | new organisation page                                   |
     | show page for the organisation named "Friendly Charity" |
-

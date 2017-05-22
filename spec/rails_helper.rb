@@ -1,5 +1,5 @@
-require 'simplecov'
-SimpleCov.start 'rails'
+require 'coveralls'
+Coveralls.wear_merged!('rails')
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RSPEC'] = 'rspec'
@@ -16,6 +16,10 @@ require 'factory_girl_rails'
 require 'rack_session_access/capybara'
 require 'webmock/rspec'
 Capybara.javascript_driver = :webkit
+
+Billy.configure do |c|
+  c.whitelist = ['test.host', 'localhost' , '127.0.0.1']
+end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are

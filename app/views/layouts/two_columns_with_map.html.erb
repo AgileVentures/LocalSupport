@@ -1,0 +1,18 @@
+<!-- Span 6 -->
+<div class="row">
+  <div id="column1" class="col-md-6">
+    <div class="flex-row">
+      <div class="map_container">
+        <%= yield :map %>
+        <div id="map-canvas"></div>
+      </div>
+    </div>
+    <div class="map_legend">
+      <%= yield :legend %>
+    </div>
+  </div>
+  <div id="column2" class="col-md-6">
+    <%= yield %>
+  </div>
+</div>
+<%= parent_layout 'application' %>
