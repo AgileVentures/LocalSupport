@@ -10,6 +10,7 @@ describe 'layouts/application.html.erb', :type => :view do
     @absent_pages = [page_three]
     assign(:footer_page_links, @pages)
     allow(view).to receive(:feature_active?).with(:volunteer_ops_list).and_return(true)
+    allow(view).to receive(:feature_active?).with(:events).and_return(false)
   end
   context 'no user signed-in' do
 
