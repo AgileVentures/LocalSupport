@@ -123,7 +123,7 @@ class OrganisationsController < BaseOrganisationsController
   private
 
   def get_user_options(organisation)
-      return {
+      {
         pending_org_admin: current_user.pending_org_admin?(organisation),
         editable: current_user.can_edit?(organisation),
         deletable: current_user.can_delete?(organisation),
