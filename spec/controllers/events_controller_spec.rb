@@ -8,15 +8,20 @@ describe EventsController, type: :controller do
 
   describe "#index" do
 
-    it "should return a valid request" do
+    setup do
       get :index
-      expect(response.status).to eq 200
     end
 
-    it "should assign an events variable" do
-      get :index
-      expect(assigns(:events)).to all be_a_kind_of Event
-    end
+    it { should render_template :index }
+
+    it { should respond_with 200 }
+
+    describe "@events variable" do
+
+      it "should assign an events variable" do
+        get :index
+        expect(assigns(:events)).to all be_a_kind_of Event
+      end
 
   end
 

@@ -31,10 +31,28 @@ RSpec.describe Event, type: :model do
   end
 
   describe "scopes" do
+
+    before(:all) do
+      FactoryGirl.create_list(:upcoming_events, 10)
+    end
     
     it "should have a valid upcoming method" do
-      expect { Event.upcoming }.not_to raise_error
+      expect { Event.upcoming(10) }.not_to raise_error
     end
+
+    it "should return a variable number of upcoming events" do
+      expect(Event.upcoming(10).length).to eq 10
+    end
+
+   it "should not include events that are already over" do
+     FactoryGirl.create_list(:previous_events, 10)
+     expect(Event.all.length).to eq 20
+     expect(Event.upcoming(20).length).to eq 10
+   end
+
+   it "should only contain events that are after the current datetime" do
+     expect(Event.upcoming(20)).to all (have_attributes(:start_date => (a_value > DateTime.now())))
+   end
 
   end
 

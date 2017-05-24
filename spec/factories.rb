@@ -125,4 +125,18 @@ FactoryGirl.define do
     end_date { DateTime.now() }
   end
 
+  factory :upcoming_events, class: Event do
+    title "Upcoming Event"
+    description "An event that is coming up soon"
+    start_date { DateTime.now() + 1.day }
+    end_date { DateTime.now() + 1.day }
+  end
+
+  factory :previous_events, class: Event do
+    title "Past Event"
+    description "An event that has already passed"
+    start_date { DateTime.now() - 1.day }
+    end_date { DateTime.now() - 1.day }
+  end
+
 end
