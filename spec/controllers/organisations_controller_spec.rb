@@ -494,6 +494,23 @@ describe OrganisationsController, :type => :controller do
       end
     end
   end
+  describe "get_user_opts" do
+
+    let!(:org) { FactoryGirl.create(:organisation)}
+
+    subject { 
+      user = create :user
+      allow(controller).to receive(:current_user).and_return(user)
+      user_opts = controller.send(:get_user_options, org)
+    }
+
+    it { should be_a_kind_of Hash }
+    it { should have_key(:pending_org_admin) }
+    it { should have_key(:editable) }
+    it { should have_key(:deletable) }
+    it { should have_key(:can_create_volunteer_op) }
+    it { should have_key(:grabbable) }
+  end
   describe '.permit' do 
     it 'returns the cleaned params' do
       organisation_params = { organisation: {
