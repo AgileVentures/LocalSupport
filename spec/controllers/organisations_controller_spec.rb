@@ -146,6 +146,16 @@ describe OrganisationsController, :type => :controller do
       allow(controller).to receive(:current_user).and_return(@user)
     end
 
+    it "sets the category name/ID pairs" do
+      get :show, :id => real_org.id.to_s
+      expect(assigns(:cat_name_ids)).not_to eq nil
+    end
+
+    it "sets the 'can_propose_edits' based on the current user being signed in" do
+      get :show, :id => real_org.id.to_s
+      expect(assigns(:user_opts)[:can_propose_edits]).to eq true
+    end
+
     it "assigns the user_opts hash" do
       get :show, :id => real_org.id.to_s
       expect(assigns(:user_opts)).to be_a_kind_of Hash
