@@ -146,6 +146,16 @@ describe OrganisationsController, :type => :controller do
       allow(controller).to receive(:current_user).and_return(@user)
     end
 
+    it "assigns the user_opts hash" do
+      get :show, :id => real_org.id.to_s
+      expect(assigns(:user_opts)).to be_a_kind_of Hash
+    end
+
+    it "should call the get_user_options method", target: true do
+      expect(controller).to receive(:get_user_options).and_return({})
+      get :show, :id => real_org.id.to_s
+    end
+
     it 'should use a two_column with map layout' do
       get :show, :id => real_org.id.to_s
       expect(response).to render_template 'layouts/two_columns_with_map'
@@ -505,11 +515,11 @@ describe OrganisationsController, :type => :controller do
     }
 
     it { should be_a_kind_of Hash }
-    it { should have_key(:pending_org_admin) }
-    it { should have_key(:editable) }
-    it { should have_key(:deletable) }
-    it { should have_key(:can_create_volunteer_op) }
-    it { should have_key(:grabbable) }
+    it { should include(pending_org_admin: false) }
+    it { should include(editable: false) }
+    it { should include(deletable: false) }
+    it { should include(can_create_volunteer_op: false) }
+    it { should include(grabbable: true) }
   end
   describe '.permit' do 
     it 'returns the cleaned params' do
