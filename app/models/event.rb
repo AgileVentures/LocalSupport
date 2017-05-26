@@ -7,6 +7,6 @@ class Event < ActiveRecord::Base
                                where('start_date > ?', DateTime.current)
                               .order('created_at DESC')
                               .limit(n) 
-                          }
+                   }
 
 end
