@@ -1,9 +1,12 @@
 class Event < ActiveRecord::Base
-  validates_presence_of :title, :description, :start_date, :end_date
-  scope :upcoming, -> (n) { 
-                             where('start_date > ?', DateTime.current)
-                            .order('created_at DESC')
-                            .limit(n) 
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :start_date, presence: true
+  validates :end_date, presence: true
+  scope :upcoming, lambda { |n| 
+                               where('start_date > ?', DateTime.current)
+                              .order('created_at DESC')
+                              .limit(n) 
                           }
 
 end
