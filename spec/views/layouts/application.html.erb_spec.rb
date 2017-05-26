@@ -206,5 +206,20 @@ describe 'layouts/application.html.erb', :type => :view do
       render
       expect(rendered).to have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{volunteer_ops_path}\"]")
     end
+
+  end
+
+  context 'event feature flags' do
+    it 'hides events link when feature is inactive' do
+      expect(view).to receive(:feature_active?).with(:events).and_return(false)
+      render
+      expect(rendered).to_not have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{events_path}\"]")
+    end
+
+    it 'show events link when feature is active' do
+      expect(view).to receive(:feature_active?).with(:events).and_return(true)
+      render
+      expect(rendered).to have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{events_path}\"]")
+    end
   end
 end
