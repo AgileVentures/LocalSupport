@@ -23,6 +23,8 @@ describe EventsController, type: :controller do
         expect(assigns(:events)).to all be_a_kind_of Event
       end
 
+    end
+
   end
 
 end
