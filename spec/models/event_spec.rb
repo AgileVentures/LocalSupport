@@ -46,7 +46,6 @@ RSpec.describe Event, type: :model do
 
    it "should not include events that are already over" do
      FactoryGirl.create_list(:previous_events, 10)
-     expect(Event.all.length).to eq 20
      expect(Event.upcoming(20).length).to eq 10
    end
 
