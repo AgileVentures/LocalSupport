@@ -1,11 +1,5 @@
 <%= render "search_form" %>
 <%= render @volunteer_op %>
-<% if @display_publish_button %>
-  <%= link_to "Publish to Doit", new_volunteer_op_doit_volunteer_op_path(@volunteer_op.id), class: 'btn btn-primary' %>
-<% end %>
-<% if @display_disabled_publish_button %>
-  <%= link_to "Published to Doit", new_volunteer_op_doit_volunteer_op_path(@volunteer_op.id), class: 'btn btn-primary disabled' %>
-<% end %>
 <% if @editable %>
   <%= link_to("Edit", edit_volunteer_op_path(@volunteer_op.id), {:class => 'btn btn-primary'}) %>
   <%= link_to("Delete", volunteer_op_path(@volunteer_op.id), {method: :delete, :class => 'btn btn-danger'}) %>

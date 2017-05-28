@@ -51,7 +51,7 @@ module Doit
 
     def set_options
       {
-        headers: { 'X-API-Key' => ENV['X-AUTH-TOKEN'] },
+        headers: { 'X-API-Key' => ENV['DOIT_AUTH_TOKEN'] },
         query: { page: 1 }
       }
     end
