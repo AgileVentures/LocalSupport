@@ -19,7 +19,6 @@ LocalSupport::Application.routes.draw do
   resources :pages, only: [:index, :new, :create, :edit]
   resources :volunteer_ops, :only => [:index, :edit, :show, :update, :destroy] do
     get 'search', on: :collection
-    resources :doit_volunteer_ops, only: [:new, :create]
   end
   resources :proposed_organisation_edits, :only => [:index]
   resources :organisations do

@@ -23,6 +23,24 @@ Given(/^I submit a volunteer op with address on the org page/) do |volunteer_ops
   end
 end
 
+Given(/^I submit a volunteer op to Doit/) do |volunteer_ops_table|
+  volunteer_ops_table.hashes.each do |volunteer_op|
+    org = Organisation.find_by_name(volunteer_op['org_name'])
+    visit organisation_path org
+    click_link 'Create a Volunteer Opportunity'
+    expect(current_path).to eq new_organisation_volunteer_op_path org
+    fill_in 'Title', with: volunteer_op['title']
+    fill_in 'Description', with: volunteer_op['desc']
+    fill_in 'Address', with: volunteer_op['address']
+    fill_in 'Postcode', with: volunteer_op['postcode']
+    check('check_to_doit')
+    select('Help Out Harrow!', from: 'Doit organisation')
+    fill_in 'Advertise start date', with: 10.days.ago.strftime("%F")
+    fill_in 'Advertise end date', with: 10.days.from_now.strftime("%F")
+    click_on 'Create a Volunteer Opportunity'
+  end
+end
+
 regex = /^I run the import doit service( with a radius of (\d+\.?\d*) miles)?$/
 Given(regex) do |override, radius|
   if override
