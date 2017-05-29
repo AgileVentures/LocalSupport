@@ -23,7 +23,7 @@ class EventsController < ApplicationController
   private
 
   def event_success
-    "Event was successfully created"
+    'Event was successfully created'
   end
 
   def event_params
