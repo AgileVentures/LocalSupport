@@ -2,16 +2,20 @@
   <h1>Harrow Community Network</h1>
   <p>Harrow Community Network is a service provided by Voluntary Action Harrow Cooperative to help local residents and organisations to discover volunteer opportunities in the Harrow area.</p>
 </div>
-<%= render "search_form" %>
+<%= render 'search_form' %>
 <br>
-<div id="orgs_scroll" style="height:410px;width:100%;border:1px solid #ccc;overflow:scroll;">
-  <div class="table table-bordered">
+<div id='orgs_scroll' style="height:410px;width:100%;border:1px solid #ccc;overflow:scroll;">
+  <div class='table table-bordered'>
     <table>
       <% @volunteer_ops.each do |op| %>
           <tr>
-            <td>
-              <strong><%= link_to_vol_op(op, :title) %></strong><br/>
-              <div id="organisations">
+            <td class='center-map-on-op'
+                data-lat="<%= op.latitude %>" 
+                data-lng="<%= op.longitude %>"  >
+              <strong>
+                <%= link_to_vol_op(op, :title) %>
+              </strong><br/>
+              <div id='organisations'>
                 <small><%= link_to_vol_op(op, :organisation) %></small>
                 <br/>
               </div>
@@ -27,5 +31,3 @@
 <% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
 
 <% render 'shared/map_legend_doit_script' %>
-
-

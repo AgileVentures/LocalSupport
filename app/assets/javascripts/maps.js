@@ -53,10 +53,21 @@ function initMap() {
   });
 }
 
+function centerMap(lat, lng) {
+  map.setCenter({ lat: lat, lng: lng });
+}
+
 google.maps.event.addDomListener(window, "load", initMap);
 
 $(document).ready(function() {
   if (($('#content').height() - 14) >= 400) {
     $('#map-canvas').height($('#content').height() - 14);
   }
+  
+  $('.center-map-on-op').mouseover(function () {
+    var lat = parseFloat($(this).attr('data-lat')),
+    lng = parseFloat($(this).attr('data-lng'));
+    
+    centerMap(lat, lng);
+  });
 });

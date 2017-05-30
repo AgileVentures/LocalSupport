@@ -230,6 +230,26 @@ describe VolunteerOp, type: :model do
       end
     end
   end
+  
+  describe '.add_coordinates' do
+    it 'returns volunteer ops with coordinates' do
+      org1 = create(:organisation, address: '', postcode: '', longitude: 77, latitude: 77)
+      org2 = create(:organisation, address: '', postcode: '', longitude: 62, latitude: 10)
+      
+      no_coord1 = build(:volunteer_op, longitude: nil, latitude: nil, organisation: org1)
+      no_coord2 = build(:volunteer_op, longitude: nil, latitude: nil, organisation: org2)
+      
+      res1 = no_coord1
+      res1.longitude = 77
+      res1.latitude = 77
+      
+      res2 = no_coord2
+      res1.longitude = 62
+      res1.latitude = 10
+
+      expect(VolunteerOp.add_coordinates([no_coord1, no_coord2])).to match_array([res1, res2])
+    end
+  end
 
   describe '.build_by_coordinates' do
     it 'returns volunteer ops grouped by coordinates' do
