@@ -17,5 +17,12 @@ module Doit
         expect(res).to be_truthy
       end
     end
+
+    describe 'env var' do
+      it 'must be displayed!!' do
+        p "DOit host: #{ENV['DOIT_HOST']}"
+        p "Auth token: #{ENV['X-AUTH-TOKEN']}"
+      end
+    end
   end
 end
