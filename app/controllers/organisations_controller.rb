@@ -67,13 +67,11 @@ class OrganisationsController < BaseOrganisationsController
   def create
     # model filters for logged in users, but we check here if that user is an superadmin
     # TODO refactor that to model responsibility?
-    org_params = OrganisationParams.build params
-
     unless current_user.try(:superadmin?)
       flash[:notice] = PERMISSION_DENIED
       redirect_to organisations_path and return false
     end
-    @organisation = Organisation.new(org_params)
+    @organisation = Organisation.new(organisation_params)
     if @organisation.save
       redirect_to @organisation, notice: 'Organisation was successfully created.'
     else
@@ -85,9 +83,8 @@ class OrganisationsController < BaseOrganisationsController
   # PUT /organisations/1.json
   def update
     params[:organisation][:superadmin_email_to_add] = params[:organisation_superadmin_email_to_add] if params[:organisation]
-    update_params = OrganisationParams.build params
     return false unless user_can_edit? @organisation
-    if @organisation.update_attributes_with_superadmin(update_params)
+    if @organisation.update_attributes_with_superadmin(organisation_params)
       redirect_to @organisation, notice: 'Organisation was successfully updated.'
     else
       render action: "edit"
@@ -108,8 +105,9 @@ class OrganisationsController < BaseOrganisationsController
     redirect_to organisations_path
   end
 
-  class OrganisationParams
-    def self.build params
+  private
+
+  def organisation_params
       params.require(:organisation).permit(
         :superadmin_email_to_add,
         :description,
@@ -123,13 +121,12 @@ class OrganisationsController < BaseOrganisationsController
         :donation_info,
         :name,
         :telephone,
+        :these,
+        :utf8,
+        :commit,
         category_ids: []
       )
-    end
-
   end
-
-  private
 
   def set_organisation
     @organisation = Organisation.friendly.find(params[:id])

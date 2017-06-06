@@ -7,6 +7,8 @@ class SearchParamsParser
       :what_id,
       :who_id,
       :how_id,
+      :utf8,
+      :commit
     )
   end
 

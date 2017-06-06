@@ -1,4 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
+
+  before_action :permit_extra_params
+
   def create
     if params[:user]
       session[:proposed_org] = params[:user][:proposed_org]
@@ -35,6 +38,12 @@ class RegistrationsController < Devise::RegistrationsController
     def send_email_to_superadmin_about_signup user_email
       superadmin_emails = User.superadmins.pluck(:email)
       AdminMailer.new_user_sign_up(user_email, superadmin_emails).deliver_now
+    end
+
+    def permit_extra_params
+      devise_parameter_sanitizer.for(:sign_up) do |u| 
+        u.permit(:utf8, :commit, :email, :password, :password_confirmation) 
+      end
     end
 
 end
