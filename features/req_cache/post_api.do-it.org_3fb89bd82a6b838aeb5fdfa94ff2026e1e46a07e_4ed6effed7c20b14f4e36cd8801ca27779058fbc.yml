@@ -1,0 +1,25 @@
+---
+:scope: 
+:url: https://api.do-it.org/v2/opportunities
+:body: promoted=true&slot=opportunity_detail
+:status: 200
+:method: post
+:headers:
+  Access-Control-Allow-Credentials: 'true'
+  Access-Control-Allow-Headers: Content-Type, X-HTTP-Method-Override, X-Auth-Token,
+    X-Facebook-Token
+  Access-Control-Allow-Methods: DELETE, GET, HEAD, OPTIONS, POST, PUT
+  Access-Control-Allow-Origin: https://do-it.org
+  Access-Control-Expose-Headers: X-Auth-Token
+  Cache-Control: no-cache, no-store, must-revalidate
+  Content-Type: application/json
+  Date: Sun, 19 Mar 2017 15:55:39 GMT
+  Expires: '0'
+  Pragma: no-cache
+  Server: nginx/1.4.6 (Ubuntu)
+  Content-Length: '278'
+  Connection: close
+:content: '{"data":{"items":[]},"links":{"self":{"href":"/v2/opportunities","title":"You
+  are here."}},"meta":{"code":200,"current_page":1,"items_per_page":20,"sort_by":["title","updated","advertise_end_date"],"tenant":"doittrust","total_items":0,"total_pages":0,"version":"2016.11.24.0"}}
+
+'

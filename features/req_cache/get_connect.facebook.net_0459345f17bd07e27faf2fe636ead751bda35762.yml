@@ -1,0 +1,43 @@
+---
+:scope: 
+:url: https://connect.facebook.net/en_US/fbds.js
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Access-Control-Expose-Headers: X-FB-Content-MD5
+  x-fb-content-md5: b89df91691c286bcccaa3064c34ce6a2
+  ETag: '"2ea1d6e9cb2f4d808d87585316c90056"'
+  X-Frame-Options: DENY
+  Strict-Transport-Security: max-age=15552000; preload
+  Content-Type: application/x-javascript; charset=utf-8
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: '0'
+  timing-allow-origin: "*"
+  content-security-policy: 'default-src * data: blob:;script-src *.facebook.com *.fbcdn.net
+    *.facebook.net *.google-analytics.com *.virtualearth.net *.google.com 127.0.0.1:*
+    *.spotilocal.com:* ''unsafe-inline'' ''unsafe-eval'' fbstatic-a.akamaihd.net fbcdn-static-b-a.akamaihd.net
+    *.atlassolutions.com blob: data: ''self'';style-src data: ''unsafe-inline'' *;connect-src
+    *.facebook.com *.fbcdn.net *.facebook.net *.spotilocal.com:* *.akamaihd.net wss://*.facebook.com:*
+    https://fb.scanandcleanlocal.com:* *.atlassolutions.com attachment.fbsbx.com ws://localhost:*
+    blob: *.cdninstagram.com ''self'' chrome-extension://boadgeojelhgndaghljhdicfkmllpafd
+    chrome-extension://dliochdbjfkdbacpmhlcpmleaejidimm;'
+  Cache-Control: public,max-age=1200,stale-while-revalidate=3600
+  Expires: Tue, 14 Feb 2017 08:36:33 GMT
+  Vary: Accept-Encoding
+  Content-Encoding: gzip
+  Content-MD5: 7WU5frRRwquw3qqRevsmcw==
+  X-FB-Debug: M+cI5tG/2OsMF4OmTuPfubu3MdkSxu4Zt2EZG2tmHzN3rrmYhMHcvqeEPHwBJ9rcVYLUtvzBqly49dSyokeovw==
+  Date: Tue, 14 Feb 2017 08:17:32 GMT
+  Connection: close
+  Content-Length: '1587'
+:content: |-
+  /*1487060193,,JIT Construction: v2832002,en_US*/
+
+  /**
+   * Copyright Facebook Inc.
+   *
+   * Licensed under the Apache License, Version 2.0
+   * http://www.apache.org/licenses/LICENSE-2.0
+   */
+  try {(function(a,b,c,d){var e=a._fbq||(a._fbq=[]);if(e.push!==Array.prototype.push)return;var f=/^\d+$/,g='https://www.facebook.com/tr/',h={},i=[],j=c.href,k=b.referrer,l=a.top!==a;function m(v){var w=[];for(var x=0,y=v.length;x<y;x++)w.push(v[x][0]+'='+encodeURIComponent(v[x][1]));return w.join('&');}function n(v,w){var x=function y(){if(v.detachEvent){v.detachEvent('onload',y);}else v.onload=null;w();};if(v.attachEvent){v.attachEvent('onload',x);}else v.onload=x;}function o(v,w){var x='fb'+Math.random().toString().replace('.',''),y=b.createElement('form');y.method='post';y.action=v;y.target=x;y.acceptCharset='utf-8';y.style.display='none';var z=!!(a.attachEvent&&!a.addEventListener),aa=z?'<iframe name="'+x+'">':'iframe',ba=b.createElement(aa);ba.src='javascript:false';ba.id=x;ba.name=x;y.appendChild(ba);n(ba,function(){for(var ca=0,da=w.length;ca<da;ca++){var ea=b.createElement('input');ea.name=w[ca][0];ea.value=w[ca][1];y.appendChild(ea);}n(ba,function(){y.parentNode.removeChild(y);});y.submit();});b.body.appendChild(y);}h.addPixelId=function(v){i.push(v);};h.track=function(v,w){var x=typeof v;if(x!=='string'&&x!=='number')return false;if(f.test(v)){p(null,v,w);return true;}for(var y=0,z=i.length;y<z;y++)p(i[y],v,w);return i.length>0;};function p(v,w,x){var y=[];y.push(['id',v]);y.push(['ev',w]);y.push(['dl',j]);y.push(['rl',k]);y.push(['if',l]);y.push(['ts',new Date().valueOf()]);if(x&&typeof x==='object')for(var z in x)if(x.hasOwnProperty(z)){var aa=x[z],ba=aa===null?'null':typeof aa;if(ba in {number:1,string:1,boolean:1}){y.push(['cd['+encodeURIComponent(z)+']',aa]);}else if(ba==='object'){aa=typeof JSON==='undefined'?String(aa):JSON.stringify(aa);y.push(['cd['+encodeURIComponent(z)+']',aa]);}}var ca=m(y);if(2048>(g+'?'+ca).length){var da=new Image();da.src=g+'?'+ca;}else o(g,y);}var q=function v(w){if(Object.prototype.toString.call(w)!=='[object Array]')return false;var x=w.shift();if(!x)return false;var y=h[x];if(typeof y!=='function')return false;if(a._fbds){var z=a._fbds.pixelId;if(f.test(z)){i.push(z);delete a._fbds.pixelId;}}return y.apply(h,w);};for(var r=0,s=e.length;r<s;++r)q(e[r]);e.push=q;if(e.disablePushState===true)return;if(!d.pushState||!d.replaceState)return;var t=function v(){k=j;j=c.href;e.push(['track','PixelInitialized']);},u=function v(w,x,y){var z=w[x];w[x]=function(){var aa=z.apply(this,arguments);y.apply(this,arguments);return aa;};};u(d,'pushState',t);u(d,'replaceState',t);a.addEventListener('popstate',t,false);})(window,document,location,history);} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"2832002","namespace":"FB","message":"'+e.message+'"}}');}

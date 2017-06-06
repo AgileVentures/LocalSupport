@@ -1,0 +1,24 @@
+---
+:scope: 
+:url: http://graph.facebook.com/?id=http%3A%2F%2F127.0.0.1%3A40163%2Forganisations%2Fhelpful-folk&callback=_ate.cbs.rcb_i7m70
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Access-Control-Allow-Origin: "*"
+  ETag: '"65fa24082e08ab33f328fd82a8c95aa5bfd44aa6"'
+  Pragma: no-cache
+  Cache-Control: private, no-cache, no-store, must-revalidate
+  x-fb-rev: '2878037'
+  Content-Type: application/json; charset=UTF-8
+  x-fb-trace-id: HOcmbrMtpzj
+  facebook-api-version: v2.2
+  Expires: Sat, 01 Jan 2000 00:00:00 GMT
+  X-FB-Debug: bfH0Q+JyhDEDNPT9TQgpBXe/HKyyIoj0EjE+BE9q1OAjUtYnO7onCTQFbmq/ljGtiClB5Kvehtxm6jrS+CNQcQ==
+  Date: Wed, 08 Mar 2017 19:14:44 GMT
+  Connection: close
+  Content-Length: '90'
+:content: |-
+  /**/ _ate.cbs.rcb_i7m70({
+     "id": "http://127.0.0.1:40163/organisations/helpful-folk"
+  });

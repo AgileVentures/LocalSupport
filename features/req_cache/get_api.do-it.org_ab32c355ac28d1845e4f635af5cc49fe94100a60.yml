@@ -1,0 +1,25 @@
+---
+:scope: 
+:url: https://api.do-it.org/v2/opportunities/79ae1022-9059-40c0-82dd-3f5b15dd796a
+:body: ''
+:status: 404
+:method: get
+:headers:
+  Access-Control-Allow-Credentials: 'true'
+  Access-Control-Allow-Headers: Content-Type, X-HTTP-Method-Override, X-Auth-Token,
+    X-Facebook-Token
+  Access-Control-Allow-Methods: DELETE, GET, HEAD, OPTIONS, POST, PUT
+  Access-Control-Allow-Origin: https://do-it.org
+  Access-Control-Expose-Headers: X-Auth-Token
+  Cache-Control: no-cache, no-store, must-revalidate
+  Content-Type: application/json
+  Date: Tue, 14 Feb 2017 08:17:32 GMT
+  Expires: '0'
+  Pragma: no-cache
+  Server: nginx/1.4.6 (Ubuntu)
+  Content-Length: '304'
+  Connection: close
+:content: '{"data":{},"links":{"self":{"href":"/v2/opportunities/79ae1022-9059-40c0-82dd-3f5b15dd796a","title":"You
+  are here."}},"meta":{"code":404,"error_message":"Not Found. Requested: /v2/opportunities/79ae1022-9059-40c0-82dd-3f5b15dd796a","error_type":"NotFound","tenant":"doittrust","version":"2016.11.24.0"}}
+
+'

@@ -1,0 +1,33 @@
+---
+:scope: 
+:url: https://fonts.googleapis.com/css?family=Montserrat:400,700
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: text/css; charset=utf-8
+  Access-Control-Allow-Origin: "*"
+  Timing-Allow-Origin: "*"
+  Expires: Thu, 26 Jan 2017 16:48:39 GMT
+  Date: Thu, 26 Jan 2017 16:48:39 GMT
+  Cache-Control: private, max-age=86400
+  Content-Encoding: gzip
+  Server: ESF
+  X-XSS-Protection: 1; mode=block
+  X-Frame-Options: SAMEORIGIN
+  Alt-Svc: quic=":443"; ma=2592000; v="35,34"
+  Connection: close
+  Transfer-Encoding: chunked
+:content: |
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v7/zhcz-_WihjSQC0oHJ9TCYC3USBnSvpkopQaUR-2r7iU.ttf) format('truetype');
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v7/IQHow_FEYlDC4Gzy_m8fcvEr6Hm6RMS0v1dtXsGir4g.ttf) format('truetype');
+  }

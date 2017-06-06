@@ -1,0 +1,23 @@
+---
+:scope: 
+:url: http://api-public.addthis.com/url/shares.json?url=http%3A%2F%2F127.0.0.1%3A39189%2Forganisations%2Fhelpful-folk&callback=_ate.cbs.rcb_d38q0
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Wed, 15 Mar 2017 05:38:38 GMT
+  Content-Type: application/json
+  Content-Length: '53'
+  Connection: close
+  Cache-Control: no-transform, must-revalidate, max-age=0, s-maxage=3600
+  Surrogate-Key: 127.0.0.1:39189/organisations/helpful-folk
+  Last-Modified: Wed, 15 Mar 2017 05:38:38 GMT
+  Content-Encoding: gzip
+  X-Varnish: '2703703274'
+  Via: 1.1 varnish
+  CF-Cache-Status: MISS
+  Vary: Accept-Encoding
+  Accept-Ranges: bytes
+  Server: cloudflare-nginx
+  CF-RAY: 33fd20ae73a828f0-DXB
+:content: _ate.cbs.rcb_d38q0({"shares":0});

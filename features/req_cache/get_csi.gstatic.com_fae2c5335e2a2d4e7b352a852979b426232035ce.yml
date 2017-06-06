@@ -1,0 +1,19 @@
+---
+:scope: 
+:url: https://csi.gstatic.com/csi?v=2&s=mapsapi3&v3v=27.10&action=apiboot2&e=10_1_0,10_2_0&rt=main.11
+:body: ''
+:status: 204
+:method: get
+:headers:
+  Access-Control-Allow-Origin: "*"
+  Date: Tue, 14 Mar 2017 11:54:26 GMT
+  Pragma: no-cache
+  Expires: Fri, 01 Jan 1990 00:00:00 GMT
+  Cache-Control: no-cache, no-store, must-revalidate
+  Last-Modified: Wed, 21 Jan 2004 19:51:30 GMT
+  Content-Type: image/gif
+  Server: Golfe2
+  Content-Length: '0'
+  Alt-Svc: quic=":443"; ma=2592000; v="36,35,34"
+  Connection: close
+:content: ''
