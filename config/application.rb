@@ -19,7 +19,7 @@ module LocalSupport
 
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += %W(#{config.root}/services)
-
+    config.autoload_paths << Rails.root.join('lib')
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
@@ -51,6 +51,6 @@ module LocalSupport
     config.assets.version = '1.0'
 
     config.assets.initialize_on_precompile = false
-
+    config.active_job.queue_adapter = :sucker_punch
   end
 end
