@@ -74,6 +74,7 @@ gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'bootstrap_sortable_rails', '~> 0.1.3'
 gem 'breadcrumbs_on_rails'
+gem 'bootstrap-datepicker-rails'
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -95,7 +96,7 @@ gem 'redcarpet'
 gem 'url_validator', git: 'https://github.com/AgileVentures/url_validator.git'
 
 gem 'httparty'
-
+gem 'sucker_punch', '~> 2.0' # async job
 gem 'rails_autolink'
 gem "paranoia", "~> 2.0"
 

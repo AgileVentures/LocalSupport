@@ -45,6 +45,14 @@ Feature: Org superadmin creating a volunteer work opportunity
     Then I should be on the show page for the volunteer_op titled "Hard Work"
     And I should see "Hard Work", "For no pay" and "Organisation: Friendly"
 
+  @vcr @javascript
+  Scenario: Site Super Admin users can create and post Volunteer Opportunities to Doit
+    Given I am signed in as a superadmin
+    And I submit a volunteer op to Doit
+      | title | desc     | address    | postcode | org_name |
+      | Ops1  | For free | Station Rd | HA8 7BD  | Friendly |
+    Then I should see "Ops1", "For free", "Station Rd, HA8 7BD" and "Organisation: Friendly"
+
   Scenario: Signed In Users cannot create volunteer opportunities
     Given I am signed in as a charity worker related to "Shy"
     And I visit the show page for the organisation named "Friendly"
