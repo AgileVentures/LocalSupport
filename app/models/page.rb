@@ -1,14 +1,13 @@
 class Page < ActiveRecord::Base
   #attr_accessible :content, :name, :permalink, :link_visible
   validates :name, presence: true
-  validates :permalink, presence: true
-  validates_uniqueness_of :permalink
+  validates :permalink, presence: true, uniqueness: true
 
   # Provides links for page footers
   def self.visible_links
     pages = Page.where(link_visible: true)
     pages.map do |page|
-      {:name => page.name, :permalink => page.permalink}
+      {name: page.name, permalink: page.permalink}
     end
   end
 
