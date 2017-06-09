@@ -88,7 +88,7 @@ describe 'layouts/application.html.erb', :type => :view do
 
     it 'renders a Volunteers link' do
       render
-      expect(rendered).to have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{volunteer_ops_path}\"]")
+      expect(rendered).to have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{root_path}\"]")
     end
 
     it 'login form should be visible', :js => true do
@@ -203,7 +203,7 @@ describe 'layouts/application.html.erb', :type => :view do
     it 'show volunteers link when feature is active' do
       expect(view).to receive(:feature_active?).with(:volunteer_ops_list).and_return(true)
       render
-      expect(rendered).to have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{volunteer_ops_path}\"]")
+      expect(rendered).to have_xpath("//div[@id=\"navbar\"]//a[@href=\"#{root_path}\"]")
     end
   end
 end
