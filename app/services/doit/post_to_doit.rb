@@ -16,7 +16,7 @@ module Doit
     def call
       options = {}
 
-      options[:headers] = { 'X-API-Key' => ENV['DOIT_AUTH_TOKEN'],
+      options[:headers] = { 'X-API-Key' => DOIT_AUTH_TOKEN,
                             'Content-Type' => 'application/json' }
       options[:body] = build_request_body
       http_adapter.post("#{ENV['DOIT_HOST']}#{doit_volonteer_op_resource}", options)
