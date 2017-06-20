@@ -19,7 +19,8 @@ class ApplicationController < ActionController::Base
         volunteer_ops
     )
   end
-  # Devise wiki suggests we need to make this return nil for the after_inactive_signup_path_for to be called in registrationscontroller
+  # Devise wiki suggests we need to make this return nil for the
+  # after_inactive_signup_path_for to be called in registrationscontroller
   # https://github.com/plataformatec/devise/wiki/How-To%3a-Change-the-redirect-path-after-destroying-a-session-i.e.-signing-out
   #Also documented on last stackoverflow answer here:
   #http://stackoverflow.com/questions/21571569/devise-after-sign-up-path-for-not-being-called
@@ -48,7 +49,8 @@ class ApplicationController < ActionController::Base
     return edit_user_path id: current_user.id if session[:pending_organisation_id]
     return organisation_path(current_user.organisation) if current_user.organisation
     return session[:previous_url] if session[:previous_url]
-    return organisation_path(Organisation.find(current_user.pending_organisation_id)) if current_user.pending_organisation_id
+    return organisation_path(Organisation.find(current_user.pending_organisation_id)) if
+      current_user.pending_organisation_id
     root_path
   end
 
@@ -96,7 +98,10 @@ class ApplicationController < ActionController::Base
 
   def set_flash_warning_reminder_to_update_details usr
     if usr.organisation and not usr.organisation.has_been_updated_recently?
-      msg = render_to_string(partial: "shared/call_to_action", locals: {org: usr.organisation}).html_safe
+      msg = render_to_string(
+        partial: "shared/call_to_action",
+        locals: {org: usr.organisation}
+      ).html_safe
       if flash[:warning]
         flash[:warning] << ' ' << msg
       else
