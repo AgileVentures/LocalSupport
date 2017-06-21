@@ -42,8 +42,8 @@ end
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
-  gem 'capybara', '2.4.1'
-  gem "capybara-webkit", "~> 1.6.0"
+  gem 'capybara', '~> 2.13.0'
+  gem "capybara-webkit", "~> 1.14.0"
   gem 'factory_girl_rails', :require => false
   gem 'webmock', '1.20.0'
   gem 'uri-handler'
@@ -101,10 +101,12 @@ gem "paranoia", "~> 2.0"
 
 gem 'dotenv-rails'
 gem 'figaro'
-gem 'airbrake'
+gem 'airbrake', '~> 5.4.4'
+gem 'airbrake-ruby', '~> 1.4.4'
 
 # Using user friendly names in URLs
 gem 'friendly_id', '~> 5.1.0'
 
 # SEO
 gem 'meta-tags'
+
