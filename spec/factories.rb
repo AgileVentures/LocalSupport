@@ -1,5 +1,4 @@
 FactoryGirl.define do
-
   factory :organisation do
     name "friendly non profit"
     description "we are really really friendly"
@@ -117,6 +116,27 @@ FactoryGirl.define do
     body 'Test template body'
     footnote 'Test template footnote'
     email 'test@test.com'
+  end
+
+  factory :event do
+    title "Some Random Event"
+    description "Something about an event"  
+    start_date { DateTime.now() }
+    end_date { DateTime.now() }
+  end
+
+  factory :upcoming_events, class: Event do
+    title "Upcoming Event"
+    description "An event that is coming up soon"
+    start_date { DateTime.now() + 1.day }
+    end_date { DateTime.now() + 1.day }
+  end
+
+  factory :previous_events, class: Event do
+    title "Past Event"
+    description "An event that has already passed"
+    start_date { DateTime.now() - 1.day }
+    end_date { DateTime.now() - 1.day }
   end
 
 end
