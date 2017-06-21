@@ -44,7 +44,7 @@ group :test do
   gem 'cucumber-rails-training-wheels'
   gem 'capybara', '2.4.1'
   gem 'capybara-webkit', '~> 1.6.0'
-  gem 'nokogiri', '~> 1.7.0'
+  gem 'nokogiri', '~> 1.7.2'
   gem 'factory_girl_rails', :require => false
   gem 'webmock', '1.20.0'
   gem 'uri-handler'
