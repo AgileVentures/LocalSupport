@@ -1,0 +1,23 @@
+@import "utils/colors";
+
+.event_h3 {
+  margin: 10px 0px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: bold;
+  line-height: 20px;
+  color: inherit;
+  text-rendering: optimizelegibility;
+}
+
+
+#events_scroll {
+  height: 340px;
+  width: 100%;
+  border: 1px solid #ccc;
+  overflow-y: scroll;
+}
+
+hr {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
