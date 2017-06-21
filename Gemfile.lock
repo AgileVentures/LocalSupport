@@ -421,7 +421,7 @@ DEPENDENCIES
   letter_opener
   meta-tags
   newrelic_rpm
-  nokogiri (~> 1.7.0)
+  nokogiri (~> 1.7.2)
   paranoia (~> 2.0)
   pg
   phantomjs
