@@ -17,7 +17,7 @@
 
             <div class="nav-collapse collapse">
               <ul id="button-rack" class="nav nav-pills pull-right">
-                <li class = "<%= 'active' if current_page?(root_url)%>">
+                <li class = "<%= 'active' if current_page?(root_url) || current_page?(volunteer_ops_path) %>">
                   <%= link_to "Home", root_path %>
                 </li>
                 <li class="<%= active_if 'organisations' %>">
