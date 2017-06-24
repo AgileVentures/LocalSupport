@@ -1,6 +1,5 @@
 module TwitterHelper
 
-
   private
 
   def twitter_client
@@ -10,5 +9,9 @@ module TwitterHelper
       config.access_token        = ENV["TWITTER_ACCESS_TOKEN"]
       config.access_token_secret = ENV["TWITTER_ACCESS_TOKEN_SECRET"]
     end
+  end
+
+  def tweet_size(msg)
+    msg.chars[0..139].join
   end
 end
