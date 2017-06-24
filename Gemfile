@@ -36,7 +36,7 @@ group :development do
   gem 'letter_opener'
   gem 'railroady'
   gem 'quiet_assets'
-  
+
 end
 
 group :test do
@@ -109,4 +109,7 @@ gem 'friendly_id', '~> 5.1.0'
 
 # SEO
 gem 'meta-tags'
+
+#Social
+gem 'twitter'
 
