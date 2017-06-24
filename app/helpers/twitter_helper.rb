@@ -1,4 +1,7 @@
 module TwitterHelper
+  def post_to_twitter(msg)
+    twitter_client.update(tweet_size(msg))
+  end
 
   private
 
