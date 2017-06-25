@@ -1,4 +1,4 @@
-class TwitterAPI
+class TwitterApi
   attr_reader :client
 
   def initialize

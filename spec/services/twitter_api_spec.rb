@@ -1,9 +1,8 @@
 require 'rails_helper'
-require './app/services/twitter.rb'
 
-describe TwitterAPI do
+describe TwitterApi do
   before(:all) do
-    @twitter_client = TwitterAPI.new()
+    @twitter_client = TwitterApi.new()
     WebMock.allow_net_connect!
   end
 
