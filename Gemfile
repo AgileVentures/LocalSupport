@@ -112,4 +112,5 @@ gem 'meta-tags'
 
 #Social
 gem 'twitter'
+gem 'koala' # Facebook integration
 
