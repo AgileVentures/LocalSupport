@@ -1,6 +1,5 @@
 require 'rails_helper'
 require './app/services/twitter.rb'
-require 'byebug'
 
 describe TwitterAPI do
   before(:all) do
