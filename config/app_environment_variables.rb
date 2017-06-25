@@ -6,7 +6,7 @@
 # are protected.
 # https://twitter.com/agileVenturTest
 
-if Rails.env.test?
+if Rails.env.test? || Rails.env.development?
   ENV["TWITTER_CONSUMER_KEY"]         = "NYUqRmZOGF8tuIwaIRTwX2fa5"
   ENV["TWITTER_CONSUMER_SECRET"]      = "m8oS1jF445HJfhsKjLyJ47x9VUM8mTijZaV9xMSXilCTZSE7NI"
   ENV["TWITTER_ACCESS_TOKEN"]         = "878610381563990016-FeYOp32CtyIu9v4E6ydCJI1cDF2KILw"
