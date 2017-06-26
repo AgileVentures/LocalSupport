@@ -50,6 +50,7 @@ class ApplicationController < ActionController::Base
     return organisation_path(current_user.organisation) if current_user.organisation
     return session[:previous_url] if session[:previous_url]
     return requested_organisation_path if current_user.pending_organisation_id
+    root_path
   end
 
   # Devise Invitable hook
