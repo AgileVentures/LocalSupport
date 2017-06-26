@@ -49,8 +49,7 @@ class ApplicationController < ActionController::Base
     return edit_user_path id: current_user.id if session[:pending_organisation_id]
     return organisation_path(current_user.organisation) if current_user.organisation
     return session[:previous_url] if session[:previous_url]
-    return requested_organisation_path if user_requested_organisation_admin_status?
-    root_path
+    return requested_organisation_path if current_user.pending_organisation_id
   end
 
   # Devise Invitable hook
@@ -138,9 +137,5 @@ class ApplicationController < ActionController::Base
 
   def requested_organisation_path
     organisation_path(Organisation.find(current_user.pending_organisation_id))
-  end
-
-  def user_requested_organisation_admin_status?
-    current_user.pending_organisation_id
   end
 end
