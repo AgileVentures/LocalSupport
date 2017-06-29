@@ -90,14 +90,10 @@ class VolunteerOpForm
   end
 
   def validate_children
-    if volunteer_op.invalid?
-      promote_errors(volunteer_op.errors)
-    end
+    promote_errors(volunteer_op.errors) if volunteer_op.invalid?
 
-    if post_to_doit?
-      if doit_volunteer_op.invalid?
-        promote_errors(doit_volunteer_op.errors)
-      end
+    if post_to_doit? && doit_volunteer_op.invalid?
+      promote_errors(doit_volunteer_op.errors)
     end
   end
 

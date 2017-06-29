@@ -49,7 +49,7 @@ module Doit
           {
             address: volunteer_op.address,
             postcode: volunteer_op.postcode,
-            location_type: "SL",
+            location_type: 'SL',
             lat: volunteer_op.latitude,
             lng: volunteer_op.longitude
           }

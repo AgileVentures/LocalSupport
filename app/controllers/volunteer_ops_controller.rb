@@ -30,9 +30,7 @@ class VolunteerOpsController < ApplicationController
 
   def new
     @volunteer_op = VolunteerOpForm.new
-    if current_user.superadmin?
-      @can_publish_to_doit = true
-    end
+    @can_publish_to_doit = true if current_user.superadmin?
   end
 
   def create

@@ -7,6 +7,6 @@ module StringUtility
     sentence.split.reject do |word|
       size+=word.size
       size>char_limit
-    end.join(" ")+(sentence.size  >char_limit ? ' '+ '...' : '' )
+    end.join(' ')+(sentence.size  >char_limit ? ' '+ '...' : '' )
   end
 end
