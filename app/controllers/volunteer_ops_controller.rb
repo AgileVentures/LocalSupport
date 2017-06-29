@@ -3,7 +3,7 @@ class VolunteerOpsController < ApplicationController
   layout 'two_columns_with_map'
   before_action :set_organisation, only: [:new, :create]
   before_action :authorize, except: [:search, :show, :index]
-  prepend_before_action :set_volunteer_op, only: [:show]
+  prepend_before_action :set_volunteer_op, only: [:show, :edit]
 
   def search
     @query = params[:q]
