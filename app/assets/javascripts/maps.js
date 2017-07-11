@@ -19,7 +19,7 @@ function initMap() {
 
   var ib = new InfoBox();
   var ibOptions = {
-    pixelOffset: new google.maps.Size(-151, 10)
+    pixelOffset: new google.maps.Size(-140, 10)
   };
 
   var boxText = document.createElement("div");
