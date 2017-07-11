@@ -78,7 +78,7 @@ function openInfoBox(coordinates) {
   $.each(markers, function(key, value) {
     if (value.latlng.lat().toFixed(6) === coordinates['lat'].toFixed(6) 
         && value.latlng.lng().toFixed(6) === coordinates['lng'].toFixed(6))
-      new google.maps.event.trigger(value, 'click');
+      google.maps.event.trigger(value, 'click');
   });
 }
 
