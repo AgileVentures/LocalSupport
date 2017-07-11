@@ -89,14 +89,10 @@ $(document).ready(function() {
     $('#map-canvas').height($('#content').height() - 14);
   }
   
-  $('.center-map-on-op').mouseover(function() {
+  $('.center-map-on-op').mouseenter(function() {
     centerMap(getVolOpCoordinates(this));
-  }).mouseenter(function() {
     openInfoBox(getVolOpCoordinates(this));
   }).mouseleave(function() {
     closeInfoBox();
   });
 });
-
-
-
