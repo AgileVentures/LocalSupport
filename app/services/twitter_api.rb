@@ -14,22 +14,8 @@ class TwitterApi
     client.update(tweet_size(msg))
   end
 
-  def last_tweet
-    last_tweet_id.full_text
-  end
-
-  def delete_last_tweet
-    @client.destroy_status(last_tweet_id)
-  end
-
-  private
-
   def tweet_size(msg)
     msg[0..139]
-  end
-
-  def last_tweet_id
-    @client.home_timeline.first
   end
 
 end
