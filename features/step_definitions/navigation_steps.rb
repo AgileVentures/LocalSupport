@@ -42,7 +42,9 @@ def paths(location)
     'volunteer opportunities' => volunteer_ops_path,
     'volunteer opportunities search' => search_volunteer_ops_path,
     'deleted users' => deleted_users_report_path,
-    'reset password' => reset_pwd
+    'reset password' => reset_pwd,
+    'new event' => new_event_path,
+    'events' => events_path
   }[location]
 end
 

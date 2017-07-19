@@ -25,6 +25,6 @@ Feature: Home button in header
     Examples:
       | page                                              | status   |
       | home page                                         | active   |
-      | volunteer opportunities page                      | inactive |
+      | volunteer opportunities page                      | active |
       | organisations index page                          | inactive |
       | show page for the organisation named "Age UK"     | inactive |

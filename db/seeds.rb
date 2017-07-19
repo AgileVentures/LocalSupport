@@ -57,5 +57,7 @@ Feature.create(name: 'doit_volunteer_opportunities')
 Feature.activate('doit_volunteer_opportunities')
 Feature.create(name: 'reachskills_volunteer_opportunities')
 Feature.activate('reachskills_volunteer_opportunities')
+Feature.create(name: 'events')
+Feature.activate('events')
 
 Logger.new(STDOUT).info 'Seed completed'
