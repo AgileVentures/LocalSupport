@@ -62,16 +62,13 @@ class VolunteerOpForm
   end
 
   def save
-    if valid?
-      volunteer_op.save!
-      if post_to_doit?
-        trace_handler.add_entry(volunteer_op.id)
-        PostToDoitJob.perform_later(build_options)
-      end
-      true
-    else
-      false
+    return false unless valid?
+    volunteer_op.save!
+    if post_to_doit?
+      trace_handler.add_entry(volunteer_op.id)
+      PostToDoitJob.perform_later(build_options)
     end
+    true
   end
 
   private
@@ -91,15 +88,16 @@ class VolunteerOpForm
 
   def validate_children
     promote_errors(volunteer_op.errors) if volunteer_op.invalid?
+    promote_errors(doit_volunteer_op.errors) if valid_doit_post?
+  end
 
-    if post_to_doit? && doit_volunteer_op.invalid?
-      promote_errors(doit_volunteer_op.errors)
-    end
+  def valid_doit_post?
+    post_to_doit? && doit_volunteer_op.invalid?
   end
 
   def promote_errors(child_errors)
-      child_errors.each do |attribute, message|
-        errors.add(attribute, message)
-      end
+    child_errors.each do |attribute, message|
+      errors.add(attribute, message)
+    end
   end
 end

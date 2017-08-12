@@ -30,7 +30,11 @@ module Doit
       :doit_org_id,
       :http_adapter
 
-    def initialize(volunteer_op:, advertise_start_date:, advertise_end_date:, doit_org_id:, http_adapter: HTTParty)
+    def initialize(volunteer_op:,
+                   advertise_start_date:,
+                   advertise_end_date:,
+                   doit_org_id:,
+                   http_adapter: HTTParty)
       @volunteer_op = volunteer_op
       @advertise_start_date = advertise_start_date
       @advertise_end_date = advertise_end_date
@@ -45,17 +49,21 @@ module Doit
         blurb: smart_truncate(volunteer_op.description),
         description: volunteer_op.description,
         owner_recruiter_id: doit_org_id,
-        locations: [
-          {
-            address: volunteer_op.address,
-            postcode: volunteer_op.postcode,
-            location_type: 'SL',
-            lat: volunteer_op.latitude,
-            lng: volunteer_op.longitude
-          }
-        ],
+        locations: locations,
         title: volunteer_op.title
       }.to_json
+    end
+
+    def locations
+      [
+          {
+              address: volunteer_op.address,
+              postcode: volunteer_op.postcode,
+              location_type: 'SL',
+              lat: volunteer_op.latitude,
+              lng: volunteer_op.longitude
+          }
+      ]
     end
   end
 end

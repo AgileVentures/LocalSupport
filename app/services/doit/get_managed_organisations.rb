@@ -41,12 +41,16 @@ module Doit
       options = set_options
 
       loop do
-        response = http.get("#{ENV['DOIT_HOST']}#{organisations_resource}", options)
-        records = JSON.parse(response.body)['data']['items']
-        break unless records.try(:any?) # no items included on that page
-        records.each { |record| yield record }
-        options[:query][:page] += 1
+        get_all_records
       end
+    end
+
+    def get_all_records
+      response = http.get("#{ENV['DOIT_HOST']}#{organisations_resource}", options)
+      records = JSON.parse(response.body)['data']['items']
+      break unless records.try(:any?) # no items included on that page
+      records.each { |record| yield record }
+      options[:query][:page] += 1
     end
 
     def set_options
