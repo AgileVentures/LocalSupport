@@ -37,9 +37,7 @@ module Doit
       end
     end
     
-    def each
-      options = set_options
-
+    def each(options = set_options)
       loop do
         response = http.get("#{ENV['DOIT_HOST']}#{organisations_resource}", options)
         records = JSON.parse(response.body)['data']['items']
