@@ -1,12 +1,23 @@
 Then(/^I should see an infowindow when I click on the map markers:$/) do |table|
-  expect(page).to have_css('.measle', :count => table.raw.flatten.length)
-  Organisation.where(name: table.raw.flatten)
+  check_for_org_info_box(table.raw.flatten, '.measle')
+end
+
+Then (/^I should see an infowindow when mouse enters volop in table:$/) do |table|
+  check_for_org_info_box(table.raw.flatten, '.center-map-on-op') 
+end
+
+Then (/^I should not see an infowindow when mouse leaves volop in table:$/) do |table|
+  check_for_no_org_info_box(table.raw.flatten, '.center-map-on-op') 
+end
+
+def check_for_org_info_box tbl, selector
+  expect(page).to have_css(selector, :count => tbl.length)
+  Organisation.where(name: tbl)
         .pluck(:name, :description, :id, :slug)
         .map {|name, desc, id, frdly_id| [name, smart_truncate(desc, 42), id, frdly_id]}
         .each do |name, desc, id, friendly_id|
-      expect(page).to have_css(".measle[data-id='#{id}']")
-      icon =find(".measle[data-id='#{id}']")
-      click_twice icon
+      find(selector).trigger(:mouseenter) if selector == '.center-map-on-op'
+      click_map_icon(id) if selector == '.measle'
       expect(page).to have_css('.arrow_box')
       expect(find('.arrow_box').text).to include(desc)
       expect(find('.arrow_box').text).to include(name)
@@ -14,14 +25,36 @@ Then(/^I should see an infowindow when I click on the map markers:$/) do |table|
       expect(link).to end_with(organisation_path(friendly_id))
   end
 end
+
+def check_for_no_org_info_box tbl, selector
+  expect(page).to have_css(selector, :count => tbl.length)
+  Organisation.where(name: tbl)
+        .pluck(:name, :description, :id, :slug)
+        .map {|name, desc, id, frdly_id| [name, smart_truncate(desc, 42), id, frdly_id]}
+        .each do |name, desc, id, friendly_id|
+      find(selector).trigger(:mouseleave)
+      expect(page).not_to have_css('.arrow_box')
+      expect(find('.arrow_box').text).not_to include(desc)
+      expect(find('.arrow_box').text).not_to include(name)
+  end
+end
+
+def click_map_icon id
+  expect(page).to have_css(".measle[data-id='#{id}']")
+  icon = find(".measle[data-id='#{id}']")
+  click_twice icon
+end
+
 def click_twice elt
   elt.trigger('click')
   elt.trigger('click')
 end
+
 def find_map_icon klass, org_id
   expect(page).to have_css ".#{klass}[data-id='#{org_id}']"
   find(".#{klass}[data-id='#{org_id}']")
 end
+
 Then /^the (proposed organisation|organisation) "(.*?)" should have a (large|small) icon$/ do |type, name, icon_size|
   klass = case type
   when 'proposed organisation'
