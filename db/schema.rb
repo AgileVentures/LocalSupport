@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20170524080408) do
 
   add_index "doit_traces", ["volunteer_op_id"], name: "index_doit_traces_on_volunteer_op_id", using: :btree
 
-<<<<<<< HEAD
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -51,8 +50,6 @@ ActiveRecord::Schema.define(version: 20170524080408) do
     t.datetime "updated_at",  null: false
   end
 
-=======
->>>>>>> Post Volunteer Op to Doit [fixes #139801559]
   create_table "features", force: :cascade do |t|
     t.string  "name"
     t.boolean "active", default: false

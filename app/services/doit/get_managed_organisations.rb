@@ -13,7 +13,7 @@ module Doit
     end
 
     def call
-      organisations = find_all_accross_pages
+      organisations = find_all_across_pages
       format_result(organisations)
     end
 
@@ -25,7 +25,7 @@ module Doit
       @http = http
     end
 
-    def find_all_accross_pages
+    def find_all_across_pages
       records = []
       each { |record| records << record }
       records
