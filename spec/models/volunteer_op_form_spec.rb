@@ -16,17 +16,13 @@ RSpec.describe VolunteerOpForm do
                          "advertise_start_date"=>"",
                          "advertise_end_date"=>"",
                          "organisation_id" => org.id}
-        trace_double = double(add_entry: true)
         doit_volunteer_op = VolunteerOpForm.new(input_params)
         allow(doit_volunteer_op).to receive(:valid?).and_return(true)
-        allow_any_instance_of(VolunteerOpForm).to receive(:trace_handler).
-          and_return(trace_double)
         allow(PostToDoitJob).to receive(:perform_later)
 
         doit_volunteer_op.save
 
         expect(PostToDoitJob).to have_received(:perform_later)
-        expect(trace_double).to have_received(:add_entry)
       end
     end
   end

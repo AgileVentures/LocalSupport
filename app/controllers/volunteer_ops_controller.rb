@@ -42,7 +42,7 @@ class VolunteerOpsController < ApplicationController
 
   def edit
     volunteer_op_record = VolunteerOp.find(params[:id])
-    if current_user.superadmin? && DoitTrace.published?(volunteer_op_record.id)
+    if current_user.superadmin? && !DoitTrace.published?(volunteer_op_record.id)
       @can_publish_to_doit = true
     end
     @volunteer_op = VolunteerOpForm.new(volunteer_op: volunteer_op_record )

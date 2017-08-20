@@ -1,17 +1,21 @@
 class ImportDoItVolunteerOpportunities
 
-  def self.with(radius=0.5, http = HTTParty, model_klass = VolunteerOp)
-    new(http, model_klass, radius).send(:run)
+  def self.with(radius=0.5,
+                http = HTTParty,
+                model_klass = VolunteerOp,
+                trace_handler = DoitTrace)
+    new(http, model_klass, radius, trace_handler).send(:run)
   end
 
   private
 
-  attr_reader :http, :model_klass, :radius
+  attr_reader :http, :model_klass, :radius, :trace_handler
 
-  def initialize(http, model_klass, radius)
+  def initialize(http, model_klass, radius, trace_handler)
     @http = http
     @model_klass = model_klass
     @radius = radius
+    @trace_handler = trace_handler
   end
 
   HOST = 'https://api.do-it.org'
@@ -33,16 +37,18 @@ class ImportDoItVolunteerOpportunities
 
   def persist_doit_vol_ops(opportunities)
     opportunities.each do |op|
-      model_klass.find_or_create_by(doit_op_id: op['id']) do |model|
-        model.source = 'doit'
-        model.latitude = op['lat']
-        model.longitude = op['lng']
-        model.title = op['title']
-        model.description = op['description']
-        model.doit_op_id = op['id']
-        model.doit_org_name = op['for_recruiter']['name']
-        model.doit_org_link = op['for_recruiter']['slug']
-        model.updated_at = op['updated']
+      unless trace_handler.local_origin?(op['id'])
+        model_klass.find_or_create_by(doit_op_id: op['id']) do |model|
+          model.source = 'doit'
+          model.latitude = op['lat']
+          model.longitude = op['lng']
+          model.title = op['title']
+          model.description = op['description']
+          model.doit_op_id = op['id']
+          model.doit_org_name = op['for_recruiter']['name']
+          model.doit_org_link = op['for_recruiter']['slug']
+          model.updated_at = op['updated']
+        end
       end
     end
   end

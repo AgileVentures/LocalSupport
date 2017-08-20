@@ -19,7 +19,8 @@ module Doit
       options[:headers] = {'X-API-Key' => DOIT_AUTH_TOKEN,
                            'Content-Type' => 'application/json'}
       options[:body] = build_request_body
-      http_adapter.post("#{ENV['DOIT_HOST']}#{doit_volonteer_op_resource}", options)
+      doit_res = http_adapter.post("#{ENV['DOIT_HOST']}#{doit_volonteer_op_resource}", options)
+      JSON.parse(doit_res.body)['data']['opportunity']['id']
 
     end
 
