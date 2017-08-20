@@ -7,7 +7,7 @@ class PostToDoitJob < ActiveJob::Base
                            advertise_start_date: options.fetch(:advertise_start_date),
                            advertise_end_date: options.fetch(:advertise_end_date),
                            doit_org_id: options.fetch(:doit_org_id)
-                          )
+                                          )
     trace_handler.add_entry(volunteer_op.id, doit_volop_id)
   end
 end

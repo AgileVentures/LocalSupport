@@ -37,18 +37,17 @@ class ImportDoItVolunteerOpportunities
 
   def persist_doit_vol_ops(opportunities)
     opportunities.each do |op|
-      unless trace_handler.local_origin?(op['id'])
-        model_klass.find_or_create_by(doit_op_id: op['id']) do |model|
-          model.source = 'doit'
-          model.latitude = op['lat']
-          model.longitude = op['lng']
-          model.title = op['title']
-          model.description = op['description']
-          model.doit_op_id = op['id']
-          model.doit_org_name = op['for_recruiter']['name']
-          model.doit_org_link = op['for_recruiter']['slug']
-          model.updated_at = op['updated']
-        end
+      next if trace_handler.local_origin?(op['id'])
+      model_klass.find_or_create_by(doit_op_id: op['id']) do |model|
+        model.source = 'doit'
+        model.latitude = op['lat']
+        model.longitude = op['lng']
+        model.title = op['title']
+        model.description = op['description']
+        model.doit_op_id = op['id']
+        model.doit_org_name = op['for_recruiter']['name']
+        model.doit_org_link = op['for_recruiter']['slug']
+        model.updated_at = op['updated']
       end
     end
   end
