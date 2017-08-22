@@ -6,7 +6,7 @@ module Doit
     # http://docs.doit.apiary.io/#reference/opportunities/opportunities/create?console=1
 
     def doit_volonteer_op_resource
-      '/opportunities'
+      "#{ENV['DOIT_HOST']}/opportunities"
     end
 
     def self.call(*args)
@@ -19,7 +19,7 @@ module Doit
       options[:headers] = {'X-API-Key' => DOIT_AUTH_TOKEN,
                            'Content-Type' => 'application/json'}
       options[:body] = build_request_body
-      doit_res = http_adapter.post("#{ENV['DOIT_HOST']}#{doit_volonteer_op_resource}", options)
+      doit_res = http_adapter.post(doit_volonteer_op_resource, options)
       JSON.parse(doit_res.body)['data']['opportunity']['id']
 
     end
