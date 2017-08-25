@@ -9,7 +9,8 @@ In order to work on LocalSupport on Mac, please fork and clone the project.
 1. Clone the new forked repo onto your dev machine.
 1. `cd LocalSupport`.
 1. Install Qt webkit headers.
-Install Homebrew (if you don't have it already). If you do have Homebrew, run `brew update` after brew is installed or updated, type `brew install qt`. This will allow you to install capybara-webkit -v '1.0.0' successfully.
+Install Homebrew (if you don't have it already). If you do have Homebrew, run `brew update` and after brew is installed or updated, type `brew install qt@5.5`
+This will allow you to install capybara-webkit -v '1.0.0' successfully.
 1. Install postgreSQL.
 Type `psql` into command line. Then you should see this:
 
@@ -43,7 +44,15 @@ The db/seeds.rb task that you ran added some organizations and a test user that 
 ## Run tests
 
 Also you should run the specs and cucumber features to make sure your installation is solid. For confidence, you shall prepare the test database first by running
-`rake db:test:prepare`(not needed in ruby starting from 2.0.0), then run tests using following commands:
+`rake db:test:prepare`(not needed in ruby starting from 2.0.0).
+
+Before running the tests you should create a file named `config/application.yml` and add the following line:
+
+```yaml
+DOIT_HOST: 'http://api.qa2.do-it.org/v2'
+```
+
+then run tests using following commands:
 
     bundle exec rake spec
     bundle exec rake cucumber
