@@ -84,15 +84,22 @@ function openInfoBox(coordinates) {
 
 google.maps.event.addDomListener(window, "load", initMap);
 
+var debouceOpenInfoBox = _.debounce(function(volop) {
+    if ($(volop).attr('data-lat') != '' && $(volop).attr('data-lng') != '') {
+      centerMap(getVolOpCoordinates(volop));
+      openInfoBox(getVolOpCoordinates(volop));
+    }
+}, 300);
+
 $(document).ready(function() {
   if (($('#content').height() - 14) >= 400) {
     $('#map-canvas').height($('#content').height() - 14);
   }
-  
-  $('.center-map-on-op').mouseenter(function() {
-    centerMap(getVolOpCoordinates(this));
-    openInfoBox(getVolOpCoordinates(this));
-  }).mouseleave(function() {
+
+  $('.center-map-on-op').mouseenter(function () {
+    debouceOpenInfoBox(this);
+  })
+  .mouseleave(function() {
     closeInfoBox();
   });
 });
