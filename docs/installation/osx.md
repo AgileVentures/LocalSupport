@@ -44,7 +44,15 @@ The db/seeds.rb task that you ran added some organizations and a test user that 
 ## Run tests
 
 Also you should run the specs and cucumber features to make sure your installation is solid. For confidence, you shall prepare the test database first by running
-`rake db:test:prepare`(not needed in ruby starting from 2.0.0), then run tests using following commands:
+`rake db:test:prepare`(not needed in ruby starting from 2.0.0).
+
+Before running the tests you should create a file named `config/application.yml` and add the following line:
+
+```yaml
+DOIT_HOST: 'http://api.qa2.do-it.org/v2'
+```
+
+then run tests using following commands:
 
     bundle exec rake spec
     bundle exec rake cucumber
