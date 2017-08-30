@@ -1,17 +1,17 @@
 describe('Organization map', function() {
-  var validCoordinatesOrganization, emptyCoordinatesOrganiztion;
+  var validCoordinatesOrganization, emptyCoordinatesOrganiztion, organizationList;
   beforeEach(function() {
-    loadFixtures('organization_list.html');
-    validCoordinatesOrganization = $('.center-map-on-op').first();
+
   });
   describe('when hovering the pointer over an organization', function() {
     describe('and the organization have valid coordinates', function() {
       beforeEach(function() {
-        var getVolOpCoordinates = spyOn(window, 'getVolOpCoordinates');
+        loadFixtures('organization_list.html');
+        spyOn(window, 'getVolOpCoordinates');
+        $('#valid-organization').trigger('mouseenter');
       });
       it('gets organization coordinates', function() {
-        validCoordinatesOrganization.trigger('mouseenter');
-        expect(getVolOpCoordinates).toHaveBeenCalledWith();
+        expect(window.getVolOpCoordinates).toHaveBeenCalled();
       });
     });
   });

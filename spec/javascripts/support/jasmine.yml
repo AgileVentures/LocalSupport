@@ -11,6 +11,7 @@
 #   - dist/**/*.js
 #
 src_files:
+  - assets/google-maps-mock.js
   - assets/application.js
   - assets/invitations.js
   - assets/this_is_my_org.js
