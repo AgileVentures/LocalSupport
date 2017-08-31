@@ -1,5 +1,5 @@
 describe('Organization map', function() {
-  var validCoordinatesOrganization, emptyCoordinatesOrganiztion, organizationList;
+  var validCoordinatesOrganization, emptyCoordinatesOrganiztion;
   beforeEach(function() {
 
   });
@@ -7,11 +7,13 @@ describe('Organization map', function() {
     describe('and the organization have valid coordinates', function() {
       beforeEach(function() {
         loadFixtures('organization_list.html');
-        spyOn(window, 'getVolOpCoordinates');
+        OrganizationMap.initMap();
+        OrganizationMap.init();
+        spyOn(OrganizationMap, 'getVolOpCoordinates');
         $('#valid-organization').trigger('mouseenter');
       });
       it('gets organization coordinates', function() {
-        expect(window.getVolOpCoordinates).toHaveBeenCalled();
+        expect(OrganizationMap.getVolOpCoordinates).toHaveBeenCalled();
       });
     });
   });

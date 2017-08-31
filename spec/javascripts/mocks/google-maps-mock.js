@@ -28,7 +28,9 @@ window.google = {
 			return {};
 		},
 		Map: function() {
-			return {};
+			this.setCenter = function() {
+				return true;
+			}
 		},
 		Point: function() {
 			return {};
