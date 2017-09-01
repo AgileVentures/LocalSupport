@@ -37,6 +37,17 @@ Each developer will usually work with a [fork](https://help.github.com/articles/
 git pull upstream develop
 ```
 
+Note you may need to run the following command before syncing with the upstream/develop.
+
+If you are using SSH
+```bash
+git remote add upstream git@github.com:AgileVentures/LocalSupport.git
+```
+If you are using  HTTPS
+```bash
+git remote add upstream https://github.com/AgileVentures/LocalSupport.git
+```
+
 Note that you should be re-syncing daily (even hourly at very active times) on your feature/bugfix branch to ensure that you are always building on top of very latest develop code.
 
 We use [Pivotal Tracker](https://www.pivotaltracker.com/n/projects/742821) to manage our work on features, chores and bugfixes, and we have an [integrated Pivotal/GitHub workflow](https://blog.pivotal.io/pivotal-labs/labs/level-up-your-development-workflow-with-github-pivotal-tracker) that requires the following procedures:
@@ -121,5 +132,9 @@ Our Acceptance (or feature) tests are written in Cucumber to use a high level la
 
 Our Acceptance tests are sandboxed against network connections with VCR and Puffing Billy and we use poltergeist as a JavaScript driver for those tests that involve JavaScript functionality on the front end.  Poltergeist uses PhantomJS under the hood and we use the phantomjs gem to fix a particular version of PhantomJS.  If you have PhantomJS installed globally you may want to remove it to ensure the correct version of PhantomJS is in use during the running of the Acceptance tests.
 
+Code Climate
+------------
+
+Code Climate does automated review of our pull requests.  They are automated so they are not to be taken too seriously.  They are hints and reminders about code quality.  If you can fix the issues raised that's great, although sometimes you won't have time.  If you have Code Climate issues on your pull request that you can't or won't have time to fix and you'd like to get it merged, please open "refactoring" chores on Pivotal Tracker - one per code climate issue.  Then link those tracker tickets into your pull request to show that you've taken then step.
 
 

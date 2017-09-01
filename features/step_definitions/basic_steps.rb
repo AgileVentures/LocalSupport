@@ -578,3 +578,10 @@ end
 And(/^it should have ?a? Meta (.*)$/) do |name_attribute|
   expect(page.find(%Q{meta[name="#{name_attribute.downcase}"]}, :visible => false).class).to eq(Capybara::Node::Element)
 end
+
+Then(/^I should see a link to feedback form in the footer$/) do
+  feedback_url = 'https://docs.google.com/a/neurogrid.com/forms/d/1iQwIM0E2gjJF6N6UHgVwtH8OzBbpUr6DS0Xbf-UrKE0/viewform'
+  page.should have_link('feedback here',
+    :href => feedback_url
+  )
+end

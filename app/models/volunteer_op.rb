@@ -1,8 +1,10 @@
 class VolunteerOp < ActiveRecord::Base
+  include GlobalID::Identification
   acts_as_paranoid
   validates :title, :description, presence: true
   validates :organisation_id, presence: true, if: "source == 'local'"
   belongs_to :organisation
+  has_one :doit_trace
 
   geocoded_by :full_address
   after_validation :geocode, if: :address_complete?
@@ -13,8 +15,11 @@ class VolunteerOp < ActiveRecord::Base
   scope :doit,                 -> { where(source: 'doit') }
   scope :reachskills,          -> { where(source: 'reachskills') }
   scope :remote_only,          -> { where.not(source: 'local') }
-
-
+  
+  def self.add_coordinates(vol_ops)
+    vol_op_with_coordinates(vol_ops)
+  end
+  
   def full_address
     "#{self.address}, #{self.postcode}"
   end
@@ -51,7 +56,8 @@ class VolunteerOp < ActiveRecord::Base
   end
 
   def self.build_by_coordinates
-    vol_ops = local_vol_op_with_coordinates + VolunteerOp.remote_only
+    local_vol_ops = vol_op_with_coordinates(VolunteerOp.local_only)
+    vol_ops = local_vol_ops + VolunteerOp.remote_only
     vol_op_by_coordinates = group_by_coordinates(vol_ops)
     Location.build_hash(vol_op_by_coordinates)
   end
@@ -69,15 +75,15 @@ class VolunteerOp < ActiveRecord::Base
   end
 
   private
-
+  
   def clear_lat_lng
     return if address_complete?
     self.longitude = nil
     self.latitude = nil
   end
 
-  def self.local_vol_op_with_coordinates
-    VolunteerOp.local_only.map { |volop| volop.send(:lat_lng_supplier) }
+  def self.vol_op_with_coordinates(vol_ops)
+    vol_ops.map { |op| op.source == 'local' ? op.send(:lat_lng_supplier) : op }
   end
 
   def lat_lng_supplier

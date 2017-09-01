@@ -37,7 +37,7 @@ Style/Alias:
 Style/AndOr:
   Description: 'Use &&/|| instead of and/or.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-and-or-or'
-  Enabled: true
+  Enabled: false # See https://github.com/AgileVentures/LocalSupport/pull/455#issuecomment-307068564
 
 Style/ArrayJoin:
   Description: 'Use Array#join instead of Array#*.'
@@ -349,7 +349,7 @@ Style/NonNilCheck:
 Style/Not:
   Description: 'Use ! instead of not.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#bang-not-not'
-  Enabled: true
+  Enabled: false # See https://github.com/AgileVentures/LocalSupport/pull/455#issuecomment-307068564
 
 Style/NumericLiterals:
   Description: >-
@@ -735,7 +735,7 @@ Metrics/LineLength:
 
 Metrics/MethodLength:
   CountComments: false  # count full line comments?
-  Max: 5
+  Max: 7
   Description: 'Avoid methods longer than 10 lines of code.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#short-methods'
   Enabled: true

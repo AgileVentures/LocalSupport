@@ -29,26 +29,34 @@ class VolunteerOpsController < ApplicationController
   end
 
   def new
-    @volunteer_op = VolunteerOp.new
+    @volunteer_op = VolunteerOpForm.new
+    @can_publish_to_doit = true if current_user.superadmin?
   end
 
   def create
     params[:volunteer_op][:organisation_id] = @organisation.id
-    @volunteer_op = VolunteerOp.new(volunteer_op_params)
+    @volunteer_op = VolunteerOpForm.new(volunteer_op_params)
     result = @volunteer_op.save
     result ? vol_op_redirect(t('volunteer.create_success')) : render(:new)
   end
 
   def edit
+    volunteer_op_record = VolunteerOp.find(params[:id])
+    if current_user.superadmin? && DoitTrace.published?(volunteer_op_record.id)
+      @can_publish_to_doit = true
+    end
+    @volunteer_op = VolunteerOpForm.new(volunteer_op: volunteer_op_record )
     organisations = Organisation.where(id: @volunteer_op.organisation_id)
     @organisation = organisations.first!
     @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
   end
 
   def update
-    @volunteer_op = VolunteerOp.find(params[:id])
+    volunteer_op_record = VolunteerOp.find(params[:id])
+    @volunteer_op = VolunteerOpForm.new(volunteer_op: volunteer_op_record )
     @organisation = @volunteer_op.organisation
-    result = @volunteer_op.update_attributes(volunteer_op_params)
+    @volunteer_op.assign_attributes(volunteer_op_params)
+    result = @volunteer_op.save
     result ? vol_op_redirect(t('volunteer.update_success')) : render(action: 'edit')
   end
 
@@ -60,14 +68,17 @@ class VolunteerOpsController < ApplicationController
   end
 
   def volunteer_op_params
-    args = [:description, :title, :organisation_id, :address, :postcode]
+    args = [:description, :title, :organisation_id, :address, :postcode,
+            :post_to_doit, :advertise_start_date, :advertise_end_date,
+            :doit_org_id ]
     params.require(:volunteer_op).permit(*args)
   end
 
   private
 
   def displayed_volunteer_ops
-    VolunteerOp.order_by_most_recent.send(restrict_by_feature_scope)
+    vol_ops = VolunteerOp.order_by_most_recent.send(restrict_by_feature_scope)
+    VolunteerOp.add_coordinates(vol_ops)
   end
 
   def restrict_by_feature_scope

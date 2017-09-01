@@ -2,6 +2,8 @@
 //= require google_maps/custom_marker
 
 var map;
+var openedInfoBox = null;
+var markers = [];
 var Settings = {
   id: 'map-canvas',
   lat: 51.5978,
@@ -22,7 +24,7 @@ function initMap() {
 
   var ib = new InfoBox();
   var ibOptions = {
-    pixelOffset: new google.maps.Size(-151, 10)
+    pixelOffset: new google.maps.Size(-140, 10)
   };
 
   var boxText = document.createElement("div");
@@ -41,15 +43,42 @@ function initMap() {
         );
 
     google.maps.event.addListener(marker, 'click', function() {
+        openedInfoBox = ib;
         ib.setOptions(ibOptions);
         boxText.innerHTML = item.infowindow;
         $(ib.content_).find('.close').click(function(){
           ib.close();
+          openedInfoBox = null;
         });
         ib.open(map, this);
         map.panTo(ib.getPosition());
-    }); 
+    });
+    
+    markers.push(marker);
+  });
+}
 
+function centerMap(coordinates) {
+  map.setCenter({ lat: coordinates['lat'], lng: coordinates['lng'] });
+}
+
+function closeInfoBox() {
+  if (openedInfoBox !== null)
+    openedInfoBox.close();
+}
+
+function getVolOpCoordinates (volop) {
+  return {
+    lat: parseFloat($(volop).attr('data-lat')),
+    lng: parseFloat($(volop).attr('data-lng'))
+  };
+}
+
+function openInfoBox(coordinates) {
+  $.each(markers, function(key, value) {
+    if (value.latlng.lat().toFixed(6) === coordinates['lat'].toFixed(6) 
+        && value.latlng.lng().toFixed(6) === coordinates['lng'].toFixed(6))
+      google.maps.event.trigger(value, 'click');
   });
 }
 
@@ -59,4 +88,11 @@ $(document).ready(function() {
   if (($('#content').height() - 14) >= 400) {
     $('#map-canvas').height($('#content').height() - 14);
   }
+  
+  $('.center-map-on-op').mouseenter(function() {
+    centerMap(getVolOpCoordinates(this));
+    openInfoBox(getVolOpCoordinates(this));
+  }).mouseleave(function() {
+    closeInfoBox();
+  });
 });

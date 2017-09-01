@@ -43,7 +43,8 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
   gem 'capybara', '2.4.1'
-  gem "capybara-webkit", "~> 1.6.0"
+  gem 'capybara-webkit', '~> 1.6.0'
+  gem 'nokogiri', '~> 1.7.2'
   gem 'factory_girl_rails', :require => false
   gem 'webmock', '1.20.0'
   gem 'uri-handler'
@@ -74,6 +75,7 @@ gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'bootstrap_sortable_rails', '~> 0.1.3'
 gem 'breadcrumbs_on_rails'
+gem 'bootstrap-datepicker-rails'
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -95,7 +97,7 @@ gem 'redcarpet'
 gem 'url_validator', git: 'https://github.com/AgileVentures/url_validator.git'
 
 gem 'httparty'
-
+gem 'sucker_punch', '~> 2.0' # async job
 gem 'rails_autolink'
 gem "paranoia", "~> 2.0"
 
@@ -108,3 +110,4 @@ gem 'friendly_id', '~> 5.1.0'
 
 # SEO
 gem 'meta-tags'
+
