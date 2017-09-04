@@ -37,6 +37,17 @@ Each developer will usually work with a [fork](https://help.github.com/articles/
 git pull upstream develop
 ```
 
+Note you may need to run the following command before syncing with the upstream/develop.
+
+If you are using SSH
+```bash
+git remote add upstream git@github.com:AgileVentures/LocalSupport.git
+```
+If you are using  HTTPS
+```bash
+git remote add upstream https://github.com/AgileVentures/LocalSupport.git
+```
+
 Note that you should be re-syncing daily (even hourly at very active times) on your feature/bugfix branch to ensure that you are always building on top of very latest develop code.
 
 We use [Pivotal Tracker](https://www.pivotaltracker.com/n/projects/742821) to manage our work on features, chores and bugfixes, and we have an [integrated Pivotal/GitHub workflow](https://blog.pivotal.io/pivotal-labs/labs/level-up-your-development-workflow-with-github-pivotal-tracker) that requires the following procedures:

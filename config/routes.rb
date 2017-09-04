@@ -15,6 +15,7 @@ LocalSupport::Application.routes.draw do
   get '/user_reports/deleted' => 'user_reports#deleted', as: :deleted_users_report
   put 'user_reports/undo_delete/:id' => 'user_reports#undo_delete', as: :undo_delete_users_report
 
+  resources :doit_organisations, only: [:index]
   resources :pages, only: [:index, :new, :create, :edit]
   resources :volunteer_ops, :only => [:index, :edit, :show, :update, :destroy] do
     get 'search', on: :collection

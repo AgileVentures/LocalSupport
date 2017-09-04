@@ -17,7 +17,7 @@
 
 </head>
 
-<body>
+<body class="<%= controller_name %> <%= action_name %>">
 <% unless cookie_policy_accepted? %>
     <%= render 'layouts/cookie_alert' %>
 <% end %>
