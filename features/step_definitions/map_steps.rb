@@ -34,6 +34,10 @@ def check_for_volop_info_box tbl, selector
       all(selector).map do |list_item|
         list_item.trigger(:mouseover) if list_item.first('a').text == title
       end
+
+      # Wait for the map to be updated
+      sleep 0.3
+
       expect(page).to have_css('.arrow_box')
       expect(find('.arrow_box').text).to include(desc)
       expect(find('.arrow_box').text).to include(name)
