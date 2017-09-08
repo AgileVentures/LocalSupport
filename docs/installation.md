@@ -13,6 +13,14 @@ We also have some collected notes on [issues encountered during install](install
 
 [Feature flags](https://github.com/AgileVentures/LocalSupport/wiki/Feature-flags), are automatically activated when you run ```rake db:seed```.
 
+### Application.yml
+
+Indepenently of which platform you are developing on please create a file named config/application.yml and add the following line:
+
+```
+DOIT_HOST: 'http://api.qa2.do-it.org/v2'
+```
+
 ### Google Map Keys
 
 In order for the Google Map to function locally you MAY also need to create an `application.yml` (which does not get checked in) and add the following:
