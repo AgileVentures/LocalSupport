@@ -125,12 +125,24 @@ Notes from original README:
 Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
 
 
-Acceptance Testing
-------------------
+Acceptance Testing & Caching
+----------------------------
 
 Our Acceptance (or feature) tests are written in Cucumber to use a high level language that is as close as possible to the specifications provided by the client.
 
 Our Acceptance tests are sandboxed against network connections with VCR and Puffing Billy and we use poltergeist as a JavaScript driver for those tests that involve JavaScript functionality on the front end.  Poltergeist uses PhantomJS under the hood and we use the phantomjs gem to fix a particular version of PhantomJS.  If you have PhantomJS installed globally you may want to remove it to ensure the correct version of PhantomJS is in use during the running of the Acceptance tests.
+
+We have several challenges with the current acceptance tests.  One is that some of the javascript tests fail intermittently, particularly on CI.  Partly in an attempt to address this issue we added comprehensive [VCR](https://github.com/vcr/vcr) and [PuffingBilly](https://github.com/oesmith/puffing-billy) sandboxing of network interactions in the acceptance tests.  While these caches allow some of our tests to run faster, and avoid us hitting third party services, they can be very confusing to develop against.
+
+The principle is that one should avoid having tests depend on 3rd party systems over the network, and that we shouldn't spam 3rd party remote services with our test runs.  However the reality is more complicated.  For example in talking to some 3rd party organisations, they've said that they are happy to support test run hits "within reason".  Also, a cached network interaction can make it seem like a part of the system is working, when in fact it will fail in production due to a real change to the network service.  The action here should be to delete the relevant cache files, re-run, save the new cache files (which VCR and PuffingBilly should handle for us) and then commit the new cache files to git.
+
+The reality is that it is often difficult to work out which are the relevant cache files (particularly if you're new to the project) and it's easy to mis-understand what's happening with the caches.  A common reaction to seeing lots of cache files (files in `features/req_cache/` and `features/vcr_cassettes/`) when you run `git status` is to add them to `.gitignore` (which happened on LocalSupport and caused lots of confusion) or simply delete them.
+
+There's a Gordian Knot here which is that we'd like it that if a tests passes on your machine, then it should pass on my machine.  However, if the test relies on a 3rd party network service, then all bets are off.  With some reliable network services that's not such a big deal, but it can be very confusing.  If we just add the cache files to `.gitignore` we can get into some very confusing situations where developers don't realise they are running against cached network interactions.  Simply deleting the cache files (`rm -rf features/req_cache/` and `rm-rf features/vcr_cassettes/`) and re-checking out ( via `git checkout features/req_cache/` and `git checkout features/vcr_cassettes`) is a perfectly reasonable way (if long winded) to get back to a baseline, but you still might be confused about which cache files you should be checking in with your tests.
+
+In the ideal world the `develop` branch would run green for you and there would be no extraneous files.  Then you add your new test and it's implementation.  Once it's all working you will likely have a bunch of cache files.  These should be deleted in the first instance since some may be due to erroneous network interactions as you were developing.  Assuming you have got to a reliable green test stage you can clean up (`rm -rf features/req_cache/` and `rm-rf features/vcr_cassettes/` and `git checkout features/req_cache/` and `git checkout features/vcr_cassettes`) and then re-run.  At this point, if you got another complete green run (for safety just run your new tests) any new cache files are associated with your tests, and these should be checked in to ensure that your new test/functionality will run the same everywhere.
+
+However the above is complicated and we are actively looking for some sort of testing solution that allows us to avoid the intermittent failing tests (maybe we need to upgrade capybara) and maybe dropping the whole caching approach is one way forward.  Please jump in our [Slack channel](https://agileventures.slack.com/messages/C0KK907B5/details/) and let us know what you think :-)
 
 Code Climate
 ------------
