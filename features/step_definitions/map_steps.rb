@@ -18,8 +18,8 @@ def check_for_org_info_box tbl, selector
         .each do |name, desc, id, friendly_id|
       click_map_icon(id)
       expect(page).to have_css('.arrow_box')
-      expect(find('.arrow_box').text).to include(desc)
-      expect(find('.arrow_box').text).to include(name)
+      expect(find('.arrow_box')).to have_content(desc)
+      expect(find('.arrow_box')).to have_content(name)
       link = find('.arrow_box').find('a')[:href]
       expect(link).to end_with(organisation_path(friendly_id))
   end
@@ -34,13 +34,9 @@ def check_for_volop_info_box tbl, selector
       all(selector).map do |list_item|
         list_item.trigger(:mouseover) if list_item.first('a').text == title
       end
-
-      # Wait for the map to be updated
-      sleep 0.3
-
       expect(page).to have_css('.arrow_box')
-      expect(find('.arrow_box').text).to include(desc)
-      expect(find('.arrow_box').text).to include(name)
+      expect(find('.arrow_box')).to have_content(desc)
+      expect(find('.arrow_box')).to have_content(name)
       expect(find('.arrow_box').first('a', text: name)[:href]).to end_with(organisation_path(org_friendly_id))
       expect(find('.arrow_box').first('a', text: title)[:href]).to end_with(volunteer_op_path(id))
   end
@@ -54,8 +50,8 @@ def check_for_no_org_info_box tbl, selector
         .each do |name, desc, id, friendly_id|
       find(selector).trigger(:mouseleave)
       expect(page).not_to have_css('.arrow_box')
-      expect(find('.arrow_box').text).not_to include(desc)
-      expect(find('.arrow_box').text).not_to include(name)
+      expect(find('.arrow_box')).not_to have_content(desc)
+      expect(find('.arrow_box')).not_to have_content(name)
   end
 end
 
