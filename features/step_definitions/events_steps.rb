@@ -31,3 +31,12 @@ Given(/^the following events exist:$/) do |table|
     event.save
   end
 end
+
+Given(/^the following event exist:$/) do |table|
+  table.hashes.each do |hash|
+    event = Event.create(hash)
+    event.start_date = 2.days.from_now
+    event.end_date = 2.days.from_now
+    event.save
+  end
+end
