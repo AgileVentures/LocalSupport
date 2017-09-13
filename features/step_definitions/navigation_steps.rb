@@ -44,7 +44,8 @@ def paths(location)
     'deleted users' => deleted_users_report_path,
     'reset password' => reset_pwd,
     'new event' => new_event_path,
-    'events' => events_path
+    'events' => events_path,
+    'event' => event_path
   }[location]
 end
 

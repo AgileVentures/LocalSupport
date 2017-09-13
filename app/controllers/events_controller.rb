@@ -13,7 +13,8 @@ class EventsController < ApplicationController
   end
 
   def show
-
+    @event = Event.find(params[:id])
+    redirect_to root_url and return unless nil
   end
 
   def index
