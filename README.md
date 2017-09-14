@@ -36,7 +36,3 @@ The logo is copyright Alex, all rights reserved.
 The authors and contributors have agreed to license all other software
 under the MIT license, an open source free software license. See the
 file named COPYING which includes a disclaimer of warranty.
-
-Test
-======
-This is a small test
