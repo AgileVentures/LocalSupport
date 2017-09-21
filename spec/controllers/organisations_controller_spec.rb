@@ -524,12 +524,12 @@ describe OrganisationsController, :type => :controller do
       user_opts = controller.send(:get_user_options, org)
     }
 
-    it { should be_a_kind_of Hash }
-    it { should include(pending_org_admin: false) }
-    it { should include(editable: false) }
-    it { should include(deletable: false) }
-    it { should include(can_create_volunteer_op: false) }
-    it { should include(grabbable: true) }
+    it { is_expected.to be_a_kind_of Hash }
+    it { is_expected.to include(pending_org_admin: false) }
+    it { is_expected.to include(editable: false) }
+    it { is_expected.to include(deletable: false) }
+    it { is_expected.to include(can_create_volunteer_op: false) }
+    it { is_expected.to include(grabbable: true) }
   end
   describe '.permit' do 
     it 'returns the cleaned params' do
