@@ -3,9 +3,13 @@ class PagesController < ApplicationController
   before_filter :authorize, :except => :show
   before_action :set_page, only: [:show, :update, :edit]
   before_action :set_tags, only: [:show]
+  
+  add_breadcrumb "home", :root_path
+  add_breadcrumb "Organisations", :organisations_path
 
   # GET /pages
   def index
+    add_breadcrumb "home", root_path
     @pages = Page.order('name ASC')
   end
 
