@@ -138,7 +138,13 @@ The principle is that one should avoid having tests depend on 3rd party systems 
 
 The reality is that it is often difficult to work out which are the relevant cache files (particularly if you're new to the project) and it's easy to mis-understand what's happening with the caches.  A common reaction to seeing lots of cache files (files in `features/req_cache/` and `features/vcr_cassettes/`) when you run `git status` is to add them to `.gitignore` (which happened on LocalSupport and caused lots of confusion) or simply delete them.
 
-There's a Gordian Knot here which is that we'd like it that if a tests passes on your machine, then it should pass on my machine.  However, if the test relies on a 3rd party network service, then all bets are off.  With some reliable network services that's not such a big deal, but it can be very confusing.  If we just add the cache files to `.gitignore` we can get into some very confusing situations where developers don't realise they are running against cached network interactions.  Simply deleting the cache files (`rm -rf features/req_cache/` and `rm-rf features/vcr_cassettes/`) and re-checking out ( via `git checkout features/req_cache/` and `git checkout features/vcr_cassettes`) is a perfectly reasonable way (if long winded) to get back to a baseline, but you still might be confused about which cache files you should be checking in with your tests.
+There's a Gordian Knot here which is that we'd like it that if a tests passes on your machine, then it should pass on my machine.  However, if the test relies on a 3rd party network service, then all bets are off.  With some reliable network services that's not such a big deal, but it can be very confusing.  If we just add the cache files to `.gitignore` we can get into some very confusing situations where developers don't realise they are running against cached network interactions.  We provide a rake task that deletes the cache files and checks them out again:
+
+  ```
+  rake vcr_billy_caches:reset
+  ```
+  
+  but you still might be confused about which cache files you should be checking in with your tests.
 
 In the ideal world the `develop` branch would run green for you and there would be no extraneous files.  Then you add your new test and it's implementation.  Once it's all working you will likely have a bunch of cache files.  These should be deleted in the first instance since some may be due to erroneous network interactions as you were developing.  Assuming you have got to a reliable green test stage you can clean up (`rm -rf features/req_cache/` and `rm-rf features/vcr_cassettes/` and `git checkout features/req_cache/` and `git checkout features/vcr_cassettes`) and then re-run.  At this point, if you got another complete green run (for safety just run your new tests) any new cache files are associated with your tests, and these should be checked in to ensure that your new test/functionality will run the same everywhere.
 
