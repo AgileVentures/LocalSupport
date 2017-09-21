@@ -146,6 +146,26 @@ describe OrganisationsController, :type => :controller do
       allow(controller).to receive(:current_user).and_return(@user)
     end
 
+    it "sets the category name/ID pairs" do
+      get :show, :id => real_org.id.to_s
+      expect(assigns(:cat_name_ids)).not_to eq nil
+    end
+
+    it "sets the 'can_propose_edits' based on the current user being signed in" do
+      get :show, :id => real_org.id.to_s
+      expect(assigns(:user_opts)[:can_propose_edits]).to eq true
+    end
+
+    it "assigns the user_opts hash" do
+      get :show, :id => real_org.id.to_s
+      expect(assigns(:user_opts)).to be_a_kind_of Hash
+    end
+
+    it "should call the get_user_options method", target: true do
+      expect(controller).to receive(:get_user_options).and_return({})
+      get :show, :id => real_org.id.to_s
+    end
+
     it 'should use a two_column with map layout' do
       get :show, :id => real_org.id.to_s
       expect(response).to render_template 'layouts/two_columns_with_map'
@@ -164,19 +184,19 @@ describe OrganisationsController, :type => :controller do
       it 'user with permission leads to editable flag true' do
         expect(@user).to receive(:can_edit?).with(real_org).and_return(true)
         get :show, id: real_org.id.to_s
-        expect(assigns(:editable)).to be(true)
+        expect(assigns(:user_opts)[:editable]).to be(true)
       end
 
       it 'user without permission leads to editable flag false' do
         expect(@user).to receive(:can_edit?).with(real_org).and_return(true)
         get :show, id: real_org.id.to_s
-        expect(assigns(:editable)).to be(true)
+        expect(assigns(:user_opts)[:editable]).to be(true)
       end
 
       it 'when not signed in editable flag is nil' do
         allow(controller).to receive(:current_user).and_return(nil)
         get :show, id: real_org.id.to_s
-        expect(assigns(:editable)).to be_nil
+        expect(assigns(:user_opts)[:editable]).to be_nil
       end
     end
 
@@ -186,19 +206,19 @@ describe OrganisationsController, :type => :controller do
         expect(@user).to receive(:can_request_org_admin?).with(real_org).and_return(true)
         allow(controller).to receive(:current_user).and_return(@user)
         get :show, :id => real_org.id.to_s
-        expect(assigns(:grabbable)).to be(true)
+        expect(assigns(:user_opts)[:grabbable]).to be(true)
       end
       it 'assigns grabbable to false when user cannot request org superadmin status' do
         allow(@user).to receive(:can_edit?)
         expect(@user).to receive(:can_request_org_admin?).with(real_org).and_return(false)
         allow(controller).to receive(:current_user).and_return(@user)
         get :show, :id => real_org.id.to_s
-        expect(assigns(:grabbable)).to be(false)
+        expect(assigns(:user_opts)[:grabbable]).to be(false)
       end
       it 'when not signed in grabbable flag is true' do
         allow(controller).to receive(:current_user).and_return(nil)
         get :show, :id => real_org.id.to_s
-        expect(assigns(:grabbable)).to be true
+        expect(assigns(:user_opts)[:grabbable]).to be true
       end
     end
 
@@ -207,13 +227,13 @@ describe OrganisationsController, :type => :controller do
         it 'true' do
           expect(@user).to receive(:can_create_volunteer_ops?) { true }
           get :show, :id => real_org.id.to_s
-          expect(assigns(:can_create_volunteer_op)).to be true
+          expect(assigns(:user_opts)[:can_create_volunteer_op]).to be true
         end
 
         it 'false' do
           expect(@user).to receive(:can_create_volunteer_ops?) { false }
           get :show, :id => real_org.id.to_s
-          expect(assigns(:can_create_volunteer_op)).to be false
+          expect(assigns(:user_opts)[:can_create_volunteer_op]).to be false
         end
       end
 
@@ -221,7 +241,7 @@ describe OrganisationsController, :type => :controller do
         allow(controller).to receive_messages current_user: nil
         expect(@user).not_to receive :can_create_volunteer_ops?
         get :show, :id => real_org.id.to_s
-        expect(assigns(:can_create_volunteer_op)).to be nil
+        expect(assigns(:user_opts)[:can_create_volunteer_op]).to be nil
       end
     end
   end
@@ -493,6 +513,23 @@ describe OrganisationsController, :type => :controller do
         expect(response).to redirect_to new_user_session_path
       end
     end
+  end
+  describe "get_user_opts" do
+
+    let!(:org) { FactoryGirl.create(:organisation)}
+
+    subject { 
+      user = create :user
+      allow(controller).to receive(:current_user).and_return(user)
+      user_opts = controller.send(:get_user_options, org)
+    }
+
+    it { should be_a_kind_of Hash }
+    it { should include(pending_org_admin: false) }
+    it { should include(editable: false) }
+    it { should include(deletable: false) }
+    it { should include(can_create_volunteer_op: false) }
+    it { should include(grabbable: true) }
   end
   describe '.permit' do 
     it 'returns the cleaned params' do
