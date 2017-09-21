@@ -1,5 +1,5 @@
 namespace :vcr_billy_caches do
-  desc "resets all vcr and billy caches to their default state in current git branch"
+  desc 'resets all vcr and billy caches to their default state in current git branch'
   task reset: :environment do
     `rm -rf features/req_cache`
     `rm -rf features/vcr_cassettes`
