@@ -11,7 +11,6 @@ class PagesController < ApplicationController
 
   # GET /pages/:permalink
   def show
-    add_breadcrumb "home", root_path
     @superadmin = current_user.superadmin? if current_user
   end
 
