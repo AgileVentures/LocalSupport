@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
                 :set_tags
 
   include CustomErrors
+  
+  add_breadcrumb 'home', :root_path
 
   # To prevent infinite redirect loops, only requests from white listed
   # controllers are available in the "after sign-in redirect" feature
