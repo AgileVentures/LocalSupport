@@ -99,3 +99,20 @@ Feature: As a member of the public
       | Litter Box Scooper | Office Support |
     Then I should not see an infowindow when mouse leaves volop in table:
       | Litter Box Scooper | Office Support |
+
+  @javascript @billy
+  Scenario: Infowindow continues to work when mouse hovers over volunteer opportunity without long and lat values in table
+    Given the following organisations exist:
+      | name                      | description          | address        | latitude    | longitude  |
+      | Cats Are Us               | Animal Shelter       | 34 pinner road |             |            |
+      | Office Primer             | Care for the elderly | 64 pinner road | 61.1116313  |  7.3356556 |
+    Given the following volunteer opportunities exist:
+      | title              | description                     | organisation             |
+      | Litter Box Scooper | Assist with feline sanitation   | Cats Are Us              |
+      | Office Support     | Help with printing and copying. | Office Primer            |
+    And I visit the volunteer opportunities page
+    And cookies are approved
+    Then I shouldn't see an infowindow when mouse enters volop in table:
+      | Litter Box Scooper |
+    And I should see an infowindow when mouse enters volop in table:
+      | Office Support |

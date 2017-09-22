@@ -3,8 +3,13 @@ Then(/^I should see an infowindow when I click on the map markers:$/) do |table|
 end
 
 Then (/^I should see an infowindow when mouse enters volop in table:$/) do |table|
-  check_for_volop_info_box(table.raw.flatten, '.center-map-on-op')
+  check_for_volop_info_box(table.raw.flatten, '.center-map-on-op', 2)
 end
+
+Then (/^I shouldn't see an infowindow when mouse enters volop in table:$/) do |table|
+  check_for_no_org_info_box(table.raw.flatten, '.center-map-on-op', 2)
+end
+
 
 Then (/^I should not see an infowindow when mouse leaves volop in table:$/) do |table|
   check_for_no_org_info_box(table.raw.flatten, '.center-map-on-op')
@@ -25,8 +30,8 @@ def check_for_org_info_box tbl, selector
   end
 end
 
-def check_for_volop_info_box tbl, selector
-  expect(page).to have_css(selector, :count => tbl.length)
+def check_for_volop_info_box(tbl, selector, count = nil)
+  expect(page).to have_css(selector, :count => count || tbl.length)
   VolunteerOp.where(title: tbl)
         .map {|volop| [volop.id, volop.organisation.name, volop.title,
           smart_truncate(volop.description, 44), volop.organisation.slug]}
@@ -42,8 +47,8 @@ def check_for_volop_info_box tbl, selector
   end
 end
 
-def check_for_no_org_info_box tbl, selector
-  expect(page).to have_css(selector, :count => tbl.length)
+def check_for_no_org_info_box(tbl, selector, count = nil)
+  expect(page).to have_css(selector, :count => count || tbl.length)
   Organisation.where(name: tbl)
         .pluck(:name, :description, :id, :slug)
         .map {|name, desc, id, frdly_id| [name, smart_truncate(desc, 42), id, frdly_id]}
