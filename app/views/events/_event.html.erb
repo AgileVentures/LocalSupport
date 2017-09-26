@@ -1,5 +1,5 @@
 <div class="event-item">
-    <div class="event-title"><u><%= link_to event.title, "#", class: "event-link" %></u></div>
+    <div class="event-title"><u><%= link_to event.title, event_path(event), class: "event-link" %></u></div>
     <div class="event-start-date">
       Start: <%= event.start_date %>
     </div>
