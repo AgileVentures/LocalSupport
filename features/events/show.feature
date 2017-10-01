@@ -1,17 +1,16 @@
 Feature: View one event
-    As a member of the public
-    If I click on event title
-    I will see details regarding the individual event
+    As a user of the community 
+    I would like to get details about an event i am interested in 
+    Therefore I should see the details on a certain page
 
     Background: The following event has been added to the database
 
-        Given the following event exist:
-            | title          | description       | start_date      | end_date |
-            | My first event | Good for everyone | 2 days from now | same day |
+        Given the following event exists:
+            | title          | description       | 
+            | Open Source Weekend | Good for everyone |
 
     Scenario:
-        Given I visit the events/1 page
-        Then I should see "My first event"
+        Given I visit "Open Source Weekend" event
 
 
 
