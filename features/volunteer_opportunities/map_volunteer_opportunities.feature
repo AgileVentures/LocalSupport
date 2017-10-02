@@ -112,7 +112,7 @@ Feature: As a member of the public
       | Office Support     | Help with printing and copying. | Office Primer            |
     And I visit the volunteer opportunities page
     And cookies are approved
-    Then I shouldn't see an infowindow when mouse enters volop in table:
+    Then I shouldn't see an infowindow when mouse enters volop without long and lat in table:
       | Litter Box Scooper |
-    And I should see an infowindow when mouse enters volop in table:
+    And I should see an infowindow when mouse enters volop with long and lat in table:
       | Office Support |

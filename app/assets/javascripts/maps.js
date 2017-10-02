@@ -85,10 +85,10 @@ function openInfoBox(coordinates) {
 google.maps.event.addDomListener(window, "load", initMap);
 
 var debouceOpenInfoBox = _.debounce(function(volop) {
-    // if ($(volop).attr('data-lat') !== '' && $(volop).attr('data-lng') !== '') {
+    if ($(volop).attr('data-lat') !== '' && $(volop).attr('data-lng') !== '') {
       centerMap(getVolOpCoordinates(volop));
       openInfoBox(getVolOpCoordinates(volop));
-    // }
+     }
 }, 300);
 
 $(document).ready(function() {
