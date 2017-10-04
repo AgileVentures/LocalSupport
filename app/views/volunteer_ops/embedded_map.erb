@@ -1,0 +1,27 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Harrow Community Network | Harrow volunteering</title>
+  <meta name="description" content="Volunteering Network for Harrow Community" />
+  <link rel="author" href="http://www.agileventures.org" />
+
+  <!--[if lt IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+<div class="map_container">
+  <div id="marker_data"></div>
+  <div id="map-canvas" style="height: 100%; width: 100%; position: relative; overflow: hidden;">
+    map goes here....
+  </div>
+</div>
+<% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
+
+</body>
+</html>
