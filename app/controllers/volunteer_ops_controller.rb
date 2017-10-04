@@ -68,6 +68,10 @@ class VolunteerOpsController < ApplicationController
     redirect_to volunteer_ops_path
   end
 
+  def embedded_map
+    @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
+  end
+
   def volunteer_op_params
     args = [:description, :title, :organisation_id, :address, :postcode,
             :post_to_doit, :advertise_start_date, :advertise_end_date,
