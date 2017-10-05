@@ -21,9 +21,10 @@
 </head>
 
 <body>
-  <div class="map_container">
+  <div id="content" class="map_container"
+       style="position:fixed; top:0; left:0; bottom:0; right:0; overflow: hidden; border:none; margin:0;">
     <%= content_tag "div", "", id: "marker_data", data: {markers: @markers} %>
-    <div id="map-canvas" style="height: 500px; width:500px;">
+    <div id="map-canvas">
     </div>
   </div>
 </body>
