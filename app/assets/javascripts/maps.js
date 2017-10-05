@@ -11,7 +11,7 @@ var Settings = {
   zoom: 12
 };
 
-var OrganizationMap = {
+var OrganisationMap = {
   initMap: function initMap() {
     map = new google.maps.Map(document.getElementById(Settings.id), {
       center: {lat: Settings.lat, lng: Settings.lng},
@@ -92,16 +92,16 @@ var OrganizationMap = {
       // _.debounce(function() {
       // }, 300)
     $('.center-map-on-op').mouseenter(function() {
-      OrganizationMap.updateInfoBox(this);
+      OrganisationMap.updateInfoBox(this);
     })
     .mouseleave(function() {
-      OrganizationMap.closeInfoBox();
+      OrganisationMap.closeInfoBox();
     });
   }
 }
 
-google.maps.event.addDomListener(window, "load", OrganizationMap.initMap);
+google.maps.event.addDomListener(window, "load", OrganisationMap.initMap);
 
 $(document).ready(function() {
-  OrganizationMap.init();
+  OrganisationMap.init();
 });
