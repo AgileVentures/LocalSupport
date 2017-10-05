@@ -70,6 +70,8 @@ class VolunteerOpsController < ApplicationController
 
   def embedded_map
     @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
+    response.headers.delete 'X-Frame-Options'
+    render
   end
 
   def volunteer_op_params
