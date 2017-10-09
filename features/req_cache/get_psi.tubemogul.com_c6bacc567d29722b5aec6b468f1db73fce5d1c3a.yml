@@ -1,0 +1,22 @@
+---
+:scope: 
+:url: http://psi.tubemogul.com/ct/upi/pid/bh3j1ma8?redir=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D24%26puid%3D%24%7BUSER_ID%7D%26ssrc%3D3&_test=-2724374813735768632
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Date: Tue, 19 Sep 2017 16:51:23 GMT
+  Pragma: no-cache
+  Cache-Control: no-cache
+  Expires: Thu, 01 Jan 1970 00:00:00 GMT
+  P3P: CP="NOI DSP COR LAW PSAo PSDo IVAo IVDo OUR BUS UNI DEM"
+  Access-Control-Allow-Origin: "*"
+  Set-Cookie: _tmid=-2724374813735768632;Path=/;Domain=.tubemogul.com;Expires=Wed,
+    19-Sep-2018 16:51:23 GMT
+  Location: http://su.addthis.com/red/usync?pid=24&puid=-2724374813735768632&ssrc=3
+  Server: Jetty(9.3.8.v20160314)
+  Content-Length: '0'
+  Age: '0'
+  Connection: close
+  Via: 1.1 wdc-websense-cg.opm.gov
+:content: ''

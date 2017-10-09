@@ -1,0 +1,28 @@
+---
+:scope: 
+:url: http://m.addthis.com/live/red_lojson/300lo.json?si=59c14af120de1dcc&bkl=0&bl=1&sid=59c14af120de1dcc&pub=ra-57ff949adbc21d93&rev=v7.11.0-wp&ln=en&pc=men&cb=0&ab=-&dp=127.0.0.1%3A57826&fp=organisations%2Fwrong-postcode-uk&fr=organisations%2Fwrong-postcode-uk%2Fedit&of=0&pd=0&irt=0&vcl=0&md=0&ct=1&tct=0&abt=0&cdn=0&pi=1&rb=4&gen=100&chr=UTF-8&colc=1505839857058&jsl=1&uvs=59c14af155547b03000&skipb=1&callback=addthis.cbs.oln9_37821776187047360
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Tue, 19 Sep 2017 16:50:48 GMT
+  Content-Type: application/javascript;charset=UTF-8
+  Set-Cookie:
+  - di2=aUlk`7&[6Hq1@n1@m#(5i;Path=/;Domain=.addthis.com;Expires=Thu, 19-Sep-2019
+    16:50:48 GMT
+  - uid=59c14ae89df1da16;Path=/;Domain=.addthis.com;Expires=Thu, 19-Sep-2019 16:50:48
+    GMT
+  - vc=2;Path=/;Domain=.addthis.com;Expires=Thu, 19-Sep-2019 16:50:48 GMT
+  Expires: Thu, 01 Jan 1970 00:00:00 GMT
+  P3P: policyref="/w3c/p3p.xml", CP="NON ADM OUR DEV IND COM STA"
+  Cache-Control: max-age=0, no-cache, no-store, no-transform
+  Pragma: no-cache
+  Content-Disposition: attachment; filename=1.txt
+  Content-Encoding: gzip
+  Server: cloudflare-nginx
+  CF-RAY: 3a0e0bcd77145675-IAD
+  Content-Length: '116'
+  Age: '0'
+  Connection: close
+  Via: 1.1 wdc-websense-cg.opm.gov
+:content: addthis.cbs.oln9_37821776187047360({"loc":"MjAwMDFOQVVTREMyMTg5MTAyMTUxMTg4NDAwVg==","pixels":[]});

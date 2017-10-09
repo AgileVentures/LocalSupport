@@ -1,0 +1,19 @@
+---
+:scope: 
+:url: http://epiv.cardlytics.com/c/?pr=11010&prc=59c14af07d674dec
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Date: Tue, 19 Sep 2017 16:51:22 GMT
+  Location: http://su.addthis.com/red/usync?pid=11147&puid=5fcd205d3e3048bdafbfce1bd2934283&ssrc=1
+  P3P: CP="DEM PSA OUR"
+  Server: Microsoft-HTTPAPI/2.0
+  Set-Cookie: mv3=Kxx0boz0G9PW1ZiGilTEoI7DSiD2tND1zCSHfEwXssV1Vqgvflc3yoW4t6ypst6c2WCKiHqgk8ce2Vrko%2ftFNQ%3d%3d;
+    expires=Sun, 18 Mar 2018 16:51:23 GMT; max-age=15552000; domain=.cardlytics.com;
+    path=/; httponly
+  Content-Length: '0'
+  Age: '0'
+  Connection: close
+  Via: 1.1 wdc-websense-cg.opm.gov
+:content: ''

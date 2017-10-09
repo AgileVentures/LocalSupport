@@ -1,0 +1,27 @@
+---
+:scope: 
+:url: http://bcp.crwdcntrl.net/map/ct=y/c=2634/tp=ADTI/tpid=59c14af07d674dec?http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11127%26puid%3D%24%7Bprofile_id%7D%26ssrc%3D3
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Date: Tue, 19 Sep 2017 16:51:23 GMT
+  Content-Length: '0'
+  P3P: CP=NOI DSP COR NID PSAa PSDa OUR UNI COM NAV
+  Cache-Control: no-cache
+  Pragma: no-cache
+  X-Server: 172.22.82.16
+  Set-Cookie:
+  - _cc_aud="ABR4nGNgYGCIPOjNzQAHABK6AXE%3D";Version=1;Path=/;Domain=crwdcntrl.net;Expires=Sat,
+    16-Jun-2018 16:51:23 GMT;Max-Age=23328000
+  - _cc_cc="ACZ4nGNQSDFISra0MDFKNkxOMU80Tko1TzM1MTQwNkk1NTBMMTViAILIg97cDAgAAFZtCkI%3D";Version=1;Path=/;Domain=crwdcntrl.net;Expires=Sat,
+    16-Jun-2018 16:51:23 GMT;Max-Age=23328000
+  - _cc_id=d0bc9842c1cd7a3be7f541034e501d52;Path=/;Domain=crwdcntrl.net;Expires=Sat,
+    16-Jun-2018 16:51:23 GMT
+  - _cc_dc=0;Path=/;Domain=crwdcntrl.net;Expires=Sat, 16-Jun-2018 16:51:23 GMT
+  Expires: Thu, 01 Jan 1970 00:00:00 GMT
+  Location: http://su.addthis.com/red/usync?pid=11127&puid=d0bc9842c1cd7a3be7f541034e501d52&ssrc=3
+  Age: '0'
+  Connection: close
+  Via: 1.1 wdc-websense-cg.opm.gov
+:content: ''

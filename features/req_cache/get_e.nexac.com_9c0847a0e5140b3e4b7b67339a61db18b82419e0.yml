@@ -1,0 +1,17 @@
+---
+:scope: 
+:url: http://e.nexac.com/e/addthis_sync.xgi?na_exid=59c14a10acdd42c6&ru=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D19%26puid%3D%3Cna_id%3E%26ssrc%3D1
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Content-Type: text/html; charset=UTF-8
+  Date: Tue, 19 Sep 2017 16:47:39 GMT
+  Location: http://x.dlx.addthis.com/e/addthis_sync.xgi?na_exid=59c14a10acdd42c6&ru=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D19%26puid%3D%3Cna_id%3E%26ssrc%3D1
+  Server: akka-http/2.4.10
+  Content-Length: '229'
+  Age: '0'
+  Connection: close
+  Via: 1.1 wdc-websense-cg.opm.gov
+:content: The requested resource temporarily resides under <a href="http://x.dlx.addthis.com/e/addthis_sync.xgi?na_exid=59c14a10acdd42c6&ru=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D19%26puid%3D%3Cna_id%3E%26ssrc%3D1">this
+  URI</a>.

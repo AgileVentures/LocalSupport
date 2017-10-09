@@ -1,0 +1,43 @@
+---
+:scope: 
+:url: https://reachskills.org.uk/opp-404
+:body: ''
+:status: 403
+:method: get
+:headers:
+  Date: Tue, 19 Sep 2017 16:48:56 GMT
+  Content-Type: text/html
+  Content-Length: '2907'
+  Age: '2'
+  Connection: close
+  Via: HTTPS/1.1 wdc-websense-cg.opm.gov
+:content: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\r\n<html>\r\n<head>\r\n<meta
+  http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">\r\n<title>Certificate
+  Verification Error</title>\r\n<link rel=\"stylesheet\" href=\"https://reachskills.org.uk/%24%24%24%26%3f%26%3f%24%24%24?cmd=get_file&arg=block_style.css&sid=6B27B18446968E206827544759BA1E11422E5C96\"
+  type=\"text/css\">\r\n</head>\r\n<body>\r\n\r\n<div id=\"pagecontainer\">\r\n        <img
+  class=\"icon\" src=\"https://reachskills.org.uk/%24%24%24%26%3f%26%3f%24%24%24?cmd=get_file&arg=images/block.png&sid=A1B7CBBCE7B10D21334036E0EF9D867CD5EA6A39\">
+  <!--Icon for block type-->\r\n        <h1>A certificate verification error occured</h1>\r\n\r\n
+  \       <div class=\"row\">\r\n                <p class=\"label\">Overview:</p>\r\n
+  \               <p class=\"item\">The access to the URL reachskills.org.uk is restricted
+  because the validation of the certificate failed</p>\r\n        </div>\r\n        <div
+  class=\"row\">\r\n                <p class=\"label\">Details:</p>\r\n                <p
+  class=\"item\"><b><i>VERIFY DENY: depth=0</i></b>, (10) certificate has expired:
+  \"www.reachskills.co.uk\"</p>\r\n        </div>\r\n\r\n        <div id=\"options\">\r\n
+  \               <p class=\"label\">Options:</p>\r\n                                 <form
+  name=\"ask\" method=\"get\" action=\"https://reachskills.org.uk/%24%24%24%26%3f%26%3f%24%24%24\">\r\n
+  \                               <INPUT type=hidden value=\"ask_add\" name=cmd>\r\n
+  \                               <INPUT type=hidden value=\"reachskills.org.uk_38d751eb_0628F26810A941\"
+  name=arg>\r\n                                <!--cmd=ask_add&arg=reachskills.org.uk_38d751eb_0628F26810A941&sid=-->\r\n
+  \                               <INPUT type=hidden value=\"EDEAB9A471600F7B75C73CE8597B2FA333856748\"
+  name=sid>\r\n                                <INPUT type=hidden value=\"https://reachskills.org.uk/opp-404\"
+  name=url>\r\n                                <input type=\"submit\" class=\"button\"
+  name=\"Override\" value=\"   Visit Site anyway   \"       >\r\n                                </form><p
+  class=\"item\">Pressing the button allows you to visit the website although the
+  certificate is not valid.</p> \r\n                <form action=\"\"><input type=\"button\"
+  class=\"button\" onclick=\"history.back();\" value=\"   Go Back   \"></form><p class=\"item\">Pressing
+  the button allows you to go to the previous page.</p>\r\n                                <p
+  class=\"last-item\">To find out more about the reason for the block message, please
+  contact your administrator and refer to ID 14778310.</p>\r\n        </div>\r\n\r\n
+  \       <div><img class=\"logo\" title=\"Websense\" src=\"https://reachskills.org.uk/%24%24%24%26%3f%26%3f%24%24%24?cmd=get_file&arg=images/fplog_block_page.png&sid=E7EBF6C7045146A4035E1F07140A07D0BCCF20D9\"
+  alt=\"Forcepoint Logo\">\r\n                <div style=\"clear: both; overflow:
+  hidden; height:1px;\"></div>\r\n        </div>\r\n</div>\r\n\r\n</body>\r\n</html>"
