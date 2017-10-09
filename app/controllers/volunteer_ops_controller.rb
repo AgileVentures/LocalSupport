@@ -1,7 +1,6 @@
 class VolunteerOpsController < ApplicationController
   add_breadcrumb 'Volunteers', :root_url
-  layout 'two_columns_with_map'
-  layout false, only: [:embedded_map]
+  layout 'two_columns_with_map', except: :embedded_map
   before_action :set_organisation, only: [:new, :create]
   before_action :authorize, except: [:search, :show, :index, :embedded_map]
   prepend_before_action :set_volunteer_op, only: [:show, :edit]
@@ -71,7 +70,7 @@ class VolunteerOpsController < ApplicationController
   def embedded_map
     @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
     response.headers.delete 'X-Frame-Options'
-    render
+    render layout: false
   end
 
   def volunteer_op_params
