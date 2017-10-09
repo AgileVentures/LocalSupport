@@ -2,6 +2,8 @@ LocalSupport::Application.routes.draw do
 
   devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}
 
+  get '/embedded/map' => 'volunteer_ops#embedded_map'
+
   get 'contributors' => 'contributors#show'
   match 'organisations/search' => 'organisations#search', via: [:get, :post]
 
