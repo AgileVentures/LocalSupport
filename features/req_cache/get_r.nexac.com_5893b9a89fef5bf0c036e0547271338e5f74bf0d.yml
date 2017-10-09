@@ -1,0 +1,15 @@
+---
+:scope: 
+:url: http://r.nexac.com/e/getdata.xgi?na_exid=luhYnUhE99Ovl32j&dt=br&pkey=ak930d7lx38dp&reppipe=%26phint%3D&repequal=%3D&ver=2&ru=http%3A%2F%2Ftags.bluekai.com%2Fsite%2F1407%3Flimit%3D0%26ret%3Dpixel%26phint%3Dna_id%3D%3Cna_id%3E%26phint%3D%3Cna_da%3E
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Content-Type: text/html; charset=UTF-8
+  Date: Wed, 06 Sep 2017 11:44:15 GMT
+  Location: http://r.dlx.addthis.com/e/getdata.xgi?na_exid=luhYnUhE99Ovl32j&dt=br&pkey=ak930d7lx38dp&reppipe=%26phint%3D&repequal=%3D&ver=2&ru=http%3A%2F%2Ftags.bluekai.com%2Fsite%2F1407%3Flimit%3D0%26ret%3Dpixel%26phint%3Dna_id%3D%3Cna_id%3E%26phint%3D%3Cna_da%3E
+  Server: akka-http/2.4.10
+  Content-Length: '325'
+  Connection: close
+:content: The requested resource temporarily resides under <a href="http://r.dlx.addthis.com/e/getdata.xgi?na_exid=luhYnUhE99Ovl32j&dt=br&pkey=ak930d7lx38dp&reppipe=%26phint%3D&repequal=%3D&ver=2&ru=http%3A%2F%2Ftags.bluekai.com%2Fsite%2F1407%3Flimit%3D0%26ret%3Dpixel%26phint%3Dna_id%3D%3Cna_id%3E%26phint%3D%3Cna_da%3E">this
+  URI</a>.

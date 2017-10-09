@@ -1,0 +1,13 @@
+---
+:scope: 
+:url: http://pixel-a.sitescout.com/connectors/addthis/usersync?redir=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11185%26puid%3D%24UUID%26ssrc%3D3
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Date: Tue, 19 Sep 2017 16:51:21 GMT
+  Connection: close
+  Via: 1.1 wdc-websense-cg.opm.gov
+  Location: http://10.128.16.73:15871/cgi-bin/blockpage.cgi?ws-session=1321389989
+  Content-Length: '0'
+:content: ''

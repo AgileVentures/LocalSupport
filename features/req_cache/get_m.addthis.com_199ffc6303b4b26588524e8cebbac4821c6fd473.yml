@@ -1,0 +1,27 @@
+---
+:scope: 
+:url: http://m.addthis.com/live/red_lojson/300lo.json?si=59afdf8ff2224fcc&bkl=0&bl=1&sid=59afdf8ff2224fcc&pub=ra-57ff949adbc21d93&rev=v7.11.0-wp&ln=en&pc=men&cb=0&ab=-&dp=127.0.0.1%3A51259&fp=organisations%2Fhelpful-folk&fr=organisations%2Fhelpful-folk&of=0&pd=0&irt=1&vcl=1&md=0&ct=1&tct=0&abt=0&cdn=0&pi=1&rb=4&gen=100&chr=UTF-8&colc=1504698255796&jsl=1&uvs=59afdf8e8a5d4a9a001&skipb=1&callback=addthis.cbs.oln9_73262207512743770
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Wed, 06 Sep 2017 11:44:14 GMT
+  Content-Type: application/javascript;charset=UTF-8
+  Content-Length: '273'
+  Connection: close
+  Set-Cookie:
+  - di2=aUld^MLhMIS6Hq;Path=/;Domain=.addthis.com;Expires=Fri, 06-Sep-2019 11:44:14
+    GMT
+  - uid=59afdf8c83c01ff4;Path=/;Domain=.addthis.com;Expires=Fri, 06-Sep-2019 11:44:14
+    GMT
+  - mus=0;Path=/;Domain=.addthis.com;Expires=Fri, 06-Sep-2019 11:44:14 GMT
+  - vc=3;Path=/;Domain=.addthis.com;Expires=Fri, 06-Sep-2019 11:44:14 GMT
+  Expires: Thu, 01 Jan 1970 00:00:00 GMT
+  P3P: policyref="/w3c/p3p.xml", CP="NON ADM OUR DEV IND COM STA"
+  CF-RAY: 39a12cd846b4232a-FRA
+  Cache-Control: max-age=0, no-cache, no-store, no-transform
+  Pragma: no-cache
+  Content-Disposition: attachment; filename=1.txt
+  Content-Encoding: gzip
+  Server: cloudflare-nginx
+:content: addthis.cbs.oln9_73262207512743770({"loc":"MDAwMDBFVVRSMDAyMjEwMjA4MTAwMDAwMDAwVg==","pixels":[{"url":"http://cm.g.doubleclick.net/pixel?google_nid=addthis&google_cm&pid=23&puidKey=google_gid&ssrc=1","id":5459,"isHttp":true},{"url":"http://tags.bluekai.com/site/21176?ret=html&limit=3&id=59afdf8c83c01ff4#iframe","id":6088,"isHttp":true}]});

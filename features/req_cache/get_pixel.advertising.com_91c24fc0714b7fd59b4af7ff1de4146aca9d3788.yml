@@ -1,0 +1,13 @@
+---
+:scope: 
+:url: https://pixel.advertising.com/ups/19350/sync?uid=ZGESn18e99OmVXaj&_origin=1&redir=true
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Date: Tue, 19 Sep 2017 16:47:56 GMT
+  Connection: close
+  Via: HTTPS/1.1 wdc-websense-cg.opm.gov
+  Location: http://10.128.16.73:15871/cgi-bin/blockpage.cgi?ws-session=29541646
+  Content-Length: '0'
+:content: ''

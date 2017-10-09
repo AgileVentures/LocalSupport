@@ -1,0 +1,23 @@
+---
+:scope: 
+:url: https://match.adsrvr.org/track/cmf/generic?ttd_pid=bluekai
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Cache-Control: private,no-cache, must-revalidate
+  Content-Type: text/html
+  Date: Wed, 06 Sep 2017 11:43:23 GMT
+  Location: https://match.adsrvr.org/track/cmb/generic?ttd_pid=bluekai
+  P3P: CP="NOI DSP COR CUR ADMo DEVo PSAo PSDo OUR SAMo BUS UNI NAV"
+  Pragma: no-cache
+  Server: Microsoft-IIS/8.5
+  Set-Cookie:
+  - TDID=66ca7944-c2b9-4311-b9e7-824d2ae31750; domain=.adsrvr.org; expires=Thu, 06-Sep-2018
+    11:43:24 GMT; path=/
+  - TDCPM=CAEYBSgCMgsI5vKJ5-bJujUQBTgB; domain=.adsrvr.org; expires=Thu, 06-Sep-2018
+    11:43:24 GMT; path=/
+  X-AspNet-Version: 4.0.30319
+  Content-Length: '147'
+  Connection: close
+:content: 'Redirecting to: <a href="https://match.adsrvr.org/track/cmb/generic?ttd_pid=bluekai">https://match.adsrvr.org/track/cmb/generic?ttd_pid=bluekai</a>'

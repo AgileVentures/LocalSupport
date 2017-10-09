@@ -1,0 +1,17 @@
+---
+:scope: 
+:url: http://tags.bluekai.com/site/21176?ret=html&limit=3&id=59afdf8c83c01ff4
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Content-Length: '0'
+  P3P: CP="NOI DSP COR CUR ADMo DEVo PSAo PSDo OUR SAMo BUS UNI NAV", policyref="http://tags.bluekai.com/w3c/p3p.xml"
+  BK-Server: 4ee
+  Location: http://tags.bluekai.com/site/21176?dt=0&r=1387420374&sig=1397780540&bkca=KJyguithpuMJpPcn0zpBnnWNPL+1LEVNEWhnuqB/+MOmBMO1up1O9mgFYIy=
+  Date: Wed, 06 Sep 2017 11:44:14 GMT
+  Connection: close
+  Set-Cookie:
+  - bkdc=phx; expires=Mon, 05-Mar-2018 11:44:14 GMT; path=/; domain=.bluekai.com
+  - bku=ra/99/f4gNAjnD/+; expires=Mon, 05-Mar-2018 11:44:14 GMT; path=/; domain=.bluekai.com
+:content: ''
