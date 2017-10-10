@@ -8,7 +8,9 @@ class ApplicationController < ActionController::Base
 
   include CustomErrors
   
+  # Add breadcrumb at home page.
   add_breadcrumb 'home', :root_path
+
 
   # To prevent infinite redirect loops, only requests from white listed
   # controllers are available in the "after sign-in redirect" feature
