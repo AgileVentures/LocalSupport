@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  add_breadcrumb 'Events', :root_url
   layout 'two_columns_with_map'
   before_action :logged_in_user, only: [:new, :create]
   before_action :superadmin?, except:[:show, :index]
