@@ -1,0 +1,20 @@
+Feature: Search local events
+    As a member of the public
+    So that I can find out what's going on locally
+    I want to search upcoming events
+    
+    Background: Events have been added to the database
+      
+      Given the following events exist:
+        | title            | description             | start_date      | end_date |
+        | My first event   | Good for everyone       | 2 days from now | same day |
+        | Some other event | Look after older people | today           | 6 days from now |
+        
+    Scenario: Find out what's going on locally
+      Given I visit the events page 
+      When I search for "older people"
+      Then the index should contain:
+        | Some other event | Look after older people  |
+      And the index should not contain:
+        | My first event | Good for everyone |
+      And the search box should contain "older people"
