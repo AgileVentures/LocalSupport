@@ -27,7 +27,7 @@
             <% if @event.errors[:start_date].any?%>
               <p class="error-name"><%= @event.errors[:start_date].first %></p>
             <% end %>
-            <%= f.text_field :start_date, 'data-behaviour' => 'datepicker' %>
+            <%= f.text_field :start_date, 'data-behaviour' => 'datepicker', :placeholder => 'dd/mm/yyyy' %>
 
         </td>
         </tr>
@@ -41,7 +41,7 @@
             <% if @event.errors[:end_date].any?%>
               <p class="error-name"><%= @event.errors[:end_date].first %></p>
             <% end %>
-            <%= f.text_field :end_date, 'data-behaviour' => 'datepicker' %>
+            <%= f.text_field :end_date, 'data-behaviour' => 'datepicker', :placeholder => 'dd/mm/yyyy' %>
         </td>
         </tr>
   </table>
