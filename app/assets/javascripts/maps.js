@@ -102,6 +102,13 @@ var OrganisationMap = {
 
 google.maps.event.addDomListener(window, "load", OrganisationMap.initMap);
 
+var debouceOpenInfoBox = _.debounce(function(volop) {
+    if ($(volop).attr('data-lat') !== '' && $(volop).attr('data-lng') !== '') {
+      centerMap(getVolOpCoordinates(volop));
+      openInfoBox(getVolOpCoordinates(volop));
+     }
+}, 300);
+
 $(document).ready(function() {
   OrganisationMap.init();
 });

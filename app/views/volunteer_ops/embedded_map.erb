@@ -1,0 +1,33 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Harrow Community Network | Harrow volunteering</title>
+  <meta name="description" content="Volunteering Network for Harrow Community" />
+  <link rel="author" href="http://www.agileventures.org" />
+
+  <link rel="stylesheet" media="screen" href="/assets/application.css?body=1" />
+  <link rel="stylesheet" media="screen" href="/assets/bootstrap_and_overrides.css?body=1" />
+  <link rel="stylesheet" media="screen" href="/assets/gmaps.css?body=1" />
+
+
+  <!--[if lt IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+  <script src="/assets/jquery.js?body=1"></script>
+  <script src="/assets/underscore.js?body=1"></script>
+  <script src="//maps.google.com/maps/api/js?v=3&amp;libraries=geometry<%= gmap_key_value_for_url %>" type="text/javascript"></script>
+  <%= javascript_include_tag 'maps' %>
+</head>
+
+<body>
+  <div class="map_container"
+       style="position:fixed; top:0; left:0; bottom:0; right:0; overflow: hidden; border:none; margin:0;">
+    <%= content_tag "div", "", id: "marker_data", data: {markers: @markers} %>
+    <div id="map-canvas" style="height:100%; width=100%;">
+    </div>
+  </div>
+</body>
+</html>

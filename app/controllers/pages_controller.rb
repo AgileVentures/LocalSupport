@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   before_filter :authorize, :except => :show
   before_action :set_page, only: [:show, :update, :edit]
   before_action :set_tags, only: [:show]
-
+  
   # GET /pages
   def index
     @pages = Page.order('name ASC')

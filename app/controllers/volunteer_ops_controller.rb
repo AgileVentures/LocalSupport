@@ -1,8 +1,8 @@
 class VolunteerOpsController < ApplicationController
   add_breadcrumb 'Volunteers', :root_url
-  layout 'two_columns_with_map'
+  layout 'two_columns_with_map', except: :embedded_map
   before_action :set_organisation, only: [:new, :create]
-  before_action :authorize, except: [:search, :show, :index]
+  before_action :authorize, except: [:search, :show, :index, :embedded_map]
   prepend_before_action :set_volunteer_op, only: [:show, :edit]
 
   def search
@@ -65,6 +65,12 @@ class VolunteerOpsController < ApplicationController
     @volunteer_op.destroy
     flash[:success] = "Deleted #{@volunteer_op.title}"
     redirect_to volunteer_ops_path
+  end
+
+  def embedded_map
+    @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
+    response.headers.delete 'X-Frame-Options'
+    render layout: false
   end
 
   def volunteer_op_params
