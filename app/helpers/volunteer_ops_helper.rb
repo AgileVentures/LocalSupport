@@ -1,6 +1,6 @@
 module VolunteerOpsHelper
   def button_text object
-    object.new_record? ? 'Create a Volunteer Opportunity' : 'Update a Volunteer Opportunity'
+    object.new_record? ? 'Create a Volunteer Opportunity' : 'Update Volunteer Opportunity'
   end
 
   def link_to_vol_op(obj, type, html_options = {})
