@@ -12,9 +12,14 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.save ? redirect_to(@event, notice: event_success) : render(:new)
   end
+  
+  def search
+    byebug
+    @events = Event.upcoming(10)
+  end
 
   def show
-
+    
   end
 
   def index

@@ -8,5 +8,10 @@ class Event < ActiveRecord::Base
                               .order('created_at DESC')
                               .limit(n) 
                    }
-
+                   
+  def self.search(keyword) 
+    keyword = "%#{keyword}%"
+    Event.find_by_description(keyword)
+  end
+  
 end

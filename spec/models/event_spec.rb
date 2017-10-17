@@ -54,5 +54,35 @@ RSpec.describe Event, type: :model do
    end
 
   end
+  
+  describe "search" do
+    # we create 5 events 
+    # one of them , event5, description contains older.
+    # after we run result = Event.search('older')
+    # result should eqult event5
+    
+    it "should only contain event that fixs the keyword" do
+     
+     event1 = described_class.new(title: 'Event one', description: 'This is Event one',
+                        start_date: Time.zone.now, end_date: Time.zone.now + 1.week)
+      event2 = described_class.new(title: 'Event two', description: 'This is Event two',
+                        start_date: Time.zone.now, end_date: Time.zone.now + 1.week)
+      event3 = described_class.new(title: 'Event three', description: 'This is Event three',
+                        start_date: Time.zone.now, end_date: Time.zone.now + 1.week)
+      event4 = described_class.new(title: 'Event four', description: 'This is Event four',
+                        start_date: Time.zone.now, end_date: Time.zone.now + 1.week)
+      event5 = described_class.new(title: 'Event five', description: 'This event is for look after older people',
+                        start_date: Time.zone.now, end_date: Time.zone.now + 1.week)
+                        
+      result = Event.search('older') 
+      
+      expect(result).to eq(event5) 
+    end
+    
+    it "should not contain event that not fixs the keywod" do 
+      expect(result).not_to eq(event5)
+    end
+    
+  end
 
 end
