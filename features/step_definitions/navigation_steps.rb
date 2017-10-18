@@ -45,7 +45,7 @@ def paths(location)
     'reset password' => reset_pwd,
     'new event' => new_event_path,
     'events' => events_path,
-    'event' => event_path
+    'event' => event_path(:id)
   }[location]
 end
 
