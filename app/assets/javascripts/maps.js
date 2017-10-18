@@ -31,7 +31,7 @@ function initMap() {
   boxText.setAttribute("class", "arrow_box")
   ibOptions.content = boxText;
 
-  markerData.forEach(function(item) {  
+  markerData.forEach(function(item) {
     var latLng = new google.maps.LatLng(item.lat, item.lng);
 
     marker = new CustomMarker(
@@ -53,7 +53,7 @@ function initMap() {
         ib.open(map, this);
         map.panTo(ib.getPosition());
     });
-    
+
     markers.push(marker);
   });
 }
@@ -76,7 +76,7 @@ function getVolOpCoordinates (volop) {
 
 function openInfoBox(coordinates) {
   $.each(markers, function(key, value) {
-    if (value.latlng.lat().toFixed(6) === coordinates['lat'].toFixed(6) 
+    if (value.latlng.lat().toFixed(6) === coordinates['lat'].toFixed(6)
         && value.latlng.lng().toFixed(6) === coordinates['lng'].toFixed(6))
       google.maps.event.trigger(value, 'click');
   });
@@ -88,7 +88,7 @@ var debouceOpenInfoBox = _.debounce(function(volop) {
     if ($(volop).attr('data-lat') !== '' && $(volop).attr('data-lng') !== '') {
       centerMap(getVolOpCoordinates(volop));
       openInfoBox(getVolOpCoordinates(volop));
-    }
+     }
 }, 300);
 
 $(document).ready(function() {

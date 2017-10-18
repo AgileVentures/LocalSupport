@@ -75,6 +75,14 @@ Then(/^all imported volunteer ops have latitude and longitude coordinates$/) do
   end
 end
 
+Given(/^there is a posted vol op with doit id "(.*?)"$/) do |doit_id|
+  DoitTrace.create(doit_volop_id: doit_id)
+end
+
+Then(/^the doit volunteer op with id "(.*?)" should not be stored$/) do |doit_id|
+  expect(VolunteerOp.find_by(doit_op_id: doit_id)).to be nil
+end
+
 Given(/^that the (.+) flag is (enabled|disabled)$/) do |feature, state|
   if f = Feature.find_by_name(feature) then
     f.update_attributes(active: (state == 'enabled'))

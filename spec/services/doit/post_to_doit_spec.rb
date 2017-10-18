@@ -14,15 +14,10 @@ module Doit
                                    advertise_start_date: '2017-01-01',
                                    advertise_end_date: '2017-03-01',
                                    doit_org_id: '4dd7dfe2-c281-4170-8f0b-da17e8af5e5d')
-        expect(res).to be_truthy
+        expect(res).to eq('f7011d0d-2764-4a2c-a0a2-d66433ae49ad')
       end
+
     end
 
-    describe 'env var' do
-      it 'must be displayed!!' do
-        p "DOit host: #{ENV['DOIT_HOST']}"
-        p "Auth token: #{ENV['DOIT_AUTH_TOKEN']}"
-      end
-    end
   end
 end
