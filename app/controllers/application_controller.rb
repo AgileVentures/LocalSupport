@@ -11,11 +11,6 @@ class ApplicationController < ActionController::Base
   # Add breadcrumb at home page.
   add_breadcrumb 'home', :root_path
 
-  def letsencrypt
-    render plain: "#{params[:id]}.#{ENV['CERTBOT_SSL_CHALLENGE']}", layout: false
-  end
-
-
   # To prevent infinite redirect loops, only requests from white listed
   # controllers are available in the "after sign-in redirect" feature
   def white_listed

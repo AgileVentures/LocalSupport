@@ -3,7 +3,11 @@ class PagesController < ApplicationController
   before_filter :authorize, :except => :show
   before_action :set_page, only: [:show, :update, :edit]
   before_action :set_tags, only: [:show]
-  
+
+  def letsencrypt
+    render plain: "#{params[:id]}.#{ENV['CERTBOT_SSL_CHALLENGE']}", layout: false
+  end
+
   # GET /pages
   def index
     @pages = Page.order('name ASC')
