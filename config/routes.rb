@@ -1,10 +1,10 @@
 LocalSupport::Application.routes.draw do
 
+  get '/.well-known/acme-challenge/:id' => 'pages#letsencrypt'
+
   devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}
 
   get '/embedded/map' => 'volunteer_ops#embedded_map'
-
-  get '/.well-known/acme-challenge/:id' => 'pages#letsencrypt'
 
   get 'contributors' => 'contributors#show'
   match 'organisations/search' => 'organisations#search', via: [:get, :post]
