@@ -4,6 +4,8 @@ LocalSupport::Application.routes.draw do
 
   get '/embedded/map' => 'volunteer_ops#embedded_map'
 
+  get '/.well-known/acme-challenge/:id' => 'static_pages#letsencrypt'
+
   get 'contributors' => 'contributors#show'
   match 'organisations/search' => 'organisations#search', via: [:get, :post]
 
