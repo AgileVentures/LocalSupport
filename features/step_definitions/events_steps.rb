@@ -17,8 +17,6 @@ end
 Given(/^the following events? exists?:$/) do |table|
   table.hashes.each do |hash|
     event = Event.create(hash)
-    event.start_date = 2.days.from_now
-    event.end_date = 2.days.from_now
     event.save
   end
 end
