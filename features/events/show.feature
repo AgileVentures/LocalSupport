@@ -13,7 +13,6 @@ Feature: View one event
 
   Scenario: User visits event from events page
     Given I visit the events page
-    Then show me the page
     When I click "Open Source Weekend"
     Then I should see "Open Source Weekend"
     And I should not see "Lazy Weekend"
