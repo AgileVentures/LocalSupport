@@ -45,7 +45,6 @@ def paths(location)
     'reset password' => reset_pwd,
     'new event' => new_event_path,
     'events' => events_path,
-    'event' => event_path(:id)
     'embedded map' => embedded_map_path
   }[location]
 end

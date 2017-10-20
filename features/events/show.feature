@@ -1,9 +1,9 @@
 Feature: View one event
   As a user of the community
-  I would like to get details about an event i am interested in
-  Therefore I should see the details on a certain page
+  So that i can get details about an event i am interested in
+  Then I should see all the details
 
-  Background: The following event has been added to the database
+  Background: The following events have been added to the database
 
     Given the following events exist:
       | title               | description       |
@@ -12,7 +12,7 @@ Feature: View one event
 
 
   Scenario: User visits event from events page
-    Given I visit "events"
+    Given I visit the events page
     When I click "Open Source Weekend"
     Then I should see "Open Source Weekend"
     And I should not see "Lazy Weekend"
