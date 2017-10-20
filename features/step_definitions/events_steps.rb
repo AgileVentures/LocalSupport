@@ -14,11 +14,14 @@ Then /^"(.*?)" event should not exist$/ do |title|
   expect(Event.find_by_title title).to be_nil
 end
 
-Given(/^the following events exist:$/) do |table|
+Given(/^the following events? exists?:$/) do |table|
   table.hashes.each do |hash|
     event = Event.create(hash)
-    event.start_date = 2.days.from_now
-    event.end_date = 2.days.from_now
     event.save
   end
+end
+
+Given(/^I visit "([^"]*)" event$/) do |title|
+  event = Event.find_by_title(title)
+  visit "/events/#{event.id}"
 end
