@@ -10,6 +10,7 @@ gem 'sprockets', '~> 2.11', '>= 2.11.3'
 
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'jbuilder'
 
 
 # Bundle edge Rails instead:
@@ -113,4 +114,3 @@ gem 'friendly_id', '~> 5.1.0'
 
 # SEO
 gem 'meta-tags'
-
