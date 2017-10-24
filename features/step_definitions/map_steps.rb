@@ -26,6 +26,11 @@ Then (/^I should not see an infowindow when mouse leaves volop in table:$/) do |
   check_for_no_org_info_box(table.raw.flatten, '.center-map-on-op')
 end
 
+Then (/^I should only see the map container element on the page$/) do
+  expect(page).to have_selector('body > *', count: 1)
+  expect(page).to have_selector('body > div.map_container', count: 1)
+end
+
 def check_for_org_info_box tbl, selector
   expect(page).to have_css(selector, :count => tbl.length)
   Organisation.where(name: tbl)
