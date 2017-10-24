@@ -17,9 +17,12 @@
 //= require jquery-readyselector
 //= require doit_volunteer_ops
 //= require bootstrap-datepicker
+//= require moment
+//= require fullcalendar
 
 window.LocalSupport = {};
+$('#calendar').fullCalendar({});
 
 $(function() {
-    // invoke global functions here
+  // invoke global functions here
 });
