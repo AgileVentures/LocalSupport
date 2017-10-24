@@ -2,6 +2,10 @@ Then(/^I should see an infowindow when I click on the map markers:$/) do |table|
   check_for_org_info_box(table.raw.flatten, '.measle')
 end
 
+Then(/^I should see an infowindow when I click on the volunteer opportunities map markers:$/) do |table|
+  check_for_volop_info_box(table.raw.flatten, '.vol_op')
+end
+
 Then (/^I should see an infowindow when mouse enters volop in table:$/) do |table|
   check_for_volop_info_box(table.raw.flatten, '.center-map-on-op')
 end
