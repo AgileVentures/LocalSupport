@@ -17,7 +17,12 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.upcoming(10)
+    # @events = Event.upcoming(10)
+    @events = Event.where(start_date: params[:start]..params[:end])
+    respond_to do |format|
+      format.html
+      format.json # { render json: @events = Event.all}
+    end
   end
 
   private

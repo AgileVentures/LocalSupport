@@ -21,8 +21,10 @@
 //= require fullcalendar
 
 window.LocalSupport = {};
-$('#calendar').fullCalendar({});
 
 $(function() {
   // invoke global functions here
+  $('#calendar').fullCalendar({
+    events: '/events.json'
+  });
 });
