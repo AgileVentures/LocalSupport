@@ -25,6 +25,9 @@ window.LocalSupport = {};
 $(function() {
   // invoke global functions here
   $('#calendar').fullCalendar({
+    header: {
+      right: 'prev, next, today, month, agendaWeek'
+    },
     events: '/events.json'
   });
 });
