@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
   validates :start_date, presence: true
   validates :end_date, presence: true
   scope :upcoming, lambda { |n|
-                               where('start_date > ?', DateTime.current)
+                               where('start_date > ?', DateTime.current.midnight)
                               .order('created_at DESC')
                               .limit(n)
                    }
