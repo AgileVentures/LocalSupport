@@ -30,6 +30,17 @@ RSpec.describe Event, type: :model do
     expect(subject).to_not be_valid
   end
 
+  it 'can be  an all day event' do
+    subject.start_date = Time.zone.now.midnight
+    subject.end_date = 1.day.from_now.midnight
+    expect(subject.all_day_event?).to be true
+  end
+
+  it 'can be an all day event' do
+    subject.start_date = 2.hours.ago
+    expect(subject.all_day_event?).to be false
+  end
+
   describe 'scopes' do
 
     before(:all) do
