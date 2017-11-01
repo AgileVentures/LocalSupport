@@ -14,13 +14,13 @@ class ApplicationController < ActionController::Base
   # To prevent infinite redirect loops, only requests from white listed
   # controllers are available in the "after sign-in redirect" feature
   def white_listed
-    %w[
+    %w(
         application
         contributors
         organisations
         pages
         volunteer_ops
-    ]
+    )
   end
   # Devise wiki suggests we need to make this return nil for the
   # after_inactive_signup_path_for to be called in registrationscontroller
@@ -40,7 +40,8 @@ class ApplicationController < ActionController::Base
 
   # Stores the URL if permitted
   def store_location
-    return session[:previous_url] = request.fullpath unless request_controller_is(white_listed) && request_verb_is_get?
+    return if request_controller_is(white_listed) && request_verb_is_get?
+    session[:previous_url] = request.fullpath
   end
 
   # Devise hook
