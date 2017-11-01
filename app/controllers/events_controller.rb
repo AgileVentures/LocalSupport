@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   add_breadcrumb 'Events', :root_url
   layout 'two_columns_with_map'
   before_action :logged_in_user, only: [:new, :create]
-  before_action :superadmin?, except:[:show, :index]
+  before_action :superadmin?, except:[:show, :index, :search]
 
   def new
     @event = Event.new
@@ -14,9 +14,10 @@ class EventsController < ApplicationController
   end
   
   def search
-    byebug
-    @events = Event.upcoming(10)
+    @events = Event.search(params["q"])
+    render "result"
   end
+  
 
   def show
     

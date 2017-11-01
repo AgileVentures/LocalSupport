@@ -1,0 +1,23 @@
+---
+:scope: 
+:url: http://su.addthis.com/red/usync?pid=11111&puid=18072662339199516535&ssrc=3
+:body: ''
+:status: 204
+:method: get
+:headers:
+  Date: Tue, 17 Oct 2017 03:24:18 GMT
+  Content-Type: image/png;charset=UTF-8
+  Connection: close
+  Set-Cookie:
+  - mus=0;Path=/;Domain=.addthis.com;Expires=Sun, 11-Nov-2018 03:24:18 GMT
+  - um=4.'8883036345964641214'|5.'oae33bNp1BXBHv5'|g.'38441214463323843351306127018824399510'|m*1AylqlACV9fqsR_VHDzogT|o.'-1894253779607080739'|2JD.'18072662339199516535'|2JG.'5XRaPy9999Y9dIHj'|2JK.'51hdp6g8kwn0'|2JT!1omT2kCVfx3qejPfqM_-yH|2K8*2VhRuxHHEhVXhJ051mEwIy|2Kb!1KZsl9n-pfjqyynxODZAgU|2Ke.'B41D232F7FBAAEAA'|2Kp!1WhScTu3w1h-EWv03sr9Rr|2Ky.'UPfdb14f8f-add3-11e7-8617-02e8b73f4684'|2KN*2WGiQJOoZe1Xnfqrzl6k96|2KW.'769341489833791334';Path=/;Domain=.addthis.com;Expires=Sun,
+    11-Nov-2018 03:24:18 GMT
+  - uid=580a3372faba457f;Path=/;Domain=.addthis.com;Expires=Sun, 11-Nov-2018 03:24:18
+    GMT
+  Expires: Thu, 01 Jan 1970 00:00:00 GMT
+  P3P: policyref="/w3c/p3p.xml", CP="NON ADM OUR DEV IND COM STA"
+  Cache-Control: max-age=0, no-cache, no-store, no-transform
+  Pragma: no-cache
+  Server: cloudflare-nginx
+  CF-RAY: 3af024e7c16e54da-ORD
+:content: ''

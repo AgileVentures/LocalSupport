@@ -11,7 +11,9 @@ class Event < ActiveRecord::Base
                    
   def self.search(keyword) 
     keyword = "%#{keyword}%"
-    Event.find_by_description(keyword)
+    where('description LIKE ?', keyword) or where('title LIKE ?', keyword)
   end
+  
+  
   
 end

@@ -1,0 +1,10 @@
+<% if @events %>
+  <% @events.each do |event| %>
+    Title: <%= link_to event.title, event %>
+    Description: <%= event.description %><br>
+  <% end %>
+  
+<% else %>
+  "The event you have searched for does not exist. Try another key word and search again."
+<% end %>
+

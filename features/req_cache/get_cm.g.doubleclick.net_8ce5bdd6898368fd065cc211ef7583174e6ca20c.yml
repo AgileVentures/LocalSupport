@@ -1,0 +1,23 @@
+---
+:scope: 
+:url: https://cm.g.doubleclick.net/pixel?google_nid=bluekai&google_cm&google_sc
+:body: ''
+:status: 302
+:method: get
+:headers:
+  P3P: policyref="https://googleads.g.doubleclick.net/pagead/gcn_p3p_.xml", CP="CURa
+    ADMa DEVa TAIo PSAo PSDo OUR IND UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR"
+  Location: https://cm.g.doubleclick.net/pixel?google_nid=bluekai&google_cm=&google_sc=&google_tc=
+  Date: Tue, 17 Oct 2017 03:24:15 GMT
+  Pragma: no-cache
+  Expires: Fri, 01 Jan 1990 00:00:00 GMT
+  Cache-Control: no-cache, must-revalidate
+  Content-Type: text/html; charset=UTF-8
+  Server: HTTP server (unknown)
+  Content-Length: '295'
+  X-XSS-Protection: 1; mode=block
+  Set-Cookie: test_cookie=CheckForPermission; expires=Tue, 17-Oct-2017 03:39:15 GMT;
+    path=/; domain=.doubleclick.net
+  Connection: close
+:content: "<HTML><HEAD><meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<TITLE>302
+  Moved</TITLE></HEAD><BODY>\n<H1>302 Moved</H1>\nThe document has moved\n<A HREF=\"https://cm.g.doubleclick.net/pixel?google_nid=bluekai&amp;google_cm=&amp;google_sc=&amp;google_tc=\">here</A>.\r\n</BODY></HTML>\r\n"
