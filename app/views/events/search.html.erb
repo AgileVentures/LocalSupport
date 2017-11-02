@@ -8,7 +8,7 @@
         <%= label_tag(:q, "Search Text", class: 'field-label') %>
     </div>
     <div class="right-side">
-        <%= text_field_tag(:q, @query, class: 'search-text') %>
+        <%= text_field_tag(:q, @query, class: 'search-text', value: params["q"]) %>
         <%= submit_tag("Submit", class: 'btn btn-info search-btn') %>
     </div>
   </div>
