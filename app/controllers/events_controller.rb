@@ -14,8 +14,8 @@ class EventsController < ApplicationController
   end
   
   def search
-    @events = Event.search(params["q"])
-    render "result"
+    @events = Event.search(params['q'])
+    render 'result'
   end
   
 
