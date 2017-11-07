@@ -15,10 +15,6 @@ class VolunteerOpForm
 
   validate :validate_children
 
-  def trace_handler
-    DoitTrace
-  end
-
   def volunteer_op
     @volunteer_op ||= VolunteerOp.new
   end
@@ -64,10 +60,7 @@ class VolunteerOpForm
   def save
     return false unless valid?
     volunteer_op.save!
-    if post_to_doit?
-      trace_handler.add_entry(volunteer_op.id)
-      PostToDoitJob.perform_later(build_options)
-    end
+    PostToDoitJob.perform_later(build_options) if post_to_doit?
     true
   end
 

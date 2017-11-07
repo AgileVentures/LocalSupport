@@ -13,3 +13,8 @@ Feature: Importing DoIt Volunteer Ops
     Given there is a doit volunteer op named "no longer on doit"
     And I run the import doit service with a radius of 0.5 miles
     Then the doit volunteer op named "no longer on doit" should be deleted
+
+  Scenario: Does not import ops that are posted from LocalSupport
+    Given there is a posted vol op with doit id "4d5f9b00-eaaa-45c4-adff-07707a9168b2"
+    And I run the import doit service with a radius of 0.5 miles
+    Then the doit volunteer op with id "4d5f9b00-eaaa-45c4-adff-07707a9168b2" should not be stored

@@ -187,7 +187,7 @@ And(/^"(.*?)" should not have nil coordinates$/) do |name|
   org.longitude.should_not be_nil
 end
 
-GMAPS_URL_KEY_NIL = '//maps.google.com/maps/api/js?' +
+GMAPS_URL_KEY_NIL = 'https://maps.google.com/maps/api/js?' +
                     'v=3&libraries=geometry&key='.freeze
 
 Then(/^the google map key should( not)? be appended to the gmap js script$/) do |negation|

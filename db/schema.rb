@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170524080408) do
+ActiveRecord::Schema.define(version: 20170816184646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,12 +34,13 @@ ActiveRecord::Schema.define(version: 20170524080408) do
 
   create_table "doit_traces", force: :cascade do |t|
     t.datetime "published_at"
-    t.integer  "volunteer_op_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "volunteer_op_id"
+    t.string   "doit_volop_id"
   end
 
-  add_index "doit_traces", ["volunteer_op_id"], name: "index_doit_traces_on_volunteer_op_id", using: :btree
+  add_index "doit_traces", ["doit_volop_id"], name: "index_doit_traces_on_doit_volop_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.string   "title"
@@ -181,5 +182,4 @@ ActiveRecord::Schema.define(version: 20170524080408) do
   add_index "volunteer_ops", ["deleted_at"], name: "index_volunteer_ops_on_deleted_at", using: :btree
   add_index "volunteer_ops", ["organisation_id"], name: "index_volunteer_ops_on_organisation_id", using: :btree
 
-  add_foreign_key "doit_traces", "volunteer_ops"
 end

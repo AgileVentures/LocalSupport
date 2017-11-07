@@ -27,8 +27,8 @@
             <% if @event.errors[:start_date].any?%>
               <p class="error-name"><%= @event.errors[:start_date].first %></p>
             <% end %>
-            <%= f.datetime_select :start_date, size: "50x4",  prompt: true, start_year: Time.current.year,
-              class: "wide_form " %>
+            <%= f.text_field :start_date, 'data-behaviour' => 'datepicker', :placeholder => 'dd/mm/yyyy' %>
+
         </td>
         </tr>
         <tr>
@@ -41,8 +41,7 @@
             <% if @event.errors[:end_date].any?%>
               <p class="error-name"><%= @event.errors[:end_date].first %></p>
             <% end %>
-            <%= f.datetime_select :end_date, :size => "50x4", 
-              prompt: true, start_year: Time.current.year %>
+            <%= f.text_field :end_date, 'data-behaviour' => 'datepicker', :placeholder => 'dd/mm/yyyy' %>
         </td>
         </tr>
   </table>
@@ -54,5 +53,8 @@
   </div>
 <% end %>
 <%= render partial: 'shared/map_scripts', locals: {markers: @markers} %>
+<script type="text/javascript">
+    $('[data-behaviour~=datepicker]').datepicker({format: 'dd/mm/yyyy'});
+</script>
 
 

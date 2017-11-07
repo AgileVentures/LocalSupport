@@ -3,17 +3,18 @@ class Event < ActiveRecord::Base
   validates :description, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
-  scope :upcoming, lambda { |n| 
-                               where('start_date > ?', DateTime.current)
+  scope :upcoming, lambda { |n|
+                               where('start_date > ?', DateTime.current.midnight)
                               .order('created_at DESC')
-                              .limit(n) 
+                              .limit(n)
                    }
-                   
+                 
   def self.search(keyword) 
     keyword = "%#{keyword}%"
     where('description LIKE ?', keyword) or where('title LIKE ?', keyword)
   end
-  
-  
-  
+
+  def all_day_event?
+    self.start_date == self.start_date.midnight && self.end_date == self.end_date.midnight
+  end
 end
