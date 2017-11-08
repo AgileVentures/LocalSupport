@@ -65,35 +65,33 @@ RSpec.describe Event, type: :model do
     end
 
   end
-  
-  describe "search" do
+
+  describe 'search' do
     # we create 5 events 
     # one of them , event5, description contains older.
     # after we run result = Event.search('older')
     # result should eqult event5
-    
-    it "should only contain event that fixs the keyword" do
-     
-     event1 = described_class.new(title: 'Event one', description: 'This is Event one',
-                        start_date: Time.zone.now, end_date: Time.zone.now + 1.week)
-      event2 = described_class.new(title: 'Event two', description: 'This is Event two',
-                        start_date: Time.zone.now, end_date: Time.zone.now + 1.week)
-      event3 = described_class.new(title: 'Event three', description: 'This is Event three',
-                        start_date: Time.zone.now, end_date: Time.zone.now + 1.week)
-      event4 = described_class.new(title: 'Event four', description: 'This is Event four',
-                        start_date: Time.zone.now, end_date: Time.zone.now + 1.week)
-      event5 = described_class.new(title: 'Event five', description: 'This event is for look after older people',
-                        start_date: Time.zone.now, end_date: Time.zone.now + 1.week)
-                        
-      result = Event.search('older') 
-      
-      expect(result).to eq(event5) 
-    end
-    
-    it "should not contain event that not fixs the keywod" do 
-      expect(result).not_to eq(event5)
-    end
-    
-  end
 
+    let(:event1) { described_class.create(title: 'Event one', description: 'This is Event one',
+                                       start_date: Time.zone.now, end_date: Time.zone.now + 1.week) }
+    let(:event2) { described_class.create(title: 'Event two', description: 'This is Event two',
+                                       start_date: Time.zone.now, end_date: Time.zone.now + 1.week) }
+    let(:event3) { described_class.create(title: 'Event three', description: 'This is Event three',
+                                       start_date: Time.zone.now, end_date: Time.zone.now + 1.week) }
+    let(:event4) { described_class.create(title: 'Event four', description: 'This is Event four',
+                                       start_date: Time.zone.now, end_date: Time.zone.now + 1.week) }
+    let(:event5) { described_class.create(title: 'Event five', description: 'This event is for look after older people',
+                                       start_date: Time.zone.now, end_date: Time.zone.now + 1.week) }
+
+    subject(:result) { Event.search('older') }
+
+    it 'should only contain event that does contain the keyword' do
+      expect(result).to include(event5)
+    end
+
+    it 'should not contain event that does not contain the keyword' do
+      expect(result).not_to include(event1, event2, event3, event4)
+    end
+
+  end
 end

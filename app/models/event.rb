@@ -11,10 +11,23 @@ class Event < ActiveRecord::Base
                  
   def self.search(keyword) 
     keyword = "%#{keyword}%"
-    where('description LIKE ?', keyword) or where('title LIKE ?', keyword)
+    where(contains_description?(keyword).or(contains_title?(keyword)))
   end
 
   def all_day_event?
     self.start_date == self.start_date.midnight && self.end_date == self.end_date.midnight
   end
+
+  def self.table
+    arel_table
+  end
+
+  def self.contains_description?(key)
+    table[:description].matches(key)
+  end
+
+  def self.contains_title?(key)
+    table[:title].matches(key)
+  end
+
 end
