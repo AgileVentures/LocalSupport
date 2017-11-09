@@ -96,7 +96,7 @@ Given /^I update "(.*?)" volunteer op description to be "(.*?)"$/ do |title, des
   visit volunteer_op_path vop
   click_on 'Edit'
   fill_in('Description', :with => description)
-  click_on 'Update a Volunteer Opportunity'
+  click_on 'Update Volunteer Opportunity'
 end
 
 Given /^I should see (\d+) markers in the map$/ do |num|
@@ -110,7 +110,7 @@ end
 When(/^I set new volunteer opportunity location to "(.*?)", "(.*?)"$/) do |addr, pc|
   fill_in 'Address', with: addr
   fill_in 'Postcode', with: pc
-  click_button 'Update a Volunteer Opportunity'
+  click_button 'Update Volunteer Opportunity'
 end
 
 regex = /^I should see "(.*?)", "(.*?)", "(.*?)" and "(.*?)"$/
