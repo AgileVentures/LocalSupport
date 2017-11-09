@@ -29,7 +29,6 @@ before_script:
 script:
 - bundle exec rake test_with_coveralls
 - bundle exec rake cucumber:second_try
-- USE_JASMINE_RAKE=true bundle exec rake jasmine:ci
 deploy:
   provider: heroku
   api_key:

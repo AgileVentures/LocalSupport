@@ -13,11 +13,14 @@ class EventsController < ApplicationController
   end
 
   def show
-
+    @event = Event.find_by_id(params[:id])
   end
 
   def index
-    @events = Event.upcoming(10)
+    respond_to do |format|
+      format.html {  @events = Event.upcoming(10) }
+      format.json {  @events = Event.where(start_date: params[:start]..params[:end]) }
+    end
   end
 
   private

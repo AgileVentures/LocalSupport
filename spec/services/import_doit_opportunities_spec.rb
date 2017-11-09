@@ -1,16 +1,16 @@
-require './app/services/import_do_it_volunteer_opportunities'
-require 'json'
+require 'rails_helper'
 
 describe ImportDoItVolunteerOpportunities do
 
   let(:http_party) { double :http_party }
   let(:model_klass) { spy :model_klass }
+  let(:trace_handler) { double(local_origin?: false) }
   let(:url) do
     "#{ImportDoItVolunteerOpportunities::HOST}#{ImportDoItVolunteerOpportunities::HREF}"
   end
 
   subject(:list_volunteer_opportunities) do
-    described_class.with(1.0, http_party, model_klass)
+    described_class.with(1.0, http_party, model_klass, trace_handler)
   end
 
   context 'no ops found' do
@@ -70,6 +70,16 @@ describe ImportDoItVolunteerOpportunities do
       expect(http_party).to receive(:get).with("#{url}1.0").and_return(response1).ordered
       expect(http_party).to receive(:get).with("#{url}1.0&page=2").and_return(response2).ordered
       list_volunteer_opportunities
+    end
+  end
+  context 'all imported ops are from local source' do
+    let(:response) { double :response, body: File.read('test/fixtures/doit1.json') }
+
+    it 'does not save the imported ops' do
+      trace_handler = double(local_origin?: true)
+      allow(http_party).to receive(:get).and_return(response)
+      described_class.with(3.0, http_party, model_klass, trace_handler)
+      expect(model_klass).not_to have_received(:find_or_create_by)
     end
   end
 

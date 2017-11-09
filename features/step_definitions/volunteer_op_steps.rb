@@ -75,6 +75,14 @@ Then(/^all imported volunteer ops have latitude and longitude coordinates$/) do
   end
 end
 
+Given(/^there is a posted vol op with doit id "(.*?)"$/) do |doit_id|
+  DoitTrace.create(doit_volop_id: doit_id)
+end
+
+Then(/^the doit volunteer op with id "(.*?)" should not be stored$/) do |doit_id|
+  expect(VolunteerOp.find_by(doit_op_id: doit_id)).to be nil
+end
+
 Given(/^that the (.+) flag is (enabled|disabled)$/) do |feature, state|
   if f = Feature.find_by_name(feature) then
     f.update_attributes(active: (state == 'enabled'))
@@ -88,7 +96,7 @@ Given /^I update "(.*?)" volunteer op description to be "(.*?)"$/ do |title, des
   visit volunteer_op_path vop
   click_on 'Edit'
   fill_in('Description', :with => description)
-  click_on 'Update a Volunteer Opportunity'
+  click_on 'Update Volunteer Opportunity'
 end
 
 Given /^I should see (\d+) markers in the map$/ do |num|
@@ -102,7 +110,7 @@ end
 When(/^I set new volunteer opportunity location to "(.*?)", "(.*?)"$/) do |addr, pc|
   fill_in 'Address', with: addr
   fill_in 'Postcode', with: pc
-  click_button 'Update a Volunteer Opportunity'
+  click_button 'Update Volunteer Opportunity'
 end
 
 regex = /^I should see "(.*?)", "(.*?)", "(.*?)" and "(.*?)"$/

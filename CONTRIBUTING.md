@@ -1,8 +1,16 @@
-Getting Involved
-------------------
+Contributing to LocalSupport
+===========================
+
+So you'd like to contribute to the LocalSupport codebase?  That's wonderful, we're excited to have your help :-)
+
+Please do come and say hello in our [Slack chat](https://agileventures.slack.com/messages/localsupport). You can get an invite by signing up at [AgileVentures](https://www.agileventures.org) or emailing [info@agileventures.org](mailto:info@agileventures.org).  We have [weekly meetings](https://www.agileventures.org/events/localsupport-kick-off) to coordinate our efforts and we try to do planning poker voting on tickets before starting work on them.  Feel free to join any [AgileVentures daily scrum](https://www.agileventures.org/events/) to ask questions, to listen in, or just say hi :-)
+
+Getting set up with the system on your local machine can be tricky depending on your platform and your devops skills.  We can provide prepared C9 instances if you want to get straight into the coding :-)
+
+Getting Started
+---------------
 
 Project work is organised via this Pivotal Tracker instance:
-
 
 https://www.pivotaltracker.com/n/projects/742821
 

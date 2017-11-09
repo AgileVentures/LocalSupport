@@ -1,0 +1,1240 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.do-it.org/v1/opportunities?lat=51.5978&lng=-0.3370&miles=0.5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 22 Aug 2017 19:40:00 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"items":[{"address_1":"Bentley House","address_2":"15-21 Headstone
+        Drive","availability":{"friday":[false,false,false],"monday":[false,false,false],"saturday":[false,false,false],"sunday":[false,false,false],"thursday":[false,false,false],"tuesday":[false,false,false],"wednesday":[false,false,false]},"city":"Harrow","county":null,"created":"2017-06-05T09:59:12.125572+00:00","description":"To
+        support group meetings and events by:\n\u2022\tPractical Support to the Group
+        Leader in setting up and clearing away;\n\u2022\tFacilitating the focus of
+        the session;\n\u2022\tSupporting the interaction and participation of the
+        members;\n\nSocial Group Meetings take place fortnightly between 4.30 and
+        6.30 at the Bridge, in Wealdstone.\n\nChanges Night Club takes place monthly
+        between 7 Pm to 10 pm at the Red Brick Caf\u00e9, in Wealdstone.\n\n\u021a\u0127\u012f\u0219
+        \u01ffpp\u01ff\u0159\u021b\u0173\u0148\u012f\u021b\u1ef3 \u0127\u01fb\u0219
+        b\u011b\u011b\u0148 p\u01ff\u0219\u021b\u011b\u0111 b\u1ef3 V\u01ff\u0140\u0173\u0148\u021b\u01fb\u0159\u1ef3
+        \u01fa\u010d\u021b\u012f\u01ff\u0148 \u0126\u01fb\u0159\u0159\u01ff\u1e85
+        \u010c\u01ff-\u01ffp\u011b\u0159\u01fb\u021b\u012fv\u011b, \u01ff\u0148 b\u011b\u0127\u01fb\u0140f
+        \u01fff ASAP Harrow and Harrow Association of Disabled People.","for_recruiter":{"active_opportunities_count":8,"address_1":"The
+        Lodge","address_2":"64 Pinner Road","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/team-386673_1280_jDkQqYemMhh9VK8W2j27Sm.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/team-386673_1280_jDkQqYemMhh9VK8W2j27Sm.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/team-386673_1280_jDkQqYemMhh9VK8W2j27Sm.320x391.jpg","height":391,"width":320}],"blurb":"Help
+        Out Harrow promotes and brokers volunteer opportunities for a variety of Harrow
+        charities and voluntary groups.","charity":false,"city":"Harrow","contact_name":"Volunteering
+        Team","created":"2016-01-11T16:55:34.106821+00:00","doit_approved":false,"donation_page":null,"email":"volunteering@voluntaryactionharrow.org.uk","facebook":"https://www.facebook.com/VAHCoop","id":"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":51.5815,"links":[{"href":"/v2/orgs/help-out-harrow","title":"Help
+        Out Harrow! Profile"}],"lng":-0.345092,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.109x109.jpg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.76x76.jpg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.50x50.jpg","height":50,"width":50}],"name":"Help
+        Out Harrow!","permissions":null,"phone":"020 8861 5894","postcode":"HA1 4HZ","rating":"2.00","rating_count":2,"slug":"help-out-harrow","source":"doittrust","subscriber_count":2,"twitter":"https://twitter.com/VAHcoop","website":"http://www.voluntaryactionharrow.org.uk/volunteering-opportunities/"},"for_recruiter_id":"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d","id":"4d5f9b00-eaaa-45c4-adff-07707a9168b2","interests":[{"children":[],"created":"2014-10-26T17:24:26.146376+00:00","id":"484cccef-29f7-463f-97e0-385657bc58da","name":"Disability","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"disability","updated":"2014-10-26T17:24:26.146396+00:00"}],"is_new":false,"lat":51.5944,"lng":-0.336192,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location_id":null,"location_name":null,"location_type":"SL","locations":[{"address_1":"Bentley
+        House","address_2":"15-21 Headstone Drive","city":"Harrow","county":null,"id":"4d5f9b00-eaaa-45c4-adff-07707a9168b2","lat":51.5944,"lng":-0.336192,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":1,"postcode":"HA3
+        5QX","rating":"0.00","rating_count":0,"working_from_home":false}],"micro_availability":[],"owner_recruiter":{"active_opportunities_count":8,"address_1":"The
+        Lodge","address_2":"64 Pinner Road","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/team-386673_1280_jDkQqYemMhh9VK8W2j27Sm.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/team-386673_1280_jDkQqYemMhh9VK8W2j27Sm.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/team-386673_1280_jDkQqYemMhh9VK8W2j27Sm.320x391.jpg","height":391,"width":320}],"blurb":"Help
+        Out Harrow promotes and brokers volunteer opportunities for a variety of Harrow
+        charities and voluntary groups.","charity":false,"city":"Harrow","contact_name":"Volunteering
+        Team","created":"2016-01-11T16:55:34.106821+00:00","doit_approved":false,"donation_page":null,"email":"volunteering@voluntaryactionharrow.org.uk","facebook":"https://www.facebook.com/VAHCoop","id":"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":51.5815,"links":[{"href":"/v2/orgs/help-out-harrow","title":"Help
+        Out Harrow! Profile"}],"lng":-0.345092,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.109x109.jpg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.76x76.jpg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.50x50.jpg","height":50,"width":50}],"name":"Help
+        Out Harrow!","permissions":null,"phone":"020 8861 5894","postcode":"HA1 4HZ","rating":"2.00","rating_count":2,"slug":"help-out-harrow","source":"doittrust","subscriber_count":2,"twitter":"https://twitter.com/VAHcoop","website":"http://www.voluntaryactionharrow.org.uk/volunteering-opportunities/"},"owner_recruiter_id":"4dd7dfe2-c281-4170-8f0b-da17e8af5e5d","photo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Untitled-1_qmyr3yshk2DwEXMMvnYGsR.616x318.png","height":318,"width":616},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Untitled-1_qmyr3yshk2DwEXMMvnYGsR.308x159.png","height":159,"width":308},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Untitled-1_qmyr3yshk2DwEXMMvnYGsR.243x124.png","height":124,"width":243},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Untitled-1_qmyr3yshk2DwEXMMvnYGsR.170x87.png","height":87,"width":170}],"places_available":1,"postcode":"HA3
+        5QX","rating":"0.00","rating_count":0,"specific_end_date":"2017-09-03T09:54:35.679000+00:00","specific_start_date":"2017-06-05T09:54:35.679000+00:00","status":"live","title":"Group
+        Support Worker","updated":"2017-06-05T12:38:22.793038+00:00","working_from_home":false},{"address_1":"Age
+        UK Harrow, 3rd Floor Premier House","address_2":"1 Canning Road","availability":{"friday":[true,true,true],"monday":[true,true,true],"saturday":[true,true,true],"sunday":[true,true,true],"thursday":[true,true,true],"tuesday":[true,true,true],"wednesday":[true,true,true]},"city":"Waeldstone","county":"Harrow","created":"2016-10-28T09:33:00.387646+00:00","description":"Age
+        UK Harrow have once again collaborated with Innocent Drinks to help raise
+        money through the ''Innocent Big Knit'' project! \n\nWe are looking for volunteers
+        who can help knit small hats for this project, which raise 25 pence every
+        time a drink wearing a hat is sold. These funds then go towards keeping older
+        people in the community warm and well over the harsh winter period.\n\nLast
+        year the Big Knit project raised over \u00a3215,000 for Age UK across the
+        country! An amazing achievement, thanks to all the volunteers involved in
+        the project, showing even one hat can go a long way.\n\nFor more information
+        on this project please visit http://www.thebigknit.co.uk/","for_recruiter":{"active_opportunities_count":3,"address_1":"3rd
+        Floor Premier House","address_2":"1 Canning Road","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.320x391.jpg","height":391,"width":320}],"blurb":"Age UK Harrow
+        (formerly known as Age Concern Harrow) is an independent charity which exists
+        to serve the interests of all older citizens in and around the borough of
+        Harrow, from all walks of life and ethnic communities. We provide a wide range
+        of services for older people, from information and advice to volunteering
+        opportunities and support for those who are housebound and isolated.\n\nOur
+        mission is to promote the well-being of older residents of Harrow and to help
+        make later life a fulfilling and enjoyable experience with the help of wonderful
+        volunteers, such as yourself! Many of our volunteers feel they have become
+        more involved in and contributed to the community and have met new people
+        as well as gained valuable skills from volunteering with us.\n\nOur aims are:\n-To
+        support older people to ensure that they get the most from life.\n-To provide
+        information and advice of interest to older people.\n-To provide a range of
+        services for older people.\n-To influence local government and public opinion
+        and policy to the benefit of older people.\n-To ensure our volunteers have
+        an enjoyable experience, achieving the full outcome of their reasons for      volunteering.","charity":false,"city":"Wealdstone","contact_name":"Mandeep
+        Ahluwalia","created":"2014-10-28T12:24:57.282302+00:00","doit_approved":false,"donation_page":null,"email":"mahluwalia@ageukharrow.org.uk","facebook":"https://www.facebook.com/ageukharrow/","id":"072be9c2-e4c5-4ae4-aefd-ea2868567fba","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":51.5942,"links":[{"href":"/v2/orgs/age-uk-harrow","title":"Age
+        UK Harrow Profile"}],"lng":-0.3348,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.125x125.jpeg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.109x109.jpeg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.76x76.jpeg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.50x50.jpeg","height":50,"width":50}],"name":"Age UK Harrow","permissions":null,"phone":"020
+        8861 7995","postcode":"HA3 7TS","rating":"0.00","rating_count":0,"slug":"age-uk-harrow","source":"doittrust","subscriber_count":7,"twitter":"https://twitter.com/Ageukharrow","website":"http://www.ageuk.org.uk/harrow"},"for_recruiter_id":"072be9c2-e4c5-4ae4-aefd-ea2868567fba","id":"4943977d-de49-4544-99d1-f28e0fad7daf","interests":[{"children":[],"created":"2014-10-26T17:24:26.028949+00:00","id":"4dec176f-78db-42bc-8b81-f73ac6c482f3","name":"Women","parent_id":"56fabd4e-bac3-484f-9f55-448445f83481","slug":"women","updated":"2016-06-17T14:42:34.740785+00:00"},{"children":[],"created":"2014-10-26T17:24:26.032461+00:00","id":"8841ad2a-f281-4fbf-a5e3-2c84529f9544","name":"Men","parent_id":"56fabd4e-bac3-484f-9f55-448445f83481","slug":"men","updated":"2016-06-17T14:43:34.684377+00:00"},{"children":[],"created":"2014-10-26T17:24:26.146376+00:00","id":"484cccef-29f7-463f-97e0-385657bc58da","name":"Disability","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"disability","updated":"2014-10-26T17:24:26.146396+00:00"},{"children":[],"created":"2014-10-26T17:24:26.260228+00:00","id":"3fd515b4-6e1a-41a1-bad9-ea401937555b","name":"Older
+        people","parent_id":"56fabd4e-bac3-484f-9f55-448445f83481","slug":"older-people","updated":"2014-10-26T17:24:26.260247+00:00"},{"children":[],"created":"2014-10-26T17:24:26.153376+00:00","id":"0c1d7fc3-2589-431e-bdd3-3557adb98ef6","name":"Race
+        & Ethnicity","parent_id":"56fabd4e-bac3-484f-9f55-448445f83481","slug":"race-ethnicity","updated":"2016-06-17T14:44:32.832701+00:00"}],"is_new":false,"lat":51.5943,"lng":-0.334769,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location_id":null,"location_name":null,"location_type":"SL","locations":[{"address_1":"Age
+        UK Harrow, 3rd Floor Premier House","address_2":"1 Canning Road","city":"Waeldstone","county":"Harrow","id":"4943977d-de49-4544-99d1-f28e0fad7daf","lat":51.5943,"lng":-0.334769,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":5,"postcode":"HA3
+        7TS","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":null,"address_2":null,"city":null,"county":null,"id":"80d42b90-a127-4177-aec7-76974f8bf02c","lat":null,"lng":null,"local_authority":null,"location":null,"location_id":null,"location_name":null,"location_type":"NL","places_available":5,"postcode":null,"rating":"0.00","rating_count":0,"working_from_home":true}],"micro_availability":[],"owner_recruiter":{"active_opportunities_count":3,"address_1":"3rd
+        Floor Premier House","address_2":"1 Canning Road","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.320x391.jpg","height":391,"width":320}],"blurb":"Age UK Harrow
+        (formerly known as Age Concern Harrow) is an independent charity which exists
+        to serve the interests of all older citizens in and around the borough of
+        Harrow, from all walks of life and ethnic communities. We provide a wide range
+        of services for older people, from information and advice to volunteering
+        opportunities and support for those who are housebound and isolated.\n\nOur
+        mission is to promote the well-being of older residents of Harrow and to help
+        make later life a fulfilling and enjoyable experience with the help of wonderful
+        volunteers, such as yourself! Many of our volunteers feel they have become
+        more involved in and contributed to the community and have met new people
+        as well as gained valuable skills from volunteering with us.\n\nOur aims are:\n-To
+        support older people to ensure that they get the most from life.\n-To provide
+        information and advice of interest to older people.\n-To provide a range of
+        services for older people.\n-To influence local government and public opinion
+        and policy to the benefit of older people.\n-To ensure our volunteers have
+        an enjoyable experience, achieving the full outcome of their reasons for      volunteering.","charity":false,"city":"Wealdstone","contact_name":"Mandeep
+        Ahluwalia","created":"2014-10-28T12:24:57.282302+00:00","doit_approved":false,"donation_page":null,"email":"mahluwalia@ageukharrow.org.uk","facebook":"https://www.facebook.com/ageukharrow/","id":"072be9c2-e4c5-4ae4-aefd-ea2868567fba","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":51.5942,"links":[{"href":"/v2/orgs/age-uk-harrow","title":"Age
+        UK Harrow Profile"}],"lng":-0.3348,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.125x125.jpeg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.109x109.jpeg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.76x76.jpeg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.50x50.jpeg","height":50,"width":50}],"name":"Age UK Harrow","permissions":null,"phone":"020
+        8861 7995","postcode":"HA3 7TS","rating":"0.00","rating_count":0,"slug":"age-uk-harrow","source":"doittrust","subscriber_count":7,"twitter":"https://twitter.com/Ageukharrow","website":"http://www.ageuk.org.uk/harrow"},"owner_recruiter_id":"072be9c2-e4c5-4ae4-aefd-ea2868567fba","photo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/The_Big_Knit_Y9qtaE9g46ui2awafPJKo4.616x318.jpg","height":318,"width":616},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/The_Big_Knit_Y9qtaE9g46ui2awafPJKo4.308x159.jpg","height":159,"width":308},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/The_Big_Knit_Y9qtaE9g46ui2awafPJKo4.243x124.jpg","height":124,"width":243},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/The_Big_Knit_Y9qtaE9g46ui2awafPJKo4.170x87.jpg","height":87,"width":170}],"places_available":5,"postcode":"HA3
+        7TS","rating":"0.00","rating_count":0,"specific_end_date":"2017-12-21T09:51:46.007000+00:00","specific_start_date":"2017-06-05T10:23:06.348000+00:00","status":"live","title":"Knitting
+        Volunteer for ''The Big Knit''","updated":"2017-06-05T10:26:00.847930+00:00","working_from_home":false},{"address_1":null,"address_2":null,"availability":{"friday":[true,true,true],"monday":[true,true,true],"saturday":[true,true,true],"sunday":[true,true,true],"thursday":[true,true,true],"tuesday":[true,true,true],"wednesday":[true,true,true]},"city":null,"county":null,"created":"2016-10-28T09:33:00.387646+00:00","description":"Age
+        UK Harrow have once again collaborated with Innocent Drinks to help raise
+        money through the ''Innocent Big Knit'' project! \n\nWe are looking for volunteers
+        who can help knit small hats for this project, which raise 25 pence every
+        time a drink wearing a hat is sold. These funds then go towards keeping older
+        people in the community warm and well over the harsh winter period.\n\nLast
+        year the Big Knit project raised over \u00a3215,000 for Age UK across the
+        country! An amazing achievement, thanks to all the volunteers involved in
+        the project, showing even one hat can go a long way.\n\nFor more information
+        on this project please visit http://www.thebigknit.co.uk/","for_recruiter":{"active_opportunities_count":3,"address_1":"3rd
+        Floor Premier House","address_2":"1 Canning Road","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.320x391.jpg","height":391,"width":320}],"blurb":"Age UK Harrow
+        (formerly known as Age Concern Harrow) is an independent charity which exists
+        to serve the interests of all older citizens in and around the borough of
+        Harrow, from all walks of life and ethnic communities. We provide a wide range
+        of services for older people, from information and advice to volunteering
+        opportunities and support for those who are housebound and isolated.\n\nOur
+        mission is to promote the well-being of older residents of Harrow and to help
+        make later life a fulfilling and enjoyable experience with the help of wonderful
+        volunteers, such as yourself! Many of our volunteers feel they have become
+        more involved in and contributed to the community and have met new people
+        as well as gained valuable skills from volunteering with us.\n\nOur aims are:\n-To
+        support older people to ensure that they get the most from life.\n-To provide
+        information and advice of interest to older people.\n-To provide a range of
+        services for older people.\n-To influence local government and public opinion
+        and policy to the benefit of older people.\n-To ensure our volunteers have
+        an enjoyable experience, achieving the full outcome of their reasons for      volunteering.","charity":false,"city":"Wealdstone","contact_name":"Mandeep
+        Ahluwalia","created":"2014-10-28T12:24:57.282302+00:00","doit_approved":false,"donation_page":null,"email":"mahluwalia@ageukharrow.org.uk","facebook":"https://www.facebook.com/ageukharrow/","id":"072be9c2-e4c5-4ae4-aefd-ea2868567fba","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":51.5942,"links":[{"href":"/v2/orgs/age-uk-harrow","title":"Age
+        UK Harrow Profile"}],"lng":-0.3348,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.125x125.jpeg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.109x109.jpeg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.76x76.jpeg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.50x50.jpeg","height":50,"width":50}],"name":"Age UK Harrow","permissions":null,"phone":"020
+        8861 7995","postcode":"HA3 7TS","rating":"0.00","rating_count":0,"slug":"age-uk-harrow","source":"doittrust","subscriber_count":7,"twitter":"https://twitter.com/Ageukharrow","website":"http://www.ageuk.org.uk/harrow"},"for_recruiter_id":"072be9c2-e4c5-4ae4-aefd-ea2868567fba","id":"80d42b90-a127-4177-aec7-76974f8bf02c","interests":[{"children":[],"created":"2014-10-26T17:24:26.028949+00:00","id":"4dec176f-78db-42bc-8b81-f73ac6c482f3","name":"Women","parent_id":"56fabd4e-bac3-484f-9f55-448445f83481","slug":"women","updated":"2016-06-17T14:42:34.740785+00:00"},{"children":[],"created":"2014-10-26T17:24:26.032461+00:00","id":"8841ad2a-f281-4fbf-a5e3-2c84529f9544","name":"Men","parent_id":"56fabd4e-bac3-484f-9f55-448445f83481","slug":"men","updated":"2016-06-17T14:43:34.684377+00:00"},{"children":[],"created":"2014-10-26T17:24:26.146376+00:00","id":"484cccef-29f7-463f-97e0-385657bc58da","name":"Disability","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"disability","updated":"2014-10-26T17:24:26.146396+00:00"},{"children":[],"created":"2014-10-26T17:24:26.260228+00:00","id":"3fd515b4-6e1a-41a1-bad9-ea401937555b","name":"Older
+        people","parent_id":"56fabd4e-bac3-484f-9f55-448445f83481","slug":"older-people","updated":"2014-10-26T17:24:26.260247+00:00"},{"children":[],"created":"2014-10-26T17:24:26.153376+00:00","id":"0c1d7fc3-2589-431e-bdd3-3557adb98ef6","name":"Race
+        & Ethnicity","parent_id":"56fabd4e-bac3-484f-9f55-448445f83481","slug":"race-ethnicity","updated":"2016-06-17T14:44:32.832701+00:00"}],"is_new":false,"lat":null,"lng":null,"local_authority":null,"location_id":null,"location_name":null,"location_type":"NL","locations":[{"address_1":"Age
+        UK Harrow, 3rd Floor Premier House","address_2":"1 Canning Road","city":"Waeldstone","county":"Harrow","id":"4943977d-de49-4544-99d1-f28e0fad7daf","lat":51.5943,"lng":-0.334769,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":5,"postcode":"HA3
+        7TS","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":null,"address_2":null,"city":null,"county":null,"id":"80d42b90-a127-4177-aec7-76974f8bf02c","lat":null,"lng":null,"local_authority":null,"location":null,"location_id":null,"location_name":null,"location_type":"NL","places_available":5,"postcode":null,"rating":"0.00","rating_count":0,"working_from_home":true}],"micro_availability":[],"owner_recruiter":{"active_opportunities_count":3,"address_1":"3rd
+        Floor Premier House","address_2":"1 Canning Road","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.320x391.jpg","height":391,"width":320}],"blurb":"Age UK Harrow
+        (formerly known as Age Concern Harrow) is an independent charity which exists
+        to serve the interests of all older citizens in and around the borough of
+        Harrow, from all walks of life and ethnic communities. We provide a wide range
+        of services for older people, from information and advice to volunteering
+        opportunities and support for those who are housebound and isolated.\n\nOur
+        mission is to promote the well-being of older residents of Harrow and to help
+        make later life a fulfilling and enjoyable experience with the help of wonderful
+        volunteers, such as yourself! Many of our volunteers feel they have become
+        more involved in and contributed to the community and have met new people
+        as well as gained valuable skills from volunteering with us.\n\nOur aims are:\n-To
+        support older people to ensure that they get the most from life.\n-To provide
+        information and advice of interest to older people.\n-To provide a range of
+        services for older people.\n-To influence local government and public opinion
+        and policy to the benefit of older people.\n-To ensure our volunteers have
+        an enjoyable experience, achieving the full outcome of their reasons for      volunteering.","charity":false,"city":"Wealdstone","contact_name":"Mandeep
+        Ahluwalia","created":"2014-10-28T12:24:57.282302+00:00","doit_approved":false,"donation_page":null,"email":"mahluwalia@ageukharrow.org.uk","facebook":"https://www.facebook.com/ageukharrow/","id":"072be9c2-e4c5-4ae4-aefd-ea2868567fba","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":51.5942,"links":[{"href":"/v2/orgs/age-uk-harrow","title":"Age
+        UK Harrow Profile"}],"lng":-0.3348,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.125x125.jpeg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.109x109.jpeg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.76x76.jpeg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.50x50.jpeg","height":50,"width":50}],"name":"Age UK Harrow","permissions":null,"phone":"020
+        8861 7995","postcode":"HA3 7TS","rating":"0.00","rating_count":0,"slug":"age-uk-harrow","source":"doittrust","subscriber_count":7,"twitter":"https://twitter.com/Ageukharrow","website":"http://www.ageuk.org.uk/harrow"},"owner_recruiter_id":"072be9c2-e4c5-4ae4-aefd-ea2868567fba","photo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/The_Big_Knit_Y9qtaE9g46ui2awafPJKo4.616x318.jpg","height":318,"width":616},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/The_Big_Knit_Y9qtaE9g46ui2awafPJKo4.308x159.jpg","height":159,"width":308},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/The_Big_Knit_Y9qtaE9g46ui2awafPJKo4.243x124.jpg","height":124,"width":243},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/The_Big_Knit_Y9qtaE9g46ui2awafPJKo4.170x87.jpg","height":87,"width":170}],"places_available":5,"postcode":null,"rating":"0.00","rating_count":0,"specific_end_date":"2017-12-21T09:51:46.007000+00:00","specific_start_date":"2017-06-05T10:23:06.348000+00:00","status":"live","title":"Knitting
+        Volunteer for ''The Big Knit''","updated":"2017-06-05T10:26:00.847930+00:00","working_from_home":true},{"address_1":"Age
+        UK Harrow, 3rd Floor Premier House","address_2":"1 Canning Road","availability":{"friday":[true,true,false],"monday":[true,true,false],"saturday":[false,false,false],"sunday":[false,false,false],"thursday":[true,true,false],"tuesday":[true,true,false],"wednesday":[true,true,false]},"city":"Harrow
+        Wealdstone","county":"Middlesex","created":"2016-12-05T14:56:11.361407+00:00","description":"We
+        are in need of a volunteer who can assist elderly clients, mainly in their
+        homes, with filling out specific forms such as Blue Badge applications. All
+        of our clients are senior citizens and majority of them are housebound, therefore
+        applying for the things they have rights to can prove to be very difficult.
+        Having someone who can spare even 3 hours a week to travel to their home in
+        Harrow and assist with filling in forms, can make all the difference to them.\n\nVolunteers
+        who are looking for employment skills to add to their CV would benefit from
+        this role.","for_recruiter":{"active_opportunities_count":3,"address_1":"3rd
+        Floor Premier House","address_2":"1 Canning Road","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.320x391.jpg","height":391,"width":320}],"blurb":"Age UK Harrow
+        (formerly known as Age Concern Harrow) is an independent charity which exists
+        to serve the interests of all older citizens in and around the borough of
+        Harrow, from all walks of life and ethnic communities. We provide a wide range
+        of services for older people, from information and advice to volunteering
+        opportunities and support for those who are housebound and isolated.\n\nOur
+        mission is to promote the well-being of older residents of Harrow and to help
+        make later life a fulfilling and enjoyable experience with the help of wonderful
+        volunteers, such as yourself! Many of our volunteers feel they have become
+        more involved in and contributed to the community and have met new people
+        as well as gained valuable skills from volunteering with us.\n\nOur aims are:\n-To
+        support older people to ensure that they get the most from life.\n-To provide
+        information and advice of interest to older people.\n-To provide a range of
+        services for older people.\n-To influence local government and public opinion
+        and policy to the benefit of older people.\n-To ensure our volunteers have
+        an enjoyable experience, achieving the full outcome of their reasons for      volunteering.","charity":false,"city":"Wealdstone","contact_name":"Mandeep
+        Ahluwalia","created":"2014-10-28T12:24:57.282302+00:00","doit_approved":false,"donation_page":null,"email":"mahluwalia@ageukharrow.org.uk","facebook":"https://www.facebook.com/ageukharrow/","id":"072be9c2-e4c5-4ae4-aefd-ea2868567fba","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":51.5942,"links":[{"href":"/v2/orgs/age-uk-harrow","title":"Age
+        UK Harrow Profile"}],"lng":-0.3348,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.125x125.jpeg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.109x109.jpeg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.76x76.jpeg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.50x50.jpeg","height":50,"width":50}],"name":"Age UK Harrow","permissions":null,"phone":"020
+        8861 7995","postcode":"HA3 7TS","rating":"0.00","rating_count":0,"slug":"age-uk-harrow","source":"doittrust","subscriber_count":7,"twitter":"https://twitter.com/Ageukharrow","website":"http://www.ageuk.org.uk/harrow"},"for_recruiter_id":"072be9c2-e4c5-4ae4-aefd-ea2868567fba","id":"bada5ed4-bd4e-4990-971d-e1cc8a03100b","interests":[{"children":[],"created":"2014-10-26T17:24:26.221469+00:00","id":"98f6b247-f07a-430d-a181-9ec00f443da5","name":"Human
+        rights","parent_id":"48f607ba-71ae-4786-8a05-f0ff409252ee","slug":"human-rights","updated":"2014-10-26T17:24:26.221489+00:00"},{"children":[],"created":"2014-10-26T17:24:26.260228+00:00","id":"3fd515b4-6e1a-41a1-bad9-ea401937555b","name":"Older
+        people","parent_id":"56fabd4e-bac3-484f-9f55-448445f83481","slug":"older-people","updated":"2014-10-26T17:24:26.260247+00:00"},{"children":[],"created":"2014-10-26T17:24:25.897903+00:00","id":"f76f8162-e300-403b-9c96-bae336cb9330","name":"Literacy","parent_id":"cf1ab709-0632-4d79-adef-f2fd32c1ebdf","slug":"literacy","updated":"2014-10-26T17:24:25.897923+00:00"},{"children":[],"created":"2016-06-17T14:51:14.168121+00:00","id":"432d5782-188a-4025-b1f4-80f834cd65b7","name":"Special
+        education","parent_id":"cf1ab709-0632-4d79-adef-f2fd32c1ebdf","slug":"special-education","updated":"2016-06-17T14:51:14.168147+00:00"},{"children":[],"created":"2014-10-26T17:24:26.146376+00:00","id":"484cccef-29f7-463f-97e0-385657bc58da","name":"Disability","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"disability","updated":"2014-10-26T17:24:26.146396+00:00"}],"is_new":false,"lat":51.5943,"lng":-0.334769,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location_id":null,"location_name":null,"location_type":"SL","locations":[{"address_1":"Age
+        UK Harrow, 3rd Floor Premier House","address_2":"1 Canning Road","city":"Harrow
+        Wealdstone","county":"Middlesex","id":"bada5ed4-bd4e-4990-971d-e1cc8a03100b","lat":51.5943,"lng":-0.334769,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":2,"postcode":"HA3
+        7TS","rating":"0.00","rating_count":0,"working_from_home":false}],"micro_availability":[],"owner_recruiter":{"active_opportunities_count":3,"address_1":"3rd
+        Floor Premier House","address_2":"1 Canning Road","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/2014-09-22
+        Age UK logo.320x391.jpg","height":391,"width":320}],"blurb":"Age UK Harrow
+        (formerly known as Age Concern Harrow) is an independent charity which exists
+        to serve the interests of all older citizens in and around the borough of
+        Harrow, from all walks of life and ethnic communities. We provide a wide range
+        of services for older people, from information and advice to volunteering
+        opportunities and support for those who are housebound and isolated.\n\nOur
+        mission is to promote the well-being of older residents of Harrow and to help
+        make later life a fulfilling and enjoyable experience with the help of wonderful
+        volunteers, such as yourself! Many of our volunteers feel they have become
+        more involved in and contributed to the community and have met new people
+        as well as gained valuable skills from volunteering with us.\n\nOur aims are:\n-To
+        support older people to ensure that they get the most from life.\n-To provide
+        information and advice of interest to older people.\n-To provide a range of
+        services for older people.\n-To influence local government and public opinion
+        and policy to the benefit of older people.\n-To ensure our volunteers have
+        an enjoyable experience, achieving the full outcome of their reasons for      volunteering.","charity":false,"city":"Wealdstone","contact_name":"Mandeep
+        Ahluwalia","created":"2014-10-28T12:24:57.282302+00:00","doit_approved":false,"donation_page":null,"email":"mahluwalia@ageukharrow.org.uk","facebook":"https://www.facebook.com/ageukharrow/","id":"072be9c2-e4c5-4ae4-aefd-ea2868567fba","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":51.5942,"links":[{"href":"/v2/orgs/age-uk-harrow","title":"Age
+        UK Harrow Profile"}],"lng":-0.3348,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.125x125.jpeg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.109x109.jpeg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.76x76.jpeg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/2015-01-12
+        Age UK Logo facebook.50x50.jpeg","height":50,"width":50}],"name":"Age UK Harrow","permissions":null,"phone":"020
+        8861 7995","postcode":"HA3 7TS","rating":"0.00","rating_count":0,"slug":"age-uk-harrow","source":"doittrust","subscriber_count":7,"twitter":"https://twitter.com/Ageukharrow","website":"http://www.ageuk.org.uk/harrow"},"owner_recruiter_id":"072be9c2-e4c5-4ae4-aefd-ea2868567fba","photo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Form
+        filling.616x318.jpg","height":318,"width":616},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Form
+        filling.308x159.jpg","height":159,"width":308},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Form
+        filling.243x124.jpg","height":124,"width":243},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Form
+        filling.170x87.jpg","height":87,"width":170}],"places_available":2,"postcode":"HA3
+        7TS","rating":"0.00","rating_count":0,"specific_end_date":"2018-03-01T14:34:13.506000+00:00","specific_start_date":"2017-06-05T09:40:09.306000+00:00","status":"live","title":"Form
+        Filling Volunteer","updated":"2017-06-05T09:44:59.805501+00:00","working_from_home":false},{"address_1":"Meadows
+        House Residential and Nursing Home","address_2":"95 Tudway Road, Kidbrooke","availability":{"friday":[true,true,true],"monday":[true,true,true],"saturday":[true,true,true],"sunday":[true,true,true],"thursday":[true,true,true],"tuesday":[true,true,true],"wednesday":[true,true,true]},"city":"London","county":"","created":"2017-04-05T16:35:36.322129+00:00","description":"We
+        have 11 care homes in London.\n\nAashna House Residential Care Home - London\nAshgreen
+        House Residential and Nursing Home - London\nHaven Residential Care Home -
+        Pinner\nMeadow View Residential Care Home - Canterbury\nMeadows House Residential
+        and Nursing Home - London \nParkview House Residential Care Home - London\nRiverlee
+        Residential and Nursing Home - London\nRowanweald Residential & Nursing Home
+        - Harrow\nSt Johns House Residential Care Home - London\nThe Manse Residential
+        Care Home - London\nTime Court Residential and Nursing Home - London\n\nWe
+        welcome volunteers who want to help, including supporting our residents with
+        leisure and social activities, befriending, gardening and maintenance, driving,
+        helping with events, clerical and administration support and in the kitchen.","for_recruiter":{"active_opportunities_count":8,"address_1":"Sanctuary
+        House, Chamber Court","address_2":"Castle Street","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.320x391.jpg","height":391,"width":320}],"blurb":"Care of older
+        people.\n\nWe pride ourselves on employing people who care for our residents
+        like members of their own family, with an ethos of ''keeping kindness at the
+        heart of our care''. We believe in giving our residents every opportunity
+        to lead happy, contented lives, whether that is supporting them to keep up
+        with a favourite hobby or trying new things.\n\nEstablished in 1995, we have
+        over 68 warm and welcoming care homes across England. Part of Sanctuary Group,
+        a not-for-profit organisation, we reinvest surplus income back into our homes.\n\nAt
+        our care homes we have a wide range of opportunities to suit volunteers''
+        availability, skills and interests. Our volunteers are a wonderful asset to
+        our team and residents, whether they are simply popping in for a friendly
+        chat or helping our residents to learn something new, the role they play is
+        so important to us.","charity":false,"city":"Worcester","contact_name":"Yunus
+        Giwa","created":"2016-11-08T14:46:22.902427+00:00","doit_approved":false,"donation_page":null,"email":"care.volunteer@sanctuary-housing.co.uk","facebook":null,"id":"97e44849-9d5a-486e-90a8-4bdab16301a5","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":52.2,"links":[{"href":"/v2/orgs/sanctuary-care","title":"Sanctuary
+        Care  Profile"}],"lng":-2.23,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.125x125.jpg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.109x109.jpg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.76x76.jpg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.50x50.jpg","height":50,"width":50}],"name":"Sanctuary
+        Care ","permissions":null,"phone":"01905 335 539","postcode":"WR1 3ZQ","rating":"0.00","rating_count":0,"slug":"sanctuary-care","source":"doittrust","subscriber_count":11,"twitter":null,"website":"http://www.sanctuary-care.co.uk"},"for_recruiter_id":"97e44849-9d5a-486e-90a8-4bdab16301a5","id":"ef55b84f-ec38-4936-90a8-69def0b134ee","interests":[{"children":[],"created":"2014-10-26T17:24:25.590527+00:00","id":"517978aa-186d-4149-8548-c26b3d3f41cc","name":"Education","parent_id":"cf1ab709-0632-4d79-adef-f2fd32c1ebdf","slug":"education","updated":"2014-10-26T17:24:25.590548+00:00"},{"children":[],"created":"2014-10-26T17:24:26.142866+00:00","id":"6fc9bb15-1728-4d4d-bdab-51be247acba0","name":"Social
+        care","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"social-care","updated":"2014-10-26T17:24:26.142886+00:00"},{"children":[],"created":"2014-10-26T17:24:26.263725+00:00","id":"52bd46a8-63d2-47d8-b4a1-785f8215da59","name":"Medicine","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"medicine","updated":"2014-10-26T17:24:26.263745+00:00"},{"children":[],"created":"2014-10-26T17:24:26.260228+00:00","id":"3fd515b4-6e1a-41a1-bad9-ea401937555b","name":"Older
+        people","parent_id":"56fabd4e-bac3-484f-9f55-448445f83481","slug":"older-people","updated":"2014-10-26T17:24:26.260247+00:00"},{"children":[],"created":"2014-10-26T17:24:26.235376+00:00","id":"397cac61-1077-4f78-a8e5-d8c3dd29cde4","name":"Mental
+        Health","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"mental-health","updated":"2014-10-26T17:24:26.235395+00:00"}],"is_new":false,"lat":51.4586,"lng":0.0315296,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location_id":null,"location_name":null,"location_type":"SL","locations":[{"address_1":"Meadows
+        House Residential and Nursing Home","address_2":"95 Tudway Road, Kidbrooke","city":"London","county":"","id":"ef55b84f-ec38-4936-90a8-69def0b134ee","lat":51.4586,"lng":0.0315296,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE3
+        9YG","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Parkview
+        House Residential Care Home","address_2":"12 Houndsfield Road, Edmonton","city":"London","county":"","id":"5f69a3b9-04c6-42eb-821f-f4edbde874b1","lat":51.6334,"lng":-0.05688,"local_authority":{"id":"62907dc5-279a-423f-98fb-0c438d23befa","name":"Enfield
+        London Borough","slug":"enfield-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"N9
+        7RQ","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Rowanweald
+        Residential & Nursing Home","address_2":"1 Weald Lane, Harrow Weald","city":"Harrow","county":"London","id":"4e5a8cc1-a2f8-446e-99da-e89e5966199d","lat":51.603,"lng":-0.339012,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"HA3
+        5EG","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Ashgreen
+        House Residential and Nursing Home","address_2":"Sandbach Place, Woolwich","city":"London","county":"SE18
+        7EX","id":"1a23f8f8-262e-4205-b384-55694bd79f7e","lat":51.4872,"lng":0.076431,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE18
+        7EX","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"The
+        Manse Residential Care Home","address_2":"11 South Norwood Hill, South Norwood","city":"London","county":"","id":"28ceff7b-4b14-4c15-bc06-0dd010245875","lat":51.4002,"lng":-0.0764846,"local_authority":{"id":"c2ee1839-5b0b-4502-812c-aa5a6c8f2d42","name":"Croydon
+        London Borough","slug":"croydon-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE25
+        6AA","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Riverlee
+        Residential and Nursing Home","address_2":"Franklin Place, Greenwich","city":"London","county":"","id":"1a43ce77-7618-4009-859e-28e66a869605","lat":51.4726,"lng":-0.0179741,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE13
+        7NJ","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Aashna
+        House Residential Care Home","address_2":"2 Bates crescent, Streatham Vale","city":"London","county":"","id":"7f9ef811-9d7d-4cbe-bf8b-dfc5ae45797f","lat":51.4174,"lng":-0.141804,"local_authority":{"id":"e624625d-17f2-49ef-88b7-cfaa7f42d596","name":"Lambeth
+        London Borough","slug":"lambeth-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SW16
+        5BP","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"St
+        Johns House Residential Care Home","address_2":"1 Westwell Road Approach,
+        Streatham Common","city":"London","county":"","id":"de9f5303-f8ef-4cf3-8cec-2c1084413178","lat":51.4209,"lng":-0.129161,"local_authority":{"id":"e624625d-17f2-49ef-88b7-cfaa7f42d596","name":"Lambeth
+        London Borough","slug":"lambeth-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SW16
+        5SH","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Haven
+        Residential Care Home","address_2":"36-38 Wellington Road, Hatch End","city":"Pinner","county":"Middlesex","id":"0f0db05e-1022-4faa-bc8a-3d093829cfdc","lat":51.606,"lng":-0.3758,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"HA5
+        4NL","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Meadow
+        View Residential Care Home","address_2":"Blackthorn Road, Hersden","city":"Canterbury","county":"Kent","id":"ea75f36d-dc02-4075-b06e-11f0918ff88f","lat":51.3139,"lng":1.15429,"local_authority":{"id":"c2a3eec3-f9bf-4cf8-97fc-11da3625e628","name":"Canterbury
+        District (B)","slug":"canterbury-district-b"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"CT3
+        4GB","rating":"0.00","rating_count":0,"working_from_home":false}],"micro_availability":[],"owner_recruiter":{"active_opportunities_count":8,"address_1":"Sanctuary
+        House, Chamber Court","address_2":"Castle Street","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.320x391.jpg","height":391,"width":320}],"blurb":"Care of older
+        people.\n\nWe pride ourselves on employing people who care for our residents
+        like members of their own family, with an ethos of ''keeping kindness at the
+        heart of our care''. We believe in giving our residents every opportunity
+        to lead happy, contented lives, whether that is supporting them to keep up
+        with a favourite hobby or trying new things.\n\nEstablished in 1995, we have
+        over 68 warm and welcoming care homes across England. Part of Sanctuary Group,
+        a not-for-profit organisation, we reinvest surplus income back into our homes.\n\nAt
+        our care homes we have a wide range of opportunities to suit volunteers''
+        availability, skills and interests. Our volunteers are a wonderful asset to
+        our team and residents, whether they are simply popping in for a friendly
+        chat or helping our residents to learn something new, the role they play is
+        so important to us.","charity":false,"city":"Worcester","contact_name":"Yunus
+        Giwa","created":"2016-11-08T14:46:22.902427+00:00","doit_approved":false,"donation_page":null,"email":"care.volunteer@sanctuary-housing.co.uk","facebook":null,"id":"97e44849-9d5a-486e-90a8-4bdab16301a5","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":52.2,"links":[{"href":"/v2/orgs/sanctuary-care","title":"Sanctuary
+        Care  Profile"}],"lng":-2.23,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.125x125.jpg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.109x109.jpg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.76x76.jpg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.50x50.jpg","height":50,"width":50}],"name":"Sanctuary
+        Care ","permissions":null,"phone":"01905 335 539","postcode":"WR1 3ZQ","rating":"0.00","rating_count":0,"slug":"sanctuary-care","source":"doittrust","subscriber_count":11,"twitter":null,"website":"http://www.sanctuary-care.co.uk"},"owner_recruiter_id":"97e44849-9d5a-486e-90a8-4bdab16301a5","photo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.616x318.jpg","height":318,"width":616},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.308x159.jpg","height":159,"width":308},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.243x124.jpg","height":124,"width":243},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.170x87.jpg","height":87,"width":170}],"places_available":10,"postcode":"SE3
+        9YG","rating":"0.00","rating_count":0,"specific_end_date":"2018-06-01T16:04:33+00:00","specific_start_date":"2017-04-10T09:43:27.295000+00:00","status":"live","title":"Volunteering
+        with Sanctuary Care in London","updated":"2017-05-05T10:31:32.834565+00:00","working_from_home":false},{"address_1":"Parkview
+        House Residential Care Home","address_2":"12 Houndsfield Road, Edmonton","availability":{"friday":[true,true,true],"monday":[true,true,true],"saturday":[true,true,true],"sunday":[true,true,true],"thursday":[true,true,true],"tuesday":[true,true,true],"wednesday":[true,true,true]},"city":"London","county":"","created":"2017-04-05T16:35:36.322129+00:00","description":"We
+        have 11 care homes in London.\n\nAashna House Residential Care Home - London\nAshgreen
+        House Residential and Nursing Home - London\nHaven Residential Care Home -
+        Pinner\nMeadow View Residential Care Home - Canterbury\nMeadows House Residential
+        and Nursing Home - London \nParkview House Residential Care Home - London\nRiverlee
+        Residential and Nursing Home - London\nRowanweald Residential & Nursing Home
+        - Harrow\nSt Johns House Residential Care Home - London\nThe Manse Residential
+        Care Home - London\nTime Court Residential and Nursing Home - London\n\nWe
+        welcome volunteers who want to help, including supporting our residents with
+        leisure and social activities, befriending, gardening and maintenance, driving,
+        helping with events, clerical and administration support and in the kitchen.","for_recruiter":{"active_opportunities_count":8,"address_1":"Sanctuary
+        House, Chamber Court","address_2":"Castle Street","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.320x391.jpg","height":391,"width":320}],"blurb":"Care of older
+        people.\n\nWe pride ourselves on employing people who care for our residents
+        like members of their own family, with an ethos of ''keeping kindness at the
+        heart of our care''. We believe in giving our residents every opportunity
+        to lead happy, contented lives, whether that is supporting them to keep up
+        with a favourite hobby or trying new things.\n\nEstablished in 1995, we have
+        over 68 warm and welcoming care homes across England. Part of Sanctuary Group,
+        a not-for-profit organisation, we reinvest surplus income back into our homes.\n\nAt
+        our care homes we have a wide range of opportunities to suit volunteers''
+        availability, skills and interests. Our volunteers are a wonderful asset to
+        our team and residents, whether they are simply popping in for a friendly
+        chat or helping our residents to learn something new, the role they play is
+        so important to us.","charity":false,"city":"Worcester","contact_name":"Yunus
+        Giwa","created":"2016-11-08T14:46:22.902427+00:00","doit_approved":false,"donation_page":null,"email":"care.volunteer@sanctuary-housing.co.uk","facebook":null,"id":"97e44849-9d5a-486e-90a8-4bdab16301a5","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":52.2,"links":[{"href":"/v2/orgs/sanctuary-care","title":"Sanctuary
+        Care  Profile"}],"lng":-2.23,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.125x125.jpg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.109x109.jpg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.76x76.jpg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.50x50.jpg","height":50,"width":50}],"name":"Sanctuary
+        Care ","permissions":null,"phone":"01905 335 539","postcode":"WR1 3ZQ","rating":"0.00","rating_count":0,"slug":"sanctuary-care","source":"doittrust","subscriber_count":11,"twitter":null,"website":"http://www.sanctuary-care.co.uk"},"for_recruiter_id":"97e44849-9d5a-486e-90a8-4bdab16301a5","id":"5f69a3b9-04c6-42eb-821f-f4edbde874b1","interests":[{"children":[],"created":"2014-10-26T17:24:25.590527+00:00","id":"517978aa-186d-4149-8548-c26b3d3f41cc","name":"Education","parent_id":"cf1ab709-0632-4d79-adef-f2fd32c1ebdf","slug":"education","updated":"2014-10-26T17:24:25.590548+00:00"},{"children":[],"created":"2014-10-26T17:24:26.142866+00:00","id":"6fc9bb15-1728-4d4d-bdab-51be247acba0","name":"Social
+        care","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"social-care","updated":"2014-10-26T17:24:26.142886+00:00"},{"children":[],"created":"2014-10-26T17:24:26.263725+00:00","id":"52bd46a8-63d2-47d8-b4a1-785f8215da59","name":"Medicine","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"medicine","updated":"2014-10-26T17:24:26.263745+00:00"},{"children":[],"created":"2014-10-26T17:24:26.260228+00:00","id":"3fd515b4-6e1a-41a1-bad9-ea401937555b","name":"Older
+        people","parent_id":"56fabd4e-bac3-484f-9f55-448445f83481","slug":"older-people","updated":"2014-10-26T17:24:26.260247+00:00"},{"children":[],"created":"2014-10-26T17:24:26.235376+00:00","id":"397cac61-1077-4f78-a8e5-d8c3dd29cde4","name":"Mental
+        Health","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"mental-health","updated":"2014-10-26T17:24:26.235395+00:00"}],"is_new":false,"lat":51.6334,"lng":-0.05688,"local_authority":{"id":"62907dc5-279a-423f-98fb-0c438d23befa","name":"Enfield
+        London Borough","slug":"enfield-london-borough"},"location_id":null,"location_name":null,"location_type":"SL","locations":[{"address_1":"Meadows
+        House Residential and Nursing Home","address_2":"95 Tudway Road, Kidbrooke","city":"London","county":"","id":"ef55b84f-ec38-4936-90a8-69def0b134ee","lat":51.4586,"lng":0.0315296,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE3
+        9YG","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Parkview
+        House Residential Care Home","address_2":"12 Houndsfield Road, Edmonton","city":"London","county":"","id":"5f69a3b9-04c6-42eb-821f-f4edbde874b1","lat":51.6334,"lng":-0.05688,"local_authority":{"id":"62907dc5-279a-423f-98fb-0c438d23befa","name":"Enfield
+        London Borough","slug":"enfield-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"N9
+        7RQ","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Rowanweald
+        Residential & Nursing Home","address_2":"1 Weald Lane, Harrow Weald","city":"Harrow","county":"London","id":"4e5a8cc1-a2f8-446e-99da-e89e5966199d","lat":51.603,"lng":-0.339012,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"HA3
+        5EG","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Ashgreen
+        House Residential and Nursing Home","address_2":"Sandbach Place, Woolwich","city":"London","county":"SE18
+        7EX","id":"1a23f8f8-262e-4205-b384-55694bd79f7e","lat":51.4872,"lng":0.076431,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE18
+        7EX","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"The
+        Manse Residential Care Home","address_2":"11 South Norwood Hill, South Norwood","city":"London","county":"","id":"28ceff7b-4b14-4c15-bc06-0dd010245875","lat":51.4002,"lng":-0.0764846,"local_authority":{"id":"c2ee1839-5b0b-4502-812c-aa5a6c8f2d42","name":"Croydon
+        London Borough","slug":"croydon-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE25
+        6AA","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Riverlee
+        Residential and Nursing Home","address_2":"Franklin Place, Greenwich","city":"London","county":"","id":"1a43ce77-7618-4009-859e-28e66a869605","lat":51.4726,"lng":-0.0179741,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE13
+        7NJ","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Aashna
+        House Residential Care Home","address_2":"2 Bates crescent, Streatham Vale","city":"London","county":"","id":"7f9ef811-9d7d-4cbe-bf8b-dfc5ae45797f","lat":51.4174,"lng":-0.141804,"local_authority":{"id":"e624625d-17f2-49ef-88b7-cfaa7f42d596","name":"Lambeth
+        London Borough","slug":"lambeth-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SW16
+        5BP","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"St
+        Johns House Residential Care Home","address_2":"1 Westwell Road Approach,
+        Streatham Common","city":"London","county":"","id":"de9f5303-f8ef-4cf3-8cec-2c1084413178","lat":51.4209,"lng":-0.129161,"local_authority":{"id":"e624625d-17f2-49ef-88b7-cfaa7f42d596","name":"Lambeth
+        London Borough","slug":"lambeth-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SW16
+        5SH","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Haven
+        Residential Care Home","address_2":"36-38 Wellington Road, Hatch End","city":"Pinner","county":"Middlesex","id":"0f0db05e-1022-4faa-bc8a-3d093829cfdc","lat":51.606,"lng":-0.3758,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"HA5
+        4NL","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Meadow
+        View Residential Care Home","address_2":"Blackthorn Road, Hersden","city":"Canterbury","county":"Kent","id":"ea75f36d-dc02-4075-b06e-11f0918ff88f","lat":51.3139,"lng":1.15429,"local_authority":{"id":"c2a3eec3-f9bf-4cf8-97fc-11da3625e628","name":"Canterbury
+        District (B)","slug":"canterbury-district-b"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"CT3
+        4GB","rating":"0.00","rating_count":0,"working_from_home":false}],"micro_availability":[],"owner_recruiter":{"active_opportunities_count":8,"address_1":"Sanctuary
+        House, Chamber Court","address_2":"Castle Street","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.320x391.jpg","height":391,"width":320}],"blurb":"Care of older
+        people.\n\nWe pride ourselves on employing people who care for our residents
+        like members of their own family, with an ethos of ''keeping kindness at the
+        heart of our care''. We believe in giving our residents every opportunity
+        to lead happy, contented lives, whether that is supporting them to keep up
+        with a favourite hobby or trying new things.\n\nEstablished in 1995, we have
+        over 68 warm and welcoming care homes across England. Part of Sanctuary Group,
+        a not-for-profit organisation, we reinvest surplus income back into our homes.\n\nAt
+        our care homes we have a wide range of opportunities to suit volunteers''
+        availability, skills and interests. Our volunteers are a wonderful asset to
+        our team and residents, whether they are simply popping in for a friendly
+        chat or helping our residents to learn something new, the role they play is
+        so important to us.","charity":false,"city":"Worcester","contact_name":"Yunus
+        Giwa","created":"2016-11-08T14:46:22.902427+00:00","doit_approved":false,"donation_page":null,"email":"care.volunteer@sanctuary-housing.co.uk","facebook":null,"id":"97e44849-9d5a-486e-90a8-4bdab16301a5","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":52.2,"links":[{"href":"/v2/orgs/sanctuary-care","title":"Sanctuary
+        Care  Profile"}],"lng":-2.23,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.125x125.jpg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.109x109.jpg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.76x76.jpg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.50x50.jpg","height":50,"width":50}],"name":"Sanctuary
+        Care ","permissions":null,"phone":"01905 335 539","postcode":"WR1 3ZQ","rating":"0.00","rating_count":0,"slug":"sanctuary-care","source":"doittrust","subscriber_count":11,"twitter":null,"website":"http://www.sanctuary-care.co.uk"},"owner_recruiter_id":"97e44849-9d5a-486e-90a8-4bdab16301a5","photo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.616x318.jpg","height":318,"width":616},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.308x159.jpg","height":159,"width":308},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.243x124.jpg","height":124,"width":243},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.170x87.jpg","height":87,"width":170}],"places_available":10,"postcode":"N9
+        7RQ","rating":"0.00","rating_count":0,"specific_end_date":"2018-06-01T16:04:33+00:00","specific_start_date":"2017-04-10T09:43:27.295000+00:00","status":"live","title":"Volunteering
+        with Sanctuary Care in London","updated":"2017-05-05T10:31:32.834565+00:00","working_from_home":false},{"address_1":"Rowanweald
+        Residential & Nursing Home","address_2":"1 Weald Lane, Harrow Weald","availability":{"friday":[true,true,true],"monday":[true,true,true],"saturday":[true,true,true],"sunday":[true,true,true],"thursday":[true,true,true],"tuesday":[true,true,true],"wednesday":[true,true,true]},"city":"Harrow","county":"London","created":"2017-04-05T16:35:36.322129+00:00","description":"We
+        have 11 care homes in London.\n\nAashna House Residential Care Home - London\nAshgreen
+        House Residential and Nursing Home - London\nHaven Residential Care Home -
+        Pinner\nMeadow View Residential Care Home - Canterbury\nMeadows House Residential
+        and Nursing Home - London \nParkview House Residential Care Home - London\nRiverlee
+        Residential and Nursing Home - London\nRowanweald Residential & Nursing Home
+        - Harrow\nSt Johns House Residential Care Home - London\nThe Manse Residential
+        Care Home - London\nTime Court Residential and Nursing Home - London\n\nWe
+        welcome volunteers who want to help, including supporting our residents with
+        leisure and social activities, befriending, gardening and maintenance, driving,
+        helping with events, clerical and administration support and in the kitchen.","for_recruiter":{"active_opportunities_count":8,"address_1":"Sanctuary
+        House, Chamber Court","address_2":"Castle Street","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.320x391.jpg","height":391,"width":320}],"blurb":"Care of older
+        people.\n\nWe pride ourselves on employing people who care for our residents
+        like members of their own family, with an ethos of ''keeping kindness at the
+        heart of our care''. We believe in giving our residents every opportunity
+        to lead happy, contented lives, whether that is supporting them to keep up
+        with a favourite hobby or trying new things.\n\nEstablished in 1995, we have
+        over 68 warm and welcoming care homes across England. Part of Sanctuary Group,
+        a not-for-profit organisation, we reinvest surplus income back into our homes.\n\nAt
+        our care homes we have a wide range of opportunities to suit volunteers''
+        availability, skills and interests. Our volunteers are a wonderful asset to
+        our team and residents, whether they are simply popping in for a friendly
+        chat or helping our residents to learn something new, the role they play is
+        so important to us.","charity":false,"city":"Worcester","contact_name":"Yunus
+        Giwa","created":"2016-11-08T14:46:22.902427+00:00","doit_approved":false,"donation_page":null,"email":"care.volunteer@sanctuary-housing.co.uk","facebook":null,"id":"97e44849-9d5a-486e-90a8-4bdab16301a5","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":52.2,"links":[{"href":"/v2/orgs/sanctuary-care","title":"Sanctuary
+        Care  Profile"}],"lng":-2.23,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.125x125.jpg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.109x109.jpg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.76x76.jpg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.50x50.jpg","height":50,"width":50}],"name":"Sanctuary
+        Care ","permissions":null,"phone":"01905 335 539","postcode":"WR1 3ZQ","rating":"0.00","rating_count":0,"slug":"sanctuary-care","source":"doittrust","subscriber_count":11,"twitter":null,"website":"http://www.sanctuary-care.co.uk"},"for_recruiter_id":"97e44849-9d5a-486e-90a8-4bdab16301a5","id":"4e5a8cc1-a2f8-446e-99da-e89e5966199d","interests":[{"children":[],"created":"2014-10-26T17:24:25.590527+00:00","id":"517978aa-186d-4149-8548-c26b3d3f41cc","name":"Education","parent_id":"cf1ab709-0632-4d79-adef-f2fd32c1ebdf","slug":"education","updated":"2014-10-26T17:24:25.590548+00:00"},{"children":[],"created":"2014-10-26T17:24:26.142866+00:00","id":"6fc9bb15-1728-4d4d-bdab-51be247acba0","name":"Social
+        care","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"social-care","updated":"2014-10-26T17:24:26.142886+00:00"},{"children":[],"created":"2014-10-26T17:24:26.263725+00:00","id":"52bd46a8-63d2-47d8-b4a1-785f8215da59","name":"Medicine","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"medicine","updated":"2014-10-26T17:24:26.263745+00:00"},{"children":[],"created":"2014-10-26T17:24:26.260228+00:00","id":"3fd515b4-6e1a-41a1-bad9-ea401937555b","name":"Older
+        people","parent_id":"56fabd4e-bac3-484f-9f55-448445f83481","slug":"older-people","updated":"2014-10-26T17:24:26.260247+00:00"},{"children":[],"created":"2014-10-26T17:24:26.235376+00:00","id":"397cac61-1077-4f78-a8e5-d8c3dd29cde4","name":"Mental
+        Health","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"mental-health","updated":"2014-10-26T17:24:26.235395+00:00"}],"is_new":false,"lat":51.603,"lng":-0.339012,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location_id":null,"location_name":null,"location_type":"SL","locations":[{"address_1":"Meadows
+        House Residential and Nursing Home","address_2":"95 Tudway Road, Kidbrooke","city":"London","county":"","id":"ef55b84f-ec38-4936-90a8-69def0b134ee","lat":51.4586,"lng":0.0315296,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE3
+        9YG","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Parkview
+        House Residential Care Home","address_2":"12 Houndsfield Road, Edmonton","city":"London","county":"","id":"5f69a3b9-04c6-42eb-821f-f4edbde874b1","lat":51.6334,"lng":-0.05688,"local_authority":{"id":"62907dc5-279a-423f-98fb-0c438d23befa","name":"Enfield
+        London Borough","slug":"enfield-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"N9
+        7RQ","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Rowanweald
+        Residential & Nursing Home","address_2":"1 Weald Lane, Harrow Weald","city":"Harrow","county":"London","id":"4e5a8cc1-a2f8-446e-99da-e89e5966199d","lat":51.603,"lng":-0.339012,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"HA3
+        5EG","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Ashgreen
+        House Residential and Nursing Home","address_2":"Sandbach Place, Woolwich","city":"London","county":"SE18
+        7EX","id":"1a23f8f8-262e-4205-b384-55694bd79f7e","lat":51.4872,"lng":0.076431,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE18
+        7EX","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"The
+        Manse Residential Care Home","address_2":"11 South Norwood Hill, South Norwood","city":"London","county":"","id":"28ceff7b-4b14-4c15-bc06-0dd010245875","lat":51.4002,"lng":-0.0764846,"local_authority":{"id":"c2ee1839-5b0b-4502-812c-aa5a6c8f2d42","name":"Croydon
+        London Borough","slug":"croydon-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE25
+        6AA","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Riverlee
+        Residential and Nursing Home","address_2":"Franklin Place, Greenwich","city":"London","county":"","id":"1a43ce77-7618-4009-859e-28e66a869605","lat":51.4726,"lng":-0.0179741,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE13
+        7NJ","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Aashna
+        House Residential Care Home","address_2":"2 Bates crescent, Streatham Vale","city":"London","county":"","id":"7f9ef811-9d7d-4cbe-bf8b-dfc5ae45797f","lat":51.4174,"lng":-0.141804,"local_authority":{"id":"e624625d-17f2-49ef-88b7-cfaa7f42d596","name":"Lambeth
+        London Borough","slug":"lambeth-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SW16
+        5BP","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"St
+        Johns House Residential Care Home","address_2":"1 Westwell Road Approach,
+        Streatham Common","city":"London","county":"","id":"de9f5303-f8ef-4cf3-8cec-2c1084413178","lat":51.4209,"lng":-0.129161,"local_authority":{"id":"e624625d-17f2-49ef-88b7-cfaa7f42d596","name":"Lambeth
+        London Borough","slug":"lambeth-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SW16
+        5SH","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Haven
+        Residential Care Home","address_2":"36-38 Wellington Road, Hatch End","city":"Pinner","county":"Middlesex","id":"0f0db05e-1022-4faa-bc8a-3d093829cfdc","lat":51.606,"lng":-0.3758,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"HA5
+        4NL","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Meadow
+        View Residential Care Home","address_2":"Blackthorn Road, Hersden","city":"Canterbury","county":"Kent","id":"ea75f36d-dc02-4075-b06e-11f0918ff88f","lat":51.3139,"lng":1.15429,"local_authority":{"id":"c2a3eec3-f9bf-4cf8-97fc-11da3625e628","name":"Canterbury
+        District (B)","slug":"canterbury-district-b"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"CT3
+        4GB","rating":"0.00","rating_count":0,"working_from_home":false}],"micro_availability":[],"owner_recruiter":{"active_opportunities_count":8,"address_1":"Sanctuary
+        House, Chamber Court","address_2":"Castle Street","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.320x391.jpg","height":391,"width":320}],"blurb":"Care of older
+        people.\n\nWe pride ourselves on employing people who care for our residents
+        like members of their own family, with an ethos of ''keeping kindness at the
+        heart of our care''. We believe in giving our residents every opportunity
+        to lead happy, contented lives, whether that is supporting them to keep up
+        with a favourite hobby or trying new things.\n\nEstablished in 1995, we have
+        over 68 warm and welcoming care homes across England. Part of Sanctuary Group,
+        a not-for-profit organisation, we reinvest surplus income back into our homes.\n\nAt
+        our care homes we have a wide range of opportunities to suit volunteers''
+        availability, skills and interests. Our volunteers are a wonderful asset to
+        our team and residents, whether they are simply popping in for a friendly
+        chat or helping our residents to learn something new, the role they play is
+        so important to us.","charity":false,"city":"Worcester","contact_name":"Yunus
+        Giwa","created":"2016-11-08T14:46:22.902427+00:00","doit_approved":false,"donation_page":null,"email":"care.volunteer@sanctuary-housing.co.uk","facebook":null,"id":"97e44849-9d5a-486e-90a8-4bdab16301a5","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":52.2,"links":[{"href":"/v2/orgs/sanctuary-care","title":"Sanctuary
+        Care  Profile"}],"lng":-2.23,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.125x125.jpg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.109x109.jpg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.76x76.jpg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.50x50.jpg","height":50,"width":50}],"name":"Sanctuary
+        Care ","permissions":null,"phone":"01905 335 539","postcode":"WR1 3ZQ","rating":"0.00","rating_count":0,"slug":"sanctuary-care","source":"doittrust","subscriber_count":11,"twitter":null,"website":"http://www.sanctuary-care.co.uk"},"owner_recruiter_id":"97e44849-9d5a-486e-90a8-4bdab16301a5","photo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.616x318.jpg","height":318,"width":616},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.308x159.jpg","height":159,"width":308},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.243x124.jpg","height":124,"width":243},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.170x87.jpg","height":87,"width":170}],"places_available":10,"postcode":"HA3
+        5EG","rating":"0.00","rating_count":0,"specific_end_date":"2018-06-01T16:04:33+00:00","specific_start_date":"2017-04-10T09:43:27.295000+00:00","status":"live","title":"Volunteering
+        with Sanctuary Care in London","updated":"2017-05-05T10:31:32.834565+00:00","working_from_home":false},{"address_1":"Ashgreen
+        House Residential and Nursing Home","address_2":"Sandbach Place, Woolwich","availability":{"friday":[true,true,true],"monday":[true,true,true],"saturday":[true,true,true],"sunday":[true,true,true],"thursday":[true,true,true],"tuesday":[true,true,true],"wednesday":[true,true,true]},"city":"London","county":"SE18
+        7EX","created":"2017-04-05T16:35:36.322129+00:00","description":"We have 11
+        care homes in London.\n\nAashna House Residential Care Home - London\nAshgreen
+        House Residential and Nursing Home - London\nHaven Residential Care Home -
+        Pinner\nMeadow View Residential Care Home - Canterbury\nMeadows House Residential
+        and Nursing Home - London \nParkview House Residential Care Home - London\nRiverlee
+        Residential and Nursing Home - London\nRowanweald Residential & Nursing Home
+        - Harrow\nSt Johns House Residential Care Home - London\nThe Manse Residential
+        Care Home - London\nTime Court Residential and Nursing Home - London\n\nWe
+        welcome volunteers who want to help, including supporting our residents with
+        leisure and social activities, befriending, gardening and maintenance, driving,
+        helping with events, clerical and administration support and in the kitchen.","for_recruiter":{"active_opportunities_count":8,"address_1":"Sanctuary
+        House, Chamber Court","address_2":"Castle Street","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.320x391.jpg","height":391,"width":320}],"blurb":"Care of older
+        people.\n\nWe pride ourselves on employing people who care for our residents
+        like members of their own family, with an ethos of ''keeping kindness at the
+        heart of our care''. We believe in giving our residents every opportunity
+        to lead happy, contented lives, whether that is supporting them to keep up
+        with a favourite hobby or trying new things.\n\nEstablished in 1995, we have
+        over 68 warm and welcoming care homes across England. Part of Sanctuary Group,
+        a not-for-profit organisation, we reinvest surplus income back into our homes.\n\nAt
+        our care homes we have a wide range of opportunities to suit volunteers''
+        availability, skills and interests. Our volunteers are a wonderful asset to
+        our team and residents, whether they are simply popping in for a friendly
+        chat or helping our residents to learn something new, the role they play is
+        so important to us.","charity":false,"city":"Worcester","contact_name":"Yunus
+        Giwa","created":"2016-11-08T14:46:22.902427+00:00","doit_approved":false,"donation_page":null,"email":"care.volunteer@sanctuary-housing.co.uk","facebook":null,"id":"97e44849-9d5a-486e-90a8-4bdab16301a5","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":52.2,"links":[{"href":"/v2/orgs/sanctuary-care","title":"Sanctuary
+        Care  Profile"}],"lng":-2.23,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.125x125.jpg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.109x109.jpg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.76x76.jpg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.50x50.jpg","height":50,"width":50}],"name":"Sanctuary
+        Care ","permissions":null,"phone":"01905 335 539","postcode":"WR1 3ZQ","rating":"0.00","rating_count":0,"slug":"sanctuary-care","source":"doittrust","subscriber_count":11,"twitter":null,"website":"http://www.sanctuary-care.co.uk"},"for_recruiter_id":"97e44849-9d5a-486e-90a8-4bdab16301a5","id":"1a23f8f8-262e-4205-b384-55694bd79f7e","interests":[{"children":[],"created":"2014-10-26T17:24:25.590527+00:00","id":"517978aa-186d-4149-8548-c26b3d3f41cc","name":"Education","parent_id":"cf1ab709-0632-4d79-adef-f2fd32c1ebdf","slug":"education","updated":"2014-10-26T17:24:25.590548+00:00"},{"children":[],"created":"2014-10-26T17:24:26.142866+00:00","id":"6fc9bb15-1728-4d4d-bdab-51be247acba0","name":"Social
+        care","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"social-care","updated":"2014-10-26T17:24:26.142886+00:00"},{"children":[],"created":"2014-10-26T17:24:26.263725+00:00","id":"52bd46a8-63d2-47d8-b4a1-785f8215da59","name":"Medicine","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"medicine","updated":"2014-10-26T17:24:26.263745+00:00"},{"children":[],"created":"2014-10-26T17:24:26.260228+00:00","id":"3fd515b4-6e1a-41a1-bad9-ea401937555b","name":"Older
+        people","parent_id":"56fabd4e-bac3-484f-9f55-448445f83481","slug":"older-people","updated":"2014-10-26T17:24:26.260247+00:00"},{"children":[],"created":"2014-10-26T17:24:26.235376+00:00","id":"397cac61-1077-4f78-a8e5-d8c3dd29cde4","name":"Mental
+        Health","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"mental-health","updated":"2014-10-26T17:24:26.235395+00:00"}],"is_new":false,"lat":51.4872,"lng":0.076431,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location_id":null,"location_name":null,"location_type":"SL","locations":[{"address_1":"Meadows
+        House Residential and Nursing Home","address_2":"95 Tudway Road, Kidbrooke","city":"London","county":"","id":"ef55b84f-ec38-4936-90a8-69def0b134ee","lat":51.4586,"lng":0.0315296,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE3
+        9YG","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Parkview
+        House Residential Care Home","address_2":"12 Houndsfield Road, Edmonton","city":"London","county":"","id":"5f69a3b9-04c6-42eb-821f-f4edbde874b1","lat":51.6334,"lng":-0.05688,"local_authority":{"id":"62907dc5-279a-423f-98fb-0c438d23befa","name":"Enfield
+        London Borough","slug":"enfield-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"N9
+        7RQ","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Rowanweald
+        Residential & Nursing Home","address_2":"1 Weald Lane, Harrow Weald","city":"Harrow","county":"London","id":"4e5a8cc1-a2f8-446e-99da-e89e5966199d","lat":51.603,"lng":-0.339012,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"HA3
+        5EG","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Ashgreen
+        House Residential and Nursing Home","address_2":"Sandbach Place, Woolwich","city":"London","county":"SE18
+        7EX","id":"1a23f8f8-262e-4205-b384-55694bd79f7e","lat":51.4872,"lng":0.076431,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE18
+        7EX","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"The
+        Manse Residential Care Home","address_2":"11 South Norwood Hill, South Norwood","city":"London","county":"","id":"28ceff7b-4b14-4c15-bc06-0dd010245875","lat":51.4002,"lng":-0.0764846,"local_authority":{"id":"c2ee1839-5b0b-4502-812c-aa5a6c8f2d42","name":"Croydon
+        London Borough","slug":"croydon-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE25
+        6AA","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Riverlee
+        Residential and Nursing Home","address_2":"Franklin Place, Greenwich","city":"London","county":"","id":"1a43ce77-7618-4009-859e-28e66a869605","lat":51.4726,"lng":-0.0179741,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE13
+        7NJ","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Aashna
+        House Residential Care Home","address_2":"2 Bates crescent, Streatham Vale","city":"London","county":"","id":"7f9ef811-9d7d-4cbe-bf8b-dfc5ae45797f","lat":51.4174,"lng":-0.141804,"local_authority":{"id":"e624625d-17f2-49ef-88b7-cfaa7f42d596","name":"Lambeth
+        London Borough","slug":"lambeth-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SW16
+        5BP","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"St
+        Johns House Residential Care Home","address_2":"1 Westwell Road Approach,
+        Streatham Common","city":"London","county":"","id":"de9f5303-f8ef-4cf3-8cec-2c1084413178","lat":51.4209,"lng":-0.129161,"local_authority":{"id":"e624625d-17f2-49ef-88b7-cfaa7f42d596","name":"Lambeth
+        London Borough","slug":"lambeth-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SW16
+        5SH","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Haven
+        Residential Care Home","address_2":"36-38 Wellington Road, Hatch End","city":"Pinner","county":"Middlesex","id":"0f0db05e-1022-4faa-bc8a-3d093829cfdc","lat":51.606,"lng":-0.3758,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"HA5
+        4NL","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Meadow
+        View Residential Care Home","address_2":"Blackthorn Road, Hersden","city":"Canterbury","county":"Kent","id":"ea75f36d-dc02-4075-b06e-11f0918ff88f","lat":51.3139,"lng":1.15429,"local_authority":{"id":"c2a3eec3-f9bf-4cf8-97fc-11da3625e628","name":"Canterbury
+        District (B)","slug":"canterbury-district-b"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"CT3
+        4GB","rating":"0.00","rating_count":0,"working_from_home":false}],"micro_availability":[],"owner_recruiter":{"active_opportunities_count":8,"address_1":"Sanctuary
+        House, Chamber Court","address_2":"Castle Street","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.320x391.jpg","height":391,"width":320}],"blurb":"Care of older
+        people.\n\nWe pride ourselves on employing people who care for our residents
+        like members of their own family, with an ethos of ''keeping kindness at the
+        heart of our care''. We believe in giving our residents every opportunity
+        to lead happy, contented lives, whether that is supporting them to keep up
+        with a favourite hobby or trying new things.\n\nEstablished in 1995, we have
+        over 68 warm and welcoming care homes across England. Part of Sanctuary Group,
+        a not-for-profit organisation, we reinvest surplus income back into our homes.\n\nAt
+        our care homes we have a wide range of opportunities to suit volunteers''
+        availability, skills and interests. Our volunteers are a wonderful asset to
+        our team and residents, whether they are simply popping in for a friendly
+        chat or helping our residents to learn something new, the role they play is
+        so important to us.","charity":false,"city":"Worcester","contact_name":"Yunus
+        Giwa","created":"2016-11-08T14:46:22.902427+00:00","doit_approved":false,"donation_page":null,"email":"care.volunteer@sanctuary-housing.co.uk","facebook":null,"id":"97e44849-9d5a-486e-90a8-4bdab16301a5","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":52.2,"links":[{"href":"/v2/orgs/sanctuary-care","title":"Sanctuary
+        Care  Profile"}],"lng":-2.23,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.125x125.jpg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.109x109.jpg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.76x76.jpg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.50x50.jpg","height":50,"width":50}],"name":"Sanctuary
+        Care ","permissions":null,"phone":"01905 335 539","postcode":"WR1 3ZQ","rating":"0.00","rating_count":0,"slug":"sanctuary-care","source":"doittrust","subscriber_count":11,"twitter":null,"website":"http://www.sanctuary-care.co.uk"},"owner_recruiter_id":"97e44849-9d5a-486e-90a8-4bdab16301a5","photo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.616x318.jpg","height":318,"width":616},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.308x159.jpg","height":159,"width":308},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.243x124.jpg","height":124,"width":243},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.170x87.jpg","height":87,"width":170}],"places_available":10,"postcode":"SE18
+        7EX","rating":"0.00","rating_count":0,"specific_end_date":"2018-06-01T16:04:33+00:00","specific_start_date":"2017-04-10T09:43:27.295000+00:00","status":"live","title":"Volunteering
+        with Sanctuary Care in London","updated":"2017-05-05T10:31:32.834565+00:00","working_from_home":false},{"address_1":"The
+        Manse Residential Care Home","address_2":"11 South Norwood Hill, South Norwood","availability":{"friday":[true,true,true],"monday":[true,true,true],"saturday":[true,true,true],"sunday":[true,true,true],"thursday":[true,true,true],"tuesday":[true,true,true],"wednesday":[true,true,true]},"city":"London","county":"","created":"2017-04-05T16:35:36.322129+00:00","description":"We
+        have 11 care homes in London.\n\nAashna House Residential Care Home - London\nAshgreen
+        House Residential and Nursing Home - London\nHaven Residential Care Home -
+        Pinner\nMeadow View Residential Care Home - Canterbury\nMeadows House Residential
+        and Nursing Home - London \nParkview House Residential Care Home - London\nRiverlee
+        Residential and Nursing Home - London\nRowanweald Residential & Nursing Home
+        - Harrow\nSt Johns House Residential Care Home - London\nThe Manse Residential
+        Care Home - London\nTime Court Residential and Nursing Home - London\n\nWe
+        welcome volunteers who want to help, including supporting our residents with
+        leisure and social activities, befriending, gardening and maintenance, driving,
+        helping with events, clerical and administration support and in the kitchen.","for_recruiter":{"active_opportunities_count":8,"address_1":"Sanctuary
+        House, Chamber Court","address_2":"Castle Street","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.320x391.jpg","height":391,"width":320}],"blurb":"Care of older
+        people.\n\nWe pride ourselves on employing people who care for our residents
+        like members of their own family, with an ethos of ''keeping kindness at the
+        heart of our care''. We believe in giving our residents every opportunity
+        to lead happy, contented lives, whether that is supporting them to keep up
+        with a favourite hobby or trying new things.\n\nEstablished in 1995, we have
+        over 68 warm and welcoming care homes across England. Part of Sanctuary Group,
+        a not-for-profit organisation, we reinvest surplus income back into our homes.\n\nAt
+        our care homes we have a wide range of opportunities to suit volunteers''
+        availability, skills and interests. Our volunteers are a wonderful asset to
+        our team and residents, whether they are simply popping in for a friendly
+        chat or helping our residents to learn something new, the role they play is
+        so important to us.","charity":false,"city":"Worcester","contact_name":"Yunus
+        Giwa","created":"2016-11-08T14:46:22.902427+00:00","doit_approved":false,"donation_page":null,"email":"care.volunteer@sanctuary-housing.co.uk","facebook":null,"id":"97e44849-9d5a-486e-90a8-4bdab16301a5","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":52.2,"links":[{"href":"/v2/orgs/sanctuary-care","title":"Sanctuary
+        Care  Profile"}],"lng":-2.23,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.125x125.jpg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.109x109.jpg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.76x76.jpg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.50x50.jpg","height":50,"width":50}],"name":"Sanctuary
+        Care ","permissions":null,"phone":"01905 335 539","postcode":"WR1 3ZQ","rating":"0.00","rating_count":0,"slug":"sanctuary-care","source":"doittrust","subscriber_count":11,"twitter":null,"website":"http://www.sanctuary-care.co.uk"},"for_recruiter_id":"97e44849-9d5a-486e-90a8-4bdab16301a5","id":"28ceff7b-4b14-4c15-bc06-0dd010245875","interests":[{"children":[],"created":"2014-10-26T17:24:25.590527+00:00","id":"517978aa-186d-4149-8548-c26b3d3f41cc","name":"Education","parent_id":"cf1ab709-0632-4d79-adef-f2fd32c1ebdf","slug":"education","updated":"2014-10-26T17:24:25.590548+00:00"},{"children":[],"created":"2014-10-26T17:24:26.142866+00:00","id":"6fc9bb15-1728-4d4d-bdab-51be247acba0","name":"Social
+        care","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"social-care","updated":"2014-10-26T17:24:26.142886+00:00"},{"children":[],"created":"2014-10-26T17:24:26.263725+00:00","id":"52bd46a8-63d2-47d8-b4a1-785f8215da59","name":"Medicine","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"medicine","updated":"2014-10-26T17:24:26.263745+00:00"},{"children":[],"created":"2014-10-26T17:24:26.260228+00:00","id":"3fd515b4-6e1a-41a1-bad9-ea401937555b","name":"Older
+        people","parent_id":"56fabd4e-bac3-484f-9f55-448445f83481","slug":"older-people","updated":"2014-10-26T17:24:26.260247+00:00"},{"children":[],"created":"2014-10-26T17:24:26.235376+00:00","id":"397cac61-1077-4f78-a8e5-d8c3dd29cde4","name":"Mental
+        Health","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"mental-health","updated":"2014-10-26T17:24:26.235395+00:00"}],"is_new":false,"lat":51.4002,"lng":-0.0764846,"local_authority":{"id":"c2ee1839-5b0b-4502-812c-aa5a6c8f2d42","name":"Croydon
+        London Borough","slug":"croydon-london-borough"},"location_id":null,"location_name":null,"location_type":"SL","locations":[{"address_1":"Meadows
+        House Residential and Nursing Home","address_2":"95 Tudway Road, Kidbrooke","city":"London","county":"","id":"ef55b84f-ec38-4936-90a8-69def0b134ee","lat":51.4586,"lng":0.0315296,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE3
+        9YG","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Parkview
+        House Residential Care Home","address_2":"12 Houndsfield Road, Edmonton","city":"London","county":"","id":"5f69a3b9-04c6-42eb-821f-f4edbde874b1","lat":51.6334,"lng":-0.05688,"local_authority":{"id":"62907dc5-279a-423f-98fb-0c438d23befa","name":"Enfield
+        London Borough","slug":"enfield-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"N9
+        7RQ","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Rowanweald
+        Residential & Nursing Home","address_2":"1 Weald Lane, Harrow Weald","city":"Harrow","county":"London","id":"4e5a8cc1-a2f8-446e-99da-e89e5966199d","lat":51.603,"lng":-0.339012,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"HA3
+        5EG","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Ashgreen
+        House Residential and Nursing Home","address_2":"Sandbach Place, Woolwich","city":"London","county":"SE18
+        7EX","id":"1a23f8f8-262e-4205-b384-55694bd79f7e","lat":51.4872,"lng":0.076431,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE18
+        7EX","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"The
+        Manse Residential Care Home","address_2":"11 South Norwood Hill, South Norwood","city":"London","county":"","id":"28ceff7b-4b14-4c15-bc06-0dd010245875","lat":51.4002,"lng":-0.0764846,"local_authority":{"id":"c2ee1839-5b0b-4502-812c-aa5a6c8f2d42","name":"Croydon
+        London Borough","slug":"croydon-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE25
+        6AA","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Riverlee
+        Residential and Nursing Home","address_2":"Franklin Place, Greenwich","city":"London","county":"","id":"1a43ce77-7618-4009-859e-28e66a869605","lat":51.4726,"lng":-0.0179741,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE13
+        7NJ","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Aashna
+        House Residential Care Home","address_2":"2 Bates crescent, Streatham Vale","city":"London","county":"","id":"7f9ef811-9d7d-4cbe-bf8b-dfc5ae45797f","lat":51.4174,"lng":-0.141804,"local_authority":{"id":"e624625d-17f2-49ef-88b7-cfaa7f42d596","name":"Lambeth
+        London Borough","slug":"lambeth-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SW16
+        5BP","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"St
+        Johns House Residential Care Home","address_2":"1 Westwell Road Approach,
+        Streatham Common","city":"London","county":"","id":"de9f5303-f8ef-4cf3-8cec-2c1084413178","lat":51.4209,"lng":-0.129161,"local_authority":{"id":"e624625d-17f2-49ef-88b7-cfaa7f42d596","name":"Lambeth
+        London Borough","slug":"lambeth-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SW16
+        5SH","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Haven
+        Residential Care Home","address_2":"36-38 Wellington Road, Hatch End","city":"Pinner","county":"Middlesex","id":"0f0db05e-1022-4faa-bc8a-3d093829cfdc","lat":51.606,"lng":-0.3758,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"HA5
+        4NL","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Meadow
+        View Residential Care Home","address_2":"Blackthorn Road, Hersden","city":"Canterbury","county":"Kent","id":"ea75f36d-dc02-4075-b06e-11f0918ff88f","lat":51.3139,"lng":1.15429,"local_authority":{"id":"c2a3eec3-f9bf-4cf8-97fc-11da3625e628","name":"Canterbury
+        District (B)","slug":"canterbury-district-b"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"CT3
+        4GB","rating":"0.00","rating_count":0,"working_from_home":false}],"micro_availability":[],"owner_recruiter":{"active_opportunities_count":8,"address_1":"Sanctuary
+        House, Chamber Court","address_2":"Castle Street","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.320x391.jpg","height":391,"width":320}],"blurb":"Care of older
+        people.\n\nWe pride ourselves on employing people who care for our residents
+        like members of their own family, with an ethos of ''keeping kindness at the
+        heart of our care''. We believe in giving our residents every opportunity
+        to lead happy, contented lives, whether that is supporting them to keep up
+        with a favourite hobby or trying new things.\n\nEstablished in 1995, we have
+        over 68 warm and welcoming care homes across England. Part of Sanctuary Group,
+        a not-for-profit organisation, we reinvest surplus income back into our homes.\n\nAt
+        our care homes we have a wide range of opportunities to suit volunteers''
+        availability, skills and interests. Our volunteers are a wonderful asset to
+        our team and residents, whether they are simply popping in for a friendly
+        chat or helping our residents to learn something new, the role they play is
+        so important to us.","charity":false,"city":"Worcester","contact_name":"Yunus
+        Giwa","created":"2016-11-08T14:46:22.902427+00:00","doit_approved":false,"donation_page":null,"email":"care.volunteer@sanctuary-housing.co.uk","facebook":null,"id":"97e44849-9d5a-486e-90a8-4bdab16301a5","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":52.2,"links":[{"href":"/v2/orgs/sanctuary-care","title":"Sanctuary
+        Care  Profile"}],"lng":-2.23,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.125x125.jpg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.109x109.jpg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.76x76.jpg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.50x50.jpg","height":50,"width":50}],"name":"Sanctuary
+        Care ","permissions":null,"phone":"01905 335 539","postcode":"WR1 3ZQ","rating":"0.00","rating_count":0,"slug":"sanctuary-care","source":"doittrust","subscriber_count":11,"twitter":null,"website":"http://www.sanctuary-care.co.uk"},"owner_recruiter_id":"97e44849-9d5a-486e-90a8-4bdab16301a5","photo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.616x318.jpg","height":318,"width":616},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.308x159.jpg","height":159,"width":308},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.243x124.jpg","height":124,"width":243},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.170x87.jpg","height":87,"width":170}],"places_available":10,"postcode":"SE25
+        6AA","rating":"0.00","rating_count":0,"specific_end_date":"2018-06-01T16:04:33+00:00","specific_start_date":"2017-04-10T09:43:27.295000+00:00","status":"live","title":"Volunteering
+        with Sanctuary Care in London","updated":"2017-05-05T10:31:32.834565+00:00","working_from_home":false},{"address_1":"Riverlee
+        Residential and Nursing Home","address_2":"Franklin Place, Greenwich","availability":{"friday":[true,true,true],"monday":[true,true,true],"saturday":[true,true,true],"sunday":[true,true,true],"thursday":[true,true,true],"tuesday":[true,true,true],"wednesday":[true,true,true]},"city":"London","county":"","created":"2017-04-05T16:35:36.322129+00:00","description":"We
+        have 11 care homes in London.\n\nAashna House Residential Care Home - London\nAshgreen
+        House Residential and Nursing Home - London\nHaven Residential Care Home -
+        Pinner\nMeadow View Residential Care Home - Canterbury\nMeadows House Residential
+        and Nursing Home - London \nParkview House Residential Care Home - London\nRiverlee
+        Residential and Nursing Home - London\nRowanweald Residential & Nursing Home
+        - Harrow\nSt Johns House Residential Care Home - London\nThe Manse Residential
+        Care Home - London\nTime Court Residential and Nursing Home - London\n\nWe
+        welcome volunteers who want to help, including supporting our residents with
+        leisure and social activities, befriending, gardening and maintenance, driving,
+        helping with events, clerical and administration support and in the kitchen.","for_recruiter":{"active_opportunities_count":8,"address_1":"Sanctuary
+        House, Chamber Court","address_2":"Castle Street","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.320x391.jpg","height":391,"width":320}],"blurb":"Care of older
+        people.\n\nWe pride ourselves on employing people who care for our residents
+        like members of their own family, with an ethos of ''keeping kindness at the
+        heart of our care''. We believe in giving our residents every opportunity
+        to lead happy, contented lives, whether that is supporting them to keep up
+        with a favourite hobby or trying new things.\n\nEstablished in 1995, we have
+        over 68 warm and welcoming care homes across England. Part of Sanctuary Group,
+        a not-for-profit organisation, we reinvest surplus income back into our homes.\n\nAt
+        our care homes we have a wide range of opportunities to suit volunteers''
+        availability, skills and interests. Our volunteers are a wonderful asset to
+        our team and residents, whether they are simply popping in for a friendly
+        chat or helping our residents to learn something new, the role they play is
+        so important to us.","charity":false,"city":"Worcester","contact_name":"Yunus
+        Giwa","created":"2016-11-08T14:46:22.902427+00:00","doit_approved":false,"donation_page":null,"email":"care.volunteer@sanctuary-housing.co.uk","facebook":null,"id":"97e44849-9d5a-486e-90a8-4bdab16301a5","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":52.2,"links":[{"href":"/v2/orgs/sanctuary-care","title":"Sanctuary
+        Care  Profile"}],"lng":-2.23,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.125x125.jpg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.109x109.jpg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.76x76.jpg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.50x50.jpg","height":50,"width":50}],"name":"Sanctuary
+        Care ","permissions":null,"phone":"01905 335 539","postcode":"WR1 3ZQ","rating":"0.00","rating_count":0,"slug":"sanctuary-care","source":"doittrust","subscriber_count":11,"twitter":null,"website":"http://www.sanctuary-care.co.uk"},"for_recruiter_id":"97e44849-9d5a-486e-90a8-4bdab16301a5","id":"1a43ce77-7618-4009-859e-28e66a869605","interests":[{"children":[],"created":"2014-10-26T17:24:25.590527+00:00","id":"517978aa-186d-4149-8548-c26b3d3f41cc","name":"Education","parent_id":"cf1ab709-0632-4d79-adef-f2fd32c1ebdf","slug":"education","updated":"2014-10-26T17:24:25.590548+00:00"},{"children":[],"created":"2014-10-26T17:24:26.142866+00:00","id":"6fc9bb15-1728-4d4d-bdab-51be247acba0","name":"Social
+        care","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"social-care","updated":"2014-10-26T17:24:26.142886+00:00"},{"children":[],"created":"2014-10-26T17:24:26.263725+00:00","id":"52bd46a8-63d2-47d8-b4a1-785f8215da59","name":"Medicine","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"medicine","updated":"2014-10-26T17:24:26.263745+00:00"},{"children":[],"created":"2014-10-26T17:24:26.260228+00:00","id":"3fd515b4-6e1a-41a1-bad9-ea401937555b","name":"Older
+        people","parent_id":"56fabd4e-bac3-484f-9f55-448445f83481","slug":"older-people","updated":"2014-10-26T17:24:26.260247+00:00"},{"children":[],"created":"2014-10-26T17:24:26.235376+00:00","id":"397cac61-1077-4f78-a8e5-d8c3dd29cde4","name":"Mental
+        Health","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"mental-health","updated":"2014-10-26T17:24:26.235395+00:00"}],"is_new":false,"lat":51.4726,"lng":-0.0179741,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location_id":null,"location_name":null,"location_type":"SL","locations":[{"address_1":"Meadows
+        House Residential and Nursing Home","address_2":"95 Tudway Road, Kidbrooke","city":"London","county":"","id":"ef55b84f-ec38-4936-90a8-69def0b134ee","lat":51.4586,"lng":0.0315296,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE3
+        9YG","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Parkview
+        House Residential Care Home","address_2":"12 Houndsfield Road, Edmonton","city":"London","county":"","id":"5f69a3b9-04c6-42eb-821f-f4edbde874b1","lat":51.6334,"lng":-0.05688,"local_authority":{"id":"62907dc5-279a-423f-98fb-0c438d23befa","name":"Enfield
+        London Borough","slug":"enfield-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"N9
+        7RQ","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Rowanweald
+        Residential & Nursing Home","address_2":"1 Weald Lane, Harrow Weald","city":"Harrow","county":"London","id":"4e5a8cc1-a2f8-446e-99da-e89e5966199d","lat":51.603,"lng":-0.339012,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"HA3
+        5EG","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Ashgreen
+        House Residential and Nursing Home","address_2":"Sandbach Place, Woolwich","city":"London","county":"SE18
+        7EX","id":"1a23f8f8-262e-4205-b384-55694bd79f7e","lat":51.4872,"lng":0.076431,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE18
+        7EX","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"The
+        Manse Residential Care Home","address_2":"11 South Norwood Hill, South Norwood","city":"London","county":"","id":"28ceff7b-4b14-4c15-bc06-0dd010245875","lat":51.4002,"lng":-0.0764846,"local_authority":{"id":"c2ee1839-5b0b-4502-812c-aa5a6c8f2d42","name":"Croydon
+        London Borough","slug":"croydon-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE25
+        6AA","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Riverlee
+        Residential and Nursing Home","address_2":"Franklin Place, Greenwich","city":"London","county":"","id":"1a43ce77-7618-4009-859e-28e66a869605","lat":51.4726,"lng":-0.0179741,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE13
+        7NJ","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Aashna
+        House Residential Care Home","address_2":"2 Bates crescent, Streatham Vale","city":"London","county":"","id":"7f9ef811-9d7d-4cbe-bf8b-dfc5ae45797f","lat":51.4174,"lng":-0.141804,"local_authority":{"id":"e624625d-17f2-49ef-88b7-cfaa7f42d596","name":"Lambeth
+        London Borough","slug":"lambeth-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SW16
+        5BP","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"St
+        Johns House Residential Care Home","address_2":"1 Westwell Road Approach,
+        Streatham Common","city":"London","county":"","id":"de9f5303-f8ef-4cf3-8cec-2c1084413178","lat":51.4209,"lng":-0.129161,"local_authority":{"id":"e624625d-17f2-49ef-88b7-cfaa7f42d596","name":"Lambeth
+        London Borough","slug":"lambeth-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SW16
+        5SH","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Haven
+        Residential Care Home","address_2":"36-38 Wellington Road, Hatch End","city":"Pinner","county":"Middlesex","id":"0f0db05e-1022-4faa-bc8a-3d093829cfdc","lat":51.606,"lng":-0.3758,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"HA5
+        4NL","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Meadow
+        View Residential Care Home","address_2":"Blackthorn Road, Hersden","city":"Canterbury","county":"Kent","id":"ea75f36d-dc02-4075-b06e-11f0918ff88f","lat":51.3139,"lng":1.15429,"local_authority":{"id":"c2a3eec3-f9bf-4cf8-97fc-11da3625e628","name":"Canterbury
+        District (B)","slug":"canterbury-district-b"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"CT3
+        4GB","rating":"0.00","rating_count":0,"working_from_home":false}],"micro_availability":[],"owner_recruiter":{"active_opportunities_count":8,"address_1":"Sanctuary
+        House, Chamber Court","address_2":"Castle Street","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.320x391.jpg","height":391,"width":320}],"blurb":"Care of older
+        people.\n\nWe pride ourselves on employing people who care for our residents
+        like members of their own family, with an ethos of ''keeping kindness at the
+        heart of our care''. We believe in giving our residents every opportunity
+        to lead happy, contented lives, whether that is supporting them to keep up
+        with a favourite hobby or trying new things.\n\nEstablished in 1995, we have
+        over 68 warm and welcoming care homes across England. Part of Sanctuary Group,
+        a not-for-profit organisation, we reinvest surplus income back into our homes.\n\nAt
+        our care homes we have a wide range of opportunities to suit volunteers''
+        availability, skills and interests. Our volunteers are a wonderful asset to
+        our team and residents, whether they are simply popping in for a friendly
+        chat or helping our residents to learn something new, the role they play is
+        so important to us.","charity":false,"city":"Worcester","contact_name":"Yunus
+        Giwa","created":"2016-11-08T14:46:22.902427+00:00","doit_approved":false,"donation_page":null,"email":"care.volunteer@sanctuary-housing.co.uk","facebook":null,"id":"97e44849-9d5a-486e-90a8-4bdab16301a5","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":52.2,"links":[{"href":"/v2/orgs/sanctuary-care","title":"Sanctuary
+        Care  Profile"}],"lng":-2.23,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.125x125.jpg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.109x109.jpg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.76x76.jpg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.50x50.jpg","height":50,"width":50}],"name":"Sanctuary
+        Care ","permissions":null,"phone":"01905 335 539","postcode":"WR1 3ZQ","rating":"0.00","rating_count":0,"slug":"sanctuary-care","source":"doittrust","subscriber_count":11,"twitter":null,"website":"http://www.sanctuary-care.co.uk"},"owner_recruiter_id":"97e44849-9d5a-486e-90a8-4bdab16301a5","photo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.616x318.jpg","height":318,"width":616},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.308x159.jpg","height":159,"width":308},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.243x124.jpg","height":124,"width":243},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.170x87.jpg","height":87,"width":170}],"places_available":10,"postcode":"SE13
+        7NJ","rating":"0.00","rating_count":0,"specific_end_date":"2018-06-01T16:04:33+00:00","specific_start_date":"2017-04-10T09:43:27.295000+00:00","status":"live","title":"Volunteering
+        with Sanctuary Care in London","updated":"2017-05-05T10:31:32.834565+00:00","working_from_home":false},{"address_1":"Aashna
+        House Residential Care Home","address_2":"2 Bates crescent, Streatham Vale","availability":{"friday":[true,true,true],"monday":[true,true,true],"saturday":[true,true,true],"sunday":[true,true,true],"thursday":[true,true,true],"tuesday":[true,true,true],"wednesday":[true,true,true]},"city":"London","county":"","created":"2017-04-05T16:35:36.322129+00:00","description":"We
+        have 11 care homes in London.\n\nAashna House Residential Care Home - London\nAshgreen
+        House Residential and Nursing Home - London\nHaven Residential Care Home -
+        Pinner\nMeadow View Residential Care Home - Canterbury\nMeadows House Residential
+        and Nursing Home - London \nParkview House Residential Care Home - London\nRiverlee
+        Residential and Nursing Home - London\nRowanweald Residential & Nursing Home
+        - Harrow\nSt Johns House Residential Care Home - London\nThe Manse Residential
+        Care Home - London\nTime Court Residential and Nursing Home - London\n\nWe
+        welcome volunteers who want to help, including supporting our residents with
+        leisure and social activities, befriending, gardening and maintenance, driving,
+        helping with events, clerical and administration support and in the kitchen.","for_recruiter":{"active_opportunities_count":8,"address_1":"Sanctuary
+        House, Chamber Court","address_2":"Castle Street","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.320x391.jpg","height":391,"width":320}],"blurb":"Care of older
+        people.\n\nWe pride ourselves on employing people who care for our residents
+        like members of their own family, with an ethos of ''keeping kindness at the
+        heart of our care''. We believe in giving our residents every opportunity
+        to lead happy, contented lives, whether that is supporting them to keep up
+        with a favourite hobby or trying new things.\n\nEstablished in 1995, we have
+        over 68 warm and welcoming care homes across England. Part of Sanctuary Group,
+        a not-for-profit organisation, we reinvest surplus income back into our homes.\n\nAt
+        our care homes we have a wide range of opportunities to suit volunteers''
+        availability, skills and interests. Our volunteers are a wonderful asset to
+        our team and residents, whether they are simply popping in for a friendly
+        chat or helping our residents to learn something new, the role they play is
+        so important to us.","charity":false,"city":"Worcester","contact_name":"Yunus
+        Giwa","created":"2016-11-08T14:46:22.902427+00:00","doit_approved":false,"donation_page":null,"email":"care.volunteer@sanctuary-housing.co.uk","facebook":null,"id":"97e44849-9d5a-486e-90a8-4bdab16301a5","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":52.2,"links":[{"href":"/v2/orgs/sanctuary-care","title":"Sanctuary
+        Care  Profile"}],"lng":-2.23,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.125x125.jpg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.109x109.jpg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.76x76.jpg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.50x50.jpg","height":50,"width":50}],"name":"Sanctuary
+        Care ","permissions":null,"phone":"01905 335 539","postcode":"WR1 3ZQ","rating":"0.00","rating_count":0,"slug":"sanctuary-care","source":"doittrust","subscriber_count":11,"twitter":null,"website":"http://www.sanctuary-care.co.uk"},"for_recruiter_id":"97e44849-9d5a-486e-90a8-4bdab16301a5","id":"7f9ef811-9d7d-4cbe-bf8b-dfc5ae45797f","interests":[{"children":[],"created":"2014-10-26T17:24:25.590527+00:00","id":"517978aa-186d-4149-8548-c26b3d3f41cc","name":"Education","parent_id":"cf1ab709-0632-4d79-adef-f2fd32c1ebdf","slug":"education","updated":"2014-10-26T17:24:25.590548+00:00"},{"children":[],"created":"2014-10-26T17:24:26.142866+00:00","id":"6fc9bb15-1728-4d4d-bdab-51be247acba0","name":"Social
+        care","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"social-care","updated":"2014-10-26T17:24:26.142886+00:00"},{"children":[],"created":"2014-10-26T17:24:26.263725+00:00","id":"52bd46a8-63d2-47d8-b4a1-785f8215da59","name":"Medicine","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"medicine","updated":"2014-10-26T17:24:26.263745+00:00"},{"children":[],"created":"2014-10-26T17:24:26.260228+00:00","id":"3fd515b4-6e1a-41a1-bad9-ea401937555b","name":"Older
+        people","parent_id":"56fabd4e-bac3-484f-9f55-448445f83481","slug":"older-people","updated":"2014-10-26T17:24:26.260247+00:00"},{"children":[],"created":"2014-10-26T17:24:26.235376+00:00","id":"397cac61-1077-4f78-a8e5-d8c3dd29cde4","name":"Mental
+        Health","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"mental-health","updated":"2014-10-26T17:24:26.235395+00:00"}],"is_new":false,"lat":51.4174,"lng":-0.141804,"local_authority":{"id":"e624625d-17f2-49ef-88b7-cfaa7f42d596","name":"Lambeth
+        London Borough","slug":"lambeth-london-borough"},"location_id":null,"location_name":null,"location_type":"SL","locations":[{"address_1":"Meadows
+        House Residential and Nursing Home","address_2":"95 Tudway Road, Kidbrooke","city":"London","county":"","id":"ef55b84f-ec38-4936-90a8-69def0b134ee","lat":51.4586,"lng":0.0315296,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE3
+        9YG","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Parkview
+        House Residential Care Home","address_2":"12 Houndsfield Road, Edmonton","city":"London","county":"","id":"5f69a3b9-04c6-42eb-821f-f4edbde874b1","lat":51.6334,"lng":-0.05688,"local_authority":{"id":"62907dc5-279a-423f-98fb-0c438d23befa","name":"Enfield
+        London Borough","slug":"enfield-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"N9
+        7RQ","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Rowanweald
+        Residential & Nursing Home","address_2":"1 Weald Lane, Harrow Weald","city":"Harrow","county":"London","id":"4e5a8cc1-a2f8-446e-99da-e89e5966199d","lat":51.603,"lng":-0.339012,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"HA3
+        5EG","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Ashgreen
+        House Residential and Nursing Home","address_2":"Sandbach Place, Woolwich","city":"London","county":"SE18
+        7EX","id":"1a23f8f8-262e-4205-b384-55694bd79f7e","lat":51.4872,"lng":0.076431,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE18
+        7EX","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"The
+        Manse Residential Care Home","address_2":"11 South Norwood Hill, South Norwood","city":"London","county":"","id":"28ceff7b-4b14-4c15-bc06-0dd010245875","lat":51.4002,"lng":-0.0764846,"local_authority":{"id":"c2ee1839-5b0b-4502-812c-aa5a6c8f2d42","name":"Croydon
+        London Borough","slug":"croydon-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE25
+        6AA","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Riverlee
+        Residential and Nursing Home","address_2":"Franklin Place, Greenwich","city":"London","county":"","id":"1a43ce77-7618-4009-859e-28e66a869605","lat":51.4726,"lng":-0.0179741,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE13
+        7NJ","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Aashna
+        House Residential Care Home","address_2":"2 Bates crescent, Streatham Vale","city":"London","county":"","id":"7f9ef811-9d7d-4cbe-bf8b-dfc5ae45797f","lat":51.4174,"lng":-0.141804,"local_authority":{"id":"e624625d-17f2-49ef-88b7-cfaa7f42d596","name":"Lambeth
+        London Borough","slug":"lambeth-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SW16
+        5BP","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"St
+        Johns House Residential Care Home","address_2":"1 Westwell Road Approach,
+        Streatham Common","city":"London","county":"","id":"de9f5303-f8ef-4cf3-8cec-2c1084413178","lat":51.4209,"lng":-0.129161,"local_authority":{"id":"e624625d-17f2-49ef-88b7-cfaa7f42d596","name":"Lambeth
+        London Borough","slug":"lambeth-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SW16
+        5SH","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Haven
+        Residential Care Home","address_2":"36-38 Wellington Road, Hatch End","city":"Pinner","county":"Middlesex","id":"0f0db05e-1022-4faa-bc8a-3d093829cfdc","lat":51.606,"lng":-0.3758,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"HA5
+        4NL","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Meadow
+        View Residential Care Home","address_2":"Blackthorn Road, Hersden","city":"Canterbury","county":"Kent","id":"ea75f36d-dc02-4075-b06e-11f0918ff88f","lat":51.3139,"lng":1.15429,"local_authority":{"id":"c2a3eec3-f9bf-4cf8-97fc-11da3625e628","name":"Canterbury
+        District (B)","slug":"canterbury-district-b"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"CT3
+        4GB","rating":"0.00","rating_count":0,"working_from_home":false}],"micro_availability":[],"owner_recruiter":{"active_opportunities_count":8,"address_1":"Sanctuary
+        House, Chamber Court","address_2":"Castle Street","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.320x391.jpg","height":391,"width":320}],"blurb":"Care of older
+        people.\n\nWe pride ourselves on employing people who care for our residents
+        like members of their own family, with an ethos of ''keeping kindness at the
+        heart of our care''. We believe in giving our residents every opportunity
+        to lead happy, contented lives, whether that is supporting them to keep up
+        with a favourite hobby or trying new things.\n\nEstablished in 1995, we have
+        over 68 warm and welcoming care homes across England. Part of Sanctuary Group,
+        a not-for-profit organisation, we reinvest surplus income back into our homes.\n\nAt
+        our care homes we have a wide range of opportunities to suit volunteers''
+        availability, skills and interests. Our volunteers are a wonderful asset to
+        our team and residents, whether they are simply popping in for a friendly
+        chat or helping our residents to learn something new, the role they play is
+        so important to us.","charity":false,"city":"Worcester","contact_name":"Yunus
+        Giwa","created":"2016-11-08T14:46:22.902427+00:00","doit_approved":false,"donation_page":null,"email":"care.volunteer@sanctuary-housing.co.uk","facebook":null,"id":"97e44849-9d5a-486e-90a8-4bdab16301a5","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":52.2,"links":[{"href":"/v2/orgs/sanctuary-care","title":"Sanctuary
+        Care  Profile"}],"lng":-2.23,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.125x125.jpg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.109x109.jpg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.76x76.jpg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.50x50.jpg","height":50,"width":50}],"name":"Sanctuary
+        Care ","permissions":null,"phone":"01905 335 539","postcode":"WR1 3ZQ","rating":"0.00","rating_count":0,"slug":"sanctuary-care","source":"doittrust","subscriber_count":11,"twitter":null,"website":"http://www.sanctuary-care.co.uk"},"owner_recruiter_id":"97e44849-9d5a-486e-90a8-4bdab16301a5","photo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.616x318.jpg","height":318,"width":616},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.308x159.jpg","height":159,"width":308},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.243x124.jpg","height":124,"width":243},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.170x87.jpg","height":87,"width":170}],"places_available":10,"postcode":"SW16
+        5BP","rating":"0.00","rating_count":0,"specific_end_date":"2018-06-01T16:04:33+00:00","specific_start_date":"2017-04-10T09:43:27.295000+00:00","status":"live","title":"Volunteering
+        with Sanctuary Care in London","updated":"2017-05-05T10:31:32.834565+00:00","working_from_home":false},{"address_1":"St
+        Johns House Residential Care Home","address_2":"1 Westwell Road Approach,
+        Streatham Common","availability":{"friday":[true,true,true],"monday":[true,true,true],"saturday":[true,true,true],"sunday":[true,true,true],"thursday":[true,true,true],"tuesday":[true,true,true],"wednesday":[true,true,true]},"city":"London","county":"","created":"2017-04-05T16:35:36.322129+00:00","description":"We
+        have 11 care homes in London.\n\nAashna House Residential Care Home - London\nAshgreen
+        House Residential and Nursing Home - London\nHaven Residential Care Home -
+        Pinner\nMeadow View Residential Care Home - Canterbury\nMeadows House Residential
+        and Nursing Home - London \nParkview House Residential Care Home - London\nRiverlee
+        Residential and Nursing Home - London\nRowanweald Residential & Nursing Home
+        - Harrow\nSt Johns House Residential Care Home - London\nThe Manse Residential
+        Care Home - London\nTime Court Residential and Nursing Home - London\n\nWe
+        welcome volunteers who want to help, including supporting our residents with
+        leisure and social activities, befriending, gardening and maintenance, driving,
+        helping with events, clerical and administration support and in the kitchen.","for_recruiter":{"active_opportunities_count":8,"address_1":"Sanctuary
+        House, Chamber Court","address_2":"Castle Street","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.320x391.jpg","height":391,"width":320}],"blurb":"Care of older
+        people.\n\nWe pride ourselves on employing people who care for our residents
+        like members of their own family, with an ethos of ''keeping kindness at the
+        heart of our care''. We believe in giving our residents every opportunity
+        to lead happy, contented lives, whether that is supporting them to keep up
+        with a favourite hobby or trying new things.\n\nEstablished in 1995, we have
+        over 68 warm and welcoming care homes across England. Part of Sanctuary Group,
+        a not-for-profit organisation, we reinvest surplus income back into our homes.\n\nAt
+        our care homes we have a wide range of opportunities to suit volunteers''
+        availability, skills and interests. Our volunteers are a wonderful asset to
+        our team and residents, whether they are simply popping in for a friendly
+        chat or helping our residents to learn something new, the role they play is
+        so important to us.","charity":false,"city":"Worcester","contact_name":"Yunus
+        Giwa","created":"2016-11-08T14:46:22.902427+00:00","doit_approved":false,"donation_page":null,"email":"care.volunteer@sanctuary-housing.co.uk","facebook":null,"id":"97e44849-9d5a-486e-90a8-4bdab16301a5","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":52.2,"links":[{"href":"/v2/orgs/sanctuary-care","title":"Sanctuary
+        Care  Profile"}],"lng":-2.23,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.125x125.jpg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.109x109.jpg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.76x76.jpg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.50x50.jpg","height":50,"width":50}],"name":"Sanctuary
+        Care ","permissions":null,"phone":"01905 335 539","postcode":"WR1 3ZQ","rating":"0.00","rating_count":0,"slug":"sanctuary-care","source":"doittrust","subscriber_count":11,"twitter":null,"website":"http://www.sanctuary-care.co.uk"},"for_recruiter_id":"97e44849-9d5a-486e-90a8-4bdab16301a5","id":"de9f5303-f8ef-4cf3-8cec-2c1084413178","interests":[{"children":[],"created":"2014-10-26T17:24:25.590527+00:00","id":"517978aa-186d-4149-8548-c26b3d3f41cc","name":"Education","parent_id":"cf1ab709-0632-4d79-adef-f2fd32c1ebdf","slug":"education","updated":"2014-10-26T17:24:25.590548+00:00"},{"children":[],"created":"2014-10-26T17:24:26.142866+00:00","id":"6fc9bb15-1728-4d4d-bdab-51be247acba0","name":"Social
+        care","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"social-care","updated":"2014-10-26T17:24:26.142886+00:00"},{"children":[],"created":"2014-10-26T17:24:26.263725+00:00","id":"52bd46a8-63d2-47d8-b4a1-785f8215da59","name":"Medicine","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"medicine","updated":"2014-10-26T17:24:26.263745+00:00"},{"children":[],"created":"2014-10-26T17:24:26.260228+00:00","id":"3fd515b4-6e1a-41a1-bad9-ea401937555b","name":"Older
+        people","parent_id":"56fabd4e-bac3-484f-9f55-448445f83481","slug":"older-people","updated":"2014-10-26T17:24:26.260247+00:00"},{"children":[],"created":"2014-10-26T17:24:26.235376+00:00","id":"397cac61-1077-4f78-a8e5-d8c3dd29cde4","name":"Mental
+        Health","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"mental-health","updated":"2014-10-26T17:24:26.235395+00:00"}],"is_new":false,"lat":51.4209,"lng":-0.129161,"local_authority":{"id":"e624625d-17f2-49ef-88b7-cfaa7f42d596","name":"Lambeth
+        London Borough","slug":"lambeth-london-borough"},"location_id":null,"location_name":null,"location_type":"SL","locations":[{"address_1":"Meadows
+        House Residential and Nursing Home","address_2":"95 Tudway Road, Kidbrooke","city":"London","county":"","id":"ef55b84f-ec38-4936-90a8-69def0b134ee","lat":51.4586,"lng":0.0315296,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE3
+        9YG","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Parkview
+        House Residential Care Home","address_2":"12 Houndsfield Road, Edmonton","city":"London","county":"","id":"5f69a3b9-04c6-42eb-821f-f4edbde874b1","lat":51.6334,"lng":-0.05688,"local_authority":{"id":"62907dc5-279a-423f-98fb-0c438d23befa","name":"Enfield
+        London Borough","slug":"enfield-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"N9
+        7RQ","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Rowanweald
+        Residential & Nursing Home","address_2":"1 Weald Lane, Harrow Weald","city":"Harrow","county":"London","id":"4e5a8cc1-a2f8-446e-99da-e89e5966199d","lat":51.603,"lng":-0.339012,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"HA3
+        5EG","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Ashgreen
+        House Residential and Nursing Home","address_2":"Sandbach Place, Woolwich","city":"London","county":"SE18
+        7EX","id":"1a23f8f8-262e-4205-b384-55694bd79f7e","lat":51.4872,"lng":0.076431,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE18
+        7EX","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"The
+        Manse Residential Care Home","address_2":"11 South Norwood Hill, South Norwood","city":"London","county":"","id":"28ceff7b-4b14-4c15-bc06-0dd010245875","lat":51.4002,"lng":-0.0764846,"local_authority":{"id":"c2ee1839-5b0b-4502-812c-aa5a6c8f2d42","name":"Croydon
+        London Borough","slug":"croydon-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE25
+        6AA","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Riverlee
+        Residential and Nursing Home","address_2":"Franklin Place, Greenwich","city":"London","county":"","id":"1a43ce77-7618-4009-859e-28e66a869605","lat":51.4726,"lng":-0.0179741,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE13
+        7NJ","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Aashna
+        House Residential Care Home","address_2":"2 Bates crescent, Streatham Vale","city":"London","county":"","id":"7f9ef811-9d7d-4cbe-bf8b-dfc5ae45797f","lat":51.4174,"lng":-0.141804,"local_authority":{"id":"e624625d-17f2-49ef-88b7-cfaa7f42d596","name":"Lambeth
+        London Borough","slug":"lambeth-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SW16
+        5BP","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"St
+        Johns House Residential Care Home","address_2":"1 Westwell Road Approach,
+        Streatham Common","city":"London","county":"","id":"de9f5303-f8ef-4cf3-8cec-2c1084413178","lat":51.4209,"lng":-0.129161,"local_authority":{"id":"e624625d-17f2-49ef-88b7-cfaa7f42d596","name":"Lambeth
+        London Borough","slug":"lambeth-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SW16
+        5SH","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Haven
+        Residential Care Home","address_2":"36-38 Wellington Road, Hatch End","city":"Pinner","county":"Middlesex","id":"0f0db05e-1022-4faa-bc8a-3d093829cfdc","lat":51.606,"lng":-0.3758,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"HA5
+        4NL","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Meadow
+        View Residential Care Home","address_2":"Blackthorn Road, Hersden","city":"Canterbury","county":"Kent","id":"ea75f36d-dc02-4075-b06e-11f0918ff88f","lat":51.3139,"lng":1.15429,"local_authority":{"id":"c2a3eec3-f9bf-4cf8-97fc-11da3625e628","name":"Canterbury
+        District (B)","slug":"canterbury-district-b"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"CT3
+        4GB","rating":"0.00","rating_count":0,"working_from_home":false}],"micro_availability":[],"owner_recruiter":{"active_opportunities_count":8,"address_1":"Sanctuary
+        House, Chamber Court","address_2":"Castle Street","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.320x391.jpg","height":391,"width":320}],"blurb":"Care of older
+        people.\n\nWe pride ourselves on employing people who care for our residents
+        like members of their own family, with an ethos of ''keeping kindness at the
+        heart of our care''. We believe in giving our residents every opportunity
+        to lead happy, contented lives, whether that is supporting them to keep up
+        with a favourite hobby or trying new things.\n\nEstablished in 1995, we have
+        over 68 warm and welcoming care homes across England. Part of Sanctuary Group,
+        a not-for-profit organisation, we reinvest surplus income back into our homes.\n\nAt
+        our care homes we have a wide range of opportunities to suit volunteers''
+        availability, skills and interests. Our volunteers are a wonderful asset to
+        our team and residents, whether they are simply popping in for a friendly
+        chat or helping our residents to learn something new, the role they play is
+        so important to us.","charity":false,"city":"Worcester","contact_name":"Yunus
+        Giwa","created":"2016-11-08T14:46:22.902427+00:00","doit_approved":false,"donation_page":null,"email":"care.volunteer@sanctuary-housing.co.uk","facebook":null,"id":"97e44849-9d5a-486e-90a8-4bdab16301a5","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":52.2,"links":[{"href":"/v2/orgs/sanctuary-care","title":"Sanctuary
+        Care  Profile"}],"lng":-2.23,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.125x125.jpg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.109x109.jpg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.76x76.jpg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.50x50.jpg","height":50,"width":50}],"name":"Sanctuary
+        Care ","permissions":null,"phone":"01905 335 539","postcode":"WR1 3ZQ","rating":"0.00","rating_count":0,"slug":"sanctuary-care","source":"doittrust","subscriber_count":11,"twitter":null,"website":"http://www.sanctuary-care.co.uk"},"owner_recruiter_id":"97e44849-9d5a-486e-90a8-4bdab16301a5","photo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.616x318.jpg","height":318,"width":616},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.308x159.jpg","height":159,"width":308},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.243x124.jpg","height":124,"width":243},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.170x87.jpg","height":87,"width":170}],"places_available":10,"postcode":"SW16
+        5SH","rating":"0.00","rating_count":0,"specific_end_date":"2018-06-01T16:04:33+00:00","specific_start_date":"2017-04-10T09:43:27.295000+00:00","status":"live","title":"Volunteering
+        with Sanctuary Care in London","updated":"2017-05-05T10:31:32.834565+00:00","working_from_home":false},{"address_1":"Haven
+        Residential Care Home","address_2":"36-38 Wellington Road, Hatch End","availability":{"friday":[true,true,true],"monday":[true,true,true],"saturday":[true,true,true],"sunday":[true,true,true],"thursday":[true,true,true],"tuesday":[true,true,true],"wednesday":[true,true,true]},"city":"Pinner","county":"Middlesex","created":"2017-04-05T16:35:36.322129+00:00","description":"We
+        have 11 care homes in London.\n\nAashna House Residential Care Home - London\nAshgreen
+        House Residential and Nursing Home - London\nHaven Residential Care Home -
+        Pinner\nMeadow View Residential Care Home - Canterbury\nMeadows House Residential
+        and Nursing Home - London \nParkview House Residential Care Home - London\nRiverlee
+        Residential and Nursing Home - London\nRowanweald Residential & Nursing Home
+        - Harrow\nSt Johns House Residential Care Home - London\nThe Manse Residential
+        Care Home - London\nTime Court Residential and Nursing Home - London\n\nWe
+        welcome volunteers who want to help, including supporting our residents with
+        leisure and social activities, befriending, gardening and maintenance, driving,
+        helping with events, clerical and administration support and in the kitchen.","for_recruiter":{"active_opportunities_count":8,"address_1":"Sanctuary
+        House, Chamber Court","address_2":"Castle Street","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.320x391.jpg","height":391,"width":320}],"blurb":"Care of older
+        people.\n\nWe pride ourselves on employing people who care for our residents
+        like members of their own family, with an ethos of ''keeping kindness at the
+        heart of our care''. We believe in giving our residents every opportunity
+        to lead happy, contented lives, whether that is supporting them to keep up
+        with a favourite hobby or trying new things.\n\nEstablished in 1995, we have
+        over 68 warm and welcoming care homes across England. Part of Sanctuary Group,
+        a not-for-profit organisation, we reinvest surplus income back into our homes.\n\nAt
+        our care homes we have a wide range of opportunities to suit volunteers''
+        availability, skills and interests. Our volunteers are a wonderful asset to
+        our team and residents, whether they are simply popping in for a friendly
+        chat or helping our residents to learn something new, the role they play is
+        so important to us.","charity":false,"city":"Worcester","contact_name":"Yunus
+        Giwa","created":"2016-11-08T14:46:22.902427+00:00","doit_approved":false,"donation_page":null,"email":"care.volunteer@sanctuary-housing.co.uk","facebook":null,"id":"97e44849-9d5a-486e-90a8-4bdab16301a5","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":52.2,"links":[{"href":"/v2/orgs/sanctuary-care","title":"Sanctuary
+        Care  Profile"}],"lng":-2.23,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.125x125.jpg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.109x109.jpg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.76x76.jpg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.50x50.jpg","height":50,"width":50}],"name":"Sanctuary
+        Care ","permissions":null,"phone":"01905 335 539","postcode":"WR1 3ZQ","rating":"0.00","rating_count":0,"slug":"sanctuary-care","source":"doittrust","subscriber_count":11,"twitter":null,"website":"http://www.sanctuary-care.co.uk"},"for_recruiter_id":"97e44849-9d5a-486e-90a8-4bdab16301a5","id":"0f0db05e-1022-4faa-bc8a-3d093829cfdc","interests":[{"children":[],"created":"2014-10-26T17:24:25.590527+00:00","id":"517978aa-186d-4149-8548-c26b3d3f41cc","name":"Education","parent_id":"cf1ab709-0632-4d79-adef-f2fd32c1ebdf","slug":"education","updated":"2014-10-26T17:24:25.590548+00:00"},{"children":[],"created":"2014-10-26T17:24:26.142866+00:00","id":"6fc9bb15-1728-4d4d-bdab-51be247acba0","name":"Social
+        care","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"social-care","updated":"2014-10-26T17:24:26.142886+00:00"},{"children":[],"created":"2014-10-26T17:24:26.263725+00:00","id":"52bd46a8-63d2-47d8-b4a1-785f8215da59","name":"Medicine","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"medicine","updated":"2014-10-26T17:24:26.263745+00:00"},{"children":[],"created":"2014-10-26T17:24:26.260228+00:00","id":"3fd515b4-6e1a-41a1-bad9-ea401937555b","name":"Older
+        people","parent_id":"56fabd4e-bac3-484f-9f55-448445f83481","slug":"older-people","updated":"2014-10-26T17:24:26.260247+00:00"},{"children":[],"created":"2014-10-26T17:24:26.235376+00:00","id":"397cac61-1077-4f78-a8e5-d8c3dd29cde4","name":"Mental
+        Health","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"mental-health","updated":"2014-10-26T17:24:26.235395+00:00"}],"is_new":false,"lat":51.606,"lng":-0.3758,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location_id":null,"location_name":null,"location_type":"SL","locations":[{"address_1":"Meadows
+        House Residential and Nursing Home","address_2":"95 Tudway Road, Kidbrooke","city":"London","county":"","id":"ef55b84f-ec38-4936-90a8-69def0b134ee","lat":51.4586,"lng":0.0315296,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE3
+        9YG","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Parkview
+        House Residential Care Home","address_2":"12 Houndsfield Road, Edmonton","city":"London","county":"","id":"5f69a3b9-04c6-42eb-821f-f4edbde874b1","lat":51.6334,"lng":-0.05688,"local_authority":{"id":"62907dc5-279a-423f-98fb-0c438d23befa","name":"Enfield
+        London Borough","slug":"enfield-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"N9
+        7RQ","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Rowanweald
+        Residential & Nursing Home","address_2":"1 Weald Lane, Harrow Weald","city":"Harrow","county":"London","id":"4e5a8cc1-a2f8-446e-99da-e89e5966199d","lat":51.603,"lng":-0.339012,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"HA3
+        5EG","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Ashgreen
+        House Residential and Nursing Home","address_2":"Sandbach Place, Woolwich","city":"London","county":"SE18
+        7EX","id":"1a23f8f8-262e-4205-b384-55694bd79f7e","lat":51.4872,"lng":0.076431,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE18
+        7EX","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"The
+        Manse Residential Care Home","address_2":"11 South Norwood Hill, South Norwood","city":"London","county":"","id":"28ceff7b-4b14-4c15-bc06-0dd010245875","lat":51.4002,"lng":-0.0764846,"local_authority":{"id":"c2ee1839-5b0b-4502-812c-aa5a6c8f2d42","name":"Croydon
+        London Borough","slug":"croydon-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE25
+        6AA","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Riverlee
+        Residential and Nursing Home","address_2":"Franklin Place, Greenwich","city":"London","county":"","id":"1a43ce77-7618-4009-859e-28e66a869605","lat":51.4726,"lng":-0.0179741,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE13
+        7NJ","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Aashna
+        House Residential Care Home","address_2":"2 Bates crescent, Streatham Vale","city":"London","county":"","id":"7f9ef811-9d7d-4cbe-bf8b-dfc5ae45797f","lat":51.4174,"lng":-0.141804,"local_authority":{"id":"e624625d-17f2-49ef-88b7-cfaa7f42d596","name":"Lambeth
+        London Borough","slug":"lambeth-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SW16
+        5BP","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"St
+        Johns House Residential Care Home","address_2":"1 Westwell Road Approach,
+        Streatham Common","city":"London","county":"","id":"de9f5303-f8ef-4cf3-8cec-2c1084413178","lat":51.4209,"lng":-0.129161,"local_authority":{"id":"e624625d-17f2-49ef-88b7-cfaa7f42d596","name":"Lambeth
+        London Borough","slug":"lambeth-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SW16
+        5SH","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Haven
+        Residential Care Home","address_2":"36-38 Wellington Road, Hatch End","city":"Pinner","county":"Middlesex","id":"0f0db05e-1022-4faa-bc8a-3d093829cfdc","lat":51.606,"lng":-0.3758,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"HA5
+        4NL","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Meadow
+        View Residential Care Home","address_2":"Blackthorn Road, Hersden","city":"Canterbury","county":"Kent","id":"ea75f36d-dc02-4075-b06e-11f0918ff88f","lat":51.3139,"lng":1.15429,"local_authority":{"id":"c2a3eec3-f9bf-4cf8-97fc-11da3625e628","name":"Canterbury
+        District (B)","slug":"canterbury-district-b"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"CT3
+        4GB","rating":"0.00","rating_count":0,"working_from_home":false}],"micro_availability":[],"owner_recruiter":{"active_opportunities_count":8,"address_1":"Sanctuary
+        House, Chamber Court","address_2":"Castle Street","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.320x391.jpg","height":391,"width":320}],"blurb":"Care of older
+        people.\n\nWe pride ourselves on employing people who care for our residents
+        like members of their own family, with an ethos of ''keeping kindness at the
+        heart of our care''. We believe in giving our residents every opportunity
+        to lead happy, contented lives, whether that is supporting them to keep up
+        with a favourite hobby or trying new things.\n\nEstablished in 1995, we have
+        over 68 warm and welcoming care homes across England. Part of Sanctuary Group,
+        a not-for-profit organisation, we reinvest surplus income back into our homes.\n\nAt
+        our care homes we have a wide range of opportunities to suit volunteers''
+        availability, skills and interests. Our volunteers are a wonderful asset to
+        our team and residents, whether they are simply popping in for a friendly
+        chat or helping our residents to learn something new, the role they play is
+        so important to us.","charity":false,"city":"Worcester","contact_name":"Yunus
+        Giwa","created":"2016-11-08T14:46:22.902427+00:00","doit_approved":false,"donation_page":null,"email":"care.volunteer@sanctuary-housing.co.uk","facebook":null,"id":"97e44849-9d5a-486e-90a8-4bdab16301a5","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":52.2,"links":[{"href":"/v2/orgs/sanctuary-care","title":"Sanctuary
+        Care  Profile"}],"lng":-2.23,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.125x125.jpg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.109x109.jpg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.76x76.jpg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.50x50.jpg","height":50,"width":50}],"name":"Sanctuary
+        Care ","permissions":null,"phone":"01905 335 539","postcode":"WR1 3ZQ","rating":"0.00","rating_count":0,"slug":"sanctuary-care","source":"doittrust","subscriber_count":11,"twitter":null,"website":"http://www.sanctuary-care.co.uk"},"owner_recruiter_id":"97e44849-9d5a-486e-90a8-4bdab16301a5","photo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.616x318.jpg","height":318,"width":616},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.308x159.jpg","height":159,"width":308},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.243x124.jpg","height":124,"width":243},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.170x87.jpg","height":87,"width":170}],"places_available":10,"postcode":"HA5
+        4NL","rating":"0.00","rating_count":0,"specific_end_date":"2018-06-01T16:04:33+00:00","specific_start_date":"2017-04-10T09:43:27.295000+00:00","status":"live","title":"Volunteering
+        with Sanctuary Care in London","updated":"2017-05-05T10:31:32.834565+00:00","working_from_home":false},{"address_1":"Meadow
+        View Residential Care Home","address_2":"Blackthorn Road, Hersden","availability":{"friday":[true,true,true],"monday":[true,true,true],"saturday":[true,true,true],"sunday":[true,true,true],"thursday":[true,true,true],"tuesday":[true,true,true],"wednesday":[true,true,true]},"city":"Canterbury","county":"Kent","created":"2017-04-05T16:35:36.322129+00:00","description":"We
+        have 11 care homes in London.\n\nAashna House Residential Care Home - London\nAshgreen
+        House Residential and Nursing Home - London\nHaven Residential Care Home -
+        Pinner\nMeadow View Residential Care Home - Canterbury\nMeadows House Residential
+        and Nursing Home - London \nParkview House Residential Care Home - London\nRiverlee
+        Residential and Nursing Home - London\nRowanweald Residential & Nursing Home
+        - Harrow\nSt Johns House Residential Care Home - London\nThe Manse Residential
+        Care Home - London\nTime Court Residential and Nursing Home - London\n\nWe
+        welcome volunteers who want to help, including supporting our residents with
+        leisure and social activities, befriending, gardening and maintenance, driving,
+        helping with events, clerical and administration support and in the kitchen.","for_recruiter":{"active_opportunities_count":8,"address_1":"Sanctuary
+        House, Chamber Court","address_2":"Castle Street","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.320x391.jpg","height":391,"width":320}],"blurb":"Care of older
+        people.\n\nWe pride ourselves on employing people who care for our residents
+        like members of their own family, with an ethos of ''keeping kindness at the
+        heart of our care''. We believe in giving our residents every opportunity
+        to lead happy, contented lives, whether that is supporting them to keep up
+        with a favourite hobby or trying new things.\n\nEstablished in 1995, we have
+        over 68 warm and welcoming care homes across England. Part of Sanctuary Group,
+        a not-for-profit organisation, we reinvest surplus income back into our homes.\n\nAt
+        our care homes we have a wide range of opportunities to suit volunteers''
+        availability, skills and interests. Our volunteers are a wonderful asset to
+        our team and residents, whether they are simply popping in for a friendly
+        chat or helping our residents to learn something new, the role they play is
+        so important to us.","charity":false,"city":"Worcester","contact_name":"Yunus
+        Giwa","created":"2016-11-08T14:46:22.902427+00:00","doit_approved":false,"donation_page":null,"email":"care.volunteer@sanctuary-housing.co.uk","facebook":null,"id":"97e44849-9d5a-486e-90a8-4bdab16301a5","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":52.2,"links":[{"href":"/v2/orgs/sanctuary-care","title":"Sanctuary
+        Care  Profile"}],"lng":-2.23,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.125x125.jpg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.109x109.jpg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.76x76.jpg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.50x50.jpg","height":50,"width":50}],"name":"Sanctuary
+        Care ","permissions":null,"phone":"01905 335 539","postcode":"WR1 3ZQ","rating":"0.00","rating_count":0,"slug":"sanctuary-care","source":"doittrust","subscriber_count":11,"twitter":null,"website":"http://www.sanctuary-care.co.uk"},"for_recruiter_id":"97e44849-9d5a-486e-90a8-4bdab16301a5","id":"ea75f36d-dc02-4075-b06e-11f0918ff88f","interests":[{"children":[],"created":"2014-10-26T17:24:25.590527+00:00","id":"517978aa-186d-4149-8548-c26b3d3f41cc","name":"Education","parent_id":"cf1ab709-0632-4d79-adef-f2fd32c1ebdf","slug":"education","updated":"2014-10-26T17:24:25.590548+00:00"},{"children":[],"created":"2014-10-26T17:24:26.142866+00:00","id":"6fc9bb15-1728-4d4d-bdab-51be247acba0","name":"Social
+        care","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"social-care","updated":"2014-10-26T17:24:26.142886+00:00"},{"children":[],"created":"2014-10-26T17:24:26.263725+00:00","id":"52bd46a8-63d2-47d8-b4a1-785f8215da59","name":"Medicine","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"medicine","updated":"2014-10-26T17:24:26.263745+00:00"},{"children":[],"created":"2014-10-26T17:24:26.260228+00:00","id":"3fd515b4-6e1a-41a1-bad9-ea401937555b","name":"Older
+        people","parent_id":"56fabd4e-bac3-484f-9f55-448445f83481","slug":"older-people","updated":"2014-10-26T17:24:26.260247+00:00"},{"children":[],"created":"2014-10-26T17:24:26.235376+00:00","id":"397cac61-1077-4f78-a8e5-d8c3dd29cde4","name":"Mental
+        Health","parent_id":"24620d05-41c1-4884-a0cb-f70054faba9b","slug":"mental-health","updated":"2014-10-26T17:24:26.235395+00:00"}],"is_new":false,"lat":51.3139,"lng":1.15429,"local_authority":{"id":"c2a3eec3-f9bf-4cf8-97fc-11da3625e628","name":"Canterbury
+        District (B)","slug":"canterbury-district-b"},"location_id":null,"location_name":null,"location_type":"SL","locations":[{"address_1":"Meadows
+        House Residential and Nursing Home","address_2":"95 Tudway Road, Kidbrooke","city":"London","county":"","id":"ef55b84f-ec38-4936-90a8-69def0b134ee","lat":51.4586,"lng":0.0315296,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE3
+        9YG","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Parkview
+        House Residential Care Home","address_2":"12 Houndsfield Road, Edmonton","city":"London","county":"","id":"5f69a3b9-04c6-42eb-821f-f4edbde874b1","lat":51.6334,"lng":-0.05688,"local_authority":{"id":"62907dc5-279a-423f-98fb-0c438d23befa","name":"Enfield
+        London Borough","slug":"enfield-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"N9
+        7RQ","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Rowanweald
+        Residential & Nursing Home","address_2":"1 Weald Lane, Harrow Weald","city":"Harrow","county":"London","id":"4e5a8cc1-a2f8-446e-99da-e89e5966199d","lat":51.603,"lng":-0.339012,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"HA3
+        5EG","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Ashgreen
+        House Residential and Nursing Home","address_2":"Sandbach Place, Woolwich","city":"London","county":"SE18
+        7EX","id":"1a23f8f8-262e-4205-b384-55694bd79f7e","lat":51.4872,"lng":0.076431,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE18
+        7EX","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"The
+        Manse Residential Care Home","address_2":"11 South Norwood Hill, South Norwood","city":"London","county":"","id":"28ceff7b-4b14-4c15-bc06-0dd010245875","lat":51.4002,"lng":-0.0764846,"local_authority":{"id":"c2ee1839-5b0b-4502-812c-aa5a6c8f2d42","name":"Croydon
+        London Borough","slug":"croydon-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE25
+        6AA","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Riverlee
+        Residential and Nursing Home","address_2":"Franklin Place, Greenwich","city":"London","county":"","id":"1a43ce77-7618-4009-859e-28e66a869605","lat":51.4726,"lng":-0.0179741,"local_authority":{"id":"4e37e723-5d9f-483f-bc0f-b841e93191cf","name":"Greenwich
+        London Borough","slug":"greenwich-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SE13
+        7NJ","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Aashna
+        House Residential Care Home","address_2":"2 Bates crescent, Streatham Vale","city":"London","county":"","id":"7f9ef811-9d7d-4cbe-bf8b-dfc5ae45797f","lat":51.4174,"lng":-0.141804,"local_authority":{"id":"e624625d-17f2-49ef-88b7-cfaa7f42d596","name":"Lambeth
+        London Borough","slug":"lambeth-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SW16
+        5BP","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"St
+        Johns House Residential Care Home","address_2":"1 Westwell Road Approach,
+        Streatham Common","city":"London","county":"","id":"de9f5303-f8ef-4cf3-8cec-2c1084413178","lat":51.4209,"lng":-0.129161,"local_authority":{"id":"e624625d-17f2-49ef-88b7-cfaa7f42d596","name":"Lambeth
+        London Borough","slug":"lambeth-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"SW16
+        5SH","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Haven
+        Residential Care Home","address_2":"36-38 Wellington Road, Hatch End","city":"Pinner","county":"Middlesex","id":"0f0db05e-1022-4faa-bc8a-3d093829cfdc","lat":51.606,"lng":-0.3758,"local_authority":{"id":"0561a78f-83e1-47fa-ae4c-07a9cf7390d3","name":"Harrow
+        London Borough","slug":"harrow-london-borough"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"HA5
+        4NL","rating":"0.00","rating_count":0,"working_from_home":false},{"address_1":"Meadow
+        View Residential Care Home","address_2":"Blackthorn Road, Hersden","city":"Canterbury","county":"Kent","id":"ea75f36d-dc02-4075-b06e-11f0918ff88f","lat":51.3139,"lng":1.15429,"local_authority":{"id":"c2a3eec3-f9bf-4cf8-97fc-11da3625e628","name":"Canterbury
+        District (B)","slug":"canterbury-district-b"},"location":null,"location_id":null,"location_name":null,"location_type":"SL","places_available":10,"postcode":"CT3
+        4GB","rating":"0.00","rating_count":0,"working_from_home":false}],"micro_availability":[],"owner_recruiter":{"active_opportunities_count":8,"address_1":"Sanctuary
+        House, Chamber Court","address_2":"Castle Street","application_via_url":false,"banner":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.1170x391.jpg","height":391,"width":1170},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.768x391.jpg","height":391,"width":768},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/banners/deputy
+        manager1111.320x391.jpg","height":391,"width":320}],"blurb":"Care of older
+        people.\n\nWe pride ourselves on employing people who care for our residents
+        like members of their own family, with an ethos of ''keeping kindness at the
+        heart of our care''. We believe in giving our residents every opportunity
+        to lead happy, contented lives, whether that is supporting them to keep up
+        with a favourite hobby or trying new things.\n\nEstablished in 1995, we have
+        over 68 warm and welcoming care homes across England. Part of Sanctuary Group,
+        a not-for-profit organisation, we reinvest surplus income back into our homes.\n\nAt
+        our care homes we have a wide range of opportunities to suit volunteers''
+        availability, skills and interests. Our volunteers are a wonderful asset to
+        our team and residents, whether they are simply popping in for a friendly
+        chat or helping our residents to learn something new, the role they play is
+        so important to us.","charity":false,"city":"Worcester","contact_name":"Yunus
+        Giwa","created":"2016-11-08T14:46:22.902427+00:00","doit_approved":false,"donation_page":null,"email":"care.volunteer@sanctuary-housing.co.uk","facebook":null,"id":"97e44849-9d5a-486e-90a8-4bdab16301a5","instagram":null,"is_user_subscribed":false,"is_volunteer_center":false,"lat":52.2,"links":[{"href":"/v2/orgs/sanctuary-care","title":"Sanctuary
+        Care  Profile"}],"lng":-2.23,"logo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.125x125.jpg","height":125,"width":125},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.109x109.jpg","height":109,"width":109},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.76x76.jpg","height":76,"width":76},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Sanctuary
+        Care111 - version 9 BLUE.50x50.jpg","height":50,"width":50}],"name":"Sanctuary
+        Care ","permissions":null,"phone":"01905 335 539","postcode":"WR1 3ZQ","rating":"0.00","rating_count":0,"slug":"sanctuary-care","source":"doittrust","subscriber_count":11,"twitter":null,"website":"http://www.sanctuary-care.co.uk"},"owner_recruiter_id":"97e44849-9d5a-486e-90a8-4bdab16301a5","photo":[{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.616x318.jpg","height":318,"width":616},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.308x159.jpg","height":159,"width":308},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.243x124.jpg","height":124,"width":243},{"absolute_url":"https://s3-eu-west-1.amazonaws.com/media.do-it.org/opps/photos/Sanctuary_Care_-_version_9_BLUE_DGZwTvCdDFvQkhyWa35qnX.170x87.jpg","height":87,"width":170}],"places_available":10,"postcode":"CT3
+        4GB","rating":"0.00","rating_count":0,"specific_end_date":"2018-06-01T16:04:33+00:00","specific_start_date":"2017-04-10T09:43:27.295000+00:00","status":"live","title":"Volunteering
+        with Sanctuary Care in London","updated":"2017-05-05T10:31:32.834565+00:00","working_from_home":false}]},"links":{"self":{"href":"/v1/opportunities","title":"You
+        are here."}},"meta":{"code":200,"current_page":1,"items_per_page":20,"sort_by":["title","updated","advertise_end_date"],"tenant":"doittrust","total_items":4,"total_pages":1,"version":"2016.11.24.0"}}
+
+'
+    http_version: 
+  recorded_at: Tue, 22 Aug 2017 18:40:00 GMT
+recorded_with: VCR 3.0.3

@@ -42,9 +42,7 @@ class VolunteerOpsController < ApplicationController
 
   def edit
     volunteer_op_record = VolunteerOp.find(params[:id])
-    if current_user.superadmin? && DoitTrace.published?(volunteer_op_record.id)
-      @can_publish_to_doit = true
-    end
+    @can_publish_to_doit = true if can_post_to_doit?(volunteer_op_record.id)
     @volunteer_op = VolunteerOpForm.new(volunteer_op: volunteer_op_record )
     organisations = Organisation.where(id: @volunteer_op.organisation_id)
     @organisation = organisations.first!
@@ -145,5 +143,10 @@ class VolunteerOpsController < ApplicationController
   def meta_tag_description
     return super unless @volunteer_op
     @volunteer_op.description
+  end
+
+  def can_post_to_doit?(vol_op_id)
+    current_user.superadmin? && !DoitTrace.published?(vol_op_id)
+
   end
 end

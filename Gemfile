@@ -8,6 +8,10 @@ gem 'devise_invitable', '~> 1.6', '>= 1.6.1'
 gem 'heroku-api'
 gem 'sprockets', '~> 2.11', '>= 2.11.3'
 
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+gem 'jbuilder'
+
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -36,7 +40,7 @@ group :development do
   gem 'letter_opener'
   gem 'railroady'
   gem 'quiet_assets'
-  
+
 end
 
 group :test do
@@ -110,4 +114,3 @@ gem 'friendly_id', '~> 5.1.0'
 
 # SEO
 gem 'meta-tags'
-
