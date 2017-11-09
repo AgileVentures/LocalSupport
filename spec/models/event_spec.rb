@@ -61,7 +61,7 @@ RSpec.describe Event, type: :model do
     end
 
     xit 'should only contain events that are after the current datetime' do
-      expect(Event.upcoming(20)).to all (have_attributes(start_date: (a_value > DateTime.now)))
+      expect(Event.upcoming(20)).to all (have_attributes(start_date: (a_value > DateTime.current)))
     end
 
   end
