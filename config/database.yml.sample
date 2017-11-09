@@ -1,14 +1,28 @@
+<% if ENV['DOCKER'].blank? %>
 development: &dev
   adapter: postgresql
   encoding: unicode
   database: ls_development
   pool: 5
-  username: psotgres
-  password: 
+  username: postgres
+  password:
   #host: localhost
 test: &test
   <<: *dev
   database: ls_test
+<% else %>
+development: &dev
+  adapter: postgresql
+  encoding: unicode
+  database: ls_development
+  pool: 5
+  username: postgres
+  password:
+  host: db
+test: &test
+  <<: *dev
+  database: ls_test
+<% end %>
 
 production:
   <<: *dev
