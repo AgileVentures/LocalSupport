@@ -39,7 +39,7 @@ module ApplicationHelper
     case flash_type
     when 'warning'
       'alert-warning'
-    when 'notice'
+    when 'notice', 'success'
       'alert-success'
     else
       'alert-danger'
