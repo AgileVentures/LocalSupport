@@ -114,3 +114,4 @@ gem 'friendly_id', '~> 5.1.0'
 
 # SEO
 gem 'meta-tags'
+gem 'gibbon'
