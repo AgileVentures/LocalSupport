@@ -8,6 +8,8 @@
  *= require font-awesome
  *= require bootstrap-sortable
  *= require bootstrap-switch
+ *= require bootstrap-datepicker3
+ *= require fullcalendar
 */
 
 body, html {

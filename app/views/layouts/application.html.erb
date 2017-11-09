@@ -17,7 +17,7 @@
 
 </head>
 
-<body>
+<body class="<%= controller_name %> <%= action_name %>">
 <% unless cookie_policy_accepted? %>
     <%= render 'layouts/cookie_alert' %>
 <% end %>
@@ -30,7 +30,7 @@
             <%= render partial: 'layouts/flash', locals: { name: name, msg: item } %>
           <% end %>
         <% end %>
-        <%= render_breadcrumbs (' >> ') %>
+        <%= render_breadcrumbs %>
         <div id="content">
           <%= yield %>
         </div>

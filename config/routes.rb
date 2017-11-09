@@ -1,6 +1,10 @@
 LocalSupport::Application.routes.draw do
 
+  get '/.well-known/acme-challenge/:id' => 'pages#letsencrypt'
+
   devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}
+
+  get '/embedded/map' => 'volunteer_ops#embedded_map'
 
   get 'contributors' => 'contributors#show'
   match 'organisations/search' => 'organisations#search', via: [:get, :post]
@@ -15,6 +19,7 @@ LocalSupport::Application.routes.draw do
   get '/user_reports/deleted' => 'user_reports#deleted', as: :deleted_users_report
   put 'user_reports/undo_delete/:id' => 'user_reports#undo_delete', as: :undo_delete_users_report
 
+  resources :doit_organisations, only: [:index]
   resources :pages, only: [:index, :new, :create, :edit]
   resources :volunteer_ops, :only => [:index, :edit, :show, :update, :destroy] do
     get 'search', on: :collection

@@ -23,6 +23,24 @@ Given(/^I submit a volunteer op with address on the org page/) do |volunteer_ops
   end
 end
 
+Given(/^I submit a volunteer op to Doit/) do |volunteer_ops_table|
+  volunteer_ops_table.hashes.each do |volunteer_op|
+    org = Organisation.find_by_name(volunteer_op['org_name'])
+    visit organisation_path org
+    click_link 'Create a Volunteer Opportunity'
+    expect(current_path).to eq new_organisation_volunteer_op_path org
+    fill_in 'Title', with: volunteer_op['title']
+    fill_in 'Description', with: volunteer_op['desc']
+    fill_in 'Address', with: volunteer_op['address']
+    fill_in 'Postcode', with: volunteer_op['postcode']
+    check('check_to_doit')
+    select('Help Out Harrow!', from: 'Doit organisation')
+    fill_in 'Advertise start date', with: 10.days.ago.strftime("%F")
+    fill_in 'Advertise end date', with: 10.days.from_now.strftime("%F")
+    click_on 'Create a Volunteer Opportunity'
+  end
+end
+
 regex = /^I run the import doit service( with a radius of (\d+\.?\d*) miles)?$/
 Given(regex) do |override, radius|
   if override
@@ -55,6 +73,14 @@ Then(/^all imported volunteer ops have latitude and longitude coordinates$/) do
   VolunteerOp.where(source: 'doit').all? do |op|
     expect(op).to have_coordinates
   end
+end
+
+Given(/^there is a posted vol op with doit id "(.*?)"$/) do |doit_id|
+  DoitTrace.create(doit_volop_id: doit_id)
+end
+
+Then(/^the doit volunteer op with id "(.*?)" should not be stored$/) do |doit_id|
+  expect(VolunteerOp.find_by(doit_op_id: doit_id)).to be nil
 end
 
 Given(/^that the (.+) flag is (enabled|disabled)$/) do |feature, state|
@@ -115,4 +141,11 @@ end
 
 Given /^wait for (\d+) seconds?$/ do |n|
 	sleep(n.to_i)
+end
+
+Given(/^I fill additional fields required by Doit$/) do
+  select("Help Out Harrow!", from: 'doit_volunteer_op_doit_org_id')
+  fill_in('Advertise start date', with: '2017-03-01')
+  fill_in('Advertise end date', with: '2017-04-01')
+
 end

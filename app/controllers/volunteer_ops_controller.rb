@@ -1,8 +1,8 @@
 class VolunteerOpsController < ApplicationController
   add_breadcrumb 'Volunteers', :root_url
-  layout 'two_columns_with_map'
+  layout 'two_columns_with_map', except: :embedded_map
   before_action :set_organisation, only: [:new, :create]
-  before_action :authorize, except: [:search, :show, :index]
+  before_action :authorize, except: [:search, :show, :index, :embedded_map]
   prepend_before_action :set_volunteer_op, only: [:show, :edit]
 
   def search
@@ -29,26 +29,32 @@ class VolunteerOpsController < ApplicationController
   end
 
   def new
-    @volunteer_op = VolunteerOp.new
+    @volunteer_op = VolunteerOpForm.new
+    @can_publish_to_doit = true if current_user.superadmin?
   end
 
   def create
     params[:volunteer_op][:organisation_id] = @organisation.id
-    @volunteer_op = VolunteerOp.new(volunteer_op_params)
+    @volunteer_op = VolunteerOpForm.new(volunteer_op_params)
     result = @volunteer_op.save
     result ? vol_op_redirect(t('volunteer.create_success')) : render(:new)
   end
 
   def edit
+    volunteer_op_record = VolunteerOp.find(params[:id])
+    @can_publish_to_doit = true if can_post_to_doit?(volunteer_op_record.id)
+    @volunteer_op = VolunteerOpForm.new(volunteer_op: volunteer_op_record )
     organisations = Organisation.where(id: @volunteer_op.organisation_id)
     @organisation = organisations.first!
     @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
   end
 
   def update
-    @volunteer_op = VolunteerOp.find(params[:id])
+    volunteer_op_record = VolunteerOp.find(params[:id])
+    @volunteer_op = VolunteerOpForm.new(volunteer_op: volunteer_op_record )
     @organisation = @volunteer_op.organisation
-    result = @volunteer_op.update_attributes(volunteer_op_params)
+    @volunteer_op.assign_attributes(volunteer_op_params)
+    result = @volunteer_op.save
     result ? vol_op_redirect(t('volunteer.update_success')) : render(action: 'edit')
   end
 
@@ -59,8 +65,16 @@ class VolunteerOpsController < ApplicationController
     redirect_to volunteer_ops_path
   end
 
+  def embedded_map
+    @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
+    response.headers.delete 'X-Frame-Options'
+    render layout: false
+  end
+
   def volunteer_op_params
-    args = [:description, :title, :organisation_id, :address, :postcode]
+    args = [:description, :title, :organisation_id, :address, :postcode,
+            :post_to_doit, :advertise_start_date, :advertise_end_date,
+            :doit_org_id ]
     params.require(:volunteer_op).permit(*args)
   end
 
@@ -129,5 +143,10 @@ class VolunteerOpsController < ApplicationController
   def meta_tag_description
     return super unless @volunteer_op
     @volunteer_op.description
+  end
+
+  def can_post_to_doit?(vol_op_id)
+    current_user.superadmin? && !DoitTrace.published?(vol_op_id)
+
   end
 end

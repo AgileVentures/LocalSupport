@@ -167,3 +167,5 @@ end
 at_exit do
   exit 0 if ENV['NEVER_FAIL'] == 'true'
 end
+
+Capybara.asset_host = 'http://localhost:3000'

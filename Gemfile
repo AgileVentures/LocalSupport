@@ -8,6 +8,10 @@ gem 'devise_invitable', '~> 1.6', '>= 1.6.1'
 gem 'heroku-api'
 gem 'sprockets', '~> 2.11', '>= 2.11.3'
 
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+gem 'jbuilder'
+
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -75,6 +79,7 @@ gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'bootstrap_sortable_rails', '~> 0.1.3'
 gem 'breadcrumbs_on_rails'
+gem 'bootstrap-datepicker-rails'
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -96,7 +101,7 @@ gem 'redcarpet'
 gem 'url_validator', git: 'https://github.com/AgileVentures/url_validator.git'
 
 gem 'httparty'
-
+gem 'sucker_punch', '~> 2.0' # async job
 gem 'rails_autolink'
 gem "paranoia", "~> 2.0"
 

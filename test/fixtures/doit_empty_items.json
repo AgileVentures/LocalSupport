@@ -1,0 +1,63 @@
+{
+  "data": {
+    "items": []
+  },
+  "links": {
+    "prev": {
+      "href": "/v2/users/current/orgs?page=4",
+      "title": "Previous Page"
+    },
+    "self": {
+      "href": "/v2/users/current/orgs",
+      "title": "You are here."
+    }
+  },
+  "meta": {
+    "code": 200,
+    "current_page": 5,
+    "items_per_page": 20,
+    "routes": {
+      "/v2/users/current": {
+        "description": "Returns the currently logged in user or Unauthorized.",
+        "methods": [
+          "HEAD",
+          "OPTIONS",
+          "GET"
+        ]
+      },
+      "/v2/users/current/applications": {
+        "description": "All of a users applications and only applicable to the currently logged in user.",
+        "methods": [
+          "HEAD",
+          "OPTIONS",
+          "GET"
+        ]
+      },
+      "/v2/users/current/exports/<id>": {
+        "description": "Download Exports from the Recruiter Admin System.",
+        "methods": [
+          "HEAD",
+          "OPTIONS",
+          "GET"
+        ]
+      },
+      "/v2/users/current/orgs": {
+        "description": "Returns a list of recruiters this user has memberships for. This can also be search against by the recrutier name.",
+        "methods": [
+          "HEAD",
+          "OPTIONS",
+          "GET"
+        ]
+      }
+    },
+    "sort_by": [
+      "name",
+      "created",
+      "active_opportunities_count"
+    ],
+    "tenant": "doittrust",
+    "total_items": 4,
+    "total_pages": 1,
+    "version": "2016.11.24.0"
+  }
+}

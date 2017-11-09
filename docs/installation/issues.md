@@ -5,11 +5,11 @@ See [the notes on deploying to heroku](https://github.com/AgileVentures/LocalSup
 
 ### PostgreSQL Install
 
-####Linux
+#### Linux
 ```
 sudo apt-get install libpq-dev
 ```
-####OSX
+#### OSX
 
 Install the pg gem. You’ll need to include the following options to set your path and include the needed headers:
 ```
@@ -43,7 +43,7 @@ to make sure you are talking to the postgres.app that's installed rather than th
 
 OSX no longer needs host: localhost in database.yml if you ```export PG_HOST=localhost``` in ```.bash_profile```
 
-####Could not connect to server: No such file or directory
+#### Could not connect to server: No such file or directory
 ```
 could not connect to server: No such file or directory
 	Is the server running locally and accepting
@@ -55,7 +55,7 @@ If you receive this error run
 sudo apt-get install postgresql
 ```
 
-####Peer authentication fails for user postgres
+#### Peer authentication fails for user postgres
 
 On Ubuntu, you will likely encounter an error with the following message:
 
@@ -149,7 +149,7 @@ The `capybara-webkit` gem needs the Qt toolchain (including qmake and the webkit
 
 This command also works on Debian 7.
 
-If you have an older version of Ubuntu, you can install a new version from scratch, or upgrade with `sudo do-release-upgrade`.  If on Amazon EC2, see (this article)[http://gregrickaby.com/safely-update-an-ubuntu-ec2-instance-on-amazon-aws/]
+If you have an older version of Ubuntu, you can install a new version from scratch, or upgrade with `sudo do-release-upgrade`.  If on Amazon EC2, see [this article on safely updating an ubuntu instance](http://gregrickaby.com/safely-update-an-ubuntu-ec2-instance-on-amazon-aws/)
 
 For other platforms, see http://qt-project.org/downloads. 
 

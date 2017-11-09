@@ -14,9 +14,20 @@
 //= require organisations
 //= require analytics
 //= require utilities
+//= require jquery-readyselector
+//= require doit_volunteer_ops
+//= require bootstrap-datepicker
+//= require moment
+//= require fullcalendar
 
 window.LocalSupport = {};
 
 $(function() {
-    // invoke global functions here
+  // invoke global functions here
+  $('#calendar').fullCalendar({
+    header: {
+      right: 'prev, next, today, month, agendaWeek'
+    },
+    events: '/events.json'
+  });
 });
