@@ -1,0 +1,2 @@
+class EventNewsLetterMailer < ApplicationMailer
+end
