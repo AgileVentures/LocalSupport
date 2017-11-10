@@ -82,7 +82,7 @@ class ApplicationController < ActionController::Base
   # Enforces superadmin-only limits
   # http://railscasts.com/episodes/20-restricting-access
   def authorize
-    return unless superadmin?
+    return if superadmin?
 
     flash[:error] = t('authorize.superadmin')
     redirect_to root_path
