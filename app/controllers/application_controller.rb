@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
 
   # Stores the URL if permitted
   def store_location
-    return if request_controller_is(white_listed) && request_verb_is_get?
+    return unless request_controller_is(white_listed) && request_verb_is_get?
     session[:previous_url] = request.fullpath
   end
 
@@ -82,7 +82,7 @@ class ApplicationController < ActionController::Base
   # Enforces superadmin-only limits
   # http://railscasts.com/episodes/20-restricting-access
   def authorize
-    return if superadmin?
+    return unless superadmin?
 
     flash[:error] = t('authorize.superadmin')
     redirect_to root_path
@@ -103,7 +103,7 @@ class ApplicationController < ActionController::Base
       partial: 'shared/call_to_action',
       locals: {org: usr.organisation}
     ).html_safe
-    return flash[:warning] << ' ' << msg unless flash[:warning]
+    return flash[:warning] << ' ' << msg if flash[:warning]
     flash[:warning] = msg
   end
 
