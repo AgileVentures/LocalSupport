@@ -203,7 +203,7 @@ Then(/^I should see "([^"]*)" in the flash error$/) do |message|
 end
 
 Then(/^I should see "([^"]*)" in the flash$/) do |message|
-  page.should have_css('div#flash_success', :text => message)
+  page.should have_css('div#flash_success.alert-success', :text => message)
 end
 
 Then(/^I should( not)? see the call to update details for organisation "(.*)"/) do |negative, org_name|
