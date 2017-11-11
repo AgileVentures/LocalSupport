@@ -63,7 +63,7 @@ class VolunteerOp < ActiveRecord::Base
       return Location.build_hash(vol_op_by_coordinates)
     end
     vol_op_by_coordinates = group_by_coordinates(opts)
-    return Location.build_hash(vol_op_by_coordinates)
+    Location.build_hash(vol_op_by_coordinates)
   end
 
   def address_complete?
