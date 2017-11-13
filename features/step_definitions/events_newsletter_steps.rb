@@ -3,6 +3,7 @@ When(/^"([^"]*)" opens the email$/) do | user|
 end
 
 Then(/^I should see email delivered from "([^"]*)"$/) do |sender|
+  email = ActionMailer::Base.deliveries
   expect(email).to have_sender(sender)
 end
 

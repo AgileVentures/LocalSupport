@@ -17,7 +17,7 @@ Feature: Charity admin can send a newsletter with upcoming events
     
     Scenario: Non Super admin receives email with correct contents
         When "nonsuperamin@myorg.com" opens the email
-        Then I should see email delivered from "Volunteering Team, VAHCo-op <volunteering@voluntaryactionharrow.org.uk"
+        Then I should see email delivered from "support@harrowcn.org.uk"
         And I should see "Upcoming events updates" in the email subject
         And I should see "Open Source Weekend" in the email body
         And I should see "Lazy Weekend" in the email body
