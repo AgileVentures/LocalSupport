@@ -20,6 +20,8 @@ The `CURRENT` column is what people are currently working on - feel free to reac
 
 https://agileventures.slack.com/messages/localsupport/
 
+If the `CURRENT` and `BACKLOG` columns are mixed together for you, you can use the ... menu in Pivotal Tracker to split them up. See https://agileventures.slack.com/archives/C0KK907B5/p1510356098000090 for step-by-step instructions.
+
 You can ask questions in the PT tickets themselves, or in the slack instance.  If you're not getting a response, please do tag `@tansaku` in the slack channel.  That's Sam Joseph, the project manager who'll be happy to help, or direct you to someone who can. 
 
 There's also the `ICEBOX` column where if you see something interesting you want to work on you can start on that.  However please do ensure it has an estimate.  If it does not then please coordinate with the ProjectManager to get the story voted on to create an estimate.  This helps you get input on what it would take to get the story done as well as helping the team understand what it is you want to work on.
