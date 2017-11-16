@@ -15,7 +15,7 @@ We also have some collected notes on [issues encountered during install](install
 
 ### Application.yml
 
-Indepenently of which platform you are developing on please create a file named config/application.yml and add the following line:
+Independently of which platform you are developing on please create a file named config/application.yml and add the following line:
 
 ```
 DOIT_HOST: 'http://api.qa2.do-it.org/v2'
