@@ -1,7 +1,7 @@
 # Contribution Workflow using Pivotal Tracker
 
 <img src="images/pt_none_button.png"> 
-New tickets have no status set and can be found in the **Icebox** column. All new tickets must be voted upon to estimate the effort required and complexity of the ticket.  Voting should take place using `/voter` within the appropriate slack channel.
+New tickets have no status set and can be found in the Icebox column. All new tickets must be voted upon to estimate the effort required and complexity of the ticket.  Voting should take place using `/voter` within the appropriate slack channel.
 
 <img src="images/pt_start_button.png"> 
 Once voted on and an estimate assigned the ticket is available in the Backlog column to be assigned to a volunteer.   Once allocated the ticket should be started and is automatically moved to the Current Interation column.
@@ -10,9 +10,9 @@ Whilst working on the ticket the assigned volunteer(s) work in their own fork of
 
 <img src="images/pt_finish_button.png"> 
 Once work on the ticket is completed a final commit with a commit message in the following format should be submitted:
-```
+<pre>
 makes Capybara check for visibility more robust [Finishes #112900047]
-```
+</pre>
 This will Finish the relevant Pivotal Tracker ticket when the pull-request is merged. 
 
 
