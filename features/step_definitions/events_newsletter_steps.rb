@@ -1,3 +1,10 @@
+When(/^the events newsletter task runs$/) do
+  users = User.where(superadmin: false)
+  user = users.first
+  events = Event.all
+ EventNewsLetterMailer.monthly_newsletter(user, events).deliver_now
+end
+
 When(/^"([^"]*)" opens the email$/) do | user|
   user = User.where(superadmin: false)
 end
