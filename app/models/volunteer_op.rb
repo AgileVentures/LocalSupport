@@ -62,7 +62,7 @@ class VolunteerOp < ActiveRecord::Base
       vol_op_by_coordinates = group_by_coordinates(vol_ops)
       return Location.build_hash(vol_op_by_coordinates)
     end
-    vol_op_by_coordinates = group_by_coordinates(opts)
+    vol_op_by_coordinates = group_by_coordinates(vol_op_with_coordinates(opts))
     Location.build_hash(vol_op_by_coordinates)
   end
 
