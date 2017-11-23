@@ -4,7 +4,7 @@
 
 <br clear='all'/>
 
-<p><img vertical-align="middle" align="left" src="images/pt_down_arrow_small.png"> ... next ...</p>
+<p><img vertical-align="middle" align="left" src="images/pt_down_arrow_small.png"></p>
 
 <br clear='all'/>
 
