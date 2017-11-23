@@ -24,12 +24,14 @@ Whilst working on the ticket the assigned volunteer(s) work in their own fork of
 Once work on the ticket is completed a final commit with a commit message in the following format should be submitted:
 <pre>
 makes Capybara check for visibility more robust [Finishes #112900047]
-</pre>
-This will Finish the relevant Pivotal Tracker ticket when the pull-request is merged. 
+</pre> 
 </p>
 
 <br clear="all" />
-<p><img vertical-align="middle" align="left" src="images/pt_down_arrow_small.png"></p>
+<p>
+<img vertical-align="middle" align="left" src="images/pt_down_arrow_small.png">
+This will Finish the relevant Pivotal Tracker ticket when the pull-request is merged.
+</p>
 <br clear="all" />
 
 <p>
