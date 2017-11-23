@@ -27,15 +27,18 @@ makes Capybara check for visibility more robust [Finishes #112900047]
 </pre>
 This will Finish the relevant Pivotal Tracker ticket when the pull-request is merged. 
 </p>
+
 <br clear="all" />
 <p><img vertical-align="middle" align="left" src="images/pt_down_arrow_small.png"></p>
+<br clear="all" />
+
 <p>
 <img vertical-align="middle" align="left" src="images/pt_deliver_button.png"> 
 Once merged and tested in staging the changes are pushed (delivered) to the production site ready for the client to Accept or Reject.
 </p>
 
 <br clear="all" />
-<p><img vertical-align="middle" align="left" src="images/pt_down_arrow_small.png"></p>
+<p><img vertical-align="middle" align="left" src="images/pt_down_arrow_split.png"></p>
 <br clear="all" />
 
 <img src="images/pt_accept_button.png">  <img src="images/pt_reject_button.png"> 
