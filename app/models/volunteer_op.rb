@@ -56,10 +56,11 @@ class VolunteerOp < ActiveRecord::Base
   end
 
   def self.build_by_coordinates(vol_ops = nil)
-    vol_ops = if vol_ops.nil?
-      vol_op_with_coordinates(VolunteerOp.local_only) + VolunteerOp.remote_only
+    if vol_ops.nil?
+      local_vol_ops = vol_op_with_coordinates(VolunteerOp.local_only)
+      vol_ops = local_vol_ops + VolunteerOp.remote_only
     else
-      vol_op_with_coordinates(vol_ops)
+      vol_ops = vol_op_with_coordinates(vol_ops)
     end
     Location.build_hash(group_by_coordinates(vol_ops))
   end
