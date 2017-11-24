@@ -55,11 +55,14 @@ class VolunteerOp < ActiveRecord::Base
     arel_table[:title].matches(text)
   end
 
-  def self.build_by_coordinates
-    local_vol_ops = vol_op_with_coordinates(VolunteerOp.local_only)
-    vol_ops = local_vol_ops + VolunteerOp.remote_only
-    vol_op_by_coordinates = group_by_coordinates(vol_ops)
-    Location.build_hash(vol_op_by_coordinates)
+  def self.build_by_coordinates(vol_ops = nil)
+    if vol_ops.nil?
+      local_vol_ops = vol_op_with_coordinates(VolunteerOp.local_only)
+      vol_ops = local_vol_ops + VolunteerOp.remote_only
+    else
+      vol_ops = vol_op_with_coordinates(vol_ops)
+    end
+    Location.build_hash(group_by_coordinates(vol_ops))
   end
 
   def address_complete?
