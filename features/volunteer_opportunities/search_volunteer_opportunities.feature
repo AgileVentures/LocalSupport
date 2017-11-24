@@ -21,7 +21,7 @@ Feature: As a potential volunteer
     Then I should see "Office Support" 
     And I should not see "Litter Box Scooper" within "orgs_scroll"
     Then I should see 1 markers in the map
-    And the map should show the opportunity titled "Office Support"
+    And the map should show the opportunity titled Office Support
 
   Scenario: Search a list of current volunteer opportunities with a keyword that won't match
     Given I fill in "Search Text" with "non existent text" within the main body
