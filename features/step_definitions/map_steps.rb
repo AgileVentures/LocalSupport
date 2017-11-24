@@ -111,12 +111,15 @@ Then /^the (proposed organisation|organisation) "(.*?)" should have a (large|sma
 end
 
 Then /^I should( not)? see the following (measle|vol_op) markers in the map:$/ do |negative, klass, table|
-  expectation = negative ? :not_to : :to
   klass_hash = {'measle' => '.measle', 'vol_op' => '.vol_op'}
   expect(page).to have_css(klass_hash[klass], :count => table.raw.flatten.length)
   marker_data = page.find('#marker_data')['data-markers']
   table.raw.flatten do |title|
-    expect(marker_data).to include(title)
+    if negative
+      expect(marker_data).not_to include(title)
+    else
+      expect(marker_data).to include(title)
+     end
   end
 end
 
