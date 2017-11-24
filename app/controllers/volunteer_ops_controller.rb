@@ -7,9 +7,10 @@ class VolunteerOpsController < ApplicationController
 
   def search
     @query = params[:q]
-    @volunteer_ops = VolunteerOp.order_by_most_recent.search_for_text(@query)
+    @volunteer_ops = VolunteerOp.order_by_most_recent.search_for_text(@query).to_a
     flash.now[:alert] = SEARCH_NOT_FOUND if @volunteer_ops.empty?
-    @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
+    @markers = BuildMarkersWithInfoWindow
+      .with(VolunteerOp.build_by_coordinates(@volunteer_ops), self)
     render template: 'volunteer_ops/index'
   end
 

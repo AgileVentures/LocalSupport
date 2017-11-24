@@ -15,11 +15,11 @@ class VolunteerOp < ActiveRecord::Base
   scope :doit,                 -> { where(source: 'doit') }
   scope :reachskills,          -> { where(source: 'reachskills') }
   scope :remote_only,          -> { where.not(source: 'local') }
-  
+
   def self.add_coordinates(vol_ops)
     vol_op_with_coordinates(vol_ops)
   end
-  
+
   def full_address
     "#{self.address}, #{self.postcode}"
   end
@@ -55,10 +55,14 @@ class VolunteerOp < ActiveRecord::Base
     arel_table[:title].matches(text)
   end
 
-  def self.build_by_coordinates
-    local_vol_ops = vol_op_with_coordinates(VolunteerOp.local_only)
-    vol_ops = local_vol_ops + VolunteerOp.remote_only
-    vol_op_by_coordinates = group_by_coordinates(vol_ops)
+  def self.build_by_coordinates(opts=nil)
+    if opts.nil?
+      local_vol_ops = vol_op_with_coordinates(VolunteerOp.local_only)
+      vol_ops = local_vol_ops + VolunteerOp.remote_only
+      vol_op_by_coordinates = group_by_coordinates(vol_ops)
+      return Location.build_hash(vol_op_by_coordinates)
+    end
+    vol_op_by_coordinates = group_by_coordinates(vol_op_with_coordinates(opts))
     Location.build_hash(vol_op_by_coordinates)
   end
 
@@ -75,7 +79,7 @@ class VolunteerOp < ActiveRecord::Base
   end
 
   private
-  
+
   def clear_lat_lng
     return if address_complete?
     self.longitude = nil

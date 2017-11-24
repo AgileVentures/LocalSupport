@@ -6,13 +6,13 @@ class Location
     @longitude = longitude
     @latitude = latitude
   end
-  
+
   def ==(other)
     self.class == other.class &&
       self.longitude == other.longitude &&
       self.latitude == other.latitude
   end
-  
+
   alias eql? ==
 
 
