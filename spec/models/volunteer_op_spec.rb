@@ -252,7 +252,7 @@ describe VolunteerOp, type: :model do
   end
 
   describe '.build_by_coordinates' do
-    it 'returns volunteer ops grouped by coordinates' do
+    before do
       org = create(:organisation, address: '', postcode: '', longitude: 77, latitude: 77)
       no_coord1 = create(:volunteer_op, longitude: nil, latitude: nil, organisation: org)
       no_coord2 = create(:volunteer_op, longitude: nil, latitude: nil, organisation: org)
@@ -263,7 +263,9 @@ describe VolunteerOp, type: :model do
       loc2 = Location.new(longitude: 62.0, latitude: 10.0)
       l_vol1 = build(:volunteer_op, longitude: 77.0, latitude: 77.0, organisation: org)
       l_vol2 = build(:volunteer_op, longitude: 77.0, latitude: 77.0, organisation: org)
+    end
 
+    it 'returns volunteer ops grouped by coordinates' do
       expect(VolunteerOp.build_by_coordinates.keys).to match_array(
         [loc1, loc2]
       )
@@ -272,6 +274,18 @@ describe VolunteerOp, type: :model do
       )
       expect(VolunteerOp.build_by_coordinates[loc1]).to match_instance_array(
         [l_vol1, l_vol2]
+      )
+    end
+
+    it 'return all the specified volunteer_ops by coordinates' do
+      expect(VolunteerOp.build_by_coordinates([d_vol_op1]).keys).to match_array(
+        [loc2]
+      )
+      expect(VolunteerOp.build_by_coordinates([d_vol_op1, d_vol_op2])[loc2])
+        .to match_instance_array([d_vol_op1, d_vol_op2]
+      )
+      expect(VolunteerOp.build_by_coordinates([l_vol1, l_vol2])[loc1])
+        .to match_instance_array([l_vol1, l_vol2]
       )
     end
   end
