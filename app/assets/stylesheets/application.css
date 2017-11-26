@@ -403,6 +403,16 @@ input[type="text"] {
 }
 
 @media (min-width: 980px) {
+    #page-logo {
+        background: url('HCN-long.png') no-repeat;
+        display: inline-block;
+        height: 72px;
+        width: 1200px;
+        line-height: 0;
+        font-size: 0;
+        color: transparent;
+    }
+
     .nav-collapse.collapse {
         height: auto;
         overflow: visible;
@@ -411,6 +421,15 @@ input[type="text"] {
 }
 
 @media (max-width: 979px) {
+    #page-logo {
+        background: url('HCN-small.png') no-repeat;
+        display: inline-block;
+        height: 135px;
+        width: 120px;
+        line-height: 0;
+        font-size: 0;
+        color: transparent;
+    }
     .navbar .btn-navbar {
         display: block;
     }
@@ -504,6 +523,7 @@ input[type="text"] {
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
+
     #git-container .git-item {
         width: 50%;
         height: 120px;
