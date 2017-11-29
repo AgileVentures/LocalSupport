@@ -548,7 +548,25 @@ input[type="text"] {
     }
 }
 
-
+@media (max-width: 320px) {
+    select, textarea, input[type="text"], input[type="password"],
+    input[type="email"], input[type="search"] {
+        width: 180px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #fff;
+        height: 30px;
+        line-height: 30px;
+    }
+    .navbar .pull-right>li>.dropdown-menu, .navbar .nav>li>.dropdown-menu.pull-right {
+        left: auto;
+        right: 0;
+        margin-left: 0;
+    }
+    #login {
+        width: 270px!important;
+    }
+}
 
 /*End of CSS for contributors list*/
 
