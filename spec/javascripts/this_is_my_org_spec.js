@@ -69,7 +69,7 @@ describe('This is my Organisation button', function() {
             });
             it('toggle will not have "click" event', function(){
                 expect('click').not.toHaveBeenTriggeredOn(toggle);
-            })
+            });
             it('nav does not change attributes', function() {
                 expect(nav).toHaveClass('in');
             });
