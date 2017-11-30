@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Page, :type => :model do
   context 'single page examples' do
     before :each do
-      @page = FactoryGirl.create(:page)   
+      @page = FactoryBot.create(:page)
     end
     it 'should override to_param to return the permalink instead of id' do
       expect(@page).to receive(:to_param).and_return('about')
@@ -29,11 +29,11 @@ describe Page, :type => :model do
   ####################################################################
   context 'multiple page examples' do
     before :each do
-      @linked_page = FactoryGirl.create(:page)
-      @second_linked_page = FactoryGirl.create(:page,
+      @linked_page = FactoryBot.create(:page)
+      @second_linked_page = FactoryBot.create(:page,
                                                :name => 'An interesting page',
                                                :permalink => 'interesting')
-      @unlinked_page = FactoryGirl.create(:page,
+      @unlinked_page = FactoryBot.create(:page,
                                           :name => 'A boring page',
                                           :permalink => 'bore',
                                           :link_visible => false)
@@ -51,20 +51,20 @@ describe Page, :type => :model do
   #####################################################################
   describe 'validations' do
     it 'is invalid without a name' do
-      expect(FactoryGirl.build(:page, name: nil)).not_to be_valid
+      expect(FactoryBot.build(:page, name: nil)).not_to be_valid
     end
 
     it 'is invalid without a permalink' do
-      expect(FactoryGirl.build(:page, permalink: nil)).not_to be_valid
+      expect(FactoryBot.build(:page, permalink: nil)).not_to be_valid
     end
 
     it 'is invalid without a UNIQUE permalink' do
-      expect(FactoryGirl.create(:page, permalink: 'hello')).to be_valid
-      expect(FactoryGirl.build(:page, permalink: 'hello')).not_to be_valid
+      expect(FactoryBot.create(:page, permalink: 'hello')).to be_valid
+      expect(FactoryBot.build(:page, permalink: 'hello')).not_to be_valid
     end
 
     it 'overrides to_param to return the permalink instead of id' do
-      page = FactoryGirl.build(:page)
+      page = FactoryBot.build(:page)
       expect(page.to_param).to eq page.permalink
     end
   end

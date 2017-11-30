@@ -35,21 +35,21 @@ end
 describe ProposedOrganisationEdit do
 
   let(:regular_user) do
-    FactoryGirl.create(:user, :email => "regularjoe@example.com", :password => 'asdf1234', :password_confirmation =>
+    FactoryBot.create(:user, :email => "regularjoe@example.com", :password => 'asdf1234', :password_confirmation =>
       'asdf1234', :siteadmin => false)
    end
   let(:superadmin) do
-    FactoryGirl.create(:user, :email => "superadmin@example.com", :password => 'asdf1234', :password_confirmation =>
+    FactoryBot.create(:user, :email => "superadmin@example.com", :password => 'asdf1234', :password_confirmation =>
       'asdf1234', :superadmin => true)
    end
 
   let(:siteadmin) do
-    FactoryGirl.create(:user, :email => "siteadmin@example.com", :password => 'asdf1234', :password_confirmation =>
+    FactoryBot.create(:user, :email => "siteadmin@example.com", :password => 'asdf1234', :password_confirmation =>
       'asdf1234', :siteadmin => true)
    end
 
   let(:org) do
-    FactoryGirl.create(:organisation,
+    FactoryBot.create(:organisation,
                        :name => 'Harrow Bereavement Counselling',
                        :description => 'Bereavement Counselling',
                        :address => '64 pinner road',
@@ -58,13 +58,13 @@ describe ProposedOrganisationEdit do
   end
 
   let!(:proposed_edit) do
-    FactoryGirl.create(:proposed_organisation_edit,
+    FactoryBot.create(:proposed_organisation_edit,
                        :organisation => org )
   end
   
   describe '::still_pending' do
     let(:archived_edit) do
-      FactoryGirl.create(:proposed_organisation_edit,
+      FactoryBot.create(:proposed_organisation_edit,
                          :organisation => org,
                          :archived => true)
     end
@@ -142,7 +142,7 @@ describe ProposedOrganisationEdit do
   end
 
   describe '#non_published_editable_fields' do
-    let(:org){FactoryGirl.create(:organisation, :name => "Happy Org", :publish_email => false)}
+    let(:org){FactoryBot.create(:organisation, :name => "Happy Org", :publish_email => false)}
     context 'all fields are private' do
       it 'returns email, telephone and address but nothing else' do
         expect(proposed_edit.non_published_generally_editable_fields).to include :email, :telephone, :address
@@ -150,7 +150,7 @@ describe ProposedOrganisationEdit do
       end
     end
     context 'address is public' do
-      let(:org){FactoryGirl.create(:organisation, :name => "Happy Org", :publish_email => false, :publish_address => true)}
+      let(:org){FactoryBot.create(:organisation, :name => "Happy Org", :publish_email => false, :publish_address => true)}
       it 'returns email, and telephone but not address' do
         expect(proposed_edit.non_published_generally_editable_fields).to include :email, :telephone
         expect(proposed_edit.non_published_generally_editable_fields).not_to include :address, :name, :postcode, :description, :donation_info, :website
@@ -160,10 +160,10 @@ describe ProposedOrganisationEdit do
 
   describe "#accept" do
     context 'update with params' do
-      let(:org){FactoryGirl.create(:organisation, :name => 'Harrow Bereavement Counselling',
+      let(:org){FactoryBot.create(:organisation, :name => 'Harrow Bereavement Counselling',
                                    :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 4HZ',
                                    :donation_info => 'www.harrow-bereavment.co.uk/donate')}
-      let(:proposed_edit){FactoryGirl.create(:proposed_organisation_edit, :organisation => org )}
+      let(:proposed_edit){FactoryBot.create(:proposed_organisation_edit, :organisation => org )}
       it 'updates the name attribute' do
         expect{
           proposed_edit.accept("name" => "Care for the Elderly")
@@ -184,13 +184,13 @@ describe ProposedOrganisationEdit do
 
   describe '#has_proposed_edit?' do
     context 'when an edit to :name has not been proposed' do
-      let(:proposed_edit){FactoryGirl.create(:proposed_organisation_edit, :organisation => org, :name => 'Harrow Bereavement Counselling' )}
+      let(:proposed_edit){FactoryBot.create(:proposed_organisation_edit, :organisation => org, :name => 'Harrow Bereavement Counselling' )}
       it 'should indicate an edit has not been proposed to :name' do 
         expect(proposed_edit.has_proposed_edit?(:name)).to be false
       end
     end
     context 'when an edit to :name has been proposed' do
-      let(:proposed_edit){FactoryGirl.create(:proposed_organisation_edit, :organisation => org, :name => 'Mourning Loved Ones' )}
+      let(:proposed_edit){FactoryBot.create(:proposed_organisation_edit, :organisation => org, :name => 'Mourning Loved Ones' )}
       it 'should indicate an edit has been proposed' do 
         expect(proposed_edit.has_proposed_edit?(:name)).to be true
       end

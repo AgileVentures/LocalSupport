@@ -3,7 +3,7 @@ require "rails_helper"
 describe EventsController, type: :controller do
 
   before(:all) do
-    FactoryGirl.create_list(:event, 10)
+    FactoryBot.create_list(:event, 10)
   end
 
   describe "#index" do
