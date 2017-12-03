@@ -4,7 +4,7 @@ class ClickThroughsController < ApplicationController
     if user_signed_in?
       click_through.user_id = current_user.id
     end
-    click_through.source_url = request.original_url
+    click_through.source_url = request.headers['HTTP_REFERER']
 
     if params[:url].nil?
       click_through.url = '#'
