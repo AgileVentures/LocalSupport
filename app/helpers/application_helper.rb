@@ -52,7 +52,7 @@ module ApplicationHelper
   end
 
   def link_to_and_track(title, url='#', options = {})
-    link_to title, click_through_go_path(:url => url), :options => options
+    link_to title, click_through_go_path(url: url), options: options
   end
 end
 
