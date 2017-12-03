@@ -43,4 +43,4 @@ Once merged and tested in staging the changes are pushed (delivered) to the prod
 <p><img vertical-align="middle" align="left" src="images/pt_down_arrow_split.png"></p>
 <br clear="all" />
 
-<img src="images/pt_accept_button.png">  <img src="images/pt_reject_button.png"> 
+<img src="images/pt_accept_reject_buttons.png"> 
