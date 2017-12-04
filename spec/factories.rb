@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :organisation do
     name "friendly non profit"
     description "we are really really friendly"
@@ -10,7 +10,7 @@ FactoryGirl.define do
     longitude 10
     factory :organisation_with_owner do
       after(:build) do |org|
-        owner = FactoryGirl.build(:user)
+        owner = FactoryBot.build(:user)
         org.users << owner
         org.save!
       end
@@ -44,7 +44,7 @@ FactoryGirl.define do
     longitude 10
     non_profit true
     after(:build) do |proposed_org|
-      owner = FactoryGirl.create(:user)
+      owner = FactoryBot.create(:user)
       proposed_org.users << owner
       proposed_org.save!
     end
@@ -84,7 +84,7 @@ FactoryGirl.define do
 
     factory :user_stubbed_organisation do
       after(:build) do |user|
-        org = FactoryGirl.build(:organisation)
+        org = FactoryBot.build(:organisation)
         org.save!
         user.organisation = org
         user.save!

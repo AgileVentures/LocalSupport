@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe ProposedOrganisation, :type => :model do
-  let!(:proposed_org){FactoryGirl.create :proposed_organisation}
+  let!(:proposed_org){FactoryBot.create :proposed_organisation}
   let!(:owner){proposed_org.users.first}
   let(:new_org){proposed_org.accept_proposal}
   

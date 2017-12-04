@@ -3,27 +3,27 @@ require 'rails_helper'
 describe Organisation, :type => :model do
 
   before do
-    FactoryGirl.factories.clear
-    FactoryGirl.find_definitions
+    FactoryBot.factories.clear
+    FactoryBot.find_definitions
 
-    @category1 = FactoryGirl.create(:category, :charity_commission_id => 207)
-    @category2 = FactoryGirl.create(:category, :charity_commission_id => 305)
-    @category3 = FactoryGirl.create(:category, :charity_commission_id => 108)
-    @category4 = FactoryGirl.create(:category, :charity_commission_id => 302)
-    @category5 = FactoryGirl.create(:category, :charity_commission_id => 306)
-    @org1 = FactoryGirl.build(:organisation, :email => "", :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '84 pinner road', :postcode => 'HA1 4HA', :donation_info => 'www.harrow-bereavment.co.uk/donate')
+    @category1 = FactoryBot.create(:category, :charity_commission_id => 207)
+    @category2 = FactoryBot.create(:category, :charity_commission_id => 305)
+    @category3 = FactoryBot.create(:category, :charity_commission_id => 108)
+    @category4 = FactoryBot.create(:category, :charity_commission_id => 302)
+    @category5 = FactoryBot.create(:category, :charity_commission_id => 306)
+    @org1 = FactoryBot.build(:organisation, :email => "", :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '84 pinner road', :postcode => 'HA1 4HA', :donation_info => 'www.harrow-bereavment.co.uk/donate')
     @org1.save!
-    @org2 = FactoryGirl.build(:organisation, :name => 'Indian Elders Association',:email => "",
+    @org2 = FactoryBot.build(:organisation, :name => 'Indian Elders Association',:email => "",
                               :description => 'Care for the elderly', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.indian-elders.co.uk/donate')
     @org2.categories << @category1
     @org2.categories << @category2
     @org2.categories << @category3
     @org2.save!
-    @org3 = FactoryGirl.build(:organisation, :email => "", :name => 'Age UK Elderly', :description => 'Care for older people', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.age-uk.co.uk/donate')
+    @org3 = FactoryBot.build(:organisation, :email => "", :name => 'Age UK Elderly', :description => 'Care for older people', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.age-uk.co.uk/donate')
     @org3.categories << @category1
     @org3.save!
 
-    FactoryGirl.create :invitation_instructions
+    FactoryBot.create :invitation_instructions
   end
 
   describe "#gmaps4rails_marker_attrs" do
@@ -41,7 +41,7 @@ describe Organisation, :type => :model do
 
     context 'has user' do
       before(:each) do
-        usr = FactoryGirl.create(:user, :email => 'orgsuperadmin@org.org')
+        usr = FactoryBot.create(:user, :email => 'orgsuperadmin@org.org')
         usr.confirm
         @org1.users << [usr]
         @org1.save!
@@ -77,7 +77,7 @@ describe Organisation, :type => :model do
   end
   context 'scopes for orphan orgs' do
     before(:each) do
-      @user = FactoryGirl.create(:user, :email => 'hello@hello.com')
+      @user = FactoryBot.create(:user, :email => 'hello@hello.com')
       @user.confirm
     end
 
@@ -115,8 +115,8 @@ describe Organisation, :type => :model do
   end
 
   context 'validating URLs' do
-    subject(:no_http_org) { FactoryGirl.build(:organisation, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.harrow-bereavment.co.uk/donate') }
-    subject(:empty_website)  {FactoryGirl.build(:organisation, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => '', :website => '')}
+    subject(:no_http_org) { FactoryBot.build(:organisation, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.harrow-bereavment.co.uk/donate') }
+    subject(:empty_website)  {FactoryBot.build(:organisation, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => '', :website => '')}
     it 'if lacking protocol, http is prefixed to URL when saved' do
       no_http_org.save!
       expect(no_http_org.donation_info).to include('http://')
@@ -166,12 +166,12 @@ describe Organisation, :type => :model do
       expect(@org1.errors.any?).to be false
     end
     it 'adds existent user as charity superadmin' do
-      usr = FactoryGirl.create(:user, :email => 'user@example.org')
+      usr = FactoryBot.create(:user, :email => 'user@example.org')
       expect(@org1.update_attributes_with_superadmin({:superadmin_email_to_add => usr.email})).to be true
       expect(@org1.users).to include usr
     end
     it 'uses org admin mailer to email existent user when upgraded to org admin' do
-      usr = FactoryGirl.create(:user, :email => 'user@example.org')
+      usr = FactoryBot.create(:user, :email => 'user@example.org')
       mockMessage = double('message')
       expect(mockMessage).to receive :deliver_now
       expect(OrgAdminMailer).to receive_message_chain(:new_org_admin).with(@org1, [usr.email]).and_return(mockMessage)
@@ -182,7 +182,7 @@ describe Organisation, :type => :model do
       expect(@org1.name).to eq 'New name'
     end
     it 'updates other attributes with valid email' do
-      usr = FactoryGirl.create(:user, :email => 'user@example.org')
+      usr = FactoryBot.create(:user, :email => 'user@example.org')
       expect(@org1.update_attributes_with_superadmin({:name => 'New name',:superadmin_email_to_add => usr.email})).to be true
       expect(@org1.name).to eq 'New name'
     end
@@ -323,10 +323,10 @@ describe Organisation, :type => :model do
         CSV::Row.new(@headers, fields_cat_missing.flatten)
       end
       it 'must be able to avoid org category relations from text file when org does not exist' do
-        @org4 = FactoryGirl.build(:organisation, :name => 'Fellowship For Management In Food Distribution', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.harrow-bereavment.co.uk/donate')
+        @org4 = FactoryBot.build(:organisation, :name => 'Fellowship For Management In Food Distribution', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.harrow-bereavment.co.uk/donate')
         @org4.save!
         [102,206,302].each do |id|
-          FactoryGirl.build(:category, :charity_commission_id => id).save!
+          FactoryBot.build(:category, :charity_commission_id => id).save!
         end
         attempted_number_to_import = 2
         number_cat_org_relations_generated = 3
@@ -446,8 +446,8 @@ describe Organisation, :type => :model do
   end
 
   describe '#uninvite_users' do
-    let!(:current_user) { FactoryGirl.create(:user, email: 'superadmin@example.com', superadmin: true) }
-    let(:org) { FactoryGirl.create :organisation, email: 'YES@hello.com' }
+    let!(:current_user) { FactoryBot.create(:user, email: 'superadmin@example.com', superadmin: true) }
+    let(:org) { FactoryBot.create :organisation, email: 'YES@hello.com' }
     let(:params) do
       {invite_list: {org.id => org.email,
                      org.id+1 => org.email},
@@ -557,14 +557,14 @@ end
 describe Organisation, :type => :model do
 
   before do
-    FactoryGirl.factories.clear
-    FactoryGirl.find_definitions
+    FactoryBot.factories.clear
+    FactoryBot.find_definitions
 
-    @org1 = FactoryGirl.build(:organisation, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.harrow-bereavment.co.uk/donate')
+    @org1 = FactoryBot.build(:organisation, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.harrow-bereavment.co.uk/donate')
     @org1.save!
-    @org2 = FactoryGirl.build(:organisation, :name => 'Indian Elders Associaton', :description => 'Care for the elderly', :address => '64 pinner road', :postcode => 'HA1 4HZ', :latitude => 77, :longitude => 77, :donation_info => 'www.indian-elders.co.uk/donate')
+    @org2 = FactoryBot.build(:organisation, :name => 'Indian Elders Associaton', :description => 'Care for the elderly', :address => '64 pinner road', :postcode => 'HA1 4HZ', :latitude => 77, :longitude => 77, :donation_info => 'www.indian-elders.co.uk/donate')
     @org2.save!
-    @org3 = FactoryGirl.build(:organisation, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.age-uk.co.uk/donate')
+    @org3 = FactoryBot.build(:organisation, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.age-uk.co.uk/donate')
     @org3.save!
   end
   

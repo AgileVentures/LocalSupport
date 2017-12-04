@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe "Proposed Edits Moderation", :type => :request, :helpers => :requests do
-  let(:nonsuperadmin) { FactoryGirl.create(:user, superadmin: false) }
-  let(:org){FactoryGirl.create(:organisation, name: "Friendly Organisation")}
-  let(:proposed_edit){FactoryGirl.create(:proposed_organisation_edit, name: "Different Name", organisation: org)}
+  let(:nonsuperadmin) { FactoryBot.create(:user, superadmin: false) }
+  let(:org){FactoryBot.create(:organisation, name: "Friendly Organisation")}
+  let(:proposed_edit){FactoryBot.create(:proposed_organisation_edit, name: "Different Name", organisation: org)}
   before { login(nonsuperadmin) }
   it 'nonsuperadmin cannot accept edit' do
     expect{

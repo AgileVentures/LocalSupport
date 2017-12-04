@@ -3,7 +3,7 @@ require 'rails_helper'
 describe WithoutTimestamps do
 
   it 'save model without updating timestamps' do
-    org = FactoryGirl.build(:organisation)
+    org = FactoryBot.build(:organisation)
     WithoutTimestamps.run do
       org.save
     end
@@ -12,7 +12,7 @@ describe WithoutTimestamps do
   end
 
   it 'update model without updating timestamps' do
-    org = FactoryGirl.create(:organisation, name: 'test org')
+    org = FactoryBot.create(:organisation, name: 'test org')
     org.name = 'new org name'
     expect do
       WithoutTimestamps.run do

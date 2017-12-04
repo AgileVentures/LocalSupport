@@ -29,7 +29,7 @@ describe RegistrationsController, :type => :controller do
   describe "POST create that fails" do
      before :each do
       request.env["devise.mapping"] = Devise.mappings[:user]
-      FactoryGirl.create :user, {:email => 'example@example.com', :password => 'pppppppp'}
+      FactoryBot.create :user, {:email => 'example@example.com', :password => 'pppppppp'}
     end
     it 'does not email upon failure to register' do
       post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp', 'password_confirmation' => 'pppppppp'}

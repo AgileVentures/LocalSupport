@@ -516,7 +516,7 @@ describe OrganisationsController, :type => :controller do
   end
   describe "get_user_opts" do
 
-    let!(:org) { FactoryGirl.create(:organisation)}
+    let!(:org) { FactoryBot.create(:organisation)}
 
     subject { 
       user = create :user

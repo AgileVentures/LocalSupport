@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'pages/edit.html.erb', :type => :view do
   before(:each) do
-    @page = FactoryGirl.create(:page)
+    @page = FactoryBot.create(:page)
     render
   end
 

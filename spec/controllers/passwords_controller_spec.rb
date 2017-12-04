@@ -7,7 +7,7 @@ describe Devise::PasswordsController, :type => :controller do
     end
     context "successful" do
       before :each do
-        usr = FactoryGirl.create(:user)
+        usr = FactoryBot.create(:user)
         post :create, 'user' => {'email' => usr.email}
       end
 
@@ -42,7 +42,7 @@ describe Devise::PasswordsController, :type => :controller do
 
      let(:success) { 'Your password was changed successfully. You are now signed in.' }
      let(:failure) { 'Reset password token is invalid' }
-     let(:user) { FactoryGirl.create(:user) }
+     let(:user) { FactoryBot.create(:user) }
 
      let(:put_params) do
        {

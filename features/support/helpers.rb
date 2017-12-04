@@ -40,7 +40,7 @@ module MapHelpers
     filename = "#{address.downcase.gsub(/,/,'').gsub(/\s/, '_')}.json"
     filename = File.read "test/fixtures/#{filename}"
     stub_request(:any, /maps\.googleapis\.com/).
-        to_return(status => 200, :body => body || filename, :headers => {})
+        to_return(:status => 200, :body => body || filename, :headers => {})
   end
 end
 

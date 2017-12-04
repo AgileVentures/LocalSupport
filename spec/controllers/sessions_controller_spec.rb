@@ -7,7 +7,7 @@ describe SessionsController, :type => :controller do
     end
 
     it 'redirects to home page after superadmin logs-in' do
-      FactoryGirl.build(:user, {:email => 'example@example.com', :password => 'pppppppp', :superadmin => true}).save!
+      FactoryBot.build(:user, {:email => 'example@example.com', :password => 'pppppppp', :superadmin => true}).save!
       post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp'}
       expect(response).to redirect_to root_url
     end
@@ -23,7 +23,7 @@ describe SessionsController, :type => :controller do
     end
 
     it 'redirects to charity page after non-superadmin associated with org' do
-      usr = FactoryGirl.build(:user_stubbed_organisation, {:email => 'example@example.com', :password => 'pppppppp'})
+      usr = FactoryBot.build(:user_stubbed_organisation, {:email => 'example@example.com', :password => 'pppppppp'})
       allow(controller).to receive_messages :session => {previous_url: "/"}
       post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp'}
       expect(response).to redirect_to organisation_path(usr.organisation)

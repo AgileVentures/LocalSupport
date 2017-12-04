@@ -41,13 +41,12 @@ Given(/^I submit a volunteer op to Doit/) do |volunteer_ops_table|
   end
 end
 
-regex = /^I run the import doit service( with a radius of (\d+\.?\d*) miles)?$/
-Given(regex) do |override, radius|
-  if override
-    ImportDoItVolunteerOpportunities.with radius.to_f
-  else
-    ImportDoItVolunteerOpportunities.with
-  end
+Given('I run the import doit service') do
+  ImportDoItVolunteerOpportunities.with
+end
+
+Given(/^I run the import doit service with a radius of (\d+\.?\d*) miles$/) do |radius|
+  ImportDoItVolunteerOpportunities.with radius.to_f
 end
 
 Given(/^I run the import reachskills service$/) do
