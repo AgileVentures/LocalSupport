@@ -44,6 +44,7 @@ This will Finish the relevant Pivotal Tracker ticket when the pull-request is me
 <img vertical-align="middle" align="left" src="images/pt_deliver_button.png">
 <br/>
 <br/>
+<br/>
 Once merged and tested in staging the changes are pushed (delivered) to the production site ready for the client to Accept or Reject.
 </p>
 
