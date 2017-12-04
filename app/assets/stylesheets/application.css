@@ -163,7 +163,7 @@ ul, ol {
 
 select, textarea, input[type="text"], input[type="password"],
 input[type="email"], input[type="search"] {
-    width: 220px;
+    width: 100%;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #fff;
@@ -550,7 +550,6 @@ input[type="text"] {
 @media (max-width: 320px) {
     select, textarea, input[type="text"], input[type="password"],
     input[type="email"], input[type="search"] {
-        width: 180px;
         border: 1px solid #ccc;
         border-radius: 4px;
         background-color: #fff;
@@ -570,13 +569,16 @@ input[type="text"] {
 /*End of CSS for contributors list*/
 
 .form-frame {
-    position: relative;
     padding: 30px;
-    max-width: 370px;
     border-radius: 2px;
     background: white;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 
+}
+
+/*wraps the text on a button*/
+#wrap-reset-text {
+    white-space: normal;
 }
 
 .form-frame input[type=text],.form-frame input[type=email], .form-frame textarea {
