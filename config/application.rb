@@ -52,7 +52,5 @@ module LocalSupport
 
     config.assets.initialize_on_precompile = false
     config.active_job.queue_adapter = :sucker_punch
-
-    config.active_record.raise_in_transactional_callbacks = true
   end
 end
