@@ -33,7 +33,7 @@ gem 'paranoia', '~> 2.0'
 gem 'dotenv-rails'
 gem 'figaro'
 gem 'airbrake'
-gem 'friendly_id', '~> 5.1.0'
+gem 'friendly_id'
 gem 'meta-tags'
 
 group :development, :test do
