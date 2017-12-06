@@ -77,6 +77,7 @@ group :test do
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
   gem 'show_me_the_cookies'
+  gem 'rails-controller-testing'
 end
 
 group :production do
