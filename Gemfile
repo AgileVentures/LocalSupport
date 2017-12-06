@@ -40,7 +40,7 @@ group :test do
   gem 'cucumber-rails-training-wheels'
   gem 'capybara'
   gem 'capybara-webkit', :git => 'https://github.com/thoughtbot/capybara-webkit', :branch => 'master'
-  gem 'nokogiri', '~> 1.7.2'
+  gem 'nokogiri'
   gem 'factory_bot_rails'
   gem 'webmock'
   gem 'uri-handler'
