@@ -499,7 +499,7 @@ DEPENDENCIES
   simplecov
   sinatra
   sprockets (~> 2.11, >= 2.11.3)
-  sucker_punch (~> 2.0)
+  sucker_punch
   therubyracer
   timecop
   twitter-bootstrap-rails
