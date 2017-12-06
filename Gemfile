@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.4.2'
 gem 'rails', '~> 4.2', '>= 4.2.7.1'
-gem 'pg', '0.20'
+gem 'pg'
 gem 'devise'
 gem 'devise_invitable'
 gem 'heroku-api'
