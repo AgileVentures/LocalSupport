@@ -476,7 +476,7 @@ DEPENDENCIES
   momentjs-rails
   newrelic_rpm
   nokogiri
-  paranoia (~> 2.0)
+  paranoia
   pg (= 0.20)
   phantomjs
   poltergeist
