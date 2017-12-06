@@ -1,19 +1,19 @@
 source 'https://rubygems.org'
 
 ruby '2.4.2'
-gem 'rails', '~> 4.2', '>= 4.2.7.1'
+gem 'rails', '~> 5.1', '>= 5.1.4'
 gem 'pg'
 gem 'devise'
 gem 'devise_invitable'
 gem 'heroku-api'
-gem 'sprockets', '~> 2.11', '>= 2.11.3'
+gem 'sprockets'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'jbuilder'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'sass-rails'
-gem 'less-rails', '~> 2.8.0'
+gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
@@ -25,7 +25,7 @@ gem 'underscore-rails'
 gem 'geocoder'
 gem 'unicorn'
 gem 'redcarpet'
-gem 'url_validator', git: 'https://github.com/AgileVentures/url_validator.git'
+gem 'url_validator', git: 'https://github.com/AgileVentures/url_validator.git', branch: 'master'
 gem 'httparty'
 gem 'sucker_punch'
 gem 'rails_autolink'
@@ -57,14 +57,13 @@ group :development do
   gem 'rubocop-git'
   gem 'letter_opener'
   gem 'railroady'
-  gem 'quiet_assets'
 end
 
 group :test do
-  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails', require: false
   gem 'cucumber-rails-training-wheels'
   gem 'capybara'
-  gem 'capybara-webkit', :git => 'https://github.com/thoughtbot/capybara-webkit', :branch => 'master'
+  gem 'capybara-webkit', git: 'https://github.com/thoughtbot/capybara-webkit', branch: 'master'
   gem 'nokogiri'
   gem 'factory_bot_rails'
   gem 'webmock'
@@ -76,7 +75,7 @@ group :test do
   gem 'vcr'
   gem 'puffing-billy'
   gem 'poltergeist'
-  gem 'phantomjs', :require => 'phantomjs/poltergeist'
+  gem 'phantomjs', require: 'phantomjs/poltergeist'
   gem 'show_me_the_cookies'
 end
 
