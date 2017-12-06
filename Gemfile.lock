@@ -184,6 +184,7 @@ GEM
     gherkin (5.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    grease (0.3.1)
     hashdiff (0.3.7)
     heroku-api (0.4.3)
       excon (~> 0.45)
@@ -217,8 +218,9 @@ GEM
       addressable (~> 2.3)
     less (2.6.0)
       commonjs (~> 0.2.7)
-    less-rails (2.8.0)
+    less-rails (3.0.0)
       actionpack (>= 4.0)
+      grease
       less (~> 2.6.0)
       sprockets (> 2, < 4)
       tilt
@@ -407,11 +409,11 @@ GEM
     tilt (2.0.8)
     timecop (0.9.1)
     tins (0.13.2)
-    twitter-bootstrap-rails (4.0.0)
-      actionpack (~> 5.0, >= 5.0.1)
-      execjs (~> 2.7)
-      less-rails (~> 2.8, >= 2.8.0)
-      railties (~> 5.0, >= 5.0.1)
+    twitter-bootstrap-rails (3.2.2)
+      actionpack (>= 3.1)
+      execjs (>= 2.2.2, >= 2.2)
+      less-rails (>= 2.5.0)
+      railties (>= 3.1)
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
     uglifier (4.0.1)
@@ -471,7 +473,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   launchy
-  less-rails
+  less-rails (~> 3.0)
   letter_opener
   meta-tags
   momentjs-rails
