@@ -46,7 +46,7 @@ group :test do
   gem 'uri-handler'
   gem 'selenium'
   gem 'selenium-client'
-  gem 'coveralls', '~> 0.8.21'
+  gem 'coveralls'
   gem 'shoulda'
   gem 'vcr'
   gem 'puffing-billy'
