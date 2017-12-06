@@ -68,7 +68,7 @@ group :production do
   gem 'newrelic_rpm'
 end
 
-gem 'coffee-rails', "4.1.0"
+gem 'coffee-rails'
 gem 'uglifier', '~> 3.0', '>= 3.0.3'
 gem 'sass-rails', '~> 4.0', '>= 4.0.5'
 gem 'less-rails'
