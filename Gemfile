@@ -71,7 +71,7 @@ end
 gem 'coffee-rails', "4.1.0"
 gem 'uglifier', '~> 3.0', '>= 3.0.3'
 gem 'sass-rails', '~> 4.0', '>= 4.0.5'
-gem 'less-rails', '2.5.0'
+gem 'less-rails'
 gem 'twitter-bootstrap-rails', '3.2.0'
 
 gem 'font-awesome-rails'
