@@ -48,8 +48,8 @@ group :development, :test do
   gem 'aruba'
   gem 'byebug'
   gem 'rack_session_access'
-  gem 'jasmine', '~> 2.4'
-  gem 'jasmine-jquery-rails', '2.0.2'
+  gem 'jasmine'
+  gem 'jasmine-jquery-rails'
   gem 'binding_of_caller'
 end
 

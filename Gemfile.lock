@@ -199,7 +199,7 @@ GEM
       rack (>= 1.2.1)
       rake
     jasmine-core (2.8.0)
-    jasmine-jquery-rails (2.0.2)
+    jasmine-jquery-rails (2.0.3)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -465,8 +465,8 @@ DEPENDENCIES
   geocoder
   heroku-api
   httparty
-  jasmine (~> 2.4)
-  jasmine-jquery-rails (= 2.0.2)
+  jasmine
+  jasmine-jquery-rails
   jbuilder
   jquery-rails
   launchy
