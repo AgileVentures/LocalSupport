@@ -1,6 +1,6 @@
 class OrganisationReportsController < ApplicationController
   layout 'full_width', :except => [:without_users_index]
-  before_filter :authorize
+  before_action :authorize
 
   def without_users_index
     @resend_invitation = false

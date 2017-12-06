@@ -2,7 +2,7 @@ require 'custom_errors'
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :store_location,
+  before_action :store_location,
                 :assign_footer_page_links,
                 :set_tags
 
