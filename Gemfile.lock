@@ -6,6 +6,15 @@ GIT
       addressable
       rails
 
+GIT
+  remote: https://github.com/thoughtbot/capybara-webkit
+  revision: 0f548058b73d909146a207c4bd34753b82273a71
+  branch: master
+  specs:
+    capybara-webkit (1.14.0)
+      capybara (~> 2.3)
+      json
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -74,9 +83,6 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    capybara-webkit (1.1.0)
-      capybara (~> 2.0, >= 2.0.2)
-      json
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
     cliver (0.3.2)
@@ -394,11 +400,11 @@ GEM
     tilt (1.4.1)
     timecop (0.9.1)
     tins (1.16.2)
-    twitter-bootstrap-rails (3.2.0)
-      actionpack (~> 4.1)
-      execjs (~> 2.2)
-      rails (~> 4.1)
-      railties (~> 4.1)
+    twitter-bootstrap-rails (3.2.2)
+      actionpack (>= 3.1)
+      execjs (>= 2.2.2, >= 2.2)
+      less-rails (>= 2.5.0)
+      railties (>= 3.1)
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
     uglifier (3.2.0)
@@ -435,7 +441,7 @@ DEPENDENCIES
   breadcrumbs_on_rails
   byebug
   capybara
-  capybara-webkit
+  capybara-webkit!
   coffee-rails
   coveralls (~> 0.8.21)
   cucumber-rails
@@ -490,7 +496,7 @@ DEPENDENCIES
   sucker_punch (~> 2.0)
   therubyracer
   timecop
-  twitter-bootstrap-rails (= 3.2.0)
+  twitter-bootstrap-rails
   uglifier (~> 3.0, >= 3.0.3)
   underscore-rails
   unicorn

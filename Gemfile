@@ -47,7 +47,7 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
   gem 'capybara'
-  gem 'capybara-webkit'
+  gem 'capybara-webkit', :git => 'https://github.com/thoughtbot/capybara-webkit', :branch => 'master'
   gem 'nokogiri', '~> 1.7.2'
   gem 'factory_bot_rails'
   gem 'webmock'
@@ -72,7 +72,7 @@ gem 'coffee-rails'
 gem 'uglifier', '~> 3.0', '>= 3.0.3'
 gem 'sass-rails', '~> 4.0', '>= 4.0.5'
 gem 'less-rails'
-gem 'twitter-bootstrap-rails', '3.2.0'
+gem 'twitter-bootstrap-rails'
 
 gem 'font-awesome-rails'
 
