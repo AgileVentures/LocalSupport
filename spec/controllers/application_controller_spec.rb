@@ -180,7 +180,7 @@ describe ApplicationController, :type => :controller, :helpers => :controllers d
 end
 
 # all child controllers should implement the ApplicationController's
-# before_filter
+# before_action
 describe OrganisationsController, :type => :controller do
   it 'assigns footer page links on a given request' do
     get :index
