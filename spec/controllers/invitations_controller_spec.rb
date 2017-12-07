@@ -1,16 +1,16 @@
 require 'rails_helper'
 
-describe InvitationsController, :type => :controller, :helpers => :controllers do
+describe InvitationsController, type: :controller, helpers: :controllers do
 
   describe '#create' do
     let(:params) { {} }
 
     context 'when not signed in as an superadmin' do
       it 'you get redirected' do
-        post :create, params
+        post :create, params: params
         expect(response).to redirect_to root_path
         make_current_user_nonsuperadmin
-        post :create, params
+        post :create, params: params
         expect(response).to redirect_to root_path
       end
     end
@@ -25,14 +25,14 @@ describe InvitationsController, :type => :controller, :helpers => :controllers d
           params, controller.current_user
         ).and_return(results)
         expect(results).to receive(:run)
-        post :create, params
+        post :create, params: params
       end
 
       it 'responds with json' do
         allow(::BatchInviteJob).to receive(:new) { results }
         allow(results).to receive(:run) { results }
         expect(results).to receive(:to_json) { 'json stuff' }
-        post :create, params
+        post :create, params: params
         expect(response.body).to eq 'json stuff'
       end
 
