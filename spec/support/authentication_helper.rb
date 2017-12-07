@@ -17,7 +17,8 @@ end
 
 module RequestHelpers
   def login(user)
-    post user_session_path, 'user[email]' => user.email, 'user[password]' => user.password
+    post user_session_path,
+         params: {'user[email]' => user.email, 'user[password]' => user.password}
     follow_redirect!
   end
 end
