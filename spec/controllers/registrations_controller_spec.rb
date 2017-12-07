@@ -4,7 +4,13 @@ describe RegistrationsController, :type => :controller do
   describe "POST create" do
     before :each do
       request.env["devise.mapping"] = Devise.mappings[:user]
-      post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp', 'password_confirmation' => 'pppppppp'}
+      post :create, params: {
+          'user' => {
+              'email' => 'example@example.com',
+              'password' => 'pppppppp',
+              'password_confirmation' => 'pppppppp'
+          }
+      }
     end
 
     it 'does email confirmation upon registration' do
@@ -32,22 +38,46 @@ describe RegistrationsController, :type => :controller do
       FactoryBot.create :user, {:email => 'example@example.com', :password => 'pppppppp'}
     end
     it 'does not email upon failure to register' do
-      post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp', 'password_confirmation' => 'pppppppp'}
+      post :create, params: {
+          'user' => {
+              'email' => 'example@example.com',
+              'password' => 'pppppppp',
+              'password_confirmation' => 'pppppppp'
+          }
+      }
       expect(ActionMailer::Base.deliveries.size).to eq 0
     end
 
     it 'has an active record error message in the user instance variable when registration fails due to email already being in db' do
-      post :create, 'user' => {'email' => 'example@example.com', 'password' => 'pppppppp', 'password_confirmation' => 'pppppppp'}
+      post :create, params: {
+          'user' => {
+              'email' => 'example@example.com',
+              'password' => 'pppppppp',
+              'password_confirmation' => 'pppppppp'
+          }
+      }
       expect(assigns(:user).errors.full_messages).to include "Email has already been taken"
     end
 
     it 'does not email when registration fails due to non-matching passwords' do
-      post :create, 'user' => {'email' => 'example2@example.com', 'password' => 'pppppppp', 'password_confirmation' => 'aaaaaaaaaa'}
+      post :create, params: {
+          'user' => {
+              'email' => 'example2@example.com',
+              'password' => 'pppppppp',
+              'password_confirmation' => 'aaaaaaaaaa'
+          }
+      }
       expect(ActionMailer::Base.deliveries.size).to eq 0
     end
 
     it 'has an active record error message in the user instance variable when registration fails due to non matching passwords' do
-      post :create, 'user' => {'email' => 'example2@example.com', 'password' => 'pppppppp', 'password_confirmation' => 'aaaaaaaaaa'}
+      post :create, params: {
+          'user' => {
+              'email' => 'example2@example.com',
+              'password' => 'pppppppp',
+              'password_confirmation' => 'aaaaaaaaaa'
+          }
+      }
       expect(assigns(:user).errors.full_messages).to include("Password confirmation doesn't match Password")
     end
   end
