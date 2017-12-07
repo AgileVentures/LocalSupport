@@ -1,4 +1,4 @@
-class ConfirmableEmail < ActiveRecord::Migration
+class ConfirmableEmail < ActiveRecord::Migration[4.2]
 
   def up
     change_table :users do |t|

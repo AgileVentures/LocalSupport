@@ -1,4 +1,4 @@
-class AddLinkVisibleFlagToPage < ActiveRecord::Migration
+class AddLinkVisibleFlagToPage < ActiveRecord::Migration[4.2]
   def up
     add_column :pages, :link_visible, :boolean, :default => true
     Page.reset_column_information

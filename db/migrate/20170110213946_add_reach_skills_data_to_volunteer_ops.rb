@@ -1,4 +1,4 @@
-class AddReachSkillsDataToVolunteerOps < ActiveRecord::Migration
+class AddReachSkillsDataToVolunteerOps < ActiveRecord::Migration[4.2]
   def up
     add_column :volunteer_ops, :reachskills_org_name, :string
     add_column :volunteer_ops, :reachskills_op_link, :string
