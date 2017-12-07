@@ -17,7 +17,7 @@ describe AddLinkVisibleFlagToPage do
   # This is clearly not very safe or pretty code, and there may be a
   # rails api that handles this. I am just going for a proof of concept here.
   def migration_has_been_run?(version)
-    table_name = ActiveRecord::Migrator.schema_migrations_table_name
+    table_name = ActiveRecord::SchemaMigration.table_name
     query = "SELECT version FROM %s WHERE version = '%s'" % [table_name, version]
     ActiveRecord::Base.connection.execute(query).any?
   end
