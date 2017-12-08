@@ -20,10 +20,11 @@ class BatchInviteJob
   end
 
   def invite_users_and_collate_results
-    results = @invites.flat_map do |organisation_id, email|
-      [organisation_id, result_of_inviting(invite_user(email, organisation_id))]
+    results = {}
+    @invites.each do |organisation_id, email|
+      results[organisation_id] = result_of_inviting(invite_user(email, organisation_id))
     end
-    Hash[*results]
+    results
   end
 
   def invite_user(email, organisation_id)
@@ -41,8 +42,6 @@ class BatchInviteJob
   end
 
   def purge_deleted_users
-    User.purge_deleted_users_where(
-        email: @invites.flat_map{|org_id, email| email.downcase}
-    )
+    User.purge_deleted_users_where(email: @invites.values)
   end
 end
