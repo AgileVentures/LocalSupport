@@ -42,6 +42,6 @@ class BatchInviteJob
   end
 
   def purge_deleted_users
-    User.purge_deleted_users_where(email: @invites.values)
+    User.purge_deleted_users_where(email: @invites.values.collect(&:downcase))
   end
 end
