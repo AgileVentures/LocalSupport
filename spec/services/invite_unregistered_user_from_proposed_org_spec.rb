@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe InviteUnregisteredUserFromProposedOrg do
-  let(:proposed_org){FactoryGirl.create(:orphan_proposed_organisation).accept_proposal}
+  let(:proposed_org){FactoryBot.create(:orphan_proposed_organisation).accept_proposal}
   context 'successful invite' do
 
     let(:unregistered_email){"unregistered@email.com"}

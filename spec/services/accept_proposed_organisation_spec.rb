@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe  AcceptProposedOrganisation do
-  let!(:proposed_org){FactoryGirl.create(:orphan_proposed_organisation, email: email)}
+  let!(:proposed_org){FactoryBot.create(:orphan_proposed_organisation, email: email)}
   let(:subject){AcceptProposedOrganisation.new(proposed_org).run}
   
   context 'organisation can be accepted' do
@@ -48,7 +48,7 @@ describe  AcceptProposedOrganisation do
   
     context 'proposed organisation email is a registered user' do
       let(:email){'user@email.com'}
-      let!(:user){FactoryGirl.create(:user, email: email)}
+      let!(:user){FactoryBot.create(:user, email: email)}
       
       it 'returns a notification sent result' do
         expect(subject.status).to eq(AcceptProposedOrganisation::Response::NOTIFICATION_SENT)
@@ -82,7 +82,7 @@ describe  AcceptProposedOrganisation do
     end
     
     context 'proposed organisation has no email' do
-      let!(:proposed_org){FactoryGirl.create(:orphan_proposed_organisation, email: '')}
+      let!(:proposed_org){FactoryBot.create(:orphan_proposed_organisation, email: '')}
   
       it 'returns a notification sent result' do
         expect(subject.status).to eq(AcceptProposedOrganisation::Response::NO_EMAIL)
@@ -92,7 +92,7 @@ describe  AcceptProposedOrganisation do
     end
   
     context 'proposed organisation has invalid email' do
-      let!(:proposed_org){FactoryGirl.create(:orphan_proposed_organisation, email: 'invalidemail.com')}
+      let!(:proposed_org){FactoryBot.create(:orphan_proposed_organisation, email: 'invalidemail.com')}
   
       it 'returns a notification sent result' do
         expect(subject.status).to eq(AcceptProposedOrganisation::Response::INVALID_EMAIL)

@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe "Propose an edit", :type => :request, :helpers => :requests do
-  let(:nonsuperadmin) { FactoryGirl.create(:user, superadmin: false) }
-  let(:org){FactoryGirl.create(:organisation, name: "Friendly Organisation", address: "34 pinner road", telephone: "202", email: "blah@blah.org", publish_email: false)}
-  let(:proposed_edit){FactoryGirl.build(:proposed_organisation_edit, organisation: org)}
+  let(:nonsuperadmin) { FactoryBot.create(:user, superadmin: false) }
+  let(:org){FactoryBot.create(:organisation, name: "Friendly Organisation", address: "34 pinner road", telephone: "202", email: "blah@blah.org", publish_email: false)}
+  let(:proposed_edit){FactoryBot.build(:proposed_organisation_edit, organisation: org)}
   before { login(nonsuperadmin) }
 
   it 'non-published fields are copied into proposed org edit' do

@@ -130,11 +130,6 @@ Feature.activate('search_input_bar_on_org_pages')
 
 So that new developers will be set up with the activated features when they first check out a copy of the project and run `rake db:seed`
 
-Notes from original README:
-
-Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
-
-
 Acceptance Testing & Caching
 ----------------------------
 

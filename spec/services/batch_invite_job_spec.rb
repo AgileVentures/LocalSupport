@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe ::BatchInviteJob do
-  let(:current_user) { FactoryGirl.create(:user, email: 'superadmin@example.com', superadmin: true) }
-  let(:org) { FactoryGirl.create :organisation, email: 'YES@hello.com' }
+  let(:current_user) { FactoryBot.create(:user, email: 'superadmin@example.com', superadmin: true) }
+  let(:org) { FactoryBot.create :organisation, email: 'YES@hello.com' }
   let(:params) do
     {invite_list: {org.id => org.email,
                    org.id+1 => org.email},
@@ -12,7 +12,7 @@ describe ::BatchInviteJob do
   before do
     current_user # lazy-loading messes up DB counts
 
-    FactoryGirl.create :invitation_instructions
+    FactoryBot.create :invitation_instructions
   end
 
   subject(:do_batch_invite) { BatchInviteJob.new(params, current_user).run }
@@ -53,7 +53,7 @@ describe ::BatchInviteJob do
     end
 
     it 'resend invitations to a deleted user' do
-      deleted_user = FactoryGirl.create(:deleted_user, email: 'YES@hello.com')
+      deleted_user = FactoryBot.create(:deleted_user, email: 'YES@hello.com')
       valid_user = instance_double('User', errors: [])
       expect(User).to receive(:purge_deleted_users_where).with(email: ['yes@hello.com', 'yes@hello.com'])
       allow(User).to receive(:invite!).and_return(valid_user)

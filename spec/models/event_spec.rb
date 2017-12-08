@@ -44,7 +44,7 @@ RSpec.describe Event, type: :model do
   describe 'scopes' do
 
     before(:all) do
-      FactoryGirl.create_list(:upcoming_events, 10)
+      FactoryBot.create_list(:upcoming_events, 10)
     end
 
     it 'should have a valid upcoming method' do
@@ -56,7 +56,7 @@ RSpec.describe Event, type: :model do
     end
 
     xit 'should not include events that are already over' do
-      FactoryGirl.create_list(:previous_events, 10)
+      FactoryBot.create_list(:previous_events, 10)
       expect(Event.upcoming(20).length).to eq 10
     end
 
