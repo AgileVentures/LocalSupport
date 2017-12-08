@@ -15,7 +15,7 @@ class ImportReachSkillsVolunteerOpportunities
 
   def run
     href = 'https://reachskills.org.uk/harrow-community-network-opportunity-feed'
-    model_klass.delete_all(source: 'reachskills')
+    model_klass.where(source: 'reachskills').delete_all
     process_reach_skills_json_page(http.get(href))
   end
 

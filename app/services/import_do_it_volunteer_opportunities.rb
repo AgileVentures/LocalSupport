@@ -23,7 +23,7 @@ class ImportDoItVolunteerOpportunities
 
   def run
     href = "#{HREF}#{radius}"
-    model_klass.delete_all(source: 'doit')
+    model_klass.where(source: 'doit').delete_all
     while href = process_doit_json_page(http.get("#{HOST}#{href}"));
     end
   end
