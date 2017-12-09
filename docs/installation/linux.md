@@ -3,7 +3,7 @@ Notes on Linux installation
 
 In order to work on LocalSupport, please fork and clone the project.
 
-
+If you need to setup your development environment then [gorails](https://gorails.com/setup/ubuntu/17.10) has an excellent walkthrough.
 
 1. Install Ruby 2.4.2
 1. Fork the http://github.com/AgileVentures/LocalSupport repo (fork button at top right of github web interface)
