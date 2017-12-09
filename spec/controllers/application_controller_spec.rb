@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-describe ApplicationController, :type => :controller, :helpers => :controllers do
+describe ApplicationController, type: :controller, helpers: :controllers do
   render_views
 
   it '#request_controller_is(white_listed)' do
-    allow(controller).to receive_messages white_listed: %w(a b c)
+    allow(controller).to receive_messages white_listed: %w[a b c]
     allow(request).to receive_messages params: {'controller' => 'a'}
     expect(controller.request_controller_is(controller.white_listed)).to be true
 
@@ -21,18 +21,18 @@ describe ApplicationController, :type => :controller, :helpers => :controllers d
   end
 
   it '#store_location stores URLs only when conditions permit' do
-    allow(request).to receive_messages :path => 'this/is/a/path'
+    allow(request).to receive_messages path: 'this/is/a/path'
 
-    allow(controller).to receive_messages :request_controller_is => false
-    allow(controller).to receive_messages :request_verb_is_get? => false
+    allow(controller).to receive_messages request_controller_is: false
+    allow(controller).to receive_messages request_verb_is_get?: false
     controller.store_location
     expect(session[:previous_url]).to be_nil
 
-    allow(controller).to receive_messages :request_controller_is => true
+    allow(controller).to receive_messages request_controller_is: true
     controller.store_location
     expect(session[:previous_url]).to be_nil
 
-    allow(controller).to receive_messages :request_verb_is_get? => true
+    allow(controller).to receive_messages request_verb_is_get?: true
     controller.store_location
     expect(session[:previous_url]).to eq request.fullpath
   end
@@ -41,21 +41,25 @@ describe ApplicationController, :type => :controller, :helpers => :controllers d
     let(:user) { make_current_user_nonsuperadmin }
     context 'user not associated with any org' do
       it 'should redirect to root' do
-        allow(user).to receive_messages :organisation => nil, :pending_organisation_id => nil
+        allow(user).to receive_messages organisation: nil, pending_organisation_id: nil
         expect(controller.after_sign_in_path_for(user)).to eq '/'
       end
     end
 
     context 'user is org owner no previous url' do
       it 'should redirect to root' do
-        allow(user).to receive_messages :organisation => mock_model(Organisation, id: 1, has_been_updated_recently?: false)
+        allow(user).to receive_messages organisation: mock_model(
+            Organisation, id: 1, has_been_updated_recently?: false
+        )
         expect(controller.after_sign_in_path_for(user)).to eq '/organisations/1'
       end
     end
 
     context 'user is org owner with previous url' do
       it 'should redirect to root' do
-        allow(user).to receive_messages :organisation => mock_model(Organisation, id: 1, has_been_updated_recently?: false)
+        allow(user).to receive_messages organisation: mock_model(
+            Organisation, id: 1, has_been_updated_recently?: false
+        )
         session[:previous_url] = 'i/was/here'
         expect(controller.after_sign_in_path_for(user)).to eq '/organisations/1'
       end
@@ -64,23 +68,20 @@ describe ApplicationController, :type => :controller, :helpers => :controllers d
 
   it '#after_accept_path_for' do
     user = make_current_user_nonsuperadmin
-    allow(user).to receive_messages :organisation => nil
+    allow(user).to receive_messages organisation: nil
 
     expect(controller.after_accept_path_for(user)).to eq '/'
 
-    allow(user).to receive_messages :organisation => '1'
+    allow(user).to receive_messages organisation: '1'
     expect(controller.after_accept_path_for(user)).to eq '/organisations/1'
   end
 
   describe 'allow_cookie_policy' do
-    #before :each do
-    #  request.should_receive(:referer).and_return "/hello"
-    #end
     it 'cookie is set and redirected to referer' do
-      expect(request).to receive(:referer).and_return "/hello"
+      expect(request).to receive(:referer).and_return '/hello'
       expect(response).to receive(:set_cookie)
       get :allow_cookie_policy
-      expect(response).to redirect_to "/hello"
+      expect(response).to redirect_to '/hello'
     end
 
     it 'redirects to root if request referer is nil' do
@@ -91,7 +92,7 @@ describe ApplicationController, :type => :controller, :helpers => :controllers d
     end
 
     it 'cookie has correct key/value pair' do
-      expect(request).to receive(:referer).and_return "/hello"
+      expect(request).to receive(:referer).and_return '/hello'
       get :allow_cookie_policy
       expect(response.cookies).to eq('cookie_policy_accepted' => 'true')
     end
@@ -181,7 +182,7 @@ end
 
 # all child controllers should implement the ApplicationController's
 # before_action
-describe OrganisationsController, :type => :controller do
+describe OrganisationsController, type: :controller do
   it 'assigns footer page links on a given request' do
     get :index
     expect(assigns(:footer_page_links)).not_to be nil

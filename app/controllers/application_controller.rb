@@ -14,13 +14,7 @@ class ApplicationController < ActionController::Base
   # To prevent infinite redirect loops, only requests from white listed
   # controllers are available in the "after sign-in redirect" feature
   def white_listed
-    %w(
-        application
-        contributors
-        organisations
-        pages
-        volunteer_ops
-    )
+    %w[application contributors organisations pages volunteer_ops]
   end
   # Devise wiki suggests we need to make this return nil for the
   # after_inactive_signup_path_for to be called in registrationscontroller
@@ -65,16 +59,12 @@ class ApplicationController < ActionController::Base
 
 
   def allow_cookie_policy
-    response.set_cookie 'cookie_policy_accepted', {
-        value: 'true',
-        path: '/',
-        expires: 1.year.from_now.utc
-    }
+    response.set_cookie 'cookie_policy_accepted',
+                        value: 'true', path: '/', expires: 1.year.from_now.utc
     #respond_to do |format|
     #  format.html redirect_to root_path
     #  format.json { render :nothing => true, :status => 200 }
     #end
-
     redirect_to request.referer || '/'
   end
 
@@ -101,7 +91,7 @@ class ApplicationController < ActionController::Base
   def set_flash_warning_reminder_to_update_details usr
     if usr.organisation and not usr.organisation.has_been_updated_recently?
       msg = render_to_string(
-        partial: "shared/call_to_action",
+        partial: 'shared/call_to_action',
         locals: {org: usr.organisation}
       ).html_safe
       if flash[:warning]
