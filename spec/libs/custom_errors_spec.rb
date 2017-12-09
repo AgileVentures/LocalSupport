@@ -16,6 +16,7 @@ describe CustomErrors, type: :controller do
 
   before(:each) do
     allow(Rails).to receive_message_chain(:env, :production?).and_return(true)
+    allow(Rails).to receive_message_chain(:env, :development?).and_return(true)
   end
 
   context '404 errors' do
@@ -24,7 +25,6 @@ describe CustomErrors, type: :controller do
     end
 
     it 'should catch 404 errors' do
-
       get :raise_404
       expect(response).to render_template 'pages/404'
       expect(response.status).to eq 404
