@@ -4,16 +4,16 @@ Notes on OSX installation
 In order to work on LocalSupport on Mac, please fork and clone the project.
 
 1. Install [RVM](https://rvm.io/).
-1. Install [Ruby 2.3.1](https://rvm.io/rubies/installing).
+1. Install [Ruby 2.4.2](https://rvm.io/rubies/installing).
 1. Fork the http://github.com/AgileVentures/LocalSupport repo (fork button at top right of github web interface).
 1. Clone the new forked repo onto your dev machine.
 1. `cd LocalSupport`.
 1. Install Qt webkit headers.
 Install Homebrew (if you don't have it already). If you do have Homebrew, run `brew update` and after brew is installed or updated, type `brew install qt@5.5`
 This will allow you to install capybara-webkit -v '1.0.0' successfully.
-If you are still unable to successfully install the caybara-webkit try the following.  First `brew uninstall qt@5.5` to uninstall previous installation, then re-install using 
-`brew install qt@5.5 --with-qtwebkit`, and finally `brew link qt@5.5`. 
-You may also need to update your paths. If using standard bash `echo 'export PATH="/usr/local/opt/qt@5.5/bin:$PATH"' >> ~/.bashrc`, or if using zsh 
+If you are still unable to successfully install the caybara-webkit try the following.  First `brew uninstall qt@5.5` to uninstall previous installation, then re-install using
+`brew install qt@5.5 --with-qtwebkit`, and finally `brew link qt@5.5`.
+You may also need to update your paths. If using standard bash `echo 'export PATH="/usr/local/opt/qt@5.5/bin:$PATH"' >> ~/.bashrc`, or if using zsh
 `echo 'export PATH="/usr/local/opt/qt@5.5/bin:$PATH"' >> ~/.zshrc`
 1. Install postgreSQL.
 Type `psql` into command line. Then you should see this:
