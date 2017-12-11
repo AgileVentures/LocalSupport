@@ -60,7 +60,9 @@ class ApplicationController < ActionController::Base
 
   def allow_cookie_policy
     response.set_cookie 'cookie_policy_accepted',
-                        value: 'true', path: '/', expires: 1.year.from_now.utc
+                        value: 'true',
+                        path: '/',
+                        expires: 1.year.from_now.utc
     #respond_to do |format|
     #  format.html redirect_to root_path
     #  format.json { render :nothing => true, :status => 200 }
