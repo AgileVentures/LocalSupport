@@ -1,7 +1,7 @@
 Contributing to LocalSupport - Cheat Sheet
 ==========================================
 
-Be sure to read and understand the Contributing file first and use this cheat sheet as a quick reference.
+Be sure to read and understand the [CONTRIBUTING.md](https://github.com/AgileVentures/LocalSupport/blob/develop/CONTRIBUTING.md) file first and use this cheat sheet as a quick reference.
 
 Steps for starting a new feature or bug fix
 -------------------------------------------
@@ -40,6 +40,10 @@ Tests
 -----
 
 1) Run tests
+
+  ```bash
+  bundle exec rake jasmine
+  ```
 
   ```bash
   bundle exec rake spec
