@@ -83,6 +83,18 @@ RSpec.describe Event, type: :model do
     let(:event5) { described_class.create(title: 'Event five', description: 'This event is for look after older people',
                                        start_date: Time.zone.now, end_date: Time.zone.now + 1.week) }
 
+    let(:event6) { described_class.create(title: 'Event six', description: 'This is Event for admins',
+                                       start_date: Time.zone.now, end_date: Time.zone.now + 1.week) }
+                                       subject(:result) { Event.search('admins') }
+    let(:event7) { described_class.create(title: 'Event seven', description: 'This is Event for petowners.',
+                                       start_date: Time.zone.now, end_date: Time.zone.now + 1.week) }
+                                       subject(:result) { Event.search('petowners') }
+    let(:event8) { described_class.create(title: 'Event eight', description: 'This is Event eight',
+                                       start_date: Time.zone.now, end_date: Time.zone.now + 1.week) }
+    let(:event9) { described_class.create(title: 'Event nine', description: 'This is Event nine',
+                                       start_date: Time.zone.now, end_date: Time.zone.now + 1.week) }
+    let(:event10) { described_class.create(title: 'Event ten', description: 'This event is for look after older people',
+                                       start_date: Time.zone.now, end_date: Time.zone.now + 1.week) }
     subject(:result) { Event.search('older') }
 
     it 'should only contain event that does contain the keyword' do
