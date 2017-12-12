@@ -1,8 +1,16 @@
-Getting Involved
-------------------
+Contributing to LocalSupport
+===========================
+
+So you'd like to contribute to the LocalSupport codebase?  That's wonderful, we're excited to have your help :-)
+
+Please do come and say hello in our [Slack chat](https://agileventures.slack.com/messages/localsupport). You can get an invite by signing up at [AgileVentures](https://www.agileventures.org) or emailing [info@agileventures.org](mailto:info@agileventures.org).  We have [weekly meetings](https://www.agileventures.org/events/localsupport-kick-off) to coordinate our efforts and we try to do planning poker voting on tickets before starting work on them.  Feel free to join any [AgileVentures daily scrum](https://www.agileventures.org/events/) to ask questions, to listen in, or just say hi :-)
+
+Getting set up with the system on your local machine can be tricky depending on your platform and your devops skills.  We can provide prepared C9 instances if you want to get straight into the coding :-)
+
+Getting Started
+---------------
 
 Project work is organised via this Pivotal Tracker instance:
-
 
 https://www.pivotaltracker.com/n/projects/742821
 
@@ -11,6 +19,8 @@ The `CURRENT` column is what people are currently working on - feel free to reac
 `BACKLOG` column tasks are ordered by priority (according to the client) and have 1, 2 or 3 points indicating difficulty (3 high). You are most welcome to start any task in the backlog, but please do come and say hi in our Slack channel:
 
 https://agileventures.slack.com/messages/localsupport/
+
+If the `CURRENT` and `BACKLOG` columns are mixed together for you, you can use the ... menu in Pivotal Tracker to split them up. See https://agileventures.slack.com/archives/C0KK907B5/p1510356098000090 for step-by-step instructions.
 
 You can ask questions in the PT tickets themselves, or in the slack instance.  If you're not getting a response, please do tag `@tansaku` in the slack channel.  That's Sam Joseph, the project manager who'll be happy to help, or direct you to someone who can. 
 
@@ -119,11 +129,6 @@ Feature.activate('search_input_bar_on_org_pages')
 ```
 
 So that new developers will be set up with the activated features when they first check out a copy of the project and run `rake db:seed`
-
-Notes from original README:
-
-Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
-
 
 Acceptance Testing & Caching
 ----------------------------

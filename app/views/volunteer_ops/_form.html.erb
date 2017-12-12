@@ -8,25 +8,25 @@
         <% end %>
       </ul>
     </div>
-  <% end %> 
-  <div class="field">
+  <% end %>
+
     <%= f.label :title, :style => "margin-top: 16px;" %>
-    <%= f.text_field :title, :class => "wide_form" %>
-  </div>
-  <div class="field">
+    <%= f.text_field :title, class: "form-control" %>
+
+
     <%= f.label :description , :style => "margin-top: 16px;" %>
-    <%= f.text_area :description, :class => "wide_form" %>
-  </div>
-  <div class="field">
+    <%= f.text_area :description, class: "form-control" %>
+
+
     <%= f.label :address , 'Address', :style => "margin-top: 16px;" %>
-    <%= f.text_field :address, :class => "wide_form",
-                    placeholder: "#{@organisation.address}" %>    
-  </div>
-  <div class="field">
+    <%= f.text_field :address, class: "form-control",
+                  placeholder: "#{@organisation.address}" %>
+
+
     <%= f.label :postcode , 'Postcode', :style => "margin-top: 16px;" %>
-    <%= f.text_field :postcode, :class => "wide_form",
-                    placeholder: "#{@organisation.postcode}"%>    
-  </div>    
+    <%= f.text_field :postcode, class: "form-control",
+                   placeholder: "#{@organisation.postcode}"%>
+
   <div class="checkbox-inline">
     <%= f.check_box :post_to_doit, id: 'check_to_doit' ,disabled: !@can_publish_to_doit %>
     <%= f.label :post_to_doit %>

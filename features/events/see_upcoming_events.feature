@@ -16,3 +16,5 @@ Feature: List the upcoming events
     Then I should see "My first event"
     And I should see "An Event today" within "calendar"
     And I should see "An Event today" within "events_scroll"
+    And I should see "Start: Sunday, October 20, 2030 at 10:30"
+    And I should see "End: Sunday, October 20, 2030 at 17:00"

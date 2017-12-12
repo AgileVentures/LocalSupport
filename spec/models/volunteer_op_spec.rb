@@ -20,11 +20,11 @@ describe VolunteerOp, type: :model do
   end
 
   describe '#local_only' do
-    let(:organisation) { FactoryGirl.create(:organisation) }
-    let(:first_local) { FactoryGirl.create(:local_volunteer_op, organisation: organisation) }
-    let(:second_local) { FactoryGirl.create(:local_volunteer_op, organisation: organisation) }
-    let(:first_doit) { FactoryGirl.create(:doit_volunteer_op, organisation: organisation) }
-    let(:second_doit) { FactoryGirl.create(:doit_volunteer_op, organisation: organisation) }
+    let(:organisation) { FactoryBot.create(:organisation) }
+    let(:first_local) { FactoryBot.create(:local_volunteer_op, organisation: organisation) }
+    let(:second_local) { FactoryBot.create(:local_volunteer_op, organisation: organisation) }
+    let(:first_doit) { FactoryBot.create(:doit_volunteer_op, organisation: organisation) }
+    let(:second_doit) { FactoryBot.create(:doit_volunteer_op, organisation: organisation) }
 
     it 'must contain local ops' do
       expect(VolunteerOp.local_only).to include(first_local, second_local)
@@ -35,10 +35,10 @@ describe VolunteerOp, type: :model do
   end
 
   describe '#remote_only' do
-    let(:first_local) { FactoryGirl.create(:local_volunteer_op, organisation_id: 1) }
-    let(:second_local) { FactoryGirl.create(:local_volunteer_op, organisation_id: 1) }
-    let(:first_doit) { FactoryGirl.create(:doit_volunteer_op, organisation_id: 1) }
-    let(:second_doit) { FactoryGirl.create(:doit_volunteer_op, organisation_id: 1) }
+    let(:first_local) { FactoryBot.create(:local_volunteer_op, organisation_id: 1) }
+    let(:second_local) { FactoryBot.create(:local_volunteer_op, organisation_id: 1) }
+    let(:first_doit) { FactoryBot.create(:doit_volunteer_op, organisation_id: 1) }
+    let(:second_doit) { FactoryBot.create(:doit_volunteer_op, organisation_id: 1) }
 
     it 'contains remote ops' do
       expect(VolunteerOp.remote_only).to include(first_doit, second_doit)
@@ -53,7 +53,7 @@ describe VolunteerOp, type: :model do
 
     context 'doit org' do
       let(:doit_org_name) { 'Nice Org' }
-      let(:vol_op) { FactoryGirl.create(:doit_volunteer_op, doit_org_name: doit_org_name) }
+      let(:vol_op) { FactoryBot.create(:doit_volunteer_op, doit_org_name: doit_org_name) }
 
       it 'returns the doit org name' do
         expect(vol_op.organisation_name).to eq doit_org_name
@@ -61,8 +61,8 @@ describe VolunteerOp, type: :model do
     end
 
     context 'local org' do
-      let(:organisation) { FactoryGirl.create(:organisation, name: "Friendly") }
-      let(:vol_op) { FactoryGirl.create(:local_volunteer_op, organisation: organisation) }
+      let(:organisation) { FactoryBot.create(:organisation, name: "Friendly") }
+      let(:vol_op) { FactoryBot.create(:local_volunteer_op, organisation: organisation) }
 
       it 'returns the local org name' do
         expect(vol_op.organisation_name).to eq organisation.name
@@ -75,7 +75,7 @@ describe VolunteerOp, type: :model do
     context 'doit org' do
 
       let(:doit_org_link) { 'niceorg' }
-      let(:vol_op) { FactoryGirl.create(:doit_volunteer_op, doit_org_link: doit_org_link) }
+      let(:vol_op) { FactoryBot.create(:doit_volunteer_op, doit_org_link: doit_org_link) }
 
       it 'returns the doit org link' do
         expect(vol_op.organisation_link).to eq "https://do-it.org/organisations/#{doit_org_link}"
@@ -84,7 +84,7 @@ describe VolunteerOp, type: :model do
 
     context 'reachskills org' do
       let(:reachskills_org_name) { 'niceorg' }
-      let(:vol_op) { FactoryGirl.create(:reachskills_volunteer_op, reachskills_org_name: reachskills_org_name) }
+      let(:vol_op) { FactoryBot.create(:reachskills_volunteer_op, reachskills_org_name: reachskills_org_name) }
 
       it 'returns the reachskills org link' do
         expect(vol_op.organisation_link).to eq "https://reachskills.org.uk/org/#{reachskills_org_name}"
@@ -93,8 +93,8 @@ describe VolunteerOp, type: :model do
 
     context 'local org' do
 
-      let(:organisation) { FactoryGirl.create(:organisation, name: "Friendly") }
-      let(:vol_op) { FactoryGirl.create(:local_volunteer_op, organisation: organisation) }
+      let(:organisation) { FactoryBot.create(:organisation, name: "Friendly") }
+      let(:vol_op) { FactoryBot.create(:local_volunteer_op, organisation: organisation) }
 
       it 'returns the local org' do
         expect(vol_op.organisation_link).to eq organisation
@@ -106,7 +106,7 @@ describe VolunteerOp, type: :model do
     context 'doit org' do
 
       let(:doit_op_id) { '456789uyffgh' }
-      let(:vol_op) { FactoryGirl.create(:doit_volunteer_op, doit_op_id: doit_op_id) }
+      let(:vol_op) { FactoryBot.create(:doit_volunteer_op, doit_op_id: doit_op_id) }
 
       it 'returns the doit op link' do
         expect(vol_op.link).to eq "https://do-it.org/opportunities/#{doit_op_id}"
@@ -116,7 +116,7 @@ describe VolunteerOp, type: :model do
     context 'reachskills org' do
 
       let(:reachskills_op_link) { 'https://reachskills.org.uk/opp/fundraising-volunteer' }
-      let(:vol_op) { FactoryGirl.create(:reachskills_volunteer_op, reachskills_op_link: reachskills_op_link) }
+      let(:vol_op) { FactoryBot.create(:reachskills_volunteer_op, reachskills_op_link: reachskills_op_link) }
 
       it 'returns the reachskills op link' do
         expect(vol_op.link).to eq reachskills_op_link
@@ -125,8 +125,8 @@ describe VolunteerOp, type: :model do
 
     context 'local org' do
 
-      let(:organisation) { FactoryGirl.create(:organisation, name: "Friendly") }
-      let(:vol_op) { FactoryGirl.create(:local_volunteer_op, organisation: organisation) }
+      let(:organisation) { FactoryBot.create(:organisation, name: "Friendly") }
+      let(:vol_op) { FactoryBot.create(:local_volunteer_op, organisation: organisation) }
 
       it 'returns the local op' do
         expect(vol_op.link).to eq vol_op
@@ -135,7 +135,7 @@ describe VolunteerOp, type: :model do
   end
 
   describe 'destroy uses acts_as_paranoid' do
-    let!(:volunteer_op) { FactoryGirl.create :volunteer_op, organisation_id: 1 }
+    let!(:volunteer_op) { FactoryBot.create :volunteer_op, organisation_id: 1 }
     it 'can be restored' do
       expect { volunteer_op.destroy }.not_to change(VolunteerOp.with_deleted, :count)
     end
@@ -144,8 +144,8 @@ describe VolunteerOp, type: :model do
   describe '#search_by_keyword' do
     let(:details1) { {title: 'test', description: 'description1', organisation_id: 1} }
     let(:details2) { {title: 'Good', description: 'description2', organisation_id: 1} }
-    let!(:vol_op1) { FactoryGirl.create :volunteer_op, details1 }
-    let!(:vol_op2) { FactoryGirl.create :volunteer_op, details2 }
+    let!(:vol_op1) { FactoryBot.create :volunteer_op, details1 }
+    let!(:vol_op2) { FactoryBot.create :volunteer_op, details2 }
 
     it 'find records where title or description match search text' do
       expect(VolunteerOp.search_for_text('good')).to eq([vol_op2])
@@ -162,7 +162,7 @@ describe VolunteerOp, type: :model do
         organisation_id: 1
       }
     end
-    let!(:vol_op) { FactoryGirl.create :volunteer_op, details }
+    let!(:vol_op) { FactoryBot.create :volunteer_op, details }
 
     it 'returns a full address' do
       expect(vol_op.full_address).to eq 'Station Rd, HA8 7BD'
@@ -230,19 +230,19 @@ describe VolunteerOp, type: :model do
       end
     end
   end
-  
+
   describe '.add_coordinates' do
     it 'returns volunteer ops with coordinates' do
       org1 = create(:organisation, address: '', postcode: '', longitude: 77, latitude: 77)
       org2 = create(:organisation, address: '', postcode: '', longitude: 62, latitude: 10)
-      
+
       no_coord1 = build(:volunteer_op, longitude: nil, latitude: nil, organisation: org1)
       no_coord2 = build(:volunteer_op, longitude: nil, latitude: nil, organisation: org2)
-      
+
       res1 = no_coord1
       res1.longitude = 77
       res1.latitude = 77
-      
+
       res2 = no_coord2
       res1.longitude = 62
       res1.latitude = 10
@@ -252,18 +252,18 @@ describe VolunteerOp, type: :model do
   end
 
   describe '.build_by_coordinates' do
+    let!(:org) {create(:organisation, address: '', postcode: '', longitude: 77, latitude: 77)}
+    let!(:no_coord1) {create(:volunteer_op, longitude: nil, latitude: nil, organisation: org)}
+    let!(:no_coord2) {create(:volunteer_op, longitude: nil, latitude: nil, organisation: org)}
+    let!(:d_vol_op1) {create(:doit_volunteer_op, longitude: 62, latitude: 10)}
+    let!(:d_vol_op2) {create(:doit_volunteer_op, longitude: 62, latitude: 10)}
+
+    let!(:loc1) {Location.new(longitude: 77.0, latitude: 77.0)}
+    let!(:loc2) {Location.new(longitude: 62.0, latitude: 10.0)}
+    let!(:l_vol1) {build(:volunteer_op, longitude: 77.0, latitude: 77.0, organisation: org)}
+    let!(:l_vol2) {build(:volunteer_op, longitude: 77.0, latitude: 77.0, organisation: org)}
+
     it 'returns volunteer ops grouped by coordinates' do
-      org = create(:organisation, address: '', postcode: '', longitude: 77, latitude: 77)
-      no_coord1 = create(:volunteer_op, longitude: nil, latitude: nil, organisation: org)
-      no_coord2 = create(:volunteer_op, longitude: nil, latitude: nil, organisation: org)
-      d_vol_op1 = create(:doit_volunteer_op, longitude: 62, latitude: 10)
-      d_vol_op2 = create(:doit_volunteer_op, longitude: 62, latitude: 10)
-
-      loc1 = Location.new(longitude: 77.0, latitude: 77.0)
-      loc2 = Location.new(longitude: 62.0, latitude: 10.0)
-      l_vol1 = build(:volunteer_op, longitude: 77.0, latitude: 77.0, organisation: org)
-      l_vol2 = build(:volunteer_op, longitude: 77.0, latitude: 77.0, organisation: org)
-
       expect(VolunteerOp.build_by_coordinates.keys).to match_array(
         [loc1, loc2]
       )
@@ -272,6 +272,18 @@ describe VolunteerOp, type: :model do
       )
       expect(VolunteerOp.build_by_coordinates[loc1]).to match_instance_array(
         [l_vol1, l_vol2]
+      )
+    end
+
+    it 'return all the specified volunteer_ops by coordinates' do
+      expect(VolunteerOp.build_by_coordinates([d_vol_op1]).keys).to match_array(
+        [loc2]
+      )
+      expect(VolunteerOp.build_by_coordinates([d_vol_op1, d_vol_op2])[loc2])
+        .to match_instance_array([d_vol_op1, d_vol_op2]
+      )
+      expect(VolunteerOp.build_by_coordinates([l_vol1, l_vol2])[loc1])
+        .to match_instance_array([l_vol1, l_vol2]
       )
     end
   end

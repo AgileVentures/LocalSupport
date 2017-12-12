@@ -3,14 +3,14 @@ require 'rails_helper'
 describe "Invitations", :type => :request, :helpers => :requests do
 
   before do
-    FactoryGirl.create :invitation_instructions
+    FactoryBot.create :invitation_instructions
   end
 
   describe "create -- xhr POST /invitations" do
-    let(:superadmin) { FactoryGirl.create(:user, email: 'superadmin@example.com', superadmin: true) }
+    let(:superadmin) { FactoryBot.create(:user, email: 'superadmin@example.com', superadmin: true) }
 
     describe 'batch invites' do
-      let(:org) { FactoryGirl.create :organisation, email: 'yes@hello.com' }
+      let(:org) { FactoryBot.create :organisation, email: 'yes@hello.com' }
       let(:params) do
         {invite_list: {org.id => org.email,
                        org.id+1 => org.email},
@@ -30,10 +30,10 @@ describe "Invitations", :type => :request, :helpers => :requests do
   end
 
   describe '#invited -- GET /user_reports/invited' do
-    let(:superadmin) { FactoryGirl.create(:user, email: 'superadmin@example.com', superadmin: true) }
+    let(:superadmin) { FactoryBot.create(:user, email: 'superadmin@example.com', superadmin: true) }
 
     describe "User.invited_not_accepted returns users w/o orgs" do
-      let(:org) { FactoryGirl.create :organisation, email: 'yes@hello.com' }
+      let(:org) { FactoryBot.create :organisation, email: 'yes@hello.com' }
       let(:lost_invite) { User.invite!({email: org.email}, superadmin) }
 
       before do

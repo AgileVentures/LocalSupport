@@ -1,12 +1,23 @@
-<h2>Resend unlock instructions</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 form-frame">
+      <h2>Resend unlock instructions</h2>
 
-<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+      <%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
+        <div class="form-group">
+          <%= devise_error_messages! %>S
+        </div>
 
-  <div><%= f.label :email %>
-  <%= f.email_field :email, :autofocus => true %></div>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, :class => 'form-control', :autofocus => true %>
+        </div>
 
-  <div><%= f.submit "Resend unlock instructions", :class => "btn btn-primary" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+        <div class="form-group">
+          <%= f.submit "Resend unlock instructions", :class => "btn btn-primary" %>
+        </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

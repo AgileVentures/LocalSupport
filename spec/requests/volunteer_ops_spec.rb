@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe 'VolunteerOps', :type => :request, :helpers => :requests do
-  let(:org_owner) { FactoryGirl.create(:user_stubbed_organisation) }
-  let(:non_org_owner) { FactoryGirl.create :user , :email => 'regularjoe@blah.com'}
-  let(:superadmin) {FactoryGirl.create :user, :email => "superadmin@superadmin.com", :superadmin => true}
+  let(:org_owner) { FactoryBot.create(:user_stubbed_organisation) }
+  let(:non_org_owner) { FactoryBot.create :user , :email => 'regularjoe@blah.com'}
+  let(:superadmin) {FactoryBot.create :user, :email => "superadmin@superadmin.com", :superadmin => true}
 
   describe 'POST /volunteer_ops' do
     let(:params) { { volunteer_op: {title: 'hard work', description: 'for the willing'} } }

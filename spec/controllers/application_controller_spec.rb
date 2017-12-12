@@ -147,8 +147,8 @@ describe ApplicationController, :type => :controller, :helpers => :controllers d
 
     context '#set_flash_warning_reminder_to_update_details' do
       before(:each) do
-        @org = FactoryGirl.create(:organisation, slug: 'my-org')
-        @user = FactoryGirl.create(:user, organisation: @org)
+        @org = FactoryBot.create(:organisation, slug: 'my-org')
+        @user = FactoryBot.create(:user, organisation: @org)
         allow(@org).to receive(:has_been_updated_recently?).and_return(false)
       end
 

@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe ProposedOrganisationsController, :type => :controller do
-  let!(:proposed_org) { FactoryGirl.create :proposed_organisation }
-  let!(:orphan_org) { FactoryGirl.create :orphan_proposed_organisation }
-  let(:user) { FactoryGirl.create :user }
+  let!(:proposed_org) { FactoryBot.create :proposed_organisation }
+  let!(:orphan_org) { FactoryBot.create :orphan_proposed_organisation }
+  let(:user) { FactoryBot.create :user }
   
   context 'superadmin paths' do
     before(:each) { 

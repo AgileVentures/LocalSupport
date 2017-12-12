@@ -41,13 +41,12 @@ Given(/^I submit a volunteer op to Doit/) do |volunteer_ops_table|
   end
 end
 
-regex = /^I run the import doit service( with a radius of (\d+\.?\d*) miles)?$/
-Given(regex) do |override, radius|
-  if override
-    ImportDoItVolunteerOpportunities.with radius.to_f
-  else
-    ImportDoItVolunteerOpportunities.with
-  end
+Given('I run the import doit service') do
+  ImportDoItVolunteerOpportunities.with
+end
+
+Given(/^I run the import doit service with a radius of (\d+\.?\d*) miles$/) do |radius|
+  ImportDoItVolunteerOpportunities.with radius.to_f
 end
 
 Given(/^I run the import reachskills service$/) do
@@ -96,7 +95,7 @@ Given /^I update "(.*?)" volunteer op description to be "(.*?)"$/ do |title, des
   visit volunteer_op_path vop
   click_on 'Edit'
   fill_in('Description', :with => description)
-  click_on 'Update a Volunteer Opportunity'
+  click_on 'Update Volunteer Opportunity'
 end
 
 Given /^I should see (\d+) markers in the map$/ do |num|
@@ -110,7 +109,7 @@ end
 When(/^I set new volunteer opportunity location to "(.*?)", "(.*?)"$/) do |addr, pc|
   fill_in 'Address', with: addr
   fill_in 'Postcode', with: pc
-  click_button 'Update a Volunteer Opportunity'
+  click_button 'Update Volunteer Opportunity'
 end
 
 regex = /^I should see "(.*?)", "(.*?)", "(.*?)" and "(.*?)"$/
