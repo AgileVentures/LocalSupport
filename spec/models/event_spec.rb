@@ -82,6 +82,7 @@ RSpec.describe Event, type: :model do
                                        start_date: Time.zone.now, end_date: Time.zone.now + 1.week) }
     let(:event5) { described_class.create(title: 'Event five', description: 'This event is for look after older people',
                                        start_date: Time.zone.now, end_date: Time.zone.now + 1.week) }
+
     let(:event6) { described_class.create(title: 'Event six', description: 'This is Event for admins',
                                        start_date: Time.zone.now, end_date: Time.zone.now + 1.week) }
                                        subject(:result) { Event.search('admins') }

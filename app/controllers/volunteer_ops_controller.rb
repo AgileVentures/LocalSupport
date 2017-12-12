@@ -1,8 +1,8 @@
 class VolunteerOpsController < ApplicationController
   add_breadcrumb 'Volunteers', :root_url
-  layout 'two_columns_with_map'
+  layout 'two_columns_with_map', except: :embedded_map
   before_action :set_organisation, only: [:new, :create]
-  before_action :authorize, except: [:search, :show, :index]
+  before_action :authorize, except: [:search, :show, :index, :embedded_map]
   prepend_before_action :set_volunteer_op, only: [:show, :edit]
 
   def search
@@ -42,9 +42,7 @@ class VolunteerOpsController < ApplicationController
 
   def edit
     volunteer_op_record = VolunteerOp.find(params[:id])
-    if current_user.superadmin? && DoitTrace.published?(volunteer_op_record.id)
-      @can_publish_to_doit = true
-    end
+    @can_publish_to_doit = true if can_post_to_doit?(volunteer_op_record.id)
     @volunteer_op = VolunteerOpForm.new(volunteer_op: volunteer_op_record )
     organisations = Organisation.where(id: @volunteer_op.organisation_id)
     @organisation = organisations.first!
@@ -65,6 +63,12 @@ class VolunteerOpsController < ApplicationController
     @volunteer_op.destroy
     flash[:success] = "Deleted #{@volunteer_op.title}"
     redirect_to volunteer_ops_path
+  end
+
+  def embedded_map
+    @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
+    response.headers.delete 'X-Frame-Options'
+    render layout: false
   end
 
   def volunteer_op_params
@@ -139,5 +143,10 @@ class VolunteerOpsController < ApplicationController
   def meta_tag_description
     return super unless @volunteer_op
     @volunteer_op.description
+  end
+
+  def can_post_to_doit?(vol_op_id)
+    current_user.superadmin? && !DoitTrace.published?(vol_op_id)
+
   end
 end
