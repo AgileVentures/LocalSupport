@@ -1,3 +1,4 @@
+<%= render partial: 'shared/map_scripts', locals: {markers: @markers} %>
 <div id="calendar"></div>
 <div class="upcoming-events-header">
     <h1 class="upcoming-events-header-text" title="Upcoming Events">Upcoming events</h1>
@@ -9,17 +10,20 @@
         <%= label_tag(:q, "Search Text", class: 'field-label') %>
     </div>
     <div class="right-side">
-        <%= text_field_tag(:q, @query, class: 'search-text') %>
+        <%= text_field_tag(:q, @query, class: 'search-text', value: params["q"]) %>
         <%= submit_tag("Submit", class: 'btn btn-info search-btn') %>
     </div>
   </div>
 <% end %>
 
-<%= render partial: 'shared/map_scripts', locals: {markers: @markers} %>
+<% if !@events.empty? %>
 
 <div id="events_scroll">
     <div class="col-md-12 events-container">
         <%= render @events %>
     </div>
 </div>
-<%= render partial: 'shared/map_scripts', locals: {markers: @markers} %>
+
+<% else %>
+    Sorry no upcoming events at the moment"
+<% end %>

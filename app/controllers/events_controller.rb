@@ -12,10 +12,10 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.save ? redirect_to(@event, notice: event_success) : render(:new)
   end
-  
+
   def search
     @events = Event.search(params['q'])
-    render 'result'
+    render template: 'events/index'
   end
   
 
