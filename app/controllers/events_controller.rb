@@ -14,10 +14,9 @@ class EventsController < ApplicationController
   end
 
   def search
-    @events = Event.search(params['q'])
+    @events = Event.search(params[:q])
     render template: 'events/index'
   end
-  
 
   def show
     @event = Event.find_by_id(params[:id])

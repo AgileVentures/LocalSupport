@@ -10,7 +10,6 @@ Feature: View one event
       | Open Source Weekend | Good for everyone | 2030-10-20 10:30:14 | 2030-10-20 17:00:00 |
       | Lazy Weekend        | Also good         | 2055-02-02 08:00:00 | 2055-02-02 17:00:00 |
 
-
   Scenario: User visits event from events page
     Given I visit the events page
     When I click "Open Source Weekend"
