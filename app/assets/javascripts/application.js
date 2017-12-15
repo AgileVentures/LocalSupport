@@ -16,7 +16,8 @@
 //= require utilities
 //= require jquery-readyselector
 //= require doit_volunteer_ops
-//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.en-GB.js
 //= require moment
 //= require fullcalendar
 
