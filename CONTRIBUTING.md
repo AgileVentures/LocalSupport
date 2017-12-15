@@ -7,6 +7,8 @@ Please do come and say hello in our [Slack chat](https://agileventures.slack.com
 
 Getting set up with the system on your local machine can be tricky depending on your platform and your devops skills.  We can provide prepared C9 instances if you want to get straight into the coding :-)
 
+If you've already been here and have read through the document and are just looking for what is needed in a pull request to ensure that nothing is missed you can use this [contributing cheatsheet](https://github.com/AgileVentures/LocalSupport/blob/develop/docs/CONTRIBUTING_CHEATSHEET.md).
+
 Getting Started
 ---------------
 
@@ -22,7 +24,7 @@ https://agileventures.slack.com/messages/localsupport/
 
 If the `CURRENT` and `BACKLOG` columns are mixed together for you, you can use the ... menu in Pivotal Tracker to split them up. See https://agileventures.slack.com/archives/C0KK907B5/p1510356098000090 for step-by-step instructions.
 
-You can ask questions in the PT tickets themselves, or in the slack instance.  If you're not getting a response, please do tag `@tansaku` in the slack channel.  That's Sam Joseph, the project manager who'll be happy to help, or direct you to someone who can. 
+You can ask questions in the PT tickets themselves, or in the slack instance.  If you're not getting a response, please do tag `@tansaku` in the slack channel.  That's Sam Joseph, the project manager who'll be happy to help, or direct you to someone who can.
 
 There's also the `ICEBOX` column where if you see something interesting you want to work on you can start on that.  However please do ensure it has an estimate.  If it does not then please coordinate with the ProjectManager to get the story voted on to create an estimate.  This helps you get input on what it would take to get the story done as well as helping the team understand what it is you want to work on.
 
@@ -30,7 +32,7 @@ It's also great to look through the current PRs to see what code people are subm
 
 https://github.com/AgileVentures/LocalSupport/pulls
 
-Leaving comments and +1s where appropriate.  For more general details on joining any AgileVentures project please see: 
+Leaving comments and +1s where appropriate.  For more general details on joining any AgileVentures project please see:
 
 https://github.com/AgileVentures/AgileVentures/blob/master/JOINING_A_PROJECT.md
 
@@ -104,7 +106,7 @@ We follow the [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide) co
 Feature Flags
 -------------
 
-We use Feature Flags to allow a feature to be turned off and on at will.  This allows us to deploy the code to production and check for side effects, before we actually make it available to end users.  We can then enable it at a precise time of our choosing (since merges to develop, staging and master are auto-deployed to each of http://develop.harrowcn.org.uk, http://staging.harrowcn.org.uk and http://harrowcn.org.uk), and can also switch the feature off just as easily if problems occur. 
+We use Feature Flags to allow a feature to be turned off and on at will.  This allows us to deploy the code to production and check for side effects, before we actually make it available to end users.  We can then enable it at a precise time of our choosing (since merges to develop, staging and master are auto-deployed to each of http://develop.harrowcn.org.uk, http://staging.harrowcn.org.uk and http://harrowcn.org.uk), and can also switch the feature off just as easily if problems occur.
 
 Please ask for advice on whether a feature you are working on requires a feature flag.  If you do set up a new [Feature Flag (or 'toggle')](http://martinfowler.com/bliki/FeatureToggle.html) please ensure to:
 
@@ -148,7 +150,7 @@ There's a Gordian Knot here which is that we'd like it that if a tests passes on
   ```
   rake vcr_billy_caches:reset
   ```
-  
+
   but you still might be confused about which cache files you should be checking in with your tests.
 
 In the ideal world the `develop` branch would run green for you and there would be no extraneous files.  Then you add your new test and it's implementation.  Once it's all working you will likely have a bunch of cache files.  These should be deleted in the first instance since some may be due to erroneous network interactions as you were developing.  Assuming you have got to a reliable green test stage you can clean up (`rm -rf features/req_cache/` and `rm-rf features/vcr_cassettes/` and `git checkout features/req_cache/` and `git checkout features/vcr_cassettes`) and then re-run.  At this point, if you got another complete green run (for safety just run your new tests) any new cache files are associated with your tests, and these should be checked in to ensure that your new test/functionality will run the same everywhere.
