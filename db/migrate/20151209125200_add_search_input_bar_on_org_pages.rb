@@ -1,4 +1,4 @@
-class AddSearchInputBarOnOrgPages < ActiveRecord::Migration
+class AddSearchInputBarOnOrgPages < ActiveRecord::Migration[4.2]
   def up
     Feature.create(name: :search_input_bar_on_org_pages)
   end

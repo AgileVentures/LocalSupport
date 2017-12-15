@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-describe ApplicationHelper, :type => :helper do
+describe ApplicationHelper, type: :helper do
   describe 'markdown' do
     # tested extensively in features/superadmin_edit_static_pages.feature
   end
 
   describe '#cookie_policy_accepted?' do
     it 'true with the cookie' do
-      helper.cookies['cookie_policy_accepted'] = true
+      helper.request.cookies['cookie_policy_accepted'] = true
       expect(cookie_policy_accepted?).to be true
     end
     it 'false without the cookie' do
@@ -25,7 +25,7 @@ describe ApplicationHelper, :type => :helper do
     end
   end
 
-  describe "#feature_active?" do
+  describe '#feature_active?' do
     it 'should return true if feature is active' do
       allow(Feature).to receive_messages(active?: true)
       expect(helper.feature_active?(:volunteer_ops)).to be true

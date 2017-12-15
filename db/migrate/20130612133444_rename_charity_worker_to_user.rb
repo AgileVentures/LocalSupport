@@ -1,4 +1,4 @@
-class RenameCharityWorkerToUser < ActiveRecord::Migration
+class RenameCharityWorkerToUser < ActiveRecord::Migration[4.2]
   def up
     rename_table :charity_workers, :users
   end

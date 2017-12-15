@@ -1,4 +1,4 @@
-class RenameUserOrganizationsIdAndPendingOrganizationsId < ActiveRecord::Migration
+class RenameUserOrganizationsIdAndPendingOrganizationsId < ActiveRecord::Migration[4.2]
   def change
     rename_column :users, :organization_id, :organisation_id
     rename_column :users, :pending_organization_id, :pending_organisation_id

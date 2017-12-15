@@ -1,13 +1,18 @@
 require 'rails_helper'
 
-describe User, :type => :model do
+describe User, type: :model do
 
-  let (:model) { mock_model("Organisation", :_read_attribute => 1)}
+  let (:model) { mock_model('Organisation', :_read_attribute => 1)}
 
   context 'invited users scope' do
     before(:each) do
       @regular_user = FactoryBot.create(:user, email: 'regular@guy.com')
-      @invited_user = FactoryBot.create(:user_stubbed_organisation, email: 'invited@guy.com', invitation_sent_at: '2014-03-12 00:18:02', invitation_accepted_at: nil)
+      @invited_user = FactoryBot.create(
+          :user_stubbed_organisation,
+          email: 'invited@guy.com',
+          invitation_sent_at: '2014-03-12 00:18:02',
+          invitation_accepted_at: nil
+      )
     end
 
     it 'finds all users who have not accepted their invitations yet' do
@@ -18,7 +23,7 @@ describe User, :type => :model do
 
     it 'eager loads the associated organisations' do
       collection = User.invited_not_accepted
-      expect(collection.first.association_cache).not_to be_empty
+      expect(collection.first.association_cached?(:organisation)).to be true
     end
   end
 
@@ -63,7 +68,7 @@ describe User, :type => :model do
     end
 
     context 'is not superadmin' do
-      let(:non_associated_model) { mock_model("Organisation") }
+      let(:non_associated_model) { mock_model('Organisation') }
       subject(:user) { create(:user, superadmin: false, organisation: model) }
 
       it 'can edit associated organisation' do
@@ -82,7 +87,8 @@ describe User, :type => :model do
         expect(user.can_edit?(non_associated_model)).to be false
       end
 
-      it 'can not edit when associated with no org and attempting to access non-existent org' do
+      it 'can not edit when associated with no org'\
+        ' and attempting to access non-existent org' do
         expect(user.can_edit?(nil)).to be false
       end
     end
@@ -93,7 +99,10 @@ describe User, :type => :model do
     before do
       @user = FactoryBot.create(:user, email: 'bert@charity.org')
       @superadmin_user = FactoryBot.create(:user, email: 'superadmin@charity.org')
-      @mismatch_org = FactoryBot.create(:organisation, email: 'superadmin@other_charity.org')
+      @mismatch_org = FactoryBot.create(
+          :organisation,
+          email: 'superadmin@other_charity.org'
+      )
       @match_org = FactoryBot.create(:organisation, email: 'superadmin@charity.org')
     end
 
@@ -202,7 +211,9 @@ describe User, :type => :model do
       expect(user.can_request_org_admin?(@organisation)).to be true
     end
 
-    it 'is true when user is not (site superadmin || organisation admin of this organisation || pending organisation admin of this organisation)' do
+    it 'is true when user is not (site superadmin ||'\
+      ' organisation admin of this organisation ||'\
+      ' pending organisation admin of this organisation)' do
       expect(user.can_request_org_admin?(@organisation)).to be true
     end
 
@@ -251,7 +262,7 @@ describe User, :type => :model do
     end
   end
 
-  describe "#pending_org_admin?" do
+  describe '#pending_org_admin?' do
     let(:user) { FactoryBot.create :user_stubbed_organisation }
     let(:other_org) { FactoryBot.create :organisation }
 

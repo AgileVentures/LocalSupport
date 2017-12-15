@@ -1,4 +1,4 @@
-class AddDoitVolunteerOpportunities < ActiveRecord::Migration
+class AddDoitVolunteerOpportunities < ActiveRecord::Migration[4.2]
   def up
     Feature.create(name: :doit_volunteer_opportunities)
   end

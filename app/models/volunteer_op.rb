@@ -2,7 +2,7 @@ class VolunteerOp < ActiveRecord::Base
   include GlobalID::Identification
   acts_as_paranoid
   validates :title, :description, presence: true
-  validates :organisation_id, presence: true, if: "source == 'local'"
+  validates :organisation_id, presence: true, if: -> { source == 'local' }
   belongs_to :organisation
   has_one :doit_trace
 
