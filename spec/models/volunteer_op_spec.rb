@@ -310,4 +310,19 @@ describe VolunteerOp, type: :model do
       expect(VolunteerOp.get_source([l_vol_op1, d_vol_op2])).to eq('mixed')
     end
   end
+
+  describe 'a new volunteer opportunity' do
+    context 'is new volunteer opportunity' do
+      it 'returns true' do
+        new_volop = build(:volunteer_op, created_at: Time.now)
+        expect(new_volop.new_volop?).to be_truthy
+      end
+    end
+    context 'is not new volunteer opportunity' do
+      it 'returns false' do
+        not_new_volop = build(:volunteer_op, created_at: Time.now - 1.day)
+        expect(not_new_volop.new_volop?).to be_falsey
+      end
+    end
+  end
 end
