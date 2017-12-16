@@ -15,11 +15,11 @@ class VolunteerOp < ActiveRecord::Base
   scope :doit,                 -> { where(source: 'doit') }
   scope :reachskills,          -> { where(source: 'reachskills') }
   scope :remote_only,          -> { where.not(source: 'local') }
-  
+
   def self.add_coordinates(vol_ops)
     vol_op_with_coordinates(vol_ops)
   end
-  
+
   def full_address
     "#{self.address}, #{self.postcode}"
   end
@@ -77,8 +77,13 @@ class VolunteerOp < ActiveRecord::Base
     source
   end
 
+  def new_volop?
+    one_day_ago = Time.now - 1.day
+    created_at > one_day_ago
+  end
+
   private
-  
+
   def clear_lat_lng
     return if address_complete?
     self.longitude = nil
