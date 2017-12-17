@@ -315,13 +315,13 @@ describe VolunteerOp, type: :model do
     context 'is new volunteer opportunity' do
       it 'returns true' do
         new_volop = build(:volunteer_op, created_at: Time.current)
-        expect(new_volop.new_volop?).to be_truthy
+        expect(new_volop).to be_new
       end
     end
     context 'is not new volunteer opportunity' do
       it 'returns false' do
-        not_new_volop = build(:volunteer_op, created_at: Time.current - 1.day)
-        expect(not_new_volop.new_volop?).to be_falsey
+        old_volop = build(:volunteer_op, created_at: Time.current - 1.day)
+        expect(old_volop).not_to be_new
       end
     end
   end
