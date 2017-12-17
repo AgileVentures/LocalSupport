@@ -77,7 +77,7 @@ class VolunteerOp < ActiveRecord::Base
     source
   end
 
-  def new_volop?
+  def new?
     one_day_ago = Time.current - 1.day
     created_at > one_day_ago
   end
