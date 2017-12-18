@@ -169,7 +169,7 @@ describe VolunteerOp, type: :model do
     end
   end
 
-  describe '#address_compelete?' do
+  describe '#address_complete?' do
     context 'volunteer op has address and postcode' do
       it 'returns true' do
         vol_op = build(:volunteer_op, address: 'not nil', postcode: 'HA1 4HZ')
@@ -311,14 +311,14 @@ describe VolunteerOp, type: :model do
     end
   end
 
-  describe 'a new volunteer opportunity' do
-    context 'is new volunteer opportunity' do
+  describe '#new?' do
+    context 'a volunteer opportunity created in the last day' do
       it 'returns true' do
         new_volop = build(:volunteer_op, created_at: Time.current)
         expect(new_volop).to be_new
       end
     end
-    context 'is not new volunteer opportunity' do
+    context 'a volunteer opportunity created more than a day ago' do
       it 'returns false' do
         old_volop = build(:volunteer_op, created_at: Time.current - 1.day)
         expect(old_volop).not_to be_new
