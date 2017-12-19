@@ -51,7 +51,6 @@ config/database.yml
 
 vcr.log
 .byebug_history
-config/app_environment_variables.rb
 config/application.yml
 
 gnk
