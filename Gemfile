@@ -46,7 +46,7 @@ end
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
-  gem 'capybara', '2.4.1'
+  gem 'capybara', '2.4.4'
   gem 'capybara-webkit', '~> 1.6.0'
   gem 'nokogiri', '~> 1.7.2'
   gem 'factory_bot_rails'
