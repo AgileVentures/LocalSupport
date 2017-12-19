@@ -1,6 +1,6 @@
 ## Issues
 
-### Heroku 
+### Heroku
 See [the notes on deploying to heroku](https://github.com/AgileVentures/LocalSupport/wiki/Deploying-to-Heroku)
 
 ### PostgreSQL Install
@@ -34,8 +34,8 @@ Another error occurs on OSX without "host: localhost" in the database.yml
 
 Postgres may have put its socket in an unexpected place, such as `/private/tmp`, and it may be a hidden file. In this example below, we symlink it to where it needs to be.
 ````
-sudo mkdir /var/pgsql_socket/ 
-sudo ln -s /private/tmp/.s.PGSQL.5432 /var/pgsql_socket/ 
+sudo mkdir /var/pgsql_socket/
+sudo ln -s /private/tmp/.s.PGSQL.5432 /var/pgsql_socket/
 ````
 
 if psql doesn't run from the command line try: add ```export PATH="/usr/local/bin:$PATH"``` to your ```.bash_profile```
@@ -61,7 +61,7 @@ On Ubuntu, you will likely encounter an error with the following message:
 
 `authentication failed for user "postgres"`
 
-The underlying problem is that postgres is set up to authenticate postgresql usernames based on the Linux usernames.  But your Linux user is not likely called "postgres" like the yml configuration is setup to login as on LS.  
+The underlying problem is that postgres is set up to authenticate postgresql usernames based on the Linux usernames.  But your Linux user is not likely called "postgres" like the yml configuration is setup to login as on LS.
 
 If you search around, you will likely find links telling you to change authentication methods and use a password.  But you can actually stick with peer authentication and the little bit of added security of only having local connections by doing the following:
 
@@ -110,7 +110,7 @@ You will likely encounter this error:
 
      Installing rdoc (3.12.2) Invalid gemspec in [/usr/local/lib/ruby/gems/1.9.1/specifications/ZenTest-4.9.0.gemspec]: Illformed requirement ["< 2.1, >= 1.8"]
 
-Resolution described here: [http://stackoverflow.com/questions/15006181/zentest-errors-preventing-autotest-from-running/15006306#15006306](http://stackoverflow.com/questions/15006181/zentest-errors-preventing-autotest-from-running/15006306#15006306)  Also mentioned here with alternate solution [https://github.com/seattlerb/zentest/issues/40](https://github.com/seattlerb/zentest/issues/40) NOTE: stable fix appears to involve: "upgrade rubygems, uninstall zentest and reinstall zentest." (If you don't want to edit the gemspec file, you will need rubygems version 1.8.24 or later.) 
+Resolution described here: [http://stackoverflow.com/questions/15006181/zentest-errors-preventing-autotest-from-running/15006306#15006306](http://stackoverflow.com/questions/15006181/zentest-errors-preventing-autotest-from-running/15006306#15006306)  Also mentioned here with alternate solution [https://github.com/seattlerb/zentest/issues/40](https://github.com/seattlerb/zentest/issues/40) NOTE: stable fix appears to involve: "upgrade rubygems, uninstall zentest and reinstall zentest." (If you don't want to edit the gemspec file, you will need rubygems version 1.8.24 or later.)
 
 If you use rvm, then the command to upgrade rubygems is
 
@@ -143,7 +143,7 @@ The following stackoverflow link contains the solution which is to add the execj
 
 ### capybara-webkit gem
 
-The `capybara-webkit` gem needs the Qt toolchain (including qmake and the webkit library and header files). You want version 4.8 or later. To install them in Ubuntu release 12.04 LTS "precise pangolin", or later, run: 
+The `capybara-webkit` gem needs the Qt toolchain (including qmake and the webkit library and header files). You want version 4.8 or later. To install them in Ubuntu release 12.04 LTS "precise pangolin", or later, run:
 
      sudo apt-get install libqtwebkit-dev
 
@@ -151,11 +151,11 @@ This command also works on Debian 7.
 
 If you have an older version of Ubuntu, you can install a new version from scratch, or upgrade with `sudo do-release-upgrade`.  If on Amazon EC2, see [this article on safely updating an ubuntu instance](http://gregrickaby.com/safely-update-an-ubuntu-ec2-instance-on-amazon-aws/)
 
-For other platforms, see http://qt-project.org/downloads. 
+For other platforms, see http://qt-project.org/downloads.
 
 Note that on Mac, even after performing the aforementioned install, you are likely to need to install something else to get the `qmake` build tool. Install [Homebrew](http://brew.sh/), if you don't have it already, then run `brew install qt`. Then you should be able to run `gem install capybara-webkit -v '1.6.0'` successfully.
 
-After that try running `bundle install` again. 
+After that try running `bundle install` again.
 
 ### An error occurred while installing nokogiri
 
@@ -171,7 +171,7 @@ bundle update nokogiri
 ### Warning: Nokogiri was built against LibXML version 2.8.0, but has dynamically loaded 2.9.0
 
 You will likely encounter this warning while running the specs and features.
-To solve this you need to run 
+To solve this you need to run
 
      bundle exec gem pristine nokogiri
 
@@ -193,7 +193,7 @@ our notes on [[PostgreSQL problems in Debian]] may help you.
 ### No source for ruby-1.9. ...
 
 In 2014, David came across this error when running ```bundle install``` (under rvm on Debian)
- 
+
     No source for ruby-1.9.3-p545 provided with debugger-ruby_core_source gem.
     ...
     Make sure that `gem install debugger -v '1.6.1'` succeeds before bundling.
@@ -206,6 +206,34 @@ bundle install
 ```
 
 and repeat for any other gems that stop your bundle install task.
+
+### Invalid-Meta data during bower install
+
+bower has been deprecated and perhaps a switch to [yarn](https://bower.io/blog/2017/how-to-migrate-away-from-bower/) is needed. Until then when you run npm install you may receive the following error:
+
+```
+npm WARN deprecated bower@1.8.2: ...psst! Your project can stop working at any moment because its dependencies can change. Prevent this by migrating to Yarn: https://bower.io/blog/2017/how-to-migrate-away-from-bower/
+
+> LocalSupport@2.0.0 postinstall /Users/miafro/Documents/AV/LocalSupport
+> ./node_modules/bower/bin/bower install
+
+bower                     invalid-meta for:/Users/miafro/Documents/AV/LocalSupport/bower.json
+bower                     invalid-meta The "name" is recommended to be lowercase, can contain digits, dots, dashes
+```
+
+to get around this issue you could install bower manually with:
+
+```
+npm install -g bower
+```
+
+then install dependencies in bower.json
+
+```
+bower install
+```
+
+you may see the same invalid-meta errors, but they can be ignored now that bower is installed.
 
 =======
 

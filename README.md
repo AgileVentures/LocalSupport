@@ -1,7 +1,7 @@
 LocalSupport
 ============
 
-A directory of local support services. 
+LocalSupport is the software that runs the [Harrow Community Network](https://www.harrowcn.org.uk/), which was originally conceived as a directory of local support services, e.g. a list charities and non-profits in a particular area.  It's since pivoted to focus on volunteer opportunities in a local area, but the list of organisations remains accessible. 
 
 [Project Overview on AgileVentures](http://www.agileventures.org/projects/localsupport/documents/project-overview-localsupport)
 

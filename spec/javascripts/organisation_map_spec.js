@@ -21,7 +21,7 @@ describe('Organisation map', function() {
         expect(OrganisationMap.centerMap).not.toHaveBeenCalled();
         expect(OrganisationMap.openInfoBox).not.toHaveBeenCalled();
       })
-    })
+    });
     
     describe('and the organisation have valid coordinates', function() {
       beforeEach(function() {

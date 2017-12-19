@@ -9,7 +9,8 @@ class VolunteerOpsController < ApplicationController
     @query = params[:q]
     @volunteer_ops = VolunteerOp.order_by_most_recent.search_for_text(@query)
     flash.now[:alert] = SEARCH_NOT_FOUND if @volunteer_ops.empty?
-    @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
+    @markers = BuildMarkersWithInfoWindow
+                   .with(VolunteerOp.build_by_coordinates(@volunteer_ops), self)
     render template: 'volunteer_ops/index'
   end
 
@@ -21,7 +22,6 @@ class VolunteerOpsController < ApplicationController
   def show
     render template: 'pages/404', status: 404 and return if @volunteer_op.nil?
     @organisation = Organisation.friendly.find(@volunteer_op.organisation_id)
-    organisations = Organisation.where(id: @organisation.id)
     @editable = current_user.can_edit?(@organisation) if current_user
     @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
     add_breadcrumb @organisation.name, organisation_path(@organisation)

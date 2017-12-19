@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe 'Pages', :type => :request, :helpers => :requests do
 
-  let(:page) { FactoryGirl.create :page}
-  let(:superadmin_user) { FactoryGirl.create :user, :superadmin => true}
+  let(:page) { FactoryBot.create :page}
+  let(:superadmin_user) { FactoryBot.create :user, :superadmin => true}
 
   before {login(superadmin_user)}
 

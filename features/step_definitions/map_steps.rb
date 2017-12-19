@@ -2,6 +2,10 @@ Then(/^I should see an infowindow when I click on the map markers:$/) do |table|
   check_for_org_info_box(table.raw.flatten, '.measle')
 end
 
+Then(/^I should see an infowindow when I click on the volunteer opportunities map markers:$/) do |table|
+  check_for_volop_info_box(table.raw.flatten, '.vol_op')
+end
+
 Then (/^I should see an infowindow when mouse enters volop in table:$/) do |table|
   check_for_volop_info_box(table.raw.flatten, '.center-map-on-op')
 end
@@ -20,6 +24,11 @@ end
 
 Then (/^I should not see an infowindow when mouse leaves volop in table:$/) do |table|
   check_for_no_org_info_box(table.raw.flatten, '.center-map-on-op')
+end
+
+Then (/^I should only see the map container element on the page$/) do
+  expect(page).to have_selector('body > *', count: 1)
+  expect(page).to have_selector('body > div.map_container', count: 1)
 end
 
 def check_for_org_info_box tbl, selector
@@ -102,12 +111,15 @@ Then /^the (proposed organisation|organisation) "(.*?)" should have a (large|sma
 end
 
 Then /^I should( not)? see the following (measle|vol_op) markers in the map:$/ do |negative, klass, table|
-  expectation = negative ? :not_to : :to
   klass_hash = {'measle' => '.measle', 'vol_op' => '.vol_op'}
   expect(page).to have_css(klass_hash[klass], :count => table.raw.flatten.length)
   marker_data = page.find('#marker_data')['data-markers']
   table.raw.flatten do |title|
-    expect(marker_data).to include(title)
+    if negative
+      expect(marker_data).not_to include(title)
+    else
+      expect(marker_data).to include(title)
+     end
   end
 end
 

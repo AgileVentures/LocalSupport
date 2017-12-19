@@ -1,10 +1,15 @@
+Notes on Linux installation
+===========================
+
 In order to work on LocalSupport, please fork and clone the project.
 
-1. Install Ruby 2.3.1
+If you need to setup your development environment then [gorails](https://gorails.com/setup/ubuntu/17.10) has an excellent walkthrough.
+
+1. Install Ruby 2.4.2
 1. Fork the http://github.com/AgileVentures/LocalSupport repo (fork button at top right of github web interface)
 1. Clone the new forked repo onto your dev machine
 1. `cd LocalSupport`
-1. Install Qt webkit headers - see [capybara-webkit gem below](issues.md#capybara-webkit-gem)  
+1. Install Qt webkit headers - see [capybara-webkit gem below](issues.md#capybara-webkit-gem)
 1. Install postgreSQL - see [PostgreSQL install instructions below](issues.md#postgresql-install)
 1. Install X virtual frame buffer
 
@@ -33,7 +38,7 @@ The db/seeds.rb task that you ran added some organizations and a test user that 
 
 ## Run tests
 
-Also you should run the specs and cucumber features to make sure your installation is solid. 
+Also you should run the specs and cucumber features to make sure your installation is solid.
 
 Before running the tests you should create a file named `config/application.yml` and add the following line:
 

@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.4.2'
 gem 'rails', '~> 4.2', '>= 4.2.7.1'
-gem 'pg'
+gem 'pg', '0.20' # locked to 0.20 due to https://github.com/rails/rails/issues/29521
 gem 'devise', '~> 3.5', '>= 3.5.10'
 gem 'devise_invitable', '~> 1.6', '>= 1.6.1'
 gem 'heroku-api'
@@ -22,7 +22,7 @@ group :development, :test do
   gem 'database_cleaner', '1.0.1'
   gem 'launchy'
   gem 'simplecov'
-  gem 'sinatra-base'
+  gem 'sinatra'
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
   gem 'execjs'
@@ -49,12 +49,12 @@ group :test do
   gem 'capybara', '2.4.1'
   gem 'capybara-webkit', '~> 1.6.0'
   gem 'nokogiri', '~> 1.7.2'
-  gem 'factory_girl_rails', :require => false
-  gem 'webmock', '1.20.0'
+  gem 'factory_bot_rails'
+  gem 'webmock'
   gem 'uri-handler'
   gem 'selenium'
   gem 'selenium-client'
-  gem 'coveralls', require: false
+  gem 'coveralls', '~> 0.8.21'
   gem 'shoulda'
   gem 'vcr'
   gem 'puffing-billy'

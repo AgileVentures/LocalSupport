@@ -6,8 +6,8 @@ describe User, :type => :model do
 
   context 'invited users scope' do
     before(:each) do
-      @regular_user = FactoryGirl.create(:user, email: 'regular@guy.com')
-      @invited_user = FactoryGirl.create(:user_stubbed_organisation, email: 'invited@guy.com', invitation_sent_at: '2014-03-12 00:18:02', invitation_accepted_at: nil)
+      @regular_user = FactoryBot.create(:user, email: 'regular@guy.com')
+      @invited_user = FactoryBot.create(:user_stubbed_organisation, email: 'invited@guy.com', invitation_sent_at: '2014-03-12 00:18:02', invitation_accepted_at: nil)
     end
 
     it 'finds all users who have not accepted their invitations yet' do
@@ -23,13 +23,13 @@ describe User, :type => :model do
   end
 
   it 'must find an superadmin in find_by_superadmin with true argument' do
-    FactoryGirl.create(:user, superadmin: true)
+    FactoryBot.create(:user, superadmin: true)
     result = User.find_by_superadmin(true)
     expect(result.superadmin?).to be true
   end
 
   it 'must find a non-superadmin in find_by_superadmin with false argument' do
-    FactoryGirl.create(:user, superadmin: false)
+    FactoryBot.create(:user, superadmin: false)
     result = User.find_by_superadmin(false)
     expect(result.superadmin?).to be false
   end
@@ -91,10 +91,10 @@ describe User, :type => :model do
   # http://stackoverflow.com/questions/12125038/where-do-i-confirm-user-created-with-factorygirl
   describe '#make_admin_of_org_with_matching_email' do
     before do
-      @user = FactoryGirl.create(:user, email: 'bert@charity.org')
-      @superadmin_user = FactoryGirl.create(:user, email: 'superadmin@charity.org')
-      @mismatch_org = FactoryGirl.create(:organisation, email: 'superadmin@other_charity.org')
-      @match_org = FactoryGirl.create(:organisation, email: 'superadmin@charity.org')
+      @user = FactoryBot.create(:user, email: 'bert@charity.org')
+      @superadmin_user = FactoryBot.create(:user, email: 'superadmin@charity.org')
+      @mismatch_org = FactoryBot.create(:organisation, email: 'superadmin@other_charity.org')
+      @match_org = FactoryBot.create(:organisation, email: 'superadmin@charity.org')
     end
 
     it 'should call promote_new_user after confirmation' do
@@ -209,7 +209,7 @@ describe User, :type => :model do
   end
 
   context '#request_admin_status' do
-    let(:user) { FactoryGirl.build(:user) }
+    let(:user) { FactoryBot.build(:user) }
     let(:organisation_id) { 12345 }
 
     it 'update pending organisation id' do
@@ -219,8 +219,8 @@ describe User, :type => :model do
   end
 
   describe '#belongs_to?' do
-    let(:user) { FactoryGirl.create :user_stubbed_organisation }
-    let(:other_org) { FactoryGirl.create :organisation }
+    let(:user) { FactoryBot.create :user_stubbed_organisation }
+    let(:other_org) { FactoryBot.create :organisation }
 
     it 'TRUE: user belongs to it' do
       org = user.organisation
@@ -234,8 +234,8 @@ describe User, :type => :model do
   end
 
   describe '#can_create_volunteer_ops?' do
-    let(:user){FactoryGirl.create :user_stubbed_organisation}
-    let(:other_org) { FactoryGirl.create :organisation }
+    let(:user){FactoryBot.create :user_stubbed_organisation}
+    let(:other_org) { FactoryBot.create :organisation }
 
     it 'cannot create volunteer op' do
       expect(user.can_create_volunteer_ops?(other_org)).to be false
@@ -246,14 +246,14 @@ describe User, :type => :model do
     end
 
     it 'site superadmin can create volunteer op' do
-      superadmin = FactoryGirl.create :user, superadmin: true
+      superadmin = FactoryBot.create :user, superadmin: true
       expect(superadmin.can_create_volunteer_ops?(other_org)).to be true
     end
   end
 
   describe "#pending_org_admin?" do
-    let(:user) { FactoryGirl.create :user_stubbed_organisation }
-    let(:other_org) { FactoryGirl.create :organisation }
+    let(:user) { FactoryBot.create :user_stubbed_organisation }
+    let(:other_org) { FactoryBot.create :organisation }
 
     it 'true when user is pending admin for organisation' do
       user.pending_organisation = other_org
@@ -272,7 +272,7 @@ describe User, :type => :model do
   end
 
   describe 'destroy uses acts_as_paranoid' do
-    let(:user){FactoryGirl.create :user}
+    let(:user){FactoryBot.create :user}
     it 'can be restored' do
       email = user.email
       user.destroy
@@ -285,15 +285,15 @@ describe User, :type => :model do
   describe '.purge_deleted_users_where' do
     subject(:do_purge) { User.purge_deleted_users_where(email: 'yes@hello.com') }
     it 'purge deleted user when user match query' do
-      user = FactoryGirl.create :deleted_user, email: 'yes@hello.com'
+      user = FactoryBot.create :deleted_user, email: 'yes@hello.com'
       expect { do_purge }.to change(User.deleted, :count).by(-1)
     end
     it 'does not delete users that is not match query' do
-      user = FactoryGirl.create :deleted_user, email: 'no@hello.com'
+      user = FactoryBot.create :deleted_user, email: 'no@hello.com'
       expect { do_purge }.to change(User.deleted, :count).by(0)
     end
     it 'does not affect undeleted users' do
-      user = FactoryGirl.create :user, email: 'yes@hello.com'
+      user = FactoryBot.create :user, email: 'yes@hello.com'
       expect { do_purge }.to change(User, :count).by(0)
     end
   end
