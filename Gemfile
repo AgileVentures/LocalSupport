@@ -116,6 +116,7 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'meta-tags'
 
 #Social
-gem 'twitter'
+gem 'twitter',      '~> 6.2'
+gem 'twitter-text', '~> 2.0', '>= 2.0.2'
 gem 'koala' # Facebook integration
 
