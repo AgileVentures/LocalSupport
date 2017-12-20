@@ -243,7 +243,7 @@ GEM
       activerecord (>= 4.0, < 5.2)
     parser (2.4.0.2)
       ast (~> 2.3)
-    pg (0.20.0)
+    pg (0.21.0)
     phantomjs (2.1.1.0)
     poltergeist (1.17.0)
       capybara (~> 2.1)
@@ -468,7 +468,7 @@ DEPENDENCIES
   newrelic_rpm
   nokogiri (~> 1.8, >= 1.8.1)
   paranoia (~> 2.0)
-  pg (= 0.20)
+  pg (= 0.21.0)
   phantomjs
   poltergeist
   puffing-billy
