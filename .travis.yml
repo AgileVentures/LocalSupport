@@ -19,13 +19,7 @@ before_install:
   -C $PWD/travis_phantomjs; fi
 - phantomjs --version
 before_script:
-- npm install -g bower
-- bower install
-- bundle exec rake db:create:all
-- bundle exec rake db:migrate
-- bundle exec rake db:migrate VERSION=0
-- bundle exec rake db:migrate
-- bundle exec rake db:test:prepare
+- ./install.sh
 script:
 - bundle exec rake test_with_coveralls
 - bundle exec rake cucumber:second_try

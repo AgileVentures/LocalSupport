@@ -16,9 +16,9 @@ body, html {
     height: 100% !important;
 }
 body {
-    padding-top: 0px !important;
-    margin-top: 0px !important;
-    padding-bottom: 0px !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    padding-bottom: 0 !important;
     background-color: whitesmoke !important;
     line-height: 20px;
 }
@@ -56,14 +56,14 @@ form {
 }
 #footer {
     background: white;
-    min-height: 0%;
+    min-height: 0;
 }
 #push, #footer {
     clear: both;
 }
 
 #footer a {
-    padding-left: 0px;
+    padding-left: 0;
 }
 
 #main .container {
@@ -71,7 +71,7 @@ form {
 }
 
 #main p, a {
-    padding-left: 0px;
+    padding-left: 0;
 }
 
 /*#main .btn {*/
@@ -599,7 +599,7 @@ input#page_link_visible {
     margin: 0;
 }
 #loginForm{
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 #loginForm .in{
      margin-bottom: 20px;

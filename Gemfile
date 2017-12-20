@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.4.2'
 gem 'rails', '~> 4.2', '>= 4.2.7.1'
-gem 'pg', '0.20' # locked to 0.20 due to https://github.com/rails/rails/issues/29521
+gem 'pg', '0.21.0' # locked to 0.20 due to https://github.com/rails/rails/issues/29521
 gem 'devise', '~> 3.5', '>= 3.5.10'
 gem 'devise_invitable', '~> 1.6', '>= 1.6.1'
 gem 'heroku-api'
@@ -30,7 +30,7 @@ group :development, :test do
   gem 'byebug'
   gem 'rack_session_access'
   gem 'jasmine', '~> 2.4'
-  gem 'jasmine-jquery-rails', '2.0.2'
+  gem 'jasmine-jquery-rails', '2.0.3'
   #gem 'better_errors'
   gem 'binding_of_caller' # plays well with better_errors
 end
@@ -46,9 +46,9 @@ end
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
-  gem 'capybara', '2.4.1'
+  gem 'capybara', '2.4.4'
   gem 'capybara-webkit', '~> 1.6.0'
-  gem 'nokogiri', '~> 1.7.2'
+  gem 'nokogiri', '~> 1.8', '>= 1.8.1'
   gem 'factory_bot_rails'
   gem 'webmock'
   gem 'uri-handler'
@@ -70,14 +70,14 @@ end
 
 gem 'coffee-rails', "4.1.0"
 gem 'uglifier', '~> 3.0', '>= 3.0.3'
-gem 'sass-rails', '~> 4.0', '>= 4.0.5'
+gem 'sass-rails', '~> 5.0'
 gem 'less-rails', '2.5.0'
-gem 'twitter-bootstrap-rails', '3.2.0'
+gem 'twitter-bootstrap-rails', '3.2.2'
 
 gem 'font-awesome-rails'
 
 gem 'jquery-rails'
-gem 'bootstrap_sortable_rails', '~> 0.1.3'
+gem 'bootstrap_sortable_rails', '~> 1.11.2'
 gem 'breadcrumbs_on_rails'
 gem 'bootstrap-datepicker-rails'
 # Use unicorn as the web server

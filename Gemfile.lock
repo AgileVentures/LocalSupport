@@ -49,8 +49,8 @@ GEM
       airbrake-ruby (~> 2.5)
     airbrake-ruby (2.6.0)
     arel (6.0.4)
-    aruba (0.14.2)
-      childprocess (~> 0.5.6)
+    aruba (0.14.3)
+      childprocess (~> 0.8.0)
       contracts (~> 0.9)
       cucumber (>= 1.3.19)
       ffi (~> 1.9.10)
@@ -63,11 +63,11 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-datepicker-rails (1.7.1.1)
       railties (>= 3.0)
-    bootstrap_sortable_rails (0.1.3)
+    bootstrap_sortable_rails (1.11.2)
     breadcrumbs_on_rails (3.0.1)
     builder (3.2.3)
     byebug (9.1.0)
-    capybara (2.4.1)
+    capybara (2.4.4)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
@@ -76,7 +76,7 @@ GEM
     capybara-webkit (1.6.0)
       capybara (>= 2.3.0, < 2.5.0)
       json
-    childprocess (0.5.9)
+    childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
     cliver (0.3.2)
     coffee-rails (4.1.0)
@@ -121,7 +121,7 @@ GEM
       railties (>= 4, < 5.2)
     cucumber-rails-training-wheels (1.0.0)
       cucumber-rails (>= 1.1.1)
-    cucumber-tag_expressions (1.1.0)
+    cucumber-tag_expressions (1.1.1)
     cucumber-wire (0.0.1)
     database_cleaner (1.0.1)
     debug_inspector (0.0.3)
@@ -194,7 +194,7 @@ GEM
       rack (>= 1.2.1)
       rake
     jasmine-core (2.8.0)
-    jasmine-jquery-rails (2.0.2)
+    jasmine-jquery-rails (2.0.3)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -227,25 +227,25 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mini_mime (1.0.0)
-    mini_portile2 (2.1.0)
+    mini_portile2 (2.3.0)
     minitest (5.10.3)
     momentjs-rails (2.17.1)
       railties (>= 3.1)
     multi_json (1.12.2)
     multi_test (0.1.2)
     multi_xml (0.6.0)
-    newrelic_rpm (4.6.0.338)
-    nokogiri (1.7.2)
-      mini_portile2 (~> 2.1.0)
+    newrelic_rpm (4.7.0.339)
+    nokogiri (1.8.1)
+      mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
     parallel (1.12.0)
     paranoia (2.4.0)
       activerecord (>= 4.0, < 5.2)
     parser (2.4.0.2)
       ast (~> 2.3)
-    pg (0.20.0)
+    pg (0.21.0)
     phantomjs (2.1.1.0)
-    poltergeist (1.16.0)
+    poltergeist (1.17.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
@@ -283,8 +283,8 @@ GEM
       sprockets-rails
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
-    rails-dom-testing (1.0.8)
-      activesupport (>= 4.2.0.beta, < 5.0)
+    rails-dom-testing (1.0.9)
+      activesupport (>= 4.2.0, < 5.0)
       nokogiri (~> 1.6)
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.3)
@@ -305,6 +305,9 @@ GEM
       rake
     raindrops (0.19.0)
     rake (12.3.0)
+    rb-fsevent (0.10.2)
+    rb-inotify (0.9.10)
+      ffi (>= 0.5.0, < 2)
     redcarpet (3.4.0)
     ref (2.0.0)
     responders (2.4.0)
@@ -342,12 +345,17 @@ GEM
       rubocop (>= 0.24.1)
     ruby-progressbar (1.9.0)
     safe_yaml (1.0.4)
-    sass (3.2.19)
-    sass-rails (4.0.5)
-      railties (>= 4.0.0, < 5.0)
-      sass (~> 3.2.2)
-      sprockets (~> 2.8, < 3.0)
-      sprockets-rails (~> 2.0)
+    sass (3.5.4)
+      sass-listen (~> 4.0.0)
+    sass-listen (4.0.0)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
+    sass-rails (5.0.7)
+      railties (>= 4.0.0, < 6)
+      sass (~> 3.1)
+      sprockets (>= 2.8, < 4.0)
+      sprockets-rails (>= 2.0, < 4.0)
+      tilt (>= 1.1, < 3)
     selenium (0.2.11)
       jar_wrapper
     selenium-client (1.2.18)
@@ -389,11 +397,11 @@ GEM
     tilt (1.4.1)
     timecop (0.9.1)
     tins (1.16.0)
-    twitter-bootstrap-rails (3.2.0)
-      actionpack (~> 4.1)
-      execjs (~> 2.2)
-      rails (~> 4.1)
-      railties (~> 4.1)
+    twitter-bootstrap-rails (3.2.2)
+      actionpack (>= 3.1)
+      execjs (>= 2.2.2, >= 2.2)
+      less-rails (>= 2.5.0)
+      railties (>= 3.1)
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
     uglifier (3.2.0)
@@ -426,10 +434,10 @@ DEPENDENCIES
   aruba
   binding_of_caller
   bootstrap-datepicker-rails
-  bootstrap_sortable_rails (~> 0.1.3)
+  bootstrap_sortable_rails (~> 1.11.2)
   breadcrumbs_on_rails
   byebug
-  capybara (= 2.4.1)
+  capybara (= 2.4.4)
   capybara-webkit (~> 1.6.0)
   coffee-rails (= 4.1.0)
   coveralls (~> 0.8.21)
@@ -449,7 +457,7 @@ DEPENDENCIES
   heroku-api
   httparty
   jasmine (~> 2.4)
-  jasmine-jquery-rails (= 2.0.2)
+  jasmine-jquery-rails (= 2.0.3)
   jbuilder
   jquery-rails
   launchy
@@ -458,9 +466,9 @@ DEPENDENCIES
   meta-tags
   momentjs-rails
   newrelic_rpm
-  nokogiri (~> 1.7.2)
+  nokogiri (~> 1.8, >= 1.8.1)
   paranoia (~> 2.0)
-  pg (= 0.20)
+  pg (= 0.21.0)
   phantomjs
   poltergeist
   puffing-billy
@@ -474,7 +482,7 @@ DEPENDENCIES
   rspec-activemodel-mocks
   rspec-rails
   rubocop-git
-  sass-rails (~> 4.0, >= 4.0.5)
+  sass-rails (~> 5.0)
   selenium
   selenium-client
   shoulda
@@ -485,7 +493,7 @@ DEPENDENCIES
   sucker_punch (~> 2.0)
   therubyracer
   timecop
-  twitter-bootstrap-rails (= 3.2.0)
+  twitter-bootstrap-rails (= 3.2.2)
   uglifier (~> 3.0, >= 3.0.3)
   underscore-rails
   unicorn
