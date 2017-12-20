@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.4.2'
 gem 'rails', '~> 4.2', '>= 4.2.7.1'
-gem 'pg', '0.20' # locked to 0.20 due to https://github.com/rails/rails/issues/29521
+gem 'pg', '0.21.0' # locked to 0.20 due to https://github.com/rails/rails/issues/29521
 gem 'devise', '~> 3.5', '>= 3.5.10'
 gem 'devise_invitable', '~> 1.6', '>= 1.6.1'
 gem 'heroku-api'
