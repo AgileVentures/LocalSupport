@@ -3,6 +3,19 @@
     <h1 class="upcoming-events-header-text" title="Upcoming Events">Upcoming events</h1>
     </p>
 </div>
+
+<%= form_tag("/events/search", :method => "get", class: "volunteer-ops-search") do %>
+  <div class="flex-row">
+    <div class="left-side">
+        <%= label_tag(:q, "Search Text", class: 'field-label') %>
+    </div>
+    <div class="right-side">
+        <%= text_field_tag(:q, @query, class: 'search-text', value: params["q"]) %>
+        <%= submit_tag("Submit", class: 'btn btn-info search-btn') %>
+    </div>
+  </div>
+<% end %>
+
 <div id="events_scroll">
     <div class="col-md-12 events-container">
         <%= render @events %>
