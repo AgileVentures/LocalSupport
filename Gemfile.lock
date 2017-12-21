@@ -125,12 +125,11 @@ GEM
     cucumber-wire (0.0.1)
     database_cleaner (1.6.2)
     debug_inspector (0.0.3)
-    devise (3.5.10)
+    devise (4.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
-      railties (>= 3.2.6, < 5)
+      railties (>= 4.1.0, < 5.2)
       responders
-      thread_safe (~> 0.1)
       warden (~> 1.2.3)
     devise_invitable (1.6.1)
       actionmailer (>= 3.2.6)
@@ -444,7 +443,7 @@ DEPENDENCIES
   cucumber-rails
   cucumber-rails-training-wheels
   database_cleaner (= 1.6.2)
-  devise (~> 3.5, >= 3.5.10)
+  devise (~> 4.3)
   devise_invitable (~> 1.6, >= 1.6.1)
   dotenv-rails
   execjs
