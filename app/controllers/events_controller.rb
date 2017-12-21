@@ -1,7 +1,8 @@
 class EventsController < ApplicationController
+  add_breadcrumb 'Events', :root_url
   layout 'two_columns_with_map'
   before_action :logged_in_user, only: [:new, :create]
-  before_action :superadmin?, except:[:show, :index]
+  before_action :superadmin?, except:[:show, :index, :search]
 
   def new
     @event = Event.new
@@ -11,6 +12,12 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.save ? redirect_to(@event, notice: event_success) : render(:new)
   end
+
+  def search
+    @events = Event.search(params['q'])
+    render template: 'events/index'
+  end
+  
 
   def show
     @event = Event.find_by_id(params[:id])

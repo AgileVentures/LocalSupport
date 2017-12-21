@@ -1,5 +1,3 @@
-<%= render partial: 'shared/map_scripts', locals: {markers: @markers} %>
-<div id="calendar"></div>
 <div class="upcoming-events-header">
     <h1 class="upcoming-events-header-text" title="Upcoming Events">Upcoming events</h1>
 </div>
@@ -16,14 +14,4 @@
   </div>
 <% end %>
 
-<% if !@events.empty? %>
-
-<div id="events_scroll">
-    <div class="col-md-12 events-container">
-        <%= render @events %>
-    </div>
-</div>
-
-<% else %>
-    Sorry no upcoming events at the moment"
-<% end %>
+<%= render partial: 'shared/map_scripts', locals: {markers: @markers} %>

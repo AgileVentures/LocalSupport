@@ -1,0 +1,27 @@
+---
+:scope: 
+:url: http://m.addthis.com/live/red_lojson/300lo.json?si=59e577e1eb824daa&bkl=0&bl=1&sid=59e577e1eb824daa&pub=ra-57ff949adbc21d93&rev=v7.11.0-wp&ln=en&pc=men&cb=0&ab=-&dp=127.0.0.1%3A38213&fp=organisations%2Ffriendly&fr=&of=0&pd=0&irt=1&vcl=1&md=0&ct=1&tct=0&abt=0&cdn=0&pi=1&rb=0&gen=100&chr=UTF-8&colc=1508210657631&jsl=1&uvs=59e577dd5f713d48002&skipb=1&callback=addthis.cbs.oln9_478442258900031450
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Tue, 17 Oct 2017 03:24:17 GMT
+  Content-Type: application/javascript;charset=UTF-8
+  Content-Length: '392'
+  Connection: close
+  Set-Cookie:
+  - mus=0;Path=/;Domain=.addthis.com;Expires=Sun, 11-Nov-2018 03:24:17 GMT
+  - di2="aUly}&.Z&+p8+r1Ge1@n1@m-@_(Kwa#$Ek7=T73l5&Rl&+qRT7D[4(g_7Ck73nl##5o##'_PKo8)^7Kv7Cj7Ci7Ch7Cg70t7'z7&q6LQ6@w1Gr1Fs#(Nn#'>sRI3i7?R5%~m##'`#!%T&.mN#lI1q$?Q9Fs8)_7Ht7C]7?Q7={7.a7(`7(_7'{7'y7'x7'u7%V6IR5%}5%|5%z5%]42v0Ii(JV#'>tR&-~7'}7'|7'w7'v7't7&[6Hq+-^#(5i";Path=/;Domain=.addthis.com;Expires=Sun,
+    11-Nov-2018 03:24:17 GMT
+  - uid=580a3372faba457f;Path=/;Domain=.addthis.com;Expires=Sun, 11-Nov-2018 03:24:17
+    GMT
+  - vc=21;Path=/;Domain=.addthis.com;Expires=Sun, 11-Nov-2018 03:24:17 GMT
+  Expires: Thu, 01 Jan 1970 00:00:00 GMT
+  P3P: policyref="/w3c/p3p.xml", CP="NON ADM OUR DEV IND COM STA"
+  Cache-Control: max-age=0, no-cache, no-store, no-transform
+  Pragma: no-cache
+  Content-Disposition: attachment; filename=1.txt
+  Content-Encoding: gzip
+  Server: cloudflare-nginx
+  CF-RAY: 3af024e3151809a0-ORD
+:content: addthis.cbs.oln9_478442258900031450({"loc":"NzUyMDFOQVVTVFgyMTI4MDgzMjYyMzE5MjBIVg==","pixels":[{"url":"http://addthis.mathtag.com/red/pixel?pid=11112","id":5460,"isHttp":true},{"url":"http://a.tribalfusion.com/i.match?p=b1&u=580a3372faba457f&redirect=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11111%26puid%3D%24TF_USER_ID_ENC%24%26ssrc%3D3","id":5475,"isHttp":true},{"url":"http://tags.bluekai.com/site/21176?ret=html&limit=3&id=580a3372faba457f#iframe","id":6088,"isHttp":true},{"url":"http://match.adsrvr.org/track/cmf/generic?ttd_pid=addthis&ttd_tpi=1","id":5450,"isHttp":true}]});

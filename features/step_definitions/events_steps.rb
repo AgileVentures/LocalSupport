@@ -16,10 +16,10 @@ end
 
 Given(/^the following events? exists?:$/) do |table|
   table.hashes.each do |hash|
-    hash['start_date'] = Time.current if hash['start_date'].downcase == 'today'
-    hash['end_date'] = Time.current if hash['end_date'].downcase == 'today'
+    hash['start_date'] = Chronic.parse(hash['start_date'])
+    hash['end_date'] = Chronic.parse(hash['end_date'])
     event = Event.create(hash)
-    event.save
+    event.save!
   end
 end
 

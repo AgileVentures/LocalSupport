@@ -1,0 +1,22 @@
+---
+:scope: 
+:url: http://a.tribalfusion.com/i.match?p=b1&u=580a3372faba457f&redirect=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11111%26puid%3D%24TF_USER_ID_ENC%24%26ssrc%3D3
+:body: ''
+:status: 302
+:method: get
+:headers:
+  P3P: CP="NOI DEVo TAIa OUR BUS"
+  X-Function: '206'
+  X-Reuse-Index: '1'
+  Cache-Control:
+  - no-cache
+  - private
+  Expires: Thu, 01 Jan 1970 00:00:00 GMT
+  Pragma: no-cache
+  Set-Cookie: ANON_ID=aMnoeUR3YWMQUXuTwbyLZau0oAqNTFMMaHMvZaUgEi; path=/; domain=.tribalfusion.com;
+    expires=Mon, 15-Jan-2018 03:24:18 GMT;
+  Content-Type: text/html
+  Location: "/z/i.match?p=b1&u=580a3372faba457f&redirect=http%3A%2F%2Fsu.addthis.com%2Fred%2Fusync%3Fpid%3D11111%26puid%3D%24TF_USER_ID_ENC%24%26ssrc%3D3"
+  Content-Length: '36'
+  Connection: close
+:content: "<h1>Error 302 Moved Temporarily</h1>"

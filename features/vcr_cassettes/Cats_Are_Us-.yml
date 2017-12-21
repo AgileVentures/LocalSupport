@@ -1,0 +1,197 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=34%20pinner%20road,%20&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Tue, 17 Oct 2017 03:28:25 GMT
+      Expires:
+      - Wed, 18 Oct 2017 03:28:25 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '806'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "34",
+                       "short_name" : "34",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Pinner Road",
+                       "short_name" : "Pinner Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Arden",
+                       "short_name" : "Arden",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Limestone",
+                       "short_name" : "Limestone",
+                       "types" : [ "administrative_area_level_3", "political" ]
+                    },
+                    {
+                       "long_name" : "Buncombe County",
+                       "short_name" : "Buncombe County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "North Carolina",
+                       "short_name" : "NC",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "28704",
+                       "short_name" : "28704",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "34 Pinner Rd, Arden, NC 28704, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 35.4535927,
+                          "lng" : -82.5484386
+                       },
+                       "southwest" : {
+                          "lat" : 35.4535817,
+                          "lng" : -82.5484515
+                       }
+                    },
+                    "location" : {
+                       "lat" : 35.4535927,
+                       "lng" : -82.5484515
+                    },
+                    "location_type" : "RANGE_INTERPOLATED",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 35.4549361802915,
+                          "lng" : -82.5470960697085
+                       },
+                       "southwest" : {
+                          "lat" : 35.45223821970851,
+                          "lng" : -82.54979403029151
+                       }
+                    }
+                 },
+                 "place_id" : "EiIzNCBQaW5uZXIgUmQsIEFyZGVuLCBOQyAyODcwNCwgVVNB",
+                 "types" : [ "street_address" ]
+              },
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "34",
+                       "short_name" : "34",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Pinner Road",
+                       "short_name" : "Pinner Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Harrisville",
+                       "short_name" : "Harrisville",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Pitcairn",
+                       "short_name" : "Pitcairn",
+                       "types" : [ "administrative_area_level_3", "political" ]
+                    },
+                    {
+                       "long_name" : "St. Lawrence County",
+                       "short_name" : "St Lawrence County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "New York",
+                       "short_name" : "NY",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "13648",
+                       "short_name" : "13648",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "34 Pinner Rd, Harrisville, NY 13648, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 44.2121493,
+                          "lng" : -75.3608756
+                       },
+                       "southwest" : {
+                          "lat" : 44.2121404,
+                          "lng" : -75.36088970000002
+                       }
+                    },
+                    "location" : {
+                       "lat" : 44.2121493,
+                       "lng" : -75.3608756
+                    },
+                    "location_type" : "RANGE_INTERPOLATED",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 44.2134938302915,
+                          "lng" : -75.3595336697085
+                       },
+                       "southwest" : {
+                          "lat" : 44.2107958697085,
+                          "lng" : -75.36223163029152
+                       }
+                    }
+                 },
+                 "place_id" : "EigzNCBQaW5uZXIgUmQsIEhhcnJpc3ZpbGxlLCBOWSAxMzY0OCwgVVNB",
+                 "types" : [ "street_address" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Tue, 17 Oct 2017 03:28:25 GMT
+recorded_with: VCR 3.0.3

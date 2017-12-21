@@ -1,0 +1,24 @@
+---
+:scope: 
+:url: http://tags.bluekai.com/site/21176?dt=0&r=1591028780&sig=482678498&bkca=KJyguithpuMJpPcn0zpBnnWNPL+1LEVNEeDN+pOmBMRl1pPnBWGe9m1yYpx=
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: text/html
+  Content-Length: '693'
+  P3P: CP="NOI DSP COR CUR ADMo DEVo PSAo PSDo OUR SAMo BUS UNI NAV", policyref="http://tags.bluekai.com/w3c/p3p.xml"
+  Pragma: no-cache
+  Expires: Thu, 01 Dec 1994 16:00:00 GMT
+  Cache-Control: max-age=0, no-cache, no-store
+  BK-Server: 33a7
+  Date: Tue, 17 Oct 2017 03:25:50 GMT
+  Connection: close
+  Set-Cookie: bku=ra/99e8T8PklA0XN; expires=Sun, 15-Apr-2018 03:25:50 GMT; path=/;
+    domain=.bluekai.com
+:content: |
+  <html><head><script type="text/javascript">function bk_clear(id){try{document.getElementById(id).innerHTML=''}catch(e){}} setTimeout("bk_clear('bk_pl_4124')",1000);</script></head><body><div id="bk_exchange">
+  <img src="http://cm.g.doubleclick.net/pixel?google_nid=bluekai&google_cm&google_sc" width=1 height=1 border=0 alt=""><img src="https://pixel.advertising.com/ups/19350/sync?uid=9R%2FFBz8e99O%2FSKPj&_origin=1&redir=true" width=1 height=1 border=0 alt=""><img src="https://match.adsrvr.org/track/cmf/generic?ttd_pid=bluekai" width=1 height=1 border=0 alt="">
+  </div>
+  <div id="bk_pl_4124"><img src="//su.addthis.com/red/usync?pid=11114&puid=pXWFBx9999YsvrPj&ssrc=1"/>
+  </div></body></html>

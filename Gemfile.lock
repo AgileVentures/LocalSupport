@@ -78,6 +78,7 @@ GEM
       json
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
+    chronic (0.10.2)
     cliver (0.3.2)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -439,6 +440,7 @@ DEPENDENCIES
   byebug
   capybara (= 2.4.4)
   capybara-webkit (~> 1.6.0)
+  chronic
   coffee-rails (= 4.1.0)
   coveralls (~> 0.8.21)
   cucumber-rails

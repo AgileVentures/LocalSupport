@@ -61,6 +61,7 @@ group :test do
   gem 'poltergeist'
   gem 'phantomjs', :require => 'phantomjs/poltergeist'
   gem 'show_me_the_cookies'
+  gem 'chronic'
 end
 
 group :production do
