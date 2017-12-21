@@ -123,7 +123,7 @@ GEM
       cucumber-rails (>= 1.1.1)
     cucumber-tag_expressions (1.1.1)
     cucumber-wire (0.0.1)
-    database_cleaner (1.0.1)
+    database_cleaner (1.6.2)
     debug_inspector (0.0.3)
     devise (3.5.10)
       bcrypt (~> 3.0)
@@ -443,7 +443,7 @@ DEPENDENCIES
   coveralls (~> 0.8.21)
   cucumber-rails
   cucumber-rails-training-wheels
-  database_cleaner (= 1.0.1)
+  database_cleaner (= 1.6.2)
   devise (~> 3.5, >= 3.5.10)
   devise_invitable (~> 1.6, >= 1.6.1)
   dotenv-rails
