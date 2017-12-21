@@ -6,7 +6,7 @@ gem 'pg', '0.21.0' # locked to 0.20 due to https://github.com/rails/rails/issues
 gem 'devise', '~> 3.5', '>= 3.5.10'
 gem 'devise_invitable', '~> 1.6', '>= 1.6.1'
 gem 'heroku-api'
-gem 'sprockets', '~> 2.11', '>= 2.11.3'
+gem 'sprockets', '~> 3.7'
 
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
