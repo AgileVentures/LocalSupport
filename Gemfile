@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.4.2'
 gem 'rails', '~> 4.2', '>= 4.2.7.1'
-gem 'pg', '0.21.0' # locked to 0.20 due to https://github.com/rails/rails/issues/29521
+gem 'pg', '0.21.0'
 gem 'devise', '~> 3.5', '>= 3.5.10'
 gem 'devise_invitable', '~> 1.6', '>= 1.6.1'
 gem 'heroku-api'
@@ -68,7 +68,7 @@ group :production do
   gem 'newrelic_rpm'
 end
 
-gem 'coffee-rails', "4.1.0"
+gem 'coffee-rails', '4.1.0'
 gem 'uglifier', '~> 3.0', '>= 3.0.3'
 gem 'sass-rails', '~> 5.0'
 gem 'less-rails', '2.5.0'
@@ -103,7 +103,7 @@ gem 'url_validator', git: 'https://github.com/AgileVentures/url_validator.git'
 gem 'httparty'
 gem 'sucker_punch', '~> 2.0' # async job
 gem 'rails_autolink'
-gem "paranoia", "~> 2.0"
+gem 'paranoia', '~> 2.0'
 
 gem 'dotenv-rails'
 gem 'figaro'
