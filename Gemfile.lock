@@ -166,7 +166,7 @@ GEM
       thor (~> 0.14)
     font-awesome-rails (4.7.0.2)
       railties (>= 3.2, < 5.2)
-    friendly_id (5.1.0)
+    friendly_id (5.2.3)
       activerecord (>= 4.0.0)
     fullcalendar-rails (3.4.0.0)
       jquery-rails (>= 4.0.5, < 5.0.0)
@@ -451,7 +451,7 @@ DEPENDENCIES
   factory_bot_rails
   figaro
   font-awesome-rails
-  friendly_id (~> 5.1.0)
+  friendly_id (~> 5.2.3)
   fullcalendar-rails
   geocoder
   heroku-api
