@@ -33,7 +33,9 @@ Instructions for installation on different OSs:
 * [C9](installation/c9.md)
 * [Docker](installation/Developing-With-Docker.md)
 
-If you're on Windows, our condolences. Docker or C9 is probably your best option.
+If you're on Windows, our condolences. Docker or C9 is probably your best option, however there are a variety of ways to install [Ubuntu](https://www.ubuntu.com/) while keeping your Windows OS instact if you willing.
+
+Update: Windows 10 is beta testing a Linux subsystem. Find out how to install at [gorails](https://gorails.com/setup/windows/10). Please keep in mind it is still in beta as of this writing.
 
 We also have some collected notes on [issues encountered during install](installation/issues.md)
 
