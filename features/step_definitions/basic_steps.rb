@@ -567,7 +567,8 @@ end
 
 Given(/^I can run the rake task "(.*?)"$/) do |task|
   stdout, stderr, status = Open3.capture3("#{task}")
-  expect(stderr).not_to include "Error"
+  # match word 'Error' or 'error' starting with space.
+  expect(stderr).not_to match /\s\b(Error)\b/ix
   expect(status).to be_success
 end
 
