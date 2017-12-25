@@ -11,12 +11,14 @@ require 'rails_helper'
          to_return(status: 200, body: "", headers: {})
     end
 
-    it 'should be able to post 280 chars or more to twitter' do
-   #   number_of_tweets = @twitter_client.client.user.tweets_count
-      tweet = "Test Tweet This string is going to be greater than 280 characters so we can test that our truncate method is functioning correctly. This is number 140. This string is going to be greater than 280 characters so we can test that our truncate method is functioning correctly. This is number 280. All of these characters should be truncated."
-      @twitter_client.post_to_twitter(tweet)
-   #   expect(@twitter_client.client.user.tweets_count).to eq(number_of_tweets + 1)
+    it 'should be able to parse a tweet' do
+      current_max_tweet_length = 279
+      result = twitter_client.parser(long_tweet)
+      expect(result.length).to eq(current_max_tweet_length)
     end
 
-  end
-end
+    #Need to discuss with team what tests make sense to implement.
+    # Currently These tests do nothing
+    # Since we're posting to a third party API that should have their own
+    # tests than what if any should we implement...
+ end
