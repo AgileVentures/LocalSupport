@@ -1,16 +1,5 @@
 require 'rails_helper'
 
-
-describe TwitterApi do
-  before(:all) do
-    @twitter_client = TwitterApi.new()
-    WebMock.disable! #TODO: Will need to implement a stub request
-  end
-
-  after(:all) do
-    WebMock.enable! #TODO: Will need to implement a stub request
-  end
-
   context 'Posting to twitter' do
     it 'should be able to post 280 chars or less to twitter' do
       #number_of_tweets = @twitter_client.user.tweets_count
