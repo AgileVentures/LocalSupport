@@ -152,7 +152,7 @@ GEM
     em-synchrony (1.0.6)
       eventmachine (>= 1.0.0.beta.1)
     erubis (2.7.0)
-    eventmachine (1.2.5)
+    eventmachine (1.0.9.1)
     eventmachine_httpserver (0.2.1)
     excon (0.59.0)
     execjs (2.7.0)
@@ -251,11 +251,11 @@ GEM
       websocket-driver (>= 0.2.0)
     powerpack (0.1.1)
     public_suffix (3.0.1)
-    puffing-billy (0.11.0)
+    puffing-billy (0.11.1)
       addressable (~> 2.4, >= 2.4.0)
       em-http-request (~> 1.1, >= 1.1.0)
       em-synchrony
-      eventmachine (~> 1.0, >= 1.0.4)
+      eventmachine (~> 1.0.4)
       eventmachine_httpserver
       http_parser.rb (~> 0.6.0)
       multi_json
