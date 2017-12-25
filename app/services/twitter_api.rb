@@ -1,5 +1,7 @@
+require 'twitter-text'
+require 'twitter'
 class TwitterApi
-  include Twitter::Validation
+  include Twitter::TwitterText::Validation
   attr_reader :client
 
   def initialize
