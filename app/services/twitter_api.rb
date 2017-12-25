@@ -15,8 +15,12 @@ class TwitterApi
 
   def post_to_twitter(desc, url='https://www.harrowcn.org.uk/')
     msg = "New #volunteer opportunity at #{url} - #{desc}"
-    parse_result = parse_tweet(msg)
-    tweet = msg[parse_result[:valid_range_start]...parse_result[:valid_range_end]]
+    tweet = parser(msg)
     self.client.update(tweet)
+  end
+
+  def parser(msg)
+    parse_result = parse_tweet(msg)
+    msg[parse_result[:valid_range_start]...parse_result[:valid_range_end]]
   end
 end
