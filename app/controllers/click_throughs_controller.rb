@@ -1,11 +1,9 @@
 class ClickThroughsController < ApplicationController
   def go_to
-    click_through = ClickThrough.new
-    click_through.user_id = current_user.id if user_signed_in?
-    click_through.source_url = request.headers['HTTP_REFERER']
-    click_through.url = params[:url].nil? ? '#' : params[:url]
-    click_through.save
-
-    redirect_to click_through.url
+    user_id = current_user.id if user_signed_in?
+    source_url = request.headers['HTTP_REFERER']
+    url = params[:url].nil? ? '#' : params[:url]
+    ClickThrough.create(user_id: user_id, source_url: source_url, url: url)
+    redirect_to url
   end
 end
