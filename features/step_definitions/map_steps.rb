@@ -58,8 +58,8 @@ def check_for_volop_info_box(tbl, selector, check_tbl_length = true)
       expect(page).to have_css('.arrow_box')
       expect(find('.arrow_box')).to have_content(desc)
       expect(find('.arrow_box')).to have_content(name)
-      expect(find('.arrow_box').first('a', text: name)[:href]).to end_with(organisation_path(org_friendly_id))
-      expect(find('.arrow_box').first('a', text: title)[:href]).to end_with(volunteer_op_path(id))
+      expect(find('.arrow_box').first('a', text: name)[:href]).to end_with(org_friendly_id)
+      expect(find('.arrow_box').first('a', text: title)[:href]).to end_with(id.to_s)
   end
 end
 

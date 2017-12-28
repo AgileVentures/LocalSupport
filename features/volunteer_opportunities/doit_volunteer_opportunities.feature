@@ -32,13 +32,13 @@ Feature: Doit volunteer opportunities
     Given I visit the volunteer opportunities page
     Then the index should contain:
       | Scout Leader (volunteering with 10-14 year olds) 27th Harrow | By Volunteering to work with scouts, you will be responsible, along with the other leaders, helpers and members for planning and running the weekly ... | Scouts - Scout Association - Greater London Region |
-    Then I should see a link to "Scouts - Scout Association - Greater London Region" page "https://do-it.org/organisations/greater-london-region"
+    Then I should see a tracking link to "Scouts - Scout Association - Greater London Region" page "https://do-it.org/organisations/greater-london-region"
 
   Scenario: See a list of current doit volunteer opportunities with a link to opportunity page
     Given I visit the volunteer opportunities page
     Then the index should contain:
       | Scout Leader (volunteering with 10-14 year olds) 27th Harrow | By Volunteering to work with scouts, you will be responsible, along with the other leaders, helpers and members for planning and running the weekly ... | Scouts - Scout Association - Greater London Region |
-    Then I should see a link to "Scout Leader (volunteering with 10-14 year olds) 27th Harrow" page "https://do-it.org/opportunities/79ae1022-9059-40c0-82dd-3f5b15dd796a"
+    Then I should see a tracking link to "Scout Leader (volunteering with 10-14 year olds) 27th Harrow" page "https://do-it.org/opportunities/79ae1022-9059-40c0-82dd-3f5b15dd796a"
 
   Scenario: Doit volunteer opportunites are listed in map popups
     Given I visit the volunteer opportunities page

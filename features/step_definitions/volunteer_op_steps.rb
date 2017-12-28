@@ -106,6 +106,10 @@ Then(/^I should see a link to "(.*?)" page "(.*?)"$/) do |link, url|
   page.should have_link(link, :href => url)
 end
 
+Then(/^I should see a tracking link to "(.*?)" page "(.*?)"$/) do |link, url|
+  page.should have_link(link, :href => "#{click_through_go_path}?url=#{CGI.escape(url)}")
+end
+
 When(/^I set new volunteer opportunity location to "(.*?)", "(.*?)"$/) do |addr, pc|
   fill_in 'Address', with: addr
   fill_in 'Postcode', with: pc
