@@ -2,7 +2,7 @@ module ApplicationHelper
   include StringUtility
 
   def markdown(text)
-    red_carpet = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true)
+    red_carpet = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true)
     red_carpet.render(text).html_safe
   end
 
@@ -20,7 +20,7 @@ module ApplicationHelper
 
   def parent_layout(layout) # http://andre.arko.net/2013/02/02/nested-layouts-on-rails--31/
     @view_flow.set(:layout, output_buffer)
-    self.output_buffer = render(:file => "layouts/#{layout}")
+    self.output_buffer = render(file: "layouts/#{layout}")
   end
 
   def cookie_policy_accepted?
