@@ -21,6 +21,6 @@ class TwitterApi
 
   def parser(msg)
     parse_result = parse_tweet(msg)
-    msg[parse_result[:valid_range_start]...parse_result[:valid_range_end]]
+    msg[parse_result[:valid_range_start]..parse_result[:valid_range_end]]
   end
 end
