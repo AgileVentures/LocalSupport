@@ -177,6 +177,7 @@ GEM
     gherkin (5.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    grease (0.3.1)
     hashdiff (0.3.7)
     heroku-api (0.4.3)
       excon (~> 0.45)
@@ -209,11 +210,14 @@ GEM
     kgio (2.11.1)
     launchy (2.4.3)
       addressable (~> 2.3)
-    less (2.5.1)
+    less (2.6.0)
       commonjs (~> 0.2.7)
-    less-rails (2.5.0)
-      actionpack (>= 3.1)
-      less (~> 2.5.0)
+    less-rails (3.0.0)
+      actionpack (>= 4.0)
+      grease
+      less (~> 2.6.0)
+      sprockets (> 2, < 4)
+      tilt
     letter_opener (1.5.0)
       launchy (~> 2.2)
     libv8 (3.16.14.19)
@@ -229,7 +233,7 @@ GEM
     mime-types-data (3.2016.0521)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
-    minitest (5.10.3)
+    minitest (5.11.1)
     momentjs-rails (2.17.1)
       railties (>= 3.1)
     multi_json (1.12.2)
@@ -462,7 +466,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   launchy
-  less-rails (= 2.5.0)
+  less-rails (= 3.0.0)
   letter_opener
   meta-tags
   momentjs-rails
