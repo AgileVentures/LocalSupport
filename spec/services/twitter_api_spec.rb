@@ -17,8 +17,10 @@ require 'rails_helper'
       expect(result.length).to eq(current_max_tweet_length)
     end
 
-    #Need to discuss with team what tests make sense to implement.
-    # Currently These tests do nothing
-    # Since we're posting to a third party API that should have their own
-    # tests than what if any should we implement...
- end
+    it 'should be able to parse a short tweet' do
+      result = twitter_client.parser("abc")
+      expect(result).to eq("abc")
+    end
+
+    #Need to work on stubbing the request properly
+  end
