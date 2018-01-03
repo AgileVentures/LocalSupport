@@ -12,7 +12,7 @@ require 'rails_helper'
     end
 
     it 'should be able to parse a tweet' do
-      current_max_tweet_length = 279
+      current_max_tweet_length = 280
       result = twitter_client.parser(long_tweet)
       expect(result.length).to eq(current_max_tweet_length)
     end
