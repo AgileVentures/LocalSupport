@@ -104,9 +104,9 @@ Then /^the (proposed organisation|organisation) "(.*?)" should have a (large|sma
   org_id = klass.find_by(name: name).id
   marker_class = (icon_size == "small") ? "measle" : "marker"
   if marker_class == "measle"
-    expect(find_map_icon(marker_class, org_id)["src"]).to end_with "/assets/measle.png"
+    expect(find_map_icon(marker_class, org_id)["src"]).to match /\/assets\/measle-(\w*)\.png$/ix
   else
-    expect(find_map_icon(marker_class, org_id)["src"]).to end_with "/assets/marker.png"
+    expect(find_map_icon(marker_class, org_id)["src"]).to match /\/assets\/marker-(\w*)\.png$/ix
   end
 end
 

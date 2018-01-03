@@ -6,7 +6,7 @@ gem 'pg', '0.21.0'
 gem 'devise', '~> 3.5', '>= 3.5.10'
 gem 'devise_invitable', '~> 1.6', '>= 1.6.1'
 gem 'heroku-api'
-gem 'sprockets', '~> 2.11', '>= 2.11.3'
+gem 'sprockets', '~> 3.7', '>= 3.7.1'
 
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
@@ -71,7 +71,7 @@ end
 gem 'coffee-rails', '4.2.2'
 gem 'uglifier', '~> 4.1'
 gem 'sass-rails', '~> 5.0'
-gem 'less-rails', '2.5.0'
+gem 'less-rails', '~> 3.0'
 gem 'twitter-bootstrap-rails', '3.2.2'
 
 gem 'font-awesome-rails'
