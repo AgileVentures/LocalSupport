@@ -19,17 +19,32 @@
           <%= f.text_area :description, :class => "wide_form", :cols => "10", :rows => "10", :placeholder => "Enter event description" %>
         </td>
       </tr>
-      <td><h3>
-          Start Date
-        </h3></td>
+      <tr>
+        <td class="borderless" data-toggle="tooltip" title="Select an Organisation to host the event here.">
+          <% if @event.errors[:address].any?%>
+            <p class="error"><%= @event.errors[:address].first %></p>
+          <% end %>
+          <%= f.collection_select :id, Organisation.order(:name),:id,:name, {:prompt => 'Please select an organisation'} %>
+        </td>
+      </tr>
+      <tr>
+        <td class="borderless" data-toggle="tooltip" title="Select an Organisation to host the event here.">
+          <% if @event.errors[:address].any?%>
+            <p class="error"><%= @event.errors[:address].first %></p>
+          <% end %>
+          <%= f.text_area :postal, :size => "50x4", :class => "wide_form event_h3", :placeholder => "Enter event postal code" %>
+        </td>
+      </tr>
+      <td>
+        <h3>Start Date</h3>
+      </td>
         <tr>
           <td data-toggle="tooltip" title="Enter the start date ">
             <% if @event.errors[:start_date].any?%>
               <p class="error-name"><%= @event.errors[:start_date].first %></p>
             <% end %>
             <%= f.text_field :start_date, 'data-behaviour' => 'datepicker', :placeholder => 'dd/mm/yyyy' %>
-
-        </td>
+          </td>
         </tr>
         <tr>
           <td><h3>
