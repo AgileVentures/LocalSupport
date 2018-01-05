@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '2.4.2'
-gem 'rails', '~> 5.0', '>= 5.0.6'
+gem 'rails', '~> 5.1'
 gem 'pg', '0.21.0'
 gem 'devise', '~> 4.4'
 gem 'devise_invitable', '~> 1.6', '>= 1.6.1'
