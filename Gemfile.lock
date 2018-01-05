@@ -487,7 +487,7 @@ DEPENDENCIES
   puffing-billy
   rack_session_access
   railroady
-  rails (~> 5.1, >= 5.1.3)
+  rails (~> 5.1, >= 5.1.4)
   rails-controller-testing
   rails_12factor
   rails_autolink
