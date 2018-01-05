@@ -43,10 +43,10 @@ group :development do
 end
 
 group :test do
-  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails', require: false
   gem 'cucumber-rails-training-wheels'
-  gem 'capybara', '2.13.0'
-  gem 'capybara-webkit', '~> 1.14.0'
+  gem 'capybara', '~> 2.17'
+  gem 'capybara-webkit', git: 'https://github.com/thoughtbot/capybara-webkit.git'
   gem 'nokogiri', '~> 1.8', '>= 1.8.1'
   gem 'factory_bot_rails'
   gem 'webmock'
@@ -58,7 +58,7 @@ group :test do
   gem 'vcr'
   gem 'puffing-billy'
   gem 'poltergeist'
-  gem 'phantomjs', :require => 'phantomjs/poltergeist'
+  gem 'phantomjs', require: 'phantomjs/poltergeist'
   gem 'show_me_the_cookies'
 end
 
