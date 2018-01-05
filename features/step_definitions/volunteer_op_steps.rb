@@ -152,3 +152,7 @@ Given(/^I fill additional fields required by Doit$/) do
   fill_in('Advertise end date', with: '2017-04-01')
 
 end
+
+Then(/^Opening "(.*?)" should update the click through table/) do |organisation|
+  expect { click_link(organisation) }.to change { ClickThrough.count }
+end
