@@ -1,19 +1,18 @@
 GIT
-  remote: git@github.com:thoughtbot/capybara-webkit.git
-  revision: 0f548058b73d909146a207c4bd34753b82273a71
-  branch: master
-  specs:
-    capybara-webkit (1.14.0)
-      capybara (~> 2.3)
-      json
-
-GIT
   remote: https://github.com/AgileVentures/url_validator.git
   revision: 00f7246d39fae872dd198afda3638df88fa7dbd9
   specs:
     url_validator (0.1.0)
       addressable
       rails
+
+GIT
+  remote: https://github.com/thoughtbot/capybara-webkit.git
+  revision: 0f548058b73d909146a207c4bd34753b82273a71
+  specs:
+    capybara-webkit (1.14.0)
+      capybara (~> 2.3)
+      json
 
 GEM
   remote: https://rubygems.org/
