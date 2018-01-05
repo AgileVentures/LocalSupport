@@ -1,4 +1,4 @@
-class BaseOrganisation < ActiveRecord::Base
+class BaseOrganisation < ApplicationRecord
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
   

@@ -1,4 +1,4 @@
-class VolunteerOp < ActiveRecord::Base
+class VolunteerOp < ApplicationRecord
   include GlobalID::Identification
   acts_as_paranoid
   validates :title, :description, presence: true
