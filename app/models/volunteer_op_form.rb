@@ -50,10 +50,11 @@ class VolunteerOpForm
   end
 
   def assign_attributes(params)
-    volunteer_op_params = params.slice(*self.class.volunteer_op_attributes) 
+    return if params.empty?
+    volunteer_op_params = params[:volunteer_op].slice(*self.class.volunteer_op_attributes)
     volunteer_op.assign_attributes(volunteer_op_params)
     @post_to_doit = params[:post_to_doit]
-    doit_volunteer_op_params = params.slice(*self.class.doit_volunteer_op_attributes) 
+    doit_volunteer_op_params = params.slice(*self.class.doit_volunteer_op_attributes)
     @doit_volunteer_op = DoitVolunteerOp.new(doit_volunteer_op_params)
   end
 
