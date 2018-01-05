@@ -18,7 +18,7 @@ describe User, :type => :model do
 
     it 'eager loads the associated organisations' do
       collection = User.invited_not_accepted
-      expect(collection.first.association_cache).not_to be_empty
+      expect(collection.first.association_cached?(:organisation)).to be true
     end
   end
 
