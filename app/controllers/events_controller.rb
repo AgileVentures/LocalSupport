@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   layout 'two_columns_with_map'
-  before_action :logged_in_user, only: [:new, :create]
-  before_action :superadmin?, except:[:show, :index]
+  before_action :logged_in_user, only: [:new, :create, :index]
+  #before_action :superadmin?, except:[:show, :index]
 
   def new
     @event = Event.new
@@ -30,7 +30,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, :start_date, :end_date)
+    params.require(:event).permit(:title, :description, :postal, :start_date, :end_date)
   end
 
   def logged_in_user

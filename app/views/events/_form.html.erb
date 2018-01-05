@@ -20,19 +20,8 @@
         </td>
       </tr>
       <tr>
-        <td class="borderless" data-toggle="tooltip" title="Select an Organisation to host the event here.">
-          <% if @event.errors[:address].any?%>
-            <p class="error"><%= @event.errors[:address].first %></p>
-          <% end %>
-          <%= f.collection_select :id, Organisation.order(:name),:id,:name, {:prompt => 'Please select an organisation'} %>
-        </td>
-      </tr>
-      <tr>
-        <td class="borderless" data-toggle="tooltip" title="Select an Organisation to host the event here.">
-          <% if @event.errors[:address].any?%>
-            <p class="error"><%= @event.errors[:address].first %></p>
-          <% end %>
-          <%= f.text_area :postal, :size => "50x4", :class => "wide_form event_h3", :placeholder => "Enter event postal code" %>
+        <td class="borderless" data-toggle="tooltip" title="Make sure post code is accurate">
+          <%= f.text_field :postal, :class => "wide_form", :placeholder => "Enter event post code" %>
         </td>
       </tr>
       <td>
