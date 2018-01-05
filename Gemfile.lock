@@ -6,6 +6,14 @@ GIT
       addressable
       rails
 
+GIT
+  remote: https://github.com/thoughtbot/capybara-webkit.git
+  revision: 0f548058b73d909146a207c4bd34753b82273a71
+  specs:
+    capybara-webkit (1.14.0)
+      capybara (~> 2.3)
+      json
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -67,16 +75,13 @@ GEM
     breadcrumbs_on_rails (3.0.1)
     builder (3.2.3)
     byebug (9.1.0)
-    capybara (2.13.0)
+    capybara (2.17.0)
       addressable
-      mime-types (>= 1.16)
+      mini_mime (>= 0.1.3)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
-      xpath (~> 2.0)
-    capybara-webkit (1.14.0)
-      capybara (>= 2.3.0, < 2.14.0)
-      json
+      xpath (>= 2.0, < 4.0)
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
     cliver (0.3.2)
@@ -126,16 +131,15 @@ GEM
     cucumber-wire (0.0.1)
     database_cleaner (1.6.2)
     debug_inspector (0.0.3)
-    devise (3.5.10)
+    devise (4.4.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
-      railties (>= 3.2.6, < 5)
+      railties (>= 4.1.0, < 5.2)
       responders
-      thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    devise_invitable (1.6.1)
-      actionmailer (>= 3.2.6)
-      devise (>= 3.2.0)
+    devise_invitable (1.7.2)
+      actionmailer (>= 4.1.0)
+      devise (>= 4.0.0)
     diff-lcs (1.3)
     docile (1.1.5)
     dotenv (2.2.1)
@@ -263,8 +267,6 @@ GEM
       eventmachine_httpserver
       http_parser.rb (~> 0.6.0)
       multi_json
-    quiet_assets (1.1.0)
-      railties (>= 3.1, < 5.0)
     rack (1.6.8)
     rack-protection (1.5.3)
       rack
@@ -348,7 +350,7 @@ GEM
       rubocop (>= 0.24.1)
     ruby-progressbar (1.9.0)
     safe_yaml (1.0.4)
-    sass (3.5.4)
+    sass (3.5.5)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -416,15 +418,15 @@ GEM
     vcr (4.0.0)
     warden (1.2.7)
       rack (>= 1.0)
-    webmock (3.2.0)
+    webmock (3.2.1)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
-    xpath (2.1.0)
-      nokogiri (~> 1.3)
+    xpath (3.0.0)
+      nokogiri (~> 1.8)
     zip (2.0.2)
 
 PLATFORMS
@@ -438,14 +440,14 @@ DEPENDENCIES
   bootstrap_sortable_rails (~> 1.11.2)
   breadcrumbs_on_rails
   byebug
-  capybara (= 2.13.0)
-  capybara-webkit (~> 1.14.0)
+  capybara (~> 2.17)
+  capybara-webkit!
   coffee-rails (= 4.2.2)
   coveralls (~> 0.8.21)
   cucumber-rails
   cucumber-rails-training-wheels
   database_cleaner (= 1.6.2)
-  devise (~> 3.5, >= 3.5.10)
+  devise (~> 4.4)
   devise_invitable (~> 1.6, >= 1.6.1)
   dotenv-rails
   execjs
@@ -473,7 +475,6 @@ DEPENDENCIES
   phantomjs
   poltergeist
   puffing-billy
-  quiet_assets
   rack_session_access
   railroady
   rails (~> 4.2, >= 4.2.7.1)

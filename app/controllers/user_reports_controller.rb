@@ -1,6 +1,6 @@
 class UserReportsController < ApplicationController
   layout 'full_width', :except => [:invited]
-  before_filter :authorize, :except => [:update]
+  before_action :authorize, :except => [:update]
   include ActionView::Helpers::DateHelper
 
   def deleted

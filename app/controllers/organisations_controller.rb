@@ -3,7 +3,7 @@ class OrganisationsController < BaseOrganisationsController
   layout 'two_columns_with_map'
   # GET /organisations/search
   # GET /organisations/search.json
-  before_filter :authenticate_user!, :except => [:search, :index, :show]
+  before_action :authenticate_user!, except: [:search, :index, :show]
   prepend_before_action :set_organisation, only: [:show, :update, :edit]
 
   def search
@@ -15,7 +15,7 @@ class OrganisationsController < BaseOrganisationsController
     flash.now[:alert] = SEARCH_NOT_FOUND if @organisations.empty?
     @markers = build_map_markers(@organisations)
 
-    render :template =>'organisations/index'
+    render template: 'organisations/index'
   end
 
   # GET /organisations
@@ -81,7 +81,7 @@ class OrganisationsController < BaseOrganisationsController
     if @organisation.update_attributes_with_superadmin(update_params)
       redirect_to @organisation, notice: 'Organisation was successfully updated.'
     else
-      render action: "edit"
+      render action: 'edit'
     end
   end
 

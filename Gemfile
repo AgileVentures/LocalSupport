@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.4.2'
 gem 'rails', '~> 4.2', '>= 4.2.7.1'
 gem 'pg', '0.21.0'
-gem 'devise', '~> 3.5', '>= 3.5.10'
+gem 'devise', '~> 4.4'
 gem 'devise_invitable', '~> 1.6', '>= 1.6.1'
 gem 'heroku-api'
 gem 'sprockets', '~> 3.7', '>= 3.7.1'
@@ -11,7 +11,6 @@ gem 'sprockets', '~> 3.7', '>= 3.7.1'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'jbuilder'
-
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -39,15 +38,13 @@ group :development do
   gem 'rubocop-git'
   gem 'letter_opener'
   gem 'railroady'
-  gem 'quiet_assets'
-
 end
 
 group :test do
-  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails', require: false
   gem 'cucumber-rails-training-wheels'
-  gem 'capybara', '2.13.0'
-  gem 'capybara-webkit', '~> 1.14.0'
+  gem 'capybara', '~> 2.17'
+  gem 'capybara-webkit', git: 'https://github.com/thoughtbot/capybara-webkit.git'
   gem 'nokogiri', '~> 1.8', '>= 1.8.1'
   gem 'factory_bot_rails'
   gem 'webmock'
@@ -59,7 +56,7 @@ group :test do
   gem 'vcr'
   gem 'puffing-billy'
   gem 'poltergeist'
-  gem 'phantomjs', :require => 'phantomjs/poltergeist'
+  gem 'phantomjs', require: 'phantomjs/poltergeist'
   gem 'show_me_the_cookies'
 end
 
