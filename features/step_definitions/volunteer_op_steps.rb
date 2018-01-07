@@ -156,3 +156,8 @@ end
 Then(/^Opening "(.*?)" should update the click through table/) do |organisation|
   expect { click_link(organisation) }.to change { ClickThrough.count }
 end
+
+Then (/^I should see "(.*?)" in the the click through table/) do |link|
+  sleep 0.1
+  expect(ClickThrough.last.url).to start_with(link)
+end

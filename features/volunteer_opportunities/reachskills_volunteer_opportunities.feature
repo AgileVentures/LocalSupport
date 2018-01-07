@@ -41,4 +41,4 @@ Feature: Reachskills volunteer opportunities
   Scenario: Reachskills volunteer opportunities are opened in a new page
     Given I visit the volunteer opportunities page
     Then I should open "Charity Treasurer" in a new window
-    Then Opening "Charity Treasurer" should update the click through table
+    Then I should see "https://reachskills.org.uk/opp/charity-treasurer-10" in the the click through table
