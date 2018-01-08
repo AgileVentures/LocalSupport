@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
   validates :description, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
-  validates_presence_of :postal, presence: true
+  belongs_to :organisation
   scope :upcoming, lambda { |n|
                                where('start_date > ?', DateTime.current.midnight)
                               .order('created_at DESC')

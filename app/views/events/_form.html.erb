@@ -20,8 +20,11 @@
         </td>
       </tr>
       <tr>
-        <td class="borderless" data-toggle="tooltip" title="Make sure post code is accurate">
-          <%= f.text_field :postal, :class => "wide_form", :placeholder => "Enter event post code" %>
+        <td class="borderless" data-toggle="tooltip" title="Select an Organisation to host the event here.">
+          <% if @event.errors[:organisation_id].any?%>
+            <p class="error"><%= @event.errors[:organisation_id].first %></p>
+          <% end %>
+          <%= f.collection_select :organisation_id, Organisation.order(:name), :id, :name, {:prompt => 'Please select an Organisation'} %>
         </td>
       </tr>
       <td>
@@ -33,7 +36,7 @@
               <p class="error-name"><%= @event.errors[:start_date].first %></p>
             <% end %>
             <%= f.text_field :start_date, 'data-behaviour' => 'datepicker', :placeholder => 'dd/mm/yyyy' %>
-          </td>
+        </td>
         </tr>
         <tr>
           <td><h3>

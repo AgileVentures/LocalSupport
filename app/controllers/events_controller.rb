@@ -1,6 +1,6 @@
-class EventsController < ApplicationController
+class EventsController < BaseOrganisationsController
   layout 'two_columns_with_map'
-  before_action :logged_in_user, only: [:new, :create, :index]
+  before_action :logged_in_user, only: [:new, :create, :index, :show]
   #before_action :superadmin?, except:[:show, :index]
 
   def new
@@ -17,10 +17,13 @@ class EventsController < ApplicationController
   end
 
   def index
-    respond_to do |format|
-      format.html {  @events = Event.upcoming(10) }
-      format.json {  @events = Event.where(start_date: params[:start]..params[:end]) }
-    end
+    @events = Event.upcoming(10)
+    #@markers = build_map_markers(@events.organisations)
+
+    #respond_to do |format|
+    #  format.html {  @events = Event.upcoming(10) }
+    #  format.json {  @events = Event.where(start_date: params[:start]..params[:end]) }
+    #end
   end
 
   private
@@ -30,7 +33,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, :postal, :start_date, :end_date)
+    params.require(:event).permit(:title, :description, :postal, :start_date, :end_date, :organisations)
   end
 
   def logged_in_user
