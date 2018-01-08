@@ -1,7 +1,7 @@
-class EventsController < BaseOrganisationsController
+class EventsController < ApplicationController
   layout 'two_columns_with_map'
-  before_action :logged_in_user, only: [:new, :create, :index, :show]
-  #before_action :superadmin?, except:[:show, :index]
+  before_action :logged_in_user, only: [:new, :create]
+  before_action :superadmin?, except:[:show, :index]
 
   def new
     @event = Event.new
@@ -18,7 +18,7 @@ class EventsController < BaseOrganisationsController
 
   def index
     @events = Event.upcoming(10)
-    #@markers = build_map_markers(@events.organisations)
+    @markers = BuildMarkersWithInfoWindow.with(Event.build_by_coordinates(@events), self)
 
     #respond_to do |format|
     #  format.html {  @events = Event.upcoming(10) }
@@ -33,7 +33,7 @@ class EventsController < BaseOrganisationsController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, :postal, :start_date, :end_date, :organisations)
+    params.require(:event).permit(:title, :description, :postal, :start_date, :end_date, :organisation_id)
   end
 
   def logged_in_user

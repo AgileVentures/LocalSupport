@@ -22,7 +22,11 @@ class BuildMarkersWithInfoWindow
   def build_single_marker(volop, marker)
     location = volop.first
     vol_ops = volop.last
-    source = VolunteerOp.get_source(vol_ops)
+    if vol_ops.first.try(:source)
+      source = VolunteerOp.get_source(vol_ops)
+    else
+      source = "local"
+    end
     marker.lat location.latitude
     marker.lng location.longitude
     marker.infowindow listener.render_to_string(
