@@ -43,7 +43,8 @@ class VolunteerOpsController < ApplicationController
   def edit
     volunteer_op_record = VolunteerOp.find(params[:id])
     @can_publish_to_doit = true if can_post_to_doit?(volunteer_op_record.id)
-    @volunteer_op = VolunteerOpForm.new(volunteer_op: volunteer_op_record)
+    @volunteer_op = VolunteerOpForm.new()
+    @volunteer_op.volunteer_op = volunteer_op_record
     organisations = Organisation.where(id: @volunteer_op.organisation_id)
     @organisation = organisations.first!
     @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
@@ -51,7 +52,8 @@ class VolunteerOpsController < ApplicationController
 
   def update
     volunteer_op_record = VolunteerOp.find(params[:id])
-    @volunteer_op = VolunteerOpForm.new(volunteer_op: volunteer_op_record)
+    @volunteer_op = VolunteerOpForm.new()
+    @volunteer_op.volunteer_op = volunteer_op_record
     @organisation = @volunteer_op.organisation
     @volunteer_op.assign_attributes(volunteer_op_params)
     result = @volunteer_op.save

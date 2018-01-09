@@ -8,12 +8,18 @@ class VolunteerOpForm
     validates :advertise_end_date, presence: true
     validates :doit_org_id, presence: true
     attr_accessor :advertise_start_date, :advertise_end_date, :doit_org_id
-
   end
 
-  attr_accessor :volunteer_op, :post_to_doit, :doit_volunteer_op
+  attr_writer :volunteer_op, :post_to_doit, :doit_volunteer_op
 
   validate :validate_children
+
+  def initialize(attributes={})
+    super
+    @volunteer_op ||= VolunteerOp.new
+    @doit_volunteer_op ||= DoitVolunteerOp.new
+    @post_to_doit ||= 0
+  end
 
   def volunteer_op
     @volunteer_op ||= VolunteerOp.new
