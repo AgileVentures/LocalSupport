@@ -74,8 +74,9 @@ class VolunteerOpForm
   private
 
   def setup_volunteer_op_params(params)
-    return params[:volunteer_op].slice(*self.class.volunteer_op_attributes).to_h unless params[:volunteer_op].nil?
-    params.slice(*self.class.volunteer_op_attributes).to_h
+    args = self.class.volunteer_op_attributes
+    return params[:volunteer_op].slice(*args).to_h unless params[:volunteer_op].nil?
+    params.slice(*args).to_h
   end
 
   def post_to_doit?
