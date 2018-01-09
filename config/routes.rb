@@ -40,6 +40,8 @@ LocalSupport::Application.routes.draw do
 
   post 'cookies/allow', to: 'application#allow_cookie_policy'
 
+  get '/click_through/go' => 'click_throughs#go_to'
+
   resources :mail_templates
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -259,6 +259,11 @@ Then /^the URL for "(.*?)" should refer to "(.*?)"$/ do |name, href|
   expect(page).to have_link "#{name}", href: href
 end
 
+Then /^the URL for "(.*?)" should refer to tracking link including "(.*?)"$/ do |name, href|
+  link = find_link(name)
+  expect(link['href']).to include(CGI.escape(href))
+end
+
 And /^the search box should contain "(.*?)"$/ do |arg1|
   expect(page).to have_xpath("//input[@id='q' and @value='#{arg1}']")
 end

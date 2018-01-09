@@ -38,8 +38,6 @@ group :development do
   gem 'rubocop-git'
   gem 'letter_opener'
   gem 'railroady'
-  gem 'quiet_assets'
-
 end
 
 group :test do
