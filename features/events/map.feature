@@ -21,15 +21,11 @@ Feature: Map of local events
   @javascript @vcr @billy
   Scenario: Show all events in map on events page map
     Given I visit the events page
-    Then I should see 1 markers in the map
-    And the map should show the opportunity titled <title>
-    Examples:
-      | title             |
-      | My first event    |
-      | An Event today    |
+    Then I should see the following event markers in the map:
+      | Cats Are Us | Office Primer |
 
   @javascript @billy
   Scenario: Infowindow appears when clicking on map marker
     Given I visit the events page
-    Then I should see an infowindow when I click on the map markers:
+    Then I should see an infowindow when I click on the event map markers:
       | My first event | An Event today |

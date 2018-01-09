@@ -16,6 +16,7 @@ end
 
 Given(/^the following events? exists?:$/) do |table|
   table.hashes.each do |hash|
+    hash["organisation"] = Organisation.find_by_name(hash["organisation"])
     hash['start_date'] = Time.current if hash['start_date'].downcase == 'today'
     hash['end_date'] = Time.current if hash['end_date'].downcase == 'today'
     event = Event.create(hash)

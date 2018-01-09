@@ -2,7 +2,7 @@ Then(/^I should see an infowindow when I click on the map markers:$/) do |table|
   check_for_org_info_box(table.raw.flatten, '.measle')
 end
 
-Then(/^I should see an infowindow when I click on the volunteer opportunities map markers:$/) do |table|
+Then(/^I should see an infowindow when I click on the (?:.*) map markers:$/) do |table|
   check_for_volop_info_box(table.raw.flatten, '.vol_op')
 end
 
@@ -110,8 +110,8 @@ Then /^the (proposed organisation|organisation) "(.*?)" should have a (large|sma
   end
 end
 
-Then /^I should( not)? see the following (measle|vol_op) markers in the map:$/ do |negative, klass, table|
-  klass_hash = {'measle' => '.measle', 'vol_op' => '.vol_op'}
+Then /^I should( not)? see the following (measle|vol_op|event) markers in the map:$/ do |negative, klass, table|
+  klass_hash = {'measle' => '.measle', 'vol_op' => '.vol_op', 'event' => '.vol_op'}
   expect(page).to have_css(klass_hash[klass], :count => table.raw.flatten.length)
   marker_data = page.find('#marker_data')['data-markers']
   table.raw.flatten do |title|
