@@ -2,12 +2,12 @@ require 'custom_errors'
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :store_location,
+  before_action :store_location,
                 :assign_footer_page_links,
                 :set_tags
 
   include CustomErrors
-  
+
   # Add breadcrumb at home page.
   add_breadcrumb 'home', :root_path
 
@@ -40,9 +40,8 @@ class ApplicationController < ActionController::Base
 
   # Stores the URL if permitted
   def store_location
-    if request_controller_is(white_listed) && request_verb_is_get?
-      session[:previous_url] = request.fullpath
-    end
+    return unless request_controller_is(white_listed) && request_verb_is_get?
+    session[:previous_url] = request.fullpath
   end
 
   # Devise hook
@@ -58,7 +57,7 @@ class ApplicationController < ActionController::Base
 
   # Devise Invitable hook
   # Since users are invited to be org admins, we're delivering them to their page
-  def after_accept_path_for(resource)
+  def after_accept_path_for(_resource)
     return organisation_path(current_user.organisation) if current_user.organisation
     root_path
   end
@@ -83,11 +82,11 @@ class ApplicationController < ActionController::Base
   # Enforces superadmin-only limits
   # http://railscasts.com/episodes/20-restricting-access
   def authorize
-    unless superadmin?
-      flash[:error] = t('authorize.superadmin')
-      redirect_to root_path
-      false
-    end
+    return if superadmin?
+
+    flash[:error] = t('authorize.superadmin')
+    redirect_to root_path
+    false
   end
 
   def superadmin?
@@ -99,17 +98,13 @@ class ApplicationController < ActionController::Base
   end
 
   def set_flash_warning_reminder_to_update_details usr
-    if usr.organisation and not usr.organisation.has_been_updated_recently?
-      msg = render_to_string(
-        partial: "shared/call_to_action",
-        locals: {org: usr.organisation}
-      ).html_safe
-      if flash[:warning]
-        flash[:warning] << ' ' << msg
-      else
-        flash[:warning] = msg
-      end
-    end
+    return unless usr.organisation and not usr.organisation.has_been_updated_recently?
+    msg = render_to_string(
+      partial: 'shared/call_to_action',
+      locals: {org: usr.organisation}
+    ).html_safe
+    return flash[:warning] << ' ' << msg if flash[:warning]
+    flash[:warning] = msg
   end
 
   def set_tags

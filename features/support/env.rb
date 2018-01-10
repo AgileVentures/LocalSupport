@@ -17,7 +17,7 @@ require 'rack_session_access/capybara'
 require 'factory_bot_rails'
 require 'aruba/cucumber'
 require 'timecop'
-require 'billy/cucumber'
+require 'billy/capybara/cucumber'
 
 Dir['../../spec/factories/*.rb'].each {|file| require_relative file }
 Dir[Rails.root.join('spec/support/matchers/*.rb')].each { |file| require file  }
@@ -31,7 +31,7 @@ end
 # prefer to use XPath just remove this line and adjust any selectors in your
 # steps to use the XPath syntax.
 Capybara.default_selector = :css
-Capybara.default_wait_time = 3
+Capybara.default_max_wait_time = 3
 Capybara.asset_host = 'http://localhost:3000'
 
 Capybara.javascript_driver = :webkit

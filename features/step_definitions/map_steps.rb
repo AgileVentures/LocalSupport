@@ -58,8 +58,8 @@ def check_for_volop_info_box(tbl, selector, check_tbl_length = true)
       expect(page).to have_css('.arrow_box')
       expect(find('.arrow_box')).to have_content(desc)
       expect(find('.arrow_box')).to have_content(name)
-      expect(find('.arrow_box').first('a', text: name)[:href]).to end_with(organisation_path(org_friendly_id))
-      expect(find('.arrow_box').first('a', text: title)[:href]).to end_with(volunteer_op_path(id))
+      expect(find('.arrow_box').first('a', text: name)[:href]).to end_with(org_friendly_id)
+      expect(find('.arrow_box').first('a', text: title)[:href]).to end_with(id.to_s)
   end
 end
 
@@ -104,9 +104,9 @@ Then /^the (proposed organisation|organisation) "(.*?)" should have a (large|sma
   org_id = klass.find_by(name: name).id
   marker_class = (icon_size == "small") ? "measle" : "marker"
   if marker_class == "measle"
-    expect(find_map_icon(marker_class, org_id)["src"]).to end_with "/assets/measle.png"
+    expect(find_map_icon(marker_class, org_id)["src"]).to match /\/assets\/measle-(\w*)\.png$/ix
   else
-    expect(find_map_icon(marker_class, org_id)["src"]).to end_with "/assets/marker.png"
+    expect(find_map_icon(marker_class, org_id)["src"]).to match /\/assets\/marker-(\w*)\.png$/ix
   end
 end
 
@@ -154,7 +154,6 @@ end
 
 Then /^the coordinates for "(.*?)" and "(.*?)" should( not)? be the same/ do | org1_name, org2_name, negation |
   org1, org2 = marker_json_for_org_names(org1_name, org2_name)
-  #byebug
   if negation
     expect(org1['lat']).not_to eq org2['lat']
     expect(org1['lng']).not_to eq org2['lng']

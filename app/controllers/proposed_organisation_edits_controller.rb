@@ -1,6 +1,6 @@
 class ProposedOrganisationEditsController < ApplicationController
 
-  before_filter :authorize, :only => [:update]
+  before_action :authorize, :only => [:update]
 
   def new
     org = Organisation.friendly.find params[:organisation_id]
