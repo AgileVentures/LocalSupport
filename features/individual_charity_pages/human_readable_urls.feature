@@ -39,5 +39,5 @@ Feature:  Human friendly URLs
     
   Scenario: Human friendly links from volunteer_ops_path
     Given I visit the volunteer opportunities page
-    Then the URL for "The Most Noble Great 1 Charity of London" should refer to "/organisations/most-noble-great"
-    And the URL for "The Parochial Church Council Of The Ecclesiastical Parish Of St. Alban, North" should refer to "/organisations/parochial-church-st-alban-north"
+    Then the URL for "The Most Noble Great 1 Charity of London" should refer to tracking link including "/organisations/most-noble-great"
+    And the URL for "The Parochial Church Council Of The Ecclesiastical Parish Of St. Alban, North" should refer to tracking link including "/organisations/parochial-church-st-alban-north"
