@@ -221,7 +221,7 @@ GEM
       less (~> 2.6.0)
       sprockets (> 2, < 4)
       tilt
-    letter_opener (1.5.0)
+    letter_opener (1.6.0)
       launchy (~> 2.2)
     libv8 (3.16.14.19)
     loofah (2.1.1)
