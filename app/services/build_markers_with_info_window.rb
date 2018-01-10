@@ -25,7 +25,7 @@ class BuildMarkersWithInfoWindow
     if vol_ops.first.try(:source)
       source = VolunteerOp.get_source(vol_ops)
     else
-      source = "local"
+      source = 'local'
     end
     marker.lat location.latitude
     marker.lng location.longitude

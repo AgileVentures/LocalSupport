@@ -1,30 +1,16 @@
 require "rails_helper"
 
 describe EventsController, type: :controller do
+  describe 'GET index' do
+    it 'assigns upcoming events as @events' do
+      @events = Event.upcoming(10)
+      @markers = BuildMarkersWithInfoWindow.with(Event.build_by_coordinates(@events), self)
 
-  before(:all) do
-    FactoryBot.create_list(:event, 10)
-  end
-
-  describe "#index" do
-
-    setup do
       get :index
+      
+      expect(assigns(:markers)).to eq(@markers)
+      expect(response).to be_successful
+      expect(response).to render_template(:index)
     end
-
-    it { should render_template :index }
-
-    it { should respond_with 200 }
-
-    describe "@events variable" do
-
-      it "should assign an events variable" do
-        get :index
-        expect(assigns(:events)).to all be_a_kind_of Event
-      end
-
-    end
-
   end
-
 end

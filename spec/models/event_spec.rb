@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Event, type: :model do
   subject do
-    described_class.new(title: 'My Title', description: 'My description',
+    described_class.new(title: 'My Title', description: 'My description', organisation_id: nil
                         start_date: Time.zone.now, end_date: Time.zone.now + 1.week)
   end
 
@@ -18,6 +18,12 @@ RSpec.describe Event, type: :model do
   it 'is not valid without a description' do
     subject.description = nil
     expect(subject).to_not be_valid
+  end
+
+  it 'must not be created without an organisation' do
+    e = Event.new(organisation_id: Organisation.first.id)
+    e.valid?
+    expect(v.errors[:organisation_id].size).to eq(1)
   end
 
   it 'is not valid without a start_date' do

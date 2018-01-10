@@ -3,6 +3,7 @@ class Event < ActiveRecord::Base
   validates :description, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
+  validates :organisation_id, presence: true
   belongs_to :organisation
 
   scope :upcoming, lambda { |n|
