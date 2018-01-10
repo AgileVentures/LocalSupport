@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Event, type: :model do
   subject do
-    described_class.new(title: 'My Title', description: 'My description', organisation_id: nil
+    described_class.new(title: 'My Title', description: 'My description', organisation_id: nil,
                         start_date: Time.zone.now, end_date: Time.zone.now + 1.week)
   end
 
