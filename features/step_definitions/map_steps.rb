@@ -6,6 +6,10 @@ Then(/^I should see an infowindow when I click on the (?:.*) map markers:$/) do 
   check_for_volop_info_box(table.raw.flatten, '.vol_op')
 end
 
+Then(/^I should open opportunity in a new windows when clicked from the infowindow:$/) do |table|
+  check_info_box_link_opens_in_new_page(table.raw.flatten, '.vol_op')
+end
+
 Then (/^I should see an infowindow when mouse enters volop in table:$/) do |table|
   check_for_volop_info_box(table.raw.flatten, '.center-map-on-op')
 end
@@ -60,6 +64,18 @@ def check_for_volop_info_box(tbl, selector, check_tbl_length = true)
       expect(find('.arrow_box')).to have_content(name)
       expect(find('.arrow_box').first('a', text: name)[:href]).to end_with(org_friendly_id)
       expect(find('.arrow_box').first('a', text: title)[:href]).to end_with(id.to_s)
+  end
+end
+
+def check_info_box_link_opens_in_new_page(tbl, selector)
+  VolunteerOp.where(title: tbl)
+      .map {|volop| [volop.id, volop.organisation.name, volop.title,
+                     smart_truncate(volop.description, 44), volop.organisation.slug]}
+      .each do |id, name, title, desc, org_friendly_id|
+    all(selector).map do |list_item|
+      list_item.trigger(:mouseover) if list_item.first('a').text == title
+    end
+    expect { click_link(name) }.to change(&number_of_windows).by 1
   end
 end
 
