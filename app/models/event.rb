@@ -16,17 +16,9 @@ class Event < ActiveRecord::Base
     self.start_date == self.start_date.midnight && self.end_date == self.end_date.midnight
   end
 
-  def self.add_coordinates(events)
-    event_with_coordinates(events)
-  end
-
   def self.build_by_coordinates(events = nil)
     events = event_with_coordinates(events)
     Location.build_hash(group_by_coordinates(events))
-  end
-
-  def address_complete?
-    address.present? && postcode.present?
   end
 
   private
