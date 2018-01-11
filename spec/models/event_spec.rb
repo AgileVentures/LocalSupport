@@ -1,10 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  subject do
-    described_class.new(title: 'My Title', description: 'My description', organisation_id: nil,
-                        start_date: Time.zone.now, end_date: Time.zone.now + 1.week)
-  end
+  let(:subject){ FactoryBot.create :event }
 
   it 'is valid with valid attributes' do
     expect(subject).to be_valid
@@ -21,9 +18,7 @@ RSpec.describe Event, type: :model do
   end
 
   it 'must not be created without an organisation' do
-    e = Event.new(organisation_id: Organisation.first.id)
-    e.valid?
-    expect(v.errors[:organisation_id].size).to eq(1)
+    expect(subject.organisation.class).to eq Organisation
   end
 
   it 'is not valid without a start_date' do
@@ -48,25 +43,23 @@ RSpec.describe Event, type: :model do
   end
 
   describe 'scopes' do
-
-    before(:all) do
-      FactoryBot.create_list(:upcoming_events, 10)
-    end
+    let(:events){ FactoryBot.create_list(:upcoming_events, 10) }
 
     it 'should have a valid upcoming method' do
       expect { Event.upcoming(10) }.not_to raise_error
     end
 
     it 'should return a variable number of upcoming events' do
-      expect(Event.upcoming(10).length).to eq 10
+      expect(events.length).to eq 10
     end
 
-    xit 'should not include events that are already over' do
+    it 'should not include events that are already over' do
       FactoryBot.create_list(:previous_events, 10)
+      FactoryBot.create_list(:upcoming_events, 10)
       expect(Event.upcoming(20).length).to eq 10
     end
 
-    xit 'should only contain events that are after the current datetime' do
+    it 'should only contain events that are after the current datetime' do
       expect(Event.upcoming(20)).to all (have_attributes(start_date: (a_value > DateTime.current)))
     end
 

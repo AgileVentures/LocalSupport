@@ -17,18 +17,9 @@ class EventsController < ApplicationController
   end
 
   def index
-    respond_to do |format|
-      format.html do   
-        @events = Event.upcoming(10)
-        @markers = BuildMarkersWithInfoWindow
-          .with(Event.build_by_coordinates(@events), self) 
-      end
-      format.json do
-        @events = Event.where(start_date: params[:start]..params[:end]) 
-        @markers = BuildMarkersWithInfoWindow
-          .with(Event.build_by_coordinates(@events), self)
-      end
-    end
+    @events = Event.upcoming(10)
+    @markers = BuildMarkersWithInfoWindow
+      .with(Event.build_by_coordinates(@events), self) 
   end
 
   private
