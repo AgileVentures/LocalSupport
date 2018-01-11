@@ -20,6 +20,8 @@ class EventsController < ApplicationController
     @events = Event.upcoming(10)
     @markers = BuildMarkersWithInfoWindow
       .with(Event.build_by_coordinates(@events), self) 
+
+    respond_to :html, :json
   end
 
   private
