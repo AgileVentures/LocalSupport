@@ -22,13 +22,28 @@ Feature: As a member of the public visiting a partner site
     Given the following organisations exist:
       | name                      | description          | address        | latitude    | longitude  |
       | Cats Are Us               | Animal Shelter       | 34 pinner road | 60.1116313  |  7.3356556 |
+      | Office Primer             | Care for the elderly | 64 pinner road | 61.1116313  |  7.3356556 |
     Given the following volunteer opportunities exist:
       | title              | description                     | organisation             | source |
       | Litter Box Scooper | Assist with feline sanitation   | Cats Are Us              | local  |
+      | Office Support     | Help with printing and copying. | Office Primer            | local  |
     Given I visit the embedded map page
     Then I should see an infowindow when I click on the volunteer opportunities map markers:
-      | Cats Are Us |
-    Then I should open "Litter Box Scooper" in a new window
+      | Cats Are Us | Office Primer |
+
+  Scenario: See opportunities open in new window when clicked
+
+    Given the following organisations exist:
+      | name                      | description          | address        | latitude    | longitude  |
+      | Cats Are Us               | Animal Shelter       | 34 pinner road | 60.1116313  |  7.3356556 |
+      | Office Primer             | Care for the elderly | 64 pinner road | 61.1116313  |  7.3356556 |
+    Given the following volunteer opportunities exist:
+      | title              | description                     | organisation             | source |
+      | Litter Box Scooper | Assist with feline sanitation   | Cats Are Us              | local  |
+      | Office Support     | Help with printing and copying. | Office Primer            | local  |
+    Given I visit the embedded map page
+    Then I should open opportunity in a new windows when clicked from the infowindow:
+      | Cats Are Us | Office Primer |
 
   Scenario: See only the map container rendered in the body
 
