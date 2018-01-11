@@ -52,6 +52,7 @@ module ApplicationHelper
   end
 
   def link_to_and_track(title, url='#', options = {})
+    options[:target] = '_blank' if action_name == 'embedded_map'
     link_to title, click_through_go_path(url: url), options
   end
 end
