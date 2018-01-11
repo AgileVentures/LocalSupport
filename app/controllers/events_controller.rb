@@ -17,10 +17,11 @@ class EventsController < ApplicationController
   end
 
   def index
-    respond_to do |format|
-      format.html {  @events = Event.upcoming(10) }
-      format.json {  @events = Event.where(start_date: params[:start]..params[:end]) }
-    end
+    @events = Event.upcoming(10)
+    @markers = BuildMarkersWithInfoWindow
+      .with(Event.build_by_coordinates(@events), self)
+
+    respond_to :html, :json
   end
 
   private
@@ -30,7 +31,8 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, :start_date, :end_date)
+    params.require(:event).permit(:title, :description,
+      :start_date, :end_date, :organisation_id)
   end
 
   def logged_in_user
