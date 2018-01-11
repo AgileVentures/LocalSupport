@@ -1,4 +1,4 @@
-class DoitTrace < ActiveRecord::Base
+class DoitTrace < ApplicationRecord
 
   def self.add_entry(volunteer_op_id, doit_volop_id)
     create(published_at: Time.zone.now,

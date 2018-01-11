@@ -14,5 +14,4 @@ class BaseOrganisationsController < ApplicationController
       )
     end
   end
-
 end

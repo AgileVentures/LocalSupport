@@ -2,8 +2,12 @@ Then(/^I should see an infowindow when I click on the map markers:$/) do |table|
   check_for_org_info_box(table.raw.flatten, '.measle')
 end
 
-Then(/^I should see an infowindow when I click on the volunteer opportunities map markers:$/) do |table|
+Then(/^I should see an infowindow when I click on the (?:.*) map markers:$/) do |table|
   check_for_volop_info_box(table.raw.flatten, '.vol_op')
+end
+
+Then(/^I should open opportunity in a new windows when clicked from the infowindow:$/) do |table|
+  check_info_box_link_opens_in_new_page(table.raw.flatten, '.vol_op')
 end
 
 Then (/^I should see an infowindow when mouse enters volop in table:$/) do |table|
@@ -63,6 +67,18 @@ def check_for_volop_info_box(tbl, selector, check_tbl_length = true)
   end
 end
 
+def check_info_box_link_opens_in_new_page(tbl, selector)
+  VolunteerOp.where(title: tbl)
+      .map {|volop| [volop.id, volop.organisation.name, volop.title,
+                     smart_truncate(volop.description, 44), volop.organisation.slug]}
+      .each do |id, name, title, desc, org_friendly_id|
+    all(selector).map do |list_item|
+      list_item.trigger(:mouseover) if list_item.first('a').text == title
+    end
+    expect { click_link(name) }.to change(&number_of_windows).by 1
+  end
+end
+
 def check_for_no_org_info_box(tbl, selector, check_tbl_length = true)
   expect(page).to have_css(selector, tbl.length) if check_tbl_length
   Organisation.where(name: tbl)
@@ -110,8 +126,8 @@ Then /^the (proposed organisation|organisation) "(.*?)" should have a (large|sma
   end
 end
 
-Then /^I should( not)? see the following (measle|vol_op) markers in the map:$/ do |negative, klass, table|
-  klass_hash = {'measle' => '.measle', 'vol_op' => '.vol_op'}
+Then /^I should( not)? see the following (measle|vol_op|event) markers in the map:$/ do |negative, klass, table|
+  klass_hash = {'measle' => '.measle', 'vol_op' => '.vol_op', 'event' => '.vol_op'}
   expect(page).to have_css(klass_hash[klass], :count => table.raw.flatten.length)
   marker_data = page.find('#marker_data')['data-markers']
   table.raw.flatten do |title|

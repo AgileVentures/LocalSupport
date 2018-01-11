@@ -1,2 +1,2 @@
-class ClickThrough < ActiveRecord::Base
+class ClickThrough < ApplicationRecord
 end

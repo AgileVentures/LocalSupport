@@ -9,6 +9,11 @@ Feature: Super Admin creating an event
       | registered-user-1@example.com | pppppppp | true       | 2007-01-01  10:00:00 | Friendly     |
       | registered-user-2@example.com | pppppppp | false      | 2007-01-01  10:00:00 |              |
 
+    Given the following organisations exist:
+      | name            | description          | address        | postcode | website       |
+      | Cats Are Us     | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
+      | Office Primer   | Care for the elderly | 64 pinner road | HA1 4HZ  | http://b.com/ |
+
   Scenario: Unsuccessfully attempt to create event without being signed-in
     When I visit the new event page
     Then I should be on the sign in page

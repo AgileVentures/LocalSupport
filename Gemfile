@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '2.5.0'
-gem 'rails', '~> 4.2', '>= 4.2.7.1'
+gem 'rails', '~> 5.1', '>= 5.1.4'
 gem 'pg', '0.21.0'
 gem 'devise', '~> 4.4'
 gem 'devise_invitable', '~> 1.6', '>= 1.6.1'
@@ -30,6 +30,7 @@ group :development, :test do
   gem 'rack_session_access'
   gem 'jasmine', '~> 2.4'
   gem 'jasmine-jquery-rails', '2.0.3'
+  gem 'rails-controller-testing'
   #gem 'better_errors'
   gem 'binding_of_caller' # plays well with better_errors
 end
