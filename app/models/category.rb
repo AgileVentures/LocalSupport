@@ -1,6 +1,6 @@
 require 'csv'
 
-class Category < ActiveRecord::Base
+class Category < ApplicationRecord
   has_many :category_organisations
   has_and_belongs_to_many :base_organisations, :through => :category_organisations, :association_foreign_key => :organisation_id
 

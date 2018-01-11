@@ -1,4 +1,4 @@
-class AddDoitDataToVolunteerOps < ActiveRecord::Migration
+class AddDoitDataToVolunteerOps < ActiveRecord::Migration[4.2]
   def change
     add_column :volunteer_ops, :source, :string, default: 'local'
     add_column :volunteer_ops, :doit_op_link, :string

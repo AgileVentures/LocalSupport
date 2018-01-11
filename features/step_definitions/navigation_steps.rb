@@ -91,12 +91,12 @@ end
 
 Then /^I (visit|should be on) the (edit|show) page for the (.*?) (named|titled) "(.*?)"$/ do |mode, action, object, schema, name|
   record = find_record_for(object, schema, name)
-  url = url_for({
-                    only_path: true,
-                    controller: object.pluralize.underscore,
-                    action: action,
-                    id: record
-                })
+  url = url_for(
+      only_path: true,
+      controller: object.pluralize.underscore,
+      action: action,
+      id: record
+  )
   case mode
     when 'visit' then visit url
     when 'should be on' then current_path.should eq url

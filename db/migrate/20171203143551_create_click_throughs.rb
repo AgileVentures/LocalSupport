@@ -1,10 +1,10 @@
-class CreateClickThroughs < ActiveRecord::Migration
+class CreateClickThroughs < ActiveRecord::Migration[4.2]
   def up
     create_table :click_throughs do |t|
       t.string 'url'
       t.string 'source_url'
-      t.string 'user_id', :null => true
-       t.timestamps
+      t.string 'user_id', null: true
+      t.timestamps
     end
   end
 

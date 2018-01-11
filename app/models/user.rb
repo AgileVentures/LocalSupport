@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -75,7 +75,7 @@ class User < ActiveRecord::Base
   end
 
   def self.purge_deleted_users_where(query)
-    User.deleted.delete_all(query)
+    User.deleted.where(query).delete_all
   end
 
   def self.superadmin_emails

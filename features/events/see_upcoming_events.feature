@@ -8,7 +8,6 @@ Feature: List the upcoming events
       | name            | description          | address        | postcode | website       |
       | Cats Are Us     | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
       | Office Primer   | Care for the elderly | 64 pinner road | HA1 4HZ  | http://b.com/ |
-      
     Given the following events exist:
       | title          | description                        | organisation  | start_date          | end_date            |
       | My first event | Good for everyone                  | Cats Are Us   | 2030-10-20 10:30:14 | 2030-10-20 17:00:00 |

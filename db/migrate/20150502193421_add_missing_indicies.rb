@@ -1,4 +1,4 @@
-class AddMissingIndicies < ActiveRecord::Migration
+class AddMissingIndicies < ActiveRecord::Migration[4.2]
   def up
     add_index :users, :organisation_id
     add_index :categories_organisations, :organisation_id

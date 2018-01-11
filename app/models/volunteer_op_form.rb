@@ -8,12 +8,18 @@ class VolunteerOpForm
     validates :advertise_end_date, presence: true
     validates :doit_org_id, presence: true
     attr_accessor :advertise_start_date, :advertise_end_date, :doit_org_id
-
   end
 
-  attr_accessor :volunteer_op, :post_to_doit, :doit_volunteer_op
+  attr_writer :volunteer_op, :post_to_doit, :doit_volunteer_op
 
   validate :validate_children
+
+  def initialize(attributes={})
+    super
+    @volunteer_op ||= VolunteerOp.new
+    @doit_volunteer_op ||= DoitVolunteerOp.new
+    @post_to_doit ||= 0
+  end
 
   def volunteer_op
     @volunteer_op ||= VolunteerOp.new
@@ -50,10 +56,11 @@ class VolunteerOpForm
   end
 
   def assign_attributes(params)
-    volunteer_op_params = params.slice(*self.class.volunteer_op_attributes) 
+    return if params.empty?
+    volunteer_op_params = setup_volunteer_op_params(params)
     volunteer_op.assign_attributes(volunteer_op_params)
     @post_to_doit = params[:post_to_doit]
-    doit_volunteer_op_params = params.slice(*self.class.doit_volunteer_op_attributes) 
+    doit_volunteer_op_params = params.slice(*self.class.doit_volunteer_op_attributes).to_h
     @doit_volunteer_op = DoitVolunteerOp.new(doit_volunteer_op_params)
   end
 
@@ -65,6 +72,12 @@ class VolunteerOpForm
   end
 
   private
+
+  def setup_volunteer_op_params(params)
+    args = self.class.volunteer_op_attributes
+    return params[:volunteer_op].slice(*args).to_h unless params[:volunteer_op].nil?
+    params.slice(*args).to_h
+  end
 
   def post_to_doit?
     post_to_doit == '1'

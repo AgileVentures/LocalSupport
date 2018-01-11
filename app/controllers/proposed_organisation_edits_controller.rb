@@ -26,12 +26,12 @@ class ProposedOrganisationEditsController < ApplicationController
   def update
     # UpdateProposedOrganisationEdit.with(observer: self, params: create_params)
     proposed_edit = ProposedOrganisationEdit.find(update_params.fetch(:id))
-    if proposed_edit_params.any?
+    if !proposed_edit_params.empty?
       proposed_edit.accept(proposed_edit_params)
-      flash[:notice] = "The edit you accepted has been applied and archived"
+      flash[:notice] = 'The edit you accepted has been applied and archived'
     else
       proposed_edit.update!(archived: true)
-      flash[:notice] = "The edit you rejected has been archived"
+      flash[:notice] = 'The edit you rejected has been archived'
     end
     redirect_to organisation_path proposed_edit.organisation
   end

@@ -130,7 +130,7 @@ FactoryBot.define do
     title "Upcoming Event"
     description "An event that is coming up soon"
     start_date { DateTime.now() + 1.day }
-    end_date { DateTime.now() + 1.day } 
+    end_date { DateTime.now() + 1.day }
     association :organisation, factory: :organisation
   end
 

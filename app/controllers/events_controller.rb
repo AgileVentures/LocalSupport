@@ -19,7 +19,7 @@ class EventsController < ApplicationController
   def index
     @events = Event.upcoming(10)
     @markers = BuildMarkersWithInfoWindow
-      .with(Event.build_by_coordinates(@events), self) 
+      .with(Event.build_by_coordinates(@events), self)
 
     respond_to :html, :json
   end
@@ -31,7 +31,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, 
+    params.require(:event).permit(:title, :description,
       :start_date, :end_date, :organisation_id)
   end
 
