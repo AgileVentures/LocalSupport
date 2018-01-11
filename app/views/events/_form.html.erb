@@ -19,16 +19,23 @@
           <%= f.text_area :description, :class => "wide_form", :cols => "10", :rows => "10", :placeholder => "Enter event description" %>
         </td>
       </tr>
-      <td><h3>
-          Start Date
-        </h3></td>
+      <tr>
+        <td class="borderless" data-toggle="tooltip" title="Select an Organisation to host the event here.">
+          <% if @event.errors[:organisation_id].any?%>
+            <p class="error"><%= @event.errors[:organisation_id].first %></p>
+          <% end %>
+          <%= f.collection_select :organisation_id, Organisation.order(:name), :id, :name, {:prompt => 'Please select an Organisation'} %>
+        </td>
+      </tr>
+      <td>
+        <h3>Start Date</h3>
+      </td>
         <tr>
           <td data-toggle="tooltip" title="Enter the start date ">
             <% if @event.errors[:start_date].any?%>
               <p class="error-name"><%= @event.errors[:start_date].first %></p>
             <% end %>
             <%= f.text_field :start_date, 'data-behaviour' => 'datepicker', :placeholder => 'dd/mm/yyyy' %>
-
         </td>
         </tr>
         <tr>

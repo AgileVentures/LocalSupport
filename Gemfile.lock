@@ -471,7 +471,7 @@ DEPENDENCIES
   newrelic_rpm
   nokogiri (~> 1.8, >= 1.8.1)
   paranoia (~> 2.0)
-  pg (= 0.21.0)
+  pg (~> 0.21.0)
   phantomjs
   poltergeist
   puffing-billy
