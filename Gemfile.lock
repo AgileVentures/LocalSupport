@@ -8,10 +8,10 @@ GIT
 
 GIT
   remote: https://github.com/thoughtbot/capybara-webkit.git
-  revision: 5cd1ad0645e33e28f86f28592ce8adba0c78d945
+  revision: c46d2e90b5300fac4be19403d49b530d7ca989e9
   specs:
     capybara-webkit (1.14.0)
-      capybara (~> 2.3)
+      capybara (>= 2.3, < 4.0)
       json
 
 GEM
