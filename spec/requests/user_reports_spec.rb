@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 describe 'UserReports', :type => :request, :helpers => :requests do
-  let(:nonsuperadmin) {FactoryGirl.create :user, :email => "nonsuperadmin@nonsuperadmin.com", :superadmin => false}
-  let(:deleted_user) {usr = FactoryGirl.create :user , :email => 'regularjoe@blah.com'; usr.destroy; usr}
-  let(:pending_org) { FactoryGirl.create :organisation }
-  let(:user) { FactoryGirl.create :user, pending_organisation: pending_org }
+  let(:nonsuperadmin) {FactoryBot.create :user, :email => "nonsuperadmin@nonsuperadmin.com", :superadmin => false}
+  let(:deleted_user) {usr = FactoryBot.create :user , :email => 'regularjoe@blah.com'; usr.destroy; usr}
+  let(:pending_org) { FactoryBot.create :organisation }
+  let(:user) { FactoryBot.create :user, pending_organisation: pending_org }
 
   describe 'PUT /user_reports/undo_delete/:id' do
     it 'nonsuperadmin unable to undo delete' do

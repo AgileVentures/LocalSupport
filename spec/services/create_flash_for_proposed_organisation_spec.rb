@@ -5,7 +5,7 @@ describe  CreateFlashForProposedOrganisation do
   let(:subject) { CreateFlashForProposedOrganisation.new(result).run }
   
   context 'proposed organisation was accepted' do
-    let!(:org) { FactoryGirl.create(:proposed_organisation, email: email) }
+    let!(:org) { FactoryBot.create(:proposed_organisation, email: email) }
     
     context 'invitation was sent' do
       let(:email){ 'some_valid_email@email.com' }
@@ -19,7 +19,7 @@ describe  CreateFlashForProposedOrganisation do
     end
     
     context 'notification was sent' do
-      let!(:user){ FactoryGirl.create(:user) }
+      let!(:user){ FactoryBot.create(:user) }
       let(:email){ user.email }
 
       it 'two notice flash messages are returned' do
@@ -32,7 +32,7 @@ describe  CreateFlashForProposedOrganisation do
   end
   
   context 'proposed organisation was not accepted' do
-    let!(:org) { FactoryGirl.create(:orphan_proposed_organisation, email: email) }
+    let!(:org) { FactoryBot.create(:orphan_proposed_organisation, email: email) }
     
     context 'no email was sent because of no email address' do
       let(:email){ '' }

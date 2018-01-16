@@ -2,8 +2,12 @@ Then(/^I should see an infowindow when I click on the map markers:$/) do |table|
   check_for_org_info_box(table.raw.flatten, '.measle')
 end
 
-Then(/^I should see an infowindow when I click on the volunteer opportunities map markers:$/) do |table|
+Then(/^I should see an infowindow when I click on the (?:.*) map markers:$/) do |table|
   check_for_volop_info_box(table.raw.flatten, '.vol_op')
+end
+
+Then(/^I should open opportunity in a new windows when clicked from the infowindow:$/) do |table|
+  check_info_box_link_opens_in_new_page(table.raw.flatten, '.vol_op')
 end
 
 Then (/^I should see an infowindow when mouse enters volop in table:$/) do |table|
@@ -58,8 +62,20 @@ def check_for_volop_info_box(tbl, selector, check_tbl_length = true)
       expect(page).to have_css('.arrow_box')
       expect(find('.arrow_box')).to have_content(desc)
       expect(find('.arrow_box')).to have_content(name)
-      expect(find('.arrow_box').first('a', text: name)[:href]).to end_with(organisation_path(org_friendly_id))
-      expect(find('.arrow_box').first('a', text: title)[:href]).to end_with(volunteer_op_path(id))
+      expect(find('.arrow_box').first('a', text: name)[:href]).to end_with(org_friendly_id)
+      expect(find('.arrow_box').first('a', text: title)[:href]).to end_with(id.to_s)
+  end
+end
+
+def check_info_box_link_opens_in_new_page(tbl, selector)
+  VolunteerOp.where(title: tbl)
+      .map {|volop| [volop.id, volop.organisation.name, volop.title,
+                     smart_truncate(volop.description, 44), volop.organisation.slug]}
+      .each do |id, name, title, desc, org_friendly_id|
+    all(selector).map do |list_item|
+      list_item.trigger(:mouseover) if list_item.first('a').text == title
+    end
+    expect { click_link(name) }.to change(&number_of_windows).by 1
   end
 end
 
@@ -104,14 +120,14 @@ Then /^the (proposed organisation|organisation) "(.*?)" should have a (large|sma
   org_id = klass.find_by(name: name).id
   marker_class = (icon_size == "small") ? "measle" : "marker"
   if marker_class == "measle"
-    expect(find_map_icon(marker_class, org_id)["src"]).to end_with "/assets/measle.png"
+    expect(find_map_icon(marker_class, org_id)["src"]).to match /\/assets\/measle-(\w*)\.png$/ix
   else
-    expect(find_map_icon(marker_class, org_id)["src"]).to end_with "/assets/marker.png"
+    expect(find_map_icon(marker_class, org_id)["src"]).to match /\/assets\/marker-(\w*)\.png$/ix
   end
 end
 
-Then /^I should( not)? see the following (measle|vol_op) markers in the map:$/ do |negative, klass, table|
-  klass_hash = {'measle' => '.measle', 'vol_op' => '.vol_op'}
+Then /^I should( not)? see the following (measle|vol_op|event) markers in the map:$/ do |negative, klass, table|
+  klass_hash = {'measle' => '.measle', 'vol_op' => '.vol_op', 'event' => '.vol_op'}
   expect(page).to have_css(klass_hash[klass], :count => table.raw.flatten.length)
   marker_data = page.find('#marker_data')['data-markers']
   table.raw.flatten do |title|
@@ -154,7 +170,6 @@ end
 
 Then /^the coordinates for "(.*?)" and "(.*?)" should( not)? be the same/ do | org1_name, org2_name, negation |
   org1, org2 = marker_json_for_org_names(org1_name, org2_name)
-  #byebug
   if negation
     expect(org1['lat']).not_to eq org2['lat']
     expect(org1['lng']).not_to eq org2['lng']

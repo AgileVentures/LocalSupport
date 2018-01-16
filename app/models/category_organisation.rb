@@ -1,4 +1,4 @@
-class CategoryOrganisation < ActiveRecord::Base
+class CategoryOrganisation < ApplicationRecord
   belongs_to :category
   belongs_to :base_organisation, :foreign_key => :organisation_id
   self.table_name = 'categories_organisations'

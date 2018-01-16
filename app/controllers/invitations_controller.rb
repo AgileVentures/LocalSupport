@@ -1,5 +1,5 @@
 class InvitationsController < ApplicationController
-  before_filter :authorize
+  before_action :authorize
 
   # xhr only, tested in a request spec
   def create

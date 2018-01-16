@@ -1,4 +1,4 @@
-class MailTemplate < ActiveRecord::Base
+class MailTemplate < ApplicationRecord
 
   
 end

@@ -1,5 +1,5 @@
 Given(/^I requested a new password too long ago$/) do
-  user = FactoryGirl.create(:user)
+  user = FactoryBot.create(:user)
   @reset_password_token = user.send_reset_password_instructions
   user.reset_password_sent_at = 1.year.ago
   user.save!

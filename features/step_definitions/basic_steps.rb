@@ -259,6 +259,11 @@ Then /^the URL for "(.*?)" should refer to "(.*?)"$/ do |name, href|
   expect(page).to have_link "#{name}", href: href
 end
 
+Then /^the URL for "(.*?)" should refer to tracking link including "(.*?)"$/ do |name, href|
+  link = find_link(name)
+  expect(link['href']).to include(CGI.escape(href))
+end
+
 And /^the search box should contain "(.*?)"$/ do |arg1|
   expect(page).to have_xpath("//input[@id='q' and @value='#{arg1}']")
 end
@@ -567,7 +572,8 @@ end
 
 Given(/^I can run the rake task "(.*?)"$/) do |task|
   stdout, stderr, status = Open3.capture3("#{task}")
-  expect(stderr).not_to include "Error"
+  # match word 'Error' or 'error' starting with space.
+  expect(stderr).not_to match /\s\b(Error)\b/ix
   expect(status).to be_success
 end
 

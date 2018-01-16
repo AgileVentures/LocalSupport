@@ -42,14 +42,9 @@ Airbrake.configure do |c|
   # NOTE: This option *does not* work if you don't set the 'environment' option.
   # https://github.com/airbrake/airbrake-ruby#ignore_environments
   c.ignore_environments = %w(test)
+
+  # A list of parameters that should be filtered out of what is sent to Airbrake.
+  # By default, all "password" attributes will have their contents replaced.
+  # https://github.com/airbrake/airbrake-ruby#blacklist_keys
+  c.blacklist_keys << /password/i
 end
-
-# A list of parameters that should be filtered out of what is sent to Airbrake.
-# By default, all "password" attributes will have their contents replaced.
-# https://github.com/airbrake/airbrake-ruby#blacklist_keys
-Airbrake.blacklist_keys(/password/i)
-
-# If Airbrake doesn't send any expected exceptions, we suggest to uncomment the
-# line below. It might simplify debugging of background Airbrake workers, which
-# can silently die.
-# Thread.abort_on_exception = ['test', 'development'].include?(Rails.env)

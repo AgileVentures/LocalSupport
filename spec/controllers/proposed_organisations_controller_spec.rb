@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe ProposedOrganisationsController, :type => :controller do
-  let!(:proposed_org) { FactoryGirl.create :proposed_organisation }
-  let!(:orphan_org) { FactoryGirl.create :orphan_proposed_organisation }
-  let(:user) { FactoryGirl.create :user }
+  let!(:proposed_org) { FactoryBot.create :proposed_organisation }
+  let!(:orphan_org) { FactoryBot.create :orphan_proposed_organisation }
+  let(:user) { FactoryBot.create :user }
   
   context 'superadmin paths' do
     before(:each) { 
@@ -13,17 +13,17 @@ describe ProposedOrganisationsController, :type => :controller do
     context 'PATCH #update' do
       context 'when email is present and organisation is accepted' do
         it 'shows notice flash' do
-          patch :update, id: proposed_org.id
+          patch :update, params: {id: proposed_org.id}
           expect(controller).to set_flash[:notice]
         end
         
         it 'returns status 302' do
-          patch :update, id: proposed_org.id
+          patch :update, params: {id: proposed_org.id}
           expect(response.status).to eq 302
         end
         
         it 'redirects to organisation path' do
-          patch :update, id: proposed_org.id
+          patch :update, params: {id: proposed_org.id}
           expect(response).to redirect_to organisation_path(proposed_org)
         end
       end
@@ -31,17 +31,17 @@ describe ProposedOrganisationsController, :type => :controller do
       context 'when email is invalid' do
         shared_examples 'general path' do
           it 'shows error flash' do
-            patch :update, id: orphan_org.id
+            patch :update, params: {id: orphan_org.id}
             expect(controller).to set_flash[:error]
           end
           
           it 'returns status 302' do
-            patch :update, id: orphan_org.id
+            patch :update, params: {id: orphan_org.id}
             expect(response.status).to eq 302
           end
           
           it 'redirects to proposed organisations path' do
-            patch :update, id: orphan_org.id
+            patch :update, params: {id: orphan_org.id}
             expect(response).to redirect_to proposed_organisations_path
           end
         end
@@ -54,7 +54,7 @@ describe ProposedOrganisationsController, :type => :controller do
           end
           
           it 'shows error flash with a certain message' do
-            patch :update, id: orphan_org.id
+            patch :update, params: {id: orphan_org.id}
             expect(flash[:error]).to have_text('No invitation email was sent because no email is associated with the organisation')
           end
           
@@ -69,7 +69,7 @@ describe ProposedOrganisationsController, :type => :controller do
           end
           
           it 'shows error flash with a certain message' do
-            patch :update, id: orphan_org.id
+            patch :update, params: {id: orphan_org.id}
             expect(flash[:error]).to have_text(
               "No invitation email was sent because the email associated with #{
                 orphan_org.name}, #{orphan_org.email}, seems invalid"
@@ -90,17 +90,17 @@ describe ProposedOrganisationsController, :type => :controller do
     context 'PATCH #update' do
       shared_examples 'permission is denied' do
         it 'shows warning flash' do
-          patch :update, id: proposed_org.id
+          patch :update, params: {id: proposed_org.id}
           expect(controller).to set_flash[:warning]
         end
         
         it 'returns status 302' do
-          patch :update, id: proposed_org.id
+          patch :update, params: {id: proposed_org.id}
           expect(response.status).to eq 302
         end
         
         it 'redirects to organisation path' do
-          patch :update, id: proposed_org.id
+          patch :update, params: {id: proposed_org.id}
           expect(response).to redirect_to root_path
         end
       end

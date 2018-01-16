@@ -32,7 +32,7 @@ Feature: Reachskills volunteer opportunities
     Given I visit the volunteer opportunities page
     Then the index should contain:
       | Charity Treasurer | The duties of a Trustee treasurer are | The Patients Association |
-    Then I should see a link to "Chalkhill Community Centre" page "https://reachskills.org.uk/org/chalkhill-community-centre"
+    Then I should see a tracking link to "Chalkhill Community Centre" page "https://reachskills.org.uk/org/chalkhill-community-centre"
 
   Scenario: Reachskills volunteer opportunites are listed in map popups
     Given I visit the volunteer opportunities page
@@ -41,3 +41,4 @@ Feature: Reachskills volunteer opportunities
   Scenario: Reachskills volunteer opportunities are opened in a new page
     Given I visit the volunteer opportunities page
     Then I should open "Charity Treasurer" in a new window
+    Then I should see "https://reachskills.org.uk/opp/charity-treasurer-10" in the the click through table

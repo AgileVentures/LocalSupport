@@ -1,28 +1,42 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4 form-frame">
+    <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 form-frame">
       <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put}) do |f| %>
+        <div class="form-group">
           <%= devise_error_messages! %>
+        </div>
 
-          <div><%= f.label :email %>
-            <%= f.email_field :email, :class => 'input-block-level', :autofocus => true %></div>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, :class => 'form-control', :autofocus => true %>
+        </div>
 
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-          <% end %>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div class="form-group">
+              Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+            </div>
+        <% end %>
 
-          <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i></div>
-          <div><%= f.password_field :password, :class => 'input-block-level', :autocomplete => "off" %></div>
+        <div class="form-group">
+          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+          <%= f.password_field :password, :class => 'form-control', :autocomplete => "off" %>
+        </div>
 
-          <div><%= f.label :password_confirmation %>
-            <%= f.password_field :password_confirmation, :class => 'input-block-level' %></div>
+        <div class="form-group">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, :class => 'form-control' %>
+        </div>
 
-          <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i></div>
-          <div><%= f.password_field :current_password, :class => 'input-block-level' %></div>
+        <div class="form-group">
+          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+          <%= f.password_field :current_password, :class => 'form-control' %>
+        </div>
 
-          <div><%= f.submit "Update", :class => 'btn btn-primary btn-block' %></div>
+        <div class="form-group">
+          <%= f.submit "Update", :class => 'btn btn-primary btn-block' %>
+        </div>
       <% end %>
 
       <h3>Cancel my account</h3>

@@ -1,17 +1,16 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
-gem 'rails', '~> 4.2', '>= 4.2.7.1'
-gem 'pg'
-gem 'devise', '~> 3.5', '>= 3.5.10'
+ruby '2.4.2'
+gem 'rails', '~> 5.1', '>= 5.1.4'
+gem 'pg', '0.21.0'
+gem 'devise', '~> 4.4'
 gem 'devise_invitable', '~> 1.6', '>= 1.6.1'
 gem 'heroku-api'
-gem 'sprockets', '~> 2.11', '>= 2.11.3'
+gem 'sprockets', '~> 3.7', '>= 3.7.1'
 
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'jbuilder'
-
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -19,10 +18,10 @@ gem 'jbuilder'
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do
   gem 'timecop'
-  gem 'database_cleaner', '1.0.1'
+  gem 'database_cleaner', '1.6.2'
   gem 'launchy'
   gem 'simplecov'
-  gem 'sinatra-base'
+  gem 'sinatra'
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
   gem 'execjs'
@@ -30,7 +29,8 @@ group :development, :test do
   gem 'byebug'
   gem 'rack_session_access'
   gem 'jasmine', '~> 2.4'
-  gem 'jasmine-jquery-rails', '2.0.2'
+  gem 'jasmine-jquery-rails', '2.0.3'
+  gem 'rails-controller-testing'
   #gem 'better_errors'
   gem 'binding_of_caller' # plays well with better_errors
 end
@@ -39,26 +39,25 @@ group :development do
   gem 'rubocop-git'
   gem 'letter_opener'
   gem 'railroady'
-  gem 'quiet_assets'
 end
 
 group :test do
-  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails', require: false
   gem 'cucumber-rails-training-wheels'
-  gem 'capybara', '2.4.1'
-  gem 'capybara-webkit', '~> 1.6.0'
-  gem 'nokogiri', '~> 1.7.2'
-  gem 'factory_girl_rails', :require => false
-  gem 'webmock', '1.20.0'
+  gem 'capybara', '~> 2.17'
+  gem 'capybara-webkit', git: 'https://github.com/thoughtbot/capybara-webkit.git'
+  gem 'nokogiri', '~> 1.8', '>= 1.8.1'
+  gem 'factory_bot_rails'
+  gem 'webmock'
   gem 'uri-handler'
   gem 'selenium'
   gem 'selenium-client'
-  gem 'coveralls', require: false
+  gem 'coveralls', '~> 0.8.21'
   gem 'shoulda'
   gem 'vcr'
   gem 'puffing-billy'
   gem 'poltergeist'
-  gem 'phantomjs', :require => 'phantomjs/poltergeist'
+  gem 'phantomjs', require: 'phantomjs/poltergeist'
   gem 'show_me_the_cookies'
 end
 
@@ -67,16 +66,16 @@ group :production do
   gem 'newrelic_rpm'
 end
 
-gem 'coffee-rails', "4.1.0"
-gem 'uglifier', '~> 3.0', '>= 3.0.3'
-gem 'sass-rails', '~> 4.0', '>= 4.0.5'
-gem 'less-rails', '2.5.0'
-gem 'twitter-bootstrap-rails', '3.2.0'
+gem 'coffee-rails', '4.2.2'
+gem 'uglifier', '~> 4.1'
+gem 'sass-rails', '~> 5.0'
+gem 'less-rails', '~> 3.0'
+gem 'twitter-bootstrap-rails', '3.2.2'
 
 gem 'font-awesome-rails'
 
 gem 'jquery-rails'
-gem 'bootstrap_sortable_rails', '~> 0.1.3'
+gem 'bootstrap_sortable_rails', '~> 1.11.2'
 gem 'breadcrumbs_on_rails'
 gem 'bootstrap-datepicker-rails'
 # Use unicorn as the web server
@@ -102,14 +101,14 @@ gem 'url_validator', git: 'https://github.com/AgileVentures/url_validator.git'
 gem 'httparty'
 gem 'sucker_punch', '~> 2.0' # async job
 gem 'rails_autolink'
-gem "paranoia", "~> 2.0"
+gem 'paranoia', '~> 2.0'
 
 gem 'dotenv-rails'
 gem 'figaro'
 gem 'airbrake'
 
 # Using user friendly names in URLs
-gem 'friendly_id', '~> 5.1.0'
+gem 'friendly_id', '~> 5.2.3'
 
 # SEO
 gem 'meta-tags'

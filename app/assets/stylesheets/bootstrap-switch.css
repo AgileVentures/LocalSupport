@@ -110,7 +110,7 @@
   transition: margin-left 0.5s;
 }
 .bootstrap-switch.bootstrap-switch-on .bootstrap-switch-container {
-  margin-left: 0%;
+  margin-left: 0;
 }
 .bootstrap-switch.bootstrap-switch-on .bootstrap-switch-label {
   -webkit-border-top-right-radius: 4px;

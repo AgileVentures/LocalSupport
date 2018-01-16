@@ -12,7 +12,7 @@ require 'rspec/rails'
 require 'capybara'
 require 'capybara-webkit'
 require 'capybara/rspec'
-require 'factory_girl_rails'
+require 'factory_bot_rails'
 require 'rack_session_access/capybara'
 require 'webmock/rspec'
 Capybara.javascript_driver = :webkit
@@ -67,11 +67,11 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 
-  config.include Devise::TestHelpers, :type => :view
-  config.include Devise::TestHelpers, :type => :controller
-  config.include Devise::TestHelpers, :type => :helper
+  config.include Devise::Test::ControllerHelpers, :type => :view
+  config.include Devise::Test::ControllerHelpers, :type => :controller
+  config.include Devise::Test::ControllerHelpers, :type => :helper
 
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
   config.include ControllerHelpers, :helpers => :controllers
   config.include RequestHelpers, :helpers => :requests
   config.include ViewHelpers, :helpers => :views

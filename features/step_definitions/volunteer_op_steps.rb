@@ -41,13 +41,12 @@ Given(/^I submit a volunteer op to Doit/) do |volunteer_ops_table|
   end
 end
 
-regex = /^I run the import doit service( with a radius of (\d+\.?\d*) miles)?$/
-Given(regex) do |override, radius|
-  if override
-    ImportDoItVolunteerOpportunities.with radius.to_f
-  else
-    ImportDoItVolunteerOpportunities.with
-  end
+Given('I run the import doit service') do
+  ImportDoItVolunteerOpportunities.with
+end
+
+Given(/^I run the import doit service with a radius of (\d+\.?\d*) miles$/) do |radius|
+  ImportDoItVolunteerOpportunities.with radius.to_f
 end
 
 Given(/^I run the import reachskills service$/) do
@@ -107,6 +106,10 @@ Then(/^I should see a link to "(.*?)" page "(.*?)"$/) do |link, url|
   page.should have_link(link, :href => url)
 end
 
+Then(/^I should see a tracking link to "(.*?)" page "(.*?)"$/) do |link, url|
+  page.should have_link(link, :href => "#{click_through_go_path}?url=#{CGI.escape(url)}")
+end
+
 When(/^I set new volunteer opportunity location to "(.*?)", "(.*?)"$/) do |addr, pc|
   fill_in 'Address', with: addr
   fill_in 'Postcode', with: pc
@@ -148,4 +151,13 @@ Given(/^I fill additional fields required by Doit$/) do
   fill_in('Advertise start date', with: '2017-03-01')
   fill_in('Advertise end date', with: '2017-04-01')
 
+end
+
+Then(/^Opening "(.*?)" should update the click through table/) do |organisation|
+  expect { click_link(organisation) }.to change { ClickThrough.count }
+end
+
+Then (/^I should see "(.*?)" in the the click through table/) do |link|
+  sleep 0.1
+  expect(ClickThrough.last.url).to start_with(link)
 end

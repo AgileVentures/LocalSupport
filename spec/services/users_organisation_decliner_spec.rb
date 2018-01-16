@@ -3,9 +3,9 @@ require_relative '../../app/services/user_organisation_decliner'
 
 describe UserOrganisationDecliner,'#call'  do
   let(:listener) {double :listener}
-  let(:pending_org) {FactoryGirl.create(:organisation)}
-  let(:user) {FactoryGirl.create(:user, pending_organisation: pending_org)}
-  let(:current_user) {FactoryGirl.create(:user, superadmin: true)}
+  let(:pending_org) {FactoryBot.create(:organisation)}
+  let(:user) {FactoryBot.create(:user, pending_organisation: pending_org)}
+  let(:current_user) {FactoryBot.create(:user, superadmin: true)}
 
   let(:service) {UserOrganisationDecliner.new(listener, user, current_user)}
 
@@ -22,7 +22,7 @@ describe UserOrganisationDecliner,'#call'  do
   end
 
   context "non-superadmin" do
-    let(:current_user) {FactoryGirl.create(:user, superadmin: false)}
+    let(:current_user) {FactoryBot.create(:user, superadmin: false)}
     it "does not remove the pending org if called by non-superadmin" do
       allow(listener).to receive(:authorization_failure_for_update)
       expect(user.pending_organisation).not_to be_nil

@@ -25,7 +25,7 @@ module Helpers
 
   # http://robots.thoughtbot.com/automatically-wait-for-ajax-with-capybara
   def wait_for_ajax
-    Timeout.timeout(Capybara.default_wait_time) do
+    Timeout.timeout(Capybara.default_max_wait_time) do
       loop until finished_all_ajax_requests?
     end
   end
@@ -40,7 +40,7 @@ module MapHelpers
     filename = "#{address.downcase.gsub(/,/,'').gsub(/\s/, '_')}.json"
     filename = File.read "test/fixtures/#{filename}"
     stub_request(:any, /maps\.googleapis\.com/).
-        to_return(status => 200, :body => body || filename, :headers => {})
+        to_return(:status => 200, :body => body || filename, :headers => {})
   end
 end
 

@@ -2,7 +2,7 @@ module ApplicationHelper
   include StringUtility
 
   def markdown(text)
-    red_carpet = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true)
+    red_carpet = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true)
     red_carpet.render(text).html_safe
   end
 
@@ -20,7 +20,7 @@ module ApplicationHelper
 
   def parent_layout(layout) # http://andre.arko.net/2013/02/02/nested-layouts-on-rails--31/
     @view_flow.set(:layout, output_buffer)
-    self.output_buffer = render(:file => "layouts/#{layout}")
+    self.output_buffer = render(file: "layouts/#{layout}")
   end
 
   def cookie_policy_accepted?
@@ -49,6 +49,11 @@ module ApplicationHelper
   def gmap_key_value_for_url
     return '' if ENV['GMAP_API_KEY'].nil?
     "&key=#{ENV['GMAP_API_KEY']}"
+  end
+
+  def link_to_and_track(title, url='#', options = {})
+    options[:target] = '_blank' if action_name == 'embedded_map'
+    link_to title, click_through_go_path(url: url), options
   end
 end
 
