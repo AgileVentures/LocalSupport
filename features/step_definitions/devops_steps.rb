@@ -6,3 +6,11 @@ end
 Then(/^I should receive the correct challenge response$/) do
   expect(@response.body).to eq '123456789.qwertyui'
 end
+
+Given(/^I run the import organisation service for postcode "([^"]*)"$/) do |postcode|
+  ImportOrganisations.with postcode
+end
+
+Then(/^there should be (\d+) organisations stored$/) do |number|
+  expect(Organisation.count).to eq number
+end
