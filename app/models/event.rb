@@ -26,15 +26,20 @@ class Event < ApplicationRecord
   def self.event_with_coordinates(events)
     events.map do |ev|
       if(ev.organisation.nil?)
-        ev.latitude = 0.0
-        ev.longitude = 0.0
-        ev.organisation_id = 0
-        ev
+        ev.send(:lat_lng_default)
       else 
         ev.send(:lat_lng_supplier)
       end
     end
   end
+
+  def lat_lng_default
+    self.tap do |e|
+      e.longitude = 0.0
+      e.latitude = 0.0
+    end
+  end
+
 
   def lat_lng_supplier
     return self if latitude && longitude
