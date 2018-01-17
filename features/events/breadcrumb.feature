@@ -19,7 +19,7 @@ Feature: View Breadcrumbs
     Given I visit the events page
     Then I should see a link to "home" page "/"
     And I should see "home » Events"
-
+ 
   Scenario: User visits event from events page
     Given I visit the events page
     When I click "Open Source Weekend"
