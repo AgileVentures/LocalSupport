@@ -9,9 +9,10 @@ Feature: List the upcoming events
       | Cats Are Us     | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
       | Office Primer   | Care for the elderly | 64 pinner road | HA1 4HZ  | http://b.com/ |
     Given the following events exist:
-      | title          | description                        | organisation  | start_date          | end_date            |
-      | My first event | Good for everyone                  | Cats Are Us   | 2030-10-20 10:30:14 | 2030-10-20 17:00:00 |
-      | An Event today | Testing the calendar functionality | Office Primer | today               | today               |
+      | title             | description                        | organisation  | start_date          | end_date            |
+      | My first event    | Good for everyone                  | Cats Are Us   | 2030-10-20 10:30:14 | 2030-10-20 17:00:00 |
+      | An Event today    | Testing the calendar functionality | Office Primer | today               | today               |
+      | A future Event    | Testing the page functionality     |               | today | today |
 
   @javascript
   Scenario:
@@ -21,3 +22,11 @@ Feature: List the upcoming events
     And I should see "An Event today" within "events_scroll"
     And I should see "Start: Sunday, October 20, 2030 at 10:30"
     And I should see "End: Sunday, October 20, 2030 at 17:00"
+
+  @javascript
+  Scenario:
+    Given I visit the events page
+    Then I should see "A future Event"
+    And I should see "A future Event" within "calendar"
+    And I should see "A future Event" within "events_scroll"
+
