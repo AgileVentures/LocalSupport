@@ -35,6 +35,7 @@ class OrganisationsController < BaseOrganisationsController
     @user_opts[:can_propose_edits] = current_user.present? && !@user_opts[:editable]
     @markers = build_map_markers(organisations)
     @cat_name_ids = Category.name_and_id_for_what_who_and_how
+    add_breadcrumb @organisation.name
   end
 
   # GET /organisations/new

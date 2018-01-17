@@ -1,5 +1,5 @@
 class VolunteerOpsController < ApplicationController
-  add_breadcrumb 'Volunteers', :root_url
+  add_breadcrumb 'Volunteers', :root_path
   layout 'two_columns_with_map', except: :embedded_map
   before_action :set_organisation, only: [:new, :create]
   before_action :authorize, except: [:search, :show, :index, :embedded_map]
