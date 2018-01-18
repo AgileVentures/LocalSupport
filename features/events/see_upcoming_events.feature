@@ -12,7 +12,6 @@ Feature: List the upcoming events
       | title             | description                        | organisation  | start_date          | end_date            |
       | My first event    | Good for everyone                  | Cats Are Us   | 2030-10-20 10:30:14 | 2030-10-20 17:00:00 |
       | An Event today    | Testing the calendar functionality | Office Primer | today               | today               |
-      | A future Event    | Testing the page functionality     |               | today | today |
 
   @javascript
   Scenario:
@@ -25,8 +24,9 @@ Feature: List the upcoming events
 
   @javascript
   Scenario:
-    Given I visit the events page
-    Then I should see "A future Event"
-    And I should see "A future Event" within "calendar"
-    And I should see "A future Event" within "events_scroll"
+    Given I remove the organisation from the event "An Event today"
+    And I visit the events page
+    Then I should see "An Event today"
+    And I should see "An Event today" within "calendar"
+    And I should see "An Event today" within "events_scroll"
 

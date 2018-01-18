@@ -3,7 +3,7 @@ class Event < ApplicationRecord
   validates :description, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
-  #validates :organisation_id, presence: true
+  validates :organisation_id, presence: true, :on => [:create]
   belongs_to :organisation
 
   scope :upcoming, lambda { |n|
@@ -25,11 +25,7 @@ class Event < ApplicationRecord
 
   def self.event_with_coordinates(events)
     events.map do |ev|
-      if(ev.organisation.nil?)
-        ev.send(:lat_lng_default)
-      else 
-        ev.send(:lat_lng_supplier)
-      end
+      ev.send(ev.organisation.nil? ? :lat_lng_default : :lat_lng_supplier)
     end
   end
 
