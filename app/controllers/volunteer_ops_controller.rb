@@ -82,12 +82,12 @@ class VolunteerOpsController < ApplicationController
 
   def add_breadcrumbs
     vol_op = @volunteer_op
-    if @organisation.present?
-      add_breadcrumb 'All Organisations', :organisations_path
-      add_breadcrumb @organisation.name, organisation_path(@organisation)
-    end
+    org = @organisation
+      
+    add_breadcrumb 'All Organisations', :organisations_path if org.present?
+    add_breadcrumb org.name, organisation_path(org) if org.present?
 
-    add_breadcrumb 'Volunteers', :root_path unless ['index'].include?(action_name)
+    add_breadcrumb 'Volunteers', :root_path unless 'index' == action_name
 
     case action_name
     when 'index'
