@@ -117,14 +117,15 @@ class OrganisationsController < BaseOrganisationsController
   private
 
   def add_breadcrumbs
+    org = @organisation
     add_breadcrumb 'All Organisations', :organisations_path
     case action_name
-    when "show"
-      add_breadcrumb @organisation.name if @organisation.present?
-    when "edit"
-      add_breadcrumb @organisation.name, organisation_path(@organisation) if @organisation.present?
+    when 'show'
+      add_breadcrumb org.name if org.present?
+    when 'edit'
+      add_breadcrumb org.name, organisation_path(org) if org.present?
       add_breadcrumb 'Edit Organisation'
-    when "new"
+    when 'new'
       add_breadcrumb 'New Organisation'
     end
   end
