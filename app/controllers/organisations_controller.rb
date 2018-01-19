@@ -1,10 +1,11 @@
 class OrganisationsController < BaseOrganisationsController
-  add_breadcrumb 'All Organisations', :organisations_path
   layout 'two_columns_with_map'
   # GET /organisations/search
   # GET /organisations/search.json
   before_action :authenticate_user!, except: [:search, :index, :show]
   prepend_before_action :set_organisation, only: [:show, :update, :edit]
+
+  add_breadcrumb 'All Organisations', :organisations_path
 
   def search
     @parsed_params = SearchParamsParser.new(params)
@@ -31,8 +32,7 @@ class OrganisationsController < BaseOrganisationsController
   def show
     render template: 'pages/404', status: 404 and return if @organisation.nil?
     organisations = Organisation.where(id: @organisation.id)
-    @user_opts = current_user ? get_user_options(@organisation) : {grabbable: true}
-    @user_opts[:can_propose_edits] = current_user.present? && !@user_opts[:editable]
+    @user_opts = set_user_options(@organisation)
     @markers = build_map_markers(organisations)
     @cat_name_ids = Category.name_and_id_for_what_who_and_how
     add_breadcrumb @organisation.name
@@ -122,6 +122,12 @@ class OrganisationsController < BaseOrganisationsController
   end
 
   private
+
+  def set_user_options(organisation)
+    user_opts = current_user ? get_user_options(organisation) : {grabbable: true}
+    user_opts[:can_propose_edits] = current_user.present? && !user_opts[:editable]
+    user_opts
+  end
 
   def get_user_options(organisation)
       {
