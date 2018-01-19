@@ -1,9 +1,9 @@
 class VolunteerOpsController < ApplicationController
-  add_breadcrumb 'Volunteers', :root_path
   layout 'two_columns_with_map', except: :embedded_map
   before_action :set_organisation, only: [:new, :create]
   before_action :authorize, except: [:search, :show, :index, :embedded_map]
   prepend_before_action :set_volunteer_op, only: [:show, :edit]
+  before_action :add_breadcrumbs
 
   def search
     @query = params[:q]
@@ -24,8 +24,6 @@ class VolunteerOpsController < ApplicationController
     @organisation = Organisation.friendly.find(@volunteer_op.organisation_id)
     @editable = current_user.can_edit?(@organisation) if current_user
     @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
-    add_breadcrumb @organisation.name, organisation_path(@organisation)
-    add_breadcrumb @volunteer_op.title, :volunteer_op_path
   end
 
   def new
@@ -81,6 +79,27 @@ class VolunteerOpsController < ApplicationController
   end
 
   private
+
+  def add_breadcrumbs
+    if @organisation.present?
+      add_breadcrumb 'All Organisations', :organisations_path
+      add_breadcrumb @organisation.name, organisation_path(@organisation)
+    end
+
+    add_breadcrumb 'Volunteers', :root_path if !["index"].include?(action_name)
+
+    case action_name
+    when "index"
+      add_breadcrumb 'Volunteers'
+    when "show"
+      add_breadcrumb @volunteer_op.title, :volunteer_op_path if @volunteer_op.present?
+    when "edit"
+      add_breadcrumb @volunteer_op.title, volunteer_op_path(@volunteer_op) if @volunteer_op.present?
+      add_breadcrumb 'Edit Volunteer Opportunity'
+    when "new"
+      add_breadcrumb 'New Volunteer Opportunity'
+    end
+  end
 
   def displayed_volunteer_ops
     vol_ops = VolunteerOp.order_by_most_recent.send(restrict_by_feature_scope)

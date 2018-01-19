@@ -24,5 +24,4 @@ Feature: View Breadcrumbs
     Given I visit the show page for the volunteer_op titled "Office Support"
     Then I should see a link to "home" page "/"
     And I should see a link to "Volunteers" page "/"
-    And I should see a link to "Indian Elders Association" page "/organisations/indian-elders-association"
-    And I should see "home » Volunteers » Indian Elders Association » Office Support"
+    And I should see "home » Volunteers » Office Support"

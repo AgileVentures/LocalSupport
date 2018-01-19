@@ -4,12 +4,11 @@ class OrganisationsController < BaseOrganisationsController
   # GET /organisations/search.json
   before_action :authenticate_user!, except: [:search, :index, :show]
   prepend_before_action :set_organisation, only: [:show, :update, :edit]
-
-  add_breadcrumb 'All Organisations', :organisations_path
+  prepend_before_action :build_cat_name_ids, only: [:search, :index, :show]
+  before_action :add_breadcrumbs
 
   def search
     @parsed_params = SearchParamsParser.new(params)
-    @cat_name_ids = Category.name_and_id_for_what_who_and_how
     @organisations = Queries::Organisations.search_by_keyword_and_category(
       @parsed_params
     )
@@ -24,7 +23,6 @@ class OrganisationsController < BaseOrganisationsController
   def index
     @organisations = Queries::Organisations.order_by_most_recent
     @markers = build_map_markers(@organisations)
-    @cat_name_ids = Category.name_and_id_for_what_who_and_how
   end
 
   # GET /organisations/1
@@ -32,10 +30,9 @@ class OrganisationsController < BaseOrganisationsController
   def show
     render template: 'pages/404', status: 404 and return if @organisation.nil?
     organisations = Organisation.where(id: @organisation.id)
-    @user_opts = set_user_options(@organisation)
+    @user_opts = current_user ? get_user_options(@organisation) : {grabbable: true}
+    @user_opts[:can_propose_edits] = current_user.present? && !@user_opts[:editable]
     @markers = build_map_markers(organisations)
-    @cat_name_ids = Category.name_and_id_for_what_who_and_how
-    add_breadcrumb @organisation.name
   end
 
   # GET /organisations/new
@@ -49,9 +46,6 @@ class OrganisationsController < BaseOrganisationsController
     organisations = Organisation.where(id: @organisation.id)
     @markers = build_map_markers(organisations)
     return false unless user_can_edit? @organisation
-    #respond_to do |format|
-    #  format.html {render :layout => 'full_width'}
-    #end
   end
 
   # POST /organisations
@@ -118,15 +112,25 @@ class OrganisationsController < BaseOrganisationsController
         category_ids: []
       )
     end
-
   end
 
   private
 
-  def set_user_options(organisation)
-    user_opts = current_user ? get_user_options(organisation) : {grabbable: true}
-    user_opts[:can_propose_edits] = current_user.present? && !user_opts[:editable]
-    user_opts
+  def add_breadcrumbs
+    add_breadcrumb 'All Organisations', :organisations_path
+    case action_name
+    when "show"
+      add_breadcrumb @organisation.name if @organisation.present?
+    when "edit"
+      add_breadcrumb @organisation.name, organisation_path(@organisation) if @organisation.present?
+      add_breadcrumb 'Edit Organisation'
+    when "new"
+      add_breadcrumb 'New Organisation'
+    end
+  end
+
+  def build_cat_name_ids
+    @cat_name_ids = Category.name_and_id_for_what_who_and_how
   end
 
   def get_user_options(organisation)
