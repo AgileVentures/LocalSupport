@@ -24,6 +24,11 @@ Given(/^the following events? exists?:$/) do |table|
   end
 end
 
+Given(/^I remove the organisation from the event "(.*?)"$/) do |event|
+  event = Event.find_by_title(event)
+  event.update(organisation_id: nil)
+end
+
 Given(/^I visit "([^"]*)" event$/) do |title|
   event = Event.find_by_title(title)
   visit "/events/#{event.id}"

@@ -196,12 +196,12 @@ GEM
       concurrent-ruby (~> 1.0)
     jar_wrapper (0.1.8)
       zip
-    jasmine (2.8.0)
-      jasmine-core (>= 2.8.0, < 3.0.0)
+    jasmine (2.9.0)
+      jasmine-core (>= 2.9.0, < 3.0.0)
       phantomjs
       rack (>= 1.2.1)
       rake
-    jasmine-core (2.8.0)
+    jasmine-core (2.9.0)
     jasmine-jquery-rails (2.0.3)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
@@ -469,7 +469,7 @@ DEPENDENCIES
   geocoder
   heroku-api
   httparty
-  jasmine (~> 2.4)
+  jasmine (~> 2.9)
   jasmine-jquery-rails (= 2.0.3)
   jbuilder
   jquery-rails
