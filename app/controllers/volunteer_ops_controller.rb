@@ -83,23 +83,16 @@ class VolunteerOpsController < ApplicationController
   def add_breadcrumbs
     vol_op = @volunteer_op
     org = @organisation
-      
-    add_breadcrumb 'All Organisations', :organisations_path if org.present?
-    add_breadcrumb org.name, organisation_path(org) if org.present?
 
-    add_breadcrumb 'Volunteers', :root_path unless 'index' == action_name
+    ApplicationController.add_organisation_breadcrumbs(
+      @breadcrumbs, org, 'vol_op', organisations_path,
+      org.present? ? organisation_path(org) : nil, org.present?
+    )
 
-    case action_name
-    when 'index'
-      add_breadcrumb 'Volunteers'
-    when 'show'
-      add_breadcrumb vol_op.title, :volunteer_op_path if vol_op.present?
-    when 'edit'
-      add_breadcrumb vol_op.title, volunteer_op_path(vol_op) if vol_op.present?
-      add_breadcrumb 'Edit Volunteer Opportunity'
-    when 'new'
-      add_breadcrumb 'New Volunteer Opportunity'
-    end
+    ApplicationController.add_vol_ops_breadcrumbs(
+      @breadcrumbs, vol_op, action_name, root_path,
+      vol_op.present? ? volunteer_op_path(vol_op) : nil
+    )
   end
 
   def displayed_volunteer_ops

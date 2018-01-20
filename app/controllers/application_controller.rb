@@ -77,6 +77,38 @@ class ApplicationController < ActionController::Base
     redirect_to request.referer || '/'
   end
 
+  def self.add_organisation_breadcrumbs(crumbs, org, action, root, path, visible = true)
+    breadcrumb_obj = BreadcrumbsOnRails::Breadcrumbs::Element
+    crumbs.push(breadcrumb_obj.new('All Organisations', root)) if visible
+
+    case action
+    when 'show'
+      crumbs.push(breadcrumb_obj.new(org.name)) if org.present?
+    when 'edit'
+      crumbs.push(breadcrumb_obj.new(org.name, path)) if org.present?
+      crumbs.push(breadcrumb_obj.new('Edit Organisation'))
+    when 'new'
+      crumbs.push(breadcrumb_obj.new('New Organisation'))
+    when 'vol_op'
+      crumbs.push(breadcrumb_obj.new(org.name, path)) if org.present?
+    end
+  end
+
+  def self.add_vol_ops_breadcrumbs(crumbs, vol_op, action, root, path)
+    breadcrumb_obj = BreadcrumbsOnRails::Breadcrumbs::Element
+    crumbs.push(breadcrumb_obj.new('Volunteers', action == 'index' ? nil : root))
+
+    case action
+    when 'show'
+      crumbs.push(breadcrumb_obj.new(vol_op.title)) if vol_op.present?
+    when 'edit'
+      crumbs.push(breadcrumb_obj.new(vol_op.title, path)) if vol_op.present?
+      crumbs.push(breadcrumb_obj.new('Edit Volunteer Opportunity'))
+    when 'new'
+      crumbs.push(breadcrumb_obj.new('New Volunteer Opportunity'))
+    end
+  end
+
   private
 
   # Enforces superadmin-only limits

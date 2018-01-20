@@ -118,16 +118,10 @@ class OrganisationsController < BaseOrganisationsController
 
   def add_breadcrumbs
     org = @organisation
-    add_breadcrumb 'All Organisations', :organisations_path
-    case action_name
-    when 'show'
-      add_breadcrumb org.name if org.present?
-    when 'edit'
-      add_breadcrumb org.name, organisation_path(org) if org.present?
-      add_breadcrumb 'Edit Organisation'
-    when 'new'
-      add_breadcrumb 'New Organisation'
-    end
+    ApplicationController.add_organisation_breadcrumbs(
+      @breadcrumbs, org, action_name, organisations_path,
+      org.present? ? organisation_path(org) : nil
+    )
   end
 
   def build_cat_name_ids
