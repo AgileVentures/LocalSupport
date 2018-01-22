@@ -77,35 +77,15 @@ class ApplicationController < ActionController::Base
     redirect_to request.referer || '/'
   end
 
-  def self.add_organisation_breadcrumbs(crumbs, org, action, root, path, visible = true)
-    breadcrumb_obj = BreadcrumbsOnRails::Breadcrumbs::Element
-    crumbs.push(breadcrumb_obj.new('All Organisations', root)) if visible
-
-    case action
+  def add_breadcrumbs(default_title, title = nil, path = nil)
+    case action_name
     when 'show'
-      crumbs.push(breadcrumb_obj.new(org.name)) if org.present?
+      add_breadcrumb title if title.present?
     when 'edit'
-      crumbs.push(breadcrumb_obj.new(org.name, path)) if org.present?
-      crumbs.push(breadcrumb_obj.new('Edit Organisation'))
+      add_breadcrumb title, path if title.present?
+      add_breadcrumb "Edit #{default_title}"
     when 'new'
-      crumbs.push(breadcrumb_obj.new('New Organisation'))
-    when 'vol_op'
-      crumbs.push(breadcrumb_obj.new(org.name, path)) if org.present?
-    end
-  end
-
-  def self.add_vol_ops_breadcrumbs(crumbs, vol_op, action, root, path)
-    breadcrumb_obj = BreadcrumbsOnRails::Breadcrumbs::Element
-    crumbs.push(breadcrumb_obj.new('Volunteers', action == 'index' ? nil : root))
-
-    case action
-    when 'show'
-      crumbs.push(breadcrumb_obj.new(vol_op.title)) if vol_op.present?
-    when 'edit'
-      crumbs.push(breadcrumb_obj.new(vol_op.title, path)) if vol_op.present?
-      crumbs.push(breadcrumb_obj.new('Edit Volunteer Opportunity'))
-    when 'new'
-      crumbs.push(breadcrumb_obj.new('New Volunteer Opportunity'))
+      add_breadcrumb "New #{default_title}"
     end
   end
 

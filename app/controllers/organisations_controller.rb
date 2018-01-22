@@ -116,18 +116,6 @@ class OrganisationsController < BaseOrganisationsController
 
   private
 
-  def add_breadcrumbs
-    org = @organisation
-    ApplicationController.add_organisation_breadcrumbs(
-      @breadcrumbs, org, action_name, organisations_path,
-      org.present? ? organisation_path(org) : nil
-    )
-  end
-
-  def build_cat_name_ids
-    @cat_name_ids = Category.name_and_id_for_what_who_and_how
-  end
-
   def get_user_options(organisation)
       {
         pending_org_admin: current_user.pending_org_admin?(organisation),
