@@ -77,17 +77,76 @@ class ApplicationController < ActionController::Base
     redirect_to request.referer || '/'
   end
 
+  # def add_breadcrumbs(default_title, title = nil, path = nil)
+  #   case action_name
+  #   when 'show'
+  #     add_breadcrumb title if title.present?
+  #   when 'edit'
+  #     add_breadcrumb title, path if title.present?
+  #     add_breadcrumb "Edit #{default_title}"
+  #   when 'new'
+  #     add_breadcrumb "New #{default_title}"
+  #   end
+  # end
+
+  # move complexity into a data structure
+
+  # breadcrumbs_by_action = {}
+  # breadcrumbs_by_action['show'] = -> (title, _path) { add_breadcrumb title if title.present? }
+  # breadcrumbs_by_action['edit'] = -> (title, path) do
+  #   add_breadcrumb title, path if title.present?
+  #   add_breadcrumb "Edit #{default_title}" }
+  # end
+  #
+  # def add_breadcrumbs
+  #   breadcrumbs_by_action(action_name).call(title, path)
+  # end
+
+  # --------
+  #  move complexity into a module
+  #
+  # lib/breadcrumbs_by_action.rb
+  # module BreadCrumbsByAction
+  #   def show_breadcrumb(default_title, title = nil, path = nil)
+  #     add_breadcrumb title if title.present?
+  #   end
+  #
+  #   def edit_breadcrumb(default_title, title = nil, path = nil)
+  #     add_breadcrumb title, path if title.present?
+  #     add_breadcrumb "Edit #{default_title}"
+  #   end
+  #
+  #   def new_breadcrumb(default_title, title = nil, path = nil)
+  #     add_breadcrumb "New #{default_title}"
+  #   end
+  # end
+
+  # assuming BreadCrumbsByAction mixed in with ApplicationController
+  # include BreadCrumbByAction
+
+  # def add_breadcrumbs(default_title, title = nil, path = nil)
+  #   send("#{action_name}_breadcrumb".to_sym, default_title, title, path)
+  # end
+
+
+  # ------
+  # move complexity into a class
+  # lib/breadcrumbs_by_action.rb
+
+
+  # call it like so:
+  #
   def add_breadcrumbs(default_title, title = nil, path = nil)
-    case action_name
-    when 'show'
-      add_breadcrumb title if title.present?
-    when 'edit'
-      add_breadcrumb title, path if title.present?
-      add_breadcrumb "Edit #{default_title}"
-    when 'new'
-      add_breadcrumb "New #{default_title}"
-    end
+    bba = BreadcrumbsByAction.new(self, default_title, title, path)
+    bba.send("#{action_name}_breadcrumb".to_sym)
   end
+
+  # def add_breadcrumbs(default_title, title = nil, path = nil)
+  #   send("#{action_name}_breadcrumb".to_sym, default_title, title, path)
+  # end
+
+
+  # ----
 
   private
 
