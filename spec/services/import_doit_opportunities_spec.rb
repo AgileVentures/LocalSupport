@@ -19,7 +19,7 @@ describe ImportDoItVolunteerOpportunities do
     it 'does not check for the presence and/or create any ops' do
       allow(http_party).to receive(:get).and_return(response)
       list_volunteer_opportunities
-      expect(model_klass).not_to have_received(:find_by)
+      expect(model_klass).not_to have_received(:find_or_create_by)
     end
   end
 
