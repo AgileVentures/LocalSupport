@@ -48,7 +48,7 @@ group :test do
   gem 'capybara-webkit', git: 'https://github.com/thoughtbot/capybara-webkit.git'
   gem 'nokogiri', '~> 1.8', '>= 1.8.1'
   gem 'factory_bot_rails'
-  gem 'webmock'
+  gem 'webmock', '~> 3.3'
   gem 'uri-handler'
   gem 'selenium'
   gem 'selenium-client'
