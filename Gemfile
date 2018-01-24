@@ -20,8 +20,8 @@ group :development, :test do
   gem 'timecop'
   gem 'database_cleaner', '1.6.2'
   gem 'launchy'
-  gem 'simplecov'
-  gem 'sinatra'
+  gem 'simplecov', :require => false
+      gem 'sinatra'
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
   gem 'execjs'
@@ -52,7 +52,6 @@ group :test do
   gem 'uri-handler'
   gem 'selenium'
   gem 'selenium-client'
-  gem 'coveralls', '~> 0.8.21'
   gem 'shoulda'
   gem 'vcr'
   gem 'puffing-billy'
