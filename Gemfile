@@ -20,8 +20,8 @@ group :development, :test do
   gem 'timecop'
   gem 'database_cleaner', '1.6.2'
   gem 'launchy'
-  gem 'simplecov', :require => false
-      gem 'sinatra'
+  gem 'simplecov', require: false
+  gem 'sinatra'
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
   gem 'execjs'
