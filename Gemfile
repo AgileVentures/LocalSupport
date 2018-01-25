@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '2.4.2'
-gem 'rails', '~> 4.2', '>= 4.2.7.1'
+gem 'rails', '~> 5.1', '>= 5.1.4'
 gem 'pg', '0.21.0'
 gem 'devise', '~> 4.4'
 gem 'devise_invitable', '~> 1.6', '>= 1.6.1'
@@ -20,7 +20,7 @@ group :development, :test do
   gem 'timecop'
   gem 'database_cleaner', '1.6.2'
   gem 'launchy'
-  gem 'simplecov'
+  gem 'simplecov', require: false
   gem 'sinatra'
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
@@ -28,8 +28,9 @@ group :development, :test do
   gem 'aruba'
   gem 'byebug'
   gem 'rack_session_access'
-  gem 'jasmine', '~> 2.4'
+  gem 'jasmine', '~> 2.9'
   gem 'jasmine-jquery-rails', '2.0.3'
+  gem 'rails-controller-testing'
   #gem 'better_errors'
   gem 'binding_of_caller' # plays well with better_errors
 end
@@ -47,11 +48,10 @@ group :test do
   gem 'capybara-webkit', git: 'https://github.com/thoughtbot/capybara-webkit.git'
   gem 'nokogiri', '~> 1.8', '>= 1.8.1'
   gem 'factory_bot_rails'
-  gem 'webmock'
+  gem 'webmock', '~> 3.3'
   gem 'uri-handler'
   gem 'selenium'
   gem 'selenium-client'
-  gem 'coveralls', '~> 0.8.21'
   gem 'shoulda'
   gem 'vcr'
   gem 'puffing-billy'

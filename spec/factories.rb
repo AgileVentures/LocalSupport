@@ -123,6 +123,7 @@ FactoryBot.define do
     description "Something about an event"  
     start_date { DateTime.now() }
     end_date { DateTime.now() }
+    association :organisation, factory: :organisation
   end
 
   factory :upcoming_events, class: Event do
@@ -130,6 +131,7 @@ FactoryBot.define do
     description "An event that is coming up soon"
     start_date { DateTime.now() + 1.day }
     end_date { DateTime.now() + 1.day }
+    association :organisation, factory: :organisation
   end
 
   factory :previous_events, class: Event do
@@ -137,6 +139,7 @@ FactoryBot.define do
     description "An event that has already passed"
     start_date { DateTime.now() - 1.day }
     end_date { DateTime.now() - 1.day }
+    association :organisation, factory: :organisation
   end
 
 end

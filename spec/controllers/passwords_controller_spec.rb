@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-describe Devise::PasswordsController, :type => :controller do
-  describe "POST create" do
+describe Devise::PasswordsController, type: :controller do
+  describe 'POST create' do
     before :each do
-      request.env["devise.mapping"] = Devise.mappings[:user]
+      request.env['devise.mapping'] = Devise.mappings[:user]
     end
-    context "successful" do
+    context 'successful' do
       before :each do
         usr = FactoryBot.create(:user)
-        post :create, 'user' => {'email' => usr.email}
+        post :create, params: {'user' => {'email' => usr.email}}
       end
 
       it 'emails when user requests password for email in the system' do
@@ -16,7 +16,7 @@ describe Devise::PasswordsController, :type => :controller do
       end
 
       it 'displays flash message when password retrieval succeeds' do
-        expect(flash[:notice]).to have_content "You will receive an email with instructions about how to reset your password in a few minutes."
+        expect(flash[:notice]).to have_content 'You will receive an email with instructions about how to reset your password in a few minutes.'
       end
 
 
@@ -24,12 +24,12 @@ describe Devise::PasswordsController, :type => :controller do
         expect(response).to redirect_to new_user_session_path
       end
     end
-    context "unsuccessful" do
+    context 'unsuccessful' do
       before :each do
-        post :create, 'user' => {'email' => 'jj@example.com'}
+        post :create, params: {'user' => {'email' => 'jj@example.com'}}
       end
       it 'displays message when password retrieval is a no-go' do
-        expect(assigns(:user).errors.full_messages).to include "Email not found in our database. Sorry!"
+        expect(assigns(:user).errors.full_messages).to include 'Email not found in our database. Sorry!'
       end
     end
    end
@@ -52,11 +52,10 @@ describe Devise::PasswordsController, :type => :controller do
        }
      end
 
-     subject(:change_password) { put :update, user: put_params }
+     subject(:change_password) { put :update, params: {user: put_params} }
 
      context 'successful' do
        let(:reset_password_token) { user.send_reset_password_instructions }
-
        it 'changes password' do
          expect(flash[:notice]).to eq(success)
        end

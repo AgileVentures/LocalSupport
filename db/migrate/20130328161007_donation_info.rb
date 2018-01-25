@@ -1,4 +1,4 @@
-class DonationInfo < ActiveRecord::Migration
+class DonationInfo < ActiveRecord::Migration[4.2]
   def up
     add_column :organizations, :donation_info, :text
   end

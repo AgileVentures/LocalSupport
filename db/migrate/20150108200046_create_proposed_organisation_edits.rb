@@ -1,4 +1,4 @@
-class CreateProposedOrganisationEdits < ActiveRecord::Migration
+class CreateProposedOrganisationEdits < ActiveRecord::Migration[4.2]
   def up
 
     create_table :proposed_organisation_edits do |t|

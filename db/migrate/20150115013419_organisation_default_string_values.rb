@@ -1,4 +1,4 @@
-class OrganisationDefaultStringValues < ActiveRecord::Migration
+class OrganisationDefaultStringValues < ActiveRecord::Migration[4.2]
 
   ATTRS = %i[
     name

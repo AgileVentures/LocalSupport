@@ -1,4 +1,4 @@
-class CharityWorkerAddOrganization < ActiveRecord::Migration
+class CharityWorkerAddOrganization < ActiveRecord::Migration[4.2]
   def up
     change_table :charity_workers do |t|
       t.references :organization

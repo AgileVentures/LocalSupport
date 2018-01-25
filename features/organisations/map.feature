@@ -14,7 +14,7 @@ Feature: Map of local charities
       | Indian Elders Association      | Care for the elderly           | 64 Pinner Road | HA1 4HZ  | http://b.com/ |
       | Age UK                         | Care for the Elderly           | 84 Pinner Road | HA1 4HZ  | http://c.com/ |
       | Youth UK                       | Care for the Very Young        | 84 Pinner Road | HA1 4HZ  | http://d.com/ |
-      | Wrong Postcode UK              | Confused                       | 50 City Road   | HA1 4HZ   | http://e.com/ |
+      | Wrong Postcode UK              | Confused                       | 50 City Road   | HA1 4HZ  | http://e.com/ |
 
     Given the following users are registered:
       | email                         | password | organisation      | confirmed_at         |

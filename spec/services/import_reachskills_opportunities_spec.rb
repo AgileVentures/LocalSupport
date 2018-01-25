@@ -33,7 +33,7 @@ describe ImportReachSkillsVolunteerOpportunities do
 		it 'removes all reachskills ops before re-adding from reachskills api' do
 			allow(http_party).to receive(:get).and_return(response)
 			list_volunteer_opportunities
-			expect(model_klass).to have_received(:delete_all).with(source: 'reachskills').ordered
+			expect(model_klass).to have_received(:where).with(source: 'reachskills').ordered
 			expect(model_klass).to have_received(:find_or_create_by).exactly(10).times.ordered
 		end
 	end
