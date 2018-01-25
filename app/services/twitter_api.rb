@@ -13,10 +13,11 @@ class TwitterApi
     end
   end
 
-  def post_to_twitter(desc, url='https://www.harrowcn.org.uk/')
-    msg = "New #volunteer opportunity at #{url} - #{desc}"
-    tweet = parser(msg)
-    self.client.update(tweet)
+  def tweet volop
+    url='https://www.harrowcn.org.uk/'
+    msg = "New #volunteer opportunity: #{volop.title} visit #{url} for more information"
+    valid_tweet = parse msg
+    client.update valid_tweet
   end
 
   def parse msg
