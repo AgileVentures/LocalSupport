@@ -1,5 +1,4 @@
-require 'coveralls'
-Coveralls.wear_merged!('rails')
+require 'simplecov'
 
 ENV['CUCUMBER'] = 'cucumber'
 
@@ -35,11 +34,7 @@ Capybara.default_max_wait_time = 3
 Capybara.asset_host = 'http://localhost:3000'
 
 Capybara.javascript_driver = :webkit
-Capybara::Webkit.configure do |config|
- #config.debug = true
- config.block_unknown_urls
- #config.allow_url("google.com/*")
-end
+Capybara::Webkit.configure(&:block_unknown_urls)
 
 Billy.configure do |c|
   c.cache = true
