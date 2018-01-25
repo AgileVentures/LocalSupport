@@ -24,4 +24,10 @@ class TwitterApi
     parse_result = parse_tweet msg
     msg[parse_result[:valid_range_start]..parse_result[:valid_range_end]]
   end
+
+  def tweet_new_opportunities source
+    within_one_day = (Time.current - 1.day)..Time.current
+    volops = VolunteerOp.where(source: source).where created_at: within_one_day
+    volops.each { |volop| tweet volop }
+  end
 end
