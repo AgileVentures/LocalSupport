@@ -6,7 +6,26 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Logger.new(STDOUT).info 'Start Organisations seed'
-Organisation.import_addresses 'db/data.csv', 1006
+10.times do
+  Organisation.create(
+    name: Faker::Company.name,
+    address: Faker::Address.street_address,
+    postcode: Faker::Address.zip_code,
+    email: Faker::Internet.email,
+    description: Faker::DrWho.quote,
+    website: Faker::Internet.url,
+    telephone: Faker::PhoneNumber.phone_number,
+    latitude: Faker::Address.latitude,
+    longitude: Faker::Address.longitude,
+    gmaps: Faker::Boolean.boolean,
+    donation_info: Faker::Lorem.paragraph,
+    publish_address: Faker::Boolean.boolean,
+    publish_phone: Faker::Boolean.boolean,
+    publish_email: Faker::Boolean.boolean,
+    type: 'Organisation',
+    non_profit: Faker::Boolean.boolean
+  )
+end
 
 Logger.new(STDOUT).info 'Start Users seed'
 user = User.where(email: "superadmin@harrowcn.org.uk").first_or_initialize
