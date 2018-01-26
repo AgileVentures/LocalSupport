@@ -17,6 +17,7 @@ gem 'jbuilder'
 
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do
+  gem 'faker', '~> 1.8', '>= 1.8.7'
   gem 'timecop'
   gem 'database_cleaner', '1.6.2'
   gem 'launchy'
