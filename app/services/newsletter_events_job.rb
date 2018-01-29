@@ -2,7 +2,7 @@ class NewsletterEventsJob
   class << self
     def create_campaign
       # TODO: create campaign on mailchimp using the updated list (https://github.com/amro/gibbon#campaigns)
-      #
+      #Testing if push will do
       # The mailchimp campaign it will list all Events with a link to each of them and
       # when it will have place, eg.:
       #
