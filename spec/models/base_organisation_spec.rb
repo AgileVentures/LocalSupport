@@ -23,35 +23,61 @@ describe BaseOrganisation, type: :model do
 
     it { is_expected.to have_been_updated_recently }
 
-    context "updated too long ago" do
+    context 'updated too long ago' do
       subject { FactoryBot.create(:organisation, updated_at: 1.year.ago)}
       it { is_expected.not_to have_been_updated_recently }
     end
 
-    context "when updated recently" do
+    context 'when updated recently' do
       subject { FactoryBot.create(:organisation, updated_at: 364.days.ago) }
       it { is_expected.to have_been_updated_recently }
     end
   end
 
-  describe 'geocoding' do
+  describe 'geocoding object that already exists' do
     subject { FactoryBot.create(:organisation, updated_at: 366.days.ago) }
     it 'should geocode when address changes' do
       new_address = '30 pinner road'
       is_expected.to receive(:geocode)
-      subject.update_attributes :address => new_address
-    end
+      subject.update_attributes address: new_address
+      end
 
     it 'should geocode when postcode changes' do
       new_postcode = 'HA1 4RZ'
       is_expected.to receive(:geocode)
-      subject.update_attributes :postcode => new_postcode
+      subject.update_attributes postcode: new_postcode
+    end
+  end
+
+  describe 'geocoding object that is being created' do
+    it 'should not geocode if coordinates are setup and I have an address' do
+      postcode = 'HA1 4HZ'
+      address = '60 pinner road'
+      org = FactoryBot.build(
+          :organisation,
+          address: address,
+          latitude: Faker::Address.latitude,
+          longitude: Faker::Address.longitude,
+          postcode: postcode,
+          name: 'Happy and Nice',
+          gmaps: true
+      )
+          expect(org).to_not receive(:geocode)
+          org.save
     end
 
-    it 'should geocode when new object is created' do
-      address = '60 pinner road'
+    it 'should geocode if coordinates are not setup and I have an address' do
       postcode = 'HA1 4HZ'
-      org = FactoryBot.build(:organisation,:address => address, :postcode => postcode, :name => 'Happy and Nice', :gmaps => true)
+      address = '60 pinner road'
+      org = FactoryBot.build(
+          :organisation,
+          address: address,
+          latitude: nil,
+          longitude: nil,
+          postcode: postcode,
+          name: 'Happy and Nice',
+          gmaps: true
+      )
       expect(org).to receive(:geocode)
       org.save
     end
