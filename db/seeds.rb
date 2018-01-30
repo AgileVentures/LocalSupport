@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Logger.new(STDOUT).info 'Start Organisations seed'
 100.times do
-  Organisation.create(
+  org = Organisation.create(
     name: Faker::Company.name,
     address: Faker::Address.street_address,
     postcode: Faker::Address.zip_code,
@@ -24,6 +24,15 @@ Logger.new(STDOUT).info 'Start Organisations seed'
     publish_email: Faker::Boolean.boolean,
     type: 'Organisation',
     non_profit: Faker::Boolean.boolean
+  )
+  date = Date.today + rand(30)
+  org.events.create(
+    title: Faker::Book.title,
+    description: Faker::Robin.quote,
+    start_date: date,
+    end_date: date + rand(1..4).hours,
+    latitude: org.latitude,
+    longitude: org.longitude
   )
 end
 
