@@ -25,7 +25,7 @@ Logger.new(STDOUT).info 'Start Organisations seed'
       type: 'Organisation',
       non_profit: Faker::Boolean.boolean
   )
-  date = Date.today + rand(30)
+  date = (Date.today + rand(30)) + rand(9..17).hours
   org.events.create(
       title: Faker::Book.title,
       description: Faker::Robin.quote,
