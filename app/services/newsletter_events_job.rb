@@ -1,5 +1,6 @@
 class NewsletterEventsJob
   class << self
+    include Rails.application.routes.url_helpers
     def create_campaign
       # TODO: create campaign on mailchimp using the updated list (https://github.com/amro/gibbon#campaigns)
       #Testing if push will do
@@ -23,16 +24,27 @@ class NewsletterEventsJob
     end
 
     def organisation_emails
-      emails = []
-      Organisation.pluck(:email, :name).each do |email, name|
+      Organisation.pluck(:email, :name).reduce([]) do |emails, data|
         # There are organisations that don't have the email configured
-        emails << { email => name } unless email.empty?
+        emails << { data[0] => data[1] } unless data[0].empty?
+        emails
       end
-      emails
     end
 
     def events
-      # TODO: collect all events from this month to the end of the year
+      Event.where('start_date >= ?', Date.today).reduce([]) do |data, event|
+        data << format_event(event)
+      end
+    end
+
+    def format_event(event)
+      date = event.start_date
+      start_date = date.strftime("%A, #{date.day.ordinalize} %B %Y, %l%P")
+      {
+          title: event.title,
+          date: "#{start_date} #{event.end_date.strftime('to %I%P')}",
+          url: "https://www.harrowcn.org.uk#{event_path(event.id)}"
+      }
     end
 
     def update_list
