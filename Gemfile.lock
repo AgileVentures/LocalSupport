@@ -243,7 +243,7 @@ GEM
     multi_test (0.1.2)
     multi_xml (0.6.0)
     mustermann (1.0.1)
-    newrelic_rpm (4.7.1.340)
+    newrelic_rpm (4.8.0.341)
     nio4r (2.2.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
