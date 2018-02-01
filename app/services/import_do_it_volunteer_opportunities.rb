@@ -9,14 +9,13 @@ class ImportDoItVolunteerOpportunities
 
   private
 
-  attr_reader :http, :model_klass, :radius, :trace_handler, :client
+  attr_reader :http, :model_klass, :radius, :trace_handler
 
   def initialize(http, model_klass, radius, trace_handler)
     @http = http
     @model_klass = model_klass
     @radius = radius
     @trace_handler = trace_handler
-    @client = TwitterApi.new
   end
 
   HOST = 'https://api.do-it.org'
@@ -27,7 +26,6 @@ class ImportDoItVolunteerOpportunities
     model_klass.where(source: 'doit').delete_all
     while href = process_doit_json_page(http.get("#{HOST}#{href}"));
     end
-    client.tweet_new_opportunities 'doit'
   end
 
   def process_doit_json_page(response)
