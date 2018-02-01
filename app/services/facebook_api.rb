@@ -5,7 +5,9 @@ class FacebookApi
     @client = Koala::Facebook::API.new
   end
 
-  def post_to_facebook(msg)
+  def post volop
+    url='https://www.harrowcn.org.uk/'
+    msg = "New volunteer opportunity: #{volop.title} - For more information visit #{url}"
     client.put_connections('me', 'feed', message: msg)
   end
 end
