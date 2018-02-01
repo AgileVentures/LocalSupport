@@ -15,7 +15,7 @@ class TwitterApi
 
   def tweet volop
     url='https://www.harrowcn.org.uk/'
-    msg = "New #volunteer opportunity: #{volop.title} visit #{url} for more information"
+    msg = "New #volunteer opportunity: #{volop.title} - For more information visit #{url}"
     valid_tweet = parse msg
     client.update valid_tweet
   end
