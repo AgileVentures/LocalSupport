@@ -38,6 +38,7 @@ class VolunteerOpsController < ApplicationController
     @volunteer_op = VolunteerOpForm.new(volunteer_op_params)
     result = @volunteer_op.save
     result ? vol_op_redirect(t('volunteer.create_success')) : render(:new)
+    UpdateSocialMedia.new.post @volunteer_op if result
   end
 
   def edit
