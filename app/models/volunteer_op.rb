@@ -77,11 +77,6 @@ class VolunteerOp < ApplicationRecord
     source
   end
 
-  def new?
-    one_day_ago = Time.current - 1.day
-    created_at > one_day_ago
-  end
-
   private
 
   def clear_lat_lng
