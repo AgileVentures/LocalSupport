@@ -5,7 +5,7 @@ class UpdateSocialMedia
     @twitter_client = TwitterApi.new
   end
 
-  def update_social_media
+  def post_new_volops_from_partner_sites
     within_one_day = (Time.current - 1.day)..Time.current
     new_volops = VolunteerOp.where(created_at: within_one_day).where.not source: :local
     new_volops.each { |volop| post volop }
