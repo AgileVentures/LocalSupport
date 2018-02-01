@@ -13,12 +13,12 @@ require 'rails_helper'
 
     it 'should be able to parse a tweet' do
       current_max_tweet_length = 280
-      result = twitter_client.parser(long_tweet)
+      result = twitter_client.parse(long_tweet)
       expect(result.length).to eq(current_max_tweet_length)
     end
 
     it 'should be able to parse a short tweet' do
-      result = twitter_client.parser("abc")
+      result = twitter_client.parse("abc")
       expect(result).to eq("abc")
     end
 
