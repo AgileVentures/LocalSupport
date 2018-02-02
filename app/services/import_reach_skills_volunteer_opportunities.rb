@@ -56,11 +56,7 @@ class ImportReachSkillsVolunteerOpportunities
     model.description = op['node']['Description']
     model.reachskills_org_name = op['node']['Organisation']
     model.reachskills_op_link = op['node']['Path']
-    # setting created_at and updated_at to one day ago
-    # this is necessary so that all volops are NOT modeled as being new
-    # this will need to remain until reachskills provides an API that contains those parameters.
-    # reachskills is planning to update their API later this year.
-    one_day_ago = Time.current - 1.day
+    one_day_ago = Time.current - 1.day # necessary until api is updated.
     model.updated_at = one_day_ago
     model.created_at = one_day_ago
   end
