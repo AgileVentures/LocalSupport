@@ -489,69 +489,6 @@ describe Organisation, :type => :model do
       expect(@org1.type).to eq('ProposedOrganisation')
     end
   end
-
-  context "geocoding" do
-    describe 'not_geocoded?' do
-      it 'should return true if it lacks latitude and longitude' do
-        @org1.assign_attributes(latitude: nil, longitude: nil)
-        expect(@org1.not_geocoded?).to be true
-      end
-
-      it 'should return false if it has latitude and longitude' do
-        expect(@org2.not_geocoded?).to be false
-      end
-    end
-
-    describe 'run_geocode?' do
-      it 'should return true if address is changed' do
-        @org1.address = "asjkdhas,ba,asda"
-        expect(@org1.run_geocode?).to be true
-      end
-
-      it 'should return false if address is not changed' do
-        expect(@org1).to receive(:address_changed?).and_return(false)
-        expect(@org1).to receive(:not_geocoded?).and_return(false)
-        expect(@org1.run_geocode?).to be false
-      end
-
-      it 'should return false if org has no address' do
-        org = Organisation.new
-        expect(org.run_geocode?).to be false
-      end
-
-      it 'should return true if org has an address but no coordinates' do
-        expect(@org1).to receive(:not_geocoded?).and_return(true)
-        expect(@org1.run_geocode?).to be true
-      end
-
-      it 'should return false if org has an address and coordinates' do
-        expect(@org2).to receive(:not_geocoded?).and_return(false)
-        expect(@org2.run_geocode?).to be false
-      end
-    end
-
-    describe "acts_as_gmappable's behavior is curtailed by the { :process_geocoding => :run_geocode? } option" do
-      it 'no geocoding allowed when saving if the org already has an address and coordinates' do
-        expect_any_instance_of(Organisation).not_to receive(:geocode)
-        @org2.email = 'something@example.com'
-        @org2.save!
-      end
-
-      # it will try to rerun incomplete geocodes, but not valid ones, so no harm is done
-      it 'geocoding allowed when saving if the org has an address BUT NO coordinates' do
-        expect_any_instance_of(Organisation).to receive(:geocode)
-        @org2.longitude = nil ; @org2.latitude = nil
-        @org2.email = 'something@example.com'
-        @org2.save!
-      end
-
-      it 'geocoding allowed when saving if the org address changed' do
-        expect_any_instance_of(Organisation).to receive(:geocode)
-        @org2.address = '777 pinner road'
-        @org2.save!
-      end
-    end
-  end
 end
 
 describe Organisation, :type => :model do
@@ -604,28 +541,6 @@ describe Organisation, :type => :model do
     it 'should return false if org has an address and coordinates' do
       expect(@org2).to receive(:not_geocoded?).and_return(false)
       expect(@org2.run_geocode?).to be false
-    end
-  end
-
-  describe "acts_as_gmappable's behavior is curtailed by the { :process_geocoding => :run_geocode? } option" do
-    it 'no geocoding allowed when saving if the org already has an address and coordinates' do
-      expect_any_instance_of(Organisation).not_to receive(:geocode)
-      @org2.email = 'something@example.com'
-      @org2.save!
-    end
-
-    # it will try to rerun incomplete geocodes, but not valid ones, so no harm is done
-    it 'geocoding allowed when saving if the org has an address BUT NO coordinates' do
-      expect_any_instance_of(Organisation).to receive(:geocode)
-      @org2.longitude = nil ; @org2.latitude = nil
-      @org2.email = 'something@example.com'
-      @org2.save!
-    end
-
-    it 'geocoding allowed when saving if the org address changed' do
-      expect_any_instance_of(Organisation).to receive(:geocode)
-      @org2.address = '777 pinner road'
-      @org2.save!
     end
   end
 end

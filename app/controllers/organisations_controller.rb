@@ -66,6 +66,7 @@ class OrganisationsController < BaseOrganisationsController
     end
     @organisation = Organisation.new(org_params)
     if @organisation.save
+      @organisation.check_geocode
       redirect_to @organisation, notice: 'Organisation was successfully created.'
     else
      render :new
@@ -79,6 +80,7 @@ class OrganisationsController < BaseOrganisationsController
     update_params = OrganisationParams.build params
     return false unless user_can_edit? @organisation
     if @organisation.update_attributes_with_superadmin(update_params)
+      @organisation.check_geocode
       redirect_to @organisation, notice: 'Organisation was successfully updated.'
     else
       render action: 'edit'
