@@ -3,6 +3,7 @@ class UpdateSocialMedia
 
   def initialize
     @twitter_client = TwitterApi.new
+    @facebook = FacebookApi.new
   end
 
   def post_new_volops_from_partner_sites
@@ -13,5 +14,6 @@ class UpdateSocialMedia
 
   def post volop
     twitter_client.tweet volop
+    facebook.post volop
   end
 end
