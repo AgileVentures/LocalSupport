@@ -7,6 +7,24 @@ class BreadcrumbsByAction
     @path = path
   end
 
+  def index_breadcrumb
+  end
+
+  def create_breadcrumb
+  end
+
+  def search_breadcrumb
+  end
+
+  def update_breadcrumb
+  end
+
+  def embedded_map_breadcrumb
+  end
+
+  def destroy_breadcrumb
+  end
+
   def show_breadcrumb
     controller.send(:add_breadcrumb, title) if title.present?
   end
