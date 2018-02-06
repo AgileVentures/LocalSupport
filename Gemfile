@@ -17,10 +17,11 @@ gem 'jbuilder'
 
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do
+  gem 'faker', '~> 1.8', '>= 1.8.7'
   gem 'timecop'
   gem 'database_cleaner', '1.6.2'
   gem 'launchy'
-  gem 'simplecov'
+  gem 'simplecov', require: false
   gem 'sinatra'
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
@@ -46,13 +47,12 @@ group :test do
   gem 'cucumber-rails-training-wheels'
   gem 'capybara', '~> 2.17'
   gem 'capybara-webkit', git: 'https://github.com/thoughtbot/capybara-webkit.git'
-  gem 'nokogiri', '~> 1.8', '>= 1.8.1'
+  gem 'nokogiri', '~> 1.8'
   gem 'factory_bot_rails'
   gem 'webmock', '~> 3.3'
   gem 'uri-handler'
   gem 'selenium'
   gem 'selenium-client'
-  gem 'coveralls', '~> 0.8.21'
   gem 'shoulda'
   gem 'vcr'
   gem 'puffing-billy'
