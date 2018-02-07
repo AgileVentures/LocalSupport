@@ -29,7 +29,7 @@ class OrganisationsController < BaseOrganisationsController
   def show
     render template: 'pages/404', status: 404 and return if @organisation.nil?
     organisations = Organisation.where(id: @organisation.id)
-    @user_opts = current_user ? get_user_options(@organisation) : {grabbable: true}
+    @user_opts = current_user ? get_user_options(@organisation) : { grabbable: true }
     @user_opts[:can_propose_edits] = current_user.present? && !@user_opts[:editable]
     @markers = build_map_markers(organisations)
     @cat_name_ids = Category.name_and_id_for_what_who_and_how
@@ -45,15 +45,14 @@ class OrganisationsController < BaseOrganisationsController
   def edit
     organisations = Organisation.where(id: @organisation.id)
     @markers = build_map_markers(organisations)
-    user_can_edit?(@organisation); return if performed?
+    check_privileges(:can_edit?, @organisation); return if performed?
   end
 
   # POST /organisations
   # POST /organisations.json
   def create
-    org_params = OrganisationParams.build params
     check_privileges_show; return if performed?
-    @organisation = Organisation.new(org_params)
+    @organisation = Organisation.new(organisation_params)
     @organisation.check_geocode
     rendering('Organisation was successfully created.', 'new')
   end
@@ -62,9 +61,8 @@ class OrganisationsController < BaseOrganisationsController
   # PUT /organisations/1.json
   def update
     params[:organisation][:superadmin_email_to_add] = params[:organisation_superadmin_email_to_add] if params[:organisation]
-    update_params = OrganisationParams.build params
-    user_can_edit?(@organisation); return if performed?
-    @organisation.update_attributes_with_superadmin(update_params)
+    check_privileges(:can_edit?, @organisation); return if performed?
+    @organisation.update_attributes_with_superadmin(organisation_params)
     @organisation.check_geocode
     rendering('Organisation was successfully updated.', 'edit')
   end
@@ -72,44 +70,35 @@ class OrganisationsController < BaseOrganisationsController
   # DELETE /organisations/1
   # DELETE /organisations/1.json
   def destroy
-    check_privileges_destroy; return if performed?
+    check_privileges(:superadmin?); return if performed?
     @organisation = Organisation.friendly.find(params[:id])
     @organisation.destroy
     flash[:success] = "Deleted #{@organisation.name}"
     redirect_to organisations_path
   end
 
-  class OrganisationParams
-    def self.build params
-      params.require(:organisation).permit(
-        :superadmin_email_to_add,
-        :description,
-        :address,
-        :publish_address,
-        :postcode,
-        :email,
-        :publish_email,
-        :website,
-        :publish_phone,
-        :donation_info,
-        :name,
-        :telephone,
-        category_ids: []
-      )
-    end
-  end
-
   private
 
-  def user_can_edit?(org)
-    unless current_user.try(:can_edit?,org)
-      flash[:notice] = PERMISSION_DENIED
-      redirect_to organisation_path(params[:id]) and return
-    end
+  def organisation_params
+    params.require(:organisation).permit(
+      :superadmin_email_to_add,
+      :description,
+      :address,
+      :publish_address,
+      :postcode,
+      :email,
+      :publish_email,
+      :website,
+      :publish_phone,
+      :donation_info,
+      :name,
+      :telephone,
+      category_ids: []
+    )
   end
 
-  def check_privileges_destroy
-    unless current_user.try(:superadmin?)
+  def check_privileges(method, org=nil)
+    unless current_user.try(method, org)
       flash[:notice] = PERMISSION_DENIED
       redirect_to organisation_path(params[:id]) and return
     end
