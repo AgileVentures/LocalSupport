@@ -424,7 +424,7 @@ describe OrganisationsController, :type => :controller do
       end
 
       describe 'with invalid params' do
-        let(:dbl_org) { double_organisation(update_attributes_with_superadmin: false) }
+        let(:dbl_org) { double_organisation(save: false) }
         before(:each) do 
           allow(Organisation).to receive(:friendly) { all_orgs }
           allow(all_orgs).to receive(:find) { dbl_org }

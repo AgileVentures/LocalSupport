@@ -28,7 +28,7 @@ class Organisation < BaseOrganisation
   def update_attributes_with_superadmin(params)
     email = extract_email_from(params)
     return unless email.blank? || can_add_or_invite_admin?(email)
-    self.update_attributes(params)
+    assign_attributes(params)
   end
   
   def rollback_acceptance

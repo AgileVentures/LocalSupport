@@ -147,8 +147,11 @@ describe Organisation, :type => :model do
     end
 
     it 'handles a non-existent email by inviting user' do
-      expect(@org1.update_attributes_with_superadmin({:superadmin_email_to_add => 'nonexistentuser@example.com'})).to be true
+      @org1.update_attributes_with_superadmin(
+          superadmin_email_to_add: 'nonexistentuser@example.com'
+      )
       expect(@org1).to be_valid
+      @org1.save!
       usr = User.find_by(email:'nonexistentuser@example.com')
       expect(usr).not_to be_nil
       expect(usr.organisation).to eq @org1
@@ -158,16 +161,23 @@ describe Organisation, :type => :model do
       expect(@org1.name).not_to eq 'New name'
     end
     it 'handles a nil email' do
-      expect(@org1.update_attributes_with_superadmin({:superadmin_email_to_add => nil})).to be true
+      @org1.update_attributes_with_superadmin(superadmin_email_to_add: nil)
+      expect(@org1.valid?).to be true
+      @org1.save!
       expect(@org1.errors.any?).to be false
     end
     it 'handles a blank email' do
-      expect(@org1.update_attributes_with_superadmin({:superadmin_email_to_add => ''})).to be true
+      @org1.update_attributes_with_superadmin(superadmin_email_to_add: '')
+      expect(@org1.valid?).to be true
+      @org1.save!
       expect(@org1.errors.any?).to be false
     end
     it 'adds existent user as charity superadmin' do
-      usr = FactoryBot.create(:user, :email => 'user@example.org')
-      expect(@org1.update_attributes_with_superadmin({:superadmin_email_to_add => usr.email})).to be true
+      usr = FactoryBot.create(:user, email: 'user@example.org')
+      @org1.update_attributes_with_superadmin(superadmin_email_to_add: usr.email)
+      expect(@org1.valid?).to be true
+      @org1.save!
+      expect(@org1.errors.any?).to be false
       expect(@org1.users).to include usr
     end
     it 'uses org admin mailer to email existent user when upgraded to org admin' do
@@ -178,12 +188,22 @@ describe Organisation, :type => :model do
       @org1.update_attributes_with_superadmin({:superadmin_email_to_add => usr.email})
     end
     it 'updates other attributes with blank email' do
-      expect(@org1.update_attributes_with_superadmin({:name => 'New name',:superadmin_email_to_add => ''})).to be true
+      @org1.update_attributes_with_superadmin(
+          name: 'New name',
+          superadmin_email_to_add: ''
+      )
+      expect(@org1.valid?).to be true
+      @org1.save!
       expect(@org1.name).to eq 'New name'
     end
     it 'updates other attributes with valid email' do
-      usr = FactoryBot.create(:user, :email => 'user@example.org')
-      expect(@org1.update_attributes_with_superadmin({:name => 'New name',:superadmin_email_to_add => usr.email})).to be true
+      usr = FactoryBot.create(:user, email: 'user@example.org')
+      @org1.update_attributes_with_superadmin(
+          name: 'New name',
+          superadmin_email_to_add: usr.email
+      )
+      expect(@org1.valid?).to be true
+      @org1.save!
       expect(@org1.name).to eq 'New name'
     end
   end
