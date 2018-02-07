@@ -29,7 +29,7 @@ group :development, :test do
   gem 'aruba'
   gem 'byebug'
   gem 'rack_session_access'
-  gem 'jasmine', '~> 2.9'
+  gem 'jasmine', '~> 3.0'
   gem 'jasmine-jquery-rails', '2.0.3'
   gem 'rails-controller-testing'
   #gem 'better_errors'
