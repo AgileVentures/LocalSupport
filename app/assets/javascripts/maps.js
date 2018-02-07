@@ -85,8 +85,8 @@ var OrganisationMap = {
     }
   },
   init: function init() {
-    if (window.innerWidth <= 1024) {
-        $('#map-canvas').height(window.innerHeight - 300);
+    if (($('#content').height() - 14) >= 400) {
+      $('#map-canvas').height($('#content').height() - 14);
     }
 
       // _.debounce(function() {

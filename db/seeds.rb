@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Logger.new(STDOUT).info 'Start Organisations seed'
-10.times do
+100.times do
   Organisation.create(
     name: Faker::Company.name,
     address: Faker::Address.street_address,
@@ -15,8 +15,8 @@ Logger.new(STDOUT).info 'Start Organisations seed'
     description: Faker::DrWho.quote,
     website: Faker::Internet.url,
     telephone: Faker::PhoneNumber.phone_number,
-    latitude: rand(51.5812603..51.5919828).round(7),
-    longitude: rand(-0.3736155..-0.3689806 ).round(7),
+    latitude: rand(51.546702..51.6247775).round(7),
+    longitude: rand(-0.4476553..-0.2687842).round(7),
     gmaps: Faker::Boolean.boolean,
     donation_info: Faker::Lorem.paragraph,
     publish_address: Faker::Boolean.boolean,
