@@ -1,20 +1,18 @@
 class OrganisationsController < BaseOrganisationsController
   add_breadcrumb 'All Organisations', :organisations_path
   layout 'two_columns_with_map'
-  # GET /organisations/search
-  # GET /organisations/search.json
   before_action :authenticate_user!, except: [:search, :index, :show]
   prepend_before_action :set_organisation, only: [:show, :update, :edit]
 
+  # GET /organisations/search
+  # GET /organisations/search.json
   def search
     @parsed_params = SearchParamsParser.new(params)
     @cat_name_ids = Category.name_and_id_for_what_who_and_how
-    @organisations = Queries::Organisations.search_by_keyword_and_category(
-      @parsed_params
-    )
+    @organisations = Queries::Organisations
+                         .search_by_keyword_and_category(@parsed_params)
     flash.now[:alert] = SEARCH_NOT_FOUND if @organisations.empty?
     @markers = build_map_markers(@organisations)
-
     render template: 'organisations/index'
   end
 
@@ -47,30 +45,17 @@ class OrganisationsController < BaseOrganisationsController
   def edit
     organisations = Organisation.where(id: @organisation.id)
     @markers = build_map_markers(organisations)
-    return false unless user_can_edit? @organisation
-    #respond_to do |format|
-    #  format.html {render :layout => 'full_width'}
-    #end
+    user_can_edit?(@organisation); return if performed?
   end
 
   # POST /organisations
   # POST /organisations.json
   def create
-    # model filters for logged in users, but we check here if that user is an superadmin
-    # TODO refactor that to model responsibility?
     org_params = OrganisationParams.build params
-
-    unless current_user.try(:superadmin?)
-      flash[:notice] = PERMISSION_DENIED
-      redirect_to organisations_path and return false
-    end
+    check_privileges_show; return if performed?
     @organisation = Organisation.new(org_params)
     @organisation.check_geocode
-    if @organisation.save
-      redirect_to @organisation, notice: 'Organisation was successfully created.'
-    else
-     render :new
-    end
+    rendering('Organisation was successfully created.', 'new')
   end
 
   # PUT /organisations/1
@@ -78,27 +63,19 @@ class OrganisationsController < BaseOrganisationsController
   def update
     params[:organisation][:superadmin_email_to_add] = params[:organisation_superadmin_email_to_add] if params[:organisation]
     update_params = OrganisationParams.build params
-    return false unless user_can_edit? @organisation
+    user_can_edit?(@organisation); return if performed?
     @organisation.update_attributes_with_superadmin(update_params)
     @organisation.check_geocode
-    if @organisation.save
-      redirect_to @organisation, notice: 'Organisation was successfully updated.'
-    else
-      render action: 'edit'
-    end
+    rendering('Organisation was successfully updated.', 'edit')
   end
 
   # DELETE /organisations/1
   # DELETE /organisations/1.json
   def destroy
-    unless current_user.try(:superadmin?)
-      flash[:notice] = PERMISSION_DENIED
-      redirect_to organisation_path(params[:id]) and return false
-    end
+    check_privileges_destroy; return if performed?
     @organisation = Organisation.friendly.find(params[:id])
     @organisation.destroy
     flash[:success] = "Deleted #{@organisation.name}"
-
     redirect_to organisations_path
   end
 
@@ -120,10 +97,38 @@ class OrganisationsController < BaseOrganisationsController
         category_ids: []
       )
     end
-
   end
 
   private
+
+  def user_can_edit?(org)
+    unless current_user.try(:can_edit?,org)
+      flash[:notice] = PERMISSION_DENIED
+      redirect_to organisation_path(params[:id]) and return
+    end
+  end
+
+  def check_privileges_destroy
+    unless current_user.try(:superadmin?)
+      flash[:notice] = PERMISSION_DENIED
+      redirect_to organisation_path(params[:id]) and return
+    end
+  end
+
+  def check_privileges_show
+    unless current_user.try(:superadmin?)
+      flash[:notice] = PERMISSION_DENIED
+      redirect_to organisations_path and return
+    end
+  end
+
+  def rendering(notice, action)
+    if @organisation.save
+      redirect_to @organisation, notice: notice
+    else
+      render action: action
+    end
+  end
 
   def get_user_options(organisation)
       {
@@ -139,14 +144,6 @@ class OrganisationsController < BaseOrganisationsController
     @organisation = Organisation.friendly.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     @organisation = nil
-  end
-
-  def user_can_edit?(org)
-    unless current_user.try(:can_edit?,org)
-      flash[:notice] = PERMISSION_DENIED
-      redirect_to organisation_path(params[:id]) and return false
-    end
-    true
   end
 
   def meta_tag_title
