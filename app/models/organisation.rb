@@ -132,9 +132,13 @@ class Organisation < BaseOrganisation
   def self.add_email(row, validation)
     orgs = where('UPPER(name) LIKE ? ',"%#{row[0].try(:upcase)}%")
     return "#{row[0]} was not found\n" unless orgs && orgs[0] && orgs[0].email.blank?
-    orgs[0].email = row[7].to_s
-    orgs[0].check_geocode
-    orgs[0].save
+    setup_row(orgs[0], row)
+  end
+
+  def self.setup_row(org, row)
+    org.email = row[7].to_s
+    org.check_geocode
+    org.save
     "#{row[0]} was found\n"
   end
 
