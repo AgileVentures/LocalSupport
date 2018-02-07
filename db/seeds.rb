@@ -7,23 +7,32 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Logger.new(STDOUT).info 'Start Organisations seed'
 100.times do
-  Organisation.create(
-    name: Faker::Company.name,
-    address: Faker::Address.street_address,
-    postcode: Faker::Address.zip_code,
-    email: Faker::Internet.email,
-    description: Faker::DrWho.quote,
-    website: Faker::Internet.url,
-    telephone: Faker::PhoneNumber.phone_number,
-    latitude: rand(51.546702..51.6247775).round(7),
-    longitude: rand(-0.4476553..-0.2687842).round(7),
-    gmaps: Faker::Boolean.boolean,
-    donation_info: Faker::Lorem.paragraph,
-    publish_address: Faker::Boolean.boolean,
-    publish_phone: Faker::Boolean.boolean,
-    publish_email: Faker::Boolean.boolean,
-    type: 'Organisation',
-    non_profit: Faker::Boolean.boolean
+  org = Organisation.create(
+      name: Faker::Company.name,
+      address: Faker::Address.street_address,
+      postcode: Faker::Address.zip_code,
+      email: Faker::Internet.email,
+      description: Faker::DrWho.quote,
+      website: Faker::Internet.url,
+      telephone: Faker::PhoneNumber.phone_number,
+      latitude: rand(51.546702..51.6247775).round(7),
+      longitude: rand(-0.4476553..-0.2687842).round(7),
+      gmaps: Faker::Boolean.boolean,
+      donation_info: Faker::Lorem.paragraph,
+      publish_address: Faker::Boolean.boolean,
+      publish_phone: Faker::Boolean.boolean,
+      publish_email: Faker::Boolean.boolean,
+      type: 'Organisation',
+      non_profit: Faker::Boolean.boolean
+  )
+  date = (Date.today + rand(30)) + rand(9..17).hours
+  org.events.create(
+      title: Faker::Book.title,
+      description: Faker::Robin.quote,
+      start_date: date,
+      end_date: date + rand(1..4).hours,
+      latitude: org.latitude,
+      longitude: org.longitude
   )
 end
 
