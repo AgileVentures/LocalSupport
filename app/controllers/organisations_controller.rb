@@ -106,10 +106,8 @@ class OrganisationsController < BaseOrganisationsController
 
   def check_privileges(method, path, org=nil)
     args = org.nil? ? [ method ] : [ method, org ]
-    unless current_user.send(:try, *args)
-      flash[:notice] = PERMISSION_DENIED
-      redirect_to path and return
-    end
+    redirect_to path, notice: PERMISSION_DENIED and return unless current_user
+                                                                      .send(:try, *args)
   end
 
   def rendering(notice, action)
