@@ -82,7 +82,8 @@ class OrganisationsController < BaseOrganisationsController
   private
 
   def setup_super_admin_email
-    params[:organisation][:superadmin_email_to_add] = params[:organisation_superadmin_email_to_add]
+    email = params[:organisation_superadmin_email_to_add]
+    params[:organisation][:superadmin_email_to_add] = email
   end
 
   def organisation_params
@@ -104,7 +105,8 @@ class OrganisationsController < BaseOrganisationsController
   end
 
   def check_privileges(method, path, org=nil)
-    unless current_user.try(method, org)
+    args = org.nil? ? [ method, org ] : [ method ]
+    unless current_user.send(:try, *args)
       flash[:notice] = PERMISSION_DENIED
       redirect_to path and return
     end
