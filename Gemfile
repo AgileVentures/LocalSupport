@@ -29,7 +29,7 @@ group :development, :test do
   gem 'aruba'
   gem 'byebug'
   gem 'rack_session_access'
-  gem 'jasmine', '~> 2.9'
+  gem 'jasmine', '~> 3.0'
   gem 'jasmine-jquery-rails', '2.0.3'
   gem 'rails-controller-testing'
   #gem 'better_errors'
@@ -67,7 +67,7 @@ group :production do
 end
 
 gem 'coffee-rails', '4.2.2'
-gem 'uglifier', '~> 4.1'
+gem 'uglifier', '~> 4.1', '>= 4.1.5'
 gem 'sass-rails', '~> 5.0'
 gem 'less-rails', '~> 3.0'
 gem 'twitter-bootstrap-rails', '3.2.2'
