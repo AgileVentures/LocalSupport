@@ -78,6 +78,7 @@
 <%= render partial: 'shared/map_scripts', locals: {markers: @markers} %>
 <script type="text/javascript">
     $('[data-behaviour~=datepicker]').datepicker({format: 'dd/mm/yyyy'});
+    $(function(){$('#datetimepicker').datetimepicker({pickDate: false}); });
 </script>
 
 
