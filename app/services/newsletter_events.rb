@@ -1,6 +1,13 @@
-class NewsletterEventsJob
+class NewsletterEvents
+
   include Rails.application.routes.url_helpers
-  def self.create_campaign
+
+  def self.run
+  end
+
+  private
+
+  def create_campaign
     # TODO: create campaign on mailchimp using the updated list (https://github.com/amro/gibbon#campaigns)
     #Testing if push will do
     # The mailchimp campaign it will list all Events with a link to each of them and
@@ -22,7 +29,7 @@ class NewsletterEventsJob
     # Monday, 15th January 2018, 9.30am to 12.30pm
   end
 
-  def self.organisation_emails
+  def organisation_emails
     Organisation.pluck(:email, :name).reduce([]) do |emails, data|
       # There are organisations that don't have the email configured
       emails << { data[0] => data[1] } unless data[0].empty?
@@ -30,13 +37,13 @@ class NewsletterEventsJob
     end
   end
 
-  def self.events
+  def events
     Event.where('start_date >= ?', Date.today).reduce([]) do |data, event|
       data << format_event(event)
     end
   end
 
-  def self.format_event(event)
+  def format_event(event)
     date = event.start_date
     start_date = date.strftime("%A, #{date.day.ordinalize} %B %Y, %l%P")
     {
@@ -46,7 +53,7 @@ class NewsletterEventsJob
     }
   end
 
-  def self.update_list
+  def update_list
     # TODO: update list (using list_id and the gibbon gem) with the collected emails
   end
 end
