@@ -4,12 +4,9 @@ module VolunteerOpsHelper
   end
 
   def link_to_vol_op(obj, type, html_options = {})
-    html_options[:target] = '_blank' unless obj.source == 'local'
-    if obj.source == 'local'
-      get_local_source_link(obj, type, html_options)
-    else
-      get_external_source_link(obj, type, html_options)
-    end
+    return  get_local_source_link(obj, type, html_options) if obj.source == 'local'
+    html_options[:target] = '_blank'
+    get_external_source_link(obj, type, html_options)
   end
 
   def get_local_source_link(obj, type, html_options)
