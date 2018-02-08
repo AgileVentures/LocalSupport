@@ -154,7 +154,7 @@ GEM
     em-synchrony (1.0.6)
       eventmachine (>= 1.0.0.beta.1)
     erubi (1.7.0)
-    eventmachine (1.0.9.1)
+    eventmachine (1.2.0.1)
     eventmachine_httpserver (0.2.1)
     excon (0.60.0)
     execjs (2.7.0)
@@ -239,7 +239,7 @@ GEM
     minitest (5.11.3)
     momentjs-rails (2.17.1)
       railties (>= 3.1)
-    multi_json (1.12.2)
+    multi_json (1.13.1)
     multi_test (0.1.2)
     multi_xml (0.6.0)
     mustermann (1.0.1)
@@ -261,11 +261,11 @@ GEM
       websocket-driver (>= 0.2.0)
     powerpack (0.1.1)
     public_suffix (3.0.1)
-    puffing-billy (0.11.1)
+    puffing-billy (0.12.0)
       addressable (~> 2.4, >= 2.4.0)
       em-http-request (~> 1.1, >= 1.1.0)
       em-synchrony
-      eventmachine (~> 1.0.4)
+      eventmachine (= 1.2.0.1)
       eventmachine_httpserver
       http_parser.rb (~> 0.6.0)
       multi_json
