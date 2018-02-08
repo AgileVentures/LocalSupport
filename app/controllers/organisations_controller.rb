@@ -1,14 +1,14 @@
 class OrganisationsController < BaseOrganisationsController
-  add_breadcrumb 'All Organisations', :organisations_path
   layout 'two_columns_with_map'
   # GET /organisations/search
   # GET /organisations/search.json
   before_action :authenticate_user!, except: [:search, :index, :show]
   prepend_before_action :set_organisation, only: [:show, :update, :edit]
+  prepend_before_action :build_cat_name_ids, only: [:search, :index, :show]
+  before_action :add_breadcrumbs
 
   def search
     @parsed_params = SearchParamsParser.new(params)
-    @cat_name_ids = Category.name_and_id_for_what_who_and_how
     @organisations = Queries::Organisations.search_by_keyword_and_category(
       @parsed_params
     )
@@ -23,7 +23,6 @@ class OrganisationsController < BaseOrganisationsController
   def index
     @organisations = Queries::Organisations.order_by_most_recent
     @markers = build_map_markers(@organisations)
-    @cat_name_ids = Category.name_and_id_for_what_who_and_how
   end
 
   # GET /organisations/1
@@ -34,7 +33,6 @@ class OrganisationsController < BaseOrganisationsController
     @user_opts = current_user ? get_user_options(@organisation) : {grabbable: true}
     @user_opts[:can_propose_edits] = current_user.present? && !@user_opts[:editable]
     @markers = build_map_markers(organisations)
-    @cat_name_ids = Category.name_and_id_for_what_who_and_how
   end
 
   # GET /organisations/new
@@ -48,9 +46,6 @@ class OrganisationsController < BaseOrganisationsController
     organisations = Organisation.where(id: @organisation.id)
     @markers = build_map_markers(organisations)
     return false unless user_can_edit? @organisation
-    #respond_to do |format|
-    #  format.html {render :layout => 'full_width'}
-    #end
   end
 
   # POST /organisations
@@ -117,7 +112,6 @@ class OrganisationsController < BaseOrganisationsController
         category_ids: []
       )
     end
-
   end
 
   private
