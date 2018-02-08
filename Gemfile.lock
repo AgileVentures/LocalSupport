@@ -74,6 +74,7 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-datepicker-rails (1.7.1.1)
       railties (>= 3.0)
+    bootstrap-datetimepicker-rails (0.0.11)
     bootstrap_sortable_rails (1.11.2)
     breadcrumbs_on_rails (3.0.1)
     builder (3.2.3)
@@ -447,6 +448,7 @@ DEPENDENCIES
   aruba
   binding_of_caller
   bootstrap-datepicker-rails
+  bootstrap-datetimepicker-rails
   bootstrap_sortable_rails (~> 1.11.2)
   breadcrumbs_on_rails
   byebug
@@ -519,4 +521,4 @@ RUBY VERSION
    ruby 2.4.2p198
 
 BUNDLED WITH
-   1.16.0
+   1.16.1
