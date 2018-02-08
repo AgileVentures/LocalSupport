@@ -55,9 +55,15 @@
       </tr>
       <tr>
           <td>
+              <% if @event.errors[:start_time].any?%>
+                  <p class="error-name"><%= @event.errors[:start_time].first %></p>
+              <% end %>
              <%= f.text_field :start_time %>
           </td>
           <td>
+              <% if @event.errors[:end_time].any?%>
+                  <p class="error-name"><%= @event.errors[:end_time].first %></p>
+              <% end %>
               <%= f.text_field :end_time %>
           </td>
       </tr>
