@@ -1,4 +1,5 @@
 require 'custom_errors'
+require 'breadcrumbs_by_action'
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
