@@ -43,15 +43,16 @@ class OrganisationsController < BaseOrganisationsController
 
   # GET /organisations/1/edit
   def edit
+    path = organisation_path(params[:id])
     organisations = Organisation.where(id: @organisation.id)
     @markers = build_map_markers(organisations)
-    check_privileges(:can_edit?, @organisation); return if performed?
+    check_privileges(:can_edit?, path, @organisation); return if performed?
   end
 
   # POST /organisations
   # POST /organisations.json
   def create
-    check_privileges_show; return if performed?
+    check_privileges(:superadmin?, organisations_path); return if performed?
     @organisation = Organisation.new(organisation_params)
     @organisation.check_geocode
     rendering('Organisation was successfully created.', 'new')
@@ -60,8 +61,9 @@ class OrganisationsController < BaseOrganisationsController
   # PUT /organisations/1
   # PUT /organisations/1.json
   def update
-    params[:organisation][:superadmin_email_to_add] = params[:organisation_superadmin_email_to_add] if params[:organisation]
-    check_privileges(:can_edit?, @organisation); return if performed?
+    setup_super_admin_email if params[:organisation]
+    path = organisation_path(params[:id])
+    check_privileges(:can_edit?, path, @organisation); return if performed?
     @organisation.update_attributes_with_superadmin(organisation_params)
     @organisation.check_geocode
     rendering('Organisation was successfully updated.', 'edit')
@@ -70,7 +72,7 @@ class OrganisationsController < BaseOrganisationsController
   # DELETE /organisations/1
   # DELETE /organisations/1.json
   def destroy
-    check_privileges(:superadmin?); return if performed?
+    check_privileges(:superadmin?, organisation_path(params[:id])); return if performed?
     @organisation = Organisation.friendly.find(params[:id])
     @organisation.destroy
     flash[:success] = "Deleted #{@organisation.name}"
@@ -78,6 +80,10 @@ class OrganisationsController < BaseOrganisationsController
   end
 
   private
+
+  def setup_super_admin_email
+    params[:organisation][:superadmin_email_to_add] = params[:organisation_superadmin_email_to_add]
+  end
 
   def organisation_params
     params.require(:organisation).permit(
@@ -97,17 +103,10 @@ class OrganisationsController < BaseOrganisationsController
     )
   end
 
-  def check_privileges(method, org=nil)
+  def check_privileges(method, path, org=nil)
     unless current_user.try(method, org)
       flash[:notice] = PERMISSION_DENIED
-      redirect_to organisation_path(params[:id]) and return
-    end
-  end
-
-  def check_privileges_show
-    unless current_user.try(:superadmin?)
-      flash[:notice] = PERMISSION_DENIED
-      redirect_to organisations_path and return
+      redirect_to path and return
     end
   end
 
