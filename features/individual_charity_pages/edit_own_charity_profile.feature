@@ -46,6 +46,7 @@ Scenario: Successfully change the address of a charity
   And I update "Friendly" charity address to be "30 pinner road"
   Then I should be on the show page for the organisation named "Friendly"
 
+@vcr
 Scenario Outline: Successfully mark a field of a charity as public or private
   Given I am signed in as a charity worker related to "Friendly"
   And I visit the edit page for the organisation named "Friendly"
@@ -150,6 +151,7 @@ Examples:
   | Teach them things | unchecked    |
   | Give them things  | unchecked    |
 
+@vcr
 Scenario Outline: Successfully add and remove an organisation's categories
   Given I am signed in as a charity worker related to "Friendly"
   And I visit the edit page for the organisation named "Friendly"
