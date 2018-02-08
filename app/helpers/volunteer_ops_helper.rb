@@ -16,7 +16,6 @@ module VolunteerOpsHelper
       link_to_and_track(obj.organisation_name,
                         organisation_url(obj.organisation_link.slug),
                         html_options)
-      #commmeeennt
     end
   end
 
