@@ -17,6 +17,11 @@ class UsersController < ApplicationController
     org = Organisation.friendly.find(params[:pending_organisation_id])
     flash[:notice] = "You have requested admin status for #{org.name}"
     send_email_to_superadmin_about_request_for_admin_of org   # could be moved to an hook on the user model?
+    
+  end
+
+  def update_message_admin
+    update_message_for_admin_status org
     redirect_to organisation_path(org)
   end
 
