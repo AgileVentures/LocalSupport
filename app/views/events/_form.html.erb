@@ -58,7 +58,9 @@
               <% if @event.errors[:start_time].any?%>
                   <p class="error-name"><%= @event.errors[:start_time].first %></p>
               <% end %>
-             <%= f.text_field :start_time %>
+              <div id="datetimepicker3" class="input-append">
+                  <%= f.text_field :start_time %>
+              </div>
           </td>
           <td>
               <% if @event.errors[:end_time].any?%>
@@ -78,7 +80,7 @@
 <%= render partial: 'shared/map_scripts', locals: {markers: @markers} %>
 <script type="text/javascript">
     $('[data-behaviour~=datepicker]').datepicker({format: 'dd/mm/yyyy'});
-    $(function(){$('#datetimepicker').datetimepicker({pickDate: false}); });
+    $(function() {$('#datetimepicker3').datetimepicker({format: 'LT'}); });
 </script>
 
 
