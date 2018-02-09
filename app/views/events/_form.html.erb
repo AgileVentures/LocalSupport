@@ -58,29 +58,27 @@
               <% if @event.errors[:start_time].any?%>
                   <p class="error-name"><%= @event.errors[:start_time].first %></p>
               <% end %>
-              <div id="datetimepicker3" class="input-append">
-                  <%= f.text_field :start_time %>
-              </div>
+              <%= f.text_field :start_time, 'time-picker' => 'datetimepicker3' %>
           </td>
           <td>
               <% if @event.errors[:end_time].any?%>
                   <p class="error-name"><%= @event.errors[:end_time].first %></p>
               <% end %>
-              <%= f.text_field :end_time %>
+              <%= f.text_field :end_time, 'time-picker' => 'datetimepicker3' %>
           </td>
       </tr>
   </table>
   <br />
   <div class="position-bottom col-md-6">
-    <div class="actions">
-      <%= f.submit :class => 'btn btn-primary' %>
-    </div>
+      <div class="actions">
+          <%= f.submit :class => 'btn btn-primary' %>
+      </div>
   </div>
 <% end %>
 <%= render partial: 'shared/map_scripts', locals: {markers: @markers} %>
 <script type="text/javascript">
-    $('[data-behaviour~=datepicker]').datepicker({format: 'dd/mm/yyyy'});
-    $(function() {$('#datetimepicker3').datetimepicker({format: 'LT'}); });
+$('[data-behaviour~=datepicker]').datepicker({format: 'dd/mm/yyyy'});
+$(function () { $('[time-picker~=datetimepicker3]').datetimepicker({format: 'LT'}); });
 </script>
 
 
