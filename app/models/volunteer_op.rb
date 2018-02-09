@@ -2,13 +2,13 @@ class VolunteerOp < ApplicationRecord
   include GlobalID::Identification
   acts_as_paranoid
   validates :title, :description, presence: true
-  validates :organisation_id, presence: true, if: -> {source == 'local'}
+  validates :organisation_id, presence: true, if: -> { source == 'local' }
   belongs_to :organisation
   has_one :doit_trace
 
   geocoded_by :full_address
-  after_validation :geocode, if: :address_complete?
-  after_validation :clear_lat_lng, if: "source == 'local'"
+  after_validation :geocode, if: -> { address_complete? }
+  after_validation :clear_lat_lng, if: -> { source == 'local' }
 
   scope :order_by_most_recent, -> { order('updated_at DESC') }
   scope :local_only,           -> { where(source: 'local') }

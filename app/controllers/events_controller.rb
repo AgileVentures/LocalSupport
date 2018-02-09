@@ -1,10 +1,12 @@
 class EventsController < ApplicationController
+  add_breadcrumb 'Events', :events_path
   layout 'two_columns_with_map'
   before_action :logged_in_user, only: [:new, :create]
   before_action :superadmin?, except:[:show, :index]
 
   def new
     @event = Event.new
+    add_breadcrumb 'New Event'
   end
 
   def create
@@ -14,6 +16,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by_id(params[:id])
+    add_breadcrumb @event.title
   end
 
   def index
