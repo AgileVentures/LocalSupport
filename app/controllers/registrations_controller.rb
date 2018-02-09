@@ -7,7 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  def update_message_for_admin_status
+  def update_message_for_admin_status_registrations
     org = Organisation.find(params[:user][:pending_organisation_id])
     flash[:notice] << " You have requested admin status for #{org.name}"
     send_email_to_superadmin_about_request_for_admin_of org
