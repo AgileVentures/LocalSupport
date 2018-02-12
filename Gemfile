@@ -4,7 +4,7 @@ ruby '2.4.2'
 gem 'rails', '~> 5.1.5.rc1'
 gem 'pg', '~> 1.0'
 gem 'devise', '~> 4.4'
-gem 'devise_invitable', '~> 1.6', '>= 1.6.1'
+gem 'devise_invitable', '~> 1.7'
 gem 'heroku-api'
 gem 'sprockets', '~> 3.7', '>= 3.7.1'
 
