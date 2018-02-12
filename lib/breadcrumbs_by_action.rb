@@ -7,22 +7,8 @@ class BreadcrumbsByAction
     @path = path
   end
 
-  def index_breadcrumb
-  end
-
-  def create_breadcrumb
-  end
-
-  def search_breadcrumb
-  end
-
-  def update_breadcrumb
-  end
-
-  def embedded_map_breadcrumb
-  end
-
-  def destroy_breadcrumb
+  def method_missing(method_name)
+    super unless method_name.to_s.include?('_breadcrum')
   end
 
   def show_breadcrumb
