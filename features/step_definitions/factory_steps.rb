@@ -78,7 +78,9 @@ end
 Given /^the following organisations exist:$/ do |organisations_table|
   organisations_table.hashes.each do |org|
     VCR.use_cassette("#{org["name"]}-#{org["postcode"]}") do
-      Organisation.create! org
+      organisation = Organisation.new(org)
+      organisation.check_geocode
+      organisation.save!
     end
   end
 end

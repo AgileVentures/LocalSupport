@@ -1,4 +1,5 @@
 require 'custom_errors'
+require 'breadcrumbs_by_action'
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
@@ -6,10 +7,10 @@ class ApplicationController < ActionController::Base
                 :assign_footer_page_links,
                 :set_tags
 
-  include CustomErrors
-
   # Add breadcrumb at home page.
   add_breadcrumb 'home', :root_path
+
+  include CustomErrors
 
   # To prevent infinite redirect loops, only requests from white listed
   # controllers are available in the "after sign-in redirect" feature
@@ -75,6 +76,11 @@ class ApplicationController < ActionController::Base
     #end
 
     redirect_to request.referer || '/'
+  end
+
+  def add_breadcrumbs(default_title, title = nil, path = nil)
+    bba = BreadcrumbsByAction.new(self, default_title, title, path)
+    bba.send("#{action_name}_breadcrumb".to_sym)
   end
 
   private

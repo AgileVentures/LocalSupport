@@ -31,7 +31,9 @@
             <%= render partial: 'layouts/flash', locals: { name: name, msg: item } %>
           <% end %>
         <% end %>
-        <%= render_breadcrumbs %>
+        <div class="container navbar navbar-inner textContainer">
+          <div><%= render_breadcrumbs %></div>
+        </div>
         <div id="content">
           <%= yield %>
         </div>
