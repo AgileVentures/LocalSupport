@@ -1,4 +1,7 @@
+
 class UsersController < ApplicationController
+  
+include RequestsHelper
 
   def edit
     @user = User.find_by_id UserParams.build(params).fetch(:id)
