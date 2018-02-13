@@ -1,6 +1,6 @@
 
 class UsersController < ApplicationController
-  
+
 include RequestsHelper
 
   def edit
@@ -16,7 +16,7 @@ include RequestsHelper
     UserOrganisationClaimer.new(self, usr, usr).call(org.id)
   end
 
-  def update_message_for_admin_status_users
+  def update_message_for_admin_status
     org = Organisation.friendly.find(params[:pending_organisation_id])
     flash[:notice] = "You have requested admin status for #{org.name}"
     send_email_to_superadmin_about_request_for_admin_of org   # could be moved to an hook on the user model?
