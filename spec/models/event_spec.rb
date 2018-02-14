@@ -3,22 +3,24 @@ require 'rails_helper'
 RSpec.describe Event, type: :model do
   let(:subject){ FactoryBot.create :event }
 
-  it 'should have organisation coordinates' do
-    grouped_events_by_coordinates  = Event.build_by_coordinates([subject])
-    key = grouped_events_by_coordinates.keys.first
-    event = grouped_events_by_coordinates[key].first
-    expect(event.latitude).to eq(subject.organisation.latitude)
-    expect(event.longitude).to eq(subject.organisation.longitude)
-  end
+  describe 'Event with organisation or default coordinates' do
+    def event
+      grouped_events_by_coordinates  = Event.build_by_coordinates([subject])
+      key = grouped_events_by_coordinates.keys.first
+      grouped_events_by_coordinates[key].first
+    end
 
-  it 'should have default coordinates' do
-    subject.organisation = nil
-    subject.save!
-    grouped_events_by_coordinates  = Event.build_by_coordinates([subject])
-    key = grouped_events_by_coordinates.keys.first
-    event = grouped_events_by_coordinates[key].first
-    expect(event.latitude).to eq(0.0)
-    expect(event.longitude).to eq(0.0)
+    it 'should have organisation coordinates' do
+      expect(event.latitude).to eq(subject.organisation.latitude)
+      expect(event.longitude).to eq(subject.organisation.longitude)
+    end
+
+    it 'should have default coordinates' do
+      subject.organisation = nil
+      subject.save!
+      expect(event.latitude).to eq(0.0)
+      expect(event.longitude).to eq(0.0)
+    end
   end
 
   it 'is valid with valid attributes' do
