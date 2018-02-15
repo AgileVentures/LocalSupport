@@ -131,6 +131,15 @@ As is suggested by starfry's comment on stackoverflow [http://stackoverflow.com/
 As per the documentation for [rspec-rails](https://www.relishapp.com/rspec/rspec-rails/docs),
   > It needs to be in the :development group to expose generators and rake tasks without having to type RAILS_ENV=test.
 
+### Ruby version missmatch
+
+If you're running Mac OsX and High Sierra, you may get a Ruby version missmatch error when trying to run 
+     bundle
+Try running
+     gem uninstall bundler && gem install bundler
+     bundle
+That should fix that issue and run the bundle install.
+
 ### Lack of JS runtime
 
 Another issue that has been encountered is the following:
