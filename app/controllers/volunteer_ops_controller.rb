@@ -74,7 +74,8 @@ class VolunteerOpsController < ApplicationController
   def volunteer_op_params
     args = [:description, :title, :organisation_id, :address, :postcode,
             :post_to_doit, :advertise_start_date, :advertise_end_date,
-            :doit_org_id ]
+            :doit_org_id, :role_description, :skills_needed, 
+            :when_volunteer_needed, :contact_details, :about_organization]
     params.require(:volunteer_op).permit(*args)
   end
 
