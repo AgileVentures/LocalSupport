@@ -2,6 +2,8 @@ class VolunteerOp < ApplicationRecord
   include GlobalID::Identification
   acts_as_paranoid
   validates :title, :description, presence: true
+  validates :role_description, :skills_needed, :when_volunteer_needed, 
+            :contact_details, :about_organization
   validates :organisation_id, presence: true, if: -> { source == 'local' }
   belongs_to :organisation
   has_one :doit_trace
