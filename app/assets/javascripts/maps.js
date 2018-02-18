@@ -32,6 +32,7 @@ var OrganisationMap = {
     ibOptions.content = boxText;
 
     markerData.forEach(function(item) {
+      if (!(item.lat && item.lng)) return;
       var latLng = new google.maps.LatLng(item.lat, item.lng);
 
       marker = new CustomMarker(
