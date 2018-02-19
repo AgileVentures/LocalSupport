@@ -184,7 +184,7 @@ ActiveRecord::Schema.define(version: 20180216103915) do
     t.string "reachskills_op_link"
     t.string "role_description"
     t.string "skills_needed"
-    t.boolean "when_volunteer_needed", default: false
+    t.string "when_volunteer_needed"
     t.string "contact_details"
     t.string "about_organization"
     t.index ["deleted_at"], name: "index_volunteer_ops_on_deleted_at"
