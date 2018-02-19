@@ -424,7 +424,7 @@ describe OrganisationsController, :type => :controller do
       end
 
       describe 'with invalid params' do
-        let(:dbl_org) { double_organisation(update_attributes_with_superadmin: false) }
+        let(:dbl_org) { double_organisation(save: false) }
         before(:each) do 
           allow(Organisation).to receive(:friendly) { all_orgs }
           allow(all_orgs).to receive(:find) { dbl_org }
@@ -515,53 +515,17 @@ describe OrganisationsController, :type => :controller do
     end
   end
   describe 'get_user_opts' do
-
     let!(:org) { FactoryBot.create(:organisation)}
-
     subject { 
       user = create :user
       allow(controller).to receive(:current_user).and_return(user)
       user_opts = controller.send(:get_user_options, org)
     }
-
     it { is_expected.to be_a_kind_of Hash }
     it { is_expected.to include(pending_org_admin: false) }
     it { is_expected.to include(editable: false) }
     it { is_expected.to include(deletable: false) }
     it { is_expected.to include(can_create_volunteer_op: false) }
     it { is_expected.to include(grabbable: true) }
-  end
-  describe '.permit' do 
-    it 'returns the cleaned params' do
-      organisation_params = { organisation: {
-                                name: 'Happy Friends', 
-                                description: 'Do nice things', 
-                                address: '22 Pinner Road', 
-                                postcode: '12345', 
-                                email: 'happy@annoting.com', 
-                                website: 'www.happyplace.com', 
-                                telephone: '123-456-7890', 
-                                donation_info: 'www.giveusmoney.com',
-                                publish_address: true, 
-                                publish_phone: true, 
-                                publish_email: true, 
-                                category_ids: ['1','2']
-                            }}
-      params = ActionController::Parameters.new.merge(organisation_params)
-      permitted_params = OrganisationsController::OrganisationParams.build(params)
-      expect(permitted_params).to eq({name: 'Happy Friends', 
-                                      description: 'Do nice things', 
-                                      address: '22 Pinner Road', 
-                                      postcode: '12345', email: 'happy@annoting.com', 
-                                      website: 'www.happyplace.com', 
-                                      telephone: '123-456-7890', 
-                                      donation_info: 'www.giveusmoney.com',
-                                      publish_address: true, 
-                                      publish_phone: true, 
-                                      publish_email: true,
-                                      category_ids: ['1','2']
-                                      }.with_indifferent_access)
-      #attr_accessible :name, :description, :address, :postcode, :email, :website, :telephone, :donation_info, :publish_address, :publish_phone, :publish_email, :category_organisations_attributes
-    end
   end
 end

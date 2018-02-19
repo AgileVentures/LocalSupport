@@ -147,8 +147,11 @@ describe Organisation, :type => :model do
     end
 
     it 'handles a non-existent email by inviting user' do
-      expect(@org1.update_attributes_with_superadmin({:superadmin_email_to_add => 'nonexistentuser@example.com'})).to be true
+      @org1.update_attributes_with_superadmin(
+          superadmin_email_to_add: 'nonexistentuser@example.com'
+      )
       expect(@org1).to be_valid
+      @org1.save!
       usr = User.find_by(email:'nonexistentuser@example.com')
       expect(usr).not_to be_nil
       expect(usr.organisation).to eq @org1
@@ -158,16 +161,23 @@ describe Organisation, :type => :model do
       expect(@org1.name).not_to eq 'New name'
     end
     it 'handles a nil email' do
-      expect(@org1.update_attributes_with_superadmin({:superadmin_email_to_add => nil})).to be true
+      @org1.update_attributes_with_superadmin(superadmin_email_to_add: nil)
+      expect(@org1.valid?).to be true
+      @org1.save!
       expect(@org1.errors.any?).to be false
     end
     it 'handles a blank email' do
-      expect(@org1.update_attributes_with_superadmin({:superadmin_email_to_add => ''})).to be true
+      @org1.update_attributes_with_superadmin(superadmin_email_to_add: '')
+      expect(@org1.valid?).to be true
+      @org1.save!
       expect(@org1.errors.any?).to be false
     end
     it 'adds existent user as charity superadmin' do
-      usr = FactoryBot.create(:user, :email => 'user@example.org')
-      expect(@org1.update_attributes_with_superadmin({:superadmin_email_to_add => usr.email})).to be true
+      usr = FactoryBot.create(:user, email: 'user@example.org')
+      @org1.update_attributes_with_superadmin(superadmin_email_to_add: usr.email)
+      expect(@org1.valid?).to be true
+      @org1.save!
+      expect(@org1.errors.any?).to be false
       expect(@org1.users).to include usr
     end
     it 'uses org admin mailer to email existent user when upgraded to org admin' do
@@ -178,12 +188,22 @@ describe Organisation, :type => :model do
       @org1.update_attributes_with_superadmin({:superadmin_email_to_add => usr.email})
     end
     it 'updates other attributes with blank email' do
-      expect(@org1.update_attributes_with_superadmin({:name => 'New name',:superadmin_email_to_add => ''})).to be true
+      @org1.update_attributes_with_superadmin(
+          name: 'New name',
+          superadmin_email_to_add: ''
+      )
+      expect(@org1.valid?).to be true
+      @org1.save!
       expect(@org1.name).to eq 'New name'
     end
     it 'updates other attributes with valid email' do
-      usr = FactoryBot.create(:user, :email => 'user@example.org')
-      expect(@org1.update_attributes_with_superadmin({:name => 'New name',:superadmin_email_to_add => usr.email})).to be true
+      usr = FactoryBot.create(:user, email: 'user@example.org')
+      @org1.update_attributes_with_superadmin(
+          name: 'New name',
+          superadmin_email_to_add: usr.email
+      )
+      expect(@org1.valid?).to be true
+      @org1.save!
       expect(@org1.name).to eq 'New name'
     end
   end
@@ -489,69 +509,6 @@ describe Organisation, :type => :model do
       expect(@org1.type).to eq('ProposedOrganisation')
     end
   end
-
-  context "geocoding" do
-    describe 'not_geocoded?' do
-      it 'should return true if it lacks latitude and longitude' do
-        @org1.assign_attributes(latitude: nil, longitude: nil)
-        expect(@org1.not_geocoded?).to be true
-      end
-
-      it 'should return false if it has latitude and longitude' do
-        expect(@org2.not_geocoded?).to be false
-      end
-    end
-
-    describe 'run_geocode?' do
-      it 'should return true if address is changed' do
-        @org1.address = "asjkdhas,ba,asda"
-        expect(@org1.run_geocode?).to be true
-      end
-
-      it 'should return false if address is not changed' do
-        expect(@org1).to receive(:address_changed?).and_return(false)
-        expect(@org1).to receive(:not_geocoded?).and_return(false)
-        expect(@org1.run_geocode?).to be false
-      end
-
-      it 'should return false if org has no address' do
-        org = Organisation.new
-        expect(org.run_geocode?).to be false
-      end
-
-      it 'should return true if org has an address but no coordinates' do
-        expect(@org1).to receive(:not_geocoded?).and_return(true)
-        expect(@org1.run_geocode?).to be true
-      end
-
-      it 'should return false if org has an address and coordinates' do
-        expect(@org2).to receive(:not_geocoded?).and_return(false)
-        expect(@org2.run_geocode?).to be false
-      end
-    end
-
-    describe "acts_as_gmappable's behavior is curtailed by the { :process_geocoding => :run_geocode? } option" do
-      it 'no geocoding allowed when saving if the org already has an address and coordinates' do
-        expect_any_instance_of(Organisation).not_to receive(:geocode)
-        @org2.email = 'something@example.com'
-        @org2.save!
-      end
-
-      # it will try to rerun incomplete geocodes, but not valid ones, so no harm is done
-      it 'geocoding allowed when saving if the org has an address BUT NO coordinates' do
-        expect_any_instance_of(Organisation).to receive(:geocode)
-        @org2.longitude = nil ; @org2.latitude = nil
-        @org2.email = 'something@example.com'
-        @org2.save!
-      end
-
-      it 'geocoding allowed when saving if the org address changed' do
-        expect_any_instance_of(Organisation).to receive(:geocode)
-        @org2.address = '777 pinner road'
-        @org2.save!
-      end
-    end
-  end
 end
 
 describe Organisation, :type => :model do
@@ -604,28 +561,6 @@ describe Organisation, :type => :model do
     it 'should return false if org has an address and coordinates' do
       expect(@org2).to receive(:not_geocoded?).and_return(false)
       expect(@org2.run_geocode?).to be false
-    end
-  end
-
-  describe "acts_as_gmappable's behavior is curtailed by the { :process_geocoding => :run_geocode? } option" do
-    it 'no geocoding allowed when saving if the org already has an address and coordinates' do
-      expect_any_instance_of(Organisation).not_to receive(:geocode)
-      @org2.email = 'something@example.com'
-      @org2.save!
-    end
-
-    # it will try to rerun incomplete geocodes, but not valid ones, so no harm is done
-    it 'geocoding allowed when saving if the org has an address BUT NO coordinates' do
-      expect_any_instance_of(Organisation).to receive(:geocode)
-      @org2.longitude = nil ; @org2.latitude = nil
-      @org2.email = 'something@example.com'
-      @org2.save!
-    end
-
-    it 'geocoding allowed when saving if the org address changed' do
-      expect_any_instance_of(Organisation).to receive(:geocode)
-      @org2.address = '777 pinner road'
-      @org2.save!
     end
   end
 end
