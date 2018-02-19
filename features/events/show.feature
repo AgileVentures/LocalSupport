@@ -10,8 +10,8 @@ Feature: View one event
       | Office Primer   | Care for the elderly | 64 pinner road | HA1 4HZ  | http://b.com/ |
     Given the following events exist:
       | title               | description       | organisation  | start_date          | end_date            | start_time | end_time |
-      | Open Source Weekend | Good for everyone | Cats Are Us   | 2030-10-20 10:30:14 | 2030-10-20 17:00:00 | 10:30      | 17:00    |
-      | Lazy Weekend        | Also good         | Office Primer | 2055-02-02 08:00:00 | 2055-02-02 17:00:00 | 08:00      | 17:00    |
+      | Open Source Weekend | Good for everyone | Cats Are Us   | 2030-10-20          | 2030-10-20          | 10:40      | 17:00    |
+      | Lazy Weekend        | Also good         | Office Primer | 2055-02-02          | 2055-02-02          | 08:00      | 17:00    |
 
 
   Scenario: User visits event from events page
