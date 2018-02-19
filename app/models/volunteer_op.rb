@@ -3,7 +3,7 @@ class VolunteerOp < ApplicationRecord
   acts_as_paranoid
   validates :title, :description, presence: true
   validates :role_description, :skills_needed, :when_volunteer_needed, 
-            :contact_details, :about_organization
+            :contact_details, :about_organization, length: { maximum: 550 }
   validates :organisation_id, presence: true, if: -> { source == 'local' }
   belongs_to :organisation
   has_one :doit_trace
