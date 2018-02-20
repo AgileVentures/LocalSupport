@@ -9,9 +9,9 @@ Feature: View one event
       | Cats Are Us     | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
       | Office Primer   | Care for the elderly | 64 pinner road | HA1 4HZ  | http://b.com/ |
     Given the following events exist:
-      | title               | description       | organisation  | start_date          | end_date            |
-      | Open Source Weekend | Good for everyone | Cats Are Us   | 2030-10-20 10:30:14 | 2030-10-20 17:00:00 |
-      | Lazy Weekend        | Also good         | Office Primer | 2055-02-02 08:00:00 | 2055-02-02 17:00:00 |
+      | title               | description       | organisation  | start_date          | end_date            | start_time | end_time |
+      | Open Source Weekend | Good for everyone | Cats Are Us   | 2030-10-20 10:30:14 | 2030-10-20 17:00:00 | 10:40      | 17:00    |
+      | Lazy Weekend        | Also good         | Office Primer | 2055-02-02 08:00:00 | 2055-02-02 17:00:00 | 08:00      | 17:00    |
 
 
   Scenario: User visits event from events page
@@ -24,4 +24,4 @@ Feature: View one event
     Given I visit "Open Source Weekend" event
     Then I should see "Open Source Weekend"
     And I should see "Good for everyone"
-    And I should see "Sunday, October 20, 2030 at 10:30"
+    And I should see "Sunday, October 20, 2030 at 10:40"

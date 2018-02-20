@@ -31,6 +31,16 @@ RSpec.describe Event, type: :model do
     expect(subject).to_not be_valid
   end
 
+  it 'is not valid without a start_time' do
+    subject.start_time = nil
+    expect(subject).to_not be_valid
+  end
+
+  it 'is not valid without a end_time' do
+    subject.end_time = nil
+    expect(subject).to_not be_valid
+  end
+
   it 'can be  an all day event' do
     subject.start_date = Time.zone.now.midnight
     subject.end_date = 1.day.from_now.midnight

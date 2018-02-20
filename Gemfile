@@ -9,6 +9,7 @@ gem 'heroku-api'
 gem 'sprockets', '~> 3.7', '>= 3.7.1'
 
 gem 'fullcalendar-rails'
+gem 'bootstrap3-datetimepicker-rails'
 gem 'momentjs-rails'
 gem 'jbuilder'
 
