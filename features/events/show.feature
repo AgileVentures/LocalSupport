@@ -24,5 +24,4 @@ Feature: View one event
     Given I visit "Open Source Weekend" event
     Then I should see "Open Source Weekend"
     And I should see "Good for everyone"
-    And I should see "Sunday, October 20, 2030 at 10:30"
-    And I should see "at 10:40"
+    And I should see "Sunday, October 20, 2030 at 10:40"
