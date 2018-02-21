@@ -19,6 +19,10 @@ Given(/^I submit a volunteer op with address on the org page/) do |volunteer_ops
     fill_in 'Description', with: volunteer_op['desc']
     fill_in 'Address', with: volunteer_op['address']
     fill_in 'Postcode', with: volunteer_op['postcode']
+    fill_in 'Role description', with: volunteer_op['role_desc']
+    fill_in 'Skills needed', with: volunteer_op['skills_needed']
+    fill_in 'When volunteer needed', with: volunteer_op['when_vol_needed']
+    fill_in 'volunteer_op_contact_details', with: volunteer_op['contact']
     click_on 'Create a Volunteer Opportunity'
   end
 end
