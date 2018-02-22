@@ -20,6 +20,7 @@
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.en-GB.js
 //= require moment
 //= require fullcalendar
+//= require bootstrap-datetimepicker
 
 window.LocalSupport = {};
 

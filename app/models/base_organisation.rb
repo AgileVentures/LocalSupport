@@ -14,8 +14,12 @@ class BaseOrganisation < ApplicationRecord
 
   # For the geocoder gem
   geocoded_by :full_address
-  after_validation :geocode, if: -> { run_geocode? }
+
   self.table_name = 'organisations'
+
+  def check_geocode
+    geocode if run_geocode?
+  end
 
   def run_geocode?
     # trigger geocode if I have an address but no coordinates and
