@@ -1,9 +1,9 @@
 <div class="event-item">
     <div class="event-title"><u><%= link_to event.title, event_path(event), class: "event-link" %></u></div>
     <div class="event-start-date">
-      Start: <%= event.start_date.strftime("%A, %B %d, %Y") %> at <%= event.start_time.strftime("%H:%M") if event.start_time %></div>
+      Start: <%= event.start_date.strftime("%A, %B %d, %Y at %H:%M")  %></div>
     <div class="event-end-date">
-      End: <%= event.end_date.strftime("%A, %B %d, %Y") %> at <%= event.end_time.strftime("%H:%M") if event.end_time%>
+      End: <%= event.end_date.strftime("%A, %B %d, %Y at %H:%M") %>
     </div>
   <div class="event-description"><%= event.description %></div>
 </div>
