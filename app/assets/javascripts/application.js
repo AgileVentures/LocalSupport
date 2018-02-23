@@ -30,4 +30,8 @@ $(function() {
     },
     events: '/events.json'
   });
+  $('[data-behaviour~=datetimepicker3]').datetimepicker({
+    format: 'DD/MM/YYYY hh:mm'
+  });
 });
+
