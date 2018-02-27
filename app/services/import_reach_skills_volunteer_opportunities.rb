@@ -50,8 +50,8 @@ class ImportReachSkillsVolunteerOpportunities
 
   def populate_vol_op_attributes(op, model, coordinates)
     model.source = 'reachskills'
-    model.latitude = coordinates ? coordinates.latitude.to_f : 0.0
-    model.longitude = coordinates ? coordinates.longitude.to_f : 0.0
+    model.latitude = coordinates ? coordinates.latitude.to_f : nil
+    model.longitude = coordinates ? coordinates.longitude.to_f : nil
     model.title = op['node']['title']
     model.description = op['node']['Description']
     model.reachskills_org_name = op['node']['Organisation']
