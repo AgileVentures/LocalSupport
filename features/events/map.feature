@@ -14,9 +14,9 @@ Feature: Map of local events
       | Office Primer   | Care for the elderly | 64 pinner road | HA1 4HZ  | http://b.com/ |
 
     Given the following events exist:
-      | title          | description                        | organisation  | start_date          | end_date            | start_time | end_time |
-      | My first event | Good for everyone                  | Cats Are Us   | 2030-10-20 10:30:14 | 2030-10-20 17:00:00 | 10:40      | 12:00    |
-      | An Event today | Testing the calendar functionality | Office Primer | today               | today               | 08:00      | 11:00    |
+      | title          | description                        | organisation  | start_date          | end_date            |
+      | My first event | Good for everyone                  | Cats Are Us   | 2030-10-20 10:30:14 | 2030-10-20 17:00:00 |
+      | An Event today | Testing the calendar functionality | Office Primer | today               | today               |
 
   @javascript @vcr @billy
   Scenario: Show all events in map on events page map

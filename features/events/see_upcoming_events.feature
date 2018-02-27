@@ -9,9 +9,9 @@ Feature: List the upcoming events
       | Cats Are Us     | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
       | Office Primer   | Care for the elderly | 64 pinner road | HA1 4HZ  | http://b.com/ |
     Given the following events exist:
-      | title          | description                        | organisation  | start_date          | end_date            | start_time | end_time |
-      | My first event | Good for everyone                  | Cats Are Us   | 2030-10-20          | 2030-10-20          | 10:40      | 10:50    |
-      | An Event today | Testing the calendar functionality | Office Primer | today               | today               | 11:00      | 11:00    |
+      | title          | description                        | organisation  | start_date       | end_date         |
+      | My first event | Good for everyone                  | Cats Are Us   | 2030-10-20 10:40 | 2030-10-20 10:50 |
+      | An Event today | Testing the calendar functionality | Office Primer | today            | today            |
 
   @javascript
   Scenario:

@@ -1,10 +1,8 @@
 Given (/^I fill in the new event page validly$/) do
   fill_in 'event_title', with: 'Hackathon'
   fill_in 'event_description', with: 'Great place to brain storm'
-  fill_in 'event_start_date', with: '20/04/2038'
-  fill_in 'event_end_date', with: '28/04/2038'
-  fill_in 'event_start_time', with: '09:00'
-  fill_in 'event_end_time', with: '09:20'
+  fill_in 'event_start_date', with: '20/04/2038 09:00'
+  fill_in 'event_end_date', with: '28/04/2038 09:20'
   select('Cats Are Us', from: 'event_organisation_id')
 end
 
