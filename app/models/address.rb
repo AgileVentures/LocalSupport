@@ -10,6 +10,6 @@ class Address < Struct.new(:value)
         postcode = match[3].to_s
       end
     end
-    {:address => address, :postcode => postcode}
+    {address: address, postcode: postcode}
   end
 end

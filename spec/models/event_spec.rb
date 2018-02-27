@@ -3,6 +3,26 @@ require 'rails_helper'
 RSpec.describe Event, type: :model do
   let(:subject){ FactoryBot.create :event }
 
+  describe 'Event with organisation or default coordinates' do
+    def event
+      grouped_events_by_coordinates  = Event.build_by_coordinates([subject])
+      key = grouped_events_by_coordinates.keys.first
+      grouped_events_by_coordinates[key].first
+    end
+
+    it 'should have organisation coordinates' do
+      expect(event.latitude).to eq(subject.organisation.latitude)
+      expect(event.longitude).to eq(subject.organisation.longitude)
+    end
+
+    it 'should have default coordinates' do
+      subject.organisation = nil
+      subject.save!
+      expect(event.latitude).to eq(0.0)
+      expect(event.longitude).to eq(0.0)
+    end
+  end
+
   it 'is valid with valid attributes' do
     expect(subject).to be_valid
   end
@@ -28,6 +48,16 @@ RSpec.describe Event, type: :model do
 
   it 'is not valid without a end_date' do
     subject.end_date = nil
+    expect(subject).to_not be_valid
+  end
+
+  it 'is not valid without a start_time' do
+    subject.start_time = nil
+    expect(subject).to_not be_valid
+  end
+
+  it 'is not valid without a end_time' do
+    subject.end_time = nil
     expect(subject).to_not be_valid
   end
 
@@ -62,7 +92,6 @@ RSpec.describe Event, type: :model do
     it 'should only contain events that are after the current datetime' do
       expect(Event.upcoming(20)).to all (have_attributes(start_date: (a_value > DateTime.current)))
     end
-
   end
 
 end
