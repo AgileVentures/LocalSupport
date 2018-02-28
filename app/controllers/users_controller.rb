@@ -1,4 +1,3 @@
-
 class UsersController < ApplicationController
 
 include RequestsHelper
