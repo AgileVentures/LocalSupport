@@ -9,6 +9,7 @@ gem 'heroku-api'
 gem 'sprockets', '~> 3.7', '>= 3.7.1'
 
 gem 'fullcalendar-rails'
+gem 'bootstrap3-datetimepicker-rails'
 gem 'momentjs-rails'
 gem 'jbuilder'
 
@@ -77,7 +78,6 @@ gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'bootstrap_sortable_rails', '~> 1.11.2'
 gem 'breadcrumbs_on_rails'
-gem 'bootstrap-datepicker-rails'
 # Use unicorn as the web server
 # gem 'unicorn'
 

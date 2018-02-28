@@ -25,6 +25,8 @@ Feature: Super Admin creating an event
     Given I fill in the new event page validly
     Then I press "Create Event"
     Then I should see "Event was successfully created"
+    And I should see "at 09:00"
+    And I should see "at 09:20"
 
   Scenario: Get validation error creating new event with empty fields
     Given I am signed in as a superadmin
