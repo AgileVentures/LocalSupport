@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '2.4.2'
-gem 'rails', '~> 5.1.5.rc1'
+gem 'rails', '~> 5.1', '>= 5.1.5'
 gem 'pg', '~> 1.0'
 gem 'devise', '~> 4.4'
 gem 'devise_invitable', '~> 1.7'
@@ -9,6 +9,7 @@ gem 'heroku-api'
 gem 'sprockets', '~> 3.7', '>= 3.7.1'
 
 gem 'fullcalendar-rails'
+gem 'bootstrap3-datetimepicker-rails'
 gem 'momentjs-rails'
 gem 'jbuilder'
 
@@ -45,7 +46,7 @@ end
 group :test do
   gem 'cucumber-rails', require: false
   gem 'cucumber-rails-training-wheels'
-  gem 'capybara', '~> 2.17'
+  gem 'capybara', '~> 2.18'
   gem 'capybara-webkit', git: 'https://github.com/thoughtbot/capybara-webkit.git'
   gem 'nokogiri', '~> 1.8'
   gem 'factory_bot_rails'
@@ -77,7 +78,6 @@ gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'bootstrap_sortable_rails', '~> 1.11.2'
 gem 'breadcrumbs_on_rails'
-gem 'bootstrap-datepicker-rails'
 # Use unicorn as the web server
 # gem 'unicorn'
 

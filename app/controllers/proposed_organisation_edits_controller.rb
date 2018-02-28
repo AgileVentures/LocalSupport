@@ -1,6 +1,6 @@
 class ProposedOrganisationEditsController < ApplicationController
 
-  before_action :authorize, :only => [:update]
+  before_action :authorize, only: [:update]
 
   def new
     org = Organisation.friendly.find params[:organisation_id]
@@ -46,15 +46,8 @@ class ProposedOrganisationEditsController < ApplicationController
 
   def proposed_edit_params
     params.require(:proposed_organisation_edit).permit(
-      :name,
-      :description,
-      :donation_info,
-      :address,
-      :postcode,
-      :telephone,
-      :website,
-      :email,
-    )
+      :name, :description, :donation_info,:address,
+      :postcode, :telephone, :website, :email, )
   end
 
   #  +-----+-----+
