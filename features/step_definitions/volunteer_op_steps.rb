@@ -102,6 +102,14 @@ Given /^I update "(.*?)" volunteer op description to be "(.*?)"$/ do |title, des
   click_on 'Update Volunteer Opportunity'
 end
 
+Given /^I update "(.*?)" volunteer op title to be "(.*?)"$/ do |title, description|
+  vop = VolunteerOp.find_by_title title
+  visit volunteer_op_path vop
+  click_on 'Edit'
+  fill_in('Title', :with => title)
+  click_on 'Update Volunteer Opportunity'
+end
+
 Given /^I should see (\d+) markers in the map$/ do |num|
   expect(page).to have_css('.vol_op', count: num)
 end

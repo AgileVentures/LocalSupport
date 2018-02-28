@@ -27,3 +27,10 @@ Feature: Org owner can edit volunteer opportunities
     And I should not see a link or button "Edit"
     And I visit the edit page for the volunteer_op titled "Litter Box Scooper"
     Then I should see "You must be signed in as an organisation owner or site superadmin to perform this action!"
+
+    Scenario: Enable edit of a volunteer op field
+    Given I am signed in as a charity worker related to "Cats Are Us"
+    And I visit the show page for the volunteer_op titled "Litter Box Scooper"
+    And I click "Edit"
+    Then I should be on the edit page for the volunteer_op titled "Litter Box Scooper"
+    Then I update "Litter Box Scooper" volunteer op title to be "No Box Scooper"
