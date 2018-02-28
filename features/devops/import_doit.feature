@@ -18,3 +18,17 @@ Feature: Importing DoIt Volunteer Ops
     Given there is a posted vol op with doit id "4d5f9b00-eaaa-45c4-adff-07707a9168b2"
     And I run the import doit service with a radius of 0.5 miles
     Then the doit volunteer op with id "4d5f9b00-eaaa-45c4-adff-07707a9168b2" should not be stored
+
+  Scenario: New doit volunteer ops should be posted to social media
+    Given the date is "2018-02-07 23:59:59"
+    And I run the import doit service
+
+    Then there should be 10 posts to twitter
+
+  Scenario: Twitter response
+    Given the following volunteer opportunities exist:
+      | title               | description                     | source | created_at          | updated_at          |
+      | Litter Box Scooper  | Assist with feline sanitation   | doit   | 2018-02-09 17:17:33 | 2018-02-09 17:17:33 |
+      | Litter Box Scooper 2| Assist with feline sanitation   | doit   | 2018-02-06 17:17:33 | 2018-02-06 17:17:33 |
+    And I run the update social media task
+    Then there should be 10 posts to twitter

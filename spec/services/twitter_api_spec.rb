@@ -2,13 +2,13 @@ require 'rails_helper'
 
   context 'Posting to twitter' do
     twitter_client = TwitterApi.new()
-    desc = "Volunteer opportunity"
+    desc = "Volunteer opportunities"
     long_tweet = "a" * 500
-    it 'should be able to post 280 chars or less to twitter' do
-      stub_request(:post, "https://api.twitter.com/1.1/statuses/update.json").
-         with(body: {"status"=>"New #volunteer opportunity at https://www.harrowcn.org.uk/ - #{desc}"},
-              headers: {}).
-         to_return(status: 200, body: "", headers: {})
+    volop = VolunteerOp.new title: "New opportunity"
+
+    it 'should be able to post to twitter' do
+      result = twitter_client.tweet volop
+      expect(result).to be_truthy
     end
 
     it 'should be able to parse a tweet' do
@@ -21,6 +21,4 @@ require 'rails_helper'
       result = twitter_client.parse("abc")
       expect(result).to eq("abc")
     end
-
-    #Need to work on stubbing the request properly
   end

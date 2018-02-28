@@ -14,6 +14,6 @@ class UpdateSocialMedia
 
   def post volop
     twitter_client.tweet volop
-    facebook.post volop
+    # facebook.post volop  ## Will the client have a facebook page???
   end
 end
