@@ -36,7 +36,6 @@ class ImportDoItVolunteerOpportunities
   end
 
   def persist_doit_vol_ops(opportunities)
-    byebug
     opportunities.each do |op|
       next if trace_handler.local_origin?(op['id'])
       model_klass.find_or_create_by(doit_op_id: op['id']) do |model|
