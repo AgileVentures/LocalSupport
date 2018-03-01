@@ -26,5 +26,5 @@ Feature: Importing DoIt Volunteer Ops
       | Litter Box Scooper  | Assist with feline sanitation   | doit   | 2018-02-09 17:17:33 | 2018-02-09 17:17:33 |
       | Litter Box Scooper 2| Assist with feline sanitation   | doit   | 2018-02-06 17:17:33 | 2018-02-06 17:17:33 |
 
-    Then there should be 1 posts to twitter
+    Then there should be 1 post to twitter
     When I run the update social media task
