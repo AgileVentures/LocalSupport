@@ -12,9 +12,8 @@ class UpdateSocialMedia
     new_volops.each { |volop| post volop }
   end
 
-  private
-    def post volop
-      twitter_client.tweet volop
-      # facebook.post volop  ## Will the client have a facebook page???
-    end
+  def post volop
+    twitter_client.tweet volop
+    # facebook.post volop  ## Will the client have a facebook page???
+  end
 end
