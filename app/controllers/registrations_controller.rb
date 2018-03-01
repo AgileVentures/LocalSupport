@@ -1,5 +1,4 @@
 class RegistrationsController < Devise::RegistrationsController
-
   def create
     if params[:user]
       session[:proposed_org] = params[:user][:proposed_org]
