@@ -1,24 +1,21 @@
 require 'rails_helper'
 
+RSpec.describe TwitterApi do
   context 'Posting to twitter' do
     twitter_client = TwitterApi.new()
     desc = "Volunteer opportunities"
-    long_tweet = "a" * 500
-    volop = VolunteerOp.new title: "New opportunity"
+    long_tweet = "a" * 5000
+    volop = VolunteerOp.new title: long_tweet
 
-    it 'should be able to post to twitter' do
-      result = twitter_client.tweet volop
-      expect(result).to be_truthy
+    it 'should be able to post a long tweet to twitter' do
+      expect_any_instance_of(Twitter::REST::Client).to receive(:update).once
+      twitter_client.tweet volop
     end
 
-    it 'should be able to parse a tweet' do
-      current_max_tweet_length = 280
-      result = twitter_client.parse(long_tweet)
-      expect(result.length).to eq(current_max_tweet_length)
-    end
-
-    it 'should be able to parse a short tweet' do
-      result = twitter_client.parse("abc")
-      expect(result).to eq("abc")
+    it 'should be able to post a short tweet to twitter' do
+      volop.title = "title"
+      expect_any_instance_of(Twitter::REST::Client).to receive(:update).once
+      twitter_client.tweet volop
     end
   end
+end
