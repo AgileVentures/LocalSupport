@@ -1,0 +1,757 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://reachskills.org.uk/harrow-community-network-opportunity-feed
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Date:
+      - Thu, 01 Mar 2018 06:02:23 GMT
+      Server:
+      - Apache
+      Location:
+      - https://reachvolunteering.org.uk/harrow-community-network-opportunity-feed
+      Cache-Control:
+      - max-age=1209600
+      Expires:
+      - Thu, 15 Mar 2018 06:02:23 GMT
+      Content-Length:
+      - '282'
+      Content-Type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: UTF-8
+      string: |
+        <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+        <html><head>
+        <title>301 Moved Permanently</title>
+        </head><body>
+        <h1>Moved Permanently</h1>
+        <p>The document has moved <a href="https://reachvolunteering.org.uk/harrow-community-network-opportunity-feed">here</a>.</p>
+        </body></html>
+    http_version: 
+  recorded_at: Thu, 01 Mar 2018 06:02:24 GMT
+- request:
+    method: get
+    uri: https://reachvolunteering.org.uk/harrow-community-network-opportunity-feed
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 01 Mar 2018 06:02:24 GMT
+      Server:
+      - Apache
+      X-Drupal-Cache:
+      - MISS
+      Expires:
+      - Sun, 19 Nov 1978 05:00:00 GMT
+      Cache-Control:
+      - public, max-age=0
+      X-Content-Type-Options:
+      - nosniff
+      Etag:
+      - '"1519884144-1"'
+      Last-Modified:
+      - Thu, 01 Mar 2018 06:02:24 GMT
+      Vary:
+      - Cookie,Accept-Encoding
+      Content-Length:
+      - '3147'
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: ASCII-8BIT
+      string: '{"nodes":[{"node":{"title":"Social Media Promotion","Organisation":"Abrahamic
+        Reunion England","Description":"We need advice on how to best utilise Facebook,
+        Twitter SEO, in line promotion.\nWe are not experienced in online social media
+        promotion and urgently seeking expertise!\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/social-media-promotion?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Harrow","Postcode":"HA7
+        3PF","Coordinates":"51\u00b0 36'' 30.708\" N, 0\u00b0 19'' 40.9332\" W"}},{"node":{"title":"Business
+        Mentor","Organisation":"London Business Partnership Limited","Description":"The
+        role involves the mentor meeting their respective mentee (business owner\/entrepreneur)
+        on a monthly basis (recommended) or at any other frequency agreed between
+        the parties.\nAt this meeting latter will feedback on their activities in
+        relation to completing the\u00a0agreed action points established at the beginning
+        of the relationship or prior meetings. They will also discuss any new challenges\/issues
+        that have arisen since their last meeting where the mentee is looking for
+        assistance.\nThe mentor will share their experiences and knowledge and will
+        support their mentee as they seek to identify or create possible solutions
+        to resolve their problem(s). (Thereby developing their business skills). The
+        mentor is expected to give honest but constructive feedback and be mindful
+        that their mentee may not always follow their suggestions however valid.\nThis
+        project is an extension of an existing one which we successfully delivered
+        for Harrow Council over 2 years from April 2015 to March 2017.\nWe are looking
+        to support a minimum of 20 entrepreneurs through this element of the program.
+        We would look to take this project to other boroughs, in the near future,
+        for them to\u00a0consider, funding and using as a way in which to support
+        local entrepreneurs.\nWith the\u00a0support of the mentor we are hoping to
+        achieve one of 4\u00a0key tangible results:\nReduced risk of closure: increased
+        resilience\nJob creation - through business growth\nAn increase in business
+        turnover - better sales conversion rate, new client acquisition, new products,
+        new markets\nIncreased efficiency through the use of technology or improvements
+        in service delivery by implementing changes in their practices\/processes\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/business-mentor-3?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Harrow","Postcode":"HA7
+        1GB","Coordinates":"51\u00b0 36'' 18.6516\" N, 0\u00b0 17'' 47.4216\" W"}},{"node":{"title":"Treasurer
+        for Mencap Hillingdon North","Organisation":"MENCAP HILLINGDON NORTH","Description":"The
+        Treasurer attends the Executive Committee meeting one evening every month,
+        the AGM and visits the Centre every 3\/4 weeks. Home work takes about 2\/3
+        hours a week.\nWe have a leased purpose built building and run two minibuses.
+        An Assistant Treasurer assists in collecting money for snacks and dinners\u00a0at
+        our meetings twice every week. \u00a0The Treasurer arranges payments of bills
+        and keeping computer financial records. We have an accounting firm that has
+        produced annual reports for over 40 years on a pro bono basis. The Treasurer\u00a0participates
+        in\u00a0fund raising activities.\nTurnover is between 16,000 and 22,000 a
+        year.\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/treasurer-mencap-hillingdon-north?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"HILLINGDON","Postcode":"HA4
+        0LR","Coordinates":"51\u00b0 33'' 33.5844\" N, 0\u00b0 23'' 26.5956\" W"}},{"node":{"title":"Trustee
+        with experience in fundraising","Organisation":"No Bounds","Description":"No
+        Bounds is looking for a trustee who would be willing to help us to create
+        a fundraising strategy in order to re-organize and re-launch the organization.\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/trustee-experience-fundraising?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Wembley","Postcode":"HA0
+        3AB","Coordinates":"51\u00b0 33'' 16.7796\" N, 0\u00b0 18'' 27.3492\" W"}},{"node":{"title":"Fundraising
+        Manager Heath Robinson Museum","Organisation":"Heath Robinson Museum","Description":"The
+        Heath Robinson Museum and West House, the cultural centre next door, are managed
+        on a day-to-day basis by a Management Board, composed of the (paid) Museum
+        Manager and volunteer Managers in charge of functional areas.\nIn the Museum\u2019s
+        development phase, the volunteer Marketing and Fundraising Manager managed
+        fundraising, and approx. \u00a3500,000 was raised to match a Heritage Lottery
+        Fund grant of \u00a31.3m. The Museum will always need fundraising, and would
+        now like a dedicated manager.\u00a0This is a new volunteer role which will
+        help the Management Board to achieve its goals, by raising the funds needed
+        to supplement earned income. The Fundraising Manager leads the Fundraising
+        Committee.\nReports to: The Vice-Chair of the Management Board.\nThe Fundraising
+        Manager will work with managers to understand what the Museum needs, as well
+        as advising on fundraising opportunities.\nHe\/she will recruit and manage
+        a volunteer fundraising committee and develop a fundraising strategy which
+        may cover:\nTrust Fundraising \u2013 working with colleagues to develop proposals,
+        applying for funding and reporting to funders\nCorporate Relations \u2013
+        developing packages to interest companies in supporting the Museum through
+        donation, sponsorship and volunteering\nCommunity Fundraising \u2013 organising
+        fundraising events and activities in the local community\nThe Friends\u2019
+        organisation \u2013 building a community of support for the Museum and West
+        House\nMajor Donors \u2013 developing a \u2018Patrons\u2019 Circle\u2019 of
+        high net-worth supporters\nLegacy fundraising\n\u00a0\nThese tasks may not
+        all be tackled at once, and success will depend on developing a team of suitable
+        volunteers. Some fundraising volunteers are already in place. We are flexible
+        and can discuss with interested applicants which parts of the role they might
+        like to carry out.\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/fundraising-manager-heath-robinson-museum?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Pinner","Postcode":"HA5
+        1AE","Coordinates":"51\u00b0 35'' 29.8608\" N, 0\u00b0 23'' 12.2496\" W"}},{"node":{"title":"Business
+        Start-Up Mentor (West London)","Organisation":"Shaw Trust","Description":"Our
+        business start-up mentor role offers a unique and rewarding chance to help
+        clients who are embarking on the exciting journey of starting their own business
+        or self-employment. You could be supporting someone to turn the seed of an
+        idea into a business plan and seeing it through to the end of the first year''s
+        trading, or helping a client who is already trading to build their fledgling
+        business into a growing enterprise. It\u2019s a brave step for anyone and
+        our clients especially, as this will be a new beginning for many of them.
+        So, by sharing your knowledge of self-employment, business start-up, being
+        involved in running a business or business management skills, you can offer
+        them encouragement, motivation and a friendly ear. The role is flexible, allowing
+        you to fit the hours in around your own commitments.\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/business-start-mentor-west-london?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Kingston,
+        Twickenham, Hammersmith, Wembley, Hayes","Postcode":"HA9 0NA","Coordinates":"0\u00b0
+        0'' 0\" N, 0\u00b0 0'' 0\" E"}}]}'
+    http_version: 
+  recorded_at: Thu, 01 Mar 2018 06:02:25 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA7%203PF,%20Harrow&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Thu, 01 Mar 2018 06:02:26 GMT
+      Expires:
+      - Fri, 02 Mar 2018 06:02:26 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '528'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA7 3PF",
+                       "short_name" : "HA7 3PF",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Drummond Drive",
+                       "short_name" : "Drummond Dr",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Stanmore",
+                       "short_name" : "Stanmore",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Drummond Dr, Stanmore HA7 3PF, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.6090838,
+                          "lng" : -0.3273176
+                       },
+                       "southwest" : {
+                          "lat" : 51.6076288,
+                          "lng" : -0.3286692
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.6085388,
+                       "lng" : -0.3280368
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.6097052802915,
+                          "lng" : -0.3266444197084979
+                       },
+                       "southwest" : {
+                          "lat" : 51.6070073197085,
+                          "lng" : -0.329342380291502
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJ4-NsJn0UdkgRPkfEFj2vbEE",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Thu, 01 Mar 2018 06:02:26 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA7%201GB,%20Harrow&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Thu, 01 Mar 2018 06:02:26 GMT
+      Expires:
+      - Fri, 02 Mar 2018 06:02:26 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '470'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA7 1GB",
+                       "short_name" : "HA7 1GB",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Stanmore",
+                       "short_name" : "Stanmore",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Stanmore HA7 1GB, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.6058889,
+                       "lng" : -0.2975768
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.60723788029149,
+                          "lng" : -0.2962278197084979
+                       },
+                       "southwest" : {
+                          "lat" : 51.60453991970849,
+                          "lng" : -0.298925780291502
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJb5IOGw8UdkgRHadUrbskn-w",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Thu, 01 Mar 2018 06:02:26 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA4%200LR,%20HILLINGDON&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Thu, 01 Mar 2018 06:02:27 GMT
+      Expires:
+      - Fri, 02 Mar 2018 06:02:27 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '512'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA4 0LR",
+                       "short_name" : "HA4 0LR",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Ruislip",
+                       "short_name" : "Ruislip",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Ruislip HA4 0LR, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.56006619999999,
+                          "lng" : -0.3896849000000001
+                       },
+                       "southwest" : {
+                          "lat" : 51.55830479999999,
+                          "lng" : -0.3910618
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.5596057,
+                       "lng" : -0.3905956
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.56053448029149,
+                          "lng" : -0.389024369708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.55783651970849,
+                          "lng" : -0.3917223302915021
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJhR5VyNlsdkgRPgc_9E4Zerc",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Thu, 01 Mar 2018 06:02:27 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA0%203AB,%20Wembley&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Thu, 01 Mar 2018 06:02:28 GMT
+      Expires:
+      - Fri, 02 Mar 2018 06:02:28 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '531'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA0 3AB",
+                       "short_name" : "HA0 3AB",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Sylvester Road",
+                       "short_name" : "Sylvester Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Wembley",
+                       "short_name" : "Wembley",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Sylvester Rd, Wembley HA0 3AB, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.5550151,
+                          "lng" : -0.3067832
+                       },
+                       "southwest" : {
+                          "lat" : 51.5545446,
+                          "lng" : -0.3086
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.5546522,
+                       "lng" : -0.3075972
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5561288302915,
+                          "lng" : -0.306342619708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.5534308697085,
+                          "lng" : -0.3090405802915021
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJ9b7AjUoSdkgRGOLHokHp_VM",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Thu, 01 Mar 2018 06:02:28 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA5%201AE,%20Pinner&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Thu, 01 Mar 2018 06:02:28 GMT
+      Expires:
+      - Fri, 02 Mar 2018 06:02:28 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '534'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA5 1AE",
+                       "short_name" : "HA5 1AE",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "West End Lane",
+                       "short_name" : "W End Ln",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Pinner",
+                       "short_name" : "Pinner",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "W End Ln, Pinner HA5 1AE, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.5927436,
+                          "lng" : -0.3856166
+                       },
+                       "southwest" : {
+                          "lat" : 51.5911433,
+                          "lng" : -0.3876817
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.59162749999999,
+                       "lng" : -0.3867212
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5932924302915,
+                          "lng" : -0.385300169708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.5905944697085,
+                          "lng" : -0.387998130291502
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJXxQQ4q5sdkgRHi8U2GSnqiU",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Thu, 01 Mar 2018 06:02:28 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA9%200NA,%20Kingston,%20Twickenham,%20Hammersmith,%20Wembley,%20Hayes&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Thu, 01 Mar 2018 06:02:29 GMT
+      Expires:
+      - Fri, 02 Mar 2018 06:02:29 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '65'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [],
+           "status" : "ZERO_RESULTS"
+        }
+    http_version: 
+  recorded_at: Thu, 01 Mar 2018 06:02:29 GMT
+recorded_with: VCR 4.0.0
