@@ -14,6 +14,13 @@ Given /^I submit a blank volunteer op on the "(.*?)" page$/ do |org_name|
   click_on 'Create a Volunteer Opportunity'
 end
 
+When("I submit a valid volunteer opportunity") do
+  org = Organisation.find_by_name('Friendly')
+  visit organisation_path org
+  click_link "Create a Volunteer Opportunity"
+  expect(current_path).to eq new_organisation_volunteer_op_path org
+  fill_in 'Title', :with => 'title'
+  fill_in 'Description', :with => 'desc'
   click_on 'Create a Volunteer Opportunity'
 end
 

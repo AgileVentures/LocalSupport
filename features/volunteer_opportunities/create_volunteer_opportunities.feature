@@ -48,7 +48,7 @@ Feature: Org superadmin creating a volunteer work opportunity
   Scenario: New Volunteer Opportunity created by a super admin is posted to twitter
     Given I am signed in as a superadmin
     Then there should be 1 post to twitter
-    When I submit a volunteer op "Hard Work", "For no pay" on the "Friendly" page
+    When I submit a valid volunteer opportunity
 
   @vcr @javascript
   Scenario: Site Super Admin users can create and post Volunteer Opportunities to Doit
