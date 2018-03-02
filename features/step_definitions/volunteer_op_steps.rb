@@ -6,6 +6,14 @@ And(regex) do |title, desc, org_name|
   expect(current_path).to eq new_organisation_volunteer_op_path org
   fill_in 'Title', :with => title
   fill_in 'Description', :with => desc
+Given /^I submit a blank volunteer op on the "(.*?)" page$/ do |org_name|
+  org = Organisation.find_by_name(org_name)
+  visit organisation_path org
+  click_link "Create a Volunteer Opportunity"
+  expect(current_path).to eq new_organisation_volunteer_op_path org
+  click_on 'Create a Volunteer Opportunity'
+end
+
   click_on 'Create a Volunteer Opportunity'
 end
 
