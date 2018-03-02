@@ -36,8 +36,8 @@ Feature: Org superadmin creating a volunteer work opportunity
 
   Scenario: Org-superadmins can create a volunteer opportunity but get warning with invalid data
     Given I am signed in as a charity worker related to "Friendly"
-    And I submit a volunteer op "", "" on the "Friendly" page
-    And I should see "Title can't be blank" and "Description can't be blank"
+    And I submit a blank volunteer op on the "Friendly" page
+    Then I should see "Title can't be blank" and "Description can't be blank"
 
   Scenario: Site Super Admin users can create Volunteer Opportunities
     Given I am signed in as a superadmin
