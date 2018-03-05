@@ -33,5 +33,9 @@ $(function() {
   $('[data-behaviour~=datetimepicker3]').datetimepicker({
     format: 'DD/MM/YYYY hh:mm'
   });
+
+  $('[data-behaviour~=vopspicker]').datetimepicker({
+    format: 'DD/MM/YYYY'
+  });
 });
 

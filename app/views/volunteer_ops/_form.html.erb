@@ -31,9 +31,7 @@
     <%= f.text_field :role_description, class: "form-control" %>
 
     <%= f.label :when_volunteer_needed , :style => "margin-top: 16px;" %>
-    <%= f.date_field :when_volunteer_needed, as: :date, value: 
-    f.object.try(:strftime,"%m/%d/%Y"), class: 'form-control' %>
-
+    <%= f.text_field :when_volunteer_needed, class: "form-control", 'data-behaviour' => 'vopspicker'%>
 
     <%= f.label :skills_needed , :style => "margin-top: 16px;" %>
     <%= f.text_area :skills_needed, class: "form-control" %>
