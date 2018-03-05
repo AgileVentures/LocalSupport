@@ -30,11 +30,11 @@ $(function() {
     },
     events: '/events.json'
   });
-  $('[data-behaviour~=datetimepicker3]').datetimepicker({
+  $('[data-behaviour~=date-and-time-picker]').datetimepicker({
     format: 'DD/MM/YYYY hh:mm'
   });
 
-  $('[data-behaviour~=vopspicker]').datetimepicker({
+  $('[data-behaviour~=date-only-picker]').datetimepicker({
     format: 'DD/MM/YYYY'
   });
 });
