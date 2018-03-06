@@ -12,6 +12,14 @@ class Event < ApplicationRecord
                               .limit(n)
                    }
 
+  serialize :recurring, Hash
+  def recurring=(value)
+    if RecurringSelect.is_valid_rule?(value)
+      super(RecurringSelect.dirty_hash_to_rule(value).to_hash)
+    else
+      super(nil)
+    end
+  end
   def all_day_event?
     self.start_date == self.start_date.midnight && self.end_date == self.end_date.midnight
   end
