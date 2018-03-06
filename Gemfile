@@ -112,4 +112,4 @@ gem 'friendly_id', '~> 5.2.3'
 
 # SEO
 gem 'meta-tags'
-gem 'recurring_select', github: "RundownApp/recurring_select"
+gem 'recurring_select', github: 'RundownApp/recurring_select'
