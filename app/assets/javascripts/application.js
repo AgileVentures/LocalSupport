@@ -17,6 +17,7 @@
 //= require jquery-readyselector
 //= require doit_volunteer_ops
 //= require moment
+//= require recurring_select
 //= require fullcalendar
 //= require bootstrap-datetimepicker
 

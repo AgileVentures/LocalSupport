@@ -8,6 +8,7 @@
  *= require font-awesome
  *= require bootstrap-sortable
  *= require bootstrap-switch
+ *= require recurring_select
  *= require fullcalendar
  *= require bootstrap-datetimepicker
 */
