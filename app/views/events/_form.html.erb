@@ -54,6 +54,10 @@
         </div>
       </div>
   </div>
+  <div class="field">
+    <%= f.label :recurring %>
+    <%= f.select_recurring :recurring, nil, allow_blank: true, id: :event_recurring %>
+  </div>
   <br />
   <div class="position-bottom col-md-6">
     <div class="actions">
