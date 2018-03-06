@@ -1,5 +1,13 @@
 GIT
-  remote: git://github.com/RundownApp/recurring_select.git
+  remote: https://github.com/AgileVentures/url_validator.git
+  revision: 00f7246d39fae872dd198afda3638df88fa7dbd9
+  specs:
+    url_validator (0.1.0)
+      addressable
+      rails
+
+GIT
+  remote: https://github.com/RundownApp/recurring_select
   revision: b934e8d1fb20eb101086d1b03ecd766c97826eae
   specs:
     recurring_select (2.0.0)
@@ -8,14 +16,6 @@ GIT
       jquery-rails (>= 3.0)
       rails (>= 3.2)
       sass-rails (>= 4.0)
-
-GIT
-  remote: https://github.com/AgileVentures/url_validator.git
-  revision: 00f7246d39fae872dd198afda3638df88fa7dbd9
-  specs:
-    url_validator (0.1.0)
-      addressable
-      rails
 
 GIT
   remote: https://github.com/thoughtbot/capybara-webkit.git
