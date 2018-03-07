@@ -8,7 +8,7 @@ class Event < ApplicationRecord
 
   scope :upcoming, lambda { |n|
                                where('start_date >= ?', Time.zone.now.to_date)
-                              .order('created_at DESC')
+                              .order('start_date ASC')
                               .limit(n)
                    }
 
