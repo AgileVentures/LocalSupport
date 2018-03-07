@@ -10,18 +10,20 @@ Feature: Search local events
       | Cats Are Us     | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
       | Office Primer   | Care for the elderly | 64 pinner road | HA1 4HZ  | http://b.com/ |
     Given the following events exist:
-      | title            | description             | organisation  | start_date      | end_date        |
-      | My first event   | Good for everyone       | Cats Are Us   | 2 days from now | same day        |
-      | Some other event | Look after older people | Office Primer | today           | 6 days from now |
+      | title            | description             | organisation  | start_date       | end_date         |
+      | My first event   | Still good people       | Cats Are Us   | one day from now | one day from now |
+      | My second event  | Second still podium     | Office Primer | today            | today            |
+      | Some other event | Look after older people | Office Primer | yesterday        | yesterday        |
     And cookies are approved
     And I visit the events page
 
-#  Scenario: Find out what's going on locally
-#    Given I fill in "Search Text" with "older people" within the main body
-#    And I press "Search"
-#    Then I should see "Some other event"
-#    And I should not see "My first event" within "events_scroll"
-#    Then I should see 1 markers in the map
+  Scenario: Find out what's going on locally
+    Given I fill in "Search Text" with "still" within the main body
+    And I press "Search"
+    Then I should see "Still good people"
+    Then I should see "Second still podium"
+    And I should not see "Some other event" within "events_scroll"
+    Then I should see 2 markers in the map
 
   Scenario: Search a list of current events with a keyword that won't match
     Given I fill in "Search Text" with "non existent text" within the main body

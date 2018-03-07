@@ -7,7 +7,7 @@ class Event < ApplicationRecord
   belongs_to :organisation
 
   scope :upcoming, lambda { |n|
-                               where('start_date > ?', DateTime.current.midnight)
+                               where('start_date >= ?', Time.zone.now.to_date)
                               .order('created_at DESC')
                               .limit(n)
                    }
