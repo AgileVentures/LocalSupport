@@ -23,49 +23,30 @@ describe BaseOrganisation, type: :model do
 
     it { is_expected.to have_been_updated_recently }
 
-    context "updated too long ago" do
+    context 'updated too long ago' do
       subject { FactoryBot.create(:organisation, updated_at: 1.year.ago)}
       it { is_expected.not_to have_been_updated_recently }
     end
 
-    context "when updated recently" do
+    context 'when updated recently' do
       subject { FactoryBot.create(:organisation, updated_at: 364.days.ago) }
       it { is_expected.to have_been_updated_recently }
     end
   end
 
-  describe 'geocoding' do
-    subject { FactoryBot.create(:organisation, updated_at: 366.days.ago) }
-    it 'should geocode when address changes' do
-      new_address = '30 pinner road'
-      is_expected.to receive(:geocode)
-      subject.update_attributes :address => new_address
-    end
-
-    it 'should geocode when postcode changes' do
-      new_postcode = 'HA1 4RZ'
-      is_expected.to receive(:geocode)
-      subject.update_attributes :postcode => new_postcode
-    end
-
-    it 'should geocode when new object is created' do
-      address = '60 pinner road'
-      postcode = 'HA1 4HZ'
-      org = FactoryBot.build(:organisation,:address => address, :postcode => postcode, :name => 'Happy and Nice', :gmaps => true)
-      expect(org).to receive(:geocode)
-      org.save
-    end
-  end
-  
   describe 'friendly_id' do
-     
-     it 'should use SetupSlug service for setting slugs' do
-       service_double = class_double(SetupSlug).as_stubbed_const
-       expect(service_double).to receive(:run)
-       
-       FactoryBot.create(:organisation)
-     end
-     
+    it 'should use SetupSlug service for setting slugs' do
+      service_double = class_double(SetupSlug).as_stubbed_const
+      expect(service_double).to receive(:run)
+      FactoryBot.create(:organisation)
+    end
   end
 
+  describe 'full_address' do
+    it 'should be composed by address and postcode' do
+      organisation = FactoryBot.create(:organisation)
+      full_address  = "#{organisation.address}, #{organisation.postcode}"
+      expect(organisation.full_address).to eq(full_address)
+    end
+  end
 end

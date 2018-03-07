@@ -22,15 +22,19 @@ class BuildMarkersWithInfoWindow
   def build_single_marker(volop, marker)
     location = volop.first
     vol_ops = volop.last
-    source = VolunteerOp.get_source(vol_ops)
+    if vol_ops.first.try(:source)
+      source = VolunteerOp.get_source(vol_ops)
+    else
+      source = 'local'
+    end
     marker.lat location.latitude
     marker.lng location.longitude
     marker.infowindow listener.render_to_string(
-      partial: "volunteer_ops/popup/#{source}", locals: {vol_ops: vol_ops}
+      partial: "shared/popup/#{source}.html.erb", locals: {vol_ops: vol_ops}
     )
     marker.json(
       custom_marker: listener.render_to_string(
-        partial: 'shared/custom_marker',
+        partial: 'shared/custom_marker.html.erb',
         locals: {attrs: [helper.asset_path("volunteer_icon_#{source}.png"),
                          class: 'vol_op',
                          title: 'Click here to see volunteer opportunities']}

@@ -1,6 +1,3 @@
-require 'coveralls'
-Coveralls.wear_merged!('rails')
-
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RSPEC'] = 'rspec'
 ENV["RAILS_ENV"] ||= 'test'
@@ -67,9 +64,9 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 
-  config.include Devise::TestHelpers, :type => :view
-  config.include Devise::TestHelpers, :type => :controller
-  config.include Devise::TestHelpers, :type => :helper
+  config.include Devise::Test::ControllerHelpers, :type => :view
+  config.include Devise::Test::ControllerHelpers, :type => :controller
+  config.include Devise::Test::ControllerHelpers, :type => :helper
 
   config.include FactoryBot::Syntax::Methods
   config.include ControllerHelpers, :helpers => :controllers

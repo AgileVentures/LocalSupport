@@ -1,4 +1,4 @@
-class Page < ActiveRecord::Base
+class Page < ApplicationRecord
   #attr_accessible :content, :name, :permalink, :link_visible
   validates :name, presence: true
   validates :permalink, presence: true, uniqueness: true

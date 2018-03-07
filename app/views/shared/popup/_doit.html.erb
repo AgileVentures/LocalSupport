@@ -2,8 +2,7 @@
 <div class="long-vol-op">
   <ul>
     <% vol_ops.each do |volop| %>
-      <%= render partial: 'volunteer_ops/popup/vol_local', locals: {volop: volop} %>
-  <% end %>
+      <%= render partial: 'shared/popup/vol_op', locals: {volop: volop} %>
+    <% end %>
   </ul>
 </div>
-

@@ -19,7 +19,7 @@ describe ImportDoItVolunteerOpportunities do
     it 'does not check for the presence and/or create any ops' do
       allow(http_party).to receive(:get).and_return(response)
       list_volunteer_opportunities
-      expect(model_klass).not_to have_received(:find_by)
+      expect(model_klass).not_to have_received(:find_or_create_by)
     end
   end
 
@@ -40,7 +40,7 @@ describe ImportDoItVolunteerOpportunities do
     it 'removes all doit ops before re-adding from doit api' do
       allow(http_party).to receive(:get).and_return(response)
       list_volunteer_opportunities
-      expect(model_klass).to have_received(:delete_all).with(source: 'doit').ordered
+      expect(model_klass).to have_received(:where).with(source: 'doit').ordered
       expect(model_klass).to have_received(:find_or_create_by).exactly(16).times.ordered
     end
 

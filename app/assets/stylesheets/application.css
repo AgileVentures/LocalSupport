@@ -8,8 +8,8 @@
  *= require font-awesome
  *= require bootstrap-sortable
  *= require bootstrap-switch
- *= require bootstrap-datepicker3
  *= require fullcalendar
+ *= require bootstrap-datetimepicker
 */
 
 body, html {
@@ -489,6 +489,12 @@ input[type="text"] {
         -moz-box-shadow: none;
         box-shadow: none;
     }
+}
+
+.textContainer div {
+    vertical-align: middle;
+    display: inline-block;
+    padding: 20px;
 }
 
 

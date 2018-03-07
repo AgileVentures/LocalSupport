@@ -1,4 +1,4 @@
-class CreateDoitTraces < ActiveRecord::Migration
+class CreateDoitTraces < ActiveRecord::Migration[4.2]
   def change
     create_table :doit_traces do |t|
       t.datetime :published_at

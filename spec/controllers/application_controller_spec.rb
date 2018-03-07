@@ -77,21 +77,19 @@ describe ApplicationController, :type => :controller, :helpers => :controllers d
     #  request.should_receive(:referer).and_return "/hello"
     #end
     it 'cookie is set and redirected to referer' do
-      expect(request).to receive(:referer).and_return "/hello"
-      expect(response).to receive(:set_cookie)
+      request.headers.merge! referer:'/hello'
       get :allow_cookie_policy
       expect(response).to redirect_to "/hello"
     end
 
     it 'redirects to root if request referer is nil' do
-      expect(request).to receive(:referer).and_return nil
-      expect(response).to receive(:set_cookie)
+      request.headers.merge! referer: nil
       get :allow_cookie_policy
       expect(response).to redirect_to '/'
     end
 
     it 'cookie has correct key/value pair' do
-      expect(request).to receive(:referer).and_return "/hello"
+      request.headers.merge! referer:'/hello'
       get :allow_cookie_policy
       expect(response.cookies).to eq('cookie_policy_accepted' => 'true')
     end
@@ -180,7 +178,7 @@ describe ApplicationController, :type => :controller, :helpers => :controllers d
 end
 
 # all child controllers should implement the ApplicationController's
-# before_filter
+# before_action
 describe OrganisationsController, :type => :controller do
   it 'assigns footer page links on a given request' do
     get :index

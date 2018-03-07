@@ -1,4 +1,4 @@
-class PostToDoitJob < ActiveJob::Base
+class PostToDoitJob < ApplicationJob
   queue_as :default
 
   def perform(options, doit_post_handler = Doit::PostToDoit, trace_handler = DoitTrace)

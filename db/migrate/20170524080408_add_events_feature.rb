@@ -1,4 +1,4 @@
-class AddEventsFeature < ActiveRecord::Migration
+class AddEventsFeature < ActiveRecord::Migration[4.2]
   def change
     Feature.create(name: :events)
   end

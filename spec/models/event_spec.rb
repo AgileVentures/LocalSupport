@@ -1,9 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  subject do
-    described_class.new(title: 'My Title', description: 'My description',
-                        start_date: Time.zone.now, end_date: Time.zone.now + 1.week)
+  let(:subject){ FactoryBot.create :event }
+
+  describe 'Event with organisation or default coordinates' do
+    def event
+      grouped_events_by_coordinates  = Event.build_by_coordinates([subject])
+      key = grouped_events_by_coordinates.keys.first
+      grouped_events_by_coordinates[key].first
+    end
+
+    it 'should have organisation coordinates' do
+      expect(event.latitude).to eq(subject.organisation.latitude)
+      expect(event.longitude).to eq(subject.organisation.longitude)
+    end
+
+    it 'should have default coordinates' do
+      subject.organisation = nil
+      subject.save!
+      expect(event.latitude).to eq(0.0)
+      expect(event.longitude).to eq(0.0)
+    end
   end
 
   it 'is valid with valid attributes' do
@@ -18,6 +35,10 @@ RSpec.describe Event, type: :model do
   it 'is not valid without a description' do
     subject.description = nil
     expect(subject).to_not be_valid
+  end
+
+  it 'must not be created without an organisation' do
+    expect(subject.organisation.class).to eq Organisation
   end
 
   it 'is not valid without a start_date' do
@@ -42,28 +63,25 @@ RSpec.describe Event, type: :model do
   end
 
   describe 'scopes' do
-
-    before(:all) do
-      FactoryBot.create_list(:upcoming_events, 10)
-    end
+    let(:events){ FactoryBot.create_list(:upcoming_events, 10) }
 
     it 'should have a valid upcoming method' do
       expect { Event.upcoming(10) }.not_to raise_error
     end
 
     it 'should return a variable number of upcoming events' do
-      expect(Event.upcoming(10).length).to eq 10
+      expect(events.length).to eq 10
     end
 
-    xit 'should not include events that are already over' do
+    it 'should not include events that are already over' do
       FactoryBot.create_list(:previous_events, 10)
+      FactoryBot.create_list(:upcoming_events, 10)
       expect(Event.upcoming(20).length).to eq 10
     end
 
-    xit 'should only contain events that are after the current datetime' do
+    it 'should only contain events that are after the current datetime' do
       expect(Event.upcoming(20)).to all (have_attributes(start_date: (a_value > DateTime.current)))
     end
-
   end
 
 end

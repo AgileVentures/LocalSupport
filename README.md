@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/AgileVentures/LocalSupport.png)](https://travis-ci.org/AgileVentures/LocalSupport) [![Maintainability](https://api.codeclimate.com/v1/badges/3448f654adcdfe34b007/maintainability)](https://codeclimate.com/github/AgileVentures/LocalSupport/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/3448f654adcdfe34b007/test_coverage)](https://codeclimate.com/github/AgileVentures/LocalSupport/test_coverage)
+
 LocalSupport
 ============
 
@@ -10,10 +12,6 @@ Installation and other technical issues are being moved from the github wiki to 
 [Installation notes](https://github.com/AgileVentures/LocalSupport/blob/develop/docs/installation.md#installation)
 
 To help with development please see our [contribution guidelines](CONTRIBUTING.md).
-
-* Gemnasium [![Dependency Status](https://gemnasium.com/AgileVentures/LocalSupport.svg)](https://gemnasium.com/AgileVentures/LocalSupport)
-* Travis C. I. [![Build Status](https://travis-ci.org/AgileVentures/LocalSupport.png)](https://travis-ci.org/AgileVentures/LocalSupport)
-* CodeClimate [![Code Climate](https://codeclimate.com/github/AgileVentures/LocalSupport.png)](https://codeclimate.com/github/AgileVentures/LocalSupport)
 
 If you encounter any issues or trouble, please search the issues tracker, and if necessary open a new issue describing the problem in detail including information about platforms, versions etc. 
 

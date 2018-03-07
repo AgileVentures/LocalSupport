@@ -19,32 +19,41 @@
           <%= f.text_area :description, :class => "wide_form", :cols => "10", :rows => "10", :placeholder => "Enter event description" %>
         </td>
       </tr>
-      <td><h3>
-          Start Date
-        </h3></td>
-        <tr>
-          <td data-toggle="tooltip" title="Enter the start date ">
-            <% if @event.errors[:start_date].any?%>
-              <p class="error-name"><%= @event.errors[:start_date].first %></p>
-            <% end %>
-            <%= f.text_field :start_date, 'data-behaviour' => 'datepicker', :placeholder => 'dd/mm/yyyy' %>
-
+      <tr>
+        <td class="borderless" data-toggle="tooltip" title="Select an Organisation to host the event here.">
+          <% if @event.errors[:organisation_id].any?%>
+            <p class="error"><%= @event.errors[:organisation_id].first %></p>
+          <% end %>
+          <%= f.collection_select :organisation_id, Organisation.order(:name), :id, :name, {:prompt => 'Please select an Organisation'} %>
         </td>
-        </tr>
-        <tr>
-          <td><h3>
-              End Date
-            </h3></td>
-        </tr>
-        <tr>
-          <td data-toggle="tooltip" title="Enter the end date ">
-            <% if @event.errors[:end_date].any?%>
-              <p class="error-name"><%= @event.errors[:end_date].first %></p>
-            <% end %>
-            <%= f.text_field :end_date, 'data-behaviour' => 'datepicker', :placeholder => 'dd/mm/yyyy' %>
-        </td>
-        </tr>
+      </tr>
   </table>
+  <div class="row">
+    <div class="col-md-5">
+      <h3>Start Date</h3>
+    </div>
+    <div class="col-md-5">
+      <h3>End Date </h3>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-md-5">
+        <div data-toggle="tooltip" title="Enter the start date ">
+          <% if @event.errors[:start_date].any?%>
+            <p class="error-name"><%= @event.errors[:start_date].first %></p>
+          <% end %>
+          <%= f.text_field :start_date, 'data-behaviour' => 'datetimepicker3', :placeholder => 'dd/mm/yyyy' %>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div data-toggle="tooltip" title="Enter the end date ">
+          <% if @event.errors[:end_date].any?%>
+            <p class="error-name"><%= @event.errors[:end_date].first %></p>
+          <% end %>
+          <%= f.text_field :end_date, 'data-behaviour' => 'datetimepicker3', :placeholder => 'dd/mm/yyyy' %>
+        </div>
+      </div>
+  </div>
   <br />
   <div class="position-bottom col-md-6">
     <div class="actions">
@@ -53,8 +62,3 @@
   </div>
 <% end %>
 <%= render partial: 'shared/map_scripts', locals: {markers: @markers} %>
-<script type="text/javascript">
-    $('[data-behaviour~=datepicker]').datepicker({format: 'dd/mm/yyyy'});
-</script>
-
-
