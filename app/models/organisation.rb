@@ -5,7 +5,8 @@ class Organisation < BaseOrganisation
 
   has_many :volunteer_ops
   has_many :users
-  has_many :edits, class_name: 'ProposedOrganisationEdit', :dependent => :destroy
+  has_many :edits, class_name: 'ProposedOrganisationEdit', dependent: :destroy
+  has_many :events
 
   accepts_nested_attributes_for :users # TODO check if needed
 
@@ -28,7 +29,7 @@ class Organisation < BaseOrganisation
   def update_attributes_with_superadmin(params)
     email = extract_email_from(params)
     return unless email.blank? || can_add_or_invite_admin?(email)
-    self.update_attributes(params)
+    assign_attributes(params)
   end
   
   def rollback_acceptance
@@ -130,11 +131,16 @@ class Organisation < BaseOrganisation
   end
 
   def self.add_email(row, validation)
-    orgs = where("UPPER(name) LIKE ? ","%#{row[0].try(:upcase)}%")
+    orgs = where('UPPER(name) LIKE ? ',"%#{row[0].try(:upcase)}%")
     return "#{row[0]} was not found\n" unless orgs && orgs[0] && orgs[0].email.blank?
-    orgs[0].email = row[7].to_s
-    orgs[0].save
-    return "#{row[0]} was found\n"
+    setup_row(orgs[0], row)
+  end
+
+  def self.setup_row(org, row)
+    org.email = row[7].to_s
+    org.check_geocode
+    org.save
+    "#{row[0]} was found\n"
   end
 
   def self.check_columns_in(row)
@@ -197,6 +203,4 @@ class Organisation < BaseOrganisation
   def self.contains_name?(key)
     table[:name].matches(key)
   end
-
-
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180108141814) do
+ActiveRecord::Schema.define(version: 20180221110841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 20180108141814) do
     t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "postal"
     t.integer "organisation_id"
     t.float "latitude"
     t.float "longitude"
@@ -154,8 +153,8 @@ ActiveRecord::Schema.define(version: 20180108141814) do
     t.datetime "invitation_sent_at"
     t.datetime "invitation_accepted_at"
     t.integer "invitation_limit"
-    t.integer "invited_by_id"
     t.string "invited_by_type"
+    t.integer "invited_by_id"
     t.datetime "deleted_at"
     t.boolean "siteadmin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true

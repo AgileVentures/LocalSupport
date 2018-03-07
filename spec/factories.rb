@@ -16,13 +16,13 @@ FactoryBot.define do
       end
     end
   end
-  
+
   factory :friendly_id_org, class: Organisation do
     name 'The Most Noble Great Charity of London'
     description 'Really big, rich and generous charity'
     after(:build, &:save!)
   end
-  
+
   factory :parochial_org, class: Organisation do
     name 'The Parochial Church Council Of The Ecclesiastical Parish Of St. Alban, North'
     description 'Church charity'
@@ -119,26 +119,26 @@ FactoryBot.define do
   end
 
   factory :event do
-    title "Some Random Event"
-    description "Something about an event"  
-    start_date { DateTime.now() }
-    end_date { DateTime.now() }
+    title 'Some Random Event'
+    description 'Something about an event'
+    start_date { DateTime.current }
+    end_date { DateTime.current }
     association :organisation, factory: :organisation
   end
 
   factory :upcoming_events, class: Event do
     title "Upcoming Event"
     description "An event that is coming up soon"
-    start_date { DateTime.now() + 1.day }
-    end_date { DateTime.now() + 1.day }
+    start_date { DateTime.current + 1.day }
+    end_date { DateTime.current + 1.day }
     association :organisation, factory: :organisation
   end
 
   factory :previous_events, class: Event do
     title "Past Event"
     description "An event that has already passed"
-    start_date { DateTime.now() - 1.day }
-    end_date { DateTime.now() - 1.day }
+    start_date { DateTime.current - 1.day }
+    end_date { DateTime.current - 1.day }
     association :organisation, factory: :organisation
   end
 

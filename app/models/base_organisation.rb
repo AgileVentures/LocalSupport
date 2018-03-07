@@ -9,16 +9,25 @@ class BaseOrganisation < ApplicationRecord
     if: proc{|org| org.donation_info.present?}
   validates :name, presence: { message: "Name can't be blank"}
   validates :description, presence: { message: "Description can't be blank"}
-  has_many :category_organisations, :foreign_key => :organisation_id
-  has_many :categories, :through => :category_organisations, :foreign_key => :organisation_id
+  has_many :category_organisations, foreign_key: :organisation_id
+  has_many :categories, through: :category_organisations, foreign_key: :organisation_id
+
   # For the geocoder gem
   geocoded_by :full_address
-  after_validation :geocode, if: -> { run_geocode? }
-  self.table_name = "organisations"
+
+  self.table_name = 'organisations'
+
+  def check_geocode
+    geocode if run_geocode?
+  end
 
   def run_geocode?
-    ## http://api.rubyonrails.org/classes/ActiveModel/Dirty.html
-    address_changed? or postcode_changed? or (address.present? and not_geocoded?)
+    # trigger geocode if I have an address but no coordinates and
+    # the object is being created
+    return (!address.empty? and not_geocoded?) if id.nil?
+    # if address or postcode has changed, trigger the geocode
+    # address must be present
+    (address_changed? or postcode_changed?) or (address.present? and not_geocoded?)
   end
 
   def not_geocoded?

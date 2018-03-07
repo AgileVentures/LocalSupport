@@ -9,9 +9,9 @@ Feature: List the upcoming events
       | Cats Are Us     | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
       | Office Primer   | Care for the elderly | 64 pinner road | HA1 4HZ  | http://b.com/ |
     Given the following events exist:
-      | title          | description                        | organisation  | start_date          | end_date            |
-      | My first event | Good for everyone                  | Cats Are Us   | 2030-10-20 10:30:14 | 2030-10-20 17:00:00 |
-      | An Event today | Testing the calendar functionality | Office Primer | today               | today               |
+      | title          | description                        | organisation  | start_date       | end_date         |
+      | My first event | Good for everyone                  | Cats Are Us   | 2030-10-20 10:40 | 2030-10-20 10:50 |
+      | An Event today | Testing the calendar functionality | Office Primer | today            | today            |
 
   @javascript
   Scenario:
@@ -19,5 +19,14 @@ Feature: List the upcoming events
     Then I should see "My first event"
     And I should see "An Event today" within "calendar"
     And I should see "An Event today" within "events_scroll"
-    And I should see "Start: Sunday, October 20, 2030 at 10:30"
-    And I should see "End: Sunday, October 20, 2030 at 17:00"
+    And I should see "Start: Sunday, October 20, 2030 at 10:40"
+    And I should see "End: Sunday, October 20, 2030 at 10:50"
+
+  @javascript
+  Scenario:
+    Given I remove the organisation from the event "An Event today"
+    And I visit the events page
+    Then I should see "An Event today"
+    And I should see "An Event today" within "calendar"
+    And I should see "An Event today" within "events_scroll"
+
