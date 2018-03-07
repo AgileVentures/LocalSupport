@@ -1,5 +1,4 @@
 class ImportOrganisations
-
-  self.with do
-
+  def self.with(postcode)
+  end
 end
