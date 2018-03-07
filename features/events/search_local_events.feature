@@ -1,34 +1,34 @@
+@javascript @vcr @billy
 Feature: Search local events
   As a member of the public
   So that I can find out what's going on locally
   I want to search upcoming events
 
   Background: Events have been added to the database
+    Given the following organisations exist:
+      | name            | description          | address        | postcode | website       |
+      | Cats Are Us     | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
+      | Office Primer   | Care for the elderly | 64 pinner road | HA1 4HZ  | http://b.com/ |
     Given the following events exist:
-      | title            | description             | start_date      | end_date        |
-      | My first event   | Good for everyone       | 2 days from now | same day        |
-      | Some other event | Look after older people | today           | 6 days from now |
+      | title            | description             | organisation  | start_date      | end_date        |
+      | My first event   | Good for everyone       | Cats Are Us   | 2 days from now | same day        |
+      | Some other event | Look after older people | Office Primer | today           | 6 days from now |
+    And cookies are approved
+    And I visit the events page
 
-  # imperative 
-  Scenario: Find out what's going on locally
-    Given I visit the events page
-    When I search for "older people"
-    Then I should see "Some other event"
-    And I should see "Look after older people"
-    Then I should not see "My first event"
-    And I should not see "Good for everyone"
-    And the search box should contain "older people"
-    
-  # declarative 
-  # Background: Events have been added to the database
-  #   Given the following events exist:
-  #     | title                | description             | start_date      | end_date        |
-  #     | Young people party   | Good for everyone       | 2 days from now | same day        |
-  #     | Old people gathering | Look after older people | today           | 6 days from now |
+#  Scenario: Find out what's going on locally
+#    Given I fill in "Search Text" with "older people" within the main body
+#    And I press "Search"
+#    Then I should see "Some other event"
+#    And I should not see "My first event" within "events_scroll"
+#    Then I should see 1 markers in the map
 
-  # Scenario: Find out what's going on locally
-  #   Given I visit the events page
-  #   When I search for "older people"
-  #   Then I should see the event details for "Old people gathering"
-  #   And I should not see the event details for "Young people party"
-  #   And the search box should contain "older people"
+  Scenario: Search a list of current events with a keyword that won't match
+    Given I fill in "Search Text" with "non existent text" within the main body
+    And I press "Search"
+    Then I should see "Sorry, it seems we don't have quite what you are looking for."
+
+  Scenario: Query string is visible after search
+    Given I fill in "Search Text" with "search words" within the main body
+    And I press "Search"
+    Then the search box should contain "search words"

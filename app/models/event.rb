@@ -21,6 +21,11 @@ class Event < ApplicationRecord
     Location.build_hash(group_by_coordinates(events))
   end
 
+  def self.search(keyword)
+    keyword = "%#{keyword}%"
+    where(contains_description?(keyword).or(contains_title?(keyword)))
+  end
+
   private
 
   def self.event_with_coordinates(events)
@@ -35,7 +40,6 @@ class Event < ApplicationRecord
       e.latitude = 0.0
     end
   end
-
 
   def lat_lng_supplier
     return self if latitude && longitude
@@ -53,5 +57,17 @@ class Event < ApplicationRecord
     events.group_by do |event|
       [event.longitude, event.latitude]
     end
+  end
+
+  def self.table
+    arel_table
+  end
+
+  def self.contains_description?(key)
+    table[:description].matches(key)
+  end
+
+  def self.contains_title?(key)
+    table[:title].matches(key)
   end
 end

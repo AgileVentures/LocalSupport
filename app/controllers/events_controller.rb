@@ -2,16 +2,21 @@ class EventsController < ApplicationController
   add_breadcrumb 'Events', :events_path
   layout 'two_columns_with_map'
   before_action :logged_in_user, only: [:new, :create]
-  before_action :superadmin?, except:[:show, :index, :search]
+  before_action :superadmin?, except:[:show, :index]
+
+  def index
+    upcoming = Event.upcoming(10)
+    @events = params['q'].blank? ? upcoming : upcoming.search(params['q'])
+    flash.now[:alert] = SEARCH_NOT_FOUND if @events.empty?
+    @markers = BuildMarkersWithInfoWindow
+                   .with(Event.build_by_coordinates(@events), self)
+
+    respond_to :html, :json
+  end
 
   def new
     @event = Event.new
     add_breadcrumb 'New Event'
-  end
-
-  def search
-    @events = Event.search(params['q'])
-    render template: 'events/index'
   end
 
   def create
@@ -22,14 +27,6 @@ class EventsController < ApplicationController
   def show
     @event = Event.find_by_id(params[:id])
     add_breadcrumb @event.title
-  end
-
-  def index
-    @events = Event.upcoming(10)
-    @markers = BuildMarkersWithInfoWindow
-      .with(Event.build_by_coordinates(@events), self)
-
-    respond_to :html, :json
   end
 
   private
