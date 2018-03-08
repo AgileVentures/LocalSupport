@@ -74,7 +74,7 @@ class VolunteerOpsController < ApplicationController
   def volunteer_op_params
     args = [:description, :title, :organisation_id, :address, :postcode,
             :post_to_doit, :advertise_start_date, :advertise_end_date,
-            :doit_org_id ]
+            :doit_org_id]
     params.require(:volunteer_op).permit(*args)
   end
 
@@ -158,6 +158,5 @@ class VolunteerOpsController < ApplicationController
 
   def can_post_to_doit?(vol_op_id)
     current_user.superadmin? && !DoitTrace.published?(vol_op_id)
-
   end
 end
