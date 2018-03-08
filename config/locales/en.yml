@@ -12,6 +12,9 @@ en:
   volunteer:
     create_success: 'Volunteer op was successfully created.'
     update_success: 'Volunteer Opportunity was successfully updated.'
+  organisation:
+    create_success: 'Organisation was successfully created.'
+    update_success: 'Organisation was successfully updated.'
   devise:
     errors:
       messages:

@@ -53,7 +53,7 @@ class OrganisationsController < BaseOrganisationsController
     check_privileges(:superadmin?, organisations_path); return if performed?
     @organisation = Organisation.new(organisation_params)
     @organisation.check_geocode
-    rendering('Organisation was successfully created.', 'new')
+    rendering(@organisation, t('organisation.create_success'), 'new')
   end
 
   # PUT /organisations/1
@@ -64,7 +64,7 @@ class OrganisationsController < BaseOrganisationsController
     check_privileges(:can_edit?, path, @organisation); return if performed?
     @organisation.update_attributes_with_superadmin(organisation_params)
     @organisation.check_geocode
-    rendering('Organisation was successfully updated.', 'edit')
+    rendering(@organisation, t('organisation.update_success'), 'edit')
   end
 
   # DELETE /organisations/1
@@ -106,14 +106,6 @@ class OrganisationsController < BaseOrganisationsController
     args = org.nil? ? [ method ] : [ method, org ]
     redirect_to path, notice: PERMISSION_DENIED and return unless current_user
                                                                       .send(:try, *args)
-  end
-
-  def rendering(notice, action)
-    if @organisation.save
-      redirect_to @organisation, notice: notice
-    else
-      render action: action
-    end
   end
 
   def get_user_options(organisation)
