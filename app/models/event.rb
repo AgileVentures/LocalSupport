@@ -7,8 +7,8 @@ class Event < ApplicationRecord
   belongs_to :organisation
 
   scope :upcoming, lambda { |n|
-                               where('start_date > ?', DateTime.current.midnight)
-                              .order('created_at DESC')
+                               where('start_date >= ?', Time.zone.now.to_date)
+                              .order('start_date ASC')
                               .limit(n)
                    }
 
@@ -19,6 +19,11 @@ class Event < ApplicationRecord
   def self.build_by_coordinates(events = nil)
     events = event_with_coordinates(events)
     Location.build_hash(group_by_coordinates(events))
+  end
+
+  def self.search(keyword)
+    keyword = "%#{keyword}%"
+    where(contains_description?(keyword).or(contains_title?(keyword)))
   end
 
   private
@@ -36,7 +41,6 @@ class Event < ApplicationRecord
     end
   end
 
-
   def lat_lng_supplier
     return self if latitude && longitude
     send(:with_organisation_coordinates)
@@ -53,5 +57,17 @@ class Event < ApplicationRecord
     events.group_by do |event|
       [event.longitude, event.latitude]
     end
+  end
+
+  def self.table
+    arel_table
+  end
+
+  def self.contains_description?(key)
+    table[:description].matches(key)
+  end
+
+  def self.contains_title?(key)
+    table[:title].matches(key)
   end
 end

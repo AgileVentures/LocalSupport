@@ -34,8 +34,7 @@ class VolunteerOpsController < ApplicationController
   def create
     params[:volunteer_op][:organisation_id] = @organisation.id
     @volunteer_op = VolunteerOpForm.new(volunteer_op_params)
-    result = @volunteer_op.save
-    result ? vol_op_redirect(t('volunteer.create_success')) : render(:new)
+    rendering(@volunteer_op, t('volunteer.create_success'), 'new')
   end
 
   def edit
@@ -54,8 +53,7 @@ class VolunteerOpsController < ApplicationController
     @volunteer_op.volunteer_op = volunteer_op_record
     @organisation = @volunteer_op.organisation
     @volunteer_op.assign_attributes(volunteer_op_params)
-    result = @volunteer_op.save
-    result ? vol_op_redirect(t('volunteer.update_success')) : render(action: 'edit')
+    rendering(@volunteer_op, t('volunteer.update_success'), 'edit')
   end
 
   def destroy
@@ -74,7 +72,7 @@ class VolunteerOpsController < ApplicationController
   def volunteer_op_params
     args = [:description, :title, :organisation_id, :address, :postcode,
             :post_to_doit, :advertise_start_date, :advertise_end_date,
-            :doit_org_id ]
+            :doit_org_id]
     params.require(:volunteer_op).permit(*args)
   end
 
@@ -142,10 +140,6 @@ class VolunteerOpsController < ApplicationController
     @volunteer_op = nil
   end
 
-  def vol_op_redirect(notice)
-    redirect_to(@volunteer_op, notice: notice)
-  end
-
   def meta_tag_title
     return super unless @volunteer_op
     @volunteer_op.title
@@ -158,6 +152,5 @@ class VolunteerOpsController < ApplicationController
 
   def can_post_to_doit?(vol_op_id)
     current_user.superadmin? && !DoitTrace.published?(vol_op_id)
-
   end
 end

@@ -31,6 +31,7 @@ class ApplicationController < ActionController::Base
   def stored_location
 
   end
+
   def request_controller_is(white_listed)
     white_listed.include? request.params['controller']
   end
@@ -81,6 +82,14 @@ class ApplicationController < ActionController::Base
   def add_breadcrumbs(default_title, title = nil, path = nil)
     bba = BreadcrumbsByAction.new(self, default_title, title, path)
     bba.send("#{action_name}_breadcrumb".to_sym)
+  end
+
+  def rendering(instance, notice, action)
+    if instance.save
+      redirect_to instance, notice: notice
+    else
+      render action: action
+    end
   end
 
   private
