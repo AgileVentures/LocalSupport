@@ -83,6 +83,14 @@ class ApplicationController < ActionController::Base
     bba.send("#{action_name}_breadcrumb".to_sym)
   end
 
+  def rendering(instance, notice, action)
+    if instance.save
+      redirect_to instance, notice: notice
+    else
+      render action: action
+    end
+  end
+
   private
 
   # Enforces superadmin-only limits

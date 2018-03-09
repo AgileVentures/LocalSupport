@@ -48,3 +48,4 @@ exclude_paths:
 - spec/
 - test/
 - vendor/
+- public/

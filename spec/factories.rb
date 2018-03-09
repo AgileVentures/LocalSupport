@@ -142,4 +142,11 @@ FactoryBot.define do
     association :organisation, factory: :organisation
   end
 
+  factory :superadmin, class: User do
+    sequence(:email) { |n| "jj#{n}@example.com" }
+    password "pppppppp"
+    confirmed_at "2007-01-01 10:00:00"
+    superadmin true
+    organisation nil
+  end
 end
