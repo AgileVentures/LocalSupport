@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   def index
     upcoming = Event.upcoming(10)
     @events = params['q'].blank? ? upcoming : upcoming.search(params['q'])
-    flash.now[:alert] = SEARCH_NOT_FOUND if @events.empty?
+    flash.now[:alert] = SEARCH_NOT_FOUND if @events.empty? and params['q']
     @markers = BuildMarkersWithInfoWindow
                    .with(Event.build_by_coordinates(@events), self)
 
