@@ -27,6 +27,21 @@
     <%= f.text_field :postcode, class: "form-control",
                    placeholder: "#{@organisation.postcode}"%>
 
+    <%= f.label :role_description, :style => "margin-top: 16px;" %>
+    <%= f.text_field :role_description, class: "form-control" %>
+
+    <%= f.label :when_volunteer_needed , :style => "margin-top: 16px;" %>
+    <%= f.text_field :when_volunteer_needed, class: "form-control", 'data-behaviour' => 'date-only-picker'%>
+
+    <%= f.label :skills_needed , :style => "margin-top: 16px;" %>
+    <%= f.text_area :skills_needed, class: "form-control" %>
+
+   
+    <%= f.label :other_contact_details , :style => "margin-top: 16px;" %>
+    <%= f.text_area :contact_details, class: "form-control" %>
+
+    
+
   <div class="checkbox-inline">
     <%= f.check_box :post_to_doit, id: 'check_to_doit' ,disabled: !@can_publish_to_doit %>
     <%= f.label :post_to_doit %>
