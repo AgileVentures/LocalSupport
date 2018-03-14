@@ -38,11 +38,11 @@ Feature: Org superadmin creating a volunteer work opportunity
   Scenario: Org-superadmins can create a volunteer opportunity with all fields
     Given I am signed in as a charity worker related to "Friendly"
     And I submit a volunteer op with address on the org page
-      | title | desc     | address    | postcode | org_name | role_desc        | skills_needed | when_vol_needed | contact  |
-      | Ops1  | For free | Station Rd | HA8 7BD  | Friendly | should be active | knowledge     | monday          | street 3 |
+      | title | desc     | address    | postcode | org_name | role_desc        | skills_needed | when_vol_needed  | contact  |
+      | Ops1  | For free | Station Rd | HA8 7BD  | Friendly | should be active | knowledge     | Tuesday, March, 13, 2018          | street 3 |
     Then I should see "should be active"
     Then I should see "knowledge"
-    Then I should see "monday"
+    Then I should see "Tuesday, March, 13, 2018"
     Then I should see "street 3"
 
   Scenario: Org-superadmins can create a volunteer opportunity but get warning with invalid data
