@@ -2,25 +2,25 @@ require 'csv'
 require 'string'
 
 class Organisation < BaseOrganisation
-
+  has_many :events
   has_many :volunteer_ops
   has_many :users
   has_many :edits, class_name: 'ProposedOrganisationEdit', dependent: :destroy
   has_many :events
-
+  
   accepts_nested_attributes_for :users # TODO check if needed
 
   scope :order_by_most_recent, -> { order('organisations.updated_at DESC') }
-  scope :not_null_email, lambda {where("organisations.email <> ''")}
+  scope :not_null_email, -> { where("organisations.email <> ''") }
 
   # Should we not use :includes, which pulls in extra data? http://nlingutla.com/blog/2013/04/21/includes-vs-joins-in-rails/
   # Alternative => :joins('LEFT OUTER JOIN users ON users.organisation_id = organisations.id)
   # Difference between inner and outer joins: http://stackoverflow.com/a/38578/2197402
 
-  scope :null_users, lambda { includes(:users).where("users.organisation_id IS NULL").references(:users) }
-  scope :without_matching_user_emails, lambda {where("organisations.email NOT IN (#{User.select('email').to_sql})")}
+  scope :null_users, -> { includes(:users).where('users.organisation_id IS NULL').references(:users) }
+  scope :without_matching_user_emails, -> { where("organisations.email NOT IN (#{User.select('email').to_sql})") }
 
-  after_save :uninvite_users, if: ->{ saved_change_to_attribute?(:email) }
+  after_save :uninvite_users, if: -> { saved_change_to_attribute?(:email) }
 
   def uninvite_users
     users.invited_not_accepted.update_all(organisation_id: nil)
@@ -31,7 +31,7 @@ class Organisation < BaseOrganisation
     return unless email.blank? || can_add_or_invite_admin?(email)
     assign_attributes(params)
   end
-  
+
   def rollback_acceptance
     org = becomes!(ProposedOrganisation)
     org.save!
@@ -39,27 +39,27 @@ class Organisation < BaseOrganisation
   end
 
   def self.search_by_keyword(keyword)
-     keyword = "%#{keyword}%"
-     where(contains_description?(keyword).or(contains_name?(keyword)))
+    keyword = "%#{keyword}%"
+    where(contains_description?(keyword).or(contains_name?(keyword)))
   end
 
   def self.filter_by_categories(category_ids)
     joins(:categories)
-      .where(category_id.in category_ids)                 # at this point, orgs in multiple categories show up as duplicates
-      .group(organisation_id)                             # so we exploit this
+      .where(category_id.in category_ids) # at this point, orgs in multiple categories show up as duplicates
+      .group(organisation_id) # so we exploit this
       .having(organisation_id.count.eq category_ids.size) # and return the orgs with correct number of duplicates
   end
 
   #Edit this if CSV 'schema' changes
   #value is the name of a column in csv file
   @@column_mappings = {
-      name: 'Title',
-      address: 'Contact Address',
-      description: 'Activities',
-      website: 'website',
-      telephone: 'Contact Telephone',
+      name:         'Title',
+      address:      'Contact Address',
+      description:  'Activities',
+      website:      'website',
+      telephone:    'Contact Telephone',
       date_removed: 'date removed',
-      cc_id: 'Charity Classification'
+      cc_id:        'Charity Classification'
   }
 
   def self.column_mappings
@@ -69,7 +69,7 @@ class Organisation < BaseOrganisation
   def self.import_categories_from_array(row)
     check_columns_in(row)
     org_name = row[@@column_mappings[:name]].to_s.humanized_all_first_capitals
-    org = Organisation.find_by_name(org_name)
+    org      = Organisation.find_by_name(org_name)
     check_categories_for_import(row, org)
     org
   end
@@ -94,7 +94,7 @@ class Organisation < BaseOrganisation
 
   def self.create_and_validate(attributes)
     # create!(attributes.select{|k,v| !v.nil?})
-    create!(attributes.each { |k, v| attributes[k] =v.nil? ? 'No information recorded' : (v.empty? ? 'No information recorded' : v) })
+    create!(attributes.each { |k, v| attributes[k] = v.nil? ? 'No information recorded' : (v.empty? ? 'No information recorded' : v) })
   end
 
   def self.create_and_substitute_with_empty(attributes)
@@ -103,15 +103,15 @@ class Organisation < BaseOrganisation
 
   def self.import_addresses(filename, limit, validation = true)
     import(filename, limit, validation) do |row, validation|
-       sleep 0.1
-       create_from_array(row, validation)
+      sleep 0.1
+      create_from_array(row, validation)
     end
   end
 
   def self.import(filename, limit, validation, &block)
     csv_text = File.open(filename, 'r:ISO-8859-1')
-    count = 0
-    CSV.parse(csv_text, :headers => true).each do |row|
+    count    = 0
+    CSV.parse(csv_text, headers: true).each do |row|
       break if count >= limit
       count += 1
       begin
@@ -154,7 +154,7 @@ class Organisation < BaseOrganisation
   private
 
   def embellish_invite_error_and_add_to_model(email, error_msg)
-    error_msg = ("Error: Email is invalid" == error_msg) ? "The user email you entered,'#{email}', is invalid" : error_msg
+    error_msg = ('Error: Email is invalid' == error_msg) ? "The user email you entered,'#{email}', is invalid" : error_msg
     self.errors.add(:superadministrator_email, error_msg)
   end
 
@@ -170,7 +170,7 @@ class Organisation < BaseOrganisation
     return add_and_notify(usr) if usr.present?
     result = ::SingleInviteJob.new(self, email).invite_user
     return true if result.invited_user?
-    embellish_invite_error_and_add_to_model(email,result.error)
+    embellish_invite_error_and_add_to_model(email, result.error)
     false
   end
 

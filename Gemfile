@@ -7,7 +7,7 @@ gem 'devise', '~> 4.4'
 gem 'devise_invitable', '~> 1.7'
 gem 'heroku-api'
 gem 'sprockets', '~> 3.7', '>= 3.7.1'
-
+gem 'gibbon', '~> 3.2'
 gem 'fullcalendar-rails'
 gem 'bootstrap3-datetimepicker-rails'
 gem 'momentjs-rails'
