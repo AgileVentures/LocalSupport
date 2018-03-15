@@ -19,6 +19,9 @@ Given(/^I submit a volunteer op with address on the org page/) do |volunteer_ops
     fill_in 'Description', with: volunteer_op['desc']
     fill_in 'Address', with: volunteer_op['address']
     fill_in 'Postcode', with: volunteer_op['postcode']
+    fill_in 'Role description', with: volunteer_op['role_desc']
+    fill_in 'Skills needed', with: volunteer_op['skills_needed']
+    fill_in 'volunteer_op_contact_details', with: volunteer_op['contact']
     click_on 'Create a Volunteer Opportunity'
   end
 end
@@ -95,6 +98,14 @@ Given /^I update "(.*?)" volunteer op description to be "(.*?)"$/ do |title, des
   visit volunteer_op_path vop
   click_on 'Edit'
   fill_in('Description', :with => description)
+  click_on 'Update Volunteer Opportunity'
+end
+
+Given /^I update "(.*?)" volunteer op title to be "(.*?)"$/ do |title, description|
+  vop = VolunteerOp.find_by_title title
+  visit volunteer_op_path vop
+  click_on 'Edit'
+  fill_in('Title', :with => title)
   click_on 'Update Volunteer Opportunity'
 end
 
