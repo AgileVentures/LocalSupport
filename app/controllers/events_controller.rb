@@ -5,9 +5,8 @@ class EventsController < ApplicationController
   before_action :superadmin?, except:[:show, :index]
 
   def index
-    upcoming = Event.upcoming(10)
     query = params['q']
-    @events = query.blank? ? upcoming : upcoming.search(query)
+    @events = query.blank? ? Event.upcoming(10) : Event.search(query)
     flash.now[:alert] = SEARCH_NOT_FOUND if @events.empty? and query
     @markers = BuildMarkersWithInfoWindow
                    .with(Event.build_by_coordinates(@events), self)

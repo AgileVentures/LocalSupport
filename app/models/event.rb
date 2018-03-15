@@ -7,10 +7,14 @@ class Event < ApplicationRecord
   belongs_to :organisation
 
   scope :upcoming, lambda { |n|
-                               where('start_date >= ?', Time.zone.now.to_date)
-                              .order('start_date ASC')
-                              .limit(n)
-                   }
+    where('start_date >= ?', Time.zone.now.to_date)
+      .order('start_date ASC')
+      .limit(n)
+  }
+  scope :search, lambda { |query|
+    keyword = "%#{query}%"
+    where(contains_description?(keyword).or(contains_title?(keyword))).limit(10)
+  }
 
   def all_day_event?
     self.start_date == self.start_date.midnight && self.end_date == self.end_date.midnight
@@ -19,11 +23,6 @@ class Event < ApplicationRecord
   def self.build_by_coordinates(events = nil)
     events = event_with_coordinates(events)
     Location.build_hash(group_by_coordinates(events))
-  end
-
-  def self.search(keyword)
-    keyword = "%#{keyword}%"
-    where(contains_description?(keyword).or(contains_title?(keyword)))
   end
 
   private
