@@ -1,11 +1,11 @@
 FactoryBot.define do
   factory :organisation do
-    name "friendly non profit"
-    description "we are really really friendly"
-    address "64 pinner road"
-    postcode "HA1 4HZ"
+    name 'friendly non profit'
+    description 'we are really really friendly'
+    address '64 pinner road'
+    postcode 'HA1 4HZ'
     donation_info 'www.harrow-bereavment.co.uk/donate'
-    email "friendly@charity.org"
+    email 'friendly@charity.org'
     latitude 10
     longitude 10
     factory :organisation_with_owner do
@@ -34,12 +34,12 @@ FactoryBot.define do
   end
 
   factory :proposed_organisation do
-    name "Friendly Charity"
-    description "We are friendly!"
-    address "64 pinner road"
-    postcode "HA1 4HZ"
-    donation_info "www.donate.org/friendly"
-    email "friendly@charity.org"
+    name 'Friendly Charity'
+    description 'We are friendly!'
+    address '64 pinner road'
+    postcode 'HA1 4HZ'
+    donation_info 'www.donate.org/friendly'
+    email 'friendly@charity.org'
     latitude 10
     longitude 10
     non_profit true
@@ -51,21 +51,21 @@ FactoryBot.define do
   end
 
   factory :orphan_proposed_organisation, class: ProposedOrganisation do
-    name "Friendly Charity"
-    description "We are friendly!"
-    address "64 pinner road"
-    postcode "HA1 4HZ"
-    donation_info "www.donate.org/friendly"
-    email "friendly@charity.org"
+    name 'Friendly Charity'
+    description 'We are friendly!'
+    address '64 pinner road'
+    postcode 'HA1 4HZ'
+    donation_info 'www.donate.org/friendly'
+    email 'friendly@charity.org'
     latitude 10
     longitude 10
     non_profit true
   end
 
   factory :category do
-    name "health"
+    name 'health'
     charity_commission_id 1
-    charity_commission_name "weird!"
+    charity_commission_name 'weird!'
   end
 
   factory :page do
@@ -77,8 +77,8 @@ FactoryBot.define do
 
   factory :user do
     sequence(:email) { |n| "jj#{n}@example.com" }
-    password "pppppppp"
-    confirmed_at "2007-01-01 10:00:00"
+    password 'pppppppp'
+    confirmed_at '2007-01-01 10:00:00'
     superadmin false
     organisation nil
 
@@ -127,16 +127,16 @@ FactoryBot.define do
   end
 
   factory :upcoming_events, class: Event do
-    title "Upcoming Event"
-    description "An event that is coming up soon"
+    title 'Upcoming Event'
+    description 'An event that is coming up soon'
     start_date { DateTime.current + 1.day }
     end_date { DateTime.current + 1.day }
     association :organisation, factory: :organisation
   end
 
   factory :previous_events, class: Event do
-    title "Past Event"
-    description "An event that has already passed"
+    title 'Past Event'
+    description 'An event that has already passed'
     start_date { DateTime.current - 1.day }
     end_date { DateTime.current - 1.day }
     association :organisation, factory: :organisation
@@ -144,8 +144,8 @@ FactoryBot.define do
 
   factory :superadmin, class: User do
     sequence(:email) { |n| "jj#{n}@example.com" }
-    password "pppppppp"
-    confirmed_at "2007-01-01 10:00:00"
+    password 'pppppppp'
+    confirmed_at '2007-01-01 10:00:00'
     superadmin true
     organisation nil
   end
