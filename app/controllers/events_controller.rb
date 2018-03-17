@@ -4,6 +4,16 @@ class EventsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create]
   before_action :superadmin?, except:[:show, :index]
 
+  def index
+    query = params['q']
+    @events = query.blank? ? Event.upcoming(10) : Event.search(query)
+    flash.now[:alert] = SEARCH_NOT_FOUND if @events.empty? and query
+    @markers = BuildMarkersWithInfoWindow
+                   .with(Event.build_by_coordinates(@events), self)
+
+    respond_to :html, :json
+  end
+
   def new
     @event = Event.new
     add_breadcrumb 'New Event'
@@ -17,14 +27,6 @@ class EventsController < ApplicationController
   def show
     @event = Event.find_by_id(params[:id])
     add_breadcrumb @event.title
-  end
-
-  def index
-    @events = Event.upcoming(10)
-    @markers = BuildMarkersWithInfoWindow
-      .with(Event.build_by_coordinates(@events), self)
-
-    respond_to :html, :json
   end
 
   private

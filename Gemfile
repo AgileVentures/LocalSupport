@@ -27,10 +27,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
   gem 'execjs'
-  gem 'aruba'
+  gem 'aruba', '~> 0.14.5'
   gem 'byebug'
   gem 'rack_session_access'
-  gem 'jasmine', '~> 3.0'
+  gem 'jasmine', '~> 3.1'
   gem 'jasmine-jquery-rails', '2.0.3'
   gem 'rails-controller-testing'
   #gem 'better_errors'
@@ -56,7 +56,7 @@ group :test do
   gem 'selenium-client'
   gem 'shoulda'
   gem 'vcr'
-  gem 'puffing-billy'
+  gem 'puffing-billy', '~> 1.0'
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
   gem 'show_me_the_cookies'
@@ -111,10 +111,9 @@ gem 'airbrake'
 gem 'friendly_id', '~> 5.2.3'
 
 # SEO
-gem 'meta-tags'
+gem 'meta-tags', '~> 2.8'
 
 #Social
 gem 'twitter',      '~> 6.2'
 gem 'twitter-text', '~> 2.1'
 gem 'koala' # Facebook integration
-

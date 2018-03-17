@@ -3,17 +3,55 @@
 </h3>
 
 <p>
-<%= simple_format auto_link volunteer_op.description %>
+  <%= simple_format auto_link volunteer_op.description %>
 </p>
 
 <% if volunteer_op.address_complete? %>
   <p>
-  <b>Volunteer opportunity location:</b>
-  <%= "#{ volunteer_op.address }, #{ volunteer_op.postcode }" %>
+    <b>Volunteer opportunity location:</b>
+    <%= "#{ volunteer_op.address }, #{ volunteer_op.postcode }" %>
   </p>
 <% end %>
 
 <p>
-<b>Organisation:</b>
-<%= link_to volunteer_op.organisation.name, organisation_path(volunteer_op.organisation) %>
+  <b>Organisation:</b>
+  <%= link_to volunteer_op.organisation.name, organisation_path(volunteer_op.organisation) %>
 </p>
+
+<p>
+  <b>Organisation description:</b>
+  <%= link_to volunteer_op.organisation.description, organisation_path(volunteer_op.organisation) %>
+</p>
+
+<% unless volunteer_op.skills_needed.blank? %>
+<p>
+  <b>Skills Needed:</b>
+  <%= volunteer_op.skills_needed %>
+</p>
+<% end %>
+
+<% unless volunteer_op.when_volunteer_needed.blank? %>
+<p>
+  <b>When Volunteer Needed:</b>
+  <%= volunteer_op.when_volunteer_needed.strftime("%A, %B, %d, %Y") %>
+</p>
+<% end %>
+
+<% unless volunteer_op.role_description.blank? %>
+<p>
+  <b>Role Desciption:</b>
+  <%= volunteer_op.role_description %>
+</p>
+<% end %>
+
+<p>
+  <b>Organization Contact Details:</b>
+  <%= link_to volunteer_op.organisation.telephone, organisation_path(volunteer_op.organisation) %>
+</p>
+
+<% unless volunteer_op.contact_details.blank? %>
+<p>
+  <b>Other Contact Details:</b>
+  <%= volunteer_op.contact_details %>
+</p>
+<% end %>

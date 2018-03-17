@@ -31,11 +31,12 @@ organisations = Organisation.all
 
 Logger.new(STDOUT).info 'Events seed'
 organisations.each do |organisation|
+  event_day = Date.today + rand(30)
   organisation.events.create(
     title: Faker::Book.title,
     description: Faker::Robin.quote,
-    start_date: Date.today + rand(30),
-    end_date: Date.today + rand(1..5).hours,
+    start_date: event_day,
+    end_date: event_day + rand(1..5).hours,
     latitude: organisation.latitude,
     longitude: organisation.longitude
   )
