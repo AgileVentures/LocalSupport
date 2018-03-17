@@ -35,6 +35,7 @@ class VolunteerOpsController < ApplicationController
     params[:volunteer_op][:organisation_id] = @organisation.id
     @volunteer_op = VolunteerOpForm.new(volunteer_op_params)
     result = rendering(@volunteer_op, t('volunteer.create_success'), 'new')
+    UpdateSocialMedia.new.post @volunteer_op if result and not Rails.env.development?
   end
 
   def edit
