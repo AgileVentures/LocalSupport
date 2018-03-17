@@ -34,8 +34,7 @@ class VolunteerOpsController < ApplicationController
   def create
     params[:volunteer_op][:organisation_id] = @organisation.id
     @volunteer_op = VolunteerOpForm.new(volunteer_op_params)
-    rendering(@volunteer_op, t('volunteer.create_success'), 'new')
-    UpdateSocialMedia.new.post @volunteer_op if result && ENV["RAILS_ENV"] != 'development'
+    result = rendering(@volunteer_op, t('volunteer.create_success'), 'new')
   end
 
   def edit
