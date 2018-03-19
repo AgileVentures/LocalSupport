@@ -7,10 +7,14 @@ class Event < ApplicationRecord
   belongs_to :organisation
 
   scope :upcoming, lambda { |n|
-                               where('start_date > ?', DateTime.current.midnight)
-                              .order('created_at DESC')
-                              .limit(n)
-                   }
+    where('start_date >= ?', Time.zone.now.to_date)
+      .order('start_date ASC')
+      .limit(n)
+  }
+  scope :search, lambda { |query|
+    keyword = "%#{query}%"
+    where(contains_description?(keyword).or(contains_title?(keyword))).limit(10)
+  }
 
   serialize :recurring, Hash
   def recurring=(value)
@@ -44,7 +48,6 @@ class Event < ApplicationRecord
     end
   end
 
-
   def lat_lng_supplier
     return self if latitude && longitude
     send(:with_organisation_coordinates)
@@ -61,5 +64,17 @@ class Event < ApplicationRecord
     events.group_by do |event|
       [event.longitude, event.latitude]
     end
+  end
+
+  def self.table
+    arel_table
+  end
+
+  def self.contains_description?(key)
+    table[:description].matches(key)
+  end
+
+  def self.contains_title?(key)
+    table[:title].matches(key)
   end
 end

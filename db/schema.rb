@@ -183,6 +183,11 @@ ActiveRecord::Schema.define(version: 20180306074934) do
     t.string "postcode"
     t.string "reachskills_org_name"
     t.string "reachskills_op_link"
+    t.string "about_organization"
+    t.string "role_description"
+    t.string "skills_needed"
+    t.datetime "when_volunteer_needed"
+    t.string "contact_details"
     t.index ["deleted_at"], name: "index_volunteer_ops_on_deleted_at"
     t.index ["organisation_id"], name: "index_volunteer_ops_on_organisation_id"
   end

@@ -10,22 +10,31 @@
     </div>
   <% end %>
 
-    <%= f.label :title, :style => "margin-top: 16px;" %>
-    <%= f.text_field :title, class: "form-control" %>
+  <%= f.label :title%>
+  <%= f.text_field :title, class: "form-control" %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, class: "form-control margin-bottom-10" %>
+
+  <%= f.label :address %>
+  <%= f.text_field :address, class: "form-control", placeholder: "#{@organisation.address}" %>
+
+  <%= f.label :postcode %>
+  <%= f.text_field :postcode, class: "form-control", placeholder: "#{@organisation.postcode}"%>
+
+  <%= f.label :role_description %>
+  <%= f.text_field :role_description, class: "form-control" %>
+
+  <%= f.label :when_volunteer_needed %>
+  <%= f.text_field :when_volunteer_needed, class: "form-control", 'data-behaviour' => 'date-only-picker', placeholder: 'dd/mm/yy' %>
+
+  <%= f.label :skills_needed %>
+  <%= f.text_area :skills_needed, class: "form-control margin-bottom-10" %>
+
+  <%= f.label :other_contact_details %>
+  <%= f.text_area :contact_details, class: "form-control" %>
 
 
-    <%= f.label :description , :style => "margin-top: 16px;" %>
-    <%= f.text_area :description, class: "form-control" %>
-
-
-    <%= f.label :address , 'Address', :style => "margin-top: 16px;" %>
-    <%= f.text_field :address, class: "form-control",
-                  placeholder: "#{@organisation.address}" %>
-
-
-    <%= f.label :postcode , 'Postcode', :style => "margin-top: 16px;" %>
-    <%= f.text_field :postcode, class: "form-control",
-                   placeholder: "#{@organisation.postcode}"%>
 
   <div class="checkbox-inline">
     <%= f.check_box :post_to_doit, id: 'check_to_doit' ,disabled: !@can_publish_to_doit %>

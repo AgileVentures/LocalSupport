@@ -42,7 +42,7 @@
           <% if @event.errors[:start_date].any?%>
             <p class="error-name"><%= @event.errors[:start_date].first %></p>
           <% end %>
-          <%= f.text_field :start_date, 'data-behaviour' => 'datetimepicker3', :placeholder => 'dd/mm/yyyy' %>
+          <%= f.text_field :start_date, 'data-behaviour' => 'date-and-time-picker', :placeholder => 'dd/mm/yyyy' %>
         </div>
       </div>
       <div class="col-md-5">

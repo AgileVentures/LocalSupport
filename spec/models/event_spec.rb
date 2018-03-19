@@ -84,4 +84,20 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe 'search' do
+    before(:each) do
+      FactoryBot.create(:event, title: 'New first title')
+      FactoryBot.create(:event, description: 'New description')
+    end
+
+    it 'should return an empty array' do
+      expect(Event.search('nisevi').empty?).to be true
+    end
+
+    it 'should return the correct register' do
+      expect(Event.search('New first title').count).to eq(1)
+      expect(Event.search('New first title').first.title).to eq('New first title')
+      expect(Event.search('New description').first.description).to eq('New description')
+    end
+  end
 end
