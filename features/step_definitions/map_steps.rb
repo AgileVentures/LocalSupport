@@ -35,6 +35,24 @@ Then (/^I should only see the map container element on the page$/) do
   expect(page).to have_selector('body > div.map_container', count: 1)
 end
 
+Given (/^doit opportunities are imported with nil coordinates$/) do
+  ImportDoItVolunteerOpportunities.with 3.0
+end
+
+Given (/^reachskills opportunities are imported with nil coordinates$/) do
+  ImportReachSkillsVolunteerOpportunities.with
+end
+
+Then("there should be zero nil coordinates") do
+  expect(VolunteerOp.where(latitude: nil).count).to eq 0
+  expect(VolunteerOp.where(longitude: nil).count).to eq 0
+end
+
+Then (/^(\d+) default Harrow coordinates should be assigned$/) do |num_coords|
+  expect(VolunteerOp.where(latitude: 51.58056).count).to eq num_coords.to_i
+  expect(VolunteerOp.where(longitude: -0.34199).count).to eq num_coords.to_i
+end
+
 def check_for_org_info_box tbl, selector
   expect(page).to have_css(selector, :count => tbl.length)
   Organisation.where(name: tbl)

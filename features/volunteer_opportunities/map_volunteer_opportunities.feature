@@ -62,6 +62,16 @@ Feature: As a member of the public
       | Animal care       |
       | Office Support    |
 
+  Scenario: Imported doit volunteer ops with nil coords are assigned default coords
+    Given doit opportunities are imported with nil coordinates
+    Then there should be zero nil coordinates
+    And 51 default Harrow coordinates should be assigned
+
+  Scenario: Imported "reachskills" volunteer ops with nil coords are assigned default coords
+    Given reachskills opportunities are imported with nil coordinates
+    Then there should be zero nil coordinates
+    And 1 default Harrow coordinates should be assigned
+
   @javascript @billy
   Scenario: See map when editing my volunteer opportunity
 
@@ -82,8 +92,8 @@ Feature: As a member of the public
   Scenario: See map when editing my volunteer opportunity
     Given I visit the volunteer opportunities page
     Then the Do-it word in the legend should be a hyperlink to the Do-it website
-    
-  @javascript @billy  
+
+  @javascript @billy
   Scenario: Infowindow appears when mouse hovers over volunteer opportunity in table
     Given the following organisations exist:
       | name                      | description          | address        | latitude    | longitude  |

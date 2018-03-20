@@ -1,10 +1,8 @@
 Given (/^I fill in the new event page validly$/) do
   fill_in 'event_title', with: 'Hackathon'
   fill_in 'event_description', with: 'Great place to brain storm'
-  fill_in 'event_start_date', with: '20/04/2038'
-  fill_in 'event_end_date', with: '28/04/2038'
-  fill_in 'event_start_time', with: '09:00'
-  fill_in 'event_end_time', with: '09:20'
+  fill_in 'event_start_date', with: '20/04/2038 09:00'
+  fill_in 'event_end_date', with: '28/04/2038 09:20'
   select('Cats Are Us', from: 'event_organisation_id')
 end
 
@@ -18,11 +16,14 @@ end
 
 Given(/^the following events? exists?:$/) do |table|
   table.hashes.each do |hash|
-    hash["organisation"] = Organisation.find_by_name(hash["organisation"])
-    hash['start_date'] = Time.current if hash['start_date'].downcase == 'today'
-    hash['end_date'] = Time.current if hash['end_date'].downcase == 'today'
-    event = Event.create(hash)
-    event.save
+    hash['organisation'] = Organisation.find_by_name(hash['organisation'])
+    hash['start_date'] = Time.zone.now + 1.day if hash['start_date'] == 'one day from now'
+    hash['start_date'] = Time.zone.now - 1.day if hash['start_date'] == 'yesterday'
+    hash['start_date'] = Time.zone.now if hash['start_date'] == 'today'
+    hash['end_date'] = (Time.zone.now + 3.hours) + 1.day  if hash['end_date'] == 'one day from now'
+    hash['end_date'] = (Time.zone.now + 3.hours) - 1.day if hash['end_date'] == 'yesterday'
+    hash['end_date'] = Time.zone.now + 3.hours if hash['end_date'] == 'today'
+    Event.create!(hash)
   end
 end
 

@@ -16,8 +16,6 @@
 //= require utilities
 //= require jquery-readyselector
 //= require doit_volunteer_ops
-//= require bootstrap-datepicker/core
-//= require bootstrap-datepicker/locales/bootstrap-datepicker.en-GB.js
 //= require moment
 //= require fullcalendar
 //= require bootstrap-datetimepicker
@@ -32,4 +30,12 @@ $(function() {
     },
     events: '/events.json'
   });
+  $('[data-behaviour~=date-and-time-picker]').datetimepicker({
+    format: 'DD/MM/YYYY hh:mm'
+  });
+
+  $('[data-behaviour~=date-only-picker]').datetimepicker({
+    format: 'DD/MM/YYYY'
+  });
 });
+

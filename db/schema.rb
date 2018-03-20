@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180208101118) do
+ActiveRecord::Schema.define(version: 20180221110841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,8 +58,6 @@ ActiveRecord::Schema.define(version: 20180208101118) do
     t.integer "organisation_id"
     t.float "latitude"
     t.float "longitude"
-    t.datetime "start_time"
-    t.datetime "end_time"
   end
 
   create_table "features", id: :serial, force: :cascade do |t|
@@ -184,6 +182,11 @@ ActiveRecord::Schema.define(version: 20180208101118) do
     t.string "postcode"
     t.string "reachskills_org_name"
     t.string "reachskills_op_link"
+    t.string "about_organization"
+    t.string "role_description"
+    t.string "skills_needed"
+    t.datetime "when_volunteer_needed"
+    t.string "contact_details"
     t.index ["deleted_at"], name: "index_volunteer_ops_on_deleted_at"
     t.index ["organisation_id"], name: "index_volunteer_ops_on_organisation_id"
   end
