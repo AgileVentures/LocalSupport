@@ -13,7 +13,7 @@ If you need to setup your development environment then [gorails](https://gorails
 1. Install [GNU IDN Library](http://www.gnu.org/software/libidn/#downloading) version 1.33
   You will need a few basic tools, such as ‘sh’, ‘make’ and ‘cc’.
   ```bash
-  wget -q ftp://alpha.gnu.org/pub/gnu/libidn/libidn-1.33.tar.gz
+  wget -q ftp://ftp.gnu.org/gnu/libidn/libidn-1.33.tar.gz
   tar xfz libidn-1.33.tar.gz
   cd libidn-1.33/
   ./configure
