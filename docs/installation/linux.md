@@ -24,6 +24,11 @@ If you need to setup your development environment then [gorails](https://gorails
   ...
   ```
 
+  The `make install` command may need to be ran with sudo. for ex:
+  ```bash
+  sudo make install
+  ```
+
 1. Install postgreSQL - see [PostgreSQL install instructions below](issues.md#postgresql-install)
 1. Install X virtual frame buffer
 
