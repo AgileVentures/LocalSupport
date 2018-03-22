@@ -112,3 +112,8 @@ gem 'friendly_id', '~> 5.2.3'
 
 # SEO
 gem 'meta-tags', '~> 2.8'
+
+#Social
+gem 'twitter',      '~> 6.2'
+gem 'twitter-text', '~> 2.1'
+gem 'koala' # Facebook integration

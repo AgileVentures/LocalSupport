@@ -34,7 +34,8 @@ class VolunteerOpsController < ApplicationController
   def create
     params[:volunteer_op][:organisation_id] = @organisation.id
     @volunteer_op = VolunteerOpForm.new(volunteer_op_params)
-    rendering(@volunteer_op, t('volunteer.create_success'), 'new')
+    result = rendering(@volunteer_op, t('volunteer.create_success'), 'new')
+    UpdateSocialMedia.new.post @volunteer_op if result and not Rails.env.development?
   end
 
   def edit
@@ -72,7 +73,7 @@ class VolunteerOpsController < ApplicationController
   def volunteer_op_params
     args = [:description, :title, :organisation_id, :address, :postcode,
             :post_to_doit, :advertise_start_date, :advertise_end_date,
-            :doit_org_id, :role_description, :skills_needed, 
+            :doit_org_id, :role_description, :skills_needed,
             :when_volunteer_needed, :contact_details]
     params.require(:volunteer_op).permit(*args)
   end
@@ -86,7 +87,7 @@ class VolunteerOpsController < ApplicationController
     end
 
     add_breadcrumb 'Volunteers', (root_path unless action_name == 'index')
-    super 'Volunteer Opportunity', (@volunteer_op.title if @volunteer_op.present?), 
+    super 'Volunteer Opportunity', (@volunteer_op.title if @volunteer_op.present?),
           (volunteer_op_path(@volunteer_op) if @volunteer_op.present?)
   end
 
