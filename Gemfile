@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.4.2'
+ruby '2.5.0'
 gem 'rails', '~> 5.1', '>= 5.1.5'
 gem 'pg', '~> 1.0'
 gem 'devise', '~> 4.4'
@@ -111,5 +111,11 @@ gem 'airbrake'
 gem 'friendly_id', '~> 5.2.3'
 
 # SEO
-gem 'meta-tags'
+gem 'meta-tags', '~> 2.8'
+
 gem 'recurring_select', git: 'https://github.com/RundownApp/recurring_select'
+
+#Social
+gem 'twitter',      '~> 6.2'
+gem 'twitter-text', '~> 2.1'
+gem 'koala' # Facebook integration
