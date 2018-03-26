@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
-  validates :start_date, presence: true
+  validates :start_date, presence: true, start_date: true
   validates :end_date, presence: true
   validates :organisation_id, presence: true, on: [:create]
   belongs_to :organisation
