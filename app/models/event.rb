@@ -1,9 +1,13 @@
 class Event < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
-  validates :start_date, presence: true, start_date: true
+  validates :start_date, presence: true
   validates :end_date, presence: true
   validates :organisation_id, presence: true, on: [:create]
+  validate  :start_date_cannot_be_in_the_past,
+            :end_date_cannot_be_in_the_past,
+            :start_date_cannot_be_greater_than_end_date
+  # validates_with StartDateValidator
   belongs_to :organisation
 
   scope :upcoming, lambda { |n|
@@ -69,4 +73,23 @@ class Event < ApplicationRecord
   def self.contains_title?(key)
     table[:title].matches(key)
   end
+
+  def start_date_cannot_be_greater_than_end_date
+    if  start_date > end_date
+      errors.add(:start_date, 'Start date must come after End date')
+    end
+  end
+
+  def start_date_cannot_be_in_the_past
+    if start_date  < Time.zone.now
+      errors.add(:start_date, "can't be in the past")
+    end
+  end
+
+  def end_date_cannot_be_in_the_past
+    if end_date  < Time.zone.now
+      errors.add(:end_date, "can't be in the past")
+    end
+  end
+
 end
