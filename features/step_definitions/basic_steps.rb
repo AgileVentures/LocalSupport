@@ -591,3 +591,7 @@ Then(/^I should see a link to feedback form in the footer$/) do
     :href => feedback_url
   )
 end
+
+When("I fill in {string} with {string}") do |field, text|
+  fill_in field, with: text
+end
