@@ -111,7 +111,7 @@ gem 'airbrake'
 gem 'friendly_id', '~> 5.2.3'
 
 # SEO
-gem 'meta-tags', '~> 2.8'
+gem 'meta-tags', '~> 2.9'
 
 #Social
 gem 'twitter',      '~> 6.2'
