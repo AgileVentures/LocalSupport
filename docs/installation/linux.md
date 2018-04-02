@@ -48,7 +48,7 @@ If you hit problems, review issues below, and ask us on Slack chat.
 
 [Note that rvm can be extremely helpful for managing ruby versions.  [Installing rvm on Ubuntu](https://www.digitalocean.com/community/articles/how-to-install-ruby-on-rails-on-ubuntu-12-04-lts-precise-pangolin-with-rvm)]
 
-Debian 7 users can follow these instructions to launch Xvfb as daemon : [[Xvfb-on-Debian-7]]
+Debian 7 users can follow these instructions to launch Xvfb as daemon : [Xvfb-on-Debian-7](https://github.com/AgileVentures/LocalSupport/wiki/Xvfb-on-Debian-7)
 
 ## Run locally
 and then in principle you can run rails server and see that app running locally.
