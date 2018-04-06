@@ -38,7 +38,7 @@
                 <i class="fa fa-trash-o"></i> Delete
               <% end %>
               <% if user.regular_user? %>
-              <%= link_to(user_reports_path(id: user.id), :method => :put, :class => "btn btn-xs btn-primary",
+              <%= link_to("#", :class => "btn btn-xs btn-primary",
                          style: "border-radius: 3px;") do %>
                 <i class="fa fa-star-o"></i> Upgrade
               <% end %>
