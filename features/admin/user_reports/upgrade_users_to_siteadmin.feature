@@ -9,17 +9,17 @@ Background: users have been added to database
       | registered-user-1@example.com | pppppppp | true       | 2018-03-30  10:00:00 |
       | registered-user-2@example.com | pppppppp | false      | 2018-03-30  10:00:00 |
  
- Scenario: Regular users have the Upgrade User button
+ Scenario: Regular users have the Upgrade button
    Given I am signed in as a superadmin
    When I visit the registered users page
    Then I should see for "registered-user-2@example.com" the "Upgrade" button
    And I should not see for "registered-user-1@example.com" the "Upgrade" button
    
-  Scenario: User gets upgraded when superadmin click Upgrade User
+  Scenario: User gets upgraded when superadmin click the Upgrade button
     Given I am signed in as a superadmin
     And I visit the registered users page
     When I click on "Upgrade" for the user "registered-user-2@example.com"
-    Then I should see "User successfully upgraded"
+    Then I should see "You have successfully upgraded user registered-user-2@example.com"
     And I should not see for "registered-user-2@example.com" the "Upgrade" button
     
   Scenario: Upgraded user has the same privileges as siteadmin
