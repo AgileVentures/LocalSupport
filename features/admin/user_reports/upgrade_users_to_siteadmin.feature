@@ -13,14 +13,14 @@ Background: users have been added to database
    Given I am signed in as a superadmin
    When I visit the registered users page
    Then I should see for "registered-user-2@example.com" the "Upgrade" button
-   And I should not see for "registered-user-1@example.com" the "Upgrade" button
    
   Scenario: User gets upgraded when superadmin click the Upgrade button
     Given I am signed in as a superadmin
     And I visit the registered users page
     When I click on "Upgrade" for the user "registered-user-2@example.com"
     Then I should see "You have successfully upgraded user registered-user-2@example.com"
-    And I should not see for "registered-user-2@example.com" the "Upgrade" button
+    When I click on "Upgrade" for the user "registered-user-1@example.com"
+    Then I should see "User already site admin!"
     
   Scenario: Upgraded user has the same privileges as siteadmin
     Given I visit the sign in page
