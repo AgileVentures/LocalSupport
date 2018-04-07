@@ -81,8 +81,4 @@ class User < ApplicationRecord
   def self.superadmin_emails
     superadmins.pluck(:email)
   end
-  
-  def regular_user? 
-    !superadmin?
-  end
 end

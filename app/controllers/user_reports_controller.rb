@@ -51,7 +51,11 @@ class UserReportsController < ApplicationController
   
   def upgrade
     user = User.find(params[:id])
-    flash[:success] = "You have successfully upgraded user #{user.email}"
+    if user.superadmin?
+      flash[:error] = 'User already site admin!'
+    else
+      flash[:success] = "You have successfully upgraded user #{user.email}."
+    end
     redirect_to(users_report_path)
   end
 
