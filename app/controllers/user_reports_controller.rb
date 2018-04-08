@@ -54,6 +54,7 @@ class UserReportsController < ApplicationController
     if user.superadmin?
       flash[:error] = 'User already site admin!'
     else
+      user.upgrade_to_siteadmin
       flash[:success] = "You have successfully upgraded user #{user.email}."
     end
     redirect_to(users_report_path)
