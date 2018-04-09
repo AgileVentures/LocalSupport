@@ -231,3 +231,13 @@ end
 When(/^I click column header "([^"]*)"$/) do |val|
   find('th', :text => val).click()
 end
+
+Given("I visit {string} organisation page") do |name|
+  id = Organisation.find_by(name: name).id
+  visit organisation_path(:id => id)
+end
+
+Given("I visit {string} organisation propose edit page") do |name|
+  id = Organisation.find_by(name: name).id
+  visit new_organisation_proposed_organisation_edit_path :organisation_id => id
+end

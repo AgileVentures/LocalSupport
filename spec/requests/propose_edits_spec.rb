@@ -17,7 +17,7 @@ describe 'Propose an edit', type: :request, helpers: :requests do
   it 'non-published fields are copied into proposed org edit' do
     expect(ProposedOrganisationEdit.still_pending).to be_empty
     post organisation_proposed_organisation_edits_path(proposed_edit.organisation),
-      params: {proposed_organisation_edit: {name: 'Different Name'}}
+      params: {proposed_organisation_edit: {name: 'Different Name', address: '34 pinner road', telephone: '202', email: 'blah@blah.org'}}
     edit = ProposedOrganisationEdit.still_pending.reorder(updated_at: :desc).first
     expect(edit.address).to eq '34 pinner road'
     expect(edit.telephone).to eq '202'

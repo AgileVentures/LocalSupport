@@ -31,6 +31,8 @@
           <input type="checkbox" disabled class="publish" <%= checked="checked" if @proposed_organisation_edit.viewable_field?(:address) %> value="" class="publish">
         </td>
       </tr>
+      <% else %>
+        <%= f.hidden_field :address, :value => @proposed_organisation_edit[:address] %>
       <% end %>
       <tr>
         <td class="borderless" data-toggle="tooltip" title="Make sure post code is accurate">
@@ -49,6 +51,8 @@
           <input type="checkbox" disabled class="publish" <%= checked="checked" if @proposed_organisation_edit.viewable_field?(:email) %> value="" class="publish">
         </td>
       </tr>
+      <% else %>
+        <%= f.hidden_field :email, :value => @proposed_organisation_edit[:email] %>
       <% end %>
       <tr>
         <td class="borderless" data-toggle="tooltip" title="Make sure url is correct">
@@ -67,6 +71,8 @@
           <input type="checkbox" disabled class="publish" <%= checked="checked" if @proposed_organisation_edit.viewable_field?(:telephone) %> value="" class="publish">
         </td>
       </tr>
+      <% else %>
+        <%= f.hidden_field :telephone, :value => @proposed_organisation_edit[:telephone] %>
       <% end %>
       <tr>
         <td class="borderless" data-toggle="tooltip" title="Please enter a website here either to the fundraising page on your website or to an online donation site.">
