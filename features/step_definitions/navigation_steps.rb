@@ -238,3 +238,13 @@ When("I click on {string} for the user {string}") do |text, email|
     step %{I click "#{text}"}
   end
 end
+
+Given("I visit {string} organisation page") do |name|
+  id = Organisation.find_by(name: name).id
+  visit organisation_path(:id => id)
+end
+
+Given("I visit {string} organisation propose edit page") do |name|
+  id = Organisation.find_by(name: name).id
+  visit new_organisation_proposed_organisation_edit_path :organisation_id => id
+end
