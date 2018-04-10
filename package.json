@@ -4,7 +4,7 @@
   "description": "A directory of local support services and volunteer opportunities",
   "main": "application.js",
   "engines": {
-    "node": "8.9.4"
+    "node": ">=8.9.4"
   },
   "engineStrict": true,
   "directories": {
