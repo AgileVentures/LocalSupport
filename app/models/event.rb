@@ -72,9 +72,8 @@ class Event < ApplicationRecord
   end
 
   def start_date_cannot_be_greater_than_end_date
-    if start_date && end_date && start_date > end_date
-      errors.add(:start_date, 'Start date must come after End date')
-    end
+    errors.add(:start_date, 'Start date must come after End date') unless
+    start_date && end_date && start_date < end_date
   end
 
 end
