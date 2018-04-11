@@ -1,8 +1,7 @@
-<div class="event-item">
+<div class="event-item center-map-on-op" data-lat=<%= event.latitude.to_s %> data-lng=<%= event.longitude.to_s %>>
     <div class="event-title"><u><%= link_to event.title, event_path(event), class: "event-link" %></u></div>
     <div class="event-start-date">
-      Start: <%= event.start_date.strftime("%A, %B %d, %Y at %H:%M") %>
-    </div>
+      Start: <%= event.start_date.strftime("%A, %B %d, %Y at %H:%M")  %></div>
     <div class="event-end-date">
       End: <%= event.end_date.strftime("%A, %B %d, %Y at %H:%M") %>
     </div>

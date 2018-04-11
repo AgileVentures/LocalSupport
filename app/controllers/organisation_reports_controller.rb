@@ -1,5 +1,5 @@
 class OrganisationReportsController < ApplicationController
-  layout 'full_width', :except => [:without_users_index]
+  layout 'full_width', except: [:without_users_index]
   before_action :authorize
 
   def without_users_index

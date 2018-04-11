@@ -50,7 +50,6 @@ describe VolunteerOp, type: :model do
   end
 
   describe '#organisation_name' do
-
     context 'doit org' do
       let(:doit_org_name) { 'Nice Org' }
       let(:vol_op) { FactoryBot.create(:doit_volunteer_op, doit_org_name: doit_org_name) }
@@ -61,7 +60,7 @@ describe VolunteerOp, type: :model do
     end
 
     context 'local org' do
-      let(:organisation) { FactoryBot.create(:organisation, name: "Friendly") }
+      let(:organisation) { FactoryBot.create(:organisation, name: 'Friendly') }
       let(:vol_op) { FactoryBot.create(:local_volunteer_op, organisation: organisation) }
 
       it 'returns the local org name' do
@@ -69,6 +68,22 @@ describe VolunteerOp, type: :model do
       end
     end
 
+    context 'nor doit or local organisation' do
+      let(:organisation) { FactoryBot.create(:organisation, name: 'Friendly') }
+      let(:vol_op) do 
+        FactoryBot.create(
+          :local_volunteer_op,
+          source: 'reachskills',
+          organisation: organisation
+        )
+      end
+
+      it 'returns the attribute reachskills_org_name' do
+        vol_op.reachskills_org_name = 'nisevi'
+        vol_op.save!
+        expect(vol_op.organisation_name).to eq ('nisevi')
+      end
+    end
   end
 
   describe '#organisation_link' do
@@ -93,7 +108,7 @@ describe VolunteerOp, type: :model do
 
     context 'local org' do
 
-      let(:organisation) { FactoryBot.create(:organisation, name: "Friendly") }
+      let(:organisation) { FactoryBot.create(:organisation, name: 'Friendly') }
       let(:vol_op) { FactoryBot.create(:local_volunteer_op, organisation: organisation) }
 
       it 'returns the local org' do
@@ -125,7 +140,7 @@ describe VolunteerOp, type: :model do
 
     context 'local org' do
 
-      let(:organisation) { FactoryBot.create(:organisation, name: "Friendly") }
+      let(:organisation) { FactoryBot.create(:organisation, name: 'Friendly') }
       let(:vol_op) { FactoryBot.create(:local_volunteer_op, organisation: organisation) }
 
       it 'returns the local op' do
@@ -281,10 +296,10 @@ describe VolunteerOp, type: :model do
       )
       expect(VolunteerOp.build_by_coordinates([d_vol_op1, d_vol_op2])[loc2])
         .to match_instance_array([d_vol_op1, d_vol_op2]
-      )
+                                )
       expect(VolunteerOp.build_by_coordinates([l_vol1, l_vol2])[loc1])
         .to match_instance_array([l_vol1, l_vol2]
-      )
+                                )
     end
   end
 
@@ -308,21 +323,6 @@ describe VolunteerOp, type: :model do
       l_vol_op1 = build(:volunteer_op, organisation_id: 1)
       d_vol_op2 = create(:doit_volunteer_op)
       expect(VolunteerOp.get_source([l_vol_op1, d_vol_op2])).to eq('mixed')
-    end
-  end
-
-  describe '#new?' do
-    context 'a volunteer opportunity created in the last day' do
-      it 'returns true' do
-        new_volop = build(:volunteer_op, created_at: Time.current)
-        expect(new_volop).to be_new
-      end
-    end
-    context 'a volunteer opportunity created more than a day ago' do
-      it 'returns false' do
-        old_volop = build(:volunteer_op, created_at: Time.current - 1.day)
-        expect(old_volop).not_to be_new
-      end
     end
   end
 end

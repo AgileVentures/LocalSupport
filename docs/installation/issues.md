@@ -131,6 +131,35 @@ As is suggested by starfry's comment on stackoverflow [http://stackoverflow.com/
 As per the documentation for [rspec-rails](https://www.relishapp.com/rspec/rspec-rails/docs),
   > It needs to be in the :development group to expose generators and rake tasks without having to type RAILS_ENV=test.
 
+
+### Ruby version missmatch
+
+If you're running Mac OsX and High Sierra, you may get a Ruby version missmatch error like below, when trying to run 
+
+     ~/LocalSupport develop
+     ❯ bundle
+
+     Ignoring executable-hooks-1.4.2 because its extensions are not built. Try: gem pristine executable-hooks --version 1.4.2
+     Ignoring gem-wrappers-1.3.2 because its extensions are not built. Try: gem pristine gem-wrappers --version 1.3.2
+     Your Ruby version is 2.5.0, but your Gemfile specified 2.4.2
+
+Try checking you RVM ruby version or "$> ruby -v" to see if you have the correct version installed
+
+     ~/LocalSupport develop
+     ❯ rvm use 2.4.2
+     Using ~/yourrubydir/.rvm/gems/ruby-2.4.2
+
+     ~/LocalSupport develop 7s
+     ❯ ruby -v
+     ruby 2.4.2p198 (2017-09-14 revision 59899) [x86_64-darwin17]
+
+Try running
+
+     gem uninstall bundler && gem install bundler
+     bundle
+
+That should fix that issue and run the bundle install.
+
 ### Lack of JS runtime
 
 Another issue that has been encountered is the following:

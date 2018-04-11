@@ -34,16 +34,31 @@ Feature: Org superadmin creating a volunteer work opportunity
       | Ops1  | For free | Station Rd | HA8 7BD  | Friendly |
     Then I should see "Ops1", "For free", "Station Rd, HA8 7BD" and "Organisation: Friendly"
 
+  @vcr @javascript
+  Scenario: Org-superadmins can create a volunteer opportunity with all fields
+    Given I am signed in as a charity worker related to "Friendly"
+    And I submit a volunteer op with address on the org page
+      | title | desc     | address    | postcode | org_name | role_desc        | skills_needed | contact  |
+      | Ops1  | For free | Station Rd | HA8 7BD  | Friendly | should be active | knowledge     | street 3 |
+    Then I should see "should be active"
+    Then I should see "knowledge"
+    Then I should see "street 3"
+
   Scenario: Org-superadmins can create a volunteer opportunity but get warning with invalid data
     Given I am signed in as a charity worker related to "Friendly"
-    And I submit a volunteer op "", "" on the "Friendly" page
-    And I should see "Title can't be blank" and "Description can't be blank"
+    And I submit a blank volunteer op on the "Friendly" page
+    Then I should see "Title can't be blank" and "Description can't be blank"
 
   Scenario: Site Super Admin users can create Volunteer Opportunities
     Given I am signed in as a superadmin
     And I submit a volunteer op "Hard Work", "For no pay" on the "Friendly" page
     Then I should be on the show page for the volunteer_op titled "Hard Work"
     And I should see "Hard Work", "For no pay" and "Organisation: Friendly"
+
+  Scenario: New Volunteer Opportunity created by a super admin is posted to twitter
+    Given I am signed in as a superadmin
+    Then there should be 1 post to twitter
+    When I submit a valid volunteer opportunity
 
   @vcr @javascript
   Scenario: Site Super Admin users can create and post Volunteer Opportunities to Doit

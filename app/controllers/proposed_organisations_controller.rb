@@ -26,6 +26,7 @@ class ProposedOrganisationsController < BaseOrganisationsController
 
   def create
     make_user_into_org_admin_of_new_proposed_org
+    @proposed_organisation.check_geocode
     if @proposed_organisation.save
       session[:proposed_organisation_id] = @proposed_organisation.id
       send_email_to_superadmin_about_org_signup @proposed_organisation

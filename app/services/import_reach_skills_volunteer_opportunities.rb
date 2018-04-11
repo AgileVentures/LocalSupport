@@ -50,11 +50,14 @@ class ImportReachSkillsVolunteerOpportunities
 
   def populate_vol_op_attributes(op, model, coordinates)
     model.source = 'reachskills'
-    model.latitude = coordinates ? coordinates.latitude.to_f : 0.0
-    model.longitude = coordinates ? coordinates.longitude.to_f : 0.0
+    model.latitude = coordinates ? coordinates.latitude.to_f : 51.58056
+    model.longitude = coordinates ? coordinates.longitude.to_f : -0.34199
     model.title = op['node']['title']
     model.description = op['node']['Description']
     model.reachskills_org_name = op['node']['Organisation']
     model.reachskills_op_link = op['node']['Path']
+    one_day_ago = Time.current - 1.day # necessary until api is updated.
+    model.updated_at = one_day_ago # https://www.pivotaltracker.com/story/show/153805125
+    model.created_at = one_day_ago
   end
 end

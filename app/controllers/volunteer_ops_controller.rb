@@ -1,9 +1,9 @@
 class VolunteerOpsController < ApplicationController
-  add_breadcrumb 'Volunteers', :root_url
   layout 'two_columns_with_map', except: :embedded_map
   before_action :set_organisation, only: [:new, :create]
   before_action :authorize, except: [:search, :show, :index, :embedded_map]
   prepend_before_action :set_volunteer_op, only: [:show, :edit]
+  before_action :add_breadcrumbs
 
   def search
     @query = params[:q]
@@ -24,8 +24,6 @@ class VolunteerOpsController < ApplicationController
     @organisation = Organisation.friendly.find(@volunteer_op.organisation_id)
     @editable = current_user.can_edit?(@organisation) if current_user
     @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
-    add_breadcrumb @organisation.name, organisation_path(@organisation)
-    add_breadcrumb @volunteer_op.title, :volunteer_op_path
   end
 
   def new
@@ -36,8 +34,8 @@ class VolunteerOpsController < ApplicationController
   def create
     params[:volunteer_op][:organisation_id] = @organisation.id
     @volunteer_op = VolunteerOpForm.new(volunteer_op_params)
-    result = @volunteer_op.save
-    result ? vol_op_redirect(t('volunteer.create_success')) : render(:new)
+    result = rendering(@volunteer_op, t('volunteer.create_success'), 'new')
+    UpdateSocialMedia.new.post @volunteer_op if result and not Rails.env.development?
   end
 
   def edit
@@ -56,8 +54,7 @@ class VolunteerOpsController < ApplicationController
     @volunteer_op.volunteer_op = volunteer_op_record
     @organisation = @volunteer_op.organisation
     @volunteer_op.assign_attributes(volunteer_op_params)
-    result = @volunteer_op.save
-    result ? vol_op_redirect(t('volunteer.update_success')) : render(action: 'edit')
+    rendering(@volunteer_op, t('volunteer.update_success'), 'edit')
   end
 
   def destroy
@@ -76,11 +73,23 @@ class VolunteerOpsController < ApplicationController
   def volunteer_op_params
     args = [:description, :title, :organisation_id, :address, :postcode,
             :post_to_doit, :advertise_start_date, :advertise_end_date,
-            :doit_org_id ]
+            :doit_org_id, :role_description, :skills_needed,
+            :when_volunteer_needed, :contact_details]
     params.require(:volunteer_op).permit(*args)
   end
 
   private
+
+  def add_breadcrumbs
+    if @organisation.present?
+      add_breadcrumb 'All Organisations', organisations_path
+      add_breadcrumb @organisation.name, organisation_path(@organisation)
+    end
+
+    add_breadcrumb 'Volunteers', (root_path unless action_name == 'index')
+    super 'Volunteer Opportunity', (@volunteer_op.title if @volunteer_op.present?),
+          (volunteer_op_path(@volunteer_op) if @volunteer_op.present?)
+  end
 
   def displayed_volunteer_ops
     vol_ops = VolunteerOp.order_by_most_recent.send(restrict_by_feature_scope)
@@ -131,10 +140,6 @@ class VolunteerOpsController < ApplicationController
     @volunteer_op = VolunteerOp.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     @volunteer_op = nil
-  end
-
-  def vol_op_redirect(notice)
-    redirect_to(@volunteer_op, notice: notice)
   end
 
   def meta_tag_title
