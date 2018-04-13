@@ -13,8 +13,8 @@ Feature: Event Location
       | Cats Are Us     | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
     
     And the following events exist:
-      | title   | description        | organisation | start_date | end_date   |
-      | Care    | Care for animals   | Cats Are Us  | 2018-04-13 | 2018-04-30 |
+      | title   | description        | organisation | start_date | end_date   | address        |
+      | Care    | Care for animals   | Cats Are Us  | 2018-04-13 | 2018-04-30 | 64 pinner road |
     
     And I am signed in as a superadmin
 

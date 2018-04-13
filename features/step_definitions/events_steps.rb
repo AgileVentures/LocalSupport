@@ -40,4 +40,11 @@ end
 Then("I should see {string} event description marker in {string} event location in the map") do |description, event|
   marker_data = page.find('#marker_data')['data-markers']
   expect(marker_data).to include(description)
+  event = Event.find_by(title: event)
+  if event.address == "64 pinner road"
+    latitude = "51.5813838"
+    longitude = "-0.3490513"
+    expect(marker_data).to include(latitude)
+    expect(marker_data).to include(longitude)
+  end
 end
