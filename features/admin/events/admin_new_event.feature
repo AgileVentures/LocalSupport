@@ -52,16 +52,3 @@ Feature: Super Admin creating an event
     Then I should see permission denied
     And I should not see "Event was successfully created"
     And "Unwanted" event should not exist
-    
-  Scenario: Create an event with an address field
-    Given I am signed in as a superadmin
-    And I visit the new event page
-    And I fill in the new event page validly
-    When I fill in "event_address" with "1427 Leon Parks"
-    And I press "Create Event"
-    Then I should see "Event was successfully created"
-    When I visit the events page
-    Then I should see the following event markers in the map:
-      | Cats Are Us |
-    And I should see an infowindow when I click on the event map markers:
-      | Hackathon |
