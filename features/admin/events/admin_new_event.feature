@@ -55,10 +55,10 @@ Feature: Super Admin creating an event
     
   Scenario: Create an event with an address field
     Given I am signed in as a superadmin
-    And I visit the home page
-    And I click "New Event"
-    Given I fill in the new event page validly
+    And I visit the new event page
+    And I fill in the new event page validly
     When I fill in "event_address" with "1427 Leon Parks"
+    And I press "Create Event"
     Then I should see "Event was successfully created"
     When I visit the events page
     Then I should see the following event markers in the map:
