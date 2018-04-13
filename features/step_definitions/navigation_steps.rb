@@ -232,6 +232,13 @@ When(/^I click column header "([^"]*)"$/) do |val|
   find('th', :text => val).click()
 end
 
+When("I click on {string} for the user {string}") do |text, email|
+  user_id = User.find_by_email(email).id
+  within("tr##{user_id}") do
+    step %{I click "#{text}"}
+  end
+end
+
 Given("I visit {string} organisation page") do |name|
   id = Organisation.find_by(name: name).id
   visit organisation_path(:id => id)
