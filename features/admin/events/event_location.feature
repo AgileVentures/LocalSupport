@@ -11,7 +11,10 @@ Feature: Event Location
     Given the following organisations exist:
       | name            | description          | address        | postcode | website       |
       | Cats Are Us     | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
-      | Office Primer   | Care for the elderly | 64 pinner road | HA1 4HZ  | http://b.com/ |
+    
+    And the following events exist:
+      | title   | description        | organisation | start_date | end_date   |
+      | Care    | Care for animals   | Cats Are Us  | 2018-04-13 | 2018-04-30 |
     
     And I am signed in as a superadmin
 
@@ -28,7 +31,4 @@ Feature: Event Location
     
  Scenario: The event shows on the map
     When I visit the events page
-    Then I should see the following event markers in the map:
-      | Cats Are Us |
-    And I should see an infowindow when I click on the event map markers:
-      | Hackathon |
+    Then I should see "Care for animals" event description marker in "Care" event location in the map

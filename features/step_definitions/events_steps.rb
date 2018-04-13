@@ -36,3 +36,8 @@ Given(/^I visit "([^"]*)" event$/) do |title|
   event = Event.find_by_title(title)
   visit "/events/#{event.id}"
 end
+
+Then("I should see {string} event description marker in {string} event location in the map") do |description, event|
+  marker_data = page.find('#marker_data')['data-markers']
+  expect(marker_data).to include(description)
+end
