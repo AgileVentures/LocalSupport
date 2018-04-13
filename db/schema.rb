@@ -183,6 +183,7 @@ ActiveRecord::Schema.define(version: 20180413084006) do
     t.string "postcode"
     t.string "reachskills_org_name"
     t.string "reachskills_op_link"
+    t.string "about_organization"
     t.string "role_description"
     t.string "skills_needed"
     t.datetime "when_volunteer_needed"

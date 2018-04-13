@@ -20,6 +20,11 @@
         </td>
       </tr>
       <tr>
+        <td data-toggle="tooltip" title="Enter a complete address">
+          <%= f.text_area :address, :class => "wide_form", :placeholder => "Enter event address"%>
+        </td>
+      </tr>
+      <tr>
         <td class="borderless" data-toggle="tooltip" title="Select an Organisation to host the event here.">
           <% if @event.errors[:organisation_id].any?%>
             <p class="error"><%= @event.errors[:organisation_id].first %></p>
