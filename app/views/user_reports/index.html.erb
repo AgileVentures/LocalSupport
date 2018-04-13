@@ -34,8 +34,12 @@
                 <% end %>
               <% end %>
               <%= link_to(user_reports_path(id: user.id), :method => :delete, :class => "btn btn-xs btn-danger",
-                         style: "border-radius: 3px;") do %>
+                         style: "border-radius: 3px; margin-right: 3px;") do %>
                 <i class="fa fa-trash-o"></i> Delete
+              <% end %>
+              <%= link_to(user_reports_upgrade_path(id: user.id), :method => :put, :class => "btn btn-xs btn-primary",
+                         style: "border-radius: 3px;") do %>
+                <i class="fa fa-star-o"></i> Upgrade
               <% end %>
             </div>
           </td>

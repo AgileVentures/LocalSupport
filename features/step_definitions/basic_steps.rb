@@ -603,3 +603,14 @@ end
 Then("I should see a text field for {string}") do |name|
   find_field(name)
 end
+
+Then (/^I should( not)? see for "(.*)" the "(.*)" button$/) do |negate, email, text|
+  user_id = User.find_by_email(email).id
+  within("tr##{user_id}") do
+    if negate
+      expect(page).not_to have_content text
+    else
+      expect(page).to have_content text
+    end
+  end
+end
