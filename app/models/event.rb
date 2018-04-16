@@ -50,12 +50,10 @@ class Event < ApplicationRecord
   end
   
   def check_geocode
-    if run_geocode?
-      self.tap do |e|
-        e.latitude = geocode[0]
-        e.longitude = geocode[1]
-      end
-    end
+    self.tap do |e|
+      e.latitude = geocode[0]
+      e.longitude = geocode[1]
+    end if run_geocode?
   end
 
   def run_geocode?
