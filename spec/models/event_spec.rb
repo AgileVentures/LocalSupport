@@ -12,8 +12,8 @@ RSpec.describe Event, type: :model do
     
     it 'should have event coordinates' do
       subject.address = '34 pinner road'
-      expect(event.latitude).to eq(51.602908)
-      expect(event.longitude).to eq(-0.4125658)
+      expect(event.latitude).to eq(40.7143528)
+      expect(event.longitude).to eq(-74.0059731)
     end
 
     it 'should have organisation coordinates' do
