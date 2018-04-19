@@ -59,7 +59,7 @@ group :test do
   gem 'puffing-billy', '~> 1.0'
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
-  gem 'show_me_the_cookies'
+  gem 'show_me_the_cookies', '~> 4.0'
 end
 
 group :production do
