@@ -23,7 +23,6 @@ RSpec.describe Event, type: :model do
     
     it 'should have event coordinates when organisation is nil' do 
       subject.organisation = nil
-      subject.address = '34 pinner road'
       expect(event.latitude).to eq(40.7143528)
       expect(event.longitude).to eq(-74.0059731)
     end
