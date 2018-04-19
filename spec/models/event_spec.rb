@@ -10,10 +10,12 @@ RSpec.describe Event, type: :model do
       grouped_events_by_coordinates[key].first
     end
     
-    it 'should have event coordinates' do
+    it 'should have event coordinates not organisation coordinates' do
       subject.address = '34 pinner road'
       expect(event.latitude).to eq(40.7143528)
       expect(event.longitude).to eq(-74.0059731)
+      expect(event.latitude).to_not eq(subject.organisation.latitude)
+      expect(event.longitude).to_not eq(subject.organisation.longitude)
     end
 
     it 'should have organisation coordinates' do
