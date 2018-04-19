@@ -4,6 +4,7 @@ class Event < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :organisation_id, presence: true, on: [:create]
+  validate :start_date_cannot_be_greater_than_end_date
   belongs_to :organisation
 
   scope :upcoming, lambda { |n|
@@ -91,4 +92,10 @@ class Event < ApplicationRecord
   def self.contains_title?(key)
     table[:title].matches(key)
   end
+
+  def start_date_cannot_be_greater_than_end_date
+    errors.add(:start_date, 'Start date must come after End date') unless
+    start_date && end_date && start_date < end_date
+  end
+
 end

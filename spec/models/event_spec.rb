@@ -47,6 +47,12 @@ RSpec.describe Event, type: :model do
     expect(subject.organisation.class).to eq Organisation
   end
 
+  it 'start end should be before end date' do
+    subject.start_date = Time.zone.now
+    subject.end_date = 1.minute.ago
+    expect(subject).to_not be_valid
+  end
+
   it 'is not valid without a start_date' do
     subject.start_date = nil
     expect(subject).to_not be_valid
