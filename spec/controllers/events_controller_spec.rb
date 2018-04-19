@@ -71,8 +71,8 @@ RSpec.describe EventsController, type: :controller, helpers: :requests do
       end
       
       it 'assigns the address in params to address attribute' do
-        post :create, params: {event: valid_attributes}
-        expect(assigns(:address)).to eq("4 pinner road")
+        post :create, params: { event: valid_attributes }
+        expect(assigns(:event).attributes.symbolize_keys[:address]).to eq("4 pinner road")
       end
     end
 
