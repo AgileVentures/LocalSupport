@@ -3,7 +3,7 @@ Given (/^I fill in the new event page validly$/) do
   fill_in 'event_description', with: 'Great place to brain storm'
   fill_in 'event_start_date', with: '20/04/2038 09:00'
   fill_in 'event_end_date', with: '28/04/2038 09:20'
-  select('Cats Are Us', from: 'event_organisation_id')
+  select('Us', from: 'event_organisation_id')
 end
 
 Given /^I create "(.*?)" event$/ do |name|
@@ -41,10 +41,12 @@ Then("I should see {string} event description marker in {string} event location 
   marker_data = page.find('#marker_data')['data-markers']
   expect(marker_data).to include(description)
   event = Event.find_by(title: event)
+  latitude = "0.0"
+  longitude = "0.0"
   if event.address == "64 pinner road"
-    latitude = "51.5813838"
-    longitude = "-0.3490513"
-    expect(marker_data).to include(latitude)
-    expect(marker_data).to include(longitude)
+    latitude = "35.4513251"
+    longitude = "-82.5505013"
   end
+  expect(marker_data).to include(latitude)
+  expect(marker_data).to include(longitude)
 end

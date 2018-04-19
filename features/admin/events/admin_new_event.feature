@@ -52,3 +52,5 @@ Feature: Super Admin creating an event
     Then I should see permission denied
     And I should not see "Event was successfully created"
     And "Unwanted" event should not exist
+
+

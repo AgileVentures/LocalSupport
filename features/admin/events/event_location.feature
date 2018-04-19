@@ -7,7 +7,7 @@ Feature: Event Location
   Background: Data has been added to the database
     Given the following organisations exist:
       | name            | description          | address        | postcode | website       |
-      | Cats Are Us     | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
+      | Us              | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
     
     Given the following users are registered:
       | email                         | password | superadmin | confirmed_at         | organisation |
@@ -15,7 +15,7 @@ Feature: Event Location
     
     And the following events exist:
       | title   | description        | organisation | start_date | end_date   | address        |
-      | Care    | Care for animals   | Cats Are Us  | today      | today      | 64 pinner road |
+      | Care    | Care for animals   | Us           | today      | today      | 64 pinner road |
     
     And cookies are approved
     And I am signed in as a superadmin
