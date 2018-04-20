@@ -20,7 +20,7 @@ gem 'jbuilder'
 group :development, :test do
   gem 'faker', '~> 1.8', '>= 1.8.7'
   gem 'timecop'
-  gem 'database_cleaner', '1.6.2'
+  gem 'database_cleaner', '1.7.0'
   gem 'launchy'
   gem 'simplecov', require: false
   gem 'sinatra'
