@@ -123,6 +123,7 @@ FactoryBot.define do
     description 'Something about an event'
     start_date { DateTime.current }
     end_date { DateTime.current + 2.hours }
+    address '34 pinner road'
     association :organisation, factory: :organisation
   end
 

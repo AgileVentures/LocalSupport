@@ -16,6 +16,9 @@ class Event < ApplicationRecord
     keyword = "%#{query}%"
     where(contains_description?(keyword).or(contains_title?(keyword))).limit(10)
   }
+  
+  # For the geocoder gem
+  geocoded_by :address
 
   def all_day_event?
     self.start_date == self.start_date.midnight && self.end_date == self.end_date.midnight
@@ -30,11 +33,12 @@ class Event < ApplicationRecord
 
   def self.event_with_coordinates(events)
     events.map do |ev|
-      ev.send(ev.organisation.nil? ? :lat_lng_default : :lat_lng_supplier)
+      ev.send((ev.address.present?) ? :lat_lng_supplier : :lat_lng_default )
     end
   end
 
   def lat_lng_default
+    return send(:with_organisation_coordinates) unless organisation.nil?
     self.tap do |e|
       e.longitude = 0.0
       e.latitude = 0.0
@@ -42,8 +46,16 @@ class Event < ApplicationRecord
   end
 
   def lat_lng_supplier
-    return self if latitude && longitude
-    send(:with_organisation_coordinates)
+    return self if (latitude && longitude) and !address_changed?
+    check_geocode
+  end
+  
+  def check_geocode
+    coordinates = geocode
+    self.tap do |e|
+      e.latitude = coordinates[0]
+      e.longitude = coordinates[1]
+    end
   end
 
   def with_organisation_coordinates

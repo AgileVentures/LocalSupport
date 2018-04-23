@@ -596,6 +596,14 @@ Then(/^I should see a link to feedback form in the footer$/) do
   )
 end
 
+When("I fill in {string} with {string}") do |field, text|
+  fill_in field, with: text
+end
+
+Then("I should see a text field for {string}") do |name|
+  find_field(name)
+end
+
 Then (/^I should( not)? see for "(.*)" the "(.*)" button$/) do |negate, email, text|
   user_id = User.find_by_email(email).id
   within("tr##{user_id}") do
