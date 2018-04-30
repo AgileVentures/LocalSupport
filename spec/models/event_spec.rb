@@ -9,7 +9,7 @@ RSpec.describe Event, type: :model do
       key = grouped_events_by_coordinates.keys.first
       grouped_events_by_coordinates[key].first
     end
-    
+  
     it 'should have event coordinates' do
       expect(event.latitude).to eq(40.7143528)
       expect(event.longitude).to eq(-74.0059731)
@@ -33,6 +33,12 @@ RSpec.describe Event, type: :model do
       subject.save!
       expect(event.latitude).to eq(0.0)
       expect(event.longitude).to eq(0.0)
+    end
+    
+    it 'should use default coordinates when address is invalid' do
+      subject.address = "+==+"
+      expect(event.latitude).to eq(10.0)
+      expect(event.longitude).to eq(10.0)
     end
   end
 
