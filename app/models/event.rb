@@ -52,13 +52,10 @@ class Event < ApplicationRecord
   
   def check_geocode
     coordinates = geocode
-    if coordinates
-      self.tap do |e|
-        e.latitude = coordinates[0]
-        e.longitude = coordinates[1]
-      end
-    else
-      send(:lat_lng_default)
+    return send(:lat_lng_default) unless coordinates
+    self.tap do |e|
+      e.latitude = coordinates[0]
+      e.longitude = coordinates[1]
     end
   end
 

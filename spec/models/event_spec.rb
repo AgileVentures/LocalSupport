@@ -34,12 +34,6 @@ RSpec.describe Event, type: :model do
       expect(event.latitude).to eq(0.0)
       expect(event.longitude).to eq(0.0)
     end
-    
-    it 'should use default coordinates when address is invalid' do
-      subject.address = "+==+"
-      expect(event.latitude).to eq(10.0)
-      expect(event.longitude).to eq(10.0)
-    end
   end
 
   it 'is valid with valid attributes' do
