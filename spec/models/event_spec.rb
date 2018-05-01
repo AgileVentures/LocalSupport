@@ -9,7 +9,7 @@ RSpec.describe Event, type: :model do
       key = grouped_events_by_coordinates.keys.first
       grouped_events_by_coordinates[key].first
     end
-    
+  
     it 'should have event coordinates' do
       expect(event.latitude).to eq(40.7143528)
       expect(event.longitude).to eq(-74.0059731)

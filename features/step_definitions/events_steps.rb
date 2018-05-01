@@ -37,15 +37,16 @@ Given(/^I visit "([^"]*)" event$/) do |title|
   visit "/events/#{event.id}"
 end
 
-Then("I should see {string} event description marker in {string} event location in the map") do |description, event|
+Then(/^I should see "(.*?)" description marker in "(.*?)" (event|organisation) location in the map$/) do |description, event, mode|
   marker_data = page.find('#marker_data')['data-markers']
   expect(marker_data).to include(description)
   event = Event.find_by(title: event)
-  latitude = "0.0"
-  longitude = "0.0"
-  if event.address == "64 pinner road"
+  if mode == 'event' and event.address == "64 pinner road"
     latitude = "35.4513251"
     longitude = "-82.5505013"
+  elsif mode == 'organisation'
+    latitude = event.organisation.latitude.to_s
+    longitude = event.organisation.longitude.to_s
   end
   expect(marker_data).to include(latitude)
   expect(marker_data).to include(longitude)
