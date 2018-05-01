@@ -33,4 +33,12 @@ Feature: Event Location
   
  Scenario: The event shows on the map
     When I visit the events page
-    Then I should see "Care for animals" event description marker in "Care" event location in the map
+    Then I should see "Care for animals" description marker in "Care" event location in the map
+    
+ Scenario: uses default coordinates when user enters invalid address
+    Given I visit the new event page
+    And I fill in the new event page validly
+    When I fill in "event_address" with "+==+"
+    And I press "Create Event"
+    When I visit the events page
+    Then I should see "Great place to brain storm" description marker in "Hackathon" organisation location in the map
