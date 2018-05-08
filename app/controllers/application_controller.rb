@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
         organisations
         pages
         volunteer_ops
+        events
     )
   end
   # Devise wiki suggests we need to make this return nil for the
