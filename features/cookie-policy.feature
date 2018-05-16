@@ -16,3 +16,7 @@ Feature: Approve cookies
     Given I click "Close"
     Then I should not see an approve cookie policy message
     And I should be on the password reset page
+    
+  Scenario: User does not approve cookies
+    Given I visit the home page
+    Then I should see an approve cookie policy message
