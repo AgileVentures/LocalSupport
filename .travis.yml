@@ -41,7 +41,7 @@ deploy:
     develop: harrowcn-develop
     staging: harrowcn-staging
     master: harrowcn-production
-  run: rake db:migrate
+  run: bundle exec rails db:migrate
 notifications:
   email: false
   slack:
