@@ -55,7 +55,7 @@ Scenario: Sign in for an existing superadmin user after org search
   Then I should be on the organisations search page
   And I should see a link or button "superadmin@example.com"
   And the search box should contain "search words"
-  
+
 Scenario: Sign in for an existing superadmin user after vol op search
   Given I visit the volunteer opportunities page
   And I fill in "Search Text" with "search words" within the main body
@@ -69,6 +69,12 @@ Scenario: Sign in for an existing superadmin user after visit vol op page
   Given I visit the show page for the volunteer_op titled "Office Support"
   And I sign in as "superadmin@example.com" with password "pppppppp"
   Then I should be on the show page for the volunteer_op titled "Office Support"
+  And I should see a link or button "superadmin@example.com"
+
+Scenario: Sign in for an existing superadmin after visit new event page
+  Given I visit the new event page
+  And I sign in as "superadmin@example.com" with password "pppppppp" on the legacy sign in page
+  Then I should be on the new event page
   And I should see a link or button "superadmin@example.com"
 
 Scenario: Sign in with wrong password for an existing superadmin user
