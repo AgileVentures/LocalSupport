@@ -50,3 +50,7 @@ Then("I should see {string} event description marker in {string} event location 
   expect(marker_data).to include(latitude)
   expect(marker_data).to include(longitude)
 end
+
+When("I click on the {string} text field") do |string|
+  find(string).click
+end
