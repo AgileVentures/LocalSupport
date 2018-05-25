@@ -41,13 +41,13 @@ Then(/^I should see "(.*?)" description marker in "(.*?)" (event|organisation) l
   marker_data = page.find('#marker_data')['data-markers']
   expect(marker_data).to include(description)
   event = Event.find_by(title: event)
-  if mode == 'event' and event.address == "64 pinner road"
-    latitude = "35.4513251"
-    longitude = "-82.5505013"
+  if mode == 'event'
+    expect(marker_data).to_not include(event.organisation.latitude.to_s)
+    expect(marker_data).to_not include("0.0")
+    expect(marker_data).to include(event.latitude.to_s)
+    expect(marker_data).to include(event.longitude.to_s)
   elsif mode == 'organisation'
-    latitude = event.organisation.latitude.to_s
-    longitude = event.organisation.longitude.to_s
+    expect(marker_data).to include(event.organisation.latitude.to_s)
+    expect(marker_data).to include(event.organisation.longitude.to_s)
   end
-  expect(marker_data).to include(latitude)
-  expect(marker_data).to include(longitude)
 end
