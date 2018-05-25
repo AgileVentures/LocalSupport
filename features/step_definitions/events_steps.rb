@@ -51,3 +51,7 @@ Then(/^I should see "(.*?)" description marker in "(.*?)" (event|organisation) l
     expect(marker_data).to include(event.organisation.longitude.to_s)
   end
 end
+
+When("I click on the {string} text field") do |string|
+  find(string).click
+end
