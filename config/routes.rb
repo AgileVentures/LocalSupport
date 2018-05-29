@@ -18,6 +18,7 @@ LocalSupport::Application.routes.draw do
   get '/user_reports/invited' => 'user_reports#invited', as: :invited_users_report
   get '/user_reports/deleted' => 'user_reports#deleted', as: :deleted_users_report
   put 'user_reports/undo_delete/:id' => 'user_reports#undo_delete', as: :undo_delete_users_report
+  put 'user_reports/upgrade/:id' => 'user_reports#upgrade', as: :user_reports_upgrade
 
   resources :doit_organisations, only: [:index]
   resources :pages, only: [:index, :new, :create, :edit]

@@ -56,5 +56,8 @@ class ImportReachSkillsVolunteerOpportunities
     model.description = op['node']['Description']
     model.reachskills_org_name = op['node']['Organisation']
     model.reachskills_op_link = op['node']['Path']
+    one_day_ago = Time.current - 1.day # necessary until api is updated.
+    model.updated_at = one_day_ago # https://www.pivotaltracker.com/story/show/153805125
+    model.created_at = one_day_ago
   end
 end

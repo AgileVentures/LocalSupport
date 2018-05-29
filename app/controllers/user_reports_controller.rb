@@ -48,6 +48,17 @@ class UserReportsController < ApplicationController
     @mail_template = MailTemplate.find_by(name: 'Invitation instructions')
     render :template => 'user_reports/invited', :layout => 'invitation_table'
   end
+  
+  def upgrade
+    user = User.find(params[:id])
+    if user.superadmin?
+      flash[:error] = 'User already site admin!'
+    else
+      user.upgrade_to_siteadmin
+      flash[:success] = "You have successfully upgraded user #{user.email}."
+    end
+    redirect_to(users_report_path)
+  end
 
   def update_message_promoting(user)
     flash[:notice] = "You have approved #{user.email}."

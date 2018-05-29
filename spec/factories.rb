@@ -122,7 +122,8 @@ FactoryBot.define do
     title 'Some Random Event'
     description 'Something about an event'
     start_date { DateTime.current }
-    end_date { DateTime.current }
+    end_date { DateTime.current + 2.hours }
+    address '34 pinner road'
     association :organisation, factory: :organisation
   end
 
@@ -130,14 +131,14 @@ FactoryBot.define do
     title 'Upcoming Event'
     description 'An event that is coming up soon'
     start_date { DateTime.current + 1.day }
-    end_date { DateTime.current + 1.day }
+    end_date { DateTime.current + 2.days }
     association :organisation, factory: :organisation
   end
 
   factory :previous_events, class: Event do
     title 'Past Event'
     description 'An event that has already passed'
-    start_date { DateTime.current - 1.day }
+    start_date { DateTime.current - 2.days }
     end_date { DateTime.current - 1.day }
     association :organisation, factory: :organisation
   end

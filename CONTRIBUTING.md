@@ -90,7 +90,9 @@ On your final git commit please include a comment in this format:
 makes Capybara check for visibility more robust [Finishes #112900047]
 ```
 
-which will close the relevant Pivotal Tracker ticket when we merge in your pull-request.  A hyperlink to the relevant Pivotal Tracker ticket in the pull request description will also be appreciated.
+which will close the relevant Pivotal Tracker ticket when we merge in your pull-request.   The idea is that the ticket is finished when the team has reviewed and merged the PR, not at the point that the individual developer thinks they are first finished with the ticket.
+
+Please also placce a hyperlink to the relevant Pivotal Tracker ticket in the pull request description so that anyone reviewing the ticket can click straight through to the tracker ticket.
 
 Code Style
 -------------

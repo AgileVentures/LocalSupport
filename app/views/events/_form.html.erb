@@ -20,6 +20,11 @@
         </td>
       </tr>
       <tr>
+        <td data-toggle="tooltip" title="Enter a complete address">
+          <%= f.text_area :address, :class => "wide_form", :placeholder => "Enter event address"%>
+        </td>
+      </tr>
+      <tr>
         <td class="borderless" data-toggle="tooltip" title="Select an Organisation to host the event here.">
           <% if @event.errors[:organisation_id].any?%>
             <p class="error"><%= @event.errors[:organisation_id].first %></p>
@@ -50,7 +55,7 @@
           <% if @event.errors[:end_date].any?%>
             <p class="error-name"><%= @event.errors[:end_date].first %></p>
           <% end %>
-          <%= f.text_field :end_date, 'data-behaviour' => 'datetimepicker3', :placeholder => 'dd/mm/yyyy' %>
+          <%= f.text_field :end_date, 'data-behaviour' => 'date-and-time-picker', :placeholder => 'dd/mm/yyyy' %>
         </div>
       </div>
   </div>

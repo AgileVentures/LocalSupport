@@ -81,4 +81,8 @@ class User < ApplicationRecord
   def self.superadmin_emails
     superadmins.pluck(:email)
   end
+  
+  def upgrade_to_siteadmin
+    update_attributes(superadmin: true)
+  end
 end

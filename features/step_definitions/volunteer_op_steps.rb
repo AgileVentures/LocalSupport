@@ -6,6 +6,25 @@ And(regex) do |title, desc, org_name|
   expect(current_path).to eq new_organisation_volunteer_op_path org
   fill_in 'Title', :with => title
   fill_in 'Description', :with => desc
+  expect_any_instance_of(TwitterApi).to receive(:tweet).once
+  click_on 'Create a Volunteer Opportunity'
+end
+
+Given /^I submit a blank volunteer op on the "(.*?)" page$/ do |org_name|
+  org = Organisation.find_by_name(org_name)
+  visit organisation_path org
+  click_link "Create a Volunteer Opportunity"
+  expect(current_path).to eq new_organisation_volunteer_op_path org
+  click_on 'Create a Volunteer Opportunity'
+end
+
+When("I submit a valid volunteer opportunity") do
+  org = Organisation.find_by_name('Friendly')
+  visit organisation_path org
+  click_link "Create a Volunteer Opportunity"
+  expect(current_path).to eq new_organisation_volunteer_op_path org
+  fill_in 'Title', :with => 'title'
+  fill_in 'Description', :with => 'desc'
   click_on 'Create a Volunteer Opportunity'
 end
 
@@ -22,6 +41,7 @@ Given(/^I submit a volunteer op with address on the org page/) do |volunteer_ops
     fill_in 'Role description', with: volunteer_op['role_desc']
     fill_in 'Skills needed', with: volunteer_op['skills_needed']
     fill_in 'volunteer_op_contact_details', with: volunteer_op['contact']
+    expect_any_instance_of(TwitterApi).to receive(:tweet).once
     click_on 'Create a Volunteer Opportunity'
   end
 end
@@ -40,6 +60,7 @@ Given(/^I submit a volunteer op to Doit/) do |volunteer_ops_table|
     select('Help Out Harrow!', from: 'Doit organisation')
     fill_in 'Advertise start date', with: 10.days.ago.strftime("%F")
     fill_in 'Advertise end date', with: 10.days.from_now.strftime("%F")
+    expect_any_instance_of(TwitterApi).to receive(:tweet).once
     click_on 'Create a Volunteer Opportunity'
   end
 end

@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
         organisations
         pages
         volunteer_ops
+        events
     )
   end
   # Devise wiki suggests we need to make this return nil for the
@@ -84,11 +85,9 @@ class ApplicationController < ActionController::Base
   end
 
   def rendering(instance, notice, action)
-    if instance.save
-      redirect_to instance, notice: notice
-    else
-      render action: action
-    end
+    result = instance.save
+    result ? redirect_to(instance, notice: notice) : render(action: action)
+    result
   end
 
   private
@@ -151,7 +150,7 @@ class ApplicationController < ActionController::Base
   def requested_organisation_path
     organisation_path(Organisation.find(current_user.pending_organisation_id))
   end
-  
+
   def send_email_to_superadmin_about_request_for_admin_of org
     superadmin_emails = User.superadmins.pluck(:email)
     AdminMailer.new_user_waiting_for_approval(org.name, superadmin_emails).deliver_now

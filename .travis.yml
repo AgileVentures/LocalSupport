@@ -3,7 +3,7 @@ env:
     - CC_TEST_REPORTER_ID=$CC_TEST_REPORTER_ID
 language: ruby
 rvm:
-- 2.4.2
+- 2.5.0
 sudo: false
 cache:
   directories:
@@ -41,7 +41,7 @@ deploy:
     develop: harrowcn-develop
     staging: harrowcn-staging
     master: harrowcn-production
-  run: rake db:migrate
+  run: bundle exec rails db:migrate
 notifications:
   email: false
   slack:

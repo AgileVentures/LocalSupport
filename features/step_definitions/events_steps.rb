@@ -3,7 +3,7 @@ Given (/^I fill in the new event page validly$/) do
   fill_in 'event_description', with: 'Great place to brain storm'
   fill_in 'event_start_date', with: '20/04/2038 09:00'
   fill_in 'event_end_date', with: '28/04/2038 09:20'
-  select('Cats Are Us', from: 'event_organisation_id')
+  select('Us', from: 'event_organisation_id')
 end
 
 Given /^I create "(.*?)" event$/ do |name|
@@ -35,4 +35,23 @@ end
 Given(/^I visit "([^"]*)" event$/) do |title|
   event = Event.find_by_title(title)
   visit "/events/#{event.id}"
+end
+
+Then(/^I should see "(.*?)" description marker in "(.*?)" (event|organisation) location in the map$/) do |description, event, mode|
+  marker_data = page.find('#marker_data')['data-markers']
+  expect(marker_data).to include(description)
+  event = Event.find_by(title: event)
+  if mode == 'event'
+    expect(marker_data).to_not include(event.organisation.latitude.to_s)
+    expect(marker_data).to_not include("0.0")
+    expect(marker_data).to include(event.latitude.to_s)
+    expect(marker_data).to include(event.longitude.to_s)
+  elsif mode == 'organisation'
+    expect(marker_data).to include(event.organisation.latitude.to_s)
+    expect(marker_data).to include(event.organisation.longitude.to_s)
+  end
+end
+
+When("I click on the {string} text field") do |string|
+  find(string).click
 end
