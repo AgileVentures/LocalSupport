@@ -20,6 +20,7 @@ class EventsController < ApplicationController
   end
 
   def create
+    check_user_organisation
     @event = Event.new(event_params)
     @event.save ? redirect_to(@event, notice: event_success) : render(:new)
   end
@@ -48,5 +49,9 @@ class EventsController < ApplicationController
     return if current_user.try(:superadmin?)
     flash[:notice] = PERMISSION_DENIED
     redirect_to events_path and return false
+  end
+
+  def check_user_organisation
+    params[:event][:organisation_id] = current_user.organisation if current_user.organisation.present?
   end
 end
