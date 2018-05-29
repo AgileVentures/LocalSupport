@@ -16,7 +16,7 @@ class User < ApplicationRecord
   # prevents mass assignment on other fields not in this list
   #attr_accessible :email, :password, :password_confirmation, :remember_me, :pending_organisation_id
   belongs_to :organisation
-  belongs_to :pending_organisation, :class_name => 'Organisation', :foreign_key => 'pending_organisation_id'
+  belongs_to :pending_organisation, class_name: :Organisation, foreign_key: :pending_organisation_id
 
   # should we have a before_save here where we check if the pending_organization_id is going from
   # nil to a value and then send the superadmin an email ...
@@ -29,7 +29,7 @@ class User < ApplicationRecord
   end
 
   def pending_org_admin? org
-    return false if self.pending_organisation == nil
+    return false if self.pending_organisation.nil?
     self.pending_organisation == org
   end
 
