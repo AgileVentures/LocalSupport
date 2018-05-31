@@ -26,7 +26,16 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by_id(params[:id])
+    @editable = true if current_user
     add_breadcrumb @event.title
+  end
+
+  def edit
+
+  end
+
+  def update
+
   end
 
   private
