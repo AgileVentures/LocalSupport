@@ -21,7 +21,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.organisation =  current_user.organisation if @current_user.organisation.present?
+    @event.organisation =  current_user.organisation if @current_user.organisation_id?
     @event.save ? redirect_to(@event, notice: event_success) : render(:new)
   end
 
