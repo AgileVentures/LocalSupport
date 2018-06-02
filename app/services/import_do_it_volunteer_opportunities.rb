@@ -37,7 +37,7 @@ class ImportDoItVolunteerOpportunities
 
   def persist_doit_vol_ops(opportunities)
     opportunities.each do |op|
-      next if trace_handler.local_origin?(op['id'])
+      next if trace_handler.local_origin?(op['id']) || (op['location_name'] != 'Harrow')
       model_klass.find_or_create_by(doit_op_id: op['id']) do |model|
         model.source = 'doit'
         model.latitude = op['lat'] || 51.58056
