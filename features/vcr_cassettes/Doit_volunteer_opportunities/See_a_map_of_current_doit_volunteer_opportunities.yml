@@ -205,7 +205,7 @@ http_interactions:
         "name": "Poverty", "parent_id": "66ab0718-8bb5-450c-b21d-9c90f9452422", "slug":
         "poverty", "updated": "2014-10-26T17:24:25.871742+00:00"}], "is_new": false,
         "lat": 51.5943, "lng": -0.334769, "location": null, "location_id": null, "location_name":
-        null, "location_type": "SL", "micro_availability": [], "owner_recruiter":
+        "Harrow", "location_type": "SL", "micro_availability": [], "owner_recruiter":
         {"contact_name": "Ramesh perinparaja", "created": "2015-03-04T14:16:54.515493+00:00",
         "email": "info@capablecommunities.co.uk", "id": "72dc3411-b4bc-4534-946a-b9de53280311",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.125x125.png",
@@ -286,7 +286,7 @@ http_interactions:
         "name": "Homeless", "parent_id": "66ab0718-8bb5-450c-b21d-9c90f9452422", "slug":
         "homeless", "updated": "2014-10-26T17:24:26.064985+00:00"}], "is_new": false,
         "lat": 51.5943, "lng": -0.334769, "location": null, "location_id": null, "location_name":
-        null, "location_type": "SL", "micro_availability": [], "owner_recruiter":
+        "Harrow", "location_type": "SL", "micro_availability": [], "owner_recruiter":
         {"contact_name": "Ramesh perinparaja", "created": "2015-03-04T14:16:54.515493+00:00",
         "email": "info@capablecommunities.co.uk", "id": "72dc3411-b4bc-4534-946a-b9de53280311",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.125x125.png",
@@ -325,7 +325,7 @@ http_interactions:
         "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
         "families", "updated": "2014-10-26T17:24:26.271224+00:00"}], "is_new": false,
         "lat": 51.5943, "lng": -0.334769, "location": null, "location_id": null, "location_name":
-        null, "location_type": "SL", "micro_availability": [], "owner_recruiter":
+        "Harrow", "location_type": "SL", "micro_availability": [], "owner_recruiter":
         {"contact_name": "Ramesh perinparaja", "created": "2015-03-04T14:16:54.515493+00:00",
         "email": "info@capablecommunities.co.uk", "id": "72dc3411-b4bc-4534-946a-b9de53280311",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.125x125.png",
@@ -867,7 +867,7 @@ http_interactions:
         "name": "Homeless", "parent_id": "66ab0718-8bb5-450c-b21d-9c90f9452422", "slug":
         "homeless", "updated": "2014-10-26T17:24:26.064985+00:00"}], "is_new": false,
         "lat": 51.5943, "lng": -0.334769, "location": null, "location_id": null, "location_name":
-        null, "location_type": "SL", "micro_availability": [], "owner_recruiter":
+        "Harrow", "location_type": "SL", "micro_availability": [], "owner_recruiter":
         {"contact_name": "Ramesh perinparaja", "created": "2015-03-04T14:16:54.515493+00:00",
         "email": "info@capablecommunities.co.uk", "id": "72dc3411-b4bc-4534-946a-b9de53280311",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.125x125.png",
@@ -906,7 +906,7 @@ http_interactions:
         "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
         "families", "updated": "2014-10-26T17:24:26.271224+00:00"}], "is_new": false,
         "lat": 51.5943, "lng": -0.334769, "location": null, "location_id": null, "location_name":
-        null, "location_type": "SL", "micro_availability": [], "owner_recruiter":
+        "Harrow", "location_type": "SL", "micro_availability": [], "owner_recruiter":
         {"contact_name": "Ramesh perinparaja", "created": "2015-03-04T14:16:54.515493+00:00",
         "email": "info@capablecommunities.co.uk", "id": "72dc3411-b4bc-4534-946a-b9de53280311",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.125x125.png",
@@ -951,7 +951,7 @@ http_interactions:
         "name": "Poverty", "parent_id": "66ab0718-8bb5-450c-b21d-9c90f9452422", "slug":
         "poverty", "updated": "2014-10-26T17:24:25.871742+00:00"}], "is_new": false,
         "lat": 51.5943, "lng": -0.334769, "location": null, "location_id": null, "location_name":
-        null, "location_type": "SL", "micro_availability": [], "owner_recruiter":
+        "Harrow", "location_type": "SL", "micro_availability": [], "owner_recruiter":
         {"contact_name": "Ramesh perinparaja", "created": "2015-03-04T14:16:54.515493+00:00",
         "email": "info@capablecommunities.co.uk", "id": "72dc3411-b4bc-4534-946a-b9de53280311",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.125x125.png",
@@ -1244,7 +1244,7 @@ http_interactions:
         "name": "Families", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481", "slug":
         "families", "updated": "2014-10-26T17:24:26.271224+00:00"}], "is_new": false,
         "lat": 51.5905, "lng": -0.326823, "location": null, "location_id": null, "location_name":
-        null, "location_type": "SL", "micro_availability": [], "owner_recruiter":
+        "Harrow", "location_type": "SL", "micro_availability": [], "owner_recruiter":
         {"contact_name": null, "created": "2014-10-26T22:24:38.930291+00:00", "email":
         "luci@homestartbarnet.org", "id": "603cb2e2-3782-4208-9063-a37554458ff8",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Home-Start_cmyk_wr3GevHMBDKt8G6HUdHWzD.125x125.jpg",
@@ -4485,7 +4485,7 @@ http_interactions:
         "name": "Retail", "parent_id": "a0be8981-33c6-46df-a3fe-2100a575695f", "slug":
         "retail", "updated": "2014-10-26T17:24:26.156907+00:00"}], "is_new": false,
         "lat": 51.5937, "lng": -0.380958, "location": null, "location_id": null, "location_name":
-        null, "location_type": "SL", "micro_availability": [], "owner_recruiter":
+        "Harrow", "location_type": "SL", "micro_availability": [], "owner_recruiter":
         {"contact_name": null, "created": "2014-11-29T02:28:56.731814+00:00", "email":
         "volunteering@suerydercare.org", "id": "59bc05dd-22b0-4c3a-8b47-cf724d96ce57",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/SR_logo_sq.125x125.jpg",

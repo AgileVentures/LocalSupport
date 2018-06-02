@@ -100,12 +100,12 @@ http_interactions:
         "slug": "disability", "updated": "2014-10-26T17:24:26.146396+00:00"}], "is_new":
         false, "lat": 51.5943, "lng": -0.334769, "local_authority": {"id": "0561a78f-83e1-47fa-ae4c-07a9cf7390d3",
         "name": "Harrow London Borough", "slug": "harrow-london-borough"}, "location_id":
-        null, "location_name": null, "location_type": "SL", "locations": [{"address_1":
+        null, "location_name": "Harrow", "location_type": "SL", "locations": [{"address_1":
         "Third Floor, Premier House", "address_2": "1 Canning Road", "city": "Wealdstone",
         "county": "Middlesex", "id": "1b576407-4863-4dd9-bf50-b008a383c0f3", "lat":
         51.5943, "lng": -0.334769, "local_authority": {"id": "0561a78f-83e1-47fa-ae4c-07a9cf7390d3",
         "name": "Harrow London Borough", "slug": "harrow-london-borough"}, "location":
-        null, "location_id": null, "location_name": null, "location_type": "SL", "places_available":
+        null, "location_id": null, "location_name": "Harrow", "location_type": "SL", "places_available":
         10, "postcode": "HA3 7TS", "rating": "0.00", "rating_count": 0, "working_from_home":
         false}], "micro_availability": [], "owner_recruiter": {"active_opportunities_count":
         1, "address_1": "3rd Floor Premier House", "address_2": "1 Canning Road",
@@ -189,12 +189,12 @@ http_interactions:
         "it", "updated": "2014-10-26T17:24:25.690020+00:00"}], "is_new": false, "lat":
         51.5951, "lng": -0.337177, "local_authority": {"id": "0561a78f-83e1-47fa-ae4c-07a9cf7390d3",
         "name": "Harrow London Borough", "slug": "harrow-london-borough"}, "location_id":
-        null, "location_name": null, "location_type": "SL", "locations": [{"address_1":
+        null, "location_name": "Harrow", "location_type": "SL", "locations": [{"address_1":
         "harrow community enterprise", "address_2": "gordon road", "city": "harrow
         weald", "county": "middlesex", "id": "101d591f-8ca0-45b6-ac18-dd76d8402efa",
         "lat": 51.5951, "lng": -0.337177, "local_authority": {"id": "0561a78f-83e1-47fa-ae4c-07a9cf7390d3",
         "name": "Harrow London Borough", "slug": "harrow-london-borough"}, "location":
-        null, "location_id": null, "location_name": null, "location_type": "SL", "places_available":
+        null, "location_id": null, "location_name": "Harrow", "location_type": "SL", "places_available":
         6, "postcode": "HA3 5RY", "rating": "0.00", "rating_count": 0, "working_from_home":
         false}], "micro_availability": [], "owner_recruiter": {"active_opportunities_count":
         1, "address_1": "1C Gordon Road", "address_2": "Wealdstone", "application_via_url":
@@ -277,12 +277,12 @@ http_interactions:
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.5983, "lng": -0.335993, "local_authority": {"id": "0561a78f-83e1-47fa-ae4c-07a9cf7390d3",
         "name": "Harrow London Borough", "slug": "harrow-london-borough"}, "location_id":
-        null, "location_name": null, "location_type": "SL", "locations": [{"address_1":
+        null, "location_name": "Harrow", "location_type": "SL", "locations": [{"address_1":
         "43 Claremont Road,", "address_2": null, "city": "Wealdstone", "county": "Middlesex",
         "id": "79ae1022-9059-40c0-82dd-3f5b15dd796a", "lat": 51.5983, "lng": -0.335993,
         "local_authority": {"id": "0561a78f-83e1-47fa-ae4c-07a9cf7390d3", "name":
         "Harrow London Borough", "slug": "harrow-london-borough"}, "location": null,
-        "location_id": null, "location_name": null, "location_type": "SL", "places_available":
+        "location_id": null, "location_name": "Harrow", "location_type": "SL", "places_available":
         2, "postcode": "HA3 7AU", "rating": "0.00", "rating_count": 0, "working_from_home":
         false}], "micro_availability": [], "owner_recruiter": {"active_opportunities_count":
         183, "address_1": "The Scout Association", "address_2": "Gilwell Park", "application_via_url":
@@ -377,12 +377,12 @@ http_interactions:
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.5983, "lng": -0.335993, "local_authority": {"id": "0561a78f-83e1-47fa-ae4c-07a9cf7390d3",
         "name": "Harrow London Borough", "slug": "harrow-london-borough"}, "location_id":
-        null, "location_name": null, "location_type": "SL", "locations": [{"address_1":
+        null, "location_name": "Harrow", "location_type": "SL", "locations": [{"address_1":
         "43 Claremont Road,", "address_2": "", "city": "Wealdstone", "county": "Middlesex",
         "id": "d1f8f924-db77-48c9-82a9-7433bbc9a048", "lat": 51.5983, "lng": -0.335993,
         "local_authority": {"id": "0561a78f-83e1-47fa-ae4c-07a9cf7390d3", "name":
         "Harrow London Borough", "slug": "harrow-london-borough"}, "location": null,
-        "location_id": null, "location_name": null, "location_type": "SL", "places_available":
+        "location_id": null, "location_name": "Harrow", "location_type": "SL", "places_available":
         2, "postcode": "HA3 7AU", "rating": "0.00", "rating_count": 0, "working_from_home":
         false}], "micro_availability": [], "owner_recruiter": {"active_opportunities_count":
         183, "address_1": "The Scout Association", "address_2": "Gilwell Park", "application_via_url":
@@ -425,6 +425,6 @@ http_interactions:
         "title": "You are here."}}, "meta": {"code": 200, "current_page": 1, "items_per_page":
         20, "sort_by": ["title", "rating", "updated", "advertise_end_date"], "tenant":
         "doittrust", "total_items": 4, "total_pages": 1, "version": "2016.09.06.0"}}'
-    http_version: 
+    http_version:
   recorded_at: Sat, 17 Sep 2016 02:57:40 GMT
 recorded_with: VCR 3.0.3
