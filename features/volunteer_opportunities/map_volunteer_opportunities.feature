@@ -62,11 +62,6 @@ Feature: As a member of the public
       | Animal care       |
       | Office Support    |
 
-  Scenario: Imported doit volunteer ops with nil coords are assigned default coords
-    Given doit opportunities are imported with nil coordinates
-    Then there should be zero nil coordinates
-    And 51 default Harrow coordinates should be assigned
-
   Scenario: Imported "reachskills" volunteer ops with nil coords are assigned default coords
     Given reachskills opportunities are imported with nil coordinates
     Then there should be zero nil coordinates
