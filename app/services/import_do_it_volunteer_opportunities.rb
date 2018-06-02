@@ -40,8 +40,8 @@ class ImportDoItVolunteerOpportunities
       next if trace_handler.local_origin?(op['id']) || (op['location_name'] != 'Harrow')
       model_klass.find_or_create_by(doit_op_id: op['id']) do |model|
         model.source = 'doit'
-        model.latitude = op['lat'] || 51.58056
-        model.longitude = op['lng'] || -0.34199
+        model.latitude = op['lat'] || Location::CENTRAL_HARROW_LATITUDE
+        model.longitude = op['lng'] || Location::CENTRAL_HARROW_LONGITUDE
         model.title = op['title']
         model.description = op['description']
         model.doit_op_id = op['id']
