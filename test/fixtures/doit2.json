@@ -91,7 +91,7 @@
         "lng":-0.335993,
         "location":null,
         "location_id":null,
-        "location_name":null,
+        "location_name":"Harrow",
         "location_type":"SL",
         "micro_availability":[
 
@@ -250,7 +250,7 @@
         "lng":-0.335993,
         "location":null,
         "location_id":null,
-        "location_name":null,
+        "location_name":"Harrow",
         "location_type":"SL",
         "micro_availability":[
 
@@ -376,7 +376,7 @@
         "lng":-0.334769,
         "location":null,
         "location_id":null,
-        "location_name":null,
+        "location_name":"Harrow",
         "location_type":"SL",
         "micro_availability":[
 
@@ -473,7 +473,7 @@
         "lng":-0.334769,
         "location":null,
         "location_id":null,
-        "location_name":null,
+        "location_name":"Harrow",
         "location_type":"SL",
         "micro_availability":[
 
@@ -602,7 +602,7 @@
         "lng":-0.334769,
         "location":null,
         "location_id":null,
-        "location_name":null,
+        "location_name":"Harrow",
         "location_type":"SL",
         "micro_availability":[
 
@@ -731,7 +731,7 @@
         "lng":-0.334769,
         "location":null,
         "location_id":null,
-        "location_name":null,
+        "location_name":"Harrow",
         "location_type":"SL",
         "micro_availability":[
 
@@ -882,7 +882,7 @@
         "lng":-0.334769,
         "location":null,
         "location_id":null,
-        "location_name":null,
+        "location_name":"Harrow",
         "location_type":"SL",
         "micro_availability":[
 
@@ -1000,7 +1000,7 @@
         "lng":-0.334769,
         "location":null,
         "location_id":null,
-        "location_name":null,
+        "location_name":"Harrow",
         "location_type":"SL",
         "micro_availability":[
 
@@ -1129,7 +1129,7 @@
         "lng":-0.334769,
         "location":null,
         "location_id":null,
-        "location_name":null,
+        "location_name":"Harrow",
         "location_type":"SL",
         "micro_availability":[
 
@@ -1289,7 +1289,7 @@
           "name":"Wealdstone"
         },
         "location_id":"fc684c77-76c9-4d85-9522-9dc5a580fcfb",
-        "location_name":"Wealdstone",
+        "location_name":"Harrow",
         "location_type":"RL",
         "micro_availability":[
 
@@ -1449,7 +1449,7 @@
           "name":"Wealdstone"
         },
         "location_id":"fc684c77-76c9-4d85-9522-9dc5a580fcfb",
-        "location_name":"Wealdstone",
+        "location_name":"Harrow",
         "location_type":"RL",
         "micro_availability":[
 
@@ -1609,7 +1609,7 @@
           "name":"Wealdstone"
         },
         "location_id":"fc684c77-76c9-4d85-9522-9dc5a580fcfb",
-        "location_name":"Wealdstone",
+        "location_name":"Harrow",
         "location_type":"RL",
         "micro_availability":[
 
@@ -1715,7 +1715,7 @@
           "name":"Wealdstone"
         },
         "location_id":"fc684c77-76c9-4d85-9522-9dc5a580fcfb",
-        "location_name":"Wealdstone",
+        "location_name":"Harrow",
         "location_type":"RL",
         "micro_availability":[
 
@@ -1875,7 +1875,7 @@
           "name":"Wealdstone"
         },
         "location_id":"fc684c77-76c9-4d85-9522-9dc5a580fcfb",
-        "location_name":"Wealdstone",
+        "location_name":"Harrow",
         "location_type":"RL",
         "micro_availability":[
 
@@ -2035,7 +2035,7 @@
           "name":"Wealdstone"
         },
         "location_id":"fc684c77-76c9-4d85-9522-9dc5a580fcfb",
-        "location_name":"Wealdstone",
+        "location_name":"Harrow",
         "location_type":"RL",
         "micro_availability":[
 
@@ -2162,7 +2162,7 @@
           "name":"Harrow & Wealdstone Station"
         },
         "location_id":"c82efb77-0357-4ca5-be22-fc2941c371ae",
-        "location_name":"Harrow & Wealdstone Station",
+        "location_name":"Harrow",
         "location_type":"RL",
         "micro_availability":[
 
@@ -2280,7 +2280,7 @@
         "lng":-0.337622,
         "location":null,
         "location_id":null,
-        "location_name":null,
+        "location_name":"Harrow",
         "location_type":"SL",
         "micro_availability":[
 
@@ -2406,7 +2406,7 @@
         "lng":-0.33,
         "location":null,
         "location_id":null,
-        "location_name":null,
+        "location_name":"Harrow",
         "location_type":"SL",
         "micro_availability":[
 
@@ -2557,7 +2557,7 @@
         "lng":-0.33,
         "location":null,
         "location_id":null,
-        "location_name":null,
+        "location_name":"Harrow",
         "location_type":"SL",
         "micro_availability":[
 
@@ -2675,7 +2675,7 @@
         "lng":-0.326823,
         "location":null,
         "location_id":null,
-        "location_name":null,
+        "location_name":"Harrow",
         "location_type":"SL",
         "micro_availability":[
 
