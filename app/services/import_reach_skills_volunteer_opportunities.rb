@@ -61,13 +61,13 @@ class ImportReachSkillsVolunteerOpportunities
     model.created_at = one_day_ago
   end
 
-  private
-    def assign_coordinate lat_lng, coords
-      return coords.send(lat_lng).to_f if coords
-      if lat_lng == :latitude
-        Location::CENTRAL_HARROW_LATITUDE
-      else
-        Location::CENTRAL_HARROW_LONGITUDE
-      end
+  def assign_coordinate lat_lng, coords
+    return coords.send(lat_lng).to_f if coords
+    if lat_lng == :latitude
+      Location::CENTRAL_HARROW_LATITUDE
+    else
+      Location::CENTRAL_HARROW_LONGITUDE
     end
+  end
+  private :assign_coordinate
 end
