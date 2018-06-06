@@ -53,7 +53,9 @@ module ApplicationHelper
 
   def link_to_and_track(title, url='#', options = {})
     options[:target] = '_blank' if action_name == 'embedded_map'
-    link_to title, click_through_go_path(url: url), options
+    is_external = options[:target] == '_blank' ? 'true' : 'false'
+    options[:onclick] = "return trackOutboundLink('#{url}', #{is_external})"
+    link_to title, url, options
   end
 end
 
