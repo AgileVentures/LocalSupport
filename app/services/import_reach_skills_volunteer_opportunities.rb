@@ -50,8 +50,17 @@ class ImportReachSkillsVolunteerOpportunities
 
   def populate_vol_op_attributes(op, model, coordinates)
     model.source = 'reachskills'
-    model.latitude  = assign_coordinate :latitude, coordinates
-    model.longitude = assign_coordinate :longitude, coordinates
+
+    # model.latitude = coordinates ? coordinates.latitude.to_f : 51.58056	
+    # model.longitude = coordinates ? coordinates.longitude.to_f : -0.34199
+
+    # model.latitude  = assign_coordinate :latitude, coordinates
+    # model.longitude = assign_coordinate :longitude, coordinates
+
+    location = Location.create(coordinates)
+    model.latitude  = location.latitude
+    model.longitude = location.longitude
+
     model.title = op['node']['title']
     model.description = op['node']['Description']
     model.reachskills_org_name = op['node']['Organisation']
@@ -60,14 +69,4 @@ class ImportReachSkillsVolunteerOpportunities
     model.updated_at = one_day_ago # https://www.pivotaltracker.com/story/show/153805125
     model.created_at = one_day_ago
   end
-
-  def assign_coordinate lat_lng, coords
-    return coords.send(lat_lng).to_f if coords
-    if lat_lng == :latitude
-      Location::CENTRAL_HARROW_LATITUDE
-    else
-      Location::CENTRAL_HARROW_LONGITUDE
-    end
-  end
-  private :assign_coordinate
 end
