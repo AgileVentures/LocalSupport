@@ -5,3 +5,16 @@
 
 ga('create', 'UA-60361269-1', 'auto');
 ga('send', 'pageview');
+
+var trackOutboundLink = function(url, isExternal) {
+    var params = {};
+
+    if (!isExternal) {
+        params.hitCallback = function () {
+            document.location = url;
+        }
+    }
+    ga('send', 'event', 'outbound', 'click', url, params);
+
+    return isExternal;
+}

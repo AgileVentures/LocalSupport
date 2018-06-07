@@ -261,7 +261,7 @@ end
 
 Then /^the URL for "(.*?)" should refer to tracking link including "(.*?)"$/ do |name, href|
   link = find_link(name)
-  expect(link['href']).to include(CGI.escape(href))
+  expect(link['href']).to include(href)
 end
 
 And /^the search box should contain "(.*?)"$/ do |arg1|
