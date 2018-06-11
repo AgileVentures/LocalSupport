@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/thoughtbot/capybara-webkit.git
-  revision: dc1224c025c9b9355b0f594f8445bf5e9440a01b
+  revision: 1e0e932e10c9baf318d2edfa51bbc7aaab9cf9d1
   specs:
     capybara-webkit (1.15.0)
       capybara (>= 2.3, < 4.0)
@@ -469,7 +469,7 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
-    xpath (3.0.0)
+    xpath (3.1.0)
       nokogiri (~> 1.8)
     zip (2.0.2)
 
