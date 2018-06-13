@@ -11,7 +11,7 @@ class ImportDoItVolunteerOpportunities
 
   attr_reader :http, :model_klass, :radius, :trace_handler
 
-  def initialize(http, model_klass, radius, trace_handler)
+  def initialize http, model_klass, radius, trace_handler
     @http = http
     @model_klass = model_klass
     @radius = radius
@@ -28,14 +28,21 @@ class ImportDoItVolunteerOpportunities
     end
   end
 
-  def process_doit_json_page(response)
-    return nil unless has_content?(response)
-    opportunities = JSON.parse(response.body)['data']['items']
-    persist_doit_vol_ops(opportunities)
-    JSON.parse(response.body)['links'].fetch('next', 'href' => nil)['href']
+  def process_doit_json_page from_response
+    return nil unless has_content? from_response
+    persist_doit opportunities(from_response)
+    parse(from_response)['links'].fetch('next', 'href' => nil)['href']
   end
 
-  def persist_doit_vol_ops(opportunities)
+  def parse response
+    JSON.parse(response.body)
+  end
+
+  def opportunities response
+    parse(response)['data']['items']
+  end
+
+  def persist_doit opportunities
     opportunities.each do |op|
       next if internally_generated_or_outside_harrow? op
       model_klass.find_or_create_by doit_op_id: op['id'] do |model|
@@ -62,7 +69,7 @@ class ImportDoItVolunteerOpportunities
     model
   end
 
-  def has_content?(response)
+  def has_content? response
     response.body && response.body != '[]'
   end
 
