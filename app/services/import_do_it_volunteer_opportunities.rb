@@ -37,14 +37,12 @@ class ImportDoItVolunteerOpportunities
 
   def persist_doit_vol_ops(opportunities)
     opportunities.each do |op|
-      next if internally_generated_or_outside_harrow?
-      model_klass.find_or_create_by(doit_op_id: op['id']) do |model|
-        populate_vol_op_attributes model, op
-      end
+      next if internally_generated_or_outside_harrow? op
+      model_klass.find_or_create_by doit_op_id: op['id'] { |model| populate_vol_op_attributes model, op }
     end
   end
 
-  def internally_generated_or_outside_harrow?
+  def internally_generated_or_outside_harrow? op
     trace_handler.local_origin?(op['id']) || (op['location_name'] != 'Harrow')
   end
 
