@@ -37,20 +37,28 @@ class ImportDoItVolunteerOpportunities
 
   def persist_doit_vol_ops(opportunities)
     opportunities.each do |op|
-      next if trace_handler.local_origin?(op['id']) || (op['location_name'] != 'Harrow')
+      next if internally_generated_or_outside_harrow?
       model_klass.find_or_create_by(doit_op_id: op['id']) do |model|
-        model.source = 'doit'
-        model.latitude = op['lat']
-        model.longitude = op['lng']
-        model.title = op['title']
-        model.description = op['description']
-        model.doit_op_id = op['id']
-        model.doit_org_name = op['for_recruiter']['name']
-        model.doit_org_link = op['for_recruiter']['slug']
-        model.updated_at = op['updated']
-        model.created_at = op['created']
+        populate_vol_op_attributes model, op
       end
     end
+  end
+
+  def internally_generated_or_outside_harrow?
+    trace_handler.local_origin?(op['id']) || (op['location_name'] != 'Harrow')
+  end
+
+  def populate_vol_op_attributes model, op
+    model.source        = 'doit'
+    model.latitude      = op['lat']
+    model.longitude     = op['lng']
+    model.title         = op['title']
+    model.description   = op['description']
+    model.doit_op_id    = op['id']
+    model.doit_org_name = op['for_recruiter']['name']
+    model.doit_org_link = op['for_recruiter']['slug']
+    model.updated_at    = op['updated']
+    model.created_at    = op['created']
   end
 
   def has_content?(response)
