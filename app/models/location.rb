@@ -3,8 +3,8 @@ class Location
   attr_reader :longitude, :latitude
 
   def initialize(longitude:, latitude:)
-    @longitude = longitude
-    @latitude = latitude
+    @longitude = longitude || CENTRAL_HARROW_LONGITUDE
+    @latitude  = latitude  || CENTRAL_HARROW_LATITUDE
   end
 
   CENTRAL_HARROW_LATITUDE = 51.58056
@@ -29,5 +29,9 @@ class Location
       hash[Location.new(longitude: key.first, latitude: key.last)] = val
     end
     hash
+  end
+
+  def self.create coordinates
+    self.new longitude: coordinates.longitude.to_f, latitude: coordinates.latitude.to_f
   end
 end

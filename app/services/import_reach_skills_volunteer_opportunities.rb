@@ -60,14 +60,4 @@ class ImportReachSkillsVolunteerOpportunities
     model.updated_at = one_day_ago # https://www.pivotaltracker.com/story/show/153805125
     model.created_at = one_day_ago
   end
-
-  def assign_coordinate lat_lng, coords
-    return coords.send(lat_lng).to_f if coords
-    if lat_lng == :latitude
-      Location::CENTRAL_HARROW_LATITUDE
-    else
-      Location::CENTRAL_HARROW_LONGITUDE
-    end
-  end
-  private :assign_coordinate
 end
