@@ -32,6 +32,10 @@ class Location
   end
 
   def self.create coordinates
-    self.new longitude: coordinates.longitude.to_f, latitude: coordinates.latitude.to_f
+    unless coordinates.nil?
+      longitude = coordinates.longitude.to_f
+      latitude  = coordinates.latitude.to_f
+    end
+    self.new longitude: longitude, latitude: latitude
   end
 end
