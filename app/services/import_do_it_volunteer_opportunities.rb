@@ -31,7 +31,7 @@ class ImportDoItVolunteerOpportunities
   def process_doit_json_page from_response
     return nil unless has_content? from_response
     persist_doit opportunities(from_response)
-    parse(from_response)['links'].fetch('next', 'href' => nil)['href']
+    request_next_page from_response
   end
 
   def parse response
@@ -40,6 +40,10 @@ class ImportDoItVolunteerOpportunities
 
   def opportunities response
     parse(response)['data']['items']
+  end
+
+  def request_next_page response
+    parse(response)['links'].fetch('next', 'href' => nil)['href']
   end
 
   def persist_doit opportunities
