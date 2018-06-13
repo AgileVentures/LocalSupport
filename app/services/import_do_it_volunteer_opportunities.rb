@@ -29,7 +29,7 @@ class ImportDoItVolunteerOpportunities
   end
 
   def process_doit_json_page from_response
-    return nil unless has_content? from_response
+    return nil unless content? from_response
     persist_doit opportunities(from_response)
     request_next_page from_response
   end
@@ -73,7 +73,7 @@ class ImportDoItVolunteerOpportunities
     model
   end
 
-  def has_content? response
+  def content? response
     response.body && response.body != '[]'
   end
 
