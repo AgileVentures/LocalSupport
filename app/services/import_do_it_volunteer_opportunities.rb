@@ -38,7 +38,9 @@ class ImportDoItVolunteerOpportunities
   def persist_doit_vol_ops(opportunities)
     opportunities.each do |op|
       next if internally_generated_or_outside_harrow? op
-      model_klass.find_or_create_by doit_op_id: op['id'] { |model| populate_vol_op_attributes model, op }
+      model_klass.find_or_create_by doit_op_id: op['id'] do |model|
+        populate_vol_op_attributes model, op
+      end
     end
   end
 
@@ -57,6 +59,7 @@ class ImportDoItVolunteerOpportunities
     model.doit_org_link = op['for_recruiter']['slug']
     model.updated_at    = op['updated']
     model.created_at    = op['created']
+    model
   end
 
   def has_content?(response)
