@@ -4,8 +4,8 @@ class ImportOrganisations
       model_klass = Organisation)
 
       response = http.get("http://production.charity-api.agileventures.org/charities.json?postcode=#{postcode}")
-
-      model_klass.find_or_create_by if has_content?(response)
+      charities = JSON.parse response.body
+      model_klass.find_or_create_by charities.first if has_content?(response)
   end
 
 

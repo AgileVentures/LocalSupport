@@ -26,18 +26,25 @@ describe ImportOrganisations do
   end
 
   context 'charities are found' do
-    let(:response) { double :response, body: '[{"name": "Charity One"}]' }
+    let(:response) { double :response, body: '[{"name": "Charity One", }]' }
 
     it 'does create a charity' do
       allow(http_party).to receive(:get).and_return(response)
       list_charities
-      expect(model_klass).to have_received(:find_or_create_by).with({ name: 'charity1'})
+      expect(model_klass).to have_received(:find_or_create_by).with({ "name" => 'Charity One'})
     end
 
     it 'calls the api with the correct URL' do
       expect(http_party).to receive(:get).with(url).and_return(response)
       list_charities
     end
+
+    # todo
+
+    # expand the response mock to be more like the data we get from the API
+    # add `regno` and check that it is filtered out
+
+    # write a new unit test to handle multiple charities
 
 
   end
