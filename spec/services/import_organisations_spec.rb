@@ -21,7 +21,7 @@ describe ImportOrganisations do
     it 'does not create any charities' do
       allow(http_party).to receive(:get).and_return(response)
       list_charities
-      expect(model_klass).not_to have_received(:find_or_create_by)
+      expect(model_klass).not_to have_received(:find_or_create_by!)
     end
   end
 
@@ -31,7 +31,7 @@ describe ImportOrganisations do
     it 'does create a charity' do
       allow(http_party).to receive(:get).and_return(response)
       list_charities
-      expect(model_klass).to have_received(:find_or_create_by).with({ "name" => 'Charity One'})
+      expect(model_klass).to have_received(:find_or_create_by!).with({ "name" => 'Charity One', "description" => 'No Description'})
     end
 
     it 'calls the api with the correct URL' do
