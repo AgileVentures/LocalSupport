@@ -33,9 +33,9 @@ class ImportReachSkillsVolunteerOpportunities
   end
 
   def create_or_update_reach_skills_vol_ops(op, coordinates)
-      model_klass.find_or_create_by(reachskills_op_link: op['node']['Path']) do |model|
-             populate_vol_op_attributes(op, model, coordinates)
-      end
+    model_klass.find_or_create_by(reachskills_op_link: op['node']['Path']) do |model|
+      populate_vol_op_attributes(op, model, coordinates)
+    end
   end
 
   def content?(response)
@@ -49,9 +49,10 @@ class ImportReachSkillsVolunteerOpportunities
   end
 
   def populate_vol_op_attributes(op, model, coordinates)
+    location = Location.create coordinates
     model.source = 'reachskills'
-    model.latitude = coordinates ? coordinates.latitude.to_f : 51.58056
-    model.longitude = coordinates ? coordinates.longitude.to_f : -0.34199
+    model.latitude  = location.latitude
+    model.longitude = location.longitude
     model.title = op['node']['title']
     model.description = op['node']['Description']
     model.reachskills_org_name = op['node']['Organisation']

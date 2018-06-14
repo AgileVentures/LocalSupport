@@ -11,7 +11,7 @@ Feature: Doit volunteer opportunities
 
   Scenario: See a map of current doit volunteer opportunities
     And I visit the volunteer opportunities page
-    And I should see 5 markers in the map
+    And I should see 3 markers in the map
 
   Scenario: See a map of current doit and harrow volunteer opportunities
     Given the following organisations exist:
@@ -26,7 +26,7 @@ Feature: Doit volunteer opportunities
       | Litter Box Scooper | Assist with feline sanitation   | Cats Are Us               |
       | Office Support     | Help with printing and copying. | Indian Elders Association |
     And I visit the volunteer opportunities page
-    And I should see 7 markers in the map
+    And I should see 2 markers in the map
 
   Scenario: See a list of current doit volunteer opportunities with a link to  organisation page
     Given I visit the volunteer opportunities page

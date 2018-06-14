@@ -11,7 +11,7 @@ class ImportDoItVolunteerOpportunities
 
   attr_reader :http, :model_klass, :radius, :trace_handler
 
-  def initialize(http, model_klass, radius, trace_handler)
+  def initialize http, model_klass, radius, trace_handler
     @http = http
     @model_klass = model_klass
     @radius = radius
@@ -28,32 +28,52 @@ class ImportDoItVolunteerOpportunities
     end
   end
 
-  def process_doit_json_page(response)
-    return nil unless has_content?(response)
-    opportunities = JSON.parse(response.body)['data']['items']
-    persist_doit_vol_ops(opportunities)
-    JSON.parse(response.body)['links'].fetch('next', 'href' => nil)['href']
+  def process_doit_json_page from_response
+    return nil unless content? from_response
+    persist_doit opportunities(from_response)
+    request_next_page from_response
   end
 
-  def persist_doit_vol_ops(opportunities)
+  def parse response
+    JSON.parse(response.body)
+  end
+
+  def opportunities response
+    parse(response)['data']['items']
+  end
+
+  def request_next_page response
+    parse(response)['links'].fetch('next', 'href' => nil)['href']
+  end
+
+  def persist_doit opportunities
     opportunities.each do |op|
-      next if trace_handler.local_origin?(op['id'])
-      model_klass.find_or_create_by(doit_op_id: op['id']) do |model|
-        model.source = 'doit'
-        model.latitude = op['lat'] || 51.58056
-        model.longitude = op['lng'] || -0.34199
-        model.title = op['title']
-        model.description = op['description']
-        model.doit_op_id = op['id']
-        model.doit_org_name = op['for_recruiter']['name']
-        model.doit_org_link = op['for_recruiter']['slug']
-        model.updated_at = op['updated']
-        model.created_at = op['created']
+      next if internally_generated_or_outside_harrow? op
+      model_klass.find_or_create_by doit_op_id: op['id'] do |model|
+        populate_vol_op_attributes model, op
       end
     end
   end
 
-  def has_content?(response)
+  def internally_generated_or_outside_harrow? op
+    trace_handler.local_origin?(op['id']) || (op['location_name'] != 'Harrow')
+  end
+
+  def populate_vol_op_attributes model, op
+    model.source        = 'doit'
+    model.latitude      = op['lat']
+    model.longitude     = op['lng']
+    model.title         = op['title']
+    model.description   = op['description']
+    model.doit_op_id    = op['id']
+    model.doit_org_name = op['for_recruiter']['name']
+    model.doit_org_link = op['for_recruiter']['slug']
+    model.updated_at    = op['updated']
+    model.created_at    = op['created']
+    model
+  end
+
+  def content? response
     response.body && response.body != '[]'
   end
 

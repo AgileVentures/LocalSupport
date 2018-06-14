@@ -67,7 +67,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.5983, "lng": -0.335993, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
         "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
@@ -116,7 +116,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.5983, "lng": -0.335993, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
         "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
@@ -157,7 +157,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.5944, "lng": -0.336192, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": "Volunteering Team", "created": "2016-01-11T16:55:34.106821+00:00",
         "email": "volunteering@voluntaryactionharrow.org.uk", "id": "4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg",
@@ -239,7 +239,7 @@ http_interactions:
         "id": "484cccef-29f7-463f-97e0-385657bc58da", "name": "Disability", "parent_id":
         "24620d05-41c1-4884-a0cb-f70054faba9b", "slug": "disability", "updated": "2014-10-26T17:24:26.146396+00:00"}],
         "is_new": false, "lat": 51.5943, "lng": -0.334769, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": "Ramesh perinparaja", "created": "2015-03-04T14:16:54.515493+00:00",
         "email": "info@capablecommunities.co.uk", "id": "72dc3411-b4bc-4534-946a-b9de53280311",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.125x125.png",
@@ -358,7 +358,7 @@ http_interactions:
         "id": "3fd515b4-6e1a-41a1-bad9-ea401937555b", "name": "Older people", "parent_id":
         "56fabd4e-bac3-484f-9f55-448445f83481", "slug": "older-people", "updated":
         "2014-10-26T17:24:26.260247+00:00"}], "is_new": false, "lat": 51.5943, "lng":
-        -0.334769, "location": null, "location_id": null, "location_name": null, "location_type":
+        -0.334769, "location": null, "location_id": null, "location_name": "Harrow", "location_type":
         "SL", "micro_availability": [], "owner_recruiter": {"contact_name": "Ramesh
         perinparaja", "created": "2015-03-04T14:16:54.515493+00:00", "email": "info@capablecommunities.co.uk",
         "id": "72dc3411-b4bc-4534-946a-b9de53280311", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.125x125.png",
@@ -398,7 +398,7 @@ http_interactions:
         "name": "Health & Safety", "parent_id": "a0be8981-33c6-46df-a3fe-2100a575695f",
         "slug": "health-safety", "updated": "2014-10-26T17:24:25.579861+00:00"}],
         "is_new": false, "lat": 51.5943, "lng": -0.334769, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": "Ramesh perinparaja", "created": "2015-03-04T14:16:54.515493+00:00",
         "email": "info@capablecommunities.co.uk", "id": "72dc3411-b4bc-4534-946a-b9de53280311",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.125x125.png",
@@ -436,7 +436,7 @@ http_interactions:
         "id": "3fd515b4-6e1a-41a1-bad9-ea401937555b", "name": "Older people", "parent_id":
         "56fabd4e-bac3-484f-9f55-448445f83481", "slug": "older-people", "updated":
         "2014-10-26T17:24:26.260247+00:00"}], "is_new": false, "lat": 51.5943, "lng":
-        -0.334769, "location": null, "location_id": null, "location_name": null, "location_type":
+        -0.334769, "location": null, "location_id": null, "location_name": "Harrow", "location_type":
         "SL", "micro_availability": [], "owner_recruiter": {"contact_name": "Ramesh
         perinparaja", "created": "2015-03-04T14:16:54.515493+00:00", "email": "info@capablecommunities.co.uk",
         "id": "72dc3411-b4bc-4534-946a-b9de53280311", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.125x125.png",
@@ -591,7 +591,7 @@ http_interactions:
         false}]}, "links": {"self": {"href": "/v1/opportunities", "title": "You are
         here."}}, "meta": {"code": 200, "current_page": 1, "items_per_page": 20, "tenant":
         "doittrust", "total_items": 13, "total_pages": 1, "version": "2016.02.19.1"}}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 03 Mar 2016 16:11:43 GMT
 - request:
     method: get
@@ -660,7 +660,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.5983, "lng": -0.335993, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
         "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
@@ -709,7 +709,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.5983, "lng": -0.335993, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
         "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
@@ -750,7 +750,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.5944, "lng": -0.336192, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": "Volunteering Team", "created": "2016-01-11T16:55:34.106821+00:00",
         "email": "volunteering@voluntaryactionharrow.org.uk", "id": "4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg",
@@ -786,7 +786,7 @@ http_interactions:
         "id": "3fd515b4-6e1a-41a1-bad9-ea401937555b", "name": "Older people", "parent_id":
         "56fabd4e-bac3-484f-9f55-448445f83481", "slug": "older-people", "updated":
         "2014-10-26T17:24:26.260247+00:00"}], "is_new": false, "lat": 51.5943, "lng":
-        -0.334769, "location": null, "location_id": null, "location_name": null, "location_type":
+        -0.334769, "location": null, "location_id": null, "location_name": "Harrow", "location_type":
         "SL", "micro_availability": [], "owner_recruiter": {"contact_name": "Ramesh
         perinparaja", "created": "2015-03-04T14:16:54.515493+00:00", "email": "info@capablecommunities.co.uk",
         "id": "72dc3411-b4bc-4534-946a-b9de53280311", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.125x125.png",
@@ -820,7 +820,7 @@ http_interactions:
         "id": "484cccef-29f7-463f-97e0-385657bc58da", "name": "Disability", "parent_id":
         "24620d05-41c1-4884-a0cb-f70054faba9b", "slug": "disability", "updated": "2014-10-26T17:24:26.146396+00:00"}],
         "is_new": false, "lat": 51.5943, "lng": -0.334769, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": "Ramesh perinparaja", "created": "2015-03-04T14:16:54.515493+00:00",
         "email": "info@capablecommunities.co.uk", "id": "72dc3411-b4bc-4534-946a-b9de53280311",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.125x125.png",
@@ -989,7 +989,7 @@ http_interactions:
         "id": "3fd515b4-6e1a-41a1-bad9-ea401937555b", "name": "Older people", "parent_id":
         "56fabd4e-bac3-484f-9f55-448445f83481", "slug": "older-people", "updated":
         "2014-10-26T17:24:26.260247+00:00"}], "is_new": false, "lat": 51.5943, "lng":
-        -0.334769, "location": null, "location_id": null, "location_name": null, "location_type":
+        -0.334769, "location": null, "location_id": null, "location_name": "Harrow", "location_type":
         "SL", "micro_availability": [], "owner_recruiter": {"contact_name": "Ramesh
         perinparaja", "created": "2015-03-04T14:16:54.515493+00:00", "email": "info@capablecommunities.co.uk",
         "id": "72dc3411-b4bc-4534-946a-b9de53280311", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.125x125.png",
@@ -1029,7 +1029,7 @@ http_interactions:
         "name": "Health & Safety", "parent_id": "a0be8981-33c6-46df-a3fe-2100a575695f",
         "slug": "health-safety", "updated": "2014-10-26T17:24:25.579861+00:00"}],
         "is_new": false, "lat": 51.5943, "lng": -0.334769, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": "Ramesh perinparaja", "created": "2015-03-04T14:16:54.515493+00:00",
         "email": "info@capablecommunities.co.uk", "id": "72dc3411-b4bc-4534-946a-b9de53280311",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.125x125.png",
@@ -1199,7 +1199,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.5901, "lng": -0.337622, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": "Verity Lomas", "created": "2014-10-28T08:38:44.335781+00:00",
         "email": "volunteering@havs.org.uk", "id": "58846674-b977-4cee-9b7e-4c802b4a5c91",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/volunteer
@@ -1283,7 +1283,7 @@ http_interactions:
         "name": "Performance", "parent_id": "cd7d0590-2800-45b4-8084-b475562e73f4",
         "slug": "performance", "updated": "2014-10-26T17:24:25.835125+00:00"}], "is_new":
         false, "lat": 51.5905, "lng": -0.326823, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": "Volunteering Team", "created": "2016-01-11T16:55:34.106821+00:00",
         "email": "volunteering@voluntaryactionharrow.org.uk", "id": "4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg",
@@ -1414,7 +1414,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.5894, "lng": -0.352487, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
         "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
@@ -1456,7 +1456,7 @@ http_interactions:
         "title": "Next page"}, "self": {"href": "/v1/opportunities", "title": "You
         are here."}}, "meta": {"code": 200, "current_page": 1, "items_per_page": 20,
         "tenant": "doittrust", "total_items": 195, "total_pages": 10, "version": "2016.02.19.1"}}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 03 Mar 2016 16:57:47 GMT
 - request:
     method: get
@@ -1525,7 +1525,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.5849, "lng": -0.340641, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
         "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
@@ -1577,7 +1577,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.5956, "lng": -0.314983, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
         "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
@@ -1703,7 +1703,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.6119, "lng": -0.337072, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
         "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
@@ -1789,7 +1789,7 @@ http_interactions:
         "name": "Mental Health", "parent_id": "24620d05-41c1-4884-a0cb-f70054faba9b",
         "slug": "mental-health", "updated": "2014-10-26T17:24:26.235395+00:00"}],
         "is_new": false, "lat": 51.6142, "lng": -0.333839, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T20:15:36.962044+00:00",
         "email": "volunteers@shaw-trust.org.uk", "id": "a08bbaa5-aaac-4bc1-ba8e-ca29a4a4b82e",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/volunteers_logo125.125x125.jpg",
@@ -1874,7 +1874,7 @@ http_interactions:
         "name": "Education", "parent_id": "cf1ab709-0632-4d79-adef-f2fd32c1ebdf",
         "slug": "education", "updated": "2014-10-26T17:24:25.590548+00:00"}], "is_new":
         false, "lat": 51.5815, "lng": -0.345092, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T18:52:45.028251+00:00",
         "email": "contact@voluntaryactionharrow.org.uk", "id": "dbef7a61-30b9-4c79-9301-c11e6792f12a",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Square_J53qgfSzPM3tig5uRScvoH.125x125.png",
@@ -2029,7 +2029,7 @@ http_interactions:
         "name": "Race & Ethnicity", "parent_id": "70f2af2b-333b-4c66-bfdd-1dd46a89e3f7",
         "slug": "race-ethnicity", "updated": "2014-10-26T17:24:26.153416+00:00"}],
         "is_new": false, "lat": 51.5802, "lng": -0.339179, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": "Volunteering Team", "created": "2016-01-11T16:55:34.106821+00:00",
         "email": "volunteering@voluntaryactionharrow.org.uk", "id": "4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg",
@@ -2084,7 +2084,7 @@ http_interactions:
         "name": "Race & Ethnicity", "parent_id": "70f2af2b-333b-4c66-bfdd-1dd46a89e3f7",
         "slug": "race-ethnicity", "updated": "2014-10-26T17:24:26.153416+00:00"}],
         "is_new": false, "lat": 51.5802, "lng": -0.339179, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": "Volunteering Team", "created": "2016-01-11T16:55:34.106821+00:00",
         "email": "volunteering@voluntaryactionharrow.org.uk", "id": "4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg",
@@ -2123,7 +2123,7 @@ http_interactions:
         "name": "Social care", "parent_id": "24620d05-41c1-4884-a0cb-f70054faba9b",
         "slug": "social-care", "updated": "2014-10-26T17:24:26.142886+00:00"}], "is_new":
         false, "lat": 51.5799, "lng": -0.337027, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": "Volunteering Team", "created": "2016-01-11T16:55:34.106821+00:00",
         "email": "volunteering@voluntaryactionharrow.org.uk", "id": "4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg",
@@ -2163,7 +2163,7 @@ http_interactions:
         "name": "Social care", "parent_id": "24620d05-41c1-4884-a0cb-f70054faba9b",
         "slug": "social-care", "updated": "2014-10-26T17:24:26.142886+00:00"}], "is_new":
         false, "lat": 51.5799, "lng": -0.337027, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": "Volunteering Team", "created": "2016-01-11T16:55:34.106821+00:00",
         "email": "volunteering@voluntaryactionharrow.org.uk", "id": "4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg",
@@ -2231,7 +2231,7 @@ http_interactions:
         "name": "Social care", "parent_id": "24620d05-41c1-4884-a0cb-f70054faba9b",
         "slug": "social-care", "updated": "2014-10-26T17:24:26.142886+00:00"}], "is_new":
         false, "lat": 51.5893, "lng": -0.363578, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": "Volunteering Team", "created": "2016-01-11T16:55:34.106821+00:00",
         "email": "volunteering@voluntaryactionharrow.org.uk", "id": "4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg",
@@ -2320,7 +2320,7 @@ http_interactions:
         "name": "Race & Ethnicity", "parent_id": "70f2af2b-333b-4c66-bfdd-1dd46a89e3f7",
         "slug": "race-ethnicity", "updated": "2014-10-26T17:24:26.153416+00:00"}],
         "is_new": false, "lat": 51.5897, "lng": -0.364645, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": "Volunteering Team", "created": "2016-01-11T16:55:34.106821+00:00",
         "email": "volunteering@voluntaryactionharrow.org.uk", "id": "4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg",
@@ -2359,7 +2359,7 @@ http_interactions:
         "name": "Education", "parent_id": "cf1ab709-0632-4d79-adef-f2fd32c1ebdf",
         "slug": "education", "updated": "2014-10-26T17:24:25.590548+00:00"}], "is_new":
         false, "lat": 51.5897, "lng": -0.364645, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": "Volunteering Team", "created": "2016-01-11T16:55:34.106821+00:00",
         "email": "volunteering@voluntaryactionharrow.org.uk", "id": "4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg",
@@ -2381,7 +2381,7 @@ http_interactions:
         "You are here."}}, "meta": {"code": 200, "current_page": 2, "items_per_page":
         20, "tenant": "doittrust", "total_items": 195, "total_pages": 10, "version":
         "2016.02.19.1"}}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 03 Mar 2016 16:57:49 GMT
 - request:
     method: get
@@ -2568,7 +2568,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.6085, "lng": -0.362526, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-26T22:24:38.930291+00:00",
         "email": "luci@homestartbarnet.org", "id": "603cb2e2-3782-4208-9063-a37554458ff8",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Home-Start_cmyk_wr3GevHMBDKt8G6HUdHWzD.125x125.jpg",
@@ -3117,7 +3117,7 @@ http_interactions:
         "You are here."}}, "meta": {"code": 200, "current_page": 3, "items_per_page":
         20, "tenant": "doittrust", "total_items": 195, "total_pages": 10, "version":
         "2016.02.19.1"}}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 03 Mar 2016 16:57:50 GMT
 - request:
     method: get
@@ -3371,7 +3371,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.5777, "lng": -0.335202, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": "Rose Squire", "created": "2015-02-19T16:04:26.969566+00:00",
         "email": "rsquire@harrow.ac.uk", "id": "8df48e7f-f112-4d88-ac51-b2f03e3151d7",
         "logo": [], "name": "Harrow College", "phone": "07968721162", "rating": "0.00",
@@ -3647,7 +3647,7 @@ http_interactions:
         "name": "Social care", "parent_id": "24620d05-41c1-4884-a0cb-f70054faba9b",
         "slug": "social-care", "updated": "2014-10-26T17:24:26.142886+00:00"}], "is_new":
         false, "lat": 51.58, "lng": -0.32, "location": null, "location_id": null,
-        "location_name": null, "location_type": "SL", "micro_availability": [], "owner_recruiter":
+        "location_name": "Harrow", "location_type": "SL", "micro_availability": [], "owner_recruiter":
         {"contact_name": "Caroline Williams", "created": "2015-01-27T15:19:50.326530+00:00",
         "email": "customerservices@horsesmouth.co.uk", "id": "349691bc-94f2-478e-b72f-4635fd5f43cd",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Screen
@@ -3736,7 +3736,7 @@ http_interactions:
         "name": "Education", "parent_id": "cf1ab709-0632-4d79-adef-f2fd32c1ebdf",
         "slug": "education", "updated": "2014-10-26T17:24:25.590548+00:00"}], "is_new":
         false, "lat": 51.5856, "lng": -0.365615, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
         "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
@@ -3785,7 +3785,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.5856, "lng": -0.365615, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
         "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
@@ -3831,7 +3831,7 @@ http_interactions:
         "name": "Recreation", "parent_id": "cd7d0590-2800-45b4-8084-b475562e73f4",
         "slug": "recreation", "updated": "2014-10-26T17:24:26.246096+00:00"}], "is_new":
         false, "lat": 51.5771, "lng": -0.350219, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": "Volunteering Team", "created": "2016-01-11T16:55:34.106821+00:00",
         "email": "volunteering@voluntaryactionharrow.org.uk", "id": "4dd7dfe2-c281-4170-8f0b-da17e8af5e5d",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/LT8GnLA__400x400.125x125.jpg",
@@ -3863,7 +3863,7 @@ http_interactions:
         "id": "3fd515b4-6e1a-41a1-bad9-ea401937555b", "name": "Older people", "parent_id":
         "56fabd4e-bac3-484f-9f55-448445f83481", "slug": "older-people", "updated":
         "2014-10-26T17:24:26.260247+00:00"}], "is_new": false, "lat": 51.5771, "lng":
-        -0.350219, "location": null, "location_id": null, "location_name": null, "location_type":
+        -0.350219, "location": null, "location_id": null, "location_name": "Harrow", "location_type":
         "SL", "micro_availability": [], "owner_recruiter": {"contact_name": "Ramesh
         perinparaja", "created": "2015-03-04T14:16:54.515493+00:00", "email": "info@capablecommunities.co.uk",
         "id": "72dc3411-b4bc-4534-946a-b9de53280311", "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/people-KTne6RLEc.125x125.png",
@@ -4023,7 +4023,7 @@ http_interactions:
         "You are here."}}, "meta": {"code": 200, "current_page": 4, "items_per_page":
         20, "tenant": "doittrust", "total_items": 195, "total_pages": 10, "version":
         "2016.02.19.1"}}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 03 Mar 2016 16:57:51 GMT
 - request:
     method: get
@@ -4397,7 +4397,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.6051, "lng": -0.297966, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-26T22:24:38.930291+00:00",
         "email": "luci@homestartbarnet.org", "id": "603cb2e2-3782-4208-9063-a37554458ff8",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Home-Start_cmyk_wr3GevHMBDKt8G6HUdHWzD.125x125.jpg",
@@ -4444,7 +4444,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.5788, "lng": -0.36707, "location": null, "location_id": null,
-        "location_name": null, "location_type": "SL", "micro_availability": [], "owner_recruiter":
+        "location_name": "Harrow", "location_type": "SL", "micro_availability": [], "owner_recruiter":
         {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00", "email":
         "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
@@ -4526,7 +4526,7 @@ http_interactions:
         "name": "Social care", "parent_id": "24620d05-41c1-4884-a0cb-f70054faba9b",
         "slug": "social-care", "updated": "2014-10-26T17:24:26.142886+00:00"}], "is_new":
         false, "lat": 51.5937, "lng": -0.380958, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-11-29T02:28:56.731814+00:00",
         "email": "volunteering@suerydercare.org", "id": "59bc05dd-22b0-4c3a-8b47-cf724d96ce57",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/SR_logo_sq.125x125.jpg",
@@ -4749,7 +4749,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.5951, "lng": -0.382239, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T11:01:26.328025+00:00",
         "email": "retail-volunteering@barnardos.org.uk", "id": "b283e2e7-0640-4251-bbf9-50ae254f5200",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/logo_1_cmHet2pppnKqzJ3vgALrDB.125x125.jpg",
@@ -4843,7 +4843,7 @@ http_interactions:
         "You are here."}}, "meta": {"code": 200, "current_page": 5, "items_per_page":
         20, "tenant": "doittrust", "total_items": 195, "total_pages": 10, "version":
         "2016.02.19.1"}}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 03 Mar 2016 16:57:52 GMT
 - request:
     method: get
@@ -5051,7 +5051,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.5766, "lng": -0.370078, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-26T22:24:38.930291+00:00",
         "email": "luci@homestartbarnet.org", "id": "603cb2e2-3782-4208-9063-a37554458ff8",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Home-Start_cmyk_wr3GevHMBDKt8G6HUdHWzD.125x125.jpg",
@@ -5091,7 +5091,7 @@ http_interactions:
         "name": "Education", "parent_id": "cf1ab709-0632-4d79-adef-f2fd32c1ebdf",
         "slug": "education", "updated": "2014-10-26T17:24:25.590548+00:00"}], "is_new":
         false, "lat": 51.5781, "lng": -0.300837, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
         "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
@@ -5675,7 +5675,7 @@ http_interactions:
         "You are here."}}, "meta": {"code": 200, "current_page": 6, "items_per_page":
         20, "tenant": "doittrust", "total_items": 195, "total_pages": 10, "version":
         "2016.02.19.1"}}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 03 Mar 2016 16:57:53 GMT
 - request:
     method: get
@@ -6603,7 +6603,7 @@ http_interactions:
         "You are here."}}, "meta": {"code": 200, "current_page": 7, "items_per_page":
         20, "tenant": "doittrust", "total_items": 195, "total_pages": 10, "version":
         "2016.02.19.1"}}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 03 Mar 2016 16:57:54 GMT
 - request:
     method: get
@@ -7561,7 +7561,7 @@ http_interactions:
         "You are here."}}, "meta": {"code": 200, "current_page": 8, "items_per_page":
         20, "tenant": "doittrust", "total_items": 195, "total_pages": 10, "version":
         "2016.02.19.1"}}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 03 Mar 2016 16:57:55 GMT
 - request:
     method: get
@@ -7926,7 +7926,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.6003, "lng": -0.286175, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
         "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
@@ -7974,7 +7974,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.6003, "lng": -0.286175, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
         "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
@@ -8020,7 +8020,7 @@ http_interactions:
         "name": "Education", "parent_id": "cf1ab709-0632-4d79-adef-f2fd32c1ebdf",
         "slug": "education", "updated": "2014-10-26T17:24:25.590548+00:00"}], "is_new":
         false, "lat": 51.6003, "lng": -0.286175, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
         "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
@@ -8123,7 +8123,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.5863, "lng": -0.286155, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
         "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
@@ -8169,7 +8169,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.5863, "lng": -0.286155, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
         "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
@@ -8214,7 +8214,7 @@ http_interactions:
         "name": "Education", "parent_id": "cf1ab709-0632-4d79-adef-f2fd32c1ebdf",
         "slug": "education", "updated": "2014-10-26T17:24:25.590548+00:00"}], "is_new":
         false, "lat": 51.5863, "lng": -0.286155, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00",
         "email": "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
@@ -8263,7 +8263,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.576, "lng": -0.37928, "location": null, "location_id": null,
-        "location_name": null, "location_type": "SL", "micro_availability": [], "owner_recruiter":
+        "location_name": "Harrow", "location_type": "SL", "micro_availability": [], "owner_recruiter":
         {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00", "email":
         "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
@@ -8311,7 +8311,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.576, "lng": -0.37928, "location": null, "location_id": null,
-        "location_name": null, "location_type": "SL", "micro_availability": [], "owner_recruiter":
+        "location_name": "Harrow", "location_type": "SL", "micro_availability": [], "owner_recruiter":
         {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00", "email":
         "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
@@ -8403,7 +8403,7 @@ http_interactions:
         "You are here."}}, "meta": {"code": 200, "current_page": 9, "items_per_page":
         20, "tenant": "doittrust", "total_items": 195, "total_pages": 10, "version":
         "2016.02.19.1"}}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 03 Mar 2016 16:57:57 GMT
 - request:
     method: get
@@ -8529,7 +8529,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.6346, "lng": -0.342859, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T11:01:26.328025+00:00",
         "email": "retail-volunteering@barnardos.org.uk", "id": "b283e2e7-0640-4251-bbf9-50ae254f5200",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/logo_1_cmHet2pppnKqzJ3vgALrDB.125x125.jpg",
@@ -8565,7 +8565,7 @@ http_interactions:
         "name": "Disability", "parent_id": "24620d05-41c1-4884-a0cb-f70054faba9b",
         "slug": "disability", "updated": "2014-10-26T17:24:26.146396+00:00"}], "is_new":
         false, "lat": 51.6315, "lng": -0.306631, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2015-01-05T16:36:11.767433+00:00",
         "email": "volunteering@rnoh.nhs.uk", "id": "ba84bab1-7c85-47fd-9c85-5fe940352dfb",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/handlogo.125x125.jpg",
@@ -8684,7 +8684,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.5897, "lng": -0.274725, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T19:03:23.848291+00:00",
         "email": "jonathan.goggs@teamup.org.uk", "id": "5fb4322a-ebdc-4355-9712-6986fddb4f83",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/team_up
@@ -8742,7 +8742,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.6123, "lng": -0.277002, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T11:01:26.328025+00:00",
         "email": "retail-volunteering@barnardos.org.uk", "id": "b283e2e7-0640-4251-bbf9-50ae254f5200",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/logo_1_cmHet2pppnKqzJ3vgALrDB.125x125.jpg",
@@ -8795,7 +8795,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         false, "lat": 51.6123, "lng": -0.277002, "location": null, "location_id":
-        null, "location_name": null, "location_type": "SL", "micro_availability":
+        null, "location_name": "Harrow", "location_type": "SL", "micro_availability":
         [], "owner_recruiter": {"contact_name": null, "created": "2014-10-27T11:01:26.328025+00:00",
         "email": "retail-volunteering@barnardos.org.uk", "id": "b283e2e7-0640-4251-bbf9-50ae254f5200",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/logo_1_cmHet2pppnKqzJ3vgALrDB.125x125.jpg",
@@ -8838,7 +8838,7 @@ http_interactions:
         "name": "Young people", "parent_id": "56fabd4e-bac3-484f-9f55-448445f83481",
         "slug": "young-people", "updated": "2014-10-26T17:24:26.274721+00:00"}], "is_new":
         true, "lat": 51.558, "lng": -0.352007, "location": null, "location_id": null,
-        "location_name": null, "location_type": "SL", "micro_availability": [], "owner_recruiter":
+        "location_name": "Harrow", "location_type": "SL", "micro_availability": [], "owner_recruiter":
         {"contact_name": null, "created": "2014-10-27T09:50:29.663966+00:00", "email":
         "debbie.evans@scouts.org.uk", "id": "33c3a2ab-06e2-4fab-a865-a8518cd842ca",
         "logo": [{"absolute_url": "https://s3-eu-west-1.amazonaws.com/media.do-it.org/orgs/logos/Image_fot_VInspired_adults_z75XoyfZoRmQm396Gxd8g3.125x125.jpg",
@@ -9071,6 +9071,6 @@ http_interactions:
         "You are here."}}, "meta": {"code": 200, "current_page": 10, "items_per_page":
         20, "tenant": "doittrust", "total_items": 195, "total_pages": 10, "version":
         "2016.02.19.1"}}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 03 Mar 2016 16:57:58 GMT
 recorded_with: VCR 2.9.3
