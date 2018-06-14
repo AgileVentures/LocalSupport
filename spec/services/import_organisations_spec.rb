@@ -3,7 +3,7 @@ require 'rails_helper'
 describe ImportOrganisations do
   let(:http_party) { double :http_party }
   let(:model_klass) { spy :model_klass }
-  let(:postcode) { 'HA2' }
+  let(:postcode) { 'ha2' }
   let(:url) { 'http://production.charity-api.agileventures.org/charities.json?postcode=ha2' }
 
   subject(:list_charities) do

@@ -3,7 +3,7 @@ class ImportOrganisations
       http = HTTParty,
       model_klass = Organisation)
 
-      response = http.get('http://production.charity-api.agileventures.org/charities.json?postcode=ha2')
+      response = http.get("http://production.charity-api.agileventures.org/charities.json?postcode=#{postcode}")
 
       model_klass.find_or_create_by if has_content?(response)
   end
