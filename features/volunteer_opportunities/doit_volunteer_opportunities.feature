@@ -47,6 +47,5 @@ Feature: Doit volunteer opportunities
   Scenario: Doit volunteer opportunities are opened in a new page
     Given I visit the volunteer opportunities page
     Then I should open "Scout Leader (volunteering with 10-14 year olds) 27th Harrow" in a new window
-    Then I should see "https://do-it.org/opportunities/79ae1022-9059-40c0-82dd-3f5b15dd796a" in the the click through table
 
 

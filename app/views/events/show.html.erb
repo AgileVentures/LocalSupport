@@ -1,7 +1,9 @@
 <div class="event-box">
-  <h2><%=@event.title%></h2>
-  <p><%=@event.description%></p>
-  <p>Start date: <%=@event.start_date.strftime("%A, %B %d, %Y at %H:%M") if @event.start_date %></p>
-  <p>End date: <%=@event.end_date.strftime("%A, %B %d, %Y at %H:%M") if @event.end_date%> </p>
+  <div id="events_scroll">
+    <h2><%=@event.title%></h2>
+    <p><%=@event.description%></p>
+    <p>Start date: <%=@event.start_date.strftime("%A, %B %d, %Y at %H:%M") if @event.start_date %></p>
+    <p>End date: <%=@event.end_date.strftime("%A, %B %d, %Y at %H:%M") if @event.end_date%> </p>
+  </div>
 </div>
 <%= render partial: 'shared/map_scripts', locals: {markers: @markers} %>

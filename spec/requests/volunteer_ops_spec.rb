@@ -13,6 +13,7 @@ describe 'VolunteerOps', type: :request, helpers: :requests do
     let(:params) { { volunteer_op: {title: 'hard work', description: 'for the willing'} } }
 
     it 'creates a new VolunteerOp' do
+      expect_any_instance_of(TwitterApi).to receive(:tweet).once
       org_admin = org_owner
       login(org_admin)
       expect {
@@ -21,6 +22,7 @@ describe 'VolunteerOps', type: :request, helpers: :requests do
     end
 
     it 'the new VolunteerOp is associated with the requested organisation' do
+      expect_any_instance_of(TwitterApi).to receive(:tweet).once
       org_admin = org_owner
       login(org_admin)
       post organisation_volunteer_ops_path(org_admin.organisation), params: params
@@ -36,6 +38,7 @@ describe 'VolunteerOps', type: :request, helpers: :requests do
     end
 
     it 'does work for superadmins' do
+      expect_any_instance_of(TwitterApi).to receive(:tweet).once
       login(superadmin)
       expect{
         post organisation_volunteer_ops_path(org_owner.organisation.id), params: params

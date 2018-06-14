@@ -261,7 +261,7 @@ end
 
 Then /^the URL for "(.*?)" should refer to tracking link including "(.*?)"$/ do |name, href|
   link = find_link(name)
-  expect(link['href']).to include(CGI.escape(href))
+  expect(link['href']).to include(href)
 end
 
 And /^the search box should contain "(.*?)"$/ do |arg1|
@@ -369,6 +369,10 @@ end
 Then(/^the navbar should( not)? have a link to (.*?)$/) do |negate, link|
   expectation_method = negate ? :not_to : :to
   within('#navbar') { expect(page).send(expectation_method, have_selector(:link_or_button, link)) }
+end
+
+Then(/^I should see "(.*?)" within "(.*?)" field$/) do |text, selector|
+  within('.' + selector) { expect(page).to have_content text}
 end
 
 Then(/^I should not see "(.*?)"  within "(.*?)"$/) do |text, selector|
@@ -590,4 +594,23 @@ Then(/^I should see a link to feedback form in the footer$/) do
   page.should have_link('feedback here',
     :href => feedback_url
   )
+end
+
+When("I fill in {string} with {string}") do |field, text|
+  fill_in field, with: text
+end
+
+Then("I should see a text field for {string}") do |name|
+  find_field(name)
+end
+
+Then (/^I should( not)? see for "(.*)" the "(.*)" button$/) do |negate, email, text|
+  user_id = User.find_by_email(email).id
+  within("tr##{user_id}") do
+    if negate
+      expect(page).not_to have_content text
+    else
+      expect(page).to have_content text
+    end
+  end
 end

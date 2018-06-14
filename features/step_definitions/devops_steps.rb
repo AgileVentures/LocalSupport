@@ -14,3 +14,4 @@ end
 Then(/^there should be (\d+) organisations stored$/) do |number|
   expect(Organisation.count).to eq number
 end
+

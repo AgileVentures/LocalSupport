@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-ruby '2.4.2'
-gem 'rails', '~> 5.1', '>= 5.1.5'
+ruby '2.5.0'
+gem 'rails', '~> 5.1'
 gem 'pg', '~> 1.0'
 gem 'devise', '~> 4.4'
 gem 'devise_invitable', '~> 1.7'
@@ -20,17 +20,17 @@ gem 'jbuilder'
 group :development, :test do
   gem 'faker', '~> 1.8', '>= 1.8.7'
   gem 'timecop'
-  gem 'database_cleaner', '1.6.2'
+  gem 'database_cleaner', '1.7.0'
   gem 'launchy'
   gem 'simplecov', require: false
   gem 'sinatra'
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
   gem 'execjs'
-  gem 'aruba'
+  gem 'aruba', '~> 0.14.5'
   gem 'byebug'
   gem 'rack_session_access'
-  gem 'jasmine', '~> 3.0'
+  gem 'jasmine', '~> 3.1'
   gem 'jasmine-jquery-rails', '2.0.3'
   gem 'rails-controller-testing'
   #gem 'better_errors'
@@ -50,16 +50,16 @@ group :test do
   gem 'capybara-webkit', git: 'https://github.com/thoughtbot/capybara-webkit.git'
   gem 'nokogiri', '~> 1.8'
   gem 'factory_bot_rails'
-  gem 'webmock', '~> 3.3'
+  gem 'webmock', '~> 3.4'
   gem 'uri-handler'
   gem 'selenium'
   gem 'selenium-client'
   gem 'shoulda'
   gem 'vcr'
-  gem 'puffing-billy'
+  gem 'puffing-billy', '~> 1.1'
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
-  gem 'show_me_the_cookies'
+  gem 'show_me_the_cookies', '~> 4.0'
 end
 
 group :production do
@@ -101,14 +101,19 @@ gem 'url_validator', git: 'https://github.com/AgileVentures/url_validator.git'
 gem 'httparty'
 gem 'sucker_punch', '~> 2.0' # async job
 gem 'rails_autolink'
-gem 'paranoia', '~> 2.0'
+gem 'paranoia', '~> 2.4'
 
 gem 'dotenv-rails'
 gem 'figaro'
 gem 'airbrake'
 
 # Using user friendly names in URLs
-gem 'friendly_id', '~> 5.2.3'
+gem 'friendly_id', '~> 5.2.4'
 
 # SEO
-gem 'meta-tags'
+gem 'meta-tags', '~> 2.10'
+
+#Social
+gem 'twitter',      '~> 6.2'
+gem 'twitter-text', '~> 2.1'
+gem 'koala' # Facebook integration
