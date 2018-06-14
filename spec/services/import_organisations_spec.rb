@@ -26,7 +26,7 @@ describe ImportOrganisations do
   end
 
   context 'charities are found' do
-    let(:response) { double :response, body: '[{"name": "Charity One", }]' }
+    let(:response) { double :response, body: '[{"name": "Charity One", "regno": "11111" }]' }
 
     it 'does create a charity' do
       allow(http_party).to receive(:get).and_return(response)
