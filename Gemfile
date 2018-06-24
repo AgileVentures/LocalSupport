@@ -6,7 +6,7 @@ gem 'pg', '~> 1.0'
 gem 'devise', '~> 4.4'
 gem 'devise_invitable', '~> 1.7'
 gem 'heroku-api'
-gem 'sprockets', '~> 3.7', '>= 3.7.1'
+gem 'sprockets', '~> 3.7'
 
 gem 'fullcalendar-rails'
 gem 'bootstrap3-datetimepicker-rails'
