@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180413084006) do
+ActiveRecord::Schema.define(version: 20180622090452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,14 +28,6 @@ ActiveRecord::Schema.define(version: 20180413084006) do
     t.integer "organisation_id"
     t.index ["category_id"], name: "index_categories_organisations_on_category_id"
     t.index ["organisation_id"], name: "index_categories_organisations_on_organisation_id"
-  end
-
-  create_table "click_throughs", id: :serial, force: :cascade do |t|
-    t.string "url"
-    t.string "source_url"
-    t.integer "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "doit_traces", id: :serial, force: :cascade do |t|
@@ -183,7 +175,6 @@ ActiveRecord::Schema.define(version: 20180413084006) do
     t.string "postcode"
     t.string "reachskills_org_name"
     t.string "reachskills_op_link"
-    t.string "about_organization"
     t.string "role_description"
     t.string "skills_needed"
     t.datetime "when_volunteer_needed"

@@ -1,2 +1,0 @@
-class ClickThrough < ApplicationRecord
-end
