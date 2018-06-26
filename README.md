@@ -16,6 +16,8 @@ Please see the following video for an overview of the project background:
   </a>
 </p>
 
+Installation
+------------
 
 Installation and other technical issues are being moved from the github wiki to the docs dir:
 
