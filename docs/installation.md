@@ -4,7 +4,7 @@ Please start by creating an Application.yml file
 
 ### Application.yml
 
-Independently of which platform you are developing on please create a file named `config/application.yml` and add the following line:
+Independently of which platform you are developing on, please create a file named `config/application.yml` and add the following line:
 
 ```
 DOIT_HOST: 'http://api.qa2.do-it.org/v2'
@@ -33,7 +33,7 @@ Instructions for installation on different OSs:
 * [C9](installation/c9.md)
 * [Docker](installation/Developing-With-Docker.md)
 
-If you're on Windows, our condolences. Docker or C9 is probably your best option, however there are a variety of ways to install [Ubuntu](https://www.ubuntu.com/) while keeping your Windows OS instact if you willing.
+If you're on Windows, our condolences. Docker or C9 is probably your best option, however there are a variety of ways to install [Ubuntu](https://www.ubuntu.com/) while keeping your Windows OS intact if you are willing.
 
 Update: Windows 10 is beta testing a Linux subsystem. Find out how to install at [gorails](https://gorails.com/setup/windows/10). Please keep in mind it is still in beta as of this writing.
 

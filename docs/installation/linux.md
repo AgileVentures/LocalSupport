@@ -5,7 +5,7 @@ In order to work on LocalSupport, please fork and clone the project.
 
 If you need to setup your development environment then [gorails](https://gorails.com/setup/ubuntu/17.10) has an excellent walkthrough.
 
-1. Install Ruby 2.4.2
+1. Install Ruby 2.5.0
 1. Fork the http://github.com/AgileVentures/LocalSupport repo (fork button at top right of github web interface)
 1. Clone the new forked repo onto your dev machine
 1. `cd LocalSupport`
@@ -30,6 +30,9 @@ If you need to setup your development environment then [gorails](https://gorails
   ```
 
 1. Install postgreSQL - see [PostgreSQL install instructions below](issues.md#postgresql-install)
+
+
+
 1. Install X virtual frame buffer
 
     `sudo apt-get install xvfb`
@@ -43,6 +46,18 @@ If you need to setup your development environment then [gorails](https://gorails
     bundle exec rake db:migrate
     bundle exec rake db:setup
     ```
+  *Note:*  You might encounter error with the creating the relevant schema. This is due to some configuration error with PostgreSql. Solution of interest can be found [(1) here](PostgreSQL-problems-in-Debian.md) and [(2) here](issues.md#peer-authentication-fails-for-user-postgres). You should first drop the cluster as mentioned in (1) and then configure the user access privileges in pg_hba.conf and username mapping in pg_ident.conf. One way to successfully configure the line `pg_hba.conf` from
+
+  ```
+  # TYPE  DATABASE       USER            ADDRESS                 METHOD
+  local   all             all                                     peer
+  ```
+  to
+
+  ```
+  # TYPE  DATABASE       USER            ADDRESS                 METHOD
+  local   all             all                                     trust
+  ```
 
 If you hit problems, review issues below, and ask us on Slack chat.
 
