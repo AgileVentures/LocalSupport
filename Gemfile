@@ -27,7 +27,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
   gem 'execjs'
-  gem 'aruba', '~> 0.14.5'
+  gem 'aruba', '~> 0.14.6'
   gem 'byebug'
   gem 'rack_session_access'
   gem 'jasmine', '~> 3.1'
