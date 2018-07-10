@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/thoughtbot/capybara-webkit.git
-  revision: 8329b19e94ff08eeb517cac49bfffd2f667ea90d
+  revision: 9082b840199896b758cb85c29da703e91ecb8f92
   specs:
     capybara-webkit (1.15.0)
       capybara (>= 2.3, < 4.0)
@@ -268,7 +268,7 @@ GEM
     naught (1.1.0)
     newrelic_rpm (5.2.0.345)
     nio4r (2.3.0)
-    nokogiri (1.8.3)
+    nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
     parallel (1.12.1)
