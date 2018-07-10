@@ -28,6 +28,8 @@ class EventsController < ApplicationController
   def show
     @event = Event.find_by_id(params[:id])
     add_breadcrumb @event.title
+    @markers = BuildMarkersWithInfoWindow
+                   .with(Event.build_by_coordinates([@event]), self)
   end
 
   private
