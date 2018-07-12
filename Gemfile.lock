@@ -167,7 +167,7 @@ GEM
     factory_bot_rails (4.10.0)
       factory_bot (~> 4.10.0)
       railties (>= 3.0.0)
-    faker (1.8.7)
+    faker (1.9.1)
       i18n (>= 0.7)
     faraday (0.14.0)
       multipart-post (>= 1.2, < 3)
@@ -495,7 +495,7 @@ DEPENDENCIES
   dotenv-rails
   execjs
   factory_bot_rails
-  faker (~> 1.8, >= 1.8.7)
+  faker (~> 1.9)
   figaro
   font-awesome-rails
   friendly_id (~> 5.2.4)
