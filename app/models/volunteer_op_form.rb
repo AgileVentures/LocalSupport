@@ -7,7 +7,25 @@ class VolunteerOpForm
     validates :advertise_start_date, presence: true, format: { with: /\d{4}-\d{2}-\d{2}/ }
     validates :advertise_end_date, presence: true, format: { with: /\d{4}-\d{2}-\d{2}/ }
     validates :doit_org_id, presence: true
+
+    validate :advertise_start_date_cannot_be_in_the_past,
+             :advertise_end_date_cannot_be_before_advertise_start_date
+
     attr_accessor :advertise_start_date, :advertise_end_date, :doit_org_id
+
+    private
+      # Custom validation methods
+      def advertise_start_date_cannot_be_in_the_past
+        errors.add :advertise_start_date, "is invalid" unless
+        advertise_start_date.match /\d{4}-\d{2}-\d{2}/ and
+        advertise_start_date > Time.current
+      end
+
+      def advertise_end_date_cannot_be_before_advertise_start_date
+        errors.add :advertise_end_date, "is invalid" unless
+        advertise_end_date.match /\d{4}-\d{2}-\d{2}/ and
+        advertise_end_date >= advertise_start_date
+      end
   end
 
   attr_writer :volunteer_op, :post_to_doit, :doit_volunteer_op
