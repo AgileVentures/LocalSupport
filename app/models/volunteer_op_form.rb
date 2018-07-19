@@ -3,9 +3,9 @@ class VolunteerOpForm
 
   class DoitVolunteerOp
     include ActiveModel::Model
-    
-    validates :advertise_start_date, presence: true
-    validates :advertise_end_date, presence: true
+
+    validates :advertise_start_date, presence: true, format: { with: /\d{4}-\d{2}-\d{2}/ }
+    validates :advertise_end_date, presence: true, format: { with: /\d{4}-\d{2}-\d{2}/ }
     validates :doit_org_id, presence: true
     attr_accessor :advertise_start_date, :advertise_end_date, :doit_org_id
   end
