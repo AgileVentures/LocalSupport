@@ -58,7 +58,7 @@ Scenario: Sign in for an existing superadmin user after org search
 
 Scenario: Sign in for an existing superadmin user after vol op search
   Given I visit the volunteer opportunities page
-  And I fill in "Search Text" with "search words" within the main body
+  And I fill in "q" with "search words" within the main body
   And I press "Search"
   And I sign in as "superadmin@example.com" with password "pppppppp"
   Then I should be on the volunteer opportunities search page
