@@ -18,7 +18,7 @@ class VolunteerOpForm
       def advertise_start_date_cannot_be_in_the_past
         errors.add :advertise_start_date, "is invalid" unless
         advertise_start_date.match iso_date_format and
-        advertise_start_date > Time.current
+        advertise_start_date.to_date >= Date.current
       end
 
       def advertise_end_date_cannot_be_before_advertise_start_date
