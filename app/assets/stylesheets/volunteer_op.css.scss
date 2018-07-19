@@ -1,3 +1,13 @@
+.volunteer-div {
+  margin: 7px 0px 10px;
+}
+
+.volunteer-header {
+  padding: 10px 20px;
+  background-color: #1F7B3D;
+  font-size: 22px;
+}
+
 .volunteer-ops-search {
   .flex-row {
     margin-bottom: 5px;
@@ -9,6 +19,7 @@
   }
 
   .field-label {
+    font-weight: bolder;
     margin-bottom: auto;
     margin-top: auto;
   }
