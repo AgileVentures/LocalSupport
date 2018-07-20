@@ -28,7 +28,7 @@ class VolunteerOpForm
 
       # Custome validaton 'helper' methods
       def iso_format? date
-        date.match /\d{4}-\d{2}-\d{2}/
+        date.match(/\d{4}-\d{2}-\d{2}/)
       end
 
       def valid_start_date?
