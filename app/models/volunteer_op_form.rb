@@ -14,21 +14,28 @@ class VolunteerOpForm
     attr_accessor :advertise_start_date, :advertise_end_date, :doit_org_id
 
     private
+
       # Custom validation methods
       def advertise_start_date_cannot_be_in_the_past
         errors.add :advertise_start_date, "is invalid" unless
-        advertise_start_date.match iso_date_format and
-        advertise_start_date.to_date >= Date.current
+        iso_format? advertise_start_date and valid_start_date?
       end
 
       def advertise_end_date_cannot_be_before_advertise_start_date
         errors.add :advertise_end_date, "is invalid" unless
-        advertise_end_date.match iso_date_format and
-        advertise_end_date >= advertise_start_date
+        iso_format? advertise_end_date and valid_end_date?
       end
 
-      def iso_date_format
-        /\d{4}-\d{2}-\d{2}/
+      def iso_format? date
+        date.match /\d{4}-\d{2}-\d{2}/
+      end
+
+      def valid_start_date?
+        advertise_start_date.to_date >= Date.current
+      end
+
+      def valid_end_date?
+        advertise_end_date >= advertise_start_date
       end
   end
 
