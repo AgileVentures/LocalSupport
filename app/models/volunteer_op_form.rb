@@ -17,15 +17,16 @@ class VolunteerOpForm
 
       # Custom validation methods
       def advertise_start_date_cannot_be_in_the_past
-        errors.add :advertise_start_date, "is invalid" unless
+        errors.add :advertise_start_date, 'is invalid' unless
         iso_format? advertise_start_date and valid_start_date?
       end
 
       def advertise_end_date_cannot_be_before_advertise_start_date
-        errors.add :advertise_end_date, "is invalid" unless
+        errors.add :advertise_end_date, 'is invalid' unless
         iso_format? advertise_end_date and valid_end_date?
       end
 
+      # Custome validaton 'helper' methods
       def iso_format? date
         date.match /\d{4}-\d{2}-\d{2}/
       end
