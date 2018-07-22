@@ -19,11 +19,6 @@ Feature: Post to doit
     And I submit a volunteer op with an arbitrary string
     Then I should see "Advertise start date is invalid" and "Advertise end date is invalid"
 
-  Scenario: Cannot post to doit with a start date in the past
-    Given I am signed in as a superadmin
-    And I submit a volunteer op with a start date in the past
-    Then I should see "Advertise start date is invalid"
-
   Scenario: Cannot post to doit with an end date before the start date
     Given I am signed in as a superadmin
     And I submit a volunteer op with an end date before the start date
