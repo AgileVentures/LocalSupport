@@ -3,9 +3,10 @@
 }
 
 .volunteer-header {
-  padding: 10px 20px;
+  padding: 5px 20px;
   background-color: #1F7B3D;
-  font-size: 27px;
+  font-family: Helvetica;
+  font-size: 2.4em;
 }
 
 .volunteer-ops-search {
@@ -34,6 +35,7 @@
   .search-text {
     margin-bottom: 0;
     width: 100%;
+    height: 40px;
   }
 
   .search-btn {
