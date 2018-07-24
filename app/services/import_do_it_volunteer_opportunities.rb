@@ -64,9 +64,10 @@ class ImportDoItVolunteerOpportunities
   end
 
   def populate_vol_op_attributes model, op
+    location = Location.new longitude: op['lng'], latitude: op['lat']
     model.source        = 'doit'
-    model.latitude      = op['lat']
-    model.longitude     = op['lng']
+    model.latitude      = location.latitude
+    model.longitude     = location.longitude
     model.title         = op['title']
     model.description   = op['description']
     model.doit_op_id    = op['id']
