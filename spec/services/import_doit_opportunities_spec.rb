@@ -23,13 +23,13 @@ describe ImportDoItVolunteerOpportunities do
     end
   end
 
-  context 'one page of 16 ops found' do
+  context 'one page of 14 ops found' do
     let(:response) { double :response, body: File.read('test/fixtures/doit1.json') }
 
-    it 'checks for presence and/or creates 16 ops' do
+    it 'checks for presence and/or creates 14 ops' do
       allow(http_party).to receive(:get).and_return(response)
       list_volunteer_opportunities
-      expect(model_klass).to have_received(:find_or_create_by).exactly(16).times
+      expect(model_klass).to have_received(:find_or_create_by).exactly(14).times
     end
 
     it 'queries the the default radius via the doit api' do
@@ -41,7 +41,7 @@ describe ImportDoItVolunteerOpportunities do
       allow(http_party).to receive(:get).and_return(response)
       list_volunteer_opportunities
       expect(model_klass).to have_received(:where).with(source: 'doit').ordered
-      expect(model_klass).to have_received(:find_or_create_by).exactly(16).times.ordered
+      expect(model_klass).to have_received(:find_or_create_by).exactly(14).times.ordered
     end
 
     context '3 mile radius query' do
@@ -56,14 +56,14 @@ describe ImportDoItVolunteerOpportunities do
     end
   end
 
-  context 'two pages of 30 ops found' do
+  context 'two pages of 28 ops found' do
     let(:response1) { double :response, body: File.read('test/fixtures/doit2.json') }
     let(:response2) { double :response, body: File.read('test/fixtures/doit3.json') }
 
-    it 'checks for presence and/or creates 30 ops' do
+    it 'checks for presence and/or creates 28 ops' do
       allow(http_party).to receive(:get).and_return(response1, response2)
       list_volunteer_opportunities
-      expect(model_klass).to have_received(:find_or_create_by).exactly(30).times
+      expect(model_klass).to have_received(:find_or_create_by).exactly(28).times
     end
 
     it 'pages correctly' do

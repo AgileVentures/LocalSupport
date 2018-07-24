@@ -14,14 +14,13 @@ module Doit
     end
 
     def call
-      options = {}
-
-      options[:headers] = {'X-API-Key' => DOIT_AUTH_TOKEN,
-                           'Content-Type' => 'application/json'}
-      options[:body] = build_request_body
-      doit_res = http_adapter.post(doit_volonteer_op_resource, options)
-      JSON.parse(doit_res.body)['data']['opportunity']['id']
-
+      options = build_request
+      begin
+        doit_res = http_adapter.post(doit_volonteer_op_resource, options)
+        JSON.parse(doit_res.body)['data']['opportunity']['id']
+      rescue => e
+        log_error e, options[:body], doit_res
+      end
     end
 
     private
@@ -43,7 +42,13 @@ module Doit
       @http_adapter = http_adapter
     end
 
-
+    def build_request
+      options = {}
+      options[:headers] = {'X-API-Key' => DOIT_AUTH_TOKEN,
+                           'Content-Type' => 'application/json'}
+      options[:body] = build_request_body
+      options
+    end
 
     # rubocop:disable Metrics/MethodLength
 
@@ -75,5 +80,14 @@ module Doit
       ]
     end
     # rubocop:enable Metrics/MethodLength
+
+    def log_error e, options_body, response
+      Rails.logger.error "Error: Occurred while processing doit post: #{options_body}"
+      if response && response.body
+        Rails.logger.error "Response from doit is: #{JSON.parse(response.body)}"
+      end
+      Rails.logger.error e.message
+      Rails.logger.error e.backtrace.join "\n"
+    end
   end
 end
