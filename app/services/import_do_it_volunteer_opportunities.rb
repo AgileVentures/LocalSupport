@@ -56,7 +56,11 @@ class ImportDoItVolunteerOpportunities
   end
 
   def internally_generated_or_outside_harrow? op
-    trace_handler.local_origin?(op['id']) || (op['location_name'] != 'Harrow')
+    trace_handler.local_origin?(op['id']) || outside_harrow?(op)
+  end
+
+  def outside_harrow? op
+    !op['locations'][0]['local_authority']['name'].downcase.include? 'harrow'
   end
 
   def populate_vol_op_attributes model, op
