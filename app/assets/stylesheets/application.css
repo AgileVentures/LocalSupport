@@ -10,6 +10,7 @@
  *= require bootstrap-switch
  *= require fullcalendar
  *= require bootstrap-datetimepicker
+ *= require recurring_select
 */
 
 body, html {
