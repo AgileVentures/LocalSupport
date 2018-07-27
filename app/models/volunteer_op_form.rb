@@ -4,23 +4,17 @@ class VolunteerOpForm
   class DoitVolunteerOp
     include ActiveModel::Model
 
-    validates :advertise_start_date, presence: true
+    validates :advertise_start_date, presence: true, format: { with: /\d{4}-\d{2}-\d{2}/ }
     validates :advertise_end_date, presence: true
     validates :doit_org_id, presence: true
 
-    validate :advertise_start_date_formatted,
-              :advertise_end_date_cannot_be_before_advertise_start_date
+    validate :advertise_end_date_cannot_be_before_advertise_start_date
 
     attr_accessor :advertise_start_date, :advertise_end_date, :doit_org_id
 
     private
 
       # Custom validation methods
-      def advertise_start_date_formatted
-        errors.add :advertise_start_date, 'is invalid' unless
-        iso_format? advertise_start_date
-      end
-
       def advertise_end_date_cannot_be_before_advertise_start_date
         errors.add :advertise_end_date, 'is invalid' unless
         iso_format? advertise_end_date and valid_end_date?
