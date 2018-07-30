@@ -55,3 +55,8 @@ end
 When("I click on the {string} text field") do |string|
   find(string).click
 end
+
+Then(/^I should be on the edit page for event "(.*)"/) do |event|
+  event = Event.find_by(title: event)
+  expect(current_path).to eq("/events/#{event[:id]}/edit")
+end
