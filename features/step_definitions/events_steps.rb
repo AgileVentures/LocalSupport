@@ -60,3 +60,8 @@ Then(/^I should be on the edit page for event "(.*)"/) do |event|
   event = Event.find_by(title: event)
   expect(current_path).to eq("/events/#{event[:id]}/edit")
 end
+
+Then(/^I should be on the show page for event "(.*)"/) do |event|
+  event = Event.find_by(title: event)
+  expect(current_path).to eq("/events/#{event[:id]}")
+end

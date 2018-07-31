@@ -37,7 +37,15 @@ class EventsController < ApplicationController
     @current_user = current_user
   end
 
-  def update; end
+  def update
+    @event = Event.find_by_id(params[:id])
+    @event.update(event_params)
+    if @event.save
+      redirect_to event_path(@event)
+    else
+      flash[:warning] = 'Your event was not updated successfully'
+    end
+  end
 
   private
 

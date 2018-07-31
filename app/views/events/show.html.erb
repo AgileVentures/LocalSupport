@@ -5,6 +5,6 @@
   <p>End date: <%=@event.end_date.strftime("%A, %B %d, %Y at %H:%M") if @event.end_date%> </p>
 </div>
 <% if current_user %>
-  <%= link_to("Edit", edit_event_path(@event.id), class: "btn btn-primary") %>
+  <%= link_to('Edit', edit_event_path(@event.id), class: 'btn btn-primary') %>
 <% end %>
 <%= render partial: 'shared/map_scripts', locals: {markers: @markers} %>
