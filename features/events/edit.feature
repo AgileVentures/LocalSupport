@@ -27,5 +27,6 @@ Feature: Editing an event from the event show page
     And I fill in "event_start_date" with "2030-10-20 10:30:14"
     And I fill in "event_end_date" with "2030-10-20 17:00:00"
     And I press "Update Event"
+    Then I should see "Event has been succesfully updated"
     Then I should be on the show page for event "Lazier Weekend"
     And I should see "Lazier Weekend"
