@@ -1,8 +1,9 @@
 class EventsController < ApplicationController
   add_breadcrumb 'Events', :events_path
   layout 'two_columns_with_map'
-  before_action :logged_in_user, only: [:new, :create]
-  before_action :superadmin?, except:[:show, :index]
+  before_action :logged_in_user, except:[:show, :index]
+  before_action :superadmin?, except:[:show, :index, :edit, :update]
+  before_action :load_event, only: [:show, :edit, :update]
 
   def index
     query = params['q']
@@ -26,13 +27,29 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find_by_id(params[:id])
     add_breadcrumb @event.title
     @markers = BuildMarkersWithInfoWindow
                    .with(Event.build_by_coordinates([@event]), self)
   end
 
+  def edit
+  end
+
+  def update
+    if @event.update(event_params)
+      flash[:notice] = 'Event successfully updated'
+      redirect_to events_path(@event)
+    else
+      flash.now[:error] = 'Error updating Event'
+      render :edit
+    end
+  end
+
   private
+
+  def load_event
+    @event = Event.find_by_id(params[:id])
+  end
 
   def event_success
     'Event was successfully created'
