@@ -65,3 +65,9 @@ Then(/^I should be on the show page for event "(.*)"/) do |event|
   event = Event.find_by(title: event)
   expect(current_path).to eq("/events/#{event[:id]}")
 end
+
+When(/^I edit the details for "(.*)"/) do |event|
+  event = Event.find_by(title: event)
+  fill_in "event_title", with: "Lazier Weekend"
+  click_button("Update Event")
+end

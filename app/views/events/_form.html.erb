@@ -29,8 +29,8 @@
               <% if @event.errors[:organisation_id].any?%>
                   <p class="error"><%= @event.errors[:organisation_id].first %></p>
               <% end %>
-              <%= f.collection_select :organisation_id, Organisation.order(:name), :id, :name, 
-                  @current_user.organisation.present? ? { selected: @current_user.organisation.id } : {:prompt => 'Please select an Organisation'} %>
+              <%= f.collection_select :organisation_id, Organisation.order(:name), :id, :name,
+                  current_user.organisation.present? ? { selected: current_user.organisation.id } : {:prompt => 'Please select an Organisation'} %>
       </td>
       </tr>
   </table>

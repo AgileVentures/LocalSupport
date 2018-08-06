@@ -31,13 +31,10 @@ class EventsController < ApplicationController
                    .with(Event.build_by_coordinates([@event]), self)
   end
 
-  def edit
-    @current_user = current_user
-  end
+  def edit; end
 
   def update
-    @event.update(event_params)
-    if @event.save
+    if @event.update(event_params)
       redirect_to event_path(@event), notice: 'Event has been succesfully updated'
     else
       flash[:warning] = 'Your event was not updated successfully'
