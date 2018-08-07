@@ -24,6 +24,7 @@ Feature: Editing an event from the event show page
     Then I visit the edit page for the event titled "Lazy Weekend"
     When I edit the details for "Lazy Weekend"
     Then I should see "Event has been succesfully updated"
+    And I should see "Lazier Weekend"
 
   Scenario: As a visitor, I cannot edit an event
     Given I am not logged in as any user
