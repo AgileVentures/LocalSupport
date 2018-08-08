@@ -1,9 +1,9 @@
 class EventsController < ApplicationController
   add_breadcrumb 'Events', :events_path
   layout 'two_columns_with_map'
-  before_action :logged_in_user, only: [:new, :create]
-  before_action :superadmin?, except:[:show, :index]
-
+  before_action :logged_in_user, only: [:new, :create, :edit, :update]
+  before_action :superadmin?, except:[:show, :index, :edit, :update]
+  before_action :set_event, only: [:show, :edit, :update]
   def index
     query = params['q']
     @events = query.blank? ? Event.upcoming(10) : Event.search(query)
@@ -26,10 +26,19 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find_by_id(params[:id])
     add_breadcrumb @event.title
     @markers = BuildMarkersWithInfoWindow
                    .with(Event.build_by_coordinates([@event]), self)
+  end
+
+  def edit; end
+
+  def update
+    if @event.update(event_params)
+      redirect_to event_path(@event), notice: 'Event has been succesfully updated'
+    else
+      flash[:warning] = 'Your event was not updated successfully'
+    end
   end
 
   private
@@ -51,5 +60,9 @@ class EventsController < ApplicationController
     return if current_user.try(:superadmin?)
     flash[:notice] = PERMISSION_DENIED
     redirect_to events_path and return false
+  end
+
+  def set_event
+    @event = Event.find(params[:id])
   end
 end
