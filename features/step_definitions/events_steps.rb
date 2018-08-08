@@ -66,6 +66,12 @@ Then(/^I should be on the show page for event "(.*)"/) do |event|
   expect(current_path).to eq("/events/#{event[:id]}")
 end
 
+When(/^I edit with invalid details for "(.*)"/) do |event|
+  event = Event.find_by(title: event)
+  fill_in "event_title", with: ""
+  click_button("Update Event")
+end
+
 When(/^I edit the details for "(.*)"/) do |event|
   event = Event.find_by(title: event)
   fill_in "event_title", with: "Lazier Weekend"
