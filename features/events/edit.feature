@@ -26,6 +26,12 @@ Feature: Editing an event from the event show page
     Then I should see "Event has been succesfully updated"
     And I should see "Lazier Weekend"
 
+  Scenario: As a logged in user, I should get an error when update event with invalid details
+    Given that I am logged in as any user
+    Then I visit the edit page for the event titled "Lazy Weekend"
+    When I edit with invalid details for "Lazy Weekend"
+    Then I should see "Your event was not updated successfully"
+
   Scenario: As a visitor, I cannot edit an event
     Given I am not logged in as any user
     And I visit "Open Source Weekend" event

@@ -38,6 +38,7 @@ class EventsController < ApplicationController
       redirect_to event_path(@event), notice: 'Event has been succesfully updated'
     else
       flash[:warning] = 'Your event was not updated successfully'
+      render :edit
     end
   end
 
