@@ -40,7 +40,9 @@ https://github.com/AgileVentures/AgileVentures/blob/master/JOINING_A_PROJECT.md
 Development Process
 ------------------
 
-Our default working branch is `develop`.  We do work by creating branches off `develop` for new features and bugfixes.  Any feature should include appropriate Cucumber acceptance tests and RSpec unit tests.  We try to avoid view and controller specs, and focus purely on unit tests at the model and service level where possible.  A bugfix may include an acceptance test depending on where the bug occurred, but fixing a bug should start with the creation of a test that replicates the bug, so that any bugfix submission will include an appropriate test as well as the fix itself.
+If you start working on something selected from Pivotal Tracker, please click "start" to indicate to others that you are working on the ticket so that others don't accidentally start in parallel without checking in with you.
+
+Our default working branch on Github is `develop`.  We do work by creating branches off `develop` for new features and bugfixes.  Any feature should include appropriate Cucumber acceptance tests and RSpec unit tests.  We try to avoid view and controller specs, and focus purely on unit tests at the model and service level where possible.  A bugfix may include an acceptance test depending on where the bug occurred, but fixing a bug should start with the creation of a test that replicates the bug, so that any bugfix submission will include an appropriate test as well as the fix itself.
 
 
 Each developer will usually work with a [fork](https://help.github.com/articles/fork-a-repo/) of the [main repository on Agile Ventures](https://github.com/AgileVentures/LocalSupport). Before starting work on a new feature or bugfix, please ensure you have [synced your fork to upstream/develop](https://help.github.com/articles/syncing-a-fork/):
@@ -93,6 +95,10 @@ makes Capybara check for visibility more robust [Finishes #112900047]
 which will close the relevant Pivotal Tracker ticket when we merge in your pull-request.   The idea is that the ticket is finished when the team has reviewed and merged the PR, not at the point that the individual developer thinks they are first finished with the ticket.
 
 Please also placce a hyperlink to the relevant Pivotal Tracker ticket in the pull request description so that anyone reviewing the ticket can click straight through to the tracker ticket.
+
+### Delivering and Accepting
+
+If your git comments have included the correct syntax the corresponding pivotal tracker ticket should be marked as "finished" when the pull request is merged.  If this fails we may need to manually mark the ticket as finished, but it should never be marked as "finished" until the PR is merged.  After it is merged and the ticket is "finished", it will be "delivered" when it is deployed to the production system, so there's never any need for anyone besides the person doing the deploy to click "delivered".  Finally the client is the one who signs off on whether a ticket is "accepted", or in cases of chores/bugs that the client is unclear on it is the project manager.
 
 Code Style
 -------------
