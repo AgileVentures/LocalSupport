@@ -99,7 +99,7 @@ gem 'redcarpet'
 gem 'url_validator', git: 'https://github.com/AgileVentures/url_validator.git'
 
 gem 'httparty'
-gem 'sucker_punch', '~> 2.0' # async job
+gem 'sucker_punch', '~> 2.1' # async job
 gem 'rails_autolink'
 gem 'paranoia', '~> 2.4'
 
