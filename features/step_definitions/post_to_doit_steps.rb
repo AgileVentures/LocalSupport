@@ -29,8 +29,8 @@ Given "I submit a volunteer op with valid dates" do
   org = Organisation.find_by_name("Friendly")
   visit new_organisation_volunteer_op_path org
   check 'volunteer_op[post_to_doit]', id: 'check_to_doit'
-  fill_in 'volunteer_op[advertise_start_date]', with: Date.current.strftime('%Y-%m-%d')
-  fill_in 'volunteer_op[advertise_end_date]', with: Date.tomorrow.strftime('%Y-%m-%d')
+  fill_in 'volunteer_op[advertise_start_date]', with: Date.current.strftime('%d-%m-%Y')
+  fill_in 'volunteer_op[advertise_end_date]', with: Date.tomorrow.strftime('%d-%m-%Y')
   click_on 'Create a Volunteer Opportunity'
 end
 

@@ -1,7 +1,7 @@
 Given /^today's date is (\d{4}-\d{2}-\d{2})$/ do |date_string|
-  Timecop.travel(Date.strptime(date_string, '%Y-%m-%d'))
+  Timecop.travel(Date.strptime(date_string, '%d-%m-%Y'))
 end
 
 Given /^the date is "(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})"$/ do |date_string|
-  Timecop.travel(Date.strptime(date_string, '%Y-%m-%d %H:%M:%S'))
+  Timecop.travel(Date.strptime(date_string, '%d-%m-%Y %H:%M:%S'))
 end

@@ -20,7 +20,7 @@ module Queries
       end
     end
 
-    FORMAT = '%Y-%m-%d %H:%M:%S.%N'
+    FORMAT = '%d-%m-%Y %H:%M:%S.%N'
 
     def self.add_recently_updated_and_has_owner(organisations)
       one_year_ago = Time.current.advance(years: -1)
