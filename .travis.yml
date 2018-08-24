@@ -6,6 +6,7 @@ rvm:
 - 2.5.1
 sudo: false
 cache:
+  yarn: true
   directories:
   - travis_phantomjs
 before_install:
@@ -26,7 +27,6 @@ before_install:
 - sudo apt-get update -qq
 - sudo apt-get install -y -qq yarn=1.9.4-1
 before_script:
-  - yarn install
   - ./install.sh
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
