@@ -60,6 +60,7 @@ group :test do
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
   gem 'show_me_the_cookies', '~> 4.0'
+  gem 'rubocop-rspec', '>=1.28'
 end
 
 group :production do
