@@ -248,3 +248,7 @@ Given("I visit {string} organisation propose edit page") do |name|
   id = Organisation.find_by(name: name).id
   visit new_organisation_proposed_organisation_edit_path :organisation_id => id
 end
+
+Given(/^I am not logged in as any user/) do
+  visit '/'
+end

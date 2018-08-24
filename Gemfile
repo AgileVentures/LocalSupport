@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.5.0'
+ruby '2.5.1'
 gem 'rails', '~> 5.1'
 gem 'pg', '~> 1.0'
-gem 'devise', '~> 4.4'
+gem 'devise', '~> 4.5'
 gem 'devise_invitable', '~> 1.7'
 gem 'heroku-api'
 gem 'sprockets', '~> 3.7'
@@ -60,6 +60,7 @@ group :test do
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
   gem 'show_me_the_cookies', '~> 4.0'
+  gem 'rubocop-rspec', '>=1.28'
 end
 
 group :production do
@@ -99,7 +100,7 @@ gem 'redcarpet'
 gem 'url_validator', git: 'https://github.com/AgileVentures/url_validator.git'
 
 gem 'httparty'
-gem 'sucker_punch', '~> 2.0' # async job
+gem 'sucker_punch', '~> 2.1' # async job
 gem 'rails_autolink'
 gem 'paranoia', '~> 2.4'
 
