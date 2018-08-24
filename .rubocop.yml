@@ -554,13 +554,13 @@ Style/WhileUntilDo:
 # enable for later challenge
 
   # Align ends correctly.
-Lint/EndAlignment:
+Layout/EndAlignment:
   # The value `keyword` means that `end` should be aligned with the matching
   # keyword (if, while, etc.).
   # The value `variable` means that in assignments, `end` should be aligned
   # with the start of the variable on the left hand side of `=`. In all other
   # situations, `end` should still be aligned with the keyword.
-  AlignWith: keyword
+  EnforcedStyleAlignWith: keyword
   SupportedStyles:
     - keyword
     - variable
@@ -585,7 +585,7 @@ Lint/AssignmentInCondition:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#safe-assignment-in-condition'
   Enabled: true
 
-Lint/BlockAlignment:
+Layout/BlockAlignment:
   Description: 'Align block ends correctly.'
   Enabled: true
 
@@ -593,7 +593,7 @@ Lint/CircularArgumentReference:
   Description: "Don't refer to the keyword argument in the default value."
   Enabled: true
 
-Lint/ConditionPosition:
+Layout/ConditionPosition:
   Description: >-
                  Checks for condition placed in a confusing position relative to
                  the keyword.
@@ -604,7 +604,7 @@ Lint/Debugger:
   Description: 'Check for debugger calls.'
   Enabled: true
 
-Lint/DefEndAlignment:
+Layout/DefEndAlignment:
   Description: 'Align ends corresponding to defs correctly.'
   Enabled: true
 
@@ -632,7 +632,7 @@ Lint/EmptyInterpolation:
   Description: 'Checks for empty string interpolation.'
   Enabled: true
 
-Lint/EndAlignment:
+Layout/EndAlignment:
   Description: 'Align ends correctly.'
   Enabled: true
 
@@ -640,7 +640,7 @@ Lint/EndInMethod:
   Description: 'END blocks should not be placed inside method definitions.'
   Enabled: true
 
-Lint/DefEndAlignment:
+Layout/DefEndAlignment:
   # The value `def` means that `end` should be aligned with the def keyword.
   # The value `start_of_line` means that `end` should be aligned with method
   # calls like `private`, `public`, etc, if present in front of the `def`
@@ -909,7 +909,7 @@ Layout/EmptyLines:
   Description: "Don't use several empty lines in a row."
   Enabled: false
 
-Style/EmptyLinesAroundAccessModifier:
+Layout/EmptyLinesAroundAccessModifier:
   Description: "Keep blank lines around access modifiers."
   Enabled: false
 

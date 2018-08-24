@@ -17,9 +17,11 @@ RUN bundle install
 
 COPY package.json /LocalSupport/package.json
 COPY package-lock.json /LocalSupport/package-lock.json
-COPY bower.json /LocalSupport/bower.json
+COPY yarn.lock /LocalSupport/yarn.lock
+
 COPY check-version.js /LocalSupport/check-version.js
-RUN npm install --unsafe-perm
+RUN npm install -g yarn --unsafe-perm
+RUN yarn install
 RUN npm install -g phantomjs-prebuilt --unsafe-perm
 
 COPY . /LocalSupport
