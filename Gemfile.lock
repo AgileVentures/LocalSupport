@@ -79,13 +79,13 @@ GEM
     buftok (0.2.0)
     builder (3.2.3)
     byebug (10.0.2)
-    capybara (2.18.0)
+    capybara (3.3.0)
       addressable
       mini_mime (>= 0.1.3)
-      nokogiri (>= 1.3.3)
-      rack (>= 1.0.0)
-      rack-test (>= 0.5.4)
-      xpath (>= 2.0, < 4.0)
+      nokogiri (~> 1.8)
+      rack (>= 1.6.0)
+      rack-test (>= 0.6.3)
+      xpath (~> 3.1)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     cliver (0.3.2)
@@ -293,6 +293,7 @@ GEM
       eventmachine_httpserver
       http_parser.rb (~> 0.6.0)
       multi_json
+    puma (3.11.4)
     rack (2.0.5)
     rack-protection (2.0.3)
       rack
@@ -488,7 +489,7 @@ DEPENDENCIES
   bootstrap_sortable_rails (~> 1.11.2)
   breadcrumbs_on_rails
   byebug
-  capybara (~> 2.18)
+  capybara (~> 3.3)
   capybara-webkit!
   coffee-rails (= 4.2.2)
   cucumber-rails
@@ -524,6 +525,7 @@ DEPENDENCIES
   phantomjs
   poltergeist
   puffing-billy (~> 1.1)
+  puma
   rack_session_access
   railroady
   rails (~> 5.1)
