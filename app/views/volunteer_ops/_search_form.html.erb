@@ -1,7 +1,7 @@
 <%= form_tag(search_volunteer_ops_path, :method => "get", class: "volunteer-ops-search") do %>
   <div class="flex-row">
     <div class="right-side">
-        <%= text_field_tag(:q, @query, class: 'search-text', placeholder: 'Enter search term...') %>
+        <%= text_field_tag(:q, @query, class: 'search-text', placeholder: 'Help the disabled, elderly, homeless, youth...') %>
         <%= submit_tag("Search", class: 'btn btn-success search-btn') %>
     </div>
   </div>
