@@ -6,7 +6,7 @@ Feature: Importing DoIt Volunteer Ops
 
   Scenario: Check 3 miles
     Given I run the import doit service with a radius of 3 miles
-    Then there should be 72 doit volunteer ops stored
+    Then there should be 63 doit volunteer ops stored
     And all imported volunteer ops have latitude and longitude coordinates
 
   Scenario: Check import removes ops that are no longer on doit

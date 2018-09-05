@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.5.0'
+ruby '2.5.1'
 gem 'rails', '~> 5.1'
-gem 'pg', '~> 1.0'
-gem 'devise', '~> 4.4'
+gem 'pg', '~> 1.1'
+gem 'devise', '~> 4.5'
 gem 'devise_invitable', '~> 1.7'
 gem 'heroku-api'
 gem 'sprockets', '~> 3.7'
@@ -19,7 +19,7 @@ gem 'puma'
 
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do
-  gem 'faker', '~> 1.8', '>= 1.8.7'
+  gem 'faker', '~> 1.9'
   gem 'timecop'
   gem 'database_cleaner', '1.7.0'
   gem 'launchy'
@@ -28,10 +28,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
   gem 'execjs'
-  gem 'aruba', '~> 0.14.5'
+  gem 'aruba', '~> 0.14.6'
   gem 'byebug'
   gem 'rack_session_access'
-  gem 'jasmine', '~> 3.1'
+  gem 'jasmine', '~> 3.2'
   gem 'jasmine-jquery-rails', '2.0.3'
   gem 'rails-controller-testing'
   #gem 'better_errors'
@@ -61,6 +61,7 @@ group :test do
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
   gem 'show_me_the_cookies', '~> 4.0'
+  gem 'rubocop-rspec', '>=1.28'
 end
 
 group :production do
@@ -100,7 +101,7 @@ gem 'redcarpet'
 gem 'url_validator', git: 'https://github.com/AgileVentures/url_validator.git'
 
 gem 'httparty'
-gem 'sucker_punch', '~> 2.0' # async job
+gem 'sucker_punch', '~> 2.1' # async job
 gem 'rails_autolink'
 gem 'paranoia', '~> 2.4'
 

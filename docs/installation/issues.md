@@ -1,7 +1,7 @@
 ## Issues
 
 ### Heroku
-See [the notes on deploying to heroku](https://github.com/AgileVentures/LocalSupport/wiki/Deploying-to-Heroku)
+See [the notes on deploying to heroku](https://github.com/AgileVentures/LocalSupport/blob/develop/docs/heroku.md)
 
 ### PostgreSQL Install
 

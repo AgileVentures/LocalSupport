@@ -2,10 +2,10 @@ development: &dev
   adapter: postgresql
   encoding: unicode
   database: ls_development
-  pool: 5
-  username: psotgres
-  password: 
-  #host: localhost
+  host: <%= ENV['DB_HOST'] || ""%>
+  pool: 20
+  username: postgres
+  password:
 test: &test
   <<: *dev
   database: ls_test

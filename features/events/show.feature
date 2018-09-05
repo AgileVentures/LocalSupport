@@ -25,3 +25,17 @@ Feature: View one event
     Then I should see "Open Source Weekend"
     And I should see "Good for everyone"
     And I should see "Sunday, October 20, 2030 at 10:30"
+
+  @javascript @vcr @billy
+  Scenario: User sees event location
+    Given I visit the events page
+    When I click "Open Source Weekend"
+    Then I should see the following event markers in the map:
+      | Cats Are Us  |
+
+  @javascript @vcr @billy
+  Scenario: User sees event's description on the map
+    Given I visit the events page
+    When I click "Open Source Weekend"
+    Then I should see an infowindow when I click on the event map markers:
+      | Good for everyone |
