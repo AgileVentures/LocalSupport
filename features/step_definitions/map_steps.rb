@@ -69,7 +69,7 @@ def check_for_org_info_box tbl, selector
 end
 
 def check_for_volop_info_box(tbl, selector, check_tbl_length = true)
-  expect(page).to have_css(selector, tbl.length) if check_tbl_length
+  expect(page).to have_css(selector, count: tbl.length) if check_tbl_length
   VolunteerOp.where(title: tbl)
         .map {|volop| [volop.id, volop.organisation.name, volop.title,
           smart_truncate(volop.description, 44), volop.organisation.slug]}
@@ -98,7 +98,7 @@ def check_info_box_link_opens_in_new_page(tbl, selector)
 end
 
 def check_for_no_org_info_box(tbl, selector, check_tbl_length = true)
-  expect(page).to have_css(selector, tbl.length) if check_tbl_length
+  expect(page).to have_css(selector, count: tbl.length) if check_tbl_length
   Organisation.where(name: tbl)
         .pluck(:name, :description, :id, :slug)
         .map {|name, desc, id, frdly_id| [name, smart_truncate(desc, 42), id, frdly_id]}

@@ -58,11 +58,12 @@ Feature: Super Admin creating an event
     Given I am signed in as a superadmin
     And I visit the new event page
     When I click on the "#event_end_date" text field
-    Then I should see "Su Mo Tu We Th Fr Sa"
+    Then I should see "Su Mo Tu We Th Fr Sa" in ".bootstrap-datetimepicker-widget"
 
 @javascript
  Scenario:
     Given I am signed in as a superadmin
     And I visit the new event page
     When I click on the "#event_start_date" text field
-    Then I should see "Su Mo Tu We Th Fr Sa"
+    Then I should see "Su Mo Tu We Th Fr Sa" in ".bootstrap-datetimepicker-widget"
+    

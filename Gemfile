@@ -12,6 +12,7 @@ gem 'fullcalendar-rails'
 gem 'bootstrap3-datetimepicker-rails'
 gem 'momentjs-rails'
 gem 'jbuilder'
+gem 'puma'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -46,7 +47,7 @@ end
 group :test do
   gem 'cucumber-rails', require: false
   gem 'cucumber-rails-training-wheels'
-  gem 'capybara', '~> 2.18'
+  gem 'capybara', '~> 3.3'
   gem 'capybara-webkit', git: 'https://github.com/thoughtbot/capybara-webkit.git'
   gem 'nokogiri', '~> 1.8'
   gem 'factory_bot_rails'

@@ -32,7 +32,7 @@ end
 Capybara.default_selector = :css
 Capybara.default_max_wait_time = 3
 Capybara.asset_host = 'http://localhost:3000'
-
+Capybara.server = :puma
 Capybara.javascript_driver = :webkit
 Capybara::Webkit.configure(&:block_unknown_urls)
 
