@@ -1,15 +1,14 @@
-<div>
-  <h1>Harrow Volunteering Opportunities</h1>
-</div> 
+<div class="container-fluid">
+  <h1 class="volunteer-header text-center">Want to volunteer in Harrow?</h1>
+</div>
 <%= render 'search_form' %>
-<br>
 <div id='orgs_scroll' style="height:410px;width:100%;border:1px solid #ccc;overflow:scroll;">
   <div class='table table-bordered'>
     <table>
       <% @volunteer_ops.each do |op| %>
           <tr>
             <td class='center-map-on-op'
-                data-lat="<%= op.latitude %>" 
+                data-lat="<%= op.latitude %>"
                 data-lng="<%= op.longitude %>"  >
               <strong>
                 <%= link_to_vol_op(op, :title) %>
