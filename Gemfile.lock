@@ -69,7 +69,7 @@ GEM
       thor (~> 0.19)
     ast (2.4.0)
     backports (3.11.3)
-    bcrypt (3.1.11)
+    bcrypt (3.1.12)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
     bootstrap3-datetimepicker-rails (4.17.47)
@@ -79,13 +79,13 @@ GEM
     buftok (0.2.0)
     builder (3.2.3)
     byebug (10.0.2)
-    capybara (2.18.0)
+    capybara (3.7.1)
       addressable
       mini_mime (>= 0.1.3)
-      nokogiri (>= 1.3.3)
-      rack (>= 1.0.0)
-      rack-test (>= 0.5.4)
-      xpath (>= 2.0, < 4.0)
+      nokogiri (~> 1.8)
+      rack (>= 1.6.0)
+      rack-test (>= 0.6.3)
+      xpath (~> 3.1)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     cliver (0.3.2)
@@ -129,7 +129,7 @@ GEM
     cucumber-wire (0.0.1)
     database_cleaner (1.7.0)
     debug_inspector (0.0.3)
-    devise (4.4.3)
+    devise (4.5.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 6.0)
@@ -162,10 +162,10 @@ GEM
     eventmachine_httpserver (0.2.1)
     excon (0.60.0)
     execjs (2.7.0)
-    factory_bot (4.10.0)
+    factory_bot (4.11.0)
       activesupport (>= 3.0.0)
-    factory_bot_rails (4.10.0)
-      factory_bot (~> 4.10.0)
+    factory_bot_rails (4.11.0)
+      factory_bot (~> 4.11.0)
       railties (>= 3.0.0)
     faker (1.9.1)
       i18n (>= 0.7)
@@ -202,17 +202,18 @@ GEM
     http_parser.rb (0.6.0)
     httparty (0.16.2)
       multi_xml (>= 0.5.2)
-    i18n (1.0.1)
+    i18n (1.1.0)
       concurrent-ruby (~> 1.0)
     idn-ruby (0.1.0)
     jar_wrapper (0.1.8)
       zip
-    jasmine (3.1.0)
-      jasmine-core (= 3.1.0)
+    jaro_winkler (1.5.1)
+    jasmine (3.2.0)
+      jasmine-core (= 3.2.0)
       phantomjs
       rack (>= 1.2.1)
       rake
-    jasmine-core (3.1.0)
+    jasmine-core (3.2.0)
     jasmine-jquery-rails (2.0.3)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
@@ -255,7 +256,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mini_mime (1.0.0)
+    mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     momentjs-rails (2.20.1)
@@ -274,16 +275,16 @@ GEM
     parallel (1.12.1)
     paranoia (2.4.1)
       activerecord (>= 4.0, < 5.3)
-    parser (2.5.0.3)
+    parser (2.5.1.2)
       ast (~> 2.4.0)
-    pg (1.0.0)
+    pg (1.1.2)
     phantomjs (2.1.1.0)
-    poltergeist (1.18.0)
+    poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
-    powerpack (0.1.1)
-    public_suffix (3.0.2)
+    powerpack (0.1.2)
+    public_suffix (3.0.3)
     puffing-billy (1.1.2)
       addressable (~> 2.5)
       em-http-request (~> 1.1, >= 1.1.0)
@@ -292,6 +293,7 @@ GEM
       eventmachine_httpserver
       http_parser.rb (~> 0.6.0)
       multi_json
+    puma (3.12.0)
     rack (2.0.5)
     rack-protection (2.0.3)
       rack
@@ -367,16 +369,19 @@ GEM
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
-    rubocop (0.53.0)
+    rubocop (0.58.2)
+      jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
-      parser (>= 2.5)
+      parser (>= 2.5, != 2.5.1.1)
       powerpack (~> 0.1)
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
     rubocop-git (0.1.3)
       rubocop (>= 0.24.1)
-    ruby-progressbar (1.9.0)
+    rubocop-rspec (1.29.1)
+      rubocop (>= 0.58.0)
+    ruby-progressbar (1.10.0)
     safe_yaml (1.0.4)
     sass (3.5.5)
       sass-listen (~> 4.0.0)
@@ -418,8 +423,8 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sucker_punch (2.0.4)
-      concurrent-ruby (~> 1.0.0)
+    sucker_punch (2.1.1)
+      concurrent-ruby (~> 1.0)
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
       ref
@@ -448,13 +453,13 @@ GEM
       unf (~> 0.1.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.17)
+    uglifier (4.1.18)
       execjs (>= 0.3.0, < 3)
     underscore-rails (1.8.3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
-    unicode-display_width (1.3.0)
+    unicode-display_width (1.4.0)
     unicorn (5.4.1)
       kgio (~> 2.6)
       raindrops (~> 0.7)
@@ -484,13 +489,13 @@ DEPENDENCIES
   bootstrap_sortable_rails (~> 1.11.2)
   breadcrumbs_on_rails
   byebug
-  capybara (~> 2.18)
+  capybara (~> 3.7)
   capybara-webkit!
   coffee-rails (= 4.2.2)
   cucumber-rails
   cucumber-rails-training-wheels
   database_cleaner (= 1.7.0)
-  devise (~> 4.4)
+  devise (~> 4.5)
   devise_invitable (~> 1.7)
   dotenv-rails
   execjs
@@ -503,7 +508,7 @@ DEPENDENCIES
   geocoder
   heroku-api
   httparty
-  jasmine (~> 3.1)
+  jasmine (~> 3.2)
   jasmine-jquery-rails (= 2.0.3)
   jbuilder
   jquery-rails
@@ -516,10 +521,11 @@ DEPENDENCIES
   newrelic_rpm
   nokogiri (~> 1.8)
   paranoia (~> 2.4)
-  pg (~> 1.0)
+  pg (~> 1.1)
   phantomjs
   poltergeist
   puffing-billy (~> 1.1)
+  puma
   rack_session_access
   railroady
   rails (~> 5.1)
@@ -530,6 +536,7 @@ DEPENDENCIES
   rspec-activemodel-mocks
   rspec-rails
   rubocop-git
+  rubocop-rspec (>= 1.28)
   sass-rails (~> 5.0)
   selenium
   selenium-client
@@ -538,7 +545,7 @@ DEPENDENCIES
   simplecov
   sinatra
   sprockets (~> 3.7)
-  sucker_punch (~> 2.0)
+  sucker_punch (~> 2.1)
   therubyracer
   timecop
   twitter (~> 6.2)

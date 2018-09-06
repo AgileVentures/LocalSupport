@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.5.0'
+ruby '2.5.1'
 gem 'rails', '~> 5.1'
-gem 'pg', '~> 1.0'
-gem 'devise', '~> 4.4'
+gem 'pg', '~> 1.1'
+gem 'devise', '~> 4.5'
 gem 'devise_invitable', '~> 1.7'
 gem 'heroku-api'
 gem 'sprockets', '~> 3.7'
@@ -12,6 +12,7 @@ gem 'fullcalendar-rails'
 gem 'bootstrap3-datetimepicker-rails'
 gem 'momentjs-rails'
 gem 'jbuilder'
+gem 'puma'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -30,7 +31,7 @@ group :development, :test do
   gem 'aruba', '~> 0.14.6'
   gem 'byebug'
   gem 'rack_session_access'
-  gem 'jasmine', '~> 3.1'
+  gem 'jasmine', '~> 3.2'
   gem 'jasmine-jquery-rails', '2.0.3'
   gem 'rails-controller-testing'
   #gem 'better_errors'
@@ -46,7 +47,7 @@ end
 group :test do
   gem 'cucumber-rails', require: false
   gem 'cucumber-rails-training-wheels'
-  gem 'capybara', '~> 2.18'
+  gem 'capybara', '~> 3.7'
   gem 'capybara-webkit', git: 'https://github.com/thoughtbot/capybara-webkit.git'
   gem 'nokogiri', '~> 1.8'
   gem 'factory_bot_rails'
@@ -60,6 +61,7 @@ group :test do
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
   gem 'show_me_the_cookies', '~> 4.0'
+  gem 'rubocop-rspec', '>=1.28'
 end
 
 group :production do
@@ -99,7 +101,7 @@ gem 'redcarpet'
 gem 'url_validator', git: 'https://github.com/AgileVentures/url_validator.git'
 
 gem 'httparty'
-gem 'sucker_punch', '~> 2.0' # async job
+gem 'sucker_punch', '~> 2.1' # async job
 gem 'rails_autolink'
 gem 'paranoia', '~> 2.4'
 
