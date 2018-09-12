@@ -267,7 +267,7 @@ GEM
     multipart-post (2.0.0)
     mustermann (1.0.2)
     naught (1.1.0)
-    newrelic_rpm (5.3.0.346)
+    newrelic_rpm (5.4.0.347)
     nio4r (2.3.0)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
