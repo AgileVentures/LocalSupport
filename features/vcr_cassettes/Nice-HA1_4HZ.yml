@@ -10,7 +10,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
       User-Agent:
       - Ruby
   response:
@@ -21,23 +21,25 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Wed, 27 Jan 2016 21:51:34 GMT
+      - Tue, 18 Sep 2018 21:02:49 GMT
       Expires:
-      - Thu, 28 Jan 2016 21:51:34 GMT
-      Cache-Control:
-      - public, max-age=86400
+      - Wed, 19 Sep 2018 21:02:49 GMT
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Server:
       - mafe
       Content-Length:
-      - '516'
+      - '557'
       X-Xss-Protection:
       - 1; mode=block
       X-Frame-Options:
       - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '192'
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: |
         {
            "results" : [
@@ -56,17 +58,17 @@ http_interactions:
                     {
                        "long_name" : "Harrow",
                        "short_name" : "Harrow",
-                       "types" : [ "locality", "political" ]
-                    },
-                    {
-                       "long_name" : "Harrow",
-                       "short_name" : "Harrow",
                        "types" : [ "postal_town" ]
                     },
                     {
                        "long_name" : "Greater London",
                        "short_name" : "Greater London",
                        "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
                     },
                     {
                        "long_name" : "United Kingdom",
@@ -79,30 +81,40 @@ http_interactions:
                        "types" : [ "postal_code" ]
                     }
                  ],
-                 "formatted_address" : "30 Pinner Rd, Harrow, Greater London HA1 4HZ, UK",
+                 "formatted_address" : "30 Pinner Rd, Harrow HA1 4HZ, UK",
                  "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.58145409999999,
+                          "lng" : -0.3435773
+                       },
+                       "southwest" : {
+                          "lat" : 51.5813139,
+                          "lng" : -0.3437134
+                       }
+                    },
                     "location" : {
-                       "lat" : 51.5813502,
-                       "lng" : -0.3436644
+                       "lat" : 51.5813746,
+                       "lng" : -0.3436476
                     },
                     "location_type" : "ROOFTOP",
                     "viewport" : {
                        "northeast" : {
-                          "lat" : 51.58269918029149,
-                          "lng" : -0.3423154197084979
+                          "lat" : 51.5827329802915,
+                          "lng" : -0.342296369708498
                        },
                        "southwest" : {
-                          "lat" : 51.58000121970849,
-                          "lng" : -0.345013380291502
+                          "lat" : 51.5800350197085,
+                          "lng" : -0.3449943302915021
                        }
                     }
                  },
-                 "place_id" : "ChIJIRtZtW0TdkgR-ZdpVy_UOc0",
-                 "types" : [ "street_address" ]
+                 "place_id" : "ChIJT9KDlW0TdkgR_qr4uMUQu3A",
+                 "types" : [ "premise" ]
               }
            ],
            "status" : "OK"
         }
     http_version: 
-  recorded_at: Wed, 27 Jan 2016 21:51:34 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Tue, 18 Sep 2018 21:06:01 GMT
+recorded_with: VCR 4.0.0

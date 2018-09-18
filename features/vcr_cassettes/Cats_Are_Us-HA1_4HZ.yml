@@ -21,9 +21,11 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Tue, 24 Jul 2018 05:41:57 GMT
+      - Tue, 18 Sep 2018 21:02:43 GMT
       Expires:
-      - Wed, 25 Jul 2018 05:41:57 GMT
+      - Wed, 19 Sep 2018 21:02:43 GMT
+      Cache-Control:
+      - public, max-age=86400
       Access-Control-Allow-Origin:
       - "*"
       Server:
@@ -34,10 +36,6 @@ http_interactions:
       - 1; mode=block
       X-Frame-Options:
       - SAMEORIGIN
-      Cache-Control:
-      - public, max-age=86400
-      Age:
-      - '2760'
     body:
       encoding: ASCII-8BIT
       string: |
@@ -106,5 +104,5 @@ http_interactions:
            "status" : "OK"
         }
     http_version: 
-  recorded_at: Tue, 24 Jul 2018 06:27:57 GMT
+  recorded_at: Tue, 18 Sep 2018 21:02:43 GMT
 recorded_with: VCR 4.0.0

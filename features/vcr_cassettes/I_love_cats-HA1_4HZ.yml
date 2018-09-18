@@ -10,7 +10,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
       User-Agent:
       - Ruby
   response:
@@ -21,23 +21,25 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Wed, 27 Jan 2016 21:48:32 GMT
+      - Tue, 18 Sep 2018 21:03:18 GMT
       Expires:
-      - Thu, 28 Jan 2016 21:48:32 GMT
-      Cache-Control:
-      - public, max-age=86400
+      - Wed, 19 Sep 2018 21:03:18 GMT
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Server:
       - mafe
       Content-Length:
-      - '545'
+      - '553'
       X-Xss-Protection:
       - 1; mode=block
       X-Frame-Options:
       - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '20'
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: |
         {
            "results" : [
@@ -56,17 +58,17 @@ http_interactions:
                     {
                        "long_name" : "Harrow",
                        "short_name" : "Harrow",
-                       "types" : [ "locality", "political" ]
-                    },
-                    {
-                       "long_name" : "Harrow",
-                       "short_name" : "Harrow",
                        "types" : [ "postal_town" ]
                     },
                     {
-                       "long_name" : "Middlesex",
-                       "short_name" : "Middlesex",
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
                        "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
                     },
                     {
                        "long_name" : "United Kingdom",
@@ -79,7 +81,7 @@ http_interactions:
                        "types" : [ "postal_code" ]
                     }
                  ],
-                 "formatted_address" : "64 Pinner Rd, Harrow, Middlesex HA1 4HZ, UK",
+                 "formatted_address" : "64 Pinner Rd, Harrow HA1 4HZ, UK",
                  "geometry" : {
                     "bounds" : {
                        "northeast" : {
@@ -92,8 +94,8 @@ http_interactions:
                        }
                     },
                     "location" : {
-                       "lat" : 51.58138,
-                       "lng" : -0.3468514
+                       "lat" : 51.5813838,
+                       "lng" : -0.3468626
                     },
                     "location_type" : "ROOFTOP",
                     "viewport" : {
@@ -114,5 +116,5 @@ http_interactions:
            "status" : "OK"
         }
     http_version: 
-  recorded_at: Wed, 27 Jan 2016 21:48:32 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Tue, 18 Sep 2018 21:03:38 GMT
+recorded_with: VCR 4.0.0
