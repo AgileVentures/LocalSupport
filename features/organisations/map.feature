@@ -18,8 +18,8 @@ Feature: Map of local charities
 
     Given the following users are registered:
       | email                         | password | organisation      | confirmed_at         |
-      | registered_user-3@example.com | pppppppp | Youth UK          | 2007-01-01  10:00:00 |
-      | registered_user-4@example.com | pppppppp | Wrong Postcode UK | 2007-01-01  10:00:00 |
+      | registered_user-5@example.com | pppppppp | Youth UK          | 2007-01-01  10:00:00 |
+      | registered_user-6@example.com | pppppppp | Wrong Postcode UK | 2007-01-01  10:00:00 |
 
   @javascript @vcr @billy
   Scenario: Show all charities in map on organisations index page map
