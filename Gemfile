@@ -13,7 +13,7 @@ gem 'bootstrap3-datetimepicker-rails'
 gem 'momentjs-rails'
 gem 'jbuilder'
 gem 'puma'
-gem 'recurring_select', github: 'RundownApp/recurring_select'
+gem 'recurring_select'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
