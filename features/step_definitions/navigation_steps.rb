@@ -126,7 +126,7 @@ Then(/^the response status should be 404$/) do
 end
 
 Given /^I press "(.*?)"$/ do |button|
-  click_button(button)
+  click_button button
 end
 
 When /^I click "(.*)"$/ do |link|

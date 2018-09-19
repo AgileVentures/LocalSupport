@@ -6,6 +6,7 @@ class Event < ApplicationRecord
   validates :organisation_id, presence: true, on: [:create]
   validate :start_date_cannot_be_greater_than_end_date
   belongs_to :organisation
+  serialize :recurring, Hash
 
   scope :upcoming, lambda { |n|
     where('start_date >= ?', Time.zone.now.to_date)
@@ -16,7 +17,7 @@ class Event < ApplicationRecord
     keyword = "%#{query}%"
     where(contains_description?(keyword).or(contains_title?(keyword))).limit(10)
   }
-  
+
   # For the geocoder gem
   geocoded_by :address
 
@@ -27,6 +28,14 @@ class Event < ApplicationRecord
   def self.build_by_coordinates(events = nil)
     events = event_with_coordinates(events)
     Location.build_hash(group_by_coordinates(events))
+  end
+
+  def recurring=(value)
+    if RecurringSelect.is_valid_rule?(value)
+      super(RecurringSelect.dirty_hash_to_rule(value).to_hash)
+    else
+      super(nil)
+    end
   end
 
   private
@@ -49,7 +58,7 @@ class Event < ApplicationRecord
     return self if (latitude && longitude) and !address_changed?
     check_geocode
   end
-  
+
   def check_geocode
     coordinates = geocode
     return send(:lat_lng_default) unless coordinates

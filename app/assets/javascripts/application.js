@@ -19,6 +19,7 @@
 //= require moment
 //= require fullcalendar
 //= require bootstrap-datetimepicker
+//= require recurring_select
 
 window.LocalSupport = {};
 
