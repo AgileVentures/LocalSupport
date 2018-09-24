@@ -7,12 +7,12 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 require 'capybara'
-require 'capybara-webkit'
+# require 'capybara-webkit'
 require 'capybara/rspec'
 require 'factory_bot_rails'
 require 'rack_session_access/capybara'
 require 'webmock/rspec'
-Capybara.javascript_driver = :webkit
+# Capybara.javascript_driver = :webkit
 
 Billy.configure do |c|
   c.whitelist = ['test.host', 'localhost' , '127.0.0.1']
