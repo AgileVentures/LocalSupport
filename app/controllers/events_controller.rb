@@ -21,6 +21,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.recurring = params[:event][:recurring]
     @event.organisation = current_user.organisation if @current_user.organisation_id?
     @event.save ? redirect_to(@event, notice: event_success) : render(:new)
   end
@@ -50,7 +51,8 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:title, :description,
-      :start_date, :end_date, :organisation_id, :address)
+                                  :start_date, :end_date,
+                                  :organisation_id, :address)
   end
 
   def logged_in_user

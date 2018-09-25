@@ -356,7 +356,7 @@ Then /^I should see (a|an) (error|warning|notice|success) flash: "([^"]*)"$/ do 
 end
 
 Then(/^I should see "(.*?)" within "(.*?)"$/) do |text, selector|
-  within('#' + selector) { expect(page).to have_content text}
+  within('#' + selector) { expect(page).to have_content text }
 end
 
 Then(/^I should not see "(.*?)" within "(.*?)"$/) do |text, selector|

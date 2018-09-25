@@ -29,4 +29,3 @@ Feature: List the upcoming events
     Then I should see "An Event today"
     And I should see "An Event today" within "calendar"
     And I should see "An Event today" within "events_scroll"
-
