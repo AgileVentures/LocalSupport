@@ -374,7 +374,6 @@ GEM
     rubocop-rspec (1.29.1)
       rubocop (>= 0.58.0)
     ruby-progressbar (1.10.0)
-    rubyzip (1.2.2)
     safe_yaml (1.0.4)
     sass (3.5.5)
       sass-listen (~> 4.0.0)
@@ -390,9 +389,6 @@ GEM
     selenium (0.2.11)
       jar_wrapper
     selenium-client (1.2.18)
-    selenium-webdriver (3.14.0)
-      childprocess (~> 0.5)
-      rubyzip (~> 1.2)
     shoulda (3.6.0)
       shoulda-context (~> 1.0, >= 1.0.1)
       shoulda-matchers (~> 3.0)
@@ -535,7 +531,6 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium
   selenium-client
-  selenium-webdriver
   shoulda
   show_me_the_cookies (~> 4.0)
   simplecov

@@ -16,7 +16,6 @@ end
 
 Given /^I am signed in as an? (non-)?superadmin$/ do |negate|
   user = User.find_by_superadmin(negate ? false : true)
-  byebug
   page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user))
 end
 

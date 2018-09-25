@@ -53,7 +53,7 @@ Feature: Super Admin creating an event
     And I should not see "Event was successfully created"
     And "Unwanted" event should not exist
 
-@javascript
+ @javascript
  Scenario:
     Given I am signed in as a superadmin
     And I visit the new event page
@@ -66,4 +66,3 @@ Feature: Super Admin creating an event
     And I visit the new event page
     When I click on the "#event_start_date" text field
     Then I should see "Su Mo Tu We Th Fr Sa" in ".bootstrap-datetimepicker-widget"
-    
