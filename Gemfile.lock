@@ -6,14 +6,6 @@ GIT
       addressable
       rails
 
-GIT
-  remote: https://github.com/thoughtbot/capybara-webkit.git
-  revision: 41c43062677c1628e09f9dc00dc24528ba161ed7
-  specs:
-    capybara-webkit (1.15.0)
-      capybara (>= 2.3, < 4.0)
-      json
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -382,6 +374,7 @@ GEM
     rubocop-rspec (1.29.1)
       rubocop (>= 0.58.0)
     ruby-progressbar (1.10.0)
+    rubyzip (1.2.2)
     safe_yaml (1.0.4)
     sass (3.5.5)
       sass-listen (~> 4.0.0)
@@ -397,6 +390,9 @@ GEM
     selenium (0.2.11)
       jar_wrapper
     selenium-client (1.2.18)
+    selenium-webdriver (3.14.0)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.2)
     shoulda (3.6.0)
       shoulda-context (~> 1.0, >= 1.0.1)
       shoulda-matchers (~> 3.0)
@@ -490,7 +486,6 @@ DEPENDENCIES
   breadcrumbs_on_rails
   byebug
   capybara (~> 3.7)
-  capybara-webkit!
   coffee-rails (= 4.2.2)
   cucumber-rails
   cucumber-rails-training-wheels
@@ -540,6 +535,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium
   selenium-client
+  selenium-webdriver
   shoulda
   show_me_the_cookies (~> 4.0)
   simplecov

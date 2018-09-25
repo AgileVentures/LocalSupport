@@ -8,7 +8,6 @@ ENV['CUCUMBER'] = 'cucumber'
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
 require 'capybara'
-require 'capybara-webkit'
 require 'capybara/cucumber'
 require 'cucumber/rails'
 require 'cucumber/rspec/doubles'
@@ -17,6 +16,23 @@ require 'factory_bot_rails'
 require 'aruba/cucumber'
 require 'timecop'
 require 'billy/capybara/cucumber'
+require "selenium/webdriver"
+
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+end
+
+Capybara.register_driver :headless_chrome do |app|
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+    chromeOptions: { args: %w(headless disable-gpu) }
+  )
+
+  Capybara::Selenium::Driver.new app,
+    browser: :chrome,
+    desired_capabilities: capabilities
+end
+
+Capybara.javascript_driver = :headless_chrome
 
 Dir['../../spec/factories/*.rb'].each {|file| require_relative file }
 Dir[Rails.root.join('spec/support/matchers/*.rb')].each { |file| require file  }
@@ -33,8 +49,6 @@ Capybara.default_selector = :css
 Capybara.default_max_wait_time = 3
 Capybara.asset_host = 'http://localhost:3000'
 Capybara.server = :puma
-Capybara.javascript_driver = :webkit
-Capybara::Webkit.configure(&:block_unknown_urls)
 
 Billy.configure do |c|
   c.cache = true
