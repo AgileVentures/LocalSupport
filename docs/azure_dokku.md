@@ -36,8 +36,25 @@ ssh avp-dokku postgres:create harrowcn-temp
 ssh avp-dokku postgres:link harrowcn-temp harrowcn-temp
 ```
 
+6. run the migrations
 
-x. set up the https
+```
+ssh avp-dokku run harrowcn-temp rails db:migrate
+```
+
+8. push the code up
+
+```
+$ git push azure-develop develop:master
+```
+
+7. set up the https
+
+```
+$ ssh avp-dokku config:set --no-restart harrowcn-temp DOKKU_LETSENCRYPT_EMAIL=technical@harrowcn.org.uk
+$ ssh avp-dokku letsencrypt harrowcn-temp
+$ ssh avp-dokku letsencrypt:auto-renew harrowcn-temp
+```
 
 
 x. import data into the database
