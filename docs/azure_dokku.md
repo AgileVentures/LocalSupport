@@ -42,13 +42,19 @@ ssh avp-dokku postgres:link harrowcn-temp harrowcn-temp
 ssh avp-dokku run harrowcn-temp rails db:migrate
 ```
 
-8. push the code up
+7. push the code up
 
 ```
 $ git push azure-develop develop:master
 ```
 
-7. set up the https
+8. set the domain
+
+```
+ssh avp-dokku domains:add harrowcn-temp temp.harrowcn.org.uk
+```
+
+9. set up the https
 
 ```
 $ ssh avp-dokku config:set --no-restart harrowcn-temp DOKKU_LETSENCRYPT_EMAIL=technical@harrowcn.org.uk
