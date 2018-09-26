@@ -754,4 +754,652 @@ http_interactions:
         }
     http_version: 
   recorded_at: Thu, 01 Mar 2018 06:02:29 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA7%203PF,%20Harrow&key=AIzaSyCmY0gMXfAWBJ7vb9BXNPpwpa3do67WjHM&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 26 Sep 2018 13:11:35 GMT
+      Expires:
+      - Thu, 27 Sep 2018 13:11:35 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '528'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="44,43,39,35"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA7 3PF",
+                       "short_name" : "HA7 3PF",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Drummond Drive",
+                       "short_name" : "Drummond Dr",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Stanmore",
+                       "short_name" : "Stanmore",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Drummond Dr, Stanmore HA7 3PF, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.6090838,
+                          "lng" : -0.3273176
+                       },
+                       "southwest" : {
+                          "lat" : 51.6076288,
+                          "lng" : -0.3286692
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.6085388,
+                       "lng" : -0.3280368
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.6097052802915,
+                          "lng" : -0.3266444197084979
+                       },
+                       "southwest" : {
+                          "lat" : 51.6070073197085,
+                          "lng" : -0.329342380291502
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJ4-NsJn0UdkgRPkfEFj2vbEE",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 26 Sep 2018 13:11:35 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA7%201GB,%20Harrow&key=AIzaSyCmY0gMXfAWBJ7vb9BXNPpwpa3do67WjHM&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 26 Sep 2018 13:11:35 GMT
+      Expires:
+      - Thu, 27 Sep 2018 13:11:35 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '470'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="44,43,39,35"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA7 1GB",
+                       "short_name" : "HA7 1GB",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Stanmore",
+                       "short_name" : "Stanmore",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Stanmore HA7 1GB, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.6058889,
+                       "lng" : -0.2975768
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.60723788029149,
+                          "lng" : -0.2962278197084979
+                       },
+                       "southwest" : {
+                          "lat" : 51.60453991970849,
+                          "lng" : -0.298925780291502
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJb5IOGw8UdkgRHadUrbskn-w",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 26 Sep 2018 13:11:35 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA4%200LR,%20HILLINGDON&key=AIzaSyCmY0gMXfAWBJ7vb9BXNPpwpa3do67WjHM&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 26 Sep 2018 13:11:36 GMT
+      Expires:
+      - Thu, 27 Sep 2018 13:11:36 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '512'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="44,43,39,35"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA4 0LR",
+                       "short_name" : "HA4 0LR",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Ruislip",
+                       "short_name" : "Ruislip",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Ruislip HA4 0LR, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.56006619999999,
+                          "lng" : -0.3896849000000001
+                       },
+                       "southwest" : {
+                          "lat" : 51.55830479999999,
+                          "lng" : -0.3910618
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.5596057,
+                       "lng" : -0.3905956
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.56053448029149,
+                          "lng" : -0.389024369708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.55783651970849,
+                          "lng" : -0.3917223302915021
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJhR5VyNlsdkgRPgc_9E4Zerc",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 26 Sep 2018 13:11:36 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA0%203AB,%20Wembley&key=AIzaSyCmY0gMXfAWBJ7vb9BXNPpwpa3do67WjHM&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 26 Sep 2018 13:11:36 GMT
+      Expires:
+      - Thu, 27 Sep 2018 13:11:36 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '531'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="44,43,39,35"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA0 3AB",
+                       "short_name" : "HA0 3AB",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Sylvester Road",
+                       "short_name" : "Sylvester Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Wembley",
+                       "short_name" : "Wembley",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Sylvester Rd, Wembley HA0 3AB, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.5550151,
+                          "lng" : -0.3067832
+                       },
+                       "southwest" : {
+                          "lat" : 51.5545446,
+                          "lng" : -0.3086
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.5546522,
+                       "lng" : -0.3075972
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5561288302915,
+                          "lng" : -0.306342619708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.5534308697085,
+                          "lng" : -0.3090405802915021
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJ9b7AjUoSdkgRGOLHokHp_VM",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 26 Sep 2018 13:11:36 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA5%201AE,%20Pinner&key=AIzaSyCmY0gMXfAWBJ7vb9BXNPpwpa3do67WjHM&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 26 Sep 2018 13:11:37 GMT
+      Expires:
+      - Thu, 27 Sep 2018 13:11:37 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '534'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="44,43,39,35"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA5 1AE",
+                       "short_name" : "HA5 1AE",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "West End Lane",
+                       "short_name" : "W End Ln",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Pinner",
+                       "short_name" : "Pinner",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "W End Ln, Pinner HA5 1AE, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.5927436,
+                          "lng" : -0.3856166
+                       },
+                       "southwest" : {
+                          "lat" : 51.5911433,
+                          "lng" : -0.3876817
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.59162749999999,
+                       "lng" : -0.3867212
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5932924302915,
+                          "lng" : -0.385300169708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.5905944697085,
+                          "lng" : -0.387998130291502
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJXxQQ4q5sdkgRHi8U2GSnqiU",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 26 Sep 2018 13:11:37 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA9%200NA,%20Kingston,%20Twickenham,%20Hammersmith,%20Wembley,%20Hayes&key=AIzaSyCmY0gMXfAWBJ7vb9BXNPpwpa3do67WjHM&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 26 Sep 2018 13:11:37 GMT
+      Expires:
+      - Thu, 27 Sep 2018 13:11:37 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '495'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="44,43,39,35"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA9",
+                       "short_name" : "HA9",
+                       "types" : [ "postal_code", "postal_code_prefix" ]
+                    },
+                    {
+                       "long_name" : "Wembley",
+                       "short_name" : "Wembley",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Wembley HA9, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.58001400000001,
+                          "lng" : -0.2602294
+                       },
+                       "southwest" : {
+                          "lat" : 51.5441166,
+                          "lng" : -0.3109746
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.5619784,
+                       "lng" : -0.2887325
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.58001400000001,
+                          "lng" : -0.2602294
+                       },
+                       "southwest" : {
+                          "lat" : 51.5441166,
+                          "lng" : -0.3109746
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJvdCmB2IRdkgRHOabxK87PZM",
+                 "types" : [ "postal_code", "postal_code_prefix" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 26 Sep 2018 13:11:37 GMT
 recorded_with: VCR 4.0.0
