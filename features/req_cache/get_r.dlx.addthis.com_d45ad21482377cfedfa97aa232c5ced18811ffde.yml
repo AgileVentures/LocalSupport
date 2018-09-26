@@ -1,0 +1,18 @@
+---
+:scope: 
+:url: https://r.dlx.addthis.com/e/getdata.xgi?na_exid=SfMmBX5U99YdZS%2Bq&dt=br&pkey=ak930d7lx38dp&reppipe=%26phint%3D&repequal=%3D&ver=2&ru=https%3A%2F%2Ftags.bluekai.com%2Fsite%2F1407%3Flimit%3D0%26ret%3Dpixel%26phint%3Dna_id%3D%3Cna_id%3E
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Date: Wed, 26 Sep 2018 14:50:42 GMT
+  Transfer-Encoding: chunked
+  Connection: close
+  Set-Cookie:
+  - uid=580a3372faba457f;Path=/;Domain=addthis.com;Expires=Sun, 27-Oct-2019 14:50:42
+    GMT;Max-Age=34214400
+  - ouid=5bab9cbe0001c2a1b86615c6a58bd8de74e5071e3de8cc9d249b;Path=/;Domain=addthis.com;Expires=Sun,
+    27-Oct-2019 14:50:42 GMT;Max-Age=34214400
+  Expires: Thu, 01 Jan 1970 00:00:00 GMT
+  Location: https://tags.bluekai.com/site/1407?limit=0&ret=pixel&phint=na_id=
+:content: ''

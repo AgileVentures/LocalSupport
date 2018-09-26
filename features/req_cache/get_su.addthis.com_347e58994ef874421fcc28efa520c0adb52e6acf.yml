@@ -1,0 +1,23 @@
+---
+:scope: 
+:url: http://su.addthis.com/red/usync?pid=16&puid=58180996705827726462930920985025952895&ssrc=3
+:body: ''
+:status: 204
+:method: get
+:headers:
+  Expires: Thu, 01 Jan 1970 00:00:00 GMT
+  Content-Type: image/png;charset=utf-8
+  P3P: policyref="/w3c/p3p.xml", CP="NON ADM OUR DEV IND COM STA"
+  Cache-Control: max-age=0, no-cache, no-store, no-transform
+  Pragma: no-cache
+  Server: Jetty(9.4.8.v20180619)
+  Date: Wed, 26 Sep 2018 14:50:40 GMT
+  Connection: close
+  Set-Cookie:
+  - mus=0;Path=/;Domain=.addthis.com;Expires=Mon, 21-Oct-2019 14:50:40 GMT;Max-Age=33696000
+  - ouid=5bab9cbe0001c2a1b86615c6a58bd8de74e5071e3de8cc9d249b;Path=/;Domain=.addthis.com;Expires=Mon,
+    21-Oct-2019 14:50:40 GMT;Max-Age=33696000
+  - um=;Path=/;Domain=.addthis.com;Expires=Thu, 01-Jan-1970 00:00:00 GMT;Max-Age=0
+  - uid=580a3372faba457f;Path=/;Domain=.addthis.com;Expires=Mon, 21-Oct-2019 14:50:40
+    GMT;Max-Age=33696000
+:content: ''

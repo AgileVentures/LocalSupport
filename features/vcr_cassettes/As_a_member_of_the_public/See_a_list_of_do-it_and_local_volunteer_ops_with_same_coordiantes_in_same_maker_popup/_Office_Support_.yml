@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://maps.googleapis.com/maps/api/geocode/json?address=43%20Claremont%20Road,%20Wealdstone,%20HA3%207AU&language=en&sensor=false
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=43%20Claremont%20Road,%20Wealdstone,%20HA3%207AU
     body:
       encoding: US-ASCII
       string: ''
@@ -18,99 +18,35 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Content-Type:
-      - application/json; charset=UTF-8
       Date:
-      - Mon, 27 Mar 2017 16:47:49 GMT
-      Expires:
-      - Tue, 28 Mar 2017 16:47:49 GMT
+      - Wed, 26 Sep 2018 14:54:34 GMT
+      Server:
+      - Apache/2.4.29 (Ubuntu)
       Access-Control-Allow-Origin:
       - "*"
-      Server:
-      - mafe
-      Content-Length:
-      - '533'
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Frame-Options:
-      - SAMEORIGIN
-      Cache-Control:
-      - public, max-age=86400
-      Age:
-      - '1'
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=0, report-uri="https://openstreetmap.report-uri.com/r/d/ct/reportOnly"
+      Upgrade:
+      - h2
+      Connection:
+      - Upgrade, close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=UTF-8
     body:
       encoding: ASCII-8BIT
-      string: |
-        {
-           "results" : [
-              {
-                 "address_components" : [
-                    {
-                       "long_name" : "43",
-                       "short_name" : "43",
-                       "types" : [ "street_number" ]
-                    },
-                    {
-                       "long_name" : "Claremont Road",
-                       "short_name" : "Claremont Rd",
-                       "types" : [ "route" ]
-                    },
-                    {
-                       "long_name" : "Harrow",
-                       "short_name" : "Harrow",
-                       "types" : [ "postal_town" ]
-                    },
-                    {
-                       "long_name" : "Greater London",
-                       "short_name" : "Greater London",
-                       "types" : [ "administrative_area_level_2", "political" ]
-                    },
-                    {
-                       "long_name" : "England",
-                       "short_name" : "England",
-                       "types" : [ "administrative_area_level_1", "political" ]
-                    },
-                    {
-                       "long_name" : "United Kingdom",
-                       "short_name" : "GB",
-                       "types" : [ "country", "political" ]
-                    },
-                    {
-                       "long_name" : "HA3 7AU",
-                       "short_name" : "HA3 7AU",
-                       "types" : [ "postal_code" ]
-                    }
-                 ],
-                 "formatted_address" : "43 Claremont Rd, Harrow HA3 7AU, UK",
-                 "geometry" : {
-                    "location" : {
-                       "lat" : 51.5986313,
-                       "lng" : -0.3356556
-                    },
-                    "location_type" : "ROOFTOP",
-                    "viewport" : {
-                       "northeast" : {
-                          "lat" : 51.5999802802915,
-                          "lng" : -0.334306619708498
-                       },
-                       "southwest" : {
-                          "lat" : 51.5972823197085,
-                          "lng" : -0.337004580291502
-                       }
-                    }
-                 },
-                 "partial_match" : true,
-                 "place_id" : "ChIJw01CHX4TdkgRmPXNa1D1XUA",
-                 "types" : [ "street_address" ]
-              }
-           ],
-           "status" : "OK"
-        }
+      string: !binary |-
+        W3sicGxhY2VfaWQiOiI2ODg0NzgzOSIsImxpY2VuY2UiOiJEYXRhIMKpIE9wZW5TdHJlZXRNYXAgY29udHJpYnV0b3JzLCBPRGJMIDEuMC4gaHR0cHM6XC9cL29zbS5vcmdcL2NvcHlyaWdodCIsIm9zbV90eXBlIjoid2F5Iiwib3NtX2lkIjoiNDc4NTk2OCIsImJvdW5kaW5nYm94IjpbIjUxLjU5NzgyNDQiLCI1MS41OTg4NTI2IiwiLTAuMzM2OTYzMSIsIi0wLjMzNTQ5MDIiXSwibGF0IjoiNTEuNTk3OTE0NCIsImxvbiI6Ii0wLjMzNjgxNzQiLCJkaXNwbGF5X25hbWUiOiJDbGFyZW1vbnQgUm9hZCwgSGFycm93IFdlYWxkLCBMb25kb24gQm9yb3VnaCBvZiBIYXJyb3csIExvbmRvbiwgR3JlYXRlciBMb25kb24sIEVuZ2xhbmQsIEhBMyA3QVUsIFVuaXRlZCBLaW5nZG9tIiwiY2xhc3MiOiJoaWdod2F5IiwidHlwZSI6InJlc2lkZW50aWFsIiwiaW1wb3J0YW5jZSI6MC41LCJhZGRyZXNzIjp7InJvYWQiOiJDbGFyZW1vbnQgUm9hZCIsInN1YnVyYiI6IkhhcnJvdyBXZWFsZCIsImNpdHkiOiJMb25kb24iLCJzdGF0ZV9kaXN0cmljdCI6IkdyZWF0ZXIgTG9uZG9uIiwic3RhdGUiOiJFbmdsYW5kIiwicG9zdGNvZGUiOiJIQTMgN0FVIiwiY291bnRyeSI6IlVuaXRlZCBLaW5nZG9tIiwiY291bnRyeV9jb2RlIjoiZ2IifX1d
     http_version: 
-  recorded_at: Mon, 27 Mar 2017 16:48:21 GMT
+  recorded_at: Wed, 26 Sep 2018 14:54:34 GMT
 - request:
     method: get
-    uri: http://maps.googleapis.com/maps/api/geocode/json?address=43%20Claremont%20Road,%20Wealdstone,%20HA3%207AU&language=en&sensor=false
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=43%20Claremont%20Road,%20Wealdstone,%20HA3%207AU
     body:
       encoding: US-ASCII
       string: ''
@@ -126,320 +62,30 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Content-Type:
-      - application/json; charset=UTF-8
       Date:
-      - Mon, 27 Mar 2017 16:47:49 GMT
-      Expires:
-      - Tue, 28 Mar 2017 16:47:49 GMT
+      - Wed, 26 Sep 2018 14:54:35 GMT
+      Server:
+      - Apache/2.4.29 (Ubuntu)
       Access-Control-Allow-Origin:
       - "*"
-      Server:
-      - mafe
-      Content-Length:
-      - '533'
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Frame-Options:
-      - SAMEORIGIN
-      Cache-Control:
-      - public, max-age=86400
-      Age:
-      - '1'
-    body:
-      encoding: ASCII-8BIT
-      string: |
-        {
-           "results" : [
-              {
-                 "address_components" : [
-                    {
-                       "long_name" : "43",
-                       "short_name" : "43",
-                       "types" : [ "street_number" ]
-                    },
-                    {
-                       "long_name" : "Claremont Road",
-                       "short_name" : "Claremont Rd",
-                       "types" : [ "route" ]
-                    },
-                    {
-                       "long_name" : "Harrow",
-                       "short_name" : "Harrow",
-                       "types" : [ "postal_town" ]
-                    },
-                    {
-                       "long_name" : "Greater London",
-                       "short_name" : "Greater London",
-                       "types" : [ "administrative_area_level_2", "political" ]
-                    },
-                    {
-                       "long_name" : "England",
-                       "short_name" : "England",
-                       "types" : [ "administrative_area_level_1", "political" ]
-                    },
-                    {
-                       "long_name" : "United Kingdom",
-                       "short_name" : "GB",
-                       "types" : [ "country", "political" ]
-                    },
-                    {
-                       "long_name" : "HA3 7AU",
-                       "short_name" : "HA3 7AU",
-                       "types" : [ "postal_code" ]
-                    }
-                 ],
-                 "formatted_address" : "43 Claremont Rd, Harrow HA3 7AU, UK",
-                 "geometry" : {
-                    "location" : {
-                       "lat" : 51.5986313,
-                       "lng" : -0.3356556
-                    },
-                    "location_type" : "ROOFTOP",
-                    "viewport" : {
-                       "northeast" : {
-                          "lat" : 51.5999802802915,
-                          "lng" : -0.334306619708498
-                       },
-                       "southwest" : {
-                          "lat" : 51.5972823197085,
-                          "lng" : -0.337004580291502
-                       }
-                    }
-                 },
-                 "partial_match" : true,
-                 "place_id" : "ChIJw01CHX4TdkgRmPXNa1D1XUA",
-                 "types" : [ "street_address" ]
-              }
-           ],
-           "status" : "OK"
-        }
-    http_version: 
-  recorded_at: Mon, 27 Mar 2017 16:48:22 GMT
-- request:
-    method: get
-    uri: https://maps.googleapis.com/maps/api/geocode/json?address=43%20Claremont%20Road,%20Wealdstone,%20HA3%207AU&key=AIzaSyCmY0gMXfAWBJ7vb9BXNPpwpa3do67WjHM&language=en&sensor=false
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=0, report-uri="https://openstreetmap.report-uri.com/r/d/ct/reportOnly"
+      Upgrade:
+      - h2
+      Connection:
+      - Upgrade, close
+      Transfer-Encoding:
+      - chunked
       Content-Type:
       - application/json; charset=UTF-8
-      Date:
-      - Wed, 26 Sep 2018 13:11:30 GMT
-      Expires:
-      - Thu, 27 Sep 2018 13:11:30 GMT
-      Access-Control-Allow-Origin:
-      - "*"
-      Server:
-      - mafe
-      Content-Length:
-      - '565'
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Frame-Options:
-      - SAMEORIGIN
-      Cache-Control:
-      - public, max-age=86400
-      Age:
-      - '4'
-      Alt-Svc:
-      - quic=":443"; ma=2592000; v="44,43,39,35"
     body:
       encoding: ASCII-8BIT
-      string: |
-        {
-           "results" : [
-              {
-                 "address_components" : [
-                    {
-                       "long_name" : "43",
-                       "short_name" : "43",
-                       "types" : [ "street_number" ]
-                    },
-                    {
-                       "long_name" : "Claremont Road",
-                       "short_name" : "Claremont Rd",
-                       "types" : [ "route" ]
-                    },
-                    {
-                       "long_name" : "Harrow",
-                       "short_name" : "Harrow",
-                       "types" : [ "postal_town" ]
-                    },
-                    {
-                       "long_name" : "Greater London",
-                       "short_name" : "Greater London",
-                       "types" : [ "administrative_area_level_2", "political" ]
-                    },
-                    {
-                       "long_name" : "England",
-                       "short_name" : "England",
-                       "types" : [ "administrative_area_level_1", "political" ]
-                    },
-                    {
-                       "long_name" : "United Kingdom",
-                       "short_name" : "GB",
-                       "types" : [ "country", "political" ]
-                    },
-                    {
-                       "long_name" : "HA3 7AU",
-                       "short_name" : "HA3 7AU",
-                       "types" : [ "postal_code" ]
-                    }
-                 ],
-                 "formatted_address" : "43 Claremont Rd, Harrow HA3 7AU, UK",
-                 "geometry" : {
-                    "location" : {
-                       "lat" : 51.5986313,
-                       "lng" : -0.3356556
-                    },
-                    "location_type" : "ROOFTOP",
-                    "viewport" : {
-                       "northeast" : {
-                          "lat" : 51.5999802802915,
-                          "lng" : -0.334306619708498
-                       },
-                       "southwest" : {
-                          "lat" : 51.5972823197085,
-                          "lng" : -0.337004580291502
-                       }
-                    }
-                 },
-                 "place_id" : "ChIJw01CHX4TdkgRmPXNa1D1XUA",
-                 "plus_code" : {
-                    "compound_code" : "HMX7+FP Harrow, United Kingdom",
-                    "global_code" : "9C3XHMX7+FP"
-                 },
-                 "types" : [ "street_address" ]
-              }
-           ],
-           "status" : "OK"
-        }
+      string: !binary |-
+        W3sicGxhY2VfaWQiOiI2ODg0NzgzOSIsImxpY2VuY2UiOiJEYXRhIMKpIE9wZW5TdHJlZXRNYXAgY29udHJpYnV0b3JzLCBPRGJMIDEuMC4gaHR0cHM6XC9cL29zbS5vcmdcL2NvcHlyaWdodCIsIm9zbV90eXBlIjoid2F5Iiwib3NtX2lkIjoiNDc4NTk2OCIsImJvdW5kaW5nYm94IjpbIjUxLjU5NzgyNDQiLCI1MS41OTg4NTI2IiwiLTAuMzM2OTYzMSIsIi0wLjMzNTQ5MDIiXSwibGF0IjoiNTEuNTk3OTE0NCIsImxvbiI6Ii0wLjMzNjgxNzQiLCJkaXNwbGF5X25hbWUiOiJDbGFyZW1vbnQgUm9hZCwgSGFycm93IFdlYWxkLCBMb25kb24gQm9yb3VnaCBvZiBIYXJyb3csIExvbmRvbiwgR3JlYXRlciBMb25kb24sIEVuZ2xhbmQsIEhBMyA3QVUsIFVuaXRlZCBLaW5nZG9tIiwiY2xhc3MiOiJoaWdod2F5IiwidHlwZSI6InJlc2lkZW50aWFsIiwiaW1wb3J0YW5jZSI6MC41LCJhZGRyZXNzIjp7InJvYWQiOiJDbGFyZW1vbnQgUm9hZCIsInN1YnVyYiI6IkhhcnJvdyBXZWFsZCIsImNpdHkiOiJMb25kb24iLCJzdGF0ZV9kaXN0cmljdCI6IkdyZWF0ZXIgTG9uZG9uIiwic3RhdGUiOiJFbmdsYW5kIiwicG9zdGNvZGUiOiJIQTMgN0FVIiwiY291bnRyeSI6IlVuaXRlZCBLaW5nZG9tIiwiY291bnRyeV9jb2RlIjoiZ2IifX1d
     http_version: 
-  recorded_at: Wed, 26 Sep 2018 13:11:34 GMT
-- request:
-    method: get
-    uri: https://maps.googleapis.com/maps/api/geocode/json?address=43%20Claremont%20Road,%20Wealdstone,%20HA3%207AU&key=AIzaSyCmY0gMXfAWBJ7vb9BXNPpwpa3do67WjHM&language=en&sensor=false
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      Date:
-      - Wed, 26 Sep 2018 13:11:30 GMT
-      Expires:
-      - Thu, 27 Sep 2018 13:11:30 GMT
-      Access-Control-Allow-Origin:
-      - "*"
-      Server:
-      - mafe
-      Content-Length:
-      - '565'
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Frame-Options:
-      - SAMEORIGIN
-      Cache-Control:
-      - public, max-age=86400
-      Age:
-      - '4'
-      Alt-Svc:
-      - quic=":443"; ma=2592000; v="44,43,39,35"
-    body:
-      encoding: ASCII-8BIT
-      string: |
-        {
-           "results" : [
-              {
-                 "address_components" : [
-                    {
-                       "long_name" : "43",
-                       "short_name" : "43",
-                       "types" : [ "street_number" ]
-                    },
-                    {
-                       "long_name" : "Claremont Road",
-                       "short_name" : "Claremont Rd",
-                       "types" : [ "route" ]
-                    },
-                    {
-                       "long_name" : "Harrow",
-                       "short_name" : "Harrow",
-                       "types" : [ "postal_town" ]
-                    },
-                    {
-                       "long_name" : "Greater London",
-                       "short_name" : "Greater London",
-                       "types" : [ "administrative_area_level_2", "political" ]
-                    },
-                    {
-                       "long_name" : "England",
-                       "short_name" : "England",
-                       "types" : [ "administrative_area_level_1", "political" ]
-                    },
-                    {
-                       "long_name" : "United Kingdom",
-                       "short_name" : "GB",
-                       "types" : [ "country", "political" ]
-                    },
-                    {
-                       "long_name" : "HA3 7AU",
-                       "short_name" : "HA3 7AU",
-                       "types" : [ "postal_code" ]
-                    }
-                 ],
-                 "formatted_address" : "43 Claremont Rd, Harrow HA3 7AU, UK",
-                 "geometry" : {
-                    "location" : {
-                       "lat" : 51.5986313,
-                       "lng" : -0.3356556
-                    },
-                    "location_type" : "ROOFTOP",
-                    "viewport" : {
-                       "northeast" : {
-                          "lat" : 51.5999802802915,
-                          "lng" : -0.334306619708498
-                       },
-                       "southwest" : {
-                          "lat" : 51.5972823197085,
-                          "lng" : -0.337004580291502
-                       }
-                    }
-                 },
-                 "place_id" : "ChIJw01CHX4TdkgRmPXNa1D1XUA",
-                 "plus_code" : {
-                    "compound_code" : "HMX7+FP Harrow, United Kingdom",
-                    "global_code" : "9C3XHMX7+FP"
-                 },
-                 "types" : [ "street_address" ]
-              }
-           ],
-           "status" : "OK"
-        }
-    http_version: 
-  recorded_at: Wed, 26 Sep 2018 13:11:34 GMT
+  recorded_at: Wed, 26 Sep 2018 14:54:36 GMT
 recorded_with: VCR 4.0.0

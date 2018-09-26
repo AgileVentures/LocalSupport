@@ -1,0 +1,22 @@
+---
+:scope: 
+:url: https://match.adsrvr.org/track/cmb/generic?ttd_pid=bluekai
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Date: Wed, 26 Sep 2018 14:48:48 GMT
+  Content-Type: text/html
+  Content-Length: '179'
+  Connection: close
+  Cache-Control: private,no-cache, must-revalidate
+  Pragma: no-cache
+  Location: https://tags.bluekai.com/site/5386?id=7fc84785-359e-44b8-a7b8-4cbb5afe21f7
+  X-AspNet-Version: 4.0.30319
+  Set-Cookie:
+  - TDID=7fc84785-359e-44b8-a7b8-4cbb5afe21f7; domain=.adsrvr.org; expires=Thu, 26-Sep-2019
+    14:48:48 GMT; path=/
+  - TDCPM=CAESFgoHYmx1ZWthaRILCK6R9bGm8tE2EAUYBSABKAIyCwig4_jVvPLRNhAFOAE.; domain=.adsrvr.org;
+    expires=Thu, 26-Sep-2019 14:48:48 GMT; path=/
+  P3P: CP="NOI DSP COR CUR ADMo DEVo PSAo PSDo OUR SAMo BUS UNI NAV"
+:content: 'Redirecting to: <a href="https://tags.bluekai.com/site/5386?id=7fc84785-359e-44b8-a7b8-4cbb5afe21f7">https://tags.bluekai.com/site/5386?id=7fc84785-359e-44b8-a7b8-4cbb5afe21f7</a>'

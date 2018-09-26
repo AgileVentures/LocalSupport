@@ -1,0 +1,19 @@
+---
+:scope: 
+:url: http://api-public.addthis.com/url/shares.json?url=http%3A%2F%2F127.0.0.1%3A46005%2Forganisations%2Ffriendly&callback=_ate.cbs.rcb_hfur0
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Cache-Control: no-transform, must-revalidate, max-age=0, s-maxage=3600
+  Surrogate-Key: 127.0.0.1:46005/organisations/friendly
+  Last-Modified: Wed, 26 Sep 2018 16:47:07 GMT
+  Content-Type: application/json
+  Content-Encoding: gzip
+  Content-Length: '53'
+  Accept-Ranges: bytes
+  X-Varnish: '3013040618'
+  Date: Wed, 26 Sep 2018 16:47:07 GMT
+  Connection: close
+  Vary: Accept-Encoding
+:content: _ate.cbs.rcb_hfur0({"shares":0});

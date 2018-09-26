@@ -1,0 +1,19 @@
+---
+:scope: 
+:url: https://sync.mathtag.com/sync/img?mt_exid=10002&redir=https%3A%2F%2Fstags.bluekai.com%2Fsite%2F4448%3Fid%3D%5BMM_UUID%5D
+:body: ''
+:status: 302
+:method: get
+:headers:
+  Date: Wed, 26 Sep 2018 14:48:50 GMT
+  Content-Type: image/gif
+  Content-Length: '0'
+  Connection: close
+  Cache-Control: no-cache
+  set-cookie: uuid=83e95bab-9468-4600-a93d-01cc6ec857da; domain=.mathtag.com; path=/;
+    expires=Thu, 24-Oct-2019 14:48:50 GMT
+  Location: https://sync.mathtag.com/sync/img?mt_exid=10002&redir=https%3A%2F%2Fstags.bluekai.com%2Fsite%2F4448%3Fid%3D%5BMM_UUID%5D&mm_bnc&mm_bct
+  P3P: CP="NOI DSP COR NID CURa ADMa DEVa PSAa PSDa OUR BUS COM INT OTC PUR STA"
+  Server: MT3 1.26.12.0 f85fe72 RELEASE ord-pixel-x40
+  Expires: Wed, 26 Sep 2018 14:48:49 GMT
+:content: ''

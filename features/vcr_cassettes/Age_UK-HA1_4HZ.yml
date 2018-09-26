@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://maps.googleapis.com/maps/api/geocode/json?address=84%20pinner%20road,%20HA1%204HZ&language=en&sensor=false
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=84%20pinner%20road,%20HA1%204HZ
     body:
       encoding: US-ASCII
       string: ''
@@ -18,96 +18,34 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Content-Type:
-      - application/json; charset=UTF-8
       Date:
-      - Wed, 27 Jan 2016 21:50:18 GMT
-      Expires:
-      - Thu, 28 Jan 2016 21:50:18 GMT
-      Cache-Control:
-      - public, max-age=86400
+      - Wed, 26 Sep 2018 14:48:54 GMT
+      Server:
+      - Apache/2.4.29 (Ubuntu)
       Access-Control-Allow-Origin:
       - "*"
-      Server:
-      - mafe
-      Content-Length:
-      - '515'
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Frame-Options:
-      - SAMEORIGIN
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=0, report-uri="https://openstreetmap.report-uri.com/r/d/ct/reportOnly"
+      Upgrade:
+      - h2
+      Connection:
+      - Upgrade, close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=UTF-8
     body:
       encoding: UTF-8
-      string: |
-        {
-           "results" : [
-              {
-                 "address_components" : [
-                    {
-                       "long_name" : "84",
-                       "short_name" : "84",
-                       "types" : [ "street_number" ]
-                    },
-                    {
-                       "long_name" : "Pinner Road",
-                       "short_name" : "Pinner Rd",
-                       "types" : [ "route" ]
-                    },
-                    {
-                       "long_name" : "Harrow",
-                       "short_name" : "Harrow",
-                       "types" : [ "locality", "political" ]
-                    },
-                    {
-                       "long_name" : "Harrow",
-                       "short_name" : "Harrow",
-                       "types" : [ "postal_town" ]
-                    },
-                    {
-                       "long_name" : "Greater London",
-                       "short_name" : "Greater London",
-                       "types" : [ "administrative_area_level_2", "political" ]
-                    },
-                    {
-                       "long_name" : "United Kingdom",
-                       "short_name" : "GB",
-                       "types" : [ "country", "political" ]
-                    },
-                    {
-                       "long_name" : "HA1 4HZ",
-                       "short_name" : "HA1 4HZ",
-                       "types" : [ "postal_code" ]
-                    }
-                 ],
-                 "formatted_address" : "84 Pinner Rd, Harrow, Greater London HA1 4HZ, UK",
-                 "geometry" : {
-                    "location" : {
-                       "lat" : 51.5814584,
-                       "lng" : -0.3472856
-                    },
-                    "location_type" : "ROOFTOP",
-                    "viewport" : {
-                       "northeast" : {
-                          "lat" : 51.5828073802915,
-                          "lng" : -0.3459366197084979
-                       },
-                       "southwest" : {
-                          "lat" : 51.5801094197085,
-                          "lng" : -0.348634580291502
-                       }
-                    }
-                 },
-                 "place_id" : "ChIJIRtZtW0TdkgRjzYto3pttxw",
-                 "types" : [ "street_address" ]
-              }
-           ],
-           "status" : "OK"
-        }
+      string: "[]"
     http_version: 
-  recorded_at: Wed, 27 Jan 2016 21:50:18 GMT
+  recorded_at: Wed, 26 Sep 2018 14:48:55 GMT
 - request:
     method: get
-    uri: http://maps.googleapis.com/maps/api/geocode/json?address=84%20Pinner%20Road,%20HA1%204HZ&language=en&sensor=false
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=84%20Pinner%20Road,%20HA1%204HZ
     body:
       encoding: US-ASCII
       string: ''
@@ -123,96 +61,34 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Content-Type:
-      - application/json; charset=UTF-8
       Date:
-      - Tue, 02 Feb 2016 10:02:02 GMT
-      Expires:
-      - Wed, 03 Feb 2016 10:02:02 GMT
-      Cache-Control:
-      - public, max-age=86400
+      - Wed, 26 Sep 2018 14:51:16 GMT
+      Server:
+      - Apache/2.4.29 (Ubuntu)
       Access-Control-Allow-Origin:
       - "*"
-      Server:
-      - mafe
-      Content-Length:
-      - '515'
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Frame-Options:
-      - SAMEORIGIN
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=0, report-uri="https://openstreetmap.report-uri.com/r/d/ct/reportOnly"
+      Upgrade:
+      - h2
+      Connection:
+      - Upgrade, close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=UTF-8
     body:
       encoding: UTF-8
-      string: |
-        {
-           "results" : [
-              {
-                 "address_components" : [
-                    {
-                       "long_name" : "84",
-                       "short_name" : "84",
-                       "types" : [ "street_number" ]
-                    },
-                    {
-                       "long_name" : "Pinner Road",
-                       "short_name" : "Pinner Rd",
-                       "types" : [ "route" ]
-                    },
-                    {
-                       "long_name" : "Harrow",
-                       "short_name" : "Harrow",
-                       "types" : [ "locality", "political" ]
-                    },
-                    {
-                       "long_name" : "Harrow",
-                       "short_name" : "Harrow",
-                       "types" : [ "postal_town" ]
-                    },
-                    {
-                       "long_name" : "Greater London",
-                       "short_name" : "Greater London",
-                       "types" : [ "administrative_area_level_2", "political" ]
-                    },
-                    {
-                       "long_name" : "United Kingdom",
-                       "short_name" : "GB",
-                       "types" : [ "country", "political" ]
-                    },
-                    {
-                       "long_name" : "HA1 4HZ",
-                       "short_name" : "HA1 4HZ",
-                       "types" : [ "postal_code" ]
-                    }
-                 ],
-                 "formatted_address" : "84 Pinner Rd, Harrow, Greater London HA1 4HZ, UK",
-                 "geometry" : {
-                    "location" : {
-                       "lat" : 51.5814584,
-                       "lng" : -0.3472856
-                    },
-                    "location_type" : "ROOFTOP",
-                    "viewport" : {
-                       "northeast" : {
-                          "lat" : 51.5828073802915,
-                          "lng" : -0.3459366197084979
-                       },
-                       "southwest" : {
-                          "lat" : 51.5801094197085,
-                          "lng" : -0.348634580291502
-                       }
-                    }
-                 },
-                 "place_id" : "ChIJIRtZtW0TdkgRjzYto3pttxw",
-                 "types" : [ "street_address" ]
-              }
-           ],
-           "status" : "OK"
-        }
+      string: "[]"
     http_version: 
-  recorded_at: Tue, 02 Feb 2016 10:02:08 GMT
+  recorded_at: Thu, 25 Dec 1980 00:00:01 GMT
 - request:
     method: get
-    uri: https://maps.googleapis.com/maps/api/geocode/json?address=84%20pinner%20road,%20HA1%204HZ&key=<GMAP_API_KEY>&language=en&sensor=false
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=HA1%204HZ
     body:
       encoding: US-ASCII
       string: ''
@@ -228,311 +104,30 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Content-Type:
-      - application/json; charset=UTF-8
       Date:
-      - Wed, 26 Sep 2018 13:07:14 GMT
-      Expires:
-      - Thu, 27 Sep 2018 13:07:14 GMT
+      - Wed, 26 Sep 2018 16:47:11 GMT
+      Server:
+      - Apache/2.4.29 (Ubuntu)
       Access-Control-Allow-Origin:
       - "*"
-      Server:
-      - mafe
-      Content-Length:
-      - '581'
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Frame-Options:
-      - SAMEORIGIN
-      Cache-Control:
-      - public, max-age=86400
-      Age:
-      - '72'
-      Alt-Svc:
-      - quic=":443"; ma=2592000; v="44,43,39,35"
-    body:
-      encoding: ASCII-8BIT
-      string: |
-        {
-           "results" : [
-              {
-                 "address_components" : [
-                    {
-                       "long_name" : "84",
-                       "short_name" : "84",
-                       "types" : [ "street_number" ]
-                    },
-                    {
-                       "long_name" : "Pinner Road",
-                       "short_name" : "Pinner Rd",
-                       "types" : [ "route" ]
-                    },
-                    {
-                       "long_name" : "Harrow",
-                       "short_name" : "Harrow",
-                       "types" : [ "postal_town" ]
-                    },
-                    {
-                       "long_name" : "Greater London",
-                       "short_name" : "Greater London",
-                       "types" : [ "administrative_area_level_2", "political" ]
-                    },
-                    {
-                       "long_name" : "England",
-                       "short_name" : "England",
-                       "types" : [ "administrative_area_level_1", "political" ]
-                    },
-                    {
-                       "long_name" : "United Kingdom",
-                       "short_name" : "GB",
-                       "types" : [ "country", "political" ]
-                    },
-                    {
-                       "long_name" : "HA1",
-                       "short_name" : "HA1",
-                       "types" : [ "postal_code", "postal_code_prefix" ]
-                    }
-                 ],
-                 "formatted_address" : "84 Pinner Rd, Harrow HA1, UK",
-                 "geometry" : {
-                    "location" : {
-                       "lat" : 51.58148809999999,
-                       "lng" : -0.3472873
-                    },
-                    "location_type" : "RANGE_INTERPOLATED",
-                    "viewport" : {
-                       "northeast" : {
-                          "lat" : 51.5828370802915,
-                          "lng" : -0.3459383197084979
-                       },
-                       "southwest" : {
-                          "lat" : 51.5801391197085,
-                          "lng" : -0.348636280291502
-                       }
-                    }
-                 },
-                 "place_id" : "Ehw4NCBQaW5uZXIgUmQsIEhhcnJvdyBIQTEsIFVLIhoSGAoUChIJ4XXma2wTdkgRP3KANOqXcQkQVA",
-                 "types" : [ "street_address" ]
-              }
-           ],
-           "status" : "OK"
-        }
-    http_version: 
-  recorded_at: Wed, 26 Sep 2018 13:08:26 GMT
-- request:
-    method: get
-    uri: https://maps.googleapis.com/maps/api/geocode/json?address=84%20Pinner%20Road,%20HA1%204HZ&key=<GMAP_API_KEY>&language=en&sensor=false
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=0, report-uri="https://openstreetmap.report-uri.com/r/d/ct/reportOnly"
+      Upgrade:
+      - h2
+      Connection:
+      - Upgrade, close
+      Transfer-Encoding:
+      - chunked
       Content-Type:
       - application/json; charset=UTF-8
-      Date:
-      - Wed, 26 Sep 2018 13:10:18 GMT
-      Expires:
-      - Thu, 27 Sep 2018 13:10:18 GMT
-      Cache-Control:
-      - public, max-age=86400
-      Access-Control-Allow-Origin:
-      - "*"
-      Server:
-      - mafe
-      Content-Length:
-      - '581'
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Frame-Options:
-      - SAMEORIGIN
-      Alt-Svc:
-      - quic=":443"; ma=2592000; v="44,43,39,35"
     body:
       encoding: ASCII-8BIT
-      string: |
-        {
-           "results" : [
-              {
-                 "address_components" : [
-                    {
-                       "long_name" : "84",
-                       "short_name" : "84",
-                       "types" : [ "street_number" ]
-                    },
-                    {
-                       "long_name" : "Pinner Road",
-                       "short_name" : "Pinner Rd",
-                       "types" : [ "route" ]
-                    },
-                    {
-                       "long_name" : "Harrow",
-                       "short_name" : "Harrow",
-                       "types" : [ "postal_town" ]
-                    },
-                    {
-                       "long_name" : "Greater London",
-                       "short_name" : "Greater London",
-                       "types" : [ "administrative_area_level_2", "political" ]
-                    },
-                    {
-                       "long_name" : "England",
-                       "short_name" : "England",
-                       "types" : [ "administrative_area_level_1", "political" ]
-                    },
-                    {
-                       "long_name" : "United Kingdom",
-                       "short_name" : "GB",
-                       "types" : [ "country", "political" ]
-                    },
-                    {
-                       "long_name" : "HA1",
-                       "short_name" : "HA1",
-                       "types" : [ "postal_code", "postal_code_prefix" ]
-                    }
-                 ],
-                 "formatted_address" : "84 Pinner Rd, Harrow HA1, UK",
-                 "geometry" : {
-                    "location" : {
-                       "lat" : 51.58148809999999,
-                       "lng" : -0.3472873
-                    },
-                    "location_type" : "RANGE_INTERPOLATED",
-                    "viewport" : {
-                       "northeast" : {
-                          "lat" : 51.5828370802915,
-                          "lng" : -0.3459383197084979
-                       },
-                       "southwest" : {
-                          "lat" : 51.5801391197085,
-                          "lng" : -0.348636280291502
-                       }
-                    }
-                 },
-                 "place_id" : "Ehw4NCBQaW5uZXIgUmQsIEhhcnJvdyBIQTEsIFVLIhoSGAoUChIJ4XXma2wTdkgRP3KANOqXcQkQVA",
-                 "types" : [ "street_address" ]
-              }
-           ],
-           "status" : "OK"
-        }
+      string: !binary |-
+        W3sicGxhY2VfaWQiOiIxOTk2MTkwMTYiLCJsaWNlbmNlIjoiRGF0YSDCqSBPcGVuU3RyZWV0TWFwIGNvbnRyaWJ1dG9ycywgT0RiTCAxLjAuIGh0dHBzOlwvXC9vc20ub3JnXC9jb3B5cmlnaHQiLCJib3VuZGluZ2JveCI6WyI1MS41ODEyNTYzNjY2NjciLCI1MS41ODEzNTYzNjY2NjciLCItMC4zNDUxMDY2NjY2NjY2NyIsIi0wLjM0NTAwNjY2NjY2NjY3Il0sImxhdCI6IjUxLjU4MTMwNjM2NjY2NjciLCJsb24iOiItMC4zNDUwNTY2NjY2NjY2NjciLCJkaXNwbGF5X25hbWUiOiJMb25kb24gQm9yb3VnaCBvZiBIYXJyb3csIEhBMSA0SFosIFVuaXRlZCBLaW5nZG9tIiwiY2xhc3MiOiJwbGFjZSIsInR5cGUiOiJwb3N0Y29kZSIsImltcG9ydGFuY2UiOjAuMzI1LCJhZGRyZXNzIjp7ImNpdHkiOiJMb25kb24gQm9yb3VnaCBvZiBIYXJyb3ciLCJwb3N0Y29kZSI6IkhBMSA0SFoiLCJjb3VudHJ5IjoiVW5pdGVkIEtpbmdkb20iLCJjb3VudHJ5X2NvZGUiOiJnYiJ9fV0=
     http_version: 
-  recorded_at: Thu, 25 Dec 1980 00:00:00 GMT
-- request:
-    method: get
-    uri: https://maps.googleapis.com/maps/api/geocode/json?address=84%20Pinner%20Road,%20HA1%204HZ&key=AIzaSyCmY0gMXfAWBJ7vb9BXNPpwpa3do67WjHM&language=en&sensor=false
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      Date:
-      - Wed, 26 Sep 2018 13:10:18 GMT
-      Expires:
-      - Thu, 27 Sep 2018 13:10:18 GMT
-      Access-Control-Allow-Origin:
-      - "*"
-      Server:
-      - mafe
-      Content-Length:
-      - '581'
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Frame-Options:
-      - SAMEORIGIN
-      Cache-Control:
-      - public, max-age=86400
-      Age:
-      - '21'
-      Alt-Svc:
-      - quic=":443"; ma=2592000; v="44,43,39,35"
-    body:
-      encoding: ASCII-8BIT
-      string: |
-        {
-           "results" : [
-              {
-                 "address_components" : [
-                    {
-                       "long_name" : "84",
-                       "short_name" : "84",
-                       "types" : [ "street_number" ]
-                    },
-                    {
-                       "long_name" : "Pinner Road",
-                       "short_name" : "Pinner Rd",
-                       "types" : [ "route" ]
-                    },
-                    {
-                       "long_name" : "Harrow",
-                       "short_name" : "Harrow",
-                       "types" : [ "postal_town" ]
-                    },
-                    {
-                       "long_name" : "Greater London",
-                       "short_name" : "Greater London",
-                       "types" : [ "administrative_area_level_2", "political" ]
-                    },
-                    {
-                       "long_name" : "England",
-                       "short_name" : "England",
-                       "types" : [ "administrative_area_level_1", "political" ]
-                    },
-                    {
-                       "long_name" : "United Kingdom",
-                       "short_name" : "GB",
-                       "types" : [ "country", "political" ]
-                    },
-                    {
-                       "long_name" : "HA1",
-                       "short_name" : "HA1",
-                       "types" : [ "postal_code", "postal_code_prefix" ]
-                    }
-                 ],
-                 "formatted_address" : "84 Pinner Rd, Harrow HA1, UK",
-                 "geometry" : {
-                    "location" : {
-                       "lat" : 51.58148809999999,
-                       "lng" : -0.3472873
-                    },
-                    "location_type" : "RANGE_INTERPOLATED",
-                    "viewport" : {
-                       "northeast" : {
-                          "lat" : 51.5828370802915,
-                          "lng" : -0.3459383197084979
-                       },
-                       "southwest" : {
-                          "lat" : 51.5801391197085,
-                          "lng" : -0.348636280291502
-                       }
-                    }
-                 },
-                 "place_id" : "Ehw4NCBQaW5uZXIgUmQsIEhhcnJvdyBIQTEsIFVLIhoSGAoUChIJ4XXma2wTdkgRP3KANOqXcQkQVA",
-                 "types" : [ "street_address" ]
-              }
-           ],
-           "status" : "OK"
-        }
-    http_version: 
-  recorded_at: Thu, 25 Dec 1980 00:00:00 GMT
+  recorded_at: Wed, 26 Sep 2018 16:47:11 GMT
 recorded_with: VCR 4.0.0

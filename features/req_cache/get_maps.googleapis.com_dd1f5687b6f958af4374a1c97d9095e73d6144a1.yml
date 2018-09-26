@@ -1,0 +1,21 @@
+---
+:scope: 
+:url: https://maps.googleapis.com/maps/api/js/AuthenticationService.Authenticate?1shttp%3A%2F%2F127.0.0.1%3A41233%2Fvolunteer_ops&5shttp%3A%2F%2F127.0.0.1%3A41233%2Fvolunteer_ops&callback=_xdc_._1t1b00&token=129522
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: text/javascript; charset=UTF-8
+  Date: Wed, 26 Sep 2018 14:53:25 GMT
+  Pragma: no-cache
+  Expires: Fri, 01 Jan 1990 00:00:00 GMT
+  Cache-Control: no-cache, must-revalidate
+  Content-Disposition: attachment
+  Content-Encoding: gzip
+  Server: mafe
+  X-XSS-Protection: 1; mode=block
+  X-Frame-Options: SAMEORIGIN
+  Alt-Svc: quic=":443"; ma=2592000; v="44,43,39,35"
+  Connection: close
+  Transfer-Encoding: chunked
+:content: "/**/_xdc_._1t1b00 && _xdc_._1t1b00( [1,null,0,null,null,[1]] )"

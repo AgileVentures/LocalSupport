@@ -1,0 +1,22 @@
+---
+:scope: 
+:url: https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Accept-Ranges: bytes
+  Content-Type: image/png
+  Access-Control-Allow-Origin: "*"
+  Content-Length: '1031'
+  Date: Wed, 26 Sep 2018 14:50:36 GMT
+  Expires: Wed, 26 Sep 2018 14:50:36 GMT
+  Cache-Control: private, max-age=31536000
+  Last-Modified: Wed, 07 Dec 2016 16:58:57 GMT
+  X-Content-Type-Options: nosniff
+  Server: sffe
+  X-XSS-Protection: 1; mode=block
+  Alt-Svc: quic=":443"; ma=2592000; v="44,43,39,35"
+  Connection: close
+:content: !binary |-
+  iVBORw0KGgoAAAANSUhEUgAAAHgAAAA2CAYAAAAMNl3OAAADzklEQVR4AcyXNW5kURBFx8wMGxhmZoxNmbfgJXgtnQ/92BB7C8bIkfk3ZWaquUd6I9Xw+0Ptko7ur3q3oqun133ujFWVqHbQ/4/dipSZVYu65eXlBpQ+666I3a18uG/evKm9detWy+PHj9tReuaR4eJtEe0oPfOzHK6CbV9dXT2fpulNlJ55ZLh4z4ubKH2mkMfGxnIiQemz1Pz8fG5ubi5BM6xVE+r9+/ffPXjwYBqlZx6zK/C+E9NBw25cTU1N5SYnJxOUPksNDw/nRCKid5eWluqLxeKlzc3Nma2trQWUnnlEwPXikpgRCyg98ywBp8JQ+iylcFNhInp3dHS05unTp90KtiQMpWcesY6nW5SEoaFnHlUKNxWG0mepkZGRVBgaeXurFGizeCF2hKH0zDn/2a7A80LsCAql97sVDti9m4Qo6nVj+xVsWRhKz5xz/676XcFZvegXZWEofZi73YoGTDjV3FBC1K3tW19fH9T3njCUnjnn+PD7XcGMEPvEoNgTFErPnHO3W4GA/Zt7/fr1VtH97Nkzwj3vA6Znzjk+9yYD362iO4R53gdMH+ac4wu7FQg4BFQul9sV4iVuKmFubGyM6/tAGErPnHN8+NkL8H1JvAhhjosDQaH0zF/g82+yf3NTx4kw1M/x/eDNTR0nwlA/x+cDVoDN4p0oiXLgVBjqZiV8+F3AfL8TJVEOnApD3YxzfJ93/ZubOk6EoX6O73tvLmE6ToShfo7PBVyXz+fP89aKHbHnwgWgZ76DDz97Ab5nxI7YC6H6ome+gw8/ez7gRFgEyXdubCIsAr9bza/l8IPKfgU+/OwF+J4WFgE+/NXuxibCIki+E3BCoL8CH36Kv0L8Wg4/qOxX4MPPnoKCm2LB4moBP3uf2jML1AhjMAoGr+DsbYJV7n+Iak6x/tc74VUDYQamXbf36/tcg+dfg90Hz7wP9ijao+i5zoM9D7bJmqDJsou2i3aa5DRpQkRERPanOuj+/v5pUt8yEi462KDo6DrmoIuLjtvb29PW2jm5v79TdJzuPO94ykXHPwBV5b7gWJFBVbliuar8c6Cq3FWStbV2uft//d7l9tqpKuvOy53X711ur+m4kORhAxsNG8Bo2AAGwwYwGDaA8bABjIYNoONCx4VzrsGuwe6DJ98HexTtUbR4HiwiIiIiyFNrVUKemqoS8tROlZzNYsRTC1VCnpqnEvLUNsUffsGADdiADfiHoZIUKkmhkhwqCKGSFCpJoZIUKmHABuwm2k30oIAN2IANWEREREREROyirSoN2IBFREREhiNbKyZLwr8+SgIAAAAASUVORK5CYII=

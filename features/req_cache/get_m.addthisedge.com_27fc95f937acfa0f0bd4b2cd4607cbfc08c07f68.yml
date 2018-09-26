@@ -1,0 +1,15 @@
+---
+:scope: 
+:url: http://m.addthisedge.com/live/prender?sid=5babb85341194420&uid=5babb8528facce24&ids=5459-6088-5460-5461-5450-5458&rev=v7.11.0-wp&delay=0
+:body: ''
+:status: 204
+:method: get
+:headers:
+  Access-Control-Allow-Credentials: 'true'
+  Access-Control-Allow-Origin: "*"
+  Cache-Control: max-age=0, no-cache, no-store, no-transform
+  Pragma: no-cache
+  Server: Jetty(9.4.8.v20180619)
+  Date: Wed, 26 Sep 2018 16:48:20 GMT
+  Connection: close
+:content: ''

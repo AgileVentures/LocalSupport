@@ -1,0 +1,22 @@
+---
+:scope: 
+:url: https://maps.gstatic.com/mapfiles/api-3/images/icon_error.png
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Accept-Ranges: bytes
+  Content-Type: image/png
+  Access-Control-Allow-Origin: "*"
+  Content-Length: '450'
+  Date: Wed, 26 Sep 2018 14:51:27 GMT
+  Expires: Wed, 26 Sep 2018 14:51:27 GMT
+  Cache-Control: private, max-age=31536000
+  Last-Modified: Wed, 07 Dec 2016 16:58:57 GMT
+  X-Content-Type-Options: nosniff
+  Server: sffe
+  X-XSS-Protection: 1; mode=block
+  Alt-Svc: quic=":443"; ma=2592000; v="44,43,39,35"
+  Connection: close
+:content: !binary |-
+  iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAABiUlEQVR4Ae3Xz4raUBSAcY1xYXcqLlqdPkVt7XsICu1rfPhnr8xsp0wdZh5BOouBoe8RfIGKbhqdtcnmNtDlNR5z74FSMN82+oPkkntP6XL9DxcBPaY8sWJPmrVnxQ8mfCKgJCXd8J4btpicNlzTcQdaPJBihBLuaboAX3jFnNmOYTGgyiOmYPeE5wJv+Ilx6IXaOUD1xN/LRCgDjxiPFhLwFePZ4BTQ4tUbiGnkAw/Cj0t/E+66ywOuSFWAA+3jwA1GBTDMjwEBWzVgTdkGPmPUAMNHG5iqAmMbeFIFljawUgUiG9irArENpKpA8g8A/Uckv2SPImGZCjkt04kqMLKBnirQtYGAjdpL/kXZArKu1YDZ8f2gQ6K04bzN2zIXKsBt/p7cZIfx7Df1XCBr6A30pYPXAuPRN/lkF/KCceyZighk1RyJ59zDr1XId4eHUyk2gAyIC6ycvssI1eCOBCN04Ja6+xDYZs76xDdnxjtpCJQL6DJmSURMkhUTsWTEB8r+Y6zcBfDtDxG8YEAvlAJYAAAAAElFTkSuQmCC

@@ -1,0 +1,27 @@
+---
+:scope: 
+:url: https://maps.google.com/maps/vt?pb=!1m4!1m3!1i12!2i2043!3i1362!1m4!1m3!1i12!2i2044!3i1362!2m3!1e0!2sm!3i436141945!3m9!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e3!12m1!5b1!23i1301875&callback=_xdc_._lsu1xa&key=AIzaSyBu7EigNFF4rc3GB5tAUruPxCa80RuusFs&token=5060
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: text/javascript; charset=UTF-8
+  Date: Wed, 26 Sep 2018 16:48:52 GMT
+  Expires: Mon, 10 Jun 2019 21:39:14 GMT
+  Cache-Control: public, max-age=22222222
+  Content-Security-Policy: script-src 'none'; object-src 'none'; base-uri 'none'
+  X-Content-Type-Options: nosniff
+  Content-Disposition: attachment; filename="f.txt"
+  Content-Encoding: gzip
+  Server: paintfe
+  Content-Length: '412'
+  X-XSS-Protection: 1; mode=block
+  X-Frame-Options: SAMEORIGIN
+  Server-Timing: gfet4t7; dur=45
+  Alt-Svc: quic=":443"; ma=2592000; v="44,43,39,35"
+  Connection: close
+:content: /* API Response */ _xdc_._lsu1xa && _xdc_._lsu1xa([{"id":"twvwvwvwvtwv","base":[1071679488,714262528],"zrange":[12,12],"layer":"m@436141945","features":[{"id":"2578176880738668643","a":[0,0],"bb":[-40,-15,41,2,-34,-2,34,15],"c":"{\"1\":{\"title\":\"Osterley
+  Park And House\"}}"}]},{"id":"twvwvwvwvvut","base":[1071978496,714366976],"zrange":[12,12],"layer":"m@436141945","features":[{"id":"15091440646483999614","a":[0,0],"bb":[-41,-15,42,2,-41,-2,42,15],"c":"{\"1\":{\"title\":\"Royal
+  Botanic Gardens, Kew\"}}"},{"id":"12181789252114816164","a":[-274432,219136,1071704064,714586112,1071704064,714586112,1071704064,714586112],"bb":[-10,-28,10,-1,-10,-28,10,-1,-10,-28,10,-1,-10,-28,10,-1],"c":"{\"1\":{\"title\":\"Twickenham
+  Stadium\"}}","io":[0,-14]},{"id":"2578176880738668643","a":[-299008,-104448],"bb":[-40,-15,41,2,-34,-2,34,15],"c":"{\"1\":{\"title\":\"Osterley
+  Park And House\"}}"}]}])

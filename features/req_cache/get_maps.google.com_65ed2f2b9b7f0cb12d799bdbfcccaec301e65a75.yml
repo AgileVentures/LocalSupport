@@ -1,0 +1,31 @@
+---
+:scope: 
+:url: https://maps.google.com/maps/vt?pb=!1m4!1m3!1i12!2i2043!3i1358!1m4!1m3!1i12!2i2043!3i1359!1m4!1m3!1i12!2i2044!3i1358!1m4!1m3!1i12!2i2044!3i1359!1m4!1m3!1i12!2i2045!3i1358!1m4!1m3!1i12!2i2045!3i1359!1m4!1m3!1i12!2i2043!3i1360!1m4!1m3!1i12!2i2043!3i1361!1m4!1m3!1i12!2i2044!3i1360!1m4!1m3!1i12!2i2044!3i1361!1m4!1m3!1i12!2i2045!3i1360!1m4!1m3!1i12!2i2045!3i1361!2m3!1e0!2sm!3i436141945!3m9!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e3!12m1!5b1!23i1301875&callback=_xdc_._xfws7m&key=AIzaSyBu7EigNFF4rc3GB5tAUruPxCa80RuusFs&token=45502
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: text/javascript; charset=UTF-8
+  Date: Wed, 26 Sep 2018 14:51:20 GMT
+  Expires: Mon, 10 Jun 2019 19:41:42 GMT
+  Cache-Control: public, max-age=22222222
+  Content-Security-Policy: script-src 'none'; object-src 'none'; base-uri 'none'
+  X-Content-Type-Options: nosniff
+  Content-Disposition: attachment; filename="f.txt"
+  Content-Encoding: gzip
+  Server: paintfe
+  Content-Length: '656'
+  X-XSS-Protection: 1; mode=block
+  X-Frame-Options: SAMEORIGIN
+  Server-Timing: gfet4t7; dur=77
+  Alt-Svc: quic=":443"; ma=2592000; v="44,43,39,35"
+  Connection: close
+:content: /* API Response */ _xdc_._xfws7m && _xdc_._xfws7m([{"id":"twvwvwvvwuwv","zrange":[12,12],"layer":"m@436141945"},{"id":"twvwvwvvwuww","zrange":[12,12],"layer":"m@436141945"},{"id":"twvwvwvvwwut","zrange":[12,12],"layer":"m@436141945"},{"id":"twvwvwvvwwuu","zrange":[12,12],"layer":"m@436141945"},{"id":"twvwvwvvwwuv","zrange":[12,12],"layer":"m@436141945"},{"id":"twvwvwvvwwuw","zrange":[12,12],"layer":"m@436141945"},{"id":"twvwvwvwvtvv","base":[1071140864,713232384],"zrange":[12,12],"layer":"m@436141945","features":[{"id":"10837346827302587422","a":[0,0],"bb":[-42,-21,43,-4,-26,-8,26,9,-45,4,45,21],"c":"{\"1\":{\"title\":\"Ruislip
+  Woods National Nature Reserve\"}}"}]},{"id":"twvwvwvwvtvw","base":[1071253504,713646080],"zrange":[12,12],"layer":"m@436141945","features":[{"id":"6690458799742309100","a":[0,0,1071253504,713646080,1071253504,713646080,1071253504,713646080],"bb":[-10,-28,10,-1,-10,-28,10,-1,-10,-28,10,-1,-10,-28,10,-1,-88,-22,-9,-5],"c":"{\"1\":{\"title\":\"RAF
+  Northolt\"}}","io":[0,-14]}]},{"id":"twvwvwvwvvtt","base":[1072320512,713224192],"zrange":[12,12],"layer":"m@436141945","features":[{"id":"569235943583350003","a":[0,0],"bb":[-155,-22,-9,-5],"c":"{\"1\":{\"title\":\"Royal
+  Air Force Museum\"}}"}]},{"id":"twvwvwvwvvtu","zrange":[12,12],"layer":"m@436141945"},{"id":"twvwvwvwvvtv","base":[1072320512,713224192],"zrange":[12,12],"layer":"m@436141945","features":[{"id":"569235943583350003","a":[0,0,1072320512,713224192,1072320512,713224192,1072320512,713224192],"bb":[-10,-28,10,-1,-10,-28,10,-1,-10,-28,10,-1,-10,-28,10,-1,-155,-22,-9,-5],"c":"{\"1\":{\"title\":\"Royal
+  Air Force Museum\"}}","io":[0,-14]}]},{"id":"twvwvwvwvvtw","base":[1072820224,713943040],"zrange":[12,12],"layer":"m@436141945","features":[{"id":"2809629151407911844","a":[0,0],"bb":[-64,-29,-9,-12,-117,-16,-9,1],"c":"{\"1\":{\"title\":\"Madame
+  Tussauds London\"}}"},{"id":"12786351728261599912","a":[6144,-118784],"bb":[-109,-22,-9,-5],"c":"{\"1\":{\"title\":\"ZSL
+  London Zoo\"}}"},{"id":"9936730966454976391","a":[-198656,163840,1072621568,714106880,1072621568,714106880,1072621568,714106880],"bb":[-10,-28,10,-1,-10,-28,10,-1,-10,-28,10,-1,-10,-28,10,-1,-122,-22,-9,-5],"c":"{\"1\":{\"title\":\"Kensington
+  Palace\"}}","io":[0,-14]},{"id":"8567461044262521048","a":[-26624,94208],"bb":[-84,-22,-9,-5],"c":"{\"1\":{\"title\":\"Marble
+  Arch\"}}"}]}])

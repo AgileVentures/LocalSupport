@@ -1,7 +1,7 @@
 class BaseOrganisation < ApplicationRecord
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
-  
+
   acts_as_paranoid
   validates_url :website, preferred_scheme: 'http://', message: 'Website is not a valid URL',
     if: proc{|org| org.website.present?}
@@ -35,7 +35,7 @@ class BaseOrganisation < ApplicationRecord
   end
 
   def full_address
-     "#{self.address}, #{self.postcode}"
+     "#{self.postcode}"
   end
 
   def gmaps4rails_marker_attrs
@@ -53,9 +53,9 @@ class BaseOrganisation < ApplicationRecord
   def has_been_updated_recently?
     updated_at >= 1.year.ago
   end
-  
+
   def slug_candidates
-    SetupSlug.run(self.name) 
+    SetupSlug.run(self.name)
   end
 
 end
