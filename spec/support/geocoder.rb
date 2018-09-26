@@ -11,7 +11,5 @@ Geocoder::Lookup::Test.set_default_stub(
       'country_code' => 'US'
 
     }
-
   ]
-
 )
