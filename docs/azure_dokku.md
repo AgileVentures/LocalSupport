@@ -6,15 +6,15 @@ Assuming you have ssh access set up you can deploy to Azure Dokku as follows
 1. add the following to your `~/.ssh/config` file
 
 ```
-Host av-dokku
-HostName agileventures.eastus.cloudapp.azure.com
+Host avp-dokku
+HostName agileventures-playground.westeurope.cloudapp.azure.com
 User dokku
 ```
 
 2. create an appropriately named app
 
 ```
-ssh av-dokku apps:create harrowcn-temp
+ssh avp-dokku apps:create harrowcn-temp
 ```
 
 3. add a remote for the git repo
@@ -26,14 +26,14 @@ git remote add temp dokku@agileventures.eastus.cloudapp.azure.com:harrowcn-temp
 4. set a devise secret key
 
 ```
-$ ssh av-dokku config:set harrowcn-production DEVISE_SECRET_KEY=1234
+$ ssh avp-dokku config:set harrowcn-production DEVISE_SECRET_KEY=1234
 ```
 
 5. create and link database
 
 ```
-ssh av-dokku postgres:create harrowcn-temp
-ssh av-dokku postgres:link harrowcn-temp harrowcn-temp
+ssh avp-dokku postgres:create harrowcn-temp
+ssh avp-dokku postgres:link harrowcn-temp harrowcn-temp
 ```
 
 
