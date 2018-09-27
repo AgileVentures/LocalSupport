@@ -98,7 +98,7 @@ $ ssh avp-dokku postgres:export harrowcn-temp > latest.dump # not checked for ac
 10. set some ENV vars
 
 ```
-$ ssh avp-dokku config:set harrowcn-production GMAP_API_KEY=1234
+$ ssh avp-dokku config:set harrowcn-temp GMAP_API_KEY=1234
 ```
 
 N.B. [TODO some notes on how to get a GMAP_API_KEY?]
