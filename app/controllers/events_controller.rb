@@ -7,6 +7,8 @@ class EventsController < ApplicationController
   def index
     query = params['q']
     @events = query.blank? ? Event.upcoming(10) : Event.search(query)
+    @calendar_events = @events.flat_map{ |e| e.calendar_events(params.fetch(:start_date, Time.zone.now).to_date ) }
+    byebug
     flash.now[:alert] = SEARCH_NOT_FOUND if @events.empty? and query
     @markers = BuildMarkersWithInfoWindow
                    .with(Event.build_by_coordinates(@events), self)

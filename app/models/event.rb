@@ -38,6 +38,28 @@ class Event < ApplicationRecord
     end
   end
 
+  def rule
+    IceCube::Rule.from_hash recurring
+  end
+
+  def schedule(start)
+    schedule = IceCube::Schedule.new(start)
+    schedule.add_recurrence_rule(rule)
+    schedule
+  end
+
+  def calendar_events(start)
+    if recurring.empty?
+      [self]
+    else
+      start_date = start.beginning_of_month.beginning_of_week
+      end_date = start.end_of_month.end_of_week
+      schedule(start_date).occurrences(end_date).map do |date|
+        Event.new(id: id, title: title, start_date: date)
+      end
+    end
+  end
+
   private
 
   def self.event_with_coordinates(events)
