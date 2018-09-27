@@ -95,8 +95,15 @@ $ ssh avp-dokku postgres:export harrowcn-temp > latest.dump # not checked for ac
 ```
 
 
-x. set some ENV vars
+10. set some ENV vars
 
+```
+$ ssh avp-dokku config:set harrowcn-production GMAP_API_KEY=1234
+```
+
+N.B. [TODO some notes on how to get a GMAP_API_KEY?]
+
+...
 
 N.B. if you need to run the migrations manually (should auto-run as part of post-deploy hook)
 
