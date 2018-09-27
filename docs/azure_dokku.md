@@ -29,11 +29,28 @@ git remote add temp dokku@agileventures.eastus.cloudapp.azure.com:harrowcn-temp
 $ ssh avp-dokku config:set harrowcn-production DEVISE_SECRET_KEY=1234
 ```
 
+N.B. creating a random key on linux:
+
+```
+$ date +%s | sha256sum | base64 | head -c 32 ; echo
+```
+
+on OSX:
+```
+$ date | md5 | head -c32; echo
+```
+
 5. create and link database
 
 ```
 ssh avp-dokku postgres:create harrowcn-temp
 ssh avp-dokku postgres:link harrowcn-temp harrowcn-temp
+```
+
+N.B. you can check the status of all the database:
+
+```
+ssh avp-dokku postgres:list
 ```
 
 6. run the migrations
