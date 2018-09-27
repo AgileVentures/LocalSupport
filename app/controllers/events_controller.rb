@@ -21,9 +21,18 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.recurring = params[:event][:recurring]
     @event.organisation = current_user.organisation if @current_user.organisation_id?
-    @event.save ? redirect_to(@event, notice: event_success) : render(:new)
+
+    respond_to do |format|
+      if @event.save
+        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.json { render :show, status: :created, location: @event }
+      else
+        format.html { render :new }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
+    end
+    # @event.save ? redirect_to(@event, notice: event_success) : render(:new)
   end
 
   def show
@@ -52,7 +61,8 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:title, :description,
                                   :start_date, :end_date,
-                                  :organisation_id, :address)
+                                  :organisation_id, :address,
+                                  :recurring)
   end
 
   def logged_in_user
