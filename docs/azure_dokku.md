@@ -73,7 +73,27 @@ $ ssh avp-dokku letsencrypt harrowcn-temp
 $ ssh avp-dokku letsencrypt:auto-renew harrowcn-temp
 ```
 
-x. import data into the database
+9. import data into the database
+
+```
+$ ssh avp-dokku postgres:import harrowcn-temp < latest.dump
+```
+
+N.B. to grab data from heroku
+
+https://devcenter.heroku.com/articles/heroku-postgres-import-export
+
+```
+$ heroku pg:backups:capture -r temp
+$ heroku pg:backups:download -r temp
+```
+
+N.B. to export data from dokku
+
+```
+$ ssh avp-dokku postgres:export harrowcn-temp > latest.dump # not checked for accuracy
+```
+
 
 x. set some ENV vars
 
