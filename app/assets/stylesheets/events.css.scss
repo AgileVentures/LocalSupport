@@ -10,23 +10,11 @@
   text-rendering: optimizelegibility;
 }
 
-
-#events_scroll {
-  height: 340px;
-  width: 100%;
-  border: 1px solid #ccc;
-  overflow-y: scroll;
-}
-
-.jumbotron {
-  background-color: #FFFAAE;
-  border: 2px solid #ccc;
-}
-
 .event-box {
   height: 440px;
   width: 100%;
-  border: 1px solid #ccc;
+  padding: 20px;
+  font-size: 20px;
 }
 
 hr {
