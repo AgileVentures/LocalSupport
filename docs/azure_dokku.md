@@ -29,6 +29,17 @@ git remote add temp dokku@agileventures.eastus.cloudapp.azure.com:harrowcn-temp
 $ ssh avp-dokku config:set harrowcn-production DEVISE_SECRET_KEY=1234
 ```
 
+N.B. creating a random key on linux:
+
+```
+$ date +%s | sha256sum | base64 | head -c 32 ; echo
+```
+
+on OSX:
+```
+$ date | md5 | head -c32; echo
+```
+
 5. create and link database
 
 ```
@@ -36,25 +47,25 @@ ssh avp-dokku postgres:create harrowcn-temp
 ssh avp-dokku postgres:link harrowcn-temp harrowcn-temp
 ```
 
-6. run the migrations
+N.B. you can check the status of all the database:
 
 ```
-ssh avp-dokku run harrowcn-temp rails db:migrate
+ssh avp-dokku postgres:list
 ```
 
-7. push the code up
+6. push the code up
 
 ```
 $ git push azure-develop develop:master
 ```
 
-8. set the domain
+7. set the domain
 
 ```
 ssh avp-dokku domains:add harrowcn-temp temp.harrowcn.org.uk
 ```
 
-9. set up the https
+8. set up the https
 
 ```
 $ ssh avp-dokku config:set --no-restart harrowcn-temp DOKKU_LETSENCRYPT_EMAIL=technical@harrowcn.org.uk
@@ -62,10 +73,43 @@ $ ssh avp-dokku letsencrypt harrowcn-temp
 $ ssh avp-dokku letsencrypt:auto-renew harrowcn-temp
 ```
 
+9. import data into the database
 
-x. import data into the database
+```
+$ ssh avp-dokku postgres:import harrowcn-temp < latest.dump
+```
 
-x. set some en
+N.B. to grab data from heroku
+
+https://devcenter.heroku.com/articles/heroku-postgres-import-export
+
+```
+$ heroku pg:backups:capture -r temp
+$ heroku pg:backups:download -r temp
+```
+
+N.B. to export data from dokku
+
+```
+$ ssh avp-dokku postgres:export harrowcn-temp > latest.dump # not checked for accuracy
+```
+
+
+10. set some ENV vars
+
+```
+$ ssh avp-dokku config:set harrowcn-temp GMAP_API_KEY=1234
+```
+
+N.B. [TODO some notes on how to get a GMAP_API_KEY?]
+
+...
+
+N.B. if you need to run the migrations manually (should auto-run as part of post-deploy hook)
+
+```
+ssh avp-dokku run harrowcn-temp rails db:migrate
+```
 
 
 Old Notes
