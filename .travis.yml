@@ -23,13 +23,7 @@ before_install:
   -C $PWD/travis_phantomjs; fi
 - phantomjs --version
 after_success:
-- eval "$(ssh-agent -s)"
-- chmod 600 .travis/deploy.key
-- ssh-add .travis/deploy.key
-- ssh-keyscan agileventures-playground.westeurope.cloudapp.azure.com >> ~/.ssh/known_hosts
-- git remote add develop dokku@agileventures-playground.westeurope.cloudapp.azure.com:harrowcn-develop
-- git config --global push.default simple
-- git push develop develop:master
+- "./after_success_deploy_to_dokku.sh"
 before_script:
 - "./install.sh"
 - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
