@@ -60,6 +60,7 @@ gnk
 .drie_encrypted.yml
 
 # travis dokku ssh keys for deploy
-.travis/
+.travis/*.key
+.travis/*.key.pub
 
 # DO NOT ADD features/vcr_cassettes or features/req_cache as we need these files
