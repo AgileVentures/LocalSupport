@@ -32,7 +32,9 @@ class Event < ApplicationRecord
 
   def recurring=(value)
     if RecurringSelect.is_valid_rule?(value)
-      super(RecurringSelect.dirty_hash_to_rule(value).to_hash)
+      rule = RecurringSelect.dirty_hash_to_rule(value)
+      rule = rule.nil? ? super(nil) : rule.to_hash
+      rule
     else
       super(nil)
     end
