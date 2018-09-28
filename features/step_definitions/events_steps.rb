@@ -23,6 +23,7 @@ Given(/^the following events? exists?:$/) do |table|
     hash['end_date'] = (Time.zone.now + 3.hours) + 1.day  if hash['end_date'] == 'one day from now'
     hash['end_date'] = (Time.zone.now + 3.hours) - 1.day if hash['end_date'] == 'yesterday'
     hash['end_date'] = Time.zone.now + 3.hours if hash['end_date'] == 'today'
+    hash['recurring'] = IceCube::Rule.daily.to_hash if hash['recurring'] == 'daily'
     Event.create!(hash)
   end
 end

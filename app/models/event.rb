@@ -31,12 +31,12 @@ class Event < ApplicationRecord
   end
 
   def recurring=(value)
-    if RecurringSelect.is_valid_rule?(value)
-      rule = RecurringSelect.dirty_hash_to_rule(value)
-      rule = rule.nil? ? super(nil) : rule.to_hash
-      rule
-    else
-      super(nil)
+    unless value == 'null'
+      if RecurringSelect.is_valid_rule?(value)
+        super(RecurringSelect.dirty_hash_to_rule(value).to_hash)
+      else
+        super(nil)
+      end
     end
   end
 
@@ -54,7 +54,7 @@ class Event < ApplicationRecord
     if recurring.empty?
       [self]
     else
-      start_date = start.beginning_of_month.beginning_of_week
+      # start_date = start.beginning_of_month.beginning_of_week
       end_date = start.end_of_month.end_of_week
       schedule(start_date).occurrences(end_date).map do |date|
         Event.new(id: id, title: title, start_date: date)
