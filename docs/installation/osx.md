@@ -6,7 +6,7 @@ In order to work on LocalSupport on Mac, please fork and clone the project.
 If you need to setup your development environment then [gorails](https://gorails.com/setup/osx/10.13-high-sierra) has an excellent walkthrough.
 
 1. Install [RVM](https://rvm.io/).
-1. Install [Ruby 2.5.0](https://rvm.io/rubies/installing).
+1. Install [Ruby 2.5.1](https://rvm.io/rubies/installing).
 1. Fork the http://github.com/AgileVentures/LocalSupport repo (fork button at top right of github web interface).
 1. Clone the new forked repo onto your dev machine.
 1. `cd LocalSupport`.
