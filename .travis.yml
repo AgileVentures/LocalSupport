@@ -36,9 +36,9 @@ after_script:
 - "./cc-test-reporter after-build"
 deploy:
   provider: script
-  script: bash scripts/deploy.sh develop $TRAVIS_REPO_SLUG
+  script: bash scripts/deploy.sh
   on:
-    branch: develop
+    branch: configure_travis_to_push_to_dokku
 notifications:
   email: false
   slack:
