@@ -36,9 +36,11 @@ after_script:
 - "./cc-test-reporter after-build"
 deploy:
   provider: script
+  skip_cleanup: true
   script: bash scripts/deploy.sh
   on:
     branch: configure_travis_to_push_to_dokku
+  run: bundle exec rake vcr_billy_caches:reset
 notifications:
   email: false
   slack:
