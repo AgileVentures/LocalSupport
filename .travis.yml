@@ -9,8 +9,6 @@ cache:
   directories:
   - travis_phantomjs
 before_install:
-- openssl aes-256-cbc -K $encrypted_a6fc752c6b5a_key -iv $encrypted_a6fc752c6b5a_iv
-  -in deploy_key.enc -out ./deploy_key -d
 - "./travis_deploy_to_dokku_encryption.sh"
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
