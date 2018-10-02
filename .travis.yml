@@ -9,7 +9,6 @@ cache:
   directories:
   - travis_phantomjs
 before_install:
-- "./travis_deploy_to_dokku_encryption.sh"
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
 - phantomjs --version
@@ -22,8 +21,6 @@ before_install:
 - if [ $(phantomjs --version) != '2.1.1' ]; then tar -xvf $PWD/travis_phantomjs/phantomjs-2.1.1-linux-x86_64.tar.bz2
   -C $PWD/travis_phantomjs; fi
 - phantomjs --version
-after_success:
-- "./after_success_deploy_to_dokku.sh"
 before_script:
 - "./install.sh"
 - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
@@ -38,9 +35,8 @@ script:
 after_script:
 - "./cc-test-reporter after-build"
 deploy:
-  provider: heroku
-  api_key:
-    secure: cxLILpvv16VXxYQYGxPcVJqUhciks9tNDr0xLvLsTw54gT5jSqJ4DWojYtnVjRozlb6AbKnS5LqUt2JDTisNym6CUxJ3h3xHuaY3sJerTHznG1R9FprGy04ypGxTi7ESAD+3a/0QfjatfLF85gDN/jp40M8N8FvwxTUI1iZBJRk=
+  - provider: script
+    script: bash scripts/deploy.sh develop $TRAVIS_REPO_SLUG
   app:
     develop: harrowcn-develop
     staging: harrowcn-staging
