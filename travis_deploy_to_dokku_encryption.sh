@@ -5,5 +5,4 @@ chmod 600 ./deploy_key
 echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 ssh-add ./deploy_key
 # test ssh connection for: https://github.com/dwyl/learn-travis/issues/42
-ssh -i ./deploy_key root@agileventures-playground.westeurope.cloudapp.azure.com pwd
 exit 0
