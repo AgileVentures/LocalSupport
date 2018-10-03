@@ -204,6 +204,7 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
+    ice_cube (0.16.3)
     idn-ruby (0.1.0)
     jar_wrapper (0.1.8)
       zip
@@ -508,6 +509,7 @@ DEPENDENCIES
   geocoder
   heroku-api
   httparty
+  ice_cube
   jasmine (~> 3.2)
   jasmine-jquery-rails (= 2.0.3)
   jbuilder

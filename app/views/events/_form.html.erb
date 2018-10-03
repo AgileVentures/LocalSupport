@@ -59,8 +59,17 @@
           <%= f.text_field :end_date, 'data-behaviour' => 'date-and-time-picker', :placeholder => 'yyyy/mm/dd' %>
         </div>
       </div>
-  </div>
-  <br />
+      </div>
+      <div class="row">
+          <div class="col-md-5">
+              <h3>Select Recurrent </h3>
+          </div>
+          <div class="col-md-5">
+              <br>
+              <%= f.select :occur, options_for_select(Event.occurs.keys) %>
+          </div>
+      </div>
+      <br />
   <div class="position-bottom col-md-6">
     <div class="actions">
       <%= f.submit :class => 'btn btn-primary' %>

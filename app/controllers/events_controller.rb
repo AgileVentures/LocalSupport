@@ -12,6 +12,7 @@ class EventsController < ApplicationController
                    .with(Event.build_by_coordinates(@events), self)
 
     respond_to :html, :json
+    @all_events = @events.flat_map{ |e| e.recurring_events   }
   end
 
   def new
@@ -50,7 +51,7 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:title, :description,
-      :start_date, :end_date, :organisation_id, :address)
+      :start_date, :end_date, :organisation_id, :address, :occur)
   end
 
   def logged_in_user

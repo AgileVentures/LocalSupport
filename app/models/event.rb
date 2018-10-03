@@ -16,7 +16,8 @@ class Event < ApplicationRecord
     keyword = "%#{query}%"
     where(contains_description?(keyword).or(contains_title?(keyword))).upcoming(10)
   }
-  
+enum occur: { never: 0, daily: 1, weekly: 2, biweekly: 3, monthly: 4 }
+
   # For the geocoder gem
   geocoded_by :address
 
@@ -29,6 +30,29 @@ class Event < ApplicationRecord
     Location.build_hash(group_by_coordinates(events))
   end
 
+  def schedule
+    schedule = IceCube::Schedule.new(now= start_date)
+    case occur
+    when 'daily'
+      schedule.add_recurrence_rule IceCube::Rule.daily(1)
+    when 'weekly'
+      schedule.add_recurrence_rule IceCube::Rule.weekly(1)
+    when 'biweekly'
+      schedule.add_recurrence_rule IceCube::Rule.weekly(2)
+    when 'monthly'
+      schedule.add_recurrence_rule IceCube::Rule.monthly(1)
+    end
+    schedule
+  end
+
+  def recurring_events
+    schedule.occurrences_between(start_date, 10.days.from_now).map do |date|
+      Event.new(id: id, title: title, description: description,
+                organisation_id: organisation_id, address: address,
+                start_date: date, end_date: date+ (end_date - start_date))
+    end
+
+  end
   private
 
   def self.event_with_coordinates(events)
