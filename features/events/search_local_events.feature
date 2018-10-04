@@ -13,7 +13,7 @@ Feature: Search local events
       | title            | description             | organisation  | start_date       | end_date         |
       | My first event   | Still good people       | Cats Are Us   | one day from now | one day from now |
       | My second event  | Second still podium     | Office Primer | today            | today            |
-      | Some other event | Look after older people | Office Primer | yesterday        | yesterday        |
+      | Some past event | Look after older people | Office Primer | yesterday        | yesterday        |
     And cookies are approved
     And I visit the events page
 
@@ -34,3 +34,8 @@ Feature: Search local events
     Given I fill in "Search Text" with "search words" within the main body
     And I press "Search"
     Then the search box should contain "search words"
+
+  Scenario: Search displays only future events
+    Given I fill in "Search Text" with "Some past event" within the main body
+    And I press "Search"
+    Then I should see "Sorry, it seems we don't have quite what you are looking for."

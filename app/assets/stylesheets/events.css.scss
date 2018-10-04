@@ -18,6 +18,11 @@
   overflow-y: scroll;
 }
 
+.jumbotron {
+  background-color: #FFFAAE;
+  border: 2px solid #ccc;
+}
+
 .event-box {
   height: 440px;
   width: 100%;
@@ -27,4 +32,11 @@
 hr {
     margin-bottom: 5px;
     margin-top: 5px;
+}
+
+#edit-button {
+  font-size: 18px;
+  margin-left: -15px;
+  padding: 10px;
+  letter-spacing: 1px;
 }

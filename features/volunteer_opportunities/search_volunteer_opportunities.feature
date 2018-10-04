@@ -16,7 +16,7 @@ Feature: As a potential volunteer
     And I visit the volunteer opportunities page
 
   Scenario: Search a list of current volunteer opportunities by existing keywords
-    Given I fill in "Search Text" with "help" within the main body
+    Given I fill in "q" with "help" within the main body
     And I press "Search"
     Then I should see "Office Support"
     And I should not see "Litter Box Scooper" within "orgs_scroll"
@@ -24,11 +24,11 @@ Feature: As a potential volunteer
     And the map should show the opportunity titled Office Support
 
   Scenario: Search a list of current volunteer opportunities with a keyword that won't match
-    Given I fill in "Search Text" with "non existent text" within the main body
+    Given I fill in "q" with "non existent text" within the main body
     And I press "Search"
-    Then I should see "Sorry, it seems we don't have quite what you are looking for." 
+    Then I should see "Sorry, it seems we don't have quite what you are looking for."
 
   Scenario: Query string is visible after search
-    Given I fill in "Search Text" with "search words" within the main body
+    Given I fill in "q" with "search words" within the main body
     And I press "Search"
     Then the search box should contain "search words"

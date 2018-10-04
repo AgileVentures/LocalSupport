@@ -1,7 +1,7 @@
 ## Issues
 
 ### Heroku
-See [the notes on deploying to heroku](https://github.com/AgileVentures/LocalSupport/wiki/Deploying-to-Heroku)
+See [the notes on deploying to heroku](https://github.com/AgileVentures/LocalSupport/blob/develop/docs/heroku.md)
 
 ### PostgreSQL Install
 
@@ -13,7 +13,7 @@ sudo apt-get install libpq-dev
 
 Install the pg gem. You’ll need to include the following options to set your path and include the needed headers:
 ```
-gem install pg -v 0.18.0 -- --with-pg-config=/Applications/Postgres.app/Contents/Versions/9.4/bin/pg_config --with-pg-include='/Applications/Postgres.app/Contents/Versions/9.4/include/'
+gem install pg -v 1.1.3 -- --with-pg-config=/Applications/Postgres.app/Contents/Versions/9.4/bin/pg_config --with-pg-include='/Applications/Postgres.app/Contents/Versions/9.4/include/'
 ```
 **Note: before you run this, check that the paths for `pg_config` and `include` are correct, and adjust them as needed. Example: If your application is named Postgres93, then “Postgres.app” will need to be changed to “Postgres93.app” in both places.**
 

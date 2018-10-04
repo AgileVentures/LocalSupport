@@ -22,9 +22,9 @@ Feature: Would like the site to appear high in Google's listing
   Scenario: Meta Title, Meta Description, Meta Keywords and Description for home page
     Given I visit the volunteer opportunities page
     Then I should have a page with a title tag set to: "Harrow volunteering"
-    And I should see "Harrow Volunteering Opportunities"
+    And I should see "Want to volunteer in Harrow?"
     And it should have a Meta Description
-    
+
   Scenario: Meta Title and Description for organisation show page
     Given I visit the show page for the organisation named "Friendly"
     Then I should have a page with a title tag set to: "Friendly | Harrow volunteering"

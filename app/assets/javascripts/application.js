@@ -31,11 +31,6 @@ $(function() {
     events: '/events.json'
   });
   $('[data-behaviour~=date-and-time-picker]').datetimepicker({
-    format: 'DD/MM/YYYY hh:mm'
-  });
-
-  $('[data-behaviour~=date-only-picker]').datetimepicker({
-    format: 'DD/MM/YYYY'
+    format: 'YYYY/MM/DD hh:mm'
   });
 });
-
