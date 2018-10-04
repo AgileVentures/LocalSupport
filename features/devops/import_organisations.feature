@@ -6,7 +6,7 @@ Feature: Importing Organisations from Charity Commission
 
   Scenario: Check Harrow Postcode
     Given I run the import organisation service for postcode "HA2"
-    Then there should be 49 organisations stored
+    Then there should be 50 organisations stored
 
   Scenario: handling existing charities (csv imported)
 

@@ -4,15 +4,18 @@ class ImportOrganisations
       model_klass = Organisation)
 
       response = http.get("http://production.charity-api.agileventures.org/charities.json?postcode=#{postcode}")
-      # will need to loop at some point
-      charities = JSON.parse response.body # this should be inside the has_content? check
       if has_content?(response)
-        model_klass.find_or_create_by! ({
-            "name" => charities.first['name'],
-            "description" => 'No Description'
+        charities = JSON.parse response.body
+        charities.each do |charity|
+          organisation = model_klass.find_or_create_by! name: charity['name'], description: 'No Description' 
+          organisation.update ({
+            address: charity['add1'],
+            postcode: charity['postcode'],
             # what other data do want here?
             # which data should be in the block?
-        })
+          })
+          organisation.update telephone: charity['phone'] unless charity['phone'].nil?
+        end
       end
 
   end
