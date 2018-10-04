@@ -14,7 +14,7 @@ class Event < ApplicationRecord
   }
   scope :search, lambda { |query|
     keyword = "%#{query}%"
-    where(contains_description?(keyword).or(contains_title?(keyword))).limit(10)
+    where(contains_description?(keyword).or(contains_title?(keyword))).upcoming(10)
   }
   
   # For the geocoder gem
