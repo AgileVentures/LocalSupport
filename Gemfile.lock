@@ -6,14 +6,6 @@ GIT
       addressable
       rails
 
-GIT
-  remote: https://github.com/thoughtbot/capybara-webkit.git
-  revision: 41c43062677c1628e09f9dc00dc24528ba161ed7
-  specs:
-    capybara-webkit (1.15.0)
-      capybara (>= 2.3, < 4.0)
-      json
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -490,7 +482,6 @@ DEPENDENCIES
   breadcrumbs_on_rails
   byebug
   capybara (~> 3.7)
-  capybara-webkit!
   coffee-rails (= 4.2.2)
   cucumber-rails
   cucumber-rails-training-wheels
