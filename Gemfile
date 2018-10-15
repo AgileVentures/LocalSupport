@@ -116,5 +116,5 @@ gem 'meta-tags', '~> 2.10'
 
 #Social
 gem 'twitter',      '~> 6.2'
-gem 'twitter-text', '~> 2.1'
+gem 'twitter-text', '~> 3.0'
 gem 'koala' # Facebook integration
