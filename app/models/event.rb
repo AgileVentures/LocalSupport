@@ -14,7 +14,7 @@ class Event < ApplicationRecord
   }
   scope :search, lambda { |query|
     keyword = "%#{query}%"
-    where(contains_description?(keyword).or(contains_title?(keyword))).upcoming(10)
+    where(contains_description?(keyword).or(contains_title?(keyword)))
   }
 enum occur: { never: 0, daily: 1, weekly: 2, biweekly: 3, monthly: 4 }
 

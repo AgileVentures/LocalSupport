@@ -6,13 +6,13 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update]
   def index
     query = params['q']
-    @events = query.blank? ? Event.upcoming(10) : Event.search(query)
+    @events =  query.blank? ? Event.all : Event.search(query)
     flash.now[:alert] = SEARCH_NOT_FOUND if @events.empty? and query
     @markers = BuildMarkersWithInfoWindow
                    .with(Event.build_by_coordinates(@events), self)
 
+    @all_events = @events.flat_map(&:recurring_events)
     respond_to :html, :json
-    @all_events = @events.flat_map{ |e| e.recurring_events   }
   end
 
   def new

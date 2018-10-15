@@ -18,7 +18,7 @@
 
 <div id="events_scroll">
   <div class="col-md-12 events-container">
-    <%= render @all_events %>
+      <%= render @all_events.sort { |a,b| a.start_date <=> b.start_date  } %>
   </div>
 </div>
 <% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
