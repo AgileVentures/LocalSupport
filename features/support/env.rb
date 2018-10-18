@@ -8,7 +8,6 @@ ENV['CUCUMBER'] = 'cucumber'
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
 require 'capybara'
-require 'capybara-webkit'
 require 'capybara/cucumber'
 require 'cucumber/rails'
 require 'cucumber/rspec/doubles'
@@ -17,6 +16,9 @@ require 'factory_bot_rails'
 require 'aruba/cucumber'
 require 'timecop'
 require 'billy/capybara/cucumber'
+require 'capybara/poltergeist'
+
+Capybara.javascript_driver = :poltergeist
 
 Dir['../../spec/factories/*.rb'].each {|file| require_relative file }
 Dir[Rails.root.join('spec/support/matchers/*.rb')].each { |file| require file  }
@@ -33,8 +35,6 @@ Capybara.default_selector = :css
 Capybara.default_max_wait_time = 3
 Capybara.asset_host = 'http://localhost:3000'
 Capybara.server = :puma
-Capybara.javascript_driver = :webkit
-Capybara::Webkit.configure(&:block_unknown_urls)
 
 Billy.configure do |c|
   c.cache = true
@@ -52,6 +52,14 @@ Billy.configure do |c|
   c.cache_path = 'features/req_cache/'
 end
 Billy.proxy.reset_cache
+
+Capybara.register_driver :poltergeist do |app|
+  options = {
+    js_errors: false,
+    phantomjs: Phantomjs.path,
+  }
+  Capybara::Poltergeist::Driver.new(app, options)
+end
 
 Capybara.register_driver :pg_billy do |app|
   options = {
