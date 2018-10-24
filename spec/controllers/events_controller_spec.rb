@@ -9,7 +9,7 @@ RSpec.describe EventsController, type: :controller, helpers: :requests do
         start_date: Date.today,
         end_date: Date.today + 3.hours,
         organisation_id: organisation.id,
-        address: "4 pinner road"
+        address: '4 pinner road'
     }
   end
 
@@ -72,7 +72,7 @@ RSpec.describe EventsController, type: :controller, helpers: :requests do
       
       it 'assigns the address in params to address attribute' do
         post :create, params: { event: valid_attributes }
-        expect(assigns(:event).attributes.symbolize_keys[:address]).to eq("4 pinner road")
+        expect(assigns(:event).attributes.symbolize_keys[:address]).to eq('4 pinner road')
       end
     end
 

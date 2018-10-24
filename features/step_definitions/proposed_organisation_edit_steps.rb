@@ -14,7 +14,7 @@ Then(/^the telephone field of the proposed edit should be pre\-populated with th
 end
 
 Given(/^the (.*) field is marked (private|public)$/) do |field, visibility|
-  if visibility == "private"
+  if visibility == 'private'
     expect(page.find(:xpath, "//input[@id='proposed_organisation_edit_#{field}']/../../td[@class='borderless']/input[@type='checkbox']")).not_to be_checked
   else
     expect(page.find(:xpath, "//input[@id='proposed_organisation_edit_#{field}']/../../td[@class='borderless']/input[@type='checkbox']")).to be_checked
@@ -38,7 +38,7 @@ When(/^I propose the following edit:$/) do |table|
                donation_info: 'proposed_organisation_edit_donation_info',
                address: 'proposed_organisation_edit_address'}
     hash.each_pair do |field_name, field_value|
-      fill_in(fields[field_name.to_sym],:with => field_value)
+      fill_in(fields[field_name.to_sym],with: field_value)
     end
   end
 end
@@ -60,16 +60,16 @@ Then(/^the following proposed edits should be displayed on the page:$/) do |tabl
     proposed_class = '.proposed_organisation_' + hash['field']
     expect(page).to have_css("#{current_class}.current_value")
     expect(page).to have_css("#{proposed_class}.proposed_value")
-    if (hash['field'] == 'website')
+    if hash['field'] == 'website'
       if hash['current value'].blank?
-        expect(page).not_to have_css(current_class + " .field_value a")
+        expect(page).not_to have_css(current_class + ' .field_value a')
       else
-        expect(page).to have_css current_class + " .field_value a"
+        expect(page).to have_css current_class + ' .field_value a'
       end
       if hash['proposed value'].blank?
-        expect(page).not_to have_css(proposed_class + " .field_value a")
+        expect(page).not_to have_css(proposed_class + ' .field_value a')
       else
-        expect(page).to have_css proposed_class + " .field_value a"
+        expect(page).to have_css proposed_class + ' .field_value a'
       end
     end
     if hash['field'] == 'description'
@@ -92,9 +92,9 @@ Given(/^the following proposed edits exist:$/) do |table|
     create_hash = {}
     hash.each_pair do |field_name, field_value|
       key_value_to_add = {field_name.to_sym => field_value}
-      key_value_to_add = {editor: User.find_by(email: field_value)} if field_name == "editor_email"
-      key_value_to_add = {organisation: Organisation.find_by(name: field_value)} if field_name == "original_name"
-      key_value_to_add = {archived: Boolean.from(field_value)} if field_name == "archived"
+      key_value_to_add = {editor: User.find_by(email: field_value)} if field_name == 'editor_email'
+      key_value_to_add = {organisation: Organisation.find_by(name: field_value)} if field_name == 'original_name'
+      key_value_to_add = {archived: Boolean.from(field_value)} if field_name == 'archived'
       create_hash.merge! key_value_to_add
     end
     ProposedOrganisationEdit.create! create_hash
@@ -103,7 +103,7 @@ end
 
 Then(/^I should not see links for archived edits$/) do
   ProposedOrganisationEdit.where(archived: true).each do |archived_edit|
-    expect(page).not_to have_link "View Details", href: organisation_proposed_organisation_edit_path(archived_edit.organisation, archived_edit)
+    expect(page).not_to have_link 'View Details', href: organisation_proposed_organisation_edit_path(archived_edit.organisation, archived_edit)
   end
 end
 

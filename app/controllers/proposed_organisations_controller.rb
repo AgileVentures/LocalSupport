@@ -40,7 +40,7 @@ class ProposedOrganisationsController < BaseOrganisationsController
     @proposed_organisation = ProposedOrganisation.friendly.find(params[:id])
     proposed_organisations = ProposedOrganisation.where(id: @proposed_organisation.id)
     #refactor this into model
-    @proposer_email = @proposed_organisation.users.first.email if !@proposed_organisation.users.empty?
+    @proposer_email = @proposed_organisation.users.first.email unless @proposed_organisation.users.empty?
     @markers = build_map_markers(proposed_organisations)
   end
 

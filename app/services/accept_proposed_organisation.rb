@@ -1,10 +1,10 @@
 class AcceptProposedOrganisation
   class Response
-    NOTIFICATION_SENT = "Notification sent"
-    INVITATION_SENT = "Invitation sent"
-    INVALID_EMAIL = "Invalid Email"
-    NO_EMAIL = "No email"
-    OTHER_ERROR = "Other Error"
+    NOTIFICATION_SENT = 'Notification sent'
+    INVITATION_SENT = 'Invitation sent'
+    INVALID_EMAIL = 'Invalid Email'
+    NO_EMAIL = 'No email'
+    OTHER_ERROR = 'Other Error'
 
     attr_reader   :status, :error_msg 
     attr_accessor :accepted_org, :not_accepted_org

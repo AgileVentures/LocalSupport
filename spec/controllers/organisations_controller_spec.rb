@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe OrganisationsController, :type => :controller do
+describe OrganisationsController, type: :controller do
   let(:category_html_options) { [['cat1', 1], ['cat2', 2]] }
 
   # http://stackoverflow.com/questions/10442159/rspec-as-null-object
@@ -73,7 +73,7 @@ describe OrganisationsController, :type => :controller do
 
       it 'handles lack of query term gracefully' do
         expect(Organisation).to receive(:search_by_keyword).with('').and_return(result)
-        get :search, params: category_params.merge({q: ''})
+        get :search, params: category_params.merge(q: '')
         expect(assigns(:parsed_params).query_term).to eq('')
       end
 
@@ -88,7 +88,7 @@ describe OrganisationsController, :type => :controller do
         expect(response).to render_template 'layouts/two_columns_with_map'
         expect(assigns(:organisations)).to eq([double_organisation])
         expect(assigns(:markers)).to eq(markers)
-        expect(assigns(:cat_name_ids)).to eq({what: [], how: [], who: []})
+        expect(assigns(:cat_name_ids)).to eq(what: [], how: [], who: [])
       end
     end
 
@@ -250,7 +250,7 @@ describe OrganisationsController, :type => :controller do
     context 'while signed in' do
       before(:each) do
         user = double('User')
-        allow(request.env['warden']).to receive_messages :authenticate! => user
+        allow(request.env['warden']).to receive_messages authenticate!: user
         allow(controller).to receive(:current_user).and_return(user)
         allow(Organisation).to receive(:new) { double_organisation }
       end
@@ -281,7 +281,7 @@ describe OrganisationsController, :type => :controller do
       before(:each) do
         user = double('User')
         allow(user).to receive(:can_edit?) { true }
-        allow(request.env['warden']).to receive_messages :authenticate! => user
+        allow(request.env['warden']).to receive_messages authenticate!: user
         allow(controller).to receive(:current_user).and_return(user)
       end
 
@@ -295,7 +295,7 @@ describe OrganisationsController, :type => :controller do
       before(:each) do
         user = double('User')
         allow(user).to receive(:can_edit?) { false }
-        allow(request.env['warden']).to receive_messages :authenticate! => user
+        allow(request.env['warden']).to receive_messages authenticate!: user
         allow(controller).to receive(:current_user).and_return(user)
       end
 
@@ -307,7 +307,7 @@ describe OrganisationsController, :type => :controller do
     #TODO: way to dry out these redirect specs?
     context 'while not signed in' do
       it 'redirects to sign-in' do
-        get :edit, params: {:id => '37'}
+        get :edit, params: {id: '37'}
         expect(response).to redirect_to new_user_session_path
       end
     end
@@ -353,8 +353,8 @@ describe OrganisationsController, :type => :controller do
 
     context 'while not signed in' do
       it 'redirects to sign-in' do
-        allow(Organisation).to receive(:new).with({'these' => 'params'}) { double_organisation(:save => true) }
-        post :create, params: {:organisation => {'these' => 'params'}}
+        allow(Organisation).to receive(:new).with('these' => 'params') { double_organisation(save: true) }
+        post :create, params: {organisation: {'these' => 'params'}}
         expect(response).to redirect_to new_user_session_path
       end
     end
@@ -367,20 +367,20 @@ describe OrganisationsController, :type => :controller do
       describe 'with valid params' do
         it 'refuses to create a new organisation' do
           # stubbing out Organisation to prevent new method from calling Gmaps APIs
-          allow(Organisation).to receive(:new).with({'these' => 'params'}) { double_organisation(:save => true) }
+          allow(Organisation).to receive(:new).with('these' => 'params') { double_organisation(save: true) }
           expect(Organisation).not_to receive :new
-          post :create, params: {:organisation => {'these' => 'params'}}
+          post :create, params: {organisation: {'these' => 'params'}}
         end
 
         it 'redirects to the organisations index' do
-          allow(Organisation).to receive(:new).with({'these' => 'params'}) { double_organisation(:save => true) }
-          post :create, params: {:organisation => {'these' => 'params'}}
+          allow(Organisation).to receive(:new).with('these' => 'params') { double_organisation(save: true) }
+          post :create, params: {organisation: {'these' => 'params'}}
           expect(response).to redirect_to organisations_path
         end
 
         it 'assigns a flash refusal' do
-          allow(Organisation).to receive(:new).with({'these' => 'params'}) { double_organisation(:save => true) }
-          post :create, params: {:organisation => {'these' => 'params'}}
+          allow(Organisation).to receive(:new).with('these' => 'params') { double_organisation(save: true) }
+          post :create, params: {organisation: {'these' => 'params'}}
           expect(flash[:notice]).to eq('You don\'t have permission')
         end
       end
@@ -395,7 +395,7 @@ describe OrganisationsController, :type => :controller do
       before(:each) do
         user = double('User')
         allow(user).to receive(:can_edit?) { true }
-        allow(request.env['warden']).to receive_messages :authenticate! => user
+        allow(request.env['warden']).to receive_messages authenticate!: user
         allow(controller).to receive(:current_user).and_return(user)
         
       end
@@ -404,7 +404,7 @@ describe OrganisationsController, :type => :controller do
         it 'updates org for e.g. donation_info url' do
           expect(Organisation).to receive(:friendly) { all_orgs }
           expect(all_orgs).to receive(:find).with('37') { org }
-          expect(org).to receive(:update_attributes_with_superadmin).with({'donation_info' => 'http://www.friendly.com/donate', 'superadmin_email_to_add' => nil})
+          expect(org).to receive(:update_attributes_with_superadmin).with('donation_info' => 'http://www.friendly.com/donate', 'superadmin_email_to_add' => nil)
           put :update, params: {id: '37', organisation: {'donation_info' => 'http://www.friendly.com/donate'}}
         end
 
@@ -446,7 +446,7 @@ describe OrganisationsController, :type => :controller do
       before(:each) do
         user = double('User')
         allow(user).to receive(:can_edit?) { false }
-        allow(request.env['warden']).to receive_messages :authenticate! => user
+        allow(request.env['warden']).to receive_messages authenticate!: user
         allow(controller).to receive(:current_user).and_return(user)
       end
 
@@ -516,11 +516,11 @@ describe OrganisationsController, :type => :controller do
   end
   describe 'get_user_opts' do
     let!(:org) { FactoryBot.create(:organisation)}
-    subject { 
+    subject do 
       user = create :user
       allow(controller).to receive(:current_user).and_return(user)
       user_opts = controller.send(:get_user_options, org)
-    }
+    end
     it { is_expected.to be_a_kind_of Hash }
     it { is_expected.to include(pending_org_admin: false) }
     it { is_expected.to include(editable: false) }

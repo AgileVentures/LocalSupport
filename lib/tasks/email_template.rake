@@ -6,7 +6,7 @@
 begin
   namespace :db do
     desc 'Create email template for invitation instructions'
-    task :email_template => :environment do
+    task email_template: :environment do
       Logger.new(STDOUT).info 'Start email template generation'
 
       f = File.read('./db/invitation_instructions.txt').split(/\n---\n/)

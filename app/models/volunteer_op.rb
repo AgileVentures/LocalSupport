@@ -71,9 +71,7 @@ class VolunteerOp < ApplicationRecord
 
   def self.get_source(volunteer_ops)
     source = volunteer_ops.first.source
-    unless volunteer_ops.all? { |vol_op| vol_op.source == source }
-      source = 'mixed'
-    end
+    source = 'mixed' unless volunteer_ops.all? { |vol_op| vol_op.source == source }
     source
   end
 

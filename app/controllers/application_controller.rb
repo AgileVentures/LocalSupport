@@ -11,14 +11,14 @@ class ApplicationController < ActionController::Base
   add_breadcrumb 'home', :root_path
 
   include CustomErrors
-  WHITELISTED_CONTROLLERS = %w(
+  WHITELISTED_CONTROLLERS = %w[
    application
    contributors
    organisations
    pages
    volunteer_ops
    events
- )
+ ]
   # To prevent infinite redirect loops, only requests from white listed
   # controllers are available in the "after sign-in redirect" feature
   def white_listed
@@ -66,11 +66,10 @@ class ApplicationController < ActionController::Base
 
 
   def allow_cookie_policy
-    response.set_cookie 'cookie_policy_accepted', {
+    response.set_cookie 'cookie_policy_accepted', 
         value: 'true',
         path: '/',
         expires: 1.year.from_now.utc
-    }
     #respond_to do |format|
     #  format.html redirect_to root_path
     #  format.json { render :nothing => true, :status => 200 }

@@ -43,7 +43,7 @@ Given (/^reachskills opportunities are imported with nil coordinates$/) do
   ImportReachSkillsVolunteerOpportunities.with
 end
 
-Then("there should be zero nil coordinates") do
+Then('there should be zero nil coordinates') do
   expect(VolunteerOp.where(latitude: nil).count).to eq 0
   expect(VolunteerOp.where(longitude: nil).count).to eq 0
 end
@@ -54,7 +54,7 @@ Then (/^(\d+) default Harrow coordinates should be assigned$/) do |num_coords|
 end
 
 def check_for_org_info_box tbl, selector
-  expect(page).to have_css(selector, :count => tbl.length)
+  expect(page).to have_css(selector, count: tbl.length)
   Organisation.where(name: tbl)
         .pluck(:name, :description, :id, :slug)
         .map {|name, desc, id, frdly_id| [name, smart_truncate(desc, 44), id, frdly_id]}
@@ -71,8 +71,10 @@ end
 def check_for_volop_info_box(tbl, selector, check_tbl_length = true)
   expect(page).to have_css(selector, count: tbl.length) if check_tbl_length
   VolunteerOp.where(title: tbl)
-        .map {|volop| [volop.id, volop.organisation.name, volop.title,
-          smart_truncate(volop.description, 44), volop.organisation.slug]}
+        .map do |volop| 
+    [volop.id, volop.organisation.name, volop.title,
+          smart_truncate(volop.description, 44), volop.organisation.slug]
+  end  
         .each do |id, name, title, desc, org_friendly_id|
       all(selector).map do |list_item|
         list_item.trigger(:mouseover) if list_item.first('a').text == title
@@ -87,9 +89,11 @@ end
 
 def check_info_box_link_opens_in_new_page(tbl, selector)
   VolunteerOp.where(title: tbl)
-      .map {|volop| [volop.id, volop.organisation.name, volop.title,
-                     smart_truncate(volop.description, 44), volop.organisation.slug]}
-      .each do |id, name, title, desc, org_friendly_id|
+      .map do |volop| 
+    [volop.id, volop.organisation.name, volop.title,
+                     smart_truncate(volop.description, 44), volop.organisation.slug]
+  end  
+      .each do |_id, name, title, _desc, _org_friendly_id|
     all(selector).map do |list_item|
       list_item.trigger(:mouseover) if list_item.first('a').text == title
     end
@@ -102,7 +106,7 @@ def check_for_no_org_info_box(tbl, selector, check_tbl_length = true)
   Organisation.where(name: tbl)
         .pluck(:name, :description, :id, :slug)
         .map {|name, desc, id, frdly_id| [name, smart_truncate(desc, 42), id, frdly_id]}
-        .each do |name, desc, id, friendly_id|
+        .each do |name, desc, _id, _friendly_id|
       find(selector).trigger(:mouseleave)
       expect(page).not_to have_css('.arrow_box')
       expect(find('.arrow_box')).not_to have_content(desc)
@@ -128,25 +132,25 @@ end
 
 Then /^the (proposed organisation|organisation) "(.*?)" should have a (large|small) icon$/ do |type, name, icon_size|
   klass = case type
-  when 'proposed organisation'
+          when 'proposed organisation'
     ProposedOrganisation
-  when 'organisation'
+          when 'organisation'
     Organisation
   else
     raise "Unknown class #{type}"
   end
   org_id = klass.find_by(name: name).id
-  marker_class = (icon_size == "small") ? "measle" : "marker"
-  if marker_class == "measle"
-    expect(find_map_icon(marker_class, org_id)["src"]).to match /\/assets\/measle-(\w*)\.png$/ix
+  marker_class = (icon_size == 'small') ? 'measle' : 'marker'
+  if marker_class == 'measle'
+    expect(find_map_icon(marker_class, org_id)['src']).to match /\/assets\/measle-(\w*)\.png$/ix
   else
-    expect(find_map_icon(marker_class, org_id)["src"]).to match /\/assets\/marker-(\w*)\.png$/ix
+    expect(find_map_icon(marker_class, org_id)['src']).to match /\/assets\/marker-(\w*)\.png$/ix
   end
 end
 
 Then /^I should( not)? see the following (measle|vol_op|event) markers in the map:$/ do |negative, klass, table|
   klass_hash = {'measle' => '.measle', 'vol_op' => '.vol_op', 'event' => '.vol_op'}
-  expect(page).to have_css(klass_hash[klass], :count => table.raw.flatten.length)
+  expect(page).to have_css(klass_hash[klass], count: table.raw.flatten.length)
   marker_data = page.find('#marker_data')['data-markers']
   table.raw.flatten do |title|
     if negative
@@ -199,8 +203,8 @@ end
 
 Then /^I should see search results for "(.*?)" in the table$/ do |search_terms|
   orgs = Organisation.search_by_keyword(search_terms)
-  orgs.each do |org|
-    matches = page.html.match %Q<{\\"description\\":\\".*>#{org.name}</a>.*\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
+  orgs.each do |_org|
+    matches = page.html.match %({\\"description\\":\\".*)#{org.name}</a>.*\\",\\"lat\\":((?:-|)\\d+\.\\d+),\\"lng\\":((?:-|)\\d+\.\\d+)}>
     expect(matches).not_to be_nil
   end
 end
@@ -219,7 +223,7 @@ def stub_request_with_address(address, body = nil)
 end
 
 Given /Google is indisposed for "(.*)"/ do  |address|
-  body = %Q({
+  body = %({
 "results" : [],
 "status" : "OVER_QUERY_LIMIT"
 })

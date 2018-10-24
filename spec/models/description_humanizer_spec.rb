@@ -1,7 +1,7 @@
 require 'active_support/all'
 require_relative '../../app/models/description_humanizer'
 
-describe DescriptionHumanizer, ".call", :type => :model do 
+describe DescriptionHumanizer, '.call', type: :model do 
   subject { DescriptionHumanizer.call(description) }
 
   context 'must be able to humanize a description' do 

@@ -7,9 +7,9 @@ describe 'Invitations', type: :request, helpers: :requests do
   end
 
   describe 'create -- xhr POST /invitations' do
-    let(:superadmin) {
+    let(:superadmin) do
       FactoryBot.create(:user, email: 'superadmin@example.com', superadmin: true)
-    }
+    end
 
     describe 'batch invites' do
       let(:org) { FactoryBot.create :organisation, email: 'yes@hello.com' }
@@ -32,9 +32,9 @@ describe 'Invitations', type: :request, helpers: :requests do
   end
 
   describe '#invited -- GET /user_reports/invited' do
-    let(:superadmin) {
+    let(:superadmin) do
       FactoryBot.create(:user, email: 'superadmin@example.com', superadmin: true)
-    }
+    end
 
     describe 'User.invited_not_accepted returns users w/o orgs' do
       let(:org) { FactoryBot.create :organisation, email: 'yes@hello.com' }

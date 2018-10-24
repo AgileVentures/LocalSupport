@@ -15,7 +15,7 @@ RSpec.describe PostToDoitJob, type: :job do
                                 },
                                 Doit::PostToDoit,
                                 trace_double
-                                 )
+                              )
 
       expect(Doit::PostToDoit).to have_received(:call)
       expect(trace_double).to have_received(:add_entry)

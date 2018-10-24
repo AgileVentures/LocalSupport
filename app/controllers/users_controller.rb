@@ -29,7 +29,7 @@ class UsersController < ApplicationController
           :password_confirmation,
           :remember_me,
           :pending_organisation_id
-      )
+        )
     end
   end
 end

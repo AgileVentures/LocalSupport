@@ -32,7 +32,7 @@ describe Devise::PasswordsController, type: :controller do
         expect(assigns(:user).errors.full_messages).to include 'Email not found in our database. Sorry!'
       end
     end
-   end
+  end
 
    describe 'PUT update' do
      before :each do

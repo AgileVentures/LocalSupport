@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe OrganisationReportsController, :type => :controller do
+describe OrganisationReportsController, type: :controller do
   let(:org) { double('Organisation') }
   let(:user) { double 'User' }
   let(:session) { mock_model User, superadmin?: true, decrement_invitation_limit!: nil }

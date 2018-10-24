@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Feature, :type => :model do
+describe Feature, type: :model do
   describe '::activate' do
     it 'sets ::active? from true to true' do
       Feature.create(name: :foo, active: true)

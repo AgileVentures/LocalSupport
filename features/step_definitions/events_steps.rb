@@ -52,7 +52,7 @@ Then(/^I should see "(.*?)" description marker in "(.*?)" (event|organisation) l
   end
 end
 
-When("I click on the {string} text field") do |string|
+When('I click on the {string} text field') do |string|
   find(string).click
 end
 
@@ -68,12 +68,12 @@ end
 
 When(/^I edit with invalid details for "(.*)"/) do |event|
   event = Event.find_by(title: event)
-  fill_in "event_title", with: ""
-  click_button("Update Event")
+  fill_in 'event_title', with: ''
+  click_button('Update Event')
 end
 
 When(/^I edit the details for "(.*)"/) do |event|
   event = Event.find_by(title: event)
-  fill_in "event_title", with: "Lazier Weekend"
-  click_button("Update Event")
+  fill_in 'event_title', with: 'Lazier Weekend'
+  click_button('Update Event')
 end

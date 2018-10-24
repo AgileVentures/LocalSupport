@@ -2,7 +2,7 @@ Rake::Task['db:setup'].clear
 begin
   namespace :db do
     desc 'Setup project data'
-    task :setup => :environment do
+    task setup: :environment do
 
       Rake::Task['db:categories'].invoke
       Rake::Task['db:seed'].invoke

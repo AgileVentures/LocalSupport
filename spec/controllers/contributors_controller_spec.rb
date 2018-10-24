@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ContributorsController, :type => :controller do
+describe ContributorsController, type: :controller do
 
   describe 'GET show' do
     before :each do
@@ -10,9 +10,9 @@ describe ContributorsController, :type => :controller do
       ]
       json_data = @contributors.to_json
 
-      stub_request(:get, /api.github.com/).
-          with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
-          to_return(:status => 200, :body => json_data, :headers => {})
+      stub_request(:get, /api.github.com/)
+          .with(headers: {'Accept'=>'*/*', 'User-Agent'=>'Ruby'})
+          .to_return(status: 200, body: json_data, headers: {})
     end
 
     it 'assigns the contributors appropriately' do

@@ -1,6 +1,6 @@
 class String
   def humanized_all_first_capitals
-    self.humanize.split(' ').map{|w| w.capitalize}.join(' ')
+    self.humanize.split(' ').map(&:capitalize).join(' ')
   end
   
   def downcase_words
@@ -26,7 +26,7 @@ class String
     "#{slug_words.join('-')}-org"
   end
   
-  NOT_WANTED = %w(the of for and in to)
+  NOT_WANTED = %w[the of for and in to]
   
   private
   

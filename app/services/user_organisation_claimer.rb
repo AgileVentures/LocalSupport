@@ -27,9 +27,7 @@ class UserOrganisationClaimer
   end
 
   def error_message_if_not_superadmin_or_not(organisation_id)
-    if !is_current_user_superadmin? && !organisation_id
-      listener.update_failure
-    end
+    listener.update_failure if !is_current_user_superadmin? && !organisation_id
   end
 
   def promote_user_if_superadmin_and_not(organisation_id)

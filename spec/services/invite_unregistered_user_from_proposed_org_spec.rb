@@ -4,7 +4,7 @@ describe InviteUnregisteredUserFromProposedOrg do
   let(:proposed_org){FactoryBot.create(:orphan_proposed_organisation).accept_proposal}
   context 'successful invite' do
 
-    let(:unregistered_email){"unregistered@email.com"}
+    let(:unregistered_email){'unregistered@email.com'}
     let(:subject){InviteUnregisteredUserFromProposedOrg.new(unregistered_email,proposed_org).run}
 
     it 'sends an email' do
@@ -46,7 +46,7 @@ describe InviteUnregisteredUserFromProposedOrg do
   end
 
   context 'no email' do
-    let(:empty_email){""}
+    let(:empty_email){''}
     let(:subject){InviteUnregisteredUserFromProposedOrg.new(empty_email,proposed_org).run}
 
     it 'returns non successful response object' do

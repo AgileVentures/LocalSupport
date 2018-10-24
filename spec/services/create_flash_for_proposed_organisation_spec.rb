@@ -46,7 +46,7 @@ describe  CreateFlashForProposedOrganisation do
       let(:email){ 'some_invalid_email.com' }
 
       it 'error flash message is returned' do
-        expect(subject).to match(error: "No invitation email was sent because the email associated with " +
+        expect(subject).to match(error: 'No invitation email was sent because the email associated with ' \
           "#{result.not_accepted_org.name}, #{result.not_accepted_org.email}, seems invalid")
       end
     end

@@ -1,5 +1,5 @@
 Given(/^I click on the pending proposed edits link$/) do
-  click_link "Pending Proposed Edits"
+  click_link 'Pending Proposed Edits'
 end
 
 Then(/^I should not see the pending proposed edits link$/) do
@@ -8,12 +8,12 @@ end
 
 Given(/^I click on view details for the proposed edit for the organisation named "(.*?)"$/) do |org_name|
   edit = ProposedOrganisationEdit.find_by(archived: false, organisation: Organisation.find_by(name: org_name))
-  click_link "View Details", href: organisation_proposed_organisation_edit_path(edit.organisation, edit)
+  click_link 'View Details', href: organisation_proposed_organisation_edit_path(edit.organisation, edit)
 end
 
 Then(/^"(.*?)" should be updated as follows:$/) do |org, table|
   expect(Organisation.find_by(name: org)).to be_nil
-  organisation = Organisation.find_by(name: table.hashes.first["name"])
+  organisation = Organisation.find_by(name: table.hashes.first['name'])
   table.hashes.each do |hash|
     hash.each_pair do |field_name, field_value|
       expect(organisation.send(field_name)).to eq(field_value)
@@ -44,6 +44,6 @@ end
 
 Then(/^I should see a view details link for each of the proposed organisations$/) do
   ProposedOrganisation.all.each do |proposed_org|
-    expect(page).to have_link "View Details", href: proposed_organisation_path(proposed_org)
+    expect(page).to have_link 'View Details', href: proposed_organisation_path(proposed_org)
   end
 end

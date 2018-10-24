@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-describe ProposedOrganisationsController, :type => :controller do
+describe ProposedOrganisationsController, type: :controller do
   let!(:proposed_org) { FactoryBot.create :proposed_organisation }
   let!(:orphan_org) { FactoryBot.create :orphan_proposed_organisation }
   let(:user) { FactoryBot.create :user }
   
   context 'superadmin paths' do
-    before(:each) { 
+    before(:each) do 
       allow(controller).to receive(:require_superadmin).and_return(true)
-    }
+    end
     
     context 'PATCH #update' do
       context 'when email is present and organisation is accepted' do
@@ -83,9 +83,9 @@ describe ProposedOrganisationsController, :type => :controller do
   end
   
   context 'other users\' paths' do
-    before(:each) { 
+    before(:each) do 
       allow_any_instance_of(User).to receive(:try).with(:superadmin?).and_return(false)
-    }
+    end
     
     context 'PATCH #update' do
       shared_examples 'permission is denied' do

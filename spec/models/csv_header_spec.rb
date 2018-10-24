@@ -1,9 +1,9 @@
 require_relative '../../app/models/csv_header'
 
-describe CSVHeader, :type => :model do
+describe CSVHeader, type: :model do
   let(:value) { CSVHeader.build }
 
-  context "column names" do
+  context 'column names' do
     subject { value }
 
     it { expect(subject.name).to eq 'Title' }

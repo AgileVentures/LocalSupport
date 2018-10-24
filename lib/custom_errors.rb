@@ -20,10 +20,10 @@ module CustomErrors
     error.backtrace.each_with_index { |line, index| Rails.logger.error line; break if index >= 5 }
 
     case status
-      when 404
+    when 404
         render template: 'pages/404', status: 404
 
-      when 500
+    when 500
         render template: 'pages/500', status: 500
 
       else

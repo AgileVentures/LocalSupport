@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-describe User, :type => :model do
+describe User, type: :model do
 
-  let (:model) { mock_model("Organisation", :_read_attribute => 1)}
+  let (:model) { mock_model('Organisation', _read_attribute: 1)}
 
   context 'invited users scope' do
     before(:each) do
@@ -63,7 +63,7 @@ describe User, :type => :model do
     end
 
     context 'is not superadmin' do
-      let(:non_associated_model) { mock_model("Organisation") }
+      let(:non_associated_model) { mock_model('Organisation') }
       subject(:user) { create(:user, superadmin: false, organisation: model) }
 
       it 'can edit associated organisation' do
@@ -210,7 +210,7 @@ describe User, :type => :model do
 
   context '#request_admin_status' do
     let(:user) { FactoryBot.build(:user) }
-    let(:organisation_id) { 12345 }
+    let(:organisation_id) { 12_345 }
 
     it 'update pending organisation id' do
       user.request_admin_status organisation_id
@@ -251,7 +251,7 @@ describe User, :type => :model do
     end
   end
 
-  describe "#pending_org_admin?" do
+  describe '#pending_org_admin?' do
     let(:user) { FactoryBot.create :user_stubbed_organisation }
     let(:other_org) { FactoryBot.create :organisation }
 

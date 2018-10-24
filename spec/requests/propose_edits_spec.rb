@@ -2,15 +2,15 @@ require 'rails_helper'
 
 describe 'Propose an edit', type: :request, helpers: :requests do
   let(:nonsuperadmin) { FactoryBot.create(:user, superadmin: false) }
-  let(:org){
+  let(:org) do
     FactoryBot.create(
         :organisation, name: 'Friendly Organisation',
         address: '34 pinner road',
         telephone: '202',
         email: 'blah@blah.org',
         publish_email: false
-    )
-  }
+      )
+  end
   let(:proposed_edit){FactoryBot.build(:proposed_organisation_edit, organisation: org)}
   before { login(nonsuperadmin) }
 

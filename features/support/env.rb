@@ -141,7 +141,7 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 #end
 # Aruba working directory (default: Aruba creates tmp/aruba)
 Before do
-  @dirs = ["#{Rails.root.to_s}"]
+  @dirs = ["#{Rails.root}"]
 end
 
 Before('@in-production') do

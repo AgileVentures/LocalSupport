@@ -20,9 +20,9 @@ class UserReportsController < ApplicationController
 
   def update
     user = User.find_by_id(params[:id])
-    if params[:pending_org_action] == "decline"
+    if params[:pending_org_action] == 'decline'
       UserOrganisationDecliner.new(self, user, current_user).call
-    elsif params[:pending_org_action] == "approve"
+    elsif params[:pending_org_action] == 'approve'
       UserOrganisationClaimer.new(self, user, current_user).call(params[:organisation_id])
     end
   end
@@ -30,7 +30,7 @@ class UserReportsController < ApplicationController
   def destroy
     user = User.find(params[:id])
     if user == current_user
-      flash[:error] = "You may not destroy your own account!"
+      flash[:error] = 'You may not destroy your own account!'
     else
       user.destroy
       flash[:success] = "You have deleted #{user.email}."
@@ -46,7 +46,7 @@ class UserReportsController < ApplicationController
     @resend_invitation = true
     @invitations = serialize_invitations
     @mail_template = MailTemplate.find_by(name: 'Invitation instructions')
-    render :template => 'user_reports/invited', :layout => 'invitation_table'
+    render template: 'user_reports/invited', layout: 'invitation_table'
   end
   
   def upgrade
@@ -71,7 +71,7 @@ class UserReportsController < ApplicationController
   end
 
   def update_failure
-    redirect_to :status => 404
+    redirect_to status: 404
   end
 
   def update_message_for_decline_success(user, pending_organisation)

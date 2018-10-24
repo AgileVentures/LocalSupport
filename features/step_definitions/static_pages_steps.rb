@@ -14,10 +14,10 @@ Given(/^I am on the show page with the "(.*?)" permalink$/) do |permalink|
 end
 
 Given(/^I visit the pages manager$/) do
-  steps %Q{
+  steps %(
     When I am on the home page
     And I follow "About HCN"
-    And I follow "Pages"}
+    And I follow "Pages")
 end
 
 Given(/^I remove "(.*?)" from the footer$/) do |permalink|
@@ -34,7 +34,7 @@ Then(/^the "(.*?)" link is in the footer$/) do |link|
   expect(page.has_xpath? "//footer//a[@href=\"\/#{link}\"]").to be true
 end
 
-And(/^I add "(.*?)" to the footer$/) do |arg1|
+And(/^I add "(.*?)" to the footer$/) do |_arg1|
   pending # express the regexp above with the code you wish you had
 end
 

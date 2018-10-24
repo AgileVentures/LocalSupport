@@ -5,8 +5,8 @@ module Doit
 
     describe '.call' do
       it 'create a volunteer op in Doit' do
-        stub_request(:post, "http://api.qa2.do-it.org/v2/opportunities").
-          to_return(:status => 200, :body => File.read('test/fixtures/doit_post_volop.json'), :headers => {'Content-Type' => 'application/json'})
+        stub_request(:post, 'http://api.qa2.do-it.org/v2/opportunities')
+          .to_return(status: 200, body: File.read('test/fixtures/doit_post_volop.json'), headers: {'Content-Type' => 'application/json'})
         vol_op = build(:volunteer_op,
                        latitude: '51.5676116',
                        longitude: '-0.3580085')
@@ -18,8 +18,8 @@ module Doit
       end
 
       it 'handles 400 error responses' do
-        stub_request(:post, "http://api.qa2.do-it.org/v2/opportunities").
-          to_return(:status => 401, :body => File.read('test/fixtures/doit_response_with_error_message.json'), :headers => {'Content-Type' => 'application/json'})
+        stub_request(:post, 'http://api.qa2.do-it.org/v2/opportunities')
+          .to_return(status: 401, body: File.read('test/fixtures/doit_response_with_error_message.json'), headers: {'Content-Type' => 'application/json'})
         vol_op = build :volunteer_op,
                        latitude: '51.5676116',
                        longitude: '-0.3580085'

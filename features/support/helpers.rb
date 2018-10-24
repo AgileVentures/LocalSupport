@@ -39,16 +39,16 @@ module MapHelpers
   def stub_request_with_address(address, body = nil)
     filename = "#{address.downcase.gsub(/,/,'').gsub(/\s/, '_')}.json"
     filename = File.read "test/fixtures/#{filename}"
-    stub_request(:any, /maps\.googleapis\.com/).
-        to_return(:status => 200, :body => body || filename, :headers => {})
+    stub_request(:any, /maps\.googleapis\.com/)
+        .to_return(status: 200, body: body || filename, headers: {})
   end
 end
 
 module ProposedOrgHelpers
   def unsaved_proposed_organisation(associated_user = nil)
-    proposed_org = ProposedOrganisation.new({name: "Friendly Charity", description: "We are friendly!",
-      email: "sample@sample.org", address: "30 pinner road", donation_info: "https://www.donate.com",
-      postcode: 'HA1 4HZ', non_profit: true})
+    proposed_org = ProposedOrganisation.new(name: 'Friendly Charity', description: 'We are friendly!',
+      email: 'sample@sample.org', address: '30 pinner road', donation_info: 'https://www.donate.com',
+      postcode: 'HA1 4HZ', non_profit: true)
     proposed_org.users << associated_user if associated_user
     proposed_org
   end

@@ -82,5 +82,4 @@ describe ImportDoItVolunteerOpportunities do
       expect(model_klass).not_to have_received(:find_or_create_by)
     end
   end
-
 end

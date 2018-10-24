@@ -28,7 +28,7 @@ RSpec.describe VolunteerOpsController, type: :controller, helpers: :requests do
       @markers = BuildMarkersWithInfoWindow.with(
           VolunteerOp.build_by_coordinates,
           VolunteerOpsController.new
-      )
+        )
       get :index, params: {}
       expect(response).to be_success
       expect(assigns(:markers)).to eq(@markers)
@@ -121,7 +121,7 @@ RSpec.describe VolunteerOpsController, type: :controller, helpers: :requests do
       @markers = BuildMarkersWithInfoWindow.with(
           VolunteerOp.build_by_coordinates,
           VolunteerOpsController.new
-      )
+        )
       get :embedded_map, params: {}
       expect(response).to be_success
       expect(assigns(:markers)).to eq(@markers)

@@ -1,6 +1,6 @@
 class BatchInviteJob
 
-  def initialize(params, current_user)
+  def initialize(params, _current_user)
     @resend_invitation = params.fetch(:resend_invitation)
     @invites = params.fetch(:invite_list)
     @mail_template = MailTemplate.find_by(name: 'Invitation instructions')

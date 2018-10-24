@@ -1,10 +1,10 @@
 class InviteUnregisteredUserFromProposedOrg
 
   class Response
-    INVALID_EMAIL = "Invalid Email"
-    NO_EMAIL = "No Email"
-    OTHER_FAILURE = "Other Failure"
-    SUCCESS = "Success"
+    INVALID_EMAIL = 'Invalid Email'
+    NO_EMAIL = 'No Email'
+    OTHER_FAILURE = 'Other Failure'
+    SUCCESS = 'Success'
 
     attr_reader :status, :error_msg
 
@@ -30,7 +30,7 @@ class InviteUnregisteredUserFromProposedOrg
     # accept the invite. You can set it like so:
     # user.deliver_invitation
     #but this seems not to be necessary right now per acceptance tests
-    usr = User.invite!(:email => @email) do |u|
+    usr = User.invite!(email: @email) do |u|
       u.skip_invitation = true
       u.skip_confirmation!
       u.organisation = @org
@@ -46,13 +46,13 @@ class InviteUnregisteredUserFromProposedOrg
   def create_response_object(usr)
     return Response.new(Response::SUCCESS, nil) if usr.errors.empty?
     status =  case usr.errors.full_messages.first
-      when "Email can't be blank"
+              when "Email can't be blank"
         Response::NO_EMAIL
-      when "Email is invalid"
+              when 'Email is invalid'
         Response::INVALID_EMAIL
       else
         Response::OTHER_FAILURE
     end
-    return Response.new(status,usr.errors.full_messages.first)
+    Response.new(status,usr.errors.full_messages.first)
   end
 end

@@ -1,6 +1,6 @@
 Given(/^the following contributors exist:$/) do |contributors|
   @contributors = contributors.hashes
-  stub_request(:any, /api\.github\.com/).to_return(:body => @contributors.to_json)
+  stub_request(:any, /api\.github\.com/).to_return(body: @contributors.to_json)
 end
 
 

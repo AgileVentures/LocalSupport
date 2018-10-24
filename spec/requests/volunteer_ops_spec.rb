@@ -3,11 +3,11 @@ require 'rails_helper'
 describe 'VolunteerOps', type: :request, helpers: :requests do
   let(:org_owner) { FactoryBot.create(:user_stubbed_organisation) }
   let(:non_org_owner) { FactoryBot.create :user , email: 'regularjoe@blah.com'}
-  let(:superadmin) {
+  let(:superadmin) do
     FactoryBot.create :user,
                       email: 'superadmin@superadmin.com',
                       superadmin: true
-  }
+  end
 
   describe 'POST /volunteer_ops' do
     let(:params) { { volunteer_op: {title: 'hard work', description: 'for the willing'} } }
@@ -16,9 +16,9 @@ describe 'VolunteerOps', type: :request, helpers: :requests do
       expect_any_instance_of(TwitterApi).to receive(:tweet).once
       org_admin = org_owner
       login(org_admin)
-      expect {
+      expect do
         post organisation_volunteer_ops_path(org_admin.organisation), params: params
-      }.to change(VolunteerOp, :count).by(1)
+      end.to change(VolunteerOp, :count).by(1)
     end
 
     it 'the new VolunteerOp is associated with the requested organisation' do
@@ -32,17 +32,17 @@ describe 'VolunteerOps', type: :request, helpers: :requests do
 
     it 'does not work for non-org-owners' do
       login(non_org_owner)
-      expect {
+      expect do
         post organisation_volunteer_ops_path(org_owner.organisation.id), params: params
-      }.to change(VolunteerOp, :count).by(0)
+      end.to change(VolunteerOp, :count).by(0)
     end
 
     it 'does work for superadmins' do
       expect_any_instance_of(TwitterApi).to receive(:tweet).once
       login(superadmin)
-      expect{
+      expect do
         post organisation_volunteer_ops_path(org_owner.organisation.id), params: params
-      }.to change(VolunteerOp, :count).by(1)
+      end.to change(VolunteerOp, :count).by(1)
     end
   end
 end

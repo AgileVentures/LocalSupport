@@ -47,8 +47,7 @@ describe ::BatchInviteJob do
 
     it 'example response for invites with duplicates' do
       expect(do_batch_invite).to eq(
-        {org.id => 'Invited!',
-         (org.id+1) => 'Error: Email has already been taken'}
+        org.id => 'Invited!',
       )
     end
 
@@ -81,7 +80,7 @@ describe ::BatchInviteJob do
     end
 
     it 'responds with a hash' do
-      expect(subject).to eq({org.id => "Error: Email can't be blank"})
+      expect(subject).to eq(org.id => "Error: Email can't be blank")
     end
   end
 
@@ -91,15 +90,15 @@ describe ::BatchInviteJob do
 
     it 'can be toggled on' do
       params[:resend_invitation] = true
-      expect(answers.(job.call(params))).to eq(['Invited!', 'Invited!'])
-      expect(answers.(job.call(params))).to eq(['Invited!', 'Invited!'])
+      expect(answers.call(job.call(params))).to eq(['Invited!', 'Invited!'])
+      expect(answers.call(job.call(params))).to eq(['Invited!', 'Invited!'])
     end
 
     it 'can be toggled off' do
       params[:resend_invitation] = false
-      expect(answers.(job.call(params))).to eq(['Invited!',
+      expect(answers.call(job.call(params))).to eq(['Invited!',
                                        'Error: Email has already been taken'])
-      expect(answers.(job.call(params))).to eq(['Error: Email has already been taken',
+      expect(answers.call(job.call(params))).to eq(['Error: Email has already been taken',
                                        'Error: Email has already been taken'])
     end
   end

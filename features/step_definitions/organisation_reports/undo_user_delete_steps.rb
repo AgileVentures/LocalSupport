@@ -1,7 +1,7 @@
 Then(/^I restore the user with the email "(.*?)"$/) do |usr_email|
   id = User.only_deleted.where(email: usr_email).first.id
   within("tr##{id}") do
-    click_link "Restore User"
+    click_link 'Restore User'
   end
 end
 
@@ -13,5 +13,5 @@ Then(/^the user with email "(.*?)" should( not)? be displayed on the all deleted
 end
 
 Given(/^I click on the deleted users link$/) do
-  click_link "Deleted Users"
+  click_link 'Deleted Users'
 end

@@ -2,29 +2,29 @@ regex = /^I submit a volunteer op "(.*?)", "(.*?)" on the "(.*?)" page$/
 And(regex) do |title, desc, org_name|
   org = Organisation.find_by_name(org_name)
   visit organisation_path org
-  click_link "Create a Volunteer Opportunity"
+  click_link 'Create a Volunteer Opportunity'
   expect(current_path).to eq new_organisation_volunteer_op_path org
-  fill_in 'Title', :with => title
-  fill_in 'Description', :with => desc
+  fill_in 'Title', with: title
+  fill_in 'Description', with: desc
   expect_any_instance_of(TwitterApi).to receive(:tweet).once
   click_on 'Create a Volunteer Opportunity'
 end
 
-Given /^I submit a blank volunteer op on the "(.*?)" page$/ do |org_name|
+Given(/^I submit a blank volunteer op on the "(.*?)" page$/) do |org_name|
   org = Organisation.find_by_name(org_name)
   visit organisation_path org
-  click_link "Create a Volunteer Opportunity"
+  click_link 'Create a Volunteer Opportunity'
   expect(current_path).to eq new_organisation_volunteer_op_path org
   click_on 'Create a Volunteer Opportunity'
 end
 
-When("I submit a valid volunteer opportunity") do
+When('I submit a valid volunteer opportunity') do
   org = Organisation.find_by_name('Friendly')
   visit organisation_path org
-  click_link "Create a Volunteer Opportunity"
+  click_link 'Create a Volunteer Opportunity'
   expect(current_path).to eq new_organisation_volunteer_op_path org
-  fill_in 'Title', :with => 'title'
-  fill_in 'Description', :with => 'desc'
+  fill_in 'Title', with: 'title'
+  fill_in 'Description', with: 'desc'
   click_on 'Create a Volunteer Opportunity'
 end
 
@@ -58,8 +58,8 @@ Given(/^I submit a volunteer op to Doit/) do |volunteer_ops_table|
     fill_in 'Postcode', with: volunteer_op['postcode']
     check('check_to_doit')
     select('Help Out Harrow!', from: 'Doit organisation')
-    fill_in 'Advertise start date', with: Date.current.strftime("%F")
-    fill_in 'Advertise end date', with: 10.days.from_now.strftime("%F")
+    fill_in 'Advertise start date', with: Date.current.strftime('%F')
+    fill_in 'Advertise end date', with: 10.days.from_now.strftime('%F')
     expect_any_instance_of(TwitterApi).to receive(:tweet).once
     click_on 'Create a Volunteer Opportunity'
   end
@@ -107,39 +107,43 @@ Then(/^the doit volunteer op with id "(.*?)" should not be stored$/) do |doit_id
 end
 
 Given(/^that the (.+) flag is (enabled|disabled)$/) do |feature, state|
-  if f = Feature.find_by_name(feature) then
+  f = Feature.find_by_name(feature)
+  if f
     f.update_attributes(active: (state == 'enabled'))
   else
     Feature.create!(name: feature, active: (state == 'enabled'))
   end
+  Feature.find_or_create_by(name: feature) do |f|
+    f.active = (state == 'enabled')
+  end
 end
 
-Given /^I update "(.*?)" volunteer op description to be "(.*?)"$/ do |title, description|
+Given(/^I update "(.*?)" volunteer op description to be "(.*?)"$/) do |title, description|
   vop = VolunteerOp.find_by_title title
   visit volunteer_op_path vop
   click_on 'Edit'
-  fill_in('Description', :with => description)
+  fill_in('Description', with: description)
   click_on 'Update Volunteer Opportunity'
 end
 
-Given /^I update "(.*?)" volunteer op title to be "(.*?)"$/ do |title, description|
+Given(/^I update "(.*?)" volunteer op title to be "(.*?)"$/) do |title, _description|
   vop = VolunteerOp.find_by_title title
   visit volunteer_op_path vop
   click_on 'Edit'
-  fill_in('Title', :with => title)
+  fill_in('Title', with: title)
   click_on 'Update Volunteer Opportunity'
 end
 
-Given /^I should see (\d+) markers in the map$/ do |num|
+Given(/^I should see (\d+) markers in the map$/) do |num|
   expect(page).to have_css('.vol_op', count: num)
 end
 
 Then(/^I should see a link to "(.*?)" page "(.*?)"$/) do |link, url|
-  page.should have_link(link, :href => url)
+  page.should have_link(link, href: url)
 end
 
 Then(/^I should see a tracking link to "(.*?)" page "(.*?)"$/) do |link, url|
-  page.should have_link(link, :href => "#{url}")
+  page.should have_link(link, href: "#{url}")
 end
 
 When(/^I set new volunteer opportunity location to "(.*?)", "(.*?)"$/) do |addr, pc|
@@ -179,7 +183,7 @@ Given /^wait for (\d+) seconds?$/ do |n|
 end
 
 Given(/^I fill additional fields required by Doit$/) do
-  select("Help Out Harrow!", from: 'doit_volunteer_op_doit_org_id')
+  select('Help Out Harrow!', from: 'doit_volunteer_op_doit_org_id')
   fill_in('Advertise start date', with: '2017-03-01')
   fill_in('Advertise end date', with: '2017-04-01')
 

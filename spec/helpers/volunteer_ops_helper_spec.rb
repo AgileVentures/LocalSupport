@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe VolunteerOpsHelper, :type => :helper do
+describe VolunteerOpsHelper, type: :helper do
   describe '#button_text' do
     let(:op) { double :volunteer_op }
 

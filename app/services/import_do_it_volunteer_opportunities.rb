@@ -19,7 +19,7 @@ class ImportDoItVolunteerOpportunities
   end
 
   HOST = 'https://api.do-it.org'
-  HREF = "/v1/opportunities?lat=51.5978&lng=-0.3370&miles="
+  HREF = '/v1/opportunities?lat=51.5978&lng=-0.3370&miles='
 
   def run
     href = "#{HREF}#{radius}"
@@ -27,7 +27,6 @@ class ImportDoItVolunteerOpportunities
     while href = process_doit_json_page(http.get("#{HOST}#{href}"));
     end
   end
-
   def process_doit_json_page from_response
     return nil unless content? from_response
     persist_doit opportunities(from_response)
@@ -63,7 +62,7 @@ class ImportDoItVolunteerOpportunities
     !op['locations'][0]['local_authority']['name'].downcase.include? 'harrow'
   end
 
-  def populate_vol_op_attributes model, op
+  def populate_vol_op_attributes model, op # rubocup:disable Metrics/MethodLenght
     location = Location.new longitude: op['lng'], latitude: op['lat']
     model.source        = 'doit'
     model.latitude      = location.latitude

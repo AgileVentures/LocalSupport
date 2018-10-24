@@ -1,7 +1,7 @@
 class CSVHeader
 
   def self.build
-    new({
+    new(
       name: 'Title',
       address: 'Contact Address',
       description: 'Activities',
@@ -9,7 +9,7 @@ class CSVHeader
       telephone: 'Contact Telephone',
       date_removed: 'date removed',
       cc_id: 'Charity Classification'
-    })
+    )
   end
 
   def initialize(header_names)

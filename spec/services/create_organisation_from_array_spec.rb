@@ -6,7 +6,7 @@ require_relative '../../app/models/description_humanizer'
 require_relative '../../app/models/first_capitals_humanizer'
 require_relative '../../app/services/create_organisation_from_array'
 
-describe CreateOrganisationFromArray, ".create" do 
+describe CreateOrganisationFromArray, '.create' do 
   let(:mappings) do 
     {name: 'Title',
      address: 'Contact Address',

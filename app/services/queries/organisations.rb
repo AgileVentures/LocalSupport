@@ -25,7 +25,7 @@ module Queries
     def self.add_recently_updated_and_has_owner(organisations)
       one_year_ago = Time.current.advance(years: -1)
       recently_updated = "organisations.updated_at > '#{one_year_ago.strftime(FORMAT)}'"
-      has_owner = "organisations.id IN (SELECT users.organisation_id FROM users)"
+      has_owner = 'organisations.id IN (SELECT users.organisation_id FROM users)'
       condition =
         "CASE WHEN #{recently_updated} AND #{has_owner} THEN TRUE ELSE FALSE END"
       organisations

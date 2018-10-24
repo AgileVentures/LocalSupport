@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe PagesController, :type => :controller do
+describe PagesController, type: :controller do
   let(:page) { mock_model Page, id: '2' }
 
   before { allow(controller).to receive(:superadmin?) { true } }
@@ -17,7 +17,7 @@ describe PagesController, :type => :controller do
       expect(response).to render_template 'layouts/full_width'
     end
 
-    it "assigns the pages in alphabetical order by default" do
+    it 'assigns the pages in alphabetical order by default' do
       pages = double Array
       expect(Page).to receive(:order).with('name ASC').and_return pages
       get :index, {}
@@ -26,11 +26,12 @@ describe PagesController, :type => :controller do
   end
 
   describe 'GET show' do
-    let(:about_page) { double :page,
+    let(:about_page) do 
+      double :page,
                               name: 'About Us',
                               permalink: 'about',
                               content: 'blah blah'
-    }
+    end
     let(:user) { double :user }
 
     before(:each) do
@@ -252,8 +253,8 @@ describe PagesController, :type => :controller do
       expect(response.status).to eq 302
     end
   end
-  describe ".permit" do
-    it "returns the cleaned params" do
+  describe '.permit' do
+    it 'returns the cleaned params' do
       pages_params = { page: {content: 'stuff', name: 'this', permalink: 'here', link_visible: false}}
       params = ActionController::Parameters.new.merge(pages_params)
       permitted_params = PagesController::PageParams.build(params)

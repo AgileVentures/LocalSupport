@@ -21,8 +21,8 @@ class FakeGoogleGeocode < Sinatra::Base
       File.open(File.dirname(__FILE__) + '/fixtures/' + file_name, 'rb').read
     # Errno::ENOENT - No such file or directory
     rescue Errno::ENOENT
-      { "results" => [],
-        "status" => "OVER_QUERY_LIMIT" }.to_json
+      { 'results' => [],
+        'status' => 'OVER_QUERY_LIMIT' }.to_json
     end
   end
 end

@@ -9,7 +9,7 @@ describe SessionsController, type: :controller do
     it 'redirects to home page after superadmin logs-in' do
       FactoryBot.build(
           :user, email: 'example@example.com', password: 'pppppppp', superadmin: true
-      ).save!
+        ).save!
       post :create, params: {
           'user' => {
               'email' => 'example@example.com',
@@ -42,8 +42,8 @@ describe SessionsController, type: :controller do
     it 'redirects to charity page after non-superadmin associated with org' do
       usr = FactoryBot.build(
           :user_stubbed_organisation, email: 'example@example.com', password: 'pppppppp'
-      )
-      allow(controller).to receive_messages :session => {previous_url: '/'}
+        )
+      allow(controller).to receive_messages session: {previous_url: '/'}
       post :create, params: {
           'user' => {
               'email' => 'example@example.com',

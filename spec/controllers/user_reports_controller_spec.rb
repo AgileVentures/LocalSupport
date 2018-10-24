@@ -40,16 +40,16 @@ describe UserReportsController, type: :controller do
 
     it 'destroys the user' do
       make_current_user_superadmin
-      expect{
+      expect do
         delete :destroy, params: {id: user.id}
-      }.to change(User, :count).by -1
+      end.to change(User, :count).by(-1)
     end
 
     it 'unless that user is the current_user' do
       make_current_user_superadmin(user)
-      expect{
+      expect do
         delete :destroy, params: {id: user.id}
-      }.not_to change(User, :count)
+      end.not_to change(User, :count)
     end
   end
 
@@ -117,7 +117,7 @@ describe UserReportsController, type: :controller do
     let(:organisation) do
       double :organisation, {
           id: '-1',
-          name: 'sample org',
+          name: 'sample org'
       }
     end
 
@@ -155,10 +155,10 @@ describe UserReportsController, type: :controller do
       expect(User).to receive(:invited_not_accepted) { [user] }
       get :invited
       expect(assigns(:invitations)).to eq([{
-                                               :id => '-1',
-                                               :name => 'sample org',
-                                               :email => 'user@email.org',
-                                               :date => 'date-time-thingy'
+                                               id: '-1',
+                                               name: 'sample org',
+                                               email: 'user@email.org',
+                                               date: 'date-time-thingy'
                                            }])
     end
 

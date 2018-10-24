@@ -20,7 +20,7 @@ describe MapMarkerJson do
   end
 
   it 'keeps markers with a lat and lng' do
-    expect(_subject { |_,m| m.lat(0) ; m.lng(0) }).to eq [{"lat"=>0, "lng"=>0}]
+    expect(_subject { |_,m| m.lat(0) ; m.lng(0) }).to eq [{'lat'=>0, 'lng'=>0}]
   end
 
   def _subject

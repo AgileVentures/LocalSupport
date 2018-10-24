@@ -47,7 +47,7 @@ class User < ApplicationRecord
     superadmin? || (!org.nil? && organisation == org)
   end
 
-  def can_delete? org
+  def can_delete? _org
     superadmin?
   end
 

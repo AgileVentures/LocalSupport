@@ -11,7 +11,7 @@ module ProposesEdits
 
   def accept params
     instance_to_edit.update(params)
-    update!(:accepted => true, :archived => true)
+    update!(accepted: true, archived: true)
   end
 
   def non_published_generally_editable_fields

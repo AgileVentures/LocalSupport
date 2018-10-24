@@ -1,16 +1,16 @@
 
 And /^I select the "(.*?)" category from (How They Help|Who They Help|What They Do)$/ do |category, cat_type|
   cat_id = case cat_type
-    when 'What They Do'
+           when 'What They Do'
       'what_id'
-    when 'How They Help'
+           when 'How They Help'
       'how_id'
-    when 'Who They Help'
+           when 'Who They Help'
       'who_id'
     else
-      raise "Unsupported category type"
+      raise 'Unsupported category type'
   end
-  select(category, :from => cat_id)
+  select(category, from: cat_id)
 end
 
 When /^I visit the proposed organisation show page for the proposed organisation that was proposed$/ do
@@ -53,8 +53,8 @@ Then /^I (visit|should be on) the (.*) page$/ do |mode, location|
   location.downcase!
   raise "No matching path found for #{location}" if paths(location).nil?
   case mode
-    when 'visit' then visit paths(location)
-    when 'should be on' then current_path.should eq paths(location)
+  when 'visit' then visit paths(location)
+  when 'should be on' then current_path.should eq paths(location)
     else raise "unknown mode '#{mode}'"
   end
 end
@@ -83,8 +83,8 @@ Then /^I (visit|should be on) the new volunteer op page for "(.*?)"$/ do |mode, 
   org = Organisation.find_by_name(name)
   url = new_organisation_volunteer_op_path(org)
   case mode
-    when 'visit' then visit url
-    when 'should be on' then current_path.should eq url
+  when 'visit' then visit url
+  when 'should be on' then current_path.should eq url
     else raise "unknown mode '#{mode}'"
   end
 end
@@ -96,10 +96,10 @@ Then /^I (visit|should be on) the (edit|show) page for the (.*?) (named|titled) 
       controller: object.pluralize.underscore,
       action: action,
       id: record
-  )
+    )
   case mode
-    when 'visit' then visit url
-    when 'should be on' then current_path.should eq url
+  when 'visit' then visit url
+  when 'should be on' then current_path.should eq url
     else raise "unknown mode '#{mode}'"
   end
 end
@@ -136,7 +136,7 @@ end
 When /^I click "(.*)" (.*) link$/ do |link, position|
   case position
   when 'breadcrumb'
-    click_link(link, :match => :first)
+    click_link(link, match: :first)
   when 'organisation'
     within('#column2') do
        click_on link
@@ -154,11 +154,11 @@ When /^(?:|I )follow "([^"]*)"$/ do |link|
 end
 
 Then /^following Disclaimer link should display Disclaimer$/ do
-  steps %Q{
+  steps %(
 When I follow "Disclaimer"
 Then I should see "Disclaimer"
 And I should see "Whilst Voluntary Action Harrow has made effort to ensure the information here is accurate and up to date we are reliant on the information provided by the different organisations. No guarantees for the accuracy of the information is made."
-}
+)
 end
 
 Then(/^the "([^"]*)" should be (not )?visible$/) do |id, negate|
@@ -178,14 +178,14 @@ When(/^javascript is enabled$/) do
 end
 
 And(/^I click tableheader "([^"]*)"$/) do |name|
-  find('th', :text => "#{name}").click
+  find('th', text: "#{name}").click
   wait_for_ajax
 end
 
 Then(/^navbar button "(.*?)" should( not)? be active$/) do |button_text, negative|
   expectation_method = negative ? :should_not : :should
   within('.nav.nav-pills.pull-right') do
-    page.send(expectation_method, have_css('li.active > a', :text => "#{button_text}"))
+    page.send(expectation_method, have_css('li.active > a', text: "#{button_text}"))
   end
 end
 
@@ -199,27 +199,27 @@ Then(/^the page includes email hyperlink "([^"]*)"$/) do  |link|
 end
 
 Then(/^I should see "([^"]*)" in the flash error$/) do |message|
-  page.should have_css('div#flash_error', :text => message)
+  page.should have_css('div#flash_error', text: message)
 end
 
 Then(/^I should see "([^"]*)" in the flash$/) do |message|
-  page.should have_css('div#flash_success.alert-success', :text => message)
+  page.should have_css('div#flash_success.alert-success', text: message)
 end
 
 Then(/^I should( not)? see the call to update details for organisation "(.*)"/) do |negative, org_name|
     org = Organisation.find_by_name org_name
     expectation_method = negative ? :should_not : :should
-    message = "You have not updated your details in over a year! Please click here to update now."
-    page.send(expectation_method, have_css('div#flash_warning', :text => message))
+    message = 'You have not updated your details in over a year! Please click here to update now.'
+    page.send(expectation_method, have_css('div#flash_warning', text: message))
 
     within(negative.nil? ? 'div#flash_warning' : 'body') do
-      page.send(expectation_method, have_link("here", :href => edit_organisation_path(org)))
+      page.send(expectation_method, have_link('here', href: edit_organisation_path(org)))
     end
 end
 Then(/^I should see an (active|inactive) home button in the header$/) do |active|
-    active_class = (active == "active") ? ".active" : ""
+    active_class = (active == 'active') ? '.active' : ''
     within('.nav.nav-pills.pull-right') do
-      expect(page).to have_css("li#{active_class} > a[href='/']", :text => "Home")
+      expect(page).to have_css("li#{active_class} > a[href='/']", text: 'Home')
     end
 end
 
@@ -229,24 +229,24 @@ Then(/^I should see link "([^"]*)" targeting new page$/) do |link_name|
 end
 
 When(/^I click column header "([^"]*)"$/) do |val|
-  find('th', :text => val).click()
+  find('th', text: val).click
 end
 
-When("I click on {string} for the user {string}") do |text, email|
+When('I click on {string} for the user {string}') do |text, email|
   user_id = User.find_by_email(email).id
   within("tr##{user_id}") do
-    step %{I click "#{text}"}
+    step %(I click "#{text}")
   end
 end
 
-Given("I visit {string} organisation page") do |name|
+Given('I visit {string} organisation page') do |name|
   id = Organisation.find_by(name: name).id
-  visit organisation_path(:id => id)
+  visit organisation_path(id: id)
 end
 
-Given("I visit {string} organisation propose edit page") do |name|
+Given('I visit {string} organisation propose edit page') do |name|
   id = Organisation.find_by(name: name).id
-  visit new_organisation_proposed_organisation_edit_path :organisation_id => id
+  visit new_organisation_proposed_organisation_edit_path organisation_id: id
 end
 
 Given(/^I am not logged in as any user/) do

@@ -14,7 +14,7 @@ Then(/^I should see the "(.*?)" image linked to "(.*?)"$/) do |image_alt, link|
 end
 
 Then(/^I should see the "(.*?)" image linked to contributors$/) do |image_alt|
-  steps %{Then I should see the "#{image_alt}" image linked to "#{contributors_path}"}
+  steps %(Then I should see the "#{image_alt}" image linked to "#{contributors_path}")
 end
 
 Then /^I should see permission denied$/ do
@@ -41,14 +41,14 @@ Then /^I should see the cannot add non registered user "(.*?)" as charity supera
 end
 
 And /^I add "(.*?)" as a superadmin for "(.*?)" charity$/ do |superadmin_email, charity|
-  steps %Q{ And I visit the edit page for the organisation named "#{charity}"}
+  steps %( And I visit the edit page for the organisation named "#{charity}")
   fill_in 'organisation_superadmin_email_to_add', with: superadmin_email
-  steps %Q{
-  And I press "Update Organisation"}
+  steps %(
+  And I press "Update Organisation")
 end
 
 Then /^I should see the no charity superadmins message$/ do
-  expect(page).to have_content "This organisation has no admins yet"
+  expect(page).to have_content 'This organisation has no admins yet'
 end
 
 Given /^I delete "(.*?)" charity$/ do |name|
@@ -76,7 +76,7 @@ Then /^I should( not)? see "(.*?)" in the charity superadmin email$/ do |negate,
 end
 
 Then /^show me the page$/ do
-  save_and_open_page
+  save_and_open_page # rubocop:disable Lint/Debugger
 end
 
 When /^I search for "(.*?)"$/ do |text|
@@ -103,15 +103,15 @@ Given (/^I fill in the new charity page validly including the categories:$/) do 
   fill_in 'organisation_name', with: 'Friendly charity'
   fill_in 'organisation_postcode', with: 'HA1 4HZ'
   categories_table.hashes.each do |cat|
-    steps %Q{
+    steps %(
       And I check the category "#{cat[:name]}"
-    }
+    )
   end
 end
 
 Given(/^I am proposing an organisation$/) do
   visit new_proposed_organisation_path
-  steps %Q{And I fill in the proposed charity page validly}
+  steps %(And I fill in the proposed charity page validly)
 end
 
 Given (/^I fill in the proposed charity page validly$/) do
@@ -119,9 +119,9 @@ Given (/^I fill in the proposed charity page validly$/) do
     fill_in "proposed_organisation_#{key}", with: val
   end
   proposed_org_categories.each do |cat|
-    steps %Q{
+    steps %(
       And I check the category "#{cat}"
-    }
+    )
   end
 end
 
@@ -157,61 +157,61 @@ Then(/^I should see all the proposed organisation fields$/) do
 end
 
 Then /^the contact information should be available$/ do
-  steps %Q{
+  steps %{
     When I follow "Contact"
     Then I should see "Contact Info Email us: contact@voluntaryactionharrow.org.uk Phone Us: 020 8861 5894 Write to Us: The Lodge, 64 Pinner Road, Harrow, Middlesex, HA1 4HZ Find Us: On Social Media (Click Here)"
    }
 end
 
 Then /^the about us should be available$/ do
-  steps %Q{
+  steps %{
     When I follow "About Us"
     Then I should see "About Us Supporting groups in Harrow We are a not-for-profit workers co-operative who support people and not-for-profit organisations to make a difference in their local community by: Working with local people and groups to identify local needs and develop appropriate action. Providing a range of services that help organisations to succeed. Supporting and encouraging the growth of co-operative movement. How do we support? Find out here (VAH in a nutshell) What is a Workers Co-operative? A workers co-operative is a business owned and democratically controlled by their employee members using co-operative principles. They are an attractive and increasingly relevant alternative to traditional investor owned models of enterprise. (Click here for more details)"
   }
 end
 
 Given /^I update "(.*?)" charity address to be "(.*?)"( when Google is indisposed)?$/ do |name, address, indisposed|
-  steps %Q{
+  steps %(
     Given I visit the show page for the organisation named "#{name}"
     And I follow "Edit"
     And I edit the charity address to be "#{address}" #{indisposed ? 'when Google is indisposed' : ''}
     And I press "Update Organisation"
-  }
+  )
 end
 
 Given(/^I edit the charity email of "(.*?)" to be "(.*?)"$/) do |name, email|
-  steps %Q{
+  steps %(
     Given I visit the show page for the organisation named "#{name}"
     And I follow "Edit"
     And I edit the charity email to be "#{email}"
     And I press "Update Organisation"
-  }
+  )
 end
 
 Given /^I update "(.*?)" charity website to be "(.*?)"$/ do |name, url|
-  steps %Q{
+  steps %(
     Given I visit the show page for the organisation named "#{name}"
     And I follow "Edit"
     And I edit the charity website to be "#{url}"
     And I press "Update Organisation"
-  }
+  )
 end
 
 Given /^I have created a new organisation$/ do
-  steps %Q{
+  steps %(
     Given I visit the home page
     And I follow "New Organisation"
     And I fill in the new charity page validly
     And I press "Create Organisation"
-   }
+   )
 end
 
 Given /^I furtively update "(.*?)" charity address to be "(.*?)"$/ do |name, address|
-  steps %Q{
+  steps %(
     Given I am furtively on the edit charity page for "#{name}"
     And I edit the charity address to be "#{address}"
     And I press "Update Organisation"
-  }
+  )
 end
 
 Given /^I edit the charity website to be "(.*?)"$/ do |url|
@@ -227,9 +227,9 @@ When /^I edit the charity address to be "(.*?)"$/ do |address|
 end
 
 Then /^the website link for "(.*?)" should have a protocol$/ do |name|
-  steps %{
+  steps %(
     Given I visit the show page for the organisation named "#{name}"
-  }
+  )
   website = Organisation.find_by_name(name).website
   website.should =~ /^http\:\/\//
   expect(page).to have_selector("a[href='#{website}']")
@@ -248,7 +248,7 @@ end
 Then /^I should see the donation_info URL for "(.*?)"$/ do |name1|
   org1 = Organisation.find_by_name(name1)
   content = "Donate to #{org1.name} now!"
-  page.should have_xpath %Q<//a[@href = "#{org1.donation_info}" and @target = "_blank" and contains(.,'#{content}')]>
+  page.should have_xpath %<//a[@href = "#{org1.donation_info}" and @target = "_blank" and contains(.,'#{content}')]>
 end
 
 Then /^the donation_info URL for "(.*?)" should refer to "(.*?)"$/ do |name, href|
@@ -284,7 +284,7 @@ end
 
 Given /^I update the "(.*?)"$/ do |name|
   org1 = Organisation.find_by_name(name)
-  org1.address = "84 pinner road"
+  org1.address = '84 pinner road'
   org1.save!
 end
 
@@ -299,17 +299,17 @@ Given /^I edit the donation url to be "(.*?)"$/ do |url|
 end
 
 Then /^I should not see any edit or delete links$/ do
-  page.should_not have_link "Edit"
-  page.should_not have_link "Destroy"
+  page.should_not have_link 'Edit'
+  page.should_not have_link 'Destroy'
 end
 
-Then /^I should not see any edit link for "([^"]*?)"$/ do |name1|
-  page.should_not have_link "Edit"
+Then /^I should not see any edit link for "([^"]*?)"$/ do |_name1|
+  page.should_not have_link 'Edit'
 end
 
 Then /^I should see the external website link for "(.*?)" charity$/ do |org_name|
   org = Organisation.find_by_name org_name
-  page.should have_xpath %Q<//a[@target = "_blank" and @href = "#{org.website}" and contains(.,'#{org.website}')]>
+  page.should have_xpath %<//a[@target = "_blank" and @href = "#{org.website}" and contains(.,'#{org.website}')]>
 end
 
 Then /^I should( not)? see a link with text "([^"]*?)"$/ do |negate, link|
@@ -343,7 +343,7 @@ Then /^I should( not)? see "([^"]*)"$/ do |negate, text|
   expect(page).send(expectation_method, have_content(text))
 end
 
-Then(/^I should( not)? see "([^"]*)" in "([^"]*)"/) do |negate, text, selector|
+Then(/^I should( not)? see "([^"]*)" in "([^"]*)"/) do |negate, _text, selector|
   expectation_method = negate ? :not_to : :to
   within("#{selector}") do
     expect(page.body).send(expectation_method, match(/text/))
@@ -388,13 +388,13 @@ Then(/^I should not see "(.*?)"  within "(.*?)"$/) do |text, selector|
 end
 
 Given /^I update "(.*?)" charity postcode to be "(.*?)"$/ do |name, postcode|
-  steps %Q{And I visit the edit page for the organisation named "#{name}"}
+  steps %(And I visit the edit page for the organisation named "#{name}")
   fill_in('organisation_postcode', with: postcode)
   click_button 'Update Organisation'
 end
 
 Given /^I edit the charity address to be "(.*?)" when Google is indisposed$/ do |address|
-  body = %Q({
+  body = %({
 "results" : [],
 "status" : "OVER_QUERY_LIMIT"
 })
@@ -402,7 +402,7 @@ Given /^I edit the charity address to be "(.*?)" when Google is indisposed$/ do 
 end
 
 Then /^I should not see the unable to save organisation error$/ do
-  page.should_not have_content "1 error prohibited this organisation from being saved:"
+  page.should_not have_content '1 error prohibited this organisation from being saved:'
 end
 
 Then /^the address for "(.*?)" should be "(.*?)"$/ do |name, address|
@@ -434,19 +434,19 @@ Then(/^"(.*?)" should have email "(.*?)"$/) do |org, email|
 end
 
 And /^I click "(.*)" on the "(.*)" page and stay there$/  do |link, org_name|
-  steps %Q{
+  steps %(
     And I visit the show page for the organisation named "#{org_name}"
     And I click "#{link}"
     Then I should be on the show page for the organisation named "#{org_name}"
-  }
+  )
 end
 
 Given /^"(.*)"'s request status for "(.*)" should be updated appropriately$/ do |email, org_name|
-  steps %Q{
+  steps %(
       And "#{email}"'s request for "#{org_name}" should be persisted
       And I should see "You have requested superadmin status for #{Organisation.find_by_name(org_name).name}"
       And I should not see a link or button "This is my organisation"
-    }
+    )
 end
 
 And /"(.*)"'s request for "(.*)" (should|should not) be persisted/ do |email, org, expectation|
@@ -575,7 +575,7 @@ Given /^associations are destroyed for:$/ do |table|
 end
 
 Given /^I debug/ do
-  byebug
+  byebug # rubocop:disable Lint/Debugger
 end
 
 Given /^I run the invite migration$/ do
@@ -594,21 +594,21 @@ Then(/^I should have a page with a title tag set to: "([^"]*)"$/) do |title|
 end
 
 And(/^it should have ?a? Meta (.*)$/) do |name_attribute|
-  expect(page.find(%Q{meta[name="#{name_attribute.downcase}"]}, :visible => false).class).to eq(Capybara::Node::Element)
+  expect(page.find(%(meta[name="#{name_attribute.downcase}"]), visible: false).class).to eq(Capybara::Node::Element)
 end
 
 Then(/^I should see a link to feedback form in the footer$/) do
   feedback_url = 'https://docs.google.com/a/neurogrid.com/forms/d/1iQwIM0E2gjJF6N6UHgVwtH8OzBbpUr6DS0Xbf-UrKE0/viewform'
   page.should have_link('feedback here',
-    :href => feedback_url
+    href: feedback_url
   )
 end
 
-When("I fill in {string} with {string}") do |field, text|
+When('I fill in {string} with {string}') do |field, text|
   fill_in field, with: text
 end
 
-Then("I should see a text field for {string}") do |name|
+Then('I should see a text field for {string}') do |name|
   find_field(name)
 end
 

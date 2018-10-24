@@ -1,15 +1,13 @@
 
 def expect_email_exists(message: nil, email: nil, link: nil, link_text: nil)
   #TODO: use mandatory keyword arguments, ie. message:, when upgrading to ruby 2.1
-  if message == nil || email == nil
-    raise "Must supply message and email address!"
-  end
+  raise 'Must supply message and email address!' if message.nil? || email.nil?
   mails = ActionMailer::Base.deliveries.select{|m| m.to.include? email}
   expect(mails).not_to be_empty
-  bodys = mails.map{|m| m.body}.select{|body| body.include? message }
+  bodys = mails.map(&:body).select{|body| body.include? message }
   expect(bodys).not_to be_empty
   if link && link_text
-    href = Nokogiri::HTML(bodys.first.raw_source).search("//a[text()='#{link_text}']")[0].attribute("href").value
+    href = Nokogiri::HTML(bodys.first.raw_source).search("//a[text()='#{link_text}']")[0].attribute('href').value
     expect(href).to eq link
   end
 end
@@ -19,7 +17,7 @@ And(/^an email should be sent to "(.*?)" as notice of becoming org admin of "(.*
   message = "You have been made an organisation admin for the organisation called #{org_name} on the Harrow Community Network. After logging in,
 you will be able to update your organisation's directory entry."
   expect_email_exists(message: message, email: email, link: organisation_url(Organisation.find_by(name: org_name)),
-                      link_text: "Click here to view your organisation on the Harrow Community Network.")
+                      link_text: 'Click here to view your organisation on the Harrow Community Network.')
 end
 
 And(/^an email should be sent to "(.*?)" as notification of the request for admin status of "(.*?)"$/) do |email, org_name|
@@ -41,8 +39,8 @@ Then(/^an email should be sent to "(.*?)" as notification of the proposed organi
   message = "A new organisation called #{proposed_org_fields[:name]} has been proposed for inclusion in the Harrow Community Network."
   expect_email_exists(message: message,email: email,
     link: proposed_organisation_url(ProposedOrganisation.find_by(name: proposed_org_fields[:name])),
-    link_text: "Click here to view this proposed organisation"
-  )
+    link_text: 'Click here to view this proposed organisation'
+                     )
 end
 
 And /^I should receive a "(.*?)" email$/ do |subj|
@@ -61,20 +59,20 @@ And /^the email queue is clear$/ do
 end
 
 Given(/^I run the fix invitations rake task$/) do
-  require "rake"
+  require 'rake'
   @rake = Rake::Application.new
   Rake.application = @rake
-  Rake.application.rake_require "tasks/fix_invites"
+  Rake.application.rake_require 'tasks/fix_invites'
   Rake::Task.define_task(:environment)
   @rake['db:fix_invites'].invoke
 end
 
 
 Given(/^I import emails from "(.*?)"$/) do |file|
-  require "rake"
+  require 'rake'
   @rake = Rake::Application.new
   Rake.application = @rake
-  Rake.application.rake_require "tasks/emails"
+  Rake.application.rake_require 'tasks/emails'
   Rake::Task.define_task(:environment)
   @rake['db:import:emails'].invoke(file)
 end

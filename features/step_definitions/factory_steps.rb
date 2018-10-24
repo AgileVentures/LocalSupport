@@ -29,18 +29,18 @@ end
 
 def expect_proposed_org_is_notified(acceptance_message, email, org)
   expect_email_exists(
-    :message   => acceptance_message,
-    :email     => email,
-    :link      => organisation_url(org),
-    :link_text => 'You can edit your organisation details by logging in and editing it directly.'
+    message: acceptance_message,
+    email: email,
+    link: organisation_url(org),
+    link_text: 'You can edit your organisation details by logging in and editing it directly.'
   )
   expect(org.users.pluck(:email)).to include(email)
 end
 
 def expect_proposed_org_is_invited(acceptance_message, email, org)
   expect_email_exists(
-    :message => acceptance_message,
-    :email   => email,
+    message: acceptance_message,
+    email: email,
   )
   expect(org.users.pluck(:email)).to include(email)
 end
@@ -70,14 +70,14 @@ Then(/^I should see the details of the proposed organisation$/) do
   [:name, :description, :email, :address, :postcode].each do |key|
     expect(page).to have_content unsaved_proposed_organisation[key]
   end
-  ["Donate to Friendly Charity now!", 'We are a not for profit organisation registered or working in Harrow'].each do |value|
+  ['Donate to Friendly Charity now!', 'We are a not for profit organisation registered or working in Harrow'].each do |value|
       expect(page).to have_content value
   end
 end
 
 Given /^the following organisations exist:$/ do |organisations_table|
   organisations_table.hashes.each do |org|
-    VCR.use_cassette("#{org["name"]}-#{org["postcode"]}") do
+    VCR.use_cassette("#{org['name']}-#{org['postcode']}") do
       organisation = Organisation.new(org)
       organisation.check_geocode
       organisation.save!
@@ -87,16 +87,16 @@ end
 
 Given /^the following users are registered:$/ do |users_table|
   users_table.hashes.each do |user|
-    user["superadmin"] = user["superadmin"] == "true"
-    user["organisation"] = Organisation.find_by_name(user["organisation"])
-    user["pending_organisation"] = Organisation.find_by_name(user["pending_organisation"])
+    user['superadmin'] = user['superadmin'] == 'true'
+    user['organisation'] = Organisation.find_by_name(user['organisation'])
+    user['pending_organisation'] = Organisation.find_by_name(user['pending_organisation'])
     User.create! user
   end
 end
 
 Given /the following volunteer opportunities exist/ do |volunteer_ops_table|
   volunteer_ops_table.hashes.each do |volunteer_op|
-    volunteer_op["organisation"] = Organisation.find_by_name(volunteer_op["organisation"])
+    volunteer_op['organisation'] = Organisation.find_by_name(volunteer_op['organisation'])
     VolunteerOp.create! volunteer_op
   end
 end
@@ -138,14 +138,14 @@ end
 
 When(/^a static page named "(.*?)" with permalink "(.*?)" and markdown content:$/) \
 do |name, permalink, content|
-  Page.create!(:name => name,
-               :permalink => permalink,
-               :content => content,
-               :link_visible => true)
+  Page.create!(name: name,
+               permalink: permalink,
+               content: content,
+               link_visible: true)
 end
 
 And(/^a file exists:$/) do |table|
-  CSV.open("db/email_test.csv", "wb") do |csv|
+  CSV.open('db/email_test.csv', 'wb') do |csv|
     csv << table.hashes[0].keys
     table.hashes.each do |org|
       csv << org.values

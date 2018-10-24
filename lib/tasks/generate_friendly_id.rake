@@ -1,7 +1,7 @@
 begin
   namespace :db do
     desc 'Generate friendly id for Organisations records'
-    task :friendly_id => :environment do
+    task friendly_id: :environment do
       Logger.new(STDOUT).info 'Start friendly_id generation'
       Organisation.find_each do |org|
         WithoutTimestamps.run do

@@ -1,16 +1,16 @@
 require 'rails_helper'
 
-describe 'Category', :type => :model do
+describe 'Category', type: :model do
 
   context 'scopes' do
-    let!(:category_array){[["education", 100], ["sports", 199], ["children", 200], ["youth", 299], ["advocacy", 300], ["umbrella", 399]]}
+    let!(:category_array){[['education', 100], ['sports', 199], ['children', 200], ['youth', 299], ['advocacy', 300], ['umbrella', 399]]}
     before do
       category_array.each do | name, charity_commission_id |
         create(:category, charity_commission_id: charity_commission_id, name: name)
       end
     end
 
-    describe "self.name_and_id_for_what_who_and_how" do
+    describe 'self.name_and_id_for_what_who_and_how' do
       subject { Category.name_and_id_for_what_who_and_how }
       it { expect(subject[:what].count).to eq(2)}
       it { expect(subject[:who].count).to eq(2) }
@@ -47,31 +47,31 @@ describe 'Category', :type => :model do
     before do
       FactoryBot.factories.clear
       FactoryBot.find_definitions
-      @category1 = FactoryBot.create(:category, name: "alligator",  charity_commission_id: 100)
-      @category4 = FactoryBot.create(:category, name: "capybara",  charity_commission_id: 101)
-      @category2 = FactoryBot.create(:category, name: "crocodile", charity_commission_id: 210)
-      @category5 = FactoryBot.create(:category, name: "guinea pig", charity_commission_id: 201)
-      @category3 = FactoryBot.create(:category, name: "iguana", charity_commission_id: 310)
-      @category6 = FactoryBot.create(:category, name: "rabbit", charity_commission_id: 304)
-      @org1 = FactoryBot.build(:organisation, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.harrow-bereavment.co.uk/donate')
+      @category1 = FactoryBot.create(:category, name: 'alligator',  charity_commission_id: 100)
+      @category4 = FactoryBot.create(:category, name: 'capybara',  charity_commission_id: 101)
+      @category2 = FactoryBot.create(:category, name: 'crocodile', charity_commission_id: 210)
+      @category5 = FactoryBot.create(:category, name: 'guinea pig', charity_commission_id: 201)
+      @category3 = FactoryBot.create(:category, name: 'iguana', charity_commission_id: 310)
+      @category6 = FactoryBot.create(:category, name: 'rabbit', charity_commission_id: 304)
+      @org1 = FactoryBot.build(:organisation, name: 'Harrow Bereavement Counselling', description: 'Bereavement Counselling', address: '64 pinner road', postcode: 'HA1 4HZ', donation_info: 'www.harrow-bereavment.co.uk/donate')
       allow(@org1).to receive :geocode
       @org1.save!
-      @org2 = FactoryBot.build(:organisation, :name => 'Indian Elders Associaton', :description => 'Care for the elderly', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.indian-elders.co.uk/donate')
+      @org2 = FactoryBot.build(:organisation, name: 'Indian Elders Associaton', description: 'Care for the elderly', address: '64 pinner road', postcode: 'HA1 4HZ', donation_info: 'www.indian-elders.co.uk/donate')
       allow(@org2).to receive :geocode
       @org2.categories << @category1
       @org2.categories << @category2
       @org2.save!
-      @org3 = FactoryBot.build(:organisation, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.age-uk.co.uk/donate')
+      @org3 = FactoryBot.build(:organisation, name: 'Age UK Elderly', description: 'Care for older people', address: '64 pinner road', postcode: 'HA1 4HZ', donation_info: 'www.age-uk.co.uk/donate')
       @org3.categories << @category1
       allow(@org3).to receive :geocode
       @org3.save!
     end
 
     it 'should have a human readable name and charity commission id and ridiculous name' do
-      c = Category.new(:name => "Health",:charity_commission_id => 1, :charity_commission_name => "WELL BEING AND JOYOUS EXISTENCE")
-      expect(c.name).to eq("Health")
+      c = Category.new(name: 'Health',charity_commission_id: 1, charity_commission_name: 'WELL BEING AND JOYOUS EXISTENCE')
+      expect(c.name).to eq('Health')
       expect(c.charity_commission_id).to eq(1)
-      expect(c.charity_commission_name).to eq("WELL BEING AND JOYOUS EXISTENCE")
+      expect(c.charity_commission_name).to eq('WELL BEING AND JOYOUS EXISTENCE')
     end
 
     it 'has and belongs to many base_organisations' do
@@ -97,29 +97,29 @@ describe 'Category', :type => :model do
       end
     end
 
-    describe "#<=>" do
-      [{type: "what they do", id: 110}, {type: "who they help", id: 210}, {type: "how they help", id: 310}].each do |hash|
+    describe '#<=>' do
+      [{type: 'what they do', id: 110}, {type: 'who they help', id: 210}, {type: 'how they help', id: 310}].each do |hash|
         it "orders by name when category types are both #{hash[:type]}" do
-          alligator = Category.new(charity_commission_id: hash[:id], name: "Alligator") 
-          crocodile = Category.new(charity_commission_id: hash[:id] + 1, name: "Crocodile")
-          expect(alligator<=>crocodile).to eq -1
+          alligator = Category.new(charity_commission_id: hash[:id], name: 'Alligator') 
+          crocodile = Category.new(charity_commission_id: hash[:id] + 1, name: 'Crocodile')
+          expect(alligator<=>crocodile).to eq(-1)
         end
       end
-      [{first_type: "what they do", first_id: 100, second_id: 200, second_type: "who they help", result: -1},
-       {first_type: "who they help", first_id: 299, second_id: 399, second_type: "how they help", result: -1},
-       {first_type: "what they do", first_id: 199, second_id: 399, second_type: "how they help", result: -1},
-       {second_type: "what they do", second_id: 199, first_id: 200, first_type: "who they help", result: 1},
-       {second_type: "who they help", second_id: 299, first_id: 300, first_type: "how they help", result: 1},
-       {second_type: "what they do", second_id: 100, first_id: 300, first_type: "how they help", result: 1}].each do |hash|
+      [{first_type: 'what they do', first_id: 100, second_id: 200, second_type: 'who they help', result: -1},
+       {first_type: 'who they help', first_id: 299, second_id: 399, second_type: 'how they help', result: -1},
+       {first_type: 'what they do', first_id: 199, second_id: 399, second_type: 'how they help', result: -1},
+       {second_type: 'what they do', second_id: 199, first_id: 200, first_type: 'who they help', result: 1},
+       {second_type: 'who they help', second_id: 299, first_id: 300, first_type: 'how they help', result: 1},
+       {second_type: 'what they do', second_id: 100, first_id: 300, first_type: 'how they help', result: 1}].each do |hash|
          it "orders by type when the first category is #{hash[:first_type]} and the second category is #{hash[:second_type]}" do
-           alligator = Category.new(charity_commission_id: hash[:first_id], name: "Alligator") 
-           crocodile = Category.new(charity_commission_id: hash[:second_id], name: "Crocodile")
+           alligator = Category.new(charity_commission_id: hash[:first_id], name: 'Alligator') 
+           crocodile = Category.new(charity_commission_id: hash[:second_id], name: 'Crocodile')
            expect(alligator<=>crocodile).to eq hash[:result] 
          end
        end
        it 'returns 0 when category types and names are the same' do
-         alligator = Category.new(charity_commission_id: 310, name: "Alligator") 
-         crocodile = Category.new(charity_commission_id: 310, name: "Alligator") 
+         alligator = Category.new(charity_commission_id: 310, name: 'Alligator') 
+         crocodile = Category.new(charity_commission_id: 310, name: 'Alligator') 
          expect(alligator<=>crocodile).to eq 0
        end
     end

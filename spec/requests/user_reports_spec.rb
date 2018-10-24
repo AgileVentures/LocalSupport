@@ -1,17 +1,17 @@
 require 'rails_helper'
 
-describe 'UserReports', :type => :request, :helpers => :requests do
-  let(:nonsuperadmin) {FactoryBot.create :user, :email => "nonsuperadmin@nonsuperadmin.com", :superadmin => false}
-  let(:deleted_user) {usr = FactoryBot.create :user , :email => 'regularjoe@blah.com'; usr.destroy; usr}
+describe 'UserReports', type: :request, helpers: :requests do
+  let(:nonsuperadmin) {FactoryBot.create :user, email: 'nonsuperadmin@nonsuperadmin.com', superadmin: false}
+  let(:deleted_user) {usr = FactoryBot.create :user , email: 'regularjoe@blah.com'; usr.destroy; usr}
   let(:pending_org) { FactoryBot.create :organisation }
   let(:user) { FactoryBot.create :user, pending_organisation: pending_org }
 
   describe 'PUT /user_reports/undo_delete/:id' do
     it 'nonsuperadmin unable to undo delete' do
       login(nonsuperadmin)
-      expect {
+      expect do
         put undo_delete_users_report_path(deleted_user.id)
-      }.to change(User, :count).by(0)
+      end.to change(User, :count).by(0)
       expect(response).to redirect_to(root_path)
       follow_redirect!
       expect(response.body).to include I18n.t('authorize.superadmin')
@@ -31,7 +31,7 @@ describe 'UserReports', :type => :request, :helpers => :requests do
   describe 'PUT /user_reports/update/:id, :pending_org_action' do
     it 'nonsuperadmin unable to decline pending org admin' do
       login(nonsuperadmin)
-      put user_report_path(id: user.id, pending_org_action: "decline")
+      put user_report_path(id: user.id, pending_org_action: 'decline')
       expect(response).to redirect_to(root_path)
       follow_redirect!
       expect(response.body).to include I18n.t('authorize.superadmin')

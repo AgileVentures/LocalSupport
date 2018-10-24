@@ -31,11 +31,11 @@ describe Location, type: :model do
         [80.0, 25.0] => [vol_op2]
       }
 
-      expect(Location.build_hash(input)).to eq({
+      expect(Location.build_hash(input)).to eq(
         Location.new(longitude: 12.0, latitude: 30.0) => [vol_op1],
         Location.new(longitude: 15.0, latitude: 45.0) => [vol_op2, vol_op3],
         Location.new(longitude: 80.0, latitude: 25.0) => [vol_op2]
-      })
+      )
     end
   end
 end

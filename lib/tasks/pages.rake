@@ -1,8 +1,8 @@
 namespace :db do
   desc 'Creates page records'
-  task :pages => :environment do
+  task pages: :environment do
     unless Page.find_by_permalink('about')
-      Page.create!({
+      Page.create!(
                      name: 'About Us',
                      permalink: 'about',
                      content:
@@ -18,10 +18,10 @@ We are a not-for-profit workers co-operative who support people and not-for-prof
 Find out [here (VAH in a nutshell)](http://www.voluntaryactionharrow.org.uk/vah-in-a-nutshell)
 ### What is a Workers Co-operative?
 A workers co-operative is a business owned and democratically controlled by their employee members using co-operative principles. They are an attractive and increasingly relevant alternative to traditional investor owned models of enterprise.[ (Click here for more details)](http://www.uk.coop/sites/default/files/worker_co-operative_code_2nd_edition.pdf)'
-                 })
+                   )
     end
     unless Page.find_by_permalink('contact')
-      Page.create!({
+      Page.create!(
                      name: 'Contact Info',
                      permalink: 'contact',
                      content:
@@ -30,25 +30,25 @@ A workers co-operative is a business owned and democratically controlled by thei
 * **Phone Us:** 020 8861 5894
 * **Write to Us:** The Lodge, 64 Pinner Road, Harrow, Middlesex, HA1 4HZ
 * **Find Us:** On [ Social Media (Click Here)](http://www.voluntaryactionharrow.org.uk/social-circles/)'
-                 })
+                   )
     end
     unless Page.find_by_permalink('disclaimer')
-      Page.create!({
+      Page.create!(
                      name: 'Disclaimer',
                      permalink: 'disclaimer',
                      content:
 '# Disclaimer
 #### Whilst Voluntary Action Harrow has made effort to ensure the information here is accurate and up to date we are reliant on the information provided by the different organisations. No guarantees for the accuracy of the information is made.'
-                 })
+                   )
     end
     unless Page.find_by_permalink('404')
-      Page.create!({
+      Page.create!(
                      name: 'Custom 404',
                      permalink: '404',
                      content:
                          "# 404
 #### We're sorry, but we couldn't find the page you requested!"
-                 })
+                   )
     end
   end
 end

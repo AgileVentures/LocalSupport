@@ -6,8 +6,8 @@ require 'rails_helper'
 # the alternative approach would be to
 
 migration_file_name = 
-  Dir[Rails.root.
-      join('db/migrate/*_add_link_visible_flag_to_page.rb')].first
+  Dir[Rails.root
+      .join('db/migrate/*_add_link_visible_flag_to_page.rb')].first
 require migration_file_name
 
 ActiveRecord::Migration.verbose = false
@@ -18,7 +18,7 @@ describe AddLinkVisibleFlagToPage do
   # rails api that handles this. I am just going for a proof of concept here.
   def migration_has_been_run?(version)
     table_name = ActiveRecord::SchemaMigration.table_name
-    query = "SELECT version FROM %s WHERE version = '%s'" % [table_name, version]
+    query = format("SELECT version FROM %s WHERE version = '%s'", table_name, version)
     ActiveRecord::Base.connection.execute(query).any?
   end
 
@@ -26,9 +26,7 @@ describe AddLinkVisibleFlagToPage do
 
   before do
     # Hardcoded migration number
-    if migration_has_been_run?('20140325182135')
-      migration.down
-    end
+    migration.down if migration_has_been_run?('20140325182135')
   end
 
   describe '#up' do
@@ -48,8 +46,8 @@ describe AddLinkVisibleFlagToPage do
 end
 
 def seed_some_pages
-  Page.create!(:name => "About Us", :permalink => "about")
-  Page.create!(:name => "Disclaimer", :permalink => "disclaimer")
-  Page.create!(:name => "Custom 404", :permalink => "404")
+  Page.create!(name: 'About Us', permalink: 'about')
+  Page.create!(name: 'Disclaimer', permalink: 'disclaimer')
+  Page.create!(name: 'Custom 404', permalink: '404')
 end
 
