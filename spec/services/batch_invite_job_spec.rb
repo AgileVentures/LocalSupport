@@ -46,9 +46,7 @@ describe ::BatchInviteJob do
     end
 
     it 'example response for invites with duplicates' do
-      expect(do_batch_invite).to eq(
-        org.id => 'Invited!',
-      )
+      expect(do_batch_invite).to eq( org.id => 'Invited!', (org.id+1) => 'Error: Email has already been taken')
     end
 
     it 'resend invitations to a deleted user' do
