@@ -8,6 +8,7 @@ AllCops:
     - 'config/**/*'
     - 'script/**/*'
     - 'bin/**/*'
+    - 'docs/installation/vagrant/*'
   TargetRubyVersion: 2.3
 
 Rails:
@@ -439,7 +440,7 @@ Style/RedundantSelf:
 Style/RegexpLiteral:
   Description: 'Use / or %r around regular expressions.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#percent-r'
-  Enabled: true
+  Enabled: false
 
 Layout/RescueEnsureAlignment:
   Description: 'Align rescues and ensures correctly.'
@@ -578,7 +579,7 @@ Lint/AmbiguousRegexpLiteral:
   Description: >-
                  Checks for ambiguous regexp literals in the first argument of
                  a method invocation without parenthesis.
-  Enabled: true
+  Enabled: false
 
 Lint/AssignmentInCondition:
   Description: "Don't use assignment in conditions."
@@ -731,7 +732,7 @@ Metrics/LineLength:
     - https
   Description: 'Limit lines to 90 characters.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#80-character-limits'
-  Enabled: true
+  Enabled: false
 
 Metrics/MethodLength:
   CountComments: false  # count full line comments?
