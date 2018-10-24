@@ -56,61 +56,61 @@ end
 def check_for_org_info_box tbl, selector
   expect(page).to have_css(selector, count: tbl.length)
   Organisation.where(name: tbl)
-        .pluck(:name, :description, :id, :slug)
-        .map {|name, desc, id, frdly_id| [name, smart_truncate(desc, 44), id, frdly_id]}
-        .each do |name, desc, id, friendly_id|
-      click_map_icon(id)
-      expect(page).to have_css('.arrow_box')
-      expect(find('.arrow_box')).to have_content(desc)
-      expect(find('.arrow_box')).to have_content(name)
-      link = find('.arrow_box').find('a')[:href]
-      expect(link).to end_with(organisation_path(friendly_id))
+    .pluck(:name, :description, :id, :slug)
+    .map {|name, desc, id, frdly_id| [name, smart_truncate(desc, 44), id, frdly_id]}
+    .each do |name, desc, id, friendly_id|
+    click_map_icon(id)
+    expect(page).to have_css('.arrow_box')
+    expect(find('.arrow_box')).to have_content(desc)
+    expect(find('.arrow_box')).to have_content(name)
+    link = find('.arrow_box').find('a')[:href]
+    expect(link).to end_with(organisation_path(friendly_id))
   end
 end
 
 def check_for_volop_info_box(tbl, selector, check_tbl_length = true)
   expect(page).to have_css(selector, count: tbl.length) if check_tbl_length
   VolunteerOp.where(title: tbl)
-        .map do |volop| 
+    .map do |volop|
     [volop.id, volop.organisation.name, volop.title,
-          smart_truncate(volop.description, 44), volop.organisation.slug]
-  end  
-        .each do |id, name, title, desc, org_friendly_id|
+     smart_truncate(volop.description, 44), volop.organisation.slug]
+    end
+    .each do |id, name, title, desc, org_friendly_id|
       all(selector).map do |list_item|
         list_item.trigger(:mouseover) if list_item.first('a').text == title
       end
-      expect(page).to have_css('.arrow_box')
-      expect(find('.arrow_box')).to have_content(desc)
-      expect(find('.arrow_box')).to have_content(name)
-      expect(find('.arrow_box').first('a', text: name)[:href]).to end_with(org_friendly_id)
-      expect(find('.arrow_box').first('a', text: title)[:href]).to end_with(id.to_s)
-  end
+    expect(page).to have_css('.arrow_box')
+    expect(find('.arrow_box')).to have_content(desc)
+    expect(find('.arrow_box')).to have_content(name)
+    expect(find('.arrow_box').first('a', text: name)[:href]).to end_with(org_friendly_id)
+    expect(find('.arrow_box').first('a', text: title)[:href]).to end_with(id.to_s)
+    end
 end
 
 def check_info_box_link_opens_in_new_page(tbl, selector)
   VolunteerOp.where(title: tbl)
-      .map do |volop| 
-    [volop.id, volop.organisation.name, volop.title,
-                     smart_truncate(volop.description, 44), volop.organisation.slug]
-  end  
-      .each do |_id, name, title, _desc, _org_friendly_id|
-    all(selector).map do |list_item|
-      list_item.trigger(:mouseover) if list_item.first('a').text == title
+    .map do |volop|
+      [ volop.id, volop.organisation.name, volop.title,
+        smart_truncate(volop.description, 44), volop.organisation.slug ]
     end
-    expect { click_link(name) }.to change(&number_of_windows).by 1
-  end
+    .each do |_id, name, title, _desc, _org_friendly_id|
+      all(selector).map do |list_item|
+        list_item.trigger(:mouseover) if list_item.first('a').text == title
+      end
+      expect { click_link(name) }.to change(&number_of_windows).by 1
+    end
 end
 
 def check_for_no_org_info_box(tbl, selector, check_tbl_length = true)
   expect(page).to have_css(selector, count: tbl.length) if check_tbl_length
   Organisation.where(name: tbl)
-        .pluck(:name, :description, :id, :slug)
-        .map {|name, desc, id, frdly_id| [name, smart_truncate(desc, 42), id, frdly_id]}
-        .each do |name, desc, _id, _friendly_id|
-      find(selector).trigger(:mouseleave)
-      expect(page).not_to have_css('.arrow_box')
-      expect(find('.arrow_box')).not_to have_content(desc)
-      expect(find('.arrow_box')).not_to have_content(name)
+    .pluck(:name, :description, :id, :slug)
+    .map {|name, desc, id, frdly_id| [name, smart_truncate(desc, 42), id, frdly_id]}
+    .each do |name, desc, _id, _friendly_id|
+    find(selector).trigger(:mouseleave)
+    expect(page).not_to have_css('.arrow_box')
+    expect(find('.arrow_box')).not_to have_content(desc)
+    expect(find('.arrow_box')).not_to have_content(name)
   end
 end
 
@@ -131,14 +131,15 @@ def find_map_icon klass, org_id
 end
 
 Then /^the (proposed organisation|organisation) "(.*?)" should have a (large|small) icon$/ do |type, name, icon_size|
-  klass = case type
-          when 'proposed organisation'
-    ProposedOrganisation
-          when 'organisation'
-    Organisation
-  else
-    raise "Unknown class #{type}"
-  end
+  klass =
+    case type
+    when 'proposed organisation'
+      ProposedOrganisation
+    when 'organisation'
+      Organisation
+    else
+      raise "Unknown class #{type}"
+    end
   org_id = klass.find_by(name: name).id
   marker_class = (icon_size == 'small') ? 'measle' : 'marker'
   if marker_class == 'measle'
@@ -157,7 +158,7 @@ Then /^I should( not)? see the following (measle|vol_op|event) markers in the ma
       expect(marker_data).not_to include(title)
     else
       expect(marker_data).to include(title)
-     end
+    end
   end
 end
 
@@ -172,10 +173,10 @@ def markers
 end
 
 def marker_json_for_org_names(*org_names)
-    marker_json = JSON.parse markers
-    [*org_names].map do |name|
-      marker_json.find{|m| m['infowindow'].include? name }
-    end
+  marker_json = JSON.parse markers
+  [*org_names].map do |name|
+    marker_json.find{|m| m['infowindow'].include? name }
+  end
 end
 
 Then /^the coordinates for "(.*?)" should( not)? be "(.*?), (.*?)"/ do | org1_name, negation, lat, lng |
@@ -236,8 +237,9 @@ And(/^"(.*?)" should not have nil coordinates$/) do |name|
   org.longitude.should_not be_nil
 end
 
-GMAPS_URL_KEY_NIL = 'https://maps.google.com/maps/api/js?' +
-                    'v=3&libraries=geometry&key='.freeze
+GMAPS_URL_KEY_NIL =
+  'https://maps.google.com/maps/api/js?' +
+  'v=3&libraries=geometry&key='.freeze
 
 Then(/^the google map key should( not)? be appended to the gmap js script$/) do |negation|
   script_css = "script[src='#{GMAPS_URL_KEY_NIL}#{ENV['GMAP_API_KEY']}']"

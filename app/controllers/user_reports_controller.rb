@@ -48,7 +48,7 @@ class UserReportsController < ApplicationController
     @mail_template = MailTemplate.find_by(name: 'Invitation instructions')
     render template: 'user_reports/invited', layout: 'invitation_table'
   end
-  
+
   def upgrade
     user = User.find(params[:id])
     if user.superadmin?
@@ -85,7 +85,8 @@ class UserReportsController < ApplicationController
 
     User.invited_not_accepted.select do |user|
       user.organisation.present? # because invitation data may be 'dirty'
-    end.map do |user|
+    end
+    .map do |user|
       {
           id: user.organisation.id,
           name: user.organisation.name,

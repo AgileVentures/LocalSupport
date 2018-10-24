@@ -1,15 +1,15 @@
-
 And /^I select the "(.*?)" category from (How They Help|Who They Help|What They Do)$/ do |category, cat_type|
-  cat_id = case cat_type
-           when 'What They Do'
+  cat_id =
+    case cat_type
+    when 'What They Do'
       'what_id'
-           when 'How They Help'
+    when 'How They Help'
       'how_id'
-           when 'Who They Help'
+    when 'Who They Help'
       'who_id'
     else
       raise 'Unsupported category type'
-  end
+    end
   select(category, from: cat_id)
 end
 
@@ -22,7 +22,7 @@ When(/^I visit "(.*?)"$/) do |path|
   visit path
 end
 
-def paths(location)
+def paths(location) #rubocop:disable Metrics/MethodLength
   reset_pwd = "#{edit_user_password_path}?reset_password_token=#{@reset_password_token}"
   {
     'home' => root_path,
@@ -55,7 +55,7 @@ Then /^I (visit|should be on) the (.*) page$/ do |mode, location|
   case mode
   when 'visit' then visit paths(location)
   when 'should be on' then current_path.should eq paths(location)
-    else raise "unknown mode '#{mode}'"
+  else raise "unknown mode '#{mode}'"
   end
 end
 
@@ -85,22 +85,22 @@ Then /^I (visit|should be on) the new volunteer op page for "(.*?)"$/ do |mode, 
   case mode
   when 'visit' then visit url
   when 'should be on' then current_path.should eq url
-    else raise "unknown mode '#{mode}'"
+  else raise "unknown mode '#{mode}'"
   end
 end
 
 Then /^I (visit|should be on) the (edit|show) page for the (.*?) (named|titled) "(.*?)"$/ do |mode, action, object, schema, name|
   record = find_record_for(object, schema, name)
   url = url_for(
-      only_path: true,
-      controller: object.pluralize.underscore,
-      action: action,
-      id: record
-    )
+    only_path: true,
+    controller: object.pluralize.underscore,
+    action: action,
+    id: record
+  )
   case mode
   when 'visit' then visit url
   when 'should be on' then current_path.should eq url
-    else raise "unknown mode '#{mode}'"
+  else raise "unknown mode '#{mode}'"
   end
 end
 
@@ -139,7 +139,7 @@ When /^I click "(.*)" (.*) link$/ do |link, position|
     click_link(link, match: :first)
   when 'organisation'
     within('#column2') do
-       click_on link
+      click_on link
     end
   end
 end
@@ -158,7 +158,7 @@ Then /^following Disclaimer link should display Disclaimer$/ do
 When I follow "Disclaimer"
 Then I should see "Disclaimer"
 And I should see "Whilst Voluntary Action Harrow has made effort to ensure the information here is accurate and up to date we are reliant on the information provided by the different organisations. No guarantees for the accuracy of the information is made."
-)
+  )
 end
 
 Then(/^the "([^"]*)" should be (not )?visible$/) do |id, negate|
@@ -207,25 +207,25 @@ Then(/^I should see "([^"]*)" in the flash$/) do |message|
 end
 
 Then(/^I should( not)? see the call to update details for organisation "(.*)"/) do |negative, org_name|
-    org = Organisation.find_by_name org_name
-    expectation_method = negative ? :should_not : :should
-    message = 'You have not updated your details in over a year! Please click here to update now.'
-    page.send(expectation_method, have_css('div#flash_warning', text: message))
+  org = Organisation.find_by_name org_name
+  expectation_method = negative ? :should_not : :should
+  message = 'You have not updated your details in over a year! Please click here to update now.'
+  page.send(expectation_method, have_css('div#flash_warning', text: message))
 
-    within(negative.nil? ? 'div#flash_warning' : 'body') do
-      page.send(expectation_method, have_link('here', href: edit_organisation_path(org)))
-    end
+  within(negative.nil? ? 'div#flash_warning' : 'body') do
+    page.send(expectation_method, have_link('here', href: edit_organisation_path(org)))
+  end
 end
 Then(/^I should see an (active|inactive) home button in the header$/) do |active|
-    active_class = (active == 'active') ? '.active' : ''
-    within('.nav.nav-pills.pull-right') do
-      expect(page).to have_css("li#{active_class} > a[href='/']", text: 'Home')
-    end
+  active_class = (active == 'active') ? '.active' : ''
+  within('.nav.nav-pills.pull-right') do
+    expect(page).to have_css("li#{active_class} > a[href='/']", text: 'Home')
+  end
 end
 
 Then(/^I should see link "([^"]*)" targeting new page$/) do |link_name|
-     target_link = find_link(link_name)
-     expect(target_link[:target]).to eq '_blank'
+  target_link = find_link(link_name)
+  expect(target_link[:target]).to eq '_blank'
 end
 
 When(/^I click column header "([^"]*)"$/) do |val|

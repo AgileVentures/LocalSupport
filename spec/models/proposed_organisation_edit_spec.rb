@@ -2,27 +2,29 @@ require 'rails_helper'
 def check_viewability(boolean, usr, array_of_symbols)
   array_of_symbols.each do |sym|
     it "should indicate#{boolean ? '' : ' NOT'} viewable for #{sym}" do
-      user = case usr
-             when :regular_user
-          regular_user 
-             when :siteadmin
+      user =
+        case usr
+        when :regular_user
+          regular_user
+        when :siteadmin
           siteadmin
-             when :superadmin
+        when :superadmin
           superadmin
         else
           {}
         end
       expect(proposed_edit.viewable_field?(sym, by: user)).to be boolean
     end
-  end    
+  end
 end
 def check_editability(boolean, usr, array_of_symbols)
   array_of_symbols.each do |sym|
     it "should indicate#{boolean ? '' : ' NOT'} editable for #{sym}" do
-      user = case usr
-             when :regular_user
-          regular_user 
-             when :siteadmin
+      user =
+        case usr
+        when :regular_user
+          regular_user
+        when :siteadmin
           siteadmin
         else
           {}
@@ -35,35 +37,53 @@ end
 describe ProposedOrganisationEdit do
 
   let(:regular_user) do
-    FactoryBot.create(:user, email: 'regularjoe@example.com', password: 'asdf1234', password_confirmation:       'asdf1234', siteadmin: false)
+    FactoryBot.create(
+      :user,
+      email: 'regularjoe@example.com',
+      password: 'asdf1234',
+      password_confirmation:       'asdf1234',
+      siteadmin: false)
   end
   let(:superadmin) do
-    FactoryBot.create(:user, email: 'superadmin@example.com', password: 'asdf1234', password_confirmation:       'asdf1234', superadmin: true)
+    FactoryBot.create(
+      :user,
+      email: 'superadmin@example.com',
+      password: 'asdf1234',
+      password_confirmation:       'asdf1234',
+      superadmin: true)
   end
 
   let(:siteadmin) do
-    FactoryBot.create(:user, email: 'siteadmin@example.com', password: 'asdf1234', password_confirmation:       'asdf1234', siteadmin: true)
+    FactoryBot.create(
+      :user,
+      email: 'siteadmin@example.com',
+      password: 'asdf1234',
+      password_confirmation:       'asdf1234',
+      siteadmin: true)
   end
 
   let(:org) do
-    FactoryBot.create(:organisation,
-                       name: 'Harrow Bereavement Counselling',
-                       description: 'Bereavement Counselling',
-                       address: '64 pinner road',
-                       postcode: 'HA1 4HZ',
-                       donation_info: 'www.harrow-bereavment.co.uk/donate')
+    FactoryBot.create(
+      :organisation,
+      name: 'Harrow Bereavement Counselling',
+      description: 'Bereavement Counselling',
+      address: '64 pinner road',
+      postcode: 'HA1 4HZ',
+      donation_info: 'www.harrow-bereavment.co.uk/donate')
   end
 
   let!(:proposed_edit) do
-    FactoryBot.create(:proposed_organisation_edit,
-                       organisation: org )
+    FactoryBot.create(
+      :proposed_organisation_edit,
+      organisation: org )
   end
-  
+
   describe '::still_pending' do
     let(:archived_edit) do
-      FactoryBot.create(:proposed_organisation_edit,
-                         organisation: org,
-                         archived: true)
+      FactoryBot.create(
+        :proposed_organisation_edit,
+        organisation: org,
+        archived: true)
     end
     it 'should return all edits that are not yet archived' do
       expect(ProposedOrganisationEdit.all).to include archived_edit
@@ -72,14 +92,14 @@ describe ProposedOrganisationEdit do
   end
 
   it 'should soft delete associated edits when org is soft deleted' do
-      org.destroy
-      expect(ProposedOrganisationEdit.all).not_to include proposed_edit
-      expect(ProposedOrganisationEdit.with_deleted).to include proposed_edit
+    org.destroy
+    expect(ProposedOrganisationEdit.all).not_to include proposed_edit
+    expect(ProposedOrganisationEdit.with_deleted).to include proposed_edit
   end
 
   describe '#viewable_field?' do
     context 'when publish fields are all false and user is regular user' do
-      before do 
+      before do
         org.update(publish_email: false)
       end
       check_viewability(false, :regular_user, [:address, :telephone, :email])
@@ -108,15 +128,15 @@ describe ProposedOrganisationEdit do
       end
       check_viewability(true, :superadmin, [:address, :telephone, :email])
     end
-   context 'when publish fields are all true and user is superadmin' do
+    context 'when publish fields are all true and user is superadmin' do
       before do
         org.update(publish_phone: true, publish_address: true)
       end
       check_viewability(true, :superadmin, [:address, :telephone, :email])
-   end
+    end
   end
   describe '#editable?' do
-    
+
     check_editability(false, :regular_user, [:address,:telephone])
     check_editability(true, :regular_user, [:name, :description, :postcode, :website, :donation_info, :email])
 
@@ -129,7 +149,7 @@ describe ProposedOrganisationEdit do
       check_editability(true, :regular_user, [:address,:telephone])
       check_editability(false, :regular_user, [:email])
     end
-    
+
     context 'when editor is siteadmin' do
       before do 
         org.update(publish_email: false)
@@ -158,10 +178,14 @@ describe ProposedOrganisationEdit do
   describe '#accept' do
     context 'update with params' do
       let(:org) do
-        FactoryBot.create(:organisation, name: 'Harrow Bereavement Counselling',
-                                   description: 'Bereavement Counselling', address: '64 pinner road', postcode: 'HA1 4HZ',
-                                   donation_info: 'www.harrow-bereavment.co.uk/donate')
-      end      
+        FactoryBot.create(
+          :organisation,
+          name: 'Harrow Bereavement Counselling',
+          description: 'Bereavement Counselling',
+          address: '64 pinner road',
+          postcode: 'HA1 4HZ',
+          donation_info: 'www.harrow-bereavment.co.uk/donate')
+      end
       let(:proposed_edit){FactoryBot.create(:proposed_organisation_edit, organisation: org )}
       it 'updates the name attribute' do
         expect do
