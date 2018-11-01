@@ -178,7 +178,6 @@ GEM
     gherkin (5.1.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    grease (0.3.1)
     hashdiff (0.3.7)
     heroku-api (0.4.3)
       excon (~> 0.45)
@@ -226,12 +225,10 @@ GEM
       addressable (~> 2.3)
     less (2.6.0)
       commonjs (~> 0.2.7)
-    less-rails (3.0.0)
-      actionpack (>= 4.0)
-      grease
+    less-rails (4.0.0)
+      actionpack (>= 4)
       less (~> 2.6.0)
-      sprockets (> 2, < 4)
-      tilt
+      sprockets (>= 2)
     letter_opener (1.6.0)
       launchy (~> 2.2)
     libv8 (3.16.14.19)
@@ -505,7 +502,7 @@ DEPENDENCIES
   jquery-rails
   koala
   launchy
-  less-rails (~> 3.0)
+  less-rails (~> 4.0)
   letter_opener
   meta-tags (~> 2.10)
   momentjs-rails
