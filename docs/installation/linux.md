@@ -5,12 +5,11 @@ In order to work on LocalSupport, please fork and clone the project.
 
 If you need to setup your development environment then [gorails](https://gorails.com/setup/ubuntu/17.10) has an excellent walkthrough.
 
-1. Install Ruby 2.5.0
+1. Install Ruby 2.5.1
 1. Fork the http://github.com/AgileVentures/LocalSupport repo (fork button at top right of github web interface)
 1. Clone the new forked repo onto your dev machine
 1. `cd LocalSupport`
-1. Install Qt webkit headers - see [capybara-webkit gem below](issues.md#capybara-webkit-gem)
-1. Install [GNU IDN Library](http://www.gnu.org/software/libidn/#downloading) version 1.33
+1. Install [GNU IDN Library](https://www.gnu.org/software/libidn/manual/html_node/Downloading-and-Installing.html) version 1.33
   You will need a few basic tools, such as ‘sh’, ‘make’ and ‘cc’.
   ```bash
   wget -q ftp://ftp.gnu.org/gnu/libidn/libidn-1.33.tar.gz
@@ -22,6 +21,8 @@ If you need to setup your development environment then [gorails](https://gorails
   ...
   make install
   ...
+  cd ../../
+  rm libidn-1.33.tar.gz
   ```
 
   The `make install` command may need to be ran with sudo. for ex:
