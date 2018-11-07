@@ -6,14 +6,6 @@ GIT
       addressable
       rails
 
-GIT
-  remote: https://github.com/thoughtbot/capybara-webkit.git
-  revision: 9082b840199896b758cb85c29da703e91ecb8f92
-  specs:
-    capybara-webkit (1.15.0)
-      capybara (>= 2.3, < 4.0)
-      json
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -56,9 +48,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
-    airbrake (7.3.4)
-      airbrake-ruby (~> 2.10)
-    airbrake-ruby (2.11.0)
+    airbrake (7.4.0)
+      airbrake-ruby (~> 2.12)
+    airbrake-ruby (2.12.0)
     arel (8.0.0)
     aruba (0.14.6)
       childprocess (>= 0.6.3, < 0.10.0)
@@ -69,7 +61,7 @@ GEM
       thor (~> 0.19)
     ast (2.4.0)
     backports (3.11.3)
-    bcrypt (3.1.11)
+    bcrypt (3.1.12)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
     bootstrap3-datetimepicker-rails (4.17.47)
@@ -79,13 +71,13 @@ GEM
     buftok (0.2.0)
     builder (3.2.3)
     byebug (10.0.2)
-    capybara (2.18.0)
+    capybara (3.7.2)
       addressable
       mini_mime (>= 0.1.3)
-      nokogiri (>= 1.3.3)
-      rack (>= 1.0.0)
-      rack-test (>= 0.5.4)
-      xpath (>= 2.0, < 4.0)
+      nokogiri (~> 1.8)
+      rack (>= 1.6.0)
+      rack-test (>= 0.6.3)
+      xpath (~> 3.1)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     cliver (0.3.2)
@@ -97,7 +89,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     commonjs (0.2.7)
-    concurrent-ruby (1.0.5)
+    concurrent-ruby (1.1.1)
     contracts (0.16.0)
     cookiejar (0.3.3)
     crack (0.4.3)
@@ -129,13 +121,13 @@ GEM
     cucumber-wire (0.0.1)
     database_cleaner (1.7.0)
     debug_inspector (0.0.3)
-    devise (4.4.3)
+    devise (4.5.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
-    devise_invitable (1.7.4)
+    devise_invitable (1.7.5)
       actionmailer (>= 4.1.0)
       devise (>= 4.0.0)
     diff-lcs (1.3)
@@ -162,10 +154,10 @@ GEM
     eventmachine_httpserver (0.2.1)
     excon (0.60.0)
     execjs (2.7.0)
-    factory_bot (4.10.0)
+    factory_bot (4.11.1)
       activesupport (>= 3.0.0)
-    factory_bot_rails (4.10.0)
-      factory_bot (~> 4.10.0)
+    factory_bot_rails (4.11.1)
+      factory_bot (~> 4.11.1)
       railties (>= 3.0.0)
     faker (1.9.1)
       i18n (>= 0.7)
@@ -186,7 +178,6 @@ GEM
     gherkin (5.1.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    grease (0.3.1)
     hashdiff (0.3.7)
     heroku-api (0.4.3)
       excon (~> 0.45)
@@ -202,19 +193,20 @@ GEM
     http_parser.rb (0.6.0)
     httparty (0.16.2)
       multi_xml (>= 0.5.2)
-    i18n (1.0.1)
+    i18n (1.1.1)
       concurrent-ruby (~> 1.0)
     idn-ruby (0.1.0)
     jar_wrapper (0.1.8)
       zip
-    jasmine (3.1.0)
-      jasmine-core (= 3.1.0)
+    jaro_winkler (1.5.1)
+    jasmine (3.3.0)
+      jasmine-core (~> 3.3.0)
       phantomjs
       rack (>= 1.2.1)
       rake
-    jasmine-core (3.1.0)
+    jasmine-core (3.3.0)
     jasmine-jquery-rails (2.0.3)
-    jbuilder (2.7.0)
+    jbuilder (2.8.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
     jquery-rails (4.3.3)
@@ -233,19 +225,17 @@ GEM
       addressable (~> 2.3)
     less (2.6.0)
       commonjs (~> 0.2.7)
-    less-rails (3.0.0)
-      actionpack (>= 4.0)
-      grease
+    less-rails (4.0.0)
+      actionpack (>= 4)
       less (~> 2.6.0)
-      sprockets (> 2, < 4)
-      tilt
+      sprockets (>= 2)
     letter_opener (1.6.0)
       launchy (~> 2.2)
     libv8 (3.16.14.19)
-    loofah (2.2.2)
+    loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    mail (2.7.0)
+    mail (2.7.1)
       mini_mime (>= 0.1.1)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
@@ -255,7 +245,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mini_mime (1.0.0)
+    mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     momentjs-rails (2.20.1)
@@ -264,26 +254,26 @@ GEM
     multi_test (0.1.2)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    mustermann (1.0.2)
+    mustermann (1.0.3)
     naught (1.1.0)
-    newrelic_rpm (5.2.0.345)
+    newrelic_rpm (5.4.0.347)
     nio4r (2.3.0)
-    nokogiri (1.8.4)
+    nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
     parallel (1.12.1)
     paranoia (2.4.1)
       activerecord (>= 4.0, < 5.3)
-    parser (2.5.0.3)
+    parser (2.5.3.0)
       ast (~> 2.4.0)
-    pg (1.0.0)
+    pg (1.1.3)
     phantomjs (2.1.1.0)
-    poltergeist (1.18.0)
+    poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
-    powerpack (0.1.1)
-    public_suffix (3.0.2)
+    powerpack (0.1.2)
+    public_suffix (3.0.3)
     puffing-billy (1.1.2)
       addressable (~> 2.5)
       em-http-request (~> 1.1, >= 1.1.0)
@@ -292,10 +282,11 @@ GEM
       eventmachine_httpserver
       http_parser.rb (~> 0.6.0)
       multi_json
-    rack (2.0.5)
-    rack-protection (2.0.3)
+    puma (3.12.0)
+    rack (2.0.6)
+    rack-protection (2.0.4)
       rack
-    rack-test (1.0.0)
+    rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rack_session_access (0.2.0)
       builder (>= 2.0.0)
@@ -346,37 +337,40 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    rspec-activemodel-mocks (1.0.3)
+    rspec-activemodel-mocks (1.1.0)
       activemodel (>= 3.0)
       activesupport (>= 3.0)
       rspec-mocks (>= 2.99, < 4.0)
-    rspec-core (3.7.1)
-      rspec-support (~> 3.7.0)
-    rspec-expectations (3.7.0)
+    rspec-core (3.8.0)
+      rspec-support (~> 3.8.0)
+    rspec-expectations (3.8.2)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.7.0)
-    rspec-mocks (3.7.0)
+      rspec-support (~> 3.8.0)
+    rspec-mocks (3.8.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.7.0)
-    rspec-rails (3.7.2)
+      rspec-support (~> 3.8.0)
+    rspec-rails (3.8.1)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
-      rspec-core (~> 3.7.0)
-      rspec-expectations (~> 3.7.0)
-      rspec-mocks (~> 3.7.0)
-      rspec-support (~> 3.7.0)
-    rspec-support (3.7.1)
-    rubocop (0.53.0)
+      rspec-core (~> 3.8.0)
+      rspec-expectations (~> 3.8.0)
+      rspec-mocks (~> 3.8.0)
+      rspec-support (~> 3.8.0)
+    rspec-support (3.8.0)
+    rubocop (0.60.0)
+      jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
-      parser (>= 2.5)
+      parser (>= 2.5, != 2.5.1.1)
       powerpack (~> 0.1)
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
-      unicode-display_width (~> 1.0, >= 1.0.1)
+      unicode-display_width (~> 1.4.0)
     rubocop-git (0.1.3)
       rubocop (>= 0.24.1)
-    ruby-progressbar (1.9.0)
+    rubocop-rspec (1.30.1)
+      rubocop (>= 0.60.0)
+    ruby-progressbar (1.10.0)
     safe_yaml (1.0.4)
     sass (3.5.5)
       sass-listen (~> 4.0.0)
@@ -392,12 +386,12 @@ GEM
     selenium (0.2.11)
       jar_wrapper
     selenium-client (1.2.18)
-    shoulda (3.5.0)
+    shoulda (3.6.0)
       shoulda-context (~> 1.0, >= 1.0.1)
-      shoulda-matchers (>= 1.4.1, < 3.0)
+      shoulda-matchers (~> 3.0)
     shoulda-context (1.2.2)
-    shoulda-matchers (2.8.0)
-      activesupport (>= 3.0.0)
+    shoulda-matchers (3.1.2)
+      activesupport (>= 4.0.0)
     show_me_the_cookies (4.0.0)
       capybara (>= 2, < 4)
     simple_oauth (0.3.1)
@@ -406,10 +400,10 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    sinatra (2.0.3)
+    sinatra (2.0.4)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.3)
+      rack-protection (= 2.0.4)
       tilt (~> 2.0)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
@@ -418,8 +412,8 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sucker_punch (2.0.4)
-      concurrent-ruby (~> 1.0.0)
+    sucker_punch (2.1.1)
+      concurrent-ruby (~> 1.0)
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
       ref
@@ -443,19 +437,19 @@ GEM
       execjs (>= 2.2.2, >= 2.2)
       less-rails (>= 2.5.0)
       railties (>= 3.1)
-    twitter-text (2.1.0)
+    twitter-text (3.0.0)
       idn-ruby
       unf (~> 0.1.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.15)
+    uglifier (4.1.19)
       execjs (>= 0.3.0, < 3)
     underscore-rails (1.8.3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
-    unicode-display_width (1.3.0)
-    unicorn (5.4.0)
+    unicode-display_width (1.4.0)
+    unicorn (5.4.1)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     uri-handler (1.0.2)
@@ -484,13 +478,12 @@ DEPENDENCIES
   bootstrap_sortable_rails (~> 1.11.2)
   breadcrumbs_on_rails
   byebug
-  capybara (~> 2.18)
-  capybara-webkit!
+  capybara (~> 3.7)
   coffee-rails (= 4.2.2)
   cucumber-rails
   cucumber-rails-training-wheels
   database_cleaner (= 1.7.0)
-  devise (~> 4.4)
+  devise (~> 4.5)
   devise_invitable (~> 1.7)
   dotenv-rails
   execjs
@@ -503,23 +496,24 @@ DEPENDENCIES
   geocoder
   heroku-api
   httparty
-  jasmine (~> 3.1)
+  jasmine (~> 3.3)
   jasmine-jquery-rails (= 2.0.3)
   jbuilder
   jquery-rails
   koala
   launchy
-  less-rails (~> 3.0)
+  less-rails (~> 4.0)
   letter_opener
   meta-tags (~> 2.10)
   momentjs-rails
   newrelic_rpm
   nokogiri (~> 1.8)
   paranoia (~> 2.4)
-  pg (~> 1.0)
+  pg (~> 1.1)
   phantomjs
   poltergeist
   puffing-billy (~> 1.1)
+  puma
   rack_session_access
   railroady
   rails (~> 5.1)
@@ -530,6 +524,7 @@ DEPENDENCIES
   rspec-activemodel-mocks
   rspec-rails
   rubocop-git
+  rubocop-rspec (>= 1.28)
   sass-rails (~> 5.0)
   selenium
   selenium-client
@@ -538,12 +533,12 @@ DEPENDENCIES
   simplecov
   sinatra
   sprockets (~> 3.7)
-  sucker_punch (~> 2.0)
+  sucker_punch (~> 2.1)
   therubyracer
   timecop
   twitter (~> 6.2)
   twitter-bootstrap-rails (= 3.2.2)
-  twitter-text (~> 2.1)
+  twitter-text (~> 3.0)
   uglifier (~> 4.1)
   underscore-rails
   unicorn
@@ -553,7 +548,7 @@ DEPENDENCIES
   webmock (~> 3.4)
 
 RUBY VERSION
-   ruby 2.5.0p0
+   ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.1
+   1.16.4

@@ -32,7 +32,7 @@ Then(/^I click on the pending proposed organisations link$/) do
 end
 
 Then (/^I should not see an add organisation link$/) do
-  expect(page).to_not have_link("Add Organisation", new_proposed_organisation_path)
+  expect(page).to_not have_link("Add Organisation", href: new_proposed_organisation_path)
 end
 
 Then(/^I should be on the show page for the organisation that was proposed$/) do

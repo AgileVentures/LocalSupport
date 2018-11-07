@@ -7,12 +7,10 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 require 'capybara'
-require 'capybara-webkit'
 require 'capybara/rspec'
 require 'factory_bot_rails'
 require 'rack_session_access/capybara'
 require 'webmock/rspec'
-Capybara.javascript_driver = :webkit
 
 Billy.configure do |c|
   c.whitelist = ['test.host', 'localhost' , '127.0.0.1']
@@ -74,4 +72,11 @@ RSpec.configure do |config|
   config.include ViewHelpers, :helpers => :views
 
   config.before(:each) { ActionMailer::Base.deliveries.clear }
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
 end

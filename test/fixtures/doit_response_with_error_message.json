@@ -1,0 +1,16 @@
+{
+  "data": {},
+  "links": {
+    "self": {
+      "href": "/v2/opportunities",
+      "title": "You are here."
+    }
+  },
+  "meta": {
+    "code": 401,
+    "error_message": "Unauthorized. Requested: /v2/opportunities",
+    "error_type": "Unauthorized",
+    "tenant": "doittrust",
+    "version": "2016.11.24.0"
+  }
+}

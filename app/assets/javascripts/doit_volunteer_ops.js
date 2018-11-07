@@ -11,13 +11,8 @@ $('.volunteer_ops').ready(function(){
     } else {
       $('#doit_form').hide();
     }
-
-    $('.input-group.date').datepicker({
-      format: 'yyyy-mm-dd',
-      autoclose: true,
-      todayHighlight: true,
-      clearBtn: true
-    });
+  });
+  $('[data-behaviour~=iso-date-picker]').datetimepicker({
+    format: 'YYYY-MM-DD'
   });
 });
-

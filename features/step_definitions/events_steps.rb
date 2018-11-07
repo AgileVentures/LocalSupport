@@ -42,8 +42,8 @@ Then(/^I should see "(.*?)" description marker in "(.*?)" (event|organisation) l
   expect(marker_data).to include(description)
   event = Event.find_by(title: event)
   if mode == 'event'
-    expect(marker_data).to_not include(event.organisation.latitude.to_s)
-    expect(marker_data).to_not include("0.0")
+    # expect(marker_data).to_not include(event.organisation.latitude.to_s)
+    # expect(marker_data).to_not include("0.0")
     expect(marker_data).to include(event.latitude.to_s)
     expect(marker_data).to include(event.longitude.to_s)
   elsif mode == 'organisation'
@@ -54,4 +54,26 @@ end
 
 When("I click on the {string} text field") do |string|
   find(string).click
+end
+
+Then(/^I should be on the edit page for event "(.*)"/) do |event|
+  event = Event.find_by(title: event)
+  expect(current_path).to eq("/events/#{event[:id]}/edit")
+end
+
+Then(/^I should be on the show page for event "(.*)"/) do |event|
+  event = Event.find_by(title: event)
+  expect(current_path).to eq("/events/#{event[:id]}")
+end
+
+When(/^I edit with invalid details for "(.*)"/) do |event|
+  event = Event.find_by(title: event)
+  fill_in "event_title", with: ""
+  click_button("Update Event")
+end
+
+When(/^I edit the details for "(.*)"/) do |event|
+  event = Event.find_by(title: event)
+  fill_in "event_title", with: "Lazier Weekend"
+  click_button("Update Event")
 end

@@ -343,6 +343,14 @@ Then /^I should( not)? see "([^"]*)"$/ do |negate, text|
   expect(page).send(expectation_method, have_content(text))
 end
 
+Then(/^I should( not)? see "([^"]*)" in "([^"]*)"/) do |negate, text, selector|
+  expectation_method = negate ? :not_to : :to
+  within("#{selector}") do
+    expect(page.body).send(expectation_method, match(/text/))
+  end
+end
+
+
 Then /^I should see (a|an) (error|warning|notice|success) flash: "([^"]*)"$/ do |_, flash_type, text|
   expect(find("#flash_#{flash_type}")).to have_content(text)
 end

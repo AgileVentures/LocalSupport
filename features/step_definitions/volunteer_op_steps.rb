@@ -58,7 +58,7 @@ Given(/^I submit a volunteer op to Doit/) do |volunteer_ops_table|
     fill_in 'Postcode', with: volunteer_op['postcode']
     check('check_to_doit')
     select('Help Out Harrow!', from: 'Doit organisation')
-    fill_in 'Advertise start date', with: 10.days.ago.strftime("%F")
+    fill_in 'Advertise start date', with: Date.current.strftime("%F")
     fill_in 'Advertise end date', with: 10.days.from_now.strftime("%F")
     expect_any_instance_of(TwitterApi).to receive(:tweet).once
     click_on 'Create a Volunteer Opportunity'
