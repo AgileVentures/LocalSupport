@@ -11,18 +11,18 @@ class ApplicationController < ActionController::Base
   add_breadcrumb 'home', :root_path
 
   include CustomErrors
-
+  WHITELISTED_CONTROLLERS = %w(
+   application
+   contributors
+   organisations
+   pages
+   volunteer_ops
+   events
+ )
   # To prevent infinite redirect loops, only requests from white listed
   # controllers are available in the "after sign-in redirect" feature
   def white_listed
-    %w(
-        application
-        contributors
-        organisations
-        pages
-        volunteer_ops
-        events
-    )
+    WHITELISTED_CONTROLLERS
   end
   # Devise wiki suggests we need to make this return nil for the
   # after_inactive_signup_path_for to be called in registrationscontroller
