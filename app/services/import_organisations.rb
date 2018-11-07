@@ -2,7 +2,7 @@ class ImportOrganisations
   def self.with(postcode = 'HA2',
                 http = HTTParty,
                 model_klass = Organisation)
-          new(postcode, http, model_klass).send(:run)
+      new(postcode, http, model_klass).send(:run)
   end
 
   private
@@ -20,12 +20,12 @@ class ImportOrganisations
 
   def run 
     @response = http.get "#{HOST}#{HREF}#{@postcode}"
-    return unless content?
+    return unless has_content?
     @charities = JSON.parse @response.body
     find_or_create_charities_and_update
   end
   
-  def content?
+  def has_content?
     @response.body && @response.body != '[]'
   end
   
