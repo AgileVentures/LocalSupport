@@ -20,12 +20,12 @@ class ImportOrganisations
 
   def run 
     @response = http.get "#{HOST}#{HREF}#{@postcode}"
-    return unless has_content?
+    return unless response_has_content?
     @charities = JSON.parse @response.body
     find_or_create_charities_and_update
   end
   
-  def has_content?
+  def response_has_content?
     @response.body && @response.body != '[]'
   end
   
