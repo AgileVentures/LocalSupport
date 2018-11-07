@@ -39,7 +39,7 @@ deploy:
   skip_cleanup: true
   script: bash scripts/deploy.sh
   on:
-    branch: configure_travis_to_push_to_dokku
+    branch: develop
 notifications:
   email: false
   slack:
