@@ -1,0 +1,557 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://production.charity-api.agileventures.org/charities.json?postcode=ha2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 18 Apr 2018 15:02:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Etag:
+      - W/"27b5c0ec5fb9f2fc2058f66e75caa34f"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 932fa136-0c3e-4d32-8eee-a3b087e1163c
+      X-Runtime:
+      - '0.293411'
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"id":3,"regno":"200002","subno":0,"name":"THE ROYAL OPERA HOUSE BENEVOLENT
+        FUND ","orgtype":"R","gd":"DECLARATION OF TRUST DATED 24TH MAY 1961 AS VARIED
+        12TH MAY 1983 AND 16TH OCTOBER 2001;","aob":"NATIONAL","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        CHENG LOO","add1":"133 Exeter Road","add2":"Harrow","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        9PG","phone":"020 72129128 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:02.000Z","updated_at":"2017-11-20T17:53:02.000Z","url":"http://production.charity-api.agileventures.org/charities/3.json"},{"id":9120,"regno":"206585","subno":0,"name":"THE
+        CHARLES GARDNER MEMORIAL FUND ","orgtype":"R","gd":"DECLARATION OF TRUST DATED
+        THE 21ST NOVEMBER 1921 AND CONVEYANCE DATED THE 15TH MARCH 1923;","aob":"ROXETH
+        AND HARROW","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS HELEN JACKSON","add1":"C/O
+        CHRIST CHURCH VICARAGE ","add2":"ROXETH HILL ","add3":"HARROW ","add4":null,"add5":null,"postcode":"HA2
+        0JN ","phone":"02084223241 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:02.000Z","updated_at":"2017-11-20T17:53:02.000Z","url":"http://production.charity-api.agileventures.org/charities/9120.json"},{"id":41000,"regno":"231527","subno":0,"name":"THE
+        ROYAL AIR FORCES ASSOCIATION - HARROW AND DISTRICT BRANCH ","orgtype":"R","gd":"SEE
+        RAFA CORPORATE BODY 226686;","aob":"HARROW AND DISTRICT","aob_defined":null,"nhs":"F","ha_no":null,"corr":"ROYAL
+        AIR FORCES ASSOCIATION","add1":"WINDSOCK CLUB","add2":"EASTCOTE AVENUE","add3":"HARROW","add4":null,"add5":null,"postcode":"HA2
+        8AL","phone":"0208 422 4515","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:03.000Z","updated_at":"2017-11-20T17:53:03.000Z","url":"http://production.charity-api.agileventures.org/charities/41000.json"},{"id":64034,"regno":"250261","subno":0,"name":"KENSAL
+        EVANGELICAL CHURCH ","orgtype":"R","gd":"TRUST DEED EXECUTED 11 NOVEMBER 1914;","aob":"NATIONAL","aob_defined":null,"nhs":"F","ha_no":null,"corr":"PETER
+        DAVIS","add1":"42 CHURCH DRIVE","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        7NS","phone":"02087234893","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:03.000Z","updated_at":"2017-11-20T17:53:03.000Z","url":"http://production.charity-api.agileventures.org/charities/64034.json"},{"id":72527,"regno":"259194","subno":0,"name":"HENRY
+        GEORGE FOUNDATION OF GREAT BRITAIN","orgtype":"R","gd":"MEMORANDUM AND ARTICLES
+        INCORPORATED 23/06/1969. AS AMENDED BY SPECIAL RESOLUTION(S) DATED 17/04/1996.
+        AS AMENDED BY CERTIFICATE OF INCORPORATION ON CHANGE OF NAME DATED 13/02/2013.
+        AS AMENDED BY SPECIAL RESOLUTION(S) DATED 14/09/2013;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MR
+        BARTHOLOMEW DUNLEA","add1":"78 OXLEAY ROAD ","add2":"HARROW ","add3":"MIDDLESEX
+        ","add4":null,"add5":null,"postcode":"HA2 9UY ","phone":null,"fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:03.000Z","updated_at":"2017-11-20T17:53:03.000Z","url":"http://production.charity-api.agileventures.org/charities/72527.json"},{"id":75087,"regno":"262070","subno":0,"name":"HARROW
+        CHORAL SOCIETY ","orgtype":"R","gd":"RULES ADOPTED 11 DECEMBER 1967 AS AMENDED
+        3 OCTOBER 1990;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        Averil Collins","add1":"101 Capthorne Avenue ","add2":"Harrow ","add3":"Middlesex
+        ","add4":null,"add5":null,"postcode":"HA2 9NG ","phone":"0208 866 1504","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/75087.json"},{"id":86862,"regno":"274499","subno":0,"name":"THE
+        STANDING COMMITTEE OF TAMIL SPEAKING PEOPLE ","orgtype":"R","gd":"CONSTITUTION
+        ADOPTED 15TH SEPTEMBER 1977 AND AMENDED 11TH JUNE 1978 AND 1ST JULY 1979;","aob":"NOT
+        DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MR FABIAN SWAMPILLAI","add1":"69
+        Lincoln Road","add2":"Harrow","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        7RH","phone":"02089311744 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/86862.json"},{"id":88144,"regno":"275813","subno":0,"name":"THE
+        HARROW PHILHARMONIC CHOIR ","orgtype":"R","gd":"CONSTITUTION ADOPTED SEPTEMBER
+        1972 AS AMENDED 27TH JUNE 1977;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        HILARY PLACE","add1":"6 ROXETH GREEN AVENUE","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        8AF","phone":"020 8422 9109","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/88144.json"},{"id":88175,"regno":"275846","subno":0,"name":"1ST
+        RAYNERS LANE SCOUT GROUP ","orgtype":"R","gd":"ROYAL CHARTER 4TH JANUARY 1912;","aob":"RAYNERS
+        LANE","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MENG LEE","add1":"2
+        BLENHEIM ROAD","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        7AH","phone":"020 8866 6808","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/88175.json"},{"id":89502,"regno":"277185","subno":0,"name":"ZOROASTRIAN
+        TRUST FUNDS OF EUROPE (INCORPORATED) ","orgtype":"R","gd":"MEMORANDUM AND
+        ARTICLES OF ASSOCIATION INCORPORATED 1ST DECEMBER 1978 AS AMENDED 28TH MARCH
+        1981 AND 11TH AUGUST 1991. AS AMENDED BY SPECIAL RESOLUTION(S) DATED 06 NOV
+        2016;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"ZOROASTRIAN
+        TRUST FUND OF EUROPE","add1":"440 ALEXANDRA AVENUE","add2":"HARROW","add3":"MIDDLESEX","add4":null,"add5":null,"postcode":"HA2
+        9DL","phone":"020 88660765","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/89502.json"},{"id":96169,"regno":"283964","subno":0,"name":"PINNER
+        AND HEADSTONE DISTRICT SCOUT COUNCIL ","orgtype":"R","gd":"ROYAL CHARTER 4TH
+        JANUARY 1912;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MR
+        ROY MCKERRACHER","add1":"34 Elmcroft Crescent","add2":"Harrow","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        6HN","phone":"02088631022 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/96169.json"},{"id":98072,"regno":"285872","subno":0,"name":"VOLUNTEERS
+        FOR RURAL INDIA ","orgtype":"R","gd":"CONSTITUTION ADOPTED 23RD OCTOBER 1982
+        AS AMENDED 15TH OCTOBER 2000 AND 13 SEPTEMBER 2009.;","aob":"INDIA NATIONAL","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        JYOTI SINGH","add1":"12 EASTLEIGH AVENUE","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        0UF","phone":"0208 864 4740","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/98072.json"},{"id":98859,"regno":"286664","subno":0,"name":"WHITMORE
+        HIGH SCHOOL FUND ","orgtype":"R","gd":"DECLARATION OF TRUST DATED 20TH OCTOBER
+        1982;","aob":"NOT DEFINED IN PRACTICE IN THE CATCHMENT AREA OF THE SCHOOL","aob_defined":null,"nhs":"F","ha_no":null,"corr":"WHITMORE
+        HIGH SCHOOL FUND","add1":"Whitmore High School","add2":"Porlock Avenue","add3":"Harrow","add4":null,"add5":null,"postcode":"HA2
+        0AD","phone":"0208 864 7688","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/98859.json"},{"id":100450,"regno":"288272","subno":0,"name":"THE
+        RAGHUVANSHI CHARITABLE TRUST ","orgtype":"R","gd":"TRUST DEED DATED 5 NOVEMBER
+        1983 AS AMENDED BY DEED OF VARIATION DATED 12 JANUARY 1997.;","aob":"NOT DEFINED.","aob_defined":null,"nhs":"F","ha_no":null,"corr":"KAMALESH
+        KANTARIA","add1":"4 CHURCHILL COURT ","add2":"58 STATION ROAD ","add3":"NORTH
+        HARROW ","add4":"MIDDLESEX ","add5":null,"postcode":"HA2 7SA ","phone":null,"fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/100450.json"},{"id":101767,"regno":"289608","subno":0,"name":"THE
+        VANZA SOCIETY OF LONDON ","orgtype":"R","gd":"CONSTITUTION ADOPTED 03/06/1984.
+        AS AMENDED ON 17/05/1997. AS AMENDED ON 26/05/2002. AS AMENDED ON 13/05/2012;","aob":"NOT
+        DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MR KISHOR ODHAVJI
+        DAVDRA","add1":"95 Northumberland Road","add2":"Harrow","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        7RA","phone":"07956296170 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/101767.json"},{"id":102171,"regno":"290016","subno":0,"name":"ISLAMIC
+        AND CULTURAL SOCIETY OF HARROW ","orgtype":"R","gd":"CONSTITUTION AMENDED
+        17TH JUNE 1984;","aob":"HARROW","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MR
+        FAROOQ RIZKI","add1":"21 ALFRISTON AVENUE","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        7DY","phone":"0208 861 4086","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/102171.json"},{"id":102451,"regno":"290298","subno":0,"name":"AID
+        FOR DESTITUTE VICTIMS OF OPPRESSION ","orgtype":"R","gd":"TRUST DEED DATED
+        7TH AUGUST 1984; AMENDED BY SUPPLEMENTAL DEED DATED 13TH NOVEMBER 2002;","aob":"ANY
+        PART OF THE WORLD","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS MATILDA
+        NANTOGMAH","add1":"10 Stuart Avenue ","add2":"South Harrow ","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        9BB ","phone":"0208 864 9231 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/102451.json"},{"id":103348,"regno":"291206","subno":0,"name":"NEWTON
+        FARM NURSERY, INFANT AND JUNIOR SCHOOL FUND","orgtype":"R","gd":"DECLARATION
+        OF TRUST DATED 05/11/1982. AS AMENDED ON 11/05/2010;","aob":"CATCHMENT AREA
+        OF THE SCHOOL","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS HARSHINDAR
+        BUTTAR","add1":"NEWTON FARM SCHOOL","add2":"RAVENSWOOD CRESCENT","add3":"SOUTH
+        HARROW","add4":"MIDDLESEX","add5":null,"postcode":"HA2 9JU","phone":"020 8864
+        8081","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/103348.json"},{"id":105870,"regno":"293753","subno":0,"name":"WHITMORE
+        HIGH SCHOOL ASSOCIATION ","orgtype":"R","gd":"CONSTITUTION ADOPTED 10TH OCTOBER
+        1985;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"THE
+        TREASURER","add1":"Whitmore High School","add2":"Porlock Avenue","add3":"Harrow","add4":null,"add5":null,"postcode":"HA2
+        0AD","phone":"020 8864 7688","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/105870.json"},{"id":106997,"regno":"294910","subno":0,"name":"CHRISTIANS
+        IN SECULAR EMPLOYMENT TRUST ","orgtype":"R","gd":"DECLARATION OF TRUST DATED
+        7TH JULY 1986;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"SUSAN
+        COOPER","add1":"28 HEADSTONE LANE","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        6HG","phone":"020 8863 2094 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/106997.json"},{"id":107022,"regno":"294936","subno":0,"name":"IVOR
+        HUGHES CHARITABLE TRUST ","orgtype":"R","gd":"TRUST DEED DATED 30TH JUNE 1986
+        AS AMENDED BY SUPPLEMENTAL DEED DATED 3RD MAY 1996, AS AMENDED BY SUPPLEMENTAL
+        DEED DATED 25 NOVEMBER 2003.;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        STEPHENIE JEFFERY","add1":"63 Elm Drive","add2":"Harrow","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        7BY","phone":"0208 582 2220 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/107022.json"},{"id":107122,"regno":"295035","subno":0,"name":"GHANA
+        MUSLIM UNION","orgtype":"R","gd":"CONSTITUTION ADOPTED 4TH MAY 1986;","aob":"NOT
+        DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"Issah Ali","add1":"239
+        Eastcote Lane","add2":"Harrow","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        8RR","phone":null,"fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/107122.json"},{"id":111143,"regno":"299200","subno":0,"name":"HARROW
+        PRE-SCHOOL LANGUAGE RESOURCE","orgtype":"R","gd":"CONSTITUTION ADOPTED 14/03/1974.
+        AS AMENDED ON 21/04/1988. AS AMENDED ON 04/12/1990. AS AMENDED ON 02/11/1993.
+        AS AMENDED ON 01/11/1997. AS AMENDED ON 03/11/2008. AS AMENDED ON 14/11/2011;","aob":"CATCHMENT
+        AREA OF SCHOOL","aob_defined":null,"nhs":"F","ha_no":null,"corr":"HARROW PRE-SCHOOL
+        LANGUAGE RESOURCE","add1":"EARLSMEAD PRIMARY SCHOOL ","add2":"ARUNDEL DRIVE
+        ","add3":"HARROW ","add4":null,"add5":null,"postcode":"HA2 8PW ","phone":"0208
+        958 2351 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:05.000Z","updated_at":"2017-11-20T17:53:05.000Z","url":"http://production.charity-api.agileventures.org/charities/111143.json"},{"id":111854,"regno":"299921","subno":0,"name":"UK
+        APOSTOLIC CHURCH OF GOD 7TH DAY ","orgtype":"R","gd":"CONSTITUTION ADOPTED
+        4TH AUGUST 1988;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"DR
+        D M LAKE","add1":"22 EASTLEIGH AVENUE","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        0UF","phone":"0208 864 3355","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:05.000Z","updated_at":"2017-11-20T17:53:05.000Z","url":"http://production.charity-api.agileventures.org/charities/111854.json"},{"id":115060,"regno":"303062","subno":0,"name":"CHRIST
+        CHURCH ROXETH AND HARROW COMPANY OF THE CHURCH LADS'' AND CHURCH GIRLS'' BRIGADE
+        ","orgtype":"R","gd":"NO FORMAL CONSTITUTION BUT GOVERNED BY CONSTITUTION
+        AMENDED 1953 OF CHURCH LADS BRIGADE INCORPORATED AS REPLACED BY CONSTITUTION
+        APPROVED 5 JULY 2004;","aob":"HARROW AND DISTRICT","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MR
+        MARTIN HISSEY","add1":"13 PARK MEAD","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        8NQ","phone":null,"fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:05.000Z","updated_at":"2017-11-20T17:53:05.000Z","url":"http://production.charity-api.agileventures.org/charities/115060.json"},{"id":115062,"regno":"303064","subno":0,"name":"HARROW
+        \u0026 WEMBLEY UNIT 171 OF THE SEA CADET CORPS ","orgtype":"R","gd":"SEA CADET
+        REGULATIONS;","aob":"HARROW AND DISTRICT","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        FIONA TAYLOR","add1":"56 High Worple ","add2":"Rayners Lane ","add3":null,"add4":"Harrow
+        ","add5":null,"postcode":"HA2 9SY ","phone":"02031059099 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:05.000Z","updated_at":"2017-11-20T17:53:05.000Z","url":"http://production.charity-api.agileventures.org/charities/115062.json"},{"id":115581,"regno":"303569","subno":0,"name":"22ND
+        HAMPSTEAD SEA SCOUT GROUP ","orgtype":"R","gd":"LEASE DATED 18TH MARCH, 1953
+        UPON THE TRUSTS OF THE BOY SCOUTS ASSOCIATION TRUST DEED 1935;","aob":"HAMPSTEAD","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MR
+        GARY SANDERS","add1":"34 HOLMDENE AVENUE","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        6HR","phone":"020 8933 7370","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:05.000Z","updated_at":"2017-11-20T17:53:05.000Z","url":"http://production.charity-api.agileventures.org/charities/115581.json"},{"id":115645,"regno":"303633","subno":0,"name":"1ST
+        NORTHOLT SEA SCOUT GROUP ","orgtype":"R","gd":"ASSIGNMENT DATED 26TH JUNE,
+        1967 UPON THE TRUSTS OF THE BOY SCOUTS ASSOCIATION TRUST DEED 1955.;","aob":"NORTHOLT","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        TRUDIE FRITH","add1":"82 WINDSOR CRESCENT","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        8QW","phone":null,"fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:05.000Z","updated_at":"2017-11-20T17:53:05.000Z","url":"http://production.charity-api.agileventures.org/charities/115645.json"},{"id":115697,"regno":"303685","subno":0,"name":"4TH
+        HARROW (COUNTY SCHOOL) BOY SCOUT GROUP ","orgtype":"R","gd":"LEASE DATED 4/11/71;","aob":"HARROW
+        AND THE NEIGHBOURHOOD","aob_defined":null,"nhs":"F","ha_no":null,"corr":"DR
+        ANDREW WRIGHT","add1":"32 DUNSTER WAY","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        9PN","phone":"02084236441","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:05.000Z","updated_at":"2017-11-20T17:53:05.000Z","url":"http://production.charity-api.agileventures.org/charities/115697.json"},{"id":115700,"regno":"303688","subno":0,"name":"HATCH
+        END DISTRICT GIRL GUIDE ASSOCIATION ","orgtype":"R","gd":"LAND CERTIFICATE
+        TRANSFER DATED 25TH MAY 1967 UPON THE TRUSTS OF THE GIRL GUIDES ASSOCIATION
+        TRUST DEED OF 1938.;","aob":"HATCH END","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        Anne Margaret Gloor","add1":"53 The Ridgeway ","add2":"North Harrow ","add3":"HARROW
+        ","add4":null,"add5":null,"postcode":"HA2 7QL ","phone":"020 8866 8894 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:05.000Z","updated_at":"2017-11-20T17:53:05.000Z","url":"http://production.charity-api.agileventures.org/charities/115700.json"},{"id":115702,"regno":"303690","subno":0,"name":"4TH
+        HEADSTONE(ST ALBAN''S OWN) SCOUT GROUP ","orgtype":"R","gd":"ROYAL CHARTER
+        DATED 4 JANUARY 1912AS AMENDED BY SUPLEMENTAL CHARTERS DATED 28 MARCH 1949,18
+        FEBRUARY 1959,5 MAY 1967 AND 19 JULY 1991;","aob":"FORMER HEADSTONE AND HARROW,NOW
+        KNOWN AS NORTH HARROW","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MR
+        MARK NICHOLAS OUTTRIM","add1":"72 WOODLANDS","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        6EW","phone":"02088663907","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:05.000Z","updated_at":"2017-11-20T17:53:05.000Z","url":"http://production.charity-api.agileventures.org/charities/115702.json"},{"id":131391,"regno":"327389","subno":0,"name":"THE
+        ARMENIAN RELIEF SOCIETY OF GREAT BRITAIN TRUST ","orgtype":"R","gd":"DECLARATION
+        OF TRUST DTED 30TH JANUARY 1987;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"ARMENIAN
+        RELIEF SOCIETY OF GREAT BRITAIN","add1":"19 Somervell Road","add2":"Harrow","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        8TY","phone":null,"fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:05.000Z","updated_at":"2017-11-20T17:53:05.000Z","url":"http://production.charity-api.agileventures.org/charities/131391.json"},{"id":169567,"regno":"801044","subno":0,"name":"UNITED
+        ANGLO CARIBBEAN SOCIETY ","orgtype":"R","gd":"CONSTITUTION ADOPTED 13TH FEBRUARY
+        1989 AS AMENDED 11TH MARCH 1991 AND 29TH JUNE 1992;","aob":"LONDON BOROUGH
+        OF EALING AND SURROUNDING BOROUGHS","aob_defined":null,"nhs":"F","ha_no":null,"corr":"JOHN
+        SWAN","add1":"413 NORTHOLT ROAD","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        8JQ","phone":"020 8248 3063","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:06.000Z","updated_at":"2017-11-20T17:53:06.000Z","url":"http://production.charity-api.agileventures.org/charities/169567.json"},{"id":169858,"regno":"801346","subno":0,"name":"THE
+        HARROW FOLK DANCE CLUB ","orgtype":"R","gd":"CONSTITUTION ADOPTED 5TH JUNE
+        1989, AS AMENDED ON THE 4TH JUNE 1990, 12 JUNE 2006 AND 30 OCTOBER 2006;","aob":"THE
+        LONDON BOROUGH OF HARROW","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MR
+        ROYSTON MARTIN","add1":"57 WAVERLEY ROAD","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        9RG","phone":"020 8868 7526","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:06.000Z","updated_at":"2017-11-20T17:53:06.000Z","url":"http://production.charity-api.agileventures.org/charities/169858.json"},{"id":174728,"regno":"1001548","subno":0,"name":"ST
+        ALBANS PRE-SCHOOL PLAYGROUP HARROW ","orgtype":"R","gd":"CONSTITUTION ADOPTED
+        21ST MAY 1975 AS AMENDED BY RESOLUTION DATED 3 DECEMBER 2009 AND 22 APRIL
+        2010;","aob":"NORTH HARROW","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        MANNI PAHWA","add1":"St Albans Preschool Playgroup ","add2":"The Parish Church
+        Of St Alban ","add3":"Norwood Drive ","add4":"North Harrow ","add5":null,"postcode":"HA2
+        7PF ","phone":null,"fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:06.000Z","updated_at":"2017-11-20T17:53:06.000Z","url":"http://production.charity-api.agileventures.org/charities/174728.json"},{"id":190655,"regno":"1017478","subno":0,"name":"9TH
+        ROXETH (ST ANDREWS) SCOUT GROUP ","orgtype":"R","gd":"ROYAL CHARTER GRANTED
+        04/01/1912;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"Tony
+        Racher","add1":"159 TORBAY ROAD","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        9QF","phone":"02088649077 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:07.000Z","updated_at":"2017-11-20T17:53:07.000Z","url":"http://production.charity-api.agileventures.org/charities/190655.json"},{"id":193894,"regno":"1020710","subno":0,"name":"THE
+        FRIENDS OF NEWTON FARM SCHOOL PSFA ","orgtype":"R","gd":"CONSTITUTION ADOPTED
+        26TH SEPTEMBER 1991 AS AMENDED 6TH OCTOBER 1992.;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        SUSAN JEFFERIES","add1":"NEWTON FARM NURSERY,INFANT \u0026 JUNIOR","add2":"RAVENSWOOD
+        CRESCENT","add3":"HARROW","add4":null,"add5":null,"postcode":"HA2 9JU","phone":"020
+        8864 8081","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:07.000Z","updated_at":"2017-11-20T17:53:07.000Z","url":"http://production.charity-api.agileventures.org/charities/193894.json"},{"id":193939,"regno":"1020755","subno":0,"name":"1ST
+        ROXETH SCOUT GROUP SOUTH HARROW BAPTIST CHURCH ","orgtype":"R","gd":"ROYAL
+        CHARTER GRANTED 04/01/1912;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"1ST
+        ROXETH SCOUT GROUP","add1":"SOUTH HARROW BAPTIST CHURCH","add2":"270 NORTHOLT
+        ROAD","add3":"HARROW","add4":null,"add5":null,"postcode":"HA2 8EB","phone":null,"fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:07.000Z","updated_at":"2017-11-20T17:53:07.000Z","url":"http://production.charity-api.agileventures.org/charities/193939.json"},{"id":196894,"regno":"1023711","subno":0,"name":"PARENTS
+        AND FRIENDS OF LONGFIELD SCHOOLS ","orgtype":"R","gd":"CONSTITUTION ADOPTED
+        22 SEPTEMBER 1992 AS AMENDED 15 JUNE 1993;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        Louise Lepps","add1":"43 Chester Drive","add2":"North Harrow","add3":"Harrow","add4":null,"add5":null,"postcode":"HA2
+        7PX","phone":"0208 723 1597","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:07.000Z","updated_at":"2017-11-20T17:53:07.000Z","url":"http://production.charity-api.agileventures.org/charities/196894.json"},{"id":199599,"regno":"1026425","subno":0,"name":"MALAWI
+        HINDU ASSOCIATION (UK) ","orgtype":"R","gd":"CONSTITUTION ADOPTED 4 NOVEMBER
+        1990 AS AMENDED 21 MARCH 1993;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"ANOLA
+        SAVAJANI","add1":"67 ALFRISTON AVENUE","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        7EA","phone":"0208 863 2542","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:07.000Z","updated_at":"2017-11-20T17:53:07.000Z","url":"http://production.charity-api.agileventures.org/charities/199599.json"},{"id":202938,"regno":"1029770","subno":0,"name":"STEPPING
+        STONES PRE-SCHOOL (HARROW) ","orgtype":"R","gd":"CONSTITUTION ADOPTED 12 JULY
+        1993 AMENDED ON 14 NOVEMBER 2005;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        DONNA HOARE","add1":"40 Ashbourne Avenue","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        0JS","phone":"07985421439","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:07.000Z","updated_at":"2017-11-20T17:53:07.000Z","url":"http://production.charity-api.agileventures.org/charities/202938.json"},{"id":203083,"regno":"1029915","subno":0,"name":"LADYBIRD
+        PRE-SCHOOL NURSERY ","orgtype":"R","gd":"CONSTITUTION ADOPTED 29 NOVEMBER
+        1993 AS AMENDED 4 NOVEMBER 1996.;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        JANE SPENCER-DAVIS","add1":"23 EASTCOTE LANE","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        8DE","phone":"0208 423 7780","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:07.000Z","updated_at":"2017-11-20T17:53:07.000Z","url":"http://production.charity-api.agileventures.org/charities/203083.json"},{"id":204707,"regno":"1031513","subno":0,"name":"FIRST
+        HEADSTONE SCOUT GROUP ","orgtype":"R","gd":"ROYAL CHARTER 4TH JANUARY 1912;","aob":"NOT
+        DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MR Tony Watts","add1":"7
+        PARKFIELD GARDENS","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        6JR","phone":null,"fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:07.000Z","updated_at":"2017-11-20T17:53:07.000Z","url":"http://production.charity-api.agileventures.org/charities/204707.json"},{"id":207541,"regno":"1034353","subno":0,"name":"RUISLIP-NORTHWOOD
+        FESTIVAL ASSOCIATION ","orgtype":"R","gd":"MODEL CONSTITUTION ADOPTED 29 NOVEMBER
+        1993.;","aob":"NOT DEFINED - BUT IN PRACTICE LONDON BOROUGHS OF HILLINGDON","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        BRENDA REED","add1":"8 LEAMINGTON CRESCENT","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        9HQ","phone":"020 8422 1145","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:07.000Z","updated_at":"2017-11-20T17:53:07.000Z","url":"http://production.charity-api.agileventures.org/charities/207541.json"},{"id":210437,"regno":"1037254","subno":0,"name":"SRI
+        AUROBINDO SOCIETY (UK) ","orgtype":"R","gd":"TRUST DEED DATED 29 MARCH 1994;","aob":"NOT
+        DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"SRI AUROBINDO SOCIETY
+        UK","add1":"149 EASTCOTE LANE","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        8RR","phone":"0208 422 9920","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:07.000Z","updated_at":"2017-11-20T17:53:07.000Z","url":"http://production.charity-api.agileventures.org/charities/210437.json"},{"id":213100,"regno":"1039930","subno":0,"name":"THE
+        ROYAL ANGLIAN REGIMENT MUSEUM","orgtype":"R","gd":"SCHEME DATED 18/08/1998.
+        AS AMENDED BY RESOLUTION DATED 19/09/2013. AS AMENDED BY RESOLUTION DATED
+        11/03/2015;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MAJOR
+        P H WILLIAMSON MBE","add1":"Flat 3, Holly Lodge ","add2":"58 Brooke Avenue
+        ","add3":"Harrow ","add4":null,"add5":null,"postcode":"HA2 0NF ","phone":"020
+        8423 8031","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:07.000Z","updated_at":"2017-11-20T17:53:07.000Z","url":"http://production.charity-api.agileventures.org/charities/213100.json"},{"id":215215,"regno":"1042051","subno":0,"name":"ALPHA
+        AND OMEGA CHRISTIAN FELLOWSHIP OUTREACH MINISTRIES ","orgtype":"R","gd":"DECLARATION
+        OF TRUST DATED 20TH SEPTEMBER 1994;","aob":"NOT DEFINED IN PRACTICE BRENT","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MS
+        Cherice Walford","add1":"60 Yeading Avenue ","add2":"HARROW ","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        9RN ","phone":"02089039175 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:08.000Z","updated_at":"2017-11-20T17:53:08.000Z","url":"http://production.charity-api.agileventures.org/charities/215215.json"},{"id":216026,"regno":"1042865","subno":0,"name":"ST
+        ANSELM''S SCHOOL STAFF AND PARENTS'' ASSOCIATION ","orgtype":"R","gd":"CONSTITUTION
+        ADOPTED 19 OCTOBER 1994;","aob":"NOT DEFINED - IN PRACTICE HARROW","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        ANNE MONAHAN","add1":"133 NORTHUMBERLAND ROAD","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        7RB","phone":"0208 422 1272","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:08.000Z","updated_at":"2017-11-20T17:53:08.000Z","url":"http://production.charity-api.agileventures.org/charities/216026.json"},{"id":218626,"regno":"1045474","subno":0,"name":"THE
+        ESSEX REGIMENT MUSEUM ","orgtype":"R","gd":"TRUST DEED DATED 31/12/1994. AS
+        AMENDED BY RESOLUTION DATED 24/04/2006. AS AMENDED BY RESOLUTION DATED 06/09/2012.
+        AS AMENDED BY RESOLUTION DATED 19/05/2015. AS AMENDED BY RESOLUTION DATED
+        17/11/2015. AS AMENDED BY RESOLUTION DATED 14 NOV 2016;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MAJOR
+        P H WILLIAMSON MBE","add1":"Flat 3, Holly Lodge ","add2":"58 Brooke Avenue
+        ","add3":"Harrow ","add4":null,"add5":null,"postcode":"HA2 0NF ","phone":"020
+        8423 8031","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:08.000Z","updated_at":"2017-11-20T17:53:08.000Z","url":"http://production.charity-api.agileventures.org/charities/218626.json"},{"id":219770,"regno":"1046636","subno":0,"name":"THE
+        FRIENDS OF ST JOHN FISHER SCHOOL ","orgtype":"R","gd":"CONSTITUTION ADOPTED
+        20TH OCTOBER 1994;","aob":"NOT DEFINED ,IN PRACTICE PINNER,MIDDLESEX","aob_defined":null,"nhs":"F","ha_no":null,"corr":"Angela
+        Mullin","add1":"20 South Way ","add2":"HARROW ","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        6EP ","phone":"07976180001 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:08.000Z","updated_at":"2017-11-20T17:53:08.000Z","url":"http://production.charity-api.agileventures.org/charities/219770.json"}]'
+    http_version: 
+  recorded_at: Wed, 18 Apr 2018 15:02:37 GMT
+- request:
+    method: get
+    uri: http://production.charity-api.agileventures.org/charities.json?postcode=HA2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 14 Jun 2018 14:15:05 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Etag:
+      - W/"27b5c0ec5fb9f2fc2058f66e75caa34f"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - ebd6c785-2215-45bb-9841-e19d99b5fd8e
+      X-Runtime:
+      - '0.323645'
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"id":3,"regno":"200002","subno":0,"name":"THE ROYAL OPERA HOUSE BENEVOLENT
+        FUND ","orgtype":"R","gd":"DECLARATION OF TRUST DATED 24TH MAY 1961 AS VARIED
+        12TH MAY 1983 AND 16TH OCTOBER 2001;","aob":"NATIONAL","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        CHENG LOO","add1":"133 Exeter Road","add2":"Harrow","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        9PG","phone":"020 72129128 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:02.000Z","updated_at":"2017-11-20T17:53:02.000Z","url":"http://production.charity-api.agileventures.org/charities/3.json"},{"id":9120,"regno":"206585","subno":0,"name":"THE
+        CHARLES GARDNER MEMORIAL FUND ","orgtype":"R","gd":"DECLARATION OF TRUST DATED
+        THE 21ST NOVEMBER 1921 AND CONVEYANCE DATED THE 15TH MARCH 1923;","aob":"ROXETH
+        AND HARROW","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS HELEN JACKSON","add1":"C/O
+        CHRIST CHURCH VICARAGE ","add2":"ROXETH HILL ","add3":"HARROW ","add4":null,"add5":null,"postcode":"HA2
+        0JN ","phone":"02084223241 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:02.000Z","updated_at":"2017-11-20T17:53:02.000Z","url":"http://production.charity-api.agileventures.org/charities/9120.json"},{"id":41000,"regno":"231527","subno":0,"name":"THE
+        ROYAL AIR FORCES ASSOCIATION - HARROW AND DISTRICT BRANCH ","orgtype":"R","gd":"SEE
+        RAFA CORPORATE BODY 226686;","aob":"HARROW AND DISTRICT","aob_defined":null,"nhs":"F","ha_no":null,"corr":"ROYAL
+        AIR FORCES ASSOCIATION","add1":"WINDSOCK CLUB","add2":"EASTCOTE AVENUE","add3":"HARROW","add4":null,"add5":null,"postcode":"HA2
+        8AL","phone":"0208 422 4515","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:03.000Z","updated_at":"2017-11-20T17:53:03.000Z","url":"http://production.charity-api.agileventures.org/charities/41000.json"},{"id":64034,"regno":"250261","subno":0,"name":"KENSAL
+        EVANGELICAL CHURCH ","orgtype":"R","gd":"TRUST DEED EXECUTED 11 NOVEMBER 1914;","aob":"NATIONAL","aob_defined":null,"nhs":"F","ha_no":null,"corr":"PETER
+        DAVIS","add1":"42 CHURCH DRIVE","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        7NS","phone":"02087234893","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:03.000Z","updated_at":"2017-11-20T17:53:03.000Z","url":"http://production.charity-api.agileventures.org/charities/64034.json"},{"id":72527,"regno":"259194","subno":0,"name":"HENRY
+        GEORGE FOUNDATION OF GREAT BRITAIN","orgtype":"R","gd":"MEMORANDUM AND ARTICLES
+        INCORPORATED 23/06/1969. AS AMENDED BY SPECIAL RESOLUTION(S) DATED 17/04/1996.
+        AS AMENDED BY CERTIFICATE OF INCORPORATION ON CHANGE OF NAME DATED 13/02/2013.
+        AS AMENDED BY SPECIAL RESOLUTION(S) DATED 14/09/2013;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MR
+        BARTHOLOMEW DUNLEA","add1":"78 OXLEAY ROAD ","add2":"HARROW ","add3":"MIDDLESEX
+        ","add4":null,"add5":null,"postcode":"HA2 9UY ","phone":null,"fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:03.000Z","updated_at":"2017-11-20T17:53:03.000Z","url":"http://production.charity-api.agileventures.org/charities/72527.json"},{"id":75087,"regno":"262070","subno":0,"name":"HARROW
+        CHORAL SOCIETY ","orgtype":"R","gd":"RULES ADOPTED 11 DECEMBER 1967 AS AMENDED
+        3 OCTOBER 1990;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        Averil Collins","add1":"101 Capthorne Avenue ","add2":"Harrow ","add3":"Middlesex
+        ","add4":null,"add5":null,"postcode":"HA2 9NG ","phone":"0208 866 1504","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/75087.json"},{"id":86862,"regno":"274499","subno":0,"name":"THE
+        STANDING COMMITTEE OF TAMIL SPEAKING PEOPLE ","orgtype":"R","gd":"CONSTITUTION
+        ADOPTED 15TH SEPTEMBER 1977 AND AMENDED 11TH JUNE 1978 AND 1ST JULY 1979;","aob":"NOT
+        DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MR FABIAN SWAMPILLAI","add1":"69
+        Lincoln Road","add2":"Harrow","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        7RH","phone":"02089311744 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/86862.json"},{"id":88144,"regno":"275813","subno":0,"name":"THE
+        HARROW PHILHARMONIC CHOIR ","orgtype":"R","gd":"CONSTITUTION ADOPTED SEPTEMBER
+        1972 AS AMENDED 27TH JUNE 1977;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        HILARY PLACE","add1":"6 ROXETH GREEN AVENUE","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        8AF","phone":"020 8422 9109","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/88144.json"},{"id":88175,"regno":"275846","subno":0,"name":"1ST
+        RAYNERS LANE SCOUT GROUP ","orgtype":"R","gd":"ROYAL CHARTER 4TH JANUARY 1912;","aob":"RAYNERS
+        LANE","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MENG LEE","add1":"2
+        BLENHEIM ROAD","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        7AH","phone":"020 8866 6808","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/88175.json"},{"id":89502,"regno":"277185","subno":0,"name":"ZOROASTRIAN
+        TRUST FUNDS OF EUROPE (INCORPORATED) ","orgtype":"R","gd":"MEMORANDUM AND
+        ARTICLES OF ASSOCIATION INCORPORATED 1ST DECEMBER 1978 AS AMENDED 28TH MARCH
+        1981 AND 11TH AUGUST 1991. AS AMENDED BY SPECIAL RESOLUTION(S) DATED 06 NOV
+        2016;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"ZOROASTRIAN
+        TRUST FUND OF EUROPE","add1":"440 ALEXANDRA AVENUE","add2":"HARROW","add3":"MIDDLESEX","add4":null,"add5":null,"postcode":"HA2
+        9DL","phone":"020 88660765","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/89502.json"},{"id":96169,"regno":"283964","subno":0,"name":"PINNER
+        AND HEADSTONE DISTRICT SCOUT COUNCIL ","orgtype":"R","gd":"ROYAL CHARTER 4TH
+        JANUARY 1912;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MR
+        ROY MCKERRACHER","add1":"34 Elmcroft Crescent","add2":"Harrow","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        6HN","phone":"02088631022 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/96169.json"},{"id":98072,"regno":"285872","subno":0,"name":"VOLUNTEERS
+        FOR RURAL INDIA ","orgtype":"R","gd":"CONSTITUTION ADOPTED 23RD OCTOBER 1982
+        AS AMENDED 15TH OCTOBER 2000 AND 13 SEPTEMBER 2009.;","aob":"INDIA NATIONAL","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        JYOTI SINGH","add1":"12 EASTLEIGH AVENUE","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        0UF","phone":"0208 864 4740","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/98072.json"},{"id":98859,"regno":"286664","subno":0,"name":"WHITMORE
+        HIGH SCHOOL FUND ","orgtype":"R","gd":"DECLARATION OF TRUST DATED 20TH OCTOBER
+        1982;","aob":"NOT DEFINED IN PRACTICE IN THE CATCHMENT AREA OF THE SCHOOL","aob_defined":null,"nhs":"F","ha_no":null,"corr":"WHITMORE
+        HIGH SCHOOL FUND","add1":"Whitmore High School","add2":"Porlock Avenue","add3":"Harrow","add4":null,"add5":null,"postcode":"HA2
+        0AD","phone":"0208 864 7688","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/98859.json"},{"id":100450,"regno":"288272","subno":0,"name":"THE
+        RAGHUVANSHI CHARITABLE TRUST ","orgtype":"R","gd":"TRUST DEED DATED 5 NOVEMBER
+        1983 AS AMENDED BY DEED OF VARIATION DATED 12 JANUARY 1997.;","aob":"NOT DEFINED.","aob_defined":null,"nhs":"F","ha_no":null,"corr":"KAMALESH
+        KANTARIA","add1":"4 CHURCHILL COURT ","add2":"58 STATION ROAD ","add3":"NORTH
+        HARROW ","add4":"MIDDLESEX ","add5":null,"postcode":"HA2 7SA ","phone":null,"fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/100450.json"},{"id":101767,"regno":"289608","subno":0,"name":"THE
+        VANZA SOCIETY OF LONDON ","orgtype":"R","gd":"CONSTITUTION ADOPTED 03/06/1984.
+        AS AMENDED ON 17/05/1997. AS AMENDED ON 26/05/2002. AS AMENDED ON 13/05/2012;","aob":"NOT
+        DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MR KISHOR ODHAVJI
+        DAVDRA","add1":"95 Northumberland Road","add2":"Harrow","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        7RA","phone":"07956296170 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/101767.json"},{"id":102171,"regno":"290016","subno":0,"name":"ISLAMIC
+        AND CULTURAL SOCIETY OF HARROW ","orgtype":"R","gd":"CONSTITUTION AMENDED
+        17TH JUNE 1984;","aob":"HARROW","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MR
+        FAROOQ RIZKI","add1":"21 ALFRISTON AVENUE","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        7DY","phone":"0208 861 4086","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/102171.json"},{"id":102451,"regno":"290298","subno":0,"name":"AID
+        FOR DESTITUTE VICTIMS OF OPPRESSION ","orgtype":"R","gd":"TRUST DEED DATED
+        7TH AUGUST 1984; AMENDED BY SUPPLEMENTAL DEED DATED 13TH NOVEMBER 2002;","aob":"ANY
+        PART OF THE WORLD","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS MATILDA
+        NANTOGMAH","add1":"10 Stuart Avenue ","add2":"South Harrow ","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        9BB ","phone":"0208 864 9231 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/102451.json"},{"id":103348,"regno":"291206","subno":0,"name":"NEWTON
+        FARM NURSERY, INFANT AND JUNIOR SCHOOL FUND","orgtype":"R","gd":"DECLARATION
+        OF TRUST DATED 05/11/1982. AS AMENDED ON 11/05/2010;","aob":"CATCHMENT AREA
+        OF THE SCHOOL","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS HARSHINDAR
+        BUTTAR","add1":"NEWTON FARM SCHOOL","add2":"RAVENSWOOD CRESCENT","add3":"SOUTH
+        HARROW","add4":"MIDDLESEX","add5":null,"postcode":"HA2 9JU","phone":"020 8864
+        8081","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/103348.json"},{"id":105870,"regno":"293753","subno":0,"name":"WHITMORE
+        HIGH SCHOOL ASSOCIATION ","orgtype":"R","gd":"CONSTITUTION ADOPTED 10TH OCTOBER
+        1985;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"THE
+        TREASURER","add1":"Whitmore High School","add2":"Porlock Avenue","add3":"Harrow","add4":null,"add5":null,"postcode":"HA2
+        0AD","phone":"020 8864 7688","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/105870.json"},{"id":106997,"regno":"294910","subno":0,"name":"CHRISTIANS
+        IN SECULAR EMPLOYMENT TRUST ","orgtype":"R","gd":"DECLARATION OF TRUST DATED
+        7TH JULY 1986;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"SUSAN
+        COOPER","add1":"28 HEADSTONE LANE","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        6HG","phone":"020 8863 2094 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/106997.json"},{"id":107022,"regno":"294936","subno":0,"name":"IVOR
+        HUGHES CHARITABLE TRUST ","orgtype":"R","gd":"TRUST DEED DATED 30TH JUNE 1986
+        AS AMENDED BY SUPPLEMENTAL DEED DATED 3RD MAY 1996, AS AMENDED BY SUPPLEMENTAL
+        DEED DATED 25 NOVEMBER 2003.;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        STEPHENIE JEFFERY","add1":"63 Elm Drive","add2":"Harrow","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        7BY","phone":"0208 582 2220 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/107022.json"},{"id":107122,"regno":"295035","subno":0,"name":"GHANA
+        MUSLIM UNION","orgtype":"R","gd":"CONSTITUTION ADOPTED 4TH MAY 1986;","aob":"NOT
+        DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"Issah Ali","add1":"239
+        Eastcote Lane","add2":"Harrow","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        8RR","phone":null,"fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:04.000Z","updated_at":"2017-11-20T17:53:04.000Z","url":"http://production.charity-api.agileventures.org/charities/107122.json"},{"id":111143,"regno":"299200","subno":0,"name":"HARROW
+        PRE-SCHOOL LANGUAGE RESOURCE","orgtype":"R","gd":"CONSTITUTION ADOPTED 14/03/1974.
+        AS AMENDED ON 21/04/1988. AS AMENDED ON 04/12/1990. AS AMENDED ON 02/11/1993.
+        AS AMENDED ON 01/11/1997. AS AMENDED ON 03/11/2008. AS AMENDED ON 14/11/2011;","aob":"CATCHMENT
+        AREA OF SCHOOL","aob_defined":null,"nhs":"F","ha_no":null,"corr":"HARROW PRE-SCHOOL
+        LANGUAGE RESOURCE","add1":"EARLSMEAD PRIMARY SCHOOL ","add2":"ARUNDEL DRIVE
+        ","add3":"HARROW ","add4":null,"add5":null,"postcode":"HA2 8PW ","phone":"0208
+        958 2351 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:05.000Z","updated_at":"2017-11-20T17:53:05.000Z","url":"http://production.charity-api.agileventures.org/charities/111143.json"},{"id":111854,"regno":"299921","subno":0,"name":"UK
+        APOSTOLIC CHURCH OF GOD 7TH DAY ","orgtype":"R","gd":"CONSTITUTION ADOPTED
+        4TH AUGUST 1988;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"DR
+        D M LAKE","add1":"22 EASTLEIGH AVENUE","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        0UF","phone":"0208 864 3355","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:05.000Z","updated_at":"2017-11-20T17:53:05.000Z","url":"http://production.charity-api.agileventures.org/charities/111854.json"},{"id":115060,"regno":"303062","subno":0,"name":"CHRIST
+        CHURCH ROXETH AND HARROW COMPANY OF THE CHURCH LADS'' AND CHURCH GIRLS'' BRIGADE
+        ","orgtype":"R","gd":"NO FORMAL CONSTITUTION BUT GOVERNED BY CONSTITUTION
+        AMENDED 1953 OF CHURCH LADS BRIGADE INCORPORATED AS REPLACED BY CONSTITUTION
+        APPROVED 5 JULY 2004;","aob":"HARROW AND DISTRICT","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MR
+        MARTIN HISSEY","add1":"13 PARK MEAD","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        8NQ","phone":null,"fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:05.000Z","updated_at":"2017-11-20T17:53:05.000Z","url":"http://production.charity-api.agileventures.org/charities/115060.json"},{"id":115062,"regno":"303064","subno":0,"name":"HARROW
+        \u0026 WEMBLEY UNIT 171 OF THE SEA CADET CORPS ","orgtype":"R","gd":"SEA CADET
+        REGULATIONS;","aob":"HARROW AND DISTRICT","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        FIONA TAYLOR","add1":"56 High Worple ","add2":"Rayners Lane ","add3":null,"add4":"Harrow
+        ","add5":null,"postcode":"HA2 9SY ","phone":"02031059099 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:05.000Z","updated_at":"2017-11-20T17:53:05.000Z","url":"http://production.charity-api.agileventures.org/charities/115062.json"},{"id":115581,"regno":"303569","subno":0,"name":"22ND
+        HAMPSTEAD SEA SCOUT GROUP ","orgtype":"R","gd":"LEASE DATED 18TH MARCH, 1953
+        UPON THE TRUSTS OF THE BOY SCOUTS ASSOCIATION TRUST DEED 1935;","aob":"HAMPSTEAD","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MR
+        GARY SANDERS","add1":"34 HOLMDENE AVENUE","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        6HR","phone":"020 8933 7370","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:05.000Z","updated_at":"2017-11-20T17:53:05.000Z","url":"http://production.charity-api.agileventures.org/charities/115581.json"},{"id":115645,"regno":"303633","subno":0,"name":"1ST
+        NORTHOLT SEA SCOUT GROUP ","orgtype":"R","gd":"ASSIGNMENT DATED 26TH JUNE,
+        1967 UPON THE TRUSTS OF THE BOY SCOUTS ASSOCIATION TRUST DEED 1955.;","aob":"NORTHOLT","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        TRUDIE FRITH","add1":"82 WINDSOR CRESCENT","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        8QW","phone":null,"fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:05.000Z","updated_at":"2017-11-20T17:53:05.000Z","url":"http://production.charity-api.agileventures.org/charities/115645.json"},{"id":115697,"regno":"303685","subno":0,"name":"4TH
+        HARROW (COUNTY SCHOOL) BOY SCOUT GROUP ","orgtype":"R","gd":"LEASE DATED 4/11/71;","aob":"HARROW
+        AND THE NEIGHBOURHOOD","aob_defined":null,"nhs":"F","ha_no":null,"corr":"DR
+        ANDREW WRIGHT","add1":"32 DUNSTER WAY","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        9PN","phone":"02084236441","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:05.000Z","updated_at":"2017-11-20T17:53:05.000Z","url":"http://production.charity-api.agileventures.org/charities/115697.json"},{"id":115700,"regno":"303688","subno":0,"name":"HATCH
+        END DISTRICT GIRL GUIDE ASSOCIATION ","orgtype":"R","gd":"LAND CERTIFICATE
+        TRANSFER DATED 25TH MAY 1967 UPON THE TRUSTS OF THE GIRL GUIDES ASSOCIATION
+        TRUST DEED OF 1938.;","aob":"HATCH END","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        Anne Margaret Gloor","add1":"53 The Ridgeway ","add2":"North Harrow ","add3":"HARROW
+        ","add4":null,"add5":null,"postcode":"HA2 7QL ","phone":"020 8866 8894 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:05.000Z","updated_at":"2017-11-20T17:53:05.000Z","url":"http://production.charity-api.agileventures.org/charities/115700.json"},{"id":115702,"regno":"303690","subno":0,"name":"4TH
+        HEADSTONE(ST ALBAN''S OWN) SCOUT GROUP ","orgtype":"R","gd":"ROYAL CHARTER
+        DATED 4 JANUARY 1912AS AMENDED BY SUPLEMENTAL CHARTERS DATED 28 MARCH 1949,18
+        FEBRUARY 1959,5 MAY 1967 AND 19 JULY 1991;","aob":"FORMER HEADSTONE AND HARROW,NOW
+        KNOWN AS NORTH HARROW","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MR
+        MARK NICHOLAS OUTTRIM","add1":"72 WOODLANDS","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        6EW","phone":"02088663907","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:05.000Z","updated_at":"2017-11-20T17:53:05.000Z","url":"http://production.charity-api.agileventures.org/charities/115702.json"},{"id":131391,"regno":"327389","subno":0,"name":"THE
+        ARMENIAN RELIEF SOCIETY OF GREAT BRITAIN TRUST ","orgtype":"R","gd":"DECLARATION
+        OF TRUST DTED 30TH JANUARY 1987;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"ARMENIAN
+        RELIEF SOCIETY OF GREAT BRITAIN","add1":"19 Somervell Road","add2":"Harrow","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        8TY","phone":null,"fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:05.000Z","updated_at":"2017-11-20T17:53:05.000Z","url":"http://production.charity-api.agileventures.org/charities/131391.json"},{"id":169567,"regno":"801044","subno":0,"name":"UNITED
+        ANGLO CARIBBEAN SOCIETY ","orgtype":"R","gd":"CONSTITUTION ADOPTED 13TH FEBRUARY
+        1989 AS AMENDED 11TH MARCH 1991 AND 29TH JUNE 1992;","aob":"LONDON BOROUGH
+        OF EALING AND SURROUNDING BOROUGHS","aob_defined":null,"nhs":"F","ha_no":null,"corr":"JOHN
+        SWAN","add1":"413 NORTHOLT ROAD","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        8JQ","phone":"020 8248 3063","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:06.000Z","updated_at":"2017-11-20T17:53:06.000Z","url":"http://production.charity-api.agileventures.org/charities/169567.json"},{"id":169858,"regno":"801346","subno":0,"name":"THE
+        HARROW FOLK DANCE CLUB ","orgtype":"R","gd":"CONSTITUTION ADOPTED 5TH JUNE
+        1989, AS AMENDED ON THE 4TH JUNE 1990, 12 JUNE 2006 AND 30 OCTOBER 2006;","aob":"THE
+        LONDON BOROUGH OF HARROW","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MR
+        ROYSTON MARTIN","add1":"57 WAVERLEY ROAD","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        9RG","phone":"020 8868 7526","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:06.000Z","updated_at":"2017-11-20T17:53:06.000Z","url":"http://production.charity-api.agileventures.org/charities/169858.json"},{"id":174728,"regno":"1001548","subno":0,"name":"ST
+        ALBANS PRE-SCHOOL PLAYGROUP HARROW ","orgtype":"R","gd":"CONSTITUTION ADOPTED
+        21ST MAY 1975 AS AMENDED BY RESOLUTION DATED 3 DECEMBER 2009 AND 22 APRIL
+        2010;","aob":"NORTH HARROW","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        MANNI PAHWA","add1":"St Albans Preschool Playgroup ","add2":"The Parish Church
+        Of St Alban ","add3":"Norwood Drive ","add4":"North Harrow ","add5":null,"postcode":"HA2
+        7PF ","phone":null,"fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:06.000Z","updated_at":"2017-11-20T17:53:06.000Z","url":"http://production.charity-api.agileventures.org/charities/174728.json"},{"id":190655,"regno":"1017478","subno":0,"name":"9TH
+        ROXETH (ST ANDREWS) SCOUT GROUP ","orgtype":"R","gd":"ROYAL CHARTER GRANTED
+        04/01/1912;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"Tony
+        Racher","add1":"159 TORBAY ROAD","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        9QF","phone":"02088649077 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:07.000Z","updated_at":"2017-11-20T17:53:07.000Z","url":"http://production.charity-api.agileventures.org/charities/190655.json"},{"id":193894,"regno":"1020710","subno":0,"name":"THE
+        FRIENDS OF NEWTON FARM SCHOOL PSFA ","orgtype":"R","gd":"CONSTITUTION ADOPTED
+        26TH SEPTEMBER 1991 AS AMENDED 6TH OCTOBER 1992.;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        SUSAN JEFFERIES","add1":"NEWTON FARM NURSERY,INFANT \u0026 JUNIOR","add2":"RAVENSWOOD
+        CRESCENT","add3":"HARROW","add4":null,"add5":null,"postcode":"HA2 9JU","phone":"020
+        8864 8081","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:07.000Z","updated_at":"2017-11-20T17:53:07.000Z","url":"http://production.charity-api.agileventures.org/charities/193894.json"},{"id":193939,"regno":"1020755","subno":0,"name":"1ST
+        ROXETH SCOUT GROUP SOUTH HARROW BAPTIST CHURCH ","orgtype":"R","gd":"ROYAL
+        CHARTER GRANTED 04/01/1912;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"1ST
+        ROXETH SCOUT GROUP","add1":"SOUTH HARROW BAPTIST CHURCH","add2":"270 NORTHOLT
+        ROAD","add3":"HARROW","add4":null,"add5":null,"postcode":"HA2 8EB","phone":null,"fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:07.000Z","updated_at":"2017-11-20T17:53:07.000Z","url":"http://production.charity-api.agileventures.org/charities/193939.json"},{"id":196894,"regno":"1023711","subno":0,"name":"PARENTS
+        AND FRIENDS OF LONGFIELD SCHOOLS ","orgtype":"R","gd":"CONSTITUTION ADOPTED
+        22 SEPTEMBER 1992 AS AMENDED 15 JUNE 1993;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        Louise Lepps","add1":"43 Chester Drive","add2":"North Harrow","add3":"Harrow","add4":null,"add5":null,"postcode":"HA2
+        7PX","phone":"0208 723 1597","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:07.000Z","updated_at":"2017-11-20T17:53:07.000Z","url":"http://production.charity-api.agileventures.org/charities/196894.json"},{"id":199599,"regno":"1026425","subno":0,"name":"MALAWI
+        HINDU ASSOCIATION (UK) ","orgtype":"R","gd":"CONSTITUTION ADOPTED 4 NOVEMBER
+        1990 AS AMENDED 21 MARCH 1993;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"ANOLA
+        SAVAJANI","add1":"67 ALFRISTON AVENUE","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        7EA","phone":"0208 863 2542","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:07.000Z","updated_at":"2017-11-20T17:53:07.000Z","url":"http://production.charity-api.agileventures.org/charities/199599.json"},{"id":202938,"regno":"1029770","subno":0,"name":"STEPPING
+        STONES PRE-SCHOOL (HARROW) ","orgtype":"R","gd":"CONSTITUTION ADOPTED 12 JULY
+        1993 AMENDED ON 14 NOVEMBER 2005;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        DONNA HOARE","add1":"40 Ashbourne Avenue","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        0JS","phone":"07985421439","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:07.000Z","updated_at":"2017-11-20T17:53:07.000Z","url":"http://production.charity-api.agileventures.org/charities/202938.json"},{"id":203083,"regno":"1029915","subno":0,"name":"LADYBIRD
+        PRE-SCHOOL NURSERY ","orgtype":"R","gd":"CONSTITUTION ADOPTED 29 NOVEMBER
+        1993 AS AMENDED 4 NOVEMBER 1996.;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        JANE SPENCER-DAVIS","add1":"23 EASTCOTE LANE","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        8DE","phone":"0208 423 7780","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:07.000Z","updated_at":"2017-11-20T17:53:07.000Z","url":"http://production.charity-api.agileventures.org/charities/203083.json"},{"id":204707,"regno":"1031513","subno":0,"name":"FIRST
+        HEADSTONE SCOUT GROUP ","orgtype":"R","gd":"ROYAL CHARTER 4TH JANUARY 1912;","aob":"NOT
+        DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MR Tony Watts","add1":"7
+        PARKFIELD GARDENS","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        6JR","phone":null,"fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:07.000Z","updated_at":"2017-11-20T17:53:07.000Z","url":"http://production.charity-api.agileventures.org/charities/204707.json"},{"id":207541,"regno":"1034353","subno":0,"name":"RUISLIP-NORTHWOOD
+        FESTIVAL ASSOCIATION ","orgtype":"R","gd":"MODEL CONSTITUTION ADOPTED 29 NOVEMBER
+        1993.;","aob":"NOT DEFINED - BUT IN PRACTICE LONDON BOROUGHS OF HILLINGDON","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        BRENDA REED","add1":"8 LEAMINGTON CRESCENT","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        9HQ","phone":"020 8422 1145","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:07.000Z","updated_at":"2017-11-20T17:53:07.000Z","url":"http://production.charity-api.agileventures.org/charities/207541.json"},{"id":210437,"regno":"1037254","subno":0,"name":"SRI
+        AUROBINDO SOCIETY (UK) ","orgtype":"R","gd":"TRUST DEED DATED 29 MARCH 1994;","aob":"NOT
+        DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"SRI AUROBINDO SOCIETY
+        UK","add1":"149 EASTCOTE LANE","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        8RR","phone":"0208 422 9920","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:07.000Z","updated_at":"2017-11-20T17:53:07.000Z","url":"http://production.charity-api.agileventures.org/charities/210437.json"},{"id":213100,"regno":"1039930","subno":0,"name":"THE
+        ROYAL ANGLIAN REGIMENT MUSEUM","orgtype":"R","gd":"SCHEME DATED 18/08/1998.
+        AS AMENDED BY RESOLUTION DATED 19/09/2013. AS AMENDED BY RESOLUTION DATED
+        11/03/2015;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MAJOR
+        P H WILLIAMSON MBE","add1":"Flat 3, Holly Lodge ","add2":"58 Brooke Avenue
+        ","add3":"Harrow ","add4":null,"add5":null,"postcode":"HA2 0NF ","phone":"020
+        8423 8031","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:07.000Z","updated_at":"2017-11-20T17:53:07.000Z","url":"http://production.charity-api.agileventures.org/charities/213100.json"},{"id":215215,"regno":"1042051","subno":0,"name":"ALPHA
+        AND OMEGA CHRISTIAN FELLOWSHIP OUTREACH MINISTRIES ","orgtype":"R","gd":"DECLARATION
+        OF TRUST DATED 20TH SEPTEMBER 1994;","aob":"NOT DEFINED IN PRACTICE BRENT","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MS
+        Cherice Walford","add1":"60 Yeading Avenue ","add2":"HARROW ","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        9RN ","phone":"02089039175 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:08.000Z","updated_at":"2017-11-20T17:53:08.000Z","url":"http://production.charity-api.agileventures.org/charities/215215.json"},{"id":216026,"regno":"1042865","subno":0,"name":"ST
+        ANSELM''S SCHOOL STAFF AND PARENTS'' ASSOCIATION ","orgtype":"R","gd":"CONSTITUTION
+        ADOPTED 19 OCTOBER 1994;","aob":"NOT DEFINED - IN PRACTICE HARROW","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MRS
+        ANNE MONAHAN","add1":"133 NORTHUMBERLAND ROAD","add2":"HARROW","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        7RB","phone":"0208 422 1272","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:08.000Z","updated_at":"2017-11-20T17:53:08.000Z","url":"http://production.charity-api.agileventures.org/charities/216026.json"},{"id":218626,"regno":"1045474","subno":0,"name":"THE
+        ESSEX REGIMENT MUSEUM ","orgtype":"R","gd":"TRUST DEED DATED 31/12/1994. AS
+        AMENDED BY RESOLUTION DATED 24/04/2006. AS AMENDED BY RESOLUTION DATED 06/09/2012.
+        AS AMENDED BY RESOLUTION DATED 19/05/2015. AS AMENDED BY RESOLUTION DATED
+        17/11/2015. AS AMENDED BY RESOLUTION DATED 14 NOV 2016;","aob":"NOT DEFINED","aob_defined":null,"nhs":"F","ha_no":null,"corr":"MAJOR
+        P H WILLIAMSON MBE","add1":"Flat 3, Holly Lodge ","add2":"58 Brooke Avenue
+        ","add3":"Harrow ","add4":null,"add5":null,"postcode":"HA2 0NF ","phone":"020
+        8423 8031","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:08.000Z","updated_at":"2017-11-20T17:53:08.000Z","url":"http://production.charity-api.agileventures.org/charities/218626.json"},{"id":219770,"regno":"1046636","subno":0,"name":"THE
+        FRIENDS OF ST JOHN FISHER SCHOOL ","orgtype":"R","gd":"CONSTITUTION ADOPTED
+        20TH OCTOBER 1994;","aob":"NOT DEFINED ,IN PRACTICE PINNER,MIDDLESEX","aob_defined":null,"nhs":"F","ha_no":null,"corr":"Angela
+        Mullin","add1":"20 South Way ","add2":"HARROW ","add3":null,"add4":null,"add5":null,"postcode":"HA2
+        6EP ","phone":"07976180001 ","fax":null,"lon":null,"lat":null,"created_at":"2017-11-20T17:53:08.000Z","updated_at":"2017-11-20T17:53:08.000Z","url":"http://production.charity-api.agileventures.org/charities/219770.json"}]'
+    http_version: 
+  recorded_at: Thu, 14 Jun 2018 14:15:05 GMT
+recorded_with: VCR 4.0.0
