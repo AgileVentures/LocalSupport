@@ -1,6 +1,6 @@
 # Setting up Staging server on Dokku
 
-### Make sure you have the permissions to ssh as dokku on the azure box you want to create the server on, then
+### Make sure you have the permissions to ssh as dokku on the azure box you want to create the server on, then add this to your ~/.ssh/config
 
 ```
 Host avp-dokku
