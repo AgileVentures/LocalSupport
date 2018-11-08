@@ -37,9 +37,14 @@ after_script:
 deploy:
   provider: script
   skip_cleanup: true
-  script: bash scripts/deploy.sh
+  script: bash scripts/deploy.sh develop
   on:
     branch: develop
+  provider: script
+  skip_cleanup: true
+  script: bash scripts/deploy.sh staging
+  on:
+    branch: staging
 notifications:
   email: false
   slack:
