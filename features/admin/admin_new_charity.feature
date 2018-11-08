@@ -64,7 +64,6 @@ Feature: Super Admin creating charity
     And I follow "New Organisation"
     And I press "Create Organisation"
     Then I should see "Name can't be blank"
-    Then I should see "Description can't be blank"
     
   @vcr   
   Scenario: After getting validation error when creating new organisation checked categories are still visible

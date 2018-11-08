@@ -8,7 +8,6 @@ class BaseOrganisation < ApplicationRecord
   validates_url :donation_info, preferred_scheme: 'http://', message: 'Donation url is not a valid URL',
     if: proc{|org| org.donation_info.present?}
   validates :name, presence: { message: "Name can't be blank"}
-  validates :description, presence: { message: "Description can't be blank"}
   has_many :category_organisations, foreign_key: :organisation_id
   has_many :categories, through: :category_organisations, foreign_key: :organisation_id
 
