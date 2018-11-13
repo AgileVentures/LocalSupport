@@ -22,7 +22,7 @@ date +%s | sha256sum | base64 | head -c 32 ; echo
 ### Configure Devise Secret Key and Letsencrypt email
 
 ```
-ssh avp-dokku config:set --no-restart DEVISE_SECRET_KEY=<SECRET_KEY> DOKKU_LETSENCRYPT_EMAIL=<email>
+ssh avp-dokku config:set --no-restart harrowcn-staging DEVISE_SECRET_KEY=<SECRET_KEY> DOKKU_LETSENCRYPT_EMAIL=<email>
 ```
 ### Create and link postgres database
 
