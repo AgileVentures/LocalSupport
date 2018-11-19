@@ -60,13 +60,13 @@ Feature: Org superadmin creating a volunteer work opportunity
     Then there should be 1 post to twitter
     When I submit a valid volunteer opportunity
 
-  @vcr @javascript
-  Scenario: Site Super Admin users can create and post Volunteer Opportunities to Doit
-    Given I am signed in as a superadmin
-    And I submit a volunteer op to Doit
-      | title | desc     | address    | postcode | org_name |
-      | Ops1  | For free | Station Rd | HA8 7BD  | Friendly |
-    Then I should see "Ops1", "For free", "Station Rd, HA8 7BD" and "Organisation: Friendly"
+  # @vcr @javascript
+  # Scenario: Site Super Admin users can create and post Volunteer Opportunities to Doit
+  #   Given I am signed in as a superadmin
+  #   And I submit a volunteer op to Doit
+  #     | title | desc     | address    | postcode | org_name |
+  #     | Ops1  | For free | Station Rd | HA8 7BD  | Friendly |
+  #   Then I should see "Ops1", "For free", "Station Rd, HA8 7BD" and "Organisation: Friendly"
 
   Scenario: Signed In Users cannot create volunteer opportunities
     Given I am signed in as a charity worker related to "Shy"

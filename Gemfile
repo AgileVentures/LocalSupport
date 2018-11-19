@@ -31,7 +31,7 @@ group :development, :test do
   gem 'aruba', '~> 0.14.6'
   gem 'byebug'
   gem 'rack_session_access'
-  gem 'jasmine', '~> 3.2'
+  gem 'jasmine', '~> 3.3'
   gem 'jasmine-jquery-rails', '2.0.3'
   gem 'rails-controller-testing'
   #gem 'better_errors'
@@ -47,8 +47,7 @@ end
 group :test do
   gem 'cucumber-rails', require: false
   gem 'cucumber-rails-training-wheels'
-  gem 'capybara', '~> 3.8'
-  gem 'capybara-webkit', git: 'https://github.com/thoughtbot/capybara-webkit.git'
+  gem 'capybara', '~> 3.7'
   gem 'nokogiri', '~> 1.8'
   gem 'factory_bot_rails'
   gem 'webmock', '~> 3.4'
@@ -72,7 +71,7 @@ end
 gem 'coffee-rails', '4.2.2'
 gem 'uglifier', '~> 4.1'
 gem 'sass-rails', '~> 5.0'
-gem 'less-rails', '~> 3.0'
+gem 'less-rails', '~> 4.0'
 gem 'twitter-bootstrap-rails', '3.2.2'
 
 gem 'font-awesome-rails'
@@ -117,5 +116,5 @@ gem 'meta-tags', '~> 2.10'
 
 #Social
 gem 'twitter',      '~> 6.2'
-gem 'twitter-text', '~> 2.1'
+gem 'twitter-text', '~> 3.0'
 gem 'koala' # Facebook integration
