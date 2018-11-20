@@ -89,7 +89,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     commonjs (0.2.7)
-    concurrent-ruby (1.1.1)
+    concurrent-ruby (1.1.3)
     contracts (0.16.0)
     cookiejar (0.3.3)
     crack (0.4.3)
@@ -191,7 +191,8 @@ GEM
       domain_name (~> 0.5)
     http-form_data (2.0.0)
     http_parser.rb (0.6.0)
-    httparty (0.16.2)
+    httparty (0.16.3)
+      mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
@@ -239,7 +240,7 @@ GEM
       mini_mime (>= 0.1.1)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
-    meta-tags (2.10.0)
+    meta-tags (2.11.0)
       actionpack (>= 3.2.0, < 5.3)
     method_source (0.9.0)
     mime-types (3.1)
@@ -256,7 +257,7 @@ GEM
     multipart-post (2.0.0)
     mustermann (1.0.3)
     naught (1.1.0)
-    newrelic_rpm (5.4.0.347)
+    newrelic_rpm (5.5.0.348)
     nio4r (2.3.0)
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
@@ -504,7 +505,7 @@ DEPENDENCIES
   launchy
   less-rails (~> 4.0)
   letter_opener
-  meta-tags (~> 2.10)
+  meta-tags (~> 2.11)
   momentjs-rails
   newrelic_rpm
   nokogiri (~> 1.8)
