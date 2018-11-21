@@ -7,11 +7,6 @@ describe BaseOrganisation, type: :model do
         .with_message("Name can't be blank") 
     end
 
-    it do
-      is_expected.to validate_presence_of(:description)
-        .with_message("Description can't be blank") 
-    end
-
     it { is_expected.to allow_value('test.com').for(:website) }
     it { is_expected.to allow_value('www.test.com').for(:website) }
     it { is_expected.to allow_value('https://test.co.uk').for(:website) }

@@ -34,7 +34,6 @@ Feature: User proposes an organisation to be added to HarrowCN
     Then I should be on the new proposed organisation page
     And I press "Create Proposed organisation"
     Then I should see "Name can't be blank"
-    Then I should see "Description can't be blank"
   
   @vcr
   Scenario: After getting validation error when creating new organisation checked categories are still visible

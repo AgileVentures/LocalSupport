@@ -1,6 +1,9 @@
 {
   "name":"LocalSupport",
   "scripts":{
+    "dokku":{
+       "predeploy": "bundle exec rake db:migrate"
+    },
     "postdeploy": "bundle exec rake db:migrate && bundle exec rake db:setup"
   },
   "env":{

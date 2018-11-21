@@ -13,7 +13,7 @@ sudo apt-get install libpq-dev
 
 Install the pg gem. You’ll need to include the following options to set your path and include the needed headers:
 ```
-gem install pg -v 0.18.0 -- --with-pg-config=/Applications/Postgres.app/Contents/Versions/9.4/bin/pg_config --with-pg-include='/Applications/Postgres.app/Contents/Versions/9.4/include/'
+gem install pg -v 1.1.3 -- --with-pg-config=/Applications/Postgres.app/Contents/Versions/9.4/bin/pg_config --with-pg-include='/Applications/Postgres.app/Contents/Versions/9.4/include/'
 ```
 **Note: before you run this, check that the paths for `pg_config` and `include` are correct, and adjust them as needed. Example: If your application is named Postgres93, then “Postgres.app” will need to be changed to “Postgres93.app” in both places.**
 
@@ -170,21 +170,6 @@ The following stackoverflow link contains the solution which is to add the execj
 
 [http://stackoverflow.com/questions/9057475/rake-dbcreate-could-not-find-a-javascript-runtime](http://stackoverflow.com/questions/9057475/rake-dbcreate-could-not-find-a-javascript-runtime)
 
-### capybara-webkit gem
-
-The `capybara-webkit` gem needs the Qt toolchain (including qmake and the webkit library and header files). You want version 4.8 or later. To install them in Ubuntu release 12.04 LTS "precise pangolin", or later, run:
-
-     sudo apt-get install libqtwebkit-dev
-
-This command also works on Debian 7.
-
-If you have an older version of Ubuntu, you can install a new version from scratch, or upgrade with `sudo do-release-upgrade`.  If on Amazon EC2, see [this article on safely updating an ubuntu instance](http://gregrickaby.com/safely-update-an-ubuntu-ec2-instance-on-amazon-aws/)
-
-For other platforms, see http://qt-project.org/downloads.
-
-Note that on Mac, even after performing the aforementioned install, you are likely to need to install something else to get the `qmake` build tool. Install [Homebrew](http://brew.sh/), if you don't have it already, then run `brew install qt`. Then you should be able to run `gem install capybara-webkit -v '1.6.0'` successfully.
-
-After that try running `bundle install` again.
 
 ### An error occurred while installing nokogiri
 
