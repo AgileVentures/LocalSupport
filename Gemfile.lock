@@ -168,6 +168,9 @@ GEM
       thor (~> 0.14)
     font-awesome-rails (4.7.0.4)
       railties (>= 3.2, < 6.0)
+    foreman (0.63.0)
+      dotenv (>= 0.7)
+      thor (>= 0.13.6)
     friendly_id (5.2.4)
       activerecord (>= 4.0.0)
     fullcalendar-rails (3.9.0.0)
@@ -492,6 +495,7 @@ DEPENDENCIES
   faker (~> 1.9)
   figaro
   font-awesome-rails
+  foreman
   friendly_id (~> 5.2.4)
   fullcalendar-rails
   geocoder
