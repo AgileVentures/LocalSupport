@@ -34,6 +34,7 @@ class ImportOrganisations
       organisation = @model_klass.find_or_create_by! name: charity['name'] 
       organisation.update ({ address: charity['add1'],
                              postcode: charity['postcode'],
+                             imported_at: Time.current
                           })
       organisation.update telephone: charity['phone'] if charity['phone']
     end
