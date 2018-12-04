@@ -11,6 +11,7 @@ begin
       Rake::Task['db:import:emails'].invoke('db/emails.csv')
       Rake::Task['db:email_template'].invoke
       Rake::Task['db:import_doit'].invoke
+      Rake::Task['import_organisations'].invoke
 
     end
   end
