@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 20181203235115) do
     t.float "latitude"
     t.float "longitude"
     t.string "address"
-    t.text "recurring"
   end
 
   create_table "features", id: :serial, force: :cascade do |t|
