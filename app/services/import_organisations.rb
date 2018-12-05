@@ -31,9 +31,10 @@ class ImportOrganisations
   
   def find_or_create_charities_and_update
     @charities.each do |charity|
-      organisation = @model_klass.find_or_create_by! name: charity['name'] 
+      organisation = @model_klass.find_or_create_by! name: charity['name'].titleize 
       organisation.update ({ address: charity['add1'],
                              postcode: charity['postcode'],
+                             imported_at: Time.current
                           })
       organisation.update telephone: charity['phone'] if charity['phone']
     end

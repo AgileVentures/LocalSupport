@@ -77,7 +77,7 @@ git push azure-playground-staging staging:master
 
 ```
 ssh avp-dokku letsencrypt harrowcn-staging
-ssh avp-dokku letsencrypt:auto-renew harrowcn-staging
+ssh avp-dokku letsencrypt:cron-job --add (this adds it for every app on the box)
 ```
 _You can also enter a shell session in dokku to run these commands without ssh avp-dokku like_
 

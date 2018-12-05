@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180622090452) do
+ActiveRecord::Schema.define(version: 20181203235115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20180622090452) do
     t.string "type", default: "Organisation"
     t.boolean "non_profit"
     t.string "slug"
+    t.datetime "imported_at"
     t.index ["slug"], name: "index_organisations_on_slug", unique: true
   end
 
@@ -179,6 +180,7 @@ ActiveRecord::Schema.define(version: 20180622090452) do
     t.string "skills_needed"
     t.datetime "when_volunteer_needed"
     t.string "contact_details"
+    t.datetime "imported_at"
     t.index ["deleted_at"], name: "index_volunteer_ops_on_deleted_at"
     t.index ["organisation_id"], name: "index_volunteer_ops_on_organisation_id"
   end
