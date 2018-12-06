@@ -35,6 +35,14 @@ $(function() {
   });
 
   if ($(window).width() <= 560 ) {
-    $('#column2 .volunteer-ops-search').prependTo('#column1 .row');
+  $('#column2 .volunteer-ops-search').prependTo('#column1 .row');
   }
+
+  window.addEventListener('resize', function () {
+    if ($(window).width() <= 560) {
+      $('#column2 .volunteer-ops-search').prependTo('#column1 .row');
+    }else {
+      $('#column1 .volunteer-ops-search').insertAfter('#column2 .container-fluid ')
+    }
+  });
 });
