@@ -33,4 +33,8 @@ $(function() {
   $('[data-behaviour~=date-and-time-picker]').datetimepicker({
     format: 'YYYY/MM/DD hh:mm'
   });
+
+  if ($(window).width() <= 560 ) {
+    $('#column2 .volunteer-ops-search').prependTo('#column1 .row');
+  }
 });
