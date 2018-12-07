@@ -48,8 +48,6 @@ group :test do
   gem 'cucumber-rails', require: false
   gem 'cucumber-rails-training-wheels'
   gem 'capybara', '~> 3.7'
-  gem 'capybara-webkit', git: 'https://github.com/emilyst/capybara-webkit.git',
-                         branch: 'fix-build-for-macos-mojave'
   gem 'nokogiri', '~> 1.8'
   gem 'factory_bot_rails'
   gem 'webmock', '~> 3.4'

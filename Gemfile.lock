@@ -6,16 +6,6 @@ GIT
       addressable
       rails
 
-GIT
-  remote: https://github.com/emilyst/capybara-webkit.git
-  revision: 9c9af833656f095667e8522004dae017d423d37d
-  branch: fix-build-for-macos-mojave
-  specs:
-    capybara-webkit (1.15.0)
-      capybara (>= 2.3, < 4.0)
-      json
-
-
 GEM
   remote: https://rubygems.org/
   specs:
