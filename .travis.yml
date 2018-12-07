@@ -3,7 +3,7 @@ env:
   - CC_TEST_REPORTER_ID=$CC_TEST_REPORTER_ID
 language: ruby
 rvm:
-- 2.5.1
+- 2.5.3
 sudo: false
 cache:
   directories:
