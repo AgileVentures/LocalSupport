@@ -70,7 +70,7 @@ ssh avp-dokku domains:add harrowcn-temp temp.harrowcn.org.uk
 ```
 $ ssh avp-dokku config:set --no-restart harrowcn-temp DOKKU_LETSENCRYPT_EMAIL=technical@harrowcn.org.uk
 $ ssh avp-dokku letsencrypt harrowcn-temp
-$ ssh avp-dokku letsencrypt:auto-renew harrowcn-temp
+$ ssh avp-dokku letsencrypt:cron-job add (this adds it for every app on the box)
 ```
 
 9. import data into the database
@@ -123,5 +123,5 @@ $ ssh dokku@agileventures.eastus.cloudapp.azure.com run harrowcn-develop rails d
 $ git push azure-develop develop:master
 $ ssh dokku@agileventures.eastus.cloudapp.azure.com config:set --no-restart harrowcn-develop DOKKU_LETSENCRYPT_EMAIL=technical@harrowcn.org.uk
 $ ssh dokku@agileventures.eastus.cloudapp.azure.com letsencrypt harrowcn-develop
-$ ssh dokku@agileventures.eastus.cloudapp.azure.com letsencrypt:auto-renew harrowcn-develop
+$ ssh dokku@agileventures.eastus.cloudapp.azure.com letsencrypt:cron-job --add
 ```

@@ -75,6 +75,7 @@ class ImportDoItVolunteerOpportunities
     model.doit_org_link = op['for_recruiter']['slug']
     model.updated_at    = op['updated']
     model.created_at    = op['created']
+    model.imported_at   = Time.current
     model
   end
 

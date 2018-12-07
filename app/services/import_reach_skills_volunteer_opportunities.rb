@@ -60,5 +60,6 @@ class ImportReachSkillsVolunteerOpportunities
     one_day_ago = Time.current - 1.day # necessary until api is updated.
     model.updated_at = one_day_ago # https://www.pivotaltracker.com/story/show/153805125
     model.created_at = one_day_ago
+    model.imported_at   = Time.current
   end
 end
