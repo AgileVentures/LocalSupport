@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 
  function googleInfobox() {
   //= require vendor/assets/javascripts/google-infobox
  }
  googleInfobox();
 
+=======
+//= require google_maps/google-infobox
+>>>>>>> 5301bbdde1c7a611cf1bc85af563f2f2ca890cd6
 //= require google_maps/custom_marker
 
 var map;
