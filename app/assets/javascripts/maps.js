@@ -1,4 +1,8 @@
-/= require google-infobox/google-infobox
+function googleInfobox() {
+  //= require vendor/assets/javascripts/google-infobox
+ }
+ googleInfobox()
+ 
 //= require google_maps/custom_marker
 
 var map;
