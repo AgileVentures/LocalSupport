@@ -247,7 +247,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mini_mime (1.0.1)
-    mini_portile2 (2.3.0)
+    mini_portile2 (2.4.0)
     minitest (5.11.3)
     momentjs-rails (2.20.1)
       railties (>= 3.1)
@@ -259,8 +259,8 @@ GEM
     naught (1.1.0)
     newrelic_rpm (5.6.0.349)
     nio4r (2.3.0)
-    nokogiri (1.8.5)
-      mini_portile2 (~> 2.3.0)
+    nokogiri (1.9.1)
+      mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     parallel (1.12.1)
     paranoia (2.4.1)
@@ -508,7 +508,7 @@ DEPENDENCIES
   meta-tags (~> 2.11)
   momentjs-rails
   newrelic_rpm
-  nokogiri (~> 1.8)
+  nokogiri (~> 1.9)
   paranoia (~> 2.4)
   pg (~> 1.1)
   phantomjs
