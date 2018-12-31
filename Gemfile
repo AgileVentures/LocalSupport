@@ -109,7 +109,7 @@ gem 'figaro'
 gem 'airbrake'
 
 # Using user friendly names in URLs
-gem 'friendly_id', '~> 5.2.4'
+gem 'friendly_id', '~> 5.2.5'
 
 # SEO
 gem 'meta-tags', '~> 2.11'
