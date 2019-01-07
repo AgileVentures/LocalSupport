@@ -89,7 +89,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     commonjs (0.2.7)
-    concurrent-ruby (1.1.3)
+    concurrent-ruby (1.1.4)
     contracts (0.16.0)
     cookiejar (0.3.3)
     crack (0.4.3)
@@ -168,7 +168,7 @@ GEM
       thor (~> 0.14)
     font-awesome-rails (4.7.0.4)
       railties (>= 3.2, < 6.0)
-    friendly_id (5.2.4)
+    friendly_id (5.2.5)
       activerecord (>= 4.0.0)
     fullcalendar-rails (3.9.0.0)
       jquery-rails (>= 4.0.5, < 5.0.0)
@@ -194,7 +194,7 @@ GEM
     httparty (0.16.3)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
-    i18n (1.1.1)
+    i18n (1.3.0)
       concurrent-ruby (~> 1.0)
     idn-ruby (0.1.0)
     jar_wrapper (0.1.8)
@@ -230,7 +230,7 @@ GEM
       actionpack (>= 4)
       less (~> 2.6.0)
       sprockets (>= 2)
-    letter_opener (1.6.0)
+    letter_opener (1.7.0)
       launchy (~> 2.2)
     libv8 (3.16.14.19)
     loofah (2.2.3)
@@ -247,7 +247,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mini_mime (1.0.1)
-    mini_portile2 (2.3.0)
+    mini_portile2 (2.4.0)
     minitest (5.11.3)
     momentjs-rails (2.20.1)
       railties (>= 3.1)
@@ -257,10 +257,10 @@ GEM
     multipart-post (2.0.0)
     mustermann (1.0.3)
     naught (1.1.0)
-    newrelic_rpm (5.5.0.348)
+    newrelic_rpm (5.6.0.349)
     nio4r (2.3.0)
-    nokogiri (1.8.5)
-      mini_portile2 (~> 2.3.0)
+    nokogiri (1.10.0)
+      mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     parallel (1.12.1)
     paranoia (2.4.1)
@@ -285,7 +285,7 @@ GEM
       multi_json
     puma (3.12.0)
     rack (2.0.6)
-    rack-protection (2.0.4)
+    rack-protection (2.0.5)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -305,7 +305,7 @@ GEM
       bundler (>= 1.3.0)
       railties (= 5.1.6)
       sprockets-rails (>= 2.0.0)
-    rails-controller-testing (1.0.3)
+    rails-controller-testing (1.0.4)
       actionpack (>= 5.0.1.x)
       actionview (>= 5.0.1.x)
       activesupport (>= 5.0.1.x)
@@ -359,7 +359,7 @@ GEM
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
-    rubocop (0.60.0)
+    rubocop (0.62.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
       parser (>= 2.5, != 2.5.1.1)
@@ -369,7 +369,7 @@ GEM
       unicode-display_width (~> 1.4.0)
     rubocop-git (0.1.3)
       rubocop (>= 0.24.1)
-    rubocop-rspec (1.30.1)
+    rubocop-rspec (1.31.0)
       rubocop (>= 0.60.0)
     ruby-progressbar (1.10.0)
     safe_yaml (1.0.4)
@@ -401,10 +401,10 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    sinatra (2.0.4)
+    sinatra (2.0.5)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.4)
+      rack-protection (= 2.0.5)
       tilt (~> 2.0)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
@@ -420,7 +420,7 @@ GEM
       ref
     thor (0.20.0)
     thread_safe (0.3.6)
-    tilt (2.0.8)
+    tilt (2.0.9)
     timecop (0.9.1)
     twitter (6.2.0)
       addressable (~> 2.3)
@@ -449,7 +449,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
-    unicode-display_width (1.4.0)
+    unicode-display_width (1.4.1)
     unicorn (5.4.1)
       kgio (~> 2.6)
       raindrops (~> 0.7)
@@ -457,7 +457,7 @@ GEM
     vcr (4.0.0)
     warden (1.2.7)
       rack (>= 1.0)
-    webmock (3.4.2)
+    webmock (3.5.1)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
@@ -492,7 +492,7 @@ DEPENDENCIES
   faker (~> 1.9)
   figaro
   font-awesome-rails
-  friendly_id (~> 5.2.4)
+  friendly_id (~> 5.2.5)
   fullcalendar-rails
   geocoder
   heroku-api
@@ -508,7 +508,7 @@ DEPENDENCIES
   meta-tags (~> 2.11)
   momentjs-rails
   newrelic_rpm
-  nokogiri (~> 1.8)
+  nokogiri (~> 1.10)
   paranoia (~> 2.4)
   pg (~> 1.1)
   phantomjs
@@ -546,10 +546,10 @@ DEPENDENCIES
   uri-handler
   url_validator!
   vcr
-  webmock (~> 3.4)
+  webmock (~> 3.5)
 
 RUBY VERSION
-   ruby 2.5.1p57
+   ruby 2.5.3p105
 
 BUNDLED WITH
-   1.16.4
+   1.17.1
