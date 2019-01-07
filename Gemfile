@@ -48,7 +48,7 @@ group :test do
   gem 'cucumber-rails', require: false
   gem 'cucumber-rails-training-wheels'
   gem 'capybara', '~> 3.7'
-  gem 'nokogiri', '~> 1.9'
+  gem 'nokogiri', '~> 1.10'
   gem 'factory_bot_rails'
   gem 'webmock', '~> 3.5'
   gem 'uri-handler'
