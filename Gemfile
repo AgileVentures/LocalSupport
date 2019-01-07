@@ -48,9 +48,9 @@ group :test do
   gem 'cucumber-rails', require: false
   gem 'cucumber-rails-training-wheels'
   gem 'capybara', '~> 3.7'
-  gem 'nokogiri', '~> 1.8'
+  gem 'nokogiri', '~> 1.9'
   gem 'factory_bot_rails'
-  gem 'webmock', '~> 3.4'
+  gem 'webmock', '~> 3.5'
   gem 'uri-handler'
   gem 'selenium'
   gem 'selenium-client'
@@ -109,7 +109,7 @@ gem 'figaro'
 gem 'airbrake'
 
 # Using user friendly names in URLs
-gem 'friendly_id', '~> 5.2.4'
+gem 'friendly_id', '~> 5.2.5'
 
 # SEO
 gem 'meta-tags', '~> 2.11'
