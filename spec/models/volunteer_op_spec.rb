@@ -102,7 +102,7 @@ describe VolunteerOp, type: :model do
       let(:vol_op) { FactoryBot.create(:reachskills_volunteer_op, reachskills_org_name: reachskills_org_name) }
 
       it 'returns the reachskills org link' do
-        expect(vol_op.organisation_link).to eq "https://reachskills.org.uk/org/#{reachskills_org_name}"
+        expect(vol_op.organisation_link).to eq "https://reachvolunteering.org.uk/org/#{reachskills_org_name}"
       end
     end
 
@@ -130,7 +130,7 @@ describe VolunteerOp, type: :model do
 
     context 'reachskills org' do
 
-      let(:reachskills_op_link) { 'https://reachskills.org.uk/opp/fundraising-volunteer' }
+      let(:reachskills_op_link) { 'https://reachvolunteering.org.uk/opp/fundraising-volunteer' }
       let(:vol_op) { FactoryBot.create(:reachskills_volunteer_op, reachskills_op_link: reachskills_op_link) }
 
       it 'returns the reachskills op link' do

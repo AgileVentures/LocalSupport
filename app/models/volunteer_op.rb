@@ -33,7 +33,7 @@ class VolunteerOp < ApplicationRecord
   def organisation_link
     return organisation if source == 'local'
     return "https://do-it.org/organisations/#{doit_org_link}" if source == 'doit'
-    "https://reachskills.org.uk/org/#{parsed_reachskills_org_name}"
+    "https://reachvolunteering.org.uk/org/#{parsed_reachskills_org_name}"
   end
 
   def link

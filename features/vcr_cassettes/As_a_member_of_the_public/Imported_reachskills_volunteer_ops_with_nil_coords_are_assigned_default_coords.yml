@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://reachskills.org.uk/harrow-community-network-opportunity-feed
+    uri: https://reachvolunteering.org.uk/harrow-community-network-opportunity-feed
     body:
       encoding: US-ASCII
       string: ''
