@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://reachskills.org.uk/harrow-community-network-opportunity-feed
+    uri: https://reachvolunteering.org.uk/harrow-community-network-opportunity-feed
     body:
       encoding: US-ASCII
       string: ''
@@ -64,7 +64,7 @@ http_interactions:
         in which the trustee has special expertise, and positively representing the
         organisation. Trustees are expected to regularly attend Board meetings and,
         if unable to attend, to contact the Chair with any input, feedback or suggestions
-        on the agenda items.\n","Path":"https:\/\/reachskills.org.uk\/opp\/charity-treasurer-10?referrer_id=Harrow
+        on the agenda items.\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/charity-treasurer-10?referrer_id=Harrow
         Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Harrow","Postcode":"HA1
         3UJ","Coordinates":"51\u00b0 34'' 31.4652\" N, 0\u00b0 19'' 19.3332\" W"}},{"node":{"title":"Trustee","Organisation":"Sudbury
         Neighbourhood Centre","Description":"Role\nTrustees, as voting members of
@@ -97,7 +97,7 @@ http_interactions:
         each Trustee should use any skills, knowledge or experience he\/she may have
         to help the Board of Trustees reach sound decisions. This may involve leading
         on certain key issues, providing advice and guidance on matters which the
-        Trustee has special expertise, etc.\n","Path":"https:\/\/reachskills.org.uk\/opp\/trustee-112?referrer_id=Harrow
+        Trustee has special expertise, etc.\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/trustee-112?referrer_id=Harrow
         Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Sudbury
         Town, London Borough of Brent","Postcode":"HA02LP","Coordinates":"51\u00b0
         33'' 20.8728\" N, 0\u00b0 19'' 1.938\" W"}},{"node":{"title":"School Governor
@@ -114,7 +114,7 @@ http_interactions:
         from the main governing body to discuss relevant issues in more detail. Discussion
         is then fed back at a full governing body meeting.\nA school governing body
         is made up of representatives from the school, the parents, the local authority
-        and the local community.\n","Path":"https:\/\/reachskills.org.uk\/opp\/school-governor-harrow?referrer_id=Harrow
+        and the local community.\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/school-governor-harrow?referrer_id=Harrow
         Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Harrow","Postcode":"HA","Coordinates":"0\u00b0
         0'' 0\" N, 0\u00b0 0'' 0\" E"}},{"node":{"title":"Trustee","Organisation":"Sudbury
         Neighbourhood Centre","Description":"Experienced Trustees required for the
@@ -132,7 +132,7 @@ http_interactions:
         As volunteers our Trustees receive no payment for their contribution to the
         Centre.\nWe welcome people from the widest possible diversity of background,
         culture and experience to help ensure that the Board is representative of
-        the communities we serve.\n\u00a0\n","Path":"https:\/\/reachskills.org.uk\/opp\/trustee-108?referrer_id=Harrow
+        the communities we serve.\n\u00a0\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/trustee-108?referrer_id=Harrow
         Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Brent","Postcode":"HA02LP","Coordinates":"51\u00b0
         33'' 20.8728\" N, 0\u00b0 19'' 1.938\" W"}},{"node":{"title":"Technology Champion","Organisation":"Love
         Burnt Oak","Description":"Burnt Oak is an area of Barnet in North London where
@@ -149,7 +149,7 @@ http_interactions:
         them make best use of whatever is in their hand, be it PC, SMART phone or
         something else.\nA simple example might be that a person acquires some new
         equipment (e.g. laptop) and just needs someone to shop\u00a0them how to use
-        it.\n\u00a0\n\u00a0\n","Path":"https:\/\/reachskills.org.uk\/opp\/technology-champion?referrer_id=Harrow
+        it.\n\u00a0\n\u00a0\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/technology-champion?referrer_id=Harrow
         Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Barnet","Postcode":"HA8
         0LN","Coordinates":"51\u00b0 36'' 10.6164\" N, 0\u00b0 15'' 45.5076\" W"}},{"node":{"title":"Literacy
         Trainer (The Princess Alexandra Home)","Organisation":"Jewish Care","Description":"Duties
@@ -159,7 +159,7 @@ http_interactions:
         \u2013 verbal and written\n\u2022 Working one-to-one or small group to enable
         staff to complete relevant documentation\n\u2022 Attending volunteer meetings
         to report back to the group and offering any learning or recommendations for
-        the project\n","Path":"https:\/\/reachskills.org.uk\/opp\/literacy-trainer-princess-alexandra-home?referrer_id=Harrow
+        the project\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/literacy-trainer-princess-alexandra-home?referrer_id=Harrow
         Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"London","Postcode":"HA7
         3JE","Coordinates":"51\u00b0 37'' 28.074\" N, 0\u00b0 20'' 26.7252\" W"}},{"node":{"title":"Into
         Work Volunteer","Organisation":"Love Burnt Oak","Description":"An opportunity
@@ -183,7 +183,7 @@ http_interactions:
         area, volunteers who speak other community languages are most welcome.\nLove
         Burnt Oak contributes to essential volunteer expenses. We do not provide initial
         training in job search skills but will provide support, particularly during
-        the induction period, to all volunteers.\n","Path":"https:\/\/reachskills.org.uk\/opp\/work-volunteer?referrer_id=Harrow
+        the induction period, to all volunteers.\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/work-volunteer?referrer_id=Harrow
         Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Burnt
         Oak","Postcode":"HA8 0LN","Coordinates":"51\u00b0 36'' 10.6164\" N, 0\u00b0
         15'' 45.5076\" W"}},{"node":{"title":"Trustee with business development expertise","Organisation":"The
@@ -208,7 +208,7 @@ http_interactions:
         issues in which the trustee has special expertise, and positively representing
         the organisation. Trustees are expected to regularly attend Board meetings
         and, if unable to attend, to contact the Chair with any input, feedback or
-        suggestions on the agenda items.\n","Path":"https:\/\/reachskills.org.uk\/opp\/trustee-business-development-expertise-1?referrer_id=Harrow
+        suggestions on the agenda items.\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/trustee-business-development-expertise-1?referrer_id=Harrow
         Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Harrow","Postcode":"HA1
         3UJ   ","Coordinates":"51\u00b0 34'' 31.4652\" N, 0\u00b0 19'' 19.3332\" W"}},{"node":{"title":"Quality
         Assurance Volunteer","Organisation":"Jami","Description":"\u00a0\nThe Quality
@@ -221,7 +221,7 @@ http_interactions:
         mental illness. The group meet approximately every two months. The group members
         are expected to attend the meetings and follow up on identified tasks in between
         meetings. The time commitment is variable but would not amount to more than
-        two days per month.\n","Path":"https:\/\/reachskills.org.uk\/opp\/quality-assurance-volunteer?referrer_id=Harrow
+        two days per month.\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/quality-assurance-volunteer?referrer_id=Harrow
         Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Edgware","Postcode":"HA8
         9BG","Coordinates":"51\u00b0 36'' 27.4536\" N, 0\u00b0 16'' 22.9188\" W"}},{"node":{"title":"Social
         Researcher","Organisation":"Chalkhill Community Centre","Description":"The
@@ -232,7 +232,7 @@ http_interactions:
         and focus groups; analysis of data and writing up the research paper of findings.\nThe
         volunteer will be required to help to design and carry out\u00a0surveys,\u00a0questionnaires
         and focus groups using appropriate research methodology. They will collate
-        and analyse research data and help to prepare a report of findings.\u00a0\n","Path":"https:\/\/reachskills.org.uk\/opp\/social-researcher?referrer_id=Harrow
+        and analyse research data and help to prepare a report of findings.\u00a0\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/social-researcher?referrer_id=Harrow
         Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Wembley","Postcode":"HA9
         9FX","Coordinates":"51\u00b0 33'' 50.0184\" N, 0\u00b0 16'' 35.5872\" W"}}]}'
     http_version: 
