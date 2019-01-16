@@ -259,7 +259,7 @@ GEM
     naught (1.1.0)
     newrelic_rpm (5.7.0.350)
     nio4r (2.3.0)
-    nokogiri (1.10.0)
+    nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     parallel (1.12.1)
