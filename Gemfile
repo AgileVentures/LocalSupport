@@ -59,7 +59,7 @@ group :test do
   gem 'puffing-billy', '~> 2.0'
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
-  gem 'show_me_the_cookies', '~> 4.0'
+  gem 'show_me_the_cookies', '~> 5.0'
   gem 'rubocop-rspec', '>=1.28'
 end
 
