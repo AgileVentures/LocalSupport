@@ -128,9 +128,9 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
-    devise_invitable (1.7.5)
-      actionmailer (>= 4.1.0)
-      devise (>= 4.0.0)
+    devise_invitable (2.0.0)
+      actionmailer (>= 5.0)
+      devise (>= 4.6)
     diff-lcs (1.3)
     docile (1.3.0)
     domain_name (0.5.20170404)
@@ -177,7 +177,7 @@ GEM
       momentjs-rails (>= 2.9.0)
     geocoder (1.4.9)
     gherkin (5.1.0)
-    globalid (0.4.1)
+    globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashdiff (0.3.7)
     heroku-api (0.4.3)
@@ -487,7 +487,7 @@ DEPENDENCIES
   cucumber-rails-training-wheels
   database_cleaner (= 1.7.0)
   devise (~> 4.6)
-  devise_invitable (~> 1.7)
+  devise_invitable (~> 2.0)
   dotenv-rails
   execjs
   factory_bot_rails
