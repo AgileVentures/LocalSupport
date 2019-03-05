@@ -5,8 +5,11 @@ describe ImportOrganisations do
   let(:model_klass) { spy :model_klass }
   let(:postcode) { 'ha2' }
   let(:url) do
-    "#{ImportOrganisations::HOST}#{ImportOrganisations::HREF}"
-  end 
+    "#{ImportOrganisations::HOST}#{ImportOrganisations::CHARITIES_HREF}"
+  end
+  let(:charity_objects_url) do
+    "#{ImportOrganisations::HOST}#{ImportOrganisations::CHARITY_OBJECTS_HREF}"
+  end
 
   subject(:list_charities) do
     described_class.with(postcode, http_party, model_klass)
@@ -14,9 +17,11 @@ describe ImportOrganisations do
 
   context 'no charities found' do
     let(:response) { double :response, body: '[]' }
+    let(:charity_objects_response) { double :charity_objects_response, body: '[]' }
 
     it 'does request data from the api' do
       expect(http_party).to receive(:get).with("#{url}#{postcode}").and_return(response)
+      expect(http_party).to receive(:get).with("#{charity_objects_url}#{postcode}").and_return(charity_objects_response)
       list_charities
     end
 
@@ -29,15 +34,17 @@ describe ImportOrganisations do
 
   context 'one page of 2 charities is found' do
     let(:response) { double :response, body: File.read('test/fixtures/charities_commission1.json') }
-
+    let(:charity_objects_response) { double :charity_objects_response, body: File.read('test/fixtures/charity_objects1.json') }
+    
     it 'checks for presence and/or creates 2 charities' do
-      allow(http_party).to receive(:get).and_return(response)
+      allow(http_party).to receive(:get).and_return(response, charity_objects_response)
       list_charities
       expect(model_klass).to have_received(:find_or_create_by!).exactly(2).times
     end
 
     it 'calls the api with the correct URL' do
       expect(http_party).to receive(:get).with("#{url}#{postcode}").and_return(response)
+      expect(http_party).to receive(:get).with("#{charity_objects_url}#{postcode}").and_return(charity_objects_response)
       list_charities
     end
 
