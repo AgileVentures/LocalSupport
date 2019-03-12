@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
   # Stores the URL if permitted
   def store_location
     return unless request_controller_is(white_listed) && request_verb_is_get?
-    session[:previous_url] = request.fullpath
+    session[:previous_url] = request.fullpath unless request.format.json?
   end
 
   # Devise hook
