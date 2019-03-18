@@ -277,7 +277,7 @@ GEM
       websocket-driver (>= 0.2.0)
     powerpack (0.1.2)
     public_suffix (3.0.3)
-    puffing-billy (2.0.0)
+    puffing-billy (2.1.0)
       addressable (~> 2.5)
       em-http-request (~> 1.1, >= 1.1.0)
       em-synchrony
@@ -517,7 +517,7 @@ DEPENDENCIES
   pg (~> 1.1)
   phantomjs
   poltergeist
-  puffing-billy (~> 2.0)
+  puffing-billy (~> 2.1)
   puma
   rack_session_access
   railroady
