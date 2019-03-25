@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '2.5.3'
-gem 'rails', '~> 5.1'
+gem 'rails', '~> 5.2.2.1'
 gem 'pg', '~> 1.1'
 gem 'devise', '~> 4.6'
 gem 'devise_invitable', '~> 2.0'
@@ -28,7 +28,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
   gem 'execjs'
-  gem 'aruba', '~> 0.14.8'
+  gem 'aruba', '~> 0.14.9'
   gem 'byebug'
   gem 'rack_session_access'
   gem 'jasmine', '~> 3.3'
