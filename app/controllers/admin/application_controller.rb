@@ -8,8 +8,17 @@ module Admin
   class ApplicationController < Administrate::ApplicationController
     before_action :authenticate_admin
 
+    # annoyingly duplicated logic from ::ApplicationController, which we can't seem to access
     def authenticate_admin
-      # TODO Add authentication logic here.
+      return if superadmin?
+
+      flash[:error] = t('authorize.superadmin')
+      redirect_to root_path
+      false
+    end
+
+    def superadmin?
+      current_user.try :superadmin?
     end
 
     # Override this value to specify the number of elements to display at a time
