@@ -6,21 +6,23 @@ var openedInfoBox = null;
 var markers = [];
 var Settings = {
   id: 'map-canvas',
-  lat: 51.5978,
-  lng: -0.3370,
   zoom: 12
 };
 
 var OrganisationMap = {
   initMap: function initMap() {
+    Settings.lat = parseFloat($("#marker_data").data().latitude)
+    Settings.lng = parseFloat($("#marker_data").data().longitude)
+    console.log(Settings.lat)
+    console.log(Settings.lng)
     map = new google.maps.Map(document.getElementById(Settings.id), {
       center: {lat: Settings.lat, lng: Settings.lng},
       zoom: Settings.zoom
     });
 
-    var markerData = $("#marker_data").data().markers;
+    var markerData = $("#marker_data").data().markers
 
-    var marker;
+    var marker
 
     var ib = new InfoBox();
     var ibOptions = {

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181203235115) do
+ActiveRecord::Schema.define(version: 2019_03_26_173009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,10 +47,12 @@ ActiveRecord::Schema.define(version: 20181203235115) do
     t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "postal"
     t.integer "organisation_id"
     t.float "latitude"
     t.float "longitude"
     t.string "address"
+    t.text "recurring"
   end
 
   create_table "features", id: :serial, force: :cascade do |t|
@@ -122,6 +124,13 @@ ActiveRecord::Schema.define(version: 20181203235115) do
     t.index ["user_id"], name: "index_proposed_organisation_edits_on_user_id"
   end
 
+  create_table "settings", force: :cascade do |t|
+    t.string "key"
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", id: :serial, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: ""
@@ -147,8 +156,8 @@ ActiveRecord::Schema.define(version: 20181203235115) do
     t.datetime "invitation_sent_at"
     t.datetime "invitation_accepted_at"
     t.integer "invitation_limit"
-    t.string "invited_by_type"
     t.integer "invited_by_id"
+    t.string "invited_by_type"
     t.datetime "deleted_at"
     t.boolean "siteadmin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
