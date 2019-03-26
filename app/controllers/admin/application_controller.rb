@@ -8,7 +8,8 @@ module Admin
   class ApplicationController < Administrate::ApplicationController
     before_action :authenticate_admin
 
-    # annoyingly duplicated logic from ::ApplicationController, which we can't seem to access
+    # annoyingly duplicated logic from ::ApplicationController, 
+    # which we can't seem to access
     def authenticate_admin
       return if superadmin?
 
