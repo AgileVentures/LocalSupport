@@ -22,6 +22,7 @@ describe ApplicationController, :type => :controller, :helpers => :controllers d
 
   it '#store_location stores URLs only when conditions permit' do
     allow(request).to receive_messages :path => 'this/is/a/path'
+    allow(request.format).to receive_messages :json? => true 
 
     allow(controller).to receive_messages :request_controller_is => false
     allow(controller).to receive_messages :request_verb_is_get? => false
@@ -33,6 +34,10 @@ describe ApplicationController, :type => :controller, :helpers => :controllers d
     expect(session[:previous_url]).to be_nil
 
     allow(controller).to receive_messages :request_verb_is_get? => true
+    controller.store_location
+    expect(session[:previous_url]).to be_nil
+
+    allow(request.format).to receive_messages :json? => false 
     controller.store_location
     expect(session[:previous_url]).to eq request.fullpath
   end
