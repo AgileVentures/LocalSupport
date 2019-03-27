@@ -11,8 +11,8 @@ var Settings = {
 
 var OrganisationMap = {
   initMap: function initMap() {
-    Settings.lat = parseFloat($("#marker_data").data().latitude || '51.5978')
-    Settings.lng = parseFloat($("#marker_data").data().longitude || '-0.337')
+    Settings.lat = parseFloat($("#marker_data").data().latitude)
+    Settings.lng = parseFloat($("#marker_data").data().longitude)
     map = new google.maps.Map(document.getElementById(Settings.id), {
       center: {lat: Settings.lat, lng: Settings.lng},
       zoom: Settings.zoom
