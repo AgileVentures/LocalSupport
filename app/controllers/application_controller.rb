@@ -121,22 +121,30 @@ class ApplicationController < ActionController::Base
   end
 
   def set_tags
-    set_meta_tags title: Setting.meta_tag_title,
+    set_meta_tags title: meta_tag_title,
                   site: Setting.meta_tag_site,
                   reverse: true,
-                  description: Setting.meta_tag_description,
+                  description: meta_tag_description,
                   author: 'http://www.agileventures.org',
                   og: open_graph_tags
   end
 
   def open_graph_tags
     {
-        title: Setting.meta_tag_title,
-        site: Setting.meta_tag_site,
+        title: meta_tag_title,
+        site: Setting.open_graph_site,
         reverse: true,
-        description: Setting.meta_tag_description,
+        description: meta_tag_description,
         author: 'http://www.agileventures.org'
     }
+  end
+
+  def meta_tag_title
+    Setting.meta_tag_title
+  end
+
+  def meta_tag_description
+    Setting.meta_tag_description
   end
 
   def requested_organisation_path

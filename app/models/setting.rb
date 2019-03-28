@@ -5,8 +5,9 @@ class Setting < ApplicationRecord
     longitude: '-0.3370',
     site_title: 'Harrow Community Network',
     meta_tag_title: 'Harrow Community Network',
-    meta_tag_site: 'Harrow Community Network',
+    meta_tag_site: 'Harrow volunteering',
     meta_tag_description: 'Volunteering Network for Harrow Community',
+    open_graph_site: 'Harrow Community Network'
   }
 
   def self.method_missing(args)
