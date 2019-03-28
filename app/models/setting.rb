@@ -1,5 +1,5 @@
 class Setting < ApplicationRecord
-
+  
   DEFAULTS = {
     latitude: '51.5978',
     longitude: '-0.3370',

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Setting, type: :model do
+
   context '#latitude' do
     it 'should have a default latitude' do
       expect(Setting.latitude).to eq '51.5978'
@@ -28,6 +29,5 @@ RSpec.describe Setting, type: :model do
       expect(Setting.meta_tag_title).to eq 'KSCS Community Assets'
     end
   end
-
 
 end
