@@ -1,5 +1,10 @@
 LocalSupport::Application.routes.draw do
 
+  namespace :admin do
+      resources :settings
+
+      root to: "settings#index"
+    end
   get '/.well-known/acme-challenge/:id' => 'pages#letsencrypt'
 
   devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}

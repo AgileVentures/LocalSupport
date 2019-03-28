@@ -42,6 +42,7 @@ group :development do
   gem 'rubocop-git'
   gem 'letter_opener'
   gem 'railroady'
+  gem 'spring-commands-rspec'
 end
 
 group :test do
@@ -118,3 +119,7 @@ gem 'meta-tags', '~> 2.11'
 gem 'twitter',      '~> 6.2'
 gem 'twitter-text', '~> 3.0'
 gem 'koala' # Facebook integration
+
+# Admin
+
+gem 'administrate'
