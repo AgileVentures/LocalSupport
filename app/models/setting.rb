@@ -1,8 +1,17 @@
 class Setting < ApplicationRecord
-  def self.latitude
-    find_by(key: 'latitude').try(:value) || '51.5978'
+  
+  DEFAULTS = {
+    latitude: '51.5978',
+    longitude: '-0.3370',
+    site_title: 'Harrow Community Network',
+    meta_tag_title: 'Harrow Community Network',
+    meta_tag_site: 'Harrow volunteering',
+    meta_tag_description: 'Volunteering Network for Harrow Community',
+    open_graph_site: 'Harrow Community Network'
+  }
+
+  def self.method_missing(args)
+    find_by(key: args.to_s).try(:value) || DEFAULTS[args]
   end
-  def self.longitude
-    find_by(key: 'longitude').try(:value) || '-0.3370'
-  end
+
 end
