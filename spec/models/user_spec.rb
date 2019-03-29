@@ -39,7 +39,7 @@ describe User, :type => :model do
       subject(:user) { create(:user, superadmin: true) }
 
       it 'can edit organisations' do
-        expect(user.can_delete?(model)).to be true
+        expect(user.can_delete?).to be true
       end
 
     end
@@ -47,7 +47,7 @@ describe User, :type => :model do
       subject(:user) { create(:user, superadmin: false) }
 
       it 'can edit organisations' do
-        expect(user.can_delete?(model)).to be false
+        expect(user.can_delete?).to be false
       end
 
     end

@@ -6,12 +6,12 @@ module Permissions
       superadmin? || (!org.nil? && organisation == org)
     end
 
-    def can_delete?(_org)
+    def can_delete?
       superadmin?
     end
 
     def can_request_org_admin?(org)
-      !superadmin? && organisation != org && pending_organisation != org
+      !superadmin? && (organisation != org) && (pending_organisation != org)
     end
 
     def belongs_to?(org)

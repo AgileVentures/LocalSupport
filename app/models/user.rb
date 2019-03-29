@@ -22,7 +22,11 @@ class User < ApplicationRecord
   # should we have a before_save here where we check if the pending_organization_id is going from
   # nil to a value and then send the superadmin an email ...
 
-  scope :invited_not_accepted, -> { includes(:organisation).where('users.invitation_sent_at IS NOT NULL').where('users.invitation_accepted_at IS NULL') }
+  scope :invited_not_accepted, lambda { 
+    includes(:organisation)
+    .where('users.invitation_sent_at IS NOT NULL')
+    .where('users.invitation_accepted_at IS NULL') 
+  }
   scope :superadmins, -> { where(superadmin: true) }
 
   def confirm
