@@ -7,7 +7,9 @@ class Setting < ApplicationRecord
     meta_tag_title: 'Harrow Community Network',
     meta_tag_site: 'Harrow volunteering',
     meta_tag_description: 'Volunteering Network for Harrow Community',
-    open_graph_site: 'Harrow Community Network'
+    open_graph_site: 'Harrow Community Network',
+    large_banner_path: 'HCN-long.png',
+    small_banner_path: 'HCN-small.png'
   }
 
   def self.method_missing(args)
