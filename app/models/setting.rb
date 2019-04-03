@@ -9,11 +9,11 @@ class Setting < ApplicationRecord
     meta_tag_description: 'Volunteering Network for Harrow Community',
     open_graph_site: 'Harrow Community Network',
     large_banner_path: 'HCN-long.png',
-    small_banner_path: 'HCN-small.png'
+    small_banner_path: 'HCN-small.png',
+    root_path: 'volunteer_ops#index'
   }
 
   def self.method_missing(args)
     find_by(key: args.to_s).try(:value) || DEFAULTS[args]
   end
-
 end
