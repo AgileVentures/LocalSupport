@@ -122,7 +122,7 @@ class ApplicationController < ActionController::Base
 
   def set_tags
     set_meta_tags title: meta_tag_title,
-                  site: 'Harrow volunteering',
+                  site: Setting.meta_tag_site,
                   reverse: true,
                   description: meta_tag_description,
                   author: 'http://www.agileventures.org',
@@ -132,7 +132,7 @@ class ApplicationController < ActionController::Base
   def open_graph_tags
     {
         title: meta_tag_title,
-        site: 'Harrow Community Network',
+        site: Setting.open_graph_site,
         reverse: true,
         description: meta_tag_description,
         author: 'http://www.agileventures.org'
@@ -140,11 +140,11 @@ class ApplicationController < ActionController::Base
   end
 
   def meta_tag_title
-    'Harrow Community Network'
+    Setting.meta_tag_title
   end
 
   def meta_tag_description
-    'Volunteering Network for Harrow Community'
+    Setting.meta_tag_description
   end
 
   def requested_organisation_path

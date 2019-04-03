@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
 ruby '2.5.3'
-gem 'rails', '~> 5.1'
+gem 'rails', '~> 5.2.3'
 gem 'pg', '~> 1.1'
-gem 'devise', '~> 4.5'
-gem 'devise_invitable', '~> 1.7'
+gem 'devise', '~> 4.6'
+gem 'devise_invitable', '~> 2.0'
 gem 'heroku-api'
 gem 'sprockets', '~> 3.7'
 
@@ -28,7 +28,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
   gem 'execjs'
-  gem 'aruba', '~> 0.14.6'
+  gem 'aruba', '~> 0.14.9'
   gem 'byebug'
   gem 'rack_session_access'
   gem 'jasmine', '~> 3.3'
@@ -42,24 +42,25 @@ group :development do
   gem 'rubocop-git'
   gem 'letter_opener'
   gem 'railroady'
+  gem 'spring-commands-rspec'
 end
 
 group :test do
   gem 'cucumber-rails', require: false
   gem 'cucumber-rails-training-wheels'
-  gem 'capybara', '~> 3.7'
-  gem 'nokogiri', '~> 1.8'
+  gem 'capybara', '~> 3.16'
+  gem 'nokogiri', '~> 1.10'
   gem 'factory_bot_rails'
-  gem 'webmock', '~> 3.4'
+  gem 'webmock', '~> 3.5'
   gem 'uri-handler'
   gem 'selenium'
   gem 'selenium-client'
   gem 'shoulda'
   gem 'vcr'
-  gem 'puffing-billy', '~> 1.1'
+  gem 'puffing-billy', '~> 2.1'
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
-  gem 'show_me_the_cookies', '~> 4.0'
+  gem 'show_me_the_cookies', '~> 5.0'
   gem 'rubocop-rspec', '>=1.28'
 end
 
@@ -109,7 +110,7 @@ gem 'figaro'
 gem 'airbrake'
 
 # Using user friendly names in URLs
-gem 'friendly_id', '~> 5.2.4'
+gem 'friendly_id', '~> 5.2.5'
 
 # SEO
 gem 'meta-tags', '~> 2.11'
@@ -118,3 +119,7 @@ gem 'meta-tags', '~> 2.11'
 gem 'twitter',      '~> 6.2'
 gem 'twitter-text', '~> 3.0'
 gem 'koala' # Facebook integration
+
+# Admin
+
+gem 'administrate'

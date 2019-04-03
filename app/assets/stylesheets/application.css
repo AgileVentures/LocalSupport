@@ -403,7 +403,6 @@ input[type="text"] {
 
 @media (min-width: 980px) {
     #page-logo {
-        background: url('HCN-long.png') no-repeat;
         display: inline-block;
         height: 72px;
         width: 1200px;
@@ -421,7 +420,6 @@ input[type="text"] {
 
 @media (max-width: 979px) {
     #page-logo {
-        background: url('HCN-small.png') no-repeat;
         display: inline-block;
         height: 135px;
         width: 120px;
