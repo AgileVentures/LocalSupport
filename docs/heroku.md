@@ -25,3 +25,9 @@ $ irb
 ```
 
 see https://stackoverflow.com/a/5967114/316729 for more details
+
+To get the maps working we need to get a Google maps API KEY, by creating a project at https://console.cloud.google.com, creating an API key and then enabling the JavaScript API key.
+
+
+
+
