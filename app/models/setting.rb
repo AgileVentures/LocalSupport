@@ -15,5 +15,4 @@ class Setting < ApplicationRecord
   def self.method_missing(args)
     find_by(key: args.to_s).try(:value) || DEFAULTS[args]
   end
-
 end
