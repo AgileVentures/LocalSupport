@@ -12,8 +12,8 @@ Feature: Map of local charities
       | name                           | description                    | address        | postcode | website       |
       | Harrow Bereavement Counselling | Harrow Bereavement Counselling | 34 Pinner Road | HA1 4HZ  | http://a.com/ |
       | Indian Elders Association      | Care for the elderly           | 64 Pinner Road | HA1 4HZ  | http://b.com/ |
-      | Age UK                         | Care for the Elderly           | 84 Pinner Road | HA1 4HZ  | http://c.com/ |
-      | Youth UK                       | Care for the Very Young        | 84 Pinner Road | HA1 4HZ  | http://d.com/ |
+      | Age UK                         | Care for the Elderly           | 84 Pinner Road | HA1 4LP  | http://c.com/ |
+      | Youth UK                       | Care for the Very Young        | 84 Pinner Road | HA1 4LP  | http://d.com/ |
       | Wrong Postcode UK              | Confused                       | 50 City Road   | HA1 4HZ  | http://e.com/ |
 
     Given the following users are registered:
@@ -60,7 +60,7 @@ Feature: Map of local charities
     Given cookies are approved
     When I am signed in as a charity worker related to "Youth UK"
     And I update "Youth UK" charity address to be "34 pinner road"
-#    And I update "Youth UK" charity postcode to be "HA1 4HZ"
+    And I update "Youth UK" charity postcode to be "HA1 4HZ"
     And I visit the organisations index page
     Then the coordinates for "Harrow Bereavement Counselling" and "Youth UK" should be the same
     Then the coordinates for "Age UK" and "Youth UK" should not be the same

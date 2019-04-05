@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://maps.googleapis.com/maps/api/geocode/json?address=50%20City%20Road,%20HA1%204HZ&language=en&sensor=false
+    uri: https://nominatim.openstreetmap.org/search?accept-language=en&addressdetails=1&format=json&q=50%20City%20Road,%20HA1%204HZ
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
       User-Agent:
       - Ruby
   response:
@@ -18,87 +18,29 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Date:
+      - Fri, 05 Apr 2019 11:51:10 GMT
+      Server:
+      - Apache/2.4.29 (Ubuntu)
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=0, report-uri="https://openstreetmap.report-uri.com/r/d/ct/reportOnly"
+      Upgrade:
+      - h2
+      Connection:
+      - Upgrade, close
+      Transfer-Encoding:
+      - chunked
       Content-Type:
       - application/json; charset=UTF-8
-      Date:
-      - Tue, 02 Feb 2016 10:02:02 GMT
-      Expires:
-      - Wed, 03 Feb 2016 10:02:02 GMT
-      Cache-Control:
-      - public, max-age=86400
-      Access-Control-Allow-Origin:
-      - '*'
-      Server:
-      - mafe
-      Content-Length:
-      - '514'
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Frame-Options:
-      - SAMEORIGIN
     body:
       encoding: UTF-8
-      string: |
-        {
-           "results" : [
-              {
-                 "address_components" : [
-                    {
-                       "long_name" : "HA1 4HZ",
-                       "short_name" : "HA1 4HZ",
-                       "types" : [ "postal_code" ]
-                    },
-                    {
-                       "long_name" : "Pinner Road",
-                       "short_name" : "Pinner Rd",
-                       "types" : [ "route" ]
-                    },
-                    {
-                       "long_name" : "Harrow",
-                       "short_name" : "Harrow",
-                       "types" : [ "locality", "political" ]
-                    },
-                    {
-                       "long_name" : "Harrow",
-                       "short_name" : "Harrow",
-                       "types" : [ "postal_town" ]
-                    },
-                    {
-                       "long_name" : "Greater London",
-                       "short_name" : "Greater London",
-                       "types" : [ "administrative_area_level_2", "political" ]
-                    },
-                    {
-                       "long_name" : "United Kingdom",
-                       "short_name" : "GB",
-                       "types" : [ "country", "political" ]
-                    }
-                 ],
-                 "formatted_address" : "Pinner Rd, Harrow, Greater London HA1 4HZ, UK",
-                 "geometry" : {
-                    "location" : {
-                       "lat" : 51.58152579999999,
-                       "lng" : -0.3439557
-                    },
-                    "location_type" : "APPROXIMATE",
-                    "viewport" : {
-                       "northeast" : {
-                          "lat" : 51.58287478029149,
-                          "lng" : -0.3426067197084979
-                       },
-                       "southwest" : {
-                          "lat" : 51.58017681970849,
-                          "lng" : -0.345304680291502
-                       }
-                    }
-                 },
-                 "partial_match" : true,
-                 "place_id" : "ChIJxZuTtW0TdkgRhPFbBoYsfcU",
-                 "types" : [ "postal_code" ]
-              }
-           ],
-           "status" : "OK"
-        }
+      string: "[]"
     http_version: 
-  recorded_at: Tue, 02 Feb 2016 10:02:09 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Thu, 25 Dec 1980 00:00:01 GMT
+recorded_with: VCR 4.0.0
