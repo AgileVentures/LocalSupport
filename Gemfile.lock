@@ -63,7 +63,7 @@ GEM
       momentjs-rails (~> 2.8)
       sass-rails (~> 5.0)
       selectize-rails (~> 0.6)
-    airbrake (9.0.0)
+    airbrake (9.0.1)
       airbrake-ruby (~> 4.2)
     airbrake-ruby (4.2.2)
       rbtree3 (~> 0.5)
