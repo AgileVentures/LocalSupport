@@ -1,5 +1,6 @@
 LocalSupport::Application.routes.draw do
 
+  resources :services
   namespace :admin do
       resources :settings
 

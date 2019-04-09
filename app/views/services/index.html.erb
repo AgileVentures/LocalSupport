@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Services</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Delivered by organization name</th>
+      <th>Display name</th>
+      <th>Self care one to one or group</th>
+      <th>Service activities</th>
+      <th>Self care service category</th>
+      <th>Self care category secondary</th>
+      <th>Office main phone general phone</th>
+      <th>Office main email</th>
+      <th>Self care service agreed</th>
+      <th>Where we work</th>
+      <th>Website</th>
+      <th>Contact</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @services.each do |service| %>
+      <tr>
+        <td><%= service.delivered_by_organization_name %></td>
+        <td><%= service.display_name %></td>
+        <td><%= service.self_care_one_to_one_or_group %></td>
+        <td><%= service.service_activities %></td>
+        <td><%= service.self_care_service_category %></td>
+        <td><%= service.self_care_category_secondary %></td>
+        <td><%= service.office_main_phone_general_phone %></td>
+        <td><%= service.office_main_email %></td>
+        <td><%= service.self_care_service_agreed %></td>
+        <td><%= service.where_we_work %></td>
+        <td><%= service.website %></td>
+        <td><%= service.contact_id %></td>
+        <td><%= link_to 'Show', service %></td>
+        <td><%= link_to 'Edit', edit_service_path(service) %></td>
+        <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Service', new_service_path %>
