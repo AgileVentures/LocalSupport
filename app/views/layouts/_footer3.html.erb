@@ -2,6 +2,7 @@
   <p class="right-footer"><small>
     <% if current_user.try(:superadmin?) %>
       | <%= link_to('New Organisation' , new_organisation_path)%>
+      | <%= link_to('New Service' , new_service_path)%>
     <%end%>
     <% unless current_user.try(:superadmin?) || !Feature.active?(:automated_propose_org)%>
        | <%= link_to("Add Organisation", new_proposed_organisation_path, 'data-signed_in' => current_user.present?, id: 'add_org')%>

@@ -1,0 +1,192 @@
+<%= form_with(model: service, local: true) do |form| %>
+  <% if service.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(service.errors.count, "error") %> prohibited this service from being saved:</h2>
+
+      <ul>
+      <% service.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :contact_id %>
+    <%= form.text_field :contact_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :display_name %>
+    <%= form.text_field :display_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :service_activities %>
+    <%= form.text_area :service_activities %>
+  </div>
+
+  <div class="field">
+    <%= form.label :postal_code %>
+    <%= form.text_field :postal_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :office_main_phone_general_phone %>
+    <%= form.text_field :office_main_phone_general_phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :office_main_email %>
+    <%= form.text_field :office_main_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :website %>
+    <%= form.text_field :website %>
+  </div>
+
+  <div class="field">
+    <%= form.label :delivered_by_organization_name %>
+    <%= form.text_field :delivered_by_organization_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :where_we_work %>
+    <%= form.text_field :where_we_work %>
+  </div>
+
+  <div class="field">
+    <%= form.label :self_care_one_to_one_or_group %>
+    <%= form.text_field :self_care_one_to_one_or_group %>
+  </div>
+
+  <div class="field">
+    <%= form.label :self_care_service_category %>
+    <%= form.text_field :self_care_service_category %>
+  </div>
+
+  <div class="field">
+    <%= form.label :self_care_category_secondary %>
+    <%= form.text_field :self_care_category_secondary %>
+  </div>
+
+  <div class="field">
+    <%= form.label :self_care_service_agreed %>
+    <%= form.text_field :self_care_service_agreed %>
+  </div>
+
+  <div class="field">
+    <%= form.label :created_date %>
+    <%= form.datetime_select :created_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :modified_date %>
+    <%= form.datetime_select :modified_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location_type %>
+    <%= form.text_field :location_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :street_address %>
+    <%= form.text_field :street_address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :street_number %>
+    <%= form.text_field :street_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :street_name %>
+    <%= form.text_field :street_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :street_unit %>
+    <%= form.text_field :street_unit %>
+  </div>
+
+  <div class="field">
+    <%= form.label :supplemental_address_1 %>
+    <%= form.text_field :supplemental_address_1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :supplemental_address_2 %>
+    <%= form.text_field :supplemental_address_2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :supplemental_address_3 %>
+    <%= form.text_field :supplemental_address_3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :latitude %>
+    <%= form.number_field :latitude %>
+  </div>
+
+  <div class="field">
+    <%= form.label :longitude %>
+    <%= form.number_field :longitude %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address_name %>
+    <%= form.text_field :address_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :county %>
+    <%= form.text_field :county %>
+  </div>
+
+  <div class="field">
+    <%= form.label :state %>
+    <%= form.text_field :state %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country %>
+    <%= form.text_field :country %>
+  </div>
+
+  <div class="field">
+    <%= form.label :groups %>
+    <%= form.text_field :groups %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tags %>
+    <%= form.text_field :tags %>
+  </div>
+
+  <div class="field">
+    <%= form.label :activity_type %>
+    <%= form.text_field :activity_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :summary_of_activities %>
+    <%= form.text_field :summary_of_activities %>
+  </div>
+
+  <div class="field">
+    <%= form.label :beneficiaries %>
+    <%= form.text_field :beneficiaries %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
