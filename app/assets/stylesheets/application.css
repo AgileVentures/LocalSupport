@@ -403,9 +403,7 @@ input[type="text"] {
 
 @media (min-width: 980px) {
     #page-logo {
-        display: inline-block;
         height: 72px;
-        width: 1200px;
         line-height: 0;
         font-size: 0;
         color: transparent;
@@ -420,9 +418,7 @@ input[type="text"] {
 
 @media (max-width: 979px) {
     #page-logo {
-        display: inline-block;
         height: 135px;
-        width: 120px;
         line-height: 0;
         font-size: 0;
         color: transparent;

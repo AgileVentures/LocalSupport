@@ -57,6 +57,11 @@ module ApplicationHelper
     options[:onclick] = "return trackOutboundLink('#{url}', #{is_external})"
     link_to title, url, options
   end
+
+  def banner_load
+    # 'HCN-long'
+    Setting.large_banner_path
+  end
 end
 
 

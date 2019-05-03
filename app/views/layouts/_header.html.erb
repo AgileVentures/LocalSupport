@@ -4,7 +4,9 @@
       <div id="navbar" class="navbar">
         <div class="navbar-inner">
           <div id="banner" class="container">
-            <%= link_to "Harrow Community Network", root_path, :class => "img-responsive", :id => "page-logo" %>
+            <%= link_to root_path, id:  "page-logo" do %>
+              <%= image_tag banner_load, class: "img-responsive" %>
+            <% end %>
           </div>
           <div class="container">
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
