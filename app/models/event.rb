@@ -6,6 +6,7 @@ class Event < ApplicationRecord
   validates :organisation_id, presence: true, on: [:create]
   validate :start_date_cannot_be_greater_than_end_date
   belongs_to :organisation
+  after_validation :geocode
 
   scope :upcoming, lambda { |n|
     where('start_date >= ?', Time.zone.now.to_date)
@@ -28,15 +29,15 @@ class Event < ApplicationRecord
     events = event_with_coordinates(events)
     Location.build_hash(group_by_coordinates(events))
   end
-
+  
   private
-
+  
   def self.event_with_coordinates(events)
     events.map do |ev|
       ev.send((ev.address.present?) ? :lat_lng_supplier : :lat_lng_default )
     end
   end
-
+  
   def lat_lng_default
     return send(:with_organisation_coordinates) unless organisation.nil?
     self.tap do |e|
@@ -44,7 +45,7 @@ class Event < ApplicationRecord
       e.latitude = 0.0
     end
   end
-
+  
   def lat_lng_supplier
     return self if (latitude && longitude) and !address_changed?
     check_geocode

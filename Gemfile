@@ -48,7 +48,7 @@ end
 group :test do
   gem 'cucumber-rails', require: false
   gem 'cucumber-rails-training-wheels'
-  gem 'capybara', '~> 3.16'
+  gem 'capybara', '~> 3.18'
   gem 'nokogiri', '~> 1.10'
   gem 'factory_bot_rails'
   gem 'webmock', '~> 3.5'
@@ -69,7 +69,7 @@ group :production do
   gem 'newrelic_rpm'
 end
 
-gem 'coffee-rails', '4.2.2'
+gem 'coffee-rails', '5.0.0'
 gem 'uglifier', '~> 4.1'
 gem 'sass-rails', '~> 5.0'
 gem 'less-rails', '~> 4.0'
