@@ -5,7 +5,7 @@ class ImportKCSC
 
   private
 
-  attr_reader :http
+  attr_reader :http, :model_klass
 
   def initialize http, model_klass
     @http = http
@@ -14,11 +14,14 @@ class ImportKCSC
 
   HOST = 'https://www.kcsc.org.uk'
   HREF = '/api/self-care/all?key='
+  ADDRESSES_HREF = '/api/self-care/addresses/all?key='
 
   def run
     @response = http.get "#{HOST}#{HREF}#{ENV['KCSC_API_KEY']}"
     return unless response_has_content?
+    @addresses_response = http.get "#{HOST}#{ADDRESSES_HREF}#{ENV['KCSC_API_KEY']}"
     @kcsc_contacts = JSON.parse(@response.body)['organisations']
+    @kcsc_contact_addresses = JSON.parse(@addresses_response.body)['addresses']
     find_or_create_organisations
   end
 
@@ -26,12 +29,25 @@ class ImportKCSC
     @response.body && @response.body != '{}'
   end
 
+  # TODO handling updates
+  # TODO handling mismatch of address and contact ids?
+  # TODO find or create should be based on ID?
   def find_or_create_organisations
-    @kcsc_contacts.each do |kcsc_contact|
-      name = kcsc_contact['organisation']['Delivered by-Organization Name'].titleize
-      description = kcsc_contact['organisation']['Summary of Activities']
-      organisation = @model_klass.find_or_create_by! name: name, description: description
+    @kcsc_contacts.zip(@kcsc_contact_addresses).each do |contact, address|
+      organisation = model_klass.find_or_create_by! args(contact, address)
+      organisation.geocode if organisation.not_geocoded?
     end
+  end
+
+  # TODO process more of address
+  def args(contact, address)
+    {
+      name: contact['organisation']['Delivered by-Organization Name'].titleize,
+      description: contact['organisation']['Summary of Activities'],
+      postcode: address['address']['postal_code'] || '',
+      latitude: address['address']['Latitude'],
+      longitude: address['address']['Longitude']
+    }
   end
 
 end
