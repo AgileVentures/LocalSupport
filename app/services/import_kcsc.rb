@@ -29,9 +29,6 @@ class ImportKCSC
     @response.body && @response.body != '{}'
   end
 
-  # TODO handling updates
-  # TODO handling mismatch of address and contact ids?
-  # TODO find or create should be based on ID?
   def find_or_create_organisations
     @kcsc_contacts.zip(@kcsc_contact_addresses).each do |contact, address|
       organisation = model_klass.find_or_create_by! args(contact, address)
@@ -39,7 +36,6 @@ class ImportKCSC
     end
   end
 
-  # TODO process more of address
   def args(contact, address)
     {
       name: contact['organisation']['Delivered by-Organization Name'].titleize,
