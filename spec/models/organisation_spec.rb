@@ -33,9 +33,9 @@ describe Organisation, :type => :model do
       Queries::Organisations.add_recently_updated_and_has_owner(Organisation.where(id: org.id)).first
     end
     context 'no user' do
-      it 'returns small icon when no associated user' do
-        expect(build_org_with_computed_fields_and_updated_at(@org1).gmaps4rails_marker_attrs).to eq(['measle.png',
-          {'data-id'=>@org1.id, :class=>'measle'}])
+      it 'returns large icon when no associated user' do
+        expect(build_org_with_computed_fields_and_updated_at(@org1).gmaps4rails_marker_attrs).to eq(['marker.png',
+          {'data-id'=>@org1.id, :class=>'marker'}])
       end
     end
 

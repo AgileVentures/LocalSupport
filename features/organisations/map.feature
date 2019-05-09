@@ -23,15 +23,15 @@ Feature: Map of local charities
 
   @javascript @vcr @billy
   Scenario: Show all charities in map on organisations index page map
-    Given I visit the organisations index page
-    Then I should see the following measle markers in the map:
-      | Indian Elders Association | Age UK | Harrow Bereavement Counselling |
+    Given I visit the organisations index page 
+    Then I should see the following pin markers in the map:
+      | Indian Elders Association | Age UK | Harrow Bereavement Counselling | Youth UK | Wrong Postcode UK | 
 
   @javascript @billy
   Scenario: Infowindow appears when clicking on map marker
     Given I visit the organisations index page
-    Then I should see an infowindow when I click on the map markers:
-      | Indian Elders Association | Age UK | Harrow Bereavement Counselling |
+    Then I should see an infowindow when I click on the map pin markers:
+      | Indian Elders Association | Age UK | Harrow Bereavement Counselling | Youth UK | Wrong Postcode UK | 
 
   @javascript @billy
   Scenario Outline: Organisation map has small icon for organisations updated more than 365 days ago
@@ -48,9 +48,9 @@ Feature: Map of local charities
       |100   | small|
 
   @javascript @billy
-  Scenario: Organisation map has small icon for organisation with no users
+  Scenario: Organisation map has large icon for organisation with no users
     Given I visit the organisations index page
-    Then the organisation "Indian Elders Association" should have a small icon
+    Then the organisation "Indian Elders Association" should have a large icon
 
   @vcr
   Scenario: Changing address on the map changes the map coordinates
@@ -80,14 +80,14 @@ Feature: Map of local charities
   Scenario: Show meaning of large map icons on home page
     Given I visit the organisations index page
     And I click "Close"
-    Then I should see "Details updated by the organisation within the last 12 months"
-    Then I should see "Details NOT updated by the organisation within the last 12 months"
+    Then I should see "Details updated within the last 12 months"
+    Then I should see "Details NOT updated within the last 12 months"
 
   Scenario: Do not show meaning of large map icons on volunteer ops page
     Given I visit the volunteer opportunities page
     And I click "Close"
-    Then I should not see "Details updated by the organisation within the last 12 months"
-    Then I should not see "Details NOT updated by the organisation within the last 12 months"
+    Then I should not see "Details updated within the last 12 months"
+    Then I should not see "Details NOT updated within the last 12 months"
 
   Scenario: If the Google Maps API key is set that will appear in the right location
     Given the Google Maps API key is set

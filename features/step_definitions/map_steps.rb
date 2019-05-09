@@ -1,5 +1,6 @@
-Then(/^I should see an infowindow when I click on the map markers:$/) do |table|
-  check_for_org_info_box(table.raw.flatten, '.measle')
+Then(/^I should see an infowindow when I click on the map (measle|pin|event|vol_op) markers:$/) do |klass, table|
+  klass_hash = {'measle' => '.measle', 'vol_op' => '.vol_op', 'event' => '.vol_op', 'pin' => '.marker'}
+  check_for_org_info_box(table.raw.flatten, klass_hash[klass])
 end
 
 Then(/^I should see an infowindow when I click on the (?:.*) map markers:$/) do |table|
@@ -59,7 +60,7 @@ def check_for_org_info_box tbl, selector
         .pluck(:name, :description, :id, :slug)
         .map {|name, desc, id, frdly_id| [name, smart_truncate(desc, 44), id, frdly_id]}
         .each do |name, desc, id, friendly_id|
-      click_map_icon(id)
+      click_map_icon(id, selector)
       expect(page).to have_css('.arrow_box')
       expect(find('.arrow_box')).to have_content(desc)
       expect(find('.arrow_box')).to have_content(name)
@@ -110,9 +111,9 @@ def check_for_no_org_info_box(tbl, selector, check_tbl_length = true)
   end
 end
 
-def click_map_icon id
-  expect(page).to have_css(".measle[data-id='#{id}']")
-  icon = find(".measle[data-id='#{id}']")
+def click_map_icon id, selector
+  expect(page).to have_css("#{selector}[data-id='#{id}']")
+  icon = find("#{selector}[data-id='#{id}']")
   click_twice icon
 end
 
@@ -144,8 +145,8 @@ Then /^the (proposed organisation|organisation) "(.*?)" should have a (large|sma
   end
 end
 
-Then /^I should( not)? see the following (measle|vol_op|event) markers in the map:$/ do |negative, klass, table|
-  klass_hash = {'measle' => '.measle', 'vol_op' => '.vol_op', 'event' => '.vol_op'}
+Then /^I should( not)? see the following (measle|vol_op|event|pin) markers in the map:$/ do |negative, klass, table|
+  klass_hash = {'measle' => '.measle', 'vol_op' => '.vol_op', 'event' => '.vol_op', 'pin' => '.marker'}
   expect(page).to have_css(klass_hash[klass], :count => table.raw.flatten.length)
   marker_data = page.find('#marker_data')['data-markers']
   table.raw.flatten do |title|

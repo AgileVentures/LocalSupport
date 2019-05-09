@@ -181,7 +181,7 @@ http_interactions:
   recorded_at: Thu, 01 Mar 2018 06:02:25 GMT
 - request:
     method: get
-    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA7%203PF,%20Harrow&language=en&sensor=false
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA7%203PF,%20Harrow&key=<GMAP_API_KEY>&language=en&sensor=false
     body:
       encoding: US-ASCII
       string: ''
@@ -291,7 +291,7 @@ http_interactions:
   recorded_at: Thu, 01 Mar 2018 06:02:26 GMT
 - request:
     method: get
-    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA7%201GB,%20Harrow&language=en&sensor=false
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA7%201GB,%20Harrow&key=<GMAP_API_KEY>&language=en&sensor=false
     body:
       encoding: US-ASCII
       string: ''
@@ -386,7 +386,7 @@ http_interactions:
   recorded_at: Thu, 01 Mar 2018 06:02:26 GMT
 - request:
     method: get
-    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA4%200LR,%20HILLINGDON&language=en&sensor=false
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA4%200LR,%20HILLINGDON&key=<GMAP_API_KEY>&language=en&sensor=false
     body:
       encoding: US-ASCII
       string: ''
@@ -491,7 +491,7 @@ http_interactions:
   recorded_at: Thu, 01 Mar 2018 06:02:27 GMT
 - request:
     method: get
-    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA0%203AB,%20Wembley&language=en&sensor=false
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA0%203AB,%20Wembley&key=<GMAP_API_KEY>&language=en&sensor=false
     body:
       encoding: US-ASCII
       string: ''
@@ -601,7 +601,7 @@ http_interactions:
   recorded_at: Thu, 01 Mar 2018 06:02:28 GMT
 - request:
     method: get
-    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA5%201AE,%20Pinner&language=en&sensor=false
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA5%201AE,%20Pinner&key=<GMAP_API_KEY>&language=en&sensor=false
     body:
       encoding: US-ASCII
       string: ''
@@ -711,7 +711,7 @@ http_interactions:
   recorded_at: Thu, 01 Mar 2018 06:02:28 GMT
 - request:
     method: get
-    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA9%200NA,%20Kingston,%20Twickenham,%20Hammersmith,%20Wembley,%20Hayes&language=en&sensor=false
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA9%200NA,%20Kingston,%20Twickenham,%20Hammersmith,%20Wembley,%20Hayes&key=<GMAP_API_KEY>&language=en&sensor=false
     body:
       encoding: US-ASCII
       string: ''

@@ -67,6 +67,9 @@ GEM
       airbrake-ruby (~> 4.3)
     airbrake-ruby (4.3.0)
       rbtree3 (~> 0.5)
+    annotate (2.7.5)
+      activerecord (>= 3.2, < 7.0)
+      rake (>= 10.4, < 13.0)
     arel (9.0.0)
     aruba (0.14.9)
       childprocess (>= 0.6.3, < 1.1.0)
@@ -100,6 +103,7 @@ GEM
     childprocess (1.0.1)
       rake (< 13.0)
     cliver (0.3.2)
+    coderay (1.1.2)
     coffee-rails (5.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 5.2.0)
@@ -310,6 +314,12 @@ GEM
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
     powerpack (0.1.2)
+    pry (0.12.2)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    pry-byebug (3.7.0)
+      byebug (~> 11.0)
+      pry (~> 0.10)
     public_suffix (3.0.3)
     puffing-billy (2.1.0)
       addressable (~> 2.5)
@@ -518,12 +528,12 @@ PLATFORMS
 DEPENDENCIES
   administrate
   airbrake
+  annotate
   aruba (~> 0.14.9)
   binding_of_caller
   bootstrap3-datetimepicker-rails
   bootstrap_sortable_rails (~> 1.11.2)
   breadcrumbs_on_rails
-  byebug
   capybara (~> 3.18)
   coffee-rails (= 5.0.0)
   cucumber-rails
@@ -558,6 +568,7 @@ DEPENDENCIES
   pg (~> 1.1)
   phantomjs
   poltergeist
+  pry-byebug
   puffing-billy (~> 2.1)
   puma
   rack_session_access

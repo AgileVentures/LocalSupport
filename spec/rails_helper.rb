@@ -11,6 +11,7 @@ require 'capybara/rspec'
 require 'factory_bot_rails'
 require 'rack_session_access/capybara'
 require 'webmock/rspec'
+require 'pry-byebug'
 
 Billy.configure do |c|
   c.whitelist = ['test.host', 'localhost' , '127.0.0.1']
