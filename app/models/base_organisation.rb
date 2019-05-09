@@ -48,7 +48,6 @@ class BaseOrganisation < ApplicationRecord
     geocode if run_geocode?
   end
 
-  # TODO modify to run only on postcode
   def run_geocode?
     # trigger geocode if I have an address but no coordinates and
     # the object is being created
