@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.kcsc.org.uk/api/self-care/all?key=<FILTERED>
+    uri: https://www.kcsc.org.uk/api/self-care/all?key=<KCSC_API_KEY>
     body:
       encoding: US-ASCII
       string: ''
@@ -2428,7 +2428,7 @@ http_interactions:
   recorded_at: Wed, 08 May 2019 16:43:56 GMT
 - request:
     method: get
-    uri: https://www.kcsc.org.uk/api/self-care/addresses/all?key=<FILTERED>
+    uri: https://www.kcsc.org.uk/api/self-care/addresses/all?key=<KCSC_API_KEY>
     body:
       encoding: US-ASCII
       string: ''
