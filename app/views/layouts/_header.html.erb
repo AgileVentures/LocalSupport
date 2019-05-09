@@ -5,7 +5,11 @@
         <div class="navbar-inner">
           <div id="banner" class="container">
             <%= link_to root_path, id:  "page-logo" do %>
-              <%= image_tag banner_load, class: "img-responsive" %>
+              <picture>
+                <source srcset="<%= asset_path(Setting.large_banner_path) %>" media="(min-width: 580px)">
+                <%= image_tag Setting.small_banner_path, class: "img-responsive" %>
+              </picture>
+
             <% end %>
           </div>
           <div class="container">
