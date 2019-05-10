@@ -1,4 +1,6 @@
-class ServicesController < ApplicationController
+class ServicesController < BaseOrganisationsController
+  add_breadcrumb 'Services', :services_path
+  layout 'two_columns_with_map'
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
   # GET /services
