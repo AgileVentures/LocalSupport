@@ -239,7 +239,7 @@ http_interactions:
   recorded_at: Wed, 22 Mar 2017 10:02:00 GMT
 - request:
     method: get
-    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA1%203UJ,%20Harrow&language=en&sensor=false
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA1%203UJ,%20Harrow&key=<GMAP_API_KEY>&language=en&sensor=false
     body:
       encoding: US-ASCII
       string: ''
@@ -344,7 +344,7 @@ http_interactions:
   recorded_at: Wed, 22 Mar 2017 10:02:00 GMT
 - request:
     method: get
-    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA02LP,%20Sudbury%20Town,%20London%20Borough%20of%20Brent&language=en&sensor=false
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA02LP,%20Sudbury%20Town,%20London%20Borough%20of%20Brent&key=<GMAP_API_KEY>&language=en&sensor=false
     body:
       encoding: US-ASCII
       string: ''
@@ -459,7 +459,7 @@ http_interactions:
   recorded_at: Wed, 22 Mar 2017 10:02:01 GMT
 - request:
     method: get
-    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA,%20Harrow&language=en&sensor=false
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA,%20Harrow&key=<GMAP_API_KEY>&language=en&sensor=false
     body:
       encoding: US-ASCII
       string: ''
@@ -565,7 +565,7 @@ http_interactions:
   recorded_at: Wed, 22 Mar 2017 10:02:01 GMT
 - request:
     method: get
-    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA02LP,%20Brent&language=en&sensor=false
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA02LP,%20Brent&key=<GMAP_API_KEY>&language=en&sensor=false
     body:
       encoding: US-ASCII
       string: ''
@@ -675,7 +675,7 @@ http_interactions:
   recorded_at: Wed, 22 Mar 2017 10:02:01 GMT
 - request:
     method: get
-    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA8%200LN,%20Barnet&language=en&sensor=false
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA8%200LN,%20Barnet&key=<GMAP_API_KEY>&language=en&sensor=false
     body:
       encoding: US-ASCII
       string: ''
@@ -785,7 +785,7 @@ http_interactions:
   recorded_at: Wed, 22 Mar 2017 10:02:01 GMT
 - request:
     method: get
-    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA7%203JE,%20London&language=en&sensor=false
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA7%203JE,%20London&key=<GMAP_API_KEY>&language=en&sensor=false
     body:
       encoding: US-ASCII
       string: ''
@@ -890,7 +890,7 @@ http_interactions:
   recorded_at: Wed, 22 Mar 2017 10:02:01 GMT
 - request:
     method: get
-    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA8%200LN,%20Burnt%20Oak&language=en&sensor=false
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA8%200LN,%20Burnt%20Oak&key=<GMAP_API_KEY>&language=en&sensor=false
     body:
       encoding: US-ASCII
       string: ''
@@ -1000,7 +1000,7 @@ http_interactions:
   recorded_at: Wed, 22 Mar 2017 10:02:02 GMT
 - request:
     method: get
-    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA1%203UJ%20%20%20,%20Harrow&language=en&sensor=false
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA1%203UJ%20%20%20,%20Harrow&key=<GMAP_API_KEY>&language=en&sensor=false
     body:
       encoding: US-ASCII
       string: ''
@@ -1105,7 +1105,7 @@ http_interactions:
   recorded_at: Wed, 22 Mar 2017 10:02:02 GMT
 - request:
     method: get
-    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA8%209BG,%20Edgware&language=en&sensor=false
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA8%209BG,%20Edgware&key=<GMAP_API_KEY>&language=en&sensor=false
     body:
       encoding: US-ASCII
       string: ''
@@ -1210,7 +1210,7 @@ http_interactions:
   recorded_at: Wed, 22 Mar 2017 10:02:02 GMT
 - request:
     method: get
-    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HA9%209FX,%20Wembley&language=en&sensor=false
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA9%209FX,%20Wembley&key=<GMAP_API_KEY>&language=en&sensor=false
     body:
       encoding: US-ASCII
       string: ''
@@ -1318,4 +1318,4 @@ http_interactions:
         }
     http_version: 
   recorded_at: Wed, 22 Mar 2017 10:02:02 GMT
-recorded_with: VCR 3.0.3
+recorded_with: VCR 4.0.0

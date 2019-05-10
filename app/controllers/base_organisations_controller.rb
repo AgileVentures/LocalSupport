@@ -20,8 +20,8 @@ class BaseOrganisationsController < ApplicationController
           partial: 'shared/custom_marker',
           locals: { attrs: org.gmaps4rails_marker_attrs }
         ),
-        index: org.recently_updated_and_has_owner ? 1 : -1,
-        type:  org.recently_updated_and_has_owner ? 'large_org' : 'small_org'
+        index: org.has_been_updated_recently? ? 1 : -1,
+        type:  org.has_been_updated_recently? ? 'large_org' : 'small_org'
       )
     end
   end

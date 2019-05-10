@@ -55,7 +55,7 @@ Feature: User proposes an organisation to be added to HarrowCN
     And I should see all the proposed organisation fields
     And the proposed organisation should have been created
     And I should be on the proposed organisations show page for the organisation
-    And the proposed organisation "Friendly charity" should have a small icon
+    And the proposed organisation "Friendly charity" should have a large icon
     Then I should not see an "Accept Proposed Organisation" button
     And I should not see a "Reject Proposed Organisation" button
 
@@ -69,7 +69,7 @@ Feature: User proposes an organisation to be added to HarrowCN
     And I should see all the proposed organisation fields
     And the proposed organisation should have been created
     And I should be on the proposed organisations show page for the organisation
-    And the proposed organisation "Friendly charity" should have a small icon
+    And the proposed organisation "Friendly charity" should have a large icon
     Then I should not see an "Accept Proposed Organisation" button
     And I should not see a "Reject Proposed Organisation" button
 
