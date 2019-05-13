@@ -18,6 +18,9 @@ var OrganisationMap = {
       zoom: Settings.zoom
     });
 
+    map.data.loadGeoJson('/assets/pcns.json');
+
+
     var markerData = $("#marker_data").data().markers
 
     var marker
