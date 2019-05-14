@@ -14,8 +14,6 @@ class CreateServices < ActiveRecord::Migration[5.2]
       t.string :self_care_service_category
       t.string :self_care_category_secondary
       t.string :self_care_service_agreed
-      t.datetime :created_date
-      t.datetime :modified_date
       t.string :location_type
       t.string :street_address
       t.string :street_number
