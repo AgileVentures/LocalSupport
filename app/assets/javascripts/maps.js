@@ -1,5 +1,6 @@
 //= require google-infobox/google-infobox
 //= require google_maps/custom_marker
+//= require topojson
 
 var map;
 var openedInfoBox = null;
@@ -18,8 +19,10 @@ var OrganisationMap = {
       zoom: Settings.zoom
     });
 
-    map.data.loadGeoJson('/assets/pcns.json');
-
+    jQuery.getJSON( "/assets/topo_E09000020.json", function( data ) {
+      geoJsonObject = topojson.feature(data, data.objects.E09000020)
+      map.data.addGeoJson(geoJsonObject); 
+    });
 
     var markerData = $("#marker_data").data().markers
 
