@@ -6,7 +6,8 @@ gem 'pg', '~> 1.1'
 gem 'devise', '~> 4.6'
 gem 'devise_invitable', '~> 2.0'
 gem 'heroku-api'
-gem 'sprockets', '~> 3.7'
+gem 'sprockets'
+gem 'sprockets-es6'
 
 gem 'fullcalendar-rails'
 gem 'bootstrap3-datetimepicker-rails'
@@ -71,7 +72,7 @@ group :production do
 end
 
 gem 'coffee-rails', '5.0.0'
-gem 'uglifier', '3.2.0'
+gem 'uglifier'
 gem 'sass-rails', '~> 5.0'
 gem 'less-rails', '~> 4.0'
 gem 'twitter-bootstrap-rails', '3.2.2'
