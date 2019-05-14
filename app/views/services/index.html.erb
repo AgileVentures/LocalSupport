@@ -1,94 +1,22 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Services</h1>
-<div id="orgs_scroll">
-  <div class="table">
-<table>
-  <thead>
-    <tr>
-      <th>Contact</th>
-      <th>Display name</th>
-      <th>Service activities</th>
-      <th>Postal code</th>
-      <th>Office main phone general phone</th>
-      <th>Office main email</th>
-      <th>Website</th>
-      <th>Delivered by organization name</th>
-      <th>Where we work</th>
-      <th>Self care one to one or group</th>
-      <th>Self care service category</th>
-      <th>Self care category secondary</th>
-      <th>Self care service agreed</th>
-      <th>Location type</th>
-      <th>Street address</th>
-      <th>Street number</th>
-      <th>Street name</th>
-      <th>Street unit</th>
-      <th>Supplemental address 1</th>
-      <th>Supplemental address 2</th>
-      <th>Supplemental address 3</th>
-      <th>City</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Address name</th>
-      <th>County</th>
-      <th>State</th>
-      <th>Country</th>
-      <th>Groups</th>
-      <th>Tags</th>
-      <th>Activity type</th>
-      <th>Summary of activities</th>
-      <th>Beneficiaries</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @services.each do |service| %>
-      <tr>
-        <td><%= service.contact_id %></td>
-        <td><%= service.display_name %></td>
-        <td><%= service.service_activities %></td>
-        <td><%= service.postal_code %></td>
-        <td><%= service.office_main_phone_general_phone %></td>
-        <td><%= service.office_main_email %></td>
-        <td><%= service.website %></td>
-        <td><%= service.delivered_by_organization_name %></td>
-        <td><%= service.where_we_work %></td>
-        <td><%= service.self_care_one_to_one_or_group %></td>
-        <td><%= service.self_care_service_category %></td>
-        <td><%= service.self_care_category_secondary %></td>
-        <td><%= service.self_care_service_agreed %></td>
-        <td><%= service.location_type %></td>
-        <td><%= service.street_address %></td>
-        <td><%= service.street_number %></td>
-        <td><%= service.street_name %></td>
-        <td><%= service.street_unit %></td>
-        <td><%= service.supplemental_address_1 %></td>
-        <td><%= service.supplemental_address_2 %></td>
-        <td><%= service.supplemental_address_3 %></td>
-        <td><%= service.city %></td>
-        <td><%= service.latitude %></td>
-        <td><%= service.longitude %></td>
-        <td><%= service.address_name %></td>
-        <td><%= service.county %></td>
-        <td><%= service.state %></td>
-        <td><%= service.country %></td>
-        <td><%= service.groups %></td>
-        <td><%= service.tags %></td>
-        <td><%= service.activity_type %></td>
-        <td><%= service.summary_of_activities %></td>
-        <td><%= service.beneficiaries %></td>
-        <td><%= link_to 'Show', service %></td>
-        <td><%= link_to 'Edit', edit_service_path(service) %></td>
-        <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'search_form' %>
+ <div id='orgs_scroll' style="height:410px;width:100%;border:1px solid #ccc;overflow:scroll;">
+  <div class='table table-bordered'>
+    <table>
+      <% @services.each do |service| %>
+         <tr>
+          <td>
+            <u><%= link_to service.display_name, service, { :target => '_blank' } %></u><br/>
+            <%= smart_truncate(service.service_activities) %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <br>
+  </div>
 </div>
-</div>
-
 <br>
 <% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
 

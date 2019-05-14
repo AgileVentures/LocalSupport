@@ -1,3 +1,5 @@
+<%= render "search_form" %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -63,16 +65,6 @@
 <p>
   <strong>Self care service agreed:</strong>
   <%= @service.self_care_service_agreed %>
-</p>
-
-<p>
-  <strong>Created date:</strong>
-  <%= @service.created_date %>
-</p>
-
-<p>
-  <strong>Modified date:</strong>
-  <%= @service.modified_date %>
 </p>
 
 <p>
@@ -177,3 +169,4 @@
 
 <%= link_to 'Edit', edit_service_path(@service) %> |
 <%= link_to 'Back', services_path %>
+<% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
