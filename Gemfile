@@ -19,6 +19,7 @@ gem 'puma'
 
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do
+  gem 'annotate'
   gem 'faker', '~> 1.9'
   gem 'timecop'
   gem 'database_cleaner', '1.7.0'
@@ -29,7 +30,7 @@ group :development, :test do
   gem 'rspec-activemodel-mocks'
   gem 'execjs'
   gem 'aruba', '~> 0.14.9'
-  gem 'byebug'
+  gem 'pry-byebug'
   gem 'rack_session_access'
   gem 'jasmine', '~> 3.4'
   gem 'jasmine-jquery-rails', '2.0.3'
@@ -48,7 +49,7 @@ end
 group :test do
   gem 'cucumber-rails', require: false
   gem 'cucumber-rails-training-wheels'
-  gem 'capybara', '~> 3.18'
+  gem 'capybara', '~> 3.19'
   gem 'nokogiri', '~> 1.10'
   gem 'factory_bot_rails'
   gem 'webmock', '~> 3.5'

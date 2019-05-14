@@ -1,0 +1,48 @@
+{
+  "addresses": [
+    {
+      "address": {
+        "Contact ID": "85344",
+        "Display Name": "Acquired Brain Injury (ABI)",
+        "Location Type": "OfficeMain",
+        "Street Address": "",
+        "Street Number": "",
+        "Street Number Suffix": "",
+        "Street Name": "",
+        "Street Unit": "",
+        "Supplemental Address 1": "",
+        "Supplemental Address 2": "",
+        "Supplemental Address 3": "",
+        "city": "",
+        "postal_code": "W1G 0AN",
+        "Latitude": "",
+        "Longitude": "",
+        "Address Name": "",
+        "County": "",
+        "Country": ""
+      }
+    },
+    {
+      "address": {
+        "Contact ID": "1344",
+        "Display Name": "Action Disability Kensington & Chelsea",
+        "Location Type": "OfficeMain",
+        "Street Address": "The ADKC Centre",
+        "Street Number": "",
+        "Street Number Suffix": "",
+        "Street Name": "The ADKC Centre",
+        "Street Unit": "",
+        "Supplemental Address 1": "Whistable House",
+        "Supplemental Address 2": "Silchester Road",
+        "Supplemental Address 3": "",
+        "city": "London",
+        "postal_code": "W10 6SB",
+        "Latitude": "51.515308",
+        "Longitude": "-0.216838",
+        "Address Name": "OfficeMain",
+        "County": "",
+        "Country": "United Kingdom"
+      }
+    }
+  ]
+}
