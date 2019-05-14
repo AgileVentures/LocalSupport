@@ -1,5 +1,6 @@
 //= require topojson
-
+//= require google-infobox/google-infobox
+//= require google_maps/custom_marker
 
 var map;
 var openedInfoBox = null;
