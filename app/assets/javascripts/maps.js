@@ -23,18 +23,28 @@ var OrganisationMap = {
     //   map.data.addGeoJson(geoJsonObject); 
     // });
 
+    // to convert topo to geo locally can do the following in node
+    // const topo = require('topojson')
+    // const fs = require('fs')
+    // var topo = fs.readFileSync("./app/assets/javascripts/topo_E09000033.json");
+    // var topoContent = JSON.parse(topo);
+    // geoJsonObject = topojson.feature(topoContent, topoContent.objects.E09000033)
+    // fs.writeFileSync("./app/assets/javascripts/geo_topo_E09000033.json", JSON.stringify(geoJsonObject))
+
     map.data.loadGeoJson("/assets/geo_topo_E09000020.json"); 
+    map.data.loadGeoJson("/assets/geo_topo_E09000033.json"); 
+
     map.data.setStyle(function(feature) {
       var color = feature.getProperty('color') || '#A9CE9C';
       return {
-        fillOpacity: 1,
+        fillOpacity: 0.75,
         fillColor: color,
         strokeWeight: 1
       }
     });
 
     // Set mouseover event for each feature.
-    map.data.addListener('mouseover', function(event) {
+    map.data.addListener('mousedown', function(event) {
       console.log(event.feature.getProperty('LSOA11CD'))
     });
 
