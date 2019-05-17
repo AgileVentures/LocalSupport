@@ -19,9 +19,24 @@ var OrganisationMap = {
       zoom: Settings.zoom
     });
 
-    jQuery.getJSON( "/assets/topo_E09000020.json", function( data ) {
-      geoJsonObject = topojson.feature(data, data.objects.E09000020)
-      map.data.addGeoJson(geoJsonObject); 
+    // jQuery.getJSON( "/assets/topo_E09000033.json", function( data ) {
+    //   geoJsonObject = topojson.feature(data, data.objects.E09000033)
+    //   map.data.addGeoJson(geoJsonObject); 
+    // });
+
+    map.data.loadGeoJson("/assets/geo_topo_E09000020.json"); 
+    map.data.setStyle(function(feature) {
+      var color = feature.getProperty('color') || '#A9CE9C';
+      return {
+        fillOpacity: 1,
+        fillColor: color,
+        strokeWeight: 1
+      }
+    });
+
+    // Set mouseover event for each feature.
+    map.data.addListener('mouseover', function(event) {
+      console.log(event.feature.getProperty('LSOA11CD'))
     });
 
     var markerData = $("#marker_data").data().markers
