@@ -8,13 +8,13 @@ class OrgAdminMailer < ActionMailer::Base
 
   def new_org_admin(org, emails)
     @org = org
-    mail(subject: "You have been made an organisation administrator on the Harrow Community Network",
+    mail(subject: "You have been made an organisation administrator on the #{Setting.site_title}",
          to: emails)
   end
 
   def notify_proposed_org_accepted(org, email)
     @org = org
-    mail(subject:"Your Organisation has been accepted for inclusion on the Harrow Community Network",
+    mail(subject:"Your Organisation has been accepted for inclusion on the #{Setting.site_title}",
          to: [email])
   end
 
