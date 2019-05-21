@@ -4,6 +4,14 @@
 <% end %>
 
 <% content_for :map do %>
-    <%= content_tag "div", "", id: "marker_data", data: {markers: markers, latitude: Setting.latitude, longitude: Setting.longitude}  %>
+    <%= content_tag "div", "", 
+      id: "marker_data", 
+      data: {
+        markers: markers, 
+        latitude: Setting.latitude, 
+        longitude: Setting.longitude,
+        geojson_url1: Setting.geojson_url1,
+        geojson_url2: Setting.geojson_url2
+      }  %>
 <% end %>
 
