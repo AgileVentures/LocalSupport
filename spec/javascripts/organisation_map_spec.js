@@ -2,7 +2,7 @@ describe('Organisation map', function() {
   var validCoordinatesOrganization, emptyCoordinatesOrganiztion;
   beforeEach(function() {
     loadFixtures('organisation_list.html');
-    OrganisationMap.initMap();
+    OrganisationMap.initMap(false);
     OrganisationMap.init();
     spyOn(OrganisationMap, 'getVolOpCoordinates').and.callThrough();
     spyOn(OrganisationMap, 'centerMap').and.callThrough();

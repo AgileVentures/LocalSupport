@@ -1,3 +1,4 @@
+//= require topojson
 //= require google-infobox/google-infobox
 //= require google_maps/custom_marker
 
@@ -10,7 +11,7 @@ var Settings = {
 };
 
 var OrganisationMap = {
-  initMap: function initMap() {
+  initMap: function initMap(skipgeojson) {
     Settings.lat = parseFloat($("#marker_data").data().latitude || '51.5978')
     Settings.lng = parseFloat($("#marker_data").data().longitude || '-0.3370')
     map = new google.maps.Map(document.getElementById(Settings.id), {
@@ -30,23 +31,24 @@ var OrganisationMap = {
     // var topoContent = JSON.parse(topo);
     // geoJsonObject = topojson.feature(topoContent, topoContent.objects.E09000033)
     // fs.writeFileSync("./app/assets/javascripts/geo_topo_E09000033.json", JSON.stringify(geoJsonObject))
+    if(skipgeojson !== false){
+      map.data.loadGeoJson("/assets/geo_topo_E09000020.json"); 
+      map.data.loadGeoJson("/assets/geo_topo_E09000033.json"); 
 
-    map.data.loadGeoJson("/assets/geo_topo_E09000020.json"); 
-    map.data.loadGeoJson("/assets/geo_topo_E09000033.json"); 
+      map.data.setStyle(function(feature) {
+        var color = feature.getProperty('color') || '#A9CE9C';
+        return {
+          fillOpacity: 0.75,
+          fillColor: color,
+          strokeWeight: 1
+        }
+      });
 
-    map.data.setStyle(function(feature) {
-      var color = feature.getProperty('color') || '#A9CE9C';
-      return {
-        fillOpacity: 0.75,
-        fillColor: color,
-        strokeWeight: 1
-      }
-    });
-
-    // Set mouseover event for each feature.
-    map.data.addListener('mousedown', function(event) {
-      console.log(event.feature.getProperty('LSOA11CD'))
-    });
+      // Set mouseover event for each feature.
+      map.data.addListener('mousedown', function(event) {
+        console.log(event.feature.getProperty('LSOA11CD'))
+      });
+    }
 
     var markerData = $("#marker_data").data().markers
 
