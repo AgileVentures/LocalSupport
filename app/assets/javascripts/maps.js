@@ -5,16 +5,16 @@ var map;
 var openedInfoBox = null;
 var markers = [];
 var Settings = {
-  id: 'map-canvas',
-  zoom: 12
+  id: 'map-canvas'
 };
 
 var OrganisationMap = {
   initMap: function initMap() {
+    Settings.zoom = parseInt($("#marker_data").data().zoom || '12', 10)
     Settings.lat = parseFloat($("#marker_data").data().latitude || '51.5978')
     Settings.lng = parseFloat($("#marker_data").data().longitude || '-0.3370')
-    Settings.geojson_url1 = $("#marker_data").data().geojsonUrl1 
-    Settings.geojson_url2 = $("#marker_data").data().geojsonUrl2
+    Settings.geojsonUrl1 = $("#marker_data").data().geojsonUrl1 
+    Settings.geojsonUrl2 = $("#marker_data").data().geojsonUrl2
     map = new google.maps.Map(document.getElementById(Settings.id), {
       center: {lat: Settings.lat, lng: Settings.lng},
       zoom: Settings.zoom
@@ -32,9 +32,9 @@ var OrganisationMap = {
     // var topoContent = JSON.parse(topo);
     // geoJsonObject = topojson.feature(topoContent, topoContent.objects.E09000033)
     // fs.writeFileSync("./app/assets/javascripts/geo_topo_E09000033.json", JSON.stringify(geoJsonObject))
-    if(Settings.geojson_url1){
-      map.data.loadGeoJson(Settings.geojson_url1); 
-      map.data.loadGeoJson(Settings.geojson_url2); 
+    if(Settings.geojsonUrl1){
+      map.data.loadGeoJson(Settings.geojsonUrl1); 
+      map.data.loadGeoJson(Settings.geojsonUrl2); 
 
       map.data.setStyle(function(feature) {
         var color = feature.getProperty('color') || '#A9CE9C';

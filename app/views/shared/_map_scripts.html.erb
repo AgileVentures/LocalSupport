@@ -7,11 +7,12 @@
     <%= content_tag "div", "", 
       id: "marker_data", 
       data: {
-        markers: markers, 
+        zoom: Setting.map_zoom_level, 
         latitude: Setting.latitude, 
         longitude: Setting.longitude,
         geojson_url1: Setting.geojson_url1,
-        geojson_url2: Setting.geojson_url2
+        geojson_url2: Setting.geojson_url2,
+        markers: markers
       }  %>
 <% end %>
 
