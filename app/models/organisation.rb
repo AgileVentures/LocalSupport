@@ -48,8 +48,13 @@ class Organisation < BaseOrganisation
   # Alternative => :joins('LEFT OUTER JOIN users ON users.organisation_id = organisations.id)
   # Difference between inner and outer joins: http://stackoverflow.com/a/38578/2197402
 
-  scope :null_users, -> { includes(:users).where('users.organisation_id IS NULL').references(:users) }
-  scope :without_matching_user_emails, -> {where("organisations.email NOT IN (#{User.select('email').to_sql})")}
+  scope :null_users, lambda {
+    includes(:users).where('users.organisation_id IS NULL').references(:users) 
+  }
+
+  scope :without_matching_user_emails, lambda {
+    where("organisations.email NOT IN (#{User.select('email').to_sql})")
+  }
 
   after_save :uninvite_users, if: ->{ saved_change_to_attribute?(:email) }
 
