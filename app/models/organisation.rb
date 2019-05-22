@@ -1,3 +1,34 @@
+# == Schema Information
+#
+# Table name: organisations
+#
+#  id                    :integer          not null, primary key
+#  name                  :string(255)      default(""), not null
+#  address               :string(255)      default(""), not null
+#  postcode              :string(255)      default(""), not null
+#  email                 :string(255)      default(""), not null
+#  description           :text             default(""), not null
+#  website               :string(255)      default(""), not null
+#  telephone             :string(255)      default(""), not null
+#  created_at            :datetime
+#  updated_at            :datetime
+#  latitude              :float
+#  longitude             :float
+#  gmaps                 :boolean
+#  donation_info         :text             default(""), not null
+#  publish_address       :boolean          default(FALSE)
+#  publish_phone         :boolean          default(FALSE)
+#  publish_email         :boolean          default(TRUE)
+#  deleted_at            :datetime
+#  type                  :string           default("Organisation")
+#  non_profit            :boolean
+#  slug                  :string
+#  imported_at           :datetime
+#  imported_from         :string
+#  imported_id           :integer
+#  charity_commission_id :integer
+#
+
 require 'csv'
 require 'string'
 

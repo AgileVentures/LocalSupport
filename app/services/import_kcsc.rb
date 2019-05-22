@@ -30,20 +30,25 @@ class ImportKCSC
   end
 
   def find_or_create_organisations
+    # binding.pry
     @kcsc_contacts.zip(@kcsc_contact_addresses).each do |contact, address|
-      organisation = model_klass.find_or_create_by! args(contact, address)
-      organisation.geocode if organisation.not_geocoded?
+      # binding.pry
+      model_klass.find_or_create_by! imported_id: contact['organisation']['Contact ID'] do |model|
+        populate_model_attributes model, contact, address
+      end
     end
   end
 
-  def args(contact, address)
-    {
-      name: contact['organisation']['Delivered by-Organization Name'].titleize,
-      description: contact['organisation']['Summary of Activities'],
-      postcode: address['address']['postal_code'] || '',
-      latitude: address['address']['Latitude'],
-      longitude: address['address']['Longitude']
-    }
+  def populate_model_attributes model, contact, address
+    # binding.pry
+    model.imported_at = Time.current
+    model.name = contact['organisation']['Delivered by-Organization Name'].titleize
+    model.description = contact['organisation']['Summary of Activities']
+    model.postcode = address['address']['postal_code'] || ''
+    model.latitude = address['address']['Latitude']
+    model.longitude = address['address']['Longitude']
+    model.geocode if model.not_geocoded?  
+    model
   end
 
 end
