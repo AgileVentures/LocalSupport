@@ -20,6 +20,9 @@ LocalSupport::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  # ensure we can use ES6 in production
+  # config.assets.js_compressor = :uglifier
+
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
 
