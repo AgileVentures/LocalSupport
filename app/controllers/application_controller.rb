@@ -143,8 +143,9 @@ class ApplicationController < ActionController::Base
     }
   end
 
-  def method_missing(method_name, *args, &block)
-    return super(args) unless [:meta_tag_title, :meta_tag_description].include? method_name
+  def method_missing(method_name, *args, &_block)
+    methods = [:meta_tag_title, :meta_tag_description]
+    return super(args) unless methods.include? method_name
     Setting.send(method_name)
   end
 
