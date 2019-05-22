@@ -92,6 +92,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def iframe?
+    params[:iframe]
+  end
+
   # Enforces superadmin-only limits
   # http://railscasts.com/episodes/20-restricting-access
   def authorize

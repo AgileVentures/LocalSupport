@@ -78,10 +78,6 @@ class VolunteerOpsController < ApplicationController
 
   private
 
-  def iframe?
-    params[:iframe]
-  end
-
   def add_breadcrumbs
     if @organisation.present?
       add_breadcrumb 'All Organisations', organisations_path
