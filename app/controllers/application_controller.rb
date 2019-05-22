@@ -143,12 +143,9 @@ class ApplicationController < ActionController::Base
     }
   end
 
-  def meta_tag_title
-    Setting.meta_tag_title
-  end
-
-  def meta_tag_description
-    Setting.meta_tag_description
+  def method_missing(method_name, *args, &block)
+    return super(args) unless [:meta_tag_title, :meta_tag_description].include? method_name
+    Setting.send(method_name)
   end
 
   def requested_organisation_path
