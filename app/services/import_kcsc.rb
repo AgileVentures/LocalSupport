@@ -49,12 +49,30 @@ class ImportKCSC
   def populate_model_attributes model, contact, address 
     model.imported_at = Time.current
     model.name = contact['organisation']['Delivered by-Organization Name'].titleize
-    model.description = contact['organisation']['Summary of Activities']
+    model.description = description(contact)
+    model.telephone = contact['organisation']['OfficeMain-Phone-General Phone']
+    model.email = contact['organisation']['OfficeMain-Email']
+    model.website = contact['organisation']['Website']
+    model.publish_phone = true
+    model.publish_address = true
+    # contact['organisation']['Where we work']
+    # contact['organisation']['Service Activities']
+    model.address = full_address(address)
     model.postcode = address['address']['postal_code'] || ''
     model.latitude = address['address']['Latitude']
     model.longitude = address['address']['Longitude']
     model.geocode if model.not_geocoded?  
     model
+  end
+
+  def full_address(address)
+    "#{address['address']['Street Address']} #{address['address']['city']}"
+  end
+  
+  def description(contact)
+    description = contact['organisation']['Service Activities'] 
+    description = contact['organisation']['Summary of Activities'] if description.blank?
+    description = '' if description.blank?
   end
 
 end
