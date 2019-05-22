@@ -33,14 +33,20 @@ class ImportKCSC
     # binding.pry
     @kcsc_contacts.zip(@kcsc_contact_addresses).each do |contact, address|
       # binding.pry
-      model_klass.find_or_create_by! imported_id: contact['organisation']['Contact ID'] do |model|
+      model_klass.find_or_create_by! imported_id: id(contact) do |model|
         populate_model_attributes model, contact, address
       end
     end
   end
 
-  def populate_model_attributes model, contact, address
-    # binding.pry
+  def id(contact)
+    contact['organisation']['Contact ID']
+  end
+
+  # ultimately this could be refactored into a separate class
+  # but let's get it all working first
+  # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+  def populate_model_attributes model, contact, address 
     model.imported_at = Time.current
     model.name = contact['organisation']['Delivered by-Organization Name'].titleize
     model.description = contact['organisation']['Summary of Activities']
