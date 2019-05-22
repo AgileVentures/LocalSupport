@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 form-frame">
-      <p>Welcome to the <strong>Harrow Community Network</strong>! Please set a password for your account before continuing.</p>
+      <p>Welcome to the <strong><%= Setting.site_title %></strong>! Please set a password for your account before continuing.</p>
       <h2>Set your password</h2>
 
       <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :put} do |f| %>
