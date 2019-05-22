@@ -28,6 +28,7 @@
     <%= content_tag "div", "", id: "marker_data", 
       data: {
         markers: @markers, 
+        zoom: Setting.embedded_map_zoom_level,
         latitude: Setting.latitude, 
         longitude: Setting.longitude,
         geojson_url1: Setting.geojson_url1,
