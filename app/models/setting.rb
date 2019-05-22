@@ -29,7 +29,8 @@ class Setting < ApplicationRecord
     small_banner_path: 'HCN-small.png', 
     site_provider_small_logo: 'VAHC-Small-Logo.png',
     map_zoom_level: '12',
-    embedded_map_zoom_level: '14'
+    embedded_map_zoom_level: '14',
+    feedback_form_url: 'https://docs.google.com/a/neurogrid.com/forms/d/1iQwIM0E2gjJF6N6UHgVwtH8OzBbpUr6DS0Xbf-UrKE0/viewform'
   }
 
   def self.method_missing(args)
