@@ -73,6 +73,7 @@ class ImportKCSC
     description = contact['organisation']['Service Activities'] 
     description = contact['organisation']['Summary of Activities'] if description.blank?
     description = '' if description.blank?
+    description
   end
 
 end
