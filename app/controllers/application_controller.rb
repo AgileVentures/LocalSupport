@@ -11,14 +11,14 @@ class ApplicationController < ActionController::Base
   add_breadcrumb 'home', :root_path
 
   include CustomErrors
-  WHITELISTED_CONTROLLERS = %w(
+  WHITELISTED_CONTROLLERS = %w[
    application
    contributors
    organisations
    pages
    volunteer_ops
    events
- )
+ ]
   # To prevent infinite redirect loops, only requests from white listed
   # controllers are available in the "after sign-in redirect" feature
   def white_listed
@@ -66,11 +66,10 @@ class ApplicationController < ActionController::Base
 
 
   def allow_cookie_policy
-    response.set_cookie 'cookie_policy_accepted', {
+    response.set_cookie 'cookie_policy_accepted', 
         value: 'true',
         path: '/',
         expires: 1.year.from_now.utc
-    }
     #respond_to do |format|
     #  format.html redirect_to root_path
     #  format.json { render :nothing => true, :status => 200 }
@@ -91,6 +90,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def iframe?
+    params[:iframe]
+  end
 
   # Enforces superadmin-only limits
   # http://railscasts.com/episodes/20-restricting-access
@@ -139,12 +142,10 @@ class ApplicationController < ActionController::Base
     }
   end
 
-  def meta_tag_title
-    Setting.meta_tag_title
-  end
-
-  def meta_tag_description
-    Setting.meta_tag_description
+  def method_missing(method_name, *args, &_block)
+    methods = [:meta_tag_title, :meta_tag_description]
+    return super(args) unless methods.include? method_name
+    Setting.send(method_name)
   end
 
   def requested_organisation_path

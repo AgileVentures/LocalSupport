@@ -122,7 +122,7 @@ RSpec.describe VolunteerOpsController, type: :controller, helpers: :requests do
           VolunteerOp.build_by_coordinates,
           VolunteerOpsController.new
       )
-      get :embedded_map, params: {}
+      get :index, params: {iframe: true}
       expect(response).to be_success
       expect(assigns(:markers)).to eq(@markers)
     end
