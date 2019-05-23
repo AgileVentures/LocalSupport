@@ -9,7 +9,7 @@ Background:
   Scenario Outline: Be aware of site identity on all pages
     Given I visit the <page>
     Then I should see "Harrow Community Network"
-    And I should see "Search for local voluntary and community organisations"
+    And I should see the site branding
   Examples:
     | page                 |
     | home page            |

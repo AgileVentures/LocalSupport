@@ -1,5 +1,6 @@
 <%= form_tag(organisations_search_path, :id => "organisation_search", :method => "get") do %>
   <div class="flex-column">
+    <% unless Feature.active?('disable_category_search') %>
     <div class="flex-row">
       <div class="left-side">
         <%= label_tag(:what_id, "What They Do", class: 'field-label') %>
@@ -24,6 +25,7 @@
         <%= select_tag(:how_id, options_for_select(@cat_name_ids[:how], @parsed_params.try(:how_id)), { :include_blank => 'All' }) %>
       </div>
     </div>
+    <% end %>
     <div class="flex-row">
       <div class="left-side">
         <%= label_tag(:q, "Optional Search Text", class: 'field-label') %>
