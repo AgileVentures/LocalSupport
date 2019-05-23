@@ -1,6 +1,6 @@
 <%= form_tag(organisations_search_path, :id => "organisation_search", :method => "get") do %>
   <div class="flex-column">
-    <% if Feature.active?('category_search') %>
+    <% unless Feature.active?('disable_category_search') %>
     <div class="flex-row">
       <div class="left-side">
         <%= label_tag(:what_id, "What They Do", class: 'field-label') %>
