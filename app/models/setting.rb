@@ -9,7 +9,9 @@ class Setting < ApplicationRecord
     meta_tag_description: 'Volunteering Network for Harrow Community',
     open_graph_site: 'Harrow Community Network',
     large_banner_path: 'HCN-long.png',
-    small_banner_path: 'HCN-small.png'
+    small_banner_path: 'HCN-small.png',
+    map_zoom_level: '12',
+    embedded_map_zoom_level: '14'
   }
 
   def self.method_missing(args)

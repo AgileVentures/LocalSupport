@@ -158,10 +158,6 @@ Style/PreferredHashMethods:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#hash-key'
   Enabled: true
 
-Style/Documentation:
-  Description: 'Document classes and non-namespace modules.'
-  Enabled: true
-
 Layout/DotPosition:
   Description: 'Checks the position of the dot in multi-line method calls.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#consistent-multi-line-chains'
@@ -202,8 +198,7 @@ Naming/FileName:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#snake-case-files'
   Enabled: true
 
-
-Style/FlipFlop:
+Lint/FlipFlop:
   Description: 'Checks for flip flops'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-flip-flops'
   Enabled: true
@@ -431,11 +426,6 @@ Style/RedundantReturn:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-explicit-return'
   Enabled: true
 
-Style/RedundantSelf:
-  Description: "Don't use self where it's not needed."
-  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-self-unless-required'
-  Enabled: true
-
 Style/RegexpLiteral:
   Description: 'Use / or %r around regular expressions.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#percent-r'
@@ -457,19 +447,9 @@ Style/SelfAssignment:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#self-assignment'
   Enabled: true
 
-Style/Semicolon:
-  Description: "Don't use semicolons to terminate expressions."
-  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-semicolon'
-  Enabled: true
-
 Style/SignalException:
   Description: 'Checks for proper usage of fail and raise.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#fail-method'
-  Enabled: true
-
-Style/SingleLineBlockParams:
-  Description: 'Enforces the names of some block params.'
-  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#reduce-blocks'
   Enabled: true
 
 Style/SpecialGlobalVars:
@@ -554,16 +534,13 @@ Style/WhileUntilDo:
 # enable for later challenge
 
   # Align ends correctly.
-Lint/EndAlignment:
+Layout/EndAlignment:
   # The value `keyword` means that `end` should be aligned with the matching
   # keyword (if, while, etc.).
   # The value `variable` means that in assignments, `end` should be aligned
   # with the start of the variable on the left hand side of `=`. In all other
   # situations, `end` should still be aligned with the keyword.
-  AlignWith: keyword
-  SupportedStyles:
-    - keyword
-    - variable
+  EnforcedStyleAlignWith: keyword
   AutoCorrect: false
   Enabled: true
 
@@ -585,7 +562,7 @@ Lint/AssignmentInCondition:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#safe-assignment-in-condition'
   Enabled: true
 
-Lint/BlockAlignment:
+Layout/BlockAlignment:
   Description: 'Align block ends correctly.'
   Enabled: true
 
@@ -593,7 +570,7 @@ Lint/CircularArgumentReference:
   Description: "Don't refer to the keyword argument in the default value."
   Enabled: true
 
-Lint/ConditionPosition:
+Layout/ConditionPosition:
   Description: >-
                  Checks for condition placed in a confusing position relative to
                  the keyword.
@@ -602,10 +579,6 @@ Lint/ConditionPosition:
 
 Lint/Debugger:
   Description: 'Check for debugger calls.'
-  Enabled: true
-
-Lint/DefEndAlignment:
-  Description: 'Align ends corresponding to defs correctly.'
   Enabled: true
 
 Lint/DeprecatedClassMethods:
@@ -632,23 +605,16 @@ Lint/EmptyInterpolation:
   Description: 'Checks for empty string interpolation.'
   Enabled: true
 
-Lint/EndAlignment:
-  Description: 'Align ends correctly.'
-  Enabled: true
-
 Lint/EndInMethod:
   Description: 'END blocks should not be placed inside method definitions.'
   Enabled: true
 
-Lint/DefEndAlignment:
+Layout/DefEndAlignment:
   # The value `def` means that `end` should be aligned with the def keyword.
   # The value `start_of_line` means that `end` should be aligned with method
   # calls like `private`, `public`, etc, if present in front of the `def`
   # keyword on the same line.
   EnforcedStyleAlignWith: start_of_line
-  SupportedStyles:
-    - start_of_line
-    - def
   AutoCorrect: false
   Enabled: true
 
@@ -678,11 +644,6 @@ Lint/UnreachableCode:
 
 Lint/UselessAccessModifier:
   Description: 'Checks for useless access modifiers.'
-  Enabled: true
-
-Lint/UselessAssignment:
-  Description: 'Checks for useless assignment to a local variable.'
-  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#underscore-unused-vars'
   Enabled: true
 
 Metrics/AbcSize:
@@ -815,16 +776,9 @@ Layout/EmptyLinesAroundClassBody:
   - empty_lines
   - no_empty_lines
 
-Layout/EmptyLinesAroundBlockBody:
-  Enabled: false
 
 Style/Documentation:
   Description: Document classes and non-namespace modules.
-  Enabled: false
-
-Style/MethodDefParentheses:
-  Description: Checks if the method definitions have or don't have parentheses.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#method-parens
   Enabled: false
 
 Style/SingleLineBlockParams:
@@ -909,16 +863,12 @@ Layout/EmptyLines:
   Description: "Don't use several empty lines in a row."
   Enabled: false
 
-Style/EmptyLinesAroundAccessModifier:
+Layout/EmptyLinesAroundAccessModifier:
   Description: "Keep blank lines around access modifiers."
   Enabled: false
 
 Layout/EmptyLinesAroundBlockBody:
   Description: "Keeps track of empty lines around block bodies."
-  Enabled: false
-
-Layout/EmptyLinesAroundClassBody:
-  Description: "Keeps track of empty lines around class bodies."
   Enabled: false
 
 Layout/EmptyLinesAroundModuleBody:
@@ -944,7 +894,7 @@ Layout/InitialIndentation:
     Checks the indentation of the first non-blank non-comment line in a file.
   Enabled: false
 
-Layout/FirstParameterIndentation:
+Layout/IndentFirstArgument:
   Description: 'Checks the indentation of the first parameter in a method call.'
   Enabled: false
 
@@ -957,13 +907,13 @@ Layout/IndentationWidth:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#spaces-indentation'
   Enabled: false
 
-Layout/IndentArray:
+Layout/IndentFirstArrayElement:
   Description: >-
                  Checks the indentation of the first element in an array
                  literal.
   Enabled: false
 
-Layout/IndentHash:
+Layout/IndentFirstHashElement:
   Description: 'Checks the indentation of the first key in a hash literal.'
   Enabled: false
 
@@ -1065,7 +1015,12 @@ Layout/SpaceAroundOperators:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#spaces-operators'
   Enabled: false
 
-Layout/SpaceInsideBrackets:
+Layout/SpaceInsideReferenceBrackets:
+  Description: 'No spaces after [ or before ].'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-spaces-braces'
+  Enabled: false
+
+Layout/SpaceInsideArrayLiteralBrackets: 
   Description: 'No spaces after [ or before ].'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-spaces-braces'
   Enabled: false
@@ -1093,11 +1048,6 @@ Layout/SpaceInsideStringInterpolation:
 Layout/Tab:
   Description: 'No hard tabs.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#spaces-indentation'
-  Enabled: false
-
-Layout/TrailingBlankLines:
-  Description: 'Checks trailing blank lines and final newline.'
-  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#newline-eof'
   Enabled: false
 
 Style/TrailingCommaInArrayLiteral:

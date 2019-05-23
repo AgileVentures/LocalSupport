@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Harrow Community Network | Harrow volunteering</title>
+  <title>#<%= Setting.site_title %> | Harrow volunteering</title>
   <meta name="description" content="Volunteering Network for Harrow Community" />
   <link rel="author" href="http://www.agileventures.org" />
 
@@ -25,7 +25,15 @@
 <body>
   <div class="map_container"
        style="position:fixed; top:0; left:0; bottom:0; right:0; overflow: hidden; border:none; margin:0;">
-    <%= content_tag "div", "", id: "marker_data", data: {markers: @markers} %>
+    <%= content_tag "div", "", id: "marker_data", 
+      data: {
+        markers: @markers, 
+        zoom: Setting.embedded_map_zoom_level,
+        latitude: Setting.latitude, 
+        longitude: Setting.longitude,
+        geojson_url1: Setting.geojson_url1,
+        geojson_url2: Setting.geojson_url2
+      } %>
     <div id="map-canvas" style="height:100%; width=100%;">
     </div>
   </div>
