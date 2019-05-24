@@ -1,4 +1,4 @@
-<%= form_tag(search_volunteer_ops_path, :method => "get", class: "volunteer-ops-search col-xs-12") do %>
+<%= form_tag(services_path, :method => "get", class: "volunteer-ops-search col-xs-12") do %>
   <div class="flex-row">
     <div class="right-side">
         <%= text_field_tag(:q, @query, class: 'search-text', placeholder: 'Search for a service...') %>
