@@ -11,25 +11,25 @@ class SearchParamsParser
   end
 
   def query_term
-    @query_term ||= params.fetch(:q)
+    @query_term ||= params[:q]
   end
 
   def what_who_how_ids
     @what_who_how_ids ||=
       [
         what_id, who_id, how_id
-      ].reject(&:empty?)
+      ].reject(&:blank?)
   end
 
   def what_id
-    @what_id ||= params.fetch(:what_id)
+    @what_id ||= params[:what_id]
   end
 
   def who_id
-    @who_id ||= params.fetch(:who_id)
+    @who_id ||= params[:who_id]
   end
 
   def how_id
-    @how_id ||= params.fetch(:how_id)
+    @how_id ||= params[:how_id]
   end
 end

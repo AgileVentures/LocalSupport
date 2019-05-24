@@ -46,6 +46,7 @@ module LocalSupport
 
     # include Bower components in compiled assets
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
+    config.assets.paths << Rails.root.join('node_modules')
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.1'

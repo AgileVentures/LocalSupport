@@ -30,20 +30,50 @@ class ImportKCSC
   end
 
   def find_or_create_organisations
+    # binding.pry
     @kcsc_contacts.zip(@kcsc_contact_addresses).each do |contact, address|
-      organisation = model_klass.find_or_create_by! args(contact, address)
-      organisation.geocode if organisation.not_geocoded?
+      # binding.pry
+      model_klass.find_or_create_by! imported_id: id(contact) do |model|
+        populate_model_attributes model, contact, address
+      end
     end
   end
 
-  def args(contact, address)
-    {
-      name: contact['organisation']['Delivered by-Organization Name'].titleize,
-      description: contact['organisation']['Summary of Activities'],
-      postcode: address['address']['postal_code'] || '',
-      latitude: address['address']['Latitude'],
-      longitude: address['address']['Longitude']
-    }
+  def id(contact)
+    contact['organisation']['Contact ID']
+  end
+
+  # ultimately this could be refactored into a separate class
+  # but let's get it all working first
+  # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+  def populate_model_attributes model, contact, address 
+    model.imported_at = Time.current
+    model.name = contact['organisation']['Delivered by-Organization Name'].titleize
+    model.description = description(contact)
+    model.telephone = contact['organisation']['OfficeMain-Phone-General Phone']
+    model.email = contact['organisation']['OfficeMain-Email']
+    model.website = contact['organisation']['Website']
+    model.publish_phone = true
+    model.publish_address = true
+    # contact['organisation']['Where we work']
+    # contact['organisation']['Service Activities']
+    model.address = full_address(address)
+    model.postcode = address['address']['postal_code'] || ''
+    model.latitude = address['address']['Latitude']
+    model.longitude = address['address']['Longitude']
+    model.geocode if model.not_geocoded?  
+    model
+  end
+
+  def full_address(address)
+    "#{address['address']['Street Address']} #{address['address']['city']}"
+  end
+  
+  def description(contact)
+    description = contact['organisation']['Service Activities'] 
+    description = contact['organisation']['Summary of Activities'] if description.blank?
+    description = '' if description.blank?
+    description
   end
 
 end

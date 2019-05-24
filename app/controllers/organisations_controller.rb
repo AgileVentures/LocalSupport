@@ -21,6 +21,8 @@ class OrganisationsController < BaseOrganisationsController
   def index
     @organisations = Queries::Organisations.order_by_most_recent
     @markers = build_map_markers(@organisations)
+    response.headers.delete 'X-Frame-Options' if iframe?
+    render :embedded_map, layout: false if iframe?
   end
 
   # GET /organisations/1

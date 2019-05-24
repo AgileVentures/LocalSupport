@@ -15,8 +15,10 @@ class VolunteerOpsController < ApplicationController
   end
 
   def index
-    @volunteer_ops = displayed_volunteer_ops
+    @volunteer_ops = displayed_volunteer_ops unless iframe?
     @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
+    response.headers.delete 'X-Frame-Options' if iframe?
+    render :embedded_map, layout: false if iframe?
   end
 
   def show
@@ -64,11 +66,7 @@ class VolunteerOpsController < ApplicationController
     redirect_to volunteer_ops_path
   end
 
-  def embedded_map
-    @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
-    response.headers.delete 'X-Frame-Options'
-    render layout: false
-  end
+
 
   def volunteer_op_params
     args = [:description, :title, :organisation_id, :address, :postcode,
