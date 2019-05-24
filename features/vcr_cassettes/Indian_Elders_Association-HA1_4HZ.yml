@@ -353,4 +353,363 @@ http_interactions:
         }
     http_version: 
   recorded_at: Thu, 09 May 2019 13:08:01 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=64%20Pinner%20Road,%20HA1%204HZ&key=<GMAP_API_KEY>&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 24 May 2019 13:22:40 GMT
+      Expires:
+      - Sat, 25 May 2019 13:22:40 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '553'
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=497
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,44,43,39"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "64",
+                       "short_name" : "64",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Pinner Road",
+                       "short_name" : "Pinner Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Harrow",
+                       "short_name" : "Harrow",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "HA1 4HZ",
+                       "short_name" : "HA1 4HZ",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "64 Pinner Rd, Harrow HA1 4HZ, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.5814347,
+                          "lng" : -0.346706
+                       },
+                       "southwest" : {
+                          "lat" : 51.5813254,
+                          "lng" : -0.3469967
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.5813838,
+                       "lng" : -0.3468626
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5827290302915,
+                          "lng" : -0.345502369708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.5800310697085,
+                          "lng" : -0.348200330291502
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJjQWua2wTdkgRyc32EN8AgX0",
+                 "types" : [ "premise" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Thu, 25 Dec 1980 00:00:00 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=64%20Pinner%20Road,%20HA1%204HZ&key=AIzaSyArzI3TTlO1bbrDTmUnbTOnqcfC2oITR3Q&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 24 May 2019 13:22:57 GMT
+      Expires:
+      - Sat, 25 May 2019 13:22:57 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '553'
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=156
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,44,43,39"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "64",
+                       "short_name" : "64",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Pinner Road",
+                       "short_name" : "Pinner Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Harrow",
+                       "short_name" : "Harrow",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "HA1 4HZ",
+                       "short_name" : "HA1 4HZ",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "64 Pinner Rd, Harrow HA1 4HZ, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.5814347,
+                          "lng" : -0.346706
+                       },
+                       "southwest" : {
+                          "lat" : 51.5813254,
+                          "lng" : -0.3469967
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.5813838,
+                       "lng" : -0.3468626
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5827290302915,
+                          "lng" : -0.345502369708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.5800310697085,
+                          "lng" : -0.348200330291502
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJjQWua2wTdkgRyc32EN8AgX0",
+                 "types" : [ "premise" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Thu, 25 Dec 1980 00:00:01 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=64%20pinner%20road,%20HA1%204HZ&key=AIzaSyArzI3TTlO1bbrDTmUnbTOnqcfC2oITR3Q&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 24 May 2019 13:17:52 GMT
+      Expires:
+      - Sat, 25 May 2019 13:17:52 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '553'
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=202
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '334'
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,44,43,39"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "64",
+                       "short_name" : "64",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Pinner Road",
+                       "short_name" : "Pinner Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Harrow",
+                       "short_name" : "Harrow",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "HA1 4HZ",
+                       "short_name" : "HA1 4HZ",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "64 Pinner Rd, Harrow HA1 4HZ, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.5814347,
+                          "lng" : -0.346706
+                       },
+                       "southwest" : {
+                          "lat" : 51.5813254,
+                          "lng" : -0.3469967
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.5813838,
+                       "lng" : -0.3468626
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5827290302915,
+                          "lng" : -0.345502369708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.5800310697085,
+                          "lng" : -0.348200330291502
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJjQWua2wTdkgRyc32EN8AgX0",
+                 "types" : [ "premise" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Fri, 24 May 2019 13:23:26 GMT
 recorded_with: VCR 4.0.0

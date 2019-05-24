@@ -10,7 +10,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
       User-Agent:
       - Ruby
   response:
@@ -27,7 +27,7 @@ http_interactions:
       Cache-Control:
       - public, max-age=86400
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Server:
       - mafe
       Content-Length:
@@ -120,4 +120,118 @@ http_interactions:
         }
     http_version: 
   recorded_at: Wed, 27 Jan 2016 21:51:08 GMT
-recorded_with: VCR 2.9.3
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=30%20pinner%20road,%20&key=<GMAP_API_KEY>&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 24 May 2019 13:20:55 GMT
+      Expires:
+      - Sat, 25 May 2019 13:20:55 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '603'
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=467
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,44,43,39"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "30",
+                       "short_name" : "30",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Pinner Road",
+                       "short_name" : "Pinner Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Arden",
+                       "short_name" : "Arden",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Limestone",
+                       "short_name" : "Limestone",
+                       "types" : [ "administrative_area_level_3", "political" ]
+                    },
+                    {
+                       "long_name" : "Buncombe County",
+                       "short_name" : "Buncombe County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "North Carolina",
+                       "short_name" : "NC",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "28704",
+                       "short_name" : "28704",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "30 Pinner Rd, Arden, NC 28704, USA",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 35.4479954,
+                       "lng" : -82.5573273
+                    },
+                    "location_type" : "RANGE_INTERPOLATED",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 35.4493443802915,
+                          "lng" : -82.5559783197085
+                       },
+                       "southwest" : {
+                          "lat" : 35.4466464197085,
+                          "lng" : -82.55867628029151
+                       }
+                    }
+                 },
+                 "place_id" : "EiIzMCBQaW5uZXIgUmQsIEFyZGVuLCBOQyAyODcwNCwgVVNBIhoSGAoUChIJ-YPXOMrsWYgRDsvmerRhkioQHg",
+                 "types" : [ "street_address" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Fri, 24 May 2019 13:20:56 GMT
+recorded_with: VCR 4.0.0
