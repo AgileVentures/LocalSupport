@@ -1,12 +1,15 @@
 class ServicesController < BaseOrganisationsController
   add_breadcrumb 'Services', :services_path
   layout 'two_columns_with_map'
+  before_action :authorize, except: [:search, :show, :index, :embedded_map]
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
   # GET /services
   # GET /services.json
   def index
-    @services = Service.all
+    @query = params[:q]
+    return @services = Service.order_by_most_recent.search_for_text(@query) if @query.present?
+    @services = Service.order_by_most_recent
   end
 
   # GET /services/1
@@ -22,7 +25,7 @@ class ServicesController < BaseOrganisationsController
   # GET /services/1/edit
   def edit
   end
-
+   
   # POST /services
   # POST /services.json
   def create
