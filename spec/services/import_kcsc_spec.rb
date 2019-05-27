@@ -34,7 +34,7 @@ describe ImportKCSC do
       allow(http_party).to receive(:get).with(url).and_return(response)
       allow(http_party).to receive(:get).with(address_url).and_return(address_response)
       import_kcsc
-      expect(model_klass).to have_received(:find_or_create_by!).exactly(2).times
+      expect(model_klass).to have_received(:find_or_initialize_by).exactly(2).times
     end
 
     it 'requests data from the addresses endpoint' do

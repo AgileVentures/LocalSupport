@@ -30,23 +30,20 @@ class ImportKCSC
   end
 
   def find_or_create_organisations
-    # binding.pry
     @kcsc_contacts.zip(@kcsc_contact_addresses).each do |contact, address|
-      # binding.pry
-      model_klass.find_or_create_by! imported_id: id(contact) do |model|
-        populate_model_attributes model, contact, address
-      end
+      model = model_klass.find_or_initialize_by imported_id: id(contact) 
+      save_model_attributes model, contact, address
     end
   end
 
   def id(contact)
-    contact['organisation']['Contact ID']
+    Integer(contact['organisation']['Contact ID'])
   end
 
   # ultimately this could be refactored into a separate class
   # but let's get it all working first
   # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
-  def populate_model_attributes model, contact, address 
+  def save_model_attributes model, contact, address 
     model.imported_at = Time.current
     model.name = contact['organisation']['Delivered by-Organization Name'].titleize
     model.description = description(contact)
@@ -62,7 +59,7 @@ class ImportKCSC
     model.latitude = address['address']['Latitude']
     model.longitude = address['address']['Longitude']
     model.geocode if model.not_geocoded?  
-    model
+    model.save!
   end
 
   def full_address(address)
@@ -76,4 +73,9 @@ class ImportKCSC
     description
   end
 
+end
+
+# hack for one acronym from KCSC, but need a better solution ...
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.acronym 'ABI'
 end
