@@ -38,10 +38,18 @@ describe BaseOrganisation, type: :model do
   end
 
   describe 'full_address' do
-    it 'should be composed by address and postcode' do
+    it 'should be composed of address and postcode' do
       organisation = FactoryBot.create(:organisation)
       full_address  = "#{organisation.address}, #{organisation.postcode}"
       expect(organisation.full_address).to eq(full_address)
+    end
+    it 'should be just address when postcode is not present' do
+      organisation = FactoryBot.create(:organisation, postcode: ' ')
+      expect(organisation.full_address).to eq(organisation.address)
+    end
+    it 'should be just postcode when address is not present' do
+      organisation = FactoryBot.create(:organisation, address: ' ')
+      expect(organisation.full_address).to eq(organisation.postcode)
     end
   end
 end
