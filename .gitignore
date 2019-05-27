@@ -59,6 +59,8 @@ gnk
 /keyrings/live/secring.gpg
 .drie_encrypted.yml
 
+latest.dump*
+
 # travis dokku ssh keys for deploy
 .travis/*.key
 .travis/*.key.pub
