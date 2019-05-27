@@ -62,6 +62,8 @@ class BaseOrganisation < ApplicationRecord
   end
 
   def full_address
+    return self.address if self.postcode.blank?
+    return self.postcode if self.address.blank?
      "#{self.address}, #{self.postcode}"
   end
 
