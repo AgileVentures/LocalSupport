@@ -63,8 +63,7 @@ class ServicesController < BaseOrganisationsController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   # we'll reduce this but let's get clean first
-  # rubocop:disable Metrics/MethodLength
-  def service_params
+  def service_params # rubocop:disable Metrics/MethodLength
     params.require(:service).permit(:contact_id, 
                                     :display_name, 
                                     :service_activities, 
