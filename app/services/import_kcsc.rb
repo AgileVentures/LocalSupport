@@ -77,5 +77,5 @@ end
 
 # hack for one acronym from KCSC, but need a better solution ...
 ActiveSupport::Inflector.inflections do |inflect|
-  inflect.acronym "ABI"
+  inflect.acronym 'ABI'
 end
