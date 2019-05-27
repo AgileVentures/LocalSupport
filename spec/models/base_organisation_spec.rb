@@ -14,7 +14,7 @@ describe BaseOrganisation, type: :model do
   end
 
   describe '#has_been_updated_recently?' do
-    subject { FactoryBot.create(:organisation, updated_at: Time.now) }
+    subject { FactoryBot.create(:organisation, updated_at: Time.zone.now) }
 
     it { is_expected.to have_been_updated_recently }
 

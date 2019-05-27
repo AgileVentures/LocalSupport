@@ -1,0 +1,396 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.kcsc.org.uk/api/self-care/all?key=<KCSC_API_KEY>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3
+      Date:
+      - Mon, 27 May 2019 10:17:53 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=10
+      X-Drupal-Cache:
+      - MISS
+      X-Content-Type-Options:
+      - nosniff
+      - nosniff
+      Etag:
+      - '"1558952273-1"'
+      Cache-Control:
+      - public, max-age=3600
+      Last-Modified:
+      - Mon, 27 May 2019 10:17:53 GMT
+      Expires:
+      - Sun, 19 Nov 1978 05:00:00 GMT
+      Vary:
+      - Accept-Encoding
+      - Cookie
+      Strict-Transport-Security:
+      - max-age=63072000
+    body:
+      encoding: ASCII-8BIT
+      string: '{"organisations":[{"organisation":{"Contact ID":"85344","Display Name":"Acquired
+        Brain Injury (ABI)","Service Activities":"Attend ABI is a service designed
+        to support adults who have an acquired and non-progressive brain injury. It
+        aims to support individuals and their carers to build confidence particularly
+        through the development of new experiences and networks. The service is aimed
+        at clients who have substantially completed their medical rehabilitation but
+        who do not feel ready, or need additional support, to engage meaningfully
+        with their local community.\n","OfficeMain-Phone-General Phone":"0845 450
+        0285","OfficeMain-Email":"","Website":"http://www.attend.org.uk/projects/abi","Delivered
+        by-Organization Name":"Acquired Brain Injury (ABI)","Where we work":"Kensington
+        & Chelsea, Westminster, Hammersmith & Fulham","Self Care One to One or Group":"Group","Self
+        care service category":"Brain Injury","Self Care Category Secondary":"Carers","Self
+        care service agreed":"Self care service","Created Date":"","Modified date":"Thu,
+        07/02/2019 - 3:55pm","Group(s)":"self care directory","Activity Type":"","Summary
+        of Activities":"Attend ABI is a service designed to support adults who have
+        an acquired and non-progressive brain injury. It aims to support individuals
+        to build confidence particularly through the development of new experiences
+        and networks. The service is aimed at clients who have substantially completed
+        their medical rehabilitation but who do not feel ready, or need additional
+        support, to engage meaningfully with their local community.\n","Tag(s)":"Self
+        Care Service","Beneficiary Categories":"","Main beneficiary group":""}},{"organisation":{"Contact
+        ID":"1344","Display Name":"Action Disability Kensington & Chelsea","OfficeMain-Phone-General
+        Phone":"020 8960 8282","OfficeMain-Email":"adkc@adkc.org.uk","Website":"http://adkc.org.uk/","Delivered
+        by-Organization Name":"Action Disability Kensington & Chelsea","Where we work":"Kensington
+        & Chelsea","Self Care One to One or Group":"","Self care service category":"","Self
+        Care Category Secondary":"","Self care service agreed":"","Created Date":"2010-09-17
+        12:21:24","Modified date":"Thu, 02/05/2019 - 2:56pm","Group(s)":"VOF - Children,
+        Young People & Families","Activity Type":"","Summary of Activities":"ADKC
+        works to enhance opportunities for disabled people (with physical, sensory
+        and hidden impairments), living or working in the Royal Borough of Kensington
+        & Chelsea.\n","Tag(s)":"Self care","Beneficiary Categories":"Black and Minority
+        Ethnic, , Local Residents, Vulnerable Adults","Main beneficiary group":""}}]}'
+    http_version: 
+  recorded_at: Mon, 27 May 2019 10:17:53 GMT
+- request:
+    method: get
+    uri: https://www.kcsc.org.uk/api/self-care/addresses/all?key=<KCSC_API_KEY>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3
+      Date:
+      - Mon, 27 May 2019 10:17:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=10
+      X-Drupal-Cache:
+      - MISS
+      X-Content-Type-Options:
+      - nosniff
+      - nosniff
+      Etag:
+      - '"1558952273-1"'
+      Cache-Control:
+      - public, max-age=3600
+      Last-Modified:
+      - Mon, 27 May 2019 10:17:53 GMT
+      Expires:
+      - Sun, 19 Nov 1978 05:00:00 GMT
+      Vary:
+      - Accept-Encoding
+      - Cookie
+      Strict-Transport-Security:
+      - max-age=63072000
+    body:
+      encoding: ASCII-8BIT
+      string: '{"addresses":[{"address":{"Contact ID":"85344","Display Name":"Acquired
+        Brain Injury (ABI)","Location Type":"OfficeMain","Street Address":"","Street
+        Number":"","Street Number Suffix":"","Street Name":"","Street Unit":"","Supplemental
+        Address 1":"","Supplemental Address 2":"","3rd Supplemental Street Address":"","city":"","postal_code":"W1G
+        0AN","Latitude":"","Longitude":"","Address Name":"","County":"","Country":""}},{"address":{"Contact
+        ID":"1344","Display Name":"Action Disability Kensington & Chelsea","Location
+        Type":"OfficeMain","Street Address":"The ADKC Centre","Street Number":"","Street
+        Number Suffix":"","Street Name":"The ADKC Centre","Street Unit":"","Supplemental
+        Address 1":"Whistable House","Supplemental Address 2":"Silchester Road","3rd
+        Supplemental Street Address":"","city":"London","postal_code":"W10 6SB","Latitude":"51.515308","Longitude":"-0.216838","Address
+        Name":"OfficeMain","County":"","Country":"United Kingdom"}},{"address":{"Contact
+        ID":"90950","Display Name":"Active for LIfe","Location Type":"OfficeMain","Street
+        Address":"Town Hall","Street Number":"","Street Number Suffix":"","Street
+        Name":"Town Hall","Street Unit":"","Supplemental Address 1":"Hornton Street","Supplemental
+        Address 2":"","3rd Supplemental Street Address":"","city":"London","postal_code":"W8
+        7NX","Latitude":"","Longitude":"","Address Name":"","County":"","Country":""}},{"address":{"Contact
+        ID":"88159","Display Name":"Activities for Adults RBKC","Location Type":"OfficeMain","Street
+        Address":"Chelsea Sports Centre","Street Number":"","Street Number Suffix":"","Street
+        Name":"Chelsea Sports Centre","Street Unit":"","Supplemental Address 1":"Chelsea
+        Manor Street","Supplemental Address 2":"","3rd Supplemental Street Address":"","city":"London","postal_code":"SW3
+        5PL","Latitude":"","Longitude":"","Address Name":"","County":"","Country":""}}]}'
+    http_version: 
+  recorded_at: Mon, 27 May 2019 10:17:54 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=Town%20Hall%20London,%20W8%207NX&key=<GMAP_API_KEY>&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 27 May 2019 10:17:54 GMT
+      Expires:
+      - Tue, 28 May 2019 10:17:54 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '617'
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=533
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '495'
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,44,43,39"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "Hornton Street",
+                       "short_name" : "Hornton St",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Kensington",
+                       "short_name" : "Kensington",
+                       "types" : [ "neighborhood", "political" ]
+                    },
+                    {
+                       "long_name" : "London",
+                       "short_name" : "London",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "W8 7NX",
+                       "short_name" : "W8 7NX",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "Hornton St, Kensington, London W8 7NX, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.5023438,
+                       "lng" : -0.1952393
+                    },
+                    "location_type" : "GEOMETRIC_CENTER",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5036927802915,
+                          "lng" : -0.193890319708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.5009948197085,
+                          "lng" : -0.1965882802915021
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJm72_v_APdkgRdXZLicOxUmE",
+                 "plus_code" : {
+                    "compound_code" : "GR23+WW London, United Kingdom",
+                    "global_code" : "9C3XGR23+WW"
+                 },
+                 "types" : [
+                    "city_hall",
+                    "establishment",
+                    "local_government_office",
+                    "point_of_interest"
+                 ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Mon, 27 May 2019 10:26:09 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=W1G%200AN&key=<GMAP_API_KEY>&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 27 May 2019 09:53:11 GMT
+      Expires:
+      - Tue, 28 May 2019 09:53:11 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '528'
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=367
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '3114'
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,44,43,39"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "W1G 0AN",
+                       "short_name" : "W1G 0AN",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Marylebone",
+                       "short_name" : "Marylebone",
+                       "types" : [ "neighborhood", "political" ]
+                    },
+                    {
+                       "long_name" : "London",
+                       "short_name" : "London",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Marylebone, London W1G 0AN, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.5172421,
+                          "lng" : -0.1446309
+                       },
+                       "southwest" : {
+                          "lat" : 51.5165535,
+                          "lng" : -0.1456911
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.5168073,
+                       "lng" : -0.1451124
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5182467802915,
+                          "lng" : -0.143812019708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.5155488197085,
+                          "lng" : -0.146509980291502
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJp4C989QadkgRHzLBD_uUC_Q",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Mon, 27 May 2019 10:45:05 GMT
+recorded_with: VCR 4.0.0
