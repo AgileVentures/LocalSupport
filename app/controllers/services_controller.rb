@@ -8,8 +8,8 @@ class ServicesController < BaseOrganisationsController
   # GET /services.json
   def index
     @query = params[:q]
-    return @services = Service.order_by_most_recent.search_for_text(@query) if @query.present?
     @services = Service.order_by_most_recent
+    @services = @services.search_for_text(@query) if @query.present?
   end
 
   # GET /services/1
@@ -30,29 +30,20 @@ class ServicesController < BaseOrganisationsController
   # POST /services.json
   def create
     @service = Service.new(service_params)
-
-    respond_to do |format|
-      if @service.save
-        format.html { redirect_to @service, notice: 'Service was successfully created.' }
-        format.json { render :show, status: :created, location: @service }
-      else
-        format.html { render :new }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
-      end
+    if @service.save
+      redirect_to @service, notice: 'Service was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /services/1
   # PATCH/PUT /services/1.json
   def update
-    respond_to do |format|
-      if @service.update(service_params)
-        format.html { redirect_to @service, notice: 'Service was successfully updated.' }
-        format.json { render :show, status: :ok, location: @service }
-      else
-        format.html { render :edit }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
-      end
+    if @service.update(service_params)
+      redirect_to @service, notice: 'Service was successfully updated.' 
+    else
+      render :edit 
     end
   end
 
@@ -60,10 +51,7 @@ class ServicesController < BaseOrganisationsController
   # DELETE /services/1.json
   def destroy
     @service.destroy
-    respond_to do |format|
-      format.html { redirect_to services_url, notice: 'Service was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to services_url, notice: 'Service was successfully destroyed.' 
   end
 
   private
@@ -74,11 +62,41 @@ class ServicesController < BaseOrganisationsController
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
+  # we'll reduce this but let's get clean first
+  # rubocop:disable Metrics/MethodLength
   def service_params
-    params.require(:service).permit(:contact_id, :display_name, :service_activities, :postal_code,
-                                    :office_main_phone_general_phone, :office_main_email, :website, :delivered_by_organization_name, :where_we_work,
-                                    :self_care_one_to_one_or_group, :self_care_service_category, :self_care_category_secondary, :self_care_service_agreed, 
-                                    :location_type, :street_address, :street_number, :street_name, :street_unit, :supplemental_address_1, :supplemental_address_2,
-                                    :supplemental_address_3, :city, :latitude, :longitude, :address_name, :county, :state, :country, :groups, :tags, :activity_type, :summary_of_activities, :beneficiaries)
+    params.require(:service).permit(:contact_id, 
+                                    :display_name, 
+                                    :service_activities, 
+                                    :postal_code,
+                                    :office_main_phone_general_phone, 
+                                    :office_main_email, 
+                                    :website, 
+                                    :delivered_by_organization_name, 
+                                    :where_we_work,
+                                    :self_care_one_to_one_or_group, 
+                                    :self_care_service_category, 
+                                    :self_care_category_secondary, 
+                                    :self_care_service_agreed, 
+                                    :location_type, 
+                                    :street_address, 
+                                    :street_number, 
+                                    :street_name, 
+                                    :street_unit, 
+                                    :supplemental_address_1, 
+                                    :supplemental_address_2,
+                                    :supplemental_address_3, 
+                                    :city, 
+                                    :latitude, 
+                                    :longitude, 
+                                    :address_name, 
+                                    :county, 
+                                    :state, 
+                                    :country, 
+                                    :groups, 
+                                    :tags, 
+                                    :activity_type, 
+                                    :summary_of_activities, 
+                                    :beneficiaries)
   end
 end
