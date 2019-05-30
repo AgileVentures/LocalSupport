@@ -8,8 +8,8 @@
       <% @services.each do |service| %>
          <tr>
           <td>
-            <u><%= link_to service.display_name, service, { :target => '_blank' } %></u><br/>
-            <%= smart_truncate(service.service_activities) %>
+            <u><%= link_to service.name, service, { :target => '_blank' } %></u><br/>
+            <%= smart_truncate(service.description) %>
           </td>
         </tr>
       <% end %>

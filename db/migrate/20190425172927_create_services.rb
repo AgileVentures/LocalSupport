@@ -5,7 +5,7 @@ class CreateServices < ActiveRecord::Migration[5.2]
       t.string :contact_id
       t.string :name
       t.text :description
-      t.string :postal_code
+      t.string :postcode
       t.string :telephone
       t.string :email
       t.string :website

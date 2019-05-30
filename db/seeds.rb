@@ -46,21 +46,14 @@ Logger.new(STDOUT).info 'Services Seed'
 5.times do
   Service.create(
     contact_id: Faker::Internet.email,
-    display_name: Faker::Company.name,
-    service_activities: Faker::Lorem.sentences,
-    office_main_email: Faker::Internet.email,
-    office_main_phone_general_phone: Faker::PhoneNumber.phone_number,
+    name: Faker::Company.name,
+    description: Faker::Lorem.sentences,
+    email: Faker::Internet.email,
+    telephone: Faker::PhoneNumber.phone_number,
     website: Faker::Internet.url,
-    delivered_by_organization_name: Faker::Company.name,
     latitude: rand(51.546702..51.6247775).round(7),
     longitude: rand(-0.4476553..-0.2687842).round(7),
-    street_address: Faker::Address.street_address,
-    street_number: Faker::Address.building_number,
-    street_name: Faker::Address.street_name,
-    street_unit: Faker::Address.state,
-    state: Faker::Address.state,
-    country: Faker::Address.country,
-    address_name: Faker::Address.street_name
+    address: Faker::Address.street_address,
   )
 end
 

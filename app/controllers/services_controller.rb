@@ -66,9 +66,9 @@ class ServicesController < BaseOrganisationsController
   def service_params # rubocop:disable Metrics/MethodLength
     params.require(:service).permit(:organisation_id,
                                     :contact_id, 
-                                    :display_name, 
+                                    :name, 
                                     :service_activities, 
-                                    :postal_code,
+                                    :postcode,
                                     :telephone, 
                                     :email, 
                                     :website,
