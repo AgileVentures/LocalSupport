@@ -3,11 +3,11 @@ class CreateServices < ActiveRecord::Migration[5.2]
     create_table :services do |t|
       t.integer :organisation_id, foreign_key: true
       t.string :contact_id
-      t.string :display_name
-      t.text :service_activities
+      t.string :name
+      t.text :description
       t.string :postal_code
-      t.string :office_main_phone_general_phone
-      t.string :office_main_email
+      t.string :telephone
+      t.string :email
       t.string :website
       t.string :where_we_work
       t.integer :latitude
