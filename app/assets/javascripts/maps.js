@@ -41,7 +41,7 @@ var OrganisationMap = {
         return {
           fillOpacity: 0.75,
           fillColor: color,
-          strokeWeight: 1
+          strokeWeight: 0
         }
       });
 
