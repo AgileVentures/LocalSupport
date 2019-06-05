@@ -13,18 +13,11 @@ class Service < ApplicationRecord
   end
 
   def self.from_model(model)
-    service = Service.create(imported_at: model.imported_at)
-    service.name = model.name
-    service.description = model.description
-    service.telephone = model.telephone
-    service.email = model.email
-    service.website = model.website
-    service.address = model.address
-    service.postcode = model.postcode
-    service.latitude = model.latitude
-    service.longitude = model.longitude
-    service.save!
-    service
+    Service.create(imported_at: model.imported_at, name: model.name,
+                   description: model.description, telephone: model.telephone,
+                   email: model.email, website: model.website,
+                   address: model.address, postcode: model.postcode,
+                   latitude: model.latitude, longitude: model.longitude)
   end
 
   def self.build_by_coordinates(services = nil)
