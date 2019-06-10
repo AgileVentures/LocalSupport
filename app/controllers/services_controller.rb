@@ -10,7 +10,8 @@ class ServicesController < BaseOrganisationsController
     @query = params[:q]
     @services = Service.order_by_most_recent
     @services = @services.search_for_text(@query) if @query.present?
-    @markers = BuildMarkersWithInfoWindow.with(Service.build_by_coordinates(@services), self)
+    services_with_coords = Service.build_by_coordinates(@services)
+    @markers = BuildMarkersWithInfoWindow.with(services_with_coords, self)
   end
 
   # GET /services/1
