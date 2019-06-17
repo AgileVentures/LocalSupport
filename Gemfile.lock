@@ -319,7 +319,7 @@ GEM
       byebug (~> 11.0)
       pry (~> 0.10)
     public_suffix (3.1.0)
-    puffing-billy (2.1.0)
+    puffing-billy (2.1.1)
       addressable (~> 2.5)
       em-http-request (~> 1.1, >= 1.1.0)
       em-synchrony
