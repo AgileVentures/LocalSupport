@@ -32,8 +32,8 @@
 </p>
 
 <p>
-  <strong>Postcode:</strong>
-  <%= @service.postcode %>
+  <b>Service location:</b>
+  <%= "#{ @service.address }, #{ @service.postcode }" %>
 </p>
 
 <p>
@@ -72,5 +72,4 @@
 </p>
 
 <%= link_to 'Edit', edit_service_path(@service) %> |
-<%= link_to 'Back', services_path %>
 <% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
