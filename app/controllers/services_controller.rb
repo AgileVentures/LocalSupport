@@ -67,6 +67,7 @@ class ServicesController < BaseOrganisationsController
   # we'll reduce this but let's get clean first
   def service_params # rubocop:disable Metrics/MethodLength
     params.require(:service).permit(:organisation_id,
+                                    :description,
                                     :contact_id, 
                                     :name, 
                                     :service_activities, 

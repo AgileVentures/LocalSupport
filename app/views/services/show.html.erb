@@ -2,6 +2,20 @@
 
 <p id="notice"><%= notice %></p>
 
+<h3>
+  <%= @service.name %>
+</h3>
+
+<p>
+  <%= simple_format auto_link @service.description %>
+</p>
+
+<p>
+  <b>Organisation:</b>
+  <%= link_to @service.organisation.name, organisation_path(@service.organisation) %>
+</p>
+
+
 <p>
   <strong>Contact:</strong>
   <%= @service.contact_id %>
