@@ -45,6 +45,7 @@ def paths(location)
     'reset password' => reset_pwd,
     'new event' => new_event_path,
     'events' => events_path,
+    'services' => services_path,
     'embedded map' => embedded_map_path
   }[location]
 end

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Services</h1>
+<%= render 'search_form' %>
+ <div id='orgs_scroll' style="height:410px;width:100%;border:1px solid #ccc;overflow:scroll;">
+  <div class='table table-bordered'>
+    <table>
+      <% @services.each do |service| %>
+         <tr>
+          <td>
+            <u><%= link_to service.name, service, { :target => '_blank' } %></u><br/>
+            <div id='organisations'>
+              <small><%= link_to service.organisation.name, service.organisation, { :target => '_blank' }  %></small>
+              <br/>
+            </div>
+            <%= smart_truncate(service.description) %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <br>
+  </div>
+</div>
+<br>
+<% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
+
+<% render 'shared/map_legend_script' %>

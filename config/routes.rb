@@ -1,5 +1,8 @@
 LocalSupport::Application.routes.draw do
 
+  resources :services do
+    get 'search', on: :collection
+  end
   namespace :admin do
       resources :settings
 

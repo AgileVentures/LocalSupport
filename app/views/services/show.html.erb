@@ -1,0 +1,75 @@
+<%= render "search_form" %>
+
+<p id="notice"><%= notice %></p>
+
+<h3>
+  <%= @service.name %>
+</h3>
+
+<p>
+  <%= simple_format auto_link @service.description %>
+</p>
+
+<p>
+  <b>Organisation:</b>
+  <%= link_to @service.organisation.name, organisation_path(@service.organisation) %>
+</p>
+
+
+<p>
+  <strong>Contact:</strong>
+  <%= @service.contact_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @service.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @service.description %>
+</p>
+
+<p>
+  <b>Service location:</b>
+  <%= "#{ @service.address }, #{ @service.postcode }" %>
+</p>
+
+<p>
+  <strong>Telephone:</strong>
+  <%= @service.telephone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @service.email %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @service.website %>
+</p>
+
+<p>
+  <strong>Where we work:</strong>
+  <%= @service.where_we_work %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @service.address %>
+</p>
+
+<p>
+  <strong>Activity type:</strong>
+  <%= @service.activity_type %>
+</p>
+
+<p>
+  <strong>Beneficiaries:</strong>
+  <%= @service.beneficiaries %>
+</p>
+
+<%= link_to 'Edit', edit_service_path(@service) %> |
+<% render partial: 'shared/map_scripts', locals: {markers: @markers} %>

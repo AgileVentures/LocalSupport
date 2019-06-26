@@ -1,36 +1,36 @@
 class BuildMarkersWithInfoWindow
 
-  def self.with(volops, listener, marker_builder = Gmaps::MarkersBuilder, helper = ActionController::Base.helpers)
-    new(volops, listener, marker_builder, helper).send(:run)
+  def self.with(models, listener, marker_builder = Gmaps::MarkersBuilder, helper = ActionController::Base.helpers)
+    new(models, listener, marker_builder, helper).send(:run)
   end
 
   private
 
-  attr_reader :volops, :listener, :marker_builder, :helper
+  attr_reader :models, :listener, :marker_builder, :helper
 
-  def initialize(volops, listener, marker_builder, helper)
-    @volops = volops
+  def initialize(models, listener, marker_builder, helper)
+    @models = models
     @listener = listener
     @marker_builder = marker_builder
     @helper = helper
   end
 
   def run
-    marker_builder.generate(volops, &method(:build_single_marker)).to_json
+    marker_builder.generate(models, &method(:build_single_marker)).to_json
   end
 
-  def build_single_marker(volop, marker)
-    location = volop.first
-    vol_ops = volop.last
-    if vol_ops.first.try(:source)
-      source = VolunteerOp.get_source(vol_ops)
+  def build_single_marker(model, marker)
+    location = model.first
+    models = model.last
+    if model.first.try(:source)
+      source = VolunteerOp.get_source(models)
     else
       source = 'local'
     end
     marker.lat location.latitude
     marker.lng location.longitude
     marker.infowindow listener.render_to_string(
-      partial: "shared/popup/#{source}.html.erb", locals: {vol_ops: vol_ops}
+      partial: "shared/popup/#{source}.html.erb", locals: {vol_ops: models}
     )
     marker.json(
       custom_marker: listener.render_to_string(

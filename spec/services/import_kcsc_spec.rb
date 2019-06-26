@@ -6,8 +6,9 @@ describe ImportKCSC do
   let(:url) {"#{ImportKCSC::HOST}#{ImportKCSC::HREF}#{key}"}
   let(:address_url) {"#{ImportKCSC::HOST}#{ImportKCSC::ADDRESSES_HREF}#{key}"}
   let(:model_klass) { spy :model_klass }
+  let(:assoc_model_klass) { spy :assoc_model_klass }
 
-  subject(:import_kcsc) { described_class.with(http_party, model_klass) }
+  subject(:import_kcsc) { described_class.with(http_party, model_klass, assoc_model_klass) }
 
   context 'nothing to import' do
     let(:response) {double :response, body: '{}'} 

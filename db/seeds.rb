@@ -42,6 +42,21 @@ organisations.each do |organisation|
   )
 end
 
+Logger.new(STDOUT).info 'Services Seed'
+5.times do
+  Service.create(
+    contact_id: Faker::Internet.email,
+    name: Faker::Company.name,
+    description: Faker::Lorem.sentences,
+    email: Faker::Internet.email,
+    telephone: Faker::PhoneNumber.phone_number,
+    website: Faker::Internet.url,
+    latitude: rand(51.546702..51.6247775).round(7),
+    longitude: rand(-0.4476553..-0.2687842).round(7),
+    address: Faker::Address.street_address,
+  )
+end
+
 Logger.new(STDOUT).info 'Start Users seed'
 User.create(
   email: 'superadmin@harrowcn.org.uk',
@@ -106,5 +121,6 @@ Feature.create(name: 'reachskills_volunteer_opportunities')
 Feature.activate('reachskills_volunteer_opportunities')
 Feature.create(name: 'events')
 Feature.activate('events')
+Feature.create(name: 'services')
 
 Logger.new(STDOUT).info 'Seed completed'

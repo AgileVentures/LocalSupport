@@ -38,6 +38,7 @@ class Organisation < BaseOrganisation
   has_many :users
   has_many :edits, class_name: 'ProposedOrganisationEdit', dependent: :destroy
   has_many :events
+  has_many :services
 
   accepts_nested_attributes_for :users # TODO check if needed
 

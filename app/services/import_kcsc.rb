@@ -1,15 +1,16 @@
 class ImportKCSC
-  def self.with(http = HTTParty, model_klass = Organisation)
-    new(http, model_klass).send(:run)
+  def self.with(http = HTTParty, model_klass = Organisation, assoc_model_klass = Service)
+    new(http, model_klass, assoc_model_klass).send(:run)
   end
 
   private
 
-  attr_reader :http, :model_klass
+  attr_reader :http, :model_klass, :assoc_model_klass
 
-  def initialize http, model_klass
+  def initialize http, model_klass, assoc_model_klass
     @http = http
     @model_klass = model_klass
+    @assoc_model_klass = assoc_model_klass
   end
 
   HOST = 'https://www.kcsc.org.uk'
@@ -45,6 +46,7 @@ class ImportKCSC
   # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
   def save_model_attributes model, contact, address 
     model.imported_at = Time.current
+    model.imported_from = "#{HOST}#{HREF}"
     model.name = contact['organisation']['Delivered by-Organization Name'].titleize
     model.description = description(contact)
     model.telephone = contact['organisation']['OfficeMain-Phone-General Phone']
@@ -58,7 +60,8 @@ class ImportKCSC
     model.postcode = address['address']['postal_code'] || ''
     model.latitude = address['address']['Latitude']
     model.longitude = address['address']['Longitude']
-    model.geocode if model.not_geocoded?  
+    model.geocode if model.not_geocoded?
+    model.services << assoc_model_klass.from_model(model)  
     model.save!
   end
 
