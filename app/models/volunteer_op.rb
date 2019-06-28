@@ -1,3 +1,37 @@
+# == Schema Information
+#
+# Table name: volunteer_ops
+#
+#  id                    :integer          not null, primary key
+#  address               :string
+#  contact_details       :string
+#  deleted_at            :datetime
+#  description           :text
+#  doit_op_link          :string
+#  doit_org_link         :string
+#  doit_org_name         :string
+#  imported_at           :datetime
+#  latitude              :float
+#  longitude             :float
+#  postcode              :string
+#  reachskills_op_link   :string
+#  reachskills_org_name  :string
+#  role_description      :string
+#  skills_needed         :string
+#  source                :string           default("local")
+#  title                 :string(255)
+#  when_volunteer_needed :datetime
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  doit_op_id            :string
+#  organisation_id       :integer
+#
+# Indexes
+#
+#  index_volunteer_ops_on_deleted_at       (deleted_at)
+#  index_volunteer_ops_on_organisation_id  (organisation_id)
+#
+
 class VolunteerOp < ApplicationRecord
   include GlobalID::Identification
   acts_as_paranoid

@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id              :integer          not null, primary key
+#  address         :string
+#  description     :text
+#  end_date        :datetime
+#  latitude        :float
+#  longitude       :float
+#  occur           :integer          default(0)
+#  recurring       :text
+#  start_date      :datetime
+#  title           :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  organisation_id :integer
+#
+# Foreign Keys
+#
+#  fk_rails_...  (organisation_id => organisations.id)
+#
+
 class Event < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
