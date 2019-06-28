@@ -1,3 +1,28 @@
+# == Schema Information
+#
+# Table name: services
+#
+#  id              :bigint           not null, primary key
+#  activity_type   :string
+#  address         :string
+#  beneficiaries   :string
+#  description     :text
+#  email           :string
+#  imported_at     :datetime
+#  imported_from   :string
+#  latitude        :float
+#  longitude       :float
+#  name            :string
+#  postcode        :string
+#  telephone       :string
+#  website         :string
+#  where_we_work   :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  contact_id      :string
+#  organisation_id :integer
+#
+
 class Service < ApplicationRecord
   scope :order_by_most_recent, -> { order('created_at DESC') }
   belongs_to :organisation

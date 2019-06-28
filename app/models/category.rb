@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: categories
+#
+#  id                      :integer          not null, primary key
+#  charity_commission_name :string(255)
+#  name                    :string(255)
+#  created_at              :datetime
+#  updated_at              :datetime
+#  charity_commission_id   :integer
+#
+
 require 'csv'
 
 class Category < ApplicationRecord

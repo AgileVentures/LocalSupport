@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: features
+#
+#  id     :integer          not null, primary key
+#  active :boolean          default(FALSE)
+#  name   :string(255)
+#
+
 # Provides feature flags.
 # ======================
 # To create a new feature flag

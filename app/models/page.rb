@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: pages
+#
+#  id           :integer          not null, primary key
+#  content      :text
+#  link_visible :boolean          default(TRUE)
+#  name         :string(255)
+#  permalink    :string(255)
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+# Indexes
+#
+#  index_pages_on_permalink  (permalink)
+#
+
 class Page < ApplicationRecord
   #attr_accessible :content, :name, :permalink, :link_visible
   validates :name, presence: true
