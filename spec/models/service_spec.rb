@@ -18,7 +18,7 @@ RSpec.describe Service, type: :model do
   end
 
   xit 'can be built by coordinates' do
-    services = Service.build_by_coordinates()
+    services = Service.build_by_coordinates
   end
 end
 

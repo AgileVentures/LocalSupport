@@ -26,7 +26,8 @@
 class Service < ApplicationRecord
   scope :order_by_most_recent, -> { order('created_at DESC') }
   belongs_to :organisation
-  has_many :self_care_categories, through: :self_care_category_service
+  has_many :self_care_category_services
+  has_many :self_care_categories, through: :self_care_category_services
   geocoded_by :full_address
 
   def full_address
