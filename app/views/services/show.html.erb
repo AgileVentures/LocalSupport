@@ -9,12 +9,12 @@
 <p>
   <%= simple_format auto_link @service.description %>
 </p>
-
+<% if @service.organisation %>
 <p>
   <b>Organisation:</b>
-  <%= link_to @service.organisation.name, organisation_path(@service.organisation) %>
+  <%= link_to @service.organisation&.name, organisation_path(@service.organisation) %>
 </p>
-
+<% end %>
 
 <p>
   <strong>Contact:</strong>
@@ -69,6 +69,11 @@
 <p>
   <strong>Beneficiaries:</strong>
   <%= @service.beneficiaries %>
+</p>
+
+<p>
+  <strong>Self Care Categories:</strong>
+  <%= @service.self_care_categories.pluck(:name).join(', ') %>
 </p>
 
 <%= link_to 'Edit', edit_service_path(@service) %> |

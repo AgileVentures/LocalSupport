@@ -61,7 +61,7 @@ class ImportKCSC
     model.latitude = address['address']['Latitude']
     model.longitude = address['address']['Longitude']
     model.geocode if model.not_geocoded?
-    model.services << assoc_model_klass.from_model(model)  
+    service = assoc_model_klass.from_model(model, contact)   
     model.save!
   end
 

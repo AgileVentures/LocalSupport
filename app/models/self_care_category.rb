@@ -9,5 +9,6 @@
 #
 
 class SelfCareCategory < ApplicationRecord
+  has_many :self_care_category_services
   has_many :services, through: :self_care_category_services
 end

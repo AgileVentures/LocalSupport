@@ -39,12 +39,19 @@ class Service < ApplicationRecord
           "%#{text}%", "%#{text}%")
   end
 
-  def self.from_model(model)
-    Service.create(imported_at: model.imported_at, name: model.name,
+  def self.search_by_category(text)
+    where('description LIKE ? OR name LIKE ?',
+          "%#{text}%", "%#{text}%")
+  end
+
+  def self.from_model(model, contact = nil)
+    service = Service.create(imported_at: model.imported_at, name: model.name,
                    description: model.description, telephone: model.telephone,
                    email: model.email, website: model.website,
                    address: model.address, postcode: model.postcode,
                    latitude: model.latitude, longitude: model.longitude)
+    associate_categories(service, contact)
+    service
   end
 
   def self.build_by_coordinates(services = nil)
@@ -52,7 +59,22 @@ class Service < ApplicationRecord
     Location.build_hash(group_by_coordinates(services))
   end
 
+  def self.search_by_categories(category_id)
+    # binding.pry
+    joins(:self_care_categories)
+      .where("self_care_categories.id = ?", category_id)                 # at this point, orgs in multiple categories show up as duplicates
+      # .group(organisation_id)                             # so we exploit this
+      # .having(organisation_id.count.eq category_ids.size) # and return the orgs with correct number of duplicates
+  end
+
   private
+
+  def self.associate_categories(service, contact)
+    return service unless contact               
+    service.self_care_categories << SelfCareCategory.find_or_create_by(name: contact['organisation']['Self care service category'])
+    service.self_care_categories << SelfCareCategory.find_or_create_by(name: contact['organisation']['Self Care Category Secondary'])  
+    service.save!
+  end
   
   def self.service_with_coordinates(services)
     services.map do |service|

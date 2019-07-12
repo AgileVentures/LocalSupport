@@ -8,8 +8,10 @@ class ServicesController < BaseOrganisationsController
   # GET /services.json
   def index
     @query = params[:q]
+    @category = params[:self_care_category_id]
     @services = Service.order_by_most_recent
     @services = @services.search_for_text(@query) if @query.present?
+    @services = @services.search_by_categories(@category) if @category.present?
     services_with_coords = Service.build_by_coordinates(@services)
     @markers = BuildMarkersWithInfoWindow.with(services_with_coords, self)
   end
