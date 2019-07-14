@@ -49,7 +49,8 @@ class Service < ApplicationRecord
                    description: model.description, telephone: model.telephone,
                    email: model.email, website: model.website,
                    address: model.address, postcode: model.postcode,
-                   latitude: model.latitude, longitude: model.longitude)
+                   latitude: model.latitude, longitude: model.longitude,
+                   organisation: model)
     associate_categories(service, contact)
     service
   end
@@ -60,11 +61,8 @@ class Service < ApplicationRecord
   end
 
   def self.search_by_categories(category_id)
-    # binding.pry
     joins(:self_care_categories)
-      .where("self_care_categories.id = ?", category_id)                 # at this point, orgs in multiple categories show up as duplicates
-      # .group(organisation_id)                             # so we exploit this
-      # .having(organisation_id.count.eq category_ids.size) # and return the orgs with correct number of duplicates
+      .where('self_care_categories.id = ?', category_id)
   end
 
   private
