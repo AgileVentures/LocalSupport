@@ -68,9 +68,11 @@ class Service < ApplicationRecord
   private
 
   def self.associate_categories(service, contact)
-    return service unless contact               
-    service.self_care_categories << SelfCareCategory.find_or_create_by(name: contact['organisation']['Self care service category'])
-    service.self_care_categories << SelfCareCategory.find_or_create_by(name: contact['organisation']['Self Care Category Secondary'])  
+    return service unless contact     
+    first_category = contact['organisation']['Self care service category']          
+    second_category = contact['organisation']['Self Care Category Secondary']          
+    service.self_care_categories << SelfCareCategory.find_or_create_by(name: first_category) unless first_category.blank?
+    service.self_care_categories << SelfCareCategory.find_or_create_by(name: second_category) unless second_category.blank?
     service.save!
   end
   
