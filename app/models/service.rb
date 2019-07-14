@@ -30,6 +30,14 @@ class Service < ApplicationRecord
   has_many :self_care_categories, through: :self_care_category_services
   geocoded_by :full_address
 
+  def self.where_we_work_values
+    ['Queen\'s Park & Paddington', 'Kensington & Chelsea', 'Westminster', 'Hammersmith & Fulham']
+  end
+
+  def self.activity_values
+    ['Group', 'One to One']
+  end
+
   def full_address
     "#{self.address}, #{self.postcode}"
   end
@@ -59,10 +67,12 @@ class Service < ApplicationRecord
     services = service_with_coordinates(services)
     Location.build_hash(group_by_coordinates(services))
   end
-
-  def self.search_by_categories(category_id)
+  
+  def self.filter_by_categories(category_ids)
     joins(:self_care_categories)
-      .where('self_care_categories.id = ?', category_id)
+      .where(SelfCareCategory.arel_table[:id].in category_ids) # at this point, services in multiple categories show up as duplicates
+      .group(arel_table[:id])                            # so we exploit this
+      .having(arel_table[:id].count.eq category_ids.size) # and return the services with correct number of duplicates
   end
 
   private

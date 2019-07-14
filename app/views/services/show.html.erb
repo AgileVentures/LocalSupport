@@ -1,14 +1,9 @@
 <%= render "search_form" %>
 
-<p id="notice"><%= notice %></p>
-
-<h3>
+<h2>
   <%= @service.name %>
-</h3>
+</h2>
 
-<p>
-  <%= simple_format auto_link @service.description %>
-</p>
 <% if @service.organisation %>
 <p>
   <b>Organisation:</b>
@@ -17,20 +12,14 @@
 <% end %>
 
 <p>
+  <%= simple_format auto_link @service.description %>
+</p>
+<% if @service.contact_id.present? %>
+<p>
   <strong>Contact:</strong>
   <%= @service.contact_id %>
 </p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @service.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @service.description %>
-</p>
-
+<% end %>
 <p>
   <b>Service location:</b>
   <%= "#{ @service.address }, #{ @service.postcode }" %>
@@ -43,38 +32,34 @@
 
 <p>
   <strong>Email:</strong>
-  <%= @service.email %>
+  <a href="mailto:<%= @service.email %>"><%= @service.email %></a>
 </p>
 
 <p>
   <strong>Website:</strong>
-  <%= @service.website %>
+  <%= link_to @service.website, @service.website, {:target => '_blank'} %>
 </p>
-
+<% if @service.where_we_work.present? %>
 <p>
   <strong>Where we work:</strong>
   <%= @service.where_we_work %>
 </p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @service.address %>
-</p>
-
+<%end%>
+<% if @service.activity_type.present? %>
 <p>
   <strong>Activity type:</strong>
   <%= @service.activity_type %>
 </p>
-
+<%end%>
+<% if @service.beneficiaries.present? %>
 <p>
   <strong>Beneficiaries:</strong>
   <%= @service.beneficiaries %>
 </p>
-
+<%end%>
 <p>
   <strong>Self Care Categories:</strong>
   <%= @service.self_care_categories.pluck(:name).join(', ') %>
 </p>
 
-<%= link_to 'Edit', edit_service_path(@service) %> |
 <% render partial: 'shared/map_scripts', locals: {markers: @markers} %>

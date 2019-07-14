@@ -8,10 +8,10 @@ class ServicesController < BaseOrganisationsController
   # GET /services.json
   def index
     @query = params[:q]
-    @category = params[:self_care_category_id]
+    @categories = params[:self_care_category_id]
     @services = Service.order_by_most_recent
     @services = @services.search_for_text(@query) if @query.present?
-    @services = @services.search_by_categories(@category) if @category.present?
+    @services = @services.filter_by_categories(@categories) if @categories.present?
     services_with_coords = Service.build_by_coordinates(@services)
     @markers = BuildMarkersWithInfoWindow.with(services_with_coords, self)
   end
@@ -19,6 +19,8 @@ class ServicesController < BaseOrganisationsController
   # GET /services/1
   # GET /services/1.json
   def show
+    # ideally we'd center the map on the indiviudal service
+    @markers = BuildMarkersWithInfoWindow.with(Service.build_by_coordinates([@service]), self)
   end
 
   # GET /services/new
