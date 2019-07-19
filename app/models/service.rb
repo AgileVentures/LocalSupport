@@ -53,14 +53,13 @@ class Service < ApplicationRecord
   end
 
   def self.from_model(model, contact = nil)
-    service = Service.create(imported_at: model.imported_at, name: model.name,
-                   description: model.description, telephone: model.telephone,
-                   email: model.email, website: model.website,
-                   address: model.address, postcode: model.postcode,
-                   latitude: model.latitude, longitude: model.longitude,
-                   organisation: model)
-    associate_categories(service, contact)
-    service
+    Service.find_or_initialize_by(contact_id: id(contact)) do |service|
+      save_service_attributes service, model, contact
+    end
+  end
+
+  def self.id(contact)
+    Integer(contact['organisation']['Contact ID'])
   end
 
   def self.build_by_coordinates(services = nil)
@@ -75,16 +74,33 @@ class Service < ApplicationRecord
       .having(arel_table[:id].count.eq category_ids.size) # and return the services with correct number of duplicates
   end
 
-  private
+  def self.save_service_attributes(service, model, contact)
+    service.imported_at = model.imported_at
+    service.name = model.name
+    service.description = model.description
+    service.telephone = model.telephone
+    service.email = model.email 
+    service.website = model.website
+    service.address = model.address
+    service.postcode = model.postcode
+    service.latitude = model.latitude
+    service.longitude = model.longitude
+    service.organisation = model
+    service.where_we_work = contact['organisation']['Where we work'] if contact
+    service.activity_type = contact['organisation']['Self Care One to One or Group'] if contact
+    service.associate_categories(contact)
+  end
 
-  def self.associate_categories(service, contact)
-    return service unless contact     
+  def associate_categories(contact)
+    return self unless contact     
     first_category = contact['organisation']['Self care service category']          
     second_category = contact['organisation']['Self Care Category Secondary']          
-    service.self_care_categories << SelfCareCategory.find_or_create_by(name: first_category) unless first_category.blank?
-    service.self_care_categories << SelfCareCategory.find_or_create_by(name: second_category) unless second_category.blank?
-    service.save!
+    self_care_categories << SelfCareCategory.find_or_create_by(name: first_category) unless first_category.blank?
+    self_care_categories << SelfCareCategory.find_or_create_by(name: second_category) unless second_category.blank?
+    save!
   end
+
+  private
   
   def self.service_with_coordinates(services)
     services.map do |service|

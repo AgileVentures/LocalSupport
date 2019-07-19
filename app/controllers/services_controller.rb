@@ -9,9 +9,13 @@ class ServicesController < BaseOrganisationsController
   def index
     @query = params[:q]
     @categories = params[:self_care_category_id]
+    @activity_type = params[:activity_type]
+    @where_we_work = params[:where_we_work]
     @services = Service.order_by_most_recent
     @services = @services.search_for_text(@query) if @query.present?
     @services = @services.filter_by_categories(@categories) if category_filter?
+    @services = @services.where(activity_type: @activity_type) if @activity_type
+    @services = @services.where(where_we_work: @where_we_work) if @where_we_work
     services_with_coords = Service.build_by_coordinates(@services)
     @markers = BuildMarkersWithInfoWindow.with(services_with_coords, self)
   end

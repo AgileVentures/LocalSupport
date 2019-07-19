@@ -54,8 +54,6 @@ class ImportKCSC
     model.website = contact['organisation']['Website']
     model.publish_phone = true
     model.publish_address = true
-    # contact['organisation']['Where we work']
-    # contact['organisation']['Service Activities']
     model.address = full_address(address)
     model.postcode = address['address']['postal_code'] || ''
     model.latitude = address['address']['Latitude']

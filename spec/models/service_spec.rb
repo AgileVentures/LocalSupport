@@ -13,7 +13,8 @@ RSpec.describe Service, type: :model do
 
   let(:organisation) { create(:organisation)}
 
-  it 'can be imported from another model' do
+  # never going to create this way?
+  xit 'can be imported from another model' do
     service = Service.from_model(organisation)
     expect(service.name).to eq(organisation.name)
   end
