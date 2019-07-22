@@ -30,6 +30,19 @@ class Service < ApplicationRecord
   has_many :self_care_categories, through: :self_care_category_services
   geocoded_by :full_address
 
+  alias_attribute :title, :name
+  def source
+    'local'
+  end
+
+  def organisation_name
+    organisation.name
+  end
+
+  def organisation_link
+    organisation
+  end
+
   def self.where_we_work_values
     ['Queen\'s Park & Paddington', 'Kensington & Chelsea', 'Westminster', 'Hammersmith & Fulham']
   end
