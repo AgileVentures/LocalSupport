@@ -35,9 +35,7 @@ class Service < ApplicationRecord
     'local'
   end
 
-  def organisation_name
-    organisation.name
-  end
+  delegate :name, to: :organisation, prefix: true
 
   def organisation_link
     organisation

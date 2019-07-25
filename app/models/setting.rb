@@ -31,7 +31,8 @@ class Setting < ApplicationRecord
     map_zoom_level: '12',
     embedded_map_zoom_level: '14',
     map_legend_script: 'map_legend_script',
-    feedback_form_url: 'https://docs.google.com/a/neurogrid.com/forms/d/1iQwIM0E2gjJF6N6UHgVwtH8OzBbpUr6DS0Xbf-UrKE0/viewform'
+    feedback_form_url: 'https://docs.google.com/a/neurogrid.com/forms/d/1iQwIM0E2gjJF6N6UHgVwtH8OzBbpUr6DS0Xbf-UrKE0/viewform',
+    favicon: 'favicon.ico'
   }
 
   def self.method_missing(args)
