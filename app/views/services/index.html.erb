@@ -9,10 +9,6 @@
          <tr>
           <td>
             <u><%= link_to service.name, service, { :target => '_blank' } %></u><br/>
-            <div id='organisations'>
-              <small><%= link_to service.organisation&.name, service.organisation, { :target => '_blank' }  %></small>
-              <br/>
-            </div>
             <%= smart_truncate(service.description) %>
           </td>
         </tr>

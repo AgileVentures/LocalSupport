@@ -4,13 +4,6 @@
   <%= @service.name %>
 </h2>
 
-<% if @service.organisation %>
-<p>
-  <b>Organisation:</b>
-  <%= link_to @service.organisation&.name, organisation_path(@service.organisation) %>
-</p>
-<% end %>
-
 <p>
   <%= simple_format auto_link @service.description %>
 </p>

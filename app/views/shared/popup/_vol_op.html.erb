@@ -1,5 +1,9 @@
 <li>
-  <%= link_to_vol_op( volop, :organisation, style: 'font-weight: 100' ) if volop.try(:source)  %><br>
-  <%= link_to_vol_op( volop, :title, style: 'font-weight: 900') if volop.try(:source) %><br>
+  <% if volop.try(:source) and volop.class != Service %>
+    <%= link_to_vol_op( volop, :organisation, style: 'font-weight: 100' ) %><br>
+  <% end %>
+  <% if volop.try(:source) %>
+    <%= link_to_vol_op( volop, :title, style: 'font-weight: 900') %><br>
+  <% end %>
   <%= smart_truncate( volop.description,44 ) %><br>
 </li>
