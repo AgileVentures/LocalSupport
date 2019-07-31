@@ -19,5 +19,5 @@ Feature: List Services
     Given I visit the services page
     And cookies are approved
     Then the index should contain:
-    | Litter Box Scooper              | Help with feline sanitation        | Cats Are Us               |
-    | Office Support                  | Help with printing and copying.    | Indian Elders Association |
+    | Litter Box Scooper              | Help with feline sanitation        | 
+    | Office Support                  | Help with printing and copying.    | 
