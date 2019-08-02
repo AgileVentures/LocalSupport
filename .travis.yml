@@ -8,9 +8,12 @@ sudo: false
 cache:
   directories:
   - travis_phantomjs
+services:
+  - xvfb
+  - postgresql
 before_install:
 - export DISPLAY=:99.0
-- sh -e /etc/init.d/xvfb start
+- sudo apt-get install -qq libldap2-dev libidn11-dev
 - phantomjs --version
 - export PATH=$PWD/travis_phantomjs/phantomjs-2.1.1-linux-x86_64/bin:$PATH
 - phantomjs --version
