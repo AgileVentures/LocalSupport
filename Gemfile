@@ -29,7 +29,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
   gem 'execjs'
-  gem 'aruba', '~> 0.14.10'
+  gem 'aruba', '~> 0.14.11'
   gem 'pry-byebug'
   gem 'rack_session_access'
   gem 'jasmine', '~> 3.4'
@@ -49,7 +49,7 @@ end
 group :test do
   gem 'cucumber-rails', require: false
   gem 'cucumber-rails-training-wheels'
-  gem 'capybara', '~> 3.25'
+  gem 'capybara', '~> 3.27'
   gem 'nokogiri', '~> 1.10'
   gem 'factory_bot_rails'
   gem 'webmock', '~> 3.6'
