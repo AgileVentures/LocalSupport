@@ -10,6 +10,7 @@ cache:
   - travis_phantomjs
 services:
   - xvfb
+  - postgresql
 before_install:
 - export DISPLAY=:99.0
 - sudo apt-get install -qq libldap2-dev libidn11-dev
