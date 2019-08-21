@@ -82,7 +82,7 @@ GEM
     autoprefixer-rails (9.5.1.1)
       execjs
     backports (3.15.0)
-    bcrypt (3.1.12)
+    bcrypt (3.1.13)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
     bootstrap3-datetimepicker-rails (4.17.47)
@@ -146,10 +146,10 @@ GEM
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
     debug_inspector (0.0.3)
-    devise (4.6.2)
+    devise (4.7.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
-      railties (>= 4.1.0, < 6.0)
+      railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
     devise_invitable (2.0.1)
@@ -378,9 +378,9 @@ GEM
     redcarpet (3.5.0)
     ref (2.0.0)
     regexp_parser (1.6.0)
-    responders (2.4.1)
-      actionpack (>= 4.2.0, < 6.0)
-      railties (>= 4.2.0, < 6.0)
+    responders (3.0.0)
+      actionpack (>= 5.0)
+      railties (>= 5.0)
     rspec-activemodel-mocks (1.1.0)
       activemodel (>= 3.0)
       activesupport (>= 3.0)
@@ -532,7 +532,7 @@ DEPENDENCIES
   cucumber-rails
   cucumber-rails-training-wheels
   database_cleaner (= 1.7.0)
-  devise (~> 4.6)
+  devise (~> 4.7)
   devise_invitable (~> 2.0)
   dotenv-rails
   execjs
