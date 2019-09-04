@@ -14,7 +14,7 @@ class ServicesController < BaseOrganisationsController
     @services = Service.order_by_most_recent
     @services = @services.search_for_text(@query) if @query.present?
     @services = @services.filter_by_categories(@categories) if category_filter?
-    @services = @services.where(activity_type: @activity_type) if @activity_type
+    @services = @services.where(activity_type: @activity_type) if activity_type?
     @services = @services.where(where_we_work: @where_we_work) if @where_we_work
     services_with_coords = Service.build_by_coordinates(@services)
     @markers = BuildMarkersWithInfoWindow.with(services_with_coords, self)
@@ -68,6 +68,10 @@ class ServicesController < BaseOrganisationsController
 
   def category_filter?
     @categories.present? and not @categories.include? ''
+  end
+
+  def activity_type?
+    @activity_type.present? and not @activity_type.include? ''
   end
 
   # Use callbacks to share common setup or constraints between actions.
