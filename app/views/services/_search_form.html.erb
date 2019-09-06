@@ -26,6 +26,15 @@
   </div>
   <br />
   <div class="flex-row">
+    <div class="left-side">
+      <%= label_tag(:pcn_overlay, "PCN Overlay", class: 'field-label') %>
+    </div>
+    <div class="right-side">
+      <%= check_box_tag(:pcn_overlay, @pcn_overlay, @pcn_overlay == 'on') %>
+    </div>
+  </div>
+  <br />
+  <div class="flex-row">
     <div class="right-side">
         <%= text_field_tag(:q, @query, class: 'search-text', placeholder: 'Search for a service...') %>
         <%= submit_tag("Search", class: 'btn btn-success search-btn') %>

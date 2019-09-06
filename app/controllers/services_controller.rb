@@ -11,6 +11,7 @@ class ServicesController < BaseOrganisationsController
     @categories = params[:self_care_category_id]
     @activity_type = params[:activity_type]
     @where_we_work = params[:where_we_work]
+    @pcn_overlay = params[:pcn_overlay]
     @services = Service.order_by_most_recent
     @services = @services.search_for_text(@query) if @query.present?
     @services = @services.filter_by_categories(@categories) if category_filter?

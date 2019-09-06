@@ -15,6 +15,7 @@ var OrganisationMap = {
     Settings.lng = parseFloat($("#marker_data").data().longitude || '-0.3370')
     Settings.geojsonUrl1 = $("#marker_data").data().geojsonUrl1 
     Settings.geojsonUrl2 = $("#marker_data").data().geojsonUrl2
+    Settings.pcnOverlay = $("#marker_data").data().pcnOverlay
     map = new google.maps.Map(document.getElementById(Settings.id), {
       center: {lat: Settings.lat, lng: Settings.lng},
       zoom: Settings.zoom
@@ -32,7 +33,7 @@ var OrganisationMap = {
     // var topoContent = JSON.parse(topo);
     // geoJsonObject = topojson.feature(topoContent, topoContent.objects.E09000033)
     // fs.writeFileSync("./app/assets/javascripts/geo_topo_E09000033.json", JSON.stringify(geoJsonObject))
-    if(Settings.geojsonUrl1){
+    if(Settings.pcnOverlay && Settings.geojsonUrl1){
       map.data.loadGeoJson(Settings.geojsonUrl1); 
       map.data.loadGeoJson(Settings.geojsonUrl2); 
 
