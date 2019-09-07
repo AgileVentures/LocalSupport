@@ -5,19 +5,23 @@ Feature: List Services
   
   Background: organisations with services have been added to database
 
-  Given the following organisations exist:
-    | name                      | description          | address        | postcode | website       |
-    | Cats Are Us               | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
-    | Indian Elders Association | Care for the elderly | 64 pinner road | HA1 4HZ  | http://b.com/ |
-  And the following services exist:
-    | name               | description                     | organisation              |
-    | Litter Box Scooper | Help with feline sanitation     | Cats Are Us               |
-    | Office Support     | Help with printing and copying. | Indian Elders Association |
+    Given the following organisations exist:
+      | name                      | description          | address        | postcode | website       |
+      | Cats Are Us               | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
+      | Indian Elders Association | Care for the elderly | 64 pinner road | HA1 4HZ  | http://b.com/ |
+    And the following services exist:
+      | name               | description                     | organisation              |
+      | Litter Box Scooper | Help with feline sanitation     | Cats Are Us               |
+      | Office Support     | Help with printing and copying. | Indian Elders Association |
+    And I visit the services page
+    And cookies are approved
 
   @vcr
   Scenario: See a list of current services
-    Given I visit the services page
-    And cookies are approved
     Then the index should contain:
     | Litter Box Scooper              | Help with feline sanitation        | 
     | Office Support                  | Help with printing and copying.    | 
+
+  Scenario: Type of Activity is set to All by default
+    When I press "Search"
+    Then the default all value should be selected from Type of Activity
