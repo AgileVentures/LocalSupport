@@ -222,6 +222,7 @@ GEM
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     idn-ruby (0.1.0)
+    interception (0.5)
     jar_wrapper (0.1.8)
       zip
     jaro_winkler (1.5.3)
@@ -318,6 +319,12 @@ GEM
     pry-byebug (3.7.0)
       byebug (~> 11.0)
       pry (~> 0.10)
+    pry-rescue (1.5.0)
+      interception (>= 0.5)
+      pry (>= 0.12.0)
+    pry-stack_explorer (0.4.9.3)
+      binding_of_caller (>= 0.7)
+      pry (>= 0.9.11)
     public_suffix (3.1.1)
     puffing-billy (2.1.1)
       addressable (~> 2.5)
@@ -562,6 +569,8 @@ DEPENDENCIES
   phantomjs
   poltergeist
   pry-byebug
+  pry-rescue
+  pry-stack_explorer
   puffing-billy (~> 2.1)
   puma
   rack_session_access
@@ -601,4 +610,4 @@ RUBY VERSION
    ruby 2.5.3p105
 
 BUNDLED WITH
-   1.17.2
+   1.17.3

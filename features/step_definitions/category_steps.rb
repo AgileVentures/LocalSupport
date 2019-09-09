@@ -45,7 +45,3 @@ end
 Then(/^the default all value should be selected from How They Help$/) do
   expect(find("#how_id").value).to be_empty
 end
-
-Then(/^the default all value should be selected from Type of Activity$/) do
-  expect(page).to have_select('activity_type', selected: nil)
-end

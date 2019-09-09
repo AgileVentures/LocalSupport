@@ -37,6 +37,8 @@ group :development, :test do
   gem 'rails-controller-testing'
   #gem 'better_errors'
   gem 'binding_of_caller' # plays well with better_errors
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
 end
 
 group :development do
