@@ -52,7 +52,7 @@ group :test do
   gem 'capybara', '~> 3.28'
   gem 'nokogiri', '~> 1.10'
   gem 'factory_bot_rails'
-  gem 'webmock', '~> 3.6'
+  gem 'webmock', '~> 3.7'
   gem 'uri-handler'
   gem 'selenium'
   gem 'selenium-client'
