@@ -50,8 +50,8 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.6.0)
-      public_suffix (>= 2.0.2, < 4.0)
+    addressable (2.7.0)
+      public_suffix (>= 2.0.2, < 5.0)
     administrate (0.11.0)
       actionpack (>= 4.2, < 6.0)
       actionview (>= 4.2, < 6.0)
@@ -203,7 +203,7 @@ GEM
     gherkin (5.1.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    hashdiff (0.4.0)
+    hashdiff (1.0.0)
     heroku-api (0.4.3)
       excon (~> 0.45)
       multi_json (~> 1.8)
@@ -318,7 +318,7 @@ GEM
     pry-byebug (3.7.0)
       byebug (~> 11.0)
       pry (~> 0.10)
-    public_suffix (3.1.1)
+    public_suffix (4.0.1)
     puffing-billy (2.1.1)
       addressable (~> 2.5)
       em-http-request (~> 1.1, >= 1.1.0)
@@ -504,7 +504,7 @@ GEM
     vcr (5.0.0)
     warden (1.2.8)
       rack (>= 2.0.6)
-    webmock (3.6.0)
+    webmock (3.7.5)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -595,7 +595,7 @@ DEPENDENCIES
   uri-handler
   url_validator!
   vcr
-  webmock (~> 3.6)
+  webmock (~> 3.7)
 
 RUBY VERSION
    ruby 2.5.3p105
