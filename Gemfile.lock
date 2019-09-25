@@ -337,6 +337,7 @@ GEM
     puma (4.0.1)
       nio4r (~> 2.0)
     rack (2.0.7)
+    rack-cors (1.0.3)
     rack-protection (2.0.5)
       rack
     rack-test (1.1.0)
@@ -573,6 +574,7 @@ DEPENDENCIES
   pry-stack_explorer
   puffing-billy (~> 2.1)
   puma
+  rack-cors
   rack_session_access
   railroady
   rails (~> 5.2.3)
