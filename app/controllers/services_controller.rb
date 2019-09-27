@@ -19,7 +19,7 @@ class ServicesController < BaseOrganisationsController
     @services = @services.where(where_we_work: @where_we_work) if @where_we_work
     services_with_coords = Service.build_by_coordinates(@services)
     @markers = BuildMarkersWithInfoWindow.with(services_with_coords, self)
-    response.headers.delete 'X-Frame-Options' if iframe?
+    response.headers.delete 'X-Frame-Options'
     render :embedded_map, layout: false if iframe?
   end
 
