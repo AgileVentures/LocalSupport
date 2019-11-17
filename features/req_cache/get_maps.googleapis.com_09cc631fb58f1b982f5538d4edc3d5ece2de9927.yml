@@ -1,0 +1,22 @@
+---
+:scope: 
+:url: https://maps.googleapis.com/maps/gen_204?target=api&ev=api_mapft&cad=host:127.0.0.1%3A42485,v:37,r:100,D0:1,hybrid:1,src:apiv3,token:8uiovw7kj1,ts:3ca0z3
+:body: ''
+:status: 204
+:method: get
+:headers:
+  Content-Type: image/gif
+  Date: Sun, 17 Nov 2019 18:34:11 GMT
+  Pragma: no-cache
+  Expires: Fri, 01 Jan 1990 00:00:00 GMT
+  Cache-Control: no-cache, must-revalidate
+  Server: mafe
+  Content-Length: '0'
+  X-XSS-Protection: '0'
+  X-Frame-Options: SAMEORIGIN
+  Server-Timing: gfet4t7; dur=8
+  Alt-Svc: quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+    ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+    ma=2592000
+  Connection: close
+:content: ''

@@ -1,0 +1,29 @@
+---
+:scope: 
+:url: https://maps.google.com/maps-api-v3/api/js/37/10a/overlay.js
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Accept-Ranges: bytes
+  Vary: Accept-Encoding
+  Content-Type: text/javascript
+  Content-Length: '3399'
+  Date: Sun, 17 Nov 2019 13:54:14 GMT
+  Expires: Mon, 16 Nov 2020 13:54:14 GMT
+  Cache-Control: public, max-age=31536000
+  Last-Modified: Tue, 30 Jul 2019 18:04:13 GMT
+  X-Content-Type-Options: nosniff
+  Server: sffe
+  X-XSS-Protection: '0'
+  Alt-Svc: quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+    ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+    ma=2592000
+  Connection: close
+:content: |
+  google.maps.__gjsload__('overlay', function(_){var kv=_.na("j"),lv=_.n(),mv=function(a){a.Uf=a.Uf||new lv;return a.Uf},nv=function(a){this.U=new _.lg(function(){var b=a.Uf;if(a.getPanes()){if(a.getProjection()){if(!b.j&&a.onAdd)a.onAdd();b.j=!0;a.draw()}}else{if(b.j)if(a.onRemove)a.onRemove();else a.remove();b.j=!1}},0)},ov=function(a,b){function c(){return _.mg(e.U)}var d=mv(a),e=d.Be;e||(e=d.Be=new nv(a));_.C(d.W||[],_.S.removeListener);var f=d.da=d.da||new _.Ll,g=b.__gm;f.bindTo("zoom",g);f.bindTo("offset",g);f.bindTo("center",g,"projectionCenterQ");
+  f.bindTo("projection",b);f.bindTo("projectionTopLeft",g);f=d.Mh=d.Mh||new kv(f);f.bindTo("zoom",g);f.bindTo("offset",g);f.bindTo("projection",b);f.bindTo("projectionTopLeft",g);a.bindTo("projection",f,"outProjection");a.bindTo("panes",g);d.W=[_.S.addListener(a,"panes_changed",c),_.S.addListener(g,"zoom_changed",c),_.S.addListener(g,"offset_changed",c),_.S.addListener(b,"projection_changed",c),_.S.addListener(g,"projectioncenterq_changed",c)];c();b instanceof _.ve&&(_.bn(b,"Ox"),_.dn("Ox","-p",a))},
+  rv=function(a){if(a){var b=a.getMap(),c=a.__gmop;if(c){if(c.map==b)return;a.__gmop=null;c.ag()}if(b&&b instanceof _.ve){var d=b.__gm;d.overlayLayer?a.__gmop=new pv(b,a,d.overlayLayer):d.j.then(function(e){e=e.sa;var f=new qv(b,e);e.ta(f);d.overlayLayer=f;rv(a)})}}},pv=function(a,b,c){this.map=a;this.pa=b;this.Hl=c;this.me=!1;_.bn(this.map,"Ox");_.dn("Ox","-p",this.pa);c.l.push(this);c.j&&sv(this,c.j);c.m.Lf()},sv=function(a,b){a.pa.get("projection")!=b&&(a.pa.bindTo("panes",a.map.__gm),a.pa.set("projection",
+  b))},qv=function(a,b){this.A=a;this.m=b;this.j=null;this.l=[]};_.A(kv,_.T);kv.prototype.changed=function(a){"outProjection"!=a&&(a=!!(this.get("offset")&&this.get("projectionTopLeft")&&this.get("projection")&&_.M(this.get("zoom"))),a==!this.get("outProjection")&&this.set("outProjection",a?this.j:null))};_.A(nv,_.T);pv.prototype.draw=function(){this.me||(this.me=!0,this.pa.onAdd&&this.pa.onAdd());this.pa.draw&&this.pa.draw()};pv.prototype.ag=function(){_.en("Ox","-p",this.pa);this.pa.unbindAll();this.pa.set("panes",null);this.pa.set("projection",null);_.ib(this.Hl.l,this);this.me&&(this.me=!1,this.pa.onRemove?this.pa.onRemove():this.pa.remove())};qv.prototype.dispose=_.n();
+  qv.prototype.Ab=function(a,b,c,d,e,f){var g=this.j=this.j||new _.Rm(this.A,this.m,_.n());g.Ab(a,b,c,d,e,f);a=_.Ca(this.l);for(b=a.next();!b.done;b=a.next())b=b.value,sv(b,g),b.draw()};_.Ne("overlay",{Cg:function(a){if(a){var b=a.getMap();if(b&&b instanceof _.ve||a.__gmop)rv(a);else{b=a.getMap();var c=mv(a),d=c.Xk;c.Xk=b;d&&(c=mv(a),(d=c.da)&&d.unbindAll(),(d=c.Mh)&&d.unbindAll(),a.unbindAll(),a.set("panes",null),a.set("projection",null),_.C(c.W,_.S.removeListener),c.W=null,c.Be&&(c.Be.U.Ma(),c.Be=null),_.en("Ox","-p",a));b&&ov(a,b)}}},preventMapHitsFrom:function(a){_.Un(a,{onClick:function(b){return _.mn(b.event)},Ha:function(b){return _.jn(b)},$b:function(b){return _.kn(b)},Ua:function(b){return _.kn(b)},
+  La:function(b){return _.ln(b)}}).xc(!0)},preventMapHitsAndGesturesFrom:function(a){a.addEventListener("click",_.Nd);a.addEventListener("contextmenu",_.Nd);a.addEventListener("dblclick",_.Nd);a.addEventListener("mousedown",_.Nd);a.addEventListener("mousemove",_.Nd);a.addEventListener("MSPointerDown",_.Nd);a.addEventListener("pointerdown",_.Nd);a.addEventListener("touchstart",_.Nd);a.addEventListener("wheel",_.Nd)}});});

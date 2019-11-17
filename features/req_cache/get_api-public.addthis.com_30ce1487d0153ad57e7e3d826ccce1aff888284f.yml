@@ -1,0 +1,17 @@
+---
+:scope: 
+:url: http://api-public.addthis.com/url/shares.json?url=http%3A%2F%2F127.0.0.1%3A41825%2Forganisations%2Fwrong-postcode-uk&callback=_ate.cbs.rcb_koti0
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Cache-Control: no-transform, must-revalidate, max-age=0, s-maxage=3600
+  Surrogate-Key: 127.0.0.1:41825/organisations/wrong-postcode-uk
+  Last-Modified: Sun, 17 Nov 2019 15:53:16 GMT
+  Content-Type: application/json
+  X-Varnish: '3506805819'
+  Vary: Accept-Encoding
+  Date: Sun, 17 Nov 2019 15:53:16 GMT
+  Content-Length: '33'
+  Connection: close
+:content: _ate.cbs.rcb_koti0({"shares":0});

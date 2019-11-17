@@ -1,0 +1,33 @@
+---
+:scope: 
+:url: https://maps.google.com/maps/vt?pb=!1m4!1m3!1i12!2i2043!3i1358!1m4!1m3!1i12!2i2043!3i1359!1m4!1m3!1i12!2i2044!3i1358!1m4!1m3!1i12!2i2044!3i1359!1m4!1m3!1i12!2i2045!3i1358!1m4!1m3!1i12!2i2045!3i1359!1m4!1m3!1i12!2i2043!3i1360!1m4!1m3!1i12!2i2043!3i1361!1m4!1m3!1i12!2i2044!3i1360!1m4!1m3!1i12!2i2044!3i1361!1m4!1m3!1i12!2i2045!3i1360!1m4!1m3!1i12!2i2045!3i1361!2m3!1e0!2sm!3i492201986!3m9!2sen!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e3!12m1!5b1&callback=_xdc_._ua14dj&key=<GMAP_API_KEY>&token=65531
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: text/javascript; charset=UTF-8
+  Date: Sun, 17 Nov 2019 13:54:16 GMT
+  Expires: Fri, 31 Jul 2020 18:44:38 GMT
+  Cache-Control: public, max-age=22222222
+  Content-Security-Policy: script-src 'none'; object-src 'none'; base-uri 'none'
+  X-Content-Type-Options: nosniff
+  Content-Disposition: attachment; filename="f.txt"
+  Server: paintfe
+  X-XSS-Protection: '0'
+  X-Frame-Options: SAMEORIGIN
+  Server-Timing: gfet4t7; dur=104
+  Alt-Svc: quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+    ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+    ma=2592000
+  Accept-Ranges: none
+  Vary: Accept-Encoding
+  Connection: close
+:content: /* API Response */ _xdc_._ua14dj && _xdc_._ua14dj([{"id":"twvwvwvvwuwv","zrange":[12,12],"layer":"m@492201986"},{"id":"twvwvwvvwuww","zrange":[12,12],"layer":"m@492201986"},{"id":"twvwvwvvwwut","zrange":[12,12],"layer":"m@492201986"},{"id":"twvwvwvvwwuu","zrange":[12,12],"layer":"m@492201986"},{"id":"twvwvwvvwwuv","zrange":[12,12],"layer":"m@492201986"},{"id":"twvwvwvvwwuw","zrange":[12,12],"layer":"m@492201986"},{"id":"twvwvwvwvtvv","base":[1071140864,713232384],"zrange":[12,12],"layer":"m@492201986","features":[{"id":"10837346827302587422","a":[0,0],"bb":[-42,-8,43,9],"c":"{\"1\":{\"title\":\"Ruislip
+  Woods\"}}"}]},{"id":"twvwvwvwvtvw","base":[1071253504,713646080],"zrange":[12,12],"layer":"m@492201986","features":[{"id":"6690458799742309100","a":[0,0,1071253504,713646080,1071253504,713646080,1071253504,713646080],"bb":[-10,-28,10,-1,-10,-28,10,-1,-10,-28,10,-1,-10,-28,10,-1,-88,-22,-9,-5],"c":"{\"1\":{\"title\":\"RAF
+  Northolt\"}}","io":[0,-14]}]},{"id":"twvwvwvwvvtt","base":[1072320512,713224192],"zrange":[12,12],"layer":"m@492201986","features":[{"id":"569235943583350003","a":[0,0],"bb":[-155,-22,-9,-5],"c":"{\"1\":{\"title\":\"Royal
+  Air Force Museum\"}}"}]},{"id":"twvwvwvwvvtu","zrange":[12,12],"layer":"m@492201986"},{"id":"twvwvwvwvvtv","base":[1072320512,713224192],"zrange":[12,12],"layer":"m@492201986","features":[{"id":"569235943583350003","a":[0,0,1072320512,713224192,1072320512,713224192,1072320512,713224192],"bb":[-10,-28,10,-1,-10,-28,10,-1,-10,-28,10,-1,-10,-28,10,-1,-155,-22,-9,-5],"c":"{\"1\":{\"title\":\"Royal
+  Air Force Museum\"}}","io":[0,-14]}]},{"id":"twvwvwvwvvtw","base":[1072820224,713943040],"zrange":[12,12],"layer":"m@492201986","features":[{"id":"2809629151407911844","a":[0,0],"bb":[-64,-29,-9,-12,-117,-16,-9,1],"c":"{\"1\":{\"title\":\"Madame
+  Tussauds London\"}}"},{"id":"12786351728261599912","a":[6144,-118784],"bb":[-109,-22,-9,-5],"c":"{\"1\":{\"title\":\"ZSL
+  London Zoo\"}}"},{"id":"9936730966454976391","a":[-198656,172032,1072621568,714115072,1072621568,714115072,1072621568,714115072],"bb":[-10,-28,10,-1,-10,-28,10,-1,-10,-28,10,-1,-10,-28,10,-1,-122,-22,-9,-5],"c":"{\"1\":{\"title\":\"Kensington
+  Palace\"}}","io":[0,-14]},{"id":"8567461044262521048","a":[-26624,94208],"bb":[-84,-22,-9,-5],"c":"{\"1\":{\"title\":\"Marble
+  Arch\"}}"}]}])

@@ -2,241 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://reachvolunteering.org.uk/harrow-community-network-opportunity-feed
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Wed, 22 Mar 2017 10:01:46 GMT
-      Server:
-      - Apache
-      X-Drupal-Cache:
-      - HIT
-      Etag:
-      - '"1490176901-1"'
-      Cache-Control:
-      - public, max-age=0
-      Last-Modified:
-      - Wed, 22 Mar 2017 10:01:41 GMT
-      Expires:
-      - Sun, 19 Nov 1978 05:00:00 GMT
-      Vary:
-      - Cookie,Accept-Encoding
-      Content-Length:
-      - '5209'
-      Content-Type:
-      - application/json; charset=utf-8
-    body:
-      encoding: ASCII-8BIT
-      string: '{"nodes":[{"node":{"title":"Charity Treasurer","Organisation":"The
-        Patients Association","Description":"The duties of a Trustee treasurer are
-        to:\nOversee, approve and present budgets, accounts and financial statements
-        to the rest of the board and external agencies\nAdvise the board on the financial
-        implications of decisions and strategic plans\nEnsure the charity has an appropriate
-        investment policy which is viable and does not conflict with its charitable
-        aims\nMake sure the organisation''s financial resources are adequate for present
-        and future spending and that proper accounting procedures and controls are
-        in place\nMaintain an appropriate reserves policy and coordinate with staff
-        and volunteers about financial matters\nSetting annual budget with the CEO,
-        ensuring budgets are maintained\u00a0\nProducing monthly reports to the Board\nBusiness
-        planning\u00a0\nMaintaining the audit and risk committee,\nHelp\u00a0with
-        accurate reporting of the actions from various sub committees\nWorking with
-        the fundraisers, reviewing funding applications,\nReviewing the funding and
-        marketing plans,\nWorking with the Board to set the Business Plan\nIn addition
-        to the above statutory duties each trustee should use any specific skills,
-        knowledge or experience they have to help the Board of Trustees reach sound
-        decisions.\nAdditional duties may involve leading discussions, focusing on
-        key issues, providing advice and guidance on new initiatives and other issues
-        in which the trustee has special expertise, and positively representing the
-        organisation. Trustees are expected to regularly attend Board meetings and,
-        if unable to attend, to contact the Chair with any input, feedback or suggestions
-        on the agenda items.\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/charity-treasurer-10?referrer_id=Harrow
-        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Harrow","Postcode":"HA1
-        3UJ","Coordinates":"51\u00b0 34'' 31.4652\" N, 0\u00b0 19'' 19.3332\" W"}},{"node":{"title":"Trustee","Organisation":"Sudbury
-        Neighbourhood Centre","Description":"Role\nTrustees, as voting members of
-        the Board, are responsible for the overall governance and strategic direction
-        of the Centre, developing the Centre''s aims, objectives and goals in accordance
-        with its governing documents, legal and regulatory guidelines and monitoring
-        its performance.\nMain responsibilities of a Trustee\nTo determine the overall
-        direction and development of the Centre through good governance and clear
-        strategic planning.\nTo ensure the Centre and its representatives function
-        within the legal and regulatory framework governing the activities of the
-        Centre, in line with the Centre''s governing documents, continually striving
-        for best practice in governance.\nTo maintain and develop the Centre''s standing
-        in the communities it serves and reputation and influence, continually striving
-        for best practice in governance.\n\u00a0\nMain duties of a Trustee\nTo contribute
-        actively to the Board''s role in giving clear strategic direction to the Centre,
-        setting overall policy objectives, defining goals, setting targets and evaluating
-        performance against agreed objectives.\nTo ensure that the Centre complies
-        with its governing documents, and also charity law, company law, and any other
-        relevant legislation or regulations.\nTo ensure that appropriate arrangements
-        (including a clear governance and management structure) are in place for the
-        Centre to deliver its objects. This\nSNC Trustee Role Description Page 2 of
-        3\nincludes appointing, supporting, monitoring and reviewing the effectiveness
-        of the Centre''s Chief Executive.\nMaintain sound financial management of
-        the charity''s resources, ensuring expenditure is in line with the Centre''s
-        objects, and investment activities meet accepted standards and policies.\nTo
-        ensure that the property of the Centre is properly protected, managed and
-        safeguarded.\nTo safeguard the good name and values of the Centre.\nTo maintain
-        confidentiality, disclose any conflicts of interest and abide by the Centre''s
-        Trustees Code of Conduct.\nIn addition to the above main statutory duties,
-        each Trustee should use any skills, knowledge or experience he\/she may have
-        to help the Board of Trustees reach sound decisions. This may involve leading
-        on certain key issues, providing advice and guidance on matters which the
-        Trustee has special expertise, etc.\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/trustee-112?referrer_id=Harrow
-        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Sudbury
-        Town, London Borough of Brent","Postcode":"HA02LP","Coordinates":"51\u00b0
-        33'' 20.8728\" N, 0\u00b0 19'' 1.938\" W"}},{"node":{"title":"School Governor
-        (Harrow)","Organisation":"SGOSS - Governors for Schools","Description":"Governing
-        bodies are responsible for the strategic management of a school and will make
-        decisions about a wide range of issues\nThe core responsibilities involved
-        are:\n\u2022Ensuring accountability\n\u2022Acting as a \u2018critical friend\u2019
-        to the Head Teacher\n\u2022Monitoring and evaluating the school\u2019s progress\n\u2022Budgetary
-        allocation and control\n\u2022Shaping plans for school improvement and overseeing
-        their implementation\n\u2022Setting the school\u2019s aims and values\n\u2022Appointing
-        senior members of staff including the Head Teacher\nThe governing body is
-        usually split in to a small number of committees, each responsible for one
-        area such as finance or pupil achievement. These committees will meet separately
-        from the main governing body to discuss relevant issues in more detail. Discussion
-        is then fed back at a full governing body meeting.\nA school governing body
-        is made up of representatives from the school, the parents, the local authority
-        and the local community.\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/school-governor-harrow?referrer_id=Harrow
-        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Harrow","Postcode":"HA","Coordinates":"0\u00b0
-        0'' 0\" N, 0\u00b0 0'' 0\" E"}},{"node":{"title":"Trustee","Organisation":"Sudbury
-        Neighbourhood Centre","Description":"Experienced Trustees required for the
-        Centre.\nSudbury Neighbourhood Centre is a community centre, located in the
-        London Borough of Brent that provides a range of activities and services (including
-        a day care service) to the people in the surrounding communities.\nWe are
-        governed by a Board of Trustees and are seeking to appoint new people to the
-        Board, who will become Trustees, and make a contribution to the overall direction
-        of the organisation.\u00a0 We are seeking individuals with a passion for our
-        work, who have skills and experience they can bring to the overall future
-        direction of the charity.\u00a0 In particular, we\u2019d like to hear from
-        you if you have knowledge or\u00a0skills in:\n\u00a0\nManagement in the voluntary
-        or public sectors\nMarketing \nFinance and Fundraising\nAdult social care
-        sector\n\u00a0\nOur Board of Trustees usually meets every other month.\u00a0
-        As volunteers our Trustees receive no payment for their contribution to the
-        Centre.\nWe welcome people from the widest possible diversity of background,
-        culture and experience to help ensure that the Board is representative of
-        the communities we serve.\n\u00a0\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/trustee-108?referrer_id=Harrow
-        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Brent","Postcode":"HA02LP","Coordinates":"51\u00b0
-        33'' 20.8728\" N, 0\u00b0 19'' 1.938\" W"}},{"node":{"title":"Technology Champion","Organisation":"Love
-        Burnt Oak","Description":"Burnt Oak is an area of Barnet in North London where
-        a significant number of people are not engaged with technology. They make
-        struggle to produce a CV using word-processing or fill-in an online application
-        for a job or a benefit. They may never have bought anything on-line despite
-        the fact that the savings made could be really useful for them.\nIn other
-        areas there are Coffee ''n Computers projects where people can drop in to
-        get the help they need (and a quick refreshment). Each project needs a leader
-        and a small team of volunteers to provide the help that it needed. Here in
-        Burnt Oak we need to find that volunteer for the leadership role.\nWe don''t
-        have a detailed list of what you WILL do. However it is easy to say what you
-        WON''T do. You are not here to fix people''s broken technology but to help
-        them make best use of whatever is in their hand, be it PC, SMART phone or
-        something else.\nA simple example might be that a person acquires some new
-        equipment (e.g. laptop) and just needs someone to shop\u00a0them how to use
-        it.\n\u00a0\n\u00a0\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/technology-champion?referrer_id=Harrow
-        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Barnet","Postcode":"HA8
-        0LN","Coordinates":"51\u00b0 36'' 10.6164\" N, 0\u00b0 15'' 45.5076\" W"}},{"node":{"title":"Literacy
-        Trainer (The Princess Alexandra Home)","Organisation":"Jewish Care","Description":"Duties
-        will include: \n\u2022 Administering pre-training assessment\n\u2022 Agreeing
-        learning objectives with manager and staff member in advance of training\n\u2022
-        Working one-to-one or small group with identified staff on their literacy
-        \u2013 verbal and written\n\u2022 Working one-to-one or small group to enable
-        staff to complete relevant documentation\n\u2022 Attending volunteer meetings
-        to report back to the group and offering any learning or recommendations for
-        the project\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/literacy-trainer-princess-alexandra-home?referrer_id=Harrow
-        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"London","Postcode":"HA7
-        3JE","Coordinates":"51\u00b0 37'' 28.074\" N, 0\u00b0 20'' 26.7252\" W"}},{"node":{"title":"Into
-        Work Volunteer","Organisation":"Love Burnt Oak","Description":"An opportunity
-        for anyone with skills, experience and a successful track record in HR, Recruitment
-        or a similar role to help others who are currently unwaged\/unemployed. Love
-        Burnt Oak operates IntoWork on a Tuesday morning, twice a month, at its resource
-        centre on Watling Avenue and short walk from the Underground Station.\nAs
-        a volunteer you will be helping people to: make better use of the Internet
-        in job search using our suite of PCs; share your experiences of effective
-        job search including CV writing and preparing for interviews and share whatever
-        knowledge you have which will enable another person to move from being a jobseeker
-        to an employee. IntoWork operates on the 1st\/3rd Tuesday\u00a0of each month
-        but you don''t have to make it to every session.\nLove Burnt Oak started in
-        2012 and is a community organisation in the Burnt Oak area of North London
-        Love Burnt Oak is committed to improving the life chances of local residents;
-        many of whom face disadvantages associated with poverty, unemployment, health
-        issues, disability and other personal circumstances. Burnt Oak is a multi-cultural
-        area with many languages including: English, Romanian, Polish, Guajarati,
-        Farsi and Nepalese. Love Burnt Oak welcomes people of all faiths (including
-        Christian, Muslim, Hindu, Buddhist) and none. As Burnt Oak is a multicultural
-        area, volunteers who speak other community languages are most welcome.\nLove
-        Burnt Oak contributes to essential volunteer expenses. We do not provide initial
-        training in job search skills but will provide support, particularly during
-        the induction period, to all volunteers.\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/work-volunteer?referrer_id=Harrow
-        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Burnt
-        Oak","Postcode":"HA8 0LN","Coordinates":"51\u00b0 36'' 10.6164\" N, 0\u00b0
-        15'' 45.5076\" W"}},{"node":{"title":"Trustee with business development expertise","Organisation":"The
-        Patients Association","Description":"The duties of a Trustee are to:\nEnsure
-        that The Patients Association complies with charity law, company law and any
-        other relevant legislation or regulations;\nEnsure that The Patients Association
-        complies with and pursues its objects as defined in its governing document,
-        the Memorandum and Articles of Association;\nEnsure that The Patients Association
-        applies its resources exclusively in pursuance of its objects;\nContribute
-        actively to the Board of Trustees\u2019 role in giving firm strategic direction
-        to the organisation, setting overall policy, defining goals and setting targets,
-        and evaluating performance against agreed targets;\nPromote and raise awareness
-        of The Patients Association and our national helpline;\nEnsure the effective
-        and efficient administration of The Patients Association;\nEnsure the financial
-        stability of the organisation;\nProtect and manage the property of the charity
-        and ensure the proper investment of the charity\u2019s funds;\nEnsure the
-        organisation acts within employment and health and safety laws.\n\u00a0\nIn
-        addition to the above statutory duties each trustee should use any specific
-        skills, knowledge or experience they have to help the Board of Trustees reach
-        sound decisions.\nAdditional duties may involve leading discussions, focusing
-        on key issues, providing advice and guidance on new initiatives and other
-        issues in which the trustee has special expertise, and positively representing
-        the organisation. Trustees are expected to regularly attend Board meetings
-        and, if unable to attend, to contact the Chair with any input, feedback or
-        suggestions on the agenda items.\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/trustee-business-development-expertise-1?referrer_id=Harrow
-        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Harrow","Postcode":"HA1
-        3UJ   ","Coordinates":"51\u00b0 34'' 31.4652\" N, 0\u00b0 19'' 19.3332\" W"}},{"node":{"title":"Quality
-        Assurance Volunteer","Organisation":"Jami","Description":"\u00a0\nThe Quality
-        Assurance group aims to help Jami reflect on its activities and find the best
-        ways of working, in order to become more effective and efficient. Jami is
-        a charity which supports the recovery of Jewish people with a history of mental
-        illness. The group aims to help Jami reflect on its activities and find the
-        best ways of working, in order to become more effective and efficient.\nJami
-        is a charity which supports the recovery of Jewish people with a history of
-        mental illness. The group meet approximately every two months. The group members
-        are expected to attend the meetings and follow up on identified tasks in between
-        meetings. The time commitment is variable but would not amount to more than
-        two days per month.\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/quality-assurance-volunteer?referrer_id=Harrow
-        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Edgware","Postcode":"HA8
-        9BG","Coordinates":"51\u00b0 36'' 27.4536\" N, 0\u00b0 16'' 22.9188\" W"}},{"node":{"title":"Social
-        Researcher","Organisation":"Chalkhill Community Centre","Description":"The
-        Social Research volunteer will be responsible for supporting the staff team
-        with designing and implementing a large-scale research project to measure
-        the outcomes, impact and social return on investment of the services provided
-        by Chalkhill Community Centre. This will involve: surveys, telephone questionnaires
-        and focus groups; analysis of data and writing up the research paper of findings.\nThe
-        volunteer will be required to help to design and carry out\u00a0surveys,\u00a0questionnaires
-        and focus groups using appropriate research methodology. They will collate
-        and analyse research data and help to prepare a report of findings.\u00a0\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/social-researcher?referrer_id=Harrow
-        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Wembley","Postcode":"HA9
-        9FX","Coordinates":"51\u00b0 33'' 50.0184\" N, 0\u00b0 16'' 35.5872\" W"}}]}'
-    http_version: 
-  recorded_at: Wed, 22 Mar 2017 10:02:04 GMT
-- request:
-    method: get
     uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA1%203UJ,%20Harrow&key=<GMAP_API_KEY>&language=en&sensor=false
     body:
       encoding: US-ASCII
@@ -1336,4 +1101,1333 @@ http_interactions:
         }
     http_version: 
   recorded_at: Wed, 22 Mar 2017 10:02:04 GMT
-recorded_with: VCR 4.0.0
+- request:
+    method: get
+    uri: https://reachvolunteering.org.uk/harrow-community-network-opportunity-feed
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 17 Nov 2019 18:34:27 GMT
+      Server:
+      - Apache
+      X-Drupal-Cache:
+      - HIT
+      Etag:
+      - '"1574015638-1"'
+      Cache-Control:
+      - public, max-age=0
+      Last-Modified:
+      - Sun, 17 Nov 2019 18:33:58 GMT
+      Expires:
+      - Sun, 19 Nov 1978 05:00:00 GMT
+      Vary:
+      - Cookie,Accept-Encoding
+      Content-Length:
+      - '3473'
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: ASCII-8BIT
+      string: '{"nodes":[{"node":{"title":"Chair of Trustees","Organisation":"The
+        RNOH Charity","Description":"The role of Chair of the Board of Trustees is
+        to lead and develop the strategic direction of the Charity, and ensure the
+        delivery of results by monitoring performance. The Chair is responsible with
+        the Board for ensuring compliance with all legal responsibilities and maintaining
+        the highest standards of corporate governance.\u00a0\n","Path":"https://reachvolunteering.org.uk/opp/chair-trustees-157?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Stanmore","Postcode":"HA7
+        4LP","Coordinates":"51\u00b0 38'' 1.0716\" N, 0\u00b0 18'' 39.4524\" W"}},{"node":{"title":"Strategic
+        Planning/Visioning Volunteer - North London","Organisation":"Sported","Description":"Varied
+        and flexible placements\nWe have a range of volunteering opportunities available
+        across the UK. These can be one-off phone calls or emails, 2-6 hours of support
+        in person or remotely, or working long term with a group over 3-9 months (around
+        4-8 hours a month, predominantly face-to-face).\nAs a Sported volunteer you
+        can choose to deliver either short or long-term support or a combination as
+        suits you.\n\u00a0\nWhy volunteer with Sported?\n\nHave a lasting impact on
+        your local community\nThe opportunity to share your professional skills and
+        expertise\nFull induction, plus training and development opportunities\nSupport
+        from a designated Sported Regional Manager and the Volunteer Services Team\nThe
+        chance to work with a range of different communities and types of organisations\nTravel
+        expenses covered\n\t\u00a0\n\nWhat\u2019s involved?\nThe tasks and assignments
+        you are asked to undertake will be based on your skills and expertise and
+        will differ depending on whether it is a short-term or long-term placement.\nThese
+        could include:\u00a0\n\nFacilitating visioning and development sessions with
+        key staff and or volunteers\u00a0\nSupporting the Sported member to distil
+        their project/organisation vision and aims\u00a0\nSupporting the Sported member
+        to develop strategic planning and thinking\u00a0\nGuiding the member through
+        a process of writing a strategic plan based on the actions, processes and
+        thinking required to achieve their vision and goals\u00a0\nSupporting the
+        Sported member to develop practical actions to achieve their strategic plan\u00a0\n\n","Path":"https://reachvolunteering.org.uk/opp/strategic-planningvisioning-volunteer-north-london?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Volunteers
+        are required across North London to support our members","Postcode":"HA9 0FJ","Coordinates":"51\u00b0
+        33'' 31.032\" N, 0\u00b0 16'' 54.3756\" W"}},{"node":{"title":"Evaluation
+        & Impact Volunteer - North London","Organisation":"Sported","Description":"Varied
+        and flexible placements\nWe have a range of volunteering opportunities available
+        across the UK. These can be one-off phone calls or emails, 2-6 hours of support
+        in person or remotely, or working long term with a group over 3-9 months (around
+        4-8 hours a month, predominantly face-to-face).\nAs a Sported volunteer you
+        can choose to deliver either short or long-term support or a combination as
+        suits you.\n\u00a0\nWhy volunteer with Sported?\n\nHave a lasting impact on
+        your local community\nThe opportunity to share your professional skills and
+        expertise\nFull induction, plus training and development opportunities\nSupport
+        from a designated Sported Regional Manager and the Volunteer Services Team\nThe
+        chance to work with a range of different communities and types of organisations\nTravel
+        expenses covered\n\t\u00a0\n\nWhat\u2019s involved?\nThe tasks and assignments
+        you are asked to undertake will be based on your skills and expertise and
+        will differ depending on whether it is a short-term or long-term placement.\nThese
+        could include:\u00a0\n\nSupporting a Sported member to understand the importance
+        of good impact practice\u202f\u202f\u00a0\nReviewing a Sported member\u2019s
+        existing impact practice\u202f\u00a0\nHelping\u00a0a Sported member\u00a0to\u00a0plan
+        their own impact practice and identify the outcomes\u00a0that\u00a0they want
+        to achieve\u202f\u202f\u00a0\nSupporting a Sported member to select the most
+        appropriate tools and methods to measure their impact\u202f\u202f\u00a0\nProviding
+        guidance and advice on analysing data\u202f\u202f\u202f\nAdvising on using
+        and presenting the findings from data collection\u202f\u202f\u00a0\nSupporting
+        the member to use their learning to become more effective and their results
+        to secure funding\u202f\u202f\u00a0\nSignposting the member to all the existing
+        Sported resources in this field and helping them to navigate this\u00a0\n\n","Path":"https://reachvolunteering.org.uk/opp/evaluation-impact-volunteer-north-london?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Volunteers
+        are required across North London to support our members","Postcode":"HA9 0FJ","Coordinates":"51\u00b0
+        33'' 31.032\" N, 0\u00b0 16'' 54.3756\" W"}},{"node":{"title":"Finance Volunteer
+        - North London","Organisation":"Sported","Description":"Varied and flexible
+        placements\nWe have a range of volunteering opportunities available across
+        the UK. These can be one-off phone calls or emails, 2-6 hours of support in
+        person or remotely, or working long term with a group over 3-9 months (around
+        4-8 hours a month, predominantly face-to-face).\nAs a Sported volunteer you
+        can choose to deliver either short or long-term support or a combination as
+        suits you.\n\u00a0\nWhy volunteer with Sported?\n\nHave a lasting impact on
+        your local community\nThe opportunity to share your professional skills and
+        expertise\nFull induction, plus training and development opportunities\nSupport
+        from a designated Sported Regional Manager and the Volunteer Services Team\nThe
+        chance to work with a range of different communities and types of organisations\nTravel
+        expenses covered\n\t\u00a0\n\nWhat\u2019s involved?\nThe tasks and assignments
+        you are asked to undertake will be based on your skills and expertise and
+        will differ depending on whether it is a short-term or long-term placement.\nThese
+        could include:\u00a0\u00a0\n\nReviewing current financial practices with the
+        Sported member\u00a0\n\n\nProviding guidance on financial language and terminology\u202f\u202f\u00a0\nSupporting
+        a Sported member to\u00a0help improve their practice around financial management
+        and meet best practice\u00a0\nSupporting development of basic financial procedures
+        (e.g. income and expenditure recording)\u202f\u202f\u202f\u00a0\nHelping\u00a0the\u00a0Sported\u00a0member\u00a0create\u00a0an
+        annual budget and develop a cash-flow forecast model\u202f\u00a0\nSignposting
+        a Sported member toward their specific filing requirements\u202f\nSupporting
+        a Sported member to implement and adopt new/ updated financial recording procedures\u202f\u202f\u00a0\n\n\u00a0\n","Path":"https://reachvolunteering.org.uk/opp/finance-volunteer-north-london?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Volunteers
+        are required across North London to support our members","Postcode":"HA9 0FJ","Coordinates":"51\u00b0
+        33'' 31.032\" N, 0\u00b0 16'' 54.3756\" W"}},{"node":{"title":"Business Planning
+        Volunteer - North London","Organisation":"Sported","Description":"Varied and
+        flexible placements\nWe have a range of volunteering opportunities available
+        across the UK. These can be one-off phone calls or emails, 2-6 hours of support
+        in person or remotely, or working long term with a group over 3-9 months (around
+        4-8 hours a month, predominantly face-to-face).\nAs a Sported volunteer you
+        can choose to deliver either short or long-term support or a combination as
+        suits you.\n\u00a0\nWhy volunteer with Sported?\n\nHave a lasting impact on
+        your local community\nThe opportunity to share your professional skills and
+        expertise\nFull induction, plus training and development opportunities\nSupport
+        from a designated Sported Regional Manager and the Volunteer Services Team\nThe
+        chance to work with a range of different communities and types of organisations\nTravel
+        expenses covered\n\t\u00a0\n\nWhat\u2019s involved?\nThe tasks and assignments
+        you are asked to undertake will be based on your skills and expertise and
+        will differ depending on whether it is a short-term or long-term placement.\n\nReviewing
+        an existing\u00a0or draft\u00a0business plan and providing feedback\u00a0\nAnswering
+        query around a specific part of the business planning or business planning
+        process.\u00a0\nSupporting a Sported member\u00a0to focus their aims or vision\u00a0\nGuiding
+        and supporting\u00a0member\u00a0through a\u00a0specific\u00a0part of the business
+        plan\u00a0or\u00a0business planning\u00a0process.\u00a0\nSupporting the project\u00a0member\u00a0to
+        identify and develop confidence in their existing skills\u00a0\u00a0\nSupporting
+        the member to\u00a0develop practical actions to achieve\u00a0their\u00a0plans\u00a0\n\n","Path":"https://reachvolunteering.org.uk/opp/business-planning-volunteer-north-london?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Volunteers
+        are required across North London to support our members","Postcode":"HA9 0FJ","Coordinates":"51\u00b0
+        33'' 31.032\" N, 0\u00b0 16'' 54.3756\" W"}},{"node":{"title":"Governance
+        Volunteer - North London","Organisation":"Sported","Description":"Varied and
+        flexible placements\nWe have a range of volunteering opportunities available
+        across the UK. These can be one-off phone calls or emails, 2-6 hours of support
+        in person or remotely, or working long term with a group over 3-9 months (around
+        4-8 hours a month, predominantly face-to-face).\nAs a Sported volunteer you
+        can choose to deliver either short or long-term support or a combination as
+        suits you.\n\u00a0\nWhy volunteer with Sported?\n\nHave a lasting impact on
+        your local community\nThe opportunity to share your professional skills and
+        expertise\nFull induction, plus training and development opportunities\nSupport
+        from a designated Sported Regional Manager and the Volunteer Services Team\nThe
+        chance to work with a range of different communities and types of organisations\nTravel
+        expenses covered\n\n\u00a0\nWhat\u2019s involved?\nThe tasks and assignments
+        you are asked to undertake will be based on your skills and expertise and
+        will differ depending on whether it is a short-term or long-term placement.\n\nSupporting
+        a Sported member to assess their existing governance\u00a0structure\u00a0\nSupport
+        the\u202fSported member\u202fin\u202fidentifying their\u00a0gaps and development
+        needs regarding governance\u202f\u00a0\nIdentify a plan to help the group
+        to ensure they are meeting best practice and their organisational needs\u00a0\nSupport
+        the\u202fSported\u202fmember through implementing required changes, providing
+        information and advice and signposting to resources as appropriate\u202f\u00a0\nReviewing
+        existing\u202for draft\u202fgovernance documents and\u202fproviding feedback\u202f\u00a0\nAnswering\u202fqueries
+        around\u202fgovernance or organisational structure types\u00a0\n\n","Path":"https://reachvolunteering.org.uk/opp/governance-volunteer-3?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Volunteers
+        are required across North London to support our members","Postcode":"HA9 0FJ","Coordinates":"51\u00b0
+        33'' 31.032\" N, 0\u00b0 16'' 54.3756\" W"}},{"node":{"title":"Non-Executive
+        Director - Eden Academy Trust","Organisation":"Academy Ambassadors","Description":"Trustees
+        \u2013 or non-executive directors - are both charity trustees and company
+        directors of the academy trust. The core functions of their role are: ensuring
+        clarity of vision, ethos and strategic direction; holding executive leaders
+        to account for the educational and financial performance of a charitable company
+        funded by the public purse.\nThe board of trustees manages the business of
+        the academy trust and may exercise all the powers of the trust in compliance
+        with its charitable objects, company and charity law.\n","Path":"https://reachvolunteering.org.uk/opp/non-executive-director-eden-academy-trust?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Middlesex","Postcode":"HA5
+        2JQ","Coordinates":"51\u00b0 35'' 15.9108\" N, 0\u00b0 24'' 43.5168\" W"}},{"node":{"title":"Marketing
+        and PR volunteer - North London","Organisation":"Sported","Description":"Varied
+        and flexible placements\nWe have a range of volunteering opportunities available
+        across the UK. These can be one-off phone calls or emails, 2-6 hours of support
+        in person or remotely, or working long term with a group over 3-9 months (around
+        4-8 hours a month, predominantly face-to-face).\nAs a Sported volunteer you
+        can choose to deliver either short or long-term support or a combination as
+        suits you.\nWhy volunteer with Sported?\n\nHave a lasting impact on your local
+        community\nThe opportunity to share your professional skills and expertise\nFull
+        induction, plus training and development opportunities\nSupport from a designated
+        Sported Regional Manager and the Volunteer Services Team\nThe chance to work
+        with a range of different communities and types of organisations\nTravel expenses
+        covered\n\nWhat\u2019s involved?\nThe tasks and assignments you are asked
+        to undertake will be based on your skills and expertise and will differ depending
+        on whether it is a short-term or long-term placement.\n\n\n\thelping a Sported
+        member to identify their key audiences/stakeholders\u202f\u00a0\n\t\n\n\tSupporting\u202fthe\u202fSported\u202fmember
+        to identify and articulate their key\u202fmessages\u202f\u202f\u00a0\n\t\n\n\n\n\tProviding
+        advice and information on marketing techniques\u00a0\n\t\n\n\tSupporting and
+        facilitating development of marketing plans\u202f\u00a0\n\t\n\n\tEnsuring
+        marketing reflects and supports the\u202fSported\u202fmember\u2019s business
+        plan\u202f\u00a0\n\t\n\n\tIdentifying the most appropriate marketing tools\u202fand
+        advise how to use these\u00a0\n\t\n\n\tSupporting the writing of press releases
+        and media communications\u202f\u00a0\n\t\n\n\n\n\tReviewing draft marketing
+        materials (e.g. leaflets, posters or a website) and providing feedback\u00a0\n\t\n\n\tAnswering
+        general queries around marketing, PR or\u202fsocial media\n\t\n\n","Path":"https://reachvolunteering.org.uk/opp/marketing-and-pr-volunteer-9?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Volunteers
+        are required across North London to support our members","Postcode":"HA9 0FJ","Coordinates":"51\u00b0
+        33'' 31.032\" N, 0\u00b0 16'' 54.3756\" W"}},{"node":{"title":"Fundraising
+        Volunteer - North London","Organisation":"Sported","Description":"Varied and
+        flexible placements\nWe have a range of volunteering opportunities available
+        across the UK. These can be one-off phone calls or emails, 2-6 hours of support
+        in person or remotely, or working long term with a group over 3-9 months (around
+        4-8 hours a month, predominantly face-to-face).\nAs a Sported volunteer you
+        can choose to deliver either short or long-term support or a combination as
+        suits you.\nWhy volunteer with Sported?\n\nHave a lasting impact on your local
+        community\nThe opportunity to share your professional skills and expertise\nFull
+        induction, plus training and development opportunities\nSupport from a designated
+        Sported Regional Manager and the Volunteer Services Team\nThe chance to work
+        with a range of different communities and types of organisations\nTravel expenses
+        covered\n\nWhat\u2019s involved?\nThe tasks and assignments you are asked
+        to undertake will be based on your skills and expertise and will differ depending
+        on whether it is a short-term or long-term placement.\n\nReviewing a grant
+        application and providing feedback\nSupporting a Sported member to ensure
+        that they have the documentation, governance and processes in place to be
+        eligible for general grant funding.\nProviding guidance on sources of funding
+        information\nSupporting exploration of local and national funders\nSupporting
+        a funding application\nProviding constructive feedback to develop fundraising
+        skills and knowledge within the Sported member organisation\nEncouraging long
+        term funding planning and management\nSupporting the Sported member to develop
+        a funding strategy to achieve their business plan.\nRaising awareness of the
+        importance of grant monitoring and evaluation and grant reporting\nFacilitation/
+        supporting positive meetings focussed on funding with the Sported member\u2019s
+        committee/directors\n\n","Path":"https://reachvolunteering.org.uk/opp/fundraising-volunteer-31?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Volunteers
+        are required across North London to support our members ","Postcode":"HA9
+        0FJ","Coordinates":"51\u00b0 33'' 31.032\" N, 0\u00b0 16'' 54.3756\" W"}},{"node":{"title":"Volunteer
+        with Business, Marketing or Voluntary Sector Background - North London","Organisation":"Sported","Description":"We
+        have a range of volunteering opportunities available across the UK. These
+        can be one-off phone calls or emails, 2-6 hours of support in person or remotely,
+        or working long term with a group over 3-9 months (around 4-8 hours a month,
+        predominantly face-to-face).\u00a0\u00a0\nAs a Sported volunteer you can choose
+        to deliver either short or long-term support or a combination as suits you.\u00a0\u00a0\nWhy
+        volunteer with Sported?\u00a0\n\n\n\tHave a lasting impact on your local community\u00a0\n\t\n\n\tThe
+        opportunity to share your professional skills and expertise\u00a0\u00a0\n\t\n\n\tFull
+        induction, plus training and development opportunities\u00a0\n\t\n\n\tSupport
+        from a designated Sported Regional Manager and the Volunteer Services Team\u00a0\n\t\n\n\tThe
+        chance to work with a range of different communities and types of organisations\u00a0\n\t\n\n\n\n\tTravel
+        expenses covered\u00a0\n\t\n\nWhat\u2019s involved?\u00a0\nThe tasks and assignments
+        you are asked to undertake will be based on your skills and expertise and
+        will differ depending on whether it is a short-term or long-term placement.\u00a0\nSome
+        examples of common support requests include:\u00a0\n\n\n\tSupporting a member
+        to develop a business plan\u00a0\n\t\n\n\n\n\tHelping a member become savvy
+        with social media\u00a0\n\t\n\n\tReviewing a member''s funding application\u00a0\n\t\n\n\tDelivering
+        a workshop or webinar to members in your own specialist area\u00a0\n\t\n\n\tSupporting
+        a member to update or develop policies and procedures\u00a0\n\t\n\n\tSupporting
+        a member to understand and develop impact measurement\u00a0\n\t\n\n\n\n\tHelping
+        a member to develop a financial forecast, budget or improve their financial
+        reporting\u00a0\n\t\n\n","Path":"https://reachvolunteering.org.uk/opp/clone-volunteer-business-marketing-or-voluntary-sector-background-0?referrer_id=Harrow
+        Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Volunteers
+        are required across North London to support our members ","Postcode":"HA9
+        0FJ","Coordinates":"51\u00b0 33'' 31.032\" N, 0\u00b0 16'' 54.3756\" W"}}]}'
+    http_version: 
+  recorded_at: Sun, 17 Nov 2019 18:34:27 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA7%204LP,%20Stanmore&key=<GMAP_API_KEY>&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 17 Nov 2019 18:34:27 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=21
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+        ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+        ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA7 4LP",
+                       "short_name" : "HA7 4LP",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Stanmore",
+                       "short_name" : "Stanmore",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Stanmore HA7 4LP, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.6349891,
+                          "lng" : -0.3066512
+                       },
+                       "southwest" : {
+                          "lat" : 51.6313096,
+                          "lng" : -0.3160459
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.6336309,
+                       "lng" : -0.3109592
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.6349891,
+                          "lng" : -0.3066512
+                       },
+                       "southwest" : {
+                          "lat" : 51.6313096,
+                          "lng" : -0.3160459
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJV31P5jcUdkgR6gP71z4TyrM",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Sun, 17 Nov 2019 18:34:27 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA9%200FJ,%20Volunteers%20are%20required%20across%20North%20London%20to%20support%20our%20members&key=<GMAP_API_KEY>&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 17 Nov 2019 18:34:27 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=14
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+        ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+        ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA9 0FJ",
+                       "short_name" : "HA9 0FJ",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Wembley",
+                       "short_name" : "Wembley",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Wembley HA9 0FJ, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.55861969999999,
+                       "lng" : -0.2817712
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5655562,
+                          "lng" : -0.2657638
+                       },
+                       "southwest" : {
+                          "lat" : 51.5516821,
+                          "lng" : -0.2977786
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJp3PAxX8RdkgRMXxW7Agkaxs",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Sun, 17 Nov 2019 18:34:27 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA9%200FJ,%20Volunteers%20are%20required%20across%20North%20London%20to%20support%20our%20members&key=<GMAP_API_KEY>&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 17 Nov 2019 18:34:27 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=146
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+        ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+        ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA9 0FJ",
+                       "short_name" : "HA9 0FJ",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Wembley",
+                       "short_name" : "Wembley",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Wembley HA9 0FJ, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.55861969999999,
+                       "lng" : -0.2817712
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5655562,
+                          "lng" : -0.2657638
+                       },
+                       "southwest" : {
+                          "lat" : 51.5516821,
+                          "lng" : -0.2977786
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJp3PAxX8RdkgRMXxW7Agkaxs",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Sun, 17 Nov 2019 18:34:27 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA9%200FJ,%20Volunteers%20are%20required%20across%20North%20London%20to%20support%20our%20members&key=<GMAP_API_KEY>&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 17 Nov 2019 18:34:27 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=15
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+        ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+        ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA9 0FJ",
+                       "short_name" : "HA9 0FJ",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Wembley",
+                       "short_name" : "Wembley",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Wembley HA9 0FJ, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.55861969999999,
+                       "lng" : -0.2817712
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5655562,
+                          "lng" : -0.2657638
+                       },
+                       "southwest" : {
+                          "lat" : 51.5516821,
+                          "lng" : -0.2977786
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJp3PAxX8RdkgRMXxW7Agkaxs",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Sun, 17 Nov 2019 18:34:28 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA9%200FJ,%20Volunteers%20are%20required%20across%20North%20London%20to%20support%20our%20members&key=<GMAP_API_KEY>&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 17 Nov 2019 18:34:28 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=21
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+        ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+        ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA9 0FJ",
+                       "short_name" : "HA9 0FJ",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Wembley",
+                       "short_name" : "Wembley",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Wembley HA9 0FJ, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.55861969999999,
+                       "lng" : -0.2817712
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5655562,
+                          "lng" : -0.2657638
+                       },
+                       "southwest" : {
+                          "lat" : 51.5516821,
+                          "lng" : -0.2977786
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJp3PAxX8RdkgRMXxW7Agkaxs",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Sun, 17 Nov 2019 18:34:28 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA9%200FJ,%20Volunteers%20are%20required%20across%20North%20London%20to%20support%20our%20members&key=<GMAP_API_KEY>&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 17 Nov 2019 18:34:28 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=458
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+        ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+        ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA9 0FJ",
+                       "short_name" : "HA9 0FJ",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Wembley",
+                       "short_name" : "Wembley",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Wembley HA9 0FJ, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.55861969999999,
+                       "lng" : -0.2817712
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5655562,
+                          "lng" : -0.2657638
+                       },
+                       "southwest" : {
+                          "lat" : 51.5516821,
+                          "lng" : -0.2977786
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJp3PAxX8RdkgRMXxW7Agkaxs",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Sun, 17 Nov 2019 18:34:28 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA5%202JQ,%20Middlesex&key=<GMAP_API_KEY>&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 17 Nov 2019 18:34:28 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=17
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+        ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+        ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA5 2JQ",
+                       "short_name" : "HA5 2JQ",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Fore Street",
+                       "short_name" : "Fore St",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Pinner",
+                       "short_name" : "Pinner",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Fore St, Pinner HA5 2JQ, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.5880915,
+                          "lng" : -0.410741
+                       },
+                       "southwest" : {
+                          "lat" : 51.58727829999999,
+                          "lng" : -0.4140658
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.5877529,
+                       "lng" : -0.4120883
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5890338802915,
+                          "lng" : -0.410741
+                       },
+                       "southwest" : {
+                          "lat" : 51.5863359197085,
+                          "lng" : -0.4140658
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJa7m0c5BsdkgR5CboNqcBRgo",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Sun, 17 Nov 2019 18:34:28 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA9%200FJ,%20Volunteers%20are%20required%20across%20North%20London%20to%20support%20our%20members&key=<GMAP_API_KEY>&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 17 Nov 2019 18:34:29 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=21
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+        ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+        ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA9 0FJ",
+                       "short_name" : "HA9 0FJ",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Wembley",
+                       "short_name" : "Wembley",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Wembley HA9 0FJ, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.55861969999999,
+                       "lng" : -0.2817712
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5655562,
+                          "lng" : -0.2657638
+                       },
+                       "southwest" : {
+                          "lat" : 51.5516821,
+                          "lng" : -0.2977786
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJp3PAxX8RdkgRMXxW7Agkaxs",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Sun, 17 Nov 2019 18:34:29 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA9%200FJ,%20Volunteers%20are%20required%20across%20North%20London%20to%20support%20our%20members%20&key=<GMAP_API_KEY>&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 17 Nov 2019 18:34:29 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=54
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+        ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+        ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA9 0FJ",
+                       "short_name" : "HA9 0FJ",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Wembley",
+                       "short_name" : "Wembley",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Wembley HA9 0FJ, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.55861969999999,
+                       "lng" : -0.2817712
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5655562,
+                          "lng" : -0.2657638
+                       },
+                       "southwest" : {
+                          "lat" : 51.5516821,
+                          "lng" : -0.2977786
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJp3PAxX8RdkgRMXxW7Agkaxs",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Sun, 17 Nov 2019 18:34:29 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA9%200FJ,%20Volunteers%20are%20required%20across%20North%20London%20to%20support%20our%20members%20&key=<GMAP_API_KEY>&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 17 Nov 2019 18:34:30 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=512
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+        ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+        ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA9 0FJ",
+                       "short_name" : "HA9 0FJ",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Wembley",
+                       "short_name" : "Wembley",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Wembley HA9 0FJ, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.55861969999999,
+                       "lng" : -0.2817712
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5655562,
+                          "lng" : -0.2657638
+                       },
+                       "southwest" : {
+                          "lat" : 51.5516821,
+                          "lng" : -0.2977786
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJp3PAxX8RdkgRMXxW7Agkaxs",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Sun, 17 Nov 2019 18:34:30 GMT
+recorded_with: VCR 5.0.0

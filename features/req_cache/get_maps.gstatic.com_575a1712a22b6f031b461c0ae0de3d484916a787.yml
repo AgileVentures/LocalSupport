@@ -1,0 +1,24 @@
+---
+:scope: 
+:url: https://maps.gstatic.com/mapfiles/api-3/images/icon_error.png
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Accept-Ranges: bytes
+  Content-Type: image/png
+  Access-Control-Allow-Origin: "*"
+  Content-Length: '450'
+  Date: Sun, 17 Nov 2019 15:27:03 GMT
+  Expires: Sun, 17 Nov 2019 15:27:03 GMT
+  Cache-Control: private, max-age=31536000
+  Last-Modified: Thu, 17 Oct 2019 23:15:00 GMT
+  X-Content-Type-Options: nosniff
+  Server: sffe
+  X-XSS-Protection: '0'
+  Alt-Svc: quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+    ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+    ma=2592000
+  Connection: close
+:content: !binary |-
+  iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAABiUlEQVR4Ae3Xz4raUBSAcY1xYXcqLlqdPkVt7XsICu1rfPhnr8xsp0wdZh5BOouBoe8RfIGKbhqdtcnmNtDlNR5z74FSMN82+oPkkntP6XL9DxcBPaY8sWJPmrVnxQ8mfCKgJCXd8J4btpicNlzTcQdaPJBihBLuaboAX3jFnNmOYTGgyiOmYPeE5wJv+Ilx6IXaOUD1xN/LRCgDjxiPFhLwFePZ4BTQ4tUbiGnkAw/Cj0t/E+66ywOuSFWAA+3jwA1GBTDMjwEBWzVgTdkGPmPUAMNHG5iqAmMbeFIFljawUgUiG9irArENpKpA8g8A/Uckv2SPImGZCjkt04kqMLKBnirQtYGAjdpL/kXZArKu1YDZ8f2gQ6K04bzN2zIXKsBt/p7cZIfx7Df1XCBr6A30pYPXAuPRN/lkF/KCceyZighk1RyJ59zDr1XId4eHUyk2gAyIC6ycvssI1eCOBCN04Ja6+xDYZs76xDdnxjtpCJQL6DJmSURMkhUTsWTEB8r+Y6zcBfDtDxG8YEAvlAJYAAAAAElFTkSuQmCC

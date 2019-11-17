@@ -1,0 +1,24 @@
+---
+:scope: 
+:url: https://maps.googleapis.com/maps/api/js/QuotaService.RecordEvent?1shttp%3A%2F%2F127.0.0.1%3A38755%2Forganisations&3s<GMAP_API_KEY>&7s32ag78&10e1&callback=_xdc_._2ipqns&key=<GMAP_API_KEY>&token=106070
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: text/javascript; charset=UTF-8
+  Date: Sun, 17 Nov 2019 13:54:34 GMT
+  Pragma: no-cache
+  Expires: Fri, 01 Jan 1990 00:00:00 GMT
+  Cache-Control: no-cache, must-revalidate
+  Content-Disposition: attachment
+  Server: mafe
+  X-XSS-Protection: '0'
+  X-Frame-Options: SAMEORIGIN
+  Server-Timing: gfet4t7; dur=35
+  Alt-Svc: quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+    ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+    ma=2592000
+  Accept-Ranges: none
+  Vary: Accept-Encoding
+  Connection: close
+:content: "/**/_xdc_._2ipqns && _xdc_._2ipqns( [0,null,1,null,1,[1]] )"

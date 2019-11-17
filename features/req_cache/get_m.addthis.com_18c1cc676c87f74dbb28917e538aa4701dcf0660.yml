@@ -1,0 +1,17 @@
+---
+:scope: 
+:url: https://m.addthis.com/live/red_lojson/100eng.json?sh=0&ph=962&ivh=768&dt=0&ict=&pct=0&cmenu=null&ppd=0&ppl=0&fbe=-1%7C2&xmv=0&xms=0&xmlc=0&al=men%2Csmlsh%2Csmlty%2Cmsd&scr=2&scv=0&apiu=1&ba=3&sid=5dd18fe31782e38f&rev=v7.11.0-wp&pub=ra-57ff949adbc21d93&dp=127.0.0.1%3A42485&fp=organisations%2Ffriendly&pfm=1&icns=facebook%2Ctwitter%2Cprint%2Cemail%2Caddthis
+:body: ''
+:status: 204
+:method: get
+:headers:
+  Server: Jetty(9.4.8.v20180619)
+  Access-Control-Allow-Credentials: 'true'
+  Access-Control-Allow-Origin: "*"
+  Cache-Control: max-age=0, no-cache, no-store, no-transform
+  Pragma: no-cache
+  Content-Length: '0'
+  Content-Type: application/json
+  Date: Sun, 17 Nov 2019 18:22:29 GMT
+  Connection: close
+:content: ''

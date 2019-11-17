@@ -1,0 +1,22 @@
+---
+:scope: 
+:url: https://maps.googleapis.com/maps/gen_204?target=api&ev=api_snap&cad=host:127.0.0.1%3A42485,v:37,r:100,key:%3C<GMAP_API_KEY>%3E,t:0-500,Mm-p:1,Mm-h:1,Mm-v:1,Mm-vh:1,Mm-vpr:0.94,Ox-p:1,Ox-h:1,src:apiv3,token:48y2pnkvyp,ts:3c05vk
+:body: ''
+:status: 204
+:method: get
+:headers:
+  Content-Type: image/gif
+  Date: Sun, 17 Nov 2019 18:26:30 GMT
+  Pragma: no-cache
+  Expires: Fri, 01 Jan 1990 00:00:00 GMT
+  Cache-Control: no-cache, must-revalidate
+  Server: mafe
+  Content-Length: '0'
+  X-XSS-Protection: '0'
+  X-Frame-Options: SAMEORIGIN
+  Server-Timing: gfet4t7; dur=2
+  Alt-Svc: quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+    ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+    ma=2592000
+  Connection: close
+:content: ''

@@ -1,0 +1,26 @@
+---
+:scope: 
+:url: https://maps.googleapis.com/maps/api/js/AuthenticationService.Authenticate?1shttp%3A%2F%2F127.0.0.1%3A42485%2Fevents%2Fnew&4s%3C<GMAP_API_KEY>%3E&callback=_xdc_._vxrsrn&key=%3C<GMAP_API_KEY>%3E&token=20889
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: text/javascript; charset=UTF-8
+  Date: Sun, 17 Nov 2019 18:16:04 GMT
+  Pragma: no-cache
+  Expires: Fri, 01 Jan 1990 00:00:00 GMT
+  Cache-Control: no-cache, must-revalidate
+  Content-Disposition: attachment
+  Server: mafe
+  X-XSS-Protection: '0'
+  X-Frame-Options: SAMEORIGIN
+  Server-Timing: gfet4t7; dur=4
+  Alt-Svc: quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+    ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+    ma=2592000
+  Accept-Ranges: none
+  Vary: Accept-Encoding
+  Connection: close
+:content: '/**/_xdc_._vxrsrn && _xdc_._vxrsrn( [0,14,0,null,null,[3,null,"Google Maps
+  JavaScript API error: InvalidKeyMapError\nhttps://developers.google.com/maps/documentation/javascript/error-messages#invalid-key-map-error"]]
+  )'

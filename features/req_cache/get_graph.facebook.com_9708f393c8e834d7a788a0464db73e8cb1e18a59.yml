@@ -1,0 +1,28 @@
+---
+:scope: 
+:url: http://graph.facebook.com/?id=http%3A%2F%2F127.0.0.1%3A34299%2Forganisations%2Fwrong-postcode-uk&callback=_ate.cbs.rcb_ipo40
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Vary: Accept-Encoding
+  ETag: '"60a5a0257fc991af6d423722c72d1eb27f2299cb"'
+  x-app-usage: '{"call_count":0,"total_cputime":0,"total_time":0}'
+  Content-Type: text/javascript; charset=UTF-8
+  facebook-api-version: v2.11
+  Pragma: no-cache
+  x-fb-rev: '1001443744'
+  Access-Control-Allow-Origin: "*"
+  Cache-Control: private, no-cache, no-store, must-revalidate
+  x-fb-trace-id: FYdP8G0myRm
+  x-fb-request-id: Ae0UdCCXlmuNRlPMN-jBtcQ
+  Expires: Sat, 01 Jan 2000 00:00:00 GMT
+  X-FB-Debug: DtmkC3KQL/JJQw7i/w/QDz2ekiNNj+BeR71vbEffAnXO5Hwd9DzX1aD6LnYK0dgXrfjI/pWke9c+zkdjQYA4FQ==
+  Date: Sun, 17 Nov 2019 15:31:15 GMT
+  Alt-Svc: h3-23=":443"; ma=3600
+  Connection: close
+  Content-Length: '95'
+:content: |-
+  /**/ _ate.cbs.rcb_ipo40({
+     "id": "http://127.0.0.1:34299/organisations/wrong-postcode-uk"
+  });
