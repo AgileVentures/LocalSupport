@@ -21,7 +21,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Sat, 30 Nov 2019 12:25:17 GMT
+      - Sat, 30 Nov 2019 13:14:21 GMT
       Pragma:
       - no-cache
       Expires:
@@ -37,7 +37,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       Server-Timing:
-      - gfet4t7; dur=43
+      - gfet4t7; dur=21
       Alt-Svc:
       - quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
         ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
@@ -122,5 +122,5 @@ http_interactions:
            "status" : "OK"
         }
     http_version: 
-  recorded_at: Sat, 30 Nov 2019 12:25:17 GMT
+  recorded_at: Sat, 30 Nov 2019 13:14:22 GMT
 recorded_with: VCR 5.0.0

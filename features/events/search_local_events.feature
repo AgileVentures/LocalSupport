@@ -17,7 +17,6 @@ Feature: Search local events
     And cookies are approved
     And I visit the events page
 
-  @fix-ci
   Scenario: Find out what's going on locally
     Given I fill in "Search Text" with "still" within the main body
     And I press "Search"

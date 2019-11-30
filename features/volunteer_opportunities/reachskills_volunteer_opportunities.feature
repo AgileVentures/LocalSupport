@@ -9,12 +9,10 @@ Feature: Reachskills volunteer opportunities
     And I run the import reachskills service
     And cookies are approved
 
-  @fix-ci
   Scenario: See a map of current reachskills volunteer opportunities
     And I visit the volunteer opportunities page
     And I should see 8 markers in the map
 
-  @fix-ci
   Scenario: See a map of current reachskills and harrow volunteer opportunities
     Given the following organisations exist:
       | name                      | description          | address        | postcode | website       |

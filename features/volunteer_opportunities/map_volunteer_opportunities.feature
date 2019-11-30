@@ -36,7 +36,6 @@ Feature: As a member of the public
       | Eldery care    |
       | Office Support |
 
-  @fix-ci
   Scenario Outline: See a list of do-it and local volunteer ops with same coordiantes in same maker popup
     Given the following organisations exist:
       | name          | description          | address        | postcode | website       |
@@ -63,7 +62,6 @@ Feature: As a member of the public
       | Animal care    |
       | Office Support |
 
-  @fix-ci
   Scenario: Imported "reachskills" volunteer ops with nil coords are assigned default coords
     Given reachskills opportunities are imported with nil coordinates
     Then there should be zero nil coordinates

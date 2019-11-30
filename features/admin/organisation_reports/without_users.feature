@@ -92,7 +92,6 @@ Feature: Orphans UI
     And I set my password
     Then I should be on the show page for the organisation named "Yet Another Org"
 
-  @fix-ci
   Scenario: Invited user email is out of date
     Given cookies are approved
     And I am signed in as a superadmin

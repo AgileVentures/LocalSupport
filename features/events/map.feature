@@ -18,13 +18,13 @@ Feature: Map of local events
       | My first event | Good for everyone                  | Cats Are Us   | 2030-10-20 10:30:14 | 2030-10-20 17:00:00 |
       | An Event today | Testing the calendar functionality | Office Primer | today               | today               |
 
-  @javascript @vcr @billy @fix-ci
+  @javascript @vcr @billy
   Scenario: Show all events in map on events page map
     Given I visit the events page
     Then I should see the following event markers in the map:
       | Cats Are Us | Office Primer |
 
-  @javascript @billy @fix-ci
+  @javascript @billy
   Scenario: Infowindow appears when clicking on map marker
     Given I visit the events page
     Then I should see an infowindow when I click on the event map markers:

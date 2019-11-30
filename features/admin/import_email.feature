@@ -16,7 +16,7 @@ Feature: import email addresses
       | I hate animals |             |           |           |          |       |            | superadmin@cruelty.com |
       | I love people  |             |           |           |          |       |            | people@humanity.org    |
 
-  @vcr @fix-ci
+  @vcr
   Scenario: import email addresses
     Given Google is indisposed for "64 pinner road, HA1 4HZ"
     And I import emails from "db/email_test.csv"

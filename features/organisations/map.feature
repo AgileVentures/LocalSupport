@@ -21,19 +21,19 @@ Feature: Map of local charities
       | registered_user-3@example.com | pppppppp | Youth UK          | 2007-01-01  10:00:00 |
       | registered_user-4@example.com | pppppppp | Wrong Postcode UK | 2007-01-01  10:00:00 |
 
-  @javascript @vcr @billy @fix-ci
+  @javascript @vcr @billy
   Scenario: Show all charities in map on organisations index page map
     Given I visit the organisations index page
     Then I should see the following pin markers in the map:
       | Indian Elders Association | Age UK | Harrow Bereavement Counselling | Youth UK | Wrong Postcode UK |
 
-  @javascript @billy @fix-ci
+  @javascript @billy
   Scenario: Infowindow appears when clicking on map marker
     Given I visit the organisations index page
     Then I should see an infowindow when I click on the map pin markers:
       | Indian Elders Association | Age UK | Harrow Bereavement Counselling | Youth UK | Wrong Postcode UK |
 
-  @javascript @billy @fix-ci
+  @javascript @billy
   Scenario Outline: Organisation map has small icon for organisations updated more than 365 days ago
     Given I travel a year plus "<days>" days into the future
     And I visit the organisations index page
@@ -47,12 +47,12 @@ Feature: Map of local charities
       | 10   | small |
       | 100  | small |
 
-  @javascript @billy @fix-ci
+  @javascript @billy
   Scenario: Organisation map has large icon for organisation with no users
     Given I visit the organisations index page
     Then the organisation "Indian Elders Association" should have a large icon
 
-  @vcr @fix-ci
+  @vcr
   Scenario: Changing address on the map changes the map coordinates
     Given I visit the organisations index page
     Then the coordinates for "Harrow Bereavement Counselling" and "Youth UK" should not be the same
@@ -67,7 +67,7 @@ Feature: Map of local charities
 
   # might need to change so that we check the actual lat/lng and that that changes rather
   # than comparing to lat/lng of another
-  @vcr @billy @fix-ci
+  @vcr @billy
   Scenario: Changing postcode changes the map coordinates
     Given I visit the organisations index page
     #    And the coordinates for "Age UK" and "Wrong Postcode UK" should be the same

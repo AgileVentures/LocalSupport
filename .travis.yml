@@ -31,7 +31,10 @@ before_script:
 - chmod +x ./cc-test-reporter
 - "./cc-test-reporter before-build"
 script:
-- bundle exec cucumber -t @fix-ci
+- USE_JASMINE_RAKE=true bundle exec rake jasmine:ci
+- bundle exec rspec
+- bundle exec rake cucumber:first_try
+- bundle exec rake cucumber:second_try
 after_script:
 - "./cc-test-reporter after-build"
 deploy:

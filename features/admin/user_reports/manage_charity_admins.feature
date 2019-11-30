@@ -26,7 +26,6 @@ Feature: Manage charity superadmins
     And I visit the edit page for the organisation named "Friendly Clone"
     Then I should see the no charity superadmins message
 
-  @fix-ci
   Scenario: Adding non-existent user as charity superadmin invites said user
     Given I am signed in as a superadmin
     And I add "non-registered-user@example.com" as a superadmin for "Friendly" charity
@@ -36,12 +35,10 @@ Feature: Manage charity superadmins
     Then I should be on the show page for the organisation named "Friendly"
     And I should see a link or button "non-registered-user@example.com"
 
-  @fix-ci
   Scenario: Adding non-existent user as charity superadmin invites said user
     Given I am signed in as a superadmin
     And I add "blah" as a superadmin for "Friendly" charity
 
-  @fix-ci
   Scenario: Successfully add existent user as charity superadmin
     Given I am signed in as a superadmin
     And I add "registered-user-2@example.com" as a superadmin for "Friendly" charity
