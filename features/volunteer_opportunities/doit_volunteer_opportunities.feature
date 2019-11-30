@@ -13,6 +13,7 @@ Feature: Doit volunteer opportunities
     And I visit the volunteer opportunities page
     And I should see 1 markers in the map
 
+  @fix-ci
   Scenario: See a map of current doit and harrow volunteer opportunities
     Given the following organisations exist:
       | name                      | description          | address        | postcode | website       |

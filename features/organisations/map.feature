@@ -21,38 +21,38 @@ Feature: Map of local charities
       | registered_user-3@example.com | pppppppp | Youth UK          | 2007-01-01  10:00:00 |
       | registered_user-4@example.com | pppppppp | Wrong Postcode UK | 2007-01-01  10:00:00 |
 
-  @javascript @vcr @billy
+  @javascript @vcr @billy @fix-ci
   Scenario: Show all charities in map on organisations index page map
-    Given I visit the organisations index page 
+    Given I visit the organisations index page
     Then I should see the following pin markers in the map:
-      | Indian Elders Association | Age UK | Harrow Bereavement Counselling | Youth UK | Wrong Postcode UK | 
+      | Indian Elders Association | Age UK | Harrow Bereavement Counselling | Youth UK | Wrong Postcode UK |
 
-  @javascript @billy
+  @javascript @billy @fix-ci
   Scenario: Infowindow appears when clicking on map marker
     Given I visit the organisations index page
     Then I should see an infowindow when I click on the map pin markers:
-      | Indian Elders Association | Age UK | Harrow Bereavement Counselling | Youth UK | Wrong Postcode UK | 
+      | Indian Elders Association | Age UK | Harrow Bereavement Counselling | Youth UK | Wrong Postcode UK |
 
-  @javascript @billy
+  @javascript @billy @fix-ci
   Scenario Outline: Organisation map has small icon for organisations updated more than 365 days ago
     Given I travel a year plus "<days>" days into the future
     And I visit the organisations index page
     Then the organisation "Youth UK" should have a <size> icon
     Examples:
-      |days  | size |
-      | -10  | large|
-      | -1   | large|
-      |  0   | small|
-      |  1   | small|
-      | 10   | small|
-      |100   | small|
+      | days | size  |
+      | -10  | large |
+      | -1   | large |
+      | 0    | small |
+      | 1    | small |
+      | 10   | small |
+      | 100  | small |
 
-  @javascript @billy
+  @javascript @billy @fix-ci
   Scenario: Organisation map has large icon for organisation with no users
     Given I visit the organisations index page
     Then the organisation "Indian Elders Association" should have a large icon
 
-  @vcr
+  @vcr @fix-ci
   Scenario: Changing address on the map changes the map coordinates
     Given I visit the organisations index page
     Then the coordinates for "Harrow Bereavement Counselling" and "Youth UK" should not be the same
@@ -60,17 +60,17 @@ Feature: Map of local charities
     Given cookies are approved
     When I am signed in as a charity worker related to "Youth UK"
     And I update "Youth UK" charity address to be "34 pinner road"
-#    And I update "Youth UK" charity postcode to be "HA1 4HZ"
+    #    And I update "Youth UK" charity postcode to be "HA1 4HZ"
     And I visit the organisations index page
     Then the coordinates for "Harrow Bereavement Counselling" and "Youth UK" should be the same
     Then the coordinates for "Age UK" and "Youth UK" should not be the same
 
-    # might need to change so that we check the actual lat/lng and that that changes rather
-    # than comparing to lat/lng of another
-  @vcr @billy
+  # might need to change so that we check the actual lat/lng and that that changes rather
+  # than comparing to lat/lng of another
+  @vcr @billy @fix-ci
   Scenario: Changing postcode changes the map coordinates
     Given I visit the organisations index page
-#    And the coordinates for "Age UK" and "Wrong Postcode UK" should be the same
+    #    And the coordinates for "Age UK" and "Wrong Postcode UK" should be the same
     Given cookies are approved
     When I am signed in as a charity worker related to "Wrong Postcode UK"
     And I update "Wrong Postcode UK" charity postcode to be "E1 6LT"
