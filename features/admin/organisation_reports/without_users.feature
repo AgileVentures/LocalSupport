@@ -5,18 +5,18 @@ Feature: Orphans UI
 
   Background:
     Given the following organisations exist:
-      | name               | description    | address        | email             | postcode |
-      | The Organisation   | Awesome people | 83 pinner road | no_owner@org.org  | HA1 4HZ  |
-      | The Same Email Org | Awesome people | 84 pinner road | no_owner@org.org  | HA1 4HZ  |
-      | Crazy Email Org    | Awesome people | 30 pinner road | sahjkgdsfsajnfds  | HA1 4HZ  |
+      | name               | description    | address        | email                  | postcode |
+      | The Organisation   | Awesome people | 83 pinner road | no_owner@org.org       | HA1 4HZ  |
+      | The Same Email Org | Awesome people | 84 pinner road | no_owner@org.org       | HA1 4HZ  |
+      | Crazy Email Org    | Awesome people | 30 pinner road | sahjkgdsfsajnfds       | HA1 4HZ  |
       | My Organisation    | Awesome people | 30 pinner road | superadmin@myorg.com   | HA1 4HZ  |
       | Yet Another Org    | Awesome people | 30 pinner road | superadmin@another.org | HA1 4HZ  |
     And the following users are registered:
-      | email                 | password       | superadmin | confirmed_at        | organisation    | pending_organisation |
-      | nonsuperadmin@myorg.com    | mypassword1234 | false | 2008-01-01 00:00:00 |                 |                      |
-      | superadmin@myorg.com       | superadminpass0987  | true  | 2008-01-01 00:00:00 | My Organisation |                      |
-      | pending@myorg.com     | password123    | false | 2008-01-01 00:00:00 |                 | My Organisation      |
-      | invited-superadmin@org.org | password123    | false | 2008-01-01 00:00:00 |                 |                      |
+      | email                      | password           | superadmin | confirmed_at        | organisation    | pending_organisation |
+      | nonsuperadmin@myorg.com    | mypassword1234     | false      | 2008-01-01 00:00:00 |                 |                      |
+      | superadmin@myorg.com       | superadminpass0987 | true       | 2008-01-01 00:00:00 | My Organisation |                      |
+      | pending@myorg.com          | password123        | false      | 2008-01-01 00:00:00 |                 | My Organisation      |
+      | invited-superadmin@org.org | password123        | false      | 2008-01-01 00:00:00 |                 |                      |
     And the invitation instructions mail template exists
     And the superadmin invited a user for "Yet Another Org"
 
@@ -37,7 +37,7 @@ Feature: Orphans UI
     And I visit the invite users to become admin of organisations page
     Then I should not see "Yet Another Org"
 
-  @javascript  
+  @javascript
   Scenario: Super Admin should be notified when email is invalid
     Given cookies are approved
     Given I am signed in as a superadmin
