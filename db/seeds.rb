@@ -12,7 +12,7 @@ Logger.new(STDOUT).info 'Start Organisations seed'
     address: Faker::Address.street_address,
     postcode: Faker::Address.zip_code,
     email: Faker::Internet.email,
-    description: Faker::Quote.matz,
+    description: Faker::TvShows::DrWho.quote,
     website: Faker::Internet.url,
     telephone: Faker::PhoneNumber.phone_number,
     latitude: rand(51.546702..51.6247775).round(7),
