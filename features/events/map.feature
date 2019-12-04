@@ -9,9 +9,9 @@ Feature: Map of local events
     Given today's date is 1980-12-25
 
     Given the following organisations exist:
-      | name            | description          | address        | postcode | website       |
-      | Cats Are Us     | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
-      | Office Primer   | Care for the elderly | 64 pinner road | HA1 4HZ  | http://b.com/ |
+      | name          | description          | address        | postcode | website       |
+      | Cats Are Us   | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
+      | Office Primer | Care for the elderly | 64 pinner road | HA1 4HZ  | http://b.com/ |
 
     Given the following events exist:
       | title          | description                        | organisation  | start_date          | end_date            |

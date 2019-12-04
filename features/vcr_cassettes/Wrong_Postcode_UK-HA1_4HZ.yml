@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://maps.googleapis.com/maps/api/geocode/json?address=50%20City%20Road,%20HA1%204HZ&language=en&sensor=false
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=50%20City%20Road,%20HA1%204HZ&key=<GMAP_API_KEY>&language=en&sensor=false
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
       User-Agent:
       - Ruby
   response:
@@ -21,46 +21,49 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Tue, 02 Feb 2016 10:02:02 GMT
+      - Sat, 30 Nov 2019 13:15:35 GMT
+      Pragma:
+      - no-cache
       Expires:
-      - Wed, 03 Feb 2016 10:02:02 GMT
+      - Fri, 01 Jan 1990 00:00:00 GMT
       Cache-Control:
-      - public, max-age=86400
+      - no-cache, must-revalidate
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Server:
       - mafe
-      Content-Length:
-      - '514'
       X-Xss-Protection:
-      - 1; mode=block
+      - '0'
       X-Frame-Options:
       - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=21
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+        ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+        ma=2592000
+      Transfer-Encoding:
+      - chunked
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: |
         {
            "results" : [
               {
                  "address_components" : [
                     {
-                       "long_name" : "HA1 4HZ",
-                       "short_name" : "HA1 4HZ",
-                       "types" : [ "postal_code" ]
+                       "long_name" : "50",
+                       "short_name" : "50",
+                       "types" : [ "street_number" ]
                     },
                     {
-                       "long_name" : "Pinner Road",
-                       "short_name" : "Pinner Rd",
+                       "long_name" : "City Road",
+                       "short_name" : "City Rd",
                        "types" : [ "route" ]
                     },
                     {
-                       "long_name" : "Harrow",
-                       "short_name" : "Harrow",
-                       "types" : [ "locality", "political" ]
-                    },
-                    {
-                       "long_name" : "Harrow",
-                       "short_name" : "Harrow",
+                       "long_name" : "London",
+                       "short_name" : "London",
                        "types" : [ "postal_town" ]
                     },
                     {
@@ -69,36 +72,49 @@ http_interactions:
                        "types" : [ "administrative_area_level_2", "political" ]
                     },
                     {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
                        "long_name" : "United Kingdom",
                        "short_name" : "GB",
                        "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "EC1Y 2AN",
+                       "short_name" : "EC1Y 2AN",
+                       "types" : [ "postal_code" ]
                     }
                  ],
-                 "formatted_address" : "Pinner Rd, Harrow, Greater London HA1 4HZ, UK",
+                 "formatted_address" : "50 City Rd, London EC1Y 2AN, UK",
                  "geometry" : {
                     "location" : {
-                       "lat" : 51.58152579999999,
-                       "lng" : -0.3439557
+                       "lat" : 51.52394940000001,
+                       "lng" : -0.0876844
                     },
-                    "location_type" : "APPROXIMATE",
+                    "location_type" : "ROOFTOP",
                     "viewport" : {
                        "northeast" : {
-                          "lat" : 51.58287478029149,
-                          "lng" : -0.3426067197084979
+                          "lat" : 51.52529838029151,
+                          "lng" : -0.08633541970849797
                        },
                        "southwest" : {
-                          "lat" : 51.58017681970849,
-                          "lng" : -0.345304680291502
+                          "lat" : 51.52260041970851,
+                          "lng" : -0.08903338029150203
                        }
                     }
                  },
-                 "partial_match" : true,
-                 "place_id" : "ChIJxZuTtW0TdkgRhPFbBoYsfcU",
-                 "types" : [ "postal_code" ]
+                 "place_id" : "ChIJ02ivNa8cdkgRWGP5YvHogLw",
+                 "plus_code" : {
+                    "compound_code" : "GWF6+HW Shoreditch, London, United Kingdom",
+                    "global_code" : "9C3XGWF6+HW"
+                 },
+                 "types" : [ "street_address" ]
               }
            ],
            "status" : "OK"
         }
     http_version: 
-  recorded_at: Tue, 02 Feb 2016 10:02:09 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Thu, 25 Dec 1980 00:00:01 GMT
+recorded_with: VCR 5.0.0

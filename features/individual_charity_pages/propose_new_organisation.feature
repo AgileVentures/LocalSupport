@@ -34,7 +34,7 @@ Feature: User proposes an organisation to be added to HarrowCN
     Then I should be on the new proposed organisation page
     And I press "Create Proposed organisation"
     Then I should see "Name can't be blank"
-  
+
   @vcr
   Scenario: After getting validation error when creating new organisation checked categories are still visible
     Given I click "Add Organisation"
@@ -77,8 +77,8 @@ Feature: User proposes an organisation to be added to HarrowCN
   @javascript @vcr @billy
   Scenario: Signed in user proposes new organisation
     Given the following users are registered:
-      | email                     | password | superadmin | organisation | confirmed_at         |
-      | normal_user@example.com   | pppppppp |            |              | 2007-01-01  10:00:00 |
+      | email                   | password | superadmin | organisation | confirmed_at         |
+      | normal_user@example.com | pppppppp |            |              | 2007-01-01  10:00:00 |
     And I am signed in as a non-siteadmin
     And I visit the home page
     And I click "Add Organisation"
@@ -95,8 +95,8 @@ Feature: User proposes an organisation to be added to HarrowCN
   @javascript @vcr @billy
   Scenario: Superadmin receives an email when an organisation is proposed
     Given the following users are registered:
-      | email                     | password | superadmin | organisation | confirmed_at         |
-      | superadmin@example.com    | pppppppp | true       |              | 2007-01-01  10:00:00 |
+      | email                  | password | superadmin | organisation | confirmed_at         |
+      | superadmin@example.com | pppppppp | true       |              | 2007-01-01  10:00:00 |
     And I click "Add Organisation"
     Then I should be on the new proposed organisation page
     And I fill in the proposed charity page validly
