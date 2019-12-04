@@ -2,7 +2,7 @@ development: &dev
   adapter: postgresql
   encoding: unicode
   database: ls_development
-  host: <%= ENV['DB_HOST'] || ""%>
+  host: <%= ENV['DB_HOST'] || "localhost"%>
   pool: 20
   username: <%= ENV['DB_USERNAME'] || "postgres"%>
   password: <%= ENV['DB_PASSWORD'] || ""%>
