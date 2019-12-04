@@ -4,8 +4,8 @@ development: &dev
   database: ls_development
   host: <%= ENV['DB_HOST'] || ""%>
   pool: 20
-  username: postgres
-  password:
+  username: <%= ENV['DB_USERNAME'] || "postgres"%>
+  password: <%= ENV['DB_PASSWORD'] || ""%>
 test: &test
   <<: *dev
   database: ls_test
