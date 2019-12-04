@@ -297,7 +297,7 @@ GEM
     mustermann (1.0.3)
     naught (1.1.0)
     newrelic_rpm (6.7.0.359)
-    nio4r (2.4.0)
+    nio4r (2.5.2)
     nokogiri (1.10.5)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
@@ -327,7 +327,7 @@ GEM
       eventmachine_httpserver
       http_parser.rb (~> 0.6.0)
       multi_json
-    puma (4.1.0)
+    puma (4.3.0)
       nio4r (~> 2.0)
     rack (2.0.7)
     rack-protection (2.0.5)
