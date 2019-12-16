@@ -65,4 +65,6 @@ latest.dump*
 .travis/*.key
 .travis/*.key.pub
 
+# dot env
+.env
 # DO NOT ADD features/vcr_cassettes or features/req_cache as we need these files
