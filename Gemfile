@@ -58,7 +58,7 @@ group :test do
   gem 'selenium-client'
   gem 'shoulda'
   gem 'vcr'
-  gem 'puffing-billy', '~> 2.1'
+  gem 'puffing-billy', '~> 2.2'
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
   gem 'show_me_the_cookies', '~> 5.0'
