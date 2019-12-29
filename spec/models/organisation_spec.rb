@@ -261,11 +261,10 @@ describe Organisation, :type => :model do
     it 'must fail gracefully when encountering error in generating multiple Organisations from text file' do
       allow(Organisation).to receive(:sleep)
       attempted_number_to_import = 1006
-      actual_number_to_import = 642
-      allow(Organisation).to receive(:create_from_array).and_raise(CSV::MalformedCSVError)
-      expect(lambda {
+      allow(Organisation).to receive(:create_from_array).and_raise(CSV::MalformedCSVError.new('failure',1))
+      expect do
         Organisation.import_addresses 'db/data.csv', attempted_number_to_import
-      }).to change(Organisation, :count).by(0)
+      end.to change(Organisation, :count).by(0)
     end
 
     it 'must be able to handle no postcode in text representation' do
@@ -309,9 +308,9 @@ describe Organisation, :type => :model do
       #Headers are without Title header
       @headers = 'Charity Number,Activities,Contact Name,Contact Address,website,Contact Telephone,date registered,date removed,accounts date,spending,income,company number,OpenlyLocalURL,twitter account name,facebook account name,youtube account name,feed url,Charity Classification,signed up for 1010,last checked,created at,updated at,Removed?'.split(',')
       fields = CSV.parse('HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 4HZ",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
-      expect(lambda{
+      expect do
         org = create_organisation(fields)
-      }).to raise_error CSV::MalformedCSVError
+      end.to raise_error(CSV::MalformedCSVError, 'No expected column with name Title in CSV file in line 1.')
     end
 
     it 'should be able to substitute with empty string when data is missing' do
@@ -365,10 +364,10 @@ describe Organisation, :type => :model do
 
       it 'must fail gracefully when encountering error in importing categories from text file' do
         attempted_number_to_import = 2
-        allow(Organisation).to receive(:import_categories_from_array).and_raise(CSV::MalformedCSVError)
-        expect(lambda {
+        allow(Organisation).to receive(:import_categories_from_array).and_raise(CSV::MalformedCSVError.new('failure',1))
+        expect do
           Organisation.import_category_mappings 'db/data.csv', attempted_number_to_import
-        }).to change(Organisation, :count).by(0)
+        end.to change(Organisation, :count).by(0)
       end
 
       it "should import categories when matching org is found" do
