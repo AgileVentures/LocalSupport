@@ -6,7 +6,7 @@ Feature: Importing DoIt Volunteer Ops
 
   Scenario: Check 3 miles
     Given I run the import doit service with a radius of 3 miles
-    Then there should be 63 doit volunteer ops stored
+    Then there should be 45 doit volunteer ops stored
     And all imported volunteer ops have latitude and longitude coordinates
 
   Scenario: Check import removes ops that are no longer on doit
@@ -22,9 +22,9 @@ Feature: Importing DoIt Volunteer Ops
   Scenario: Twitter response
     Given the date is "2018-02-10 00:00:00"
     Given the following volunteer opportunities exist:
-      | title               | description                     | source | created_at          | updated_at          |
-      | Litter Box Scooper  | Assist with feline sanitation   | doit   | 2018-02-09 17:17:33 | 2018-02-09 17:17:33 |
-      | Litter Box Scooper 2| Assist with feline sanitation   | doit   | 2018-02-06 17:17:33 | 2018-02-06 17:17:33 |
+      | title                | description                   | source | created_at          | updated_at          |
+      | Litter Box Scooper   | Assist with feline sanitation | doit   | 2018-02-09 17:17:33 | 2018-02-09 17:17:33 |
+      | Litter Box Scooper 2 | Assist with feline sanitation | doit   | 2018-02-06 17:17:33 | 2018-02-06 17:17:33 |
 
     Then there should be 1 post to twitter
     When I run the update social media task

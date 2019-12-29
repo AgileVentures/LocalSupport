@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 ruby '2.5.3'
-gem 'rails', '~> 5.2.3'
+gem 'rails', '~> 5.2.4'
 gem 'pg', '~> 1.1'
-gem 'devise', '~> 4.6'
+gem 'devise', '~> 4.7'
 gem 'devise_invitable', '~> 2.0'
 gem 'heroku-api'
 gem 'sprockets'
@@ -21,7 +21,7 @@ gem 'rack-cors'
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do
   gem 'annotate'
-  gem 'faker', '~> 1.9'
+  gem 'faker', '~> 2.7'
   gem 'timecop'
   gem 'database_cleaner', '1.7.0'
   gem 'launchy'
@@ -33,7 +33,7 @@ group :development, :test do
   gem 'aruba', '~> 0.14.11'
   gem 'pry-byebug'
   gem 'rack_session_access'
-  gem 'jasmine', '~> 3.4'
+  gem 'jasmine', '~> 3.5'
   gem 'jasmine-jquery-rails', '2.0.3'
   gem 'rails-controller-testing'
   #gem 'better_errors'
@@ -52,16 +52,16 @@ end
 group :test do
   gem 'cucumber-rails', require: false
   gem 'cucumber-rails-training-wheels'
-  gem 'capybara', '~> 3.27'
+  gem 'capybara', '~> 3.29'
   gem 'nokogiri', '~> 1.10'
   gem 'factory_bot_rails'
-  gem 'webmock', '~> 3.6'
+  gem 'webmock', '~> 3.7'
   gem 'uri-handler'
   gem 'selenium'
   gem 'selenium-client'
   gem 'shoulda'
   gem 'vcr'
-  gem 'puffing-billy', '~> 2.1'
+  gem 'puffing-billy', '~> 2.3'
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
   gem 'show_me_the_cookies', '~> 5.0'
@@ -74,7 +74,7 @@ end
 
 gem 'coffee-rails', '5.0.0'
 gem 'uglifier'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 6.0'
 gem 'less-rails', '~> 4.0'
 gem 'twitter-bootstrap-rails', '3.2.2'
 
@@ -116,7 +116,7 @@ gem 'airbrake'
 gem 'friendly_id', '~> 5.2.5'
 
 # SEO
-gem 'meta-tags', '~> 2.11'
+gem 'meta-tags', '~> 2.13'
 
 #Social
 gem 'twitter',      '~> 6.2'

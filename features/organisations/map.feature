@@ -23,15 +23,15 @@ Feature: Map of local charities
 
   @javascript @vcr @billy
   Scenario: Show all charities in map on organisations index page map
-    Given I visit the organisations index page 
+    Given I visit the organisations index page
     Then I should see the following pin markers in the map:
-      | Indian Elders Association | Age UK | Harrow Bereavement Counselling | Youth UK | Wrong Postcode UK | 
+      | Indian Elders Association | Age UK | Harrow Bereavement Counselling | Youth UK | Wrong Postcode UK |
 
   @javascript @billy
   Scenario: Infowindow appears when clicking on map marker
     Given I visit the organisations index page
     Then I should see an infowindow when I click on the map pin markers:
-      | Indian Elders Association | Age UK | Harrow Bereavement Counselling | Youth UK | Wrong Postcode UK | 
+      | Indian Elders Association | Age UK | Harrow Bereavement Counselling | Youth UK | Wrong Postcode UK |
 
   @javascript @billy
   Scenario Outline: Organisation map has small icon for organisations updated more than 365 days ago
@@ -39,13 +39,13 @@ Feature: Map of local charities
     And I visit the organisations index page
     Then the organisation "Youth UK" should have a <size> icon
     Examples:
-      |days  | size |
-      | -10  | large|
-      | -1   | large|
-      |  0   | small|
-      |  1   | small|
-      | 10   | small|
-      |100   | small|
+      | days | size  |
+      | -10  | large |
+      | -1   | large |
+      | 0    | small |
+      | 1    | small |
+      | 10   | small |
+      | 100  | small |
 
   @javascript @billy
   Scenario: Organisation map has large icon for organisation with no users
@@ -60,17 +60,17 @@ Feature: Map of local charities
     Given cookies are approved
     When I am signed in as a charity worker related to "Youth UK"
     And I update "Youth UK" charity address to be "34 pinner road"
-#    And I update "Youth UK" charity postcode to be "HA1 4HZ"
+    #    And I update "Youth UK" charity postcode to be "HA1 4HZ"
     And I visit the organisations index page
     Then the coordinates for "Harrow Bereavement Counselling" and "Youth UK" should be the same
     Then the coordinates for "Age UK" and "Youth UK" should not be the same
 
-    # might need to change so that we check the actual lat/lng and that that changes rather
-    # than comparing to lat/lng of another
+  # might need to change so that we check the actual lat/lng and that that changes rather
+  # than comparing to lat/lng of another
   @vcr @billy
   Scenario: Changing postcode changes the map coordinates
     Given I visit the organisations index page
-#    And the coordinates for "Age UK" and "Wrong Postcode UK" should be the same
+    #    And the coordinates for "Age UK" and "Wrong Postcode UK" should be the same
     Given cookies are approved
     When I am signed in as a charity worker related to "Wrong Postcode UK"
     And I update "Wrong Postcode UK" charity postcode to be "E1 6LT"

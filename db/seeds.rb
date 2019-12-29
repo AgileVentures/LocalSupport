@@ -12,7 +12,7 @@ Logger.new(STDOUT).info 'Start Organisations seed'
     address: Faker::Address.street_address,
     postcode: Faker::Address.zip_code,
     email: Faker::Internet.email,
-    description: Faker::DrWho.quote,
+    description: Faker::TvShows::DrWho.quote,
     website: Faker::Internet.url,
     telephone: Faker::PhoneNumber.phone_number,
     latitude: rand(51.546702..51.6247775).round(7),
@@ -34,7 +34,7 @@ organisations.each do |organisation|
   event_day = Date.today + rand(30)
   organisation.events.create(
     title: Faker::Book.title,
-    description: Faker::Robin.quote,
+    description: Faker::Quote.robin,
     start_date: event_day,
     end_date: event_day + rand(1..5).hours,
     latitude: organisation.latitude,
