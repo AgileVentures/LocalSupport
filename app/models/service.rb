@@ -23,6 +23,25 @@
 #  organisation_id :integer
 #
 
+SHARED_FIELDS = %i[
+  imported_at 
+  name 
+  description 
+  telephone 
+  email 
+  website 
+  address 
+  postcode 
+  latitude 
+  longitude
+]
+
+LOCATIONS = [
+  'Queen\'s Park & Paddington', 
+  'Kensington & Chelsea', 
+  'Westminster', 
+  'Hammersmith & Fulham'
+]
 class Service < ApplicationRecord
   scope :order_by_most_recent, -> { order('created_at DESC') }
   belongs_to :organisation
@@ -31,6 +50,7 @@ class Service < ApplicationRecord
   geocoded_by :full_address
 
   alias_attribute :title, :name
+
   def source
     'local'
   end
@@ -42,12 +62,7 @@ class Service < ApplicationRecord
   end
 
   def self.where_we_work_values
-    [
-      'Queen\'s Park & Paddington', 
-      'Kensington & Chelsea', 
-      'Westminster', 
-      'Hammersmith & Fulham'
-    ]
+    LOCATIONS
   end
 
   def self.activity_values
@@ -93,16 +108,7 @@ class Service < ApplicationRecord
   end
 
   def self.save_service_attributes(service, model, contact)
-    service.imported_at = model.imported_at
-    service.name = model.name
-    service.description = model.description
-    service.telephone = model.telephone
-    service.email = model.email 
-    service.website = model.website
-    service.address = model.address
-    service.postcode = model.postcode
-    service.latitude = model.latitude
-    service.longitude = model.longitude
+    SHARED_FIELDS.each { |field| service.send("#{field}=".to_sym, model.send(field)) }
     service.organisation = model
     org = contact['organisation'] if contact
     service.where_we_work = org['Where we work'] if org
@@ -112,32 +118,27 @@ class Service < ApplicationRecord
 
   def associate_categories(contact)
     return self unless contact     
-    first_category = contact['organisation']['Self care service category']          
-    second_category = contact['organisation']['Self Care Category Secondary']          
-    unless first_category.blank?
-      self_care_categories << SelfCareCategory.find_or_create_by(name: first_category)
-    end
-    unless second_category.blank?
-      self_care_categories << SelfCareCategory.find_or_create_by(name: second_category)
-    end
+    add contact['organisation']['Self care service category']         
+    add contact['organisation']['Self Care Category Secondary'] 
     save!
   end
 
   private
-  
+
+  def add(category)
+    return if category.blank?
+      self_care_categories << SelfCareCategory.find_or_create_by(name: category)
+  end
+
   def self.service_with_coordinates(services)
     services.map do |service|
-      # binding.pry
       service.send((service.address.present?) ? :lat_lng_supplier : :lat_lng_default )
     end
   end
   
   def lat_lng_default
     return send(:with_organisation_coordinates) unless organisation.nil?
-    self.tap do |service|
-      service.longitude = 0.0
-      service.latitude = 0.0
-    end
+    self.tap { |service| service.longitude = 0.0; service.latitude = 0.0 }
   end
   
   def lat_lng_supplier
@@ -162,8 +163,6 @@ class Service < ApplicationRecord
   end
 
   def self.group_by_coordinates(services)
-    services.group_by do |service|
-      [service.longitude, service.latitude]
-    end
+    services.group_by { |service| [service.longitude, service.latitude] }
   end
 end
