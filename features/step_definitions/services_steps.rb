@@ -12,7 +12,7 @@ Given("the following self care categories exist:") do |table|
 end
 
 Then(/^'(.*?)' is (still )?set to '(.*?)'$/) do |select, _, value|
-  expect(page).to have_select(select_id(select), selected: nil)
+  expect(page).to have_select(select_id(select), selected: value)
 end
 
 And(/^no '(.*?)' (is|are) (still )?selected$/) do |select, _, _|

@@ -29,7 +29,7 @@ Feature: List Services
 # not sure this can easily fail ... maybe check when we change?
 # more effective to test results of selecting options? requires we stand up all the data? maybe not?
   Scenario: Category selections maintain defaults following search
-    Given 'Type of Activity' is set to 'Any'
+    Given I select 'Any' from 'Type of Activity'
     And no 'Location' is selected
     And no 'Self Care Categories' are selected
     When I select 'Group' from 'Type of Activity' 
@@ -37,5 +37,5 @@ Feature: List Services
     And I select 'Autism' from 'Self Care Categories'
     And I press "Search"
     Then 'Type of Activity' is set to 'Group'
-    And 'Location' is set to 'Westiminster'
+    And 'Location' is set to 'Westminster'
     And 'Self Care Categories' is set to 'Autism'

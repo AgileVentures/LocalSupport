@@ -73,6 +73,19 @@ Capybara.register_driver :pg_billy do |app|
   Capybara::Poltergeist::Driver.new(app, options)
 end
 
+Capybara.register_driver :selenium_chrome_headless do |app|
+  options = Selenium::WebDriver::Chrome::Options.new
+  [
+    'window-size=1400x1400',
+    'disable-gpu' # https://developers.google.com/web/updates/2017/04/headless-chrome
+  ].each { |arg| options.add_argument(arg) }
+
+  # Run tests in headless mode, unless explicitly asked for a browser head
+  options.add_argument 'headless' unless ENV['HEAD']
+
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+end
+
 ShowMeTheCookies.register_adapter(:pg_billy, ShowMeTheCookies::Poltergeist)
 
 Before('@billy') do
@@ -85,6 +98,10 @@ end
 
 Before('@javascript') do
   @javascript = true
+end
+
+Before('@interactive_debug')do
+  Capybara.current_driver = :selenium_chrome_headless unless ENV['CI']
 end
 
 
