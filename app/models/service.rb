@@ -84,9 +84,9 @@ class Service < ApplicationRecord
   end
   
   def self.filter_by_categories(category_ids)
+    # in 'where' clause services in multiple categories show up as duplicates
     joins(:self_care_categories)
       .where(SelfCareCategory.arel_table[:id].in category_ids) 
-      # here ^^^ services in multiple categories show up as duplicates
       .group(arel_table[:id]) 
       .having(arel_table[:id].count.eq category_ids.size) 
       # so we exploit this return the services with correct number of duplicates
