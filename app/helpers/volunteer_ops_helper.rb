@@ -10,12 +10,15 @@ module VolunteerOpsHelper
   end
 
   def get_local_source_link(obj, type, html_options)
+    name = type == :title ? obj.title : obj.organisation_name
+    link_to_and_track(name, url(obj, type), html_options)
+  end
+
+  def url(obj, type)
     if type == :title
-      link_to_and_track(obj.title, volunteer_op_url(obj), html_options)
+      (obj.class == Service ? service_url(obj) : volunteer_op_url(obj))
     else
-      link_to_and_track(obj.organisation_name,
-                        organisation_url(obj.organisation_link.slug),
-                        html_options)
+      organisation_url(obj.organisation_link.slug)
     end
   end
 

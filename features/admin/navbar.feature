@@ -13,6 +13,7 @@ Feature: Super Admin user interface
     And the invitation instructions mail template exists
     And I am signed in as a superadmin
     And that the volunteer_ops_list flag is enabled
+    And that the organisations flag is enabled
     And I visit the home page
 
   Scenario Outline: Top navbar has a SuperAdmin dropdown menu

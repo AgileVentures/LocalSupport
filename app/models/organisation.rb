@@ -144,8 +144,8 @@ class Organisation < BaseOrganisation
 
   def self.import_addresses(filename, limit, validation = true)
     import(filename, limit, validation) do |row, validation|
-       sleep 0.1
-       create_from_array(row, validation)
+      sleep 0.1
+      create_from_array(row, validation)
     end
   end
 

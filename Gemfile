@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.5.3'
+ruby '2.6.5'
 gem 'rails', '~> 5.2.4'
 gem 'pg', '~> 1.1'
 gem 'devise', '~> 4.7'
@@ -13,6 +13,7 @@ gem 'bootstrap3-datetimepicker-rails'
 gem 'momentjs-rails'
 gem 'jbuilder'
 gem 'puma'
+gem 'rack-cors'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -37,6 +38,8 @@ group :development, :test do
   gem 'rails-controller-testing'
   #gem 'better_errors'
   gem 'binding_of_caller' # plays well with better_errors
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
 end
 
 group :development do

@@ -26,7 +26,8 @@ Feature: As a member of the public
     Then I should see a two column layout
 
   Scenario Outline: Top navber has link to Organisations
-    Given I visit the home page
+    Given that the organisations flag is enabled
+    And I visit the home page
     Then the navbar should have a link to <link>
     Examples:
       | link |

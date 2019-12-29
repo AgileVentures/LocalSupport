@@ -25,9 +25,11 @@
                 <li class = "<%= 'active' if current_page?(root_url) || current_page?(volunteer_ops_path) %>">
                   <%= link_to "Home", root_path %>
                 </li>
+                <% if feature_active? :organisations %>
                 <li class="<%= active_if 'organisations' %>">
                   <%= link_to "Organisations", organisations_path %>
                 </li>
+                <% end %>
                 <% if feature_active? :events %>
                 <li class="<%= active_if 'events' %>">
                   <%= link_to "Events", events_path %>

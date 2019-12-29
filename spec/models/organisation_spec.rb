@@ -1,32 +1,32 @@
 require 'rails_helper'
 
-describe Organisation, :type => :model do
+describe Organisation, type: :model do
 
   before do
     FactoryBot.factories.clear
     FactoryBot.find_definitions
 
-    @category1 = FactoryBot.create(:category, :charity_commission_id => 207)
-    @category2 = FactoryBot.create(:category, :charity_commission_id => 305)
-    @category3 = FactoryBot.create(:category, :charity_commission_id => 108)
-    @category4 = FactoryBot.create(:category, :charity_commission_id => 302)
-    @category5 = FactoryBot.create(:category, :charity_commission_id => 306)
-    @org1 = FactoryBot.build(:organisation, :email => "", :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '84 pinner road', :postcode => 'HA1 4HA', :donation_info => 'www.harrow-bereavment.co.uk/donate')
+    @category1 = FactoryBot.create(:category, charity_commission_id: 207)
+    @category2 = FactoryBot.create(:category, charity_commission_id: 305)
+    @category3 = FactoryBot.create(:category, charity_commission_id: 108)
+    @category4 = FactoryBot.create(:category, charity_commission_id: 302)
+    @category5 = FactoryBot.create(:category, charity_commission_id: 306)
+    @org1 = FactoryBot.build(:organisation, email: '', name: 'Harrow Bereavement Counselling', description: 'Bereavement Counselling', address: '84 pinner road', postcode: 'HA1 4HA', donation_info: 'www.harrow-bereavment.co.uk/donate')
     @org1.save!
-    @org2 = FactoryBot.build(:organisation, :name => 'Indian Elders Association',:email => "",
-                              :description => 'Care for the elderly', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.indian-elders.co.uk/donate')
+    @org2 = FactoryBot.build(:organisation, name: 'Indian Elders Association',email: '',
+                              description: 'Care for the elderly', address: '64 pinner road', postcode: 'HA1 4HZ', donation_info: 'www.indian-elders.co.uk/donate')
     @org2.categories << @category1
     @org2.categories << @category2
     @org2.categories << @category3
     @org2.save!
-    @org3 = FactoryBot.build(:organisation, :email => "", :name => 'Age UK Elderly', :description => 'Care for older people', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.age-uk.co.uk/donate')
+    @org3 = FactoryBot.build(:organisation, email: '', name: 'Age UK Elderly', description: 'Care for older people', address: '64 pinner road', postcode: 'HA1 4HZ', donation_info: 'www.age-uk.co.uk/donate')
     @org3.categories << @category1
     @org3.save!
 
     FactoryBot.create :invitation_instructions
   end
 
-  describe "#gmaps4rails_marker_attrs" do
+  describe '#gmaps4rails_marker_attrs' do
 
     def build_org_with_computed_fields_and_updated_at org, updated_at = nil
       org.update_attributes(updated_at: updated_at) unless updated_at.nil?
@@ -41,7 +41,7 @@ describe Organisation, :type => :model do
 
     context 'has user' do
       before(:each) do
-        usr = FactoryBot.create(:user, :email => 'orgsuperadmin@org.org')
+        usr = FactoryBot.create(:user, email: 'orgsuperadmin@org.org')
         usr.confirm
         @org1.users << [usr]
         @org1.save!
@@ -77,7 +77,7 @@ describe Organisation, :type => :model do
   end
   context 'scopes for orphan orgs' do
     before(:each) do
-      @user = FactoryBot.create(:user, :email => 'hello@hello.com')
+      @user = FactoryBot.create(:user, email: 'hello@hello.com')
       @user.confirm
     end
 
@@ -115,8 +115,8 @@ describe Organisation, :type => :model do
   end
 
   context 'validating URLs' do
-    subject(:no_http_org) { FactoryBot.build(:organisation, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.harrow-bereavment.co.uk/donate') }
-    subject(:empty_website)  {FactoryBot.build(:organisation, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => '', :website => '')}
+    subject(:no_http_org) { FactoryBot.build(:organisation, name: 'Harrow Bereavement Counselling', description: 'Bereavement Counselling', address: '64 pinner road', postcode: 'HA1 4HZ', donation_info: 'www.harrow-bereavment.co.uk/donate') }
+    subject(:empty_website)  {FactoryBot.build(:organisation, name: 'Harrow Bereavement Counselling', description: 'Bereavement Counselling', address: '64 pinner road', postcode: 'HA1 4HZ', donation_info: '', website: '')}
     it 'if lacking protocol, http is prefixed to URL when saved' do
       no_http_org.save!
       expect(no_http_org.donation_info).to include('http://')
@@ -133,23 +133,23 @@ describe Organisation, :type => :model do
 
   context 'adding charity superadmins by email' do
     it 'handles an invalid email with an error' do
-      @org1.update_attributes_with_superadmin({:superadmin_email_to_add => 'user'})
+      @org1.update_attributes_with_superadmin(superadmin_email_to_add: 'user')
       expect(@org1.errors.messages[:superadministrator_email]).to include "The user email you entered,'user', is invalid"
     end
     it 'does not email when email is invalid' do
-      expect{
-        @org1.update_attributes_with_superadmin({:superadmin_email_to_add => 'user'})
-      }.not_to change(ActionMailer::Base.deliveries, :length)
+      expect do
+        @org1.update_attributes_with_superadmin(superadmin_email_to_add: 'user')
+      end.not_to change(ActionMailer::Base.deliveries, :length)
     end
     it 'does not update other attributes when email is invalid' do
-      @org1.update_attributes_with_superadmin({:superadmin_email_to_add => 'user', :name => 'Random name'})
+      @org1.update_attributes_with_superadmin(superadmin_email_to_add: 'user', name: 'Random name')
       expect(@org1.name).not_to eq 'Random name'
     end
 
     it 'handles a non-existent email by inviting user' do
       @org1.update_attributes_with_superadmin(
           superadmin_email_to_add: 'nonexistentuser@example.com'
-      )
+        )
       expect(@org1).to be_valid
       @org1.save!
       usr = User.find_by(email:'nonexistentuser@example.com')
@@ -157,7 +157,7 @@ describe Organisation, :type => :model do
       expect(usr.organisation).to eq @org1
     end
     it 'does not update other attributes when there is an invalid email' do
-      expect(@org1.update_attributes_with_superadmin({:name => 'New name',:superadmin_email_to_add => 'user'})).to be_nil
+      expect(@org1.update_attributes_with_superadmin(name: 'New name',superadmin_email_to_add: 'user')).to be_nil
       expect(@org1.name).not_to eq 'New name'
     end
     it 'handles a nil email' do
@@ -181,17 +181,17 @@ describe Organisation, :type => :model do
       expect(@org1.users).to include usr
     end
     it 'uses org admin mailer to email existent user when upgraded to org admin' do
-      usr = FactoryBot.create(:user, :email => 'user@example.org')
+      usr = FactoryBot.create(:user, email: 'user@example.org')
       mockMessage = double('message')
       expect(mockMessage).to receive :deliver_now
       expect(OrgAdminMailer).to receive_message_chain(:new_org_admin).with(@org1, [usr.email]).and_return(mockMessage)
-      @org1.update_attributes_with_superadmin({:superadmin_email_to_add => usr.email})
+      @org1.update_attributes_with_superadmin(superadmin_email_to_add: usr.email)
     end
     it 'updates other attributes with blank email' do
       @org1.update_attributes_with_superadmin(
           name: 'New name',
           superadmin_email_to_add: ''
-      )
+        )
       expect(@org1.valid?).to be true
       @org1.save!
       expect(@org1.name).to eq 'New name'
@@ -201,7 +201,7 @@ describe Organisation, :type => :model do
       @org1.update_attributes_with_superadmin(
           name: 'New name',
           superadmin_email_to_add: usr.email
-      )
+        )
       expect(@org1.valid?).to be true
       @org1.save!
       expect(@org1.name).to eq 'New name'
@@ -253,19 +253,18 @@ describe Organisation, :type => :model do
     end
 
     it 'must be able to generate multiple Organisations from text file' do
-      expect{
+      expect do
         Organisation.import_addresses 'db/data.csv', 2
-      }.to change(Organisation, :count).by 2
+      end.to change(Organisation, :count).by 2
     end
 
     it 'must fail gracefully when encountering error in generating multiple Organisations from text file' do
       allow(Organisation).to receive(:sleep)
       attempted_number_to_import = 1006
-      actual_number_to_import = 642
-      allow(Organisation).to receive(:create_from_array).and_raise(CSV::MalformedCSVError)
-      expect(lambda {
+      allow(Organisation).to receive(:create_from_array).and_raise(CSV::MalformedCSVError.new('failure',1))
+      expect do
         Organisation.import_addresses 'db/data.csv', attempted_number_to_import
-      }).to change(Organisation, :count).by(0)
+      end.to change(Organisation, :count).by(0)
     end
 
     it 'must be able to handle no postcode in text representation' do
@@ -277,7 +276,7 @@ describe Organisation, :type => :model do
       expect(org.postcode).to eq('No information recorded')
       expect(org.website).to eq('http://www.harrow-baptist.org.uk')
       expect(org.telephone).to eq('020 8863 7837')
-      expect(org.donation_info).to eq("")
+      expect(org.donation_info).to eq('')
     end
 
     it 'must be able to handle no address in text representation' do
@@ -289,7 +288,7 @@ describe Organisation, :type => :model do
       expect(org.postcode).to eq('No information recorded')
       expect(org.website).to eq('http://www.harrow-baptist.org.uk')
       expect(org.telephone).to eq('020 8863 7837')
-      expect(org.donation_info).to eq("")
+      expect(org.donation_info).to eq('')
     end
 
     it 'must be able to generate Organisation from text representation ensuring words in correct case and postcode is extracted from address' do
@@ -301,7 +300,7 @@ describe Organisation, :type => :model do
       expect(org.postcode).to eq('HA1 4HZ')
       expect(org.website).to eq('http://www.harrow-baptist.org.uk')
       expect(org.telephone).to eq('020 8863 7837')
-      expect(org.donation_info).to eq("")
+      expect(org.donation_info).to eq('')
     end
 
 
@@ -309,9 +308,9 @@ describe Organisation, :type => :model do
       #Headers are without Title header
       @headers = 'Charity Number,Activities,Contact Name,Contact Address,website,Contact Telephone,date registered,date removed,accounts date,spending,income,company number,OpenlyLocalURL,twitter account name,facebook account name,youtube account name,feed url,Charity Classification,signed up for 1010,last checked,created at,updated at,Removed?'.split(',')
       fields = CSV.parse('HARROW BAPTIST CHURCH,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 4HZ",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
-      expect(lambda{
+      expect do
         org = create_organisation(fields)
-      }).to raise_error CSV::MalformedCSVError
+      end.to raise_error(CSV::MalformedCSVError, 'No expected column with name Title in CSV file in line 1.')
     end
 
     it 'should be able to substitute with empty string when data is missing' do
@@ -329,7 +328,7 @@ describe Organisation, :type => :model do
       Organisation.create_from_array(row, true)
     end
 
-    context "importing category relations" do
+    context 'importing category relations' do
       let(:fields) do
         CSV.parse('HARROW BEREAVEMENT COUNSELLING,1129832,NO INFORMATION RECORDED,MR JOHN ROSS NEWBY,"HARROW BAPTIST CHURCH, COLLEGE ROAD, HARROW, HA1 4HZ",http://www.harrow-baptist.org.uk,020 8863 7837,2009-05-27,,,,,,http://OpenlyLocal.com/charities/57879-HARROW-BAPTIST-CHURCH,,,,,"207,305,108,302,306",false,2010-09-20T21:38:52+01:00,2010-08-22T22:19:07+01:00,2012-04-15T11:22:12+01:00,*****')
       end
@@ -343,10 +342,10 @@ describe Organisation, :type => :model do
         CSV::Row.new(@headers, fields_cat_missing.flatten)
       end
       it 'must be able to avoid org category relations from text file when org does not exist' do
-        @org4 = FactoryBot.build(:organisation, :name => 'Fellowship For Management In Food Distribution', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.harrow-bereavment.co.uk/donate')
+        @org4 = FactoryBot.build(:organisation, name: 'Fellowship For Management In Food Distribution', description: 'Bereavement Counselling', address: '64 pinner road', postcode: 'HA1 4HZ', donation_info: 'www.harrow-bereavment.co.uk/donate')
         @org4.save!
         [102,206,302].each do |id|
-          FactoryBot.build(:category, :charity_commission_id => id).save!
+          FactoryBot.build(:category, charity_commission_id: id).save!
         end
         attempted_number_to_import = 2
         number_cat_org_relations_generated = 3
@@ -355,7 +354,7 @@ describe Organisation, :type => :model do
         }).to change(CategoryOrganisation, :count).by(number_cat_org_relations_generated)
       end
 
-      it "allows us to import categories" do
+      it 'allows us to import categories' do
         org = Organisation.import_categories_from_array(row)
         expect(org.categories.length).to eq 5
         [207,305,108,302,306].each do |id|
@@ -365,18 +364,18 @@ describe Organisation, :type => :model do
 
       it 'must fail gracefully when encountering error in importing categories from text file' do
         attempted_number_to_import = 2
-        allow(Organisation).to receive(:import_categories_from_array).and_raise(CSV::MalformedCSVError)
-        expect(lambda {
+        allow(Organisation).to receive(:import_categories_from_array).and_raise(CSV::MalformedCSVError.new('failure',1))
+        expect do
           Organisation.import_category_mappings 'db/data.csv', attempted_number_to_import
-        }).to change(Organisation, :count).by(0)
+        end.to change(Organisation, :count).by(0)
       end
 
-      it "should import categories when matching org is found" do
+      it 'should import categories when matching org is found' do
         expect(Organisation).to receive(:check_columns_in).with(row)
         expect(Organisation).to receive(:find_by_name).with('Harrow Bereavement Counselling').and_return @org1
         array = double('Array')
-        [{:cc_id => 207, :cat => @cat1}, {:cc_id => 305, :cat => @cat2}, {:cc_id => 108, :cat => @cat3},
-         {:cc_id => 302, :cat => @cat4}, {:cc_id => 306, :cat => @cat5}]. each do |cat_hash|
+        [{cc_id: 207, cat: @cat1}, {cc_id: 305, cat: @cat2}, {cc_id: 108, cat: @cat3},
+         {cc_id: 302, cat: @cat4}, {cc_id: 306, cat: @cat5}]. each do |cat_hash|
           expect(Category).to receive(:find_by_charity_commission_id).with(cat_hash[:cc_id]).and_return(cat_hash[:cat])
           expect(array).to receive(:<<).with(cat_hash[:cat])
         end
@@ -385,14 +384,14 @@ describe Organisation, :type => :model do
         expect(org).not_to be_nil
       end
 
-      it "should not import categories when no matching organisation" do
+      it 'should not import categories when no matching organisation' do
         expect(Organisation).to receive(:check_columns_in).with(row)
         expect(Organisation).to receive(:find_by_name).with('Harrow Bereavement Counselling').and_return nil
         org = Organisation.import_categories_from_array(row)
         expect(org).to be_nil
       end
 
-      it "should not import categories when none are listed" do
+      it 'should not import categories when none are listed' do
         expect(Organisation).to receive(:check_columns_in).with(row_cat_missing)
         expect(Organisation).to receive(:find_by_name).with('Harrow Bereavement Counselling').and_return @org1
         org = Organisation.import_categories_from_array(row_cat_missing)
@@ -405,9 +404,9 @@ describe Organisation, :type => :model do
   # org = Organisation.new(:address =>"blah", :gmaps=> ";DROP DATABASE;")
   # org = Organisation.new(:address =>"blah", :name=> ";DROP DATABASE;")
 
-  describe "importing emails" do
-    it "should have a method import_emails" do
-      filename = "db/emails.csv"
+  describe 'importing emails' do
+    it 'should have a method import_emails' do
+      filename = 'db/emails.csv'
       expect(Organisation).to receive(:add_email).twice.and_call_original
       expect(Organisation).to receive(:import).with(filename,2,false).and_call_original
      # do |&arg|
@@ -418,29 +417,29 @@ describe Organisation, :type => :model do
     end
 
     it 'should handle absence of org gracefully' do
-      expect(Organisation).to receive(:where).with("UPPER(name) LIKE ? ", "%I LOVE PEOPLE%").and_return(nil)
+      expect(Organisation).to receive(:where).with('UPPER(name) LIKE ? ', '%I LOVE PEOPLE%').and_return(nil)
       expect(lambda{
         response = Organisation.add_email(fields = CSV.parse('i love people,,,,,,,test@example.org')[0],true)
         expect(response).to eq "i love people was not found\n"
       }).not_to raise_error
     end
 
-    it "should add email to org" do
-      expect(Organisation).to receive(:where).with("UPPER(name) LIKE ? ", "%FRIENDLY%").and_return([@org1])
+    it 'should add email to org' do
+      expect(Organisation).to receive(:where).with('UPPER(name) LIKE ? ', '%FRIENDLY%').and_return([@org1])
       expect(@org1).to receive(:email=).with('test@example.org')
       expect(@org1).to receive(:save)
       Organisation.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0],true)
     end
 
-    it "should add blank string email to org if email is NULL" do
-      expect(Organisation).to receive(:where).with("UPPER(name) LIKE ? ", "%FRIENDLY%").and_return([@org1])
-      expect{
+    it 'should add blank string email to org if email is NULL' do
+      expect(Organisation).to receive(:where).with('UPPER(name) LIKE ? ', '%FRIENDLY%').and_return([@org1])
+      expect do
         Organisation.add_email(fields = CSV.parse('friendly,,,,,,,')[0],true)
-      }.not_to change(@org1, :email)
+      end.not_to change(@org1, :email)
     end
 
-    it "should add email to org even with case mismatch" do
-      expect(Organisation).to receive(:where).with("UPPER(name) LIKE ? ", "%FRIENDLY%").and_return([@org1])
+    it 'should add email to org even with case mismatch' do
+      expect(Organisation).to receive(:where).with('UPPER(name) LIKE ? ', '%FRIENDLY%').and_return([@org1])
       expect(@org1).to receive(:email=).with('test@example.org')
       expect(@org1).to receive(:save)
       Organisation.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0],true)
@@ -449,7 +448,7 @@ describe Organisation, :type => :model do
     it 'should not add email to org when it has an existing email' do
       @org1.email = 'something@example.com'
       @org1.save!
-      expect(Organisation).to receive(:where).with("UPPER(name) LIKE ? ", "%FRIENDLY%").and_return([@org1])
+      expect(Organisation).to receive(:where).with('UPPER(name) LIKE ? ', '%FRIENDLY%').and_return([@org1])
       expect(@org1).not_to receive(:email=).with('test@example.org')
       expect(@org1).not_to receive(:save)
       Organisation.add_email(fields = CSV.parse('friendly,,,,,,,test@example.org')[0],true)
@@ -473,33 +472,33 @@ describe Organisation, :type => :model do
                      org.id+1 => org.email},
                      resend_invitation: false}
     end
-    let(:invited_user) { User.where("users.organisation_id IS NOT null").first }
+    let(:invited_user) { User.where('users.organisation_id IS NOT null').first }
 
     before do
       BatchInviteJob.new(params, current_user).run
       expect(invited_user.organisation_id).to eq org.id
     end
 
-    it "unsets user-organisation association of users of the organisation that"\
-       "are invited_not_accepted" do
-      expect{
+    it 'unsets user-organisation association of users of the organisation that'\
+       'are invited_not_accepted' do
+      expect do
         org.uninvite_users
         invited_user.reload
-      }.to change(invited_user, :organisation_id).from(org.id).to(nil)
+      end.to change(invited_user, :organisation_id).from(org.id).to(nil)
     end
 
-    it "happens when email is updated" do
-      expect{
+    it 'happens when email is updated' do
+      expect do
         org.update_attributes(email: 'hello@email.com')
         invited_user.reload
-      }.to change(invited_user, :organisation_id).from(org.id).to(nil)
+      end.to change(invited_user, :organisation_id).from(org.id).to(nil)
     end
 
     it "doesn't happen when other attributes are updated" do
-      expect{
+      expect do
         org.update_attributes(website: 'www.abc.com')
         invited_user.reload
-      }.not_to change(invited_user, :organisation_id)
+      end.not_to change(invited_user, :organisation_id)
     end
   end
   
@@ -511,17 +510,17 @@ describe Organisation, :type => :model do
   end
 end
 
-describe Organisation, :type => :model do
+describe Organisation, type: :model do
 
   before do
     FactoryBot.factories.clear
     FactoryBot.find_definitions
 
-    @org1 = FactoryBot.build(:organisation, :name => 'Harrow Bereavement Counselling', :description => 'Bereavement Counselling', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.harrow-bereavment.co.uk/donate')
+    @org1 = FactoryBot.build(:organisation, name: 'Harrow Bereavement Counselling', description: 'Bereavement Counselling', address: '64 pinner road', postcode: 'HA1 4HZ', donation_info: 'www.harrow-bereavment.co.uk/donate')
     @org1.save!
-    @org2 = FactoryBot.build(:organisation, :name => 'Indian Elders Associaton', :description => 'Care for the elderly', :address => '64 pinner road', :postcode => 'HA1 4HZ', :latitude => 77, :longitude => 77, :donation_info => 'www.indian-elders.co.uk/donate')
+    @org2 = FactoryBot.build(:organisation, name: 'Indian Elders Associaton', description: 'Care for the elderly', address: '64 pinner road', postcode: 'HA1 4HZ', latitude: 77, longitude: 77, donation_info: 'www.indian-elders.co.uk/donate')
     @org2.save!
-    @org3 = FactoryBot.build(:organisation, :name => 'Age UK Elderly', :description => 'Care for older people', :address => '64 pinner road', :postcode => 'HA1 4HZ', :donation_info => 'www.age-uk.co.uk/donate')
+    @org3 = FactoryBot.build(:organisation, name: 'Age UK Elderly', description: 'Care for older people', address: '64 pinner road', postcode: 'HA1 4HZ', donation_info: 'www.age-uk.co.uk/donate')
     @org3.save!
   end
   
@@ -538,7 +537,7 @@ describe Organisation, :type => :model do
 
   describe 'run_geocode?' do
     it 'should return true if address is changed' do
-      @org1.address = "asjkdhas,ba,asda"
+      @org1.address = 'asjkdhas,ba,asda'
       expect(@org1.run_geocode?).to be true
     end
 
@@ -566,44 +565,44 @@ describe Organisation, :type => :model do
 end
 
 describe Organisation, '::filter_by_categories' do
-  let!(:category1) { create(:category, :charity_commission_id => 108) }
-  let!(:category2) { create(:category, :charity_commission_id => 205) }
+  let!(:category1) { create(:category, charity_commission_id: 108) }
+  let!(:category2) { create(:category, charity_commission_id: 205) }
   # not initialized!
-  let(:category3) { create(:category, :charity_commission_id => 307) }
+  let(:category3) { create(:category, charity_commission_id: 307) }
 
   let!(:org1) do
     create(
       :organisation,
-      :email => "",
-      :name => 'Harrow Bereavement Counselling',
-      :description => 'Bereavement Counselling',
-      :address => '64 pinner road',
-      :postcode => 'HA1 4HZ',
-      :donation_info => 'www.harrow-bereavment.co.uk/donate',
+      email: '',
+      name: 'Harrow Bereavement Counselling',
+      description: 'Bereavement Counselling',
+      address: '64 pinner road',
+      postcode: 'HA1 4HZ',
+      donation_info: 'www.harrow-bereavment.co.uk/donate',
     )
   end
 
   let!(:org2) do
     create(
       :organisation,
-      :name => 'Indian Elders Association',
-      :email => "",
-      :description => 'Care for the elderly',
-      :address => '64 pinner road',
-      :postcode => 'HA1 4HZ',
-      :donation_info => 'www.indian-elders.co.uk/donate'
+      name: 'Indian Elders Association',
+      email: '',
+      description: 'Care for the elderly',
+      address: '64 pinner road',
+      postcode: 'HA1 4HZ',
+      donation_info: 'www.indian-elders.co.uk/donate'
     ).tap { |o| o.categories << category1 ; o.categories << category2 }
   end
 
   let!(:org3) do
     create(
       :organisation,
-      :email => "",
-      :name => 'Age UK Elderly',
-      :description => 'Care for older people',
-      :address => '64 pinner road',
-      :postcode => 'HA1 4HZ',
-      :donation_info => 'www.age-uk.co.uk/donate',
+      email: '',
+      name: 'Age UK Elderly',
+      description: 'Care for older people',
+      address: '64 pinner road',
+      postcode: 'HA1 4HZ',
+      donation_info: 'www.age-uk.co.uk/donate',
     ).tap { |o| o.categories  << category1 }
   end
 
@@ -654,7 +653,7 @@ describe Organisation, '::filter_by_categories' do
     it 'no duplicates' do
       expect(
           Organisation.filter_by_categories([category1.id, category2.id]).map.count
-      ).to eq 1
+        ).to eq 1
     end
 
     it 'categories in join table' do

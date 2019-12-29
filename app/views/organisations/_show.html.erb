@@ -20,7 +20,7 @@
       <h4>Email: <span><a href="mailto:<%= org.email %>"><%= org.email %></a></span></h4>
   <% end %>
   <% if org.website.present? %>
-      <h4>Website: <span><%= link_to org.website, org.website, {:target => '_blank'} %></a></span></h4>
+      <h4>Website: <span><%= link_to org.website, org.website, {:target => '_blank'} %></span></h4>
   <% end %>
   <% if org.telephone.present? && (org.publish_phone? || org.type == "ProposedOrganisation")%>
       <h4>Telephone: <span><%= org.telephone %></span></h4>

@@ -1,5 +1,40 @@
 <%= form_tag(services_path, :method => "get", class: "volunteer-ops-search col-xs-12") do %>
   <div class="flex-row">
+    <div class="left-side">
+      <%= label_tag(:activity_type, "Type of Activity", class: 'field-label') %>
+    </div>
+    <div class="right-side">
+      <%= select_tag(:activity_type, options_for_select(Service.activity_values, @activity_type), {:include_blank => 'Any' }) %>
+    </div>
+  </div>
+  <div class="flex-row">
+    <div class="left-side">
+      <%= label_tag(:where_we_work, "Location", class: 'field-label') %>
+    </div>
+    <div class="right-side">
+      <%= select_tag(:where_we_work, options_for_select(Service.where_we_work_values, @where_we_work), { multiple: true }) %>
+    </div>
+  </div>
+  <br />
+  <div class="flex-row">
+    <div class="left-side">
+      <%= label_tag(:self_care_category_id, "Self Care Categories", class: 'field-label') %>
+    </div>
+    <div class="right-side">
+      <%= select_tag(:self_care_category_id, options_for_select(SelfCareCategory.all.sort_by(&:name).map{|c|[c.name,c.id]}, @categories), {multiple: true, :include_blank => 'All' }) %>
+    </div>
+  </div>
+  <br />
+  <div class="flex-row">
+    <div class="left-side">
+      <%= label_tag(:pcn_overlay, 'PCN geographical boundaries', class: 'field-label') %>
+    </div>
+    <div class="right-side">
+      <%= check_box_tag(:pcn_overlay, @pcn_overlay, @pcn_overlay == 'on') %>
+    </div>
+  </div>
+  <br />
+  <div class="flex-row">
     <div class="right-side">
         <%= text_field_tag(:q, @query, class: 'search-text', placeholder: 'Search for a service...') %>
         <%= submit_tag("Search", class: 'btn btn-success search-btn') %>

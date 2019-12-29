@@ -222,6 +222,7 @@ GEM
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
     idn-ruby (0.1.0)
+    interception (0.5)
     jar_wrapper (0.1.8)
       zip
     jaro_winkler (1.5.4)
@@ -318,6 +319,12 @@ GEM
     pry-byebug (3.7.0)
       byebug (~> 11.0)
       pry (~> 0.10)
+    pry-rescue (1.5.0)
+      interception (>= 0.5)
+      pry (>= 0.12.0)
+    pry-stack_explorer (0.4.9.3)
+      binding_of_caller (>= 0.7)
+      pry (>= 0.9.11)
     public_suffix (4.0.1)
     puffing-billy (2.3.0)
       addressable (~> 2.5)
@@ -330,6 +337,7 @@ GEM
     puma (4.3.1)
       nio4r (~> 2.0)
     rack (2.0.8)
+    rack-cors (1.0.3)
     rack-protection (2.0.7)
       rack
     rack-test (1.1.0)
@@ -558,8 +566,11 @@ DEPENDENCIES
   phantomjs
   poltergeist
   pry-byebug
+  pry-rescue
+  pry-stack_explorer
   puffing-billy (~> 2.3)
   puma
+  rack-cors
   rack_session_access
   railroady
   rails (~> 5.2.4)
@@ -594,7 +605,7 @@ DEPENDENCIES
   webmock (~> 3.7)
 
 RUBY VERSION
-   ruby 2.5.3p105
+   ruby 2.6.5p114
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
