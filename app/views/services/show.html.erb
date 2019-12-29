@@ -25,7 +25,7 @@
 
 <p>
   <strong>Website:</strong>
-  <%= link_to @service.website, @service.website, {:target => '_blank'} %>
+  <%= link_to @service.website, sanitize @service.website, {:target => '_blank'} %>
 </p>
 <% if @service.where_we_work.present? %>
 <p>

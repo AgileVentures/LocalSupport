@@ -1,11 +1,11 @@
-Given("the following services exist:") do |table|
+Given('the following services exist:') do |table|
   table.hashes.each do |service|
-    service["organisation"] = Organisation.find_by_name(service["organisation"])
+    service['organisation'] = Organisation.find_by_name(service['organisation'])
     Service.create! service
   end
 end
 
-Given("the following self care categories exist:") do |table|
+Given('the following self care categories exist:') do |table|
   table.hashes.each do |self_care_category|
     SelfCareCategory.create! self_care_category
   end

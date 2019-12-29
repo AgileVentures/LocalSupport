@@ -7,18 +7,8 @@ class ServicesController < BaseOrganisationsController
   # GET /services
   # GET /services.json
   def index
-    @query = params[:q]
-    @categories = params[:self_care_category_id]
-    @activity_type = params[:activity_type]
-    @where_we_work = params[:where_we_work]
-    @pcn_overlay = params[:pcn_overlay]
-    @services = Service.order_by_most_recent
-    @services = @services.search_for_text(@query) if @query.present?
-    @services = @services.filter_by_categories(@categories) if category_filter?
-    @services = @services.where(activity_type: @activity_type) if activity_type?
-    @services = @services.where(where_we_work: @where_we_work) if @where_we_work
-    services_with_coords = Service.build_by_coordinates(@services)
-    @markers = BuildMarkersWithInfoWindow.with(services_with_coords, self)
+    index_instance_vars_from_params
+    index_services_and_markers
     response.headers.delete 'X-Frame-Options'
     render :embedded_map, layout: false if iframe?
   end
@@ -27,7 +17,8 @@ class ServicesController < BaseOrganisationsController
   # GET /services/1.json
   def show
     # ideally we'd center the map on the indiviudal service
-    @markers = BuildMarkersWithInfoWindow.with(Service.build_by_coordinates([@service]), self)
+    services = Service.build_by_coordinates([@service])
+    @markers = BuildMarkersWithInfoWindow.with(services, self)
   end
 
   # GET /services/new
@@ -68,6 +59,24 @@ class ServicesController < BaseOrganisationsController
   end
 
   private
+
+  def index_instance_vars_from_params
+    @query = params[:q]
+    @categories = params[:self_care_category_id]
+    @activity_type = params[:activity_type]
+    @where_we_work = params[:where_we_work]
+    @pcn_overlay = params[:pcn_overlay]
+  end
+
+  def index_services_and_markers
+    @services = Service.order_by_most_recent
+    @services = @services.search_for_text(@query) if @query.present?
+    @services = @services.filter_by_categories(@categories) if category_filter?
+    @services = @services.where(activity_type: @activity_type) if activity_type?
+    @services = @services.where(where_we_work: @where_we_work) if @where_we_work
+    services_with_coords = Service.build_by_coordinates(@services)
+    @markers = BuildMarkersWithInfoWindow.with(services_with_coords, self)
+  end
 
   def category_filter?
     @categories.present? and not @categories.include? ''

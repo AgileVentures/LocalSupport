@@ -42,7 +42,12 @@ class Service < ApplicationRecord
   end
 
   def self.where_we_work_values
-    ['Queen\'s Park & Paddington', 'Kensington & Chelsea', 'Westminster', 'Hammersmith & Fulham']
+    [
+      'Queen\'s Park & Paddington', 
+      'Kensington & Chelsea', 
+      'Westminster', 
+      'Hammersmith & Fulham'
+    ]
   end
 
   def self.activity_values
@@ -80,9 +85,11 @@ class Service < ApplicationRecord
   
   def self.filter_by_categories(category_ids)
     joins(:self_care_categories)
-      .where(SelfCareCategory.arel_table[:id].in category_ids) # at this point, services in multiple categories show up as duplicates
-      .group(arel_table[:id])                            # so we exploit this
-      .having(arel_table[:id].count.eq category_ids.size) # and return the services with correct number of duplicates
+      .where(SelfCareCategory.arel_table[:id].in category_ids) 
+      # here ^^^ services in multiple categories show up as duplicates
+      .group(arel_table[:id]) 
+      .having(arel_table[:id].count.eq category_ids.size) 
+      # so we exploit this return the services with correct number of duplicates
   end
 
   def self.save_service_attributes(service, model, contact)
@@ -97,8 +104,9 @@ class Service < ApplicationRecord
     service.latitude = model.latitude
     service.longitude = model.longitude
     service.organisation = model
-    service.where_we_work = contact['organisation']['Where we work'] if contact
-    service.activity_type = contact['organisation']['Self Care One to One or Group'] if contact
+    org = contact['organisation'] if contact
+    service.where_we_work = org['Where we work'] if org
+    service.activity_type = org['Self Care One to One or Group'] if org
     service.associate_categories(contact)
   end
 
@@ -106,8 +114,12 @@ class Service < ApplicationRecord
     return self unless contact     
     first_category = contact['organisation']['Self care service category']          
     second_category = contact['organisation']['Self Care Category Secondary']          
-    self_care_categories << SelfCareCategory.find_or_create_by(name: first_category) unless first_category.blank?
-    self_care_categories << SelfCareCategory.find_or_create_by(name: second_category) unless second_category.blank?
+    unless first_category.blank?
+      self_care_categories << SelfCareCategory.find_or_create_by(name: first_category)
+    end
+    unless second_category.blank?
+      self_care_categories << SelfCareCategory.find_or_create_by(name: second_category)
+    end
     save!
   end
 
