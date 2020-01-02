@@ -21,7 +21,7 @@ gem 'rack-cors'
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do
   gem 'annotate'
-  gem 'faker', '~> 2.7'
+  gem 'faker', '~> 2.10'
   gem 'timecop'
   gem 'database_cleaner', '1.7.0'
   gem 'launchy'
