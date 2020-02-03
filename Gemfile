@@ -23,7 +23,7 @@ group :development, :test do
   gem 'annotate'
   gem 'faker', '~> 2.10'
   gem 'timecop'
-  gem 'database_cleaner', '1.7.0'
+  gem 'database_cleaner', '1.8.2'
   gem 'launchy'
   gem 'simplecov', require: false
   gem 'sinatra'
