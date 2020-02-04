@@ -33,6 +33,7 @@ before_script:
 script:
 - USE_JASMINE_RAKE=true bundle exec rake jasmine:ci
 - bundle exec rspec
+- bundle exec rake report_intermittent_fails:reassemble_spec_examples
 - bundle exec rake report_intermittent_fails:rerun_failing_tests
 - bundle exec rake cucumber:first_try
 - bundle exec rake cucumber:second_try
