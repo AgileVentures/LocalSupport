@@ -15,6 +15,11 @@ gem 'jbuilder'
 gem 'puma'
 gem 'rack-cors'
 
+gem 'report_intermittent_fails', git: 'https://github.com/tansaku/report_intermittent_fails'
+#, git: 'https://github.com/tansaku/report_intermittent_fails'
+#, path: '/Users/tansaku/Documents/GitHub/tansaku/report_intermittent_fails/'
+
+
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 

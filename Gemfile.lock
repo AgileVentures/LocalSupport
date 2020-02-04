@@ -6,6 +6,13 @@ GIT
       addressable
       rails
 
+GIT
+  remote: https://github.com/tansaku/report_intermittent_fails
+  revision: 1efaeb686901935191656635c1df81f6d472b6ac
+  specs:
+    report_intermittent_fails (0.1.2)
+      octokit (~> 4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -186,7 +193,7 @@ GEM
       railties (>= 4.2.0)
     faker (2.10.1)
       i18n (>= 1.6, < 2)
-    faraday (0.15.4)
+    faraday (1.0.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.3)
     figaro (1.1.1)
@@ -302,6 +309,9 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
+    octokit (4.15.0)
+      faraday (>= 0.9)
+      sawyer (~> 0.8.0, >= 0.5.3)
     orm_adapter (0.5.0)
     parallel (1.19.1)
     paranoia (2.4.2)
@@ -433,6 +443,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    sawyer (0.8.2)
+      addressable (>= 2.3.5)
+      faraday (> 0.8, < 2.0)
     selectize-rails (0.12.6)
     selenium (0.2.11)
       jar_wrapper
@@ -579,6 +592,7 @@ DEPENDENCIES
   rails-controller-testing
   rails_autolink
   redcarpet
+  report_intermittent_fails!
   rspec-activemodel-mocks
   rspec-rails
   rubocop-git
@@ -610,4 +624,4 @@ RUBY VERSION
    ruby 2.6.5p114
 
 BUNDLED WITH
-   1.17.3
+   2.1.4
