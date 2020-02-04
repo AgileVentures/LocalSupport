@@ -30,7 +30,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
   gem 'execjs'
-  gem 'aruba', '~> 0.14.11'
+  gem 'aruba', '~> 0.14.14'
   gem 'pry-byebug'
   gem 'rack_session_access'
   gem 'jasmine', '~> 3.5'
