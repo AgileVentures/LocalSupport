@@ -8,9 +8,9 @@ GIT
 
 GIT
   remote: https://github.com/tansaku/report_intermittent_fails
-  revision: 1efaeb686901935191656635c1df81f6d472b6ac
+  revision: baaaa1483913de00a10e3000ec8baabf01b02d5d
   specs:
-    report_intermittent_fails (0.1.2)
+    report_intermittent_fails (0.1.6)
       octokit (~> 4)
 
 GEM
@@ -308,7 +308,7 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
-    octokit (4.15.0)
+    octokit (4.16.0)
       faraday (>= 0.9)
       sawyer (~> 0.8.0, >= 0.5.3)
     orm_adapter (0.5.0)
