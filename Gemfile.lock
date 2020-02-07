@@ -8,9 +8,9 @@ GIT
 
 GIT
   remote: https://github.com/tansaku/report_intermittent_fails
-  revision: fe8586c7232790d86574bae2819cd776be8dea79
+  revision: 3c276942abbbd9722c7d53dbf3588653664fca3a
   specs:
-    report_intermittent_fails (0.1.7)
+    report_intermittent_fails (0.1.8)
       octokit (~> 4)
 
 GEM
