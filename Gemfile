@@ -15,7 +15,7 @@ gem 'jbuilder'
 gem 'puma'
 gem 'rack-cors'
 
-gem 'report_intermittent_fails', git: 'https://github.com/tansaku/report_intermittent_fails'
+gem 'report_intermittent_fails', git: 'https://github.com/tansaku/report_intermittent_fails', branch: 'randomfail-endtoend'
 #, git: 'https://github.com/tansaku/report_intermittent_fails'
 #, path: '/Users/tansaku/Documents/GitHub/tansaku/report_intermittent_fails/'
 
