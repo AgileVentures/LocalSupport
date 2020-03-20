@@ -343,7 +343,7 @@ GEM
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
     public_suffix (4.0.3)
-    puffing-billy (2.3.0)
+    puffing-billy (2.3.1)
       addressable (~> 2.5)
       em-http-request (~> 1.1, >= 1.1.0)
       em-synchrony
