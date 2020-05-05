@@ -510,7 +510,7 @@ GEM
       execjs (>= 2.2.2, >= 2.2)
       less-rails (>= 2.5.0)
       railties (>= 3.1)
-    twitter-text (3.0.0)
+    twitter-text (3.1.0)
       idn-ruby
       unf (~> 0.1.0)
     tzinfo (1.2.7)
@@ -520,7 +520,7 @@ GEM
     underscore-rails (1.8.3)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.6)
+    unf_ext (0.0.7.7)
     unicode-display_width (1.6.1)
     unicorn (5.5.5)
       kgio (~> 2.6)
@@ -617,7 +617,7 @@ DEPENDENCIES
   timecop
   twitter (~> 7.0)
   twitter-bootstrap-rails (= 3.2.2)
-  twitter-text (~> 3.0)
+  twitter-text (~> 3.1)
   uglifier
   underscore-rails
   unicorn
