@@ -60,6 +60,27 @@ Then /^I (visit|should be on) the (.*) page$/ do |mode, location|
   end
 end
 
+Given /^I (visit|should be on) the (.*) page with (.*) set to true/ do |mode, location, param|
+  one_or_two_words = param.split(' ')
+
+  params = {}
+  params[param.to_sym] = 'true' unless one_or_two_words.size == 2 && one_or_two_words[1] == 'not'
+
+  location.downcase!
+  raise "No matching path found for #{location}" if paths(location).nil?
+  url = paths(location)
+  url += '?' + params.map { |k, v| "#{k}=#{v}" }.join('&')
+
+  case mode
+  when 'visit' 
+    visit url
+  when 'should be on'
+    current_path.should eq url
+  else
+    raise "unknown mode '#{mode}'"
+  end
+end
+
 def find_record_for(object, schema, name)
   # all types begin as strings
   real_object = object.classify.constantize
