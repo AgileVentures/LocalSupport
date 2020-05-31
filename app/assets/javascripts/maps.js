@@ -1,4 +1,4 @@
-//= require google-infobox
+//= require google-infobox/google-infobox
 //= require google_maps/custom_marker
 
 var map;
@@ -17,7 +17,7 @@ var OrganisationMap = {
     Settings.geojsonUrl2 = $("#marker_data").data().geojsonUrl2
     Settings.pcnOverlay = $("#marker_data").data().pcnOverlay
     map = new google.maps.Map(document.getElementById(Settings.id), {
-      center: { lat: Settings.lat, lng: Settings.lng },
+      center: {lat: Settings.lat, lng: Settings.lng},
       zoom: Settings.zoom
     });
 
@@ -65,7 +65,7 @@ var OrganisationMap = {
     boxText.setAttribute("class", "arrow_box")
     ibOptions.content = boxText;
 
-    markerData.forEach(function (item) {
+    markerData.forEach(function(item) {
       var latLng = new google.maps.LatLng(item.lat, item.lng);
 
       marker = new CustomMarker(
@@ -76,11 +76,11 @@ var OrganisationMap = {
         }
       );
 
-      google.maps.event.addListener(marker, 'click', function () {
+      google.maps.event.addListener(marker, 'click', function() {
         openedInfoBox = ib;
         ib.setOptions(ibOptions);
         boxText.innerHTML = item.infowindow;
-        $(ib.content_).find('.close').click(function () {
+        $(ib.content_).find('.close').click(function(){
           ib.close();
           openedInfoBox = null;
         });
@@ -98,16 +98,16 @@ var OrganisationMap = {
     if (openedInfoBox !== null)
       openedInfoBox.close();
   },
-  getVolOpCoordinates: function getVolOpCoordinates(volop) {
+  getVolOpCoordinates: function getVolOpCoordinates (volop) {
     return {
       lat: parseFloat($(volop).attr('data-lat')),
       lng: parseFloat($(volop).attr('data-lng'))
     };
   },
   openInfoBox: function openInfoBox(coordinates) {
-    $.each(markers, function (key, value) {
+    $.each(markers, function(key, value) {
       if (value.latlng.lat().toFixed(6) === coordinates['lat'].toFixed(6)
-        && value.latlng.lng().toFixed(6) === coordinates['lng'].toFixed(6))
+          && value.latlng.lng().toFixed(6) === coordinates['lng'].toFixed(6))
         google.maps.event.trigger(value, 'click');
     });
   },
@@ -123,26 +123,26 @@ var OrganisationMap = {
       $('#map-canvas').height($('#content').height() - 14);
     }
 
-    // _.debounce(function() {
-    // }, 300)
-    $('.center-map-on-op').mouseenter(function () {
+      // _.debounce(function() {
+      // }, 300)
+    $('.center-map-on-op').mouseenter(function() {
       OrganisationMap.updateInfoBox(this);
     })
-      .mouseleave(function () {
-        OrganisationMap.closeInfoBox();
-      });
+    .mouseleave(function() {
+      OrganisationMap.closeInfoBox();
+    });
   }
 }
 
 google.maps.event.addDomListener(window, "load", OrganisationMap.initMap);
 
-var debouceOpenInfoBox = _.debounce(function (volop) {
-  if ($(volop).attr('data-lat') !== '' && $(volop).attr('data-lng') !== '') {
-    centerMap(getVolOpCoordinates(volop));
-    openInfoBox(getVolOpCoordinates(volop));
-  }
+var debouceOpenInfoBox = _.debounce(function(volop) {
+    if ($(volop).attr('data-lat') !== '' && $(volop).attr('data-lng') !== '') {
+      centerMap(getVolOpCoordinates(volop));
+      openInfoBox(getVolOpCoordinates(volop));
+     }
 }, 300);
 
-$(document).ready(function () {
+$(document).ready(function() {
   OrganisationMap.init();
 });
