@@ -8,7 +8,7 @@ VCR.configure do |config|
      match_requests_on: [:host, :path, :method],
   }
   config.ignore_request do |request|
-    request.headers.include?('Referer')
+    request.headers.include?('Referer') || request.uri =~ /googleapis/
   end
   config.filter_sensitive_data("<KCSC_API_KEY>") { ENV['KCSC_API_KEY'] }
   config.filter_sensitive_data("<GMAP_API_KEY>") { ENV['GMAP_API_KEY'] }
