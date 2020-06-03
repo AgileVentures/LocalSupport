@@ -1,4 +1,4 @@
-Given (/^I fill in the new event page validly$/) do
+Given /^I fill in the new event page validly$/ do
   fill_in 'event_title', with: 'Hackathon'
   fill_in 'event_description', with: 'Great place to brain storm'
   fill_in 'event_start_date', with: '2038/04/20 09:00'
@@ -50,6 +50,8 @@ Then(/^I should see "(.*?)" description marker in "(.*?)" (event|organisation) l
     expect(marker_data).to include(event.organisation.latitude.to_s)
     expect(marker_data).to include(event.organisation.longitude.to_s)
   end
+
+  sleep 2
 end
 
 When("I click on the {string} text field") do |string|
