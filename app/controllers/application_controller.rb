@@ -5,8 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_action :store_location,
                 :assign_footer_page_links,
-                :set_tags,
-                :hide_navbar
+                :set_tags
 
   # Add breadcrumb at home page.
   add_breadcrumb 'home', :root_path
@@ -131,10 +130,6 @@ class ApplicationController < ActionController::Base
                   description: meta_tag_description,
                   author: 'http://www.agileventures.org',
                   og: open_graph_tags
-  end
-
-  def hide_navbar
-    @hide_navbar = params[:hide_navbar] == 'true'
   end
 
   def open_graph_tags
