@@ -1,5 +1,6 @@
 class OrganisationsController < BaseOrganisationsController
-  layout 'two_columns_with_map'
+  layout :choose_layout
+
   before_action :authenticate_user!, except: [:search, :index, :show]
   prepend_before_action :set_organisation, only: [:show, :update, :edit]
   prepend_before_action :build_cat_name_ids, only: [:search, :index, :show]
@@ -33,6 +34,7 @@ class OrganisationsController < BaseOrganisationsController
     @user_opts = current_user ? get_user_options(@organisation) : { grabbable: true }
     @user_opts[:can_propose_edits] = current_user.present? && !@user_opts[:editable]
     @markers = build_map_markers(organisations)
+    render :show, layout: 'two_columns_with_map_embedded' if iframe_all?
   end
 
   # GET /organisations/new

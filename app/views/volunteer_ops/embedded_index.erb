@@ -1,6 +1,6 @@
-<div class="container-fluid">
-  <h1 class="volunteer-header text-center">want to volunteer in harrow?</h1>
-</div>
+<% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
+<% render 'shared/map_legend_doit_script' %>
+
 <%= render 'search_form' %>
 <div id='orgs_scroll' style="height:410px;width:100%;border:1px solid #ccc;overflow:scroll;">
   <div class='table table-bordered'>
@@ -26,6 +26,3 @@
     <br>
   </div>
 </div>
-<% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
-
-<% render 'shared/map_legend_doit_script' %>

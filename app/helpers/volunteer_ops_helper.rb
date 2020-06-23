@@ -15,11 +15,14 @@ module VolunteerOpsHelper
   end
 
   def url(obj, type)
+    url = ''
     if type == :title
-      (obj.class == Service ? service_url(obj) : volunteer_op_url(obj))
+      url = (obj.class == Service ? service_url(obj) : volunteer_op_url(obj))
     else
-      organisation_url(obj.organisation_link.slug)
+      url = organisation_url(obj.organisation_link.slug)
     end
+
+    url += "?iframe=#{iframe}" if iframe?
   end
 
   def get_external_source_link(obj, type, html_options)

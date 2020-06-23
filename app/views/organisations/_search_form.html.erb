@@ -1,5 +1,6 @@
 <%= form_tag(organisations_search_path, :id => "organisation_search", :method => "get") do %>
   <div class="flex-column">
+    <%= hidden_field_tag(:iframe, iframe)%>
     <% unless Feature.active?('disable_category_search') %>
     <div class="flex-row">
       <div class="left-side">

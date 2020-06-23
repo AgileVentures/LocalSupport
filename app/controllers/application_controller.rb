@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_action :store_location,
                 :assign_footer_page_links,
-                :set_tags
+                :set_tags,
+                :prepare_embedded
 
   # Add breadcrumb at home page.
   add_breadcrumb 'home', :root_path
@@ -32,6 +33,7 @@ class ApplicationController < ActionController::Base
   def stored_location
 
   end
+
   def request_controller_is(white_listed)
     white_listed.include? request.params['controller']
   end
@@ -64,7 +66,6 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
-
   def allow_cookie_policy
     response.set_cookie 'cookie_policy_accepted', 
         value: 'true',
@@ -91,8 +92,41 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def prepare_embedded
+    @iframe =  params[:iframe] 
+    @map_zoom_level = @iframe.blank? ? Setting.map_zoom_level : Setting.embedded_map_zoom_level
+  end
+
+  def iframe
+    @iframe
+  end
+  helper_method :iframe
+
   def iframe?
-    params[:iframe]
+    iframe_map? || iframe_all?
+  end
+  helper_method :'iframe?'
+
+  def iframe_all?
+    iframe == 'all'
+  end
+
+  def iframe_all?
+    iframe == 'all'
+  end
+
+  def iframe_map?
+    iframe && !iframe_all?
+  end
+
+  def choose_layout
+    if  iframe_all?
+      'two_columns_with_map_embedded'
+    elsif iframe_map?
+      'application_embedded'
+    else
+      'two_columns_with_map'
+    end
   end
 
   # Enforces superadmin-only limits

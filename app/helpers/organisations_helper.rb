@@ -10,4 +10,9 @@ module OrganisationsHelper
     hash
   end
 
+  def link_to_organization(obj)
+    url = organisation_path(obj)
+    url += "?iframe=#{iframe}" if iframe
+    url
+  end
 end
