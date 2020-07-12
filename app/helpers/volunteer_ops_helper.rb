@@ -17,7 +17,7 @@ module VolunteerOpsHelper
   def url(obj, type)
     url = ''
     if type == :title
-      url = create_service_url(obj)
+      url = create_url(obj)
     else
       url = organisation_url(obj.organisation_link.slug)
     end
@@ -33,7 +33,7 @@ module VolunteerOpsHelper
     end
   end
 
-  def create_service_url(obj)
+  def create_url(obj)
     obj.class == Service ? service_url(obj) : volunteer_op_url(obj)
   end
 end
