@@ -21,8 +21,8 @@ module VolunteerOpsHelper
     else
       url = organisation_url(obj.organisation_link.slug)
     end
-
     url += "?iframe=#{iframe}" if iframe?
+    url
   end
 
   def get_external_source_link(obj, type, html_options)
