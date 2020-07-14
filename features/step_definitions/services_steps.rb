@@ -31,7 +31,7 @@ def select_id(name)
   }[name.to_sym]
 end
 
-Given(/^I should( .*)? see the "(.*)"/) do |negate, element|
+Given(/^I should( .*)? see element "(.*)"/) do |negate, element|
   if negate.nil?
     expect(page).to have_selector(element)
   elsif negate.strip == 'not'

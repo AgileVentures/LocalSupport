@@ -22,8 +22,8 @@ Feature: List Services
 
 
   Scenario: Not see header
-    And I should see the "header"
-    And I should see the "footer"
+    And I should see element "header"
+    And I should see element "footer"
 
   @vcr
   Scenario: See a list of current services
@@ -44,5 +44,5 @@ Feature: List Services
     Then 'Type of Activity' is set to 'Group'
     And 'Location' is set to 'Westminster'
     And 'Self Care Categories' is set to 'Autism'
-    And I should see the "header"
-    And I should see the "footer"
+    And I should see element "header"
+    And I should see element "footer"

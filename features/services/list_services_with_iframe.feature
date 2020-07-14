@@ -27,8 +27,8 @@ Feature: List Services
     | Office Support                  | Help with printing and copying.    | 
 
   Scenario: Not see header
-    And I should not see the "header"
-    And I should not see the "footer"
+    And I should not see element "header"
+    And I should not see element "footer"
 
 # not sure this can easily fail ... maybe check when we change?
 # more effective to test results of selecting options? requires we stand up all the data? maybe not?
@@ -43,4 +43,4 @@ Feature: List Services
     Then 'Type of Activity' is set to 'Group'
     And 'Location' is set to 'Westminster'
     And 'Self Care Categories' is set to 'Autism'
-    And I should not see the navbar 
+    And I should not see element "navbar"
