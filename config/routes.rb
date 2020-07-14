@@ -13,7 +13,7 @@ LocalSupport::Application.routes.draw do
   devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}
 
   get '/embedded/map' => 'volunteer_ops#index', defaults: { iframe: "map" }
-  get '/embedded/index' => 'volunteer_ops#index', defaults: { iframe: "index" }
+  get '/embedded/index' => 'volunteer_ops#index', defaults: { iframe: "all" }
   
   get 'contributors' => 'contributors#show'
   match 'organisations/search' => 'organisations#search', via: [:get, :post]
