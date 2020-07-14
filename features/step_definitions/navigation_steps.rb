@@ -47,7 +47,8 @@ def paths(location)
     'events' => events_path,
     'services' => services_path,
     'embedded map' => embedded_map_path,
-    'embedded index' => embedded_index_path
+    'embedded index' => embedded_index_path,
+    'services iframe' => embedded_service_page_path
   }[location]
 end
 

@@ -30,3 +30,11 @@ def select_id(name)
     'Self Care Categories': 'self_care_category_id',
   }[name.to_sym]
 end
+
+Given(/^I should( .*)? see the "(.*)"/) do |negate, element|
+  if negate.nil?
+    expect(page).to have_selector(element)
+  elsif negate.strip == 'not'
+    expect(page).not_to have_selector(element)
+  end
+end

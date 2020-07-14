@@ -17,19 +17,18 @@ Feature: List Services
        | name              | 
        | Autism            |
        | Advocacy          |
-    And I visit the services page
+    And I visit the services iframe page
     And cookies are approved
-
-
-  Scenario: Not see header
-    And I should see the "header"
-    And I should see the "footer"
 
   @vcr
   Scenario: See a list of current services
     Then the index should contain:
     | Litter Box Scooper              | Help with feline sanitation        | 
     | Office Support                  | Help with printing and copying.    | 
+
+  Scenario: Not see header
+    And I should not see the "header"
+    And I should not see the "footer"
 
 # not sure this can easily fail ... maybe check when we change?
 # more effective to test results of selecting options? requires we stand up all the data? maybe not?
@@ -44,5 +43,4 @@ Feature: List Services
     Then 'Type of Activity' is set to 'Group'
     And 'Location' is set to 'Westminster'
     And 'Self Care Categories' is set to 'Autism'
-    And I should see the "header"
-    And I should see the "footer"
+    And I should not see the navbar 
