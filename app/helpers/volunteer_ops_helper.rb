@@ -15,7 +15,8 @@ module VolunteerOpsHelper
   end
 
   def url(obj, type)
-    url = if type == :title
+    url = ''
+    if type == :title
       create_url(obj)
     else
       organisation_url(obj.organisation_link.slug)

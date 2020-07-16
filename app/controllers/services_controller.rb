@@ -10,12 +10,7 @@ class ServicesController < BaseOrganisationsController
     index_instance_vars_from_params
     index_services_and_markers
     response.headers.delete 'X-Frame-Options'
-    
-    if iframe_all?
-      render :embedded_index
-    elsif iframe_map?
-      render :embedded_map
-    end
+    render_embedded_view 
   end
 
   # GET /services/1
@@ -115,5 +110,13 @@ class ServicesController < BaseOrganisationsController
                                     :address, 
                                     :activity_type,  
                                     :beneficiaries)
+  end
+
+  def render_embedded_view
+    if iframe_all?
+      render :embedded_index
+    elsif iframe_map?
+      render :embedded_map
+    end
   end
 end
