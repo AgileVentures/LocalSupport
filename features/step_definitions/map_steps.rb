@@ -36,6 +36,10 @@ Then (/^I should only see the map container element on the page$/) do
   expect(page).to have_selector('body > div.map_container', count: 1)
 end
 
+Then (/^I should see the map container element on the page$/) do
+  expect(page).to have_css(".map_container")
+end
+
 Given (/^doit opportunities are imported with nil coordinates$/) do
   ImportDoItVolunteerOpportunities.with 3.0
 end

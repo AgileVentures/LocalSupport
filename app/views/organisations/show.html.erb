@@ -9,6 +9,7 @@
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <div class="addthis_inline_share_toolbox"></div>
 
+<% unless iframe? %>
 <div id="org-cat-buttons" class="row">
   <div class="position-bottom col-md-6">
     <% if @user_opts[:editable] %>
@@ -33,6 +34,7 @@
     <% end%>
   </div>
 </div>
+<% end %>
 
 <% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
 <% render partial: 'shared/addthis_scripts' %>

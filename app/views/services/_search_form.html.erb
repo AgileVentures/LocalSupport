@@ -1,5 +1,10 @@
 <%= form_tag(services_path, :method => "get", class: "volunteer-ops-search col-xs-12") do %>
   <div class="flex-row">
+    <% if iframe %>
+      <%= hidden_field_tag(:iframe, iframe) %>
+    <% end %>
+  </div>
+  <div class="flex-row">
     <div class="left-side">
       <%= label_tag(:activity_type, "Type of Activity", class: 'field-label') %>
     </div>
