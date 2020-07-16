@@ -15,14 +15,12 @@ module VolunteerOpsHelper
   end
 
   def url(obj, type)
-    url = ''
-    if type == :title
-      url = create_url(obj)
+    url = if type == :title
+      create_url(obj)
     else
-      url = organisation_url(obj.organisation_link.slug)
+      organisation_url(obj.organisation_link.slug)
     end
-    url += "?iframe=#{iframe}" if iframe?
-    url
+    persist_iframe_parameter(url)
   end
 
   def get_external_source_link(obj, type, html_options)
@@ -33,7 +31,14 @@ module VolunteerOpsHelper
     end
   end
 
+  private
+
   def create_url(obj)
     obj.class == Service ? service_url(obj) : volunteer_op_url(obj)
+  end
+
+  def persist_iframe_parameter(url)
+    url += "?iframe=#{iframe}" if iframe?
+    url
   end
 end

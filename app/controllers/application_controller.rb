@@ -111,10 +111,6 @@ class ApplicationController < ActionController::Base
     iframe == 'all'
   end
 
-  def iframe_all?
-    iframe == 'all'
-  end
-
   def iframe_map?
     iframe && !iframe_all?
   end
