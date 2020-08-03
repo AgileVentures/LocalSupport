@@ -5,6 +5,12 @@
     <% end %>
   </div>
   <div class="flex-row">
+    <div class="right-side">
+        <%= text_field_tag(:q, @query, class: 'search-text', placeholder: 'Search for a service...') %>
+        <%= submit_tag("Search", class: 'btn btn-success search-btn') %>
+    </div>
+  </div>
+  <div class="flex-row">
     <div class="left-side">
       <%= label_tag(:activity_type, "Type of Activity", class: 'field-label') %>
     </div>
@@ -39,10 +45,4 @@
     </div>
   </div>
   <br />
-  <div class="flex-row">
-    <div class="right-side">
-        <%= text_field_tag(:q, @query, class: 'search-text', placeholder: 'Search for a service...') %>
-        <%= submit_tag("Search", class: 'btn btn-success search-btn') %>
-    </div>
-  </div>
 <% end %>
