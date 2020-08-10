@@ -672,3 +672,7 @@ div#container textarea {
 #error_explanation ul li {
   list-style: inside disc;
 }
+
+.margin-bottom-10 {
+    margin-bottom: 10px;
+}
