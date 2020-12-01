@@ -23,22 +23,23 @@ Feature: Event Location
   Scenario: New event form has event address field
     When I visit the new event page
     Then I should see a text field for "event_address"
-  
- Scenario: Super admin creates a new event with an event address
+
+  Scenario: The event shows on the map
+    When I visit the events page
+    Then I should see "Care for animals" description marker in "Care" event location in the map
+
+  Scenario: Super admin creates a new event with an event address
     Given I visit the new event page
     And I fill in the new event page validly
     When I fill in "event_address" with "1427 Leon Parks"
     And I press "Create Event"
     Then I should see "Event was successfully created"
-  
- Scenario: The event shows on the map
-    When I visit the events page
-    Then I should see "Care for animals" description marker in "Care" event location in the map
-    
- Scenario: uses default coordinates when user enters invalid address
+
+  Scenario: uses default coordinates when user enters invalid address
     Given I visit the new event page
     And I fill in the new event page validly
     When I fill in "event_address" with "+==+"
     And I press "Create Event"
+    Then I should see "Event was successfully created"
     When I visit the events page
     Then I should see "Great place to brain storm" description marker in "Hackathon" organisation location in the map

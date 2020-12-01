@@ -1,0 +1,28 @@
+<% render partial: 'shared/map_scripts', locals: {markers: @markers} %>
+<% render 'shared/map_legend_doit_script' %>
+
+<%= render 'search_form' %>
+<div id='orgs_scroll' style="height:410px;width:100%;border:1px solid #ccc;overflow:scroll;">
+  <div class='table table-bordered'>
+    <table>
+      <% @volunteer_ops.each do |op| %>
+          <tr>
+            <td class='center-map-on-op'
+                data-lat="<%= op.latitude %>"
+                data-lng="<%= op.longitude %>"  >
+              <strong>
+                <%= link_to_vol_op(op, :title) %>
+              </strong><br/>
+              <div id='organisations'>
+                <small><%= link_to_vol_op(op, :organisation) %></small>
+                <br/>
+              </div>
+              <%= smart_truncate(op.description) %>
+              <br/>
+            </td>
+          </tr>
+      <% end %>
+    </table>
+    <br>
+  </div>
+</div>

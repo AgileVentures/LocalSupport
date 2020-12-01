@@ -15,12 +15,12 @@
 
 <p>
   <b>Organisation:</b>
-  <%= link_to volunteer_op.organisation.name, organisation_path(volunteer_op.organisation) %>
+  <%= link_to volunteer_op.organisation.name, link_to_organization(volunteer_op.organisation) %>
 </p>
 
 <p>
   <b>Organisation description:</b>
-  <%= link_to volunteer_op.organisation.description, organisation_path(volunteer_op.organisation) %>
+  <%= link_to volunteer_op.organisation.description, link_to_organization(volunteer_op.organisation) %>
 </p>
 
 <% unless volunteer_op.skills_needed.blank? %>
@@ -46,7 +46,7 @@
 
 <p>
   <b>Organization Contact Details:</b>
-  <%= link_to volunteer_op.organisation.telephone, organisation_path(volunteer_op.organisation) %>
+  <%= link_to volunteer_op.organisation.telephone, link_to_organization(volunteer_op.organisation) %>
 </p>
 
 <% unless volunteer_op.contact_details.blank? %>
