@@ -7,7 +7,7 @@
     <%= content_tag "div", "", 
       id: "marker_data", 
       data: {
-        zoom: Setting.map_zoom_level, 
+        zoom: @map_zoom_level,
         latitude: Setting.latitude, 
         longitude: Setting.longitude,
         geojson_url1: Setting.geojson_url1,

@@ -1,6 +1,6 @@
 class ServicesController < BaseOrganisationsController
   add_breadcrumb 'Services', :services_path
-  layout 'two_columns_with_map'
+  layout :choose_layout
   before_action :authorize, except: [:search, :show, :index, :embedded_map]
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
@@ -10,7 +10,12 @@ class ServicesController < BaseOrganisationsController
     index_instance_vars_from_params
     index_services_and_markers
     response.headers.delete 'X-Frame-Options'
-    render :embedded_map, layout: false if iframe?
+    
+    if iframe_all?
+      render :embedded_index
+    elsif iframe_map?
+      render :embedded_map
+    end
   end
 
   # GET /services/1

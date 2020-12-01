@@ -1,5 +1,18 @@
 <%= form_tag(services_path, :method => "get", class: "volunteer-ops-search col-xs-12") do %>
   <div class="flex-row">
+    <% if iframe %>
+      <%= hidden_field_tag(:iframe, iframe) %>
+    <% end %>
+  </div>
+  <% if iframe %>
+  <div class="flex-row margin-bottom-10">
+    <div class="right-side">
+        <%= text_field_tag(:q, @query, class: 'search-text', placeholder: 'Search for a service...') %>
+        <%= submit_tag("Search", class: 'btn btn-success search-btn') %>
+    </div>
+  </div>
+  <% end %>
+  <div class="flex-row">
     <div class="left-side">
       <%= label_tag(:activity_type, "Type of Activity", class: 'field-label') %>
     </div>
@@ -33,11 +46,13 @@
       <%= check_box_tag(:pcn_overlay, @pcn_overlay, @pcn_overlay == 'on') %>
     </div>
   </div>
-  <br />
+  <% unless iframe %>
   <div class="flex-row">
     <div class="right-side">
         <%= text_field_tag(:q, @query, class: 'search-text', placeholder: 'Search for a service...') %>
         <%= submit_tag("Search", class: 'btn btn-success search-btn') %>
     </div>
   </div>
+  <% end %>
+  <br />
 <% end %>

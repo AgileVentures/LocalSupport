@@ -1,7 +1,8 @@
 class VolunteerOpsController < ApplicationController
-  layout 'two_columns_with_map', except: :embedded_map
+  layout :choose_layout
+
   before_action :set_organisation, only: [:new, :create]
-  before_action :authorize, except: [:search, :show, :index, :embedded_map]
+  before_action :authorize, except: [:search, :show, :index]
   prepend_before_action :set_volunteer_op, only: [:show, :edit]
   before_action :add_breadcrumbs
 
@@ -15,10 +16,15 @@ class VolunteerOpsController < ApplicationController
   end
 
   def index
-    @volunteer_ops = displayed_volunteer_ops unless iframe?
+    @volunteer_ops = displayed_volunteer_ops unless iframe_map?
     @markers = BuildMarkersWithInfoWindow.with(VolunteerOp.build_by_coordinates, self)
     response.headers.delete 'X-Frame-Options' if iframe?
-    render :embedded_map, layout: false if iframe?
+
+    if iframe_all?
+      render :embedded_index
+    elsif iframe_map?
+      render :embedded_map
+    end
   end
 
   def show
@@ -65,8 +71,6 @@ class VolunteerOpsController < ApplicationController
     flash[:success] = "Deleted #{@volunteer_op.title}"
     redirect_to volunteer_ops_path
   end
-
-
 
   def volunteer_op_params
     args = [:description, :title, :organisation_id, :address, :postcode,
@@ -152,6 +156,5 @@ class VolunteerOpsController < ApplicationController
 
   def can_post_to_doit?(vol_op_id)
     current_user.superadmin? && !DoitTrace.published?(vol_op_id)
-
   end
 end

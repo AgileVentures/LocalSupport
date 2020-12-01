@@ -15,22 +15,27 @@ gem 'jbuilder'
 gem 'puma'
 gem 'rack-cors'
 
+gem 'report_intermittent_fails', git: 'https://github.com/tansaku/report_intermittent_fails', branch: 'randomfail-endtoend'
+#, git: 'https://github.com/tansaku/report_intermittent_fails'
+#, path: '/Users/tansaku/Documents/GitHub/tansaku/report_intermittent_fails/'
+
+
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do
   gem 'annotate'
-  gem 'faker', '~> 2.10'
+  gem 'faker', '~> 2.11'
   gem 'timecop'
-  gem 'database_cleaner', '1.7.0'
+  gem 'database_cleaner', '1.8.3'
   gem 'launchy'
   gem 'simplecov', require: false
   gem 'sinatra'
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
   gem 'execjs'
-  gem 'aruba', '~> 0.14.11'
+  gem 'aruba', '~> 0.14.14'
   gem 'pry-byebug'
   gem 'rack_session_access'
   gem 'jasmine', '~> 3.5'
@@ -52,7 +57,7 @@ end
 group :test do
   gem 'cucumber-rails', require: false
   gem 'cucumber-rails-training-wheels'
-  gem 'capybara', '~> 3.30'
+  gem 'capybara', '~> 3.31'
   gem 'nokogiri', '~> 1.10'
   gem 'factory_bot_rails'
   gem 'webmock', '~> 3.8'
@@ -75,7 +80,7 @@ end
 gem 'coffee-rails', '5.0.0'
 gem 'uglifier'
 gem 'sass-rails', '~> 6.0'
-gem 'less-rails', '~> 4.0'
+gem 'less-rails', '~> 5.0'
 gem 'twitter-bootstrap-rails', '3.2.2'
 
 gem 'font-awesome-rails'
@@ -119,7 +124,7 @@ gem 'friendly_id', '~> 5.3.0'
 gem 'meta-tags', '~> 2.13'
 
 #Social
-gem 'twitter',      '~> 6.2'
+gem 'twitter',      '~> 7.0'
 gem 'twitter-text', '~> 3.0'
 gem 'koala' # Facebook integration
 

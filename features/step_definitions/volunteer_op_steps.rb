@@ -184,3 +184,11 @@ Given(/^I fill additional fields required by Doit$/) do
   fill_in('Advertise end date', with: '2017-04-01')
 
 end
+
+
+Then("I should see the search form") do
+  expect(page).to have_button("Search")
+  expect(page).to have_css(".search-text")
+  expect(page).to have_css("#orgs_scroll")
+  expect(page).to have_field("iframe", type: :hidden)
+end
