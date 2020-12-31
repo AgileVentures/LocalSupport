@@ -74,12 +74,12 @@ class Service < ApplicationRecord
   end
 
   def self.search_for_text(text)
-    where('description LIKE ? OR name LIKE ?',
+    where('services.description LIKE ? OR services.name LIKE ?',
           "%#{text}%", "%#{text}%")
   end
 
   def self.search_by_category(text)
-    where('description LIKE ? OR name LIKE ?',
+    where('services.description LIKE ? OR services.name LIKE ?',
           "%#{text}%", "%#{text}%")
   end
 
