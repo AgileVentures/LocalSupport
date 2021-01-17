@@ -398,7 +398,7 @@ GEM
     raindrops (0.19.1)
     rake (13.0.1)
     rbtree3 (0.6.0)
-    redcarpet (3.5.0)
+    redcarpet (3.5.1)
     ref (2.0.0)
     regexp_parser (1.6.0)
     responders (3.0.0)
