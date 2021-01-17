@@ -150,7 +150,7 @@ GEM
       cucumber-rails (>= 1.1.1)
     cucumber-tag_expressions (1.1.1)
     cucumber-wire (0.0.1)
-    database_cleaner (1.8.3)
+    database_cleaner (1.8.5)
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
     debug_inspector (0.0.3)
@@ -556,7 +556,7 @@ DEPENDENCIES
   coffee-rails (= 5.0.0)
   cucumber-rails
   cucumber-rails-training-wheels
-  database_cleaner (= 1.8.3)
+  database_cleaner (= 1.8.5)
   devise (~> 4.7)
   devise_invitable (~> 2.0)
   dotenv-rails
