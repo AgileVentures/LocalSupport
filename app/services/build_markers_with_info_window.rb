@@ -37,7 +37,7 @@ class BuildMarkersWithInfoWindow
         partial: 'shared/custom_marker.html.erb',
         locals: {attrs: [helper.asset_path("volunteer_icon_#{source}.png"),
                          class: 'vol_op',
-                         title: 'Click here to see local health & wellbeing service']}
+                         title: 'Click here to see local health & wellbeing services']}
       ),
       index: 1,
       type: 'vol_op'
