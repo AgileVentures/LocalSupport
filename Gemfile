@@ -28,7 +28,7 @@ group :development, :test do
   gem 'annotate'
   gem 'faker', '~> 2.11'
   gem 'timecop'
-  gem 'database_cleaner', '1.8.3'
+  gem 'database_cleaner', '2.0.0'
   gem 'launchy'
   gem 'simplecov', require: false
   gem 'sinatra'
