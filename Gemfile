@@ -115,7 +115,7 @@ gem 'paranoia', '~> 2.4'
 
 gem 'dotenv-rails'
 gem 'figaro'
-gem 'airbrake'
+# gem 'airbrake'
 
 # Using user friendly names in URLs
 gem 'friendly_id', '~> 5.3.0'

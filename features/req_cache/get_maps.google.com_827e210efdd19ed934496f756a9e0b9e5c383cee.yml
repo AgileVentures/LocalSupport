@@ -1,0 +1,40 @@
+---
+:scope:
+:url: https://maps.google.com/maps/vt?pb=!1m4!1m3!1i12!2i2043!3i1358!1m4!1m3!1i12!2i2043!3i1359!1m4!1m3!1i12!2i2044!3i1358!1m4!1m3!1i12!2i2044!3i1359!1m4!1m3!1i12!2i2045!3i1358!1m4!1m3!1i12!2i2045!3i1359!1m4!1m3!1i12!2i2043!3i1360!1m4!1m3!1i12!2i2043!3i1361!1m4!1m3!1i12!2i2044!3i1360!1m4!1m3!1i12!2i2044!3i1361!1m4!1m3!1i12!2i2045!3i1360!1m4!1m3!1i12!2i2045!3i1361!2m3!1e0!2sm!3i559283880!3m17!2sen-US!3sUS!5e18!12m4!1e68!2m2!1sset!2sRoadmap!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcC5zOi02MHxwLmw6LTYw!4e3!12m1!5b1&callback=_xdc_._ix3el4&token=30743
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: text/javascript; charset=UTF-8
+  Date: Tue, 08 Jun 2021 08:13:11 GMT
+  Expires: Tue, 08 Jun 2021 08:13:11 GMT
+  Cache-Control: private, max-age=22222222
+  Cross-Origin-Resource-Policy: cross-origin
+  Content-Security-Policy: script-src 'none'; object-src 'none'; base-uri 'none'
+  X-Content-Type-Options: nosniff
+  x-server-version-bin: CggIBBCk2/SFBg==
+  Content-Disposition: attachment; filename="f.txt"
+  Server: paintfe
+  X-XSS-Protection: '0'
+  X-Frame-Options: SAMEORIGIN
+  Server-Timing: gfet4t7; dur=15
+  Alt-Svc: h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+    ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+  Accept-Ranges: none
+  Vary: Accept-Encoding
+  Connection: close
+  Transfer-Encoding: chunked
+:content: /* API Response */ _xdc_._ix3el4 && _xdc_._ix3el4([{"id":"twvwvwvvwuwv","base":[1071247360,712335360],"zrange":[12,12],"layer":"m@559283880","features":[{"id":"7585413949735120584","a":[0,0,1071247360,712335360,1071247360,712335360],"bb":[-11,-32,11,-1,-11,-32,11,-1,-11,-32,11,-1,-138,-32,-9,-14,-93,-18,-9,0],"c":"{\"1\":{\"title\":\"Warner
+  Bros. Studio Tour London\"}}","io":[0,-16]}]},{"id":"twvwvwvvwuww","zrange":[12,12],"layer":"m@559283880"},{"id":"twvwvwvvwwut","zrange":[12,12],"layer":"m@559283880"},{"id":"twvwvwvvwwuu","zrange":[12,12],"layer":"m@559283880"},{"id":"twvwvwvvwwuv","zrange":[12,12],"layer":"m@559283880"},{"id":"twvwvwvvwwuw","zrange":[12,12],"layer":"m@559283880"},{"id":"twvwvwvwvtvv","base":[1071140864,713232384],"zrange":[12,12],"layer":"m@559283880","features":[{"id":"10837346827302587422","a":[0,0],"bb":[-45,-9,45,9],"c":"{\"1\":{\"title\":\"Ruislip
+  Woods\"}}"},{"id":"0x48766ce5ffced4cf:0x46f80226c69ddeaf","a":[145408,251904],"bb":[-43,-6,43,7],"c":"{\"1\":{\"title\":\"Ruislip
+  Manor\"}}"}]},{"id":"twvwvwvwvtvw","base":[1071253504,713646080],"zrange":[12,12],"layer":"m@559283880","features":[{"id":"6690458799742309100","a":[0,0,1071253504,713646080,1071253504,713646080],"bb":[-11,-32,11,-1,-11,-32,11,-1,-11,-32,11,-1,-94,-25,-10,-7],"c":"{\"1\":{\"title\":\"RAF
+  Northolt\"}}","io":[0,-16]},{"id":"0x487612a0149dc659:0x9c7004ddb21c36b7","a":[356352,356352],"bb":[-28,-11,28,2,-18,-2,19,11],"c":"{\"1\":{\"title\":\"Dormer's
+  Wells\"}}"}]},{"id":"twvwvwvwvvtt","zrange":[12,12],"layer":"m@559283880"},{"id":"twvwvwvwvvtu","base":[1072072704,713625600],"zrange":[12,12],"layer":"m@559283880","features":[{"id":"11983972060459753623","a":[0,0,1072072704,713625600,1072072704,713625600],"bb":[-11,-32,11,-1,-11,-32,11,-1,-11,-32,11,-1,-127,-25,-10,-7],"c":"{\"1\":{\"title\":\"Wembley
+  Stadium\"}}","io":[0,-16]},{"id":"0x487611dd8eba8b01:0x8ca20447c5d6ca3b","a":[129024,327680],"bb":[-39,-6,40,7],"c":"{\"1\":{\"title\":\"North
+  Acton\"}}"},{"id":"0x487612fc34afaf6f:0x115136af06da09e","a":[-342016,20480],"bb":[-39,-6,39,7],"c":"{\"1\":{\"title\":\"Sudbury
+  Hill\"}}"},{"id":"0x487612a0149dc659:0x9c7004ddb21c36b7","a":[-462848,376832],"bb":[-28,-11,28,2,-18,-2,19,11],"c":"{\"1\":{\"title\":\"Dormer's
+  Wells\"}}"}]},{"id":"twvwvwvwvvtv","base":[1072406528,713431040],"zrange":[12,12],"layer":"m@559283880","features":[{"id":"0x487610e86dffe111:0xef0e43b31af1c644","a":[0,0],"bb":[-38,-6,38,7],"c":"{\"1\":{\"title\":\"Brent
+  Cross\"}}"}]},{"id":"twvwvwvwvvtw","base":[1072826368,713824256],"zrange":[12,12],"layer":"m@559283880","features":[{"id":"12786351728261599912","a":[0,0],"bb":[-117,-25,-10,-7],"c":"{\"1\":{\"title\":\"ZSL
+  London Zoo\"}}"},{"id":"15109414362646101260","a":[-73728,270336],"bb":[-33,-9,34,9],"c":"{\"1\":{\"title\":\"Hyde
+  Park\"}}"},{"id":"0x4876119f014d6743:0xe851314e558a5140","a":[-600064,-249856],"bb":[-26,-6,26,7],"c":"{\"1\":{\"title\":\"Neasden\"}}"},{"id":"0x487611dd8eba8b01:0x8ca20447c5d6ca3b","a":[-624640,129024],"bb":[-39,-6,40,7],"c":"{\"1\":{\"title\":\"North
+  Acton\"}}"}]}])
