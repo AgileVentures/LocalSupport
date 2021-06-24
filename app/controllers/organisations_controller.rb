@@ -116,7 +116,7 @@ class OrganisationsController < BaseOrganisationsController
       {
         pending_org_admin: current_user.pending_org_admin?(organisation),
         editable: current_user.can_edit?(organisation),
-        deletable: current_user.can_delete?(organisation),
+        deletable: current_user.can_delete?,
         can_create_volunteer_op: current_user.can_create_volunteer_ops?(organisation),
         grabbable: current_user.can_request_org_admin?(organisation)
       }
