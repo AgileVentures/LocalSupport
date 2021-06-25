@@ -73,35 +73,35 @@ Capybara.register_driver :pg_billy do |app|
   Capybara::Poltergeist::Driver.new(app, options)
 end
 
-# Capybara.register_driver :selenium_chrome do |app|
-#   options = Selenium::WebDriver::Chrome::Options.new
-#   [
-#     'window-size=1400x1400',
-#     'disable-gpu' # https://developers.google.com/web/updates/2017/04/headless-chrome
-#   ].each { |arg| options.add_argument(arg) }
+Capybara.register_driver :selenium_chrome do |app|
+  options = Selenium::WebDriver::Chrome::Options.new
+  [
+    'window-size=1400x1400',
+    'disable-gpu' # https://developers.google.com/web/updates/2017/04/headless-chrome
+  ].each { |arg| options.add_argument(arg) }
 
-#   # Run tests in headless mode, unless explicitly asked for a browser head
-#   # options.add_argument 'headless' unless ENV['HEAD']
+  # Run tests in headless mode, unless explicitly asked for a browser head
+  # options.add_argument 'headless' unless ENV['HEAD']
 
-#   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
-# end
-
-Chromedriver.set_version '2.42' #unless ENV['CI'] == 'true'
-
-# Use auto-open-devtools-for-tabs to open dev tools if you want to use a debugger
-chrome_options = %w[window-size=1940,1400 no-sandbox disable-popup-blocking disable-infobars auto-open-devtools-for-tabs ]
-chrome_options << 'headless' unless ENV['CI']
-
-Capybara.register_driver :chrome do |app|
-  options = Selenium::WebDriver::Chrome::Options.new(
-    args: chrome_options
-  )
-  Capybara::Selenium::Driver.new(
-    app,
-    browser: :chrome,
-    options: options
-  )
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
+
+# Chromedriver.set_version '2.42' #unless ENV['CI'] == 'true'
+
+# # Use auto-open-devtools-for-tabs to open dev tools if you want to use a debugger
+# chrome_options = %w[window-size=1940,1400 no-sandbox disable-popup-blocking disable-infobars auto-open-devtools-for-tabs ]
+# chrome_options << 'headless' unless ENV['CI']
+
+# Capybara.register_driver :chrome do |app|
+#   options = Selenium::WebDriver::Chrome::Options.new(
+#     args: chrome_options
+#   )
+#   Capybara::Selenium::Driver.new(
+#     app,
+#     browser: :chrome,
+#     options: options
+#   )
+# end
 
 
 
@@ -201,6 +201,8 @@ After('@time_travel') do
   Timecop.return
 end
 
+
+World(FactoryBot::Syntax::Methods)
 # To be used in conjunction with rerun option, so that we don't return a failing
 # exit code until the second try fails
 at_exit do

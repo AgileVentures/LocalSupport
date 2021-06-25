@@ -4,19 +4,20 @@ Feature: As a member of the public
   I would like to see a map of volunteer opportunities
   Tracker story ID: https://www.pivotaltracker.com/story/show/66059862
 
+  @javascript @billy
   Scenario Outline: See a list of local volunteer ops with same coordiantes in same maker popup
-    # Given the following organisations exist:
-    #   | name          | description          | address        | postcode | website       |
-    #   | Cats Are Us   | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
-    #   | Office Primer | Care for the elderly | 64 pinner road | HA1 4HZ  | http://b.com/ |
-    # Given the following volunteer opportunities exist:
-    #   | title          | description                     | organisation  | address        | postcode |
-    #   | Animal care    | Assist with feline sanitation   | Cats Are Us   | 34 pinner road | HA1 4HZ  |
-    #   | Office Support | Help with printing and copying. | Office Primer | 34 pinner road | HA1 4HZ  |
-    Given the following doit volunteer opportunities exist:
-      | title          | description                     | latitude | longitude |
-      | Animal care    | Assist eldery people            | 51.5943  | -0.334769 |
-      | Office Support | Help with printing and copying. | 51.5943  | -0.334769 |
+    Given the following organisations exist:
+      | name          | description          | address        | postcode | website       |
+      | Cats Are Us   | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
+      | Office Primer | Care for the elderly | 64 pinner road | HA1 4HZ  | http://b.com/ |
+    Given the following volunteer opportunities exist:
+      | title          | description                     | organisation  | address        | postcode |
+      | Animal care    | Assist with feline sanitation   | Cats Are Us   | 34 pinner road | HA1 4HZ  |
+      | Office Support | Help with printing and copying. | Office Primer | 34 pinner road | HA1 4HZ  |
+    # Given the following doit volunteer opportunities exist:
+    #   | title          | description                     | latitude | longitude |
+    #   | Animal care    | Assist eldery people            | 51.5943  | -0.334769 |
+    #   | Office Support | Help with printing and copying. | 51.5943  | -0.334769 |
     Given I visit the volunteer opportunities page
     And cookies are approved
     Then I should see 1 markers in the map
@@ -40,6 +41,7 @@ Feature: As a member of the public
       | Eldery care    |
       | Office Support |
 
+  @javascript @billy
   Scenario Outline: See a list of do-it and local volunteer ops with same coordiantes in same maker popup
     Given the following organisations exist:
       | name          | description          | address        | postcode | website       |
