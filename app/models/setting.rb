@@ -25,7 +25,7 @@ class Setting < ApplicationRecord
     meta_tag_site: 'Harrow volunteering',
     meta_tag_description: 'Volunteering Network for Harrow Community',
     open_graph_site: 'Harrow Community Network',
-    large_banner_path: 'HCN-long.png',
+    large_banner_path: 'https://upload.wikimedia.org/wikipedia/commons/e/ea/The_Banner_Saga_logo_transparent.png',
     small_banner_path: 'HCN-small.png', 
     site_provider_small_logo: 'VAHC-Small-Logo.png',
     map_zoom_level: '12',

@@ -5,6 +5,7 @@ gem 'rails', '~> 5.2.4'
 gem 'pg', '~> 1.2'
 gem 'devise', '~> 4.7'
 gem 'devise_invitable', '~> 2.0'
+gem 'dotenv-rails'
 gem 'heroku-api'
 gem 'sprockets'
 
@@ -62,8 +63,10 @@ group :test do
   gem 'factory_bot_rails'
   gem 'webmock', '~> 3.8'
   gem 'uri-handler'
-  gem 'selenium'
-  gem 'selenium-client'
+  # gem 'selenium'
+  # gem 'selenium-client'
+  gem 'chromedriver-helper'
+  gem 'selenium-webdriver'
   gem 'shoulda'
   gem 'vcr'
   gem 'puffing-billy', '~> 2.3'
@@ -113,7 +116,6 @@ gem 'sucker_punch', '~> 2.1' # async job
 gem 'rails_autolink'
 gem 'paranoia', '~> 2.4'
 
-gem 'dotenv-rails'
 gem 'figaro'
 # gem 'airbrake'
 

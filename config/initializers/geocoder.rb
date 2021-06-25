@@ -1,3 +1,5 @@
+Dotenv::Railtie.load
+
 Geocoder.configure(
   # Geocoding options
   # timeout: 3,                 # geocoding service timeout (secs)

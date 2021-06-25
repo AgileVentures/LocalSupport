@@ -59,9 +59,9 @@ end
 
 Logger.new(STDOUT).info 'Start Users seed'
 User.create(
-  email: 'superadmin@harrowcn.org.uk',
-  password: 'asdf1234',
-  password_confirmation: 'asdf1234',
+  email: 'admin@mail.com',
+  password: 'password',
+  password_confirmation: 'password',
   confirmed_at: DateTime.now,
   superadmin: true
 )

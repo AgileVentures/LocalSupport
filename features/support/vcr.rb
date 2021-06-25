@@ -11,7 +11,7 @@ VCR.configure do |config|
     request.headers.include?('Referer')
   end
   config.filter_sensitive_data("<KCSC_API_KEY>") { ENV['KCSC_API_KEY'] }
-  config.filter_sensitive_data("<GMAP_API_KEY>") { ENV['GMAP_API_KEY'] }
+  config.filter_sensitive_data("key123") { ENV['GMAP_API_KEY'] }
 end
 
 VCR.cucumber_tags do |t|

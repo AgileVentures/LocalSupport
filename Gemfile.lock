@@ -73,6 +73,8 @@ GEM
     annotate (3.1.1)
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 14.0)
+    archive-zip (0.12.0)
+      io-like (~> 0.3.0)
     arel (9.0.0)
     aruba (0.14.14)
       childprocess (>= 0.6.3, < 4.0.0)
@@ -102,6 +104,9 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     childprocess (3.0.0)
+    chromedriver-helper (2.1.1)
+      archive-zip (~> 0.10)
+      nokogiri (~> 1.8)
     cliver (0.3.2)
     coderay (1.1.3)
     coffee-rails (5.0.0)
@@ -253,8 +258,7 @@ GEM
       concurrent-ruby (~> 1.0)
     idn-ruby (0.1.0)
     interception (0.5)
-    jar_wrapper (0.1.8)
-      zip
+    io-like (0.3.1)
     jasmine (3.7.0)
       jasmine-core (~> 3.7.0)
       phantomjs
@@ -465,6 +469,7 @@ GEM
       rubocop-ast (>= 1.1.0)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.4)
+    rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -479,9 +484,9 @@ GEM
       addressable (>= 2.3.5)
       faraday (> 0.8, < 2.0)
     selectize-rails (0.12.6)
-    selenium (0.2.11)
-      jar_wrapper
-    selenium-client (1.2.18)
+    selenium-webdriver (3.142.7)
+      childprocess (>= 0.5, < 4.0)
+      rubyzip (>= 1.2.2)
     shoulda (4.0.0)
       shoulda-context (~> 2.0)
       shoulda-matchers (~> 4.0)
@@ -567,7 +572,6 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zip (2.0.2)
 
 PLATFORMS
   ruby
@@ -581,6 +585,7 @@ DEPENDENCIES
   bootstrap_sortable_rails (~> 1.11.2)
   breadcrumbs_on_rails
   capybara (~> 3.31)
+  chromedriver-helper
   coffee-rails (= 5.0.0)
   cucumber-rails
   cucumber-rails-training-wheels
@@ -632,8 +637,7 @@ DEPENDENCIES
   rubocop-git
   rubocop-rspec (>= 1.28)
   sass-rails (~> 6.0)
-  selenium
-  selenium-client
+  selenium-webdriver
   shoulda
   show_me_the_cookies (~> 5.0)
   simplecov

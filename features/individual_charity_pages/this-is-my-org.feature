@@ -15,6 +15,7 @@ Feature: This is my organisation
       | pendingadmin@helpfolk.com   | mypassword1234 | false      | 2008-01-01 00:00;00 |              | Helpful Folk         |
       | superadmin@localsupport.org | mypassword1234 | true       | 2008-01-01 00:00:00 |              |                      |
 
+    And I visit the site
     And cookies are approved
 
   @vcr
@@ -26,8 +27,8 @@ Feature: This is my organisation
     And "admin@helpfolk.com"'s request for "Helpful Folk" should be persisted
     And an email should be sent to "superadmin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
 
-# when capybara-webkit clicks TIMO, it needs to submit sign in form with javascript or
-# else ClickFailed error will occur due to overlapping elements
+  # when capybara-webkit clicks TIMO, it needs to submit sign in form with javascript or
+  # else ClickFailed error will occur due to overlapping elements
   @javascript @billy
   Scenario: Not Signed in User
     Given I click "This is my organisation" on the "Helpful Folk" page and stay there
@@ -37,8 +38,8 @@ Feature: This is my organisation
     And "admin@helpfolk.com"'s request for "Helpful Folk" should be persisted
     And an email should be sent to "superadmin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
 
-# what we're not checking here is that the login box pops open with the right message
-# I think we cover that in jasmine tests - needed here too?
+  # what we're not checking here is that the login box pops open with the right message
+  # I think we cover that in jasmine tests - needed here too?
   @javascript @billy
   Scenario: Not Signed in User Who Fails Signin Once
     Given I click "This is my organisation" on the "Helpful Folk" page and stay there
@@ -65,7 +66,7 @@ Feature: This is my organisation
     Then I should be on the show page for the organisation named "Helpful Folk"
     And an email should be sent to "superadmin@localsupport.org" as notification of the request for admin status of "Helpful Folk"
 
-  @javascript @billy @intermittent-ci-js-fail
+  @javascript @billy @intermittent-ci-js-fail 
   Scenario: Unregistered User Who Fails Signin Once
     Given I click "This is my organisation" on the "Helpful Folk" page and stay there
     When I click "toggle_link"
