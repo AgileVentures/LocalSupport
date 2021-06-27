@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe 'Pages', type: :request, helpers: :requests do
 

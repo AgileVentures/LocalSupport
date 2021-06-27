@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe 'UserReports', :type => :request, :helpers => :requests do
   let(:nonsuperadmin) {FactoryBot.create :user, :email => "nonsuperadmin@nonsuperadmin.com", :superadmin => false}

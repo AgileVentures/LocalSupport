@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 RSpec.describe VolunteerOpsController, type: :controller, helpers: :requests do
   let(:organisation) { FactoryBot.create(:organisation) }

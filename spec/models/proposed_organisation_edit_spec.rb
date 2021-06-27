@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 def check_viewability(boolean, usr, array_of_symbols)
   array_of_symbols.each do |sym|
     it "should indicate#{boolean ? '' : ' NOT'} viewable for #{sym}" do

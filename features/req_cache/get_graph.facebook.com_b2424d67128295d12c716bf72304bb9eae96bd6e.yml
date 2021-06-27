@@ -1,0 +1,37 @@
+---
+:scope:
+:url: http://graph.facebook.com/?id=http%3A%2F%2F127.0.0.1%3A58826%2Forganisations%2Ffriendly&callback=_ate.cbs.rcb_7f020
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Vary:
+  - Origin
+  - Accept-Encoding
+  x-fb-rlafr: '0'
+  Content-Type: text/javascript; charset=UTF-8
+  WWW-Authenticate: OAuth "Facebook Platform" "invalid_request" "(#2) Service temporarily
+    unavailable"
+  Access-Control-Allow-Origin: "*"
+  facebook-api-version: v3.3
+  Pragma: no-cache
+  Cache-Control: no-store
+  Expires: Sat, 01 Jan 2000 00:00:00 GMT
+  x-fb-request-id: Au2s-zTKItosDhffTGrSmBP
+  x-fb-trace-id: Fkp8sTdyvQ6
+  x-fb-rev: '1004044572'
+  X-FB-Debug: g35yZ4d1aGZa4/b2g4ZmaoGmr31NkwCpy3R9EHimuDRqRf4GAu0u9hQWDYDRY2/x0sVB+3dGZHU0yEBDYjoIgw==
+  Date: Sun, 27 Jun 2021 09:13:24 GMT
+  Alt-Svc: h3-29=":443"; ma=3600,h3-27=":443"; ma=3600
+  Connection: close
+  Content-Length: '228'
+:content: |-
+  /**/ _ate.cbs.rcb_7f020({
+     "error": {
+        "message": "(#2) Service temporarily unavailable",
+        "type": "OAuthException",
+        "is_transient": true,
+        "code": 2,
+        "fbtrace_id": "Au2s-zTKItosDhffTGrSmBP"
+     }
+  });

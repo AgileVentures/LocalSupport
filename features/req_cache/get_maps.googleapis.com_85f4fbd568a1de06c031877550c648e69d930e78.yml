@@ -1,0 +1,27 @@
+---
+:scope:
+:url: https://maps.googleapis.com/maps/api/js/AuthenticationService.Authenticate?1shttp%3A%2F%2F127.0.0.1%3A58826%2Fevents&4sAIzaSyC6LFNuqK4HY5dysPA026BrTyqWJEZgSVM&callback=_xdc_._qby5ro&key=AIzaSyC6LFNuqK4HY5dysPA026BrTyqWJEZgSVM&token=129767
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: text/javascript; charset=UTF-8
+  Date: Sun, 27 Jun 2021 09:11:33 GMT
+  Pragma: no-cache
+  Expires: Fri, 01 Jan 1990 00:00:00 GMT
+  Cache-Control: no-cache, must-revalidate
+  Content-Disposition: attachment
+  Server: mafe
+  X-XSS-Protection: '0'
+  X-Frame-Options: SAMEORIGIN
+  Server-Timing: gfet4t7; dur=19
+  Alt-Svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+    ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+    ma=2592000; v="46,43"
+  Accept-Ranges: none
+  Vary: Accept-Encoding
+  Connection: close
+  Transfer-Encoding: chunked
+:content: '/**/_xdc_._qby5ro && _xdc_._qby5ro( [0,4,0,null,null,[3,null,"Google Maps
+  JavaScript API error: NotLoadingAPIFromGoogleMapsError\nhttps://developers.google.com/maps/documentation/javascript/error-messages#not-loading-api-from-google-maps-error"]]
+  )'

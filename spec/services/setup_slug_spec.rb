@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe SetupSlug do
   subject(:setup_slug) { described_class }

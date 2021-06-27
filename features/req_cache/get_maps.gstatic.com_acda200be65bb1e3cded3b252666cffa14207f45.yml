@@ -1,0 +1,26 @@
+---
+:scope:
+:url: https://maps.gstatic.com/mapfiles/openhand_8_8.cur
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Accept-Ranges: bytes
+  Content-Type: image/bmp
+  Access-Control-Allow-Origin: "*"
+  Content-Security-Policy-Report-Only: require-trusted-types-for 'script'; report-uri
+    https://csp.withgoogle.com/csp/geo-tactile
+  Cross-Origin-Resource-Policy: cross-origin
+  Content-Length: '326'
+  Date: Tue, 08 Jun 2021 05:07:27 GMT
+  Expires: Tue, 08 Jun 2021 05:07:27 GMT
+  Cache-Control: private, max-age=31536000
+  Last-Modified: Tue, 18 May 2021 19:15:00 GMT
+  X-Content-Type-Options: nosniff
+  Server: sffe
+  X-XSS-Protection: '0'
+  Alt-Svc: h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+    ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+  Connection: close
+:content: !binary |-
+  AAACAAEAICACAAgACAAwAQAAFgAAACgAAAAgAAAAQAAAAAEAAQAAAAAAAAEAAAAAAAAAAAAAAgAAAAAAAAAAAAAA////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8AAAA/AAAAfwAAAP+AAAH/gAAB/8AAA//AAAd/wAAGf+AAAH9gAADbYAAA2yAAAZsAAAGbAAAAGAAAAAAAAA//////////////////////////////////////////////////////////////////////////////////////gH///4B///8Af//+AD///AA///wAH//4AB//8AAf//AAD//5AA///gAP//4AD//8AF///AB///5A////5///8=

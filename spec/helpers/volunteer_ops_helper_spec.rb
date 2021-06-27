@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe VolunteerOpsHelper, :type => :helper do
   describe '#button_text' do

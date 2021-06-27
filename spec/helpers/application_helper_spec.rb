@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe ApplicationHelper, type: :helper do
   describe 'markdown' do

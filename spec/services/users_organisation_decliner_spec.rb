@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 require_relative '../../app/services/user_organisation_decliner'
 
 describe UserOrganisationDecliner,'#call'  do

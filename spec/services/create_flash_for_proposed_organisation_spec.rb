@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe  CreateFlashForProposedOrganisation do
   let!(:result) { AcceptProposedOrganisation.new(org).run }

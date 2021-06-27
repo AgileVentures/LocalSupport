@@ -1,4 +1,6 @@
-@time_travel @maps
+@time_travel 
+@maps
+
 Feature: Map of local charities
   As a local resident
   So that I can get support for a specific condition

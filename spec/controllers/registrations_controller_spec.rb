@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe RegistrationsController, type: :controller do
   describe 'POST create' do

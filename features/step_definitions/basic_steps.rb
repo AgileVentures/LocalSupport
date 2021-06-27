@@ -2,6 +2,10 @@ require 'webmock/cucumber'
 require 'uri-handler'
 include ApplicationHelper
 
+Given('I visit the site') do
+  visit root_path 
+end
+
 Then(/^I travel a year plus "(.*?)" days into the future$/) do |days|
   Timecop.travel(
     Time.current.advance(years: 1, days: days.to_i)

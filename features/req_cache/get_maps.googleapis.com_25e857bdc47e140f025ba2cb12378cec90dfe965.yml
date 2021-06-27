@@ -1,0 +1,26 @@
+---
+:scope:
+:url: https://maps.googleapis.com/maps/api/js/QuotaService.RecordEvent?1shttp%3A%2F%2F127.0.0.1%3A54036%2Fvolunteer_ops&7sex2bhw&10e1&callback=_xdc_._3wnrta&token=85325
+:body: ''
+:status: 403
+:method: get
+:headers:
+  Content-Type: text/plain; charset=UTF-8
+  X-Content-Type-Options: nosniff
+  Date: Sun, 27 Jun 2021 08:14:45 GMT
+  Pragma: no-cache
+  Expires: Fri, 01 Jan 1990 00:00:00 GMT
+  Cache-Control: no-cache, must-revalidate
+  Server: mafe
+  X-XSS-Protection: '0'
+  X-Frame-Options: SAMEORIGIN
+  Server-Timing: gfet4t7; dur=1
+  Alt-Svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+    ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+    ma=2592000; v="46,43"
+  Accept-Ranges: none
+  Vary: Accept-Encoding
+  Connection: close
+  Transfer-Encoding: chunked
+:content: 'The Google Maps JavaScript API must be downloaded directly from Google''s
+  servers. Learn more: https://developers.google.com/maps/documentation/javascript/tutorial#Loading_the_Maps_API'

@@ -233,7 +233,6 @@ http_interactions:
         and analyse research data and help to prepare a report of findings.\u00a0\n","Path":"https:\/\/reachvolunteering.org.uk\/opp\/social-researcher?referrer_id=Harrow
         Community Network&?utm_source=HCN&utm_campaign=feed&utm_medium=partners","Town":"Wembley","Postcode":"HA9
         9FX","Coordinates":"51\u00b0 33'' 50.0184\" N, 0\u00b0 16'' 35.5872\" W"}}]}'
-    http_version: 
   recorded_at: Wed, 22 Mar 2017 10:02:04 GMT
 - request:
     method: get
@@ -340,7 +339,6 @@ http_interactions:
            ],
            "status" : "OK"
         }
-    http_version: 
   recorded_at: Wed, 22 Mar 2017 10:02:04 GMT
 - request:
     method: get
@@ -457,7 +455,6 @@ http_interactions:
            ],
            "status" : "OK"
         }
-    http_version: 
   recorded_at: Wed, 22 Mar 2017 10:02:04 GMT
 - request:
     method: get
@@ -565,7 +562,6 @@ http_interactions:
            ],
            "status" : "OK"
         }
-    http_version: 
   recorded_at: Wed, 22 Mar 2017 10:02:04 GMT
 - request:
     method: get
@@ -677,7 +673,6 @@ http_interactions:
            ],
            "status" : "OK"
         }
-    http_version: 
   recorded_at: Wed, 22 Mar 2017 10:02:04 GMT
 - request:
     method: get
@@ -789,7 +784,6 @@ http_interactions:
            ],
            "status" : "OK"
         }
-    http_version: 
   recorded_at: Wed, 22 Mar 2017 10:02:04 GMT
 - request:
     method: get
@@ -896,7 +890,6 @@ http_interactions:
            ],
            "status" : "OK"
         }
-    http_version: 
   recorded_at: Wed, 22 Mar 2017 10:02:04 GMT
 - request:
     method: get
@@ -1008,7 +1001,6 @@ http_interactions:
            ],
            "status" : "OK"
         }
-    http_version: 
   recorded_at: Wed, 22 Mar 2017 10:02:04 GMT
 - request:
     method: get
@@ -1115,7 +1107,6 @@ http_interactions:
            ],
            "status" : "OK"
         }
-    http_version: 
   recorded_at: Wed, 22 Mar 2017 10:02:04 GMT
 - request:
     method: get
@@ -1222,7 +1213,6 @@ http_interactions:
            ],
            "status" : "OK"
         }
-    http_version: 
   recorded_at: Wed, 22 Mar 2017 10:02:04 GMT
 - request:
     method: get
@@ -1334,6 +1324,1236 @@ http_interactions:
            ],
            "status" : "OK"
         }
-    http_version: 
   recorded_at: Wed, 22 Mar 2017 10:02:04 GMT
-recorded_with: VCR 4.0.0
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA1%203UJ,%20Harrow&key=AIzaSyC6LFNuqK4HY5dysPA026BrTyqWJEZgSVM&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 27 Jun 2021 08:15:32 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Goog-Maps-Metro-Area:
+      - London
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=17
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA1 3UJ",
+                       "short_name" : "HA1 3UJ",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Harrow",
+                       "short_name" : "Harrow",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Harrow HA1 3UJ, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.5775319,
+                          "lng" : -0.319813
+                       },
+                       "southwest" : {
+                          "lat" : 51.57318550000001,
+                          "lng" : -0.3245779
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.5754086,
+                       "lng" : -0.3220147
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5775319,
+                          "lng" : -0.319813
+                       },
+                       "southwest" : {
+                          "lat" : 51.57318550000001,
+                          "lng" : -0.3245779
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJo1ytTKITdkgR0y0pujhfkSg",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+  recorded_at: Sun, 27 Jun 2021 08:15:31 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA02LP,%20Sudbury%20Town,%20London%20Borough%20of%20Brent&key=AIzaSyC6LFNuqK4HY5dysPA026BrTyqWJEZgSVM&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 27 Jun 2021 08:15:32 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Goog-Maps-Metro-Area:
+      - London
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=9
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA0 2LP",
+                       "short_name" : "HA0 2LP",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Harrow Road",
+                       "short_name" : "Harrow Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Wembley",
+                       "short_name" : "Wembley",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Harrow Rd, Wembley HA0 2LP, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.5562497,
+                          "lng" : -0.3167343
+                       },
+                       "southwest" : {
+                          "lat" : 51.5553006,
+                          "lng" : -0.3174506
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.5557992,
+                       "lng" : -0.3171823
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.55712413029149,
+                          "lng" : -0.315743469708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.55442616970849,
+                          "lng" : -0.3184414302915021
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJNzo0RE0SdkgRcwuvpyb1C1I",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+  recorded_at: Sun, 27 Jun 2021 08:15:32 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA,%20Harrow&key=AIzaSyC6LFNuqK4HY5dysPA026BrTyqWJEZgSVM&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 27 Jun 2021 08:15:32 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=12
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "1",
+                       "short_name" : "1",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Pollard Drive",
+                       "short_name" : "Pollard Dr",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Harrow",
+                       "short_name" : "Harrow",
+                       "types" : [ "neighborhood", "political" ]
+                    },
+                    {
+                       "long_name" : "Essex",
+                       "short_name" : "Essex",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Essex County",
+                       "short_name" : "Essex County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "Ontario",
+                       "short_name" : "ON",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "Canada",
+                       "short_name" : "CA",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "N0R 1G0",
+                       "short_name" : "N0R 1G0",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "1 Pollard Dr, Harrow, ON N0R 1G0, Canada",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 42.0290641,
+                       "lng" : -82.9206085
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 42.0304130802915,
+                          "lng" : -82.91925951970849
+                       },
+                       "southwest" : {
+                          "lat" : 42.0277151197085,
+                          "lng" : -82.9219574802915
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJ9QVkWBAgO4gRXnshwnkBh6k",
+                 "plus_code" : {
+                    "compound_code" : "23HH+JQ Essex, ON, Canada",
+                    "global_code" : "86JV23HH+JQ"
+                 },
+                 "types" : [ "establishment", "health", "point_of_interest" ]
+              }
+           ],
+           "status" : "OK"
+        }
+  recorded_at: Sun, 27 Jun 2021 08:15:32 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA02LP,%20Brent&key=AIzaSyC6LFNuqK4HY5dysPA026BrTyqWJEZgSVM&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 27 Jun 2021 08:15:32 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Goog-Maps-Metro-Area:
+      - London
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=11
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA0 2LP",
+                       "short_name" : "HA0 2LP",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Harrow Road",
+                       "short_name" : "Harrow Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Wembley",
+                       "short_name" : "Wembley",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Harrow Rd, Wembley HA0 2LP, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.5562497,
+                          "lng" : -0.3167343
+                       },
+                       "southwest" : {
+                          "lat" : 51.5553006,
+                          "lng" : -0.3174506
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.5557992,
+                       "lng" : -0.3171823
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.55712413029149,
+                          "lng" : -0.315743469708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.55442616970849,
+                          "lng" : -0.3184414302915021
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJNzo0RE0SdkgRcwuvpyb1C1I",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+  recorded_at: Sun, 27 Jun 2021 08:15:32 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA8%200LN,%20Barnet&key=AIzaSyC6LFNuqK4HY5dysPA026BrTyqWJEZgSVM&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 27 Jun 2021 08:15:32 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Goog-Maps-Metro-Area:
+      - London
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=6
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA8 0LN",
+                       "short_name" : "HA8 0LN",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Watling Avenue",
+                       "short_name" : "Watling Ave",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Burnt Oak",
+                       "short_name" : "Burnt Oak",
+                       "types" : [ "political", "sublocality", "sublocality_level_1" ]
+                    },
+                    {
+                       "long_name" : "Edgware",
+                       "short_name" : "Edgware",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Watling Ave, Burnt Oak, Edgware HA8 0LN, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.6036195,
+                          "lng" : -0.2623466
+                       },
+                       "southwest" : {
+                          "lat" : 51.602224,
+                          "lng" : -0.2629752
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.6029439,
+                       "lng" : -0.2626886
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.6042707302915,
+                          "lng" : -0.261311919708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.6015727697085,
+                          "lng" : -0.2640098802915021
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJ-99gSrQWdkgRdkp0kgOHJsY",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+  recorded_at: Sun, 27 Jun 2021 08:15:32 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA7%203JE,%20London&key=AIzaSyC6LFNuqK4HY5dysPA026BrTyqWJEZgSVM&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 27 Jun 2021 08:15:32 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Goog-Maps-Metro-Area:
+      - London
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=5
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "Common Road",
+                       "short_name" : "Common Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Stanmore",
+                       "short_name" : "Stanmore",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "HA7 3FT",
+                       "short_name" : "HA7 3FT",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "Common Rd, Stanmore HA7 3FT, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.6244033,
+                       "lng" : -0.3409345
+                    },
+                    "location_type" : "GEOMETRIC_CENTER",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.6257522802915,
+                          "lng" : -0.3395855197084979
+                       },
+                       "southwest" : {
+                          "lat" : 51.6230543197085,
+                          "lng" : -0.342283480291502
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJvRVh8vEUdkgR3ugjYFDoNVI",
+                 "types" : [ "establishment", "health", "point_of_interest" ]
+              },
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "Clamp Hill",
+                       "short_name" : "Clamp Hill",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Stanmore",
+                       "short_name" : "Stanmore",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "HA7 3BG",
+                       "short_name" : "HA7 3BG",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "Clamp Hill, Stanmore HA7 3BG, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.6158998,
+                       "lng" : -0.3335005
+                    },
+                    "location_type" : "GEOMETRIC_CENTER",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.6172487802915,
+                          "lng" : -0.332151519708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.61455081970851,
+                          "lng" : -0.3348494802915021
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJJ2uqDIsUdkgRjUa3gwf70SQ",
+                 "types" : [ "establishment", "health", "point_of_interest" ]
+              }
+           ],
+           "status" : "OK"
+        }
+  recorded_at: Sun, 27 Jun 2021 08:15:32 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA8%200LN,%20Burnt%20Oak&key=AIzaSyC6LFNuqK4HY5dysPA026BrTyqWJEZgSVM&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 27 Jun 2021 08:15:32 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Goog-Maps-Metro-Area:
+      - London
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=6
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA8 0LN",
+                       "short_name" : "HA8 0LN",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Watling Avenue",
+                       "short_name" : "Watling Ave",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Burnt Oak",
+                       "short_name" : "Burnt Oak",
+                       "types" : [ "political", "sublocality", "sublocality_level_1" ]
+                    },
+                    {
+                       "long_name" : "Edgware",
+                       "short_name" : "Edgware",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Watling Ave, Burnt Oak, Edgware HA8 0LN, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.6036195,
+                          "lng" : -0.2623466
+                       },
+                       "southwest" : {
+                          "lat" : 51.602224,
+                          "lng" : -0.2629752
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.6029439,
+                       "lng" : -0.2626886
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.6042707302915,
+                          "lng" : -0.261311919708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.6015727697085,
+                          "lng" : -0.2640098802915021
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJ-99gSrQWdkgRdkp0kgOHJsY",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+  recorded_at: Sun, 27 Jun 2021 08:15:32 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA1%203UJ%20%20%20,%20Harrow&key=AIzaSyC6LFNuqK4HY5dysPA026BrTyqWJEZgSVM&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 27 Jun 2021 08:15:32 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Goog-Maps-Metro-Area:
+      - London
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=10
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA1 3UJ",
+                       "short_name" : "HA1 3UJ",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Harrow",
+                       "short_name" : "Harrow",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Harrow HA1 3UJ, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.5775319,
+                          "lng" : -0.319813
+                       },
+                       "southwest" : {
+                          "lat" : 51.57318550000001,
+                          "lng" : -0.3245779
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.5754086,
+                       "lng" : -0.3220147
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5775319,
+                          "lng" : -0.319813
+                       },
+                       "southwest" : {
+                          "lat" : 51.57318550000001,
+                          "lng" : -0.3245779
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJo1ytTKITdkgR0y0pujhfkSg",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+  recorded_at: Sun, 27 Jun 2021 08:15:32 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA8%209BG,%20Edgware&key=AIzaSyC6LFNuqK4HY5dysPA026BrTyqWJEZgSVM&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 27 Jun 2021 08:15:32 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Goog-Maps-Metro-Area:
+      - London
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=8
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA8 9BG",
+                       "short_name" : "HA8 9BG",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Edgware",
+                       "short_name" : "Edgware",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Edgware HA8 9BG, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.6083061,
+                          "lng" : -0.2727366
+                       },
+                       "southwest" : {
+                          "lat" : 51.6073868,
+                          "lng" : -0.2735841
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.607628,
+                       "lng" : -0.2730096
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.6091954302915,
+                          "lng" : -0.271811369708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.6064974697085,
+                          "lng" : -0.274509330291502
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJuUhQuK8WdkgR-3oRXpZ-RIA",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+  recorded_at: Sun, 27 Jun 2021 08:15:32 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=HA9%209FX,%20Wembley&key=AIzaSyC6LFNuqK4HY5dysPA026BrTyqWJEZgSVM&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 27 Jun 2021 08:15:32 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Goog-Maps-Metro-Area:
+      - London
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=12
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HA9 9FX",
+                       "short_name" : "HA9 9FX",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Chalkhill Road",
+                       "short_name" : "Chalkhill Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Wembley",
+                       "short_name" : "Wembley",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Chalkhill Rd, Wembley HA9 9FX, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.5646241,
+                          "lng" : -0.2756806000000001
+                       },
+                       "southwest" : {
+                          "lat" : 51.5635565,
+                          "lng" : -0.2769105
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.56389600000001,
+                       "lng" : -0.2765282
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.56543928029149,
+                          "lng" : -0.274946569708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.56274131970849,
+                          "lng" : -0.2776445302915021
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJ7USWmnsRdkgRuBEH28vObuQ",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+  recorded_at: Sun, 27 Jun 2021 08:15:32 GMT
+recorded_with: VCR 6.0.0

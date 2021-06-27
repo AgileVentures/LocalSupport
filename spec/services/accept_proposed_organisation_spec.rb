@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe  AcceptProposedOrganisation do
   let!(:proposed_org){FactoryBot.create(:orphan_proposed_organisation, email: email)}
   let(:subject){AcceptProposedOrganisation.new(proposed_org).run}

@@ -1,5 +1,5 @@
 def stub_google_maps
-  stub_request(:any, /maps\.googleapis\.com/).to_rack(FakeGoogleGeocode)
+  WebMock.stub_request(:any, /maps\.googleapis\.com/).to_rack(FakeGoogleGeocode)
 end
 
 if ENV["RAILS_ENV"] == 'test'

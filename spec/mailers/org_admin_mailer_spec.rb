@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe OrgAdminMailer, :type => :mailer do
   let(:org){double("Organisation", name: 'friendly')}

@@ -1,30 +1,22 @@
-require 'rails_helper'
+RSpec.describe VolunteerOp, type: :model do
 
-describe VolunteerOp, type: :model do
-  it 'must have a title' do
-    v = VolunteerOp.new(title: '')
-    v.valid?
-    expect(v.errors[:title].size).to eq(1)
+  describe 'Validations' do
+    it { is_expected.to validate_presence_of :title}
+    it { is_expected.to validate_presence_of :description}
+    it { is_expected.to validate_presence_of :organisation_id}
   end
 
-  it 'must have a description' do
-    v = VolunteerOp.new(description: '')
-    v.valid?
-    expect(v.errors[:description].size).to eq(1)
-  end
-
-  it 'must not be created without an organisation' do
-    v = VolunteerOp.new(organisation_id: nil)
-    v.valid?
-    expect(v.errors[:organisation_id].size).to eq(1)
+  describe 'Associations' do
+    it { is_expected.to belong_to :organisation }
+    it { is_expected.to have_one :doit_trace }
   end
 
   describe '#local_only' do
-    let(:organisation) { FactoryBot.create(:organisation) }
-    let(:first_local) { FactoryBot.create(:local_volunteer_op, organisation: organisation) }
-    let(:second_local) { FactoryBot.create(:local_volunteer_op, organisation: organisation) }
-    let(:first_doit) { FactoryBot.create(:doit_volunteer_op, organisation: organisation) }
-    let(:second_doit) { FactoryBot.create(:doit_volunteer_op, organisation: organisation) }
+    let(:organisation) { create(:organisation) }
+    let(:first_local) { create(:local_volunteer_op, organisation: organisation) }
+    let(:second_local) { create(:local_volunteer_op, organisation: organisation) }
+    let(:first_doit) { create(:doit_volunteer_op, organisation: organisation) }
+    let(:second_doit) { create(:doit_volunteer_op, organisation: organisation) }
 
     it 'must contain local ops' do
       expect(VolunteerOp.local_only).to include(first_local, second_local)
@@ -35,10 +27,10 @@ describe VolunteerOp, type: :model do
   end
 
   describe '#remote_only' do
-    let(:first_local) { FactoryBot.create(:local_volunteer_op, organisation_id: 1) }
-    let(:second_local) { FactoryBot.create(:local_volunteer_op, organisation_id: 1) }
-    let(:first_doit) { FactoryBot.create(:doit_volunteer_op, organisation_id: 1) }
-    let(:second_doit) { FactoryBot.create(:doit_volunteer_op, organisation_id: 1) }
+    let(:first_local) { create(:local_volunteer_op, organisation_id: 1) }
+    let(:second_local) { create(:local_volunteer_op, organisation_id: 1) }
+    let(:first_doit) { create(:doit_volunteer_op, organisation_id: 1) }
+    let(:second_doit) { create(:doit_volunteer_op, organisation_id: 1) }
 
     it 'contains remote ops' do
       expect(VolunteerOp.remote_only).to include(first_doit, second_doit)
@@ -52,7 +44,7 @@ describe VolunteerOp, type: :model do
   describe '#organisation_name' do
     context 'doit org' do
       let(:doit_org_name) { 'Nice Org' }
-      let(:vol_op) { FactoryBot.create(:doit_volunteer_op, doit_org_name: doit_org_name) }
+      let(:vol_op) { create(:doit_volunteer_op, doit_org_name: doit_org_name) }
 
       it 'returns the doit org name' do
         expect(vol_op.organisation_name).to eq doit_org_name
@@ -60,8 +52,8 @@ describe VolunteerOp, type: :model do
     end
 
     context 'local org' do
-      let(:organisation) { FactoryBot.create(:organisation, name: 'Friendly') }
-      let(:vol_op) { FactoryBot.create(:local_volunteer_op, organisation: organisation) }
+      let(:organisation) { create(:organisation, name: 'Friendly') }
+      let(:vol_op) { create(:local_volunteer_op, organisation: organisation) }
 
       it 'returns the local org name' do
         expect(vol_op.organisation_name).to eq organisation.name
@@ -69,9 +61,9 @@ describe VolunteerOp, type: :model do
     end
 
     context 'nor doit or local organisation' do
-      let(:organisation) { FactoryBot.create(:organisation, name: 'Friendly') }
+      let(:organisation) { create(:organisation, name: 'Friendly') }
       let(:vol_op) do 
-        FactoryBot.create(
+        create(
           :local_volunteer_op,
           source: 'reachskills',
           organisation: organisation
@@ -90,7 +82,7 @@ describe VolunteerOp, type: :model do
     context 'doit org' do
 
       let(:doit_org_link) { 'niceorg' }
-      let(:vol_op) { FactoryBot.create(:doit_volunteer_op, doit_org_link: doit_org_link) }
+      let(:vol_op) { create(:doit_volunteer_op, doit_org_link: doit_org_link) }
 
       it 'returns the doit org link' do
         expect(vol_op.organisation_link).to eq "https://do-it.org/organisations/#{doit_org_link}"
@@ -99,7 +91,7 @@ describe VolunteerOp, type: :model do
 
     context 'reachskills org' do
       let(:reachskills_org_name) { 'niceorg' }
-      let(:vol_op) { FactoryBot.create(:reachskills_volunteer_op, reachskills_org_name: reachskills_org_name) }
+      let(:vol_op) { create(:reachskills_volunteer_op, reachskills_org_name: reachskills_org_name) }
 
       it 'returns the reachskills org link' do
         expect(vol_op.organisation_link).to eq "https://reachvolunteering.org.uk/org/#{reachskills_org_name}"
@@ -108,8 +100,8 @@ describe VolunteerOp, type: :model do
 
     context 'local org' do
 
-      let(:organisation) { FactoryBot.create(:organisation, name: 'Friendly') }
-      let(:vol_op) { FactoryBot.create(:local_volunteer_op, organisation: organisation) }
+      let(:organisation) { create(:organisation, name: 'Friendly') }
+      let(:vol_op) { create(:local_volunteer_op, organisation: organisation) }
 
       it 'returns the local org' do
         expect(vol_op.organisation_link).to eq organisation
@@ -121,7 +113,7 @@ describe VolunteerOp, type: :model do
     context 'doit org' do
 
       let(:doit_op_id) { '456789uyffgh' }
-      let(:vol_op) { FactoryBot.create(:doit_volunteer_op, doit_op_id: doit_op_id) }
+      let(:vol_op) { create(:doit_volunteer_op, doit_op_id: doit_op_id) }
 
       it 'returns the doit op link' do
         expect(vol_op.link).to eq "https://do-it.org/opportunities/#{doit_op_id}"
@@ -131,7 +123,7 @@ describe VolunteerOp, type: :model do
     context 'reachskills org' do
 
       let(:reachskills_op_link) { 'https://reachvolunteering.org.uk/opp/fundraising-volunteer' }
-      let(:vol_op) { FactoryBot.create(:reachskills_volunteer_op, reachskills_op_link: reachskills_op_link) }
+      let(:vol_op) { create(:reachskills_volunteer_op, reachskills_op_link: reachskills_op_link) }
 
       it 'returns the reachskills op link' do
         expect(vol_op.link).to eq reachskills_op_link
@@ -140,8 +132,8 @@ describe VolunteerOp, type: :model do
 
     context 'local org' do
 
-      let(:organisation) { FactoryBot.create(:organisation, name: 'Friendly') }
-      let(:vol_op) { FactoryBot.create(:local_volunteer_op, organisation: organisation) }
+      let(:organisation) { create(:organisation, name: 'Friendly') }
+      let(:vol_op) { create(:local_volunteer_op, organisation: organisation) }
 
       it 'returns the local op' do
         expect(vol_op.link).to eq vol_op
@@ -150,7 +142,7 @@ describe VolunteerOp, type: :model do
   end
 
   describe 'destroy uses acts_as_paranoid' do
-    let!(:volunteer_op) { FactoryBot.create :volunteer_op, organisation_id: 1 }
+    let!(:volunteer_op) { create :volunteer_op, organisation_id: 1 }
     it 'can be restored' do
       expect { volunteer_op.destroy }.not_to change(VolunteerOp.with_deleted, :count)
     end
@@ -159,8 +151,8 @@ describe VolunteerOp, type: :model do
   describe '#search_by_keyword' do
     let(:details1) { {title: 'test', description: 'description1', organisation_id: 1} }
     let(:details2) { {title: 'Good', description: 'description2', organisation_id: 1} }
-    let!(:vol_op1) { FactoryBot.create :volunteer_op, details1 }
-    let!(:vol_op2) { FactoryBot.create :volunteer_op, details2 }
+    let!(:vol_op1) { create :volunteer_op, details1 }
+    let!(:vol_op2) { create :volunteer_op, details2 }
 
     it 'find records where title or description match search text' do
       expect(VolunteerOp.search_for_text('good')).to eq([vol_op2])
@@ -177,7 +169,7 @@ describe VolunteerOp, type: :model do
         organisation_id: 1
       }
     end
-    let!(:vol_op) { FactoryBot.create :volunteer_op, details }
+    let!(:vol_op) { create :volunteer_op, details }
 
     it 'returns a full address' do
       expect(vol_op.full_address).to eq 'Station Rd, HA8 7BD'

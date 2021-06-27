@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe CustomDeviseMailer, :type => :mailer do
   context "proposed org approved" do

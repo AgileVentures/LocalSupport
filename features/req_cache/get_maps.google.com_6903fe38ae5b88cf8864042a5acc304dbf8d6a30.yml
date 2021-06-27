@@ -1,0 +1,48 @@
+---
+:scope:
+:url: https://maps.google.com/maps/vt?pb=!1m4!1m3!1i12!2i2043!3i1358!1m4!1m3!1i12!2i2043!3i1359!1m4!1m3!1i12!2i2044!3i1358!1m4!1m3!1i12!2i2044!3i1359!1m4!1m3!1i12!2i2045!3i1358!1m4!1m3!1i12!2i2045!3i1359!1m4!1m3!1i12!2i2043!3i1360!1m4!1m3!1i12!2i2043!3i1361!1m4!1m3!1i12!2i2043!3i1362!1m4!1m3!1i12!2i2044!3i1360!1m4!1m3!1i12!2i2044!3i1361!1m4!1m3!1i12!2i2045!3i1360!1m4!1m3!1i12!2i2045!3i1361!1m4!1m3!1i12!2i2044!3i1362!1m4!1m3!1i12!2i2045!3i1362!2m3!1e0!2sm!3i561286280!3m12!2sen-US!3sUS!5e18!12m4!1e68!2m2!1sset!2sRoadmap!12m3!1e37!2m1!1ssmartmaps!4e3!12m1!5b1&callback=_xdc_._wa08r5&key=AIzaSyC6LFNuqK4HY5dysPA026BrTyqWJEZgSVM&token=10555
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: text/javascript; charset=UTF-8
+  Date: Thu, 24 Jun 2021 23:49:25 GMT
+  Expires: Thu, 24 Jun 2021 23:49:25 GMT
+  Cache-Control: private, max-age=22222222
+  Cross-Origin-Resource-Policy: cross-origin
+  Content-Security-Policy: script-src 'none'; object-src 'none'; base-uri 'none'
+  X-Content-Type-Options: nosniff
+  x-server-version-bin: CggIBBCox8uGBg==
+  Content-Disposition: attachment; filename="f.txt"
+  Server: paintfe
+  X-XSS-Protection: '0'
+  X-Frame-Options: SAMEORIGIN
+  Server-Timing: gfet4t7; dur=87
+  Alt-Svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+    ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+    ma=2592000; v="46,43"
+  Accept-Ranges: none
+  Vary: Accept-Encoding
+  Connection: close
+  Transfer-Encoding: chunked
+:content: /* API Response */ _xdc_._wa08r5 && _xdc_._wa08r5([{"id":"twvwvwvvwuwv","base":[1071247360,712335360],"zrange":[12,12],"layer":"m@561286280","features":[{"id":"7585413949735120584","a":[0,0,1071247360,712335360,1071247360,712335360],"bb":[-11,-32,11,-1,-11,-32,11,-1,-11,-32,11,-1,-138,-32,-9,-14,-93,-18,-9,0],"c":"{\"1\":{\"title\":\"Warner
+  Bros. Studio Tour London\"}}","io":[0,-16]}]},{"id":"twvwvwvvwuww","base":[1071855616,712742912],"zrange":[12,12],"layer":"m@561286280","features":[{"id":"3848846616291177822","a":[0,0],"bb":[-161,-25,-10,-7],"c":"{\"1\":{\"title\":\"Aldenham
+  Country Park\"}}"}]},{"id":"twvwvwvvwwut","zrange":[12,12],"layer":"m@561286280"},{"id":"twvwvwvvwwuu","base":[1071855616,712742912],"zrange":[12,12],"layer":"m@561286280","features":[{"id":"3848846616291177822","a":[0,0,1071855616,712742912,1071855616,712742912],"bb":[-11,-32,11,-1,-11,-32,11,-1,-11,-32,11,-1,-161,-25,-10,-7],"c":"{\"1\":{\"title\":\"Aldenham
+  Country Park\"}}","io":[0,-16]}]},{"id":"twvwvwvvwwuv","zrange":[12,12],"layer":"m@561286280"},{"id":"twvwvwvvwwuw","zrange":[12,12],"layer":"m@561286280"},{"id":"twvwvwvwvtvv","base":[1071140864,713232384],"zrange":[12,12],"layer":"m@561286280","features":[{"id":"10837346827302587422","a":[0,0],"bb":[-45,-9,45,9],"c":"{\"1\":{\"title\":\"Ruislip
+  Woods\"}}"},{"id":"0x48766ce5ffced4cf:0x46f80226c69ddeaf","a":[145408,251904],"bb":[-43,-6,43,7],"c":"{\"1\":{\"title\":\"Ruislip
+  Manor\"}}"}]},{"id":"twvwvwvwvtvw","base":[1071253504,713646080],"zrange":[12,12],"layer":"m@561286280","features":[{"id":"6690458799742309100","a":[0,0,1071253504,713646080,1071253504,713646080],"bb":[-11,-32,11,-1,-11,-32,11,-1,-11,-32,11,-1,-94,-25,-10,-7],"c":"{\"1\":{\"title\":\"RAF
+  Northolt\"}}","io":[0,-16]},{"id":"0x487612a0149dc659:0x9c7004ddb21c36b7","a":[356352,356352],"bb":[-28,-11,28,2,-18,-2,19,11],"c":"{\"1\":{\"title\":\"Dormer's
+  Wells\"}}"}]},{"id":"twvwvwvwvtwv","zrange":[12,12],"layer":"m@561286280"},{"id":"twvwvwvwvvtt","base":[1072320512,713224192],"zrange":[12,12],"layer":"m@561286280","features":[{"id":"569235943583350003","a":[0,0],"bb":[-108,-32,-10,-14,-119,-18,-9,0],"c":"{\"1\":{\"title\":\"Royal
+  Air Force Museum London\"}}"}]},{"id":"twvwvwvwvvtu","base":[1072201728,713953280],"zrange":[12,12],"layer":"m@561286280","features":[{"id":"0x487611dd8eba8b01:0x8ca20447c5d6ca3b","a":[0,0],"bb":[-39,-6,40,7],"c":"{\"1\":{\"title\":\"North
+  Acton\"}}"},{"id":"0x487612a0149dc659:0x9c7004ddb21c36b7","a":[-591872,49152],"bb":[-28,-11,28,2,-18,-2,19,11],"c":"{\"1\":{\"title\":\"Dormer's
+  Wells\"}}"},{"id":"0x487612fc34afaf6f:0x115136af06da09e","a":[-471040,-307200],"bb":[-39,-6,39,7],"c":"{\"1\":{\"title\":\"Sudbury
+  Hill\"}}"}]},{"id":"twvwvwvwvvtv","base":[1072320512,713224192],"zrange":[12,12],"layer":"m@561286280","features":[{"id":"569235943583350003","a":[0,0,1072320512,713224192,1072320512,713224192],"bb":[-11,-32,11,-1,-11,-32,11,-1,-11,-32,11,-1,-108,-32,-10,-14,-119,-18,-9,0],"c":"{\"1\":{\"title\":\"Royal
+  Air Force Museum London\"}}","io":[0,-16]},{"id":"0x487610e86dffe111:0xef0e43b31af1c644","a":[86016,206848],"bb":[-38,-6,38,7],"c":"{\"1\":{\"title\":\"Brent
+  Cross\"}}"}]},{"id":"twvwvwvwvvtw","base":[1072752640,714094592],"zrange":[12,12],"layer":"m@561286280","features":[{"id":"15109414362646101260","a":[0,0],"bb":[-33,-9,34,9],"c":"{\"1\":{\"title\":\"Hyde
+  Park\"}}"},{"id":"12786351728261599912","a":[73728,-270336],"bb":[-117,-25,-10,-7],"c":"{\"1\":{\"title\":\"ZSL
+  London Zoo\"}}"},{"id":"8567461044262521048","a":[40960,-57344],"bb":[-54,-1,25,17],"c":"{\"1\":{\"title\":\"Marble
+  Arch\"}}"},{"id":"0x4876119f014d6743:0xe851314e558a5140","a":[-526336,-520192],"bb":[-26,-6,26,7],"c":"{\"1\":{\"title\":\"Neasden\"}}"},{"id":"0x487611dd8eba8b01:0x8ca20447c5d6ca3b","a":[-550912,-141312],"bb":[-39,-6,40,7],"c":"{\"1\":{\"title\":\"North
+  Acton\"}}"}]},{"id":"twvwvwvwvvut","base":[1071978496,714366976],"zrange":[12,12],"layer":"m@561286280","features":[{"id":"15091440646483999614","a":[0,0],"bb":[-44,-16,45,2,-44,-2,45,16],"c":"{\"1\":{\"title\":\"Royal
+  Botanic Gardens, Kew\"}}"},{"id":"0x48760e706a4efbb9:0xc82f1958a39436ed","a":[167936,-86016],"bb":[-27,-6,28,7],"c":"{\"1\":{\"title\":\"Chiswick\"}}"}]},{"id":"twvwvwvwvvuv","base":[1072752640,714094592],"zrange":[12,12],"layer":"m@561286280","features":[{"id":"15109414362646101260","a":[0,0],"bb":[-33,-9,34,9],"c":"{\"1\":{\"title\":\"Hyde
+  Park\"}}"},{"id":"11436620009305892127","a":[-38912,100352,1072713728,714194944,1072713728,714194944],"bb":[-11,-32,11,-1,-11,-32,11,-1,-11,-32,11,-1,-89,-32,-10,-14,-110,-18,-10,0],"c":"{\"1\":{\"title\":\"Victoria
+  and Albert Museum\"}}","io":[0,-16]},{"id":"0x48760e706a4efbb9:0xc82f1958a39436ed","a":[-606208,186368],"bb":[-27,-6,28,7],"c":"{\"1\":{\"title\":\"Chiswick\"}}"}]}])

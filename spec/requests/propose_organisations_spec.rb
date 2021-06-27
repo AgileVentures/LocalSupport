@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe "Moderate a proposed org", :type => :request, :helpers => :requests do
   let(:nonsuperadmin) { FactoryBot.create(:user, superadmin: false) }

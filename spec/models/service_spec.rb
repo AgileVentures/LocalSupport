@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 RSpec.describe Service, type: :model do
   subject(:service) { described_class.new(address: '1 Tree Rd', postcode: 'HA1 3HJ')}

@@ -1,0 +1,15 @@
+---
+:scope:
+:url: http://api-public.addthis.com/url/shares.json?url=http%3A%2F%2F127.0.0.1%3A58826%2Forganisations%2Fhelpful-folk&callback=_ate.cbs.rcb_j17i0
+:body: ''
+:status: 308
+:method: get
+:headers:
+  Server: nginx/1.15.8
+  Content-Type: text/html
+  Content-Length: '171'
+  Location: https://api-public-oci-origin.addthis.com/url/shares.json?url=http%3A%2F%2F127.0.0.1%3A58826%2Forganisations%2Fhelpful-folk&callback=_ate.cbs.rcb_j17i0
+  Date: Sun, 27 Jun 2021 09:13:40 GMT
+  Connection: close
+:content: "<html>\r\n<head><title>308 Permanent Redirect</title></head>\r\n<body>\r\n<center><h1>308
+  Permanent Redirect</h1></center>\r\n<hr><center>nginx/1.15.8</center>\r\n</body>\r\n</html>\r\n"

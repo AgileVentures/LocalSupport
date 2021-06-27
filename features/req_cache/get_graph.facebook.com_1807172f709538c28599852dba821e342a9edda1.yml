@@ -1,0 +1,38 @@
+---
+:scope:
+:url: http://graph.facebook.com/?id=http%3A%2F%2F127.0.0.1%3A58826%2Forganisations%2Fhelpful-folk&callback=_ate.cbs.rcb_ja7w0
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Vary:
+  - Origin
+  - Accept-Encoding
+  x-fb-rlafr: '0'
+  Content-Type: text/javascript; charset=UTF-8
+  WWW-Authenticate: OAuth "Facebook Platform" "invalid_request" "(#2) Service temporarily
+    unavailable"
+  Access-Control-Allow-Origin: "*"
+  facebook-api-version: v3.3
+  Pragma: no-cache
+  Cache-Control: no-store
+  Expires: Sat, 01 Jan 2000 00:00:00 GMT
+  x-fb-request-id: Af4ilAznG7RB7lEQfFb04j5
+  x-fb-trace-id: C4M48MRoYru
+  x-fb-rev: '1004044572'
+  X-FB-Debug: rU3LbF2h1EJClA0SvUkL1eSelKcM1Go7YT/BsIq1M1FFXP/y5KELnTqw+F3t6btg40Gr2Ge2SzADyq75pUe7Ww==
+  Date: Sun, 27 Jun 2021 09:13:43 GMT
+  Priority: u=3,i
+  Alt-Svc: h3-29=":443"; ma=3600,h3-27=":443"; ma=3600
+  Connection: close
+  Content-Length: '228'
+:content: |-
+  /**/ _ate.cbs.rcb_ja7w0({
+     "error": {
+        "message": "(#2) Service temporarily unavailable",
+        "type": "OAuthException",
+        "is_transient": true,
+        "code": 2,
+        "fbtrace_id": "Af4ilAznG7RB7lEQfFb04j5"
+     }
+  });

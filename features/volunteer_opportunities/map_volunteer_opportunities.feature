@@ -4,7 +4,8 @@ Feature: As a member of the public
   I would like to see a map of volunteer opportunities
   Tracker story ID: https://www.pivotaltracker.com/story/show/66059862
 
-  Scenario Outline: See a list of local volunteer ops with same coordiantes in same maker popup
+  @javascript @billy
+  Scenario Outline: See a list of local volunteer ops with same coordiantes in same marker popup
     Given the following organisations exist:
       | name          | description          | address        | postcode | website       |
       | Cats Are Us   | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
@@ -13,8 +14,13 @@ Feature: As a member of the public
       | title          | description                     | organisation  | address        | postcode |
       | Animal care    | Assist with feline sanitation   | Cats Are Us   | 34 pinner road | HA1 4HZ  |
       | Office Support | Help with printing and copying. | Office Primer | 34 pinner road | HA1 4HZ  |
+    Given the following doit volunteer opportunities exist:
+      | title          | description                     | latitude | longitude |
+      | Animal care    | Assist with feline sanitation   | 51.581475  | -0.3440408 |
+      | Office Support | Help with printing and copying. | 51.581475  | -0.3440408 |
     Given I visit the volunteer opportunities page
     And cookies are approved
+    Then I take a screenshot
     Then I should see 1 markers in the map
     And the map should show the opportunity titled <title>
     Examples:
@@ -22,7 +28,7 @@ Feature: As a member of the public
       | Animal care    |
       | Office Support |
 
-  Scenario Outline: See a list of do-it volunteer ops with same coordiantes in same maker popup
+  Scenario Outline: See a list of do-it volunteer ops with same coordiantes in same marker popup
     Given the following doit volunteer opportunities exist:
       | title          | description                     | latitude | longitude |
       | Eldery care    | Assist eldery people            | 51.5943  | -0.334769 |
@@ -36,7 +42,8 @@ Feature: As a member of the public
       | Eldery care    |
       | Office Support |
 
-  Scenario Outline: See a list of do-it and local volunteer ops with same coordiantes in same maker popup
+  @javascript @billy
+  Scenario Outline: See a list of do-it and local volunteer ops with same coordiantes in same marker popup
     Given the following organisations exist:
       | name          | description          | address        | postcode | website       |
       | Cats Are Us   | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |

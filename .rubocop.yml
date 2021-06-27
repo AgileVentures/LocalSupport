@@ -10,9 +10,6 @@ AllCops:
     - 'bin/**/*'
   TargetRubyVersion: 2.3
 
-Rails:
- Enabled: true
-
 # inherit_from:
 #   - enabled.yml
 #   - disabled.yml
@@ -84,10 +81,6 @@ Style/BlockDelimiters:
                 always ugly).
                 Prefer {...} over do...end for single-line blocks.
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#single-line-blocks'
-  Enabled: true
-
-Style/BracesAroundHashParameters:
-  Description: 'Enforce braces style around hash parameters.'
   Enabled: true
 
 Style/CaseEquality:
@@ -605,7 +598,7 @@ Lint/EmptyInterpolation:
   Description: 'Checks for empty string interpolation.'
   Enabled: true
 
-Lint/EndInMethod:
+Style/EndBlock:
   Description: 'END blocks should not be placed inside method definitions.'
   Enabled: true
 
@@ -1045,7 +1038,7 @@ Layout/SpaceInsideStringInterpolation:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#string-interpolation'
   Enabled: false
 
-Layout/Tab:
+Layout/IndentationStyle:
   Description: 'No hard tabs.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#spaces-indentation'
   Enabled: false
