@@ -78,12 +78,9 @@ end
 Given /^the following organisations exist:$/ do |organisations_table|
   organisations_table.hashes.each do |org|
     VCR.use_cassette("#{org["name"]}-#{org["postcode"]}") do
-      # binding.pry
-      # organisation = Organisation.new(org)
-      # organisation.check_geocode
-      # organisation.save!
-      organisation = create(:organisation, org)
+      organisation = build(:organisation, org)
       organisation.geocode
+      organisation.save!
     end
   end
 end
@@ -99,13 +96,8 @@ end
 
 Given /the following volunteer opportunities exist/ do |volunteer_ops_table|
   volunteer_ops_table.hashes.each do |volunteer_op|
-    org = Organisation.find_by_name(volunteer_op["organisation"])
-    volunteer_op["organisation"] = org
-    VCR.use_cassette("#{org.name}-#{org.postcode}") do
-      # VolunteerOp.create! volunteer_op
-      op = create(:volunteer_op, volunteer_op)
-      op.geocode
-    end
+    volunteer_op["organisation"] = Organisation.find_by_name(volunteer_op["organisation"])
+    create(:volunteer_op, volunteer_op)
   end
 end
 

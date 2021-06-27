@@ -4,7 +4,7 @@ FactoryBot.define do
     description { 'we are really really friendly' }
     address { '64 pinner road' }
     postcode { 'HA1 4HZ' }
-    donation_info { 'www.harrow-bereavment.co.uk/donate' }
+    donation_info { '' }
     email { 'friendly@charity.org' }
     latitude { 10 }
     longitude { 10 }
