@@ -1,0 +1,76 @@
+---
+:scope:
+:url: https://fonts.googleapis.com/css?family=Roboto:300,400,500,700%7CGoogle+Sans:400,500,700%7CGoogle+Sans+Text:400
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: text/css; charset=utf-8
+  Access-Control-Allow-Origin: "*"
+  Timing-Allow-Origin: "*"
+  Expires: Tue, 08 Jun 2021 05:07:42 GMT
+  Date: Tue, 08 Jun 2021 05:07:42 GMT
+  Cache-Control: private, max-age=86400
+  Cross-Origin-Resource-Policy: cross-origin
+  Server: ESF
+  X-XSS-Protection: '0'
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Alt-Svc: h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+    ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+  Accept-Ranges: none
+  Vary: Accept-Encoding
+  Connection: close
+  Transfer-Encoding: chunked
+:content: |
+  /*
+   * See: https://fonts.google.com/license/googlerestricted
+   */
+  @font-face {
+    font-family: 'Google Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/googlesans/v27/4UaGrENHsxJlGDuGo1OIlL3OwpteKQtG.ttf) format('truetype');
+  }
+  @font-face {
+    font-family: 'Google Sans';
+    font-style: normal;
+    font-weight: 500;
+    src: url(https://fonts.gstatic.com/s/googlesans/v27/4UabrENHsxJlGDuGo1OIlLU94YtzCwNsPF4o.ttf) format('truetype');
+  }
+  @font-face {
+    font-family: 'Google Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: url(https://fonts.gstatic.com/s/googlesans/v27/4UabrENHsxJlGDuGo1OIlLV154tzCwNsPF4o.ttf) format('truetype');
+  }
+  @font-face {
+    font-family: 'Google Sans Text';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/googlesanstext/v16/5aUu9-KzpRiLCAt4Unrc-xIKmCU5qEp2jkVBuxM.ttf) format('truetype');
+  }
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    src: url(https://fonts.gstatic.com/s/roboto/v27/KFOlCnqEu92Fr1MmSU5fBBc9AMP6lQ.ttf) format('truetype');
+  }
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/roboto/v27/KFOmCnqEu92Fr1Mu4mxPKTU1Kg.ttf) format('truetype');
+  }
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    src: url(https://fonts.gstatic.com/s/roboto/v27/KFOlCnqEu92Fr1MmEU9fBBc9AMP6lQ.ttf) format('truetype');
+  }
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    src: url(https://fonts.gstatic.com/s/roboto/v27/KFOlCnqEu92Fr1MmWUlfBBc9AMP6lQ.ttf) format('truetype');
+  }
