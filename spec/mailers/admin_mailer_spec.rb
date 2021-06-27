@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe AdminMailer, :type => :mailer do
   context "new user sign up notification" do

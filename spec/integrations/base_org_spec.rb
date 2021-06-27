@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe BaseOrganisation do
   describe '#slug' do

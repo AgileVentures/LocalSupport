@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe BaseOrganisation, type: :model do
   describe '#validation' do

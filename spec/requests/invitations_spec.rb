@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe 'Invitations', type: :request, helpers: :requests do
 

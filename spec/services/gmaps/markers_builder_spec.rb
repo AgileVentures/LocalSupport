@@ -1,6 +1,6 @@
 # extracted from 'gmaps4rails' gem
 # link = https://github.com/apneadiving/Google-Maps-for-Rails/blob/master/spec/lib/markers_builder_spec.rb
-require 'rails_helper'
+
 
 describe Gmaps::MarkersBuilder do
 

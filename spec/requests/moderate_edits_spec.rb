@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe 'Proposed Edits Moderation', type: :request, helpers: :requests do
   let(:nonsuperadmin) { FactoryBot.create(:user, superadmin: false) }

@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe OrganisationsController, :type => :controller do
   let(:category_html_options) { [['cat1', 1], ['cat2', 2]] }

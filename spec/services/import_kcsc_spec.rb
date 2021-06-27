@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe ImportKCSC do
   let(:http_party) { double :http_party }
