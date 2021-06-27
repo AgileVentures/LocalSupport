@@ -21,7 +21,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Sat, 30 Nov 2019 13:16:00 GMT
+      - Sun, 27 Jun 2021 07:07:41 GMT
       Pragma:
       - no-cache
       Expires:
@@ -30,6 +30,8 @@ http_interactions:
       - no-cache, must-revalidate
       Access-Control-Allow-Origin:
       - "*"
+      X-Goog-Maps-Metro-Area:
+      - London
       Server:
       - mafe
       X-Xss-Protection:
@@ -37,11 +39,11 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       Server-Timing:
-      - gfet4t7; dur=24
+      - gfet4t7; dur=22
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
-        ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
-        ma=2592000
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
       Transfer-Encoding:
       - chunked
     body:
@@ -90,18 +92,18 @@ http_interactions:
                  "formatted_address" : "34 Pinner Rd, Harrow HA1, UK",
                  "geometry" : {
                     "location" : {
-                       "lat" : 51.5814712,
-                       "lng" : -0.3440422
+                       "lat" : 51.581475,
+                       "lng" : -0.3440408
                     },
                     "location_type" : "RANGE_INTERPOLATED",
                     "viewport" : {
                        "northeast" : {
-                          "lat" : 51.58282018029149,
-                          "lng" : -0.3426932197084979
+                          "lat" : 51.58282398029149,
+                          "lng" : -0.3426918197084979
                        },
                        "southwest" : {
-                          "lat" : 51.5801222197085,
-                          "lng" : -0.345391180291502
+                          "lat" : 51.58012601970849,
+                          "lng" : -0.345389780291502
                        }
                     }
                  },
@@ -111,6 +113,362 @@ http_interactions:
            ],
            "status" : "OK"
         }
-    http_version: 
-  recorded_at: Sat, 30 Nov 2019 13:16:00 GMT
-recorded_with: VCR 5.0.0
+  recorded_at: Sun, 27 Jun 2021 07:07:39 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=43%20Claremont%20Road,%20Wealdstone,%20HA3%207AU&key=<GMAP_API_KEY>&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 27 Jun 2021 07:07:51 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Goog-Maps-Metro-Area:
+      - London
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=14
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "43",
+                       "short_name" : "43",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Claremont Road",
+                       "short_name" : "Claremont Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Harrow",
+                       "short_name" : "Harrow",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "HA3 7AU",
+                       "short_name" : "HA3 7AU",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "43 Claremont Rd, Harrow HA3 7AU, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.5986313,
+                       "lng" : -0.3356556
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5999802802915,
+                          "lng" : -0.334306619708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.5972823197085,
+                          "lng" : -0.337004580291502
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJw01CHX4TdkgRmPXNa1D1XUA",
+                 "plus_code" : {
+                    "compound_code" : "HMX7+FP Harrow, UK",
+                    "global_code" : "9C3XHMX7+FP"
+                 },
+                 "types" : [ "street_address" ]
+              }
+           ],
+           "status" : "OK"
+        }
+  recorded_at: Sun, 27 Jun 2021 07:07:49 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=43%20Claremont%20Road,%20Wealdstone,%20HA3%207AU&key=<GMAP_API_KEY>&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 27 Jun 2021 07:07:51 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Goog-Maps-Metro-Area:
+      - London
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=22
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "43",
+                       "short_name" : "43",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Claremont Road",
+                       "short_name" : "Claremont Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Harrow",
+                       "short_name" : "Harrow",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "HA3 7AU",
+                       "short_name" : "HA3 7AU",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "43 Claremont Rd, Harrow HA3 7AU, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.5986313,
+                       "lng" : -0.3356556
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5999802802915,
+                          "lng" : -0.334306619708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.5972823197085,
+                          "lng" : -0.337004580291502
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJw01CHX4TdkgRmPXNa1D1XUA",
+                 "plus_code" : {
+                    "compound_code" : "HMX7+FP Harrow, UK",
+                    "global_code" : "9C3XHMX7+FP"
+                 },
+                 "types" : [ "street_address" ]
+              }
+           ],
+           "status" : "OK"
+        }
+  recorded_at: Sun, 27 Jun 2021 07:07:49 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=,%20&key=<GMAP_API_KEY>&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 27 Jun 2021 07:07:54 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=9
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "610",
+                       "short_name" : "610",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Purdue Mall",
+                       "short_name" : "Purdue Mall",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "West Lafayette",
+                       "short_name" : "West Lafayette",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Wabash Township",
+                       "short_name" : "Wabash Township",
+                       "types" : [ "administrative_area_level_3", "political" ]
+                    },
+                    {
+                       "long_name" : "Tippecanoe County",
+                       "short_name" : "Tippecanoe County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "Indiana",
+                       "short_name" : "IN",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "47907",
+                       "short_name" : "47907",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "610 Purdue Mall, West Lafayette, IN 47907, USA",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 40.4237054,
+                       "lng" : -86.92119459999999
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 40.42505438029149,
+                          "lng" : -86.91984561970848
+                       },
+                       "southwest" : {
+                          "lat" : 40.4223564197085,
+                          "lng" : -86.92254358029149
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJBwU-Qjf9EogRjnwai8-yzI4",
+                 "plus_code" : {
+                    "compound_code" : "C3FH+FG West Lafayette, IN, USA",
+                    "global_code" : "86GMC3FH+FG"
+                 },
+                 "types" : [ "establishment", "point_of_interest", "university" ]
+              }
+           ],
+           "status" : "OK"
+        }
+  recorded_at: Sun, 27 Jun 2021 07:07:52 GMT
+recorded_with: VCR 6.0.0

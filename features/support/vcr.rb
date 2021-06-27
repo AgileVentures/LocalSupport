@@ -5,13 +5,13 @@ VCR.configure do |config|
   config.debug_logger = File.open('vcr.log', 'w')
   config.default_cassette_options = {
      record: :new_episodes,
-     match_requests_on: [:host, :path, :method],
+     match_requests_on: [:uri, :method],
   }
   config.ignore_request do |request|
     request.headers.include?('Referer')
   end
   config.filter_sensitive_data("<KCSC_API_KEY>") { ENV['KCSC_API_KEY'] }
-  config.filter_sensitive_data("key123") { ENV['GMAP_API_KEY'] }
+  config.filter_sensitive_data("<GMAP_API_KEY>") { ENV['GMAP_API_KEY'] }
 end
 
 VCR.cucumber_tags do |t|
