@@ -9,7 +9,7 @@ Feature: As a member of the public
     Given the following organisations exist:
       | name          | description          | address        | postcode | website       |
       | Cats Are Us   | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
-      | Office Primer | Care for the elderly | 34 pinner road | HA1 4HZ  | http://b.com/ |
+      | Office Primer | Care for the elderly | 64 pinner road | HA1 4HZ  | http://b.com/ |
     Given the following volunteer opportunities exist:
       | title          | description                     | organisation  | address        | postcode |
       | Animal care    | Assist with feline sanitation   | Cats Are Us   | 34 pinner road | HA1 4HZ  |
@@ -47,7 +47,7 @@ Feature: As a member of the public
     Given the following organisations exist:
       | name          | description          | address        | postcode | website       |
       | Cats Are Us   | Animal Shelter       | 34 pinner road | HA1 4HZ  | http://a.com/ |
-      | Office Primer | Care for the elderly | 34 pinner road | HA1 4HZ  | http://b.com/ |
+      | Office Primer | Care for the elderly | 64 pinner road | HA1 4HZ  | http://b.com/ |
 
     Given the following volunteer opportunities exist:
       | title          | description                     | organisation  | address                       | postcode |
@@ -100,7 +100,7 @@ Feature: As a member of the public
     Given the following organisations exist:
       | name          | description          | address        | latitude   | longitude  |
       | Cats Are Us   | Animal Shelter       | 34 pinner road | 51.5986313 | -0.3356556 |
-      | Office Primer | Care for the elderly | 34 pinner road | 61.1116313 | 7.3356556  |
+      | Office Primer | Care for the elderly | 64 pinner road | 61.1116313 | 7.3356556  |
     Given the following volunteer opportunities exist:
       | title              | description                     | organisation  |
       | Litter Box Scooper | Assist with feline sanitation   | Cats Are Us   |
@@ -117,7 +117,7 @@ Feature: As a member of the public
     Given the following organisations exist:
       | name          | description          | address        | latitude   | longitude |
       | Cats Are Us   | Animal Shelter       | 34 pinner road |            |           |
-      | Office Primer | Care for the elderly | 34 pinner road | 61.1116313 | 7.3356556 |
+      | Office Primer | Care for the elderly | 64 pinner road | 61.1116313 | 7.3356556 |
     Given the following volunteer opportunities exist:
       | title              | description                     | organisation  |
       | Litter Box Scooper | Assist with feline sanitation   | Cats Are Us   |
