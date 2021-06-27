@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe Queries::Organisations, '::search_by_keyword_and_category' do
   let!(:category1) { create(:category, :charity_commission_id => 108) }
   let!(:category2) { create(:category, :charity_commission_id => 205) }

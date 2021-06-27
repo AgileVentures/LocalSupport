@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe ImportOrganisations do
   let(:http_party) { double :http_party }

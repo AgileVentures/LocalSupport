@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe InviteUnregisteredUserFromProposedOrg do
   let(:proposed_org){FactoryBot.create(:orphan_proposed_organisation).accept_proposal}

@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe ::BatchInviteJob do
   let(:current_user) { FactoryBot.create(:user, email: 'superadmin@example.com', superadmin: true) }

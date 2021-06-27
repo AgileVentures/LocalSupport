@@ -1,0 +1,27 @@
+---
+:scope:
+:url: https://maps.gstatic.com/mapfiles/api-3/images/icon_error.png
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Accept-Ranges: bytes
+  Content-Type: image/png
+  Access-Control-Allow-Origin: "*"
+  Content-Security-Policy-Report-Only: require-trusted-types-for 'script'; report-uri
+    https://csp.withgoogle.com/csp/geo-tactile
+  Cross-Origin-Resource-Policy: cross-origin
+  Content-Length: '450'
+  Date: Thu, 24 Jun 2021 23:48:36 GMT
+  Expires: Thu, 24 Jun 2021 23:48:36 GMT
+  Cache-Control: private, max-age=31536000
+  Last-Modified: Tue, 18 May 2021 19:15:00 GMT
+  X-Content-Type-Options: nosniff
+  Server: sffe
+  X-XSS-Protection: '0'
+  Alt-Svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+    ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+    ma=2592000; v="46,43"
+  Connection: close
+:content: !binary |-
+  iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAABiUlEQVR4Ae3Xz4raUBSAcY1xYXcqLlqdPkVt7XsICu1rfPhnr8xsp0wdZh5BOouBoe8RfIGKbhqdtcnmNtDlNR5z74FSMN82+oPkkntP6XL9DxcBPaY8sWJPmrVnxQ8mfCKgJCXd8J4btpicNlzTcQdaPJBihBLuaboAX3jFnNmOYTGgyiOmYPeE5wJv+Ilx6IXaOUD1xN/LRCgDjxiPFhLwFePZ4BTQ4tUbiGnkAw/Cj0t/E+66ywOuSFWAA+3jwA1GBTDMjwEBWzVgTdkGPmPUAMNHG5iqAmMbeFIFljawUgUiG9irArENpKpA8g8A/Uckv2SPImGZCjkt04kqMLKBnirQtYGAjdpL/kXZArKu1YDZ8f2gQ6K04bzN2zIXKsBt/p7cZIfx7Df1XCBr6A30pYPXAuPRN/lkF/KCceyZighk1RyJ59zDr1XId4eHUyk2gAyIC6ycvssI1eCOBCN04Ja6+xDYZs76xDdnxjtpCJQL6DJmSURMkhUTsWTEB8r+Y6zcBfDtDxG8YEAvlAJYAAAAAElFTkSuQmCC

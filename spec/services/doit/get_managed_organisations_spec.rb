@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 module Doit
   RSpec.describe GetManagedOrganisations do

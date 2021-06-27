@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 require 'string.rb'
 
 describe String do

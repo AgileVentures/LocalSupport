@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 include ActiveJob::TestHelper
 
 RSpec.describe VolunteerOpForm do

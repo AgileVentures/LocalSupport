@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe UserReportsHelper, :type => :helper do
   describe '#time_ago_in_words_with_nils' do

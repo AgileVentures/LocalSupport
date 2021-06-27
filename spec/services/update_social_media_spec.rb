@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 RSpec.describe UpdateSocialMedia do
   before :each do

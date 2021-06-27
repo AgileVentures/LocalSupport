@@ -1,0 +1,29 @@
+---
+:scope:
+:url: https://maps.google.com/maps/vt?pb=!1m4!1m3!1i12!2i2130!3i1162!1m4!1m3!1i12!2i2130!3i1163!1m4!1m3!1i12!2i2131!3i1162!1m4!1m3!1i12!2i2131!3i1163!1m4!1m3!1i12!2i2130!3i1164!1m4!1m3!1i12!2i2131!3i1164!1m4!1m3!1i12!2i2132!3i1162!1m4!1m3!1i12!2i2132!3i1163!1m4!1m3!1i12!2i2132!3i1164!2m3!1e0!2sm!3i559283868!3m17!2sen-US!3sUS!5e18!12m4!1e68!2m2!1sset!2sRoadmap!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcC5zOi02MHxwLmw6LTYw!4e3!12m1!5b1&callback=_xdc_._793ii6&token=3442
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: text/javascript; charset=UTF-8
+  Date: Sun, 27 Jun 2021 08:15:22 GMT
+  Expires: Sun, 27 Jun 2021 08:15:22 GMT
+  Cache-Control: private, max-age=600
+  Cross-Origin-Resource-Policy: cross-origin
+  Content-Security-Policy: script-src 'none'; object-src 'none'; base-uri 'none'
+  X-Content-Type-Options: nosniff
+  x-server-version-bin: CggIBBDm6dCGBg==
+  Content-Disposition: attachment; filename="f.txt"
+  Server: paintfe
+  X-XSS-Protection: '0'
+  X-Frame-Options: SAMEORIGIN
+  Server-Timing: gfet4t7; dur=22
+  Alt-Svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+    ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+    ma=2592000; v="46,43"
+  Accept-Ranges: none
+  Vary: Accept-Encoding
+  Connection: close
+  Transfer-Encoding: chunked
+:content: /* API Response */ _xdc_._793ii6 && _xdc_._793ii6([{"id":"vuttuvtvutwt","zrange":[12,12],"layer":"m@559283868"},{"id":"vuttuvtvutwu","zrange":[12,12],"layer":"m@559283868"},{"id":"vuttuvtvutwv","base":[1117507584,609533952],"zrange":[12,12],"layer":"m@559283868","features":[{"id":"4355969038848552792","a":[0,0,1117507584,609533952,1117507584,609533952],"bb":[-11,-32,11,-1,-11,-32,11,-1,-11,-32,11,-1,-101,-49,25,-31],"c":"{\"1\":{\"title\":\"Mannheller
+  Ferjekai\"}}","io":[0,-16]}]},{"id":"vuttuvtvutww","zrange":[12,12],"layer":"m@559283868"},{"id":"vuttuvtvuuvt","zrange":[12,12],"layer":"m@559283868"},{"id":"vuttuvtvuuvv","zrange":[12,12],"layer":"m@559283868"},{"id":"vuttuvtvuvut","zrange":[12,12],"layer":"m@559283868"},{"id":"vuttuvtvuvuu","zrange":[12,12],"layer":"m@559283868"},{"id":"vuttuvtvuwtt","zrange":[12,12],"layer":"m@559283868"}])

@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 RSpec.describe TwitterApi do
   context 'Posting to twitter' do

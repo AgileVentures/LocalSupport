@@ -1,0 +1,26 @@
+---
+:scope:
+:url: https://maps.gstatic.com/mapfiles/transparent.png
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Accept-Ranges: bytes
+  Content-Type: image/png
+  Access-Control-Allow-Origin: "*"
+  Content-Security-Policy-Report-Only: require-trusted-types-for 'script'; report-uri
+    https://csp.withgoogle.com/csp/geo-tactile
+  Cross-Origin-Resource-Policy: cross-origin
+  Content-Length: '68'
+  Date: Tue, 08 Jun 2021 05:07:41 GMT
+  Expires: Tue, 08 Jun 2021 05:07:41 GMT
+  Cache-Control: private, max-age=31536000
+  Last-Modified: Tue, 18 May 2021 19:15:00 GMT
+  X-Content-Type-Options: nosniff
+  Server: sffe
+  X-XSS-Protection: '0'
+  Alt-Svc: h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+    ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+  Connection: close
+:content: !binary |-
+  iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4AWP4zwAAAgEBAAbvKMsAAAAASUVORK5CYII=

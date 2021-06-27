@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 # Example:
 # This will leave items uncleaned in the db but rspec has no complaint about syntax

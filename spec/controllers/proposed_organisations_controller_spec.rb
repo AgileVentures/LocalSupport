@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe ProposedOrganisationsController, :type => :controller do
   let!(:proposed_org) { FactoryBot.create :proposed_organisation }

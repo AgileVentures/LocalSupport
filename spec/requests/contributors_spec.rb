@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe "Contributors", :type => :request do
   describe "GET /contributors" do

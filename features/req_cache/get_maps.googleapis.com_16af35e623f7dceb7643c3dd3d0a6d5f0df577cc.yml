@@ -1,0 +1,26 @@
+---
+:scope:
+:url: https://maps.googleapis.com/maps/api/js/QuotaService.RecordEvent?1shttp%3A%2F%2F127.0.0.1%3A57983%2Fevents&7snrn5av&10e1&callback=_xdc_._jpqyis&token=62592
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: text/javascript; charset=UTF-8
+  Date: Tue, 08 Jun 2021 08:13:12 GMT
+  Pragma: no-cache
+  Expires: Fri, 01 Jan 1990 00:00:00 GMT
+  Cache-Control: no-cache, must-revalidate
+  Content-Disposition: attachment
+  Server: mafe
+  X-XSS-Protection: '0'
+  X-Frame-Options: SAMEORIGIN
+  Server-Timing: gfet4t7; dur=1
+  Alt-Svc: h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+    ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+  Accept-Ranges: none
+  Vary: Accept-Encoding
+  Connection: close
+  Transfer-Encoding: chunked
+:content: /**/_xdc_._jpqyis && _xdc_._jpqyis( [0,null,0,null,null,[2,"https://developers.google.com/maps/documentation/javascript/error-messages?utm_source=maps_js\u0026utm_medium=degraded\u0026utm_campaign=billing#api-key-and-billing-errors","You
+  are using this API without a key. See https://developers.google.com/maps/documentation/javascript/error-messages?utm_source=maps_js\u0026utm_medium=degraded\u0026utm_campaign=billing#api-key-and-billing-errors"]]
+  )

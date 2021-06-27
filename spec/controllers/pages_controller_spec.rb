@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe PagesController, :type => :controller do
   let(:page) { mock_model Page, id: '2' }

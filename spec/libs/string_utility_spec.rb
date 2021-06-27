@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 class Parent
   include StringUtility

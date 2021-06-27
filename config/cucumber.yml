@@ -1,7 +1,7 @@
 # added require to std_opts: http://stackoverflow.com/a/6829369/2197402
 
 <%
-std_opts = "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} --strict --require features/ --tags ~@wip"
+std_opts = "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} --strict --require features/"
 %>
 default: <%= std_opts %> features
 wip: --tags @wip:3 --wip features

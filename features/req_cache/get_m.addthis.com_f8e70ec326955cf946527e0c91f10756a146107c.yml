@@ -1,0 +1,15 @@
+---
+:scope:
+:url: https://m.addthis.com/live/red_lojson/300lo.json?si=60befb1bf902a3e0&bkl=0&bl=1&sid=60befb1bf902a3e0&pub=ra-57ff949adbc21d93&rev=v7.11.0-wp&ln=en&pc=men&cb=0&ab=-&dp=127.0.0.1%3A55793&fp=organisations%2Fhelpful-folk&fr=users%2F1%2Fedit&of=0&pd=0&irt=1&vcl=1&md=0&ct=1&tct=0&abt=0&cdn=0&pi=1&rb=4&gen=100&chr=UTF-8&colc=1623128859067&jsl=1&uvs=60befb1a2f2566f2001&skipb=1&callback=addthis.cbs.oln9_38831858197227120
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: application/javascript;charset=utf-8
+  Content-Length: '87'
+  Cache-Control: max-age=0, no-cache, no-store, no-transform
+  Pragma: no-cache
+  Content-Disposition: attachment; filename=1.txt
+  Date: Tue, 08 Jun 2021 05:07:39 GMT
+  Connection: close
+:content: addthis.cbs.oln9_38831858197227120({"loc":"MDAwMDBFVVNFME8yMzc4MTkyMjAwMjAwMDBDSA=="});

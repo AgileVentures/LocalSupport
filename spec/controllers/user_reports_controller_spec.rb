@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 describe UserReportsController, type: :controller do
   describe 'PUT update user-organisation status', helpers: :controllers do
     before(:each) do

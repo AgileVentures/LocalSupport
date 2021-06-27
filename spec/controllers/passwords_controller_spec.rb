@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 describe Devise::PasswordsController, type: :controller do
   describe 'POST create' do

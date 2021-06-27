@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 include ActiveSupport::Testing::TimeHelpers
 
 RSpec.describe DoitTrace, type: :model do
