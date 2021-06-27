@@ -100,7 +100,7 @@ FactoryBot.define do
     description { 'Some nice people' }
 
     factory :local_volunteer_op do
-      cource { 'local' }
+      source { 'local' }
     end
 
     factory :doit_volunteer_op do
