@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://maps.googleapis.com/maps/api/geocode/json?address=64%20pinner%20road,%20HA1%204HZ&key=key123&language=en&sensor=false
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=34%20pinner%20road&key=<GMAP_API_KEY>&language=en&sensor=false
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Fri, 25 Jun 2021 08:56:40 GMT
+      - Sun, 27 Jun 2021 07:07:56 GMT
       Pragma:
       - no-cache
       Expires:
@@ -39,7 +39,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       Server-Timing:
-      - gfet4t7; dur=400
+      - gfet4t7; dur=20
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
         ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
@@ -54,8 +54,130 @@ http_interactions:
               {
                  "address_components" : [
                     {
-                       "long_name" : "64",
-                       "short_name" : "64",
+                       "long_name" : "34",
+                       "short_name" : "34",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Pinner Road",
+                       "short_name" : "Pinner Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Watford",
+                       "short_name" : "Watford",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Hertfordshire",
+                       "short_name" : "Hertfordshire",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "WD19 4ED",
+                       "short_name" : "WD19 4ED",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "34 Pinner Rd, Watford WD19 4ED, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.6449154,
+                       "lng" : -0.383163
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.64626438029151,
+                          "lng" : -0.3818140197084979
+                       },
+                       "southwest" : {
+                          "lat" : 51.64356641970851,
+                          "lng" : -0.384511980291502
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJSfCbFNRqdkgReJ9bbDxlPlY",
+                 "plus_code" : {
+                    "compound_code" : "JJV8+XP Watford, UK",
+                    "global_code" : "9C3XJJV8+XP"
+                 },
+                 "types" : [ "street_address" ]
+              },
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "34",
+                       "short_name" : "34",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Pinner Road",
+                       "short_name" : "Pinner Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Northwood",
+                       "short_name" : "Northwood",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "HA6 1BU",
+                       "short_name" : "HA6 1BU",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "34 Pinner Rd, Northwood HA6 1BU, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.602908,
+                       "lng" : -0.4103771
+                    },
+                    "location_type" : "RANGE_INTERPOLATED",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.6042569802915,
+                          "lng" : -0.409028119708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.6015590197085,
+                          "lng" : -0.411726080291502
+                       }
+                    }
+                 },
+                 "place_id" : "EiMzNCBQaW5uZXIgUmQsIE5vcnRod29vZCBIQTYgMUJVLCBVSyIaEhgKFAoSCVtNap1ja3ZIEVDC0A_kewiaECI",
+                 "types" : [ "street_address" ]
+              },
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "34",
+                       "short_name" : "34",
                        "types" : [ "street_number" ]
                     },
                     {
@@ -84,44 +206,155 @@ http_interactions:
                        "types" : [ "country", "political" ]
                     },
                     {
-                       "long_name" : "HA1 4HZ",
-                       "short_name" : "HA1 4HZ",
-                       "types" : [ "postal_code" ]
+                       "long_name" : "HA1",
+                       "short_name" : "HA1",
+                       "types" : [ "postal_code", "postal_code_prefix" ]
                     }
                  ],
-                 "formatted_address" : "64 Pinner Rd, Harrow HA1 4HZ, UK",
+                 "formatted_address" : "34 Pinner Rd, Harrow HA1, UK",
                  "geometry" : {
-                    "bounds" : {
-                       "northeast" : {
-                          "lat" : 51.5814257,
-                          "lng" : -0.3466192
-                       },
-                       "southwest" : {
-                          "lat" : 51.5813301,
-                          "lng" : -0.3469252
-                       }
-                    },
                     "location" : {
-                       "lat" : 51.5813654,
-                       "lng" : -0.3467931
+                       "lat" : 51.581475,
+                       "lng" : -0.3440408
                     },
-                    "location_type" : "ROOFTOP",
+                    "location_type" : "RANGE_INTERPOLATED",
                     "viewport" : {
                        "northeast" : {
-                          "lat" : 51.5827268802915,
-                          "lng" : -0.3454232197084979
+                          "lat" : 51.58282398029149,
+                          "lng" : -0.3426918197084979
                        },
                        "southwest" : {
-                          "lat" : 51.5800289197085,
-                          "lng" : -0.348121180291502
+                          "lat" : 51.58012601970849,
+                          "lng" : -0.345389780291502
                        }
                     }
                  },
-                 "place_id" : "ChIJjQWua2wTdkgRyc32EN8AgX0",
-                 "types" : [ "premise" ]
+                 "place_id" : "EhgzNCBQaW5uZXIgUmQsIEhhcnJvdywgVUsiGhIYChQKEgm_z5y-bRN2SBE81eOga-HduRAi",
+                 "types" : [ "street_address" ]
               }
            ],
            "status" : "OK"
         }
-  recorded_at: Fri, 25 Jun 2021 08:56:40 GMT
+  recorded_at: Sun, 27 Jun 2021 07:07:54 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=,%20&key=<GMAP_API_KEY>&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 27 Jun 2021 07:07:56 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=27
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "610",
+                       "short_name" : "610",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Purdue Mall",
+                       "short_name" : "Purdue Mall",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "West Lafayette",
+                       "short_name" : "West Lafayette",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Wabash Township",
+                       "short_name" : "Wabash Township",
+                       "types" : [ "administrative_area_level_3", "political" ]
+                    },
+                    {
+                       "long_name" : "Tippecanoe County",
+                       "short_name" : "Tippecanoe County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "Indiana",
+                       "short_name" : "IN",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "47907",
+                       "short_name" : "47907",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "610 Purdue Mall, West Lafayette, IN 47907, USA",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 40.4237054,
+                       "lng" : -86.92119459999999
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 40.42505438029149,
+                          "lng" : -86.91984561970848
+                       },
+                       "southwest" : {
+                          "lat" : 40.4223564197085,
+                          "lng" : -86.92254358029149
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJBwU-Qjf9EogRjnwai8-yzI4",
+                 "plus_code" : {
+                    "compound_code" : "C3FH+FG West Lafayette, IN, USA",
+                    "global_code" : "86GMC3FH+FG"
+                 },
+                 "types" : [ "establishment", "point_of_interest", "university" ]
+              }
+           ],
+           "status" : "OK"
+        }
+  recorded_at: Sun, 27 Jun 2021 07:07:54 GMT
 recorded_with: VCR 6.0.0
